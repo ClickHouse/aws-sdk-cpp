@@ -18,27 +18,7 @@ namespace Glue
 namespace Model
 {
 
-CrawlerTargets::CrawlerTargets() : 
-    m_s3TargetsHasBeenSet(false),
-    m_jdbcTargetsHasBeenSet(false),
-    m_mongoDBTargetsHasBeenSet(false),
-    m_dynamoDBTargetsHasBeenSet(false),
-    m_catalogTargetsHasBeenSet(false),
-    m_deltaTargetsHasBeenSet(false),
-    m_icebergTargetsHasBeenSet(false),
-    m_hudiTargetsHasBeenSet(false)
-{
-}
-
-CrawlerTargets::CrawlerTargets(JsonView jsonValue) : 
-    m_s3TargetsHasBeenSet(false),
-    m_jdbcTargetsHasBeenSet(false),
-    m_mongoDBTargetsHasBeenSet(false),
-    m_dynamoDBTargetsHasBeenSet(false),
-    m_catalogTargetsHasBeenSet(false),
-    m_deltaTargetsHasBeenSet(false),
-    m_icebergTargetsHasBeenSet(false),
-    m_hudiTargetsHasBeenSet(false)
+CrawlerTargets::CrawlerTargets(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -54,7 +34,6 @@ CrawlerTargets& CrawlerTargets::operator =(JsonView jsonValue)
     }
     m_s3TargetsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("JdbcTargets"))
   {
     Aws::Utils::Array<JsonView> jdbcTargetsJsonList = jsonValue.GetArray("JdbcTargets");
@@ -64,7 +43,6 @@ CrawlerTargets& CrawlerTargets::operator =(JsonView jsonValue)
     }
     m_jdbcTargetsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MongoDBTargets"))
   {
     Aws::Utils::Array<JsonView> mongoDBTargetsJsonList = jsonValue.GetArray("MongoDBTargets");
@@ -74,7 +52,6 @@ CrawlerTargets& CrawlerTargets::operator =(JsonView jsonValue)
     }
     m_mongoDBTargetsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DynamoDBTargets"))
   {
     Aws::Utils::Array<JsonView> dynamoDBTargetsJsonList = jsonValue.GetArray("DynamoDBTargets");
@@ -84,7 +61,6 @@ CrawlerTargets& CrawlerTargets::operator =(JsonView jsonValue)
     }
     m_dynamoDBTargetsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CatalogTargets"))
   {
     Aws::Utils::Array<JsonView> catalogTargetsJsonList = jsonValue.GetArray("CatalogTargets");
@@ -94,7 +70,6 @@ CrawlerTargets& CrawlerTargets::operator =(JsonView jsonValue)
     }
     m_catalogTargetsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DeltaTargets"))
   {
     Aws::Utils::Array<JsonView> deltaTargetsJsonList = jsonValue.GetArray("DeltaTargets");
@@ -104,7 +79,6 @@ CrawlerTargets& CrawlerTargets::operator =(JsonView jsonValue)
     }
     m_deltaTargetsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("IcebergTargets"))
   {
     Aws::Utils::Array<JsonView> icebergTargetsJsonList = jsonValue.GetArray("IcebergTargets");
@@ -114,7 +88,6 @@ CrawlerTargets& CrawlerTargets::operator =(JsonView jsonValue)
     }
     m_icebergTargetsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("HudiTargets"))
   {
     Aws::Utils::Array<JsonView> hudiTargetsJsonList = jsonValue.GetArray("HudiTargets");
@@ -124,7 +97,6 @@ CrawlerTargets& CrawlerTargets::operator =(JsonView jsonValue)
     }
     m_hudiTargetsHasBeenSet = true;
   }
-
   return *this;
 }
 

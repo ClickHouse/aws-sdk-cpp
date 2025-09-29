@@ -10,17 +10,6 @@
 using namespace Aws::CloudFormation::Model;
 using namespace Aws::Utils;
 
-ListStackSetsRequest::ListStackSetsRequest() : 
-    m_nextTokenHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_status(StackSetStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_callAs(CallAs::NOT_SET),
-    m_callAsHasBeenSet(false)
-{
-}
-
 Aws::String ListStackSetsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -37,12 +26,12 @@ Aws::String ListStackSetsRequest::SerializePayload() const
 
   if(m_statusHasBeenSet)
   {
-    ss << "Status=" << StackSetStatusMapper::GetNameForStackSetStatus(m_status) << "&";
+    ss << "Status=" << StringUtils::URLEncode(StackSetStatusMapper::GetNameForStackSetStatus(m_status)) << "&";
   }
 
   if(m_callAsHasBeenSet)
   {
-    ss << "CallAs=" << CallAsMapper::GetNameForCallAs(m_callAs) << "&";
+    ss << "CallAs=" << StringUtils::URLEncode(CallAsMapper::GetNameForCallAs(m_callAs)) << "&";
   }
 
   ss << "Version=2010-05-15";

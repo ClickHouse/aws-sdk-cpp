@@ -20,15 +20,7 @@ namespace ElasticBeanstalk
 namespace Model
 {
 
-SystemStatus::SystemStatus() : 
-    m_cPUUtilizationHasBeenSet(false),
-    m_loadAverageHasBeenSet(false)
-{
-}
-
-SystemStatus::SystemStatus(const XmlNode& xmlNode) : 
-    m_cPUUtilizationHasBeenSet(false),
-    m_loadAverageHasBeenSet(false)
+SystemStatus::SystemStatus(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -49,9 +41,10 @@ SystemStatus& SystemStatus::operator =(const XmlNode& xmlNode)
     if(!loadAverageNode.IsNull())
     {
       XmlNode loadAverageMember = loadAverageNode.FirstChild("member");
+      m_loadAverageHasBeenSet = !loadAverageMember.IsNull();
       while(!loadAverageMember.IsNull())
       {
-         m_loadAverage.push_back(StringUtils::ConvertToDouble(StringUtils::Trim(loadAverageMember.GetText().c_str()).c_str()));
+        m_loadAverage.push_back(StringUtils::ConvertToDouble(StringUtils::Trim(loadAverageMember.GetText().c_str()).c_str()));
         loadAverageMember = loadAverageMember.NextNode("member");
       }
 
@@ -95,7 +88,7 @@ void SystemStatus::OutputToStream(Aws::OStream& oStream, const char* location) c
       unsigned loadAverageIdx = 1;
       for(auto& item : m_loadAverage)
       {
-          oStream << location << ".LoadAverage.member." << loadAverageIdx++ << "=" << StringUtils::URLEncode(item) << "&";
+        oStream << location << ".LoadAverage.member." << loadAverageIdx++ << "=" << StringUtils::URLEncode(item) << "&";
       }
   }
 }

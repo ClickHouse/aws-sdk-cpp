@@ -28,6 +28,7 @@
 #include <aws/emr-serverless/model/GetDashboardForJobRunRequest.h>
 #include <aws/emr-serverless/model/GetJobRunRequest.h>
 #include <aws/emr-serverless/model/ListApplicationsRequest.h>
+#include <aws/emr-serverless/model/ListJobRunAttemptsRequest.h>
 #include <aws/emr-serverless/model/ListJobRunsRequest.h>
 #include <aws/emr-serverless/model/ListTagsForResourceRequest.h>
 #include <aws/emr-serverless/model/StartApplicationRequest.h>
@@ -50,20 +51,27 @@ using namespace Aws::Utils::Json;
 using namespace smithy::components::tracing;
 using ResolveEndpointOutcome = Aws::Endpoint::ResolveEndpointOutcome;
 
-const char* EMRServerlessClient::SERVICE_NAME = "emr-serverless";
-const char* EMRServerlessClient::ALLOCATION_TAG = "EMRServerlessClient";
+namespace Aws
+{
+  namespace EMRServerless
+  {
+    const char SERVICE_NAME[] = "emr-serverless";
+    const char ALLOCATION_TAG[] = "EMRServerlessClient";
+  }
+}
+const char* EMRServerlessClient::GetServiceName() {return SERVICE_NAME;}
+const char* EMRServerlessClient::GetAllocationTag() {return ALLOCATION_TAG;}
 
 EMRServerlessClient::EMRServerlessClient(const EMRServerless::EMRServerlessClientConfiguration& clientConfiguration,
                                          std::shared_ptr<EMRServerlessEndpointProviderBase> endpointProvider) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<EMRServerlessErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
-  m_endpointProvider(std::move(endpointProvider))
+  m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<EMRServerlessEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -78,8 +86,7 @@ EMRServerlessClient::EMRServerlessClient(const AWSCredentials& credentials,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<EMRServerlessErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<EMRServerlessEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -94,8 +101,7 @@ EMRServerlessClient::EMRServerlessClient(const std::shared_ptr<AWSCredentialsPro
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<EMRServerlessErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<EMRServerlessEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -104,12 +110,11 @@ EMRServerlessClient::EMRServerlessClient(const std::shared_ptr<AWSCredentialsPro
   EMRServerlessClient::EMRServerlessClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<EMRServerlessErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
   m_endpointProvider(Aws::MakeShared<EMRServerlessEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -124,7 +129,6 @@ EMRServerlessClient::EMRServerlessClient(const AWSCredentials& credentials,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<EMRServerlessErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<EMRServerlessEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -139,7 +143,6 @@ EMRServerlessClient::EMRServerlessClient(const std::shared_ptr<AWSCredentialsPro
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<EMRServerlessErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<EMRServerlessEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -159,6 +162,14 @@ std::shared_ptr<EMRServerlessEndpointProviderBase>& EMRServerlessClient::accessE
 void EMRServerlessClient::init(const EMRServerless::EMRServerlessClientConfiguration& config)
 {
   AWSClient::SetServiceClientName("EMR Serverless");
+  if (!m_clientConfiguration.executor) {
+    if (!m_clientConfiguration.configFactories.executorCreateFn()) {
+      AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "Failed to initialize client: config is missing Executor or executorCreateFn");
+      m_isInitialized = false;
+      return;
+    }
+    m_clientConfiguration.executor = m_clientConfiguration.configFactories.executorCreateFn();
+  }
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
   m_endpointProvider->InitBuiltInParameters(config);
 }
@@ -404,6 +415,47 @@ ListApplicationsOutcome EMRServerlessClient::ListApplications(const ListApplicat
       AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, ListApplications, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
       endpointResolutionOutcome.GetResult().AddPathSegments("/applications");
       return ListApplicationsOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_GET, Aws::Auth::SIGV4_SIGNER));
+    },
+    TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
+    *meter,
+    {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+}
+
+ListJobRunAttemptsOutcome EMRServerlessClient::ListJobRunAttempts(const ListJobRunAttemptsRequest& request) const
+{
+  AWS_OPERATION_GUARD(ListJobRunAttempts);
+  AWS_OPERATION_CHECK_PTR(m_endpointProvider, ListJobRunAttempts, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE);
+  if (!request.ApplicationIdHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("ListJobRunAttempts", "Required field: ApplicationId, is not set");
+    return ListJobRunAttemptsOutcome(Aws::Client::AWSError<EMRServerlessErrors>(EMRServerlessErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [ApplicationId]", false));
+  }
+  if (!request.JobRunIdHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("ListJobRunAttempts", "Required field: JobRunId, is not set");
+    return ListJobRunAttemptsOutcome(Aws::Client::AWSError<EMRServerlessErrors>(EMRServerlessErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [JobRunId]", false));
+  }
+  AWS_OPERATION_CHECK_PTR(m_telemetryProvider, ListJobRunAttempts, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto tracer = m_telemetryProvider->getTracer(this->GetServiceClientName(), {});
+  auto meter = m_telemetryProvider->getMeter(this->GetServiceClientName(), {});
+  AWS_OPERATION_CHECK_PTR(meter, ListJobRunAttempts, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto span = tracer->CreateSpan(Aws::String(this->GetServiceClientName()) + ".ListJobRunAttempts",
+    {{ TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName() }, { TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName() }, { TracingUtils::SMITHY_SYSTEM_DIMENSION, TracingUtils::SMITHY_METHOD_AWS_VALUE }},
+    smithy::components::tracing::SpanKind::CLIENT);
+  return TracingUtils::MakeCallWithTiming<ListJobRunAttemptsOutcome>(
+    [&]()-> ListJobRunAttemptsOutcome {
+      auto endpointResolutionOutcome = TracingUtils::MakeCallWithTiming<ResolveEndpointOutcome>(
+          [&]() -> ResolveEndpointOutcome { return m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams()); },
+          TracingUtils::SMITHY_CLIENT_ENDPOINT_RESOLUTION_METRIC,
+          *meter,
+          {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+      AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, ListJobRunAttempts, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/applications/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetApplicationId());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/jobruns/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetJobRunId());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/attempts");
+      return ListJobRunAttemptsOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_GET, Aws::Auth::SIGV4_SIGNER));
     },
     TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
     *meter,

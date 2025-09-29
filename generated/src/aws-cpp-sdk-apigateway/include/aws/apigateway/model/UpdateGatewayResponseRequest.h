@@ -28,7 +28,7 @@ namespace Model
   class UpdateGatewayResponseRequest : public APIGatewayRequest
   {
   public:
-    AWS_APIGATEWAY_API UpdateGatewayResponseRequest();
+    AWS_APIGATEWAY_API UpdateGatewayResponseRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,140 +39,49 @@ namespace Model
     AWS_APIGATEWAY_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The string identifier of the associated RestApi.</p>
      */
-    inline const Aws::String& GetRestApiId() const{ return m_restApiId; }
-
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
+    inline const Aws::String& GetRestApiId() const { return m_restApiId; }
     inline bool RestApiIdHasBeenSet() const { return m_restApiIdHasBeenSet; }
+    template<typename RestApiIdT = Aws::String>
+    void SetRestApiId(RestApiIdT&& value) { m_restApiIdHasBeenSet = true; m_restApiId = std::forward<RestApiIdT>(value); }
+    template<typename RestApiIdT = Aws::String>
+    UpdateGatewayResponseRequest& WithRestApiId(RestApiIdT&& value) { SetRestApiId(std::forward<RestApiIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
-    inline void SetRestApiId(const Aws::String& value) { m_restApiIdHasBeenSet = true; m_restApiId = value; }
-
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
-    inline void SetRestApiId(Aws::String&& value) { m_restApiIdHasBeenSet = true; m_restApiId = std::move(value); }
-
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
-    inline void SetRestApiId(const char* value) { m_restApiIdHasBeenSet = true; m_restApiId.assign(value); }
-
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
-    inline UpdateGatewayResponseRequest& WithRestApiId(const Aws::String& value) { SetRestApiId(value); return *this;}
-
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
-    inline UpdateGatewayResponseRequest& WithRestApiId(Aws::String&& value) { SetRestApiId(std::move(value)); return *this;}
-
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
-    inline UpdateGatewayResponseRequest& WithRestApiId(const char* value) { SetRestApiId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The response type of the associated GatewayResponse.</p>
      */
-    inline const GatewayResponseType& GetResponseType() const{ return m_responseType; }
-
-    /**
-     * <p>The response type of the associated GatewayResponse.</p>
-     */
+    inline GatewayResponseType GetResponseType() const { return m_responseType; }
     inline bool ResponseTypeHasBeenSet() const { return m_responseTypeHasBeenSet; }
+    inline void SetResponseType(GatewayResponseType value) { m_responseTypeHasBeenSet = true; m_responseType = value; }
+    inline UpdateGatewayResponseRequest& WithResponseType(GatewayResponseType value) { SetResponseType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The response type of the associated GatewayResponse.</p>
-     */
-    inline void SetResponseType(const GatewayResponseType& value) { m_responseTypeHasBeenSet = true; m_responseType = value; }
-
-    /**
-     * <p>The response type of the associated GatewayResponse.</p>
-     */
-    inline void SetResponseType(GatewayResponseType&& value) { m_responseTypeHasBeenSet = true; m_responseType = std::move(value); }
-
-    /**
-     * <p>The response type of the associated GatewayResponse.</p>
-     */
-    inline UpdateGatewayResponseRequest& WithResponseType(const GatewayResponseType& value) { SetResponseType(value); return *this;}
-
-    /**
-     * <p>The response type of the associated GatewayResponse.</p>
-     */
-    inline UpdateGatewayResponseRequest& WithResponseType(GatewayResponseType&& value) { SetResponseType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>For more information about supported patch operations, see <a
      * href="https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html">Patch
      * Operations</a>.</p>
      */
-    inline const Aws::Vector<PatchOperation>& GetPatchOperations() const{ return m_patchOperations; }
-
-    /**
-     * <p>For more information about supported patch operations, see <a
-     * href="https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html">Patch
-     * Operations</a>.</p>
-     */
+    inline const Aws::Vector<PatchOperation>& GetPatchOperations() const { return m_patchOperations; }
     inline bool PatchOperationsHasBeenSet() const { return m_patchOperationsHasBeenSet; }
-
-    /**
-     * <p>For more information about supported patch operations, see <a
-     * href="https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html">Patch
-     * Operations</a>.</p>
-     */
-    inline void SetPatchOperations(const Aws::Vector<PatchOperation>& value) { m_patchOperationsHasBeenSet = true; m_patchOperations = value; }
-
-    /**
-     * <p>For more information about supported patch operations, see <a
-     * href="https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html">Patch
-     * Operations</a>.</p>
-     */
-    inline void SetPatchOperations(Aws::Vector<PatchOperation>&& value) { m_patchOperationsHasBeenSet = true; m_patchOperations = std::move(value); }
-
-    /**
-     * <p>For more information about supported patch operations, see <a
-     * href="https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html">Patch
-     * Operations</a>.</p>
-     */
-    inline UpdateGatewayResponseRequest& WithPatchOperations(const Aws::Vector<PatchOperation>& value) { SetPatchOperations(value); return *this;}
-
-    /**
-     * <p>For more information about supported patch operations, see <a
-     * href="https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html">Patch
-     * Operations</a>.</p>
-     */
-    inline UpdateGatewayResponseRequest& WithPatchOperations(Aws::Vector<PatchOperation>&& value) { SetPatchOperations(std::move(value)); return *this;}
-
-    /**
-     * <p>For more information about supported patch operations, see <a
-     * href="https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html">Patch
-     * Operations</a>.</p>
-     */
-    inline UpdateGatewayResponseRequest& AddPatchOperations(const PatchOperation& value) { m_patchOperationsHasBeenSet = true; m_patchOperations.push_back(value); return *this; }
-
-    /**
-     * <p>For more information about supported patch operations, see <a
-     * href="https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html">Patch
-     * Operations</a>.</p>
-     */
-    inline UpdateGatewayResponseRequest& AddPatchOperations(PatchOperation&& value) { m_patchOperationsHasBeenSet = true; m_patchOperations.push_back(std::move(value)); return *this; }
-
+    template<typename PatchOperationsT = Aws::Vector<PatchOperation>>
+    void SetPatchOperations(PatchOperationsT&& value) { m_patchOperationsHasBeenSet = true; m_patchOperations = std::forward<PatchOperationsT>(value); }
+    template<typename PatchOperationsT = Aws::Vector<PatchOperation>>
+    UpdateGatewayResponseRequest& WithPatchOperations(PatchOperationsT&& value) { SetPatchOperations(std::forward<PatchOperationsT>(value)); return *this;}
+    template<typename PatchOperationsT = PatchOperation>
+    UpdateGatewayResponseRequest& AddPatchOperations(PatchOperationsT&& value) { m_patchOperationsHasBeenSet = true; m_patchOperations.emplace_back(std::forward<PatchOperationsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_restApiId;
     bool m_restApiIdHasBeenSet = false;
 
-    GatewayResponseType m_responseType;
+    GatewayResponseType m_responseType{GatewayResponseType::NOT_SET};
     bool m_responseTypeHasBeenSet = false;
 
     Aws::Vector<PatchOperation> m_patchOperations;

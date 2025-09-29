@@ -25,60 +25,33 @@ namespace Model
 {
 
   /**
-   * The metadata of the transport stream in the current flow's source.<p><h3>See
-   * Also:</h3>   <a
+   * <p> The metadata of the transport stream in the current flow's
+   * source.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/mediaconnect-2018-11-14/TransportMediaInfo">AWS
    * API Reference</a></p>
    */
   class TransportMediaInfo
   {
   public:
-    AWS_MEDIACONNECT_API TransportMediaInfo();
+    AWS_MEDIACONNECT_API TransportMediaInfo() = default;
     AWS_MEDIACONNECT_API TransportMediaInfo(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONNECT_API TransportMediaInfo& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * The list of transport stream programs in the current flow's source.
+     * <p> The list of transport stream programs in the current flow's source.</p>
      */
-    inline const Aws::Vector<TransportStreamProgram>& GetPrograms() const{ return m_programs; }
-
-    /**
-     * The list of transport stream programs in the current flow's source.
-     */
+    inline const Aws::Vector<TransportStreamProgram>& GetPrograms() const { return m_programs; }
     inline bool ProgramsHasBeenSet() const { return m_programsHasBeenSet; }
-
-    /**
-     * The list of transport stream programs in the current flow's source.
-     */
-    inline void SetPrograms(const Aws::Vector<TransportStreamProgram>& value) { m_programsHasBeenSet = true; m_programs = value; }
-
-    /**
-     * The list of transport stream programs in the current flow's source.
-     */
-    inline void SetPrograms(Aws::Vector<TransportStreamProgram>&& value) { m_programsHasBeenSet = true; m_programs = std::move(value); }
-
-    /**
-     * The list of transport stream programs in the current flow's source.
-     */
-    inline TransportMediaInfo& WithPrograms(const Aws::Vector<TransportStreamProgram>& value) { SetPrograms(value); return *this;}
-
-    /**
-     * The list of transport stream programs in the current flow's source.
-     */
-    inline TransportMediaInfo& WithPrograms(Aws::Vector<TransportStreamProgram>&& value) { SetPrograms(std::move(value)); return *this;}
-
-    /**
-     * The list of transport stream programs in the current flow's source.
-     */
-    inline TransportMediaInfo& AddPrograms(const TransportStreamProgram& value) { m_programsHasBeenSet = true; m_programs.push_back(value); return *this; }
-
-    /**
-     * The list of transport stream programs in the current flow's source.
-     */
-    inline TransportMediaInfo& AddPrograms(TransportStreamProgram&& value) { m_programsHasBeenSet = true; m_programs.push_back(std::move(value)); return *this; }
-
+    template<typename ProgramsT = Aws::Vector<TransportStreamProgram>>
+    void SetPrograms(ProgramsT&& value) { m_programsHasBeenSet = true; m_programs = std::forward<ProgramsT>(value); }
+    template<typename ProgramsT = Aws::Vector<TransportStreamProgram>>
+    TransportMediaInfo& WithPrograms(ProgramsT&& value) { SetPrograms(std::forward<ProgramsT>(value)); return *this;}
+    template<typename ProgramsT = TransportStreamProgram>
+    TransportMediaInfo& AddPrograms(ProgramsT&& value) { m_programsHasBeenSet = true; m_programs.emplace_back(std::forward<ProgramsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<TransportStreamProgram> m_programs;

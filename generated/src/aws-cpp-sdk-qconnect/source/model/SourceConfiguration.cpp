@@ -18,13 +18,7 @@ namespace QConnect
 namespace Model
 {
 
-SourceConfiguration::SourceConfiguration() : 
-    m_appIntegrationsHasBeenSet(false)
-{
-}
-
-SourceConfiguration::SourceConfiguration(JsonView jsonValue) : 
-    m_appIntegrationsHasBeenSet(false)
+SourceConfiguration::SourceConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,13 @@ SourceConfiguration& SourceConfiguration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("appIntegrations"))
   {
     m_appIntegrations = jsonValue.GetObject("appIntegrations");
-
     m_appIntegrationsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("managedSourceConfiguration"))
+  {
+    m_managedSourceConfiguration = jsonValue.GetObject("managedSourceConfiguration");
+    m_managedSourceConfigurationHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -48,6 +45,12 @@ JsonValue SourceConfiguration::Jsonize() const
   if(m_appIntegrationsHasBeenSet)
   {
    payload.WithObject("appIntegrations", m_appIntegrations.Jsonize());
+
+  }
+
+  if(m_managedSourceConfigurationHasBeenSet)
+  {
+   payload.WithObject("managedSourceConfiguration", m_managedSourceConfiguration.Jsonize());
 
   }
 

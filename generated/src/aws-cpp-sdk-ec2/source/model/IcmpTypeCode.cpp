@@ -20,19 +20,7 @@ namespace EC2
 namespace Model
 {
 
-IcmpTypeCode::IcmpTypeCode() : 
-    m_code(0),
-    m_codeHasBeenSet(false),
-    m_type(0),
-    m_typeHasBeenSet(false)
-{
-}
-
-IcmpTypeCode::IcmpTypeCode(const XmlNode& xmlNode) : 
-    m_code(0),
-    m_codeHasBeenSet(false),
-    m_type(0),
-    m_typeHasBeenSet(false)
+IcmpTypeCode::IcmpTypeCode(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

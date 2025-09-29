@@ -28,116 +28,49 @@ namespace Model
   class UpdateGatewayInstanceResult
   {
   public:
-    AWS_MEDIACONNECT_API UpdateGatewayInstanceResult();
+    AWS_MEDIACONNECT_API UpdateGatewayInstanceResult() = default;
     AWS_MEDIACONNECT_API UpdateGatewayInstanceResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_MEDIACONNECT_API UpdateGatewayInstanceResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
-     * The availability of the instance to host new bridges. The bridgePlacement
-     * property can be LOCKED or AVAILABLE. If it is LOCKED, no new bridges can be
-     * deployed to this instance. If it is AVAILABLE, new bridges can be added to this
-     * instance.
+     * <p>The state of the instance. <code>ACTIVE</code> or <code>INACTIVE</code>. </p>
      */
-    inline const BridgePlacement& GetBridgePlacement() const{ return m_bridgePlacement; }
+    inline BridgePlacement GetBridgePlacement() const { return m_bridgePlacement; }
+    inline void SetBridgePlacement(BridgePlacement value) { m_bridgePlacementHasBeenSet = true; m_bridgePlacement = value; }
+    inline UpdateGatewayInstanceResult& WithBridgePlacement(BridgePlacement value) { SetBridgePlacement(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * The availability of the instance to host new bridges. The bridgePlacement
-     * property can be LOCKED or AVAILABLE. If it is LOCKED, no new bridges can be
-     * deployed to this instance. If it is AVAILABLE, new bridges can be added to this
-     * instance.
+     * <p>The ARN of the instance that was updated. </p>
      */
-    inline void SetBridgePlacement(const BridgePlacement& value) { m_bridgePlacement = value; }
+    inline const Aws::String& GetGatewayInstanceArn() const { return m_gatewayInstanceArn; }
+    template<typename GatewayInstanceArnT = Aws::String>
+    void SetGatewayInstanceArn(GatewayInstanceArnT&& value) { m_gatewayInstanceArnHasBeenSet = true; m_gatewayInstanceArn = std::forward<GatewayInstanceArnT>(value); }
+    template<typename GatewayInstanceArnT = Aws::String>
+    UpdateGatewayInstanceResult& WithGatewayInstanceArn(GatewayInstanceArnT&& value) { SetGatewayInstanceArn(std::forward<GatewayInstanceArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The availability of the instance to host new bridges. The bridgePlacement
-     * property can be LOCKED or AVAILABLE. If it is LOCKED, no new bridges can be
-     * deployed to this instance. If it is AVAILABLE, new bridges can be added to this
-     * instance.
-     */
-    inline void SetBridgePlacement(BridgePlacement&& value) { m_bridgePlacement = std::move(value); }
-
-    /**
-     * The availability of the instance to host new bridges. The bridgePlacement
-     * property can be LOCKED or AVAILABLE. If it is LOCKED, no new bridges can be
-     * deployed to this instance. If it is AVAILABLE, new bridges can be added to this
-     * instance.
-     */
-    inline UpdateGatewayInstanceResult& WithBridgePlacement(const BridgePlacement& value) { SetBridgePlacement(value); return *this;}
-
-    /**
-     * The availability of the instance to host new bridges. The bridgePlacement
-     * property can be LOCKED or AVAILABLE. If it is LOCKED, no new bridges can be
-     * deployed to this instance. If it is AVAILABLE, new bridges can be added to this
-     * instance.
-     */
-    inline UpdateGatewayInstanceResult& WithBridgePlacement(BridgePlacement&& value) { SetBridgePlacement(std::move(value)); return *this;}
-
-
-    /**
-     * The Amazon Resource Name (ARN) of the instance.
-     */
-    inline const Aws::String& GetGatewayInstanceArn() const{ return m_gatewayInstanceArn; }
-
-    /**
-     * The Amazon Resource Name (ARN) of the instance.
-     */
-    inline void SetGatewayInstanceArn(const Aws::String& value) { m_gatewayInstanceArn = value; }
-
-    /**
-     * The Amazon Resource Name (ARN) of the instance.
-     */
-    inline void SetGatewayInstanceArn(Aws::String&& value) { m_gatewayInstanceArn = std::move(value); }
-
-    /**
-     * The Amazon Resource Name (ARN) of the instance.
-     */
-    inline void SetGatewayInstanceArn(const char* value) { m_gatewayInstanceArn.assign(value); }
-
-    /**
-     * The Amazon Resource Name (ARN) of the instance.
-     */
-    inline UpdateGatewayInstanceResult& WithGatewayInstanceArn(const Aws::String& value) { SetGatewayInstanceArn(value); return *this;}
-
-    /**
-     * The Amazon Resource Name (ARN) of the instance.
-     */
-    inline UpdateGatewayInstanceResult& WithGatewayInstanceArn(Aws::String&& value) { SetGatewayInstanceArn(std::move(value)); return *this;}
-
-    /**
-     * The Amazon Resource Name (ARN) of the instance.
-     */
-    inline UpdateGatewayInstanceResult& WithGatewayInstanceArn(const char* value) { SetGatewayInstanceArn(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline UpdateGatewayInstanceResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline UpdateGatewayInstanceResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline UpdateGatewayInstanceResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    UpdateGatewayInstanceResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
-    BridgePlacement m_bridgePlacement;
+    BridgePlacement m_bridgePlacement{BridgePlacement::NOT_SET};
+    bool m_bridgePlacementHasBeenSet = false;
 
     Aws::String m_gatewayInstanceArn;
+    bool m_gatewayInstanceArnHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

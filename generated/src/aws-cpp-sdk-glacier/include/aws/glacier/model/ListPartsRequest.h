@@ -29,7 +29,7 @@ namespace Model
   class ListPartsRequest : public GlacierRequest
   {
   public:
-    AWS_GLACIER_API ListPartsRequest();
+    AWS_GLACIER_API ListPartsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -42,6 +42,7 @@ namespace Model
     AWS_GLACIER_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>The <code>AccountId</code> value is the AWS account ID of the account that
      * owns the vault. You can either specify an AWS account ID or optionally a single
@@ -49,154 +50,39 @@ namespace Model
      * ID associated with the credentials used to sign the request. If you use an
      * account ID, do not include any hyphens ('-') in the ID. </p>
      */
-    inline const Aws::String& GetAccountId() const{ return m_accountId; }
-
-    /**
-     * <p>The <code>AccountId</code> value is the AWS account ID of the account that
-     * owns the vault. You can either specify an AWS account ID or optionally a single
-     * '<code>-</code>' (hyphen), in which case Amazon S3 Glacier uses the AWS account
-     * ID associated with the credentials used to sign the request. If you use an
-     * account ID, do not include any hyphens ('-') in the ID. </p>
-     */
+    inline const Aws::String& GetAccountId() const { return m_accountId; }
     inline bool AccountIdHasBeenSet() const { return m_accountIdHasBeenSet; }
+    template<typename AccountIdT = Aws::String>
+    void SetAccountId(AccountIdT&& value) { m_accountIdHasBeenSet = true; m_accountId = std::forward<AccountIdT>(value); }
+    template<typename AccountIdT = Aws::String>
+    ListPartsRequest& WithAccountId(AccountIdT&& value) { SetAccountId(std::forward<AccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The <code>AccountId</code> value is the AWS account ID of the account that
-     * owns the vault. You can either specify an AWS account ID or optionally a single
-     * '<code>-</code>' (hyphen), in which case Amazon S3 Glacier uses the AWS account
-     * ID associated with the credentials used to sign the request. If you use an
-     * account ID, do not include any hyphens ('-') in the ID. </p>
-     */
-    inline void SetAccountId(const Aws::String& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
-
-    /**
-     * <p>The <code>AccountId</code> value is the AWS account ID of the account that
-     * owns the vault. You can either specify an AWS account ID or optionally a single
-     * '<code>-</code>' (hyphen), in which case Amazon S3 Glacier uses the AWS account
-     * ID associated with the credentials used to sign the request. If you use an
-     * account ID, do not include any hyphens ('-') in the ID. </p>
-     */
-    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = std::move(value); }
-
-    /**
-     * <p>The <code>AccountId</code> value is the AWS account ID of the account that
-     * owns the vault. You can either specify an AWS account ID or optionally a single
-     * '<code>-</code>' (hyphen), in which case Amazon S3 Glacier uses the AWS account
-     * ID associated with the credentials used to sign the request. If you use an
-     * account ID, do not include any hyphens ('-') in the ID. </p>
-     */
-    inline void SetAccountId(const char* value) { m_accountIdHasBeenSet = true; m_accountId.assign(value); }
-
-    /**
-     * <p>The <code>AccountId</code> value is the AWS account ID of the account that
-     * owns the vault. You can either specify an AWS account ID or optionally a single
-     * '<code>-</code>' (hyphen), in which case Amazon S3 Glacier uses the AWS account
-     * ID associated with the credentials used to sign the request. If you use an
-     * account ID, do not include any hyphens ('-') in the ID. </p>
-     */
-    inline ListPartsRequest& WithAccountId(const Aws::String& value) { SetAccountId(value); return *this;}
-
-    /**
-     * <p>The <code>AccountId</code> value is the AWS account ID of the account that
-     * owns the vault. You can either specify an AWS account ID or optionally a single
-     * '<code>-</code>' (hyphen), in which case Amazon S3 Glacier uses the AWS account
-     * ID associated with the credentials used to sign the request. If you use an
-     * account ID, do not include any hyphens ('-') in the ID. </p>
-     */
-    inline ListPartsRequest& WithAccountId(Aws::String&& value) { SetAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The <code>AccountId</code> value is the AWS account ID of the account that
-     * owns the vault. You can either specify an AWS account ID or optionally a single
-     * '<code>-</code>' (hyphen), in which case Amazon S3 Glacier uses the AWS account
-     * ID associated with the credentials used to sign the request. If you use an
-     * account ID, do not include any hyphens ('-') in the ID. </p>
-     */
-    inline ListPartsRequest& WithAccountId(const char* value) { SetAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the vault.</p>
      */
-    inline const Aws::String& GetVaultName() const{ return m_vaultName; }
-
-    /**
-     * <p>The name of the vault.</p>
-     */
+    inline const Aws::String& GetVaultName() const { return m_vaultName; }
     inline bool VaultNameHasBeenSet() const { return m_vaultNameHasBeenSet; }
+    template<typename VaultNameT = Aws::String>
+    void SetVaultName(VaultNameT&& value) { m_vaultNameHasBeenSet = true; m_vaultName = std::forward<VaultNameT>(value); }
+    template<typename VaultNameT = Aws::String>
+    ListPartsRequest& WithVaultName(VaultNameT&& value) { SetVaultName(std::forward<VaultNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the vault.</p>
-     */
-    inline void SetVaultName(const Aws::String& value) { m_vaultNameHasBeenSet = true; m_vaultName = value; }
-
-    /**
-     * <p>The name of the vault.</p>
-     */
-    inline void SetVaultName(Aws::String&& value) { m_vaultNameHasBeenSet = true; m_vaultName = std::move(value); }
-
-    /**
-     * <p>The name of the vault.</p>
-     */
-    inline void SetVaultName(const char* value) { m_vaultNameHasBeenSet = true; m_vaultName.assign(value); }
-
-    /**
-     * <p>The name of the vault.</p>
-     */
-    inline ListPartsRequest& WithVaultName(const Aws::String& value) { SetVaultName(value); return *this;}
-
-    /**
-     * <p>The name of the vault.</p>
-     */
-    inline ListPartsRequest& WithVaultName(Aws::String&& value) { SetVaultName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the vault.</p>
-     */
-    inline ListPartsRequest& WithVaultName(const char* value) { SetVaultName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The upload ID of the multipart upload.</p>
      */
-    inline const Aws::String& GetUploadId() const{ return m_uploadId; }
-
-    /**
-     * <p>The upload ID of the multipart upload.</p>
-     */
+    inline const Aws::String& GetUploadId() const { return m_uploadId; }
     inline bool UploadIdHasBeenSet() const { return m_uploadIdHasBeenSet; }
+    template<typename UploadIdT = Aws::String>
+    void SetUploadId(UploadIdT&& value) { m_uploadIdHasBeenSet = true; m_uploadId = std::forward<UploadIdT>(value); }
+    template<typename UploadIdT = Aws::String>
+    ListPartsRequest& WithUploadId(UploadIdT&& value) { SetUploadId(std::forward<UploadIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The upload ID of the multipart upload.</p>
-     */
-    inline void SetUploadId(const Aws::String& value) { m_uploadIdHasBeenSet = true; m_uploadId = value; }
-
-    /**
-     * <p>The upload ID of the multipart upload.</p>
-     */
-    inline void SetUploadId(Aws::String&& value) { m_uploadIdHasBeenSet = true; m_uploadId = std::move(value); }
-
-    /**
-     * <p>The upload ID of the multipart upload.</p>
-     */
-    inline void SetUploadId(const char* value) { m_uploadIdHasBeenSet = true; m_uploadId.assign(value); }
-
-    /**
-     * <p>The upload ID of the multipart upload.</p>
-     */
-    inline ListPartsRequest& WithUploadId(const Aws::String& value) { SetUploadId(value); return *this;}
-
-    /**
-     * <p>The upload ID of the multipart upload.</p>
-     */
-    inline ListPartsRequest& WithUploadId(Aws::String&& value) { SetUploadId(std::move(value)); return *this;}
-
-    /**
-     * <p>The upload ID of the multipart upload.</p>
-     */
-    inline ListPartsRequest& WithUploadId(const char* value) { SetUploadId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An opaque string used for pagination. This value specifies the part at which
      * the listing of parts should begin. Get the marker value from the response of a
@@ -204,128 +90,27 @@ namespace Model
      * continuing the pagination of results started in a previous List Parts
      * request.</p>
      */
-    inline const Aws::String& GetMarker() const{ return m_marker; }
-
-    /**
-     * <p>An opaque string used for pagination. This value specifies the part at which
-     * the listing of parts should begin. Get the marker value from the response of a
-     * previous List Parts response. You need only include the marker if you are
-     * continuing the pagination of results started in a previous List Parts
-     * request.</p>
-     */
+    inline const Aws::String& GetMarker() const { return m_marker; }
     inline bool MarkerHasBeenSet() const { return m_markerHasBeenSet; }
+    template<typename MarkerT = Aws::String>
+    void SetMarker(MarkerT&& value) { m_markerHasBeenSet = true; m_marker = std::forward<MarkerT>(value); }
+    template<typename MarkerT = Aws::String>
+    ListPartsRequest& WithMarker(MarkerT&& value) { SetMarker(std::forward<MarkerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An opaque string used for pagination. This value specifies the part at which
-     * the listing of parts should begin. Get the marker value from the response of a
-     * previous List Parts response. You need only include the marker if you are
-     * continuing the pagination of results started in a previous List Parts
-     * request.</p>
-     */
-    inline void SetMarker(const Aws::String& value) { m_markerHasBeenSet = true; m_marker = value; }
-
-    /**
-     * <p>An opaque string used for pagination. This value specifies the part at which
-     * the listing of parts should begin. Get the marker value from the response of a
-     * previous List Parts response. You need only include the marker if you are
-     * continuing the pagination of results started in a previous List Parts
-     * request.</p>
-     */
-    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = std::move(value); }
-
-    /**
-     * <p>An opaque string used for pagination. This value specifies the part at which
-     * the listing of parts should begin. Get the marker value from the response of a
-     * previous List Parts response. You need only include the marker if you are
-     * continuing the pagination of results started in a previous List Parts
-     * request.</p>
-     */
-    inline void SetMarker(const char* value) { m_markerHasBeenSet = true; m_marker.assign(value); }
-
-    /**
-     * <p>An opaque string used for pagination. This value specifies the part at which
-     * the listing of parts should begin. Get the marker value from the response of a
-     * previous List Parts response. You need only include the marker if you are
-     * continuing the pagination of results started in a previous List Parts
-     * request.</p>
-     */
-    inline ListPartsRequest& WithMarker(const Aws::String& value) { SetMarker(value); return *this;}
-
-    /**
-     * <p>An opaque string used for pagination. This value specifies the part at which
-     * the listing of parts should begin. Get the marker value from the response of a
-     * previous List Parts response. You need only include the marker if you are
-     * continuing the pagination of results started in a previous List Parts
-     * request.</p>
-     */
-    inline ListPartsRequest& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
-
-    /**
-     * <p>An opaque string used for pagination. This value specifies the part at which
-     * the listing of parts should begin. Get the marker value from the response of a
-     * previous List Parts response. You need only include the marker if you are
-     * continuing the pagination of results started in a previous List Parts
-     * request.</p>
-     */
-    inline ListPartsRequest& WithMarker(const char* value) { SetMarker(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of parts to be returned. The default limit is 50. The
      * number of parts returned might be fewer than the specified limit, but the number
      * of returned parts never exceeds the limit.</p>
      */
-    inline const Aws::String& GetLimit() const{ return m_limit; }
-
-    /**
-     * <p>The maximum number of parts to be returned. The default limit is 50. The
-     * number of parts returned might be fewer than the specified limit, but the number
-     * of returned parts never exceeds the limit.</p>
-     */
+    inline const Aws::String& GetLimit() const { return m_limit; }
     inline bool LimitHasBeenSet() const { return m_limitHasBeenSet; }
-
-    /**
-     * <p>The maximum number of parts to be returned. The default limit is 50. The
-     * number of parts returned might be fewer than the specified limit, but the number
-     * of returned parts never exceeds the limit.</p>
-     */
-    inline void SetLimit(const Aws::String& value) { m_limitHasBeenSet = true; m_limit = value; }
-
-    /**
-     * <p>The maximum number of parts to be returned. The default limit is 50. The
-     * number of parts returned might be fewer than the specified limit, but the number
-     * of returned parts never exceeds the limit.</p>
-     */
-    inline void SetLimit(Aws::String&& value) { m_limitHasBeenSet = true; m_limit = std::move(value); }
-
-    /**
-     * <p>The maximum number of parts to be returned. The default limit is 50. The
-     * number of parts returned might be fewer than the specified limit, but the number
-     * of returned parts never exceeds the limit.</p>
-     */
-    inline void SetLimit(const char* value) { m_limitHasBeenSet = true; m_limit.assign(value); }
-
-    /**
-     * <p>The maximum number of parts to be returned. The default limit is 50. The
-     * number of parts returned might be fewer than the specified limit, but the number
-     * of returned parts never exceeds the limit.</p>
-     */
-    inline ListPartsRequest& WithLimit(const Aws::String& value) { SetLimit(value); return *this;}
-
-    /**
-     * <p>The maximum number of parts to be returned. The default limit is 50. The
-     * number of parts returned might be fewer than the specified limit, but the number
-     * of returned parts never exceeds the limit.</p>
-     */
-    inline ListPartsRequest& WithLimit(Aws::String&& value) { SetLimit(std::move(value)); return *this;}
-
-    /**
-     * <p>The maximum number of parts to be returned. The default limit is 50. The
-     * number of parts returned might be fewer than the specified limit, but the number
-     * of returned parts never exceeds the limit.</p>
-     */
-    inline ListPartsRequest& WithLimit(const char* value) { SetLimit(value); return *this;}
-
+    template<typename LimitT = Aws::String>
+    void SetLimit(LimitT&& value) { m_limitHasBeenSet = true; m_limit = std::forward<LimitT>(value); }
+    template<typename LimitT = Aws::String>
+    ListPartsRequest& WithLimit(LimitT&& value) { SetLimit(std::forward<LimitT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_accountId;

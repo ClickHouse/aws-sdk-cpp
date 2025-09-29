@@ -32,216 +32,71 @@ namespace Model
   class RecommendationDetailHourlyMetrics
   {
   public:
-    AWS_COSTEXPLORER_API RecommendationDetailHourlyMetrics();
+    AWS_COSTEXPLORER_API RecommendationDetailHourlyMetrics() = default;
     AWS_COSTEXPLORER_API RecommendationDetailHourlyMetrics(Aws::Utils::Json::JsonView jsonValue);
     AWS_COSTEXPLORER_API RecommendationDetailHourlyMetrics& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COSTEXPLORER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     
-    inline const Aws::String& GetStartTime() const{ return m_startTime; }
-
-    
+    inline const Aws::String& GetStartTime() const { return m_startTime; }
     inline bool StartTimeHasBeenSet() const { return m_startTimeHasBeenSet; }
+    template<typename StartTimeT = Aws::String>
+    void SetStartTime(StartTimeT&& value) { m_startTimeHasBeenSet = true; m_startTime = std::forward<StartTimeT>(value); }
+    template<typename StartTimeT = Aws::String>
+    RecommendationDetailHourlyMetrics& WithStartTime(StartTimeT&& value) { SetStartTime(std::forward<StartTimeT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetStartTime(const Aws::String& value) { m_startTimeHasBeenSet = true; m_startTime = value; }
-
-    
-    inline void SetStartTime(Aws::String&& value) { m_startTimeHasBeenSet = true; m_startTime = std::move(value); }
-
-    
-    inline void SetStartTime(const char* value) { m_startTimeHasBeenSet = true; m_startTime.assign(value); }
-
-    
-    inline RecommendationDetailHourlyMetrics& WithStartTime(const Aws::String& value) { SetStartTime(value); return *this;}
-
-    
-    inline RecommendationDetailHourlyMetrics& WithStartTime(Aws::String&& value) { SetStartTime(std::move(value)); return *this;}
-
-    
-    inline RecommendationDetailHourlyMetrics& WithStartTime(const char* value) { SetStartTime(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The remaining On-Demand cost estimated to not be covered by the recommended
      * Savings Plan, over the length of the lookback period.</p>
      */
-    inline const Aws::String& GetEstimatedOnDemandCost() const{ return m_estimatedOnDemandCost; }
-
-    /**
-     * <p>The remaining On-Demand cost estimated to not be covered by the recommended
-     * Savings Plan, over the length of the lookback period.</p>
-     */
+    inline const Aws::String& GetEstimatedOnDemandCost() const { return m_estimatedOnDemandCost; }
     inline bool EstimatedOnDemandCostHasBeenSet() const { return m_estimatedOnDemandCostHasBeenSet; }
+    template<typename EstimatedOnDemandCostT = Aws::String>
+    void SetEstimatedOnDemandCost(EstimatedOnDemandCostT&& value) { m_estimatedOnDemandCostHasBeenSet = true; m_estimatedOnDemandCost = std::forward<EstimatedOnDemandCostT>(value); }
+    template<typename EstimatedOnDemandCostT = Aws::String>
+    RecommendationDetailHourlyMetrics& WithEstimatedOnDemandCost(EstimatedOnDemandCostT&& value) { SetEstimatedOnDemandCost(std::forward<EstimatedOnDemandCostT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The remaining On-Demand cost estimated to not be covered by the recommended
-     * Savings Plan, over the length of the lookback period.</p>
-     */
-    inline void SetEstimatedOnDemandCost(const Aws::String& value) { m_estimatedOnDemandCostHasBeenSet = true; m_estimatedOnDemandCost = value; }
-
-    /**
-     * <p>The remaining On-Demand cost estimated to not be covered by the recommended
-     * Savings Plan, over the length of the lookback period.</p>
-     */
-    inline void SetEstimatedOnDemandCost(Aws::String&& value) { m_estimatedOnDemandCostHasBeenSet = true; m_estimatedOnDemandCost = std::move(value); }
-
-    /**
-     * <p>The remaining On-Demand cost estimated to not be covered by the recommended
-     * Savings Plan, over the length of the lookback period.</p>
-     */
-    inline void SetEstimatedOnDemandCost(const char* value) { m_estimatedOnDemandCostHasBeenSet = true; m_estimatedOnDemandCost.assign(value); }
-
-    /**
-     * <p>The remaining On-Demand cost estimated to not be covered by the recommended
-     * Savings Plan, over the length of the lookback period.</p>
-     */
-    inline RecommendationDetailHourlyMetrics& WithEstimatedOnDemandCost(const Aws::String& value) { SetEstimatedOnDemandCost(value); return *this;}
-
-    /**
-     * <p>The remaining On-Demand cost estimated to not be covered by the recommended
-     * Savings Plan, over the length of the lookback period.</p>
-     */
-    inline RecommendationDetailHourlyMetrics& WithEstimatedOnDemandCost(Aws::String&& value) { SetEstimatedOnDemandCost(std::move(value)); return *this;}
-
-    /**
-     * <p>The remaining On-Demand cost estimated to not be covered by the recommended
-     * Savings Plan, over the length of the lookback period.</p>
-     */
-    inline RecommendationDetailHourlyMetrics& WithEstimatedOnDemandCost(const char* value) { SetEstimatedOnDemandCost(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The current amount of Savings Plans eligible usage that the Savings Plan
      * covered.</p>
      */
-    inline const Aws::String& GetCurrentCoverage() const{ return m_currentCoverage; }
-
-    /**
-     * <p>The current amount of Savings Plans eligible usage that the Savings Plan
-     * covered.</p>
-     */
+    inline const Aws::String& GetCurrentCoverage() const { return m_currentCoverage; }
     inline bool CurrentCoverageHasBeenSet() const { return m_currentCoverageHasBeenSet; }
+    template<typename CurrentCoverageT = Aws::String>
+    void SetCurrentCoverage(CurrentCoverageT&& value) { m_currentCoverageHasBeenSet = true; m_currentCoverage = std::forward<CurrentCoverageT>(value); }
+    template<typename CurrentCoverageT = Aws::String>
+    RecommendationDetailHourlyMetrics& WithCurrentCoverage(CurrentCoverageT&& value) { SetCurrentCoverage(std::forward<CurrentCoverageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The current amount of Savings Plans eligible usage that the Savings Plan
-     * covered.</p>
-     */
-    inline void SetCurrentCoverage(const Aws::String& value) { m_currentCoverageHasBeenSet = true; m_currentCoverage = value; }
-
-    /**
-     * <p>The current amount of Savings Plans eligible usage that the Savings Plan
-     * covered.</p>
-     */
-    inline void SetCurrentCoverage(Aws::String&& value) { m_currentCoverageHasBeenSet = true; m_currentCoverage = std::move(value); }
-
-    /**
-     * <p>The current amount of Savings Plans eligible usage that the Savings Plan
-     * covered.</p>
-     */
-    inline void SetCurrentCoverage(const char* value) { m_currentCoverageHasBeenSet = true; m_currentCoverage.assign(value); }
-
-    /**
-     * <p>The current amount of Savings Plans eligible usage that the Savings Plan
-     * covered.</p>
-     */
-    inline RecommendationDetailHourlyMetrics& WithCurrentCoverage(const Aws::String& value) { SetCurrentCoverage(value); return *this;}
-
-    /**
-     * <p>The current amount of Savings Plans eligible usage that the Savings Plan
-     * covered.</p>
-     */
-    inline RecommendationDetailHourlyMetrics& WithCurrentCoverage(Aws::String&& value) { SetCurrentCoverage(std::move(value)); return *this;}
-
-    /**
-     * <p>The current amount of Savings Plans eligible usage that the Savings Plan
-     * covered.</p>
-     */
-    inline RecommendationDetailHourlyMetrics& WithCurrentCoverage(const char* value) { SetCurrentCoverage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The estimated coverage amount based on the recommended Savings Plan.</p>
      */
-    inline const Aws::String& GetEstimatedCoverage() const{ return m_estimatedCoverage; }
-
-    /**
-     * <p>The estimated coverage amount based on the recommended Savings Plan.</p>
-     */
+    inline const Aws::String& GetEstimatedCoverage() const { return m_estimatedCoverage; }
     inline bool EstimatedCoverageHasBeenSet() const { return m_estimatedCoverageHasBeenSet; }
+    template<typename EstimatedCoverageT = Aws::String>
+    void SetEstimatedCoverage(EstimatedCoverageT&& value) { m_estimatedCoverageHasBeenSet = true; m_estimatedCoverage = std::forward<EstimatedCoverageT>(value); }
+    template<typename EstimatedCoverageT = Aws::String>
+    RecommendationDetailHourlyMetrics& WithEstimatedCoverage(EstimatedCoverageT&& value) { SetEstimatedCoverage(std::forward<EstimatedCoverageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The estimated coverage amount based on the recommended Savings Plan.</p>
-     */
-    inline void SetEstimatedCoverage(const Aws::String& value) { m_estimatedCoverageHasBeenSet = true; m_estimatedCoverage = value; }
-
-    /**
-     * <p>The estimated coverage amount based on the recommended Savings Plan.</p>
-     */
-    inline void SetEstimatedCoverage(Aws::String&& value) { m_estimatedCoverageHasBeenSet = true; m_estimatedCoverage = std::move(value); }
-
-    /**
-     * <p>The estimated coverage amount based on the recommended Savings Plan.</p>
-     */
-    inline void SetEstimatedCoverage(const char* value) { m_estimatedCoverageHasBeenSet = true; m_estimatedCoverage.assign(value); }
-
-    /**
-     * <p>The estimated coverage amount based on the recommended Savings Plan.</p>
-     */
-    inline RecommendationDetailHourlyMetrics& WithEstimatedCoverage(const Aws::String& value) { SetEstimatedCoverage(value); return *this;}
-
-    /**
-     * <p>The estimated coverage amount based on the recommended Savings Plan.</p>
-     */
-    inline RecommendationDetailHourlyMetrics& WithEstimatedCoverage(Aws::String&& value) { SetEstimatedCoverage(std::move(value)); return *this;}
-
-    /**
-     * <p>The estimated coverage amount based on the recommended Savings Plan.</p>
-     */
-    inline RecommendationDetailHourlyMetrics& WithEstimatedCoverage(const char* value) { SetEstimatedCoverage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The estimated utilization for the recommended Savings Plan.</p>
      */
-    inline const Aws::String& GetEstimatedNewCommitmentUtilization() const{ return m_estimatedNewCommitmentUtilization; }
-
-    /**
-     * <p>The estimated utilization for the recommended Savings Plan.</p>
-     */
+    inline const Aws::String& GetEstimatedNewCommitmentUtilization() const { return m_estimatedNewCommitmentUtilization; }
     inline bool EstimatedNewCommitmentUtilizationHasBeenSet() const { return m_estimatedNewCommitmentUtilizationHasBeenSet; }
-
-    /**
-     * <p>The estimated utilization for the recommended Savings Plan.</p>
-     */
-    inline void SetEstimatedNewCommitmentUtilization(const Aws::String& value) { m_estimatedNewCommitmentUtilizationHasBeenSet = true; m_estimatedNewCommitmentUtilization = value; }
-
-    /**
-     * <p>The estimated utilization for the recommended Savings Plan.</p>
-     */
-    inline void SetEstimatedNewCommitmentUtilization(Aws::String&& value) { m_estimatedNewCommitmentUtilizationHasBeenSet = true; m_estimatedNewCommitmentUtilization = std::move(value); }
-
-    /**
-     * <p>The estimated utilization for the recommended Savings Plan.</p>
-     */
-    inline void SetEstimatedNewCommitmentUtilization(const char* value) { m_estimatedNewCommitmentUtilizationHasBeenSet = true; m_estimatedNewCommitmentUtilization.assign(value); }
-
-    /**
-     * <p>The estimated utilization for the recommended Savings Plan.</p>
-     */
-    inline RecommendationDetailHourlyMetrics& WithEstimatedNewCommitmentUtilization(const Aws::String& value) { SetEstimatedNewCommitmentUtilization(value); return *this;}
-
-    /**
-     * <p>The estimated utilization for the recommended Savings Plan.</p>
-     */
-    inline RecommendationDetailHourlyMetrics& WithEstimatedNewCommitmentUtilization(Aws::String&& value) { SetEstimatedNewCommitmentUtilization(std::move(value)); return *this;}
-
-    /**
-     * <p>The estimated utilization for the recommended Savings Plan.</p>
-     */
-    inline RecommendationDetailHourlyMetrics& WithEstimatedNewCommitmentUtilization(const char* value) { SetEstimatedNewCommitmentUtilization(value); return *this;}
-
+    template<typename EstimatedNewCommitmentUtilizationT = Aws::String>
+    void SetEstimatedNewCommitmentUtilization(EstimatedNewCommitmentUtilizationT&& value) { m_estimatedNewCommitmentUtilizationHasBeenSet = true; m_estimatedNewCommitmentUtilization = std::forward<EstimatedNewCommitmentUtilizationT>(value); }
+    template<typename EstimatedNewCommitmentUtilizationT = Aws::String>
+    RecommendationDetailHourlyMetrics& WithEstimatedNewCommitmentUtilization(EstimatedNewCommitmentUtilizationT&& value) { SetEstimatedNewCommitmentUtilization(std::forward<EstimatedNewCommitmentUtilizationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_startTime;

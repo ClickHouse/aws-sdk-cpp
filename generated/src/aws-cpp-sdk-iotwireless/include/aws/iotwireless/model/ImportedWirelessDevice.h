@@ -32,48 +32,24 @@ namespace Model
   class ImportedWirelessDevice
   {
   public:
-    AWS_IOTWIRELESS_API ImportedWirelessDevice();
+    AWS_IOTWIRELESS_API ImportedWirelessDevice() = default;
     AWS_IOTWIRELESS_API ImportedWirelessDevice(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTWIRELESS_API ImportedWirelessDevice& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTWIRELESS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Sidewalk-related information about a device that has been added to an
      * import task.</p>
      */
-    inline const ImportedSidewalkDevice& GetSidewalk() const{ return m_sidewalk; }
-
-    /**
-     * <p>The Sidewalk-related information about a device that has been added to an
-     * import task.</p>
-     */
+    inline const ImportedSidewalkDevice& GetSidewalk() const { return m_sidewalk; }
     inline bool SidewalkHasBeenSet() const { return m_sidewalkHasBeenSet; }
-
-    /**
-     * <p>The Sidewalk-related information about a device that has been added to an
-     * import task.</p>
-     */
-    inline void SetSidewalk(const ImportedSidewalkDevice& value) { m_sidewalkHasBeenSet = true; m_sidewalk = value; }
-
-    /**
-     * <p>The Sidewalk-related information about a device that has been added to an
-     * import task.</p>
-     */
-    inline void SetSidewalk(ImportedSidewalkDevice&& value) { m_sidewalkHasBeenSet = true; m_sidewalk = std::move(value); }
-
-    /**
-     * <p>The Sidewalk-related information about a device that has been added to an
-     * import task.</p>
-     */
-    inline ImportedWirelessDevice& WithSidewalk(const ImportedSidewalkDevice& value) { SetSidewalk(value); return *this;}
-
-    /**
-     * <p>The Sidewalk-related information about a device that has been added to an
-     * import task.</p>
-     */
-    inline ImportedWirelessDevice& WithSidewalk(ImportedSidewalkDevice&& value) { SetSidewalk(std::move(value)); return *this;}
-
+    template<typename SidewalkT = ImportedSidewalkDevice>
+    void SetSidewalk(SidewalkT&& value) { m_sidewalkHasBeenSet = true; m_sidewalk = std::forward<SidewalkT>(value); }
+    template<typename SidewalkT = ImportedSidewalkDevice>
+    ImportedWirelessDevice& WithSidewalk(SidewalkT&& value) { SetSidewalk(std::forward<SidewalkT>(value)); return *this;}
+    ///@}
   private:
 
     ImportedSidewalkDevice m_sidewalk;

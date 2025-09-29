@@ -36,53 +36,25 @@ namespace Model
   class ReferenceDataSource
   {
   public:
-    AWS_KINESISANALYTICS_API ReferenceDataSource();
+    AWS_KINESISANALYTICS_API ReferenceDataSource() = default;
     AWS_KINESISANALYTICS_API ReferenceDataSource(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISANALYTICS_API ReferenceDataSource& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISANALYTICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Name of the in-application table to create.</p>
      */
-    inline const Aws::String& GetTableName() const{ return m_tableName; }
-
-    /**
-     * <p>Name of the in-application table to create.</p>
-     */
+    inline const Aws::String& GetTableName() const { return m_tableName; }
     inline bool TableNameHasBeenSet() const { return m_tableNameHasBeenSet; }
+    template<typename TableNameT = Aws::String>
+    void SetTableName(TableNameT&& value) { m_tableNameHasBeenSet = true; m_tableName = std::forward<TableNameT>(value); }
+    template<typename TableNameT = Aws::String>
+    ReferenceDataSource& WithTableName(TableNameT&& value) { SetTableName(std::forward<TableNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Name of the in-application table to create.</p>
-     */
-    inline void SetTableName(const Aws::String& value) { m_tableNameHasBeenSet = true; m_tableName = value; }
-
-    /**
-     * <p>Name of the in-application table to create.</p>
-     */
-    inline void SetTableName(Aws::String&& value) { m_tableNameHasBeenSet = true; m_tableName = std::move(value); }
-
-    /**
-     * <p>Name of the in-application table to create.</p>
-     */
-    inline void SetTableName(const char* value) { m_tableNameHasBeenSet = true; m_tableName.assign(value); }
-
-    /**
-     * <p>Name of the in-application table to create.</p>
-     */
-    inline ReferenceDataSource& WithTableName(const Aws::String& value) { SetTableName(value); return *this;}
-
-    /**
-     * <p>Name of the in-application table to create.</p>
-     */
-    inline ReferenceDataSource& WithTableName(Aws::String&& value) { SetTableName(std::move(value)); return *this;}
-
-    /**
-     * <p>Name of the in-application table to create.</p>
-     */
-    inline ReferenceDataSource& WithTableName(const char* value) { SetTableName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Identifies the S3 bucket and object that contains the reference data. Also
      * identifies the IAM role Amazon Kinesis Analytics can assume to read this object
@@ -90,90 +62,26 @@ namespace Model
      * only once. If the data changes, you call the <code>UpdateApplication</code>
      * operation to trigger reloading of data into your application. </p>
      */
-    inline const S3ReferenceDataSource& GetS3ReferenceDataSource() const{ return m_s3ReferenceDataSource; }
-
-    /**
-     * <p>Identifies the S3 bucket and object that contains the reference data. Also
-     * identifies the IAM role Amazon Kinesis Analytics can assume to read this object
-     * on your behalf. An Amazon Kinesis Analytics application loads reference data
-     * only once. If the data changes, you call the <code>UpdateApplication</code>
-     * operation to trigger reloading of data into your application. </p>
-     */
+    inline const S3ReferenceDataSource& GetS3ReferenceDataSource() const { return m_s3ReferenceDataSource; }
     inline bool S3ReferenceDataSourceHasBeenSet() const { return m_s3ReferenceDataSourceHasBeenSet; }
+    template<typename S3ReferenceDataSourceT = S3ReferenceDataSource>
+    void SetS3ReferenceDataSource(S3ReferenceDataSourceT&& value) { m_s3ReferenceDataSourceHasBeenSet = true; m_s3ReferenceDataSource = std::forward<S3ReferenceDataSourceT>(value); }
+    template<typename S3ReferenceDataSourceT = S3ReferenceDataSource>
+    ReferenceDataSource& WithS3ReferenceDataSource(S3ReferenceDataSourceT&& value) { SetS3ReferenceDataSource(std::forward<S3ReferenceDataSourceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Identifies the S3 bucket and object that contains the reference data. Also
-     * identifies the IAM role Amazon Kinesis Analytics can assume to read this object
-     * on your behalf. An Amazon Kinesis Analytics application loads reference data
-     * only once. If the data changes, you call the <code>UpdateApplication</code>
-     * operation to trigger reloading of data into your application. </p>
-     */
-    inline void SetS3ReferenceDataSource(const S3ReferenceDataSource& value) { m_s3ReferenceDataSourceHasBeenSet = true; m_s3ReferenceDataSource = value; }
-
-    /**
-     * <p>Identifies the S3 bucket and object that contains the reference data. Also
-     * identifies the IAM role Amazon Kinesis Analytics can assume to read this object
-     * on your behalf. An Amazon Kinesis Analytics application loads reference data
-     * only once. If the data changes, you call the <code>UpdateApplication</code>
-     * operation to trigger reloading of data into your application. </p>
-     */
-    inline void SetS3ReferenceDataSource(S3ReferenceDataSource&& value) { m_s3ReferenceDataSourceHasBeenSet = true; m_s3ReferenceDataSource = std::move(value); }
-
-    /**
-     * <p>Identifies the S3 bucket and object that contains the reference data. Also
-     * identifies the IAM role Amazon Kinesis Analytics can assume to read this object
-     * on your behalf. An Amazon Kinesis Analytics application loads reference data
-     * only once. If the data changes, you call the <code>UpdateApplication</code>
-     * operation to trigger reloading of data into your application. </p>
-     */
-    inline ReferenceDataSource& WithS3ReferenceDataSource(const S3ReferenceDataSource& value) { SetS3ReferenceDataSource(value); return *this;}
-
-    /**
-     * <p>Identifies the S3 bucket and object that contains the reference data. Also
-     * identifies the IAM role Amazon Kinesis Analytics can assume to read this object
-     * on your behalf. An Amazon Kinesis Analytics application loads reference data
-     * only once. If the data changes, you call the <code>UpdateApplication</code>
-     * operation to trigger reloading of data into your application. </p>
-     */
-    inline ReferenceDataSource& WithS3ReferenceDataSource(S3ReferenceDataSource&& value) { SetS3ReferenceDataSource(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Describes the format of the data in the streaming source, and how each data
      * element maps to corresponding columns created in the in-application stream.</p>
      */
-    inline const SourceSchema& GetReferenceSchema() const{ return m_referenceSchema; }
-
-    /**
-     * <p>Describes the format of the data in the streaming source, and how each data
-     * element maps to corresponding columns created in the in-application stream.</p>
-     */
+    inline const SourceSchema& GetReferenceSchema() const { return m_referenceSchema; }
     inline bool ReferenceSchemaHasBeenSet() const { return m_referenceSchemaHasBeenSet; }
-
-    /**
-     * <p>Describes the format of the data in the streaming source, and how each data
-     * element maps to corresponding columns created in the in-application stream.</p>
-     */
-    inline void SetReferenceSchema(const SourceSchema& value) { m_referenceSchemaHasBeenSet = true; m_referenceSchema = value; }
-
-    /**
-     * <p>Describes the format of the data in the streaming source, and how each data
-     * element maps to corresponding columns created in the in-application stream.</p>
-     */
-    inline void SetReferenceSchema(SourceSchema&& value) { m_referenceSchemaHasBeenSet = true; m_referenceSchema = std::move(value); }
-
-    /**
-     * <p>Describes the format of the data in the streaming source, and how each data
-     * element maps to corresponding columns created in the in-application stream.</p>
-     */
-    inline ReferenceDataSource& WithReferenceSchema(const SourceSchema& value) { SetReferenceSchema(value); return *this;}
-
-    /**
-     * <p>Describes the format of the data in the streaming source, and how each data
-     * element maps to corresponding columns created in the in-application stream.</p>
-     */
-    inline ReferenceDataSource& WithReferenceSchema(SourceSchema&& value) { SetReferenceSchema(std::move(value)); return *this;}
-
+    template<typename ReferenceSchemaT = SourceSchema>
+    void SetReferenceSchema(ReferenceSchemaT&& value) { m_referenceSchemaHasBeenSet = true; m_referenceSchema = std::forward<ReferenceSchemaT>(value); }
+    template<typename ReferenceSchemaT = SourceSchema>
+    ReferenceDataSource& WithReferenceSchema(ReferenceSchemaT&& value) { SetReferenceSchema(std::forward<ReferenceSchemaT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_tableName;

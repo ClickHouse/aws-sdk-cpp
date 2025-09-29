@@ -18,19 +18,7 @@ namespace MediaConvert
 namespace Model
 {
 
-EmbeddedDestinationSettings::EmbeddedDestinationSettings() : 
-    m_destination608ChannelNumber(0),
-    m_destination608ChannelNumberHasBeenSet(false),
-    m_destination708ServiceNumber(0),
-    m_destination708ServiceNumberHasBeenSet(false)
-{
-}
-
-EmbeddedDestinationSettings::EmbeddedDestinationSettings(JsonView jsonValue) : 
-    m_destination608ChannelNumber(0),
-    m_destination608ChannelNumberHasBeenSet(false),
-    m_destination708ServiceNumber(0),
-    m_destination708ServiceNumberHasBeenSet(false)
+EmbeddedDestinationSettings::EmbeddedDestinationSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ EmbeddedDestinationSettings& EmbeddedDestinationSettings::operator =(JsonView js
   if(jsonValue.ValueExists("destination608ChannelNumber"))
   {
     m_destination608ChannelNumber = jsonValue.GetInteger("destination608ChannelNumber");
-
     m_destination608ChannelNumberHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("destination708ServiceNumber"))
   {
     m_destination708ServiceNumber = jsonValue.GetInteger("destination708ServiceNumber");
-
     m_destination708ServiceNumberHasBeenSet = true;
   }
-
   return *this;
 }
 

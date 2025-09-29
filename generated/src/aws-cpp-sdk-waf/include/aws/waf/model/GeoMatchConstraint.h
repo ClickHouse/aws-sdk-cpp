@@ -41,85 +41,38 @@ namespace Model
   class GeoMatchConstraint
   {
   public:
-    AWS_WAF_API GeoMatchConstraint();
+    AWS_WAF_API GeoMatchConstraint() = default;
     AWS_WAF_API GeoMatchConstraint(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAF_API GeoMatchConstraint& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAF_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The type of geographical area you want AWS WAF to search for. Currently
      * <code>Country</code> is the only valid value.</p>
      */
-    inline const GeoMatchConstraintType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of geographical area you want AWS WAF to search for. Currently
-     * <code>Country</code> is the only valid value.</p>
-     */
+    inline GeoMatchConstraintType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    inline void SetType(GeoMatchConstraintType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline GeoMatchConstraint& WithType(GeoMatchConstraintType value) { SetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of geographical area you want AWS WAF to search for. Currently
-     * <code>Country</code> is the only valid value.</p>
-     */
-    inline void SetType(const GeoMatchConstraintType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of geographical area you want AWS WAF to search for. Currently
-     * <code>Country</code> is the only valid value.</p>
-     */
-    inline void SetType(GeoMatchConstraintType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of geographical area you want AWS WAF to search for. Currently
-     * <code>Country</code> is the only valid value.</p>
-     */
-    inline GeoMatchConstraint& WithType(const GeoMatchConstraintType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of geographical area you want AWS WAF to search for. Currently
-     * <code>Country</code> is the only valid value.</p>
-     */
-    inline GeoMatchConstraint& WithType(GeoMatchConstraintType&& value) { SetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The country that you want AWS WAF to search for.</p>
      */
-    inline const GeoMatchConstraintValue& GetValue() const{ return m_value; }
-
-    /**
-     * <p>The country that you want AWS WAF to search for.</p>
-     */
+    inline GeoMatchConstraintValue GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>The country that you want AWS WAF to search for.</p>
-     */
-    inline void SetValue(const GeoMatchConstraintValue& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The country that you want AWS WAF to search for.</p>
-     */
-    inline void SetValue(GeoMatchConstraintValue&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>The country that you want AWS WAF to search for.</p>
-     */
-    inline GeoMatchConstraint& WithValue(const GeoMatchConstraintValue& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>The country that you want AWS WAF to search for.</p>
-     */
-    inline GeoMatchConstraint& WithValue(GeoMatchConstraintValue&& value) { SetValue(std::move(value)); return *this;}
-
+    inline void SetValue(GeoMatchConstraintValue value) { m_valueHasBeenSet = true; m_value = value; }
+    inline GeoMatchConstraint& WithValue(GeoMatchConstraintValue value) { SetValue(value); return *this;}
+    ///@}
   private:
 
-    GeoMatchConstraintType m_type;
+    GeoMatchConstraintType m_type{GeoMatchConstraintType::NOT_SET};
     bool m_typeHasBeenSet = false;
 
-    GeoMatchConstraintValue m_value;
+    GeoMatchConstraintValue m_value{GeoMatchConstraintValue::NOT_SET};
     bool m_valueHasBeenSet = false;
   };
 

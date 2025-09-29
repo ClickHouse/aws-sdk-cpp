@@ -32,51 +32,25 @@ namespace Model
   class KubernetesAuditLogsConfigurationResult
   {
   public:
-    AWS_GUARDDUTY_API KubernetesAuditLogsConfigurationResult();
+    AWS_GUARDDUTY_API KubernetesAuditLogsConfigurationResult() = default;
     AWS_GUARDDUTY_API KubernetesAuditLogsConfigurationResult(Aws::Utils::Json::JsonView jsonValue);
     AWS_GUARDDUTY_API KubernetesAuditLogsConfigurationResult& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GUARDDUTY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A value that describes whether Kubernetes audit logs are enabled as a data
      * source.</p>
      */
-    inline const DataSourceStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>A value that describes whether Kubernetes audit logs are enabled as a data
-     * source.</p>
-     */
+    inline DataSourceStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p>A value that describes whether Kubernetes audit logs are enabled as a data
-     * source.</p>
-     */
-    inline void SetStatus(const DataSourceStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>A value that describes whether Kubernetes audit logs are enabled as a data
-     * source.</p>
-     */
-    inline void SetStatus(DataSourceStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>A value that describes whether Kubernetes audit logs are enabled as a data
-     * source.</p>
-     */
-    inline KubernetesAuditLogsConfigurationResult& WithStatus(const DataSourceStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>A value that describes whether Kubernetes audit logs are enabled as a data
-     * source.</p>
-     */
-    inline KubernetesAuditLogsConfigurationResult& WithStatus(DataSourceStatus&& value) { SetStatus(std::move(value)); return *this;}
-
+    inline void SetStatus(DataSourceStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline KubernetesAuditLogsConfigurationResult& WithStatus(DataSourceStatus value) { SetStatus(value); return *this;}
+    ///@}
   private:
 
-    DataSourceStatus m_status;
+    DataSourceStatus m_status{DataSourceStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
   };
 

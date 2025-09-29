@@ -20,19 +20,7 @@ namespace RDS
 namespace Model
 {
 
-RdsCustomClusterConfiguration::RdsCustomClusterConfiguration() : 
-    m_interconnectSubnetIdHasBeenSet(false),
-    m_transitGatewayMulticastDomainIdHasBeenSet(false),
-    m_replicaMode(ReplicaMode::NOT_SET),
-    m_replicaModeHasBeenSet(false)
-{
-}
-
-RdsCustomClusterConfiguration::RdsCustomClusterConfiguration(const XmlNode& xmlNode) : 
-    m_interconnectSubnetIdHasBeenSet(false),
-    m_transitGatewayMulticastDomainIdHasBeenSet(false),
-    m_replicaMode(ReplicaMode::NOT_SET),
-    m_replicaModeHasBeenSet(false)
+RdsCustomClusterConfiguration::RdsCustomClusterConfiguration(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -58,7 +46,7 @@ RdsCustomClusterConfiguration& RdsCustomClusterConfiguration::operator =(const X
     XmlNode replicaModeNode = resultNode.FirstChild("ReplicaMode");
     if(!replicaModeNode.IsNull())
     {
-      m_replicaMode = ReplicaModeMapper::GetReplicaModeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(replicaModeNode.GetText()).c_str()).c_str());
+      m_replicaMode = ReplicaModeMapper::GetReplicaModeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(replicaModeNode.GetText()).c_str()));
       m_replicaModeHasBeenSet = true;
     }
   }
@@ -80,7 +68,7 @@ void RdsCustomClusterConfiguration::OutputToStream(Aws::OStream& oStream, const 
 
   if(m_replicaModeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ReplicaMode=" << ReplicaModeMapper::GetNameForReplicaMode(m_replicaMode) << "&";
+      oStream << location << index << locationValue << ".ReplicaMode=" << StringUtils::URLEncode(ReplicaModeMapper::GetNameForReplicaMode(m_replicaMode)) << "&";
   }
 
 }
@@ -97,7 +85,7 @@ void RdsCustomClusterConfiguration::OutputToStream(Aws::OStream& oStream, const 
   }
   if(m_replicaModeHasBeenSet)
   {
-      oStream << location << ".ReplicaMode=" << ReplicaModeMapper::GetNameForReplicaMode(m_replicaMode) << "&";
+      oStream << location << ".ReplicaMode=" << StringUtils::URLEncode(ReplicaModeMapper::GetNameForReplicaMode(m_replicaMode)) << "&";
   }
 }
 

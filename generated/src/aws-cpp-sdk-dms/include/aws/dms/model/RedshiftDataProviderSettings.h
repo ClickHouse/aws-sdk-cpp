@@ -32,124 +32,86 @@ namespace Model
   class RedshiftDataProviderSettings
   {
   public:
-    AWS_DATABASEMIGRATIONSERVICE_API RedshiftDataProviderSettings();
+    AWS_DATABASEMIGRATIONSERVICE_API RedshiftDataProviderSettings() = default;
     AWS_DATABASEMIGRATIONSERVICE_API RedshiftDataProviderSettings(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATABASEMIGRATIONSERVICE_API RedshiftDataProviderSettings& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATABASEMIGRATIONSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the Amazon Redshift server.</p>
      */
-    inline const Aws::String& GetServerName() const{ return m_serverName; }
-
-    /**
-     * <p>The name of the Amazon Redshift server.</p>
-     */
+    inline const Aws::String& GetServerName() const { return m_serverName; }
     inline bool ServerNameHasBeenSet() const { return m_serverNameHasBeenSet; }
+    template<typename ServerNameT = Aws::String>
+    void SetServerName(ServerNameT&& value) { m_serverNameHasBeenSet = true; m_serverName = std::forward<ServerNameT>(value); }
+    template<typename ServerNameT = Aws::String>
+    RedshiftDataProviderSettings& WithServerName(ServerNameT&& value) { SetServerName(std::forward<ServerNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the Amazon Redshift server.</p>
-     */
-    inline void SetServerName(const Aws::String& value) { m_serverNameHasBeenSet = true; m_serverName = value; }
-
-    /**
-     * <p>The name of the Amazon Redshift server.</p>
-     */
-    inline void SetServerName(Aws::String&& value) { m_serverNameHasBeenSet = true; m_serverName = std::move(value); }
-
-    /**
-     * <p>The name of the Amazon Redshift server.</p>
-     */
-    inline void SetServerName(const char* value) { m_serverNameHasBeenSet = true; m_serverName.assign(value); }
-
-    /**
-     * <p>The name of the Amazon Redshift server.</p>
-     */
-    inline RedshiftDataProviderSettings& WithServerName(const Aws::String& value) { SetServerName(value); return *this;}
-
-    /**
-     * <p>The name of the Amazon Redshift server.</p>
-     */
-    inline RedshiftDataProviderSettings& WithServerName(Aws::String&& value) { SetServerName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Amazon Redshift server.</p>
-     */
-    inline RedshiftDataProviderSettings& WithServerName(const char* value) { SetServerName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The port value for the Amazon Redshift data provider.</p>
      */
-    inline int GetPort() const{ return m_port; }
-
-    /**
-     * <p>The port value for the Amazon Redshift data provider.</p>
-     */
+    inline int GetPort() const { return m_port; }
     inline bool PortHasBeenSet() const { return m_portHasBeenSet; }
-
-    /**
-     * <p>The port value for the Amazon Redshift data provider.</p>
-     */
     inline void SetPort(int value) { m_portHasBeenSet = true; m_port = value; }
-
-    /**
-     * <p>The port value for the Amazon Redshift data provider.</p>
-     */
     inline RedshiftDataProviderSettings& WithPort(int value) { SetPort(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The database name on the Amazon Redshift data provider.</p>
      */
-    inline const Aws::String& GetDatabaseName() const{ return m_databaseName; }
-
-    /**
-     * <p>The database name on the Amazon Redshift data provider.</p>
-     */
+    inline const Aws::String& GetDatabaseName() const { return m_databaseName; }
     inline bool DatabaseNameHasBeenSet() const { return m_databaseNameHasBeenSet; }
+    template<typename DatabaseNameT = Aws::String>
+    void SetDatabaseName(DatabaseNameT&& value) { m_databaseNameHasBeenSet = true; m_databaseName = std::forward<DatabaseNameT>(value); }
+    template<typename DatabaseNameT = Aws::String>
+    RedshiftDataProviderSettings& WithDatabaseName(DatabaseNameT&& value) { SetDatabaseName(std::forward<DatabaseNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The database name on the Amazon Redshift data provider.</p>
+     * <p>The path for the Amazon S3 bucket that the application uses for accessing the
+     * user-defined schema.</p>
      */
-    inline void SetDatabaseName(const Aws::String& value) { m_databaseNameHasBeenSet = true; m_databaseName = value; }
+    inline const Aws::String& GetS3Path() const { return m_s3Path; }
+    inline bool S3PathHasBeenSet() const { return m_s3PathHasBeenSet; }
+    template<typename S3PathT = Aws::String>
+    void SetS3Path(S3PathT&& value) { m_s3PathHasBeenSet = true; m_s3Path = std::forward<S3PathT>(value); }
+    template<typename S3PathT = Aws::String>
+    RedshiftDataProviderSettings& WithS3Path(S3PathT&& value) { SetS3Path(std::forward<S3PathT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The database name on the Amazon Redshift data provider.</p>
+     * <p>The ARN for the role the application uses to access its Amazon S3 bucket.</p>
      */
-    inline void SetDatabaseName(Aws::String&& value) { m_databaseNameHasBeenSet = true; m_databaseName = std::move(value); }
-
-    /**
-     * <p>The database name on the Amazon Redshift data provider.</p>
-     */
-    inline void SetDatabaseName(const char* value) { m_databaseNameHasBeenSet = true; m_databaseName.assign(value); }
-
-    /**
-     * <p>The database name on the Amazon Redshift data provider.</p>
-     */
-    inline RedshiftDataProviderSettings& WithDatabaseName(const Aws::String& value) { SetDatabaseName(value); return *this;}
-
-    /**
-     * <p>The database name on the Amazon Redshift data provider.</p>
-     */
-    inline RedshiftDataProviderSettings& WithDatabaseName(Aws::String&& value) { SetDatabaseName(std::move(value)); return *this;}
-
-    /**
-     * <p>The database name on the Amazon Redshift data provider.</p>
-     */
-    inline RedshiftDataProviderSettings& WithDatabaseName(const char* value) { SetDatabaseName(value); return *this;}
-
+    inline const Aws::String& GetS3AccessRoleArn() const { return m_s3AccessRoleArn; }
+    inline bool S3AccessRoleArnHasBeenSet() const { return m_s3AccessRoleArnHasBeenSet; }
+    template<typename S3AccessRoleArnT = Aws::String>
+    void SetS3AccessRoleArn(S3AccessRoleArnT&& value) { m_s3AccessRoleArnHasBeenSet = true; m_s3AccessRoleArn = std::forward<S3AccessRoleArnT>(value); }
+    template<typename S3AccessRoleArnT = Aws::String>
+    RedshiftDataProviderSettings& WithS3AccessRoleArn(S3AccessRoleArnT&& value) { SetS3AccessRoleArn(std::forward<S3AccessRoleArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_serverName;
     bool m_serverNameHasBeenSet = false;
 
-    int m_port;
+    int m_port{0};
     bool m_portHasBeenSet = false;
 
     Aws::String m_databaseName;
     bool m_databaseNameHasBeenSet = false;
+
+    Aws::String m_s3Path;
+    bool m_s3PathHasBeenSet = false;
+
+    Aws::String m_s3AccessRoleArn;
+    bool m_s3AccessRoleArnHasBeenSet = false;
   };
 
 } // namespace Model

@@ -36,220 +36,84 @@ namespace Model
   class Node
   {
   public:
-    AWS_GLUE_API Node();
+    AWS_GLUE_API Node() = default;
     AWS_GLUE_API Node(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API Node& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The type of Glue component represented by the node.</p>
      */
-    inline const NodeType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of Glue component represented by the node.</p>
-     */
+    inline NodeType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    inline void SetType(NodeType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline Node& WithType(NodeType value) { SetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of Glue component represented by the node.</p>
-     */
-    inline void SetType(const NodeType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of Glue component represented by the node.</p>
-     */
-    inline void SetType(NodeType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of Glue component represented by the node.</p>
-     */
-    inline Node& WithType(const NodeType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of Glue component represented by the node.</p>
-     */
-    inline Node& WithType(NodeType&& value) { SetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the Glue component represented by the node.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the Glue component represented by the node.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    Node& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the Glue component represented by the node.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the Glue component represented by the node.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the Glue component represented by the node.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the Glue component represented by the node.</p>
-     */
-    inline Node& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the Glue component represented by the node.</p>
-     */
-    inline Node& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Glue component represented by the node.</p>
-     */
-    inline Node& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique Id assigned to the node within the workflow.</p>
      */
-    inline const Aws::String& GetUniqueId() const{ return m_uniqueId; }
-
-    /**
-     * <p>The unique Id assigned to the node within the workflow.</p>
-     */
+    inline const Aws::String& GetUniqueId() const { return m_uniqueId; }
     inline bool UniqueIdHasBeenSet() const { return m_uniqueIdHasBeenSet; }
+    template<typename UniqueIdT = Aws::String>
+    void SetUniqueId(UniqueIdT&& value) { m_uniqueIdHasBeenSet = true; m_uniqueId = std::forward<UniqueIdT>(value); }
+    template<typename UniqueIdT = Aws::String>
+    Node& WithUniqueId(UniqueIdT&& value) { SetUniqueId(std::forward<UniqueIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique Id assigned to the node within the workflow.</p>
-     */
-    inline void SetUniqueId(const Aws::String& value) { m_uniqueIdHasBeenSet = true; m_uniqueId = value; }
-
-    /**
-     * <p>The unique Id assigned to the node within the workflow.</p>
-     */
-    inline void SetUniqueId(Aws::String&& value) { m_uniqueIdHasBeenSet = true; m_uniqueId = std::move(value); }
-
-    /**
-     * <p>The unique Id assigned to the node within the workflow.</p>
-     */
-    inline void SetUniqueId(const char* value) { m_uniqueIdHasBeenSet = true; m_uniqueId.assign(value); }
-
-    /**
-     * <p>The unique Id assigned to the node within the workflow.</p>
-     */
-    inline Node& WithUniqueId(const Aws::String& value) { SetUniqueId(value); return *this;}
-
-    /**
-     * <p>The unique Id assigned to the node within the workflow.</p>
-     */
-    inline Node& WithUniqueId(Aws::String&& value) { SetUniqueId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique Id assigned to the node within the workflow.</p>
-     */
-    inline Node& WithUniqueId(const char* value) { SetUniqueId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Details of the Trigger when the node represents a Trigger.</p>
      */
-    inline const TriggerNodeDetails& GetTriggerDetails() const{ return m_triggerDetails; }
-
-    /**
-     * <p>Details of the Trigger when the node represents a Trigger.</p>
-     */
+    inline const TriggerNodeDetails& GetTriggerDetails() const { return m_triggerDetails; }
     inline bool TriggerDetailsHasBeenSet() const { return m_triggerDetailsHasBeenSet; }
+    template<typename TriggerDetailsT = TriggerNodeDetails>
+    void SetTriggerDetails(TriggerDetailsT&& value) { m_triggerDetailsHasBeenSet = true; m_triggerDetails = std::forward<TriggerDetailsT>(value); }
+    template<typename TriggerDetailsT = TriggerNodeDetails>
+    Node& WithTriggerDetails(TriggerDetailsT&& value) { SetTriggerDetails(std::forward<TriggerDetailsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Details of the Trigger when the node represents a Trigger.</p>
-     */
-    inline void SetTriggerDetails(const TriggerNodeDetails& value) { m_triggerDetailsHasBeenSet = true; m_triggerDetails = value; }
-
-    /**
-     * <p>Details of the Trigger when the node represents a Trigger.</p>
-     */
-    inline void SetTriggerDetails(TriggerNodeDetails&& value) { m_triggerDetailsHasBeenSet = true; m_triggerDetails = std::move(value); }
-
-    /**
-     * <p>Details of the Trigger when the node represents a Trigger.</p>
-     */
-    inline Node& WithTriggerDetails(const TriggerNodeDetails& value) { SetTriggerDetails(value); return *this;}
-
-    /**
-     * <p>Details of the Trigger when the node represents a Trigger.</p>
-     */
-    inline Node& WithTriggerDetails(TriggerNodeDetails&& value) { SetTriggerDetails(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Details of the Job when the node represents a Job.</p>
      */
-    inline const JobNodeDetails& GetJobDetails() const{ return m_jobDetails; }
-
-    /**
-     * <p>Details of the Job when the node represents a Job.</p>
-     */
+    inline const JobNodeDetails& GetJobDetails() const { return m_jobDetails; }
     inline bool JobDetailsHasBeenSet() const { return m_jobDetailsHasBeenSet; }
+    template<typename JobDetailsT = JobNodeDetails>
+    void SetJobDetails(JobDetailsT&& value) { m_jobDetailsHasBeenSet = true; m_jobDetails = std::forward<JobDetailsT>(value); }
+    template<typename JobDetailsT = JobNodeDetails>
+    Node& WithJobDetails(JobDetailsT&& value) { SetJobDetails(std::forward<JobDetailsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Details of the Job when the node represents a Job.</p>
-     */
-    inline void SetJobDetails(const JobNodeDetails& value) { m_jobDetailsHasBeenSet = true; m_jobDetails = value; }
-
-    /**
-     * <p>Details of the Job when the node represents a Job.</p>
-     */
-    inline void SetJobDetails(JobNodeDetails&& value) { m_jobDetailsHasBeenSet = true; m_jobDetails = std::move(value); }
-
-    /**
-     * <p>Details of the Job when the node represents a Job.</p>
-     */
-    inline Node& WithJobDetails(const JobNodeDetails& value) { SetJobDetails(value); return *this;}
-
-    /**
-     * <p>Details of the Job when the node represents a Job.</p>
-     */
-    inline Node& WithJobDetails(JobNodeDetails&& value) { SetJobDetails(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Details of the crawler when the node represents a crawler.</p>
      */
-    inline const CrawlerNodeDetails& GetCrawlerDetails() const{ return m_crawlerDetails; }
-
-    /**
-     * <p>Details of the crawler when the node represents a crawler.</p>
-     */
+    inline const CrawlerNodeDetails& GetCrawlerDetails() const { return m_crawlerDetails; }
     inline bool CrawlerDetailsHasBeenSet() const { return m_crawlerDetailsHasBeenSet; }
-
-    /**
-     * <p>Details of the crawler when the node represents a crawler.</p>
-     */
-    inline void SetCrawlerDetails(const CrawlerNodeDetails& value) { m_crawlerDetailsHasBeenSet = true; m_crawlerDetails = value; }
-
-    /**
-     * <p>Details of the crawler when the node represents a crawler.</p>
-     */
-    inline void SetCrawlerDetails(CrawlerNodeDetails&& value) { m_crawlerDetailsHasBeenSet = true; m_crawlerDetails = std::move(value); }
-
-    /**
-     * <p>Details of the crawler when the node represents a crawler.</p>
-     */
-    inline Node& WithCrawlerDetails(const CrawlerNodeDetails& value) { SetCrawlerDetails(value); return *this;}
-
-    /**
-     * <p>Details of the crawler when the node represents a crawler.</p>
-     */
-    inline Node& WithCrawlerDetails(CrawlerNodeDetails&& value) { SetCrawlerDetails(std::move(value)); return *this;}
-
+    template<typename CrawlerDetailsT = CrawlerNodeDetails>
+    void SetCrawlerDetails(CrawlerDetailsT&& value) { m_crawlerDetailsHasBeenSet = true; m_crawlerDetails = std::forward<CrawlerDetailsT>(value); }
+    template<typename CrawlerDetailsT = CrawlerNodeDetails>
+    Node& WithCrawlerDetails(CrawlerDetailsT&& value) { SetCrawlerDetails(std::forward<CrawlerDetailsT>(value)); return *this;}
+    ///@}
   private:
 
-    NodeType m_type;
+    NodeType m_type{NodeType::NOT_SET};
     bool m_typeHasBeenSet = false;
 
     Aws::String m_name;

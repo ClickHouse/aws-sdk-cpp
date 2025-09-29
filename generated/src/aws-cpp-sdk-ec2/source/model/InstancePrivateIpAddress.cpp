@@ -20,21 +20,7 @@ namespace EC2
 namespace Model
 {
 
-InstancePrivateIpAddress::InstancePrivateIpAddress() : 
-    m_associationHasBeenSet(false),
-    m_primary(false),
-    m_primaryHasBeenSet(false),
-    m_privateDnsNameHasBeenSet(false),
-    m_privateIpAddressHasBeenSet(false)
-{
-}
-
-InstancePrivateIpAddress::InstancePrivateIpAddress(const XmlNode& xmlNode) : 
-    m_associationHasBeenSet(false),
-    m_primary(false),
-    m_primaryHasBeenSet(false),
-    m_privateDnsNameHasBeenSet(false),
-    m_privateIpAddressHasBeenSet(false)
+InstancePrivateIpAddress::InstancePrivateIpAddress(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

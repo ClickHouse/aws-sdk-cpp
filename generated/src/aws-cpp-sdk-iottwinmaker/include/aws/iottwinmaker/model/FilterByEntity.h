@@ -31,52 +31,23 @@ namespace Model
   class FilterByEntity
   {
   public:
-    AWS_IOTTWINMAKER_API FilterByEntity();
+    AWS_IOTTWINMAKER_API FilterByEntity() = default;
     AWS_IOTTWINMAKER_API FilterByEntity(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTTWINMAKER_API FilterByEntity& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTTWINMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The entity Id.</p>
      */
-    inline const Aws::String& GetEntityId() const{ return m_entityId; }
-
-    /**
-     * <p>The entity Id.</p>
-     */
+    inline const Aws::String& GetEntityId() const { return m_entityId; }
     inline bool EntityIdHasBeenSet() const { return m_entityIdHasBeenSet; }
-
-    /**
-     * <p>The entity Id.</p>
-     */
-    inline void SetEntityId(const Aws::String& value) { m_entityIdHasBeenSet = true; m_entityId = value; }
-
-    /**
-     * <p>The entity Id.</p>
-     */
-    inline void SetEntityId(Aws::String&& value) { m_entityIdHasBeenSet = true; m_entityId = std::move(value); }
-
-    /**
-     * <p>The entity Id.</p>
-     */
-    inline void SetEntityId(const char* value) { m_entityIdHasBeenSet = true; m_entityId.assign(value); }
-
-    /**
-     * <p>The entity Id.</p>
-     */
-    inline FilterByEntity& WithEntityId(const Aws::String& value) { SetEntityId(value); return *this;}
-
-    /**
-     * <p>The entity Id.</p>
-     */
-    inline FilterByEntity& WithEntityId(Aws::String&& value) { SetEntityId(std::move(value)); return *this;}
-
-    /**
-     * <p>The entity Id.</p>
-     */
-    inline FilterByEntity& WithEntityId(const char* value) { SetEntityId(value); return *this;}
-
+    template<typename EntityIdT = Aws::String>
+    void SetEntityId(EntityIdT&& value) { m_entityIdHasBeenSet = true; m_entityId = std::forward<EntityIdT>(value); }
+    template<typename EntityIdT = Aws::String>
+    FilterByEntity& WithEntityId(EntityIdT&& value) { SetEntityId(std::forward<EntityIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_entityId;

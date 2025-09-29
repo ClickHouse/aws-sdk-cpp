@@ -30,7 +30,7 @@ namespace Model
   class TargetGroupStickinessConfig
   {
   public:
-    AWS_ELASTICLOADBALANCINGV2_API TargetGroupStickinessConfig();
+    AWS_ELASTICLOADBALANCINGV2_API TargetGroupStickinessConfig() = default;
     AWS_ELASTICLOADBALANCINGV2_API TargetGroupStickinessConfig(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_ELASTICLOADBALANCINGV2_API TargetGroupStickinessConfig& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -38,57 +38,33 @@ namespace Model
     AWS_ELASTICLOADBALANCINGV2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>Indicates whether target group stickiness is enabled.</p>
      */
-    inline bool GetEnabled() const{ return m_enabled; }
-
-    /**
-     * <p>Indicates whether target group stickiness is enabled.</p>
-     */
+    inline bool GetEnabled() const { return m_enabled; }
     inline bool EnabledHasBeenSet() const { return m_enabledHasBeenSet; }
-
-    /**
-     * <p>Indicates whether target group stickiness is enabled.</p>
-     */
     inline void SetEnabled(bool value) { m_enabledHasBeenSet = true; m_enabled = value; }
-
-    /**
-     * <p>Indicates whether target group stickiness is enabled.</p>
-     */
     inline TargetGroupStickinessConfig& WithEnabled(bool value) { SetEnabled(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The time period, in seconds, during which requests from a client should be
-     * routed to the same target group. The range is 1-604800 seconds (7 days).</p>
+     * routed to the same target group. The range is 1-604800 seconds (7 days). You
+     * must specify this value when enabling target group stickiness.</p>
      */
-    inline int GetDurationSeconds() const{ return m_durationSeconds; }
-
-    /**
-     * <p>The time period, in seconds, during which requests from a client should be
-     * routed to the same target group. The range is 1-604800 seconds (7 days).</p>
-     */
+    inline int GetDurationSeconds() const { return m_durationSeconds; }
     inline bool DurationSecondsHasBeenSet() const { return m_durationSecondsHasBeenSet; }
-
-    /**
-     * <p>The time period, in seconds, during which requests from a client should be
-     * routed to the same target group. The range is 1-604800 seconds (7 days).</p>
-     */
     inline void SetDurationSeconds(int value) { m_durationSecondsHasBeenSet = true; m_durationSeconds = value; }
-
-    /**
-     * <p>The time period, in seconds, during which requests from a client should be
-     * routed to the same target group. The range is 1-604800 seconds (7 days).</p>
-     */
     inline TargetGroupStickinessConfig& WithDurationSeconds(int value) { SetDurationSeconds(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_enabled;
+    bool m_enabled{false};
     bool m_enabledHasBeenSet = false;
 
-    int m_durationSeconds;
+    int m_durationSeconds{0};
     bool m_durationSecondsHasBeenSet = false;
   };
 

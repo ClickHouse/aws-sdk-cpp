@@ -10,33 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-RegisterImageRequest::RegisterImageRequest() : 
-    m_imageLocationHasBeenSet(false),
-    m_architecture(ArchitectureValues::NOT_SET),
-    m_architectureHasBeenSet(false),
-    m_blockDeviceMappingsHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_enaSupport(false),
-    m_enaSupportHasBeenSet(false),
-    m_kernelIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_billingProductsHasBeenSet(false),
-    m_ramdiskIdHasBeenSet(false),
-    m_rootDeviceNameHasBeenSet(false),
-    m_sriovNetSupportHasBeenSet(false),
-    m_virtualizationTypeHasBeenSet(false),
-    m_bootMode(BootModeValues::NOT_SET),
-    m_bootModeHasBeenSet(false),
-    m_tpmSupport(TpmSupportValues::NOT_SET),
-    m_tpmSupportHasBeenSet(false),
-    m_uefiDataHasBeenSet(false),
-    m_imdsSupport(ImdsSupportValues::NOT_SET),
-    m_imdsSupportHasBeenSet(false)
-{
-}
-
 Aws::String RegisterImageRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -44,46 +17,6 @@ Aws::String RegisterImageRequest::SerializePayload() const
   if(m_imageLocationHasBeenSet)
   {
     ss << "ImageLocation=" << StringUtils::URLEncode(m_imageLocation.c_str()) << "&";
-  }
-
-  if(m_architectureHasBeenSet)
-  {
-    ss << "Architecture=" << ArchitectureValuesMapper::GetNameForArchitectureValues(m_architecture) << "&";
-  }
-
-  if(m_blockDeviceMappingsHasBeenSet)
-  {
-    unsigned blockDeviceMappingsCount = 1;
-    for(auto& item : m_blockDeviceMappings)
-    {
-      item.OutputToStream(ss, "BlockDeviceMapping.", blockDeviceMappingsCount, "");
-      blockDeviceMappingsCount++;
-    }
-  }
-
-  if(m_descriptionHasBeenSet)
-  {
-    ss << "Description=" << StringUtils::URLEncode(m_description.c_str()) << "&";
-  }
-
-  if(m_dryRunHasBeenSet)
-  {
-    ss << "DryRun=" << std::boolalpha << m_dryRun << "&";
-  }
-
-  if(m_enaSupportHasBeenSet)
-  {
-    ss << "EnaSupport=" << std::boolalpha << m_enaSupport << "&";
-  }
-
-  if(m_kernelIdHasBeenSet)
-  {
-    ss << "KernelId=" << StringUtils::URLEncode(m_kernelId.c_str()) << "&";
-  }
-
-  if(m_nameHasBeenSet)
-  {
-    ss << "Name=" << StringUtils::URLEncode(m_name.c_str()) << "&";
   }
 
   if(m_billingProductsHasBeenSet)
@@ -97,6 +30,61 @@ Aws::String RegisterImageRequest::SerializePayload() const
     }
   }
 
+  if(m_bootModeHasBeenSet)
+  {
+    ss << "BootMode=" << StringUtils::URLEncode(BootModeValuesMapper::GetNameForBootModeValues(m_bootMode)) << "&";
+  }
+
+  if(m_tpmSupportHasBeenSet)
+  {
+    ss << "TpmSupport=" << StringUtils::URLEncode(TpmSupportValuesMapper::GetNameForTpmSupportValues(m_tpmSupport)) << "&";
+  }
+
+  if(m_uefiDataHasBeenSet)
+  {
+    ss << "UefiData=" << StringUtils::URLEncode(m_uefiData.c_str()) << "&";
+  }
+
+  if(m_imdsSupportHasBeenSet)
+  {
+    ss << "ImdsSupport=" << StringUtils::URLEncode(ImdsSupportValuesMapper::GetNameForImdsSupportValues(m_imdsSupport)) << "&";
+  }
+
+  if(m_tagSpecificationsHasBeenSet)
+  {
+    unsigned tagSpecificationsCount = 1;
+    for(auto& item : m_tagSpecifications)
+    {
+      item.OutputToStream(ss, "TagSpecification.", tagSpecificationsCount, "");
+      tagSpecificationsCount++;
+    }
+  }
+
+  if(m_dryRunHasBeenSet)
+  {
+    ss << "DryRun=" << std::boolalpha << m_dryRun << "&";
+  }
+
+  if(m_nameHasBeenSet)
+  {
+    ss << "Name=" << StringUtils::URLEncode(m_name.c_str()) << "&";
+  }
+
+  if(m_descriptionHasBeenSet)
+  {
+    ss << "Description=" << StringUtils::URLEncode(m_description.c_str()) << "&";
+  }
+
+  if(m_architectureHasBeenSet)
+  {
+    ss << "Architecture=" << StringUtils::URLEncode(ArchitectureValuesMapper::GetNameForArchitectureValues(m_architecture)) << "&";
+  }
+
+  if(m_kernelIdHasBeenSet)
+  {
+    ss << "KernelId=" << StringUtils::URLEncode(m_kernelId.c_str()) << "&";
+  }
+
   if(m_ramdiskIdHasBeenSet)
   {
     ss << "RamdiskId=" << StringUtils::URLEncode(m_ramdiskId.c_str()) << "&";
@@ -107,9 +95,14 @@ Aws::String RegisterImageRequest::SerializePayload() const
     ss << "RootDeviceName=" << StringUtils::URLEncode(m_rootDeviceName.c_str()) << "&";
   }
 
-  if(m_sriovNetSupportHasBeenSet)
+  if(m_blockDeviceMappingsHasBeenSet)
   {
-    ss << "SriovNetSupport=" << StringUtils::URLEncode(m_sriovNetSupport.c_str()) << "&";
+    unsigned blockDeviceMappingsCount = 1;
+    for(auto& item : m_blockDeviceMappings)
+    {
+      item.OutputToStream(ss, "BlockDeviceMapping.", blockDeviceMappingsCount, "");
+      blockDeviceMappingsCount++;
+    }
   }
 
   if(m_virtualizationTypeHasBeenSet)
@@ -117,24 +110,14 @@ Aws::String RegisterImageRequest::SerializePayload() const
     ss << "VirtualizationType=" << StringUtils::URLEncode(m_virtualizationType.c_str()) << "&";
   }
 
-  if(m_bootModeHasBeenSet)
+  if(m_sriovNetSupportHasBeenSet)
   {
-    ss << "BootMode=" << BootModeValuesMapper::GetNameForBootModeValues(m_bootMode) << "&";
+    ss << "SriovNetSupport=" << StringUtils::URLEncode(m_sriovNetSupport.c_str()) << "&";
   }
 
-  if(m_tpmSupportHasBeenSet)
+  if(m_enaSupportHasBeenSet)
   {
-    ss << "TpmSupport=" << TpmSupportValuesMapper::GetNameForTpmSupportValues(m_tpmSupport) << "&";
-  }
-
-  if(m_uefiDataHasBeenSet)
-  {
-    ss << "UefiData=" << StringUtils::URLEncode(m_uefiData.c_str()) << "&";
-  }
-
-  if(m_imdsSupportHasBeenSet)
-  {
-    ss << "ImdsSupport=" << ImdsSupportValuesMapper::GetNameForImdsSupportValues(m_imdsSupport) << "&";
+    ss << "EnaSupport=" << std::boolalpha << m_enaSupport << "&";
   }
 
   ss << "Version=2016-11-15";

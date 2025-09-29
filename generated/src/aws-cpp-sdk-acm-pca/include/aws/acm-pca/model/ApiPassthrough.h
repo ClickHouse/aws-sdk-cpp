@@ -39,61 +39,33 @@ namespace Model
   class ApiPassthrough
   {
   public:
-    AWS_ACMPCA_API ApiPassthrough();
+    AWS_ACMPCA_API ApiPassthrough() = default;
     AWS_ACMPCA_API ApiPassthrough(Aws::Utils::Json::JsonView jsonValue);
     AWS_ACMPCA_API ApiPassthrough& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ACMPCA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specifies X.509 extension information for a certificate.</p>
      */
-    inline const Extensions& GetExtensions() const{ return m_extensions; }
-
-    /**
-     * <p>Specifies X.509 extension information for a certificate.</p>
-     */
+    inline const Extensions& GetExtensions() const { return m_extensions; }
     inline bool ExtensionsHasBeenSet() const { return m_extensionsHasBeenSet; }
+    template<typename ExtensionsT = Extensions>
+    void SetExtensions(ExtensionsT&& value) { m_extensionsHasBeenSet = true; m_extensions = std::forward<ExtensionsT>(value); }
+    template<typename ExtensionsT = Extensions>
+    ApiPassthrough& WithExtensions(ExtensionsT&& value) { SetExtensions(std::forward<ExtensionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies X.509 extension information for a certificate.</p>
-     */
-    inline void SetExtensions(const Extensions& value) { m_extensionsHasBeenSet = true; m_extensions = value; }
-
-    /**
-     * <p>Specifies X.509 extension information for a certificate.</p>
-     */
-    inline void SetExtensions(Extensions&& value) { m_extensionsHasBeenSet = true; m_extensions = std::move(value); }
-
-    /**
-     * <p>Specifies X.509 extension information for a certificate.</p>
-     */
-    inline ApiPassthrough& WithExtensions(const Extensions& value) { SetExtensions(value); return *this;}
-
-    /**
-     * <p>Specifies X.509 extension information for a certificate.</p>
-     */
-    inline ApiPassthrough& WithExtensions(Extensions&& value) { SetExtensions(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const ASN1Subject& GetSubject() const{ return m_subject; }
-
-    
+    inline const ASN1Subject& GetSubject() const { return m_subject; }
     inline bool SubjectHasBeenSet() const { return m_subjectHasBeenSet; }
-
-    
-    inline void SetSubject(const ASN1Subject& value) { m_subjectHasBeenSet = true; m_subject = value; }
-
-    
-    inline void SetSubject(ASN1Subject&& value) { m_subjectHasBeenSet = true; m_subject = std::move(value); }
-
-    
-    inline ApiPassthrough& WithSubject(const ASN1Subject& value) { SetSubject(value); return *this;}
-
-    
-    inline ApiPassthrough& WithSubject(ASN1Subject&& value) { SetSubject(std::move(value)); return *this;}
-
+    template<typename SubjectT = ASN1Subject>
+    void SetSubject(SubjectT&& value) { m_subjectHasBeenSet = true; m_subject = std::forward<SubjectT>(value); }
+    template<typename SubjectT = ASN1Subject>
+    ApiPassthrough& WithSubject(SubjectT&& value) { SetSubject(std::forward<SubjectT>(value)); return *this;}
+    ///@}
   private:
 
     Extensions m_extensions;

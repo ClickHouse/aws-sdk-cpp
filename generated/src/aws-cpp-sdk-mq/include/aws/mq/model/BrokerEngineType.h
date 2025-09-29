@@ -33,86 +33,38 @@ namespace Model
   class BrokerEngineType
   {
   public:
-    AWS_MQ_API BrokerEngineType();
+    AWS_MQ_API BrokerEngineType() = default;
     AWS_MQ_API BrokerEngineType(Aws::Utils::Json::JsonView jsonValue);
     AWS_MQ_API BrokerEngineType& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MQ_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The broker's engine type.</p>
      */
-    inline const EngineType& GetEngineType() const{ return m_engineType; }
-
-    /**
-     * <p>The broker's engine type.</p>
-     */
+    inline EngineType GetEngineType() const { return m_engineType; }
     inline bool EngineTypeHasBeenSet() const { return m_engineTypeHasBeenSet; }
+    inline void SetEngineType(EngineType value) { m_engineTypeHasBeenSet = true; m_engineType = value; }
+    inline BrokerEngineType& WithEngineType(EngineType value) { SetEngineType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The broker's engine type.</p>
-     */
-    inline void SetEngineType(const EngineType& value) { m_engineTypeHasBeenSet = true; m_engineType = value; }
-
-    /**
-     * <p>The broker's engine type.</p>
-     */
-    inline void SetEngineType(EngineType&& value) { m_engineTypeHasBeenSet = true; m_engineType = std::move(value); }
-
-    /**
-     * <p>The broker's engine type.</p>
-     */
-    inline BrokerEngineType& WithEngineType(const EngineType& value) { SetEngineType(value); return *this;}
-
-    /**
-     * <p>The broker's engine type.</p>
-     */
-    inline BrokerEngineType& WithEngineType(EngineType&& value) { SetEngineType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The list of engine versions.</p>
      */
-    inline const Aws::Vector<EngineVersion>& GetEngineVersions() const{ return m_engineVersions; }
-
-    /**
-     * <p>The list of engine versions.</p>
-     */
+    inline const Aws::Vector<EngineVersion>& GetEngineVersions() const { return m_engineVersions; }
     inline bool EngineVersionsHasBeenSet() const { return m_engineVersionsHasBeenSet; }
-
-    /**
-     * <p>The list of engine versions.</p>
-     */
-    inline void SetEngineVersions(const Aws::Vector<EngineVersion>& value) { m_engineVersionsHasBeenSet = true; m_engineVersions = value; }
-
-    /**
-     * <p>The list of engine versions.</p>
-     */
-    inline void SetEngineVersions(Aws::Vector<EngineVersion>&& value) { m_engineVersionsHasBeenSet = true; m_engineVersions = std::move(value); }
-
-    /**
-     * <p>The list of engine versions.</p>
-     */
-    inline BrokerEngineType& WithEngineVersions(const Aws::Vector<EngineVersion>& value) { SetEngineVersions(value); return *this;}
-
-    /**
-     * <p>The list of engine versions.</p>
-     */
-    inline BrokerEngineType& WithEngineVersions(Aws::Vector<EngineVersion>&& value) { SetEngineVersions(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of engine versions.</p>
-     */
-    inline BrokerEngineType& AddEngineVersions(const EngineVersion& value) { m_engineVersionsHasBeenSet = true; m_engineVersions.push_back(value); return *this; }
-
-    /**
-     * <p>The list of engine versions.</p>
-     */
-    inline BrokerEngineType& AddEngineVersions(EngineVersion&& value) { m_engineVersionsHasBeenSet = true; m_engineVersions.push_back(std::move(value)); return *this; }
-
+    template<typename EngineVersionsT = Aws::Vector<EngineVersion>>
+    void SetEngineVersions(EngineVersionsT&& value) { m_engineVersionsHasBeenSet = true; m_engineVersions = std::forward<EngineVersionsT>(value); }
+    template<typename EngineVersionsT = Aws::Vector<EngineVersion>>
+    BrokerEngineType& WithEngineVersions(EngineVersionsT&& value) { SetEngineVersions(std::forward<EngineVersionsT>(value)); return *this;}
+    template<typename EngineVersionsT = EngineVersion>
+    BrokerEngineType& AddEngineVersions(EngineVersionsT&& value) { m_engineVersionsHasBeenSet = true; m_engineVersions.emplace_back(std::forward<EngineVersionsT>(value)); return *this; }
+    ///@}
   private:
 
-    EngineType m_engineType;
+    EngineType m_engineType{EngineType::NOT_SET};
     bool m_engineTypeHasBeenSet = false;
 
     Aws::Vector<EngineVersion> m_engineVersions;

@@ -18,17 +18,7 @@ namespace Macie2
 namespace Model
 {
 
-SessionContextAttributes::SessionContextAttributes() : 
-    m_creationDateHasBeenSet(false),
-    m_mfaAuthenticated(false),
-    m_mfaAuthenticatedHasBeenSet(false)
-{
-}
-
-SessionContextAttributes::SessionContextAttributes(JsonView jsonValue) : 
-    m_creationDateHasBeenSet(false),
-    m_mfaAuthenticated(false),
-    m_mfaAuthenticatedHasBeenSet(false)
+SessionContextAttributes::SessionContextAttributes(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ SessionContextAttributes& SessionContextAttributes::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("creationDate"))
   {
     m_creationDate = jsonValue.GetString("creationDate");
-
     m_creationDateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("mfaAuthenticated"))
   {
     m_mfaAuthenticated = jsonValue.GetBool("mfaAuthenticated");
-
     m_mfaAuthenticatedHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -12,15 +12,6 @@ using namespace Aws::SSM::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DescribeParametersRequest::DescribeParametersRequest() : 
-    m_filtersHasBeenSet(false),
-    m_parameterFiltersHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
 Aws::String DescribeParametersRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -56,6 +47,12 @@ Aws::String DescribeParametersRequest::SerializePayload() const
   if(m_nextTokenHasBeenSet)
   {
    payload.WithString("NextToken", m_nextToken);
+
+  }
+
+  if(m_sharedHasBeenSet)
+  {
+   payload.WithBool("Shared", m_shared);
 
   }
 

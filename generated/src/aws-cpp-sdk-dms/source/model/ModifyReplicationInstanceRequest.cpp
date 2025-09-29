@@ -12,27 +12,6 @@ using namespace Aws::DatabaseMigrationService::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ModifyReplicationInstanceRequest::ModifyReplicationInstanceRequest() : 
-    m_replicationInstanceArnHasBeenSet(false),
-    m_allocatedStorage(0),
-    m_allocatedStorageHasBeenSet(false),
-    m_applyImmediately(false),
-    m_applyImmediatelyHasBeenSet(false),
-    m_replicationInstanceClassHasBeenSet(false),
-    m_vpcSecurityGroupIdsHasBeenSet(false),
-    m_preferredMaintenanceWindowHasBeenSet(false),
-    m_multiAZ(false),
-    m_multiAZHasBeenSet(false),
-    m_engineVersionHasBeenSet(false),
-    m_allowMajorVersionUpgrade(false),
-    m_allowMajorVersionUpgradeHasBeenSet(false),
-    m_autoMinorVersionUpgrade(false),
-    m_autoMinorVersionUpgradeHasBeenSet(false),
-    m_replicationInstanceIdentifierHasBeenSet(false),
-    m_networkTypeHasBeenSet(false)
-{
-}
-
 Aws::String ModifyReplicationInstanceRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -111,6 +90,12 @@ Aws::String ModifyReplicationInstanceRequest::SerializePayload() const
   if(m_networkTypeHasBeenSet)
   {
    payload.WithString("NetworkType", m_networkType);
+
+  }
+
+  if(m_kerberosAuthenticationSettingsHasBeenSet)
+  {
+   payload.WithObject("KerberosAuthenticationSettings", m_kerberosAuthenticationSettings.Jsonize());
 
   }
 

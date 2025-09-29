@@ -18,37 +18,7 @@ namespace Connect
 namespace Model
 {
 
-Queue::Queue() : 
-    m_nameHasBeenSet(false),
-    m_queueArnHasBeenSet(false),
-    m_queueIdHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_outboundCallerConfigHasBeenSet(false),
-    m_hoursOfOperationIdHasBeenSet(false),
-    m_maxContacts(0),
-    m_maxContactsHasBeenSet(false),
-    m_status(QueueStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_lastModifiedTimeHasBeenSet(false),
-    m_lastModifiedRegionHasBeenSet(false)
-{
-}
-
-Queue::Queue(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_queueArnHasBeenSet(false),
-    m_queueIdHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_outboundCallerConfigHasBeenSet(false),
-    m_hoursOfOperationIdHasBeenSet(false),
-    m_maxContacts(0),
-    m_maxContactsHasBeenSet(false),
-    m_status(QueueStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_lastModifiedTimeHasBeenSet(false),
-    m_lastModifiedRegionHasBeenSet(false)
+Queue::Queue(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -58,59 +28,48 @@ Queue& Queue::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("QueueArn"))
   {
     m_queueArn = jsonValue.GetString("QueueArn");
-
     m_queueArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("QueueId"))
   {
     m_queueId = jsonValue.GetString("QueueId");
-
     m_queueIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Description"))
   {
     m_description = jsonValue.GetString("Description");
-
     m_descriptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("OutboundCallerConfig"))
   {
     m_outboundCallerConfig = jsonValue.GetObject("OutboundCallerConfig");
-
     m_outboundCallerConfigHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("OutboundEmailConfig"))
+  {
+    m_outboundEmailConfig = jsonValue.GetObject("OutboundEmailConfig");
+    m_outboundEmailConfigHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("HoursOfOperationId"))
   {
     m_hoursOfOperationId = jsonValue.GetString("HoursOfOperationId");
-
     m_hoursOfOperationIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MaxContacts"))
   {
     m_maxContacts = jsonValue.GetInteger("MaxContacts");
-
     m_maxContactsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Status"))
   {
     m_status = QueueStatusMapper::GetQueueStatusForName(jsonValue.GetString("Status"));
-
     m_statusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Tags"))
   {
     Aws::Map<Aws::String, JsonView> tagsJsonMap = jsonValue.GetObject("Tags").GetAllObjects();
@@ -120,21 +79,16 @@ Queue& Queue::operator =(JsonView jsonValue)
     }
     m_tagsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LastModifiedTime"))
   {
     m_lastModifiedTime = jsonValue.GetDouble("LastModifiedTime");
-
     m_lastModifiedTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LastModifiedRegion"))
   {
     m_lastModifiedRegion = jsonValue.GetString("LastModifiedRegion");
-
     m_lastModifiedRegionHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -169,6 +123,12 @@ JsonValue Queue::Jsonize() const
   if(m_outboundCallerConfigHasBeenSet)
   {
    payload.WithObject("OutboundCallerConfig", m_outboundCallerConfig.Jsonize());
+
+  }
+
+  if(m_outboundEmailConfigHasBeenSet)
+  {
+   payload.WithObject("OutboundEmailConfig", m_outboundEmailConfig.Jsonize());
 
   }
 

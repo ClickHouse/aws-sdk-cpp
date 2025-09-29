@@ -18,25 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-FontConfiguration::FontConfiguration() : 
-    m_fontSizeHasBeenSet(false),
-    m_fontDecoration(FontDecoration::NOT_SET),
-    m_fontDecorationHasBeenSet(false),
-    m_fontColorHasBeenSet(false),
-    m_fontWeightHasBeenSet(false),
-    m_fontStyle(FontStyle::NOT_SET),
-    m_fontStyleHasBeenSet(false)
-{
-}
-
-FontConfiguration::FontConfiguration(JsonView jsonValue) : 
-    m_fontSizeHasBeenSet(false),
-    m_fontDecoration(FontDecoration::NOT_SET),
-    m_fontDecorationHasBeenSet(false),
-    m_fontColorHasBeenSet(false),
-    m_fontWeightHasBeenSet(false),
-    m_fontStyle(FontStyle::NOT_SET),
-    m_fontStyleHasBeenSet(false)
+FontConfiguration::FontConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,38 +28,33 @@ FontConfiguration& FontConfiguration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("FontSize"))
   {
     m_fontSize = jsonValue.GetObject("FontSize");
-
     m_fontSizeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FontDecoration"))
   {
     m_fontDecoration = FontDecorationMapper::GetFontDecorationForName(jsonValue.GetString("FontDecoration"));
-
     m_fontDecorationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FontColor"))
   {
     m_fontColor = jsonValue.GetString("FontColor");
-
     m_fontColorHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FontWeight"))
   {
     m_fontWeight = jsonValue.GetObject("FontWeight");
-
     m_fontWeightHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FontStyle"))
   {
     m_fontStyle = FontStyleMapper::GetFontStyleForName(jsonValue.GetString("FontStyle"));
-
     m_fontStyleHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("FontFamily"))
+  {
+    m_fontFamily = jsonValue.GetString("FontFamily");
+    m_fontFamilyHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -111,6 +88,12 @@ JsonValue FontConfiguration::Jsonize() const
   if(m_fontStyleHasBeenSet)
   {
    payload.WithString("FontStyle", FontStyleMapper::GetNameForFontStyle(m_fontStyle));
+  }
+
+  if(m_fontFamilyHasBeenSet)
+  {
+   payload.WithString("FontFamily", m_fontFamily);
+
   }
 
   return payload;

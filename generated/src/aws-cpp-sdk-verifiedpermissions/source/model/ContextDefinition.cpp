@@ -18,13 +18,7 @@ namespace VerifiedPermissions
 namespace Model
 {
 
-ContextDefinition::ContextDefinition() : 
-    m_contextMapHasBeenSet(false)
-{
-}
-
-ContextDefinition::ContextDefinition(JsonView jsonValue) : 
-    m_contextMapHasBeenSet(false)
+ContextDefinition::ContextDefinition(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,11 @@ ContextDefinition& ContextDefinition::operator =(JsonView jsonValue)
     }
     m_contextMapHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("cedarJson"))
+  {
+    m_cedarJson = jsonValue.GetString("cedarJson");
+    m_cedarJsonHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -56,6 +54,12 @@ JsonValue ContextDefinition::Jsonize() const
      contextMapJsonMap.WithObject(contextMapItem.first, contextMapItem.second.Jsonize());
    }
    payload.WithObject("contextMap", std::move(contextMapJsonMap));
+
+  }
+
+  if(m_cedarJsonHasBeenSet)
+  {
+   payload.WithString("cedarJson", m_cedarJson);
 
   }
 

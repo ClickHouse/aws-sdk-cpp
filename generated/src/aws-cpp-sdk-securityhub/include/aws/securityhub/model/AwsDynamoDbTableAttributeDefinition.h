@@ -32,93 +32,35 @@ namespace Model
   class AwsDynamoDbTableAttributeDefinition
   {
   public:
-    AWS_SECURITYHUB_API AwsDynamoDbTableAttributeDefinition();
+    AWS_SECURITYHUB_API AwsDynamoDbTableAttributeDefinition() = default;
     AWS_SECURITYHUB_API AwsDynamoDbTableAttributeDefinition(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsDynamoDbTableAttributeDefinition& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the attribute.</p>
      */
-    inline const Aws::String& GetAttributeName() const{ return m_attributeName; }
-
-    /**
-     * <p>The name of the attribute.</p>
-     */
+    inline const Aws::String& GetAttributeName() const { return m_attributeName; }
     inline bool AttributeNameHasBeenSet() const { return m_attributeNameHasBeenSet; }
+    template<typename AttributeNameT = Aws::String>
+    void SetAttributeName(AttributeNameT&& value) { m_attributeNameHasBeenSet = true; m_attributeName = std::forward<AttributeNameT>(value); }
+    template<typename AttributeNameT = Aws::String>
+    AwsDynamoDbTableAttributeDefinition& WithAttributeName(AttributeNameT&& value) { SetAttributeName(std::forward<AttributeNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the attribute.</p>
-     */
-    inline void SetAttributeName(const Aws::String& value) { m_attributeNameHasBeenSet = true; m_attributeName = value; }
-
-    /**
-     * <p>The name of the attribute.</p>
-     */
-    inline void SetAttributeName(Aws::String&& value) { m_attributeNameHasBeenSet = true; m_attributeName = std::move(value); }
-
-    /**
-     * <p>The name of the attribute.</p>
-     */
-    inline void SetAttributeName(const char* value) { m_attributeNameHasBeenSet = true; m_attributeName.assign(value); }
-
-    /**
-     * <p>The name of the attribute.</p>
-     */
-    inline AwsDynamoDbTableAttributeDefinition& WithAttributeName(const Aws::String& value) { SetAttributeName(value); return *this;}
-
-    /**
-     * <p>The name of the attribute.</p>
-     */
-    inline AwsDynamoDbTableAttributeDefinition& WithAttributeName(Aws::String&& value) { SetAttributeName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the attribute.</p>
-     */
-    inline AwsDynamoDbTableAttributeDefinition& WithAttributeName(const char* value) { SetAttributeName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of the attribute.</p>
      */
-    inline const Aws::String& GetAttributeType() const{ return m_attributeType; }
-
-    /**
-     * <p>The type of the attribute.</p>
-     */
+    inline const Aws::String& GetAttributeType() const { return m_attributeType; }
     inline bool AttributeTypeHasBeenSet() const { return m_attributeTypeHasBeenSet; }
-
-    /**
-     * <p>The type of the attribute.</p>
-     */
-    inline void SetAttributeType(const Aws::String& value) { m_attributeTypeHasBeenSet = true; m_attributeType = value; }
-
-    /**
-     * <p>The type of the attribute.</p>
-     */
-    inline void SetAttributeType(Aws::String&& value) { m_attributeTypeHasBeenSet = true; m_attributeType = std::move(value); }
-
-    /**
-     * <p>The type of the attribute.</p>
-     */
-    inline void SetAttributeType(const char* value) { m_attributeTypeHasBeenSet = true; m_attributeType.assign(value); }
-
-    /**
-     * <p>The type of the attribute.</p>
-     */
-    inline AwsDynamoDbTableAttributeDefinition& WithAttributeType(const Aws::String& value) { SetAttributeType(value); return *this;}
-
-    /**
-     * <p>The type of the attribute.</p>
-     */
-    inline AwsDynamoDbTableAttributeDefinition& WithAttributeType(Aws::String&& value) { SetAttributeType(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of the attribute.</p>
-     */
-    inline AwsDynamoDbTableAttributeDefinition& WithAttributeType(const char* value) { SetAttributeType(value); return *this;}
-
+    template<typename AttributeTypeT = Aws::String>
+    void SetAttributeType(AttributeTypeT&& value) { m_attributeTypeHasBeenSet = true; m_attributeType = std::forward<AttributeTypeT>(value); }
+    template<typename AttributeTypeT = Aws::String>
+    AwsDynamoDbTableAttributeDefinition& WithAttributeType(AttributeTypeT&& value) { SetAttributeType(std::forward<AttributeTypeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_attributeName;

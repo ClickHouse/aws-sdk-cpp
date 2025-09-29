@@ -14,6 +14,8 @@
 #include <aws/lexv2-models/model/IntentClosingSetting.h>
 #include <aws/lexv2-models/model/KendraConfiguration.h>
 #include <aws/lexv2-models/model/InitialResponseSetting.h>
+#include <aws/lexv2-models/model/QnAIntentConfiguration.h>
+#include <aws/lexv2-models/model/QInConnectIntentConfiguration.h>
 #include <aws/lexv2-models/model/SampleUtterance.h>
 #include <aws/lexv2-models/model/InputContext.h>
 #include <aws/lexv2-models/model/OutputContext.h>
@@ -31,7 +33,7 @@ namespace Model
   class CreateIntentRequest : public LexModelsV2Request
   {
   public:
-    AWS_LEXMODELSV2_API CreateIntentRequest();
+    AWS_LEXMODELSV2_API CreateIntentRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -42,210 +44,62 @@ namespace Model
     AWS_LEXMODELSV2_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of the intent. Intent names must be unique in the locale that
      * contains the intent and cannot match the name of any built-in intent.</p>
      */
-    inline const Aws::String& GetIntentName() const{ return m_intentName; }
-
-    /**
-     * <p>The name of the intent. Intent names must be unique in the locale that
-     * contains the intent and cannot match the name of any built-in intent.</p>
-     */
+    inline const Aws::String& GetIntentName() const { return m_intentName; }
     inline bool IntentNameHasBeenSet() const { return m_intentNameHasBeenSet; }
+    template<typename IntentNameT = Aws::String>
+    void SetIntentName(IntentNameT&& value) { m_intentNameHasBeenSet = true; m_intentName = std::forward<IntentNameT>(value); }
+    template<typename IntentNameT = Aws::String>
+    CreateIntentRequest& WithIntentName(IntentNameT&& value) { SetIntentName(std::forward<IntentNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the intent. Intent names must be unique in the locale that
-     * contains the intent and cannot match the name of any built-in intent.</p>
-     */
-    inline void SetIntentName(const Aws::String& value) { m_intentNameHasBeenSet = true; m_intentName = value; }
-
-    /**
-     * <p>The name of the intent. Intent names must be unique in the locale that
-     * contains the intent and cannot match the name of any built-in intent.</p>
-     */
-    inline void SetIntentName(Aws::String&& value) { m_intentNameHasBeenSet = true; m_intentName = std::move(value); }
-
-    /**
-     * <p>The name of the intent. Intent names must be unique in the locale that
-     * contains the intent and cannot match the name of any built-in intent.</p>
-     */
-    inline void SetIntentName(const char* value) { m_intentNameHasBeenSet = true; m_intentName.assign(value); }
-
-    /**
-     * <p>The name of the intent. Intent names must be unique in the locale that
-     * contains the intent and cannot match the name of any built-in intent.</p>
-     */
-    inline CreateIntentRequest& WithIntentName(const Aws::String& value) { SetIntentName(value); return *this;}
-
-    /**
-     * <p>The name of the intent. Intent names must be unique in the locale that
-     * contains the intent and cannot match the name of any built-in intent.</p>
-     */
-    inline CreateIntentRequest& WithIntentName(Aws::String&& value) { SetIntentName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the intent. Intent names must be unique in the locale that
-     * contains the intent and cannot match the name of any built-in intent.</p>
-     */
-    inline CreateIntentRequest& WithIntentName(const char* value) { SetIntentName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A description of the intent. Use the description to help identify the intent
      * in lists.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>A description of the intent. Use the description to help identify the intent
-     * in lists.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    CreateIntentRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A description of the intent. Use the description to help identify the intent
-     * in lists.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>A description of the intent. Use the description to help identify the intent
-     * in lists.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>A description of the intent. Use the description to help identify the intent
-     * in lists.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>A description of the intent. Use the description to help identify the intent
-     * in lists.</p>
-     */
-    inline CreateIntentRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A description of the intent. Use the description to help identify the intent
-     * in lists.</p>
-     */
-    inline CreateIntentRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A description of the intent. Use the description to help identify the intent
-     * in lists.</p>
-     */
-    inline CreateIntentRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A unique identifier for the built-in intent to base this intent on.</p>
      */
-    inline const Aws::String& GetParentIntentSignature() const{ return m_parentIntentSignature; }
-
-    /**
-     * <p>A unique identifier for the built-in intent to base this intent on.</p>
-     */
+    inline const Aws::String& GetParentIntentSignature() const { return m_parentIntentSignature; }
     inline bool ParentIntentSignatureHasBeenSet() const { return m_parentIntentSignatureHasBeenSet; }
+    template<typename ParentIntentSignatureT = Aws::String>
+    void SetParentIntentSignature(ParentIntentSignatureT&& value) { m_parentIntentSignatureHasBeenSet = true; m_parentIntentSignature = std::forward<ParentIntentSignatureT>(value); }
+    template<typename ParentIntentSignatureT = Aws::String>
+    CreateIntentRequest& WithParentIntentSignature(ParentIntentSignatureT&& value) { SetParentIntentSignature(std::forward<ParentIntentSignatureT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier for the built-in intent to base this intent on.</p>
-     */
-    inline void SetParentIntentSignature(const Aws::String& value) { m_parentIntentSignatureHasBeenSet = true; m_parentIntentSignature = value; }
-
-    /**
-     * <p>A unique identifier for the built-in intent to base this intent on.</p>
-     */
-    inline void SetParentIntentSignature(Aws::String&& value) { m_parentIntentSignatureHasBeenSet = true; m_parentIntentSignature = std::move(value); }
-
-    /**
-     * <p>A unique identifier for the built-in intent to base this intent on.</p>
-     */
-    inline void SetParentIntentSignature(const char* value) { m_parentIntentSignatureHasBeenSet = true; m_parentIntentSignature.assign(value); }
-
-    /**
-     * <p>A unique identifier for the built-in intent to base this intent on.</p>
-     */
-    inline CreateIntentRequest& WithParentIntentSignature(const Aws::String& value) { SetParentIntentSignature(value); return *this;}
-
-    /**
-     * <p>A unique identifier for the built-in intent to base this intent on.</p>
-     */
-    inline CreateIntentRequest& WithParentIntentSignature(Aws::String&& value) { SetParentIntentSignature(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier for the built-in intent to base this intent on.</p>
-     */
-    inline CreateIntentRequest& WithParentIntentSignature(const char* value) { SetParentIntentSignature(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An array of strings that a user might say to signal the intent. For example,
      * "I want a pizza", or "I want a {PizzaSize} pizza". </p> <p>In an utterance, slot
      * names are enclosed in curly braces ("{", "}") to indicate where they should be
      * displayed in the utterance shown to the user.. </p>
      */
-    inline const Aws::Vector<SampleUtterance>& GetSampleUtterances() const{ return m_sampleUtterances; }
-
-    /**
-     * <p>An array of strings that a user might say to signal the intent. For example,
-     * "I want a pizza", or "I want a {PizzaSize} pizza". </p> <p>In an utterance, slot
-     * names are enclosed in curly braces ("{", "}") to indicate where they should be
-     * displayed in the utterance shown to the user.. </p>
-     */
+    inline const Aws::Vector<SampleUtterance>& GetSampleUtterances() const { return m_sampleUtterances; }
     inline bool SampleUtterancesHasBeenSet() const { return m_sampleUtterancesHasBeenSet; }
+    template<typename SampleUtterancesT = Aws::Vector<SampleUtterance>>
+    void SetSampleUtterances(SampleUtterancesT&& value) { m_sampleUtterancesHasBeenSet = true; m_sampleUtterances = std::forward<SampleUtterancesT>(value); }
+    template<typename SampleUtterancesT = Aws::Vector<SampleUtterance>>
+    CreateIntentRequest& WithSampleUtterances(SampleUtterancesT&& value) { SetSampleUtterances(std::forward<SampleUtterancesT>(value)); return *this;}
+    template<typename SampleUtterancesT = SampleUtterance>
+    CreateIntentRequest& AddSampleUtterances(SampleUtterancesT&& value) { m_sampleUtterancesHasBeenSet = true; m_sampleUtterances.emplace_back(std::forward<SampleUtterancesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of strings that a user might say to signal the intent. For example,
-     * "I want a pizza", or "I want a {PizzaSize} pizza". </p> <p>In an utterance, slot
-     * names are enclosed in curly braces ("{", "}") to indicate where they should be
-     * displayed in the utterance shown to the user.. </p>
-     */
-    inline void SetSampleUtterances(const Aws::Vector<SampleUtterance>& value) { m_sampleUtterancesHasBeenSet = true; m_sampleUtterances = value; }
-
-    /**
-     * <p>An array of strings that a user might say to signal the intent. For example,
-     * "I want a pizza", or "I want a {PizzaSize} pizza". </p> <p>In an utterance, slot
-     * names are enclosed in curly braces ("{", "}") to indicate where they should be
-     * displayed in the utterance shown to the user.. </p>
-     */
-    inline void SetSampleUtterances(Aws::Vector<SampleUtterance>&& value) { m_sampleUtterancesHasBeenSet = true; m_sampleUtterances = std::move(value); }
-
-    /**
-     * <p>An array of strings that a user might say to signal the intent. For example,
-     * "I want a pizza", or "I want a {PizzaSize} pizza". </p> <p>In an utterance, slot
-     * names are enclosed in curly braces ("{", "}") to indicate where they should be
-     * displayed in the utterance shown to the user.. </p>
-     */
-    inline CreateIntentRequest& WithSampleUtterances(const Aws::Vector<SampleUtterance>& value) { SetSampleUtterances(value); return *this;}
-
-    /**
-     * <p>An array of strings that a user might say to signal the intent. For example,
-     * "I want a pizza", or "I want a {PizzaSize} pizza". </p> <p>In an utterance, slot
-     * names are enclosed in curly braces ("{", "}") to indicate where they should be
-     * displayed in the utterance shown to the user.. </p>
-     */
-    inline CreateIntentRequest& WithSampleUtterances(Aws::Vector<SampleUtterance>&& value) { SetSampleUtterances(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of strings that a user might say to signal the intent. For example,
-     * "I want a pizza", or "I want a {PizzaSize} pizza". </p> <p>In an utterance, slot
-     * names are enclosed in curly braces ("{", "}") to indicate where they should be
-     * displayed in the utterance shown to the user.. </p>
-     */
-    inline CreateIntentRequest& AddSampleUtterances(const SampleUtterance& value) { m_sampleUtterancesHasBeenSet = true; m_sampleUtterances.push_back(value); return *this; }
-
-    /**
-     * <p>An array of strings that a user might say to signal the intent. For example,
-     * "I want a pizza", or "I want a {PizzaSize} pizza". </p> <p>In an utterance, slot
-     * names are enclosed in curly braces ("{", "}") to indicate where they should be
-     * displayed in the utterance shown to the user.. </p>
-     */
-    inline CreateIntentRequest& AddSampleUtterances(SampleUtterance&& value) { m_sampleUtterancesHasBeenSet = true; m_sampleUtterances.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Specifies that Amazon Lex invokes the alias Lambda function for each user
      * input. You can invoke this Lambda function to personalize user interaction.</p>
@@ -256,69 +110,15 @@ namespace Model
      * <code>glutenIntolerant</code> to <code>true</code>. You might find John's phone
      * number and set the corresponding session attribute.</p>
      */
-    inline const DialogCodeHookSettings& GetDialogCodeHook() const{ return m_dialogCodeHook; }
-
-    /**
-     * <p>Specifies that Amazon Lex invokes the alias Lambda function for each user
-     * input. You can invoke this Lambda function to personalize user interaction.</p>
-     * <p>For example, suppose that your bot determines that the user's name is John.
-     * You Lambda function might retrieve John's information from a backend database
-     * and prepopulate some of the values. For example, if you find that John is gluten
-     * intolerant, you might set the corresponding intent slot,
-     * <code>glutenIntolerant</code> to <code>true</code>. You might find John's phone
-     * number and set the corresponding session attribute.</p>
-     */
+    inline const DialogCodeHookSettings& GetDialogCodeHook() const { return m_dialogCodeHook; }
     inline bool DialogCodeHookHasBeenSet() const { return m_dialogCodeHookHasBeenSet; }
+    template<typename DialogCodeHookT = DialogCodeHookSettings>
+    void SetDialogCodeHook(DialogCodeHookT&& value) { m_dialogCodeHookHasBeenSet = true; m_dialogCodeHook = std::forward<DialogCodeHookT>(value); }
+    template<typename DialogCodeHookT = DialogCodeHookSettings>
+    CreateIntentRequest& WithDialogCodeHook(DialogCodeHookT&& value) { SetDialogCodeHook(std::forward<DialogCodeHookT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies that Amazon Lex invokes the alias Lambda function for each user
-     * input. You can invoke this Lambda function to personalize user interaction.</p>
-     * <p>For example, suppose that your bot determines that the user's name is John.
-     * You Lambda function might retrieve John's information from a backend database
-     * and prepopulate some of the values. For example, if you find that John is gluten
-     * intolerant, you might set the corresponding intent slot,
-     * <code>glutenIntolerant</code> to <code>true</code>. You might find John's phone
-     * number and set the corresponding session attribute.</p>
-     */
-    inline void SetDialogCodeHook(const DialogCodeHookSettings& value) { m_dialogCodeHookHasBeenSet = true; m_dialogCodeHook = value; }
-
-    /**
-     * <p>Specifies that Amazon Lex invokes the alias Lambda function for each user
-     * input. You can invoke this Lambda function to personalize user interaction.</p>
-     * <p>For example, suppose that your bot determines that the user's name is John.
-     * You Lambda function might retrieve John's information from a backend database
-     * and prepopulate some of the values. For example, if you find that John is gluten
-     * intolerant, you might set the corresponding intent slot,
-     * <code>glutenIntolerant</code> to <code>true</code>. You might find John's phone
-     * number and set the corresponding session attribute.</p>
-     */
-    inline void SetDialogCodeHook(DialogCodeHookSettings&& value) { m_dialogCodeHookHasBeenSet = true; m_dialogCodeHook = std::move(value); }
-
-    /**
-     * <p>Specifies that Amazon Lex invokes the alias Lambda function for each user
-     * input. You can invoke this Lambda function to personalize user interaction.</p>
-     * <p>For example, suppose that your bot determines that the user's name is John.
-     * You Lambda function might retrieve John's information from a backend database
-     * and prepopulate some of the values. For example, if you find that John is gluten
-     * intolerant, you might set the corresponding intent slot,
-     * <code>glutenIntolerant</code> to <code>true</code>. You might find John's phone
-     * number and set the corresponding session attribute.</p>
-     */
-    inline CreateIntentRequest& WithDialogCodeHook(const DialogCodeHookSettings& value) { SetDialogCodeHook(value); return *this;}
-
-    /**
-     * <p>Specifies that Amazon Lex invokes the alias Lambda function for each user
-     * input. You can invoke this Lambda function to personalize user interaction.</p>
-     * <p>For example, suppose that your bot determines that the user's name is John.
-     * You Lambda function might retrieve John's information from a backend database
-     * and prepopulate some of the values. For example, if you find that John is gluten
-     * intolerant, you might set the corresponding intent slot,
-     * <code>glutenIntolerant</code> to <code>true</code>. You might find John's phone
-     * number and set the corresponding session attribute.</p>
-     */
-    inline CreateIntentRequest& WithDialogCodeHook(DialogCodeHookSettings&& value) { SetDialogCodeHook(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies that Amazon Lex invokes the alias Lambda function when the intent
      * is ready for fulfillment. You can invoke this function to complete the bot's
@@ -326,134 +126,42 @@ namespace Model
      * Lambda function can look up the closest pizza restaurant to the customer's
      * location and then place an order on the customer's behalf.</p>
      */
-    inline const FulfillmentCodeHookSettings& GetFulfillmentCodeHook() const{ return m_fulfillmentCodeHook; }
-
-    /**
-     * <p>Specifies that Amazon Lex invokes the alias Lambda function when the intent
-     * is ready for fulfillment. You can invoke this function to complete the bot's
-     * transaction with the user.</p> <p>For example, in a pizza ordering bot, the
-     * Lambda function can look up the closest pizza restaurant to the customer's
-     * location and then place an order on the customer's behalf.</p>
-     */
+    inline const FulfillmentCodeHookSettings& GetFulfillmentCodeHook() const { return m_fulfillmentCodeHook; }
     inline bool FulfillmentCodeHookHasBeenSet() const { return m_fulfillmentCodeHookHasBeenSet; }
+    template<typename FulfillmentCodeHookT = FulfillmentCodeHookSettings>
+    void SetFulfillmentCodeHook(FulfillmentCodeHookT&& value) { m_fulfillmentCodeHookHasBeenSet = true; m_fulfillmentCodeHook = std::forward<FulfillmentCodeHookT>(value); }
+    template<typename FulfillmentCodeHookT = FulfillmentCodeHookSettings>
+    CreateIntentRequest& WithFulfillmentCodeHook(FulfillmentCodeHookT&& value) { SetFulfillmentCodeHook(std::forward<FulfillmentCodeHookT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies that Amazon Lex invokes the alias Lambda function when the intent
-     * is ready for fulfillment. You can invoke this function to complete the bot's
-     * transaction with the user.</p> <p>For example, in a pizza ordering bot, the
-     * Lambda function can look up the closest pizza restaurant to the customer's
-     * location and then place an order on the customer's behalf.</p>
-     */
-    inline void SetFulfillmentCodeHook(const FulfillmentCodeHookSettings& value) { m_fulfillmentCodeHookHasBeenSet = true; m_fulfillmentCodeHook = value; }
-
-    /**
-     * <p>Specifies that Amazon Lex invokes the alias Lambda function when the intent
-     * is ready for fulfillment. You can invoke this function to complete the bot's
-     * transaction with the user.</p> <p>For example, in a pizza ordering bot, the
-     * Lambda function can look up the closest pizza restaurant to the customer's
-     * location and then place an order on the customer's behalf.</p>
-     */
-    inline void SetFulfillmentCodeHook(FulfillmentCodeHookSettings&& value) { m_fulfillmentCodeHookHasBeenSet = true; m_fulfillmentCodeHook = std::move(value); }
-
-    /**
-     * <p>Specifies that Amazon Lex invokes the alias Lambda function when the intent
-     * is ready for fulfillment. You can invoke this function to complete the bot's
-     * transaction with the user.</p> <p>For example, in a pizza ordering bot, the
-     * Lambda function can look up the closest pizza restaurant to the customer's
-     * location and then place an order on the customer's behalf.</p>
-     */
-    inline CreateIntentRequest& WithFulfillmentCodeHook(const FulfillmentCodeHookSettings& value) { SetFulfillmentCodeHook(value); return *this;}
-
-    /**
-     * <p>Specifies that Amazon Lex invokes the alias Lambda function when the intent
-     * is ready for fulfillment. You can invoke this function to complete the bot's
-     * transaction with the user.</p> <p>For example, in a pizza ordering bot, the
-     * Lambda function can look up the closest pizza restaurant to the customer's
-     * location and then place an order on the customer's behalf.</p>
-     */
-    inline CreateIntentRequest& WithFulfillmentCodeHook(FulfillmentCodeHookSettings&& value) { SetFulfillmentCodeHook(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Provides prompts that Amazon Lex sends to the user to confirm the completion
      * of an intent. If the user answers "no," the settings contain a statement that is
      * sent to the user to end the intent.</p>
      */
-    inline const IntentConfirmationSetting& GetIntentConfirmationSetting() const{ return m_intentConfirmationSetting; }
-
-    /**
-     * <p>Provides prompts that Amazon Lex sends to the user to confirm the completion
-     * of an intent. If the user answers "no," the settings contain a statement that is
-     * sent to the user to end the intent.</p>
-     */
+    inline const IntentConfirmationSetting& GetIntentConfirmationSetting() const { return m_intentConfirmationSetting; }
     inline bool IntentConfirmationSettingHasBeenSet() const { return m_intentConfirmationSettingHasBeenSet; }
+    template<typename IntentConfirmationSettingT = IntentConfirmationSetting>
+    void SetIntentConfirmationSetting(IntentConfirmationSettingT&& value) { m_intentConfirmationSettingHasBeenSet = true; m_intentConfirmationSetting = std::forward<IntentConfirmationSettingT>(value); }
+    template<typename IntentConfirmationSettingT = IntentConfirmationSetting>
+    CreateIntentRequest& WithIntentConfirmationSetting(IntentConfirmationSettingT&& value) { SetIntentConfirmationSetting(std::forward<IntentConfirmationSettingT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Provides prompts that Amazon Lex sends to the user to confirm the completion
-     * of an intent. If the user answers "no," the settings contain a statement that is
-     * sent to the user to end the intent.</p>
-     */
-    inline void SetIntentConfirmationSetting(const IntentConfirmationSetting& value) { m_intentConfirmationSettingHasBeenSet = true; m_intentConfirmationSetting = value; }
-
-    /**
-     * <p>Provides prompts that Amazon Lex sends to the user to confirm the completion
-     * of an intent. If the user answers "no," the settings contain a statement that is
-     * sent to the user to end the intent.</p>
-     */
-    inline void SetIntentConfirmationSetting(IntentConfirmationSetting&& value) { m_intentConfirmationSettingHasBeenSet = true; m_intentConfirmationSetting = std::move(value); }
-
-    /**
-     * <p>Provides prompts that Amazon Lex sends to the user to confirm the completion
-     * of an intent. If the user answers "no," the settings contain a statement that is
-     * sent to the user to end the intent.</p>
-     */
-    inline CreateIntentRequest& WithIntentConfirmationSetting(const IntentConfirmationSetting& value) { SetIntentConfirmationSetting(value); return *this;}
-
-    /**
-     * <p>Provides prompts that Amazon Lex sends to the user to confirm the completion
-     * of an intent. If the user answers "no," the settings contain a statement that is
-     * sent to the user to end the intent.</p>
-     */
-    inline CreateIntentRequest& WithIntentConfirmationSetting(IntentConfirmationSetting&& value) { SetIntentConfirmationSetting(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Sets the response that Amazon Lex sends to the user when the intent is
      * closed.</p>
      */
-    inline const IntentClosingSetting& GetIntentClosingSetting() const{ return m_intentClosingSetting; }
-
-    /**
-     * <p>Sets the response that Amazon Lex sends to the user when the intent is
-     * closed.</p>
-     */
+    inline const IntentClosingSetting& GetIntentClosingSetting() const { return m_intentClosingSetting; }
     inline bool IntentClosingSettingHasBeenSet() const { return m_intentClosingSettingHasBeenSet; }
+    template<typename IntentClosingSettingT = IntentClosingSetting>
+    void SetIntentClosingSetting(IntentClosingSettingT&& value) { m_intentClosingSettingHasBeenSet = true; m_intentClosingSetting = std::forward<IntentClosingSettingT>(value); }
+    template<typename IntentClosingSettingT = IntentClosingSetting>
+    CreateIntentRequest& WithIntentClosingSetting(IntentClosingSettingT&& value) { SetIntentClosingSetting(std::forward<IntentClosingSettingT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Sets the response that Amazon Lex sends to the user when the intent is
-     * closed.</p>
-     */
-    inline void SetIntentClosingSetting(const IntentClosingSetting& value) { m_intentClosingSettingHasBeenSet = true; m_intentClosingSetting = value; }
-
-    /**
-     * <p>Sets the response that Amazon Lex sends to the user when the intent is
-     * closed.</p>
-     */
-    inline void SetIntentClosingSetting(IntentClosingSetting&& value) { m_intentClosingSettingHasBeenSet = true; m_intentClosingSetting = std::move(value); }
-
-    /**
-     * <p>Sets the response that Amazon Lex sends to the user when the intent is
-     * closed.</p>
-     */
-    inline CreateIntentRequest& WithIntentClosingSetting(const IntentClosingSetting& value) { SetIntentClosingSetting(value); return *this;}
-
-    /**
-     * <p>Sets the response that Amazon Lex sends to the user when the intent is
-     * closed.</p>
-     */
-    inline CreateIntentRequest& WithIntentClosingSetting(IntentClosingSetting&& value) { SetIntentClosingSetting(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of contexts that must be active for this intent to be considered by
      * Amazon Lex.</p> <p>When an intent has an input context list, Amazon Lex only
@@ -467,114 +175,17 @@ namespace Model
      * 5 input contexts. If an intent has multiple input contexts, all of the contexts
      * must be active to consider the intent.</p>
      */
-    inline const Aws::Vector<InputContext>& GetInputContexts() const{ return m_inputContexts; }
-
-    /**
-     * <p>A list of contexts that must be active for this intent to be considered by
-     * Amazon Lex.</p> <p>When an intent has an input context list, Amazon Lex only
-     * considers using the intent in an interaction with the user when the specified
-     * contexts are included in the active context list for the session. If the
-     * contexts are not active, then Amazon Lex will not use the intent.</p> <p>A
-     * context can be automatically activated using the <code>outputContexts</code>
-     * property or it can be set at runtime.</p> <p> For example, if there are two
-     * intents with different input contexts that respond to the same utterances, only
-     * the intent with the active context will respond.</p> <p>An intent may have up to
-     * 5 input contexts. If an intent has multiple input contexts, all of the contexts
-     * must be active to consider the intent.</p>
-     */
+    inline const Aws::Vector<InputContext>& GetInputContexts() const { return m_inputContexts; }
     inline bool InputContextsHasBeenSet() const { return m_inputContextsHasBeenSet; }
+    template<typename InputContextsT = Aws::Vector<InputContext>>
+    void SetInputContexts(InputContextsT&& value) { m_inputContextsHasBeenSet = true; m_inputContexts = std::forward<InputContextsT>(value); }
+    template<typename InputContextsT = Aws::Vector<InputContext>>
+    CreateIntentRequest& WithInputContexts(InputContextsT&& value) { SetInputContexts(std::forward<InputContextsT>(value)); return *this;}
+    template<typename InputContextsT = InputContext>
+    CreateIntentRequest& AddInputContexts(InputContextsT&& value) { m_inputContextsHasBeenSet = true; m_inputContexts.emplace_back(std::forward<InputContextsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of contexts that must be active for this intent to be considered by
-     * Amazon Lex.</p> <p>When an intent has an input context list, Amazon Lex only
-     * considers using the intent in an interaction with the user when the specified
-     * contexts are included in the active context list for the session. If the
-     * contexts are not active, then Amazon Lex will not use the intent.</p> <p>A
-     * context can be automatically activated using the <code>outputContexts</code>
-     * property or it can be set at runtime.</p> <p> For example, if there are two
-     * intents with different input contexts that respond to the same utterances, only
-     * the intent with the active context will respond.</p> <p>An intent may have up to
-     * 5 input contexts. If an intent has multiple input contexts, all of the contexts
-     * must be active to consider the intent.</p>
-     */
-    inline void SetInputContexts(const Aws::Vector<InputContext>& value) { m_inputContextsHasBeenSet = true; m_inputContexts = value; }
-
-    /**
-     * <p>A list of contexts that must be active for this intent to be considered by
-     * Amazon Lex.</p> <p>When an intent has an input context list, Amazon Lex only
-     * considers using the intent in an interaction with the user when the specified
-     * contexts are included in the active context list for the session. If the
-     * contexts are not active, then Amazon Lex will not use the intent.</p> <p>A
-     * context can be automatically activated using the <code>outputContexts</code>
-     * property or it can be set at runtime.</p> <p> For example, if there are two
-     * intents with different input contexts that respond to the same utterances, only
-     * the intent with the active context will respond.</p> <p>An intent may have up to
-     * 5 input contexts. If an intent has multiple input contexts, all of the contexts
-     * must be active to consider the intent.</p>
-     */
-    inline void SetInputContexts(Aws::Vector<InputContext>&& value) { m_inputContextsHasBeenSet = true; m_inputContexts = std::move(value); }
-
-    /**
-     * <p>A list of contexts that must be active for this intent to be considered by
-     * Amazon Lex.</p> <p>When an intent has an input context list, Amazon Lex only
-     * considers using the intent in an interaction with the user when the specified
-     * contexts are included in the active context list for the session. If the
-     * contexts are not active, then Amazon Lex will not use the intent.</p> <p>A
-     * context can be automatically activated using the <code>outputContexts</code>
-     * property or it can be set at runtime.</p> <p> For example, if there are two
-     * intents with different input contexts that respond to the same utterances, only
-     * the intent with the active context will respond.</p> <p>An intent may have up to
-     * 5 input contexts. If an intent has multiple input contexts, all of the contexts
-     * must be active to consider the intent.</p>
-     */
-    inline CreateIntentRequest& WithInputContexts(const Aws::Vector<InputContext>& value) { SetInputContexts(value); return *this;}
-
-    /**
-     * <p>A list of contexts that must be active for this intent to be considered by
-     * Amazon Lex.</p> <p>When an intent has an input context list, Amazon Lex only
-     * considers using the intent in an interaction with the user when the specified
-     * contexts are included in the active context list for the session. If the
-     * contexts are not active, then Amazon Lex will not use the intent.</p> <p>A
-     * context can be automatically activated using the <code>outputContexts</code>
-     * property or it can be set at runtime.</p> <p> For example, if there are two
-     * intents with different input contexts that respond to the same utterances, only
-     * the intent with the active context will respond.</p> <p>An intent may have up to
-     * 5 input contexts. If an intent has multiple input contexts, all of the contexts
-     * must be active to consider the intent.</p>
-     */
-    inline CreateIntentRequest& WithInputContexts(Aws::Vector<InputContext>&& value) { SetInputContexts(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of contexts that must be active for this intent to be considered by
-     * Amazon Lex.</p> <p>When an intent has an input context list, Amazon Lex only
-     * considers using the intent in an interaction with the user when the specified
-     * contexts are included in the active context list for the session. If the
-     * contexts are not active, then Amazon Lex will not use the intent.</p> <p>A
-     * context can be automatically activated using the <code>outputContexts</code>
-     * property or it can be set at runtime.</p> <p> For example, if there are two
-     * intents with different input contexts that respond to the same utterances, only
-     * the intent with the active context will respond.</p> <p>An intent may have up to
-     * 5 input contexts. If an intent has multiple input contexts, all of the contexts
-     * must be active to consider the intent.</p>
-     */
-    inline CreateIntentRequest& AddInputContexts(const InputContext& value) { m_inputContextsHasBeenSet = true; m_inputContexts.push_back(value); return *this; }
-
-    /**
-     * <p>A list of contexts that must be active for this intent to be considered by
-     * Amazon Lex.</p> <p>When an intent has an input context list, Amazon Lex only
-     * considers using the intent in an interaction with the user when the specified
-     * contexts are included in the active context list for the session. If the
-     * contexts are not active, then Amazon Lex will not use the intent.</p> <p>A
-     * context can be automatically activated using the <code>outputContexts</code>
-     * property or it can be set at runtime.</p> <p> For example, if there are two
-     * intents with different input contexts that respond to the same utterances, only
-     * the intent with the active context will respond.</p> <p>An intent may have up to
-     * 5 input contexts. If an intent has multiple input contexts, all of the contexts
-     * must be active to consider the intent.</p>
-     */
-    inline CreateIntentRequest& AddInputContexts(InputContext&& value) { m_inputContextsHasBeenSet = true; m_inputContexts.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A lists of contexts that the intent activates when it is fulfilled.</p>
      * <p>You can use an output context to indicate the intents that Amazon Lex should
@@ -585,224 +196,56 @@ namespace Model
      * context should be active, or the length of time that the context should be
      * active.</p>
      */
-    inline const Aws::Vector<OutputContext>& GetOutputContexts() const{ return m_outputContexts; }
-
-    /**
-     * <p>A lists of contexts that the intent activates when it is fulfilled.</p>
-     * <p>You can use an output context to indicate the intents that Amazon Lex should
-     * consider for the next turn of the conversation with a customer. </p> <p>When you
-     * use the <code>outputContextsList</code> property, all of the contexts specified
-     * in the list are activated when the intent is fulfilled. You can set up to 10
-     * output contexts. You can also set the number of conversation turns that the
-     * context should be active, or the length of time that the context should be
-     * active.</p>
-     */
+    inline const Aws::Vector<OutputContext>& GetOutputContexts() const { return m_outputContexts; }
     inline bool OutputContextsHasBeenSet() const { return m_outputContextsHasBeenSet; }
+    template<typename OutputContextsT = Aws::Vector<OutputContext>>
+    void SetOutputContexts(OutputContextsT&& value) { m_outputContextsHasBeenSet = true; m_outputContexts = std::forward<OutputContextsT>(value); }
+    template<typename OutputContextsT = Aws::Vector<OutputContext>>
+    CreateIntentRequest& WithOutputContexts(OutputContextsT&& value) { SetOutputContexts(std::forward<OutputContextsT>(value)); return *this;}
+    template<typename OutputContextsT = OutputContext>
+    CreateIntentRequest& AddOutputContexts(OutputContextsT&& value) { m_outputContextsHasBeenSet = true; m_outputContexts.emplace_back(std::forward<OutputContextsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A lists of contexts that the intent activates when it is fulfilled.</p>
-     * <p>You can use an output context to indicate the intents that Amazon Lex should
-     * consider for the next turn of the conversation with a customer. </p> <p>When you
-     * use the <code>outputContextsList</code> property, all of the contexts specified
-     * in the list are activated when the intent is fulfilled. You can set up to 10
-     * output contexts. You can also set the number of conversation turns that the
-     * context should be active, or the length of time that the context should be
-     * active.</p>
-     */
-    inline void SetOutputContexts(const Aws::Vector<OutputContext>& value) { m_outputContextsHasBeenSet = true; m_outputContexts = value; }
-
-    /**
-     * <p>A lists of contexts that the intent activates when it is fulfilled.</p>
-     * <p>You can use an output context to indicate the intents that Amazon Lex should
-     * consider for the next turn of the conversation with a customer. </p> <p>When you
-     * use the <code>outputContextsList</code> property, all of the contexts specified
-     * in the list are activated when the intent is fulfilled. You can set up to 10
-     * output contexts. You can also set the number of conversation turns that the
-     * context should be active, or the length of time that the context should be
-     * active.</p>
-     */
-    inline void SetOutputContexts(Aws::Vector<OutputContext>&& value) { m_outputContextsHasBeenSet = true; m_outputContexts = std::move(value); }
-
-    /**
-     * <p>A lists of contexts that the intent activates when it is fulfilled.</p>
-     * <p>You can use an output context to indicate the intents that Amazon Lex should
-     * consider for the next turn of the conversation with a customer. </p> <p>When you
-     * use the <code>outputContextsList</code> property, all of the contexts specified
-     * in the list are activated when the intent is fulfilled. You can set up to 10
-     * output contexts. You can also set the number of conversation turns that the
-     * context should be active, or the length of time that the context should be
-     * active.</p>
-     */
-    inline CreateIntentRequest& WithOutputContexts(const Aws::Vector<OutputContext>& value) { SetOutputContexts(value); return *this;}
-
-    /**
-     * <p>A lists of contexts that the intent activates when it is fulfilled.</p>
-     * <p>You can use an output context to indicate the intents that Amazon Lex should
-     * consider for the next turn of the conversation with a customer. </p> <p>When you
-     * use the <code>outputContextsList</code> property, all of the contexts specified
-     * in the list are activated when the intent is fulfilled. You can set up to 10
-     * output contexts. You can also set the number of conversation turns that the
-     * context should be active, or the length of time that the context should be
-     * active.</p>
-     */
-    inline CreateIntentRequest& WithOutputContexts(Aws::Vector<OutputContext>&& value) { SetOutputContexts(std::move(value)); return *this;}
-
-    /**
-     * <p>A lists of contexts that the intent activates when it is fulfilled.</p>
-     * <p>You can use an output context to indicate the intents that Amazon Lex should
-     * consider for the next turn of the conversation with a customer. </p> <p>When you
-     * use the <code>outputContextsList</code> property, all of the contexts specified
-     * in the list are activated when the intent is fulfilled. You can set up to 10
-     * output contexts. You can also set the number of conversation turns that the
-     * context should be active, or the length of time that the context should be
-     * active.</p>
-     */
-    inline CreateIntentRequest& AddOutputContexts(const OutputContext& value) { m_outputContextsHasBeenSet = true; m_outputContexts.push_back(value); return *this; }
-
-    /**
-     * <p>A lists of contexts that the intent activates when it is fulfilled.</p>
-     * <p>You can use an output context to indicate the intents that Amazon Lex should
-     * consider for the next turn of the conversation with a customer. </p> <p>When you
-     * use the <code>outputContextsList</code> property, all of the contexts specified
-     * in the list are activated when the intent is fulfilled. You can set up to 10
-     * output contexts. You can also set the number of conversation turns that the
-     * context should be active, or the length of time that the context should be
-     * active.</p>
-     */
-    inline CreateIntentRequest& AddOutputContexts(OutputContext&& value) { m_outputContextsHasBeenSet = true; m_outputContexts.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Configuration information required to use the
      * <code>AMAZON.KendraSearchIntent</code> intent to connect to an Amazon Kendra
      * index. The <code>AMAZON.KendraSearchIntent</code> intent is called when Amazon
      * Lex can't determine another intent to invoke.</p>
      */
-    inline const KendraConfiguration& GetKendraConfiguration() const{ return m_kendraConfiguration; }
-
-    /**
-     * <p>Configuration information required to use the
-     * <code>AMAZON.KendraSearchIntent</code> intent to connect to an Amazon Kendra
-     * index. The <code>AMAZON.KendraSearchIntent</code> intent is called when Amazon
-     * Lex can't determine another intent to invoke.</p>
-     */
+    inline const KendraConfiguration& GetKendraConfiguration() const { return m_kendraConfiguration; }
     inline bool KendraConfigurationHasBeenSet() const { return m_kendraConfigurationHasBeenSet; }
+    template<typename KendraConfigurationT = KendraConfiguration>
+    void SetKendraConfiguration(KendraConfigurationT&& value) { m_kendraConfigurationHasBeenSet = true; m_kendraConfiguration = std::forward<KendraConfigurationT>(value); }
+    template<typename KendraConfigurationT = KendraConfiguration>
+    CreateIntentRequest& WithKendraConfiguration(KendraConfigurationT&& value) { SetKendraConfiguration(std::forward<KendraConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Configuration information required to use the
-     * <code>AMAZON.KendraSearchIntent</code> intent to connect to an Amazon Kendra
-     * index. The <code>AMAZON.KendraSearchIntent</code> intent is called when Amazon
-     * Lex can't determine another intent to invoke.</p>
-     */
-    inline void SetKendraConfiguration(const KendraConfiguration& value) { m_kendraConfigurationHasBeenSet = true; m_kendraConfiguration = value; }
-
-    /**
-     * <p>Configuration information required to use the
-     * <code>AMAZON.KendraSearchIntent</code> intent to connect to an Amazon Kendra
-     * index. The <code>AMAZON.KendraSearchIntent</code> intent is called when Amazon
-     * Lex can't determine another intent to invoke.</p>
-     */
-    inline void SetKendraConfiguration(KendraConfiguration&& value) { m_kendraConfigurationHasBeenSet = true; m_kendraConfiguration = std::move(value); }
-
-    /**
-     * <p>Configuration information required to use the
-     * <code>AMAZON.KendraSearchIntent</code> intent to connect to an Amazon Kendra
-     * index. The <code>AMAZON.KendraSearchIntent</code> intent is called when Amazon
-     * Lex can't determine another intent to invoke.</p>
-     */
-    inline CreateIntentRequest& WithKendraConfiguration(const KendraConfiguration& value) { SetKendraConfiguration(value); return *this;}
-
-    /**
-     * <p>Configuration information required to use the
-     * <code>AMAZON.KendraSearchIntent</code> intent to connect to an Amazon Kendra
-     * index. The <code>AMAZON.KendraSearchIntent</code> intent is called when Amazon
-     * Lex can't determine another intent to invoke.</p>
-     */
-    inline CreateIntentRequest& WithKendraConfiguration(KendraConfiguration&& value) { SetKendraConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the bot associated with this intent.</p>
      */
-    inline const Aws::String& GetBotId() const{ return m_botId; }
-
-    /**
-     * <p>The identifier of the bot associated with this intent.</p>
-     */
+    inline const Aws::String& GetBotId() const { return m_botId; }
     inline bool BotIdHasBeenSet() const { return m_botIdHasBeenSet; }
+    template<typename BotIdT = Aws::String>
+    void SetBotId(BotIdT&& value) { m_botIdHasBeenSet = true; m_botId = std::forward<BotIdT>(value); }
+    template<typename BotIdT = Aws::String>
+    CreateIntentRequest& WithBotId(BotIdT&& value) { SetBotId(std::forward<BotIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the bot associated with this intent.</p>
-     */
-    inline void SetBotId(const Aws::String& value) { m_botIdHasBeenSet = true; m_botId = value; }
-
-    /**
-     * <p>The identifier of the bot associated with this intent.</p>
-     */
-    inline void SetBotId(Aws::String&& value) { m_botIdHasBeenSet = true; m_botId = std::move(value); }
-
-    /**
-     * <p>The identifier of the bot associated with this intent.</p>
-     */
-    inline void SetBotId(const char* value) { m_botIdHasBeenSet = true; m_botId.assign(value); }
-
-    /**
-     * <p>The identifier of the bot associated with this intent.</p>
-     */
-    inline CreateIntentRequest& WithBotId(const Aws::String& value) { SetBotId(value); return *this;}
-
-    /**
-     * <p>The identifier of the bot associated with this intent.</p>
-     */
-    inline CreateIntentRequest& WithBotId(Aws::String&& value) { SetBotId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the bot associated with this intent.</p>
-     */
-    inline CreateIntentRequest& WithBotId(const char* value) { SetBotId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The version of the bot associated with this intent.</p>
      */
-    inline const Aws::String& GetBotVersion() const{ return m_botVersion; }
-
-    /**
-     * <p>The version of the bot associated with this intent.</p>
-     */
+    inline const Aws::String& GetBotVersion() const { return m_botVersion; }
     inline bool BotVersionHasBeenSet() const { return m_botVersionHasBeenSet; }
+    template<typename BotVersionT = Aws::String>
+    void SetBotVersion(BotVersionT&& value) { m_botVersionHasBeenSet = true; m_botVersion = std::forward<BotVersionT>(value); }
+    template<typename BotVersionT = Aws::String>
+    CreateIntentRequest& WithBotVersion(BotVersionT&& value) { SetBotVersion(std::forward<BotVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The version of the bot associated with this intent.</p>
-     */
-    inline void SetBotVersion(const Aws::String& value) { m_botVersionHasBeenSet = true; m_botVersion = value; }
-
-    /**
-     * <p>The version of the bot associated with this intent.</p>
-     */
-    inline void SetBotVersion(Aws::String&& value) { m_botVersionHasBeenSet = true; m_botVersion = std::move(value); }
-
-    /**
-     * <p>The version of the bot associated with this intent.</p>
-     */
-    inline void SetBotVersion(const char* value) { m_botVersionHasBeenSet = true; m_botVersion.assign(value); }
-
-    /**
-     * <p>The version of the bot associated with this intent.</p>
-     */
-    inline CreateIntentRequest& WithBotVersion(const Aws::String& value) { SetBotVersion(value); return *this;}
-
-    /**
-     * <p>The version of the bot associated with this intent.</p>
-     */
-    inline CreateIntentRequest& WithBotVersion(Aws::String&& value) { SetBotVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The version of the bot associated with this intent.</p>
-     */
-    inline CreateIntentRequest& WithBotVersion(const char* value) { SetBotVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the language and locale where this intent is used. All of
      * the bots, slot types, and slots used by the intent must have the same locale.
@@ -810,108 +253,53 @@ namespace Model
      * href="https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html">Supported
      * languages</a>.</p>
      */
-    inline const Aws::String& GetLocaleId() const{ return m_localeId; }
-
-    /**
-     * <p>The identifier of the language and locale where this intent is used. All of
-     * the bots, slot types, and slots used by the intent must have the same locale.
-     * For more information, see <a
-     * href="https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html">Supported
-     * languages</a>.</p>
-     */
+    inline const Aws::String& GetLocaleId() const { return m_localeId; }
     inline bool LocaleIdHasBeenSet() const { return m_localeIdHasBeenSet; }
+    template<typename LocaleIdT = Aws::String>
+    void SetLocaleId(LocaleIdT&& value) { m_localeIdHasBeenSet = true; m_localeId = std::forward<LocaleIdT>(value); }
+    template<typename LocaleIdT = Aws::String>
+    CreateIntentRequest& WithLocaleId(LocaleIdT&& value) { SetLocaleId(std::forward<LocaleIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the language and locale where this intent is used. All of
-     * the bots, slot types, and slots used by the intent must have the same locale.
-     * For more information, see <a
-     * href="https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html">Supported
-     * languages</a>.</p>
-     */
-    inline void SetLocaleId(const Aws::String& value) { m_localeIdHasBeenSet = true; m_localeId = value; }
-
-    /**
-     * <p>The identifier of the language and locale where this intent is used. All of
-     * the bots, slot types, and slots used by the intent must have the same locale.
-     * For more information, see <a
-     * href="https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html">Supported
-     * languages</a>.</p>
-     */
-    inline void SetLocaleId(Aws::String&& value) { m_localeIdHasBeenSet = true; m_localeId = std::move(value); }
-
-    /**
-     * <p>The identifier of the language and locale where this intent is used. All of
-     * the bots, slot types, and slots used by the intent must have the same locale.
-     * For more information, see <a
-     * href="https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html">Supported
-     * languages</a>.</p>
-     */
-    inline void SetLocaleId(const char* value) { m_localeIdHasBeenSet = true; m_localeId.assign(value); }
-
-    /**
-     * <p>The identifier of the language and locale where this intent is used. All of
-     * the bots, slot types, and slots used by the intent must have the same locale.
-     * For more information, see <a
-     * href="https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html">Supported
-     * languages</a>.</p>
-     */
-    inline CreateIntentRequest& WithLocaleId(const Aws::String& value) { SetLocaleId(value); return *this;}
-
-    /**
-     * <p>The identifier of the language and locale where this intent is used. All of
-     * the bots, slot types, and slots used by the intent must have the same locale.
-     * For more information, see <a
-     * href="https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html">Supported
-     * languages</a>.</p>
-     */
-    inline CreateIntentRequest& WithLocaleId(Aws::String&& value) { SetLocaleId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the language and locale where this intent is used. All of
-     * the bots, slot types, and slots used by the intent must have the same locale.
-     * For more information, see <a
-     * href="https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html">Supported
-     * languages</a>.</p>
-     */
-    inline CreateIntentRequest& WithLocaleId(const char* value) { SetLocaleId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Configuration settings for the response that is sent to the user at the
      * beginning of a conversation, before eliciting slot values.</p>
      */
-    inline const InitialResponseSetting& GetInitialResponseSetting() const{ return m_initialResponseSetting; }
-
-    /**
-     * <p>Configuration settings for the response that is sent to the user at the
-     * beginning of a conversation, before eliciting slot values.</p>
-     */
+    inline const InitialResponseSetting& GetInitialResponseSetting() const { return m_initialResponseSetting; }
     inline bool InitialResponseSettingHasBeenSet() const { return m_initialResponseSettingHasBeenSet; }
+    template<typename InitialResponseSettingT = InitialResponseSetting>
+    void SetInitialResponseSetting(InitialResponseSettingT&& value) { m_initialResponseSettingHasBeenSet = true; m_initialResponseSetting = std::forward<InitialResponseSettingT>(value); }
+    template<typename InitialResponseSettingT = InitialResponseSetting>
+    CreateIntentRequest& WithInitialResponseSetting(InitialResponseSettingT&& value) { SetInitialResponseSetting(std::forward<InitialResponseSettingT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Configuration settings for the response that is sent to the user at the
-     * beginning of a conversation, before eliciting slot values.</p>
+     * <p>Specifies the configuration of the built-in <code>Amazon.QnAIntent</code>.
+     * The <code>AMAZON.QnAIntent</code> intent is called when Amazon Lex can't
+     * determine another intent to invoke. If you specify this field, you can't specify
+     * the <code>kendraConfiguration</code> field.</p>
      */
-    inline void SetInitialResponseSetting(const InitialResponseSetting& value) { m_initialResponseSettingHasBeenSet = true; m_initialResponseSetting = value; }
+    inline const QnAIntentConfiguration& GetQnAIntentConfiguration() const { return m_qnAIntentConfiguration; }
+    inline bool QnAIntentConfigurationHasBeenSet() const { return m_qnAIntentConfigurationHasBeenSet; }
+    template<typename QnAIntentConfigurationT = QnAIntentConfiguration>
+    void SetQnAIntentConfiguration(QnAIntentConfigurationT&& value) { m_qnAIntentConfigurationHasBeenSet = true; m_qnAIntentConfiguration = std::forward<QnAIntentConfigurationT>(value); }
+    template<typename QnAIntentConfigurationT = QnAIntentConfiguration>
+    CreateIntentRequest& WithQnAIntentConfiguration(QnAIntentConfigurationT&& value) { SetQnAIntentConfiguration(std::forward<QnAIntentConfigurationT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Configuration settings for the response that is sent to the user at the
-     * beginning of a conversation, before eliciting slot values.</p>
+     * <p>Qinconnect intent configuration details for the create intent request.</p>
      */
-    inline void SetInitialResponseSetting(InitialResponseSetting&& value) { m_initialResponseSettingHasBeenSet = true; m_initialResponseSetting = std::move(value); }
-
-    /**
-     * <p>Configuration settings for the response that is sent to the user at the
-     * beginning of a conversation, before eliciting slot values.</p>
-     */
-    inline CreateIntentRequest& WithInitialResponseSetting(const InitialResponseSetting& value) { SetInitialResponseSetting(value); return *this;}
-
-    /**
-     * <p>Configuration settings for the response that is sent to the user at the
-     * beginning of a conversation, before eliciting slot values.</p>
-     */
-    inline CreateIntentRequest& WithInitialResponseSetting(InitialResponseSetting&& value) { SetInitialResponseSetting(std::move(value)); return *this;}
-
+    inline const QInConnectIntentConfiguration& GetQInConnectIntentConfiguration() const { return m_qInConnectIntentConfiguration; }
+    inline bool QInConnectIntentConfigurationHasBeenSet() const { return m_qInConnectIntentConfigurationHasBeenSet; }
+    template<typename QInConnectIntentConfigurationT = QInConnectIntentConfiguration>
+    void SetQInConnectIntentConfiguration(QInConnectIntentConfigurationT&& value) { m_qInConnectIntentConfigurationHasBeenSet = true; m_qInConnectIntentConfiguration = std::forward<QInConnectIntentConfigurationT>(value); }
+    template<typename QInConnectIntentConfigurationT = QInConnectIntentConfiguration>
+    CreateIntentRequest& WithQInConnectIntentConfiguration(QInConnectIntentConfigurationT&& value) { SetQInConnectIntentConfiguration(std::forward<QInConnectIntentConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_intentName;
@@ -958,6 +346,12 @@ namespace Model
 
     InitialResponseSetting m_initialResponseSetting;
     bool m_initialResponseSettingHasBeenSet = false;
+
+    QnAIntentConfiguration m_qnAIntentConfiguration;
+    bool m_qnAIntentConfigurationHasBeenSet = false;
+
+    QInConnectIntentConfiguration m_qInConnectIntentConfiguration;
+    bool m_qInConnectIntentConfigurationHasBeenSet = false;
   };
 
 } // namespace Model

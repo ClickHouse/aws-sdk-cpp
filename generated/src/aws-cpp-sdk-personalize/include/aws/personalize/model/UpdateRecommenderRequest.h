@@ -22,7 +22,7 @@ namespace Model
   class UpdateRecommenderRequest : public PersonalizeRequest
   {
   public:
-    AWS_PERSONALIZE_API UpdateRecommenderRequest();
+    AWS_PERSONALIZE_API UpdateRecommenderRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,77 +35,29 @@ namespace Model
     AWS_PERSONALIZE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the recommender to modify.</p>
      */
-    inline const Aws::String& GetRecommenderArn() const{ return m_recommenderArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the recommender to modify.</p>
-     */
+    inline const Aws::String& GetRecommenderArn() const { return m_recommenderArn; }
     inline bool RecommenderArnHasBeenSet() const { return m_recommenderArnHasBeenSet; }
+    template<typename RecommenderArnT = Aws::String>
+    void SetRecommenderArn(RecommenderArnT&& value) { m_recommenderArnHasBeenSet = true; m_recommenderArn = std::forward<RecommenderArnT>(value); }
+    template<typename RecommenderArnT = Aws::String>
+    UpdateRecommenderRequest& WithRecommenderArn(RecommenderArnT&& value) { SetRecommenderArn(std::forward<RecommenderArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the recommender to modify.</p>
-     */
-    inline void SetRecommenderArn(const Aws::String& value) { m_recommenderArnHasBeenSet = true; m_recommenderArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the recommender to modify.</p>
-     */
-    inline void SetRecommenderArn(Aws::String&& value) { m_recommenderArnHasBeenSet = true; m_recommenderArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the recommender to modify.</p>
-     */
-    inline void SetRecommenderArn(const char* value) { m_recommenderArnHasBeenSet = true; m_recommenderArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the recommender to modify.</p>
-     */
-    inline UpdateRecommenderRequest& WithRecommenderArn(const Aws::String& value) { SetRecommenderArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the recommender to modify.</p>
-     */
-    inline UpdateRecommenderRequest& WithRecommenderArn(Aws::String&& value) { SetRecommenderArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the recommender to modify.</p>
-     */
-    inline UpdateRecommenderRequest& WithRecommenderArn(const char* value) { SetRecommenderArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The configuration details of the recommender.</p>
      */
-    inline const RecommenderConfig& GetRecommenderConfig() const{ return m_recommenderConfig; }
-
-    /**
-     * <p>The configuration details of the recommender.</p>
-     */
+    inline const RecommenderConfig& GetRecommenderConfig() const { return m_recommenderConfig; }
     inline bool RecommenderConfigHasBeenSet() const { return m_recommenderConfigHasBeenSet; }
-
-    /**
-     * <p>The configuration details of the recommender.</p>
-     */
-    inline void SetRecommenderConfig(const RecommenderConfig& value) { m_recommenderConfigHasBeenSet = true; m_recommenderConfig = value; }
-
-    /**
-     * <p>The configuration details of the recommender.</p>
-     */
-    inline void SetRecommenderConfig(RecommenderConfig&& value) { m_recommenderConfigHasBeenSet = true; m_recommenderConfig = std::move(value); }
-
-    /**
-     * <p>The configuration details of the recommender.</p>
-     */
-    inline UpdateRecommenderRequest& WithRecommenderConfig(const RecommenderConfig& value) { SetRecommenderConfig(value); return *this;}
-
-    /**
-     * <p>The configuration details of the recommender.</p>
-     */
-    inline UpdateRecommenderRequest& WithRecommenderConfig(RecommenderConfig&& value) { SetRecommenderConfig(std::move(value)); return *this;}
-
+    template<typename RecommenderConfigT = RecommenderConfig>
+    void SetRecommenderConfig(RecommenderConfigT&& value) { m_recommenderConfigHasBeenSet = true; m_recommenderConfig = std::forward<RecommenderConfigT>(value); }
+    template<typename RecommenderConfigT = RecommenderConfig>
+    UpdateRecommenderRequest& WithRecommenderConfig(RecommenderConfigT&& value) { SetRecommenderConfig(std::forward<RecommenderConfigT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_recommenderArn;

@@ -27,125 +27,53 @@ namespace Model
   class CreateCustomMetricResult
   {
   public:
-    AWS_IOT_API CreateCustomMetricResult();
+    AWS_IOT_API CreateCustomMetricResult() = default;
     AWS_IOT_API CreateCustomMetricResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_IOT_API CreateCustomMetricResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p> The name of the custom metric to be used in the metric report. </p>
      */
-    inline const Aws::String& GetMetricName() const{ return m_metricName; }
+    inline const Aws::String& GetMetricName() const { return m_metricName; }
+    template<typename MetricNameT = Aws::String>
+    void SetMetricName(MetricNameT&& value) { m_metricNameHasBeenSet = true; m_metricName = std::forward<MetricNameT>(value); }
+    template<typename MetricNameT = Aws::String>
+    CreateCustomMetricResult& WithMetricName(MetricNameT&& value) { SetMetricName(std::forward<MetricNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The name of the custom metric to be used in the metric report. </p>
-     */
-    inline void SetMetricName(const Aws::String& value) { m_metricName = value; }
-
-    /**
-     * <p> The name of the custom metric to be used in the metric report. </p>
-     */
-    inline void SetMetricName(Aws::String&& value) { m_metricName = std::move(value); }
-
-    /**
-     * <p> The name of the custom metric to be used in the metric report. </p>
-     */
-    inline void SetMetricName(const char* value) { m_metricName.assign(value); }
-
-    /**
-     * <p> The name of the custom metric to be used in the metric report. </p>
-     */
-    inline CreateCustomMetricResult& WithMetricName(const Aws::String& value) { SetMetricName(value); return *this;}
-
-    /**
-     * <p> The name of the custom metric to be used in the metric report. </p>
-     */
-    inline CreateCustomMetricResult& WithMetricName(Aws::String&& value) { SetMetricName(std::move(value)); return *this;}
-
-    /**
-     * <p> The name of the custom metric to be used in the metric report. </p>
-     */
-    inline CreateCustomMetricResult& WithMetricName(const char* value) { SetMetricName(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The Amazon Resource Number (ARN) of the custom metric. For example,
      * <code>arn:<i>aws-partition</i>:iot:<i>region</i>:<i>accountId</i>:custommetric/<i>metricName</i>
      * </code> </p>
      */
-    inline const Aws::String& GetMetricArn() const{ return m_metricArn; }
+    inline const Aws::String& GetMetricArn() const { return m_metricArn; }
+    template<typename MetricArnT = Aws::String>
+    void SetMetricArn(MetricArnT&& value) { m_metricArnHasBeenSet = true; m_metricArn = std::forward<MetricArnT>(value); }
+    template<typename MetricArnT = Aws::String>
+    CreateCustomMetricResult& WithMetricArn(MetricArnT&& value) { SetMetricArn(std::forward<MetricArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The Amazon Resource Number (ARN) of the custom metric. For example,
-     * <code>arn:<i>aws-partition</i>:iot:<i>region</i>:<i>accountId</i>:custommetric/<i>metricName</i>
-     * </code> </p>
-     */
-    inline void SetMetricArn(const Aws::String& value) { m_metricArn = value; }
-
-    /**
-     * <p> The Amazon Resource Number (ARN) of the custom metric. For example,
-     * <code>arn:<i>aws-partition</i>:iot:<i>region</i>:<i>accountId</i>:custommetric/<i>metricName</i>
-     * </code> </p>
-     */
-    inline void SetMetricArn(Aws::String&& value) { m_metricArn = std::move(value); }
-
-    /**
-     * <p> The Amazon Resource Number (ARN) of the custom metric. For example,
-     * <code>arn:<i>aws-partition</i>:iot:<i>region</i>:<i>accountId</i>:custommetric/<i>metricName</i>
-     * </code> </p>
-     */
-    inline void SetMetricArn(const char* value) { m_metricArn.assign(value); }
-
-    /**
-     * <p> The Amazon Resource Number (ARN) of the custom metric. For example,
-     * <code>arn:<i>aws-partition</i>:iot:<i>region</i>:<i>accountId</i>:custommetric/<i>metricName</i>
-     * </code> </p>
-     */
-    inline CreateCustomMetricResult& WithMetricArn(const Aws::String& value) { SetMetricArn(value); return *this;}
-
-    /**
-     * <p> The Amazon Resource Number (ARN) of the custom metric. For example,
-     * <code>arn:<i>aws-partition</i>:iot:<i>region</i>:<i>accountId</i>:custommetric/<i>metricName</i>
-     * </code> </p>
-     */
-    inline CreateCustomMetricResult& WithMetricArn(Aws::String&& value) { SetMetricArn(std::move(value)); return *this;}
-
-    /**
-     * <p> The Amazon Resource Number (ARN) of the custom metric. For example,
-     * <code>arn:<i>aws-partition</i>:iot:<i>region</i>:<i>accountId</i>:custommetric/<i>metricName</i>
-     * </code> </p>
-     */
-    inline CreateCustomMetricResult& WithMetricArn(const char* value) { SetMetricArn(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline CreateCustomMetricResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline CreateCustomMetricResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline CreateCustomMetricResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    CreateCustomMetricResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_metricName;
+    bool m_metricNameHasBeenSet = false;
 
     Aws::String m_metricArn;
+    bool m_metricArnHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

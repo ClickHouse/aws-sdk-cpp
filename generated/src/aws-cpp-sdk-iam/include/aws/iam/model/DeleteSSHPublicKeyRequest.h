@@ -21,7 +21,7 @@ namespace Model
   class DeleteSSHPublicKeyRequest : public IAMRequest
   {
   public:
-    AWS_IAM_API DeleteSSHPublicKeyRequest();
+    AWS_IAM_API DeleteSSHPublicKeyRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,6 +36,7 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The name of the IAM user associated with the SSH public key.</p> <p>This
      * parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex
@@ -43,136 +44,28 @@ namespace Model
      * alphanumeric characters with no spaces. You can also include any of the
      * following characters: _+=,.@-</p>
      */
-    inline const Aws::String& GetUserName() const{ return m_userName; }
-
-    /**
-     * <p>The name of the IAM user associated with the SSH public key.</p> <p>This
-     * parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex
-     * pattern</a>) a string of characters consisting of upper and lowercase
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: _+=,.@-</p>
-     */
+    inline const Aws::String& GetUserName() const { return m_userName; }
     inline bool UserNameHasBeenSet() const { return m_userNameHasBeenSet; }
+    template<typename UserNameT = Aws::String>
+    void SetUserName(UserNameT&& value) { m_userNameHasBeenSet = true; m_userName = std::forward<UserNameT>(value); }
+    template<typename UserNameT = Aws::String>
+    DeleteSSHPublicKeyRequest& WithUserName(UserNameT&& value) { SetUserName(std::forward<UserNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the IAM user associated with the SSH public key.</p> <p>This
-     * parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex
-     * pattern</a>) a string of characters consisting of upper and lowercase
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: _+=,.@-</p>
-     */
-    inline void SetUserName(const Aws::String& value) { m_userNameHasBeenSet = true; m_userName = value; }
-
-    /**
-     * <p>The name of the IAM user associated with the SSH public key.</p> <p>This
-     * parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex
-     * pattern</a>) a string of characters consisting of upper and lowercase
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: _+=,.@-</p>
-     */
-    inline void SetUserName(Aws::String&& value) { m_userNameHasBeenSet = true; m_userName = std::move(value); }
-
-    /**
-     * <p>The name of the IAM user associated with the SSH public key.</p> <p>This
-     * parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex
-     * pattern</a>) a string of characters consisting of upper and lowercase
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: _+=,.@-</p>
-     */
-    inline void SetUserName(const char* value) { m_userNameHasBeenSet = true; m_userName.assign(value); }
-
-    /**
-     * <p>The name of the IAM user associated with the SSH public key.</p> <p>This
-     * parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex
-     * pattern</a>) a string of characters consisting of upper and lowercase
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: _+=,.@-</p>
-     */
-    inline DeleteSSHPublicKeyRequest& WithUserName(const Aws::String& value) { SetUserName(value); return *this;}
-
-    /**
-     * <p>The name of the IAM user associated with the SSH public key.</p> <p>This
-     * parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex
-     * pattern</a>) a string of characters consisting of upper and lowercase
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: _+=,.@-</p>
-     */
-    inline DeleteSSHPublicKeyRequest& WithUserName(Aws::String&& value) { SetUserName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the IAM user associated with the SSH public key.</p> <p>This
-     * parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex
-     * pattern</a>) a string of characters consisting of upper and lowercase
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: _+=,.@-</p>
-     */
-    inline DeleteSSHPublicKeyRequest& WithUserName(const char* value) { SetUserName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique identifier for the SSH public key.</p> <p>This parameter allows
      * (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a
      * string of characters that can consist of any upper or lowercased letter or
      * digit.</p>
      */
-    inline const Aws::String& GetSSHPublicKeyId() const{ return m_sSHPublicKeyId; }
-
-    /**
-     * <p>The unique identifier for the SSH public key.</p> <p>This parameter allows
-     * (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a
-     * string of characters that can consist of any upper or lowercased letter or
-     * digit.</p>
-     */
+    inline const Aws::String& GetSSHPublicKeyId() const { return m_sSHPublicKeyId; }
     inline bool SSHPublicKeyIdHasBeenSet() const { return m_sSHPublicKeyIdHasBeenSet; }
-
-    /**
-     * <p>The unique identifier for the SSH public key.</p> <p>This parameter allows
-     * (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a
-     * string of characters that can consist of any upper or lowercased letter or
-     * digit.</p>
-     */
-    inline void SetSSHPublicKeyId(const Aws::String& value) { m_sSHPublicKeyIdHasBeenSet = true; m_sSHPublicKeyId = value; }
-
-    /**
-     * <p>The unique identifier for the SSH public key.</p> <p>This parameter allows
-     * (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a
-     * string of characters that can consist of any upper or lowercased letter or
-     * digit.</p>
-     */
-    inline void SetSSHPublicKeyId(Aws::String&& value) { m_sSHPublicKeyIdHasBeenSet = true; m_sSHPublicKeyId = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the SSH public key.</p> <p>This parameter allows
-     * (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a
-     * string of characters that can consist of any upper or lowercased letter or
-     * digit.</p>
-     */
-    inline void SetSSHPublicKeyId(const char* value) { m_sSHPublicKeyIdHasBeenSet = true; m_sSHPublicKeyId.assign(value); }
-
-    /**
-     * <p>The unique identifier for the SSH public key.</p> <p>This parameter allows
-     * (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a
-     * string of characters that can consist of any upper or lowercased letter or
-     * digit.</p>
-     */
-    inline DeleteSSHPublicKeyRequest& WithSSHPublicKeyId(const Aws::String& value) { SetSSHPublicKeyId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the SSH public key.</p> <p>This parameter allows
-     * (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a
-     * string of characters that can consist of any upper or lowercased letter or
-     * digit.</p>
-     */
-    inline DeleteSSHPublicKeyRequest& WithSSHPublicKeyId(Aws::String&& value) { SetSSHPublicKeyId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the SSH public key.</p> <p>This parameter allows
-     * (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a
-     * string of characters that can consist of any upper or lowercased letter or
-     * digit.</p>
-     */
-    inline DeleteSSHPublicKeyRequest& WithSSHPublicKeyId(const char* value) { SetSSHPublicKeyId(value); return *this;}
-
+    template<typename SSHPublicKeyIdT = Aws::String>
+    void SetSSHPublicKeyId(SSHPublicKeyIdT&& value) { m_sSHPublicKeyIdHasBeenSet = true; m_sSHPublicKeyId = std::forward<SSHPublicKeyIdT>(value); }
+    template<typename SSHPublicKeyIdT = Aws::String>
+    DeleteSSHPublicKeyRequest& WithSSHPublicKeyId(SSHPublicKeyIdT&& value) { SetSSHPublicKeyId(std::forward<SSHPublicKeyIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_userName;

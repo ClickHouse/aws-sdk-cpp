@@ -18,21 +18,7 @@ namespace MarketplaceEntitlementService
 namespace Model
 {
 
-Entitlement::Entitlement() : 
-    m_productCodeHasBeenSet(false),
-    m_dimensionHasBeenSet(false),
-    m_customerIdentifierHasBeenSet(false),
-    m_valueHasBeenSet(false),
-    m_expirationDateHasBeenSet(false)
-{
-}
-
-Entitlement::Entitlement(JsonView jsonValue) : 
-    m_productCodeHasBeenSet(false),
-    m_dimensionHasBeenSet(false),
-    m_customerIdentifierHasBeenSet(false),
-    m_valueHasBeenSet(false),
-    m_expirationDateHasBeenSet(false)
+Entitlement::Entitlement(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,38 +28,33 @@ Entitlement& Entitlement::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ProductCode"))
   {
     m_productCode = jsonValue.GetString("ProductCode");
-
     m_productCodeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Dimension"))
   {
     m_dimension = jsonValue.GetString("Dimension");
-
     m_dimensionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CustomerIdentifier"))
   {
     m_customerIdentifier = jsonValue.GetString("CustomerIdentifier");
-
     m_customerIdentifierHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("CustomerAWSAccountId"))
+  {
+    m_customerAWSAccountId = jsonValue.GetString("CustomerAWSAccountId");
+    m_customerAWSAccountIdHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("Value"))
   {
     m_value = jsonValue.GetObject("Value");
-
     m_valueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ExpirationDate"))
   {
     m_expirationDate = jsonValue.GetDouble("ExpirationDate");
-
     m_expirationDateHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -96,6 +77,12 @@ JsonValue Entitlement::Jsonize() const
   if(m_customerIdentifierHasBeenSet)
   {
    payload.WithString("CustomerIdentifier", m_customerIdentifier);
+
+  }
+
+  if(m_customerAWSAccountIdHasBeenSet)
+  {
+   payload.WithString("CustomerAWSAccountId", m_customerAWSAccountId);
 
   }
 

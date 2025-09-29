@@ -43,76 +43,26 @@ namespace Model
   class EfsFileSystemConfiguration
   {
   public:
-    AWS_ACCESSANALYZER_API EfsFileSystemConfiguration();
+    AWS_ACCESSANALYZER_API EfsFileSystemConfiguration() = default;
     AWS_ACCESSANALYZER_API EfsFileSystemConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_ACCESSANALYZER_API EfsFileSystemConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ACCESSANALYZER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The JSON policy definition to apply to the Amazon EFS file system. For more
      * information on the elements that make up a file system policy, see <a
      * href="https://docs.aws.amazon.com/efs/latest/ug/access-control-overview.html#access-control-manage-access-intro-resource-policies">Amazon
      * EFS Resource-based policies</a>.</p>
      */
-    inline const Aws::String& GetFileSystemPolicy() const{ return m_fileSystemPolicy; }
-
-    /**
-     * <p>The JSON policy definition to apply to the Amazon EFS file system. For more
-     * information on the elements that make up a file system policy, see <a
-     * href="https://docs.aws.amazon.com/efs/latest/ug/access-control-overview.html#access-control-manage-access-intro-resource-policies">Amazon
-     * EFS Resource-based policies</a>.</p>
-     */
+    inline const Aws::String& GetFileSystemPolicy() const { return m_fileSystemPolicy; }
     inline bool FileSystemPolicyHasBeenSet() const { return m_fileSystemPolicyHasBeenSet; }
-
-    /**
-     * <p>The JSON policy definition to apply to the Amazon EFS file system. For more
-     * information on the elements that make up a file system policy, see <a
-     * href="https://docs.aws.amazon.com/efs/latest/ug/access-control-overview.html#access-control-manage-access-intro-resource-policies">Amazon
-     * EFS Resource-based policies</a>.</p>
-     */
-    inline void SetFileSystemPolicy(const Aws::String& value) { m_fileSystemPolicyHasBeenSet = true; m_fileSystemPolicy = value; }
-
-    /**
-     * <p>The JSON policy definition to apply to the Amazon EFS file system. For more
-     * information on the elements that make up a file system policy, see <a
-     * href="https://docs.aws.amazon.com/efs/latest/ug/access-control-overview.html#access-control-manage-access-intro-resource-policies">Amazon
-     * EFS Resource-based policies</a>.</p>
-     */
-    inline void SetFileSystemPolicy(Aws::String&& value) { m_fileSystemPolicyHasBeenSet = true; m_fileSystemPolicy = std::move(value); }
-
-    /**
-     * <p>The JSON policy definition to apply to the Amazon EFS file system. For more
-     * information on the elements that make up a file system policy, see <a
-     * href="https://docs.aws.amazon.com/efs/latest/ug/access-control-overview.html#access-control-manage-access-intro-resource-policies">Amazon
-     * EFS Resource-based policies</a>.</p>
-     */
-    inline void SetFileSystemPolicy(const char* value) { m_fileSystemPolicyHasBeenSet = true; m_fileSystemPolicy.assign(value); }
-
-    /**
-     * <p>The JSON policy definition to apply to the Amazon EFS file system. For more
-     * information on the elements that make up a file system policy, see <a
-     * href="https://docs.aws.amazon.com/efs/latest/ug/access-control-overview.html#access-control-manage-access-intro-resource-policies">Amazon
-     * EFS Resource-based policies</a>.</p>
-     */
-    inline EfsFileSystemConfiguration& WithFileSystemPolicy(const Aws::String& value) { SetFileSystemPolicy(value); return *this;}
-
-    /**
-     * <p>The JSON policy definition to apply to the Amazon EFS file system. For more
-     * information on the elements that make up a file system policy, see <a
-     * href="https://docs.aws.amazon.com/efs/latest/ug/access-control-overview.html#access-control-manage-access-intro-resource-policies">Amazon
-     * EFS Resource-based policies</a>.</p>
-     */
-    inline EfsFileSystemConfiguration& WithFileSystemPolicy(Aws::String&& value) { SetFileSystemPolicy(std::move(value)); return *this;}
-
-    /**
-     * <p>The JSON policy definition to apply to the Amazon EFS file system. For more
-     * information on the elements that make up a file system policy, see <a
-     * href="https://docs.aws.amazon.com/efs/latest/ug/access-control-overview.html#access-control-manage-access-intro-resource-policies">Amazon
-     * EFS Resource-based policies</a>.</p>
-     */
-    inline EfsFileSystemConfiguration& WithFileSystemPolicy(const char* value) { SetFileSystemPolicy(value); return *this;}
-
+    template<typename FileSystemPolicyT = Aws::String>
+    void SetFileSystemPolicy(FileSystemPolicyT&& value) { m_fileSystemPolicyHasBeenSet = true; m_fileSystemPolicy = std::forward<FileSystemPolicyT>(value); }
+    template<typename FileSystemPolicyT = Aws::String>
+    EfsFileSystemConfiguration& WithFileSystemPolicy(FileSystemPolicyT&& value) { SetFileSystemPolicy(std::forward<FileSystemPolicyT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_fileSystemPolicy;

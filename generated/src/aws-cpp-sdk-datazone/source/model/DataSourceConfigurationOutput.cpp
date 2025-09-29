@@ -18,15 +18,7 @@ namespace DataZone
 namespace Model
 {
 
-DataSourceConfigurationOutput::DataSourceConfigurationOutput() : 
-    m_glueRunConfigurationHasBeenSet(false),
-    m_redshiftRunConfigurationHasBeenSet(false)
-{
-}
-
-DataSourceConfigurationOutput::DataSourceConfigurationOutput(JsonView jsonValue) : 
-    m_glueRunConfigurationHasBeenSet(false),
-    m_redshiftRunConfigurationHasBeenSet(false)
+DataSourceConfigurationOutput::DataSourceConfigurationOutput(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,18 @@ DataSourceConfigurationOutput& DataSourceConfigurationOutput::operator =(JsonVie
   if(jsonValue.ValueExists("glueRunConfiguration"))
   {
     m_glueRunConfiguration = jsonValue.GetObject("glueRunConfiguration");
-
     m_glueRunConfigurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("redshiftRunConfiguration"))
   {
     m_redshiftRunConfiguration = jsonValue.GetObject("redshiftRunConfiguration");
-
     m_redshiftRunConfigurationHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("sageMakerRunConfiguration"))
+  {
+    m_sageMakerRunConfiguration = jsonValue.GetObject("sageMakerRunConfiguration");
+    m_sageMakerRunConfigurationHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -63,6 +56,12 @@ JsonValue DataSourceConfigurationOutput::Jsonize() const
   if(m_redshiftRunConfigurationHasBeenSet)
   {
    payload.WithObject("redshiftRunConfiguration", m_redshiftRunConfiguration.Jsonize());
+
+  }
+
+  if(m_sageMakerRunConfigurationHasBeenSet)
+  {
+   payload.WithObject("sageMakerRunConfiguration", m_sageMakerRunConfiguration.Jsonize());
 
   }
 

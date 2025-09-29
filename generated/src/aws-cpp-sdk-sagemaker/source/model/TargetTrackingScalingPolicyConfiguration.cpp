@@ -18,17 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-TargetTrackingScalingPolicyConfiguration::TargetTrackingScalingPolicyConfiguration() : 
-    m_metricSpecificationHasBeenSet(false),
-    m_targetValue(0.0),
-    m_targetValueHasBeenSet(false)
-{
-}
-
-TargetTrackingScalingPolicyConfiguration::TargetTrackingScalingPolicyConfiguration(JsonView jsonValue) : 
-    m_metricSpecificationHasBeenSet(false),
-    m_targetValue(0.0),
-    m_targetValueHasBeenSet(false)
+TargetTrackingScalingPolicyConfiguration::TargetTrackingScalingPolicyConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ TargetTrackingScalingPolicyConfiguration& TargetTrackingScalingPolicyConfigurati
   if(jsonValue.ValueExists("MetricSpecification"))
   {
     m_metricSpecification = jsonValue.GetObject("MetricSpecification");
-
     m_metricSpecificationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TargetValue"))
   {
     m_targetValue = jsonValue.GetDouble("TargetValue");
-
     m_targetValueHasBeenSet = true;
   }
-
   return *this;
 }
 

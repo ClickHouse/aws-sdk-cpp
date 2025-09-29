@@ -35,174 +35,69 @@ namespace Model
   class VirtualGatewayData
   {
   public:
-    AWS_APPMESH_API VirtualGatewayData();
+    AWS_APPMESH_API VirtualGatewayData() = default;
     AWS_APPMESH_API VirtualGatewayData(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPMESH_API VirtualGatewayData& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPMESH_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the service mesh that the virtual gateway resides in.</p>
      */
-    inline const Aws::String& GetMeshName() const{ return m_meshName; }
-
-    /**
-     * <p>The name of the service mesh that the virtual gateway resides in.</p>
-     */
+    inline const Aws::String& GetMeshName() const { return m_meshName; }
     inline bool MeshNameHasBeenSet() const { return m_meshNameHasBeenSet; }
+    template<typename MeshNameT = Aws::String>
+    void SetMeshName(MeshNameT&& value) { m_meshNameHasBeenSet = true; m_meshName = std::forward<MeshNameT>(value); }
+    template<typename MeshNameT = Aws::String>
+    VirtualGatewayData& WithMeshName(MeshNameT&& value) { SetMeshName(std::forward<MeshNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the service mesh that the virtual gateway resides in.</p>
-     */
-    inline void SetMeshName(const Aws::String& value) { m_meshNameHasBeenSet = true; m_meshName = value; }
-
-    /**
-     * <p>The name of the service mesh that the virtual gateway resides in.</p>
-     */
-    inline void SetMeshName(Aws::String&& value) { m_meshNameHasBeenSet = true; m_meshName = std::move(value); }
-
-    /**
-     * <p>The name of the service mesh that the virtual gateway resides in.</p>
-     */
-    inline void SetMeshName(const char* value) { m_meshNameHasBeenSet = true; m_meshName.assign(value); }
-
-    /**
-     * <p>The name of the service mesh that the virtual gateway resides in.</p>
-     */
-    inline VirtualGatewayData& WithMeshName(const Aws::String& value) { SetMeshName(value); return *this;}
-
-    /**
-     * <p>The name of the service mesh that the virtual gateway resides in.</p>
-     */
-    inline VirtualGatewayData& WithMeshName(Aws::String&& value) { SetMeshName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the service mesh that the virtual gateway resides in.</p>
-     */
-    inline VirtualGatewayData& WithMeshName(const char* value) { SetMeshName(value); return *this;}
-
-
+    ///@{
     
-    inline const ResourceMetadata& GetMetadata() const{ return m_metadata; }
-
-    
+    inline const ResourceMetadata& GetMetadata() const { return m_metadata; }
     inline bool MetadataHasBeenSet() const { return m_metadataHasBeenSet; }
+    template<typename MetadataT = ResourceMetadata>
+    void SetMetadata(MetadataT&& value) { m_metadataHasBeenSet = true; m_metadata = std::forward<MetadataT>(value); }
+    template<typename MetadataT = ResourceMetadata>
+    VirtualGatewayData& WithMetadata(MetadataT&& value) { SetMetadata(std::forward<MetadataT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetMetadata(const ResourceMetadata& value) { m_metadataHasBeenSet = true; m_metadata = value; }
-
-    
-    inline void SetMetadata(ResourceMetadata&& value) { m_metadataHasBeenSet = true; m_metadata = std::move(value); }
-
-    
-    inline VirtualGatewayData& WithMetadata(const ResourceMetadata& value) { SetMetadata(value); return *this;}
-
-    
-    inline VirtualGatewayData& WithMetadata(ResourceMetadata&& value) { SetMetadata(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The specifications of the virtual gateway.</p>
      */
-    inline const VirtualGatewaySpec& GetSpec() const{ return m_spec; }
-
-    /**
-     * <p>The specifications of the virtual gateway.</p>
-     */
+    inline const VirtualGatewaySpec& GetSpec() const { return m_spec; }
     inline bool SpecHasBeenSet() const { return m_specHasBeenSet; }
+    template<typename SpecT = VirtualGatewaySpec>
+    void SetSpec(SpecT&& value) { m_specHasBeenSet = true; m_spec = std::forward<SpecT>(value); }
+    template<typename SpecT = VirtualGatewaySpec>
+    VirtualGatewayData& WithSpec(SpecT&& value) { SetSpec(std::forward<SpecT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The specifications of the virtual gateway.</p>
-     */
-    inline void SetSpec(const VirtualGatewaySpec& value) { m_specHasBeenSet = true; m_spec = value; }
-
-    /**
-     * <p>The specifications of the virtual gateway.</p>
-     */
-    inline void SetSpec(VirtualGatewaySpec&& value) { m_specHasBeenSet = true; m_spec = std::move(value); }
-
-    /**
-     * <p>The specifications of the virtual gateway.</p>
-     */
-    inline VirtualGatewayData& WithSpec(const VirtualGatewaySpec& value) { SetSpec(value); return *this;}
-
-    /**
-     * <p>The specifications of the virtual gateway.</p>
-     */
-    inline VirtualGatewayData& WithSpec(VirtualGatewaySpec&& value) { SetSpec(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The current status of the virtual gateway.</p>
      */
-    inline const VirtualGatewayStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The current status of the virtual gateway.</p>
-     */
+    inline const VirtualGatewayStatus& GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    template<typename StatusT = VirtualGatewayStatus>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = VirtualGatewayStatus>
+    VirtualGatewayData& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The current status of the virtual gateway.</p>
-     */
-    inline void SetStatus(const VirtualGatewayStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The current status of the virtual gateway.</p>
-     */
-    inline void SetStatus(VirtualGatewayStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The current status of the virtual gateway.</p>
-     */
-    inline VirtualGatewayData& WithStatus(const VirtualGatewayStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The current status of the virtual gateway.</p>
-     */
-    inline VirtualGatewayData& WithStatus(VirtualGatewayStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the virtual gateway.</p>
      */
-    inline const Aws::String& GetVirtualGatewayName() const{ return m_virtualGatewayName; }
-
-    /**
-     * <p>The name of the virtual gateway.</p>
-     */
+    inline const Aws::String& GetVirtualGatewayName() const { return m_virtualGatewayName; }
     inline bool VirtualGatewayNameHasBeenSet() const { return m_virtualGatewayNameHasBeenSet; }
-
-    /**
-     * <p>The name of the virtual gateway.</p>
-     */
-    inline void SetVirtualGatewayName(const Aws::String& value) { m_virtualGatewayNameHasBeenSet = true; m_virtualGatewayName = value; }
-
-    /**
-     * <p>The name of the virtual gateway.</p>
-     */
-    inline void SetVirtualGatewayName(Aws::String&& value) { m_virtualGatewayNameHasBeenSet = true; m_virtualGatewayName = std::move(value); }
-
-    /**
-     * <p>The name of the virtual gateway.</p>
-     */
-    inline void SetVirtualGatewayName(const char* value) { m_virtualGatewayNameHasBeenSet = true; m_virtualGatewayName.assign(value); }
-
-    /**
-     * <p>The name of the virtual gateway.</p>
-     */
-    inline VirtualGatewayData& WithVirtualGatewayName(const Aws::String& value) { SetVirtualGatewayName(value); return *this;}
-
-    /**
-     * <p>The name of the virtual gateway.</p>
-     */
-    inline VirtualGatewayData& WithVirtualGatewayName(Aws::String&& value) { SetVirtualGatewayName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the virtual gateway.</p>
-     */
-    inline VirtualGatewayData& WithVirtualGatewayName(const char* value) { SetVirtualGatewayName(value); return *this;}
-
+    template<typename VirtualGatewayNameT = Aws::String>
+    void SetVirtualGatewayName(VirtualGatewayNameT&& value) { m_virtualGatewayNameHasBeenSet = true; m_virtualGatewayName = std::forward<VirtualGatewayNameT>(value); }
+    template<typename VirtualGatewayNameT = Aws::String>
+    VirtualGatewayData& WithVirtualGatewayName(VirtualGatewayNameT&& value) { SetVirtualGatewayName(std::forward<VirtualGatewayNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_meshName;

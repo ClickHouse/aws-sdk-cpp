@@ -25,7 +25,7 @@ namespace Model
   class PutDeliveryChannelRequest : public ConfigServiceRequest
   {
   public:
-    AWS_CONFIGSERVICE_API PutDeliveryChannelRequest();
+    AWS_CONFIGSERVICE_API PutDeliveryChannelRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,42 +38,18 @@ namespace Model
     AWS_CONFIGSERVICE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
-     * <p>The configuration delivery channel object that delivers the configuration
-     * information to an Amazon S3 bucket and to an Amazon SNS topic.</p>
+     * <p>An object for the delivery channel. A delivery channel sends notifications
+     * and updated configuration states. </p>
      */
-    inline const DeliveryChannel& GetDeliveryChannel() const{ return m_deliveryChannel; }
-
-    /**
-     * <p>The configuration delivery channel object that delivers the configuration
-     * information to an Amazon S3 bucket and to an Amazon SNS topic.</p>
-     */
+    inline const DeliveryChannel& GetDeliveryChannel() const { return m_deliveryChannel; }
     inline bool DeliveryChannelHasBeenSet() const { return m_deliveryChannelHasBeenSet; }
-
-    /**
-     * <p>The configuration delivery channel object that delivers the configuration
-     * information to an Amazon S3 bucket and to an Amazon SNS topic.</p>
-     */
-    inline void SetDeliveryChannel(const DeliveryChannel& value) { m_deliveryChannelHasBeenSet = true; m_deliveryChannel = value; }
-
-    /**
-     * <p>The configuration delivery channel object that delivers the configuration
-     * information to an Amazon S3 bucket and to an Amazon SNS topic.</p>
-     */
-    inline void SetDeliveryChannel(DeliveryChannel&& value) { m_deliveryChannelHasBeenSet = true; m_deliveryChannel = std::move(value); }
-
-    /**
-     * <p>The configuration delivery channel object that delivers the configuration
-     * information to an Amazon S3 bucket and to an Amazon SNS topic.</p>
-     */
-    inline PutDeliveryChannelRequest& WithDeliveryChannel(const DeliveryChannel& value) { SetDeliveryChannel(value); return *this;}
-
-    /**
-     * <p>The configuration delivery channel object that delivers the configuration
-     * information to an Amazon S3 bucket and to an Amazon SNS topic.</p>
-     */
-    inline PutDeliveryChannelRequest& WithDeliveryChannel(DeliveryChannel&& value) { SetDeliveryChannel(std::move(value)); return *this;}
-
+    template<typename DeliveryChannelT = DeliveryChannel>
+    void SetDeliveryChannel(DeliveryChannelT&& value) { m_deliveryChannelHasBeenSet = true; m_deliveryChannel = std::forward<DeliveryChannelT>(value); }
+    template<typename DeliveryChannelT = DeliveryChannel>
+    PutDeliveryChannelRequest& WithDeliveryChannel(DeliveryChannelT&& value) { SetDeliveryChannel(std::forward<DeliveryChannelT>(value)); return *this;}
+    ///@}
   private:
 
     DeliveryChannel m_deliveryChannel;

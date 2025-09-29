@@ -22,7 +22,7 @@ namespace Model
   class PutVoiceConnectorStreamingConfigurationRequest : public ChimeSDKVoiceRequest
   {
   public:
-    AWS_CHIMESDKVOICE_API PutVoiceConnectorStreamingConfigurationRequest();
+    AWS_CHIMESDKVOICE_API PutVoiceConnectorStreamingConfigurationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,77 +33,29 @@ namespace Model
     AWS_CHIMESDKVOICE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The Voice Connector ID.</p>
      */
-    inline const Aws::String& GetVoiceConnectorId() const{ return m_voiceConnectorId; }
-
-    /**
-     * <p>The Voice Connector ID.</p>
-     */
+    inline const Aws::String& GetVoiceConnectorId() const { return m_voiceConnectorId; }
     inline bool VoiceConnectorIdHasBeenSet() const { return m_voiceConnectorIdHasBeenSet; }
+    template<typename VoiceConnectorIdT = Aws::String>
+    void SetVoiceConnectorId(VoiceConnectorIdT&& value) { m_voiceConnectorIdHasBeenSet = true; m_voiceConnectorId = std::forward<VoiceConnectorIdT>(value); }
+    template<typename VoiceConnectorIdT = Aws::String>
+    PutVoiceConnectorStreamingConfigurationRequest& WithVoiceConnectorId(VoiceConnectorIdT&& value) { SetVoiceConnectorId(std::forward<VoiceConnectorIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Voice Connector ID.</p>
-     */
-    inline void SetVoiceConnectorId(const Aws::String& value) { m_voiceConnectorIdHasBeenSet = true; m_voiceConnectorId = value; }
-
-    /**
-     * <p>The Voice Connector ID.</p>
-     */
-    inline void SetVoiceConnectorId(Aws::String&& value) { m_voiceConnectorIdHasBeenSet = true; m_voiceConnectorId = std::move(value); }
-
-    /**
-     * <p>The Voice Connector ID.</p>
-     */
-    inline void SetVoiceConnectorId(const char* value) { m_voiceConnectorIdHasBeenSet = true; m_voiceConnectorId.assign(value); }
-
-    /**
-     * <p>The Voice Connector ID.</p>
-     */
-    inline PutVoiceConnectorStreamingConfigurationRequest& WithVoiceConnectorId(const Aws::String& value) { SetVoiceConnectorId(value); return *this;}
-
-    /**
-     * <p>The Voice Connector ID.</p>
-     */
-    inline PutVoiceConnectorStreamingConfigurationRequest& WithVoiceConnectorId(Aws::String&& value) { SetVoiceConnectorId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Voice Connector ID.</p>
-     */
-    inline PutVoiceConnectorStreamingConfigurationRequest& WithVoiceConnectorId(const char* value) { SetVoiceConnectorId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The streaming settings being updated.</p>
      */
-    inline const StreamingConfiguration& GetStreamingConfiguration() const{ return m_streamingConfiguration; }
-
-    /**
-     * <p>The streaming settings being updated.</p>
-     */
+    inline const StreamingConfiguration& GetStreamingConfiguration() const { return m_streamingConfiguration; }
     inline bool StreamingConfigurationHasBeenSet() const { return m_streamingConfigurationHasBeenSet; }
-
-    /**
-     * <p>The streaming settings being updated.</p>
-     */
-    inline void SetStreamingConfiguration(const StreamingConfiguration& value) { m_streamingConfigurationHasBeenSet = true; m_streamingConfiguration = value; }
-
-    /**
-     * <p>The streaming settings being updated.</p>
-     */
-    inline void SetStreamingConfiguration(StreamingConfiguration&& value) { m_streamingConfigurationHasBeenSet = true; m_streamingConfiguration = std::move(value); }
-
-    /**
-     * <p>The streaming settings being updated.</p>
-     */
-    inline PutVoiceConnectorStreamingConfigurationRequest& WithStreamingConfiguration(const StreamingConfiguration& value) { SetStreamingConfiguration(value); return *this;}
-
-    /**
-     * <p>The streaming settings being updated.</p>
-     */
-    inline PutVoiceConnectorStreamingConfigurationRequest& WithStreamingConfiguration(StreamingConfiguration&& value) { SetStreamingConfiguration(std::move(value)); return *this;}
-
+    template<typename StreamingConfigurationT = StreamingConfiguration>
+    void SetStreamingConfiguration(StreamingConfigurationT&& value) { m_streamingConfigurationHasBeenSet = true; m_streamingConfiguration = std::forward<StreamingConfigurationT>(value); }
+    template<typename StreamingConfigurationT = StreamingConfiguration>
+    PutVoiceConnectorStreamingConfigurationRequest& WithStreamingConfiguration(StreamingConfigurationT&& value) { SetStreamingConfiguration(std::forward<StreamingConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_voiceConnectorId;

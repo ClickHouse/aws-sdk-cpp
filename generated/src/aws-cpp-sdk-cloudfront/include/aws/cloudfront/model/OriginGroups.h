@@ -32,77 +32,39 @@ namespace Model
   class OriginGroups
   {
   public:
-    AWS_CLOUDFRONT_API OriginGroups();
+    AWS_CLOUDFRONT_API OriginGroups() = default;
     AWS_CLOUDFRONT_API OriginGroups(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_CLOUDFRONT_API OriginGroups& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_CLOUDFRONT_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>The number of origin groups.</p>
      */
-    inline int GetQuantity() const{ return m_quantity; }
-
-    /**
-     * <p>The number of origin groups.</p>
-     */
+    inline int GetQuantity() const { return m_quantity; }
     inline bool QuantityHasBeenSet() const { return m_quantityHasBeenSet; }
-
-    /**
-     * <p>The number of origin groups.</p>
-     */
     inline void SetQuantity(int value) { m_quantityHasBeenSet = true; m_quantity = value; }
-
-    /**
-     * <p>The number of origin groups.</p>
-     */
     inline OriginGroups& WithQuantity(int value) { SetQuantity(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The items (origin groups) in a distribution.</p>
      */
-    inline const Aws::Vector<OriginGroup>& GetItems() const{ return m_items; }
-
-    /**
-     * <p>The items (origin groups) in a distribution.</p>
-     */
+    inline const Aws::Vector<OriginGroup>& GetItems() const { return m_items; }
     inline bool ItemsHasBeenSet() const { return m_itemsHasBeenSet; }
-
-    /**
-     * <p>The items (origin groups) in a distribution.</p>
-     */
-    inline void SetItems(const Aws::Vector<OriginGroup>& value) { m_itemsHasBeenSet = true; m_items = value; }
-
-    /**
-     * <p>The items (origin groups) in a distribution.</p>
-     */
-    inline void SetItems(Aws::Vector<OriginGroup>&& value) { m_itemsHasBeenSet = true; m_items = std::move(value); }
-
-    /**
-     * <p>The items (origin groups) in a distribution.</p>
-     */
-    inline OriginGroups& WithItems(const Aws::Vector<OriginGroup>& value) { SetItems(value); return *this;}
-
-    /**
-     * <p>The items (origin groups) in a distribution.</p>
-     */
-    inline OriginGroups& WithItems(Aws::Vector<OriginGroup>&& value) { SetItems(std::move(value)); return *this;}
-
-    /**
-     * <p>The items (origin groups) in a distribution.</p>
-     */
-    inline OriginGroups& AddItems(const OriginGroup& value) { m_itemsHasBeenSet = true; m_items.push_back(value); return *this; }
-
-    /**
-     * <p>The items (origin groups) in a distribution.</p>
-     */
-    inline OriginGroups& AddItems(OriginGroup&& value) { m_itemsHasBeenSet = true; m_items.push_back(std::move(value)); return *this; }
-
+    template<typename ItemsT = Aws::Vector<OriginGroup>>
+    void SetItems(ItemsT&& value) { m_itemsHasBeenSet = true; m_items = std::forward<ItemsT>(value); }
+    template<typename ItemsT = Aws::Vector<OriginGroup>>
+    OriginGroups& WithItems(ItemsT&& value) { SetItems(std::forward<ItemsT>(value)); return *this;}
+    template<typename ItemsT = OriginGroup>
+    OriginGroups& AddItems(ItemsT&& value) { m_itemsHasBeenSet = true; m_items.emplace_back(std::forward<ItemsT>(value)); return *this; }
+    ///@}
   private:
 
-    int m_quantity;
+    int m_quantity{0};
     bool m_quantityHasBeenSet = false;
 
     Aws::Vector<OriginGroup> m_items;

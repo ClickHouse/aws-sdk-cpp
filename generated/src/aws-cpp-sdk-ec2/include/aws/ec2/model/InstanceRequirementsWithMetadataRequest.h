@@ -38,7 +38,7 @@ namespace Model
   class InstanceRequirementsWithMetadataRequest
   {
   public:
-    AWS_EC2_API InstanceRequirementsWithMetadataRequest();
+    AWS_EC2_API InstanceRequirementsWithMetadataRequest() = default;
     AWS_EC2_API InstanceRequirementsWithMetadataRequest(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API InstanceRequirementsWithMetadataRequest& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -46,124 +46,44 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The architecture type.</p>
      */
-    inline const Aws::Vector<ArchitectureType>& GetArchitectureTypes() const{ return m_architectureTypes; }
-
-    /**
-     * <p>The architecture type.</p>
-     */
+    inline const Aws::Vector<ArchitectureType>& GetArchitectureTypes() const { return m_architectureTypes; }
     inline bool ArchitectureTypesHasBeenSet() const { return m_architectureTypesHasBeenSet; }
+    template<typename ArchitectureTypesT = Aws::Vector<ArchitectureType>>
+    void SetArchitectureTypes(ArchitectureTypesT&& value) { m_architectureTypesHasBeenSet = true; m_architectureTypes = std::forward<ArchitectureTypesT>(value); }
+    template<typename ArchitectureTypesT = Aws::Vector<ArchitectureType>>
+    InstanceRequirementsWithMetadataRequest& WithArchitectureTypes(ArchitectureTypesT&& value) { SetArchitectureTypes(std::forward<ArchitectureTypesT>(value)); return *this;}
+    inline InstanceRequirementsWithMetadataRequest& AddArchitectureTypes(ArchitectureType value) { m_architectureTypesHasBeenSet = true; m_architectureTypes.push_back(value); return *this; }
+    ///@}
 
-    /**
-     * <p>The architecture type.</p>
-     */
-    inline void SetArchitectureTypes(const Aws::Vector<ArchitectureType>& value) { m_architectureTypesHasBeenSet = true; m_architectureTypes = value; }
-
-    /**
-     * <p>The architecture type.</p>
-     */
-    inline void SetArchitectureTypes(Aws::Vector<ArchitectureType>&& value) { m_architectureTypesHasBeenSet = true; m_architectureTypes = std::move(value); }
-
-    /**
-     * <p>The architecture type.</p>
-     */
-    inline InstanceRequirementsWithMetadataRequest& WithArchitectureTypes(const Aws::Vector<ArchitectureType>& value) { SetArchitectureTypes(value); return *this;}
-
-    /**
-     * <p>The architecture type.</p>
-     */
-    inline InstanceRequirementsWithMetadataRequest& WithArchitectureTypes(Aws::Vector<ArchitectureType>&& value) { SetArchitectureTypes(std::move(value)); return *this;}
-
-    /**
-     * <p>The architecture type.</p>
-     */
-    inline InstanceRequirementsWithMetadataRequest& AddArchitectureTypes(const ArchitectureType& value) { m_architectureTypesHasBeenSet = true; m_architectureTypes.push_back(value); return *this; }
-
-    /**
-     * <p>The architecture type.</p>
-     */
-    inline InstanceRequirementsWithMetadataRequest& AddArchitectureTypes(ArchitectureType&& value) { m_architectureTypesHasBeenSet = true; m_architectureTypes.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The virtualization type.</p>
      */
-    inline const Aws::Vector<VirtualizationType>& GetVirtualizationTypes() const{ return m_virtualizationTypes; }
-
-    /**
-     * <p>The virtualization type.</p>
-     */
+    inline const Aws::Vector<VirtualizationType>& GetVirtualizationTypes() const { return m_virtualizationTypes; }
     inline bool VirtualizationTypesHasBeenSet() const { return m_virtualizationTypesHasBeenSet; }
+    template<typename VirtualizationTypesT = Aws::Vector<VirtualizationType>>
+    void SetVirtualizationTypes(VirtualizationTypesT&& value) { m_virtualizationTypesHasBeenSet = true; m_virtualizationTypes = std::forward<VirtualizationTypesT>(value); }
+    template<typename VirtualizationTypesT = Aws::Vector<VirtualizationType>>
+    InstanceRequirementsWithMetadataRequest& WithVirtualizationTypes(VirtualizationTypesT&& value) { SetVirtualizationTypes(std::forward<VirtualizationTypesT>(value)); return *this;}
+    inline InstanceRequirementsWithMetadataRequest& AddVirtualizationTypes(VirtualizationType value) { m_virtualizationTypesHasBeenSet = true; m_virtualizationTypes.push_back(value); return *this; }
+    ///@}
 
-    /**
-     * <p>The virtualization type.</p>
-     */
-    inline void SetVirtualizationTypes(const Aws::Vector<VirtualizationType>& value) { m_virtualizationTypesHasBeenSet = true; m_virtualizationTypes = value; }
-
-    /**
-     * <p>The virtualization type.</p>
-     */
-    inline void SetVirtualizationTypes(Aws::Vector<VirtualizationType>&& value) { m_virtualizationTypesHasBeenSet = true; m_virtualizationTypes = std::move(value); }
-
-    /**
-     * <p>The virtualization type.</p>
-     */
-    inline InstanceRequirementsWithMetadataRequest& WithVirtualizationTypes(const Aws::Vector<VirtualizationType>& value) { SetVirtualizationTypes(value); return *this;}
-
-    /**
-     * <p>The virtualization type.</p>
-     */
-    inline InstanceRequirementsWithMetadataRequest& WithVirtualizationTypes(Aws::Vector<VirtualizationType>&& value) { SetVirtualizationTypes(std::move(value)); return *this;}
-
-    /**
-     * <p>The virtualization type.</p>
-     */
-    inline InstanceRequirementsWithMetadataRequest& AddVirtualizationTypes(const VirtualizationType& value) { m_virtualizationTypesHasBeenSet = true; m_virtualizationTypes.push_back(value); return *this; }
-
-    /**
-     * <p>The virtualization type.</p>
-     */
-    inline InstanceRequirementsWithMetadataRequest& AddVirtualizationTypes(VirtualizationType&& value) { m_virtualizationTypesHasBeenSet = true; m_virtualizationTypes.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The attributes for the instance types. When you specify instance attributes,
      * Amazon EC2 will identify instance types with those attributes.</p>
      */
-    inline const InstanceRequirementsRequest& GetInstanceRequirements() const{ return m_instanceRequirements; }
-
-    /**
-     * <p>The attributes for the instance types. When you specify instance attributes,
-     * Amazon EC2 will identify instance types with those attributes.</p>
-     */
+    inline const InstanceRequirementsRequest& GetInstanceRequirements() const { return m_instanceRequirements; }
     inline bool InstanceRequirementsHasBeenSet() const { return m_instanceRequirementsHasBeenSet; }
-
-    /**
-     * <p>The attributes for the instance types. When you specify instance attributes,
-     * Amazon EC2 will identify instance types with those attributes.</p>
-     */
-    inline void SetInstanceRequirements(const InstanceRequirementsRequest& value) { m_instanceRequirementsHasBeenSet = true; m_instanceRequirements = value; }
-
-    /**
-     * <p>The attributes for the instance types. When you specify instance attributes,
-     * Amazon EC2 will identify instance types with those attributes.</p>
-     */
-    inline void SetInstanceRequirements(InstanceRequirementsRequest&& value) { m_instanceRequirementsHasBeenSet = true; m_instanceRequirements = std::move(value); }
-
-    /**
-     * <p>The attributes for the instance types. When you specify instance attributes,
-     * Amazon EC2 will identify instance types with those attributes.</p>
-     */
-    inline InstanceRequirementsWithMetadataRequest& WithInstanceRequirements(const InstanceRequirementsRequest& value) { SetInstanceRequirements(value); return *this;}
-
-    /**
-     * <p>The attributes for the instance types. When you specify instance attributes,
-     * Amazon EC2 will identify instance types with those attributes.</p>
-     */
-    inline InstanceRequirementsWithMetadataRequest& WithInstanceRequirements(InstanceRequirementsRequest&& value) { SetInstanceRequirements(std::move(value)); return *this;}
-
+    template<typename InstanceRequirementsT = InstanceRequirementsRequest>
+    void SetInstanceRequirements(InstanceRequirementsT&& value) { m_instanceRequirementsHasBeenSet = true; m_instanceRequirements = std::forward<InstanceRequirementsT>(value); }
+    template<typename InstanceRequirementsT = InstanceRequirementsRequest>
+    InstanceRequirementsWithMetadataRequest& WithInstanceRequirements(InstanceRequirementsT&& value) { SetInstanceRequirements(std::forward<InstanceRequirementsT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<ArchitectureType> m_architectureTypes;

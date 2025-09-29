@@ -18,13 +18,7 @@ namespace MainframeModernization
 namespace Model
 {
 
-ExternalLocation::ExternalLocation() : 
-    m_s3LocationHasBeenSet(false)
-{
-}
-
-ExternalLocation::ExternalLocation(JsonView jsonValue) : 
-    m_s3LocationHasBeenSet(false)
+ExternalLocation::ExternalLocation(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ ExternalLocation& ExternalLocation::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("s3Location"))
   {
     m_s3Location = jsonValue.GetString("s3Location");
-
     m_s3LocationHasBeenSet = true;
   }
-
   return *this;
 }
 

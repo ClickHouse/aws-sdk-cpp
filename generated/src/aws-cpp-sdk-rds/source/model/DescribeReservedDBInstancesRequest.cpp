@@ -10,23 +10,6 @@
 using namespace Aws::RDS::Model;
 using namespace Aws::Utils;
 
-DescribeReservedDBInstancesRequest::DescribeReservedDBInstancesRequest() : 
-    m_reservedDBInstanceIdHasBeenSet(false),
-    m_reservedDBInstancesOfferingIdHasBeenSet(false),
-    m_dBInstanceClassHasBeenSet(false),
-    m_durationHasBeenSet(false),
-    m_productDescriptionHasBeenSet(false),
-    m_offeringTypeHasBeenSet(false),
-    m_multiAZ(false),
-    m_multiAZHasBeenSet(false),
-    m_leaseIdHasBeenSet(false),
-    m_filtersHasBeenSet(false),
-    m_maxRecords(0),
-    m_maxRecordsHasBeenSet(false),
-    m_markerHasBeenSet(false)
-{
-}
-
 Aws::String DescribeReservedDBInstancesRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -73,11 +56,18 @@ Aws::String DescribeReservedDBInstancesRequest::SerializePayload() const
 
   if(m_filtersHasBeenSet)
   {
-    unsigned filtersCount = 1;
-    for(auto& item : m_filters)
+    if (m_filters.empty())
     {
-      item.OutputToStream(ss, "Filters.member.", filtersCount, "");
-      filtersCount++;
+      ss << "Filters=&";
+    }
+    else
+    {
+      unsigned filtersCount = 1;
+      for(auto& item : m_filters)
+      {
+        item.OutputToStream(ss, "Filters.Filter.", filtersCount, "");
+        filtersCount++;
+      }
     }
   }
 

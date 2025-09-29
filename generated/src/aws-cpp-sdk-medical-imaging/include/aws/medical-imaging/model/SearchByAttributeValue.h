@@ -33,243 +33,118 @@ namespace Model
   class SearchByAttributeValue
   {
   public:
-    AWS_MEDICALIMAGING_API SearchByAttributeValue();
+    AWS_MEDICALIMAGING_API SearchByAttributeValue() = default;
     AWS_MEDICALIMAGING_API SearchByAttributeValue(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDICALIMAGING_API SearchByAttributeValue& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDICALIMAGING_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The patient ID input for search.</p>
      */
-    inline const Aws::String& GetDICOMPatientId() const{ return m_dICOMPatientId; }
-
-    /**
-     * <p>The patient ID input for search.</p>
-     */
+    inline const Aws::String& GetDICOMPatientId() const { return m_dICOMPatientId; }
     inline bool DICOMPatientIdHasBeenSet() const { return m_dICOMPatientIdHasBeenSet; }
+    template<typename DICOMPatientIdT = Aws::String>
+    void SetDICOMPatientId(DICOMPatientIdT&& value) { m_dICOMPatientIdHasBeenSet = true; m_dICOMPatientId = std::forward<DICOMPatientIdT>(value); }
+    template<typename DICOMPatientIdT = Aws::String>
+    SearchByAttributeValue& WithDICOMPatientId(DICOMPatientIdT&& value) { SetDICOMPatientId(std::forward<DICOMPatientIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The patient ID input for search.</p>
-     */
-    inline void SetDICOMPatientId(const Aws::String& value) { m_dICOMPatientIdHasBeenSet = true; m_dICOMPatientId = value; }
-
-    /**
-     * <p>The patient ID input for search.</p>
-     */
-    inline void SetDICOMPatientId(Aws::String&& value) { m_dICOMPatientIdHasBeenSet = true; m_dICOMPatientId = std::move(value); }
-
-    /**
-     * <p>The patient ID input for search.</p>
-     */
-    inline void SetDICOMPatientId(const char* value) { m_dICOMPatientIdHasBeenSet = true; m_dICOMPatientId.assign(value); }
-
-    /**
-     * <p>The patient ID input for search.</p>
-     */
-    inline SearchByAttributeValue& WithDICOMPatientId(const Aws::String& value) { SetDICOMPatientId(value); return *this;}
-
-    /**
-     * <p>The patient ID input for search.</p>
-     */
-    inline SearchByAttributeValue& WithDICOMPatientId(Aws::String&& value) { SetDICOMPatientId(std::move(value)); return *this;}
-
-    /**
-     * <p>The patient ID input for search.</p>
-     */
-    inline SearchByAttributeValue& WithDICOMPatientId(const char* value) { SetDICOMPatientId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The DICOM accession number for search.</p>
      */
-    inline const Aws::String& GetDICOMAccessionNumber() const{ return m_dICOMAccessionNumber; }
-
-    /**
-     * <p>The DICOM accession number for search.</p>
-     */
+    inline const Aws::String& GetDICOMAccessionNumber() const { return m_dICOMAccessionNumber; }
     inline bool DICOMAccessionNumberHasBeenSet() const { return m_dICOMAccessionNumberHasBeenSet; }
+    template<typename DICOMAccessionNumberT = Aws::String>
+    void SetDICOMAccessionNumber(DICOMAccessionNumberT&& value) { m_dICOMAccessionNumberHasBeenSet = true; m_dICOMAccessionNumber = std::forward<DICOMAccessionNumberT>(value); }
+    template<typename DICOMAccessionNumberT = Aws::String>
+    SearchByAttributeValue& WithDICOMAccessionNumber(DICOMAccessionNumberT&& value) { SetDICOMAccessionNumber(std::forward<DICOMAccessionNumberT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The DICOM accession number for search.</p>
-     */
-    inline void SetDICOMAccessionNumber(const Aws::String& value) { m_dICOMAccessionNumberHasBeenSet = true; m_dICOMAccessionNumber = value; }
-
-    /**
-     * <p>The DICOM accession number for search.</p>
-     */
-    inline void SetDICOMAccessionNumber(Aws::String&& value) { m_dICOMAccessionNumberHasBeenSet = true; m_dICOMAccessionNumber = std::move(value); }
-
-    /**
-     * <p>The DICOM accession number for search.</p>
-     */
-    inline void SetDICOMAccessionNumber(const char* value) { m_dICOMAccessionNumberHasBeenSet = true; m_dICOMAccessionNumber.assign(value); }
-
-    /**
-     * <p>The DICOM accession number for search.</p>
-     */
-    inline SearchByAttributeValue& WithDICOMAccessionNumber(const Aws::String& value) { SetDICOMAccessionNumber(value); return *this;}
-
-    /**
-     * <p>The DICOM accession number for search.</p>
-     */
-    inline SearchByAttributeValue& WithDICOMAccessionNumber(Aws::String&& value) { SetDICOMAccessionNumber(std::move(value)); return *this;}
-
-    /**
-     * <p>The DICOM accession number for search.</p>
-     */
-    inline SearchByAttributeValue& WithDICOMAccessionNumber(const char* value) { SetDICOMAccessionNumber(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The DICOM study ID for search.</p>
      */
-    inline const Aws::String& GetDICOMStudyId() const{ return m_dICOMStudyId; }
-
-    /**
-     * <p>The DICOM study ID for search.</p>
-     */
+    inline const Aws::String& GetDICOMStudyId() const { return m_dICOMStudyId; }
     inline bool DICOMStudyIdHasBeenSet() const { return m_dICOMStudyIdHasBeenSet; }
+    template<typename DICOMStudyIdT = Aws::String>
+    void SetDICOMStudyId(DICOMStudyIdT&& value) { m_dICOMStudyIdHasBeenSet = true; m_dICOMStudyId = std::forward<DICOMStudyIdT>(value); }
+    template<typename DICOMStudyIdT = Aws::String>
+    SearchByAttributeValue& WithDICOMStudyId(DICOMStudyIdT&& value) { SetDICOMStudyId(std::forward<DICOMStudyIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The DICOM study ID for search.</p>
-     */
-    inline void SetDICOMStudyId(const Aws::String& value) { m_dICOMStudyIdHasBeenSet = true; m_dICOMStudyId = value; }
-
-    /**
-     * <p>The DICOM study ID for search.</p>
-     */
-    inline void SetDICOMStudyId(Aws::String&& value) { m_dICOMStudyIdHasBeenSet = true; m_dICOMStudyId = std::move(value); }
-
-    /**
-     * <p>The DICOM study ID for search.</p>
-     */
-    inline void SetDICOMStudyId(const char* value) { m_dICOMStudyIdHasBeenSet = true; m_dICOMStudyId.assign(value); }
-
-    /**
-     * <p>The DICOM study ID for search.</p>
-     */
-    inline SearchByAttributeValue& WithDICOMStudyId(const Aws::String& value) { SetDICOMStudyId(value); return *this;}
-
-    /**
-     * <p>The DICOM study ID for search.</p>
-     */
-    inline SearchByAttributeValue& WithDICOMStudyId(Aws::String&& value) { SetDICOMStudyId(std::move(value)); return *this;}
-
-    /**
-     * <p>The DICOM study ID for search.</p>
-     */
-    inline SearchByAttributeValue& WithDICOMStudyId(const char* value) { SetDICOMStudyId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The DICOM study instance UID for search.</p>
      */
-    inline const Aws::String& GetDICOMStudyInstanceUID() const{ return m_dICOMStudyInstanceUID; }
-
-    /**
-     * <p>The DICOM study instance UID for search.</p>
-     */
+    inline const Aws::String& GetDICOMStudyInstanceUID() const { return m_dICOMStudyInstanceUID; }
     inline bool DICOMStudyInstanceUIDHasBeenSet() const { return m_dICOMStudyInstanceUIDHasBeenSet; }
+    template<typename DICOMStudyInstanceUIDT = Aws::String>
+    void SetDICOMStudyInstanceUID(DICOMStudyInstanceUIDT&& value) { m_dICOMStudyInstanceUIDHasBeenSet = true; m_dICOMStudyInstanceUID = std::forward<DICOMStudyInstanceUIDT>(value); }
+    template<typename DICOMStudyInstanceUIDT = Aws::String>
+    SearchByAttributeValue& WithDICOMStudyInstanceUID(DICOMStudyInstanceUIDT&& value) { SetDICOMStudyInstanceUID(std::forward<DICOMStudyInstanceUIDT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The DICOM study instance UID for search.</p>
+     * <p>The Series Instance UID input for search.</p>
      */
-    inline void SetDICOMStudyInstanceUID(const Aws::String& value) { m_dICOMStudyInstanceUIDHasBeenSet = true; m_dICOMStudyInstanceUID = value; }
+    inline const Aws::String& GetDICOMSeriesInstanceUID() const { return m_dICOMSeriesInstanceUID; }
+    inline bool DICOMSeriesInstanceUIDHasBeenSet() const { return m_dICOMSeriesInstanceUIDHasBeenSet; }
+    template<typename DICOMSeriesInstanceUIDT = Aws::String>
+    void SetDICOMSeriesInstanceUID(DICOMSeriesInstanceUIDT&& value) { m_dICOMSeriesInstanceUIDHasBeenSet = true; m_dICOMSeriesInstanceUID = std::forward<DICOMSeriesInstanceUIDT>(value); }
+    template<typename DICOMSeriesInstanceUIDT = Aws::String>
+    SearchByAttributeValue& WithDICOMSeriesInstanceUID(DICOMSeriesInstanceUIDT&& value) { SetDICOMSeriesInstanceUID(std::forward<DICOMSeriesInstanceUIDT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The DICOM study instance UID for search.</p>
-     */
-    inline void SetDICOMStudyInstanceUID(Aws::String&& value) { m_dICOMStudyInstanceUIDHasBeenSet = true; m_dICOMStudyInstanceUID = std::move(value); }
-
-    /**
-     * <p>The DICOM study instance UID for search.</p>
-     */
-    inline void SetDICOMStudyInstanceUID(const char* value) { m_dICOMStudyInstanceUIDHasBeenSet = true; m_dICOMStudyInstanceUID.assign(value); }
-
-    /**
-     * <p>The DICOM study instance UID for search.</p>
-     */
-    inline SearchByAttributeValue& WithDICOMStudyInstanceUID(const Aws::String& value) { SetDICOMStudyInstanceUID(value); return *this;}
-
-    /**
-     * <p>The DICOM study instance UID for search.</p>
-     */
-    inline SearchByAttributeValue& WithDICOMStudyInstanceUID(Aws::String&& value) { SetDICOMStudyInstanceUID(std::move(value)); return *this;}
-
-    /**
-     * <p>The DICOM study instance UID for search.</p>
-     */
-    inline SearchByAttributeValue& WithDICOMStudyInstanceUID(const char* value) { SetDICOMStudyInstanceUID(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The created at time of the image set provided for search.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedAt() const{ return m_createdAt; }
-
-    /**
-     * <p>The created at time of the image set provided for search.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedAt() const { return m_createdAt; }
     inline bool CreatedAtHasBeenSet() const { return m_createdAtHasBeenSet; }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    void SetCreatedAt(CreatedAtT&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::forward<CreatedAtT>(value); }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    SearchByAttributeValue& WithCreatedAt(CreatedAtT&& value) { SetCreatedAt(std::forward<CreatedAtT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The created at time of the image set provided for search.</p>
+     * <p>The timestamp input for search.</p>
      */
-    inline void SetCreatedAt(const Aws::Utils::DateTime& value) { m_createdAtHasBeenSet = true; m_createdAt = value; }
+    inline const Aws::Utils::DateTime& GetUpdatedAt() const { return m_updatedAt; }
+    inline bool UpdatedAtHasBeenSet() const { return m_updatedAtHasBeenSet; }
+    template<typename UpdatedAtT = Aws::Utils::DateTime>
+    void SetUpdatedAt(UpdatedAtT&& value) { m_updatedAtHasBeenSet = true; m_updatedAt = std::forward<UpdatedAtT>(value); }
+    template<typename UpdatedAtT = Aws::Utils::DateTime>
+    SearchByAttributeValue& WithUpdatedAt(UpdatedAtT&& value) { SetUpdatedAt(std::forward<UpdatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The created at time of the image set provided for search.</p>
-     */
-    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::move(value); }
-
-    /**
-     * <p>The created at time of the image set provided for search.</p>
-     */
-    inline SearchByAttributeValue& WithCreatedAt(const Aws::Utils::DateTime& value) { SetCreatedAt(value); return *this;}
-
-    /**
-     * <p>The created at time of the image set provided for search.</p>
-     */
-    inline SearchByAttributeValue& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The aggregated structure containing DICOM study date and study time for
      * search.</p>
      */
-    inline const DICOMStudyDateAndTime& GetDICOMStudyDateAndTime() const{ return m_dICOMStudyDateAndTime; }
-
-    /**
-     * <p>The aggregated structure containing DICOM study date and study time for
-     * search.</p>
-     */
+    inline const DICOMStudyDateAndTime& GetDICOMStudyDateAndTime() const { return m_dICOMStudyDateAndTime; }
     inline bool DICOMStudyDateAndTimeHasBeenSet() const { return m_dICOMStudyDateAndTimeHasBeenSet; }
+    template<typename DICOMStudyDateAndTimeT = DICOMStudyDateAndTime>
+    void SetDICOMStudyDateAndTime(DICOMStudyDateAndTimeT&& value) { m_dICOMStudyDateAndTimeHasBeenSet = true; m_dICOMStudyDateAndTime = std::forward<DICOMStudyDateAndTimeT>(value); }
+    template<typename DICOMStudyDateAndTimeT = DICOMStudyDateAndTime>
+    SearchByAttributeValue& WithDICOMStudyDateAndTime(DICOMStudyDateAndTimeT&& value) { SetDICOMStudyDateAndTime(std::forward<DICOMStudyDateAndTimeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The aggregated structure containing DICOM study date and study time for
-     * search.</p>
+     * <p>The primary image set flag provided for search.</p>
      */
-    inline void SetDICOMStudyDateAndTime(const DICOMStudyDateAndTime& value) { m_dICOMStudyDateAndTimeHasBeenSet = true; m_dICOMStudyDateAndTime = value; }
-
-    /**
-     * <p>The aggregated structure containing DICOM study date and study time for
-     * search.</p>
-     */
-    inline void SetDICOMStudyDateAndTime(DICOMStudyDateAndTime&& value) { m_dICOMStudyDateAndTimeHasBeenSet = true; m_dICOMStudyDateAndTime = std::move(value); }
-
-    /**
-     * <p>The aggregated structure containing DICOM study date and study time for
-     * search.</p>
-     */
-    inline SearchByAttributeValue& WithDICOMStudyDateAndTime(const DICOMStudyDateAndTime& value) { SetDICOMStudyDateAndTime(value); return *this;}
-
-    /**
-     * <p>The aggregated structure containing DICOM study date and study time for
-     * search.</p>
-     */
-    inline SearchByAttributeValue& WithDICOMStudyDateAndTime(DICOMStudyDateAndTime&& value) { SetDICOMStudyDateAndTime(std::move(value)); return *this;}
-
+    inline bool GetIsPrimary() const { return m_isPrimary; }
+    inline bool IsPrimaryHasBeenSet() const { return m_isPrimaryHasBeenSet; }
+    inline void SetIsPrimary(bool value) { m_isPrimaryHasBeenSet = true; m_isPrimary = value; }
+    inline SearchByAttributeValue& WithIsPrimary(bool value) { SetIsPrimary(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_dICOMPatientId;
@@ -284,11 +159,20 @@ namespace Model
     Aws::String m_dICOMStudyInstanceUID;
     bool m_dICOMStudyInstanceUIDHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdAt;
+    Aws::String m_dICOMSeriesInstanceUID;
+    bool m_dICOMSeriesInstanceUIDHasBeenSet = false;
+
+    Aws::Utils::DateTime m_createdAt{};
     bool m_createdAtHasBeenSet = false;
+
+    Aws::Utils::DateTime m_updatedAt{};
+    bool m_updatedAtHasBeenSet = false;
 
     DICOMStudyDateAndTime m_dICOMStudyDateAndTime;
     bool m_dICOMStudyDateAndTimeHasBeenSet = false;
+
+    bool m_isPrimary{false};
+    bool m_isPrimaryHasBeenSet = false;
   };
 
 } // namespace Model

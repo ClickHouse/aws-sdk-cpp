@@ -18,15 +18,7 @@ namespace LexModelsV2
 namespace Model
 {
 
-TestSetDiscrepancyErrors::TestSetDiscrepancyErrors() : 
-    m_intentDiscrepanciesHasBeenSet(false),
-    m_slotDiscrepanciesHasBeenSet(false)
-{
-}
-
-TestSetDiscrepancyErrors::TestSetDiscrepancyErrors(JsonView jsonValue) : 
-    m_intentDiscrepanciesHasBeenSet(false),
-    m_slotDiscrepanciesHasBeenSet(false)
+TestSetDiscrepancyErrors::TestSetDiscrepancyErrors(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ TestSetDiscrepancyErrors& TestSetDiscrepancyErrors::operator =(JsonView jsonValu
     }
     m_intentDiscrepanciesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("slotDiscrepancies"))
   {
     Aws::Utils::Array<JsonView> slotDiscrepanciesJsonList = jsonValue.GetArray("slotDiscrepancies");
@@ -52,7 +43,6 @@ TestSetDiscrepancyErrors& TestSetDiscrepancyErrors::operator =(JsonView jsonValu
     }
     m_slotDiscrepanciesHasBeenSet = true;
   }
-
   return *this;
 }
 

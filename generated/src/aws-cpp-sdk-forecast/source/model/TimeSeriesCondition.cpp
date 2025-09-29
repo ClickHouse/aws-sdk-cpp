@@ -18,19 +18,7 @@ namespace ForecastService
 namespace Model
 {
 
-TimeSeriesCondition::TimeSeriesCondition() : 
-    m_attributeNameHasBeenSet(false),
-    m_attributeValueHasBeenSet(false),
-    m_condition(Condition::NOT_SET),
-    m_conditionHasBeenSet(false)
-{
-}
-
-TimeSeriesCondition::TimeSeriesCondition(JsonView jsonValue) : 
-    m_attributeNameHasBeenSet(false),
-    m_attributeValueHasBeenSet(false),
-    m_condition(Condition::NOT_SET),
-    m_conditionHasBeenSet(false)
+TimeSeriesCondition::TimeSeriesCondition(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ TimeSeriesCondition& TimeSeriesCondition::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("AttributeName"))
   {
     m_attributeName = jsonValue.GetString("AttributeName");
-
     m_attributeNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AttributeValue"))
   {
     m_attributeValue = jsonValue.GetString("AttributeValue");
-
     m_attributeValueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Condition"))
   {
     m_condition = ConditionMapper::GetConditionForName(jsonValue.GetString("Condition"));
-
     m_conditionHasBeenSet = true;
   }
-
   return *this;
 }
 

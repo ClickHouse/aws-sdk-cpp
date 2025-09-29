@@ -26,7 +26,7 @@ namespace Model
   class GetHostedZoneLimitRequest : public Route53Request
   {
   public:
-    AWS_ROUTE53_API GetHostedZoneLimitRequest();
+    AWS_ROUTE53_API GetHostedZoneLimitRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,6 +37,7 @@ namespace Model
     AWS_ROUTE53_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The limit that you want to get. Valid values include the following:</p> <ul>
      * <li> <p> <b>MAX_RRSETS_BY_ZONE</b>: The maximum number of records that you can
@@ -44,97 +45,26 @@ namespace Model
      * <b>MAX_VPCS_ASSOCIATED_BY_ZONE</b>: The maximum number of Amazon VPCs that you
      * can associate with the specified private hosted zone.</p> </li> </ul>
      */
-    inline const HostedZoneLimitType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The limit that you want to get. Valid values include the following:</p> <ul>
-     * <li> <p> <b>MAX_RRSETS_BY_ZONE</b>: The maximum number of records that you can
-     * create in the specified hosted zone.</p> </li> <li> <p>
-     * <b>MAX_VPCS_ASSOCIATED_BY_ZONE</b>: The maximum number of Amazon VPCs that you
-     * can associate with the specified private hosted zone.</p> </li> </ul>
-     */
+    inline HostedZoneLimitType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    inline void SetType(HostedZoneLimitType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline GetHostedZoneLimitRequest& WithType(HostedZoneLimitType value) { SetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The limit that you want to get. Valid values include the following:</p> <ul>
-     * <li> <p> <b>MAX_RRSETS_BY_ZONE</b>: The maximum number of records that you can
-     * create in the specified hosted zone.</p> </li> <li> <p>
-     * <b>MAX_VPCS_ASSOCIATED_BY_ZONE</b>: The maximum number of Amazon VPCs that you
-     * can associate with the specified private hosted zone.</p> </li> </ul>
-     */
-    inline void SetType(const HostedZoneLimitType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The limit that you want to get. Valid values include the following:</p> <ul>
-     * <li> <p> <b>MAX_RRSETS_BY_ZONE</b>: The maximum number of records that you can
-     * create in the specified hosted zone.</p> </li> <li> <p>
-     * <b>MAX_VPCS_ASSOCIATED_BY_ZONE</b>: The maximum number of Amazon VPCs that you
-     * can associate with the specified private hosted zone.</p> </li> </ul>
-     */
-    inline void SetType(HostedZoneLimitType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The limit that you want to get. Valid values include the following:</p> <ul>
-     * <li> <p> <b>MAX_RRSETS_BY_ZONE</b>: The maximum number of records that you can
-     * create in the specified hosted zone.</p> </li> <li> <p>
-     * <b>MAX_VPCS_ASSOCIATED_BY_ZONE</b>: The maximum number of Amazon VPCs that you
-     * can associate with the specified private hosted zone.</p> </li> </ul>
-     */
-    inline GetHostedZoneLimitRequest& WithType(const HostedZoneLimitType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The limit that you want to get. Valid values include the following:</p> <ul>
-     * <li> <p> <b>MAX_RRSETS_BY_ZONE</b>: The maximum number of records that you can
-     * create in the specified hosted zone.</p> </li> <li> <p>
-     * <b>MAX_VPCS_ASSOCIATED_BY_ZONE</b>: The maximum number of Amazon VPCs that you
-     * can associate with the specified private hosted zone.</p> </li> </ul>
-     */
-    inline GetHostedZoneLimitRequest& WithType(HostedZoneLimitType&& value) { SetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the hosted zone that you want to get a limit for.</p>
      */
-    inline const Aws::String& GetHostedZoneId() const{ return m_hostedZoneId; }
-
-    /**
-     * <p>The ID of the hosted zone that you want to get a limit for.</p>
-     */
+    inline const Aws::String& GetHostedZoneId() const { return m_hostedZoneId; }
     inline bool HostedZoneIdHasBeenSet() const { return m_hostedZoneIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the hosted zone that you want to get a limit for.</p>
-     */
-    inline void SetHostedZoneId(const Aws::String& value) { m_hostedZoneIdHasBeenSet = true; m_hostedZoneId = value; }
-
-    /**
-     * <p>The ID of the hosted zone that you want to get a limit for.</p>
-     */
-    inline void SetHostedZoneId(Aws::String&& value) { m_hostedZoneIdHasBeenSet = true; m_hostedZoneId = std::move(value); }
-
-    /**
-     * <p>The ID of the hosted zone that you want to get a limit for.</p>
-     */
-    inline void SetHostedZoneId(const char* value) { m_hostedZoneIdHasBeenSet = true; m_hostedZoneId.assign(value); }
-
-    /**
-     * <p>The ID of the hosted zone that you want to get a limit for.</p>
-     */
-    inline GetHostedZoneLimitRequest& WithHostedZoneId(const Aws::String& value) { SetHostedZoneId(value); return *this;}
-
-    /**
-     * <p>The ID of the hosted zone that you want to get a limit for.</p>
-     */
-    inline GetHostedZoneLimitRequest& WithHostedZoneId(Aws::String&& value) { SetHostedZoneId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the hosted zone that you want to get a limit for.</p>
-     */
-    inline GetHostedZoneLimitRequest& WithHostedZoneId(const char* value) { SetHostedZoneId(value); return *this;}
-
+    template<typename HostedZoneIdT = Aws::String>
+    void SetHostedZoneId(HostedZoneIdT&& value) { m_hostedZoneIdHasBeenSet = true; m_hostedZoneId = std::forward<HostedZoneIdT>(value); }
+    template<typename HostedZoneIdT = Aws::String>
+    GetHostedZoneLimitRequest& WithHostedZoneId(HostedZoneIdT&& value) { SetHostedZoneId(std::forward<HostedZoneIdT>(value)); return *this;}
+    ///@}
   private:
 
-    HostedZoneLimitType m_type;
+    HostedZoneLimitType m_type{HostedZoneLimitType::NOT_SET};
     bool m_typeHasBeenSet = false;
 
     Aws::String m_hostedZoneId;

@@ -18,13 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-WordCloudFieldWells::WordCloudFieldWells() : 
-    m_wordCloudAggregatedFieldWellsHasBeenSet(false)
-{
-}
-
-WordCloudFieldWells::WordCloudFieldWells(JsonView jsonValue) : 
-    m_wordCloudAggregatedFieldWellsHasBeenSet(false)
+WordCloudFieldWells::WordCloudFieldWells(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ WordCloudFieldWells& WordCloudFieldWells::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("WordCloudAggregatedFieldWells"))
   {
     m_wordCloudAggregatedFieldWells = jsonValue.GetObject("WordCloudAggregatedFieldWells");
-
     m_wordCloudAggregatedFieldWellsHasBeenSet = true;
   }
-
   return *this;
 }
 

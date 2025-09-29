@@ -37,241 +37,80 @@ namespace Model
   class CreateConfigurationTemplateResult
   {
   public:
-    AWS_ELASTICBEANSTALK_API CreateConfigurationTemplateResult();
+    AWS_ELASTICBEANSTALK_API CreateConfigurationTemplateResult() = default;
     AWS_ELASTICBEANSTALK_API CreateConfigurationTemplateResult(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_ELASTICBEANSTALK_API CreateConfigurationTemplateResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * <p>The name of the solution stack this configuration set uses.</p>
      */
-    inline const Aws::String& GetSolutionStackName() const{ return m_solutionStackName; }
+    inline const Aws::String& GetSolutionStackName() const { return m_solutionStackName; }
+    template<typename SolutionStackNameT = Aws::String>
+    void SetSolutionStackName(SolutionStackNameT&& value) { m_solutionStackNameHasBeenSet = true; m_solutionStackName = std::forward<SolutionStackNameT>(value); }
+    template<typename SolutionStackNameT = Aws::String>
+    CreateConfigurationTemplateResult& WithSolutionStackName(SolutionStackNameT&& value) { SetSolutionStackName(std::forward<SolutionStackNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the solution stack this configuration set uses.</p>
-     */
-    inline void SetSolutionStackName(const Aws::String& value) { m_solutionStackName = value; }
-
-    /**
-     * <p>The name of the solution stack this configuration set uses.</p>
-     */
-    inline void SetSolutionStackName(Aws::String&& value) { m_solutionStackName = std::move(value); }
-
-    /**
-     * <p>The name of the solution stack this configuration set uses.</p>
-     */
-    inline void SetSolutionStackName(const char* value) { m_solutionStackName.assign(value); }
-
-    /**
-     * <p>The name of the solution stack this configuration set uses.</p>
-     */
-    inline CreateConfigurationTemplateResult& WithSolutionStackName(const Aws::String& value) { SetSolutionStackName(value); return *this;}
-
-    /**
-     * <p>The name of the solution stack this configuration set uses.</p>
-     */
-    inline CreateConfigurationTemplateResult& WithSolutionStackName(Aws::String&& value) { SetSolutionStackName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the solution stack this configuration set uses.</p>
-     */
-    inline CreateConfigurationTemplateResult& WithSolutionStackName(const char* value) { SetSolutionStackName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the platform version.</p>
      */
-    inline const Aws::String& GetPlatformArn() const{ return m_platformArn; }
+    inline const Aws::String& GetPlatformArn() const { return m_platformArn; }
+    template<typename PlatformArnT = Aws::String>
+    void SetPlatformArn(PlatformArnT&& value) { m_platformArnHasBeenSet = true; m_platformArn = std::forward<PlatformArnT>(value); }
+    template<typename PlatformArnT = Aws::String>
+    CreateConfigurationTemplateResult& WithPlatformArn(PlatformArnT&& value) { SetPlatformArn(std::forward<PlatformArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the platform version.</p>
-     */
-    inline void SetPlatformArn(const Aws::String& value) { m_platformArn = value; }
-
-    /**
-     * <p>The ARN of the platform version.</p>
-     */
-    inline void SetPlatformArn(Aws::String&& value) { m_platformArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the platform version.</p>
-     */
-    inline void SetPlatformArn(const char* value) { m_platformArn.assign(value); }
-
-    /**
-     * <p>The ARN of the platform version.</p>
-     */
-    inline CreateConfigurationTemplateResult& WithPlatformArn(const Aws::String& value) { SetPlatformArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the platform version.</p>
-     */
-    inline CreateConfigurationTemplateResult& WithPlatformArn(Aws::String&& value) { SetPlatformArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the platform version.</p>
-     */
-    inline CreateConfigurationTemplateResult& WithPlatformArn(const char* value) { SetPlatformArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the application associated with this configuration set.</p>
      */
-    inline const Aws::String& GetApplicationName() const{ return m_applicationName; }
+    inline const Aws::String& GetApplicationName() const { return m_applicationName; }
+    template<typename ApplicationNameT = Aws::String>
+    void SetApplicationName(ApplicationNameT&& value) { m_applicationNameHasBeenSet = true; m_applicationName = std::forward<ApplicationNameT>(value); }
+    template<typename ApplicationNameT = Aws::String>
+    CreateConfigurationTemplateResult& WithApplicationName(ApplicationNameT&& value) { SetApplicationName(std::forward<ApplicationNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the application associated with this configuration set.</p>
-     */
-    inline void SetApplicationName(const Aws::String& value) { m_applicationName = value; }
-
-    /**
-     * <p>The name of the application associated with this configuration set.</p>
-     */
-    inline void SetApplicationName(Aws::String&& value) { m_applicationName = std::move(value); }
-
-    /**
-     * <p>The name of the application associated with this configuration set.</p>
-     */
-    inline void SetApplicationName(const char* value) { m_applicationName.assign(value); }
-
-    /**
-     * <p>The name of the application associated with this configuration set.</p>
-     */
-    inline CreateConfigurationTemplateResult& WithApplicationName(const Aws::String& value) { SetApplicationName(value); return *this;}
-
-    /**
-     * <p>The name of the application associated with this configuration set.</p>
-     */
-    inline CreateConfigurationTemplateResult& WithApplicationName(Aws::String&& value) { SetApplicationName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the application associated with this configuration set.</p>
-     */
-    inline CreateConfigurationTemplateResult& WithApplicationName(const char* value) { SetApplicationName(value); return *this;}
-
-
+    ///@{
     /**
      * <p> If not <code>null</code>, the name of the configuration template for this
      * configuration set. </p>
      */
-    inline const Aws::String& GetTemplateName() const{ return m_templateName; }
+    inline const Aws::String& GetTemplateName() const { return m_templateName; }
+    template<typename TemplateNameT = Aws::String>
+    void SetTemplateName(TemplateNameT&& value) { m_templateNameHasBeenSet = true; m_templateName = std::forward<TemplateNameT>(value); }
+    template<typename TemplateNameT = Aws::String>
+    CreateConfigurationTemplateResult& WithTemplateName(TemplateNameT&& value) { SetTemplateName(std::forward<TemplateNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> If not <code>null</code>, the name of the configuration template for this
-     * configuration set. </p>
-     */
-    inline void SetTemplateName(const Aws::String& value) { m_templateName = value; }
-
-    /**
-     * <p> If not <code>null</code>, the name of the configuration template for this
-     * configuration set. </p>
-     */
-    inline void SetTemplateName(Aws::String&& value) { m_templateName = std::move(value); }
-
-    /**
-     * <p> If not <code>null</code>, the name of the configuration template for this
-     * configuration set. </p>
-     */
-    inline void SetTemplateName(const char* value) { m_templateName.assign(value); }
-
-    /**
-     * <p> If not <code>null</code>, the name of the configuration template for this
-     * configuration set. </p>
-     */
-    inline CreateConfigurationTemplateResult& WithTemplateName(const Aws::String& value) { SetTemplateName(value); return *this;}
-
-    /**
-     * <p> If not <code>null</code>, the name of the configuration template for this
-     * configuration set. </p>
-     */
-    inline CreateConfigurationTemplateResult& WithTemplateName(Aws::String&& value) { SetTemplateName(std::move(value)); return *this;}
-
-    /**
-     * <p> If not <code>null</code>, the name of the configuration template for this
-     * configuration set. </p>
-     */
-    inline CreateConfigurationTemplateResult& WithTemplateName(const char* value) { SetTemplateName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Describes this configuration set.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
+    inline const Aws::String& GetDescription() const { return m_description; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    CreateConfigurationTemplateResult& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Describes this configuration set.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_description = value; }
-
-    /**
-     * <p>Describes this configuration set.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_description = std::move(value); }
-
-    /**
-     * <p>Describes this configuration set.</p>
-     */
-    inline void SetDescription(const char* value) { m_description.assign(value); }
-
-    /**
-     * <p>Describes this configuration set.</p>
-     */
-    inline CreateConfigurationTemplateResult& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>Describes this configuration set.</p>
-     */
-    inline CreateConfigurationTemplateResult& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>Describes this configuration set.</p>
-     */
-    inline CreateConfigurationTemplateResult& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p> If not <code>null</code>, the name of the environment for this configuration
      * set. </p>
      */
-    inline const Aws::String& GetEnvironmentName() const{ return m_environmentName; }
+    inline const Aws::String& GetEnvironmentName() const { return m_environmentName; }
+    template<typename EnvironmentNameT = Aws::String>
+    void SetEnvironmentName(EnvironmentNameT&& value) { m_environmentNameHasBeenSet = true; m_environmentName = std::forward<EnvironmentNameT>(value); }
+    template<typename EnvironmentNameT = Aws::String>
+    CreateConfigurationTemplateResult& WithEnvironmentName(EnvironmentNameT&& value) { SetEnvironmentName(std::forward<EnvironmentNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> If not <code>null</code>, the name of the environment for this configuration
-     * set. </p>
-     */
-    inline void SetEnvironmentName(const Aws::String& value) { m_environmentName = value; }
-
-    /**
-     * <p> If not <code>null</code>, the name of the environment for this configuration
-     * set. </p>
-     */
-    inline void SetEnvironmentName(Aws::String&& value) { m_environmentName = std::move(value); }
-
-    /**
-     * <p> If not <code>null</code>, the name of the environment for this configuration
-     * set. </p>
-     */
-    inline void SetEnvironmentName(const char* value) { m_environmentName.assign(value); }
-
-    /**
-     * <p> If not <code>null</code>, the name of the environment for this configuration
-     * set. </p>
-     */
-    inline CreateConfigurationTemplateResult& WithEnvironmentName(const Aws::String& value) { SetEnvironmentName(value); return *this;}
-
-    /**
-     * <p> If not <code>null</code>, the name of the environment for this configuration
-     * set. </p>
-     */
-    inline CreateConfigurationTemplateResult& WithEnvironmentName(Aws::String&& value) { SetEnvironmentName(std::move(value)); return *this;}
-
-    /**
-     * <p> If not <code>null</code>, the name of the environment for this configuration
-     * set. </p>
-     */
-    inline CreateConfigurationTemplateResult& WithEnvironmentName(const char* value) { SetEnvironmentName(value); return *this;}
-
-
+    ///@{
     /**
      * <p> If this configuration set is associated with an environment, the
      * <code>DeploymentStatus</code> parameter indicates the deployment status of this
@@ -283,194 +122,89 @@ namespace Model
      * the associated running environment.</p> </li> <li> <p> <code>failed</code>: This
      * is a draft configuration that failed to successfully deploy.</p> </li> </ul>
      */
-    inline const ConfigurationDeploymentStatus& GetDeploymentStatus() const{ return m_deploymentStatus; }
+    inline ConfigurationDeploymentStatus GetDeploymentStatus() const { return m_deploymentStatus; }
+    inline void SetDeploymentStatus(ConfigurationDeploymentStatus value) { m_deploymentStatusHasBeenSet = true; m_deploymentStatus = value; }
+    inline CreateConfigurationTemplateResult& WithDeploymentStatus(ConfigurationDeploymentStatus value) { SetDeploymentStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p> If this configuration set is associated with an environment, the
-     * <code>DeploymentStatus</code> parameter indicates the deployment status of this
-     * configuration set: </p> <ul> <li> <p> <code>null</code>: This configuration is
-     * not associated with a running environment.</p> </li> <li> <p>
-     * <code>pending</code>: This is a draft configuration that is not deployed to the
-     * associated environment but is in the process of deploying.</p> </li> <li> <p>
-     * <code>deployed</code>: This is the configuration that is currently deployed to
-     * the associated running environment.</p> </li> <li> <p> <code>failed</code>: This
-     * is a draft configuration that failed to successfully deploy.</p> </li> </ul>
-     */
-    inline void SetDeploymentStatus(const ConfigurationDeploymentStatus& value) { m_deploymentStatus = value; }
-
-    /**
-     * <p> If this configuration set is associated with an environment, the
-     * <code>DeploymentStatus</code> parameter indicates the deployment status of this
-     * configuration set: </p> <ul> <li> <p> <code>null</code>: This configuration is
-     * not associated with a running environment.</p> </li> <li> <p>
-     * <code>pending</code>: This is a draft configuration that is not deployed to the
-     * associated environment but is in the process of deploying.</p> </li> <li> <p>
-     * <code>deployed</code>: This is the configuration that is currently deployed to
-     * the associated running environment.</p> </li> <li> <p> <code>failed</code>: This
-     * is a draft configuration that failed to successfully deploy.</p> </li> </ul>
-     */
-    inline void SetDeploymentStatus(ConfigurationDeploymentStatus&& value) { m_deploymentStatus = std::move(value); }
-
-    /**
-     * <p> If this configuration set is associated with an environment, the
-     * <code>DeploymentStatus</code> parameter indicates the deployment status of this
-     * configuration set: </p> <ul> <li> <p> <code>null</code>: This configuration is
-     * not associated with a running environment.</p> </li> <li> <p>
-     * <code>pending</code>: This is a draft configuration that is not deployed to the
-     * associated environment but is in the process of deploying.</p> </li> <li> <p>
-     * <code>deployed</code>: This is the configuration that is currently deployed to
-     * the associated running environment.</p> </li> <li> <p> <code>failed</code>: This
-     * is a draft configuration that failed to successfully deploy.</p> </li> </ul>
-     */
-    inline CreateConfigurationTemplateResult& WithDeploymentStatus(const ConfigurationDeploymentStatus& value) { SetDeploymentStatus(value); return *this;}
-
-    /**
-     * <p> If this configuration set is associated with an environment, the
-     * <code>DeploymentStatus</code> parameter indicates the deployment status of this
-     * configuration set: </p> <ul> <li> <p> <code>null</code>: This configuration is
-     * not associated with a running environment.</p> </li> <li> <p>
-     * <code>pending</code>: This is a draft configuration that is not deployed to the
-     * associated environment but is in the process of deploying.</p> </li> <li> <p>
-     * <code>deployed</code>: This is the configuration that is currently deployed to
-     * the associated running environment.</p> </li> <li> <p> <code>failed</code>: This
-     * is a draft configuration that failed to successfully deploy.</p> </li> </ul>
-     */
-    inline CreateConfigurationTemplateResult& WithDeploymentStatus(ConfigurationDeploymentStatus&& value) { SetDeploymentStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date (in UTC time) when this configuration set was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetDateCreated() const{ return m_dateCreated; }
+    inline const Aws::Utils::DateTime& GetDateCreated() const { return m_dateCreated; }
+    template<typename DateCreatedT = Aws::Utils::DateTime>
+    void SetDateCreated(DateCreatedT&& value) { m_dateCreatedHasBeenSet = true; m_dateCreated = std::forward<DateCreatedT>(value); }
+    template<typename DateCreatedT = Aws::Utils::DateTime>
+    CreateConfigurationTemplateResult& WithDateCreated(DateCreatedT&& value) { SetDateCreated(std::forward<DateCreatedT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date (in UTC time) when this configuration set was created.</p>
-     */
-    inline void SetDateCreated(const Aws::Utils::DateTime& value) { m_dateCreated = value; }
-
-    /**
-     * <p>The date (in UTC time) when this configuration set was created.</p>
-     */
-    inline void SetDateCreated(Aws::Utils::DateTime&& value) { m_dateCreated = std::move(value); }
-
-    /**
-     * <p>The date (in UTC time) when this configuration set was created.</p>
-     */
-    inline CreateConfigurationTemplateResult& WithDateCreated(const Aws::Utils::DateTime& value) { SetDateCreated(value); return *this;}
-
-    /**
-     * <p>The date (in UTC time) when this configuration set was created.</p>
-     */
-    inline CreateConfigurationTemplateResult& WithDateCreated(Aws::Utils::DateTime&& value) { SetDateCreated(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date (in UTC time) when this configuration set was last modified.</p>
      */
-    inline const Aws::Utils::DateTime& GetDateUpdated() const{ return m_dateUpdated; }
+    inline const Aws::Utils::DateTime& GetDateUpdated() const { return m_dateUpdated; }
+    template<typename DateUpdatedT = Aws::Utils::DateTime>
+    void SetDateUpdated(DateUpdatedT&& value) { m_dateUpdatedHasBeenSet = true; m_dateUpdated = std::forward<DateUpdatedT>(value); }
+    template<typename DateUpdatedT = Aws::Utils::DateTime>
+    CreateConfigurationTemplateResult& WithDateUpdated(DateUpdatedT&& value) { SetDateUpdated(std::forward<DateUpdatedT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date (in UTC time) when this configuration set was last modified.</p>
-     */
-    inline void SetDateUpdated(const Aws::Utils::DateTime& value) { m_dateUpdated = value; }
-
-    /**
-     * <p>The date (in UTC time) when this configuration set was last modified.</p>
-     */
-    inline void SetDateUpdated(Aws::Utils::DateTime&& value) { m_dateUpdated = std::move(value); }
-
-    /**
-     * <p>The date (in UTC time) when this configuration set was last modified.</p>
-     */
-    inline CreateConfigurationTemplateResult& WithDateUpdated(const Aws::Utils::DateTime& value) { SetDateUpdated(value); return *this;}
-
-    /**
-     * <p>The date (in UTC time) when this configuration set was last modified.</p>
-     */
-    inline CreateConfigurationTemplateResult& WithDateUpdated(Aws::Utils::DateTime&& value) { SetDateUpdated(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of the configuration options and their values in this configuration
      * set.</p>
      */
-    inline const Aws::Vector<ConfigurationOptionSetting>& GetOptionSettings() const{ return m_optionSettings; }
+    inline const Aws::Vector<ConfigurationOptionSetting>& GetOptionSettings() const { return m_optionSettings; }
+    template<typename OptionSettingsT = Aws::Vector<ConfigurationOptionSetting>>
+    void SetOptionSettings(OptionSettingsT&& value) { m_optionSettingsHasBeenSet = true; m_optionSettings = std::forward<OptionSettingsT>(value); }
+    template<typename OptionSettingsT = Aws::Vector<ConfigurationOptionSetting>>
+    CreateConfigurationTemplateResult& WithOptionSettings(OptionSettingsT&& value) { SetOptionSettings(std::forward<OptionSettingsT>(value)); return *this;}
+    template<typename OptionSettingsT = ConfigurationOptionSetting>
+    CreateConfigurationTemplateResult& AddOptionSettings(OptionSettingsT&& value) { m_optionSettingsHasBeenSet = true; m_optionSettings.emplace_back(std::forward<OptionSettingsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of the configuration options and their values in this configuration
-     * set.</p>
-     */
-    inline void SetOptionSettings(const Aws::Vector<ConfigurationOptionSetting>& value) { m_optionSettings = value; }
-
-    /**
-     * <p>A list of the configuration options and their values in this configuration
-     * set.</p>
-     */
-    inline void SetOptionSettings(Aws::Vector<ConfigurationOptionSetting>&& value) { m_optionSettings = std::move(value); }
-
-    /**
-     * <p>A list of the configuration options and their values in this configuration
-     * set.</p>
-     */
-    inline CreateConfigurationTemplateResult& WithOptionSettings(const Aws::Vector<ConfigurationOptionSetting>& value) { SetOptionSettings(value); return *this;}
-
-    /**
-     * <p>A list of the configuration options and their values in this configuration
-     * set.</p>
-     */
-    inline CreateConfigurationTemplateResult& WithOptionSettings(Aws::Vector<ConfigurationOptionSetting>&& value) { SetOptionSettings(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of the configuration options and their values in this configuration
-     * set.</p>
-     */
-    inline CreateConfigurationTemplateResult& AddOptionSettings(const ConfigurationOptionSetting& value) { m_optionSettings.push_back(value); return *this; }
-
-    /**
-     * <p>A list of the configuration options and their values in this configuration
-     * set.</p>
-     */
-    inline CreateConfigurationTemplateResult& AddOptionSettings(ConfigurationOptionSetting&& value) { m_optionSettings.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
-
-    
-    inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
-
-    
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
-
-    
-    inline CreateConfigurationTemplateResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
-
-    
-    inline CreateConfigurationTemplateResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
-
+    inline const ResponseMetadata& GetResponseMetadata() const { return m_responseMetadata; }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    void SetResponseMetadata(ResponseMetadataT&& value) { m_responseMetadataHasBeenSet = true; m_responseMetadata = std::forward<ResponseMetadataT>(value); }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    CreateConfigurationTemplateResult& WithResponseMetadata(ResponseMetadataT&& value) { SetResponseMetadata(std::forward<ResponseMetadataT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_solutionStackName;
+    bool m_solutionStackNameHasBeenSet = false;
 
     Aws::String m_platformArn;
+    bool m_platformArnHasBeenSet = false;
 
     Aws::String m_applicationName;
+    bool m_applicationNameHasBeenSet = false;
 
     Aws::String m_templateName;
+    bool m_templateNameHasBeenSet = false;
 
     Aws::String m_description;
+    bool m_descriptionHasBeenSet = false;
 
     Aws::String m_environmentName;
+    bool m_environmentNameHasBeenSet = false;
 
-    ConfigurationDeploymentStatus m_deploymentStatus;
+    ConfigurationDeploymentStatus m_deploymentStatus{ConfigurationDeploymentStatus::NOT_SET};
+    bool m_deploymentStatusHasBeenSet = false;
 
-    Aws::Utils::DateTime m_dateCreated;
+    Aws::Utils::DateTime m_dateCreated{};
+    bool m_dateCreatedHasBeenSet = false;
 
-    Aws::Utils::DateTime m_dateUpdated;
+    Aws::Utils::DateTime m_dateUpdated{};
+    bool m_dateUpdatedHasBeenSet = false;
 
     Aws::Vector<ConfigurationOptionSetting> m_optionSettings;
+    bool m_optionSettingsHasBeenSet = false;
 
     ResponseMetadata m_responseMetadata;
+    bool m_responseMetadataHasBeenSet = false;
   };
 
 } // namespace Model

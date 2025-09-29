@@ -45,20 +45,27 @@ using namespace Aws::Utils::Json;
 using namespace smithy::components::tracing;
 using ResolveEndpointOutcome = Aws::Endpoint::ResolveEndpointOutcome;
 
-const char* RecycleBinClient::SERVICE_NAME = "rbin";
-const char* RecycleBinClient::ALLOCATION_TAG = "RecycleBinClient";
+namespace Aws
+{
+  namespace RecycleBin
+  {
+    const char SERVICE_NAME[] = "rbin";
+    const char ALLOCATION_TAG[] = "RecycleBinClient";
+  }
+}
+const char* RecycleBinClient::GetServiceName() {return SERVICE_NAME;}
+const char* RecycleBinClient::GetAllocationTag() {return ALLOCATION_TAG;}
 
 RecycleBinClient::RecycleBinClient(const RecycleBin::RecycleBinClientConfiguration& clientConfiguration,
                                    std::shared_ptr<RecycleBinEndpointProviderBase> endpointProvider) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<RecycleBinErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
-  m_endpointProvider(std::move(endpointProvider))
+  m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<RecycleBinEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -73,8 +80,7 @@ RecycleBinClient::RecycleBinClient(const AWSCredentials& credentials,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<RecycleBinErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<RecycleBinEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -89,8 +95,7 @@ RecycleBinClient::RecycleBinClient(const std::shared_ptr<AWSCredentialsProvider>
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<RecycleBinErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<RecycleBinEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -99,12 +104,11 @@ RecycleBinClient::RecycleBinClient(const std::shared_ptr<AWSCredentialsProvider>
   RecycleBinClient::RecycleBinClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<RecycleBinErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
   m_endpointProvider(Aws::MakeShared<RecycleBinEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -119,7 +123,6 @@ RecycleBinClient::RecycleBinClient(const AWSCredentials& credentials,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<RecycleBinErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<RecycleBinEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -134,7 +137,6 @@ RecycleBinClient::RecycleBinClient(const std::shared_ptr<AWSCredentialsProvider>
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<RecycleBinErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<RecycleBinEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -154,6 +156,14 @@ std::shared_ptr<RecycleBinEndpointProviderBase>& RecycleBinClient::accessEndpoin
 void RecycleBinClient::init(const RecycleBin::RecycleBinClientConfiguration& config)
 {
   AWSClient::SetServiceClientName("rbin");
+  if (!m_clientConfiguration.executor) {
+    if (!m_clientConfiguration.configFactories.executorCreateFn()) {
+      AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "Failed to initialize client: config is missing Executor or executorCreateFn");
+      m_isInitialized = false;
+      return;
+    }
+    m_clientConfiguration.executor = m_clientConfiguration.configFactories.executorCreateFn();
+  }
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
   m_endpointProvider->InitBuiltInParameters(config);
 }

@@ -18,19 +18,7 @@ namespace ConfigService
 namespace Model
 {
 
-SsmControls::SsmControls() : 
-    m_concurrentExecutionRatePercentage(0),
-    m_concurrentExecutionRatePercentageHasBeenSet(false),
-    m_errorPercentage(0),
-    m_errorPercentageHasBeenSet(false)
-{
-}
-
-SsmControls::SsmControls(JsonView jsonValue) : 
-    m_concurrentExecutionRatePercentage(0),
-    m_concurrentExecutionRatePercentageHasBeenSet(false),
-    m_errorPercentage(0),
-    m_errorPercentageHasBeenSet(false)
+SsmControls::SsmControls(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ SsmControls& SsmControls::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ConcurrentExecutionRatePercentage"))
   {
     m_concurrentExecutionRatePercentage = jsonValue.GetInteger("ConcurrentExecutionRatePercentage");
-
     m_concurrentExecutionRatePercentageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ErrorPercentage"))
   {
     m_errorPercentage = jsonValue.GetInteger("ErrorPercentage");
-
     m_errorPercentageHasBeenSet = true;
   }
-
   return *this;
 }
 

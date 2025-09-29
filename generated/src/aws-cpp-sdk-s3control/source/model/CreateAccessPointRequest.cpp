@@ -6,6 +6,7 @@
 #include <aws/s3control/model/CreateAccessPointRequest.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/core/utils/UnreferencedParam.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
 
 #include <utility>
@@ -14,15 +15,6 @@ using namespace Aws::S3Control::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 
-CreateAccessPointRequest::CreateAccessPointRequest() : 
-    m_accountIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_bucketHasBeenSet(false),
-    m_vpcConfigurationHasBeenSet(false),
-    m_publicAccessBlockConfigurationHasBeenSet(false),
-    m_bucketAccountIdHasBeenSet(false)
-{
-}
 
 Aws::String CreateAccessPointRequest::SerializePayload() const
 {
@@ -56,6 +48,22 @@ Aws::String CreateAccessPointRequest::SerializePayload() const
    bucketAccountIdNode.SetText(m_bucketAccountId);
   }
 
+  if(m_scopeHasBeenSet)
+  {
+   XmlNode scopeNode = parentNode.CreateChildElement("Scope");
+   m_scope.AddToNode(scopeNode);
+  }
+
+  if(m_tagsHasBeenSet)
+  {
+   XmlNode tagsParentNode = parentNode.CreateChildElement("Tags");
+   for(const auto& item : m_tags)
+   {
+     XmlNode tagsNode = tagsParentNode.CreateChildElement("Tag");
+     item.AddToNode(tagsNode);
+   }
+  }
+
   return payloadDoc.ConvertToString();
 }
 
@@ -82,6 +90,9 @@ CreateAccessPointRequest::EndpointParameters CreateAccessPointRequest::GetEndpoi
     // Operation context parameters
     if (AccountIdHasBeenSet()) {
         parameters.emplace_back(Aws::String("AccountId"), this->GetAccountId(), Aws::Endpoint::EndpointParameter::ParameterOrigin::OPERATION_CONTEXT);
+    }
+    if (NameHasBeenSet()) {
+        parameters.emplace_back(Aws::String("AccessPointName"), this->GetName(), Aws::Endpoint::EndpointParameter::ParameterOrigin::OPERATION_CONTEXT);
     }
     if (BucketHasBeenSet()) {
         parameters.emplace_back(Aws::String("Bucket"), this->GetBucket(), Aws::Endpoint::EndpointParameter::ParameterOrigin::OPERATION_CONTEXT);

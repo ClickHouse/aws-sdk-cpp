@@ -18,15 +18,7 @@ namespace GreengrassV2
 namespace Model
 {
 
-IoTJobTimeoutConfig::IoTJobTimeoutConfig() : 
-    m_inProgressTimeoutInMinutes(0),
-    m_inProgressTimeoutInMinutesHasBeenSet(false)
-{
-}
-
-IoTJobTimeoutConfig::IoTJobTimeoutConfig(JsonView jsonValue) : 
-    m_inProgressTimeoutInMinutes(0),
-    m_inProgressTimeoutInMinutesHasBeenSet(false)
+IoTJobTimeoutConfig::IoTJobTimeoutConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ IoTJobTimeoutConfig& IoTJobTimeoutConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("inProgressTimeoutInMinutes"))
   {
     m_inProgressTimeoutInMinutes = jsonValue.GetInt64("inProgressTimeoutInMinutes");
-
     m_inProgressTimeoutInMinutesHasBeenSet = true;
   }
-
   return *this;
 }
 

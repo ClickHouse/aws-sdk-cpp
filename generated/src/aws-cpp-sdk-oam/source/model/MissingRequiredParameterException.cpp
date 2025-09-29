@@ -19,15 +19,7 @@ namespace OAM
 namespace Model
 {
 
-MissingRequiredParameterException::MissingRequiredParameterException() : 
-    m_messageHasBeenSet(false),
-    m_amznErrorTypeHasBeenSet(false)
-{
-}
-
-MissingRequiredParameterException::MissingRequiredParameterException(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_amznErrorTypeHasBeenSet(false)
+MissingRequiredParameterException::MissingRequiredParameterException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -37,10 +29,8 @@ MissingRequiredParameterException& MissingRequiredParameterException::operator =
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,83 +18,7 @@ namespace CodeBuild
 namespace Model
 {
 
-BuildBatch::BuildBatch() : 
-    m_idHasBeenSet(false),
-    m_arnHasBeenSet(false),
-    m_startTimeHasBeenSet(false),
-    m_endTimeHasBeenSet(false),
-    m_currentPhaseHasBeenSet(false),
-    m_buildBatchStatus(StatusType::NOT_SET),
-    m_buildBatchStatusHasBeenSet(false),
-    m_sourceVersionHasBeenSet(false),
-    m_resolvedSourceVersionHasBeenSet(false),
-    m_projectNameHasBeenSet(false),
-    m_phasesHasBeenSet(false),
-    m_sourceHasBeenSet(false),
-    m_secondarySourcesHasBeenSet(false),
-    m_secondarySourceVersionsHasBeenSet(false),
-    m_artifactsHasBeenSet(false),
-    m_secondaryArtifactsHasBeenSet(false),
-    m_cacheHasBeenSet(false),
-    m_environmentHasBeenSet(false),
-    m_serviceRoleHasBeenSet(false),
-    m_logConfigHasBeenSet(false),
-    m_buildTimeoutInMinutes(0),
-    m_buildTimeoutInMinutesHasBeenSet(false),
-    m_queuedTimeoutInMinutes(0),
-    m_queuedTimeoutInMinutesHasBeenSet(false),
-    m_complete(false),
-    m_completeHasBeenSet(false),
-    m_initiatorHasBeenSet(false),
-    m_vpcConfigHasBeenSet(false),
-    m_encryptionKeyHasBeenSet(false),
-    m_buildBatchNumber(0),
-    m_buildBatchNumberHasBeenSet(false),
-    m_fileSystemLocationsHasBeenSet(false),
-    m_buildBatchConfigHasBeenSet(false),
-    m_buildGroupsHasBeenSet(false),
-    m_debugSessionEnabled(false),
-    m_debugSessionEnabledHasBeenSet(false)
-{
-}
-
-BuildBatch::BuildBatch(JsonView jsonValue) : 
-    m_idHasBeenSet(false),
-    m_arnHasBeenSet(false),
-    m_startTimeHasBeenSet(false),
-    m_endTimeHasBeenSet(false),
-    m_currentPhaseHasBeenSet(false),
-    m_buildBatchStatus(StatusType::NOT_SET),
-    m_buildBatchStatusHasBeenSet(false),
-    m_sourceVersionHasBeenSet(false),
-    m_resolvedSourceVersionHasBeenSet(false),
-    m_projectNameHasBeenSet(false),
-    m_phasesHasBeenSet(false),
-    m_sourceHasBeenSet(false),
-    m_secondarySourcesHasBeenSet(false),
-    m_secondarySourceVersionsHasBeenSet(false),
-    m_artifactsHasBeenSet(false),
-    m_secondaryArtifactsHasBeenSet(false),
-    m_cacheHasBeenSet(false),
-    m_environmentHasBeenSet(false),
-    m_serviceRoleHasBeenSet(false),
-    m_logConfigHasBeenSet(false),
-    m_buildTimeoutInMinutes(0),
-    m_buildTimeoutInMinutesHasBeenSet(false),
-    m_queuedTimeoutInMinutes(0),
-    m_queuedTimeoutInMinutesHasBeenSet(false),
-    m_complete(false),
-    m_completeHasBeenSet(false),
-    m_initiatorHasBeenSet(false),
-    m_vpcConfigHasBeenSet(false),
-    m_encryptionKeyHasBeenSet(false),
-    m_buildBatchNumber(0),
-    m_buildBatchNumberHasBeenSet(false),
-    m_fileSystemLocationsHasBeenSet(false),
-    m_buildBatchConfigHasBeenSet(false),
-    m_buildGroupsHasBeenSet(false),
-    m_debugSessionEnabled(false),
-    m_debugSessionEnabledHasBeenSet(false)
+BuildBatch::BuildBatch(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -104,66 +28,48 @@ BuildBatch& BuildBatch::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("id"))
   {
     m_id = jsonValue.GetString("id");
-
     m_idHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("arn"))
   {
     m_arn = jsonValue.GetString("arn");
-
     m_arnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("startTime"))
   {
     m_startTime = jsonValue.GetDouble("startTime");
-
     m_startTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("endTime"))
   {
     m_endTime = jsonValue.GetDouble("endTime");
-
     m_endTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("currentPhase"))
   {
     m_currentPhase = jsonValue.GetString("currentPhase");
-
     m_currentPhaseHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("buildBatchStatus"))
   {
     m_buildBatchStatus = StatusTypeMapper::GetStatusTypeForName(jsonValue.GetString("buildBatchStatus"));
-
     m_buildBatchStatusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("sourceVersion"))
   {
     m_sourceVersion = jsonValue.GetString("sourceVersion");
-
     m_sourceVersionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("resolvedSourceVersion"))
   {
     m_resolvedSourceVersion = jsonValue.GetString("resolvedSourceVersion");
-
     m_resolvedSourceVersionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("projectName"))
   {
     m_projectName = jsonValue.GetString("projectName");
-
     m_projectNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("phases"))
   {
     Aws::Utils::Array<JsonView> phasesJsonList = jsonValue.GetArray("phases");
@@ -173,14 +79,11 @@ BuildBatch& BuildBatch::operator =(JsonView jsonValue)
     }
     m_phasesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("source"))
   {
     m_source = jsonValue.GetObject("source");
-
     m_sourceHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("secondarySources"))
   {
     Aws::Utils::Array<JsonView> secondarySourcesJsonList = jsonValue.GetArray("secondarySources");
@@ -190,7 +93,6 @@ BuildBatch& BuildBatch::operator =(JsonView jsonValue)
     }
     m_secondarySourcesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("secondarySourceVersions"))
   {
     Aws::Utils::Array<JsonView> secondarySourceVersionsJsonList = jsonValue.GetArray("secondarySourceVersions");
@@ -200,14 +102,11 @@ BuildBatch& BuildBatch::operator =(JsonView jsonValue)
     }
     m_secondarySourceVersionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("artifacts"))
   {
     m_artifacts = jsonValue.GetObject("artifacts");
-
     m_artifactsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("secondaryArtifacts"))
   {
     Aws::Utils::Array<JsonView> secondaryArtifactsJsonList = jsonValue.GetArray("secondaryArtifacts");
@@ -217,84 +116,61 @@ BuildBatch& BuildBatch::operator =(JsonView jsonValue)
     }
     m_secondaryArtifactsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("cache"))
   {
     m_cache = jsonValue.GetObject("cache");
-
     m_cacheHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("environment"))
   {
     m_environment = jsonValue.GetObject("environment");
-
     m_environmentHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("serviceRole"))
   {
     m_serviceRole = jsonValue.GetString("serviceRole");
-
     m_serviceRoleHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("logConfig"))
   {
     m_logConfig = jsonValue.GetObject("logConfig");
-
     m_logConfigHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("buildTimeoutInMinutes"))
   {
     m_buildTimeoutInMinutes = jsonValue.GetInteger("buildTimeoutInMinutes");
-
     m_buildTimeoutInMinutesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("queuedTimeoutInMinutes"))
   {
     m_queuedTimeoutInMinutes = jsonValue.GetInteger("queuedTimeoutInMinutes");
-
     m_queuedTimeoutInMinutesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("complete"))
   {
     m_complete = jsonValue.GetBool("complete");
-
     m_completeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("initiator"))
   {
     m_initiator = jsonValue.GetString("initiator");
-
     m_initiatorHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("vpcConfig"))
   {
     m_vpcConfig = jsonValue.GetObject("vpcConfig");
-
     m_vpcConfigHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("encryptionKey"))
   {
     m_encryptionKey = jsonValue.GetString("encryptionKey");
-
     m_encryptionKeyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("buildBatchNumber"))
   {
     m_buildBatchNumber = jsonValue.GetInt64("buildBatchNumber");
-
     m_buildBatchNumberHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("fileSystemLocations"))
   {
     Aws::Utils::Array<JsonView> fileSystemLocationsJsonList = jsonValue.GetArray("fileSystemLocations");
@@ -304,14 +180,11 @@ BuildBatch& BuildBatch::operator =(JsonView jsonValue)
     }
     m_fileSystemLocationsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("buildBatchConfig"))
   {
     m_buildBatchConfig = jsonValue.GetObject("buildBatchConfig");
-
     m_buildBatchConfigHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("buildGroups"))
   {
     Aws::Utils::Array<JsonView> buildGroupsJsonList = jsonValue.GetArray("buildGroups");
@@ -321,14 +194,20 @@ BuildBatch& BuildBatch::operator =(JsonView jsonValue)
     }
     m_buildGroupsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("debugSessionEnabled"))
   {
     m_debugSessionEnabled = jsonValue.GetBool("debugSessionEnabled");
-
     m_debugSessionEnabledHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("reportArns"))
+  {
+    Aws::Utils::Array<JsonView> reportArnsJsonList = jsonValue.GetArray("reportArns");
+    for(unsigned reportArnsIndex = 0; reportArnsIndex < reportArnsJsonList.GetLength(); ++reportArnsIndex)
+    {
+      m_reportArns.push_back(reportArnsJsonList[reportArnsIndex].AsString());
+    }
+    m_reportArnsHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -540,6 +419,17 @@ JsonValue BuildBatch::Jsonize() const
   if(m_debugSessionEnabledHasBeenSet)
   {
    payload.WithBool("debugSessionEnabled", m_debugSessionEnabled);
+
+  }
+
+  if(m_reportArnsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> reportArnsJsonList(m_reportArns.size());
+   for(unsigned reportArnsIndex = 0; reportArnsIndex < reportArnsJsonList.GetLength(); ++reportArnsIndex)
+   {
+     reportArnsJsonList[reportArnsIndex].AsString(m_reportArns[reportArnsIndex]);
+   }
+   payload.WithArray("reportArns", std::move(reportArnsJsonList));
 
   }
 

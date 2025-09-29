@@ -34,98 +34,40 @@ namespace Model
   class UsageTopAccountsResult
   {
   public:
-    AWS_GUARDDUTY_API UsageTopAccountsResult();
+    AWS_GUARDDUTY_API UsageTopAccountsResult() = default;
     AWS_GUARDDUTY_API UsageTopAccountsResult(Aws::Utils::Json::JsonView jsonValue);
     AWS_GUARDDUTY_API UsageTopAccountsResult& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GUARDDUTY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Features by which you can generate the usage statistics.</p> <p>
      * <code>RDS_LOGIN_EVENTS</code> is currently not supported with
      * <code>topAccountsByFeature</code>.</p>
      */
-    inline const UsageFeature& GetFeature() const{ return m_feature; }
-
-    /**
-     * <p>Features by which you can generate the usage statistics.</p> <p>
-     * <code>RDS_LOGIN_EVENTS</code> is currently not supported with
-     * <code>topAccountsByFeature</code>.</p>
-     */
+    inline UsageFeature GetFeature() const { return m_feature; }
     inline bool FeatureHasBeenSet() const { return m_featureHasBeenSet; }
+    inline void SetFeature(UsageFeature value) { m_featureHasBeenSet = true; m_feature = value; }
+    inline UsageTopAccountsResult& WithFeature(UsageFeature value) { SetFeature(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Features by which you can generate the usage statistics.</p> <p>
-     * <code>RDS_LOGIN_EVENTS</code> is currently not supported with
-     * <code>topAccountsByFeature</code>.</p>
-     */
-    inline void SetFeature(const UsageFeature& value) { m_featureHasBeenSet = true; m_feature = value; }
-
-    /**
-     * <p>Features by which you can generate the usage statistics.</p> <p>
-     * <code>RDS_LOGIN_EVENTS</code> is currently not supported with
-     * <code>topAccountsByFeature</code>.</p>
-     */
-    inline void SetFeature(UsageFeature&& value) { m_featureHasBeenSet = true; m_feature = std::move(value); }
-
-    /**
-     * <p>Features by which you can generate the usage statistics.</p> <p>
-     * <code>RDS_LOGIN_EVENTS</code> is currently not supported with
-     * <code>topAccountsByFeature</code>.</p>
-     */
-    inline UsageTopAccountsResult& WithFeature(const UsageFeature& value) { SetFeature(value); return *this;}
-
-    /**
-     * <p>Features by which you can generate the usage statistics.</p> <p>
-     * <code>RDS_LOGIN_EVENTS</code> is currently not supported with
-     * <code>topAccountsByFeature</code>.</p>
-     */
-    inline UsageTopAccountsResult& WithFeature(UsageFeature&& value) { SetFeature(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The accounts that contributed to the total usage cost.</p>
      */
-    inline const Aws::Vector<UsageTopAccountResult>& GetAccounts() const{ return m_accounts; }
-
-    /**
-     * <p>The accounts that contributed to the total usage cost.</p>
-     */
+    inline const Aws::Vector<UsageTopAccountResult>& GetAccounts() const { return m_accounts; }
     inline bool AccountsHasBeenSet() const { return m_accountsHasBeenSet; }
-
-    /**
-     * <p>The accounts that contributed to the total usage cost.</p>
-     */
-    inline void SetAccounts(const Aws::Vector<UsageTopAccountResult>& value) { m_accountsHasBeenSet = true; m_accounts = value; }
-
-    /**
-     * <p>The accounts that contributed to the total usage cost.</p>
-     */
-    inline void SetAccounts(Aws::Vector<UsageTopAccountResult>&& value) { m_accountsHasBeenSet = true; m_accounts = std::move(value); }
-
-    /**
-     * <p>The accounts that contributed to the total usage cost.</p>
-     */
-    inline UsageTopAccountsResult& WithAccounts(const Aws::Vector<UsageTopAccountResult>& value) { SetAccounts(value); return *this;}
-
-    /**
-     * <p>The accounts that contributed to the total usage cost.</p>
-     */
-    inline UsageTopAccountsResult& WithAccounts(Aws::Vector<UsageTopAccountResult>&& value) { SetAccounts(std::move(value)); return *this;}
-
-    /**
-     * <p>The accounts that contributed to the total usage cost.</p>
-     */
-    inline UsageTopAccountsResult& AddAccounts(const UsageTopAccountResult& value) { m_accountsHasBeenSet = true; m_accounts.push_back(value); return *this; }
-
-    /**
-     * <p>The accounts that contributed to the total usage cost.</p>
-     */
-    inline UsageTopAccountsResult& AddAccounts(UsageTopAccountResult&& value) { m_accountsHasBeenSet = true; m_accounts.push_back(std::move(value)); return *this; }
-
+    template<typename AccountsT = Aws::Vector<UsageTopAccountResult>>
+    void SetAccounts(AccountsT&& value) { m_accountsHasBeenSet = true; m_accounts = std::forward<AccountsT>(value); }
+    template<typename AccountsT = Aws::Vector<UsageTopAccountResult>>
+    UsageTopAccountsResult& WithAccounts(AccountsT&& value) { SetAccounts(std::forward<AccountsT>(value)); return *this;}
+    template<typename AccountsT = UsageTopAccountResult>
+    UsageTopAccountsResult& AddAccounts(AccountsT&& value) { m_accountsHasBeenSet = true; m_accounts.emplace_back(std::forward<AccountsT>(value)); return *this; }
+    ///@}
   private:
 
-    UsageFeature m_feature;
+    UsageFeature m_feature{UsageFeature::NOT_SET};
     bool m_featureHasBeenSet = false;
 
     Aws::Vector<UsageTopAccountResult> m_accounts;

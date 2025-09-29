@@ -18,15 +18,7 @@ namespace CloudWatchEvents
 namespace Model
 {
 
-InputTransformer::InputTransformer() : 
-    m_inputPathsMapHasBeenSet(false),
-    m_inputTemplateHasBeenSet(false)
-{
-}
-
-InputTransformer::InputTransformer(JsonView jsonValue) : 
-    m_inputPathsMapHasBeenSet(false),
-    m_inputTemplateHasBeenSet(false)
+InputTransformer::InputTransformer(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ InputTransformer& InputTransformer::operator =(JsonView jsonValue)
     }
     m_inputPathsMapHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("InputTemplate"))
   {
     m_inputTemplate = jsonValue.GetString("InputTemplate");
-
     m_inputTemplateHasBeenSet = true;
   }
-
   return *this;
 }
 

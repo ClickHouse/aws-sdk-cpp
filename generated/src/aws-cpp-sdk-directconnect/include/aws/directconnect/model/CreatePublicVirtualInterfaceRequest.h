@@ -22,7 +22,7 @@ namespace Model
   class CreatePublicVirtualInterfaceRequest : public DirectConnectRequest
   {
   public:
-    AWS_DIRECTCONNECT_API CreatePublicVirtualInterfaceRequest();
+    AWS_DIRECTCONNECT_API CreatePublicVirtualInterfaceRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,77 +35,29 @@ namespace Model
     AWS_DIRECTCONNECT_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the connection.</p>
      */
-    inline const Aws::String& GetConnectionId() const{ return m_connectionId; }
-
-    /**
-     * <p>The ID of the connection.</p>
-     */
+    inline const Aws::String& GetConnectionId() const { return m_connectionId; }
     inline bool ConnectionIdHasBeenSet() const { return m_connectionIdHasBeenSet; }
+    template<typename ConnectionIdT = Aws::String>
+    void SetConnectionId(ConnectionIdT&& value) { m_connectionIdHasBeenSet = true; m_connectionId = std::forward<ConnectionIdT>(value); }
+    template<typename ConnectionIdT = Aws::String>
+    CreatePublicVirtualInterfaceRequest& WithConnectionId(ConnectionIdT&& value) { SetConnectionId(std::forward<ConnectionIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the connection.</p>
-     */
-    inline void SetConnectionId(const Aws::String& value) { m_connectionIdHasBeenSet = true; m_connectionId = value; }
-
-    /**
-     * <p>The ID of the connection.</p>
-     */
-    inline void SetConnectionId(Aws::String&& value) { m_connectionIdHasBeenSet = true; m_connectionId = std::move(value); }
-
-    /**
-     * <p>The ID of the connection.</p>
-     */
-    inline void SetConnectionId(const char* value) { m_connectionIdHasBeenSet = true; m_connectionId.assign(value); }
-
-    /**
-     * <p>The ID of the connection.</p>
-     */
-    inline CreatePublicVirtualInterfaceRequest& WithConnectionId(const Aws::String& value) { SetConnectionId(value); return *this;}
-
-    /**
-     * <p>The ID of the connection.</p>
-     */
-    inline CreatePublicVirtualInterfaceRequest& WithConnectionId(Aws::String&& value) { SetConnectionId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the connection.</p>
-     */
-    inline CreatePublicVirtualInterfaceRequest& WithConnectionId(const char* value) { SetConnectionId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about the public virtual interface.</p>
      */
-    inline const NewPublicVirtualInterface& GetNewPublicVirtualInterface() const{ return m_newPublicVirtualInterface; }
-
-    /**
-     * <p>Information about the public virtual interface.</p>
-     */
+    inline const NewPublicVirtualInterface& GetNewPublicVirtualInterface() const { return m_newPublicVirtualInterface; }
     inline bool NewPublicVirtualInterfaceHasBeenSet() const { return m_newPublicVirtualInterfaceHasBeenSet; }
-
-    /**
-     * <p>Information about the public virtual interface.</p>
-     */
-    inline void SetNewPublicVirtualInterface(const NewPublicVirtualInterface& value) { m_newPublicVirtualInterfaceHasBeenSet = true; m_newPublicVirtualInterface = value; }
-
-    /**
-     * <p>Information about the public virtual interface.</p>
-     */
-    inline void SetNewPublicVirtualInterface(NewPublicVirtualInterface&& value) { m_newPublicVirtualInterfaceHasBeenSet = true; m_newPublicVirtualInterface = std::move(value); }
-
-    /**
-     * <p>Information about the public virtual interface.</p>
-     */
-    inline CreatePublicVirtualInterfaceRequest& WithNewPublicVirtualInterface(const NewPublicVirtualInterface& value) { SetNewPublicVirtualInterface(value); return *this;}
-
-    /**
-     * <p>Information about the public virtual interface.</p>
-     */
-    inline CreatePublicVirtualInterfaceRequest& WithNewPublicVirtualInterface(NewPublicVirtualInterface&& value) { SetNewPublicVirtualInterface(std::move(value)); return *this;}
-
+    template<typename NewPublicVirtualInterfaceT = NewPublicVirtualInterface>
+    void SetNewPublicVirtualInterface(NewPublicVirtualInterfaceT&& value) { m_newPublicVirtualInterfaceHasBeenSet = true; m_newPublicVirtualInterface = std::forward<NewPublicVirtualInterfaceT>(value); }
+    template<typename NewPublicVirtualInterfaceT = NewPublicVirtualInterface>
+    CreatePublicVirtualInterfaceRequest& WithNewPublicVirtualInterface(NewPublicVirtualInterfaceT&& value) { SetNewPublicVirtualInterface(std::forward<NewPublicVirtualInterfaceT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_connectionId;

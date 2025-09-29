@@ -25,7 +25,7 @@ namespace Model
   class DescribeVirtualGatewayRequest : public AppMeshRequest
   {
   public:
-    AWS_APPMESH_API DescribeVirtualGatewayRequest();
+    AWS_APPMESH_API DescribeVirtualGatewayRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,47 +38,19 @@ namespace Model
     AWS_APPMESH_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>The name of the service mesh that the gateway route resides in.</p>
      */
-    inline const Aws::String& GetMeshName() const{ return m_meshName; }
-
-    /**
-     * <p>The name of the service mesh that the gateway route resides in.</p>
-     */
+    inline const Aws::String& GetMeshName() const { return m_meshName; }
     inline bool MeshNameHasBeenSet() const { return m_meshNameHasBeenSet; }
+    template<typename MeshNameT = Aws::String>
+    void SetMeshName(MeshNameT&& value) { m_meshNameHasBeenSet = true; m_meshName = std::forward<MeshNameT>(value); }
+    template<typename MeshNameT = Aws::String>
+    DescribeVirtualGatewayRequest& WithMeshName(MeshNameT&& value) { SetMeshName(std::forward<MeshNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the service mesh that the gateway route resides in.</p>
-     */
-    inline void SetMeshName(const Aws::String& value) { m_meshNameHasBeenSet = true; m_meshName = value; }
-
-    /**
-     * <p>The name of the service mesh that the gateway route resides in.</p>
-     */
-    inline void SetMeshName(Aws::String&& value) { m_meshNameHasBeenSet = true; m_meshName = std::move(value); }
-
-    /**
-     * <p>The name of the service mesh that the gateway route resides in.</p>
-     */
-    inline void SetMeshName(const char* value) { m_meshNameHasBeenSet = true; m_meshName.assign(value); }
-
-    /**
-     * <p>The name of the service mesh that the gateway route resides in.</p>
-     */
-    inline DescribeVirtualGatewayRequest& WithMeshName(const Aws::String& value) { SetMeshName(value); return *this;}
-
-    /**
-     * <p>The name of the service mesh that the gateway route resides in.</p>
-     */
-    inline DescribeVirtualGatewayRequest& WithMeshName(Aws::String&& value) { SetMeshName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the service mesh that the gateway route resides in.</p>
-     */
-    inline DescribeVirtualGatewayRequest& WithMeshName(const char* value) { SetMeshName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Web Services IAM account ID of the service mesh owner. If the
      * account ID is not your own, then it's the ID of the account that shared the mesh
@@ -86,112 +58,25 @@ namespace Model
      * href="https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html">Working
      * with shared meshes</a>.</p>
      */
-    inline const Aws::String& GetMeshOwner() const{ return m_meshOwner; }
-
-    /**
-     * <p>The Amazon Web Services IAM account ID of the service mesh owner. If the
-     * account ID is not your own, then it's the ID of the account that shared the mesh
-     * with your account. For more information about mesh sharing, see <a
-     * href="https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html">Working
-     * with shared meshes</a>.</p>
-     */
+    inline const Aws::String& GetMeshOwner() const { return m_meshOwner; }
     inline bool MeshOwnerHasBeenSet() const { return m_meshOwnerHasBeenSet; }
+    template<typename MeshOwnerT = Aws::String>
+    void SetMeshOwner(MeshOwnerT&& value) { m_meshOwnerHasBeenSet = true; m_meshOwner = std::forward<MeshOwnerT>(value); }
+    template<typename MeshOwnerT = Aws::String>
+    DescribeVirtualGatewayRequest& WithMeshOwner(MeshOwnerT&& value) { SetMeshOwner(std::forward<MeshOwnerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Web Services IAM account ID of the service mesh owner. If the
-     * account ID is not your own, then it's the ID of the account that shared the mesh
-     * with your account. For more information about mesh sharing, see <a
-     * href="https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html">Working
-     * with shared meshes</a>.</p>
-     */
-    inline void SetMeshOwner(const Aws::String& value) { m_meshOwnerHasBeenSet = true; m_meshOwner = value; }
-
-    /**
-     * <p>The Amazon Web Services IAM account ID of the service mesh owner. If the
-     * account ID is not your own, then it's the ID of the account that shared the mesh
-     * with your account. For more information about mesh sharing, see <a
-     * href="https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html">Working
-     * with shared meshes</a>.</p>
-     */
-    inline void SetMeshOwner(Aws::String&& value) { m_meshOwnerHasBeenSet = true; m_meshOwner = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services IAM account ID of the service mesh owner. If the
-     * account ID is not your own, then it's the ID of the account that shared the mesh
-     * with your account. For more information about mesh sharing, see <a
-     * href="https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html">Working
-     * with shared meshes</a>.</p>
-     */
-    inline void SetMeshOwner(const char* value) { m_meshOwnerHasBeenSet = true; m_meshOwner.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services IAM account ID of the service mesh owner. If the
-     * account ID is not your own, then it's the ID of the account that shared the mesh
-     * with your account. For more information about mesh sharing, see <a
-     * href="https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html">Working
-     * with shared meshes</a>.</p>
-     */
-    inline DescribeVirtualGatewayRequest& WithMeshOwner(const Aws::String& value) { SetMeshOwner(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services IAM account ID of the service mesh owner. If the
-     * account ID is not your own, then it's the ID of the account that shared the mesh
-     * with your account. For more information about mesh sharing, see <a
-     * href="https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html">Working
-     * with shared meshes</a>.</p>
-     */
-    inline DescribeVirtualGatewayRequest& WithMeshOwner(Aws::String&& value) { SetMeshOwner(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services IAM account ID of the service mesh owner. If the
-     * account ID is not your own, then it's the ID of the account that shared the mesh
-     * with your account. For more information about mesh sharing, see <a
-     * href="https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html">Working
-     * with shared meshes</a>.</p>
-     */
-    inline DescribeVirtualGatewayRequest& WithMeshOwner(const char* value) { SetMeshOwner(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the virtual gateway to describe.</p>
      */
-    inline const Aws::String& GetVirtualGatewayName() const{ return m_virtualGatewayName; }
-
-    /**
-     * <p>The name of the virtual gateway to describe.</p>
-     */
+    inline const Aws::String& GetVirtualGatewayName() const { return m_virtualGatewayName; }
     inline bool VirtualGatewayNameHasBeenSet() const { return m_virtualGatewayNameHasBeenSet; }
-
-    /**
-     * <p>The name of the virtual gateway to describe.</p>
-     */
-    inline void SetVirtualGatewayName(const Aws::String& value) { m_virtualGatewayNameHasBeenSet = true; m_virtualGatewayName = value; }
-
-    /**
-     * <p>The name of the virtual gateway to describe.</p>
-     */
-    inline void SetVirtualGatewayName(Aws::String&& value) { m_virtualGatewayNameHasBeenSet = true; m_virtualGatewayName = std::move(value); }
-
-    /**
-     * <p>The name of the virtual gateway to describe.</p>
-     */
-    inline void SetVirtualGatewayName(const char* value) { m_virtualGatewayNameHasBeenSet = true; m_virtualGatewayName.assign(value); }
-
-    /**
-     * <p>The name of the virtual gateway to describe.</p>
-     */
-    inline DescribeVirtualGatewayRequest& WithVirtualGatewayName(const Aws::String& value) { SetVirtualGatewayName(value); return *this;}
-
-    /**
-     * <p>The name of the virtual gateway to describe.</p>
-     */
-    inline DescribeVirtualGatewayRequest& WithVirtualGatewayName(Aws::String&& value) { SetVirtualGatewayName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the virtual gateway to describe.</p>
-     */
-    inline DescribeVirtualGatewayRequest& WithVirtualGatewayName(const char* value) { SetVirtualGatewayName(value); return *this;}
-
+    template<typename VirtualGatewayNameT = Aws::String>
+    void SetVirtualGatewayName(VirtualGatewayNameT&& value) { m_virtualGatewayNameHasBeenSet = true; m_virtualGatewayName = std::forward<VirtualGatewayNameT>(value); }
+    template<typename VirtualGatewayNameT = Aws::String>
+    DescribeVirtualGatewayRequest& WithVirtualGatewayName(VirtualGatewayNameT&& value) { SetVirtualGatewayName(std::forward<VirtualGatewayNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_meshName;

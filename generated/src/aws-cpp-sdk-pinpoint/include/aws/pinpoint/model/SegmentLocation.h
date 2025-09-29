@@ -33,79 +33,36 @@ namespace Model
   class SegmentLocation
   {
   public:
-    AWS_PINPOINT_API SegmentLocation();
+    AWS_PINPOINT_API SegmentLocation() = default;
     AWS_PINPOINT_API SegmentLocation(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API SegmentLocation& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The country or region code, in ISO 3166-1 alpha-2 format, for the
      * segment.</p>
      */
-    inline const SetDimension& GetCountry() const{ return m_country; }
-
-    /**
-     * <p>The country or region code, in ISO 3166-1 alpha-2 format, for the
-     * segment.</p>
-     */
+    inline const SetDimension& GetCountry() const { return m_country; }
     inline bool CountryHasBeenSet() const { return m_countryHasBeenSet; }
+    template<typename CountryT = SetDimension>
+    void SetCountry(CountryT&& value) { m_countryHasBeenSet = true; m_country = std::forward<CountryT>(value); }
+    template<typename CountryT = SetDimension>
+    SegmentLocation& WithCountry(CountryT&& value) { SetCountry(std::forward<CountryT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The country or region code, in ISO 3166-1 alpha-2 format, for the
-     * segment.</p>
-     */
-    inline void SetCountry(const SetDimension& value) { m_countryHasBeenSet = true; m_country = value; }
-
-    /**
-     * <p>The country or region code, in ISO 3166-1 alpha-2 format, for the
-     * segment.</p>
-     */
-    inline void SetCountry(SetDimension&& value) { m_countryHasBeenSet = true; m_country = std::move(value); }
-
-    /**
-     * <p>The country or region code, in ISO 3166-1 alpha-2 format, for the
-     * segment.</p>
-     */
-    inline SegmentLocation& WithCountry(const SetDimension& value) { SetCountry(value); return *this;}
-
-    /**
-     * <p>The country or region code, in ISO 3166-1 alpha-2 format, for the
-     * segment.</p>
-     */
-    inline SegmentLocation& WithCountry(SetDimension&& value) { SetCountry(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The GPS location and range for the segment.</p>
      */
-    inline const GPSPointDimension& GetGPSPoint() const{ return m_gPSPoint; }
-
-    /**
-     * <p>The GPS location and range for the segment.</p>
-     */
+    inline const GPSPointDimension& GetGPSPoint() const { return m_gPSPoint; }
     inline bool GPSPointHasBeenSet() const { return m_gPSPointHasBeenSet; }
-
-    /**
-     * <p>The GPS location and range for the segment.</p>
-     */
-    inline void SetGPSPoint(const GPSPointDimension& value) { m_gPSPointHasBeenSet = true; m_gPSPoint = value; }
-
-    /**
-     * <p>The GPS location and range for the segment.</p>
-     */
-    inline void SetGPSPoint(GPSPointDimension&& value) { m_gPSPointHasBeenSet = true; m_gPSPoint = std::move(value); }
-
-    /**
-     * <p>The GPS location and range for the segment.</p>
-     */
-    inline SegmentLocation& WithGPSPoint(const GPSPointDimension& value) { SetGPSPoint(value); return *this;}
-
-    /**
-     * <p>The GPS location and range for the segment.</p>
-     */
-    inline SegmentLocation& WithGPSPoint(GPSPointDimension&& value) { SetGPSPoint(std::move(value)); return *this;}
-
+    template<typename GPSPointT = GPSPointDimension>
+    void SetGPSPoint(GPSPointT&& value) { m_gPSPointHasBeenSet = true; m_gPSPoint = std::forward<GPSPointT>(value); }
+    template<typename GPSPointT = GPSPointDimension>
+    SegmentLocation& WithGPSPoint(GPSPointT&& value) { SetGPSPoint(std::forward<GPSPointT>(value)); return *this;}
+    ///@}
   private:
 
     SetDimension m_country;

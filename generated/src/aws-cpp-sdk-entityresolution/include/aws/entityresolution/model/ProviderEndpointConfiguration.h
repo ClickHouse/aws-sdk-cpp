@@ -32,42 +32,23 @@ namespace Model
   class ProviderEndpointConfiguration
   {
   public:
-    AWS_ENTITYRESOLUTION_API ProviderEndpointConfiguration();
+    AWS_ENTITYRESOLUTION_API ProviderEndpointConfiguration() = default;
     AWS_ENTITYRESOLUTION_API ProviderEndpointConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_ENTITYRESOLUTION_API ProviderEndpointConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ENTITYRESOLUTION_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The identifiers of the provider service, from Data Exchange.</p>
      */
-    inline const ProviderMarketplaceConfiguration& GetMarketplaceConfiguration() const{ return m_marketplaceConfiguration; }
-
-    /**
-     * <p>The identifiers of the provider service, from Data Exchange.</p>
-     */
+    inline const ProviderMarketplaceConfiguration& GetMarketplaceConfiguration() const { return m_marketplaceConfiguration; }
     inline bool MarketplaceConfigurationHasBeenSet() const { return m_marketplaceConfigurationHasBeenSet; }
-
-    /**
-     * <p>The identifiers of the provider service, from Data Exchange.</p>
-     */
-    inline void SetMarketplaceConfiguration(const ProviderMarketplaceConfiguration& value) { m_marketplaceConfigurationHasBeenSet = true; m_marketplaceConfiguration = value; }
-
-    /**
-     * <p>The identifiers of the provider service, from Data Exchange.</p>
-     */
-    inline void SetMarketplaceConfiguration(ProviderMarketplaceConfiguration&& value) { m_marketplaceConfigurationHasBeenSet = true; m_marketplaceConfiguration = std::move(value); }
-
-    /**
-     * <p>The identifiers of the provider service, from Data Exchange.</p>
-     */
-    inline ProviderEndpointConfiguration& WithMarketplaceConfiguration(const ProviderMarketplaceConfiguration& value) { SetMarketplaceConfiguration(value); return *this;}
-
-    /**
-     * <p>The identifiers of the provider service, from Data Exchange.</p>
-     */
-    inline ProviderEndpointConfiguration& WithMarketplaceConfiguration(ProviderMarketplaceConfiguration&& value) { SetMarketplaceConfiguration(std::move(value)); return *this;}
-
+    template<typename MarketplaceConfigurationT = ProviderMarketplaceConfiguration>
+    void SetMarketplaceConfiguration(MarketplaceConfigurationT&& value) { m_marketplaceConfigurationHasBeenSet = true; m_marketplaceConfiguration = std::forward<MarketplaceConfigurationT>(value); }
+    template<typename MarketplaceConfigurationT = ProviderMarketplaceConfiguration>
+    ProviderEndpointConfiguration& WithMarketplaceConfiguration(MarketplaceConfigurationT&& value) { SetMarketplaceConfiguration(std::forward<MarketplaceConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     ProviderMarketplaceConfiguration m_marketplaceConfiguration;

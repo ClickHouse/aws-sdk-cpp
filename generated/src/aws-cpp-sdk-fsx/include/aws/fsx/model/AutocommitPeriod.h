@@ -36,55 +36,25 @@ namespace Model
   class AutocommitPeriod
   {
   public:
-    AWS_FSX_API AutocommitPeriod();
+    AWS_FSX_API AutocommitPeriod() = default;
     AWS_FSX_API AutocommitPeriod(Aws::Utils::Json::JsonView jsonValue);
     AWS_FSX_API AutocommitPeriod& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FSX_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Defines the type of time for the autocommit period of a file in an FSx for
      * ONTAP SnapLock volume. Setting this value to <code>NONE</code> disables
      * autocommit. The default value is <code>NONE</code>. </p>
      */
-    inline const AutocommitPeriodType& GetType() const{ return m_type; }
-
-    /**
-     * <p>Defines the type of time for the autocommit period of a file in an FSx for
-     * ONTAP SnapLock volume. Setting this value to <code>NONE</code> disables
-     * autocommit. The default value is <code>NONE</code>. </p>
-     */
+    inline AutocommitPeriodType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    inline void SetType(AutocommitPeriodType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline AutocommitPeriod& WithType(AutocommitPeriodType value) { SetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Defines the type of time for the autocommit period of a file in an FSx for
-     * ONTAP SnapLock volume. Setting this value to <code>NONE</code> disables
-     * autocommit. The default value is <code>NONE</code>. </p>
-     */
-    inline void SetType(const AutocommitPeriodType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>Defines the type of time for the autocommit period of a file in an FSx for
-     * ONTAP SnapLock volume. Setting this value to <code>NONE</code> disables
-     * autocommit. The default value is <code>NONE</code>. </p>
-     */
-    inline void SetType(AutocommitPeriodType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>Defines the type of time for the autocommit period of a file in an FSx for
-     * ONTAP SnapLock volume. Setting this value to <code>NONE</code> disables
-     * autocommit. The default value is <code>NONE</code>. </p>
-     */
-    inline AutocommitPeriod& WithType(const AutocommitPeriodType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>Defines the type of time for the autocommit period of a file in an FSx for
-     * ONTAP SnapLock volume. Setting this value to <code>NONE</code> disables
-     * autocommit. The default value is <code>NONE</code>. </p>
-     */
-    inline AutocommitPeriod& WithType(AutocommitPeriodType&& value) { SetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Defines the amount of time for the autocommit period of a file in an FSx for
      * ONTAP SnapLock volume. The following ranges are valid: </p> <ul> <li> <p>
@@ -93,44 +63,17 @@ namespace Model
      * <code>Months</code>: 1 - 120</p> </li> <li> <p> <code>Years</code>: 1 - 10</p>
      * </li> </ul>
      */
-    inline int GetValue() const{ return m_value; }
-
-    /**
-     * <p>Defines the amount of time for the autocommit period of a file in an FSx for
-     * ONTAP SnapLock volume. The following ranges are valid: </p> <ul> <li> <p>
-     * <code>Minutes</code>: 5 - 65,535</p> </li> <li> <p> <code>Hours</code>: 1 -
-     * 65,535</p> </li> <li> <p> <code>Days</code>: 1 - 3,650</p> </li> <li> <p>
-     * <code>Months</code>: 1 - 120</p> </li> <li> <p> <code>Years</code>: 1 - 10</p>
-     * </li> </ul>
-     */
+    inline int GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>Defines the amount of time for the autocommit period of a file in an FSx for
-     * ONTAP SnapLock volume. The following ranges are valid: </p> <ul> <li> <p>
-     * <code>Minutes</code>: 5 - 65,535</p> </li> <li> <p> <code>Hours</code>: 1 -
-     * 65,535</p> </li> <li> <p> <code>Days</code>: 1 - 3,650</p> </li> <li> <p>
-     * <code>Months</code>: 1 - 120</p> </li> <li> <p> <code>Years</code>: 1 - 10</p>
-     * </li> </ul>
-     */
     inline void SetValue(int value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>Defines the amount of time for the autocommit period of a file in an FSx for
-     * ONTAP SnapLock volume. The following ranges are valid: </p> <ul> <li> <p>
-     * <code>Minutes</code>: 5 - 65,535</p> </li> <li> <p> <code>Hours</code>: 1 -
-     * 65,535</p> </li> <li> <p> <code>Days</code>: 1 - 3,650</p> </li> <li> <p>
-     * <code>Months</code>: 1 - 120</p> </li> <li> <p> <code>Years</code>: 1 - 10</p>
-     * </li> </ul>
-     */
     inline AutocommitPeriod& WithValue(int value) { SetValue(value); return *this;}
-
+    ///@}
   private:
 
-    AutocommitPeriodType m_type;
+    AutocommitPeriodType m_type{AutocommitPeriodType::NOT_SET};
     bool m_typeHasBeenSet = false;
 
-    int m_value;
+    int m_value{0};
     bool m_valueHasBeenSet = false;
   };
 

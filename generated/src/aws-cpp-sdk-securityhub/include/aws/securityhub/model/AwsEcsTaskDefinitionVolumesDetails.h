@@ -34,151 +34,60 @@ namespace Model
   class AwsEcsTaskDefinitionVolumesDetails
   {
   public:
-    AWS_SECURITYHUB_API AwsEcsTaskDefinitionVolumesDetails();
+    AWS_SECURITYHUB_API AwsEcsTaskDefinitionVolumesDetails() = default;
     AWS_SECURITYHUB_API AwsEcsTaskDefinitionVolumesDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsEcsTaskDefinitionVolumesDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Information about a Docker volume.</p>
      */
-    inline const AwsEcsTaskDefinitionVolumesDockerVolumeConfigurationDetails& GetDockerVolumeConfiguration() const{ return m_dockerVolumeConfiguration; }
-
-    /**
-     * <p>Information about a Docker volume.</p>
-     */
+    inline const AwsEcsTaskDefinitionVolumesDockerVolumeConfigurationDetails& GetDockerVolumeConfiguration() const { return m_dockerVolumeConfiguration; }
     inline bool DockerVolumeConfigurationHasBeenSet() const { return m_dockerVolumeConfigurationHasBeenSet; }
+    template<typename DockerVolumeConfigurationT = AwsEcsTaskDefinitionVolumesDockerVolumeConfigurationDetails>
+    void SetDockerVolumeConfiguration(DockerVolumeConfigurationT&& value) { m_dockerVolumeConfigurationHasBeenSet = true; m_dockerVolumeConfiguration = std::forward<DockerVolumeConfigurationT>(value); }
+    template<typename DockerVolumeConfigurationT = AwsEcsTaskDefinitionVolumesDockerVolumeConfigurationDetails>
+    AwsEcsTaskDefinitionVolumesDetails& WithDockerVolumeConfiguration(DockerVolumeConfigurationT&& value) { SetDockerVolumeConfiguration(std::forward<DockerVolumeConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about a Docker volume.</p>
-     */
-    inline void SetDockerVolumeConfiguration(const AwsEcsTaskDefinitionVolumesDockerVolumeConfigurationDetails& value) { m_dockerVolumeConfigurationHasBeenSet = true; m_dockerVolumeConfiguration = value; }
-
-    /**
-     * <p>Information about a Docker volume.</p>
-     */
-    inline void SetDockerVolumeConfiguration(AwsEcsTaskDefinitionVolumesDockerVolumeConfigurationDetails&& value) { m_dockerVolumeConfigurationHasBeenSet = true; m_dockerVolumeConfiguration = std::move(value); }
-
-    /**
-     * <p>Information about a Docker volume.</p>
-     */
-    inline AwsEcsTaskDefinitionVolumesDetails& WithDockerVolumeConfiguration(const AwsEcsTaskDefinitionVolumesDockerVolumeConfigurationDetails& value) { SetDockerVolumeConfiguration(value); return *this;}
-
-    /**
-     * <p>Information about a Docker volume.</p>
-     */
-    inline AwsEcsTaskDefinitionVolumesDetails& WithDockerVolumeConfiguration(AwsEcsTaskDefinitionVolumesDockerVolumeConfigurationDetails&& value) { SetDockerVolumeConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about the Amazon Elastic File System file system that is used for
      * task storage.</p>
      */
-    inline const AwsEcsTaskDefinitionVolumesEfsVolumeConfigurationDetails& GetEfsVolumeConfiguration() const{ return m_efsVolumeConfiguration; }
-
-    /**
-     * <p>Information about the Amazon Elastic File System file system that is used for
-     * task storage.</p>
-     */
+    inline const AwsEcsTaskDefinitionVolumesEfsVolumeConfigurationDetails& GetEfsVolumeConfiguration() const { return m_efsVolumeConfiguration; }
     inline bool EfsVolumeConfigurationHasBeenSet() const { return m_efsVolumeConfigurationHasBeenSet; }
+    template<typename EfsVolumeConfigurationT = AwsEcsTaskDefinitionVolumesEfsVolumeConfigurationDetails>
+    void SetEfsVolumeConfiguration(EfsVolumeConfigurationT&& value) { m_efsVolumeConfigurationHasBeenSet = true; m_efsVolumeConfiguration = std::forward<EfsVolumeConfigurationT>(value); }
+    template<typename EfsVolumeConfigurationT = AwsEcsTaskDefinitionVolumesEfsVolumeConfigurationDetails>
+    AwsEcsTaskDefinitionVolumesDetails& WithEfsVolumeConfiguration(EfsVolumeConfigurationT&& value) { SetEfsVolumeConfiguration(std::forward<EfsVolumeConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about the Amazon Elastic File System file system that is used for
-     * task storage.</p>
-     */
-    inline void SetEfsVolumeConfiguration(const AwsEcsTaskDefinitionVolumesEfsVolumeConfigurationDetails& value) { m_efsVolumeConfigurationHasBeenSet = true; m_efsVolumeConfiguration = value; }
-
-    /**
-     * <p>Information about the Amazon Elastic File System file system that is used for
-     * task storage.</p>
-     */
-    inline void SetEfsVolumeConfiguration(AwsEcsTaskDefinitionVolumesEfsVolumeConfigurationDetails&& value) { m_efsVolumeConfigurationHasBeenSet = true; m_efsVolumeConfiguration = std::move(value); }
-
-    /**
-     * <p>Information about the Amazon Elastic File System file system that is used for
-     * task storage.</p>
-     */
-    inline AwsEcsTaskDefinitionVolumesDetails& WithEfsVolumeConfiguration(const AwsEcsTaskDefinitionVolumesEfsVolumeConfigurationDetails& value) { SetEfsVolumeConfiguration(value); return *this;}
-
-    /**
-     * <p>Information about the Amazon Elastic File System file system that is used for
-     * task storage.</p>
-     */
-    inline AwsEcsTaskDefinitionVolumesDetails& WithEfsVolumeConfiguration(AwsEcsTaskDefinitionVolumesEfsVolumeConfigurationDetails&& value) { SetEfsVolumeConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about a bind mount host volume.</p>
      */
-    inline const AwsEcsTaskDefinitionVolumesHostDetails& GetHost() const{ return m_host; }
-
-    /**
-     * <p>Information about a bind mount host volume.</p>
-     */
+    inline const AwsEcsTaskDefinitionVolumesHostDetails& GetHost() const { return m_host; }
     inline bool HostHasBeenSet() const { return m_hostHasBeenSet; }
+    template<typename HostT = AwsEcsTaskDefinitionVolumesHostDetails>
+    void SetHost(HostT&& value) { m_hostHasBeenSet = true; m_host = std::forward<HostT>(value); }
+    template<typename HostT = AwsEcsTaskDefinitionVolumesHostDetails>
+    AwsEcsTaskDefinitionVolumesDetails& WithHost(HostT&& value) { SetHost(std::forward<HostT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about a bind mount host volume.</p>
-     */
-    inline void SetHost(const AwsEcsTaskDefinitionVolumesHostDetails& value) { m_hostHasBeenSet = true; m_host = value; }
-
-    /**
-     * <p>Information about a bind mount host volume.</p>
-     */
-    inline void SetHost(AwsEcsTaskDefinitionVolumesHostDetails&& value) { m_hostHasBeenSet = true; m_host = std::move(value); }
-
-    /**
-     * <p>Information about a bind mount host volume.</p>
-     */
-    inline AwsEcsTaskDefinitionVolumesDetails& WithHost(const AwsEcsTaskDefinitionVolumesHostDetails& value) { SetHost(value); return *this;}
-
-    /**
-     * <p>Information about a bind mount host volume.</p>
-     */
-    inline AwsEcsTaskDefinitionVolumesDetails& WithHost(AwsEcsTaskDefinitionVolumesHostDetails&& value) { SetHost(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the data volume.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the data volume.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
-
-    /**
-     * <p>The name of the data volume.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the data volume.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the data volume.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the data volume.</p>
-     */
-    inline AwsEcsTaskDefinitionVolumesDetails& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the data volume.</p>
-     */
-    inline AwsEcsTaskDefinitionVolumesDetails& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the data volume.</p>
-     */
-    inline AwsEcsTaskDefinitionVolumesDetails& WithName(const char* value) { SetName(value); return *this;}
-
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    AwsEcsTaskDefinitionVolumesDetails& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
   private:
 
     AwsEcsTaskDefinitionVolumesDockerVolumeConfigurationDetails m_dockerVolumeConfiguration;

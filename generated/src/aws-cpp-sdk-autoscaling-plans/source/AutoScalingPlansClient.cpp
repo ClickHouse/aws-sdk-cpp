@@ -41,20 +41,27 @@ using namespace Aws::Utils::Json;
 using namespace smithy::components::tracing;
 using ResolveEndpointOutcome = Aws::Endpoint::ResolveEndpointOutcome;
 
-const char* AutoScalingPlansClient::SERVICE_NAME = "autoscaling-plans";
-const char* AutoScalingPlansClient::ALLOCATION_TAG = "AutoScalingPlansClient";
+namespace Aws
+{
+  namespace AutoScalingPlans
+  {
+    const char SERVICE_NAME[] = "autoscaling-plans";
+    const char ALLOCATION_TAG[] = "AutoScalingPlansClient";
+  }
+}
+const char* AutoScalingPlansClient::GetServiceName() {return SERVICE_NAME;}
+const char* AutoScalingPlansClient::GetAllocationTag() {return ALLOCATION_TAG;}
 
 AutoScalingPlansClient::AutoScalingPlansClient(const AutoScalingPlans::AutoScalingPlansClientConfiguration& clientConfiguration,
                                                std::shared_ptr<AutoScalingPlansEndpointProviderBase> endpointProvider) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<AutoScalingPlansErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
-  m_endpointProvider(std::move(endpointProvider))
+  m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<AutoScalingPlansEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -69,8 +76,7 @@ AutoScalingPlansClient::AutoScalingPlansClient(const AWSCredentials& credentials
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<AutoScalingPlansErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<AutoScalingPlansEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -85,8 +91,7 @@ AutoScalingPlansClient::AutoScalingPlansClient(const std::shared_ptr<AWSCredenti
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<AutoScalingPlansErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<AutoScalingPlansEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -95,12 +100,11 @@ AutoScalingPlansClient::AutoScalingPlansClient(const std::shared_ptr<AWSCredenti
   AutoScalingPlansClient::AutoScalingPlansClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<AutoScalingPlansErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
   m_endpointProvider(Aws::MakeShared<AutoScalingPlansEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -115,7 +119,6 @@ AutoScalingPlansClient::AutoScalingPlansClient(const AWSCredentials& credentials
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<AutoScalingPlansErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<AutoScalingPlansEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -130,7 +133,6 @@ AutoScalingPlansClient::AutoScalingPlansClient(const std::shared_ptr<AWSCredenti
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<AutoScalingPlansErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<AutoScalingPlansEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -150,6 +152,14 @@ std::shared_ptr<AutoScalingPlansEndpointProviderBase>& AutoScalingPlansClient::a
 void AutoScalingPlansClient::init(const AutoScalingPlans::AutoScalingPlansClientConfiguration& config)
 {
   AWSClient::SetServiceClientName("Auto Scaling Plans");
+  if (!m_clientConfiguration.executor) {
+    if (!m_clientConfiguration.configFactories.executorCreateFn()) {
+      AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "Failed to initialize client: config is missing Executor or executorCreateFn");
+      m_isInitialized = false;
+      return;
+    }
+    m_clientConfiguration.executor = m_clientConfiguration.configFactories.executorCreateFn();
+  }
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
   m_endpointProvider->InitBuiltInParameters(config);
 }

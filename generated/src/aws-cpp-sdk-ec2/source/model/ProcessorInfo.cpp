@@ -20,21 +20,7 @@ namespace EC2
 namespace Model
 {
 
-ProcessorInfo::ProcessorInfo() : 
-    m_supportedArchitecturesHasBeenSet(false),
-    m_sustainedClockSpeedInGhz(0.0),
-    m_sustainedClockSpeedInGhzHasBeenSet(false),
-    m_supportedFeaturesHasBeenSet(false),
-    m_manufacturerHasBeenSet(false)
-{
-}
-
-ProcessorInfo::ProcessorInfo(const XmlNode& xmlNode) : 
-    m_supportedArchitecturesHasBeenSet(false),
-    m_sustainedClockSpeedInGhz(0.0),
-    m_sustainedClockSpeedInGhzHasBeenSet(false),
-    m_supportedFeaturesHasBeenSet(false),
-    m_manufacturerHasBeenSet(false)
+ProcessorInfo::ProcessorInfo(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -49,6 +35,7 @@ ProcessorInfo& ProcessorInfo::operator =(const XmlNode& xmlNode)
     if(!supportedArchitecturesNode.IsNull())
     {
       XmlNode supportedArchitecturesMember = supportedArchitecturesNode.FirstChild("item");
+      m_supportedArchitecturesHasBeenSet = !supportedArchitecturesMember.IsNull();
       while(!supportedArchitecturesMember.IsNull())
       {
         m_supportedArchitectures.push_back(ArchitectureTypeMapper::GetArchitectureTypeForName(StringUtils::Trim(supportedArchitecturesMember.GetText().c_str())));
@@ -67,6 +54,7 @@ ProcessorInfo& ProcessorInfo::operator =(const XmlNode& xmlNode)
     if(!supportedFeaturesNode.IsNull())
     {
       XmlNode supportedFeaturesMember = supportedFeaturesNode.FirstChild("item");
+      m_supportedFeaturesHasBeenSet = !supportedFeaturesMember.IsNull();
       while(!supportedFeaturesMember.IsNull())
       {
         m_supportedFeatures.push_back(SupportedAdditionalProcessorFeatureMapper::GetSupportedAdditionalProcessorFeatureForName(StringUtils::Trim(supportedFeaturesMember.GetText().c_str())));
@@ -93,7 +81,7 @@ void ProcessorInfo::OutputToStream(Aws::OStream& oStream, const char* location, 
       unsigned supportedArchitecturesIdx = 1;
       for(auto& item : m_supportedArchitectures)
       {
-        oStream << location << index << locationValue << ".SupportedArchitectures." << supportedArchitecturesIdx++ << "=" << ArchitectureTypeMapper::GetNameForArchitectureType(item) << "&";
+        oStream << location << index << locationValue << ".SupportedArchitectures." << supportedArchitecturesIdx++ << "=" << StringUtils::URLEncode(ArchitectureTypeMapper::GetNameForArchitectureType(item)) << "&";
       }
   }
 
@@ -107,7 +95,7 @@ void ProcessorInfo::OutputToStream(Aws::OStream& oStream, const char* location, 
       unsigned supportedFeaturesIdx = 1;
       for(auto& item : m_supportedFeatures)
       {
-        oStream << location << index << locationValue << ".SupportedFeatures." << supportedFeaturesIdx++ << "=" << SupportedAdditionalProcessorFeatureMapper::GetNameForSupportedAdditionalProcessorFeature(item) << "&";
+        oStream << location << index << locationValue << ".SupportedFeatures." << supportedFeaturesIdx++ << "=" << StringUtils::URLEncode(SupportedAdditionalProcessorFeatureMapper::GetNameForSupportedAdditionalProcessorFeature(item)) << "&";
       }
   }
 
@@ -125,19 +113,19 @@ void ProcessorInfo::OutputToStream(Aws::OStream& oStream, const char* location) 
       unsigned supportedArchitecturesIdx = 1;
       for(auto& item : m_supportedArchitectures)
       {
-        oStream << location << ".SupportedArchitectures." << supportedArchitecturesIdx++ << "=" << ArchitectureTypeMapper::GetNameForArchitectureType(item) << "&";
+        oStream << location << ".SupportedArchitectures." << supportedArchitecturesIdx++ << "=" << StringUtils::URLEncode(ArchitectureTypeMapper::GetNameForArchitectureType(item)) << "&";
       }
   }
   if(m_sustainedClockSpeedInGhzHasBeenSet)
   {
-        oStream << location << ".SustainedClockSpeedInGhz=" << StringUtils::URLEncode(m_sustainedClockSpeedInGhz) << "&";
+      oStream << location << ".SustainedClockSpeedInGhz=" << StringUtils::URLEncode(m_sustainedClockSpeedInGhz) << "&";
   }
   if(m_supportedFeaturesHasBeenSet)
   {
       unsigned supportedFeaturesIdx = 1;
       for(auto& item : m_supportedFeatures)
       {
-        oStream << location << ".SupportedFeatures." << supportedFeaturesIdx++ << "=" << SupportedAdditionalProcessorFeatureMapper::GetNameForSupportedAdditionalProcessorFeature(item) << "&";
+        oStream << location << ".SupportedFeatures." << supportedFeaturesIdx++ << "=" << StringUtils::URLEncode(SupportedAdditionalProcessorFeatureMapper::GetNameForSupportedAdditionalProcessorFeature(item)) << "&";
       }
   }
   if(m_manufacturerHasBeenSet)

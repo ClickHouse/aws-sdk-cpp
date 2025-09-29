@@ -32,12 +32,13 @@ namespace Model
   class LegGeometry
   {
   public:
-    AWS_LOCATIONSERVICE_API LegGeometry();
+    AWS_LOCATIONSERVICE_API LegGeometry() = default;
     AWS_LOCATIONSERVICE_API LegGeometry(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOCATIONSERVICE_API LegGeometry& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOCATIONSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An ordered list of positions used to plot a route on a map. </p> <p>The first
      * position is closest to the start position for the leg, and the last position is
@@ -45,71 +46,15 @@ namespace Model
      * <code>[[-123.117, 49.284],[-123.115, 49.285],[-123.115, 49.285]]</code> </p>
      * </li> </ul>
      */
-    inline const Aws::Vector<Aws::Vector<double>>& GetLineString() const{ return m_lineString; }
-
-    /**
-     * <p>An ordered list of positions used to plot a route on a map. </p> <p>The first
-     * position is closest to the start position for the leg, and the last position is
-     * the closest to the end position for the leg.</p> <ul> <li> <p>For example,
-     * <code>[[-123.117, 49.284],[-123.115, 49.285],[-123.115, 49.285]]</code> </p>
-     * </li> </ul>
-     */
+    inline const Aws::Vector<Aws::Vector<double>>& GetLineString() const { return m_lineString; }
     inline bool LineStringHasBeenSet() const { return m_lineStringHasBeenSet; }
-
-    /**
-     * <p>An ordered list of positions used to plot a route on a map. </p> <p>The first
-     * position is closest to the start position for the leg, and the last position is
-     * the closest to the end position for the leg.</p> <ul> <li> <p>For example,
-     * <code>[[-123.117, 49.284],[-123.115, 49.285],[-123.115, 49.285]]</code> </p>
-     * </li> </ul>
-     */
-    inline void SetLineString(const Aws::Vector<Aws::Vector<double>>& value) { m_lineStringHasBeenSet = true; m_lineString = value; }
-
-    /**
-     * <p>An ordered list of positions used to plot a route on a map. </p> <p>The first
-     * position is closest to the start position for the leg, and the last position is
-     * the closest to the end position for the leg.</p> <ul> <li> <p>For example,
-     * <code>[[-123.117, 49.284],[-123.115, 49.285],[-123.115, 49.285]]</code> </p>
-     * </li> </ul>
-     */
-    inline void SetLineString(Aws::Vector<Aws::Vector<double>>&& value) { m_lineStringHasBeenSet = true; m_lineString = std::move(value); }
-
-    /**
-     * <p>An ordered list of positions used to plot a route on a map. </p> <p>The first
-     * position is closest to the start position for the leg, and the last position is
-     * the closest to the end position for the leg.</p> <ul> <li> <p>For example,
-     * <code>[[-123.117, 49.284],[-123.115, 49.285],[-123.115, 49.285]]</code> </p>
-     * </li> </ul>
-     */
-    inline LegGeometry& WithLineString(const Aws::Vector<Aws::Vector<double>>& value) { SetLineString(value); return *this;}
-
-    /**
-     * <p>An ordered list of positions used to plot a route on a map. </p> <p>The first
-     * position is closest to the start position for the leg, and the last position is
-     * the closest to the end position for the leg.</p> <ul> <li> <p>For example,
-     * <code>[[-123.117, 49.284],[-123.115, 49.285],[-123.115, 49.285]]</code> </p>
-     * </li> </ul>
-     */
-    inline LegGeometry& WithLineString(Aws::Vector<Aws::Vector<double>>&& value) { SetLineString(std::move(value)); return *this;}
-
-    /**
-     * <p>An ordered list of positions used to plot a route on a map. </p> <p>The first
-     * position is closest to the start position for the leg, and the last position is
-     * the closest to the end position for the leg.</p> <ul> <li> <p>For example,
-     * <code>[[-123.117, 49.284],[-123.115, 49.285],[-123.115, 49.285]]</code> </p>
-     * </li> </ul>
-     */
-    inline LegGeometry& AddLineString(const Aws::Vector<double>& value) { m_lineStringHasBeenSet = true; m_lineString.push_back(value); return *this; }
-
-    /**
-     * <p>An ordered list of positions used to plot a route on a map. </p> <p>The first
-     * position is closest to the start position for the leg, and the last position is
-     * the closest to the end position for the leg.</p> <ul> <li> <p>For example,
-     * <code>[[-123.117, 49.284],[-123.115, 49.285],[-123.115, 49.285]]</code> </p>
-     * </li> </ul>
-     */
-    inline LegGeometry& AddLineString(Aws::Vector<double>&& value) { m_lineStringHasBeenSet = true; m_lineString.push_back(std::move(value)); return *this; }
-
+    template<typename LineStringT = Aws::Vector<Aws::Vector<double>>>
+    void SetLineString(LineStringT&& value) { m_lineStringHasBeenSet = true; m_lineString = std::forward<LineStringT>(value); }
+    template<typename LineStringT = Aws::Vector<Aws::Vector<double>>>
+    LegGeometry& WithLineString(LineStringT&& value) { SetLineString(std::forward<LineStringT>(value)); return *this;}
+    template<typename LineStringT = Aws::Vector<double>>
+    LegGeometry& AddLineString(LineStringT&& value) { m_lineStringHasBeenSet = true; m_lineString.emplace_back(std::forward<LineStringT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Aws::Vector<double>> m_lineString;

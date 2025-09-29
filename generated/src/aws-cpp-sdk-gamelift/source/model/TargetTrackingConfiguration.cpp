@@ -18,15 +18,7 @@ namespace GameLift
 namespace Model
 {
 
-TargetTrackingConfiguration::TargetTrackingConfiguration() : 
-    m_targetValue(0.0),
-    m_targetValueHasBeenSet(false)
-{
-}
-
-TargetTrackingConfiguration::TargetTrackingConfiguration(JsonView jsonValue) : 
-    m_targetValue(0.0),
-    m_targetValueHasBeenSet(false)
+TargetTrackingConfiguration::TargetTrackingConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ TargetTrackingConfiguration& TargetTrackingConfiguration::operator =(JsonView js
   if(jsonValue.ValueExists("TargetValue"))
   {
     m_targetValue = jsonValue.GetDouble("TargetValue");
-
     m_targetValueHasBeenSet = true;
   }
-
   return *this;
 }
 

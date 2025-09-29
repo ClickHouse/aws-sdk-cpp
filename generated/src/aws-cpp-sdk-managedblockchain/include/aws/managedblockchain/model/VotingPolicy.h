@@ -32,60 +32,26 @@ namespace Model
   class VotingPolicy
   {
   public:
-    AWS_MANAGEDBLOCKCHAIN_API VotingPolicy();
+    AWS_MANAGEDBLOCKCHAIN_API VotingPolicy() = default;
     AWS_MANAGEDBLOCKCHAIN_API VotingPolicy(Aws::Utils::Json::JsonView jsonValue);
     AWS_MANAGEDBLOCKCHAIN_API VotingPolicy& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MANAGEDBLOCKCHAIN_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Defines the rules for the network for voting on proposals, such as the
      * percentage of <code>YES</code> votes required for the proposal to be approved
      * and the duration of the proposal. The policy applies to all proposals and is
      * specified when the network is created.</p>
      */
-    inline const ApprovalThresholdPolicy& GetApprovalThresholdPolicy() const{ return m_approvalThresholdPolicy; }
-
-    /**
-     * <p>Defines the rules for the network for voting on proposals, such as the
-     * percentage of <code>YES</code> votes required for the proposal to be approved
-     * and the duration of the proposal. The policy applies to all proposals and is
-     * specified when the network is created.</p>
-     */
+    inline const ApprovalThresholdPolicy& GetApprovalThresholdPolicy() const { return m_approvalThresholdPolicy; }
     inline bool ApprovalThresholdPolicyHasBeenSet() const { return m_approvalThresholdPolicyHasBeenSet; }
-
-    /**
-     * <p>Defines the rules for the network for voting on proposals, such as the
-     * percentage of <code>YES</code> votes required for the proposal to be approved
-     * and the duration of the proposal. The policy applies to all proposals and is
-     * specified when the network is created.</p>
-     */
-    inline void SetApprovalThresholdPolicy(const ApprovalThresholdPolicy& value) { m_approvalThresholdPolicyHasBeenSet = true; m_approvalThresholdPolicy = value; }
-
-    /**
-     * <p>Defines the rules for the network for voting on proposals, such as the
-     * percentage of <code>YES</code> votes required for the proposal to be approved
-     * and the duration of the proposal. The policy applies to all proposals and is
-     * specified when the network is created.</p>
-     */
-    inline void SetApprovalThresholdPolicy(ApprovalThresholdPolicy&& value) { m_approvalThresholdPolicyHasBeenSet = true; m_approvalThresholdPolicy = std::move(value); }
-
-    /**
-     * <p>Defines the rules for the network for voting on proposals, such as the
-     * percentage of <code>YES</code> votes required for the proposal to be approved
-     * and the duration of the proposal. The policy applies to all proposals and is
-     * specified when the network is created.</p>
-     */
-    inline VotingPolicy& WithApprovalThresholdPolicy(const ApprovalThresholdPolicy& value) { SetApprovalThresholdPolicy(value); return *this;}
-
-    /**
-     * <p>Defines the rules for the network for voting on proposals, such as the
-     * percentage of <code>YES</code> votes required for the proposal to be approved
-     * and the duration of the proposal. The policy applies to all proposals and is
-     * specified when the network is created.</p>
-     */
-    inline VotingPolicy& WithApprovalThresholdPolicy(ApprovalThresholdPolicy&& value) { SetApprovalThresholdPolicy(std::move(value)); return *this;}
-
+    template<typename ApprovalThresholdPolicyT = ApprovalThresholdPolicy>
+    void SetApprovalThresholdPolicy(ApprovalThresholdPolicyT&& value) { m_approvalThresholdPolicyHasBeenSet = true; m_approvalThresholdPolicy = std::forward<ApprovalThresholdPolicyT>(value); }
+    template<typename ApprovalThresholdPolicyT = ApprovalThresholdPolicy>
+    VotingPolicy& WithApprovalThresholdPolicy(ApprovalThresholdPolicyT&& value) { SetApprovalThresholdPolicy(std::forward<ApprovalThresholdPolicyT>(value)); return *this;}
+    ///@}
   private:
 
     ApprovalThresholdPolicy m_approvalThresholdPolicy;

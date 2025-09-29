@@ -30,68 +30,28 @@ namespace Model
   class ListOpenIDConnectProviderTagsResult
   {
   public:
-    AWS_IAM_API ListOpenIDConnectProviderTagsResult();
+    AWS_IAM_API ListOpenIDConnectProviderTagsResult() = default;
     AWS_IAM_API ListOpenIDConnectProviderTagsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_IAM_API ListOpenIDConnectProviderTagsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * <p>The list of tags that are currently attached to the OpenID Connect (OIDC)
      * identity provider. Each tag consists of a key name and an associated value. If
      * no tags are attached to the specified resource, the response contains an empty
      * list.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    ListOpenIDConnectProviderTagsResult& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    ListOpenIDConnectProviderTagsResult& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The list of tags that are currently attached to the OpenID Connect (OIDC)
-     * identity provider. Each tag consists of a key name and an associated value. If
-     * no tags are attached to the specified resource, the response contains an empty
-     * list.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tags = value; }
-
-    /**
-     * <p>The list of tags that are currently attached to the OpenID Connect (OIDC)
-     * identity provider. Each tag consists of a key name and an associated value. If
-     * no tags are attached to the specified resource, the response contains an empty
-     * list.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tags = std::move(value); }
-
-    /**
-     * <p>The list of tags that are currently attached to the OpenID Connect (OIDC)
-     * identity provider. Each tag consists of a key name and an associated value. If
-     * no tags are attached to the specified resource, the response contains an empty
-     * list.</p>
-     */
-    inline ListOpenIDConnectProviderTagsResult& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The list of tags that are currently attached to the OpenID Connect (OIDC)
-     * identity provider. Each tag consists of a key name and an associated value. If
-     * no tags are attached to the specified resource, the response contains an empty
-     * list.</p>
-     */
-    inline ListOpenIDConnectProviderTagsResult& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of tags that are currently attached to the OpenID Connect (OIDC)
-     * identity provider. Each tag consists of a key name and an associated value. If
-     * no tags are attached to the specified resource, the response contains an empty
-     * list.</p>
-     */
-    inline ListOpenIDConnectProviderTagsResult& AddTags(const Tag& value) { m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>The list of tags that are currently attached to the OpenID Connect (OIDC)
-     * identity provider. Each tag consists of a key name and an associated value. If
-     * no tags are attached to the specified resource, the response contains an empty
-     * list.</p>
-     */
-    inline ListOpenIDConnectProviderTagsResult& AddTags(Tag&& value) { m_tags.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A flag that indicates whether there are more items to return. If your results
      * were truncated, you can make a subsequent pagination request using the
@@ -101,105 +61,45 @@ namespace Model
      * <code>IsTruncated</code> after every call to ensure that you receive all your
      * results.</p>
      */
-    inline bool GetIsTruncated() const{ return m_isTruncated; }
-
-    /**
-     * <p>A flag that indicates whether there are more items to return. If your results
-     * were truncated, you can make a subsequent pagination request using the
-     * <code>Marker</code> request parameter to retrieve more items. Note that IAM
-     * might return fewer than the <code>MaxItems</code> number of results even when
-     * there are more results available. We recommend that you check
-     * <code>IsTruncated</code> after every call to ensure that you receive all your
-     * results.</p>
-     */
-    inline void SetIsTruncated(bool value) { m_isTruncated = value; }
-
-    /**
-     * <p>A flag that indicates whether there are more items to return. If your results
-     * were truncated, you can make a subsequent pagination request using the
-     * <code>Marker</code> request parameter to retrieve more items. Note that IAM
-     * might return fewer than the <code>MaxItems</code> number of results even when
-     * there are more results available. We recommend that you check
-     * <code>IsTruncated</code> after every call to ensure that you receive all your
-     * results.</p>
-     */
+    inline bool GetIsTruncated() const { return m_isTruncated; }
+    inline void SetIsTruncated(bool value) { m_isTruncatedHasBeenSet = true; m_isTruncated = value; }
     inline ListOpenIDConnectProviderTagsResult& WithIsTruncated(bool value) { SetIsTruncated(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>When <code>IsTruncated</code> is <code>true</code>, this element is present
      * and contains the value to use for the <code>Marker</code> parameter in a
      * subsequent pagination request.</p>
      */
-    inline const Aws::String& GetMarker() const{ return m_marker; }
+    inline const Aws::String& GetMarker() const { return m_marker; }
+    template<typename MarkerT = Aws::String>
+    void SetMarker(MarkerT&& value) { m_markerHasBeenSet = true; m_marker = std::forward<MarkerT>(value); }
+    template<typename MarkerT = Aws::String>
+    ListOpenIDConnectProviderTagsResult& WithMarker(MarkerT&& value) { SetMarker(std::forward<MarkerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>When <code>IsTruncated</code> is <code>true</code>, this element is present
-     * and contains the value to use for the <code>Marker</code> parameter in a
-     * subsequent pagination request.</p>
-     */
-    inline void SetMarker(const Aws::String& value) { m_marker = value; }
-
-    /**
-     * <p>When <code>IsTruncated</code> is <code>true</code>, this element is present
-     * and contains the value to use for the <code>Marker</code> parameter in a
-     * subsequent pagination request.</p>
-     */
-    inline void SetMarker(Aws::String&& value) { m_marker = std::move(value); }
-
-    /**
-     * <p>When <code>IsTruncated</code> is <code>true</code>, this element is present
-     * and contains the value to use for the <code>Marker</code> parameter in a
-     * subsequent pagination request.</p>
-     */
-    inline void SetMarker(const char* value) { m_marker.assign(value); }
-
-    /**
-     * <p>When <code>IsTruncated</code> is <code>true</code>, this element is present
-     * and contains the value to use for the <code>Marker</code> parameter in a
-     * subsequent pagination request.</p>
-     */
-    inline ListOpenIDConnectProviderTagsResult& WithMarker(const Aws::String& value) { SetMarker(value); return *this;}
-
-    /**
-     * <p>When <code>IsTruncated</code> is <code>true</code>, this element is present
-     * and contains the value to use for the <code>Marker</code> parameter in a
-     * subsequent pagination request.</p>
-     */
-    inline ListOpenIDConnectProviderTagsResult& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
-
-    /**
-     * <p>When <code>IsTruncated</code> is <code>true</code>, this element is present
-     * and contains the value to use for the <code>Marker</code> parameter in a
-     * subsequent pagination request.</p>
-     */
-    inline ListOpenIDConnectProviderTagsResult& WithMarker(const char* value) { SetMarker(value); return *this;}
-
-
+    ///@{
     
-    inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
-
-    
-    inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
-
-    
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
-
-    
-    inline ListOpenIDConnectProviderTagsResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
-
-    
-    inline ListOpenIDConnectProviderTagsResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
-
+    inline const ResponseMetadata& GetResponseMetadata() const { return m_responseMetadata; }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    void SetResponseMetadata(ResponseMetadataT&& value) { m_responseMetadataHasBeenSet = true; m_responseMetadata = std::forward<ResponseMetadataT>(value); }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    ListOpenIDConnectProviderTagsResult& WithResponseMetadata(ResponseMetadataT&& value) { SetResponseMetadata(std::forward<ResponseMetadataT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<Tag> m_tags;
+    bool m_tagsHasBeenSet = false;
 
-    bool m_isTruncated;
+    bool m_isTruncated{false};
+    bool m_isTruncatedHasBeenSet = false;
 
     Aws::String m_marker;
+    bool m_markerHasBeenSet = false;
 
     ResponseMetadata m_responseMetadata;
+    bool m_responseMetadataHasBeenSet = false;
   };
 
 } // namespace Model

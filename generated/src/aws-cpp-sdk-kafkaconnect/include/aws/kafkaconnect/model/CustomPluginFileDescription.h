@@ -31,91 +31,41 @@ namespace Model
   class CustomPluginFileDescription
   {
   public:
-    AWS_KAFKACONNECT_API CustomPluginFileDescription();
+    AWS_KAFKACONNECT_API CustomPluginFileDescription() = default;
     AWS_KAFKACONNECT_API CustomPluginFileDescription(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKACONNECT_API CustomPluginFileDescription& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKACONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The hex-encoded MD5 checksum of the custom plugin file. You can use it to
      * validate the file.</p>
      */
-    inline const Aws::String& GetFileMd5() const{ return m_fileMd5; }
-
-    /**
-     * <p>The hex-encoded MD5 checksum of the custom plugin file. You can use it to
-     * validate the file.</p>
-     */
+    inline const Aws::String& GetFileMd5() const { return m_fileMd5; }
     inline bool FileMd5HasBeenSet() const { return m_fileMd5HasBeenSet; }
+    template<typename FileMd5T = Aws::String>
+    void SetFileMd5(FileMd5T&& value) { m_fileMd5HasBeenSet = true; m_fileMd5 = std::forward<FileMd5T>(value); }
+    template<typename FileMd5T = Aws::String>
+    CustomPluginFileDescription& WithFileMd5(FileMd5T&& value) { SetFileMd5(std::forward<FileMd5T>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The hex-encoded MD5 checksum of the custom plugin file. You can use it to
-     * validate the file.</p>
-     */
-    inline void SetFileMd5(const Aws::String& value) { m_fileMd5HasBeenSet = true; m_fileMd5 = value; }
-
-    /**
-     * <p>The hex-encoded MD5 checksum of the custom plugin file. You can use it to
-     * validate the file.</p>
-     */
-    inline void SetFileMd5(Aws::String&& value) { m_fileMd5HasBeenSet = true; m_fileMd5 = std::move(value); }
-
-    /**
-     * <p>The hex-encoded MD5 checksum of the custom plugin file. You can use it to
-     * validate the file.</p>
-     */
-    inline void SetFileMd5(const char* value) { m_fileMd5HasBeenSet = true; m_fileMd5.assign(value); }
-
-    /**
-     * <p>The hex-encoded MD5 checksum of the custom plugin file. You can use it to
-     * validate the file.</p>
-     */
-    inline CustomPluginFileDescription& WithFileMd5(const Aws::String& value) { SetFileMd5(value); return *this;}
-
-    /**
-     * <p>The hex-encoded MD5 checksum of the custom plugin file. You can use it to
-     * validate the file.</p>
-     */
-    inline CustomPluginFileDescription& WithFileMd5(Aws::String&& value) { SetFileMd5(std::move(value)); return *this;}
-
-    /**
-     * <p>The hex-encoded MD5 checksum of the custom plugin file. You can use it to
-     * validate the file.</p>
-     */
-    inline CustomPluginFileDescription& WithFileMd5(const char* value) { SetFileMd5(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The size in bytes of the custom plugin file. You can use it to validate the
      * file.</p>
      */
-    inline long long GetFileSize() const{ return m_fileSize; }
-
-    /**
-     * <p>The size in bytes of the custom plugin file. You can use it to validate the
-     * file.</p>
-     */
+    inline long long GetFileSize() const { return m_fileSize; }
     inline bool FileSizeHasBeenSet() const { return m_fileSizeHasBeenSet; }
-
-    /**
-     * <p>The size in bytes of the custom plugin file. You can use it to validate the
-     * file.</p>
-     */
     inline void SetFileSize(long long value) { m_fileSizeHasBeenSet = true; m_fileSize = value; }
-
-    /**
-     * <p>The size in bytes of the custom plugin file. You can use it to validate the
-     * file.</p>
-     */
     inline CustomPluginFileDescription& WithFileSize(long long value) { SetFileSize(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_fileMd5;
     bool m_fileMd5HasBeenSet = false;
 
-    long long m_fileSize;
+    long long m_fileSize{0};
     bool m_fileSizeHasBeenSet = false;
   };
 

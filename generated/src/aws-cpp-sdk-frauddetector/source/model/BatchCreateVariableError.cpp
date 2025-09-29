@@ -18,19 +18,7 @@ namespace FraudDetector
 namespace Model
 {
 
-BatchCreateVariableError::BatchCreateVariableError() : 
-    m_nameHasBeenSet(false),
-    m_code(0),
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-BatchCreateVariableError::BatchCreateVariableError(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_code(0),
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
+BatchCreateVariableError::BatchCreateVariableError(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ BatchCreateVariableError& BatchCreateVariableError::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("code"))
   {
     m_code = jsonValue.GetInteger("code");
-
     m_codeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
   return *this;
 }
 

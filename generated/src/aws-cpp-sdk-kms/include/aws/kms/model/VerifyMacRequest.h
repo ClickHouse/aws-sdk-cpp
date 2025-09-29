@@ -24,7 +24,7 @@ namespace Model
   class VerifyMacRequest : public KMSRequest
   {
   public:
-    AWS_KMS_API VerifyMacRequest();
+    AWS_KMS_API VerifyMacRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,6 +37,7 @@ namespace Model
     AWS_KMS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The message that will be used in the verification. Enter the same message
      * that was used to generate the HMAC.</p> <p> <a>GenerateMac</a> and
@@ -44,347 +45,104 @@ namespace Model
      * you generated an HMAC for a hash digest of a message, you must verify the HMAC
      * for the same hash digest.</p>
      */
-    inline const Aws::Utils::CryptoBuffer& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>The message that will be used in the verification. Enter the same message
-     * that was used to generate the HMAC.</p> <p> <a>GenerateMac</a> and
-     * <code>VerifyMac</code> do not provide special handling for message digests. If
-     * you generated an HMAC for a hash digest of a message, you must verify the HMAC
-     * for the same hash digest.</p>
-     */
+    inline const Aws::Utils::CryptoBuffer& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
+    template<typename MessageT = Aws::Utils::CryptoBuffer>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::Utils::CryptoBuffer>
+    VerifyMacRequest& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The message that will be used in the verification. Enter the same message
-     * that was used to generate the HMAC.</p> <p> <a>GenerateMac</a> and
-     * <code>VerifyMac</code> do not provide special handling for message digests. If
-     * you generated an HMAC for a hash digest of a message, you must verify the HMAC
-     * for the same hash digest.</p>
-     */
-    inline void SetMessage(const Aws::Utils::CryptoBuffer& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>The message that will be used in the verification. Enter the same message
-     * that was used to generate the HMAC.</p> <p> <a>GenerateMac</a> and
-     * <code>VerifyMac</code> do not provide special handling for message digests. If
-     * you generated an HMAC for a hash digest of a message, you must verify the HMAC
-     * for the same hash digest.</p>
-     */
-    inline void SetMessage(Aws::Utils::CryptoBuffer&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>The message that will be used in the verification. Enter the same message
-     * that was used to generate the HMAC.</p> <p> <a>GenerateMac</a> and
-     * <code>VerifyMac</code> do not provide special handling for message digests. If
-     * you generated an HMAC for a hash digest of a message, you must verify the HMAC
-     * for the same hash digest.</p>
-     */
-    inline VerifyMacRequest& WithMessage(const Aws::Utils::CryptoBuffer& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>The message that will be used in the verification. Enter the same message
-     * that was used to generate the HMAC.</p> <p> <a>GenerateMac</a> and
-     * <code>VerifyMac</code> do not provide special handling for message digests. If
-     * you generated an HMAC for a hash digest of a message, you must verify the HMAC
-     * for the same hash digest.</p>
-     */
-    inline VerifyMacRequest& WithMessage(Aws::Utils::CryptoBuffer&& value) { SetMessage(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The KMS key that will be used in the verification.</p> <p>Enter a key ID of
      * the KMS key that was used to generate the HMAC. If you identify a different KMS
      * key, the <code>VerifyMac</code> operation fails.</p>
      */
-    inline const Aws::String& GetKeyId() const{ return m_keyId; }
-
-    /**
-     * <p>The KMS key that will be used in the verification.</p> <p>Enter a key ID of
-     * the KMS key that was used to generate the HMAC. If you identify a different KMS
-     * key, the <code>VerifyMac</code> operation fails.</p>
-     */
+    inline const Aws::String& GetKeyId() const { return m_keyId; }
     inline bool KeyIdHasBeenSet() const { return m_keyIdHasBeenSet; }
+    template<typename KeyIdT = Aws::String>
+    void SetKeyId(KeyIdT&& value) { m_keyIdHasBeenSet = true; m_keyId = std::forward<KeyIdT>(value); }
+    template<typename KeyIdT = Aws::String>
+    VerifyMacRequest& WithKeyId(KeyIdT&& value) { SetKeyId(std::forward<KeyIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The KMS key that will be used in the verification.</p> <p>Enter a key ID of
-     * the KMS key that was used to generate the HMAC. If you identify a different KMS
-     * key, the <code>VerifyMac</code> operation fails.</p>
-     */
-    inline void SetKeyId(const Aws::String& value) { m_keyIdHasBeenSet = true; m_keyId = value; }
-
-    /**
-     * <p>The KMS key that will be used in the verification.</p> <p>Enter a key ID of
-     * the KMS key that was used to generate the HMAC. If you identify a different KMS
-     * key, the <code>VerifyMac</code> operation fails.</p>
-     */
-    inline void SetKeyId(Aws::String&& value) { m_keyIdHasBeenSet = true; m_keyId = std::move(value); }
-
-    /**
-     * <p>The KMS key that will be used in the verification.</p> <p>Enter a key ID of
-     * the KMS key that was used to generate the HMAC. If you identify a different KMS
-     * key, the <code>VerifyMac</code> operation fails.</p>
-     */
-    inline void SetKeyId(const char* value) { m_keyIdHasBeenSet = true; m_keyId.assign(value); }
-
-    /**
-     * <p>The KMS key that will be used in the verification.</p> <p>Enter a key ID of
-     * the KMS key that was used to generate the HMAC. If you identify a different KMS
-     * key, the <code>VerifyMac</code> operation fails.</p>
-     */
-    inline VerifyMacRequest& WithKeyId(const Aws::String& value) { SetKeyId(value); return *this;}
-
-    /**
-     * <p>The KMS key that will be used in the verification.</p> <p>Enter a key ID of
-     * the KMS key that was used to generate the HMAC. If you identify a different KMS
-     * key, the <code>VerifyMac</code> operation fails.</p>
-     */
-    inline VerifyMacRequest& WithKeyId(Aws::String&& value) { SetKeyId(std::move(value)); return *this;}
-
-    /**
-     * <p>The KMS key that will be used in the verification.</p> <p>Enter a key ID of
-     * the KMS key that was used to generate the HMAC. If you identify a different KMS
-     * key, the <code>VerifyMac</code> operation fails.</p>
-     */
-    inline VerifyMacRequest& WithKeyId(const char* value) { SetKeyId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The MAC algorithm that will be used in the verification. Enter the same MAC
      * algorithm that was used to compute the HMAC. This algorithm must be supported by
      * the HMAC KMS key identified by the <code>KeyId</code> parameter.</p>
      */
-    inline const MacAlgorithmSpec& GetMacAlgorithm() const{ return m_macAlgorithm; }
-
-    /**
-     * <p>The MAC algorithm that will be used in the verification. Enter the same MAC
-     * algorithm that was used to compute the HMAC. This algorithm must be supported by
-     * the HMAC KMS key identified by the <code>KeyId</code> parameter.</p>
-     */
+    inline MacAlgorithmSpec GetMacAlgorithm() const { return m_macAlgorithm; }
     inline bool MacAlgorithmHasBeenSet() const { return m_macAlgorithmHasBeenSet; }
+    inline void SetMacAlgorithm(MacAlgorithmSpec value) { m_macAlgorithmHasBeenSet = true; m_macAlgorithm = value; }
+    inline VerifyMacRequest& WithMacAlgorithm(MacAlgorithmSpec value) { SetMacAlgorithm(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The MAC algorithm that will be used in the verification. Enter the same MAC
-     * algorithm that was used to compute the HMAC. This algorithm must be supported by
-     * the HMAC KMS key identified by the <code>KeyId</code> parameter.</p>
-     */
-    inline void SetMacAlgorithm(const MacAlgorithmSpec& value) { m_macAlgorithmHasBeenSet = true; m_macAlgorithm = value; }
-
-    /**
-     * <p>The MAC algorithm that will be used in the verification. Enter the same MAC
-     * algorithm that was used to compute the HMAC. This algorithm must be supported by
-     * the HMAC KMS key identified by the <code>KeyId</code> parameter.</p>
-     */
-    inline void SetMacAlgorithm(MacAlgorithmSpec&& value) { m_macAlgorithmHasBeenSet = true; m_macAlgorithm = std::move(value); }
-
-    /**
-     * <p>The MAC algorithm that will be used in the verification. Enter the same MAC
-     * algorithm that was used to compute the HMAC. This algorithm must be supported by
-     * the HMAC KMS key identified by the <code>KeyId</code> parameter.</p>
-     */
-    inline VerifyMacRequest& WithMacAlgorithm(const MacAlgorithmSpec& value) { SetMacAlgorithm(value); return *this;}
-
-    /**
-     * <p>The MAC algorithm that will be used in the verification. Enter the same MAC
-     * algorithm that was used to compute the HMAC. This algorithm must be supported by
-     * the HMAC KMS key identified by the <code>KeyId</code> parameter.</p>
-     */
-    inline VerifyMacRequest& WithMacAlgorithm(MacAlgorithmSpec&& value) { SetMacAlgorithm(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The HMAC to verify. Enter the HMAC that was generated by the
      * <a>GenerateMac</a> operation when you specified the same message, HMAC KMS key,
      * and MAC algorithm as the values specified in this request.</p>
      */
-    inline const Aws::Utils::ByteBuffer& GetMac() const{ return m_mac; }
-
-    /**
-     * <p>The HMAC to verify. Enter the HMAC that was generated by the
-     * <a>GenerateMac</a> operation when you specified the same message, HMAC KMS key,
-     * and MAC algorithm as the values specified in this request.</p>
-     */
+    inline const Aws::Utils::ByteBuffer& GetMac() const { return m_mac; }
     inline bool MacHasBeenSet() const { return m_macHasBeenSet; }
+    template<typename MacT = Aws::Utils::ByteBuffer>
+    void SetMac(MacT&& value) { m_macHasBeenSet = true; m_mac = std::forward<MacT>(value); }
+    template<typename MacT = Aws::Utils::ByteBuffer>
+    VerifyMacRequest& WithMac(MacT&& value) { SetMac(std::forward<MacT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The HMAC to verify. Enter the HMAC that was generated by the
-     * <a>GenerateMac</a> operation when you specified the same message, HMAC KMS key,
-     * and MAC algorithm as the values specified in this request.</p>
-     */
-    inline void SetMac(const Aws::Utils::ByteBuffer& value) { m_macHasBeenSet = true; m_mac = value; }
-
-    /**
-     * <p>The HMAC to verify. Enter the HMAC that was generated by the
-     * <a>GenerateMac</a> operation when you specified the same message, HMAC KMS key,
-     * and MAC algorithm as the values specified in this request.</p>
-     */
-    inline void SetMac(Aws::Utils::ByteBuffer&& value) { m_macHasBeenSet = true; m_mac = std::move(value); }
-
-    /**
-     * <p>The HMAC to verify. Enter the HMAC that was generated by the
-     * <a>GenerateMac</a> operation when you specified the same message, HMAC KMS key,
-     * and MAC algorithm as the values specified in this request.</p>
-     */
-    inline VerifyMacRequest& WithMac(const Aws::Utils::ByteBuffer& value) { SetMac(value); return *this;}
-
-    /**
-     * <p>The HMAC to verify. Enter the HMAC that was generated by the
-     * <a>GenerateMac</a> operation when you specified the same message, HMAC KMS key,
-     * and MAC algorithm as the values specified in this request.</p>
-     */
-    inline VerifyMacRequest& WithMac(Aws::Utils::ByteBuffer&& value) { SetMac(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of grant tokens.</p> <p>Use a grant token when your permission to call
      * this operation comes from a new grant that has not yet achieved <i>eventual
      * consistency</i>. For more information, see <a
      * href="https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token">Grant
      * token</a> and <a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token">Using
+     * href="https://docs.aws.amazon.com/kms/latest/developerguide/using-grant-token.html">Using
      * a grant token</a> in the <i>Key Management Service Developer Guide</i>.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetGrantTokens() const{ return m_grantTokens; }
-
-    /**
-     * <p>A list of grant tokens.</p> <p>Use a grant token when your permission to call
-     * this operation comes from a new grant that has not yet achieved <i>eventual
-     * consistency</i>. For more information, see <a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token">Grant
-     * token</a> and <a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token">Using
-     * a grant token</a> in the <i>Key Management Service Developer Guide</i>.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetGrantTokens() const { return m_grantTokens; }
     inline bool GrantTokensHasBeenSet() const { return m_grantTokensHasBeenSet; }
+    template<typename GrantTokensT = Aws::Vector<Aws::String>>
+    void SetGrantTokens(GrantTokensT&& value) { m_grantTokensHasBeenSet = true; m_grantTokens = std::forward<GrantTokensT>(value); }
+    template<typename GrantTokensT = Aws::Vector<Aws::String>>
+    VerifyMacRequest& WithGrantTokens(GrantTokensT&& value) { SetGrantTokens(std::forward<GrantTokensT>(value)); return *this;}
+    template<typename GrantTokensT = Aws::String>
+    VerifyMacRequest& AddGrantTokens(GrantTokensT&& value) { m_grantTokensHasBeenSet = true; m_grantTokens.emplace_back(std::forward<GrantTokensT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of grant tokens.</p> <p>Use a grant token when your permission to call
-     * this operation comes from a new grant that has not yet achieved <i>eventual
-     * consistency</i>. For more information, see <a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token">Grant
-     * token</a> and <a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token">Using
-     * a grant token</a> in the <i>Key Management Service Developer Guide</i>.</p>
-     */
-    inline void SetGrantTokens(const Aws::Vector<Aws::String>& value) { m_grantTokensHasBeenSet = true; m_grantTokens = value; }
-
-    /**
-     * <p>A list of grant tokens.</p> <p>Use a grant token when your permission to call
-     * this operation comes from a new grant that has not yet achieved <i>eventual
-     * consistency</i>. For more information, see <a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token">Grant
-     * token</a> and <a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token">Using
-     * a grant token</a> in the <i>Key Management Service Developer Guide</i>.</p>
-     */
-    inline void SetGrantTokens(Aws::Vector<Aws::String>&& value) { m_grantTokensHasBeenSet = true; m_grantTokens = std::move(value); }
-
-    /**
-     * <p>A list of grant tokens.</p> <p>Use a grant token when your permission to call
-     * this operation comes from a new grant that has not yet achieved <i>eventual
-     * consistency</i>. For more information, see <a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token">Grant
-     * token</a> and <a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token">Using
-     * a grant token</a> in the <i>Key Management Service Developer Guide</i>.</p>
-     */
-    inline VerifyMacRequest& WithGrantTokens(const Aws::Vector<Aws::String>& value) { SetGrantTokens(value); return *this;}
-
-    /**
-     * <p>A list of grant tokens.</p> <p>Use a grant token when your permission to call
-     * this operation comes from a new grant that has not yet achieved <i>eventual
-     * consistency</i>. For more information, see <a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token">Grant
-     * token</a> and <a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token">Using
-     * a grant token</a> in the <i>Key Management Service Developer Guide</i>.</p>
-     */
-    inline VerifyMacRequest& WithGrantTokens(Aws::Vector<Aws::String>&& value) { SetGrantTokens(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of grant tokens.</p> <p>Use a grant token when your permission to call
-     * this operation comes from a new grant that has not yet achieved <i>eventual
-     * consistency</i>. For more information, see <a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token">Grant
-     * token</a> and <a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token">Using
-     * a grant token</a> in the <i>Key Management Service Developer Guide</i>.</p>
-     */
-    inline VerifyMacRequest& AddGrantTokens(const Aws::String& value) { m_grantTokensHasBeenSet = true; m_grantTokens.push_back(value); return *this; }
-
-    /**
-     * <p>A list of grant tokens.</p> <p>Use a grant token when your permission to call
-     * this operation comes from a new grant that has not yet achieved <i>eventual
-     * consistency</i>. For more information, see <a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token">Grant
-     * token</a> and <a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token">Using
-     * a grant token</a> in the <i>Key Management Service Developer Guide</i>.</p>
-     */
-    inline VerifyMacRequest& AddGrantTokens(Aws::String&& value) { m_grantTokensHasBeenSet = true; m_grantTokens.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of grant tokens.</p> <p>Use a grant token when your permission to call
-     * this operation comes from a new grant that has not yet achieved <i>eventual
-     * consistency</i>. For more information, see <a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token">Grant
-     * token</a> and <a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token">Using
-     * a grant token</a> in the <i>Key Management Service Developer Guide</i>.</p>
-     */
-    inline VerifyMacRequest& AddGrantTokens(const char* value) { m_grantTokensHasBeenSet = true; m_grantTokens.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>Checks if your request will succeed. <code>DryRun</code> is an optional
      * parameter. </p> <p>To learn more about how to use this parameter, see <a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html">Testing
-     * your KMS API calls</a> in the <i>Key Management Service Developer Guide</i>.</p>
+     * href="https://docs.aws.amazon.com/kms/latest/developerguide/testing-permissions.html">Testing
+     * your permissions</a> in the <i>Key Management Service Developer Guide</i>.</p>
      */
-    inline bool GetDryRun() const{ return m_dryRun; }
-
-    /**
-     * <p>Checks if your request will succeed. <code>DryRun</code> is an optional
-     * parameter. </p> <p>To learn more about how to use this parameter, see <a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html">Testing
-     * your KMS API calls</a> in the <i>Key Management Service Developer Guide</i>.</p>
-     */
+    inline bool GetDryRun() const { return m_dryRun; }
     inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
-
-    /**
-     * <p>Checks if your request will succeed. <code>DryRun</code> is an optional
-     * parameter. </p> <p>To learn more about how to use this parameter, see <a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html">Testing
-     * your KMS API calls</a> in the <i>Key Management Service Developer Guide</i>.</p>
-     */
     inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
-
-    /**
-     * <p>Checks if your request will succeed. <code>DryRun</code> is an optional
-     * parameter. </p> <p>To learn more about how to use this parameter, see <a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html">Testing
-     * your KMS API calls</a> in the <i>Key Management Service Developer Guide</i>.</p>
-     */
     inline VerifyMacRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
-
+    ///@}
   private:
 
-    Aws::Utils::CryptoBuffer m_message;
+    Aws::Utils::CryptoBuffer m_message{};
     bool m_messageHasBeenSet = false;
 
     Aws::String m_keyId;
     bool m_keyIdHasBeenSet = false;
 
-    MacAlgorithmSpec m_macAlgorithm;
+    MacAlgorithmSpec m_macAlgorithm{MacAlgorithmSpec::NOT_SET};
     bool m_macAlgorithmHasBeenSet = false;
 
-    Aws::Utils::ByteBuffer m_mac;
+    Aws::Utils::ByteBuffer m_mac{};
     bool m_macHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_grantTokens;
     bool m_grantTokensHasBeenSet = false;
 
-    bool m_dryRun;
+    bool m_dryRun{false};
     bool m_dryRunHasBeenSet = false;
   };
 

@@ -18,15 +18,7 @@ namespace AccessAnalyzer
 namespace Model
 {
 
-SecretsManagerSecretConfiguration::SecretsManagerSecretConfiguration() : 
-    m_kmsKeyIdHasBeenSet(false),
-    m_secretPolicyHasBeenSet(false)
-{
-}
-
-SecretsManagerSecretConfiguration::SecretsManagerSecretConfiguration(JsonView jsonValue) : 
-    m_kmsKeyIdHasBeenSet(false),
-    m_secretPolicyHasBeenSet(false)
+SecretsManagerSecretConfiguration::SecretsManagerSecretConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ SecretsManagerSecretConfiguration& SecretsManagerSecretConfiguration::operator =
   if(jsonValue.ValueExists("kmsKeyId"))
   {
     m_kmsKeyId = jsonValue.GetString("kmsKeyId");
-
     m_kmsKeyIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("secretPolicy"))
   {
     m_secretPolicy = jsonValue.GetString("secretPolicy");
-
     m_secretPolicyHasBeenSet = true;
   }
-
   return *this;
 }
 

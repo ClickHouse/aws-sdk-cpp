@@ -21,7 +21,7 @@ namespace Model
   class DescribeModelCardExportJobRequest : public SageMakerRequest
   {
   public:
-    AWS_SAGEMAKER_API DescribeModelCardExportJobRequest();
+    AWS_SAGEMAKER_API DescribeModelCardExportJobRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_SAGEMAKER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the model card export job to describe.</p>
      */
-    inline const Aws::String& GetModelCardExportJobArn() const{ return m_modelCardExportJobArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the model card export job to describe.</p>
-     */
+    inline const Aws::String& GetModelCardExportJobArn() const { return m_modelCardExportJobArn; }
     inline bool ModelCardExportJobArnHasBeenSet() const { return m_modelCardExportJobArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the model card export job to describe.</p>
-     */
-    inline void SetModelCardExportJobArn(const Aws::String& value) { m_modelCardExportJobArnHasBeenSet = true; m_modelCardExportJobArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the model card export job to describe.</p>
-     */
-    inline void SetModelCardExportJobArn(Aws::String&& value) { m_modelCardExportJobArnHasBeenSet = true; m_modelCardExportJobArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the model card export job to describe.</p>
-     */
-    inline void SetModelCardExportJobArn(const char* value) { m_modelCardExportJobArnHasBeenSet = true; m_modelCardExportJobArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the model card export job to describe.</p>
-     */
-    inline DescribeModelCardExportJobRequest& WithModelCardExportJobArn(const Aws::String& value) { SetModelCardExportJobArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the model card export job to describe.</p>
-     */
-    inline DescribeModelCardExportJobRequest& WithModelCardExportJobArn(Aws::String&& value) { SetModelCardExportJobArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the model card export job to describe.</p>
-     */
-    inline DescribeModelCardExportJobRequest& WithModelCardExportJobArn(const char* value) { SetModelCardExportJobArn(value); return *this;}
-
+    template<typename ModelCardExportJobArnT = Aws::String>
+    void SetModelCardExportJobArn(ModelCardExportJobArnT&& value) { m_modelCardExportJobArnHasBeenSet = true; m_modelCardExportJobArn = std::forward<ModelCardExportJobArnT>(value); }
+    template<typename ModelCardExportJobArnT = Aws::String>
+    DescribeModelCardExportJobRequest& WithModelCardExportJobArn(ModelCardExportJobArnT&& value) { SetModelCardExportJobArn(std::forward<ModelCardExportJobArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_modelCardExportJobArn;

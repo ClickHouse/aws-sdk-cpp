@@ -28,214 +28,94 @@ namespace Model
   class UpdateAccountCustomizationResult
   {
   public:
-    AWS_QUICKSIGHT_API UpdateAccountCustomizationResult();
+    AWS_QUICKSIGHT_API UpdateAccountCustomizationResult() = default;
     AWS_QUICKSIGHT_API UpdateAccountCustomizationResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_QUICKSIGHT_API UpdateAccountCustomizationResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) for the updated customization for this Amazon
      * Web Services account.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
+    inline const Aws::String& GetArn() const { return m_arn; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    UpdateAccountCustomizationResult& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Amazon Resource Name (ARN) for the updated customization for this Amazon
-     * Web Services account.</p>
+     * <p>The ID for the Amazon Web Services account that you want to update QuickSight
+     * customizations for.</p>
      */
-    inline void SetArn(const Aws::String& value) { m_arn = value; }
+    inline const Aws::String& GetAwsAccountId() const { return m_awsAccountId; }
+    template<typename AwsAccountIdT = Aws::String>
+    void SetAwsAccountId(AwsAccountIdT&& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = std::forward<AwsAccountIdT>(value); }
+    template<typename AwsAccountIdT = Aws::String>
+    UpdateAccountCustomizationResult& WithAwsAccountId(AwsAccountIdT&& value) { SetAwsAccountId(std::forward<AwsAccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) for the updated customization for this Amazon
-     * Web Services account.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the updated customization for this Amazon
-     * Web Services account.</p>
-     */
-    inline void SetArn(const char* value) { m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the updated customization for this Amazon
-     * Web Services account.</p>
-     */
-    inline UpdateAccountCustomizationResult& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the updated customization for this Amazon
-     * Web Services account.</p>
-     */
-    inline UpdateAccountCustomizationResult& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the updated customization for this Amazon
-     * Web Services account.</p>
-     */
-    inline UpdateAccountCustomizationResult& WithArn(const char* value) { SetArn(value); return *this;}
-
-
-    /**
-     * <p>The ID for the Amazon Web Services account that you want to update Amazon
-     * QuickSight customizations for.</p>
-     */
-    inline const Aws::String& GetAwsAccountId() const{ return m_awsAccountId; }
-
-    /**
-     * <p>The ID for the Amazon Web Services account that you want to update Amazon
-     * QuickSight customizations for.</p>
-     */
-    inline void SetAwsAccountId(const Aws::String& value) { m_awsAccountId = value; }
-
-    /**
-     * <p>The ID for the Amazon Web Services account that you want to update Amazon
-     * QuickSight customizations for.</p>
-     */
-    inline void SetAwsAccountId(Aws::String&& value) { m_awsAccountId = std::move(value); }
-
-    /**
-     * <p>The ID for the Amazon Web Services account that you want to update Amazon
-     * QuickSight customizations for.</p>
-     */
-    inline void SetAwsAccountId(const char* value) { m_awsAccountId.assign(value); }
-
-    /**
-     * <p>The ID for the Amazon Web Services account that you want to update Amazon
-     * QuickSight customizations for.</p>
-     */
-    inline UpdateAccountCustomizationResult& WithAwsAccountId(const Aws::String& value) { SetAwsAccountId(value); return *this;}
-
-    /**
-     * <p>The ID for the Amazon Web Services account that you want to update Amazon
-     * QuickSight customizations for.</p>
-     */
-    inline UpdateAccountCustomizationResult& WithAwsAccountId(Aws::String&& value) { SetAwsAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID for the Amazon Web Services account that you want to update Amazon
-     * QuickSight customizations for.</p>
-     */
-    inline UpdateAccountCustomizationResult& WithAwsAccountId(const char* value) { SetAwsAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The namespace associated with the customization that you're updating.</p>
      */
-    inline const Aws::String& GetNamespace() const{ return m_namespace; }
+    inline const Aws::String& GetNamespace() const { return m_namespace; }
+    template<typename NamespaceT = Aws::String>
+    void SetNamespace(NamespaceT&& value) { m_namespaceHasBeenSet = true; m_namespace = std::forward<NamespaceT>(value); }
+    template<typename NamespaceT = Aws::String>
+    UpdateAccountCustomizationResult& WithNamespace(NamespaceT&& value) { SetNamespace(std::forward<NamespaceT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The namespace associated with the customization that you're updating.</p>
+     * <p>The QuickSight customizations you're updating in the current Amazon Web
+     * Services Region. </p>
      */
-    inline void SetNamespace(const Aws::String& value) { m_namespace = value; }
+    inline const AccountCustomization& GetAccountCustomization() const { return m_accountCustomization; }
+    template<typename AccountCustomizationT = AccountCustomization>
+    void SetAccountCustomization(AccountCustomizationT&& value) { m_accountCustomizationHasBeenSet = true; m_accountCustomization = std::forward<AccountCustomizationT>(value); }
+    template<typename AccountCustomizationT = AccountCustomization>
+    UpdateAccountCustomizationResult& WithAccountCustomization(AccountCustomizationT&& value) { SetAccountCustomization(std::forward<AccountCustomizationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The namespace associated with the customization that you're updating.</p>
-     */
-    inline void SetNamespace(Aws::String&& value) { m_namespace = std::move(value); }
-
-    /**
-     * <p>The namespace associated with the customization that you're updating.</p>
-     */
-    inline void SetNamespace(const char* value) { m_namespace.assign(value); }
-
-    /**
-     * <p>The namespace associated with the customization that you're updating.</p>
-     */
-    inline UpdateAccountCustomizationResult& WithNamespace(const Aws::String& value) { SetNamespace(value); return *this;}
-
-    /**
-     * <p>The namespace associated with the customization that you're updating.</p>
-     */
-    inline UpdateAccountCustomizationResult& WithNamespace(Aws::String&& value) { SetNamespace(std::move(value)); return *this;}
-
-    /**
-     * <p>The namespace associated with the customization that you're updating.</p>
-     */
-    inline UpdateAccountCustomizationResult& WithNamespace(const char* value) { SetNamespace(value); return *this;}
-
-
-    /**
-     * <p>The Amazon QuickSight customizations you're updating in the current Amazon
-     * Web Services Region. </p>
-     */
-    inline const AccountCustomization& GetAccountCustomization() const{ return m_accountCustomization; }
-
-    /**
-     * <p>The Amazon QuickSight customizations you're updating in the current Amazon
-     * Web Services Region. </p>
-     */
-    inline void SetAccountCustomization(const AccountCustomization& value) { m_accountCustomization = value; }
-
-    /**
-     * <p>The Amazon QuickSight customizations you're updating in the current Amazon
-     * Web Services Region. </p>
-     */
-    inline void SetAccountCustomization(AccountCustomization&& value) { m_accountCustomization = std::move(value); }
-
-    /**
-     * <p>The Amazon QuickSight customizations you're updating in the current Amazon
-     * Web Services Region. </p>
-     */
-    inline UpdateAccountCustomizationResult& WithAccountCustomization(const AccountCustomization& value) { SetAccountCustomization(value); return *this;}
-
-    /**
-     * <p>The Amazon QuickSight customizations you're updating in the current Amazon
-     * Web Services Region. </p>
-     */
-    inline UpdateAccountCustomizationResult& WithAccountCustomization(AccountCustomization&& value) { SetAccountCustomization(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    UpdateAccountCustomizationResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline UpdateAccountCustomizationResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline UpdateAccountCustomizationResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline UpdateAccountCustomizationResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The HTTP status of the request.</p>
      */
-    inline int GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The HTTP status of the request.</p>
-     */
-    inline void SetStatus(int value) { m_status = value; }
-
-    /**
-     * <p>The HTTP status of the request.</p>
-     */
+    inline int GetStatus() const { return m_status; }
+    inline void SetStatus(int value) { m_statusHasBeenSet = true; m_status = value; }
     inline UpdateAccountCustomizationResult& WithStatus(int value) { SetStatus(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_arn;
+    bool m_arnHasBeenSet = false;
 
     Aws::String m_awsAccountId;
+    bool m_awsAccountIdHasBeenSet = false;
 
     Aws::String m_namespace;
+    bool m_namespaceHasBeenSet = false;
 
     AccountCustomization m_accountCustomization;
+    bool m_accountCustomizationHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
 
-    int m_status;
+    int m_status{0};
+    bool m_statusHasBeenSet = false;
   };
 
 } // namespace Model

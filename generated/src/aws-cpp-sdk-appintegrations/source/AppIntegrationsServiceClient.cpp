@@ -23,6 +23,7 @@
 #include <aws/appintegrations/AppIntegrationsServiceEndpointProvider.h>
 #include <aws/appintegrations/model/CreateApplicationRequest.h>
 #include <aws/appintegrations/model/CreateDataIntegrationRequest.h>
+#include <aws/appintegrations/model/CreateDataIntegrationAssociationRequest.h>
 #include <aws/appintegrations/model/CreateEventIntegrationRequest.h>
 #include <aws/appintegrations/model/DeleteApplicationRequest.h>
 #include <aws/appintegrations/model/DeleteDataIntegrationRequest.h>
@@ -41,6 +42,7 @@
 #include <aws/appintegrations/model/UntagResourceRequest.h>
 #include <aws/appintegrations/model/UpdateApplicationRequest.h>
 #include <aws/appintegrations/model/UpdateDataIntegrationRequest.h>
+#include <aws/appintegrations/model/UpdateDataIntegrationAssociationRequest.h>
 #include <aws/appintegrations/model/UpdateEventIntegrationRequest.h>
 
 #include <smithy/tracing/TracingUtils.h>
@@ -56,20 +58,27 @@ using namespace Aws::Utils::Json;
 using namespace smithy::components::tracing;
 using ResolveEndpointOutcome = Aws::Endpoint::ResolveEndpointOutcome;
 
-const char* AppIntegrationsServiceClient::SERVICE_NAME = "app-integrations";
-const char* AppIntegrationsServiceClient::ALLOCATION_TAG = "AppIntegrationsServiceClient";
+namespace Aws
+{
+  namespace AppIntegrationsService
+  {
+    const char SERVICE_NAME[] = "app-integrations";
+    const char ALLOCATION_TAG[] = "AppIntegrationsServiceClient";
+  }
+}
+const char* AppIntegrationsServiceClient::GetServiceName() {return SERVICE_NAME;}
+const char* AppIntegrationsServiceClient::GetAllocationTag() {return ALLOCATION_TAG;}
 
 AppIntegrationsServiceClient::AppIntegrationsServiceClient(const AppIntegrationsService::AppIntegrationsServiceClientConfiguration& clientConfiguration,
                                                            std::shared_ptr<AppIntegrationsServiceEndpointProviderBase> endpointProvider) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<AppIntegrationsServiceErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
-  m_endpointProvider(std::move(endpointProvider))
+  m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<AppIntegrationsServiceEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -84,8 +93,7 @@ AppIntegrationsServiceClient::AppIntegrationsServiceClient(const AWSCredentials&
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<AppIntegrationsServiceErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<AppIntegrationsServiceEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -100,8 +108,7 @@ AppIntegrationsServiceClient::AppIntegrationsServiceClient(const std::shared_ptr
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<AppIntegrationsServiceErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<AppIntegrationsServiceEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -110,12 +117,11 @@ AppIntegrationsServiceClient::AppIntegrationsServiceClient(const std::shared_ptr
   AppIntegrationsServiceClient::AppIntegrationsServiceClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<AppIntegrationsServiceErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
   m_endpointProvider(Aws::MakeShared<AppIntegrationsServiceEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -130,7 +136,6 @@ AppIntegrationsServiceClient::AppIntegrationsServiceClient(const AWSCredentials&
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<AppIntegrationsServiceErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<AppIntegrationsServiceEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -145,7 +150,6 @@ AppIntegrationsServiceClient::AppIntegrationsServiceClient(const std::shared_ptr
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<AppIntegrationsServiceErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<AppIntegrationsServiceEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -165,6 +169,14 @@ std::shared_ptr<AppIntegrationsServiceEndpointProviderBase>& AppIntegrationsServ
 void AppIntegrationsServiceClient::init(const AppIntegrationsService::AppIntegrationsServiceClientConfiguration& config)
 {
   AWSClient::SetServiceClientName("AppIntegrations");
+  if (!m_clientConfiguration.executor) {
+    if (!m_clientConfiguration.configFactories.executorCreateFn()) {
+      AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "Failed to initialize client: config is missing Executor or executorCreateFn");
+      m_isInitialized = false;
+      return;
+    }
+    m_clientConfiguration.executor = m_clientConfiguration.configFactories.executorCreateFn();
+  }
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
   m_endpointProvider->InitBuiltInParameters(config);
 }
@@ -223,6 +235,40 @@ CreateDataIntegrationOutcome AppIntegrationsServiceClient::CreateDataIntegration
       AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, CreateDataIntegration, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
       endpointResolutionOutcome.GetResult().AddPathSegments("/dataIntegrations");
       return CreateDataIntegrationOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
+    },
+    TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
+    *meter,
+    {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+}
+
+CreateDataIntegrationAssociationOutcome AppIntegrationsServiceClient::CreateDataIntegrationAssociation(const CreateDataIntegrationAssociationRequest& request) const
+{
+  AWS_OPERATION_GUARD(CreateDataIntegrationAssociation);
+  AWS_OPERATION_CHECK_PTR(m_endpointProvider, CreateDataIntegrationAssociation, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE);
+  if (!request.DataIntegrationIdentifierHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("CreateDataIntegrationAssociation", "Required field: DataIntegrationIdentifier, is not set");
+    return CreateDataIntegrationAssociationOutcome(Aws::Client::AWSError<AppIntegrationsServiceErrors>(AppIntegrationsServiceErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [DataIntegrationIdentifier]", false));
+  }
+  AWS_OPERATION_CHECK_PTR(m_telemetryProvider, CreateDataIntegrationAssociation, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto tracer = m_telemetryProvider->getTracer(this->GetServiceClientName(), {});
+  auto meter = m_telemetryProvider->getMeter(this->GetServiceClientName(), {});
+  AWS_OPERATION_CHECK_PTR(meter, CreateDataIntegrationAssociation, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto span = tracer->CreateSpan(Aws::String(this->GetServiceClientName()) + ".CreateDataIntegrationAssociation",
+    {{ TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName() }, { TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName() }, { TracingUtils::SMITHY_SYSTEM_DIMENSION, TracingUtils::SMITHY_METHOD_AWS_VALUE }},
+    smithy::components::tracing::SpanKind::CLIENT);
+  return TracingUtils::MakeCallWithTiming<CreateDataIntegrationAssociationOutcome>(
+    [&]()-> CreateDataIntegrationAssociationOutcome {
+      auto endpointResolutionOutcome = TracingUtils::MakeCallWithTiming<ResolveEndpointOutcome>(
+          [&]() -> ResolveEndpointOutcome { return m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams()); },
+          TracingUtils::SMITHY_CLIENT_ENDPOINT_RESOLUTION_METRIC,
+          *meter,
+          {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+      AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, CreateDataIntegrationAssociation, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/dataIntegrations/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetDataIntegrationIdentifier());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/associations");
+      return CreateDataIntegrationAssociationOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
     },
     TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
     *meter,
@@ -801,6 +847,46 @@ UpdateDataIntegrationOutcome AppIntegrationsServiceClient::UpdateDataIntegration
       endpointResolutionOutcome.GetResult().AddPathSegments("/dataIntegrations/");
       endpointResolutionOutcome.GetResult().AddPathSegment(request.GetIdentifier());
       return UpdateDataIntegrationOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_PATCH, Aws::Auth::SIGV4_SIGNER));
+    },
+    TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
+    *meter,
+    {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+}
+
+UpdateDataIntegrationAssociationOutcome AppIntegrationsServiceClient::UpdateDataIntegrationAssociation(const UpdateDataIntegrationAssociationRequest& request) const
+{
+  AWS_OPERATION_GUARD(UpdateDataIntegrationAssociation);
+  AWS_OPERATION_CHECK_PTR(m_endpointProvider, UpdateDataIntegrationAssociation, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE);
+  if (!request.DataIntegrationIdentifierHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("UpdateDataIntegrationAssociation", "Required field: DataIntegrationIdentifier, is not set");
+    return UpdateDataIntegrationAssociationOutcome(Aws::Client::AWSError<AppIntegrationsServiceErrors>(AppIntegrationsServiceErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [DataIntegrationIdentifier]", false));
+  }
+  if (!request.DataIntegrationAssociationIdentifierHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("UpdateDataIntegrationAssociation", "Required field: DataIntegrationAssociationIdentifier, is not set");
+    return UpdateDataIntegrationAssociationOutcome(Aws::Client::AWSError<AppIntegrationsServiceErrors>(AppIntegrationsServiceErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [DataIntegrationAssociationIdentifier]", false));
+  }
+  AWS_OPERATION_CHECK_PTR(m_telemetryProvider, UpdateDataIntegrationAssociation, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto tracer = m_telemetryProvider->getTracer(this->GetServiceClientName(), {});
+  auto meter = m_telemetryProvider->getMeter(this->GetServiceClientName(), {});
+  AWS_OPERATION_CHECK_PTR(meter, UpdateDataIntegrationAssociation, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto span = tracer->CreateSpan(Aws::String(this->GetServiceClientName()) + ".UpdateDataIntegrationAssociation",
+    {{ TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName() }, { TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName() }, { TracingUtils::SMITHY_SYSTEM_DIMENSION, TracingUtils::SMITHY_METHOD_AWS_VALUE }},
+    smithy::components::tracing::SpanKind::CLIENT);
+  return TracingUtils::MakeCallWithTiming<UpdateDataIntegrationAssociationOutcome>(
+    [&]()-> UpdateDataIntegrationAssociationOutcome {
+      auto endpointResolutionOutcome = TracingUtils::MakeCallWithTiming<ResolveEndpointOutcome>(
+          [&]() -> ResolveEndpointOutcome { return m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams()); },
+          TracingUtils::SMITHY_CLIENT_ENDPOINT_RESOLUTION_METRIC,
+          *meter,
+          {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+      AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, UpdateDataIntegrationAssociation, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/dataIntegrations/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetDataIntegrationIdentifier());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/associations/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetDataIntegrationAssociationIdentifier());
+      return UpdateDataIntegrationAssociationOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_PATCH, Aws::Auth::SIGV4_SIGNER));
     },
     TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
     *meter,

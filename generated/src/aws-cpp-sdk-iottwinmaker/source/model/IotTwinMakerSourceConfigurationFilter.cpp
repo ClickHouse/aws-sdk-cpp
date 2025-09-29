@@ -18,15 +18,7 @@ namespace IoTTwinMaker
 namespace Model
 {
 
-IotTwinMakerSourceConfigurationFilter::IotTwinMakerSourceConfigurationFilter() : 
-    m_filterByComponentTypeHasBeenSet(false),
-    m_filterByEntityHasBeenSet(false)
-{
-}
-
-IotTwinMakerSourceConfigurationFilter::IotTwinMakerSourceConfigurationFilter(JsonView jsonValue) : 
-    m_filterByComponentTypeHasBeenSet(false),
-    m_filterByEntityHasBeenSet(false)
+IotTwinMakerSourceConfigurationFilter::IotTwinMakerSourceConfigurationFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ IotTwinMakerSourceConfigurationFilter& IotTwinMakerSourceConfigurationFilter::op
   if(jsonValue.ValueExists("filterByComponentType"))
   {
     m_filterByComponentType = jsonValue.GetObject("filterByComponentType");
-
     m_filterByComponentTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("filterByEntity"))
   {
     m_filterByEntity = jsonValue.GetObject("filterByEntity");
-
     m_filterByEntityHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,19 +18,7 @@ namespace Braket
 namespace Model
 {
 
-JobEventDetails::JobEventDetails() : 
-    m_eventType(JobEventType::NOT_SET),
-    m_eventTypeHasBeenSet(false),
-    m_messageHasBeenSet(false),
-    m_timeOfEventHasBeenSet(false)
-{
-}
-
-JobEventDetails::JobEventDetails(JsonView jsonValue) : 
-    m_eventType(JobEventType::NOT_SET),
-    m_eventTypeHasBeenSet(false),
-    m_messageHasBeenSet(false),
-    m_timeOfEventHasBeenSet(false)
+JobEventDetails::JobEventDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ JobEventDetails& JobEventDetails::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("eventType"))
   {
     m_eventType = JobEventTypeMapper::GetJobEventTypeForName(jsonValue.GetString("eventType"));
-
     m_eventTypeHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("message"))
-  {
-    m_message = jsonValue.GetString("message");
-
-    m_messageHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("timeOfEvent"))
   {
     m_timeOfEvent = jsonValue.GetString("timeOfEvent");
-
     m_timeOfEventHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("message"))
+  {
+    m_message = jsonValue.GetString("message");
+    m_messageHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -70,15 +52,15 @@ JsonValue JobEventDetails::Jsonize() const
    payload.WithString("eventType", JobEventTypeMapper::GetNameForJobEventType(m_eventType));
   }
 
+  if(m_timeOfEventHasBeenSet)
+  {
+   payload.WithString("timeOfEvent", m_timeOfEvent.ToGmtString(Aws::Utils::DateFormat::ISO_8601));
+  }
+
   if(m_messageHasBeenSet)
   {
    payload.WithString("message", m_message);
 
-  }
-
-  if(m_timeOfEventHasBeenSet)
-  {
-   payload.WithString("timeOfEvent", m_timeOfEvent.ToGmtString(Aws::Utils::DateFormat::ISO_8601));
   }
 
   return payload;

@@ -33,126 +33,52 @@ namespace Model
   class ScalingPolicy
   {
   public:
-    AWS_AUTOSCALINGPLANS_API ScalingPolicy();
+    AWS_AUTOSCALINGPLANS_API ScalingPolicy() = default;
     AWS_AUTOSCALINGPLANS_API ScalingPolicy(Aws::Utils::Json::JsonView jsonValue);
     AWS_AUTOSCALINGPLANS_API ScalingPolicy& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_AUTOSCALINGPLANS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the scaling policy.</p>
      */
-    inline const Aws::String& GetPolicyName() const{ return m_policyName; }
-
-    /**
-     * <p>The name of the scaling policy.</p>
-     */
+    inline const Aws::String& GetPolicyName() const { return m_policyName; }
     inline bool PolicyNameHasBeenSet() const { return m_policyNameHasBeenSet; }
+    template<typename PolicyNameT = Aws::String>
+    void SetPolicyName(PolicyNameT&& value) { m_policyNameHasBeenSet = true; m_policyName = std::forward<PolicyNameT>(value); }
+    template<typename PolicyNameT = Aws::String>
+    ScalingPolicy& WithPolicyName(PolicyNameT&& value) { SetPolicyName(std::forward<PolicyNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the scaling policy.</p>
-     */
-    inline void SetPolicyName(const Aws::String& value) { m_policyNameHasBeenSet = true; m_policyName = value; }
-
-    /**
-     * <p>The name of the scaling policy.</p>
-     */
-    inline void SetPolicyName(Aws::String&& value) { m_policyNameHasBeenSet = true; m_policyName = std::move(value); }
-
-    /**
-     * <p>The name of the scaling policy.</p>
-     */
-    inline void SetPolicyName(const char* value) { m_policyNameHasBeenSet = true; m_policyName.assign(value); }
-
-    /**
-     * <p>The name of the scaling policy.</p>
-     */
-    inline ScalingPolicy& WithPolicyName(const Aws::String& value) { SetPolicyName(value); return *this;}
-
-    /**
-     * <p>The name of the scaling policy.</p>
-     */
-    inline ScalingPolicy& WithPolicyName(Aws::String&& value) { SetPolicyName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the scaling policy.</p>
-     */
-    inline ScalingPolicy& WithPolicyName(const char* value) { SetPolicyName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of scaling policy.</p>
      */
-    inline const PolicyType& GetPolicyType() const{ return m_policyType; }
-
-    /**
-     * <p>The type of scaling policy.</p>
-     */
+    inline PolicyType GetPolicyType() const { return m_policyType; }
     inline bool PolicyTypeHasBeenSet() const { return m_policyTypeHasBeenSet; }
+    inline void SetPolicyType(PolicyType value) { m_policyTypeHasBeenSet = true; m_policyType = value; }
+    inline ScalingPolicy& WithPolicyType(PolicyType value) { SetPolicyType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of scaling policy.</p>
-     */
-    inline void SetPolicyType(const PolicyType& value) { m_policyTypeHasBeenSet = true; m_policyType = value; }
-
-    /**
-     * <p>The type of scaling policy.</p>
-     */
-    inline void SetPolicyType(PolicyType&& value) { m_policyTypeHasBeenSet = true; m_policyType = std::move(value); }
-
-    /**
-     * <p>The type of scaling policy.</p>
-     */
-    inline ScalingPolicy& WithPolicyType(const PolicyType& value) { SetPolicyType(value); return *this;}
-
-    /**
-     * <p>The type of scaling policy.</p>
-     */
-    inline ScalingPolicy& WithPolicyType(PolicyType&& value) { SetPolicyType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The target tracking scaling policy. Includes support for predefined or
      * customized metrics.</p>
      */
-    inline const TargetTrackingConfiguration& GetTargetTrackingConfiguration() const{ return m_targetTrackingConfiguration; }
-
-    /**
-     * <p>The target tracking scaling policy. Includes support for predefined or
-     * customized metrics.</p>
-     */
+    inline const TargetTrackingConfiguration& GetTargetTrackingConfiguration() const { return m_targetTrackingConfiguration; }
     inline bool TargetTrackingConfigurationHasBeenSet() const { return m_targetTrackingConfigurationHasBeenSet; }
-
-    /**
-     * <p>The target tracking scaling policy. Includes support for predefined or
-     * customized metrics.</p>
-     */
-    inline void SetTargetTrackingConfiguration(const TargetTrackingConfiguration& value) { m_targetTrackingConfigurationHasBeenSet = true; m_targetTrackingConfiguration = value; }
-
-    /**
-     * <p>The target tracking scaling policy. Includes support for predefined or
-     * customized metrics.</p>
-     */
-    inline void SetTargetTrackingConfiguration(TargetTrackingConfiguration&& value) { m_targetTrackingConfigurationHasBeenSet = true; m_targetTrackingConfiguration = std::move(value); }
-
-    /**
-     * <p>The target tracking scaling policy. Includes support for predefined or
-     * customized metrics.</p>
-     */
-    inline ScalingPolicy& WithTargetTrackingConfiguration(const TargetTrackingConfiguration& value) { SetTargetTrackingConfiguration(value); return *this;}
-
-    /**
-     * <p>The target tracking scaling policy. Includes support for predefined or
-     * customized metrics.</p>
-     */
-    inline ScalingPolicy& WithTargetTrackingConfiguration(TargetTrackingConfiguration&& value) { SetTargetTrackingConfiguration(std::move(value)); return *this;}
-
+    template<typename TargetTrackingConfigurationT = TargetTrackingConfiguration>
+    void SetTargetTrackingConfiguration(TargetTrackingConfigurationT&& value) { m_targetTrackingConfigurationHasBeenSet = true; m_targetTrackingConfiguration = std::forward<TargetTrackingConfigurationT>(value); }
+    template<typename TargetTrackingConfigurationT = TargetTrackingConfiguration>
+    ScalingPolicy& WithTargetTrackingConfiguration(TargetTrackingConfigurationT&& value) { SetTargetTrackingConfiguration(std::forward<TargetTrackingConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_policyName;
     bool m_policyNameHasBeenSet = false;
 
-    PolicyType m_policyType;
+    PolicyType m_policyType{PolicyType::NOT_SET};
     bool m_policyTypeHasBeenSet = false;
 
     TargetTrackingConfiguration m_targetTrackingConfiguration;

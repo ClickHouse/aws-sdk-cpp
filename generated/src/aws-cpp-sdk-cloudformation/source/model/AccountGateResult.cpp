@@ -20,17 +20,7 @@ namespace CloudFormation
 namespace Model
 {
 
-AccountGateResult::AccountGateResult() : 
-    m_status(AccountGateStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_statusReasonHasBeenSet(false)
-{
-}
-
-AccountGateResult::AccountGateResult(const XmlNode& xmlNode) : 
-    m_status(AccountGateStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_statusReasonHasBeenSet(false)
+AccountGateResult::AccountGateResult(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -44,7 +34,7 @@ AccountGateResult& AccountGateResult::operator =(const XmlNode& xmlNode)
     XmlNode statusNode = resultNode.FirstChild("Status");
     if(!statusNode.IsNull())
     {
-      m_status = AccountGateStatusMapper::GetAccountGateStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()).c_str());
+      m_status = AccountGateStatusMapper::GetAccountGateStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()));
       m_statusHasBeenSet = true;
     }
     XmlNode statusReasonNode = resultNode.FirstChild("StatusReason");
@@ -62,7 +52,7 @@ void AccountGateResult::OutputToStream(Aws::OStream& oStream, const char* locati
 {
   if(m_statusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Status=" << AccountGateStatusMapper::GetNameForAccountGateStatus(m_status) << "&";
+      oStream << location << index << locationValue << ".Status=" << StringUtils::URLEncode(AccountGateStatusMapper::GetNameForAccountGateStatus(m_status)) << "&";
   }
 
   if(m_statusReasonHasBeenSet)
@@ -76,7 +66,7 @@ void AccountGateResult::OutputToStream(Aws::OStream& oStream, const char* locati
 {
   if(m_statusHasBeenSet)
   {
-      oStream << location << ".Status=" << AccountGateStatusMapper::GetNameForAccountGateStatus(m_status) << "&";
+      oStream << location << ".Status=" << StringUtils::URLEncode(AccountGateStatusMapper::GetNameForAccountGateStatus(m_status)) << "&";
   }
   if(m_statusReasonHasBeenSet)
   {

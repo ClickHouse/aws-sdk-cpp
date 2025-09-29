@@ -41,53 +41,25 @@ namespace Model
   class KeySchemaElement
   {
   public:
-    AWS_DYNAMODBSTREAMS_API KeySchemaElement();
+    AWS_DYNAMODBSTREAMS_API KeySchemaElement() = default;
     AWS_DYNAMODBSTREAMS_API KeySchemaElement(Aws::Utils::Json::JsonView jsonValue);
     AWS_DYNAMODBSTREAMS_API KeySchemaElement& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DYNAMODBSTREAMS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of a key attribute.</p>
      */
-    inline const Aws::String& GetAttributeName() const{ return m_attributeName; }
-
-    /**
-     * <p>The name of a key attribute.</p>
-     */
+    inline const Aws::String& GetAttributeName() const { return m_attributeName; }
     inline bool AttributeNameHasBeenSet() const { return m_attributeNameHasBeenSet; }
+    template<typename AttributeNameT = Aws::String>
+    void SetAttributeName(AttributeNameT&& value) { m_attributeNameHasBeenSet = true; m_attributeName = std::forward<AttributeNameT>(value); }
+    template<typename AttributeNameT = Aws::String>
+    KeySchemaElement& WithAttributeName(AttributeNameT&& value) { SetAttributeName(std::forward<AttributeNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of a key attribute.</p>
-     */
-    inline void SetAttributeName(const Aws::String& value) { m_attributeNameHasBeenSet = true; m_attributeName = value; }
-
-    /**
-     * <p>The name of a key attribute.</p>
-     */
-    inline void SetAttributeName(Aws::String&& value) { m_attributeNameHasBeenSet = true; m_attributeName = std::move(value); }
-
-    /**
-     * <p>The name of a key attribute.</p>
-     */
-    inline void SetAttributeName(const char* value) { m_attributeNameHasBeenSet = true; m_attributeName.assign(value); }
-
-    /**
-     * <p>The name of a key attribute.</p>
-     */
-    inline KeySchemaElement& WithAttributeName(const Aws::String& value) { SetAttributeName(value); return *this;}
-
-    /**
-     * <p>The name of a key attribute.</p>
-     */
-    inline KeySchemaElement& WithAttributeName(Aws::String&& value) { SetAttributeName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of a key attribute.</p>
-     */
-    inline KeySchemaElement& WithAttributeName(const char* value) { SetAttributeName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The role that this key attribute will assume:</p> <ul> <li> <p>
      * <code>HASH</code> - partition key</p> </li> <li> <p> <code>RANGE</code> - sort
@@ -99,79 +71,17 @@ namespace Model
      * way DynamoDB stores items with the same partition key physically close together,
      * in sorted order by the sort key value.</p> 
      */
-    inline const KeyType& GetKeyType() const{ return m_keyType; }
-
-    /**
-     * <p>The role that this key attribute will assume:</p> <ul> <li> <p>
-     * <code>HASH</code> - partition key</p> </li> <li> <p> <code>RANGE</code> - sort
-     * key</p> </li> </ul>  <p>The partition key of an item is also known as its
-     * <i>hash attribute</i>. The term "hash attribute" derives from DynamoDB's usage
-     * of an internal hash function to evenly distribute data items across partitions,
-     * based on their partition key values.</p> <p>The sort key of an item is also
-     * known as its <i>range attribute</i>. The term "range attribute" derives from the
-     * way DynamoDB stores items with the same partition key physically close together,
-     * in sorted order by the sort key value.</p> 
-     */
+    inline KeyType GetKeyType() const { return m_keyType; }
     inline bool KeyTypeHasBeenSet() const { return m_keyTypeHasBeenSet; }
-
-    /**
-     * <p>The role that this key attribute will assume:</p> <ul> <li> <p>
-     * <code>HASH</code> - partition key</p> </li> <li> <p> <code>RANGE</code> - sort
-     * key</p> </li> </ul>  <p>The partition key of an item is also known as its
-     * <i>hash attribute</i>. The term "hash attribute" derives from DynamoDB's usage
-     * of an internal hash function to evenly distribute data items across partitions,
-     * based on their partition key values.</p> <p>The sort key of an item is also
-     * known as its <i>range attribute</i>. The term "range attribute" derives from the
-     * way DynamoDB stores items with the same partition key physically close together,
-     * in sorted order by the sort key value.</p> 
-     */
-    inline void SetKeyType(const KeyType& value) { m_keyTypeHasBeenSet = true; m_keyType = value; }
-
-    /**
-     * <p>The role that this key attribute will assume:</p> <ul> <li> <p>
-     * <code>HASH</code> - partition key</p> </li> <li> <p> <code>RANGE</code> - sort
-     * key</p> </li> </ul>  <p>The partition key of an item is also known as its
-     * <i>hash attribute</i>. The term "hash attribute" derives from DynamoDB's usage
-     * of an internal hash function to evenly distribute data items across partitions,
-     * based on their partition key values.</p> <p>The sort key of an item is also
-     * known as its <i>range attribute</i>. The term "range attribute" derives from the
-     * way DynamoDB stores items with the same partition key physically close together,
-     * in sorted order by the sort key value.</p> 
-     */
-    inline void SetKeyType(KeyType&& value) { m_keyTypeHasBeenSet = true; m_keyType = std::move(value); }
-
-    /**
-     * <p>The role that this key attribute will assume:</p> <ul> <li> <p>
-     * <code>HASH</code> - partition key</p> </li> <li> <p> <code>RANGE</code> - sort
-     * key</p> </li> </ul>  <p>The partition key of an item is also known as its
-     * <i>hash attribute</i>. The term "hash attribute" derives from DynamoDB's usage
-     * of an internal hash function to evenly distribute data items across partitions,
-     * based on their partition key values.</p> <p>The sort key of an item is also
-     * known as its <i>range attribute</i>. The term "range attribute" derives from the
-     * way DynamoDB stores items with the same partition key physically close together,
-     * in sorted order by the sort key value.</p> 
-     */
-    inline KeySchemaElement& WithKeyType(const KeyType& value) { SetKeyType(value); return *this;}
-
-    /**
-     * <p>The role that this key attribute will assume:</p> <ul> <li> <p>
-     * <code>HASH</code> - partition key</p> </li> <li> <p> <code>RANGE</code> - sort
-     * key</p> </li> </ul>  <p>The partition key of an item is also known as its
-     * <i>hash attribute</i>. The term "hash attribute" derives from DynamoDB's usage
-     * of an internal hash function to evenly distribute data items across partitions,
-     * based on their partition key values.</p> <p>The sort key of an item is also
-     * known as its <i>range attribute</i>. The term "range attribute" derives from the
-     * way DynamoDB stores items with the same partition key physically close together,
-     * in sorted order by the sort key value.</p> 
-     */
-    inline KeySchemaElement& WithKeyType(KeyType&& value) { SetKeyType(std::move(value)); return *this;}
-
+    inline void SetKeyType(KeyType value) { m_keyTypeHasBeenSet = true; m_keyType = value; }
+    inline KeySchemaElement& WithKeyType(KeyType value) { SetKeyType(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_attributeName;
     bool m_attributeNameHasBeenSet = false;
 
-    KeyType m_keyType;
+    KeyType m_keyType{KeyType::NOT_SET};
     bool m_keyTypeHasBeenSet = false;
   };
 

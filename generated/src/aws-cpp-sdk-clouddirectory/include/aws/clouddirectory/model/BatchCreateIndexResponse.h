@@ -32,52 +32,23 @@ namespace Model
   class BatchCreateIndexResponse
   {
   public:
-    AWS_CLOUDDIRECTORY_API BatchCreateIndexResponse();
+    AWS_CLOUDDIRECTORY_API BatchCreateIndexResponse() = default;
     AWS_CLOUDDIRECTORY_API BatchCreateIndexResponse(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDDIRECTORY_API BatchCreateIndexResponse& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDDIRECTORY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The <code>ObjectIdentifier</code> of the index created by this operation.</p>
      */
-    inline const Aws::String& GetObjectIdentifier() const{ return m_objectIdentifier; }
-
-    /**
-     * <p>The <code>ObjectIdentifier</code> of the index created by this operation.</p>
-     */
+    inline const Aws::String& GetObjectIdentifier() const { return m_objectIdentifier; }
     inline bool ObjectIdentifierHasBeenSet() const { return m_objectIdentifierHasBeenSet; }
-
-    /**
-     * <p>The <code>ObjectIdentifier</code> of the index created by this operation.</p>
-     */
-    inline void SetObjectIdentifier(const Aws::String& value) { m_objectIdentifierHasBeenSet = true; m_objectIdentifier = value; }
-
-    /**
-     * <p>The <code>ObjectIdentifier</code> of the index created by this operation.</p>
-     */
-    inline void SetObjectIdentifier(Aws::String&& value) { m_objectIdentifierHasBeenSet = true; m_objectIdentifier = std::move(value); }
-
-    /**
-     * <p>The <code>ObjectIdentifier</code> of the index created by this operation.</p>
-     */
-    inline void SetObjectIdentifier(const char* value) { m_objectIdentifierHasBeenSet = true; m_objectIdentifier.assign(value); }
-
-    /**
-     * <p>The <code>ObjectIdentifier</code> of the index created by this operation.</p>
-     */
-    inline BatchCreateIndexResponse& WithObjectIdentifier(const Aws::String& value) { SetObjectIdentifier(value); return *this;}
-
-    /**
-     * <p>The <code>ObjectIdentifier</code> of the index created by this operation.</p>
-     */
-    inline BatchCreateIndexResponse& WithObjectIdentifier(Aws::String&& value) { SetObjectIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The <code>ObjectIdentifier</code> of the index created by this operation.</p>
-     */
-    inline BatchCreateIndexResponse& WithObjectIdentifier(const char* value) { SetObjectIdentifier(value); return *this;}
-
+    template<typename ObjectIdentifierT = Aws::String>
+    void SetObjectIdentifier(ObjectIdentifierT&& value) { m_objectIdentifierHasBeenSet = true; m_objectIdentifier = std::forward<ObjectIdentifierT>(value); }
+    template<typename ObjectIdentifierT = Aws::String>
+    BatchCreateIndexResponse& WithObjectIdentifier(ObjectIdentifierT&& value) { SetObjectIdentifier(std::forward<ObjectIdentifierT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_objectIdentifier;

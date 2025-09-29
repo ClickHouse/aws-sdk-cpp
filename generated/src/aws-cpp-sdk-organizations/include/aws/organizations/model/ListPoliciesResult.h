@@ -29,61 +29,27 @@ namespace Model
   class ListPoliciesResult
   {
   public:
-    AWS_ORGANIZATIONS_API ListPoliciesResult();
+    AWS_ORGANIZATIONS_API ListPoliciesResult() = default;
     AWS_ORGANIZATIONS_API ListPoliciesResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_ORGANIZATIONS_API ListPoliciesResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>A list of policies that match the filter criteria in the request. The output
      * list doesn't include the policy contents. To see the content for a policy, see
      * <a>DescribePolicy</a>.</p>
      */
-    inline const Aws::Vector<PolicySummary>& GetPolicies() const{ return m_policies; }
+    inline const Aws::Vector<PolicySummary>& GetPolicies() const { return m_policies; }
+    template<typename PoliciesT = Aws::Vector<PolicySummary>>
+    void SetPolicies(PoliciesT&& value) { m_policiesHasBeenSet = true; m_policies = std::forward<PoliciesT>(value); }
+    template<typename PoliciesT = Aws::Vector<PolicySummary>>
+    ListPoliciesResult& WithPolicies(PoliciesT&& value) { SetPolicies(std::forward<PoliciesT>(value)); return *this;}
+    template<typename PoliciesT = PolicySummary>
+    ListPoliciesResult& AddPolicies(PoliciesT&& value) { m_policiesHasBeenSet = true; m_policies.emplace_back(std::forward<PoliciesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of policies that match the filter criteria in the request. The output
-     * list doesn't include the policy contents. To see the content for a policy, see
-     * <a>DescribePolicy</a>.</p>
-     */
-    inline void SetPolicies(const Aws::Vector<PolicySummary>& value) { m_policies = value; }
-
-    /**
-     * <p>A list of policies that match the filter criteria in the request. The output
-     * list doesn't include the policy contents. To see the content for a policy, see
-     * <a>DescribePolicy</a>.</p>
-     */
-    inline void SetPolicies(Aws::Vector<PolicySummary>&& value) { m_policies = std::move(value); }
-
-    /**
-     * <p>A list of policies that match the filter criteria in the request. The output
-     * list doesn't include the policy contents. To see the content for a policy, see
-     * <a>DescribePolicy</a>.</p>
-     */
-    inline ListPoliciesResult& WithPolicies(const Aws::Vector<PolicySummary>& value) { SetPolicies(value); return *this;}
-
-    /**
-     * <p>A list of policies that match the filter criteria in the request. The output
-     * list doesn't include the policy contents. To see the content for a policy, see
-     * <a>DescribePolicy</a>.</p>
-     */
-    inline ListPoliciesResult& WithPolicies(Aws::Vector<PolicySummary>&& value) { SetPolicies(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of policies that match the filter criteria in the request. The output
-     * list doesn't include the policy contents. To see the content for a policy, see
-     * <a>DescribePolicy</a>.</p>
-     */
-    inline ListPoliciesResult& AddPolicies(const PolicySummary& value) { m_policies.push_back(value); return *this; }
-
-    /**
-     * <p>A list of policies that match the filter criteria in the request. The output
-     * list doesn't include the policy contents. To see the content for a policy, see
-     * <a>DescribePolicy</a>.</p>
-     */
-    inline ListPoliciesResult& AddPolicies(PolicySummary&& value) { m_policies.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>If present, indicates that more output is available than is included in the
      * current response. Use this value in the <code>NextToken</code> request parameter
@@ -91,91 +57,31 @@ namespace Model
      * should repeat this until the <code>NextToken</code> response element comes back
      * as <code>null</code>.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListPoliciesResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If present, indicates that more output is available than is included in the
-     * current response. Use this value in the <code>NextToken</code> request parameter
-     * in a subsequent call to the operation to get the next part of the output. You
-     * should repeat this until the <code>NextToken</code> response element comes back
-     * as <code>null</code>.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>If present, indicates that more output is available than is included in the
-     * current response. Use this value in the <code>NextToken</code> request parameter
-     * in a subsequent call to the operation to get the next part of the output. You
-     * should repeat this until the <code>NextToken</code> response element comes back
-     * as <code>null</code>.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>If present, indicates that more output is available than is included in the
-     * current response. Use this value in the <code>NextToken</code> request parameter
-     * in a subsequent call to the operation to get the next part of the output. You
-     * should repeat this until the <code>NextToken</code> response element comes back
-     * as <code>null</code>.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>If present, indicates that more output is available than is included in the
-     * current response. Use this value in the <code>NextToken</code> request parameter
-     * in a subsequent call to the operation to get the next part of the output. You
-     * should repeat this until the <code>NextToken</code> response element comes back
-     * as <code>null</code>.</p>
-     */
-    inline ListPoliciesResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>If present, indicates that more output is available than is included in the
-     * current response. Use this value in the <code>NextToken</code> request parameter
-     * in a subsequent call to the operation to get the next part of the output. You
-     * should repeat this until the <code>NextToken</code> response element comes back
-     * as <code>null</code>.</p>
-     */
-    inline ListPoliciesResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>If present, indicates that more output is available than is included in the
-     * current response. Use this value in the <code>NextToken</code> request parameter
-     * in a subsequent call to the operation to get the next part of the output. You
-     * should repeat this until the <code>NextToken</code> response element comes back
-     * as <code>null</code>.</p>
-     */
-    inline ListPoliciesResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListPoliciesResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListPoliciesResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListPoliciesResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListPoliciesResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<PolicySummary> m_policies;
+    bool m_policiesHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -18,15 +18,7 @@ namespace AppStream
 namespace Model
 {
 
-SharedImagePermissions::SharedImagePermissions() : 
-    m_sharedAccountIdHasBeenSet(false),
-    m_imagePermissionsHasBeenSet(false)
-{
-}
-
-SharedImagePermissions::SharedImagePermissions(JsonView jsonValue) : 
-    m_sharedAccountIdHasBeenSet(false),
-    m_imagePermissionsHasBeenSet(false)
+SharedImagePermissions::SharedImagePermissions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ SharedImagePermissions& SharedImagePermissions::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("sharedAccountId"))
   {
     m_sharedAccountId = jsonValue.GetString("sharedAccountId");
-
     m_sharedAccountIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("imagePermissions"))
   {
     m_imagePermissions = jsonValue.GetObject("imagePermissions");
-
     m_imagePermissionsHasBeenSet = true;
   }
-
   return *this;
 }
 

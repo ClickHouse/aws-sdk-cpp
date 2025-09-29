@@ -38,322 +38,147 @@ namespace Model
   class AuthorizeEndpointAccessResult
   {
   public:
-    AWS_REDSHIFT_API AuthorizeEndpointAccessResult();
+    AWS_REDSHIFT_API AuthorizeEndpointAccessResult() = default;
     AWS_REDSHIFT_API AuthorizeEndpointAccessResult(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_REDSHIFT_API AuthorizeEndpointAccessResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * <p>The Amazon Web Services account ID of the cluster owner.</p>
      */
-    inline const Aws::String& GetGrantor() const{ return m_grantor; }
+    inline const Aws::String& GetGrantor() const { return m_grantor; }
+    template<typename GrantorT = Aws::String>
+    void SetGrantor(GrantorT&& value) { m_grantorHasBeenSet = true; m_grantor = std::forward<GrantorT>(value); }
+    template<typename GrantorT = Aws::String>
+    AuthorizeEndpointAccessResult& WithGrantor(GrantorT&& value) { SetGrantor(std::forward<GrantorT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Web Services account ID of the cluster owner.</p>
-     */
-    inline void SetGrantor(const Aws::String& value) { m_grantor = value; }
-
-    /**
-     * <p>The Amazon Web Services account ID of the cluster owner.</p>
-     */
-    inline void SetGrantor(Aws::String&& value) { m_grantor = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID of the cluster owner.</p>
-     */
-    inline void SetGrantor(const char* value) { m_grantor.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID of the cluster owner.</p>
-     */
-    inline AuthorizeEndpointAccessResult& WithGrantor(const Aws::String& value) { SetGrantor(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID of the cluster owner.</p>
-     */
-    inline AuthorizeEndpointAccessResult& WithGrantor(Aws::String&& value) { SetGrantor(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID of the cluster owner.</p>
-     */
-    inline AuthorizeEndpointAccessResult& WithGrantor(const char* value) { SetGrantor(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Web Services account ID of the grantee of the cluster.</p>
      */
-    inline const Aws::String& GetGrantee() const{ return m_grantee; }
+    inline const Aws::String& GetGrantee() const { return m_grantee; }
+    template<typename GranteeT = Aws::String>
+    void SetGrantee(GranteeT&& value) { m_granteeHasBeenSet = true; m_grantee = std::forward<GranteeT>(value); }
+    template<typename GranteeT = Aws::String>
+    AuthorizeEndpointAccessResult& WithGrantee(GranteeT&& value) { SetGrantee(std::forward<GranteeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Web Services account ID of the grantee of the cluster.</p>
-     */
-    inline void SetGrantee(const Aws::String& value) { m_grantee = value; }
-
-    /**
-     * <p>The Amazon Web Services account ID of the grantee of the cluster.</p>
-     */
-    inline void SetGrantee(Aws::String&& value) { m_grantee = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID of the grantee of the cluster.</p>
-     */
-    inline void SetGrantee(const char* value) { m_grantee.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID of the grantee of the cluster.</p>
-     */
-    inline AuthorizeEndpointAccessResult& WithGrantee(const Aws::String& value) { SetGrantee(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID of the grantee of the cluster.</p>
-     */
-    inline AuthorizeEndpointAccessResult& WithGrantee(Aws::String&& value) { SetGrantee(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID of the grantee of the cluster.</p>
-     */
-    inline AuthorizeEndpointAccessResult& WithGrantee(const char* value) { SetGrantee(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The cluster identifier.</p>
      */
-    inline const Aws::String& GetClusterIdentifier() const{ return m_clusterIdentifier; }
+    inline const Aws::String& GetClusterIdentifier() const { return m_clusterIdentifier; }
+    template<typename ClusterIdentifierT = Aws::String>
+    void SetClusterIdentifier(ClusterIdentifierT&& value) { m_clusterIdentifierHasBeenSet = true; m_clusterIdentifier = std::forward<ClusterIdentifierT>(value); }
+    template<typename ClusterIdentifierT = Aws::String>
+    AuthorizeEndpointAccessResult& WithClusterIdentifier(ClusterIdentifierT&& value) { SetClusterIdentifier(std::forward<ClusterIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The cluster identifier.</p>
-     */
-    inline void SetClusterIdentifier(const Aws::String& value) { m_clusterIdentifier = value; }
-
-    /**
-     * <p>The cluster identifier.</p>
-     */
-    inline void SetClusterIdentifier(Aws::String&& value) { m_clusterIdentifier = std::move(value); }
-
-    /**
-     * <p>The cluster identifier.</p>
-     */
-    inline void SetClusterIdentifier(const char* value) { m_clusterIdentifier.assign(value); }
-
-    /**
-     * <p>The cluster identifier.</p>
-     */
-    inline AuthorizeEndpointAccessResult& WithClusterIdentifier(const Aws::String& value) { SetClusterIdentifier(value); return *this;}
-
-    /**
-     * <p>The cluster identifier.</p>
-     */
-    inline AuthorizeEndpointAccessResult& WithClusterIdentifier(Aws::String&& value) { SetClusterIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The cluster identifier.</p>
-     */
-    inline AuthorizeEndpointAccessResult& WithClusterIdentifier(const char* value) { SetClusterIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The time (UTC) when the authorization was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetAuthorizeTime() const{ return m_authorizeTime; }
+    inline const Aws::Utils::DateTime& GetAuthorizeTime() const { return m_authorizeTime; }
+    template<typename AuthorizeTimeT = Aws::Utils::DateTime>
+    void SetAuthorizeTime(AuthorizeTimeT&& value) { m_authorizeTimeHasBeenSet = true; m_authorizeTime = std::forward<AuthorizeTimeT>(value); }
+    template<typename AuthorizeTimeT = Aws::Utils::DateTime>
+    AuthorizeEndpointAccessResult& WithAuthorizeTime(AuthorizeTimeT&& value) { SetAuthorizeTime(std::forward<AuthorizeTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time (UTC) when the authorization was created.</p>
-     */
-    inline void SetAuthorizeTime(const Aws::Utils::DateTime& value) { m_authorizeTime = value; }
-
-    /**
-     * <p>The time (UTC) when the authorization was created.</p>
-     */
-    inline void SetAuthorizeTime(Aws::Utils::DateTime&& value) { m_authorizeTime = std::move(value); }
-
-    /**
-     * <p>The time (UTC) when the authorization was created.</p>
-     */
-    inline AuthorizeEndpointAccessResult& WithAuthorizeTime(const Aws::Utils::DateTime& value) { SetAuthorizeTime(value); return *this;}
-
-    /**
-     * <p>The time (UTC) when the authorization was created.</p>
-     */
-    inline AuthorizeEndpointAccessResult& WithAuthorizeTime(Aws::Utils::DateTime&& value) { SetAuthorizeTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the cluster.</p>
      */
-    inline const Aws::String& GetClusterStatus() const{ return m_clusterStatus; }
+    inline const Aws::String& GetClusterStatus() const { return m_clusterStatus; }
+    template<typename ClusterStatusT = Aws::String>
+    void SetClusterStatus(ClusterStatusT&& value) { m_clusterStatusHasBeenSet = true; m_clusterStatus = std::forward<ClusterStatusT>(value); }
+    template<typename ClusterStatusT = Aws::String>
+    AuthorizeEndpointAccessResult& WithClusterStatus(ClusterStatusT&& value) { SetClusterStatus(std::forward<ClusterStatusT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the cluster.</p>
-     */
-    inline void SetClusterStatus(const Aws::String& value) { m_clusterStatus = value; }
-
-    /**
-     * <p>The status of the cluster.</p>
-     */
-    inline void SetClusterStatus(Aws::String&& value) { m_clusterStatus = std::move(value); }
-
-    /**
-     * <p>The status of the cluster.</p>
-     */
-    inline void SetClusterStatus(const char* value) { m_clusterStatus.assign(value); }
-
-    /**
-     * <p>The status of the cluster.</p>
-     */
-    inline AuthorizeEndpointAccessResult& WithClusterStatus(const Aws::String& value) { SetClusterStatus(value); return *this;}
-
-    /**
-     * <p>The status of the cluster.</p>
-     */
-    inline AuthorizeEndpointAccessResult& WithClusterStatus(Aws::String&& value) { SetClusterStatus(std::move(value)); return *this;}
-
-    /**
-     * <p>The status of the cluster.</p>
-     */
-    inline AuthorizeEndpointAccessResult& WithClusterStatus(const char* value) { SetClusterStatus(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the authorization action.</p>
      */
-    inline const AuthorizationStatus& GetStatus() const{ return m_status; }
+    inline AuthorizationStatus GetStatus() const { return m_status; }
+    inline void SetStatus(AuthorizationStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline AuthorizeEndpointAccessResult& WithStatus(AuthorizationStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the authorization action.</p>
-     */
-    inline void SetStatus(const AuthorizationStatus& value) { m_status = value; }
-
-    /**
-     * <p>The status of the authorization action.</p>
-     */
-    inline void SetStatus(AuthorizationStatus&& value) { m_status = std::move(value); }
-
-    /**
-     * <p>The status of the authorization action.</p>
-     */
-    inline AuthorizeEndpointAccessResult& WithStatus(const AuthorizationStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the authorization action.</p>
-     */
-    inline AuthorizeEndpointAccessResult& WithStatus(AuthorizationStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Indicates whether all VPCs in the grantee account are allowed access to the
      * cluster.</p>
      */
-    inline bool GetAllowedAllVPCs() const{ return m_allowedAllVPCs; }
-
-    /**
-     * <p>Indicates whether all VPCs in the grantee account are allowed access to the
-     * cluster.</p>
-     */
-    inline void SetAllowedAllVPCs(bool value) { m_allowedAllVPCs = value; }
-
-    /**
-     * <p>Indicates whether all VPCs in the grantee account are allowed access to the
-     * cluster.</p>
-     */
+    inline bool GetAllowedAllVPCs() const { return m_allowedAllVPCs; }
+    inline void SetAllowedAllVPCs(bool value) { m_allowedAllVPCsHasBeenSet = true; m_allowedAllVPCs = value; }
     inline AuthorizeEndpointAccessResult& WithAllowedAllVPCs(bool value) { SetAllowedAllVPCs(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The VPCs allowed access to the cluster.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetAllowedVPCs() const{ return m_allowedVPCs; }
+    inline const Aws::Vector<Aws::String>& GetAllowedVPCs() const { return m_allowedVPCs; }
+    template<typename AllowedVPCsT = Aws::Vector<Aws::String>>
+    void SetAllowedVPCs(AllowedVPCsT&& value) { m_allowedVPCsHasBeenSet = true; m_allowedVPCs = std::forward<AllowedVPCsT>(value); }
+    template<typename AllowedVPCsT = Aws::Vector<Aws::String>>
+    AuthorizeEndpointAccessResult& WithAllowedVPCs(AllowedVPCsT&& value) { SetAllowedVPCs(std::forward<AllowedVPCsT>(value)); return *this;}
+    template<typename AllowedVPCsT = Aws::String>
+    AuthorizeEndpointAccessResult& AddAllowedVPCs(AllowedVPCsT&& value) { m_allowedVPCsHasBeenSet = true; m_allowedVPCs.emplace_back(std::forward<AllowedVPCsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The VPCs allowed access to the cluster.</p>
-     */
-    inline void SetAllowedVPCs(const Aws::Vector<Aws::String>& value) { m_allowedVPCs = value; }
-
-    /**
-     * <p>The VPCs allowed access to the cluster.</p>
-     */
-    inline void SetAllowedVPCs(Aws::Vector<Aws::String>&& value) { m_allowedVPCs = std::move(value); }
-
-    /**
-     * <p>The VPCs allowed access to the cluster.</p>
-     */
-    inline AuthorizeEndpointAccessResult& WithAllowedVPCs(const Aws::Vector<Aws::String>& value) { SetAllowedVPCs(value); return *this;}
-
-    /**
-     * <p>The VPCs allowed access to the cluster.</p>
-     */
-    inline AuthorizeEndpointAccessResult& WithAllowedVPCs(Aws::Vector<Aws::String>&& value) { SetAllowedVPCs(std::move(value)); return *this;}
-
-    /**
-     * <p>The VPCs allowed access to the cluster.</p>
-     */
-    inline AuthorizeEndpointAccessResult& AddAllowedVPCs(const Aws::String& value) { m_allowedVPCs.push_back(value); return *this; }
-
-    /**
-     * <p>The VPCs allowed access to the cluster.</p>
-     */
-    inline AuthorizeEndpointAccessResult& AddAllowedVPCs(Aws::String&& value) { m_allowedVPCs.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The VPCs allowed access to the cluster.</p>
-     */
-    inline AuthorizeEndpointAccessResult& AddAllowedVPCs(const char* value) { m_allowedVPCs.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The number of Redshift-managed VPC endpoints created for the
      * authorization.</p>
      */
-    inline int GetEndpointCount() const{ return m_endpointCount; }
-
-    /**
-     * <p>The number of Redshift-managed VPC endpoints created for the
-     * authorization.</p>
-     */
-    inline void SetEndpointCount(int value) { m_endpointCount = value; }
-
-    /**
-     * <p>The number of Redshift-managed VPC endpoints created for the
-     * authorization.</p>
-     */
+    inline int GetEndpointCount() const { return m_endpointCount; }
+    inline void SetEndpointCount(int value) { m_endpointCountHasBeenSet = true; m_endpointCount = value; }
     inline AuthorizeEndpointAccessResult& WithEndpointCount(int value) { SetEndpointCount(value); return *this;}
+    ///@}
 
-
+    ///@{
     
-    inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
-
-    
-    inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
-
-    
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
-
-    
-    inline AuthorizeEndpointAccessResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
-
-    
-    inline AuthorizeEndpointAccessResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
-
+    inline const ResponseMetadata& GetResponseMetadata() const { return m_responseMetadata; }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    void SetResponseMetadata(ResponseMetadataT&& value) { m_responseMetadataHasBeenSet = true; m_responseMetadata = std::forward<ResponseMetadataT>(value); }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    AuthorizeEndpointAccessResult& WithResponseMetadata(ResponseMetadataT&& value) { SetResponseMetadata(std::forward<ResponseMetadataT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_grantor;
+    bool m_grantorHasBeenSet = false;
 
     Aws::String m_grantee;
+    bool m_granteeHasBeenSet = false;
 
     Aws::String m_clusterIdentifier;
+    bool m_clusterIdentifierHasBeenSet = false;
 
-    Aws::Utils::DateTime m_authorizeTime;
+    Aws::Utils::DateTime m_authorizeTime{};
+    bool m_authorizeTimeHasBeenSet = false;
 
     Aws::String m_clusterStatus;
+    bool m_clusterStatusHasBeenSet = false;
 
-    AuthorizationStatus m_status;
+    AuthorizationStatus m_status{AuthorizationStatus::NOT_SET};
+    bool m_statusHasBeenSet = false;
 
-    bool m_allowedAllVPCs;
+    bool m_allowedAllVPCs{false};
+    bool m_allowedAllVPCsHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_allowedVPCs;
+    bool m_allowedVPCsHasBeenSet = false;
 
-    int m_endpointCount;
+    int m_endpointCount{0};
+    bool m_endpointCountHasBeenSet = false;
 
     ResponseMetadata m_responseMetadata;
+    bool m_responseMetadataHasBeenSet = false;
   };
 
 } // namespace Model

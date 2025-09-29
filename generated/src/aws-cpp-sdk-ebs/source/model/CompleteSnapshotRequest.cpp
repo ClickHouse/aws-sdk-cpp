@@ -13,18 +13,6 @@ using namespace Aws::EBS::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CompleteSnapshotRequest::CompleteSnapshotRequest() : 
-    m_snapshotIdHasBeenSet(false),
-    m_changedBlocksCount(0),
-    m_changedBlocksCountHasBeenSet(false),
-    m_checksumHasBeenSet(false),
-    m_checksumAlgorithm(ChecksumAlgorithm::NOT_SET),
-    m_checksumAlgorithmHasBeenSet(false),
-    m_checksumAggregationMethod(ChecksumAggregationMethod::NOT_SET),
-    m_checksumAggregationMethodHasBeenSet(false)
-{
-}
-
 Aws::String CompleteSnapshotRequest::SerializePayload() const
 {
   return {};
@@ -48,12 +36,12 @@ Aws::Http::HeaderValueCollection CompleteSnapshotRequest::GetRequestSpecificHead
     ss.str("");
   }
 
-  if(m_checksumAlgorithmHasBeenSet)
+  if(m_checksumAlgorithmHasBeenSet && m_checksumAlgorithm != ChecksumAlgorithm::NOT_SET)
   {
     headers.emplace("x-amz-checksum-algorithm", ChecksumAlgorithmMapper::GetNameForChecksumAlgorithm(m_checksumAlgorithm));
   }
 
-  if(m_checksumAggregationMethodHasBeenSet)
+  if(m_checksumAggregationMethodHasBeenSet && m_checksumAggregationMethod != ChecksumAggregationMethod::NOT_SET)
   {
     headers.emplace("x-amz-checksum-aggregation-method", ChecksumAggregationMethodMapper::GetNameForChecksumAggregationMethod(m_checksumAggregationMethod));
   }

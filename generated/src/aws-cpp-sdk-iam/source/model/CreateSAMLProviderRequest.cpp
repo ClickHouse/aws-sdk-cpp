@@ -10,13 +10,6 @@
 using namespace Aws::IAM::Model;
 using namespace Aws::Utils;
 
-CreateSAMLProviderRequest::CreateSAMLProviderRequest() : 
-    m_sAMLMetadataDocumentHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateSAMLProviderRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -33,12 +26,29 @@ Aws::String CreateSAMLProviderRequest::SerializePayload() const
 
   if(m_tagsHasBeenSet)
   {
-    unsigned tagsCount = 1;
-    for(auto& item : m_tags)
+    if (m_tags.empty())
     {
-      item.OutputToStream(ss, "Tags.member.", tagsCount, "");
-      tagsCount++;
+      ss << "Tags=&";
     }
+    else
+    {
+      unsigned tagsCount = 1;
+      for(auto& item : m_tags)
+      {
+        item.OutputToStream(ss, "Tags.member.", tagsCount, "");
+        tagsCount++;
+      }
+    }
+  }
+
+  if(m_assertionEncryptionModeHasBeenSet)
+  {
+    ss << "AssertionEncryptionMode=" << StringUtils::URLEncode(AssertionEncryptionModeTypeMapper::GetNameForAssertionEncryptionModeType(m_assertionEncryptionMode)) << "&";
+  }
+
+  if(m_addPrivateKeyHasBeenSet)
+  {
+    ss << "AddPrivateKey=" << StringUtils::URLEncode(m_addPrivateKey.c_str()) << "&";
   }
 
   ss << "Version=2010-05-08";

@@ -50,12 +50,13 @@ namespace Model
   class IPSet
   {
   public:
-    AWS_WAFREGIONAL_API IPSet();
+    AWS_WAFREGIONAL_API IPSet() = default;
     AWS_WAFREGIONAL_API IPSet(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFREGIONAL_API IPSet& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFREGIONAL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The <code>IPSetId</code> for an <code>IPSet</code>. You use
      * <code>IPSetId</code> to get information about an <code>IPSet</code> (see
@@ -65,135 +66,28 @@ namespace Model
      * AWS WAF (see <a>DeleteIPSet</a>).</p> <p> <code>IPSetId</code> is returned by
      * <a>CreateIPSet</a> and by <a>ListIPSets</a>.</p>
      */
-    inline const Aws::String& GetIPSetId() const{ return m_iPSetId; }
-
-    /**
-     * <p>The <code>IPSetId</code> for an <code>IPSet</code>. You use
-     * <code>IPSetId</code> to get information about an <code>IPSet</code> (see
-     * <a>GetIPSet</a>), update an <code>IPSet</code> (see <a>UpdateIPSet</a>), insert
-     * an <code>IPSet</code> into a <code>Rule</code> or delete one from a
-     * <code>Rule</code> (see <a>UpdateRule</a>), and delete an <code>IPSet</code> from
-     * AWS WAF (see <a>DeleteIPSet</a>).</p> <p> <code>IPSetId</code> is returned by
-     * <a>CreateIPSet</a> and by <a>ListIPSets</a>.</p>
-     */
+    inline const Aws::String& GetIPSetId() const { return m_iPSetId; }
     inline bool IPSetIdHasBeenSet() const { return m_iPSetIdHasBeenSet; }
+    template<typename IPSetIdT = Aws::String>
+    void SetIPSetId(IPSetIdT&& value) { m_iPSetIdHasBeenSet = true; m_iPSetId = std::forward<IPSetIdT>(value); }
+    template<typename IPSetIdT = Aws::String>
+    IPSet& WithIPSetId(IPSetIdT&& value) { SetIPSetId(std::forward<IPSetIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The <code>IPSetId</code> for an <code>IPSet</code>. You use
-     * <code>IPSetId</code> to get information about an <code>IPSet</code> (see
-     * <a>GetIPSet</a>), update an <code>IPSet</code> (see <a>UpdateIPSet</a>), insert
-     * an <code>IPSet</code> into a <code>Rule</code> or delete one from a
-     * <code>Rule</code> (see <a>UpdateRule</a>), and delete an <code>IPSet</code> from
-     * AWS WAF (see <a>DeleteIPSet</a>).</p> <p> <code>IPSetId</code> is returned by
-     * <a>CreateIPSet</a> and by <a>ListIPSets</a>.</p>
-     */
-    inline void SetIPSetId(const Aws::String& value) { m_iPSetIdHasBeenSet = true; m_iPSetId = value; }
-
-    /**
-     * <p>The <code>IPSetId</code> for an <code>IPSet</code>. You use
-     * <code>IPSetId</code> to get information about an <code>IPSet</code> (see
-     * <a>GetIPSet</a>), update an <code>IPSet</code> (see <a>UpdateIPSet</a>), insert
-     * an <code>IPSet</code> into a <code>Rule</code> or delete one from a
-     * <code>Rule</code> (see <a>UpdateRule</a>), and delete an <code>IPSet</code> from
-     * AWS WAF (see <a>DeleteIPSet</a>).</p> <p> <code>IPSetId</code> is returned by
-     * <a>CreateIPSet</a> and by <a>ListIPSets</a>.</p>
-     */
-    inline void SetIPSetId(Aws::String&& value) { m_iPSetIdHasBeenSet = true; m_iPSetId = std::move(value); }
-
-    /**
-     * <p>The <code>IPSetId</code> for an <code>IPSet</code>. You use
-     * <code>IPSetId</code> to get information about an <code>IPSet</code> (see
-     * <a>GetIPSet</a>), update an <code>IPSet</code> (see <a>UpdateIPSet</a>), insert
-     * an <code>IPSet</code> into a <code>Rule</code> or delete one from a
-     * <code>Rule</code> (see <a>UpdateRule</a>), and delete an <code>IPSet</code> from
-     * AWS WAF (see <a>DeleteIPSet</a>).</p> <p> <code>IPSetId</code> is returned by
-     * <a>CreateIPSet</a> and by <a>ListIPSets</a>.</p>
-     */
-    inline void SetIPSetId(const char* value) { m_iPSetIdHasBeenSet = true; m_iPSetId.assign(value); }
-
-    /**
-     * <p>The <code>IPSetId</code> for an <code>IPSet</code>. You use
-     * <code>IPSetId</code> to get information about an <code>IPSet</code> (see
-     * <a>GetIPSet</a>), update an <code>IPSet</code> (see <a>UpdateIPSet</a>), insert
-     * an <code>IPSet</code> into a <code>Rule</code> or delete one from a
-     * <code>Rule</code> (see <a>UpdateRule</a>), and delete an <code>IPSet</code> from
-     * AWS WAF (see <a>DeleteIPSet</a>).</p> <p> <code>IPSetId</code> is returned by
-     * <a>CreateIPSet</a> and by <a>ListIPSets</a>.</p>
-     */
-    inline IPSet& WithIPSetId(const Aws::String& value) { SetIPSetId(value); return *this;}
-
-    /**
-     * <p>The <code>IPSetId</code> for an <code>IPSet</code>. You use
-     * <code>IPSetId</code> to get information about an <code>IPSet</code> (see
-     * <a>GetIPSet</a>), update an <code>IPSet</code> (see <a>UpdateIPSet</a>), insert
-     * an <code>IPSet</code> into a <code>Rule</code> or delete one from a
-     * <code>Rule</code> (see <a>UpdateRule</a>), and delete an <code>IPSet</code> from
-     * AWS WAF (see <a>DeleteIPSet</a>).</p> <p> <code>IPSetId</code> is returned by
-     * <a>CreateIPSet</a> and by <a>ListIPSets</a>.</p>
-     */
-    inline IPSet& WithIPSetId(Aws::String&& value) { SetIPSetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The <code>IPSetId</code> for an <code>IPSet</code>. You use
-     * <code>IPSetId</code> to get information about an <code>IPSet</code> (see
-     * <a>GetIPSet</a>), update an <code>IPSet</code> (see <a>UpdateIPSet</a>), insert
-     * an <code>IPSet</code> into a <code>Rule</code> or delete one from a
-     * <code>Rule</code> (see <a>UpdateRule</a>), and delete an <code>IPSet</code> from
-     * AWS WAF (see <a>DeleteIPSet</a>).</p> <p> <code>IPSetId</code> is returned by
-     * <a>CreateIPSet</a> and by <a>ListIPSets</a>.</p>
-     */
-    inline IPSet& WithIPSetId(const char* value) { SetIPSetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A friendly name or description of the <a>IPSet</a>. You can't change the name
      * of an <code>IPSet</code> after you create it.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>A friendly name or description of the <a>IPSet</a>. You can't change the name
-     * of an <code>IPSet</code> after you create it.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    IPSet& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A friendly name or description of the <a>IPSet</a>. You can't change the name
-     * of an <code>IPSet</code> after you create it.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>A friendly name or description of the <a>IPSet</a>. You can't change the name
-     * of an <code>IPSet</code> after you create it.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>A friendly name or description of the <a>IPSet</a>. You can't change the name
-     * of an <code>IPSet</code> after you create it.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>A friendly name or description of the <a>IPSet</a>. You can't change the name
-     * of an <code>IPSet</code> after you create it.</p>
-     */
-    inline IPSet& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>A friendly name or description of the <a>IPSet</a>. You can't change the name
-     * of an <code>IPSet</code> after you create it.</p>
-     */
-    inline IPSet& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>A friendly name or description of the <a>IPSet</a>. You can't change the name
-     * of an <code>IPSet</code> after you create it.</p>
-     */
-    inline IPSet& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The IP address type (<code>IPV4</code> or <code>IPV6</code>) and the IP
      * address range (in CIDR notation) that web requests originate from. If the
@@ -201,71 +95,15 @@ namespace Model
      * did not use an HTTP proxy or a load balancer to send the request, this is the
      * value of the c-ip field in the CloudFront access logs.</p>
      */
-    inline const Aws::Vector<IPSetDescriptor>& GetIPSetDescriptors() const{ return m_iPSetDescriptors; }
-
-    /**
-     * <p>The IP address type (<code>IPV4</code> or <code>IPV6</code>) and the IP
-     * address range (in CIDR notation) that web requests originate from. If the
-     * <code>WebACL</code> is associated with a CloudFront distribution and the viewer
-     * did not use an HTTP proxy or a load balancer to send the request, this is the
-     * value of the c-ip field in the CloudFront access logs.</p>
-     */
+    inline const Aws::Vector<IPSetDescriptor>& GetIPSetDescriptors() const { return m_iPSetDescriptors; }
     inline bool IPSetDescriptorsHasBeenSet() const { return m_iPSetDescriptorsHasBeenSet; }
-
-    /**
-     * <p>The IP address type (<code>IPV4</code> or <code>IPV6</code>) and the IP
-     * address range (in CIDR notation) that web requests originate from. If the
-     * <code>WebACL</code> is associated with a CloudFront distribution and the viewer
-     * did not use an HTTP proxy or a load balancer to send the request, this is the
-     * value of the c-ip field in the CloudFront access logs.</p>
-     */
-    inline void SetIPSetDescriptors(const Aws::Vector<IPSetDescriptor>& value) { m_iPSetDescriptorsHasBeenSet = true; m_iPSetDescriptors = value; }
-
-    /**
-     * <p>The IP address type (<code>IPV4</code> or <code>IPV6</code>) and the IP
-     * address range (in CIDR notation) that web requests originate from. If the
-     * <code>WebACL</code> is associated with a CloudFront distribution and the viewer
-     * did not use an HTTP proxy or a load balancer to send the request, this is the
-     * value of the c-ip field in the CloudFront access logs.</p>
-     */
-    inline void SetIPSetDescriptors(Aws::Vector<IPSetDescriptor>&& value) { m_iPSetDescriptorsHasBeenSet = true; m_iPSetDescriptors = std::move(value); }
-
-    /**
-     * <p>The IP address type (<code>IPV4</code> or <code>IPV6</code>) and the IP
-     * address range (in CIDR notation) that web requests originate from. If the
-     * <code>WebACL</code> is associated with a CloudFront distribution and the viewer
-     * did not use an HTTP proxy or a load balancer to send the request, this is the
-     * value of the c-ip field in the CloudFront access logs.</p>
-     */
-    inline IPSet& WithIPSetDescriptors(const Aws::Vector<IPSetDescriptor>& value) { SetIPSetDescriptors(value); return *this;}
-
-    /**
-     * <p>The IP address type (<code>IPV4</code> or <code>IPV6</code>) and the IP
-     * address range (in CIDR notation) that web requests originate from. If the
-     * <code>WebACL</code> is associated with a CloudFront distribution and the viewer
-     * did not use an HTTP proxy or a load balancer to send the request, this is the
-     * value of the c-ip field in the CloudFront access logs.</p>
-     */
-    inline IPSet& WithIPSetDescriptors(Aws::Vector<IPSetDescriptor>&& value) { SetIPSetDescriptors(std::move(value)); return *this;}
-
-    /**
-     * <p>The IP address type (<code>IPV4</code> or <code>IPV6</code>) and the IP
-     * address range (in CIDR notation) that web requests originate from. If the
-     * <code>WebACL</code> is associated with a CloudFront distribution and the viewer
-     * did not use an HTTP proxy or a load balancer to send the request, this is the
-     * value of the c-ip field in the CloudFront access logs.</p>
-     */
-    inline IPSet& AddIPSetDescriptors(const IPSetDescriptor& value) { m_iPSetDescriptorsHasBeenSet = true; m_iPSetDescriptors.push_back(value); return *this; }
-
-    /**
-     * <p>The IP address type (<code>IPV4</code> or <code>IPV6</code>) and the IP
-     * address range (in CIDR notation) that web requests originate from. If the
-     * <code>WebACL</code> is associated with a CloudFront distribution and the viewer
-     * did not use an HTTP proxy or a load balancer to send the request, this is the
-     * value of the c-ip field in the CloudFront access logs.</p>
-     */
-    inline IPSet& AddIPSetDescriptors(IPSetDescriptor&& value) { m_iPSetDescriptorsHasBeenSet = true; m_iPSetDescriptors.push_back(std::move(value)); return *this; }
-
+    template<typename IPSetDescriptorsT = Aws::Vector<IPSetDescriptor>>
+    void SetIPSetDescriptors(IPSetDescriptorsT&& value) { m_iPSetDescriptorsHasBeenSet = true; m_iPSetDescriptors = std::forward<IPSetDescriptorsT>(value); }
+    template<typename IPSetDescriptorsT = Aws::Vector<IPSetDescriptor>>
+    IPSet& WithIPSetDescriptors(IPSetDescriptorsT&& value) { SetIPSetDescriptors(std::forward<IPSetDescriptorsT>(value)); return *this;}
+    template<typename IPSetDescriptorsT = IPSetDescriptor>
+    IPSet& AddIPSetDescriptors(IPSetDescriptorsT&& value) { m_iPSetDescriptorsHasBeenSet = true; m_iPSetDescriptors.emplace_back(std::forward<IPSetDescriptorsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_iPSetId;

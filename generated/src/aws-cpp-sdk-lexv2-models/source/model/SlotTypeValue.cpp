@@ -18,15 +18,7 @@ namespace LexModelsV2
 namespace Model
 {
 
-SlotTypeValue::SlotTypeValue() : 
-    m_sampleValueHasBeenSet(false),
-    m_synonymsHasBeenSet(false)
-{
-}
-
-SlotTypeValue::SlotTypeValue(JsonView jsonValue) : 
-    m_sampleValueHasBeenSet(false),
-    m_synonymsHasBeenSet(false)
+SlotTypeValue::SlotTypeValue(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ SlotTypeValue& SlotTypeValue::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("sampleValue"))
   {
     m_sampleValue = jsonValue.GetObject("sampleValue");
-
     m_sampleValueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("synonyms"))
   {
     Aws::Utils::Array<JsonView> synonymsJsonList = jsonValue.GetArray("synonyms");
@@ -49,7 +39,6 @@ SlotTypeValue& SlotTypeValue::operator =(JsonView jsonValue)
     }
     m_synonymsHasBeenSet = true;
   }
-
   return *this;
 }
 

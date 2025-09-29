@@ -34,69 +34,27 @@ namespace Model
   class NotificationConfig
   {
   public:
-    AWS_SSM_API NotificationConfig();
+    AWS_SSM_API NotificationConfig() = default;
     AWS_SSM_API NotificationConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSM_API NotificationConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSM_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An Amazon Resource Name (ARN) for an Amazon Simple Notification Service
      * (Amazon SNS) topic. Run Command pushes notifications about command status
      * changes to this topic.</p>
      */
-    inline const Aws::String& GetNotificationArn() const{ return m_notificationArn; }
-
-    /**
-     * <p>An Amazon Resource Name (ARN) for an Amazon Simple Notification Service
-     * (Amazon SNS) topic. Run Command pushes notifications about command status
-     * changes to this topic.</p>
-     */
+    inline const Aws::String& GetNotificationArn() const { return m_notificationArn; }
     inline bool NotificationArnHasBeenSet() const { return m_notificationArnHasBeenSet; }
+    template<typename NotificationArnT = Aws::String>
+    void SetNotificationArn(NotificationArnT&& value) { m_notificationArnHasBeenSet = true; m_notificationArn = std::forward<NotificationArnT>(value); }
+    template<typename NotificationArnT = Aws::String>
+    NotificationConfig& WithNotificationArn(NotificationArnT&& value) { SetNotificationArn(std::forward<NotificationArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An Amazon Resource Name (ARN) for an Amazon Simple Notification Service
-     * (Amazon SNS) topic. Run Command pushes notifications about command status
-     * changes to this topic.</p>
-     */
-    inline void SetNotificationArn(const Aws::String& value) { m_notificationArnHasBeenSet = true; m_notificationArn = value; }
-
-    /**
-     * <p>An Amazon Resource Name (ARN) for an Amazon Simple Notification Service
-     * (Amazon SNS) topic. Run Command pushes notifications about command status
-     * changes to this topic.</p>
-     */
-    inline void SetNotificationArn(Aws::String&& value) { m_notificationArnHasBeenSet = true; m_notificationArn = std::move(value); }
-
-    /**
-     * <p>An Amazon Resource Name (ARN) for an Amazon Simple Notification Service
-     * (Amazon SNS) topic. Run Command pushes notifications about command status
-     * changes to this topic.</p>
-     */
-    inline void SetNotificationArn(const char* value) { m_notificationArnHasBeenSet = true; m_notificationArn.assign(value); }
-
-    /**
-     * <p>An Amazon Resource Name (ARN) for an Amazon Simple Notification Service
-     * (Amazon SNS) topic. Run Command pushes notifications about command status
-     * changes to this topic.</p>
-     */
-    inline NotificationConfig& WithNotificationArn(const Aws::String& value) { SetNotificationArn(value); return *this;}
-
-    /**
-     * <p>An Amazon Resource Name (ARN) for an Amazon Simple Notification Service
-     * (Amazon SNS) topic. Run Command pushes notifications about command status
-     * changes to this topic.</p>
-     */
-    inline NotificationConfig& WithNotificationArn(Aws::String&& value) { SetNotificationArn(std::move(value)); return *this;}
-
-    /**
-     * <p>An Amazon Resource Name (ARN) for an Amazon Simple Notification Service
-     * (Amazon SNS) topic. Run Command pushes notifications about command status
-     * changes to this topic.</p>
-     */
-    inline NotificationConfig& WithNotificationArn(const char* value) { SetNotificationArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The different events for which you can receive notifications. To learn more
      * about these events, see <a
@@ -104,72 +62,16 @@ namespace Model
      * Systems Manager status changes using Amazon SNS notifications</a> in the
      * <i>Amazon Web Services Systems Manager User Guide</i>.</p>
      */
-    inline const Aws::Vector<NotificationEvent>& GetNotificationEvents() const{ return m_notificationEvents; }
-
-    /**
-     * <p>The different events for which you can receive notifications. To learn more
-     * about these events, see <a
-     * href="https://docs.aws.amazon.com/systems-manager/latest/userguide/monitoring-sns-notifications.html">Monitoring
-     * Systems Manager status changes using Amazon SNS notifications</a> in the
-     * <i>Amazon Web Services Systems Manager User Guide</i>.</p>
-     */
+    inline const Aws::Vector<NotificationEvent>& GetNotificationEvents() const { return m_notificationEvents; }
     inline bool NotificationEventsHasBeenSet() const { return m_notificationEventsHasBeenSet; }
+    template<typename NotificationEventsT = Aws::Vector<NotificationEvent>>
+    void SetNotificationEvents(NotificationEventsT&& value) { m_notificationEventsHasBeenSet = true; m_notificationEvents = std::forward<NotificationEventsT>(value); }
+    template<typename NotificationEventsT = Aws::Vector<NotificationEvent>>
+    NotificationConfig& WithNotificationEvents(NotificationEventsT&& value) { SetNotificationEvents(std::forward<NotificationEventsT>(value)); return *this;}
+    inline NotificationConfig& AddNotificationEvents(NotificationEvent value) { m_notificationEventsHasBeenSet = true; m_notificationEvents.push_back(value); return *this; }
+    ///@}
 
-    /**
-     * <p>The different events for which you can receive notifications. To learn more
-     * about these events, see <a
-     * href="https://docs.aws.amazon.com/systems-manager/latest/userguide/monitoring-sns-notifications.html">Monitoring
-     * Systems Manager status changes using Amazon SNS notifications</a> in the
-     * <i>Amazon Web Services Systems Manager User Guide</i>.</p>
-     */
-    inline void SetNotificationEvents(const Aws::Vector<NotificationEvent>& value) { m_notificationEventsHasBeenSet = true; m_notificationEvents = value; }
-
-    /**
-     * <p>The different events for which you can receive notifications. To learn more
-     * about these events, see <a
-     * href="https://docs.aws.amazon.com/systems-manager/latest/userguide/monitoring-sns-notifications.html">Monitoring
-     * Systems Manager status changes using Amazon SNS notifications</a> in the
-     * <i>Amazon Web Services Systems Manager User Guide</i>.</p>
-     */
-    inline void SetNotificationEvents(Aws::Vector<NotificationEvent>&& value) { m_notificationEventsHasBeenSet = true; m_notificationEvents = std::move(value); }
-
-    /**
-     * <p>The different events for which you can receive notifications. To learn more
-     * about these events, see <a
-     * href="https://docs.aws.amazon.com/systems-manager/latest/userguide/monitoring-sns-notifications.html">Monitoring
-     * Systems Manager status changes using Amazon SNS notifications</a> in the
-     * <i>Amazon Web Services Systems Manager User Guide</i>.</p>
-     */
-    inline NotificationConfig& WithNotificationEvents(const Aws::Vector<NotificationEvent>& value) { SetNotificationEvents(value); return *this;}
-
-    /**
-     * <p>The different events for which you can receive notifications. To learn more
-     * about these events, see <a
-     * href="https://docs.aws.amazon.com/systems-manager/latest/userguide/monitoring-sns-notifications.html">Monitoring
-     * Systems Manager status changes using Amazon SNS notifications</a> in the
-     * <i>Amazon Web Services Systems Manager User Guide</i>.</p>
-     */
-    inline NotificationConfig& WithNotificationEvents(Aws::Vector<NotificationEvent>&& value) { SetNotificationEvents(std::move(value)); return *this;}
-
-    /**
-     * <p>The different events for which you can receive notifications. To learn more
-     * about these events, see <a
-     * href="https://docs.aws.amazon.com/systems-manager/latest/userguide/monitoring-sns-notifications.html">Monitoring
-     * Systems Manager status changes using Amazon SNS notifications</a> in the
-     * <i>Amazon Web Services Systems Manager User Guide</i>.</p>
-     */
-    inline NotificationConfig& AddNotificationEvents(const NotificationEvent& value) { m_notificationEventsHasBeenSet = true; m_notificationEvents.push_back(value); return *this; }
-
-    /**
-     * <p>The different events for which you can receive notifications. To learn more
-     * about these events, see <a
-     * href="https://docs.aws.amazon.com/systems-manager/latest/userguide/monitoring-sns-notifications.html">Monitoring
-     * Systems Manager status changes using Amazon SNS notifications</a> in the
-     * <i>Amazon Web Services Systems Manager User Guide</i>.</p>
-     */
-    inline NotificationConfig& AddNotificationEvents(NotificationEvent&& value) { m_notificationEventsHasBeenSet = true; m_notificationEvents.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The type of notification.</p> <ul> <li> <p> <code>Command</code>: Receive
      * notification when the status of a command changes.</p> </li> <li> <p>
@@ -177,53 +79,11 @@ namespace Model
      * notification on a per-node basis when the status of a command changes. </p>
      * </li> </ul>
      */
-    inline const NotificationType& GetNotificationType() const{ return m_notificationType; }
-
-    /**
-     * <p>The type of notification.</p> <ul> <li> <p> <code>Command</code>: Receive
-     * notification when the status of a command changes.</p> </li> <li> <p>
-     * <code>Invocation</code>: For commands sent to multiple managed nodes, receive
-     * notification on a per-node basis when the status of a command changes. </p>
-     * </li> </ul>
-     */
+    inline NotificationType GetNotificationType() const { return m_notificationType; }
     inline bool NotificationTypeHasBeenSet() const { return m_notificationTypeHasBeenSet; }
-
-    /**
-     * <p>The type of notification.</p> <ul> <li> <p> <code>Command</code>: Receive
-     * notification when the status of a command changes.</p> </li> <li> <p>
-     * <code>Invocation</code>: For commands sent to multiple managed nodes, receive
-     * notification on a per-node basis when the status of a command changes. </p>
-     * </li> </ul>
-     */
-    inline void SetNotificationType(const NotificationType& value) { m_notificationTypeHasBeenSet = true; m_notificationType = value; }
-
-    /**
-     * <p>The type of notification.</p> <ul> <li> <p> <code>Command</code>: Receive
-     * notification when the status of a command changes.</p> </li> <li> <p>
-     * <code>Invocation</code>: For commands sent to multiple managed nodes, receive
-     * notification on a per-node basis when the status of a command changes. </p>
-     * </li> </ul>
-     */
-    inline void SetNotificationType(NotificationType&& value) { m_notificationTypeHasBeenSet = true; m_notificationType = std::move(value); }
-
-    /**
-     * <p>The type of notification.</p> <ul> <li> <p> <code>Command</code>: Receive
-     * notification when the status of a command changes.</p> </li> <li> <p>
-     * <code>Invocation</code>: For commands sent to multiple managed nodes, receive
-     * notification on a per-node basis when the status of a command changes. </p>
-     * </li> </ul>
-     */
-    inline NotificationConfig& WithNotificationType(const NotificationType& value) { SetNotificationType(value); return *this;}
-
-    /**
-     * <p>The type of notification.</p> <ul> <li> <p> <code>Command</code>: Receive
-     * notification when the status of a command changes.</p> </li> <li> <p>
-     * <code>Invocation</code>: For commands sent to multiple managed nodes, receive
-     * notification on a per-node basis when the status of a command changes. </p>
-     * </li> </ul>
-     */
-    inline NotificationConfig& WithNotificationType(NotificationType&& value) { SetNotificationType(std::move(value)); return *this;}
-
+    inline void SetNotificationType(NotificationType value) { m_notificationTypeHasBeenSet = true; m_notificationType = value; }
+    inline NotificationConfig& WithNotificationType(NotificationType value) { SetNotificationType(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_notificationArn;
@@ -232,7 +92,7 @@ namespace Model
     Aws::Vector<NotificationEvent> m_notificationEvents;
     bool m_notificationEventsHasBeenSet = false;
 
-    NotificationType m_notificationType;
+    NotificationType m_notificationType{NotificationType::NOT_SET};
     bool m_notificationTypeHasBeenSet = false;
   };
 

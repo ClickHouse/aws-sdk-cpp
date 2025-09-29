@@ -20,19 +20,7 @@ namespace STS
 namespace Model
 {
 
-Credentials::Credentials() : 
-    m_accessKeyIdHasBeenSet(false),
-    m_secretAccessKeyHasBeenSet(false),
-    m_sessionTokenHasBeenSet(false),
-    m_expirationHasBeenSet(false)
-{
-}
-
-Credentials::Credentials(const XmlNode& xmlNode) : 
-    m_accessKeyIdHasBeenSet(false),
-    m_secretAccessKeyHasBeenSet(false),
-    m_sessionTokenHasBeenSet(false),
-    m_expirationHasBeenSet(false)
+Credentials::Credentials(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

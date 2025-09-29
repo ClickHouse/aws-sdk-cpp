@@ -24,7 +24,7 @@ namespace Model
   class DescribeStepRequest : public EMRRequest
   {
   public:
-    AWS_EMR_API DescribeStepRequest();
+    AWS_EMR_API DescribeStepRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,87 +37,29 @@ namespace Model
     AWS_EMR_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The identifier of the cluster with steps to describe.</p>
      */
-    inline const Aws::String& GetClusterId() const{ return m_clusterId; }
-
-    /**
-     * <p>The identifier of the cluster with steps to describe.</p>
-     */
+    inline const Aws::String& GetClusterId() const { return m_clusterId; }
     inline bool ClusterIdHasBeenSet() const { return m_clusterIdHasBeenSet; }
+    template<typename ClusterIdT = Aws::String>
+    void SetClusterId(ClusterIdT&& value) { m_clusterIdHasBeenSet = true; m_clusterId = std::forward<ClusterIdT>(value); }
+    template<typename ClusterIdT = Aws::String>
+    DescribeStepRequest& WithClusterId(ClusterIdT&& value) { SetClusterId(std::forward<ClusterIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the cluster with steps to describe.</p>
-     */
-    inline void SetClusterId(const Aws::String& value) { m_clusterIdHasBeenSet = true; m_clusterId = value; }
-
-    /**
-     * <p>The identifier of the cluster with steps to describe.</p>
-     */
-    inline void SetClusterId(Aws::String&& value) { m_clusterIdHasBeenSet = true; m_clusterId = std::move(value); }
-
-    /**
-     * <p>The identifier of the cluster with steps to describe.</p>
-     */
-    inline void SetClusterId(const char* value) { m_clusterIdHasBeenSet = true; m_clusterId.assign(value); }
-
-    /**
-     * <p>The identifier of the cluster with steps to describe.</p>
-     */
-    inline DescribeStepRequest& WithClusterId(const Aws::String& value) { SetClusterId(value); return *this;}
-
-    /**
-     * <p>The identifier of the cluster with steps to describe.</p>
-     */
-    inline DescribeStepRequest& WithClusterId(Aws::String&& value) { SetClusterId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the cluster with steps to describe.</p>
-     */
-    inline DescribeStepRequest& WithClusterId(const char* value) { SetClusterId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the step to describe.</p>
      */
-    inline const Aws::String& GetStepId() const{ return m_stepId; }
-
-    /**
-     * <p>The identifier of the step to describe.</p>
-     */
+    inline const Aws::String& GetStepId() const { return m_stepId; }
     inline bool StepIdHasBeenSet() const { return m_stepIdHasBeenSet; }
-
-    /**
-     * <p>The identifier of the step to describe.</p>
-     */
-    inline void SetStepId(const Aws::String& value) { m_stepIdHasBeenSet = true; m_stepId = value; }
-
-    /**
-     * <p>The identifier of the step to describe.</p>
-     */
-    inline void SetStepId(Aws::String&& value) { m_stepIdHasBeenSet = true; m_stepId = std::move(value); }
-
-    /**
-     * <p>The identifier of the step to describe.</p>
-     */
-    inline void SetStepId(const char* value) { m_stepIdHasBeenSet = true; m_stepId.assign(value); }
-
-    /**
-     * <p>The identifier of the step to describe.</p>
-     */
-    inline DescribeStepRequest& WithStepId(const Aws::String& value) { SetStepId(value); return *this;}
-
-    /**
-     * <p>The identifier of the step to describe.</p>
-     */
-    inline DescribeStepRequest& WithStepId(Aws::String&& value) { SetStepId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the step to describe.</p>
-     */
-    inline DescribeStepRequest& WithStepId(const char* value) { SetStepId(value); return *this;}
-
+    template<typename StepIdT = Aws::String>
+    void SetStepId(StepIdT&& value) { m_stepIdHasBeenSet = true; m_stepId = std::forward<StepIdT>(value); }
+    template<typename StepIdT = Aws::String>
+    DescribeStepRequest& WithStepId(StepIdT&& value) { SetStepId(std::forward<StepIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_clusterId;

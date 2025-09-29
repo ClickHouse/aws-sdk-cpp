@@ -18,17 +18,7 @@ namespace LocationService
 namespace Model
 {
 
-ApiKeyRestrictions::ApiKeyRestrictions() : 
-    m_allowActionsHasBeenSet(false),
-    m_allowReferersHasBeenSet(false),
-    m_allowResourcesHasBeenSet(false)
-{
-}
-
-ApiKeyRestrictions::ApiKeyRestrictions(JsonView jsonValue) : 
-    m_allowActionsHasBeenSet(false),
-    m_allowReferersHasBeenSet(false),
-    m_allowResourcesHasBeenSet(false)
+ApiKeyRestrictions::ApiKeyRestrictions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,17 +34,6 @@ ApiKeyRestrictions& ApiKeyRestrictions::operator =(JsonView jsonValue)
     }
     m_allowActionsHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("AllowReferers"))
-  {
-    Aws::Utils::Array<JsonView> allowReferersJsonList = jsonValue.GetArray("AllowReferers");
-    for(unsigned allowReferersIndex = 0; allowReferersIndex < allowReferersJsonList.GetLength(); ++allowReferersIndex)
-    {
-      m_allowReferers.push_back(allowReferersJsonList[allowReferersIndex].AsString());
-    }
-    m_allowReferersHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("AllowResources"))
   {
     Aws::Utils::Array<JsonView> allowResourcesJsonList = jsonValue.GetArray("AllowResources");
@@ -64,7 +43,15 @@ ApiKeyRestrictions& ApiKeyRestrictions::operator =(JsonView jsonValue)
     }
     m_allowResourcesHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("AllowReferers"))
+  {
+    Aws::Utils::Array<JsonView> allowReferersJsonList = jsonValue.GetArray("AllowReferers");
+    for(unsigned allowReferersIndex = 0; allowReferersIndex < allowReferersJsonList.GetLength(); ++allowReferersIndex)
+    {
+      m_allowReferers.push_back(allowReferersJsonList[allowReferersIndex].AsString());
+    }
+    m_allowReferersHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -83,17 +70,6 @@ JsonValue ApiKeyRestrictions::Jsonize() const
 
   }
 
-  if(m_allowReferersHasBeenSet)
-  {
-   Aws::Utils::Array<JsonValue> allowReferersJsonList(m_allowReferers.size());
-   for(unsigned allowReferersIndex = 0; allowReferersIndex < allowReferersJsonList.GetLength(); ++allowReferersIndex)
-   {
-     allowReferersJsonList[allowReferersIndex].AsString(m_allowReferers[allowReferersIndex]);
-   }
-   payload.WithArray("AllowReferers", std::move(allowReferersJsonList));
-
-  }
-
   if(m_allowResourcesHasBeenSet)
   {
    Aws::Utils::Array<JsonValue> allowResourcesJsonList(m_allowResources.size());
@@ -102,6 +78,17 @@ JsonValue ApiKeyRestrictions::Jsonize() const
      allowResourcesJsonList[allowResourcesIndex].AsString(m_allowResources[allowResourcesIndex]);
    }
    payload.WithArray("AllowResources", std::move(allowResourcesJsonList));
+
+  }
+
+  if(m_allowReferersHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> allowReferersJsonList(m_allowReferers.size());
+   for(unsigned allowReferersIndex = 0; allowReferersIndex < allowReferersJsonList.GetLength(); ++allowReferersIndex)
+   {
+     allowReferersJsonList[allowReferersIndex].AsString(m_allowReferers[allowReferersIndex]);
+   }
+   payload.WithArray("AllowReferers", std::move(allowReferersJsonList));
 
   }
 

@@ -18,13 +18,7 @@ namespace neptunedata
 namespace Model
 {
 
-FastResetToken::FastResetToken() : 
-    m_tokenHasBeenSet(false)
-{
-}
-
-FastResetToken::FastResetToken(JsonView jsonValue) : 
-    m_tokenHasBeenSet(false)
+FastResetToken::FastResetToken(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ FastResetToken& FastResetToken::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("token"))
   {
     m_token = jsonValue.GetString("token");
-
     m_tokenHasBeenSet = true;
   }
-
   return *this;
 }
 

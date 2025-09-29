@@ -19,7 +19,7 @@ namespace Model
     CAN_INTERFACE,
     OBD_INTERFACE,
     VEHICLE_MIDDLEWARE,
-    CUSTOMER_DECODED_INTERFACE
+    CUSTOM_DECODING_INTERFACE
   };
 
 namespace NetworkInterfaceTypeMapper

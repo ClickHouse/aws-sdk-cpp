@@ -7,6 +7,7 @@
 #include <aws/lakeformation/LakeFormation_EXPORTS.h>
 #include <aws/lakeformation/model/DataLakePrincipal.h>
 #include <aws/lakeformation/model/Resource.h>
+#include <aws/lakeformation/model/Condition.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/lakeformation/model/DetailsMap.h>
 #include <aws/core/utils/DateTime.h>
@@ -38,278 +39,113 @@ namespace Model
   class PrincipalResourcePermissions
   {
   public:
-    AWS_LAKEFORMATION_API PrincipalResourcePermissions();
+    AWS_LAKEFORMATION_API PrincipalResourcePermissions() = default;
     AWS_LAKEFORMATION_API PrincipalResourcePermissions(Aws::Utils::Json::JsonView jsonValue);
     AWS_LAKEFORMATION_API PrincipalResourcePermissions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LAKEFORMATION_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Data Lake principal to be granted or revoked permissions.</p>
      */
-    inline const DataLakePrincipal& GetPrincipal() const{ return m_principal; }
-
-    /**
-     * <p>The Data Lake principal to be granted or revoked permissions.</p>
-     */
+    inline const DataLakePrincipal& GetPrincipal() const { return m_principal; }
     inline bool PrincipalHasBeenSet() const { return m_principalHasBeenSet; }
+    template<typename PrincipalT = DataLakePrincipal>
+    void SetPrincipal(PrincipalT&& value) { m_principalHasBeenSet = true; m_principal = std::forward<PrincipalT>(value); }
+    template<typename PrincipalT = DataLakePrincipal>
+    PrincipalResourcePermissions& WithPrincipal(PrincipalT&& value) { SetPrincipal(std::forward<PrincipalT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Data Lake principal to be granted or revoked permissions.</p>
-     */
-    inline void SetPrincipal(const DataLakePrincipal& value) { m_principalHasBeenSet = true; m_principal = value; }
-
-    /**
-     * <p>The Data Lake principal to be granted or revoked permissions.</p>
-     */
-    inline void SetPrincipal(DataLakePrincipal&& value) { m_principalHasBeenSet = true; m_principal = std::move(value); }
-
-    /**
-     * <p>The Data Lake principal to be granted or revoked permissions.</p>
-     */
-    inline PrincipalResourcePermissions& WithPrincipal(const DataLakePrincipal& value) { SetPrincipal(value); return *this;}
-
-    /**
-     * <p>The Data Lake principal to be granted or revoked permissions.</p>
-     */
-    inline PrincipalResourcePermissions& WithPrincipal(DataLakePrincipal&& value) { SetPrincipal(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The resource where permissions are to be granted or revoked.</p>
      */
-    inline const Resource& GetResource() const{ return m_resource; }
-
-    /**
-     * <p>The resource where permissions are to be granted or revoked.</p>
-     */
+    inline const Resource& GetResource() const { return m_resource; }
     inline bool ResourceHasBeenSet() const { return m_resourceHasBeenSet; }
+    template<typename ResourceT = Resource>
+    void SetResource(ResourceT&& value) { m_resourceHasBeenSet = true; m_resource = std::forward<ResourceT>(value); }
+    template<typename ResourceT = Resource>
+    PrincipalResourcePermissions& WithResource(ResourceT&& value) { SetResource(std::forward<ResourceT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The resource where permissions are to be granted or revoked.</p>
+     * <p>A Lake Formation condition, which applies to permissions and opt-ins that
+     * contain an expression.</p>
      */
-    inline void SetResource(const Resource& value) { m_resourceHasBeenSet = true; m_resource = value; }
+    inline const Condition& GetCondition() const { return m_condition; }
+    inline bool ConditionHasBeenSet() const { return m_conditionHasBeenSet; }
+    template<typename ConditionT = Condition>
+    void SetCondition(ConditionT&& value) { m_conditionHasBeenSet = true; m_condition = std::forward<ConditionT>(value); }
+    template<typename ConditionT = Condition>
+    PrincipalResourcePermissions& WithCondition(ConditionT&& value) { SetCondition(std::forward<ConditionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The resource where permissions are to be granted or revoked.</p>
-     */
-    inline void SetResource(Resource&& value) { m_resourceHasBeenSet = true; m_resource = std::move(value); }
-
-    /**
-     * <p>The resource where permissions are to be granted or revoked.</p>
-     */
-    inline PrincipalResourcePermissions& WithResource(const Resource& value) { SetResource(value); return *this;}
-
-    /**
-     * <p>The resource where permissions are to be granted or revoked.</p>
-     */
-    inline PrincipalResourcePermissions& WithResource(Resource&& value) { SetResource(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The permissions to be granted or revoked on the resource.</p>
      */
-    inline const Aws::Vector<Permission>& GetPermissions() const{ return m_permissions; }
-
-    /**
-     * <p>The permissions to be granted or revoked on the resource.</p>
-     */
+    inline const Aws::Vector<Permission>& GetPermissions() const { return m_permissions; }
     inline bool PermissionsHasBeenSet() const { return m_permissionsHasBeenSet; }
+    template<typename PermissionsT = Aws::Vector<Permission>>
+    void SetPermissions(PermissionsT&& value) { m_permissionsHasBeenSet = true; m_permissions = std::forward<PermissionsT>(value); }
+    template<typename PermissionsT = Aws::Vector<Permission>>
+    PrincipalResourcePermissions& WithPermissions(PermissionsT&& value) { SetPermissions(std::forward<PermissionsT>(value)); return *this;}
+    inline PrincipalResourcePermissions& AddPermissions(Permission value) { m_permissionsHasBeenSet = true; m_permissions.push_back(value); return *this; }
+    ///@}
 
-    /**
-     * <p>The permissions to be granted or revoked on the resource.</p>
-     */
-    inline void SetPermissions(const Aws::Vector<Permission>& value) { m_permissionsHasBeenSet = true; m_permissions = value; }
-
-    /**
-     * <p>The permissions to be granted or revoked on the resource.</p>
-     */
-    inline void SetPermissions(Aws::Vector<Permission>&& value) { m_permissionsHasBeenSet = true; m_permissions = std::move(value); }
-
-    /**
-     * <p>The permissions to be granted or revoked on the resource.</p>
-     */
-    inline PrincipalResourcePermissions& WithPermissions(const Aws::Vector<Permission>& value) { SetPermissions(value); return *this;}
-
-    /**
-     * <p>The permissions to be granted or revoked on the resource.</p>
-     */
-    inline PrincipalResourcePermissions& WithPermissions(Aws::Vector<Permission>&& value) { SetPermissions(std::move(value)); return *this;}
-
-    /**
-     * <p>The permissions to be granted or revoked on the resource.</p>
-     */
-    inline PrincipalResourcePermissions& AddPermissions(const Permission& value) { m_permissionsHasBeenSet = true; m_permissions.push_back(value); return *this; }
-
-    /**
-     * <p>The permissions to be granted or revoked on the resource.</p>
-     */
-    inline PrincipalResourcePermissions& AddPermissions(Permission&& value) { m_permissionsHasBeenSet = true; m_permissions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Indicates whether to grant the ability to grant permissions (as a subset of
      * permissions granted).</p>
      */
-    inline const Aws::Vector<Permission>& GetPermissionsWithGrantOption() const{ return m_permissionsWithGrantOption; }
-
-    /**
-     * <p>Indicates whether to grant the ability to grant permissions (as a subset of
-     * permissions granted).</p>
-     */
+    inline const Aws::Vector<Permission>& GetPermissionsWithGrantOption() const { return m_permissionsWithGrantOption; }
     inline bool PermissionsWithGrantOptionHasBeenSet() const { return m_permissionsWithGrantOptionHasBeenSet; }
+    template<typename PermissionsWithGrantOptionT = Aws::Vector<Permission>>
+    void SetPermissionsWithGrantOption(PermissionsWithGrantOptionT&& value) { m_permissionsWithGrantOptionHasBeenSet = true; m_permissionsWithGrantOption = std::forward<PermissionsWithGrantOptionT>(value); }
+    template<typename PermissionsWithGrantOptionT = Aws::Vector<Permission>>
+    PrincipalResourcePermissions& WithPermissionsWithGrantOption(PermissionsWithGrantOptionT&& value) { SetPermissionsWithGrantOption(std::forward<PermissionsWithGrantOptionT>(value)); return *this;}
+    inline PrincipalResourcePermissions& AddPermissionsWithGrantOption(Permission value) { m_permissionsWithGrantOptionHasBeenSet = true; m_permissionsWithGrantOption.push_back(value); return *this; }
+    ///@}
 
-    /**
-     * <p>Indicates whether to grant the ability to grant permissions (as a subset of
-     * permissions granted).</p>
-     */
-    inline void SetPermissionsWithGrantOption(const Aws::Vector<Permission>& value) { m_permissionsWithGrantOptionHasBeenSet = true; m_permissionsWithGrantOption = value; }
-
-    /**
-     * <p>Indicates whether to grant the ability to grant permissions (as a subset of
-     * permissions granted).</p>
-     */
-    inline void SetPermissionsWithGrantOption(Aws::Vector<Permission>&& value) { m_permissionsWithGrantOptionHasBeenSet = true; m_permissionsWithGrantOption = std::move(value); }
-
-    /**
-     * <p>Indicates whether to grant the ability to grant permissions (as a subset of
-     * permissions granted).</p>
-     */
-    inline PrincipalResourcePermissions& WithPermissionsWithGrantOption(const Aws::Vector<Permission>& value) { SetPermissionsWithGrantOption(value); return *this;}
-
-    /**
-     * <p>Indicates whether to grant the ability to grant permissions (as a subset of
-     * permissions granted).</p>
-     */
-    inline PrincipalResourcePermissions& WithPermissionsWithGrantOption(Aws::Vector<Permission>&& value) { SetPermissionsWithGrantOption(std::move(value)); return *this;}
-
-    /**
-     * <p>Indicates whether to grant the ability to grant permissions (as a subset of
-     * permissions granted).</p>
-     */
-    inline PrincipalResourcePermissions& AddPermissionsWithGrantOption(const Permission& value) { m_permissionsWithGrantOptionHasBeenSet = true; m_permissionsWithGrantOption.push_back(value); return *this; }
-
-    /**
-     * <p>Indicates whether to grant the ability to grant permissions (as a subset of
-     * permissions granted).</p>
-     */
-    inline PrincipalResourcePermissions& AddPermissionsWithGrantOption(Permission&& value) { m_permissionsWithGrantOptionHasBeenSet = true; m_permissionsWithGrantOption.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>This attribute can be used to return any additional details of
      * <code>PrincipalResourcePermissions</code>. Currently returns only as a RAM
      * resource share ARN.</p>
      */
-    inline const DetailsMap& GetAdditionalDetails() const{ return m_additionalDetails; }
-
-    /**
-     * <p>This attribute can be used to return any additional details of
-     * <code>PrincipalResourcePermissions</code>. Currently returns only as a RAM
-     * resource share ARN.</p>
-     */
+    inline const DetailsMap& GetAdditionalDetails() const { return m_additionalDetails; }
     inline bool AdditionalDetailsHasBeenSet() const { return m_additionalDetailsHasBeenSet; }
+    template<typename AdditionalDetailsT = DetailsMap>
+    void SetAdditionalDetails(AdditionalDetailsT&& value) { m_additionalDetailsHasBeenSet = true; m_additionalDetails = std::forward<AdditionalDetailsT>(value); }
+    template<typename AdditionalDetailsT = DetailsMap>
+    PrincipalResourcePermissions& WithAdditionalDetails(AdditionalDetailsT&& value) { SetAdditionalDetails(std::forward<AdditionalDetailsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>This attribute can be used to return any additional details of
-     * <code>PrincipalResourcePermissions</code>. Currently returns only as a RAM
-     * resource share ARN.</p>
-     */
-    inline void SetAdditionalDetails(const DetailsMap& value) { m_additionalDetailsHasBeenSet = true; m_additionalDetails = value; }
-
-    /**
-     * <p>This attribute can be used to return any additional details of
-     * <code>PrincipalResourcePermissions</code>. Currently returns only as a RAM
-     * resource share ARN.</p>
-     */
-    inline void SetAdditionalDetails(DetailsMap&& value) { m_additionalDetailsHasBeenSet = true; m_additionalDetails = std::move(value); }
-
-    /**
-     * <p>This attribute can be used to return any additional details of
-     * <code>PrincipalResourcePermissions</code>. Currently returns only as a RAM
-     * resource share ARN.</p>
-     */
-    inline PrincipalResourcePermissions& WithAdditionalDetails(const DetailsMap& value) { SetAdditionalDetails(value); return *this;}
-
-    /**
-     * <p>This attribute can be used to return any additional details of
-     * <code>PrincipalResourcePermissions</code>. Currently returns only as a RAM
-     * resource share ARN.</p>
-     */
-    inline PrincipalResourcePermissions& WithAdditionalDetails(DetailsMap&& value) { SetAdditionalDetails(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time when the resource was last updated.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastUpdated() const{ return m_lastUpdated; }
-
-    /**
-     * <p>The date and time when the resource was last updated.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastUpdated() const { return m_lastUpdated; }
     inline bool LastUpdatedHasBeenSet() const { return m_lastUpdatedHasBeenSet; }
+    template<typename LastUpdatedT = Aws::Utils::DateTime>
+    void SetLastUpdated(LastUpdatedT&& value) { m_lastUpdatedHasBeenSet = true; m_lastUpdated = std::forward<LastUpdatedT>(value); }
+    template<typename LastUpdatedT = Aws::Utils::DateTime>
+    PrincipalResourcePermissions& WithLastUpdated(LastUpdatedT&& value) { SetLastUpdated(std::forward<LastUpdatedT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time when the resource was last updated.</p>
-     */
-    inline void SetLastUpdated(const Aws::Utils::DateTime& value) { m_lastUpdatedHasBeenSet = true; m_lastUpdated = value; }
-
-    /**
-     * <p>The date and time when the resource was last updated.</p>
-     */
-    inline void SetLastUpdated(Aws::Utils::DateTime&& value) { m_lastUpdatedHasBeenSet = true; m_lastUpdated = std::move(value); }
-
-    /**
-     * <p>The date and time when the resource was last updated.</p>
-     */
-    inline PrincipalResourcePermissions& WithLastUpdated(const Aws::Utils::DateTime& value) { SetLastUpdated(value); return *this;}
-
-    /**
-     * <p>The date and time when the resource was last updated.</p>
-     */
-    inline PrincipalResourcePermissions& WithLastUpdated(Aws::Utils::DateTime&& value) { SetLastUpdated(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The user who updated the record.</p>
      */
-    inline const Aws::String& GetLastUpdatedBy() const{ return m_lastUpdatedBy; }
-
-    /**
-     * <p>The user who updated the record.</p>
-     */
+    inline const Aws::String& GetLastUpdatedBy() const { return m_lastUpdatedBy; }
     inline bool LastUpdatedByHasBeenSet() const { return m_lastUpdatedByHasBeenSet; }
-
-    /**
-     * <p>The user who updated the record.</p>
-     */
-    inline void SetLastUpdatedBy(const Aws::String& value) { m_lastUpdatedByHasBeenSet = true; m_lastUpdatedBy = value; }
-
-    /**
-     * <p>The user who updated the record.</p>
-     */
-    inline void SetLastUpdatedBy(Aws::String&& value) { m_lastUpdatedByHasBeenSet = true; m_lastUpdatedBy = std::move(value); }
-
-    /**
-     * <p>The user who updated the record.</p>
-     */
-    inline void SetLastUpdatedBy(const char* value) { m_lastUpdatedByHasBeenSet = true; m_lastUpdatedBy.assign(value); }
-
-    /**
-     * <p>The user who updated the record.</p>
-     */
-    inline PrincipalResourcePermissions& WithLastUpdatedBy(const Aws::String& value) { SetLastUpdatedBy(value); return *this;}
-
-    /**
-     * <p>The user who updated the record.</p>
-     */
-    inline PrincipalResourcePermissions& WithLastUpdatedBy(Aws::String&& value) { SetLastUpdatedBy(std::move(value)); return *this;}
-
-    /**
-     * <p>The user who updated the record.</p>
-     */
-    inline PrincipalResourcePermissions& WithLastUpdatedBy(const char* value) { SetLastUpdatedBy(value); return *this;}
-
+    template<typename LastUpdatedByT = Aws::String>
+    void SetLastUpdatedBy(LastUpdatedByT&& value) { m_lastUpdatedByHasBeenSet = true; m_lastUpdatedBy = std::forward<LastUpdatedByT>(value); }
+    template<typename LastUpdatedByT = Aws::String>
+    PrincipalResourcePermissions& WithLastUpdatedBy(LastUpdatedByT&& value) { SetLastUpdatedBy(std::forward<LastUpdatedByT>(value)); return *this;}
+    ///@}
   private:
 
     DataLakePrincipal m_principal;
@@ -317,6 +153,9 @@ namespace Model
 
     Resource m_resource;
     bool m_resourceHasBeenSet = false;
+
+    Condition m_condition;
+    bool m_conditionHasBeenSet = false;
 
     Aws::Vector<Permission> m_permissions;
     bool m_permissionsHasBeenSet = false;
@@ -327,7 +166,7 @@ namespace Model
     DetailsMap m_additionalDetails;
     bool m_additionalDetailsHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastUpdated;
+    Aws::Utils::DateTime m_lastUpdated{};
     bool m_lastUpdatedHasBeenSet = false;
 
     Aws::String m_lastUpdatedBy;

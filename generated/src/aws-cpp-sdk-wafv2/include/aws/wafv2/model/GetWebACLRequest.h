@@ -22,7 +22,7 @@ namespace Model
   class GetWebACLRequest : public WAFV2Request
   {
   public:
-    AWS_WAFV2_API GetWebACLRequest();
+    AWS_WAFV2_API GetWebACLRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,200 +35,73 @@ namespace Model
     AWS_WAFV2_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the web ACL. You cannot change the name of a web ACL after you
      * create it.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the web ACL. You cannot change the name of a web ACL after you
-     * create it.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    GetWebACLRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name of the web ACL. You cannot change the name of a web ACL after you
-     * create it.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the web ACL. You cannot change the name of a web ACL after you
-     * create it.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the web ACL. You cannot change the name of a web ACL after you
-     * create it.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the web ACL. You cannot change the name of a web ACL after you
-     * create it.</p>
-     */
-    inline GetWebACLRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the web ACL. You cannot change the name of a web ACL after you
-     * create it.</p>
-     */
-    inline GetWebACLRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the web ACL. You cannot change the name of a web ACL after you
-     * create it.</p>
-     */
-    inline GetWebACLRequest& WithName(const char* value) { SetName(value); return *this;}
-
-
-    /**
-     * <p>Specifies whether this is for an Amazon CloudFront distribution or for a
-     * regional application. A regional application can be an Application Load Balancer
-     * (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API, an Amazon Cognito
-     * user pool, an App Runner service, or an Amazon Web Services Verified Access
-     * instance. </p> <p>To work with CloudFront, you must also specify the Region US
-     * East (N. Virginia) as follows: </p> <ul> <li> <p>CLI - Specify the Region when
-     * you use the CloudFront scope: <code>--scope=CLOUDFRONT
+     * <p>Specifies whether this is for a global resource type, such as a Amazon
+     * CloudFront distribution. For an Amplify application, use
+     * <code>CLOUDFRONT</code>.</p> <p>To work with CloudFront, you must also specify
+     * the Region US East (N. Virginia) as follows: </p> <ul> <li> <p>CLI - Specify the
+     * Region when you use the CloudFront scope: <code>--scope=CLOUDFRONT
      * --region=us-east-1</code>. </p> </li> <li> <p>API and SDKs - For all calls, use
      * the Region endpoint us-east-1. </p> </li> </ul>
      */
-    inline const Scope& GetScope() const{ return m_scope; }
-
-    /**
-     * <p>Specifies whether this is for an Amazon CloudFront distribution or for a
-     * regional application. A regional application can be an Application Load Balancer
-     * (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API, an Amazon Cognito
-     * user pool, an App Runner service, or an Amazon Web Services Verified Access
-     * instance. </p> <p>To work with CloudFront, you must also specify the Region US
-     * East (N. Virginia) as follows: </p> <ul> <li> <p>CLI - Specify the Region when
-     * you use the CloudFront scope: <code>--scope=CLOUDFRONT
-     * --region=us-east-1</code>. </p> </li> <li> <p>API and SDKs - For all calls, use
-     * the Region endpoint us-east-1. </p> </li> </ul>
-     */
+    inline Scope GetScope() const { return m_scope; }
     inline bool ScopeHasBeenSet() const { return m_scopeHasBeenSet; }
+    inline void SetScope(Scope value) { m_scopeHasBeenSet = true; m_scope = value; }
+    inline GetWebACLRequest& WithScope(Scope value) { SetScope(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies whether this is for an Amazon CloudFront distribution or for a
-     * regional application. A regional application can be an Application Load Balancer
-     * (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API, an Amazon Cognito
-     * user pool, an App Runner service, or an Amazon Web Services Verified Access
-     * instance. </p> <p>To work with CloudFront, you must also specify the Region US
-     * East (N. Virginia) as follows: </p> <ul> <li> <p>CLI - Specify the Region when
-     * you use the CloudFront scope: <code>--scope=CLOUDFRONT
-     * --region=us-east-1</code>. </p> </li> <li> <p>API and SDKs - For all calls, use
-     * the Region endpoint us-east-1. </p> </li> </ul>
-     */
-    inline void SetScope(const Scope& value) { m_scopeHasBeenSet = true; m_scope = value; }
-
-    /**
-     * <p>Specifies whether this is for an Amazon CloudFront distribution or for a
-     * regional application. A regional application can be an Application Load Balancer
-     * (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API, an Amazon Cognito
-     * user pool, an App Runner service, or an Amazon Web Services Verified Access
-     * instance. </p> <p>To work with CloudFront, you must also specify the Region US
-     * East (N. Virginia) as follows: </p> <ul> <li> <p>CLI - Specify the Region when
-     * you use the CloudFront scope: <code>--scope=CLOUDFRONT
-     * --region=us-east-1</code>. </p> </li> <li> <p>API and SDKs - For all calls, use
-     * the Region endpoint us-east-1. </p> </li> </ul>
-     */
-    inline void SetScope(Scope&& value) { m_scopeHasBeenSet = true; m_scope = std::move(value); }
-
-    /**
-     * <p>Specifies whether this is for an Amazon CloudFront distribution or for a
-     * regional application. A regional application can be an Application Load Balancer
-     * (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API, an Amazon Cognito
-     * user pool, an App Runner service, or an Amazon Web Services Verified Access
-     * instance. </p> <p>To work with CloudFront, you must also specify the Region US
-     * East (N. Virginia) as follows: </p> <ul> <li> <p>CLI - Specify the Region when
-     * you use the CloudFront scope: <code>--scope=CLOUDFRONT
-     * --region=us-east-1</code>. </p> </li> <li> <p>API and SDKs - For all calls, use
-     * the Region endpoint us-east-1. </p> </li> </ul>
-     */
-    inline GetWebACLRequest& WithScope(const Scope& value) { SetScope(value); return *this;}
-
-    /**
-     * <p>Specifies whether this is for an Amazon CloudFront distribution or for a
-     * regional application. A regional application can be an Application Load Balancer
-     * (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API, an Amazon Cognito
-     * user pool, an App Runner service, or an Amazon Web Services Verified Access
-     * instance. </p> <p>To work with CloudFront, you must also specify the Region US
-     * East (N. Virginia) as follows: </p> <ul> <li> <p>CLI - Specify the Region when
-     * you use the CloudFront scope: <code>--scope=CLOUDFRONT
-     * --region=us-east-1</code>. </p> </li> <li> <p>API and SDKs - For all calls, use
-     * the Region endpoint us-east-1. </p> </li> </ul>
-     */
-    inline GetWebACLRequest& WithScope(Scope&& value) { SetScope(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique identifier for the web ACL. This ID is returned in the responses
      * to create and list commands. You provide it to operations like update and
      * delete.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The unique identifier for the web ACL. This ID is returned in the responses
-     * to create and list commands. You provide it to operations like update and
-     * delete.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    GetWebACLRequest& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The unique identifier for the web ACL. This ID is returned in the responses
-     * to create and list commands. You provide it to operations like update and
-     * delete.</p>
+     * <p>The Amazon Resource Name (ARN) of the web ACL that you want to retrieve. </p>
      */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The unique identifier for the web ACL. This ID is returned in the responses
-     * to create and list commands. You provide it to operations like update and
-     * delete.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the web ACL. This ID is returned in the responses
-     * to create and list commands. You provide it to operations like update and
-     * delete.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The unique identifier for the web ACL. This ID is returned in the responses
-     * to create and list commands. You provide it to operations like update and
-     * delete.</p>
-     */
-    inline GetWebACLRequest& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the web ACL. This ID is returned in the responses
-     * to create and list commands. You provide it to operations like update and
-     * delete.</p>
-     */
-    inline GetWebACLRequest& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the web ACL. This ID is returned in the responses
-     * to create and list commands. You provide it to operations like update and
-     * delete.</p>
-     */
-    inline GetWebACLRequest& WithId(const char* value) { SetId(value); return *this;}
-
+    inline const Aws::String& GetARN() const { return m_aRN; }
+    inline bool ARNHasBeenSet() const { return m_aRNHasBeenSet; }
+    template<typename ARNT = Aws::String>
+    void SetARN(ARNT&& value) { m_aRNHasBeenSet = true; m_aRN = std::forward<ARNT>(value); }
+    template<typename ARNT = Aws::String>
+    GetWebACLRequest& WithARN(ARNT&& value) { SetARN(std::forward<ARNT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;
     bool m_nameHasBeenSet = false;
 
-    Scope m_scope;
+    Scope m_scope{Scope::NOT_SET};
     bool m_scopeHasBeenSet = false;
 
     Aws::String m_id;
     bool m_idHasBeenSet = false;
+
+    Aws::String m_aRN;
+    bool m_aRNHasBeenSet = false;
   };
 
 } // namespace Model

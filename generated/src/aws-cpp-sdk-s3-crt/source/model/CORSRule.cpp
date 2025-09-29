@@ -20,25 +20,7 @@ namespace S3Crt
 namespace Model
 {
 
-CORSRule::CORSRule() : 
-    m_iDHasBeenSet(false),
-    m_allowedHeadersHasBeenSet(false),
-    m_allowedMethodsHasBeenSet(false),
-    m_allowedOriginsHasBeenSet(false),
-    m_exposeHeadersHasBeenSet(false),
-    m_maxAgeSeconds(0),
-    m_maxAgeSecondsHasBeenSet(false)
-{
-}
-
-CORSRule::CORSRule(const XmlNode& xmlNode) : 
-    m_iDHasBeenSet(false),
-    m_allowedHeadersHasBeenSet(false),
-    m_allowedMethodsHasBeenSet(false),
-    m_allowedOriginsHasBeenSet(false),
-    m_exposeHeadersHasBeenSet(false),
-    m_maxAgeSeconds(0),
-    m_maxAgeSecondsHasBeenSet(false)
+CORSRule::CORSRule(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -59,6 +41,7 @@ CORSRule& CORSRule::operator =(const XmlNode& xmlNode)
     if(!allowedHeadersNode.IsNull())
     {
       XmlNode allowedHeaderMember = allowedHeadersNode;
+      m_allowedHeadersHasBeenSet = !allowedHeaderMember.IsNull();
       while(!allowedHeaderMember.IsNull())
       {
         m_allowedHeaders.push_back(allowedHeaderMember.GetText());
@@ -71,6 +54,7 @@ CORSRule& CORSRule::operator =(const XmlNode& xmlNode)
     if(!allowedMethodsNode.IsNull())
     {
       XmlNode allowedMethodMember = allowedMethodsNode;
+      m_allowedMethodsHasBeenSet = !allowedMethodMember.IsNull();
       while(!allowedMethodMember.IsNull())
       {
         m_allowedMethods.push_back(allowedMethodMember.GetText());
@@ -83,6 +67,7 @@ CORSRule& CORSRule::operator =(const XmlNode& xmlNode)
     if(!allowedOriginsNode.IsNull())
     {
       XmlNode allowedOriginMember = allowedOriginsNode;
+      m_allowedOriginsHasBeenSet = !allowedOriginMember.IsNull();
       while(!allowedOriginMember.IsNull())
       {
         m_allowedOrigins.push_back(allowedOriginMember.GetText());
@@ -95,6 +80,7 @@ CORSRule& CORSRule::operator =(const XmlNode& xmlNode)
     if(!exposeHeadersNode.IsNull())
     {
       XmlNode exposeHeaderMember = exposeHeadersNode;
+      m_exposeHeadersHasBeenSet = !exposeHeaderMember.IsNull();
       while(!exposeHeaderMember.IsNull())
       {
         m_exposeHeaders.push_back(exposeHeaderMember.GetText());

@@ -30,7 +30,7 @@ namespace Model
   class EfaInfo
   {
   public:
-    AWS_EC2_API EfaInfo();
+    AWS_EC2_API EfaInfo() = default;
     AWS_EC2_API EfaInfo(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API EfaInfo& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -38,29 +38,18 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The maximum number of Elastic Fabric Adapters for the instance type.</p>
      */
-    inline int GetMaximumEfaInterfaces() const{ return m_maximumEfaInterfaces; }
-
-    /**
-     * <p>The maximum number of Elastic Fabric Adapters for the instance type.</p>
-     */
+    inline int GetMaximumEfaInterfaces() const { return m_maximumEfaInterfaces; }
     inline bool MaximumEfaInterfacesHasBeenSet() const { return m_maximumEfaInterfacesHasBeenSet; }
-
-    /**
-     * <p>The maximum number of Elastic Fabric Adapters for the instance type.</p>
-     */
     inline void SetMaximumEfaInterfaces(int value) { m_maximumEfaInterfacesHasBeenSet = true; m_maximumEfaInterfaces = value; }
-
-    /**
-     * <p>The maximum number of Elastic Fabric Adapters for the instance type.</p>
-     */
     inline EfaInfo& WithMaximumEfaInterfaces(int value) { SetMaximumEfaInterfaces(value); return *this;}
-
+    ///@}
   private:
 
-    int m_maximumEfaInterfaces;
+    int m_maximumEfaInterfaces{0};
     bool m_maximumEfaInterfacesHasBeenSet = false;
   };
 

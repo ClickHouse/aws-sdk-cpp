@@ -18,15 +18,7 @@ namespace Panorama
 namespace Model
 {
 
-OutPutS3Location::OutPutS3Location() : 
-    m_bucketNameHasBeenSet(false),
-    m_objectKeyHasBeenSet(false)
-{
-}
-
-OutPutS3Location::OutPutS3Location(JsonView jsonValue) : 
-    m_bucketNameHasBeenSet(false),
-    m_objectKeyHasBeenSet(false)
+OutPutS3Location::OutPutS3Location(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ OutPutS3Location& OutPutS3Location::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("BucketName"))
   {
     m_bucketName = jsonValue.GetString("BucketName");
-
     m_bucketNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ObjectKey"))
   {
     m_objectKey = jsonValue.GetString("ObjectKey");
-
     m_objectKeyHasBeenSet = true;
   }
-
   return *this;
 }
 

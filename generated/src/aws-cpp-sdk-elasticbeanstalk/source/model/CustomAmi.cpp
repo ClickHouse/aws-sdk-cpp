@@ -20,15 +20,7 @@ namespace ElasticBeanstalk
 namespace Model
 {
 
-CustomAmi::CustomAmi() : 
-    m_virtualizationTypeHasBeenSet(false),
-    m_imageIdHasBeenSet(false)
-{
-}
-
-CustomAmi::CustomAmi(const XmlNode& xmlNode) : 
-    m_virtualizationTypeHasBeenSet(false),
-    m_imageIdHasBeenSet(false)
+CustomAmi::CustomAmi(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

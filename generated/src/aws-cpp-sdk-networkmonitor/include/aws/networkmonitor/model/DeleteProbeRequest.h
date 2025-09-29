@@ -21,7 +21,7 @@ namespace Model
   class DeleteProbeRequest : public NetworkMonitorRequest
   {
   public:
-    AWS_NETWORKMONITOR_API DeleteProbeRequest();
+    AWS_NETWORKMONITOR_API DeleteProbeRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,103 +32,29 @@ namespace Model
     AWS_NETWORKMONITOR_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
-     * <p>The name of the monitor to delete. For a list of the available monitors, use
-     * the <code>ListMonitors</code> action.</p>
+     * <p>The name of the monitor to delete. </p>
      */
-    inline const Aws::String& GetMonitorName() const{ return m_monitorName; }
-
-    /**
-     * <p>The name of the monitor to delete. For a list of the available monitors, use
-     * the <code>ListMonitors</code> action.</p>
-     */
+    inline const Aws::String& GetMonitorName() const { return m_monitorName; }
     inline bool MonitorNameHasBeenSet() const { return m_monitorNameHasBeenSet; }
+    template<typename MonitorNameT = Aws::String>
+    void SetMonitorName(MonitorNameT&& value) { m_monitorNameHasBeenSet = true; m_monitorName = std::forward<MonitorNameT>(value); }
+    template<typename MonitorNameT = Aws::String>
+    DeleteProbeRequest& WithMonitorName(MonitorNameT&& value) { SetMonitorName(std::forward<MonitorNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name of the monitor to delete. For a list of the available monitors, use
-     * the <code>ListMonitors</code> action.</p>
+     * <p>The ID of the probe to delete. </p>
      */
-    inline void SetMonitorName(const Aws::String& value) { m_monitorNameHasBeenSet = true; m_monitorName = value; }
-
-    /**
-     * <p>The name of the monitor to delete. For a list of the available monitors, use
-     * the <code>ListMonitors</code> action.</p>
-     */
-    inline void SetMonitorName(Aws::String&& value) { m_monitorNameHasBeenSet = true; m_monitorName = std::move(value); }
-
-    /**
-     * <p>The name of the monitor to delete. For a list of the available monitors, use
-     * the <code>ListMonitors</code> action.</p>
-     */
-    inline void SetMonitorName(const char* value) { m_monitorNameHasBeenSet = true; m_monitorName.assign(value); }
-
-    /**
-     * <p>The name of the monitor to delete. For a list of the available monitors, use
-     * the <code>ListMonitors</code> action.</p>
-     */
-    inline DeleteProbeRequest& WithMonitorName(const Aws::String& value) { SetMonitorName(value); return *this;}
-
-    /**
-     * <p>The name of the monitor to delete. For a list of the available monitors, use
-     * the <code>ListMonitors</code> action.</p>
-     */
-    inline DeleteProbeRequest& WithMonitorName(Aws::String&& value) { SetMonitorName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the monitor to delete. For a list of the available monitors, use
-     * the <code>ListMonitors</code> action.</p>
-     */
-    inline DeleteProbeRequest& WithMonitorName(const char* value) { SetMonitorName(value); return *this;}
-
-
-    /**
-     * <p>The ID of the probe to delete. Run <code>GetMonitor</code> to get a lst of
-     * all probes and probe IDs associated with the monitor.</p>
-     */
-    inline const Aws::String& GetProbeId() const{ return m_probeId; }
-
-    /**
-     * <p>The ID of the probe to delete. Run <code>GetMonitor</code> to get a lst of
-     * all probes and probe IDs associated with the monitor.</p>
-     */
+    inline const Aws::String& GetProbeId() const { return m_probeId; }
     inline bool ProbeIdHasBeenSet() const { return m_probeIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the probe to delete. Run <code>GetMonitor</code> to get a lst of
-     * all probes and probe IDs associated with the monitor.</p>
-     */
-    inline void SetProbeId(const Aws::String& value) { m_probeIdHasBeenSet = true; m_probeId = value; }
-
-    /**
-     * <p>The ID of the probe to delete. Run <code>GetMonitor</code> to get a lst of
-     * all probes and probe IDs associated with the monitor.</p>
-     */
-    inline void SetProbeId(Aws::String&& value) { m_probeIdHasBeenSet = true; m_probeId = std::move(value); }
-
-    /**
-     * <p>The ID of the probe to delete. Run <code>GetMonitor</code> to get a lst of
-     * all probes and probe IDs associated with the monitor.</p>
-     */
-    inline void SetProbeId(const char* value) { m_probeIdHasBeenSet = true; m_probeId.assign(value); }
-
-    /**
-     * <p>The ID of the probe to delete. Run <code>GetMonitor</code> to get a lst of
-     * all probes and probe IDs associated with the monitor.</p>
-     */
-    inline DeleteProbeRequest& WithProbeId(const Aws::String& value) { SetProbeId(value); return *this;}
-
-    /**
-     * <p>The ID of the probe to delete. Run <code>GetMonitor</code> to get a lst of
-     * all probes and probe IDs associated with the monitor.</p>
-     */
-    inline DeleteProbeRequest& WithProbeId(Aws::String&& value) { SetProbeId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the probe to delete. Run <code>GetMonitor</code> to get a lst of
-     * all probes and probe IDs associated with the monitor.</p>
-     */
-    inline DeleteProbeRequest& WithProbeId(const char* value) { SetProbeId(value); return *this;}
-
+    template<typename ProbeIdT = Aws::String>
+    void SetProbeId(ProbeIdT&& value) { m_probeIdHasBeenSet = true; m_probeId = std::forward<ProbeIdT>(value); }
+    template<typename ProbeIdT = Aws::String>
+    DeleteProbeRequest& WithProbeId(ProbeIdT&& value) { SetProbeId(std::forward<ProbeIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_monitorName;

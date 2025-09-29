@@ -20,25 +20,7 @@ namespace EC2
 namespace Model
 {
 
-InstanceStatus::InstanceStatus() : 
-    m_availabilityZoneHasBeenSet(false),
-    m_outpostArnHasBeenSet(false),
-    m_eventsHasBeenSet(false),
-    m_instanceIdHasBeenSet(false),
-    m_instanceStateHasBeenSet(false),
-    m_instanceStatusHasBeenSet(false),
-    m_systemStatusHasBeenSet(false)
-{
-}
-
-InstanceStatus::InstanceStatus(const XmlNode& xmlNode) : 
-    m_availabilityZoneHasBeenSet(false),
-    m_outpostArnHasBeenSet(false),
-    m_eventsHasBeenSet(false),
-    m_instanceIdHasBeenSet(false),
-    m_instanceStateHasBeenSet(false),
-    m_instanceStatusHasBeenSet(false),
-    m_systemStatusHasBeenSet(false)
+InstanceStatus::InstanceStatus(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -55,16 +37,29 @@ InstanceStatus& InstanceStatus::operator =(const XmlNode& xmlNode)
       m_availabilityZone = Aws::Utils::Xml::DecodeEscapedXmlText(availabilityZoneNode.GetText());
       m_availabilityZoneHasBeenSet = true;
     }
+    XmlNode availabilityZoneIdNode = resultNode.FirstChild("availabilityZoneId");
+    if(!availabilityZoneIdNode.IsNull())
+    {
+      m_availabilityZoneId = Aws::Utils::Xml::DecodeEscapedXmlText(availabilityZoneIdNode.GetText());
+      m_availabilityZoneIdHasBeenSet = true;
+    }
     XmlNode outpostArnNode = resultNode.FirstChild("outpostArn");
     if(!outpostArnNode.IsNull())
     {
       m_outpostArn = Aws::Utils::Xml::DecodeEscapedXmlText(outpostArnNode.GetText());
       m_outpostArnHasBeenSet = true;
     }
+    XmlNode operatorNode = resultNode.FirstChild("operator");
+    if(!operatorNode.IsNull())
+    {
+      m_operator = operatorNode;
+      m_operatorHasBeenSet = true;
+    }
     XmlNode eventsNode = resultNode.FirstChild("eventsSet");
     if(!eventsNode.IsNull())
     {
       XmlNode eventsMember = eventsNode.FirstChild("item");
+      m_eventsHasBeenSet = !eventsMember.IsNull();
       while(!eventsMember.IsNull())
       {
         m_events.push_back(eventsMember);
@@ -97,6 +92,12 @@ InstanceStatus& InstanceStatus::operator =(const XmlNode& xmlNode)
       m_systemStatus = systemStatusNode;
       m_systemStatusHasBeenSet = true;
     }
+    XmlNode attachedEbsStatusNode = resultNode.FirstChild("attachedEbsStatus");
+    if(!attachedEbsStatusNode.IsNull())
+    {
+      m_attachedEbsStatus = attachedEbsStatusNode;
+      m_attachedEbsStatusHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -109,9 +110,21 @@ void InstanceStatus::OutputToStream(Aws::OStream& oStream, const char* location,
       oStream << location << index << locationValue << ".AvailabilityZone=" << StringUtils::URLEncode(m_availabilityZone.c_str()) << "&";
   }
 
+  if(m_availabilityZoneIdHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".AvailabilityZoneId=" << StringUtils::URLEncode(m_availabilityZoneId.c_str()) << "&";
+  }
+
   if(m_outpostArnHasBeenSet)
   {
       oStream << location << index << locationValue << ".OutpostArn=" << StringUtils::URLEncode(m_outpostArn.c_str()) << "&";
+  }
+
+  if(m_operatorHasBeenSet)
+  {
+      Aws::StringStream operatorLocationAndMemberSs;
+      operatorLocationAndMemberSs << location << index << locationValue << ".Operator";
+      m_operator.OutputToStream(oStream, operatorLocationAndMemberSs.str().c_str());
   }
 
   if(m_eventsHasBeenSet)
@@ -151,6 +164,13 @@ void InstanceStatus::OutputToStream(Aws::OStream& oStream, const char* location,
       m_systemStatus.OutputToStream(oStream, systemStatusLocationAndMemberSs.str().c_str());
   }
 
+  if(m_attachedEbsStatusHasBeenSet)
+  {
+      Aws::StringStream attachedEbsStatusLocationAndMemberSs;
+      attachedEbsStatusLocationAndMemberSs << location << index << locationValue << ".AttachedEbsStatus";
+      m_attachedEbsStatus.OutputToStream(oStream, attachedEbsStatusLocationAndMemberSs.str().c_str());
+  }
+
 }
 
 void InstanceStatus::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -159,9 +179,19 @@ void InstanceStatus::OutputToStream(Aws::OStream& oStream, const char* location)
   {
       oStream << location << ".AvailabilityZone=" << StringUtils::URLEncode(m_availabilityZone.c_str()) << "&";
   }
+  if(m_availabilityZoneIdHasBeenSet)
+  {
+      oStream << location << ".AvailabilityZoneId=" << StringUtils::URLEncode(m_availabilityZoneId.c_str()) << "&";
+  }
   if(m_outpostArnHasBeenSet)
   {
       oStream << location << ".OutpostArn=" << StringUtils::URLEncode(m_outpostArn.c_str()) << "&";
+  }
+  if(m_operatorHasBeenSet)
+  {
+      Aws::String operatorLocationAndMember(location);
+      operatorLocationAndMember += ".Operator";
+      m_operator.OutputToStream(oStream, operatorLocationAndMember.c_str());
   }
   if(m_eventsHasBeenSet)
   {
@@ -169,7 +199,7 @@ void InstanceStatus::OutputToStream(Aws::OStream& oStream, const char* location)
       for(auto& item : m_events)
       {
         Aws::StringStream eventsSs;
-        eventsSs << location <<  ".EventsSet." << eventsIdx++;
+        eventsSs << location << ".EventsSet." << eventsIdx++;
         item.OutputToStream(oStream, eventsSs.str().c_str());
       }
   }
@@ -194,6 +224,12 @@ void InstanceStatus::OutputToStream(Aws::OStream& oStream, const char* location)
       Aws::String systemStatusLocationAndMember(location);
       systemStatusLocationAndMember += ".SystemStatus";
       m_systemStatus.OutputToStream(oStream, systemStatusLocationAndMember.c_str());
+  }
+  if(m_attachedEbsStatusHasBeenSet)
+  {
+      Aws::String attachedEbsStatusLocationAndMember(location);
+      attachedEbsStatusLocationAndMember += ".AttachedEbsStatus";
+      m_attachedEbsStatus.OutputToStream(oStream, attachedEbsStatusLocationAndMember.c_str());
   }
 }
 

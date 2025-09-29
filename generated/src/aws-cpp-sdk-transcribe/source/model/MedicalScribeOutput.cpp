@@ -18,15 +18,7 @@ namespace TranscribeService
 namespace Model
 {
 
-MedicalScribeOutput::MedicalScribeOutput() : 
-    m_transcriptFileUriHasBeenSet(false),
-    m_clinicalDocumentUriHasBeenSet(false)
-{
-}
-
-MedicalScribeOutput::MedicalScribeOutput(JsonView jsonValue) : 
-    m_transcriptFileUriHasBeenSet(false),
-    m_clinicalDocumentUriHasBeenSet(false)
+MedicalScribeOutput::MedicalScribeOutput(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ MedicalScribeOutput& MedicalScribeOutput::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("TranscriptFileUri"))
   {
     m_transcriptFileUri = jsonValue.GetString("TranscriptFileUri");
-
     m_transcriptFileUriHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ClinicalDocumentUri"))
   {
     m_clinicalDocumentUri = jsonValue.GetString("ClinicalDocumentUri");
-
     m_clinicalDocumentUriHasBeenSet = true;
   }
-
   return *this;
 }
 

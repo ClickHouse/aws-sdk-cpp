@@ -33,60 +33,26 @@ namespace Model
   class UtteranceLevelTestResults
   {
   public:
-    AWS_LEXMODELSV2_API UtteranceLevelTestResults();
+    AWS_LEXMODELSV2_API UtteranceLevelTestResults() = default;
     AWS_LEXMODELSV2_API UtteranceLevelTestResults(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API UtteranceLevelTestResults& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Contains information about an utterance in the results of the test set
      * execution.</p>
      */
-    inline const Aws::Vector<UtteranceLevelTestResultItem>& GetItems() const{ return m_items; }
-
-    /**
-     * <p>Contains information about an utterance in the results of the test set
-     * execution.</p>
-     */
+    inline const Aws::Vector<UtteranceLevelTestResultItem>& GetItems() const { return m_items; }
     inline bool ItemsHasBeenSet() const { return m_itemsHasBeenSet; }
-
-    /**
-     * <p>Contains information about an utterance in the results of the test set
-     * execution.</p>
-     */
-    inline void SetItems(const Aws::Vector<UtteranceLevelTestResultItem>& value) { m_itemsHasBeenSet = true; m_items = value; }
-
-    /**
-     * <p>Contains information about an utterance in the results of the test set
-     * execution.</p>
-     */
-    inline void SetItems(Aws::Vector<UtteranceLevelTestResultItem>&& value) { m_itemsHasBeenSet = true; m_items = std::move(value); }
-
-    /**
-     * <p>Contains information about an utterance in the results of the test set
-     * execution.</p>
-     */
-    inline UtteranceLevelTestResults& WithItems(const Aws::Vector<UtteranceLevelTestResultItem>& value) { SetItems(value); return *this;}
-
-    /**
-     * <p>Contains information about an utterance in the results of the test set
-     * execution.</p>
-     */
-    inline UtteranceLevelTestResults& WithItems(Aws::Vector<UtteranceLevelTestResultItem>&& value) { SetItems(std::move(value)); return *this;}
-
-    /**
-     * <p>Contains information about an utterance in the results of the test set
-     * execution.</p>
-     */
-    inline UtteranceLevelTestResults& AddItems(const UtteranceLevelTestResultItem& value) { m_itemsHasBeenSet = true; m_items.push_back(value); return *this; }
-
-    /**
-     * <p>Contains information about an utterance in the results of the test set
-     * execution.</p>
-     */
-    inline UtteranceLevelTestResults& AddItems(UtteranceLevelTestResultItem&& value) { m_itemsHasBeenSet = true; m_items.push_back(std::move(value)); return *this; }
-
+    template<typename ItemsT = Aws::Vector<UtteranceLevelTestResultItem>>
+    void SetItems(ItemsT&& value) { m_itemsHasBeenSet = true; m_items = std::forward<ItemsT>(value); }
+    template<typename ItemsT = Aws::Vector<UtteranceLevelTestResultItem>>
+    UtteranceLevelTestResults& WithItems(ItemsT&& value) { SetItems(std::forward<ItemsT>(value)); return *this;}
+    template<typename ItemsT = UtteranceLevelTestResultItem>
+    UtteranceLevelTestResults& AddItems(ItemsT&& value) { m_itemsHasBeenSet = true; m_items.emplace_back(std::forward<ItemsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<UtteranceLevelTestResultItem> m_items;

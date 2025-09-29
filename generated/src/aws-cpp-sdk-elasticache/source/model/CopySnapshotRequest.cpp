@@ -10,15 +10,6 @@
 using namespace Aws::ElastiCache::Model;
 using namespace Aws::Utils;
 
-CopySnapshotRequest::CopySnapshotRequest() : 
-    m_sourceSnapshotNameHasBeenSet(false),
-    m_targetSnapshotNameHasBeenSet(false),
-    m_targetBucketHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CopySnapshotRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -45,11 +36,18 @@ Aws::String CopySnapshotRequest::SerializePayload() const
 
   if(m_tagsHasBeenSet)
   {
-    unsigned tagsCount = 1;
-    for(auto& item : m_tags)
+    if (m_tags.empty())
     {
-      item.OutputToStream(ss, "Tags.member.", tagsCount, "");
-      tagsCount++;
+      ss << "Tags=&";
+    }
+    else
+    {
+      unsigned tagsCount = 1;
+      for(auto& item : m_tags)
+      {
+        item.OutputToStream(ss, "Tags.Tag.", tagsCount, "");
+        tagsCount++;
+      }
     }
   }
 

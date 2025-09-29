@@ -18,17 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-ParameterConfiguration::ParameterConfiguration() : 
-    m_valueType(ParameterValueType::NOT_SET),
-    m_valueTypeHasBeenSet(false),
-    m_valueHasBeenSet(false)
-{
-}
-
-ParameterConfiguration::ParameterConfiguration(JsonView jsonValue) : 
-    m_valueType(ParameterValueType::NOT_SET),
-    m_valueTypeHasBeenSet(false),
-    m_valueHasBeenSet(false)
+ParameterConfiguration::ParameterConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ParameterConfiguration& ParameterConfiguration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ValueType"))
   {
     m_valueType = ParameterValueTypeMapper::GetParameterValueTypeForName(jsonValue.GetString("ValueType"));
-
     m_valueTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Value"))
   {
     m_value = jsonValue.GetObject("Value");
-
     m_valueHasBeenSet = true;
   }
-
   return *this;
 }
 

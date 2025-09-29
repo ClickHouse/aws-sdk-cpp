@@ -12,20 +12,6 @@ using namespace Aws::DataSync::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateLocationAzureBlobRequest::UpdateLocationAzureBlobRequest() : 
-    m_locationArnHasBeenSet(false),
-    m_subdirectoryHasBeenSet(false),
-    m_authenticationType(AzureBlobAuthenticationType::NOT_SET),
-    m_authenticationTypeHasBeenSet(false),
-    m_sasConfigurationHasBeenSet(false),
-    m_blobType(AzureBlobType::NOT_SET),
-    m_blobTypeHasBeenSet(false),
-    m_accessTier(AzureAccessTier::NOT_SET),
-    m_accessTierHasBeenSet(false),
-    m_agentArnsHasBeenSet(false)
-{
-}
-
 Aws::String UpdateLocationAzureBlobRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -71,6 +57,18 @@ Aws::String UpdateLocationAzureBlobRequest::SerializePayload() const
      agentArnsJsonList[agentArnsIndex].AsString(m_agentArns[agentArnsIndex]);
    }
    payload.WithArray("AgentArns", std::move(agentArnsJsonList));
+
+  }
+
+  if(m_cmkSecretConfigHasBeenSet)
+  {
+   payload.WithObject("CmkSecretConfig", m_cmkSecretConfig.Jsonize());
+
+  }
+
+  if(m_customSecretConfigHasBeenSet)
+  {
+   payload.WithObject("CustomSecretConfig", m_customSecretConfig.Jsonize());
 
   }
 

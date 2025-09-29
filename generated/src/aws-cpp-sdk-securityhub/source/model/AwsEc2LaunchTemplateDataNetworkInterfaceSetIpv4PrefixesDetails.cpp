@@ -18,13 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsEc2LaunchTemplateDataNetworkInterfaceSetIpv4PrefixesDetails::AwsEc2LaunchTemplateDataNetworkInterfaceSetIpv4PrefixesDetails() : 
-    m_ipv4PrefixHasBeenSet(false)
-{
-}
-
-AwsEc2LaunchTemplateDataNetworkInterfaceSetIpv4PrefixesDetails::AwsEc2LaunchTemplateDataNetworkInterfaceSetIpv4PrefixesDetails(JsonView jsonValue) : 
-    m_ipv4PrefixHasBeenSet(false)
+AwsEc2LaunchTemplateDataNetworkInterfaceSetIpv4PrefixesDetails::AwsEc2LaunchTemplateDataNetworkInterfaceSetIpv4PrefixesDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ AwsEc2LaunchTemplateDataNetworkInterfaceSetIpv4PrefixesDetails& AwsEc2LaunchTemp
   if(jsonValue.ValueExists("Ipv4Prefix"))
   {
     m_ipv4Prefix = jsonValue.GetString("Ipv4Prefix");
-
     m_ipv4PrefixHasBeenSet = true;
   }
-
   return *this;
 }
 

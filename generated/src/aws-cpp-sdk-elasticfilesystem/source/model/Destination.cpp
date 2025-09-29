@@ -18,21 +18,7 @@ namespace EFS
 namespace Model
 {
 
-Destination::Destination() : 
-    m_status(ReplicationStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_fileSystemIdHasBeenSet(false),
-    m_regionHasBeenSet(false),
-    m_lastReplicatedTimestampHasBeenSet(false)
-{
-}
-
-Destination::Destination(JsonView jsonValue) : 
-    m_status(ReplicationStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_fileSystemIdHasBeenSet(false),
-    m_regionHasBeenSet(false),
-    m_lastReplicatedTimestampHasBeenSet(false)
+Destination::Destination(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,31 +28,38 @@ Destination& Destination::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Status"))
   {
     m_status = ReplicationStatusMapper::GetReplicationStatusForName(jsonValue.GetString("Status"));
-
     m_statusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FileSystemId"))
   {
     m_fileSystemId = jsonValue.GetString("FileSystemId");
-
     m_fileSystemIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Region"))
   {
     m_region = jsonValue.GetString("Region");
-
     m_regionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LastReplicatedTimestamp"))
   {
     m_lastReplicatedTimestamp = jsonValue.GetDouble("LastReplicatedTimestamp");
-
     m_lastReplicatedTimestampHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("OwnerId"))
+  {
+    m_ownerId = jsonValue.GetString("OwnerId");
+    m_ownerIdHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("StatusMessage"))
+  {
+    m_statusMessage = jsonValue.GetString("StatusMessage");
+    m_statusMessageHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("RoleArn"))
+  {
+    m_roleArn = jsonValue.GetString("RoleArn");
+    m_roleArnHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -94,6 +87,24 @@ JsonValue Destination::Jsonize() const
   if(m_lastReplicatedTimestampHasBeenSet)
   {
    payload.WithDouble("LastReplicatedTimestamp", m_lastReplicatedTimestamp.SecondsWithMSPrecision());
+  }
+
+  if(m_ownerIdHasBeenSet)
+  {
+   payload.WithString("OwnerId", m_ownerId);
+
+  }
+
+  if(m_statusMessageHasBeenSet)
+  {
+   payload.WithString("StatusMessage", m_statusMessage);
+
+  }
+
+  if(m_roleArnHasBeenSet)
+  {
+   payload.WithString("RoleArn", m_roleArn);
+
   }
 
   return payload;

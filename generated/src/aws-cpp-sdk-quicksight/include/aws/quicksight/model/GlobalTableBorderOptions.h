@@ -33,73 +33,35 @@ namespace Model
   class GlobalTableBorderOptions
   {
   public:
-    AWS_QUICKSIGHT_API GlobalTableBorderOptions();
+    AWS_QUICKSIGHT_API GlobalTableBorderOptions() = default;
     AWS_QUICKSIGHT_API GlobalTableBorderOptions(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API GlobalTableBorderOptions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Determines the options for uniform border.</p>
      */
-    inline const TableBorderOptions& GetUniformBorder() const{ return m_uniformBorder; }
-
-    /**
-     * <p>Determines the options for uniform border.</p>
-     */
+    inline const TableBorderOptions& GetUniformBorder() const { return m_uniformBorder; }
     inline bool UniformBorderHasBeenSet() const { return m_uniformBorderHasBeenSet; }
+    template<typename UniformBorderT = TableBorderOptions>
+    void SetUniformBorder(UniformBorderT&& value) { m_uniformBorderHasBeenSet = true; m_uniformBorder = std::forward<UniformBorderT>(value); }
+    template<typename UniformBorderT = TableBorderOptions>
+    GlobalTableBorderOptions& WithUniformBorder(UniformBorderT&& value) { SetUniformBorder(std::forward<UniformBorderT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Determines the options for uniform border.</p>
-     */
-    inline void SetUniformBorder(const TableBorderOptions& value) { m_uniformBorderHasBeenSet = true; m_uniformBorder = value; }
-
-    /**
-     * <p>Determines the options for uniform border.</p>
-     */
-    inline void SetUniformBorder(TableBorderOptions&& value) { m_uniformBorderHasBeenSet = true; m_uniformBorder = std::move(value); }
-
-    /**
-     * <p>Determines the options for uniform border.</p>
-     */
-    inline GlobalTableBorderOptions& WithUniformBorder(const TableBorderOptions& value) { SetUniformBorder(value); return *this;}
-
-    /**
-     * <p>Determines the options for uniform border.</p>
-     */
-    inline GlobalTableBorderOptions& WithUniformBorder(TableBorderOptions&& value) { SetUniformBorder(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Determines the options for side specific border.</p>
      */
-    inline const TableSideBorderOptions& GetSideSpecificBorder() const{ return m_sideSpecificBorder; }
-
-    /**
-     * <p>Determines the options for side specific border.</p>
-     */
+    inline const TableSideBorderOptions& GetSideSpecificBorder() const { return m_sideSpecificBorder; }
     inline bool SideSpecificBorderHasBeenSet() const { return m_sideSpecificBorderHasBeenSet; }
-
-    /**
-     * <p>Determines the options for side specific border.</p>
-     */
-    inline void SetSideSpecificBorder(const TableSideBorderOptions& value) { m_sideSpecificBorderHasBeenSet = true; m_sideSpecificBorder = value; }
-
-    /**
-     * <p>Determines the options for side specific border.</p>
-     */
-    inline void SetSideSpecificBorder(TableSideBorderOptions&& value) { m_sideSpecificBorderHasBeenSet = true; m_sideSpecificBorder = std::move(value); }
-
-    /**
-     * <p>Determines the options for side specific border.</p>
-     */
-    inline GlobalTableBorderOptions& WithSideSpecificBorder(const TableSideBorderOptions& value) { SetSideSpecificBorder(value); return *this;}
-
-    /**
-     * <p>Determines the options for side specific border.</p>
-     */
-    inline GlobalTableBorderOptions& WithSideSpecificBorder(TableSideBorderOptions&& value) { SetSideSpecificBorder(std::move(value)); return *this;}
-
+    template<typename SideSpecificBorderT = TableSideBorderOptions>
+    void SetSideSpecificBorder(SideSpecificBorderT&& value) { m_sideSpecificBorderHasBeenSet = true; m_sideSpecificBorder = std::forward<SideSpecificBorderT>(value); }
+    template<typename SideSpecificBorderT = TableSideBorderOptions>
+    GlobalTableBorderOptions& WithSideSpecificBorder(SideSpecificBorderT&& value) { SetSideSpecificBorder(std::forward<SideSpecificBorderT>(value)); return *this;}
+    ///@}
   private:
 
     TableBorderOptions m_uniformBorder;

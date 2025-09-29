@@ -18,17 +18,7 @@ namespace Lightsail
 namespace Model
 {
 
-HeaderObject::HeaderObject() : 
-    m_option(ForwardValues::NOT_SET),
-    m_optionHasBeenSet(false),
-    m_headersAllowListHasBeenSet(false)
-{
-}
-
-HeaderObject::HeaderObject(JsonView jsonValue) : 
-    m_option(ForwardValues::NOT_SET),
-    m_optionHasBeenSet(false),
-    m_headersAllowListHasBeenSet(false)
+HeaderObject::HeaderObject(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ HeaderObject& HeaderObject::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("option"))
   {
     m_option = ForwardValuesMapper::GetForwardValuesForName(jsonValue.GetString("option"));
-
     m_optionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("headersAllowList"))
   {
     Aws::Utils::Array<JsonView> headersAllowListJsonList = jsonValue.GetArray("headersAllowList");
@@ -51,7 +39,6 @@ HeaderObject& HeaderObject::operator =(JsonView jsonValue)
     }
     m_headersAllowListHasBeenSet = true;
   }
-
   return *this;
 }
 

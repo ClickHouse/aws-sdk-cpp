@@ -15,6 +15,8 @@
 #include <aws/ec2/model/InstanceMatchCriteria.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/ec2/model/CapacityReservationType.h>
+#include <aws/ec2/model/CapacityReservationCommitmentInfo.h>
+#include <aws/ec2/model/CapacityReservationDeliveryPreference.h>
 #include <aws/ec2/model/Tag.h>
 #include <aws/ec2/model/CapacityAllocation.h>
 #include <utility>
@@ -41,7 +43,7 @@ namespace Model
   class CapacityReservation
   {
   public:
-    AWS_EC2_API CapacityReservation();
+    AWS_EC2_API CapacityReservation() = default;
     AWS_EC2_API CapacityReservation(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API CapacityReservation& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -49,305 +51,92 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The ID of the Capacity Reservation.</p>
      */
-    inline const Aws::String& GetCapacityReservationId() const{ return m_capacityReservationId; }
-
-    /**
-     * <p>The ID of the Capacity Reservation.</p>
-     */
+    inline const Aws::String& GetCapacityReservationId() const { return m_capacityReservationId; }
     inline bool CapacityReservationIdHasBeenSet() const { return m_capacityReservationIdHasBeenSet; }
+    template<typename CapacityReservationIdT = Aws::String>
+    void SetCapacityReservationId(CapacityReservationIdT&& value) { m_capacityReservationIdHasBeenSet = true; m_capacityReservationId = std::forward<CapacityReservationIdT>(value); }
+    template<typename CapacityReservationIdT = Aws::String>
+    CapacityReservation& WithCapacityReservationId(CapacityReservationIdT&& value) { SetCapacityReservationId(std::forward<CapacityReservationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Capacity Reservation.</p>
-     */
-    inline void SetCapacityReservationId(const Aws::String& value) { m_capacityReservationIdHasBeenSet = true; m_capacityReservationId = value; }
-
-    /**
-     * <p>The ID of the Capacity Reservation.</p>
-     */
-    inline void SetCapacityReservationId(Aws::String&& value) { m_capacityReservationIdHasBeenSet = true; m_capacityReservationId = std::move(value); }
-
-    /**
-     * <p>The ID of the Capacity Reservation.</p>
-     */
-    inline void SetCapacityReservationId(const char* value) { m_capacityReservationIdHasBeenSet = true; m_capacityReservationId.assign(value); }
-
-    /**
-     * <p>The ID of the Capacity Reservation.</p>
-     */
-    inline CapacityReservation& WithCapacityReservationId(const Aws::String& value) { SetCapacityReservationId(value); return *this;}
-
-    /**
-     * <p>The ID of the Capacity Reservation.</p>
-     */
-    inline CapacityReservation& WithCapacityReservationId(Aws::String&& value) { SetCapacityReservationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Capacity Reservation.</p>
-     */
-    inline CapacityReservation& WithCapacityReservationId(const char* value) { SetCapacityReservationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the Amazon Web Services account that owns the Capacity
      * Reservation.</p>
      */
-    inline const Aws::String& GetOwnerId() const{ return m_ownerId; }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that owns the Capacity
-     * Reservation.</p>
-     */
+    inline const Aws::String& GetOwnerId() const { return m_ownerId; }
     inline bool OwnerIdHasBeenSet() const { return m_ownerIdHasBeenSet; }
+    template<typename OwnerIdT = Aws::String>
+    void SetOwnerId(OwnerIdT&& value) { m_ownerIdHasBeenSet = true; m_ownerId = std::forward<OwnerIdT>(value); }
+    template<typename OwnerIdT = Aws::String>
+    CapacityReservation& WithOwnerId(OwnerIdT&& value) { SetOwnerId(std::forward<OwnerIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Amazon Web Services account that owns the Capacity
-     * Reservation.</p>
-     */
-    inline void SetOwnerId(const Aws::String& value) { m_ownerIdHasBeenSet = true; m_ownerId = value; }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that owns the Capacity
-     * Reservation.</p>
-     */
-    inline void SetOwnerId(Aws::String&& value) { m_ownerIdHasBeenSet = true; m_ownerId = std::move(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that owns the Capacity
-     * Reservation.</p>
-     */
-    inline void SetOwnerId(const char* value) { m_ownerIdHasBeenSet = true; m_ownerId.assign(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that owns the Capacity
-     * Reservation.</p>
-     */
-    inline CapacityReservation& WithOwnerId(const Aws::String& value) { SetOwnerId(value); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services account that owns the Capacity
-     * Reservation.</p>
-     */
-    inline CapacityReservation& WithOwnerId(Aws::String&& value) { SetOwnerId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services account that owns the Capacity
-     * Reservation.</p>
-     */
-    inline CapacityReservation& WithOwnerId(const char* value) { SetOwnerId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the Capacity Reservation.</p>
      */
-    inline const Aws::String& GetCapacityReservationArn() const{ return m_capacityReservationArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Capacity Reservation.</p>
-     */
+    inline const Aws::String& GetCapacityReservationArn() const { return m_capacityReservationArn; }
     inline bool CapacityReservationArnHasBeenSet() const { return m_capacityReservationArnHasBeenSet; }
+    template<typename CapacityReservationArnT = Aws::String>
+    void SetCapacityReservationArn(CapacityReservationArnT&& value) { m_capacityReservationArnHasBeenSet = true; m_capacityReservationArn = std::forward<CapacityReservationArnT>(value); }
+    template<typename CapacityReservationArnT = Aws::String>
+    CapacityReservation& WithCapacityReservationArn(CapacityReservationArnT&& value) { SetCapacityReservationArn(std::forward<CapacityReservationArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Capacity Reservation.</p>
-     */
-    inline void SetCapacityReservationArn(const Aws::String& value) { m_capacityReservationArnHasBeenSet = true; m_capacityReservationArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Capacity Reservation.</p>
-     */
-    inline void SetCapacityReservationArn(Aws::String&& value) { m_capacityReservationArnHasBeenSet = true; m_capacityReservationArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Capacity Reservation.</p>
-     */
-    inline void SetCapacityReservationArn(const char* value) { m_capacityReservationArnHasBeenSet = true; m_capacityReservationArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Capacity Reservation.</p>
-     */
-    inline CapacityReservation& WithCapacityReservationArn(const Aws::String& value) { SetCapacityReservationArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Capacity Reservation.</p>
-     */
-    inline CapacityReservation& WithCapacityReservationArn(Aws::String&& value) { SetCapacityReservationArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Capacity Reservation.</p>
-     */
-    inline CapacityReservation& WithCapacityReservationArn(const char* value) { SetCapacityReservationArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Availability Zone ID of the Capacity Reservation.</p>
      */
-    inline const Aws::String& GetAvailabilityZoneId() const{ return m_availabilityZoneId; }
-
-    /**
-     * <p>The Availability Zone ID of the Capacity Reservation.</p>
-     */
+    inline const Aws::String& GetAvailabilityZoneId() const { return m_availabilityZoneId; }
     inline bool AvailabilityZoneIdHasBeenSet() const { return m_availabilityZoneIdHasBeenSet; }
+    template<typename AvailabilityZoneIdT = Aws::String>
+    void SetAvailabilityZoneId(AvailabilityZoneIdT&& value) { m_availabilityZoneIdHasBeenSet = true; m_availabilityZoneId = std::forward<AvailabilityZoneIdT>(value); }
+    template<typename AvailabilityZoneIdT = Aws::String>
+    CapacityReservation& WithAvailabilityZoneId(AvailabilityZoneIdT&& value) { SetAvailabilityZoneId(std::forward<AvailabilityZoneIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Availability Zone ID of the Capacity Reservation.</p>
-     */
-    inline void SetAvailabilityZoneId(const Aws::String& value) { m_availabilityZoneIdHasBeenSet = true; m_availabilityZoneId = value; }
-
-    /**
-     * <p>The Availability Zone ID of the Capacity Reservation.</p>
-     */
-    inline void SetAvailabilityZoneId(Aws::String&& value) { m_availabilityZoneIdHasBeenSet = true; m_availabilityZoneId = std::move(value); }
-
-    /**
-     * <p>The Availability Zone ID of the Capacity Reservation.</p>
-     */
-    inline void SetAvailabilityZoneId(const char* value) { m_availabilityZoneIdHasBeenSet = true; m_availabilityZoneId.assign(value); }
-
-    /**
-     * <p>The Availability Zone ID of the Capacity Reservation.</p>
-     */
-    inline CapacityReservation& WithAvailabilityZoneId(const Aws::String& value) { SetAvailabilityZoneId(value); return *this;}
-
-    /**
-     * <p>The Availability Zone ID of the Capacity Reservation.</p>
-     */
-    inline CapacityReservation& WithAvailabilityZoneId(Aws::String&& value) { SetAvailabilityZoneId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Availability Zone ID of the Capacity Reservation.</p>
-     */
-    inline CapacityReservation& WithAvailabilityZoneId(const char* value) { SetAvailabilityZoneId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of instance for which the Capacity Reservation reserves
      * capacity.</p>
      */
-    inline const Aws::String& GetInstanceType() const{ return m_instanceType; }
-
-    /**
-     * <p>The type of instance for which the Capacity Reservation reserves
-     * capacity.</p>
-     */
+    inline const Aws::String& GetInstanceType() const { return m_instanceType; }
     inline bool InstanceTypeHasBeenSet() const { return m_instanceTypeHasBeenSet; }
+    template<typename InstanceTypeT = Aws::String>
+    void SetInstanceType(InstanceTypeT&& value) { m_instanceTypeHasBeenSet = true; m_instanceType = std::forward<InstanceTypeT>(value); }
+    template<typename InstanceTypeT = Aws::String>
+    CapacityReservation& WithInstanceType(InstanceTypeT&& value) { SetInstanceType(std::forward<InstanceTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of instance for which the Capacity Reservation reserves
-     * capacity.</p>
-     */
-    inline void SetInstanceType(const Aws::String& value) { m_instanceTypeHasBeenSet = true; m_instanceType = value; }
-
-    /**
-     * <p>The type of instance for which the Capacity Reservation reserves
-     * capacity.</p>
-     */
-    inline void SetInstanceType(Aws::String&& value) { m_instanceTypeHasBeenSet = true; m_instanceType = std::move(value); }
-
-    /**
-     * <p>The type of instance for which the Capacity Reservation reserves
-     * capacity.</p>
-     */
-    inline void SetInstanceType(const char* value) { m_instanceTypeHasBeenSet = true; m_instanceType.assign(value); }
-
-    /**
-     * <p>The type of instance for which the Capacity Reservation reserves
-     * capacity.</p>
-     */
-    inline CapacityReservation& WithInstanceType(const Aws::String& value) { SetInstanceType(value); return *this;}
-
-    /**
-     * <p>The type of instance for which the Capacity Reservation reserves
-     * capacity.</p>
-     */
-    inline CapacityReservation& WithInstanceType(Aws::String&& value) { SetInstanceType(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of instance for which the Capacity Reservation reserves
-     * capacity.</p>
-     */
-    inline CapacityReservation& WithInstanceType(const char* value) { SetInstanceType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of operating system for which the Capacity Reservation reserves
      * capacity.</p>
      */
-    inline const CapacityReservationInstancePlatform& GetInstancePlatform() const{ return m_instancePlatform; }
-
-    /**
-     * <p>The type of operating system for which the Capacity Reservation reserves
-     * capacity.</p>
-     */
+    inline CapacityReservationInstancePlatform GetInstancePlatform() const { return m_instancePlatform; }
     inline bool InstancePlatformHasBeenSet() const { return m_instancePlatformHasBeenSet; }
+    inline void SetInstancePlatform(CapacityReservationInstancePlatform value) { m_instancePlatformHasBeenSet = true; m_instancePlatform = value; }
+    inline CapacityReservation& WithInstancePlatform(CapacityReservationInstancePlatform value) { SetInstancePlatform(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of operating system for which the Capacity Reservation reserves
-     * capacity.</p>
-     */
-    inline void SetInstancePlatform(const CapacityReservationInstancePlatform& value) { m_instancePlatformHasBeenSet = true; m_instancePlatform = value; }
-
-    /**
-     * <p>The type of operating system for which the Capacity Reservation reserves
-     * capacity.</p>
-     */
-    inline void SetInstancePlatform(CapacityReservationInstancePlatform&& value) { m_instancePlatformHasBeenSet = true; m_instancePlatform = std::move(value); }
-
-    /**
-     * <p>The type of operating system for which the Capacity Reservation reserves
-     * capacity.</p>
-     */
-    inline CapacityReservation& WithInstancePlatform(const CapacityReservationInstancePlatform& value) { SetInstancePlatform(value); return *this;}
-
-    /**
-     * <p>The type of operating system for which the Capacity Reservation reserves
-     * capacity.</p>
-     */
-    inline CapacityReservation& WithInstancePlatform(CapacityReservationInstancePlatform&& value) { SetInstancePlatform(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Availability Zone in which the capacity is reserved.</p>
      */
-    inline const Aws::String& GetAvailabilityZone() const{ return m_availabilityZone; }
-
-    /**
-     * <p>The Availability Zone in which the capacity is reserved.</p>
-     */
+    inline const Aws::String& GetAvailabilityZone() const { return m_availabilityZone; }
     inline bool AvailabilityZoneHasBeenSet() const { return m_availabilityZoneHasBeenSet; }
+    template<typename AvailabilityZoneT = Aws::String>
+    void SetAvailabilityZone(AvailabilityZoneT&& value) { m_availabilityZoneHasBeenSet = true; m_availabilityZone = std::forward<AvailabilityZoneT>(value); }
+    template<typename AvailabilityZoneT = Aws::String>
+    CapacityReservation& WithAvailabilityZone(AvailabilityZoneT&& value) { SetAvailabilityZone(std::forward<AvailabilityZoneT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Availability Zone in which the capacity is reserved.</p>
-     */
-    inline void SetAvailabilityZone(const Aws::String& value) { m_availabilityZoneHasBeenSet = true; m_availabilityZone = value; }
-
-    /**
-     * <p>The Availability Zone in which the capacity is reserved.</p>
-     */
-    inline void SetAvailabilityZone(Aws::String&& value) { m_availabilityZoneHasBeenSet = true; m_availabilityZone = std::move(value); }
-
-    /**
-     * <p>The Availability Zone in which the capacity is reserved.</p>
-     */
-    inline void SetAvailabilityZone(const char* value) { m_availabilityZoneHasBeenSet = true; m_availabilityZone.assign(value); }
-
-    /**
-     * <p>The Availability Zone in which the capacity is reserved.</p>
-     */
-    inline CapacityReservation& WithAvailabilityZone(const Aws::String& value) { SetAvailabilityZone(value); return *this;}
-
-    /**
-     * <p>The Availability Zone in which the capacity is reserved.</p>
-     */
-    inline CapacityReservation& WithAvailabilityZone(Aws::String&& value) { SetAvailabilityZone(std::move(value)); return *this;}
-
-    /**
-     * <p>The Availability Zone in which the capacity is reserved.</p>
-     */
-    inline CapacityReservation& WithAvailabilityZone(const char* value) { SetAvailabilityZone(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Indicates the tenancy of the Capacity Reservation. A Capacity Reservation can
      * have one of the following tenancy settings:</p> <ul> <li> <p>
@@ -357,114 +146,35 @@ namespace Model
      * hardware that is dedicated to a single Amazon Web Services account.</p> </li>
      * </ul>
      */
-    inline const CapacityReservationTenancy& GetTenancy() const{ return m_tenancy; }
-
-    /**
-     * <p>Indicates the tenancy of the Capacity Reservation. A Capacity Reservation can
-     * have one of the following tenancy settings:</p> <ul> <li> <p>
-     * <code>default</code> - The Capacity Reservation is created on hardware that is
-     * shared with other Amazon Web Services accounts.</p> </li> <li> <p>
-     * <code>dedicated</code> - The Capacity Reservation is created on single-tenant
-     * hardware that is dedicated to a single Amazon Web Services account.</p> </li>
-     * </ul>
-     */
+    inline CapacityReservationTenancy GetTenancy() const { return m_tenancy; }
     inline bool TenancyHasBeenSet() const { return m_tenancyHasBeenSet; }
+    inline void SetTenancy(CapacityReservationTenancy value) { m_tenancyHasBeenSet = true; m_tenancy = value; }
+    inline CapacityReservation& WithTenancy(CapacityReservationTenancy value) { SetTenancy(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Indicates the tenancy of the Capacity Reservation. A Capacity Reservation can
-     * have one of the following tenancy settings:</p> <ul> <li> <p>
-     * <code>default</code> - The Capacity Reservation is created on hardware that is
-     * shared with other Amazon Web Services accounts.</p> </li> <li> <p>
-     * <code>dedicated</code> - The Capacity Reservation is created on single-tenant
-     * hardware that is dedicated to a single Amazon Web Services account.</p> </li>
-     * </ul>
-     */
-    inline void SetTenancy(const CapacityReservationTenancy& value) { m_tenancyHasBeenSet = true; m_tenancy = value; }
-
-    /**
-     * <p>Indicates the tenancy of the Capacity Reservation. A Capacity Reservation can
-     * have one of the following tenancy settings:</p> <ul> <li> <p>
-     * <code>default</code> - The Capacity Reservation is created on hardware that is
-     * shared with other Amazon Web Services accounts.</p> </li> <li> <p>
-     * <code>dedicated</code> - The Capacity Reservation is created on single-tenant
-     * hardware that is dedicated to a single Amazon Web Services account.</p> </li>
-     * </ul>
-     */
-    inline void SetTenancy(CapacityReservationTenancy&& value) { m_tenancyHasBeenSet = true; m_tenancy = std::move(value); }
-
-    /**
-     * <p>Indicates the tenancy of the Capacity Reservation. A Capacity Reservation can
-     * have one of the following tenancy settings:</p> <ul> <li> <p>
-     * <code>default</code> - The Capacity Reservation is created on hardware that is
-     * shared with other Amazon Web Services accounts.</p> </li> <li> <p>
-     * <code>dedicated</code> - The Capacity Reservation is created on single-tenant
-     * hardware that is dedicated to a single Amazon Web Services account.</p> </li>
-     * </ul>
-     */
-    inline CapacityReservation& WithTenancy(const CapacityReservationTenancy& value) { SetTenancy(value); return *this;}
-
-    /**
-     * <p>Indicates the tenancy of the Capacity Reservation. A Capacity Reservation can
-     * have one of the following tenancy settings:</p> <ul> <li> <p>
-     * <code>default</code> - The Capacity Reservation is created on hardware that is
-     * shared with other Amazon Web Services accounts.</p> </li> <li> <p>
-     * <code>dedicated</code> - The Capacity Reservation is created on single-tenant
-     * hardware that is dedicated to a single Amazon Web Services account.</p> </li>
-     * </ul>
-     */
-    inline CapacityReservation& WithTenancy(CapacityReservationTenancy&& value) { SetTenancy(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The total number of instances for which the Capacity Reservation reserves
      * capacity.</p>
      */
-    inline int GetTotalInstanceCount() const{ return m_totalInstanceCount; }
-
-    /**
-     * <p>The total number of instances for which the Capacity Reservation reserves
-     * capacity.</p>
-     */
+    inline int GetTotalInstanceCount() const { return m_totalInstanceCount; }
     inline bool TotalInstanceCountHasBeenSet() const { return m_totalInstanceCountHasBeenSet; }
-
-    /**
-     * <p>The total number of instances for which the Capacity Reservation reserves
-     * capacity.</p>
-     */
     inline void SetTotalInstanceCount(int value) { m_totalInstanceCountHasBeenSet = true; m_totalInstanceCount = value; }
-
-    /**
-     * <p>The total number of instances for which the Capacity Reservation reserves
-     * capacity.</p>
-     */
     inline CapacityReservation& WithTotalInstanceCount(int value) { SetTotalInstanceCount(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The remaining capacity. Indicates the number of instances that can be
      * launched in the Capacity Reservation.</p>
      */
-    inline int GetAvailableInstanceCount() const{ return m_availableInstanceCount; }
-
-    /**
-     * <p>The remaining capacity. Indicates the number of instances that can be
-     * launched in the Capacity Reservation.</p>
-     */
+    inline int GetAvailableInstanceCount() const { return m_availableInstanceCount; }
     inline bool AvailableInstanceCountHasBeenSet() const { return m_availableInstanceCountHasBeenSet; }
-
-    /**
-     * <p>The remaining capacity. Indicates the number of instances that can be
-     * launched in the Capacity Reservation.</p>
-     */
     inline void SetAvailableInstanceCount(int value) { m_availableInstanceCountHasBeenSet = true; m_availableInstanceCount = value; }
-
-    /**
-     * <p>The remaining capacity. Indicates the number of instances that can be
-     * launched in the Capacity Reservation.</p>
-     */
     inline CapacityReservation& WithAvailableInstanceCount(int value) { SetAvailableInstanceCount(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Indicates whether the Capacity Reservation supports EBS-optimized instances.
      * This optimization provides dedicated throughput to Amazon EBS and an optimized
@@ -472,240 +182,88 @@ namespace Model
      * available with all instance types. Additional usage charges apply when using an
      * EBS- optimized instance.</p>
      */
-    inline bool GetEbsOptimized() const{ return m_ebsOptimized; }
-
-    /**
-     * <p>Indicates whether the Capacity Reservation supports EBS-optimized instances.
-     * This optimization provides dedicated throughput to Amazon EBS and an optimized
-     * configuration stack to provide optimal I/O performance. This optimization isn't
-     * available with all instance types. Additional usage charges apply when using an
-     * EBS- optimized instance.</p>
-     */
+    inline bool GetEbsOptimized() const { return m_ebsOptimized; }
     inline bool EbsOptimizedHasBeenSet() const { return m_ebsOptimizedHasBeenSet; }
-
-    /**
-     * <p>Indicates whether the Capacity Reservation supports EBS-optimized instances.
-     * This optimization provides dedicated throughput to Amazon EBS and an optimized
-     * configuration stack to provide optimal I/O performance. This optimization isn't
-     * available with all instance types. Additional usage charges apply when using an
-     * EBS- optimized instance.</p>
-     */
     inline void SetEbsOptimized(bool value) { m_ebsOptimizedHasBeenSet = true; m_ebsOptimized = value; }
-
-    /**
-     * <p>Indicates whether the Capacity Reservation supports EBS-optimized instances.
-     * This optimization provides dedicated throughput to Amazon EBS and an optimized
-     * configuration stack to provide optimal I/O performance. This optimization isn't
-     * available with all instance types. Additional usage charges apply when using an
-     * EBS- optimized instance.</p>
-     */
     inline CapacityReservation& WithEbsOptimized(bool value) { SetEbsOptimized(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p> <i>Deprecated.</i> </p>
      */
-    inline bool GetEphemeralStorage() const{ return m_ephemeralStorage; }
-
-    /**
-     * <p> <i>Deprecated.</i> </p>
-     */
+    inline bool GetEphemeralStorage() const { return m_ephemeralStorage; }
     inline bool EphemeralStorageHasBeenSet() const { return m_ephemeralStorageHasBeenSet; }
-
-    /**
-     * <p> <i>Deprecated.</i> </p>
-     */
     inline void SetEphemeralStorage(bool value) { m_ephemeralStorageHasBeenSet = true; m_ephemeralStorage = value; }
-
-    /**
-     * <p> <i>Deprecated.</i> </p>
-     */
     inline CapacityReservation& WithEphemeralStorage(bool value) { SetEphemeralStorage(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The current state of the Capacity Reservation. A Capacity Reservation can be
      * in one of the following states:</p> <ul> <li> <p> <code>active</code> - The
-     * Capacity Reservation is active and the capacity is available for your use.</p>
-     * </li> <li> <p> <code>expired</code> - The Capacity Reservation expired
-     * automatically at the date and time specified in your request. The reserved
-     * capacity is no longer available for your use.</p> </li> <li> <p>
-     * <code>cancelled</code> - The Capacity Reservation was cancelled. The reserved
-     * capacity is no longer available for your use.</p> </li> <li> <p>
-     * <code>pending</code> - The Capacity Reservation request was successful but the
-     * capacity provisioning is still pending.</p> </li> <li> <p> <code>failed</code> -
-     * The Capacity Reservation request has failed. A request might fail due to invalid
-     * request parameters, capacity constraints, or instance limit constraints. Failed
-     * requests are retained for 60 minutes.</p> </li> </ul>
+     * capacity is available for use.</p> </li> <li> <p> <code>expired</code> - The
+     * Capacity Reservation expired automatically at the date and time specified in
+     * your reservation request. The reserved capacity is no longer available for your
+     * use.</p> </li> <li> <p> <code>cancelled</code> - The Capacity Reservation was
+     * canceled. The reserved capacity is no longer available for your use.</p> </li>
+     * <li> <p> <code>pending</code> - The Capacity Reservation request was successful
+     * but the capacity provisioning is still pending.</p> </li> <li> <p>
+     * <code>failed</code> - The Capacity Reservation request has failed. A request can
+     * fail due to request parameters that are not valid, capacity constraints, or
+     * instance limit constraints. You can view a failed request for 60 minutes.</p>
+     * </li> <li> <p> <code>scheduled</code> - (<i>Future-dated Capacity
+     * Reservations</i>) The future-dated Capacity Reservation request was approved and
+     * the Capacity Reservation is scheduled for delivery on the requested start
+     * date.</p> </li> <li> <p> <code>payment-pending</code> - (<i>Capacity Blocks</i>)
+     * The upfront payment has not been processed yet.</p> </li> <li> <p>
+     * <code>payment-failed</code> - (<i>Capacity Blocks</i>) The upfront payment was
+     * not processed in the 12-hour time frame. Your Capacity Block was released.</p>
+     * </li> <li> <p> <code>assessing</code> - (<i>Future-dated Capacity
+     * Reservations</i>) Amazon EC2 is assessing your request for a future-dated
+     * Capacity Reservation.</p> </li> <li> <p> <code>delayed</code> - (<i>Future-dated
+     * Capacity Reservations</i>) Amazon EC2 encountered a delay in provisioning the
+     * requested future-dated Capacity Reservation. Amazon EC2 is unable to deliver the
+     * requested capacity by the requested start date and time.</p> </li> <li> <p>
+     * <code>unsupported</code> - (<i>Future-dated Capacity Reservations</i>) Amazon
+     * EC2 can't support the future-dated Capacity Reservation request due to capacity
+     * constraints. You can view unsupported requests for 30 days. The Capacity
+     * Reservation will not be delivered.</p> </li> </ul>
      */
-    inline const CapacityReservationState& GetState() const{ return m_state; }
-
-    /**
-     * <p>The current state of the Capacity Reservation. A Capacity Reservation can be
-     * in one of the following states:</p> <ul> <li> <p> <code>active</code> - The
-     * Capacity Reservation is active and the capacity is available for your use.</p>
-     * </li> <li> <p> <code>expired</code> - The Capacity Reservation expired
-     * automatically at the date and time specified in your request. The reserved
-     * capacity is no longer available for your use.</p> </li> <li> <p>
-     * <code>cancelled</code> - The Capacity Reservation was cancelled. The reserved
-     * capacity is no longer available for your use.</p> </li> <li> <p>
-     * <code>pending</code> - The Capacity Reservation request was successful but the
-     * capacity provisioning is still pending.</p> </li> <li> <p> <code>failed</code> -
-     * The Capacity Reservation request has failed. A request might fail due to invalid
-     * request parameters, capacity constraints, or instance limit constraints. Failed
-     * requests are retained for 60 minutes.</p> </li> </ul>
-     */
+    inline CapacityReservationState GetState() const { return m_state; }
     inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
+    inline void SetState(CapacityReservationState value) { m_stateHasBeenSet = true; m_state = value; }
+    inline CapacityReservation& WithState(CapacityReservationState value) { SetState(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The current state of the Capacity Reservation. A Capacity Reservation can be
-     * in one of the following states:</p> <ul> <li> <p> <code>active</code> - The
-     * Capacity Reservation is active and the capacity is available for your use.</p>
-     * </li> <li> <p> <code>expired</code> - The Capacity Reservation expired
-     * automatically at the date and time specified in your request. The reserved
-     * capacity is no longer available for your use.</p> </li> <li> <p>
-     * <code>cancelled</code> - The Capacity Reservation was cancelled. The reserved
-     * capacity is no longer available for your use.</p> </li> <li> <p>
-     * <code>pending</code> - The Capacity Reservation request was successful but the
-     * capacity provisioning is still pending.</p> </li> <li> <p> <code>failed</code> -
-     * The Capacity Reservation request has failed. A request might fail due to invalid
-     * request parameters, capacity constraints, or instance limit constraints. Failed
-     * requests are retained for 60 minutes.</p> </li> </ul>
-     */
-    inline void SetState(const CapacityReservationState& value) { m_stateHasBeenSet = true; m_state = value; }
-
-    /**
-     * <p>The current state of the Capacity Reservation. A Capacity Reservation can be
-     * in one of the following states:</p> <ul> <li> <p> <code>active</code> - The
-     * Capacity Reservation is active and the capacity is available for your use.</p>
-     * </li> <li> <p> <code>expired</code> - The Capacity Reservation expired
-     * automatically at the date and time specified in your request. The reserved
-     * capacity is no longer available for your use.</p> </li> <li> <p>
-     * <code>cancelled</code> - The Capacity Reservation was cancelled. The reserved
-     * capacity is no longer available for your use.</p> </li> <li> <p>
-     * <code>pending</code> - The Capacity Reservation request was successful but the
-     * capacity provisioning is still pending.</p> </li> <li> <p> <code>failed</code> -
-     * The Capacity Reservation request has failed. A request might fail due to invalid
-     * request parameters, capacity constraints, or instance limit constraints. Failed
-     * requests are retained for 60 minutes.</p> </li> </ul>
-     */
-    inline void SetState(CapacityReservationState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
-
-    /**
-     * <p>The current state of the Capacity Reservation. A Capacity Reservation can be
-     * in one of the following states:</p> <ul> <li> <p> <code>active</code> - The
-     * Capacity Reservation is active and the capacity is available for your use.</p>
-     * </li> <li> <p> <code>expired</code> - The Capacity Reservation expired
-     * automatically at the date and time specified in your request. The reserved
-     * capacity is no longer available for your use.</p> </li> <li> <p>
-     * <code>cancelled</code> - The Capacity Reservation was cancelled. The reserved
-     * capacity is no longer available for your use.</p> </li> <li> <p>
-     * <code>pending</code> - The Capacity Reservation request was successful but the
-     * capacity provisioning is still pending.</p> </li> <li> <p> <code>failed</code> -
-     * The Capacity Reservation request has failed. A request might fail due to invalid
-     * request parameters, capacity constraints, or instance limit constraints. Failed
-     * requests are retained for 60 minutes.</p> </li> </ul>
-     */
-    inline CapacityReservation& WithState(const CapacityReservationState& value) { SetState(value); return *this;}
-
-    /**
-     * <p>The current state of the Capacity Reservation. A Capacity Reservation can be
-     * in one of the following states:</p> <ul> <li> <p> <code>active</code> - The
-     * Capacity Reservation is active and the capacity is available for your use.</p>
-     * </li> <li> <p> <code>expired</code> - The Capacity Reservation expired
-     * automatically at the date and time specified in your request. The reserved
-     * capacity is no longer available for your use.</p> </li> <li> <p>
-     * <code>cancelled</code> - The Capacity Reservation was cancelled. The reserved
-     * capacity is no longer available for your use.</p> </li> <li> <p>
-     * <code>pending</code> - The Capacity Reservation request was successful but the
-     * capacity provisioning is still pending.</p> </li> <li> <p> <code>failed</code> -
-     * The Capacity Reservation request has failed. A request might fail due to invalid
-     * request parameters, capacity constraints, or instance limit constraints. Failed
-     * requests are retained for 60 minutes.</p> </li> </ul>
-     */
-    inline CapacityReservation& WithState(CapacityReservationState&& value) { SetState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time at which the Capacity Reservation was started.</p>
      */
-    inline const Aws::Utils::DateTime& GetStartDate() const{ return m_startDate; }
-
-    /**
-     * <p>The date and time at which the Capacity Reservation was started.</p>
-     */
+    inline const Aws::Utils::DateTime& GetStartDate() const { return m_startDate; }
     inline bool StartDateHasBeenSet() const { return m_startDateHasBeenSet; }
+    template<typename StartDateT = Aws::Utils::DateTime>
+    void SetStartDate(StartDateT&& value) { m_startDateHasBeenSet = true; m_startDate = std::forward<StartDateT>(value); }
+    template<typename StartDateT = Aws::Utils::DateTime>
+    CapacityReservation& WithStartDate(StartDateT&& value) { SetStartDate(std::forward<StartDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time at which the Capacity Reservation was started.</p>
-     */
-    inline void SetStartDate(const Aws::Utils::DateTime& value) { m_startDateHasBeenSet = true; m_startDate = value; }
-
-    /**
-     * <p>The date and time at which the Capacity Reservation was started.</p>
-     */
-    inline void SetStartDate(Aws::Utils::DateTime&& value) { m_startDateHasBeenSet = true; m_startDate = std::move(value); }
-
-    /**
-     * <p>The date and time at which the Capacity Reservation was started.</p>
-     */
-    inline CapacityReservation& WithStartDate(const Aws::Utils::DateTime& value) { SetStartDate(value); return *this;}
-
-    /**
-     * <p>The date and time at which the Capacity Reservation was started.</p>
-     */
-    inline CapacityReservation& WithStartDate(Aws::Utils::DateTime&& value) { SetStartDate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time at which the Capacity Reservation expires. When a Capacity
      * Reservation expires, the reserved capacity is released and you can no longer
      * launch instances into it. The Capacity Reservation's state changes to
      * <code>expired</code> when it reaches its end date and time.</p>
      */
-    inline const Aws::Utils::DateTime& GetEndDate() const{ return m_endDate; }
-
-    /**
-     * <p>The date and time at which the Capacity Reservation expires. When a Capacity
-     * Reservation expires, the reserved capacity is released and you can no longer
-     * launch instances into it. The Capacity Reservation's state changes to
-     * <code>expired</code> when it reaches its end date and time.</p>
-     */
+    inline const Aws::Utils::DateTime& GetEndDate() const { return m_endDate; }
     inline bool EndDateHasBeenSet() const { return m_endDateHasBeenSet; }
+    template<typename EndDateT = Aws::Utils::DateTime>
+    void SetEndDate(EndDateT&& value) { m_endDateHasBeenSet = true; m_endDate = std::forward<EndDateT>(value); }
+    template<typename EndDateT = Aws::Utils::DateTime>
+    CapacityReservation& WithEndDate(EndDateT&& value) { SetEndDate(std::forward<EndDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time at which the Capacity Reservation expires. When a Capacity
-     * Reservation expires, the reserved capacity is released and you can no longer
-     * launch instances into it. The Capacity Reservation's state changes to
-     * <code>expired</code> when it reaches its end date and time.</p>
-     */
-    inline void SetEndDate(const Aws::Utils::DateTime& value) { m_endDateHasBeenSet = true; m_endDate = value; }
-
-    /**
-     * <p>The date and time at which the Capacity Reservation expires. When a Capacity
-     * Reservation expires, the reserved capacity is released and you can no longer
-     * launch instances into it. The Capacity Reservation's state changes to
-     * <code>expired</code> when it reaches its end date and time.</p>
-     */
-    inline void SetEndDate(Aws::Utils::DateTime&& value) { m_endDateHasBeenSet = true; m_endDate = std::move(value); }
-
-    /**
-     * <p>The date and time at which the Capacity Reservation expires. When a Capacity
-     * Reservation expires, the reserved capacity is released and you can no longer
-     * launch instances into it. The Capacity Reservation's state changes to
-     * <code>expired</code> when it reaches its end date and time.</p>
-     */
-    inline CapacityReservation& WithEndDate(const Aws::Utils::DateTime& value) { SetEndDate(value); return *this;}
-
-    /**
-     * <p>The date and time at which the Capacity Reservation expires. When a Capacity
-     * Reservation expires, the reserved capacity is released and you can no longer
-     * launch instances into it. The Capacity Reservation's state changes to
-     * <code>expired</code> when it reaches its end date and time.</p>
-     */
-    inline CapacityReservation& WithEndDate(Aws::Utils::DateTime&& value) { SetEndDate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Indicates the way in which the Capacity Reservation ends. A Capacity
      * Reservation can have one of the following end types:</p> <ul> <li> <p>
@@ -713,54 +271,13 @@ namespace Model
      * explicitly cancel it.</p> </li> <li> <p> <code>limited</code> - The Capacity
      * Reservation expires automatically at a specified date and time.</p> </li> </ul>
      */
-    inline const EndDateType& GetEndDateType() const{ return m_endDateType; }
-
-    /**
-     * <p>Indicates the way in which the Capacity Reservation ends. A Capacity
-     * Reservation can have one of the following end types:</p> <ul> <li> <p>
-     * <code>unlimited</code> - The Capacity Reservation remains active until you
-     * explicitly cancel it.</p> </li> <li> <p> <code>limited</code> - The Capacity
-     * Reservation expires automatically at a specified date and time.</p> </li> </ul>
-     */
+    inline EndDateType GetEndDateType() const { return m_endDateType; }
     inline bool EndDateTypeHasBeenSet() const { return m_endDateTypeHasBeenSet; }
+    inline void SetEndDateType(EndDateType value) { m_endDateTypeHasBeenSet = true; m_endDateType = value; }
+    inline CapacityReservation& WithEndDateType(EndDateType value) { SetEndDateType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Indicates the way in which the Capacity Reservation ends. A Capacity
-     * Reservation can have one of the following end types:</p> <ul> <li> <p>
-     * <code>unlimited</code> - The Capacity Reservation remains active until you
-     * explicitly cancel it.</p> </li> <li> <p> <code>limited</code> - The Capacity
-     * Reservation expires automatically at a specified date and time.</p> </li> </ul>
-     */
-    inline void SetEndDateType(const EndDateType& value) { m_endDateTypeHasBeenSet = true; m_endDateType = value; }
-
-    /**
-     * <p>Indicates the way in which the Capacity Reservation ends. A Capacity
-     * Reservation can have one of the following end types:</p> <ul> <li> <p>
-     * <code>unlimited</code> - The Capacity Reservation remains active until you
-     * explicitly cancel it.</p> </li> <li> <p> <code>limited</code> - The Capacity
-     * Reservation expires automatically at a specified date and time.</p> </li> </ul>
-     */
-    inline void SetEndDateType(EndDateType&& value) { m_endDateTypeHasBeenSet = true; m_endDateType = std::move(value); }
-
-    /**
-     * <p>Indicates the way in which the Capacity Reservation ends. A Capacity
-     * Reservation can have one of the following end types:</p> <ul> <li> <p>
-     * <code>unlimited</code> - The Capacity Reservation remains active until you
-     * explicitly cancel it.</p> </li> <li> <p> <code>limited</code> - The Capacity
-     * Reservation expires automatically at a specified date and time.</p> </li> </ul>
-     */
-    inline CapacityReservation& WithEndDateType(const EndDateType& value) { SetEndDateType(value); return *this;}
-
-    /**
-     * <p>Indicates the way in which the Capacity Reservation ends. A Capacity
-     * Reservation can have one of the following end types:</p> <ul> <li> <p>
-     * <code>unlimited</code> - The Capacity Reservation remains active until you
-     * explicitly cancel it.</p> </li> <li> <p> <code>limited</code> - The Capacity
-     * Reservation expires automatically at a specified date and time.</p> </li> </ul>
-     */
-    inline CapacityReservation& WithEndDateType(EndDateType&& value) { SetEndDateType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Indicates the type of instance launches that the Capacity Reservation
      * accepts. The options include:</p> <ul> <li> <p> <code>open</code> - The Capacity
@@ -773,257 +290,66 @@ namespace Model
      * ensures that only permitted instances can use the reserved capacity. </p> </li>
      * </ul>
      */
-    inline const InstanceMatchCriteria& GetInstanceMatchCriteria() const{ return m_instanceMatchCriteria; }
-
-    /**
-     * <p>Indicates the type of instance launches that the Capacity Reservation
-     * accepts. The options include:</p> <ul> <li> <p> <code>open</code> - The Capacity
-     * Reservation accepts all instances that have matching attributes (instance type,
-     * platform, and Availability Zone). Instances that have matching attributes launch
-     * into the Capacity Reservation automatically without specifying any additional
-     * parameters.</p> </li> <li> <p> <code>targeted</code> - The Capacity Reservation
-     * only accepts instances that have matching attributes (instance type, platform,
-     * and Availability Zone), and explicitly target the Capacity Reservation. This
-     * ensures that only permitted instances can use the reserved capacity. </p> </li>
-     * </ul>
-     */
+    inline InstanceMatchCriteria GetInstanceMatchCriteria() const { return m_instanceMatchCriteria; }
     inline bool InstanceMatchCriteriaHasBeenSet() const { return m_instanceMatchCriteriaHasBeenSet; }
+    inline void SetInstanceMatchCriteria(InstanceMatchCriteria value) { m_instanceMatchCriteriaHasBeenSet = true; m_instanceMatchCriteria = value; }
+    inline CapacityReservation& WithInstanceMatchCriteria(InstanceMatchCriteria value) { SetInstanceMatchCriteria(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Indicates the type of instance launches that the Capacity Reservation
-     * accepts. The options include:</p> <ul> <li> <p> <code>open</code> - The Capacity
-     * Reservation accepts all instances that have matching attributes (instance type,
-     * platform, and Availability Zone). Instances that have matching attributes launch
-     * into the Capacity Reservation automatically without specifying any additional
-     * parameters.</p> </li> <li> <p> <code>targeted</code> - The Capacity Reservation
-     * only accepts instances that have matching attributes (instance type, platform,
-     * and Availability Zone), and explicitly target the Capacity Reservation. This
-     * ensures that only permitted instances can use the reserved capacity. </p> </li>
-     * </ul>
-     */
-    inline void SetInstanceMatchCriteria(const InstanceMatchCriteria& value) { m_instanceMatchCriteriaHasBeenSet = true; m_instanceMatchCriteria = value; }
-
-    /**
-     * <p>Indicates the type of instance launches that the Capacity Reservation
-     * accepts. The options include:</p> <ul> <li> <p> <code>open</code> - The Capacity
-     * Reservation accepts all instances that have matching attributes (instance type,
-     * platform, and Availability Zone). Instances that have matching attributes launch
-     * into the Capacity Reservation automatically without specifying any additional
-     * parameters.</p> </li> <li> <p> <code>targeted</code> - The Capacity Reservation
-     * only accepts instances that have matching attributes (instance type, platform,
-     * and Availability Zone), and explicitly target the Capacity Reservation. This
-     * ensures that only permitted instances can use the reserved capacity. </p> </li>
-     * </ul>
-     */
-    inline void SetInstanceMatchCriteria(InstanceMatchCriteria&& value) { m_instanceMatchCriteriaHasBeenSet = true; m_instanceMatchCriteria = std::move(value); }
-
-    /**
-     * <p>Indicates the type of instance launches that the Capacity Reservation
-     * accepts. The options include:</p> <ul> <li> <p> <code>open</code> - The Capacity
-     * Reservation accepts all instances that have matching attributes (instance type,
-     * platform, and Availability Zone). Instances that have matching attributes launch
-     * into the Capacity Reservation automatically without specifying any additional
-     * parameters.</p> </li> <li> <p> <code>targeted</code> - The Capacity Reservation
-     * only accepts instances that have matching attributes (instance type, platform,
-     * and Availability Zone), and explicitly target the Capacity Reservation. This
-     * ensures that only permitted instances can use the reserved capacity. </p> </li>
-     * </ul>
-     */
-    inline CapacityReservation& WithInstanceMatchCriteria(const InstanceMatchCriteria& value) { SetInstanceMatchCriteria(value); return *this;}
-
-    /**
-     * <p>Indicates the type of instance launches that the Capacity Reservation
-     * accepts. The options include:</p> <ul> <li> <p> <code>open</code> - The Capacity
-     * Reservation accepts all instances that have matching attributes (instance type,
-     * platform, and Availability Zone). Instances that have matching attributes launch
-     * into the Capacity Reservation automatically without specifying any additional
-     * parameters.</p> </li> <li> <p> <code>targeted</code> - The Capacity Reservation
-     * only accepts instances that have matching attributes (instance type, platform,
-     * and Availability Zone), and explicitly target the Capacity Reservation. This
-     * ensures that only permitted instances can use the reserved capacity. </p> </li>
-     * </ul>
-     */
-    inline CapacityReservation& WithInstanceMatchCriteria(InstanceMatchCriteria&& value) { SetInstanceMatchCriteria(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time at which the Capacity Reservation was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreateDate() const{ return m_createDate; }
-
-    /**
-     * <p>The date and time at which the Capacity Reservation was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreateDate() const { return m_createDate; }
     inline bool CreateDateHasBeenSet() const { return m_createDateHasBeenSet; }
+    template<typename CreateDateT = Aws::Utils::DateTime>
+    void SetCreateDate(CreateDateT&& value) { m_createDateHasBeenSet = true; m_createDate = std::forward<CreateDateT>(value); }
+    template<typename CreateDateT = Aws::Utils::DateTime>
+    CapacityReservation& WithCreateDate(CreateDateT&& value) { SetCreateDate(std::forward<CreateDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time at which the Capacity Reservation was created.</p>
-     */
-    inline void SetCreateDate(const Aws::Utils::DateTime& value) { m_createDateHasBeenSet = true; m_createDate = value; }
-
-    /**
-     * <p>The date and time at which the Capacity Reservation was created.</p>
-     */
-    inline void SetCreateDate(Aws::Utils::DateTime&& value) { m_createDateHasBeenSet = true; m_createDate = std::move(value); }
-
-    /**
-     * <p>The date and time at which the Capacity Reservation was created.</p>
-     */
-    inline CapacityReservation& WithCreateDate(const Aws::Utils::DateTime& value) { SetCreateDate(value); return *this;}
-
-    /**
-     * <p>The date and time at which the Capacity Reservation was created.</p>
-     */
-    inline CapacityReservation& WithCreateDate(Aws::Utils::DateTime&& value) { SetCreateDate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Any tags assigned to the Capacity Reservation.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>Any tags assigned to the Capacity Reservation.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    CapacityReservation& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    CapacityReservation& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Any tags assigned to the Capacity Reservation.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>Any tags assigned to the Capacity Reservation.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>Any tags assigned to the Capacity Reservation.</p>
-     */
-    inline CapacityReservation& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>Any tags assigned to the Capacity Reservation.</p>
-     */
-    inline CapacityReservation& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>Any tags assigned to the Capacity Reservation.</p>
-     */
-    inline CapacityReservation& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>Any tags assigned to the Capacity Reservation.</p>
-     */
-    inline CapacityReservation& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the Outpost on which the Capacity
      * Reservation was created.</p>
      */
-    inline const Aws::String& GetOutpostArn() const{ return m_outpostArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Outpost on which the Capacity
-     * Reservation was created.</p>
-     */
+    inline const Aws::String& GetOutpostArn() const { return m_outpostArn; }
     inline bool OutpostArnHasBeenSet() const { return m_outpostArnHasBeenSet; }
+    template<typename OutpostArnT = Aws::String>
+    void SetOutpostArn(OutpostArnT&& value) { m_outpostArnHasBeenSet = true; m_outpostArn = std::forward<OutpostArnT>(value); }
+    template<typename OutpostArnT = Aws::String>
+    CapacityReservation& WithOutpostArn(OutpostArnT&& value) { SetOutpostArn(std::forward<OutpostArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Outpost on which the Capacity
-     * Reservation was created.</p>
-     */
-    inline void SetOutpostArn(const Aws::String& value) { m_outpostArnHasBeenSet = true; m_outpostArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Outpost on which the Capacity
-     * Reservation was created.</p>
-     */
-    inline void SetOutpostArn(Aws::String&& value) { m_outpostArnHasBeenSet = true; m_outpostArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Outpost on which the Capacity
-     * Reservation was created.</p>
-     */
-    inline void SetOutpostArn(const char* value) { m_outpostArnHasBeenSet = true; m_outpostArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Outpost on which the Capacity
-     * Reservation was created.</p>
-     */
-    inline CapacityReservation& WithOutpostArn(const Aws::String& value) { SetOutpostArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Outpost on which the Capacity
-     * Reservation was created.</p>
-     */
-    inline CapacityReservation& WithOutpostArn(Aws::String&& value) { SetOutpostArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Outpost on which the Capacity
-     * Reservation was created.</p>
-     */
-    inline CapacityReservation& WithOutpostArn(const char* value) { SetOutpostArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the Capacity Reservation Fleet to which the Capacity Reservation
      * belongs. Only valid for Capacity Reservations that were created by a Capacity
      * Reservation Fleet.</p>
      */
-    inline const Aws::String& GetCapacityReservationFleetId() const{ return m_capacityReservationFleetId; }
-
-    /**
-     * <p>The ID of the Capacity Reservation Fleet to which the Capacity Reservation
-     * belongs. Only valid for Capacity Reservations that were created by a Capacity
-     * Reservation Fleet.</p>
-     */
+    inline const Aws::String& GetCapacityReservationFleetId() const { return m_capacityReservationFleetId; }
     inline bool CapacityReservationFleetIdHasBeenSet() const { return m_capacityReservationFleetIdHasBeenSet; }
+    template<typename CapacityReservationFleetIdT = Aws::String>
+    void SetCapacityReservationFleetId(CapacityReservationFleetIdT&& value) { m_capacityReservationFleetIdHasBeenSet = true; m_capacityReservationFleetId = std::forward<CapacityReservationFleetIdT>(value); }
+    template<typename CapacityReservationFleetIdT = Aws::String>
+    CapacityReservation& WithCapacityReservationFleetId(CapacityReservationFleetIdT&& value) { SetCapacityReservationFleetId(std::forward<CapacityReservationFleetIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Capacity Reservation Fleet to which the Capacity Reservation
-     * belongs. Only valid for Capacity Reservations that were created by a Capacity
-     * Reservation Fleet.</p>
-     */
-    inline void SetCapacityReservationFleetId(const Aws::String& value) { m_capacityReservationFleetIdHasBeenSet = true; m_capacityReservationFleetId = value; }
-
-    /**
-     * <p>The ID of the Capacity Reservation Fleet to which the Capacity Reservation
-     * belongs. Only valid for Capacity Reservations that were created by a Capacity
-     * Reservation Fleet.</p>
-     */
-    inline void SetCapacityReservationFleetId(Aws::String&& value) { m_capacityReservationFleetIdHasBeenSet = true; m_capacityReservationFleetId = std::move(value); }
-
-    /**
-     * <p>The ID of the Capacity Reservation Fleet to which the Capacity Reservation
-     * belongs. Only valid for Capacity Reservations that were created by a Capacity
-     * Reservation Fleet.</p>
-     */
-    inline void SetCapacityReservationFleetId(const char* value) { m_capacityReservationFleetIdHasBeenSet = true; m_capacityReservationFleetId.assign(value); }
-
-    /**
-     * <p>The ID of the Capacity Reservation Fleet to which the Capacity Reservation
-     * belongs. Only valid for Capacity Reservations that were created by a Capacity
-     * Reservation Fleet.</p>
-     */
-    inline CapacityReservation& WithCapacityReservationFleetId(const Aws::String& value) { SetCapacityReservationFleetId(value); return *this;}
-
-    /**
-     * <p>The ID of the Capacity Reservation Fleet to which the Capacity Reservation
-     * belongs. Only valid for Capacity Reservations that were created by a Capacity
-     * Reservation Fleet.</p>
-     */
-    inline CapacityReservation& WithCapacityReservationFleetId(Aws::String&& value) { SetCapacityReservationFleetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Capacity Reservation Fleet to which the Capacity Reservation
-     * belongs. Only valid for Capacity Reservations that were created by a Capacity
-     * Reservation Fleet.</p>
-     */
-    inline CapacityReservation& WithCapacityReservationFleetId(const char* value) { SetCapacityReservationFleetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the cluster placement group in which the
      * Capacity Reservation was created. For more information, see <a
@@ -1031,143 +357,88 @@ namespace Model
      * Reservations for cluster placement groups</a> in the <i>Amazon EC2 User
      * Guide</i>.</p>
      */
-    inline const Aws::String& GetPlacementGroupArn() const{ return m_placementGroupArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the cluster placement group in which the
-     * Capacity Reservation was created. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/cr-cpg.html"> Capacity
-     * Reservations for cluster placement groups</a> in the <i>Amazon EC2 User
-     * Guide</i>.</p>
-     */
+    inline const Aws::String& GetPlacementGroupArn() const { return m_placementGroupArn; }
     inline bool PlacementGroupArnHasBeenSet() const { return m_placementGroupArnHasBeenSet; }
+    template<typename PlacementGroupArnT = Aws::String>
+    void SetPlacementGroupArn(PlacementGroupArnT&& value) { m_placementGroupArnHasBeenSet = true; m_placementGroupArn = std::forward<PlacementGroupArnT>(value); }
+    template<typename PlacementGroupArnT = Aws::String>
+    CapacityReservation& WithPlacementGroupArn(PlacementGroupArnT&& value) { SetPlacementGroupArn(std::forward<PlacementGroupArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the cluster placement group in which the
-     * Capacity Reservation was created. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/cr-cpg.html"> Capacity
-     * Reservations for cluster placement groups</a> in the <i>Amazon EC2 User
-     * Guide</i>.</p>
-     */
-    inline void SetPlacementGroupArn(const Aws::String& value) { m_placementGroupArnHasBeenSet = true; m_placementGroupArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the cluster placement group in which the
-     * Capacity Reservation was created. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/cr-cpg.html"> Capacity
-     * Reservations for cluster placement groups</a> in the <i>Amazon EC2 User
-     * Guide</i>.</p>
-     */
-    inline void SetPlacementGroupArn(Aws::String&& value) { m_placementGroupArnHasBeenSet = true; m_placementGroupArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the cluster placement group in which the
-     * Capacity Reservation was created. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/cr-cpg.html"> Capacity
-     * Reservations for cluster placement groups</a> in the <i>Amazon EC2 User
-     * Guide</i>.</p>
-     */
-    inline void SetPlacementGroupArn(const char* value) { m_placementGroupArnHasBeenSet = true; m_placementGroupArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the cluster placement group in which the
-     * Capacity Reservation was created. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/cr-cpg.html"> Capacity
-     * Reservations for cluster placement groups</a> in the <i>Amazon EC2 User
-     * Guide</i>.</p>
-     */
-    inline CapacityReservation& WithPlacementGroupArn(const Aws::String& value) { SetPlacementGroupArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the cluster placement group in which the
-     * Capacity Reservation was created. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/cr-cpg.html"> Capacity
-     * Reservations for cluster placement groups</a> in the <i>Amazon EC2 User
-     * Guide</i>.</p>
-     */
-    inline CapacityReservation& WithPlacementGroupArn(Aws::String&& value) { SetPlacementGroupArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the cluster placement group in which the
-     * Capacity Reservation was created. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/cr-cpg.html"> Capacity
-     * Reservations for cluster placement groups</a> in the <i>Amazon EC2 User
-     * Guide</i>.</p>
-     */
-    inline CapacityReservation& WithPlacementGroupArn(const char* value) { SetPlacementGroupArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about instance capacity usage.</p>
      */
-    inline const Aws::Vector<CapacityAllocation>& GetCapacityAllocations() const{ return m_capacityAllocations; }
-
-    /**
-     * <p>Information about instance capacity usage.</p>
-     */
+    inline const Aws::Vector<CapacityAllocation>& GetCapacityAllocations() const { return m_capacityAllocations; }
     inline bool CapacityAllocationsHasBeenSet() const { return m_capacityAllocationsHasBeenSet; }
+    template<typename CapacityAllocationsT = Aws::Vector<CapacityAllocation>>
+    void SetCapacityAllocations(CapacityAllocationsT&& value) { m_capacityAllocationsHasBeenSet = true; m_capacityAllocations = std::forward<CapacityAllocationsT>(value); }
+    template<typename CapacityAllocationsT = Aws::Vector<CapacityAllocation>>
+    CapacityReservation& WithCapacityAllocations(CapacityAllocationsT&& value) { SetCapacityAllocations(std::forward<CapacityAllocationsT>(value)); return *this;}
+    template<typename CapacityAllocationsT = CapacityAllocation>
+    CapacityReservation& AddCapacityAllocations(CapacityAllocationsT&& value) { m_capacityAllocationsHasBeenSet = true; m_capacityAllocations.emplace_back(std::forward<CapacityAllocationsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Information about instance capacity usage.</p>
-     */
-    inline void SetCapacityAllocations(const Aws::Vector<CapacityAllocation>& value) { m_capacityAllocationsHasBeenSet = true; m_capacityAllocations = value; }
-
-    /**
-     * <p>Information about instance capacity usage.</p>
-     */
-    inline void SetCapacityAllocations(Aws::Vector<CapacityAllocation>&& value) { m_capacityAllocationsHasBeenSet = true; m_capacityAllocations = std::move(value); }
-
-    /**
-     * <p>Information about instance capacity usage.</p>
-     */
-    inline CapacityReservation& WithCapacityAllocations(const Aws::Vector<CapacityAllocation>& value) { SetCapacityAllocations(value); return *this;}
-
-    /**
-     * <p>Information about instance capacity usage.</p>
-     */
-    inline CapacityReservation& WithCapacityAllocations(Aws::Vector<CapacityAllocation>&& value) { SetCapacityAllocations(std::move(value)); return *this;}
-
-    /**
-     * <p>Information about instance capacity usage.</p>
-     */
-    inline CapacityReservation& AddCapacityAllocations(const CapacityAllocation& value) { m_capacityAllocationsHasBeenSet = true; m_capacityAllocations.push_back(value); return *this; }
-
-    /**
-     * <p>Information about instance capacity usage.</p>
-     */
-    inline CapacityReservation& AddCapacityAllocations(CapacityAllocation&& value) { m_capacityAllocationsHasBeenSet = true; m_capacityAllocations.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The type of Capacity Reservation.</p>
      */
-    inline const CapacityReservationType& GetReservationType() const{ return m_reservationType; }
-
-    /**
-     * <p>The type of Capacity Reservation.</p>
-     */
+    inline CapacityReservationType GetReservationType() const { return m_reservationType; }
     inline bool ReservationTypeHasBeenSet() const { return m_reservationTypeHasBeenSet; }
+    inline void SetReservationType(CapacityReservationType value) { m_reservationTypeHasBeenSet = true; m_reservationType = value; }
+    inline CapacityReservation& WithReservationType(CapacityReservationType value) { SetReservationType(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The type of Capacity Reservation.</p>
+     * <p>The ID of the Amazon Web Services account to which billing of the unused
+     * capacity of the Capacity Reservation is assigned.</p>
      */
-    inline void SetReservationType(const CapacityReservationType& value) { m_reservationTypeHasBeenSet = true; m_reservationType = value; }
+    inline const Aws::String& GetUnusedReservationBillingOwnerId() const { return m_unusedReservationBillingOwnerId; }
+    inline bool UnusedReservationBillingOwnerIdHasBeenSet() const { return m_unusedReservationBillingOwnerIdHasBeenSet; }
+    template<typename UnusedReservationBillingOwnerIdT = Aws::String>
+    void SetUnusedReservationBillingOwnerId(UnusedReservationBillingOwnerIdT&& value) { m_unusedReservationBillingOwnerIdHasBeenSet = true; m_unusedReservationBillingOwnerId = std::forward<UnusedReservationBillingOwnerIdT>(value); }
+    template<typename UnusedReservationBillingOwnerIdT = Aws::String>
+    CapacityReservation& WithUnusedReservationBillingOwnerId(UnusedReservationBillingOwnerIdT&& value) { SetUnusedReservationBillingOwnerId(std::forward<UnusedReservationBillingOwnerIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The type of Capacity Reservation.</p>
+     * <p>Information about your commitment for a future-dated Capacity
+     * Reservation.</p>
      */
-    inline void SetReservationType(CapacityReservationType&& value) { m_reservationTypeHasBeenSet = true; m_reservationType = std::move(value); }
+    inline const CapacityReservationCommitmentInfo& GetCommitmentInfo() const { return m_commitmentInfo; }
+    inline bool CommitmentInfoHasBeenSet() const { return m_commitmentInfoHasBeenSet; }
+    template<typename CommitmentInfoT = CapacityReservationCommitmentInfo>
+    void SetCommitmentInfo(CommitmentInfoT&& value) { m_commitmentInfoHasBeenSet = true; m_commitmentInfo = std::forward<CommitmentInfoT>(value); }
+    template<typename CommitmentInfoT = CapacityReservationCommitmentInfo>
+    CapacityReservation& WithCommitmentInfo(CommitmentInfoT&& value) { SetCommitmentInfo(std::forward<CommitmentInfoT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The type of Capacity Reservation.</p>
+     * <p>The delivery method for a future-dated Capacity Reservation.
+     * <code>incremental</code> indicates that the requested capacity is delivered in
+     * addition to any running instances and reserved capacity that you have in your
+     * account at the requested date and time.</p>
      */
-    inline CapacityReservation& WithReservationType(const CapacityReservationType& value) { SetReservationType(value); return *this;}
+    inline CapacityReservationDeliveryPreference GetDeliveryPreference() const { return m_deliveryPreference; }
+    inline bool DeliveryPreferenceHasBeenSet() const { return m_deliveryPreferenceHasBeenSet; }
+    inline void SetDeliveryPreference(CapacityReservationDeliveryPreference value) { m_deliveryPreferenceHasBeenSet = true; m_deliveryPreference = value; }
+    inline CapacityReservation& WithDeliveryPreference(CapacityReservationDeliveryPreference value) { SetDeliveryPreference(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The type of Capacity Reservation.</p>
+     * <p>The ID of the Capacity Block.</p>
      */
-    inline CapacityReservation& WithReservationType(CapacityReservationType&& value) { SetReservationType(std::move(value)); return *this;}
-
+    inline const Aws::String& GetCapacityBlockId() const { return m_capacityBlockId; }
+    inline bool CapacityBlockIdHasBeenSet() const { return m_capacityBlockIdHasBeenSet; }
+    template<typename CapacityBlockIdT = Aws::String>
+    void SetCapacityBlockId(CapacityBlockIdT&& value) { m_capacityBlockIdHasBeenSet = true; m_capacityBlockId = std::forward<CapacityBlockIdT>(value); }
+    template<typename CapacityBlockIdT = Aws::String>
+    CapacityReservation& WithCapacityBlockId(CapacityBlockIdT&& value) { SetCapacityBlockId(std::forward<CapacityBlockIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_capacityReservationId;
@@ -1185,43 +456,43 @@ namespace Model
     Aws::String m_instanceType;
     bool m_instanceTypeHasBeenSet = false;
 
-    CapacityReservationInstancePlatform m_instancePlatform;
+    CapacityReservationInstancePlatform m_instancePlatform{CapacityReservationInstancePlatform::NOT_SET};
     bool m_instancePlatformHasBeenSet = false;
 
     Aws::String m_availabilityZone;
     bool m_availabilityZoneHasBeenSet = false;
 
-    CapacityReservationTenancy m_tenancy;
+    CapacityReservationTenancy m_tenancy{CapacityReservationTenancy::NOT_SET};
     bool m_tenancyHasBeenSet = false;
 
-    int m_totalInstanceCount;
+    int m_totalInstanceCount{0};
     bool m_totalInstanceCountHasBeenSet = false;
 
-    int m_availableInstanceCount;
+    int m_availableInstanceCount{0};
     bool m_availableInstanceCountHasBeenSet = false;
 
-    bool m_ebsOptimized;
+    bool m_ebsOptimized{false};
     bool m_ebsOptimizedHasBeenSet = false;
 
-    bool m_ephemeralStorage;
+    bool m_ephemeralStorage{false};
     bool m_ephemeralStorageHasBeenSet = false;
 
-    CapacityReservationState m_state;
+    CapacityReservationState m_state{CapacityReservationState::NOT_SET};
     bool m_stateHasBeenSet = false;
 
-    Aws::Utils::DateTime m_startDate;
+    Aws::Utils::DateTime m_startDate{};
     bool m_startDateHasBeenSet = false;
 
-    Aws::Utils::DateTime m_endDate;
+    Aws::Utils::DateTime m_endDate{};
     bool m_endDateHasBeenSet = false;
 
-    EndDateType m_endDateType;
+    EndDateType m_endDateType{EndDateType::NOT_SET};
     bool m_endDateTypeHasBeenSet = false;
 
-    InstanceMatchCriteria m_instanceMatchCriteria;
+    InstanceMatchCriteria m_instanceMatchCriteria{InstanceMatchCriteria::NOT_SET};
     bool m_instanceMatchCriteriaHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createDate;
+    Aws::Utils::DateTime m_createDate{};
     bool m_createDateHasBeenSet = false;
 
     Aws::Vector<Tag> m_tags;
@@ -1239,8 +510,20 @@ namespace Model
     Aws::Vector<CapacityAllocation> m_capacityAllocations;
     bool m_capacityAllocationsHasBeenSet = false;
 
-    CapacityReservationType m_reservationType;
+    CapacityReservationType m_reservationType{CapacityReservationType::NOT_SET};
     bool m_reservationTypeHasBeenSet = false;
+
+    Aws::String m_unusedReservationBillingOwnerId;
+    bool m_unusedReservationBillingOwnerIdHasBeenSet = false;
+
+    CapacityReservationCommitmentInfo m_commitmentInfo;
+    bool m_commitmentInfoHasBeenSet = false;
+
+    CapacityReservationDeliveryPreference m_deliveryPreference{CapacityReservationDeliveryPreference::NOT_SET};
+    bool m_deliveryPreferenceHasBeenSet = false;
+
+    Aws::String m_capacityBlockId;
+    bool m_capacityBlockIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -39,7 +39,7 @@ namespace Model
   class LaunchTemplateCapacityReservationSpecificationRequest
   {
   public:
-    AWS_EC2_API LaunchTemplateCapacityReservationSpecificationRequest();
+    AWS_EC2_API LaunchTemplateCapacityReservationSpecificationRequest() = default;
     AWS_EC2_API LaunchTemplateCapacityReservationSpecificationRequest(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API LaunchTemplateCapacityReservationSpecificationRequest& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -47,106 +47,39 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>Indicates the instance's Capacity Reservation preferences. Possible
-     * preferences include:</p> <ul> <li> <p> <code>open</code> - The instance can run
-     * in any <code>open</code> Capacity Reservation that has matching attributes
-     * (instance type, platform, Availability Zone).</p> </li> <li> <p>
-     * <code>none</code> - The instance avoids running in a Capacity Reservation even
-     * if one is available. The instance runs in On-Demand capacity.</p> </li> </ul>
+     * preferences include:</p> <ul> <li> <p> <code>capacity-reservations-only</code> -
+     * The instance will only run in a Capacity Reservation or Capacity Reservation
+     * group. If capacity isn't available, the instance will fail to launch.</p> </li>
+     * <li> <p> <code>open</code> - The instance can run in any <code>open</code>
+     * Capacity Reservation that has matching attributes (instance type, platform,
+     * Availability Zone, tenancy).</p> </li> <li> <p> <code>none</code> - The instance
+     * avoids running in a Capacity Reservation even if one is available. The instance
+     * runs in On-Demand capacity.</p> </li> </ul>
      */
-    inline const CapacityReservationPreference& GetCapacityReservationPreference() const{ return m_capacityReservationPreference; }
-
-    /**
-     * <p>Indicates the instance's Capacity Reservation preferences. Possible
-     * preferences include:</p> <ul> <li> <p> <code>open</code> - The instance can run
-     * in any <code>open</code> Capacity Reservation that has matching attributes
-     * (instance type, platform, Availability Zone).</p> </li> <li> <p>
-     * <code>none</code> - The instance avoids running in a Capacity Reservation even
-     * if one is available. The instance runs in On-Demand capacity.</p> </li> </ul>
-     */
+    inline CapacityReservationPreference GetCapacityReservationPreference() const { return m_capacityReservationPreference; }
     inline bool CapacityReservationPreferenceHasBeenSet() const { return m_capacityReservationPreferenceHasBeenSet; }
+    inline void SetCapacityReservationPreference(CapacityReservationPreference value) { m_capacityReservationPreferenceHasBeenSet = true; m_capacityReservationPreference = value; }
+    inline LaunchTemplateCapacityReservationSpecificationRequest& WithCapacityReservationPreference(CapacityReservationPreference value) { SetCapacityReservationPreference(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Indicates the instance's Capacity Reservation preferences. Possible
-     * preferences include:</p> <ul> <li> <p> <code>open</code> - The instance can run
-     * in any <code>open</code> Capacity Reservation that has matching attributes
-     * (instance type, platform, Availability Zone).</p> </li> <li> <p>
-     * <code>none</code> - The instance avoids running in a Capacity Reservation even
-     * if one is available. The instance runs in On-Demand capacity.</p> </li> </ul>
-     */
-    inline void SetCapacityReservationPreference(const CapacityReservationPreference& value) { m_capacityReservationPreferenceHasBeenSet = true; m_capacityReservationPreference = value; }
-
-    /**
-     * <p>Indicates the instance's Capacity Reservation preferences. Possible
-     * preferences include:</p> <ul> <li> <p> <code>open</code> - The instance can run
-     * in any <code>open</code> Capacity Reservation that has matching attributes
-     * (instance type, platform, Availability Zone).</p> </li> <li> <p>
-     * <code>none</code> - The instance avoids running in a Capacity Reservation even
-     * if one is available. The instance runs in On-Demand capacity.</p> </li> </ul>
-     */
-    inline void SetCapacityReservationPreference(CapacityReservationPreference&& value) { m_capacityReservationPreferenceHasBeenSet = true; m_capacityReservationPreference = std::move(value); }
-
-    /**
-     * <p>Indicates the instance's Capacity Reservation preferences. Possible
-     * preferences include:</p> <ul> <li> <p> <code>open</code> - The instance can run
-     * in any <code>open</code> Capacity Reservation that has matching attributes
-     * (instance type, platform, Availability Zone).</p> </li> <li> <p>
-     * <code>none</code> - The instance avoids running in a Capacity Reservation even
-     * if one is available. The instance runs in On-Demand capacity.</p> </li> </ul>
-     */
-    inline LaunchTemplateCapacityReservationSpecificationRequest& WithCapacityReservationPreference(const CapacityReservationPreference& value) { SetCapacityReservationPreference(value); return *this;}
-
-    /**
-     * <p>Indicates the instance's Capacity Reservation preferences. Possible
-     * preferences include:</p> <ul> <li> <p> <code>open</code> - The instance can run
-     * in any <code>open</code> Capacity Reservation that has matching attributes
-     * (instance type, platform, Availability Zone).</p> </li> <li> <p>
-     * <code>none</code> - The instance avoids running in a Capacity Reservation even
-     * if one is available. The instance runs in On-Demand capacity.</p> </li> </ul>
-     */
-    inline LaunchTemplateCapacityReservationSpecificationRequest& WithCapacityReservationPreference(CapacityReservationPreference&& value) { SetCapacityReservationPreference(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about the target Capacity Reservation or Capacity Reservation
      * group.</p>
      */
-    inline const CapacityReservationTarget& GetCapacityReservationTarget() const{ return m_capacityReservationTarget; }
-
-    /**
-     * <p>Information about the target Capacity Reservation or Capacity Reservation
-     * group.</p>
-     */
+    inline const CapacityReservationTarget& GetCapacityReservationTarget() const { return m_capacityReservationTarget; }
     inline bool CapacityReservationTargetHasBeenSet() const { return m_capacityReservationTargetHasBeenSet; }
-
-    /**
-     * <p>Information about the target Capacity Reservation or Capacity Reservation
-     * group.</p>
-     */
-    inline void SetCapacityReservationTarget(const CapacityReservationTarget& value) { m_capacityReservationTargetHasBeenSet = true; m_capacityReservationTarget = value; }
-
-    /**
-     * <p>Information about the target Capacity Reservation or Capacity Reservation
-     * group.</p>
-     */
-    inline void SetCapacityReservationTarget(CapacityReservationTarget&& value) { m_capacityReservationTargetHasBeenSet = true; m_capacityReservationTarget = std::move(value); }
-
-    /**
-     * <p>Information about the target Capacity Reservation or Capacity Reservation
-     * group.</p>
-     */
-    inline LaunchTemplateCapacityReservationSpecificationRequest& WithCapacityReservationTarget(const CapacityReservationTarget& value) { SetCapacityReservationTarget(value); return *this;}
-
-    /**
-     * <p>Information about the target Capacity Reservation or Capacity Reservation
-     * group.</p>
-     */
-    inline LaunchTemplateCapacityReservationSpecificationRequest& WithCapacityReservationTarget(CapacityReservationTarget&& value) { SetCapacityReservationTarget(std::move(value)); return *this;}
-
+    template<typename CapacityReservationTargetT = CapacityReservationTarget>
+    void SetCapacityReservationTarget(CapacityReservationTargetT&& value) { m_capacityReservationTargetHasBeenSet = true; m_capacityReservationTarget = std::forward<CapacityReservationTargetT>(value); }
+    template<typename CapacityReservationTargetT = CapacityReservationTarget>
+    LaunchTemplateCapacityReservationSpecificationRequest& WithCapacityReservationTarget(CapacityReservationTargetT&& value) { SetCapacityReservationTarget(std::forward<CapacityReservationTargetT>(value)); return *this;}
+    ///@}
   private:
 
-    CapacityReservationPreference m_capacityReservationPreference;
+    CapacityReservationPreference m_capacityReservationPreference{CapacityReservationPreference::NOT_SET};
     bool m_capacityReservationPreferenceHasBeenSet = false;
 
     CapacityReservationTarget m_capacityReservationTarget;

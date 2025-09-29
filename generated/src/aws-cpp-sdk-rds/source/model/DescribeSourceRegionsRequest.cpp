@@ -10,15 +10,6 @@
 using namespace Aws::RDS::Model;
 using namespace Aws::Utils;
 
-DescribeSourceRegionsRequest::DescribeSourceRegionsRequest() : 
-    m_regionNameHasBeenSet(false),
-    m_maxRecords(0),
-    m_maxRecordsHasBeenSet(false),
-    m_markerHasBeenSet(false),
-    m_filtersHasBeenSet(false)
-{
-}
-
 Aws::String DescribeSourceRegionsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -40,11 +31,18 @@ Aws::String DescribeSourceRegionsRequest::SerializePayload() const
 
   if(m_filtersHasBeenSet)
   {
-    unsigned filtersCount = 1;
-    for(auto& item : m_filters)
+    if (m_filters.empty())
     {
-      item.OutputToStream(ss, "Filters.member.", filtersCount, "");
-      filtersCount++;
+      ss << "Filters=&";
+    }
+    else
+    {
+      unsigned filtersCount = 1;
+      for(auto& item : m_filters)
+      {
+        item.OutputToStream(ss, "Filters.Filter.", filtersCount, "");
+        filtersCount++;
+      }
     }
   }
 

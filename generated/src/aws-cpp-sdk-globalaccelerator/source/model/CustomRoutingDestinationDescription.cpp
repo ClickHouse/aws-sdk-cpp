@@ -18,21 +18,7 @@ namespace GlobalAccelerator
 namespace Model
 {
 
-CustomRoutingDestinationDescription::CustomRoutingDestinationDescription() : 
-    m_fromPort(0),
-    m_fromPortHasBeenSet(false),
-    m_toPort(0),
-    m_toPortHasBeenSet(false),
-    m_protocolsHasBeenSet(false)
-{
-}
-
-CustomRoutingDestinationDescription::CustomRoutingDestinationDescription(JsonView jsonValue) : 
-    m_fromPort(0),
-    m_fromPortHasBeenSet(false),
-    m_toPort(0),
-    m_toPortHasBeenSet(false),
-    m_protocolsHasBeenSet(false)
+CustomRoutingDestinationDescription::CustomRoutingDestinationDescription(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,17 +28,13 @@ CustomRoutingDestinationDescription& CustomRoutingDestinationDescription::operat
   if(jsonValue.ValueExists("FromPort"))
   {
     m_fromPort = jsonValue.GetInteger("FromPort");
-
     m_fromPortHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ToPort"))
   {
     m_toPort = jsonValue.GetInteger("ToPort");
-
     m_toPortHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Protocols"))
   {
     Aws::Utils::Array<JsonView> protocolsJsonList = jsonValue.GetArray("Protocols");
@@ -62,7 +44,6 @@ CustomRoutingDestinationDescription& CustomRoutingDestinationDescription::operat
     }
     m_protocolsHasBeenSet = true;
   }
-
   return *this;
 }
 

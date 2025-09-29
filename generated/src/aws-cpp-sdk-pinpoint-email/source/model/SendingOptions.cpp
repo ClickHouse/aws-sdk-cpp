@@ -18,15 +18,7 @@ namespace PinpointEmail
 namespace Model
 {
 
-SendingOptions::SendingOptions() : 
-    m_sendingEnabled(false),
-    m_sendingEnabledHasBeenSet(false)
-{
-}
-
-SendingOptions::SendingOptions(JsonView jsonValue) : 
-    m_sendingEnabled(false),
-    m_sendingEnabledHasBeenSet(false)
+SendingOptions::SendingOptions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ SendingOptions& SendingOptions::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("SendingEnabled"))
   {
     m_sendingEnabled = jsonValue.GetBool("SendingEnabled");
-
     m_sendingEnabledHasBeenSet = true;
   }
-
   return *this;
 }
 

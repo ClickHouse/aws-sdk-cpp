@@ -21,7 +21,7 @@ namespace Model
   class UpdatePolicyTemplateRequest : public VerifiedPermissionsRequest
   {
   public:
-    AWS_VERIFIEDPERMISSIONS_API UpdatePolicyTemplateRequest();
+    AWS_VERIFIEDPERMISSIONS_API UpdatePolicyTemplateRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,137 +34,44 @@ namespace Model
     AWS_VERIFIEDPERMISSIONS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>Specifies the ID of the policy store that contains the policy template that
      * you want to update.</p>
      */
-    inline const Aws::String& GetPolicyStoreId() const{ return m_policyStoreId; }
-
-    /**
-     * <p>Specifies the ID of the policy store that contains the policy template that
-     * you want to update.</p>
-     */
+    inline const Aws::String& GetPolicyStoreId() const { return m_policyStoreId; }
     inline bool PolicyStoreIdHasBeenSet() const { return m_policyStoreIdHasBeenSet; }
+    template<typename PolicyStoreIdT = Aws::String>
+    void SetPolicyStoreId(PolicyStoreIdT&& value) { m_policyStoreIdHasBeenSet = true; m_policyStoreId = std::forward<PolicyStoreIdT>(value); }
+    template<typename PolicyStoreIdT = Aws::String>
+    UpdatePolicyTemplateRequest& WithPolicyStoreId(PolicyStoreIdT&& value) { SetPolicyStoreId(std::forward<PolicyStoreIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the ID of the policy store that contains the policy template that
-     * you want to update.</p>
-     */
-    inline void SetPolicyStoreId(const Aws::String& value) { m_policyStoreIdHasBeenSet = true; m_policyStoreId = value; }
-
-    /**
-     * <p>Specifies the ID of the policy store that contains the policy template that
-     * you want to update.</p>
-     */
-    inline void SetPolicyStoreId(Aws::String&& value) { m_policyStoreIdHasBeenSet = true; m_policyStoreId = std::move(value); }
-
-    /**
-     * <p>Specifies the ID of the policy store that contains the policy template that
-     * you want to update.</p>
-     */
-    inline void SetPolicyStoreId(const char* value) { m_policyStoreIdHasBeenSet = true; m_policyStoreId.assign(value); }
-
-    /**
-     * <p>Specifies the ID of the policy store that contains the policy template that
-     * you want to update.</p>
-     */
-    inline UpdatePolicyTemplateRequest& WithPolicyStoreId(const Aws::String& value) { SetPolicyStoreId(value); return *this;}
-
-    /**
-     * <p>Specifies the ID of the policy store that contains the policy template that
-     * you want to update.</p>
-     */
-    inline UpdatePolicyTemplateRequest& WithPolicyStoreId(Aws::String&& value) { SetPolicyStoreId(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the ID of the policy store that contains the policy template that
-     * you want to update.</p>
-     */
-    inline UpdatePolicyTemplateRequest& WithPolicyStoreId(const char* value) { SetPolicyStoreId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the ID of the policy template that you want to update.</p>
      */
-    inline const Aws::String& GetPolicyTemplateId() const{ return m_policyTemplateId; }
-
-    /**
-     * <p>Specifies the ID of the policy template that you want to update.</p>
-     */
+    inline const Aws::String& GetPolicyTemplateId() const { return m_policyTemplateId; }
     inline bool PolicyTemplateIdHasBeenSet() const { return m_policyTemplateIdHasBeenSet; }
+    template<typename PolicyTemplateIdT = Aws::String>
+    void SetPolicyTemplateId(PolicyTemplateIdT&& value) { m_policyTemplateIdHasBeenSet = true; m_policyTemplateId = std::forward<PolicyTemplateIdT>(value); }
+    template<typename PolicyTemplateIdT = Aws::String>
+    UpdatePolicyTemplateRequest& WithPolicyTemplateId(PolicyTemplateIdT&& value) { SetPolicyTemplateId(std::forward<PolicyTemplateIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the ID of the policy template that you want to update.</p>
-     */
-    inline void SetPolicyTemplateId(const Aws::String& value) { m_policyTemplateIdHasBeenSet = true; m_policyTemplateId = value; }
-
-    /**
-     * <p>Specifies the ID of the policy template that you want to update.</p>
-     */
-    inline void SetPolicyTemplateId(Aws::String&& value) { m_policyTemplateIdHasBeenSet = true; m_policyTemplateId = std::move(value); }
-
-    /**
-     * <p>Specifies the ID of the policy template that you want to update.</p>
-     */
-    inline void SetPolicyTemplateId(const char* value) { m_policyTemplateIdHasBeenSet = true; m_policyTemplateId.assign(value); }
-
-    /**
-     * <p>Specifies the ID of the policy template that you want to update.</p>
-     */
-    inline UpdatePolicyTemplateRequest& WithPolicyTemplateId(const Aws::String& value) { SetPolicyTemplateId(value); return *this;}
-
-    /**
-     * <p>Specifies the ID of the policy template that you want to update.</p>
-     */
-    inline UpdatePolicyTemplateRequest& WithPolicyTemplateId(Aws::String&& value) { SetPolicyTemplateId(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the ID of the policy template that you want to update.</p>
-     */
-    inline UpdatePolicyTemplateRequest& WithPolicyTemplateId(const char* value) { SetPolicyTemplateId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies a new description to apply to the policy template.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>Specifies a new description to apply to the policy template.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    UpdatePolicyTemplateRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies a new description to apply to the policy template.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>Specifies a new description to apply to the policy template.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>Specifies a new description to apply to the policy template.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>Specifies a new description to apply to the policy template.</p>
-     */
-    inline UpdatePolicyTemplateRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>Specifies a new description to apply to the policy template.</p>
-     */
-    inline UpdatePolicyTemplateRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies a new description to apply to the policy template.</p>
-     */
-    inline UpdatePolicyTemplateRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies new statement content written in Cedar policy language to replace
      * the current body of the policy template.</p> <p>You can change only the
@@ -177,106 +84,13 @@ namespace Model
      * <li> <p>The <code>resource</code> referenced by the policy template.</p> </li>
      * </ul>
      */
-    inline const Aws::String& GetStatement() const{ return m_statement; }
-
-    /**
-     * <p>Specifies new statement content written in Cedar policy language to replace
-     * the current body of the policy template.</p> <p>You can change only the
-     * following elements of the policy body:</p> <ul> <li> <p>The <code>action</code>
-     * referenced by the policy template.</p> </li> <li> <p>Any conditional clauses,
-     * such as <code>when</code> or <code>unless</code> clauses.</p> </li> </ul> <p>You
-     * <b>can't</b> change the following elements:</p> <ul> <li> <p>The effect
-     * (<code>permit</code> or <code>forbid</code>) of the policy template.</p> </li>
-     * <li> <p>The <code>principal</code> referenced by the policy template.</p> </li>
-     * <li> <p>The <code>resource</code> referenced by the policy template.</p> </li>
-     * </ul>
-     */
+    inline const Aws::String& GetStatement() const { return m_statement; }
     inline bool StatementHasBeenSet() const { return m_statementHasBeenSet; }
-
-    /**
-     * <p>Specifies new statement content written in Cedar policy language to replace
-     * the current body of the policy template.</p> <p>You can change only the
-     * following elements of the policy body:</p> <ul> <li> <p>The <code>action</code>
-     * referenced by the policy template.</p> </li> <li> <p>Any conditional clauses,
-     * such as <code>when</code> or <code>unless</code> clauses.</p> </li> </ul> <p>You
-     * <b>can't</b> change the following elements:</p> <ul> <li> <p>The effect
-     * (<code>permit</code> or <code>forbid</code>) of the policy template.</p> </li>
-     * <li> <p>The <code>principal</code> referenced by the policy template.</p> </li>
-     * <li> <p>The <code>resource</code> referenced by the policy template.</p> </li>
-     * </ul>
-     */
-    inline void SetStatement(const Aws::String& value) { m_statementHasBeenSet = true; m_statement = value; }
-
-    /**
-     * <p>Specifies new statement content written in Cedar policy language to replace
-     * the current body of the policy template.</p> <p>You can change only the
-     * following elements of the policy body:</p> <ul> <li> <p>The <code>action</code>
-     * referenced by the policy template.</p> </li> <li> <p>Any conditional clauses,
-     * such as <code>when</code> or <code>unless</code> clauses.</p> </li> </ul> <p>You
-     * <b>can't</b> change the following elements:</p> <ul> <li> <p>The effect
-     * (<code>permit</code> or <code>forbid</code>) of the policy template.</p> </li>
-     * <li> <p>The <code>principal</code> referenced by the policy template.</p> </li>
-     * <li> <p>The <code>resource</code> referenced by the policy template.</p> </li>
-     * </ul>
-     */
-    inline void SetStatement(Aws::String&& value) { m_statementHasBeenSet = true; m_statement = std::move(value); }
-
-    /**
-     * <p>Specifies new statement content written in Cedar policy language to replace
-     * the current body of the policy template.</p> <p>You can change only the
-     * following elements of the policy body:</p> <ul> <li> <p>The <code>action</code>
-     * referenced by the policy template.</p> </li> <li> <p>Any conditional clauses,
-     * such as <code>when</code> or <code>unless</code> clauses.</p> </li> </ul> <p>You
-     * <b>can't</b> change the following elements:</p> <ul> <li> <p>The effect
-     * (<code>permit</code> or <code>forbid</code>) of the policy template.</p> </li>
-     * <li> <p>The <code>principal</code> referenced by the policy template.</p> </li>
-     * <li> <p>The <code>resource</code> referenced by the policy template.</p> </li>
-     * </ul>
-     */
-    inline void SetStatement(const char* value) { m_statementHasBeenSet = true; m_statement.assign(value); }
-
-    /**
-     * <p>Specifies new statement content written in Cedar policy language to replace
-     * the current body of the policy template.</p> <p>You can change only the
-     * following elements of the policy body:</p> <ul> <li> <p>The <code>action</code>
-     * referenced by the policy template.</p> </li> <li> <p>Any conditional clauses,
-     * such as <code>when</code> or <code>unless</code> clauses.</p> </li> </ul> <p>You
-     * <b>can't</b> change the following elements:</p> <ul> <li> <p>The effect
-     * (<code>permit</code> or <code>forbid</code>) of the policy template.</p> </li>
-     * <li> <p>The <code>principal</code> referenced by the policy template.</p> </li>
-     * <li> <p>The <code>resource</code> referenced by the policy template.</p> </li>
-     * </ul>
-     */
-    inline UpdatePolicyTemplateRequest& WithStatement(const Aws::String& value) { SetStatement(value); return *this;}
-
-    /**
-     * <p>Specifies new statement content written in Cedar policy language to replace
-     * the current body of the policy template.</p> <p>You can change only the
-     * following elements of the policy body:</p> <ul> <li> <p>The <code>action</code>
-     * referenced by the policy template.</p> </li> <li> <p>Any conditional clauses,
-     * such as <code>when</code> or <code>unless</code> clauses.</p> </li> </ul> <p>You
-     * <b>can't</b> change the following elements:</p> <ul> <li> <p>The effect
-     * (<code>permit</code> or <code>forbid</code>) of the policy template.</p> </li>
-     * <li> <p>The <code>principal</code> referenced by the policy template.</p> </li>
-     * <li> <p>The <code>resource</code> referenced by the policy template.</p> </li>
-     * </ul>
-     */
-    inline UpdatePolicyTemplateRequest& WithStatement(Aws::String&& value) { SetStatement(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies new statement content written in Cedar policy language to replace
-     * the current body of the policy template.</p> <p>You can change only the
-     * following elements of the policy body:</p> <ul> <li> <p>The <code>action</code>
-     * referenced by the policy template.</p> </li> <li> <p>Any conditional clauses,
-     * such as <code>when</code> or <code>unless</code> clauses.</p> </li> </ul> <p>You
-     * <b>can't</b> change the following elements:</p> <ul> <li> <p>The effect
-     * (<code>permit</code> or <code>forbid</code>) of the policy template.</p> </li>
-     * <li> <p>The <code>principal</code> referenced by the policy template.</p> </li>
-     * <li> <p>The <code>resource</code> referenced by the policy template.</p> </li>
-     * </ul>
-     */
-    inline UpdatePolicyTemplateRequest& WithStatement(const char* value) { SetStatement(value); return *this;}
-
+    template<typename StatementT = Aws::String>
+    void SetStatement(StatementT&& value) { m_statementHasBeenSet = true; m_statement = std::forward<StatementT>(value); }
+    template<typename StatementT = Aws::String>
+    UpdatePolicyTemplateRequest& WithStatement(StatementT&& value) { SetStatement(std::forward<StatementT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_policyStoreId;

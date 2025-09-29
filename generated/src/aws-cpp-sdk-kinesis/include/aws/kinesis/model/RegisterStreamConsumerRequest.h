@@ -7,6 +7,7 @@
 #include <aws/kinesis/Kinesis_EXPORTS.h>
 #include <aws/kinesis/KinesisRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/core/utils/memory/stl/AWSMap.h>
 #include <utility>
 
 namespace Aws
@@ -21,7 +22,7 @@ namespace Model
   class RegisterStreamConsumerRequest : public KinesisRequest
   {
   public:
-    AWS_KINESIS_API RegisterStreamConsumerRequest();
+    AWS_KINESIS_API RegisterStreamConsumerRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,119 +39,50 @@ namespace Model
      */
     AWS_KINESIS_API EndpointParameters GetEndpointContextParams() const override;
 
+    ///@{
     /**
      * <p>The ARN of the Kinesis data stream that you want to register the consumer
      * with. For more info, see <a
      * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams">Amazon
      * Resource Names (ARNs) and Amazon Web Services Service Namespaces</a>.</p>
      */
-    inline const Aws::String& GetStreamARN() const{ return m_streamARN; }
-
-    /**
-     * <p>The ARN of the Kinesis data stream that you want to register the consumer
-     * with. For more info, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams">Amazon
-     * Resource Names (ARNs) and Amazon Web Services Service Namespaces</a>.</p>
-     */
+    inline const Aws::String& GetStreamARN() const { return m_streamARN; }
     inline bool StreamARNHasBeenSet() const { return m_streamARNHasBeenSet; }
+    template<typename StreamARNT = Aws::String>
+    void SetStreamARN(StreamARNT&& value) { m_streamARNHasBeenSet = true; m_streamARN = std::forward<StreamARNT>(value); }
+    template<typename StreamARNT = Aws::String>
+    RegisterStreamConsumerRequest& WithStreamARN(StreamARNT&& value) { SetStreamARN(std::forward<StreamARNT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the Kinesis data stream that you want to register the consumer
-     * with. For more info, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams">Amazon
-     * Resource Names (ARNs) and Amazon Web Services Service Namespaces</a>.</p>
-     */
-    inline void SetStreamARN(const Aws::String& value) { m_streamARNHasBeenSet = true; m_streamARN = value; }
-
-    /**
-     * <p>The ARN of the Kinesis data stream that you want to register the consumer
-     * with. For more info, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams">Amazon
-     * Resource Names (ARNs) and Amazon Web Services Service Namespaces</a>.</p>
-     */
-    inline void SetStreamARN(Aws::String&& value) { m_streamARNHasBeenSet = true; m_streamARN = std::move(value); }
-
-    /**
-     * <p>The ARN of the Kinesis data stream that you want to register the consumer
-     * with. For more info, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams">Amazon
-     * Resource Names (ARNs) and Amazon Web Services Service Namespaces</a>.</p>
-     */
-    inline void SetStreamARN(const char* value) { m_streamARNHasBeenSet = true; m_streamARN.assign(value); }
-
-    /**
-     * <p>The ARN of the Kinesis data stream that you want to register the consumer
-     * with. For more info, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams">Amazon
-     * Resource Names (ARNs) and Amazon Web Services Service Namespaces</a>.</p>
-     */
-    inline RegisterStreamConsumerRequest& WithStreamARN(const Aws::String& value) { SetStreamARN(value); return *this;}
-
-    /**
-     * <p>The ARN of the Kinesis data stream that you want to register the consumer
-     * with. For more info, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams">Amazon
-     * Resource Names (ARNs) and Amazon Web Services Service Namespaces</a>.</p>
-     */
-    inline RegisterStreamConsumerRequest& WithStreamARN(Aws::String&& value) { SetStreamARN(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the Kinesis data stream that you want to register the consumer
-     * with. For more info, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams">Amazon
-     * Resource Names (ARNs) and Amazon Web Services Service Namespaces</a>.</p>
-     */
-    inline RegisterStreamConsumerRequest& WithStreamARN(const char* value) { SetStreamARN(value); return *this;}
-
-
+    ///@{
     /**
      * <p>For a given Kinesis data stream, each consumer must have a unique name.
      * However, consumer names don't have to be unique across data streams.</p>
      */
-    inline const Aws::String& GetConsumerName() const{ return m_consumerName; }
-
-    /**
-     * <p>For a given Kinesis data stream, each consumer must have a unique name.
-     * However, consumer names don't have to be unique across data streams.</p>
-     */
+    inline const Aws::String& GetConsumerName() const { return m_consumerName; }
     inline bool ConsumerNameHasBeenSet() const { return m_consumerNameHasBeenSet; }
+    template<typename ConsumerNameT = Aws::String>
+    void SetConsumerName(ConsumerNameT&& value) { m_consumerNameHasBeenSet = true; m_consumerName = std::forward<ConsumerNameT>(value); }
+    template<typename ConsumerNameT = Aws::String>
+    RegisterStreamConsumerRequest& WithConsumerName(ConsumerNameT&& value) { SetConsumerName(std::forward<ConsumerNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>For a given Kinesis data stream, each consumer must have a unique name.
-     * However, consumer names don't have to be unique across data streams.</p>
+     * <p>A set of up to 50 key-value pairs. A tag consists of a required key and an
+     * optional value.</p>
      */
-    inline void SetConsumerName(const Aws::String& value) { m_consumerNameHasBeenSet = true; m_consumerName = value; }
-
-    /**
-     * <p>For a given Kinesis data stream, each consumer must have a unique name.
-     * However, consumer names don't have to be unique across data streams.</p>
-     */
-    inline void SetConsumerName(Aws::String&& value) { m_consumerNameHasBeenSet = true; m_consumerName = std::move(value); }
-
-    /**
-     * <p>For a given Kinesis data stream, each consumer must have a unique name.
-     * However, consumer names don't have to be unique across data streams.</p>
-     */
-    inline void SetConsumerName(const char* value) { m_consumerNameHasBeenSet = true; m_consumerName.assign(value); }
-
-    /**
-     * <p>For a given Kinesis data stream, each consumer must have a unique name.
-     * However, consumer names don't have to be unique across data streams.</p>
-     */
-    inline RegisterStreamConsumerRequest& WithConsumerName(const Aws::String& value) { SetConsumerName(value); return *this;}
-
-    /**
-     * <p>For a given Kinesis data stream, each consumer must have a unique name.
-     * However, consumer names don't have to be unique across data streams.</p>
-     */
-    inline RegisterStreamConsumerRequest& WithConsumerName(Aws::String&& value) { SetConsumerName(std::move(value)); return *this;}
-
-    /**
-     * <p>For a given Kinesis data stream, each consumer must have a unique name.
-     * However, consumer names don't have to be unique across data streams.</p>
-     */
-    inline RegisterStreamConsumerRequest& WithConsumerName(const char* value) { SetConsumerName(value); return *this;}
-
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
+    inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    RegisterStreamConsumerRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    RegisterStreamConsumerRequest& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
     Aws::String m_streamARN;
@@ -158,6 +90,9 @@ namespace Model
 
     Aws::String m_consumerName;
     bool m_consumerNameHasBeenSet = false;
+
+    Aws::Map<Aws::String, Aws::String> m_tags;
+    bool m_tagsHasBeenSet = false;
   };
 
 } // namespace Model

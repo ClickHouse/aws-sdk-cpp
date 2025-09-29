@@ -22,7 +22,7 @@ namespace Model
   class UpdateRestoreTestingPlanRequest : public BackupRequest
   {
   public:
-    AWS_BACKUP_API UpdateRestoreTestingPlanRequest();
+    AWS_BACKUP_API UpdateRestoreTestingPlanRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,77 +33,29 @@ namespace Model
     AWS_BACKUP_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>Specifies the body of a restore testing plan.</p>
      */
-    inline const RestoreTestingPlanForUpdate& GetRestoreTestingPlan() const{ return m_restoreTestingPlan; }
-
-    /**
-     * <p>Specifies the body of a restore testing plan.</p>
-     */
+    inline const RestoreTestingPlanForUpdate& GetRestoreTestingPlan() const { return m_restoreTestingPlan; }
     inline bool RestoreTestingPlanHasBeenSet() const { return m_restoreTestingPlanHasBeenSet; }
+    template<typename RestoreTestingPlanT = RestoreTestingPlanForUpdate>
+    void SetRestoreTestingPlan(RestoreTestingPlanT&& value) { m_restoreTestingPlanHasBeenSet = true; m_restoreTestingPlan = std::forward<RestoreTestingPlanT>(value); }
+    template<typename RestoreTestingPlanT = RestoreTestingPlanForUpdate>
+    UpdateRestoreTestingPlanRequest& WithRestoreTestingPlan(RestoreTestingPlanT&& value) { SetRestoreTestingPlan(std::forward<RestoreTestingPlanT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Specifies the body of a restore testing plan.</p>
+     * <p>The name of the restore testing plan name.</p>
      */
-    inline void SetRestoreTestingPlan(const RestoreTestingPlanForUpdate& value) { m_restoreTestingPlanHasBeenSet = true; m_restoreTestingPlan = value; }
-
-    /**
-     * <p>Specifies the body of a restore testing plan.</p>
-     */
-    inline void SetRestoreTestingPlan(RestoreTestingPlanForUpdate&& value) { m_restoreTestingPlanHasBeenSet = true; m_restoreTestingPlan = std::move(value); }
-
-    /**
-     * <p>Specifies the body of a restore testing plan.</p>
-     */
-    inline UpdateRestoreTestingPlanRequest& WithRestoreTestingPlan(const RestoreTestingPlanForUpdate& value) { SetRestoreTestingPlan(value); return *this;}
-
-    /**
-     * <p>Specifies the body of a restore testing plan.</p>
-     */
-    inline UpdateRestoreTestingPlanRequest& WithRestoreTestingPlan(RestoreTestingPlanForUpdate&& value) { SetRestoreTestingPlan(std::move(value)); return *this;}
-
-
-    /**
-     * <p>This is the restore testing plan name you wish to update.</p>
-     */
-    inline const Aws::String& GetRestoreTestingPlanName() const{ return m_restoreTestingPlanName; }
-
-    /**
-     * <p>This is the restore testing plan name you wish to update.</p>
-     */
+    inline const Aws::String& GetRestoreTestingPlanName() const { return m_restoreTestingPlanName; }
     inline bool RestoreTestingPlanNameHasBeenSet() const { return m_restoreTestingPlanNameHasBeenSet; }
-
-    /**
-     * <p>This is the restore testing plan name you wish to update.</p>
-     */
-    inline void SetRestoreTestingPlanName(const Aws::String& value) { m_restoreTestingPlanNameHasBeenSet = true; m_restoreTestingPlanName = value; }
-
-    /**
-     * <p>This is the restore testing plan name you wish to update.</p>
-     */
-    inline void SetRestoreTestingPlanName(Aws::String&& value) { m_restoreTestingPlanNameHasBeenSet = true; m_restoreTestingPlanName = std::move(value); }
-
-    /**
-     * <p>This is the restore testing plan name you wish to update.</p>
-     */
-    inline void SetRestoreTestingPlanName(const char* value) { m_restoreTestingPlanNameHasBeenSet = true; m_restoreTestingPlanName.assign(value); }
-
-    /**
-     * <p>This is the restore testing plan name you wish to update.</p>
-     */
-    inline UpdateRestoreTestingPlanRequest& WithRestoreTestingPlanName(const Aws::String& value) { SetRestoreTestingPlanName(value); return *this;}
-
-    /**
-     * <p>This is the restore testing plan name you wish to update.</p>
-     */
-    inline UpdateRestoreTestingPlanRequest& WithRestoreTestingPlanName(Aws::String&& value) { SetRestoreTestingPlanName(std::move(value)); return *this;}
-
-    /**
-     * <p>This is the restore testing plan name you wish to update.</p>
-     */
-    inline UpdateRestoreTestingPlanRequest& WithRestoreTestingPlanName(const char* value) { SetRestoreTestingPlanName(value); return *this;}
-
+    template<typename RestoreTestingPlanNameT = Aws::String>
+    void SetRestoreTestingPlanName(RestoreTestingPlanNameT&& value) { m_restoreTestingPlanNameHasBeenSet = true; m_restoreTestingPlanName = std::forward<RestoreTestingPlanNameT>(value); }
+    template<typename RestoreTestingPlanNameT = Aws::String>
+    UpdateRestoreTestingPlanRequest& WithRestoreTestingPlanName(RestoreTestingPlanNameT&& value) { SetRestoreTestingPlanName(std::forward<RestoreTestingPlanNameT>(value)); return *this;}
+    ///@}
   private:
 
     RestoreTestingPlanForUpdate m_restoreTestingPlan;

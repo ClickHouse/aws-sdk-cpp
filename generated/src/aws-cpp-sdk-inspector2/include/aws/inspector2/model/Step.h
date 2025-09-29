@@ -31,93 +31,48 @@ namespace Model
   class Step
   {
   public:
-    AWS_INSPECTOR2_API Step();
+    AWS_INSPECTOR2_API Step() = default;
     AWS_INSPECTOR2_API Step(Aws::Utils::Json::JsonView jsonValue);
     AWS_INSPECTOR2_API Step& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_INSPECTOR2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The component ID.</p>
      */
-    inline const Aws::String& GetComponentId() const{ return m_componentId; }
-
-    /**
-     * <p>The component ID.</p>
-     */
+    inline const Aws::String& GetComponentId() const { return m_componentId; }
     inline bool ComponentIdHasBeenSet() const { return m_componentIdHasBeenSet; }
+    template<typename ComponentIdT = Aws::String>
+    void SetComponentId(ComponentIdT&& value) { m_componentIdHasBeenSet = true; m_componentId = std::forward<ComponentIdT>(value); }
+    template<typename ComponentIdT = Aws::String>
+    Step& WithComponentId(ComponentIdT&& value) { SetComponentId(std::forward<ComponentIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The component ID.</p>
-     */
-    inline void SetComponentId(const Aws::String& value) { m_componentIdHasBeenSet = true; m_componentId = value; }
-
-    /**
-     * <p>The component ID.</p>
-     */
-    inline void SetComponentId(Aws::String&& value) { m_componentIdHasBeenSet = true; m_componentId = std::move(value); }
-
-    /**
-     * <p>The component ID.</p>
-     */
-    inline void SetComponentId(const char* value) { m_componentIdHasBeenSet = true; m_componentId.assign(value); }
-
-    /**
-     * <p>The component ID.</p>
-     */
-    inline Step& WithComponentId(const Aws::String& value) { SetComponentId(value); return *this;}
-
-    /**
-     * <p>The component ID.</p>
-     */
-    inline Step& WithComponentId(Aws::String&& value) { SetComponentId(std::move(value)); return *this;}
-
-    /**
-     * <p>The component ID.</p>
-     */
-    inline Step& WithComponentId(const char* value) { SetComponentId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The component type.</p>
      */
-    inline const Aws::String& GetComponentType() const{ return m_componentType; }
-
-    /**
-     * <p>The component type.</p>
-     */
+    inline const Aws::String& GetComponentType() const { return m_componentType; }
     inline bool ComponentTypeHasBeenSet() const { return m_componentTypeHasBeenSet; }
+    template<typename ComponentTypeT = Aws::String>
+    void SetComponentType(ComponentTypeT&& value) { m_componentTypeHasBeenSet = true; m_componentType = std::forward<ComponentTypeT>(value); }
+    template<typename ComponentTypeT = Aws::String>
+    Step& WithComponentType(ComponentTypeT&& value) { SetComponentType(std::forward<ComponentTypeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The component type.</p>
+     * <p>The component ARN. The ARN can be null and is not displayed in the Amazon Web
+     * Services console.</p>
      */
-    inline void SetComponentType(const Aws::String& value) { m_componentTypeHasBeenSet = true; m_componentType = value; }
-
-    /**
-     * <p>The component type.</p>
-     */
-    inline void SetComponentType(Aws::String&& value) { m_componentTypeHasBeenSet = true; m_componentType = std::move(value); }
-
-    /**
-     * <p>The component type.</p>
-     */
-    inline void SetComponentType(const char* value) { m_componentTypeHasBeenSet = true; m_componentType.assign(value); }
-
-    /**
-     * <p>The component type.</p>
-     */
-    inline Step& WithComponentType(const Aws::String& value) { SetComponentType(value); return *this;}
-
-    /**
-     * <p>The component type.</p>
-     */
-    inline Step& WithComponentType(Aws::String&& value) { SetComponentType(std::move(value)); return *this;}
-
-    /**
-     * <p>The component type.</p>
-     */
-    inline Step& WithComponentType(const char* value) { SetComponentType(value); return *this;}
-
+    inline const Aws::String& GetComponentArn() const { return m_componentArn; }
+    inline bool ComponentArnHasBeenSet() const { return m_componentArnHasBeenSet; }
+    template<typename ComponentArnT = Aws::String>
+    void SetComponentArn(ComponentArnT&& value) { m_componentArnHasBeenSet = true; m_componentArn = std::forward<ComponentArnT>(value); }
+    template<typename ComponentArnT = Aws::String>
+    Step& WithComponentArn(ComponentArnT&& value) { SetComponentArn(std::forward<ComponentArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_componentId;
@@ -125,6 +80,9 @@ namespace Model
 
     Aws::String m_componentType;
     bool m_componentTypeHasBeenSet = false;
+
+    Aws::String m_componentArn;
+    bool m_componentArnHasBeenSet = false;
   };
 
 } // namespace Model

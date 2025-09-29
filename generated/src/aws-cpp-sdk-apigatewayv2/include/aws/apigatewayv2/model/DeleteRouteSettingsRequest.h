@@ -21,7 +21,7 @@ namespace Model
   class DeleteRouteSettingsRequest : public ApiGatewayV2Request
   {
   public:
-    AWS_APIGATEWAYV2_API DeleteRouteSettingsRequest();
+    AWS_APIGATEWAYV2_API DeleteRouteSettingsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,136 +32,42 @@ namespace Model
     AWS_APIGATEWAYV2_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The API identifier.</p>
      */
-    inline const Aws::String& GetApiId() const{ return m_apiId; }
-
-    /**
-     * <p>The API identifier.</p>
-     */
+    inline const Aws::String& GetApiId() const { return m_apiId; }
     inline bool ApiIdHasBeenSet() const { return m_apiIdHasBeenSet; }
+    template<typename ApiIdT = Aws::String>
+    void SetApiId(ApiIdT&& value) { m_apiIdHasBeenSet = true; m_apiId = std::forward<ApiIdT>(value); }
+    template<typename ApiIdT = Aws::String>
+    DeleteRouteSettingsRequest& WithApiId(ApiIdT&& value) { SetApiId(std::forward<ApiIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The API identifier.</p>
-     */
-    inline void SetApiId(const Aws::String& value) { m_apiIdHasBeenSet = true; m_apiId = value; }
-
-    /**
-     * <p>The API identifier.</p>
-     */
-    inline void SetApiId(Aws::String&& value) { m_apiIdHasBeenSet = true; m_apiId = std::move(value); }
-
-    /**
-     * <p>The API identifier.</p>
-     */
-    inline void SetApiId(const char* value) { m_apiIdHasBeenSet = true; m_apiId.assign(value); }
-
-    /**
-     * <p>The API identifier.</p>
-     */
-    inline DeleteRouteSettingsRequest& WithApiId(const Aws::String& value) { SetApiId(value); return *this;}
-
-    /**
-     * <p>The API identifier.</p>
-     */
-    inline DeleteRouteSettingsRequest& WithApiId(Aws::String&& value) { SetApiId(std::move(value)); return *this;}
-
-    /**
-     * <p>The API identifier.</p>
-     */
-    inline DeleteRouteSettingsRequest& WithApiId(const char* value) { SetApiId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The route key.</p>
      */
-    inline const Aws::String& GetRouteKey() const{ return m_routeKey; }
-
-    /**
-     * <p>The route key.</p>
-     */
+    inline const Aws::String& GetRouteKey() const { return m_routeKey; }
     inline bool RouteKeyHasBeenSet() const { return m_routeKeyHasBeenSet; }
+    template<typename RouteKeyT = Aws::String>
+    void SetRouteKey(RouteKeyT&& value) { m_routeKeyHasBeenSet = true; m_routeKey = std::forward<RouteKeyT>(value); }
+    template<typename RouteKeyT = Aws::String>
+    DeleteRouteSettingsRequest& WithRouteKey(RouteKeyT&& value) { SetRouteKey(std::forward<RouteKeyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The route key.</p>
-     */
-    inline void SetRouteKey(const Aws::String& value) { m_routeKeyHasBeenSet = true; m_routeKey = value; }
-
-    /**
-     * <p>The route key.</p>
-     */
-    inline void SetRouteKey(Aws::String&& value) { m_routeKeyHasBeenSet = true; m_routeKey = std::move(value); }
-
-    /**
-     * <p>The route key.</p>
-     */
-    inline void SetRouteKey(const char* value) { m_routeKeyHasBeenSet = true; m_routeKey.assign(value); }
-
-    /**
-     * <p>The route key.</p>
-     */
-    inline DeleteRouteSettingsRequest& WithRouteKey(const Aws::String& value) { SetRouteKey(value); return *this;}
-
-    /**
-     * <p>The route key.</p>
-     */
-    inline DeleteRouteSettingsRequest& WithRouteKey(Aws::String&& value) { SetRouteKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The route key.</p>
-     */
-    inline DeleteRouteSettingsRequest& WithRouteKey(const char* value) { SetRouteKey(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The stage name. Stage names can only contain alphanumeric characters,
      * hyphens, and underscores. Maximum length is 128 characters.</p>
      */
-    inline const Aws::String& GetStageName() const{ return m_stageName; }
-
-    /**
-     * <p>The stage name. Stage names can only contain alphanumeric characters,
-     * hyphens, and underscores. Maximum length is 128 characters.</p>
-     */
+    inline const Aws::String& GetStageName() const { return m_stageName; }
     inline bool StageNameHasBeenSet() const { return m_stageNameHasBeenSet; }
-
-    /**
-     * <p>The stage name. Stage names can only contain alphanumeric characters,
-     * hyphens, and underscores. Maximum length is 128 characters.</p>
-     */
-    inline void SetStageName(const Aws::String& value) { m_stageNameHasBeenSet = true; m_stageName = value; }
-
-    /**
-     * <p>The stage name. Stage names can only contain alphanumeric characters,
-     * hyphens, and underscores. Maximum length is 128 characters.</p>
-     */
-    inline void SetStageName(Aws::String&& value) { m_stageNameHasBeenSet = true; m_stageName = std::move(value); }
-
-    /**
-     * <p>The stage name. Stage names can only contain alphanumeric characters,
-     * hyphens, and underscores. Maximum length is 128 characters.</p>
-     */
-    inline void SetStageName(const char* value) { m_stageNameHasBeenSet = true; m_stageName.assign(value); }
-
-    /**
-     * <p>The stage name. Stage names can only contain alphanumeric characters,
-     * hyphens, and underscores. Maximum length is 128 characters.</p>
-     */
-    inline DeleteRouteSettingsRequest& WithStageName(const Aws::String& value) { SetStageName(value); return *this;}
-
-    /**
-     * <p>The stage name. Stage names can only contain alphanumeric characters,
-     * hyphens, and underscores. Maximum length is 128 characters.</p>
-     */
-    inline DeleteRouteSettingsRequest& WithStageName(Aws::String&& value) { SetStageName(std::move(value)); return *this;}
-
-    /**
-     * <p>The stage name. Stage names can only contain alphanumeric characters,
-     * hyphens, and underscores. Maximum length is 128 characters.</p>
-     */
-    inline DeleteRouteSettingsRequest& WithStageName(const char* value) { SetStageName(value); return *this;}
-
+    template<typename StageNameT = Aws::String>
+    void SetStageName(StageNameT&& value) { m_stageNameHasBeenSet = true; m_stageName = std::forward<StageNameT>(value); }
+    template<typename StageNameT = Aws::String>
+    DeleteRouteSettingsRequest& WithStageName(StageNameT&& value) { SetStageName(std::forward<StageNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_apiId;

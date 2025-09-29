@@ -18,17 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsRedshiftClusterClusterParameterStatus::AwsRedshiftClusterClusterParameterStatus() : 
-    m_parameterNameHasBeenSet(false),
-    m_parameterApplyStatusHasBeenSet(false),
-    m_parameterApplyErrorDescriptionHasBeenSet(false)
-{
-}
-
-AwsRedshiftClusterClusterParameterStatus::AwsRedshiftClusterClusterParameterStatus(JsonView jsonValue) : 
-    m_parameterNameHasBeenSet(false),
-    m_parameterApplyStatusHasBeenSet(false),
-    m_parameterApplyErrorDescriptionHasBeenSet(false)
+AwsRedshiftClusterClusterParameterStatus::AwsRedshiftClusterClusterParameterStatus(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ AwsRedshiftClusterClusterParameterStatus& AwsRedshiftClusterClusterParameterStat
   if(jsonValue.ValueExists("ParameterName"))
   {
     m_parameterName = jsonValue.GetString("ParameterName");
-
     m_parameterNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ParameterApplyStatus"))
   {
     m_parameterApplyStatus = jsonValue.GetString("ParameterApplyStatus");
-
     m_parameterApplyStatusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ParameterApplyErrorDescription"))
   {
     m_parameterApplyErrorDescription = jsonValue.GetString("ParameterApplyErrorDescription");
-
     m_parameterApplyErrorDescriptionHasBeenSet = true;
   }
-
   return *this;
 }
 

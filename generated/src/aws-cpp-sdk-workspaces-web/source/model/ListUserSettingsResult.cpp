@@ -17,10 +17,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-ListUserSettingsResult::ListUserSettingsResult()
-{
-}
-
 ListUserSettingsResult::ListUserSettingsResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
@@ -29,12 +25,6 @@ ListUserSettingsResult::ListUserSettingsResult(const Aws::AmazonWebServiceResult
 ListUserSettingsResult& ListUserSettingsResult::operator =(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   JsonView jsonValue = result.GetPayload().View();
-  if(jsonValue.ValueExists("nextToken"))
-  {
-    m_nextToken = jsonValue.GetString("nextToken");
-
-  }
-
   if(jsonValue.ValueExists("userSettings"))
   {
     Aws::Utils::Array<JsonView> userSettingsJsonList = jsonValue.GetArray("userSettings");
@@ -42,14 +32,20 @@ ListUserSettingsResult& ListUserSettingsResult::operator =(const Aws::AmazonWebS
     {
       m_userSettings.push_back(userSettingsJsonList[userSettingsIndex].AsObject());
     }
+    m_userSettingsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("nextToken"))
+  {
+    m_nextToken = jsonValue.GetString("nextToken");
+    m_nextTokenHasBeenSet = true;
+  }
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

@@ -18,61 +18,18 @@ namespace QConnect
 namespace Model
 {
 
-QuickResponseQueryField::QuickResponseQueryField() : 
-    m_allowFuzziness(false),
-    m_allowFuzzinessHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_operator(QuickResponseQueryOperator::NOT_SET),
-    m_operatorHasBeenSet(false),
-    m_priority(Priority::NOT_SET),
-    m_priorityHasBeenSet(false),
-    m_valuesHasBeenSet(false)
-{
-}
-
-QuickResponseQueryField::QuickResponseQueryField(JsonView jsonValue) : 
-    m_allowFuzziness(false),
-    m_allowFuzzinessHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_operator(QuickResponseQueryOperator::NOT_SET),
-    m_operatorHasBeenSet(false),
-    m_priority(Priority::NOT_SET),
-    m_priorityHasBeenSet(false),
-    m_valuesHasBeenSet(false)
+QuickResponseQueryField::QuickResponseQueryField(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 QuickResponseQueryField& QuickResponseQueryField::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("allowFuzziness"))
-  {
-    m_allowFuzziness = jsonValue.GetBool("allowFuzziness");
-
-    m_allowFuzzinessHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("operator"))
-  {
-    m_operator = QuickResponseQueryOperatorMapper::GetQuickResponseQueryOperatorForName(jsonValue.GetString("operator"));
-
-    m_operatorHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("priority"))
-  {
-    m_priority = PriorityMapper::GetPriorityForName(jsonValue.GetString("priority"));
-
-    m_priorityHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("values"))
   {
     Aws::Utils::Array<JsonView> valuesJsonList = jsonValue.GetArray("values");
@@ -82,7 +39,21 @@ QuickResponseQueryField& QuickResponseQueryField::operator =(JsonView jsonValue)
     }
     m_valuesHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("operator"))
+  {
+    m_operator = QuickResponseQueryOperatorMapper::GetQuickResponseQueryOperatorForName(jsonValue.GetString("operator"));
+    m_operatorHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("allowFuzziness"))
+  {
+    m_allowFuzziness = jsonValue.GetBool("allowFuzziness");
+    m_allowFuzzinessHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("priority"))
+  {
+    m_priority = PriorityMapper::GetPriorityForName(jsonValue.GetString("priority"));
+    m_priorityHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -90,26 +61,10 @@ JsonValue QuickResponseQueryField::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_allowFuzzinessHasBeenSet)
-  {
-   payload.WithBool("allowFuzziness", m_allowFuzziness);
-
-  }
-
   if(m_nameHasBeenSet)
   {
    payload.WithString("name", m_name);
 
-  }
-
-  if(m_operatorHasBeenSet)
-  {
-   payload.WithString("operator", QuickResponseQueryOperatorMapper::GetNameForQuickResponseQueryOperator(m_operator));
-  }
-
-  if(m_priorityHasBeenSet)
-  {
-   payload.WithString("priority", PriorityMapper::GetNameForPriority(m_priority));
   }
 
   if(m_valuesHasBeenSet)
@@ -121,6 +76,22 @@ JsonValue QuickResponseQueryField::Jsonize() const
    }
    payload.WithArray("values", std::move(valuesJsonList));
 
+  }
+
+  if(m_operatorHasBeenSet)
+  {
+   payload.WithString("operator", QuickResponseQueryOperatorMapper::GetNameForQuickResponseQueryOperator(m_operator));
+  }
+
+  if(m_allowFuzzinessHasBeenSet)
+  {
+   payload.WithBool("allowFuzziness", m_allowFuzziness);
+
+  }
+
+  if(m_priorityHasBeenSet)
+  {
+   payload.WithString("priority", PriorityMapper::GetNameForPriority(m_priority));
   }
 
   return payload;

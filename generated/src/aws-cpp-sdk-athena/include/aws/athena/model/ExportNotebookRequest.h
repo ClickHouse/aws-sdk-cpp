@@ -21,7 +21,7 @@ namespace Model
   class ExportNotebookRequest : public AthenaRequest
   {
   public:
-    AWS_ATHENA_API ExportNotebookRequest();
+    AWS_ATHENA_API ExportNotebookRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_ATHENA_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the notebook to export.</p>
      */
-    inline const Aws::String& GetNotebookId() const{ return m_notebookId; }
-
-    /**
-     * <p>The ID of the notebook to export.</p>
-     */
+    inline const Aws::String& GetNotebookId() const { return m_notebookId; }
     inline bool NotebookIdHasBeenSet() const { return m_notebookIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the notebook to export.</p>
-     */
-    inline void SetNotebookId(const Aws::String& value) { m_notebookIdHasBeenSet = true; m_notebookId = value; }
-
-    /**
-     * <p>The ID of the notebook to export.</p>
-     */
-    inline void SetNotebookId(Aws::String&& value) { m_notebookIdHasBeenSet = true; m_notebookId = std::move(value); }
-
-    /**
-     * <p>The ID of the notebook to export.</p>
-     */
-    inline void SetNotebookId(const char* value) { m_notebookIdHasBeenSet = true; m_notebookId.assign(value); }
-
-    /**
-     * <p>The ID of the notebook to export.</p>
-     */
-    inline ExportNotebookRequest& WithNotebookId(const Aws::String& value) { SetNotebookId(value); return *this;}
-
-    /**
-     * <p>The ID of the notebook to export.</p>
-     */
-    inline ExportNotebookRequest& WithNotebookId(Aws::String&& value) { SetNotebookId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the notebook to export.</p>
-     */
-    inline ExportNotebookRequest& WithNotebookId(const char* value) { SetNotebookId(value); return *this;}
-
+    template<typename NotebookIdT = Aws::String>
+    void SetNotebookId(NotebookIdT&& value) { m_notebookIdHasBeenSet = true; m_notebookId = std::forward<NotebookIdT>(value); }
+    template<typename NotebookIdT = Aws::String>
+    ExportNotebookRequest& WithNotebookId(NotebookIdT&& value) { SetNotebookId(std::forward<NotebookIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_notebookId;

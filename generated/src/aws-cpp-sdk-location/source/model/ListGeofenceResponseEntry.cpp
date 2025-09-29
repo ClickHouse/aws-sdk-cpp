@@ -18,43 +18,38 @@ namespace LocationService
 namespace Model
 {
 
-ListGeofenceResponseEntry::ListGeofenceResponseEntry() : 
-    m_createTimeHasBeenSet(false),
-    m_geofenceIdHasBeenSet(false),
-    m_geofencePropertiesHasBeenSet(false),
-    m_geometryHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_updateTimeHasBeenSet(false)
-{
-}
-
-ListGeofenceResponseEntry::ListGeofenceResponseEntry(JsonView jsonValue) : 
-    m_createTimeHasBeenSet(false),
-    m_geofenceIdHasBeenSet(false),
-    m_geofencePropertiesHasBeenSet(false),
-    m_geometryHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_updateTimeHasBeenSet(false)
+ListGeofenceResponseEntry::ListGeofenceResponseEntry(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 ListGeofenceResponseEntry& ListGeofenceResponseEntry::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("CreateTime"))
-  {
-    m_createTime = jsonValue.GetString("CreateTime");
-
-    m_createTimeHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("GeofenceId"))
   {
     m_geofenceId = jsonValue.GetString("GeofenceId");
-
     m_geofenceIdHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("Geometry"))
+  {
+    m_geometry = jsonValue.GetObject("Geometry");
+    m_geometryHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("Status"))
+  {
+    m_status = jsonValue.GetString("Status");
+    m_statusHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("CreateTime"))
+  {
+    m_createTime = jsonValue.GetString("CreateTime");
+    m_createTimeHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("UpdateTime"))
+  {
+    m_updateTime = jsonValue.GetString("UpdateTime");
+    m_updateTimeHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("GeofenceProperties"))
   {
     Aws::Map<Aws::String, JsonView> geofencePropertiesJsonMap = jsonValue.GetObject("GeofenceProperties").GetAllObjects();
@@ -64,28 +59,6 @@ ListGeofenceResponseEntry& ListGeofenceResponseEntry::operator =(JsonView jsonVa
     }
     m_geofencePropertiesHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("Geometry"))
-  {
-    m_geometry = jsonValue.GetObject("Geometry");
-
-    m_geometryHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("Status"))
-  {
-    m_status = jsonValue.GetString("Status");
-
-    m_statusHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("UpdateTime"))
-  {
-    m_updateTime = jsonValue.GetString("UpdateTime");
-
-    m_updateTimeHasBeenSet = true;
-  }
-
   return *this;
 }
 
@@ -93,25 +66,9 @@ JsonValue ListGeofenceResponseEntry::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_createTimeHasBeenSet)
-  {
-   payload.WithString("CreateTime", m_createTime.ToGmtString(Aws::Utils::DateFormat::ISO_8601));
-  }
-
   if(m_geofenceIdHasBeenSet)
   {
    payload.WithString("GeofenceId", m_geofenceId);
-
-  }
-
-  if(m_geofencePropertiesHasBeenSet)
-  {
-   JsonValue geofencePropertiesJsonMap;
-   for(auto& geofencePropertiesItem : m_geofenceProperties)
-   {
-     geofencePropertiesJsonMap.WithString(geofencePropertiesItem.first, geofencePropertiesItem.second);
-   }
-   payload.WithObject("GeofenceProperties", std::move(geofencePropertiesJsonMap));
 
   }
 
@@ -127,9 +84,25 @@ JsonValue ListGeofenceResponseEntry::Jsonize() const
 
   }
 
+  if(m_createTimeHasBeenSet)
+  {
+   payload.WithString("CreateTime", m_createTime.ToGmtString(Aws::Utils::DateFormat::ISO_8601));
+  }
+
   if(m_updateTimeHasBeenSet)
   {
    payload.WithString("UpdateTime", m_updateTime.ToGmtString(Aws::Utils::DateFormat::ISO_8601));
+  }
+
+  if(m_geofencePropertiesHasBeenSet)
+  {
+   JsonValue geofencePropertiesJsonMap;
+   for(auto& geofencePropertiesItem : m_geofenceProperties)
+   {
+     geofencePropertiesJsonMap.WithString(geofencePropertiesItem.first, geofencePropertiesItem.second);
+   }
+   payload.WithObject("GeofenceProperties", std::move(geofencePropertiesJsonMap));
+
   }
 
   return payload;

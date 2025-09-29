@@ -21,7 +21,7 @@ namespace Model
   class DeleteResourceSetRequest : public Route53RecoveryReadinessRequest
   {
   public:
-    AWS_ROUTE53RECOVERYREADINESS_API DeleteResourceSetRequest();
+    AWS_ROUTE53RECOVERYREADINESS_API DeleteResourceSetRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_ROUTE53RECOVERYREADINESS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>Name of a resource set.</p>
      */
-    inline const Aws::String& GetResourceSetName() const{ return m_resourceSetName; }
-
-    /**
-     * <p>Name of a resource set.</p>
-     */
+    inline const Aws::String& GetResourceSetName() const { return m_resourceSetName; }
     inline bool ResourceSetNameHasBeenSet() const { return m_resourceSetNameHasBeenSet; }
-
-    /**
-     * <p>Name of a resource set.</p>
-     */
-    inline void SetResourceSetName(const Aws::String& value) { m_resourceSetNameHasBeenSet = true; m_resourceSetName = value; }
-
-    /**
-     * <p>Name of a resource set.</p>
-     */
-    inline void SetResourceSetName(Aws::String&& value) { m_resourceSetNameHasBeenSet = true; m_resourceSetName = std::move(value); }
-
-    /**
-     * <p>Name of a resource set.</p>
-     */
-    inline void SetResourceSetName(const char* value) { m_resourceSetNameHasBeenSet = true; m_resourceSetName.assign(value); }
-
-    /**
-     * <p>Name of a resource set.</p>
-     */
-    inline DeleteResourceSetRequest& WithResourceSetName(const Aws::String& value) { SetResourceSetName(value); return *this;}
-
-    /**
-     * <p>Name of a resource set.</p>
-     */
-    inline DeleteResourceSetRequest& WithResourceSetName(Aws::String&& value) { SetResourceSetName(std::move(value)); return *this;}
-
-    /**
-     * <p>Name of a resource set.</p>
-     */
-    inline DeleteResourceSetRequest& WithResourceSetName(const char* value) { SetResourceSetName(value); return *this;}
-
+    template<typename ResourceSetNameT = Aws::String>
+    void SetResourceSetName(ResourceSetNameT&& value) { m_resourceSetNameHasBeenSet = true; m_resourceSetName = std::forward<ResourceSetNameT>(value); }
+    template<typename ResourceSetNameT = Aws::String>
+    DeleteResourceSetRequest& WithResourceSetName(ResourceSetNameT&& value) { SetResourceSetName(std::forward<ResourceSetNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_resourceSetName;

@@ -20,15 +20,7 @@ namespace EC2
 namespace Model
 {
 
-RuleGroupTypePair::RuleGroupTypePair() : 
-    m_ruleGroupArnHasBeenSet(false),
-    m_ruleGroupTypeHasBeenSet(false)
-{
-}
-
-RuleGroupTypePair::RuleGroupTypePair(const XmlNode& xmlNode) : 
-    m_ruleGroupArnHasBeenSet(false),
-    m_ruleGroupTypeHasBeenSet(false)
+RuleGroupTypePair::RuleGroupTypePair(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

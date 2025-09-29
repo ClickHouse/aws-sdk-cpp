@@ -12,25 +12,6 @@ using namespace Aws::DynamoDB::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ExportTableToPointInTimeRequest::ExportTableToPointInTimeRequest() : 
-    m_tableArnHasBeenSet(false),
-    m_exportTimeHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_s3BucketHasBeenSet(false),
-    m_s3BucketOwnerHasBeenSet(false),
-    m_s3PrefixHasBeenSet(false),
-    m_s3SseAlgorithm(S3SseAlgorithm::NOT_SET),
-    m_s3SseAlgorithmHasBeenSet(false),
-    m_s3SseKmsKeyIdHasBeenSet(false),
-    m_exportFormat(ExportFormat::NOT_SET),
-    m_exportFormatHasBeenSet(false),
-    m_exportType(ExportType::NOT_SET),
-    m_exportTypeHasBeenSet(false),
-    m_incrementalExportSpecificationHasBeenSet(false)
-{
-}
-
 Aws::String ExportTableToPointInTimeRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -109,5 +90,15 @@ Aws::Http::HeaderValueCollection ExportTableToPointInTimeRequest::GetRequestSpec
 }
 
 
+
+ExportTableToPointInTimeRequest::EndpointParameters ExportTableToPointInTimeRequest::GetEndpointContextParams() const
+{
+    EndpointParameters parameters;
+    // Operation context parameters
+    if (TableArnHasBeenSet()) {
+        parameters.emplace_back(Aws::String("ResourceArn"), this->GetTableArn(), Aws::Endpoint::EndpointParameter::ParameterOrigin::OPERATION_CONTEXT);
+    }
+    return parameters;
+}
 
 

@@ -10,14 +10,6 @@
 using namespace Aws::ElasticBeanstalk::Model;
 using namespace Aws::Utils;
 
-DescribeInstancesHealthRequest::DescribeInstancesHealthRequest() : 
-    m_environmentNameHasBeenSet(false),
-    m_environmentIdHasBeenSet(false),
-    m_attributeNamesHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
 Aws::String DescribeInstancesHealthRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -34,12 +26,19 @@ Aws::String DescribeInstancesHealthRequest::SerializePayload() const
 
   if(m_attributeNamesHasBeenSet)
   {
-    unsigned attributeNamesCount = 1;
-    for(auto& item : m_attributeNames)
+    if (m_attributeNames.empty())
     {
-      ss << "AttributeNames.member." << attributeNamesCount << "="
-          << StringUtils::URLEncode(InstancesHealthAttributeMapper::GetNameForInstancesHealthAttribute(item).c_str()) << "&";
-      attributeNamesCount++;
+      ss << "AttributeNames=&";
+    }
+    else
+    {
+      unsigned attributeNamesCount = 1;
+      for(auto& item : m_attributeNames)
+      {
+        ss << "AttributeNames.member." << attributeNamesCount << "="
+            << StringUtils::URLEncode(InstancesHealthAttributeMapper::GetNameForInstancesHealthAttribute(item)) << "&";
+        attributeNamesCount++;
+      }
     }
   }
 

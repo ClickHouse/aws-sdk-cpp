@@ -20,15 +20,7 @@ namespace ElastiCache
 namespace Model
 {
 
-NotificationConfiguration::NotificationConfiguration() : 
-    m_topicArnHasBeenSet(false),
-    m_topicStatusHasBeenSet(false)
-{
-}
-
-NotificationConfiguration::NotificationConfiguration(const XmlNode& xmlNode) : 
-    m_topicArnHasBeenSet(false),
-    m_topicStatusHasBeenSet(false)
+NotificationConfiguration::NotificationConfiguration(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

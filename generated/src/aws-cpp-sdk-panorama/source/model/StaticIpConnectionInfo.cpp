@@ -18,19 +18,7 @@ namespace Panorama
 namespace Model
 {
 
-StaticIpConnectionInfo::StaticIpConnectionInfo() : 
-    m_defaultGatewayHasBeenSet(false),
-    m_dnsHasBeenSet(false),
-    m_ipAddressHasBeenSet(false),
-    m_maskHasBeenSet(false)
-{
-}
-
-StaticIpConnectionInfo::StaticIpConnectionInfo(JsonView jsonValue) : 
-    m_defaultGatewayHasBeenSet(false),
-    m_dnsHasBeenSet(false),
-    m_ipAddressHasBeenSet(false),
-    m_maskHasBeenSet(false)
+StaticIpConnectionInfo::StaticIpConnectionInfo(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,10 +28,8 @@ StaticIpConnectionInfo& StaticIpConnectionInfo::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("DefaultGateway"))
   {
     m_defaultGateway = jsonValue.GetString("DefaultGateway");
-
     m_defaultGatewayHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Dns"))
   {
     Aws::Utils::Array<JsonView> dnsJsonList = jsonValue.GetArray("Dns");
@@ -53,21 +39,16 @@ StaticIpConnectionInfo& StaticIpConnectionInfo::operator =(JsonView jsonValue)
     }
     m_dnsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("IpAddress"))
   {
     m_ipAddress = jsonValue.GetString("IpAddress");
-
     m_ipAddressHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Mask"))
   {
     m_mask = jsonValue.GetString("Mask");
-
     m_maskHasBeenSet = true;
   }
-
   return *this;
 }
 

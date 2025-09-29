@@ -33,93 +33,35 @@ namespace Model
   class S3ReferenceDataSourceUpdate
   {
   public:
-    AWS_KINESISANALYTICSV2_API S3ReferenceDataSourceUpdate();
+    AWS_KINESISANALYTICSV2_API S3ReferenceDataSourceUpdate() = default;
     AWS_KINESISANALYTICSV2_API S3ReferenceDataSourceUpdate(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISANALYTICSV2_API S3ReferenceDataSourceUpdate& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISANALYTICSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the S3 bucket.</p>
      */
-    inline const Aws::String& GetBucketARNUpdate() const{ return m_bucketARNUpdate; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the S3 bucket.</p>
-     */
+    inline const Aws::String& GetBucketARNUpdate() const { return m_bucketARNUpdate; }
     inline bool BucketARNUpdateHasBeenSet() const { return m_bucketARNUpdateHasBeenSet; }
+    template<typename BucketARNUpdateT = Aws::String>
+    void SetBucketARNUpdate(BucketARNUpdateT&& value) { m_bucketARNUpdateHasBeenSet = true; m_bucketARNUpdate = std::forward<BucketARNUpdateT>(value); }
+    template<typename BucketARNUpdateT = Aws::String>
+    S3ReferenceDataSourceUpdate& WithBucketARNUpdate(BucketARNUpdateT&& value) { SetBucketARNUpdate(std::forward<BucketARNUpdateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the S3 bucket.</p>
-     */
-    inline void SetBucketARNUpdate(const Aws::String& value) { m_bucketARNUpdateHasBeenSet = true; m_bucketARNUpdate = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the S3 bucket.</p>
-     */
-    inline void SetBucketARNUpdate(Aws::String&& value) { m_bucketARNUpdateHasBeenSet = true; m_bucketARNUpdate = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the S3 bucket.</p>
-     */
-    inline void SetBucketARNUpdate(const char* value) { m_bucketARNUpdateHasBeenSet = true; m_bucketARNUpdate.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the S3 bucket.</p>
-     */
-    inline S3ReferenceDataSourceUpdate& WithBucketARNUpdate(const Aws::String& value) { SetBucketARNUpdate(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the S3 bucket.</p>
-     */
-    inline S3ReferenceDataSourceUpdate& WithBucketARNUpdate(Aws::String&& value) { SetBucketARNUpdate(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the S3 bucket.</p>
-     */
-    inline S3ReferenceDataSourceUpdate& WithBucketARNUpdate(const char* value) { SetBucketARNUpdate(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The object key name.</p>
      */
-    inline const Aws::String& GetFileKeyUpdate() const{ return m_fileKeyUpdate; }
-
-    /**
-     * <p>The object key name.</p>
-     */
+    inline const Aws::String& GetFileKeyUpdate() const { return m_fileKeyUpdate; }
     inline bool FileKeyUpdateHasBeenSet() const { return m_fileKeyUpdateHasBeenSet; }
-
-    /**
-     * <p>The object key name.</p>
-     */
-    inline void SetFileKeyUpdate(const Aws::String& value) { m_fileKeyUpdateHasBeenSet = true; m_fileKeyUpdate = value; }
-
-    /**
-     * <p>The object key name.</p>
-     */
-    inline void SetFileKeyUpdate(Aws::String&& value) { m_fileKeyUpdateHasBeenSet = true; m_fileKeyUpdate = std::move(value); }
-
-    /**
-     * <p>The object key name.</p>
-     */
-    inline void SetFileKeyUpdate(const char* value) { m_fileKeyUpdateHasBeenSet = true; m_fileKeyUpdate.assign(value); }
-
-    /**
-     * <p>The object key name.</p>
-     */
-    inline S3ReferenceDataSourceUpdate& WithFileKeyUpdate(const Aws::String& value) { SetFileKeyUpdate(value); return *this;}
-
-    /**
-     * <p>The object key name.</p>
-     */
-    inline S3ReferenceDataSourceUpdate& WithFileKeyUpdate(Aws::String&& value) { SetFileKeyUpdate(std::move(value)); return *this;}
-
-    /**
-     * <p>The object key name.</p>
-     */
-    inline S3ReferenceDataSourceUpdate& WithFileKeyUpdate(const char* value) { SetFileKeyUpdate(value); return *this;}
-
+    template<typename FileKeyUpdateT = Aws::String>
+    void SetFileKeyUpdate(FileKeyUpdateT&& value) { m_fileKeyUpdateHasBeenSet = true; m_fileKeyUpdate = std::forward<FileKeyUpdateT>(value); }
+    template<typename FileKeyUpdateT = Aws::String>
+    S3ReferenceDataSourceUpdate& WithFileKeyUpdate(FileKeyUpdateT&& value) { SetFileKeyUpdate(std::forward<FileKeyUpdateT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_bucketARNUpdate;

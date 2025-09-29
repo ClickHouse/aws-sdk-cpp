@@ -20,15 +20,7 @@ namespace EC2
 namespace Model
 {
 
-LaunchTemplateInstanceMaintenanceOptions::LaunchTemplateInstanceMaintenanceOptions() : 
-    m_autoRecovery(LaunchTemplateAutoRecoveryState::NOT_SET),
-    m_autoRecoveryHasBeenSet(false)
-{
-}
-
-LaunchTemplateInstanceMaintenanceOptions::LaunchTemplateInstanceMaintenanceOptions(const XmlNode& xmlNode) : 
-    m_autoRecovery(LaunchTemplateAutoRecoveryState::NOT_SET),
-    m_autoRecoveryHasBeenSet(false)
+LaunchTemplateInstanceMaintenanceOptions::LaunchTemplateInstanceMaintenanceOptions(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -42,7 +34,7 @@ LaunchTemplateInstanceMaintenanceOptions& LaunchTemplateInstanceMaintenanceOptio
     XmlNode autoRecoveryNode = resultNode.FirstChild("autoRecovery");
     if(!autoRecoveryNode.IsNull())
     {
-      m_autoRecovery = LaunchTemplateAutoRecoveryStateMapper::GetLaunchTemplateAutoRecoveryStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(autoRecoveryNode.GetText()).c_str()).c_str());
+      m_autoRecovery = LaunchTemplateAutoRecoveryStateMapper::GetLaunchTemplateAutoRecoveryStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(autoRecoveryNode.GetText()).c_str()));
       m_autoRecoveryHasBeenSet = true;
     }
   }
@@ -54,7 +46,7 @@ void LaunchTemplateInstanceMaintenanceOptions::OutputToStream(Aws::OStream& oStr
 {
   if(m_autoRecoveryHasBeenSet)
   {
-      oStream << location << index << locationValue << ".AutoRecovery=" << LaunchTemplateAutoRecoveryStateMapper::GetNameForLaunchTemplateAutoRecoveryState(m_autoRecovery) << "&";
+      oStream << location << index << locationValue << ".AutoRecovery=" << StringUtils::URLEncode(LaunchTemplateAutoRecoveryStateMapper::GetNameForLaunchTemplateAutoRecoveryState(m_autoRecovery)) << "&";
   }
 
 }
@@ -63,7 +55,7 @@ void LaunchTemplateInstanceMaintenanceOptions::OutputToStream(Aws::OStream& oStr
 {
   if(m_autoRecoveryHasBeenSet)
   {
-      oStream << location << ".AutoRecovery=" << LaunchTemplateAutoRecoveryStateMapper::GetNameForLaunchTemplateAutoRecoveryState(m_autoRecovery) << "&";
+      oStream << location << ".AutoRecovery=" << StringUtils::URLEncode(LaunchTemplateAutoRecoveryStateMapper::GetNameForLaunchTemplateAutoRecoveryState(m_autoRecovery)) << "&";
   }
 }
 

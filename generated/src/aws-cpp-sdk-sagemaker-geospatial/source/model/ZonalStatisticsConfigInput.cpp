@@ -18,19 +18,7 @@ namespace SageMakerGeospatial
 namespace Model
 {
 
-ZonalStatisticsConfigInput::ZonalStatisticsConfigInput() : 
-    m_statisticsHasBeenSet(false),
-    m_targetBandsHasBeenSet(false),
-    m_zoneS3PathHasBeenSet(false),
-    m_zoneS3PathKmsKeyIdHasBeenSet(false)
-{
-}
-
-ZonalStatisticsConfigInput::ZonalStatisticsConfigInput(JsonView jsonValue) : 
-    m_statisticsHasBeenSet(false),
-    m_targetBandsHasBeenSet(false),
-    m_zoneS3PathHasBeenSet(false),
-    m_zoneS3PathKmsKeyIdHasBeenSet(false)
+ZonalStatisticsConfigInput::ZonalStatisticsConfigInput(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,7 +34,6 @@ ZonalStatisticsConfigInput& ZonalStatisticsConfigInput::operator =(JsonView json
     }
     m_statisticsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TargetBands"))
   {
     Aws::Utils::Array<JsonView> targetBandsJsonList = jsonValue.GetArray("TargetBands");
@@ -56,21 +43,16 @@ ZonalStatisticsConfigInput& ZonalStatisticsConfigInput::operator =(JsonView json
     }
     m_targetBandsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ZoneS3Path"))
   {
     m_zoneS3Path = jsonValue.GetString("ZoneS3Path");
-
     m_zoneS3PathHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ZoneS3PathKmsKeyId"))
   {
     m_zoneS3PathKmsKeyId = jsonValue.GetString("ZoneS3PathKmsKeyId");
-
     m_zoneS3PathKmsKeyIdHasBeenSet = true;
   }
-
   return *this;
 }
 

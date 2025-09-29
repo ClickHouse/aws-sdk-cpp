@@ -32,148 +32,50 @@ namespace Model
   class CaptionSelector
   {
   public:
-    AWS_MEDIALIVE_API CaptionSelector();
+    AWS_MEDIALIVE_API CaptionSelector() = default;
     AWS_MEDIALIVE_API CaptionSelector(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API CaptionSelector& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * When specified this field indicates the three letter language code of the
      * caption track to extract from the source.
      */
-    inline const Aws::String& GetLanguageCode() const{ return m_languageCode; }
-
-    /**
-     * When specified this field indicates the three letter language code of the
-     * caption track to extract from the source.
-     */
+    inline const Aws::String& GetLanguageCode() const { return m_languageCode; }
     inline bool LanguageCodeHasBeenSet() const { return m_languageCodeHasBeenSet; }
+    template<typename LanguageCodeT = Aws::String>
+    void SetLanguageCode(LanguageCodeT&& value) { m_languageCodeHasBeenSet = true; m_languageCode = std::forward<LanguageCodeT>(value); }
+    template<typename LanguageCodeT = Aws::String>
+    CaptionSelector& WithLanguageCode(LanguageCodeT&& value) { SetLanguageCode(std::forward<LanguageCodeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * When specified this field indicates the three letter language code of the
-     * caption track to extract from the source.
-     */
-    inline void SetLanguageCode(const Aws::String& value) { m_languageCodeHasBeenSet = true; m_languageCode = value; }
-
-    /**
-     * When specified this field indicates the three letter language code of the
-     * caption track to extract from the source.
-     */
-    inline void SetLanguageCode(Aws::String&& value) { m_languageCodeHasBeenSet = true; m_languageCode = std::move(value); }
-
-    /**
-     * When specified this field indicates the three letter language code of the
-     * caption track to extract from the source.
-     */
-    inline void SetLanguageCode(const char* value) { m_languageCodeHasBeenSet = true; m_languageCode.assign(value); }
-
-    /**
-     * When specified this field indicates the three letter language code of the
-     * caption track to extract from the source.
-     */
-    inline CaptionSelector& WithLanguageCode(const Aws::String& value) { SetLanguageCode(value); return *this;}
-
-    /**
-     * When specified this field indicates the three letter language code of the
-     * caption track to extract from the source.
-     */
-    inline CaptionSelector& WithLanguageCode(Aws::String&& value) { SetLanguageCode(std::move(value)); return *this;}
-
-    /**
-     * When specified this field indicates the three letter language code of the
-     * caption track to extract from the source.
-     */
-    inline CaptionSelector& WithLanguageCode(const char* value) { SetLanguageCode(value); return *this;}
-
-
+    ///@{
     /**
      * Name identifier for a caption selector.  This name is used to associate this
      * caption selector with one or more caption descriptions.  Names must be unique
      * within an event.
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * Name identifier for a caption selector.  This name is used to associate this
-     * caption selector with one or more caption descriptions.  Names must be unique
-     * within an event.
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    CaptionSelector& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * Name identifier for a caption selector.  This name is used to associate this
-     * caption selector with one or more caption descriptions.  Names must be unique
-     * within an event.
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * Name identifier for a caption selector.  This name is used to associate this
-     * caption selector with one or more caption descriptions.  Names must be unique
-     * within an event.
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * Name identifier for a caption selector.  This name is used to associate this
-     * caption selector with one or more caption descriptions.  Names must be unique
-     * within an event.
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * Name identifier for a caption selector.  This name is used to associate this
-     * caption selector with one or more caption descriptions.  Names must be unique
-     * within an event.
-     */
-    inline CaptionSelector& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * Name identifier for a caption selector.  This name is used to associate this
-     * caption selector with one or more caption descriptions.  Names must be unique
-     * within an event.
-     */
-    inline CaptionSelector& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * Name identifier for a caption selector.  This name is used to associate this
-     * caption selector with one or more caption descriptions.  Names must be unique
-     * within an event.
-     */
-    inline CaptionSelector& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * Caption selector settings.
      */
-    inline const CaptionSelectorSettings& GetSelectorSettings() const{ return m_selectorSettings; }
-
-    /**
-     * Caption selector settings.
-     */
+    inline const CaptionSelectorSettings& GetSelectorSettings() const { return m_selectorSettings; }
     inline bool SelectorSettingsHasBeenSet() const { return m_selectorSettingsHasBeenSet; }
-
-    /**
-     * Caption selector settings.
-     */
-    inline void SetSelectorSettings(const CaptionSelectorSettings& value) { m_selectorSettingsHasBeenSet = true; m_selectorSettings = value; }
-
-    /**
-     * Caption selector settings.
-     */
-    inline void SetSelectorSettings(CaptionSelectorSettings&& value) { m_selectorSettingsHasBeenSet = true; m_selectorSettings = std::move(value); }
-
-    /**
-     * Caption selector settings.
-     */
-    inline CaptionSelector& WithSelectorSettings(const CaptionSelectorSettings& value) { SetSelectorSettings(value); return *this;}
-
-    /**
-     * Caption selector settings.
-     */
-    inline CaptionSelector& WithSelectorSettings(CaptionSelectorSettings&& value) { SetSelectorSettings(std::move(value)); return *this;}
-
+    template<typename SelectorSettingsT = CaptionSelectorSettings>
+    void SetSelectorSettings(SelectorSettingsT&& value) { m_selectorSettingsHasBeenSet = true; m_selectorSettings = std::forward<SelectorSettingsT>(value); }
+    template<typename SelectorSettingsT = CaptionSelectorSettings>
+    CaptionSelector& WithSelectorSettings(SelectorSettingsT&& value) { SetSelectorSettings(std::forward<SelectorSettingsT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_languageCode;

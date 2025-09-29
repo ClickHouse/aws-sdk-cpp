@@ -18,17 +18,7 @@ namespace Glue
 namespace Model
 {
 
-MetadataInfo::MetadataInfo() : 
-    m_metadataValueHasBeenSet(false),
-    m_createdTimeHasBeenSet(false),
-    m_otherMetadataValueListHasBeenSet(false)
-{
-}
-
-MetadataInfo::MetadataInfo(JsonView jsonValue) : 
-    m_metadataValueHasBeenSet(false),
-    m_createdTimeHasBeenSet(false),
-    m_otherMetadataValueListHasBeenSet(false)
+MetadataInfo::MetadataInfo(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ MetadataInfo& MetadataInfo::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("MetadataValue"))
   {
     m_metadataValue = jsonValue.GetString("MetadataValue");
-
     m_metadataValueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CreatedTime"))
   {
     m_createdTime = jsonValue.GetString("CreatedTime");
-
     m_createdTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("OtherMetadataValueList"))
   {
     Aws::Utils::Array<JsonView> otherMetadataValueListJsonList = jsonValue.GetArray("OtherMetadataValueList");
@@ -58,7 +44,6 @@ MetadataInfo& MetadataInfo::operator =(JsonView jsonValue)
     }
     m_otherMetadataValueListHasBeenSet = true;
   }
-
   return *this;
 }
 

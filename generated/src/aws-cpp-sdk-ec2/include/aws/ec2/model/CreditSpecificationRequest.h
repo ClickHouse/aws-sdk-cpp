@@ -32,7 +32,7 @@ namespace Model
   class CreditSpecificationRequest
   {
   public:
-    AWS_EC2_API CreditSpecificationRequest();
+    AWS_EC2_API CreditSpecificationRequest() = default;
     AWS_EC2_API CreditSpecificationRequest(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API CreditSpecificationRequest& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,54 +40,18 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The credit option for CPU usage of a T instance.</p> <p>Valid values:
      * <code>standard</code> | <code>unlimited</code> </p>
      */
-    inline const Aws::String& GetCpuCredits() const{ return m_cpuCredits; }
-
-    /**
-     * <p>The credit option for CPU usage of a T instance.</p> <p>Valid values:
-     * <code>standard</code> | <code>unlimited</code> </p>
-     */
+    inline const Aws::String& GetCpuCredits() const { return m_cpuCredits; }
     inline bool CpuCreditsHasBeenSet() const { return m_cpuCreditsHasBeenSet; }
-
-    /**
-     * <p>The credit option for CPU usage of a T instance.</p> <p>Valid values:
-     * <code>standard</code> | <code>unlimited</code> </p>
-     */
-    inline void SetCpuCredits(const Aws::String& value) { m_cpuCreditsHasBeenSet = true; m_cpuCredits = value; }
-
-    /**
-     * <p>The credit option for CPU usage of a T instance.</p> <p>Valid values:
-     * <code>standard</code> | <code>unlimited</code> </p>
-     */
-    inline void SetCpuCredits(Aws::String&& value) { m_cpuCreditsHasBeenSet = true; m_cpuCredits = std::move(value); }
-
-    /**
-     * <p>The credit option for CPU usage of a T instance.</p> <p>Valid values:
-     * <code>standard</code> | <code>unlimited</code> </p>
-     */
-    inline void SetCpuCredits(const char* value) { m_cpuCreditsHasBeenSet = true; m_cpuCredits.assign(value); }
-
-    /**
-     * <p>The credit option for CPU usage of a T instance.</p> <p>Valid values:
-     * <code>standard</code> | <code>unlimited</code> </p>
-     */
-    inline CreditSpecificationRequest& WithCpuCredits(const Aws::String& value) { SetCpuCredits(value); return *this;}
-
-    /**
-     * <p>The credit option for CPU usage of a T instance.</p> <p>Valid values:
-     * <code>standard</code> | <code>unlimited</code> </p>
-     */
-    inline CreditSpecificationRequest& WithCpuCredits(Aws::String&& value) { SetCpuCredits(std::move(value)); return *this;}
-
-    /**
-     * <p>The credit option for CPU usage of a T instance.</p> <p>Valid values:
-     * <code>standard</code> | <code>unlimited</code> </p>
-     */
-    inline CreditSpecificationRequest& WithCpuCredits(const char* value) { SetCpuCredits(value); return *this;}
-
+    template<typename CpuCreditsT = Aws::String>
+    void SetCpuCredits(CpuCreditsT&& value) { m_cpuCreditsHasBeenSet = true; m_cpuCredits = std::forward<CpuCreditsT>(value); }
+    template<typename CpuCreditsT = Aws::String>
+    CreditSpecificationRequest& WithCpuCredits(CpuCreditsT&& value) { SetCpuCredits(std::forward<CpuCreditsT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_cpuCredits;

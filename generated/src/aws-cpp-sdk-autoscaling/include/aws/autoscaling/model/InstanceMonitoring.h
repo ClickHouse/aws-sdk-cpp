@@ -30,7 +30,7 @@ namespace Model
   class InstanceMonitoring
   {
   public:
-    AWS_AUTOSCALING_API InstanceMonitoring();
+    AWS_AUTOSCALING_API InstanceMonitoring() = default;
     AWS_AUTOSCALING_API InstanceMonitoring(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_AUTOSCALING_API InstanceMonitoring& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -38,33 +38,19 @@ namespace Model
     AWS_AUTOSCALING_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>If <code>true</code>, detailed monitoring is enabled. Otherwise, basic
      * monitoring is enabled.</p>
      */
-    inline bool GetEnabled() const{ return m_enabled; }
-
-    /**
-     * <p>If <code>true</code>, detailed monitoring is enabled. Otherwise, basic
-     * monitoring is enabled.</p>
-     */
+    inline bool GetEnabled() const { return m_enabled; }
     inline bool EnabledHasBeenSet() const { return m_enabledHasBeenSet; }
-
-    /**
-     * <p>If <code>true</code>, detailed monitoring is enabled. Otherwise, basic
-     * monitoring is enabled.</p>
-     */
     inline void SetEnabled(bool value) { m_enabledHasBeenSet = true; m_enabled = value; }
-
-    /**
-     * <p>If <code>true</code>, detailed monitoring is enabled. Otherwise, basic
-     * monitoring is enabled.</p>
-     */
     inline InstanceMonitoring& WithEnabled(bool value) { SetEnabled(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_enabled;
+    bool m_enabled{false};
     bool m_enabledHasBeenSet = false;
   };
 

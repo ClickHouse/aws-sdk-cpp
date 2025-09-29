@@ -18,49 +18,33 @@ namespace QBusiness
 namespace Model
 {
 
-Message::Message() : 
-    m_actionExecutionHasBeenSet(false),
-    m_actionReviewHasBeenSet(false),
-    m_attachmentsHasBeenSet(false),
-    m_bodyHasBeenSet(false),
-    m_messageIdHasBeenSet(false),
-    m_sourceAttributionHasBeenSet(false),
-    m_timeHasBeenSet(false),
-    m_type(MessageType::NOT_SET),
-    m_typeHasBeenSet(false)
-{
-}
-
-Message::Message(JsonView jsonValue) : 
-    m_actionExecutionHasBeenSet(false),
-    m_actionReviewHasBeenSet(false),
-    m_attachmentsHasBeenSet(false),
-    m_bodyHasBeenSet(false),
-    m_messageIdHasBeenSet(false),
-    m_sourceAttributionHasBeenSet(false),
-    m_timeHasBeenSet(false),
-    m_type(MessageType::NOT_SET),
-    m_typeHasBeenSet(false)
+Message::Message(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 Message& Message::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("actionExecution"))
+  if(jsonValue.ValueExists("messageId"))
   {
-    m_actionExecution = jsonValue.GetObject("actionExecution");
-
-    m_actionExecutionHasBeenSet = true;
+    m_messageId = jsonValue.GetString("messageId");
+    m_messageIdHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("actionReview"))
+  if(jsonValue.ValueExists("body"))
   {
-    m_actionReview = jsonValue.GetObject("actionReview");
-
-    m_actionReviewHasBeenSet = true;
+    m_body = jsonValue.GetString("body");
+    m_bodyHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("time"))
+  {
+    m_time = jsonValue.GetDouble("time");
+    m_timeHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("type"))
+  {
+    m_type = MessageTypeMapper::GetMessageTypeForName(jsonValue.GetString("type"));
+    m_typeHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("attachments"))
   {
     Aws::Utils::Array<JsonView> attachmentsJsonList = jsonValue.GetArray("attachments");
@@ -70,21 +54,6 @@ Message& Message::operator =(JsonView jsonValue)
     }
     m_attachmentsHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("body"))
-  {
-    m_body = jsonValue.GetString("body");
-
-    m_bodyHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("messageId"))
-  {
-    m_messageId = jsonValue.GetString("messageId");
-
-    m_messageIdHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("sourceAttribution"))
   {
     Aws::Utils::Array<JsonView> sourceAttributionJsonList = jsonValue.GetArray("sourceAttribution");
@@ -94,21 +63,16 @@ Message& Message::operator =(JsonView jsonValue)
     }
     m_sourceAttributionHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("time"))
+  if(jsonValue.ValueExists("actionReview"))
   {
-    m_time = jsonValue.GetDouble("time");
-
-    m_timeHasBeenSet = true;
+    m_actionReview = jsonValue.GetObject("actionReview");
+    m_actionReviewHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("type"))
+  if(jsonValue.ValueExists("actionExecution"))
   {
-    m_type = MessageTypeMapper::GetMessageTypeForName(jsonValue.GetString("type"));
-
-    m_typeHasBeenSet = true;
+    m_actionExecution = jsonValue.GetObject("actionExecution");
+    m_actionExecutionHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -116,16 +80,26 @@ JsonValue Message::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_actionExecutionHasBeenSet)
+  if(m_messageIdHasBeenSet)
   {
-   payload.WithObject("actionExecution", m_actionExecution.Jsonize());
+   payload.WithString("messageId", m_messageId);
 
   }
 
-  if(m_actionReviewHasBeenSet)
+  if(m_bodyHasBeenSet)
   {
-   payload.WithObject("actionReview", m_actionReview.Jsonize());
+   payload.WithString("body", m_body);
 
+  }
+
+  if(m_timeHasBeenSet)
+  {
+   payload.WithDouble("time", m_time.SecondsWithMSPrecision());
+  }
+
+  if(m_typeHasBeenSet)
+  {
+   payload.WithString("type", MessageTypeMapper::GetNameForMessageType(m_type));
   }
 
   if(m_attachmentsHasBeenSet)
@@ -136,18 +110,6 @@ JsonValue Message::Jsonize() const
      attachmentsJsonList[attachmentsIndex].AsObject(m_attachments[attachmentsIndex].Jsonize());
    }
    payload.WithArray("attachments", std::move(attachmentsJsonList));
-
-  }
-
-  if(m_bodyHasBeenSet)
-  {
-   payload.WithString("body", m_body);
-
-  }
-
-  if(m_messageIdHasBeenSet)
-  {
-   payload.WithString("messageId", m_messageId);
 
   }
 
@@ -162,14 +124,16 @@ JsonValue Message::Jsonize() const
 
   }
 
-  if(m_timeHasBeenSet)
+  if(m_actionReviewHasBeenSet)
   {
-   payload.WithDouble("time", m_time.SecondsWithMSPrecision());
+   payload.WithObject("actionReview", m_actionReview.Jsonize());
+
   }
 
-  if(m_typeHasBeenSet)
+  if(m_actionExecutionHasBeenSet)
   {
-   payload.WithString("type", MessageTypeMapper::GetNameForMessageType(m_type));
+   payload.WithObject("actionExecution", m_actionExecution.Jsonize());
+
   }
 
   return payload;

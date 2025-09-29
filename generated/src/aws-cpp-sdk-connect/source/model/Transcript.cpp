@@ -18,17 +18,7 @@ namespace Connect
 namespace Model
 {
 
-Transcript::Transcript() : 
-    m_criteriaHasBeenSet(false),
-    m_matchType(SearchContactsMatchType::NOT_SET),
-    m_matchTypeHasBeenSet(false)
-{
-}
-
-Transcript::Transcript(JsonView jsonValue) : 
-    m_criteriaHasBeenSet(false),
-    m_matchType(SearchContactsMatchType::NOT_SET),
-    m_matchTypeHasBeenSet(false)
+Transcript::Transcript(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,14 +34,11 @@ Transcript& Transcript::operator =(JsonView jsonValue)
     }
     m_criteriaHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MatchType"))
   {
     m_matchType = SearchContactsMatchTypeMapper::GetSearchContactsMatchTypeForName(jsonValue.GetString("MatchType"));
-
     m_matchTypeHasBeenSet = true;
   }
-
   return *this;
 }
 

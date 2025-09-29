@@ -31,52 +31,23 @@ namespace Model
   class ResourceNotFoundException
   {
   public:
-    AWS_IVS_API ResourceNotFoundException();
+    AWS_IVS_API ResourceNotFoundException() = default;
     AWS_IVS_API ResourceNotFoundException(Aws::Utils::Json::JsonView jsonValue);
     AWS_IVS_API ResourceNotFoundException& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IVS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Request references a resource which does not exist.</p>
      */
-    inline const Aws::String& GetExceptionMessage() const{ return m_exceptionMessage; }
-
-    /**
-     * <p>Request references a resource which does not exist.</p>
-     */
+    inline const Aws::String& GetExceptionMessage() const { return m_exceptionMessage; }
     inline bool ExceptionMessageHasBeenSet() const { return m_exceptionMessageHasBeenSet; }
-
-    /**
-     * <p>Request references a resource which does not exist.</p>
-     */
-    inline void SetExceptionMessage(const Aws::String& value) { m_exceptionMessageHasBeenSet = true; m_exceptionMessage = value; }
-
-    /**
-     * <p>Request references a resource which does not exist.</p>
-     */
-    inline void SetExceptionMessage(Aws::String&& value) { m_exceptionMessageHasBeenSet = true; m_exceptionMessage = std::move(value); }
-
-    /**
-     * <p>Request references a resource which does not exist.</p>
-     */
-    inline void SetExceptionMessage(const char* value) { m_exceptionMessageHasBeenSet = true; m_exceptionMessage.assign(value); }
-
-    /**
-     * <p>Request references a resource which does not exist.</p>
-     */
-    inline ResourceNotFoundException& WithExceptionMessage(const Aws::String& value) { SetExceptionMessage(value); return *this;}
-
-    /**
-     * <p>Request references a resource which does not exist.</p>
-     */
-    inline ResourceNotFoundException& WithExceptionMessage(Aws::String&& value) { SetExceptionMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>Request references a resource which does not exist.</p>
-     */
-    inline ResourceNotFoundException& WithExceptionMessage(const char* value) { SetExceptionMessage(value); return *this;}
-
+    template<typename ExceptionMessageT = Aws::String>
+    void SetExceptionMessage(ExceptionMessageT&& value) { m_exceptionMessageHasBeenSet = true; m_exceptionMessage = std::forward<ExceptionMessageT>(value); }
+    template<typename ExceptionMessageT = Aws::String>
+    ResourceNotFoundException& WithExceptionMessage(ExceptionMessageT&& value) { SetExceptionMessage(std::forward<ExceptionMessageT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_exceptionMessage;

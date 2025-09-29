@@ -21,7 +21,7 @@ namespace Model
   class GetConfigurationSetEventDestinationsRequest : public PinpointSMSVoiceRequest
   {
   public:
-    AWS_PINPOINTSMSVOICE_API GetConfigurationSetEventDestinationsRequest();
+    AWS_PINPOINTSMSVOICE_API GetConfigurationSetEventDestinationsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_PINPOINTSMSVOICE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * ConfigurationSetName
      */
-    inline const Aws::String& GetConfigurationSetName() const{ return m_configurationSetName; }
-
-    /**
-     * ConfigurationSetName
-     */
+    inline const Aws::String& GetConfigurationSetName() const { return m_configurationSetName; }
     inline bool ConfigurationSetNameHasBeenSet() const { return m_configurationSetNameHasBeenSet; }
-
-    /**
-     * ConfigurationSetName
-     */
-    inline void SetConfigurationSetName(const Aws::String& value) { m_configurationSetNameHasBeenSet = true; m_configurationSetName = value; }
-
-    /**
-     * ConfigurationSetName
-     */
-    inline void SetConfigurationSetName(Aws::String&& value) { m_configurationSetNameHasBeenSet = true; m_configurationSetName = std::move(value); }
-
-    /**
-     * ConfigurationSetName
-     */
-    inline void SetConfigurationSetName(const char* value) { m_configurationSetNameHasBeenSet = true; m_configurationSetName.assign(value); }
-
-    /**
-     * ConfigurationSetName
-     */
-    inline GetConfigurationSetEventDestinationsRequest& WithConfigurationSetName(const Aws::String& value) { SetConfigurationSetName(value); return *this;}
-
-    /**
-     * ConfigurationSetName
-     */
-    inline GetConfigurationSetEventDestinationsRequest& WithConfigurationSetName(Aws::String&& value) { SetConfigurationSetName(std::move(value)); return *this;}
-
-    /**
-     * ConfigurationSetName
-     */
-    inline GetConfigurationSetEventDestinationsRequest& WithConfigurationSetName(const char* value) { SetConfigurationSetName(value); return *this;}
-
+    template<typename ConfigurationSetNameT = Aws::String>
+    void SetConfigurationSetName(ConfigurationSetNameT&& value) { m_configurationSetNameHasBeenSet = true; m_configurationSetName = std::forward<ConfigurationSetNameT>(value); }
+    template<typename ConfigurationSetNameT = Aws::String>
+    GetConfigurationSetEventDestinationsRequest& WithConfigurationSetName(ConfigurationSetNameT&& value) { SetConfigurationSetName(std::forward<ConfigurationSetNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_configurationSetName;

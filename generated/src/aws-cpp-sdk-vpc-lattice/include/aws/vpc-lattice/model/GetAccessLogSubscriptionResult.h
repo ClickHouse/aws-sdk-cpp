@@ -7,6 +7,7 @@
 #include <aws/vpc-lattice/VPCLattice_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/DateTime.h>
+#include <aws/vpc-lattice/model/ServiceNetworkLogType.h>
 #include <utility>
 
 namespace Aws
@@ -28,291 +29,135 @@ namespace Model
   class GetAccessLogSubscriptionResult
   {
   public:
-    AWS_VPCLATTICE_API GetAccessLogSubscriptionResult();
+    AWS_VPCLATTICE_API GetAccessLogSubscriptionResult() = default;
     AWS_VPCLATTICE_API GetAccessLogSubscriptionResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_VPCLATTICE_API GetAccessLogSubscriptionResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the access log subscription.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
+    inline const Aws::String& GetArn() const { return m_arn; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    GetAccessLogSubscriptionResult& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Amazon Resource Name (ARN) of the access log subscription.</p>
+     * <p>The date and time that the access log subscription was created, in ISO-8601
+     * format.</p>
      */
-    inline void SetArn(const Aws::String& value) { m_arn = value; }
+    inline const Aws::Utils::DateTime& GetCreatedAt() const { return m_createdAt; }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    void SetCreatedAt(CreatedAtT&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::forward<CreatedAtT>(value); }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    GetAccessLogSubscriptionResult& WithCreatedAt(CreatedAtT&& value) { SetCreatedAt(std::forward<CreatedAtT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Amazon Resource Name (ARN) of the access log subscription.</p>
+     * <p>The Amazon Resource Name (ARN) of the access log destination.</p>
      */
-    inline void SetArn(Aws::String&& value) { m_arn = std::move(value); }
+    inline const Aws::String& GetDestinationArn() const { return m_destinationArn; }
+    template<typename DestinationArnT = Aws::String>
+    void SetDestinationArn(DestinationArnT&& value) { m_destinationArnHasBeenSet = true; m_destinationArn = std::forward<DestinationArnT>(value); }
+    template<typename DestinationArnT = Aws::String>
+    GetAccessLogSubscriptionResult& WithDestinationArn(DestinationArnT&& value) { SetDestinationArn(std::forward<DestinationArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Amazon Resource Name (ARN) of the access log subscription.</p>
+     * <p>The ID of the access log subscription.</p>
      */
-    inline void SetArn(const char* value) { m_arn.assign(value); }
+    inline const Aws::String& GetId() const { return m_id; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    GetAccessLogSubscriptionResult& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Amazon Resource Name (ARN) of the access log subscription.</p>
-     */
-    inline GetAccessLogSubscriptionResult& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the access log subscription.</p>
-     */
-    inline GetAccessLogSubscriptionResult& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the access log subscription.</p>
-     */
-    inline GetAccessLogSubscriptionResult& WithArn(const char* value) { SetArn(value); return *this;}
-
-
-    /**
-     * <p>The date and time that the access log subscription was created, specified in
+     * <p>The date and time that the access log subscription was last updated, in
      * ISO-8601 format.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedAt() const{ return m_createdAt; }
+    inline const Aws::Utils::DateTime& GetLastUpdatedAt() const { return m_lastUpdatedAt; }
+    template<typename LastUpdatedAtT = Aws::Utils::DateTime>
+    void SetLastUpdatedAt(LastUpdatedAtT&& value) { m_lastUpdatedAtHasBeenSet = true; m_lastUpdatedAt = std::forward<LastUpdatedAtT>(value); }
+    template<typename LastUpdatedAtT = Aws::Utils::DateTime>
+    GetAccessLogSubscriptionResult& WithLastUpdatedAt(LastUpdatedAtT&& value) { SetLastUpdatedAt(std::forward<LastUpdatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time that the access log subscription was created, specified in
-     * ISO-8601 format.</p>
-     */
-    inline void SetCreatedAt(const Aws::Utils::DateTime& value) { m_createdAt = value; }
-
-    /**
-     * <p>The date and time that the access log subscription was created, specified in
-     * ISO-8601 format.</p>
-     */
-    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAt = std::move(value); }
-
-    /**
-     * <p>The date and time that the access log subscription was created, specified in
-     * ISO-8601 format.</p>
-     */
-    inline GetAccessLogSubscriptionResult& WithCreatedAt(const Aws::Utils::DateTime& value) { SetCreatedAt(value); return *this;}
-
-    /**
-     * <p>The date and time that the access log subscription was created, specified in
-     * ISO-8601 format.</p>
-     */
-    inline GetAccessLogSubscriptionResult& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the access log destination.</p>
-     */
-    inline const Aws::String& GetDestinationArn() const{ return m_destinationArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the access log destination.</p>
-     */
-    inline void SetDestinationArn(const Aws::String& value) { m_destinationArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the access log destination.</p>
-     */
-    inline void SetDestinationArn(Aws::String&& value) { m_destinationArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the access log destination.</p>
-     */
-    inline void SetDestinationArn(const char* value) { m_destinationArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the access log destination.</p>
-     */
-    inline GetAccessLogSubscriptionResult& WithDestinationArn(const Aws::String& value) { SetDestinationArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the access log destination.</p>
-     */
-    inline GetAccessLogSubscriptionResult& WithDestinationArn(Aws::String&& value) { SetDestinationArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the access log destination.</p>
-     */
-    inline GetAccessLogSubscriptionResult& WithDestinationArn(const char* value) { SetDestinationArn(value); return *this;}
-
-
-    /**
-     * <p>The ID of the access log subscription.</p>
-     */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The ID of the access log subscription.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_id = value; }
-
-    /**
-     * <p>The ID of the access log subscription.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_id = std::move(value); }
-
-    /**
-     * <p>The ID of the access log subscription.</p>
-     */
-    inline void SetId(const char* value) { m_id.assign(value); }
-
-    /**
-     * <p>The ID of the access log subscription.</p>
-     */
-    inline GetAccessLogSubscriptionResult& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The ID of the access log subscription.</p>
-     */
-    inline GetAccessLogSubscriptionResult& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the access log subscription.</p>
-     */
-    inline GetAccessLogSubscriptionResult& WithId(const char* value) { SetId(value); return *this;}
-
-
-    /**
-     * <p>The date and time that the access log subscription was last updated,
-     * specified in ISO-8601 format.</p>
-     */
-    inline const Aws::Utils::DateTime& GetLastUpdatedAt() const{ return m_lastUpdatedAt; }
-
-    /**
-     * <p>The date and time that the access log subscription was last updated,
-     * specified in ISO-8601 format.</p>
-     */
-    inline void SetLastUpdatedAt(const Aws::Utils::DateTime& value) { m_lastUpdatedAt = value; }
-
-    /**
-     * <p>The date and time that the access log subscription was last updated,
-     * specified in ISO-8601 format.</p>
-     */
-    inline void SetLastUpdatedAt(Aws::Utils::DateTime&& value) { m_lastUpdatedAt = std::move(value); }
-
-    /**
-     * <p>The date and time that the access log subscription was last updated,
-     * specified in ISO-8601 format.</p>
-     */
-    inline GetAccessLogSubscriptionResult& WithLastUpdatedAt(const Aws::Utils::DateTime& value) { SetLastUpdatedAt(value); return *this;}
-
-    /**
-     * <p>The date and time that the access log subscription was last updated,
-     * specified in ISO-8601 format.</p>
-     */
-    inline GetAccessLogSubscriptionResult& WithLastUpdatedAt(Aws::Utils::DateTime&& value) { SetLastUpdatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the service network or service.</p>
      */
-    inline const Aws::String& GetResourceArn() const{ return m_resourceArn; }
+    inline const Aws::String& GetResourceArn() const { return m_resourceArn; }
+    template<typename ResourceArnT = Aws::String>
+    void SetResourceArn(ResourceArnT&& value) { m_resourceArnHasBeenSet = true; m_resourceArn = std::forward<ResourceArnT>(value); }
+    template<typename ResourceArnT = Aws::String>
+    GetAccessLogSubscriptionResult& WithResourceArn(ResourceArnT&& value) { SetResourceArn(std::forward<ResourceArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the service network or service.</p>
-     */
-    inline void SetResourceArn(const Aws::String& value) { m_resourceArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the service network or service.</p>
-     */
-    inline void SetResourceArn(Aws::String&& value) { m_resourceArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the service network or service.</p>
-     */
-    inline void SetResourceArn(const char* value) { m_resourceArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the service network or service.</p>
-     */
-    inline GetAccessLogSubscriptionResult& WithResourceArn(const Aws::String& value) { SetResourceArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the service network or service.</p>
-     */
-    inline GetAccessLogSubscriptionResult& WithResourceArn(Aws::String&& value) { SetResourceArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the service network or service.</p>
-     */
-    inline GetAccessLogSubscriptionResult& WithResourceArn(const char* value) { SetResourceArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the service network or service.</p>
      */
-    inline const Aws::String& GetResourceId() const{ return m_resourceId; }
+    inline const Aws::String& GetResourceId() const { return m_resourceId; }
+    template<typename ResourceIdT = Aws::String>
+    void SetResourceId(ResourceIdT&& value) { m_resourceIdHasBeenSet = true; m_resourceId = std::forward<ResourceIdT>(value); }
+    template<typename ResourceIdT = Aws::String>
+    GetAccessLogSubscriptionResult& WithResourceId(ResourceIdT&& value) { SetResourceId(std::forward<ResourceIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ID of the service network or service.</p>
+     * <p>The log type for the service network.</p>
      */
-    inline void SetResourceId(const Aws::String& value) { m_resourceId = value; }
+    inline ServiceNetworkLogType GetServiceNetworkLogType() const { return m_serviceNetworkLogType; }
+    inline void SetServiceNetworkLogType(ServiceNetworkLogType value) { m_serviceNetworkLogTypeHasBeenSet = true; m_serviceNetworkLogType = value; }
+    inline GetAccessLogSubscriptionResult& WithServiceNetworkLogType(ServiceNetworkLogType value) { SetServiceNetworkLogType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the service network or service.</p>
-     */
-    inline void SetResourceId(Aws::String&& value) { m_resourceId = std::move(value); }
-
-    /**
-     * <p>The ID of the service network or service.</p>
-     */
-    inline void SetResourceId(const char* value) { m_resourceId.assign(value); }
-
-    /**
-     * <p>The ID of the service network or service.</p>
-     */
-    inline GetAccessLogSubscriptionResult& WithResourceId(const Aws::String& value) { SetResourceId(value); return *this;}
-
-    /**
-     * <p>The ID of the service network or service.</p>
-     */
-    inline GetAccessLogSubscriptionResult& WithResourceId(Aws::String&& value) { SetResourceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the service network or service.</p>
-     */
-    inline GetAccessLogSubscriptionResult& WithResourceId(const char* value) { SetResourceId(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetAccessLogSubscriptionResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetAccessLogSubscriptionResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetAccessLogSubscriptionResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetAccessLogSubscriptionResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;
+    bool m_arnHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdAt;
+    Aws::Utils::DateTime m_createdAt{};
+    bool m_createdAtHasBeenSet = false;
 
     Aws::String m_destinationArn;
+    bool m_destinationArnHasBeenSet = false;
 
     Aws::String m_id;
+    bool m_idHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastUpdatedAt;
+    Aws::Utils::DateTime m_lastUpdatedAt{};
+    bool m_lastUpdatedAtHasBeenSet = false;
 
     Aws::String m_resourceArn;
+    bool m_resourceArnHasBeenSet = false;
 
     Aws::String m_resourceId;
+    bool m_resourceIdHasBeenSet = false;
+
+    ServiceNetworkLogType m_serviceNetworkLogType{ServiceNetworkLogType::NOT_SET};
+    bool m_serviceNetworkLogTypeHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

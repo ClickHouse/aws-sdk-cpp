@@ -18,17 +18,7 @@ namespace IoTEvents
 namespace Model
 {
 
-Payload::Payload() : 
-    m_contentExpressionHasBeenSet(false),
-    m_type(PayloadType::NOT_SET),
-    m_typeHasBeenSet(false)
-{
-}
-
-Payload::Payload(JsonView jsonValue) : 
-    m_contentExpressionHasBeenSet(false),
-    m_type(PayloadType::NOT_SET),
-    m_typeHasBeenSet(false)
+Payload::Payload(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ Payload& Payload::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("contentExpression"))
   {
     m_contentExpression = jsonValue.GetString("contentExpression");
-
     m_contentExpressionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("type"))
   {
     m_type = PayloadTypeMapper::GetPayloadTypeForName(jsonValue.GetString("type"));
-
     m_typeHasBeenSet = true;
   }
-
   return *this;
 }
 

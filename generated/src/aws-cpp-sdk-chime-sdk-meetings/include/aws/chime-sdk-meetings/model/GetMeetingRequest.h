@@ -21,7 +21,7 @@ namespace Model
   class GetMeetingRequest : public ChimeSDKMeetingsRequest
   {
   public:
-    AWS_CHIMESDKMEETINGS_API GetMeetingRequest();
+    AWS_CHIMESDKMEETINGS_API GetMeetingRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_CHIMESDKMEETINGS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Chime SDK meeting ID.</p>
      */
-    inline const Aws::String& GetMeetingId() const{ return m_meetingId; }
-
-    /**
-     * <p>The Amazon Chime SDK meeting ID.</p>
-     */
+    inline const Aws::String& GetMeetingId() const { return m_meetingId; }
     inline bool MeetingIdHasBeenSet() const { return m_meetingIdHasBeenSet; }
-
-    /**
-     * <p>The Amazon Chime SDK meeting ID.</p>
-     */
-    inline void SetMeetingId(const Aws::String& value) { m_meetingIdHasBeenSet = true; m_meetingId = value; }
-
-    /**
-     * <p>The Amazon Chime SDK meeting ID.</p>
-     */
-    inline void SetMeetingId(Aws::String&& value) { m_meetingIdHasBeenSet = true; m_meetingId = std::move(value); }
-
-    /**
-     * <p>The Amazon Chime SDK meeting ID.</p>
-     */
-    inline void SetMeetingId(const char* value) { m_meetingIdHasBeenSet = true; m_meetingId.assign(value); }
-
-    /**
-     * <p>The Amazon Chime SDK meeting ID.</p>
-     */
-    inline GetMeetingRequest& WithMeetingId(const Aws::String& value) { SetMeetingId(value); return *this;}
-
-    /**
-     * <p>The Amazon Chime SDK meeting ID.</p>
-     */
-    inline GetMeetingRequest& WithMeetingId(Aws::String&& value) { SetMeetingId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Chime SDK meeting ID.</p>
-     */
-    inline GetMeetingRequest& WithMeetingId(const char* value) { SetMeetingId(value); return *this;}
-
+    template<typename MeetingIdT = Aws::String>
+    void SetMeetingId(MeetingIdT&& value) { m_meetingIdHasBeenSet = true; m_meetingId = std::forward<MeetingIdT>(value); }
+    template<typename MeetingIdT = Aws::String>
+    GetMeetingRequest& WithMeetingId(MeetingIdT&& value) { SetMeetingId(std::forward<MeetingIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_meetingId;

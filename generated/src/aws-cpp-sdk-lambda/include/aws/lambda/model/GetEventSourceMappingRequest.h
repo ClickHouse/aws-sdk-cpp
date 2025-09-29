@@ -21,7 +21,7 @@ namespace Model
   class GetEventSourceMappingRequest : public LambdaRequest
   {
   public:
-    AWS_LAMBDA_API GetEventSourceMappingRequest();
+    AWS_LAMBDA_API GetEventSourceMappingRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_LAMBDA_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The identifier of the event source mapping.</p>
      */
-    inline const Aws::String& GetUUID() const{ return m_uUID; }
-
-    /**
-     * <p>The identifier of the event source mapping.</p>
-     */
+    inline const Aws::String& GetUUID() const { return m_uUID; }
     inline bool UUIDHasBeenSet() const { return m_uUIDHasBeenSet; }
-
-    /**
-     * <p>The identifier of the event source mapping.</p>
-     */
-    inline void SetUUID(const Aws::String& value) { m_uUIDHasBeenSet = true; m_uUID = value; }
-
-    /**
-     * <p>The identifier of the event source mapping.</p>
-     */
-    inline void SetUUID(Aws::String&& value) { m_uUIDHasBeenSet = true; m_uUID = std::move(value); }
-
-    /**
-     * <p>The identifier of the event source mapping.</p>
-     */
-    inline void SetUUID(const char* value) { m_uUIDHasBeenSet = true; m_uUID.assign(value); }
-
-    /**
-     * <p>The identifier of the event source mapping.</p>
-     */
-    inline GetEventSourceMappingRequest& WithUUID(const Aws::String& value) { SetUUID(value); return *this;}
-
-    /**
-     * <p>The identifier of the event source mapping.</p>
-     */
-    inline GetEventSourceMappingRequest& WithUUID(Aws::String&& value) { SetUUID(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the event source mapping.</p>
-     */
-    inline GetEventSourceMappingRequest& WithUUID(const char* value) { SetUUID(value); return *this;}
-
+    template<typename UUIDT = Aws::String>
+    void SetUUID(UUIDT&& value) { m_uUIDHasBeenSet = true; m_uUID = std::forward<UUIDT>(value); }
+    template<typename UUIDT = Aws::String>
+    GetEventSourceMappingRequest& WithUUID(UUIDT&& value) { SetUUID(std::forward<UUIDT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_uUID;

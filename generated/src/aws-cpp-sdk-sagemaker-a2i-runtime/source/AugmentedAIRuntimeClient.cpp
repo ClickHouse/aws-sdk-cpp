@@ -40,20 +40,27 @@ using namespace Aws::Utils::Json;
 using namespace smithy::components::tracing;
 using ResolveEndpointOutcome = Aws::Endpoint::ResolveEndpointOutcome;
 
-const char* AugmentedAIRuntimeClient::SERVICE_NAME = "sagemaker";
-const char* AugmentedAIRuntimeClient::ALLOCATION_TAG = "AugmentedAIRuntimeClient";
+namespace Aws
+{
+  namespace AugmentedAIRuntime
+  {
+    const char SERVICE_NAME[] = "sagemaker";
+    const char ALLOCATION_TAG[] = "AugmentedAIRuntimeClient";
+  }
+}
+const char* AugmentedAIRuntimeClient::GetServiceName() {return SERVICE_NAME;}
+const char* AugmentedAIRuntimeClient::GetAllocationTag() {return ALLOCATION_TAG;}
 
 AugmentedAIRuntimeClient::AugmentedAIRuntimeClient(const AugmentedAIRuntime::AugmentedAIRuntimeClientConfiguration& clientConfiguration,
                                                    std::shared_ptr<AugmentedAIRuntimeEndpointProviderBase> endpointProvider) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<AugmentedAIRuntimeErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
-  m_endpointProvider(std::move(endpointProvider))
+  m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<AugmentedAIRuntimeEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -68,8 +75,7 @@ AugmentedAIRuntimeClient::AugmentedAIRuntimeClient(const AWSCredentials& credent
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<AugmentedAIRuntimeErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<AugmentedAIRuntimeEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -84,8 +90,7 @@ AugmentedAIRuntimeClient::AugmentedAIRuntimeClient(const std::shared_ptr<AWSCred
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<AugmentedAIRuntimeErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<AugmentedAIRuntimeEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -94,12 +99,11 @@ AugmentedAIRuntimeClient::AugmentedAIRuntimeClient(const std::shared_ptr<AWSCred
   AugmentedAIRuntimeClient::AugmentedAIRuntimeClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<AugmentedAIRuntimeErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
   m_endpointProvider(Aws::MakeShared<AugmentedAIRuntimeEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -114,7 +118,6 @@ AugmentedAIRuntimeClient::AugmentedAIRuntimeClient(const AWSCredentials& credent
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<AugmentedAIRuntimeErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<AugmentedAIRuntimeEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -129,7 +132,6 @@ AugmentedAIRuntimeClient::AugmentedAIRuntimeClient(const std::shared_ptr<AWSCred
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<AugmentedAIRuntimeErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<AugmentedAIRuntimeEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -149,6 +151,14 @@ std::shared_ptr<AugmentedAIRuntimeEndpointProviderBase>& AugmentedAIRuntimeClien
 void AugmentedAIRuntimeClient::init(const AugmentedAIRuntime::AugmentedAIRuntimeClientConfiguration& config)
 {
   AWSClient::SetServiceClientName("SageMaker A2I Runtime");
+  if (!m_clientConfiguration.executor) {
+    if (!m_clientConfiguration.configFactories.executorCreateFn()) {
+      AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "Failed to initialize client: config is missing Executor or executorCreateFn");
+      m_isInitialized = false;
+      return;
+    }
+    m_clientConfiguration.executor = m_clientConfiguration.configFactories.executorCreateFn();
+  }
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
   m_endpointProvider->InitBuiltInParameters(config);
 }

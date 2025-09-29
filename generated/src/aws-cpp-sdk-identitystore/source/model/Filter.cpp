@@ -18,15 +18,7 @@ namespace IdentityStore
 namespace Model
 {
 
-Filter::Filter() : 
-    m_attributePathHasBeenSet(false),
-    m_attributeValueHasBeenSet(false)
-{
-}
-
-Filter::Filter(JsonView jsonValue) : 
-    m_attributePathHasBeenSet(false),
-    m_attributeValueHasBeenSet(false)
+Filter::Filter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ Filter& Filter::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("AttributePath"))
   {
     m_attributePath = jsonValue.GetString("AttributePath");
-
     m_attributePathHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AttributeValue"))
   {
     m_attributeValue = jsonValue.GetString("AttributeValue");
-
     m_attributeValueHasBeenSet = true;
   }
-
   return *this;
 }
 

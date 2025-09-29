@@ -24,7 +24,7 @@ namespace Model
   class GetArchiveRuleRequest : public AccessAnalyzerRequest
   {
   public:
-    AWS_ACCESSANALYZER_API GetArchiveRuleRequest();
+    AWS_ACCESSANALYZER_API GetArchiveRuleRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,87 +35,29 @@ namespace Model
     AWS_ACCESSANALYZER_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of the analyzer to retrieve rules from.</p>
      */
-    inline const Aws::String& GetAnalyzerName() const{ return m_analyzerName; }
-
-    /**
-     * <p>The name of the analyzer to retrieve rules from.</p>
-     */
+    inline const Aws::String& GetAnalyzerName() const { return m_analyzerName; }
     inline bool AnalyzerNameHasBeenSet() const { return m_analyzerNameHasBeenSet; }
+    template<typename AnalyzerNameT = Aws::String>
+    void SetAnalyzerName(AnalyzerNameT&& value) { m_analyzerNameHasBeenSet = true; m_analyzerName = std::forward<AnalyzerNameT>(value); }
+    template<typename AnalyzerNameT = Aws::String>
+    GetArchiveRuleRequest& WithAnalyzerName(AnalyzerNameT&& value) { SetAnalyzerName(std::forward<AnalyzerNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the analyzer to retrieve rules from.</p>
-     */
-    inline void SetAnalyzerName(const Aws::String& value) { m_analyzerNameHasBeenSet = true; m_analyzerName = value; }
-
-    /**
-     * <p>The name of the analyzer to retrieve rules from.</p>
-     */
-    inline void SetAnalyzerName(Aws::String&& value) { m_analyzerNameHasBeenSet = true; m_analyzerName = std::move(value); }
-
-    /**
-     * <p>The name of the analyzer to retrieve rules from.</p>
-     */
-    inline void SetAnalyzerName(const char* value) { m_analyzerNameHasBeenSet = true; m_analyzerName.assign(value); }
-
-    /**
-     * <p>The name of the analyzer to retrieve rules from.</p>
-     */
-    inline GetArchiveRuleRequest& WithAnalyzerName(const Aws::String& value) { SetAnalyzerName(value); return *this;}
-
-    /**
-     * <p>The name of the analyzer to retrieve rules from.</p>
-     */
-    inline GetArchiveRuleRequest& WithAnalyzerName(Aws::String&& value) { SetAnalyzerName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the analyzer to retrieve rules from.</p>
-     */
-    inline GetArchiveRuleRequest& WithAnalyzerName(const char* value) { SetAnalyzerName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the rule to retrieve.</p>
      */
-    inline const Aws::String& GetRuleName() const{ return m_ruleName; }
-
-    /**
-     * <p>The name of the rule to retrieve.</p>
-     */
+    inline const Aws::String& GetRuleName() const { return m_ruleName; }
     inline bool RuleNameHasBeenSet() const { return m_ruleNameHasBeenSet; }
-
-    /**
-     * <p>The name of the rule to retrieve.</p>
-     */
-    inline void SetRuleName(const Aws::String& value) { m_ruleNameHasBeenSet = true; m_ruleName = value; }
-
-    /**
-     * <p>The name of the rule to retrieve.</p>
-     */
-    inline void SetRuleName(Aws::String&& value) { m_ruleNameHasBeenSet = true; m_ruleName = std::move(value); }
-
-    /**
-     * <p>The name of the rule to retrieve.</p>
-     */
-    inline void SetRuleName(const char* value) { m_ruleNameHasBeenSet = true; m_ruleName.assign(value); }
-
-    /**
-     * <p>The name of the rule to retrieve.</p>
-     */
-    inline GetArchiveRuleRequest& WithRuleName(const Aws::String& value) { SetRuleName(value); return *this;}
-
-    /**
-     * <p>The name of the rule to retrieve.</p>
-     */
-    inline GetArchiveRuleRequest& WithRuleName(Aws::String&& value) { SetRuleName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the rule to retrieve.</p>
-     */
-    inline GetArchiveRuleRequest& WithRuleName(const char* value) { SetRuleName(value); return *this;}
-
+    template<typename RuleNameT = Aws::String>
+    void SetRuleName(RuleNameT&& value) { m_ruleNameHasBeenSet = true; m_ruleName = std::forward<RuleNameT>(value); }
+    template<typename RuleNameT = Aws::String>
+    GetArchiveRuleRequest& WithRuleName(RuleNameT&& value) { SetRuleName(std::forward<RuleNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_analyzerName;

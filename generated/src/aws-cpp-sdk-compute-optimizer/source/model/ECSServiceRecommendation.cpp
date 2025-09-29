@@ -18,45 +18,7 @@ namespace ComputeOptimizer
 namespace Model
 {
 
-ECSServiceRecommendation::ECSServiceRecommendation() : 
-    m_serviceArnHasBeenSet(false),
-    m_accountIdHasBeenSet(false),
-    m_currentServiceConfigurationHasBeenSet(false),
-    m_utilizationMetricsHasBeenSet(false),
-    m_lookbackPeriodInDays(0.0),
-    m_lookbackPeriodInDaysHasBeenSet(false),
-    m_launchType(ECSServiceLaunchType::NOT_SET),
-    m_launchTypeHasBeenSet(false),
-    m_lastRefreshTimestampHasBeenSet(false),
-    m_finding(ECSServiceRecommendationFinding::NOT_SET),
-    m_findingHasBeenSet(false),
-    m_findingReasonCodesHasBeenSet(false),
-    m_serviceRecommendationOptionsHasBeenSet(false),
-    m_currentPerformanceRisk(CurrentPerformanceRisk::NOT_SET),
-    m_currentPerformanceRiskHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_effectiveRecommendationPreferencesHasBeenSet(false)
-{
-}
-
-ECSServiceRecommendation::ECSServiceRecommendation(JsonView jsonValue) : 
-    m_serviceArnHasBeenSet(false),
-    m_accountIdHasBeenSet(false),
-    m_currentServiceConfigurationHasBeenSet(false),
-    m_utilizationMetricsHasBeenSet(false),
-    m_lookbackPeriodInDays(0.0),
-    m_lookbackPeriodInDaysHasBeenSet(false),
-    m_launchType(ECSServiceLaunchType::NOT_SET),
-    m_launchTypeHasBeenSet(false),
-    m_lastRefreshTimestampHasBeenSet(false),
-    m_finding(ECSServiceRecommendationFinding::NOT_SET),
-    m_findingHasBeenSet(false),
-    m_findingReasonCodesHasBeenSet(false),
-    m_serviceRecommendationOptionsHasBeenSet(false),
-    m_currentPerformanceRisk(CurrentPerformanceRisk::NOT_SET),
-    m_currentPerformanceRiskHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_effectiveRecommendationPreferencesHasBeenSet(false)
+ECSServiceRecommendation::ECSServiceRecommendation(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -66,24 +28,18 @@ ECSServiceRecommendation& ECSServiceRecommendation::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("serviceArn"))
   {
     m_serviceArn = jsonValue.GetString("serviceArn");
-
     m_serviceArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("accountId"))
   {
     m_accountId = jsonValue.GetString("accountId");
-
     m_accountIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("currentServiceConfiguration"))
   {
     m_currentServiceConfiguration = jsonValue.GetObject("currentServiceConfiguration");
-
     m_currentServiceConfigurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("utilizationMetrics"))
   {
     Aws::Utils::Array<JsonView> utilizationMetricsJsonList = jsonValue.GetArray("utilizationMetrics");
@@ -93,35 +49,26 @@ ECSServiceRecommendation& ECSServiceRecommendation::operator =(JsonView jsonValu
     }
     m_utilizationMetricsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("lookbackPeriodInDays"))
   {
     m_lookbackPeriodInDays = jsonValue.GetDouble("lookbackPeriodInDays");
-
     m_lookbackPeriodInDaysHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("launchType"))
   {
     m_launchType = ECSServiceLaunchTypeMapper::GetECSServiceLaunchTypeForName(jsonValue.GetString("launchType"));
-
     m_launchTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("lastRefreshTimestamp"))
   {
     m_lastRefreshTimestamp = jsonValue.GetDouble("lastRefreshTimestamp");
-
     m_lastRefreshTimestampHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("finding"))
   {
     m_finding = ECSServiceRecommendationFindingMapper::GetECSServiceRecommendationFindingForName(jsonValue.GetString("finding"));
-
     m_findingHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("findingReasonCodes"))
   {
     Aws::Utils::Array<JsonView> findingReasonCodesJsonList = jsonValue.GetArray("findingReasonCodes");
@@ -131,7 +78,6 @@ ECSServiceRecommendation& ECSServiceRecommendation::operator =(JsonView jsonValu
     }
     m_findingReasonCodesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("serviceRecommendationOptions"))
   {
     Aws::Utils::Array<JsonView> serviceRecommendationOptionsJsonList = jsonValue.GetArray("serviceRecommendationOptions");
@@ -141,14 +87,16 @@ ECSServiceRecommendation& ECSServiceRecommendation::operator =(JsonView jsonValu
     }
     m_serviceRecommendationOptionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("currentPerformanceRisk"))
   {
     m_currentPerformanceRisk = CurrentPerformanceRiskMapper::GetCurrentPerformanceRiskForName(jsonValue.GetString("currentPerformanceRisk"));
-
     m_currentPerformanceRiskHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("effectiveRecommendationPreferences"))
+  {
+    m_effectiveRecommendationPreferences = jsonValue.GetObject("effectiveRecommendationPreferences");
+    m_effectiveRecommendationPreferencesHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("tags"))
   {
     Aws::Utils::Array<JsonView> tagsJsonList = jsonValue.GetArray("tags");
@@ -158,14 +106,6 @@ ECSServiceRecommendation& ECSServiceRecommendation::operator =(JsonView jsonValu
     }
     m_tagsHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("effectiveRecommendationPreferences"))
-  {
-    m_effectiveRecommendationPreferences = jsonValue.GetObject("effectiveRecommendationPreferences");
-
-    m_effectiveRecommendationPreferencesHasBeenSet = true;
-  }
-
   return *this;
 }
 
@@ -250,6 +190,12 @@ JsonValue ECSServiceRecommendation::Jsonize() const
    payload.WithString("currentPerformanceRisk", CurrentPerformanceRiskMapper::GetNameForCurrentPerformanceRisk(m_currentPerformanceRisk));
   }
 
+  if(m_effectiveRecommendationPreferencesHasBeenSet)
+  {
+   payload.WithObject("effectiveRecommendationPreferences", m_effectiveRecommendationPreferences.Jsonize());
+
+  }
+
   if(m_tagsHasBeenSet)
   {
    Aws::Utils::Array<JsonValue> tagsJsonList(m_tags.size());
@@ -258,12 +204,6 @@ JsonValue ECSServiceRecommendation::Jsonize() const
      tagsJsonList[tagsIndex].AsObject(m_tags[tagsIndex].Jsonize());
    }
    payload.WithArray("tags", std::move(tagsJsonList));
-
-  }
-
-  if(m_effectiveRecommendationPreferencesHasBeenSet)
-  {
-   payload.WithObject("effectiveRecommendationPreferences", m_effectiveRecommendationPreferences.Jsonize());
 
   }
 

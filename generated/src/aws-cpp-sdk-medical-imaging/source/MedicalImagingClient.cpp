@@ -53,20 +53,27 @@ using namespace Aws::Utils::Json;
 using namespace smithy::components::tracing;
 using ResolveEndpointOutcome = Aws::Endpoint::ResolveEndpointOutcome;
 
-const char* MedicalImagingClient::SERVICE_NAME = "medical-imaging";
-const char* MedicalImagingClient::ALLOCATION_TAG = "MedicalImagingClient";
+namespace Aws
+{
+  namespace MedicalImaging
+  {
+    const char SERVICE_NAME[] = "medical-imaging";
+    const char ALLOCATION_TAG[] = "MedicalImagingClient";
+  }
+}
+const char* MedicalImagingClient::GetServiceName() {return SERVICE_NAME;}
+const char* MedicalImagingClient::GetAllocationTag() {return ALLOCATION_TAG;}
 
 MedicalImagingClient::MedicalImagingClient(const MedicalImaging::MedicalImagingClientConfiguration& clientConfiguration,
                                            std::shared_ptr<MedicalImagingEndpointProviderBase> endpointProvider) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<MedicalImagingErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
-  m_endpointProvider(std::move(endpointProvider))
+  m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<MedicalImagingEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -81,8 +88,7 @@ MedicalImagingClient::MedicalImagingClient(const AWSCredentials& credentials,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<MedicalImagingErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<MedicalImagingEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -97,8 +103,7 @@ MedicalImagingClient::MedicalImagingClient(const std::shared_ptr<AWSCredentialsP
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<MedicalImagingErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<MedicalImagingEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -107,12 +112,11 @@ MedicalImagingClient::MedicalImagingClient(const std::shared_ptr<AWSCredentialsP
   MedicalImagingClient::MedicalImagingClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<MedicalImagingErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
   m_endpointProvider(Aws::MakeShared<MedicalImagingEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -127,7 +131,6 @@ MedicalImagingClient::MedicalImagingClient(const AWSCredentials& credentials,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<MedicalImagingErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<MedicalImagingEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -142,7 +145,6 @@ MedicalImagingClient::MedicalImagingClient(const std::shared_ptr<AWSCredentialsP
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<MedicalImagingErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<MedicalImagingEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -162,6 +164,14 @@ std::shared_ptr<MedicalImagingEndpointProviderBase>& MedicalImagingClient::acces
 void MedicalImagingClient::init(const MedicalImaging::MedicalImagingClientConfiguration& config)
 {
   AWSClient::SetServiceClientName("Medical Imaging");
+  if (!m_clientConfiguration.executor) {
+    if (!m_clientConfiguration.configFactories.executorCreateFn()) {
+      AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "Failed to initialize client: config is missing Executor or executorCreateFn");
+      m_isInitialized = false;
+      return;
+    }
+    m_clientConfiguration.executor = m_clientConfiguration.configFactories.executorCreateFn();
+  }
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
   m_endpointProvider->InitBuiltInParameters(config);
 }

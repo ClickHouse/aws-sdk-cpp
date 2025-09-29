@@ -32,79 +32,39 @@ namespace Model
   class DataColor
   {
   public:
-    AWS_QUICKSIGHT_API DataColor();
+    AWS_QUICKSIGHT_API DataColor() = default;
     AWS_QUICKSIGHT_API DataColor(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API DataColor& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The color that is applied to the data value.</p>
      */
-    inline const Aws::String& GetColor() const{ return m_color; }
-
-    /**
-     * <p>The color that is applied to the data value.</p>
-     */
+    inline const Aws::String& GetColor() const { return m_color; }
     inline bool ColorHasBeenSet() const { return m_colorHasBeenSet; }
+    template<typename ColorT = Aws::String>
+    void SetColor(ColorT&& value) { m_colorHasBeenSet = true; m_color = std::forward<ColorT>(value); }
+    template<typename ColorT = Aws::String>
+    DataColor& WithColor(ColorT&& value) { SetColor(std::forward<ColorT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The color that is applied to the data value.</p>
-     */
-    inline void SetColor(const Aws::String& value) { m_colorHasBeenSet = true; m_color = value; }
-
-    /**
-     * <p>The color that is applied to the data value.</p>
-     */
-    inline void SetColor(Aws::String&& value) { m_colorHasBeenSet = true; m_color = std::move(value); }
-
-    /**
-     * <p>The color that is applied to the data value.</p>
-     */
-    inline void SetColor(const char* value) { m_colorHasBeenSet = true; m_color.assign(value); }
-
-    /**
-     * <p>The color that is applied to the data value.</p>
-     */
-    inline DataColor& WithColor(const Aws::String& value) { SetColor(value); return *this;}
-
-    /**
-     * <p>The color that is applied to the data value.</p>
-     */
-    inline DataColor& WithColor(Aws::String&& value) { SetColor(std::move(value)); return *this;}
-
-    /**
-     * <p>The color that is applied to the data value.</p>
-     */
-    inline DataColor& WithColor(const char* value) { SetColor(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The data value that the color is applied to.</p>
      */
-    inline double GetDataValue() const{ return m_dataValue; }
-
-    /**
-     * <p>The data value that the color is applied to.</p>
-     */
+    inline double GetDataValue() const { return m_dataValue; }
     inline bool DataValueHasBeenSet() const { return m_dataValueHasBeenSet; }
-
-    /**
-     * <p>The data value that the color is applied to.</p>
-     */
     inline void SetDataValue(double value) { m_dataValueHasBeenSet = true; m_dataValue = value; }
-
-    /**
-     * <p>The data value that the color is applied to.</p>
-     */
     inline DataColor& WithDataValue(double value) { SetDataValue(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_color;
     bool m_colorHasBeenSet = false;
 
-    double m_dataValue;
+    double m_dataValue{0.0};
     bool m_dataValueHasBeenSet = false;
   };
 

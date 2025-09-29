@@ -18,13 +18,7 @@ namespace Lambda
 namespace Model
 {
 
-SelfManagedKafkaEventSourceConfig::SelfManagedKafkaEventSourceConfig() : 
-    m_consumerGroupIdHasBeenSet(false)
-{
-}
-
-SelfManagedKafkaEventSourceConfig::SelfManagedKafkaEventSourceConfig(JsonView jsonValue) : 
-    m_consumerGroupIdHasBeenSet(false)
+SelfManagedKafkaEventSourceConfig::SelfManagedKafkaEventSourceConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,13 @@ SelfManagedKafkaEventSourceConfig& SelfManagedKafkaEventSourceConfig::operator =
   if(jsonValue.ValueExists("ConsumerGroupId"))
   {
     m_consumerGroupId = jsonValue.GetString("ConsumerGroupId");
-
     m_consumerGroupIdHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("SchemaRegistryConfig"))
+  {
+    m_schemaRegistryConfig = jsonValue.GetObject("SchemaRegistryConfig");
+    m_schemaRegistryConfigHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -48,6 +45,12 @@ JsonValue SelfManagedKafkaEventSourceConfig::Jsonize() const
   if(m_consumerGroupIdHasBeenSet)
   {
    payload.WithString("ConsumerGroupId", m_consumerGroupId);
+
+  }
+
+  if(m_schemaRegistryConfigHasBeenSet)
+  {
+   payload.WithObject("SchemaRegistryConfig", m_schemaRegistryConfig.Jsonize());
 
   }
 

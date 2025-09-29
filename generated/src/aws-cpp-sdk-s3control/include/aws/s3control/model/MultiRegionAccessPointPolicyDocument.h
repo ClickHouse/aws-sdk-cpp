@@ -35,74 +35,36 @@ namespace Model
   class MultiRegionAccessPointPolicyDocument
   {
   public:
-    AWS_S3CONTROL_API MultiRegionAccessPointPolicyDocument();
+    AWS_S3CONTROL_API MultiRegionAccessPointPolicyDocument() = default;
     AWS_S3CONTROL_API MultiRegionAccessPointPolicyDocument(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3CONTROL_API MultiRegionAccessPointPolicyDocument& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3CONTROL_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>The last established policy for the Multi-Region Access Point.</p>
      */
-    inline const EstablishedMultiRegionAccessPointPolicy& GetEstablished() const{ return m_established; }
-
-    /**
-     * <p>The last established policy for the Multi-Region Access Point.</p>
-     */
+    inline const EstablishedMultiRegionAccessPointPolicy& GetEstablished() const { return m_established; }
     inline bool EstablishedHasBeenSet() const { return m_establishedHasBeenSet; }
+    template<typename EstablishedT = EstablishedMultiRegionAccessPointPolicy>
+    void SetEstablished(EstablishedT&& value) { m_establishedHasBeenSet = true; m_established = std::forward<EstablishedT>(value); }
+    template<typename EstablishedT = EstablishedMultiRegionAccessPointPolicy>
+    MultiRegionAccessPointPolicyDocument& WithEstablished(EstablishedT&& value) { SetEstablished(std::forward<EstablishedT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The last established policy for the Multi-Region Access Point.</p>
-     */
-    inline void SetEstablished(const EstablishedMultiRegionAccessPointPolicy& value) { m_establishedHasBeenSet = true; m_established = value; }
-
-    /**
-     * <p>The last established policy for the Multi-Region Access Point.</p>
-     */
-    inline void SetEstablished(EstablishedMultiRegionAccessPointPolicy&& value) { m_establishedHasBeenSet = true; m_established = std::move(value); }
-
-    /**
-     * <p>The last established policy for the Multi-Region Access Point.</p>
-     */
-    inline MultiRegionAccessPointPolicyDocument& WithEstablished(const EstablishedMultiRegionAccessPointPolicy& value) { SetEstablished(value); return *this;}
-
-    /**
-     * <p>The last established policy for the Multi-Region Access Point.</p>
-     */
-    inline MultiRegionAccessPointPolicyDocument& WithEstablished(EstablishedMultiRegionAccessPointPolicy&& value) { SetEstablished(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The proposed policy for the Multi-Region Access Point.</p>
      */
-    inline const ProposedMultiRegionAccessPointPolicy& GetProposed() const{ return m_proposed; }
-
-    /**
-     * <p>The proposed policy for the Multi-Region Access Point.</p>
-     */
+    inline const ProposedMultiRegionAccessPointPolicy& GetProposed() const { return m_proposed; }
     inline bool ProposedHasBeenSet() const { return m_proposedHasBeenSet; }
-
-    /**
-     * <p>The proposed policy for the Multi-Region Access Point.</p>
-     */
-    inline void SetProposed(const ProposedMultiRegionAccessPointPolicy& value) { m_proposedHasBeenSet = true; m_proposed = value; }
-
-    /**
-     * <p>The proposed policy for the Multi-Region Access Point.</p>
-     */
-    inline void SetProposed(ProposedMultiRegionAccessPointPolicy&& value) { m_proposedHasBeenSet = true; m_proposed = std::move(value); }
-
-    /**
-     * <p>The proposed policy for the Multi-Region Access Point.</p>
-     */
-    inline MultiRegionAccessPointPolicyDocument& WithProposed(const ProposedMultiRegionAccessPointPolicy& value) { SetProposed(value); return *this;}
-
-    /**
-     * <p>The proposed policy for the Multi-Region Access Point.</p>
-     */
-    inline MultiRegionAccessPointPolicyDocument& WithProposed(ProposedMultiRegionAccessPointPolicy&& value) { SetProposed(std::move(value)); return *this;}
-
+    template<typename ProposedT = ProposedMultiRegionAccessPointPolicy>
+    void SetProposed(ProposedT&& value) { m_proposedHasBeenSet = true; m_proposed = std::forward<ProposedT>(value); }
+    template<typename ProposedT = ProposedMultiRegionAccessPointPolicy>
+    MultiRegionAccessPointPolicyDocument& WithProposed(ProposedT&& value) { SetProposed(std::forward<ProposedT>(value)); return *this;}
+    ///@}
   private:
 
     EstablishedMultiRegionAccessPointPolicy m_established;

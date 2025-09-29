@@ -7,6 +7,7 @@
 #include <aws/lakeformation/LakeFormation_EXPORTS.h>
 #include <aws/lakeformation/model/Resource.h>
 #include <aws/lakeformation/model/DataLakePrincipal.h>
+#include <aws/lakeformation/model/Condition.h>
 #include <aws/core/utils/DateTime.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <utility>
@@ -35,121 +36,68 @@ namespace Model
   class LakeFormationOptInsInfo
   {
   public:
-    AWS_LAKEFORMATION_API LakeFormationOptInsInfo();
+    AWS_LAKEFORMATION_API LakeFormationOptInsInfo() = default;
     AWS_LAKEFORMATION_API LakeFormationOptInsInfo(Aws::Utils::Json::JsonView jsonValue);
     AWS_LAKEFORMATION_API LakeFormationOptInsInfo& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LAKEFORMATION_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     
-    inline const Resource& GetResource() const{ return m_resource; }
-
-    
+    inline const Resource& GetResource() const { return m_resource; }
     inline bool ResourceHasBeenSet() const { return m_resourceHasBeenSet; }
+    template<typename ResourceT = Resource>
+    void SetResource(ResourceT&& value) { m_resourceHasBeenSet = true; m_resource = std::forward<ResourceT>(value); }
+    template<typename ResourceT = Resource>
+    LakeFormationOptInsInfo& WithResource(ResourceT&& value) { SetResource(std::forward<ResourceT>(value)); return *this;}
+    ///@}
 
+    ///@{
     
-    inline void SetResource(const Resource& value) { m_resourceHasBeenSet = true; m_resource = value; }
-
-    
-    inline void SetResource(Resource&& value) { m_resourceHasBeenSet = true; m_resource = std::move(value); }
-
-    
-    inline LakeFormationOptInsInfo& WithResource(const Resource& value) { SetResource(value); return *this;}
-
-    
-    inline LakeFormationOptInsInfo& WithResource(Resource&& value) { SetResource(std::move(value)); return *this;}
-
-
-    
-    inline const DataLakePrincipal& GetPrincipal() const{ return m_principal; }
-
-    
+    inline const DataLakePrincipal& GetPrincipal() const { return m_principal; }
     inline bool PrincipalHasBeenSet() const { return m_principalHasBeenSet; }
+    template<typename PrincipalT = DataLakePrincipal>
+    void SetPrincipal(PrincipalT&& value) { m_principalHasBeenSet = true; m_principal = std::forward<PrincipalT>(value); }
+    template<typename PrincipalT = DataLakePrincipal>
+    LakeFormationOptInsInfo& WithPrincipal(PrincipalT&& value) { SetPrincipal(std::forward<PrincipalT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetPrincipal(const DataLakePrincipal& value) { m_principalHasBeenSet = true; m_principal = value; }
+    ///@{
+    /**
+     * <p>A Lake Formation condition, which applies to permissions and opt-ins that
+     * contain an expression.</p>
+     */
+    inline const Condition& GetCondition() const { return m_condition; }
+    inline bool ConditionHasBeenSet() const { return m_conditionHasBeenSet; }
+    template<typename ConditionT = Condition>
+    void SetCondition(ConditionT&& value) { m_conditionHasBeenSet = true; m_condition = std::forward<ConditionT>(value); }
+    template<typename ConditionT = Condition>
+    LakeFormationOptInsInfo& WithCondition(ConditionT&& value) { SetCondition(std::forward<ConditionT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetPrincipal(DataLakePrincipal&& value) { m_principalHasBeenSet = true; m_principal = std::move(value); }
-
-    
-    inline LakeFormationOptInsInfo& WithPrincipal(const DataLakePrincipal& value) { SetPrincipal(value); return *this;}
-
-    
-    inline LakeFormationOptInsInfo& WithPrincipal(DataLakePrincipal&& value) { SetPrincipal(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The last modified date and time of the record.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastModified() const{ return m_lastModified; }
-
-    /**
-     * <p>The last modified date and time of the record.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastModified() const { return m_lastModified; }
     inline bool LastModifiedHasBeenSet() const { return m_lastModifiedHasBeenSet; }
+    template<typename LastModifiedT = Aws::Utils::DateTime>
+    void SetLastModified(LastModifiedT&& value) { m_lastModifiedHasBeenSet = true; m_lastModified = std::forward<LastModifiedT>(value); }
+    template<typename LastModifiedT = Aws::Utils::DateTime>
+    LakeFormationOptInsInfo& WithLastModified(LastModifiedT&& value) { SetLastModified(std::forward<LastModifiedT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The last modified date and time of the record.</p>
-     */
-    inline void SetLastModified(const Aws::Utils::DateTime& value) { m_lastModifiedHasBeenSet = true; m_lastModified = value; }
-
-    /**
-     * <p>The last modified date and time of the record.</p>
-     */
-    inline void SetLastModified(Aws::Utils::DateTime&& value) { m_lastModifiedHasBeenSet = true; m_lastModified = std::move(value); }
-
-    /**
-     * <p>The last modified date and time of the record.</p>
-     */
-    inline LakeFormationOptInsInfo& WithLastModified(const Aws::Utils::DateTime& value) { SetLastModified(value); return *this;}
-
-    /**
-     * <p>The last modified date and time of the record.</p>
-     */
-    inline LakeFormationOptInsInfo& WithLastModified(Aws::Utils::DateTime&& value) { SetLastModified(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The user who updated the record.</p>
      */
-    inline const Aws::String& GetLastUpdatedBy() const{ return m_lastUpdatedBy; }
-
-    /**
-     * <p>The user who updated the record.</p>
-     */
+    inline const Aws::String& GetLastUpdatedBy() const { return m_lastUpdatedBy; }
     inline bool LastUpdatedByHasBeenSet() const { return m_lastUpdatedByHasBeenSet; }
-
-    /**
-     * <p>The user who updated the record.</p>
-     */
-    inline void SetLastUpdatedBy(const Aws::String& value) { m_lastUpdatedByHasBeenSet = true; m_lastUpdatedBy = value; }
-
-    /**
-     * <p>The user who updated the record.</p>
-     */
-    inline void SetLastUpdatedBy(Aws::String&& value) { m_lastUpdatedByHasBeenSet = true; m_lastUpdatedBy = std::move(value); }
-
-    /**
-     * <p>The user who updated the record.</p>
-     */
-    inline void SetLastUpdatedBy(const char* value) { m_lastUpdatedByHasBeenSet = true; m_lastUpdatedBy.assign(value); }
-
-    /**
-     * <p>The user who updated the record.</p>
-     */
-    inline LakeFormationOptInsInfo& WithLastUpdatedBy(const Aws::String& value) { SetLastUpdatedBy(value); return *this;}
-
-    /**
-     * <p>The user who updated the record.</p>
-     */
-    inline LakeFormationOptInsInfo& WithLastUpdatedBy(Aws::String&& value) { SetLastUpdatedBy(std::move(value)); return *this;}
-
-    /**
-     * <p>The user who updated the record.</p>
-     */
-    inline LakeFormationOptInsInfo& WithLastUpdatedBy(const char* value) { SetLastUpdatedBy(value); return *this;}
-
+    template<typename LastUpdatedByT = Aws::String>
+    void SetLastUpdatedBy(LastUpdatedByT&& value) { m_lastUpdatedByHasBeenSet = true; m_lastUpdatedBy = std::forward<LastUpdatedByT>(value); }
+    template<typename LastUpdatedByT = Aws::String>
+    LakeFormationOptInsInfo& WithLastUpdatedBy(LastUpdatedByT&& value) { SetLastUpdatedBy(std::forward<LastUpdatedByT>(value)); return *this;}
+    ///@}
   private:
 
     Resource m_resource;
@@ -158,7 +106,10 @@ namespace Model
     DataLakePrincipal m_principal;
     bool m_principalHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastModified;
+    Condition m_condition;
+    bool m_conditionHasBeenSet = false;
+
+    Aws::Utils::DateTime m_lastModified{};
     bool m_lastModifiedHasBeenSet = false;
 
     Aws::String m_lastUpdatedBy;

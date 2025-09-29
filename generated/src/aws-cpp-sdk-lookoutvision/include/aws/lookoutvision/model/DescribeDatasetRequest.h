@@ -21,7 +21,7 @@ namespace Model
   class DescribeDatasetRequest : public LookoutforVisionRequest
   {
   public:
-    AWS_LOOKOUTFORVISION_API DescribeDatasetRequest();
+    AWS_LOOKOUTFORVISION_API DescribeDatasetRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,111 +32,32 @@ namespace Model
     AWS_LOOKOUTFORVISION_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of the project that contains the dataset that you want to
      * describe.</p>
      */
-    inline const Aws::String& GetProjectName() const{ return m_projectName; }
-
-    /**
-     * <p>The name of the project that contains the dataset that you want to
-     * describe.</p>
-     */
+    inline const Aws::String& GetProjectName() const { return m_projectName; }
     inline bool ProjectNameHasBeenSet() const { return m_projectNameHasBeenSet; }
+    template<typename ProjectNameT = Aws::String>
+    void SetProjectName(ProjectNameT&& value) { m_projectNameHasBeenSet = true; m_projectName = std::forward<ProjectNameT>(value); }
+    template<typename ProjectNameT = Aws::String>
+    DescribeDatasetRequest& WithProjectName(ProjectNameT&& value) { SetProjectName(std::forward<ProjectNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the project that contains the dataset that you want to
-     * describe.</p>
-     */
-    inline void SetProjectName(const Aws::String& value) { m_projectNameHasBeenSet = true; m_projectName = value; }
-
-    /**
-     * <p>The name of the project that contains the dataset that you want to
-     * describe.</p>
-     */
-    inline void SetProjectName(Aws::String&& value) { m_projectNameHasBeenSet = true; m_projectName = std::move(value); }
-
-    /**
-     * <p>The name of the project that contains the dataset that you want to
-     * describe.</p>
-     */
-    inline void SetProjectName(const char* value) { m_projectNameHasBeenSet = true; m_projectName.assign(value); }
-
-    /**
-     * <p>The name of the project that contains the dataset that you want to
-     * describe.</p>
-     */
-    inline DescribeDatasetRequest& WithProjectName(const Aws::String& value) { SetProjectName(value); return *this;}
-
-    /**
-     * <p>The name of the project that contains the dataset that you want to
-     * describe.</p>
-     */
-    inline DescribeDatasetRequest& WithProjectName(Aws::String&& value) { SetProjectName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the project that contains the dataset that you want to
-     * describe.</p>
-     */
-    inline DescribeDatasetRequest& WithProjectName(const char* value) { SetProjectName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of the dataset to describe. Specify <code>train</code> to describe
      * the training dataset. Specify <code>test</code> to describe the test dataset. If
      * you have a single dataset project, specify <code>train</code> </p>
      */
-    inline const Aws::String& GetDatasetType() const{ return m_datasetType; }
-
-    /**
-     * <p>The type of the dataset to describe. Specify <code>train</code> to describe
-     * the training dataset. Specify <code>test</code> to describe the test dataset. If
-     * you have a single dataset project, specify <code>train</code> </p>
-     */
+    inline const Aws::String& GetDatasetType() const { return m_datasetType; }
     inline bool DatasetTypeHasBeenSet() const { return m_datasetTypeHasBeenSet; }
-
-    /**
-     * <p>The type of the dataset to describe. Specify <code>train</code> to describe
-     * the training dataset. Specify <code>test</code> to describe the test dataset. If
-     * you have a single dataset project, specify <code>train</code> </p>
-     */
-    inline void SetDatasetType(const Aws::String& value) { m_datasetTypeHasBeenSet = true; m_datasetType = value; }
-
-    /**
-     * <p>The type of the dataset to describe. Specify <code>train</code> to describe
-     * the training dataset. Specify <code>test</code> to describe the test dataset. If
-     * you have a single dataset project, specify <code>train</code> </p>
-     */
-    inline void SetDatasetType(Aws::String&& value) { m_datasetTypeHasBeenSet = true; m_datasetType = std::move(value); }
-
-    /**
-     * <p>The type of the dataset to describe. Specify <code>train</code> to describe
-     * the training dataset. Specify <code>test</code> to describe the test dataset. If
-     * you have a single dataset project, specify <code>train</code> </p>
-     */
-    inline void SetDatasetType(const char* value) { m_datasetTypeHasBeenSet = true; m_datasetType.assign(value); }
-
-    /**
-     * <p>The type of the dataset to describe. Specify <code>train</code> to describe
-     * the training dataset. Specify <code>test</code> to describe the test dataset. If
-     * you have a single dataset project, specify <code>train</code> </p>
-     */
-    inline DescribeDatasetRequest& WithDatasetType(const Aws::String& value) { SetDatasetType(value); return *this;}
-
-    /**
-     * <p>The type of the dataset to describe. Specify <code>train</code> to describe
-     * the training dataset. Specify <code>test</code> to describe the test dataset. If
-     * you have a single dataset project, specify <code>train</code> </p>
-     */
-    inline DescribeDatasetRequest& WithDatasetType(Aws::String&& value) { SetDatasetType(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of the dataset to describe. Specify <code>train</code> to describe
-     * the training dataset. Specify <code>test</code> to describe the test dataset. If
-     * you have a single dataset project, specify <code>train</code> </p>
-     */
-    inline DescribeDatasetRequest& WithDatasetType(const char* value) { SetDatasetType(value); return *this;}
-
+    template<typename DatasetTypeT = Aws::String>
+    void SetDatasetType(DatasetTypeT&& value) { m_datasetTypeHasBeenSet = true; m_datasetType = std::forward<DatasetTypeT>(value); }
+    template<typename DatasetTypeT = Aws::String>
+    DescribeDatasetRequest& WithDatasetType(DatasetTypeT&& value) { SetDatasetType(std::forward<DatasetTypeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_projectName;

@@ -12,15 +12,6 @@ using namespace Aws::KafkaConnect::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateCustomPluginRequest::CreateCustomPluginRequest() : 
-    m_contentType(CustomPluginContentType::NOT_SET),
-    m_contentTypeHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_locationHasBeenSet(false),
-    m_nameHasBeenSet(false)
-{
-}
-
 Aws::String CreateCustomPluginRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -45,6 +36,17 @@ Aws::String CreateCustomPluginRequest::SerializePayload() const
   if(m_nameHasBeenSet)
   {
    payload.WithString("name", m_name);
+
+  }
+
+  if(m_tagsHasBeenSet)
+  {
+   JsonValue tagsJsonMap;
+   for(auto& tagsItem : m_tags)
+   {
+     tagsJsonMap.WithString(tagsItem.first, tagsItem.second);
+   }
+   payload.WithObject("tags", std::move(tagsJsonMap));
 
   }
 

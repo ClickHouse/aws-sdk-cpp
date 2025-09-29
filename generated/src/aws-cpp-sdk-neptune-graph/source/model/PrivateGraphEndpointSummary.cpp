@@ -18,21 +18,7 @@ namespace NeptuneGraph
 namespace Model
 {
 
-PrivateGraphEndpointSummary::PrivateGraphEndpointSummary() : 
-    m_vpcIdHasBeenSet(false),
-    m_subnetIdsHasBeenSet(false),
-    m_status(PrivateGraphEndpointStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_vpcEndpointIdHasBeenSet(false)
-{
-}
-
-PrivateGraphEndpointSummary::PrivateGraphEndpointSummary(JsonView jsonValue) : 
-    m_vpcIdHasBeenSet(false),
-    m_subnetIdsHasBeenSet(false),
-    m_status(PrivateGraphEndpointStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_vpcEndpointIdHasBeenSet(false)
+PrivateGraphEndpointSummary::PrivateGraphEndpointSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,10 +28,8 @@ PrivateGraphEndpointSummary& PrivateGraphEndpointSummary::operator =(JsonView js
   if(jsonValue.ValueExists("vpcId"))
   {
     m_vpcId = jsonValue.GetString("vpcId");
-
     m_vpcIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("subnetIds"))
   {
     Aws::Utils::Array<JsonView> subnetIdsJsonList = jsonValue.GetArray("subnetIds");
@@ -55,21 +39,16 @@ PrivateGraphEndpointSummary& PrivateGraphEndpointSummary::operator =(JsonView js
     }
     m_subnetIdsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("status"))
   {
     m_status = PrivateGraphEndpointStatusMapper::GetPrivateGraphEndpointStatusForName(jsonValue.GetString("status"));
-
     m_statusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("vpcEndpointId"))
   {
     m_vpcEndpointId = jsonValue.GetString("vpcEndpointId");
-
     m_vpcEndpointIdHasBeenSet = true;
   }
-
   return *this;
 }
 

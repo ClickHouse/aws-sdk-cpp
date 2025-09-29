@@ -34,68 +34,27 @@ namespace Model
   class BaseKpiResult
   {
   public:
-    AWS_PINPOINT_API BaseKpiResult();
+    AWS_PINPOINT_API BaseKpiResult() = default;
     AWS_PINPOINT_API BaseKpiResult(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API BaseKpiResult& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An array of objects that provides the results of a query that retrieved the
      * data for a standard metric that applies to an application, campaign, or
      * journey.</p>
      */
-    inline const Aws::Vector<ResultRow>& GetRows() const{ return m_rows; }
-
-    /**
-     * <p>An array of objects that provides the results of a query that retrieved the
-     * data for a standard metric that applies to an application, campaign, or
-     * journey.</p>
-     */
+    inline const Aws::Vector<ResultRow>& GetRows() const { return m_rows; }
     inline bool RowsHasBeenSet() const { return m_rowsHasBeenSet; }
-
-    /**
-     * <p>An array of objects that provides the results of a query that retrieved the
-     * data for a standard metric that applies to an application, campaign, or
-     * journey.</p>
-     */
-    inline void SetRows(const Aws::Vector<ResultRow>& value) { m_rowsHasBeenSet = true; m_rows = value; }
-
-    /**
-     * <p>An array of objects that provides the results of a query that retrieved the
-     * data for a standard metric that applies to an application, campaign, or
-     * journey.</p>
-     */
-    inline void SetRows(Aws::Vector<ResultRow>&& value) { m_rowsHasBeenSet = true; m_rows = std::move(value); }
-
-    /**
-     * <p>An array of objects that provides the results of a query that retrieved the
-     * data for a standard metric that applies to an application, campaign, or
-     * journey.</p>
-     */
-    inline BaseKpiResult& WithRows(const Aws::Vector<ResultRow>& value) { SetRows(value); return *this;}
-
-    /**
-     * <p>An array of objects that provides the results of a query that retrieved the
-     * data for a standard metric that applies to an application, campaign, or
-     * journey.</p>
-     */
-    inline BaseKpiResult& WithRows(Aws::Vector<ResultRow>&& value) { SetRows(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of objects that provides the results of a query that retrieved the
-     * data for a standard metric that applies to an application, campaign, or
-     * journey.</p>
-     */
-    inline BaseKpiResult& AddRows(const ResultRow& value) { m_rowsHasBeenSet = true; m_rows.push_back(value); return *this; }
-
-    /**
-     * <p>An array of objects that provides the results of a query that retrieved the
-     * data for a standard metric that applies to an application, campaign, or
-     * journey.</p>
-     */
-    inline BaseKpiResult& AddRows(ResultRow&& value) { m_rowsHasBeenSet = true; m_rows.push_back(std::move(value)); return *this; }
-
+    template<typename RowsT = Aws::Vector<ResultRow>>
+    void SetRows(RowsT&& value) { m_rowsHasBeenSet = true; m_rows = std::forward<RowsT>(value); }
+    template<typename RowsT = Aws::Vector<ResultRow>>
+    BaseKpiResult& WithRows(RowsT&& value) { SetRows(std::forward<RowsT>(value)); return *this;}
+    template<typename RowsT = ResultRow>
+    BaseKpiResult& AddRows(RowsT&& value) { m_rowsHasBeenSet = true; m_rows.emplace_back(std::forward<RowsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<ResultRow> m_rows;

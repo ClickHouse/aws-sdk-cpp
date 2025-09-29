@@ -6,8 +6,8 @@
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/ec2/EC2Request.h>
-#include <aws/ec2/model/NetworkInterfaceAttribute.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/ec2/model/NetworkInterfaceAttribute.h>
 #include <utility>
 
 namespace Aws
@@ -26,7 +26,7 @@ namespace Model
   class DescribeNetworkInterfaceAttributeRequest : public EC2Request
   {
   public:
-    AWS_EC2_API DescribeNetworkInterfaceAttributeRequest();
+    AWS_EC2_API DescribeNetworkInterfaceAttributeRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -41,120 +41,50 @@ namespace Model
 
   public:
 
-    /**
-     * <p>The attribute of the network interface. This parameter is required.</p>
-     */
-    inline const NetworkInterfaceAttribute& GetAttribute() const{ return m_attribute; }
-
-    /**
-     * <p>The attribute of the network interface. This parameter is required.</p>
-     */
-    inline bool AttributeHasBeenSet() const { return m_attributeHasBeenSet; }
-
-    /**
-     * <p>The attribute of the network interface. This parameter is required.</p>
-     */
-    inline void SetAttribute(const NetworkInterfaceAttribute& value) { m_attributeHasBeenSet = true; m_attribute = value; }
-
-    /**
-     * <p>The attribute of the network interface. This parameter is required.</p>
-     */
-    inline void SetAttribute(NetworkInterfaceAttribute&& value) { m_attributeHasBeenSet = true; m_attribute = std::move(value); }
-
-    /**
-     * <p>The attribute of the network interface. This parameter is required.</p>
-     */
-    inline DescribeNetworkInterfaceAttributeRequest& WithAttribute(const NetworkInterfaceAttribute& value) { SetAttribute(value); return *this;}
-
-    /**
-     * <p>The attribute of the network interface. This parameter is required.</p>
-     */
-    inline DescribeNetworkInterfaceAttributeRequest& WithAttribute(NetworkInterfaceAttribute&& value) { SetAttribute(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
      * required permissions, the error response is <code>DryRunOperation</code>.
      * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
      */
-    inline bool GetDryRun() const{ return m_dryRun; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
+    inline bool GetDryRun() const { return m_dryRun; }
     inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline DescribeNetworkInterfaceAttributeRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The ID of the network interface.</p>
      */
-    inline const Aws::String& GetNetworkInterfaceId() const{ return m_networkInterfaceId; }
-
-    /**
-     * <p>The ID of the network interface.</p>
-     */
+    inline const Aws::String& GetNetworkInterfaceId() const { return m_networkInterfaceId; }
     inline bool NetworkInterfaceIdHasBeenSet() const { return m_networkInterfaceIdHasBeenSet; }
+    template<typename NetworkInterfaceIdT = Aws::String>
+    void SetNetworkInterfaceId(NetworkInterfaceIdT&& value) { m_networkInterfaceIdHasBeenSet = true; m_networkInterfaceId = std::forward<NetworkInterfaceIdT>(value); }
+    template<typename NetworkInterfaceIdT = Aws::String>
+    DescribeNetworkInterfaceAttributeRequest& WithNetworkInterfaceId(NetworkInterfaceIdT&& value) { SetNetworkInterfaceId(std::forward<NetworkInterfaceIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ID of the network interface.</p>
+     * <p>The attribute of the network interface. This parameter is required.</p>
      */
-    inline void SetNetworkInterfaceId(const Aws::String& value) { m_networkInterfaceIdHasBeenSet = true; m_networkInterfaceId = value; }
-
-    /**
-     * <p>The ID of the network interface.</p>
-     */
-    inline void SetNetworkInterfaceId(Aws::String&& value) { m_networkInterfaceIdHasBeenSet = true; m_networkInterfaceId = std::move(value); }
-
-    /**
-     * <p>The ID of the network interface.</p>
-     */
-    inline void SetNetworkInterfaceId(const char* value) { m_networkInterfaceIdHasBeenSet = true; m_networkInterfaceId.assign(value); }
-
-    /**
-     * <p>The ID of the network interface.</p>
-     */
-    inline DescribeNetworkInterfaceAttributeRequest& WithNetworkInterfaceId(const Aws::String& value) { SetNetworkInterfaceId(value); return *this;}
-
-    /**
-     * <p>The ID of the network interface.</p>
-     */
-    inline DescribeNetworkInterfaceAttributeRequest& WithNetworkInterfaceId(Aws::String&& value) { SetNetworkInterfaceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the network interface.</p>
-     */
-    inline DescribeNetworkInterfaceAttributeRequest& WithNetworkInterfaceId(const char* value) { SetNetworkInterfaceId(value); return *this;}
-
+    inline NetworkInterfaceAttribute GetAttribute() const { return m_attribute; }
+    inline bool AttributeHasBeenSet() const { return m_attributeHasBeenSet; }
+    inline void SetAttribute(NetworkInterfaceAttribute value) { m_attributeHasBeenSet = true; m_attribute = value; }
+    inline DescribeNetworkInterfaceAttributeRequest& WithAttribute(NetworkInterfaceAttribute value) { SetAttribute(value); return *this;}
+    ///@}
   private:
 
-    NetworkInterfaceAttribute m_attribute;
-    bool m_attributeHasBeenSet = false;
-
-    bool m_dryRun;
+    bool m_dryRun{false};
     bool m_dryRunHasBeenSet = false;
 
     Aws::String m_networkInterfaceId;
     bool m_networkInterfaceIdHasBeenSet = false;
+
+    NetworkInterfaceAttribute m_attribute{NetworkInterfaceAttribute::NOT_SET};
+    bool m_attributeHasBeenSet = false;
   };
 
 } // namespace Model

@@ -34,134 +34,47 @@ namespace Model
   class SupportedLanguage
   {
   public:
-    AWS_SUPPORT_API SupportedLanguage();
+    AWS_SUPPORT_API SupportedLanguage() = default;
     AWS_SUPPORT_API SupportedLanguage(Aws::Utils::Json::JsonView jsonValue);
     AWS_SUPPORT_API SupportedLanguage& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SUPPORT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> 2 digit ISO 639-1 code. e.g. <code>en</code> </p>
      */
-    inline const Aws::String& GetCode() const{ return m_code; }
-
-    /**
-     * <p> 2 digit ISO 639-1 code. e.g. <code>en</code> </p>
-     */
+    inline const Aws::String& GetCode() const { return m_code; }
     inline bool CodeHasBeenSet() const { return m_codeHasBeenSet; }
+    template<typename CodeT = Aws::String>
+    void SetCode(CodeT&& value) { m_codeHasBeenSet = true; m_code = std::forward<CodeT>(value); }
+    template<typename CodeT = Aws::String>
+    SupportedLanguage& WithCode(CodeT&& value) { SetCode(std::forward<CodeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> 2 digit ISO 639-1 code. e.g. <code>en</code> </p>
-     */
-    inline void SetCode(const Aws::String& value) { m_codeHasBeenSet = true; m_code = value; }
-
-    /**
-     * <p> 2 digit ISO 639-1 code. e.g. <code>en</code> </p>
-     */
-    inline void SetCode(Aws::String&& value) { m_codeHasBeenSet = true; m_code = std::move(value); }
-
-    /**
-     * <p> 2 digit ISO 639-1 code. e.g. <code>en</code> </p>
-     */
-    inline void SetCode(const char* value) { m_codeHasBeenSet = true; m_code.assign(value); }
-
-    /**
-     * <p> 2 digit ISO 639-1 code. e.g. <code>en</code> </p>
-     */
-    inline SupportedLanguage& WithCode(const Aws::String& value) { SetCode(value); return *this;}
-
-    /**
-     * <p> 2 digit ISO 639-1 code. e.g. <code>en</code> </p>
-     */
-    inline SupportedLanguage& WithCode(Aws::String&& value) { SetCode(std::move(value)); return *this;}
-
-    /**
-     * <p> 2 digit ISO 639-1 code. e.g. <code>en</code> </p>
-     */
-    inline SupportedLanguage& WithCode(const char* value) { SetCode(value); return *this;}
-
-
+    ///@{
     /**
      * <p> Full language description e.g. <code>ENGLISH</code> </p>
      */
-    inline const Aws::String& GetLanguage() const{ return m_language; }
-
-    /**
-     * <p> Full language description e.g. <code>ENGLISH</code> </p>
-     */
+    inline const Aws::String& GetLanguage() const { return m_language; }
     inline bool LanguageHasBeenSet() const { return m_languageHasBeenSet; }
+    template<typename LanguageT = Aws::String>
+    void SetLanguage(LanguageT&& value) { m_languageHasBeenSet = true; m_language = std::forward<LanguageT>(value); }
+    template<typename LanguageT = Aws::String>
+    SupportedLanguage& WithLanguage(LanguageT&& value) { SetLanguage(std::forward<LanguageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> Full language description e.g. <code>ENGLISH</code> </p>
-     */
-    inline void SetLanguage(const Aws::String& value) { m_languageHasBeenSet = true; m_language = value; }
-
-    /**
-     * <p> Full language description e.g. <code>ENGLISH</code> </p>
-     */
-    inline void SetLanguage(Aws::String&& value) { m_languageHasBeenSet = true; m_language = std::move(value); }
-
-    /**
-     * <p> Full language description e.g. <code>ENGLISH</code> </p>
-     */
-    inline void SetLanguage(const char* value) { m_languageHasBeenSet = true; m_language.assign(value); }
-
-    /**
-     * <p> Full language description e.g. <code>ENGLISH</code> </p>
-     */
-    inline SupportedLanguage& WithLanguage(const Aws::String& value) { SetLanguage(value); return *this;}
-
-    /**
-     * <p> Full language description e.g. <code>ENGLISH</code> </p>
-     */
-    inline SupportedLanguage& WithLanguage(Aws::String&& value) { SetLanguage(std::move(value)); return *this;}
-
-    /**
-     * <p> Full language description e.g. <code>ENGLISH</code> </p>
-     */
-    inline SupportedLanguage& WithLanguage(const char* value) { SetLanguage(value); return *this;}
-
-
+    ///@{
     /**
      * <p> Language display value e.g. <code>ENGLISH</code> </p>
      */
-    inline const Aws::String& GetDisplay() const{ return m_display; }
-
-    /**
-     * <p> Language display value e.g. <code>ENGLISH</code> </p>
-     */
+    inline const Aws::String& GetDisplay() const { return m_display; }
     inline bool DisplayHasBeenSet() const { return m_displayHasBeenSet; }
-
-    /**
-     * <p> Language display value e.g. <code>ENGLISH</code> </p>
-     */
-    inline void SetDisplay(const Aws::String& value) { m_displayHasBeenSet = true; m_display = value; }
-
-    /**
-     * <p> Language display value e.g. <code>ENGLISH</code> </p>
-     */
-    inline void SetDisplay(Aws::String&& value) { m_displayHasBeenSet = true; m_display = std::move(value); }
-
-    /**
-     * <p> Language display value e.g. <code>ENGLISH</code> </p>
-     */
-    inline void SetDisplay(const char* value) { m_displayHasBeenSet = true; m_display.assign(value); }
-
-    /**
-     * <p> Language display value e.g. <code>ENGLISH</code> </p>
-     */
-    inline SupportedLanguage& WithDisplay(const Aws::String& value) { SetDisplay(value); return *this;}
-
-    /**
-     * <p> Language display value e.g. <code>ENGLISH</code> </p>
-     */
-    inline SupportedLanguage& WithDisplay(Aws::String&& value) { SetDisplay(std::move(value)); return *this;}
-
-    /**
-     * <p> Language display value e.g. <code>ENGLISH</code> </p>
-     */
-    inline SupportedLanguage& WithDisplay(const char* value) { SetDisplay(value); return *this;}
-
+    template<typename DisplayT = Aws::String>
+    void SetDisplay(DisplayT&& value) { m_displayHasBeenSet = true; m_display = std::forward<DisplayT>(value); }
+    template<typename DisplayT = Aws::String>
+    SupportedLanguage& WithDisplay(DisplayT&& value) { SetDisplay(std::forward<DisplayT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_code;

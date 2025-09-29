@@ -18,21 +18,7 @@ namespace ChimeSDKIdentity
 namespace Model
 {
 
-AppInstance::AppInstance() : 
-    m_appInstanceArnHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_createdTimestampHasBeenSet(false),
-    m_lastUpdatedTimestampHasBeenSet(false),
-    m_metadataHasBeenSet(false)
-{
-}
-
-AppInstance::AppInstance(JsonView jsonValue) : 
-    m_appInstanceArnHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_createdTimestampHasBeenSet(false),
-    m_lastUpdatedTimestampHasBeenSet(false),
-    m_metadataHasBeenSet(false)
+AppInstance::AppInstance(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,38 +28,28 @@ AppInstance& AppInstance::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("AppInstanceArn"))
   {
     m_appInstanceArn = jsonValue.GetString("AppInstanceArn");
-
     m_appInstanceArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CreatedTimestamp"))
   {
     m_createdTimestamp = jsonValue.GetDouble("CreatedTimestamp");
-
     m_createdTimestampHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LastUpdatedTimestamp"))
   {
     m_lastUpdatedTimestamp = jsonValue.GetDouble("LastUpdatedTimestamp");
-
     m_lastUpdatedTimestampHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Metadata"))
   {
     m_metadata = jsonValue.GetString("Metadata");
-
     m_metadataHasBeenSet = true;
   }
-
   return *this;
 }
 

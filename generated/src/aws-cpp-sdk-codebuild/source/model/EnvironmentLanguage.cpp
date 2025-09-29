@@ -18,17 +18,7 @@ namespace CodeBuild
 namespace Model
 {
 
-EnvironmentLanguage::EnvironmentLanguage() : 
-    m_language(LanguageType::NOT_SET),
-    m_languageHasBeenSet(false),
-    m_imagesHasBeenSet(false)
-{
-}
-
-EnvironmentLanguage::EnvironmentLanguage(JsonView jsonValue) : 
-    m_language(LanguageType::NOT_SET),
-    m_languageHasBeenSet(false),
-    m_imagesHasBeenSet(false)
+EnvironmentLanguage::EnvironmentLanguage(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ EnvironmentLanguage& EnvironmentLanguage::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("language"))
   {
     m_language = LanguageTypeMapper::GetLanguageTypeForName(jsonValue.GetString("language"));
-
     m_languageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("images"))
   {
     Aws::Utils::Array<JsonView> imagesJsonList = jsonValue.GetArray("images");
@@ -51,7 +39,6 @@ EnvironmentLanguage& EnvironmentLanguage::operator =(JsonView jsonValue)
     }
     m_imagesHasBeenSet = true;
   }
-
   return *this;
 }
 

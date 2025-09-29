@@ -29,73 +29,39 @@ namespace Model
   class StartWorkspacesResult
   {
   public:
-    AWS_WORKSPACES_API StartWorkspacesResult();
+    AWS_WORKSPACES_API StartWorkspacesResult() = default;
     AWS_WORKSPACES_API StartWorkspacesResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_WORKSPACES_API StartWorkspacesResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Information about the WorkSpaces that could not be started.</p>
      */
-    inline const Aws::Vector<FailedWorkspaceChangeRequest>& GetFailedRequests() const{ return m_failedRequests; }
+    inline const Aws::Vector<FailedWorkspaceChangeRequest>& GetFailedRequests() const { return m_failedRequests; }
+    template<typename FailedRequestsT = Aws::Vector<FailedWorkspaceChangeRequest>>
+    void SetFailedRequests(FailedRequestsT&& value) { m_failedRequestsHasBeenSet = true; m_failedRequests = std::forward<FailedRequestsT>(value); }
+    template<typename FailedRequestsT = Aws::Vector<FailedWorkspaceChangeRequest>>
+    StartWorkspacesResult& WithFailedRequests(FailedRequestsT&& value) { SetFailedRequests(std::forward<FailedRequestsT>(value)); return *this;}
+    template<typename FailedRequestsT = FailedWorkspaceChangeRequest>
+    StartWorkspacesResult& AddFailedRequests(FailedRequestsT&& value) { m_failedRequestsHasBeenSet = true; m_failedRequests.emplace_back(std::forward<FailedRequestsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Information about the WorkSpaces that could not be started.</p>
-     */
-    inline void SetFailedRequests(const Aws::Vector<FailedWorkspaceChangeRequest>& value) { m_failedRequests = value; }
-
-    /**
-     * <p>Information about the WorkSpaces that could not be started.</p>
-     */
-    inline void SetFailedRequests(Aws::Vector<FailedWorkspaceChangeRequest>&& value) { m_failedRequests = std::move(value); }
-
-    /**
-     * <p>Information about the WorkSpaces that could not be started.</p>
-     */
-    inline StartWorkspacesResult& WithFailedRequests(const Aws::Vector<FailedWorkspaceChangeRequest>& value) { SetFailedRequests(value); return *this;}
-
-    /**
-     * <p>Information about the WorkSpaces that could not be started.</p>
-     */
-    inline StartWorkspacesResult& WithFailedRequests(Aws::Vector<FailedWorkspaceChangeRequest>&& value) { SetFailedRequests(std::move(value)); return *this;}
-
-    /**
-     * <p>Information about the WorkSpaces that could not be started.</p>
-     */
-    inline StartWorkspacesResult& AddFailedRequests(const FailedWorkspaceChangeRequest& value) { m_failedRequests.push_back(value); return *this; }
-
-    /**
-     * <p>Information about the WorkSpaces that could not be started.</p>
-     */
-    inline StartWorkspacesResult& AddFailedRequests(FailedWorkspaceChangeRequest&& value) { m_failedRequests.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline StartWorkspacesResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline StartWorkspacesResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline StartWorkspacesResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    StartWorkspacesResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<FailedWorkspaceChangeRequest> m_failedRequests;
+    bool m_failedRequestsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

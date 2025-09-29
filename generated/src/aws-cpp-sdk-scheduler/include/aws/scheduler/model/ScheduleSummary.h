@@ -34,276 +34,111 @@ namespace Model
   class ScheduleSummary
   {
   public:
-    AWS_SCHEDULER_API ScheduleSummary();
+    AWS_SCHEDULER_API ScheduleSummary() = default;
     AWS_SCHEDULER_API ScheduleSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_SCHEDULER_API ScheduleSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SCHEDULER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the schedule.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the schedule.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    ScheduleSummary& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the schedule.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the schedule.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the schedule.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the schedule.</p>
-     */
-    inline ScheduleSummary& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the schedule.</p>
-     */
-    inline ScheduleSummary& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the schedule.</p>
-     */
-    inline ScheduleSummary& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The time at which the schedule was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreationDate() const{ return m_creationDate; }
-
-    /**
-     * <p>The time at which the schedule was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreationDate() const { return m_creationDate; }
     inline bool CreationDateHasBeenSet() const { return m_creationDateHasBeenSet; }
+    template<typename CreationDateT = Aws::Utils::DateTime>
+    void SetCreationDate(CreationDateT&& value) { m_creationDateHasBeenSet = true; m_creationDate = std::forward<CreationDateT>(value); }
+    template<typename CreationDateT = Aws::Utils::DateTime>
+    ScheduleSummary& WithCreationDate(CreationDateT&& value) { SetCreationDate(std::forward<CreationDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time at which the schedule was created.</p>
-     */
-    inline void SetCreationDate(const Aws::Utils::DateTime& value) { m_creationDateHasBeenSet = true; m_creationDate = value; }
-
-    /**
-     * <p>The time at which the schedule was created.</p>
-     */
-    inline void SetCreationDate(Aws::Utils::DateTime&& value) { m_creationDateHasBeenSet = true; m_creationDate = std::move(value); }
-
-    /**
-     * <p>The time at which the schedule was created.</p>
-     */
-    inline ScheduleSummary& WithCreationDate(const Aws::Utils::DateTime& value) { SetCreationDate(value); return *this;}
-
-    /**
-     * <p>The time at which the schedule was created.</p>
-     */
-    inline ScheduleSummary& WithCreationDate(Aws::Utils::DateTime&& value) { SetCreationDate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the schedule group associated with this schedule.</p>
      */
-    inline const Aws::String& GetGroupName() const{ return m_groupName; }
-
-    /**
-     * <p>The name of the schedule group associated with this schedule.</p>
-     */
+    inline const Aws::String& GetGroupName() const { return m_groupName; }
     inline bool GroupNameHasBeenSet() const { return m_groupNameHasBeenSet; }
+    template<typename GroupNameT = Aws::String>
+    void SetGroupName(GroupNameT&& value) { m_groupNameHasBeenSet = true; m_groupName = std::forward<GroupNameT>(value); }
+    template<typename GroupNameT = Aws::String>
+    ScheduleSummary& WithGroupName(GroupNameT&& value) { SetGroupName(std::forward<GroupNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the schedule group associated with this schedule.</p>
-     */
-    inline void SetGroupName(const Aws::String& value) { m_groupNameHasBeenSet = true; m_groupName = value; }
-
-    /**
-     * <p>The name of the schedule group associated with this schedule.</p>
-     */
-    inline void SetGroupName(Aws::String&& value) { m_groupNameHasBeenSet = true; m_groupName = std::move(value); }
-
-    /**
-     * <p>The name of the schedule group associated with this schedule.</p>
-     */
-    inline void SetGroupName(const char* value) { m_groupNameHasBeenSet = true; m_groupName.assign(value); }
-
-    /**
-     * <p>The name of the schedule group associated with this schedule.</p>
-     */
-    inline ScheduleSummary& WithGroupName(const Aws::String& value) { SetGroupName(value); return *this;}
-
-    /**
-     * <p>The name of the schedule group associated with this schedule.</p>
-     */
-    inline ScheduleSummary& WithGroupName(Aws::String&& value) { SetGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the schedule group associated with this schedule.</p>
-     */
-    inline ScheduleSummary& WithGroupName(const char* value) { SetGroupName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The time at which the schedule was last modified.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastModificationDate() const{ return m_lastModificationDate; }
-
-    /**
-     * <p>The time at which the schedule was last modified.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastModificationDate() const { return m_lastModificationDate; }
     inline bool LastModificationDateHasBeenSet() const { return m_lastModificationDateHasBeenSet; }
+    template<typename LastModificationDateT = Aws::Utils::DateTime>
+    void SetLastModificationDate(LastModificationDateT&& value) { m_lastModificationDateHasBeenSet = true; m_lastModificationDate = std::forward<LastModificationDateT>(value); }
+    template<typename LastModificationDateT = Aws::Utils::DateTime>
+    ScheduleSummary& WithLastModificationDate(LastModificationDateT&& value) { SetLastModificationDate(std::forward<LastModificationDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time at which the schedule was last modified.</p>
-     */
-    inline void SetLastModificationDate(const Aws::Utils::DateTime& value) { m_lastModificationDateHasBeenSet = true; m_lastModificationDate = value; }
-
-    /**
-     * <p>The time at which the schedule was last modified.</p>
-     */
-    inline void SetLastModificationDate(Aws::Utils::DateTime&& value) { m_lastModificationDateHasBeenSet = true; m_lastModificationDate = std::move(value); }
-
-    /**
-     * <p>The time at which the schedule was last modified.</p>
-     */
-    inline ScheduleSummary& WithLastModificationDate(const Aws::Utils::DateTime& value) { SetLastModificationDate(value); return *this;}
-
-    /**
-     * <p>The time at which the schedule was last modified.</p>
-     */
-    inline ScheduleSummary& WithLastModificationDate(Aws::Utils::DateTime&& value) { SetLastModificationDate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the schedule.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the schedule.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    ScheduleSummary& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the schedule.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the schedule.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the schedule.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the schedule.</p>
-     */
-    inline ScheduleSummary& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the schedule.</p>
-     */
-    inline ScheduleSummary& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the schedule.</p>
-     */
-    inline ScheduleSummary& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies whether the schedule is enabled or disabled.</p>
      */
-    inline const ScheduleState& GetState() const{ return m_state; }
-
-    /**
-     * <p>Specifies whether the schedule is enabled or disabled.</p>
-     */
+    inline ScheduleState GetState() const { return m_state; }
     inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
+    inline void SetState(ScheduleState value) { m_stateHasBeenSet = true; m_state = value; }
+    inline ScheduleSummary& WithState(ScheduleState value) { SetState(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies whether the schedule is enabled or disabled.</p>
-     */
-    inline void SetState(const ScheduleState& value) { m_stateHasBeenSet = true; m_state = value; }
-
-    /**
-     * <p>Specifies whether the schedule is enabled or disabled.</p>
-     */
-    inline void SetState(ScheduleState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
-
-    /**
-     * <p>Specifies whether the schedule is enabled or disabled.</p>
-     */
-    inline ScheduleSummary& WithState(const ScheduleState& value) { SetState(value); return *this;}
-
-    /**
-     * <p>Specifies whether the schedule is enabled or disabled.</p>
-     */
-    inline ScheduleSummary& WithState(ScheduleState&& value) { SetState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The schedule's target details.</p>
      */
-    inline const TargetSummary& GetTarget() const{ return m_target; }
-
-    /**
-     * <p>The schedule's target details.</p>
-     */
+    inline const TargetSummary& GetTarget() const { return m_target; }
     inline bool TargetHasBeenSet() const { return m_targetHasBeenSet; }
-
-    /**
-     * <p>The schedule's target details.</p>
-     */
-    inline void SetTarget(const TargetSummary& value) { m_targetHasBeenSet = true; m_target = value; }
-
-    /**
-     * <p>The schedule's target details.</p>
-     */
-    inline void SetTarget(TargetSummary&& value) { m_targetHasBeenSet = true; m_target = std::move(value); }
-
-    /**
-     * <p>The schedule's target details.</p>
-     */
-    inline ScheduleSummary& WithTarget(const TargetSummary& value) { SetTarget(value); return *this;}
-
-    /**
-     * <p>The schedule's target details.</p>
-     */
-    inline ScheduleSummary& WithTarget(TargetSummary&& value) { SetTarget(std::move(value)); return *this;}
-
+    template<typename TargetT = TargetSummary>
+    void SetTarget(TargetT&& value) { m_targetHasBeenSet = true; m_target = std::forward<TargetT>(value); }
+    template<typename TargetT = TargetSummary>
+    ScheduleSummary& WithTarget(TargetT&& value) { SetTarget(std::forward<TargetT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;
     bool m_arnHasBeenSet = false;
 
-    Aws::Utils::DateTime m_creationDate;
+    Aws::Utils::DateTime m_creationDate{};
     bool m_creationDateHasBeenSet = false;
 
     Aws::String m_groupName;
     bool m_groupNameHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastModificationDate;
+    Aws::Utils::DateTime m_lastModificationDate{};
     bool m_lastModificationDateHasBeenSet = false;
 
     Aws::String m_name;
     bool m_nameHasBeenSet = false;
 
-    ScheduleState m_state;
+    ScheduleState m_state{ScheduleState::NOT_SET};
     bool m_stateHasBeenSet = false;
 
     TargetSummary m_target;

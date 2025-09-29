@@ -18,15 +18,7 @@ namespace Connect
 namespace Model
 {
 
-ParticipantTokenCredentials::ParticipantTokenCredentials() : 
-    m_participantTokenHasBeenSet(false),
-    m_expiryHasBeenSet(false)
-{
-}
-
-ParticipantTokenCredentials::ParticipantTokenCredentials(JsonView jsonValue) : 
-    m_participantTokenHasBeenSet(false),
-    m_expiryHasBeenSet(false)
+ParticipantTokenCredentials::ParticipantTokenCredentials(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ParticipantTokenCredentials& ParticipantTokenCredentials::operator =(JsonView js
   if(jsonValue.ValueExists("ParticipantToken"))
   {
     m_participantToken = jsonValue.GetString("ParticipantToken");
-
     m_participantTokenHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Expiry"))
   {
     m_expiry = jsonValue.GetString("Expiry");
-
     m_expiryHasBeenSet = true;
   }
-
   return *this;
 }
 

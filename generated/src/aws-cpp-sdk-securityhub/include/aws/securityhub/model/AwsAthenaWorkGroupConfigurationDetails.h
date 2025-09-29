@@ -35,60 +35,26 @@ namespace Model
   class AwsAthenaWorkGroupConfigurationDetails
   {
   public:
-    AWS_SECURITYHUB_API AwsAthenaWorkGroupConfigurationDetails();
+    AWS_SECURITYHUB_API AwsAthenaWorkGroupConfigurationDetails() = default;
     AWS_SECURITYHUB_API AwsAthenaWorkGroupConfigurationDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsAthenaWorkGroupConfigurationDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The location in Amazon S3 where query and calculation results are stored and
      * the encryption option, if any, used for query and calculation results. These are
      * known as client-side settings. If workgroup settings override client-side
      * settings, then the query uses the workgroup settings.</p>
      */
-    inline const AwsAthenaWorkGroupConfigurationResultConfigurationDetails& GetResultConfiguration() const{ return m_resultConfiguration; }
-
-    /**
-     * <p> The location in Amazon S3 where query and calculation results are stored and
-     * the encryption option, if any, used for query and calculation results. These are
-     * known as client-side settings. If workgroup settings override client-side
-     * settings, then the query uses the workgroup settings.</p>
-     */
+    inline const AwsAthenaWorkGroupConfigurationResultConfigurationDetails& GetResultConfiguration() const { return m_resultConfiguration; }
     inline bool ResultConfigurationHasBeenSet() const { return m_resultConfigurationHasBeenSet; }
-
-    /**
-     * <p> The location in Amazon S3 where query and calculation results are stored and
-     * the encryption option, if any, used for query and calculation results. These are
-     * known as client-side settings. If workgroup settings override client-side
-     * settings, then the query uses the workgroup settings.</p>
-     */
-    inline void SetResultConfiguration(const AwsAthenaWorkGroupConfigurationResultConfigurationDetails& value) { m_resultConfigurationHasBeenSet = true; m_resultConfiguration = value; }
-
-    /**
-     * <p> The location in Amazon S3 where query and calculation results are stored and
-     * the encryption option, if any, used for query and calculation results. These are
-     * known as client-side settings. If workgroup settings override client-side
-     * settings, then the query uses the workgroup settings.</p>
-     */
-    inline void SetResultConfiguration(AwsAthenaWorkGroupConfigurationResultConfigurationDetails&& value) { m_resultConfigurationHasBeenSet = true; m_resultConfiguration = std::move(value); }
-
-    /**
-     * <p> The location in Amazon S3 where query and calculation results are stored and
-     * the encryption option, if any, used for query and calculation results. These are
-     * known as client-side settings. If workgroup settings override client-side
-     * settings, then the query uses the workgroup settings.</p>
-     */
-    inline AwsAthenaWorkGroupConfigurationDetails& WithResultConfiguration(const AwsAthenaWorkGroupConfigurationResultConfigurationDetails& value) { SetResultConfiguration(value); return *this;}
-
-    /**
-     * <p> The location in Amazon S3 where query and calculation results are stored and
-     * the encryption option, if any, used for query and calculation results. These are
-     * known as client-side settings. If workgroup settings override client-side
-     * settings, then the query uses the workgroup settings.</p>
-     */
-    inline AwsAthenaWorkGroupConfigurationDetails& WithResultConfiguration(AwsAthenaWorkGroupConfigurationResultConfigurationDetails&& value) { SetResultConfiguration(std::move(value)); return *this;}
-
+    template<typename ResultConfigurationT = AwsAthenaWorkGroupConfigurationResultConfigurationDetails>
+    void SetResultConfiguration(ResultConfigurationT&& value) { m_resultConfigurationHasBeenSet = true; m_resultConfiguration = std::forward<ResultConfigurationT>(value); }
+    template<typename ResultConfigurationT = AwsAthenaWorkGroupConfigurationResultConfigurationDetails>
+    AwsAthenaWorkGroupConfigurationDetails& WithResultConfiguration(ResultConfigurationT&& value) { SetResultConfiguration(std::forward<ResultConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     AwsAthenaWorkGroupConfigurationResultConfigurationDetails m_resultConfiguration;

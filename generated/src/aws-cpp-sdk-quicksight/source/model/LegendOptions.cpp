@@ -18,25 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-LegendOptions::LegendOptions() : 
-    m_visibility(Visibility::NOT_SET),
-    m_visibilityHasBeenSet(false),
-    m_titleHasBeenSet(false),
-    m_position(LegendPosition::NOT_SET),
-    m_positionHasBeenSet(false),
-    m_widthHasBeenSet(false),
-    m_heightHasBeenSet(false)
-{
-}
-
-LegendOptions::LegendOptions(JsonView jsonValue) : 
-    m_visibility(Visibility::NOT_SET),
-    m_visibilityHasBeenSet(false),
-    m_titleHasBeenSet(false),
-    m_position(LegendPosition::NOT_SET),
-    m_positionHasBeenSet(false),
-    m_widthHasBeenSet(false),
-    m_heightHasBeenSet(false)
+LegendOptions::LegendOptions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,38 +28,33 @@ LegendOptions& LegendOptions::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Visibility"))
   {
     m_visibility = VisibilityMapper::GetVisibilityForName(jsonValue.GetString("Visibility"));
-
     m_visibilityHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Title"))
   {
     m_title = jsonValue.GetObject("Title");
-
     m_titleHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Position"))
   {
     m_position = LegendPositionMapper::GetLegendPositionForName(jsonValue.GetString("Position"));
-
     m_positionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Width"))
   {
     m_width = jsonValue.GetString("Width");
-
     m_widthHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Height"))
   {
     m_height = jsonValue.GetString("Height");
-
     m_heightHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("ValueFontConfiguration"))
+  {
+    m_valueFontConfiguration = jsonValue.GetObject("ValueFontConfiguration");
+    m_valueFontConfigurationHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -110,6 +87,12 @@ JsonValue LegendOptions::Jsonize() const
   if(m_heightHasBeenSet)
   {
    payload.WithString("Height", m_height);
+
+  }
+
+  if(m_valueFontConfigurationHasBeenSet)
+  {
+   payload.WithObject("ValueFontConfiguration", m_valueFontConfiguration.Jsonize());
 
   }
 

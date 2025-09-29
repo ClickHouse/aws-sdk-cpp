@@ -33,171 +33,58 @@ namespace Model
   class Topic
   {
   public:
-    AWS_SESV2_API Topic();
+    AWS_SESV2_API Topic() = default;
     AWS_SESV2_API Topic(Aws::Utils::Json::JsonView jsonValue);
     AWS_SESV2_API Topic& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SESV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the topic.</p>
      */
-    inline const Aws::String& GetTopicName() const{ return m_topicName; }
-
-    /**
-     * <p>The name of the topic.</p>
-     */
+    inline const Aws::String& GetTopicName() const { return m_topicName; }
     inline bool TopicNameHasBeenSet() const { return m_topicNameHasBeenSet; }
+    template<typename TopicNameT = Aws::String>
+    void SetTopicName(TopicNameT&& value) { m_topicNameHasBeenSet = true; m_topicName = std::forward<TopicNameT>(value); }
+    template<typename TopicNameT = Aws::String>
+    Topic& WithTopicName(TopicNameT&& value) { SetTopicName(std::forward<TopicNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the topic.</p>
-     */
-    inline void SetTopicName(const Aws::String& value) { m_topicNameHasBeenSet = true; m_topicName = value; }
-
-    /**
-     * <p>The name of the topic.</p>
-     */
-    inline void SetTopicName(Aws::String&& value) { m_topicNameHasBeenSet = true; m_topicName = std::move(value); }
-
-    /**
-     * <p>The name of the topic.</p>
-     */
-    inline void SetTopicName(const char* value) { m_topicNameHasBeenSet = true; m_topicName.assign(value); }
-
-    /**
-     * <p>The name of the topic.</p>
-     */
-    inline Topic& WithTopicName(const Aws::String& value) { SetTopicName(value); return *this;}
-
-    /**
-     * <p>The name of the topic.</p>
-     */
-    inline Topic& WithTopicName(Aws::String&& value) { SetTopicName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the topic.</p>
-     */
-    inline Topic& WithTopicName(const char* value) { SetTopicName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the topic the contact will see.</p>
      */
-    inline const Aws::String& GetDisplayName() const{ return m_displayName; }
-
-    /**
-     * <p>The name of the topic the contact will see.</p>
-     */
+    inline const Aws::String& GetDisplayName() const { return m_displayName; }
     inline bool DisplayNameHasBeenSet() const { return m_displayNameHasBeenSet; }
+    template<typename DisplayNameT = Aws::String>
+    void SetDisplayName(DisplayNameT&& value) { m_displayNameHasBeenSet = true; m_displayName = std::forward<DisplayNameT>(value); }
+    template<typename DisplayNameT = Aws::String>
+    Topic& WithDisplayName(DisplayNameT&& value) { SetDisplayName(std::forward<DisplayNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the topic the contact will see.</p>
-     */
-    inline void SetDisplayName(const Aws::String& value) { m_displayNameHasBeenSet = true; m_displayName = value; }
-
-    /**
-     * <p>The name of the topic the contact will see.</p>
-     */
-    inline void SetDisplayName(Aws::String&& value) { m_displayNameHasBeenSet = true; m_displayName = std::move(value); }
-
-    /**
-     * <p>The name of the topic the contact will see.</p>
-     */
-    inline void SetDisplayName(const char* value) { m_displayNameHasBeenSet = true; m_displayName.assign(value); }
-
-    /**
-     * <p>The name of the topic the contact will see.</p>
-     */
-    inline Topic& WithDisplayName(const Aws::String& value) { SetDisplayName(value); return *this;}
-
-    /**
-     * <p>The name of the topic the contact will see.</p>
-     */
-    inline Topic& WithDisplayName(Aws::String&& value) { SetDisplayName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the topic the contact will see.</p>
-     */
-    inline Topic& WithDisplayName(const char* value) { SetDisplayName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A description of what the topic is about, which the contact will see.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>A description of what the topic is about, which the contact will see.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    Topic& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A description of what the topic is about, which the contact will see.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>A description of what the topic is about, which the contact will see.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>A description of what the topic is about, which the contact will see.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>A description of what the topic is about, which the contact will see.</p>
-     */
-    inline Topic& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A description of what the topic is about, which the contact will see.</p>
-     */
-    inline Topic& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A description of what the topic is about, which the contact will see.</p>
-     */
-    inline Topic& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The default subscription status to be applied to a contact if the contact has
      * not noted their preference for subscribing to a topic.</p>
      */
-    inline const SubscriptionStatus& GetDefaultSubscriptionStatus() const{ return m_defaultSubscriptionStatus; }
-
-    /**
-     * <p>The default subscription status to be applied to a contact if the contact has
-     * not noted their preference for subscribing to a topic.</p>
-     */
+    inline SubscriptionStatus GetDefaultSubscriptionStatus() const { return m_defaultSubscriptionStatus; }
     inline bool DefaultSubscriptionStatusHasBeenSet() const { return m_defaultSubscriptionStatusHasBeenSet; }
-
-    /**
-     * <p>The default subscription status to be applied to a contact if the contact has
-     * not noted their preference for subscribing to a topic.</p>
-     */
-    inline void SetDefaultSubscriptionStatus(const SubscriptionStatus& value) { m_defaultSubscriptionStatusHasBeenSet = true; m_defaultSubscriptionStatus = value; }
-
-    /**
-     * <p>The default subscription status to be applied to a contact if the contact has
-     * not noted their preference for subscribing to a topic.</p>
-     */
-    inline void SetDefaultSubscriptionStatus(SubscriptionStatus&& value) { m_defaultSubscriptionStatusHasBeenSet = true; m_defaultSubscriptionStatus = std::move(value); }
-
-    /**
-     * <p>The default subscription status to be applied to a contact if the contact has
-     * not noted their preference for subscribing to a topic.</p>
-     */
-    inline Topic& WithDefaultSubscriptionStatus(const SubscriptionStatus& value) { SetDefaultSubscriptionStatus(value); return *this;}
-
-    /**
-     * <p>The default subscription status to be applied to a contact if the contact has
-     * not noted their preference for subscribing to a topic.</p>
-     */
-    inline Topic& WithDefaultSubscriptionStatus(SubscriptionStatus&& value) { SetDefaultSubscriptionStatus(std::move(value)); return *this;}
-
+    inline void SetDefaultSubscriptionStatus(SubscriptionStatus value) { m_defaultSubscriptionStatusHasBeenSet = true; m_defaultSubscriptionStatus = value; }
+    inline Topic& WithDefaultSubscriptionStatus(SubscriptionStatus value) { SetDefaultSubscriptionStatus(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_topicName;
@@ -209,7 +96,7 @@ namespace Model
     Aws::String m_description;
     bool m_descriptionHasBeenSet = false;
 
-    SubscriptionStatus m_defaultSubscriptionStatus;
+    SubscriptionStatus m_defaultSubscriptionStatus{SubscriptionStatus::NOT_SET};
     bool m_defaultSubscriptionStatusHasBeenSet = false;
   };
 

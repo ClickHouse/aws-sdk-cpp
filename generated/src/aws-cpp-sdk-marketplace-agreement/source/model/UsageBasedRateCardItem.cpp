@@ -18,13 +18,7 @@ namespace AgreementService
 namespace Model
 {
 
-UsageBasedRateCardItem::UsageBasedRateCardItem() : 
-    m_rateCardHasBeenSet(false)
-{
-}
-
-UsageBasedRateCardItem::UsageBasedRateCardItem(JsonView jsonValue) : 
-    m_rateCardHasBeenSet(false)
+UsageBasedRateCardItem::UsageBasedRateCardItem(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ UsageBasedRateCardItem& UsageBasedRateCardItem::operator =(JsonView jsonValue)
     }
     m_rateCardHasBeenSet = true;
   }
-
   return *this;
 }
 

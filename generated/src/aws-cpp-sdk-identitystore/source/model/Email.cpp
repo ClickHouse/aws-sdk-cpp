@@ -18,19 +18,7 @@ namespace IdentityStore
 namespace Model
 {
 
-Email::Email() : 
-    m_valueHasBeenSet(false),
-    m_typeHasBeenSet(false),
-    m_primary(false),
-    m_primaryHasBeenSet(false)
-{
-}
-
-Email::Email(JsonView jsonValue) : 
-    m_valueHasBeenSet(false),
-    m_typeHasBeenSet(false),
-    m_primary(false),
-    m_primaryHasBeenSet(false)
+Email::Email(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ Email& Email::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Value"))
   {
     m_value = jsonValue.GetString("Value");
-
     m_valueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Type"))
   {
     m_type = jsonValue.GetString("Type");
-
     m_typeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Primary"))
   {
     m_primary = jsonValue.GetBool("Primary");
-
     m_primaryHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -36,182 +36,72 @@ namespace Model
   class IpAddressDetails
   {
   public:
-    AWS_MACIE2_API IpAddressDetails();
+    AWS_MACIE2_API IpAddressDetails() = default;
     AWS_MACIE2_API IpAddressDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API IpAddressDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Internet Protocol version 4 (IPv4) address of the device.</p>
      */
-    inline const Aws::String& GetIpAddressV4() const{ return m_ipAddressV4; }
-
-    /**
-     * <p>The Internet Protocol version 4 (IPv4) address of the device.</p>
-     */
+    inline const Aws::String& GetIpAddressV4() const { return m_ipAddressV4; }
     inline bool IpAddressV4HasBeenSet() const { return m_ipAddressV4HasBeenSet; }
+    template<typename IpAddressV4T = Aws::String>
+    void SetIpAddressV4(IpAddressV4T&& value) { m_ipAddressV4HasBeenSet = true; m_ipAddressV4 = std::forward<IpAddressV4T>(value); }
+    template<typename IpAddressV4T = Aws::String>
+    IpAddressDetails& WithIpAddressV4(IpAddressV4T&& value) { SetIpAddressV4(std::forward<IpAddressV4T>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Internet Protocol version 4 (IPv4) address of the device.</p>
-     */
-    inline void SetIpAddressV4(const Aws::String& value) { m_ipAddressV4HasBeenSet = true; m_ipAddressV4 = value; }
-
-    /**
-     * <p>The Internet Protocol version 4 (IPv4) address of the device.</p>
-     */
-    inline void SetIpAddressV4(Aws::String&& value) { m_ipAddressV4HasBeenSet = true; m_ipAddressV4 = std::move(value); }
-
-    /**
-     * <p>The Internet Protocol version 4 (IPv4) address of the device.</p>
-     */
-    inline void SetIpAddressV4(const char* value) { m_ipAddressV4HasBeenSet = true; m_ipAddressV4.assign(value); }
-
-    /**
-     * <p>The Internet Protocol version 4 (IPv4) address of the device.</p>
-     */
-    inline IpAddressDetails& WithIpAddressV4(const Aws::String& value) { SetIpAddressV4(value); return *this;}
-
-    /**
-     * <p>The Internet Protocol version 4 (IPv4) address of the device.</p>
-     */
-    inline IpAddressDetails& WithIpAddressV4(Aws::String&& value) { SetIpAddressV4(std::move(value)); return *this;}
-
-    /**
-     * <p>The Internet Protocol version 4 (IPv4) address of the device.</p>
-     */
-    inline IpAddressDetails& WithIpAddressV4(const char* value) { SetIpAddressV4(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The city that the IP address originated from.</p>
      */
-    inline const IpCity& GetIpCity() const{ return m_ipCity; }
-
-    /**
-     * <p>The city that the IP address originated from.</p>
-     */
+    inline const IpCity& GetIpCity() const { return m_ipCity; }
     inline bool IpCityHasBeenSet() const { return m_ipCityHasBeenSet; }
+    template<typename IpCityT = IpCity>
+    void SetIpCity(IpCityT&& value) { m_ipCityHasBeenSet = true; m_ipCity = std::forward<IpCityT>(value); }
+    template<typename IpCityT = IpCity>
+    IpAddressDetails& WithIpCity(IpCityT&& value) { SetIpCity(std::forward<IpCityT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The city that the IP address originated from.</p>
-     */
-    inline void SetIpCity(const IpCity& value) { m_ipCityHasBeenSet = true; m_ipCity = value; }
-
-    /**
-     * <p>The city that the IP address originated from.</p>
-     */
-    inline void SetIpCity(IpCity&& value) { m_ipCityHasBeenSet = true; m_ipCity = std::move(value); }
-
-    /**
-     * <p>The city that the IP address originated from.</p>
-     */
-    inline IpAddressDetails& WithIpCity(const IpCity& value) { SetIpCity(value); return *this;}
-
-    /**
-     * <p>The city that the IP address originated from.</p>
-     */
-    inline IpAddressDetails& WithIpCity(IpCity&& value) { SetIpCity(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The country that the IP address originated from.</p>
      */
-    inline const IpCountry& GetIpCountry() const{ return m_ipCountry; }
-
-    /**
-     * <p>The country that the IP address originated from.</p>
-     */
+    inline const IpCountry& GetIpCountry() const { return m_ipCountry; }
     inline bool IpCountryHasBeenSet() const { return m_ipCountryHasBeenSet; }
+    template<typename IpCountryT = IpCountry>
+    void SetIpCountry(IpCountryT&& value) { m_ipCountryHasBeenSet = true; m_ipCountry = std::forward<IpCountryT>(value); }
+    template<typename IpCountryT = IpCountry>
+    IpAddressDetails& WithIpCountry(IpCountryT&& value) { SetIpCountry(std::forward<IpCountryT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The country that the IP address originated from.</p>
-     */
-    inline void SetIpCountry(const IpCountry& value) { m_ipCountryHasBeenSet = true; m_ipCountry = value; }
-
-    /**
-     * <p>The country that the IP address originated from.</p>
-     */
-    inline void SetIpCountry(IpCountry&& value) { m_ipCountryHasBeenSet = true; m_ipCountry = std::move(value); }
-
-    /**
-     * <p>The country that the IP address originated from.</p>
-     */
-    inline IpAddressDetails& WithIpCountry(const IpCountry& value) { SetIpCountry(value); return *this;}
-
-    /**
-     * <p>The country that the IP address originated from.</p>
-     */
-    inline IpAddressDetails& WithIpCountry(IpCountry&& value) { SetIpCountry(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The geographic coordinates of the location that the IP address originated
      * from.</p>
      */
-    inline const IpGeoLocation& GetIpGeoLocation() const{ return m_ipGeoLocation; }
-
-    /**
-     * <p>The geographic coordinates of the location that the IP address originated
-     * from.</p>
-     */
+    inline const IpGeoLocation& GetIpGeoLocation() const { return m_ipGeoLocation; }
     inline bool IpGeoLocationHasBeenSet() const { return m_ipGeoLocationHasBeenSet; }
+    template<typename IpGeoLocationT = IpGeoLocation>
+    void SetIpGeoLocation(IpGeoLocationT&& value) { m_ipGeoLocationHasBeenSet = true; m_ipGeoLocation = std::forward<IpGeoLocationT>(value); }
+    template<typename IpGeoLocationT = IpGeoLocation>
+    IpAddressDetails& WithIpGeoLocation(IpGeoLocationT&& value) { SetIpGeoLocation(std::forward<IpGeoLocationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The geographic coordinates of the location that the IP address originated
-     * from.</p>
-     */
-    inline void SetIpGeoLocation(const IpGeoLocation& value) { m_ipGeoLocationHasBeenSet = true; m_ipGeoLocation = value; }
-
-    /**
-     * <p>The geographic coordinates of the location that the IP address originated
-     * from.</p>
-     */
-    inline void SetIpGeoLocation(IpGeoLocation&& value) { m_ipGeoLocationHasBeenSet = true; m_ipGeoLocation = std::move(value); }
-
-    /**
-     * <p>The geographic coordinates of the location that the IP address originated
-     * from.</p>
-     */
-    inline IpAddressDetails& WithIpGeoLocation(const IpGeoLocation& value) { SetIpGeoLocation(value); return *this;}
-
-    /**
-     * <p>The geographic coordinates of the location that the IP address originated
-     * from.</p>
-     */
-    inline IpAddressDetails& WithIpGeoLocation(IpGeoLocation&& value) { SetIpGeoLocation(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The registered owner of the IP address.</p>
      */
-    inline const IpOwner& GetIpOwner() const{ return m_ipOwner; }
-
-    /**
-     * <p>The registered owner of the IP address.</p>
-     */
+    inline const IpOwner& GetIpOwner() const { return m_ipOwner; }
     inline bool IpOwnerHasBeenSet() const { return m_ipOwnerHasBeenSet; }
-
-    /**
-     * <p>The registered owner of the IP address.</p>
-     */
-    inline void SetIpOwner(const IpOwner& value) { m_ipOwnerHasBeenSet = true; m_ipOwner = value; }
-
-    /**
-     * <p>The registered owner of the IP address.</p>
-     */
-    inline void SetIpOwner(IpOwner&& value) { m_ipOwnerHasBeenSet = true; m_ipOwner = std::move(value); }
-
-    /**
-     * <p>The registered owner of the IP address.</p>
-     */
-    inline IpAddressDetails& WithIpOwner(const IpOwner& value) { SetIpOwner(value); return *this;}
-
-    /**
-     * <p>The registered owner of the IP address.</p>
-     */
-    inline IpAddressDetails& WithIpOwner(IpOwner&& value) { SetIpOwner(std::move(value)); return *this;}
-
+    template<typename IpOwnerT = IpOwner>
+    void SetIpOwner(IpOwnerT&& value) { m_ipOwnerHasBeenSet = true; m_ipOwner = std::forward<IpOwnerT>(value); }
+    template<typename IpOwnerT = IpOwner>
+    IpAddressDetails& WithIpOwner(IpOwnerT&& value) { SetIpOwner(std::forward<IpOwnerT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_ipAddressV4;

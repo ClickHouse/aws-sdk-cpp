@@ -20,15 +20,7 @@ namespace ImportExport
 namespace Model
 {
 
-Artifact::Artifact() : 
-    m_descriptionHasBeenSet(false),
-    m_uRLHasBeenSet(false)
-{
-}
-
-Artifact::Artifact(const XmlNode& xmlNode) : 
-    m_descriptionHasBeenSet(false),
-    m_uRLHasBeenSet(false)
+Artifact::Artifact(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

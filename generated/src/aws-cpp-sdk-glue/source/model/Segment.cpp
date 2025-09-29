@@ -18,19 +18,7 @@ namespace Glue
 namespace Model
 {
 
-Segment::Segment() : 
-    m_segmentNumber(0),
-    m_segmentNumberHasBeenSet(false),
-    m_totalSegments(0),
-    m_totalSegmentsHasBeenSet(false)
-{
-}
-
-Segment::Segment(JsonView jsonValue) : 
-    m_segmentNumber(0),
-    m_segmentNumberHasBeenSet(false),
-    m_totalSegments(0),
-    m_totalSegmentsHasBeenSet(false)
+Segment::Segment(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ Segment& Segment::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("SegmentNumber"))
   {
     m_segmentNumber = jsonValue.GetInteger("SegmentNumber");
-
     m_segmentNumberHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TotalSegments"))
   {
     m_totalSegments = jsonValue.GetInteger("TotalSegments");
-
     m_totalSegmentsHasBeenSet = true;
   }
-
   return *this;
 }
 

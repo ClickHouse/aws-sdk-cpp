@@ -18,13 +18,7 @@ namespace FraudDetector
 namespace Model
 {
 
-AggregatedVariablesImportanceMetrics::AggregatedVariablesImportanceMetrics() : 
-    m_logOddsMetricsHasBeenSet(false)
-{
-}
-
-AggregatedVariablesImportanceMetrics::AggregatedVariablesImportanceMetrics(JsonView jsonValue) : 
-    m_logOddsMetricsHasBeenSet(false)
+AggregatedVariablesImportanceMetrics::AggregatedVariablesImportanceMetrics(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ AggregatedVariablesImportanceMetrics& AggregatedVariablesImportanceMetrics::oper
     }
     m_logOddsMetricsHasBeenSet = true;
   }
-
   return *this;
 }
 

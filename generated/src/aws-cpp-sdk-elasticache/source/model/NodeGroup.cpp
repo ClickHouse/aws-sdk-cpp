@@ -20,23 +20,7 @@ namespace ElastiCache
 namespace Model
 {
 
-NodeGroup::NodeGroup() : 
-    m_nodeGroupIdHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_primaryEndpointHasBeenSet(false),
-    m_readerEndpointHasBeenSet(false),
-    m_slotsHasBeenSet(false),
-    m_nodeGroupMembersHasBeenSet(false)
-{
-}
-
-NodeGroup::NodeGroup(const XmlNode& xmlNode) : 
-    m_nodeGroupIdHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_primaryEndpointHasBeenSet(false),
-    m_readerEndpointHasBeenSet(false),
-    m_slotsHasBeenSet(false),
-    m_nodeGroupMembersHasBeenSet(false)
+NodeGroup::NodeGroup(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -81,6 +65,7 @@ NodeGroup& NodeGroup::operator =(const XmlNode& xmlNode)
     if(!nodeGroupMembersNode.IsNull())
     {
       XmlNode nodeGroupMembersMember = nodeGroupMembersNode.FirstChild("NodeGroupMember");
+      m_nodeGroupMembersHasBeenSet = !nodeGroupMembersMember.IsNull();
       while(!nodeGroupMembersMember.IsNull())
       {
         m_nodeGroupMembers.push_back(nodeGroupMembersMember);
@@ -131,7 +116,7 @@ void NodeGroup::OutputToStream(Aws::OStream& oStream, const char* location, unsi
       for(auto& item : m_nodeGroupMembers)
       {
         Aws::StringStream nodeGroupMembersSs;
-        nodeGroupMembersSs << location << index << locationValue << ".NodeGroupMember." << nodeGroupMembersIdx++;
+        nodeGroupMembersSs << location << index << locationValue << ".NodeGroupMembers.NodeGroupMember." << nodeGroupMembersIdx++;
         item.OutputToStream(oStream, nodeGroupMembersSs.str().c_str());
       }
   }
@@ -170,7 +155,7 @@ void NodeGroup::OutputToStream(Aws::OStream& oStream, const char* location) cons
       for(auto& item : m_nodeGroupMembers)
       {
         Aws::StringStream nodeGroupMembersSs;
-        nodeGroupMembersSs << location <<  ".NodeGroupMember." << nodeGroupMembersIdx++;
+        nodeGroupMembersSs << location << ".NodeGroupMembers.NodeGroupMember." << nodeGroupMembersIdx++;
         item.OutputToStream(oStream, nodeGroupMembersSs.str().c_str());
       }
   }

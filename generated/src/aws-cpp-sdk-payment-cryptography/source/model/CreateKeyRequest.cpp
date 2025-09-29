@@ -12,33 +12,9 @@ using namespace Aws::PaymentCryptography::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateKeyRequest::CreateKeyRequest() : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false),
-    m_exportable(false),
-    m_exportableHasBeenSet(false),
-    m_keyAttributesHasBeenSet(false),
-    m_keyCheckValueAlgorithm(KeyCheckValueAlgorithm::NOT_SET),
-    m_keyCheckValueAlgorithmHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateKeyRequest::SerializePayload() const
 {
   JsonValue payload;
-
-  if(m_enabledHasBeenSet)
-  {
-   payload.WithBool("Enabled", m_enabled);
-
-  }
-
-  if(m_exportableHasBeenSet)
-  {
-   payload.WithBool("Exportable", m_exportable);
-
-  }
 
   if(m_keyAttributesHasBeenSet)
   {
@@ -51,6 +27,18 @@ Aws::String CreateKeyRequest::SerializePayload() const
    payload.WithString("KeyCheckValueAlgorithm", KeyCheckValueAlgorithmMapper::GetNameForKeyCheckValueAlgorithm(m_keyCheckValueAlgorithm));
   }
 
+  if(m_exportableHasBeenSet)
+  {
+   payload.WithBool("Exportable", m_exportable);
+
+  }
+
+  if(m_enabledHasBeenSet)
+  {
+   payload.WithBool("Enabled", m_enabled);
+
+  }
+
   if(m_tagsHasBeenSet)
   {
    Aws::Utils::Array<JsonValue> tagsJsonList(m_tags.size());
@@ -59,6 +47,22 @@ Aws::String CreateKeyRequest::SerializePayload() const
      tagsJsonList[tagsIndex].AsObject(m_tags[tagsIndex].Jsonize());
    }
    payload.WithArray("Tags", std::move(tagsJsonList));
+
+  }
+
+  if(m_deriveKeyUsageHasBeenSet)
+  {
+   payload.WithString("DeriveKeyUsage", DeriveKeyUsageMapper::GetNameForDeriveKeyUsage(m_deriveKeyUsage));
+  }
+
+  if(m_replicationRegionsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> replicationRegionsJsonList(m_replicationRegions.size());
+   for(unsigned replicationRegionsIndex = 0; replicationRegionsIndex < replicationRegionsJsonList.GetLength(); ++replicationRegionsIndex)
+   {
+     replicationRegionsJsonList[replicationRegionsIndex].AsString(m_replicationRegions[replicationRegionsIndex]);
+   }
+   payload.WithArray("ReplicationRegions", std::move(replicationRegionsJsonList));
 
   }
 

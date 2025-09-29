@@ -35,69 +35,27 @@ namespace Model
   class QuipConfiguration
   {
   public:
-    AWS_KENDRA_API QuipConfiguration();
+    AWS_KENDRA_API QuipConfiguration() = default;
     AWS_KENDRA_API QuipConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_KENDRA_API QuipConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KENDRA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Quip site domain. For example,
      * <i>https://quip-company.quipdomain.com/browse</i>. The domain in this example is
      * "quipdomain".</p>
      */
-    inline const Aws::String& GetDomain() const{ return m_domain; }
-
-    /**
-     * <p>The Quip site domain. For example,
-     * <i>https://quip-company.quipdomain.com/browse</i>. The domain in this example is
-     * "quipdomain".</p>
-     */
+    inline const Aws::String& GetDomain() const { return m_domain; }
     inline bool DomainHasBeenSet() const { return m_domainHasBeenSet; }
+    template<typename DomainT = Aws::String>
+    void SetDomain(DomainT&& value) { m_domainHasBeenSet = true; m_domain = std::forward<DomainT>(value); }
+    template<typename DomainT = Aws::String>
+    QuipConfiguration& WithDomain(DomainT&& value) { SetDomain(std::forward<DomainT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Quip site domain. For example,
-     * <i>https://quip-company.quipdomain.com/browse</i>. The domain in this example is
-     * "quipdomain".</p>
-     */
-    inline void SetDomain(const Aws::String& value) { m_domainHasBeenSet = true; m_domain = value; }
-
-    /**
-     * <p>The Quip site domain. For example,
-     * <i>https://quip-company.quipdomain.com/browse</i>. The domain in this example is
-     * "quipdomain".</p>
-     */
-    inline void SetDomain(Aws::String&& value) { m_domainHasBeenSet = true; m_domain = std::move(value); }
-
-    /**
-     * <p>The Quip site domain. For example,
-     * <i>https://quip-company.quipdomain.com/browse</i>. The domain in this example is
-     * "quipdomain".</p>
-     */
-    inline void SetDomain(const char* value) { m_domainHasBeenSet = true; m_domain.assign(value); }
-
-    /**
-     * <p>The Quip site domain. For example,
-     * <i>https://quip-company.quipdomain.com/browse</i>. The domain in this example is
-     * "quipdomain".</p>
-     */
-    inline QuipConfiguration& WithDomain(const Aws::String& value) { SetDomain(value); return *this;}
-
-    /**
-     * <p>The Quip site domain. For example,
-     * <i>https://quip-company.quipdomain.com/browse</i>. The domain in this example is
-     * "quipdomain".</p>
-     */
-    inline QuipConfiguration& WithDomain(Aws::String&& value) { SetDomain(std::move(value)); return *this;}
-
-    /**
-     * <p>The Quip site domain. For example,
-     * <i>https://quip-company.quipdomain.com/browse</i>. The domain in this example is
-     * "quipdomain".</p>
-     */
-    inline QuipConfiguration& WithDomain(const char* value) { SetDomain(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of an Secrets Manager secret that contains the
      * key-value pairs that are required to connect to your Quip. The secret must
@@ -106,215 +64,62 @@ namespace Model
      * href="https://docs.aws.amazon.com/kendra/latest/dg/data-source-slack.html">Using
      * a Quip data source</a>.</p> </li> </ul>
      */
-    inline const Aws::String& GetSecretArn() const{ return m_secretArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an Secrets Manager secret that contains the
-     * key-value pairs that are required to connect to your Quip. The secret must
-     * contain a JSON structure with the following keys:</p> <ul> <li>
-     * <p>accessToken—The token created in Quip. For more information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/data-source-slack.html">Using
-     * a Quip data source</a>.</p> </li> </ul>
-     */
+    inline const Aws::String& GetSecretArn() const { return m_secretArn; }
     inline bool SecretArnHasBeenSet() const { return m_secretArnHasBeenSet; }
+    template<typename SecretArnT = Aws::String>
+    void SetSecretArn(SecretArnT&& value) { m_secretArnHasBeenSet = true; m_secretArn = std::forward<SecretArnT>(value); }
+    template<typename SecretArnT = Aws::String>
+    QuipConfiguration& WithSecretArn(SecretArnT&& value) { SetSecretArn(std::forward<SecretArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of an Secrets Manager secret that contains the
-     * key-value pairs that are required to connect to your Quip. The secret must
-     * contain a JSON structure with the following keys:</p> <ul> <li>
-     * <p>accessToken—The token created in Quip. For more information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/data-source-slack.html">Using
-     * a Quip data source</a>.</p> </li> </ul>
-     */
-    inline void SetSecretArn(const Aws::String& value) { m_secretArnHasBeenSet = true; m_secretArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an Secrets Manager secret that contains the
-     * key-value pairs that are required to connect to your Quip. The secret must
-     * contain a JSON structure with the following keys:</p> <ul> <li>
-     * <p>accessToken—The token created in Quip. For more information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/data-source-slack.html">Using
-     * a Quip data source</a>.</p> </li> </ul>
-     */
-    inline void SetSecretArn(Aws::String&& value) { m_secretArnHasBeenSet = true; m_secretArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an Secrets Manager secret that contains the
-     * key-value pairs that are required to connect to your Quip. The secret must
-     * contain a JSON structure with the following keys:</p> <ul> <li>
-     * <p>accessToken—The token created in Quip. For more information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/data-source-slack.html">Using
-     * a Quip data source</a>.</p> </li> </ul>
-     */
-    inline void SetSecretArn(const char* value) { m_secretArnHasBeenSet = true; m_secretArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an Secrets Manager secret that contains the
-     * key-value pairs that are required to connect to your Quip. The secret must
-     * contain a JSON structure with the following keys:</p> <ul> <li>
-     * <p>accessToken—The token created in Quip. For more information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/data-source-slack.html">Using
-     * a Quip data source</a>.</p> </li> </ul>
-     */
-    inline QuipConfiguration& WithSecretArn(const Aws::String& value) { SetSecretArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an Secrets Manager secret that contains the
-     * key-value pairs that are required to connect to your Quip. The secret must
-     * contain a JSON structure with the following keys:</p> <ul> <li>
-     * <p>accessToken—The token created in Quip. For more information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/data-source-slack.html">Using
-     * a Quip data source</a>.</p> </li> </ul>
-     */
-    inline QuipConfiguration& WithSecretArn(Aws::String&& value) { SetSecretArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an Secrets Manager secret that contains the
-     * key-value pairs that are required to connect to your Quip. The secret must
-     * contain a JSON structure with the following keys:</p> <ul> <li>
-     * <p>accessToken—The token created in Quip. For more information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/data-source-slack.html">Using
-     * a Quip data source</a>.</p> </li> </ul>
-     */
-    inline QuipConfiguration& WithSecretArn(const char* value) { SetSecretArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p> <code>TRUE</code> to index file comments.</p>
      */
-    inline bool GetCrawlFileComments() const{ return m_crawlFileComments; }
-
-    /**
-     * <p> <code>TRUE</code> to index file comments.</p>
-     */
+    inline bool GetCrawlFileComments() const { return m_crawlFileComments; }
     inline bool CrawlFileCommentsHasBeenSet() const { return m_crawlFileCommentsHasBeenSet; }
-
-    /**
-     * <p> <code>TRUE</code> to index file comments.</p>
-     */
     inline void SetCrawlFileComments(bool value) { m_crawlFileCommentsHasBeenSet = true; m_crawlFileComments = value; }
-
-    /**
-     * <p> <code>TRUE</code> to index file comments.</p>
-     */
     inline QuipConfiguration& WithCrawlFileComments(bool value) { SetCrawlFileComments(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p> <code>TRUE</code> to index the contents of chat rooms.</p>
      */
-    inline bool GetCrawlChatRooms() const{ return m_crawlChatRooms; }
-
-    /**
-     * <p> <code>TRUE</code> to index the contents of chat rooms.</p>
-     */
+    inline bool GetCrawlChatRooms() const { return m_crawlChatRooms; }
     inline bool CrawlChatRoomsHasBeenSet() const { return m_crawlChatRoomsHasBeenSet; }
-
-    /**
-     * <p> <code>TRUE</code> to index the contents of chat rooms.</p>
-     */
     inline void SetCrawlChatRooms(bool value) { m_crawlChatRoomsHasBeenSet = true; m_crawlChatRooms = value; }
-
-    /**
-     * <p> <code>TRUE</code> to index the contents of chat rooms.</p>
-     */
     inline QuipConfiguration& WithCrawlChatRooms(bool value) { SetCrawlChatRooms(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p> <code>TRUE</code> to index attachments.</p>
      */
-    inline bool GetCrawlAttachments() const{ return m_crawlAttachments; }
-
-    /**
-     * <p> <code>TRUE</code> to index attachments.</p>
-     */
+    inline bool GetCrawlAttachments() const { return m_crawlAttachments; }
     inline bool CrawlAttachmentsHasBeenSet() const { return m_crawlAttachmentsHasBeenSet; }
-
-    /**
-     * <p> <code>TRUE</code> to index attachments.</p>
-     */
     inline void SetCrawlAttachments(bool value) { m_crawlAttachmentsHasBeenSet = true; m_crawlAttachments = value; }
-
-    /**
-     * <p> <code>TRUE</code> to index attachments.</p>
-     */
     inline QuipConfiguration& WithCrawlAttachments(bool value) { SetCrawlAttachments(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The identifiers of the Quip folders you want to index. You can find the
      * folder ID in your browser URL when you access your folder in Quip. For example,
      * <i>https://quip-company.quipdomain.com/zlLuOVNSarTL/folder-name</i>. The folder
      * ID in this example is "zlLuOVNSarTL".</p>
      */
-    inline const Aws::Vector<Aws::String>& GetFolderIds() const{ return m_folderIds; }
-
-    /**
-     * <p>The identifiers of the Quip folders you want to index. You can find the
-     * folder ID in your browser URL when you access your folder in Quip. For example,
-     * <i>https://quip-company.quipdomain.com/zlLuOVNSarTL/folder-name</i>. The folder
-     * ID in this example is "zlLuOVNSarTL".</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetFolderIds() const { return m_folderIds; }
     inline bool FolderIdsHasBeenSet() const { return m_folderIdsHasBeenSet; }
+    template<typename FolderIdsT = Aws::Vector<Aws::String>>
+    void SetFolderIds(FolderIdsT&& value) { m_folderIdsHasBeenSet = true; m_folderIds = std::forward<FolderIdsT>(value); }
+    template<typename FolderIdsT = Aws::Vector<Aws::String>>
+    QuipConfiguration& WithFolderIds(FolderIdsT&& value) { SetFolderIds(std::forward<FolderIdsT>(value)); return *this;}
+    template<typename FolderIdsT = Aws::String>
+    QuipConfiguration& AddFolderIds(FolderIdsT&& value) { m_folderIdsHasBeenSet = true; m_folderIds.emplace_back(std::forward<FolderIdsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The identifiers of the Quip folders you want to index. You can find the
-     * folder ID in your browser URL when you access your folder in Quip. For example,
-     * <i>https://quip-company.quipdomain.com/zlLuOVNSarTL/folder-name</i>. The folder
-     * ID in this example is "zlLuOVNSarTL".</p>
-     */
-    inline void SetFolderIds(const Aws::Vector<Aws::String>& value) { m_folderIdsHasBeenSet = true; m_folderIds = value; }
-
-    /**
-     * <p>The identifiers of the Quip folders you want to index. You can find the
-     * folder ID in your browser URL when you access your folder in Quip. For example,
-     * <i>https://quip-company.quipdomain.com/zlLuOVNSarTL/folder-name</i>. The folder
-     * ID in this example is "zlLuOVNSarTL".</p>
-     */
-    inline void SetFolderIds(Aws::Vector<Aws::String>&& value) { m_folderIdsHasBeenSet = true; m_folderIds = std::move(value); }
-
-    /**
-     * <p>The identifiers of the Quip folders you want to index. You can find the
-     * folder ID in your browser URL when you access your folder in Quip. For example,
-     * <i>https://quip-company.quipdomain.com/zlLuOVNSarTL/folder-name</i>. The folder
-     * ID in this example is "zlLuOVNSarTL".</p>
-     */
-    inline QuipConfiguration& WithFolderIds(const Aws::Vector<Aws::String>& value) { SetFolderIds(value); return *this;}
-
-    /**
-     * <p>The identifiers of the Quip folders you want to index. You can find the
-     * folder ID in your browser URL when you access your folder in Quip. For example,
-     * <i>https://quip-company.quipdomain.com/zlLuOVNSarTL/folder-name</i>. The folder
-     * ID in this example is "zlLuOVNSarTL".</p>
-     */
-    inline QuipConfiguration& WithFolderIds(Aws::Vector<Aws::String>&& value) { SetFolderIds(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifiers of the Quip folders you want to index. You can find the
-     * folder ID in your browser URL when you access your folder in Quip. For example,
-     * <i>https://quip-company.quipdomain.com/zlLuOVNSarTL/folder-name</i>. The folder
-     * ID in this example is "zlLuOVNSarTL".</p>
-     */
-    inline QuipConfiguration& AddFolderIds(const Aws::String& value) { m_folderIdsHasBeenSet = true; m_folderIds.push_back(value); return *this; }
-
-    /**
-     * <p>The identifiers of the Quip folders you want to index. You can find the
-     * folder ID in your browser URL when you access your folder in Quip. For example,
-     * <i>https://quip-company.quipdomain.com/zlLuOVNSarTL/folder-name</i>. The folder
-     * ID in this example is "zlLuOVNSarTL".</p>
-     */
-    inline QuipConfiguration& AddFolderIds(Aws::String&& value) { m_folderIdsHasBeenSet = true; m_folderIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The identifiers of the Quip folders you want to index. You can find the
-     * folder ID in your browser URL when you access your folder in Quip. For example,
-     * <i>https://quip-company.quipdomain.com/zlLuOVNSarTL/folder-name</i>. The folder
-     * ID in this example is "zlLuOVNSarTL".</p>
-     */
-    inline QuipConfiguration& AddFolderIds(const char* value) { m_folderIdsHasBeenSet = true; m_folderIds.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of <code>DataSourceToIndexFieldMapping</code> objects that map
      * attributes or field names of Quip threads to Amazon Kendra index field names. To
@@ -324,86 +129,17 @@ namespace Model
      * data source fields</a>. The Quip field names must exist in your Quip custom
      * metadata.</p>
      */
-    inline const Aws::Vector<DataSourceToIndexFieldMapping>& GetThreadFieldMappings() const{ return m_threadFieldMappings; }
-
-    /**
-     * <p>A list of <code>DataSourceToIndexFieldMapping</code> objects that map
-     * attributes or field names of Quip threads to Amazon Kendra index field names. To
-     * create custom fields, use the <code>UpdateIndex</code> API before you map to
-     * Quip fields. For more information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/field-mapping.html">Mapping
-     * data source fields</a>. The Quip field names must exist in your Quip custom
-     * metadata.</p>
-     */
+    inline const Aws::Vector<DataSourceToIndexFieldMapping>& GetThreadFieldMappings() const { return m_threadFieldMappings; }
     inline bool ThreadFieldMappingsHasBeenSet() const { return m_threadFieldMappingsHasBeenSet; }
+    template<typename ThreadFieldMappingsT = Aws::Vector<DataSourceToIndexFieldMapping>>
+    void SetThreadFieldMappings(ThreadFieldMappingsT&& value) { m_threadFieldMappingsHasBeenSet = true; m_threadFieldMappings = std::forward<ThreadFieldMappingsT>(value); }
+    template<typename ThreadFieldMappingsT = Aws::Vector<DataSourceToIndexFieldMapping>>
+    QuipConfiguration& WithThreadFieldMappings(ThreadFieldMappingsT&& value) { SetThreadFieldMappings(std::forward<ThreadFieldMappingsT>(value)); return *this;}
+    template<typename ThreadFieldMappingsT = DataSourceToIndexFieldMapping>
+    QuipConfiguration& AddThreadFieldMappings(ThreadFieldMappingsT&& value) { m_threadFieldMappingsHasBeenSet = true; m_threadFieldMappings.emplace_back(std::forward<ThreadFieldMappingsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of <code>DataSourceToIndexFieldMapping</code> objects that map
-     * attributes or field names of Quip threads to Amazon Kendra index field names. To
-     * create custom fields, use the <code>UpdateIndex</code> API before you map to
-     * Quip fields. For more information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/field-mapping.html">Mapping
-     * data source fields</a>. The Quip field names must exist in your Quip custom
-     * metadata.</p>
-     */
-    inline void SetThreadFieldMappings(const Aws::Vector<DataSourceToIndexFieldMapping>& value) { m_threadFieldMappingsHasBeenSet = true; m_threadFieldMappings = value; }
-
-    /**
-     * <p>A list of <code>DataSourceToIndexFieldMapping</code> objects that map
-     * attributes or field names of Quip threads to Amazon Kendra index field names. To
-     * create custom fields, use the <code>UpdateIndex</code> API before you map to
-     * Quip fields. For more information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/field-mapping.html">Mapping
-     * data source fields</a>. The Quip field names must exist in your Quip custom
-     * metadata.</p>
-     */
-    inline void SetThreadFieldMappings(Aws::Vector<DataSourceToIndexFieldMapping>&& value) { m_threadFieldMappingsHasBeenSet = true; m_threadFieldMappings = std::move(value); }
-
-    /**
-     * <p>A list of <code>DataSourceToIndexFieldMapping</code> objects that map
-     * attributes or field names of Quip threads to Amazon Kendra index field names. To
-     * create custom fields, use the <code>UpdateIndex</code> API before you map to
-     * Quip fields. For more information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/field-mapping.html">Mapping
-     * data source fields</a>. The Quip field names must exist in your Quip custom
-     * metadata.</p>
-     */
-    inline QuipConfiguration& WithThreadFieldMappings(const Aws::Vector<DataSourceToIndexFieldMapping>& value) { SetThreadFieldMappings(value); return *this;}
-
-    /**
-     * <p>A list of <code>DataSourceToIndexFieldMapping</code> objects that map
-     * attributes or field names of Quip threads to Amazon Kendra index field names. To
-     * create custom fields, use the <code>UpdateIndex</code> API before you map to
-     * Quip fields. For more information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/field-mapping.html">Mapping
-     * data source fields</a>. The Quip field names must exist in your Quip custom
-     * metadata.</p>
-     */
-    inline QuipConfiguration& WithThreadFieldMappings(Aws::Vector<DataSourceToIndexFieldMapping>&& value) { SetThreadFieldMappings(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of <code>DataSourceToIndexFieldMapping</code> objects that map
-     * attributes or field names of Quip threads to Amazon Kendra index field names. To
-     * create custom fields, use the <code>UpdateIndex</code> API before you map to
-     * Quip fields. For more information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/field-mapping.html">Mapping
-     * data source fields</a>. The Quip field names must exist in your Quip custom
-     * metadata.</p>
-     */
-    inline QuipConfiguration& AddThreadFieldMappings(const DataSourceToIndexFieldMapping& value) { m_threadFieldMappingsHasBeenSet = true; m_threadFieldMappings.push_back(value); return *this; }
-
-    /**
-     * <p>A list of <code>DataSourceToIndexFieldMapping</code> objects that map
-     * attributes or field names of Quip threads to Amazon Kendra index field names. To
-     * create custom fields, use the <code>UpdateIndex</code> API before you map to
-     * Quip fields. For more information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/field-mapping.html">Mapping
-     * data source fields</a>. The Quip field names must exist in your Quip custom
-     * metadata.</p>
-     */
-    inline QuipConfiguration& AddThreadFieldMappings(DataSourceToIndexFieldMapping&& value) { m_threadFieldMappingsHasBeenSet = true; m_threadFieldMappings.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of <code>DataSourceToIndexFieldMapping</code> objects that map
      * attributes or field names of Quip messages to Amazon Kendra index field names.
@@ -413,86 +149,17 @@ namespace Model
      * data source fields</a>. The Quip field names must exist in your Quip custom
      * metadata.</p>
      */
-    inline const Aws::Vector<DataSourceToIndexFieldMapping>& GetMessageFieldMappings() const{ return m_messageFieldMappings; }
-
-    /**
-     * <p>A list of <code>DataSourceToIndexFieldMapping</code> objects that map
-     * attributes or field names of Quip messages to Amazon Kendra index field names.
-     * To create custom fields, use the <code>UpdateIndex</code> API before you map to
-     * Quip fields. For more information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/field-mapping.html">Mapping
-     * data source fields</a>. The Quip field names must exist in your Quip custom
-     * metadata.</p>
-     */
+    inline const Aws::Vector<DataSourceToIndexFieldMapping>& GetMessageFieldMappings() const { return m_messageFieldMappings; }
     inline bool MessageFieldMappingsHasBeenSet() const { return m_messageFieldMappingsHasBeenSet; }
+    template<typename MessageFieldMappingsT = Aws::Vector<DataSourceToIndexFieldMapping>>
+    void SetMessageFieldMappings(MessageFieldMappingsT&& value) { m_messageFieldMappingsHasBeenSet = true; m_messageFieldMappings = std::forward<MessageFieldMappingsT>(value); }
+    template<typename MessageFieldMappingsT = Aws::Vector<DataSourceToIndexFieldMapping>>
+    QuipConfiguration& WithMessageFieldMappings(MessageFieldMappingsT&& value) { SetMessageFieldMappings(std::forward<MessageFieldMappingsT>(value)); return *this;}
+    template<typename MessageFieldMappingsT = DataSourceToIndexFieldMapping>
+    QuipConfiguration& AddMessageFieldMappings(MessageFieldMappingsT&& value) { m_messageFieldMappingsHasBeenSet = true; m_messageFieldMappings.emplace_back(std::forward<MessageFieldMappingsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of <code>DataSourceToIndexFieldMapping</code> objects that map
-     * attributes or field names of Quip messages to Amazon Kendra index field names.
-     * To create custom fields, use the <code>UpdateIndex</code> API before you map to
-     * Quip fields. For more information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/field-mapping.html">Mapping
-     * data source fields</a>. The Quip field names must exist in your Quip custom
-     * metadata.</p>
-     */
-    inline void SetMessageFieldMappings(const Aws::Vector<DataSourceToIndexFieldMapping>& value) { m_messageFieldMappingsHasBeenSet = true; m_messageFieldMappings = value; }
-
-    /**
-     * <p>A list of <code>DataSourceToIndexFieldMapping</code> objects that map
-     * attributes or field names of Quip messages to Amazon Kendra index field names.
-     * To create custom fields, use the <code>UpdateIndex</code> API before you map to
-     * Quip fields. For more information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/field-mapping.html">Mapping
-     * data source fields</a>. The Quip field names must exist in your Quip custom
-     * metadata.</p>
-     */
-    inline void SetMessageFieldMappings(Aws::Vector<DataSourceToIndexFieldMapping>&& value) { m_messageFieldMappingsHasBeenSet = true; m_messageFieldMappings = std::move(value); }
-
-    /**
-     * <p>A list of <code>DataSourceToIndexFieldMapping</code> objects that map
-     * attributes or field names of Quip messages to Amazon Kendra index field names.
-     * To create custom fields, use the <code>UpdateIndex</code> API before you map to
-     * Quip fields. For more information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/field-mapping.html">Mapping
-     * data source fields</a>. The Quip field names must exist in your Quip custom
-     * metadata.</p>
-     */
-    inline QuipConfiguration& WithMessageFieldMappings(const Aws::Vector<DataSourceToIndexFieldMapping>& value) { SetMessageFieldMappings(value); return *this;}
-
-    /**
-     * <p>A list of <code>DataSourceToIndexFieldMapping</code> objects that map
-     * attributes or field names of Quip messages to Amazon Kendra index field names.
-     * To create custom fields, use the <code>UpdateIndex</code> API before you map to
-     * Quip fields. For more information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/field-mapping.html">Mapping
-     * data source fields</a>. The Quip field names must exist in your Quip custom
-     * metadata.</p>
-     */
-    inline QuipConfiguration& WithMessageFieldMappings(Aws::Vector<DataSourceToIndexFieldMapping>&& value) { SetMessageFieldMappings(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of <code>DataSourceToIndexFieldMapping</code> objects that map
-     * attributes or field names of Quip messages to Amazon Kendra index field names.
-     * To create custom fields, use the <code>UpdateIndex</code> API before you map to
-     * Quip fields. For more information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/field-mapping.html">Mapping
-     * data source fields</a>. The Quip field names must exist in your Quip custom
-     * metadata.</p>
-     */
-    inline QuipConfiguration& AddMessageFieldMappings(const DataSourceToIndexFieldMapping& value) { m_messageFieldMappingsHasBeenSet = true; m_messageFieldMappings.push_back(value); return *this; }
-
-    /**
-     * <p>A list of <code>DataSourceToIndexFieldMapping</code> objects that map
-     * attributes or field names of Quip messages to Amazon Kendra index field names.
-     * To create custom fields, use the <code>UpdateIndex</code> API before you map to
-     * Quip fields. For more information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/field-mapping.html">Mapping
-     * data source fields</a>. The Quip field names must exist in your Quip custom
-     * metadata.</p>
-     */
-    inline QuipConfiguration& AddMessageFieldMappings(DataSourceToIndexFieldMapping&& value) { m_messageFieldMappingsHasBeenSet = true; m_messageFieldMappings.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of <code>DataSourceToIndexFieldMapping</code> objects that map
      * attributes or field names of Quip attachments to Amazon Kendra index field
@@ -502,86 +169,17 @@ namespace Model
      * data source fields</a>. The Quip field names must exist in your Quip custom
      * metadata.</p>
      */
-    inline const Aws::Vector<DataSourceToIndexFieldMapping>& GetAttachmentFieldMappings() const{ return m_attachmentFieldMappings; }
-
-    /**
-     * <p>A list of <code>DataSourceToIndexFieldMapping</code> objects that map
-     * attributes or field names of Quip attachments to Amazon Kendra index field
-     * names. To create custom fields, use the <code>UpdateIndex</code> API before you
-     * map to Quip fields. For more information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/field-mapping.html">Mapping
-     * data source fields</a>. The Quip field names must exist in your Quip custom
-     * metadata.</p>
-     */
+    inline const Aws::Vector<DataSourceToIndexFieldMapping>& GetAttachmentFieldMappings() const { return m_attachmentFieldMappings; }
     inline bool AttachmentFieldMappingsHasBeenSet() const { return m_attachmentFieldMappingsHasBeenSet; }
+    template<typename AttachmentFieldMappingsT = Aws::Vector<DataSourceToIndexFieldMapping>>
+    void SetAttachmentFieldMappings(AttachmentFieldMappingsT&& value) { m_attachmentFieldMappingsHasBeenSet = true; m_attachmentFieldMappings = std::forward<AttachmentFieldMappingsT>(value); }
+    template<typename AttachmentFieldMappingsT = Aws::Vector<DataSourceToIndexFieldMapping>>
+    QuipConfiguration& WithAttachmentFieldMappings(AttachmentFieldMappingsT&& value) { SetAttachmentFieldMappings(std::forward<AttachmentFieldMappingsT>(value)); return *this;}
+    template<typename AttachmentFieldMappingsT = DataSourceToIndexFieldMapping>
+    QuipConfiguration& AddAttachmentFieldMappings(AttachmentFieldMappingsT&& value) { m_attachmentFieldMappingsHasBeenSet = true; m_attachmentFieldMappings.emplace_back(std::forward<AttachmentFieldMappingsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of <code>DataSourceToIndexFieldMapping</code> objects that map
-     * attributes or field names of Quip attachments to Amazon Kendra index field
-     * names. To create custom fields, use the <code>UpdateIndex</code> API before you
-     * map to Quip fields. For more information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/field-mapping.html">Mapping
-     * data source fields</a>. The Quip field names must exist in your Quip custom
-     * metadata.</p>
-     */
-    inline void SetAttachmentFieldMappings(const Aws::Vector<DataSourceToIndexFieldMapping>& value) { m_attachmentFieldMappingsHasBeenSet = true; m_attachmentFieldMappings = value; }
-
-    /**
-     * <p>A list of <code>DataSourceToIndexFieldMapping</code> objects that map
-     * attributes or field names of Quip attachments to Amazon Kendra index field
-     * names. To create custom fields, use the <code>UpdateIndex</code> API before you
-     * map to Quip fields. For more information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/field-mapping.html">Mapping
-     * data source fields</a>. The Quip field names must exist in your Quip custom
-     * metadata.</p>
-     */
-    inline void SetAttachmentFieldMappings(Aws::Vector<DataSourceToIndexFieldMapping>&& value) { m_attachmentFieldMappingsHasBeenSet = true; m_attachmentFieldMappings = std::move(value); }
-
-    /**
-     * <p>A list of <code>DataSourceToIndexFieldMapping</code> objects that map
-     * attributes or field names of Quip attachments to Amazon Kendra index field
-     * names. To create custom fields, use the <code>UpdateIndex</code> API before you
-     * map to Quip fields. For more information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/field-mapping.html">Mapping
-     * data source fields</a>. The Quip field names must exist in your Quip custom
-     * metadata.</p>
-     */
-    inline QuipConfiguration& WithAttachmentFieldMappings(const Aws::Vector<DataSourceToIndexFieldMapping>& value) { SetAttachmentFieldMappings(value); return *this;}
-
-    /**
-     * <p>A list of <code>DataSourceToIndexFieldMapping</code> objects that map
-     * attributes or field names of Quip attachments to Amazon Kendra index field
-     * names. To create custom fields, use the <code>UpdateIndex</code> API before you
-     * map to Quip fields. For more information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/field-mapping.html">Mapping
-     * data source fields</a>. The Quip field names must exist in your Quip custom
-     * metadata.</p>
-     */
-    inline QuipConfiguration& WithAttachmentFieldMappings(Aws::Vector<DataSourceToIndexFieldMapping>&& value) { SetAttachmentFieldMappings(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of <code>DataSourceToIndexFieldMapping</code> objects that map
-     * attributes or field names of Quip attachments to Amazon Kendra index field
-     * names. To create custom fields, use the <code>UpdateIndex</code> API before you
-     * map to Quip fields. For more information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/field-mapping.html">Mapping
-     * data source fields</a>. The Quip field names must exist in your Quip custom
-     * metadata.</p>
-     */
-    inline QuipConfiguration& AddAttachmentFieldMappings(const DataSourceToIndexFieldMapping& value) { m_attachmentFieldMappingsHasBeenSet = true; m_attachmentFieldMappings.push_back(value); return *this; }
-
-    /**
-     * <p>A list of <code>DataSourceToIndexFieldMapping</code> objects that map
-     * attributes or field names of Quip attachments to Amazon Kendra index field
-     * names. To create custom fields, use the <code>UpdateIndex</code> API before you
-     * map to Quip fields. For more information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/field-mapping.html">Mapping
-     * data source fields</a>. The Quip field names must exist in your Quip custom
-     * metadata.</p>
-     */
-    inline QuipConfiguration& AddAttachmentFieldMappings(DataSourceToIndexFieldMapping&& value) { m_attachmentFieldMappingsHasBeenSet = true; m_attachmentFieldMappings.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of regular expression patterns to include certain files in your Quip
      * file system. Files that match the patterns are included in the index. Files that
@@ -589,81 +187,17 @@ namespace Model
      * inclusion pattern and an exclusion pattern, the exclusion pattern takes
      * precedence, and the file isn't included in the index.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetInclusionPatterns() const{ return m_inclusionPatterns; }
-
-    /**
-     * <p>A list of regular expression patterns to include certain files in your Quip
-     * file system. Files that match the patterns are included in the index. Files that
-     * don't match the patterns are excluded from the index. If a file matches both an
-     * inclusion pattern and an exclusion pattern, the exclusion pattern takes
-     * precedence, and the file isn't included in the index.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetInclusionPatterns() const { return m_inclusionPatterns; }
     inline bool InclusionPatternsHasBeenSet() const { return m_inclusionPatternsHasBeenSet; }
+    template<typename InclusionPatternsT = Aws::Vector<Aws::String>>
+    void SetInclusionPatterns(InclusionPatternsT&& value) { m_inclusionPatternsHasBeenSet = true; m_inclusionPatterns = std::forward<InclusionPatternsT>(value); }
+    template<typename InclusionPatternsT = Aws::Vector<Aws::String>>
+    QuipConfiguration& WithInclusionPatterns(InclusionPatternsT&& value) { SetInclusionPatterns(std::forward<InclusionPatternsT>(value)); return *this;}
+    template<typename InclusionPatternsT = Aws::String>
+    QuipConfiguration& AddInclusionPatterns(InclusionPatternsT&& value) { m_inclusionPatternsHasBeenSet = true; m_inclusionPatterns.emplace_back(std::forward<InclusionPatternsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of regular expression patterns to include certain files in your Quip
-     * file system. Files that match the patterns are included in the index. Files that
-     * don't match the patterns are excluded from the index. If a file matches both an
-     * inclusion pattern and an exclusion pattern, the exclusion pattern takes
-     * precedence, and the file isn't included in the index.</p>
-     */
-    inline void SetInclusionPatterns(const Aws::Vector<Aws::String>& value) { m_inclusionPatternsHasBeenSet = true; m_inclusionPatterns = value; }
-
-    /**
-     * <p>A list of regular expression patterns to include certain files in your Quip
-     * file system. Files that match the patterns are included in the index. Files that
-     * don't match the patterns are excluded from the index. If a file matches both an
-     * inclusion pattern and an exclusion pattern, the exclusion pattern takes
-     * precedence, and the file isn't included in the index.</p>
-     */
-    inline void SetInclusionPatterns(Aws::Vector<Aws::String>&& value) { m_inclusionPatternsHasBeenSet = true; m_inclusionPatterns = std::move(value); }
-
-    /**
-     * <p>A list of regular expression patterns to include certain files in your Quip
-     * file system. Files that match the patterns are included in the index. Files that
-     * don't match the patterns are excluded from the index. If a file matches both an
-     * inclusion pattern and an exclusion pattern, the exclusion pattern takes
-     * precedence, and the file isn't included in the index.</p>
-     */
-    inline QuipConfiguration& WithInclusionPatterns(const Aws::Vector<Aws::String>& value) { SetInclusionPatterns(value); return *this;}
-
-    /**
-     * <p>A list of regular expression patterns to include certain files in your Quip
-     * file system. Files that match the patterns are included in the index. Files that
-     * don't match the patterns are excluded from the index. If a file matches both an
-     * inclusion pattern and an exclusion pattern, the exclusion pattern takes
-     * precedence, and the file isn't included in the index.</p>
-     */
-    inline QuipConfiguration& WithInclusionPatterns(Aws::Vector<Aws::String>&& value) { SetInclusionPatterns(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of regular expression patterns to include certain files in your Quip
-     * file system. Files that match the patterns are included in the index. Files that
-     * don't match the patterns are excluded from the index. If a file matches both an
-     * inclusion pattern and an exclusion pattern, the exclusion pattern takes
-     * precedence, and the file isn't included in the index.</p>
-     */
-    inline QuipConfiguration& AddInclusionPatterns(const Aws::String& value) { m_inclusionPatternsHasBeenSet = true; m_inclusionPatterns.push_back(value); return *this; }
-
-    /**
-     * <p>A list of regular expression patterns to include certain files in your Quip
-     * file system. Files that match the patterns are included in the index. Files that
-     * don't match the patterns are excluded from the index. If a file matches both an
-     * inclusion pattern and an exclusion pattern, the exclusion pattern takes
-     * precedence, and the file isn't included in the index.</p>
-     */
-    inline QuipConfiguration& AddInclusionPatterns(Aws::String&& value) { m_inclusionPatternsHasBeenSet = true; m_inclusionPatterns.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of regular expression patterns to include certain files in your Quip
-     * file system. Files that match the patterns are included in the index. Files that
-     * don't match the patterns are excluded from the index. If a file matches both an
-     * inclusion pattern and an exclusion pattern, the exclusion pattern takes
-     * precedence, and the file isn't included in the index.</p>
-     */
-    inline QuipConfiguration& AddInclusionPatterns(const char* value) { m_inclusionPatternsHasBeenSet = true; m_inclusionPatterns.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of regular expression patterns to exclude certain files in your Quip
      * file system. Files that match the patterns are excluded from the index. Files
@@ -671,129 +205,30 @@ namespace Model
      * an inclusion pattern and an exclusion pattern, the exclusion pattern takes
      * precedence, and the file isn't included in the index.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetExclusionPatterns() const{ return m_exclusionPatterns; }
-
-    /**
-     * <p>A list of regular expression patterns to exclude certain files in your Quip
-     * file system. Files that match the patterns are excluded from the index. Files
-     * that don’t match the patterns are included in the index. If a file matches both
-     * an inclusion pattern and an exclusion pattern, the exclusion pattern takes
-     * precedence, and the file isn't included in the index.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetExclusionPatterns() const { return m_exclusionPatterns; }
     inline bool ExclusionPatternsHasBeenSet() const { return m_exclusionPatternsHasBeenSet; }
+    template<typename ExclusionPatternsT = Aws::Vector<Aws::String>>
+    void SetExclusionPatterns(ExclusionPatternsT&& value) { m_exclusionPatternsHasBeenSet = true; m_exclusionPatterns = std::forward<ExclusionPatternsT>(value); }
+    template<typename ExclusionPatternsT = Aws::Vector<Aws::String>>
+    QuipConfiguration& WithExclusionPatterns(ExclusionPatternsT&& value) { SetExclusionPatterns(std::forward<ExclusionPatternsT>(value)); return *this;}
+    template<typename ExclusionPatternsT = Aws::String>
+    QuipConfiguration& AddExclusionPatterns(ExclusionPatternsT&& value) { m_exclusionPatternsHasBeenSet = true; m_exclusionPatterns.emplace_back(std::forward<ExclusionPatternsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of regular expression patterns to exclude certain files in your Quip
-     * file system. Files that match the patterns are excluded from the index. Files
-     * that don’t match the patterns are included in the index. If a file matches both
-     * an inclusion pattern and an exclusion pattern, the exclusion pattern takes
-     * precedence, and the file isn't included in the index.</p>
-     */
-    inline void SetExclusionPatterns(const Aws::Vector<Aws::String>& value) { m_exclusionPatternsHasBeenSet = true; m_exclusionPatterns = value; }
-
-    /**
-     * <p>A list of regular expression patterns to exclude certain files in your Quip
-     * file system. Files that match the patterns are excluded from the index. Files
-     * that don’t match the patterns are included in the index. If a file matches both
-     * an inclusion pattern and an exclusion pattern, the exclusion pattern takes
-     * precedence, and the file isn't included in the index.</p>
-     */
-    inline void SetExclusionPatterns(Aws::Vector<Aws::String>&& value) { m_exclusionPatternsHasBeenSet = true; m_exclusionPatterns = std::move(value); }
-
-    /**
-     * <p>A list of regular expression patterns to exclude certain files in your Quip
-     * file system. Files that match the patterns are excluded from the index. Files
-     * that don’t match the patterns are included in the index. If a file matches both
-     * an inclusion pattern and an exclusion pattern, the exclusion pattern takes
-     * precedence, and the file isn't included in the index.</p>
-     */
-    inline QuipConfiguration& WithExclusionPatterns(const Aws::Vector<Aws::String>& value) { SetExclusionPatterns(value); return *this;}
-
-    /**
-     * <p>A list of regular expression patterns to exclude certain files in your Quip
-     * file system. Files that match the patterns are excluded from the index. Files
-     * that don’t match the patterns are included in the index. If a file matches both
-     * an inclusion pattern and an exclusion pattern, the exclusion pattern takes
-     * precedence, and the file isn't included in the index.</p>
-     */
-    inline QuipConfiguration& WithExclusionPatterns(Aws::Vector<Aws::String>&& value) { SetExclusionPatterns(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of regular expression patterns to exclude certain files in your Quip
-     * file system. Files that match the patterns are excluded from the index. Files
-     * that don’t match the patterns are included in the index. If a file matches both
-     * an inclusion pattern and an exclusion pattern, the exclusion pattern takes
-     * precedence, and the file isn't included in the index.</p>
-     */
-    inline QuipConfiguration& AddExclusionPatterns(const Aws::String& value) { m_exclusionPatternsHasBeenSet = true; m_exclusionPatterns.push_back(value); return *this; }
-
-    /**
-     * <p>A list of regular expression patterns to exclude certain files in your Quip
-     * file system. Files that match the patterns are excluded from the index. Files
-     * that don’t match the patterns are included in the index. If a file matches both
-     * an inclusion pattern and an exclusion pattern, the exclusion pattern takes
-     * precedence, and the file isn't included in the index.</p>
-     */
-    inline QuipConfiguration& AddExclusionPatterns(Aws::String&& value) { m_exclusionPatternsHasBeenSet = true; m_exclusionPatterns.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of regular expression patterns to exclude certain files in your Quip
-     * file system. Files that match the patterns are excluded from the index. Files
-     * that don’t match the patterns are included in the index. If a file matches both
-     * an inclusion pattern and an exclusion pattern, the exclusion pattern takes
-     * precedence, and the file isn't included in the index.</p>
-     */
-    inline QuipConfiguration& AddExclusionPatterns(const char* value) { m_exclusionPatternsHasBeenSet = true; m_exclusionPatterns.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>Configuration information for an Amazon Virtual Private Cloud (VPC) to
      * connect to your Quip. For more information, see <a
      * href="https://docs.aws.amazon.com/kendra/latest/dg/vpc-configuration.html">Configuring
      * a VPC</a>.</p>
      */
-    inline const DataSourceVpcConfiguration& GetVpcConfiguration() const{ return m_vpcConfiguration; }
-
-    /**
-     * <p>Configuration information for an Amazon Virtual Private Cloud (VPC) to
-     * connect to your Quip. For more information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/vpc-configuration.html">Configuring
-     * a VPC</a>.</p>
-     */
+    inline const DataSourceVpcConfiguration& GetVpcConfiguration() const { return m_vpcConfiguration; }
     inline bool VpcConfigurationHasBeenSet() const { return m_vpcConfigurationHasBeenSet; }
-
-    /**
-     * <p>Configuration information for an Amazon Virtual Private Cloud (VPC) to
-     * connect to your Quip. For more information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/vpc-configuration.html">Configuring
-     * a VPC</a>.</p>
-     */
-    inline void SetVpcConfiguration(const DataSourceVpcConfiguration& value) { m_vpcConfigurationHasBeenSet = true; m_vpcConfiguration = value; }
-
-    /**
-     * <p>Configuration information for an Amazon Virtual Private Cloud (VPC) to
-     * connect to your Quip. For more information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/vpc-configuration.html">Configuring
-     * a VPC</a>.</p>
-     */
-    inline void SetVpcConfiguration(DataSourceVpcConfiguration&& value) { m_vpcConfigurationHasBeenSet = true; m_vpcConfiguration = std::move(value); }
-
-    /**
-     * <p>Configuration information for an Amazon Virtual Private Cloud (VPC) to
-     * connect to your Quip. For more information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/vpc-configuration.html">Configuring
-     * a VPC</a>.</p>
-     */
-    inline QuipConfiguration& WithVpcConfiguration(const DataSourceVpcConfiguration& value) { SetVpcConfiguration(value); return *this;}
-
-    /**
-     * <p>Configuration information for an Amazon Virtual Private Cloud (VPC) to
-     * connect to your Quip. For more information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/vpc-configuration.html">Configuring
-     * a VPC</a>.</p>
-     */
-    inline QuipConfiguration& WithVpcConfiguration(DataSourceVpcConfiguration&& value) { SetVpcConfiguration(std::move(value)); return *this;}
-
+    template<typename VpcConfigurationT = DataSourceVpcConfiguration>
+    void SetVpcConfiguration(VpcConfigurationT&& value) { m_vpcConfigurationHasBeenSet = true; m_vpcConfiguration = std::forward<VpcConfigurationT>(value); }
+    template<typename VpcConfigurationT = DataSourceVpcConfiguration>
+    QuipConfiguration& WithVpcConfiguration(VpcConfigurationT&& value) { SetVpcConfiguration(std::forward<VpcConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_domain;
@@ -802,13 +237,13 @@ namespace Model
     Aws::String m_secretArn;
     bool m_secretArnHasBeenSet = false;
 
-    bool m_crawlFileComments;
+    bool m_crawlFileComments{false};
     bool m_crawlFileCommentsHasBeenSet = false;
 
-    bool m_crawlChatRooms;
+    bool m_crawlChatRooms{false};
     bool m_crawlChatRoomsHasBeenSet = false;
 
-    bool m_crawlAttachments;
+    bool m_crawlAttachments{false};
     bool m_crawlAttachmentsHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_folderIds;

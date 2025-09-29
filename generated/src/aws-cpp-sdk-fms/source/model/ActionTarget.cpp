@@ -18,15 +18,7 @@ namespace FMS
 namespace Model
 {
 
-ActionTarget::ActionTarget() : 
-    m_resourceIdHasBeenSet(false),
-    m_descriptionHasBeenSet(false)
-{
-}
-
-ActionTarget::ActionTarget(JsonView jsonValue) : 
-    m_resourceIdHasBeenSet(false),
-    m_descriptionHasBeenSet(false)
+ActionTarget::ActionTarget(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ActionTarget& ActionTarget::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ResourceId"))
   {
     m_resourceId = jsonValue.GetString("ResourceId");
-
     m_resourceIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Description"))
   {
     m_description = jsonValue.GetString("Description");
-
     m_descriptionHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,17 +18,7 @@ namespace ServerlessApplicationRepository
 namespace Model
 {
 
-RollbackConfiguration::RollbackConfiguration() : 
-    m_monitoringTimeInMinutes(0),
-    m_monitoringTimeInMinutesHasBeenSet(false),
-    m_rollbackTriggersHasBeenSet(false)
-{
-}
-
-RollbackConfiguration::RollbackConfiguration(JsonView jsonValue) : 
-    m_monitoringTimeInMinutes(0),
-    m_monitoringTimeInMinutesHasBeenSet(false),
-    m_rollbackTriggersHasBeenSet(false)
+RollbackConfiguration::RollbackConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ RollbackConfiguration& RollbackConfiguration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("monitoringTimeInMinutes"))
   {
     m_monitoringTimeInMinutes = jsonValue.GetInteger("monitoringTimeInMinutes");
-
     m_monitoringTimeInMinutesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("rollbackTriggers"))
   {
     Aws::Utils::Array<JsonView> rollbackTriggersJsonList = jsonValue.GetArray("rollbackTriggers");
@@ -51,7 +39,6 @@ RollbackConfiguration& RollbackConfiguration::operator =(JsonView jsonValue)
     }
     m_rollbackTriggersHasBeenSet = true;
   }
-
   return *this;
 }
 

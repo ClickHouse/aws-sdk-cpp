@@ -36,116 +36,54 @@ namespace Model
   class GetSolFunctionPackageMetadata
   {
   public:
-    AWS_TNB_API GetSolFunctionPackageMetadata();
+    AWS_TNB_API GetSolFunctionPackageMetadata() = default;
     AWS_TNB_API GetSolFunctionPackageMetadata(Aws::Utils::Json::JsonView jsonValue);
     AWS_TNB_API GetSolFunctionPackageMetadata& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_TNB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The date that the resource was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedAt() const{ return m_createdAt; }
-
-    /**
-     * <p>The date that the resource was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedAt() const { return m_createdAt; }
     inline bool CreatedAtHasBeenSet() const { return m_createdAtHasBeenSet; }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    void SetCreatedAt(CreatedAtT&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::forward<CreatedAtT>(value); }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    GetSolFunctionPackageMetadata& WithCreatedAt(CreatedAtT&& value) { SetCreatedAt(std::forward<CreatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date that the resource was created.</p>
-     */
-    inline void SetCreatedAt(const Aws::Utils::DateTime& value) { m_createdAtHasBeenSet = true; m_createdAt = value; }
-
-    /**
-     * <p>The date that the resource was created.</p>
-     */
-    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::move(value); }
-
-    /**
-     * <p>The date that the resource was created.</p>
-     */
-    inline GetSolFunctionPackageMetadata& WithCreatedAt(const Aws::Utils::DateTime& value) { SetCreatedAt(value); return *this;}
-
-    /**
-     * <p>The date that the resource was created.</p>
-     */
-    inline GetSolFunctionPackageMetadata& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date that the resource was last modified.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastModified() const{ return m_lastModified; }
-
-    /**
-     * <p>The date that the resource was last modified.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastModified() const { return m_lastModified; }
     inline bool LastModifiedHasBeenSet() const { return m_lastModifiedHasBeenSet; }
+    template<typename LastModifiedT = Aws::Utils::DateTime>
+    void SetLastModified(LastModifiedT&& value) { m_lastModifiedHasBeenSet = true; m_lastModified = std::forward<LastModifiedT>(value); }
+    template<typename LastModifiedT = Aws::Utils::DateTime>
+    GetSolFunctionPackageMetadata& WithLastModified(LastModifiedT&& value) { SetLastModified(std::forward<LastModifiedT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date that the resource was last modified.</p>
-     */
-    inline void SetLastModified(const Aws::Utils::DateTime& value) { m_lastModifiedHasBeenSet = true; m_lastModified = value; }
-
-    /**
-     * <p>The date that the resource was last modified.</p>
-     */
-    inline void SetLastModified(Aws::Utils::DateTime&& value) { m_lastModifiedHasBeenSet = true; m_lastModified = std::move(value); }
-
-    /**
-     * <p>The date that the resource was last modified.</p>
-     */
-    inline GetSolFunctionPackageMetadata& WithLastModified(const Aws::Utils::DateTime& value) { SetLastModified(value); return *this;}
-
-    /**
-     * <p>The date that the resource was last modified.</p>
-     */
-    inline GetSolFunctionPackageMetadata& WithLastModified(Aws::Utils::DateTime&& value) { SetLastModified(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Metadata related to the function package descriptor of the function
      * package.</p>
      */
-    inline const FunctionArtifactMeta& GetVnfd() const{ return m_vnfd; }
-
-    /**
-     * <p>Metadata related to the function package descriptor of the function
-     * package.</p>
-     */
+    inline const FunctionArtifactMeta& GetVnfd() const { return m_vnfd; }
     inline bool VnfdHasBeenSet() const { return m_vnfdHasBeenSet; }
-
-    /**
-     * <p>Metadata related to the function package descriptor of the function
-     * package.</p>
-     */
-    inline void SetVnfd(const FunctionArtifactMeta& value) { m_vnfdHasBeenSet = true; m_vnfd = value; }
-
-    /**
-     * <p>Metadata related to the function package descriptor of the function
-     * package.</p>
-     */
-    inline void SetVnfd(FunctionArtifactMeta&& value) { m_vnfdHasBeenSet = true; m_vnfd = std::move(value); }
-
-    /**
-     * <p>Metadata related to the function package descriptor of the function
-     * package.</p>
-     */
-    inline GetSolFunctionPackageMetadata& WithVnfd(const FunctionArtifactMeta& value) { SetVnfd(value); return *this;}
-
-    /**
-     * <p>Metadata related to the function package descriptor of the function
-     * package.</p>
-     */
-    inline GetSolFunctionPackageMetadata& WithVnfd(FunctionArtifactMeta&& value) { SetVnfd(std::move(value)); return *this;}
-
+    template<typename VnfdT = FunctionArtifactMeta>
+    void SetVnfd(VnfdT&& value) { m_vnfdHasBeenSet = true; m_vnfd = std::forward<VnfdT>(value); }
+    template<typename VnfdT = FunctionArtifactMeta>
+    GetSolFunctionPackageMetadata& WithVnfd(VnfdT&& value) { SetVnfd(std::forward<VnfdT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::Utils::DateTime m_createdAt;
+    Aws::Utils::DateTime m_createdAt{};
     bool m_createdAtHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastModified;
+    Aws::Utils::DateTime m_lastModified{};
     bool m_lastModifiedHasBeenSet = false;
 
     FunctionArtifactMeta m_vnfd;

@@ -32,48 +32,24 @@ namespace Model
   class ScalingPolicy
   {
   public:
-    AWS_SAGEMAKER_API ScalingPolicy();
+    AWS_SAGEMAKER_API ScalingPolicy() = default;
     AWS_SAGEMAKER_API ScalingPolicy(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API ScalingPolicy& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A target tracking scaling policy. Includes support for predefined or
      * customized metrics.</p>
      */
-    inline const TargetTrackingScalingPolicyConfiguration& GetTargetTracking() const{ return m_targetTracking; }
-
-    /**
-     * <p>A target tracking scaling policy. Includes support for predefined or
-     * customized metrics.</p>
-     */
+    inline const TargetTrackingScalingPolicyConfiguration& GetTargetTracking() const { return m_targetTracking; }
     inline bool TargetTrackingHasBeenSet() const { return m_targetTrackingHasBeenSet; }
-
-    /**
-     * <p>A target tracking scaling policy. Includes support for predefined or
-     * customized metrics.</p>
-     */
-    inline void SetTargetTracking(const TargetTrackingScalingPolicyConfiguration& value) { m_targetTrackingHasBeenSet = true; m_targetTracking = value; }
-
-    /**
-     * <p>A target tracking scaling policy. Includes support for predefined or
-     * customized metrics.</p>
-     */
-    inline void SetTargetTracking(TargetTrackingScalingPolicyConfiguration&& value) { m_targetTrackingHasBeenSet = true; m_targetTracking = std::move(value); }
-
-    /**
-     * <p>A target tracking scaling policy. Includes support for predefined or
-     * customized metrics.</p>
-     */
-    inline ScalingPolicy& WithTargetTracking(const TargetTrackingScalingPolicyConfiguration& value) { SetTargetTracking(value); return *this;}
-
-    /**
-     * <p>A target tracking scaling policy. Includes support for predefined or
-     * customized metrics.</p>
-     */
-    inline ScalingPolicy& WithTargetTracking(TargetTrackingScalingPolicyConfiguration&& value) { SetTargetTracking(std::move(value)); return *this;}
-
+    template<typename TargetTrackingT = TargetTrackingScalingPolicyConfiguration>
+    void SetTargetTracking(TargetTrackingT&& value) { m_targetTrackingHasBeenSet = true; m_targetTracking = std::forward<TargetTrackingT>(value); }
+    template<typename TargetTrackingT = TargetTrackingScalingPolicyConfiguration>
+    ScalingPolicy& WithTargetTracking(TargetTrackingT&& value) { SetTargetTracking(std::forward<TargetTrackingT>(value)); return *this;}
+    ///@}
   private:
 
     TargetTrackingScalingPolicyConfiguration m_targetTracking;

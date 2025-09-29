@@ -15,18 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-ListOrganizationRecommendationResourcesRequest::ListOrganizationRecommendationResourcesRequest() : 
-    m_affectedAccountIdHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_organizationRecommendationIdentifierHasBeenSet(false),
-    m_regionCodeHasBeenSet(false),
-    m_status(ResourceStatus::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
 Aws::String ListOrganizationRecommendationResourcesRequest::SerializePayload() const
 {
   return {};
@@ -39,6 +27,13 @@ void ListOrganizationRecommendationResourcesRequest::AddQueryStringParameters(UR
     {
       ss << m_affectedAccountId;
       uri.AddQueryStringParameter("affectedAccountId", ss.str());
+      ss.str("");
+    }
+
+    if(m_exclusionStatusHasBeenSet)
+    {
+      ss << ExclusionStatusMapper::GetNameForExclusionStatus(m_exclusionStatus);
+      uri.AddQueryStringParameter("exclusionStatus", ss.str());
       ss.str("");
     }
 

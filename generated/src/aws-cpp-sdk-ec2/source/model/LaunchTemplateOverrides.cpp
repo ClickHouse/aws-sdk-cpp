@@ -20,31 +20,7 @@ namespace EC2
 namespace Model
 {
 
-LaunchTemplateOverrides::LaunchTemplateOverrides() : 
-    m_instanceType(InstanceType::NOT_SET),
-    m_instanceTypeHasBeenSet(false),
-    m_spotPriceHasBeenSet(false),
-    m_subnetIdHasBeenSet(false),
-    m_availabilityZoneHasBeenSet(false),
-    m_weightedCapacity(0.0),
-    m_weightedCapacityHasBeenSet(false),
-    m_priority(0.0),
-    m_priorityHasBeenSet(false),
-    m_instanceRequirementsHasBeenSet(false)
-{
-}
-
-LaunchTemplateOverrides::LaunchTemplateOverrides(const XmlNode& xmlNode) : 
-    m_instanceType(InstanceType::NOT_SET),
-    m_instanceTypeHasBeenSet(false),
-    m_spotPriceHasBeenSet(false),
-    m_subnetIdHasBeenSet(false),
-    m_availabilityZoneHasBeenSet(false),
-    m_weightedCapacity(0.0),
-    m_weightedCapacityHasBeenSet(false),
-    m_priority(0.0),
-    m_priorityHasBeenSet(false),
-    m_instanceRequirementsHasBeenSet(false)
+LaunchTemplateOverrides::LaunchTemplateOverrides(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -58,7 +34,7 @@ LaunchTemplateOverrides& LaunchTemplateOverrides::operator =(const XmlNode& xmlN
     XmlNode instanceTypeNode = resultNode.FirstChild("instanceType");
     if(!instanceTypeNode.IsNull())
     {
-      m_instanceType = InstanceTypeMapper::GetInstanceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(instanceTypeNode.GetText()).c_str()).c_str());
+      m_instanceType = InstanceTypeMapper::GetInstanceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(instanceTypeNode.GetText()).c_str()));
       m_instanceTypeHasBeenSet = true;
     }
     XmlNode spotPriceNode = resultNode.FirstChild("spotPrice");
@@ -106,7 +82,7 @@ void LaunchTemplateOverrides::OutputToStream(Aws::OStream& oStream, const char* 
 {
   if(m_instanceTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".InstanceType=" << InstanceTypeMapper::GetNameForInstanceType(m_instanceType) << "&";
+      oStream << location << index << locationValue << ".InstanceType=" << StringUtils::URLEncode(InstanceTypeMapper::GetNameForInstanceType(m_instanceType)) << "&";
   }
 
   if(m_spotPriceHasBeenSet)
@@ -147,7 +123,7 @@ void LaunchTemplateOverrides::OutputToStream(Aws::OStream& oStream, const char* 
 {
   if(m_instanceTypeHasBeenSet)
   {
-      oStream << location << ".InstanceType=" << InstanceTypeMapper::GetNameForInstanceType(m_instanceType) << "&";
+      oStream << location << ".InstanceType=" << StringUtils::URLEncode(InstanceTypeMapper::GetNameForInstanceType(m_instanceType)) << "&";
   }
   if(m_spotPriceHasBeenSet)
   {
@@ -163,11 +139,11 @@ void LaunchTemplateOverrides::OutputToStream(Aws::OStream& oStream, const char* 
   }
   if(m_weightedCapacityHasBeenSet)
   {
-        oStream << location << ".WeightedCapacity=" << StringUtils::URLEncode(m_weightedCapacity) << "&";
+      oStream << location << ".WeightedCapacity=" << StringUtils::URLEncode(m_weightedCapacity) << "&";
   }
   if(m_priorityHasBeenSet)
   {
-        oStream << location << ".Priority=" << StringUtils::URLEncode(m_priority) << "&";
+      oStream << location << ".Priority=" << StringUtils::URLEncode(m_priority) << "&";
   }
   if(m_instanceRequirementsHasBeenSet)
   {

@@ -18,37 +18,23 @@ namespace SSOAdmin
 namespace Model
 {
 
-GrantItem::GrantItem() : 
-    m_grantHasBeenSet(false),
-    m_grantType(GrantType::NOT_SET),
-    m_grantTypeHasBeenSet(false)
-{
-}
-
-GrantItem::GrantItem(JsonView jsonValue) : 
-    m_grantHasBeenSet(false),
-    m_grantType(GrantType::NOT_SET),
-    m_grantTypeHasBeenSet(false)
+GrantItem::GrantItem(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 GrantItem& GrantItem::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("Grant"))
-  {
-    m_grant = jsonValue.GetObject("Grant");
-
-    m_grantHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("GrantType"))
   {
     m_grantType = GrantTypeMapper::GetGrantTypeForName(jsonValue.GetString("GrantType"));
-
     m_grantTypeHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("Grant"))
+  {
+    m_grant = jsonValue.GetObject("Grant");
+    m_grantHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -56,15 +42,15 @@ JsonValue GrantItem::Jsonize() const
 {
   JsonValue payload;
 
+  if(m_grantTypeHasBeenSet)
+  {
+   payload.WithString("GrantType", GrantTypeMapper::GetNameForGrantType(m_grantType));
+  }
+
   if(m_grantHasBeenSet)
   {
    payload.WithObject("Grant", m_grant.Jsonize());
 
-  }
-
-  if(m_grantTypeHasBeenSet)
-  {
-   payload.WithString("GrantType", GrantTypeMapper::GetNameForGrantType(m_grantType));
   }
 
   return payload;

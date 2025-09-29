@@ -12,17 +12,6 @@ using namespace Aws::Route53Domains::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateDomainContactPrivacyRequest::UpdateDomainContactPrivacyRequest() : 
-    m_domainNameHasBeenSet(false),
-    m_adminPrivacy(false),
-    m_adminPrivacyHasBeenSet(false),
-    m_registrantPrivacy(false),
-    m_registrantPrivacyHasBeenSet(false),
-    m_techPrivacy(false),
-    m_techPrivacyHasBeenSet(false)
-{
-}
-
 Aws::String UpdateDomainContactPrivacyRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -48,6 +37,12 @@ Aws::String UpdateDomainContactPrivacyRequest::SerializePayload() const
   if(m_techPrivacyHasBeenSet)
   {
    payload.WithBool("TechPrivacy", m_techPrivacy);
+
+  }
+
+  if(m_billingPrivacyHasBeenSet)
+  {
+   payload.WithBool("BillingPrivacy", m_billingPrivacy);
 
   }
 

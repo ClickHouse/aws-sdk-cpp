@@ -18,15 +18,7 @@ namespace MarketplaceCatalog
 namespace Model
 {
 
-ResaleAuthorizationResellerLegalNameFilter::ResaleAuthorizationResellerLegalNameFilter() : 
-    m_valueListHasBeenSet(false),
-    m_wildCardValueHasBeenSet(false)
-{
-}
-
-ResaleAuthorizationResellerLegalNameFilter::ResaleAuthorizationResellerLegalNameFilter(JsonView jsonValue) : 
-    m_valueListHasBeenSet(false),
-    m_wildCardValueHasBeenSet(false)
+ResaleAuthorizationResellerLegalNameFilter::ResaleAuthorizationResellerLegalNameFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ ResaleAuthorizationResellerLegalNameFilter& ResaleAuthorizationResellerLegalName
     }
     m_valueListHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("WildCardValue"))
   {
     m_wildCardValue = jsonValue.GetString("WildCardValue");
-
     m_wildCardValueHasBeenSet = true;
   }
-
   return *this;
 }
 

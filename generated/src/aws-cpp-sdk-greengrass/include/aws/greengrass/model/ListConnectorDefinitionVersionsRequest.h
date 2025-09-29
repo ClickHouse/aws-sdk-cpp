@@ -25,7 +25,7 @@ namespace Model
   class ListConnectorDefinitionVersionsRequest : public GreengrassRequest
   {
   public:
-    AWS_GREENGRASS_API ListConnectorDefinitionVersionsRequest();
+    AWS_GREENGRASS_API ListConnectorDefinitionVersionsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,136 +38,42 @@ namespace Model
     AWS_GREENGRASS_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * The ID of the connector definition.
      */
-    inline const Aws::String& GetConnectorDefinitionId() const{ return m_connectorDefinitionId; }
-
-    /**
-     * The ID of the connector definition.
-     */
+    inline const Aws::String& GetConnectorDefinitionId() const { return m_connectorDefinitionId; }
     inline bool ConnectorDefinitionIdHasBeenSet() const { return m_connectorDefinitionIdHasBeenSet; }
+    template<typename ConnectorDefinitionIdT = Aws::String>
+    void SetConnectorDefinitionId(ConnectorDefinitionIdT&& value) { m_connectorDefinitionIdHasBeenSet = true; m_connectorDefinitionId = std::forward<ConnectorDefinitionIdT>(value); }
+    template<typename ConnectorDefinitionIdT = Aws::String>
+    ListConnectorDefinitionVersionsRequest& WithConnectorDefinitionId(ConnectorDefinitionIdT&& value) { SetConnectorDefinitionId(std::forward<ConnectorDefinitionIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The ID of the connector definition.
-     */
-    inline void SetConnectorDefinitionId(const Aws::String& value) { m_connectorDefinitionIdHasBeenSet = true; m_connectorDefinitionId = value; }
-
-    /**
-     * The ID of the connector definition.
-     */
-    inline void SetConnectorDefinitionId(Aws::String&& value) { m_connectorDefinitionIdHasBeenSet = true; m_connectorDefinitionId = std::move(value); }
-
-    /**
-     * The ID of the connector definition.
-     */
-    inline void SetConnectorDefinitionId(const char* value) { m_connectorDefinitionIdHasBeenSet = true; m_connectorDefinitionId.assign(value); }
-
-    /**
-     * The ID of the connector definition.
-     */
-    inline ListConnectorDefinitionVersionsRequest& WithConnectorDefinitionId(const Aws::String& value) { SetConnectorDefinitionId(value); return *this;}
-
-    /**
-     * The ID of the connector definition.
-     */
-    inline ListConnectorDefinitionVersionsRequest& WithConnectorDefinitionId(Aws::String&& value) { SetConnectorDefinitionId(std::move(value)); return *this;}
-
-    /**
-     * The ID of the connector definition.
-     */
-    inline ListConnectorDefinitionVersionsRequest& WithConnectorDefinitionId(const char* value) { SetConnectorDefinitionId(value); return *this;}
-
-
+    ///@{
     /**
      * The maximum number of results to be returned per request.
      */
-    inline const Aws::String& GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * The maximum number of results to be returned per request.
-     */
+    inline const Aws::String& GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
+    template<typename MaxResultsT = Aws::String>
+    void SetMaxResults(MaxResultsT&& value) { m_maxResultsHasBeenSet = true; m_maxResults = std::forward<MaxResultsT>(value); }
+    template<typename MaxResultsT = Aws::String>
+    ListConnectorDefinitionVersionsRequest& WithMaxResults(MaxResultsT&& value) { SetMaxResults(std::forward<MaxResultsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The maximum number of results to be returned per request.
-     */
-    inline void SetMaxResults(const Aws::String& value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * The maximum number of results to be returned per request.
-     */
-    inline void SetMaxResults(Aws::String&& value) { m_maxResultsHasBeenSet = true; m_maxResults = std::move(value); }
-
-    /**
-     * The maximum number of results to be returned per request.
-     */
-    inline void SetMaxResults(const char* value) { m_maxResultsHasBeenSet = true; m_maxResults.assign(value); }
-
-    /**
-     * The maximum number of results to be returned per request.
-     */
-    inline ListConnectorDefinitionVersionsRequest& WithMaxResults(const Aws::String& value) { SetMaxResults(value); return *this;}
-
-    /**
-     * The maximum number of results to be returned per request.
-     */
-    inline ListConnectorDefinitionVersionsRequest& WithMaxResults(Aws::String&& value) { SetMaxResults(std::move(value)); return *this;}
-
-    /**
-     * The maximum number of results to be returned per request.
-     */
-    inline ListConnectorDefinitionVersionsRequest& WithMaxResults(const char* value) { SetMaxResults(value); return *this;}
-
-
+    ///@{
     /**
      * The token for the next set of results, or ''null'' if there are no additional
      * results.
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * The token for the next set of results, or ''null'' if there are no additional
-     * results.
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
-
-    /**
-     * The token for the next set of results, or ''null'' if there are no additional
-     * results.
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * The token for the next set of results, or ''null'' if there are no additional
-     * results.
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * The token for the next set of results, or ''null'' if there are no additional
-     * results.
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * The token for the next set of results, or ''null'' if there are no additional
-     * results.
-     */
-    inline ListConnectorDefinitionVersionsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * The token for the next set of results, or ''null'' if there are no additional
-     * results.
-     */
-    inline ListConnectorDefinitionVersionsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * The token for the next set of results, or ''null'' if there are no additional
-     * results.
-     */
-    inline ListConnectorDefinitionVersionsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListConnectorDefinitionVersionsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_connectorDefinitionId;

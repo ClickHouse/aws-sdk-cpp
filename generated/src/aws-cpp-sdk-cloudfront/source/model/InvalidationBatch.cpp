@@ -20,15 +20,7 @@ namespace CloudFront
 namespace Model
 {
 
-InvalidationBatch::InvalidationBatch() : 
-    m_pathsHasBeenSet(false),
-    m_callerReferenceHasBeenSet(false)
-{
-}
-
-InvalidationBatch::InvalidationBatch(const XmlNode& xmlNode) : 
-    m_pathsHasBeenSet(false),
-    m_callerReferenceHasBeenSet(false)
+InvalidationBatch::InvalidationBatch(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

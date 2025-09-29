@@ -32,80 +32,57 @@ namespace Model
   class CanaryRunTimeline
   {
   public:
-    AWS_SYNTHETICS_API CanaryRunTimeline();
+    AWS_SYNTHETICS_API CanaryRunTimeline() = default;
     AWS_SYNTHETICS_API CanaryRunTimeline(Aws::Utils::Json::JsonView jsonValue);
     AWS_SYNTHETICS_API CanaryRunTimeline& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SYNTHETICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The start time of the run.</p>
      */
-    inline const Aws::Utils::DateTime& GetStarted() const{ return m_started; }
-
-    /**
-     * <p>The start time of the run.</p>
-     */
+    inline const Aws::Utils::DateTime& GetStarted() const { return m_started; }
     inline bool StartedHasBeenSet() const { return m_startedHasBeenSet; }
+    template<typename StartedT = Aws::Utils::DateTime>
+    void SetStarted(StartedT&& value) { m_startedHasBeenSet = true; m_started = std::forward<StartedT>(value); }
+    template<typename StartedT = Aws::Utils::DateTime>
+    CanaryRunTimeline& WithStarted(StartedT&& value) { SetStarted(std::forward<StartedT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The start time of the run.</p>
-     */
-    inline void SetStarted(const Aws::Utils::DateTime& value) { m_startedHasBeenSet = true; m_started = value; }
-
-    /**
-     * <p>The start time of the run.</p>
-     */
-    inline void SetStarted(Aws::Utils::DateTime&& value) { m_startedHasBeenSet = true; m_started = std::move(value); }
-
-    /**
-     * <p>The start time of the run.</p>
-     */
-    inline CanaryRunTimeline& WithStarted(const Aws::Utils::DateTime& value) { SetStarted(value); return *this;}
-
-    /**
-     * <p>The start time of the run.</p>
-     */
-    inline CanaryRunTimeline& WithStarted(Aws::Utils::DateTime&& value) { SetStarted(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The end time of the run.</p>
      */
-    inline const Aws::Utils::DateTime& GetCompleted() const{ return m_completed; }
-
-    /**
-     * <p>The end time of the run.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCompleted() const { return m_completed; }
     inline bool CompletedHasBeenSet() const { return m_completedHasBeenSet; }
+    template<typename CompletedT = Aws::Utils::DateTime>
+    void SetCompleted(CompletedT&& value) { m_completedHasBeenSet = true; m_completed = std::forward<CompletedT>(value); }
+    template<typename CompletedT = Aws::Utils::DateTime>
+    CanaryRunTimeline& WithCompleted(CompletedT&& value) { SetCompleted(std::forward<CompletedT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The end time of the run.</p>
+     * <p>The time at which the metrics will be generated for this run or retries.</p>
      */
-    inline void SetCompleted(const Aws::Utils::DateTime& value) { m_completedHasBeenSet = true; m_completed = value; }
-
-    /**
-     * <p>The end time of the run.</p>
-     */
-    inline void SetCompleted(Aws::Utils::DateTime&& value) { m_completedHasBeenSet = true; m_completed = std::move(value); }
-
-    /**
-     * <p>The end time of the run.</p>
-     */
-    inline CanaryRunTimeline& WithCompleted(const Aws::Utils::DateTime& value) { SetCompleted(value); return *this;}
-
-    /**
-     * <p>The end time of the run.</p>
-     */
-    inline CanaryRunTimeline& WithCompleted(Aws::Utils::DateTime&& value) { SetCompleted(std::move(value)); return *this;}
-
+    inline const Aws::Utils::DateTime& GetMetricTimestampForRunAndRetries() const { return m_metricTimestampForRunAndRetries; }
+    inline bool MetricTimestampForRunAndRetriesHasBeenSet() const { return m_metricTimestampForRunAndRetriesHasBeenSet; }
+    template<typename MetricTimestampForRunAndRetriesT = Aws::Utils::DateTime>
+    void SetMetricTimestampForRunAndRetries(MetricTimestampForRunAndRetriesT&& value) { m_metricTimestampForRunAndRetriesHasBeenSet = true; m_metricTimestampForRunAndRetries = std::forward<MetricTimestampForRunAndRetriesT>(value); }
+    template<typename MetricTimestampForRunAndRetriesT = Aws::Utils::DateTime>
+    CanaryRunTimeline& WithMetricTimestampForRunAndRetries(MetricTimestampForRunAndRetriesT&& value) { SetMetricTimestampForRunAndRetries(std::forward<MetricTimestampForRunAndRetriesT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::Utils::DateTime m_started;
+    Aws::Utils::DateTime m_started{};
     bool m_startedHasBeenSet = false;
 
-    Aws::Utils::DateTime m_completed;
+    Aws::Utils::DateTime m_completed{};
     bool m_completedHasBeenSet = false;
+
+    Aws::Utils::DateTime m_metricTimestampForRunAndRetries{};
+    bool m_metricTimestampForRunAndRetriesHasBeenSet = false;
   };
 
 } // namespace Model

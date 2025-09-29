@@ -33,316 +33,95 @@ namespace Model
   class S3DataAccessAsset
   {
   public:
-    AWS_DATAEXCHANGE_API S3DataAccessAsset();
+    AWS_DATAEXCHANGE_API S3DataAccessAsset() = default;
     AWS_DATAEXCHANGE_API S3DataAccessAsset(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAEXCHANGE_API S3DataAccessAsset& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAEXCHANGE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon S3 bucket hosting data to be shared in the S3 data access.</p>
      */
-    inline const Aws::String& GetBucket() const{ return m_bucket; }
-
-    /**
-     * <p>The Amazon S3 bucket hosting data to be shared in the S3 data access.</p>
-     */
+    inline const Aws::String& GetBucket() const { return m_bucket; }
     inline bool BucketHasBeenSet() const { return m_bucketHasBeenSet; }
+    template<typename BucketT = Aws::String>
+    void SetBucket(BucketT&& value) { m_bucketHasBeenSet = true; m_bucket = std::forward<BucketT>(value); }
+    template<typename BucketT = Aws::String>
+    S3DataAccessAsset& WithBucket(BucketT&& value) { SetBucket(std::forward<BucketT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon S3 bucket hosting data to be shared in the S3 data access.</p>
-     */
-    inline void SetBucket(const Aws::String& value) { m_bucketHasBeenSet = true; m_bucket = value; }
-
-    /**
-     * <p>The Amazon S3 bucket hosting data to be shared in the S3 data access.</p>
-     */
-    inline void SetBucket(Aws::String&& value) { m_bucketHasBeenSet = true; m_bucket = std::move(value); }
-
-    /**
-     * <p>The Amazon S3 bucket hosting data to be shared in the S3 data access.</p>
-     */
-    inline void SetBucket(const char* value) { m_bucketHasBeenSet = true; m_bucket.assign(value); }
-
-    /**
-     * <p>The Amazon S3 bucket hosting data to be shared in the S3 data access.</p>
-     */
-    inline S3DataAccessAsset& WithBucket(const Aws::String& value) { SetBucket(value); return *this;}
-
-    /**
-     * <p>The Amazon S3 bucket hosting data to be shared in the S3 data access.</p>
-     */
-    inline S3DataAccessAsset& WithBucket(Aws::String&& value) { SetBucket(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon S3 bucket hosting data to be shared in the S3 data access.</p>
-     */
-    inline S3DataAccessAsset& WithBucket(const char* value) { SetBucket(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon S3 bucket used for hosting shared data in the Amazon S3 data
      * access.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetKeyPrefixes() const{ return m_keyPrefixes; }
-
-    /**
-     * <p>The Amazon S3 bucket used for hosting shared data in the Amazon S3 data
-     * access.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetKeyPrefixes() const { return m_keyPrefixes; }
     inline bool KeyPrefixesHasBeenSet() const { return m_keyPrefixesHasBeenSet; }
+    template<typename KeyPrefixesT = Aws::Vector<Aws::String>>
+    void SetKeyPrefixes(KeyPrefixesT&& value) { m_keyPrefixesHasBeenSet = true; m_keyPrefixes = std::forward<KeyPrefixesT>(value); }
+    template<typename KeyPrefixesT = Aws::Vector<Aws::String>>
+    S3DataAccessAsset& WithKeyPrefixes(KeyPrefixesT&& value) { SetKeyPrefixes(std::forward<KeyPrefixesT>(value)); return *this;}
+    template<typename KeyPrefixesT = Aws::String>
+    S3DataAccessAsset& AddKeyPrefixes(KeyPrefixesT&& value) { m_keyPrefixesHasBeenSet = true; m_keyPrefixes.emplace_back(std::forward<KeyPrefixesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The Amazon S3 bucket used for hosting shared data in the Amazon S3 data
-     * access.</p>
-     */
-    inline void SetKeyPrefixes(const Aws::Vector<Aws::String>& value) { m_keyPrefixesHasBeenSet = true; m_keyPrefixes = value; }
-
-    /**
-     * <p>The Amazon S3 bucket used for hosting shared data in the Amazon S3 data
-     * access.</p>
-     */
-    inline void SetKeyPrefixes(Aws::Vector<Aws::String>&& value) { m_keyPrefixesHasBeenSet = true; m_keyPrefixes = std::move(value); }
-
-    /**
-     * <p>The Amazon S3 bucket used for hosting shared data in the Amazon S3 data
-     * access.</p>
-     */
-    inline S3DataAccessAsset& WithKeyPrefixes(const Aws::Vector<Aws::String>& value) { SetKeyPrefixes(value); return *this;}
-
-    /**
-     * <p>The Amazon S3 bucket used for hosting shared data in the Amazon S3 data
-     * access.</p>
-     */
-    inline S3DataAccessAsset& WithKeyPrefixes(Aws::Vector<Aws::String>&& value) { SetKeyPrefixes(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon S3 bucket used for hosting shared data in the Amazon S3 data
-     * access.</p>
-     */
-    inline S3DataAccessAsset& AddKeyPrefixes(const Aws::String& value) { m_keyPrefixesHasBeenSet = true; m_keyPrefixes.push_back(value); return *this; }
-
-    /**
-     * <p>The Amazon S3 bucket used for hosting shared data in the Amazon S3 data
-     * access.</p>
-     */
-    inline S3DataAccessAsset& AddKeyPrefixes(Aws::String&& value) { m_keyPrefixesHasBeenSet = true; m_keyPrefixes.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The Amazon S3 bucket used for hosting shared data in the Amazon S3 data
-     * access.</p>
-     */
-    inline S3DataAccessAsset& AddKeyPrefixes(const char* value) { m_keyPrefixesHasBeenSet = true; m_keyPrefixes.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>S3 keys made available using this asset.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetKeys() const{ return m_keys; }
-
-    /**
-     * <p>S3 keys made available using this asset.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetKeys() const { return m_keys; }
     inline bool KeysHasBeenSet() const { return m_keysHasBeenSet; }
+    template<typename KeysT = Aws::Vector<Aws::String>>
+    void SetKeys(KeysT&& value) { m_keysHasBeenSet = true; m_keys = std::forward<KeysT>(value); }
+    template<typename KeysT = Aws::Vector<Aws::String>>
+    S3DataAccessAsset& WithKeys(KeysT&& value) { SetKeys(std::forward<KeysT>(value)); return *this;}
+    template<typename KeysT = Aws::String>
+    S3DataAccessAsset& AddKeys(KeysT&& value) { m_keysHasBeenSet = true; m_keys.emplace_back(std::forward<KeysT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>S3 keys made available using this asset.</p>
-     */
-    inline void SetKeys(const Aws::Vector<Aws::String>& value) { m_keysHasBeenSet = true; m_keys = value; }
-
-    /**
-     * <p>S3 keys made available using this asset.</p>
-     */
-    inline void SetKeys(Aws::Vector<Aws::String>&& value) { m_keysHasBeenSet = true; m_keys = std::move(value); }
-
-    /**
-     * <p>S3 keys made available using this asset.</p>
-     */
-    inline S3DataAccessAsset& WithKeys(const Aws::Vector<Aws::String>& value) { SetKeys(value); return *this;}
-
-    /**
-     * <p>S3 keys made available using this asset.</p>
-     */
-    inline S3DataAccessAsset& WithKeys(Aws::Vector<Aws::String>&& value) { SetKeys(std::move(value)); return *this;}
-
-    /**
-     * <p>S3 keys made available using this asset.</p>
-     */
-    inline S3DataAccessAsset& AddKeys(const Aws::String& value) { m_keysHasBeenSet = true; m_keys.push_back(value); return *this; }
-
-    /**
-     * <p>S3 keys made available using this asset.</p>
-     */
-    inline S3DataAccessAsset& AddKeys(Aws::String&& value) { m_keysHasBeenSet = true; m_keys.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>S3 keys made available using this asset.</p>
-     */
-    inline S3DataAccessAsset& AddKeys(const char* value) { m_keysHasBeenSet = true; m_keys.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The automatically-generated bucket-style alias for your Amazon S3 Access
      * Point. Customers can access their entitled data using the S3 Access Point
      * alias.</p>
      */
-    inline const Aws::String& GetS3AccessPointAlias() const{ return m_s3AccessPointAlias; }
-
-    /**
-     * <p>The automatically-generated bucket-style alias for your Amazon S3 Access
-     * Point. Customers can access their entitled data using the S3 Access Point
-     * alias.</p>
-     */
+    inline const Aws::String& GetS3AccessPointAlias() const { return m_s3AccessPointAlias; }
     inline bool S3AccessPointAliasHasBeenSet() const { return m_s3AccessPointAliasHasBeenSet; }
+    template<typename S3AccessPointAliasT = Aws::String>
+    void SetS3AccessPointAlias(S3AccessPointAliasT&& value) { m_s3AccessPointAliasHasBeenSet = true; m_s3AccessPointAlias = std::forward<S3AccessPointAliasT>(value); }
+    template<typename S3AccessPointAliasT = Aws::String>
+    S3DataAccessAsset& WithS3AccessPointAlias(S3AccessPointAliasT&& value) { SetS3AccessPointAlias(std::forward<S3AccessPointAliasT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The automatically-generated bucket-style alias for your Amazon S3 Access
-     * Point. Customers can access their entitled data using the S3 Access Point
-     * alias.</p>
-     */
-    inline void SetS3AccessPointAlias(const Aws::String& value) { m_s3AccessPointAliasHasBeenSet = true; m_s3AccessPointAlias = value; }
-
-    /**
-     * <p>The automatically-generated bucket-style alias for your Amazon S3 Access
-     * Point. Customers can access their entitled data using the S3 Access Point
-     * alias.</p>
-     */
-    inline void SetS3AccessPointAlias(Aws::String&& value) { m_s3AccessPointAliasHasBeenSet = true; m_s3AccessPointAlias = std::move(value); }
-
-    /**
-     * <p>The automatically-generated bucket-style alias for your Amazon S3 Access
-     * Point. Customers can access their entitled data using the S3 Access Point
-     * alias.</p>
-     */
-    inline void SetS3AccessPointAlias(const char* value) { m_s3AccessPointAliasHasBeenSet = true; m_s3AccessPointAlias.assign(value); }
-
-    /**
-     * <p>The automatically-generated bucket-style alias for your Amazon S3 Access
-     * Point. Customers can access their entitled data using the S3 Access Point
-     * alias.</p>
-     */
-    inline S3DataAccessAsset& WithS3AccessPointAlias(const Aws::String& value) { SetS3AccessPointAlias(value); return *this;}
-
-    /**
-     * <p>The automatically-generated bucket-style alias for your Amazon S3 Access
-     * Point. Customers can access their entitled data using the S3 Access Point
-     * alias.</p>
-     */
-    inline S3DataAccessAsset& WithS3AccessPointAlias(Aws::String&& value) { SetS3AccessPointAlias(std::move(value)); return *this;}
-
-    /**
-     * <p>The automatically-generated bucket-style alias for your Amazon S3 Access
-     * Point. Customers can access their entitled data using the S3 Access Point
-     * alias.</p>
-     */
-    inline S3DataAccessAsset& WithS3AccessPointAlias(const char* value) { SetS3AccessPointAlias(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN for your Amazon S3 Access Point. Customers can also access their
      * entitled data using the S3 Access Point ARN.</p>
      */
-    inline const Aws::String& GetS3AccessPointArn() const{ return m_s3AccessPointArn; }
-
-    /**
-     * <p>The ARN for your Amazon S3 Access Point. Customers can also access their
-     * entitled data using the S3 Access Point ARN.</p>
-     */
+    inline const Aws::String& GetS3AccessPointArn() const { return m_s3AccessPointArn; }
     inline bool S3AccessPointArnHasBeenSet() const { return m_s3AccessPointArnHasBeenSet; }
+    template<typename S3AccessPointArnT = Aws::String>
+    void SetS3AccessPointArn(S3AccessPointArnT&& value) { m_s3AccessPointArnHasBeenSet = true; m_s3AccessPointArn = std::forward<S3AccessPointArnT>(value); }
+    template<typename S3AccessPointArnT = Aws::String>
+    S3DataAccessAsset& WithS3AccessPointArn(S3AccessPointArnT&& value) { SetS3AccessPointArn(std::forward<S3AccessPointArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN for your Amazon S3 Access Point. Customers can also access their
-     * entitled data using the S3 Access Point ARN.</p>
-     */
-    inline void SetS3AccessPointArn(const Aws::String& value) { m_s3AccessPointArnHasBeenSet = true; m_s3AccessPointArn = value; }
-
-    /**
-     * <p>The ARN for your Amazon S3 Access Point. Customers can also access their
-     * entitled data using the S3 Access Point ARN.</p>
-     */
-    inline void SetS3AccessPointArn(Aws::String&& value) { m_s3AccessPointArnHasBeenSet = true; m_s3AccessPointArn = std::move(value); }
-
-    /**
-     * <p>The ARN for your Amazon S3 Access Point. Customers can also access their
-     * entitled data using the S3 Access Point ARN.</p>
-     */
-    inline void SetS3AccessPointArn(const char* value) { m_s3AccessPointArnHasBeenSet = true; m_s3AccessPointArn.assign(value); }
-
-    /**
-     * <p>The ARN for your Amazon S3 Access Point. Customers can also access their
-     * entitled data using the S3 Access Point ARN.</p>
-     */
-    inline S3DataAccessAsset& WithS3AccessPointArn(const Aws::String& value) { SetS3AccessPointArn(value); return *this;}
-
-    /**
-     * <p>The ARN for your Amazon S3 Access Point. Customers can also access their
-     * entitled data using the S3 Access Point ARN.</p>
-     */
-    inline S3DataAccessAsset& WithS3AccessPointArn(Aws::String&& value) { SetS3AccessPointArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN for your Amazon S3 Access Point. Customers can also access their
-     * entitled data using the S3 Access Point ARN.</p>
-     */
-    inline S3DataAccessAsset& WithS3AccessPointArn(const char* value) { SetS3AccessPointArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p> List of AWS KMS CMKs (Key Management System Customer Managed Keys) and ARNs
      * used to encrypt S3 objects being shared in this S3 Data Access asset. Providers
      * must include all AWS KMS keys used to encrypt these shared S3 objects.</p>
      */
-    inline const Aws::Vector<KmsKeyToGrant>& GetKmsKeysToGrant() const{ return m_kmsKeysToGrant; }
-
-    /**
-     * <p> List of AWS KMS CMKs (Key Management System Customer Managed Keys) and ARNs
-     * used to encrypt S3 objects being shared in this S3 Data Access asset. Providers
-     * must include all AWS KMS keys used to encrypt these shared S3 objects.</p>
-     */
+    inline const Aws::Vector<KmsKeyToGrant>& GetKmsKeysToGrant() const { return m_kmsKeysToGrant; }
     inline bool KmsKeysToGrantHasBeenSet() const { return m_kmsKeysToGrantHasBeenSet; }
-
-    /**
-     * <p> List of AWS KMS CMKs (Key Management System Customer Managed Keys) and ARNs
-     * used to encrypt S3 objects being shared in this S3 Data Access asset. Providers
-     * must include all AWS KMS keys used to encrypt these shared S3 objects.</p>
-     */
-    inline void SetKmsKeysToGrant(const Aws::Vector<KmsKeyToGrant>& value) { m_kmsKeysToGrantHasBeenSet = true; m_kmsKeysToGrant = value; }
-
-    /**
-     * <p> List of AWS KMS CMKs (Key Management System Customer Managed Keys) and ARNs
-     * used to encrypt S3 objects being shared in this S3 Data Access asset. Providers
-     * must include all AWS KMS keys used to encrypt these shared S3 objects.</p>
-     */
-    inline void SetKmsKeysToGrant(Aws::Vector<KmsKeyToGrant>&& value) { m_kmsKeysToGrantHasBeenSet = true; m_kmsKeysToGrant = std::move(value); }
-
-    /**
-     * <p> List of AWS KMS CMKs (Key Management System Customer Managed Keys) and ARNs
-     * used to encrypt S3 objects being shared in this S3 Data Access asset. Providers
-     * must include all AWS KMS keys used to encrypt these shared S3 objects.</p>
-     */
-    inline S3DataAccessAsset& WithKmsKeysToGrant(const Aws::Vector<KmsKeyToGrant>& value) { SetKmsKeysToGrant(value); return *this;}
-
-    /**
-     * <p> List of AWS KMS CMKs (Key Management System Customer Managed Keys) and ARNs
-     * used to encrypt S3 objects being shared in this S3 Data Access asset. Providers
-     * must include all AWS KMS keys used to encrypt these shared S3 objects.</p>
-     */
-    inline S3DataAccessAsset& WithKmsKeysToGrant(Aws::Vector<KmsKeyToGrant>&& value) { SetKmsKeysToGrant(std::move(value)); return *this;}
-
-    /**
-     * <p> List of AWS KMS CMKs (Key Management System Customer Managed Keys) and ARNs
-     * used to encrypt S3 objects being shared in this S3 Data Access asset. Providers
-     * must include all AWS KMS keys used to encrypt these shared S3 objects.</p>
-     */
-    inline S3DataAccessAsset& AddKmsKeysToGrant(const KmsKeyToGrant& value) { m_kmsKeysToGrantHasBeenSet = true; m_kmsKeysToGrant.push_back(value); return *this; }
-
-    /**
-     * <p> List of AWS KMS CMKs (Key Management System Customer Managed Keys) and ARNs
-     * used to encrypt S3 objects being shared in this S3 Data Access asset. Providers
-     * must include all AWS KMS keys used to encrypt these shared S3 objects.</p>
-     */
-    inline S3DataAccessAsset& AddKmsKeysToGrant(KmsKeyToGrant&& value) { m_kmsKeysToGrantHasBeenSet = true; m_kmsKeysToGrant.push_back(std::move(value)); return *this; }
-
+    template<typename KmsKeysToGrantT = Aws::Vector<KmsKeyToGrant>>
+    void SetKmsKeysToGrant(KmsKeysToGrantT&& value) { m_kmsKeysToGrantHasBeenSet = true; m_kmsKeysToGrant = std::forward<KmsKeysToGrantT>(value); }
+    template<typename KmsKeysToGrantT = Aws::Vector<KmsKeyToGrant>>
+    S3DataAccessAsset& WithKmsKeysToGrant(KmsKeysToGrantT&& value) { SetKmsKeysToGrant(std::forward<KmsKeysToGrantT>(value)); return *this;}
+    template<typename KmsKeysToGrantT = KmsKeyToGrant>
+    S3DataAccessAsset& AddKmsKeysToGrant(KmsKeysToGrantT&& value) { m_kmsKeysToGrantHasBeenSet = true; m_kmsKeysToGrant.emplace_back(std::forward<KmsKeysToGrantT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_bucket;

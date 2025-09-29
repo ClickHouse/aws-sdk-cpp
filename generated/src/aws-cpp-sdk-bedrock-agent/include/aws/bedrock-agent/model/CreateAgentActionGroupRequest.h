@@ -8,9 +8,11 @@
 #include <aws/bedrock-agent/BedrockAgentRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/bedrock-agent/model/ActionGroupSignature.h>
+#include <aws/core/utils/memory/stl/AWSMap.h>
 #include <aws/bedrock-agent/model/ActionGroupExecutor.h>
 #include <aws/bedrock-agent/model/APISchema.h>
 #include <aws/bedrock-agent/model/ActionGroupState.h>
+#include <aws/bedrock-agent/model/FunctionSchema.h>
 #include <utility>
 #include <aws/core/utils/UUID.h>
 
@@ -22,14 +24,11 @@ namespace Model
 {
 
   /**
-   * <p>Create Action Group Request</p><p><h3>See Also:</h3>   <a
-   * href="http://docs.aws.amazon.com/goto/WebAPI/bedrock-agent-2023-06-05/CreateAgentActionGroupRequest">AWS
-   * API Reference</a></p>
    */
   class CreateAgentActionGroupRequest : public BedrockAgentRequest
   {
   public:
-    AWS_BEDROCKAGENT_API CreateAgentActionGroupRequest();
+    AWS_BEDROCKAGENT_API CreateAgentActionGroupRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -40,238 +39,179 @@ namespace Model
     AWS_BEDROCKAGENT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
-     * <p>Id generated at the server side when an Agent is created</p>
+     * <p>The unique identifier of the agent for which to create the action group.</p>
      */
-    inline const Aws::String& GetAgentId() const{ return m_agentId; }
-
-    /**
-     * <p>Id generated at the server side when an Agent is created</p>
-     */
+    inline const Aws::String& GetAgentId() const { return m_agentId; }
     inline bool AgentIdHasBeenSet() const { return m_agentIdHasBeenSet; }
+    template<typename AgentIdT = Aws::String>
+    void SetAgentId(AgentIdT&& value) { m_agentIdHasBeenSet = true; m_agentId = std::forward<AgentIdT>(value); }
+    template<typename AgentIdT = Aws::String>
+    CreateAgentActionGroupRequest& WithAgentId(AgentIdT&& value) { SetAgentId(std::forward<AgentIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Id generated at the server side when an Agent is created</p>
+     * <p>The version of the agent for which to create the action group.</p>
      */
-    inline void SetAgentId(const Aws::String& value) { m_agentIdHasBeenSet = true; m_agentId = value; }
-
-    /**
-     * <p>Id generated at the server side when an Agent is created</p>
-     */
-    inline void SetAgentId(Aws::String&& value) { m_agentIdHasBeenSet = true; m_agentId = std::move(value); }
-
-    /**
-     * <p>Id generated at the server side when an Agent is created</p>
-     */
-    inline void SetAgentId(const char* value) { m_agentIdHasBeenSet = true; m_agentId.assign(value); }
-
-    /**
-     * <p>Id generated at the server side when an Agent is created</p>
-     */
-    inline CreateAgentActionGroupRequest& WithAgentId(const Aws::String& value) { SetAgentId(value); return *this;}
-
-    /**
-     * <p>Id generated at the server side when an Agent is created</p>
-     */
-    inline CreateAgentActionGroupRequest& WithAgentId(Aws::String&& value) { SetAgentId(std::move(value)); return *this;}
-
-    /**
-     * <p>Id generated at the server side when an Agent is created</p>
-     */
-    inline CreateAgentActionGroupRequest& WithAgentId(const char* value) { SetAgentId(value); return *this;}
-
-
-    /**
-     * <p>Draft Version of the Agent.</p>
-     */
-    inline const Aws::String& GetAgentVersion() const{ return m_agentVersion; }
-
-    /**
-     * <p>Draft Version of the Agent.</p>
-     */
+    inline const Aws::String& GetAgentVersion() const { return m_agentVersion; }
     inline bool AgentVersionHasBeenSet() const { return m_agentVersionHasBeenSet; }
+    template<typename AgentVersionT = Aws::String>
+    void SetAgentVersion(AgentVersionT&& value) { m_agentVersionHasBeenSet = true; m_agentVersion = std::forward<AgentVersionT>(value); }
+    template<typename AgentVersionT = Aws::String>
+    CreateAgentActionGroupRequest& WithAgentVersion(AgentVersionT&& value) { SetAgentVersion(std::forward<AgentVersionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Draft Version of the Agent.</p>
+     * <p>The name to give the action group.</p>
      */
-    inline void SetAgentVersion(const Aws::String& value) { m_agentVersionHasBeenSet = true; m_agentVersion = value; }
-
-    /**
-     * <p>Draft Version of the Agent.</p>
-     */
-    inline void SetAgentVersion(Aws::String&& value) { m_agentVersionHasBeenSet = true; m_agentVersion = std::move(value); }
-
-    /**
-     * <p>Draft Version of the Agent.</p>
-     */
-    inline void SetAgentVersion(const char* value) { m_agentVersionHasBeenSet = true; m_agentVersion.assign(value); }
-
-    /**
-     * <p>Draft Version of the Agent.</p>
-     */
-    inline CreateAgentActionGroupRequest& WithAgentVersion(const Aws::String& value) { SetAgentVersion(value); return *this;}
-
-    /**
-     * <p>Draft Version of the Agent.</p>
-     */
-    inline CreateAgentActionGroupRequest& WithAgentVersion(Aws::String&& value) { SetAgentVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>Draft Version of the Agent.</p>
-     */
-    inline CreateAgentActionGroupRequest& WithAgentVersion(const char* value) { SetAgentVersion(value); return *this;}
-
-
-    
-    inline const Aws::String& GetActionGroupName() const{ return m_actionGroupName; }
-
-    
+    inline const Aws::String& GetActionGroupName() const { return m_actionGroupName; }
     inline bool ActionGroupNameHasBeenSet() const { return m_actionGroupNameHasBeenSet; }
+    template<typename ActionGroupNameT = Aws::String>
+    void SetActionGroupName(ActionGroupNameT&& value) { m_actionGroupNameHasBeenSet = true; m_actionGroupName = std::forward<ActionGroupNameT>(value); }
+    template<typename ActionGroupNameT = Aws::String>
+    CreateAgentActionGroupRequest& WithActionGroupName(ActionGroupNameT&& value) { SetActionGroupName(std::forward<ActionGroupNameT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetActionGroupName(const Aws::String& value) { m_actionGroupNameHasBeenSet = true; m_actionGroupName = value; }
-
-    
-    inline void SetActionGroupName(Aws::String&& value) { m_actionGroupNameHasBeenSet = true; m_actionGroupName = std::move(value); }
-
-    
-    inline void SetActionGroupName(const char* value) { m_actionGroupNameHasBeenSet = true; m_actionGroupName.assign(value); }
-
-    
-    inline CreateAgentActionGroupRequest& WithActionGroupName(const Aws::String& value) { SetActionGroupName(value); return *this;}
-
-    
-    inline CreateAgentActionGroupRequest& WithActionGroupName(Aws::String&& value) { SetActionGroupName(std::move(value)); return *this;}
-
-    
-    inline CreateAgentActionGroupRequest& WithActionGroupName(const char* value) { SetActionGroupName(value); return *this;}
-
-
-    
-    inline const Aws::String& GetClientToken() const{ return m_clientToken; }
-
-    
+    ///@{
+    /**
+     * <p>A unique, case-sensitive identifier to ensure that the API request completes
+     * no more than one time. If this token matches a previous request, Amazon Bedrock
+     * ignores the request, but does not return an error. For more information, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
+     * idempotency</a>.</p>
+     */
+    inline const Aws::String& GetClientToken() const { return m_clientToken; }
     inline bool ClientTokenHasBeenSet() const { return m_clientTokenHasBeenSet; }
+    template<typename ClientTokenT = Aws::String>
+    void SetClientToken(ClientTokenT&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::forward<ClientTokenT>(value); }
+    template<typename ClientTokenT = Aws::String>
+    CreateAgentActionGroupRequest& WithClientToken(ClientTokenT&& value) { SetClientToken(std::forward<ClientTokenT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetClientToken(const Aws::String& value) { m_clientTokenHasBeenSet = true; m_clientToken = value; }
-
-    
-    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::move(value); }
-
-    
-    inline void SetClientToken(const char* value) { m_clientTokenHasBeenSet = true; m_clientToken.assign(value); }
-
-    
-    inline CreateAgentActionGroupRequest& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
-
-    
-    inline CreateAgentActionGroupRequest& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
-
-    
-    inline CreateAgentActionGroupRequest& WithClientToken(const char* value) { SetClientToken(value); return *this;}
-
-
-    
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    
+    ///@{
+    /**
+     * <p>A description of the action group.</p>
+     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    CreateAgentActionGroupRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    
-    inline CreateAgentActionGroupRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    
-    inline CreateAgentActionGroupRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    
-    inline CreateAgentActionGroupRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
-    
-    inline const ActionGroupSignature& GetParentActionGroupSignature() const{ return m_parentActionGroupSignature; }
-
-    
+    ///@{
+    /**
+     * <p>Specify a built-in or computer use action for this action group. If you
+     * specify a value, you must leave the <code>description</code>,
+     * <code>apiSchema</code>, and <code>actionGroupExecutor</code> fields empty for
+     * this action group. </p> <ul> <li> <p>To allow your agent to request the user for
+     * additional information when trying to complete a task, set this field to
+     * <code>AMAZON.UserInput</code>. </p> </li> <li> <p>To allow your agent to
+     * generate, run, and troubleshoot code when trying to complete a task, set this
+     * field to <code>AMAZON.CodeInterpreter</code>.</p> </li> <li> <p>To allow your
+     * agent to use an Anthropic computer use tool, specify one of the following
+     * values. </p>  <p> Computer use is a new Anthropic Claude model
+     * capability (in beta) available with Anthropic Claude 3.7 Sonnet and Claude 3.5
+     * Sonnet v2 only. When operating computer use functionality, we recommend taking
+     * additional security precautions, such as executing computer actions in virtual
+     * environments with restricted data access and limited internet connectivity. For
+     * more information, see <a
+     * href="https://docs.aws.amazon.com/bedrock/latest/userguide/agents-computer-use.html">Configure
+     * an Amazon Bedrock Agent to complete tasks with computer use tools</a>. </p>
+     *  <ul> <li> <p> <code>ANTHROPIC.Computer</code> - Gives the agent
+     * permission to use the mouse and keyboard and take screenshots.</p> </li> <li>
+     * <p> <code>ANTHROPIC.TextEditor</code> - Gives the agent permission to view,
+     * create and edit files.</p> </li> <li> <p> <code>ANTHROPIC.Bash</code> - Gives
+     * the agent permission to run commands in a bash shell.</p> </li> </ul> </li>
+     * </ul>
+     */
+    inline ActionGroupSignature GetParentActionGroupSignature() const { return m_parentActionGroupSignature; }
     inline bool ParentActionGroupSignatureHasBeenSet() const { return m_parentActionGroupSignatureHasBeenSet; }
+    inline void SetParentActionGroupSignature(ActionGroupSignature value) { m_parentActionGroupSignatureHasBeenSet = true; m_parentActionGroupSignature = value; }
+    inline CreateAgentActionGroupRequest& WithParentActionGroupSignature(ActionGroupSignature value) { SetParentActionGroupSignature(value); return *this;}
+    ///@}
 
-    
-    inline void SetParentActionGroupSignature(const ActionGroupSignature& value) { m_parentActionGroupSignatureHasBeenSet = true; m_parentActionGroupSignature = value; }
+    ///@{
+    /**
+     * <p>The configuration settings for a computer use action.</p>  <p>
+     * Computer use is a new Anthropic Claude model capability (in beta) available with
+     * Anthropic Claude 3.7 Sonnet and Claude 3.5 Sonnet v2 only. For more information,
+     * see <a
+     * href="https://docs.aws.amazon.com/bedrock/latest/userguide/agents-computer-use.html">Configure
+     * an Amazon Bedrock Agent to complete tasks with computer use tools</a>. </p>
+     * 
+     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetParentActionGroupSignatureParams() const { return m_parentActionGroupSignatureParams; }
+    inline bool ParentActionGroupSignatureParamsHasBeenSet() const { return m_parentActionGroupSignatureParamsHasBeenSet; }
+    template<typename ParentActionGroupSignatureParamsT = Aws::Map<Aws::String, Aws::String>>
+    void SetParentActionGroupSignatureParams(ParentActionGroupSignatureParamsT&& value) { m_parentActionGroupSignatureParamsHasBeenSet = true; m_parentActionGroupSignatureParams = std::forward<ParentActionGroupSignatureParamsT>(value); }
+    template<typename ParentActionGroupSignatureParamsT = Aws::Map<Aws::String, Aws::String>>
+    CreateAgentActionGroupRequest& WithParentActionGroupSignatureParams(ParentActionGroupSignatureParamsT&& value) { SetParentActionGroupSignatureParams(std::forward<ParentActionGroupSignatureParamsT>(value)); return *this;}
+    template<typename ParentActionGroupSignatureParamsKeyT = Aws::String, typename ParentActionGroupSignatureParamsValueT = Aws::String>
+    CreateAgentActionGroupRequest& AddParentActionGroupSignatureParams(ParentActionGroupSignatureParamsKeyT&& key, ParentActionGroupSignatureParamsValueT&& value) {
+      m_parentActionGroupSignatureParamsHasBeenSet = true; m_parentActionGroupSignatureParams.emplace(std::forward<ParentActionGroupSignatureParamsKeyT>(key), std::forward<ParentActionGroupSignatureParamsValueT>(value)); return *this;
+    }
+    ///@}
 
-    
-    inline void SetParentActionGroupSignature(ActionGroupSignature&& value) { m_parentActionGroupSignatureHasBeenSet = true; m_parentActionGroupSignature = std::move(value); }
-
-    
-    inline CreateAgentActionGroupRequest& WithParentActionGroupSignature(const ActionGroupSignature& value) { SetParentActionGroupSignature(value); return *this;}
-
-    
-    inline CreateAgentActionGroupRequest& WithParentActionGroupSignature(ActionGroupSignature&& value) { SetParentActionGroupSignature(std::move(value)); return *this;}
-
-
-    
-    inline const ActionGroupExecutor& GetActionGroupExecutor() const{ return m_actionGroupExecutor; }
-
-    
+    ///@{
+    /**
+     * <p>The Amazon Resource Name (ARN) of the Lambda function containing the business
+     * logic that is carried out upon invoking the action or the custom control method
+     * for handling the information elicited from the user.</p>
+     */
+    inline const ActionGroupExecutor& GetActionGroupExecutor() const { return m_actionGroupExecutor; }
     inline bool ActionGroupExecutorHasBeenSet() const { return m_actionGroupExecutorHasBeenSet; }
+    template<typename ActionGroupExecutorT = ActionGroupExecutor>
+    void SetActionGroupExecutor(ActionGroupExecutorT&& value) { m_actionGroupExecutorHasBeenSet = true; m_actionGroupExecutor = std::forward<ActionGroupExecutorT>(value); }
+    template<typename ActionGroupExecutorT = ActionGroupExecutor>
+    CreateAgentActionGroupRequest& WithActionGroupExecutor(ActionGroupExecutorT&& value) { SetActionGroupExecutor(std::forward<ActionGroupExecutorT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetActionGroupExecutor(const ActionGroupExecutor& value) { m_actionGroupExecutorHasBeenSet = true; m_actionGroupExecutor = value; }
-
-    
-    inline void SetActionGroupExecutor(ActionGroupExecutor&& value) { m_actionGroupExecutorHasBeenSet = true; m_actionGroupExecutor = std::move(value); }
-
-    
-    inline CreateAgentActionGroupRequest& WithActionGroupExecutor(const ActionGroupExecutor& value) { SetActionGroupExecutor(value); return *this;}
-
-    
-    inline CreateAgentActionGroupRequest& WithActionGroupExecutor(ActionGroupExecutor&& value) { SetActionGroupExecutor(std::move(value)); return *this;}
-
-
-    
-    inline const APISchema& GetApiSchema() const{ return m_apiSchema; }
-
-    
+    ///@{
+    /**
+     * <p>Contains either details about the S3 object containing the OpenAPI schema for
+     * the action group or the JSON or YAML-formatted payload defining the schema. For
+     * more information, see <a
+     * href="https://docs.aws.amazon.com/bedrock/latest/userguide/agents-api-schema.html">Action
+     * group OpenAPI schemas</a>.</p>
+     */
+    inline const APISchema& GetApiSchema() const { return m_apiSchema; }
     inline bool ApiSchemaHasBeenSet() const { return m_apiSchemaHasBeenSet; }
+    template<typename ApiSchemaT = APISchema>
+    void SetApiSchema(ApiSchemaT&& value) { m_apiSchemaHasBeenSet = true; m_apiSchema = std::forward<ApiSchemaT>(value); }
+    template<typename ApiSchemaT = APISchema>
+    CreateAgentActionGroupRequest& WithApiSchema(ApiSchemaT&& value) { SetApiSchema(std::forward<ApiSchemaT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetApiSchema(const APISchema& value) { m_apiSchemaHasBeenSet = true; m_apiSchema = value; }
-
-    
-    inline void SetApiSchema(APISchema&& value) { m_apiSchemaHasBeenSet = true; m_apiSchema = std::move(value); }
-
-    
-    inline CreateAgentActionGroupRequest& WithApiSchema(const APISchema& value) { SetApiSchema(value); return *this;}
-
-    
-    inline CreateAgentActionGroupRequest& WithApiSchema(APISchema&& value) { SetApiSchema(std::move(value)); return *this;}
-
-
-    
-    inline const ActionGroupState& GetActionGroupState() const{ return m_actionGroupState; }
-
-    
+    ///@{
+    /**
+     * <p>Specifies whether the action group is available for the agent to invoke or
+     * not when sending an <a
+     * href="https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_InvokeAgent.html">InvokeAgent</a>
+     * request.</p>
+     */
+    inline ActionGroupState GetActionGroupState() const { return m_actionGroupState; }
     inline bool ActionGroupStateHasBeenSet() const { return m_actionGroupStateHasBeenSet; }
+    inline void SetActionGroupState(ActionGroupState value) { m_actionGroupStateHasBeenSet = true; m_actionGroupState = value; }
+    inline CreateAgentActionGroupRequest& WithActionGroupState(ActionGroupState value) { SetActionGroupState(value); return *this;}
+    ///@}
 
-    
-    inline void SetActionGroupState(const ActionGroupState& value) { m_actionGroupStateHasBeenSet = true; m_actionGroupState = value; }
-
-    
-    inline void SetActionGroupState(ActionGroupState&& value) { m_actionGroupStateHasBeenSet = true; m_actionGroupState = std::move(value); }
-
-    
-    inline CreateAgentActionGroupRequest& WithActionGroupState(const ActionGroupState& value) { SetActionGroupState(value); return *this;}
-
-    
-    inline CreateAgentActionGroupRequest& WithActionGroupState(ActionGroupState&& value) { SetActionGroupState(std::move(value)); return *this;}
-
+    ///@{
+    /**
+     * <p>Contains details about the function schema for the action group or the JSON
+     * or YAML-formatted payload defining the schema.</p>
+     */
+    inline const FunctionSchema& GetFunctionSchema() const { return m_functionSchema; }
+    inline bool FunctionSchemaHasBeenSet() const { return m_functionSchemaHasBeenSet; }
+    template<typename FunctionSchemaT = FunctionSchema>
+    void SetFunctionSchema(FunctionSchemaT&& value) { m_functionSchemaHasBeenSet = true; m_functionSchema = std::forward<FunctionSchemaT>(value); }
+    template<typename FunctionSchemaT = FunctionSchema>
+    CreateAgentActionGroupRequest& WithFunctionSchema(FunctionSchemaT&& value) { SetFunctionSchema(std::forward<FunctionSchemaT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_agentId;
@@ -283,14 +223,17 @@ namespace Model
     Aws::String m_actionGroupName;
     bool m_actionGroupNameHasBeenSet = false;
 
-    Aws::String m_clientToken;
-    bool m_clientTokenHasBeenSet = false;
+    Aws::String m_clientToken{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_clientTokenHasBeenSet = true;
 
     Aws::String m_description;
     bool m_descriptionHasBeenSet = false;
 
-    ActionGroupSignature m_parentActionGroupSignature;
+    ActionGroupSignature m_parentActionGroupSignature{ActionGroupSignature::NOT_SET};
     bool m_parentActionGroupSignatureHasBeenSet = false;
+
+    Aws::Map<Aws::String, Aws::String> m_parentActionGroupSignatureParams;
+    bool m_parentActionGroupSignatureParamsHasBeenSet = false;
 
     ActionGroupExecutor m_actionGroupExecutor;
     bool m_actionGroupExecutorHasBeenSet = false;
@@ -298,8 +241,11 @@ namespace Model
     APISchema m_apiSchema;
     bool m_apiSchemaHasBeenSet = false;
 
-    ActionGroupState m_actionGroupState;
+    ActionGroupState m_actionGroupState{ActionGroupState::NOT_SET};
     bool m_actionGroupStateHasBeenSet = false;
+
+    FunctionSchema m_functionSchema;
+    bool m_functionSchemaHasBeenSet = false;
   };
 
 } // namespace Model

@@ -18,15 +18,7 @@ namespace ResourceExplorer2
 namespace Model
 {
 
-ValidationException::ValidationException() : 
-    m_fieldListHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-ValidationException::ValidationException(JsonView jsonValue) : 
-    m_fieldListHasBeenSet(false),
-    m_messageHasBeenSet(false)
+ValidationException::ValidationException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ ValidationException& ValidationException::operator =(JsonView jsonValue)
     }
     m_fieldListHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Message"))
   {
     m_message = jsonValue.GetString("Message");
-
     m_messageHasBeenSet = true;
   }
-
   return *this;
 }
 

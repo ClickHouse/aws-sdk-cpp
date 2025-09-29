@@ -21,7 +21,7 @@ namespace Model
   class DescribeTrialComponentRequest : public SageMakerRequest
   {
   public:
-    AWS_SAGEMAKER_API DescribeTrialComponentRequest();
+    AWS_SAGEMAKER_API DescribeTrialComponentRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_SAGEMAKER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the trial component to describe.</p>
      */
-    inline const Aws::String& GetTrialComponentName() const{ return m_trialComponentName; }
-
-    /**
-     * <p>The name of the trial component to describe.</p>
-     */
+    inline const Aws::String& GetTrialComponentName() const { return m_trialComponentName; }
     inline bool TrialComponentNameHasBeenSet() const { return m_trialComponentNameHasBeenSet; }
-
-    /**
-     * <p>The name of the trial component to describe.</p>
-     */
-    inline void SetTrialComponentName(const Aws::String& value) { m_trialComponentNameHasBeenSet = true; m_trialComponentName = value; }
-
-    /**
-     * <p>The name of the trial component to describe.</p>
-     */
-    inline void SetTrialComponentName(Aws::String&& value) { m_trialComponentNameHasBeenSet = true; m_trialComponentName = std::move(value); }
-
-    /**
-     * <p>The name of the trial component to describe.</p>
-     */
-    inline void SetTrialComponentName(const char* value) { m_trialComponentNameHasBeenSet = true; m_trialComponentName.assign(value); }
-
-    /**
-     * <p>The name of the trial component to describe.</p>
-     */
-    inline DescribeTrialComponentRequest& WithTrialComponentName(const Aws::String& value) { SetTrialComponentName(value); return *this;}
-
-    /**
-     * <p>The name of the trial component to describe.</p>
-     */
-    inline DescribeTrialComponentRequest& WithTrialComponentName(Aws::String&& value) { SetTrialComponentName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the trial component to describe.</p>
-     */
-    inline DescribeTrialComponentRequest& WithTrialComponentName(const char* value) { SetTrialComponentName(value); return *this;}
-
+    template<typename TrialComponentNameT = Aws::String>
+    void SetTrialComponentName(TrialComponentNameT&& value) { m_trialComponentNameHasBeenSet = true; m_trialComponentName = std::forward<TrialComponentNameT>(value); }
+    template<typename TrialComponentNameT = Aws::String>
+    DescribeTrialComponentRequest& WithTrialComponentName(TrialComponentNameT&& value) { SetTrialComponentName(std::forward<TrialComponentNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_trialComponentName;

@@ -33,48 +33,24 @@ namespace Model
   class ComboChartFieldWells
   {
   public:
-    AWS_QUICKSIGHT_API ComboChartFieldWells();
+    AWS_QUICKSIGHT_API ComboChartFieldWells() = default;
     AWS_QUICKSIGHT_API ComboChartFieldWells(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API ComboChartFieldWells& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The aggregated field wells of a combo chart. Combo charts only have
      * aggregated field wells. Columns in a combo chart are aggregated by category.</p>
      */
-    inline const ComboChartAggregatedFieldWells& GetComboChartAggregatedFieldWells() const{ return m_comboChartAggregatedFieldWells; }
-
-    /**
-     * <p>The aggregated field wells of a combo chart. Combo charts only have
-     * aggregated field wells. Columns in a combo chart are aggregated by category.</p>
-     */
+    inline const ComboChartAggregatedFieldWells& GetComboChartAggregatedFieldWells() const { return m_comboChartAggregatedFieldWells; }
     inline bool ComboChartAggregatedFieldWellsHasBeenSet() const { return m_comboChartAggregatedFieldWellsHasBeenSet; }
-
-    /**
-     * <p>The aggregated field wells of a combo chart. Combo charts only have
-     * aggregated field wells. Columns in a combo chart are aggregated by category.</p>
-     */
-    inline void SetComboChartAggregatedFieldWells(const ComboChartAggregatedFieldWells& value) { m_comboChartAggregatedFieldWellsHasBeenSet = true; m_comboChartAggregatedFieldWells = value; }
-
-    /**
-     * <p>The aggregated field wells of a combo chart. Combo charts only have
-     * aggregated field wells. Columns in a combo chart are aggregated by category.</p>
-     */
-    inline void SetComboChartAggregatedFieldWells(ComboChartAggregatedFieldWells&& value) { m_comboChartAggregatedFieldWellsHasBeenSet = true; m_comboChartAggregatedFieldWells = std::move(value); }
-
-    /**
-     * <p>The aggregated field wells of a combo chart. Combo charts only have
-     * aggregated field wells. Columns in a combo chart are aggregated by category.</p>
-     */
-    inline ComboChartFieldWells& WithComboChartAggregatedFieldWells(const ComboChartAggregatedFieldWells& value) { SetComboChartAggregatedFieldWells(value); return *this;}
-
-    /**
-     * <p>The aggregated field wells of a combo chart. Combo charts only have
-     * aggregated field wells. Columns in a combo chart are aggregated by category.</p>
-     */
-    inline ComboChartFieldWells& WithComboChartAggregatedFieldWells(ComboChartAggregatedFieldWells&& value) { SetComboChartAggregatedFieldWells(std::move(value)); return *this;}
-
+    template<typename ComboChartAggregatedFieldWellsT = ComboChartAggregatedFieldWells>
+    void SetComboChartAggregatedFieldWells(ComboChartAggregatedFieldWellsT&& value) { m_comboChartAggregatedFieldWellsHasBeenSet = true; m_comboChartAggregatedFieldWells = std::forward<ComboChartAggregatedFieldWellsT>(value); }
+    template<typename ComboChartAggregatedFieldWellsT = ComboChartAggregatedFieldWells>
+    ComboChartFieldWells& WithComboChartAggregatedFieldWells(ComboChartAggregatedFieldWellsT&& value) { SetComboChartAggregatedFieldWells(std::forward<ComboChartAggregatedFieldWellsT>(value)); return *this;}
+    ///@}
   private:
 
     ComboChartAggregatedFieldWells m_comboChartAggregatedFieldWells;

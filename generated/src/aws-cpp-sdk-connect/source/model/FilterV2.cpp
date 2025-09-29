@@ -18,15 +18,7 @@ namespace Connect
 namespace Model
 {
 
-FilterV2::FilterV2() : 
-    m_filterKeyHasBeenSet(false),
-    m_filterValuesHasBeenSet(false)
-{
-}
-
-FilterV2::FilterV2(JsonView jsonValue) : 
-    m_filterKeyHasBeenSet(false),
-    m_filterValuesHasBeenSet(false)
+FilterV2::FilterV2(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ FilterV2& FilterV2::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("FilterKey"))
   {
     m_filterKey = jsonValue.GetString("FilterKey");
-
     m_filterKeyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FilterValues"))
   {
     Aws::Utils::Array<JsonView> filterValuesJsonList = jsonValue.GetArray("FilterValues");
@@ -49,7 +39,6 @@ FilterV2& FilterV2::operator =(JsonView jsonValue)
     }
     m_filterValuesHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -27,7 +27,7 @@ namespace Model
   class CreatePipelineRequest : public OSISRequest
   {
   public:
-    AWS_OSIS_API CreatePipelineRequest();
+    AWS_OSIS_API CreatePipelineRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,361 +38,141 @@ namespace Model
     AWS_OSIS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of the OpenSearch Ingestion pipeline to create. Pipeline names are
      * unique across the pipelines owned by an account within an Amazon Web Services
      * Region.</p>
      */
-    inline const Aws::String& GetPipelineName() const{ return m_pipelineName; }
-
-    /**
-     * <p>The name of the OpenSearch Ingestion pipeline to create. Pipeline names are
-     * unique across the pipelines owned by an account within an Amazon Web Services
-     * Region.</p>
-     */
+    inline const Aws::String& GetPipelineName() const { return m_pipelineName; }
     inline bool PipelineNameHasBeenSet() const { return m_pipelineNameHasBeenSet; }
+    template<typename PipelineNameT = Aws::String>
+    void SetPipelineName(PipelineNameT&& value) { m_pipelineNameHasBeenSet = true; m_pipelineName = std::forward<PipelineNameT>(value); }
+    template<typename PipelineNameT = Aws::String>
+    CreatePipelineRequest& WithPipelineName(PipelineNameT&& value) { SetPipelineName(std::forward<PipelineNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the OpenSearch Ingestion pipeline to create. Pipeline names are
-     * unique across the pipelines owned by an account within an Amazon Web Services
-     * Region.</p>
-     */
-    inline void SetPipelineName(const Aws::String& value) { m_pipelineNameHasBeenSet = true; m_pipelineName = value; }
-
-    /**
-     * <p>The name of the OpenSearch Ingestion pipeline to create. Pipeline names are
-     * unique across the pipelines owned by an account within an Amazon Web Services
-     * Region.</p>
-     */
-    inline void SetPipelineName(Aws::String&& value) { m_pipelineNameHasBeenSet = true; m_pipelineName = std::move(value); }
-
-    /**
-     * <p>The name of the OpenSearch Ingestion pipeline to create. Pipeline names are
-     * unique across the pipelines owned by an account within an Amazon Web Services
-     * Region.</p>
-     */
-    inline void SetPipelineName(const char* value) { m_pipelineNameHasBeenSet = true; m_pipelineName.assign(value); }
-
-    /**
-     * <p>The name of the OpenSearch Ingestion pipeline to create. Pipeline names are
-     * unique across the pipelines owned by an account within an Amazon Web Services
-     * Region.</p>
-     */
-    inline CreatePipelineRequest& WithPipelineName(const Aws::String& value) { SetPipelineName(value); return *this;}
-
-    /**
-     * <p>The name of the OpenSearch Ingestion pipeline to create. Pipeline names are
-     * unique across the pipelines owned by an account within an Amazon Web Services
-     * Region.</p>
-     */
-    inline CreatePipelineRequest& WithPipelineName(Aws::String&& value) { SetPipelineName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the OpenSearch Ingestion pipeline to create. Pipeline names are
-     * unique across the pipelines owned by an account within an Amazon Web Services
-     * Region.</p>
-     */
-    inline CreatePipelineRequest& WithPipelineName(const char* value) { SetPipelineName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The minimum pipeline capacity, in Ingestion Compute Units (ICUs).</p>
      */
-    inline int GetMinUnits() const{ return m_minUnits; }
-
-    /**
-     * <p>The minimum pipeline capacity, in Ingestion Compute Units (ICUs).</p>
-     */
+    inline int GetMinUnits() const { return m_minUnits; }
     inline bool MinUnitsHasBeenSet() const { return m_minUnitsHasBeenSet; }
-
-    /**
-     * <p>The minimum pipeline capacity, in Ingestion Compute Units (ICUs).</p>
-     */
     inline void SetMinUnits(int value) { m_minUnitsHasBeenSet = true; m_minUnits = value; }
-
-    /**
-     * <p>The minimum pipeline capacity, in Ingestion Compute Units (ICUs).</p>
-     */
     inline CreatePipelineRequest& WithMinUnits(int value) { SetMinUnits(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The maximum pipeline capacity, in Ingestion Compute Units (ICUs).</p>
      */
-    inline int GetMaxUnits() const{ return m_maxUnits; }
-
-    /**
-     * <p>The maximum pipeline capacity, in Ingestion Compute Units (ICUs).</p>
-     */
+    inline int GetMaxUnits() const { return m_maxUnits; }
     inline bool MaxUnitsHasBeenSet() const { return m_maxUnitsHasBeenSet; }
-
-    /**
-     * <p>The maximum pipeline capacity, in Ingestion Compute Units (ICUs).</p>
-     */
     inline void SetMaxUnits(int value) { m_maxUnitsHasBeenSet = true; m_maxUnits = value; }
-
-    /**
-     * <p>The maximum pipeline capacity, in Ingestion Compute Units (ICUs).</p>
-     */
     inline CreatePipelineRequest& WithMaxUnits(int value) { SetMaxUnits(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The pipeline configuration in YAML format. The command accepts the pipeline
      * configuration as a string or within a .yaml file. If you provide the
      * configuration as a string, each new line must be escaped with
      * <code>\n</code>.</p>
      */
-    inline const Aws::String& GetPipelineConfigurationBody() const{ return m_pipelineConfigurationBody; }
-
-    /**
-     * <p>The pipeline configuration in YAML format. The command accepts the pipeline
-     * configuration as a string or within a .yaml file. If you provide the
-     * configuration as a string, each new line must be escaped with
-     * <code>\n</code>.</p>
-     */
+    inline const Aws::String& GetPipelineConfigurationBody() const { return m_pipelineConfigurationBody; }
     inline bool PipelineConfigurationBodyHasBeenSet() const { return m_pipelineConfigurationBodyHasBeenSet; }
+    template<typename PipelineConfigurationBodyT = Aws::String>
+    void SetPipelineConfigurationBody(PipelineConfigurationBodyT&& value) { m_pipelineConfigurationBodyHasBeenSet = true; m_pipelineConfigurationBody = std::forward<PipelineConfigurationBodyT>(value); }
+    template<typename PipelineConfigurationBodyT = Aws::String>
+    CreatePipelineRequest& WithPipelineConfigurationBody(PipelineConfigurationBodyT&& value) { SetPipelineConfigurationBody(std::forward<PipelineConfigurationBodyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The pipeline configuration in YAML format. The command accepts the pipeline
-     * configuration as a string or within a .yaml file. If you provide the
-     * configuration as a string, each new line must be escaped with
-     * <code>\n</code>.</p>
-     */
-    inline void SetPipelineConfigurationBody(const Aws::String& value) { m_pipelineConfigurationBodyHasBeenSet = true; m_pipelineConfigurationBody = value; }
-
-    /**
-     * <p>The pipeline configuration in YAML format. The command accepts the pipeline
-     * configuration as a string or within a .yaml file. If you provide the
-     * configuration as a string, each new line must be escaped with
-     * <code>\n</code>.</p>
-     */
-    inline void SetPipelineConfigurationBody(Aws::String&& value) { m_pipelineConfigurationBodyHasBeenSet = true; m_pipelineConfigurationBody = std::move(value); }
-
-    /**
-     * <p>The pipeline configuration in YAML format. The command accepts the pipeline
-     * configuration as a string or within a .yaml file. If you provide the
-     * configuration as a string, each new line must be escaped with
-     * <code>\n</code>.</p>
-     */
-    inline void SetPipelineConfigurationBody(const char* value) { m_pipelineConfigurationBodyHasBeenSet = true; m_pipelineConfigurationBody.assign(value); }
-
-    /**
-     * <p>The pipeline configuration in YAML format. The command accepts the pipeline
-     * configuration as a string or within a .yaml file. If you provide the
-     * configuration as a string, each new line must be escaped with
-     * <code>\n</code>.</p>
-     */
-    inline CreatePipelineRequest& WithPipelineConfigurationBody(const Aws::String& value) { SetPipelineConfigurationBody(value); return *this;}
-
-    /**
-     * <p>The pipeline configuration in YAML format. The command accepts the pipeline
-     * configuration as a string or within a .yaml file. If you provide the
-     * configuration as a string, each new line must be escaped with
-     * <code>\n</code>.</p>
-     */
-    inline CreatePipelineRequest& WithPipelineConfigurationBody(Aws::String&& value) { SetPipelineConfigurationBody(std::move(value)); return *this;}
-
-    /**
-     * <p>The pipeline configuration in YAML format. The command accepts the pipeline
-     * configuration as a string or within a .yaml file. If you provide the
-     * configuration as a string, each new line must be escaped with
-     * <code>\n</code>.</p>
-     */
-    inline CreatePipelineRequest& WithPipelineConfigurationBody(const char* value) { SetPipelineConfigurationBody(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Key-value pairs to configure log publishing.</p>
      */
-    inline const LogPublishingOptions& GetLogPublishingOptions() const{ return m_logPublishingOptions; }
-
-    /**
-     * <p>Key-value pairs to configure log publishing.</p>
-     */
+    inline const LogPublishingOptions& GetLogPublishingOptions() const { return m_logPublishingOptions; }
     inline bool LogPublishingOptionsHasBeenSet() const { return m_logPublishingOptionsHasBeenSet; }
+    template<typename LogPublishingOptionsT = LogPublishingOptions>
+    void SetLogPublishingOptions(LogPublishingOptionsT&& value) { m_logPublishingOptionsHasBeenSet = true; m_logPublishingOptions = std::forward<LogPublishingOptionsT>(value); }
+    template<typename LogPublishingOptionsT = LogPublishingOptions>
+    CreatePipelineRequest& WithLogPublishingOptions(LogPublishingOptionsT&& value) { SetLogPublishingOptions(std::forward<LogPublishingOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Key-value pairs to configure log publishing.</p>
-     */
-    inline void SetLogPublishingOptions(const LogPublishingOptions& value) { m_logPublishingOptionsHasBeenSet = true; m_logPublishingOptions = value; }
-
-    /**
-     * <p>Key-value pairs to configure log publishing.</p>
-     */
-    inline void SetLogPublishingOptions(LogPublishingOptions&& value) { m_logPublishingOptionsHasBeenSet = true; m_logPublishingOptions = std::move(value); }
-
-    /**
-     * <p>Key-value pairs to configure log publishing.</p>
-     */
-    inline CreatePipelineRequest& WithLogPublishingOptions(const LogPublishingOptions& value) { SetLogPublishingOptions(value); return *this;}
-
-    /**
-     * <p>Key-value pairs to configure log publishing.</p>
-     */
-    inline CreatePipelineRequest& WithLogPublishingOptions(LogPublishingOptions&& value) { SetLogPublishingOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Container for the values required to configure VPC access for the pipeline.
      * If you don't specify these values, OpenSearch Ingestion creates the pipeline
      * with a public endpoint.</p>
      */
-    inline const VpcOptions& GetVpcOptions() const{ return m_vpcOptions; }
-
-    /**
-     * <p>Container for the values required to configure VPC access for the pipeline.
-     * If you don't specify these values, OpenSearch Ingestion creates the pipeline
-     * with a public endpoint.</p>
-     */
+    inline const VpcOptions& GetVpcOptions() const { return m_vpcOptions; }
     inline bool VpcOptionsHasBeenSet() const { return m_vpcOptionsHasBeenSet; }
+    template<typename VpcOptionsT = VpcOptions>
+    void SetVpcOptions(VpcOptionsT&& value) { m_vpcOptionsHasBeenSet = true; m_vpcOptions = std::forward<VpcOptionsT>(value); }
+    template<typename VpcOptionsT = VpcOptions>
+    CreatePipelineRequest& WithVpcOptions(VpcOptionsT&& value) { SetVpcOptions(std::forward<VpcOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Container for the values required to configure VPC access for the pipeline.
-     * If you don't specify these values, OpenSearch Ingestion creates the pipeline
-     * with a public endpoint.</p>
-     */
-    inline void SetVpcOptions(const VpcOptions& value) { m_vpcOptionsHasBeenSet = true; m_vpcOptions = value; }
-
-    /**
-     * <p>Container for the values required to configure VPC access for the pipeline.
-     * If you don't specify these values, OpenSearch Ingestion creates the pipeline
-     * with a public endpoint.</p>
-     */
-    inline void SetVpcOptions(VpcOptions&& value) { m_vpcOptionsHasBeenSet = true; m_vpcOptions = std::move(value); }
-
-    /**
-     * <p>Container for the values required to configure VPC access for the pipeline.
-     * If you don't specify these values, OpenSearch Ingestion creates the pipeline
-     * with a public endpoint.</p>
-     */
-    inline CreatePipelineRequest& WithVpcOptions(const VpcOptions& value) { SetVpcOptions(value); return *this;}
-
-    /**
-     * <p>Container for the values required to configure VPC access for the pipeline.
-     * If you don't specify these values, OpenSearch Ingestion creates the pipeline
-     * with a public endpoint.</p>
-     */
-    inline CreatePipelineRequest& WithVpcOptions(VpcOptions&& value) { SetVpcOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Key-value pairs to configure persistent buffering for the pipeline.</p>
      */
-    inline const BufferOptions& GetBufferOptions() const{ return m_bufferOptions; }
-
-    /**
-     * <p>Key-value pairs to configure persistent buffering for the pipeline.</p>
-     */
+    inline const BufferOptions& GetBufferOptions() const { return m_bufferOptions; }
     inline bool BufferOptionsHasBeenSet() const { return m_bufferOptionsHasBeenSet; }
+    template<typename BufferOptionsT = BufferOptions>
+    void SetBufferOptions(BufferOptionsT&& value) { m_bufferOptionsHasBeenSet = true; m_bufferOptions = std::forward<BufferOptionsT>(value); }
+    template<typename BufferOptionsT = BufferOptions>
+    CreatePipelineRequest& WithBufferOptions(BufferOptionsT&& value) { SetBufferOptions(std::forward<BufferOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Key-value pairs to configure persistent buffering for the pipeline.</p>
-     */
-    inline void SetBufferOptions(const BufferOptions& value) { m_bufferOptionsHasBeenSet = true; m_bufferOptions = value; }
-
-    /**
-     * <p>Key-value pairs to configure persistent buffering for the pipeline.</p>
-     */
-    inline void SetBufferOptions(BufferOptions&& value) { m_bufferOptionsHasBeenSet = true; m_bufferOptions = std::move(value); }
-
-    /**
-     * <p>Key-value pairs to configure persistent buffering for the pipeline.</p>
-     */
-    inline CreatePipelineRequest& WithBufferOptions(const BufferOptions& value) { SetBufferOptions(value); return *this;}
-
-    /**
-     * <p>Key-value pairs to configure persistent buffering for the pipeline.</p>
-     */
-    inline CreatePipelineRequest& WithBufferOptions(BufferOptions&& value) { SetBufferOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Key-value pairs to configure encryption for data that is written to a
      * persistent buffer.</p>
      */
-    inline const EncryptionAtRestOptions& GetEncryptionAtRestOptions() const{ return m_encryptionAtRestOptions; }
-
-    /**
-     * <p>Key-value pairs to configure encryption for data that is written to a
-     * persistent buffer.</p>
-     */
+    inline const EncryptionAtRestOptions& GetEncryptionAtRestOptions() const { return m_encryptionAtRestOptions; }
     inline bool EncryptionAtRestOptionsHasBeenSet() const { return m_encryptionAtRestOptionsHasBeenSet; }
+    template<typename EncryptionAtRestOptionsT = EncryptionAtRestOptions>
+    void SetEncryptionAtRestOptions(EncryptionAtRestOptionsT&& value) { m_encryptionAtRestOptionsHasBeenSet = true; m_encryptionAtRestOptions = std::forward<EncryptionAtRestOptionsT>(value); }
+    template<typename EncryptionAtRestOptionsT = EncryptionAtRestOptions>
+    CreatePipelineRequest& WithEncryptionAtRestOptions(EncryptionAtRestOptionsT&& value) { SetEncryptionAtRestOptions(std::forward<EncryptionAtRestOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Key-value pairs to configure encryption for data that is written to a
-     * persistent buffer.</p>
-     */
-    inline void SetEncryptionAtRestOptions(const EncryptionAtRestOptions& value) { m_encryptionAtRestOptionsHasBeenSet = true; m_encryptionAtRestOptions = value; }
-
-    /**
-     * <p>Key-value pairs to configure encryption for data that is written to a
-     * persistent buffer.</p>
-     */
-    inline void SetEncryptionAtRestOptions(EncryptionAtRestOptions&& value) { m_encryptionAtRestOptionsHasBeenSet = true; m_encryptionAtRestOptions = std::move(value); }
-
-    /**
-     * <p>Key-value pairs to configure encryption for data that is written to a
-     * persistent buffer.</p>
-     */
-    inline CreatePipelineRequest& WithEncryptionAtRestOptions(const EncryptionAtRestOptions& value) { SetEncryptionAtRestOptions(value); return *this;}
-
-    /**
-     * <p>Key-value pairs to configure encryption for data that is written to a
-     * persistent buffer.</p>
-     */
-    inline CreatePipelineRequest& WithEncryptionAtRestOptions(EncryptionAtRestOptions&& value) { SetEncryptionAtRestOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>List of tags to add to the pipeline upon creation.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>List of tags to add to the pipeline upon creation.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    CreatePipelineRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    CreatePipelineRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>List of tags to add to the pipeline upon creation.</p>
+     * <p>The Amazon Resource Name (ARN) of the IAM role that grants the pipeline
+     * permission to access Amazon Web Services resources.</p>
      */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>List of tags to add to the pipeline upon creation.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>List of tags to add to the pipeline upon creation.</p>
-     */
-    inline CreatePipelineRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>List of tags to add to the pipeline upon creation.</p>
-     */
-    inline CreatePipelineRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>List of tags to add to the pipeline upon creation.</p>
-     */
-    inline CreatePipelineRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>List of tags to add to the pipeline upon creation.</p>
-     */
-    inline CreatePipelineRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    inline const Aws::String& GetPipelineRoleArn() const { return m_pipelineRoleArn; }
+    inline bool PipelineRoleArnHasBeenSet() const { return m_pipelineRoleArnHasBeenSet; }
+    template<typename PipelineRoleArnT = Aws::String>
+    void SetPipelineRoleArn(PipelineRoleArnT&& value) { m_pipelineRoleArnHasBeenSet = true; m_pipelineRoleArn = std::forward<PipelineRoleArnT>(value); }
+    template<typename PipelineRoleArnT = Aws::String>
+    CreatePipelineRequest& WithPipelineRoleArn(PipelineRoleArnT&& value) { SetPipelineRoleArn(std::forward<PipelineRoleArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_pipelineName;
     bool m_pipelineNameHasBeenSet = false;
 
-    int m_minUnits;
+    int m_minUnits{0};
     bool m_minUnitsHasBeenSet = false;
 
-    int m_maxUnits;
+    int m_maxUnits{0};
     bool m_maxUnitsHasBeenSet = false;
 
     Aws::String m_pipelineConfigurationBody;
@@ -412,6 +192,9 @@ namespace Model
 
     Aws::Vector<Tag> m_tags;
     bool m_tagsHasBeenSet = false;
+
+    Aws::String m_pipelineRoleArn;
+    bool m_pipelineRoleArnHasBeenSet = false;
   };
 
 } // namespace Model

@@ -25,7 +25,7 @@ namespace Model
   class ListResolversByFunctionRequest : public AppSyncRequest
   {
   public:
-    AWS_APPSYNC_API ListResolversByFunctionRequest();
+    AWS_APPSYNC_API ListResolversByFunctionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,157 +38,52 @@ namespace Model
     AWS_APPSYNC_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>The API ID.</p>
      */
-    inline const Aws::String& GetApiId() const{ return m_apiId; }
-
-    /**
-     * <p>The API ID.</p>
-     */
+    inline const Aws::String& GetApiId() const { return m_apiId; }
     inline bool ApiIdHasBeenSet() const { return m_apiIdHasBeenSet; }
+    template<typename ApiIdT = Aws::String>
+    void SetApiId(ApiIdT&& value) { m_apiIdHasBeenSet = true; m_apiId = std::forward<ApiIdT>(value); }
+    template<typename ApiIdT = Aws::String>
+    ListResolversByFunctionRequest& WithApiId(ApiIdT&& value) { SetApiId(std::forward<ApiIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The API ID.</p>
-     */
-    inline void SetApiId(const Aws::String& value) { m_apiIdHasBeenSet = true; m_apiId = value; }
-
-    /**
-     * <p>The API ID.</p>
-     */
-    inline void SetApiId(Aws::String&& value) { m_apiIdHasBeenSet = true; m_apiId = std::move(value); }
-
-    /**
-     * <p>The API ID.</p>
-     */
-    inline void SetApiId(const char* value) { m_apiIdHasBeenSet = true; m_apiId.assign(value); }
-
-    /**
-     * <p>The API ID.</p>
-     */
-    inline ListResolversByFunctionRequest& WithApiId(const Aws::String& value) { SetApiId(value); return *this;}
-
-    /**
-     * <p>The API ID.</p>
-     */
-    inline ListResolversByFunctionRequest& WithApiId(Aws::String&& value) { SetApiId(std::move(value)); return *this;}
-
-    /**
-     * <p>The API ID.</p>
-     */
-    inline ListResolversByFunctionRequest& WithApiId(const char* value) { SetApiId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The function ID.</p>
      */
-    inline const Aws::String& GetFunctionId() const{ return m_functionId; }
-
-    /**
-     * <p>The function ID.</p>
-     */
+    inline const Aws::String& GetFunctionId() const { return m_functionId; }
     inline bool FunctionIdHasBeenSet() const { return m_functionIdHasBeenSet; }
+    template<typename FunctionIdT = Aws::String>
+    void SetFunctionId(FunctionIdT&& value) { m_functionIdHasBeenSet = true; m_functionId = std::forward<FunctionIdT>(value); }
+    template<typename FunctionIdT = Aws::String>
+    ListResolversByFunctionRequest& WithFunctionId(FunctionIdT&& value) { SetFunctionId(std::forward<FunctionIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The function ID.</p>
-     */
-    inline void SetFunctionId(const Aws::String& value) { m_functionIdHasBeenSet = true; m_functionId = value; }
-
-    /**
-     * <p>The function ID.</p>
-     */
-    inline void SetFunctionId(Aws::String&& value) { m_functionIdHasBeenSet = true; m_functionId = std::move(value); }
-
-    /**
-     * <p>The function ID.</p>
-     */
-    inline void SetFunctionId(const char* value) { m_functionIdHasBeenSet = true; m_functionId.assign(value); }
-
-    /**
-     * <p>The function ID.</p>
-     */
-    inline ListResolversByFunctionRequest& WithFunctionId(const Aws::String& value) { SetFunctionId(value); return *this;}
-
-    /**
-     * <p>The function ID.</p>
-     */
-    inline ListResolversByFunctionRequest& WithFunctionId(Aws::String&& value) { SetFunctionId(std::move(value)); return *this;}
-
-    /**
-     * <p>The function ID.</p>
-     */
-    inline ListResolversByFunctionRequest& WithFunctionId(const char* value) { SetFunctionId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An identifier that was returned from the previous call to this operation,
      * which you can use to return the next set of items in the list.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>An identifier that was returned from the previous call to this operation,
-     * which you can use to return the next set of items in the list.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListResolversByFunctionRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An identifier that was returned from the previous call to this operation,
-     * which you can use to return the next set of items in the list.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>An identifier that was returned from the previous call to this operation,
-     * which you can use to return the next set of items in the list.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>An identifier that was returned from the previous call to this operation,
-     * which you can use to return the next set of items in the list.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>An identifier that was returned from the previous call to this operation,
-     * which you can use to return the next set of items in the list.</p>
-     */
-    inline ListResolversByFunctionRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>An identifier that was returned from the previous call to this operation,
-     * which you can use to return the next set of items in the list.</p>
-     */
-    inline ListResolversByFunctionRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>An identifier that was returned from the previous call to this operation,
-     * which you can use to return the next set of items in the list.</p>
-     */
-    inline ListResolversByFunctionRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of results that you want the request to return.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of results that you want the request to return.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of results that you want the request to return.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of results that you want the request to return.</p>
-     */
     inline ListResolversByFunctionRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_apiId;
@@ -200,7 +95,7 @@ namespace Model
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
   };
 

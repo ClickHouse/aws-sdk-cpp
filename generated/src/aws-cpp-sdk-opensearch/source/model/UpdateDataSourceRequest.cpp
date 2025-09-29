@@ -12,14 +12,6 @@ using namespace Aws::OpenSearchService::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateDataSourceRequest::UpdateDataSourceRequest() : 
-    m_domainNameHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_dataSourceTypeHasBeenSet(false),
-    m_descriptionHasBeenSet(false)
-{
-}
-
 Aws::String UpdateDataSourceRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -34,6 +26,11 @@ Aws::String UpdateDataSourceRequest::SerializePayload() const
   {
    payload.WithString("Description", m_description);
 
+  }
+
+  if(m_statusHasBeenSet)
+  {
+   payload.WithString("Status", DataSourceStatusMapper::GetNameForDataSourceStatus(m_status));
   }
 
   return payload.View().WriteReadable();

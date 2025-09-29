@@ -20,15 +20,7 @@ namespace SimpleDB
 namespace Model
 {
 
-TooManyRequestedAttributes::TooManyRequestedAttributes() : 
-    m_boxUsage(0.0),
-    m_boxUsageHasBeenSet(false)
-{
-}
-
-TooManyRequestedAttributes::TooManyRequestedAttributes(const XmlNode& xmlNode) : 
-    m_boxUsage(0.0),
-    m_boxUsageHasBeenSet(false)
+TooManyRequestedAttributes::TooManyRequestedAttributes(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

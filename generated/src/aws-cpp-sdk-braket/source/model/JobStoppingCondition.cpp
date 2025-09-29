@@ -18,15 +18,7 @@ namespace Braket
 namespace Model
 {
 
-JobStoppingCondition::JobStoppingCondition() : 
-    m_maxRuntimeInSeconds(0),
-    m_maxRuntimeInSecondsHasBeenSet(false)
-{
-}
-
-JobStoppingCondition::JobStoppingCondition(JsonView jsonValue) : 
-    m_maxRuntimeInSeconds(0),
-    m_maxRuntimeInSecondsHasBeenSet(false)
+JobStoppingCondition::JobStoppingCondition(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ JobStoppingCondition& JobStoppingCondition::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("maxRuntimeInSeconds"))
   {
     m_maxRuntimeInSeconds = jsonValue.GetInteger("maxRuntimeInSeconds");
-
     m_maxRuntimeInSecondsHasBeenSet = true;
   }
-
   return *this;
 }
 

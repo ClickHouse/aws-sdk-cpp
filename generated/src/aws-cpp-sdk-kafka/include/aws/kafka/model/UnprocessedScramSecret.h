@@ -34,182 +34,53 @@ namespace Model
   class UnprocessedScramSecret
   {
   public:
-    AWS_KAFKA_API UnprocessedScramSecret();
+    AWS_KAFKA_API UnprocessedScramSecret() = default;
     AWS_KAFKA_API UnprocessedScramSecret(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKA_API UnprocessedScramSecret& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * 
             <p>Error code for associate/disassociate failure.</p>
          
      */
-    inline const Aws::String& GetErrorCode() const{ return m_errorCode; }
-
-    /**
-     * 
-            <p>Error code for associate/disassociate failure.</p>
-         
-     */
+    inline const Aws::String& GetErrorCode() const { return m_errorCode; }
     inline bool ErrorCodeHasBeenSet() const { return m_errorCodeHasBeenSet; }
+    template<typename ErrorCodeT = Aws::String>
+    void SetErrorCode(ErrorCodeT&& value) { m_errorCodeHasBeenSet = true; m_errorCode = std::forward<ErrorCodeT>(value); }
+    template<typename ErrorCodeT = Aws::String>
+    UnprocessedScramSecret& WithErrorCode(ErrorCodeT&& value) { SetErrorCode(std::forward<ErrorCodeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * 
-            <p>Error code for associate/disassociate failure.</p>
-         
-     */
-    inline void SetErrorCode(const Aws::String& value) { m_errorCodeHasBeenSet = true; m_errorCode = value; }
-
-    /**
-     * 
-            <p>Error code for associate/disassociate failure.</p>
-         
-     */
-    inline void SetErrorCode(Aws::String&& value) { m_errorCodeHasBeenSet = true; m_errorCode = std::move(value); }
-
-    /**
-     * 
-            <p>Error code for associate/disassociate failure.</p>
-         
-     */
-    inline void SetErrorCode(const char* value) { m_errorCodeHasBeenSet = true; m_errorCode.assign(value); }
-
-    /**
-     * 
-            <p>Error code for associate/disassociate failure.</p>
-         
-     */
-    inline UnprocessedScramSecret& WithErrorCode(const Aws::String& value) { SetErrorCode(value); return *this;}
-
-    /**
-     * 
-            <p>Error code for associate/disassociate failure.</p>
-         
-     */
-    inline UnprocessedScramSecret& WithErrorCode(Aws::String&& value) { SetErrorCode(std::move(value)); return *this;}
-
-    /**
-     * 
-            <p>Error code for associate/disassociate failure.</p>
-         
-     */
-    inline UnprocessedScramSecret& WithErrorCode(const char* value) { SetErrorCode(value); return *this;}
-
-
+    ///@{
     /**
      * 
             <p>Error message for associate/disassociate failure.</p>
          
      */
-    inline const Aws::String& GetErrorMessage() const{ return m_errorMessage; }
-
-    /**
-     * 
-            <p>Error message for associate/disassociate failure.</p>
-         
-     */
+    inline const Aws::String& GetErrorMessage() const { return m_errorMessage; }
     inline bool ErrorMessageHasBeenSet() const { return m_errorMessageHasBeenSet; }
+    template<typename ErrorMessageT = Aws::String>
+    void SetErrorMessage(ErrorMessageT&& value) { m_errorMessageHasBeenSet = true; m_errorMessage = std::forward<ErrorMessageT>(value); }
+    template<typename ErrorMessageT = Aws::String>
+    UnprocessedScramSecret& WithErrorMessage(ErrorMessageT&& value) { SetErrorMessage(std::forward<ErrorMessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * 
-            <p>Error message for associate/disassociate failure.</p>
-         
-     */
-    inline void SetErrorMessage(const Aws::String& value) { m_errorMessageHasBeenSet = true; m_errorMessage = value; }
-
-    /**
-     * 
-            <p>Error message for associate/disassociate failure.</p>
-         
-     */
-    inline void SetErrorMessage(Aws::String&& value) { m_errorMessageHasBeenSet = true; m_errorMessage = std::move(value); }
-
-    /**
-     * 
-            <p>Error message for associate/disassociate failure.</p>
-         
-     */
-    inline void SetErrorMessage(const char* value) { m_errorMessageHasBeenSet = true; m_errorMessage.assign(value); }
-
-    /**
-     * 
-            <p>Error message for associate/disassociate failure.</p>
-         
-     */
-    inline UnprocessedScramSecret& WithErrorMessage(const Aws::String& value) { SetErrorMessage(value); return *this;}
-
-    /**
-     * 
-            <p>Error message for associate/disassociate failure.</p>
-         
-     */
-    inline UnprocessedScramSecret& WithErrorMessage(Aws::String&& value) { SetErrorMessage(std::move(value)); return *this;}
-
-    /**
-     * 
-            <p>Error message for associate/disassociate failure.</p>
-         
-     */
-    inline UnprocessedScramSecret& WithErrorMessage(const char* value) { SetErrorMessage(value); return *this;}
-
-
+    ///@{
     /**
      * 
             <p>AWS Secrets Manager secret ARN.</p>
          
      */
-    inline const Aws::String& GetSecretArn() const{ return m_secretArn; }
-
-    /**
-     * 
-            <p>AWS Secrets Manager secret ARN.</p>
-         
-     */
+    inline const Aws::String& GetSecretArn() const { return m_secretArn; }
     inline bool SecretArnHasBeenSet() const { return m_secretArnHasBeenSet; }
-
-    /**
-     * 
-            <p>AWS Secrets Manager secret ARN.</p>
-         
-     */
-    inline void SetSecretArn(const Aws::String& value) { m_secretArnHasBeenSet = true; m_secretArn = value; }
-
-    /**
-     * 
-            <p>AWS Secrets Manager secret ARN.</p>
-         
-     */
-    inline void SetSecretArn(Aws::String&& value) { m_secretArnHasBeenSet = true; m_secretArn = std::move(value); }
-
-    /**
-     * 
-            <p>AWS Secrets Manager secret ARN.</p>
-         
-     */
-    inline void SetSecretArn(const char* value) { m_secretArnHasBeenSet = true; m_secretArn.assign(value); }
-
-    /**
-     * 
-            <p>AWS Secrets Manager secret ARN.</p>
-         
-     */
-    inline UnprocessedScramSecret& WithSecretArn(const Aws::String& value) { SetSecretArn(value); return *this;}
-
-    /**
-     * 
-            <p>AWS Secrets Manager secret ARN.</p>
-         
-     */
-    inline UnprocessedScramSecret& WithSecretArn(Aws::String&& value) { SetSecretArn(std::move(value)); return *this;}
-
-    /**
-     * 
-            <p>AWS Secrets Manager secret ARN.</p>
-         
-     */
-    inline UnprocessedScramSecret& WithSecretArn(const char* value) { SetSecretArn(value); return *this;}
-
+    template<typename SecretArnT = Aws::String>
+    void SetSecretArn(SecretArnT&& value) { m_secretArnHasBeenSet = true; m_secretArn = std::forward<SecretArnT>(value); }
+    template<typename SecretArnT = Aws::String>
+    UnprocessedScramSecret& WithSecretArn(SecretArnT&& value) { SetSecretArn(std::forward<SecretArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_errorCode;

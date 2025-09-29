@@ -18,15 +18,7 @@ namespace imagebuilder
 namespace Model
 {
 
-ComponentConfiguration::ComponentConfiguration() : 
-    m_componentArnHasBeenSet(false),
-    m_parametersHasBeenSet(false)
-{
-}
-
-ComponentConfiguration::ComponentConfiguration(JsonView jsonValue) : 
-    m_componentArnHasBeenSet(false),
-    m_parametersHasBeenSet(false)
+ComponentConfiguration::ComponentConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ComponentConfiguration& ComponentConfiguration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("componentArn"))
   {
     m_componentArn = jsonValue.GetString("componentArn");
-
     m_componentArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("parameters"))
   {
     Aws::Utils::Array<JsonView> parametersJsonList = jsonValue.GetArray("parameters");
@@ -49,7 +39,6 @@ ComponentConfiguration& ComponentConfiguration::operator =(JsonView jsonValue)
     }
     m_parametersHasBeenSet = true;
   }
-
   return *this;
 }
 

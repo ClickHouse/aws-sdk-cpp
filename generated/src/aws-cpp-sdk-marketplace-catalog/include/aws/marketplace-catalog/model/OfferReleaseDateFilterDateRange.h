@@ -32,93 +32,35 @@ namespace Model
   class OfferReleaseDateFilterDateRange
   {
   public:
-    AWS_MARKETPLACECATALOG_API OfferReleaseDateFilterDateRange();
+    AWS_MARKETPLACECATALOG_API OfferReleaseDateFilterDateRange() = default;
     AWS_MARKETPLACECATALOG_API OfferReleaseDateFilterDateRange(Aws::Utils::Json::JsonView jsonValue);
     AWS_MARKETPLACECATALOG_API OfferReleaseDateFilterDateRange& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MARKETPLACECATALOG_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Allows filtering on the <code>ReleaseDate</code> of offers after a date.</p>
      */
-    inline const Aws::String& GetAfterValue() const{ return m_afterValue; }
-
-    /**
-     * <p>Allows filtering on the <code>ReleaseDate</code> of offers after a date.</p>
-     */
+    inline const Aws::String& GetAfterValue() const { return m_afterValue; }
     inline bool AfterValueHasBeenSet() const { return m_afterValueHasBeenSet; }
+    template<typename AfterValueT = Aws::String>
+    void SetAfterValue(AfterValueT&& value) { m_afterValueHasBeenSet = true; m_afterValue = std::forward<AfterValueT>(value); }
+    template<typename AfterValueT = Aws::String>
+    OfferReleaseDateFilterDateRange& WithAfterValue(AfterValueT&& value) { SetAfterValue(std::forward<AfterValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Allows filtering on the <code>ReleaseDate</code> of offers after a date.</p>
-     */
-    inline void SetAfterValue(const Aws::String& value) { m_afterValueHasBeenSet = true; m_afterValue = value; }
-
-    /**
-     * <p>Allows filtering on the <code>ReleaseDate</code> of offers after a date.</p>
-     */
-    inline void SetAfterValue(Aws::String&& value) { m_afterValueHasBeenSet = true; m_afterValue = std::move(value); }
-
-    /**
-     * <p>Allows filtering on the <code>ReleaseDate</code> of offers after a date.</p>
-     */
-    inline void SetAfterValue(const char* value) { m_afterValueHasBeenSet = true; m_afterValue.assign(value); }
-
-    /**
-     * <p>Allows filtering on the <code>ReleaseDate</code> of offers after a date.</p>
-     */
-    inline OfferReleaseDateFilterDateRange& WithAfterValue(const Aws::String& value) { SetAfterValue(value); return *this;}
-
-    /**
-     * <p>Allows filtering on the <code>ReleaseDate</code> of offers after a date.</p>
-     */
-    inline OfferReleaseDateFilterDateRange& WithAfterValue(Aws::String&& value) { SetAfterValue(std::move(value)); return *this;}
-
-    /**
-     * <p>Allows filtering on the <code>ReleaseDate</code> of offers after a date.</p>
-     */
-    inline OfferReleaseDateFilterDateRange& WithAfterValue(const char* value) { SetAfterValue(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Allows filtering on the <code>ReleaseDate</code> of offers before a date.</p>
      */
-    inline const Aws::String& GetBeforeValue() const{ return m_beforeValue; }
-
-    /**
-     * <p>Allows filtering on the <code>ReleaseDate</code> of offers before a date.</p>
-     */
+    inline const Aws::String& GetBeforeValue() const { return m_beforeValue; }
     inline bool BeforeValueHasBeenSet() const { return m_beforeValueHasBeenSet; }
-
-    /**
-     * <p>Allows filtering on the <code>ReleaseDate</code> of offers before a date.</p>
-     */
-    inline void SetBeforeValue(const Aws::String& value) { m_beforeValueHasBeenSet = true; m_beforeValue = value; }
-
-    /**
-     * <p>Allows filtering on the <code>ReleaseDate</code> of offers before a date.</p>
-     */
-    inline void SetBeforeValue(Aws::String&& value) { m_beforeValueHasBeenSet = true; m_beforeValue = std::move(value); }
-
-    /**
-     * <p>Allows filtering on the <code>ReleaseDate</code> of offers before a date.</p>
-     */
-    inline void SetBeforeValue(const char* value) { m_beforeValueHasBeenSet = true; m_beforeValue.assign(value); }
-
-    /**
-     * <p>Allows filtering on the <code>ReleaseDate</code> of offers before a date.</p>
-     */
-    inline OfferReleaseDateFilterDateRange& WithBeforeValue(const Aws::String& value) { SetBeforeValue(value); return *this;}
-
-    /**
-     * <p>Allows filtering on the <code>ReleaseDate</code> of offers before a date.</p>
-     */
-    inline OfferReleaseDateFilterDateRange& WithBeforeValue(Aws::String&& value) { SetBeforeValue(std::move(value)); return *this;}
-
-    /**
-     * <p>Allows filtering on the <code>ReleaseDate</code> of offers before a date.</p>
-     */
-    inline OfferReleaseDateFilterDateRange& WithBeforeValue(const char* value) { SetBeforeValue(value); return *this;}
-
+    template<typename BeforeValueT = Aws::String>
+    void SetBeforeValue(BeforeValueT&& value) { m_beforeValueHasBeenSet = true; m_beforeValue = std::forward<BeforeValueT>(value); }
+    template<typename BeforeValueT = Aws::String>
+    OfferReleaseDateFilterDateRange& WithBeforeValue(BeforeValueT&& value) { SetBeforeValue(std::forward<BeforeValueT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_afterValue;

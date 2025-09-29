@@ -30,105 +30,67 @@ namespace Model
   class CreateSecurityGroupResponse
   {
   public:
-    AWS_EC2_API CreateSecurityGroupResponse();
+    AWS_EC2_API CreateSecurityGroupResponse() = default;
     AWS_EC2_API CreateSecurityGroupResponse(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_EC2_API CreateSecurityGroupResponse& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * <p>The ID of the security group.</p>
      */
-    inline const Aws::String& GetGroupId() const{ return m_groupId; }
+    inline const Aws::String& GetGroupId() const { return m_groupId; }
+    template<typename GroupIdT = Aws::String>
+    void SetGroupId(GroupIdT&& value) { m_groupIdHasBeenSet = true; m_groupId = std::forward<GroupIdT>(value); }
+    template<typename GroupIdT = Aws::String>
+    CreateSecurityGroupResponse& WithGroupId(GroupIdT&& value) { SetGroupId(std::forward<GroupIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the security group.</p>
-     */
-    inline void SetGroupId(const Aws::String& value) { m_groupId = value; }
-
-    /**
-     * <p>The ID of the security group.</p>
-     */
-    inline void SetGroupId(Aws::String&& value) { m_groupId = std::move(value); }
-
-    /**
-     * <p>The ID of the security group.</p>
-     */
-    inline void SetGroupId(const char* value) { m_groupId.assign(value); }
-
-    /**
-     * <p>The ID of the security group.</p>
-     */
-    inline CreateSecurityGroupResponse& WithGroupId(const Aws::String& value) { SetGroupId(value); return *this;}
-
-    /**
-     * <p>The ID of the security group.</p>
-     */
-    inline CreateSecurityGroupResponse& WithGroupId(Aws::String&& value) { SetGroupId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the security group.</p>
-     */
-    inline CreateSecurityGroupResponse& WithGroupId(const char* value) { SetGroupId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The tags assigned to the security group.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    CreateSecurityGroupResponse& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    CreateSecurityGroupResponse& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The tags assigned to the security group.</p>
+     * <p>The security group ARN.</p>
      */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tags = value; }
+    inline const Aws::String& GetSecurityGroupArn() const { return m_securityGroupArn; }
+    template<typename SecurityGroupArnT = Aws::String>
+    void SetSecurityGroupArn(SecurityGroupArnT&& value) { m_securityGroupArnHasBeenSet = true; m_securityGroupArn = std::forward<SecurityGroupArnT>(value); }
+    template<typename SecurityGroupArnT = Aws::String>
+    CreateSecurityGroupResponse& WithSecurityGroupArn(SecurityGroupArnT&& value) { SetSecurityGroupArn(std::forward<SecurityGroupArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The tags assigned to the security group.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tags = std::move(value); }
-
-    /**
-     * <p>The tags assigned to the security group.</p>
-     */
-    inline CreateSecurityGroupResponse& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The tags assigned to the security group.</p>
-     */
-    inline CreateSecurityGroupResponse& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags assigned to the security group.</p>
-     */
-    inline CreateSecurityGroupResponse& AddTags(const Tag& value) { m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>The tags assigned to the security group.</p>
-     */
-    inline CreateSecurityGroupResponse& AddTags(Tag&& value) { m_tags.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
-
-    
-    inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
-
-    
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
-
-    
-    inline CreateSecurityGroupResponse& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
-
-    
-    inline CreateSecurityGroupResponse& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
-
+    inline const ResponseMetadata& GetResponseMetadata() const { return m_responseMetadata; }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    void SetResponseMetadata(ResponseMetadataT&& value) { m_responseMetadataHasBeenSet = true; m_responseMetadata = std::forward<ResponseMetadataT>(value); }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    CreateSecurityGroupResponse& WithResponseMetadata(ResponseMetadataT&& value) { SetResponseMetadata(std::forward<ResponseMetadataT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_groupId;
+    bool m_groupIdHasBeenSet = false;
 
     Aws::Vector<Tag> m_tags;
+    bool m_tagsHasBeenSet = false;
+
+    Aws::String m_securityGroupArn;
+    bool m_securityGroupArnHasBeenSet = false;
 
     ResponseMetadata m_responseMetadata;
+    bool m_responseMetadataHasBeenSet = false;
   };
 
 } // namespace Model

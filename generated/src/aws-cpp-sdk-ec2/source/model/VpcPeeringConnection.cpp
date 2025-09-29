@@ -20,23 +20,7 @@ namespace EC2
 namespace Model
 {
 
-VpcPeeringConnection::VpcPeeringConnection() : 
-    m_accepterVpcInfoHasBeenSet(false),
-    m_expirationTimeHasBeenSet(false),
-    m_requesterVpcInfoHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_vpcPeeringConnectionIdHasBeenSet(false)
-{
-}
-
-VpcPeeringConnection::VpcPeeringConnection(const XmlNode& xmlNode) : 
-    m_accepterVpcInfoHasBeenSet(false),
-    m_expirationTimeHasBeenSet(false),
-    m_requesterVpcInfoHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_vpcPeeringConnectionIdHasBeenSet(false)
+VpcPeeringConnection::VpcPeeringConnection(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -75,6 +59,7 @@ VpcPeeringConnection& VpcPeeringConnection::operator =(const XmlNode& xmlNode)
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -170,7 +155,7 @@ void VpcPeeringConnection::OutputToStream(Aws::OStream& oStream, const char* loc
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }

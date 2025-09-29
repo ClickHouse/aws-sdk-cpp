@@ -32,54 +32,34 @@ namespace Model
   class SampleUtteranceGenerationSpecification
   {
   public:
-    AWS_LEXMODELSV2_API SampleUtteranceGenerationSpecification();
+    AWS_LEXMODELSV2_API SampleUtteranceGenerationSpecification() = default;
     AWS_LEXMODELSV2_API SampleUtteranceGenerationSpecification(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API SampleUtteranceGenerationSpecification& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specifies whether to enable sample utterance generation or not.</p>
      */
-    inline bool GetEnabled() const{ return m_enabled; }
-
-    /**
-     * <p>Specifies whether to enable sample utterance generation or not.</p>
-     */
+    inline bool GetEnabled() const { return m_enabled; }
     inline bool EnabledHasBeenSet() const { return m_enabledHasBeenSet; }
-
-    /**
-     * <p>Specifies whether to enable sample utterance generation or not.</p>
-     */
     inline void SetEnabled(bool value) { m_enabledHasBeenSet = true; m_enabled = value; }
-
-    /**
-     * <p>Specifies whether to enable sample utterance generation or not.</p>
-     */
     inline SampleUtteranceGenerationSpecification& WithEnabled(bool value) { SetEnabled(value); return *this;}
+    ///@}
 
-
+    ///@{
     
-    inline const BedrockModelSpecification& GetBedrockModelSpecification() const{ return m_bedrockModelSpecification; }
-
-    
+    inline const BedrockModelSpecification& GetBedrockModelSpecification() const { return m_bedrockModelSpecification; }
     inline bool BedrockModelSpecificationHasBeenSet() const { return m_bedrockModelSpecificationHasBeenSet; }
-
-    
-    inline void SetBedrockModelSpecification(const BedrockModelSpecification& value) { m_bedrockModelSpecificationHasBeenSet = true; m_bedrockModelSpecification = value; }
-
-    
-    inline void SetBedrockModelSpecification(BedrockModelSpecification&& value) { m_bedrockModelSpecificationHasBeenSet = true; m_bedrockModelSpecification = std::move(value); }
-
-    
-    inline SampleUtteranceGenerationSpecification& WithBedrockModelSpecification(const BedrockModelSpecification& value) { SetBedrockModelSpecification(value); return *this;}
-
-    
-    inline SampleUtteranceGenerationSpecification& WithBedrockModelSpecification(BedrockModelSpecification&& value) { SetBedrockModelSpecification(std::move(value)); return *this;}
-
+    template<typename BedrockModelSpecificationT = BedrockModelSpecification>
+    void SetBedrockModelSpecification(BedrockModelSpecificationT&& value) { m_bedrockModelSpecificationHasBeenSet = true; m_bedrockModelSpecification = std::forward<BedrockModelSpecificationT>(value); }
+    template<typename BedrockModelSpecificationT = BedrockModelSpecification>
+    SampleUtteranceGenerationSpecification& WithBedrockModelSpecification(BedrockModelSpecificationT&& value) { SetBedrockModelSpecification(std::forward<BedrockModelSpecificationT>(value)); return *this;}
+    ///@}
   private:
 
-    bool m_enabled;
+    bool m_enabled{false};
     bool m_enabledHasBeenSet = false;
 
     BedrockModelSpecification m_bedrockModelSpecification;

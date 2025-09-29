@@ -32,175 +32,59 @@ namespace Model
   class IngestEndpoint
   {
   public:
-    AWS_MEDIAPACKAGE_API IngestEndpoint();
+    AWS_MEDIAPACKAGE_API IngestEndpoint() = default;
     AWS_MEDIAPACKAGE_API IngestEndpoint(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIAPACKAGE_API IngestEndpoint& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIAPACKAGE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * The system generated unique identifier for the IngestEndpoint
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * The system generated unique identifier for the IngestEndpoint
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    IngestEndpoint& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The system generated unique identifier for the IngestEndpoint
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * The system generated unique identifier for the IngestEndpoint
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * The system generated unique identifier for the IngestEndpoint
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * The system generated unique identifier for the IngestEndpoint
-     */
-    inline IngestEndpoint& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * The system generated unique identifier for the IngestEndpoint
-     */
-    inline IngestEndpoint& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * The system generated unique identifier for the IngestEndpoint
-     */
-    inline IngestEndpoint& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * The system generated password for ingest authentication.
      */
-    inline const Aws::String& GetPassword() const{ return m_password; }
-
-    /**
-     * The system generated password for ingest authentication.
-     */
+    inline const Aws::String& GetPassword() const { return m_password; }
     inline bool PasswordHasBeenSet() const { return m_passwordHasBeenSet; }
+    template<typename PasswordT = Aws::String>
+    void SetPassword(PasswordT&& value) { m_passwordHasBeenSet = true; m_password = std::forward<PasswordT>(value); }
+    template<typename PasswordT = Aws::String>
+    IngestEndpoint& WithPassword(PasswordT&& value) { SetPassword(std::forward<PasswordT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The system generated password for ingest authentication.
-     */
-    inline void SetPassword(const Aws::String& value) { m_passwordHasBeenSet = true; m_password = value; }
-
-    /**
-     * The system generated password for ingest authentication.
-     */
-    inline void SetPassword(Aws::String&& value) { m_passwordHasBeenSet = true; m_password = std::move(value); }
-
-    /**
-     * The system generated password for ingest authentication.
-     */
-    inline void SetPassword(const char* value) { m_passwordHasBeenSet = true; m_password.assign(value); }
-
-    /**
-     * The system generated password for ingest authentication.
-     */
-    inline IngestEndpoint& WithPassword(const Aws::String& value) { SetPassword(value); return *this;}
-
-    /**
-     * The system generated password for ingest authentication.
-     */
-    inline IngestEndpoint& WithPassword(Aws::String&& value) { SetPassword(std::move(value)); return *this;}
-
-    /**
-     * The system generated password for ingest authentication.
-     */
-    inline IngestEndpoint& WithPassword(const char* value) { SetPassword(value); return *this;}
-
-
+    ///@{
     /**
      * The ingest URL to which the source stream should be sent.
      */
-    inline const Aws::String& GetUrl() const{ return m_url; }
-
-    /**
-     * The ingest URL to which the source stream should be sent.
-     */
+    inline const Aws::String& GetUrl() const { return m_url; }
     inline bool UrlHasBeenSet() const { return m_urlHasBeenSet; }
+    template<typename UrlT = Aws::String>
+    void SetUrl(UrlT&& value) { m_urlHasBeenSet = true; m_url = std::forward<UrlT>(value); }
+    template<typename UrlT = Aws::String>
+    IngestEndpoint& WithUrl(UrlT&& value) { SetUrl(std::forward<UrlT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The ingest URL to which the source stream should be sent.
-     */
-    inline void SetUrl(const Aws::String& value) { m_urlHasBeenSet = true; m_url = value; }
-
-    /**
-     * The ingest URL to which the source stream should be sent.
-     */
-    inline void SetUrl(Aws::String&& value) { m_urlHasBeenSet = true; m_url = std::move(value); }
-
-    /**
-     * The ingest URL to which the source stream should be sent.
-     */
-    inline void SetUrl(const char* value) { m_urlHasBeenSet = true; m_url.assign(value); }
-
-    /**
-     * The ingest URL to which the source stream should be sent.
-     */
-    inline IngestEndpoint& WithUrl(const Aws::String& value) { SetUrl(value); return *this;}
-
-    /**
-     * The ingest URL to which the source stream should be sent.
-     */
-    inline IngestEndpoint& WithUrl(Aws::String&& value) { SetUrl(std::move(value)); return *this;}
-
-    /**
-     * The ingest URL to which the source stream should be sent.
-     */
-    inline IngestEndpoint& WithUrl(const char* value) { SetUrl(value); return *this;}
-
-
+    ///@{
     /**
      * The system generated username for ingest authentication.
      */
-    inline const Aws::String& GetUsername() const{ return m_username; }
-
-    /**
-     * The system generated username for ingest authentication.
-     */
+    inline const Aws::String& GetUsername() const { return m_username; }
     inline bool UsernameHasBeenSet() const { return m_usernameHasBeenSet; }
-
-    /**
-     * The system generated username for ingest authentication.
-     */
-    inline void SetUsername(const Aws::String& value) { m_usernameHasBeenSet = true; m_username = value; }
-
-    /**
-     * The system generated username for ingest authentication.
-     */
-    inline void SetUsername(Aws::String&& value) { m_usernameHasBeenSet = true; m_username = std::move(value); }
-
-    /**
-     * The system generated username for ingest authentication.
-     */
-    inline void SetUsername(const char* value) { m_usernameHasBeenSet = true; m_username.assign(value); }
-
-    /**
-     * The system generated username for ingest authentication.
-     */
-    inline IngestEndpoint& WithUsername(const Aws::String& value) { SetUsername(value); return *this;}
-
-    /**
-     * The system generated username for ingest authentication.
-     */
-    inline IngestEndpoint& WithUsername(Aws::String&& value) { SetUsername(std::move(value)); return *this;}
-
-    /**
-     * The system generated username for ingest authentication.
-     */
-    inline IngestEndpoint& WithUsername(const char* value) { SetUsername(value); return *this;}
-
+    template<typename UsernameT = Aws::String>
+    void SetUsername(UsernameT&& value) { m_usernameHasBeenSet = true; m_username = std::forward<UsernameT>(value); }
+    template<typename UsernameT = Aws::String>
+    IngestEndpoint& WithUsername(UsernameT&& value) { SetUsername(std::forward<UsernameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_id;

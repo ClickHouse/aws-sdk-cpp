@@ -18,19 +18,7 @@ namespace ConfigService
 namespace Model
 {
 
-ConformancePackRuleCompliance::ConformancePackRuleCompliance() : 
-    m_configRuleNameHasBeenSet(false),
-    m_complianceType(ConformancePackComplianceType::NOT_SET),
-    m_complianceTypeHasBeenSet(false),
-    m_controlsHasBeenSet(false)
-{
-}
-
-ConformancePackRuleCompliance::ConformancePackRuleCompliance(JsonView jsonValue) : 
-    m_configRuleNameHasBeenSet(false),
-    m_complianceType(ConformancePackComplianceType::NOT_SET),
-    m_complianceTypeHasBeenSet(false),
-    m_controlsHasBeenSet(false)
+ConformancePackRuleCompliance::ConformancePackRuleCompliance(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ ConformancePackRuleCompliance& ConformancePackRuleCompliance::operator =(JsonVie
   if(jsonValue.ValueExists("ConfigRuleName"))
   {
     m_configRuleName = jsonValue.GetString("ConfigRuleName");
-
     m_configRuleNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ComplianceType"))
   {
     m_complianceType = ConformancePackComplianceTypeMapper::GetConformancePackComplianceTypeForName(jsonValue.GetString("ComplianceType"));
-
     m_complianceTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Controls"))
   {
     Aws::Utils::Array<JsonView> controlsJsonList = jsonValue.GetArray("Controls");
@@ -60,7 +44,6 @@ ConformancePackRuleCompliance& ConformancePackRuleCompliance::operator =(JsonVie
     }
     m_controlsHasBeenSet = true;
   }
-
   return *this;
 }
 

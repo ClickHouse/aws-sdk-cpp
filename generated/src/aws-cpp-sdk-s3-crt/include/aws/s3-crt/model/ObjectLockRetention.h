@@ -31,80 +31,40 @@ namespace Model
   class ObjectLockRetention
   {
   public:
-    AWS_S3CRT_API ObjectLockRetention();
+    AWS_S3CRT_API ObjectLockRetention() = default;
     AWS_S3CRT_API ObjectLockRetention(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3CRT_API ObjectLockRetention& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3CRT_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>Indicates the Retention mode for the specified object.</p>
      */
-    inline const ObjectLockRetentionMode& GetMode() const{ return m_mode; }
-
-    /**
-     * <p>Indicates the Retention mode for the specified object.</p>
-     */
+    inline ObjectLockRetentionMode GetMode() const { return m_mode; }
     inline bool ModeHasBeenSet() const { return m_modeHasBeenSet; }
+    inline void SetMode(ObjectLockRetentionMode value) { m_modeHasBeenSet = true; m_mode = value; }
+    inline ObjectLockRetention& WithMode(ObjectLockRetentionMode value) { SetMode(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Indicates the Retention mode for the specified object.</p>
-     */
-    inline void SetMode(const ObjectLockRetentionMode& value) { m_modeHasBeenSet = true; m_mode = value; }
-
-    /**
-     * <p>Indicates the Retention mode for the specified object.</p>
-     */
-    inline void SetMode(ObjectLockRetentionMode&& value) { m_modeHasBeenSet = true; m_mode = std::move(value); }
-
-    /**
-     * <p>Indicates the Retention mode for the specified object.</p>
-     */
-    inline ObjectLockRetention& WithMode(const ObjectLockRetentionMode& value) { SetMode(value); return *this;}
-
-    /**
-     * <p>Indicates the Retention mode for the specified object.</p>
-     */
-    inline ObjectLockRetention& WithMode(ObjectLockRetentionMode&& value) { SetMode(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date on which this Object Lock Retention will expire.</p>
      */
-    inline const Aws::Utils::DateTime& GetRetainUntilDate() const{ return m_retainUntilDate; }
-
-    /**
-     * <p>The date on which this Object Lock Retention will expire.</p>
-     */
+    inline const Aws::Utils::DateTime& GetRetainUntilDate() const { return m_retainUntilDate; }
     inline bool RetainUntilDateHasBeenSet() const { return m_retainUntilDateHasBeenSet; }
-
-    /**
-     * <p>The date on which this Object Lock Retention will expire.</p>
-     */
-    inline void SetRetainUntilDate(const Aws::Utils::DateTime& value) { m_retainUntilDateHasBeenSet = true; m_retainUntilDate = value; }
-
-    /**
-     * <p>The date on which this Object Lock Retention will expire.</p>
-     */
-    inline void SetRetainUntilDate(Aws::Utils::DateTime&& value) { m_retainUntilDateHasBeenSet = true; m_retainUntilDate = std::move(value); }
-
-    /**
-     * <p>The date on which this Object Lock Retention will expire.</p>
-     */
-    inline ObjectLockRetention& WithRetainUntilDate(const Aws::Utils::DateTime& value) { SetRetainUntilDate(value); return *this;}
-
-    /**
-     * <p>The date on which this Object Lock Retention will expire.</p>
-     */
-    inline ObjectLockRetention& WithRetainUntilDate(Aws::Utils::DateTime&& value) { SetRetainUntilDate(std::move(value)); return *this;}
-
+    template<typename RetainUntilDateT = Aws::Utils::DateTime>
+    void SetRetainUntilDate(RetainUntilDateT&& value) { m_retainUntilDateHasBeenSet = true; m_retainUntilDate = std::forward<RetainUntilDateT>(value); }
+    template<typename RetainUntilDateT = Aws::Utils::DateTime>
+    ObjectLockRetention& WithRetainUntilDate(RetainUntilDateT&& value) { SetRetainUntilDate(std::forward<RetainUntilDateT>(value)); return *this;}
+    ///@}
   private:
 
-    ObjectLockRetentionMode m_mode;
+    ObjectLockRetentionMode m_mode{ObjectLockRetentionMode::NOT_SET};
     bool m_modeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_retainUntilDate;
+    Aws::Utils::DateTime m_retainUntilDate{};
     bool m_retainUntilDateHasBeenSet = false;
   };
 

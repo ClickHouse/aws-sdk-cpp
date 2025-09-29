@@ -10,14 +10,6 @@
 using namespace Aws::Redshift::Model;
 using namespace Aws::Utils;
 
-ModifyClusterIamRolesRequest::ModifyClusterIamRolesRequest() : 
-    m_clusterIdentifierHasBeenSet(false),
-    m_addIamRolesHasBeenSet(false),
-    m_removeIamRolesHasBeenSet(false),
-    m_defaultIamRoleArnHasBeenSet(false)
-{
-}
-
 Aws::String ModifyClusterIamRolesRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -29,23 +21,37 @@ Aws::String ModifyClusterIamRolesRequest::SerializePayload() const
 
   if(m_addIamRolesHasBeenSet)
   {
-    unsigned addIamRolesCount = 1;
-    for(auto& item : m_addIamRoles)
+    if (m_addIamRoles.empty())
     {
-      ss << "AddIamRoles.member." << addIamRolesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      addIamRolesCount++;
+      ss << "AddIamRoles=&";
+    }
+    else
+    {
+      unsigned addIamRolesCount = 1;
+      for(auto& item : m_addIamRoles)
+      {
+        ss << "AddIamRoles.IamRoleArn." << addIamRolesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        addIamRolesCount++;
+      }
     }
   }
 
   if(m_removeIamRolesHasBeenSet)
   {
-    unsigned removeIamRolesCount = 1;
-    for(auto& item : m_removeIamRoles)
+    if (m_removeIamRoles.empty())
     {
-      ss << "RemoveIamRoles.member." << removeIamRolesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      removeIamRolesCount++;
+      ss << "RemoveIamRoles=&";
+    }
+    else
+    {
+      unsigned removeIamRolesCount = 1;
+      for(auto& item : m_removeIamRoles)
+      {
+        ss << "RemoveIamRoles.IamRoleArn." << removeIamRolesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        removeIamRolesCount++;
+      }
     }
   }
 

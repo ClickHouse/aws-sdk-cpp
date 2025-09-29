@@ -34,86 +34,36 @@ namespace Model
   class ReadinessCheckSummary
   {
   public:
-    AWS_ROUTE53RECOVERYREADINESS_API ReadinessCheckSummary();
+    AWS_ROUTE53RECOVERYREADINESS_API ReadinessCheckSummary() = default;
     AWS_ROUTE53RECOVERYREADINESS_API ReadinessCheckSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_ROUTE53RECOVERYREADINESS_API ReadinessCheckSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ROUTE53RECOVERYREADINESS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The readiness status of this readiness check.</p>
      */
-    inline const Readiness& GetReadiness() const{ return m_readiness; }
-
-    /**
-     * <p>The readiness status of this readiness check.</p>
-     */
+    inline Readiness GetReadiness() const { return m_readiness; }
     inline bool ReadinessHasBeenSet() const { return m_readinessHasBeenSet; }
+    inline void SetReadiness(Readiness value) { m_readinessHasBeenSet = true; m_readiness = value; }
+    inline ReadinessCheckSummary& WithReadiness(Readiness value) { SetReadiness(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The readiness status of this readiness check.</p>
-     */
-    inline void SetReadiness(const Readiness& value) { m_readinessHasBeenSet = true; m_readiness = value; }
-
-    /**
-     * <p>The readiness status of this readiness check.</p>
-     */
-    inline void SetReadiness(Readiness&& value) { m_readinessHasBeenSet = true; m_readiness = std::move(value); }
-
-    /**
-     * <p>The readiness status of this readiness check.</p>
-     */
-    inline ReadinessCheckSummary& WithReadiness(const Readiness& value) { SetReadiness(value); return *this;}
-
-    /**
-     * <p>The readiness status of this readiness check.</p>
-     */
-    inline ReadinessCheckSummary& WithReadiness(Readiness&& value) { SetReadiness(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of a readiness check.</p>
      */
-    inline const Aws::String& GetReadinessCheckName() const{ return m_readinessCheckName; }
-
-    /**
-     * <p>The name of a readiness check.</p>
-     */
+    inline const Aws::String& GetReadinessCheckName() const { return m_readinessCheckName; }
     inline bool ReadinessCheckNameHasBeenSet() const { return m_readinessCheckNameHasBeenSet; }
-
-    /**
-     * <p>The name of a readiness check.</p>
-     */
-    inline void SetReadinessCheckName(const Aws::String& value) { m_readinessCheckNameHasBeenSet = true; m_readinessCheckName = value; }
-
-    /**
-     * <p>The name of a readiness check.</p>
-     */
-    inline void SetReadinessCheckName(Aws::String&& value) { m_readinessCheckNameHasBeenSet = true; m_readinessCheckName = std::move(value); }
-
-    /**
-     * <p>The name of a readiness check.</p>
-     */
-    inline void SetReadinessCheckName(const char* value) { m_readinessCheckNameHasBeenSet = true; m_readinessCheckName.assign(value); }
-
-    /**
-     * <p>The name of a readiness check.</p>
-     */
-    inline ReadinessCheckSummary& WithReadinessCheckName(const Aws::String& value) { SetReadinessCheckName(value); return *this;}
-
-    /**
-     * <p>The name of a readiness check.</p>
-     */
-    inline ReadinessCheckSummary& WithReadinessCheckName(Aws::String&& value) { SetReadinessCheckName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of a readiness check.</p>
-     */
-    inline ReadinessCheckSummary& WithReadinessCheckName(const char* value) { SetReadinessCheckName(value); return *this;}
-
+    template<typename ReadinessCheckNameT = Aws::String>
+    void SetReadinessCheckName(ReadinessCheckNameT&& value) { m_readinessCheckNameHasBeenSet = true; m_readinessCheckName = std::forward<ReadinessCheckNameT>(value); }
+    template<typename ReadinessCheckNameT = Aws::String>
+    ReadinessCheckSummary& WithReadinessCheckName(ReadinessCheckNameT&& value) { SetReadinessCheckName(std::forward<ReadinessCheckNameT>(value)); return *this;}
+    ///@}
   private:
 
-    Readiness m_readiness;
+    Readiness m_readiness{Readiness::NOT_SET};
     bool m_readinessHasBeenSet = false;
 
     Aws::String m_readinessCheckName;

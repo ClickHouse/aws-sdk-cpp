@@ -52,8 +52,8 @@ static const int ORIGIN_REQUEST_POLICY_IN_USE_HASH = HashingUtils::HashString("O
 static const int TOO_MANY_DISTRIBUTIONS_ASSOCIATED_TO_ORIGIN_ACCESS_CONTROL_HASH = HashingUtils::HashString("TooManyDistributionsAssociatedToOriginAccessControl");
 static const int NO_SUCH_CACHE_POLICY_HASH = HashingUtils::HashString("NoSuchCachePolicy");
 static const int NO_SUCH_FIELD_LEVEL_ENCRYPTION_PROFILE_HASH = HashingUtils::HashString("NoSuchFieldLevelEncryptionProfile");
-static const int INVALID_ORIGIN_READ_TIMEOUT_HASH = HashingUtils::HashString("InvalidOriginReadTimeout");
 static const int INVALID_ORIGIN_KEEPALIVE_TIMEOUT_HASH = HashingUtils::HashString("InvalidOriginKeepaliveTimeout");
+static const int INVALID_ORIGIN_READ_TIMEOUT_HASH = HashingUtils::HashString("InvalidOriginReadTimeout");
 static const int ENTITY_ALREADY_EXISTS_HASH = HashingUtils::HashString("EntityAlreadyExists");
 static const int TOO_MANY_CLOUD_FRONT_ORIGIN_ACCESS_IDENTITIES_HASH = HashingUtils::HashString("TooManyCloudFrontOriginAccessIdentities");
 static const int INVALID_HEADERS_FOR_S3_ORIGIN_HASH = HashingUtils::HashString("InvalidHeadersForS3Origin");
@@ -82,8 +82,8 @@ static const int TOO_MANY_COOKIES_IN_CACHE_POLICY_HASH = HashingUtils::HashStrin
 static const int FUNCTION_SIZE_LIMIT_EXCEEDED_HASH = HashingUtils::HashString("FunctionSizeLimitExceeded");
 static const int UNSUPPORTED_OPERATION_HASH = HashingUtils::HashString("UnsupportedOperation");
 static const int INVALID_FUNCTION_ASSOCIATION_HASH = HashingUtils::HashString("InvalidFunctionAssociation");
-static const int TOO_MANY_LAMBDA_FUNCTION_ASSOCIATIONS_HASH = HashingUtils::HashString("TooManyLambdaFunctionAssociations");
 static const int TOO_MANY_FUNCTION_ASSOCIATIONS_HASH = HashingUtils::HashString("TooManyFunctionAssociations");
+static const int TOO_MANY_LAMBDA_FUNCTION_ASSOCIATIONS_HASH = HashingUtils::HashString("TooManyLambdaFunctionAssociations");
 static const int TOO_MANY_QUERY_STRINGS_IN_ORIGIN_REQUEST_POLICY_HASH = HashingUtils::HashString("TooManyQueryStringsInOriginRequestPolicy");
 static const int TOO_MANY_PUBLIC_KEYS_HASH = HashingUtils::HashString("TooManyPublicKeys");
 static const int TOO_MANY_CONTINUOUS_DEPLOYMENT_POLICIES_HASH = HashingUtils::HashString("TooManyContinuousDeploymentPolicies");
@@ -111,6 +111,7 @@ static const int TOO_MANY_DISTRIBUTIONS_ASSOCIATED_TO_ORIGIN_REQUEST_POLICY_HASH
 static const int FIELD_LEVEL_ENCRYPTION_PROFILE_IN_USE_HASH = HashingUtils::HashString("FieldLevelEncryptionProfileInUse");
 static const int TOO_MANY_INVALIDATIONS_IN_PROGRESS_HASH = HashingUtils::HashString("TooManyInvalidationsInProgress");
 static const int NO_SUCH_DISTRIBUTION_HASH = HashingUtils::HashString("NoSuchDistribution");
+static const int RESOURCE_NOT_DISABLED_HASH = HashingUtils::HashString("ResourceNotDisabled");
 static const int INVALID_RESPONSE_CODE_HASH = HashingUtils::HashString("InvalidResponseCode");
 static const int TOO_MANY_PUBLIC_KEYS_IN_KEY_GROUP_HASH = HashingUtils::HashString("TooManyPublicKeysInKeyGroup");
 static const int INVALID_DEFAULT_ROOT_OBJECT_HASH = HashingUtils::HashString("InvalidDefaultRootObject");
@@ -121,6 +122,7 @@ static const int INVALID_WEB_A_C_L_ID_HASH = HashingUtils::HashString("InvalidWe
 static const int INVALID_ORIGIN_ACCESS_CONTROL_HASH = HashingUtils::HashString("InvalidOriginAccessControl");
 static const int STREAMING_DISTRIBUTION_NOT_DISABLED_HASH = HashingUtils::HashString("StreamingDistributionNotDisabled");
 static const int TOO_MANY_TRUSTED_SIGNERS_HASH = HashingUtils::HashString("TooManyTrustedSigners");
+static const int INVALID_ASSOCIATION_HASH = HashingUtils::HashString("InvalidAssociation");
 static const int NO_SUCH_CLOUD_FRONT_ORIGIN_ACCESS_IDENTITY_HASH = HashingUtils::HashString("NoSuchCloudFrontOriginAccessIdentity");
 static const int CLOUD_FRONT_ORIGIN_ACCESS_IDENTITY_ALREADY_EXISTS_HASH = HashingUtils::HashString("CloudFrontOriginAccessIdentityAlreadyExists");
 static const int INVALID_FORWARD_COOKIES_HASH = HashingUtils::HashString("InvalidForwardCookies");
@@ -162,6 +164,7 @@ static const int TOO_MANY_KEY_GROUPS_HASH = HashingUtils::HashString("TooManyKey
 static const int PUBLIC_KEY_ALREADY_EXISTS_HASH = HashingUtils::HashString("PublicKeyAlreadyExists");
 static const int TOO_MANY_REMOVE_HEADERS_IN_RESPONSE_HEADERS_POLICY_HASH = HashingUtils::HashString("TooManyRemoveHeadersInResponseHeadersPolicy");
 static const int REALTIME_LOG_CONFIG_IN_USE_HASH = HashingUtils::HashString("RealtimeLogConfigInUse");
+static const int CANNOT_UPDATE_ENTITY_WHILE_IN_USE_HASH = HashingUtils::HashString("CannotUpdateEntityWhileInUse");
 static const int CLOUD_FRONT_ORIGIN_ACCESS_IDENTITY_IN_USE_HASH = HashingUtils::HashString("CloudFrontOriginAccessIdentityInUse");
 static const int TOO_MANY_CUSTOM_HEADERS_IN_RESPONSE_HEADERS_POLICY_HASH = HashingUtils::HashString("TooManyCustomHeadersInResponseHeadersPolicy");
 static const int ORIGIN_ACCESS_CONTROL_IN_USE_HASH = HashingUtils::HashString("OriginAccessControlInUse");
@@ -346,14 +349,14 @@ static bool GetErrorForNameHelper0(int hashCode, AWSError<CoreErrors>& error)
     error = AWSError<CoreErrors>(static_cast<CoreErrors>(CloudFrontErrors::NO_SUCH_FIELD_LEVEL_ENCRYPTION_PROFILE), RetryableType::NOT_RETRYABLE);
     return true;
   }
-  else if (hashCode == INVALID_ORIGIN_READ_TIMEOUT_HASH)
-  {
-    error = AWSError<CoreErrors>(static_cast<CoreErrors>(CloudFrontErrors::INVALID_ORIGIN_READ_TIMEOUT), RetryableType::NOT_RETRYABLE);
-    return true;
-  }
   else if (hashCode == INVALID_ORIGIN_KEEPALIVE_TIMEOUT_HASH)
   {
     error = AWSError<CoreErrors>(static_cast<CoreErrors>(CloudFrontErrors::INVALID_ORIGIN_KEEPALIVE_TIMEOUT), RetryableType::NOT_RETRYABLE);
+    return true;
+  }
+  else if (hashCode == INVALID_ORIGIN_READ_TIMEOUT_HASH)
+  {
+    error = AWSError<CoreErrors>(static_cast<CoreErrors>(CloudFrontErrors::INVALID_ORIGIN_READ_TIMEOUT), RetryableType::NOT_RETRYABLE);
     return true;
   }
   else if (hashCode == ENTITY_ALREADY_EXISTS_HASH)
@@ -496,14 +499,14 @@ static bool GetErrorForNameHelper0(int hashCode, AWSError<CoreErrors>& error)
     error = AWSError<CoreErrors>(static_cast<CoreErrors>(CloudFrontErrors::INVALID_FUNCTION_ASSOCIATION), RetryableType::NOT_RETRYABLE);
     return true;
   }
-  else if (hashCode == TOO_MANY_LAMBDA_FUNCTION_ASSOCIATIONS_HASH)
-  {
-    error = AWSError<CoreErrors>(static_cast<CoreErrors>(CloudFrontErrors::TOO_MANY_LAMBDA_FUNCTION_ASSOCIATIONS), RetryableType::NOT_RETRYABLE);
-    return true;
-  }
   else if (hashCode == TOO_MANY_FUNCTION_ASSOCIATIONS_HASH)
   {
     error = AWSError<CoreErrors>(static_cast<CoreErrors>(CloudFrontErrors::TOO_MANY_FUNCTION_ASSOCIATIONS), RetryableType::NOT_RETRYABLE);
+    return true;
+  }
+  else if (hashCode == TOO_MANY_LAMBDA_FUNCTION_ASSOCIATIONS_HASH)
+  {
+    error = AWSError<CoreErrors>(static_cast<CoreErrors>(CloudFrontErrors::TOO_MANY_LAMBDA_FUNCTION_ASSOCIATIONS), RetryableType::NOT_RETRYABLE);
     return true;
   }
   else if (hashCode == TOO_MANY_QUERY_STRINGS_IN_ORIGIN_REQUEST_POLICY_HASH)
@@ -641,6 +644,11 @@ static bool GetErrorForNameHelper0(int hashCode, AWSError<CoreErrors>& error)
     error = AWSError<CoreErrors>(static_cast<CoreErrors>(CloudFrontErrors::NO_SUCH_DISTRIBUTION), RetryableType::NOT_RETRYABLE);
     return true;
   }
+  else if (hashCode == RESOURCE_NOT_DISABLED_HASH)
+  {
+    error = AWSError<CoreErrors>(static_cast<CoreErrors>(CloudFrontErrors::RESOURCE_NOT_DISABLED), RetryableType::NOT_RETRYABLE);
+    return true;
+  }
   else if (hashCode == INVALID_RESPONSE_CODE_HASH)
   {
     error = AWSError<CoreErrors>(static_cast<CoreErrors>(CloudFrontErrors::INVALID_RESPONSE_CODE), RetryableType::NOT_RETRYABLE);
@@ -689,6 +697,11 @@ static bool GetErrorForNameHelper0(int hashCode, AWSError<CoreErrors>& error)
   else if (hashCode == TOO_MANY_TRUSTED_SIGNERS_HASH)
   {
     error = AWSError<CoreErrors>(static_cast<CoreErrors>(CloudFrontErrors::TOO_MANY_TRUSTED_SIGNERS), RetryableType::NOT_RETRYABLE);
+    return true;
+  }
+  else if (hashCode == INVALID_ASSOCIATION_HASH)
+  {
+    error = AWSError<CoreErrors>(static_cast<CoreErrors>(CloudFrontErrors::INVALID_ASSOCIATION), RetryableType::NOT_RETRYABLE);
     return true;
   }
   else if (hashCode == NO_SUCH_CLOUD_FRONT_ORIGIN_ACCESS_IDENTITY_HASH)
@@ -776,7 +789,12 @@ static bool GetErrorForNameHelper0(int hashCode, AWSError<CoreErrors>& error)
     error = AWSError<CoreErrors>(static_cast<CoreErrors>(CloudFrontErrors::INVALID_QUERY_STRING_PARAMETERS), RetryableType::NOT_RETRYABLE);
     return true;
   }
-  else if (hashCode == INVALID_PROTOCOL_SETTINGS_HASH)
+  return false;
+}
+
+static bool GetErrorForNameHelper1(int hashCode, AWSError<CoreErrors>& error)
+{
+  if (hashCode == INVALID_PROTOCOL_SETTINGS_HASH)
   {
     error = AWSError<CoreErrors>(static_cast<CoreErrors>(CloudFrontErrors::INVALID_PROTOCOL_SETTINGS), RetryableType::NOT_RETRYABLE);
     return true;
@@ -786,12 +804,7 @@ static bool GetErrorForNameHelper0(int hashCode, AWSError<CoreErrors>& error)
     error = AWSError<CoreErrors>(static_cast<CoreErrors>(CloudFrontErrors::CANNOT_DELETE_ENTITY_WHILE_IN_USE), RetryableType::NOT_RETRYABLE);
     return true;
   }
-  return false;
-}
-
-static bool GetErrorForNameHelper1(int hashCode, AWSError<CoreErrors>& error)
-{
-  if (hashCode == BATCH_TOO_LARGE_HASH)
+  else if (hashCode == BATCH_TOO_LARGE_HASH)
   {
     error = AWSError<CoreErrors>(static_cast<CoreErrors>(CloudFrontErrors::BATCH_TOO_LARGE), RetryableType::NOT_RETRYABLE);
     return true;
@@ -899,6 +912,11 @@ static bool GetErrorForNameHelper1(int hashCode, AWSError<CoreErrors>& error)
   else if (hashCode == REALTIME_LOG_CONFIG_IN_USE_HASH)
   {
     error = AWSError<CoreErrors>(static_cast<CoreErrors>(CloudFrontErrors::REALTIME_LOG_CONFIG_IN_USE), RetryableType::NOT_RETRYABLE);
+    return true;
+  }
+  else if (hashCode == CANNOT_UPDATE_ENTITY_WHILE_IN_USE_HASH)
+  {
+    error = AWSError<CoreErrors>(static_cast<CoreErrors>(CloudFrontErrors::CANNOT_UPDATE_ENTITY_WHILE_IN_USE), RetryableType::NOT_RETRYABLE);
     return true;
   }
   else if (hashCode == CLOUD_FRONT_ORIGIN_ACCESS_IDENTITY_IN_USE_HASH)

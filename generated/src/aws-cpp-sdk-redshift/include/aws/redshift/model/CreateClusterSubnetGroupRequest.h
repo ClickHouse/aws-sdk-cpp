@@ -26,7 +26,7 @@ namespace Model
   class CreateClusterSubnetGroupRequest : public RedshiftRequest
   {
   public:
-    AWS_REDSHIFT_API CreateClusterSubnetGroupRequest();
+    AWS_REDSHIFT_API CreateClusterSubnetGroupRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -41,6 +41,7 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The name for the subnet group. Amazon Redshift stores the value as a
      * lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must contain no more than
@@ -49,215 +50,54 @@ namespace Model
      * created by your Amazon Web Services account.</p> </li> </ul> <p>Example:
      * <code>examplesubnetgroup</code> </p>
      */
-    inline const Aws::String& GetClusterSubnetGroupName() const{ return m_clusterSubnetGroupName; }
-
-    /**
-     * <p>The name for the subnet group. Amazon Redshift stores the value as a
-     * lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must contain no more than
-     * 255 alphanumeric characters or hyphens.</p> </li> <li> <p>Must not be
-     * "Default".</p> </li> <li> <p>Must be unique for all subnet groups that are
-     * created by your Amazon Web Services account.</p> </li> </ul> <p>Example:
-     * <code>examplesubnetgroup</code> </p>
-     */
+    inline const Aws::String& GetClusterSubnetGroupName() const { return m_clusterSubnetGroupName; }
     inline bool ClusterSubnetGroupNameHasBeenSet() const { return m_clusterSubnetGroupNameHasBeenSet; }
+    template<typename ClusterSubnetGroupNameT = Aws::String>
+    void SetClusterSubnetGroupName(ClusterSubnetGroupNameT&& value) { m_clusterSubnetGroupNameHasBeenSet = true; m_clusterSubnetGroupName = std::forward<ClusterSubnetGroupNameT>(value); }
+    template<typename ClusterSubnetGroupNameT = Aws::String>
+    CreateClusterSubnetGroupRequest& WithClusterSubnetGroupName(ClusterSubnetGroupNameT&& value) { SetClusterSubnetGroupName(std::forward<ClusterSubnetGroupNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name for the subnet group. Amazon Redshift stores the value as a
-     * lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must contain no more than
-     * 255 alphanumeric characters or hyphens.</p> </li> <li> <p>Must not be
-     * "Default".</p> </li> <li> <p>Must be unique for all subnet groups that are
-     * created by your Amazon Web Services account.</p> </li> </ul> <p>Example:
-     * <code>examplesubnetgroup</code> </p>
-     */
-    inline void SetClusterSubnetGroupName(const Aws::String& value) { m_clusterSubnetGroupNameHasBeenSet = true; m_clusterSubnetGroupName = value; }
-
-    /**
-     * <p>The name for the subnet group. Amazon Redshift stores the value as a
-     * lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must contain no more than
-     * 255 alphanumeric characters or hyphens.</p> </li> <li> <p>Must not be
-     * "Default".</p> </li> <li> <p>Must be unique for all subnet groups that are
-     * created by your Amazon Web Services account.</p> </li> </ul> <p>Example:
-     * <code>examplesubnetgroup</code> </p>
-     */
-    inline void SetClusterSubnetGroupName(Aws::String&& value) { m_clusterSubnetGroupNameHasBeenSet = true; m_clusterSubnetGroupName = std::move(value); }
-
-    /**
-     * <p>The name for the subnet group. Amazon Redshift stores the value as a
-     * lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must contain no more than
-     * 255 alphanumeric characters or hyphens.</p> </li> <li> <p>Must not be
-     * "Default".</p> </li> <li> <p>Must be unique for all subnet groups that are
-     * created by your Amazon Web Services account.</p> </li> </ul> <p>Example:
-     * <code>examplesubnetgroup</code> </p>
-     */
-    inline void SetClusterSubnetGroupName(const char* value) { m_clusterSubnetGroupNameHasBeenSet = true; m_clusterSubnetGroupName.assign(value); }
-
-    /**
-     * <p>The name for the subnet group. Amazon Redshift stores the value as a
-     * lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must contain no more than
-     * 255 alphanumeric characters or hyphens.</p> </li> <li> <p>Must not be
-     * "Default".</p> </li> <li> <p>Must be unique for all subnet groups that are
-     * created by your Amazon Web Services account.</p> </li> </ul> <p>Example:
-     * <code>examplesubnetgroup</code> </p>
-     */
-    inline CreateClusterSubnetGroupRequest& WithClusterSubnetGroupName(const Aws::String& value) { SetClusterSubnetGroupName(value); return *this;}
-
-    /**
-     * <p>The name for the subnet group. Amazon Redshift stores the value as a
-     * lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must contain no more than
-     * 255 alphanumeric characters or hyphens.</p> </li> <li> <p>Must not be
-     * "Default".</p> </li> <li> <p>Must be unique for all subnet groups that are
-     * created by your Amazon Web Services account.</p> </li> </ul> <p>Example:
-     * <code>examplesubnetgroup</code> </p>
-     */
-    inline CreateClusterSubnetGroupRequest& WithClusterSubnetGroupName(Aws::String&& value) { SetClusterSubnetGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name for the subnet group. Amazon Redshift stores the value as a
-     * lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must contain no more than
-     * 255 alphanumeric characters or hyphens.</p> </li> <li> <p>Must not be
-     * "Default".</p> </li> <li> <p>Must be unique for all subnet groups that are
-     * created by your Amazon Web Services account.</p> </li> </ul> <p>Example:
-     * <code>examplesubnetgroup</code> </p>
-     */
-    inline CreateClusterSubnetGroupRequest& WithClusterSubnetGroupName(const char* value) { SetClusterSubnetGroupName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A description for the subnet group.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>A description for the subnet group.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    CreateClusterSubnetGroupRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A description for the subnet group.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>A description for the subnet group.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>A description for the subnet group.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>A description for the subnet group.</p>
-     */
-    inline CreateClusterSubnetGroupRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A description for the subnet group.</p>
-     */
-    inline CreateClusterSubnetGroupRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A description for the subnet group.</p>
-     */
-    inline CreateClusterSubnetGroupRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An array of VPC subnet IDs. A maximum of 20 subnets can be modified in a
      * single request.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetSubnetIds() const{ return m_subnetIds; }
-
-    /**
-     * <p>An array of VPC subnet IDs. A maximum of 20 subnets can be modified in a
-     * single request.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetSubnetIds() const { return m_subnetIds; }
     inline bool SubnetIdsHasBeenSet() const { return m_subnetIdsHasBeenSet; }
+    template<typename SubnetIdsT = Aws::Vector<Aws::String>>
+    void SetSubnetIds(SubnetIdsT&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds = std::forward<SubnetIdsT>(value); }
+    template<typename SubnetIdsT = Aws::Vector<Aws::String>>
+    CreateClusterSubnetGroupRequest& WithSubnetIds(SubnetIdsT&& value) { SetSubnetIds(std::forward<SubnetIdsT>(value)); return *this;}
+    template<typename SubnetIdsT = Aws::String>
+    CreateClusterSubnetGroupRequest& AddSubnetIds(SubnetIdsT&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds.emplace_back(std::forward<SubnetIdsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of VPC subnet IDs. A maximum of 20 subnets can be modified in a
-     * single request.</p>
-     */
-    inline void SetSubnetIds(const Aws::Vector<Aws::String>& value) { m_subnetIdsHasBeenSet = true; m_subnetIds = value; }
-
-    /**
-     * <p>An array of VPC subnet IDs. A maximum of 20 subnets can be modified in a
-     * single request.</p>
-     */
-    inline void SetSubnetIds(Aws::Vector<Aws::String>&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds = std::move(value); }
-
-    /**
-     * <p>An array of VPC subnet IDs. A maximum of 20 subnets can be modified in a
-     * single request.</p>
-     */
-    inline CreateClusterSubnetGroupRequest& WithSubnetIds(const Aws::Vector<Aws::String>& value) { SetSubnetIds(value); return *this;}
-
-    /**
-     * <p>An array of VPC subnet IDs. A maximum of 20 subnets can be modified in a
-     * single request.</p>
-     */
-    inline CreateClusterSubnetGroupRequest& WithSubnetIds(Aws::Vector<Aws::String>&& value) { SetSubnetIds(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of VPC subnet IDs. A maximum of 20 subnets can be modified in a
-     * single request.</p>
-     */
-    inline CreateClusterSubnetGroupRequest& AddSubnetIds(const Aws::String& value) { m_subnetIdsHasBeenSet = true; m_subnetIds.push_back(value); return *this; }
-
-    /**
-     * <p>An array of VPC subnet IDs. A maximum of 20 subnets can be modified in a
-     * single request.</p>
-     */
-    inline CreateClusterSubnetGroupRequest& AddSubnetIds(Aws::String&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>An array of VPC subnet IDs. A maximum of 20 subnets can be modified in a
-     * single request.</p>
-     */
-    inline CreateClusterSubnetGroupRequest& AddSubnetIds(const char* value) { m_subnetIdsHasBeenSet = true; m_subnetIds.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of tag instances.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>A list of tag instances.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>A list of tag instances.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>A list of tag instances.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>A list of tag instances.</p>
-     */
-    inline CreateClusterSubnetGroupRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>A list of tag instances.</p>
-     */
-    inline CreateClusterSubnetGroupRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of tag instances.</p>
-     */
-    inline CreateClusterSubnetGroupRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>A list of tag instances.</p>
-     */
-    inline CreateClusterSubnetGroupRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    CreateClusterSubnetGroupRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    CreateClusterSubnetGroupRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_clusterSubnetGroupName;

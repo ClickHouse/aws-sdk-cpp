@@ -29,232 +29,96 @@ namespace Model
   class BuildBotLocaleResult
   {
   public:
-    AWS_LEXMODELSV2_API BuildBotLocaleResult();
+    AWS_LEXMODELSV2_API BuildBotLocaleResult() = default;
     AWS_LEXMODELSV2_API BuildBotLocaleResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_LEXMODELSV2_API BuildBotLocaleResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The identifier of the specified bot.</p>
      */
-    inline const Aws::String& GetBotId() const{ return m_botId; }
+    inline const Aws::String& GetBotId() const { return m_botId; }
+    template<typename BotIdT = Aws::String>
+    void SetBotId(BotIdT&& value) { m_botIdHasBeenSet = true; m_botId = std::forward<BotIdT>(value); }
+    template<typename BotIdT = Aws::String>
+    BuildBotLocaleResult& WithBotId(BotIdT&& value) { SetBotId(std::forward<BotIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the specified bot.</p>
-     */
-    inline void SetBotId(const Aws::String& value) { m_botId = value; }
-
-    /**
-     * <p>The identifier of the specified bot.</p>
-     */
-    inline void SetBotId(Aws::String&& value) { m_botId = std::move(value); }
-
-    /**
-     * <p>The identifier of the specified bot.</p>
-     */
-    inline void SetBotId(const char* value) { m_botId.assign(value); }
-
-    /**
-     * <p>The identifier of the specified bot.</p>
-     */
-    inline BuildBotLocaleResult& WithBotId(const Aws::String& value) { SetBotId(value); return *this;}
-
-    /**
-     * <p>The identifier of the specified bot.</p>
-     */
-    inline BuildBotLocaleResult& WithBotId(Aws::String&& value) { SetBotId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the specified bot.</p>
-     */
-    inline BuildBotLocaleResult& WithBotId(const char* value) { SetBotId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The version of the bot that was built. This is only the draft version of the
      * bot.</p>
      */
-    inline const Aws::String& GetBotVersion() const{ return m_botVersion; }
+    inline const Aws::String& GetBotVersion() const { return m_botVersion; }
+    template<typename BotVersionT = Aws::String>
+    void SetBotVersion(BotVersionT&& value) { m_botVersionHasBeenSet = true; m_botVersion = std::forward<BotVersionT>(value); }
+    template<typename BotVersionT = Aws::String>
+    BuildBotLocaleResult& WithBotVersion(BotVersionT&& value) { SetBotVersion(std::forward<BotVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The version of the bot that was built. This is only the draft version of the
-     * bot.</p>
-     */
-    inline void SetBotVersion(const Aws::String& value) { m_botVersion = value; }
-
-    /**
-     * <p>The version of the bot that was built. This is only the draft version of the
-     * bot.</p>
-     */
-    inline void SetBotVersion(Aws::String&& value) { m_botVersion = std::move(value); }
-
-    /**
-     * <p>The version of the bot that was built. This is only the draft version of the
-     * bot.</p>
-     */
-    inline void SetBotVersion(const char* value) { m_botVersion.assign(value); }
-
-    /**
-     * <p>The version of the bot that was built. This is only the draft version of the
-     * bot.</p>
-     */
-    inline BuildBotLocaleResult& WithBotVersion(const Aws::String& value) { SetBotVersion(value); return *this;}
-
-    /**
-     * <p>The version of the bot that was built. This is only the draft version of the
-     * bot.</p>
-     */
-    inline BuildBotLocaleResult& WithBotVersion(Aws::String&& value) { SetBotVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The version of the bot that was built. This is only the draft version of the
-     * bot.</p>
-     */
-    inline BuildBotLocaleResult& WithBotVersion(const char* value) { SetBotVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The language and locale specified of where the bot can be used.</p>
      */
-    inline const Aws::String& GetLocaleId() const{ return m_localeId; }
+    inline const Aws::String& GetLocaleId() const { return m_localeId; }
+    template<typename LocaleIdT = Aws::String>
+    void SetLocaleId(LocaleIdT&& value) { m_localeIdHasBeenSet = true; m_localeId = std::forward<LocaleIdT>(value); }
+    template<typename LocaleIdT = Aws::String>
+    BuildBotLocaleResult& WithLocaleId(LocaleIdT&& value) { SetLocaleId(std::forward<LocaleIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The language and locale specified of where the bot can be used.</p>
-     */
-    inline void SetLocaleId(const Aws::String& value) { m_localeId = value; }
-
-    /**
-     * <p>The language and locale specified of where the bot can be used.</p>
-     */
-    inline void SetLocaleId(Aws::String&& value) { m_localeId = std::move(value); }
-
-    /**
-     * <p>The language and locale specified of where the bot can be used.</p>
-     */
-    inline void SetLocaleId(const char* value) { m_localeId.assign(value); }
-
-    /**
-     * <p>The language and locale specified of where the bot can be used.</p>
-     */
-    inline BuildBotLocaleResult& WithLocaleId(const Aws::String& value) { SetLocaleId(value); return *this;}
-
-    /**
-     * <p>The language and locale specified of where the bot can be used.</p>
-     */
-    inline BuildBotLocaleResult& WithLocaleId(Aws::String&& value) { SetLocaleId(std::move(value)); return *this;}
-
-    /**
-     * <p>The language and locale specified of where the bot can be used.</p>
-     */
-    inline BuildBotLocaleResult& WithLocaleId(const char* value) { SetLocaleId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The bot's build status. When the status is <code>ReadyExpressTesting</code>
      * you can test the bot using the utterances defined for the intents and slot
      * types. When the status is <code>Built</code>, the bot is ready for use and can
      * be tested using any utterance.</p>
      */
-    inline const BotLocaleStatus& GetBotLocaleStatus() const{ return m_botLocaleStatus; }
+    inline BotLocaleStatus GetBotLocaleStatus() const { return m_botLocaleStatus; }
+    inline void SetBotLocaleStatus(BotLocaleStatus value) { m_botLocaleStatusHasBeenSet = true; m_botLocaleStatus = value; }
+    inline BuildBotLocaleResult& WithBotLocaleStatus(BotLocaleStatus value) { SetBotLocaleStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The bot's build status. When the status is <code>ReadyExpressTesting</code>
-     * you can test the bot using the utterances defined for the intents and slot
-     * types. When the status is <code>Built</code>, the bot is ready for use and can
-     * be tested using any utterance.</p>
-     */
-    inline void SetBotLocaleStatus(const BotLocaleStatus& value) { m_botLocaleStatus = value; }
-
-    /**
-     * <p>The bot's build status. When the status is <code>ReadyExpressTesting</code>
-     * you can test the bot using the utterances defined for the intents and slot
-     * types. When the status is <code>Built</code>, the bot is ready for use and can
-     * be tested using any utterance.</p>
-     */
-    inline void SetBotLocaleStatus(BotLocaleStatus&& value) { m_botLocaleStatus = std::move(value); }
-
-    /**
-     * <p>The bot's build status. When the status is <code>ReadyExpressTesting</code>
-     * you can test the bot using the utterances defined for the intents and slot
-     * types. When the status is <code>Built</code>, the bot is ready for use and can
-     * be tested using any utterance.</p>
-     */
-    inline BuildBotLocaleResult& WithBotLocaleStatus(const BotLocaleStatus& value) { SetBotLocaleStatus(value); return *this;}
-
-    /**
-     * <p>The bot's build status. When the status is <code>ReadyExpressTesting</code>
-     * you can test the bot using the utterances defined for the intents and slot
-     * types. When the status is <code>Built</code>, the bot is ready for use and can
-     * be tested using any utterance.</p>
-     */
-    inline BuildBotLocaleResult& WithBotLocaleStatus(BotLocaleStatus&& value) { SetBotLocaleStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A timestamp indicating the date and time that the bot was last built for this
      * locale.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastBuildSubmittedDateTime() const{ return m_lastBuildSubmittedDateTime; }
+    inline const Aws::Utils::DateTime& GetLastBuildSubmittedDateTime() const { return m_lastBuildSubmittedDateTime; }
+    template<typename LastBuildSubmittedDateTimeT = Aws::Utils::DateTime>
+    void SetLastBuildSubmittedDateTime(LastBuildSubmittedDateTimeT&& value) { m_lastBuildSubmittedDateTimeHasBeenSet = true; m_lastBuildSubmittedDateTime = std::forward<LastBuildSubmittedDateTimeT>(value); }
+    template<typename LastBuildSubmittedDateTimeT = Aws::Utils::DateTime>
+    BuildBotLocaleResult& WithLastBuildSubmittedDateTime(LastBuildSubmittedDateTimeT&& value) { SetLastBuildSubmittedDateTime(std::forward<LastBuildSubmittedDateTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A timestamp indicating the date and time that the bot was last built for this
-     * locale.</p>
-     */
-    inline void SetLastBuildSubmittedDateTime(const Aws::Utils::DateTime& value) { m_lastBuildSubmittedDateTime = value; }
-
-    /**
-     * <p>A timestamp indicating the date and time that the bot was last built for this
-     * locale.</p>
-     */
-    inline void SetLastBuildSubmittedDateTime(Aws::Utils::DateTime&& value) { m_lastBuildSubmittedDateTime = std::move(value); }
-
-    /**
-     * <p>A timestamp indicating the date and time that the bot was last built for this
-     * locale.</p>
-     */
-    inline BuildBotLocaleResult& WithLastBuildSubmittedDateTime(const Aws::Utils::DateTime& value) { SetLastBuildSubmittedDateTime(value); return *this;}
-
-    /**
-     * <p>A timestamp indicating the date and time that the bot was last built for this
-     * locale.</p>
-     */
-    inline BuildBotLocaleResult& WithLastBuildSubmittedDateTime(Aws::Utils::DateTime&& value) { SetLastBuildSubmittedDateTime(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline BuildBotLocaleResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline BuildBotLocaleResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline BuildBotLocaleResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    BuildBotLocaleResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_botId;
+    bool m_botIdHasBeenSet = false;
 
     Aws::String m_botVersion;
+    bool m_botVersionHasBeenSet = false;
 
     Aws::String m_localeId;
+    bool m_localeIdHasBeenSet = false;
 
-    BotLocaleStatus m_botLocaleStatus;
+    BotLocaleStatus m_botLocaleStatus{BotLocaleStatus::NOT_SET};
+    bool m_botLocaleStatusHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastBuildSubmittedDateTime;
+    Aws::Utils::DateTime m_lastBuildSubmittedDateTime{};
+    bool m_lastBuildSubmittedDateTimeHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

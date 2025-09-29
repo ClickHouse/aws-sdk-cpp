@@ -18,13 +18,7 @@ namespace XRay
 namespace Model
 {
 
-AnomalousService::AnomalousService() : 
-    m_serviceIdHasBeenSet(false)
-{
-}
-
-AnomalousService::AnomalousService(JsonView jsonValue) : 
-    m_serviceIdHasBeenSet(false)
+AnomalousService::AnomalousService(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ AnomalousService& AnomalousService::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ServiceId"))
   {
     m_serviceId = jsonValue.GetObject("ServiceId");
-
     m_serviceIdHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -20,15 +20,7 @@ namespace EC2
 namespace Model
 {
 
-TransitGatewayPeeringAttachmentOptions::TransitGatewayPeeringAttachmentOptions() : 
-    m_dynamicRouting(DynamicRoutingValue::NOT_SET),
-    m_dynamicRoutingHasBeenSet(false)
-{
-}
-
-TransitGatewayPeeringAttachmentOptions::TransitGatewayPeeringAttachmentOptions(const XmlNode& xmlNode) : 
-    m_dynamicRouting(DynamicRoutingValue::NOT_SET),
-    m_dynamicRoutingHasBeenSet(false)
+TransitGatewayPeeringAttachmentOptions::TransitGatewayPeeringAttachmentOptions(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -42,7 +34,7 @@ TransitGatewayPeeringAttachmentOptions& TransitGatewayPeeringAttachmentOptions::
     XmlNode dynamicRoutingNode = resultNode.FirstChild("dynamicRouting");
     if(!dynamicRoutingNode.IsNull())
     {
-      m_dynamicRouting = DynamicRoutingValueMapper::GetDynamicRoutingValueForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(dynamicRoutingNode.GetText()).c_str()).c_str());
+      m_dynamicRouting = DynamicRoutingValueMapper::GetDynamicRoutingValueForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(dynamicRoutingNode.GetText()).c_str()));
       m_dynamicRoutingHasBeenSet = true;
     }
   }
@@ -54,7 +46,7 @@ void TransitGatewayPeeringAttachmentOptions::OutputToStream(Aws::OStream& oStrea
 {
   if(m_dynamicRoutingHasBeenSet)
   {
-      oStream << location << index << locationValue << ".DynamicRouting=" << DynamicRoutingValueMapper::GetNameForDynamicRoutingValue(m_dynamicRouting) << "&";
+      oStream << location << index << locationValue << ".DynamicRouting=" << StringUtils::URLEncode(DynamicRoutingValueMapper::GetNameForDynamicRoutingValue(m_dynamicRouting)) << "&";
   }
 
 }
@@ -63,7 +55,7 @@ void TransitGatewayPeeringAttachmentOptions::OutputToStream(Aws::OStream& oStrea
 {
   if(m_dynamicRoutingHasBeenSet)
   {
-      oStream << location << ".DynamicRouting=" << DynamicRoutingValueMapper::GetNameForDynamicRoutingValue(m_dynamicRouting) << "&";
+      oStream << location << ".DynamicRouting=" << StringUtils::URLEncode(DynamicRoutingValueMapper::GetNameForDynamicRoutingValue(m_dynamicRouting)) << "&";
   }
 }
 

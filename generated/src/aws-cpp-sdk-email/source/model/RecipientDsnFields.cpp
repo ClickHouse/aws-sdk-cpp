@@ -20,27 +20,7 @@ namespace SES
 namespace Model
 {
 
-RecipientDsnFields::RecipientDsnFields() : 
-    m_finalRecipientHasBeenSet(false),
-    m_action(DsnAction::NOT_SET),
-    m_actionHasBeenSet(false),
-    m_remoteMtaHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_diagnosticCodeHasBeenSet(false),
-    m_lastAttemptDateHasBeenSet(false),
-    m_extensionFieldsHasBeenSet(false)
-{
-}
-
-RecipientDsnFields::RecipientDsnFields(const XmlNode& xmlNode) : 
-    m_finalRecipientHasBeenSet(false),
-    m_action(DsnAction::NOT_SET),
-    m_actionHasBeenSet(false),
-    m_remoteMtaHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_diagnosticCodeHasBeenSet(false),
-    m_lastAttemptDateHasBeenSet(false),
-    m_extensionFieldsHasBeenSet(false)
+RecipientDsnFields::RecipientDsnFields(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -60,7 +40,7 @@ RecipientDsnFields& RecipientDsnFields::operator =(const XmlNode& xmlNode)
     XmlNode actionNode = resultNode.FirstChild("Action");
     if(!actionNode.IsNull())
     {
-      m_action = DsnActionMapper::GetDsnActionForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(actionNode.GetText()).c_str()).c_str());
+      m_action = DsnActionMapper::GetDsnActionForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(actionNode.GetText()).c_str()));
       m_actionHasBeenSet = true;
     }
     XmlNode remoteMtaNode = resultNode.FirstChild("RemoteMta");
@@ -91,6 +71,7 @@ RecipientDsnFields& RecipientDsnFields::operator =(const XmlNode& xmlNode)
     if(!extensionFieldsNode.IsNull())
     {
       XmlNode extensionFieldsMember = extensionFieldsNode.FirstChild("member");
+      m_extensionFieldsHasBeenSet = !extensionFieldsMember.IsNull();
       while(!extensionFieldsMember.IsNull())
       {
         m_extensionFields.push_back(extensionFieldsMember);
@@ -113,7 +94,7 @@ void RecipientDsnFields::OutputToStream(Aws::OStream& oStream, const char* locat
 
   if(m_actionHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Action=" << DsnActionMapper::GetNameForDsnAction(m_action) << "&";
+      oStream << location << index << locationValue << ".Action=" << StringUtils::URLEncode(DsnActionMapper::GetNameForDsnAction(m_action)) << "&";
   }
 
   if(m_remoteMtaHasBeenSet)
@@ -157,7 +138,7 @@ void RecipientDsnFields::OutputToStream(Aws::OStream& oStream, const char* locat
   }
   if(m_actionHasBeenSet)
   {
-      oStream << location << ".Action=" << DsnActionMapper::GetNameForDsnAction(m_action) << "&";
+      oStream << location << ".Action=" << StringUtils::URLEncode(DsnActionMapper::GetNameForDsnAction(m_action)) << "&";
   }
   if(m_remoteMtaHasBeenSet)
   {
@@ -181,7 +162,7 @@ void RecipientDsnFields::OutputToStream(Aws::OStream& oStream, const char* locat
       for(auto& item : m_extensionFields)
       {
         Aws::StringStream extensionFieldsSs;
-        extensionFieldsSs << location <<  ".ExtensionFields.member." << extensionFieldsIdx++;
+        extensionFieldsSs << location << ".ExtensionFields.member." << extensionFieldsIdx++;
         item.OutputToStream(oStream, extensionFieldsSs.str().c_str());
       }
   }

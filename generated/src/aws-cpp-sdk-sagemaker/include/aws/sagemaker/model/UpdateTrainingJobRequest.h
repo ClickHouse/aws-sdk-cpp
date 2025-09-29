@@ -26,7 +26,7 @@ namespace Model
   class UpdateTrainingJobRequest : public SageMakerRequest
   {
   public:
-    AWS_SAGEMAKER_API UpdateTrainingJobRequest();
+    AWS_SAGEMAKER_API UpdateTrainingJobRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,178 +39,61 @@ namespace Model
     AWS_SAGEMAKER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of a training job to update the Debugger profiling
      * configuration.</p>
      */
-    inline const Aws::String& GetTrainingJobName() const{ return m_trainingJobName; }
-
-    /**
-     * <p>The name of a training job to update the Debugger profiling
-     * configuration.</p>
-     */
+    inline const Aws::String& GetTrainingJobName() const { return m_trainingJobName; }
     inline bool TrainingJobNameHasBeenSet() const { return m_trainingJobNameHasBeenSet; }
+    template<typename TrainingJobNameT = Aws::String>
+    void SetTrainingJobName(TrainingJobNameT&& value) { m_trainingJobNameHasBeenSet = true; m_trainingJobName = std::forward<TrainingJobNameT>(value); }
+    template<typename TrainingJobNameT = Aws::String>
+    UpdateTrainingJobRequest& WithTrainingJobName(TrainingJobNameT&& value) { SetTrainingJobName(std::forward<TrainingJobNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of a training job to update the Debugger profiling
-     * configuration.</p>
-     */
-    inline void SetTrainingJobName(const Aws::String& value) { m_trainingJobNameHasBeenSet = true; m_trainingJobName = value; }
-
-    /**
-     * <p>The name of a training job to update the Debugger profiling
-     * configuration.</p>
-     */
-    inline void SetTrainingJobName(Aws::String&& value) { m_trainingJobNameHasBeenSet = true; m_trainingJobName = std::move(value); }
-
-    /**
-     * <p>The name of a training job to update the Debugger profiling
-     * configuration.</p>
-     */
-    inline void SetTrainingJobName(const char* value) { m_trainingJobNameHasBeenSet = true; m_trainingJobName.assign(value); }
-
-    /**
-     * <p>The name of a training job to update the Debugger profiling
-     * configuration.</p>
-     */
-    inline UpdateTrainingJobRequest& WithTrainingJobName(const Aws::String& value) { SetTrainingJobName(value); return *this;}
-
-    /**
-     * <p>The name of a training job to update the Debugger profiling
-     * configuration.</p>
-     */
-    inline UpdateTrainingJobRequest& WithTrainingJobName(Aws::String&& value) { SetTrainingJobName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of a training job to update the Debugger profiling
-     * configuration.</p>
-     */
-    inline UpdateTrainingJobRequest& WithTrainingJobName(const char* value) { SetTrainingJobName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Configuration information for Amazon SageMaker Debugger system monitoring,
      * framework profiling, and storage paths.</p>
      */
-    inline const ProfilerConfigForUpdate& GetProfilerConfig() const{ return m_profilerConfig; }
-
-    /**
-     * <p>Configuration information for Amazon SageMaker Debugger system monitoring,
-     * framework profiling, and storage paths.</p>
-     */
+    inline const ProfilerConfigForUpdate& GetProfilerConfig() const { return m_profilerConfig; }
     inline bool ProfilerConfigHasBeenSet() const { return m_profilerConfigHasBeenSet; }
+    template<typename ProfilerConfigT = ProfilerConfigForUpdate>
+    void SetProfilerConfig(ProfilerConfigT&& value) { m_profilerConfigHasBeenSet = true; m_profilerConfig = std::forward<ProfilerConfigT>(value); }
+    template<typename ProfilerConfigT = ProfilerConfigForUpdate>
+    UpdateTrainingJobRequest& WithProfilerConfig(ProfilerConfigT&& value) { SetProfilerConfig(std::forward<ProfilerConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Configuration information for Amazon SageMaker Debugger system monitoring,
-     * framework profiling, and storage paths.</p>
-     */
-    inline void SetProfilerConfig(const ProfilerConfigForUpdate& value) { m_profilerConfigHasBeenSet = true; m_profilerConfig = value; }
-
-    /**
-     * <p>Configuration information for Amazon SageMaker Debugger system monitoring,
-     * framework profiling, and storage paths.</p>
-     */
-    inline void SetProfilerConfig(ProfilerConfigForUpdate&& value) { m_profilerConfigHasBeenSet = true; m_profilerConfig = std::move(value); }
-
-    /**
-     * <p>Configuration information for Amazon SageMaker Debugger system monitoring,
-     * framework profiling, and storage paths.</p>
-     */
-    inline UpdateTrainingJobRequest& WithProfilerConfig(const ProfilerConfigForUpdate& value) { SetProfilerConfig(value); return *this;}
-
-    /**
-     * <p>Configuration information for Amazon SageMaker Debugger system monitoring,
-     * framework profiling, and storage paths.</p>
-     */
-    inline UpdateTrainingJobRequest& WithProfilerConfig(ProfilerConfigForUpdate&& value) { SetProfilerConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Configuration information for Amazon SageMaker Debugger rules for profiling
      * system and framework metrics.</p>
      */
-    inline const Aws::Vector<ProfilerRuleConfiguration>& GetProfilerRuleConfigurations() const{ return m_profilerRuleConfigurations; }
-
-    /**
-     * <p>Configuration information for Amazon SageMaker Debugger rules for profiling
-     * system and framework metrics.</p>
-     */
+    inline const Aws::Vector<ProfilerRuleConfiguration>& GetProfilerRuleConfigurations() const { return m_profilerRuleConfigurations; }
     inline bool ProfilerRuleConfigurationsHasBeenSet() const { return m_profilerRuleConfigurationsHasBeenSet; }
+    template<typename ProfilerRuleConfigurationsT = Aws::Vector<ProfilerRuleConfiguration>>
+    void SetProfilerRuleConfigurations(ProfilerRuleConfigurationsT&& value) { m_profilerRuleConfigurationsHasBeenSet = true; m_profilerRuleConfigurations = std::forward<ProfilerRuleConfigurationsT>(value); }
+    template<typename ProfilerRuleConfigurationsT = Aws::Vector<ProfilerRuleConfiguration>>
+    UpdateTrainingJobRequest& WithProfilerRuleConfigurations(ProfilerRuleConfigurationsT&& value) { SetProfilerRuleConfigurations(std::forward<ProfilerRuleConfigurationsT>(value)); return *this;}
+    template<typename ProfilerRuleConfigurationsT = ProfilerRuleConfiguration>
+    UpdateTrainingJobRequest& AddProfilerRuleConfigurations(ProfilerRuleConfigurationsT&& value) { m_profilerRuleConfigurationsHasBeenSet = true; m_profilerRuleConfigurations.emplace_back(std::forward<ProfilerRuleConfigurationsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Configuration information for Amazon SageMaker Debugger rules for profiling
-     * system and framework metrics.</p>
-     */
-    inline void SetProfilerRuleConfigurations(const Aws::Vector<ProfilerRuleConfiguration>& value) { m_profilerRuleConfigurationsHasBeenSet = true; m_profilerRuleConfigurations = value; }
-
-    /**
-     * <p>Configuration information for Amazon SageMaker Debugger rules for profiling
-     * system and framework metrics.</p>
-     */
-    inline void SetProfilerRuleConfigurations(Aws::Vector<ProfilerRuleConfiguration>&& value) { m_profilerRuleConfigurationsHasBeenSet = true; m_profilerRuleConfigurations = std::move(value); }
-
-    /**
-     * <p>Configuration information for Amazon SageMaker Debugger rules for profiling
-     * system and framework metrics.</p>
-     */
-    inline UpdateTrainingJobRequest& WithProfilerRuleConfigurations(const Aws::Vector<ProfilerRuleConfiguration>& value) { SetProfilerRuleConfigurations(value); return *this;}
-
-    /**
-     * <p>Configuration information for Amazon SageMaker Debugger rules for profiling
-     * system and framework metrics.</p>
-     */
-    inline UpdateTrainingJobRequest& WithProfilerRuleConfigurations(Aws::Vector<ProfilerRuleConfiguration>&& value) { SetProfilerRuleConfigurations(std::move(value)); return *this;}
-
-    /**
-     * <p>Configuration information for Amazon SageMaker Debugger rules for profiling
-     * system and framework metrics.</p>
-     */
-    inline UpdateTrainingJobRequest& AddProfilerRuleConfigurations(const ProfilerRuleConfiguration& value) { m_profilerRuleConfigurationsHasBeenSet = true; m_profilerRuleConfigurations.push_back(value); return *this; }
-
-    /**
-     * <p>Configuration information for Amazon SageMaker Debugger rules for profiling
-     * system and framework metrics.</p>
-     */
-    inline UpdateTrainingJobRequest& AddProfilerRuleConfigurations(ProfilerRuleConfiguration&& value) { m_profilerRuleConfigurationsHasBeenSet = true; m_profilerRuleConfigurations.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The training job <code>ResourceConfig</code> to update warm pool retention
      * length.</p>
      */
-    inline const ResourceConfigForUpdate& GetResourceConfig() const{ return m_resourceConfig; }
-
-    /**
-     * <p>The training job <code>ResourceConfig</code> to update warm pool retention
-     * length.</p>
-     */
+    inline const ResourceConfigForUpdate& GetResourceConfig() const { return m_resourceConfig; }
     inline bool ResourceConfigHasBeenSet() const { return m_resourceConfigHasBeenSet; }
+    template<typename ResourceConfigT = ResourceConfigForUpdate>
+    void SetResourceConfig(ResourceConfigT&& value) { m_resourceConfigHasBeenSet = true; m_resourceConfig = std::forward<ResourceConfigT>(value); }
+    template<typename ResourceConfigT = ResourceConfigForUpdate>
+    UpdateTrainingJobRequest& WithResourceConfig(ResourceConfigT&& value) { SetResourceConfig(std::forward<ResourceConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The training job <code>ResourceConfig</code> to update warm pool retention
-     * length.</p>
-     */
-    inline void SetResourceConfig(const ResourceConfigForUpdate& value) { m_resourceConfigHasBeenSet = true; m_resourceConfig = value; }
-
-    /**
-     * <p>The training job <code>ResourceConfig</code> to update warm pool retention
-     * length.</p>
-     */
-    inline void SetResourceConfig(ResourceConfigForUpdate&& value) { m_resourceConfigHasBeenSet = true; m_resourceConfig = std::move(value); }
-
-    /**
-     * <p>The training job <code>ResourceConfig</code> to update warm pool retention
-     * length.</p>
-     */
-    inline UpdateTrainingJobRequest& WithResourceConfig(const ResourceConfigForUpdate& value) { SetResourceConfig(value); return *this;}
-
-    /**
-     * <p>The training job <code>ResourceConfig</code> to update warm pool retention
-     * length.</p>
-     */
-    inline UpdateTrainingJobRequest& WithResourceConfig(ResourceConfigForUpdate&& value) { SetResourceConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Configuration for remote debugging while the training job is running. You can
      * update the remote debugging configuration when the <code>SecondaryStatus</code>
@@ -220,63 +103,13 @@ namespace Model
      * a training container through Amazon Web Services Systems Manager (SSM) for
      * remote debugging</a>.</p>
      */
-    inline const RemoteDebugConfigForUpdate& GetRemoteDebugConfig() const{ return m_remoteDebugConfig; }
-
-    /**
-     * <p>Configuration for remote debugging while the training job is running. You can
-     * update the remote debugging configuration when the <code>SecondaryStatus</code>
-     * of the job is <code>Downloading</code> or <code>Training</code>.To learn more
-     * about the remote debugging functionality of SageMaker, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/train-remote-debugging.html">Access
-     * a training container through Amazon Web Services Systems Manager (SSM) for
-     * remote debugging</a>.</p>
-     */
+    inline const RemoteDebugConfigForUpdate& GetRemoteDebugConfig() const { return m_remoteDebugConfig; }
     inline bool RemoteDebugConfigHasBeenSet() const { return m_remoteDebugConfigHasBeenSet; }
-
-    /**
-     * <p>Configuration for remote debugging while the training job is running. You can
-     * update the remote debugging configuration when the <code>SecondaryStatus</code>
-     * of the job is <code>Downloading</code> or <code>Training</code>.To learn more
-     * about the remote debugging functionality of SageMaker, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/train-remote-debugging.html">Access
-     * a training container through Amazon Web Services Systems Manager (SSM) for
-     * remote debugging</a>.</p>
-     */
-    inline void SetRemoteDebugConfig(const RemoteDebugConfigForUpdate& value) { m_remoteDebugConfigHasBeenSet = true; m_remoteDebugConfig = value; }
-
-    /**
-     * <p>Configuration for remote debugging while the training job is running. You can
-     * update the remote debugging configuration when the <code>SecondaryStatus</code>
-     * of the job is <code>Downloading</code> or <code>Training</code>.To learn more
-     * about the remote debugging functionality of SageMaker, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/train-remote-debugging.html">Access
-     * a training container through Amazon Web Services Systems Manager (SSM) for
-     * remote debugging</a>.</p>
-     */
-    inline void SetRemoteDebugConfig(RemoteDebugConfigForUpdate&& value) { m_remoteDebugConfigHasBeenSet = true; m_remoteDebugConfig = std::move(value); }
-
-    /**
-     * <p>Configuration for remote debugging while the training job is running. You can
-     * update the remote debugging configuration when the <code>SecondaryStatus</code>
-     * of the job is <code>Downloading</code> or <code>Training</code>.To learn more
-     * about the remote debugging functionality of SageMaker, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/train-remote-debugging.html">Access
-     * a training container through Amazon Web Services Systems Manager (SSM) for
-     * remote debugging</a>.</p>
-     */
-    inline UpdateTrainingJobRequest& WithRemoteDebugConfig(const RemoteDebugConfigForUpdate& value) { SetRemoteDebugConfig(value); return *this;}
-
-    /**
-     * <p>Configuration for remote debugging while the training job is running. You can
-     * update the remote debugging configuration when the <code>SecondaryStatus</code>
-     * of the job is <code>Downloading</code> or <code>Training</code>.To learn more
-     * about the remote debugging functionality of SageMaker, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/train-remote-debugging.html">Access
-     * a training container through Amazon Web Services Systems Manager (SSM) for
-     * remote debugging</a>.</p>
-     */
-    inline UpdateTrainingJobRequest& WithRemoteDebugConfig(RemoteDebugConfigForUpdate&& value) { SetRemoteDebugConfig(std::move(value)); return *this;}
-
+    template<typename RemoteDebugConfigT = RemoteDebugConfigForUpdate>
+    void SetRemoteDebugConfig(RemoteDebugConfigT&& value) { m_remoteDebugConfigHasBeenSet = true; m_remoteDebugConfig = std::forward<RemoteDebugConfigT>(value); }
+    template<typename RemoteDebugConfigT = RemoteDebugConfigForUpdate>
+    UpdateTrainingJobRequest& WithRemoteDebugConfig(RemoteDebugConfigT&& value) { SetRemoteDebugConfig(std::forward<RemoteDebugConfigT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_trainingJobName;

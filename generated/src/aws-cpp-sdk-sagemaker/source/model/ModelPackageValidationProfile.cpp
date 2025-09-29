@@ -18,15 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-ModelPackageValidationProfile::ModelPackageValidationProfile() : 
-    m_profileNameHasBeenSet(false),
-    m_transformJobDefinitionHasBeenSet(false)
-{
-}
-
-ModelPackageValidationProfile::ModelPackageValidationProfile(JsonView jsonValue) : 
-    m_profileNameHasBeenSet(false),
-    m_transformJobDefinitionHasBeenSet(false)
+ModelPackageValidationProfile::ModelPackageValidationProfile(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ModelPackageValidationProfile& ModelPackageValidationProfile::operator =(JsonVie
   if(jsonValue.ValueExists("ProfileName"))
   {
     m_profileName = jsonValue.GetString("ProfileName");
-
     m_profileNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TransformJobDefinition"))
   {
     m_transformJobDefinition = jsonValue.GetObject("TransformJobDefinition");
-
     m_transformJobDefinitionHasBeenSet = true;
   }
-
   return *this;
 }
 

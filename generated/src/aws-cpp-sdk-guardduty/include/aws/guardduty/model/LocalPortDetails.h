@@ -32,76 +32,36 @@ namespace Model
   class LocalPortDetails
   {
   public:
-    AWS_GUARDDUTY_API LocalPortDetails();
+    AWS_GUARDDUTY_API LocalPortDetails() = default;
     AWS_GUARDDUTY_API LocalPortDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_GUARDDUTY_API LocalPortDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GUARDDUTY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The port number of the local connection.</p>
      */
-    inline int GetPort() const{ return m_port; }
-
-    /**
-     * <p>The port number of the local connection.</p>
-     */
+    inline int GetPort() const { return m_port; }
     inline bool PortHasBeenSet() const { return m_portHasBeenSet; }
-
-    /**
-     * <p>The port number of the local connection.</p>
-     */
     inline void SetPort(int value) { m_portHasBeenSet = true; m_port = value; }
-
-    /**
-     * <p>The port number of the local connection.</p>
-     */
     inline LocalPortDetails& WithPort(int value) { SetPort(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The port name of the local connection.</p>
      */
-    inline const Aws::String& GetPortName() const{ return m_portName; }
-
-    /**
-     * <p>The port name of the local connection.</p>
-     */
+    inline const Aws::String& GetPortName() const { return m_portName; }
     inline bool PortNameHasBeenSet() const { return m_portNameHasBeenSet; }
-
-    /**
-     * <p>The port name of the local connection.</p>
-     */
-    inline void SetPortName(const Aws::String& value) { m_portNameHasBeenSet = true; m_portName = value; }
-
-    /**
-     * <p>The port name of the local connection.</p>
-     */
-    inline void SetPortName(Aws::String&& value) { m_portNameHasBeenSet = true; m_portName = std::move(value); }
-
-    /**
-     * <p>The port name of the local connection.</p>
-     */
-    inline void SetPortName(const char* value) { m_portNameHasBeenSet = true; m_portName.assign(value); }
-
-    /**
-     * <p>The port name of the local connection.</p>
-     */
-    inline LocalPortDetails& WithPortName(const Aws::String& value) { SetPortName(value); return *this;}
-
-    /**
-     * <p>The port name of the local connection.</p>
-     */
-    inline LocalPortDetails& WithPortName(Aws::String&& value) { SetPortName(std::move(value)); return *this;}
-
-    /**
-     * <p>The port name of the local connection.</p>
-     */
-    inline LocalPortDetails& WithPortName(const char* value) { SetPortName(value); return *this;}
-
+    template<typename PortNameT = Aws::String>
+    void SetPortName(PortNameT&& value) { m_portNameHasBeenSet = true; m_portName = std::forward<PortNameT>(value); }
+    template<typename PortNameT = Aws::String>
+    LocalPortDetails& WithPortName(PortNameT&& value) { SetPortName(std::forward<PortNameT>(value)); return *this;}
+    ///@}
   private:
 
-    int m_port;
+    int m_port{0};
     bool m_portHasBeenSet = false;
 
     Aws::String m_portName;

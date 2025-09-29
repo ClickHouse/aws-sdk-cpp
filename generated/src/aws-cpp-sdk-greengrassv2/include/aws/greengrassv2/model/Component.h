@@ -32,140 +32,49 @@ namespace Model
   class Component
   {
   public:
-    AWS_GREENGRASSV2_API Component();
+    AWS_GREENGRASSV2_API Component() = default;
     AWS_GREENGRASSV2_API Component(Aws::Utils::Json::JsonView jsonValue);
     AWS_GREENGRASSV2_API Component& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GREENGRASSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The <a
      * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">ARN</a>
      * of the component version.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">ARN</a>
-     * of the component version.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    Component& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">ARN</a>
-     * of the component version.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">ARN</a>
-     * of the component version.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">ARN</a>
-     * of the component version.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">ARN</a>
-     * of the component version.</p>
-     */
-    inline Component& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">ARN</a>
-     * of the component version.</p>
-     */
-    inline Component& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">ARN</a>
-     * of the component version.</p>
-     */
-    inline Component& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the component.</p>
      */
-    inline const Aws::String& GetComponentName() const{ return m_componentName; }
-
-    /**
-     * <p>The name of the component.</p>
-     */
+    inline const Aws::String& GetComponentName() const { return m_componentName; }
     inline bool ComponentNameHasBeenSet() const { return m_componentNameHasBeenSet; }
+    template<typename ComponentNameT = Aws::String>
+    void SetComponentName(ComponentNameT&& value) { m_componentNameHasBeenSet = true; m_componentName = std::forward<ComponentNameT>(value); }
+    template<typename ComponentNameT = Aws::String>
+    Component& WithComponentName(ComponentNameT&& value) { SetComponentName(std::forward<ComponentNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the component.</p>
-     */
-    inline void SetComponentName(const Aws::String& value) { m_componentNameHasBeenSet = true; m_componentName = value; }
-
-    /**
-     * <p>The name of the component.</p>
-     */
-    inline void SetComponentName(Aws::String&& value) { m_componentNameHasBeenSet = true; m_componentName = std::move(value); }
-
-    /**
-     * <p>The name of the component.</p>
-     */
-    inline void SetComponentName(const char* value) { m_componentNameHasBeenSet = true; m_componentName.assign(value); }
-
-    /**
-     * <p>The name of the component.</p>
-     */
-    inline Component& WithComponentName(const Aws::String& value) { SetComponentName(value); return *this;}
-
-    /**
-     * <p>The name of the component.</p>
-     */
-    inline Component& WithComponentName(Aws::String&& value) { SetComponentName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the component.</p>
-     */
-    inline Component& WithComponentName(const char* value) { SetComponentName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The latest version of the component and its details.</p>
      */
-    inline const ComponentLatestVersion& GetLatestVersion() const{ return m_latestVersion; }
-
-    /**
-     * <p>The latest version of the component and its details.</p>
-     */
+    inline const ComponentLatestVersion& GetLatestVersion() const { return m_latestVersion; }
     inline bool LatestVersionHasBeenSet() const { return m_latestVersionHasBeenSet; }
-
-    /**
-     * <p>The latest version of the component and its details.</p>
-     */
-    inline void SetLatestVersion(const ComponentLatestVersion& value) { m_latestVersionHasBeenSet = true; m_latestVersion = value; }
-
-    /**
-     * <p>The latest version of the component and its details.</p>
-     */
-    inline void SetLatestVersion(ComponentLatestVersion&& value) { m_latestVersionHasBeenSet = true; m_latestVersion = std::move(value); }
-
-    /**
-     * <p>The latest version of the component and its details.</p>
-     */
-    inline Component& WithLatestVersion(const ComponentLatestVersion& value) { SetLatestVersion(value); return *this;}
-
-    /**
-     * <p>The latest version of the component and its details.</p>
-     */
-    inline Component& WithLatestVersion(ComponentLatestVersion&& value) { SetLatestVersion(std::move(value)); return *this;}
-
+    template<typename LatestVersionT = ComponentLatestVersion>
+    void SetLatestVersion(LatestVersionT&& value) { m_latestVersionHasBeenSet = true; m_latestVersion = std::forward<LatestVersionT>(value); }
+    template<typename LatestVersionT = ComponentLatestVersion>
+    Component& WithLatestVersion(LatestVersionT&& value) { SetLatestVersion(std::forward<LatestVersionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;

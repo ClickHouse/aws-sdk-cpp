@@ -33,7 +33,7 @@ namespace Model
   class DBParameterGroup
   {
   public:
-    AWS_RDS_API DBParameterGroup();
+    AWS_RDS_API DBParameterGroup() = default;
     AWS_RDS_API DBParameterGroup(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_RDS_API DBParameterGroup& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -41,177 +41,54 @@ namespace Model
     AWS_RDS_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The name of the DB parameter group.</p>
      */
-    inline const Aws::String& GetDBParameterGroupName() const{ return m_dBParameterGroupName; }
-
-    /**
-     * <p>The name of the DB parameter group.</p>
-     */
+    inline const Aws::String& GetDBParameterGroupName() const { return m_dBParameterGroupName; }
     inline bool DBParameterGroupNameHasBeenSet() const { return m_dBParameterGroupNameHasBeenSet; }
+    template<typename DBParameterGroupNameT = Aws::String>
+    void SetDBParameterGroupName(DBParameterGroupNameT&& value) { m_dBParameterGroupNameHasBeenSet = true; m_dBParameterGroupName = std::forward<DBParameterGroupNameT>(value); }
+    template<typename DBParameterGroupNameT = Aws::String>
+    DBParameterGroup& WithDBParameterGroupName(DBParameterGroupNameT&& value) { SetDBParameterGroupName(std::forward<DBParameterGroupNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the DB parameter group.</p>
-     */
-    inline void SetDBParameterGroupName(const Aws::String& value) { m_dBParameterGroupNameHasBeenSet = true; m_dBParameterGroupName = value; }
-
-    /**
-     * <p>The name of the DB parameter group.</p>
-     */
-    inline void SetDBParameterGroupName(Aws::String&& value) { m_dBParameterGroupNameHasBeenSet = true; m_dBParameterGroupName = std::move(value); }
-
-    /**
-     * <p>The name of the DB parameter group.</p>
-     */
-    inline void SetDBParameterGroupName(const char* value) { m_dBParameterGroupNameHasBeenSet = true; m_dBParameterGroupName.assign(value); }
-
-    /**
-     * <p>The name of the DB parameter group.</p>
-     */
-    inline DBParameterGroup& WithDBParameterGroupName(const Aws::String& value) { SetDBParameterGroupName(value); return *this;}
-
-    /**
-     * <p>The name of the DB parameter group.</p>
-     */
-    inline DBParameterGroup& WithDBParameterGroupName(Aws::String&& value) { SetDBParameterGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the DB parameter group.</p>
-     */
-    inline DBParameterGroup& WithDBParameterGroupName(const char* value) { SetDBParameterGroupName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the DB parameter group family that this DB parameter group is
      * compatible with.</p>
      */
-    inline const Aws::String& GetDBParameterGroupFamily() const{ return m_dBParameterGroupFamily; }
-
-    /**
-     * <p>The name of the DB parameter group family that this DB parameter group is
-     * compatible with.</p>
-     */
+    inline const Aws::String& GetDBParameterGroupFamily() const { return m_dBParameterGroupFamily; }
     inline bool DBParameterGroupFamilyHasBeenSet() const { return m_dBParameterGroupFamilyHasBeenSet; }
+    template<typename DBParameterGroupFamilyT = Aws::String>
+    void SetDBParameterGroupFamily(DBParameterGroupFamilyT&& value) { m_dBParameterGroupFamilyHasBeenSet = true; m_dBParameterGroupFamily = std::forward<DBParameterGroupFamilyT>(value); }
+    template<typename DBParameterGroupFamilyT = Aws::String>
+    DBParameterGroup& WithDBParameterGroupFamily(DBParameterGroupFamilyT&& value) { SetDBParameterGroupFamily(std::forward<DBParameterGroupFamilyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the DB parameter group family that this DB parameter group is
-     * compatible with.</p>
-     */
-    inline void SetDBParameterGroupFamily(const Aws::String& value) { m_dBParameterGroupFamilyHasBeenSet = true; m_dBParameterGroupFamily = value; }
-
-    /**
-     * <p>The name of the DB parameter group family that this DB parameter group is
-     * compatible with.</p>
-     */
-    inline void SetDBParameterGroupFamily(Aws::String&& value) { m_dBParameterGroupFamilyHasBeenSet = true; m_dBParameterGroupFamily = std::move(value); }
-
-    /**
-     * <p>The name of the DB parameter group family that this DB parameter group is
-     * compatible with.</p>
-     */
-    inline void SetDBParameterGroupFamily(const char* value) { m_dBParameterGroupFamilyHasBeenSet = true; m_dBParameterGroupFamily.assign(value); }
-
-    /**
-     * <p>The name of the DB parameter group family that this DB parameter group is
-     * compatible with.</p>
-     */
-    inline DBParameterGroup& WithDBParameterGroupFamily(const Aws::String& value) { SetDBParameterGroupFamily(value); return *this;}
-
-    /**
-     * <p>The name of the DB parameter group family that this DB parameter group is
-     * compatible with.</p>
-     */
-    inline DBParameterGroup& WithDBParameterGroupFamily(Aws::String&& value) { SetDBParameterGroupFamily(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the DB parameter group family that this DB parameter group is
-     * compatible with.</p>
-     */
-    inline DBParameterGroup& WithDBParameterGroupFamily(const char* value) { SetDBParameterGroupFamily(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Provides the customer-specified description for this DB parameter group.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>Provides the customer-specified description for this DB parameter group.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    DBParameterGroup& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Provides the customer-specified description for this DB parameter group.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>Provides the customer-specified description for this DB parameter group.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>Provides the customer-specified description for this DB parameter group.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>Provides the customer-specified description for this DB parameter group.</p>
-     */
-    inline DBParameterGroup& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>Provides the customer-specified description for this DB parameter group.</p>
-     */
-    inline DBParameterGroup& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>Provides the customer-specified description for this DB parameter group.</p>
-     */
-    inline DBParameterGroup& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) for the DB parameter group.</p>
      */
-    inline const Aws::String& GetDBParameterGroupArn() const{ return m_dBParameterGroupArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the DB parameter group.</p>
-     */
+    inline const Aws::String& GetDBParameterGroupArn() const { return m_dBParameterGroupArn; }
     inline bool DBParameterGroupArnHasBeenSet() const { return m_dBParameterGroupArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the DB parameter group.</p>
-     */
-    inline void SetDBParameterGroupArn(const Aws::String& value) { m_dBParameterGroupArnHasBeenSet = true; m_dBParameterGroupArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the DB parameter group.</p>
-     */
-    inline void SetDBParameterGroupArn(Aws::String&& value) { m_dBParameterGroupArnHasBeenSet = true; m_dBParameterGroupArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the DB parameter group.</p>
-     */
-    inline void SetDBParameterGroupArn(const char* value) { m_dBParameterGroupArnHasBeenSet = true; m_dBParameterGroupArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the DB parameter group.</p>
-     */
-    inline DBParameterGroup& WithDBParameterGroupArn(const Aws::String& value) { SetDBParameterGroupArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the DB parameter group.</p>
-     */
-    inline DBParameterGroup& WithDBParameterGroupArn(Aws::String&& value) { SetDBParameterGroupArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the DB parameter group.</p>
-     */
-    inline DBParameterGroup& WithDBParameterGroupArn(const char* value) { SetDBParameterGroupArn(value); return *this;}
-
+    template<typename DBParameterGroupArnT = Aws::String>
+    void SetDBParameterGroupArn(DBParameterGroupArnT&& value) { m_dBParameterGroupArnHasBeenSet = true; m_dBParameterGroupArn = std::forward<DBParameterGroupArnT>(value); }
+    template<typename DBParameterGroupArnT = Aws::String>
+    DBParameterGroup& WithDBParameterGroupArn(DBParameterGroupArnT&& value) { SetDBParameterGroupArn(std::forward<DBParameterGroupArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_dBParameterGroupName;

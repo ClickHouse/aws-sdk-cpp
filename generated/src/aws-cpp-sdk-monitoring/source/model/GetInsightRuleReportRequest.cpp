@@ -10,19 +10,6 @@
 using namespace Aws::CloudWatch::Model;
 using namespace Aws::Utils;
 
-GetInsightRuleReportRequest::GetInsightRuleReportRequest() : 
-    m_ruleNameHasBeenSet(false),
-    m_startTimeHasBeenSet(false),
-    m_endTimeHasBeenSet(false),
-    m_period(0),
-    m_periodHasBeenSet(false),
-    m_maxContributorCount(0),
-    m_maxContributorCountHasBeenSet(false),
-    m_metricsHasBeenSet(false),
-    m_orderByHasBeenSet(false)
-{
-}
-
 Aws::String GetInsightRuleReportRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -54,12 +41,19 @@ Aws::String GetInsightRuleReportRequest::SerializePayload() const
 
   if(m_metricsHasBeenSet)
   {
-    unsigned metricsCount = 1;
-    for(auto& item : m_metrics)
+    if (m_metrics.empty())
     {
-      ss << "Metrics.member." << metricsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      metricsCount++;
+      ss << "Metrics=&";
+    }
+    else
+    {
+      unsigned metricsCount = 1;
+      for(auto& item : m_metrics)
+      {
+        ss << "Metrics.member." << metricsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        metricsCount++;
+      }
     }
   }
 

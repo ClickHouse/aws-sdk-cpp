@@ -18,21 +18,7 @@ namespace Glue
 namespace Model
 {
 
-SparkSQL::SparkSQL() : 
-    m_nameHasBeenSet(false),
-    m_inputsHasBeenSet(false),
-    m_sqlQueryHasBeenSet(false),
-    m_sqlAliasesHasBeenSet(false),
-    m_outputSchemasHasBeenSet(false)
-{
-}
-
-SparkSQL::SparkSQL(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_inputsHasBeenSet(false),
-    m_sqlQueryHasBeenSet(false),
-    m_sqlAliasesHasBeenSet(false),
-    m_outputSchemasHasBeenSet(false)
+SparkSQL::SparkSQL(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,10 +28,8 @@ SparkSQL& SparkSQL::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Inputs"))
   {
     Aws::Utils::Array<JsonView> inputsJsonList = jsonValue.GetArray("Inputs");
@@ -55,14 +39,11 @@ SparkSQL& SparkSQL::operator =(JsonView jsonValue)
     }
     m_inputsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SqlQuery"))
   {
     m_sqlQuery = jsonValue.GetString("SqlQuery");
-
     m_sqlQueryHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SqlAliases"))
   {
     Aws::Utils::Array<JsonView> sqlAliasesJsonList = jsonValue.GetArray("SqlAliases");
@@ -72,7 +53,6 @@ SparkSQL& SparkSQL::operator =(JsonView jsonValue)
     }
     m_sqlAliasesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("OutputSchemas"))
   {
     Aws::Utils::Array<JsonView> outputSchemasJsonList = jsonValue.GetArray("OutputSchemas");
@@ -82,7 +62,6 @@ SparkSQL& SparkSQL::operator =(JsonView jsonValue)
     }
     m_outputSchemasHasBeenSet = true;
   }
-
   return *this;
 }
 

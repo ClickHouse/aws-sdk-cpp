@@ -10,17 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-ModifyVpnTunnelOptionsRequest::ModifyVpnTunnelOptionsRequest() : 
-    m_vpnConnectionIdHasBeenSet(false),
-    m_vpnTunnelOutsideIpAddressHasBeenSet(false),
-    m_tunnelOptionsHasBeenSet(false),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_skipTunnelReplacement(false),
-    m_skipTunnelReplacementHasBeenSet(false)
-{
-}
-
 Aws::String ModifyVpnTunnelOptionsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -48,6 +37,11 @@ Aws::String ModifyVpnTunnelOptionsRequest::SerializePayload() const
   if(m_skipTunnelReplacementHasBeenSet)
   {
     ss << "SkipTunnelReplacement=" << std::boolalpha << m_skipTunnelReplacement << "&";
+  }
+
+  if(m_preSharedKeyStorageHasBeenSet)
+  {
+    ss << "PreSharedKeyStorage=" << StringUtils::URLEncode(m_preSharedKeyStorage.c_str()) << "&";
   }
 
   ss << "Version=2016-11-15";

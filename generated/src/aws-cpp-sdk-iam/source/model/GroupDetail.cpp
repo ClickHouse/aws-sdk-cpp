@@ -20,25 +20,7 @@ namespace IAM
 namespace Model
 {
 
-GroupDetail::GroupDetail() : 
-    m_pathHasBeenSet(false),
-    m_groupNameHasBeenSet(false),
-    m_groupIdHasBeenSet(false),
-    m_arnHasBeenSet(false),
-    m_createDateHasBeenSet(false),
-    m_groupPolicyListHasBeenSet(false),
-    m_attachedManagedPoliciesHasBeenSet(false)
-{
-}
-
-GroupDetail::GroupDetail(const XmlNode& xmlNode) : 
-    m_pathHasBeenSet(false),
-    m_groupNameHasBeenSet(false),
-    m_groupIdHasBeenSet(false),
-    m_arnHasBeenSet(false),
-    m_createDateHasBeenSet(false),
-    m_groupPolicyListHasBeenSet(false),
-    m_attachedManagedPoliciesHasBeenSet(false)
+GroupDetail::GroupDetail(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -83,6 +65,7 @@ GroupDetail& GroupDetail::operator =(const XmlNode& xmlNode)
     if(!groupPolicyListNode.IsNull())
     {
       XmlNode groupPolicyListMember = groupPolicyListNode.FirstChild("member");
+      m_groupPolicyListHasBeenSet = !groupPolicyListMember.IsNull();
       while(!groupPolicyListMember.IsNull())
       {
         m_groupPolicyList.push_back(groupPolicyListMember);
@@ -95,6 +78,7 @@ GroupDetail& GroupDetail::operator =(const XmlNode& xmlNode)
     if(!attachedManagedPoliciesNode.IsNull())
     {
       XmlNode attachedManagedPoliciesMember = attachedManagedPoliciesNode.FirstChild("member");
+      m_attachedManagedPoliciesHasBeenSet = !attachedManagedPoliciesMember.IsNull();
       while(!attachedManagedPoliciesMember.IsNull())
       {
         m_attachedManagedPolicies.push_back(attachedManagedPoliciesMember);
@@ -187,7 +171,7 @@ void GroupDetail::OutputToStream(Aws::OStream& oStream, const char* location) co
       for(auto& item : m_groupPolicyList)
       {
         Aws::StringStream groupPolicyListSs;
-        groupPolicyListSs << location <<  ".GroupPolicyList.member." << groupPolicyListIdx++;
+        groupPolicyListSs << location << ".GroupPolicyList.member." << groupPolicyListIdx++;
         item.OutputToStream(oStream, groupPolicyListSs.str().c_str());
       }
   }
@@ -197,7 +181,7 @@ void GroupDetail::OutputToStream(Aws::OStream& oStream, const char* location) co
       for(auto& item : m_attachedManagedPolicies)
       {
         Aws::StringStream attachedManagedPoliciesSs;
-        attachedManagedPoliciesSs << location <<  ".AttachedManagedPolicies.member." << attachedManagedPoliciesIdx++;
+        attachedManagedPoliciesSs << location << ".AttachedManagedPolicies.member." << attachedManagedPoliciesIdx++;
         item.OutputToStream(oStream, attachedManagedPoliciesSs.str().c_str());
       }
   }

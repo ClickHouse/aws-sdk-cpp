@@ -21,7 +21,7 @@ namespace Model
   class GetOrganizationRecommendationRequest : public TrustedAdvisorRequest
   {
   public:
-    AWS_TRUSTEDADVISOR_API GetOrganizationRecommendationRequest();
+    AWS_TRUSTEDADVISOR_API GetOrganizationRecommendationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_TRUSTEDADVISOR_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The Recommendation identifier</p>
      */
-    inline const Aws::String& GetOrganizationRecommendationIdentifier() const{ return m_organizationRecommendationIdentifier; }
-
-    /**
-     * <p>The Recommendation identifier</p>
-     */
+    inline const Aws::String& GetOrganizationRecommendationIdentifier() const { return m_organizationRecommendationIdentifier; }
     inline bool OrganizationRecommendationIdentifierHasBeenSet() const { return m_organizationRecommendationIdentifierHasBeenSet; }
-
-    /**
-     * <p>The Recommendation identifier</p>
-     */
-    inline void SetOrganizationRecommendationIdentifier(const Aws::String& value) { m_organizationRecommendationIdentifierHasBeenSet = true; m_organizationRecommendationIdentifier = value; }
-
-    /**
-     * <p>The Recommendation identifier</p>
-     */
-    inline void SetOrganizationRecommendationIdentifier(Aws::String&& value) { m_organizationRecommendationIdentifierHasBeenSet = true; m_organizationRecommendationIdentifier = std::move(value); }
-
-    /**
-     * <p>The Recommendation identifier</p>
-     */
-    inline void SetOrganizationRecommendationIdentifier(const char* value) { m_organizationRecommendationIdentifierHasBeenSet = true; m_organizationRecommendationIdentifier.assign(value); }
-
-    /**
-     * <p>The Recommendation identifier</p>
-     */
-    inline GetOrganizationRecommendationRequest& WithOrganizationRecommendationIdentifier(const Aws::String& value) { SetOrganizationRecommendationIdentifier(value); return *this;}
-
-    /**
-     * <p>The Recommendation identifier</p>
-     */
-    inline GetOrganizationRecommendationRequest& WithOrganizationRecommendationIdentifier(Aws::String&& value) { SetOrganizationRecommendationIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The Recommendation identifier</p>
-     */
-    inline GetOrganizationRecommendationRequest& WithOrganizationRecommendationIdentifier(const char* value) { SetOrganizationRecommendationIdentifier(value); return *this;}
-
+    template<typename OrganizationRecommendationIdentifierT = Aws::String>
+    void SetOrganizationRecommendationIdentifier(OrganizationRecommendationIdentifierT&& value) { m_organizationRecommendationIdentifierHasBeenSet = true; m_organizationRecommendationIdentifier = std::forward<OrganizationRecommendationIdentifierT>(value); }
+    template<typename OrganizationRecommendationIdentifierT = Aws::String>
+    GetOrganizationRecommendationRequest& WithOrganizationRecommendationIdentifier(OrganizationRecommendationIdentifierT&& value) { SetOrganizationRecommendationIdentifier(std::forward<OrganizationRecommendationIdentifierT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_organizationRecommendationIdentifier;

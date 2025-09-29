@@ -32,165 +32,57 @@ namespace Model
   class RepositoryBranch
   {
   public:
-    AWS_PROTON_API RepositoryBranch();
+    AWS_PROTON_API RepositoryBranch() = default;
     AWS_PROTON_API RepositoryBranch(Aws::Utils::Json::JsonView jsonValue);
     AWS_PROTON_API RepositoryBranch& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PROTON_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the linked repository.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the linked repository.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    RepositoryBranch& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the linked repository.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the linked repository.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the linked repository.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the linked repository.</p>
-     */
-    inline RepositoryBranch& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the linked repository.</p>
-     */
-    inline RepositoryBranch& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the linked repository.</p>
-     */
-    inline RepositoryBranch& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The repository branch.</p>
      */
-    inline const Aws::String& GetBranch() const{ return m_branch; }
-
-    /**
-     * <p>The repository branch.</p>
-     */
+    inline const Aws::String& GetBranch() const { return m_branch; }
     inline bool BranchHasBeenSet() const { return m_branchHasBeenSet; }
+    template<typename BranchT = Aws::String>
+    void SetBranch(BranchT&& value) { m_branchHasBeenSet = true; m_branch = std::forward<BranchT>(value); }
+    template<typename BranchT = Aws::String>
+    RepositoryBranch& WithBranch(BranchT&& value) { SetBranch(std::forward<BranchT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The repository branch.</p>
-     */
-    inline void SetBranch(const Aws::String& value) { m_branchHasBeenSet = true; m_branch = value; }
-
-    /**
-     * <p>The repository branch.</p>
-     */
-    inline void SetBranch(Aws::String&& value) { m_branchHasBeenSet = true; m_branch = std::move(value); }
-
-    /**
-     * <p>The repository branch.</p>
-     */
-    inline void SetBranch(const char* value) { m_branchHasBeenSet = true; m_branch.assign(value); }
-
-    /**
-     * <p>The repository branch.</p>
-     */
-    inline RepositoryBranch& WithBranch(const Aws::String& value) { SetBranch(value); return *this;}
-
-    /**
-     * <p>The repository branch.</p>
-     */
-    inline RepositoryBranch& WithBranch(Aws::String&& value) { SetBranch(std::move(value)); return *this;}
-
-    /**
-     * <p>The repository branch.</p>
-     */
-    inline RepositoryBranch& WithBranch(const char* value) { SetBranch(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The repository name.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The repository name.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    RepositoryBranch& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The repository name.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The repository name.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The repository name.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The repository name.</p>
-     */
-    inline RepositoryBranch& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The repository name.</p>
-     */
-    inline RepositoryBranch& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The repository name.</p>
-     */
-    inline RepositoryBranch& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The repository provider.</p>
      */
-    inline const RepositoryProvider& GetProvider() const{ return m_provider; }
-
-    /**
-     * <p>The repository provider.</p>
-     */
+    inline RepositoryProvider GetProvider() const { return m_provider; }
     inline bool ProviderHasBeenSet() const { return m_providerHasBeenSet; }
-
-    /**
-     * <p>The repository provider.</p>
-     */
-    inline void SetProvider(const RepositoryProvider& value) { m_providerHasBeenSet = true; m_provider = value; }
-
-    /**
-     * <p>The repository provider.</p>
-     */
-    inline void SetProvider(RepositoryProvider&& value) { m_providerHasBeenSet = true; m_provider = std::move(value); }
-
-    /**
-     * <p>The repository provider.</p>
-     */
-    inline RepositoryBranch& WithProvider(const RepositoryProvider& value) { SetProvider(value); return *this;}
-
-    /**
-     * <p>The repository provider.</p>
-     */
-    inline RepositoryBranch& WithProvider(RepositoryProvider&& value) { SetProvider(std::move(value)); return *this;}
-
+    inline void SetProvider(RepositoryProvider value) { m_providerHasBeenSet = true; m_provider = value; }
+    inline RepositoryBranch& WithProvider(RepositoryProvider value) { SetProvider(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;
@@ -202,7 +94,7 @@ namespace Model
     Aws::String m_name;
     bool m_nameHasBeenSet = false;
 
-    RepositoryProvider m_provider;
+    RepositoryProvider m_provider{RepositoryProvider::NOT_SET};
     bool m_providerHasBeenSet = false;
   };
 

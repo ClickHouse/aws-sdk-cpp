@@ -33,175 +33,59 @@ namespace Model
   class LaunchGroupConfig
   {
   public:
-    AWS_CLOUDWATCHEVIDENTLY_API LaunchGroupConfig();
+    AWS_CLOUDWATCHEVIDENTLY_API LaunchGroupConfig() = default;
     AWS_CLOUDWATCHEVIDENTLY_API LaunchGroupConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDWATCHEVIDENTLY_API LaunchGroupConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDWATCHEVIDENTLY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A description of the launch group.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>A description of the launch group.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    LaunchGroupConfig& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A description of the launch group.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>A description of the launch group.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>A description of the launch group.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>A description of the launch group.</p>
-     */
-    inline LaunchGroupConfig& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A description of the launch group.</p>
-     */
-    inline LaunchGroupConfig& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A description of the launch group.</p>
-     */
-    inline LaunchGroupConfig& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The feature that this launch is using.</p>
      */
-    inline const Aws::String& GetFeature() const{ return m_feature; }
-
-    /**
-     * <p>The feature that this launch is using.</p>
-     */
+    inline const Aws::String& GetFeature() const { return m_feature; }
     inline bool FeatureHasBeenSet() const { return m_featureHasBeenSet; }
+    template<typename FeatureT = Aws::String>
+    void SetFeature(FeatureT&& value) { m_featureHasBeenSet = true; m_feature = std::forward<FeatureT>(value); }
+    template<typename FeatureT = Aws::String>
+    LaunchGroupConfig& WithFeature(FeatureT&& value) { SetFeature(std::forward<FeatureT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The feature that this launch is using.</p>
-     */
-    inline void SetFeature(const Aws::String& value) { m_featureHasBeenSet = true; m_feature = value; }
-
-    /**
-     * <p>The feature that this launch is using.</p>
-     */
-    inline void SetFeature(Aws::String&& value) { m_featureHasBeenSet = true; m_feature = std::move(value); }
-
-    /**
-     * <p>The feature that this launch is using.</p>
-     */
-    inline void SetFeature(const char* value) { m_featureHasBeenSet = true; m_feature.assign(value); }
-
-    /**
-     * <p>The feature that this launch is using.</p>
-     */
-    inline LaunchGroupConfig& WithFeature(const Aws::String& value) { SetFeature(value); return *this;}
-
-    /**
-     * <p>The feature that this launch is using.</p>
-     */
-    inline LaunchGroupConfig& WithFeature(Aws::String&& value) { SetFeature(std::move(value)); return *this;}
-
-    /**
-     * <p>The feature that this launch is using.</p>
-     */
-    inline LaunchGroupConfig& WithFeature(const char* value) { SetFeature(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A name for this launch group.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>A name for this launch group.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    LaunchGroupConfig& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A name for this launch group.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>A name for this launch group.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>A name for this launch group.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>A name for this launch group.</p>
-     */
-    inline LaunchGroupConfig& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>A name for this launch group.</p>
-     */
-    inline LaunchGroupConfig& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>A name for this launch group.</p>
-     */
-    inline LaunchGroupConfig& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The feature variation to use for this launch group.</p>
      */
-    inline const Aws::String& GetVariation() const{ return m_variation; }
-
-    /**
-     * <p>The feature variation to use for this launch group.</p>
-     */
+    inline const Aws::String& GetVariation() const { return m_variation; }
     inline bool VariationHasBeenSet() const { return m_variationHasBeenSet; }
-
-    /**
-     * <p>The feature variation to use for this launch group.</p>
-     */
-    inline void SetVariation(const Aws::String& value) { m_variationHasBeenSet = true; m_variation = value; }
-
-    /**
-     * <p>The feature variation to use for this launch group.</p>
-     */
-    inline void SetVariation(Aws::String&& value) { m_variationHasBeenSet = true; m_variation = std::move(value); }
-
-    /**
-     * <p>The feature variation to use for this launch group.</p>
-     */
-    inline void SetVariation(const char* value) { m_variationHasBeenSet = true; m_variation.assign(value); }
-
-    /**
-     * <p>The feature variation to use for this launch group.</p>
-     */
-    inline LaunchGroupConfig& WithVariation(const Aws::String& value) { SetVariation(value); return *this;}
-
-    /**
-     * <p>The feature variation to use for this launch group.</p>
-     */
-    inline LaunchGroupConfig& WithVariation(Aws::String&& value) { SetVariation(std::move(value)); return *this;}
-
-    /**
-     * <p>The feature variation to use for this launch group.</p>
-     */
-    inline LaunchGroupConfig& WithVariation(const char* value) { SetVariation(value); return *this;}
-
+    template<typename VariationT = Aws::String>
+    void SetVariation(VariationT&& value) { m_variationHasBeenSet = true; m_variation = std::forward<VariationT>(value); }
+    template<typename VariationT = Aws::String>
+    LaunchGroupConfig& WithVariation(VariationT&& value) { SetVariation(std::forward<VariationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_description;

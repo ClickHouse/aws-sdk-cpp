@@ -31,100 +31,49 @@ namespace Model
   class GradientStop
   {
   public:
-    AWS_QUICKSIGHT_API GradientStop();
+    AWS_QUICKSIGHT_API GradientStop() = default;
     AWS_QUICKSIGHT_API GradientStop(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API GradientStop& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Determines gradient offset value.</p>
      */
-    inline double GetGradientOffset() const{ return m_gradientOffset; }
-
-    /**
-     * <p>Determines gradient offset value.</p>
-     */
+    inline double GetGradientOffset() const { return m_gradientOffset; }
     inline bool GradientOffsetHasBeenSet() const { return m_gradientOffsetHasBeenSet; }
-
-    /**
-     * <p>Determines gradient offset value.</p>
-     */
     inline void SetGradientOffset(double value) { m_gradientOffsetHasBeenSet = true; m_gradientOffset = value; }
-
-    /**
-     * <p>Determines gradient offset value.</p>
-     */
     inline GradientStop& WithGradientOffset(double value) { SetGradientOffset(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Determines the data value.</p>
      */
-    inline double GetDataValue() const{ return m_dataValue; }
-
-    /**
-     * <p>Determines the data value.</p>
-     */
+    inline double GetDataValue() const { return m_dataValue; }
     inline bool DataValueHasBeenSet() const { return m_dataValueHasBeenSet; }
-
-    /**
-     * <p>Determines the data value.</p>
-     */
     inline void SetDataValue(double value) { m_dataValueHasBeenSet = true; m_dataValue = value; }
-
-    /**
-     * <p>Determines the data value.</p>
-     */
     inline GradientStop& WithDataValue(double value) { SetDataValue(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Determines the color.</p>
      */
-    inline const Aws::String& GetColor() const{ return m_color; }
-
-    /**
-     * <p>Determines the color.</p>
-     */
+    inline const Aws::String& GetColor() const { return m_color; }
     inline bool ColorHasBeenSet() const { return m_colorHasBeenSet; }
-
-    /**
-     * <p>Determines the color.</p>
-     */
-    inline void SetColor(const Aws::String& value) { m_colorHasBeenSet = true; m_color = value; }
-
-    /**
-     * <p>Determines the color.</p>
-     */
-    inline void SetColor(Aws::String&& value) { m_colorHasBeenSet = true; m_color = std::move(value); }
-
-    /**
-     * <p>Determines the color.</p>
-     */
-    inline void SetColor(const char* value) { m_colorHasBeenSet = true; m_color.assign(value); }
-
-    /**
-     * <p>Determines the color.</p>
-     */
-    inline GradientStop& WithColor(const Aws::String& value) { SetColor(value); return *this;}
-
-    /**
-     * <p>Determines the color.</p>
-     */
-    inline GradientStop& WithColor(Aws::String&& value) { SetColor(std::move(value)); return *this;}
-
-    /**
-     * <p>Determines the color.</p>
-     */
-    inline GradientStop& WithColor(const char* value) { SetColor(value); return *this;}
-
+    template<typename ColorT = Aws::String>
+    void SetColor(ColorT&& value) { m_colorHasBeenSet = true; m_color = std::forward<ColorT>(value); }
+    template<typename ColorT = Aws::String>
+    GradientStop& WithColor(ColorT&& value) { SetColor(std::forward<ColorT>(value)); return *this;}
+    ///@}
   private:
 
-    double m_gradientOffset;
+    double m_gradientOffset{0.0};
     bool m_gradientOffsetHasBeenSet = false;
 
-    double m_dataValue;
+    double m_dataValue{0.0};
     bool m_dataValueHasBeenSet = false;
 
     Aws::String m_color;

@@ -20,61 +20,7 @@ namespace RDS
 namespace Model
 {
 
-OptionGroupOption::OptionGroupOption() : 
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_engineNameHasBeenSet(false),
-    m_majorEngineVersionHasBeenSet(false),
-    m_minimumRequiredMinorEngineVersionHasBeenSet(false),
-    m_portRequired(false),
-    m_portRequiredHasBeenSet(false),
-    m_defaultPort(0),
-    m_defaultPortHasBeenSet(false),
-    m_optionsDependedOnHasBeenSet(false),
-    m_optionsConflictsWithHasBeenSet(false),
-    m_persistent(false),
-    m_persistentHasBeenSet(false),
-    m_permanent(false),
-    m_permanentHasBeenSet(false),
-    m_requiresAutoMinorEngineVersionUpgrade(false),
-    m_requiresAutoMinorEngineVersionUpgradeHasBeenSet(false),
-    m_vpcOnly(false),
-    m_vpcOnlyHasBeenSet(false),
-    m_supportsOptionVersionDowngrade(false),
-    m_supportsOptionVersionDowngradeHasBeenSet(false),
-    m_optionGroupOptionSettingsHasBeenSet(false),
-    m_optionGroupOptionVersionsHasBeenSet(false),
-    m_copyableCrossAccount(false),
-    m_copyableCrossAccountHasBeenSet(false)
-{
-}
-
-OptionGroupOption::OptionGroupOption(const XmlNode& xmlNode) : 
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_engineNameHasBeenSet(false),
-    m_majorEngineVersionHasBeenSet(false),
-    m_minimumRequiredMinorEngineVersionHasBeenSet(false),
-    m_portRequired(false),
-    m_portRequiredHasBeenSet(false),
-    m_defaultPort(0),
-    m_defaultPortHasBeenSet(false),
-    m_optionsDependedOnHasBeenSet(false),
-    m_optionsConflictsWithHasBeenSet(false),
-    m_persistent(false),
-    m_persistentHasBeenSet(false),
-    m_permanent(false),
-    m_permanentHasBeenSet(false),
-    m_requiresAutoMinorEngineVersionUpgrade(false),
-    m_requiresAutoMinorEngineVersionUpgradeHasBeenSet(false),
-    m_vpcOnly(false),
-    m_vpcOnlyHasBeenSet(false),
-    m_supportsOptionVersionDowngrade(false),
-    m_supportsOptionVersionDowngradeHasBeenSet(false),
-    m_optionGroupOptionSettingsHasBeenSet(false),
-    m_optionGroupOptionVersionsHasBeenSet(false),
-    m_copyableCrossAccount(false),
-    m_copyableCrossAccountHasBeenSet(false)
+OptionGroupOption::OptionGroupOption(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -131,6 +77,7 @@ OptionGroupOption& OptionGroupOption::operator =(const XmlNode& xmlNode)
     if(!optionsDependedOnNode.IsNull())
     {
       XmlNode optionsDependedOnMember = optionsDependedOnNode.FirstChild("OptionName");
+      m_optionsDependedOnHasBeenSet = !optionsDependedOnMember.IsNull();
       while(!optionsDependedOnMember.IsNull())
       {
         m_optionsDependedOn.push_back(optionsDependedOnMember.GetText());
@@ -143,6 +90,7 @@ OptionGroupOption& OptionGroupOption::operator =(const XmlNode& xmlNode)
     if(!optionsConflictsWithNode.IsNull())
     {
       XmlNode optionsConflictsWithMember = optionsConflictsWithNode.FirstChild("OptionConflictName");
+      m_optionsConflictsWithHasBeenSet = !optionsConflictsWithMember.IsNull();
       while(!optionsConflictsWithMember.IsNull())
       {
         m_optionsConflictsWith.push_back(optionsConflictsWithMember.GetText());
@@ -185,6 +133,7 @@ OptionGroupOption& OptionGroupOption::operator =(const XmlNode& xmlNode)
     if(!optionGroupOptionSettingsNode.IsNull())
     {
       XmlNode optionGroupOptionSettingsMember = optionGroupOptionSettingsNode.FirstChild("OptionGroupOptionSetting");
+      m_optionGroupOptionSettingsHasBeenSet = !optionGroupOptionSettingsMember.IsNull();
       while(!optionGroupOptionSettingsMember.IsNull())
       {
         m_optionGroupOptionSettings.push_back(optionGroupOptionSettingsMember);
@@ -197,6 +146,7 @@ OptionGroupOption& OptionGroupOption::operator =(const XmlNode& xmlNode)
     if(!optionGroupOptionVersionsNode.IsNull())
     {
       XmlNode optionGroupOptionVersionsMember = optionGroupOptionVersionsNode.FirstChild("OptionVersion");
+      m_optionGroupOptionVersionsHasBeenSet = !optionGroupOptionVersionsMember.IsNull();
       while(!optionGroupOptionVersionsMember.IsNull())
       {
         m_optionGroupOptionVersions.push_back(optionGroupOptionVersionsMember);
@@ -258,7 +208,7 @@ void OptionGroupOption::OutputToStream(Aws::OStream& oStream, const char* locati
       unsigned optionsDependedOnIdx = 1;
       for(auto& item : m_optionsDependedOn)
       {
-        oStream << location << index << locationValue << ".OptionName." << optionsDependedOnIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << index << locationValue << ".OptionsDependedOn.OptionName." << optionsDependedOnIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
 
@@ -267,7 +217,7 @@ void OptionGroupOption::OutputToStream(Aws::OStream& oStream, const char* locati
       unsigned optionsConflictsWithIdx = 1;
       for(auto& item : m_optionsConflictsWith)
       {
-        oStream << location << index << locationValue << ".OptionConflictName." << optionsConflictsWithIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << index << locationValue << ".OptionsConflictsWith.OptionConflictName." << optionsConflictsWithIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
 
@@ -302,7 +252,7 @@ void OptionGroupOption::OutputToStream(Aws::OStream& oStream, const char* locati
       for(auto& item : m_optionGroupOptionSettings)
       {
         Aws::StringStream optionGroupOptionSettingsSs;
-        optionGroupOptionSettingsSs << location << index << locationValue << ".OptionGroupOptionSetting." << optionGroupOptionSettingsIdx++;
+        optionGroupOptionSettingsSs << location << index << locationValue << ".OptionGroupOptionSettings.OptionGroupOptionSetting." << optionGroupOptionSettingsIdx++;
         item.OutputToStream(oStream, optionGroupOptionSettingsSs.str().c_str());
       }
   }
@@ -313,7 +263,7 @@ void OptionGroupOption::OutputToStream(Aws::OStream& oStream, const char* locati
       for(auto& item : m_optionGroupOptionVersions)
       {
         Aws::StringStream optionGroupOptionVersionsSs;
-        optionGroupOptionVersionsSs << location << index << locationValue << ".OptionVersion." << optionGroupOptionVersionsIdx++;
+        optionGroupOptionVersionsSs << location << index << locationValue << ".OptionGroupOptionVersions.OptionVersion." << optionGroupOptionVersionsIdx++;
         item.OutputToStream(oStream, optionGroupOptionVersionsSs.str().c_str());
       }
   }
@@ -360,7 +310,7 @@ void OptionGroupOption::OutputToStream(Aws::OStream& oStream, const char* locati
       unsigned optionsDependedOnIdx = 1;
       for(auto& item : m_optionsDependedOn)
       {
-        oStream << location << ".OptionName." << optionsDependedOnIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".OptionsDependedOn.OptionName." << optionsDependedOnIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_optionsConflictsWithHasBeenSet)
@@ -368,7 +318,7 @@ void OptionGroupOption::OutputToStream(Aws::OStream& oStream, const char* locati
       unsigned optionsConflictsWithIdx = 1;
       for(auto& item : m_optionsConflictsWith)
       {
-        oStream << location << ".OptionConflictName." << optionsConflictsWithIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".OptionsConflictsWith.OptionConflictName." << optionsConflictsWithIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_persistentHasBeenSet)
@@ -397,7 +347,7 @@ void OptionGroupOption::OutputToStream(Aws::OStream& oStream, const char* locati
       for(auto& item : m_optionGroupOptionSettings)
       {
         Aws::StringStream optionGroupOptionSettingsSs;
-        optionGroupOptionSettingsSs << location <<  ".OptionGroupOptionSetting." << optionGroupOptionSettingsIdx++;
+        optionGroupOptionSettingsSs << location << ".OptionGroupOptionSettings.OptionGroupOptionSetting." << optionGroupOptionSettingsIdx++;
         item.OutputToStream(oStream, optionGroupOptionSettingsSs.str().c_str());
       }
   }
@@ -407,7 +357,7 @@ void OptionGroupOption::OutputToStream(Aws::OStream& oStream, const char* locati
       for(auto& item : m_optionGroupOptionVersions)
       {
         Aws::StringStream optionGroupOptionVersionsSs;
-        optionGroupOptionVersionsSs << location <<  ".OptionVersion." << optionGroupOptionVersionsIdx++;
+        optionGroupOptionVersionsSs << location << ".OptionGroupOptionVersions.OptionVersion." << optionGroupOptionVersionsIdx++;
         item.OutputToStream(oStream, optionGroupOptionVersionsSs.str().c_str());
       }
   }

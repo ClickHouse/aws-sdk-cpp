@@ -18,19 +18,7 @@ namespace PcaConnectorAd
 namespace Model
 {
 
-GeneralFlagsV2::GeneralFlagsV2() : 
-    m_autoEnrollment(false),
-    m_autoEnrollmentHasBeenSet(false),
-    m_machineType(false),
-    m_machineTypeHasBeenSet(false)
-{
-}
-
-GeneralFlagsV2::GeneralFlagsV2(JsonView jsonValue) : 
-    m_autoEnrollment(false),
-    m_autoEnrollmentHasBeenSet(false),
-    m_machineType(false),
-    m_machineTypeHasBeenSet(false)
+GeneralFlagsV2::GeneralFlagsV2(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ GeneralFlagsV2& GeneralFlagsV2::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("AutoEnrollment"))
   {
     m_autoEnrollment = jsonValue.GetBool("AutoEnrollment");
-
     m_autoEnrollmentHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MachineType"))
   {
     m_machineType = jsonValue.GetBool("MachineType");
-
     m_machineTypeHasBeenSet = true;
   }
-
   return *this;
 }
 

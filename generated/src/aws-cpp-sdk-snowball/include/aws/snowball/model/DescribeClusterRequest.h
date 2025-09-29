@@ -21,7 +21,7 @@ namespace Model
   class DescribeClusterRequest : public SnowballRequest
   {
   public:
-    AWS_SNOWBALL_API DescribeClusterRequest();
+    AWS_SNOWBALL_API DescribeClusterRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_SNOWBALL_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The automatically generated ID for a cluster.</p>
      */
-    inline const Aws::String& GetClusterId() const{ return m_clusterId; }
-
-    /**
-     * <p>The automatically generated ID for a cluster.</p>
-     */
+    inline const Aws::String& GetClusterId() const { return m_clusterId; }
     inline bool ClusterIdHasBeenSet() const { return m_clusterIdHasBeenSet; }
-
-    /**
-     * <p>The automatically generated ID for a cluster.</p>
-     */
-    inline void SetClusterId(const Aws::String& value) { m_clusterIdHasBeenSet = true; m_clusterId = value; }
-
-    /**
-     * <p>The automatically generated ID for a cluster.</p>
-     */
-    inline void SetClusterId(Aws::String&& value) { m_clusterIdHasBeenSet = true; m_clusterId = std::move(value); }
-
-    /**
-     * <p>The automatically generated ID for a cluster.</p>
-     */
-    inline void SetClusterId(const char* value) { m_clusterIdHasBeenSet = true; m_clusterId.assign(value); }
-
-    /**
-     * <p>The automatically generated ID for a cluster.</p>
-     */
-    inline DescribeClusterRequest& WithClusterId(const Aws::String& value) { SetClusterId(value); return *this;}
-
-    /**
-     * <p>The automatically generated ID for a cluster.</p>
-     */
-    inline DescribeClusterRequest& WithClusterId(Aws::String&& value) { SetClusterId(std::move(value)); return *this;}
-
-    /**
-     * <p>The automatically generated ID for a cluster.</p>
-     */
-    inline DescribeClusterRequest& WithClusterId(const char* value) { SetClusterId(value); return *this;}
-
+    template<typename ClusterIdT = Aws::String>
+    void SetClusterId(ClusterIdT&& value) { m_clusterIdHasBeenSet = true; m_clusterId = std::forward<ClusterIdT>(value); }
+    template<typename ClusterIdT = Aws::String>
+    DescribeClusterRequest& WithClusterId(ClusterIdT&& value) { SetClusterId(std::forward<ClusterIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_clusterId;

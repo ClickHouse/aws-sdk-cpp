@@ -21,7 +21,7 @@ namespace Model
   class CancelResizeRequest : public RedshiftRequest
   {
   public:
-    AWS_REDSHIFT_API CancelResizeRequest();
+    AWS_REDSHIFT_API CancelResizeRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,54 +36,18 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The unique identifier for the cluster that you want to cancel a resize
      * operation for.</p>
      */
-    inline const Aws::String& GetClusterIdentifier() const{ return m_clusterIdentifier; }
-
-    /**
-     * <p>The unique identifier for the cluster that you want to cancel a resize
-     * operation for.</p>
-     */
+    inline const Aws::String& GetClusterIdentifier() const { return m_clusterIdentifier; }
     inline bool ClusterIdentifierHasBeenSet() const { return m_clusterIdentifierHasBeenSet; }
-
-    /**
-     * <p>The unique identifier for the cluster that you want to cancel a resize
-     * operation for.</p>
-     */
-    inline void SetClusterIdentifier(const Aws::String& value) { m_clusterIdentifierHasBeenSet = true; m_clusterIdentifier = value; }
-
-    /**
-     * <p>The unique identifier for the cluster that you want to cancel a resize
-     * operation for.</p>
-     */
-    inline void SetClusterIdentifier(Aws::String&& value) { m_clusterIdentifierHasBeenSet = true; m_clusterIdentifier = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the cluster that you want to cancel a resize
-     * operation for.</p>
-     */
-    inline void SetClusterIdentifier(const char* value) { m_clusterIdentifierHasBeenSet = true; m_clusterIdentifier.assign(value); }
-
-    /**
-     * <p>The unique identifier for the cluster that you want to cancel a resize
-     * operation for.</p>
-     */
-    inline CancelResizeRequest& WithClusterIdentifier(const Aws::String& value) { SetClusterIdentifier(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the cluster that you want to cancel a resize
-     * operation for.</p>
-     */
-    inline CancelResizeRequest& WithClusterIdentifier(Aws::String&& value) { SetClusterIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the cluster that you want to cancel a resize
-     * operation for.</p>
-     */
-    inline CancelResizeRequest& WithClusterIdentifier(const char* value) { SetClusterIdentifier(value); return *this;}
-
+    template<typename ClusterIdentifierT = Aws::String>
+    void SetClusterIdentifier(ClusterIdentifierT&& value) { m_clusterIdentifierHasBeenSet = true; m_clusterIdentifier = std::forward<ClusterIdentifierT>(value); }
+    template<typename ClusterIdentifierT = Aws::String>
+    CancelResizeRequest& WithClusterIdentifier(ClusterIdentifierT&& value) { SetClusterIdentifier(std::forward<ClusterIdentifierT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_clusterIdentifier;

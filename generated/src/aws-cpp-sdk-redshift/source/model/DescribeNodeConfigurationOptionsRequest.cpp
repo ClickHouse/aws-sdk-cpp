@@ -10,27 +10,13 @@
 using namespace Aws::Redshift::Model;
 using namespace Aws::Utils;
 
-DescribeNodeConfigurationOptionsRequest::DescribeNodeConfigurationOptionsRequest() : 
-    m_actionType(ActionType::NOT_SET),
-    m_actionTypeHasBeenSet(false),
-    m_clusterIdentifierHasBeenSet(false),
-    m_snapshotIdentifierHasBeenSet(false),
-    m_snapshotArnHasBeenSet(false),
-    m_ownerAccountHasBeenSet(false),
-    m_filtersHasBeenSet(false),
-    m_markerHasBeenSet(false),
-    m_maxRecords(0),
-    m_maxRecordsHasBeenSet(false)
-{
-}
-
 Aws::String DescribeNodeConfigurationOptionsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=DescribeNodeConfigurationOptions&";
   if(m_actionTypeHasBeenSet)
   {
-    ss << "ActionType=" << ActionTypeMapper::GetNameForActionType(m_actionType) << "&";
+    ss << "ActionType=" << StringUtils::URLEncode(ActionTypeMapper::GetNameForActionType(m_actionType)) << "&";
   }
 
   if(m_clusterIdentifierHasBeenSet)
@@ -55,11 +41,18 @@ Aws::String DescribeNodeConfigurationOptionsRequest::SerializePayload() const
 
   if(m_filtersHasBeenSet)
   {
-    unsigned filtersCount = 1;
-    for(auto& item : m_filters)
+    if (m_filters.empty())
     {
-      item.OutputToStream(ss, "Filter.", filtersCount, "");
-      filtersCount++;
+      ss << "Filters=&";
+    }
+    else
+    {
+      unsigned filtersCount = 1;
+      for(auto& item : m_filters)
+      {
+        item.OutputToStream(ss, "Filter.", filtersCount, "");
+        filtersCount++;
+      }
     }
   }
 

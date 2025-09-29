@@ -54,20 +54,27 @@ using namespace Aws::Utils::Json;
 using namespace smithy::components::tracing;
 using ResolveEndpointOutcome = Aws::Endpoint::ResolveEndpointOutcome;
 
-const char* SageMakerGeospatialClient::SERVICE_NAME = "sagemaker-geospatial";
-const char* SageMakerGeospatialClient::ALLOCATION_TAG = "SageMakerGeospatialClient";
+namespace Aws
+{
+  namespace SageMakerGeospatial
+  {
+    const char SERVICE_NAME[] = "sagemaker-geospatial";
+    const char ALLOCATION_TAG[] = "SageMakerGeospatialClient";
+  }
+}
+const char* SageMakerGeospatialClient::GetServiceName() {return SERVICE_NAME;}
+const char* SageMakerGeospatialClient::GetAllocationTag() {return ALLOCATION_TAG;}
 
 SageMakerGeospatialClient::SageMakerGeospatialClient(const SageMakerGeospatial::SageMakerGeospatialClientConfiguration& clientConfiguration,
                                                      std::shared_ptr<SageMakerGeospatialEndpointProviderBase> endpointProvider) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<SageMakerGeospatialErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
-  m_endpointProvider(std::move(endpointProvider))
+  m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<SageMakerGeospatialEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -82,8 +89,7 @@ SageMakerGeospatialClient::SageMakerGeospatialClient(const AWSCredentials& crede
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<SageMakerGeospatialErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<SageMakerGeospatialEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -98,8 +104,7 @@ SageMakerGeospatialClient::SageMakerGeospatialClient(const std::shared_ptr<AWSCr
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<SageMakerGeospatialErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<SageMakerGeospatialEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -108,12 +113,11 @@ SageMakerGeospatialClient::SageMakerGeospatialClient(const std::shared_ptr<AWSCr
   SageMakerGeospatialClient::SageMakerGeospatialClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<SageMakerGeospatialErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
   m_endpointProvider(Aws::MakeShared<SageMakerGeospatialEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -128,7 +132,6 @@ SageMakerGeospatialClient::SageMakerGeospatialClient(const AWSCredentials& crede
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<SageMakerGeospatialErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<SageMakerGeospatialEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -143,7 +146,6 @@ SageMakerGeospatialClient::SageMakerGeospatialClient(const std::shared_ptr<AWSCr
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<SageMakerGeospatialErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<SageMakerGeospatialEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -163,6 +165,14 @@ std::shared_ptr<SageMakerGeospatialEndpointProviderBase>& SageMakerGeospatialCli
 void SageMakerGeospatialClient::init(const SageMakerGeospatial::SageMakerGeospatialClientConfiguration& config)
 {
   AWSClient::SetServiceClientName("SageMaker Geospatial");
+  if (!m_clientConfiguration.executor) {
+    if (!m_clientConfiguration.configFactories.executorCreateFn()) {
+      AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "Failed to initialize client: config is missing Executor or executorCreateFn");
+      m_isInitialized = false;
+      return;
+    }
+    m_clientConfiguration.executor = m_clientConfiguration.configFactories.executorCreateFn();
+  }
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
   m_endpointProvider->InitBuiltInParameters(config);
 }

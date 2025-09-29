@@ -18,35 +18,7 @@ namespace Firehose
 namespace Model
 {
 
-RedshiftDestinationConfiguration::RedshiftDestinationConfiguration() : 
-    m_roleARNHasBeenSet(false),
-    m_clusterJDBCURLHasBeenSet(false),
-    m_copyCommandHasBeenSet(false),
-    m_usernameHasBeenSet(false),
-    m_passwordHasBeenSet(false),
-    m_retryOptionsHasBeenSet(false),
-    m_s3ConfigurationHasBeenSet(false),
-    m_processingConfigurationHasBeenSet(false),
-    m_s3BackupMode(RedshiftS3BackupMode::NOT_SET),
-    m_s3BackupModeHasBeenSet(false),
-    m_s3BackupConfigurationHasBeenSet(false),
-    m_cloudWatchLoggingOptionsHasBeenSet(false)
-{
-}
-
-RedshiftDestinationConfiguration::RedshiftDestinationConfiguration(JsonView jsonValue) : 
-    m_roleARNHasBeenSet(false),
-    m_clusterJDBCURLHasBeenSet(false),
-    m_copyCommandHasBeenSet(false),
-    m_usernameHasBeenSet(false),
-    m_passwordHasBeenSet(false),
-    m_retryOptionsHasBeenSet(false),
-    m_s3ConfigurationHasBeenSet(false),
-    m_processingConfigurationHasBeenSet(false),
-    m_s3BackupMode(RedshiftS3BackupMode::NOT_SET),
-    m_s3BackupModeHasBeenSet(false),
-    m_s3BackupConfigurationHasBeenSet(false),
-    m_cloudWatchLoggingOptionsHasBeenSet(false)
+RedshiftDestinationConfiguration::RedshiftDestinationConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -56,80 +28,63 @@ RedshiftDestinationConfiguration& RedshiftDestinationConfiguration::operator =(J
   if(jsonValue.ValueExists("RoleARN"))
   {
     m_roleARN = jsonValue.GetString("RoleARN");
-
     m_roleARNHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ClusterJDBCURL"))
   {
     m_clusterJDBCURL = jsonValue.GetString("ClusterJDBCURL");
-
     m_clusterJDBCURLHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CopyCommand"))
   {
     m_copyCommand = jsonValue.GetObject("CopyCommand");
-
     m_copyCommandHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Username"))
   {
     m_username = jsonValue.GetString("Username");
-
     m_usernameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Password"))
   {
     m_password = jsonValue.GetString("Password");
-
     m_passwordHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RetryOptions"))
   {
     m_retryOptions = jsonValue.GetObject("RetryOptions");
-
     m_retryOptionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("S3Configuration"))
   {
     m_s3Configuration = jsonValue.GetObject("S3Configuration");
-
     m_s3ConfigurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ProcessingConfiguration"))
   {
     m_processingConfiguration = jsonValue.GetObject("ProcessingConfiguration");
-
     m_processingConfigurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("S3BackupMode"))
   {
     m_s3BackupMode = RedshiftS3BackupModeMapper::GetRedshiftS3BackupModeForName(jsonValue.GetString("S3BackupMode"));
-
     m_s3BackupModeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("S3BackupConfiguration"))
   {
     m_s3BackupConfiguration = jsonValue.GetObject("S3BackupConfiguration");
-
     m_s3BackupConfigurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CloudWatchLoggingOptions"))
   {
     m_cloudWatchLoggingOptions = jsonValue.GetObject("CloudWatchLoggingOptions");
-
     m_cloudWatchLoggingOptionsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("SecretsManagerConfiguration"))
+  {
+    m_secretsManagerConfiguration = jsonValue.GetObject("SecretsManagerConfiguration");
+    m_secretsManagerConfigurationHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -199,6 +154,12 @@ JsonValue RedshiftDestinationConfiguration::Jsonize() const
   if(m_cloudWatchLoggingOptionsHasBeenSet)
   {
    payload.WithObject("CloudWatchLoggingOptions", m_cloudWatchLoggingOptions.Jsonize());
+
+  }
+
+  if(m_secretsManagerConfigurationHasBeenSet)
+  {
+   payload.WithObject("SecretsManagerConfiguration", m_secretsManagerConfiguration.Jsonize());
 
   }
 

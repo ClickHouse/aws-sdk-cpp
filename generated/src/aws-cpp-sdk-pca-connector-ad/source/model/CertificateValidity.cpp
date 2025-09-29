@@ -18,15 +18,7 @@ namespace PcaConnectorAd
 namespace Model
 {
 
-CertificateValidity::CertificateValidity() : 
-    m_renewalPeriodHasBeenSet(false),
-    m_validityPeriodHasBeenSet(false)
-{
-}
-
-CertificateValidity::CertificateValidity(JsonView jsonValue) : 
-    m_renewalPeriodHasBeenSet(false),
-    m_validityPeriodHasBeenSet(false)
+CertificateValidity::CertificateValidity(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ CertificateValidity& CertificateValidity::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("RenewalPeriod"))
   {
     m_renewalPeriod = jsonValue.GetObject("RenewalPeriod");
-
     m_renewalPeriodHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ValidityPeriod"))
   {
     m_validityPeriod = jsonValue.GetObject("ValidityPeriod");
-
     m_validityPeriodHasBeenSet = true;
   }
-
   return *this;
 }
 

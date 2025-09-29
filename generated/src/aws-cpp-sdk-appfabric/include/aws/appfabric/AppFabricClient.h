@@ -33,8 +33,8 @@ namespace AppFabric
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
 
       typedef AppFabricClientConfiguration ClientConfigurationType;
       typedef AppFabricEndpointProvider EndpointProviderType;
@@ -44,14 +44,14 @@ namespace AppFabric
         * is not specified, it will be initialized to default values.
         */
         AppFabricClient(const Aws::AppFabric::AppFabricClientConfiguration& clientConfiguration = Aws::AppFabric::AppFabricClientConfiguration(),
-                        std::shared_ptr<AppFabricEndpointProviderBase> endpointProvider = Aws::MakeShared<AppFabricEndpointProvider>(ALLOCATION_TAG));
+                        std::shared_ptr<AppFabricEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         AppFabricClient(const Aws::Auth::AWSCredentials& credentials,
-                        std::shared_ptr<AppFabricEndpointProviderBase> endpointProvider = Aws::MakeShared<AppFabricEndpointProvider>(ALLOCATION_TAG),
+                        std::shared_ptr<AppFabricEndpointProviderBase> endpointProvider = nullptr,
                         const Aws::AppFabric::AppFabricClientConfiguration& clientConfiguration = Aws::AppFabric::AppFabricClientConfiguration());
 
        /**
@@ -59,7 +59,7 @@ namespace AppFabric
         * the default http client factory will be used
         */
         AppFabricClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                        std::shared_ptr<AppFabricEndpointProviderBase> endpointProvider = Aws::MakeShared<AppFabricEndpointProvider>(ALLOCATION_TAG),
+                        std::shared_ptr<AppFabricEndpointProviderBase> endpointProvider = nullptr,
                         const Aws::AppFabric::AppFabricClientConfiguration& clientConfiguration = Aws::AppFabric::AppFabricClientConfiguration());
 
 
@@ -173,13 +173,13 @@ namespace AppFabric
          * href="http://docs.aws.amazon.com/goto/WebAPI/appfabric-2023-05-19/CreateAppBundle">AWS
          * API Reference</a></p>
          */
-        virtual Model::CreateAppBundleOutcome CreateAppBundle(const Model::CreateAppBundleRequest& request) const;
+        virtual Model::CreateAppBundleOutcome CreateAppBundle(const Model::CreateAppBundleRequest& request = {}) const;
 
         /**
          * A Callable wrapper for CreateAppBundle that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename CreateAppBundleRequestT = Model::CreateAppBundleRequest>
-        Model::CreateAppBundleOutcomeCallable CreateAppBundleCallable(const CreateAppBundleRequestT& request) const
+        Model::CreateAppBundleOutcomeCallable CreateAppBundleCallable(const CreateAppBundleRequestT& request = {}) const
         {
             return SubmitCallable(&AppFabricClient::CreateAppBundle, request);
         }
@@ -188,7 +188,7 @@ namespace AppFabric
          * An Async wrapper for CreateAppBundle that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename CreateAppBundleRequestT = Model::CreateAppBundleRequest>
-        void CreateAppBundleAsync(const CreateAppBundleRequestT& request, const CreateAppBundleResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void CreateAppBundleAsync(const CreateAppBundleResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const CreateAppBundleRequestT& request = {}) const
         {
             return SubmitAsync(&AppFabricClient::CreateAppBundle, request, handler, context);
         }
@@ -486,13 +486,13 @@ namespace AppFabric
          * href="http://docs.aws.amazon.com/goto/WebAPI/appfabric-2023-05-19/ListAppBundles">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListAppBundlesOutcome ListAppBundles(const Model::ListAppBundlesRequest& request) const;
+        virtual Model::ListAppBundlesOutcome ListAppBundles(const Model::ListAppBundlesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListAppBundles that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListAppBundlesRequestT = Model::ListAppBundlesRequest>
-        Model::ListAppBundlesOutcomeCallable ListAppBundlesCallable(const ListAppBundlesRequestT& request) const
+        Model::ListAppBundlesOutcomeCallable ListAppBundlesCallable(const ListAppBundlesRequestT& request = {}) const
         {
             return SubmitCallable(&AppFabricClient::ListAppBundles, request);
         }
@@ -501,7 +501,7 @@ namespace AppFabric
          * An Async wrapper for ListAppBundles that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListAppBundlesRequestT = Model::ListAppBundlesRequest>
-        void ListAppBundlesAsync(const ListAppBundlesRequestT& request, const ListAppBundlesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListAppBundlesAsync(const ListAppBundlesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListAppBundlesRequestT& request = {}) const
         {
             return SubmitAsync(&AppFabricClient::ListAppBundles, request, handler, context);
         }
@@ -776,7 +776,6 @@ namespace AppFabric
       void init(const AppFabricClientConfiguration& clientConfiguration);
 
       AppFabricClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<AppFabricEndpointProviderBase> m_endpointProvider;
   };
 

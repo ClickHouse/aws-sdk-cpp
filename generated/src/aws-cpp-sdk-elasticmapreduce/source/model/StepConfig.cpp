@@ -18,19 +18,7 @@ namespace EMR
 namespace Model
 {
 
-StepConfig::StepConfig() : 
-    m_nameHasBeenSet(false),
-    m_actionOnFailure(ActionOnFailure::NOT_SET),
-    m_actionOnFailureHasBeenSet(false),
-    m_hadoopJarStepHasBeenSet(false)
-{
-}
-
-StepConfig::StepConfig(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_actionOnFailure(ActionOnFailure::NOT_SET),
-    m_actionOnFailureHasBeenSet(false),
-    m_hadoopJarStepHasBeenSet(false)
+StepConfig::StepConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ StepConfig& StepConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ActionOnFailure"))
   {
     m_actionOnFailure = ActionOnFailureMapper::GetActionOnFailureForName(jsonValue.GetString("ActionOnFailure"));
-
     m_actionOnFailureHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("HadoopJarStep"))
   {
     m_hadoopJarStep = jsonValue.GetObject("HadoopJarStep");
-
     m_hadoopJarStepHasBeenSet = true;
   }
-
   return *this;
 }
 

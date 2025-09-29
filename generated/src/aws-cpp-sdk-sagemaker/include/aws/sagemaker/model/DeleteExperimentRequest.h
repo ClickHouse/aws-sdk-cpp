@@ -21,7 +21,7 @@ namespace Model
   class DeleteExperimentRequest : public SageMakerRequest
   {
   public:
-    AWS_SAGEMAKER_API DeleteExperimentRequest();
+    AWS_SAGEMAKER_API DeleteExperimentRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_SAGEMAKER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the experiment to delete.</p>
      */
-    inline const Aws::String& GetExperimentName() const{ return m_experimentName; }
-
-    /**
-     * <p>The name of the experiment to delete.</p>
-     */
+    inline const Aws::String& GetExperimentName() const { return m_experimentName; }
     inline bool ExperimentNameHasBeenSet() const { return m_experimentNameHasBeenSet; }
-
-    /**
-     * <p>The name of the experiment to delete.</p>
-     */
-    inline void SetExperimentName(const Aws::String& value) { m_experimentNameHasBeenSet = true; m_experimentName = value; }
-
-    /**
-     * <p>The name of the experiment to delete.</p>
-     */
-    inline void SetExperimentName(Aws::String&& value) { m_experimentNameHasBeenSet = true; m_experimentName = std::move(value); }
-
-    /**
-     * <p>The name of the experiment to delete.</p>
-     */
-    inline void SetExperimentName(const char* value) { m_experimentNameHasBeenSet = true; m_experimentName.assign(value); }
-
-    /**
-     * <p>The name of the experiment to delete.</p>
-     */
-    inline DeleteExperimentRequest& WithExperimentName(const Aws::String& value) { SetExperimentName(value); return *this;}
-
-    /**
-     * <p>The name of the experiment to delete.</p>
-     */
-    inline DeleteExperimentRequest& WithExperimentName(Aws::String&& value) { SetExperimentName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the experiment to delete.</p>
-     */
-    inline DeleteExperimentRequest& WithExperimentName(const char* value) { SetExperimentName(value); return *this;}
-
+    template<typename ExperimentNameT = Aws::String>
+    void SetExperimentName(ExperimentNameT&& value) { m_experimentNameHasBeenSet = true; m_experimentName = std::forward<ExperimentNameT>(value); }
+    template<typename ExperimentNameT = Aws::String>
+    DeleteExperimentRequest& WithExperimentName(ExperimentNameT&& value) { SetExperimentName(std::forward<ExperimentNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_experimentName;

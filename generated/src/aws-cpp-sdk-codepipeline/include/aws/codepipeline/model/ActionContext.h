@@ -32,93 +32,35 @@ namespace Model
   class ActionContext
   {
   public:
-    AWS_CODEPIPELINE_API ActionContext();
+    AWS_CODEPIPELINE_API ActionContext() = default;
     AWS_CODEPIPELINE_API ActionContext(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEPIPELINE_API ActionContext& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEPIPELINE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the action in the context of a job.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the action in the context of a job.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    ActionContext& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the action in the context of a job.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the action in the context of a job.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the action in the context of a job.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the action in the context of a job.</p>
-     */
-    inline ActionContext& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the action in the context of a job.</p>
-     */
-    inline ActionContext& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the action in the context of a job.</p>
-     */
-    inline ActionContext& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The system-generated unique ID that corresponds to an action's execution.</p>
      */
-    inline const Aws::String& GetActionExecutionId() const{ return m_actionExecutionId; }
-
-    /**
-     * <p>The system-generated unique ID that corresponds to an action's execution.</p>
-     */
+    inline const Aws::String& GetActionExecutionId() const { return m_actionExecutionId; }
     inline bool ActionExecutionIdHasBeenSet() const { return m_actionExecutionIdHasBeenSet; }
-
-    /**
-     * <p>The system-generated unique ID that corresponds to an action's execution.</p>
-     */
-    inline void SetActionExecutionId(const Aws::String& value) { m_actionExecutionIdHasBeenSet = true; m_actionExecutionId = value; }
-
-    /**
-     * <p>The system-generated unique ID that corresponds to an action's execution.</p>
-     */
-    inline void SetActionExecutionId(Aws::String&& value) { m_actionExecutionIdHasBeenSet = true; m_actionExecutionId = std::move(value); }
-
-    /**
-     * <p>The system-generated unique ID that corresponds to an action's execution.</p>
-     */
-    inline void SetActionExecutionId(const char* value) { m_actionExecutionIdHasBeenSet = true; m_actionExecutionId.assign(value); }
-
-    /**
-     * <p>The system-generated unique ID that corresponds to an action's execution.</p>
-     */
-    inline ActionContext& WithActionExecutionId(const Aws::String& value) { SetActionExecutionId(value); return *this;}
-
-    /**
-     * <p>The system-generated unique ID that corresponds to an action's execution.</p>
-     */
-    inline ActionContext& WithActionExecutionId(Aws::String&& value) { SetActionExecutionId(std::move(value)); return *this;}
-
-    /**
-     * <p>The system-generated unique ID that corresponds to an action's execution.</p>
-     */
-    inline ActionContext& WithActionExecutionId(const char* value) { SetActionExecutionId(value); return *this;}
-
+    template<typename ActionExecutionIdT = Aws::String>
+    void SetActionExecutionId(ActionExecutionIdT&& value) { m_actionExecutionIdHasBeenSet = true; m_actionExecutionId = std::forward<ActionExecutionIdT>(value); }
+    template<typename ActionExecutionIdT = Aws::String>
+    ActionContext& WithActionExecutionId(ActionExecutionIdT&& value) { SetActionExecutionId(std::forward<ActionExecutionIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;

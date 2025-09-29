@@ -20,15 +20,7 @@ namespace EC2
 namespace Model
 {
 
-ScheduledInstancesMonitoring::ScheduledInstancesMonitoring() : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false)
-{
-}
-
-ScheduledInstancesMonitoring::ScheduledInstancesMonitoring(const XmlNode& xmlNode) : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false)
+ScheduledInstancesMonitoring::ScheduledInstancesMonitoring(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

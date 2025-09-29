@@ -32,246 +32,88 @@ namespace Model
   class StreamingDistributionList
   {
   public:
-    AWS_CLOUDFRONT_API StreamingDistributionList();
+    AWS_CLOUDFRONT_API StreamingDistributionList() = default;
     AWS_CLOUDFRONT_API StreamingDistributionList(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_CLOUDFRONT_API StreamingDistributionList& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_CLOUDFRONT_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>The value you provided for the <code>Marker</code> request parameter.</p>
      */
-    inline const Aws::String& GetMarker() const{ return m_marker; }
-
-    /**
-     * <p>The value you provided for the <code>Marker</code> request parameter.</p>
-     */
+    inline const Aws::String& GetMarker() const { return m_marker; }
     inline bool MarkerHasBeenSet() const { return m_markerHasBeenSet; }
+    template<typename MarkerT = Aws::String>
+    void SetMarker(MarkerT&& value) { m_markerHasBeenSet = true; m_marker = std::forward<MarkerT>(value); }
+    template<typename MarkerT = Aws::String>
+    StreamingDistributionList& WithMarker(MarkerT&& value) { SetMarker(std::forward<MarkerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The value you provided for the <code>Marker</code> request parameter.</p>
-     */
-    inline void SetMarker(const Aws::String& value) { m_markerHasBeenSet = true; m_marker = value; }
-
-    /**
-     * <p>The value you provided for the <code>Marker</code> request parameter.</p>
-     */
-    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = std::move(value); }
-
-    /**
-     * <p>The value you provided for the <code>Marker</code> request parameter.</p>
-     */
-    inline void SetMarker(const char* value) { m_markerHasBeenSet = true; m_marker.assign(value); }
-
-    /**
-     * <p>The value you provided for the <code>Marker</code> request parameter.</p>
-     */
-    inline StreamingDistributionList& WithMarker(const Aws::String& value) { SetMarker(value); return *this;}
-
-    /**
-     * <p>The value you provided for the <code>Marker</code> request parameter.</p>
-     */
-    inline StreamingDistributionList& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
-
-    /**
-     * <p>The value you provided for the <code>Marker</code> request parameter.</p>
-     */
-    inline StreamingDistributionList& WithMarker(const char* value) { SetMarker(value); return *this;}
-
-
+    ///@{
     /**
      * <p>If <code>IsTruncated</code> is <code>true</code>, this element is present and
      * contains the value you can use for the <code>Marker</code> request parameter to
      * continue listing your RTMP distributions where they left off.</p>
      */
-    inline const Aws::String& GetNextMarker() const{ return m_nextMarker; }
-
-    /**
-     * <p>If <code>IsTruncated</code> is <code>true</code>, this element is present and
-     * contains the value you can use for the <code>Marker</code> request parameter to
-     * continue listing your RTMP distributions where they left off.</p>
-     */
+    inline const Aws::String& GetNextMarker() const { return m_nextMarker; }
     inline bool NextMarkerHasBeenSet() const { return m_nextMarkerHasBeenSet; }
+    template<typename NextMarkerT = Aws::String>
+    void SetNextMarker(NextMarkerT&& value) { m_nextMarkerHasBeenSet = true; m_nextMarker = std::forward<NextMarkerT>(value); }
+    template<typename NextMarkerT = Aws::String>
+    StreamingDistributionList& WithNextMarker(NextMarkerT&& value) { SetNextMarker(std::forward<NextMarkerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If <code>IsTruncated</code> is <code>true</code>, this element is present and
-     * contains the value you can use for the <code>Marker</code> request parameter to
-     * continue listing your RTMP distributions where they left off.</p>
-     */
-    inline void SetNextMarker(const Aws::String& value) { m_nextMarkerHasBeenSet = true; m_nextMarker = value; }
-
-    /**
-     * <p>If <code>IsTruncated</code> is <code>true</code>, this element is present and
-     * contains the value you can use for the <code>Marker</code> request parameter to
-     * continue listing your RTMP distributions where they left off.</p>
-     */
-    inline void SetNextMarker(Aws::String&& value) { m_nextMarkerHasBeenSet = true; m_nextMarker = std::move(value); }
-
-    /**
-     * <p>If <code>IsTruncated</code> is <code>true</code>, this element is present and
-     * contains the value you can use for the <code>Marker</code> request parameter to
-     * continue listing your RTMP distributions where they left off.</p>
-     */
-    inline void SetNextMarker(const char* value) { m_nextMarkerHasBeenSet = true; m_nextMarker.assign(value); }
-
-    /**
-     * <p>If <code>IsTruncated</code> is <code>true</code>, this element is present and
-     * contains the value you can use for the <code>Marker</code> request parameter to
-     * continue listing your RTMP distributions where they left off.</p>
-     */
-    inline StreamingDistributionList& WithNextMarker(const Aws::String& value) { SetNextMarker(value); return *this;}
-
-    /**
-     * <p>If <code>IsTruncated</code> is <code>true</code>, this element is present and
-     * contains the value you can use for the <code>Marker</code> request parameter to
-     * continue listing your RTMP distributions where they left off.</p>
-     */
-    inline StreamingDistributionList& WithNextMarker(Aws::String&& value) { SetNextMarker(std::move(value)); return *this;}
-
-    /**
-     * <p>If <code>IsTruncated</code> is <code>true</code>, this element is present and
-     * contains the value you can use for the <code>Marker</code> request parameter to
-     * continue listing your RTMP distributions where they left off.</p>
-     */
-    inline StreamingDistributionList& WithNextMarker(const char* value) { SetNextMarker(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The value you provided for the <code>MaxItems</code> request parameter.</p>
      */
-    inline int GetMaxItems() const{ return m_maxItems; }
-
-    /**
-     * <p>The value you provided for the <code>MaxItems</code> request parameter.</p>
-     */
+    inline int GetMaxItems() const { return m_maxItems; }
     inline bool MaxItemsHasBeenSet() const { return m_maxItemsHasBeenSet; }
-
-    /**
-     * <p>The value you provided for the <code>MaxItems</code> request parameter.</p>
-     */
     inline void SetMaxItems(int value) { m_maxItemsHasBeenSet = true; m_maxItems = value; }
-
-    /**
-     * <p>The value you provided for the <code>MaxItems</code> request parameter.</p>
-     */
     inline StreamingDistributionList& WithMaxItems(int value) { SetMaxItems(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>A flag that indicates whether more streaming distributions remain to be
      * listed. If your results were truncated, you can make a follow-up pagination
      * request using the <code>Marker</code> request parameter to retrieve more
      * distributions in the list. </p>
      */
-    inline bool GetIsTruncated() const{ return m_isTruncated; }
-
-    /**
-     * <p>A flag that indicates whether more streaming distributions remain to be
-     * listed. If your results were truncated, you can make a follow-up pagination
-     * request using the <code>Marker</code> request parameter to retrieve more
-     * distributions in the list. </p>
-     */
+    inline bool GetIsTruncated() const { return m_isTruncated; }
     inline bool IsTruncatedHasBeenSet() const { return m_isTruncatedHasBeenSet; }
-
-    /**
-     * <p>A flag that indicates whether more streaming distributions remain to be
-     * listed. If your results were truncated, you can make a follow-up pagination
-     * request using the <code>Marker</code> request parameter to retrieve more
-     * distributions in the list. </p>
-     */
     inline void SetIsTruncated(bool value) { m_isTruncatedHasBeenSet = true; m_isTruncated = value; }
-
-    /**
-     * <p>A flag that indicates whether more streaming distributions remain to be
-     * listed. If your results were truncated, you can make a follow-up pagination
-     * request using the <code>Marker</code> request parameter to retrieve more
-     * distributions in the list. </p>
-     */
     inline StreamingDistributionList& WithIsTruncated(bool value) { SetIsTruncated(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The number of streaming distributions that were created by the current Amazon
      * Web Services account. </p>
      */
-    inline int GetQuantity() const{ return m_quantity; }
-
-    /**
-     * <p>The number of streaming distributions that were created by the current Amazon
-     * Web Services account. </p>
-     */
+    inline int GetQuantity() const { return m_quantity; }
     inline bool QuantityHasBeenSet() const { return m_quantityHasBeenSet; }
-
-    /**
-     * <p>The number of streaming distributions that were created by the current Amazon
-     * Web Services account. </p>
-     */
     inline void SetQuantity(int value) { m_quantityHasBeenSet = true; m_quantity = value; }
-
-    /**
-     * <p>The number of streaming distributions that were created by the current Amazon
-     * Web Services account. </p>
-     */
     inline StreamingDistributionList& WithQuantity(int value) { SetQuantity(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>A complex type that contains one <code>StreamingDistributionSummary</code>
      * element for each distribution that was created by the current Amazon Web
      * Services account.</p>
      */
-    inline const Aws::Vector<StreamingDistributionSummary>& GetItems() const{ return m_items; }
-
-    /**
-     * <p>A complex type that contains one <code>StreamingDistributionSummary</code>
-     * element for each distribution that was created by the current Amazon Web
-     * Services account.</p>
-     */
+    inline const Aws::Vector<StreamingDistributionSummary>& GetItems() const { return m_items; }
     inline bool ItemsHasBeenSet() const { return m_itemsHasBeenSet; }
-
-    /**
-     * <p>A complex type that contains one <code>StreamingDistributionSummary</code>
-     * element for each distribution that was created by the current Amazon Web
-     * Services account.</p>
-     */
-    inline void SetItems(const Aws::Vector<StreamingDistributionSummary>& value) { m_itemsHasBeenSet = true; m_items = value; }
-
-    /**
-     * <p>A complex type that contains one <code>StreamingDistributionSummary</code>
-     * element for each distribution that was created by the current Amazon Web
-     * Services account.</p>
-     */
-    inline void SetItems(Aws::Vector<StreamingDistributionSummary>&& value) { m_itemsHasBeenSet = true; m_items = std::move(value); }
-
-    /**
-     * <p>A complex type that contains one <code>StreamingDistributionSummary</code>
-     * element for each distribution that was created by the current Amazon Web
-     * Services account.</p>
-     */
-    inline StreamingDistributionList& WithItems(const Aws::Vector<StreamingDistributionSummary>& value) { SetItems(value); return *this;}
-
-    /**
-     * <p>A complex type that contains one <code>StreamingDistributionSummary</code>
-     * element for each distribution that was created by the current Amazon Web
-     * Services account.</p>
-     */
-    inline StreamingDistributionList& WithItems(Aws::Vector<StreamingDistributionSummary>&& value) { SetItems(std::move(value)); return *this;}
-
-    /**
-     * <p>A complex type that contains one <code>StreamingDistributionSummary</code>
-     * element for each distribution that was created by the current Amazon Web
-     * Services account.</p>
-     */
-    inline StreamingDistributionList& AddItems(const StreamingDistributionSummary& value) { m_itemsHasBeenSet = true; m_items.push_back(value); return *this; }
-
-    /**
-     * <p>A complex type that contains one <code>StreamingDistributionSummary</code>
-     * element for each distribution that was created by the current Amazon Web
-     * Services account.</p>
-     */
-    inline StreamingDistributionList& AddItems(StreamingDistributionSummary&& value) { m_itemsHasBeenSet = true; m_items.push_back(std::move(value)); return *this; }
-
+    template<typename ItemsT = Aws::Vector<StreamingDistributionSummary>>
+    void SetItems(ItemsT&& value) { m_itemsHasBeenSet = true; m_items = std::forward<ItemsT>(value); }
+    template<typename ItemsT = Aws::Vector<StreamingDistributionSummary>>
+    StreamingDistributionList& WithItems(ItemsT&& value) { SetItems(std::forward<ItemsT>(value)); return *this;}
+    template<typename ItemsT = StreamingDistributionSummary>
+    StreamingDistributionList& AddItems(ItemsT&& value) { m_itemsHasBeenSet = true; m_items.emplace_back(std::forward<ItemsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_marker;
@@ -280,13 +122,13 @@ namespace Model
     Aws::String m_nextMarker;
     bool m_nextMarkerHasBeenSet = false;
 
-    int m_maxItems;
+    int m_maxItems{0};
     bool m_maxItemsHasBeenSet = false;
 
-    bool m_isTruncated;
+    bool m_isTruncated{false};
     bool m_isTruncatedHasBeenSet = false;
 
-    int m_quantity;
+    int m_quantity{0};
     bool m_quantityHasBeenSet = false;
 
     Aws::Vector<StreamingDistributionSummary> m_items;

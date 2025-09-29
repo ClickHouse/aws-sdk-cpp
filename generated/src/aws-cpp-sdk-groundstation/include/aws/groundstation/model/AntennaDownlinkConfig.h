@@ -32,42 +32,23 @@ namespace Model
   class AntennaDownlinkConfig
   {
   public:
-    AWS_GROUNDSTATION_API AntennaDownlinkConfig();
+    AWS_GROUNDSTATION_API AntennaDownlinkConfig() = default;
     AWS_GROUNDSTATION_API AntennaDownlinkConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_GROUNDSTATION_API AntennaDownlinkConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GROUNDSTATION_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Object that describes a spectral <code>Config</code>.</p>
      */
-    inline const SpectrumConfig& GetSpectrumConfig() const{ return m_spectrumConfig; }
-
-    /**
-     * <p>Object that describes a spectral <code>Config</code>.</p>
-     */
+    inline const SpectrumConfig& GetSpectrumConfig() const { return m_spectrumConfig; }
     inline bool SpectrumConfigHasBeenSet() const { return m_spectrumConfigHasBeenSet; }
-
-    /**
-     * <p>Object that describes a spectral <code>Config</code>.</p>
-     */
-    inline void SetSpectrumConfig(const SpectrumConfig& value) { m_spectrumConfigHasBeenSet = true; m_spectrumConfig = value; }
-
-    /**
-     * <p>Object that describes a spectral <code>Config</code>.</p>
-     */
-    inline void SetSpectrumConfig(SpectrumConfig&& value) { m_spectrumConfigHasBeenSet = true; m_spectrumConfig = std::move(value); }
-
-    /**
-     * <p>Object that describes a spectral <code>Config</code>.</p>
-     */
-    inline AntennaDownlinkConfig& WithSpectrumConfig(const SpectrumConfig& value) { SetSpectrumConfig(value); return *this;}
-
-    /**
-     * <p>Object that describes a spectral <code>Config</code>.</p>
-     */
-    inline AntennaDownlinkConfig& WithSpectrumConfig(SpectrumConfig&& value) { SetSpectrumConfig(std::move(value)); return *this;}
-
+    template<typename SpectrumConfigT = SpectrumConfig>
+    void SetSpectrumConfig(SpectrumConfigT&& value) { m_spectrumConfigHasBeenSet = true; m_spectrumConfig = std::forward<SpectrumConfigT>(value); }
+    template<typename SpectrumConfigT = SpectrumConfig>
+    AntennaDownlinkConfig& WithSpectrumConfig(SpectrumConfigT&& value) { SetSpectrumConfig(std::forward<SpectrumConfigT>(value)); return *this;}
+    ///@}
   private:
 
     SpectrumConfig m_spectrumConfig;

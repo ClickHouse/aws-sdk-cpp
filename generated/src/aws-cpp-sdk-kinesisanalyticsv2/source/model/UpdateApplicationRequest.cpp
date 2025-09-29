@@ -12,18 +12,6 @@ using namespace Aws::KinesisAnalyticsV2::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateApplicationRequest::UpdateApplicationRequest() : 
-    m_applicationNameHasBeenSet(false),
-    m_currentApplicationVersionId(0),
-    m_currentApplicationVersionIdHasBeenSet(false),
-    m_applicationConfigurationUpdateHasBeenSet(false),
-    m_serviceExecutionRoleUpdateHasBeenSet(false),
-    m_runConfigurationUpdateHasBeenSet(false),
-    m_cloudWatchLoggingOptionUpdatesHasBeenSet(false),
-    m_conditionalTokenHasBeenSet(false)
-{
-}
-
 Aws::String UpdateApplicationRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -73,6 +61,11 @@ Aws::String UpdateApplicationRequest::SerializePayload() const
   {
    payload.WithString("ConditionalToken", m_conditionalToken);
 
+  }
+
+  if(m_runtimeEnvironmentUpdateHasBeenSet)
+  {
+   payload.WithString("RuntimeEnvironmentUpdate", RuntimeEnvironmentMapper::GetNameForRuntimeEnvironment(m_runtimeEnvironmentUpdate));
   }
 
   return payload.View().WriteReadable();

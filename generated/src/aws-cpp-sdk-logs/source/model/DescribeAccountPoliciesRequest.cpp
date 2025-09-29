@@ -12,14 +12,6 @@ using namespace Aws::CloudWatchLogs::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DescribeAccountPoliciesRequest::DescribeAccountPoliciesRequest() : 
-    m_policyType(PolicyType::NOT_SET),
-    m_policyTypeHasBeenSet(false),
-    m_policyNameHasBeenSet(false),
-    m_accountIdentifiersHasBeenSet(false)
-{
-}
-
 Aws::String DescribeAccountPoliciesRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -43,6 +35,12 @@ Aws::String DescribeAccountPoliciesRequest::SerializePayload() const
      accountIdentifiersJsonList[accountIdentifiersIndex].AsString(m_accountIdentifiers[accountIdentifiersIndex]);
    }
    payload.WithArray("accountIdentifiers", std::move(accountIdentifiersJsonList));
+
+  }
+
+  if(m_nextTokenHasBeenSet)
+  {
+   payload.WithString("nextToken", m_nextToken);
 
   }
 

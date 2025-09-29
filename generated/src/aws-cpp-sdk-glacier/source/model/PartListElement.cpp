@@ -18,15 +18,7 @@ namespace Glacier
 namespace Model
 {
 
-PartListElement::PartListElement() : 
-    m_rangeInBytesHasBeenSet(false),
-    m_sHA256TreeHashHasBeenSet(false)
-{
-}
-
-PartListElement::PartListElement(JsonView jsonValue) : 
-    m_rangeInBytesHasBeenSet(false),
-    m_sHA256TreeHashHasBeenSet(false)
+PartListElement::PartListElement(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ PartListElement& PartListElement::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("RangeInBytes"))
   {
     m_rangeInBytes = jsonValue.GetString("RangeInBytes");
-
     m_rangeInBytesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SHA256TreeHash"))
   {
     m_sHA256TreeHash = jsonValue.GetString("SHA256TreeHash");
-
     m_sHA256TreeHashHasBeenSet = true;
   }
-
   return *this;
 }
 

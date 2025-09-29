@@ -20,17 +20,7 @@ namespace S3Control
 namespace Model
 {
 
-ReplicationRuleFilter::ReplicationRuleFilter() : 
-    m_prefixHasBeenSet(false),
-    m_tagHasBeenSet(false),
-    m_andHasBeenSet(false)
-{
-}
-
-ReplicationRuleFilter::ReplicationRuleFilter(const XmlNode& xmlNode) : 
-    m_prefixHasBeenSet(false),
-    m_tagHasBeenSet(false),
-    m_andHasBeenSet(false)
+ReplicationRuleFilter::ReplicationRuleFilter(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

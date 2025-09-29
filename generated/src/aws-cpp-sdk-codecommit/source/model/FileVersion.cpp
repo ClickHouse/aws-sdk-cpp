@@ -18,19 +18,7 @@ namespace CodeCommit
 namespace Model
 {
 
-FileVersion::FileVersion() : 
-    m_commitHasBeenSet(false),
-    m_blobIdHasBeenSet(false),
-    m_pathHasBeenSet(false),
-    m_revisionChildrenHasBeenSet(false)
-{
-}
-
-FileVersion::FileVersion(JsonView jsonValue) : 
-    m_commitHasBeenSet(false),
-    m_blobIdHasBeenSet(false),
-    m_pathHasBeenSet(false),
-    m_revisionChildrenHasBeenSet(false)
+FileVersion::FileVersion(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ FileVersion& FileVersion::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("commit"))
   {
     m_commit = jsonValue.GetObject("commit");
-
     m_commitHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("blobId"))
   {
     m_blobId = jsonValue.GetString("blobId");
-
     m_blobIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("path"))
   {
     m_path = jsonValue.GetString("path");
-
     m_pathHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("revisionChildren"))
   {
     Aws::Utils::Array<JsonView> revisionChildrenJsonList = jsonValue.GetArray("revisionChildren");
@@ -67,7 +49,6 @@ FileVersion& FileVersion::operator =(JsonView jsonValue)
     }
     m_revisionChildrenHasBeenSet = true;
   }
-
   return *this;
 }
 

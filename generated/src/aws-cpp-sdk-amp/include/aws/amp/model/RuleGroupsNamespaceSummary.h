@@ -27,260 +27,99 @@ namespace Model
 {
 
   /**
-   * <p>Represents a summary of the rule groups namespace.</p><p><h3>See Also:</h3>  
-   * <a
+   * <p>The high-level information about a rule groups namespace. To retrieve more
+   * information, use <code>DescribeRuleGroupsNamespace</code>.</p><p><h3>See
+   * Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/amp-2020-08-01/RuleGroupsNamespaceSummary">AWS
    * API Reference</a></p>
    */
   class RuleGroupsNamespaceSummary
   {
   public:
-    AWS_PROMETHEUSSERVICE_API RuleGroupsNamespaceSummary();
+    AWS_PROMETHEUSSERVICE_API RuleGroupsNamespaceSummary() = default;
     AWS_PROMETHEUSSERVICE_API RuleGroupsNamespaceSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_PROMETHEUSSERVICE_API RuleGroupsNamespaceSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PROMETHEUSSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The Amazon Resource Name (ARN) of this rule groups namespace.</p>
+     * <p>The ARN of the rule groups namespace.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of this rule groups namespace.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    RuleGroupsNamespaceSummary& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Amazon Resource Name (ARN) of this rule groups namespace.</p>
+     * <p>The name of the rule groups namespace.</p>
      */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of this rule groups namespace.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of this rule groups namespace.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of this rule groups namespace.</p>
-     */
-    inline RuleGroupsNamespaceSummary& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of this rule groups namespace.</p>
-     */
-    inline RuleGroupsNamespaceSummary& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of this rule groups namespace.</p>
-     */
-    inline RuleGroupsNamespaceSummary& WithArn(const char* value) { SetArn(value); return *this;}
-
-
-    /**
-     * <p>The rule groups namespace name.</p>
-     */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The rule groups namespace name.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    RuleGroupsNamespaceSummary& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The rule groups namespace name.</p>
+     * <p>A structure that displays the current status of the rule groups
+     * namespace.</p>
      */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The rule groups namespace name.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The rule groups namespace name.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The rule groups namespace name.</p>
-     */
-    inline RuleGroupsNamespaceSummary& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The rule groups namespace name.</p>
-     */
-    inline RuleGroupsNamespaceSummary& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The rule groups namespace name.</p>
-     */
-    inline RuleGroupsNamespaceSummary& WithName(const char* value) { SetName(value); return *this;}
-
-
-    /**
-     * <p>The status of rule groups namespace.</p>
-     */
-    inline const RuleGroupsNamespaceStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of rule groups namespace.</p>
-     */
+    inline const RuleGroupsNamespaceStatus& GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    template<typename StatusT = RuleGroupsNamespaceStatus>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = RuleGroupsNamespaceStatus>
+    RuleGroupsNamespaceSummary& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The status of rule groups namespace.</p>
+     * <p>The date and time that the rule groups namespace was created.</p>
      */
-    inline void SetStatus(const RuleGroupsNamespaceStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of rule groups namespace.</p>
-     */
-    inline void SetStatus(RuleGroupsNamespaceStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of rule groups namespace.</p>
-     */
-    inline RuleGroupsNamespaceSummary& WithStatus(const RuleGroupsNamespaceStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of rule groups namespace.</p>
-     */
-    inline RuleGroupsNamespaceSummary& WithStatus(RuleGroupsNamespaceStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The time when the rule groups namespace was created.</p>
-     */
-    inline const Aws::Utils::DateTime& GetCreatedAt() const{ return m_createdAt; }
-
-    /**
-     * <p>The time when the rule groups namespace was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedAt() const { return m_createdAt; }
     inline bool CreatedAtHasBeenSet() const { return m_createdAtHasBeenSet; }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    void SetCreatedAt(CreatedAtT&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::forward<CreatedAtT>(value); }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    RuleGroupsNamespaceSummary& WithCreatedAt(CreatedAtT&& value) { SetCreatedAt(std::forward<CreatedAtT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The time when the rule groups namespace was created.</p>
+     * <p>The date and time that the rule groups namespace was most recently
+     * changed.</p>
      */
-    inline void SetCreatedAt(const Aws::Utils::DateTime& value) { m_createdAtHasBeenSet = true; m_createdAt = value; }
-
-    /**
-     * <p>The time when the rule groups namespace was created.</p>
-     */
-    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::move(value); }
-
-    /**
-     * <p>The time when the rule groups namespace was created.</p>
-     */
-    inline RuleGroupsNamespaceSummary& WithCreatedAt(const Aws::Utils::DateTime& value) { SetCreatedAt(value); return *this;}
-
-    /**
-     * <p>The time when the rule groups namespace was created.</p>
-     */
-    inline RuleGroupsNamespaceSummary& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The time when the rule groups namespace was modified.</p>
-     */
-    inline const Aws::Utils::DateTime& GetModifiedAt() const{ return m_modifiedAt; }
-
-    /**
-     * <p>The time when the rule groups namespace was modified.</p>
-     */
+    inline const Aws::Utils::DateTime& GetModifiedAt() const { return m_modifiedAt; }
     inline bool ModifiedAtHasBeenSet() const { return m_modifiedAtHasBeenSet; }
+    template<typename ModifiedAtT = Aws::Utils::DateTime>
+    void SetModifiedAt(ModifiedAtT&& value) { m_modifiedAtHasBeenSet = true; m_modifiedAt = std::forward<ModifiedAtT>(value); }
+    template<typename ModifiedAtT = Aws::Utils::DateTime>
+    RuleGroupsNamespaceSummary& WithModifiedAt(ModifiedAtT&& value) { SetModifiedAt(std::forward<ModifiedAtT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The time when the rule groups namespace was modified.</p>
+     * <p>The list of tag keys and values that are associated with the rule groups
+     * namespace.</p>
      */
-    inline void SetModifiedAt(const Aws::Utils::DateTime& value) { m_modifiedAtHasBeenSet = true; m_modifiedAt = value; }
-
-    /**
-     * <p>The time when the rule groups namespace was modified.</p>
-     */
-    inline void SetModifiedAt(Aws::Utils::DateTime&& value) { m_modifiedAtHasBeenSet = true; m_modifiedAt = std::move(value); }
-
-    /**
-     * <p>The time when the rule groups namespace was modified.</p>
-     */
-    inline RuleGroupsNamespaceSummary& WithModifiedAt(const Aws::Utils::DateTime& value) { SetModifiedAt(value); return *this;}
-
-    /**
-     * <p>The time when the rule groups namespace was modified.</p>
-     */
-    inline RuleGroupsNamespaceSummary& WithModifiedAt(Aws::Utils::DateTime&& value) { SetModifiedAt(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The tags of this rule groups namespace.</p>
-     */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>The tags of this rule groups namespace.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>The tags of this rule groups namespace.</p>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>The tags of this rule groups namespace.</p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>The tags of this rule groups namespace.</p>
-     */
-    inline RuleGroupsNamespaceSummary& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The tags of this rule groups namespace.</p>
-     */
-    inline RuleGroupsNamespaceSummary& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags of this rule groups namespace.</p>
-     */
-    inline RuleGroupsNamespaceSummary& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>The tags of this rule groups namespace.</p>
-     */
-    inline RuleGroupsNamespaceSummary& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags of this rule groups namespace.</p>
-     */
-    inline RuleGroupsNamespaceSummary& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags of this rule groups namespace.</p>
-     */
-    inline RuleGroupsNamespaceSummary& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The tags of this rule groups namespace.</p>
-     */
-    inline RuleGroupsNamespaceSummary& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags of this rule groups namespace.</p>
-     */
-    inline RuleGroupsNamespaceSummary& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags of this rule groups namespace.</p>
-     */
-    inline RuleGroupsNamespaceSummary& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    RuleGroupsNamespaceSummary& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    RuleGroupsNamespaceSummary& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
     Aws::String m_arn;
@@ -292,10 +131,10 @@ namespace Model
     RuleGroupsNamespaceStatus m_status;
     bool m_statusHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdAt;
+    Aws::Utils::DateTime m_createdAt{};
     bool m_createdAtHasBeenSet = false;
 
-    Aws::Utils::DateTime m_modifiedAt;
+    Aws::Utils::DateTime m_modifiedAt{};
     bool m_modifiedAtHasBeenSet = false;
 
     Aws::Map<Aws::String, Aws::String> m_tags;

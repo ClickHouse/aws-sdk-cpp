@@ -21,7 +21,7 @@ namespace Model
   class DeleteTemplateAliasRequest : public QuickSightRequest
   {
   public:
-    AWS_QUICKSIGHT_API DeleteTemplateAliasRequest();
+    AWS_QUICKSIGHT_API DeleteTemplateAliasRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,160 +32,45 @@ namespace Model
     AWS_QUICKSIGHT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the Amazon Web Services account that contains the item to
      * delete.</p>
      */
-    inline const Aws::String& GetAwsAccountId() const{ return m_awsAccountId; }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that contains the item to
-     * delete.</p>
-     */
+    inline const Aws::String& GetAwsAccountId() const { return m_awsAccountId; }
     inline bool AwsAccountIdHasBeenSet() const { return m_awsAccountIdHasBeenSet; }
+    template<typename AwsAccountIdT = Aws::String>
+    void SetAwsAccountId(AwsAccountIdT&& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = std::forward<AwsAccountIdT>(value); }
+    template<typename AwsAccountIdT = Aws::String>
+    DeleteTemplateAliasRequest& WithAwsAccountId(AwsAccountIdT&& value) { SetAwsAccountId(std::forward<AwsAccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Amazon Web Services account that contains the item to
-     * delete.</p>
-     */
-    inline void SetAwsAccountId(const Aws::String& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = value; }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that contains the item to
-     * delete.</p>
-     */
-    inline void SetAwsAccountId(Aws::String&& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = std::move(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that contains the item to
-     * delete.</p>
-     */
-    inline void SetAwsAccountId(const char* value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId.assign(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that contains the item to
-     * delete.</p>
-     */
-    inline DeleteTemplateAliasRequest& WithAwsAccountId(const Aws::String& value) { SetAwsAccountId(value); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services account that contains the item to
-     * delete.</p>
-     */
-    inline DeleteTemplateAliasRequest& WithAwsAccountId(Aws::String&& value) { SetAwsAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services account that contains the item to
-     * delete.</p>
-     */
-    inline DeleteTemplateAliasRequest& WithAwsAccountId(const char* value) { SetAwsAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID for the template that the specified alias is for.</p>
      */
-    inline const Aws::String& GetTemplateId() const{ return m_templateId; }
-
-    /**
-     * <p>The ID for the template that the specified alias is for.</p>
-     */
+    inline const Aws::String& GetTemplateId() const { return m_templateId; }
     inline bool TemplateIdHasBeenSet() const { return m_templateIdHasBeenSet; }
+    template<typename TemplateIdT = Aws::String>
+    void SetTemplateId(TemplateIdT&& value) { m_templateIdHasBeenSet = true; m_templateId = std::forward<TemplateIdT>(value); }
+    template<typename TemplateIdT = Aws::String>
+    DeleteTemplateAliasRequest& WithTemplateId(TemplateIdT&& value) { SetTemplateId(std::forward<TemplateIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID for the template that the specified alias is for.</p>
-     */
-    inline void SetTemplateId(const Aws::String& value) { m_templateIdHasBeenSet = true; m_templateId = value; }
-
-    /**
-     * <p>The ID for the template that the specified alias is for.</p>
-     */
-    inline void SetTemplateId(Aws::String&& value) { m_templateIdHasBeenSet = true; m_templateId = std::move(value); }
-
-    /**
-     * <p>The ID for the template that the specified alias is for.</p>
-     */
-    inline void SetTemplateId(const char* value) { m_templateIdHasBeenSet = true; m_templateId.assign(value); }
-
-    /**
-     * <p>The ID for the template that the specified alias is for.</p>
-     */
-    inline DeleteTemplateAliasRequest& WithTemplateId(const Aws::String& value) { SetTemplateId(value); return *this;}
-
-    /**
-     * <p>The ID for the template that the specified alias is for.</p>
-     */
-    inline DeleteTemplateAliasRequest& WithTemplateId(Aws::String&& value) { SetTemplateId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID for the template that the specified alias is for.</p>
-     */
-    inline DeleteTemplateAliasRequest& WithTemplateId(const char* value) { SetTemplateId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name for the template alias. To delete a specific alias, you delete the
      * version that the alias points to. You can specify the alias name, or specify the
      * latest version of the template by providing the keyword <code>$LATEST</code> in
      * the <code>AliasName</code> parameter. </p>
      */
-    inline const Aws::String& GetAliasName() const{ return m_aliasName; }
-
-    /**
-     * <p>The name for the template alias. To delete a specific alias, you delete the
-     * version that the alias points to. You can specify the alias name, or specify the
-     * latest version of the template by providing the keyword <code>$LATEST</code> in
-     * the <code>AliasName</code> parameter. </p>
-     */
+    inline const Aws::String& GetAliasName() const { return m_aliasName; }
     inline bool AliasNameHasBeenSet() const { return m_aliasNameHasBeenSet; }
-
-    /**
-     * <p>The name for the template alias. To delete a specific alias, you delete the
-     * version that the alias points to. You can specify the alias name, or specify the
-     * latest version of the template by providing the keyword <code>$LATEST</code> in
-     * the <code>AliasName</code> parameter. </p>
-     */
-    inline void SetAliasName(const Aws::String& value) { m_aliasNameHasBeenSet = true; m_aliasName = value; }
-
-    /**
-     * <p>The name for the template alias. To delete a specific alias, you delete the
-     * version that the alias points to. You can specify the alias name, or specify the
-     * latest version of the template by providing the keyword <code>$LATEST</code> in
-     * the <code>AliasName</code> parameter. </p>
-     */
-    inline void SetAliasName(Aws::String&& value) { m_aliasNameHasBeenSet = true; m_aliasName = std::move(value); }
-
-    /**
-     * <p>The name for the template alias. To delete a specific alias, you delete the
-     * version that the alias points to. You can specify the alias name, or specify the
-     * latest version of the template by providing the keyword <code>$LATEST</code> in
-     * the <code>AliasName</code> parameter. </p>
-     */
-    inline void SetAliasName(const char* value) { m_aliasNameHasBeenSet = true; m_aliasName.assign(value); }
-
-    /**
-     * <p>The name for the template alias. To delete a specific alias, you delete the
-     * version that the alias points to. You can specify the alias name, or specify the
-     * latest version of the template by providing the keyword <code>$LATEST</code> in
-     * the <code>AliasName</code> parameter. </p>
-     */
-    inline DeleteTemplateAliasRequest& WithAliasName(const Aws::String& value) { SetAliasName(value); return *this;}
-
-    /**
-     * <p>The name for the template alias. To delete a specific alias, you delete the
-     * version that the alias points to. You can specify the alias name, or specify the
-     * latest version of the template by providing the keyword <code>$LATEST</code> in
-     * the <code>AliasName</code> parameter. </p>
-     */
-    inline DeleteTemplateAliasRequest& WithAliasName(Aws::String&& value) { SetAliasName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name for the template alias. To delete a specific alias, you delete the
-     * version that the alias points to. You can specify the alias name, or specify the
-     * latest version of the template by providing the keyword <code>$LATEST</code> in
-     * the <code>AliasName</code> parameter. </p>
-     */
-    inline DeleteTemplateAliasRequest& WithAliasName(const char* value) { SetAliasName(value); return *this;}
-
+    template<typename AliasNameT = Aws::String>
+    void SetAliasName(AliasNameT&& value) { m_aliasNameHasBeenSet = true; m_aliasName = std::forward<AliasNameT>(value); }
+    template<typename AliasNameT = Aws::String>
+    DeleteTemplateAliasRequest& WithAliasName(AliasNameT&& value) { SetAliasName(std::forward<AliasNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_awsAccountId;

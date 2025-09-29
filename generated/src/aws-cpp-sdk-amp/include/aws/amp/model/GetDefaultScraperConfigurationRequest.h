@@ -15,7 +15,7 @@ namespace Model
 {
 
   /**
-   * <p>Represents the input of a GetDefaultScraperConfiguration
+   * <p>Represents the input of a <code>GetDefaultScraperConfiguration</code>
    * operation.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/amp-2020-08-01/GetDefaultScraperConfigurationRequest">AWS
    * API Reference</a></p>
@@ -23,7 +23,7 @@ namespace Model
   class GetDefaultScraperConfigurationRequest : public PrometheusServiceRequest
   {
   public:
-    AWS_PROMETHEUSSERVICE_API GetDefaultScraperConfigurationRequest();
+    AWS_PROMETHEUSSERVICE_API GetDefaultScraperConfigurationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.

@@ -20,15 +20,7 @@ namespace STS
 namespace Model
 {
 
-AssumedRoleUser::AssumedRoleUser() : 
-    m_assumedRoleIdHasBeenSet(false),
-    m_arnHasBeenSet(false)
-{
-}
-
-AssumedRoleUser::AssumedRoleUser(const XmlNode& xmlNode) : 
-    m_assumedRoleIdHasBeenSet(false),
-    m_arnHasBeenSet(false)
+AssumedRoleUser::AssumedRoleUser(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

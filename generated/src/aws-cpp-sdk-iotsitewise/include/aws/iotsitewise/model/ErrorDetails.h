@@ -34,127 +34,50 @@ namespace Model
   class ErrorDetails
   {
   public:
-    AWS_IOTSITEWISE_API ErrorDetails();
+    AWS_IOTSITEWISE_API ErrorDetails() = default;
     AWS_IOTSITEWISE_API ErrorDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTSITEWISE_API ErrorDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTSITEWISE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The error code.</p>
      */
-    inline const ErrorCode& GetCode() const{ return m_code; }
-
-    /**
-     * <p>The error code.</p>
-     */
+    inline ErrorCode GetCode() const { return m_code; }
     inline bool CodeHasBeenSet() const { return m_codeHasBeenSet; }
+    inline void SetCode(ErrorCode value) { m_codeHasBeenSet = true; m_code = value; }
+    inline ErrorDetails& WithCode(ErrorCode value) { SetCode(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The error code.</p>
-     */
-    inline void SetCode(const ErrorCode& value) { m_codeHasBeenSet = true; m_code = value; }
-
-    /**
-     * <p>The error code.</p>
-     */
-    inline void SetCode(ErrorCode&& value) { m_codeHasBeenSet = true; m_code = std::move(value); }
-
-    /**
-     * <p>The error code.</p>
-     */
-    inline ErrorDetails& WithCode(const ErrorCode& value) { SetCode(value); return *this;}
-
-    /**
-     * <p>The error code.</p>
-     */
-    inline ErrorDetails& WithCode(ErrorCode&& value) { SetCode(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The error message.</p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>The error message.</p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    ErrorDetails& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The error message.</p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>The error message.</p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>The error message.</p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p>The error message.</p>
-     */
-    inline ErrorDetails& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>The error message.</p>
-     */
-    inline ErrorDetails& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The error message.</p>
-     */
-    inline ErrorDetails& WithMessage(const char* value) { SetMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p> A list of detailed errors. </p>
      */
-    inline const Aws::Vector<DetailedError>& GetDetails() const{ return m_details; }
-
-    /**
-     * <p> A list of detailed errors. </p>
-     */
+    inline const Aws::Vector<DetailedError>& GetDetails() const { return m_details; }
     inline bool DetailsHasBeenSet() const { return m_detailsHasBeenSet; }
-
-    /**
-     * <p> A list of detailed errors. </p>
-     */
-    inline void SetDetails(const Aws::Vector<DetailedError>& value) { m_detailsHasBeenSet = true; m_details = value; }
-
-    /**
-     * <p> A list of detailed errors. </p>
-     */
-    inline void SetDetails(Aws::Vector<DetailedError>&& value) { m_detailsHasBeenSet = true; m_details = std::move(value); }
-
-    /**
-     * <p> A list of detailed errors. </p>
-     */
-    inline ErrorDetails& WithDetails(const Aws::Vector<DetailedError>& value) { SetDetails(value); return *this;}
-
-    /**
-     * <p> A list of detailed errors. </p>
-     */
-    inline ErrorDetails& WithDetails(Aws::Vector<DetailedError>&& value) { SetDetails(std::move(value)); return *this;}
-
-    /**
-     * <p> A list of detailed errors. </p>
-     */
-    inline ErrorDetails& AddDetails(const DetailedError& value) { m_detailsHasBeenSet = true; m_details.push_back(value); return *this; }
-
-    /**
-     * <p> A list of detailed errors. </p>
-     */
-    inline ErrorDetails& AddDetails(DetailedError&& value) { m_detailsHasBeenSet = true; m_details.push_back(std::move(value)); return *this; }
-
+    template<typename DetailsT = Aws::Vector<DetailedError>>
+    void SetDetails(DetailsT&& value) { m_detailsHasBeenSet = true; m_details = std::forward<DetailsT>(value); }
+    template<typename DetailsT = Aws::Vector<DetailedError>>
+    ErrorDetails& WithDetails(DetailsT&& value) { SetDetails(std::forward<DetailsT>(value)); return *this;}
+    template<typename DetailsT = DetailedError>
+    ErrorDetails& AddDetails(DetailsT&& value) { m_detailsHasBeenSet = true; m_details.emplace_back(std::forward<DetailsT>(value)); return *this; }
+    ///@}
   private:
 
-    ErrorCode m_code;
+    ErrorCode m_code{ErrorCode::NOT_SET};
     bool m_codeHasBeenSet = false;
 
     Aws::String m_message;

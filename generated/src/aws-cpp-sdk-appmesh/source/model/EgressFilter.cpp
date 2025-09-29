@@ -18,15 +18,7 @@ namespace AppMesh
 namespace Model
 {
 
-EgressFilter::EgressFilter() : 
-    m_type(EgressFilterType::NOT_SET),
-    m_typeHasBeenSet(false)
-{
-}
-
-EgressFilter::EgressFilter(JsonView jsonValue) : 
-    m_type(EgressFilterType::NOT_SET),
-    m_typeHasBeenSet(false)
+EgressFilter::EgressFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ EgressFilter& EgressFilter::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("type"))
   {
     m_type = EgressFilterTypeMapper::GetEgressFilterTypeForName(jsonValue.GetString("type"));
-
     m_typeHasBeenSet = true;
   }
-
   return *this;
 }
 

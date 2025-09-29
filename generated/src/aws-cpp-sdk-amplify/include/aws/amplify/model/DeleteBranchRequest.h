@@ -25,7 +25,7 @@ namespace Model
   class DeleteBranchRequest : public AmplifyRequest
   {
   public:
-    AWS_AMPLIFY_API DeleteBranchRequest();
+    AWS_AMPLIFY_API DeleteBranchRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,87 +36,29 @@ namespace Model
     AWS_AMPLIFY_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p> The unique ID for an Amplify app. </p>
      */
-    inline const Aws::String& GetAppId() const{ return m_appId; }
-
-    /**
-     * <p> The unique ID for an Amplify app. </p>
-     */
+    inline const Aws::String& GetAppId() const { return m_appId; }
     inline bool AppIdHasBeenSet() const { return m_appIdHasBeenSet; }
+    template<typename AppIdT = Aws::String>
+    void SetAppId(AppIdT&& value) { m_appIdHasBeenSet = true; m_appId = std::forward<AppIdT>(value); }
+    template<typename AppIdT = Aws::String>
+    DeleteBranchRequest& WithAppId(AppIdT&& value) { SetAppId(std::forward<AppIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The unique ID for an Amplify app. </p>
-     */
-    inline void SetAppId(const Aws::String& value) { m_appIdHasBeenSet = true; m_appId = value; }
-
-    /**
-     * <p> The unique ID for an Amplify app. </p>
-     */
-    inline void SetAppId(Aws::String&& value) { m_appIdHasBeenSet = true; m_appId = std::move(value); }
-
-    /**
-     * <p> The unique ID for an Amplify app. </p>
-     */
-    inline void SetAppId(const char* value) { m_appIdHasBeenSet = true; m_appId.assign(value); }
-
-    /**
-     * <p> The unique ID for an Amplify app. </p>
-     */
-    inline DeleteBranchRequest& WithAppId(const Aws::String& value) { SetAppId(value); return *this;}
-
-    /**
-     * <p> The unique ID for an Amplify app. </p>
-     */
-    inline DeleteBranchRequest& WithAppId(Aws::String&& value) { SetAppId(std::move(value)); return *this;}
-
-    /**
-     * <p> The unique ID for an Amplify app. </p>
-     */
-    inline DeleteBranchRequest& WithAppId(const char* value) { SetAppId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the branch. </p>
      */
-    inline const Aws::String& GetBranchName() const{ return m_branchName; }
-
-    /**
-     * <p>The name of the branch. </p>
-     */
+    inline const Aws::String& GetBranchName() const { return m_branchName; }
     inline bool BranchNameHasBeenSet() const { return m_branchNameHasBeenSet; }
-
-    /**
-     * <p>The name of the branch. </p>
-     */
-    inline void SetBranchName(const Aws::String& value) { m_branchNameHasBeenSet = true; m_branchName = value; }
-
-    /**
-     * <p>The name of the branch. </p>
-     */
-    inline void SetBranchName(Aws::String&& value) { m_branchNameHasBeenSet = true; m_branchName = std::move(value); }
-
-    /**
-     * <p>The name of the branch. </p>
-     */
-    inline void SetBranchName(const char* value) { m_branchNameHasBeenSet = true; m_branchName.assign(value); }
-
-    /**
-     * <p>The name of the branch. </p>
-     */
-    inline DeleteBranchRequest& WithBranchName(const Aws::String& value) { SetBranchName(value); return *this;}
-
-    /**
-     * <p>The name of the branch. </p>
-     */
-    inline DeleteBranchRequest& WithBranchName(Aws::String&& value) { SetBranchName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the branch. </p>
-     */
-    inline DeleteBranchRequest& WithBranchName(const char* value) { SetBranchName(value); return *this;}
-
+    template<typename BranchNameT = Aws::String>
+    void SetBranchName(BranchNameT&& value) { m_branchNameHasBeenSet = true; m_branchName = std::forward<BranchNameT>(value); }
+    template<typename BranchNameT = Aws::String>
+    DeleteBranchRequest& WithBranchName(BranchNameT&& value) { SetBranchName(std::forward<BranchNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_appId;

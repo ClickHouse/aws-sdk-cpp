@@ -18,21 +18,7 @@ namespace SSM
 namespace Model
 {
 
-InventoryDeletionSummary::InventoryDeletionSummary() : 
-    m_totalCount(0),
-    m_totalCountHasBeenSet(false),
-    m_remainingCount(0),
-    m_remainingCountHasBeenSet(false),
-    m_summaryItemsHasBeenSet(false)
-{
-}
-
-InventoryDeletionSummary::InventoryDeletionSummary(JsonView jsonValue) : 
-    m_totalCount(0),
-    m_totalCountHasBeenSet(false),
-    m_remainingCount(0),
-    m_remainingCountHasBeenSet(false),
-    m_summaryItemsHasBeenSet(false)
+InventoryDeletionSummary::InventoryDeletionSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,17 +28,13 @@ InventoryDeletionSummary& InventoryDeletionSummary::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("TotalCount"))
   {
     m_totalCount = jsonValue.GetInteger("TotalCount");
-
     m_totalCountHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RemainingCount"))
   {
     m_remainingCount = jsonValue.GetInteger("RemainingCount");
-
     m_remainingCountHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SummaryItems"))
   {
     Aws::Utils::Array<JsonView> summaryItemsJsonList = jsonValue.GetArray("SummaryItems");
@@ -62,7 +44,6 @@ InventoryDeletionSummary& InventoryDeletionSummary::operator =(JsonView jsonValu
     }
     m_summaryItemsHasBeenSet = true;
   }
-
   return *this;
 }
 

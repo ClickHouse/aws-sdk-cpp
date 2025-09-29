@@ -18,17 +18,7 @@ namespace CognitoIdentity
 namespace Model
 {
 
-UnprocessedIdentityId::UnprocessedIdentityId() : 
-    m_identityIdHasBeenSet(false),
-    m_errorCode(ErrorCode::NOT_SET),
-    m_errorCodeHasBeenSet(false)
-{
-}
-
-UnprocessedIdentityId::UnprocessedIdentityId(JsonView jsonValue) : 
-    m_identityIdHasBeenSet(false),
-    m_errorCode(ErrorCode::NOT_SET),
-    m_errorCodeHasBeenSet(false)
+UnprocessedIdentityId::UnprocessedIdentityId(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ UnprocessedIdentityId& UnprocessedIdentityId::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("IdentityId"))
   {
     m_identityId = jsonValue.GetString("IdentityId");
-
     m_identityIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ErrorCode"))
   {
     m_errorCode = ErrorCodeMapper::GetErrorCodeForName(jsonValue.GetString("ErrorCode"));
-
     m_errorCodeHasBeenSet = true;
   }
-
   return *this;
 }
 

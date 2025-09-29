@@ -29,118 +29,54 @@ namespace Model
   class DescribeCertificatesResult
   {
   public:
-    AWS_DATABASEMIGRATIONSERVICE_API DescribeCertificatesResult();
+    AWS_DATABASEMIGRATIONSERVICE_API DescribeCertificatesResult() = default;
     AWS_DATABASEMIGRATIONSERVICE_API DescribeCertificatesResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_DATABASEMIGRATIONSERVICE_API DescribeCertificatesResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The pagination token.</p>
      */
-    inline const Aws::String& GetMarker() const{ return m_marker; }
+    inline const Aws::String& GetMarker() const { return m_marker; }
+    template<typename MarkerT = Aws::String>
+    void SetMarker(MarkerT&& value) { m_markerHasBeenSet = true; m_marker = std::forward<MarkerT>(value); }
+    template<typename MarkerT = Aws::String>
+    DescribeCertificatesResult& WithMarker(MarkerT&& value) { SetMarker(std::forward<MarkerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The pagination token.</p>
-     */
-    inline void SetMarker(const Aws::String& value) { m_marker = value; }
-
-    /**
-     * <p>The pagination token.</p>
-     */
-    inline void SetMarker(Aws::String&& value) { m_marker = std::move(value); }
-
-    /**
-     * <p>The pagination token.</p>
-     */
-    inline void SetMarker(const char* value) { m_marker.assign(value); }
-
-    /**
-     * <p>The pagination token.</p>
-     */
-    inline DescribeCertificatesResult& WithMarker(const Aws::String& value) { SetMarker(value); return *this;}
-
-    /**
-     * <p>The pagination token.</p>
-     */
-    inline DescribeCertificatesResult& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
-
-    /**
-     * <p>The pagination token.</p>
-     */
-    inline DescribeCertificatesResult& WithMarker(const char* value) { SetMarker(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Secure Sockets Layer (SSL) certificates associated with the replication
      * instance.</p>
      */
-    inline const Aws::Vector<Certificate>& GetCertificates() const{ return m_certificates; }
+    inline const Aws::Vector<Certificate>& GetCertificates() const { return m_certificates; }
+    template<typename CertificatesT = Aws::Vector<Certificate>>
+    void SetCertificates(CertificatesT&& value) { m_certificatesHasBeenSet = true; m_certificates = std::forward<CertificatesT>(value); }
+    template<typename CertificatesT = Aws::Vector<Certificate>>
+    DescribeCertificatesResult& WithCertificates(CertificatesT&& value) { SetCertificates(std::forward<CertificatesT>(value)); return *this;}
+    template<typename CertificatesT = Certificate>
+    DescribeCertificatesResult& AddCertificates(CertificatesT&& value) { m_certificatesHasBeenSet = true; m_certificates.emplace_back(std::forward<CertificatesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The Secure Sockets Layer (SSL) certificates associated with the replication
-     * instance.</p>
-     */
-    inline void SetCertificates(const Aws::Vector<Certificate>& value) { m_certificates = value; }
-
-    /**
-     * <p>The Secure Sockets Layer (SSL) certificates associated with the replication
-     * instance.</p>
-     */
-    inline void SetCertificates(Aws::Vector<Certificate>&& value) { m_certificates = std::move(value); }
-
-    /**
-     * <p>The Secure Sockets Layer (SSL) certificates associated with the replication
-     * instance.</p>
-     */
-    inline DescribeCertificatesResult& WithCertificates(const Aws::Vector<Certificate>& value) { SetCertificates(value); return *this;}
-
-    /**
-     * <p>The Secure Sockets Layer (SSL) certificates associated with the replication
-     * instance.</p>
-     */
-    inline DescribeCertificatesResult& WithCertificates(Aws::Vector<Certificate>&& value) { SetCertificates(std::move(value)); return *this;}
-
-    /**
-     * <p>The Secure Sockets Layer (SSL) certificates associated with the replication
-     * instance.</p>
-     */
-    inline DescribeCertificatesResult& AddCertificates(const Certificate& value) { m_certificates.push_back(value); return *this; }
-
-    /**
-     * <p>The Secure Sockets Layer (SSL) certificates associated with the replication
-     * instance.</p>
-     */
-    inline DescribeCertificatesResult& AddCertificates(Certificate&& value) { m_certificates.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeCertificatesResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeCertificatesResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeCertificatesResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeCertificatesResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_marker;
+    bool m_markerHasBeenSet = false;
 
     Aws::Vector<Certificate> m_certificates;
+    bool m_certificatesHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -20,23 +20,7 @@ namespace EC2
 namespace Model
 {
 
-DestinationOptionsResponse::DestinationOptionsResponse() : 
-    m_fileFormat(DestinationFileFormat::NOT_SET),
-    m_fileFormatHasBeenSet(false),
-    m_hiveCompatiblePartitions(false),
-    m_hiveCompatiblePartitionsHasBeenSet(false),
-    m_perHourPartition(false),
-    m_perHourPartitionHasBeenSet(false)
-{
-}
-
-DestinationOptionsResponse::DestinationOptionsResponse(const XmlNode& xmlNode) : 
-    m_fileFormat(DestinationFileFormat::NOT_SET),
-    m_fileFormatHasBeenSet(false),
-    m_hiveCompatiblePartitions(false),
-    m_hiveCompatiblePartitionsHasBeenSet(false),
-    m_perHourPartition(false),
-    m_perHourPartitionHasBeenSet(false)
+DestinationOptionsResponse::DestinationOptionsResponse(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -50,7 +34,7 @@ DestinationOptionsResponse& DestinationOptionsResponse::operator =(const XmlNode
     XmlNode fileFormatNode = resultNode.FirstChild("fileFormat");
     if(!fileFormatNode.IsNull())
     {
-      m_fileFormat = DestinationFileFormatMapper::GetDestinationFileFormatForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(fileFormatNode.GetText()).c_str()).c_str());
+      m_fileFormat = DestinationFileFormatMapper::GetDestinationFileFormatForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(fileFormatNode.GetText()).c_str()));
       m_fileFormatHasBeenSet = true;
     }
     XmlNode hiveCompatiblePartitionsNode = resultNode.FirstChild("hiveCompatiblePartitions");
@@ -74,7 +58,7 @@ void DestinationOptionsResponse::OutputToStream(Aws::OStream& oStream, const cha
 {
   if(m_fileFormatHasBeenSet)
   {
-      oStream << location << index << locationValue << ".FileFormat=" << DestinationFileFormatMapper::GetNameForDestinationFileFormat(m_fileFormat) << "&";
+      oStream << location << index << locationValue << ".FileFormat=" << StringUtils::URLEncode(DestinationFileFormatMapper::GetNameForDestinationFileFormat(m_fileFormat)) << "&";
   }
 
   if(m_hiveCompatiblePartitionsHasBeenSet)
@@ -93,7 +77,7 @@ void DestinationOptionsResponse::OutputToStream(Aws::OStream& oStream, const cha
 {
   if(m_fileFormatHasBeenSet)
   {
-      oStream << location << ".FileFormat=" << DestinationFileFormatMapper::GetNameForDestinationFileFormat(m_fileFormat) << "&";
+      oStream << location << ".FileFormat=" << StringUtils::URLEncode(DestinationFileFormatMapper::GetNameForDestinationFileFormat(m_fileFormat)) << "&";
   }
   if(m_hiveCompatiblePartitionsHasBeenSet)
   {

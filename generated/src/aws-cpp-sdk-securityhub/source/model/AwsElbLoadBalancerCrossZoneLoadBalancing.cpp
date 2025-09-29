@@ -18,15 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsElbLoadBalancerCrossZoneLoadBalancing::AwsElbLoadBalancerCrossZoneLoadBalancing() : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false)
-{
-}
-
-AwsElbLoadBalancerCrossZoneLoadBalancing::AwsElbLoadBalancerCrossZoneLoadBalancing(JsonView jsonValue) : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false)
+AwsElbLoadBalancerCrossZoneLoadBalancing::AwsElbLoadBalancerCrossZoneLoadBalancing(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ AwsElbLoadBalancerCrossZoneLoadBalancing& AwsElbLoadBalancerCrossZoneLoadBalanci
   if(jsonValue.ValueExists("Enabled"))
   {
     m_enabled = jsonValue.GetBool("Enabled");
-
     m_enabledHasBeenSet = true;
   }
-
   return *this;
 }
 

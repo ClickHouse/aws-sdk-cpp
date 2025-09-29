@@ -20,33 +20,7 @@ namespace EC2
 namespace Model
 {
 
-ReservedInstancesListing::ReservedInstancesListing() : 
-    m_clientTokenHasBeenSet(false),
-    m_createDateHasBeenSet(false),
-    m_instanceCountsHasBeenSet(false),
-    m_priceSchedulesHasBeenSet(false),
-    m_reservedInstancesIdHasBeenSet(false),
-    m_reservedInstancesListingIdHasBeenSet(false),
-    m_status(ListingStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_statusMessageHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_updateDateHasBeenSet(false)
-{
-}
-
-ReservedInstancesListing::ReservedInstancesListing(const XmlNode& xmlNode) : 
-    m_clientTokenHasBeenSet(false),
-    m_createDateHasBeenSet(false),
-    m_instanceCountsHasBeenSet(false),
-    m_priceSchedulesHasBeenSet(false),
-    m_reservedInstancesIdHasBeenSet(false),
-    m_reservedInstancesListingIdHasBeenSet(false),
-    m_status(ListingStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_statusMessageHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_updateDateHasBeenSet(false)
+ReservedInstancesListing::ReservedInstancesListing(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -73,6 +47,7 @@ ReservedInstancesListing& ReservedInstancesListing::operator =(const XmlNode& xm
     if(!instanceCountsNode.IsNull())
     {
       XmlNode instanceCountsMember = instanceCountsNode.FirstChild("item");
+      m_instanceCountsHasBeenSet = !instanceCountsMember.IsNull();
       while(!instanceCountsMember.IsNull())
       {
         m_instanceCounts.push_back(instanceCountsMember);
@@ -85,6 +60,7 @@ ReservedInstancesListing& ReservedInstancesListing::operator =(const XmlNode& xm
     if(!priceSchedulesNode.IsNull())
     {
       XmlNode priceSchedulesMember = priceSchedulesNode.FirstChild("item");
+      m_priceSchedulesHasBeenSet = !priceSchedulesMember.IsNull();
       while(!priceSchedulesMember.IsNull())
       {
         m_priceSchedules.push_back(priceSchedulesMember);
@@ -108,7 +84,7 @@ ReservedInstancesListing& ReservedInstancesListing::operator =(const XmlNode& xm
     XmlNode statusNode = resultNode.FirstChild("status");
     if(!statusNode.IsNull())
     {
-      m_status = ListingStatusMapper::GetListingStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()).c_str());
+      m_status = ListingStatusMapper::GetListingStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()));
       m_statusHasBeenSet = true;
     }
     XmlNode statusMessageNode = resultNode.FirstChild("statusMessage");
@@ -121,6 +97,7 @@ ReservedInstancesListing& ReservedInstancesListing::operator =(const XmlNode& xm
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -186,7 +163,7 @@ void ReservedInstancesListing::OutputToStream(Aws::OStream& oStream, const char*
 
   if(m_statusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Status=" << ListingStatusMapper::GetNameForListingStatus(m_status) << "&";
+      oStream << location << index << locationValue << ".Status=" << StringUtils::URLEncode(ListingStatusMapper::GetNameForListingStatus(m_status)) << "&";
   }
 
   if(m_statusMessageHasBeenSet)
@@ -228,7 +205,7 @@ void ReservedInstancesListing::OutputToStream(Aws::OStream& oStream, const char*
       for(auto& item : m_instanceCounts)
       {
         Aws::StringStream instanceCountsSs;
-        instanceCountsSs << location <<  ".InstanceCounts." << instanceCountsIdx++;
+        instanceCountsSs << location << ".InstanceCounts." << instanceCountsIdx++;
         item.OutputToStream(oStream, instanceCountsSs.str().c_str());
       }
   }
@@ -238,7 +215,7 @@ void ReservedInstancesListing::OutputToStream(Aws::OStream& oStream, const char*
       for(auto& item : m_priceSchedules)
       {
         Aws::StringStream priceSchedulesSs;
-        priceSchedulesSs << location <<  ".PriceSchedules." << priceSchedulesIdx++;
+        priceSchedulesSs << location << ".PriceSchedules." << priceSchedulesIdx++;
         item.OutputToStream(oStream, priceSchedulesSs.str().c_str());
       }
   }
@@ -252,7 +229,7 @@ void ReservedInstancesListing::OutputToStream(Aws::OStream& oStream, const char*
   }
   if(m_statusHasBeenSet)
   {
-      oStream << location << ".Status=" << ListingStatusMapper::GetNameForListingStatus(m_status) << "&";
+      oStream << location << ".Status=" << StringUtils::URLEncode(ListingStatusMapper::GetNameForListingStatus(m_status)) << "&";
   }
   if(m_statusMessageHasBeenSet)
   {
@@ -264,7 +241,7 @@ void ReservedInstancesListing::OutputToStream(Aws::OStream& oStream, const char*
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }

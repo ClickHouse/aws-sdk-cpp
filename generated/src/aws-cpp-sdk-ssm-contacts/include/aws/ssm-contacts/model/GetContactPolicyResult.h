@@ -27,118 +27,52 @@ namespace Model
   class GetContactPolicyResult
   {
   public:
-    AWS_SSMCONTACTS_API GetContactPolicyResult();
+    AWS_SSMCONTACTS_API GetContactPolicyResult() = default;
     AWS_SSMCONTACTS_API GetContactPolicyResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_SSMCONTACTS_API GetContactPolicyResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The ARN of the contact or escalation plan.</p>
      */
-    inline const Aws::String& GetContactArn() const{ return m_contactArn; }
+    inline const Aws::String& GetContactArn() const { return m_contactArn; }
+    template<typename ContactArnT = Aws::String>
+    void SetContactArn(ContactArnT&& value) { m_contactArnHasBeenSet = true; m_contactArn = std::forward<ContactArnT>(value); }
+    template<typename ContactArnT = Aws::String>
+    GetContactPolicyResult& WithContactArn(ContactArnT&& value) { SetContactArn(std::forward<ContactArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the contact or escalation plan.</p>
-     */
-    inline void SetContactArn(const Aws::String& value) { m_contactArn = value; }
-
-    /**
-     * <p>The ARN of the contact or escalation plan.</p>
-     */
-    inline void SetContactArn(Aws::String&& value) { m_contactArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the contact or escalation plan.</p>
-     */
-    inline void SetContactArn(const char* value) { m_contactArn.assign(value); }
-
-    /**
-     * <p>The ARN of the contact or escalation plan.</p>
-     */
-    inline GetContactPolicyResult& WithContactArn(const Aws::String& value) { SetContactArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the contact or escalation plan.</p>
-     */
-    inline GetContactPolicyResult& WithContactArn(Aws::String&& value) { SetContactArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the contact or escalation plan.</p>
-     */
-    inline GetContactPolicyResult& WithContactArn(const char* value) { SetContactArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Details about the resource policy attached to the contact or escalation
      * plan.</p>
      */
-    inline const Aws::String& GetPolicy() const{ return m_policy; }
+    inline const Aws::String& GetPolicy() const { return m_policy; }
+    template<typename PolicyT = Aws::String>
+    void SetPolicy(PolicyT&& value) { m_policyHasBeenSet = true; m_policy = std::forward<PolicyT>(value); }
+    template<typename PolicyT = Aws::String>
+    GetContactPolicyResult& WithPolicy(PolicyT&& value) { SetPolicy(std::forward<PolicyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Details about the resource policy attached to the contact or escalation
-     * plan.</p>
-     */
-    inline void SetPolicy(const Aws::String& value) { m_policy = value; }
-
-    /**
-     * <p>Details about the resource policy attached to the contact or escalation
-     * plan.</p>
-     */
-    inline void SetPolicy(Aws::String&& value) { m_policy = std::move(value); }
-
-    /**
-     * <p>Details about the resource policy attached to the contact or escalation
-     * plan.</p>
-     */
-    inline void SetPolicy(const char* value) { m_policy.assign(value); }
-
-    /**
-     * <p>Details about the resource policy attached to the contact or escalation
-     * plan.</p>
-     */
-    inline GetContactPolicyResult& WithPolicy(const Aws::String& value) { SetPolicy(value); return *this;}
-
-    /**
-     * <p>Details about the resource policy attached to the contact or escalation
-     * plan.</p>
-     */
-    inline GetContactPolicyResult& WithPolicy(Aws::String&& value) { SetPolicy(std::move(value)); return *this;}
-
-    /**
-     * <p>Details about the resource policy attached to the contact or escalation
-     * plan.</p>
-     */
-    inline GetContactPolicyResult& WithPolicy(const char* value) { SetPolicy(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetContactPolicyResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetContactPolicyResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetContactPolicyResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetContactPolicyResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_contactArn;
+    bool m_contactArnHasBeenSet = false;
 
     Aws::String m_policy;
+    bool m_policyHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

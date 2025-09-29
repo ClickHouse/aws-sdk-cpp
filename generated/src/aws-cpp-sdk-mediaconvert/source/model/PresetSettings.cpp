@@ -18,19 +18,7 @@ namespace MediaConvert
 namespace Model
 {
 
-PresetSettings::PresetSettings() : 
-    m_audioDescriptionsHasBeenSet(false),
-    m_captionDescriptionsHasBeenSet(false),
-    m_containerSettingsHasBeenSet(false),
-    m_videoDescriptionHasBeenSet(false)
-{
-}
-
-PresetSettings::PresetSettings(JsonView jsonValue) : 
-    m_audioDescriptionsHasBeenSet(false),
-    m_captionDescriptionsHasBeenSet(false),
-    m_containerSettingsHasBeenSet(false),
-    m_videoDescriptionHasBeenSet(false)
+PresetSettings::PresetSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,7 +34,6 @@ PresetSettings& PresetSettings::operator =(JsonView jsonValue)
     }
     m_audioDescriptionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("captionDescriptions"))
   {
     Aws::Utils::Array<JsonView> captionDescriptionsJsonList = jsonValue.GetArray("captionDescriptions");
@@ -56,21 +43,16 @@ PresetSettings& PresetSettings::operator =(JsonView jsonValue)
     }
     m_captionDescriptionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("containerSettings"))
   {
     m_containerSettings = jsonValue.GetObject("containerSettings");
-
     m_containerSettingsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("videoDescription"))
   {
     m_videoDescription = jsonValue.GetObject("videoDescription");
-
     m_videoDescriptionHasBeenSet = true;
   }
-
   return *this;
 }
 

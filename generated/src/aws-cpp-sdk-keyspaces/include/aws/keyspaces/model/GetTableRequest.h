@@ -21,7 +21,7 @@ namespace Model
   class GetTableRequest : public KeyspacesRequest
   {
   public:
-    AWS_KEYSPACES_API GetTableRequest();
+    AWS_KEYSPACES_API GetTableRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,87 +34,29 @@ namespace Model
     AWS_KEYSPACES_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the keyspace that the table is stored in.</p>
      */
-    inline const Aws::String& GetKeyspaceName() const{ return m_keyspaceName; }
-
-    /**
-     * <p>The name of the keyspace that the table is stored in.</p>
-     */
+    inline const Aws::String& GetKeyspaceName() const { return m_keyspaceName; }
     inline bool KeyspaceNameHasBeenSet() const { return m_keyspaceNameHasBeenSet; }
+    template<typename KeyspaceNameT = Aws::String>
+    void SetKeyspaceName(KeyspaceNameT&& value) { m_keyspaceNameHasBeenSet = true; m_keyspaceName = std::forward<KeyspaceNameT>(value); }
+    template<typename KeyspaceNameT = Aws::String>
+    GetTableRequest& WithKeyspaceName(KeyspaceNameT&& value) { SetKeyspaceName(std::forward<KeyspaceNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the keyspace that the table is stored in.</p>
-     */
-    inline void SetKeyspaceName(const Aws::String& value) { m_keyspaceNameHasBeenSet = true; m_keyspaceName = value; }
-
-    /**
-     * <p>The name of the keyspace that the table is stored in.</p>
-     */
-    inline void SetKeyspaceName(Aws::String&& value) { m_keyspaceNameHasBeenSet = true; m_keyspaceName = std::move(value); }
-
-    /**
-     * <p>The name of the keyspace that the table is stored in.</p>
-     */
-    inline void SetKeyspaceName(const char* value) { m_keyspaceNameHasBeenSet = true; m_keyspaceName.assign(value); }
-
-    /**
-     * <p>The name of the keyspace that the table is stored in.</p>
-     */
-    inline GetTableRequest& WithKeyspaceName(const Aws::String& value) { SetKeyspaceName(value); return *this;}
-
-    /**
-     * <p>The name of the keyspace that the table is stored in.</p>
-     */
-    inline GetTableRequest& WithKeyspaceName(Aws::String&& value) { SetKeyspaceName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the keyspace that the table is stored in.</p>
-     */
-    inline GetTableRequest& WithKeyspaceName(const char* value) { SetKeyspaceName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the table.</p>
      */
-    inline const Aws::String& GetTableName() const{ return m_tableName; }
-
-    /**
-     * <p>The name of the table.</p>
-     */
+    inline const Aws::String& GetTableName() const { return m_tableName; }
     inline bool TableNameHasBeenSet() const { return m_tableNameHasBeenSet; }
-
-    /**
-     * <p>The name of the table.</p>
-     */
-    inline void SetTableName(const Aws::String& value) { m_tableNameHasBeenSet = true; m_tableName = value; }
-
-    /**
-     * <p>The name of the table.</p>
-     */
-    inline void SetTableName(Aws::String&& value) { m_tableNameHasBeenSet = true; m_tableName = std::move(value); }
-
-    /**
-     * <p>The name of the table.</p>
-     */
-    inline void SetTableName(const char* value) { m_tableNameHasBeenSet = true; m_tableName.assign(value); }
-
-    /**
-     * <p>The name of the table.</p>
-     */
-    inline GetTableRequest& WithTableName(const Aws::String& value) { SetTableName(value); return *this;}
-
-    /**
-     * <p>The name of the table.</p>
-     */
-    inline GetTableRequest& WithTableName(Aws::String&& value) { SetTableName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the table.</p>
-     */
-    inline GetTableRequest& WithTableName(const char* value) { SetTableName(value); return *this;}
-
+    template<typename TableNameT = Aws::String>
+    void SetTableName(TableNameT&& value) { m_tableNameHasBeenSet = true; m_tableName = std::forward<TableNameT>(value); }
+    template<typename TableNameT = Aws::String>
+    GetTableRequest& WithTableName(TableNameT&& value) { SetTableName(std::forward<TableNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_keyspaceName;

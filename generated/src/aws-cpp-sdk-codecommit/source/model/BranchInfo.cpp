@@ -18,15 +18,7 @@ namespace CodeCommit
 namespace Model
 {
 
-BranchInfo::BranchInfo() : 
-    m_branchNameHasBeenSet(false),
-    m_commitIdHasBeenSet(false)
-{
-}
-
-BranchInfo::BranchInfo(JsonView jsonValue) : 
-    m_branchNameHasBeenSet(false),
-    m_commitIdHasBeenSet(false)
+BranchInfo::BranchInfo(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ BranchInfo& BranchInfo::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("branchName"))
   {
     m_branchName = jsonValue.GetString("branchName");
-
     m_branchNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("commitId"))
   {
     m_commitId = jsonValue.GetString("commitId");
-
     m_commitIdHasBeenSet = true;
   }
-
   return *this;
 }
 

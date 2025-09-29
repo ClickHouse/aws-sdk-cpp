@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-GaugeChartFieldWells::GaugeChartFieldWells() : 
-    m_valuesHasBeenSet(false),
-    m_targetValuesHasBeenSet(false)
-{
-}
-
-GaugeChartFieldWells::GaugeChartFieldWells(JsonView jsonValue) : 
-    m_valuesHasBeenSet(false),
-    m_targetValuesHasBeenSet(false)
+GaugeChartFieldWells::GaugeChartFieldWells(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ GaugeChartFieldWells& GaugeChartFieldWells::operator =(JsonView jsonValue)
     }
     m_valuesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TargetValues"))
   {
     Aws::Utils::Array<JsonView> targetValuesJsonList = jsonValue.GetArray("TargetValues");
@@ -52,7 +43,6 @@ GaugeChartFieldWells& GaugeChartFieldWells::operator =(JsonView jsonValue)
     }
     m_targetValuesHasBeenSet = true;
   }
-
   return *this;
 }
 

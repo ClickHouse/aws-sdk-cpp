@@ -33,7 +33,7 @@ namespace Model
   class Endpoint
   {
   public:
-    AWS_DOCDB_API Endpoint();
+    AWS_DOCDB_API Endpoint() = default;
     AWS_DOCDB_API Endpoint(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_DOCDB_API Endpoint& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -41,122 +41,46 @@ namespace Model
     AWS_DOCDB_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>Specifies the DNS address of the instance.</p>
      */
-    inline const Aws::String& GetAddress() const{ return m_address; }
-
-    /**
-     * <p>Specifies the DNS address of the instance.</p>
-     */
+    inline const Aws::String& GetAddress() const { return m_address; }
     inline bool AddressHasBeenSet() const { return m_addressHasBeenSet; }
+    template<typename AddressT = Aws::String>
+    void SetAddress(AddressT&& value) { m_addressHasBeenSet = true; m_address = std::forward<AddressT>(value); }
+    template<typename AddressT = Aws::String>
+    Endpoint& WithAddress(AddressT&& value) { SetAddress(std::forward<AddressT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the DNS address of the instance.</p>
-     */
-    inline void SetAddress(const Aws::String& value) { m_addressHasBeenSet = true; m_address = value; }
-
-    /**
-     * <p>Specifies the DNS address of the instance.</p>
-     */
-    inline void SetAddress(Aws::String&& value) { m_addressHasBeenSet = true; m_address = std::move(value); }
-
-    /**
-     * <p>Specifies the DNS address of the instance.</p>
-     */
-    inline void SetAddress(const char* value) { m_addressHasBeenSet = true; m_address.assign(value); }
-
-    /**
-     * <p>Specifies the DNS address of the instance.</p>
-     */
-    inline Endpoint& WithAddress(const Aws::String& value) { SetAddress(value); return *this;}
-
-    /**
-     * <p>Specifies the DNS address of the instance.</p>
-     */
-    inline Endpoint& WithAddress(Aws::String&& value) { SetAddress(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the DNS address of the instance.</p>
-     */
-    inline Endpoint& WithAddress(const char* value) { SetAddress(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the port that the database engine is listening on.</p>
      */
-    inline int GetPort() const{ return m_port; }
-
-    /**
-     * <p>Specifies the port that the database engine is listening on.</p>
-     */
+    inline int GetPort() const { return m_port; }
     inline bool PortHasBeenSet() const { return m_portHasBeenSet; }
-
-    /**
-     * <p>Specifies the port that the database engine is listening on.</p>
-     */
     inline void SetPort(int value) { m_portHasBeenSet = true; m_port = value; }
-
-    /**
-     * <p>Specifies the port that the database engine is listening on.</p>
-     */
     inline Endpoint& WithPort(int value) { SetPort(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Specifies the ID that Amazon Route 53 assigns when you create a hosted
      * zone.</p>
      */
-    inline const Aws::String& GetHostedZoneId() const{ return m_hostedZoneId; }
-
-    /**
-     * <p>Specifies the ID that Amazon Route 53 assigns when you create a hosted
-     * zone.</p>
-     */
+    inline const Aws::String& GetHostedZoneId() const { return m_hostedZoneId; }
     inline bool HostedZoneIdHasBeenSet() const { return m_hostedZoneIdHasBeenSet; }
-
-    /**
-     * <p>Specifies the ID that Amazon Route 53 assigns when you create a hosted
-     * zone.</p>
-     */
-    inline void SetHostedZoneId(const Aws::String& value) { m_hostedZoneIdHasBeenSet = true; m_hostedZoneId = value; }
-
-    /**
-     * <p>Specifies the ID that Amazon Route 53 assigns when you create a hosted
-     * zone.</p>
-     */
-    inline void SetHostedZoneId(Aws::String&& value) { m_hostedZoneIdHasBeenSet = true; m_hostedZoneId = std::move(value); }
-
-    /**
-     * <p>Specifies the ID that Amazon Route 53 assigns when you create a hosted
-     * zone.</p>
-     */
-    inline void SetHostedZoneId(const char* value) { m_hostedZoneIdHasBeenSet = true; m_hostedZoneId.assign(value); }
-
-    /**
-     * <p>Specifies the ID that Amazon Route 53 assigns when you create a hosted
-     * zone.</p>
-     */
-    inline Endpoint& WithHostedZoneId(const Aws::String& value) { SetHostedZoneId(value); return *this;}
-
-    /**
-     * <p>Specifies the ID that Amazon Route 53 assigns when you create a hosted
-     * zone.</p>
-     */
-    inline Endpoint& WithHostedZoneId(Aws::String&& value) { SetHostedZoneId(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the ID that Amazon Route 53 assigns when you create a hosted
-     * zone.</p>
-     */
-    inline Endpoint& WithHostedZoneId(const char* value) { SetHostedZoneId(value); return *this;}
-
+    template<typename HostedZoneIdT = Aws::String>
+    void SetHostedZoneId(HostedZoneIdT&& value) { m_hostedZoneIdHasBeenSet = true; m_hostedZoneId = std::forward<HostedZoneIdT>(value); }
+    template<typename HostedZoneIdT = Aws::String>
+    Endpoint& WithHostedZoneId(HostedZoneIdT&& value) { SetHostedZoneId(std::forward<HostedZoneIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_address;
     bool m_addressHasBeenSet = false;
 
-    int m_port;
+    int m_port{0};
     bool m_portHasBeenSet = false;
 
     Aws::String m_hostedZoneId;

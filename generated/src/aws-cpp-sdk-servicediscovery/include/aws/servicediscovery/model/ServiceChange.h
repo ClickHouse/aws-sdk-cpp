@@ -34,132 +34,50 @@ namespace Model
   class ServiceChange
   {
   public:
-    AWS_SERVICEDISCOVERY_API ServiceChange();
+    AWS_SERVICEDISCOVERY_API ServiceChange() = default;
     AWS_SERVICEDISCOVERY_API ServiceChange(Aws::Utils::Json::JsonView jsonValue);
     AWS_SERVICEDISCOVERY_API ServiceChange& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SERVICEDISCOVERY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A description for the service.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>A description for the service.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    ServiceChange& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A description for the service.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>A description for the service.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>A description for the service.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>A description for the service.</p>
-     */
-    inline ServiceChange& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A description for the service.</p>
-     */
-    inline ServiceChange& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A description for the service.</p>
-     */
-    inline ServiceChange& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about the Route 53 DNS records that you want Cloud Map to create
      * when you register an instance.</p>
      */
-    inline const DnsConfigChange& GetDnsConfig() const{ return m_dnsConfig; }
-
-    /**
-     * <p>Information about the Route 53 DNS records that you want Cloud Map to create
-     * when you register an instance.</p>
-     */
+    inline const DnsConfigChange& GetDnsConfig() const { return m_dnsConfig; }
     inline bool DnsConfigHasBeenSet() const { return m_dnsConfigHasBeenSet; }
+    template<typename DnsConfigT = DnsConfigChange>
+    void SetDnsConfig(DnsConfigT&& value) { m_dnsConfigHasBeenSet = true; m_dnsConfig = std::forward<DnsConfigT>(value); }
+    template<typename DnsConfigT = DnsConfigChange>
+    ServiceChange& WithDnsConfig(DnsConfigT&& value) { SetDnsConfig(std::forward<DnsConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about the Route 53 DNS records that you want Cloud Map to create
-     * when you register an instance.</p>
-     */
-    inline void SetDnsConfig(const DnsConfigChange& value) { m_dnsConfigHasBeenSet = true; m_dnsConfig = value; }
-
-    /**
-     * <p>Information about the Route 53 DNS records that you want Cloud Map to create
-     * when you register an instance.</p>
-     */
-    inline void SetDnsConfig(DnsConfigChange&& value) { m_dnsConfigHasBeenSet = true; m_dnsConfig = std::move(value); }
-
-    /**
-     * <p>Information about the Route 53 DNS records that you want Cloud Map to create
-     * when you register an instance.</p>
-     */
-    inline ServiceChange& WithDnsConfig(const DnsConfigChange& value) { SetDnsConfig(value); return *this;}
-
-    /**
-     * <p>Information about the Route 53 DNS records that you want Cloud Map to create
-     * when you register an instance.</p>
-     */
-    inline ServiceChange& WithDnsConfig(DnsConfigChange&& value) { SetDnsConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> <i>Public DNS and HTTP namespaces only.</i> Settings for an optional health
      * check. If you specify settings for a health check, Cloud Map associates the
      * health check with the records that you specify in <code>DnsConfig</code>.</p>
      */
-    inline const HealthCheckConfig& GetHealthCheckConfig() const{ return m_healthCheckConfig; }
-
-    /**
-     * <p> <i>Public DNS and HTTP namespaces only.</i> Settings for an optional health
-     * check. If you specify settings for a health check, Cloud Map associates the
-     * health check with the records that you specify in <code>DnsConfig</code>.</p>
-     */
+    inline const HealthCheckConfig& GetHealthCheckConfig() const { return m_healthCheckConfig; }
     inline bool HealthCheckConfigHasBeenSet() const { return m_healthCheckConfigHasBeenSet; }
-
-    /**
-     * <p> <i>Public DNS and HTTP namespaces only.</i> Settings for an optional health
-     * check. If you specify settings for a health check, Cloud Map associates the
-     * health check with the records that you specify in <code>DnsConfig</code>.</p>
-     */
-    inline void SetHealthCheckConfig(const HealthCheckConfig& value) { m_healthCheckConfigHasBeenSet = true; m_healthCheckConfig = value; }
-
-    /**
-     * <p> <i>Public DNS and HTTP namespaces only.</i> Settings for an optional health
-     * check. If you specify settings for a health check, Cloud Map associates the
-     * health check with the records that you specify in <code>DnsConfig</code>.</p>
-     */
-    inline void SetHealthCheckConfig(HealthCheckConfig&& value) { m_healthCheckConfigHasBeenSet = true; m_healthCheckConfig = std::move(value); }
-
-    /**
-     * <p> <i>Public DNS and HTTP namespaces only.</i> Settings for an optional health
-     * check. If you specify settings for a health check, Cloud Map associates the
-     * health check with the records that you specify in <code>DnsConfig</code>.</p>
-     */
-    inline ServiceChange& WithHealthCheckConfig(const HealthCheckConfig& value) { SetHealthCheckConfig(value); return *this;}
-
-    /**
-     * <p> <i>Public DNS and HTTP namespaces only.</i> Settings for an optional health
-     * check. If you specify settings for a health check, Cloud Map associates the
-     * health check with the records that you specify in <code>DnsConfig</code>.</p>
-     */
-    inline ServiceChange& WithHealthCheckConfig(HealthCheckConfig&& value) { SetHealthCheckConfig(std::move(value)); return *this;}
-
+    template<typename HealthCheckConfigT = HealthCheckConfig>
+    void SetHealthCheckConfig(HealthCheckConfigT&& value) { m_healthCheckConfigHasBeenSet = true; m_healthCheckConfig = std::forward<HealthCheckConfigT>(value); }
+    template<typename HealthCheckConfigT = HealthCheckConfig>
+    ServiceChange& WithHealthCheckConfig(HealthCheckConfigT&& value) { SetHealthCheckConfig(std::forward<HealthCheckConfigT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_description;

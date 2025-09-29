@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-CancelledSpotInstanceRequest::CancelledSpotInstanceRequest() : 
-    m_spotInstanceRequestIdHasBeenSet(false),
-    m_state(CancelSpotInstanceRequestState::NOT_SET),
-    m_stateHasBeenSet(false)
-{
-}
-
-CancelledSpotInstanceRequest::CancelledSpotInstanceRequest(const XmlNode& xmlNode) : 
-    m_spotInstanceRequestIdHasBeenSet(false),
-    m_state(CancelSpotInstanceRequestState::NOT_SET),
-    m_stateHasBeenSet(false)
+CancelledSpotInstanceRequest::CancelledSpotInstanceRequest(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -50,7 +40,7 @@ CancelledSpotInstanceRequest& CancelledSpotInstanceRequest::operator =(const Xml
     XmlNode stateNode = resultNode.FirstChild("state");
     if(!stateNode.IsNull())
     {
-      m_state = CancelSpotInstanceRequestStateMapper::GetCancelSpotInstanceRequestStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()).c_str());
+      m_state = CancelSpotInstanceRequestStateMapper::GetCancelSpotInstanceRequestStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()));
       m_stateHasBeenSet = true;
     }
   }
@@ -67,7 +57,7 @@ void CancelledSpotInstanceRequest::OutputToStream(Aws::OStream& oStream, const c
 
   if(m_stateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".State=" << CancelSpotInstanceRequestStateMapper::GetNameForCancelSpotInstanceRequestState(m_state) << "&";
+      oStream << location << index << locationValue << ".State=" << StringUtils::URLEncode(CancelSpotInstanceRequestStateMapper::GetNameForCancelSpotInstanceRequestState(m_state)) << "&";
   }
 
 }
@@ -80,7 +70,7 @@ void CancelledSpotInstanceRequest::OutputToStream(Aws::OStream& oStream, const c
   }
   if(m_stateHasBeenSet)
   {
-      oStream << location << ".State=" << CancelSpotInstanceRequestStateMapper::GetNameForCancelSpotInstanceRequestState(m_state) << "&";
+      oStream << location << ".State=" << StringUtils::URLEncode(CancelSpotInstanceRequestStateMapper::GetNameForCancelSpotInstanceRequestState(m_state)) << "&";
   }
 }
 

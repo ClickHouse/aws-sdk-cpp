@@ -24,7 +24,7 @@ namespace Model
   class DeleteHsmConfigurationRequest : public RedshiftRequest
   {
   public:
-    AWS_REDSHIFT_API DeleteHsmConfigurationRequest();
+    AWS_REDSHIFT_API DeleteHsmConfigurationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,46 +39,17 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The identifier of the Amazon Redshift HSM configuration to be deleted.</p>
      */
-    inline const Aws::String& GetHsmConfigurationIdentifier() const{ return m_hsmConfigurationIdentifier; }
-
-    /**
-     * <p>The identifier of the Amazon Redshift HSM configuration to be deleted.</p>
-     */
+    inline const Aws::String& GetHsmConfigurationIdentifier() const { return m_hsmConfigurationIdentifier; }
     inline bool HsmConfigurationIdentifierHasBeenSet() const { return m_hsmConfigurationIdentifierHasBeenSet; }
-
-    /**
-     * <p>The identifier of the Amazon Redshift HSM configuration to be deleted.</p>
-     */
-    inline void SetHsmConfigurationIdentifier(const Aws::String& value) { m_hsmConfigurationIdentifierHasBeenSet = true; m_hsmConfigurationIdentifier = value; }
-
-    /**
-     * <p>The identifier of the Amazon Redshift HSM configuration to be deleted.</p>
-     */
-    inline void SetHsmConfigurationIdentifier(Aws::String&& value) { m_hsmConfigurationIdentifierHasBeenSet = true; m_hsmConfigurationIdentifier = std::move(value); }
-
-    /**
-     * <p>The identifier of the Amazon Redshift HSM configuration to be deleted.</p>
-     */
-    inline void SetHsmConfigurationIdentifier(const char* value) { m_hsmConfigurationIdentifierHasBeenSet = true; m_hsmConfigurationIdentifier.assign(value); }
-
-    /**
-     * <p>The identifier of the Amazon Redshift HSM configuration to be deleted.</p>
-     */
-    inline DeleteHsmConfigurationRequest& WithHsmConfigurationIdentifier(const Aws::String& value) { SetHsmConfigurationIdentifier(value); return *this;}
-
-    /**
-     * <p>The identifier of the Amazon Redshift HSM configuration to be deleted.</p>
-     */
-    inline DeleteHsmConfigurationRequest& WithHsmConfigurationIdentifier(Aws::String&& value) { SetHsmConfigurationIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the Amazon Redshift HSM configuration to be deleted.</p>
-     */
-    inline DeleteHsmConfigurationRequest& WithHsmConfigurationIdentifier(const char* value) { SetHsmConfigurationIdentifier(value); return *this;}
-
+    template<typename HsmConfigurationIdentifierT = Aws::String>
+    void SetHsmConfigurationIdentifier(HsmConfigurationIdentifierT&& value) { m_hsmConfigurationIdentifierHasBeenSet = true; m_hsmConfigurationIdentifier = std::forward<HsmConfigurationIdentifierT>(value); }
+    template<typename HsmConfigurationIdentifierT = Aws::String>
+    DeleteHsmConfigurationRequest& WithHsmConfigurationIdentifier(HsmConfigurationIdentifierT&& value) { SetHsmConfigurationIdentifier(std::forward<HsmConfigurationIdentifierT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_hsmConfigurationIdentifier;

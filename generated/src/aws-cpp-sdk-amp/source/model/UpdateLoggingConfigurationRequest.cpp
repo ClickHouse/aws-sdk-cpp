@@ -12,14 +12,6 @@ using namespace Aws::PrometheusService::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateLoggingConfigurationRequest::UpdateLoggingConfigurationRequest() : 
-    m_workspaceIdHasBeenSet(false),
-    m_logGroupArnHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_clientTokenHasBeenSet(true)
-{
-}
-
 Aws::String UpdateLoggingConfigurationRequest::SerializePayload() const
 {
   JsonValue payload;

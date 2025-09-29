@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-YAxisOptions::YAxisOptions() : 
-    m_yAxis(SingleYAxisOption::NOT_SET),
-    m_yAxisHasBeenSet(false)
-{
-}
-
-YAxisOptions::YAxisOptions(JsonView jsonValue) : 
-    m_yAxis(SingleYAxisOption::NOT_SET),
-    m_yAxisHasBeenSet(false)
+YAxisOptions::YAxisOptions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ YAxisOptions& YAxisOptions::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("YAxis"))
   {
     m_yAxis = SingleYAxisOptionMapper::GetSingleYAxisOptionForName(jsonValue.GetString("YAxis"));
-
     m_yAxisHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -33,131 +33,61 @@ namespace Model
   class MultiplexProgramSettings
   {
   public:
-    AWS_MEDIALIVE_API MultiplexProgramSettings();
+    AWS_MEDIALIVE_API MultiplexProgramSettings() = default;
     AWS_MEDIALIVE_API MultiplexProgramSettings(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API MultiplexProgramSettings& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * Indicates which pipeline is preferred by the multiplex for program ingest.
      */
-    inline const PreferredChannelPipeline& GetPreferredChannelPipeline() const{ return m_preferredChannelPipeline; }
-
-    /**
-     * Indicates which pipeline is preferred by the multiplex for program ingest.
-     */
+    inline PreferredChannelPipeline GetPreferredChannelPipeline() const { return m_preferredChannelPipeline; }
     inline bool PreferredChannelPipelineHasBeenSet() const { return m_preferredChannelPipelineHasBeenSet; }
+    inline void SetPreferredChannelPipeline(PreferredChannelPipeline value) { m_preferredChannelPipelineHasBeenSet = true; m_preferredChannelPipeline = value; }
+    inline MultiplexProgramSettings& WithPreferredChannelPipeline(PreferredChannelPipeline value) { SetPreferredChannelPipeline(value); return *this;}
+    ///@}
 
-    /**
-     * Indicates which pipeline is preferred by the multiplex for program ingest.
-     */
-    inline void SetPreferredChannelPipeline(const PreferredChannelPipeline& value) { m_preferredChannelPipelineHasBeenSet = true; m_preferredChannelPipeline = value; }
-
-    /**
-     * Indicates which pipeline is preferred by the multiplex for program ingest.
-     */
-    inline void SetPreferredChannelPipeline(PreferredChannelPipeline&& value) { m_preferredChannelPipelineHasBeenSet = true; m_preferredChannelPipeline = std::move(value); }
-
-    /**
-     * Indicates which pipeline is preferred by the multiplex for program ingest.
-     */
-    inline MultiplexProgramSettings& WithPreferredChannelPipeline(const PreferredChannelPipeline& value) { SetPreferredChannelPipeline(value); return *this;}
-
-    /**
-     * Indicates which pipeline is preferred by the multiplex for program ingest.
-     */
-    inline MultiplexProgramSettings& WithPreferredChannelPipeline(PreferredChannelPipeline&& value) { SetPreferredChannelPipeline(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * Unique program number.
      */
-    inline int GetProgramNumber() const{ return m_programNumber; }
-
-    /**
-     * Unique program number.
-     */
+    inline int GetProgramNumber() const { return m_programNumber; }
     inline bool ProgramNumberHasBeenSet() const { return m_programNumberHasBeenSet; }
-
-    /**
-     * Unique program number.
-     */
     inline void SetProgramNumber(int value) { m_programNumberHasBeenSet = true; m_programNumber = value; }
-
-    /**
-     * Unique program number.
-     */
     inline MultiplexProgramSettings& WithProgramNumber(int value) { SetProgramNumber(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * Transport stream service descriptor configuration for the Multiplex program.
      */
-    inline const MultiplexProgramServiceDescriptor& GetServiceDescriptor() const{ return m_serviceDescriptor; }
-
-    /**
-     * Transport stream service descriptor configuration for the Multiplex program.
-     */
+    inline const MultiplexProgramServiceDescriptor& GetServiceDescriptor() const { return m_serviceDescriptor; }
     inline bool ServiceDescriptorHasBeenSet() const { return m_serviceDescriptorHasBeenSet; }
+    template<typename ServiceDescriptorT = MultiplexProgramServiceDescriptor>
+    void SetServiceDescriptor(ServiceDescriptorT&& value) { m_serviceDescriptorHasBeenSet = true; m_serviceDescriptor = std::forward<ServiceDescriptorT>(value); }
+    template<typename ServiceDescriptorT = MultiplexProgramServiceDescriptor>
+    MultiplexProgramSettings& WithServiceDescriptor(ServiceDescriptorT&& value) { SetServiceDescriptor(std::forward<ServiceDescriptorT>(value)); return *this;}
+    ///@}
 
-    /**
-     * Transport stream service descriptor configuration for the Multiplex program.
-     */
-    inline void SetServiceDescriptor(const MultiplexProgramServiceDescriptor& value) { m_serviceDescriptorHasBeenSet = true; m_serviceDescriptor = value; }
-
-    /**
-     * Transport stream service descriptor configuration for the Multiplex program.
-     */
-    inline void SetServiceDescriptor(MultiplexProgramServiceDescriptor&& value) { m_serviceDescriptorHasBeenSet = true; m_serviceDescriptor = std::move(value); }
-
-    /**
-     * Transport stream service descriptor configuration for the Multiplex program.
-     */
-    inline MultiplexProgramSettings& WithServiceDescriptor(const MultiplexProgramServiceDescriptor& value) { SetServiceDescriptor(value); return *this;}
-
-    /**
-     * Transport stream service descriptor configuration for the Multiplex program.
-     */
-    inline MultiplexProgramSettings& WithServiceDescriptor(MultiplexProgramServiceDescriptor&& value) { SetServiceDescriptor(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * Program video settings configuration.
      */
-    inline const MultiplexVideoSettings& GetVideoSettings() const{ return m_videoSettings; }
-
-    /**
-     * Program video settings configuration.
-     */
+    inline const MultiplexVideoSettings& GetVideoSettings() const { return m_videoSettings; }
     inline bool VideoSettingsHasBeenSet() const { return m_videoSettingsHasBeenSet; }
-
-    /**
-     * Program video settings configuration.
-     */
-    inline void SetVideoSettings(const MultiplexVideoSettings& value) { m_videoSettingsHasBeenSet = true; m_videoSettings = value; }
-
-    /**
-     * Program video settings configuration.
-     */
-    inline void SetVideoSettings(MultiplexVideoSettings&& value) { m_videoSettingsHasBeenSet = true; m_videoSettings = std::move(value); }
-
-    /**
-     * Program video settings configuration.
-     */
-    inline MultiplexProgramSettings& WithVideoSettings(const MultiplexVideoSettings& value) { SetVideoSettings(value); return *this;}
-
-    /**
-     * Program video settings configuration.
-     */
-    inline MultiplexProgramSettings& WithVideoSettings(MultiplexVideoSettings&& value) { SetVideoSettings(std::move(value)); return *this;}
-
+    template<typename VideoSettingsT = MultiplexVideoSettings>
+    void SetVideoSettings(VideoSettingsT&& value) { m_videoSettingsHasBeenSet = true; m_videoSettings = std::forward<VideoSettingsT>(value); }
+    template<typename VideoSettingsT = MultiplexVideoSettings>
+    MultiplexProgramSettings& WithVideoSettings(VideoSettingsT&& value) { SetVideoSettings(std::forward<VideoSettingsT>(value)); return *this;}
+    ///@}
   private:
 
-    PreferredChannelPipeline m_preferredChannelPipeline;
+    PreferredChannelPipeline m_preferredChannelPipeline{PreferredChannelPipeline::NOT_SET};
     bool m_preferredChannelPipelineHasBeenSet = false;
 
-    int m_programNumber;
+    int m_programNumber{0};
     bool m_programNumberHasBeenSet = false;
 
     MultiplexProgramServiceDescriptor m_serviceDescriptor;

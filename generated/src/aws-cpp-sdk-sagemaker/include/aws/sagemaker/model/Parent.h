@@ -33,93 +33,35 @@ namespace Model
   class Parent
   {
   public:
-    AWS_SAGEMAKER_API Parent();
+    AWS_SAGEMAKER_API Parent() = default;
     AWS_SAGEMAKER_API Parent(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Parent& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the trial.</p>
      */
-    inline const Aws::String& GetTrialName() const{ return m_trialName; }
-
-    /**
-     * <p>The name of the trial.</p>
-     */
+    inline const Aws::String& GetTrialName() const { return m_trialName; }
     inline bool TrialNameHasBeenSet() const { return m_trialNameHasBeenSet; }
+    template<typename TrialNameT = Aws::String>
+    void SetTrialName(TrialNameT&& value) { m_trialNameHasBeenSet = true; m_trialName = std::forward<TrialNameT>(value); }
+    template<typename TrialNameT = Aws::String>
+    Parent& WithTrialName(TrialNameT&& value) { SetTrialName(std::forward<TrialNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the trial.</p>
-     */
-    inline void SetTrialName(const Aws::String& value) { m_trialNameHasBeenSet = true; m_trialName = value; }
-
-    /**
-     * <p>The name of the trial.</p>
-     */
-    inline void SetTrialName(Aws::String&& value) { m_trialNameHasBeenSet = true; m_trialName = std::move(value); }
-
-    /**
-     * <p>The name of the trial.</p>
-     */
-    inline void SetTrialName(const char* value) { m_trialNameHasBeenSet = true; m_trialName.assign(value); }
-
-    /**
-     * <p>The name of the trial.</p>
-     */
-    inline Parent& WithTrialName(const Aws::String& value) { SetTrialName(value); return *this;}
-
-    /**
-     * <p>The name of the trial.</p>
-     */
-    inline Parent& WithTrialName(Aws::String&& value) { SetTrialName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the trial.</p>
-     */
-    inline Parent& WithTrialName(const char* value) { SetTrialName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the experiment.</p>
      */
-    inline const Aws::String& GetExperimentName() const{ return m_experimentName; }
-
-    /**
-     * <p>The name of the experiment.</p>
-     */
+    inline const Aws::String& GetExperimentName() const { return m_experimentName; }
     inline bool ExperimentNameHasBeenSet() const { return m_experimentNameHasBeenSet; }
-
-    /**
-     * <p>The name of the experiment.</p>
-     */
-    inline void SetExperimentName(const Aws::String& value) { m_experimentNameHasBeenSet = true; m_experimentName = value; }
-
-    /**
-     * <p>The name of the experiment.</p>
-     */
-    inline void SetExperimentName(Aws::String&& value) { m_experimentNameHasBeenSet = true; m_experimentName = std::move(value); }
-
-    /**
-     * <p>The name of the experiment.</p>
-     */
-    inline void SetExperimentName(const char* value) { m_experimentNameHasBeenSet = true; m_experimentName.assign(value); }
-
-    /**
-     * <p>The name of the experiment.</p>
-     */
-    inline Parent& WithExperimentName(const Aws::String& value) { SetExperimentName(value); return *this;}
-
-    /**
-     * <p>The name of the experiment.</p>
-     */
-    inline Parent& WithExperimentName(Aws::String&& value) { SetExperimentName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the experiment.</p>
-     */
-    inline Parent& WithExperimentName(const char* value) { SetExperimentName(value); return *this;}
-
+    template<typename ExperimentNameT = Aws::String>
+    void SetExperimentName(ExperimentNameT&& value) { m_experimentNameHasBeenSet = true; m_experimentName = std::forward<ExperimentNameT>(value); }
+    template<typename ExperimentNameT = Aws::String>
+    Parent& WithExperimentName(ExperimentNameT&& value) { SetExperimentName(std::forward<ExperimentNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_trialName;

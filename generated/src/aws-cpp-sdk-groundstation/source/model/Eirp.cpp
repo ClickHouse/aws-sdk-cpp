@@ -18,19 +18,7 @@ namespace GroundStation
 namespace Model
 {
 
-Eirp::Eirp() : 
-    m_units(EirpUnits::NOT_SET),
-    m_unitsHasBeenSet(false),
-    m_value(0.0),
-    m_valueHasBeenSet(false)
-{
-}
-
-Eirp::Eirp(JsonView jsonValue) : 
-    m_units(EirpUnits::NOT_SET),
-    m_unitsHasBeenSet(false),
-    m_value(0.0),
-    m_valueHasBeenSet(false)
+Eirp::Eirp(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ Eirp& Eirp::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("units"))
   {
     m_units = EirpUnitsMapper::GetEirpUnitsForName(jsonValue.GetString("units"));
-
     m_unitsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("value"))
   {
     m_value = jsonValue.GetDouble("value");
-
     m_valueHasBeenSet = true;
   }
-
   return *this;
 }
 

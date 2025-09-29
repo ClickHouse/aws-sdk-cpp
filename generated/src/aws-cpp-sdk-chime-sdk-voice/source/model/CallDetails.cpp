@@ -18,19 +18,7 @@ namespace ChimeSDKVoice
 namespace Model
 {
 
-CallDetails::CallDetails() : 
-    m_voiceConnectorIdHasBeenSet(false),
-    m_transactionIdHasBeenSet(false),
-    m_isCaller(false),
-    m_isCallerHasBeenSet(false)
-{
-}
-
-CallDetails::CallDetails(JsonView jsonValue) : 
-    m_voiceConnectorIdHasBeenSet(false),
-    m_transactionIdHasBeenSet(false),
-    m_isCaller(false),
-    m_isCallerHasBeenSet(false)
+CallDetails::CallDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ CallDetails& CallDetails::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("VoiceConnectorId"))
   {
     m_voiceConnectorId = jsonValue.GetString("VoiceConnectorId");
-
     m_voiceConnectorIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TransactionId"))
   {
     m_transactionId = jsonValue.GetString("TransactionId");
-
     m_transactionIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("IsCaller"))
   {
     m_isCaller = jsonValue.GetBool("IsCaller");
-
     m_isCallerHasBeenSet = true;
   }
-
   return *this;
 }
 

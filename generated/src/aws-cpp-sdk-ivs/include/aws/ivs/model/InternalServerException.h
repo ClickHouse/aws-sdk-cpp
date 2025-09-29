@@ -31,52 +31,23 @@ namespace Model
   class InternalServerException
   {
   public:
-    AWS_IVS_API InternalServerException();
+    AWS_IVS_API InternalServerException() = default;
     AWS_IVS_API InternalServerException(Aws::Utils::Json::JsonView jsonValue);
     AWS_IVS_API InternalServerException& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IVS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Unexpected error during processing of request.</p>
      */
-    inline const Aws::String& GetExceptionMessage() const{ return m_exceptionMessage; }
-
-    /**
-     * <p>Unexpected error during processing of request.</p>
-     */
+    inline const Aws::String& GetExceptionMessage() const { return m_exceptionMessage; }
     inline bool ExceptionMessageHasBeenSet() const { return m_exceptionMessageHasBeenSet; }
-
-    /**
-     * <p>Unexpected error during processing of request.</p>
-     */
-    inline void SetExceptionMessage(const Aws::String& value) { m_exceptionMessageHasBeenSet = true; m_exceptionMessage = value; }
-
-    /**
-     * <p>Unexpected error during processing of request.</p>
-     */
-    inline void SetExceptionMessage(Aws::String&& value) { m_exceptionMessageHasBeenSet = true; m_exceptionMessage = std::move(value); }
-
-    /**
-     * <p>Unexpected error during processing of request.</p>
-     */
-    inline void SetExceptionMessage(const char* value) { m_exceptionMessageHasBeenSet = true; m_exceptionMessage.assign(value); }
-
-    /**
-     * <p>Unexpected error during processing of request.</p>
-     */
-    inline InternalServerException& WithExceptionMessage(const Aws::String& value) { SetExceptionMessage(value); return *this;}
-
-    /**
-     * <p>Unexpected error during processing of request.</p>
-     */
-    inline InternalServerException& WithExceptionMessage(Aws::String&& value) { SetExceptionMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>Unexpected error during processing of request.</p>
-     */
-    inline InternalServerException& WithExceptionMessage(const char* value) { SetExceptionMessage(value); return *this;}
-
+    template<typename ExceptionMessageT = Aws::String>
+    void SetExceptionMessage(ExceptionMessageT&& value) { m_exceptionMessageHasBeenSet = true; m_exceptionMessage = std::forward<ExceptionMessageT>(value); }
+    template<typename ExceptionMessageT = Aws::String>
+    InternalServerException& WithExceptionMessage(ExceptionMessageT&& value) { SetExceptionMessage(std::forward<ExceptionMessageT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_exceptionMessage;

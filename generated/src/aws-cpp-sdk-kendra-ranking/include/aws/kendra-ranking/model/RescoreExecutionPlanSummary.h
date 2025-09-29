@@ -35,192 +35,70 @@ namespace Model
   class RescoreExecutionPlanSummary
   {
   public:
-    AWS_KENDRARANKING_API RescoreExecutionPlanSummary();
+    AWS_KENDRARANKING_API RescoreExecutionPlanSummary() = default;
     AWS_KENDRARANKING_API RescoreExecutionPlanSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_KENDRARANKING_API RescoreExecutionPlanSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KENDRARANKING_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the rescore execution plan.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the rescore execution plan.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    RescoreExecutionPlanSummary& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the rescore execution plan.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the rescore execution plan.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the rescore execution plan.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the rescore execution plan.</p>
-     */
-    inline RescoreExecutionPlanSummary& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the rescore execution plan.</p>
-     */
-    inline RescoreExecutionPlanSummary& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the rescore execution plan.</p>
-     */
-    inline RescoreExecutionPlanSummary& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the rescore execution plan.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The identifier of the rescore execution plan.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    RescoreExecutionPlanSummary& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the rescore execution plan.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The identifier of the rescore execution plan.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The identifier of the rescore execution plan.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The identifier of the rescore execution plan.</p>
-     */
-    inline RescoreExecutionPlanSummary& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The identifier of the rescore execution plan.</p>
-     */
-    inline RescoreExecutionPlanSummary& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the rescore execution plan.</p>
-     */
-    inline RescoreExecutionPlanSummary& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Unix timestamp when the rescore execution plan was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedAt() const{ return m_createdAt; }
-
-    /**
-     * <p>The Unix timestamp when the rescore execution plan was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedAt() const { return m_createdAt; }
     inline bool CreatedAtHasBeenSet() const { return m_createdAtHasBeenSet; }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    void SetCreatedAt(CreatedAtT&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::forward<CreatedAtT>(value); }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    RescoreExecutionPlanSummary& WithCreatedAt(CreatedAtT&& value) { SetCreatedAt(std::forward<CreatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Unix timestamp when the rescore execution plan was created.</p>
-     */
-    inline void SetCreatedAt(const Aws::Utils::DateTime& value) { m_createdAtHasBeenSet = true; m_createdAt = value; }
-
-    /**
-     * <p>The Unix timestamp when the rescore execution plan was created.</p>
-     */
-    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::move(value); }
-
-    /**
-     * <p>The Unix timestamp when the rescore execution plan was created.</p>
-     */
-    inline RescoreExecutionPlanSummary& WithCreatedAt(const Aws::Utils::DateTime& value) { SetCreatedAt(value); return *this;}
-
-    /**
-     * <p>The Unix timestamp when the rescore execution plan was created.</p>
-     */
-    inline RescoreExecutionPlanSummary& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Unix timestamp when the rescore execution plan was last updated.</p>
      */
-    inline const Aws::Utils::DateTime& GetUpdatedAt() const{ return m_updatedAt; }
-
-    /**
-     * <p>The Unix timestamp when the rescore execution plan was last updated.</p>
-     */
+    inline const Aws::Utils::DateTime& GetUpdatedAt() const { return m_updatedAt; }
     inline bool UpdatedAtHasBeenSet() const { return m_updatedAtHasBeenSet; }
+    template<typename UpdatedAtT = Aws::Utils::DateTime>
+    void SetUpdatedAt(UpdatedAtT&& value) { m_updatedAtHasBeenSet = true; m_updatedAt = std::forward<UpdatedAtT>(value); }
+    template<typename UpdatedAtT = Aws::Utils::DateTime>
+    RescoreExecutionPlanSummary& WithUpdatedAt(UpdatedAtT&& value) { SetUpdatedAt(std::forward<UpdatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Unix timestamp when the rescore execution plan was last updated.</p>
-     */
-    inline void SetUpdatedAt(const Aws::Utils::DateTime& value) { m_updatedAtHasBeenSet = true; m_updatedAt = value; }
-
-    /**
-     * <p>The Unix timestamp when the rescore execution plan was last updated.</p>
-     */
-    inline void SetUpdatedAt(Aws::Utils::DateTime&& value) { m_updatedAtHasBeenSet = true; m_updatedAt = std::move(value); }
-
-    /**
-     * <p>The Unix timestamp when the rescore execution plan was last updated.</p>
-     */
-    inline RescoreExecutionPlanSummary& WithUpdatedAt(const Aws::Utils::DateTime& value) { SetUpdatedAt(value); return *this;}
-
-    /**
-     * <p>The Unix timestamp when the rescore execution plan was last updated.</p>
-     */
-    inline RescoreExecutionPlanSummary& WithUpdatedAt(Aws::Utils::DateTime&& value) { SetUpdatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The current status of the rescore execution plan. When the value is
      * <code>ACTIVE</code>, the rescore execution plan is ready for use.</p>
      */
-    inline const RescoreExecutionPlanStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The current status of the rescore execution plan. When the value is
-     * <code>ACTIVE</code>, the rescore execution plan is ready for use.</p>
-     */
+    inline RescoreExecutionPlanStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p>The current status of the rescore execution plan. When the value is
-     * <code>ACTIVE</code>, the rescore execution plan is ready for use.</p>
-     */
-    inline void SetStatus(const RescoreExecutionPlanStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The current status of the rescore execution plan. When the value is
-     * <code>ACTIVE</code>, the rescore execution plan is ready for use.</p>
-     */
-    inline void SetStatus(RescoreExecutionPlanStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The current status of the rescore execution plan. When the value is
-     * <code>ACTIVE</code>, the rescore execution plan is ready for use.</p>
-     */
-    inline RescoreExecutionPlanSummary& WithStatus(const RescoreExecutionPlanStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The current status of the rescore execution plan. When the value is
-     * <code>ACTIVE</code>, the rescore execution plan is ready for use.</p>
-     */
-    inline RescoreExecutionPlanSummary& WithStatus(RescoreExecutionPlanStatus&& value) { SetStatus(std::move(value)); return *this;}
-
+    inline void SetStatus(RescoreExecutionPlanStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline RescoreExecutionPlanSummary& WithStatus(RescoreExecutionPlanStatus value) { SetStatus(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;
@@ -229,13 +107,13 @@ namespace Model
     Aws::String m_id;
     bool m_idHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdAt;
+    Aws::Utils::DateTime m_createdAt{};
     bool m_createdAtHasBeenSet = false;
 
-    Aws::Utils::DateTime m_updatedAt;
+    Aws::Utils::DateTime m_updatedAt{};
     bool m_updatedAtHasBeenSet = false;
 
-    RescoreExecutionPlanStatus m_status;
+    RescoreExecutionPlanStatus m_status{RescoreExecutionPlanStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
   };
 

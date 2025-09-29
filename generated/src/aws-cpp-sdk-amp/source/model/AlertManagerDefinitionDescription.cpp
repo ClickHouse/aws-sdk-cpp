@@ -19,19 +19,7 @@ namespace PrometheusService
 namespace Model
 {
 
-AlertManagerDefinitionDescription::AlertManagerDefinitionDescription() : 
-    m_statusHasBeenSet(false),
-    m_dataHasBeenSet(false),
-    m_createdAtHasBeenSet(false),
-    m_modifiedAtHasBeenSet(false)
-{
-}
-
-AlertManagerDefinitionDescription::AlertManagerDefinitionDescription(JsonView jsonValue) : 
-    m_statusHasBeenSet(false),
-    m_dataHasBeenSet(false),
-    m_createdAtHasBeenSet(false),
-    m_modifiedAtHasBeenSet(false)
+AlertManagerDefinitionDescription::AlertManagerDefinitionDescription(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -41,30 +29,23 @@ AlertManagerDefinitionDescription& AlertManagerDefinitionDescription::operator =
   if(jsonValue.ValueExists("status"))
   {
     m_status = jsonValue.GetObject("status");
-
     m_statusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("data"))
   {
     m_data = HashingUtils::Base64Decode(jsonValue.GetString("data"));
     m_dataHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("createdAt"))
   {
     m_createdAt = jsonValue.GetDouble("createdAt");
-
     m_createdAtHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("modifiedAt"))
   {
     m_modifiedAt = jsonValue.GetDouble("modifiedAt");
-
     m_modifiedAtHasBeenSet = true;
   }
-
   return *this;
 }
 

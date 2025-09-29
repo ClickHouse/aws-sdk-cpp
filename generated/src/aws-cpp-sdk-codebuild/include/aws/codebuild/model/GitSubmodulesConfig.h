@@ -30,35 +30,24 @@ namespace Model
   class GitSubmodulesConfig
   {
   public:
-    AWS_CODEBUILD_API GitSubmodulesConfig();
+    AWS_CODEBUILD_API GitSubmodulesConfig() = default;
     AWS_CODEBUILD_API GitSubmodulesConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEBUILD_API GitSubmodulesConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEBUILD_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> Set to true to fetch Git submodules for your CodeBuild build project. </p>
      */
-    inline bool GetFetchSubmodules() const{ return m_fetchSubmodules; }
-
-    /**
-     * <p> Set to true to fetch Git submodules for your CodeBuild build project. </p>
-     */
+    inline bool GetFetchSubmodules() const { return m_fetchSubmodules; }
     inline bool FetchSubmodulesHasBeenSet() const { return m_fetchSubmodulesHasBeenSet; }
-
-    /**
-     * <p> Set to true to fetch Git submodules for your CodeBuild build project. </p>
-     */
     inline void SetFetchSubmodules(bool value) { m_fetchSubmodulesHasBeenSet = true; m_fetchSubmodules = value; }
-
-    /**
-     * <p> Set to true to fetch Git submodules for your CodeBuild build project. </p>
-     */
     inline GitSubmodulesConfig& WithFetchSubmodules(bool value) { SetFetchSubmodules(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_fetchSubmodules;
+    bool m_fetchSubmodules{false};
     bool m_fetchSubmodulesHasBeenSet = false;
   };
 

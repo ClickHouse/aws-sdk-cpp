@@ -31,57 +31,26 @@ namespace Model
   class ThumbnailConfiguration
   {
   public:
-    AWS_MEDIALIVE_API ThumbnailConfiguration();
+    AWS_MEDIALIVE_API ThumbnailConfiguration() = default;
     AWS_MEDIALIVE_API ThumbnailConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API ThumbnailConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * Enables the thumbnail feature. The feature generates thumbnails of the incoming
      * video in each pipeline in the channel. AUTO turns the feature on, DISABLE turns
      * the feature off.
      */
-    inline const ThumbnailState& GetState() const{ return m_state; }
-
-    /**
-     * Enables the thumbnail feature. The feature generates thumbnails of the incoming
-     * video in each pipeline in the channel. AUTO turns the feature on, DISABLE turns
-     * the feature off.
-     */
+    inline ThumbnailState GetState() const { return m_state; }
     inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
-
-    /**
-     * Enables the thumbnail feature. The feature generates thumbnails of the incoming
-     * video in each pipeline in the channel. AUTO turns the feature on, DISABLE turns
-     * the feature off.
-     */
-    inline void SetState(const ThumbnailState& value) { m_stateHasBeenSet = true; m_state = value; }
-
-    /**
-     * Enables the thumbnail feature. The feature generates thumbnails of the incoming
-     * video in each pipeline in the channel. AUTO turns the feature on, DISABLE turns
-     * the feature off.
-     */
-    inline void SetState(ThumbnailState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
-
-    /**
-     * Enables the thumbnail feature. The feature generates thumbnails of the incoming
-     * video in each pipeline in the channel. AUTO turns the feature on, DISABLE turns
-     * the feature off.
-     */
-    inline ThumbnailConfiguration& WithState(const ThumbnailState& value) { SetState(value); return *this;}
-
-    /**
-     * Enables the thumbnail feature. The feature generates thumbnails of the incoming
-     * video in each pipeline in the channel. AUTO turns the feature on, DISABLE turns
-     * the feature off.
-     */
-    inline ThumbnailConfiguration& WithState(ThumbnailState&& value) { SetState(std::move(value)); return *this;}
-
+    inline void SetState(ThumbnailState value) { m_stateHasBeenSet = true; m_state = value; }
+    inline ThumbnailConfiguration& WithState(ThumbnailState value) { SetState(value); return *this;}
+    ///@}
   private:
 
-    ThumbnailState m_state;
+    ThumbnailState m_state{ThumbnailState::NOT_SET};
     bool m_stateHasBeenSet = false;
   };
 

@@ -18,25 +18,7 @@ namespace TimestreamQuery
 namespace Model
 {
 
-ScheduledQueryRunSummary::ScheduledQueryRunSummary() : 
-    m_invocationTimeHasBeenSet(false),
-    m_triggerTimeHasBeenSet(false),
-    m_runStatus(ScheduledQueryRunStatus::NOT_SET),
-    m_runStatusHasBeenSet(false),
-    m_executionStatsHasBeenSet(false),
-    m_errorReportLocationHasBeenSet(false),
-    m_failureReasonHasBeenSet(false)
-{
-}
-
-ScheduledQueryRunSummary::ScheduledQueryRunSummary(JsonView jsonValue) : 
-    m_invocationTimeHasBeenSet(false),
-    m_triggerTimeHasBeenSet(false),
-    m_runStatus(ScheduledQueryRunStatus::NOT_SET),
-    m_runStatusHasBeenSet(false),
-    m_executionStatsHasBeenSet(false),
-    m_errorReportLocationHasBeenSet(false),
-    m_failureReasonHasBeenSet(false)
+ScheduledQueryRunSummary::ScheduledQueryRunSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,45 +28,38 @@ ScheduledQueryRunSummary& ScheduledQueryRunSummary::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("InvocationTime"))
   {
     m_invocationTime = jsonValue.GetDouble("InvocationTime");
-
     m_invocationTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TriggerTime"))
   {
     m_triggerTime = jsonValue.GetDouble("TriggerTime");
-
     m_triggerTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RunStatus"))
   {
     m_runStatus = ScheduledQueryRunStatusMapper::GetScheduledQueryRunStatusForName(jsonValue.GetString("RunStatus"));
-
     m_runStatusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ExecutionStats"))
   {
     m_executionStats = jsonValue.GetObject("ExecutionStats");
-
     m_executionStatsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("QueryInsightsResponse"))
+  {
+    m_queryInsightsResponse = jsonValue.GetObject("QueryInsightsResponse");
+    m_queryInsightsResponseHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("ErrorReportLocation"))
   {
     m_errorReportLocation = jsonValue.GetObject("ErrorReportLocation");
-
     m_errorReportLocationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FailureReason"))
   {
     m_failureReason = jsonValue.GetString("FailureReason");
-
     m_failureReasonHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -110,6 +85,12 @@ JsonValue ScheduledQueryRunSummary::Jsonize() const
   if(m_executionStatsHasBeenSet)
   {
    payload.WithObject("ExecutionStats", m_executionStats.Jsonize());
+
+  }
+
+  if(m_queryInsightsResponseHasBeenSet)
+  {
+   payload.WithObject("QueryInsightsResponse", m_queryInsightsResponse.Jsonize());
 
   }
 

@@ -32,45 +32,24 @@ namespace Model
   class ArcOptions
   {
   public:
-    AWS_QUICKSIGHT_API ArcOptions();
+    AWS_QUICKSIGHT_API ArcOptions() = default;
     AWS_QUICKSIGHT_API ArcOptions(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API ArcOptions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The arc thickness of a <code>GaugeChartVisual</code>.</p>
      */
-    inline const ArcThickness& GetArcThickness() const{ return m_arcThickness; }
-
-    /**
-     * <p>The arc thickness of a <code>GaugeChartVisual</code>.</p>
-     */
+    inline ArcThickness GetArcThickness() const { return m_arcThickness; }
     inline bool ArcThicknessHasBeenSet() const { return m_arcThicknessHasBeenSet; }
-
-    /**
-     * <p>The arc thickness of a <code>GaugeChartVisual</code>.</p>
-     */
-    inline void SetArcThickness(const ArcThickness& value) { m_arcThicknessHasBeenSet = true; m_arcThickness = value; }
-
-    /**
-     * <p>The arc thickness of a <code>GaugeChartVisual</code>.</p>
-     */
-    inline void SetArcThickness(ArcThickness&& value) { m_arcThicknessHasBeenSet = true; m_arcThickness = std::move(value); }
-
-    /**
-     * <p>The arc thickness of a <code>GaugeChartVisual</code>.</p>
-     */
-    inline ArcOptions& WithArcThickness(const ArcThickness& value) { SetArcThickness(value); return *this;}
-
-    /**
-     * <p>The arc thickness of a <code>GaugeChartVisual</code>.</p>
-     */
-    inline ArcOptions& WithArcThickness(ArcThickness&& value) { SetArcThickness(std::move(value)); return *this;}
-
+    inline void SetArcThickness(ArcThickness value) { m_arcThicknessHasBeenSet = true; m_arcThickness = value; }
+    inline ArcOptions& WithArcThickness(ArcThickness value) { SetArcThickness(value); return *this;}
+    ///@}
   private:
 
-    ArcThickness m_arcThickness;
+    ArcThickness m_arcThickness{ArcThickness::NOT_SET};
     bool m_arcThicknessHasBeenSet = false;
   };
 

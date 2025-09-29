@@ -10,12 +10,6 @@
 using namespace Aws::SNS::Model;
 using namespace Aws::Utils;
 
-PublishBatchRequest::PublishBatchRequest() : 
-    m_topicArnHasBeenSet(false),
-    m_publishBatchRequestEntriesHasBeenSet(false)
-{
-}
-
 Aws::String PublishBatchRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -27,11 +21,18 @@ Aws::String PublishBatchRequest::SerializePayload() const
 
   if(m_publishBatchRequestEntriesHasBeenSet)
   {
-    unsigned publishBatchRequestEntriesCount = 1;
-    for(auto& item : m_publishBatchRequestEntries)
+    if (m_publishBatchRequestEntries.empty())
     {
-      item.OutputToStream(ss, "PublishBatchRequestEntries.member.", publishBatchRequestEntriesCount, "");
-      publishBatchRequestEntriesCount++;
+      ss << "PublishBatchRequestEntries=&";
+    }
+    else
+    {
+      unsigned publishBatchRequestEntriesCount = 1;
+      for(auto& item : m_publishBatchRequestEntries)
+      {
+        item.OutputToStream(ss, "PublishBatchRequestEntries.member.", publishBatchRequestEntriesCount, "");
+        publishBatchRequestEntriesCount++;
+      }
     }
   }
 

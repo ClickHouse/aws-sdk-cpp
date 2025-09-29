@@ -40,117 +40,41 @@ namespace Model
   class CodeReviewType
   {
   public:
-    AWS_CODEGURUREVIEWER_API CodeReviewType();
+    AWS_CODEGURUREVIEWER_API CodeReviewType() = default;
     AWS_CODEGURUREVIEWER_API CodeReviewType(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEGURUREVIEWER_API CodeReviewType& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEGURUREVIEWER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A code review that analyzes all code under a specified branch in an
      * associated repository. The associated repository is specified using its ARN in
      * <a
      * href="https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_CreateCodeReview">CreateCodeReview</a>.</p>
      */
-    inline const RepositoryAnalysis& GetRepositoryAnalysis() const{ return m_repositoryAnalysis; }
-
-    /**
-     * <p>A code review that analyzes all code under a specified branch in an
-     * associated repository. The associated repository is specified using its ARN in
-     * <a
-     * href="https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_CreateCodeReview">CreateCodeReview</a>.</p>
-     */
+    inline const RepositoryAnalysis& GetRepositoryAnalysis() const { return m_repositoryAnalysis; }
     inline bool RepositoryAnalysisHasBeenSet() const { return m_repositoryAnalysisHasBeenSet; }
+    template<typename RepositoryAnalysisT = RepositoryAnalysis>
+    void SetRepositoryAnalysis(RepositoryAnalysisT&& value) { m_repositoryAnalysisHasBeenSet = true; m_repositoryAnalysis = std::forward<RepositoryAnalysisT>(value); }
+    template<typename RepositoryAnalysisT = RepositoryAnalysis>
+    CodeReviewType& WithRepositoryAnalysis(RepositoryAnalysisT&& value) { SetRepositoryAnalysis(std::forward<RepositoryAnalysisT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A code review that analyzes all code under a specified branch in an
-     * associated repository. The associated repository is specified using its ARN in
-     * <a
-     * href="https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_CreateCodeReview">CreateCodeReview</a>.</p>
-     */
-    inline void SetRepositoryAnalysis(const RepositoryAnalysis& value) { m_repositoryAnalysisHasBeenSet = true; m_repositoryAnalysis = value; }
-
-    /**
-     * <p>A code review that analyzes all code under a specified branch in an
-     * associated repository. The associated repository is specified using its ARN in
-     * <a
-     * href="https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_CreateCodeReview">CreateCodeReview</a>.</p>
-     */
-    inline void SetRepositoryAnalysis(RepositoryAnalysis&& value) { m_repositoryAnalysisHasBeenSet = true; m_repositoryAnalysis = std::move(value); }
-
-    /**
-     * <p>A code review that analyzes all code under a specified branch in an
-     * associated repository. The associated repository is specified using its ARN in
-     * <a
-     * href="https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_CreateCodeReview">CreateCodeReview</a>.</p>
-     */
-    inline CodeReviewType& WithRepositoryAnalysis(const RepositoryAnalysis& value) { SetRepositoryAnalysis(value); return *this;}
-
-    /**
-     * <p>A code review that analyzes all code under a specified branch in an
-     * associated repository. The associated repository is specified using its ARN in
-     * <a
-     * href="https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_CreateCodeReview">CreateCodeReview</a>.</p>
-     */
-    inline CodeReviewType& WithRepositoryAnalysis(RepositoryAnalysis&& value) { SetRepositoryAnalysis(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>They types of analysis performed during a repository analysis or a pull
      * request review. You can specify either <code>Security</code>,
      * <code>CodeQuality</code>, or both.</p>
      */
-    inline const Aws::Vector<AnalysisType>& GetAnalysisTypes() const{ return m_analysisTypes; }
-
-    /**
-     * <p>They types of analysis performed during a repository analysis or a pull
-     * request review. You can specify either <code>Security</code>,
-     * <code>CodeQuality</code>, or both.</p>
-     */
+    inline const Aws::Vector<AnalysisType>& GetAnalysisTypes() const { return m_analysisTypes; }
     inline bool AnalysisTypesHasBeenSet() const { return m_analysisTypesHasBeenSet; }
-
-    /**
-     * <p>They types of analysis performed during a repository analysis or a pull
-     * request review. You can specify either <code>Security</code>,
-     * <code>CodeQuality</code>, or both.</p>
-     */
-    inline void SetAnalysisTypes(const Aws::Vector<AnalysisType>& value) { m_analysisTypesHasBeenSet = true; m_analysisTypes = value; }
-
-    /**
-     * <p>They types of analysis performed during a repository analysis or a pull
-     * request review. You can specify either <code>Security</code>,
-     * <code>CodeQuality</code>, or both.</p>
-     */
-    inline void SetAnalysisTypes(Aws::Vector<AnalysisType>&& value) { m_analysisTypesHasBeenSet = true; m_analysisTypes = std::move(value); }
-
-    /**
-     * <p>They types of analysis performed during a repository analysis or a pull
-     * request review. You can specify either <code>Security</code>,
-     * <code>CodeQuality</code>, or both.</p>
-     */
-    inline CodeReviewType& WithAnalysisTypes(const Aws::Vector<AnalysisType>& value) { SetAnalysisTypes(value); return *this;}
-
-    /**
-     * <p>They types of analysis performed during a repository analysis or a pull
-     * request review. You can specify either <code>Security</code>,
-     * <code>CodeQuality</code>, or both.</p>
-     */
-    inline CodeReviewType& WithAnalysisTypes(Aws::Vector<AnalysisType>&& value) { SetAnalysisTypes(std::move(value)); return *this;}
-
-    /**
-     * <p>They types of analysis performed during a repository analysis or a pull
-     * request review. You can specify either <code>Security</code>,
-     * <code>CodeQuality</code>, or both.</p>
-     */
-    inline CodeReviewType& AddAnalysisTypes(const AnalysisType& value) { m_analysisTypesHasBeenSet = true; m_analysisTypes.push_back(value); return *this; }
-
-    /**
-     * <p>They types of analysis performed during a repository analysis or a pull
-     * request review. You can specify either <code>Security</code>,
-     * <code>CodeQuality</code>, or both.</p>
-     */
-    inline CodeReviewType& AddAnalysisTypes(AnalysisType&& value) { m_analysisTypesHasBeenSet = true; m_analysisTypes.push_back(std::move(value)); return *this; }
-
+    template<typename AnalysisTypesT = Aws::Vector<AnalysisType>>
+    void SetAnalysisTypes(AnalysisTypesT&& value) { m_analysisTypesHasBeenSet = true; m_analysisTypes = std::forward<AnalysisTypesT>(value); }
+    template<typename AnalysisTypesT = Aws::Vector<AnalysisType>>
+    CodeReviewType& WithAnalysisTypes(AnalysisTypesT&& value) { SetAnalysisTypes(std::forward<AnalysisTypesT>(value)); return *this;}
+    inline CodeReviewType& AddAnalysisTypes(AnalysisType value) { m_analysisTypesHasBeenSet = true; m_analysisTypes.push_back(value); return *this; }
+    ///@}
   private:
 
     RepositoryAnalysis m_repositoryAnalysis;

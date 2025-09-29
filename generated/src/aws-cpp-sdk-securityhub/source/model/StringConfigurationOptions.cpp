@@ -18,17 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-StringConfigurationOptions::StringConfigurationOptions() : 
-    m_defaultValueHasBeenSet(false),
-    m_re2ExpressionHasBeenSet(false),
-    m_expressionDescriptionHasBeenSet(false)
-{
-}
-
-StringConfigurationOptions::StringConfigurationOptions(JsonView jsonValue) : 
-    m_defaultValueHasBeenSet(false),
-    m_re2ExpressionHasBeenSet(false),
-    m_expressionDescriptionHasBeenSet(false)
+StringConfigurationOptions::StringConfigurationOptions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ StringConfigurationOptions& StringConfigurationOptions::operator =(JsonView json
   if(jsonValue.ValueExists("DefaultValue"))
   {
     m_defaultValue = jsonValue.GetString("DefaultValue");
-
     m_defaultValueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Re2Expression"))
   {
     m_re2Expression = jsonValue.GetString("Re2Expression");
-
     m_re2ExpressionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ExpressionDescription"))
   {
     m_expressionDescription = jsonValue.GetString("ExpressionDescription");
-
     m_expressionDescriptionHasBeenSet = true;
   }
-
   return *this;
 }
 

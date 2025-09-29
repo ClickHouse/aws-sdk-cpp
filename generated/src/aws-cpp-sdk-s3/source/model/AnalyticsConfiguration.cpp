@@ -20,17 +20,7 @@ namespace S3
 namespace Model
 {
 
-AnalyticsConfiguration::AnalyticsConfiguration() : 
-    m_idHasBeenSet(false),
-    m_filterHasBeenSet(false),
-    m_storageClassAnalysisHasBeenSet(false)
-{
-}
-
-AnalyticsConfiguration::AnalyticsConfiguration(const XmlNode& xmlNode) : 
-    m_idHasBeenSet(false),
-    m_filterHasBeenSet(false),
-    m_storageClassAnalysisHasBeenSet(false)
+AnalyticsConfiguration::AnalyticsConfiguration(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

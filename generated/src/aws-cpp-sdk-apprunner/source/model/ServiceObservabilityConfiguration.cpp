@@ -18,17 +18,7 @@ namespace AppRunner
 namespace Model
 {
 
-ServiceObservabilityConfiguration::ServiceObservabilityConfiguration() : 
-    m_observabilityEnabled(false),
-    m_observabilityEnabledHasBeenSet(false),
-    m_observabilityConfigurationArnHasBeenSet(false)
-{
-}
-
-ServiceObservabilityConfiguration::ServiceObservabilityConfiguration(JsonView jsonValue) : 
-    m_observabilityEnabled(false),
-    m_observabilityEnabledHasBeenSet(false),
-    m_observabilityConfigurationArnHasBeenSet(false)
+ServiceObservabilityConfiguration::ServiceObservabilityConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ServiceObservabilityConfiguration& ServiceObservabilityConfiguration::operator =
   if(jsonValue.ValueExists("ObservabilityEnabled"))
   {
     m_observabilityEnabled = jsonValue.GetBool("ObservabilityEnabled");
-
     m_observabilityEnabledHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ObservabilityConfigurationArn"))
   {
     m_observabilityConfigurationArn = jsonValue.GetString("ObservabilityConfigurationArn");
-
     m_observabilityConfigurationArnHasBeenSet = true;
   }
-
   return *this;
 }
 

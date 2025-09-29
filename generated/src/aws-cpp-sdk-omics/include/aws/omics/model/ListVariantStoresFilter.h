@@ -31,45 +31,24 @@ namespace Model
   class ListVariantStoresFilter
   {
   public:
-    AWS_OMICS_API ListVariantStoresFilter();
+    AWS_OMICS_API ListVariantStoresFilter() = default;
     AWS_OMICS_API ListVariantStoresFilter(Aws::Utils::Json::JsonView jsonValue);
     AWS_OMICS_API ListVariantStoresFilter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_OMICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A status to filter on.</p>
      */
-    inline const StoreStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>A status to filter on.</p>
-     */
+    inline StoreStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p>A status to filter on.</p>
-     */
-    inline void SetStatus(const StoreStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>A status to filter on.</p>
-     */
-    inline void SetStatus(StoreStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>A status to filter on.</p>
-     */
-    inline ListVariantStoresFilter& WithStatus(const StoreStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>A status to filter on.</p>
-     */
-    inline ListVariantStoresFilter& WithStatus(StoreStatus&& value) { SetStatus(std::move(value)); return *this;}
-
+    inline void SetStatus(StoreStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline ListVariantStoresFilter& WithStatus(StoreStatus value) { SetStatus(value); return *this;}
+    ///@}
   private:
 
-    StoreStatus m_status;
+    StoreStatus m_status{StoreStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
   };
 

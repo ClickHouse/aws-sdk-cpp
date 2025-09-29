@@ -18,17 +18,7 @@ namespace WAF
 namespace Model
 {
 
-RegexPatternSetUpdate::RegexPatternSetUpdate() : 
-    m_action(ChangeAction::NOT_SET),
-    m_actionHasBeenSet(false),
-    m_regexPatternStringHasBeenSet(false)
-{
-}
-
-RegexPatternSetUpdate::RegexPatternSetUpdate(JsonView jsonValue) : 
-    m_action(ChangeAction::NOT_SET),
-    m_actionHasBeenSet(false),
-    m_regexPatternStringHasBeenSet(false)
+RegexPatternSetUpdate::RegexPatternSetUpdate(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ RegexPatternSetUpdate& RegexPatternSetUpdate::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Action"))
   {
     m_action = ChangeActionMapper::GetChangeActionForName(jsonValue.GetString("Action"));
-
     m_actionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RegexPatternString"))
   {
     m_regexPatternString = jsonValue.GetString("RegexPatternString");
-
     m_regexPatternStringHasBeenSet = true;
   }
-
   return *this;
 }
 

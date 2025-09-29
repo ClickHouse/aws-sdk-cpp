@@ -32,52 +32,25 @@ namespace Model
   class InvalidContactFlowException
   {
   public:
-    AWS_CONNECT_API InvalidContactFlowException();
+    AWS_CONNECT_API InvalidContactFlowException() = default;
     AWS_CONNECT_API InvalidContactFlowException(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API InvalidContactFlowException& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The problems with the flow. Please fix before trying again.</p>
      */
-    inline const Aws::Vector<ProblemDetail>& GetProblems() const{ return m_problems; }
-
-    /**
-     * <p>The problems with the flow. Please fix before trying again.</p>
-     */
+    inline const Aws::Vector<ProblemDetail>& GetProblems() const { return m_problems; }
     inline bool ProblemsHasBeenSet() const { return m_problemsHasBeenSet; }
-
-    /**
-     * <p>The problems with the flow. Please fix before trying again.</p>
-     */
-    inline void SetProblems(const Aws::Vector<ProblemDetail>& value) { m_problemsHasBeenSet = true; m_problems = value; }
-
-    /**
-     * <p>The problems with the flow. Please fix before trying again.</p>
-     */
-    inline void SetProblems(Aws::Vector<ProblemDetail>&& value) { m_problemsHasBeenSet = true; m_problems = std::move(value); }
-
-    /**
-     * <p>The problems with the flow. Please fix before trying again.</p>
-     */
-    inline InvalidContactFlowException& WithProblems(const Aws::Vector<ProblemDetail>& value) { SetProblems(value); return *this;}
-
-    /**
-     * <p>The problems with the flow. Please fix before trying again.</p>
-     */
-    inline InvalidContactFlowException& WithProblems(Aws::Vector<ProblemDetail>&& value) { SetProblems(std::move(value)); return *this;}
-
-    /**
-     * <p>The problems with the flow. Please fix before trying again.</p>
-     */
-    inline InvalidContactFlowException& AddProblems(const ProblemDetail& value) { m_problemsHasBeenSet = true; m_problems.push_back(value); return *this; }
-
-    /**
-     * <p>The problems with the flow. Please fix before trying again.</p>
-     */
-    inline InvalidContactFlowException& AddProblems(ProblemDetail&& value) { m_problemsHasBeenSet = true; m_problems.push_back(std::move(value)); return *this; }
-
+    template<typename ProblemsT = Aws::Vector<ProblemDetail>>
+    void SetProblems(ProblemsT&& value) { m_problemsHasBeenSet = true; m_problems = std::forward<ProblemsT>(value); }
+    template<typename ProblemsT = Aws::Vector<ProblemDetail>>
+    InvalidContactFlowException& WithProblems(ProblemsT&& value) { SetProblems(std::forward<ProblemsT>(value)); return *this;}
+    template<typename ProblemsT = ProblemDetail>
+    InvalidContactFlowException& AddProblems(ProblemsT&& value) { m_problemsHasBeenSet = true; m_problems.emplace_back(std::forward<ProblemsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<ProblemDetail> m_problems;

@@ -20,37 +20,7 @@ namespace EC2
 namespace Model
 {
 
-CapacityBlockOffering::CapacityBlockOffering() : 
-    m_capacityBlockOfferingIdHasBeenSet(false),
-    m_instanceTypeHasBeenSet(false),
-    m_availabilityZoneHasBeenSet(false),
-    m_instanceCount(0),
-    m_instanceCountHasBeenSet(false),
-    m_startDateHasBeenSet(false),
-    m_endDateHasBeenSet(false),
-    m_capacityBlockDurationHours(0),
-    m_capacityBlockDurationHoursHasBeenSet(false),
-    m_upfrontFeeHasBeenSet(false),
-    m_currencyCodeHasBeenSet(false),
-    m_tenancy(CapacityReservationTenancy::NOT_SET),
-    m_tenancyHasBeenSet(false)
-{
-}
-
-CapacityBlockOffering::CapacityBlockOffering(const XmlNode& xmlNode) : 
-    m_capacityBlockOfferingIdHasBeenSet(false),
-    m_instanceTypeHasBeenSet(false),
-    m_availabilityZoneHasBeenSet(false),
-    m_instanceCount(0),
-    m_instanceCountHasBeenSet(false),
-    m_startDateHasBeenSet(false),
-    m_endDateHasBeenSet(false),
-    m_capacityBlockDurationHours(0),
-    m_capacityBlockDurationHoursHasBeenSet(false),
-    m_upfrontFeeHasBeenSet(false),
-    m_currencyCodeHasBeenSet(false),
-    m_tenancy(CapacityReservationTenancy::NOT_SET),
-    m_tenancyHasBeenSet(false)
+CapacityBlockOffering::CapacityBlockOffering(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -118,8 +88,26 @@ CapacityBlockOffering& CapacityBlockOffering::operator =(const XmlNode& xmlNode)
     XmlNode tenancyNode = resultNode.FirstChild("tenancy");
     if(!tenancyNode.IsNull())
     {
-      m_tenancy = CapacityReservationTenancyMapper::GetCapacityReservationTenancyForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(tenancyNode.GetText()).c_str()).c_str());
+      m_tenancy = CapacityReservationTenancyMapper::GetCapacityReservationTenancyForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(tenancyNode.GetText()).c_str()));
       m_tenancyHasBeenSet = true;
+    }
+    XmlNode ultraserverTypeNode = resultNode.FirstChild("ultraserverType");
+    if(!ultraserverTypeNode.IsNull())
+    {
+      m_ultraserverType = Aws::Utils::Xml::DecodeEscapedXmlText(ultraserverTypeNode.GetText());
+      m_ultraserverTypeHasBeenSet = true;
+    }
+    XmlNode ultraserverCountNode = resultNode.FirstChild("ultraserverCount");
+    if(!ultraserverCountNode.IsNull())
+    {
+      m_ultraserverCount = StringUtils::ConvertToInt32(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(ultraserverCountNode.GetText()).c_str()).c_str());
+      m_ultraserverCountHasBeenSet = true;
+    }
+    XmlNode capacityBlockDurationMinutesNode = resultNode.FirstChild("capacityBlockDurationMinutes");
+    if(!capacityBlockDurationMinutesNode.IsNull())
+    {
+      m_capacityBlockDurationMinutes = StringUtils::ConvertToInt32(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(capacityBlockDurationMinutesNode.GetText()).c_str()).c_str());
+      m_capacityBlockDurationMinutesHasBeenSet = true;
     }
   }
 
@@ -175,7 +163,22 @@ void CapacityBlockOffering::OutputToStream(Aws::OStream& oStream, const char* lo
 
   if(m_tenancyHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Tenancy=" << CapacityReservationTenancyMapper::GetNameForCapacityReservationTenancy(m_tenancy) << "&";
+      oStream << location << index << locationValue << ".Tenancy=" << StringUtils::URLEncode(CapacityReservationTenancyMapper::GetNameForCapacityReservationTenancy(m_tenancy)) << "&";
+  }
+
+  if(m_ultraserverTypeHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".UltraserverType=" << StringUtils::URLEncode(m_ultraserverType.c_str()) << "&";
+  }
+
+  if(m_ultraserverCountHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".UltraserverCount=" << m_ultraserverCount << "&";
+  }
+
+  if(m_capacityBlockDurationMinutesHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".CapacityBlockDurationMinutes=" << m_capacityBlockDurationMinutes << "&";
   }
 
 }
@@ -220,7 +223,19 @@ void CapacityBlockOffering::OutputToStream(Aws::OStream& oStream, const char* lo
   }
   if(m_tenancyHasBeenSet)
   {
-      oStream << location << ".Tenancy=" << CapacityReservationTenancyMapper::GetNameForCapacityReservationTenancy(m_tenancy) << "&";
+      oStream << location << ".Tenancy=" << StringUtils::URLEncode(CapacityReservationTenancyMapper::GetNameForCapacityReservationTenancy(m_tenancy)) << "&";
+  }
+  if(m_ultraserverTypeHasBeenSet)
+  {
+      oStream << location << ".UltraserverType=" << StringUtils::URLEncode(m_ultraserverType.c_str()) << "&";
+  }
+  if(m_ultraserverCountHasBeenSet)
+  {
+      oStream << location << ".UltraserverCount=" << m_ultraserverCount << "&";
+  }
+  if(m_capacityBlockDurationMinutesHasBeenSet)
+  {
+      oStream << location << ".CapacityBlockDurationMinutes=" << m_capacityBlockDurationMinutes << "&";
   }
 }
 

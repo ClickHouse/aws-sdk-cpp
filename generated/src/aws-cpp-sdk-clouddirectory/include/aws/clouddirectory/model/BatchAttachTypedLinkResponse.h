@@ -32,42 +32,23 @@ namespace Model
   class BatchAttachTypedLinkResponse
   {
   public:
-    AWS_CLOUDDIRECTORY_API BatchAttachTypedLinkResponse();
+    AWS_CLOUDDIRECTORY_API BatchAttachTypedLinkResponse() = default;
     AWS_CLOUDDIRECTORY_API BatchAttachTypedLinkResponse(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDDIRECTORY_API BatchAttachTypedLinkResponse& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDDIRECTORY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Returns a typed link specifier as output.</p>
      */
-    inline const TypedLinkSpecifier& GetTypedLinkSpecifier() const{ return m_typedLinkSpecifier; }
-
-    /**
-     * <p>Returns a typed link specifier as output.</p>
-     */
+    inline const TypedLinkSpecifier& GetTypedLinkSpecifier() const { return m_typedLinkSpecifier; }
     inline bool TypedLinkSpecifierHasBeenSet() const { return m_typedLinkSpecifierHasBeenSet; }
-
-    /**
-     * <p>Returns a typed link specifier as output.</p>
-     */
-    inline void SetTypedLinkSpecifier(const TypedLinkSpecifier& value) { m_typedLinkSpecifierHasBeenSet = true; m_typedLinkSpecifier = value; }
-
-    /**
-     * <p>Returns a typed link specifier as output.</p>
-     */
-    inline void SetTypedLinkSpecifier(TypedLinkSpecifier&& value) { m_typedLinkSpecifierHasBeenSet = true; m_typedLinkSpecifier = std::move(value); }
-
-    /**
-     * <p>Returns a typed link specifier as output.</p>
-     */
-    inline BatchAttachTypedLinkResponse& WithTypedLinkSpecifier(const TypedLinkSpecifier& value) { SetTypedLinkSpecifier(value); return *this;}
-
-    /**
-     * <p>Returns a typed link specifier as output.</p>
-     */
-    inline BatchAttachTypedLinkResponse& WithTypedLinkSpecifier(TypedLinkSpecifier&& value) { SetTypedLinkSpecifier(std::move(value)); return *this;}
-
+    template<typename TypedLinkSpecifierT = TypedLinkSpecifier>
+    void SetTypedLinkSpecifier(TypedLinkSpecifierT&& value) { m_typedLinkSpecifierHasBeenSet = true; m_typedLinkSpecifier = std::forward<TypedLinkSpecifierT>(value); }
+    template<typename TypedLinkSpecifierT = TypedLinkSpecifier>
+    BatchAttachTypedLinkResponse& WithTypedLinkSpecifier(TypedLinkSpecifierT&& value) { SetTypedLinkSpecifier(std::forward<TypedLinkSpecifierT>(value)); return *this;}
+    ///@}
   private:
 
     TypedLinkSpecifier m_typedLinkSpecifier;

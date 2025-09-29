@@ -31,52 +31,23 @@ namespace Model
   class HttpUrlDestinationProperties
   {
   public:
-    AWS_IOT_API HttpUrlDestinationProperties();
+    AWS_IOT_API HttpUrlDestinationProperties() = default;
     AWS_IOT_API HttpUrlDestinationProperties(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API HttpUrlDestinationProperties& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The URL used to confirm the HTTP topic rule destination URL.</p>
      */
-    inline const Aws::String& GetConfirmationUrl() const{ return m_confirmationUrl; }
-
-    /**
-     * <p>The URL used to confirm the HTTP topic rule destination URL.</p>
-     */
+    inline const Aws::String& GetConfirmationUrl() const { return m_confirmationUrl; }
     inline bool ConfirmationUrlHasBeenSet() const { return m_confirmationUrlHasBeenSet; }
-
-    /**
-     * <p>The URL used to confirm the HTTP topic rule destination URL.</p>
-     */
-    inline void SetConfirmationUrl(const Aws::String& value) { m_confirmationUrlHasBeenSet = true; m_confirmationUrl = value; }
-
-    /**
-     * <p>The URL used to confirm the HTTP topic rule destination URL.</p>
-     */
-    inline void SetConfirmationUrl(Aws::String&& value) { m_confirmationUrlHasBeenSet = true; m_confirmationUrl = std::move(value); }
-
-    /**
-     * <p>The URL used to confirm the HTTP topic rule destination URL.</p>
-     */
-    inline void SetConfirmationUrl(const char* value) { m_confirmationUrlHasBeenSet = true; m_confirmationUrl.assign(value); }
-
-    /**
-     * <p>The URL used to confirm the HTTP topic rule destination URL.</p>
-     */
-    inline HttpUrlDestinationProperties& WithConfirmationUrl(const Aws::String& value) { SetConfirmationUrl(value); return *this;}
-
-    /**
-     * <p>The URL used to confirm the HTTP topic rule destination URL.</p>
-     */
-    inline HttpUrlDestinationProperties& WithConfirmationUrl(Aws::String&& value) { SetConfirmationUrl(std::move(value)); return *this;}
-
-    /**
-     * <p>The URL used to confirm the HTTP topic rule destination URL.</p>
-     */
-    inline HttpUrlDestinationProperties& WithConfirmationUrl(const char* value) { SetConfirmationUrl(value); return *this;}
-
+    template<typename ConfirmationUrlT = Aws::String>
+    void SetConfirmationUrl(ConfirmationUrlT&& value) { m_confirmationUrlHasBeenSet = true; m_confirmationUrl = std::forward<ConfirmationUrlT>(value); }
+    template<typename ConfirmationUrlT = Aws::String>
+    HttpUrlDestinationProperties& WithConfirmationUrl(ConfirmationUrlT&& value) { SetConfirmationUrl(std::forward<ConfirmationUrlT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_confirmationUrl;

@@ -20,15 +20,7 @@ namespace SES
 namespace Model
 {
 
-AddHeaderAction::AddHeaderAction() : 
-    m_headerNameHasBeenSet(false),
-    m_headerValueHasBeenSet(false)
-{
-}
-
-AddHeaderAction::AddHeaderAction(const XmlNode& xmlNode) : 
-    m_headerNameHasBeenSet(false),
-    m_headerValueHasBeenSet(false)
+AddHeaderAction::AddHeaderAction(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

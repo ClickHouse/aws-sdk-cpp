@@ -18,17 +18,7 @@ namespace Panorama
 namespace Model
 {
 
-EthernetPayload::EthernetPayload() : 
-    m_connectionType(ConnectionType::NOT_SET),
-    m_connectionTypeHasBeenSet(false),
-    m_staticIpConnectionInfoHasBeenSet(false)
-{
-}
-
-EthernetPayload::EthernetPayload(JsonView jsonValue) : 
-    m_connectionType(ConnectionType::NOT_SET),
-    m_connectionTypeHasBeenSet(false),
-    m_staticIpConnectionInfoHasBeenSet(false)
+EthernetPayload::EthernetPayload(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ EthernetPayload& EthernetPayload::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ConnectionType"))
   {
     m_connectionType = ConnectionTypeMapper::GetConnectionTypeForName(jsonValue.GetString("ConnectionType"));
-
     m_connectionTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StaticIpConnectionInfo"))
   {
     m_staticIpConnectionInfo = jsonValue.GetObject("StaticIpConnectionInfo");
-
     m_staticIpConnectionInfoHasBeenSet = true;
   }
-
   return *this;
 }
 

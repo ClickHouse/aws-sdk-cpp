@@ -18,13 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-CustomFileSystem::CustomFileSystem() : 
-    m_eFSFileSystemHasBeenSet(false)
-{
-}
-
-CustomFileSystem::CustomFileSystem(JsonView jsonValue) : 
-    m_eFSFileSystemHasBeenSet(false)
+CustomFileSystem::CustomFileSystem(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,18 @@ CustomFileSystem& CustomFileSystem::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("EFSFileSystem"))
   {
     m_eFSFileSystem = jsonValue.GetObject("EFSFileSystem");
-
     m_eFSFileSystemHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("FSxLustreFileSystem"))
+  {
+    m_fSxLustreFileSystem = jsonValue.GetObject("FSxLustreFileSystem");
+    m_fSxLustreFileSystemHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("S3FileSystem"))
+  {
+    m_s3FileSystem = jsonValue.GetObject("S3FileSystem");
+    m_s3FileSystemHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -48,6 +50,18 @@ JsonValue CustomFileSystem::Jsonize() const
   if(m_eFSFileSystemHasBeenSet)
   {
    payload.WithObject("EFSFileSystem", m_eFSFileSystem.Jsonize());
+
+  }
+
+  if(m_fSxLustreFileSystemHasBeenSet)
+  {
+   payload.WithObject("FSxLustreFileSystem", m_fSxLustreFileSystem.Jsonize());
+
+  }
+
+  if(m_s3FileSystemHasBeenSet)
+  {
+   payload.WithObject("S3FileSystem", m_s3FileSystem.Jsonize());
 
   }
 

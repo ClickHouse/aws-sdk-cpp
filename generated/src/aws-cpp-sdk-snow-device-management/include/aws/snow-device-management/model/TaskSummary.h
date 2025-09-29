@@ -34,219 +34,66 @@ namespace Model
   class TaskSummary
   {
   public:
-    AWS_SNOWDEVICEMANAGEMENT_API TaskSummary();
+    AWS_SNOWDEVICEMANAGEMENT_API TaskSummary() = default;
     AWS_SNOWDEVICEMANAGEMENT_API TaskSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_SNOWDEVICEMANAGEMENT_API TaskSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SNOWDEVICEMANAGEMENT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The state of the task assigned to one or many devices.</p>
      */
-    inline const TaskState& GetState() const{ return m_state; }
-
-    /**
-     * <p>The state of the task assigned to one or many devices.</p>
-     */
+    inline TaskState GetState() const { return m_state; }
     inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
+    inline void SetState(TaskState value) { m_stateHasBeenSet = true; m_state = value; }
+    inline TaskSummary& WithState(TaskState value) { SetState(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The state of the task assigned to one or many devices.</p>
-     */
-    inline void SetState(const TaskState& value) { m_stateHasBeenSet = true; m_state = value; }
-
-    /**
-     * <p>The state of the task assigned to one or many devices.</p>
-     */
-    inline void SetState(TaskState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
-
-    /**
-     * <p>The state of the task assigned to one or many devices.</p>
-     */
-    inline TaskSummary& WithState(const TaskState& value) { SetState(value); return *this;}
-
-    /**
-     * <p>The state of the task assigned to one or many devices.</p>
-     */
-    inline TaskSummary& WithState(TaskState&& value) { SetState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Optional metadata that you assign to a resource. You can use tags to
      * categorize a resource in different ways, such as by purpose, owner, or
      * environment.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>Optional metadata that you assign to a resource. You can use tags to
-     * categorize a resource in different ways, such as by purpose, owner, or
-     * environment.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    TaskSummary& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    TaskSummary& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>Optional metadata that you assign to a resource. You can use tags to
-     * categorize a resource in different ways, such as by purpose, owner, or
-     * environment.</p>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>Optional metadata that you assign to a resource. You can use tags to
-     * categorize a resource in different ways, such as by purpose, owner, or
-     * environment.</p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>Optional metadata that you assign to a resource. You can use tags to
-     * categorize a resource in different ways, such as by purpose, owner, or
-     * environment.</p>
-     */
-    inline TaskSummary& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>Optional metadata that you assign to a resource. You can use tags to
-     * categorize a resource in different ways, such as by purpose, owner, or
-     * environment.</p>
-     */
-    inline TaskSummary& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>Optional metadata that you assign to a resource. You can use tags to
-     * categorize a resource in different ways, such as by purpose, owner, or
-     * environment.</p>
-     */
-    inline TaskSummary& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>Optional metadata that you assign to a resource. You can use tags to
-     * categorize a resource in different ways, such as by purpose, owner, or
-     * environment.</p>
-     */
-    inline TaskSummary& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Optional metadata that you assign to a resource. You can use tags to
-     * categorize a resource in different ways, such as by purpose, owner, or
-     * environment.</p>
-     */
-    inline TaskSummary& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Optional metadata that you assign to a resource. You can use tags to
-     * categorize a resource in different ways, such as by purpose, owner, or
-     * environment.</p>
-     */
-    inline TaskSummary& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>Optional metadata that you assign to a resource. You can use tags to
-     * categorize a resource in different ways, such as by purpose, owner, or
-     * environment.</p>
-     */
-    inline TaskSummary& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Optional metadata that you assign to a resource. You can use tags to
-     * categorize a resource in different ways, such as by purpose, owner, or
-     * environment.</p>
-     */
-    inline TaskSummary& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Optional metadata that you assign to a resource. You can use tags to
-     * categorize a resource in different ways, such as by purpose, owner, or
-     * environment.</p>
-     */
-    inline TaskSummary& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the task.</p>
      */
-    inline const Aws::String& GetTaskArn() const{ return m_taskArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the task.</p>
-     */
+    inline const Aws::String& GetTaskArn() const { return m_taskArn; }
     inline bool TaskArnHasBeenSet() const { return m_taskArnHasBeenSet; }
+    template<typename TaskArnT = Aws::String>
+    void SetTaskArn(TaskArnT&& value) { m_taskArnHasBeenSet = true; m_taskArn = std::forward<TaskArnT>(value); }
+    template<typename TaskArnT = Aws::String>
+    TaskSummary& WithTaskArn(TaskArnT&& value) { SetTaskArn(std::forward<TaskArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the task.</p>
-     */
-    inline void SetTaskArn(const Aws::String& value) { m_taskArnHasBeenSet = true; m_taskArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the task.</p>
-     */
-    inline void SetTaskArn(Aws::String&& value) { m_taskArnHasBeenSet = true; m_taskArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the task.</p>
-     */
-    inline void SetTaskArn(const char* value) { m_taskArnHasBeenSet = true; m_taskArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the task.</p>
-     */
-    inline TaskSummary& WithTaskArn(const Aws::String& value) { SetTaskArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the task.</p>
-     */
-    inline TaskSummary& WithTaskArn(Aws::String&& value) { SetTaskArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the task.</p>
-     */
-    inline TaskSummary& WithTaskArn(const char* value) { SetTaskArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The task ID.</p>
      */
-    inline const Aws::String& GetTaskId() const{ return m_taskId; }
-
-    /**
-     * <p>The task ID.</p>
-     */
+    inline const Aws::String& GetTaskId() const { return m_taskId; }
     inline bool TaskIdHasBeenSet() const { return m_taskIdHasBeenSet; }
-
-    /**
-     * <p>The task ID.</p>
-     */
-    inline void SetTaskId(const Aws::String& value) { m_taskIdHasBeenSet = true; m_taskId = value; }
-
-    /**
-     * <p>The task ID.</p>
-     */
-    inline void SetTaskId(Aws::String&& value) { m_taskIdHasBeenSet = true; m_taskId = std::move(value); }
-
-    /**
-     * <p>The task ID.</p>
-     */
-    inline void SetTaskId(const char* value) { m_taskIdHasBeenSet = true; m_taskId.assign(value); }
-
-    /**
-     * <p>The task ID.</p>
-     */
-    inline TaskSummary& WithTaskId(const Aws::String& value) { SetTaskId(value); return *this;}
-
-    /**
-     * <p>The task ID.</p>
-     */
-    inline TaskSummary& WithTaskId(Aws::String&& value) { SetTaskId(std::move(value)); return *this;}
-
-    /**
-     * <p>The task ID.</p>
-     */
-    inline TaskSummary& WithTaskId(const char* value) { SetTaskId(value); return *this;}
-
+    template<typename TaskIdT = Aws::String>
+    void SetTaskId(TaskIdT&& value) { m_taskIdHasBeenSet = true; m_taskId = std::forward<TaskIdT>(value); }
+    template<typename TaskIdT = Aws::String>
+    TaskSummary& WithTaskId(TaskIdT&& value) { SetTaskId(std::forward<TaskIdT>(value)); return *this;}
+    ///@}
   private:
 
-    TaskState m_state;
+    TaskState m_state{TaskState::NOT_SET};
     bool m_stateHasBeenSet = false;
 
     Aws::Map<Aws::String, Aws::String> m_tags;

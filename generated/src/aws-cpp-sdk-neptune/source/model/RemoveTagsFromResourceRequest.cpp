@@ -10,12 +10,6 @@
 using namespace Aws::Neptune::Model;
 using namespace Aws::Utils;
 
-RemoveTagsFromResourceRequest::RemoveTagsFromResourceRequest() : 
-    m_resourceNameHasBeenSet(false),
-    m_tagKeysHasBeenSet(false)
-{
-}
-
 Aws::String RemoveTagsFromResourceRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -27,12 +21,19 @@ Aws::String RemoveTagsFromResourceRequest::SerializePayload() const
 
   if(m_tagKeysHasBeenSet)
   {
-    unsigned tagKeysCount = 1;
-    for(auto& item : m_tagKeys)
+    if (m_tagKeys.empty())
     {
-      ss << "TagKeys.member." << tagKeysCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      tagKeysCount++;
+      ss << "TagKeys=&";
+    }
+    else
+    {
+      unsigned tagKeysCount = 1;
+      for(auto& item : m_tagKeys)
+      {
+        ss << "TagKeys.member." << tagKeysCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        tagKeysCount++;
+      }
     }
   }
 

@@ -31,527 +31,226 @@ namespace Model
   class StartSyncExecutionResult
   {
   public:
-    AWS_SFN_API StartSyncExecutionResult();
+    AWS_SFN_API StartSyncExecutionResult() = default;
     AWS_SFN_API StartSyncExecutionResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_SFN_API StartSyncExecutionResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) that identifies the execution.</p>
      */
-    inline const Aws::String& GetExecutionArn() const{ return m_executionArn; }
+    inline const Aws::String& GetExecutionArn() const { return m_executionArn; }
+    template<typename ExecutionArnT = Aws::String>
+    void SetExecutionArn(ExecutionArnT&& value) { m_executionArnHasBeenSet = true; m_executionArn = std::forward<ExecutionArnT>(value); }
+    template<typename ExecutionArnT = Aws::String>
+    StartSyncExecutionResult& WithExecutionArn(ExecutionArnT&& value) { SetExecutionArn(std::forward<ExecutionArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) that identifies the execution.</p>
-     */
-    inline void SetExecutionArn(const Aws::String& value) { m_executionArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that identifies the execution.</p>
-     */
-    inline void SetExecutionArn(Aws::String&& value) { m_executionArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that identifies the execution.</p>
-     */
-    inline void SetExecutionArn(const char* value) { m_executionArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that identifies the execution.</p>
-     */
-    inline StartSyncExecutionResult& WithExecutionArn(const Aws::String& value) { SetExecutionArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that identifies the execution.</p>
-     */
-    inline StartSyncExecutionResult& WithExecutionArn(Aws::String&& value) { SetExecutionArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that identifies the execution.</p>
-     */
-    inline StartSyncExecutionResult& WithExecutionArn(const char* value) { SetExecutionArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) that identifies the state machine.</p>
      */
-    inline const Aws::String& GetStateMachineArn() const{ return m_stateMachineArn; }
+    inline const Aws::String& GetStateMachineArn() const { return m_stateMachineArn; }
+    template<typename StateMachineArnT = Aws::String>
+    void SetStateMachineArn(StateMachineArnT&& value) { m_stateMachineArnHasBeenSet = true; m_stateMachineArn = std::forward<StateMachineArnT>(value); }
+    template<typename StateMachineArnT = Aws::String>
+    StartSyncExecutionResult& WithStateMachineArn(StateMachineArnT&& value) { SetStateMachineArn(std::forward<StateMachineArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) that identifies the state machine.</p>
-     */
-    inline void SetStateMachineArn(const Aws::String& value) { m_stateMachineArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that identifies the state machine.</p>
-     */
-    inline void SetStateMachineArn(Aws::String&& value) { m_stateMachineArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that identifies the state machine.</p>
-     */
-    inline void SetStateMachineArn(const char* value) { m_stateMachineArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that identifies the state machine.</p>
-     */
-    inline StartSyncExecutionResult& WithStateMachineArn(const Aws::String& value) { SetStateMachineArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that identifies the state machine.</p>
-     */
-    inline StartSyncExecutionResult& WithStateMachineArn(Aws::String&& value) { SetStateMachineArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that identifies the state machine.</p>
-     */
-    inline StartSyncExecutionResult& WithStateMachineArn(const char* value) { SetStateMachineArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the execution.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
+    inline const Aws::String& GetName() const { return m_name; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    StartSyncExecutionResult& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the execution.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_name = value; }
-
-    /**
-     * <p>The name of the execution.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_name = std::move(value); }
-
-    /**
-     * <p>The name of the execution.</p>
-     */
-    inline void SetName(const char* value) { m_name.assign(value); }
-
-    /**
-     * <p>The name of the execution.</p>
-     */
-    inline StartSyncExecutionResult& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the execution.</p>
-     */
-    inline StartSyncExecutionResult& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the execution.</p>
-     */
-    inline StartSyncExecutionResult& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date the execution is started.</p>
      */
-    inline const Aws::Utils::DateTime& GetStartDate() const{ return m_startDate; }
+    inline const Aws::Utils::DateTime& GetStartDate() const { return m_startDate; }
+    template<typename StartDateT = Aws::Utils::DateTime>
+    void SetStartDate(StartDateT&& value) { m_startDateHasBeenSet = true; m_startDate = std::forward<StartDateT>(value); }
+    template<typename StartDateT = Aws::Utils::DateTime>
+    StartSyncExecutionResult& WithStartDate(StartDateT&& value) { SetStartDate(std::forward<StartDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date the execution is started.</p>
-     */
-    inline void SetStartDate(const Aws::Utils::DateTime& value) { m_startDate = value; }
-
-    /**
-     * <p>The date the execution is started.</p>
-     */
-    inline void SetStartDate(Aws::Utils::DateTime&& value) { m_startDate = std::move(value); }
-
-    /**
-     * <p>The date the execution is started.</p>
-     */
-    inline StartSyncExecutionResult& WithStartDate(const Aws::Utils::DateTime& value) { SetStartDate(value); return *this;}
-
-    /**
-     * <p>The date the execution is started.</p>
-     */
-    inline StartSyncExecutionResult& WithStartDate(Aws::Utils::DateTime&& value) { SetStartDate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>If the execution has already ended, the date the execution stopped.</p>
      */
-    inline const Aws::Utils::DateTime& GetStopDate() const{ return m_stopDate; }
+    inline const Aws::Utils::DateTime& GetStopDate() const { return m_stopDate; }
+    template<typename StopDateT = Aws::Utils::DateTime>
+    void SetStopDate(StopDateT&& value) { m_stopDateHasBeenSet = true; m_stopDate = std::forward<StopDateT>(value); }
+    template<typename StopDateT = Aws::Utils::DateTime>
+    StartSyncExecutionResult& WithStopDate(StopDateT&& value) { SetStopDate(std::forward<StopDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If the execution has already ended, the date the execution stopped.</p>
-     */
-    inline void SetStopDate(const Aws::Utils::DateTime& value) { m_stopDate = value; }
-
-    /**
-     * <p>If the execution has already ended, the date the execution stopped.</p>
-     */
-    inline void SetStopDate(Aws::Utils::DateTime&& value) { m_stopDate = std::move(value); }
-
-    /**
-     * <p>If the execution has already ended, the date the execution stopped.</p>
-     */
-    inline StartSyncExecutionResult& WithStopDate(const Aws::Utils::DateTime& value) { SetStopDate(value); return *this;}
-
-    /**
-     * <p>If the execution has already ended, the date the execution stopped.</p>
-     */
-    inline StartSyncExecutionResult& WithStopDate(Aws::Utils::DateTime&& value) { SetStopDate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The current status of the execution.</p>
      */
-    inline const SyncExecutionStatus& GetStatus() const{ return m_status; }
+    inline SyncExecutionStatus GetStatus() const { return m_status; }
+    inline void SetStatus(SyncExecutionStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline StartSyncExecutionResult& WithStatus(SyncExecutionStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The current status of the execution.</p>
-     */
-    inline void SetStatus(const SyncExecutionStatus& value) { m_status = value; }
-
-    /**
-     * <p>The current status of the execution.</p>
-     */
-    inline void SetStatus(SyncExecutionStatus&& value) { m_status = std::move(value); }
-
-    /**
-     * <p>The current status of the execution.</p>
-     */
-    inline StartSyncExecutionResult& WithStatus(const SyncExecutionStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The current status of the execution.</p>
-     */
-    inline StartSyncExecutionResult& WithStatus(SyncExecutionStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The error code of the failure.</p>
      */
-    inline const Aws::String& GetError() const{ return m_error; }
+    inline const Aws::String& GetError() const { return m_error; }
+    template<typename ErrorT = Aws::String>
+    void SetError(ErrorT&& value) { m_errorHasBeenSet = true; m_error = std::forward<ErrorT>(value); }
+    template<typename ErrorT = Aws::String>
+    StartSyncExecutionResult& WithError(ErrorT&& value) { SetError(std::forward<ErrorT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The error code of the failure.</p>
-     */
-    inline void SetError(const Aws::String& value) { m_error = value; }
-
-    /**
-     * <p>The error code of the failure.</p>
-     */
-    inline void SetError(Aws::String&& value) { m_error = std::move(value); }
-
-    /**
-     * <p>The error code of the failure.</p>
-     */
-    inline void SetError(const char* value) { m_error.assign(value); }
-
-    /**
-     * <p>The error code of the failure.</p>
-     */
-    inline StartSyncExecutionResult& WithError(const Aws::String& value) { SetError(value); return *this;}
-
-    /**
-     * <p>The error code of the failure.</p>
-     */
-    inline StartSyncExecutionResult& WithError(Aws::String&& value) { SetError(std::move(value)); return *this;}
-
-    /**
-     * <p>The error code of the failure.</p>
-     */
-    inline StartSyncExecutionResult& WithError(const char* value) { SetError(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A more detailed explanation of the cause of the failure.</p>
      */
-    inline const Aws::String& GetCause() const{ return m_cause; }
+    inline const Aws::String& GetCause() const { return m_cause; }
+    template<typename CauseT = Aws::String>
+    void SetCause(CauseT&& value) { m_causeHasBeenSet = true; m_cause = std::forward<CauseT>(value); }
+    template<typename CauseT = Aws::String>
+    StartSyncExecutionResult& WithCause(CauseT&& value) { SetCause(std::forward<CauseT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A more detailed explanation of the cause of the failure.</p>
-     */
-    inline void SetCause(const Aws::String& value) { m_cause = value; }
-
-    /**
-     * <p>A more detailed explanation of the cause of the failure.</p>
-     */
-    inline void SetCause(Aws::String&& value) { m_cause = std::move(value); }
-
-    /**
-     * <p>A more detailed explanation of the cause of the failure.</p>
-     */
-    inline void SetCause(const char* value) { m_cause.assign(value); }
-
-    /**
-     * <p>A more detailed explanation of the cause of the failure.</p>
-     */
-    inline StartSyncExecutionResult& WithCause(const Aws::String& value) { SetCause(value); return *this;}
-
-    /**
-     * <p>A more detailed explanation of the cause of the failure.</p>
-     */
-    inline StartSyncExecutionResult& WithCause(Aws::String&& value) { SetCause(std::move(value)); return *this;}
-
-    /**
-     * <p>A more detailed explanation of the cause of the failure.</p>
-     */
-    inline StartSyncExecutionResult& WithCause(const char* value) { SetCause(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The string that contains the JSON input data of the execution. Length
      * constraints apply to the payload size, and are expressed as bytes in UTF-8
      * encoding.</p>
      */
-    inline const Aws::String& GetInput() const{ return m_input; }
+    inline const Aws::String& GetInput() const { return m_input; }
+    template<typename InputT = Aws::String>
+    void SetInput(InputT&& value) { m_inputHasBeenSet = true; m_input = std::forward<InputT>(value); }
+    template<typename InputT = Aws::String>
+    StartSyncExecutionResult& WithInput(InputT&& value) { SetInput(std::forward<InputT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The string that contains the JSON input data of the execution. Length
-     * constraints apply to the payload size, and are expressed as bytes in UTF-8
-     * encoding.</p>
-     */
-    inline void SetInput(const Aws::String& value) { m_input = value; }
-
-    /**
-     * <p>The string that contains the JSON input data of the execution. Length
-     * constraints apply to the payload size, and are expressed as bytes in UTF-8
-     * encoding.</p>
-     */
-    inline void SetInput(Aws::String&& value) { m_input = std::move(value); }
-
-    /**
-     * <p>The string that contains the JSON input data of the execution. Length
-     * constraints apply to the payload size, and are expressed as bytes in UTF-8
-     * encoding.</p>
-     */
-    inline void SetInput(const char* value) { m_input.assign(value); }
-
-    /**
-     * <p>The string that contains the JSON input data of the execution. Length
-     * constraints apply to the payload size, and are expressed as bytes in UTF-8
-     * encoding.</p>
-     */
-    inline StartSyncExecutionResult& WithInput(const Aws::String& value) { SetInput(value); return *this;}
-
-    /**
-     * <p>The string that contains the JSON input data of the execution. Length
-     * constraints apply to the payload size, and are expressed as bytes in UTF-8
-     * encoding.</p>
-     */
-    inline StartSyncExecutionResult& WithInput(Aws::String&& value) { SetInput(std::move(value)); return *this;}
-
-    /**
-     * <p>The string that contains the JSON input data of the execution. Length
-     * constraints apply to the payload size, and are expressed as bytes in UTF-8
-     * encoding.</p>
-     */
-    inline StartSyncExecutionResult& WithInput(const char* value) { SetInput(value); return *this;}
-
-
+    ///@{
     
-    inline const CloudWatchEventsExecutionDataDetails& GetInputDetails() const{ return m_inputDetails; }
+    inline const CloudWatchEventsExecutionDataDetails& GetInputDetails() const { return m_inputDetails; }
+    template<typename InputDetailsT = CloudWatchEventsExecutionDataDetails>
+    void SetInputDetails(InputDetailsT&& value) { m_inputDetailsHasBeenSet = true; m_inputDetails = std::forward<InputDetailsT>(value); }
+    template<typename InputDetailsT = CloudWatchEventsExecutionDataDetails>
+    StartSyncExecutionResult& WithInputDetails(InputDetailsT&& value) { SetInputDetails(std::forward<InputDetailsT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetInputDetails(const CloudWatchEventsExecutionDataDetails& value) { m_inputDetails = value; }
-
-    
-    inline void SetInputDetails(CloudWatchEventsExecutionDataDetails&& value) { m_inputDetails = std::move(value); }
-
-    
-    inline StartSyncExecutionResult& WithInputDetails(const CloudWatchEventsExecutionDataDetails& value) { SetInputDetails(value); return *this;}
-
-    
-    inline StartSyncExecutionResult& WithInputDetails(CloudWatchEventsExecutionDataDetails&& value) { SetInputDetails(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The JSON output data of the execution. Length constraints apply to the
      * payload size, and are expressed as bytes in UTF-8 encoding.</p>  <p>This
      * field is set only if the execution succeeds. If the execution fails, this field
      * is null.</p> 
      */
-    inline const Aws::String& GetOutput() const{ return m_output; }
+    inline const Aws::String& GetOutput() const { return m_output; }
+    template<typename OutputT = Aws::String>
+    void SetOutput(OutputT&& value) { m_outputHasBeenSet = true; m_output = std::forward<OutputT>(value); }
+    template<typename OutputT = Aws::String>
+    StartSyncExecutionResult& WithOutput(OutputT&& value) { SetOutput(std::forward<OutputT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The JSON output data of the execution. Length constraints apply to the
-     * payload size, and are expressed as bytes in UTF-8 encoding.</p>  <p>This
-     * field is set only if the execution succeeds. If the execution fails, this field
-     * is null.</p> 
-     */
-    inline void SetOutput(const Aws::String& value) { m_output = value; }
-
-    /**
-     * <p>The JSON output data of the execution. Length constraints apply to the
-     * payload size, and are expressed as bytes in UTF-8 encoding.</p>  <p>This
-     * field is set only if the execution succeeds. If the execution fails, this field
-     * is null.</p> 
-     */
-    inline void SetOutput(Aws::String&& value) { m_output = std::move(value); }
-
-    /**
-     * <p>The JSON output data of the execution. Length constraints apply to the
-     * payload size, and are expressed as bytes in UTF-8 encoding.</p>  <p>This
-     * field is set only if the execution succeeds. If the execution fails, this field
-     * is null.</p> 
-     */
-    inline void SetOutput(const char* value) { m_output.assign(value); }
-
-    /**
-     * <p>The JSON output data of the execution. Length constraints apply to the
-     * payload size, and are expressed as bytes in UTF-8 encoding.</p>  <p>This
-     * field is set only if the execution succeeds. If the execution fails, this field
-     * is null.</p> 
-     */
-    inline StartSyncExecutionResult& WithOutput(const Aws::String& value) { SetOutput(value); return *this;}
-
-    /**
-     * <p>The JSON output data of the execution. Length constraints apply to the
-     * payload size, and are expressed as bytes in UTF-8 encoding.</p>  <p>This
-     * field is set only if the execution succeeds. If the execution fails, this field
-     * is null.</p> 
-     */
-    inline StartSyncExecutionResult& WithOutput(Aws::String&& value) { SetOutput(std::move(value)); return *this;}
-
-    /**
-     * <p>The JSON output data of the execution. Length constraints apply to the
-     * payload size, and are expressed as bytes in UTF-8 encoding.</p>  <p>This
-     * field is set only if the execution succeeds. If the execution fails, this field
-     * is null.</p> 
-     */
-    inline StartSyncExecutionResult& WithOutput(const char* value) { SetOutput(value); return *this;}
-
-
+    ///@{
     
-    inline const CloudWatchEventsExecutionDataDetails& GetOutputDetails() const{ return m_outputDetails; }
+    inline const CloudWatchEventsExecutionDataDetails& GetOutputDetails() const { return m_outputDetails; }
+    template<typename OutputDetailsT = CloudWatchEventsExecutionDataDetails>
+    void SetOutputDetails(OutputDetailsT&& value) { m_outputDetailsHasBeenSet = true; m_outputDetails = std::forward<OutputDetailsT>(value); }
+    template<typename OutputDetailsT = CloudWatchEventsExecutionDataDetails>
+    StartSyncExecutionResult& WithOutputDetails(OutputDetailsT&& value) { SetOutputDetails(std::forward<OutputDetailsT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetOutputDetails(const CloudWatchEventsExecutionDataDetails& value) { m_outputDetails = value; }
-
-    
-    inline void SetOutputDetails(CloudWatchEventsExecutionDataDetails&& value) { m_outputDetails = std::move(value); }
-
-    
-    inline StartSyncExecutionResult& WithOutputDetails(const CloudWatchEventsExecutionDataDetails& value) { SetOutputDetails(value); return *this;}
-
-    
-    inline StartSyncExecutionResult& WithOutputDetails(CloudWatchEventsExecutionDataDetails&& value) { SetOutputDetails(std::move(value)); return *this;}
-
-
+    ///@{
     /**
-     * <p>The X-Ray trace header that was passed to the execution.</p>
+     * <p>The X-Ray trace header that was passed to the execution.</p>  <p> For
+     * X-Ray traces, all Amazon Web Services services use the
+     * <code>X-Amzn-Trace-Id</code> header from the HTTP request. Using the header is
+     * the preferred mechanism to identify a trace. <code>StartExecution</code> and
+     * <code>StartSyncExecution</code> API operations can also use
+     * <code>traceHeader</code> from the body of the request payload. If <b>both</b>
+     * sources are provided, Step Functions will use the <b>header value</b>
+     * (preferred) over the value in the request body. </p> 
      */
-    inline const Aws::String& GetTraceHeader() const{ return m_traceHeader; }
+    inline const Aws::String& GetTraceHeader() const { return m_traceHeader; }
+    template<typename TraceHeaderT = Aws::String>
+    void SetTraceHeader(TraceHeaderT&& value) { m_traceHeaderHasBeenSet = true; m_traceHeader = std::forward<TraceHeaderT>(value); }
+    template<typename TraceHeaderT = Aws::String>
+    StartSyncExecutionResult& WithTraceHeader(TraceHeaderT&& value) { SetTraceHeader(std::forward<TraceHeaderT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The X-Ray trace header that was passed to the execution.</p>
-     */
-    inline void SetTraceHeader(const Aws::String& value) { m_traceHeader = value; }
-
-    /**
-     * <p>The X-Ray trace header that was passed to the execution.</p>
-     */
-    inline void SetTraceHeader(Aws::String&& value) { m_traceHeader = std::move(value); }
-
-    /**
-     * <p>The X-Ray trace header that was passed to the execution.</p>
-     */
-    inline void SetTraceHeader(const char* value) { m_traceHeader.assign(value); }
-
-    /**
-     * <p>The X-Ray trace header that was passed to the execution.</p>
-     */
-    inline StartSyncExecutionResult& WithTraceHeader(const Aws::String& value) { SetTraceHeader(value); return *this;}
-
-    /**
-     * <p>The X-Ray trace header that was passed to the execution.</p>
-     */
-    inline StartSyncExecutionResult& WithTraceHeader(Aws::String&& value) { SetTraceHeader(std::move(value)); return *this;}
-
-    /**
-     * <p>The X-Ray trace header that was passed to the execution.</p>
-     */
-    inline StartSyncExecutionResult& WithTraceHeader(const char* value) { SetTraceHeader(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An object that describes workflow billing details, including billed duration
      * and memory use.</p>
      */
-    inline const BillingDetails& GetBillingDetails() const{ return m_billingDetails; }
+    inline const BillingDetails& GetBillingDetails() const { return m_billingDetails; }
+    template<typename BillingDetailsT = BillingDetails>
+    void SetBillingDetails(BillingDetailsT&& value) { m_billingDetailsHasBeenSet = true; m_billingDetails = std::forward<BillingDetailsT>(value); }
+    template<typename BillingDetailsT = BillingDetails>
+    StartSyncExecutionResult& WithBillingDetails(BillingDetailsT&& value) { SetBillingDetails(std::forward<BillingDetailsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An object that describes workflow billing details, including billed duration
-     * and memory use.</p>
-     */
-    inline void SetBillingDetails(const BillingDetails& value) { m_billingDetails = value; }
-
-    /**
-     * <p>An object that describes workflow billing details, including billed duration
-     * and memory use.</p>
-     */
-    inline void SetBillingDetails(BillingDetails&& value) { m_billingDetails = std::move(value); }
-
-    /**
-     * <p>An object that describes workflow billing details, including billed duration
-     * and memory use.</p>
-     */
-    inline StartSyncExecutionResult& WithBillingDetails(const BillingDetails& value) { SetBillingDetails(value); return *this;}
-
-    /**
-     * <p>An object that describes workflow billing details, including billed duration
-     * and memory use.</p>
-     */
-    inline StartSyncExecutionResult& WithBillingDetails(BillingDetails&& value) { SetBillingDetails(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline StartSyncExecutionResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline StartSyncExecutionResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline StartSyncExecutionResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    StartSyncExecutionResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_executionArn;
+    bool m_executionArnHasBeenSet = false;
 
     Aws::String m_stateMachineArn;
+    bool m_stateMachineArnHasBeenSet = false;
 
     Aws::String m_name;
+    bool m_nameHasBeenSet = false;
 
-    Aws::Utils::DateTime m_startDate;
+    Aws::Utils::DateTime m_startDate{};
+    bool m_startDateHasBeenSet = false;
 
-    Aws::Utils::DateTime m_stopDate;
+    Aws::Utils::DateTime m_stopDate{};
+    bool m_stopDateHasBeenSet = false;
 
-    SyncExecutionStatus m_status;
+    SyncExecutionStatus m_status{SyncExecutionStatus::NOT_SET};
+    bool m_statusHasBeenSet = false;
 
     Aws::String m_error;
+    bool m_errorHasBeenSet = false;
 
     Aws::String m_cause;
+    bool m_causeHasBeenSet = false;
 
     Aws::String m_input;
+    bool m_inputHasBeenSet = false;
 
     CloudWatchEventsExecutionDataDetails m_inputDetails;
+    bool m_inputDetailsHasBeenSet = false;
 
     Aws::String m_output;
+    bool m_outputHasBeenSet = false;
 
     CloudWatchEventsExecutionDataDetails m_outputDetails;
+    bool m_outputDetailsHasBeenSet = false;
 
     Aws::String m_traceHeader;
+    bool m_traceHeaderHasBeenSet = false;
 
     BillingDetails m_billingDetails;
+    bool m_billingDetailsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -30,35 +30,24 @@ namespace Model
   class BorderStyle
   {
   public:
-    AWS_QUICKSIGHT_API BorderStyle();
+    AWS_QUICKSIGHT_API BorderStyle() = default;
     AWS_QUICKSIGHT_API BorderStyle(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API BorderStyle& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The option to enable display of borders for visuals.</p>
      */
-    inline bool GetShow() const{ return m_show; }
-
-    /**
-     * <p>The option to enable display of borders for visuals.</p>
-     */
+    inline bool GetShow() const { return m_show; }
     inline bool ShowHasBeenSet() const { return m_showHasBeenSet; }
-
-    /**
-     * <p>The option to enable display of borders for visuals.</p>
-     */
     inline void SetShow(bool value) { m_showHasBeenSet = true; m_show = value; }
-
-    /**
-     * <p>The option to enable display of borders for visuals.</p>
-     */
     inline BorderStyle& WithShow(bool value) { SetShow(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_show;
+    bool m_show{false};
     bool m_showHasBeenSet = false;
   };
 

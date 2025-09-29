@@ -20,19 +20,7 @@ namespace EC2
 namespace Model
 {
 
-DnsOptionsSpecification::DnsOptionsSpecification() : 
-    m_dnsRecordIpType(DnsRecordIpType::NOT_SET),
-    m_dnsRecordIpTypeHasBeenSet(false),
-    m_privateDnsOnlyForInboundResolverEndpoint(false),
-    m_privateDnsOnlyForInboundResolverEndpointHasBeenSet(false)
-{
-}
-
-DnsOptionsSpecification::DnsOptionsSpecification(const XmlNode& xmlNode) : 
-    m_dnsRecordIpType(DnsRecordIpType::NOT_SET),
-    m_dnsRecordIpTypeHasBeenSet(false),
-    m_privateDnsOnlyForInboundResolverEndpoint(false),
-    m_privateDnsOnlyForInboundResolverEndpointHasBeenSet(false)
+DnsOptionsSpecification::DnsOptionsSpecification(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -46,7 +34,7 @@ DnsOptionsSpecification& DnsOptionsSpecification::operator =(const XmlNode& xmlN
     XmlNode dnsRecordIpTypeNode = resultNode.FirstChild("DnsRecordIpType");
     if(!dnsRecordIpTypeNode.IsNull())
     {
-      m_dnsRecordIpType = DnsRecordIpTypeMapper::GetDnsRecordIpTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(dnsRecordIpTypeNode.GetText()).c_str()).c_str());
+      m_dnsRecordIpType = DnsRecordIpTypeMapper::GetDnsRecordIpTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(dnsRecordIpTypeNode.GetText()).c_str()));
       m_dnsRecordIpTypeHasBeenSet = true;
     }
     XmlNode privateDnsOnlyForInboundResolverEndpointNode = resultNode.FirstChild("PrivateDnsOnlyForInboundResolverEndpoint");
@@ -64,7 +52,7 @@ void DnsOptionsSpecification::OutputToStream(Aws::OStream& oStream, const char* 
 {
   if(m_dnsRecordIpTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".DnsRecordIpType=" << DnsRecordIpTypeMapper::GetNameForDnsRecordIpType(m_dnsRecordIpType) << "&";
+      oStream << location << index << locationValue << ".DnsRecordIpType=" << StringUtils::URLEncode(DnsRecordIpTypeMapper::GetNameForDnsRecordIpType(m_dnsRecordIpType)) << "&";
   }
 
   if(m_privateDnsOnlyForInboundResolverEndpointHasBeenSet)
@@ -78,7 +66,7 @@ void DnsOptionsSpecification::OutputToStream(Aws::OStream& oStream, const char* 
 {
   if(m_dnsRecordIpTypeHasBeenSet)
   {
-      oStream << location << ".DnsRecordIpType=" << DnsRecordIpTypeMapper::GetNameForDnsRecordIpType(m_dnsRecordIpType) << "&";
+      oStream << location << ".DnsRecordIpType=" << StringUtils::URLEncode(DnsRecordIpTypeMapper::GetNameForDnsRecordIpType(m_dnsRecordIpType)) << "&";
   }
   if(m_privateDnsOnlyForInboundResolverEndpointHasBeenSet)
   {

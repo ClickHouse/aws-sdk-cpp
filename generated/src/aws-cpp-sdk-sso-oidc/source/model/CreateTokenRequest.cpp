@@ -12,18 +12,6 @@ using namespace Aws::SSOOIDC::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateTokenRequest::CreateTokenRequest() : 
-    m_clientIdHasBeenSet(false),
-    m_clientSecretHasBeenSet(false),
-    m_grantTypeHasBeenSet(false),
-    m_deviceCodeHasBeenSet(false),
-    m_codeHasBeenSet(false),
-    m_refreshTokenHasBeenSet(false),
-    m_scopeHasBeenSet(false),
-    m_redirectUriHasBeenSet(false)
-{
-}
-
 Aws::String CreateTokenRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -78,6 +66,12 @@ Aws::String CreateTokenRequest::SerializePayload() const
   if(m_redirectUriHasBeenSet)
   {
    payload.WithString("redirectUri", m_redirectUri);
+
+  }
+
+  if(m_codeVerifierHasBeenSet)
+  {
+   payload.WithString("codeVerifier", m_codeVerifier);
 
   }
 

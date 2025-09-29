@@ -20,15 +20,7 @@ namespace EC2
 namespace Model
 {
 
-CreateVerifiedAccessTrustProviderDeviceOptions::CreateVerifiedAccessTrustProviderDeviceOptions() : 
-    m_tenantIdHasBeenSet(false),
-    m_publicSigningKeyUrlHasBeenSet(false)
-{
-}
-
-CreateVerifiedAccessTrustProviderDeviceOptions::CreateVerifiedAccessTrustProviderDeviceOptions(const XmlNode& xmlNode) : 
-    m_tenantIdHasBeenSet(false),
-    m_publicSigningKeyUrlHasBeenSet(false)
+CreateVerifiedAccessTrustProviderDeviceOptions::CreateVerifiedAccessTrustProviderDeviceOptions(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

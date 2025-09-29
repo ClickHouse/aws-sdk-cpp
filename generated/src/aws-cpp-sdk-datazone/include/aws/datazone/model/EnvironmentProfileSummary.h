@@ -32,466 +32,146 @@ namespace Model
   class EnvironmentProfileSummary
   {
   public:
-    AWS_DATAZONE_API EnvironmentProfileSummary();
+    AWS_DATAZONE_API EnvironmentProfileSummary() = default;
     AWS_DATAZONE_API EnvironmentProfileSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAZONE_API EnvironmentProfileSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAZONE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The identifier of an Amazon Web Services account in which an environment
      * profile exists.</p>
      */
-    inline const Aws::String& GetAwsAccountId() const{ return m_awsAccountId; }
-
-    /**
-     * <p>The identifier of an Amazon Web Services account in which an environment
-     * profile exists.</p>
-     */
+    inline const Aws::String& GetAwsAccountId() const { return m_awsAccountId; }
     inline bool AwsAccountIdHasBeenSet() const { return m_awsAccountIdHasBeenSet; }
+    template<typename AwsAccountIdT = Aws::String>
+    void SetAwsAccountId(AwsAccountIdT&& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = std::forward<AwsAccountIdT>(value); }
+    template<typename AwsAccountIdT = Aws::String>
+    EnvironmentProfileSummary& WithAwsAccountId(AwsAccountIdT&& value) { SetAwsAccountId(std::forward<AwsAccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of an Amazon Web Services account in which an environment
-     * profile exists.</p>
-     */
-    inline void SetAwsAccountId(const Aws::String& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = value; }
-
-    /**
-     * <p>The identifier of an Amazon Web Services account in which an environment
-     * profile exists.</p>
-     */
-    inline void SetAwsAccountId(Aws::String&& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = std::move(value); }
-
-    /**
-     * <p>The identifier of an Amazon Web Services account in which an environment
-     * profile exists.</p>
-     */
-    inline void SetAwsAccountId(const char* value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId.assign(value); }
-
-    /**
-     * <p>The identifier of an Amazon Web Services account in which an environment
-     * profile exists.</p>
-     */
-    inline EnvironmentProfileSummary& WithAwsAccountId(const Aws::String& value) { SetAwsAccountId(value); return *this;}
-
-    /**
-     * <p>The identifier of an Amazon Web Services account in which an environment
-     * profile exists.</p>
-     */
-    inline EnvironmentProfileSummary& WithAwsAccountId(Aws::String&& value) { SetAwsAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of an Amazon Web Services account in which an environment
-     * profile exists.</p>
-     */
-    inline EnvironmentProfileSummary& WithAwsAccountId(const char* value) { SetAwsAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Web Services Region in which an environment profile exists.</p>
      */
-    inline const Aws::String& GetAwsAccountRegion() const{ return m_awsAccountRegion; }
-
-    /**
-     * <p>The Amazon Web Services Region in which an environment profile exists.</p>
-     */
+    inline const Aws::String& GetAwsAccountRegion() const { return m_awsAccountRegion; }
     inline bool AwsAccountRegionHasBeenSet() const { return m_awsAccountRegionHasBeenSet; }
+    template<typename AwsAccountRegionT = Aws::String>
+    void SetAwsAccountRegion(AwsAccountRegionT&& value) { m_awsAccountRegionHasBeenSet = true; m_awsAccountRegion = std::forward<AwsAccountRegionT>(value); }
+    template<typename AwsAccountRegionT = Aws::String>
+    EnvironmentProfileSummary& WithAwsAccountRegion(AwsAccountRegionT&& value) { SetAwsAccountRegion(std::forward<AwsAccountRegionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Web Services Region in which an environment profile exists.</p>
-     */
-    inline void SetAwsAccountRegion(const Aws::String& value) { m_awsAccountRegionHasBeenSet = true; m_awsAccountRegion = value; }
-
-    /**
-     * <p>The Amazon Web Services Region in which an environment profile exists.</p>
-     */
-    inline void SetAwsAccountRegion(Aws::String&& value) { m_awsAccountRegionHasBeenSet = true; m_awsAccountRegion = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services Region in which an environment profile exists.</p>
-     */
-    inline void SetAwsAccountRegion(const char* value) { m_awsAccountRegionHasBeenSet = true; m_awsAccountRegion.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services Region in which an environment profile exists.</p>
-     */
-    inline EnvironmentProfileSummary& WithAwsAccountRegion(const Aws::String& value) { SetAwsAccountRegion(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services Region in which an environment profile exists.</p>
-     */
-    inline EnvironmentProfileSummary& WithAwsAccountRegion(Aws::String&& value) { SetAwsAccountRegion(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services Region in which an environment profile exists.</p>
-     */
-    inline EnvironmentProfileSummary& WithAwsAccountRegion(const char* value) { SetAwsAccountRegion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The timestamp of when an environment profile was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedAt() const{ return m_createdAt; }
-
-    /**
-     * <p>The timestamp of when an environment profile was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedAt() const { return m_createdAt; }
     inline bool CreatedAtHasBeenSet() const { return m_createdAtHasBeenSet; }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    void SetCreatedAt(CreatedAtT&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::forward<CreatedAtT>(value); }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    EnvironmentProfileSummary& WithCreatedAt(CreatedAtT&& value) { SetCreatedAt(std::forward<CreatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp of when an environment profile was created.</p>
-     */
-    inline void SetCreatedAt(const Aws::Utils::DateTime& value) { m_createdAtHasBeenSet = true; m_createdAt = value; }
-
-    /**
-     * <p>The timestamp of when an environment profile was created.</p>
-     */
-    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::move(value); }
-
-    /**
-     * <p>The timestamp of when an environment profile was created.</p>
-     */
-    inline EnvironmentProfileSummary& WithCreatedAt(const Aws::Utils::DateTime& value) { SetCreatedAt(value); return *this;}
-
-    /**
-     * <p>The timestamp of when an environment profile was created.</p>
-     */
-    inline EnvironmentProfileSummary& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon DataZone user who created the environment profile.</p>
      */
-    inline const Aws::String& GetCreatedBy() const{ return m_createdBy; }
-
-    /**
-     * <p>The Amazon DataZone user who created the environment profile.</p>
-     */
+    inline const Aws::String& GetCreatedBy() const { return m_createdBy; }
     inline bool CreatedByHasBeenSet() const { return m_createdByHasBeenSet; }
+    template<typename CreatedByT = Aws::String>
+    void SetCreatedBy(CreatedByT&& value) { m_createdByHasBeenSet = true; m_createdBy = std::forward<CreatedByT>(value); }
+    template<typename CreatedByT = Aws::String>
+    EnvironmentProfileSummary& WithCreatedBy(CreatedByT&& value) { SetCreatedBy(std::forward<CreatedByT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon DataZone user who created the environment profile.</p>
-     */
-    inline void SetCreatedBy(const Aws::String& value) { m_createdByHasBeenSet = true; m_createdBy = value; }
-
-    /**
-     * <p>The Amazon DataZone user who created the environment profile.</p>
-     */
-    inline void SetCreatedBy(Aws::String&& value) { m_createdByHasBeenSet = true; m_createdBy = std::move(value); }
-
-    /**
-     * <p>The Amazon DataZone user who created the environment profile.</p>
-     */
-    inline void SetCreatedBy(const char* value) { m_createdByHasBeenSet = true; m_createdBy.assign(value); }
-
-    /**
-     * <p>The Amazon DataZone user who created the environment profile.</p>
-     */
-    inline EnvironmentProfileSummary& WithCreatedBy(const Aws::String& value) { SetCreatedBy(value); return *this;}
-
-    /**
-     * <p>The Amazon DataZone user who created the environment profile.</p>
-     */
-    inline EnvironmentProfileSummary& WithCreatedBy(Aws::String&& value) { SetCreatedBy(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon DataZone user who created the environment profile.</p>
-     */
-    inline EnvironmentProfileSummary& WithCreatedBy(const char* value) { SetCreatedBy(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The description of the environment profile.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The description of the environment profile.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    EnvironmentProfileSummary& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description of the environment profile.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The description of the environment profile.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The description of the environment profile.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The description of the environment profile.</p>
-     */
-    inline EnvironmentProfileSummary& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description of the environment profile.</p>
-     */
-    inline EnvironmentProfileSummary& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the environment profile.</p>
-     */
-    inline EnvironmentProfileSummary& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the Amazon DataZone domain in which the environment profile
      * exists.</p>
      */
-    inline const Aws::String& GetDomainId() const{ return m_domainId; }
-
-    /**
-     * <p>The identifier of the Amazon DataZone domain in which the environment profile
-     * exists.</p>
-     */
+    inline const Aws::String& GetDomainId() const { return m_domainId; }
     inline bool DomainIdHasBeenSet() const { return m_domainIdHasBeenSet; }
+    template<typename DomainIdT = Aws::String>
+    void SetDomainId(DomainIdT&& value) { m_domainIdHasBeenSet = true; m_domainId = std::forward<DomainIdT>(value); }
+    template<typename DomainIdT = Aws::String>
+    EnvironmentProfileSummary& WithDomainId(DomainIdT&& value) { SetDomainId(std::forward<DomainIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the Amazon DataZone domain in which the environment profile
-     * exists.</p>
-     */
-    inline void SetDomainId(const Aws::String& value) { m_domainIdHasBeenSet = true; m_domainId = value; }
-
-    /**
-     * <p>The identifier of the Amazon DataZone domain in which the environment profile
-     * exists.</p>
-     */
-    inline void SetDomainId(Aws::String&& value) { m_domainIdHasBeenSet = true; m_domainId = std::move(value); }
-
-    /**
-     * <p>The identifier of the Amazon DataZone domain in which the environment profile
-     * exists.</p>
-     */
-    inline void SetDomainId(const char* value) { m_domainIdHasBeenSet = true; m_domainId.assign(value); }
-
-    /**
-     * <p>The identifier of the Amazon DataZone domain in which the environment profile
-     * exists.</p>
-     */
-    inline EnvironmentProfileSummary& WithDomainId(const Aws::String& value) { SetDomainId(value); return *this;}
-
-    /**
-     * <p>The identifier of the Amazon DataZone domain in which the environment profile
-     * exists.</p>
-     */
-    inline EnvironmentProfileSummary& WithDomainId(Aws::String&& value) { SetDomainId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the Amazon DataZone domain in which the environment profile
-     * exists.</p>
-     */
-    inline EnvironmentProfileSummary& WithDomainId(const char* value) { SetDomainId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of a blueprint with which an environment profile is
      * created.</p>
      */
-    inline const Aws::String& GetEnvironmentBlueprintId() const{ return m_environmentBlueprintId; }
-
-    /**
-     * <p>The identifier of a blueprint with which an environment profile is
-     * created.</p>
-     */
+    inline const Aws::String& GetEnvironmentBlueprintId() const { return m_environmentBlueprintId; }
     inline bool EnvironmentBlueprintIdHasBeenSet() const { return m_environmentBlueprintIdHasBeenSet; }
+    template<typename EnvironmentBlueprintIdT = Aws::String>
+    void SetEnvironmentBlueprintId(EnvironmentBlueprintIdT&& value) { m_environmentBlueprintIdHasBeenSet = true; m_environmentBlueprintId = std::forward<EnvironmentBlueprintIdT>(value); }
+    template<typename EnvironmentBlueprintIdT = Aws::String>
+    EnvironmentProfileSummary& WithEnvironmentBlueprintId(EnvironmentBlueprintIdT&& value) { SetEnvironmentBlueprintId(std::forward<EnvironmentBlueprintIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of a blueprint with which an environment profile is
-     * created.</p>
-     */
-    inline void SetEnvironmentBlueprintId(const Aws::String& value) { m_environmentBlueprintIdHasBeenSet = true; m_environmentBlueprintId = value; }
-
-    /**
-     * <p>The identifier of a blueprint with which an environment profile is
-     * created.</p>
-     */
-    inline void SetEnvironmentBlueprintId(Aws::String&& value) { m_environmentBlueprintIdHasBeenSet = true; m_environmentBlueprintId = std::move(value); }
-
-    /**
-     * <p>The identifier of a blueprint with which an environment profile is
-     * created.</p>
-     */
-    inline void SetEnvironmentBlueprintId(const char* value) { m_environmentBlueprintIdHasBeenSet = true; m_environmentBlueprintId.assign(value); }
-
-    /**
-     * <p>The identifier of a blueprint with which an environment profile is
-     * created.</p>
-     */
-    inline EnvironmentProfileSummary& WithEnvironmentBlueprintId(const Aws::String& value) { SetEnvironmentBlueprintId(value); return *this;}
-
-    /**
-     * <p>The identifier of a blueprint with which an environment profile is
-     * created.</p>
-     */
-    inline EnvironmentProfileSummary& WithEnvironmentBlueprintId(Aws::String&& value) { SetEnvironmentBlueprintId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of a blueprint with which an environment profile is
-     * created.</p>
-     */
-    inline EnvironmentProfileSummary& WithEnvironmentBlueprintId(const char* value) { SetEnvironmentBlueprintId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the environment profile.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The identifier of the environment profile.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    EnvironmentProfileSummary& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the environment profile.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The identifier of the environment profile.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The identifier of the environment profile.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The identifier of the environment profile.</p>
-     */
-    inline EnvironmentProfileSummary& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The identifier of the environment profile.</p>
-     */
-    inline EnvironmentProfileSummary& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the environment profile.</p>
-     */
-    inline EnvironmentProfileSummary& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the environment profile.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the environment profile.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    EnvironmentProfileSummary& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the environment profile.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the environment profile.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the environment profile.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the environment profile.</p>
-     */
-    inline EnvironmentProfileSummary& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the environment profile.</p>
-     */
-    inline EnvironmentProfileSummary& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the environment profile.</p>
-     */
-    inline EnvironmentProfileSummary& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of a project in which an environment profile exists.</p>
      */
-    inline const Aws::String& GetProjectId() const{ return m_projectId; }
-
-    /**
-     * <p>The identifier of a project in which an environment profile exists.</p>
-     */
+    inline const Aws::String& GetProjectId() const { return m_projectId; }
     inline bool ProjectIdHasBeenSet() const { return m_projectIdHasBeenSet; }
+    template<typename ProjectIdT = Aws::String>
+    void SetProjectId(ProjectIdT&& value) { m_projectIdHasBeenSet = true; m_projectId = std::forward<ProjectIdT>(value); }
+    template<typename ProjectIdT = Aws::String>
+    EnvironmentProfileSummary& WithProjectId(ProjectIdT&& value) { SetProjectId(std::forward<ProjectIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of a project in which an environment profile exists.</p>
-     */
-    inline void SetProjectId(const Aws::String& value) { m_projectIdHasBeenSet = true; m_projectId = value; }
-
-    /**
-     * <p>The identifier of a project in which an environment profile exists.</p>
-     */
-    inline void SetProjectId(Aws::String&& value) { m_projectIdHasBeenSet = true; m_projectId = std::move(value); }
-
-    /**
-     * <p>The identifier of a project in which an environment profile exists.</p>
-     */
-    inline void SetProjectId(const char* value) { m_projectIdHasBeenSet = true; m_projectId.assign(value); }
-
-    /**
-     * <p>The identifier of a project in which an environment profile exists.</p>
-     */
-    inline EnvironmentProfileSummary& WithProjectId(const Aws::String& value) { SetProjectId(value); return *this;}
-
-    /**
-     * <p>The identifier of a project in which an environment profile exists.</p>
-     */
-    inline EnvironmentProfileSummary& WithProjectId(Aws::String&& value) { SetProjectId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of a project in which an environment profile exists.</p>
-     */
-    inline EnvironmentProfileSummary& WithProjectId(const char* value) { SetProjectId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The timestamp of when the environment profile was updated.</p>
      */
-    inline const Aws::Utils::DateTime& GetUpdatedAt() const{ return m_updatedAt; }
-
-    /**
-     * <p>The timestamp of when the environment profile was updated.</p>
-     */
+    inline const Aws::Utils::DateTime& GetUpdatedAt() const { return m_updatedAt; }
     inline bool UpdatedAtHasBeenSet() const { return m_updatedAtHasBeenSet; }
-
-    /**
-     * <p>The timestamp of when the environment profile was updated.</p>
-     */
-    inline void SetUpdatedAt(const Aws::Utils::DateTime& value) { m_updatedAtHasBeenSet = true; m_updatedAt = value; }
-
-    /**
-     * <p>The timestamp of when the environment profile was updated.</p>
-     */
-    inline void SetUpdatedAt(Aws::Utils::DateTime&& value) { m_updatedAtHasBeenSet = true; m_updatedAt = std::move(value); }
-
-    /**
-     * <p>The timestamp of when the environment profile was updated.</p>
-     */
-    inline EnvironmentProfileSummary& WithUpdatedAt(const Aws::Utils::DateTime& value) { SetUpdatedAt(value); return *this;}
-
-    /**
-     * <p>The timestamp of when the environment profile was updated.</p>
-     */
-    inline EnvironmentProfileSummary& WithUpdatedAt(Aws::Utils::DateTime&& value) { SetUpdatedAt(std::move(value)); return *this;}
-
+    template<typename UpdatedAtT = Aws::Utils::DateTime>
+    void SetUpdatedAt(UpdatedAtT&& value) { m_updatedAtHasBeenSet = true; m_updatedAt = std::forward<UpdatedAtT>(value); }
+    template<typename UpdatedAtT = Aws::Utils::DateTime>
+    EnvironmentProfileSummary& WithUpdatedAt(UpdatedAtT&& value) { SetUpdatedAt(std::forward<UpdatedAtT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_awsAccountId;
@@ -500,7 +180,7 @@ namespace Model
     Aws::String m_awsAccountRegion;
     bool m_awsAccountRegionHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdAt;
+    Aws::Utils::DateTime m_createdAt{};
     bool m_createdAtHasBeenSet = false;
 
     Aws::String m_createdBy;
@@ -524,7 +204,7 @@ namespace Model
     Aws::String m_projectId;
     bool m_projectIdHasBeenSet = false;
 
-    Aws::Utils::DateTime m_updatedAt;
+    Aws::Utils::DateTime m_updatedAt{};
     bool m_updatedAtHasBeenSet = false;
   };
 

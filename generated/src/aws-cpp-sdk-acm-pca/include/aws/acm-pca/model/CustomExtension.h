@@ -35,130 +35,47 @@ namespace Model
   class CustomExtension
   {
   public:
-    AWS_ACMPCA_API CustomExtension();
+    AWS_ACMPCA_API CustomExtension() = default;
     AWS_ACMPCA_API CustomExtension(Aws::Utils::Json::JsonView jsonValue);
     AWS_ACMPCA_API CustomExtension& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ACMPCA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p/> <p>Specifies the object identifier (OID) of the X.509 extension. For more
      * information, see the <a href="https://oidref.com/2.5.29">Global OID reference
      * database.</a> </p>
      */
-    inline const Aws::String& GetObjectIdentifier() const{ return m_objectIdentifier; }
-
-    /**
-     * <p/> <p>Specifies the object identifier (OID) of the X.509 extension. For more
-     * information, see the <a href="https://oidref.com/2.5.29">Global OID reference
-     * database.</a> </p>
-     */
+    inline const Aws::String& GetObjectIdentifier() const { return m_objectIdentifier; }
     inline bool ObjectIdentifierHasBeenSet() const { return m_objectIdentifierHasBeenSet; }
+    template<typename ObjectIdentifierT = Aws::String>
+    void SetObjectIdentifier(ObjectIdentifierT&& value) { m_objectIdentifierHasBeenSet = true; m_objectIdentifier = std::forward<ObjectIdentifierT>(value); }
+    template<typename ObjectIdentifierT = Aws::String>
+    CustomExtension& WithObjectIdentifier(ObjectIdentifierT&& value) { SetObjectIdentifier(std::forward<ObjectIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p/> <p>Specifies the object identifier (OID) of the X.509 extension. For more
-     * information, see the <a href="https://oidref.com/2.5.29">Global OID reference
-     * database.</a> </p>
-     */
-    inline void SetObjectIdentifier(const Aws::String& value) { m_objectIdentifierHasBeenSet = true; m_objectIdentifier = value; }
-
-    /**
-     * <p/> <p>Specifies the object identifier (OID) of the X.509 extension. For more
-     * information, see the <a href="https://oidref.com/2.5.29">Global OID reference
-     * database.</a> </p>
-     */
-    inline void SetObjectIdentifier(Aws::String&& value) { m_objectIdentifierHasBeenSet = true; m_objectIdentifier = std::move(value); }
-
-    /**
-     * <p/> <p>Specifies the object identifier (OID) of the X.509 extension. For more
-     * information, see the <a href="https://oidref.com/2.5.29">Global OID reference
-     * database.</a> </p>
-     */
-    inline void SetObjectIdentifier(const char* value) { m_objectIdentifierHasBeenSet = true; m_objectIdentifier.assign(value); }
-
-    /**
-     * <p/> <p>Specifies the object identifier (OID) of the X.509 extension. For more
-     * information, see the <a href="https://oidref.com/2.5.29">Global OID reference
-     * database.</a> </p>
-     */
-    inline CustomExtension& WithObjectIdentifier(const Aws::String& value) { SetObjectIdentifier(value); return *this;}
-
-    /**
-     * <p/> <p>Specifies the object identifier (OID) of the X.509 extension. For more
-     * information, see the <a href="https://oidref.com/2.5.29">Global OID reference
-     * database.</a> </p>
-     */
-    inline CustomExtension& WithObjectIdentifier(Aws::String&& value) { SetObjectIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p/> <p>Specifies the object identifier (OID) of the X.509 extension. For more
-     * information, see the <a href="https://oidref.com/2.5.29">Global OID reference
-     * database.</a> </p>
-     */
-    inline CustomExtension& WithObjectIdentifier(const char* value) { SetObjectIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p/> <p>Specifies the base64-encoded value of the X.509 extension.</p>
      */
-    inline const Aws::String& GetValue() const{ return m_value; }
-
-    /**
-     * <p/> <p>Specifies the base64-encoded value of the X.509 extension.</p>
-     */
+    inline const Aws::String& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
+    template<typename ValueT = Aws::String>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::String>
+    CustomExtension& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p/> <p>Specifies the base64-encoded value of the X.509 extension.</p>
-     */
-    inline void SetValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p/> <p>Specifies the base64-encoded value of the X.509 extension.</p>
-     */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p/> <p>Specifies the base64-encoded value of the X.509 extension.</p>
-     */
-    inline void SetValue(const char* value) { m_valueHasBeenSet = true; m_value.assign(value); }
-
-    /**
-     * <p/> <p>Specifies the base64-encoded value of the X.509 extension.</p>
-     */
-    inline CustomExtension& WithValue(const Aws::String& value) { SetValue(value); return *this;}
-
-    /**
-     * <p/> <p>Specifies the base64-encoded value of the X.509 extension.</p>
-     */
-    inline CustomExtension& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
-
-    /**
-     * <p/> <p>Specifies the base64-encoded value of the X.509 extension.</p>
-     */
-    inline CustomExtension& WithValue(const char* value) { SetValue(value); return *this;}
-
-
+    ///@{
     /**
      * <p/> <p>Specifies the critical flag of the X.509 extension.</p>
      */
-    inline bool GetCritical() const{ return m_critical; }
-
-    /**
-     * <p/> <p>Specifies the critical flag of the X.509 extension.</p>
-     */
+    inline bool GetCritical() const { return m_critical; }
     inline bool CriticalHasBeenSet() const { return m_criticalHasBeenSet; }
-
-    /**
-     * <p/> <p>Specifies the critical flag of the X.509 extension.</p>
-     */
     inline void SetCritical(bool value) { m_criticalHasBeenSet = true; m_critical = value; }
-
-    /**
-     * <p/> <p>Specifies the critical flag of the X.509 extension.</p>
-     */
     inline CustomExtension& WithCritical(bool value) { SetCritical(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_objectIdentifier;
@@ -167,7 +84,7 @@ namespace Model
     Aws::String m_value;
     bool m_valueHasBeenSet = false;
 
-    bool m_critical;
+    bool m_critical{false};
     bool m_criticalHasBeenSet = false;
   };
 

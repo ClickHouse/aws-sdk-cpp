@@ -18,17 +18,7 @@ namespace kendra
 namespace Model
 {
 
-Warning::Warning() : 
-    m_messageHasBeenSet(false),
-    m_code(WarningCode::NOT_SET),
-    m_codeHasBeenSet(false)
-{
-}
-
-Warning::Warning(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_code(WarningCode::NOT_SET),
-    m_codeHasBeenSet(false)
+Warning::Warning(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ Warning& Warning::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Message"))
   {
     m_message = jsonValue.GetString("Message");
-
     m_messageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Code"))
   {
     m_code = WarningCodeMapper::GetWarningCodeForName(jsonValue.GetString("Code"));
-
     m_codeHasBeenSet = true;
   }
-
   return *this;
 }
 

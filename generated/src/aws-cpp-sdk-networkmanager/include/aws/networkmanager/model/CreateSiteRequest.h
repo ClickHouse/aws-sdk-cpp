@@ -24,7 +24,7 @@ namespace Model
   class CreateSiteRequest : public NetworkManagerRequest
   {
   public:
-    AWS_NETWORKMANAGER_API CreateSiteRequest();
+    AWS_NETWORKMANAGER_API CreateSiteRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,96 +35,32 @@ namespace Model
     AWS_NETWORKMANAGER_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the global network.</p>
      */
-    inline const Aws::String& GetGlobalNetworkId() const{ return m_globalNetworkId; }
-
-    /**
-     * <p>The ID of the global network.</p>
-     */
+    inline const Aws::String& GetGlobalNetworkId() const { return m_globalNetworkId; }
     inline bool GlobalNetworkIdHasBeenSet() const { return m_globalNetworkIdHasBeenSet; }
+    template<typename GlobalNetworkIdT = Aws::String>
+    void SetGlobalNetworkId(GlobalNetworkIdT&& value) { m_globalNetworkIdHasBeenSet = true; m_globalNetworkId = std::forward<GlobalNetworkIdT>(value); }
+    template<typename GlobalNetworkIdT = Aws::String>
+    CreateSiteRequest& WithGlobalNetworkId(GlobalNetworkIdT&& value) { SetGlobalNetworkId(std::forward<GlobalNetworkIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the global network.</p>
-     */
-    inline void SetGlobalNetworkId(const Aws::String& value) { m_globalNetworkIdHasBeenSet = true; m_globalNetworkId = value; }
-
-    /**
-     * <p>The ID of the global network.</p>
-     */
-    inline void SetGlobalNetworkId(Aws::String&& value) { m_globalNetworkIdHasBeenSet = true; m_globalNetworkId = std::move(value); }
-
-    /**
-     * <p>The ID of the global network.</p>
-     */
-    inline void SetGlobalNetworkId(const char* value) { m_globalNetworkIdHasBeenSet = true; m_globalNetworkId.assign(value); }
-
-    /**
-     * <p>The ID of the global network.</p>
-     */
-    inline CreateSiteRequest& WithGlobalNetworkId(const Aws::String& value) { SetGlobalNetworkId(value); return *this;}
-
-    /**
-     * <p>The ID of the global network.</p>
-     */
-    inline CreateSiteRequest& WithGlobalNetworkId(Aws::String&& value) { SetGlobalNetworkId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the global network.</p>
-     */
-    inline CreateSiteRequest& WithGlobalNetworkId(const char* value) { SetGlobalNetworkId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A description of your site.</p> <p>Constraints: Maximum length of 256
      * characters.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>A description of your site.</p> <p>Constraints: Maximum length of 256
-     * characters.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    CreateSiteRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A description of your site.</p> <p>Constraints: Maximum length of 256
-     * characters.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>A description of your site.</p> <p>Constraints: Maximum length of 256
-     * characters.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>A description of your site.</p> <p>Constraints: Maximum length of 256
-     * characters.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>A description of your site.</p> <p>Constraints: Maximum length of 256
-     * characters.</p>
-     */
-    inline CreateSiteRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A description of your site.</p> <p>Constraints: Maximum length of 256
-     * characters.</p>
-     */
-    inline CreateSiteRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A description of your site.</p> <p>Constraints: Maximum length of 256
-     * characters.</p>
-     */
-    inline CreateSiteRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The site location. This information is used for visualization in the Network
      * Manager console. If you specify the address, the latitude and longitude are
@@ -133,99 +69,27 @@ namespace Model
      * the site. </p> </li> <li> <p> <code>Longitude</code>: The longitude of the
      * site.</p> </li> </ul>
      */
-    inline const Location& GetLocation() const{ return m_location; }
-
-    /**
-     * <p>The site location. This information is used for visualization in the Network
-     * Manager console. If you specify the address, the latitude and longitude are
-     * automatically calculated.</p> <ul> <li> <p> <code>Address</code>: The physical
-     * address of the site.</p> </li> <li> <p> <code>Latitude</code>: The latitude of
-     * the site. </p> </li> <li> <p> <code>Longitude</code>: The longitude of the
-     * site.</p> </li> </ul>
-     */
+    inline const Location& GetLocation() const { return m_location; }
     inline bool LocationHasBeenSet() const { return m_locationHasBeenSet; }
+    template<typename LocationT = Location>
+    void SetLocation(LocationT&& value) { m_locationHasBeenSet = true; m_location = std::forward<LocationT>(value); }
+    template<typename LocationT = Location>
+    CreateSiteRequest& WithLocation(LocationT&& value) { SetLocation(std::forward<LocationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The site location. This information is used for visualization in the Network
-     * Manager console. If you specify the address, the latitude and longitude are
-     * automatically calculated.</p> <ul> <li> <p> <code>Address</code>: The physical
-     * address of the site.</p> </li> <li> <p> <code>Latitude</code>: The latitude of
-     * the site. </p> </li> <li> <p> <code>Longitude</code>: The longitude of the
-     * site.</p> </li> </ul>
-     */
-    inline void SetLocation(const Location& value) { m_locationHasBeenSet = true; m_location = value; }
-
-    /**
-     * <p>The site location. This information is used for visualization in the Network
-     * Manager console. If you specify the address, the latitude and longitude are
-     * automatically calculated.</p> <ul> <li> <p> <code>Address</code>: The physical
-     * address of the site.</p> </li> <li> <p> <code>Latitude</code>: The latitude of
-     * the site. </p> </li> <li> <p> <code>Longitude</code>: The longitude of the
-     * site.</p> </li> </ul>
-     */
-    inline void SetLocation(Location&& value) { m_locationHasBeenSet = true; m_location = std::move(value); }
-
-    /**
-     * <p>The site location. This information is used for visualization in the Network
-     * Manager console. If you specify the address, the latitude and longitude are
-     * automatically calculated.</p> <ul> <li> <p> <code>Address</code>: The physical
-     * address of the site.</p> </li> <li> <p> <code>Latitude</code>: The latitude of
-     * the site. </p> </li> <li> <p> <code>Longitude</code>: The longitude of the
-     * site.</p> </li> </ul>
-     */
-    inline CreateSiteRequest& WithLocation(const Location& value) { SetLocation(value); return *this;}
-
-    /**
-     * <p>The site location. This information is used for visualization in the Network
-     * Manager console. If you specify the address, the latitude and longitude are
-     * automatically calculated.</p> <ul> <li> <p> <code>Address</code>: The physical
-     * address of the site.</p> </li> <li> <p> <code>Latitude</code>: The latitude of
-     * the site. </p> </li> <li> <p> <code>Longitude</code>: The longitude of the
-     * site.</p> </li> </ul>
-     */
-    inline CreateSiteRequest& WithLocation(Location&& value) { SetLocation(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The tags to apply to the resource during creation.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>The tags to apply to the resource during creation.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>The tags to apply to the resource during creation.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>The tags to apply to the resource during creation.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>The tags to apply to the resource during creation.</p>
-     */
-    inline CreateSiteRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The tags to apply to the resource during creation.</p>
-     */
-    inline CreateSiteRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags to apply to the resource during creation.</p>
-     */
-    inline CreateSiteRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>The tags to apply to the resource during creation.</p>
-     */
-    inline CreateSiteRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    CreateSiteRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    CreateSiteRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_globalNetworkId;

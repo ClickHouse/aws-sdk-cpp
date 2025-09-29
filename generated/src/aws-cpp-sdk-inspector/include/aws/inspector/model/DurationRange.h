@@ -30,63 +30,38 @@ namespace Model
   class DurationRange
   {
   public:
-    AWS_INSPECTOR_API DurationRange();
+    AWS_INSPECTOR_API DurationRange() = default;
     AWS_INSPECTOR_API DurationRange(Aws::Utils::Json::JsonView jsonValue);
     AWS_INSPECTOR_API DurationRange& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_INSPECTOR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The minimum value of the duration range. Must be greater than zero.</p>
      */
-    inline int GetMinSeconds() const{ return m_minSeconds; }
-
-    /**
-     * <p>The minimum value of the duration range. Must be greater than zero.</p>
-     */
+    inline int GetMinSeconds() const { return m_minSeconds; }
     inline bool MinSecondsHasBeenSet() const { return m_minSecondsHasBeenSet; }
-
-    /**
-     * <p>The minimum value of the duration range. Must be greater than zero.</p>
-     */
     inline void SetMinSeconds(int value) { m_minSecondsHasBeenSet = true; m_minSeconds = value; }
-
-    /**
-     * <p>The minimum value of the duration range. Must be greater than zero.</p>
-     */
     inline DurationRange& WithMinSeconds(int value) { SetMinSeconds(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The maximum value of the duration range. Must be less than or equal to 604800
      * seconds (1 week).</p>
      */
-    inline int GetMaxSeconds() const{ return m_maxSeconds; }
-
-    /**
-     * <p>The maximum value of the duration range. Must be less than or equal to 604800
-     * seconds (1 week).</p>
-     */
+    inline int GetMaxSeconds() const { return m_maxSeconds; }
     inline bool MaxSecondsHasBeenSet() const { return m_maxSecondsHasBeenSet; }
-
-    /**
-     * <p>The maximum value of the duration range. Must be less than or equal to 604800
-     * seconds (1 week).</p>
-     */
     inline void SetMaxSeconds(int value) { m_maxSecondsHasBeenSet = true; m_maxSeconds = value; }
-
-    /**
-     * <p>The maximum value of the duration range. Must be less than or equal to 604800
-     * seconds (1 week).</p>
-     */
     inline DurationRange& WithMaxSeconds(int value) { SetMaxSeconds(value); return *this;}
-
+    ///@}
   private:
 
-    int m_minSeconds;
+    int m_minSeconds{0};
     bool m_minSecondsHasBeenSet = false;
 
-    int m_maxSeconds;
+    int m_maxSeconds{0};
     bool m_maxSecondsHasBeenSet = false;
   };
 

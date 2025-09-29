@@ -18,25 +18,7 @@ namespace Personalize
 namespace Model
 {
 
-SolutionConfig::SolutionConfig() : 
-    m_eventValueThresholdHasBeenSet(false),
-    m_hpoConfigHasBeenSet(false),
-    m_algorithmHyperParametersHasBeenSet(false),
-    m_featureTransformationParametersHasBeenSet(false),
-    m_autoMLConfigHasBeenSet(false),
-    m_optimizationObjectiveHasBeenSet(false),
-    m_trainingDataConfigHasBeenSet(false)
-{
-}
-
-SolutionConfig::SolutionConfig(JsonView jsonValue) : 
-    m_eventValueThresholdHasBeenSet(false),
-    m_hpoConfigHasBeenSet(false),
-    m_algorithmHyperParametersHasBeenSet(false),
-    m_featureTransformationParametersHasBeenSet(false),
-    m_autoMLConfigHasBeenSet(false),
-    m_optimizationObjectiveHasBeenSet(false),
-    m_trainingDataConfigHasBeenSet(false)
+SolutionConfig::SolutionConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,17 +28,13 @@ SolutionConfig& SolutionConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("eventValueThreshold"))
   {
     m_eventValueThreshold = jsonValue.GetString("eventValueThreshold");
-
     m_eventValueThresholdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("hpoConfig"))
   {
     m_hpoConfig = jsonValue.GetObject("hpoConfig");
-
     m_hpoConfigHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("algorithmHyperParameters"))
   {
     Aws::Map<Aws::String, JsonView> algorithmHyperParametersJsonMap = jsonValue.GetObject("algorithmHyperParameters").GetAllObjects();
@@ -66,7 +44,6 @@ SolutionConfig& SolutionConfig::operator =(JsonView jsonValue)
     }
     m_algorithmHyperParametersHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("featureTransformationParameters"))
   {
     Aws::Map<Aws::String, JsonView> featureTransformationParametersJsonMap = jsonValue.GetObject("featureTransformationParameters").GetAllObjects();
@@ -76,28 +53,31 @@ SolutionConfig& SolutionConfig::operator =(JsonView jsonValue)
     }
     m_featureTransformationParametersHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("autoMLConfig"))
   {
     m_autoMLConfig = jsonValue.GetObject("autoMLConfig");
-
     m_autoMLConfigHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("eventsConfig"))
+  {
+    m_eventsConfig = jsonValue.GetObject("eventsConfig");
+    m_eventsConfigHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("optimizationObjective"))
   {
     m_optimizationObjective = jsonValue.GetObject("optimizationObjective");
-
     m_optimizationObjectiveHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("trainingDataConfig"))
   {
     m_trainingDataConfig = jsonValue.GetObject("trainingDataConfig");
-
     m_trainingDataConfigHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("autoTrainingConfig"))
+  {
+    m_autoTrainingConfig = jsonValue.GetObject("autoTrainingConfig");
+    m_autoTrainingConfigHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -145,6 +125,12 @@ JsonValue SolutionConfig::Jsonize() const
 
   }
 
+  if(m_eventsConfigHasBeenSet)
+  {
+   payload.WithObject("eventsConfig", m_eventsConfig.Jsonize());
+
+  }
+
   if(m_optimizationObjectiveHasBeenSet)
   {
    payload.WithObject("optimizationObjective", m_optimizationObjective.Jsonize());
@@ -154,6 +140,12 @@ JsonValue SolutionConfig::Jsonize() const
   if(m_trainingDataConfigHasBeenSet)
   {
    payload.WithObject("trainingDataConfig", m_trainingDataConfig.Jsonize());
+
+  }
+
+  if(m_autoTrainingConfigHasBeenSet)
+  {
+   payload.WithObject("autoTrainingConfig", m_autoTrainingConfig.Jsonize());
 
   }
 

@@ -10,23 +10,25 @@
 using namespace Aws::CloudWatch::Model;
 using namespace Aws::Utils;
 
-DeleteDashboardsRequest::DeleteDashboardsRequest() : 
-    m_dashboardNamesHasBeenSet(false)
-{
-}
-
 Aws::String DeleteDashboardsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=DeleteDashboards&";
   if(m_dashboardNamesHasBeenSet)
   {
-    unsigned dashboardNamesCount = 1;
-    for(auto& item : m_dashboardNames)
+    if (m_dashboardNames.empty())
     {
-      ss << "DashboardNames.member." << dashboardNamesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      dashboardNamesCount++;
+      ss << "DashboardNames=&";
+    }
+    else
+    {
+      unsigned dashboardNamesCount = 1;
+      for(auto& item : m_dashboardNames)
+      {
+        ss << "DashboardNames.member." << dashboardNamesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        dashboardNamesCount++;
+      }
     }
   }
 

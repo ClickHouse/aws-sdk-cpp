@@ -20,27 +20,7 @@ namespace EC2
 namespace Model
 {
 
-InstanceEventWindowTimeRange::InstanceEventWindowTimeRange() : 
-    m_startWeekDay(WeekDay::NOT_SET),
-    m_startWeekDayHasBeenSet(false),
-    m_startHour(0),
-    m_startHourHasBeenSet(false),
-    m_endWeekDay(WeekDay::NOT_SET),
-    m_endWeekDayHasBeenSet(false),
-    m_endHour(0),
-    m_endHourHasBeenSet(false)
-{
-}
-
-InstanceEventWindowTimeRange::InstanceEventWindowTimeRange(const XmlNode& xmlNode) : 
-    m_startWeekDay(WeekDay::NOT_SET),
-    m_startWeekDayHasBeenSet(false),
-    m_startHour(0),
-    m_startHourHasBeenSet(false),
-    m_endWeekDay(WeekDay::NOT_SET),
-    m_endWeekDayHasBeenSet(false),
-    m_endHour(0),
-    m_endHourHasBeenSet(false)
+InstanceEventWindowTimeRange::InstanceEventWindowTimeRange(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -54,7 +34,7 @@ InstanceEventWindowTimeRange& InstanceEventWindowTimeRange::operator =(const Xml
     XmlNode startWeekDayNode = resultNode.FirstChild("startWeekDay");
     if(!startWeekDayNode.IsNull())
     {
-      m_startWeekDay = WeekDayMapper::GetWeekDayForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(startWeekDayNode.GetText()).c_str()).c_str());
+      m_startWeekDay = WeekDayMapper::GetWeekDayForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(startWeekDayNode.GetText()).c_str()));
       m_startWeekDayHasBeenSet = true;
     }
     XmlNode startHourNode = resultNode.FirstChild("startHour");
@@ -66,7 +46,7 @@ InstanceEventWindowTimeRange& InstanceEventWindowTimeRange::operator =(const Xml
     XmlNode endWeekDayNode = resultNode.FirstChild("endWeekDay");
     if(!endWeekDayNode.IsNull())
     {
-      m_endWeekDay = WeekDayMapper::GetWeekDayForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(endWeekDayNode.GetText()).c_str()).c_str());
+      m_endWeekDay = WeekDayMapper::GetWeekDayForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(endWeekDayNode.GetText()).c_str()));
       m_endWeekDayHasBeenSet = true;
     }
     XmlNode endHourNode = resultNode.FirstChild("endHour");
@@ -84,7 +64,7 @@ void InstanceEventWindowTimeRange::OutputToStream(Aws::OStream& oStream, const c
 {
   if(m_startWeekDayHasBeenSet)
   {
-      oStream << location << index << locationValue << ".StartWeekDay=" << WeekDayMapper::GetNameForWeekDay(m_startWeekDay) << "&";
+      oStream << location << index << locationValue << ".StartWeekDay=" << StringUtils::URLEncode(WeekDayMapper::GetNameForWeekDay(m_startWeekDay)) << "&";
   }
 
   if(m_startHourHasBeenSet)
@@ -94,7 +74,7 @@ void InstanceEventWindowTimeRange::OutputToStream(Aws::OStream& oStream, const c
 
   if(m_endWeekDayHasBeenSet)
   {
-      oStream << location << index << locationValue << ".EndWeekDay=" << WeekDayMapper::GetNameForWeekDay(m_endWeekDay) << "&";
+      oStream << location << index << locationValue << ".EndWeekDay=" << StringUtils::URLEncode(WeekDayMapper::GetNameForWeekDay(m_endWeekDay)) << "&";
   }
 
   if(m_endHourHasBeenSet)
@@ -108,7 +88,7 @@ void InstanceEventWindowTimeRange::OutputToStream(Aws::OStream& oStream, const c
 {
   if(m_startWeekDayHasBeenSet)
   {
-      oStream << location << ".StartWeekDay=" << WeekDayMapper::GetNameForWeekDay(m_startWeekDay) << "&";
+      oStream << location << ".StartWeekDay=" << StringUtils::URLEncode(WeekDayMapper::GetNameForWeekDay(m_startWeekDay)) << "&";
   }
   if(m_startHourHasBeenSet)
   {
@@ -116,7 +96,7 @@ void InstanceEventWindowTimeRange::OutputToStream(Aws::OStream& oStream, const c
   }
   if(m_endWeekDayHasBeenSet)
   {
-      oStream << location << ".EndWeekDay=" << WeekDayMapper::GetNameForWeekDay(m_endWeekDay) << "&";
+      oStream << location << ".EndWeekDay=" << StringUtils::URLEncode(WeekDayMapper::GetNameForWeekDay(m_endWeekDay)) << "&";
   }
   if(m_endHourHasBeenSet)
   {

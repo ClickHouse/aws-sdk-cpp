@@ -18,17 +18,7 @@ namespace EMRServerless
 namespace Model
 {
 
-InitialCapacityConfig::InitialCapacityConfig() : 
-    m_workerCount(0),
-    m_workerCountHasBeenSet(false),
-    m_workerConfigurationHasBeenSet(false)
-{
-}
-
-InitialCapacityConfig::InitialCapacityConfig(JsonView jsonValue) : 
-    m_workerCount(0),
-    m_workerCountHasBeenSet(false),
-    m_workerConfigurationHasBeenSet(false)
+InitialCapacityConfig::InitialCapacityConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ InitialCapacityConfig& InitialCapacityConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("workerCount"))
   {
     m_workerCount = jsonValue.GetInt64("workerCount");
-
     m_workerCountHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("workerConfiguration"))
   {
     m_workerConfiguration = jsonValue.GetObject("workerConfiguration");
-
     m_workerConfigurationHasBeenSet = true;
   }
-
   return *this;
 }
 

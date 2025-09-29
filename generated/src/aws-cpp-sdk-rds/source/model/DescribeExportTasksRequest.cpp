@@ -10,18 +10,6 @@
 using namespace Aws::RDS::Model;
 using namespace Aws::Utils;
 
-DescribeExportTasksRequest::DescribeExportTasksRequest() : 
-    m_exportTaskIdentifierHasBeenSet(false),
-    m_sourceArnHasBeenSet(false),
-    m_filtersHasBeenSet(false),
-    m_markerHasBeenSet(false),
-    m_maxRecords(0),
-    m_maxRecordsHasBeenSet(false),
-    m_sourceType(ExportSourceType::NOT_SET),
-    m_sourceTypeHasBeenSet(false)
-{
-}
-
 Aws::String DescribeExportTasksRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -38,11 +26,18 @@ Aws::String DescribeExportTasksRequest::SerializePayload() const
 
   if(m_filtersHasBeenSet)
   {
-    unsigned filtersCount = 1;
-    for(auto& item : m_filters)
+    if (m_filters.empty())
     {
-      item.OutputToStream(ss, "Filters.member.", filtersCount, "");
-      filtersCount++;
+      ss << "Filters=&";
+    }
+    else
+    {
+      unsigned filtersCount = 1;
+      for(auto& item : m_filters)
+      {
+        item.OutputToStream(ss, "Filters.Filter.", filtersCount, "");
+        filtersCount++;
+      }
     }
   }
 
@@ -58,7 +53,7 @@ Aws::String DescribeExportTasksRequest::SerializePayload() const
 
   if(m_sourceTypeHasBeenSet)
   {
-    ss << "SourceType=" << ExportSourceTypeMapper::GetNameForExportSourceType(m_sourceType) << "&";
+    ss << "SourceType=" << StringUtils::URLEncode(ExportSourceTypeMapper::GetNameForExportSourceType(m_sourceType)) << "&";
   }
 
   ss << "Version=2014-10-31";

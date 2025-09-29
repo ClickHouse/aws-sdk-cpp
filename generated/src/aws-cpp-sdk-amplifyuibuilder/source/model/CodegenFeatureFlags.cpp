@@ -18,19 +18,7 @@ namespace AmplifyUIBuilder
 namespace Model
 {
 
-CodegenFeatureFlags::CodegenFeatureFlags() : 
-    m_isRelationshipSupported(false),
-    m_isRelationshipSupportedHasBeenSet(false),
-    m_isNonModelSupported(false),
-    m_isNonModelSupportedHasBeenSet(false)
-{
-}
-
-CodegenFeatureFlags::CodegenFeatureFlags(JsonView jsonValue) : 
-    m_isRelationshipSupported(false),
-    m_isRelationshipSupportedHasBeenSet(false),
-    m_isNonModelSupported(false),
-    m_isNonModelSupportedHasBeenSet(false)
+CodegenFeatureFlags::CodegenFeatureFlags(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ CodegenFeatureFlags& CodegenFeatureFlags::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("isRelationshipSupported"))
   {
     m_isRelationshipSupported = jsonValue.GetBool("isRelationshipSupported");
-
     m_isRelationshipSupportedHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("isNonModelSupported"))
   {
     m_isNonModelSupported = jsonValue.GetBool("isNonModelSupported");
-
     m_isNonModelSupportedHasBeenSet = true;
   }
-
   return *this;
 }
 

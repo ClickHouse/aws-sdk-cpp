@@ -12,15 +12,6 @@ using namespace Aws::Glue::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-GetTableRequest::GetTableRequest() : 
-    m_catalogIdHasBeenSet(false),
-    m_databaseNameHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_transactionIdHasBeenSet(false),
-    m_queryAsOfTimeHasBeenSet(false)
-{
-}
-
 Aws::String GetTableRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -52,6 +43,12 @@ Aws::String GetTableRequest::SerializePayload() const
   if(m_queryAsOfTimeHasBeenSet)
   {
    payload.WithDouble("QueryAsOfTime", m_queryAsOfTime.SecondsWithMSPrecision());
+  }
+
+  if(m_includeStatusDetailsHasBeenSet)
+  {
+   payload.WithBool("IncludeStatusDetails", m_includeStatusDetails);
+
   }
 
   return payload.View().WriteReadable();

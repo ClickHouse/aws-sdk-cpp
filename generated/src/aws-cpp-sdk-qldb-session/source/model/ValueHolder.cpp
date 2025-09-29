@@ -19,15 +19,7 @@ namespace QLDBSession
 namespace Model
 {
 
-ValueHolder::ValueHolder() : 
-    m_ionBinaryHasBeenSet(false),
-    m_ionTextHasBeenSet(false)
-{
-}
-
-ValueHolder::ValueHolder(JsonView jsonValue) : 
-    m_ionBinaryHasBeenSet(false),
-    m_ionTextHasBeenSet(false)
+ValueHolder::ValueHolder(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -39,14 +31,11 @@ ValueHolder& ValueHolder::operator =(JsonView jsonValue)
     m_ionBinary = HashingUtils::Base64Decode(jsonValue.GetString("IonBinary"));
     m_ionBinaryHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("IonText"))
   {
     m_ionText = jsonValue.GetString("IonText");
-
     m_ionTextHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -7,11 +7,19 @@
 #pragma once
 
 #include <aws/core/Core_EXPORTS.h>
-#include <aws/core/utils/DateTime.h>
-#include <aws/core/utils/memory/stl/AWSString.h>
-#include <aws/core/internal/AWSHttpResourceClient.h>
 #include <aws/core/auth/AWSCredentialsProvider.h>
+
+#include <atomic>
 #include <memory>
+
+namespace Aws {
+namespace Crt {
+namespace Auth {
+class ICredentialsProvider;
+class Credentials;
+}
+}
+}
 
 namespace Aws
 {
@@ -26,6 +34,8 @@ namespace Aws
         {
         public:
             STSAssumeRoleWebIdentityCredentialsProvider();
+            STSAssumeRoleWebIdentityCredentialsProvider(Aws::Client::ClientConfiguration::CredentialProviderConfiguration config);
+            virtual ~STSAssumeRoleWebIdentityCredentialsProvider();
 
             /**
              * Retrieves the credentials if found, otherwise returns empty credential set.
@@ -36,17 +46,24 @@ namespace Aws
             void Reload() override;
 
         private:
-            void RefreshIfExpired();
-            Aws::String CalculateQueryString() const;
+            enum class STATE {
+              INITIALIZED,
+              SHUT_DOWN,
+            } m_state{STATE::SHUT_DOWN};
+            mutable std::mutex m_refreshMutex;
+            mutable std::condition_variable m_refreshSignal;
+            std::shared_ptr<Aws::Crt::Auth::ICredentialsProvider> m_credentialsProvider;
+            std::chrono::milliseconds m_providerFuturesTimeoutMs;
 
-            Aws::UniquePtr<Aws::Internal::STSCredentialsClient> m_client;
-            Aws::Auth::AWSCredentials m_credentials;
-            Aws::String m_roleArn;
-            Aws::String m_tokenFile;
-            Aws::String m_sessionName;
-            Aws::String m_token;
-            bool m_initialized;
-            bool ExpiresSoon() const;
+            // Thread-safe credential fetch coordination
+            mutable std::atomic<bool> m_refreshInProgress{false};
+            mutable std::atomic<bool> m_refreshDone{false};
+            mutable std::shared_ptr<AWSCredentials> m_pendingCredentials;
+
+            // Helper methods for credential retrieval
+            AWSCredentials waitForSharedCredentials() const;
+            AWSCredentials extractCredentialsFromCrt(const Aws::Crt::Auth::Credentials& crtCredentials) const;
+            AWSCredentials fetchCredentialsAsync();
         };
     } // namespace Auth
 } // namespace Aws

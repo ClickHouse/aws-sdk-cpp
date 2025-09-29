@@ -32,93 +32,35 @@ namespace Model
   class UsageInstruction
   {
   public:
-    AWS_SERVICECATALOG_API UsageInstruction();
+    AWS_SERVICECATALOG_API UsageInstruction() = default;
     AWS_SERVICECATALOG_API UsageInstruction(Aws::Utils::Json::JsonView jsonValue);
     AWS_SERVICECATALOG_API UsageInstruction& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SERVICECATALOG_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The usage instruction type for the value.</p>
      */
-    inline const Aws::String& GetType() const{ return m_type; }
-
-    /**
-     * <p>The usage instruction type for the value.</p>
-     */
+    inline const Aws::String& GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    template<typename TypeT = Aws::String>
+    void SetType(TypeT&& value) { m_typeHasBeenSet = true; m_type = std::forward<TypeT>(value); }
+    template<typename TypeT = Aws::String>
+    UsageInstruction& WithType(TypeT&& value) { SetType(std::forward<TypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The usage instruction type for the value.</p>
-     */
-    inline void SetType(const Aws::String& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The usage instruction type for the value.</p>
-     */
-    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The usage instruction type for the value.</p>
-     */
-    inline void SetType(const char* value) { m_typeHasBeenSet = true; m_type.assign(value); }
-
-    /**
-     * <p>The usage instruction type for the value.</p>
-     */
-    inline UsageInstruction& WithType(const Aws::String& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The usage instruction type for the value.</p>
-     */
-    inline UsageInstruction& WithType(Aws::String&& value) { SetType(std::move(value)); return *this;}
-
-    /**
-     * <p>The usage instruction type for the value.</p>
-     */
-    inline UsageInstruction& WithType(const char* value) { SetType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The usage instruction value for this type.</p>
      */
-    inline const Aws::String& GetValue() const{ return m_value; }
-
-    /**
-     * <p>The usage instruction value for this type.</p>
-     */
+    inline const Aws::String& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>The usage instruction value for this type.</p>
-     */
-    inline void SetValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The usage instruction value for this type.</p>
-     */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>The usage instruction value for this type.</p>
-     */
-    inline void SetValue(const char* value) { m_valueHasBeenSet = true; m_value.assign(value); }
-
-    /**
-     * <p>The usage instruction value for this type.</p>
-     */
-    inline UsageInstruction& WithValue(const Aws::String& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>The usage instruction value for this type.</p>
-     */
-    inline UsageInstruction& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The usage instruction value for this type.</p>
-     */
-    inline UsageInstruction& WithValue(const char* value) { SetValue(value); return *this;}
-
+    template<typename ValueT = Aws::String>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::String>
+    UsageInstruction& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_type;

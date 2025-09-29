@@ -34,144 +34,66 @@ namespace Model
   class VariableValue
   {
   public:
-    AWS_CLOUDWATCHEVIDENTLY_API VariableValue();
+    AWS_CLOUDWATCHEVIDENTLY_API VariableValue() = default;
     AWS_CLOUDWATCHEVIDENTLY_API VariableValue(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDWATCHEVIDENTLY_API VariableValue& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDWATCHEVIDENTLY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>If this feature uses the Boolean variation type, this field contains the
      * Boolean value of this variation.</p>
      */
-    inline bool GetBoolValue() const{ return m_boolValue; }
-
-    /**
-     * <p>If this feature uses the Boolean variation type, this field contains the
-     * Boolean value of this variation.</p>
-     */
+    inline bool GetBoolValue() const { return m_boolValue; }
     inline bool BoolValueHasBeenSet() const { return m_boolValueHasBeenSet; }
-
-    /**
-     * <p>If this feature uses the Boolean variation type, this field contains the
-     * Boolean value of this variation.</p>
-     */
     inline void SetBoolValue(bool value) { m_boolValueHasBeenSet = true; m_boolValue = value; }
-
-    /**
-     * <p>If this feature uses the Boolean variation type, this field contains the
-     * Boolean value of this variation.</p>
-     */
     inline VariableValue& WithBoolValue(bool value) { SetBoolValue(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>If this feature uses the double integer variation type, this field contains
      * the double integer value of this variation.</p>
      */
-    inline double GetDoubleValue() const{ return m_doubleValue; }
-
-    /**
-     * <p>If this feature uses the double integer variation type, this field contains
-     * the double integer value of this variation.</p>
-     */
+    inline double GetDoubleValue() const { return m_doubleValue; }
     inline bool DoubleValueHasBeenSet() const { return m_doubleValueHasBeenSet; }
-
-    /**
-     * <p>If this feature uses the double integer variation type, this field contains
-     * the double integer value of this variation.</p>
-     */
     inline void SetDoubleValue(double value) { m_doubleValueHasBeenSet = true; m_doubleValue = value; }
-
-    /**
-     * <p>If this feature uses the double integer variation type, this field contains
-     * the double integer value of this variation.</p>
-     */
     inline VariableValue& WithDoubleValue(double value) { SetDoubleValue(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>If this feature uses the long variation type, this field contains the long
      * value of this variation.</p>
      */
-    inline long long GetLongValue() const{ return m_longValue; }
-
-    /**
-     * <p>If this feature uses the long variation type, this field contains the long
-     * value of this variation.</p>
-     */
+    inline long long GetLongValue() const { return m_longValue; }
     inline bool LongValueHasBeenSet() const { return m_longValueHasBeenSet; }
-
-    /**
-     * <p>If this feature uses the long variation type, this field contains the long
-     * value of this variation.</p>
-     */
     inline void SetLongValue(long long value) { m_longValueHasBeenSet = true; m_longValue = value; }
-
-    /**
-     * <p>If this feature uses the long variation type, this field contains the long
-     * value of this variation.</p>
-     */
     inline VariableValue& WithLongValue(long long value) { SetLongValue(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>If this feature uses the string variation type, this field contains the
      * string value of this variation.</p>
      */
-    inline const Aws::String& GetStringValue() const{ return m_stringValue; }
-
-    /**
-     * <p>If this feature uses the string variation type, this field contains the
-     * string value of this variation.</p>
-     */
+    inline const Aws::String& GetStringValue() const { return m_stringValue; }
     inline bool StringValueHasBeenSet() const { return m_stringValueHasBeenSet; }
-
-    /**
-     * <p>If this feature uses the string variation type, this field contains the
-     * string value of this variation.</p>
-     */
-    inline void SetStringValue(const Aws::String& value) { m_stringValueHasBeenSet = true; m_stringValue = value; }
-
-    /**
-     * <p>If this feature uses the string variation type, this field contains the
-     * string value of this variation.</p>
-     */
-    inline void SetStringValue(Aws::String&& value) { m_stringValueHasBeenSet = true; m_stringValue = std::move(value); }
-
-    /**
-     * <p>If this feature uses the string variation type, this field contains the
-     * string value of this variation.</p>
-     */
-    inline void SetStringValue(const char* value) { m_stringValueHasBeenSet = true; m_stringValue.assign(value); }
-
-    /**
-     * <p>If this feature uses the string variation type, this field contains the
-     * string value of this variation.</p>
-     */
-    inline VariableValue& WithStringValue(const Aws::String& value) { SetStringValue(value); return *this;}
-
-    /**
-     * <p>If this feature uses the string variation type, this field contains the
-     * string value of this variation.</p>
-     */
-    inline VariableValue& WithStringValue(Aws::String&& value) { SetStringValue(std::move(value)); return *this;}
-
-    /**
-     * <p>If this feature uses the string variation type, this field contains the
-     * string value of this variation.</p>
-     */
-    inline VariableValue& WithStringValue(const char* value) { SetStringValue(value); return *this;}
-
+    template<typename StringValueT = Aws::String>
+    void SetStringValue(StringValueT&& value) { m_stringValueHasBeenSet = true; m_stringValue = std::forward<StringValueT>(value); }
+    template<typename StringValueT = Aws::String>
+    VariableValue& WithStringValue(StringValueT&& value) { SetStringValue(std::forward<StringValueT>(value)); return *this;}
+    ///@}
   private:
 
-    bool m_boolValue;
+    bool m_boolValue{false};
     bool m_boolValueHasBeenSet = false;
 
-    double m_doubleValue;
+    double m_doubleValue{0.0};
     bool m_doubleValueHasBeenSet = false;
 
-    long long m_longValue;
+    long long m_longValue{0};
     bool m_longValueHasBeenSet = false;
 
     Aws::String m_stringValue;

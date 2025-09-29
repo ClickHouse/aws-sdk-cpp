@@ -21,23 +21,7 @@ namespace IAM
 namespace Model
 {
 
-VirtualMFADevice::VirtualMFADevice() : 
-    m_serialNumberHasBeenSet(false),
-    m_base32StringSeedHasBeenSet(false),
-    m_qRCodePNGHasBeenSet(false),
-    m_userHasBeenSet(false),
-    m_enableDateHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-VirtualMFADevice::VirtualMFADevice(const XmlNode& xmlNode) : 
-    m_serialNumberHasBeenSet(false),
-    m_base32StringSeedHasBeenSet(false),
-    m_qRCodePNGHasBeenSet(false),
-    m_userHasBeenSet(false),
-    m_enableDateHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+VirtualMFADevice::VirtualMFADevice(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -82,6 +66,7 @@ VirtualMFADevice& VirtualMFADevice::operator =(const XmlNode& xmlNode)
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("member");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -167,7 +152,7 @@ void VirtualMFADevice::OutputToStream(Aws::OStream& oStream, const char* locatio
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".Tags.member." << tagsIdx++;
+        tagsSs << location << ".Tags.member." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }

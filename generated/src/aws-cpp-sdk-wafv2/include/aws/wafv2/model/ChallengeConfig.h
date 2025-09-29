@@ -32,48 +32,24 @@ namespace Model
   class ChallengeConfig
   {
   public:
-    AWS_WAFV2_API ChallengeConfig();
+    AWS_WAFV2_API ChallengeConfig() = default;
     AWS_WAFV2_API ChallengeConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFV2_API ChallengeConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Determines how long a challenge timestamp in the token remains valid after
      * the client successfully responds to a challenge. </p>
      */
-    inline const ImmunityTimeProperty& GetImmunityTimeProperty() const{ return m_immunityTimeProperty; }
-
-    /**
-     * <p>Determines how long a challenge timestamp in the token remains valid after
-     * the client successfully responds to a challenge. </p>
-     */
+    inline const ImmunityTimeProperty& GetImmunityTimeProperty() const { return m_immunityTimeProperty; }
     inline bool ImmunityTimePropertyHasBeenSet() const { return m_immunityTimePropertyHasBeenSet; }
-
-    /**
-     * <p>Determines how long a challenge timestamp in the token remains valid after
-     * the client successfully responds to a challenge. </p>
-     */
-    inline void SetImmunityTimeProperty(const ImmunityTimeProperty& value) { m_immunityTimePropertyHasBeenSet = true; m_immunityTimeProperty = value; }
-
-    /**
-     * <p>Determines how long a challenge timestamp in the token remains valid after
-     * the client successfully responds to a challenge. </p>
-     */
-    inline void SetImmunityTimeProperty(ImmunityTimeProperty&& value) { m_immunityTimePropertyHasBeenSet = true; m_immunityTimeProperty = std::move(value); }
-
-    /**
-     * <p>Determines how long a challenge timestamp in the token remains valid after
-     * the client successfully responds to a challenge. </p>
-     */
-    inline ChallengeConfig& WithImmunityTimeProperty(const ImmunityTimeProperty& value) { SetImmunityTimeProperty(value); return *this;}
-
-    /**
-     * <p>Determines how long a challenge timestamp in the token remains valid after
-     * the client successfully responds to a challenge. </p>
-     */
-    inline ChallengeConfig& WithImmunityTimeProperty(ImmunityTimeProperty&& value) { SetImmunityTimeProperty(std::move(value)); return *this;}
-
+    template<typename ImmunityTimePropertyT = ImmunityTimeProperty>
+    void SetImmunityTimeProperty(ImmunityTimePropertyT&& value) { m_immunityTimePropertyHasBeenSet = true; m_immunityTimeProperty = std::forward<ImmunityTimePropertyT>(value); }
+    template<typename ImmunityTimePropertyT = ImmunityTimeProperty>
+    ChallengeConfig& WithImmunityTimeProperty(ImmunityTimePropertyT&& value) { SetImmunityTimeProperty(std::forward<ImmunityTimePropertyT>(value)); return *this;}
+    ///@}
   private:
 
     ImmunityTimeProperty m_immunityTimeProperty;

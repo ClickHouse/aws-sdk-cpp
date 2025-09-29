@@ -5,6 +5,7 @@
 
 #pragma once
 #include <aws/b2bi/B2BI_EXPORTS.h>
+#include <aws/b2bi/model/CapabilityDirection.h>
 #include <aws/b2bi/model/EdiType.h>
 #include <aws/b2bi/model/S3Location.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
@@ -34,164 +35,77 @@ namespace Model
   class EdiConfiguration
   {
   public:
-    AWS_B2BI_API EdiConfiguration();
+    AWS_B2BI_API EdiConfiguration() = default;
     AWS_B2BI_API EdiConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_B2BI_API EdiConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_B2BI_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>Returns the type of the capability. Currently, only <code>edi</code> is
-     * supported.</p>
+     * <p>Specifies whether this is capability is for inbound or outbound
+     * transformations.</p>
      */
-    inline const EdiType& GetType() const{ return m_type; }
+    inline CapabilityDirection GetCapabilityDirection() const { return m_capabilityDirection; }
+    inline bool CapabilityDirectionHasBeenSet() const { return m_capabilityDirectionHasBeenSet; }
+    inline void SetCapabilityDirection(CapabilityDirection value) { m_capabilityDirectionHasBeenSet = true; m_capabilityDirection = value; }
+    inline EdiConfiguration& WithCapabilityDirection(CapabilityDirection value) { SetCapabilityDirection(value); return *this;}
+    ///@}
 
+    ///@{
     /**
      * <p>Returns the type of the capability. Currently, only <code>edi</code> is
      * supported.</p>
      */
+    inline const EdiType& GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    template<typename TypeT = EdiType>
+    void SetType(TypeT&& value) { m_typeHasBeenSet = true; m_type = std::forward<TypeT>(value); }
+    template<typename TypeT = EdiType>
+    EdiConfiguration& WithType(TypeT&& value) { SetType(std::forward<TypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Returns the type of the capability. Currently, only <code>edi</code> is
-     * supported.</p>
-     */
-    inline void SetType(const EdiType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>Returns the type of the capability. Currently, only <code>edi</code> is
-     * supported.</p>
-     */
-    inline void SetType(EdiType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>Returns the type of the capability. Currently, only <code>edi</code> is
-     * supported.</p>
-     */
-    inline EdiConfiguration& WithType(const EdiType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>Returns the type of the capability. Currently, only <code>edi</code> is
-     * supported.</p>
-     */
-    inline EdiConfiguration& WithType(EdiType&& value) { SetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Contains the Amazon S3 bucket and prefix for the location of the input file,
      * which is contained in an <code>S3Location</code> object.</p>
      */
-    inline const S3Location& GetInputLocation() const{ return m_inputLocation; }
-
-    /**
-     * <p>Contains the Amazon S3 bucket and prefix for the location of the input file,
-     * which is contained in an <code>S3Location</code> object.</p>
-     */
+    inline const S3Location& GetInputLocation() const { return m_inputLocation; }
     inline bool InputLocationHasBeenSet() const { return m_inputLocationHasBeenSet; }
+    template<typename InputLocationT = S3Location>
+    void SetInputLocation(InputLocationT&& value) { m_inputLocationHasBeenSet = true; m_inputLocation = std::forward<InputLocationT>(value); }
+    template<typename InputLocationT = S3Location>
+    EdiConfiguration& WithInputLocation(InputLocationT&& value) { SetInputLocation(std::forward<InputLocationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Contains the Amazon S3 bucket and prefix for the location of the input file,
-     * which is contained in an <code>S3Location</code> object.</p>
-     */
-    inline void SetInputLocation(const S3Location& value) { m_inputLocationHasBeenSet = true; m_inputLocation = value; }
-
-    /**
-     * <p>Contains the Amazon S3 bucket and prefix for the location of the input file,
-     * which is contained in an <code>S3Location</code> object.</p>
-     */
-    inline void SetInputLocation(S3Location&& value) { m_inputLocationHasBeenSet = true; m_inputLocation = std::move(value); }
-
-    /**
-     * <p>Contains the Amazon S3 bucket and prefix for the location of the input file,
-     * which is contained in an <code>S3Location</code> object.</p>
-     */
-    inline EdiConfiguration& WithInputLocation(const S3Location& value) { SetInputLocation(value); return *this;}
-
-    /**
-     * <p>Contains the Amazon S3 bucket and prefix for the location of the input file,
-     * which is contained in an <code>S3Location</code> object.</p>
-     */
-    inline EdiConfiguration& WithInputLocation(S3Location&& value) { SetInputLocation(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Contains the Amazon S3 bucket and prefix for the location of the output file,
      * which is contained in an <code>S3Location</code> object.</p>
      */
-    inline const S3Location& GetOutputLocation() const{ return m_outputLocation; }
-
-    /**
-     * <p>Contains the Amazon S3 bucket and prefix for the location of the output file,
-     * which is contained in an <code>S3Location</code> object.</p>
-     */
+    inline const S3Location& GetOutputLocation() const { return m_outputLocation; }
     inline bool OutputLocationHasBeenSet() const { return m_outputLocationHasBeenSet; }
+    template<typename OutputLocationT = S3Location>
+    void SetOutputLocation(OutputLocationT&& value) { m_outputLocationHasBeenSet = true; m_outputLocation = std::forward<OutputLocationT>(value); }
+    template<typename OutputLocationT = S3Location>
+    EdiConfiguration& WithOutputLocation(OutputLocationT&& value) { SetOutputLocation(std::forward<OutputLocationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Contains the Amazon S3 bucket and prefix for the location of the output file,
-     * which is contained in an <code>S3Location</code> object.</p>
-     */
-    inline void SetOutputLocation(const S3Location& value) { m_outputLocationHasBeenSet = true; m_outputLocation = value; }
-
-    /**
-     * <p>Contains the Amazon S3 bucket and prefix for the location of the output file,
-     * which is contained in an <code>S3Location</code> object.</p>
-     */
-    inline void SetOutputLocation(S3Location&& value) { m_outputLocationHasBeenSet = true; m_outputLocation = std::move(value); }
-
-    /**
-     * <p>Contains the Amazon S3 bucket and prefix for the location of the output file,
-     * which is contained in an <code>S3Location</code> object.</p>
-     */
-    inline EdiConfiguration& WithOutputLocation(const S3Location& value) { SetOutputLocation(value); return *this;}
-
-    /**
-     * <p>Contains the Amazon S3 bucket and prefix for the location of the output file,
-     * which is contained in an <code>S3Location</code> object.</p>
-     */
-    inline EdiConfiguration& WithOutputLocation(S3Location&& value) { SetOutputLocation(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Returns the system-assigned unique identifier for the transformer.</p>
      */
-    inline const Aws::String& GetTransformerId() const{ return m_transformerId; }
-
-    /**
-     * <p>Returns the system-assigned unique identifier for the transformer.</p>
-     */
+    inline const Aws::String& GetTransformerId() const { return m_transformerId; }
     inline bool TransformerIdHasBeenSet() const { return m_transformerIdHasBeenSet; }
-
-    /**
-     * <p>Returns the system-assigned unique identifier for the transformer.</p>
-     */
-    inline void SetTransformerId(const Aws::String& value) { m_transformerIdHasBeenSet = true; m_transformerId = value; }
-
-    /**
-     * <p>Returns the system-assigned unique identifier for the transformer.</p>
-     */
-    inline void SetTransformerId(Aws::String&& value) { m_transformerIdHasBeenSet = true; m_transformerId = std::move(value); }
-
-    /**
-     * <p>Returns the system-assigned unique identifier for the transformer.</p>
-     */
-    inline void SetTransformerId(const char* value) { m_transformerIdHasBeenSet = true; m_transformerId.assign(value); }
-
-    /**
-     * <p>Returns the system-assigned unique identifier for the transformer.</p>
-     */
-    inline EdiConfiguration& WithTransformerId(const Aws::String& value) { SetTransformerId(value); return *this;}
-
-    /**
-     * <p>Returns the system-assigned unique identifier for the transformer.</p>
-     */
-    inline EdiConfiguration& WithTransformerId(Aws::String&& value) { SetTransformerId(std::move(value)); return *this;}
-
-    /**
-     * <p>Returns the system-assigned unique identifier for the transformer.</p>
-     */
-    inline EdiConfiguration& WithTransformerId(const char* value) { SetTransformerId(value); return *this;}
-
+    template<typename TransformerIdT = Aws::String>
+    void SetTransformerId(TransformerIdT&& value) { m_transformerIdHasBeenSet = true; m_transformerId = std::forward<TransformerIdT>(value); }
+    template<typename TransformerIdT = Aws::String>
+    EdiConfiguration& WithTransformerId(TransformerIdT&& value) { SetTransformerId(std::forward<TransformerIdT>(value)); return *this;}
+    ///@}
   private:
+
+    CapabilityDirection m_capabilityDirection{CapabilityDirection::NOT_SET};
+    bool m_capabilityDirectionHasBeenSet = false;
 
     EdiType m_type;
     bool m_typeHasBeenSet = false;

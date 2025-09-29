@@ -26,12 +26,19 @@ namespace Aws
         static const int CUSTOM_HASH = HashingUtils::HashString("CUSTOM");
         static const int BOTTLEROCKET_ARM_64_HASH = HashingUtils::HashString("BOTTLEROCKET_ARM_64");
         static const int BOTTLEROCKET_x86_64_HASH = HashingUtils::HashString("BOTTLEROCKET_x86_64");
+        static const int BOTTLEROCKET_ARM_64_FIPS_HASH = HashingUtils::HashString("BOTTLEROCKET_ARM_64_FIPS");
+        static const int BOTTLEROCKET_x86_64_FIPS_HASH = HashingUtils::HashString("BOTTLEROCKET_x86_64_FIPS");
         static const int BOTTLEROCKET_ARM_64_NVIDIA_HASH = HashingUtils::HashString("BOTTLEROCKET_ARM_64_NVIDIA");
         static const int BOTTLEROCKET_x86_64_NVIDIA_HASH = HashingUtils::HashString("BOTTLEROCKET_x86_64_NVIDIA");
         static const int WINDOWS_CORE_2019_x86_64_HASH = HashingUtils::HashString("WINDOWS_CORE_2019_x86_64");
         static const int WINDOWS_FULL_2019_x86_64_HASH = HashingUtils::HashString("WINDOWS_FULL_2019_x86_64");
         static const int WINDOWS_CORE_2022_x86_64_HASH = HashingUtils::HashString("WINDOWS_CORE_2022_x86_64");
         static const int WINDOWS_FULL_2022_x86_64_HASH = HashingUtils::HashString("WINDOWS_FULL_2022_x86_64");
+        static const int AL2023_x86_64_STANDARD_HASH = HashingUtils::HashString("AL2023_x86_64_STANDARD");
+        static const int AL2023_ARM_64_STANDARD_HASH = HashingUtils::HashString("AL2023_ARM_64_STANDARD");
+        static const int AL2023_x86_64_NEURON_HASH = HashingUtils::HashString("AL2023_x86_64_NEURON");
+        static const int AL2023_x86_64_NVIDIA_HASH = HashingUtils::HashString("AL2023_x86_64_NVIDIA");
+        static const int AL2023_ARM_64_NVIDIA_HASH = HashingUtils::HashString("AL2023_ARM_64_NVIDIA");
 
 
         AMITypes GetAMITypesForName(const Aws::String& name)
@@ -61,6 +68,14 @@ namespace Aws
           {
             return AMITypes::BOTTLEROCKET_x86_64;
           }
+          else if (hashCode == BOTTLEROCKET_ARM_64_FIPS_HASH)
+          {
+            return AMITypes::BOTTLEROCKET_ARM_64_FIPS;
+          }
+          else if (hashCode == BOTTLEROCKET_x86_64_FIPS_HASH)
+          {
+            return AMITypes::BOTTLEROCKET_x86_64_FIPS;
+          }
           else if (hashCode == BOTTLEROCKET_ARM_64_NVIDIA_HASH)
           {
             return AMITypes::BOTTLEROCKET_ARM_64_NVIDIA;
@@ -84,6 +99,26 @@ namespace Aws
           else if (hashCode == WINDOWS_FULL_2022_x86_64_HASH)
           {
             return AMITypes::WINDOWS_FULL_2022_x86_64;
+          }
+          else if (hashCode == AL2023_x86_64_STANDARD_HASH)
+          {
+            return AMITypes::AL2023_x86_64_STANDARD;
+          }
+          else if (hashCode == AL2023_ARM_64_STANDARD_HASH)
+          {
+            return AMITypes::AL2023_ARM_64_STANDARD;
+          }
+          else if (hashCode == AL2023_x86_64_NEURON_HASH)
+          {
+            return AMITypes::AL2023_x86_64_NEURON;
+          }
+          else if (hashCode == AL2023_x86_64_NVIDIA_HASH)
+          {
+            return AMITypes::AL2023_x86_64_NVIDIA;
+          }
+          else if (hashCode == AL2023_ARM_64_NVIDIA_HASH)
+          {
+            return AMITypes::AL2023_ARM_64_NVIDIA;
           }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
@@ -113,6 +148,10 @@ namespace Aws
             return "BOTTLEROCKET_ARM_64";
           case AMITypes::BOTTLEROCKET_x86_64:
             return "BOTTLEROCKET_x86_64";
+          case AMITypes::BOTTLEROCKET_ARM_64_FIPS:
+            return "BOTTLEROCKET_ARM_64_FIPS";
+          case AMITypes::BOTTLEROCKET_x86_64_FIPS:
+            return "BOTTLEROCKET_x86_64_FIPS";
           case AMITypes::BOTTLEROCKET_ARM_64_NVIDIA:
             return "BOTTLEROCKET_ARM_64_NVIDIA";
           case AMITypes::BOTTLEROCKET_x86_64_NVIDIA:
@@ -125,6 +164,16 @@ namespace Aws
             return "WINDOWS_CORE_2022_x86_64";
           case AMITypes::WINDOWS_FULL_2022_x86_64:
             return "WINDOWS_FULL_2022_x86_64";
+          case AMITypes::AL2023_x86_64_STANDARD:
+            return "AL2023_x86_64_STANDARD";
+          case AMITypes::AL2023_ARM_64_STANDARD:
+            return "AL2023_ARM_64_STANDARD";
+          case AMITypes::AL2023_x86_64_NEURON:
+            return "AL2023_x86_64_NEURON";
+          case AMITypes::AL2023_x86_64_NVIDIA:
+            return "AL2023_x86_64_NVIDIA";
+          case AMITypes::AL2023_ARM_64_NVIDIA:
+            return "AL2023_ARM_64_NVIDIA";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

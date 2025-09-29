@@ -25,7 +25,7 @@ namespace Model
   class GetSubscriptionDefinitionVersionRequest : public GreengrassRequest
   {
   public:
-    AWS_GREENGRASS_API GetSubscriptionDefinitionVersionRequest();
+    AWS_GREENGRASS_API GetSubscriptionDefinitionVersionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,96 +38,32 @@ namespace Model
     AWS_GREENGRASS_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * The token for the next set of results, or ''null'' if there are no additional
      * results.
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * The token for the next set of results, or ''null'' if there are no additional
-     * results.
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    GetSubscriptionDefinitionVersionRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The token for the next set of results, or ''null'' if there are no additional
-     * results.
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * The token for the next set of results, or ''null'' if there are no additional
-     * results.
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * The token for the next set of results, or ''null'' if there are no additional
-     * results.
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * The token for the next set of results, or ''null'' if there are no additional
-     * results.
-     */
-    inline GetSubscriptionDefinitionVersionRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * The token for the next set of results, or ''null'' if there are no additional
-     * results.
-     */
-    inline GetSubscriptionDefinitionVersionRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * The token for the next set of results, or ''null'' if there are no additional
-     * results.
-     */
-    inline GetSubscriptionDefinitionVersionRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * The ID of the subscription definition.
      */
-    inline const Aws::String& GetSubscriptionDefinitionId() const{ return m_subscriptionDefinitionId; }
-
-    /**
-     * The ID of the subscription definition.
-     */
+    inline const Aws::String& GetSubscriptionDefinitionId() const { return m_subscriptionDefinitionId; }
     inline bool SubscriptionDefinitionIdHasBeenSet() const { return m_subscriptionDefinitionIdHasBeenSet; }
+    template<typename SubscriptionDefinitionIdT = Aws::String>
+    void SetSubscriptionDefinitionId(SubscriptionDefinitionIdT&& value) { m_subscriptionDefinitionIdHasBeenSet = true; m_subscriptionDefinitionId = std::forward<SubscriptionDefinitionIdT>(value); }
+    template<typename SubscriptionDefinitionIdT = Aws::String>
+    GetSubscriptionDefinitionVersionRequest& WithSubscriptionDefinitionId(SubscriptionDefinitionIdT&& value) { SetSubscriptionDefinitionId(std::forward<SubscriptionDefinitionIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The ID of the subscription definition.
-     */
-    inline void SetSubscriptionDefinitionId(const Aws::String& value) { m_subscriptionDefinitionIdHasBeenSet = true; m_subscriptionDefinitionId = value; }
-
-    /**
-     * The ID of the subscription definition.
-     */
-    inline void SetSubscriptionDefinitionId(Aws::String&& value) { m_subscriptionDefinitionIdHasBeenSet = true; m_subscriptionDefinitionId = std::move(value); }
-
-    /**
-     * The ID of the subscription definition.
-     */
-    inline void SetSubscriptionDefinitionId(const char* value) { m_subscriptionDefinitionIdHasBeenSet = true; m_subscriptionDefinitionId.assign(value); }
-
-    /**
-     * The ID of the subscription definition.
-     */
-    inline GetSubscriptionDefinitionVersionRequest& WithSubscriptionDefinitionId(const Aws::String& value) { SetSubscriptionDefinitionId(value); return *this;}
-
-    /**
-     * The ID of the subscription definition.
-     */
-    inline GetSubscriptionDefinitionVersionRequest& WithSubscriptionDefinitionId(Aws::String&& value) { SetSubscriptionDefinitionId(std::move(value)); return *this;}
-
-    /**
-     * The ID of the subscription definition.
-     */
-    inline GetSubscriptionDefinitionVersionRequest& WithSubscriptionDefinitionId(const char* value) { SetSubscriptionDefinitionId(value); return *this;}
-
-
+    ///@{
     /**
      * The ID of the subscription definition version. This value maps to the
      * ''Version'' property of the corresponding ''VersionInformation'' object, which
@@ -136,78 +72,13 @@ namespace Model
      * also maps to the ''LatestVersion'' property of the corresponding
      * ''DefinitionInformation'' object.
      */
-    inline const Aws::String& GetSubscriptionDefinitionVersionId() const{ return m_subscriptionDefinitionVersionId; }
-
-    /**
-     * The ID of the subscription definition version. This value maps to the
-     * ''Version'' property of the corresponding ''VersionInformation'' object, which
-     * is returned by ''ListSubscriptionDefinitionVersions'' requests. If the version
-     * is the last one that was associated with a subscription definition, the value
-     * also maps to the ''LatestVersion'' property of the corresponding
-     * ''DefinitionInformation'' object.
-     */
+    inline const Aws::String& GetSubscriptionDefinitionVersionId() const { return m_subscriptionDefinitionVersionId; }
     inline bool SubscriptionDefinitionVersionIdHasBeenSet() const { return m_subscriptionDefinitionVersionIdHasBeenSet; }
-
-    /**
-     * The ID of the subscription definition version. This value maps to the
-     * ''Version'' property of the corresponding ''VersionInformation'' object, which
-     * is returned by ''ListSubscriptionDefinitionVersions'' requests. If the version
-     * is the last one that was associated with a subscription definition, the value
-     * also maps to the ''LatestVersion'' property of the corresponding
-     * ''DefinitionInformation'' object.
-     */
-    inline void SetSubscriptionDefinitionVersionId(const Aws::String& value) { m_subscriptionDefinitionVersionIdHasBeenSet = true; m_subscriptionDefinitionVersionId = value; }
-
-    /**
-     * The ID of the subscription definition version. This value maps to the
-     * ''Version'' property of the corresponding ''VersionInformation'' object, which
-     * is returned by ''ListSubscriptionDefinitionVersions'' requests. If the version
-     * is the last one that was associated with a subscription definition, the value
-     * also maps to the ''LatestVersion'' property of the corresponding
-     * ''DefinitionInformation'' object.
-     */
-    inline void SetSubscriptionDefinitionVersionId(Aws::String&& value) { m_subscriptionDefinitionVersionIdHasBeenSet = true; m_subscriptionDefinitionVersionId = std::move(value); }
-
-    /**
-     * The ID of the subscription definition version. This value maps to the
-     * ''Version'' property of the corresponding ''VersionInformation'' object, which
-     * is returned by ''ListSubscriptionDefinitionVersions'' requests. If the version
-     * is the last one that was associated with a subscription definition, the value
-     * also maps to the ''LatestVersion'' property of the corresponding
-     * ''DefinitionInformation'' object.
-     */
-    inline void SetSubscriptionDefinitionVersionId(const char* value) { m_subscriptionDefinitionVersionIdHasBeenSet = true; m_subscriptionDefinitionVersionId.assign(value); }
-
-    /**
-     * The ID of the subscription definition version. This value maps to the
-     * ''Version'' property of the corresponding ''VersionInformation'' object, which
-     * is returned by ''ListSubscriptionDefinitionVersions'' requests. If the version
-     * is the last one that was associated with a subscription definition, the value
-     * also maps to the ''LatestVersion'' property of the corresponding
-     * ''DefinitionInformation'' object.
-     */
-    inline GetSubscriptionDefinitionVersionRequest& WithSubscriptionDefinitionVersionId(const Aws::String& value) { SetSubscriptionDefinitionVersionId(value); return *this;}
-
-    /**
-     * The ID of the subscription definition version. This value maps to the
-     * ''Version'' property of the corresponding ''VersionInformation'' object, which
-     * is returned by ''ListSubscriptionDefinitionVersions'' requests. If the version
-     * is the last one that was associated with a subscription definition, the value
-     * also maps to the ''LatestVersion'' property of the corresponding
-     * ''DefinitionInformation'' object.
-     */
-    inline GetSubscriptionDefinitionVersionRequest& WithSubscriptionDefinitionVersionId(Aws::String&& value) { SetSubscriptionDefinitionVersionId(std::move(value)); return *this;}
-
-    /**
-     * The ID of the subscription definition version. This value maps to the
-     * ''Version'' property of the corresponding ''VersionInformation'' object, which
-     * is returned by ''ListSubscriptionDefinitionVersions'' requests. If the version
-     * is the last one that was associated with a subscription definition, the value
-     * also maps to the ''LatestVersion'' property of the corresponding
-     * ''DefinitionInformation'' object.
-     */
-    inline GetSubscriptionDefinitionVersionRequest& WithSubscriptionDefinitionVersionId(const char* value) { SetSubscriptionDefinitionVersionId(value); return *this;}
-
+    template<typename SubscriptionDefinitionVersionIdT = Aws::String>
+    void SetSubscriptionDefinitionVersionId(SubscriptionDefinitionVersionIdT&& value) { m_subscriptionDefinitionVersionIdHasBeenSet = true; m_subscriptionDefinitionVersionId = std::forward<SubscriptionDefinitionVersionIdT>(value); }
+    template<typename SubscriptionDefinitionVersionIdT = Aws::String>
+    GetSubscriptionDefinitionVersionRequest& WithSubscriptionDefinitionVersionId(SubscriptionDefinitionVersionIdT&& value) { SetSubscriptionDefinitionVersionId(std::forward<SubscriptionDefinitionVersionIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_nextToken;

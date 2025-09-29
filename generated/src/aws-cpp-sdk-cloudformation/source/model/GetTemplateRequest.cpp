@@ -10,14 +10,6 @@
 using namespace Aws::CloudFormation::Model;
 using namespace Aws::Utils;
 
-GetTemplateRequest::GetTemplateRequest() : 
-    m_stackNameHasBeenSet(false),
-    m_changeSetNameHasBeenSet(false),
-    m_templateStage(TemplateStage::NOT_SET),
-    m_templateStageHasBeenSet(false)
-{
-}
-
 Aws::String GetTemplateRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -34,7 +26,7 @@ Aws::String GetTemplateRequest::SerializePayload() const
 
   if(m_templateStageHasBeenSet)
   {
-    ss << "TemplateStage=" << TemplateStageMapper::GetNameForTemplateStage(m_templateStage) << "&";
+    ss << "TemplateStage=" << StringUtils::URLEncode(TemplateStageMapper::GetNameForTemplateStage(m_templateStage)) << "&";
   }
 
   ss << "Version=2010-05-15";

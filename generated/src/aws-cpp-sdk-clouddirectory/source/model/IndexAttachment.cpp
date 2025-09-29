@@ -18,15 +18,7 @@ namespace CloudDirectory
 namespace Model
 {
 
-IndexAttachment::IndexAttachment() : 
-    m_indexedAttributesHasBeenSet(false),
-    m_objectIdentifierHasBeenSet(false)
-{
-}
-
-IndexAttachment::IndexAttachment(JsonView jsonValue) : 
-    m_indexedAttributesHasBeenSet(false),
-    m_objectIdentifierHasBeenSet(false)
+IndexAttachment::IndexAttachment(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ IndexAttachment& IndexAttachment::operator =(JsonView jsonValue)
     }
     m_indexedAttributesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ObjectIdentifier"))
   {
     m_objectIdentifier = jsonValue.GetString("ObjectIdentifier");
-
     m_objectIdentifierHasBeenSet = true;
   }
-
   return *this;
 }
 

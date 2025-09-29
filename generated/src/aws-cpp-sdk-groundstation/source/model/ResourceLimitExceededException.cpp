@@ -18,15 +18,7 @@ namespace GroundStation
 namespace Model
 {
 
-ResourceLimitExceededException::ResourceLimitExceededException() : 
-    m_messageHasBeenSet(false),
-    m_parameterNameHasBeenSet(false)
-{
-}
-
-ResourceLimitExceededException::ResourceLimitExceededException(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_parameterNameHasBeenSet(false)
+ResourceLimitExceededException::ResourceLimitExceededException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ResourceLimitExceededException& ResourceLimitExceededException::operator =(JsonV
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("parameterName"))
   {
     m_parameterName = jsonValue.GetString("parameterName");
-
     m_parameterNameHasBeenSet = true;
   }
-
   return *this;
 }
 

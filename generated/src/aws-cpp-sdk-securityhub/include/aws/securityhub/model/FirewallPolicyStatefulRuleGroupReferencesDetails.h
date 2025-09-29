@@ -32,52 +32,23 @@ namespace Model
   class FirewallPolicyStatefulRuleGroupReferencesDetails
   {
   public:
-    AWS_SECURITYHUB_API FirewallPolicyStatefulRuleGroupReferencesDetails();
+    AWS_SECURITYHUB_API FirewallPolicyStatefulRuleGroupReferencesDetails() = default;
     AWS_SECURITYHUB_API FirewallPolicyStatefulRuleGroupReferencesDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API FirewallPolicyStatefulRuleGroupReferencesDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ARN of the stateful rule group.</p>
      */
-    inline const Aws::String& GetResourceArn() const{ return m_resourceArn; }
-
-    /**
-     * <p>The ARN of the stateful rule group.</p>
-     */
+    inline const Aws::String& GetResourceArn() const { return m_resourceArn; }
     inline bool ResourceArnHasBeenSet() const { return m_resourceArnHasBeenSet; }
-
-    /**
-     * <p>The ARN of the stateful rule group.</p>
-     */
-    inline void SetResourceArn(const Aws::String& value) { m_resourceArnHasBeenSet = true; m_resourceArn = value; }
-
-    /**
-     * <p>The ARN of the stateful rule group.</p>
-     */
-    inline void SetResourceArn(Aws::String&& value) { m_resourceArnHasBeenSet = true; m_resourceArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the stateful rule group.</p>
-     */
-    inline void SetResourceArn(const char* value) { m_resourceArnHasBeenSet = true; m_resourceArn.assign(value); }
-
-    /**
-     * <p>The ARN of the stateful rule group.</p>
-     */
-    inline FirewallPolicyStatefulRuleGroupReferencesDetails& WithResourceArn(const Aws::String& value) { SetResourceArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the stateful rule group.</p>
-     */
-    inline FirewallPolicyStatefulRuleGroupReferencesDetails& WithResourceArn(Aws::String&& value) { SetResourceArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the stateful rule group.</p>
-     */
-    inline FirewallPolicyStatefulRuleGroupReferencesDetails& WithResourceArn(const char* value) { SetResourceArn(value); return *this;}
-
+    template<typename ResourceArnT = Aws::String>
+    void SetResourceArn(ResourceArnT&& value) { m_resourceArnHasBeenSet = true; m_resourceArn = std::forward<ResourceArnT>(value); }
+    template<typename ResourceArnT = Aws::String>
+    FirewallPolicyStatefulRuleGroupReferencesDetails& WithResourceArn(ResourceArnT&& value) { SetResourceArn(std::forward<ResourceArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_resourceArn;

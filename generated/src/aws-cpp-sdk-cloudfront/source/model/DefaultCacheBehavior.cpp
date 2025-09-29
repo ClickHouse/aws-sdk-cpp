@@ -20,45 +20,7 @@ namespace CloudFront
 namespace Model
 {
 
-DefaultCacheBehavior::DefaultCacheBehavior() : 
-    m_targetOriginIdHasBeenSet(false),
-    m_trustedSignersHasBeenSet(false),
-    m_trustedKeyGroupsHasBeenSet(false),
-    m_viewerProtocolPolicy(ViewerProtocolPolicy::NOT_SET),
-    m_viewerProtocolPolicyHasBeenSet(false),
-    m_allowedMethodsHasBeenSet(false),
-    m_smoothStreaming(false),
-    m_smoothStreamingHasBeenSet(false),
-    m_compress(false),
-    m_compressHasBeenSet(false),
-    m_lambdaFunctionAssociationsHasBeenSet(false),
-    m_functionAssociationsHasBeenSet(false),
-    m_fieldLevelEncryptionIdHasBeenSet(false),
-    m_realtimeLogConfigArnHasBeenSet(false),
-    m_cachePolicyIdHasBeenSet(false),
-    m_originRequestPolicyIdHasBeenSet(false),
-    m_responseHeadersPolicyIdHasBeenSet(false)
-{
-}
-
-DefaultCacheBehavior::DefaultCacheBehavior(const XmlNode& xmlNode) : 
-    m_targetOriginIdHasBeenSet(false),
-    m_trustedSignersHasBeenSet(false),
-    m_trustedKeyGroupsHasBeenSet(false),
-    m_viewerProtocolPolicy(ViewerProtocolPolicy::NOT_SET),
-    m_viewerProtocolPolicyHasBeenSet(false),
-    m_allowedMethodsHasBeenSet(false),
-    m_smoothStreaming(false),
-    m_smoothStreamingHasBeenSet(false),
-    m_compress(false),
-    m_compressHasBeenSet(false),
-    m_lambdaFunctionAssociationsHasBeenSet(false),
-    m_functionAssociationsHasBeenSet(false),
-    m_fieldLevelEncryptionIdHasBeenSet(false),
-    m_realtimeLogConfigArnHasBeenSet(false),
-    m_cachePolicyIdHasBeenSet(false),
-    m_originRequestPolicyIdHasBeenSet(false),
-    m_responseHeadersPolicyIdHasBeenSet(false)
+DefaultCacheBehavior::DefaultCacheBehavior(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -90,7 +52,7 @@ DefaultCacheBehavior& DefaultCacheBehavior::operator =(const XmlNode& xmlNode)
     XmlNode viewerProtocolPolicyNode = resultNode.FirstChild("ViewerProtocolPolicy");
     if(!viewerProtocolPolicyNode.IsNull())
     {
-      m_viewerProtocolPolicy = ViewerProtocolPolicyMapper::GetViewerProtocolPolicyForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(viewerProtocolPolicyNode.GetText()).c_str()).c_str());
+      m_viewerProtocolPolicy = ViewerProtocolPolicyMapper::GetViewerProtocolPolicyForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(viewerProtocolPolicyNode.GetText()).c_str()));
       m_viewerProtocolPolicyHasBeenSet = true;
     }
     XmlNode allowedMethodsNode = resultNode.FirstChild("AllowedMethods");
@@ -152,6 +114,12 @@ DefaultCacheBehavior& DefaultCacheBehavior::operator =(const XmlNode& xmlNode)
     {
       m_responseHeadersPolicyId = Aws::Utils::Xml::DecodeEscapedXmlText(responseHeadersPolicyIdNode.GetText());
       m_responseHeadersPolicyIdHasBeenSet = true;
+    }
+    XmlNode grpcConfigNode = resultNode.FirstChild("GrpcConfig");
+    if(!grpcConfigNode.IsNull())
+    {
+      m_grpcConfig = grpcConfigNode;
+      m_grpcConfigHasBeenSet = true;
     }
   }
 
@@ -247,6 +215,12 @@ void DefaultCacheBehavior::AddToNode(XmlNode& parentNode) const
   {
    XmlNode responseHeadersPolicyIdNode = parentNode.CreateChildElement("ResponseHeadersPolicyId");
    responseHeadersPolicyIdNode.SetText(m_responseHeadersPolicyId);
+  }
+
+  if(m_grpcConfigHasBeenSet)
+  {
+   XmlNode grpcConfigNode = parentNode.CreateChildElement("GrpcConfig");
+   m_grpcConfig.AddToNode(grpcConfigNode);
   }
 
 }

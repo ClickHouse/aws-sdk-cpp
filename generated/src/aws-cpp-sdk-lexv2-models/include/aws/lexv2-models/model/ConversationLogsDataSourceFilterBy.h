@@ -33,113 +33,54 @@ namespace Model
   class ConversationLogsDataSourceFilterBy
   {
   public:
-    AWS_LEXMODELSV2_API ConversationLogsDataSourceFilterBy();
+    AWS_LEXMODELSV2_API ConversationLogsDataSourceFilterBy() = default;
     AWS_LEXMODELSV2_API ConversationLogsDataSourceFilterBy(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API ConversationLogsDataSourceFilterBy& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The start time for the conversation log.</p>
      */
-    inline const Aws::Utils::DateTime& GetStartTime() const{ return m_startTime; }
-
-    /**
-     * <p>The start time for the conversation log.</p>
-     */
+    inline const Aws::Utils::DateTime& GetStartTime() const { return m_startTime; }
     inline bool StartTimeHasBeenSet() const { return m_startTimeHasBeenSet; }
+    template<typename StartTimeT = Aws::Utils::DateTime>
+    void SetStartTime(StartTimeT&& value) { m_startTimeHasBeenSet = true; m_startTime = std::forward<StartTimeT>(value); }
+    template<typename StartTimeT = Aws::Utils::DateTime>
+    ConversationLogsDataSourceFilterBy& WithStartTime(StartTimeT&& value) { SetStartTime(std::forward<StartTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The start time for the conversation log.</p>
-     */
-    inline void SetStartTime(const Aws::Utils::DateTime& value) { m_startTimeHasBeenSet = true; m_startTime = value; }
-
-    /**
-     * <p>The start time for the conversation log.</p>
-     */
-    inline void SetStartTime(Aws::Utils::DateTime&& value) { m_startTimeHasBeenSet = true; m_startTime = std::move(value); }
-
-    /**
-     * <p>The start time for the conversation log.</p>
-     */
-    inline ConversationLogsDataSourceFilterBy& WithStartTime(const Aws::Utils::DateTime& value) { SetStartTime(value); return *this;}
-
-    /**
-     * <p>The start time for the conversation log.</p>
-     */
-    inline ConversationLogsDataSourceFilterBy& WithStartTime(Aws::Utils::DateTime&& value) { SetStartTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The end time for the conversation log.</p>
      */
-    inline const Aws::Utils::DateTime& GetEndTime() const{ return m_endTime; }
-
-    /**
-     * <p>The end time for the conversation log.</p>
-     */
+    inline const Aws::Utils::DateTime& GetEndTime() const { return m_endTime; }
     inline bool EndTimeHasBeenSet() const { return m_endTimeHasBeenSet; }
+    template<typename EndTimeT = Aws::Utils::DateTime>
+    void SetEndTime(EndTimeT&& value) { m_endTimeHasBeenSet = true; m_endTime = std::forward<EndTimeT>(value); }
+    template<typename EndTimeT = Aws::Utils::DateTime>
+    ConversationLogsDataSourceFilterBy& WithEndTime(EndTimeT&& value) { SetEndTime(std::forward<EndTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The end time for the conversation log.</p>
-     */
-    inline void SetEndTime(const Aws::Utils::DateTime& value) { m_endTimeHasBeenSet = true; m_endTime = value; }
-
-    /**
-     * <p>The end time for the conversation log.</p>
-     */
-    inline void SetEndTime(Aws::Utils::DateTime&& value) { m_endTimeHasBeenSet = true; m_endTime = std::move(value); }
-
-    /**
-     * <p>The end time for the conversation log.</p>
-     */
-    inline ConversationLogsDataSourceFilterBy& WithEndTime(const Aws::Utils::DateTime& value) { SetEndTime(value); return *this;}
-
-    /**
-     * <p>The end time for the conversation log.</p>
-     */
-    inline ConversationLogsDataSourceFilterBy& WithEndTime(Aws::Utils::DateTime&& value) { SetEndTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The selection to filter by input mode for the conversation logs. </p>
      */
-    inline const ConversationLogsInputModeFilter& GetInputMode() const{ return m_inputMode; }
-
-    /**
-     * <p>The selection to filter by input mode for the conversation logs. </p>
-     */
+    inline ConversationLogsInputModeFilter GetInputMode() const { return m_inputMode; }
     inline bool InputModeHasBeenSet() const { return m_inputModeHasBeenSet; }
-
-    /**
-     * <p>The selection to filter by input mode for the conversation logs. </p>
-     */
-    inline void SetInputMode(const ConversationLogsInputModeFilter& value) { m_inputModeHasBeenSet = true; m_inputMode = value; }
-
-    /**
-     * <p>The selection to filter by input mode for the conversation logs. </p>
-     */
-    inline void SetInputMode(ConversationLogsInputModeFilter&& value) { m_inputModeHasBeenSet = true; m_inputMode = std::move(value); }
-
-    /**
-     * <p>The selection to filter by input mode for the conversation logs. </p>
-     */
-    inline ConversationLogsDataSourceFilterBy& WithInputMode(const ConversationLogsInputModeFilter& value) { SetInputMode(value); return *this;}
-
-    /**
-     * <p>The selection to filter by input mode for the conversation logs. </p>
-     */
-    inline ConversationLogsDataSourceFilterBy& WithInputMode(ConversationLogsInputModeFilter&& value) { SetInputMode(std::move(value)); return *this;}
-
+    inline void SetInputMode(ConversationLogsInputModeFilter value) { m_inputModeHasBeenSet = true; m_inputMode = value; }
+    inline ConversationLogsDataSourceFilterBy& WithInputMode(ConversationLogsInputModeFilter value) { SetInputMode(value); return *this;}
+    ///@}
   private:
 
-    Aws::Utils::DateTime m_startTime;
+    Aws::Utils::DateTime m_startTime{};
     bool m_startTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_endTime;
+    Aws::Utils::DateTime m_endTime{};
     bool m_endTimeHasBeenSet = false;
 
-    ConversationLogsInputModeFilter m_inputMode;
+    ConversationLogsInputModeFilter m_inputMode{ConversationLogsInputModeFilter::NOT_SET};
     bool m_inputModeHasBeenSet = false;
   };
 

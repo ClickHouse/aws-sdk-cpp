@@ -37,283 +37,101 @@ namespace Model
   class ResponseHeadersPolicyConfig
   {
   public:
-    AWS_CLOUDFRONT_API ResponseHeadersPolicyConfig();
+    AWS_CLOUDFRONT_API ResponseHeadersPolicyConfig() = default;
     AWS_CLOUDFRONT_API ResponseHeadersPolicyConfig(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_CLOUDFRONT_API ResponseHeadersPolicyConfig& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_CLOUDFRONT_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>A comment to describe the response headers policy.</p> <p>The comment cannot
      * be longer than 128 characters.</p>
      */
-    inline const Aws::String& GetComment() const{ return m_comment; }
-
-    /**
-     * <p>A comment to describe the response headers policy.</p> <p>The comment cannot
-     * be longer than 128 characters.</p>
-     */
+    inline const Aws::String& GetComment() const { return m_comment; }
     inline bool CommentHasBeenSet() const { return m_commentHasBeenSet; }
+    template<typename CommentT = Aws::String>
+    void SetComment(CommentT&& value) { m_commentHasBeenSet = true; m_comment = std::forward<CommentT>(value); }
+    template<typename CommentT = Aws::String>
+    ResponseHeadersPolicyConfig& WithComment(CommentT&& value) { SetComment(std::forward<CommentT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A comment to describe the response headers policy.</p> <p>The comment cannot
-     * be longer than 128 characters.</p>
-     */
-    inline void SetComment(const Aws::String& value) { m_commentHasBeenSet = true; m_comment = value; }
-
-    /**
-     * <p>A comment to describe the response headers policy.</p> <p>The comment cannot
-     * be longer than 128 characters.</p>
-     */
-    inline void SetComment(Aws::String&& value) { m_commentHasBeenSet = true; m_comment = std::move(value); }
-
-    /**
-     * <p>A comment to describe the response headers policy.</p> <p>The comment cannot
-     * be longer than 128 characters.</p>
-     */
-    inline void SetComment(const char* value) { m_commentHasBeenSet = true; m_comment.assign(value); }
-
-    /**
-     * <p>A comment to describe the response headers policy.</p> <p>The comment cannot
-     * be longer than 128 characters.</p>
-     */
-    inline ResponseHeadersPolicyConfig& WithComment(const Aws::String& value) { SetComment(value); return *this;}
-
-    /**
-     * <p>A comment to describe the response headers policy.</p> <p>The comment cannot
-     * be longer than 128 characters.</p>
-     */
-    inline ResponseHeadersPolicyConfig& WithComment(Aws::String&& value) { SetComment(std::move(value)); return *this;}
-
-    /**
-     * <p>A comment to describe the response headers policy.</p> <p>The comment cannot
-     * be longer than 128 characters.</p>
-     */
-    inline ResponseHeadersPolicyConfig& WithComment(const char* value) { SetComment(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A name to identify the response headers policy.</p> <p>The name must be
      * unique for response headers policies in this Amazon Web Services account.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>A name to identify the response headers policy.</p> <p>The name must be
-     * unique for response headers policies in this Amazon Web Services account.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    ResponseHeadersPolicyConfig& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A name to identify the response headers policy.</p> <p>The name must be
-     * unique for response headers policies in this Amazon Web Services account.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>A name to identify the response headers policy.</p> <p>The name must be
-     * unique for response headers policies in this Amazon Web Services account.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>A name to identify the response headers policy.</p> <p>The name must be
-     * unique for response headers policies in this Amazon Web Services account.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>A name to identify the response headers policy.</p> <p>The name must be
-     * unique for response headers policies in this Amazon Web Services account.</p>
-     */
-    inline ResponseHeadersPolicyConfig& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>A name to identify the response headers policy.</p> <p>The name must be
-     * unique for response headers policies in this Amazon Web Services account.</p>
-     */
-    inline ResponseHeadersPolicyConfig& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>A name to identify the response headers policy.</p> <p>The name must be
-     * unique for response headers policies in this Amazon Web Services account.</p>
-     */
-    inline ResponseHeadersPolicyConfig& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A configuration for a set of HTTP response headers that are used for
      * cross-origin resource sharing (CORS).</p>
      */
-    inline const ResponseHeadersPolicyCorsConfig& GetCorsConfig() const{ return m_corsConfig; }
-
-    /**
-     * <p>A configuration for a set of HTTP response headers that are used for
-     * cross-origin resource sharing (CORS).</p>
-     */
+    inline const ResponseHeadersPolicyCorsConfig& GetCorsConfig() const { return m_corsConfig; }
     inline bool CorsConfigHasBeenSet() const { return m_corsConfigHasBeenSet; }
+    template<typename CorsConfigT = ResponseHeadersPolicyCorsConfig>
+    void SetCorsConfig(CorsConfigT&& value) { m_corsConfigHasBeenSet = true; m_corsConfig = std::forward<CorsConfigT>(value); }
+    template<typename CorsConfigT = ResponseHeadersPolicyCorsConfig>
+    ResponseHeadersPolicyConfig& WithCorsConfig(CorsConfigT&& value) { SetCorsConfig(std::forward<CorsConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A configuration for a set of HTTP response headers that are used for
-     * cross-origin resource sharing (CORS).</p>
-     */
-    inline void SetCorsConfig(const ResponseHeadersPolicyCorsConfig& value) { m_corsConfigHasBeenSet = true; m_corsConfig = value; }
-
-    /**
-     * <p>A configuration for a set of HTTP response headers that are used for
-     * cross-origin resource sharing (CORS).</p>
-     */
-    inline void SetCorsConfig(ResponseHeadersPolicyCorsConfig&& value) { m_corsConfigHasBeenSet = true; m_corsConfig = std::move(value); }
-
-    /**
-     * <p>A configuration for a set of HTTP response headers that are used for
-     * cross-origin resource sharing (CORS).</p>
-     */
-    inline ResponseHeadersPolicyConfig& WithCorsConfig(const ResponseHeadersPolicyCorsConfig& value) { SetCorsConfig(value); return *this;}
-
-    /**
-     * <p>A configuration for a set of HTTP response headers that are used for
-     * cross-origin resource sharing (CORS).</p>
-     */
-    inline ResponseHeadersPolicyConfig& WithCorsConfig(ResponseHeadersPolicyCorsConfig&& value) { SetCorsConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A configuration for a set of security-related HTTP response headers.</p>
      */
-    inline const ResponseHeadersPolicySecurityHeadersConfig& GetSecurityHeadersConfig() const{ return m_securityHeadersConfig; }
-
-    /**
-     * <p>A configuration for a set of security-related HTTP response headers.</p>
-     */
+    inline const ResponseHeadersPolicySecurityHeadersConfig& GetSecurityHeadersConfig() const { return m_securityHeadersConfig; }
     inline bool SecurityHeadersConfigHasBeenSet() const { return m_securityHeadersConfigHasBeenSet; }
+    template<typename SecurityHeadersConfigT = ResponseHeadersPolicySecurityHeadersConfig>
+    void SetSecurityHeadersConfig(SecurityHeadersConfigT&& value) { m_securityHeadersConfigHasBeenSet = true; m_securityHeadersConfig = std::forward<SecurityHeadersConfigT>(value); }
+    template<typename SecurityHeadersConfigT = ResponseHeadersPolicySecurityHeadersConfig>
+    ResponseHeadersPolicyConfig& WithSecurityHeadersConfig(SecurityHeadersConfigT&& value) { SetSecurityHeadersConfig(std::forward<SecurityHeadersConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A configuration for a set of security-related HTTP response headers.</p>
-     */
-    inline void SetSecurityHeadersConfig(const ResponseHeadersPolicySecurityHeadersConfig& value) { m_securityHeadersConfigHasBeenSet = true; m_securityHeadersConfig = value; }
-
-    /**
-     * <p>A configuration for a set of security-related HTTP response headers.</p>
-     */
-    inline void SetSecurityHeadersConfig(ResponseHeadersPolicySecurityHeadersConfig&& value) { m_securityHeadersConfigHasBeenSet = true; m_securityHeadersConfig = std::move(value); }
-
-    /**
-     * <p>A configuration for a set of security-related HTTP response headers.</p>
-     */
-    inline ResponseHeadersPolicyConfig& WithSecurityHeadersConfig(const ResponseHeadersPolicySecurityHeadersConfig& value) { SetSecurityHeadersConfig(value); return *this;}
-
-    /**
-     * <p>A configuration for a set of security-related HTTP response headers.</p>
-     */
-    inline ResponseHeadersPolicyConfig& WithSecurityHeadersConfig(ResponseHeadersPolicySecurityHeadersConfig&& value) { SetSecurityHeadersConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A configuration for enabling the <code>Server-Timing</code> header in HTTP
      * responses sent from CloudFront.</p>
      */
-    inline const ResponseHeadersPolicyServerTimingHeadersConfig& GetServerTimingHeadersConfig() const{ return m_serverTimingHeadersConfig; }
-
-    /**
-     * <p>A configuration for enabling the <code>Server-Timing</code> header in HTTP
-     * responses sent from CloudFront.</p>
-     */
+    inline const ResponseHeadersPolicyServerTimingHeadersConfig& GetServerTimingHeadersConfig() const { return m_serverTimingHeadersConfig; }
     inline bool ServerTimingHeadersConfigHasBeenSet() const { return m_serverTimingHeadersConfigHasBeenSet; }
+    template<typename ServerTimingHeadersConfigT = ResponseHeadersPolicyServerTimingHeadersConfig>
+    void SetServerTimingHeadersConfig(ServerTimingHeadersConfigT&& value) { m_serverTimingHeadersConfigHasBeenSet = true; m_serverTimingHeadersConfig = std::forward<ServerTimingHeadersConfigT>(value); }
+    template<typename ServerTimingHeadersConfigT = ResponseHeadersPolicyServerTimingHeadersConfig>
+    ResponseHeadersPolicyConfig& WithServerTimingHeadersConfig(ServerTimingHeadersConfigT&& value) { SetServerTimingHeadersConfig(std::forward<ServerTimingHeadersConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A configuration for enabling the <code>Server-Timing</code> header in HTTP
-     * responses sent from CloudFront.</p>
-     */
-    inline void SetServerTimingHeadersConfig(const ResponseHeadersPolicyServerTimingHeadersConfig& value) { m_serverTimingHeadersConfigHasBeenSet = true; m_serverTimingHeadersConfig = value; }
-
-    /**
-     * <p>A configuration for enabling the <code>Server-Timing</code> header in HTTP
-     * responses sent from CloudFront.</p>
-     */
-    inline void SetServerTimingHeadersConfig(ResponseHeadersPolicyServerTimingHeadersConfig&& value) { m_serverTimingHeadersConfigHasBeenSet = true; m_serverTimingHeadersConfig = std::move(value); }
-
-    /**
-     * <p>A configuration for enabling the <code>Server-Timing</code> header in HTTP
-     * responses sent from CloudFront.</p>
-     */
-    inline ResponseHeadersPolicyConfig& WithServerTimingHeadersConfig(const ResponseHeadersPolicyServerTimingHeadersConfig& value) { SetServerTimingHeadersConfig(value); return *this;}
-
-    /**
-     * <p>A configuration for enabling the <code>Server-Timing</code> header in HTTP
-     * responses sent from CloudFront.</p>
-     */
-    inline ResponseHeadersPolicyConfig& WithServerTimingHeadersConfig(ResponseHeadersPolicyServerTimingHeadersConfig&& value) { SetServerTimingHeadersConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A configuration for a set of custom HTTP response headers.</p>
      */
-    inline const ResponseHeadersPolicyCustomHeadersConfig& GetCustomHeadersConfig() const{ return m_customHeadersConfig; }
-
-    /**
-     * <p>A configuration for a set of custom HTTP response headers.</p>
-     */
+    inline const ResponseHeadersPolicyCustomHeadersConfig& GetCustomHeadersConfig() const { return m_customHeadersConfig; }
     inline bool CustomHeadersConfigHasBeenSet() const { return m_customHeadersConfigHasBeenSet; }
+    template<typename CustomHeadersConfigT = ResponseHeadersPolicyCustomHeadersConfig>
+    void SetCustomHeadersConfig(CustomHeadersConfigT&& value) { m_customHeadersConfigHasBeenSet = true; m_customHeadersConfig = std::forward<CustomHeadersConfigT>(value); }
+    template<typename CustomHeadersConfigT = ResponseHeadersPolicyCustomHeadersConfig>
+    ResponseHeadersPolicyConfig& WithCustomHeadersConfig(CustomHeadersConfigT&& value) { SetCustomHeadersConfig(std::forward<CustomHeadersConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A configuration for a set of custom HTTP response headers.</p>
-     */
-    inline void SetCustomHeadersConfig(const ResponseHeadersPolicyCustomHeadersConfig& value) { m_customHeadersConfigHasBeenSet = true; m_customHeadersConfig = value; }
-
-    /**
-     * <p>A configuration for a set of custom HTTP response headers.</p>
-     */
-    inline void SetCustomHeadersConfig(ResponseHeadersPolicyCustomHeadersConfig&& value) { m_customHeadersConfigHasBeenSet = true; m_customHeadersConfig = std::move(value); }
-
-    /**
-     * <p>A configuration for a set of custom HTTP response headers.</p>
-     */
-    inline ResponseHeadersPolicyConfig& WithCustomHeadersConfig(const ResponseHeadersPolicyCustomHeadersConfig& value) { SetCustomHeadersConfig(value); return *this;}
-
-    /**
-     * <p>A configuration for a set of custom HTTP response headers.</p>
-     */
-    inline ResponseHeadersPolicyConfig& WithCustomHeadersConfig(ResponseHeadersPolicyCustomHeadersConfig&& value) { SetCustomHeadersConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A configuration for a set of HTTP headers to remove from the HTTP
      * response.</p>
      */
-    inline const ResponseHeadersPolicyRemoveHeadersConfig& GetRemoveHeadersConfig() const{ return m_removeHeadersConfig; }
-
-    /**
-     * <p>A configuration for a set of HTTP headers to remove from the HTTP
-     * response.</p>
-     */
+    inline const ResponseHeadersPolicyRemoveHeadersConfig& GetRemoveHeadersConfig() const { return m_removeHeadersConfig; }
     inline bool RemoveHeadersConfigHasBeenSet() const { return m_removeHeadersConfigHasBeenSet; }
-
-    /**
-     * <p>A configuration for a set of HTTP headers to remove from the HTTP
-     * response.</p>
-     */
-    inline void SetRemoveHeadersConfig(const ResponseHeadersPolicyRemoveHeadersConfig& value) { m_removeHeadersConfigHasBeenSet = true; m_removeHeadersConfig = value; }
-
-    /**
-     * <p>A configuration for a set of HTTP headers to remove from the HTTP
-     * response.</p>
-     */
-    inline void SetRemoveHeadersConfig(ResponseHeadersPolicyRemoveHeadersConfig&& value) { m_removeHeadersConfigHasBeenSet = true; m_removeHeadersConfig = std::move(value); }
-
-    /**
-     * <p>A configuration for a set of HTTP headers to remove from the HTTP
-     * response.</p>
-     */
-    inline ResponseHeadersPolicyConfig& WithRemoveHeadersConfig(const ResponseHeadersPolicyRemoveHeadersConfig& value) { SetRemoveHeadersConfig(value); return *this;}
-
-    /**
-     * <p>A configuration for a set of HTTP headers to remove from the HTTP
-     * response.</p>
-     */
-    inline ResponseHeadersPolicyConfig& WithRemoveHeadersConfig(ResponseHeadersPolicyRemoveHeadersConfig&& value) { SetRemoveHeadersConfig(std::move(value)); return *this;}
-
+    template<typename RemoveHeadersConfigT = ResponseHeadersPolicyRemoveHeadersConfig>
+    void SetRemoveHeadersConfig(RemoveHeadersConfigT&& value) { m_removeHeadersConfigHasBeenSet = true; m_removeHeadersConfig = std::forward<RemoveHeadersConfigT>(value); }
+    template<typename RemoveHeadersConfigT = ResponseHeadersPolicyRemoveHeadersConfig>
+    ResponseHeadersPolicyConfig& WithRemoveHeadersConfig(RemoveHeadersConfigT&& value) { SetRemoveHeadersConfig(std::forward<RemoveHeadersConfigT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_comment;

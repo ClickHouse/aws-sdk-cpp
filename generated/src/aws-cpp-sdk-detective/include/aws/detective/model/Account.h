@@ -32,101 +32,36 @@ namespace Model
   class Account
   {
   public:
-    AWS_DETECTIVE_API Account();
+    AWS_DETECTIVE_API Account() = default;
     AWS_DETECTIVE_API Account(Aws::Utils::Json::JsonView jsonValue);
     AWS_DETECTIVE_API Account& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DETECTIVE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The account identifier of the Amazon Web Services account.</p>
      */
-    inline const Aws::String& GetAccountId() const{ return m_accountId; }
-
-    /**
-     * <p>The account identifier of the Amazon Web Services account.</p>
-     */
+    inline const Aws::String& GetAccountId() const { return m_accountId; }
     inline bool AccountIdHasBeenSet() const { return m_accountIdHasBeenSet; }
+    template<typename AccountIdT = Aws::String>
+    void SetAccountId(AccountIdT&& value) { m_accountIdHasBeenSet = true; m_accountId = std::forward<AccountIdT>(value); }
+    template<typename AccountIdT = Aws::String>
+    Account& WithAccountId(AccountIdT&& value) { SetAccountId(std::forward<AccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The account identifier of the Amazon Web Services account.</p>
-     */
-    inline void SetAccountId(const Aws::String& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
-
-    /**
-     * <p>The account identifier of the Amazon Web Services account.</p>
-     */
-    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = std::move(value); }
-
-    /**
-     * <p>The account identifier of the Amazon Web Services account.</p>
-     */
-    inline void SetAccountId(const char* value) { m_accountIdHasBeenSet = true; m_accountId.assign(value); }
-
-    /**
-     * <p>The account identifier of the Amazon Web Services account.</p>
-     */
-    inline Account& WithAccountId(const Aws::String& value) { SetAccountId(value); return *this;}
-
-    /**
-     * <p>The account identifier of the Amazon Web Services account.</p>
-     */
-    inline Account& WithAccountId(Aws::String&& value) { SetAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The account identifier of the Amazon Web Services account.</p>
-     */
-    inline Account& WithAccountId(const char* value) { SetAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Web Services account root user email address for the Amazon Web
      * Services account.</p>
      */
-    inline const Aws::String& GetEmailAddress() const{ return m_emailAddress; }
-
-    /**
-     * <p>The Amazon Web Services account root user email address for the Amazon Web
-     * Services account.</p>
-     */
+    inline const Aws::String& GetEmailAddress() const { return m_emailAddress; }
     inline bool EmailAddressHasBeenSet() const { return m_emailAddressHasBeenSet; }
-
-    /**
-     * <p>The Amazon Web Services account root user email address for the Amazon Web
-     * Services account.</p>
-     */
-    inline void SetEmailAddress(const Aws::String& value) { m_emailAddressHasBeenSet = true; m_emailAddress = value; }
-
-    /**
-     * <p>The Amazon Web Services account root user email address for the Amazon Web
-     * Services account.</p>
-     */
-    inline void SetEmailAddress(Aws::String&& value) { m_emailAddressHasBeenSet = true; m_emailAddress = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services account root user email address for the Amazon Web
-     * Services account.</p>
-     */
-    inline void SetEmailAddress(const char* value) { m_emailAddressHasBeenSet = true; m_emailAddress.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services account root user email address for the Amazon Web
-     * Services account.</p>
-     */
-    inline Account& WithEmailAddress(const Aws::String& value) { SetEmailAddress(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account root user email address for the Amazon Web
-     * Services account.</p>
-     */
-    inline Account& WithEmailAddress(Aws::String&& value) { SetEmailAddress(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account root user email address for the Amazon Web
-     * Services account.</p>
-     */
-    inline Account& WithEmailAddress(const char* value) { SetEmailAddress(value); return *this;}
-
+    template<typename EmailAddressT = Aws::String>
+    void SetEmailAddress(EmailAddressT&& value) { m_emailAddressHasBeenSet = true; m_emailAddress = std::forward<EmailAddressT>(value); }
+    template<typename EmailAddressT = Aws::String>
+    Account& WithEmailAddress(EmailAddressT&& value) { SetEmailAddress(std::forward<EmailAddressT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_accountId;

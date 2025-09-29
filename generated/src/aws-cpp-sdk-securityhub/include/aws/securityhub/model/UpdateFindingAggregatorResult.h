@@ -28,199 +28,83 @@ namespace Model
   class UpdateFindingAggregatorResult
   {
   public:
-    AWS_SECURITYHUB_API UpdateFindingAggregatorResult();
+    AWS_SECURITYHUB_API UpdateFindingAggregatorResult() = default;
     AWS_SECURITYHUB_API UpdateFindingAggregatorResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_SECURITYHUB_API UpdateFindingAggregatorResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The ARN of the finding aggregator.</p>
      */
-    inline const Aws::String& GetFindingAggregatorArn() const{ return m_findingAggregatorArn; }
+    inline const Aws::String& GetFindingAggregatorArn() const { return m_findingAggregatorArn; }
+    template<typename FindingAggregatorArnT = Aws::String>
+    void SetFindingAggregatorArn(FindingAggregatorArnT&& value) { m_findingAggregatorArnHasBeenSet = true; m_findingAggregatorArn = std::forward<FindingAggregatorArnT>(value); }
+    template<typename FindingAggregatorArnT = Aws::String>
+    UpdateFindingAggregatorResult& WithFindingAggregatorArn(FindingAggregatorArnT&& value) { SetFindingAggregatorArn(std::forward<FindingAggregatorArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ARN of the finding aggregator.</p>
+     * <p>The home Region. Findings generated in linked Regions are replicated and sent
+     * to the home Region.</p>
      */
-    inline void SetFindingAggregatorArn(const Aws::String& value) { m_findingAggregatorArn = value; }
+    inline const Aws::String& GetFindingAggregationRegion() const { return m_findingAggregationRegion; }
+    template<typename FindingAggregationRegionT = Aws::String>
+    void SetFindingAggregationRegion(FindingAggregationRegionT&& value) { m_findingAggregationRegionHasBeenSet = true; m_findingAggregationRegion = std::forward<FindingAggregationRegionT>(value); }
+    template<typename FindingAggregationRegionT = Aws::String>
+    UpdateFindingAggregatorResult& WithFindingAggregationRegion(FindingAggregationRegionT&& value) { SetFindingAggregationRegion(std::forward<FindingAggregationRegionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the finding aggregator.</p>
-     */
-    inline void SetFindingAggregatorArn(Aws::String&& value) { m_findingAggregatorArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the finding aggregator.</p>
-     */
-    inline void SetFindingAggregatorArn(const char* value) { m_findingAggregatorArn.assign(value); }
-
-    /**
-     * <p>The ARN of the finding aggregator.</p>
-     */
-    inline UpdateFindingAggregatorResult& WithFindingAggregatorArn(const Aws::String& value) { SetFindingAggregatorArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the finding aggregator.</p>
-     */
-    inline UpdateFindingAggregatorResult& WithFindingAggregatorArn(Aws::String&& value) { SetFindingAggregatorArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the finding aggregator.</p>
-     */
-    inline UpdateFindingAggregatorResult& WithFindingAggregatorArn(const char* value) { SetFindingAggregatorArn(value); return *this;}
-
-
-    /**
-     * <p>The aggregation Region.</p>
-     */
-    inline const Aws::String& GetFindingAggregationRegion() const{ return m_findingAggregationRegion; }
-
-    /**
-     * <p>The aggregation Region.</p>
-     */
-    inline void SetFindingAggregationRegion(const Aws::String& value) { m_findingAggregationRegion = value; }
-
-    /**
-     * <p>The aggregation Region.</p>
-     */
-    inline void SetFindingAggregationRegion(Aws::String&& value) { m_findingAggregationRegion = std::move(value); }
-
-    /**
-     * <p>The aggregation Region.</p>
-     */
-    inline void SetFindingAggregationRegion(const char* value) { m_findingAggregationRegion.assign(value); }
-
-    /**
-     * <p>The aggregation Region.</p>
-     */
-    inline UpdateFindingAggregatorResult& WithFindingAggregationRegion(const Aws::String& value) { SetFindingAggregationRegion(value); return *this;}
-
-    /**
-     * <p>The aggregation Region.</p>
-     */
-    inline UpdateFindingAggregatorResult& WithFindingAggregationRegion(Aws::String&& value) { SetFindingAggregationRegion(std::move(value)); return *this;}
-
-    /**
-     * <p>The aggregation Region.</p>
-     */
-    inline UpdateFindingAggregatorResult& WithFindingAggregationRegion(const char* value) { SetFindingAggregationRegion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Indicates whether to link all Regions, all Regions except for a list of
      * excluded Regions, or a list of included Regions.</p>
      */
-    inline const Aws::String& GetRegionLinkingMode() const{ return m_regionLinkingMode; }
+    inline const Aws::String& GetRegionLinkingMode() const { return m_regionLinkingMode; }
+    template<typename RegionLinkingModeT = Aws::String>
+    void SetRegionLinkingMode(RegionLinkingModeT&& value) { m_regionLinkingModeHasBeenSet = true; m_regionLinkingMode = std::forward<RegionLinkingModeT>(value); }
+    template<typename RegionLinkingModeT = Aws::String>
+    UpdateFindingAggregatorResult& WithRegionLinkingMode(RegionLinkingModeT&& value) { SetRegionLinkingMode(std::forward<RegionLinkingModeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Indicates whether to link all Regions, all Regions except for a list of
-     * excluded Regions, or a list of included Regions.</p>
-     */
-    inline void SetRegionLinkingMode(const Aws::String& value) { m_regionLinkingMode = value; }
-
-    /**
-     * <p>Indicates whether to link all Regions, all Regions except for a list of
-     * excluded Regions, or a list of included Regions.</p>
-     */
-    inline void SetRegionLinkingMode(Aws::String&& value) { m_regionLinkingMode = std::move(value); }
-
-    /**
-     * <p>Indicates whether to link all Regions, all Regions except for a list of
-     * excluded Regions, or a list of included Regions.</p>
-     */
-    inline void SetRegionLinkingMode(const char* value) { m_regionLinkingMode.assign(value); }
-
-    /**
-     * <p>Indicates whether to link all Regions, all Regions except for a list of
-     * excluded Regions, or a list of included Regions.</p>
-     */
-    inline UpdateFindingAggregatorResult& WithRegionLinkingMode(const Aws::String& value) { SetRegionLinkingMode(value); return *this;}
-
-    /**
-     * <p>Indicates whether to link all Regions, all Regions except for a list of
-     * excluded Regions, or a list of included Regions.</p>
-     */
-    inline UpdateFindingAggregatorResult& WithRegionLinkingMode(Aws::String&& value) { SetRegionLinkingMode(std::move(value)); return *this;}
-
-    /**
-     * <p>Indicates whether to link all Regions, all Regions except for a list of
-     * excluded Regions, or a list of included Regions.</p>
-     */
-    inline UpdateFindingAggregatorResult& WithRegionLinkingMode(const char* value) { SetRegionLinkingMode(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The list of excluded Regions or included Regions.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetRegions() const{ return m_regions; }
+    inline const Aws::Vector<Aws::String>& GetRegions() const { return m_regions; }
+    template<typename RegionsT = Aws::Vector<Aws::String>>
+    void SetRegions(RegionsT&& value) { m_regionsHasBeenSet = true; m_regions = std::forward<RegionsT>(value); }
+    template<typename RegionsT = Aws::Vector<Aws::String>>
+    UpdateFindingAggregatorResult& WithRegions(RegionsT&& value) { SetRegions(std::forward<RegionsT>(value)); return *this;}
+    template<typename RegionsT = Aws::String>
+    UpdateFindingAggregatorResult& AddRegions(RegionsT&& value) { m_regionsHasBeenSet = true; m_regions.emplace_back(std::forward<RegionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The list of excluded Regions or included Regions.</p>
-     */
-    inline void SetRegions(const Aws::Vector<Aws::String>& value) { m_regions = value; }
-
-    /**
-     * <p>The list of excluded Regions or included Regions.</p>
-     */
-    inline void SetRegions(Aws::Vector<Aws::String>&& value) { m_regions = std::move(value); }
-
-    /**
-     * <p>The list of excluded Regions or included Regions.</p>
-     */
-    inline UpdateFindingAggregatorResult& WithRegions(const Aws::Vector<Aws::String>& value) { SetRegions(value); return *this;}
-
-    /**
-     * <p>The list of excluded Regions or included Regions.</p>
-     */
-    inline UpdateFindingAggregatorResult& WithRegions(Aws::Vector<Aws::String>&& value) { SetRegions(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of excluded Regions or included Regions.</p>
-     */
-    inline UpdateFindingAggregatorResult& AddRegions(const Aws::String& value) { m_regions.push_back(value); return *this; }
-
-    /**
-     * <p>The list of excluded Regions or included Regions.</p>
-     */
-    inline UpdateFindingAggregatorResult& AddRegions(Aws::String&& value) { m_regions.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The list of excluded Regions or included Regions.</p>
-     */
-    inline UpdateFindingAggregatorResult& AddRegions(const char* value) { m_regions.push_back(value); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline UpdateFindingAggregatorResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline UpdateFindingAggregatorResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline UpdateFindingAggregatorResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    UpdateFindingAggregatorResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_findingAggregatorArn;
+    bool m_findingAggregatorArnHasBeenSet = false;
 
     Aws::String m_findingAggregationRegion;
+    bool m_findingAggregationRegionHasBeenSet = false;
 
     Aws::String m_regionLinkingMode;
+    bool m_regionLinkingModeHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_regions;
+    bool m_regionsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

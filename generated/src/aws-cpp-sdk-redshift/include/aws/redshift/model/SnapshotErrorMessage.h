@@ -31,7 +31,7 @@ namespace Model
   class SnapshotErrorMessage
   {
   public:
-    AWS_REDSHIFT_API SnapshotErrorMessage();
+    AWS_REDSHIFT_API SnapshotErrorMessage() = default;
     AWS_REDSHIFT_API SnapshotErrorMessage(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_REDSHIFT_API SnapshotErrorMessage& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -39,169 +39,53 @@ namespace Model
     AWS_REDSHIFT_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>A unique identifier for the snapshot returning the error.</p>
      */
-    inline const Aws::String& GetSnapshotIdentifier() const{ return m_snapshotIdentifier; }
-
-    /**
-     * <p>A unique identifier for the snapshot returning the error.</p>
-     */
+    inline const Aws::String& GetSnapshotIdentifier() const { return m_snapshotIdentifier; }
     inline bool SnapshotIdentifierHasBeenSet() const { return m_snapshotIdentifierHasBeenSet; }
+    template<typename SnapshotIdentifierT = Aws::String>
+    void SetSnapshotIdentifier(SnapshotIdentifierT&& value) { m_snapshotIdentifierHasBeenSet = true; m_snapshotIdentifier = std::forward<SnapshotIdentifierT>(value); }
+    template<typename SnapshotIdentifierT = Aws::String>
+    SnapshotErrorMessage& WithSnapshotIdentifier(SnapshotIdentifierT&& value) { SetSnapshotIdentifier(std::forward<SnapshotIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier for the snapshot returning the error.</p>
-     */
-    inline void SetSnapshotIdentifier(const Aws::String& value) { m_snapshotIdentifierHasBeenSet = true; m_snapshotIdentifier = value; }
-
-    /**
-     * <p>A unique identifier for the snapshot returning the error.</p>
-     */
-    inline void SetSnapshotIdentifier(Aws::String&& value) { m_snapshotIdentifierHasBeenSet = true; m_snapshotIdentifier = std::move(value); }
-
-    /**
-     * <p>A unique identifier for the snapshot returning the error.</p>
-     */
-    inline void SetSnapshotIdentifier(const char* value) { m_snapshotIdentifierHasBeenSet = true; m_snapshotIdentifier.assign(value); }
-
-    /**
-     * <p>A unique identifier for the snapshot returning the error.</p>
-     */
-    inline SnapshotErrorMessage& WithSnapshotIdentifier(const Aws::String& value) { SetSnapshotIdentifier(value); return *this;}
-
-    /**
-     * <p>A unique identifier for the snapshot returning the error.</p>
-     */
-    inline SnapshotErrorMessage& WithSnapshotIdentifier(Aws::String&& value) { SetSnapshotIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier for the snapshot returning the error.</p>
-     */
-    inline SnapshotErrorMessage& WithSnapshotIdentifier(const char* value) { SetSnapshotIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A unique identifier for the cluster.</p>
      */
-    inline const Aws::String& GetSnapshotClusterIdentifier() const{ return m_snapshotClusterIdentifier; }
-
-    /**
-     * <p>A unique identifier for the cluster.</p>
-     */
+    inline const Aws::String& GetSnapshotClusterIdentifier() const { return m_snapshotClusterIdentifier; }
     inline bool SnapshotClusterIdentifierHasBeenSet() const { return m_snapshotClusterIdentifierHasBeenSet; }
+    template<typename SnapshotClusterIdentifierT = Aws::String>
+    void SetSnapshotClusterIdentifier(SnapshotClusterIdentifierT&& value) { m_snapshotClusterIdentifierHasBeenSet = true; m_snapshotClusterIdentifier = std::forward<SnapshotClusterIdentifierT>(value); }
+    template<typename SnapshotClusterIdentifierT = Aws::String>
+    SnapshotErrorMessage& WithSnapshotClusterIdentifier(SnapshotClusterIdentifierT&& value) { SetSnapshotClusterIdentifier(std::forward<SnapshotClusterIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier for the cluster.</p>
-     */
-    inline void SetSnapshotClusterIdentifier(const Aws::String& value) { m_snapshotClusterIdentifierHasBeenSet = true; m_snapshotClusterIdentifier = value; }
-
-    /**
-     * <p>A unique identifier for the cluster.</p>
-     */
-    inline void SetSnapshotClusterIdentifier(Aws::String&& value) { m_snapshotClusterIdentifierHasBeenSet = true; m_snapshotClusterIdentifier = std::move(value); }
-
-    /**
-     * <p>A unique identifier for the cluster.</p>
-     */
-    inline void SetSnapshotClusterIdentifier(const char* value) { m_snapshotClusterIdentifierHasBeenSet = true; m_snapshotClusterIdentifier.assign(value); }
-
-    /**
-     * <p>A unique identifier for the cluster.</p>
-     */
-    inline SnapshotErrorMessage& WithSnapshotClusterIdentifier(const Aws::String& value) { SetSnapshotClusterIdentifier(value); return *this;}
-
-    /**
-     * <p>A unique identifier for the cluster.</p>
-     */
-    inline SnapshotErrorMessage& WithSnapshotClusterIdentifier(Aws::String&& value) { SetSnapshotClusterIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier for the cluster.</p>
-     */
-    inline SnapshotErrorMessage& WithSnapshotClusterIdentifier(const char* value) { SetSnapshotClusterIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The failure code for the error.</p>
      */
-    inline const Aws::String& GetFailureCode() const{ return m_failureCode; }
-
-    /**
-     * <p>The failure code for the error.</p>
-     */
+    inline const Aws::String& GetFailureCode() const { return m_failureCode; }
     inline bool FailureCodeHasBeenSet() const { return m_failureCodeHasBeenSet; }
+    template<typename FailureCodeT = Aws::String>
+    void SetFailureCode(FailureCodeT&& value) { m_failureCodeHasBeenSet = true; m_failureCode = std::forward<FailureCodeT>(value); }
+    template<typename FailureCodeT = Aws::String>
+    SnapshotErrorMessage& WithFailureCode(FailureCodeT&& value) { SetFailureCode(std::forward<FailureCodeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The failure code for the error.</p>
-     */
-    inline void SetFailureCode(const Aws::String& value) { m_failureCodeHasBeenSet = true; m_failureCode = value; }
-
-    /**
-     * <p>The failure code for the error.</p>
-     */
-    inline void SetFailureCode(Aws::String&& value) { m_failureCodeHasBeenSet = true; m_failureCode = std::move(value); }
-
-    /**
-     * <p>The failure code for the error.</p>
-     */
-    inline void SetFailureCode(const char* value) { m_failureCodeHasBeenSet = true; m_failureCode.assign(value); }
-
-    /**
-     * <p>The failure code for the error.</p>
-     */
-    inline SnapshotErrorMessage& WithFailureCode(const Aws::String& value) { SetFailureCode(value); return *this;}
-
-    /**
-     * <p>The failure code for the error.</p>
-     */
-    inline SnapshotErrorMessage& WithFailureCode(Aws::String&& value) { SetFailureCode(std::move(value)); return *this;}
-
-    /**
-     * <p>The failure code for the error.</p>
-     */
-    inline SnapshotErrorMessage& WithFailureCode(const char* value) { SetFailureCode(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The text message describing the error.</p>
      */
-    inline const Aws::String& GetFailureReason() const{ return m_failureReason; }
-
-    /**
-     * <p>The text message describing the error.</p>
-     */
+    inline const Aws::String& GetFailureReason() const { return m_failureReason; }
     inline bool FailureReasonHasBeenSet() const { return m_failureReasonHasBeenSet; }
-
-    /**
-     * <p>The text message describing the error.</p>
-     */
-    inline void SetFailureReason(const Aws::String& value) { m_failureReasonHasBeenSet = true; m_failureReason = value; }
-
-    /**
-     * <p>The text message describing the error.</p>
-     */
-    inline void SetFailureReason(Aws::String&& value) { m_failureReasonHasBeenSet = true; m_failureReason = std::move(value); }
-
-    /**
-     * <p>The text message describing the error.</p>
-     */
-    inline void SetFailureReason(const char* value) { m_failureReasonHasBeenSet = true; m_failureReason.assign(value); }
-
-    /**
-     * <p>The text message describing the error.</p>
-     */
-    inline SnapshotErrorMessage& WithFailureReason(const Aws::String& value) { SetFailureReason(value); return *this;}
-
-    /**
-     * <p>The text message describing the error.</p>
-     */
-    inline SnapshotErrorMessage& WithFailureReason(Aws::String&& value) { SetFailureReason(std::move(value)); return *this;}
-
-    /**
-     * <p>The text message describing the error.</p>
-     */
-    inline SnapshotErrorMessage& WithFailureReason(const char* value) { SetFailureReason(value); return *this;}
-
+    template<typename FailureReasonT = Aws::String>
+    void SetFailureReason(FailureReasonT&& value) { m_failureReasonHasBeenSet = true; m_failureReason = std::forward<FailureReasonT>(value); }
+    template<typename FailureReasonT = Aws::String>
+    SnapshotErrorMessage& WithFailureReason(FailureReasonT&& value) { SetFailureReason(std::forward<FailureReasonT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_snapshotIdentifier;

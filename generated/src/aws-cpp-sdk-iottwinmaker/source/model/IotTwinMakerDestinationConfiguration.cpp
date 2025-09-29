@@ -18,13 +18,7 @@ namespace IoTTwinMaker
 namespace Model
 {
 
-IotTwinMakerDestinationConfiguration::IotTwinMakerDestinationConfiguration() : 
-    m_workspaceHasBeenSet(false)
-{
-}
-
-IotTwinMakerDestinationConfiguration::IotTwinMakerDestinationConfiguration(JsonView jsonValue) : 
-    m_workspaceHasBeenSet(false)
+IotTwinMakerDestinationConfiguration::IotTwinMakerDestinationConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ IotTwinMakerDestinationConfiguration& IotTwinMakerDestinationConfiguration::oper
   if(jsonValue.ValueExists("workspace"))
   {
     m_workspace = jsonValue.GetString("workspace");
-
     m_workspaceHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -27,73 +27,49 @@ namespace Model
   class UpdatePipelineResult
   {
   public:
-    AWS_SAGEMAKER_API UpdatePipelineResult();
+    AWS_SAGEMAKER_API UpdatePipelineResult() = default;
     AWS_SAGEMAKER_API UpdatePipelineResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_SAGEMAKER_API UpdatePipelineResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the updated pipeline.</p>
      */
-    inline const Aws::String& GetPipelineArn() const{ return m_pipelineArn; }
+    inline const Aws::String& GetPipelineArn() const { return m_pipelineArn; }
+    template<typename PipelineArnT = Aws::String>
+    void SetPipelineArn(PipelineArnT&& value) { m_pipelineArnHasBeenSet = true; m_pipelineArn = std::forward<PipelineArnT>(value); }
+    template<typename PipelineArnT = Aws::String>
+    UpdatePipelineResult& WithPipelineArn(PipelineArnT&& value) { SetPipelineArn(std::forward<PipelineArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Amazon Resource Name (ARN) of the updated pipeline.</p>
+     * <p>The ID of the pipeline version.</p>
      */
-    inline void SetPipelineArn(const Aws::String& value) { m_pipelineArn = value; }
+    inline long long GetPipelineVersionId() const { return m_pipelineVersionId; }
+    inline void SetPipelineVersionId(long long value) { m_pipelineVersionIdHasBeenSet = true; m_pipelineVersionId = value; }
+    inline UpdatePipelineResult& WithPipelineVersionId(long long value) { SetPipelineVersionId(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the updated pipeline.</p>
-     */
-    inline void SetPipelineArn(Aws::String&& value) { m_pipelineArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the updated pipeline.</p>
-     */
-    inline void SetPipelineArn(const char* value) { m_pipelineArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the updated pipeline.</p>
-     */
-    inline UpdatePipelineResult& WithPipelineArn(const Aws::String& value) { SetPipelineArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the updated pipeline.</p>
-     */
-    inline UpdatePipelineResult& WithPipelineArn(Aws::String&& value) { SetPipelineArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the updated pipeline.</p>
-     */
-    inline UpdatePipelineResult& WithPipelineArn(const char* value) { SetPipelineArn(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline UpdatePipelineResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline UpdatePipelineResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline UpdatePipelineResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    UpdatePipelineResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_pipelineArn;
+    bool m_pipelineArnHasBeenSet = false;
+
+    long long m_pipelineVersionId{0};
+    bool m_pipelineVersionIdHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

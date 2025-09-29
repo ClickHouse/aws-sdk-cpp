@@ -18,15 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-ExperimentSource::ExperimentSource() : 
-    m_sourceArnHasBeenSet(false),
-    m_sourceTypeHasBeenSet(false)
-{
-}
-
-ExperimentSource::ExperimentSource(JsonView jsonValue) : 
-    m_sourceArnHasBeenSet(false),
-    m_sourceTypeHasBeenSet(false)
+ExperimentSource::ExperimentSource(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ExperimentSource& ExperimentSource::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("SourceArn"))
   {
     m_sourceArn = jsonValue.GetString("SourceArn");
-
     m_sourceArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SourceType"))
   {
     m_sourceType = jsonValue.GetString("SourceType");
-
     m_sourceTypeHasBeenSet = true;
   }
-
   return *this;
 }
 

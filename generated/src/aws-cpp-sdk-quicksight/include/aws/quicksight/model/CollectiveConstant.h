@@ -33,57 +33,25 @@ namespace Model
   class CollectiveConstant
   {
   public:
-    AWS_QUICKSIGHT_API CollectiveConstant();
+    AWS_QUICKSIGHT_API CollectiveConstant() = default;
     AWS_QUICKSIGHT_API CollectiveConstant(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API CollectiveConstant& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A list of values for the collective constant.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetValueList() const{ return m_valueList; }
-
-    /**
-     * <p>A list of values for the collective constant.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetValueList() const { return m_valueList; }
     inline bool ValueListHasBeenSet() const { return m_valueListHasBeenSet; }
-
-    /**
-     * <p>A list of values for the collective constant.</p>
-     */
-    inline void SetValueList(const Aws::Vector<Aws::String>& value) { m_valueListHasBeenSet = true; m_valueList = value; }
-
-    /**
-     * <p>A list of values for the collective constant.</p>
-     */
-    inline void SetValueList(Aws::Vector<Aws::String>&& value) { m_valueListHasBeenSet = true; m_valueList = std::move(value); }
-
-    /**
-     * <p>A list of values for the collective constant.</p>
-     */
-    inline CollectiveConstant& WithValueList(const Aws::Vector<Aws::String>& value) { SetValueList(value); return *this;}
-
-    /**
-     * <p>A list of values for the collective constant.</p>
-     */
-    inline CollectiveConstant& WithValueList(Aws::Vector<Aws::String>&& value) { SetValueList(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of values for the collective constant.</p>
-     */
-    inline CollectiveConstant& AddValueList(const Aws::String& value) { m_valueListHasBeenSet = true; m_valueList.push_back(value); return *this; }
-
-    /**
-     * <p>A list of values for the collective constant.</p>
-     */
-    inline CollectiveConstant& AddValueList(Aws::String&& value) { m_valueListHasBeenSet = true; m_valueList.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of values for the collective constant.</p>
-     */
-    inline CollectiveConstant& AddValueList(const char* value) { m_valueListHasBeenSet = true; m_valueList.push_back(value); return *this; }
-
+    template<typename ValueListT = Aws::Vector<Aws::String>>
+    void SetValueList(ValueListT&& value) { m_valueListHasBeenSet = true; m_valueList = std::forward<ValueListT>(value); }
+    template<typename ValueListT = Aws::Vector<Aws::String>>
+    CollectiveConstant& WithValueList(ValueListT&& value) { SetValueList(std::forward<ValueListT>(value)); return *this;}
+    template<typename ValueListT = Aws::String>
+    CollectiveConstant& AddValueList(ValueListT&& value) { m_valueListHasBeenSet = true; m_valueList.emplace_back(std::forward<ValueListT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_valueList;

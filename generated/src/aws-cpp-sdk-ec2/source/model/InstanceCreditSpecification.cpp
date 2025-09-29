@@ -20,15 +20,7 @@ namespace EC2
 namespace Model
 {
 
-InstanceCreditSpecification::InstanceCreditSpecification() : 
-    m_instanceIdHasBeenSet(false),
-    m_cpuCreditsHasBeenSet(false)
-{
-}
-
-InstanceCreditSpecification::InstanceCreditSpecification(const XmlNode& xmlNode) : 
-    m_instanceIdHasBeenSet(false),
-    m_cpuCreditsHasBeenSet(false)
+InstanceCreditSpecification::InstanceCreditSpecification(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

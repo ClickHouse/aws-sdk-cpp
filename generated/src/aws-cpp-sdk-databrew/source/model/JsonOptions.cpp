@@ -18,15 +18,7 @@ namespace GlueDataBrew
 namespace Model
 {
 
-JsonOptions::JsonOptions() : 
-    m_multiLine(false),
-    m_multiLineHasBeenSet(false)
-{
-}
-
-JsonOptions::JsonOptions(JsonView jsonValue) : 
-    m_multiLine(false),
-    m_multiLineHasBeenSet(false)
+JsonOptions::JsonOptions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ JsonOptions& JsonOptions::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("MultiLine"))
   {
     m_multiLine = jsonValue.GetBool("MultiLine");
-
     m_multiLineHasBeenSet = true;
   }
-
   return *this;
 }
 

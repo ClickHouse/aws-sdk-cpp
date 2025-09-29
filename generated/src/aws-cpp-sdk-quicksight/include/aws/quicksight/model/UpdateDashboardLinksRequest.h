@@ -22,7 +22,7 @@ namespace Model
   class UpdateDashboardLinksRequest : public QuickSightRequest
   {
   public:
-    AWS_QUICKSIGHT_API UpdateDashboardLinksRequest();
+    AWS_QUICKSIGHT_API UpdateDashboardLinksRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,150 +33,45 @@ namespace Model
     AWS_QUICKSIGHT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the Amazon Web Services account that contains the dashboard whose
      * links you want to update.</p>
      */
-    inline const Aws::String& GetAwsAccountId() const{ return m_awsAccountId; }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that contains the dashboard whose
-     * links you want to update.</p>
-     */
+    inline const Aws::String& GetAwsAccountId() const { return m_awsAccountId; }
     inline bool AwsAccountIdHasBeenSet() const { return m_awsAccountIdHasBeenSet; }
+    template<typename AwsAccountIdT = Aws::String>
+    void SetAwsAccountId(AwsAccountIdT&& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = std::forward<AwsAccountIdT>(value); }
+    template<typename AwsAccountIdT = Aws::String>
+    UpdateDashboardLinksRequest& WithAwsAccountId(AwsAccountIdT&& value) { SetAwsAccountId(std::forward<AwsAccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Amazon Web Services account that contains the dashboard whose
-     * links you want to update.</p>
-     */
-    inline void SetAwsAccountId(const Aws::String& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = value; }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that contains the dashboard whose
-     * links you want to update.</p>
-     */
-    inline void SetAwsAccountId(Aws::String&& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = std::move(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that contains the dashboard whose
-     * links you want to update.</p>
-     */
-    inline void SetAwsAccountId(const char* value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId.assign(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that contains the dashboard whose
-     * links you want to update.</p>
-     */
-    inline UpdateDashboardLinksRequest& WithAwsAccountId(const Aws::String& value) { SetAwsAccountId(value); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services account that contains the dashboard whose
-     * links you want to update.</p>
-     */
-    inline UpdateDashboardLinksRequest& WithAwsAccountId(Aws::String&& value) { SetAwsAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services account that contains the dashboard whose
-     * links you want to update.</p>
-     */
-    inline UpdateDashboardLinksRequest& WithAwsAccountId(const char* value) { SetAwsAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID for the dashboard.</p>
      */
-    inline const Aws::String& GetDashboardId() const{ return m_dashboardId; }
-
-    /**
-     * <p>The ID for the dashboard.</p>
-     */
+    inline const Aws::String& GetDashboardId() const { return m_dashboardId; }
     inline bool DashboardIdHasBeenSet() const { return m_dashboardIdHasBeenSet; }
+    template<typename DashboardIdT = Aws::String>
+    void SetDashboardId(DashboardIdT&& value) { m_dashboardIdHasBeenSet = true; m_dashboardId = std::forward<DashboardIdT>(value); }
+    template<typename DashboardIdT = Aws::String>
+    UpdateDashboardLinksRequest& WithDashboardId(DashboardIdT&& value) { SetDashboardId(std::forward<DashboardIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID for the dashboard.</p>
-     */
-    inline void SetDashboardId(const Aws::String& value) { m_dashboardIdHasBeenSet = true; m_dashboardId = value; }
-
-    /**
-     * <p>The ID for the dashboard.</p>
-     */
-    inline void SetDashboardId(Aws::String&& value) { m_dashboardIdHasBeenSet = true; m_dashboardId = std::move(value); }
-
-    /**
-     * <p>The ID for the dashboard.</p>
-     */
-    inline void SetDashboardId(const char* value) { m_dashboardIdHasBeenSet = true; m_dashboardId.assign(value); }
-
-    /**
-     * <p>The ID for the dashboard.</p>
-     */
-    inline UpdateDashboardLinksRequest& WithDashboardId(const Aws::String& value) { SetDashboardId(value); return *this;}
-
-    /**
-     * <p>The ID for the dashboard.</p>
-     */
-    inline UpdateDashboardLinksRequest& WithDashboardId(Aws::String&& value) { SetDashboardId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID for the dashboard.</p>
-     */
-    inline UpdateDashboardLinksRequest& WithDashboardId(const char* value) { SetDashboardId(value); return *this;}
-
-
+    ///@{
     /**
      * <p> list of analysis Amazon Resource Names (ARNs) to be linked to the
      * dashboard.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetLinkEntities() const{ return m_linkEntities; }
-
-    /**
-     * <p> list of analysis Amazon Resource Names (ARNs) to be linked to the
-     * dashboard.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetLinkEntities() const { return m_linkEntities; }
     inline bool LinkEntitiesHasBeenSet() const { return m_linkEntitiesHasBeenSet; }
-
-    /**
-     * <p> list of analysis Amazon Resource Names (ARNs) to be linked to the
-     * dashboard.</p>
-     */
-    inline void SetLinkEntities(const Aws::Vector<Aws::String>& value) { m_linkEntitiesHasBeenSet = true; m_linkEntities = value; }
-
-    /**
-     * <p> list of analysis Amazon Resource Names (ARNs) to be linked to the
-     * dashboard.</p>
-     */
-    inline void SetLinkEntities(Aws::Vector<Aws::String>&& value) { m_linkEntitiesHasBeenSet = true; m_linkEntities = std::move(value); }
-
-    /**
-     * <p> list of analysis Amazon Resource Names (ARNs) to be linked to the
-     * dashboard.</p>
-     */
-    inline UpdateDashboardLinksRequest& WithLinkEntities(const Aws::Vector<Aws::String>& value) { SetLinkEntities(value); return *this;}
-
-    /**
-     * <p> list of analysis Amazon Resource Names (ARNs) to be linked to the
-     * dashboard.</p>
-     */
-    inline UpdateDashboardLinksRequest& WithLinkEntities(Aws::Vector<Aws::String>&& value) { SetLinkEntities(std::move(value)); return *this;}
-
-    /**
-     * <p> list of analysis Amazon Resource Names (ARNs) to be linked to the
-     * dashboard.</p>
-     */
-    inline UpdateDashboardLinksRequest& AddLinkEntities(const Aws::String& value) { m_linkEntitiesHasBeenSet = true; m_linkEntities.push_back(value); return *this; }
-
-    /**
-     * <p> list of analysis Amazon Resource Names (ARNs) to be linked to the
-     * dashboard.</p>
-     */
-    inline UpdateDashboardLinksRequest& AddLinkEntities(Aws::String&& value) { m_linkEntitiesHasBeenSet = true; m_linkEntities.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p> list of analysis Amazon Resource Names (ARNs) to be linked to the
-     * dashboard.</p>
-     */
-    inline UpdateDashboardLinksRequest& AddLinkEntities(const char* value) { m_linkEntitiesHasBeenSet = true; m_linkEntities.push_back(value); return *this; }
-
+    template<typename LinkEntitiesT = Aws::Vector<Aws::String>>
+    void SetLinkEntities(LinkEntitiesT&& value) { m_linkEntitiesHasBeenSet = true; m_linkEntities = std::forward<LinkEntitiesT>(value); }
+    template<typename LinkEntitiesT = Aws::Vector<Aws::String>>
+    UpdateDashboardLinksRequest& WithLinkEntities(LinkEntitiesT&& value) { SetLinkEntities(std::forward<LinkEntitiesT>(value)); return *this;}
+    template<typename LinkEntitiesT = Aws::String>
+    UpdateDashboardLinksRequest& AddLinkEntities(LinkEntitiesT&& value) { m_linkEntitiesHasBeenSet = true; m_linkEntities.emplace_back(std::forward<LinkEntitiesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_awsAccountId;

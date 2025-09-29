@@ -24,7 +24,7 @@ namespace Model
   class DeleteBackendAuthRequest : public AmplifyBackendRequest
   {
   public:
-    AWS_AMPLIFYBACKEND_API DeleteBackendAuthRequest();
+    AWS_AMPLIFYBACKEND_API DeleteBackendAuthRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,128 +35,41 @@ namespace Model
     AWS_AMPLIFYBACKEND_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The app ID.</p>
      */
-    inline const Aws::String& GetAppId() const{ return m_appId; }
-
-    /**
-     * <p>The app ID.</p>
-     */
+    inline const Aws::String& GetAppId() const { return m_appId; }
     inline bool AppIdHasBeenSet() const { return m_appIdHasBeenSet; }
+    template<typename AppIdT = Aws::String>
+    void SetAppId(AppIdT&& value) { m_appIdHasBeenSet = true; m_appId = std::forward<AppIdT>(value); }
+    template<typename AppIdT = Aws::String>
+    DeleteBackendAuthRequest& WithAppId(AppIdT&& value) { SetAppId(std::forward<AppIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The app ID.</p>
-     */
-    inline void SetAppId(const Aws::String& value) { m_appIdHasBeenSet = true; m_appId = value; }
-
-    /**
-     * <p>The app ID.</p>
-     */
-    inline void SetAppId(Aws::String&& value) { m_appIdHasBeenSet = true; m_appId = std::move(value); }
-
-    /**
-     * <p>The app ID.</p>
-     */
-    inline void SetAppId(const char* value) { m_appIdHasBeenSet = true; m_appId.assign(value); }
-
-    /**
-     * <p>The app ID.</p>
-     */
-    inline DeleteBackendAuthRequest& WithAppId(const Aws::String& value) { SetAppId(value); return *this;}
-
-    /**
-     * <p>The app ID.</p>
-     */
-    inline DeleteBackendAuthRequest& WithAppId(Aws::String&& value) { SetAppId(std::move(value)); return *this;}
-
-    /**
-     * <p>The app ID.</p>
-     */
-    inline DeleteBackendAuthRequest& WithAppId(const char* value) { SetAppId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the backend environment.</p>
      */
-    inline const Aws::String& GetBackendEnvironmentName() const{ return m_backendEnvironmentName; }
-
-    /**
-     * <p>The name of the backend environment.</p>
-     */
+    inline const Aws::String& GetBackendEnvironmentName() const { return m_backendEnvironmentName; }
     inline bool BackendEnvironmentNameHasBeenSet() const { return m_backendEnvironmentNameHasBeenSet; }
+    template<typename BackendEnvironmentNameT = Aws::String>
+    void SetBackendEnvironmentName(BackendEnvironmentNameT&& value) { m_backendEnvironmentNameHasBeenSet = true; m_backendEnvironmentName = std::forward<BackendEnvironmentNameT>(value); }
+    template<typename BackendEnvironmentNameT = Aws::String>
+    DeleteBackendAuthRequest& WithBackendEnvironmentName(BackendEnvironmentNameT&& value) { SetBackendEnvironmentName(std::forward<BackendEnvironmentNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the backend environment.</p>
-     */
-    inline void SetBackendEnvironmentName(const Aws::String& value) { m_backendEnvironmentNameHasBeenSet = true; m_backendEnvironmentName = value; }
-
-    /**
-     * <p>The name of the backend environment.</p>
-     */
-    inline void SetBackendEnvironmentName(Aws::String&& value) { m_backendEnvironmentNameHasBeenSet = true; m_backendEnvironmentName = std::move(value); }
-
-    /**
-     * <p>The name of the backend environment.</p>
-     */
-    inline void SetBackendEnvironmentName(const char* value) { m_backendEnvironmentNameHasBeenSet = true; m_backendEnvironmentName.assign(value); }
-
-    /**
-     * <p>The name of the backend environment.</p>
-     */
-    inline DeleteBackendAuthRequest& WithBackendEnvironmentName(const Aws::String& value) { SetBackendEnvironmentName(value); return *this;}
-
-    /**
-     * <p>The name of the backend environment.</p>
-     */
-    inline DeleteBackendAuthRequest& WithBackendEnvironmentName(Aws::String&& value) { SetBackendEnvironmentName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the backend environment.</p>
-     */
-    inline DeleteBackendAuthRequest& WithBackendEnvironmentName(const char* value) { SetBackendEnvironmentName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of this resource.</p>
      */
-    inline const Aws::String& GetResourceName() const{ return m_resourceName; }
-
-    /**
-     * <p>The name of this resource.</p>
-     */
+    inline const Aws::String& GetResourceName() const { return m_resourceName; }
     inline bool ResourceNameHasBeenSet() const { return m_resourceNameHasBeenSet; }
-
-    /**
-     * <p>The name of this resource.</p>
-     */
-    inline void SetResourceName(const Aws::String& value) { m_resourceNameHasBeenSet = true; m_resourceName = value; }
-
-    /**
-     * <p>The name of this resource.</p>
-     */
-    inline void SetResourceName(Aws::String&& value) { m_resourceNameHasBeenSet = true; m_resourceName = std::move(value); }
-
-    /**
-     * <p>The name of this resource.</p>
-     */
-    inline void SetResourceName(const char* value) { m_resourceNameHasBeenSet = true; m_resourceName.assign(value); }
-
-    /**
-     * <p>The name of this resource.</p>
-     */
-    inline DeleteBackendAuthRequest& WithResourceName(const Aws::String& value) { SetResourceName(value); return *this;}
-
-    /**
-     * <p>The name of this resource.</p>
-     */
-    inline DeleteBackendAuthRequest& WithResourceName(Aws::String&& value) { SetResourceName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of this resource.</p>
-     */
-    inline DeleteBackendAuthRequest& WithResourceName(const char* value) { SetResourceName(value); return *this;}
-
+    template<typename ResourceNameT = Aws::String>
+    void SetResourceName(ResourceNameT&& value) { m_resourceNameHasBeenSet = true; m_resourceName = std::forward<ResourceNameT>(value); }
+    template<typename ResourceNameT = Aws::String>
+    DeleteBackendAuthRequest& WithResourceName(ResourceNameT&& value) { SetResourceName(std::forward<ResourceNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_appId;

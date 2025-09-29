@@ -32,73 +32,35 @@ namespace Model
   class PropertyLatestValue
   {
   public:
-    AWS_IOTTWINMAKER_API PropertyLatestValue();
+    AWS_IOTTWINMAKER_API PropertyLatestValue() = default;
     AWS_IOTTWINMAKER_API PropertyLatestValue(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTTWINMAKER_API PropertyLatestValue& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTTWINMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An object that specifies information about a property.</p>
      */
-    inline const EntityPropertyReference& GetPropertyReference() const{ return m_propertyReference; }
-
-    /**
-     * <p>An object that specifies information about a property.</p>
-     */
+    inline const EntityPropertyReference& GetPropertyReference() const { return m_propertyReference; }
     inline bool PropertyReferenceHasBeenSet() const { return m_propertyReferenceHasBeenSet; }
+    template<typename PropertyReferenceT = EntityPropertyReference>
+    void SetPropertyReference(PropertyReferenceT&& value) { m_propertyReferenceHasBeenSet = true; m_propertyReference = std::forward<PropertyReferenceT>(value); }
+    template<typename PropertyReferenceT = EntityPropertyReference>
+    PropertyLatestValue& WithPropertyReference(PropertyReferenceT&& value) { SetPropertyReference(std::forward<PropertyReferenceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An object that specifies information about a property.</p>
-     */
-    inline void SetPropertyReference(const EntityPropertyReference& value) { m_propertyReferenceHasBeenSet = true; m_propertyReference = value; }
-
-    /**
-     * <p>An object that specifies information about a property.</p>
-     */
-    inline void SetPropertyReference(EntityPropertyReference&& value) { m_propertyReferenceHasBeenSet = true; m_propertyReference = std::move(value); }
-
-    /**
-     * <p>An object that specifies information about a property.</p>
-     */
-    inline PropertyLatestValue& WithPropertyReference(const EntityPropertyReference& value) { SetPropertyReference(value); return *this;}
-
-    /**
-     * <p>An object that specifies information about a property.</p>
-     */
-    inline PropertyLatestValue& WithPropertyReference(EntityPropertyReference&& value) { SetPropertyReference(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The value of the property.</p>
      */
-    inline const DataValue& GetPropertyValue() const{ return m_propertyValue; }
-
-    /**
-     * <p>The value of the property.</p>
-     */
+    inline const DataValue& GetPropertyValue() const { return m_propertyValue; }
     inline bool PropertyValueHasBeenSet() const { return m_propertyValueHasBeenSet; }
-
-    /**
-     * <p>The value of the property.</p>
-     */
-    inline void SetPropertyValue(const DataValue& value) { m_propertyValueHasBeenSet = true; m_propertyValue = value; }
-
-    /**
-     * <p>The value of the property.</p>
-     */
-    inline void SetPropertyValue(DataValue&& value) { m_propertyValueHasBeenSet = true; m_propertyValue = std::move(value); }
-
-    /**
-     * <p>The value of the property.</p>
-     */
-    inline PropertyLatestValue& WithPropertyValue(const DataValue& value) { SetPropertyValue(value); return *this;}
-
-    /**
-     * <p>The value of the property.</p>
-     */
-    inline PropertyLatestValue& WithPropertyValue(DataValue&& value) { SetPropertyValue(std::move(value)); return *this;}
-
+    template<typename PropertyValueT = DataValue>
+    void SetPropertyValue(PropertyValueT&& value) { m_propertyValueHasBeenSet = true; m_propertyValue = std::forward<PropertyValueT>(value); }
+    template<typename PropertyValueT = DataValue>
+    PropertyLatestValue& WithPropertyValue(PropertyValueT&& value) { SetPropertyValue(std::forward<PropertyValueT>(value)); return *this;}
+    ///@}
   private:
 
     EntityPropertyReference m_propertyReference;

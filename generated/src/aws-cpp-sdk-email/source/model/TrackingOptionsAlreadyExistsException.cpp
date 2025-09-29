@@ -20,13 +20,7 @@ namespace SES
 namespace Model
 {
 
-TrackingOptionsAlreadyExistsException::TrackingOptionsAlreadyExistsException() : 
-    m_configurationSetNameHasBeenSet(false)
-{
-}
-
-TrackingOptionsAlreadyExistsException::TrackingOptionsAlreadyExistsException(const XmlNode& xmlNode) : 
-    m_configurationSetNameHasBeenSet(false)
+TrackingOptionsAlreadyExistsException::TrackingOptionsAlreadyExistsException(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

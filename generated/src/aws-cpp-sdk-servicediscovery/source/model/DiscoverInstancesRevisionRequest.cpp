@@ -12,12 +12,6 @@ using namespace Aws::ServiceDiscovery::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DiscoverInstancesRevisionRequest::DiscoverInstancesRevisionRequest() : 
-    m_namespaceNameHasBeenSet(false),
-    m_serviceNameHasBeenSet(false)
-{
-}
-
 Aws::String DiscoverInstancesRevisionRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -31,6 +25,12 @@ Aws::String DiscoverInstancesRevisionRequest::SerializePayload() const
   if(m_serviceNameHasBeenSet)
   {
    payload.WithString("ServiceName", m_serviceName);
+
+  }
+
+  if(m_ownerAccountHasBeenSet)
+  {
+   payload.WithString("OwnerAccount", m_ownerAccount);
 
   }
 

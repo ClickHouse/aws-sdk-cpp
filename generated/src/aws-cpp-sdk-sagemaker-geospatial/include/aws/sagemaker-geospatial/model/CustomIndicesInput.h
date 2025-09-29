@@ -33,52 +33,25 @@ namespace Model
   class CustomIndicesInput
   {
   public:
-    AWS_SAGEMAKERGEOSPATIAL_API CustomIndicesInput();
+    AWS_SAGEMAKERGEOSPATIAL_API CustomIndicesInput() = default;
     AWS_SAGEMAKERGEOSPATIAL_API CustomIndicesInput(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKERGEOSPATIAL_API CustomIndicesInput& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKERGEOSPATIAL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A list of BandMath indices to compute.</p>
      */
-    inline const Aws::Vector<Operation>& GetOperations() const{ return m_operations; }
-
-    /**
-     * <p>A list of BandMath indices to compute.</p>
-     */
+    inline const Aws::Vector<Operation>& GetOperations() const { return m_operations; }
     inline bool OperationsHasBeenSet() const { return m_operationsHasBeenSet; }
-
-    /**
-     * <p>A list of BandMath indices to compute.</p>
-     */
-    inline void SetOperations(const Aws::Vector<Operation>& value) { m_operationsHasBeenSet = true; m_operations = value; }
-
-    /**
-     * <p>A list of BandMath indices to compute.</p>
-     */
-    inline void SetOperations(Aws::Vector<Operation>&& value) { m_operationsHasBeenSet = true; m_operations = std::move(value); }
-
-    /**
-     * <p>A list of BandMath indices to compute.</p>
-     */
-    inline CustomIndicesInput& WithOperations(const Aws::Vector<Operation>& value) { SetOperations(value); return *this;}
-
-    /**
-     * <p>A list of BandMath indices to compute.</p>
-     */
-    inline CustomIndicesInput& WithOperations(Aws::Vector<Operation>&& value) { SetOperations(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of BandMath indices to compute.</p>
-     */
-    inline CustomIndicesInput& AddOperations(const Operation& value) { m_operationsHasBeenSet = true; m_operations.push_back(value); return *this; }
-
-    /**
-     * <p>A list of BandMath indices to compute.</p>
-     */
-    inline CustomIndicesInput& AddOperations(Operation&& value) { m_operationsHasBeenSet = true; m_operations.push_back(std::move(value)); return *this; }
-
+    template<typename OperationsT = Aws::Vector<Operation>>
+    void SetOperations(OperationsT&& value) { m_operationsHasBeenSet = true; m_operations = std::forward<OperationsT>(value); }
+    template<typename OperationsT = Aws::Vector<Operation>>
+    CustomIndicesInput& WithOperations(OperationsT&& value) { SetOperations(std::forward<OperationsT>(value)); return *this;}
+    template<typename OperationsT = Operation>
+    CustomIndicesInput& AddOperations(OperationsT&& value) { m_operationsHasBeenSet = true; m_operations.emplace_back(std::forward<OperationsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Operation> m_operations;

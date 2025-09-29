@@ -28,139 +28,63 @@ namespace Model
   class DeleteGrantResult
   {
   public:
-    AWS_LICENSEMANAGER_API DeleteGrantResult();
+    AWS_LICENSEMANAGER_API DeleteGrantResult() = default;
     AWS_LICENSEMANAGER_API DeleteGrantResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_LICENSEMANAGER_API DeleteGrantResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Grant ARN.</p>
      */
-    inline const Aws::String& GetGrantArn() const{ return m_grantArn; }
+    inline const Aws::String& GetGrantArn() const { return m_grantArn; }
+    template<typename GrantArnT = Aws::String>
+    void SetGrantArn(GrantArnT&& value) { m_grantArnHasBeenSet = true; m_grantArn = std::forward<GrantArnT>(value); }
+    template<typename GrantArnT = Aws::String>
+    DeleteGrantResult& WithGrantArn(GrantArnT&& value) { SetGrantArn(std::forward<GrantArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Grant ARN.</p>
-     */
-    inline void SetGrantArn(const Aws::String& value) { m_grantArn = value; }
-
-    /**
-     * <p>Grant ARN.</p>
-     */
-    inline void SetGrantArn(Aws::String&& value) { m_grantArn = std::move(value); }
-
-    /**
-     * <p>Grant ARN.</p>
-     */
-    inline void SetGrantArn(const char* value) { m_grantArn.assign(value); }
-
-    /**
-     * <p>Grant ARN.</p>
-     */
-    inline DeleteGrantResult& WithGrantArn(const Aws::String& value) { SetGrantArn(value); return *this;}
-
-    /**
-     * <p>Grant ARN.</p>
-     */
-    inline DeleteGrantResult& WithGrantArn(Aws::String&& value) { SetGrantArn(std::move(value)); return *this;}
-
-    /**
-     * <p>Grant ARN.</p>
-     */
-    inline DeleteGrantResult& WithGrantArn(const char* value) { SetGrantArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Grant status.</p>
      */
-    inline const GrantStatus& GetStatus() const{ return m_status; }
+    inline GrantStatus GetStatus() const { return m_status; }
+    inline void SetStatus(GrantStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline DeleteGrantResult& WithStatus(GrantStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Grant status.</p>
-     */
-    inline void SetStatus(const GrantStatus& value) { m_status = value; }
-
-    /**
-     * <p>Grant status.</p>
-     */
-    inline void SetStatus(GrantStatus&& value) { m_status = std::move(value); }
-
-    /**
-     * <p>Grant status.</p>
-     */
-    inline DeleteGrantResult& WithStatus(const GrantStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>Grant status.</p>
-     */
-    inline DeleteGrantResult& WithStatus(GrantStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Grant version.</p>
      */
-    inline const Aws::String& GetVersion() const{ return m_version; }
+    inline const Aws::String& GetVersion() const { return m_version; }
+    template<typename VersionT = Aws::String>
+    void SetVersion(VersionT&& value) { m_versionHasBeenSet = true; m_version = std::forward<VersionT>(value); }
+    template<typename VersionT = Aws::String>
+    DeleteGrantResult& WithVersion(VersionT&& value) { SetVersion(std::forward<VersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Grant version.</p>
-     */
-    inline void SetVersion(const Aws::String& value) { m_version = value; }
-
-    /**
-     * <p>Grant version.</p>
-     */
-    inline void SetVersion(Aws::String&& value) { m_version = std::move(value); }
-
-    /**
-     * <p>Grant version.</p>
-     */
-    inline void SetVersion(const char* value) { m_version.assign(value); }
-
-    /**
-     * <p>Grant version.</p>
-     */
-    inline DeleteGrantResult& WithVersion(const Aws::String& value) { SetVersion(value); return *this;}
-
-    /**
-     * <p>Grant version.</p>
-     */
-    inline DeleteGrantResult& WithVersion(Aws::String&& value) { SetVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>Grant version.</p>
-     */
-    inline DeleteGrantResult& WithVersion(const char* value) { SetVersion(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DeleteGrantResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DeleteGrantResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DeleteGrantResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DeleteGrantResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_grantArn;
+    bool m_grantArnHasBeenSet = false;
 
-    GrantStatus m_status;
+    GrantStatus m_status{GrantStatus::NOT_SET};
+    bool m_statusHasBeenSet = false;
 
     Aws::String m_version;
+    bool m_versionHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -10,22 +10,6 @@
 using namespace Aws::ElasticBeanstalk::Model;
 using namespace Aws::Utils;
 
-UpdateEnvironmentRequest::UpdateEnvironmentRequest() : 
-    m_applicationNameHasBeenSet(false),
-    m_environmentIdHasBeenSet(false),
-    m_environmentNameHasBeenSet(false),
-    m_groupNameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_tierHasBeenSet(false),
-    m_versionLabelHasBeenSet(false),
-    m_templateNameHasBeenSet(false),
-    m_solutionStackNameHasBeenSet(false),
-    m_platformArnHasBeenSet(false),
-    m_optionSettingsHasBeenSet(false),
-    m_optionsToRemoveHasBeenSet(false)
-{
-}
-
 Aws::String UpdateEnvironmentRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -82,21 +66,35 @@ Aws::String UpdateEnvironmentRequest::SerializePayload() const
 
   if(m_optionSettingsHasBeenSet)
   {
-    unsigned optionSettingsCount = 1;
-    for(auto& item : m_optionSettings)
+    if (m_optionSettings.empty())
     {
-      item.OutputToStream(ss, "OptionSettings.member.", optionSettingsCount, "");
-      optionSettingsCount++;
+      ss << "OptionSettings=&";
+    }
+    else
+    {
+      unsigned optionSettingsCount = 1;
+      for(auto& item : m_optionSettings)
+      {
+        item.OutputToStream(ss, "OptionSettings.member.", optionSettingsCount, "");
+        optionSettingsCount++;
+      }
     }
   }
 
   if(m_optionsToRemoveHasBeenSet)
   {
-    unsigned optionsToRemoveCount = 1;
-    for(auto& item : m_optionsToRemove)
+    if (m_optionsToRemove.empty())
     {
-      item.OutputToStream(ss, "OptionsToRemove.member.", optionsToRemoveCount, "");
-      optionsToRemoveCount++;
+      ss << "OptionsToRemove=&";
+    }
+    else
+    {
+      unsigned optionsToRemoveCount = 1;
+      for(auto& item : m_optionsToRemove)
+      {
+        item.OutputToStream(ss, "OptionsToRemove.member.", optionsToRemoveCount, "");
+        optionsToRemoveCount++;
+      }
     }
   }
 

@@ -18,19 +18,7 @@ namespace PaymentCryptography
 namespace Model
 {
 
-ImportKeyMaterial::ImportKeyMaterial() : 
-    m_rootCertificatePublicKeyHasBeenSet(false),
-    m_tr31KeyBlockHasBeenSet(false),
-    m_tr34KeyBlockHasBeenSet(false),
-    m_trustedCertificatePublicKeyHasBeenSet(false)
-{
-}
-
-ImportKeyMaterial::ImportKeyMaterial(JsonView jsonValue) : 
-    m_rootCertificatePublicKeyHasBeenSet(false),
-    m_tr31KeyBlockHasBeenSet(false),
-    m_tr34KeyBlockHasBeenSet(false),
-    m_trustedCertificatePublicKeyHasBeenSet(false)
+ImportKeyMaterial::ImportKeyMaterial(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,31 +28,33 @@ ImportKeyMaterial& ImportKeyMaterial::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("RootCertificatePublicKey"))
   {
     m_rootCertificatePublicKey = jsonValue.GetObject("RootCertificatePublicKey");
-
     m_rootCertificatePublicKeyHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("Tr31KeyBlock"))
-  {
-    m_tr31KeyBlock = jsonValue.GetObject("Tr31KeyBlock");
-
-    m_tr31KeyBlockHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("Tr34KeyBlock"))
-  {
-    m_tr34KeyBlock = jsonValue.GetObject("Tr34KeyBlock");
-
-    m_tr34KeyBlockHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("TrustedCertificatePublicKey"))
   {
     m_trustedCertificatePublicKey = jsonValue.GetObject("TrustedCertificatePublicKey");
-
     m_trustedCertificatePublicKeyHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("Tr31KeyBlock"))
+  {
+    m_tr31KeyBlock = jsonValue.GetObject("Tr31KeyBlock");
+    m_tr31KeyBlockHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("Tr34KeyBlock"))
+  {
+    m_tr34KeyBlock = jsonValue.GetObject("Tr34KeyBlock");
+    m_tr34KeyBlockHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("KeyCryptogram"))
+  {
+    m_keyCryptogram = jsonValue.GetObject("KeyCryptogram");
+    m_keyCryptogramHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("DiffieHellmanTr31KeyBlock"))
+  {
+    m_diffieHellmanTr31KeyBlock = jsonValue.GetObject("DiffieHellmanTr31KeyBlock");
+    m_diffieHellmanTr31KeyBlockHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -75,6 +65,12 @@ JsonValue ImportKeyMaterial::Jsonize() const
   if(m_rootCertificatePublicKeyHasBeenSet)
   {
    payload.WithObject("RootCertificatePublicKey", m_rootCertificatePublicKey.Jsonize());
+
+  }
+
+  if(m_trustedCertificatePublicKeyHasBeenSet)
+  {
+   payload.WithObject("TrustedCertificatePublicKey", m_trustedCertificatePublicKey.Jsonize());
 
   }
 
@@ -90,9 +86,15 @@ JsonValue ImportKeyMaterial::Jsonize() const
 
   }
 
-  if(m_trustedCertificatePublicKeyHasBeenSet)
+  if(m_keyCryptogramHasBeenSet)
   {
-   payload.WithObject("TrustedCertificatePublicKey", m_trustedCertificatePublicKey.Jsonize());
+   payload.WithObject("KeyCryptogram", m_keyCryptogram.Jsonize());
+
+  }
+
+  if(m_diffieHellmanTr31KeyBlockHasBeenSet)
+  {
+   payload.WithObject("DiffieHellmanTr31KeyBlock", m_diffieHellmanTr31KeyBlock.Jsonize());
 
   }
 

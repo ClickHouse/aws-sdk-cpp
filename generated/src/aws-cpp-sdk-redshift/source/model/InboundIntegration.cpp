@@ -20,25 +20,7 @@ namespace Redshift
 namespace Model
 {
 
-InboundIntegration::InboundIntegration() : 
-    m_integrationArnHasBeenSet(false),
-    m_sourceArnHasBeenSet(false),
-    m_targetArnHasBeenSet(false),
-    m_status(ZeroETLIntegrationStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_errorsHasBeenSet(false),
-    m_createTimeHasBeenSet(false)
-{
-}
-
-InboundIntegration::InboundIntegration(const XmlNode& xmlNode) : 
-    m_integrationArnHasBeenSet(false),
-    m_sourceArnHasBeenSet(false),
-    m_targetArnHasBeenSet(false),
-    m_status(ZeroETLIntegrationStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_errorsHasBeenSet(false),
-    m_createTimeHasBeenSet(false)
+InboundIntegration::InboundIntegration(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -70,13 +52,14 @@ InboundIntegration& InboundIntegration::operator =(const XmlNode& xmlNode)
     XmlNode statusNode = resultNode.FirstChild("Status");
     if(!statusNode.IsNull())
     {
-      m_status = ZeroETLIntegrationStatusMapper::GetZeroETLIntegrationStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()).c_str());
+      m_status = ZeroETLIntegrationStatusMapper::GetZeroETLIntegrationStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()));
       m_statusHasBeenSet = true;
     }
     XmlNode errorsNode = resultNode.FirstChild("Errors");
     if(!errorsNode.IsNull())
     {
       XmlNode errorsMember = errorsNode.FirstChild("IntegrationError");
+      m_errorsHasBeenSet = !errorsMember.IsNull();
       while(!errorsMember.IsNull())
       {
         m_errors.push_back(errorsMember);
@@ -115,7 +98,7 @@ void InboundIntegration::OutputToStream(Aws::OStream& oStream, const char* locat
 
   if(m_statusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Status=" << ZeroETLIntegrationStatusMapper::GetNameForZeroETLIntegrationStatus(m_status) << "&";
+      oStream << location << index << locationValue << ".Status=" << StringUtils::URLEncode(ZeroETLIntegrationStatusMapper::GetNameForZeroETLIntegrationStatus(m_status)) << "&";
   }
 
   if(m_errorsHasBeenSet)
@@ -124,7 +107,7 @@ void InboundIntegration::OutputToStream(Aws::OStream& oStream, const char* locat
       for(auto& item : m_errors)
       {
         Aws::StringStream errorsSs;
-        errorsSs << location << index << locationValue << ".IntegrationError." << errorsIdx++;
+        errorsSs << location << index << locationValue << ".Errors.IntegrationError." << errorsIdx++;
         item.OutputToStream(oStream, errorsSs.str().c_str());
       }
   }
@@ -152,7 +135,7 @@ void InboundIntegration::OutputToStream(Aws::OStream& oStream, const char* locat
   }
   if(m_statusHasBeenSet)
   {
-      oStream << location << ".Status=" << ZeroETLIntegrationStatusMapper::GetNameForZeroETLIntegrationStatus(m_status) << "&";
+      oStream << location << ".Status=" << StringUtils::URLEncode(ZeroETLIntegrationStatusMapper::GetNameForZeroETLIntegrationStatus(m_status)) << "&";
   }
   if(m_errorsHasBeenSet)
   {
@@ -160,7 +143,7 @@ void InboundIntegration::OutputToStream(Aws::OStream& oStream, const char* locat
       for(auto& item : m_errors)
       {
         Aws::StringStream errorsSs;
-        errorsSs << location <<  ".IntegrationError." << errorsIdx++;
+        errorsSs << location << ".Errors.IntegrationError." << errorsIdx++;
         item.OutputToStream(oStream, errorsSs.str().c_str());
       }
   }

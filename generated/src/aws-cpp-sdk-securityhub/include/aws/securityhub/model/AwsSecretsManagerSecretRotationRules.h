@@ -29,35 +29,24 @@ namespace Model
   class AwsSecretsManagerSecretRotationRules
   {
   public:
-    AWS_SECURITYHUB_API AwsSecretsManagerSecretRotationRules();
+    AWS_SECURITYHUB_API AwsSecretsManagerSecretRotationRules() = default;
     AWS_SECURITYHUB_API AwsSecretsManagerSecretRotationRules(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsSecretsManagerSecretRotationRules& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The number of days after the previous rotation to rotate the secret.</p>
      */
-    inline int GetAutomaticallyAfterDays() const{ return m_automaticallyAfterDays; }
-
-    /**
-     * <p>The number of days after the previous rotation to rotate the secret.</p>
-     */
+    inline int GetAutomaticallyAfterDays() const { return m_automaticallyAfterDays; }
     inline bool AutomaticallyAfterDaysHasBeenSet() const { return m_automaticallyAfterDaysHasBeenSet; }
-
-    /**
-     * <p>The number of days after the previous rotation to rotate the secret.</p>
-     */
     inline void SetAutomaticallyAfterDays(int value) { m_automaticallyAfterDaysHasBeenSet = true; m_automaticallyAfterDays = value; }
-
-    /**
-     * <p>The number of days after the previous rotation to rotate the secret.</p>
-     */
     inline AwsSecretsManagerSecretRotationRules& WithAutomaticallyAfterDays(int value) { SetAutomaticallyAfterDays(value); return *this;}
-
+    ///@}
   private:
 
-    int m_automaticallyAfterDays;
+    int m_automaticallyAfterDays{0};
     bool m_automaticallyAfterDaysHasBeenSet = false;
   };
 

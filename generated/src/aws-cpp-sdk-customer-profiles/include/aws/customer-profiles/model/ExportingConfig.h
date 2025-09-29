@@ -37,42 +37,23 @@ namespace Model
   class ExportingConfig
   {
   public:
-    AWS_CUSTOMERPROFILES_API ExportingConfig();
+    AWS_CUSTOMERPROFILES_API ExportingConfig() = default;
     AWS_CUSTOMERPROFILES_API ExportingConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_CUSTOMERPROFILES_API ExportingConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CUSTOMERPROFILES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The S3 location where Identity Resolution Jobs write result files.</p>
      */
-    inline const S3ExportingConfig& GetS3Exporting() const{ return m_s3Exporting; }
-
-    /**
-     * <p>The S3 location where Identity Resolution Jobs write result files.</p>
-     */
+    inline const S3ExportingConfig& GetS3Exporting() const { return m_s3Exporting; }
     inline bool S3ExportingHasBeenSet() const { return m_s3ExportingHasBeenSet; }
-
-    /**
-     * <p>The S3 location where Identity Resolution Jobs write result files.</p>
-     */
-    inline void SetS3Exporting(const S3ExportingConfig& value) { m_s3ExportingHasBeenSet = true; m_s3Exporting = value; }
-
-    /**
-     * <p>The S3 location where Identity Resolution Jobs write result files.</p>
-     */
-    inline void SetS3Exporting(S3ExportingConfig&& value) { m_s3ExportingHasBeenSet = true; m_s3Exporting = std::move(value); }
-
-    /**
-     * <p>The S3 location where Identity Resolution Jobs write result files.</p>
-     */
-    inline ExportingConfig& WithS3Exporting(const S3ExportingConfig& value) { SetS3Exporting(value); return *this;}
-
-    /**
-     * <p>The S3 location where Identity Resolution Jobs write result files.</p>
-     */
-    inline ExportingConfig& WithS3Exporting(S3ExportingConfig&& value) { SetS3Exporting(std::move(value)); return *this;}
-
+    template<typename S3ExportingT = S3ExportingConfig>
+    void SetS3Exporting(S3ExportingT&& value) { m_s3ExportingHasBeenSet = true; m_s3Exporting = std::forward<S3ExportingT>(value); }
+    template<typename S3ExportingT = S3ExportingConfig>
+    ExportingConfig& WithS3Exporting(S3ExportingT&& value) { SetS3Exporting(std::forward<S3ExportingT>(value)); return *this;}
+    ///@}
   private:
 
     S3ExportingConfig m_s3Exporting;

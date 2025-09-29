@@ -33,7 +33,7 @@ namespace Model
   class Matcher
   {
   public:
-    AWS_ELASTICLOADBALANCINGV2_API Matcher();
+    AWS_ELASTICLOADBALANCINGV2_API Matcher() = default;
     AWS_ELASTICLOADBALANCINGV2_API Matcher(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_ELASTICLOADBALANCINGV2_API Matcher& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -41,6 +41,7 @@ namespace Model
     AWS_ELASTICLOADBALANCINGV2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>For Application Load Balancers, you can specify values between 200 and 499,
      * with the default value being 200. You can specify multiple values (for example,
@@ -51,149 +52,27 @@ namespace Model
      * this must be "200–399".</p> <p>Note that when using shorthand syntax, some
      * values such as commas need to be escaped.</p>
      */
-    inline const Aws::String& GetHttpCode() const{ return m_httpCode; }
-
-    /**
-     * <p>For Application Load Balancers, you can specify values between 200 and 499,
-     * with the default value being 200. You can specify multiple values (for example,
-     * "200,202") or a range of values (for example, "200-299").</p> <p>For Network
-     * Load Balancers, you can specify values between 200 and 599, with the default
-     * value being 200-399. You can specify multiple values (for example, "200,202") or
-     * a range of values (for example, "200-299").</p> <p>For Gateway Load Balancers,
-     * this must be "200–399".</p> <p>Note that when using shorthand syntax, some
-     * values such as commas need to be escaped.</p>
-     */
+    inline const Aws::String& GetHttpCode() const { return m_httpCode; }
     inline bool HttpCodeHasBeenSet() const { return m_httpCodeHasBeenSet; }
+    template<typename HttpCodeT = Aws::String>
+    void SetHttpCode(HttpCodeT&& value) { m_httpCodeHasBeenSet = true; m_httpCode = std::forward<HttpCodeT>(value); }
+    template<typename HttpCodeT = Aws::String>
+    Matcher& WithHttpCode(HttpCodeT&& value) { SetHttpCode(std::forward<HttpCodeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>For Application Load Balancers, you can specify values between 200 and 499,
-     * with the default value being 200. You can specify multiple values (for example,
-     * "200,202") or a range of values (for example, "200-299").</p> <p>For Network
-     * Load Balancers, you can specify values between 200 and 599, with the default
-     * value being 200-399. You can specify multiple values (for example, "200,202") or
-     * a range of values (for example, "200-299").</p> <p>For Gateway Load Balancers,
-     * this must be "200–399".</p> <p>Note that when using shorthand syntax, some
-     * values such as commas need to be escaped.</p>
-     */
-    inline void SetHttpCode(const Aws::String& value) { m_httpCodeHasBeenSet = true; m_httpCode = value; }
-
-    /**
-     * <p>For Application Load Balancers, you can specify values between 200 and 499,
-     * with the default value being 200. You can specify multiple values (for example,
-     * "200,202") or a range of values (for example, "200-299").</p> <p>For Network
-     * Load Balancers, you can specify values between 200 and 599, with the default
-     * value being 200-399. You can specify multiple values (for example, "200,202") or
-     * a range of values (for example, "200-299").</p> <p>For Gateway Load Balancers,
-     * this must be "200–399".</p> <p>Note that when using shorthand syntax, some
-     * values such as commas need to be escaped.</p>
-     */
-    inline void SetHttpCode(Aws::String&& value) { m_httpCodeHasBeenSet = true; m_httpCode = std::move(value); }
-
-    /**
-     * <p>For Application Load Balancers, you can specify values between 200 and 499,
-     * with the default value being 200. You can specify multiple values (for example,
-     * "200,202") or a range of values (for example, "200-299").</p> <p>For Network
-     * Load Balancers, you can specify values between 200 and 599, with the default
-     * value being 200-399. You can specify multiple values (for example, "200,202") or
-     * a range of values (for example, "200-299").</p> <p>For Gateway Load Balancers,
-     * this must be "200–399".</p> <p>Note that when using shorthand syntax, some
-     * values such as commas need to be escaped.</p>
-     */
-    inline void SetHttpCode(const char* value) { m_httpCodeHasBeenSet = true; m_httpCode.assign(value); }
-
-    /**
-     * <p>For Application Load Balancers, you can specify values between 200 and 499,
-     * with the default value being 200. You can specify multiple values (for example,
-     * "200,202") or a range of values (for example, "200-299").</p> <p>For Network
-     * Load Balancers, you can specify values between 200 and 599, with the default
-     * value being 200-399. You can specify multiple values (for example, "200,202") or
-     * a range of values (for example, "200-299").</p> <p>For Gateway Load Balancers,
-     * this must be "200–399".</p> <p>Note that when using shorthand syntax, some
-     * values such as commas need to be escaped.</p>
-     */
-    inline Matcher& WithHttpCode(const Aws::String& value) { SetHttpCode(value); return *this;}
-
-    /**
-     * <p>For Application Load Balancers, you can specify values between 200 and 499,
-     * with the default value being 200. You can specify multiple values (for example,
-     * "200,202") or a range of values (for example, "200-299").</p> <p>For Network
-     * Load Balancers, you can specify values between 200 and 599, with the default
-     * value being 200-399. You can specify multiple values (for example, "200,202") or
-     * a range of values (for example, "200-299").</p> <p>For Gateway Load Balancers,
-     * this must be "200–399".</p> <p>Note that when using shorthand syntax, some
-     * values such as commas need to be escaped.</p>
-     */
-    inline Matcher& WithHttpCode(Aws::String&& value) { SetHttpCode(std::move(value)); return *this;}
-
-    /**
-     * <p>For Application Load Balancers, you can specify values between 200 and 499,
-     * with the default value being 200. You can specify multiple values (for example,
-     * "200,202") or a range of values (for example, "200-299").</p> <p>For Network
-     * Load Balancers, you can specify values between 200 and 599, with the default
-     * value being 200-399. You can specify multiple values (for example, "200,202") or
-     * a range of values (for example, "200-299").</p> <p>For Gateway Load Balancers,
-     * this must be "200–399".</p> <p>Note that when using shorthand syntax, some
-     * values such as commas need to be escaped.</p>
-     */
-    inline Matcher& WithHttpCode(const char* value) { SetHttpCode(value); return *this;}
-
-
+    ///@{
     /**
      * <p>You can specify values between 0 and 99. You can specify multiple values (for
      * example, "0,1") or a range of values (for example, "0-5"). The default value is
      * 12.</p>
      */
-    inline const Aws::String& GetGrpcCode() const{ return m_grpcCode; }
-
-    /**
-     * <p>You can specify values between 0 and 99. You can specify multiple values (for
-     * example, "0,1") or a range of values (for example, "0-5"). The default value is
-     * 12.</p>
-     */
+    inline const Aws::String& GetGrpcCode() const { return m_grpcCode; }
     inline bool GrpcCodeHasBeenSet() const { return m_grpcCodeHasBeenSet; }
-
-    /**
-     * <p>You can specify values between 0 and 99. You can specify multiple values (for
-     * example, "0,1") or a range of values (for example, "0-5"). The default value is
-     * 12.</p>
-     */
-    inline void SetGrpcCode(const Aws::String& value) { m_grpcCodeHasBeenSet = true; m_grpcCode = value; }
-
-    /**
-     * <p>You can specify values between 0 and 99. You can specify multiple values (for
-     * example, "0,1") or a range of values (for example, "0-5"). The default value is
-     * 12.</p>
-     */
-    inline void SetGrpcCode(Aws::String&& value) { m_grpcCodeHasBeenSet = true; m_grpcCode = std::move(value); }
-
-    /**
-     * <p>You can specify values between 0 and 99. You can specify multiple values (for
-     * example, "0,1") or a range of values (for example, "0-5"). The default value is
-     * 12.</p>
-     */
-    inline void SetGrpcCode(const char* value) { m_grpcCodeHasBeenSet = true; m_grpcCode.assign(value); }
-
-    /**
-     * <p>You can specify values between 0 and 99. You can specify multiple values (for
-     * example, "0,1") or a range of values (for example, "0-5"). The default value is
-     * 12.</p>
-     */
-    inline Matcher& WithGrpcCode(const Aws::String& value) { SetGrpcCode(value); return *this;}
-
-    /**
-     * <p>You can specify values between 0 and 99. You can specify multiple values (for
-     * example, "0,1") or a range of values (for example, "0-5"). The default value is
-     * 12.</p>
-     */
-    inline Matcher& WithGrpcCode(Aws::String&& value) { SetGrpcCode(std::move(value)); return *this;}
-
-    /**
-     * <p>You can specify values between 0 and 99. You can specify multiple values (for
-     * example, "0,1") or a range of values (for example, "0-5"). The default value is
-     * 12.</p>
-     */
-    inline Matcher& WithGrpcCode(const char* value) { SetGrpcCode(value); return *this;}
-
+    template<typename GrpcCodeT = Aws::String>
+    void SetGrpcCode(GrpcCodeT&& value) { m_grpcCodeHasBeenSet = true; m_grpcCode = std::forward<GrpcCodeT>(value); }
+    template<typename GrpcCodeT = Aws::String>
+    Matcher& WithGrpcCode(GrpcCodeT&& value) { SetGrpcCode(std::forward<GrpcCodeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_httpCode;

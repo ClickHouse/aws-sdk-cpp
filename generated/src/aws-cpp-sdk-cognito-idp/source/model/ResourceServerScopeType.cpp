@@ -18,15 +18,7 @@ namespace CognitoIdentityProvider
 namespace Model
 {
 
-ResourceServerScopeType::ResourceServerScopeType() : 
-    m_scopeNameHasBeenSet(false),
-    m_scopeDescriptionHasBeenSet(false)
-{
-}
-
-ResourceServerScopeType::ResourceServerScopeType(JsonView jsonValue) : 
-    m_scopeNameHasBeenSet(false),
-    m_scopeDescriptionHasBeenSet(false)
+ResourceServerScopeType::ResourceServerScopeType(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ResourceServerScopeType& ResourceServerScopeType::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ScopeName"))
   {
     m_scopeName = jsonValue.GetString("ScopeName");
-
     m_scopeNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ScopeDescription"))
   {
     m_scopeDescription = jsonValue.GetString("ScopeDescription");
-
     m_scopeDescriptionHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -33,163 +33,70 @@ namespace Model
   class WorkspaceConnectionStatus
   {
   public:
-    AWS_WORKSPACES_API WorkspaceConnectionStatus();
+    AWS_WORKSPACES_API WorkspaceConnectionStatus() = default;
     AWS_WORKSPACES_API WorkspaceConnectionStatus(Aws::Utils::Json::JsonView jsonValue);
     AWS_WORKSPACES_API WorkspaceConnectionStatus& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WORKSPACES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The identifier of the WorkSpace.</p>
      */
-    inline const Aws::String& GetWorkspaceId() const{ return m_workspaceId; }
-
-    /**
-     * <p>The identifier of the WorkSpace.</p>
-     */
+    inline const Aws::String& GetWorkspaceId() const { return m_workspaceId; }
     inline bool WorkspaceIdHasBeenSet() const { return m_workspaceIdHasBeenSet; }
+    template<typename WorkspaceIdT = Aws::String>
+    void SetWorkspaceId(WorkspaceIdT&& value) { m_workspaceIdHasBeenSet = true; m_workspaceId = std::forward<WorkspaceIdT>(value); }
+    template<typename WorkspaceIdT = Aws::String>
+    WorkspaceConnectionStatus& WithWorkspaceId(WorkspaceIdT&& value) { SetWorkspaceId(std::forward<WorkspaceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the WorkSpace.</p>
-     */
-    inline void SetWorkspaceId(const Aws::String& value) { m_workspaceIdHasBeenSet = true; m_workspaceId = value; }
-
-    /**
-     * <p>The identifier of the WorkSpace.</p>
-     */
-    inline void SetWorkspaceId(Aws::String&& value) { m_workspaceIdHasBeenSet = true; m_workspaceId = std::move(value); }
-
-    /**
-     * <p>The identifier of the WorkSpace.</p>
-     */
-    inline void SetWorkspaceId(const char* value) { m_workspaceIdHasBeenSet = true; m_workspaceId.assign(value); }
-
-    /**
-     * <p>The identifier of the WorkSpace.</p>
-     */
-    inline WorkspaceConnectionStatus& WithWorkspaceId(const Aws::String& value) { SetWorkspaceId(value); return *this;}
-
-    /**
-     * <p>The identifier of the WorkSpace.</p>
-     */
-    inline WorkspaceConnectionStatus& WithWorkspaceId(Aws::String&& value) { SetWorkspaceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the WorkSpace.</p>
-     */
-    inline WorkspaceConnectionStatus& WithWorkspaceId(const char* value) { SetWorkspaceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The connection state of the WorkSpace. The connection state is unknown if the
      * WorkSpace is stopped.</p>
      */
-    inline const ConnectionState& GetConnectionState() const{ return m_connectionState; }
-
-    /**
-     * <p>The connection state of the WorkSpace. The connection state is unknown if the
-     * WorkSpace is stopped.</p>
-     */
+    inline ConnectionState GetConnectionState() const { return m_connectionState; }
     inline bool ConnectionStateHasBeenSet() const { return m_connectionStateHasBeenSet; }
+    inline void SetConnectionState(ConnectionState value) { m_connectionStateHasBeenSet = true; m_connectionState = value; }
+    inline WorkspaceConnectionStatus& WithConnectionState(ConnectionState value) { SetConnectionState(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The connection state of the WorkSpace. The connection state is unknown if the
-     * WorkSpace is stopped.</p>
-     */
-    inline void SetConnectionState(const ConnectionState& value) { m_connectionStateHasBeenSet = true; m_connectionState = value; }
-
-    /**
-     * <p>The connection state of the WorkSpace. The connection state is unknown if the
-     * WorkSpace is stopped.</p>
-     */
-    inline void SetConnectionState(ConnectionState&& value) { m_connectionStateHasBeenSet = true; m_connectionState = std::move(value); }
-
-    /**
-     * <p>The connection state of the WorkSpace. The connection state is unknown if the
-     * WorkSpace is stopped.</p>
-     */
-    inline WorkspaceConnectionStatus& WithConnectionState(const ConnectionState& value) { SetConnectionState(value); return *this;}
-
-    /**
-     * <p>The connection state of the WorkSpace. The connection state is unknown if the
-     * WorkSpace is stopped.</p>
-     */
-    inline WorkspaceConnectionStatus& WithConnectionState(ConnectionState&& value) { SetConnectionState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The timestamp of the connection status check.</p>
      */
-    inline const Aws::Utils::DateTime& GetConnectionStateCheckTimestamp() const{ return m_connectionStateCheckTimestamp; }
-
-    /**
-     * <p>The timestamp of the connection status check.</p>
-     */
+    inline const Aws::Utils::DateTime& GetConnectionStateCheckTimestamp() const { return m_connectionStateCheckTimestamp; }
     inline bool ConnectionStateCheckTimestampHasBeenSet() const { return m_connectionStateCheckTimestampHasBeenSet; }
+    template<typename ConnectionStateCheckTimestampT = Aws::Utils::DateTime>
+    void SetConnectionStateCheckTimestamp(ConnectionStateCheckTimestampT&& value) { m_connectionStateCheckTimestampHasBeenSet = true; m_connectionStateCheckTimestamp = std::forward<ConnectionStateCheckTimestampT>(value); }
+    template<typename ConnectionStateCheckTimestampT = Aws::Utils::DateTime>
+    WorkspaceConnectionStatus& WithConnectionStateCheckTimestamp(ConnectionStateCheckTimestampT&& value) { SetConnectionStateCheckTimestamp(std::forward<ConnectionStateCheckTimestampT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp of the connection status check.</p>
-     */
-    inline void SetConnectionStateCheckTimestamp(const Aws::Utils::DateTime& value) { m_connectionStateCheckTimestampHasBeenSet = true; m_connectionStateCheckTimestamp = value; }
-
-    /**
-     * <p>The timestamp of the connection status check.</p>
-     */
-    inline void SetConnectionStateCheckTimestamp(Aws::Utils::DateTime&& value) { m_connectionStateCheckTimestampHasBeenSet = true; m_connectionStateCheckTimestamp = std::move(value); }
-
-    /**
-     * <p>The timestamp of the connection status check.</p>
-     */
-    inline WorkspaceConnectionStatus& WithConnectionStateCheckTimestamp(const Aws::Utils::DateTime& value) { SetConnectionStateCheckTimestamp(value); return *this;}
-
-    /**
-     * <p>The timestamp of the connection status check.</p>
-     */
-    inline WorkspaceConnectionStatus& WithConnectionStateCheckTimestamp(Aws::Utils::DateTime&& value) { SetConnectionStateCheckTimestamp(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The timestamp of the last known user connection.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastKnownUserConnectionTimestamp() const{ return m_lastKnownUserConnectionTimestamp; }
-
-    /**
-     * <p>The timestamp of the last known user connection.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastKnownUserConnectionTimestamp() const { return m_lastKnownUserConnectionTimestamp; }
     inline bool LastKnownUserConnectionTimestampHasBeenSet() const { return m_lastKnownUserConnectionTimestampHasBeenSet; }
-
-    /**
-     * <p>The timestamp of the last known user connection.</p>
-     */
-    inline void SetLastKnownUserConnectionTimestamp(const Aws::Utils::DateTime& value) { m_lastKnownUserConnectionTimestampHasBeenSet = true; m_lastKnownUserConnectionTimestamp = value; }
-
-    /**
-     * <p>The timestamp of the last known user connection.</p>
-     */
-    inline void SetLastKnownUserConnectionTimestamp(Aws::Utils::DateTime&& value) { m_lastKnownUserConnectionTimestampHasBeenSet = true; m_lastKnownUserConnectionTimestamp = std::move(value); }
-
-    /**
-     * <p>The timestamp of the last known user connection.</p>
-     */
-    inline WorkspaceConnectionStatus& WithLastKnownUserConnectionTimestamp(const Aws::Utils::DateTime& value) { SetLastKnownUserConnectionTimestamp(value); return *this;}
-
-    /**
-     * <p>The timestamp of the last known user connection.</p>
-     */
-    inline WorkspaceConnectionStatus& WithLastKnownUserConnectionTimestamp(Aws::Utils::DateTime&& value) { SetLastKnownUserConnectionTimestamp(std::move(value)); return *this;}
-
+    template<typename LastKnownUserConnectionTimestampT = Aws::Utils::DateTime>
+    void SetLastKnownUserConnectionTimestamp(LastKnownUserConnectionTimestampT&& value) { m_lastKnownUserConnectionTimestampHasBeenSet = true; m_lastKnownUserConnectionTimestamp = std::forward<LastKnownUserConnectionTimestampT>(value); }
+    template<typename LastKnownUserConnectionTimestampT = Aws::Utils::DateTime>
+    WorkspaceConnectionStatus& WithLastKnownUserConnectionTimestamp(LastKnownUserConnectionTimestampT&& value) { SetLastKnownUserConnectionTimestamp(std::forward<LastKnownUserConnectionTimestampT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_workspaceId;
     bool m_workspaceIdHasBeenSet = false;
 
-    ConnectionState m_connectionState;
+    ConnectionState m_connectionState{ConnectionState::NOT_SET};
     bool m_connectionStateHasBeenSet = false;
 
-    Aws::Utils::DateTime m_connectionStateCheckTimestamp;
+    Aws::Utils::DateTime m_connectionStateCheckTimestamp{};
     bool m_connectionStateCheckTimestampHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastKnownUserConnectionTimestamp;
+    Aws::Utils::DateTime m_lastKnownUserConnectionTimestamp{};
     bool m_lastKnownUserConnectionTimestampHasBeenSet = false;
   };
 

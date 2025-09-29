@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-FunnelChartAggregatedFieldWells::FunnelChartAggregatedFieldWells() : 
-    m_categoryHasBeenSet(false),
-    m_valuesHasBeenSet(false)
-{
-}
-
-FunnelChartAggregatedFieldWells::FunnelChartAggregatedFieldWells(JsonView jsonValue) : 
-    m_categoryHasBeenSet(false),
-    m_valuesHasBeenSet(false)
+FunnelChartAggregatedFieldWells::FunnelChartAggregatedFieldWells(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ FunnelChartAggregatedFieldWells& FunnelChartAggregatedFieldWells::operator =(Jso
     }
     m_categoryHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Values"))
   {
     Aws::Utils::Array<JsonView> valuesJsonList = jsonValue.GetArray("Values");
@@ -52,7 +43,6 @@ FunnelChartAggregatedFieldWells& FunnelChartAggregatedFieldWells::operator =(Jso
     }
     m_valuesHasBeenSet = true;
   }
-
   return *this;
 }
 

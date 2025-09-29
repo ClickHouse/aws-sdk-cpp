@@ -18,35 +18,23 @@ namespace MediaTailor
 namespace Model
 {
 
-UpdateProgramScheduleConfiguration::UpdateProgramScheduleConfiguration() : 
-    m_clipRangeHasBeenSet(false),
-    m_transitionHasBeenSet(false)
-{
-}
-
-UpdateProgramScheduleConfiguration::UpdateProgramScheduleConfiguration(JsonView jsonValue) : 
-    m_clipRangeHasBeenSet(false),
-    m_transitionHasBeenSet(false)
+UpdateProgramScheduleConfiguration::UpdateProgramScheduleConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 UpdateProgramScheduleConfiguration& UpdateProgramScheduleConfiguration::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("ClipRange"))
-  {
-    m_clipRange = jsonValue.GetObject("ClipRange");
-
-    m_clipRangeHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("Transition"))
   {
     m_transition = jsonValue.GetObject("Transition");
-
     m_transitionHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("ClipRange"))
+  {
+    m_clipRange = jsonValue.GetObject("ClipRange");
+    m_clipRangeHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -54,15 +42,15 @@ JsonValue UpdateProgramScheduleConfiguration::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_clipRangeHasBeenSet)
-  {
-   payload.WithObject("ClipRange", m_clipRange.Jsonize());
-
-  }
-
   if(m_transitionHasBeenSet)
   {
    payload.WithObject("Transition", m_transition.Jsonize());
+
+  }
+
+  if(m_clipRangeHasBeenSet)
+  {
+   payload.WithObject("ClipRange", m_clipRange.Jsonize());
 
   }
 

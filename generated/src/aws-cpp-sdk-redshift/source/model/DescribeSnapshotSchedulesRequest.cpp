@@ -10,17 +10,6 @@
 using namespace Aws::Redshift::Model;
 using namespace Aws::Utils;
 
-DescribeSnapshotSchedulesRequest::DescribeSnapshotSchedulesRequest() : 
-    m_clusterIdentifierHasBeenSet(false),
-    m_scheduleIdentifierHasBeenSet(false),
-    m_tagKeysHasBeenSet(false),
-    m_tagValuesHasBeenSet(false),
-    m_markerHasBeenSet(false),
-    m_maxRecords(0),
-    m_maxRecordsHasBeenSet(false)
-{
-}
-
 Aws::String DescribeSnapshotSchedulesRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -37,23 +26,37 @@ Aws::String DescribeSnapshotSchedulesRequest::SerializePayload() const
 
   if(m_tagKeysHasBeenSet)
   {
-    unsigned tagKeysCount = 1;
-    for(auto& item : m_tagKeys)
+    if (m_tagKeys.empty())
     {
-      ss << "TagKeys.member." << tagKeysCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      tagKeysCount++;
+      ss << "TagKeys=&";
+    }
+    else
+    {
+      unsigned tagKeysCount = 1;
+      for(auto& item : m_tagKeys)
+      {
+        ss << "TagKeys.TagKey." << tagKeysCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        tagKeysCount++;
+      }
     }
   }
 
   if(m_tagValuesHasBeenSet)
   {
-    unsigned tagValuesCount = 1;
-    for(auto& item : m_tagValues)
+    if (m_tagValues.empty())
     {
-      ss << "TagValues.member." << tagValuesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      tagValuesCount++;
+      ss << "TagValues=&";
+    }
+    else
+    {
+      unsigned tagValuesCount = 1;
+      for(auto& item : m_tagValues)
+      {
+        ss << "TagValues.TagValue." << tagValuesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        tagValuesCount++;
+      }
     }
   }
 

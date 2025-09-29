@@ -32,79 +32,39 @@ namespace Model
   class BaselineMetric
   {
   public:
-    AWS_FORECASTSERVICE_API BaselineMetric();
+    AWS_FORECASTSERVICE_API BaselineMetric() = default;
     AWS_FORECASTSERVICE_API BaselineMetric(Aws::Utils::Json::JsonView jsonValue);
     AWS_FORECASTSERVICE_API BaselineMetric& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FORECASTSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the metric.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the metric.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    BaselineMetric& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the metric.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the metric.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the metric.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the metric.</p>
-     */
-    inline BaselineMetric& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the metric.</p>
-     */
-    inline BaselineMetric& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the metric.</p>
-     */
-    inline BaselineMetric& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The value for the metric.</p>
      */
-    inline double GetValue() const{ return m_value; }
-
-    /**
-     * <p>The value for the metric.</p>
-     */
+    inline double GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>The value for the metric.</p>
-     */
     inline void SetValue(double value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The value for the metric.</p>
-     */
     inline BaselineMetric& WithValue(double value) { SetValue(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_name;
     bool m_nameHasBeenSet = false;
 
-    double m_value;
+    double m_value{0.0};
     bool m_valueHasBeenSet = false;
   };
 

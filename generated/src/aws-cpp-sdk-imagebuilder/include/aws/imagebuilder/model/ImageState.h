@@ -32,86 +32,36 @@ namespace Model
   class ImageState
   {
   public:
-    AWS_IMAGEBUILDER_API ImageState();
+    AWS_IMAGEBUILDER_API ImageState() = default;
     AWS_IMAGEBUILDER_API ImageState(Aws::Utils::Json::JsonView jsonValue);
     AWS_IMAGEBUILDER_API ImageState& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IMAGEBUILDER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The status of the image.</p>
      */
-    inline const ImageStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the image.</p>
-     */
+    inline ImageStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(ImageStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline ImageState& WithStatus(ImageStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the image.</p>
-     */
-    inline void SetStatus(const ImageStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the image.</p>
-     */
-    inline void SetStatus(ImageStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the image.</p>
-     */
-    inline ImageState& WithStatus(const ImageStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the image.</p>
-     */
-    inline ImageState& WithStatus(ImageStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The reason for the status of the image.</p>
      */
-    inline const Aws::String& GetReason() const{ return m_reason; }
-
-    /**
-     * <p>The reason for the status of the image.</p>
-     */
+    inline const Aws::String& GetReason() const { return m_reason; }
     inline bool ReasonHasBeenSet() const { return m_reasonHasBeenSet; }
-
-    /**
-     * <p>The reason for the status of the image.</p>
-     */
-    inline void SetReason(const Aws::String& value) { m_reasonHasBeenSet = true; m_reason = value; }
-
-    /**
-     * <p>The reason for the status of the image.</p>
-     */
-    inline void SetReason(Aws::String&& value) { m_reasonHasBeenSet = true; m_reason = std::move(value); }
-
-    /**
-     * <p>The reason for the status of the image.</p>
-     */
-    inline void SetReason(const char* value) { m_reasonHasBeenSet = true; m_reason.assign(value); }
-
-    /**
-     * <p>The reason for the status of the image.</p>
-     */
-    inline ImageState& WithReason(const Aws::String& value) { SetReason(value); return *this;}
-
-    /**
-     * <p>The reason for the status of the image.</p>
-     */
-    inline ImageState& WithReason(Aws::String&& value) { SetReason(std::move(value)); return *this;}
-
-    /**
-     * <p>The reason for the status of the image.</p>
-     */
-    inline ImageState& WithReason(const char* value) { SetReason(value); return *this;}
-
+    template<typename ReasonT = Aws::String>
+    void SetReason(ReasonT&& value) { m_reasonHasBeenSet = true; m_reason = std::forward<ReasonT>(value); }
+    template<typename ReasonT = Aws::String>
+    ImageState& WithReason(ReasonT&& value) { SetReason(std::forward<ReasonT>(value)); return *this;}
+    ///@}
   private:
 
-    ImageStatus m_status;
+    ImageStatus m_status{ImageStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
     Aws::String m_reason;

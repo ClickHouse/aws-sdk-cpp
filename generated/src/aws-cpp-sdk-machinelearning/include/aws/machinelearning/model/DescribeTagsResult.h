@@ -35,139 +35,65 @@ namespace Model
   class DescribeTagsResult
   {
   public:
-    AWS_MACHINELEARNING_API DescribeTagsResult();
+    AWS_MACHINELEARNING_API DescribeTagsResult() = default;
     AWS_MACHINELEARNING_API DescribeTagsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_MACHINELEARNING_API DescribeTagsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The ID of the tagged ML object.</p>
      */
-    inline const Aws::String& GetResourceId() const{ return m_resourceId; }
+    inline const Aws::String& GetResourceId() const { return m_resourceId; }
+    template<typename ResourceIdT = Aws::String>
+    void SetResourceId(ResourceIdT&& value) { m_resourceIdHasBeenSet = true; m_resourceId = std::forward<ResourceIdT>(value); }
+    template<typename ResourceIdT = Aws::String>
+    DescribeTagsResult& WithResourceId(ResourceIdT&& value) { SetResourceId(std::forward<ResourceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the tagged ML object.</p>
-     */
-    inline void SetResourceId(const Aws::String& value) { m_resourceId = value; }
-
-    /**
-     * <p>The ID of the tagged ML object.</p>
-     */
-    inline void SetResourceId(Aws::String&& value) { m_resourceId = std::move(value); }
-
-    /**
-     * <p>The ID of the tagged ML object.</p>
-     */
-    inline void SetResourceId(const char* value) { m_resourceId.assign(value); }
-
-    /**
-     * <p>The ID of the tagged ML object.</p>
-     */
-    inline DescribeTagsResult& WithResourceId(const Aws::String& value) { SetResourceId(value); return *this;}
-
-    /**
-     * <p>The ID of the tagged ML object.</p>
-     */
-    inline DescribeTagsResult& WithResourceId(Aws::String&& value) { SetResourceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the tagged ML object.</p>
-     */
-    inline DescribeTagsResult& WithResourceId(const char* value) { SetResourceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of the tagged ML object.</p>
      */
-    inline const TaggableResourceType& GetResourceType() const{ return m_resourceType; }
+    inline TaggableResourceType GetResourceType() const { return m_resourceType; }
+    inline void SetResourceType(TaggableResourceType value) { m_resourceTypeHasBeenSet = true; m_resourceType = value; }
+    inline DescribeTagsResult& WithResourceType(TaggableResourceType value) { SetResourceType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of the tagged ML object.</p>
-     */
-    inline void SetResourceType(const TaggableResourceType& value) { m_resourceType = value; }
-
-    /**
-     * <p>The type of the tagged ML object.</p>
-     */
-    inline void SetResourceType(TaggableResourceType&& value) { m_resourceType = std::move(value); }
-
-    /**
-     * <p>The type of the tagged ML object.</p>
-     */
-    inline DescribeTagsResult& WithResourceType(const TaggableResourceType& value) { SetResourceType(value); return *this;}
-
-    /**
-     * <p>The type of the tagged ML object.</p>
-     */
-    inline DescribeTagsResult& WithResourceType(TaggableResourceType&& value) { SetResourceType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of tags associated with the ML object.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    DescribeTagsResult& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    DescribeTagsResult& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of tags associated with the ML object.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tags = value; }
-
-    /**
-     * <p>A list of tags associated with the ML object.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tags = std::move(value); }
-
-    /**
-     * <p>A list of tags associated with the ML object.</p>
-     */
-    inline DescribeTagsResult& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>A list of tags associated with the ML object.</p>
-     */
-    inline DescribeTagsResult& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of tags associated with the ML object.</p>
-     */
-    inline DescribeTagsResult& AddTags(const Tag& value) { m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>A list of tags associated with the ML object.</p>
-     */
-    inline DescribeTagsResult& AddTags(Tag&& value) { m_tags.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeTagsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeTagsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeTagsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeTagsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_resourceId;
+    bool m_resourceIdHasBeenSet = false;
 
-    TaggableResourceType m_resourceType;
+    TaggableResourceType m_resourceType{TaggableResourceType::NOT_SET};
+    bool m_resourceTypeHasBeenSet = false;
 
     Aws::Vector<Tag> m_tags;
+    bool m_tagsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

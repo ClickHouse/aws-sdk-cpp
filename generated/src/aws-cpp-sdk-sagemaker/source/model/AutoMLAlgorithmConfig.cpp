@@ -18,13 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-AutoMLAlgorithmConfig::AutoMLAlgorithmConfig() : 
-    m_autoMLAlgorithmsHasBeenSet(false)
-{
-}
-
-AutoMLAlgorithmConfig::AutoMLAlgorithmConfig(JsonView jsonValue) : 
-    m_autoMLAlgorithmsHasBeenSet(false)
+AutoMLAlgorithmConfig::AutoMLAlgorithmConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ AutoMLAlgorithmConfig& AutoMLAlgorithmConfig::operator =(JsonView jsonValue)
     }
     m_autoMLAlgorithmsHasBeenSet = true;
   }
-
   return *this;
 }
 

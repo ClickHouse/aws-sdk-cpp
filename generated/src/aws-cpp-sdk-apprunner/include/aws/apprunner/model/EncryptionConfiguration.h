@@ -32,52 +32,23 @@ namespace Model
   class EncryptionConfiguration
   {
   public:
-    AWS_APPRUNNER_API EncryptionConfiguration();
+    AWS_APPRUNNER_API EncryptionConfiguration() = default;
     AWS_APPRUNNER_API EncryptionConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPRUNNER_API EncryptionConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPRUNNER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ARN of the KMS key that's used for encryption.</p>
      */
-    inline const Aws::String& GetKmsKey() const{ return m_kmsKey; }
-
-    /**
-     * <p>The ARN of the KMS key that's used for encryption.</p>
-     */
+    inline const Aws::String& GetKmsKey() const { return m_kmsKey; }
     inline bool KmsKeyHasBeenSet() const { return m_kmsKeyHasBeenSet; }
-
-    /**
-     * <p>The ARN of the KMS key that's used for encryption.</p>
-     */
-    inline void SetKmsKey(const Aws::String& value) { m_kmsKeyHasBeenSet = true; m_kmsKey = value; }
-
-    /**
-     * <p>The ARN of the KMS key that's used for encryption.</p>
-     */
-    inline void SetKmsKey(Aws::String&& value) { m_kmsKeyHasBeenSet = true; m_kmsKey = std::move(value); }
-
-    /**
-     * <p>The ARN of the KMS key that's used for encryption.</p>
-     */
-    inline void SetKmsKey(const char* value) { m_kmsKeyHasBeenSet = true; m_kmsKey.assign(value); }
-
-    /**
-     * <p>The ARN of the KMS key that's used for encryption.</p>
-     */
-    inline EncryptionConfiguration& WithKmsKey(const Aws::String& value) { SetKmsKey(value); return *this;}
-
-    /**
-     * <p>The ARN of the KMS key that's used for encryption.</p>
-     */
-    inline EncryptionConfiguration& WithKmsKey(Aws::String&& value) { SetKmsKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the KMS key that's used for encryption.</p>
-     */
-    inline EncryptionConfiguration& WithKmsKey(const char* value) { SetKmsKey(value); return *this;}
-
+    template<typename KmsKeyT = Aws::String>
+    void SetKmsKey(KmsKeyT&& value) { m_kmsKeyHasBeenSet = true; m_kmsKey = std::forward<KmsKeyT>(value); }
+    template<typename KmsKeyT = Aws::String>
+    EncryptionConfiguration& WithKmsKey(KmsKeyT&& value) { SetKmsKey(std::forward<KmsKeyT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_kmsKey;

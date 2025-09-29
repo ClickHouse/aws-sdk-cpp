@@ -29,142 +29,82 @@ namespace Model
   class DeleteApplicationCloudWatchLoggingOptionResult
   {
   public:
-    AWS_KINESISANALYTICSV2_API DeleteApplicationCloudWatchLoggingOptionResult();
+    AWS_KINESISANALYTICSV2_API DeleteApplicationCloudWatchLoggingOptionResult() = default;
     AWS_KINESISANALYTICSV2_API DeleteApplicationCloudWatchLoggingOptionResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_KINESISANALYTICSV2_API DeleteApplicationCloudWatchLoggingOptionResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The application's Amazon Resource Name (ARN).</p>
      */
-    inline const Aws::String& GetApplicationARN() const{ return m_applicationARN; }
+    inline const Aws::String& GetApplicationARN() const { return m_applicationARN; }
+    template<typename ApplicationARNT = Aws::String>
+    void SetApplicationARN(ApplicationARNT&& value) { m_applicationARNHasBeenSet = true; m_applicationARN = std::forward<ApplicationARNT>(value); }
+    template<typename ApplicationARNT = Aws::String>
+    DeleteApplicationCloudWatchLoggingOptionResult& WithApplicationARN(ApplicationARNT&& value) { SetApplicationARN(std::forward<ApplicationARNT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The application's Amazon Resource Name (ARN).</p>
-     */
-    inline void SetApplicationARN(const Aws::String& value) { m_applicationARN = value; }
-
-    /**
-     * <p>The application's Amazon Resource Name (ARN).</p>
-     */
-    inline void SetApplicationARN(Aws::String&& value) { m_applicationARN = std::move(value); }
-
-    /**
-     * <p>The application's Amazon Resource Name (ARN).</p>
-     */
-    inline void SetApplicationARN(const char* value) { m_applicationARN.assign(value); }
-
-    /**
-     * <p>The application's Amazon Resource Name (ARN).</p>
-     */
-    inline DeleteApplicationCloudWatchLoggingOptionResult& WithApplicationARN(const Aws::String& value) { SetApplicationARN(value); return *this;}
-
-    /**
-     * <p>The application's Amazon Resource Name (ARN).</p>
-     */
-    inline DeleteApplicationCloudWatchLoggingOptionResult& WithApplicationARN(Aws::String&& value) { SetApplicationARN(std::move(value)); return *this;}
-
-    /**
-     * <p>The application's Amazon Resource Name (ARN).</p>
-     */
-    inline DeleteApplicationCloudWatchLoggingOptionResult& WithApplicationARN(const char* value) { SetApplicationARN(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The version ID of the application. Kinesis Data Analytics updates the
      * <code>ApplicationVersionId</code> each time you change the CloudWatch logging
      * options.</p>
      */
-    inline long long GetApplicationVersionId() const{ return m_applicationVersionId; }
-
-    /**
-     * <p>The version ID of the application. Kinesis Data Analytics updates the
-     * <code>ApplicationVersionId</code> each time you change the CloudWatch logging
-     * options.</p>
-     */
-    inline void SetApplicationVersionId(long long value) { m_applicationVersionId = value; }
-
-    /**
-     * <p>The version ID of the application. Kinesis Data Analytics updates the
-     * <code>ApplicationVersionId</code> each time you change the CloudWatch logging
-     * options.</p>
-     */
+    inline long long GetApplicationVersionId() const { return m_applicationVersionId; }
+    inline void SetApplicationVersionId(long long value) { m_applicationVersionIdHasBeenSet = true; m_applicationVersionId = value; }
     inline DeleteApplicationCloudWatchLoggingOptionResult& WithApplicationVersionId(long long value) { SetApplicationVersionId(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The descriptions of the remaining CloudWatch logging options for the
      * application.</p>
      */
-    inline const Aws::Vector<CloudWatchLoggingOptionDescription>& GetCloudWatchLoggingOptionDescriptions() const{ return m_cloudWatchLoggingOptionDescriptions; }
+    inline const Aws::Vector<CloudWatchLoggingOptionDescription>& GetCloudWatchLoggingOptionDescriptions() const { return m_cloudWatchLoggingOptionDescriptions; }
+    template<typename CloudWatchLoggingOptionDescriptionsT = Aws::Vector<CloudWatchLoggingOptionDescription>>
+    void SetCloudWatchLoggingOptionDescriptions(CloudWatchLoggingOptionDescriptionsT&& value) { m_cloudWatchLoggingOptionDescriptionsHasBeenSet = true; m_cloudWatchLoggingOptionDescriptions = std::forward<CloudWatchLoggingOptionDescriptionsT>(value); }
+    template<typename CloudWatchLoggingOptionDescriptionsT = Aws::Vector<CloudWatchLoggingOptionDescription>>
+    DeleteApplicationCloudWatchLoggingOptionResult& WithCloudWatchLoggingOptionDescriptions(CloudWatchLoggingOptionDescriptionsT&& value) { SetCloudWatchLoggingOptionDescriptions(std::forward<CloudWatchLoggingOptionDescriptionsT>(value)); return *this;}
+    template<typename CloudWatchLoggingOptionDescriptionsT = CloudWatchLoggingOptionDescription>
+    DeleteApplicationCloudWatchLoggingOptionResult& AddCloudWatchLoggingOptionDescriptions(CloudWatchLoggingOptionDescriptionsT&& value) { m_cloudWatchLoggingOptionDescriptionsHasBeenSet = true; m_cloudWatchLoggingOptionDescriptions.emplace_back(std::forward<CloudWatchLoggingOptionDescriptionsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The descriptions of the remaining CloudWatch logging options for the
-     * application.</p>
+     * <p>The operation ID that can be used to track the request.</p>
      */
-    inline void SetCloudWatchLoggingOptionDescriptions(const Aws::Vector<CloudWatchLoggingOptionDescription>& value) { m_cloudWatchLoggingOptionDescriptions = value; }
+    inline const Aws::String& GetOperationId() const { return m_operationId; }
+    template<typename OperationIdT = Aws::String>
+    void SetOperationId(OperationIdT&& value) { m_operationIdHasBeenSet = true; m_operationId = std::forward<OperationIdT>(value); }
+    template<typename OperationIdT = Aws::String>
+    DeleteApplicationCloudWatchLoggingOptionResult& WithOperationId(OperationIdT&& value) { SetOperationId(std::forward<OperationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The descriptions of the remaining CloudWatch logging options for the
-     * application.</p>
-     */
-    inline void SetCloudWatchLoggingOptionDescriptions(Aws::Vector<CloudWatchLoggingOptionDescription>&& value) { m_cloudWatchLoggingOptionDescriptions = std::move(value); }
-
-    /**
-     * <p>The descriptions of the remaining CloudWatch logging options for the
-     * application.</p>
-     */
-    inline DeleteApplicationCloudWatchLoggingOptionResult& WithCloudWatchLoggingOptionDescriptions(const Aws::Vector<CloudWatchLoggingOptionDescription>& value) { SetCloudWatchLoggingOptionDescriptions(value); return *this;}
-
-    /**
-     * <p>The descriptions of the remaining CloudWatch logging options for the
-     * application.</p>
-     */
-    inline DeleteApplicationCloudWatchLoggingOptionResult& WithCloudWatchLoggingOptionDescriptions(Aws::Vector<CloudWatchLoggingOptionDescription>&& value) { SetCloudWatchLoggingOptionDescriptions(std::move(value)); return *this;}
-
-    /**
-     * <p>The descriptions of the remaining CloudWatch logging options for the
-     * application.</p>
-     */
-    inline DeleteApplicationCloudWatchLoggingOptionResult& AddCloudWatchLoggingOptionDescriptions(const CloudWatchLoggingOptionDescription& value) { m_cloudWatchLoggingOptionDescriptions.push_back(value); return *this; }
-
-    /**
-     * <p>The descriptions of the remaining CloudWatch logging options for the
-     * application.</p>
-     */
-    inline DeleteApplicationCloudWatchLoggingOptionResult& AddCloudWatchLoggingOptionDescriptions(CloudWatchLoggingOptionDescription&& value) { m_cloudWatchLoggingOptionDescriptions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DeleteApplicationCloudWatchLoggingOptionResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DeleteApplicationCloudWatchLoggingOptionResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DeleteApplicationCloudWatchLoggingOptionResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DeleteApplicationCloudWatchLoggingOptionResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_applicationARN;
+    bool m_applicationARNHasBeenSet = false;
 
-    long long m_applicationVersionId;
+    long long m_applicationVersionId{0};
+    bool m_applicationVersionIdHasBeenSet = false;
 
     Aws::Vector<CloudWatchLoggingOptionDescription> m_cloudWatchLoggingOptionDescriptions;
+    bool m_cloudWatchLoggingOptionDescriptionsHasBeenSet = false;
+
+    Aws::String m_operationId;
+    bool m_operationIdHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

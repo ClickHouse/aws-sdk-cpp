@@ -12,14 +12,6 @@ using namespace Aws::Kinesis::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateStreamRequest::CreateStreamRequest() : 
-    m_streamNameHasBeenSet(false),
-    m_shardCount(0),
-    m_shardCountHasBeenSet(false),
-    m_streamModeDetailsHasBeenSet(false)
-{
-}
-
 Aws::String CreateStreamRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -39,6 +31,17 @@ Aws::String CreateStreamRequest::SerializePayload() const
   if(m_streamModeDetailsHasBeenSet)
   {
    payload.WithObject("StreamModeDetails", m_streamModeDetails.Jsonize());
+
+  }
+
+  if(m_tagsHasBeenSet)
+  {
+   JsonValue tagsJsonMap;
+   for(auto& tagsItem : m_tags)
+   {
+     tagsJsonMap.WithString(tagsItem.first, tagsItem.second);
+   }
+   payload.WithObject("Tags", std::move(tagsJsonMap));
 
   }
 

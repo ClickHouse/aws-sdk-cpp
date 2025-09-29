@@ -5,27 +5,13 @@
 
 #include <aws/mediapackagev2/model/UpdateOriginEndpointRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
+#include <aws/core/utils/memory/stl/AWSStringStream.h>
 
 #include <utility>
 
 using namespace Aws::mediapackagev2::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
-
-UpdateOriginEndpointRequest::UpdateOriginEndpointRequest() : 
-    m_channelGroupNameHasBeenSet(false),
-    m_channelNameHasBeenSet(false),
-    m_originEndpointNameHasBeenSet(false),
-    m_containerType(ContainerType::NOT_SET),
-    m_containerTypeHasBeenSet(false),
-    m_segmentHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_startoverWindowSeconds(0),
-    m_startoverWindowSecondsHasBeenSet(false),
-    m_hlsManifestsHasBeenSet(false),
-    m_lowLatencyHlsManifestsHasBeenSet(false)
-{
-}
 
 Aws::String UpdateOriginEndpointRequest::SerializePayload() const
 {
@@ -76,7 +62,50 @@ Aws::String UpdateOriginEndpointRequest::SerializePayload() const
 
   }
 
+  if(m_dashManifestsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> dashManifestsJsonList(m_dashManifests.size());
+   for(unsigned dashManifestsIndex = 0; dashManifestsIndex < dashManifestsJsonList.GetLength(); ++dashManifestsIndex)
+   {
+     dashManifestsJsonList[dashManifestsIndex].AsObject(m_dashManifests[dashManifestsIndex].Jsonize());
+   }
+   payload.WithArray("DashManifests", std::move(dashManifestsJsonList));
+
+  }
+
+  if(m_mssManifestsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> mssManifestsJsonList(m_mssManifests.size());
+   for(unsigned mssManifestsIndex = 0; mssManifestsIndex < mssManifestsJsonList.GetLength(); ++mssManifestsIndex)
+   {
+     mssManifestsJsonList[mssManifestsIndex].AsObject(m_mssManifests[mssManifestsIndex].Jsonize());
+   }
+   payload.WithArray("MssManifests", std::move(mssManifestsJsonList));
+
+  }
+
+  if(m_forceEndpointErrorConfigurationHasBeenSet)
+  {
+   payload.WithObject("ForceEndpointErrorConfiguration", m_forceEndpointErrorConfiguration.Jsonize());
+
+  }
+
   return payload.View().WriteReadable();
+}
+
+Aws::Http::HeaderValueCollection UpdateOriginEndpointRequest::GetRequestSpecificHeaders() const
+{
+  Aws::Http::HeaderValueCollection headers;
+  Aws::StringStream ss;
+  if(m_eTagHasBeenSet)
+  {
+    ss << m_eTag;
+    headers.emplace("x-amzn-update-if-match",  ss.str());
+    ss.str("");
+  }
+
+  return headers;
+
 }
 
 

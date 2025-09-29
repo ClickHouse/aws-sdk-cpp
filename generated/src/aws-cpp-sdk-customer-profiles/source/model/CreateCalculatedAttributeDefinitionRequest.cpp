@@ -12,19 +12,6 @@ using namespace Aws::CustomerProfiles::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateCalculatedAttributeDefinitionRequest::CreateCalculatedAttributeDefinitionRequest() : 
-    m_domainNameHasBeenSet(false),
-    m_calculatedAttributeNameHasBeenSet(false),
-    m_displayNameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_attributeDetailsHasBeenSet(false),
-    m_conditionsHasBeenSet(false),
-    m_statistic(Statistic::NOT_SET),
-    m_statisticHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateCalculatedAttributeDefinitionRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -53,9 +40,21 @@ Aws::String CreateCalculatedAttributeDefinitionRequest::SerializePayload() const
 
   }
 
+  if(m_filterHasBeenSet)
+  {
+   payload.WithObject("Filter", m_filter.Jsonize());
+
+  }
+
   if(m_statisticHasBeenSet)
   {
    payload.WithString("Statistic", StatisticMapper::GetNameForStatistic(m_statistic));
+  }
+
+  if(m_useHistoricalDataHasBeenSet)
+  {
+   payload.WithBool("UseHistoricalData", m_useHistoricalData);
+
   }
 
   if(m_tagsHasBeenSet)

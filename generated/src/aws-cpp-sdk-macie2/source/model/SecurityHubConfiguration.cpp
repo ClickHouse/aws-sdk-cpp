@@ -18,19 +18,7 @@ namespace Macie2
 namespace Model
 {
 
-SecurityHubConfiguration::SecurityHubConfiguration() : 
-    m_publishClassificationFindings(false),
-    m_publishClassificationFindingsHasBeenSet(false),
-    m_publishPolicyFindings(false),
-    m_publishPolicyFindingsHasBeenSet(false)
-{
-}
-
-SecurityHubConfiguration::SecurityHubConfiguration(JsonView jsonValue) : 
-    m_publishClassificationFindings(false),
-    m_publishClassificationFindingsHasBeenSet(false),
-    m_publishPolicyFindings(false),
-    m_publishPolicyFindingsHasBeenSet(false)
+SecurityHubConfiguration::SecurityHubConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ SecurityHubConfiguration& SecurityHubConfiguration::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("publishClassificationFindings"))
   {
     m_publishClassificationFindings = jsonValue.GetBool("publishClassificationFindings");
-
     m_publishClassificationFindingsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("publishPolicyFindings"))
   {
     m_publishPolicyFindings = jsonValue.GetBool("publishPolicyFindings");
-
     m_publishPolicyFindingsHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,17 +18,7 @@ namespace MQ
 namespace Model
 {
 
-BrokerEngineType::BrokerEngineType() : 
-    m_engineType(EngineType::NOT_SET),
-    m_engineTypeHasBeenSet(false),
-    m_engineVersionsHasBeenSet(false)
-{
-}
-
-BrokerEngineType::BrokerEngineType(JsonView jsonValue) : 
-    m_engineType(EngineType::NOT_SET),
-    m_engineTypeHasBeenSet(false),
-    m_engineVersionsHasBeenSet(false)
+BrokerEngineType::BrokerEngineType(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ BrokerEngineType& BrokerEngineType::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("engineType"))
   {
     m_engineType = EngineTypeMapper::GetEngineTypeForName(jsonValue.GetString("engineType"));
-
     m_engineTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("engineVersions"))
   {
     Aws::Utils::Array<JsonView> engineVersionsJsonList = jsonValue.GetArray("engineVersions");
@@ -51,7 +39,6 @@ BrokerEngineType& BrokerEngineType::operator =(JsonView jsonValue)
     }
     m_engineVersionsHasBeenSet = true;
   }
-
   return *this;
 }
 

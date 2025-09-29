@@ -34,88 +34,39 @@ namespace Model
   class GetStackPolicyResult
   {
   public:
-    AWS_CLOUDFORMATION_API GetStackPolicyResult();
+    AWS_CLOUDFORMATION_API GetStackPolicyResult() = default;
     AWS_CLOUDFORMATION_API GetStackPolicyResult(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_CLOUDFORMATION_API GetStackPolicyResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
-     * <p>Structure containing the stack policy body. (For more information, go to <a
-     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html">
-     * Prevent Updates to Stack Resources</a> in the <i>CloudFormation User
-     * Guide</i>.)</p>
+     * <p>Structure that contains the stack policy body. (For more information, see <a
+     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html">Prevent
+     * updates to stack resources</a> in the <i>CloudFormation User Guide</i>.)</p>
      */
-    inline const Aws::String& GetStackPolicyBody() const{ return m_stackPolicyBody; }
+    inline const Aws::String& GetStackPolicyBody() const { return m_stackPolicyBody; }
+    template<typename StackPolicyBodyT = Aws::String>
+    void SetStackPolicyBody(StackPolicyBodyT&& value) { m_stackPolicyBodyHasBeenSet = true; m_stackPolicyBody = std::forward<StackPolicyBodyT>(value); }
+    template<typename StackPolicyBodyT = Aws::String>
+    GetStackPolicyResult& WithStackPolicyBody(StackPolicyBodyT&& value) { SetStackPolicyBody(std::forward<StackPolicyBodyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Structure containing the stack policy body. (For more information, go to <a
-     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html">
-     * Prevent Updates to Stack Resources</a> in the <i>CloudFormation User
-     * Guide</i>.)</p>
-     */
-    inline void SetStackPolicyBody(const Aws::String& value) { m_stackPolicyBody = value; }
-
-    /**
-     * <p>Structure containing the stack policy body. (For more information, go to <a
-     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html">
-     * Prevent Updates to Stack Resources</a> in the <i>CloudFormation User
-     * Guide</i>.)</p>
-     */
-    inline void SetStackPolicyBody(Aws::String&& value) { m_stackPolicyBody = std::move(value); }
-
-    /**
-     * <p>Structure containing the stack policy body. (For more information, go to <a
-     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html">
-     * Prevent Updates to Stack Resources</a> in the <i>CloudFormation User
-     * Guide</i>.)</p>
-     */
-    inline void SetStackPolicyBody(const char* value) { m_stackPolicyBody.assign(value); }
-
-    /**
-     * <p>Structure containing the stack policy body. (For more information, go to <a
-     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html">
-     * Prevent Updates to Stack Resources</a> in the <i>CloudFormation User
-     * Guide</i>.)</p>
-     */
-    inline GetStackPolicyResult& WithStackPolicyBody(const Aws::String& value) { SetStackPolicyBody(value); return *this;}
-
-    /**
-     * <p>Structure containing the stack policy body. (For more information, go to <a
-     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html">
-     * Prevent Updates to Stack Resources</a> in the <i>CloudFormation User
-     * Guide</i>.)</p>
-     */
-    inline GetStackPolicyResult& WithStackPolicyBody(Aws::String&& value) { SetStackPolicyBody(std::move(value)); return *this;}
-
-    /**
-     * <p>Structure containing the stack policy body. (For more information, go to <a
-     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html">
-     * Prevent Updates to Stack Resources</a> in the <i>CloudFormation User
-     * Guide</i>.)</p>
-     */
-    inline GetStackPolicyResult& WithStackPolicyBody(const char* value) { SetStackPolicyBody(value); return *this;}
-
-
+    ///@{
     
-    inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
-
-    
-    inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
-
-    
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
-
-    
-    inline GetStackPolicyResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
-
-    
-    inline GetStackPolicyResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
-
+    inline const ResponseMetadata& GetResponseMetadata() const { return m_responseMetadata; }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    void SetResponseMetadata(ResponseMetadataT&& value) { m_responseMetadataHasBeenSet = true; m_responseMetadata = std::forward<ResponseMetadataT>(value); }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    GetStackPolicyResult& WithResponseMetadata(ResponseMetadataT&& value) { SetResponseMetadata(std::forward<ResponseMetadataT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_stackPolicyBody;
+    bool m_stackPolicyBodyHasBeenSet = false;
 
     ResponseMetadata m_responseMetadata;
+    bool m_responseMetadataHasBeenSet = false;
   };
 
 } // namespace Model

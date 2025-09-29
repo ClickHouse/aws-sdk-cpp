@@ -33,73 +33,35 @@ namespace Model
   class RedshiftReservedInstances
   {
   public:
-    AWS_COSTOPTIMIZATIONHUB_API RedshiftReservedInstances();
+    AWS_COSTOPTIMIZATIONHUB_API RedshiftReservedInstances() = default;
     AWS_COSTOPTIMIZATIONHUB_API RedshiftReservedInstances(Aws::Utils::Json::JsonView jsonValue);
     AWS_COSTOPTIMIZATIONHUB_API RedshiftReservedInstances& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COSTOPTIMIZATIONHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Redshift reserved instances configuration used for recommendations.</p>
      */
-    inline const RedshiftReservedInstancesConfiguration& GetConfiguration() const{ return m_configuration; }
-
-    /**
-     * <p>The Redshift reserved instances configuration used for recommendations.</p>
-     */
+    inline const RedshiftReservedInstancesConfiguration& GetConfiguration() const { return m_configuration; }
     inline bool ConfigurationHasBeenSet() const { return m_configurationHasBeenSet; }
+    template<typename ConfigurationT = RedshiftReservedInstancesConfiguration>
+    void SetConfiguration(ConfigurationT&& value) { m_configurationHasBeenSet = true; m_configuration = std::forward<ConfigurationT>(value); }
+    template<typename ConfigurationT = RedshiftReservedInstancesConfiguration>
+    RedshiftReservedInstances& WithConfiguration(ConfigurationT&& value) { SetConfiguration(std::forward<ConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Redshift reserved instances configuration used for recommendations.</p>
-     */
-    inline void SetConfiguration(const RedshiftReservedInstancesConfiguration& value) { m_configurationHasBeenSet = true; m_configuration = value; }
-
-    /**
-     * <p>The Redshift reserved instances configuration used for recommendations.</p>
-     */
-    inline void SetConfiguration(RedshiftReservedInstancesConfiguration&& value) { m_configurationHasBeenSet = true; m_configuration = std::move(value); }
-
-    /**
-     * <p>The Redshift reserved instances configuration used for recommendations.</p>
-     */
-    inline RedshiftReservedInstances& WithConfiguration(const RedshiftReservedInstancesConfiguration& value) { SetConfiguration(value); return *this;}
-
-    /**
-     * <p>The Redshift reserved instances configuration used for recommendations.</p>
-     */
-    inline RedshiftReservedInstances& WithConfiguration(RedshiftReservedInstancesConfiguration&& value) { SetConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Cost impact of the purchase recommendation.</p>
      */
-    inline const ReservedInstancesCostCalculation& GetCostCalculation() const{ return m_costCalculation; }
-
-    /**
-     * <p>Cost impact of the purchase recommendation.</p>
-     */
+    inline const ReservedInstancesCostCalculation& GetCostCalculation() const { return m_costCalculation; }
     inline bool CostCalculationHasBeenSet() const { return m_costCalculationHasBeenSet; }
-
-    /**
-     * <p>Cost impact of the purchase recommendation.</p>
-     */
-    inline void SetCostCalculation(const ReservedInstancesCostCalculation& value) { m_costCalculationHasBeenSet = true; m_costCalculation = value; }
-
-    /**
-     * <p>Cost impact of the purchase recommendation.</p>
-     */
-    inline void SetCostCalculation(ReservedInstancesCostCalculation&& value) { m_costCalculationHasBeenSet = true; m_costCalculation = std::move(value); }
-
-    /**
-     * <p>Cost impact of the purchase recommendation.</p>
-     */
-    inline RedshiftReservedInstances& WithCostCalculation(const ReservedInstancesCostCalculation& value) { SetCostCalculation(value); return *this;}
-
-    /**
-     * <p>Cost impact of the purchase recommendation.</p>
-     */
-    inline RedshiftReservedInstances& WithCostCalculation(ReservedInstancesCostCalculation&& value) { SetCostCalculation(std::move(value)); return *this;}
-
+    template<typename CostCalculationT = ReservedInstancesCostCalculation>
+    void SetCostCalculation(CostCalculationT&& value) { m_costCalculationHasBeenSet = true; m_costCalculation = std::forward<CostCalculationT>(value); }
+    template<typename CostCalculationT = ReservedInstancesCostCalculation>
+    RedshiftReservedInstances& WithCostCalculation(CostCalculationT&& value) { SetCostCalculation(std::forward<CostCalculationT>(value)); return *this;}
+    ///@}
   private:
 
     RedshiftReservedInstancesConfiguration m_configuration;

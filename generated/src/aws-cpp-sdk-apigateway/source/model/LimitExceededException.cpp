@@ -19,15 +19,7 @@ namespace APIGateway
 namespace Model
 {
 
-LimitExceededException::LimitExceededException() : 
-    m_retryAfterSecondsHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-LimitExceededException::LimitExceededException(JsonView jsonValue) : 
-    m_retryAfterSecondsHasBeenSet(false),
-    m_messageHasBeenSet(false)
+LimitExceededException::LimitExceededException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -37,10 +29,8 @@ LimitExceededException& LimitExceededException::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
   return *this;
 }
 

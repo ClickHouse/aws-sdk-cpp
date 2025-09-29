@@ -18,33 +18,13 @@ namespace Inspector2
 namespace Model
 {
 
-LambdaVpcConfig::LambdaVpcConfig() : 
-    m_securityGroupIdsHasBeenSet(false),
-    m_subnetIdsHasBeenSet(false),
-    m_vpcIdHasBeenSet(false)
-{
-}
-
-LambdaVpcConfig::LambdaVpcConfig(JsonView jsonValue) : 
-    m_securityGroupIdsHasBeenSet(false),
-    m_subnetIdsHasBeenSet(false),
-    m_vpcIdHasBeenSet(false)
+LambdaVpcConfig::LambdaVpcConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 LambdaVpcConfig& LambdaVpcConfig::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("securityGroupIds"))
-  {
-    Aws::Utils::Array<JsonView> securityGroupIdsJsonList = jsonValue.GetArray("securityGroupIds");
-    for(unsigned securityGroupIdsIndex = 0; securityGroupIdsIndex < securityGroupIdsJsonList.GetLength(); ++securityGroupIdsIndex)
-    {
-      m_securityGroupIds.push_back(securityGroupIdsJsonList[securityGroupIdsIndex].AsString());
-    }
-    m_securityGroupIdsHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("subnetIds"))
   {
     Aws::Utils::Array<JsonView> subnetIdsJsonList = jsonValue.GetArray("subnetIds");
@@ -54,31 +34,26 @@ LambdaVpcConfig& LambdaVpcConfig::operator =(JsonView jsonValue)
     }
     m_subnetIdsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("securityGroupIds"))
+  {
+    Aws::Utils::Array<JsonView> securityGroupIdsJsonList = jsonValue.GetArray("securityGroupIds");
+    for(unsigned securityGroupIdsIndex = 0; securityGroupIdsIndex < securityGroupIdsJsonList.GetLength(); ++securityGroupIdsIndex)
+    {
+      m_securityGroupIds.push_back(securityGroupIdsJsonList[securityGroupIdsIndex].AsString());
+    }
+    m_securityGroupIdsHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("vpcId"))
   {
     m_vpcId = jsonValue.GetString("vpcId");
-
     m_vpcIdHasBeenSet = true;
   }
-
   return *this;
 }
 
 JsonValue LambdaVpcConfig::Jsonize() const
 {
   JsonValue payload;
-
-  if(m_securityGroupIdsHasBeenSet)
-  {
-   Aws::Utils::Array<JsonValue> securityGroupIdsJsonList(m_securityGroupIds.size());
-   for(unsigned securityGroupIdsIndex = 0; securityGroupIdsIndex < securityGroupIdsJsonList.GetLength(); ++securityGroupIdsIndex)
-   {
-     securityGroupIdsJsonList[securityGroupIdsIndex].AsString(m_securityGroupIds[securityGroupIdsIndex]);
-   }
-   payload.WithArray("securityGroupIds", std::move(securityGroupIdsJsonList));
-
-  }
 
   if(m_subnetIdsHasBeenSet)
   {
@@ -88,6 +63,17 @@ JsonValue LambdaVpcConfig::Jsonize() const
      subnetIdsJsonList[subnetIdsIndex].AsString(m_subnetIds[subnetIdsIndex]);
    }
    payload.WithArray("subnetIds", std::move(subnetIdsJsonList));
+
+  }
+
+  if(m_securityGroupIdsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> securityGroupIdsJsonList(m_securityGroupIds.size());
+   for(unsigned securityGroupIdsIndex = 0; securityGroupIdsIndex < securityGroupIdsJsonList.GetLength(); ++securityGroupIdsIndex)
+   {
+     securityGroupIdsJsonList[securityGroupIdsIndex].AsString(m_securityGroupIds[securityGroupIdsIndex]);
+   }
+   payload.WithArray("securityGroupIds", std::move(securityGroupIdsJsonList));
 
   }
 

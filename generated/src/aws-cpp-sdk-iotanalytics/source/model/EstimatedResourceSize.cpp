@@ -18,17 +18,7 @@ namespace IoTAnalytics
 namespace Model
 {
 
-EstimatedResourceSize::EstimatedResourceSize() : 
-    m_estimatedSizeInBytes(0.0),
-    m_estimatedSizeInBytesHasBeenSet(false),
-    m_estimatedOnHasBeenSet(false)
-{
-}
-
-EstimatedResourceSize::EstimatedResourceSize(JsonView jsonValue) : 
-    m_estimatedSizeInBytes(0.0),
-    m_estimatedSizeInBytesHasBeenSet(false),
-    m_estimatedOnHasBeenSet(false)
+EstimatedResourceSize::EstimatedResourceSize(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ EstimatedResourceSize& EstimatedResourceSize::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("estimatedSizeInBytes"))
   {
     m_estimatedSizeInBytes = jsonValue.GetDouble("estimatedSizeInBytes");
-
     m_estimatedSizeInBytesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("estimatedOn"))
   {
     m_estimatedOn = jsonValue.GetDouble("estimatedOn");
-
     m_estimatedOnHasBeenSet = true;
   }
-
   return *this;
 }
 

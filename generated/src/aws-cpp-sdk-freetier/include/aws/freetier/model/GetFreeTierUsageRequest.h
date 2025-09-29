@@ -22,7 +22,7 @@ namespace Model
   class GetFreeTierUsageRequest : public FreeTierRequest
   {
   public:
-    AWS_FREETIER_API GetFreeTierUsageRequest();
+    AWS_FREETIER_API GetFreeTierUsageRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,118 +35,48 @@ namespace Model
     AWS_FREETIER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>An expression that specifies the conditions that you want each
      * <code>FreeTierUsage</code> object to meet.</p>
      */
-    inline const Expression& GetFilter() const{ return m_filter; }
-
-    /**
-     * <p>An expression that specifies the conditions that you want each
-     * <code>FreeTierUsage</code> object to meet.</p>
-     */
+    inline const Expression& GetFilter() const { return m_filter; }
     inline bool FilterHasBeenSet() const { return m_filterHasBeenSet; }
+    template<typename FilterT = Expression>
+    void SetFilter(FilterT&& value) { m_filterHasBeenSet = true; m_filter = std::forward<FilterT>(value); }
+    template<typename FilterT = Expression>
+    GetFreeTierUsageRequest& WithFilter(FilterT&& value) { SetFilter(std::forward<FilterT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An expression that specifies the conditions that you want each
-     * <code>FreeTierUsage</code> object to meet.</p>
-     */
-    inline void SetFilter(const Expression& value) { m_filterHasBeenSet = true; m_filter = value; }
-
-    /**
-     * <p>An expression that specifies the conditions that you want each
-     * <code>FreeTierUsage</code> object to meet.</p>
-     */
-    inline void SetFilter(Expression&& value) { m_filterHasBeenSet = true; m_filter = std::move(value); }
-
-    /**
-     * <p>An expression that specifies the conditions that you want each
-     * <code>FreeTierUsage</code> object to meet.</p>
-     */
-    inline GetFreeTierUsageRequest& WithFilter(const Expression& value) { SetFilter(value); return *this;}
-
-    /**
-     * <p>An expression that specifies the conditions that you want each
-     * <code>FreeTierUsage</code> object to meet.</p>
-     */
-    inline GetFreeTierUsageRequest& WithFilter(Expression&& value) { SetFilter(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of results to return in the response.
      * <code>MaxResults</code> means that there can be up to the specified number of
      * values, but there might be fewer results based on your filters.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of results to return in the response.
-     * <code>MaxResults</code> means that there can be up to the specified number of
-     * values, but there might be fewer results based on your filters.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of results to return in the response.
-     * <code>MaxResults</code> means that there can be up to the specified number of
-     * values, but there might be fewer results based on your filters.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of results to return in the response.
-     * <code>MaxResults</code> means that there can be up to the specified number of
-     * values, but there might be fewer results based on your filters.</p>
-     */
     inline GetFreeTierUsageRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The pagination token that indicates the next set of results to retrieve.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The pagination token that indicates the next set of results to retrieve.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
-
-    /**
-     * <p>The pagination token that indicates the next set of results to retrieve.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The pagination token that indicates the next set of results to retrieve.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The pagination token that indicates the next set of results to retrieve.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The pagination token that indicates the next set of results to retrieve.</p>
-     */
-    inline GetFreeTierUsageRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The pagination token that indicates the next set of results to retrieve.</p>
-     */
-    inline GetFreeTierUsageRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The pagination token that indicates the next set of results to retrieve.</p>
-     */
-    inline GetFreeTierUsageRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    GetFreeTierUsageRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Expression m_filter;
     bool m_filterHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     Aws::String m_nextToken;

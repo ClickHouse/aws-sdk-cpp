@@ -15,16 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-PutFeedbackRequest::PutFeedbackRequest() : 
-    m_applicationIdHasBeenSet(false),
-    m_conversationIdHasBeenSet(false),
-    m_messageCopiedAtHasBeenSet(false),
-    m_messageIdHasBeenSet(false),
-    m_messageUsefulnessHasBeenSet(false),
-    m_userIdHasBeenSet(false)
-{
-}
-
 Aws::String PutFeedbackRequest::SerializePayload() const
 {
   JsonValue payload;

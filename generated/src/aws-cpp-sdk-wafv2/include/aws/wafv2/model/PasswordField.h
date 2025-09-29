@@ -34,12 +34,13 @@ namespace Model
   class PasswordField
   {
   public:
-    AWS_WAFV2_API PasswordField();
+    AWS_WAFV2_API PasswordField() = default;
     AWS_WAFV2_API PasswordField(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFV2_API PasswordField& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the password field. </p> <p>How you specify this depends on the
      * request inspection payload type.</p> <ul> <li> <p>For JSON payloads, specify the
@@ -53,113 +54,13 @@ namespace Model
      * element named <code>password1</code>, the password field specification is
      * <code>password1</code>.</p> </li> </ul>
      */
-    inline const Aws::String& GetIdentifier() const{ return m_identifier; }
-
-    /**
-     * <p>The name of the password field. </p> <p>How you specify this depends on the
-     * request inspection payload type.</p> <ul> <li> <p>For JSON payloads, specify the
-     * field name in JSON pointer syntax. For information about the JSON Pointer
-     * syntax, see the Internet Engineering Task Force (IETF) documentation <a
-     * href="https://tools.ietf.org/html/rfc6901">JavaScript Object Notation (JSON)
-     * Pointer</a>. </p> <p>For example, for the JSON payload <code>{ "form": {
-     * "password": "THE_PASSWORD" } }</code>, the password field specification is
-     * <code>/form/password</code>.</p> </li> <li> <p>For form encoded payload types,
-     * use the HTML form names.</p> <p>For example, for an HTML form with the input
-     * element named <code>password1</code>, the password field specification is
-     * <code>password1</code>.</p> </li> </ul>
-     */
+    inline const Aws::String& GetIdentifier() const { return m_identifier; }
     inline bool IdentifierHasBeenSet() const { return m_identifierHasBeenSet; }
-
-    /**
-     * <p>The name of the password field. </p> <p>How you specify this depends on the
-     * request inspection payload type.</p> <ul> <li> <p>For JSON payloads, specify the
-     * field name in JSON pointer syntax. For information about the JSON Pointer
-     * syntax, see the Internet Engineering Task Force (IETF) documentation <a
-     * href="https://tools.ietf.org/html/rfc6901">JavaScript Object Notation (JSON)
-     * Pointer</a>. </p> <p>For example, for the JSON payload <code>{ "form": {
-     * "password": "THE_PASSWORD" } }</code>, the password field specification is
-     * <code>/form/password</code>.</p> </li> <li> <p>For form encoded payload types,
-     * use the HTML form names.</p> <p>For example, for an HTML form with the input
-     * element named <code>password1</code>, the password field specification is
-     * <code>password1</code>.</p> </li> </ul>
-     */
-    inline void SetIdentifier(const Aws::String& value) { m_identifierHasBeenSet = true; m_identifier = value; }
-
-    /**
-     * <p>The name of the password field. </p> <p>How you specify this depends on the
-     * request inspection payload type.</p> <ul> <li> <p>For JSON payloads, specify the
-     * field name in JSON pointer syntax. For information about the JSON Pointer
-     * syntax, see the Internet Engineering Task Force (IETF) documentation <a
-     * href="https://tools.ietf.org/html/rfc6901">JavaScript Object Notation (JSON)
-     * Pointer</a>. </p> <p>For example, for the JSON payload <code>{ "form": {
-     * "password": "THE_PASSWORD" } }</code>, the password field specification is
-     * <code>/form/password</code>.</p> </li> <li> <p>For form encoded payload types,
-     * use the HTML form names.</p> <p>For example, for an HTML form with the input
-     * element named <code>password1</code>, the password field specification is
-     * <code>password1</code>.</p> </li> </ul>
-     */
-    inline void SetIdentifier(Aws::String&& value) { m_identifierHasBeenSet = true; m_identifier = std::move(value); }
-
-    /**
-     * <p>The name of the password field. </p> <p>How you specify this depends on the
-     * request inspection payload type.</p> <ul> <li> <p>For JSON payloads, specify the
-     * field name in JSON pointer syntax. For information about the JSON Pointer
-     * syntax, see the Internet Engineering Task Force (IETF) documentation <a
-     * href="https://tools.ietf.org/html/rfc6901">JavaScript Object Notation (JSON)
-     * Pointer</a>. </p> <p>For example, for the JSON payload <code>{ "form": {
-     * "password": "THE_PASSWORD" } }</code>, the password field specification is
-     * <code>/form/password</code>.</p> </li> <li> <p>For form encoded payload types,
-     * use the HTML form names.</p> <p>For example, for an HTML form with the input
-     * element named <code>password1</code>, the password field specification is
-     * <code>password1</code>.</p> </li> </ul>
-     */
-    inline void SetIdentifier(const char* value) { m_identifierHasBeenSet = true; m_identifier.assign(value); }
-
-    /**
-     * <p>The name of the password field. </p> <p>How you specify this depends on the
-     * request inspection payload type.</p> <ul> <li> <p>For JSON payloads, specify the
-     * field name in JSON pointer syntax. For information about the JSON Pointer
-     * syntax, see the Internet Engineering Task Force (IETF) documentation <a
-     * href="https://tools.ietf.org/html/rfc6901">JavaScript Object Notation (JSON)
-     * Pointer</a>. </p> <p>For example, for the JSON payload <code>{ "form": {
-     * "password": "THE_PASSWORD" } }</code>, the password field specification is
-     * <code>/form/password</code>.</p> </li> <li> <p>For form encoded payload types,
-     * use the HTML form names.</p> <p>For example, for an HTML form with the input
-     * element named <code>password1</code>, the password field specification is
-     * <code>password1</code>.</p> </li> </ul>
-     */
-    inline PasswordField& WithIdentifier(const Aws::String& value) { SetIdentifier(value); return *this;}
-
-    /**
-     * <p>The name of the password field. </p> <p>How you specify this depends on the
-     * request inspection payload type.</p> <ul> <li> <p>For JSON payloads, specify the
-     * field name in JSON pointer syntax. For information about the JSON Pointer
-     * syntax, see the Internet Engineering Task Force (IETF) documentation <a
-     * href="https://tools.ietf.org/html/rfc6901">JavaScript Object Notation (JSON)
-     * Pointer</a>. </p> <p>For example, for the JSON payload <code>{ "form": {
-     * "password": "THE_PASSWORD" } }</code>, the password field specification is
-     * <code>/form/password</code>.</p> </li> <li> <p>For form encoded payload types,
-     * use the HTML form names.</p> <p>For example, for an HTML form with the input
-     * element named <code>password1</code>, the password field specification is
-     * <code>password1</code>.</p> </li> </ul>
-     */
-    inline PasswordField& WithIdentifier(Aws::String&& value) { SetIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the password field. </p> <p>How you specify this depends on the
-     * request inspection payload type.</p> <ul> <li> <p>For JSON payloads, specify the
-     * field name in JSON pointer syntax. For information about the JSON Pointer
-     * syntax, see the Internet Engineering Task Force (IETF) documentation <a
-     * href="https://tools.ietf.org/html/rfc6901">JavaScript Object Notation (JSON)
-     * Pointer</a>. </p> <p>For example, for the JSON payload <code>{ "form": {
-     * "password": "THE_PASSWORD" } }</code>, the password field specification is
-     * <code>/form/password</code>.</p> </li> <li> <p>For form encoded payload types,
-     * use the HTML form names.</p> <p>For example, for an HTML form with the input
-     * element named <code>password1</code>, the password field specification is
-     * <code>password1</code>.</p> </li> </ul>
-     */
-    inline PasswordField& WithIdentifier(const char* value) { SetIdentifier(value); return *this;}
-
+    template<typename IdentifierT = Aws::String>
+    void SetIdentifier(IdentifierT&& value) { m_identifierHasBeenSet = true; m_identifier = std::forward<IdentifierT>(value); }
+    template<typename IdentifierT = Aws::String>
+    PasswordField& WithIdentifier(IdentifierT&& value) { SetIdentifier(std::forward<IdentifierT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_identifier;

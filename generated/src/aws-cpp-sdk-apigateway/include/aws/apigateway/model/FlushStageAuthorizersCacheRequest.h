@@ -25,7 +25,7 @@ namespace Model
   class FlushStageAuthorizersCacheRequest : public APIGatewayRequest
   {
   public:
-    AWS_APIGATEWAY_API FlushStageAuthorizersCacheRequest();
+    AWS_APIGATEWAY_API FlushStageAuthorizersCacheRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,87 +36,29 @@ namespace Model
     AWS_APIGATEWAY_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The string identifier of the associated RestApi.</p>
      */
-    inline const Aws::String& GetRestApiId() const{ return m_restApiId; }
-
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
+    inline const Aws::String& GetRestApiId() const { return m_restApiId; }
     inline bool RestApiIdHasBeenSet() const { return m_restApiIdHasBeenSet; }
+    template<typename RestApiIdT = Aws::String>
+    void SetRestApiId(RestApiIdT&& value) { m_restApiIdHasBeenSet = true; m_restApiId = std::forward<RestApiIdT>(value); }
+    template<typename RestApiIdT = Aws::String>
+    FlushStageAuthorizersCacheRequest& WithRestApiId(RestApiIdT&& value) { SetRestApiId(std::forward<RestApiIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
-    inline void SetRestApiId(const Aws::String& value) { m_restApiIdHasBeenSet = true; m_restApiId = value; }
-
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
-    inline void SetRestApiId(Aws::String&& value) { m_restApiIdHasBeenSet = true; m_restApiId = std::move(value); }
-
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
-    inline void SetRestApiId(const char* value) { m_restApiIdHasBeenSet = true; m_restApiId.assign(value); }
-
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
-    inline FlushStageAuthorizersCacheRequest& WithRestApiId(const Aws::String& value) { SetRestApiId(value); return *this;}
-
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
-    inline FlushStageAuthorizersCacheRequest& WithRestApiId(Aws::String&& value) { SetRestApiId(std::move(value)); return *this;}
-
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
-    inline FlushStageAuthorizersCacheRequest& WithRestApiId(const char* value) { SetRestApiId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the stage to flush.</p>
      */
-    inline const Aws::String& GetStageName() const{ return m_stageName; }
-
-    /**
-     * <p>The name of the stage to flush.</p>
-     */
+    inline const Aws::String& GetStageName() const { return m_stageName; }
     inline bool StageNameHasBeenSet() const { return m_stageNameHasBeenSet; }
-
-    /**
-     * <p>The name of the stage to flush.</p>
-     */
-    inline void SetStageName(const Aws::String& value) { m_stageNameHasBeenSet = true; m_stageName = value; }
-
-    /**
-     * <p>The name of the stage to flush.</p>
-     */
-    inline void SetStageName(Aws::String&& value) { m_stageNameHasBeenSet = true; m_stageName = std::move(value); }
-
-    /**
-     * <p>The name of the stage to flush.</p>
-     */
-    inline void SetStageName(const char* value) { m_stageNameHasBeenSet = true; m_stageName.assign(value); }
-
-    /**
-     * <p>The name of the stage to flush.</p>
-     */
-    inline FlushStageAuthorizersCacheRequest& WithStageName(const Aws::String& value) { SetStageName(value); return *this;}
-
-    /**
-     * <p>The name of the stage to flush.</p>
-     */
-    inline FlushStageAuthorizersCacheRequest& WithStageName(Aws::String&& value) { SetStageName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the stage to flush.</p>
-     */
-    inline FlushStageAuthorizersCacheRequest& WithStageName(const char* value) { SetStageName(value); return *this;}
-
+    template<typename StageNameT = Aws::String>
+    void SetStageName(StageNameT&& value) { m_stageNameHasBeenSet = true; m_stageName = std::forward<StageNameT>(value); }
+    template<typename StageNameT = Aws::String>
+    FlushStageAuthorizersCacheRequest& WithStageName(StageNameT&& value) { SetStageName(std::forward<StageNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_restApiId;

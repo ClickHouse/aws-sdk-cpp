@@ -18,13 +18,7 @@ namespace CloudSearchDomain
 namespace Model
 {
 
-BucketInfo::BucketInfo() : 
-    m_bucketsHasBeenSet(false)
-{
-}
-
-BucketInfo::BucketInfo(JsonView jsonValue) : 
-    m_bucketsHasBeenSet(false)
+BucketInfo::BucketInfo(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ BucketInfo& BucketInfo::operator =(JsonView jsonValue)
     }
     m_bucketsHasBeenSet = true;
   }
-
   return *this;
 }
 

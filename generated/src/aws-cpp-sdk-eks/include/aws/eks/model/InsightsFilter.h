@@ -34,139 +34,57 @@ namespace Model
   class InsightsFilter
   {
   public:
-    AWS_EKS_API InsightsFilter();
+    AWS_EKS_API InsightsFilter() = default;
     AWS_EKS_API InsightsFilter(Aws::Utils::Json::JsonView jsonValue);
     AWS_EKS_API InsightsFilter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_EKS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The categories to use to filter insights.</p>
+     * <p>The categories to use to filter insights. The following lists the available
+     * categories:</p> <ul> <li> <p> <code>UPGRADE_READINESS</code>: Amazon EKS
+     * identifies issues that could impact your ability to upgrade to new versions of
+     * Kubernetes. These are called upgrade insights.</p> </li> <li> <p>
+     * <code>MISCONFIGURATION</code>: Amazon EKS identifies misconfiguration in your
+     * EKS Hybrid Nodes setup that could impair functionality of your cluster or
+     * workloads. These are called configuration insights.</p> </li> </ul>
      */
-    inline const Aws::Vector<Category>& GetCategories() const{ return m_categories; }
-
-    /**
-     * <p>The categories to use to filter insights.</p>
-     */
+    inline const Aws::Vector<Category>& GetCategories() const { return m_categories; }
     inline bool CategoriesHasBeenSet() const { return m_categoriesHasBeenSet; }
+    template<typename CategoriesT = Aws::Vector<Category>>
+    void SetCategories(CategoriesT&& value) { m_categoriesHasBeenSet = true; m_categories = std::forward<CategoriesT>(value); }
+    template<typename CategoriesT = Aws::Vector<Category>>
+    InsightsFilter& WithCategories(CategoriesT&& value) { SetCategories(std::forward<CategoriesT>(value)); return *this;}
+    inline InsightsFilter& AddCategories(Category value) { m_categoriesHasBeenSet = true; m_categories.push_back(value); return *this; }
+    ///@}
 
-    /**
-     * <p>The categories to use to filter insights.</p>
-     */
-    inline void SetCategories(const Aws::Vector<Category>& value) { m_categoriesHasBeenSet = true; m_categories = value; }
-
-    /**
-     * <p>The categories to use to filter insights.</p>
-     */
-    inline void SetCategories(Aws::Vector<Category>&& value) { m_categoriesHasBeenSet = true; m_categories = std::move(value); }
-
-    /**
-     * <p>The categories to use to filter insights.</p>
-     */
-    inline InsightsFilter& WithCategories(const Aws::Vector<Category>& value) { SetCategories(value); return *this;}
-
-    /**
-     * <p>The categories to use to filter insights.</p>
-     */
-    inline InsightsFilter& WithCategories(Aws::Vector<Category>&& value) { SetCategories(std::move(value)); return *this;}
-
-    /**
-     * <p>The categories to use to filter insights.</p>
-     */
-    inline InsightsFilter& AddCategories(const Category& value) { m_categoriesHasBeenSet = true; m_categories.push_back(value); return *this; }
-
-    /**
-     * <p>The categories to use to filter insights.</p>
-     */
-    inline InsightsFilter& AddCategories(Category&& value) { m_categoriesHasBeenSet = true; m_categories.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The Kubernetes versions to use to filter the insights.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetKubernetesVersions() const{ return m_kubernetesVersions; }
-
-    /**
-     * <p>The Kubernetes versions to use to filter the insights.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetKubernetesVersions() const { return m_kubernetesVersions; }
     inline bool KubernetesVersionsHasBeenSet() const { return m_kubernetesVersionsHasBeenSet; }
+    template<typename KubernetesVersionsT = Aws::Vector<Aws::String>>
+    void SetKubernetesVersions(KubernetesVersionsT&& value) { m_kubernetesVersionsHasBeenSet = true; m_kubernetesVersions = std::forward<KubernetesVersionsT>(value); }
+    template<typename KubernetesVersionsT = Aws::Vector<Aws::String>>
+    InsightsFilter& WithKubernetesVersions(KubernetesVersionsT&& value) { SetKubernetesVersions(std::forward<KubernetesVersionsT>(value)); return *this;}
+    template<typename KubernetesVersionsT = Aws::String>
+    InsightsFilter& AddKubernetesVersions(KubernetesVersionsT&& value) { m_kubernetesVersionsHasBeenSet = true; m_kubernetesVersions.emplace_back(std::forward<KubernetesVersionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The Kubernetes versions to use to filter the insights.</p>
-     */
-    inline void SetKubernetesVersions(const Aws::Vector<Aws::String>& value) { m_kubernetesVersionsHasBeenSet = true; m_kubernetesVersions = value; }
-
-    /**
-     * <p>The Kubernetes versions to use to filter the insights.</p>
-     */
-    inline void SetKubernetesVersions(Aws::Vector<Aws::String>&& value) { m_kubernetesVersionsHasBeenSet = true; m_kubernetesVersions = std::move(value); }
-
-    /**
-     * <p>The Kubernetes versions to use to filter the insights.</p>
-     */
-    inline InsightsFilter& WithKubernetesVersions(const Aws::Vector<Aws::String>& value) { SetKubernetesVersions(value); return *this;}
-
-    /**
-     * <p>The Kubernetes versions to use to filter the insights.</p>
-     */
-    inline InsightsFilter& WithKubernetesVersions(Aws::Vector<Aws::String>&& value) { SetKubernetesVersions(std::move(value)); return *this;}
-
-    /**
-     * <p>The Kubernetes versions to use to filter the insights.</p>
-     */
-    inline InsightsFilter& AddKubernetesVersions(const Aws::String& value) { m_kubernetesVersionsHasBeenSet = true; m_kubernetesVersions.push_back(value); return *this; }
-
-    /**
-     * <p>The Kubernetes versions to use to filter the insights.</p>
-     */
-    inline InsightsFilter& AddKubernetesVersions(Aws::String&& value) { m_kubernetesVersionsHasBeenSet = true; m_kubernetesVersions.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The Kubernetes versions to use to filter the insights.</p>
-     */
-    inline InsightsFilter& AddKubernetesVersions(const char* value) { m_kubernetesVersionsHasBeenSet = true; m_kubernetesVersions.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The statuses to use to filter the insights. </p>
      */
-    inline const Aws::Vector<InsightStatusValue>& GetStatuses() const{ return m_statuses; }
-
-    /**
-     * <p>The statuses to use to filter the insights. </p>
-     */
+    inline const Aws::Vector<InsightStatusValue>& GetStatuses() const { return m_statuses; }
     inline bool StatusesHasBeenSet() const { return m_statusesHasBeenSet; }
-
-    /**
-     * <p>The statuses to use to filter the insights. </p>
-     */
-    inline void SetStatuses(const Aws::Vector<InsightStatusValue>& value) { m_statusesHasBeenSet = true; m_statuses = value; }
-
-    /**
-     * <p>The statuses to use to filter the insights. </p>
-     */
-    inline void SetStatuses(Aws::Vector<InsightStatusValue>&& value) { m_statusesHasBeenSet = true; m_statuses = std::move(value); }
-
-    /**
-     * <p>The statuses to use to filter the insights. </p>
-     */
-    inline InsightsFilter& WithStatuses(const Aws::Vector<InsightStatusValue>& value) { SetStatuses(value); return *this;}
-
-    /**
-     * <p>The statuses to use to filter the insights. </p>
-     */
-    inline InsightsFilter& WithStatuses(Aws::Vector<InsightStatusValue>&& value) { SetStatuses(std::move(value)); return *this;}
-
-    /**
-     * <p>The statuses to use to filter the insights. </p>
-     */
-    inline InsightsFilter& AddStatuses(const InsightStatusValue& value) { m_statusesHasBeenSet = true; m_statuses.push_back(value); return *this; }
-
-    /**
-     * <p>The statuses to use to filter the insights. </p>
-     */
-    inline InsightsFilter& AddStatuses(InsightStatusValue&& value) { m_statusesHasBeenSet = true; m_statuses.push_back(std::move(value)); return *this; }
-
+    template<typename StatusesT = Aws::Vector<InsightStatusValue>>
+    void SetStatuses(StatusesT&& value) { m_statusesHasBeenSet = true; m_statuses = std::forward<StatusesT>(value); }
+    template<typename StatusesT = Aws::Vector<InsightStatusValue>>
+    InsightsFilter& WithStatuses(StatusesT&& value) { SetStatuses(std::forward<StatusesT>(value)); return *this;}
+    inline InsightsFilter& AddStatuses(InsightStatusValue value) { m_statusesHasBeenSet = true; m_statuses.push_back(value); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Category> m_categories;

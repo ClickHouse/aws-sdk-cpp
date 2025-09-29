@@ -29,8 +29,8 @@ namespace DLM
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
 
       typedef DLMClientConfiguration ClientConfigurationType;
       typedef DLMEndpointProvider EndpointProviderType;
@@ -40,14 +40,14 @@ namespace DLM
         * is not specified, it will be initialized to default values.
         */
         DLMClient(const Aws::DLM::DLMClientConfiguration& clientConfiguration = Aws::DLM::DLMClientConfiguration(),
-                  std::shared_ptr<DLMEndpointProviderBase> endpointProvider = Aws::MakeShared<DLMEndpointProvider>(ALLOCATION_TAG));
+                  std::shared_ptr<DLMEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         DLMClient(const Aws::Auth::AWSCredentials& credentials,
-                  std::shared_ptr<DLMEndpointProviderBase> endpointProvider = Aws::MakeShared<DLMEndpointProvider>(ALLOCATION_TAG),
+                  std::shared_ptr<DLMEndpointProviderBase> endpointProvider = nullptr,
                   const Aws::DLM::DLMClientConfiguration& clientConfiguration = Aws::DLM::DLMClientConfiguration());
 
        /**
@@ -55,7 +55,7 @@ namespace DLM
         * the default http client factory will be used
         */
         DLMClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                  std::shared_ptr<DLMEndpointProviderBase> endpointProvider = Aws::MakeShared<DLMEndpointProvider>(ALLOCATION_TAG),
+                  std::shared_ptr<DLMEndpointProviderBase> endpointProvider = nullptr,
                   const Aws::DLM::DLMClientConfiguration& clientConfiguration = Aws::DLM::DLMClientConfiguration());
 
 
@@ -155,13 +155,13 @@ namespace DLM
          * href="http://docs.aws.amazon.com/goto/WebAPI/dlm-2018-01-12/GetLifecyclePolicies">AWS
          * API Reference</a></p>
          */
-        virtual Model::GetLifecyclePoliciesOutcome GetLifecyclePolicies(const Model::GetLifecyclePoliciesRequest& request) const;
+        virtual Model::GetLifecyclePoliciesOutcome GetLifecyclePolicies(const Model::GetLifecyclePoliciesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for GetLifecyclePolicies that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename GetLifecyclePoliciesRequestT = Model::GetLifecyclePoliciesRequest>
-        Model::GetLifecyclePoliciesOutcomeCallable GetLifecyclePoliciesCallable(const GetLifecyclePoliciesRequestT& request) const
+        Model::GetLifecyclePoliciesOutcomeCallable GetLifecyclePoliciesCallable(const GetLifecyclePoliciesRequestT& request = {}) const
         {
             return SubmitCallable(&DLMClient::GetLifecyclePolicies, request);
         }
@@ -170,7 +170,7 @@ namespace DLM
          * An Async wrapper for GetLifecyclePolicies that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename GetLifecyclePoliciesRequestT = Model::GetLifecyclePoliciesRequest>
-        void GetLifecyclePoliciesAsync(const GetLifecyclePoliciesRequestT& request, const GetLifecyclePoliciesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void GetLifecyclePoliciesAsync(const GetLifecyclePoliciesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const GetLifecyclePoliciesRequestT& request = {}) const
         {
             return SubmitAsync(&DLMClient::GetLifecyclePolicies, request, handler, context);
         }
@@ -313,7 +313,6 @@ namespace DLM
       void init(const DLMClientConfiguration& clientConfiguration);
 
       DLMClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<DLMEndpointProviderBase> m_endpointProvider;
   };
 

@@ -20,15 +20,7 @@ namespace ElastiCache
 namespace Model
 {
 
-CacheSecurityGroupMembership::CacheSecurityGroupMembership() : 
-    m_cacheSecurityGroupNameHasBeenSet(false),
-    m_statusHasBeenSet(false)
-{
-}
-
-CacheSecurityGroupMembership::CacheSecurityGroupMembership(const XmlNode& xmlNode) : 
-    m_cacheSecurityGroupNameHasBeenSet(false),
-    m_statusHasBeenSet(false)
+CacheSecurityGroupMembership::CacheSecurityGroupMembership(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

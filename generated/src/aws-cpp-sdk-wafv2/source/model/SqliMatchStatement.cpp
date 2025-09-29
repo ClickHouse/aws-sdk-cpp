@@ -18,19 +18,7 @@ namespace WAFV2
 namespace Model
 {
 
-SqliMatchStatement::SqliMatchStatement() : 
-    m_fieldToMatchHasBeenSet(false),
-    m_textTransformationsHasBeenSet(false),
-    m_sensitivityLevel(SensitivityLevel::NOT_SET),
-    m_sensitivityLevelHasBeenSet(false)
-{
-}
-
-SqliMatchStatement::SqliMatchStatement(JsonView jsonValue) : 
-    m_fieldToMatchHasBeenSet(false),
-    m_textTransformationsHasBeenSet(false),
-    m_sensitivityLevel(SensitivityLevel::NOT_SET),
-    m_sensitivityLevelHasBeenSet(false)
+SqliMatchStatement::SqliMatchStatement(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,10 +28,8 @@ SqliMatchStatement& SqliMatchStatement::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("FieldToMatch"))
   {
     m_fieldToMatch = jsonValue.GetObject("FieldToMatch");
-
     m_fieldToMatchHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TextTransformations"))
   {
     Aws::Utils::Array<JsonView> textTransformationsJsonList = jsonValue.GetArray("TextTransformations");
@@ -53,14 +39,11 @@ SqliMatchStatement& SqliMatchStatement::operator =(JsonView jsonValue)
     }
     m_textTransformationsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SensitivityLevel"))
   {
     m_sensitivityLevel = SensitivityLevelMapper::GetSensitivityLevelForName(jsonValue.GetString("SensitivityLevel"));
-
     m_sensitivityLevelHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,15 +18,7 @@ namespace CostExplorer
 namespace Model
 {
 
-ReservationCoverageGroup::ReservationCoverageGroup() : 
-    m_attributesHasBeenSet(false),
-    m_coverageHasBeenSet(false)
-{
-}
-
-ReservationCoverageGroup::ReservationCoverageGroup(JsonView jsonValue) : 
-    m_attributesHasBeenSet(false),
-    m_coverageHasBeenSet(false)
+ReservationCoverageGroup::ReservationCoverageGroup(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ ReservationCoverageGroup& ReservationCoverageGroup::operator =(JsonView jsonValu
     }
     m_attributesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Coverage"))
   {
     m_coverage = jsonValue.GetObject("Coverage");
-
     m_coverageHasBeenSet = true;
   }
-
   return *this;
 }
 

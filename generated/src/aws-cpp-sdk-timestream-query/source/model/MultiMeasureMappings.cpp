@@ -18,15 +18,7 @@ namespace TimestreamQuery
 namespace Model
 {
 
-MultiMeasureMappings::MultiMeasureMappings() : 
-    m_targetMultiMeasureNameHasBeenSet(false),
-    m_multiMeasureAttributeMappingsHasBeenSet(false)
-{
-}
-
-MultiMeasureMappings::MultiMeasureMappings(JsonView jsonValue) : 
-    m_targetMultiMeasureNameHasBeenSet(false),
-    m_multiMeasureAttributeMappingsHasBeenSet(false)
+MultiMeasureMappings::MultiMeasureMappings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ MultiMeasureMappings& MultiMeasureMappings::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("TargetMultiMeasureName"))
   {
     m_targetMultiMeasureName = jsonValue.GetString("TargetMultiMeasureName");
-
     m_targetMultiMeasureNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MultiMeasureAttributeMappings"))
   {
     Aws::Utils::Array<JsonView> multiMeasureAttributeMappingsJsonList = jsonValue.GetArray("MultiMeasureAttributeMappings");
@@ -49,7 +39,6 @@ MultiMeasureMappings& MultiMeasureMappings::operator =(JsonView jsonValue)
     }
     m_multiMeasureAttributeMappingsHasBeenSet = true;
   }
-
   return *this;
 }
 

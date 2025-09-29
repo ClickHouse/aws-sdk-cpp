@@ -21,7 +21,7 @@ namespace Model
   class DeleteDestinationRequest : public CloudWatchLogsRequest
   {
   public:
-    AWS_CLOUDWATCHLOGS_API DeleteDestinationRequest();
+    AWS_CLOUDWATCHLOGS_API DeleteDestinationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_CLOUDWATCHLOGS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the destination.</p>
      */
-    inline const Aws::String& GetDestinationName() const{ return m_destinationName; }
-
-    /**
-     * <p>The name of the destination.</p>
-     */
+    inline const Aws::String& GetDestinationName() const { return m_destinationName; }
     inline bool DestinationNameHasBeenSet() const { return m_destinationNameHasBeenSet; }
-
-    /**
-     * <p>The name of the destination.</p>
-     */
-    inline void SetDestinationName(const Aws::String& value) { m_destinationNameHasBeenSet = true; m_destinationName = value; }
-
-    /**
-     * <p>The name of the destination.</p>
-     */
-    inline void SetDestinationName(Aws::String&& value) { m_destinationNameHasBeenSet = true; m_destinationName = std::move(value); }
-
-    /**
-     * <p>The name of the destination.</p>
-     */
-    inline void SetDestinationName(const char* value) { m_destinationNameHasBeenSet = true; m_destinationName.assign(value); }
-
-    /**
-     * <p>The name of the destination.</p>
-     */
-    inline DeleteDestinationRequest& WithDestinationName(const Aws::String& value) { SetDestinationName(value); return *this;}
-
-    /**
-     * <p>The name of the destination.</p>
-     */
-    inline DeleteDestinationRequest& WithDestinationName(Aws::String&& value) { SetDestinationName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the destination.</p>
-     */
-    inline DeleteDestinationRequest& WithDestinationName(const char* value) { SetDestinationName(value); return *this;}
-
+    template<typename DestinationNameT = Aws::String>
+    void SetDestinationName(DestinationNameT&& value) { m_destinationNameHasBeenSet = true; m_destinationName = std::forward<DestinationNameT>(value); }
+    template<typename DestinationNameT = Aws::String>
+    DeleteDestinationRequest& WithDestinationName(DestinationNameT&& value) { SetDestinationName(std::forward<DestinationNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_destinationName;

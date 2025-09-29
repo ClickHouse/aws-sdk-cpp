@@ -18,15 +18,7 @@ namespace KafkaConnect
 namespace Model
 {
 
-KafkaClusterClientAuthenticationDescription::KafkaClusterClientAuthenticationDescription() : 
-    m_authenticationType(KafkaClusterClientAuthenticationType::NOT_SET),
-    m_authenticationTypeHasBeenSet(false)
-{
-}
-
-KafkaClusterClientAuthenticationDescription::KafkaClusterClientAuthenticationDescription(JsonView jsonValue) : 
-    m_authenticationType(KafkaClusterClientAuthenticationType::NOT_SET),
-    m_authenticationTypeHasBeenSet(false)
+KafkaClusterClientAuthenticationDescription::KafkaClusterClientAuthenticationDescription(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ KafkaClusterClientAuthenticationDescription& KafkaClusterClientAuthenticationDes
   if(jsonValue.ValueExists("authenticationType"))
   {
     m_authenticationType = KafkaClusterClientAuthenticationTypeMapper::GetKafkaClusterClientAuthenticationTypeForName(jsonValue.GetString("authenticationType"));
-
     m_authenticationTypeHasBeenSet = true;
   }
-
   return *this;
 }
 

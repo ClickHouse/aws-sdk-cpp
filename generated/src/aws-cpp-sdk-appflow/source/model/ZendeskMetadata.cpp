@@ -18,13 +18,7 @@ namespace Appflow
 namespace Model
 {
 
-ZendeskMetadata::ZendeskMetadata() : 
-    m_oAuthScopesHasBeenSet(false)
-{
-}
-
-ZendeskMetadata::ZendeskMetadata(JsonView jsonValue) : 
-    m_oAuthScopesHasBeenSet(false)
+ZendeskMetadata::ZendeskMetadata(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ ZendeskMetadata& ZendeskMetadata::operator =(JsonView jsonValue)
     }
     m_oAuthScopesHasBeenSet = true;
   }
-
   return *this;
 }
 

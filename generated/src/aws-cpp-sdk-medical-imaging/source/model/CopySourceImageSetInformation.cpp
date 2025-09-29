@@ -18,13 +18,7 @@ namespace MedicalImaging
 namespace Model
 {
 
-CopySourceImageSetInformation::CopySourceImageSetInformation() : 
-    m_latestVersionIdHasBeenSet(false)
-{
-}
-
-CopySourceImageSetInformation::CopySourceImageSetInformation(JsonView jsonValue) : 
-    m_latestVersionIdHasBeenSet(false)
+CopySourceImageSetInformation::CopySourceImageSetInformation(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,13 @@ CopySourceImageSetInformation& CopySourceImageSetInformation::operator =(JsonVie
   if(jsonValue.ValueExists("latestVersionId"))
   {
     m_latestVersionId = jsonValue.GetString("latestVersionId");
-
     m_latestVersionIdHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("DICOMCopies"))
+  {
+    m_dICOMCopies = jsonValue.GetObject("DICOMCopies");
+    m_dICOMCopiesHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -48,6 +45,12 @@ JsonValue CopySourceImageSetInformation::Jsonize() const
   if(m_latestVersionIdHasBeenSet)
   {
    payload.WithString("latestVersionId", m_latestVersionId);
+
+  }
+
+  if(m_dICOMCopiesHasBeenSet)
+  {
+   payload.WithObject("DICOMCopies", m_dICOMCopies.Jsonize());
 
   }
 

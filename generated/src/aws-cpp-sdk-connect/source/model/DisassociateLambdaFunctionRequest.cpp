@@ -15,12 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-DisassociateLambdaFunctionRequest::DisassociateLambdaFunctionRequest() : 
-    m_instanceIdHasBeenSet(false),
-    m_functionArnHasBeenSet(false)
-{
-}
-
 Aws::String DisassociateLambdaFunctionRequest::SerializePayload() const
 {
   return {};
@@ -33,6 +27,13 @@ void DisassociateLambdaFunctionRequest::AddQueryStringParameters(URI& uri) const
     {
       ss << m_functionArn;
       uri.AddQueryStringParameter("functionArn", ss.str());
+      ss.str("");
+    }
+
+    if(m_clientTokenHasBeenSet)
+    {
+      ss << m_clientToken;
+      uri.AddQueryStringParameter("clientToken", ss.str());
       ss.str("");
     }
 

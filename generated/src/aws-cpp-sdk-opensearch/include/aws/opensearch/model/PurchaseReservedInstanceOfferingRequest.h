@@ -26,7 +26,7 @@ namespace Model
   class PurchaseReservedInstanceOfferingRequest : public OpenSearchServiceRequest
   {
   public:
-    AWS_OPENSEARCHSERVICE_API PurchaseReservedInstanceOfferingRequest();
+    AWS_OPENSEARCHSERVICE_API PurchaseReservedInstanceOfferingRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,108 +37,39 @@ namespace Model
     AWS_OPENSEARCHSERVICE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the Reserved Instance offering to purchase.</p>
      */
-    inline const Aws::String& GetReservedInstanceOfferingId() const{ return m_reservedInstanceOfferingId; }
-
-    /**
-     * <p>The ID of the Reserved Instance offering to purchase.</p>
-     */
+    inline const Aws::String& GetReservedInstanceOfferingId() const { return m_reservedInstanceOfferingId; }
     inline bool ReservedInstanceOfferingIdHasBeenSet() const { return m_reservedInstanceOfferingIdHasBeenSet; }
+    template<typename ReservedInstanceOfferingIdT = Aws::String>
+    void SetReservedInstanceOfferingId(ReservedInstanceOfferingIdT&& value) { m_reservedInstanceOfferingIdHasBeenSet = true; m_reservedInstanceOfferingId = std::forward<ReservedInstanceOfferingIdT>(value); }
+    template<typename ReservedInstanceOfferingIdT = Aws::String>
+    PurchaseReservedInstanceOfferingRequest& WithReservedInstanceOfferingId(ReservedInstanceOfferingIdT&& value) { SetReservedInstanceOfferingId(std::forward<ReservedInstanceOfferingIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Reserved Instance offering to purchase.</p>
-     */
-    inline void SetReservedInstanceOfferingId(const Aws::String& value) { m_reservedInstanceOfferingIdHasBeenSet = true; m_reservedInstanceOfferingId = value; }
-
-    /**
-     * <p>The ID of the Reserved Instance offering to purchase.</p>
-     */
-    inline void SetReservedInstanceOfferingId(Aws::String&& value) { m_reservedInstanceOfferingIdHasBeenSet = true; m_reservedInstanceOfferingId = std::move(value); }
-
-    /**
-     * <p>The ID of the Reserved Instance offering to purchase.</p>
-     */
-    inline void SetReservedInstanceOfferingId(const char* value) { m_reservedInstanceOfferingIdHasBeenSet = true; m_reservedInstanceOfferingId.assign(value); }
-
-    /**
-     * <p>The ID of the Reserved Instance offering to purchase.</p>
-     */
-    inline PurchaseReservedInstanceOfferingRequest& WithReservedInstanceOfferingId(const Aws::String& value) { SetReservedInstanceOfferingId(value); return *this;}
-
-    /**
-     * <p>The ID of the Reserved Instance offering to purchase.</p>
-     */
-    inline PurchaseReservedInstanceOfferingRequest& WithReservedInstanceOfferingId(Aws::String&& value) { SetReservedInstanceOfferingId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Reserved Instance offering to purchase.</p>
-     */
-    inline PurchaseReservedInstanceOfferingRequest& WithReservedInstanceOfferingId(const char* value) { SetReservedInstanceOfferingId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A customer-specified identifier to track this reservation.</p>
      */
-    inline const Aws::String& GetReservationName() const{ return m_reservationName; }
-
-    /**
-     * <p>A customer-specified identifier to track this reservation.</p>
-     */
+    inline const Aws::String& GetReservationName() const { return m_reservationName; }
     inline bool ReservationNameHasBeenSet() const { return m_reservationNameHasBeenSet; }
+    template<typename ReservationNameT = Aws::String>
+    void SetReservationName(ReservationNameT&& value) { m_reservationNameHasBeenSet = true; m_reservationName = std::forward<ReservationNameT>(value); }
+    template<typename ReservationNameT = Aws::String>
+    PurchaseReservedInstanceOfferingRequest& WithReservationName(ReservationNameT&& value) { SetReservationName(std::forward<ReservationNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A customer-specified identifier to track this reservation.</p>
-     */
-    inline void SetReservationName(const Aws::String& value) { m_reservationNameHasBeenSet = true; m_reservationName = value; }
-
-    /**
-     * <p>A customer-specified identifier to track this reservation.</p>
-     */
-    inline void SetReservationName(Aws::String&& value) { m_reservationNameHasBeenSet = true; m_reservationName = std::move(value); }
-
-    /**
-     * <p>A customer-specified identifier to track this reservation.</p>
-     */
-    inline void SetReservationName(const char* value) { m_reservationNameHasBeenSet = true; m_reservationName.assign(value); }
-
-    /**
-     * <p>A customer-specified identifier to track this reservation.</p>
-     */
-    inline PurchaseReservedInstanceOfferingRequest& WithReservationName(const Aws::String& value) { SetReservationName(value); return *this;}
-
-    /**
-     * <p>A customer-specified identifier to track this reservation.</p>
-     */
-    inline PurchaseReservedInstanceOfferingRequest& WithReservationName(Aws::String&& value) { SetReservationName(std::move(value)); return *this;}
-
-    /**
-     * <p>A customer-specified identifier to track this reservation.</p>
-     */
-    inline PurchaseReservedInstanceOfferingRequest& WithReservationName(const char* value) { SetReservationName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The number of OpenSearch instances to reserve.</p>
      */
-    inline int GetInstanceCount() const{ return m_instanceCount; }
-
-    /**
-     * <p>The number of OpenSearch instances to reserve.</p>
-     */
+    inline int GetInstanceCount() const { return m_instanceCount; }
     inline bool InstanceCountHasBeenSet() const { return m_instanceCountHasBeenSet; }
-
-    /**
-     * <p>The number of OpenSearch instances to reserve.</p>
-     */
     inline void SetInstanceCount(int value) { m_instanceCountHasBeenSet = true; m_instanceCount = value; }
-
-    /**
-     * <p>The number of OpenSearch instances to reserve.</p>
-     */
     inline PurchaseReservedInstanceOfferingRequest& WithInstanceCount(int value) { SetInstanceCount(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_reservedInstanceOfferingId;
@@ -147,7 +78,7 @@ namespace Model
     Aws::String m_reservationName;
     bool m_reservationNameHasBeenSet = false;
 
-    int m_instanceCount;
+    int m_instanceCount{0};
     bool m_instanceCountHasBeenSet = false;
   };
 

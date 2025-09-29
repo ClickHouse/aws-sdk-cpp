@@ -18,15 +18,7 @@ namespace SFN
 namespace Model
 {
 
-ResourceNotFound::ResourceNotFound() : 
-    m_messageHasBeenSet(false),
-    m_resourceNameHasBeenSet(false)
-{
-}
-
-ResourceNotFound::ResourceNotFound(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_resourceNameHasBeenSet(false)
+ResourceNotFound::ResourceNotFound(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ResourceNotFound& ResourceNotFound::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("resourceName"))
   {
     m_resourceName = jsonValue.GetString("resourceName");
-
     m_resourceNameHasBeenSet = true;
   }
-
   return *this;
 }
 

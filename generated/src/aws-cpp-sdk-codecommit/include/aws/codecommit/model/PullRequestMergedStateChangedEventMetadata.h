@@ -33,124 +33,47 @@ namespace Model
   class PullRequestMergedStateChangedEventMetadata
   {
   public:
-    AWS_CODECOMMIT_API PullRequestMergedStateChangedEventMetadata();
+    AWS_CODECOMMIT_API PullRequestMergedStateChangedEventMetadata() = default;
     AWS_CODECOMMIT_API PullRequestMergedStateChangedEventMetadata(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODECOMMIT_API PullRequestMergedStateChangedEventMetadata& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODECOMMIT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the repository where the pull request was created.</p>
      */
-    inline const Aws::String& GetRepositoryName() const{ return m_repositoryName; }
-
-    /**
-     * <p>The name of the repository where the pull request was created.</p>
-     */
+    inline const Aws::String& GetRepositoryName() const { return m_repositoryName; }
     inline bool RepositoryNameHasBeenSet() const { return m_repositoryNameHasBeenSet; }
+    template<typename RepositoryNameT = Aws::String>
+    void SetRepositoryName(RepositoryNameT&& value) { m_repositoryNameHasBeenSet = true; m_repositoryName = std::forward<RepositoryNameT>(value); }
+    template<typename RepositoryNameT = Aws::String>
+    PullRequestMergedStateChangedEventMetadata& WithRepositoryName(RepositoryNameT&& value) { SetRepositoryName(std::forward<RepositoryNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the repository where the pull request was created.</p>
-     */
-    inline void SetRepositoryName(const Aws::String& value) { m_repositoryNameHasBeenSet = true; m_repositoryName = value; }
-
-    /**
-     * <p>The name of the repository where the pull request was created.</p>
-     */
-    inline void SetRepositoryName(Aws::String&& value) { m_repositoryNameHasBeenSet = true; m_repositoryName = std::move(value); }
-
-    /**
-     * <p>The name of the repository where the pull request was created.</p>
-     */
-    inline void SetRepositoryName(const char* value) { m_repositoryNameHasBeenSet = true; m_repositoryName.assign(value); }
-
-    /**
-     * <p>The name of the repository where the pull request was created.</p>
-     */
-    inline PullRequestMergedStateChangedEventMetadata& WithRepositoryName(const Aws::String& value) { SetRepositoryName(value); return *this;}
-
-    /**
-     * <p>The name of the repository where the pull request was created.</p>
-     */
-    inline PullRequestMergedStateChangedEventMetadata& WithRepositoryName(Aws::String&& value) { SetRepositoryName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the repository where the pull request was created.</p>
-     */
-    inline PullRequestMergedStateChangedEventMetadata& WithRepositoryName(const char* value) { SetRepositoryName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the branch that the pull request is merged into.</p>
      */
-    inline const Aws::String& GetDestinationReference() const{ return m_destinationReference; }
-
-    /**
-     * <p>The name of the branch that the pull request is merged into.</p>
-     */
+    inline const Aws::String& GetDestinationReference() const { return m_destinationReference; }
     inline bool DestinationReferenceHasBeenSet() const { return m_destinationReferenceHasBeenSet; }
+    template<typename DestinationReferenceT = Aws::String>
+    void SetDestinationReference(DestinationReferenceT&& value) { m_destinationReferenceHasBeenSet = true; m_destinationReference = std::forward<DestinationReferenceT>(value); }
+    template<typename DestinationReferenceT = Aws::String>
+    PullRequestMergedStateChangedEventMetadata& WithDestinationReference(DestinationReferenceT&& value) { SetDestinationReference(std::forward<DestinationReferenceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the branch that the pull request is merged into.</p>
-     */
-    inline void SetDestinationReference(const Aws::String& value) { m_destinationReferenceHasBeenSet = true; m_destinationReference = value; }
-
-    /**
-     * <p>The name of the branch that the pull request is merged into.</p>
-     */
-    inline void SetDestinationReference(Aws::String&& value) { m_destinationReferenceHasBeenSet = true; m_destinationReference = std::move(value); }
-
-    /**
-     * <p>The name of the branch that the pull request is merged into.</p>
-     */
-    inline void SetDestinationReference(const char* value) { m_destinationReferenceHasBeenSet = true; m_destinationReference.assign(value); }
-
-    /**
-     * <p>The name of the branch that the pull request is merged into.</p>
-     */
-    inline PullRequestMergedStateChangedEventMetadata& WithDestinationReference(const Aws::String& value) { SetDestinationReference(value); return *this;}
-
-    /**
-     * <p>The name of the branch that the pull request is merged into.</p>
-     */
-    inline PullRequestMergedStateChangedEventMetadata& WithDestinationReference(Aws::String&& value) { SetDestinationReference(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the branch that the pull request is merged into.</p>
-     */
-    inline PullRequestMergedStateChangedEventMetadata& WithDestinationReference(const char* value) { SetDestinationReference(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about the merge state change event.</p>
      */
-    inline const MergeMetadata& GetMergeMetadata() const{ return m_mergeMetadata; }
-
-    /**
-     * <p>Information about the merge state change event.</p>
-     */
+    inline const MergeMetadata& GetMergeMetadata() const { return m_mergeMetadata; }
     inline bool MergeMetadataHasBeenSet() const { return m_mergeMetadataHasBeenSet; }
-
-    /**
-     * <p>Information about the merge state change event.</p>
-     */
-    inline void SetMergeMetadata(const MergeMetadata& value) { m_mergeMetadataHasBeenSet = true; m_mergeMetadata = value; }
-
-    /**
-     * <p>Information about the merge state change event.</p>
-     */
-    inline void SetMergeMetadata(MergeMetadata&& value) { m_mergeMetadataHasBeenSet = true; m_mergeMetadata = std::move(value); }
-
-    /**
-     * <p>Information about the merge state change event.</p>
-     */
-    inline PullRequestMergedStateChangedEventMetadata& WithMergeMetadata(const MergeMetadata& value) { SetMergeMetadata(value); return *this;}
-
-    /**
-     * <p>Information about the merge state change event.</p>
-     */
-    inline PullRequestMergedStateChangedEventMetadata& WithMergeMetadata(MergeMetadata&& value) { SetMergeMetadata(std::move(value)); return *this;}
-
+    template<typename MergeMetadataT = MergeMetadata>
+    void SetMergeMetadata(MergeMetadataT&& value) { m_mergeMetadataHasBeenSet = true; m_mergeMetadata = std::forward<MergeMetadataT>(value); }
+    template<typename MergeMetadataT = MergeMetadata>
+    PullRequestMergedStateChangedEventMetadata& WithMergeMetadata(MergeMetadataT&& value) { SetMergeMetadata(std::forward<MergeMetadataT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_repositoryName;

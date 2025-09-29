@@ -12,25 +12,19 @@ using namespace Aws::SSOAdmin::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DescribeAccountAssignmentDeletionStatusRequest::DescribeAccountAssignmentDeletionStatusRequest() : 
-    m_accountAssignmentDeletionRequestIdHasBeenSet(false),
-    m_instanceArnHasBeenSet(false)
-{
-}
-
 Aws::String DescribeAccountAssignmentDeletionStatusRequest::SerializePayload() const
 {
   JsonValue payload;
 
-  if(m_accountAssignmentDeletionRequestIdHasBeenSet)
-  {
-   payload.WithString("AccountAssignmentDeletionRequestId", m_accountAssignmentDeletionRequestId);
-
-  }
-
   if(m_instanceArnHasBeenSet)
   {
    payload.WithString("InstanceArn", m_instanceArn);
+
+  }
+
+  if(m_accountAssignmentDeletionRequestIdHasBeenSet)
+  {
+   payload.WithString("AccountAssignmentDeletionRequestId", m_accountAssignmentDeletionRequestId);
 
   }
 

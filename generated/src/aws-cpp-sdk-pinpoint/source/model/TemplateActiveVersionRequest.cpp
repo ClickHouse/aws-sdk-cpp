@@ -18,13 +18,7 @@ namespace Pinpoint
 namespace Model
 {
 
-TemplateActiveVersionRequest::TemplateActiveVersionRequest() : 
-    m_versionHasBeenSet(false)
-{
-}
-
-TemplateActiveVersionRequest::TemplateActiveVersionRequest(JsonView jsonValue) : 
-    m_versionHasBeenSet(false)
+TemplateActiveVersionRequest::TemplateActiveVersionRequest(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ TemplateActiveVersionRequest& TemplateActiveVersionRequest::operator =(JsonView 
   if(jsonValue.ValueExists("Version"))
   {
     m_version = jsonValue.GetString("Version");
-
     m_versionHasBeenSet = true;
   }
-
   return *this;
 }
 

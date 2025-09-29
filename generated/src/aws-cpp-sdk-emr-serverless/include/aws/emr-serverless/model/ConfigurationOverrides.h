@@ -34,83 +34,37 @@ namespace Model
   class ConfigurationOverrides
   {
   public:
-    AWS_EMRSERVERLESS_API ConfigurationOverrides();
+    AWS_EMRSERVERLESS_API ConfigurationOverrides() = default;
     AWS_EMRSERVERLESS_API ConfigurationOverrides(Aws::Utils::Json::JsonView jsonValue);
     AWS_EMRSERVERLESS_API ConfigurationOverrides& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_EMRSERVERLESS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The override configurations for the application.</p>
      */
-    inline const Aws::Vector<Configuration>& GetApplicationConfiguration() const{ return m_applicationConfiguration; }
-
-    /**
-     * <p>The override configurations for the application.</p>
-     */
+    inline const Aws::Vector<Configuration>& GetApplicationConfiguration() const { return m_applicationConfiguration; }
     inline bool ApplicationConfigurationHasBeenSet() const { return m_applicationConfigurationHasBeenSet; }
+    template<typename ApplicationConfigurationT = Aws::Vector<Configuration>>
+    void SetApplicationConfiguration(ApplicationConfigurationT&& value) { m_applicationConfigurationHasBeenSet = true; m_applicationConfiguration = std::forward<ApplicationConfigurationT>(value); }
+    template<typename ApplicationConfigurationT = Aws::Vector<Configuration>>
+    ConfigurationOverrides& WithApplicationConfiguration(ApplicationConfigurationT&& value) { SetApplicationConfiguration(std::forward<ApplicationConfigurationT>(value)); return *this;}
+    template<typename ApplicationConfigurationT = Configuration>
+    ConfigurationOverrides& AddApplicationConfiguration(ApplicationConfigurationT&& value) { m_applicationConfigurationHasBeenSet = true; m_applicationConfiguration.emplace_back(std::forward<ApplicationConfigurationT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The override configurations for the application.</p>
-     */
-    inline void SetApplicationConfiguration(const Aws::Vector<Configuration>& value) { m_applicationConfigurationHasBeenSet = true; m_applicationConfiguration = value; }
-
-    /**
-     * <p>The override configurations for the application.</p>
-     */
-    inline void SetApplicationConfiguration(Aws::Vector<Configuration>&& value) { m_applicationConfigurationHasBeenSet = true; m_applicationConfiguration = std::move(value); }
-
-    /**
-     * <p>The override configurations for the application.</p>
-     */
-    inline ConfigurationOverrides& WithApplicationConfiguration(const Aws::Vector<Configuration>& value) { SetApplicationConfiguration(value); return *this;}
-
-    /**
-     * <p>The override configurations for the application.</p>
-     */
-    inline ConfigurationOverrides& WithApplicationConfiguration(Aws::Vector<Configuration>&& value) { SetApplicationConfiguration(std::move(value)); return *this;}
-
-    /**
-     * <p>The override configurations for the application.</p>
-     */
-    inline ConfigurationOverrides& AddApplicationConfiguration(const Configuration& value) { m_applicationConfigurationHasBeenSet = true; m_applicationConfiguration.push_back(value); return *this; }
-
-    /**
-     * <p>The override configurations for the application.</p>
-     */
-    inline ConfigurationOverrides& AddApplicationConfiguration(Configuration&& value) { m_applicationConfigurationHasBeenSet = true; m_applicationConfiguration.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The override configurations for monitoring.</p>
      */
-    inline const MonitoringConfiguration& GetMonitoringConfiguration() const{ return m_monitoringConfiguration; }
-
-    /**
-     * <p>The override configurations for monitoring.</p>
-     */
+    inline const MonitoringConfiguration& GetMonitoringConfiguration() const { return m_monitoringConfiguration; }
     inline bool MonitoringConfigurationHasBeenSet() const { return m_monitoringConfigurationHasBeenSet; }
-
-    /**
-     * <p>The override configurations for monitoring.</p>
-     */
-    inline void SetMonitoringConfiguration(const MonitoringConfiguration& value) { m_monitoringConfigurationHasBeenSet = true; m_monitoringConfiguration = value; }
-
-    /**
-     * <p>The override configurations for monitoring.</p>
-     */
-    inline void SetMonitoringConfiguration(MonitoringConfiguration&& value) { m_monitoringConfigurationHasBeenSet = true; m_monitoringConfiguration = std::move(value); }
-
-    /**
-     * <p>The override configurations for monitoring.</p>
-     */
-    inline ConfigurationOverrides& WithMonitoringConfiguration(const MonitoringConfiguration& value) { SetMonitoringConfiguration(value); return *this;}
-
-    /**
-     * <p>The override configurations for monitoring.</p>
-     */
-    inline ConfigurationOverrides& WithMonitoringConfiguration(MonitoringConfiguration&& value) { SetMonitoringConfiguration(std::move(value)); return *this;}
-
+    template<typename MonitoringConfigurationT = MonitoringConfiguration>
+    void SetMonitoringConfiguration(MonitoringConfigurationT&& value) { m_monitoringConfigurationHasBeenSet = true; m_monitoringConfiguration = std::forward<MonitoringConfigurationT>(value); }
+    template<typename MonitoringConfigurationT = MonitoringConfiguration>
+    ConfigurationOverrides& WithMonitoringConfiguration(MonitoringConfigurationT&& value) { SetMonitoringConfiguration(std::forward<MonitoringConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<Configuration> m_applicationConfiguration;

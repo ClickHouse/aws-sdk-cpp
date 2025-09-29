@@ -18,23 +18,7 @@ namespace MediaConvert
 namespace Model
 {
 
-OpusSettings::OpusSettings() : 
-    m_bitrate(0),
-    m_bitrateHasBeenSet(false),
-    m_channels(0),
-    m_channelsHasBeenSet(false),
-    m_sampleRate(0),
-    m_sampleRateHasBeenSet(false)
-{
-}
-
-OpusSettings::OpusSettings(JsonView jsonValue) : 
-    m_bitrate(0),
-    m_bitrateHasBeenSet(false),
-    m_channels(0),
-    m_channelsHasBeenSet(false),
-    m_sampleRate(0),
-    m_sampleRateHasBeenSet(false)
+OpusSettings::OpusSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,24 +28,18 @@ OpusSettings& OpusSettings::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("bitrate"))
   {
     m_bitrate = jsonValue.GetInteger("bitrate");
-
     m_bitrateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("channels"))
   {
     m_channels = jsonValue.GetInteger("channels");
-
     m_channelsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("sampleRate"))
   {
     m_sampleRate = jsonValue.GetInteger("sampleRate");
-
     m_sampleRateHasBeenSet = true;
   }
-
   return *this;
 }
 

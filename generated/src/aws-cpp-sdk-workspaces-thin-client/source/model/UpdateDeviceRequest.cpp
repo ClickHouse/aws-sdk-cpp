@@ -12,16 +12,6 @@ using namespace Aws::WorkSpacesThinClient::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateDeviceRequest::UpdateDeviceRequest() : 
-    m_idHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_desiredSoftwareSetIdHasBeenSet(false),
-    m_softwareSetUpdateSchedule(SoftwareSetUpdateSchedule::NOT_SET),
-    m_softwareSetUpdateScheduleHasBeenSet(false),
-    m_kmsKeyArnHasBeenSet(false)
-{
-}
-
 Aws::String UpdateDeviceRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -41,12 +31,6 @@ Aws::String UpdateDeviceRequest::SerializePayload() const
   if(m_softwareSetUpdateScheduleHasBeenSet)
   {
    payload.WithString("softwareSetUpdateSchedule", SoftwareSetUpdateScheduleMapper::GetNameForSoftwareSetUpdateSchedule(m_softwareSetUpdateSchedule));
-  }
-
-  if(m_kmsKeyArnHasBeenSet)
-  {
-   payload.WithString("kmsKeyArn", m_kmsKeyArn);
-
   }
 
   return payload.View().WriteReadable();

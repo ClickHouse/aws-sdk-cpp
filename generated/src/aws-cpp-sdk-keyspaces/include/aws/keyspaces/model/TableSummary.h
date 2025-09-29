@@ -33,142 +33,48 @@ namespace Model
   class TableSummary
   {
   public:
-    AWS_KEYSPACES_API TableSummary();
+    AWS_KEYSPACES_API TableSummary() = default;
     AWS_KEYSPACES_API TableSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_KEYSPACES_API TableSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KEYSPACES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the keyspace that the table is stored in.</p>
      */
-    inline const Aws::String& GetKeyspaceName() const{ return m_keyspaceName; }
-
-    /**
-     * <p>The name of the keyspace that the table is stored in.</p>
-     */
+    inline const Aws::String& GetKeyspaceName() const { return m_keyspaceName; }
     inline bool KeyspaceNameHasBeenSet() const { return m_keyspaceNameHasBeenSet; }
+    template<typename KeyspaceNameT = Aws::String>
+    void SetKeyspaceName(KeyspaceNameT&& value) { m_keyspaceNameHasBeenSet = true; m_keyspaceName = std::forward<KeyspaceNameT>(value); }
+    template<typename KeyspaceNameT = Aws::String>
+    TableSummary& WithKeyspaceName(KeyspaceNameT&& value) { SetKeyspaceName(std::forward<KeyspaceNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the keyspace that the table is stored in.</p>
-     */
-    inline void SetKeyspaceName(const Aws::String& value) { m_keyspaceNameHasBeenSet = true; m_keyspaceName = value; }
-
-    /**
-     * <p>The name of the keyspace that the table is stored in.</p>
-     */
-    inline void SetKeyspaceName(Aws::String&& value) { m_keyspaceNameHasBeenSet = true; m_keyspaceName = std::move(value); }
-
-    /**
-     * <p>The name of the keyspace that the table is stored in.</p>
-     */
-    inline void SetKeyspaceName(const char* value) { m_keyspaceNameHasBeenSet = true; m_keyspaceName.assign(value); }
-
-    /**
-     * <p>The name of the keyspace that the table is stored in.</p>
-     */
-    inline TableSummary& WithKeyspaceName(const Aws::String& value) { SetKeyspaceName(value); return *this;}
-
-    /**
-     * <p>The name of the keyspace that the table is stored in.</p>
-     */
-    inline TableSummary& WithKeyspaceName(Aws::String&& value) { SetKeyspaceName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the keyspace that the table is stored in.</p>
-     */
-    inline TableSummary& WithKeyspaceName(const char* value) { SetKeyspaceName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the table.</p>
      */
-    inline const Aws::String& GetTableName() const{ return m_tableName; }
-
-    /**
-     * <p>The name of the table.</p>
-     */
+    inline const Aws::String& GetTableName() const { return m_tableName; }
     inline bool TableNameHasBeenSet() const { return m_tableNameHasBeenSet; }
+    template<typename TableNameT = Aws::String>
+    void SetTableName(TableNameT&& value) { m_tableNameHasBeenSet = true; m_tableName = std::forward<TableNameT>(value); }
+    template<typename TableNameT = Aws::String>
+    TableSummary& WithTableName(TableNameT&& value) { SetTableName(std::forward<TableNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the table.</p>
-     */
-    inline void SetTableName(const Aws::String& value) { m_tableNameHasBeenSet = true; m_tableName = value; }
-
-    /**
-     * <p>The name of the table.</p>
-     */
-    inline void SetTableName(Aws::String&& value) { m_tableNameHasBeenSet = true; m_tableName = std::move(value); }
-
-    /**
-     * <p>The name of the table.</p>
-     */
-    inline void SetTableName(const char* value) { m_tableNameHasBeenSet = true; m_tableName.assign(value); }
-
-    /**
-     * <p>The name of the table.</p>
-     */
-    inline TableSummary& WithTableName(const Aws::String& value) { SetTableName(value); return *this;}
-
-    /**
-     * <p>The name of the table.</p>
-     */
-    inline TableSummary& WithTableName(Aws::String&& value) { SetTableName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the table.</p>
-     */
-    inline TableSummary& WithTableName(const char* value) { SetTableName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique identifier of the table in the format of an Amazon Resource Name
      * (ARN).</p>
      */
-    inline const Aws::String& GetResourceArn() const{ return m_resourceArn; }
-
-    /**
-     * <p>The unique identifier of the table in the format of an Amazon Resource Name
-     * (ARN).</p>
-     */
+    inline const Aws::String& GetResourceArn() const { return m_resourceArn; }
     inline bool ResourceArnHasBeenSet() const { return m_resourceArnHasBeenSet; }
-
-    /**
-     * <p>The unique identifier of the table in the format of an Amazon Resource Name
-     * (ARN).</p>
-     */
-    inline void SetResourceArn(const Aws::String& value) { m_resourceArnHasBeenSet = true; m_resourceArn = value; }
-
-    /**
-     * <p>The unique identifier of the table in the format of an Amazon Resource Name
-     * (ARN).</p>
-     */
-    inline void SetResourceArn(Aws::String&& value) { m_resourceArnHasBeenSet = true; m_resourceArn = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the table in the format of an Amazon Resource Name
-     * (ARN).</p>
-     */
-    inline void SetResourceArn(const char* value) { m_resourceArnHasBeenSet = true; m_resourceArn.assign(value); }
-
-    /**
-     * <p>The unique identifier of the table in the format of an Amazon Resource Name
-     * (ARN).</p>
-     */
-    inline TableSummary& WithResourceArn(const Aws::String& value) { SetResourceArn(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the table in the format of an Amazon Resource Name
-     * (ARN).</p>
-     */
-    inline TableSummary& WithResourceArn(Aws::String&& value) { SetResourceArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the table in the format of an Amazon Resource Name
-     * (ARN).</p>
-     */
-    inline TableSummary& WithResourceArn(const char* value) { SetResourceArn(value); return *this;}
-
+    template<typename ResourceArnT = Aws::String>
+    void SetResourceArn(ResourceArnT&& value) { m_resourceArnHasBeenSet = true; m_resourceArn = std::forward<ResourceArnT>(value); }
+    template<typename ResourceArnT = Aws::String>
+    TableSummary& WithResourceArn(ResourceArnT&& value) { SetResourceArn(std::forward<ResourceArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_keyspaceName;

@@ -25,7 +25,7 @@ namespace Model
   class RevokeCacheSecurityGroupIngressRequest : public ElastiCacheRequest
   {
   public:
-    AWS_ELASTICACHE_API RevokeCacheSecurityGroupIngressRequest();
+    AWS_ELASTICACHE_API RevokeCacheSecurityGroupIngressRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -40,144 +40,43 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The name of the cache security group to revoke ingress from.</p>
      */
-    inline const Aws::String& GetCacheSecurityGroupName() const{ return m_cacheSecurityGroupName; }
-
-    /**
-     * <p>The name of the cache security group to revoke ingress from.</p>
-     */
+    inline const Aws::String& GetCacheSecurityGroupName() const { return m_cacheSecurityGroupName; }
     inline bool CacheSecurityGroupNameHasBeenSet() const { return m_cacheSecurityGroupNameHasBeenSet; }
+    template<typename CacheSecurityGroupNameT = Aws::String>
+    void SetCacheSecurityGroupName(CacheSecurityGroupNameT&& value) { m_cacheSecurityGroupNameHasBeenSet = true; m_cacheSecurityGroupName = std::forward<CacheSecurityGroupNameT>(value); }
+    template<typename CacheSecurityGroupNameT = Aws::String>
+    RevokeCacheSecurityGroupIngressRequest& WithCacheSecurityGroupName(CacheSecurityGroupNameT&& value) { SetCacheSecurityGroupName(std::forward<CacheSecurityGroupNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the cache security group to revoke ingress from.</p>
-     */
-    inline void SetCacheSecurityGroupName(const Aws::String& value) { m_cacheSecurityGroupNameHasBeenSet = true; m_cacheSecurityGroupName = value; }
-
-    /**
-     * <p>The name of the cache security group to revoke ingress from.</p>
-     */
-    inline void SetCacheSecurityGroupName(Aws::String&& value) { m_cacheSecurityGroupNameHasBeenSet = true; m_cacheSecurityGroupName = std::move(value); }
-
-    /**
-     * <p>The name of the cache security group to revoke ingress from.</p>
-     */
-    inline void SetCacheSecurityGroupName(const char* value) { m_cacheSecurityGroupNameHasBeenSet = true; m_cacheSecurityGroupName.assign(value); }
-
-    /**
-     * <p>The name of the cache security group to revoke ingress from.</p>
-     */
-    inline RevokeCacheSecurityGroupIngressRequest& WithCacheSecurityGroupName(const Aws::String& value) { SetCacheSecurityGroupName(value); return *this;}
-
-    /**
-     * <p>The name of the cache security group to revoke ingress from.</p>
-     */
-    inline RevokeCacheSecurityGroupIngressRequest& WithCacheSecurityGroupName(Aws::String&& value) { SetCacheSecurityGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the cache security group to revoke ingress from.</p>
-     */
-    inline RevokeCacheSecurityGroupIngressRequest& WithCacheSecurityGroupName(const char* value) { SetCacheSecurityGroupName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the Amazon EC2 security group to revoke access from.</p>
      */
-    inline const Aws::String& GetEC2SecurityGroupName() const{ return m_eC2SecurityGroupName; }
-
-    /**
-     * <p>The name of the Amazon EC2 security group to revoke access from.</p>
-     */
+    inline const Aws::String& GetEC2SecurityGroupName() const { return m_eC2SecurityGroupName; }
     inline bool EC2SecurityGroupNameHasBeenSet() const { return m_eC2SecurityGroupNameHasBeenSet; }
+    template<typename EC2SecurityGroupNameT = Aws::String>
+    void SetEC2SecurityGroupName(EC2SecurityGroupNameT&& value) { m_eC2SecurityGroupNameHasBeenSet = true; m_eC2SecurityGroupName = std::forward<EC2SecurityGroupNameT>(value); }
+    template<typename EC2SecurityGroupNameT = Aws::String>
+    RevokeCacheSecurityGroupIngressRequest& WithEC2SecurityGroupName(EC2SecurityGroupNameT&& value) { SetEC2SecurityGroupName(std::forward<EC2SecurityGroupNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the Amazon EC2 security group to revoke access from.</p>
-     */
-    inline void SetEC2SecurityGroupName(const Aws::String& value) { m_eC2SecurityGroupNameHasBeenSet = true; m_eC2SecurityGroupName = value; }
-
-    /**
-     * <p>The name of the Amazon EC2 security group to revoke access from.</p>
-     */
-    inline void SetEC2SecurityGroupName(Aws::String&& value) { m_eC2SecurityGroupNameHasBeenSet = true; m_eC2SecurityGroupName = std::move(value); }
-
-    /**
-     * <p>The name of the Amazon EC2 security group to revoke access from.</p>
-     */
-    inline void SetEC2SecurityGroupName(const char* value) { m_eC2SecurityGroupNameHasBeenSet = true; m_eC2SecurityGroupName.assign(value); }
-
-    /**
-     * <p>The name of the Amazon EC2 security group to revoke access from.</p>
-     */
-    inline RevokeCacheSecurityGroupIngressRequest& WithEC2SecurityGroupName(const Aws::String& value) { SetEC2SecurityGroupName(value); return *this;}
-
-    /**
-     * <p>The name of the Amazon EC2 security group to revoke access from.</p>
-     */
-    inline RevokeCacheSecurityGroupIngressRequest& WithEC2SecurityGroupName(Aws::String&& value) { SetEC2SecurityGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Amazon EC2 security group to revoke access from.</p>
-     */
-    inline RevokeCacheSecurityGroupIngressRequest& WithEC2SecurityGroupName(const char* value) { SetEC2SecurityGroupName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon account number of the Amazon EC2 security group owner. Note that
      * this is not the same thing as an Amazon access key ID - you must provide a valid
      * Amazon account number for this parameter.</p>
      */
-    inline const Aws::String& GetEC2SecurityGroupOwnerId() const{ return m_eC2SecurityGroupOwnerId; }
-
-    /**
-     * <p>The Amazon account number of the Amazon EC2 security group owner. Note that
-     * this is not the same thing as an Amazon access key ID - you must provide a valid
-     * Amazon account number for this parameter.</p>
-     */
+    inline const Aws::String& GetEC2SecurityGroupOwnerId() const { return m_eC2SecurityGroupOwnerId; }
     inline bool EC2SecurityGroupOwnerIdHasBeenSet() const { return m_eC2SecurityGroupOwnerIdHasBeenSet; }
-
-    /**
-     * <p>The Amazon account number of the Amazon EC2 security group owner. Note that
-     * this is not the same thing as an Amazon access key ID - you must provide a valid
-     * Amazon account number for this parameter.</p>
-     */
-    inline void SetEC2SecurityGroupOwnerId(const Aws::String& value) { m_eC2SecurityGroupOwnerIdHasBeenSet = true; m_eC2SecurityGroupOwnerId = value; }
-
-    /**
-     * <p>The Amazon account number of the Amazon EC2 security group owner. Note that
-     * this is not the same thing as an Amazon access key ID - you must provide a valid
-     * Amazon account number for this parameter.</p>
-     */
-    inline void SetEC2SecurityGroupOwnerId(Aws::String&& value) { m_eC2SecurityGroupOwnerIdHasBeenSet = true; m_eC2SecurityGroupOwnerId = std::move(value); }
-
-    /**
-     * <p>The Amazon account number of the Amazon EC2 security group owner. Note that
-     * this is not the same thing as an Amazon access key ID - you must provide a valid
-     * Amazon account number for this parameter.</p>
-     */
-    inline void SetEC2SecurityGroupOwnerId(const char* value) { m_eC2SecurityGroupOwnerIdHasBeenSet = true; m_eC2SecurityGroupOwnerId.assign(value); }
-
-    /**
-     * <p>The Amazon account number of the Amazon EC2 security group owner. Note that
-     * this is not the same thing as an Amazon access key ID - you must provide a valid
-     * Amazon account number for this parameter.</p>
-     */
-    inline RevokeCacheSecurityGroupIngressRequest& WithEC2SecurityGroupOwnerId(const Aws::String& value) { SetEC2SecurityGroupOwnerId(value); return *this;}
-
-    /**
-     * <p>The Amazon account number of the Amazon EC2 security group owner. Note that
-     * this is not the same thing as an Amazon access key ID - you must provide a valid
-     * Amazon account number for this parameter.</p>
-     */
-    inline RevokeCacheSecurityGroupIngressRequest& WithEC2SecurityGroupOwnerId(Aws::String&& value) { SetEC2SecurityGroupOwnerId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon account number of the Amazon EC2 security group owner. Note that
-     * this is not the same thing as an Amazon access key ID - you must provide a valid
-     * Amazon account number for this parameter.</p>
-     */
-    inline RevokeCacheSecurityGroupIngressRequest& WithEC2SecurityGroupOwnerId(const char* value) { SetEC2SecurityGroupOwnerId(value); return *this;}
-
+    template<typename EC2SecurityGroupOwnerIdT = Aws::String>
+    void SetEC2SecurityGroupOwnerId(EC2SecurityGroupOwnerIdT&& value) { m_eC2SecurityGroupOwnerIdHasBeenSet = true; m_eC2SecurityGroupOwnerId = std::forward<EC2SecurityGroupOwnerIdT>(value); }
+    template<typename EC2SecurityGroupOwnerIdT = Aws::String>
+    RevokeCacheSecurityGroupIngressRequest& WithEC2SecurityGroupOwnerId(EC2SecurityGroupOwnerIdT&& value) { SetEC2SecurityGroupOwnerId(std::forward<EC2SecurityGroupOwnerIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_cacheSecurityGroupName;

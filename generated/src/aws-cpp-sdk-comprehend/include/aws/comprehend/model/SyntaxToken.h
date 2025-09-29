@@ -34,124 +34,57 @@ namespace Model
   class SyntaxToken
   {
   public:
-    AWS_COMPREHEND_API SyntaxToken();
+    AWS_COMPREHEND_API SyntaxToken() = default;
     AWS_COMPREHEND_API SyntaxToken(Aws::Utils::Json::JsonView jsonValue);
     AWS_COMPREHEND_API SyntaxToken& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COMPREHEND_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A unique identifier for a token.</p>
      */
-    inline int GetTokenId() const{ return m_tokenId; }
-
-    /**
-     * <p>A unique identifier for a token.</p>
-     */
+    inline int GetTokenId() const { return m_tokenId; }
     inline bool TokenIdHasBeenSet() const { return m_tokenIdHasBeenSet; }
-
-    /**
-     * <p>A unique identifier for a token.</p>
-     */
     inline void SetTokenId(int value) { m_tokenIdHasBeenSet = true; m_tokenId = value; }
-
-    /**
-     * <p>A unique identifier for a token.</p>
-     */
     inline SyntaxToken& WithTokenId(int value) { SetTokenId(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The word that was recognized in the source text.</p>
      */
-    inline const Aws::String& GetText() const{ return m_text; }
-
-    /**
-     * <p>The word that was recognized in the source text.</p>
-     */
+    inline const Aws::String& GetText() const { return m_text; }
     inline bool TextHasBeenSet() const { return m_textHasBeenSet; }
+    template<typename TextT = Aws::String>
+    void SetText(TextT&& value) { m_textHasBeenSet = true; m_text = std::forward<TextT>(value); }
+    template<typename TextT = Aws::String>
+    SyntaxToken& WithText(TextT&& value) { SetText(std::forward<TextT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The word that was recognized in the source text.</p>
-     */
-    inline void SetText(const Aws::String& value) { m_textHasBeenSet = true; m_text = value; }
-
-    /**
-     * <p>The word that was recognized in the source text.</p>
-     */
-    inline void SetText(Aws::String&& value) { m_textHasBeenSet = true; m_text = std::move(value); }
-
-    /**
-     * <p>The word that was recognized in the source text.</p>
-     */
-    inline void SetText(const char* value) { m_textHasBeenSet = true; m_text.assign(value); }
-
-    /**
-     * <p>The word that was recognized in the source text.</p>
-     */
-    inline SyntaxToken& WithText(const Aws::String& value) { SetText(value); return *this;}
-
-    /**
-     * <p>The word that was recognized in the source text.</p>
-     */
-    inline SyntaxToken& WithText(Aws::String&& value) { SetText(std::move(value)); return *this;}
-
-    /**
-     * <p>The word that was recognized in the source text.</p>
-     */
-    inline SyntaxToken& WithText(const char* value) { SetText(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The zero-based offset from the beginning of the source text to the first
      * character in the word.</p>
      */
-    inline int GetBeginOffset() const{ return m_beginOffset; }
-
-    /**
-     * <p>The zero-based offset from the beginning of the source text to the first
-     * character in the word.</p>
-     */
+    inline int GetBeginOffset() const { return m_beginOffset; }
     inline bool BeginOffsetHasBeenSet() const { return m_beginOffsetHasBeenSet; }
-
-    /**
-     * <p>The zero-based offset from the beginning of the source text to the first
-     * character in the word.</p>
-     */
     inline void SetBeginOffset(int value) { m_beginOffsetHasBeenSet = true; m_beginOffset = value; }
-
-    /**
-     * <p>The zero-based offset from the beginning of the source text to the first
-     * character in the word.</p>
-     */
     inline SyntaxToken& WithBeginOffset(int value) { SetBeginOffset(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The zero-based offset from the beginning of the source text to the last
      * character in the word.</p>
      */
-    inline int GetEndOffset() const{ return m_endOffset; }
-
-    /**
-     * <p>The zero-based offset from the beginning of the source text to the last
-     * character in the word.</p>
-     */
+    inline int GetEndOffset() const { return m_endOffset; }
     inline bool EndOffsetHasBeenSet() const { return m_endOffsetHasBeenSet; }
-
-    /**
-     * <p>The zero-based offset from the beginning of the source text to the last
-     * character in the word.</p>
-     */
     inline void SetEndOffset(int value) { m_endOffsetHasBeenSet = true; m_endOffset = value; }
-
-    /**
-     * <p>The zero-based offset from the beginning of the source text to the last
-     * character in the word.</p>
-     */
     inline SyntaxToken& WithEndOffset(int value) { SetEndOffset(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Provides the part of speech label and the confidence level that Amazon
      * Comprehend has that the part of speech was correctly identified. For more
@@ -159,65 +92,25 @@ namespace Model
      * href="https://docs.aws.amazon.com/comprehend/latest/dg/how-syntax.html">Syntax</a>
      * in the Comprehend Developer Guide. </p>
      */
-    inline const PartOfSpeechTag& GetPartOfSpeech() const{ return m_partOfSpeech; }
-
-    /**
-     * <p>Provides the part of speech label and the confidence level that Amazon
-     * Comprehend has that the part of speech was correctly identified. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/comprehend/latest/dg/how-syntax.html">Syntax</a>
-     * in the Comprehend Developer Guide. </p>
-     */
+    inline const PartOfSpeechTag& GetPartOfSpeech() const { return m_partOfSpeech; }
     inline bool PartOfSpeechHasBeenSet() const { return m_partOfSpeechHasBeenSet; }
-
-    /**
-     * <p>Provides the part of speech label and the confidence level that Amazon
-     * Comprehend has that the part of speech was correctly identified. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/comprehend/latest/dg/how-syntax.html">Syntax</a>
-     * in the Comprehend Developer Guide. </p>
-     */
-    inline void SetPartOfSpeech(const PartOfSpeechTag& value) { m_partOfSpeechHasBeenSet = true; m_partOfSpeech = value; }
-
-    /**
-     * <p>Provides the part of speech label and the confidence level that Amazon
-     * Comprehend has that the part of speech was correctly identified. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/comprehend/latest/dg/how-syntax.html">Syntax</a>
-     * in the Comprehend Developer Guide. </p>
-     */
-    inline void SetPartOfSpeech(PartOfSpeechTag&& value) { m_partOfSpeechHasBeenSet = true; m_partOfSpeech = std::move(value); }
-
-    /**
-     * <p>Provides the part of speech label and the confidence level that Amazon
-     * Comprehend has that the part of speech was correctly identified. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/comprehend/latest/dg/how-syntax.html">Syntax</a>
-     * in the Comprehend Developer Guide. </p>
-     */
-    inline SyntaxToken& WithPartOfSpeech(const PartOfSpeechTag& value) { SetPartOfSpeech(value); return *this;}
-
-    /**
-     * <p>Provides the part of speech label and the confidence level that Amazon
-     * Comprehend has that the part of speech was correctly identified. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/comprehend/latest/dg/how-syntax.html">Syntax</a>
-     * in the Comprehend Developer Guide. </p>
-     */
-    inline SyntaxToken& WithPartOfSpeech(PartOfSpeechTag&& value) { SetPartOfSpeech(std::move(value)); return *this;}
-
+    template<typename PartOfSpeechT = PartOfSpeechTag>
+    void SetPartOfSpeech(PartOfSpeechT&& value) { m_partOfSpeechHasBeenSet = true; m_partOfSpeech = std::forward<PartOfSpeechT>(value); }
+    template<typename PartOfSpeechT = PartOfSpeechTag>
+    SyntaxToken& WithPartOfSpeech(PartOfSpeechT&& value) { SetPartOfSpeech(std::forward<PartOfSpeechT>(value)); return *this;}
+    ///@}
   private:
 
-    int m_tokenId;
+    int m_tokenId{0};
     bool m_tokenIdHasBeenSet = false;
 
     Aws::String m_text;
     bool m_textHasBeenSet = false;
 
-    int m_beginOffset;
+    int m_beginOffset{0};
     bool m_beginOffsetHasBeenSet = false;
 
-    int m_endOffset;
+    int m_endOffset{0};
     bool m_endOffsetHasBeenSet = false;
 
     PartOfSpeechTag m_partOfSpeech;

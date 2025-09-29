@@ -20,17 +20,7 @@ namespace Redshift
 namespace Model
 {
 
-ClusterAssociatedToSchedule::ClusterAssociatedToSchedule() : 
-    m_clusterIdentifierHasBeenSet(false),
-    m_scheduleAssociationState(ScheduleState::NOT_SET),
-    m_scheduleAssociationStateHasBeenSet(false)
-{
-}
-
-ClusterAssociatedToSchedule::ClusterAssociatedToSchedule(const XmlNode& xmlNode) : 
-    m_clusterIdentifierHasBeenSet(false),
-    m_scheduleAssociationState(ScheduleState::NOT_SET),
-    m_scheduleAssociationStateHasBeenSet(false)
+ClusterAssociatedToSchedule::ClusterAssociatedToSchedule(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -50,7 +40,7 @@ ClusterAssociatedToSchedule& ClusterAssociatedToSchedule::operator =(const XmlNo
     XmlNode scheduleAssociationStateNode = resultNode.FirstChild("ScheduleAssociationState");
     if(!scheduleAssociationStateNode.IsNull())
     {
-      m_scheduleAssociationState = ScheduleStateMapper::GetScheduleStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(scheduleAssociationStateNode.GetText()).c_str()).c_str());
+      m_scheduleAssociationState = ScheduleStateMapper::GetScheduleStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(scheduleAssociationStateNode.GetText()).c_str()));
       m_scheduleAssociationStateHasBeenSet = true;
     }
   }
@@ -67,7 +57,7 @@ void ClusterAssociatedToSchedule::OutputToStream(Aws::OStream& oStream, const ch
 
   if(m_scheduleAssociationStateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ScheduleAssociationState=" << ScheduleStateMapper::GetNameForScheduleState(m_scheduleAssociationState) << "&";
+      oStream << location << index << locationValue << ".ScheduleAssociationState=" << StringUtils::URLEncode(ScheduleStateMapper::GetNameForScheduleState(m_scheduleAssociationState)) << "&";
   }
 
 }
@@ -80,7 +70,7 @@ void ClusterAssociatedToSchedule::OutputToStream(Aws::OStream& oStream, const ch
   }
   if(m_scheduleAssociationStateHasBeenSet)
   {
-      oStream << location << ".ScheduleAssociationState=" << ScheduleStateMapper::GetNameForScheduleState(m_scheduleAssociationState) << "&";
+      oStream << location << ".ScheduleAssociationState=" << StringUtils::URLEncode(ScheduleStateMapper::GetNameForScheduleState(m_scheduleAssociationState)) << "&";
   }
 }
 

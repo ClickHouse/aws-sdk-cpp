@@ -34,68 +34,27 @@ namespace Model
   class SearchResourcesCriteriaBlock
   {
   public:
-    AWS_MACIE2_API SearchResourcesCriteriaBlock();
+    AWS_MACIE2_API SearchResourcesCriteriaBlock() = default;
     AWS_MACIE2_API SearchResourcesCriteriaBlock(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API SearchResourcesCriteriaBlock& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An array of objects, one for each property- or tag-based condition that
      * includes or excludes resources from the query results. If you specify more than
      * one condition, Amazon Macie uses AND logic to join the conditions.</p>
      */
-    inline const Aws::Vector<SearchResourcesCriteria>& GetAnd() const{ return m_and; }
-
-    /**
-     * <p>An array of objects, one for each property- or tag-based condition that
-     * includes or excludes resources from the query results. If you specify more than
-     * one condition, Amazon Macie uses AND logic to join the conditions.</p>
-     */
+    inline const Aws::Vector<SearchResourcesCriteria>& GetAnd() const { return m_and; }
     inline bool AndHasBeenSet() const { return m_andHasBeenSet; }
-
-    /**
-     * <p>An array of objects, one for each property- or tag-based condition that
-     * includes or excludes resources from the query results. If you specify more than
-     * one condition, Amazon Macie uses AND logic to join the conditions.</p>
-     */
-    inline void SetAnd(const Aws::Vector<SearchResourcesCriteria>& value) { m_andHasBeenSet = true; m_and = value; }
-
-    /**
-     * <p>An array of objects, one for each property- or tag-based condition that
-     * includes or excludes resources from the query results. If you specify more than
-     * one condition, Amazon Macie uses AND logic to join the conditions.</p>
-     */
-    inline void SetAnd(Aws::Vector<SearchResourcesCriteria>&& value) { m_andHasBeenSet = true; m_and = std::move(value); }
-
-    /**
-     * <p>An array of objects, one for each property- or tag-based condition that
-     * includes or excludes resources from the query results. If you specify more than
-     * one condition, Amazon Macie uses AND logic to join the conditions.</p>
-     */
-    inline SearchResourcesCriteriaBlock& WithAnd(const Aws::Vector<SearchResourcesCriteria>& value) { SetAnd(value); return *this;}
-
-    /**
-     * <p>An array of objects, one for each property- or tag-based condition that
-     * includes or excludes resources from the query results. If you specify more than
-     * one condition, Amazon Macie uses AND logic to join the conditions.</p>
-     */
-    inline SearchResourcesCriteriaBlock& WithAnd(Aws::Vector<SearchResourcesCriteria>&& value) { SetAnd(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of objects, one for each property- or tag-based condition that
-     * includes or excludes resources from the query results. If you specify more than
-     * one condition, Amazon Macie uses AND logic to join the conditions.</p>
-     */
-    inline SearchResourcesCriteriaBlock& AddAnd(const SearchResourcesCriteria& value) { m_andHasBeenSet = true; m_and.push_back(value); return *this; }
-
-    /**
-     * <p>An array of objects, one for each property- or tag-based condition that
-     * includes or excludes resources from the query results. If you specify more than
-     * one condition, Amazon Macie uses AND logic to join the conditions.</p>
-     */
-    inline SearchResourcesCriteriaBlock& AddAnd(SearchResourcesCriteria&& value) { m_andHasBeenSet = true; m_and.push_back(std::move(value)); return *this; }
-
+    template<typename AndT = Aws::Vector<SearchResourcesCriteria>>
+    void SetAnd(AndT&& value) { m_andHasBeenSet = true; m_and = std::forward<AndT>(value); }
+    template<typename AndT = Aws::Vector<SearchResourcesCriteria>>
+    SearchResourcesCriteriaBlock& WithAnd(AndT&& value) { SetAnd(std::forward<AndT>(value)); return *this;}
+    template<typename AndT = SearchResourcesCriteria>
+    SearchResourcesCriteriaBlock& AddAnd(AndT&& value) { m_andHasBeenSet = true; m_and.emplace_back(std::forward<AndT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<SearchResourcesCriteria> m_and;

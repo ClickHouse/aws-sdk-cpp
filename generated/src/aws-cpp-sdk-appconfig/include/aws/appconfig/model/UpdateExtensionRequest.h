@@ -26,7 +26,7 @@ namespace Model
   class UpdateExtensionRequest : public AppConfigRequest
   {
   public:
-    AWS_APPCONFIG_API UpdateExtensionRequest();
+    AWS_APPCONFIG_API UpdateExtensionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,220 +37,70 @@ namespace Model
     AWS_APPCONFIG_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name, the ID, or the Amazon Resource Name (ARN) of the extension.</p>
      */
-    inline const Aws::String& GetExtensionIdentifier() const{ return m_extensionIdentifier; }
-
-    /**
-     * <p>The name, the ID, or the Amazon Resource Name (ARN) of the extension.</p>
-     */
+    inline const Aws::String& GetExtensionIdentifier() const { return m_extensionIdentifier; }
     inline bool ExtensionIdentifierHasBeenSet() const { return m_extensionIdentifierHasBeenSet; }
+    template<typename ExtensionIdentifierT = Aws::String>
+    void SetExtensionIdentifier(ExtensionIdentifierT&& value) { m_extensionIdentifierHasBeenSet = true; m_extensionIdentifier = std::forward<ExtensionIdentifierT>(value); }
+    template<typename ExtensionIdentifierT = Aws::String>
+    UpdateExtensionRequest& WithExtensionIdentifier(ExtensionIdentifierT&& value) { SetExtensionIdentifier(std::forward<ExtensionIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name, the ID, or the Amazon Resource Name (ARN) of the extension.</p>
-     */
-    inline void SetExtensionIdentifier(const Aws::String& value) { m_extensionIdentifierHasBeenSet = true; m_extensionIdentifier = value; }
-
-    /**
-     * <p>The name, the ID, or the Amazon Resource Name (ARN) of the extension.</p>
-     */
-    inline void SetExtensionIdentifier(Aws::String&& value) { m_extensionIdentifierHasBeenSet = true; m_extensionIdentifier = std::move(value); }
-
-    /**
-     * <p>The name, the ID, or the Amazon Resource Name (ARN) of the extension.</p>
-     */
-    inline void SetExtensionIdentifier(const char* value) { m_extensionIdentifierHasBeenSet = true; m_extensionIdentifier.assign(value); }
-
-    /**
-     * <p>The name, the ID, or the Amazon Resource Name (ARN) of the extension.</p>
-     */
-    inline UpdateExtensionRequest& WithExtensionIdentifier(const Aws::String& value) { SetExtensionIdentifier(value); return *this;}
-
-    /**
-     * <p>The name, the ID, or the Amazon Resource Name (ARN) of the extension.</p>
-     */
-    inline UpdateExtensionRequest& WithExtensionIdentifier(Aws::String&& value) { SetExtensionIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The name, the ID, or the Amazon Resource Name (ARN) of the extension.</p>
-     */
-    inline UpdateExtensionRequest& WithExtensionIdentifier(const char* value) { SetExtensionIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about the extension.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>Information about the extension.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    UpdateExtensionRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about the extension.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>Information about the extension.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>Information about the extension.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>Information about the extension.</p>
-     */
-    inline UpdateExtensionRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>Information about the extension.</p>
-     */
-    inline UpdateExtensionRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>Information about the extension.</p>
-     */
-    inline UpdateExtensionRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The actions defined in the extension.</p>
      */
-    inline const Aws::Map<ActionPoint, Aws::Vector<Action>>& GetActions() const{ return m_actions; }
-
-    /**
-     * <p>The actions defined in the extension.</p>
-     */
+    inline const Aws::Map<ActionPoint, Aws::Vector<Action>>& GetActions() const { return m_actions; }
     inline bool ActionsHasBeenSet() const { return m_actionsHasBeenSet; }
+    template<typename ActionsT = Aws::Map<ActionPoint, Aws::Vector<Action>>>
+    void SetActions(ActionsT&& value) { m_actionsHasBeenSet = true; m_actions = std::forward<ActionsT>(value); }
+    template<typename ActionsT = Aws::Map<ActionPoint, Aws::Vector<Action>>>
+    UpdateExtensionRequest& WithActions(ActionsT&& value) { SetActions(std::forward<ActionsT>(value)); return *this;}
+    inline UpdateExtensionRequest& AddActions(ActionPoint key, Aws::Vector<Action> value) {
+      m_actionsHasBeenSet = true; m_actions.emplace(key, value); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>The actions defined in the extension.</p>
-     */
-    inline void SetActions(const Aws::Map<ActionPoint, Aws::Vector<Action>>& value) { m_actionsHasBeenSet = true; m_actions = value; }
-
-    /**
-     * <p>The actions defined in the extension.</p>
-     */
-    inline void SetActions(Aws::Map<ActionPoint, Aws::Vector<Action>>&& value) { m_actionsHasBeenSet = true; m_actions = std::move(value); }
-
-    /**
-     * <p>The actions defined in the extension.</p>
-     */
-    inline UpdateExtensionRequest& WithActions(const Aws::Map<ActionPoint, Aws::Vector<Action>>& value) { SetActions(value); return *this;}
-
-    /**
-     * <p>The actions defined in the extension.</p>
-     */
-    inline UpdateExtensionRequest& WithActions(Aws::Map<ActionPoint, Aws::Vector<Action>>&& value) { SetActions(std::move(value)); return *this;}
-
-    /**
-     * <p>The actions defined in the extension.</p>
-     */
-    inline UpdateExtensionRequest& AddActions(const ActionPoint& key, const Aws::Vector<Action>& value) { m_actionsHasBeenSet = true; m_actions.emplace(key, value); return *this; }
-
-    /**
-     * <p>The actions defined in the extension.</p>
-     */
-    inline UpdateExtensionRequest& AddActions(ActionPoint&& key, const Aws::Vector<Action>& value) { m_actionsHasBeenSet = true; m_actions.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The actions defined in the extension.</p>
-     */
-    inline UpdateExtensionRequest& AddActions(const ActionPoint& key, Aws::Vector<Action>&& value) { m_actionsHasBeenSet = true; m_actions.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The actions defined in the extension.</p>
-     */
-    inline UpdateExtensionRequest& AddActions(ActionPoint&& key, Aws::Vector<Action>&& value) { m_actionsHasBeenSet = true; m_actions.emplace(std::move(key), std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>One or more parameters for the actions called by the extension.</p>
      */
-    inline const Aws::Map<Aws::String, Parameter>& GetParameters() const{ return m_parameters; }
-
-    /**
-     * <p>One or more parameters for the actions called by the extension.</p>
-     */
+    inline const Aws::Map<Aws::String, Parameter>& GetParameters() const { return m_parameters; }
     inline bool ParametersHasBeenSet() const { return m_parametersHasBeenSet; }
+    template<typename ParametersT = Aws::Map<Aws::String, Parameter>>
+    void SetParameters(ParametersT&& value) { m_parametersHasBeenSet = true; m_parameters = std::forward<ParametersT>(value); }
+    template<typename ParametersT = Aws::Map<Aws::String, Parameter>>
+    UpdateExtensionRequest& WithParameters(ParametersT&& value) { SetParameters(std::forward<ParametersT>(value)); return *this;}
+    template<typename ParametersKeyT = Aws::String, typename ParametersValueT = Parameter>
+    UpdateExtensionRequest& AddParameters(ParametersKeyT&& key, ParametersValueT&& value) {
+      m_parametersHasBeenSet = true; m_parameters.emplace(std::forward<ParametersKeyT>(key), std::forward<ParametersValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>One or more parameters for the actions called by the extension.</p>
-     */
-    inline void SetParameters(const Aws::Map<Aws::String, Parameter>& value) { m_parametersHasBeenSet = true; m_parameters = value; }
-
-    /**
-     * <p>One or more parameters for the actions called by the extension.</p>
-     */
-    inline void SetParameters(Aws::Map<Aws::String, Parameter>&& value) { m_parametersHasBeenSet = true; m_parameters = std::move(value); }
-
-    /**
-     * <p>One or more parameters for the actions called by the extension.</p>
-     */
-    inline UpdateExtensionRequest& WithParameters(const Aws::Map<Aws::String, Parameter>& value) { SetParameters(value); return *this;}
-
-    /**
-     * <p>One or more parameters for the actions called by the extension.</p>
-     */
-    inline UpdateExtensionRequest& WithParameters(Aws::Map<Aws::String, Parameter>&& value) { SetParameters(std::move(value)); return *this;}
-
-    /**
-     * <p>One or more parameters for the actions called by the extension.</p>
-     */
-    inline UpdateExtensionRequest& AddParameters(const Aws::String& key, const Parameter& value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, value); return *this; }
-
-    /**
-     * <p>One or more parameters for the actions called by the extension.</p>
-     */
-    inline UpdateExtensionRequest& AddParameters(Aws::String&& key, const Parameter& value) { m_parametersHasBeenSet = true; m_parameters.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>One or more parameters for the actions called by the extension.</p>
-     */
-    inline UpdateExtensionRequest& AddParameters(const Aws::String& key, Parameter&& value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>One or more parameters for the actions called by the extension.</p>
-     */
-    inline UpdateExtensionRequest& AddParameters(Aws::String&& key, Parameter&& value) { m_parametersHasBeenSet = true; m_parameters.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>One or more parameters for the actions called by the extension.</p>
-     */
-    inline UpdateExtensionRequest& AddParameters(const char* key, Parameter&& value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>One or more parameters for the actions called by the extension.</p>
-     */
-    inline UpdateExtensionRequest& AddParameters(const char* key, const Parameter& value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>The extension version number.</p>
      */
-    inline int GetVersionNumber() const{ return m_versionNumber; }
-
-    /**
-     * <p>The extension version number.</p>
-     */
+    inline int GetVersionNumber() const { return m_versionNumber; }
     inline bool VersionNumberHasBeenSet() const { return m_versionNumberHasBeenSet; }
-
-    /**
-     * <p>The extension version number.</p>
-     */
     inline void SetVersionNumber(int value) { m_versionNumberHasBeenSet = true; m_versionNumber = value; }
-
-    /**
-     * <p>The extension version number.</p>
-     */
     inline UpdateExtensionRequest& WithVersionNumber(int value) { SetVersionNumber(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_extensionIdentifier;
@@ -265,7 +115,7 @@ namespace Model
     Aws::Map<Aws::String, Parameter> m_parameters;
     bool m_parametersHasBeenSet = false;
 
-    int m_versionNumber;
+    int m_versionNumber{0};
     bool m_versionNumberHasBeenSet = false;
   };
 

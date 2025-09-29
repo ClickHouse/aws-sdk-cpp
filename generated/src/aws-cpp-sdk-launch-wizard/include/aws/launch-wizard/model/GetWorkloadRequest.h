@@ -21,7 +21,7 @@ namespace Model
   class GetWorkloadRequest : public LaunchWizardRequest
   {
   public:
-    AWS_LAUNCHWIZARD_API GetWorkloadRequest();
+    AWS_LAUNCHWIZARD_API GetWorkloadRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_LAUNCHWIZARD_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of the workload.</p>
      */
-    inline const Aws::String& GetWorkloadName() const{ return m_workloadName; }
-
-    /**
-     * <p>The name of the workload.</p>
-     */
+    inline const Aws::String& GetWorkloadName() const { return m_workloadName; }
     inline bool WorkloadNameHasBeenSet() const { return m_workloadNameHasBeenSet; }
-
-    /**
-     * <p>The name of the workload.</p>
-     */
-    inline void SetWorkloadName(const Aws::String& value) { m_workloadNameHasBeenSet = true; m_workloadName = value; }
-
-    /**
-     * <p>The name of the workload.</p>
-     */
-    inline void SetWorkloadName(Aws::String&& value) { m_workloadNameHasBeenSet = true; m_workloadName = std::move(value); }
-
-    /**
-     * <p>The name of the workload.</p>
-     */
-    inline void SetWorkloadName(const char* value) { m_workloadNameHasBeenSet = true; m_workloadName.assign(value); }
-
-    /**
-     * <p>The name of the workload.</p>
-     */
-    inline GetWorkloadRequest& WithWorkloadName(const Aws::String& value) { SetWorkloadName(value); return *this;}
-
-    /**
-     * <p>The name of the workload.</p>
-     */
-    inline GetWorkloadRequest& WithWorkloadName(Aws::String&& value) { SetWorkloadName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the workload.</p>
-     */
-    inline GetWorkloadRequest& WithWorkloadName(const char* value) { SetWorkloadName(value); return *this;}
-
+    template<typename WorkloadNameT = Aws::String>
+    void SetWorkloadName(WorkloadNameT&& value) { m_workloadNameHasBeenSet = true; m_workloadName = std::forward<WorkloadNameT>(value); }
+    template<typename WorkloadNameT = Aws::String>
+    GetWorkloadRequest& WithWorkloadName(WorkloadNameT&& value) { SetWorkloadName(std::forward<WorkloadNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_workloadName;

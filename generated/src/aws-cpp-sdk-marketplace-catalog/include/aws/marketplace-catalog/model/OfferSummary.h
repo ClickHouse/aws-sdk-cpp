@@ -34,293 +34,108 @@ namespace Model
   class OfferSummary
   {
   public:
-    AWS_MARKETPLACECATALOG_API OfferSummary();
+    AWS_MARKETPLACECATALOG_API OfferSummary() = default;
     AWS_MARKETPLACECATALOG_API OfferSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_MARKETPLACECATALOG_API OfferSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MARKETPLACECATALOG_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the offer.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the offer.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    OfferSummary& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the offer.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the offer.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the offer.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the offer.</p>
-     */
-    inline OfferSummary& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the offer.</p>
-     */
-    inline OfferSummary& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the offer.</p>
-     */
-    inline OfferSummary& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The product ID of the offer.</p>
      */
-    inline const Aws::String& GetProductId() const{ return m_productId; }
-
-    /**
-     * <p>The product ID of the offer.</p>
-     */
+    inline const Aws::String& GetProductId() const { return m_productId; }
     inline bool ProductIdHasBeenSet() const { return m_productIdHasBeenSet; }
+    template<typename ProductIdT = Aws::String>
+    void SetProductId(ProductIdT&& value) { m_productIdHasBeenSet = true; m_productId = std::forward<ProductIdT>(value); }
+    template<typename ProductIdT = Aws::String>
+    OfferSummary& WithProductId(ProductIdT&& value) { SetProductId(std::forward<ProductIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The product ID of the offer.</p>
+     * <p>The ResaleAuthorizationId of the offer.</p>
      */
-    inline void SetProductId(const Aws::String& value) { m_productIdHasBeenSet = true; m_productId = value; }
+    inline const Aws::String& GetResaleAuthorizationId() const { return m_resaleAuthorizationId; }
+    inline bool ResaleAuthorizationIdHasBeenSet() const { return m_resaleAuthorizationIdHasBeenSet; }
+    template<typename ResaleAuthorizationIdT = Aws::String>
+    void SetResaleAuthorizationId(ResaleAuthorizationIdT&& value) { m_resaleAuthorizationIdHasBeenSet = true; m_resaleAuthorizationId = std::forward<ResaleAuthorizationIdT>(value); }
+    template<typename ResaleAuthorizationIdT = Aws::String>
+    OfferSummary& WithResaleAuthorizationId(ResaleAuthorizationIdT&& value) { SetResaleAuthorizationId(std::forward<ResaleAuthorizationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The product ID of the offer.</p>
-     */
-    inline void SetProductId(Aws::String&& value) { m_productIdHasBeenSet = true; m_productId = std::move(value); }
-
-    /**
-     * <p>The product ID of the offer.</p>
-     */
-    inline void SetProductId(const char* value) { m_productIdHasBeenSet = true; m_productId.assign(value); }
-
-    /**
-     * <p>The product ID of the offer.</p>
-     */
-    inline OfferSummary& WithProductId(const Aws::String& value) { SetProductId(value); return *this;}
-
-    /**
-     * <p>The product ID of the offer.</p>
-     */
-    inline OfferSummary& WithProductId(Aws::String&& value) { SetProductId(std::move(value)); return *this;}
-
-    /**
-     * <p>The product ID of the offer.</p>
-     */
-    inline OfferSummary& WithProductId(const char* value) { SetProductId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The release date of the offer.</p>
      */
-    inline const Aws::String& GetReleaseDate() const{ return m_releaseDate; }
-
-    /**
-     * <p>The release date of the offer.</p>
-     */
+    inline const Aws::String& GetReleaseDate() const { return m_releaseDate; }
     inline bool ReleaseDateHasBeenSet() const { return m_releaseDateHasBeenSet; }
+    template<typename ReleaseDateT = Aws::String>
+    void SetReleaseDate(ReleaseDateT&& value) { m_releaseDateHasBeenSet = true; m_releaseDate = std::forward<ReleaseDateT>(value); }
+    template<typename ReleaseDateT = Aws::String>
+    OfferSummary& WithReleaseDate(ReleaseDateT&& value) { SetReleaseDate(std::forward<ReleaseDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The release date of the offer.</p>
-     */
-    inline void SetReleaseDate(const Aws::String& value) { m_releaseDateHasBeenSet = true; m_releaseDate = value; }
-
-    /**
-     * <p>The release date of the offer.</p>
-     */
-    inline void SetReleaseDate(Aws::String&& value) { m_releaseDateHasBeenSet = true; m_releaseDate = std::move(value); }
-
-    /**
-     * <p>The release date of the offer.</p>
-     */
-    inline void SetReleaseDate(const char* value) { m_releaseDateHasBeenSet = true; m_releaseDate.assign(value); }
-
-    /**
-     * <p>The release date of the offer.</p>
-     */
-    inline OfferSummary& WithReleaseDate(const Aws::String& value) { SetReleaseDate(value); return *this;}
-
-    /**
-     * <p>The release date of the offer.</p>
-     */
-    inline OfferSummary& WithReleaseDate(Aws::String&& value) { SetReleaseDate(std::move(value)); return *this;}
-
-    /**
-     * <p>The release date of the offer.</p>
-     */
-    inline OfferSummary& WithReleaseDate(const char* value) { SetReleaseDate(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The availability end date of the offer.</p>
      */
-    inline const Aws::String& GetAvailabilityEndDate() const{ return m_availabilityEndDate; }
-
-    /**
-     * <p>The availability end date of the offer.</p>
-     */
+    inline const Aws::String& GetAvailabilityEndDate() const { return m_availabilityEndDate; }
     inline bool AvailabilityEndDateHasBeenSet() const { return m_availabilityEndDateHasBeenSet; }
+    template<typename AvailabilityEndDateT = Aws::String>
+    void SetAvailabilityEndDate(AvailabilityEndDateT&& value) { m_availabilityEndDateHasBeenSet = true; m_availabilityEndDate = std::forward<AvailabilityEndDateT>(value); }
+    template<typename AvailabilityEndDateT = Aws::String>
+    OfferSummary& WithAvailabilityEndDate(AvailabilityEndDateT&& value) { SetAvailabilityEndDate(std::forward<AvailabilityEndDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The availability end date of the offer.</p>
-     */
-    inline void SetAvailabilityEndDate(const Aws::String& value) { m_availabilityEndDateHasBeenSet = true; m_availabilityEndDate = value; }
-
-    /**
-     * <p>The availability end date of the offer.</p>
-     */
-    inline void SetAvailabilityEndDate(Aws::String&& value) { m_availabilityEndDateHasBeenSet = true; m_availabilityEndDate = std::move(value); }
-
-    /**
-     * <p>The availability end date of the offer.</p>
-     */
-    inline void SetAvailabilityEndDate(const char* value) { m_availabilityEndDateHasBeenSet = true; m_availabilityEndDate.assign(value); }
-
-    /**
-     * <p>The availability end date of the offer.</p>
-     */
-    inline OfferSummary& WithAvailabilityEndDate(const Aws::String& value) { SetAvailabilityEndDate(value); return *this;}
-
-    /**
-     * <p>The availability end date of the offer.</p>
-     */
-    inline OfferSummary& WithAvailabilityEndDate(Aws::String&& value) { SetAvailabilityEndDate(std::move(value)); return *this;}
-
-    /**
-     * <p>The availability end date of the offer.</p>
-     */
-    inline OfferSummary& WithAvailabilityEndDate(const char* value) { SetAvailabilityEndDate(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The buyer accounts in the offer.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetBuyerAccounts() const{ return m_buyerAccounts; }
-
-    /**
-     * <p>The buyer accounts in the offer.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetBuyerAccounts() const { return m_buyerAccounts; }
     inline bool BuyerAccountsHasBeenSet() const { return m_buyerAccountsHasBeenSet; }
+    template<typename BuyerAccountsT = Aws::Vector<Aws::String>>
+    void SetBuyerAccounts(BuyerAccountsT&& value) { m_buyerAccountsHasBeenSet = true; m_buyerAccounts = std::forward<BuyerAccountsT>(value); }
+    template<typename BuyerAccountsT = Aws::Vector<Aws::String>>
+    OfferSummary& WithBuyerAccounts(BuyerAccountsT&& value) { SetBuyerAccounts(std::forward<BuyerAccountsT>(value)); return *this;}
+    template<typename BuyerAccountsT = Aws::String>
+    OfferSummary& AddBuyerAccounts(BuyerAccountsT&& value) { m_buyerAccountsHasBeenSet = true; m_buyerAccounts.emplace_back(std::forward<BuyerAccountsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The buyer accounts in the offer.</p>
-     */
-    inline void SetBuyerAccounts(const Aws::Vector<Aws::String>& value) { m_buyerAccountsHasBeenSet = true; m_buyerAccounts = value; }
-
-    /**
-     * <p>The buyer accounts in the offer.</p>
-     */
-    inline void SetBuyerAccounts(Aws::Vector<Aws::String>&& value) { m_buyerAccountsHasBeenSet = true; m_buyerAccounts = std::move(value); }
-
-    /**
-     * <p>The buyer accounts in the offer.</p>
-     */
-    inline OfferSummary& WithBuyerAccounts(const Aws::Vector<Aws::String>& value) { SetBuyerAccounts(value); return *this;}
-
-    /**
-     * <p>The buyer accounts in the offer.</p>
-     */
-    inline OfferSummary& WithBuyerAccounts(Aws::Vector<Aws::String>&& value) { SetBuyerAccounts(std::move(value)); return *this;}
-
-    /**
-     * <p>The buyer accounts in the offer.</p>
-     */
-    inline OfferSummary& AddBuyerAccounts(const Aws::String& value) { m_buyerAccountsHasBeenSet = true; m_buyerAccounts.push_back(value); return *this; }
-
-    /**
-     * <p>The buyer accounts in the offer.</p>
-     */
-    inline OfferSummary& AddBuyerAccounts(Aws::String&& value) { m_buyerAccountsHasBeenSet = true; m_buyerAccounts.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The buyer accounts in the offer.</p>
-     */
-    inline OfferSummary& AddBuyerAccounts(const char* value) { m_buyerAccountsHasBeenSet = true; m_buyerAccounts.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The status of the offer.</p>
      */
-    inline const OfferStateString& GetState() const{ return m_state; }
-
-    /**
-     * <p>The status of the offer.</p>
-     */
+    inline OfferStateString GetState() const { return m_state; }
     inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
+    inline void SetState(OfferStateString value) { m_stateHasBeenSet = true; m_state = value; }
+    inline OfferSummary& WithState(OfferStateString value) { SetState(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the offer.</p>
-     */
-    inline void SetState(const OfferStateString& value) { m_stateHasBeenSet = true; m_state = value; }
-
-    /**
-     * <p>The status of the offer.</p>
-     */
-    inline void SetState(OfferStateString&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
-
-    /**
-     * <p>The status of the offer.</p>
-     */
-    inline OfferSummary& WithState(const OfferStateString& value) { SetState(value); return *this;}
-
-    /**
-     * <p>The status of the offer.</p>
-     */
-    inline OfferSummary& WithState(OfferStateString&& value) { SetState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The targeting in the offer.</p>
      */
-    inline const Aws::Vector<OfferTargetingString>& GetTargeting() const{ return m_targeting; }
-
-    /**
-     * <p>The targeting in the offer.</p>
-     */
+    inline const Aws::Vector<OfferTargetingString>& GetTargeting() const { return m_targeting; }
     inline bool TargetingHasBeenSet() const { return m_targetingHasBeenSet; }
-
-    /**
-     * <p>The targeting in the offer.</p>
-     */
-    inline void SetTargeting(const Aws::Vector<OfferTargetingString>& value) { m_targetingHasBeenSet = true; m_targeting = value; }
-
-    /**
-     * <p>The targeting in the offer.</p>
-     */
-    inline void SetTargeting(Aws::Vector<OfferTargetingString>&& value) { m_targetingHasBeenSet = true; m_targeting = std::move(value); }
-
-    /**
-     * <p>The targeting in the offer.</p>
-     */
-    inline OfferSummary& WithTargeting(const Aws::Vector<OfferTargetingString>& value) { SetTargeting(value); return *this;}
-
-    /**
-     * <p>The targeting in the offer.</p>
-     */
-    inline OfferSummary& WithTargeting(Aws::Vector<OfferTargetingString>&& value) { SetTargeting(std::move(value)); return *this;}
-
-    /**
-     * <p>The targeting in the offer.</p>
-     */
-    inline OfferSummary& AddTargeting(const OfferTargetingString& value) { m_targetingHasBeenSet = true; m_targeting.push_back(value); return *this; }
-
-    /**
-     * <p>The targeting in the offer.</p>
-     */
-    inline OfferSummary& AddTargeting(OfferTargetingString&& value) { m_targetingHasBeenSet = true; m_targeting.push_back(std::move(value)); return *this; }
-
+    template<typename TargetingT = Aws::Vector<OfferTargetingString>>
+    void SetTargeting(TargetingT&& value) { m_targetingHasBeenSet = true; m_targeting = std::forward<TargetingT>(value); }
+    template<typename TargetingT = Aws::Vector<OfferTargetingString>>
+    OfferSummary& WithTargeting(TargetingT&& value) { SetTargeting(std::forward<TargetingT>(value)); return *this;}
+    inline OfferSummary& AddTargeting(OfferTargetingString value) { m_targetingHasBeenSet = true; m_targeting.push_back(value); return *this; }
+    ///@}
   private:
 
     Aws::String m_name;
@@ -328,6 +143,9 @@ namespace Model
 
     Aws::String m_productId;
     bool m_productIdHasBeenSet = false;
+
+    Aws::String m_resaleAuthorizationId;
+    bool m_resaleAuthorizationIdHasBeenSet = false;
 
     Aws::String m_releaseDate;
     bool m_releaseDateHasBeenSet = false;
@@ -338,7 +156,7 @@ namespace Model
     Aws::Vector<Aws::String> m_buyerAccounts;
     bool m_buyerAccountsHasBeenSet = false;
 
-    OfferStateString m_state;
+    OfferStateString m_state{OfferStateString::NOT_SET};
     bool m_stateHasBeenSet = false;
 
     Aws::Vector<OfferTargetingString> m_targeting;

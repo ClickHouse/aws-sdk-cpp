@@ -10,23 +10,25 @@
 using namespace Aws::SES::Model;
 using namespace Aws::Utils;
 
-GetIdentityVerificationAttributesRequest::GetIdentityVerificationAttributesRequest() : 
-    m_identitiesHasBeenSet(false)
-{
-}
-
 Aws::String GetIdentityVerificationAttributesRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=GetIdentityVerificationAttributes&";
   if(m_identitiesHasBeenSet)
   {
-    unsigned identitiesCount = 1;
-    for(auto& item : m_identities)
+    if (m_identities.empty())
     {
-      ss << "Identities.member." << identitiesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      identitiesCount++;
+      ss << "Identities=&";
+    }
+    else
+    {
+      unsigned identitiesCount = 1;
+      for(auto& item : m_identities)
+      {
+        ss << "Identities.member." << identitiesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        identitiesCount++;
+      }
     }
   }
 

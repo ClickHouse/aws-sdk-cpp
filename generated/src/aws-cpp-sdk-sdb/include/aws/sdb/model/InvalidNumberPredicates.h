@@ -30,7 +30,7 @@ namespace Model
   class InvalidNumberPredicates
   {
   public:
-    AWS_SIMPLEDB_API InvalidNumberPredicates();
+    AWS_SIMPLEDB_API InvalidNumberPredicates() = default;
     AWS_SIMPLEDB_API InvalidNumberPredicates(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_SIMPLEDB_API InvalidNumberPredicates& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -38,21 +38,16 @@ namespace Model
     AWS_SIMPLEDB_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     
-    inline double GetBoxUsage() const{ return m_boxUsage; }
-
-    
+    inline double GetBoxUsage() const { return m_boxUsage; }
     inline bool BoxUsageHasBeenSet() const { return m_boxUsageHasBeenSet; }
-
-    
     inline void SetBoxUsage(double value) { m_boxUsageHasBeenSet = true; m_boxUsage = value; }
-
-    
     inline InvalidNumberPredicates& WithBoxUsage(double value) { SetBoxUsage(value); return *this;}
-
+    ///@}
   private:
 
-    double m_boxUsage;
+    double m_boxUsage{0.0};
     bool m_boxUsageHasBeenSet = false;
   };
 

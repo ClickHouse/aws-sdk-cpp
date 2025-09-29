@@ -21,7 +21,7 @@ namespace Model
   class DeleteIpamScopeRequest : public EC2Request
   {
   public:
-    AWS_EC2_API DeleteIpamScopeRequest();
+    AWS_EC2_API DeleteIpamScopeRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,82 +36,33 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>A check for whether you have the required permissions for the action without
      * actually making the request and provides an error response. If you have the
      * required permissions, the error response is <code>DryRunOperation</code>.
      * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
      */
-    inline bool GetDryRun() const{ return m_dryRun; }
-
-    /**
-     * <p>A check for whether you have the required permissions for the action without
-     * actually making the request and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
+    inline bool GetDryRun() const { return m_dryRun; }
     inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
-
-    /**
-     * <p>A check for whether you have the required permissions for the action without
-     * actually making the request and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
-
-    /**
-     * <p>A check for whether you have the required permissions for the action without
-     * actually making the request and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline DeleteIpamScopeRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The ID of the scope to delete.</p>
      */
-    inline const Aws::String& GetIpamScopeId() const{ return m_ipamScopeId; }
-
-    /**
-     * <p>The ID of the scope to delete.</p>
-     */
+    inline const Aws::String& GetIpamScopeId() const { return m_ipamScopeId; }
     inline bool IpamScopeIdHasBeenSet() const { return m_ipamScopeIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the scope to delete.</p>
-     */
-    inline void SetIpamScopeId(const Aws::String& value) { m_ipamScopeIdHasBeenSet = true; m_ipamScopeId = value; }
-
-    /**
-     * <p>The ID of the scope to delete.</p>
-     */
-    inline void SetIpamScopeId(Aws::String&& value) { m_ipamScopeIdHasBeenSet = true; m_ipamScopeId = std::move(value); }
-
-    /**
-     * <p>The ID of the scope to delete.</p>
-     */
-    inline void SetIpamScopeId(const char* value) { m_ipamScopeIdHasBeenSet = true; m_ipamScopeId.assign(value); }
-
-    /**
-     * <p>The ID of the scope to delete.</p>
-     */
-    inline DeleteIpamScopeRequest& WithIpamScopeId(const Aws::String& value) { SetIpamScopeId(value); return *this;}
-
-    /**
-     * <p>The ID of the scope to delete.</p>
-     */
-    inline DeleteIpamScopeRequest& WithIpamScopeId(Aws::String&& value) { SetIpamScopeId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the scope to delete.</p>
-     */
-    inline DeleteIpamScopeRequest& WithIpamScopeId(const char* value) { SetIpamScopeId(value); return *this;}
-
+    template<typename IpamScopeIdT = Aws::String>
+    void SetIpamScopeId(IpamScopeIdT&& value) { m_ipamScopeIdHasBeenSet = true; m_ipamScopeId = std::forward<IpamScopeIdT>(value); }
+    template<typename IpamScopeIdT = Aws::String>
+    DeleteIpamScopeRequest& WithIpamScopeId(IpamScopeIdT&& value) { SetIpamScopeId(std::forward<IpamScopeIdT>(value)); return *this;}
+    ///@}
   private:
 
-    bool m_dryRun;
+    bool m_dryRun{false};
     bool m_dryRunHasBeenSet = false;
 
     Aws::String m_ipamScopeId;

@@ -18,15 +18,7 @@ namespace Connect
 namespace Model
 {
 
-ParticipantCapabilities::ParticipantCapabilities() : 
-    m_video(VideoCapability::NOT_SET),
-    m_videoHasBeenSet(false)
-{
-}
-
-ParticipantCapabilities::ParticipantCapabilities(JsonView jsonValue) : 
-    m_video(VideoCapability::NOT_SET),
-    m_videoHasBeenSet(false)
+ParticipantCapabilities::ParticipantCapabilities(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,13 @@ ParticipantCapabilities& ParticipantCapabilities::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Video"))
   {
     m_video = VideoCapabilityMapper::GetVideoCapabilityForName(jsonValue.GetString("Video"));
-
     m_videoHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("ScreenShare"))
+  {
+    m_screenShare = ScreenShareCapabilityMapper::GetScreenShareCapabilityForName(jsonValue.GetString("ScreenShare"));
+    m_screenShareHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -50,6 +45,11 @@ JsonValue ParticipantCapabilities::Jsonize() const
   if(m_videoHasBeenSet)
   {
    payload.WithString("Video", VideoCapabilityMapper::GetNameForVideoCapability(m_video));
+  }
+
+  if(m_screenShareHasBeenSet)
+  {
+   payload.WithString("ScreenShare", ScreenShareCapabilityMapper::GetNameForScreenShareCapability(m_screenShare));
   }
 
   return payload;

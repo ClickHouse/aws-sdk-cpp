@@ -36,142 +36,50 @@ namespace Model
   class PaymentScheduleTerm
   {
   public:
-    AWS_AGREEMENTSERVICE_API PaymentScheduleTerm();
+    AWS_AGREEMENTSERVICE_API PaymentScheduleTerm() = default;
     AWS_AGREEMENTSERVICE_API PaymentScheduleTerm(Aws::Utils::Json::JsonView jsonValue);
     AWS_AGREEMENTSERVICE_API PaymentScheduleTerm& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_AGREEMENTSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Defines the currency for the prices mentioned in the term. </p>
      */
-    inline const Aws::String& GetCurrencyCode() const{ return m_currencyCode; }
-
-    /**
-     * <p>Defines the currency for the prices mentioned in the term. </p>
-     */
+    inline const Aws::String& GetCurrencyCode() const { return m_currencyCode; }
     inline bool CurrencyCodeHasBeenSet() const { return m_currencyCodeHasBeenSet; }
+    template<typename CurrencyCodeT = Aws::String>
+    void SetCurrencyCode(CurrencyCodeT&& value) { m_currencyCodeHasBeenSet = true; m_currencyCode = std::forward<CurrencyCodeT>(value); }
+    template<typename CurrencyCodeT = Aws::String>
+    PaymentScheduleTerm& WithCurrencyCode(CurrencyCodeT&& value) { SetCurrencyCode(std::forward<CurrencyCodeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Defines the currency for the prices mentioned in the term. </p>
-     */
-    inline void SetCurrencyCode(const Aws::String& value) { m_currencyCodeHasBeenSet = true; m_currencyCode = value; }
-
-    /**
-     * <p>Defines the currency for the prices mentioned in the term. </p>
-     */
-    inline void SetCurrencyCode(Aws::String&& value) { m_currencyCodeHasBeenSet = true; m_currencyCode = std::move(value); }
-
-    /**
-     * <p>Defines the currency for the prices mentioned in the term. </p>
-     */
-    inline void SetCurrencyCode(const char* value) { m_currencyCodeHasBeenSet = true; m_currencyCode.assign(value); }
-
-    /**
-     * <p>Defines the currency for the prices mentioned in the term. </p>
-     */
-    inline PaymentScheduleTerm& WithCurrencyCode(const Aws::String& value) { SetCurrencyCode(value); return *this;}
-
-    /**
-     * <p>Defines the currency for the prices mentioned in the term. </p>
-     */
-    inline PaymentScheduleTerm& WithCurrencyCode(Aws::String&& value) { SetCurrencyCode(std::move(value)); return *this;}
-
-    /**
-     * <p>Defines the currency for the prices mentioned in the term. </p>
-     */
-    inline PaymentScheduleTerm& WithCurrencyCode(const char* value) { SetCurrencyCode(value); return *this;}
-
-
+    ///@{
     /**
      * <p>List of the payment schedule where each element defines one installment of
      * payment. It contains the information necessary for calculating the price.</p>
      */
-    inline const Aws::Vector<ScheduleItem>& GetSchedule() const{ return m_schedule; }
-
-    /**
-     * <p>List of the payment schedule where each element defines one installment of
-     * payment. It contains the information necessary for calculating the price.</p>
-     */
+    inline const Aws::Vector<ScheduleItem>& GetSchedule() const { return m_schedule; }
     inline bool ScheduleHasBeenSet() const { return m_scheduleHasBeenSet; }
+    template<typename ScheduleT = Aws::Vector<ScheduleItem>>
+    void SetSchedule(ScheduleT&& value) { m_scheduleHasBeenSet = true; m_schedule = std::forward<ScheduleT>(value); }
+    template<typename ScheduleT = Aws::Vector<ScheduleItem>>
+    PaymentScheduleTerm& WithSchedule(ScheduleT&& value) { SetSchedule(std::forward<ScheduleT>(value)); return *this;}
+    template<typename ScheduleT = ScheduleItem>
+    PaymentScheduleTerm& AddSchedule(ScheduleT&& value) { m_scheduleHasBeenSet = true; m_schedule.emplace_back(std::forward<ScheduleT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>List of the payment schedule where each element defines one installment of
-     * payment. It contains the information necessary for calculating the price.</p>
-     */
-    inline void SetSchedule(const Aws::Vector<ScheduleItem>& value) { m_scheduleHasBeenSet = true; m_schedule = value; }
-
-    /**
-     * <p>List of the payment schedule where each element defines one installment of
-     * payment. It contains the information necessary for calculating the price.</p>
-     */
-    inline void SetSchedule(Aws::Vector<ScheduleItem>&& value) { m_scheduleHasBeenSet = true; m_schedule = std::move(value); }
-
-    /**
-     * <p>List of the payment schedule where each element defines one installment of
-     * payment. It contains the information necessary for calculating the price.</p>
-     */
-    inline PaymentScheduleTerm& WithSchedule(const Aws::Vector<ScheduleItem>& value) { SetSchedule(value); return *this;}
-
-    /**
-     * <p>List of the payment schedule where each element defines one installment of
-     * payment. It contains the information necessary for calculating the price.</p>
-     */
-    inline PaymentScheduleTerm& WithSchedule(Aws::Vector<ScheduleItem>&& value) { SetSchedule(std::move(value)); return *this;}
-
-    /**
-     * <p>List of the payment schedule where each element defines one installment of
-     * payment. It contains the information necessary for calculating the price.</p>
-     */
-    inline PaymentScheduleTerm& AddSchedule(const ScheduleItem& value) { m_scheduleHasBeenSet = true; m_schedule.push_back(value); return *this; }
-
-    /**
-     * <p>List of the payment schedule where each element defines one installment of
-     * payment. It contains the information necessary for calculating the price.</p>
-     */
-    inline PaymentScheduleTerm& AddSchedule(ScheduleItem&& value) { m_scheduleHasBeenSet = true; m_schedule.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Type of the term.</p>
      */
-    inline const Aws::String& GetType() const{ return m_type; }
-
-    /**
-     * <p>Type of the term.</p>
-     */
+    inline const Aws::String& GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
-
-    /**
-     * <p>Type of the term.</p>
-     */
-    inline void SetType(const Aws::String& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>Type of the term.</p>
-     */
-    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>Type of the term.</p>
-     */
-    inline void SetType(const char* value) { m_typeHasBeenSet = true; m_type.assign(value); }
-
-    /**
-     * <p>Type of the term.</p>
-     */
-    inline PaymentScheduleTerm& WithType(const Aws::String& value) { SetType(value); return *this;}
-
-    /**
-     * <p>Type of the term.</p>
-     */
-    inline PaymentScheduleTerm& WithType(Aws::String&& value) { SetType(std::move(value)); return *this;}
-
-    /**
-     * <p>Type of the term.</p>
-     */
-    inline PaymentScheduleTerm& WithType(const char* value) { SetType(value); return *this;}
-
+    template<typename TypeT = Aws::String>
+    void SetType(TypeT&& value) { m_typeHasBeenSet = true; m_type = std::forward<TypeT>(value); }
+    template<typename TypeT = Aws::String>
+    PaymentScheduleTerm& WithType(TypeT&& value) { SetType(std::forward<TypeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_currencyCode;

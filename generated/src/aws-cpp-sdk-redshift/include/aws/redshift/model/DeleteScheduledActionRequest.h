@@ -21,7 +21,7 @@ namespace Model
   class DeleteScheduledActionRequest : public RedshiftRequest
   {
   public:
-    AWS_REDSHIFT_API DeleteScheduledActionRequest();
+    AWS_REDSHIFT_API DeleteScheduledActionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,46 +36,17 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The name of the scheduled action to delete. </p>
      */
-    inline const Aws::String& GetScheduledActionName() const{ return m_scheduledActionName; }
-
-    /**
-     * <p>The name of the scheduled action to delete. </p>
-     */
+    inline const Aws::String& GetScheduledActionName() const { return m_scheduledActionName; }
     inline bool ScheduledActionNameHasBeenSet() const { return m_scheduledActionNameHasBeenSet; }
-
-    /**
-     * <p>The name of the scheduled action to delete. </p>
-     */
-    inline void SetScheduledActionName(const Aws::String& value) { m_scheduledActionNameHasBeenSet = true; m_scheduledActionName = value; }
-
-    /**
-     * <p>The name of the scheduled action to delete. </p>
-     */
-    inline void SetScheduledActionName(Aws::String&& value) { m_scheduledActionNameHasBeenSet = true; m_scheduledActionName = std::move(value); }
-
-    /**
-     * <p>The name of the scheduled action to delete. </p>
-     */
-    inline void SetScheduledActionName(const char* value) { m_scheduledActionNameHasBeenSet = true; m_scheduledActionName.assign(value); }
-
-    /**
-     * <p>The name of the scheduled action to delete. </p>
-     */
-    inline DeleteScheduledActionRequest& WithScheduledActionName(const Aws::String& value) { SetScheduledActionName(value); return *this;}
-
-    /**
-     * <p>The name of the scheduled action to delete. </p>
-     */
-    inline DeleteScheduledActionRequest& WithScheduledActionName(Aws::String&& value) { SetScheduledActionName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the scheduled action to delete. </p>
-     */
-    inline DeleteScheduledActionRequest& WithScheduledActionName(const char* value) { SetScheduledActionName(value); return *this;}
-
+    template<typename ScheduledActionNameT = Aws::String>
+    void SetScheduledActionName(ScheduledActionNameT&& value) { m_scheduledActionNameHasBeenSet = true; m_scheduledActionName = std::forward<ScheduledActionNameT>(value); }
+    template<typename ScheduledActionNameT = Aws::String>
+    DeleteScheduledActionRequest& WithScheduledActionName(ScheduledActionNameT&& value) { SetScheduledActionName(std::forward<ScheduledActionNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_scheduledActionName;

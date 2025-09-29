@@ -28,63 +28,37 @@ namespace Model
   class CreateBotResult
   {
   public:
-    AWS_CHIME_API CreateBotResult();
+    AWS_CHIME_API CreateBotResult() = default;
     AWS_CHIME_API CreateBotResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_CHIME_API CreateBotResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The bot details.</p>
      */
-    inline const Bot& GetBot() const{ return m_bot; }
+    inline const Bot& GetBot() const { return m_bot; }
+    template<typename BotT = Bot>
+    void SetBot(BotT&& value) { m_botHasBeenSet = true; m_bot = std::forward<BotT>(value); }
+    template<typename BotT = Bot>
+    CreateBotResult& WithBot(BotT&& value) { SetBot(std::forward<BotT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The bot details.</p>
-     */
-    inline void SetBot(const Bot& value) { m_bot = value; }
-
-    /**
-     * <p>The bot details.</p>
-     */
-    inline void SetBot(Bot&& value) { m_bot = std::move(value); }
-
-    /**
-     * <p>The bot details.</p>
-     */
-    inline CreateBotResult& WithBot(const Bot& value) { SetBot(value); return *this;}
-
-    /**
-     * <p>The bot details.</p>
-     */
-    inline CreateBotResult& WithBot(Bot&& value) { SetBot(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline CreateBotResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline CreateBotResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline CreateBotResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    CreateBotResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Bot m_bot;
+    bool m_botHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

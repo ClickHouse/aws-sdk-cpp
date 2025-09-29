@@ -18,15 +18,7 @@ namespace CloudWatchLogs
 namespace Model
 {
 
-LiveTailSessionMetadata::LiveTailSessionMetadata() : 
-    m_sampled(false),
-    m_sampledHasBeenSet(false)
-{
-}
-
-LiveTailSessionMetadata::LiveTailSessionMetadata(JsonView jsonValue) : 
-    m_sampled(false),
-    m_sampledHasBeenSet(false)
+LiveTailSessionMetadata::LiveTailSessionMetadata(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ LiveTailSessionMetadata& LiveTailSessionMetadata::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("sampled"))
   {
     m_sampled = jsonValue.GetBool("sampled");
-
     m_sampledHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,15 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsRedshiftClusterIamRole::AwsRedshiftClusterIamRole() : 
-    m_applyStatusHasBeenSet(false),
-    m_iamRoleArnHasBeenSet(false)
-{
-}
-
-AwsRedshiftClusterIamRole::AwsRedshiftClusterIamRole(JsonView jsonValue) : 
-    m_applyStatusHasBeenSet(false),
-    m_iamRoleArnHasBeenSet(false)
+AwsRedshiftClusterIamRole::AwsRedshiftClusterIamRole(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ AwsRedshiftClusterIamRole& AwsRedshiftClusterIamRole::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("ApplyStatus"))
   {
     m_applyStatus = jsonValue.GetString("ApplyStatus");
-
     m_applyStatusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("IamRoleArn"))
   {
     m_iamRoleArn = jsonValue.GetString("IamRoleArn");
-
     m_iamRoleArnHasBeenSet = true;
   }
-
   return *this;
 }
 

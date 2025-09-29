@@ -20,15 +20,7 @@ namespace S3Crt
 namespace Model
 {
 
-Initiator::Initiator() : 
-    m_iDHasBeenSet(false),
-    m_displayNameHasBeenSet(false)
-{
-}
-
-Initiator::Initiator(const XmlNode& xmlNode) : 
-    m_iDHasBeenSet(false),
-    m_displayNameHasBeenSet(false)
+Initiator::Initiator(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

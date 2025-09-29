@@ -12,13 +12,6 @@ using namespace Aws::Lambda::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateCodeSigningConfigRequest::CreateCodeSigningConfigRequest() : 
-    m_descriptionHasBeenSet(false),
-    m_allowedPublishersHasBeenSet(false),
-    m_codeSigningPoliciesHasBeenSet(false)
-{
-}
-
 Aws::String CreateCodeSigningConfigRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -38,6 +31,17 @@ Aws::String CreateCodeSigningConfigRequest::SerializePayload() const
   if(m_codeSigningPoliciesHasBeenSet)
   {
    payload.WithObject("CodeSigningPolicies", m_codeSigningPolicies.Jsonize());
+
+  }
+
+  if(m_tagsHasBeenSet)
+  {
+   JsonValue tagsJsonMap;
+   for(auto& tagsItem : m_tags)
+   {
+     tagsJsonMap.WithString(tagsItem.first, tagsItem.second);
+   }
+   payload.WithObject("Tags", std::move(tagsJsonMap));
 
   }
 

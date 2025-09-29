@@ -21,7 +21,7 @@ namespace Model
   class DeleteAlarmRequest : public LightsailRequest
   {
   public:
-    AWS_LIGHTSAIL_API DeleteAlarmRequest();
+    AWS_LIGHTSAIL_API DeleteAlarmRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_LIGHTSAIL_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the alarm to delete.</p>
      */
-    inline const Aws::String& GetAlarmName() const{ return m_alarmName; }
-
-    /**
-     * <p>The name of the alarm to delete.</p>
-     */
+    inline const Aws::String& GetAlarmName() const { return m_alarmName; }
     inline bool AlarmNameHasBeenSet() const { return m_alarmNameHasBeenSet; }
-
-    /**
-     * <p>The name of the alarm to delete.</p>
-     */
-    inline void SetAlarmName(const Aws::String& value) { m_alarmNameHasBeenSet = true; m_alarmName = value; }
-
-    /**
-     * <p>The name of the alarm to delete.</p>
-     */
-    inline void SetAlarmName(Aws::String&& value) { m_alarmNameHasBeenSet = true; m_alarmName = std::move(value); }
-
-    /**
-     * <p>The name of the alarm to delete.</p>
-     */
-    inline void SetAlarmName(const char* value) { m_alarmNameHasBeenSet = true; m_alarmName.assign(value); }
-
-    /**
-     * <p>The name of the alarm to delete.</p>
-     */
-    inline DeleteAlarmRequest& WithAlarmName(const Aws::String& value) { SetAlarmName(value); return *this;}
-
-    /**
-     * <p>The name of the alarm to delete.</p>
-     */
-    inline DeleteAlarmRequest& WithAlarmName(Aws::String&& value) { SetAlarmName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the alarm to delete.</p>
-     */
-    inline DeleteAlarmRequest& WithAlarmName(const char* value) { SetAlarmName(value); return *this;}
-
+    template<typename AlarmNameT = Aws::String>
+    void SetAlarmName(AlarmNameT&& value) { m_alarmNameHasBeenSet = true; m_alarmName = std::forward<AlarmNameT>(value); }
+    template<typename AlarmNameT = Aws::String>
+    DeleteAlarmRequest& WithAlarmName(AlarmNameT&& value) { SetAlarmName(std::forward<AlarmNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_alarmName;

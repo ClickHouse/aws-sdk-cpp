@@ -32,52 +32,23 @@ namespace Model
   class AwsEc2VpcEndpointServiceServiceTypeDetails
   {
   public:
-    AWS_SECURITYHUB_API AwsEc2VpcEndpointServiceServiceTypeDetails();
+    AWS_SECURITYHUB_API AwsEc2VpcEndpointServiceServiceTypeDetails() = default;
     AWS_SECURITYHUB_API AwsEc2VpcEndpointServiceServiceTypeDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsEc2VpcEndpointServiceServiceTypeDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The type of service.</p>
      */
-    inline const Aws::String& GetServiceType() const{ return m_serviceType; }
-
-    /**
-     * <p>The type of service.</p>
-     */
+    inline const Aws::String& GetServiceType() const { return m_serviceType; }
     inline bool ServiceTypeHasBeenSet() const { return m_serviceTypeHasBeenSet; }
-
-    /**
-     * <p>The type of service.</p>
-     */
-    inline void SetServiceType(const Aws::String& value) { m_serviceTypeHasBeenSet = true; m_serviceType = value; }
-
-    /**
-     * <p>The type of service.</p>
-     */
-    inline void SetServiceType(Aws::String&& value) { m_serviceTypeHasBeenSet = true; m_serviceType = std::move(value); }
-
-    /**
-     * <p>The type of service.</p>
-     */
-    inline void SetServiceType(const char* value) { m_serviceTypeHasBeenSet = true; m_serviceType.assign(value); }
-
-    /**
-     * <p>The type of service.</p>
-     */
-    inline AwsEc2VpcEndpointServiceServiceTypeDetails& WithServiceType(const Aws::String& value) { SetServiceType(value); return *this;}
-
-    /**
-     * <p>The type of service.</p>
-     */
-    inline AwsEc2VpcEndpointServiceServiceTypeDetails& WithServiceType(Aws::String&& value) { SetServiceType(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of service.</p>
-     */
-    inline AwsEc2VpcEndpointServiceServiceTypeDetails& WithServiceType(const char* value) { SetServiceType(value); return *this;}
-
+    template<typename ServiceTypeT = Aws::String>
+    void SetServiceType(ServiceTypeT&& value) { m_serviceTypeHasBeenSet = true; m_serviceType = std::forward<ServiceTypeT>(value); }
+    template<typename ServiceTypeT = Aws::String>
+    AwsEc2VpcEndpointServiceServiceTypeDetails& WithServiceType(ServiceTypeT&& value) { SetServiceType(std::forward<ServiceTypeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_serviceType;

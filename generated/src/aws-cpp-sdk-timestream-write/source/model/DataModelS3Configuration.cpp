@@ -18,15 +18,7 @@ namespace TimestreamWrite
 namespace Model
 {
 
-DataModelS3Configuration::DataModelS3Configuration() : 
-    m_bucketNameHasBeenSet(false),
-    m_objectKeyHasBeenSet(false)
-{
-}
-
-DataModelS3Configuration::DataModelS3Configuration(JsonView jsonValue) : 
-    m_bucketNameHasBeenSet(false),
-    m_objectKeyHasBeenSet(false)
+DataModelS3Configuration::DataModelS3Configuration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ DataModelS3Configuration& DataModelS3Configuration::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("BucketName"))
   {
     m_bucketName = jsonValue.GetString("BucketName");
-
     m_bucketNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ObjectKey"))
   {
     m_objectKey = jsonValue.GetString("ObjectKey");
-
     m_objectKeyHasBeenSet = true;
   }
-
   return *this;
 }
 

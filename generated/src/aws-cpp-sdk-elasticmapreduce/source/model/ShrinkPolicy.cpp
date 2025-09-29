@@ -18,17 +18,7 @@ namespace EMR
 namespace Model
 {
 
-ShrinkPolicy::ShrinkPolicy() : 
-    m_decommissionTimeout(0),
-    m_decommissionTimeoutHasBeenSet(false),
-    m_instanceResizePolicyHasBeenSet(false)
-{
-}
-
-ShrinkPolicy::ShrinkPolicy(JsonView jsonValue) : 
-    m_decommissionTimeout(0),
-    m_decommissionTimeoutHasBeenSet(false),
-    m_instanceResizePolicyHasBeenSet(false)
+ShrinkPolicy::ShrinkPolicy(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ShrinkPolicy& ShrinkPolicy::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("DecommissionTimeout"))
   {
     m_decommissionTimeout = jsonValue.GetInteger("DecommissionTimeout");
-
     m_decommissionTimeoutHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("InstanceResizePolicy"))
   {
     m_instanceResizePolicy = jsonValue.GetObject("InstanceResizePolicy");
-
     m_instanceResizePolicyHasBeenSet = true;
   }
-
   return *this;
 }
 

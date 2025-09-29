@@ -18,17 +18,7 @@ namespace AppConfig
 namespace Model
 {
 
-Parameter::Parameter() : 
-    m_descriptionHasBeenSet(false),
-    m_required(false),
-    m_requiredHasBeenSet(false)
-{
-}
-
-Parameter::Parameter(JsonView jsonValue) : 
-    m_descriptionHasBeenSet(false),
-    m_required(false),
-    m_requiredHasBeenSet(false)
+Parameter::Parameter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,18 @@ Parameter& Parameter::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Description"))
   {
     m_description = jsonValue.GetString("Description");
-
     m_descriptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Required"))
   {
     m_required = jsonValue.GetBool("Required");
-
     m_requiredHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("Dynamic"))
+  {
+    m_dynamic = jsonValue.GetBool("Dynamic");
+    m_dynamicHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -65,6 +56,12 @@ JsonValue Parameter::Jsonize() const
   if(m_requiredHasBeenSet)
   {
    payload.WithBool("Required", m_required);
+
+  }
+
+  if(m_dynamicHasBeenSet)
+  {
+   payload.WithBool("Dynamic", m_dynamic);
 
   }
 

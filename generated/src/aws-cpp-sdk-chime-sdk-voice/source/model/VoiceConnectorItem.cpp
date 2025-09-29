@@ -18,17 +18,7 @@ namespace ChimeSDKVoice
 namespace Model
 {
 
-VoiceConnectorItem::VoiceConnectorItem() : 
-    m_voiceConnectorIdHasBeenSet(false),
-    m_priority(0),
-    m_priorityHasBeenSet(false)
-{
-}
-
-VoiceConnectorItem::VoiceConnectorItem(JsonView jsonValue) : 
-    m_voiceConnectorIdHasBeenSet(false),
-    m_priority(0),
-    m_priorityHasBeenSet(false)
+VoiceConnectorItem::VoiceConnectorItem(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ VoiceConnectorItem& VoiceConnectorItem::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("VoiceConnectorId"))
   {
     m_voiceConnectorId = jsonValue.GetString("VoiceConnectorId");
-
     m_voiceConnectorIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Priority"))
   {
     m_priority = jsonValue.GetInteger("Priority");
-
     m_priorityHasBeenSet = true;
   }
-
   return *this;
 }
 

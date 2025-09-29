@@ -18,21 +18,7 @@ namespace SFN
 namespace Model
 {
 
-LoggingConfiguration::LoggingConfiguration() : 
-    m_level(LogLevel::NOT_SET),
-    m_levelHasBeenSet(false),
-    m_includeExecutionData(false),
-    m_includeExecutionDataHasBeenSet(false),
-    m_destinationsHasBeenSet(false)
-{
-}
-
-LoggingConfiguration::LoggingConfiguration(JsonView jsonValue) : 
-    m_level(LogLevel::NOT_SET),
-    m_levelHasBeenSet(false),
-    m_includeExecutionData(false),
-    m_includeExecutionDataHasBeenSet(false),
-    m_destinationsHasBeenSet(false)
+LoggingConfiguration::LoggingConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,17 +28,13 @@ LoggingConfiguration& LoggingConfiguration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("level"))
   {
     m_level = LogLevelMapper::GetLogLevelForName(jsonValue.GetString("level"));
-
     m_levelHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("includeExecutionData"))
   {
     m_includeExecutionData = jsonValue.GetBool("includeExecutionData");
-
     m_includeExecutionDataHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("destinations"))
   {
     Aws::Utils::Array<JsonView> destinationsJsonList = jsonValue.GetArray("destinations");
@@ -62,7 +44,6 @@ LoggingConfiguration& LoggingConfiguration::operator =(JsonView jsonValue)
     }
     m_destinationsHasBeenSet = true;
   }
-
   return *this;
 }
 

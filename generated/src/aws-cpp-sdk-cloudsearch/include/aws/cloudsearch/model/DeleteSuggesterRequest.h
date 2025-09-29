@@ -26,7 +26,7 @@ namespace Model
   class DeleteSuggesterRequest : public CloudSearchRequest
   {
   public:
-    AWS_CLOUDSEARCH_API DeleteSuggesterRequest();
+    AWS_CLOUDSEARCH_API DeleteSuggesterRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -41,71 +41,27 @@ namespace Model
 
   public:
 
+    ///@{
     
-    inline const Aws::String& GetDomainName() const{ return m_domainName; }
-
-    
+    inline const Aws::String& GetDomainName() const { return m_domainName; }
     inline bool DomainNameHasBeenSet() const { return m_domainNameHasBeenSet; }
+    template<typename DomainNameT = Aws::String>
+    void SetDomainName(DomainNameT&& value) { m_domainNameHasBeenSet = true; m_domainName = std::forward<DomainNameT>(value); }
+    template<typename DomainNameT = Aws::String>
+    DeleteSuggesterRequest& WithDomainName(DomainNameT&& value) { SetDomainName(std::forward<DomainNameT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetDomainName(const Aws::String& value) { m_domainNameHasBeenSet = true; m_domainName = value; }
-
-    
-    inline void SetDomainName(Aws::String&& value) { m_domainNameHasBeenSet = true; m_domainName = std::move(value); }
-
-    
-    inline void SetDomainName(const char* value) { m_domainNameHasBeenSet = true; m_domainName.assign(value); }
-
-    
-    inline DeleteSuggesterRequest& WithDomainName(const Aws::String& value) { SetDomainName(value); return *this;}
-
-    
-    inline DeleteSuggesterRequest& WithDomainName(Aws::String&& value) { SetDomainName(std::move(value)); return *this;}
-
-    
-    inline DeleteSuggesterRequest& WithDomainName(const char* value) { SetDomainName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the name of the suggester you want to delete.</p>
      */
-    inline const Aws::String& GetSuggesterName() const{ return m_suggesterName; }
-
-    /**
-     * <p>Specifies the name of the suggester you want to delete.</p>
-     */
+    inline const Aws::String& GetSuggesterName() const { return m_suggesterName; }
     inline bool SuggesterNameHasBeenSet() const { return m_suggesterNameHasBeenSet; }
-
-    /**
-     * <p>Specifies the name of the suggester you want to delete.</p>
-     */
-    inline void SetSuggesterName(const Aws::String& value) { m_suggesterNameHasBeenSet = true; m_suggesterName = value; }
-
-    /**
-     * <p>Specifies the name of the suggester you want to delete.</p>
-     */
-    inline void SetSuggesterName(Aws::String&& value) { m_suggesterNameHasBeenSet = true; m_suggesterName = std::move(value); }
-
-    /**
-     * <p>Specifies the name of the suggester you want to delete.</p>
-     */
-    inline void SetSuggesterName(const char* value) { m_suggesterNameHasBeenSet = true; m_suggesterName.assign(value); }
-
-    /**
-     * <p>Specifies the name of the suggester you want to delete.</p>
-     */
-    inline DeleteSuggesterRequest& WithSuggesterName(const Aws::String& value) { SetSuggesterName(value); return *this;}
-
-    /**
-     * <p>Specifies the name of the suggester you want to delete.</p>
-     */
-    inline DeleteSuggesterRequest& WithSuggesterName(Aws::String&& value) { SetSuggesterName(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the name of the suggester you want to delete.</p>
-     */
-    inline DeleteSuggesterRequest& WithSuggesterName(const char* value) { SetSuggesterName(value); return *this;}
-
+    template<typename SuggesterNameT = Aws::String>
+    void SetSuggesterName(SuggesterNameT&& value) { m_suggesterNameHasBeenSet = true; m_suggesterName = std::forward<SuggesterNameT>(value); }
+    template<typename SuggesterNameT = Aws::String>
+    DeleteSuggesterRequest& WithSuggesterName(SuggesterNameT&& value) { SetSuggesterName(std::forward<SuggesterNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_domainName;

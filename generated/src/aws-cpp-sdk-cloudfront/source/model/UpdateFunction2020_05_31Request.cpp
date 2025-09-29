@@ -6,6 +6,7 @@
 #include <aws/cloudfront/model/UpdateFunction2020_05_31Request.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/core/utils/UnreferencedParam.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
 #include <aws/core/utils/HashingUtils.h>
 
@@ -15,13 +16,6 @@ using namespace Aws::CloudFront::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 
-UpdateFunction2020_05_31Request::UpdateFunction2020_05_31Request() : 
-    m_nameHasBeenSet(false),
-    m_ifMatchHasBeenSet(false),
-    m_functionConfigHasBeenSet(false),
-    m_functionCodeHasBeenSet(false)
-{
-}
 
 Aws::String UpdateFunction2020_05_31Request::SerializePayload() const
 {

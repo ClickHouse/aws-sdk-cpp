@@ -34,54 +34,25 @@ namespace Model
   class EdiType
   {
   public:
-    AWS_B2BI_API EdiType();
+    AWS_B2BI_API EdiType() = default;
     AWS_B2BI_API EdiType(Aws::Utils::Json::JsonView jsonValue);
     AWS_B2BI_API EdiType& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_B2BI_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Returns the details for the EDI standard that is being used for the
      * transformer. Currently, only X12 is supported. X12 is a set of standards and
      * corresponding messages that define specific business documents.</p>
      */
-    inline const X12Details& GetX12Details() const{ return m_x12Details; }
-
-    /**
-     * <p>Returns the details for the EDI standard that is being used for the
-     * transformer. Currently, only X12 is supported. X12 is a set of standards and
-     * corresponding messages that define specific business documents.</p>
-     */
+    inline const X12Details& GetX12Details() const { return m_x12Details; }
     inline bool X12DetailsHasBeenSet() const { return m_x12DetailsHasBeenSet; }
-
-    /**
-     * <p>Returns the details for the EDI standard that is being used for the
-     * transformer. Currently, only X12 is supported. X12 is a set of standards and
-     * corresponding messages that define specific business documents.</p>
-     */
-    inline void SetX12Details(const X12Details& value) { m_x12DetailsHasBeenSet = true; m_x12Details = value; }
-
-    /**
-     * <p>Returns the details for the EDI standard that is being used for the
-     * transformer. Currently, only X12 is supported. X12 is a set of standards and
-     * corresponding messages that define specific business documents.</p>
-     */
-    inline void SetX12Details(X12Details&& value) { m_x12DetailsHasBeenSet = true; m_x12Details = std::move(value); }
-
-    /**
-     * <p>Returns the details for the EDI standard that is being used for the
-     * transformer. Currently, only X12 is supported. X12 is a set of standards and
-     * corresponding messages that define specific business documents.</p>
-     */
-    inline EdiType& WithX12Details(const X12Details& value) { SetX12Details(value); return *this;}
-
-    /**
-     * <p>Returns the details for the EDI standard that is being used for the
-     * transformer. Currently, only X12 is supported. X12 is a set of standards and
-     * corresponding messages that define specific business documents.</p>
-     */
-    inline EdiType& WithX12Details(X12Details&& value) { SetX12Details(std::move(value)); return *this;}
-
+    template<typename X12DetailsT = X12Details>
+    void SetX12Details(X12DetailsT&& value) { m_x12DetailsHasBeenSet = true; m_x12Details = std::forward<X12DetailsT>(value); }
+    template<typename X12DetailsT = X12Details>
+    EdiType& WithX12Details(X12DetailsT&& value) { SetX12Details(std::forward<X12DetailsT>(value)); return *this;}
+    ///@}
   private:
 
     X12Details m_x12Details;

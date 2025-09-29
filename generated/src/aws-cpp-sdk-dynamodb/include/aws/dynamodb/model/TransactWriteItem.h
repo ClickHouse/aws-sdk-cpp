@@ -36,135 +36,59 @@ namespace Model
   class TransactWriteItem
   {
   public:
-    AWS_DYNAMODB_API TransactWriteItem();
+    AWS_DYNAMODB_API TransactWriteItem() = default;
     AWS_DYNAMODB_API TransactWriteItem(Aws::Utils::Json::JsonView jsonValue);
     AWS_DYNAMODB_API TransactWriteItem& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DYNAMODB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A request to perform a check item operation.</p>
      */
-    inline const ConditionCheck& GetConditionCheck() const{ return m_conditionCheck; }
-
-    /**
-     * <p>A request to perform a check item operation.</p>
-     */
+    inline const ConditionCheck& GetConditionCheck() const { return m_conditionCheck; }
     inline bool ConditionCheckHasBeenSet() const { return m_conditionCheckHasBeenSet; }
+    template<typename ConditionCheckT = ConditionCheck>
+    void SetConditionCheck(ConditionCheckT&& value) { m_conditionCheckHasBeenSet = true; m_conditionCheck = std::forward<ConditionCheckT>(value); }
+    template<typename ConditionCheckT = ConditionCheck>
+    TransactWriteItem& WithConditionCheck(ConditionCheckT&& value) { SetConditionCheck(std::forward<ConditionCheckT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A request to perform a check item operation.</p>
-     */
-    inline void SetConditionCheck(const ConditionCheck& value) { m_conditionCheckHasBeenSet = true; m_conditionCheck = value; }
-
-    /**
-     * <p>A request to perform a check item operation.</p>
-     */
-    inline void SetConditionCheck(ConditionCheck&& value) { m_conditionCheckHasBeenSet = true; m_conditionCheck = std::move(value); }
-
-    /**
-     * <p>A request to perform a check item operation.</p>
-     */
-    inline TransactWriteItem& WithConditionCheck(const ConditionCheck& value) { SetConditionCheck(value); return *this;}
-
-    /**
-     * <p>A request to perform a check item operation.</p>
-     */
-    inline TransactWriteItem& WithConditionCheck(ConditionCheck&& value) { SetConditionCheck(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A request to perform a <code>PutItem</code> operation.</p>
      */
-    inline const Put& GetPut() const{ return m_put; }
-
-    /**
-     * <p>A request to perform a <code>PutItem</code> operation.</p>
-     */
+    inline const Put& GetPut() const { return m_put; }
     inline bool PutHasBeenSet() const { return m_putHasBeenSet; }
+    template<typename PutT = Put>
+    void SetPut(PutT&& value) { m_putHasBeenSet = true; m_put = std::forward<PutT>(value); }
+    template<typename PutT = Put>
+    TransactWriteItem& WithPut(PutT&& value) { SetPut(std::forward<PutT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A request to perform a <code>PutItem</code> operation.</p>
-     */
-    inline void SetPut(const Put& value) { m_putHasBeenSet = true; m_put = value; }
-
-    /**
-     * <p>A request to perform a <code>PutItem</code> operation.</p>
-     */
-    inline void SetPut(Put&& value) { m_putHasBeenSet = true; m_put = std::move(value); }
-
-    /**
-     * <p>A request to perform a <code>PutItem</code> operation.</p>
-     */
-    inline TransactWriteItem& WithPut(const Put& value) { SetPut(value); return *this;}
-
-    /**
-     * <p>A request to perform a <code>PutItem</code> operation.</p>
-     */
-    inline TransactWriteItem& WithPut(Put&& value) { SetPut(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A request to perform a <code>DeleteItem</code> operation.</p>
      */
-    inline const Delete& GetDelete() const{ return m_delete; }
-
-    /**
-     * <p>A request to perform a <code>DeleteItem</code> operation.</p>
-     */
+    inline const Delete& GetDelete() const { return m_delete; }
     inline bool DeleteHasBeenSet() const { return m_deleteHasBeenSet; }
+    template<typename DeleteT = Delete>
+    void SetDelete(DeleteT&& value) { m_deleteHasBeenSet = true; m_delete = std::forward<DeleteT>(value); }
+    template<typename DeleteT = Delete>
+    TransactWriteItem& WithDelete(DeleteT&& value) { SetDelete(std::forward<DeleteT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A request to perform a <code>DeleteItem</code> operation.</p>
-     */
-    inline void SetDelete(const Delete& value) { m_deleteHasBeenSet = true; m_delete = value; }
-
-    /**
-     * <p>A request to perform a <code>DeleteItem</code> operation.</p>
-     */
-    inline void SetDelete(Delete&& value) { m_deleteHasBeenSet = true; m_delete = std::move(value); }
-
-    /**
-     * <p>A request to perform a <code>DeleteItem</code> operation.</p>
-     */
-    inline TransactWriteItem& WithDelete(const Delete& value) { SetDelete(value); return *this;}
-
-    /**
-     * <p>A request to perform a <code>DeleteItem</code> operation.</p>
-     */
-    inline TransactWriteItem& WithDelete(Delete&& value) { SetDelete(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A request to perform an <code>UpdateItem</code> operation.</p>
      */
-    inline const Update& GetUpdate() const{ return m_update; }
-
-    /**
-     * <p>A request to perform an <code>UpdateItem</code> operation.</p>
-     */
+    inline const Update& GetUpdate() const { return m_update; }
     inline bool UpdateHasBeenSet() const { return m_updateHasBeenSet; }
-
-    /**
-     * <p>A request to perform an <code>UpdateItem</code> operation.</p>
-     */
-    inline void SetUpdate(const Update& value) { m_updateHasBeenSet = true; m_update = value; }
-
-    /**
-     * <p>A request to perform an <code>UpdateItem</code> operation.</p>
-     */
-    inline void SetUpdate(Update&& value) { m_updateHasBeenSet = true; m_update = std::move(value); }
-
-    /**
-     * <p>A request to perform an <code>UpdateItem</code> operation.</p>
-     */
-    inline TransactWriteItem& WithUpdate(const Update& value) { SetUpdate(value); return *this;}
-
-    /**
-     * <p>A request to perform an <code>UpdateItem</code> operation.</p>
-     */
-    inline TransactWriteItem& WithUpdate(Update&& value) { SetUpdate(std::move(value)); return *this;}
-
+    template<typename UpdateT = Update>
+    void SetUpdate(UpdateT&& value) { m_updateHasBeenSet = true; m_update = std::forward<UpdateT>(value); }
+    template<typename UpdateT = Update>
+    TransactWriteItem& WithUpdate(UpdateT&& value) { SetUpdate(std::forward<UpdateT>(value)); return *this;}
+    ///@}
   private:
 
     ConditionCheck m_conditionCheck;

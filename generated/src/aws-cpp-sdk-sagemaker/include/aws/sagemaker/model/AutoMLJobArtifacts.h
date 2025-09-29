@@ -32,93 +32,35 @@ namespace Model
   class AutoMLJobArtifacts
   {
   public:
-    AWS_SAGEMAKER_API AutoMLJobArtifacts();
+    AWS_SAGEMAKER_API AutoMLJobArtifacts() = default;
     AWS_SAGEMAKER_API AutoMLJobArtifacts(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API AutoMLJobArtifacts& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The URL of the notebook location.</p>
      */
-    inline const Aws::String& GetCandidateDefinitionNotebookLocation() const{ return m_candidateDefinitionNotebookLocation; }
-
-    /**
-     * <p>The URL of the notebook location.</p>
-     */
+    inline const Aws::String& GetCandidateDefinitionNotebookLocation() const { return m_candidateDefinitionNotebookLocation; }
     inline bool CandidateDefinitionNotebookLocationHasBeenSet() const { return m_candidateDefinitionNotebookLocationHasBeenSet; }
+    template<typename CandidateDefinitionNotebookLocationT = Aws::String>
+    void SetCandidateDefinitionNotebookLocation(CandidateDefinitionNotebookLocationT&& value) { m_candidateDefinitionNotebookLocationHasBeenSet = true; m_candidateDefinitionNotebookLocation = std::forward<CandidateDefinitionNotebookLocationT>(value); }
+    template<typename CandidateDefinitionNotebookLocationT = Aws::String>
+    AutoMLJobArtifacts& WithCandidateDefinitionNotebookLocation(CandidateDefinitionNotebookLocationT&& value) { SetCandidateDefinitionNotebookLocation(std::forward<CandidateDefinitionNotebookLocationT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
      * <p>The URL of the notebook location.</p>
      */
-    inline void SetCandidateDefinitionNotebookLocation(const Aws::String& value) { m_candidateDefinitionNotebookLocationHasBeenSet = true; m_candidateDefinitionNotebookLocation = value; }
-
-    /**
-     * <p>The URL of the notebook location.</p>
-     */
-    inline void SetCandidateDefinitionNotebookLocation(Aws::String&& value) { m_candidateDefinitionNotebookLocationHasBeenSet = true; m_candidateDefinitionNotebookLocation = std::move(value); }
-
-    /**
-     * <p>The URL of the notebook location.</p>
-     */
-    inline void SetCandidateDefinitionNotebookLocation(const char* value) { m_candidateDefinitionNotebookLocationHasBeenSet = true; m_candidateDefinitionNotebookLocation.assign(value); }
-
-    /**
-     * <p>The URL of the notebook location.</p>
-     */
-    inline AutoMLJobArtifacts& WithCandidateDefinitionNotebookLocation(const Aws::String& value) { SetCandidateDefinitionNotebookLocation(value); return *this;}
-
-    /**
-     * <p>The URL of the notebook location.</p>
-     */
-    inline AutoMLJobArtifacts& WithCandidateDefinitionNotebookLocation(Aws::String&& value) { SetCandidateDefinitionNotebookLocation(std::move(value)); return *this;}
-
-    /**
-     * <p>The URL of the notebook location.</p>
-     */
-    inline AutoMLJobArtifacts& WithCandidateDefinitionNotebookLocation(const char* value) { SetCandidateDefinitionNotebookLocation(value); return *this;}
-
-
-    /**
-     * <p>The URL of the notebook location.</p>
-     */
-    inline const Aws::String& GetDataExplorationNotebookLocation() const{ return m_dataExplorationNotebookLocation; }
-
-    /**
-     * <p>The URL of the notebook location.</p>
-     */
+    inline const Aws::String& GetDataExplorationNotebookLocation() const { return m_dataExplorationNotebookLocation; }
     inline bool DataExplorationNotebookLocationHasBeenSet() const { return m_dataExplorationNotebookLocationHasBeenSet; }
-
-    /**
-     * <p>The URL of the notebook location.</p>
-     */
-    inline void SetDataExplorationNotebookLocation(const Aws::String& value) { m_dataExplorationNotebookLocationHasBeenSet = true; m_dataExplorationNotebookLocation = value; }
-
-    /**
-     * <p>The URL of the notebook location.</p>
-     */
-    inline void SetDataExplorationNotebookLocation(Aws::String&& value) { m_dataExplorationNotebookLocationHasBeenSet = true; m_dataExplorationNotebookLocation = std::move(value); }
-
-    /**
-     * <p>The URL of the notebook location.</p>
-     */
-    inline void SetDataExplorationNotebookLocation(const char* value) { m_dataExplorationNotebookLocationHasBeenSet = true; m_dataExplorationNotebookLocation.assign(value); }
-
-    /**
-     * <p>The URL of the notebook location.</p>
-     */
-    inline AutoMLJobArtifacts& WithDataExplorationNotebookLocation(const Aws::String& value) { SetDataExplorationNotebookLocation(value); return *this;}
-
-    /**
-     * <p>The URL of the notebook location.</p>
-     */
-    inline AutoMLJobArtifacts& WithDataExplorationNotebookLocation(Aws::String&& value) { SetDataExplorationNotebookLocation(std::move(value)); return *this;}
-
-    /**
-     * <p>The URL of the notebook location.</p>
-     */
-    inline AutoMLJobArtifacts& WithDataExplorationNotebookLocation(const char* value) { SetDataExplorationNotebookLocation(value); return *this;}
-
+    template<typename DataExplorationNotebookLocationT = Aws::String>
+    void SetDataExplorationNotebookLocation(DataExplorationNotebookLocationT&& value) { m_dataExplorationNotebookLocationHasBeenSet = true; m_dataExplorationNotebookLocation = std::forward<DataExplorationNotebookLocationT>(value); }
+    template<typename DataExplorationNotebookLocationT = Aws::String>
+    AutoMLJobArtifacts& WithDataExplorationNotebookLocation(DataExplorationNotebookLocationT&& value) { SetDataExplorationNotebookLocation(std::forward<DataExplorationNotebookLocationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_candidateDefinitionNotebookLocation;

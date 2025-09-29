@@ -24,100 +24,42 @@ namespace Model
 {
 
   /**
-   * <p> The URI for the run log. </p><p><h3>See Also:</h3>   <a
+   * <p>The URI for the run log.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/omics-2022-11-28/RunLogLocation">AWS
    * API Reference</a></p>
    */
   class RunLogLocation
   {
   public:
-    AWS_OMICS_API RunLogLocation();
+    AWS_OMICS_API RunLogLocation() = default;
     AWS_OMICS_API RunLogLocation(Aws::Utils::Json::JsonView jsonValue);
     AWS_OMICS_API RunLogLocation& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_OMICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p> The log stream ARN for the engine log. </p>
+     * <p>The log stream ARN for the engine log.</p>
      */
-    inline const Aws::String& GetEngineLogStream() const{ return m_engineLogStream; }
-
-    /**
-     * <p> The log stream ARN for the engine log. </p>
-     */
+    inline const Aws::String& GetEngineLogStream() const { return m_engineLogStream; }
     inline bool EngineLogStreamHasBeenSet() const { return m_engineLogStreamHasBeenSet; }
+    template<typename EngineLogStreamT = Aws::String>
+    void SetEngineLogStream(EngineLogStreamT&& value) { m_engineLogStreamHasBeenSet = true; m_engineLogStream = std::forward<EngineLogStreamT>(value); }
+    template<typename EngineLogStreamT = Aws::String>
+    RunLogLocation& WithEngineLogStream(EngineLogStreamT&& value) { SetEngineLogStream(std::forward<EngineLogStreamT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p> The log stream ARN for the engine log. </p>
+     * <p>The log stream ARN for the run log.</p>
      */
-    inline void SetEngineLogStream(const Aws::String& value) { m_engineLogStreamHasBeenSet = true; m_engineLogStream = value; }
-
-    /**
-     * <p> The log stream ARN for the engine log. </p>
-     */
-    inline void SetEngineLogStream(Aws::String&& value) { m_engineLogStreamHasBeenSet = true; m_engineLogStream = std::move(value); }
-
-    /**
-     * <p> The log stream ARN for the engine log. </p>
-     */
-    inline void SetEngineLogStream(const char* value) { m_engineLogStreamHasBeenSet = true; m_engineLogStream.assign(value); }
-
-    /**
-     * <p> The log stream ARN for the engine log. </p>
-     */
-    inline RunLogLocation& WithEngineLogStream(const Aws::String& value) { SetEngineLogStream(value); return *this;}
-
-    /**
-     * <p> The log stream ARN for the engine log. </p>
-     */
-    inline RunLogLocation& WithEngineLogStream(Aws::String&& value) { SetEngineLogStream(std::move(value)); return *this;}
-
-    /**
-     * <p> The log stream ARN for the engine log. </p>
-     */
-    inline RunLogLocation& WithEngineLogStream(const char* value) { SetEngineLogStream(value); return *this;}
-
-
-    /**
-     * <p> The log stream ARN for the run log. </p>
-     */
-    inline const Aws::String& GetRunLogStream() const{ return m_runLogStream; }
-
-    /**
-     * <p> The log stream ARN for the run log. </p>
-     */
+    inline const Aws::String& GetRunLogStream() const { return m_runLogStream; }
     inline bool RunLogStreamHasBeenSet() const { return m_runLogStreamHasBeenSet; }
-
-    /**
-     * <p> The log stream ARN for the run log. </p>
-     */
-    inline void SetRunLogStream(const Aws::String& value) { m_runLogStreamHasBeenSet = true; m_runLogStream = value; }
-
-    /**
-     * <p> The log stream ARN for the run log. </p>
-     */
-    inline void SetRunLogStream(Aws::String&& value) { m_runLogStreamHasBeenSet = true; m_runLogStream = std::move(value); }
-
-    /**
-     * <p> The log stream ARN for the run log. </p>
-     */
-    inline void SetRunLogStream(const char* value) { m_runLogStreamHasBeenSet = true; m_runLogStream.assign(value); }
-
-    /**
-     * <p> The log stream ARN for the run log. </p>
-     */
-    inline RunLogLocation& WithRunLogStream(const Aws::String& value) { SetRunLogStream(value); return *this;}
-
-    /**
-     * <p> The log stream ARN for the run log. </p>
-     */
-    inline RunLogLocation& WithRunLogStream(Aws::String&& value) { SetRunLogStream(std::move(value)); return *this;}
-
-    /**
-     * <p> The log stream ARN for the run log. </p>
-     */
-    inline RunLogLocation& WithRunLogStream(const char* value) { SetRunLogStream(value); return *this;}
-
+    template<typename RunLogStreamT = Aws::String>
+    void SetRunLogStream(RunLogStreamT&& value) { m_runLogStreamHasBeenSet = true; m_runLogStream = std::forward<RunLogStreamT>(value); }
+    template<typename RunLogStreamT = Aws::String>
+    RunLogLocation& WithRunLogStream(RunLogStreamT&& value) { SetRunLogStream(std::forward<RunLogStreamT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_engineLogStream;

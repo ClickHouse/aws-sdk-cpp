@@ -18,15 +18,7 @@ namespace EKS
 namespace Model
 {
 
-IdentityProviderConfig::IdentityProviderConfig() : 
-    m_typeHasBeenSet(false),
-    m_nameHasBeenSet(false)
-{
-}
-
-IdentityProviderConfig::IdentityProviderConfig(JsonView jsonValue) : 
-    m_typeHasBeenSet(false),
-    m_nameHasBeenSet(false)
+IdentityProviderConfig::IdentityProviderConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ IdentityProviderConfig& IdentityProviderConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("type"))
   {
     m_type = jsonValue.GetString("type");
-
     m_typeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   return *this;
 }
 

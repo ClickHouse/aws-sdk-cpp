@@ -33,115 +33,49 @@ namespace Model
   class SensitiveDataDetections
   {
   public:
-    AWS_SECURITYHUB_API SensitiveDataDetections();
+    AWS_SECURITYHUB_API SensitiveDataDetections() = default;
     AWS_SECURITYHUB_API SensitiveDataDetections(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API SensitiveDataDetections& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The total number of occurrences of sensitive data that were detected.</p>
      */
-    inline long long GetCount() const{ return m_count; }
-
-    /**
-     * <p>The total number of occurrences of sensitive data that were detected.</p>
-     */
+    inline long long GetCount() const { return m_count; }
     inline bool CountHasBeenSet() const { return m_countHasBeenSet; }
-
-    /**
-     * <p>The total number of occurrences of sensitive data that were detected.</p>
-     */
     inline void SetCount(long long value) { m_countHasBeenSet = true; m_count = value; }
-
-    /**
-     * <p>The total number of occurrences of sensitive data that were detected.</p>
-     */
     inline SensitiveDataDetections& WithCount(long long value) { SetCount(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The type of sensitive data that was detected. For example, the type might
      * indicate that the data is an email address.</p>
      */
-    inline const Aws::String& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of sensitive data that was detected. For example, the type might
-     * indicate that the data is an email address.</p>
-     */
+    inline const Aws::String& GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    template<typename TypeT = Aws::String>
+    void SetType(TypeT&& value) { m_typeHasBeenSet = true; m_type = std::forward<TypeT>(value); }
+    template<typename TypeT = Aws::String>
+    SensitiveDataDetections& WithType(TypeT&& value) { SetType(std::forward<TypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of sensitive data that was detected. For example, the type might
-     * indicate that the data is an email address.</p>
-     */
-    inline void SetType(const Aws::String& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of sensitive data that was detected. For example, the type might
-     * indicate that the data is an email address.</p>
-     */
-    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of sensitive data that was detected. For example, the type might
-     * indicate that the data is an email address.</p>
-     */
-    inline void SetType(const char* value) { m_typeHasBeenSet = true; m_type.assign(value); }
-
-    /**
-     * <p>The type of sensitive data that was detected. For example, the type might
-     * indicate that the data is an email address.</p>
-     */
-    inline SensitiveDataDetections& WithType(const Aws::String& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of sensitive data that was detected. For example, the type might
-     * indicate that the data is an email address.</p>
-     */
-    inline SensitiveDataDetections& WithType(Aws::String&& value) { SetType(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of sensitive data that was detected. For example, the type might
-     * indicate that the data is an email address.</p>
-     */
-    inline SensitiveDataDetections& WithType(const char* value) { SetType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Details about the sensitive data that was detected.</p>
      */
-    inline const Occurrences& GetOccurrences() const{ return m_occurrences; }
-
-    /**
-     * <p>Details about the sensitive data that was detected.</p>
-     */
+    inline const Occurrences& GetOccurrences() const { return m_occurrences; }
     inline bool OccurrencesHasBeenSet() const { return m_occurrencesHasBeenSet; }
-
-    /**
-     * <p>Details about the sensitive data that was detected.</p>
-     */
-    inline void SetOccurrences(const Occurrences& value) { m_occurrencesHasBeenSet = true; m_occurrences = value; }
-
-    /**
-     * <p>Details about the sensitive data that was detected.</p>
-     */
-    inline void SetOccurrences(Occurrences&& value) { m_occurrencesHasBeenSet = true; m_occurrences = std::move(value); }
-
-    /**
-     * <p>Details about the sensitive data that was detected.</p>
-     */
-    inline SensitiveDataDetections& WithOccurrences(const Occurrences& value) { SetOccurrences(value); return *this;}
-
-    /**
-     * <p>Details about the sensitive data that was detected.</p>
-     */
-    inline SensitiveDataDetections& WithOccurrences(Occurrences&& value) { SetOccurrences(std::move(value)); return *this;}
-
+    template<typename OccurrencesT = Occurrences>
+    void SetOccurrences(OccurrencesT&& value) { m_occurrencesHasBeenSet = true; m_occurrences = std::forward<OccurrencesT>(value); }
+    template<typename OccurrencesT = Occurrences>
+    SensitiveDataDetections& WithOccurrences(OccurrencesT&& value) { SetOccurrences(std::forward<OccurrencesT>(value)); return *this;}
+    ///@}
   private:
 
-    long long m_count;
+    long long m_count{0};
     bool m_countHasBeenSet = false;
 
     Aws::String m_type;

@@ -12,12 +12,6 @@ using namespace Aws::SageMaker::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateClusterRequest::UpdateClusterRequest() : 
-    m_clusterNameHasBeenSet(false),
-    m_instanceGroupsHasBeenSet(false)
-{
-}
-
 Aws::String UpdateClusterRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -36,6 +30,51 @@ Aws::String UpdateClusterRequest::SerializePayload() const
      instanceGroupsJsonList[instanceGroupsIndex].AsObject(m_instanceGroups[instanceGroupsIndex].Jsonize());
    }
    payload.WithArray("InstanceGroups", std::move(instanceGroupsJsonList));
+
+  }
+
+  if(m_restrictedInstanceGroupsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> restrictedInstanceGroupsJsonList(m_restrictedInstanceGroups.size());
+   for(unsigned restrictedInstanceGroupsIndex = 0; restrictedInstanceGroupsIndex < restrictedInstanceGroupsJsonList.GetLength(); ++restrictedInstanceGroupsIndex)
+   {
+     restrictedInstanceGroupsJsonList[restrictedInstanceGroupsIndex].AsObject(m_restrictedInstanceGroups[restrictedInstanceGroupsIndex].Jsonize());
+   }
+   payload.WithArray("RestrictedInstanceGroups", std::move(restrictedInstanceGroupsJsonList));
+
+  }
+
+  if(m_tieredStorageConfigHasBeenSet)
+  {
+   payload.WithObject("TieredStorageConfig", m_tieredStorageConfig.Jsonize());
+
+  }
+
+  if(m_nodeRecoveryHasBeenSet)
+  {
+   payload.WithString("NodeRecovery", ClusterNodeRecoveryMapper::GetNameForClusterNodeRecovery(m_nodeRecovery));
+  }
+
+  if(m_instanceGroupsToDeleteHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> instanceGroupsToDeleteJsonList(m_instanceGroupsToDelete.size());
+   for(unsigned instanceGroupsToDeleteIndex = 0; instanceGroupsToDeleteIndex < instanceGroupsToDeleteJsonList.GetLength(); ++instanceGroupsToDeleteIndex)
+   {
+     instanceGroupsToDeleteJsonList[instanceGroupsToDeleteIndex].AsString(m_instanceGroupsToDelete[instanceGroupsToDeleteIndex]);
+   }
+   payload.WithArray("InstanceGroupsToDelete", std::move(instanceGroupsToDeleteJsonList));
+
+  }
+
+  if(m_clusterRoleHasBeenSet)
+  {
+   payload.WithString("ClusterRole", m_clusterRole);
+
+  }
+
+  if(m_autoScalingHasBeenSet)
+  {
+   payload.WithObject("AutoScaling", m_autoScaling.Jsonize());
 
   }
 

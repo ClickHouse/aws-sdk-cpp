@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-VolumeStatusInfo::VolumeStatusInfo() : 
-    m_detailsHasBeenSet(false),
-    m_status(VolumeStatusInfoStatus::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
-VolumeStatusInfo::VolumeStatusInfo(const XmlNode& xmlNode) : 
-    m_detailsHasBeenSet(false),
-    m_status(VolumeStatusInfoStatus::NOT_SET),
-    m_statusHasBeenSet(false)
+VolumeStatusInfo::VolumeStatusInfo(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -45,6 +35,7 @@ VolumeStatusInfo& VolumeStatusInfo::operator =(const XmlNode& xmlNode)
     if(!detailsNode.IsNull())
     {
       XmlNode detailsMember = detailsNode.FirstChild("item");
+      m_detailsHasBeenSet = !detailsMember.IsNull();
       while(!detailsMember.IsNull())
       {
         m_details.push_back(detailsMember);
@@ -56,7 +47,7 @@ VolumeStatusInfo& VolumeStatusInfo::operator =(const XmlNode& xmlNode)
     XmlNode statusNode = resultNode.FirstChild("status");
     if(!statusNode.IsNull())
     {
-      m_status = VolumeStatusInfoStatusMapper::GetVolumeStatusInfoStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()).c_str());
+      m_status = VolumeStatusInfoStatusMapper::GetVolumeStatusInfoStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()));
       m_statusHasBeenSet = true;
     }
   }
@@ -79,7 +70,7 @@ void VolumeStatusInfo::OutputToStream(Aws::OStream& oStream, const char* locatio
 
   if(m_statusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Status=" << VolumeStatusInfoStatusMapper::GetNameForVolumeStatusInfoStatus(m_status) << "&";
+      oStream << location << index << locationValue << ".Status=" << StringUtils::URLEncode(VolumeStatusInfoStatusMapper::GetNameForVolumeStatusInfoStatus(m_status)) << "&";
   }
 
 }
@@ -92,13 +83,13 @@ void VolumeStatusInfo::OutputToStream(Aws::OStream& oStream, const char* locatio
       for(auto& item : m_details)
       {
         Aws::StringStream detailsSs;
-        detailsSs << location <<  ".Details." << detailsIdx++;
+        detailsSs << location << ".Details." << detailsIdx++;
         item.OutputToStream(oStream, detailsSs.str().c_str());
       }
   }
   if(m_statusHasBeenSet)
   {
-      oStream << location << ".Status=" << VolumeStatusInfoStatusMapper::GetNameForVolumeStatusInfoStatus(m_status) << "&";
+      oStream << location << ".Status=" << StringUtils::URLEncode(VolumeStatusInfoStatusMapper::GetNameForVolumeStatusInfoStatus(m_status)) << "&";
   }
 }
 

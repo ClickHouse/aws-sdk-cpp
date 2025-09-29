@@ -35,198 +35,71 @@ namespace Model
   class CapabilitySummary
   {
   public:
-    AWS_B2BI_API CapabilitySummary();
+    AWS_B2BI_API CapabilitySummary() = default;
     AWS_B2BI_API CapabilitySummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_B2BI_API CapabilitySummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_B2BI_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Returns a system-assigned unique identifier for the capability.</p>
      */
-    inline const Aws::String& GetCapabilityId() const{ return m_capabilityId; }
-
-    /**
-     * <p>Returns a system-assigned unique identifier for the capability.</p>
-     */
+    inline const Aws::String& GetCapabilityId() const { return m_capabilityId; }
     inline bool CapabilityIdHasBeenSet() const { return m_capabilityIdHasBeenSet; }
+    template<typename CapabilityIdT = Aws::String>
+    void SetCapabilityId(CapabilityIdT&& value) { m_capabilityIdHasBeenSet = true; m_capabilityId = std::forward<CapabilityIdT>(value); }
+    template<typename CapabilityIdT = Aws::String>
+    CapabilitySummary& WithCapabilityId(CapabilityIdT&& value) { SetCapabilityId(std::forward<CapabilityIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Returns a system-assigned unique identifier for the capability.</p>
-     */
-    inline void SetCapabilityId(const Aws::String& value) { m_capabilityIdHasBeenSet = true; m_capabilityId = value; }
-
-    /**
-     * <p>Returns a system-assigned unique identifier for the capability.</p>
-     */
-    inline void SetCapabilityId(Aws::String&& value) { m_capabilityIdHasBeenSet = true; m_capabilityId = std::move(value); }
-
-    /**
-     * <p>Returns a system-assigned unique identifier for the capability.</p>
-     */
-    inline void SetCapabilityId(const char* value) { m_capabilityIdHasBeenSet = true; m_capabilityId.assign(value); }
-
-    /**
-     * <p>Returns a system-assigned unique identifier for the capability.</p>
-     */
-    inline CapabilitySummary& WithCapabilityId(const Aws::String& value) { SetCapabilityId(value); return *this;}
-
-    /**
-     * <p>Returns a system-assigned unique identifier for the capability.</p>
-     */
-    inline CapabilitySummary& WithCapabilityId(Aws::String&& value) { SetCapabilityId(std::move(value)); return *this;}
-
-    /**
-     * <p>Returns a system-assigned unique identifier for the capability.</p>
-     */
-    inline CapabilitySummary& WithCapabilityId(const char* value) { SetCapabilityId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The display name of the capability.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The display name of the capability.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    CapabilitySummary& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The display name of the capability.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The display name of the capability.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The display name of the capability.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The display name of the capability.</p>
-     */
-    inline CapabilitySummary& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The display name of the capability.</p>
-     */
-    inline CapabilitySummary& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The display name of the capability.</p>
-     */
-    inline CapabilitySummary& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Returns the type of the capability. Currently, only <code>edi</code> is
      * supported.</p>
      */
-    inline const CapabilityType& GetType() const{ return m_type; }
-
-    /**
-     * <p>Returns the type of the capability. Currently, only <code>edi</code> is
-     * supported.</p>
-     */
+    inline CapabilityType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    inline void SetType(CapabilityType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline CapabilitySummary& WithType(CapabilityType value) { SetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Returns the type of the capability. Currently, only <code>edi</code> is
-     * supported.</p>
-     */
-    inline void SetType(const CapabilityType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>Returns the type of the capability. Currently, only <code>edi</code> is
-     * supported.</p>
-     */
-    inline void SetType(CapabilityType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>Returns the type of the capability. Currently, only <code>edi</code> is
-     * supported.</p>
-     */
-    inline CapabilitySummary& WithType(const CapabilityType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>Returns the type of the capability. Currently, only <code>edi</code> is
-     * supported.</p>
-     */
-    inline CapabilitySummary& WithType(CapabilityType&& value) { SetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Returns a timestamp for creation date and time of the capability.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedAt() const{ return m_createdAt; }
-
-    /**
-     * <p>Returns a timestamp for creation date and time of the capability.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedAt() const { return m_createdAt; }
     inline bool CreatedAtHasBeenSet() const { return m_createdAtHasBeenSet; }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    void SetCreatedAt(CreatedAtT&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::forward<CreatedAtT>(value); }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    CapabilitySummary& WithCreatedAt(CreatedAtT&& value) { SetCreatedAt(std::forward<CreatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Returns a timestamp for creation date and time of the capability.</p>
-     */
-    inline void SetCreatedAt(const Aws::Utils::DateTime& value) { m_createdAtHasBeenSet = true; m_createdAt = value; }
-
-    /**
-     * <p>Returns a timestamp for creation date and time of the capability.</p>
-     */
-    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::move(value); }
-
-    /**
-     * <p>Returns a timestamp for creation date and time of the capability.</p>
-     */
-    inline CapabilitySummary& WithCreatedAt(const Aws::Utils::DateTime& value) { SetCreatedAt(value); return *this;}
-
-    /**
-     * <p>Returns a timestamp for creation date and time of the capability.</p>
-     */
-    inline CapabilitySummary& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Returns a timestamp that identifies the most recent date and time that the
      * capability was modified.</p>
      */
-    inline const Aws::Utils::DateTime& GetModifiedAt() const{ return m_modifiedAt; }
-
-    /**
-     * <p>Returns a timestamp that identifies the most recent date and time that the
-     * capability was modified.</p>
-     */
+    inline const Aws::Utils::DateTime& GetModifiedAt() const { return m_modifiedAt; }
     inline bool ModifiedAtHasBeenSet() const { return m_modifiedAtHasBeenSet; }
-
-    /**
-     * <p>Returns a timestamp that identifies the most recent date and time that the
-     * capability was modified.</p>
-     */
-    inline void SetModifiedAt(const Aws::Utils::DateTime& value) { m_modifiedAtHasBeenSet = true; m_modifiedAt = value; }
-
-    /**
-     * <p>Returns a timestamp that identifies the most recent date and time that the
-     * capability was modified.</p>
-     */
-    inline void SetModifiedAt(Aws::Utils::DateTime&& value) { m_modifiedAtHasBeenSet = true; m_modifiedAt = std::move(value); }
-
-    /**
-     * <p>Returns a timestamp that identifies the most recent date and time that the
-     * capability was modified.</p>
-     */
-    inline CapabilitySummary& WithModifiedAt(const Aws::Utils::DateTime& value) { SetModifiedAt(value); return *this;}
-
-    /**
-     * <p>Returns a timestamp that identifies the most recent date and time that the
-     * capability was modified.</p>
-     */
-    inline CapabilitySummary& WithModifiedAt(Aws::Utils::DateTime&& value) { SetModifiedAt(std::move(value)); return *this;}
-
+    template<typename ModifiedAtT = Aws::Utils::DateTime>
+    void SetModifiedAt(ModifiedAtT&& value) { m_modifiedAtHasBeenSet = true; m_modifiedAt = std::forward<ModifiedAtT>(value); }
+    template<typename ModifiedAtT = Aws::Utils::DateTime>
+    CapabilitySummary& WithModifiedAt(ModifiedAtT&& value) { SetModifiedAt(std::forward<ModifiedAtT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_capabilityId;
@@ -235,13 +108,13 @@ namespace Model
     Aws::String m_name;
     bool m_nameHasBeenSet = false;
 
-    CapabilityType m_type;
+    CapabilityType m_type{CapabilityType::NOT_SET};
     bool m_typeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdAt;
+    Aws::Utils::DateTime m_createdAt{};
     bool m_createdAtHasBeenSet = false;
 
-    Aws::Utils::DateTime m_modifiedAt;
+    Aws::Utils::DateTime m_modifiedAt{};
     bool m_modifiedAtHasBeenSet = false;
   };
 

@@ -18,15 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-BestObjectiveNotImproving::BestObjectiveNotImproving() : 
-    m_maxNumberOfTrainingJobsNotImproving(0),
-    m_maxNumberOfTrainingJobsNotImprovingHasBeenSet(false)
-{
-}
-
-BestObjectiveNotImproving::BestObjectiveNotImproving(JsonView jsonValue) : 
-    m_maxNumberOfTrainingJobsNotImproving(0),
-    m_maxNumberOfTrainingJobsNotImprovingHasBeenSet(false)
+BestObjectiveNotImproving::BestObjectiveNotImproving(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ BestObjectiveNotImproving& BestObjectiveNotImproving::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("MaxNumberOfTrainingJobsNotImproving"))
   {
     m_maxNumberOfTrainingJobsNotImproving = jsonValue.GetInteger("MaxNumberOfTrainingJobsNotImproving");
-
     m_maxNumberOfTrainingJobsNotImprovingHasBeenSet = true;
   }
-
   return *this;
 }
 

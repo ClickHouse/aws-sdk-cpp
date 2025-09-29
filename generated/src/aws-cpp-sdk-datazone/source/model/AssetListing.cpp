@@ -18,25 +18,7 @@ namespace DataZone
 namespace Model
 {
 
-AssetListing::AssetListing() : 
-    m_assetIdHasBeenSet(false),
-    m_assetRevisionHasBeenSet(false),
-    m_assetTypeHasBeenSet(false),
-    m_createdAtHasBeenSet(false),
-    m_formsHasBeenSet(false),
-    m_glossaryTermsHasBeenSet(false),
-    m_owningProjectIdHasBeenSet(false)
-{
-}
-
-AssetListing::AssetListing(JsonView jsonValue) : 
-    m_assetIdHasBeenSet(false),
-    m_assetRevisionHasBeenSet(false),
-    m_assetTypeHasBeenSet(false),
-    m_createdAtHasBeenSet(false),
-    m_formsHasBeenSet(false),
-    m_glossaryTermsHasBeenSet(false),
-    m_owningProjectIdHasBeenSet(false)
+AssetListing::AssetListing(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,38 +28,28 @@ AssetListing& AssetListing::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("assetId"))
   {
     m_assetId = jsonValue.GetString("assetId");
-
     m_assetIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("assetRevision"))
   {
     m_assetRevision = jsonValue.GetString("assetRevision");
-
     m_assetRevisionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("assetType"))
   {
     m_assetType = jsonValue.GetString("assetType");
-
     m_assetTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("createdAt"))
   {
     m_createdAt = jsonValue.GetDouble("createdAt");
-
     m_createdAtHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("forms"))
   {
     m_forms = jsonValue.GetString("forms");
-
     m_formsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("glossaryTerms"))
   {
     Aws::Utils::Array<JsonView> glossaryTermsJsonList = jsonValue.GetArray("glossaryTerms");
@@ -87,14 +59,29 @@ AssetListing& AssetListing::operator =(JsonView jsonValue)
     }
     m_glossaryTermsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("governedGlossaryTerms"))
+  {
+    Aws::Utils::Array<JsonView> governedGlossaryTermsJsonList = jsonValue.GetArray("governedGlossaryTerms");
+    for(unsigned governedGlossaryTermsIndex = 0; governedGlossaryTermsIndex < governedGlossaryTermsJsonList.GetLength(); ++governedGlossaryTermsIndex)
+    {
+      m_governedGlossaryTerms.push_back(governedGlossaryTermsJsonList[governedGlossaryTermsIndex].AsObject());
+    }
+    m_governedGlossaryTermsHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("latestTimeSeriesDataPointForms"))
+  {
+    Aws::Utils::Array<JsonView> latestTimeSeriesDataPointFormsJsonList = jsonValue.GetArray("latestTimeSeriesDataPointForms");
+    for(unsigned latestTimeSeriesDataPointFormsIndex = 0; latestTimeSeriesDataPointFormsIndex < latestTimeSeriesDataPointFormsJsonList.GetLength(); ++latestTimeSeriesDataPointFormsIndex)
+    {
+      m_latestTimeSeriesDataPointForms.push_back(latestTimeSeriesDataPointFormsJsonList[latestTimeSeriesDataPointFormsIndex].AsObject());
+    }
+    m_latestTimeSeriesDataPointFormsHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("owningProjectId"))
   {
     m_owningProjectId = jsonValue.GetString("owningProjectId");
-
     m_owningProjectIdHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -139,6 +126,28 @@ JsonValue AssetListing::Jsonize() const
      glossaryTermsJsonList[glossaryTermsIndex].AsObject(m_glossaryTerms[glossaryTermsIndex].Jsonize());
    }
    payload.WithArray("glossaryTerms", std::move(glossaryTermsJsonList));
+
+  }
+
+  if(m_governedGlossaryTermsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> governedGlossaryTermsJsonList(m_governedGlossaryTerms.size());
+   for(unsigned governedGlossaryTermsIndex = 0; governedGlossaryTermsIndex < governedGlossaryTermsJsonList.GetLength(); ++governedGlossaryTermsIndex)
+   {
+     governedGlossaryTermsJsonList[governedGlossaryTermsIndex].AsObject(m_governedGlossaryTerms[governedGlossaryTermsIndex].Jsonize());
+   }
+   payload.WithArray("governedGlossaryTerms", std::move(governedGlossaryTermsJsonList));
+
+  }
+
+  if(m_latestTimeSeriesDataPointFormsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> latestTimeSeriesDataPointFormsJsonList(m_latestTimeSeriesDataPointForms.size());
+   for(unsigned latestTimeSeriesDataPointFormsIndex = 0; latestTimeSeriesDataPointFormsIndex < latestTimeSeriesDataPointFormsJsonList.GetLength(); ++latestTimeSeriesDataPointFormsIndex)
+   {
+     latestTimeSeriesDataPointFormsJsonList[latestTimeSeriesDataPointFormsIndex].AsObject(m_latestTimeSeriesDataPointForms[latestTimeSeriesDataPointFormsIndex].Jsonize());
+   }
+   payload.WithArray("latestTimeSeriesDataPointForms", std::move(latestTimeSeriesDataPointFormsJsonList));
 
   }
 

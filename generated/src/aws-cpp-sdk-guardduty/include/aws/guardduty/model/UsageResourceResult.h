@@ -33,83 +33,35 @@ namespace Model
   class UsageResourceResult
   {
   public:
-    AWS_GUARDDUTY_API UsageResourceResult();
+    AWS_GUARDDUTY_API UsageResourceResult() = default;
     AWS_GUARDDUTY_API UsageResourceResult(Aws::Utils::Json::JsonView jsonValue);
     AWS_GUARDDUTY_API UsageResourceResult& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GUARDDUTY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Web Services resource that generated usage.</p>
      */
-    inline const Aws::String& GetResource() const{ return m_resource; }
-
-    /**
-     * <p>The Amazon Web Services resource that generated usage.</p>
-     */
+    inline const Aws::String& GetResource() const { return m_resource; }
     inline bool ResourceHasBeenSet() const { return m_resourceHasBeenSet; }
+    template<typename ResourceT = Aws::String>
+    void SetResource(ResourceT&& value) { m_resourceHasBeenSet = true; m_resource = std::forward<ResourceT>(value); }
+    template<typename ResourceT = Aws::String>
+    UsageResourceResult& WithResource(ResourceT&& value) { SetResource(std::forward<ResourceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Web Services resource that generated usage.</p>
-     */
-    inline void SetResource(const Aws::String& value) { m_resourceHasBeenSet = true; m_resource = value; }
-
-    /**
-     * <p>The Amazon Web Services resource that generated usage.</p>
-     */
-    inline void SetResource(Aws::String&& value) { m_resourceHasBeenSet = true; m_resource = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services resource that generated usage.</p>
-     */
-    inline void SetResource(const char* value) { m_resourceHasBeenSet = true; m_resource.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services resource that generated usage.</p>
-     */
-    inline UsageResourceResult& WithResource(const Aws::String& value) { SetResource(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services resource that generated usage.</p>
-     */
-    inline UsageResourceResult& WithResource(Aws::String&& value) { SetResource(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services resource that generated usage.</p>
-     */
-    inline UsageResourceResult& WithResource(const char* value) { SetResource(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Represents the sum total of usage for the specified resource type.</p>
      */
-    inline const Total& GetTotal() const{ return m_total; }
-
-    /**
-     * <p>Represents the sum total of usage for the specified resource type.</p>
-     */
+    inline const Total& GetTotal() const { return m_total; }
     inline bool TotalHasBeenSet() const { return m_totalHasBeenSet; }
-
-    /**
-     * <p>Represents the sum total of usage for the specified resource type.</p>
-     */
-    inline void SetTotal(const Total& value) { m_totalHasBeenSet = true; m_total = value; }
-
-    /**
-     * <p>Represents the sum total of usage for the specified resource type.</p>
-     */
-    inline void SetTotal(Total&& value) { m_totalHasBeenSet = true; m_total = std::move(value); }
-
-    /**
-     * <p>Represents the sum total of usage for the specified resource type.</p>
-     */
-    inline UsageResourceResult& WithTotal(const Total& value) { SetTotal(value); return *this;}
-
-    /**
-     * <p>Represents the sum total of usage for the specified resource type.</p>
-     */
-    inline UsageResourceResult& WithTotal(Total&& value) { SetTotal(std::move(value)); return *this;}
-
+    template<typename TotalT = Total>
+    void SetTotal(TotalT&& value) { m_totalHasBeenSet = true; m_total = std::forward<TotalT>(value); }
+    template<typename TotalT = Total>
+    UsageResourceResult& WithTotal(TotalT&& value) { SetTotal(std::forward<TotalT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_resource;

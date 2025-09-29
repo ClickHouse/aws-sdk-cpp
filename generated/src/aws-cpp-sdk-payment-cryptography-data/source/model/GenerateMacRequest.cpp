@@ -12,24 +12,9 @@ using namespace Aws::PaymentCryptographyData::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-GenerateMacRequest::GenerateMacRequest() : 
-    m_generationAttributesHasBeenSet(false),
-    m_keyIdentifierHasBeenSet(false),
-    m_macLength(0),
-    m_macLengthHasBeenSet(false),
-    m_messageDataHasBeenSet(false)
-{
-}
-
 Aws::String GenerateMacRequest::SerializePayload() const
 {
   JsonValue payload;
-
-  if(m_generationAttributesHasBeenSet)
-  {
-   payload.WithObject("GenerationAttributes", m_generationAttributes.Jsonize());
-
-  }
 
   if(m_keyIdentifierHasBeenSet)
   {
@@ -37,15 +22,21 @@ Aws::String GenerateMacRequest::SerializePayload() const
 
   }
 
-  if(m_macLengthHasBeenSet)
-  {
-   payload.WithInteger("MacLength", m_macLength);
-
-  }
-
   if(m_messageDataHasBeenSet)
   {
    payload.WithString("MessageData", m_messageData);
+
+  }
+
+  if(m_generationAttributesHasBeenSet)
+  {
+   payload.WithObject("GenerationAttributes", m_generationAttributes.Jsonize());
+
+  }
+
+  if(m_macLengthHasBeenSet)
+  {
+   payload.WithInteger("MacLength", m_macLength);
 
   }
 

@@ -18,37 +18,7 @@ namespace AuditManager
 namespace Model
 {
 
-AssessmentControl::AssessmentControl() : 
-    m_idHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_status(ControlStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_response(ControlResponse::NOT_SET),
-    m_responseHasBeenSet(false),
-    m_commentsHasBeenSet(false),
-    m_evidenceSourcesHasBeenSet(false),
-    m_evidenceCount(0),
-    m_evidenceCountHasBeenSet(false),
-    m_assessmentReportEvidenceCount(0),
-    m_assessmentReportEvidenceCountHasBeenSet(false)
-{
-}
-
-AssessmentControl::AssessmentControl(JsonView jsonValue) : 
-    m_idHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_status(ControlStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_response(ControlResponse::NOT_SET),
-    m_responseHasBeenSet(false),
-    m_commentsHasBeenSet(false),
-    m_evidenceSourcesHasBeenSet(false),
-    m_evidenceCount(0),
-    m_evidenceCountHasBeenSet(false),
-    m_assessmentReportEvidenceCount(0),
-    m_assessmentReportEvidenceCountHasBeenSet(false)
+AssessmentControl::AssessmentControl(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -58,38 +28,23 @@ AssessmentControl& AssessmentControl::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("id"))
   {
     m_id = jsonValue.GetString("id");
-
     m_idHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("description"))
-  {
-    m_description = jsonValue.GetString("description");
-
-    m_descriptionHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("status"))
   {
     m_status = ControlStatusMapper::GetControlStatusForName(jsonValue.GetString("status"));
-
     m_statusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("response"))
   {
     m_response = ControlResponseMapper::GetControlResponseForName(jsonValue.GetString("response"));
-
     m_responseHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("comments"))
   {
     Aws::Utils::Array<JsonView> commentsJsonList = jsonValue.GetArray("comments");
@@ -99,7 +54,6 @@ AssessmentControl& AssessmentControl::operator =(JsonView jsonValue)
     }
     m_commentsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("evidenceSources"))
   {
     Aws::Utils::Array<JsonView> evidenceSourcesJsonList = jsonValue.GetArray("evidenceSources");
@@ -109,21 +63,16 @@ AssessmentControl& AssessmentControl::operator =(JsonView jsonValue)
     }
     m_evidenceSourcesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("evidenceCount"))
   {
     m_evidenceCount = jsonValue.GetInteger("evidenceCount");
-
     m_evidenceCountHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("assessmentReportEvidenceCount"))
   {
     m_assessmentReportEvidenceCount = jsonValue.GetInteger("assessmentReportEvidenceCount");
-
     m_assessmentReportEvidenceCountHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -140,12 +89,6 @@ JsonValue AssessmentControl::Jsonize() const
   if(m_nameHasBeenSet)
   {
    payload.WithString("name", m_name);
-
-  }
-
-  if(m_descriptionHasBeenSet)
-  {
-   payload.WithString("description", m_description);
 
   }
 

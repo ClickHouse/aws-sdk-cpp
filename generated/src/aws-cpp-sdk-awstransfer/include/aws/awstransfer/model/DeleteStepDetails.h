@@ -32,53 +32,25 @@ namespace Model
   class DeleteStepDetails
   {
   public:
-    AWS_TRANSFER_API DeleteStepDetails();
+    AWS_TRANSFER_API DeleteStepDetails() = default;
     AWS_TRANSFER_API DeleteStepDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRANSFER_API DeleteStepDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRANSFER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the step, used as an identifier.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the step, used as an identifier.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    DeleteStepDetails& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the step, used as an identifier.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the step, used as an identifier.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the step, used as an identifier.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the step, used as an identifier.</p>
-     */
-    inline DeleteStepDetails& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the step, used as an identifier.</p>
-     */
-    inline DeleteStepDetails& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the step, used as an identifier.</p>
-     */
-    inline DeleteStepDetails& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies which file to use as input to the workflow step: either the output
      * from the previous step, or the originally uploaded file for the workflow.</p>
@@ -88,85 +60,13 @@ namespace Model
      * </li> <li> <p>To use the originally uploaded file location as input for this
      * step, enter <code>${original.file}</code>.</p> </li> </ul>
      */
-    inline const Aws::String& GetSourceFileLocation() const{ return m_sourceFileLocation; }
-
-    /**
-     * <p>Specifies which file to use as input to the workflow step: either the output
-     * from the previous step, or the originally uploaded file for the workflow.</p>
-     * <ul> <li> <p>To use the previous file as the input, enter
-     * <code>${previous.file}</code>. In this case, this workflow step uses the output
-     * file from the previous workflow step as input. This is the default value.</p>
-     * </li> <li> <p>To use the originally uploaded file location as input for this
-     * step, enter <code>${original.file}</code>.</p> </li> </ul>
-     */
+    inline const Aws::String& GetSourceFileLocation() const { return m_sourceFileLocation; }
     inline bool SourceFileLocationHasBeenSet() const { return m_sourceFileLocationHasBeenSet; }
-
-    /**
-     * <p>Specifies which file to use as input to the workflow step: either the output
-     * from the previous step, or the originally uploaded file for the workflow.</p>
-     * <ul> <li> <p>To use the previous file as the input, enter
-     * <code>${previous.file}</code>. In this case, this workflow step uses the output
-     * file from the previous workflow step as input. This is the default value.</p>
-     * </li> <li> <p>To use the originally uploaded file location as input for this
-     * step, enter <code>${original.file}</code>.</p> </li> </ul>
-     */
-    inline void SetSourceFileLocation(const Aws::String& value) { m_sourceFileLocationHasBeenSet = true; m_sourceFileLocation = value; }
-
-    /**
-     * <p>Specifies which file to use as input to the workflow step: either the output
-     * from the previous step, or the originally uploaded file for the workflow.</p>
-     * <ul> <li> <p>To use the previous file as the input, enter
-     * <code>${previous.file}</code>. In this case, this workflow step uses the output
-     * file from the previous workflow step as input. This is the default value.</p>
-     * </li> <li> <p>To use the originally uploaded file location as input for this
-     * step, enter <code>${original.file}</code>.</p> </li> </ul>
-     */
-    inline void SetSourceFileLocation(Aws::String&& value) { m_sourceFileLocationHasBeenSet = true; m_sourceFileLocation = std::move(value); }
-
-    /**
-     * <p>Specifies which file to use as input to the workflow step: either the output
-     * from the previous step, or the originally uploaded file for the workflow.</p>
-     * <ul> <li> <p>To use the previous file as the input, enter
-     * <code>${previous.file}</code>. In this case, this workflow step uses the output
-     * file from the previous workflow step as input. This is the default value.</p>
-     * </li> <li> <p>To use the originally uploaded file location as input for this
-     * step, enter <code>${original.file}</code>.</p> </li> </ul>
-     */
-    inline void SetSourceFileLocation(const char* value) { m_sourceFileLocationHasBeenSet = true; m_sourceFileLocation.assign(value); }
-
-    /**
-     * <p>Specifies which file to use as input to the workflow step: either the output
-     * from the previous step, or the originally uploaded file for the workflow.</p>
-     * <ul> <li> <p>To use the previous file as the input, enter
-     * <code>${previous.file}</code>. In this case, this workflow step uses the output
-     * file from the previous workflow step as input. This is the default value.</p>
-     * </li> <li> <p>To use the originally uploaded file location as input for this
-     * step, enter <code>${original.file}</code>.</p> </li> </ul>
-     */
-    inline DeleteStepDetails& WithSourceFileLocation(const Aws::String& value) { SetSourceFileLocation(value); return *this;}
-
-    /**
-     * <p>Specifies which file to use as input to the workflow step: either the output
-     * from the previous step, or the originally uploaded file for the workflow.</p>
-     * <ul> <li> <p>To use the previous file as the input, enter
-     * <code>${previous.file}</code>. In this case, this workflow step uses the output
-     * file from the previous workflow step as input. This is the default value.</p>
-     * </li> <li> <p>To use the originally uploaded file location as input for this
-     * step, enter <code>${original.file}</code>.</p> </li> </ul>
-     */
-    inline DeleteStepDetails& WithSourceFileLocation(Aws::String&& value) { SetSourceFileLocation(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies which file to use as input to the workflow step: either the output
-     * from the previous step, or the originally uploaded file for the workflow.</p>
-     * <ul> <li> <p>To use the previous file as the input, enter
-     * <code>${previous.file}</code>. In this case, this workflow step uses the output
-     * file from the previous workflow step as input. This is the default value.</p>
-     * </li> <li> <p>To use the originally uploaded file location as input for this
-     * step, enter <code>${original.file}</code>.</p> </li> </ul>
-     */
-    inline DeleteStepDetails& WithSourceFileLocation(const char* value) { SetSourceFileLocation(value); return *this;}
-
+    template<typename SourceFileLocationT = Aws::String>
+    void SetSourceFileLocation(SourceFileLocationT&& value) { m_sourceFileLocationHasBeenSet = true; m_sourceFileLocation = std::forward<SourceFileLocationT>(value); }
+    template<typename SourceFileLocationT = Aws::String>
+    DeleteStepDetails& WithSourceFileLocation(SourceFileLocationT&& value) { SetSourceFileLocation(std::forward<SourceFileLocationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;

@@ -18,25 +18,7 @@ namespace KinesisAnalyticsV2
 namespace Model
 {
 
-ApplicationConfiguration::ApplicationConfiguration() : 
-    m_sqlApplicationConfigurationHasBeenSet(false),
-    m_flinkApplicationConfigurationHasBeenSet(false),
-    m_environmentPropertiesHasBeenSet(false),
-    m_applicationCodeConfigurationHasBeenSet(false),
-    m_applicationSnapshotConfigurationHasBeenSet(false),
-    m_vpcConfigurationsHasBeenSet(false),
-    m_zeppelinApplicationConfigurationHasBeenSet(false)
-{
-}
-
-ApplicationConfiguration::ApplicationConfiguration(JsonView jsonValue) : 
-    m_sqlApplicationConfigurationHasBeenSet(false),
-    m_flinkApplicationConfigurationHasBeenSet(false),
-    m_environmentPropertiesHasBeenSet(false),
-    m_applicationCodeConfigurationHasBeenSet(false),
-    m_applicationSnapshotConfigurationHasBeenSet(false),
-    m_vpcConfigurationsHasBeenSet(false),
-    m_zeppelinApplicationConfigurationHasBeenSet(false)
+ApplicationConfiguration::ApplicationConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,38 +28,33 @@ ApplicationConfiguration& ApplicationConfiguration::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("SqlApplicationConfiguration"))
   {
     m_sqlApplicationConfiguration = jsonValue.GetObject("SqlApplicationConfiguration");
-
     m_sqlApplicationConfigurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FlinkApplicationConfiguration"))
   {
     m_flinkApplicationConfiguration = jsonValue.GetObject("FlinkApplicationConfiguration");
-
     m_flinkApplicationConfigurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("EnvironmentProperties"))
   {
     m_environmentProperties = jsonValue.GetObject("EnvironmentProperties");
-
     m_environmentPropertiesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ApplicationCodeConfiguration"))
   {
     m_applicationCodeConfiguration = jsonValue.GetObject("ApplicationCodeConfiguration");
-
     m_applicationCodeConfigurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ApplicationSnapshotConfiguration"))
   {
     m_applicationSnapshotConfiguration = jsonValue.GetObject("ApplicationSnapshotConfiguration");
-
     m_applicationSnapshotConfigurationHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("ApplicationSystemRollbackConfiguration"))
+  {
+    m_applicationSystemRollbackConfiguration = jsonValue.GetObject("ApplicationSystemRollbackConfiguration");
+    m_applicationSystemRollbackConfigurationHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("VpcConfigurations"))
   {
     Aws::Utils::Array<JsonView> vpcConfigurationsJsonList = jsonValue.GetArray("VpcConfigurations");
@@ -87,14 +64,16 @@ ApplicationConfiguration& ApplicationConfiguration::operator =(JsonView jsonValu
     }
     m_vpcConfigurationsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ZeppelinApplicationConfiguration"))
   {
     m_zeppelinApplicationConfiguration = jsonValue.GetObject("ZeppelinApplicationConfiguration");
-
     m_zeppelinApplicationConfigurationHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("ApplicationEncryptionConfiguration"))
+  {
+    m_applicationEncryptionConfiguration = jsonValue.GetObject("ApplicationEncryptionConfiguration");
+    m_applicationEncryptionConfigurationHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -132,6 +111,12 @@ JsonValue ApplicationConfiguration::Jsonize() const
 
   }
 
+  if(m_applicationSystemRollbackConfigurationHasBeenSet)
+  {
+   payload.WithObject("ApplicationSystemRollbackConfiguration", m_applicationSystemRollbackConfiguration.Jsonize());
+
+  }
+
   if(m_vpcConfigurationsHasBeenSet)
   {
    Aws::Utils::Array<JsonValue> vpcConfigurationsJsonList(m_vpcConfigurations.size());
@@ -146,6 +131,12 @@ JsonValue ApplicationConfiguration::Jsonize() const
   if(m_zeppelinApplicationConfigurationHasBeenSet)
   {
    payload.WithObject("ZeppelinApplicationConfiguration", m_zeppelinApplicationConfiguration.Jsonize());
+
+  }
+
+  if(m_applicationEncryptionConfigurationHasBeenSet)
+  {
+   payload.WithObject("ApplicationEncryptionConfiguration", m_applicationEncryptionConfiguration.Jsonize());
 
   }
 

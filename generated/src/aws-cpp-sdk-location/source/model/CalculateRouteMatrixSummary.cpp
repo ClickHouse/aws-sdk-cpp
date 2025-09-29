@@ -18,25 +18,7 @@ namespace LocationService
 namespace Model
 {
 
-CalculateRouteMatrixSummary::CalculateRouteMatrixSummary() : 
-    m_dataSourceHasBeenSet(false),
-    m_distanceUnit(DistanceUnit::NOT_SET),
-    m_distanceUnitHasBeenSet(false),
-    m_errorCount(0),
-    m_errorCountHasBeenSet(false),
-    m_routeCount(0),
-    m_routeCountHasBeenSet(false)
-{
-}
-
-CalculateRouteMatrixSummary::CalculateRouteMatrixSummary(JsonView jsonValue) : 
-    m_dataSourceHasBeenSet(false),
-    m_distanceUnit(DistanceUnit::NOT_SET),
-    m_distanceUnitHasBeenSet(false),
-    m_errorCount(0),
-    m_errorCountHasBeenSet(false),
-    m_routeCount(0),
-    m_routeCountHasBeenSet(false)
+CalculateRouteMatrixSummary::CalculateRouteMatrixSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,31 +28,23 @@ CalculateRouteMatrixSummary& CalculateRouteMatrixSummary::operator =(JsonView js
   if(jsonValue.ValueExists("DataSource"))
   {
     m_dataSource = jsonValue.GetString("DataSource");
-
     m_dataSourceHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("DistanceUnit"))
-  {
-    m_distanceUnit = DistanceUnitMapper::GetDistanceUnitForName(jsonValue.GetString("DistanceUnit"));
-
-    m_distanceUnitHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("ErrorCount"))
-  {
-    m_errorCount = jsonValue.GetInteger("ErrorCount");
-
-    m_errorCountHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("RouteCount"))
   {
     m_routeCount = jsonValue.GetInteger("RouteCount");
-
     m_routeCountHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("ErrorCount"))
+  {
+    m_errorCount = jsonValue.GetInteger("ErrorCount");
+    m_errorCountHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("DistanceUnit"))
+  {
+    m_distanceUnit = DistanceUnitMapper::GetDistanceUnitForName(jsonValue.GetString("DistanceUnit"));
+    m_distanceUnitHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -84,9 +58,10 @@ JsonValue CalculateRouteMatrixSummary::Jsonize() const
 
   }
 
-  if(m_distanceUnitHasBeenSet)
+  if(m_routeCountHasBeenSet)
   {
-   payload.WithString("DistanceUnit", DistanceUnitMapper::GetNameForDistanceUnit(m_distanceUnit));
+   payload.WithInteger("RouteCount", m_routeCount);
+
   }
 
   if(m_errorCountHasBeenSet)
@@ -95,10 +70,9 @@ JsonValue CalculateRouteMatrixSummary::Jsonize() const
 
   }
 
-  if(m_routeCountHasBeenSet)
+  if(m_distanceUnitHasBeenSet)
   {
-   payload.WithInteger("RouteCount", m_routeCount);
-
+   payload.WithString("DistanceUnit", DistanceUnitMapper::GetNameForDistanceUnit(m_distanceUnit));
   }
 
   return payload;

@@ -26,8 +26,8 @@ namespace BCMDataExports
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
 
       typedef BCMDataExportsClientConfiguration ClientConfigurationType;
       typedef BCMDataExportsEndpointProvider EndpointProviderType;
@@ -37,14 +37,14 @@ namespace BCMDataExports
         * is not specified, it will be initialized to default values.
         */
         BCMDataExportsClient(const Aws::BCMDataExports::BCMDataExportsClientConfiguration& clientConfiguration = Aws::BCMDataExports::BCMDataExportsClientConfiguration(),
-                             std::shared_ptr<BCMDataExportsEndpointProviderBase> endpointProvider = Aws::MakeShared<BCMDataExportsEndpointProvider>(ALLOCATION_TAG));
+                             std::shared_ptr<BCMDataExportsEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         BCMDataExportsClient(const Aws::Auth::AWSCredentials& credentials,
-                             std::shared_ptr<BCMDataExportsEndpointProviderBase> endpointProvider = Aws::MakeShared<BCMDataExportsEndpointProvider>(ALLOCATION_TAG),
+                             std::shared_ptr<BCMDataExportsEndpointProviderBase> endpointProvider = nullptr,
                              const Aws::BCMDataExports::BCMDataExportsClientConfiguration& clientConfiguration = Aws::BCMDataExports::BCMDataExportsClientConfiguration());
 
        /**
@@ -52,7 +52,7 @@ namespace BCMDataExports
         * the default http client factory will be used
         */
         BCMDataExportsClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                             std::shared_ptr<BCMDataExportsEndpointProviderBase> endpointProvider = Aws::MakeShared<BCMDataExportsEndpointProvider>(ALLOCATION_TAG),
+                             std::shared_ptr<BCMDataExportsEndpointProviderBase> endpointProvider = nullptr,
                              const Aws::BCMDataExports::BCMDataExportsClientConfiguration& clientConfiguration = Aws::BCMDataExports::BCMDataExportsClientConfiguration());
 
 
@@ -259,13 +259,13 @@ namespace BCMDataExports
          * href="http://docs.aws.amazon.com/goto/WebAPI/bcm-data-exports-2023-11-26/ListExports">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListExportsOutcome ListExports(const Model::ListExportsRequest& request) const;
+        virtual Model::ListExportsOutcome ListExports(const Model::ListExportsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListExports that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListExportsRequestT = Model::ListExportsRequest>
-        Model::ListExportsOutcomeCallable ListExportsCallable(const ListExportsRequestT& request) const
+        Model::ListExportsOutcomeCallable ListExportsCallable(const ListExportsRequestT& request = {}) const
         {
             return SubmitCallable(&BCMDataExportsClient::ListExports, request);
         }
@@ -274,7 +274,7 @@ namespace BCMDataExports
          * An Async wrapper for ListExports that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListExportsRequestT = Model::ListExportsRequest>
-        void ListExportsAsync(const ListExportsRequestT& request, const ListExportsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListExportsAsync(const ListExportsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListExportsRequestT& request = {}) const
         {
             return SubmitAsync(&BCMDataExportsClient::ListExports, request, handler, context);
         }
@@ -284,13 +284,13 @@ namespace BCMDataExports
          * href="http://docs.aws.amazon.com/goto/WebAPI/bcm-data-exports-2023-11-26/ListTables">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListTablesOutcome ListTables(const Model::ListTablesRequest& request) const;
+        virtual Model::ListTablesOutcome ListTables(const Model::ListTablesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListTables that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListTablesRequestT = Model::ListTablesRequest>
-        Model::ListTablesOutcomeCallable ListTablesCallable(const ListTablesRequestT& request) const
+        Model::ListTablesOutcomeCallable ListTablesCallable(const ListTablesRequestT& request = {}) const
         {
             return SubmitCallable(&BCMDataExportsClient::ListTables, request);
         }
@@ -299,7 +299,7 @@ namespace BCMDataExports
          * An Async wrapper for ListTables that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListTablesRequestT = Model::ListTablesRequest>
-        void ListTablesAsync(const ListTablesRequestT& request, const ListTablesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListTablesAsync(const ListTablesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListTablesRequestT& request = {}) const
         {
             return SubmitAsync(&BCMDataExportsClient::ListTables, request, handler, context);
         }
@@ -417,7 +417,6 @@ namespace BCMDataExports
       void init(const BCMDataExportsClientConfiguration& clientConfiguration);
 
       BCMDataExportsClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<BCMDataExportsEndpointProviderBase> m_endpointProvider;
   };
 

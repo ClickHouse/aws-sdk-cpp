@@ -20,15 +20,7 @@ namespace IAM
 namespace Model
 {
 
-OrganizationsDecisionDetail::OrganizationsDecisionDetail() : 
-    m_allowedByOrganizations(false),
-    m_allowedByOrganizationsHasBeenSet(false)
-{
-}
-
-OrganizationsDecisionDetail::OrganizationsDecisionDetail(const XmlNode& xmlNode) : 
-    m_allowedByOrganizations(false),
-    m_allowedByOrganizationsHasBeenSet(false)
+OrganizationsDecisionDetail::OrganizationsDecisionDetail(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

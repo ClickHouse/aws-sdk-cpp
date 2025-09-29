@@ -33,174 +33,52 @@ namespace Model
   class RecordColumn
   {
   public:
-    AWS_KINESISANALYTICS_API RecordColumn();
+    AWS_KINESISANALYTICS_API RecordColumn() = default;
     AWS_KINESISANALYTICS_API RecordColumn(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISANALYTICS_API RecordColumn& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISANALYTICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Name of the column created in the in-application input stream or reference
      * table.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>Name of the column created in the in-application input stream or reference
-     * table.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    RecordColumn& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Name of the column created in the in-application input stream or reference
-     * table.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>Name of the column created in the in-application input stream or reference
-     * table.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>Name of the column created in the in-application input stream or reference
-     * table.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>Name of the column created in the in-application input stream or reference
-     * table.</p>
-     */
-    inline RecordColumn& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>Name of the column created in the in-application input stream or reference
-     * table.</p>
-     */
-    inline RecordColumn& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>Name of the column created in the in-application input stream or reference
-     * table.</p>
-     */
-    inline RecordColumn& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Reference to the data element in the streaming input or the reference data
      * source. This element is required if the <a
      * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_RecordFormat.html#analytics-Type-RecordFormat-RecordFormatTypel">RecordFormatType</a>
      * is <code>JSON</code>.</p>
      */
-    inline const Aws::String& GetMapping() const{ return m_mapping; }
-
-    /**
-     * <p>Reference to the data element in the streaming input or the reference data
-     * source. This element is required if the <a
-     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_RecordFormat.html#analytics-Type-RecordFormat-RecordFormatTypel">RecordFormatType</a>
-     * is <code>JSON</code>.</p>
-     */
+    inline const Aws::String& GetMapping() const { return m_mapping; }
     inline bool MappingHasBeenSet() const { return m_mappingHasBeenSet; }
+    template<typename MappingT = Aws::String>
+    void SetMapping(MappingT&& value) { m_mappingHasBeenSet = true; m_mapping = std::forward<MappingT>(value); }
+    template<typename MappingT = Aws::String>
+    RecordColumn& WithMapping(MappingT&& value) { SetMapping(std::forward<MappingT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Reference to the data element in the streaming input or the reference data
-     * source. This element is required if the <a
-     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_RecordFormat.html#analytics-Type-RecordFormat-RecordFormatTypel">RecordFormatType</a>
-     * is <code>JSON</code>.</p>
-     */
-    inline void SetMapping(const Aws::String& value) { m_mappingHasBeenSet = true; m_mapping = value; }
-
-    /**
-     * <p>Reference to the data element in the streaming input or the reference data
-     * source. This element is required if the <a
-     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_RecordFormat.html#analytics-Type-RecordFormat-RecordFormatTypel">RecordFormatType</a>
-     * is <code>JSON</code>.</p>
-     */
-    inline void SetMapping(Aws::String&& value) { m_mappingHasBeenSet = true; m_mapping = std::move(value); }
-
-    /**
-     * <p>Reference to the data element in the streaming input or the reference data
-     * source. This element is required if the <a
-     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_RecordFormat.html#analytics-Type-RecordFormat-RecordFormatTypel">RecordFormatType</a>
-     * is <code>JSON</code>.</p>
-     */
-    inline void SetMapping(const char* value) { m_mappingHasBeenSet = true; m_mapping.assign(value); }
-
-    /**
-     * <p>Reference to the data element in the streaming input or the reference data
-     * source. This element is required if the <a
-     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_RecordFormat.html#analytics-Type-RecordFormat-RecordFormatTypel">RecordFormatType</a>
-     * is <code>JSON</code>.</p>
-     */
-    inline RecordColumn& WithMapping(const Aws::String& value) { SetMapping(value); return *this;}
-
-    /**
-     * <p>Reference to the data element in the streaming input or the reference data
-     * source. This element is required if the <a
-     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_RecordFormat.html#analytics-Type-RecordFormat-RecordFormatTypel">RecordFormatType</a>
-     * is <code>JSON</code>.</p>
-     */
-    inline RecordColumn& WithMapping(Aws::String&& value) { SetMapping(std::move(value)); return *this;}
-
-    /**
-     * <p>Reference to the data element in the streaming input or the reference data
-     * source. This element is required if the <a
-     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_RecordFormat.html#analytics-Type-RecordFormat-RecordFormatTypel">RecordFormatType</a>
-     * is <code>JSON</code>.</p>
-     */
-    inline RecordColumn& WithMapping(const char* value) { SetMapping(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Type of column created in the in-application input stream or reference
      * table.</p>
      */
-    inline const Aws::String& GetSqlType() const{ return m_sqlType; }
-
-    /**
-     * <p>Type of column created in the in-application input stream or reference
-     * table.</p>
-     */
+    inline const Aws::String& GetSqlType() const { return m_sqlType; }
     inline bool SqlTypeHasBeenSet() const { return m_sqlTypeHasBeenSet; }
-
-    /**
-     * <p>Type of column created in the in-application input stream or reference
-     * table.</p>
-     */
-    inline void SetSqlType(const Aws::String& value) { m_sqlTypeHasBeenSet = true; m_sqlType = value; }
-
-    /**
-     * <p>Type of column created in the in-application input stream or reference
-     * table.</p>
-     */
-    inline void SetSqlType(Aws::String&& value) { m_sqlTypeHasBeenSet = true; m_sqlType = std::move(value); }
-
-    /**
-     * <p>Type of column created in the in-application input stream or reference
-     * table.</p>
-     */
-    inline void SetSqlType(const char* value) { m_sqlTypeHasBeenSet = true; m_sqlType.assign(value); }
-
-    /**
-     * <p>Type of column created in the in-application input stream or reference
-     * table.</p>
-     */
-    inline RecordColumn& WithSqlType(const Aws::String& value) { SetSqlType(value); return *this;}
-
-    /**
-     * <p>Type of column created in the in-application input stream or reference
-     * table.</p>
-     */
-    inline RecordColumn& WithSqlType(Aws::String&& value) { SetSqlType(std::move(value)); return *this;}
-
-    /**
-     * <p>Type of column created in the in-application input stream or reference
-     * table.</p>
-     */
-    inline RecordColumn& WithSqlType(const char* value) { SetSqlType(value); return *this;}
-
+    template<typename SqlTypeT = Aws::String>
+    void SetSqlType(SqlTypeT&& value) { m_sqlTypeHasBeenSet = true; m_sqlType = std::forward<SqlTypeT>(value); }
+    template<typename SqlTypeT = Aws::String>
+    RecordColumn& WithSqlType(SqlTypeT&& value) { SetSqlType(std::forward<SqlTypeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;

@@ -32,52 +32,23 @@ namespace Model
   class KinesisDataStreamSinkConfiguration
   {
   public:
-    AWS_CHIMESDKMEDIAPIPELINES_API KinesisDataStreamSinkConfiguration();
+    AWS_CHIMESDKMEDIAPIPELINES_API KinesisDataStreamSinkConfiguration() = default;
     AWS_CHIMESDKMEDIAPIPELINES_API KinesisDataStreamSinkConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMEDIAPIPELINES_API KinesisDataStreamSinkConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMEDIAPIPELINES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ARN of the sink.</p>
      */
-    inline const Aws::String& GetInsightsTarget() const{ return m_insightsTarget; }
-
-    /**
-     * <p>The ARN of the sink.</p>
-     */
+    inline const Aws::String& GetInsightsTarget() const { return m_insightsTarget; }
     inline bool InsightsTargetHasBeenSet() const { return m_insightsTargetHasBeenSet; }
-
-    /**
-     * <p>The ARN of the sink.</p>
-     */
-    inline void SetInsightsTarget(const Aws::String& value) { m_insightsTargetHasBeenSet = true; m_insightsTarget = value; }
-
-    /**
-     * <p>The ARN of the sink.</p>
-     */
-    inline void SetInsightsTarget(Aws::String&& value) { m_insightsTargetHasBeenSet = true; m_insightsTarget = std::move(value); }
-
-    /**
-     * <p>The ARN of the sink.</p>
-     */
-    inline void SetInsightsTarget(const char* value) { m_insightsTargetHasBeenSet = true; m_insightsTarget.assign(value); }
-
-    /**
-     * <p>The ARN of the sink.</p>
-     */
-    inline KinesisDataStreamSinkConfiguration& WithInsightsTarget(const Aws::String& value) { SetInsightsTarget(value); return *this;}
-
-    /**
-     * <p>The ARN of the sink.</p>
-     */
-    inline KinesisDataStreamSinkConfiguration& WithInsightsTarget(Aws::String&& value) { SetInsightsTarget(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the sink.</p>
-     */
-    inline KinesisDataStreamSinkConfiguration& WithInsightsTarget(const char* value) { SetInsightsTarget(value); return *this;}
-
+    template<typename InsightsTargetT = Aws::String>
+    void SetInsightsTarget(InsightsTargetT&& value) { m_insightsTargetHasBeenSet = true; m_insightsTarget = std::forward<InsightsTargetT>(value); }
+    template<typename InsightsTargetT = Aws::String>
+    KinesisDataStreamSinkConfiguration& WithInsightsTarget(InsightsTargetT&& value) { SetInsightsTarget(std::forward<InsightsTargetT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_insightsTarget;

@@ -22,7 +22,7 @@ namespace Model
   class StartStreamEncryptionRequest : public KinesisRequest
   {
   public:
-    AWS_KINESIS_API StartStreamEncryptionRequest();
+    AWS_KINESIS_API StartStreamEncryptionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,78 +39,29 @@ namespace Model
      */
     AWS_KINESIS_API EndpointParameters GetEndpointContextParams() const override;
 
+    ///@{
     /**
      * <p>The name of the stream for which to start encrypting records.</p>
      */
-    inline const Aws::String& GetStreamName() const{ return m_streamName; }
-
-    /**
-     * <p>The name of the stream for which to start encrypting records.</p>
-     */
+    inline const Aws::String& GetStreamName() const { return m_streamName; }
     inline bool StreamNameHasBeenSet() const { return m_streamNameHasBeenSet; }
+    template<typename StreamNameT = Aws::String>
+    void SetStreamName(StreamNameT&& value) { m_streamNameHasBeenSet = true; m_streamName = std::forward<StreamNameT>(value); }
+    template<typename StreamNameT = Aws::String>
+    StartStreamEncryptionRequest& WithStreamName(StreamNameT&& value) { SetStreamName(std::forward<StreamNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the stream for which to start encrypting records.</p>
-     */
-    inline void SetStreamName(const Aws::String& value) { m_streamNameHasBeenSet = true; m_streamName = value; }
-
-    /**
-     * <p>The name of the stream for which to start encrypting records.</p>
-     */
-    inline void SetStreamName(Aws::String&& value) { m_streamNameHasBeenSet = true; m_streamName = std::move(value); }
-
-    /**
-     * <p>The name of the stream for which to start encrypting records.</p>
-     */
-    inline void SetStreamName(const char* value) { m_streamNameHasBeenSet = true; m_streamName.assign(value); }
-
-    /**
-     * <p>The name of the stream for which to start encrypting records.</p>
-     */
-    inline StartStreamEncryptionRequest& WithStreamName(const Aws::String& value) { SetStreamName(value); return *this;}
-
-    /**
-     * <p>The name of the stream for which to start encrypting records.</p>
-     */
-    inline StartStreamEncryptionRequest& WithStreamName(Aws::String&& value) { SetStreamName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the stream for which to start encrypting records.</p>
-     */
-    inline StartStreamEncryptionRequest& WithStreamName(const char* value) { SetStreamName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The encryption type to use. The only valid value is <code>KMS</code>.</p>
      */
-    inline const EncryptionType& GetEncryptionType() const{ return m_encryptionType; }
-
-    /**
-     * <p>The encryption type to use. The only valid value is <code>KMS</code>.</p>
-     */
+    inline EncryptionType GetEncryptionType() const { return m_encryptionType; }
     inline bool EncryptionTypeHasBeenSet() const { return m_encryptionTypeHasBeenSet; }
+    inline void SetEncryptionType(EncryptionType value) { m_encryptionTypeHasBeenSet = true; m_encryptionType = value; }
+    inline StartStreamEncryptionRequest& WithEncryptionType(EncryptionType value) { SetEncryptionType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The encryption type to use. The only valid value is <code>KMS</code>.</p>
-     */
-    inline void SetEncryptionType(const EncryptionType& value) { m_encryptionTypeHasBeenSet = true; m_encryptionType = value; }
-
-    /**
-     * <p>The encryption type to use. The only valid value is <code>KMS</code>.</p>
-     */
-    inline void SetEncryptionType(EncryptionType&& value) { m_encryptionTypeHasBeenSet = true; m_encryptionType = std::move(value); }
-
-    /**
-     * <p>The encryption type to use. The only valid value is <code>KMS</code>.</p>
-     */
-    inline StartStreamEncryptionRequest& WithEncryptionType(const EncryptionType& value) { SetEncryptionType(value); return *this;}
-
-    /**
-     * <p>The encryption type to use. The only valid value is <code>KMS</code>.</p>
-     */
-    inline StartStreamEncryptionRequest& WithEncryptionType(EncryptionType&& value) { SetEncryptionType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The GUID for the customer-managed Amazon Web Services KMS key to use for
      * encryption. This value can be a globally unique identifier, a fully specified
@@ -126,174 +77,31 @@ namespace Model
      * example: <code>alias/MyAliasName</code> </p> </li> <li> <p>Master key owned by
      * Kinesis Data Streams: <code>alias/aws/kinesis</code> </p> </li> </ul>
      */
-    inline const Aws::String& GetKeyId() const{ return m_keyId; }
-
-    /**
-     * <p>The GUID for the customer-managed Amazon Web Services KMS key to use for
-     * encryption. This value can be a globally unique identifier, a fully specified
-     * Amazon Resource Name (ARN) to either an alias or a key, or an alias name
-     * prefixed by "alias/".You can also use a master key owned by Kinesis Data Streams
-     * by specifying the alias <code>aws/kinesis</code>.</p> <ul> <li> <p>Key ARN
-     * example:
-     * <code>arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</code>
-     * </p> </li> <li> <p>Alias ARN example:
-     * <code>arn:aws:kms:us-east-1:123456789012:alias/MyAliasName</code> </p> </li>
-     * <li> <p>Globally unique key ID example:
-     * <code>12345678-1234-1234-1234-123456789012</code> </p> </li> <li> <p>Alias name
-     * example: <code>alias/MyAliasName</code> </p> </li> <li> <p>Master key owned by
-     * Kinesis Data Streams: <code>alias/aws/kinesis</code> </p> </li> </ul>
-     */
+    inline const Aws::String& GetKeyId() const { return m_keyId; }
     inline bool KeyIdHasBeenSet() const { return m_keyIdHasBeenSet; }
+    template<typename KeyIdT = Aws::String>
+    void SetKeyId(KeyIdT&& value) { m_keyIdHasBeenSet = true; m_keyId = std::forward<KeyIdT>(value); }
+    template<typename KeyIdT = Aws::String>
+    StartStreamEncryptionRequest& WithKeyId(KeyIdT&& value) { SetKeyId(std::forward<KeyIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The GUID for the customer-managed Amazon Web Services KMS key to use for
-     * encryption. This value can be a globally unique identifier, a fully specified
-     * Amazon Resource Name (ARN) to either an alias or a key, or an alias name
-     * prefixed by "alias/".You can also use a master key owned by Kinesis Data Streams
-     * by specifying the alias <code>aws/kinesis</code>.</p> <ul> <li> <p>Key ARN
-     * example:
-     * <code>arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</code>
-     * </p> </li> <li> <p>Alias ARN example:
-     * <code>arn:aws:kms:us-east-1:123456789012:alias/MyAliasName</code> </p> </li>
-     * <li> <p>Globally unique key ID example:
-     * <code>12345678-1234-1234-1234-123456789012</code> </p> </li> <li> <p>Alias name
-     * example: <code>alias/MyAliasName</code> </p> </li> <li> <p>Master key owned by
-     * Kinesis Data Streams: <code>alias/aws/kinesis</code> </p> </li> </ul>
-     */
-    inline void SetKeyId(const Aws::String& value) { m_keyIdHasBeenSet = true; m_keyId = value; }
-
-    /**
-     * <p>The GUID for the customer-managed Amazon Web Services KMS key to use for
-     * encryption. This value can be a globally unique identifier, a fully specified
-     * Amazon Resource Name (ARN) to either an alias or a key, or an alias name
-     * prefixed by "alias/".You can also use a master key owned by Kinesis Data Streams
-     * by specifying the alias <code>aws/kinesis</code>.</p> <ul> <li> <p>Key ARN
-     * example:
-     * <code>arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</code>
-     * </p> </li> <li> <p>Alias ARN example:
-     * <code>arn:aws:kms:us-east-1:123456789012:alias/MyAliasName</code> </p> </li>
-     * <li> <p>Globally unique key ID example:
-     * <code>12345678-1234-1234-1234-123456789012</code> </p> </li> <li> <p>Alias name
-     * example: <code>alias/MyAliasName</code> </p> </li> <li> <p>Master key owned by
-     * Kinesis Data Streams: <code>alias/aws/kinesis</code> </p> </li> </ul>
-     */
-    inline void SetKeyId(Aws::String&& value) { m_keyIdHasBeenSet = true; m_keyId = std::move(value); }
-
-    /**
-     * <p>The GUID for the customer-managed Amazon Web Services KMS key to use for
-     * encryption. This value can be a globally unique identifier, a fully specified
-     * Amazon Resource Name (ARN) to either an alias or a key, or an alias name
-     * prefixed by "alias/".You can also use a master key owned by Kinesis Data Streams
-     * by specifying the alias <code>aws/kinesis</code>.</p> <ul> <li> <p>Key ARN
-     * example:
-     * <code>arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</code>
-     * </p> </li> <li> <p>Alias ARN example:
-     * <code>arn:aws:kms:us-east-1:123456789012:alias/MyAliasName</code> </p> </li>
-     * <li> <p>Globally unique key ID example:
-     * <code>12345678-1234-1234-1234-123456789012</code> </p> </li> <li> <p>Alias name
-     * example: <code>alias/MyAliasName</code> </p> </li> <li> <p>Master key owned by
-     * Kinesis Data Streams: <code>alias/aws/kinesis</code> </p> </li> </ul>
-     */
-    inline void SetKeyId(const char* value) { m_keyIdHasBeenSet = true; m_keyId.assign(value); }
-
-    /**
-     * <p>The GUID for the customer-managed Amazon Web Services KMS key to use for
-     * encryption. This value can be a globally unique identifier, a fully specified
-     * Amazon Resource Name (ARN) to either an alias or a key, or an alias name
-     * prefixed by "alias/".You can also use a master key owned by Kinesis Data Streams
-     * by specifying the alias <code>aws/kinesis</code>.</p> <ul> <li> <p>Key ARN
-     * example:
-     * <code>arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</code>
-     * </p> </li> <li> <p>Alias ARN example:
-     * <code>arn:aws:kms:us-east-1:123456789012:alias/MyAliasName</code> </p> </li>
-     * <li> <p>Globally unique key ID example:
-     * <code>12345678-1234-1234-1234-123456789012</code> </p> </li> <li> <p>Alias name
-     * example: <code>alias/MyAliasName</code> </p> </li> <li> <p>Master key owned by
-     * Kinesis Data Streams: <code>alias/aws/kinesis</code> </p> </li> </ul>
-     */
-    inline StartStreamEncryptionRequest& WithKeyId(const Aws::String& value) { SetKeyId(value); return *this;}
-
-    /**
-     * <p>The GUID for the customer-managed Amazon Web Services KMS key to use for
-     * encryption. This value can be a globally unique identifier, a fully specified
-     * Amazon Resource Name (ARN) to either an alias or a key, or an alias name
-     * prefixed by "alias/".You can also use a master key owned by Kinesis Data Streams
-     * by specifying the alias <code>aws/kinesis</code>.</p> <ul> <li> <p>Key ARN
-     * example:
-     * <code>arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</code>
-     * </p> </li> <li> <p>Alias ARN example:
-     * <code>arn:aws:kms:us-east-1:123456789012:alias/MyAliasName</code> </p> </li>
-     * <li> <p>Globally unique key ID example:
-     * <code>12345678-1234-1234-1234-123456789012</code> </p> </li> <li> <p>Alias name
-     * example: <code>alias/MyAliasName</code> </p> </li> <li> <p>Master key owned by
-     * Kinesis Data Streams: <code>alias/aws/kinesis</code> </p> </li> </ul>
-     */
-    inline StartStreamEncryptionRequest& WithKeyId(Aws::String&& value) { SetKeyId(std::move(value)); return *this;}
-
-    /**
-     * <p>The GUID for the customer-managed Amazon Web Services KMS key to use for
-     * encryption. This value can be a globally unique identifier, a fully specified
-     * Amazon Resource Name (ARN) to either an alias or a key, or an alias name
-     * prefixed by "alias/".You can also use a master key owned by Kinesis Data Streams
-     * by specifying the alias <code>aws/kinesis</code>.</p> <ul> <li> <p>Key ARN
-     * example:
-     * <code>arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</code>
-     * </p> </li> <li> <p>Alias ARN example:
-     * <code>arn:aws:kms:us-east-1:123456789012:alias/MyAliasName</code> </p> </li>
-     * <li> <p>Globally unique key ID example:
-     * <code>12345678-1234-1234-1234-123456789012</code> </p> </li> <li> <p>Alias name
-     * example: <code>alias/MyAliasName</code> </p> </li> <li> <p>Master key owned by
-     * Kinesis Data Streams: <code>alias/aws/kinesis</code> </p> </li> </ul>
-     */
-    inline StartStreamEncryptionRequest& WithKeyId(const char* value) { SetKeyId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the stream.</p>
      */
-    inline const Aws::String& GetStreamARN() const{ return m_streamARN; }
-
-    /**
-     * <p>The ARN of the stream.</p>
-     */
+    inline const Aws::String& GetStreamARN() const { return m_streamARN; }
     inline bool StreamARNHasBeenSet() const { return m_streamARNHasBeenSet; }
-
-    /**
-     * <p>The ARN of the stream.</p>
-     */
-    inline void SetStreamARN(const Aws::String& value) { m_streamARNHasBeenSet = true; m_streamARN = value; }
-
-    /**
-     * <p>The ARN of the stream.</p>
-     */
-    inline void SetStreamARN(Aws::String&& value) { m_streamARNHasBeenSet = true; m_streamARN = std::move(value); }
-
-    /**
-     * <p>The ARN of the stream.</p>
-     */
-    inline void SetStreamARN(const char* value) { m_streamARNHasBeenSet = true; m_streamARN.assign(value); }
-
-    /**
-     * <p>The ARN of the stream.</p>
-     */
-    inline StartStreamEncryptionRequest& WithStreamARN(const Aws::String& value) { SetStreamARN(value); return *this;}
-
-    /**
-     * <p>The ARN of the stream.</p>
-     */
-    inline StartStreamEncryptionRequest& WithStreamARN(Aws::String&& value) { SetStreamARN(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the stream.</p>
-     */
-    inline StartStreamEncryptionRequest& WithStreamARN(const char* value) { SetStreamARN(value); return *this;}
-
+    template<typename StreamARNT = Aws::String>
+    void SetStreamARN(StreamARNT&& value) { m_streamARNHasBeenSet = true; m_streamARN = std::forward<StreamARNT>(value); }
+    template<typename StreamARNT = Aws::String>
+    StartStreamEncryptionRequest& WithStreamARN(StreamARNT&& value) { SetStreamARN(std::forward<StreamARNT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_streamName;
     bool m_streamNameHasBeenSet = false;
 
-    EncryptionType m_encryptionType;
+    EncryptionType m_encryptionType{EncryptionType::NOT_SET};
     bool m_encryptionTypeHasBeenSet = false;
 
     Aws::String m_keyId;

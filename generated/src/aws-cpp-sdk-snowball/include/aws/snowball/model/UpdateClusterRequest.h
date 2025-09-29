@@ -25,7 +25,7 @@ namespace Model
   class UpdateClusterRequest : public SnowballRequest
   {
   public:
-    AWS_SNOWBALL_API UpdateClusterRequest();
+    AWS_SNOWBALL_API UpdateClusterRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,398 +38,120 @@ namespace Model
     AWS_SNOWBALL_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The cluster ID of the cluster that you want to update, for example
      * <code>CID123e4567-e89b-12d3-a456-426655440000</code>.</p>
      */
-    inline const Aws::String& GetClusterId() const{ return m_clusterId; }
-
-    /**
-     * <p>The cluster ID of the cluster that you want to update, for example
-     * <code>CID123e4567-e89b-12d3-a456-426655440000</code>.</p>
-     */
+    inline const Aws::String& GetClusterId() const { return m_clusterId; }
     inline bool ClusterIdHasBeenSet() const { return m_clusterIdHasBeenSet; }
+    template<typename ClusterIdT = Aws::String>
+    void SetClusterId(ClusterIdT&& value) { m_clusterIdHasBeenSet = true; m_clusterId = std::forward<ClusterIdT>(value); }
+    template<typename ClusterIdT = Aws::String>
+    UpdateClusterRequest& WithClusterId(ClusterIdT&& value) { SetClusterId(std::forward<ClusterIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The cluster ID of the cluster that you want to update, for example
-     * <code>CID123e4567-e89b-12d3-a456-426655440000</code>.</p>
-     */
-    inline void SetClusterId(const Aws::String& value) { m_clusterIdHasBeenSet = true; m_clusterId = value; }
-
-    /**
-     * <p>The cluster ID of the cluster that you want to update, for example
-     * <code>CID123e4567-e89b-12d3-a456-426655440000</code>.</p>
-     */
-    inline void SetClusterId(Aws::String&& value) { m_clusterIdHasBeenSet = true; m_clusterId = std::move(value); }
-
-    /**
-     * <p>The cluster ID of the cluster that you want to update, for example
-     * <code>CID123e4567-e89b-12d3-a456-426655440000</code>.</p>
-     */
-    inline void SetClusterId(const char* value) { m_clusterIdHasBeenSet = true; m_clusterId.assign(value); }
-
-    /**
-     * <p>The cluster ID of the cluster that you want to update, for example
-     * <code>CID123e4567-e89b-12d3-a456-426655440000</code>.</p>
-     */
-    inline UpdateClusterRequest& WithClusterId(const Aws::String& value) { SetClusterId(value); return *this;}
-
-    /**
-     * <p>The cluster ID of the cluster that you want to update, for example
-     * <code>CID123e4567-e89b-12d3-a456-426655440000</code>.</p>
-     */
-    inline UpdateClusterRequest& WithClusterId(Aws::String&& value) { SetClusterId(std::move(value)); return *this;}
-
-    /**
-     * <p>The cluster ID of the cluster that you want to update, for example
-     * <code>CID123e4567-e89b-12d3-a456-426655440000</code>.</p>
-     */
-    inline UpdateClusterRequest& WithClusterId(const char* value) { SetClusterId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The new role Amazon Resource Name (ARN) that you want to associate with this
      * cluster. To create a role ARN, use the <a
      * href="https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a>
      * API action in Identity and Access Management (IAM).</p>
      */
-    inline const Aws::String& GetRoleARN() const{ return m_roleARN; }
-
-    /**
-     * <p>The new role Amazon Resource Name (ARN) that you want to associate with this
-     * cluster. To create a role ARN, use the <a
-     * href="https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a>
-     * API action in Identity and Access Management (IAM).</p>
-     */
+    inline const Aws::String& GetRoleARN() const { return m_roleARN; }
     inline bool RoleARNHasBeenSet() const { return m_roleARNHasBeenSet; }
+    template<typename RoleARNT = Aws::String>
+    void SetRoleARN(RoleARNT&& value) { m_roleARNHasBeenSet = true; m_roleARN = std::forward<RoleARNT>(value); }
+    template<typename RoleARNT = Aws::String>
+    UpdateClusterRequest& WithRoleARN(RoleARNT&& value) { SetRoleARN(std::forward<RoleARNT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The new role Amazon Resource Name (ARN) that you want to associate with this
-     * cluster. To create a role ARN, use the <a
-     * href="https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a>
-     * API action in Identity and Access Management (IAM).</p>
-     */
-    inline void SetRoleARN(const Aws::String& value) { m_roleARNHasBeenSet = true; m_roleARN = value; }
-
-    /**
-     * <p>The new role Amazon Resource Name (ARN) that you want to associate with this
-     * cluster. To create a role ARN, use the <a
-     * href="https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a>
-     * API action in Identity and Access Management (IAM).</p>
-     */
-    inline void SetRoleARN(Aws::String&& value) { m_roleARNHasBeenSet = true; m_roleARN = std::move(value); }
-
-    /**
-     * <p>The new role Amazon Resource Name (ARN) that you want to associate with this
-     * cluster. To create a role ARN, use the <a
-     * href="https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a>
-     * API action in Identity and Access Management (IAM).</p>
-     */
-    inline void SetRoleARN(const char* value) { m_roleARNHasBeenSet = true; m_roleARN.assign(value); }
-
-    /**
-     * <p>The new role Amazon Resource Name (ARN) that you want to associate with this
-     * cluster. To create a role ARN, use the <a
-     * href="https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a>
-     * API action in Identity and Access Management (IAM).</p>
-     */
-    inline UpdateClusterRequest& WithRoleARN(const Aws::String& value) { SetRoleARN(value); return *this;}
-
-    /**
-     * <p>The new role Amazon Resource Name (ARN) that you want to associate with this
-     * cluster. To create a role ARN, use the <a
-     * href="https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a>
-     * API action in Identity and Access Management (IAM).</p>
-     */
-    inline UpdateClusterRequest& WithRoleARN(Aws::String&& value) { SetRoleARN(std::move(value)); return *this;}
-
-    /**
-     * <p>The new role Amazon Resource Name (ARN) that you want to associate with this
-     * cluster. To create a role ARN, use the <a
-     * href="https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a>
-     * API action in Identity and Access Management (IAM).</p>
-     */
-    inline UpdateClusterRequest& WithRoleARN(const char* value) { SetRoleARN(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The updated description of this cluster.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The updated description of this cluster.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    UpdateClusterRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The updated description of this cluster.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The updated description of this cluster.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The updated description of this cluster.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The updated description of this cluster.</p>
-     */
-    inline UpdateClusterRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The updated description of this cluster.</p>
-     */
-    inline UpdateClusterRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The updated description of this cluster.</p>
-     */
-    inline UpdateClusterRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The updated arrays of <a>JobResource</a> objects that can include updated
      * <a>S3Resource</a> objects or <a>LambdaResource</a> objects.</p>
      */
-    inline const JobResource& GetResources() const{ return m_resources; }
-
-    /**
-     * <p>The updated arrays of <a>JobResource</a> objects that can include updated
-     * <a>S3Resource</a> objects or <a>LambdaResource</a> objects.</p>
-     */
+    inline const JobResource& GetResources() const { return m_resources; }
     inline bool ResourcesHasBeenSet() const { return m_resourcesHasBeenSet; }
+    template<typename ResourcesT = JobResource>
+    void SetResources(ResourcesT&& value) { m_resourcesHasBeenSet = true; m_resources = std::forward<ResourcesT>(value); }
+    template<typename ResourcesT = JobResource>
+    UpdateClusterRequest& WithResources(ResourcesT&& value) { SetResources(std::forward<ResourcesT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The updated arrays of <a>JobResource</a> objects that can include updated
-     * <a>S3Resource</a> objects or <a>LambdaResource</a> objects.</p>
-     */
-    inline void SetResources(const JobResource& value) { m_resourcesHasBeenSet = true; m_resources = value; }
-
-    /**
-     * <p>The updated arrays of <a>JobResource</a> objects that can include updated
-     * <a>S3Resource</a> objects or <a>LambdaResource</a> objects.</p>
-     */
-    inline void SetResources(JobResource&& value) { m_resourcesHasBeenSet = true; m_resources = std::move(value); }
-
-    /**
-     * <p>The updated arrays of <a>JobResource</a> objects that can include updated
-     * <a>S3Resource</a> objects or <a>LambdaResource</a> objects.</p>
-     */
-    inline UpdateClusterRequest& WithResources(const JobResource& value) { SetResources(value); return *this;}
-
-    /**
-     * <p>The updated arrays of <a>JobResource</a> objects that can include updated
-     * <a>S3Resource</a> objects or <a>LambdaResource</a> objects.</p>
-     */
-    inline UpdateClusterRequest& WithResources(JobResource&& value) { SetResources(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the service or services on the Snow Family device that your
      * transferred data will be exported from or imported into. Amazon Web Services
      * Snow Family device clusters support Amazon S3 and NFS (Network File System).</p>
      */
-    inline const OnDeviceServiceConfiguration& GetOnDeviceServiceConfiguration() const{ return m_onDeviceServiceConfiguration; }
-
-    /**
-     * <p>Specifies the service or services on the Snow Family device that your
-     * transferred data will be exported from or imported into. Amazon Web Services
-     * Snow Family device clusters support Amazon S3 and NFS (Network File System).</p>
-     */
+    inline const OnDeviceServiceConfiguration& GetOnDeviceServiceConfiguration() const { return m_onDeviceServiceConfiguration; }
     inline bool OnDeviceServiceConfigurationHasBeenSet() const { return m_onDeviceServiceConfigurationHasBeenSet; }
+    template<typename OnDeviceServiceConfigurationT = OnDeviceServiceConfiguration>
+    void SetOnDeviceServiceConfiguration(OnDeviceServiceConfigurationT&& value) { m_onDeviceServiceConfigurationHasBeenSet = true; m_onDeviceServiceConfiguration = std::forward<OnDeviceServiceConfigurationT>(value); }
+    template<typename OnDeviceServiceConfigurationT = OnDeviceServiceConfiguration>
+    UpdateClusterRequest& WithOnDeviceServiceConfiguration(OnDeviceServiceConfigurationT&& value) { SetOnDeviceServiceConfiguration(std::forward<OnDeviceServiceConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the service or services on the Snow Family device that your
-     * transferred data will be exported from or imported into. Amazon Web Services
-     * Snow Family device clusters support Amazon S3 and NFS (Network File System).</p>
-     */
-    inline void SetOnDeviceServiceConfiguration(const OnDeviceServiceConfiguration& value) { m_onDeviceServiceConfigurationHasBeenSet = true; m_onDeviceServiceConfiguration = value; }
-
-    /**
-     * <p>Specifies the service or services on the Snow Family device that your
-     * transferred data will be exported from or imported into. Amazon Web Services
-     * Snow Family device clusters support Amazon S3 and NFS (Network File System).</p>
-     */
-    inline void SetOnDeviceServiceConfiguration(OnDeviceServiceConfiguration&& value) { m_onDeviceServiceConfigurationHasBeenSet = true; m_onDeviceServiceConfiguration = std::move(value); }
-
-    /**
-     * <p>Specifies the service or services on the Snow Family device that your
-     * transferred data will be exported from or imported into. Amazon Web Services
-     * Snow Family device clusters support Amazon S3 and NFS (Network File System).</p>
-     */
-    inline UpdateClusterRequest& WithOnDeviceServiceConfiguration(const OnDeviceServiceConfiguration& value) { SetOnDeviceServiceConfiguration(value); return *this;}
-
-    /**
-     * <p>Specifies the service or services on the Snow Family device that your
-     * transferred data will be exported from or imported into. Amazon Web Services
-     * Snow Family device clusters support Amazon S3 and NFS (Network File System).</p>
-     */
-    inline UpdateClusterRequest& WithOnDeviceServiceConfiguration(OnDeviceServiceConfiguration&& value) { SetOnDeviceServiceConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the updated <a>Address</a> object.</p>
      */
-    inline const Aws::String& GetAddressId() const{ return m_addressId; }
-
-    /**
-     * <p>The ID of the updated <a>Address</a> object.</p>
-     */
+    inline const Aws::String& GetAddressId() const { return m_addressId; }
     inline bool AddressIdHasBeenSet() const { return m_addressIdHasBeenSet; }
+    template<typename AddressIdT = Aws::String>
+    void SetAddressId(AddressIdT&& value) { m_addressIdHasBeenSet = true; m_addressId = std::forward<AddressIdT>(value); }
+    template<typename AddressIdT = Aws::String>
+    UpdateClusterRequest& WithAddressId(AddressIdT&& value) { SetAddressId(std::forward<AddressIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the updated <a>Address</a> object.</p>
-     */
-    inline void SetAddressId(const Aws::String& value) { m_addressIdHasBeenSet = true; m_addressId = value; }
-
-    /**
-     * <p>The ID of the updated <a>Address</a> object.</p>
-     */
-    inline void SetAddressId(Aws::String&& value) { m_addressIdHasBeenSet = true; m_addressId = std::move(value); }
-
-    /**
-     * <p>The ID of the updated <a>Address</a> object.</p>
-     */
-    inline void SetAddressId(const char* value) { m_addressIdHasBeenSet = true; m_addressId.assign(value); }
-
-    /**
-     * <p>The ID of the updated <a>Address</a> object.</p>
-     */
-    inline UpdateClusterRequest& WithAddressId(const Aws::String& value) { SetAddressId(value); return *this;}
-
-    /**
-     * <p>The ID of the updated <a>Address</a> object.</p>
-     */
-    inline UpdateClusterRequest& WithAddressId(Aws::String&& value) { SetAddressId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the updated <a>Address</a> object.</p>
-     */
-    inline UpdateClusterRequest& WithAddressId(const char* value) { SetAddressId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The updated shipping option value of this cluster's <a>ShippingDetails</a>
      * object.</p>
      */
-    inline const ShippingOption& GetShippingOption() const{ return m_shippingOption; }
-
-    /**
-     * <p>The updated shipping option value of this cluster's <a>ShippingDetails</a>
-     * object.</p>
-     */
+    inline ShippingOption GetShippingOption() const { return m_shippingOption; }
     inline bool ShippingOptionHasBeenSet() const { return m_shippingOptionHasBeenSet; }
+    inline void SetShippingOption(ShippingOption value) { m_shippingOptionHasBeenSet = true; m_shippingOption = value; }
+    inline UpdateClusterRequest& WithShippingOption(ShippingOption value) { SetShippingOption(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The updated shipping option value of this cluster's <a>ShippingDetails</a>
-     * object.</p>
-     */
-    inline void SetShippingOption(const ShippingOption& value) { m_shippingOptionHasBeenSet = true; m_shippingOption = value; }
-
-    /**
-     * <p>The updated shipping option value of this cluster's <a>ShippingDetails</a>
-     * object.</p>
-     */
-    inline void SetShippingOption(ShippingOption&& value) { m_shippingOptionHasBeenSet = true; m_shippingOption = std::move(value); }
-
-    /**
-     * <p>The updated shipping option value of this cluster's <a>ShippingDetails</a>
-     * object.</p>
-     */
-    inline UpdateClusterRequest& WithShippingOption(const ShippingOption& value) { SetShippingOption(value); return *this;}
-
-    /**
-     * <p>The updated shipping option value of this cluster's <a>ShippingDetails</a>
-     * object.</p>
-     */
-    inline UpdateClusterRequest& WithShippingOption(ShippingOption&& value) { SetShippingOption(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The new or updated <a>Notification</a> object.</p>
      */
-    inline const Notification& GetNotification() const{ return m_notification; }
-
-    /**
-     * <p>The new or updated <a>Notification</a> object.</p>
-     */
+    inline const Notification& GetNotification() const { return m_notification; }
     inline bool NotificationHasBeenSet() const { return m_notificationHasBeenSet; }
+    template<typename NotificationT = Notification>
+    void SetNotification(NotificationT&& value) { m_notificationHasBeenSet = true; m_notification = std::forward<NotificationT>(value); }
+    template<typename NotificationT = Notification>
+    UpdateClusterRequest& WithNotification(NotificationT&& value) { SetNotification(std::forward<NotificationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The new or updated <a>Notification</a> object.</p>
-     */
-    inline void SetNotification(const Notification& value) { m_notificationHasBeenSet = true; m_notification = value; }
-
-    /**
-     * <p>The new or updated <a>Notification</a> object.</p>
-     */
-    inline void SetNotification(Notification&& value) { m_notificationHasBeenSet = true; m_notification = std::move(value); }
-
-    /**
-     * <p>The new or updated <a>Notification</a> object.</p>
-     */
-    inline UpdateClusterRequest& WithNotification(const Notification& value) { SetNotification(value); return *this;}
-
-    /**
-     * <p>The new or updated <a>Notification</a> object.</p>
-     */
-    inline UpdateClusterRequest& WithNotification(Notification&& value) { SetNotification(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The updated ID for the forwarding address for a cluster. This field is not
      * supported in most regions.</p>
      */
-    inline const Aws::String& GetForwardingAddressId() const{ return m_forwardingAddressId; }
-
-    /**
-     * <p>The updated ID for the forwarding address for a cluster. This field is not
-     * supported in most regions.</p>
-     */
+    inline const Aws::String& GetForwardingAddressId() const { return m_forwardingAddressId; }
     inline bool ForwardingAddressIdHasBeenSet() const { return m_forwardingAddressIdHasBeenSet; }
-
-    /**
-     * <p>The updated ID for the forwarding address for a cluster. This field is not
-     * supported in most regions.</p>
-     */
-    inline void SetForwardingAddressId(const Aws::String& value) { m_forwardingAddressIdHasBeenSet = true; m_forwardingAddressId = value; }
-
-    /**
-     * <p>The updated ID for the forwarding address for a cluster. This field is not
-     * supported in most regions.</p>
-     */
-    inline void SetForwardingAddressId(Aws::String&& value) { m_forwardingAddressIdHasBeenSet = true; m_forwardingAddressId = std::move(value); }
-
-    /**
-     * <p>The updated ID for the forwarding address for a cluster. This field is not
-     * supported in most regions.</p>
-     */
-    inline void SetForwardingAddressId(const char* value) { m_forwardingAddressIdHasBeenSet = true; m_forwardingAddressId.assign(value); }
-
-    /**
-     * <p>The updated ID for the forwarding address for a cluster. This field is not
-     * supported in most regions.</p>
-     */
-    inline UpdateClusterRequest& WithForwardingAddressId(const Aws::String& value) { SetForwardingAddressId(value); return *this;}
-
-    /**
-     * <p>The updated ID for the forwarding address for a cluster. This field is not
-     * supported in most regions.</p>
-     */
-    inline UpdateClusterRequest& WithForwardingAddressId(Aws::String&& value) { SetForwardingAddressId(std::move(value)); return *this;}
-
-    /**
-     * <p>The updated ID for the forwarding address for a cluster. This field is not
-     * supported in most regions.</p>
-     */
-    inline UpdateClusterRequest& WithForwardingAddressId(const char* value) { SetForwardingAddressId(value); return *this;}
-
+    template<typename ForwardingAddressIdT = Aws::String>
+    void SetForwardingAddressId(ForwardingAddressIdT&& value) { m_forwardingAddressIdHasBeenSet = true; m_forwardingAddressId = std::forward<ForwardingAddressIdT>(value); }
+    template<typename ForwardingAddressIdT = Aws::String>
+    UpdateClusterRequest& WithForwardingAddressId(ForwardingAddressIdT&& value) { SetForwardingAddressId(std::forward<ForwardingAddressIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_clusterId;
@@ -450,7 +172,7 @@ namespace Model
     Aws::String m_addressId;
     bool m_addressIdHasBeenSet = false;
 
-    ShippingOption m_shippingOption;
+    ShippingOption m_shippingOption{ShippingOption::NOT_SET};
     bool m_shippingOptionHasBeenSet = false;
 
     Notification m_notification;

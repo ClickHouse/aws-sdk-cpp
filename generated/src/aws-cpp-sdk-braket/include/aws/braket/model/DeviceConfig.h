@@ -24,68 +24,32 @@ namespace Model
 {
 
   /**
-   * <p>Configures the quantum processing units (QPUs) or simulator used to create
-   * and run an Amazon Braket job.</p><p><h3>See Also:</h3>   <a
+   * <p>Configures the primary device used to create and run an Amazon Braket hybrid
+   * job.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/braket-2019-09-01/DeviceConfig">AWS
    * API Reference</a></p>
    */
   class DeviceConfig
   {
   public:
-    AWS_BRAKET_API DeviceConfig();
+    AWS_BRAKET_API DeviceConfig() = default;
     AWS_BRAKET_API DeviceConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_BRAKET_API DeviceConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_BRAKET_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The primary quantum processing unit (QPU) or simulator used to create and run
-     * an Amazon Braket job.</p>
+     * <p>The primary device ARN used to create and run an Amazon Braket hybrid
+     * job.</p>
      */
-    inline const Aws::String& GetDevice() const{ return m_device; }
-
-    /**
-     * <p>The primary quantum processing unit (QPU) or simulator used to create and run
-     * an Amazon Braket job.</p>
-     */
+    inline const Aws::String& GetDevice() const { return m_device; }
     inline bool DeviceHasBeenSet() const { return m_deviceHasBeenSet; }
-
-    /**
-     * <p>The primary quantum processing unit (QPU) or simulator used to create and run
-     * an Amazon Braket job.</p>
-     */
-    inline void SetDevice(const Aws::String& value) { m_deviceHasBeenSet = true; m_device = value; }
-
-    /**
-     * <p>The primary quantum processing unit (QPU) or simulator used to create and run
-     * an Amazon Braket job.</p>
-     */
-    inline void SetDevice(Aws::String&& value) { m_deviceHasBeenSet = true; m_device = std::move(value); }
-
-    /**
-     * <p>The primary quantum processing unit (QPU) or simulator used to create and run
-     * an Amazon Braket job.</p>
-     */
-    inline void SetDevice(const char* value) { m_deviceHasBeenSet = true; m_device.assign(value); }
-
-    /**
-     * <p>The primary quantum processing unit (QPU) or simulator used to create and run
-     * an Amazon Braket job.</p>
-     */
-    inline DeviceConfig& WithDevice(const Aws::String& value) { SetDevice(value); return *this;}
-
-    /**
-     * <p>The primary quantum processing unit (QPU) or simulator used to create and run
-     * an Amazon Braket job.</p>
-     */
-    inline DeviceConfig& WithDevice(Aws::String&& value) { SetDevice(std::move(value)); return *this;}
-
-    /**
-     * <p>The primary quantum processing unit (QPU) or simulator used to create and run
-     * an Amazon Braket job.</p>
-     */
-    inline DeviceConfig& WithDevice(const char* value) { SetDevice(value); return *this;}
-
+    template<typename DeviceT = Aws::String>
+    void SetDevice(DeviceT&& value) { m_deviceHasBeenSet = true; m_device = std::forward<DeviceT>(value); }
+    template<typename DeviceT = Aws::String>
+    DeviceConfig& WithDevice(DeviceT&& value) { SetDevice(std::forward<DeviceT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_device;

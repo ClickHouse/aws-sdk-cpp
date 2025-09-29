@@ -32,79 +32,39 @@ namespace Model
   class SegmentReference
   {
   public:
-    AWS_PINPOINT_API SegmentReference();
+    AWS_PINPOINT_API SegmentReference() = default;
     AWS_PINPOINT_API SegmentReference(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API SegmentReference& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The unique identifier for the segment.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The unique identifier for the segment.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    SegmentReference& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier for the segment.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The unique identifier for the segment.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the segment.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The unique identifier for the segment.</p>
-     */
-    inline SegmentReference& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the segment.</p>
-     */
-    inline SegmentReference& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the segment.</p>
-     */
-    inline SegmentReference& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The version number of the segment.</p>
      */
-    inline int GetVersion() const{ return m_version; }
-
-    /**
-     * <p>The version number of the segment.</p>
-     */
+    inline int GetVersion() const { return m_version; }
     inline bool VersionHasBeenSet() const { return m_versionHasBeenSet; }
-
-    /**
-     * <p>The version number of the segment.</p>
-     */
     inline void SetVersion(int value) { m_versionHasBeenSet = true; m_version = value; }
-
-    /**
-     * <p>The version number of the segment.</p>
-     */
     inline SegmentReference& WithVersion(int value) { SetVersion(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_id;
     bool m_idHasBeenSet = false;
 
-    int m_version;
+    int m_version{0};
     bool m_versionHasBeenSet = false;
   };
 

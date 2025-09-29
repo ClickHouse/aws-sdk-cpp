@@ -10,12 +10,6 @@
 using namespace Aws::ElastiCache::Model;
 using namespace Aws::Utils;
 
-ModifyCacheParameterGroupRequest::ModifyCacheParameterGroupRequest() : 
-    m_cacheParameterGroupNameHasBeenSet(false),
-    m_parameterNameValuesHasBeenSet(false)
-{
-}
-
 Aws::String ModifyCacheParameterGroupRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -27,11 +21,18 @@ Aws::String ModifyCacheParameterGroupRequest::SerializePayload() const
 
   if(m_parameterNameValuesHasBeenSet)
   {
-    unsigned parameterNameValuesCount = 1;
-    for(auto& item : m_parameterNameValues)
+    if (m_parameterNameValues.empty())
     {
-      item.OutputToStream(ss, "ParameterNameValues.member.", parameterNameValuesCount, "");
-      parameterNameValuesCount++;
+      ss << "ParameterNameValues=&";
+    }
+    else
+    {
+      unsigned parameterNameValuesCount = 1;
+      for(auto& item : m_parameterNameValues)
+      {
+        item.OutputToStream(ss, "ParameterNameValues.ParameterNameValue.", parameterNameValuesCount, "");
+        parameterNameValuesCount++;
+      }
     }
   }
 

@@ -18,23 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-LineChartMarkerStyleSettings::LineChartMarkerStyleSettings() : 
-    m_markerVisibility(Visibility::NOT_SET),
-    m_markerVisibilityHasBeenSet(false),
-    m_markerShape(LineChartMarkerShape::NOT_SET),
-    m_markerShapeHasBeenSet(false),
-    m_markerSizeHasBeenSet(false),
-    m_markerColorHasBeenSet(false)
-{
-}
-
-LineChartMarkerStyleSettings::LineChartMarkerStyleSettings(JsonView jsonValue) : 
-    m_markerVisibility(Visibility::NOT_SET),
-    m_markerVisibilityHasBeenSet(false),
-    m_markerShape(LineChartMarkerShape::NOT_SET),
-    m_markerShapeHasBeenSet(false),
-    m_markerSizeHasBeenSet(false),
-    m_markerColorHasBeenSet(false)
+LineChartMarkerStyleSettings::LineChartMarkerStyleSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,31 +28,23 @@ LineChartMarkerStyleSettings& LineChartMarkerStyleSettings::operator =(JsonView 
   if(jsonValue.ValueExists("MarkerVisibility"))
   {
     m_markerVisibility = VisibilityMapper::GetVisibilityForName(jsonValue.GetString("MarkerVisibility"));
-
     m_markerVisibilityHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MarkerShape"))
   {
     m_markerShape = LineChartMarkerShapeMapper::GetLineChartMarkerShapeForName(jsonValue.GetString("MarkerShape"));
-
     m_markerShapeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MarkerSize"))
   {
     m_markerSize = jsonValue.GetString("MarkerSize");
-
     m_markerSizeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MarkerColor"))
   {
     m_markerColor = jsonValue.GetString("MarkerColor");
-
     m_markerColorHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -23,7 +23,7 @@ namespace Model
   class CreateParticipantRequest : public ConnectRequest
   {
   public:
-    AWS_CONNECT_API CreateParticipantRequest();
+    AWS_CONNECT_API CreateParticipantRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,112 +34,36 @@ namespace Model
     AWS_CONNECT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The identifier of the Amazon Connect instance. You can <a
      * href="https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html">find
      * the instance ID</a> in the Amazon Resource Name (ARN) of the instance. </p>
      */
-    inline const Aws::String& GetInstanceId() const{ return m_instanceId; }
-
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can <a
-     * href="https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html">find
-     * the instance ID</a> in the Amazon Resource Name (ARN) of the instance. </p>
-     */
+    inline const Aws::String& GetInstanceId() const { return m_instanceId; }
     inline bool InstanceIdHasBeenSet() const { return m_instanceIdHasBeenSet; }
+    template<typename InstanceIdT = Aws::String>
+    void SetInstanceId(InstanceIdT&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::forward<InstanceIdT>(value); }
+    template<typename InstanceIdT = Aws::String>
+    CreateParticipantRequest& WithInstanceId(InstanceIdT&& value) { SetInstanceId(std::forward<InstanceIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The identifier of the Amazon Connect instance. You can <a
-     * href="https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html">find
-     * the instance ID</a> in the Amazon Resource Name (ARN) of the instance. </p>
+     * <p>The identifier of the contact in this instance of Amazon Connect. Supports
+     * contacts in the CHAT channel and VOICE (WebRTC) channels. For WebRTC calls, this
+     * should be the initial contact ID that was generated when the contact was first
+     * created (from the StartWebRTCContact API) in the VOICE channel</p>
      */
-    inline void SetInstanceId(const Aws::String& value) { m_instanceIdHasBeenSet = true; m_instanceId = value; }
-
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can <a
-     * href="https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html">find
-     * the instance ID</a> in the Amazon Resource Name (ARN) of the instance. </p>
-     */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::move(value); }
-
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can <a
-     * href="https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html">find
-     * the instance ID</a> in the Amazon Resource Name (ARN) of the instance. </p>
-     */
-    inline void SetInstanceId(const char* value) { m_instanceIdHasBeenSet = true; m_instanceId.assign(value); }
-
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can <a
-     * href="https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html">find
-     * the instance ID</a> in the Amazon Resource Name (ARN) of the instance. </p>
-     */
-    inline CreateParticipantRequest& WithInstanceId(const Aws::String& value) { SetInstanceId(value); return *this;}
-
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can <a
-     * href="https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html">find
-     * the instance ID</a> in the Amazon Resource Name (ARN) of the instance. </p>
-     */
-    inline CreateParticipantRequest& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can <a
-     * href="https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html">find
-     * the instance ID</a> in the Amazon Resource Name (ARN) of the instance. </p>
-     */
-    inline CreateParticipantRequest& WithInstanceId(const char* value) { SetInstanceId(value); return *this;}
-
-
-    /**
-     * <p>The identifier of the contact in this instance of Amazon Connect. Only
-     * contacts in the CHAT channel are supported.</p>
-     */
-    inline const Aws::String& GetContactId() const{ return m_contactId; }
-
-    /**
-     * <p>The identifier of the contact in this instance of Amazon Connect. Only
-     * contacts in the CHAT channel are supported.</p>
-     */
+    inline const Aws::String& GetContactId() const { return m_contactId; }
     inline bool ContactIdHasBeenSet() const { return m_contactIdHasBeenSet; }
+    template<typename ContactIdT = Aws::String>
+    void SetContactId(ContactIdT&& value) { m_contactIdHasBeenSet = true; m_contactId = std::forward<ContactIdT>(value); }
+    template<typename ContactIdT = Aws::String>
+    CreateParticipantRequest& WithContactId(ContactIdT&& value) { SetContactId(std::forward<ContactIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the contact in this instance of Amazon Connect. Only
-     * contacts in the CHAT channel are supported.</p>
-     */
-    inline void SetContactId(const Aws::String& value) { m_contactIdHasBeenSet = true; m_contactId = value; }
-
-    /**
-     * <p>The identifier of the contact in this instance of Amazon Connect. Only
-     * contacts in the CHAT channel are supported.</p>
-     */
-    inline void SetContactId(Aws::String&& value) { m_contactIdHasBeenSet = true; m_contactId = std::move(value); }
-
-    /**
-     * <p>The identifier of the contact in this instance of Amazon Connect. Only
-     * contacts in the CHAT channel are supported.</p>
-     */
-    inline void SetContactId(const char* value) { m_contactIdHasBeenSet = true; m_contactId.assign(value); }
-
-    /**
-     * <p>The identifier of the contact in this instance of Amazon Connect. Only
-     * contacts in the CHAT channel are supported.</p>
-     */
-    inline CreateParticipantRequest& WithContactId(const Aws::String& value) { SetContactId(value); return *this;}
-
-    /**
-     * <p>The identifier of the contact in this instance of Amazon Connect. Only
-     * contacts in the CHAT channel are supported.</p>
-     */
-    inline CreateParticipantRequest& WithContactId(Aws::String&& value) { SetContactId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the contact in this instance of Amazon Connect. Only
-     * contacts in the CHAT channel are supported.</p>
-     */
-    inline CreateParticipantRequest& WithContactId(const char* value) { SetContactId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A unique, case-sensitive identifier that you provide to ensure the
      * idempotency of the request. If not provided, the Amazon Web Services SDK
@@ -147,114 +71,27 @@ namespace Model
      * href="https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/">Making
      * retries safe with idempotent APIs</a>.</p>
      */
-    inline const Aws::String& GetClientToken() const{ return m_clientToken; }
-
-    /**
-     * <p>A unique, case-sensitive identifier that you provide to ensure the
-     * idempotency of the request. If not provided, the Amazon Web Services SDK
-     * populates this field. For more information about idempotency, see <a
-     * href="https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/">Making
-     * retries safe with idempotent APIs</a>.</p>
-     */
+    inline const Aws::String& GetClientToken() const { return m_clientToken; }
     inline bool ClientTokenHasBeenSet() const { return m_clientTokenHasBeenSet; }
+    template<typename ClientTokenT = Aws::String>
+    void SetClientToken(ClientTokenT&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::forward<ClientTokenT>(value); }
+    template<typename ClientTokenT = Aws::String>
+    CreateParticipantRequest& WithClientToken(ClientTokenT&& value) { SetClientToken(std::forward<ClientTokenT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A unique, case-sensitive identifier that you provide to ensure the
-     * idempotency of the request. If not provided, the Amazon Web Services SDK
-     * populates this field. For more information about idempotency, see <a
-     * href="https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/">Making
-     * retries safe with idempotent APIs</a>.</p>
+     * <p>Information identifying the participant.</p>  <p>The only valid
+     * value for <code>ParticipantRole</code> is <code>CUSTOM_BOT</code> for chat
+     * contact and <code>CUSTOMER</code> for voice contact.</p> 
      */
-    inline void SetClientToken(const Aws::String& value) { m_clientTokenHasBeenSet = true; m_clientToken = value; }
-
-    /**
-     * <p>A unique, case-sensitive identifier that you provide to ensure the
-     * idempotency of the request. If not provided, the Amazon Web Services SDK
-     * populates this field. For more information about idempotency, see <a
-     * href="https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/">Making
-     * retries safe with idempotent APIs</a>.</p>
-     */
-    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::move(value); }
-
-    /**
-     * <p>A unique, case-sensitive identifier that you provide to ensure the
-     * idempotency of the request. If not provided, the Amazon Web Services SDK
-     * populates this field. For more information about idempotency, see <a
-     * href="https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/">Making
-     * retries safe with idempotent APIs</a>.</p>
-     */
-    inline void SetClientToken(const char* value) { m_clientTokenHasBeenSet = true; m_clientToken.assign(value); }
-
-    /**
-     * <p>A unique, case-sensitive identifier that you provide to ensure the
-     * idempotency of the request. If not provided, the Amazon Web Services SDK
-     * populates this field. For more information about idempotency, see <a
-     * href="https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/">Making
-     * retries safe with idempotent APIs</a>.</p>
-     */
-    inline CreateParticipantRequest& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
-
-    /**
-     * <p>A unique, case-sensitive identifier that you provide to ensure the
-     * idempotency of the request. If not provided, the Amazon Web Services SDK
-     * populates this field. For more information about idempotency, see <a
-     * href="https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/">Making
-     * retries safe with idempotent APIs</a>.</p>
-     */
-    inline CreateParticipantRequest& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique, case-sensitive identifier that you provide to ensure the
-     * idempotency of the request. If not provided, the Amazon Web Services SDK
-     * populates this field. For more information about idempotency, see <a
-     * href="https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/">Making
-     * retries safe with idempotent APIs</a>.</p>
-     */
-    inline CreateParticipantRequest& WithClientToken(const char* value) { SetClientToken(value); return *this;}
-
-
-    /**
-     * <p>Information identifying the participant.</p>  <p>The only Valid
-     * value for <code>ParticipantRole</code> is <code>CUSTOM_BOT</code>. </p> <p>
-     * <code>DisplayName</code> is <b>Required</b>.</p> 
-     */
-    inline const ParticipantDetailsToAdd& GetParticipantDetails() const{ return m_participantDetails; }
-
-    /**
-     * <p>Information identifying the participant.</p>  <p>The only Valid
-     * value for <code>ParticipantRole</code> is <code>CUSTOM_BOT</code>. </p> <p>
-     * <code>DisplayName</code> is <b>Required</b>.</p> 
-     */
+    inline const ParticipantDetailsToAdd& GetParticipantDetails() const { return m_participantDetails; }
     inline bool ParticipantDetailsHasBeenSet() const { return m_participantDetailsHasBeenSet; }
-
-    /**
-     * <p>Information identifying the participant.</p>  <p>The only Valid
-     * value for <code>ParticipantRole</code> is <code>CUSTOM_BOT</code>. </p> <p>
-     * <code>DisplayName</code> is <b>Required</b>.</p> 
-     */
-    inline void SetParticipantDetails(const ParticipantDetailsToAdd& value) { m_participantDetailsHasBeenSet = true; m_participantDetails = value; }
-
-    /**
-     * <p>Information identifying the participant.</p>  <p>The only Valid
-     * value for <code>ParticipantRole</code> is <code>CUSTOM_BOT</code>. </p> <p>
-     * <code>DisplayName</code> is <b>Required</b>.</p> 
-     */
-    inline void SetParticipantDetails(ParticipantDetailsToAdd&& value) { m_participantDetailsHasBeenSet = true; m_participantDetails = std::move(value); }
-
-    /**
-     * <p>Information identifying the participant.</p>  <p>The only Valid
-     * value for <code>ParticipantRole</code> is <code>CUSTOM_BOT</code>. </p> <p>
-     * <code>DisplayName</code> is <b>Required</b>.</p> 
-     */
-    inline CreateParticipantRequest& WithParticipantDetails(const ParticipantDetailsToAdd& value) { SetParticipantDetails(value); return *this;}
-
-    /**
-     * <p>Information identifying the participant.</p>  <p>The only Valid
-     * value for <code>ParticipantRole</code> is <code>CUSTOM_BOT</code>. </p> <p>
-     * <code>DisplayName</code> is <b>Required</b>.</p> 
-     */
-    inline CreateParticipantRequest& WithParticipantDetails(ParticipantDetailsToAdd&& value) { SetParticipantDetails(std::move(value)); return *this;}
-
+    template<typename ParticipantDetailsT = ParticipantDetailsToAdd>
+    void SetParticipantDetails(ParticipantDetailsT&& value) { m_participantDetailsHasBeenSet = true; m_participantDetails = std::forward<ParticipantDetailsT>(value); }
+    template<typename ParticipantDetailsT = ParticipantDetailsToAdd>
+    CreateParticipantRequest& WithParticipantDetails(ParticipantDetailsT&& value) { SetParticipantDetails(std::forward<ParticipantDetailsT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_instanceId;
@@ -263,8 +100,8 @@ namespace Model
     Aws::String m_contactId;
     bool m_contactIdHasBeenSet = false;
 
-    Aws::String m_clientToken;
-    bool m_clientTokenHasBeenSet = false;
+    Aws::String m_clientToken{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_clientTokenHasBeenSet = true;
 
     ParticipantDetailsToAdd m_participantDetails;
     bool m_participantDetailsHasBeenSet = false;

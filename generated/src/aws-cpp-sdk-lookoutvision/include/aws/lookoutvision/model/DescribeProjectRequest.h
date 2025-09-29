@@ -21,7 +21,7 @@ namespace Model
   class DescribeProjectRequest : public LookoutforVisionRequest
   {
   public:
-    AWS_LOOKOUTFORVISION_API DescribeProjectRequest();
+    AWS_LOOKOUTFORVISION_API DescribeProjectRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_LOOKOUTFORVISION_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of the project that you want to describe.</p>
      */
-    inline const Aws::String& GetProjectName() const{ return m_projectName; }
-
-    /**
-     * <p>The name of the project that you want to describe.</p>
-     */
+    inline const Aws::String& GetProjectName() const { return m_projectName; }
     inline bool ProjectNameHasBeenSet() const { return m_projectNameHasBeenSet; }
-
-    /**
-     * <p>The name of the project that you want to describe.</p>
-     */
-    inline void SetProjectName(const Aws::String& value) { m_projectNameHasBeenSet = true; m_projectName = value; }
-
-    /**
-     * <p>The name of the project that you want to describe.</p>
-     */
-    inline void SetProjectName(Aws::String&& value) { m_projectNameHasBeenSet = true; m_projectName = std::move(value); }
-
-    /**
-     * <p>The name of the project that you want to describe.</p>
-     */
-    inline void SetProjectName(const char* value) { m_projectNameHasBeenSet = true; m_projectName.assign(value); }
-
-    /**
-     * <p>The name of the project that you want to describe.</p>
-     */
-    inline DescribeProjectRequest& WithProjectName(const Aws::String& value) { SetProjectName(value); return *this;}
-
-    /**
-     * <p>The name of the project that you want to describe.</p>
-     */
-    inline DescribeProjectRequest& WithProjectName(Aws::String&& value) { SetProjectName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the project that you want to describe.</p>
-     */
-    inline DescribeProjectRequest& WithProjectName(const char* value) { SetProjectName(value); return *this;}
-
+    template<typename ProjectNameT = Aws::String>
+    void SetProjectName(ProjectNameT&& value) { m_projectNameHasBeenSet = true; m_projectName = std::forward<ProjectNameT>(value); }
+    template<typename ProjectNameT = Aws::String>
+    DescribeProjectRequest& WithProjectName(ProjectNameT&& value) { SetProjectName(std::forward<ProjectNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_projectName;

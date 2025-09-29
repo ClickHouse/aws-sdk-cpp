@@ -63,6 +63,7 @@
 #include <aws/ssm/model/DescribeInstancePatchStatesResult.h>
 #include <aws/ssm/model/DescribeInstancePatchStatesForPatchGroupResult.h>
 #include <aws/ssm/model/DescribeInstancePatchesResult.h>
+#include <aws/ssm/model/DescribeInstancePropertiesResult.h>
 #include <aws/ssm/model/DescribeInventoryDeletionsResult.h>
 #include <aws/ssm/model/DescribeMaintenanceWindowExecutionTaskInvocationsResult.h>
 #include <aws/ssm/model/DescribeMaintenanceWindowExecutionTasksResult.h>
@@ -80,6 +81,7 @@
 #include <aws/ssm/model/DescribePatchPropertiesResult.h>
 #include <aws/ssm/model/DescribeSessionsResult.h>
 #include <aws/ssm/model/DisassociateOpsItemRelatedItemResult.h>
+#include <aws/ssm/model/GetAccessTokenResult.h>
 #include <aws/ssm/model/GetAutomationExecutionResult.h>
 #include <aws/ssm/model/GetCalendarStateResult.h>
 #include <aws/ssm/model/GetCommandInvocationResult.h>
@@ -87,6 +89,7 @@
 #include <aws/ssm/model/GetDefaultPatchBaselineResult.h>
 #include <aws/ssm/model/GetDeployablePatchSnapshotForInstanceResult.h>
 #include <aws/ssm/model/GetDocumentResult.h>
+#include <aws/ssm/model/GetExecutionPreviewResult.h>
 #include <aws/ssm/model/GetInventoryResult.h>
 #include <aws/ssm/model/GetInventorySchemaResult.h>
 #include <aws/ssm/model/GetMaintenanceWindowResult.h>
@@ -116,6 +119,8 @@
 #include <aws/ssm/model/ListDocumentVersionsResult.h>
 #include <aws/ssm/model/ListDocumentsResult.h>
 #include <aws/ssm/model/ListInventoryEntriesResult.h>
+#include <aws/ssm/model/ListNodesResult.h>
+#include <aws/ssm/model/ListNodesSummaryResult.h>
 #include <aws/ssm/model/ListOpsItemEventsResult.h>
 #include <aws/ssm/model/ListOpsItemRelatedItemsResult.h>
 #include <aws/ssm/model/ListOpsMetadataResult.h>
@@ -136,9 +141,11 @@
 #include <aws/ssm/model/ResumeSessionResult.h>
 #include <aws/ssm/model/SendAutomationSignalResult.h>
 #include <aws/ssm/model/SendCommandResult.h>
+#include <aws/ssm/model/StartAccessRequestResult.h>
 #include <aws/ssm/model/StartAssociationsOnceResult.h>
 #include <aws/ssm/model/StartAutomationExecutionResult.h>
 #include <aws/ssm/model/StartChangeRequestExecutionResult.h>
+#include <aws/ssm/model/StartExecutionPreviewResult.h>
 #include <aws/ssm/model/StartSessionResult.h>
 #include <aws/ssm/model/StopAutomationExecutionResult.h>
 #include <aws/ssm/model/TerminateSessionResult.h>
@@ -157,6 +164,36 @@
 #include <aws/ssm/model/UpdatePatchBaselineResult.h>
 #include <aws/ssm/model/UpdateResourceDataSyncResult.h>
 #include <aws/ssm/model/UpdateServiceSettingResult.h>
+#include <aws/ssm/model/DescribeAutomationExecutionsRequest.h>
+#include <aws/ssm/model/GetInventorySchemaRequest.h>
+#include <aws/ssm/model/GetInventoryRequest.h>
+#include <aws/ssm/model/DescribeMaintenanceWindowScheduleRequest.h>
+#include <aws/ssm/model/DescribePatchGroupsRequest.h>
+#include <aws/ssm/model/DeleteAssociationRequest.h>
+#include <aws/ssm/model/ListOpsMetadataRequest.h>
+#include <aws/ssm/model/ListComplianceItemsRequest.h>
+#include <aws/ssm/model/DescribeAvailablePatchesRequest.h>
+#include <aws/ssm/model/DescribeMaintenanceWindowsRequest.h>
+#include <aws/ssm/model/ListOpsItemRelatedItemsRequest.h>
+#include <aws/ssm/model/ListNodesRequest.h>
+#include <aws/ssm/model/ListAssociationsRequest.h>
+#include <aws/ssm/model/ListCommandsRequest.h>
+#include <aws/ssm/model/GetDefaultPatchBaselineRequest.h>
+#include <aws/ssm/model/DescribeInventoryDeletionsRequest.h>
+#include <aws/ssm/model/DescribeInstanceInformationRequest.h>
+#include <aws/ssm/model/GetOpsSummaryRequest.h>
+#include <aws/ssm/model/ListResourceDataSyncRequest.h>
+#include <aws/ssm/model/DescribeOpsItemsRequest.h>
+#include <aws/ssm/model/DescribePatchBaselinesRequest.h>
+#include <aws/ssm/model/ListDocumentsRequest.h>
+#include <aws/ssm/model/DescribeActivationsRequest.h>
+#include <aws/ssm/model/DescribeAssociationRequest.h>
+#include <aws/ssm/model/ListCommandInvocationsRequest.h>
+#include <aws/ssm/model/ListOpsItemEventsRequest.h>
+#include <aws/ssm/model/ListResourceComplianceSummariesRequest.h>
+#include <aws/ssm/model/DescribeParametersRequest.h>
+#include <aws/ssm/model/ListComplianceSummariesRequest.h>
+#include <aws/ssm/model/DescribeInstancePropertiesRequest.h>
 /* End of service model headers required in SSMClient header */
 
 namespace Aws
@@ -190,7 +227,7 @@ namespace Aws
 
   namespace SSM
   {
-    using SSMClientConfiguration = Aws::Client::GenericClientConfiguration<false>;
+    using SSMClientConfiguration = Aws::Client::GenericClientConfiguration;
     using SSMEndpointProviderBase = Aws::SSM::Endpoint::SSMEndpointProviderBase;
     using SSMEndpointProvider = Aws::SSM::Endpoint::SSMEndpointProvider;
 
@@ -242,6 +279,7 @@ namespace Aws
       class DescribeInstancePatchStatesRequest;
       class DescribeInstancePatchStatesForPatchGroupRequest;
       class DescribeInstancePatchesRequest;
+      class DescribeInstancePropertiesRequest;
       class DescribeInventoryDeletionsRequest;
       class DescribeMaintenanceWindowExecutionTaskInvocationsRequest;
       class DescribeMaintenanceWindowExecutionTasksRequest;
@@ -259,6 +297,7 @@ namespace Aws
       class DescribePatchPropertiesRequest;
       class DescribeSessionsRequest;
       class DisassociateOpsItemRelatedItemRequest;
+      class GetAccessTokenRequest;
       class GetAutomationExecutionRequest;
       class GetCalendarStateRequest;
       class GetCommandInvocationRequest;
@@ -266,6 +305,7 @@ namespace Aws
       class GetDefaultPatchBaselineRequest;
       class GetDeployablePatchSnapshotForInstanceRequest;
       class GetDocumentRequest;
+      class GetExecutionPreviewRequest;
       class GetInventoryRequest;
       class GetInventorySchemaRequest;
       class GetMaintenanceWindowRequest;
@@ -295,6 +335,8 @@ namespace Aws
       class ListDocumentVersionsRequest;
       class ListDocumentsRequest;
       class ListInventoryEntriesRequest;
+      class ListNodesRequest;
+      class ListNodesSummaryRequest;
       class ListOpsItemEventsRequest;
       class ListOpsItemRelatedItemsRequest;
       class ListOpsMetadataRequest;
@@ -315,9 +357,11 @@ namespace Aws
       class ResumeSessionRequest;
       class SendAutomationSignalRequest;
       class SendCommandRequest;
+      class StartAccessRequestRequest;
       class StartAssociationsOnceRequest;
       class StartAutomationExecutionRequest;
       class StartChangeRequestExecutionRequest;
+      class StartExecutionPreviewRequest;
       class StartSessionRequest;
       class StopAutomationExecutionRequest;
       class TerminateSessionRequest;
@@ -384,6 +428,7 @@ namespace Aws
       typedef Aws::Utils::Outcome<DescribeInstancePatchStatesResult, SSMError> DescribeInstancePatchStatesOutcome;
       typedef Aws::Utils::Outcome<DescribeInstancePatchStatesForPatchGroupResult, SSMError> DescribeInstancePatchStatesForPatchGroupOutcome;
       typedef Aws::Utils::Outcome<DescribeInstancePatchesResult, SSMError> DescribeInstancePatchesOutcome;
+      typedef Aws::Utils::Outcome<DescribeInstancePropertiesResult, SSMError> DescribeInstancePropertiesOutcome;
       typedef Aws::Utils::Outcome<DescribeInventoryDeletionsResult, SSMError> DescribeInventoryDeletionsOutcome;
       typedef Aws::Utils::Outcome<DescribeMaintenanceWindowExecutionTaskInvocationsResult, SSMError> DescribeMaintenanceWindowExecutionTaskInvocationsOutcome;
       typedef Aws::Utils::Outcome<DescribeMaintenanceWindowExecutionTasksResult, SSMError> DescribeMaintenanceWindowExecutionTasksOutcome;
@@ -401,6 +446,7 @@ namespace Aws
       typedef Aws::Utils::Outcome<DescribePatchPropertiesResult, SSMError> DescribePatchPropertiesOutcome;
       typedef Aws::Utils::Outcome<DescribeSessionsResult, SSMError> DescribeSessionsOutcome;
       typedef Aws::Utils::Outcome<DisassociateOpsItemRelatedItemResult, SSMError> DisassociateOpsItemRelatedItemOutcome;
+      typedef Aws::Utils::Outcome<GetAccessTokenResult, SSMError> GetAccessTokenOutcome;
       typedef Aws::Utils::Outcome<GetAutomationExecutionResult, SSMError> GetAutomationExecutionOutcome;
       typedef Aws::Utils::Outcome<GetCalendarStateResult, SSMError> GetCalendarStateOutcome;
       typedef Aws::Utils::Outcome<GetCommandInvocationResult, SSMError> GetCommandInvocationOutcome;
@@ -408,6 +454,7 @@ namespace Aws
       typedef Aws::Utils::Outcome<GetDefaultPatchBaselineResult, SSMError> GetDefaultPatchBaselineOutcome;
       typedef Aws::Utils::Outcome<GetDeployablePatchSnapshotForInstanceResult, SSMError> GetDeployablePatchSnapshotForInstanceOutcome;
       typedef Aws::Utils::Outcome<GetDocumentResult, SSMError> GetDocumentOutcome;
+      typedef Aws::Utils::Outcome<GetExecutionPreviewResult, SSMError> GetExecutionPreviewOutcome;
       typedef Aws::Utils::Outcome<GetInventoryResult, SSMError> GetInventoryOutcome;
       typedef Aws::Utils::Outcome<GetInventorySchemaResult, SSMError> GetInventorySchemaOutcome;
       typedef Aws::Utils::Outcome<GetMaintenanceWindowResult, SSMError> GetMaintenanceWindowOutcome;
@@ -437,6 +484,8 @@ namespace Aws
       typedef Aws::Utils::Outcome<ListDocumentVersionsResult, SSMError> ListDocumentVersionsOutcome;
       typedef Aws::Utils::Outcome<ListDocumentsResult, SSMError> ListDocumentsOutcome;
       typedef Aws::Utils::Outcome<ListInventoryEntriesResult, SSMError> ListInventoryEntriesOutcome;
+      typedef Aws::Utils::Outcome<ListNodesResult, SSMError> ListNodesOutcome;
+      typedef Aws::Utils::Outcome<ListNodesSummaryResult, SSMError> ListNodesSummaryOutcome;
       typedef Aws::Utils::Outcome<ListOpsItemEventsResult, SSMError> ListOpsItemEventsOutcome;
       typedef Aws::Utils::Outcome<ListOpsItemRelatedItemsResult, SSMError> ListOpsItemRelatedItemsOutcome;
       typedef Aws::Utils::Outcome<ListOpsMetadataResult, SSMError> ListOpsMetadataOutcome;
@@ -457,9 +506,11 @@ namespace Aws
       typedef Aws::Utils::Outcome<ResumeSessionResult, SSMError> ResumeSessionOutcome;
       typedef Aws::Utils::Outcome<SendAutomationSignalResult, SSMError> SendAutomationSignalOutcome;
       typedef Aws::Utils::Outcome<SendCommandResult, SSMError> SendCommandOutcome;
+      typedef Aws::Utils::Outcome<StartAccessRequestResult, SSMError> StartAccessRequestOutcome;
       typedef Aws::Utils::Outcome<StartAssociationsOnceResult, SSMError> StartAssociationsOnceOutcome;
       typedef Aws::Utils::Outcome<StartAutomationExecutionResult, SSMError> StartAutomationExecutionOutcome;
       typedef Aws::Utils::Outcome<StartChangeRequestExecutionResult, SSMError> StartChangeRequestExecutionOutcome;
+      typedef Aws::Utils::Outcome<StartExecutionPreviewResult, SSMError> StartExecutionPreviewOutcome;
       typedef Aws::Utils::Outcome<StartSessionResult, SSMError> StartSessionOutcome;
       typedef Aws::Utils::Outcome<StopAutomationExecutionResult, SSMError> StopAutomationExecutionOutcome;
       typedef Aws::Utils::Outcome<TerminateSessionResult, SSMError> TerminateSessionOutcome;
@@ -526,6 +577,7 @@ namespace Aws
       typedef std::future<DescribeInstancePatchStatesOutcome> DescribeInstancePatchStatesOutcomeCallable;
       typedef std::future<DescribeInstancePatchStatesForPatchGroupOutcome> DescribeInstancePatchStatesForPatchGroupOutcomeCallable;
       typedef std::future<DescribeInstancePatchesOutcome> DescribeInstancePatchesOutcomeCallable;
+      typedef std::future<DescribeInstancePropertiesOutcome> DescribeInstancePropertiesOutcomeCallable;
       typedef std::future<DescribeInventoryDeletionsOutcome> DescribeInventoryDeletionsOutcomeCallable;
       typedef std::future<DescribeMaintenanceWindowExecutionTaskInvocationsOutcome> DescribeMaintenanceWindowExecutionTaskInvocationsOutcomeCallable;
       typedef std::future<DescribeMaintenanceWindowExecutionTasksOutcome> DescribeMaintenanceWindowExecutionTasksOutcomeCallable;
@@ -543,6 +595,7 @@ namespace Aws
       typedef std::future<DescribePatchPropertiesOutcome> DescribePatchPropertiesOutcomeCallable;
       typedef std::future<DescribeSessionsOutcome> DescribeSessionsOutcomeCallable;
       typedef std::future<DisassociateOpsItemRelatedItemOutcome> DisassociateOpsItemRelatedItemOutcomeCallable;
+      typedef std::future<GetAccessTokenOutcome> GetAccessTokenOutcomeCallable;
       typedef std::future<GetAutomationExecutionOutcome> GetAutomationExecutionOutcomeCallable;
       typedef std::future<GetCalendarStateOutcome> GetCalendarStateOutcomeCallable;
       typedef std::future<GetCommandInvocationOutcome> GetCommandInvocationOutcomeCallable;
@@ -550,6 +603,7 @@ namespace Aws
       typedef std::future<GetDefaultPatchBaselineOutcome> GetDefaultPatchBaselineOutcomeCallable;
       typedef std::future<GetDeployablePatchSnapshotForInstanceOutcome> GetDeployablePatchSnapshotForInstanceOutcomeCallable;
       typedef std::future<GetDocumentOutcome> GetDocumentOutcomeCallable;
+      typedef std::future<GetExecutionPreviewOutcome> GetExecutionPreviewOutcomeCallable;
       typedef std::future<GetInventoryOutcome> GetInventoryOutcomeCallable;
       typedef std::future<GetInventorySchemaOutcome> GetInventorySchemaOutcomeCallable;
       typedef std::future<GetMaintenanceWindowOutcome> GetMaintenanceWindowOutcomeCallable;
@@ -579,6 +633,8 @@ namespace Aws
       typedef std::future<ListDocumentVersionsOutcome> ListDocumentVersionsOutcomeCallable;
       typedef std::future<ListDocumentsOutcome> ListDocumentsOutcomeCallable;
       typedef std::future<ListInventoryEntriesOutcome> ListInventoryEntriesOutcomeCallable;
+      typedef std::future<ListNodesOutcome> ListNodesOutcomeCallable;
+      typedef std::future<ListNodesSummaryOutcome> ListNodesSummaryOutcomeCallable;
       typedef std::future<ListOpsItemEventsOutcome> ListOpsItemEventsOutcomeCallable;
       typedef std::future<ListOpsItemRelatedItemsOutcome> ListOpsItemRelatedItemsOutcomeCallable;
       typedef std::future<ListOpsMetadataOutcome> ListOpsMetadataOutcomeCallable;
@@ -599,9 +655,11 @@ namespace Aws
       typedef std::future<ResumeSessionOutcome> ResumeSessionOutcomeCallable;
       typedef std::future<SendAutomationSignalOutcome> SendAutomationSignalOutcomeCallable;
       typedef std::future<SendCommandOutcome> SendCommandOutcomeCallable;
+      typedef std::future<StartAccessRequestOutcome> StartAccessRequestOutcomeCallable;
       typedef std::future<StartAssociationsOnceOutcome> StartAssociationsOnceOutcomeCallable;
       typedef std::future<StartAutomationExecutionOutcome> StartAutomationExecutionOutcomeCallable;
       typedef std::future<StartChangeRequestExecutionOutcome> StartChangeRequestExecutionOutcomeCallable;
+      typedef std::future<StartExecutionPreviewOutcome> StartExecutionPreviewOutcomeCallable;
       typedef std::future<StartSessionOutcome> StartSessionOutcomeCallable;
       typedef std::future<StopAutomationExecutionOutcome> StopAutomationExecutionOutcomeCallable;
       typedef std::future<TerminateSessionOutcome> TerminateSessionOutcomeCallable;
@@ -671,6 +729,7 @@ namespace Aws
     typedef std::function<void(const SSMClient*, const Model::DescribeInstancePatchStatesRequest&, const Model::DescribeInstancePatchStatesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeInstancePatchStatesResponseReceivedHandler;
     typedef std::function<void(const SSMClient*, const Model::DescribeInstancePatchStatesForPatchGroupRequest&, const Model::DescribeInstancePatchStatesForPatchGroupOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeInstancePatchStatesForPatchGroupResponseReceivedHandler;
     typedef std::function<void(const SSMClient*, const Model::DescribeInstancePatchesRequest&, const Model::DescribeInstancePatchesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeInstancePatchesResponseReceivedHandler;
+    typedef std::function<void(const SSMClient*, const Model::DescribeInstancePropertiesRequest&, const Model::DescribeInstancePropertiesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeInstancePropertiesResponseReceivedHandler;
     typedef std::function<void(const SSMClient*, const Model::DescribeInventoryDeletionsRequest&, const Model::DescribeInventoryDeletionsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeInventoryDeletionsResponseReceivedHandler;
     typedef std::function<void(const SSMClient*, const Model::DescribeMaintenanceWindowExecutionTaskInvocationsRequest&, const Model::DescribeMaintenanceWindowExecutionTaskInvocationsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeMaintenanceWindowExecutionTaskInvocationsResponseReceivedHandler;
     typedef std::function<void(const SSMClient*, const Model::DescribeMaintenanceWindowExecutionTasksRequest&, const Model::DescribeMaintenanceWindowExecutionTasksOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeMaintenanceWindowExecutionTasksResponseReceivedHandler;
@@ -688,6 +747,7 @@ namespace Aws
     typedef std::function<void(const SSMClient*, const Model::DescribePatchPropertiesRequest&, const Model::DescribePatchPropertiesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribePatchPropertiesResponseReceivedHandler;
     typedef std::function<void(const SSMClient*, const Model::DescribeSessionsRequest&, const Model::DescribeSessionsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeSessionsResponseReceivedHandler;
     typedef std::function<void(const SSMClient*, const Model::DisassociateOpsItemRelatedItemRequest&, const Model::DisassociateOpsItemRelatedItemOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DisassociateOpsItemRelatedItemResponseReceivedHandler;
+    typedef std::function<void(const SSMClient*, const Model::GetAccessTokenRequest&, const Model::GetAccessTokenOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetAccessTokenResponseReceivedHandler;
     typedef std::function<void(const SSMClient*, const Model::GetAutomationExecutionRequest&, const Model::GetAutomationExecutionOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetAutomationExecutionResponseReceivedHandler;
     typedef std::function<void(const SSMClient*, const Model::GetCalendarStateRequest&, const Model::GetCalendarStateOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetCalendarStateResponseReceivedHandler;
     typedef std::function<void(const SSMClient*, const Model::GetCommandInvocationRequest&, const Model::GetCommandInvocationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetCommandInvocationResponseReceivedHandler;
@@ -695,6 +755,7 @@ namespace Aws
     typedef std::function<void(const SSMClient*, const Model::GetDefaultPatchBaselineRequest&, const Model::GetDefaultPatchBaselineOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetDefaultPatchBaselineResponseReceivedHandler;
     typedef std::function<void(const SSMClient*, const Model::GetDeployablePatchSnapshotForInstanceRequest&, const Model::GetDeployablePatchSnapshotForInstanceOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetDeployablePatchSnapshotForInstanceResponseReceivedHandler;
     typedef std::function<void(const SSMClient*, const Model::GetDocumentRequest&, const Model::GetDocumentOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetDocumentResponseReceivedHandler;
+    typedef std::function<void(const SSMClient*, const Model::GetExecutionPreviewRequest&, const Model::GetExecutionPreviewOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetExecutionPreviewResponseReceivedHandler;
     typedef std::function<void(const SSMClient*, const Model::GetInventoryRequest&, const Model::GetInventoryOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetInventoryResponseReceivedHandler;
     typedef std::function<void(const SSMClient*, const Model::GetInventorySchemaRequest&, const Model::GetInventorySchemaOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetInventorySchemaResponseReceivedHandler;
     typedef std::function<void(const SSMClient*, const Model::GetMaintenanceWindowRequest&, const Model::GetMaintenanceWindowOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetMaintenanceWindowResponseReceivedHandler;
@@ -724,6 +785,8 @@ namespace Aws
     typedef std::function<void(const SSMClient*, const Model::ListDocumentVersionsRequest&, const Model::ListDocumentVersionsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListDocumentVersionsResponseReceivedHandler;
     typedef std::function<void(const SSMClient*, const Model::ListDocumentsRequest&, const Model::ListDocumentsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListDocumentsResponseReceivedHandler;
     typedef std::function<void(const SSMClient*, const Model::ListInventoryEntriesRequest&, const Model::ListInventoryEntriesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListInventoryEntriesResponseReceivedHandler;
+    typedef std::function<void(const SSMClient*, const Model::ListNodesRequest&, const Model::ListNodesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListNodesResponseReceivedHandler;
+    typedef std::function<void(const SSMClient*, const Model::ListNodesSummaryRequest&, const Model::ListNodesSummaryOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListNodesSummaryResponseReceivedHandler;
     typedef std::function<void(const SSMClient*, const Model::ListOpsItemEventsRequest&, const Model::ListOpsItemEventsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListOpsItemEventsResponseReceivedHandler;
     typedef std::function<void(const SSMClient*, const Model::ListOpsItemRelatedItemsRequest&, const Model::ListOpsItemRelatedItemsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListOpsItemRelatedItemsResponseReceivedHandler;
     typedef std::function<void(const SSMClient*, const Model::ListOpsMetadataRequest&, const Model::ListOpsMetadataOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListOpsMetadataResponseReceivedHandler;
@@ -744,9 +807,11 @@ namespace Aws
     typedef std::function<void(const SSMClient*, const Model::ResumeSessionRequest&, const Model::ResumeSessionOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ResumeSessionResponseReceivedHandler;
     typedef std::function<void(const SSMClient*, const Model::SendAutomationSignalRequest&, const Model::SendAutomationSignalOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > SendAutomationSignalResponseReceivedHandler;
     typedef std::function<void(const SSMClient*, const Model::SendCommandRequest&, const Model::SendCommandOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > SendCommandResponseReceivedHandler;
+    typedef std::function<void(const SSMClient*, const Model::StartAccessRequestRequest&, const Model::StartAccessRequestOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > StartAccessRequestResponseReceivedHandler;
     typedef std::function<void(const SSMClient*, const Model::StartAssociationsOnceRequest&, const Model::StartAssociationsOnceOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > StartAssociationsOnceResponseReceivedHandler;
     typedef std::function<void(const SSMClient*, const Model::StartAutomationExecutionRequest&, const Model::StartAutomationExecutionOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > StartAutomationExecutionResponseReceivedHandler;
     typedef std::function<void(const SSMClient*, const Model::StartChangeRequestExecutionRequest&, const Model::StartChangeRequestExecutionOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > StartChangeRequestExecutionResponseReceivedHandler;
+    typedef std::function<void(const SSMClient*, const Model::StartExecutionPreviewRequest&, const Model::StartExecutionPreviewOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > StartExecutionPreviewResponseReceivedHandler;
     typedef std::function<void(const SSMClient*, const Model::StartSessionRequest&, const Model::StartSessionOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > StartSessionResponseReceivedHandler;
     typedef std::function<void(const SSMClient*, const Model::StopAutomationExecutionRequest&, const Model::StopAutomationExecutionOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > StopAutomationExecutionResponseReceivedHandler;
     typedef std::function<void(const SSMClient*, const Model::TerminateSessionRequest&, const Model::TerminateSessionOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > TerminateSessionResponseReceivedHandler;

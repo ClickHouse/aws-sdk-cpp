@@ -26,7 +26,7 @@ namespace Model
   class DescribeDomainsRequest : public OpenSearchServiceRequest
   {
   public:
-    AWS_OPENSEARCHSERVICE_API DescribeDomainsRequest();
+    AWS_OPENSEARCHSERVICE_API DescribeDomainsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,60 +37,20 @@ namespace Model
     AWS_OPENSEARCHSERVICE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>Array of OpenSearch Service domain names that you want information about. You
      * must specify at least one domain name.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetDomainNames() const{ return m_domainNames; }
-
-    /**
-     * <p>Array of OpenSearch Service domain names that you want information about. You
-     * must specify at least one domain name.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetDomainNames() const { return m_domainNames; }
     inline bool DomainNamesHasBeenSet() const { return m_domainNamesHasBeenSet; }
-
-    /**
-     * <p>Array of OpenSearch Service domain names that you want information about. You
-     * must specify at least one domain name.</p>
-     */
-    inline void SetDomainNames(const Aws::Vector<Aws::String>& value) { m_domainNamesHasBeenSet = true; m_domainNames = value; }
-
-    /**
-     * <p>Array of OpenSearch Service domain names that you want information about. You
-     * must specify at least one domain name.</p>
-     */
-    inline void SetDomainNames(Aws::Vector<Aws::String>&& value) { m_domainNamesHasBeenSet = true; m_domainNames = std::move(value); }
-
-    /**
-     * <p>Array of OpenSearch Service domain names that you want information about. You
-     * must specify at least one domain name.</p>
-     */
-    inline DescribeDomainsRequest& WithDomainNames(const Aws::Vector<Aws::String>& value) { SetDomainNames(value); return *this;}
-
-    /**
-     * <p>Array of OpenSearch Service domain names that you want information about. You
-     * must specify at least one domain name.</p>
-     */
-    inline DescribeDomainsRequest& WithDomainNames(Aws::Vector<Aws::String>&& value) { SetDomainNames(std::move(value)); return *this;}
-
-    /**
-     * <p>Array of OpenSearch Service domain names that you want information about. You
-     * must specify at least one domain name.</p>
-     */
-    inline DescribeDomainsRequest& AddDomainNames(const Aws::String& value) { m_domainNamesHasBeenSet = true; m_domainNames.push_back(value); return *this; }
-
-    /**
-     * <p>Array of OpenSearch Service domain names that you want information about. You
-     * must specify at least one domain name.</p>
-     */
-    inline DescribeDomainsRequest& AddDomainNames(Aws::String&& value) { m_domainNamesHasBeenSet = true; m_domainNames.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>Array of OpenSearch Service domain names that you want information about. You
-     * must specify at least one domain name.</p>
-     */
-    inline DescribeDomainsRequest& AddDomainNames(const char* value) { m_domainNamesHasBeenSet = true; m_domainNames.push_back(value); return *this; }
-
+    template<typename DomainNamesT = Aws::Vector<Aws::String>>
+    void SetDomainNames(DomainNamesT&& value) { m_domainNamesHasBeenSet = true; m_domainNames = std::forward<DomainNamesT>(value); }
+    template<typename DomainNamesT = Aws::Vector<Aws::String>>
+    DescribeDomainsRequest& WithDomainNames(DomainNamesT&& value) { SetDomainNames(std::forward<DomainNamesT>(value)); return *this;}
+    template<typename DomainNamesT = Aws::String>
+    DescribeDomainsRequest& AddDomainNames(DomainNamesT&& value) { m_domainNamesHasBeenSet = true; m_domainNames.emplace_back(std::forward<DomainNamesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_domainNames;

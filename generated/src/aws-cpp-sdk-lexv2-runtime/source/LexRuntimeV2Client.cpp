@@ -17,6 +17,7 @@
 #include <aws/core/utils/DNS.h>
 #include <aws/core/utils/logging/LogMacros.h>
 #include <aws/core/utils/logging/ErrorMacros.h>
+#include <aws/core/client/AWSClientEventStreamingAsyncTask.h>
 #include <aws/core/utils/event/EventStream.h>
 
 #include <aws/lexv2-runtime/LexRuntimeV2Client.h>
@@ -42,20 +43,27 @@ using namespace Aws::Utils::Json;
 using namespace smithy::components::tracing;
 using ResolveEndpointOutcome = Aws::Endpoint::ResolveEndpointOutcome;
 
-const char* LexRuntimeV2Client::SERVICE_NAME = "lex";
-const char* LexRuntimeV2Client::ALLOCATION_TAG = "LexRuntimeV2Client";
+namespace Aws
+{
+  namespace LexRuntimeV2
+  {
+    const char SERVICE_NAME[] = "lex";
+    const char ALLOCATION_TAG[] = "LexRuntimeV2Client";
+  }
+}
+const char* LexRuntimeV2Client::GetServiceName() {return SERVICE_NAME;}
+const char* LexRuntimeV2Client::GetAllocationTag() {return ALLOCATION_TAG;}
 
 LexRuntimeV2Client::LexRuntimeV2Client(const LexRuntimeV2::LexRuntimeV2ClientConfiguration& clientConfiguration,
                                        std::shared_ptr<LexRuntimeV2EndpointProviderBase> endpointProvider) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<Aws::Auth::DefaultAuthSignerProvider>(ALLOCATION_TAG,
-                                                                  Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                                                  Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                                                   SERVICE_NAME,
                                                                   Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<LexRuntimeV2ErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
-  m_endpointProvider(std::move(endpointProvider))
+  m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<LexRuntimeV2EndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -70,8 +78,7 @@ LexRuntimeV2Client::LexRuntimeV2Client(const AWSCredentials& credentials,
                                                                   Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<LexRuntimeV2ErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<LexRuntimeV2EndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -86,8 +93,7 @@ LexRuntimeV2Client::LexRuntimeV2Client(const std::shared_ptr<AWSCredentialsProvi
                                                                   Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<LexRuntimeV2ErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<LexRuntimeV2EndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -96,12 +102,11 @@ LexRuntimeV2Client::LexRuntimeV2Client(const std::shared_ptr<AWSCredentialsProvi
   LexRuntimeV2Client::LexRuntimeV2Client(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<Aws::Auth::DefaultAuthSignerProvider>(ALLOCATION_TAG,
-                                                                  Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                                                  Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                                                   SERVICE_NAME,
                                                                   Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<LexRuntimeV2ErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
   m_endpointProvider(Aws::MakeShared<LexRuntimeV2EndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -116,7 +121,6 @@ LexRuntimeV2Client::LexRuntimeV2Client(const AWSCredentials& credentials,
                                                                   Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<LexRuntimeV2ErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<LexRuntimeV2EndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -131,7 +135,6 @@ LexRuntimeV2Client::LexRuntimeV2Client(const std::shared_ptr<AWSCredentialsProvi
                                                                   Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<LexRuntimeV2ErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<LexRuntimeV2EndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -151,6 +154,14 @@ std::shared_ptr<LexRuntimeV2EndpointProviderBase>& LexRuntimeV2Client::accessEnd
 void LexRuntimeV2Client::init(const LexRuntimeV2::LexRuntimeV2ClientConfiguration& config)
 {
   AWSClient::SetServiceClientName("Lex Runtime V2");
+  if (!m_clientConfiguration.executor) {
+    if (!m_clientConfiguration.configFactories.executorCreateFn()) {
+      AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "Failed to initialize client: config is missing Executor or executorCreateFn");
+      m_isInitialized = false;
+      return;
+    }
+    m_clientConfiguration.executor = m_clientConfiguration.configFactories.executorCreateFn();
+  }
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
   m_endpointProvider->InitBuiltInParameters(config);
 }
@@ -443,6 +454,7 @@ void LexRuntimeV2Client::StartConversationAsync(Model::StartConversationRequest&
                 const StartConversationResponseReceivedHandler& handler,
                 const std::shared_ptr<const Aws::Client::AsyncCallerContext>& handlerContext) const
 {
+  AWS_ASYNC_OPERATION_GUARD(StartConversation);
   if (!m_endpointProvider) {
     handler(this, request, StartConversationOutcome(Aws::Client::AWSError<LexRuntimeV2Errors>(LexRuntimeV2Errors::INTERNAL_FAILURE, "INTERNAL_FAILURE", "Endpoint provider is not initialized", false)), handlerContext);
     return;
@@ -491,29 +503,21 @@ void LexRuntimeV2Client::StartConversationAsync(Model::StartConversationRequest&
   endpointResolutionOutcome.GetResult().AddPathSegments("/sessions/");
   endpointResolutionOutcome.GetResult().AddPathSegment(request.GetSessionId());
   endpointResolutionOutcome.GetResult().AddPathSegments("/conversation");
-  request.SetResponseStreamFactory(
-      [&] { request.GetEventStreamDecoder().Reset(); return Aws::New<Aws::Utils::Event::EventDecoderStream>(ALLOCATION_TAG, request.GetEventStreamDecoder()); }
-  );
 
   auto eventEncoderStream = Aws::MakeShared<Model::StartConversationRequestEventStream>(ALLOCATION_TAG);
   eventEncoderStream->SetSigner(GetSignerByName(Aws::Auth::EVENTSTREAM_SIGV4_SIGNER));
-  request.SetRequestEventStream(eventEncoderStream); // this becomes the body of the request
-  auto sem = Aws::MakeShared<Aws::Utils::Threading::Semaphore>(ALLOCATION_TAG, 0, 1);
-  request.SetRequestSignedHandler([eventEncoderStream, sem](const Aws::Http::HttpRequest& httpRequest) { eventEncoderStream->SetSignatureSeed(Aws::Client::GetAuthorizationHeader(httpRequest)); sem->ReleaseAll(); });
+  auto requestCopy = Aws::MakeShared<StartConversationRequest>("StartConversation", request);
+  requestCopy->SetRequestEventStream(eventEncoderStream); // this becomes the body of the request
+  request.SetRequestEventStream(eventEncoderStream);
 
-  m_executor->Submit([this, endpointResolutionOutcome, &request, handler, handlerContext] () mutable {
-      JsonOutcome outcome = MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::EVENTSTREAM_SIGV4_SIGNER);
-      if(outcome.IsSuccess())
-      {
-        handler(this, request, StartConversationOutcome(NoResult()), handlerContext);
-      }
-      else
-      {
-        request.GetRequestEventStream()->Close();
-        handler(this, request, StartConversationOutcome(outcome.GetError()), handlerContext);
-      }
-      return StartConversationOutcome(NoResult());
-  });
+  auto asyncTask = CreateBidirectionalEventStreamTask<StartConversationOutcome>(this,
+                                         endpointResolutionOutcome.GetResultWithOwnership(),
+                                         requestCopy,
+                                         handler,
+                                         handlerContext,
+                                         eventEncoderStream);
+  auto sem = asyncTask.GetSemaphore();
+  m_clientConfiguration.executor->Submit(std::move(asyncTask));
   sem->WaitOne();
-  streamReadyHandler(*request.GetRequestEventStream());
+  streamReadyHandler(*eventEncoderStream);
 }

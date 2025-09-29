@@ -18,17 +18,7 @@ namespace Lambda
 namespace Model
 {
 
-InvokeWithResponseStreamCompleteEvent::InvokeWithResponseStreamCompleteEvent() : 
-    m_errorCodeHasBeenSet(false),
-    m_errorDetailsHasBeenSet(false),
-    m_logResultHasBeenSet(false)
-{
-}
-
-InvokeWithResponseStreamCompleteEvent::InvokeWithResponseStreamCompleteEvent(JsonView jsonValue) : 
-    m_errorCodeHasBeenSet(false),
-    m_errorDetailsHasBeenSet(false),
-    m_logResultHasBeenSet(false)
+InvokeWithResponseStreamCompleteEvent::InvokeWithResponseStreamCompleteEvent(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ InvokeWithResponseStreamCompleteEvent& InvokeWithResponseStreamCompleteEvent::op
   if(jsonValue.ValueExists("ErrorCode"))
   {
     m_errorCode = jsonValue.GetString("ErrorCode");
-
     m_errorCodeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ErrorDetails"))
   {
     m_errorDetails = jsonValue.GetString("ErrorDetails");
-
     m_errorDetailsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LogResult"))
   {
     m_logResult = jsonValue.GetString("LogResult");
-
     m_logResultHasBeenSet = true;
   }
-
   return *this;
 }
 

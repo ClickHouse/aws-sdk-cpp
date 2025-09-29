@@ -20,17 +20,7 @@ namespace CloudFront
 namespace Model
 {
 
-PublicKey::PublicKey() : 
-    m_idHasBeenSet(false),
-    m_createdTimeHasBeenSet(false),
-    m_publicKeyConfigHasBeenSet(false)
-{
-}
-
-PublicKey::PublicKey(const XmlNode& xmlNode) : 
-    m_idHasBeenSet(false),
-    m_createdTimeHasBeenSet(false),
-    m_publicKeyConfigHasBeenSet(false)
+PublicKey::PublicKey(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

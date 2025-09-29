@@ -34,186 +34,69 @@ namespace Model
   class ClusterListEntry
   {
   public:
-    AWS_SNOWBALL_API ClusterListEntry();
+    AWS_SNOWBALL_API ClusterListEntry() = default;
     AWS_SNOWBALL_API ClusterListEntry(Aws::Utils::Json::JsonView jsonValue);
     AWS_SNOWBALL_API ClusterListEntry& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SNOWBALL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The 39-character ID for the cluster that you want to list, for example
      * <code>CID123e4567-e89b-12d3-a456-426655440000</code>.</p>
      */
-    inline const Aws::String& GetClusterId() const{ return m_clusterId; }
-
-    /**
-     * <p>The 39-character ID for the cluster that you want to list, for example
-     * <code>CID123e4567-e89b-12d3-a456-426655440000</code>.</p>
-     */
+    inline const Aws::String& GetClusterId() const { return m_clusterId; }
     inline bool ClusterIdHasBeenSet() const { return m_clusterIdHasBeenSet; }
+    template<typename ClusterIdT = Aws::String>
+    void SetClusterId(ClusterIdT&& value) { m_clusterIdHasBeenSet = true; m_clusterId = std::forward<ClusterIdT>(value); }
+    template<typename ClusterIdT = Aws::String>
+    ClusterListEntry& WithClusterId(ClusterIdT&& value) { SetClusterId(std::forward<ClusterIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The 39-character ID for the cluster that you want to list, for example
-     * <code>CID123e4567-e89b-12d3-a456-426655440000</code>.</p>
-     */
-    inline void SetClusterId(const Aws::String& value) { m_clusterIdHasBeenSet = true; m_clusterId = value; }
-
-    /**
-     * <p>The 39-character ID for the cluster that you want to list, for example
-     * <code>CID123e4567-e89b-12d3-a456-426655440000</code>.</p>
-     */
-    inline void SetClusterId(Aws::String&& value) { m_clusterIdHasBeenSet = true; m_clusterId = std::move(value); }
-
-    /**
-     * <p>The 39-character ID for the cluster that you want to list, for example
-     * <code>CID123e4567-e89b-12d3-a456-426655440000</code>.</p>
-     */
-    inline void SetClusterId(const char* value) { m_clusterIdHasBeenSet = true; m_clusterId.assign(value); }
-
-    /**
-     * <p>The 39-character ID for the cluster that you want to list, for example
-     * <code>CID123e4567-e89b-12d3-a456-426655440000</code>.</p>
-     */
-    inline ClusterListEntry& WithClusterId(const Aws::String& value) { SetClusterId(value); return *this;}
-
-    /**
-     * <p>The 39-character ID for the cluster that you want to list, for example
-     * <code>CID123e4567-e89b-12d3-a456-426655440000</code>.</p>
-     */
-    inline ClusterListEntry& WithClusterId(Aws::String&& value) { SetClusterId(std::move(value)); return *this;}
-
-    /**
-     * <p>The 39-character ID for the cluster that you want to list, for example
-     * <code>CID123e4567-e89b-12d3-a456-426655440000</code>.</p>
-     */
-    inline ClusterListEntry& WithClusterId(const char* value) { SetClusterId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The current state of this cluster. For information about the state of a
      * specific node, see <a>JobListEntry$JobState</a>.</p>
      */
-    inline const ClusterState& GetClusterState() const{ return m_clusterState; }
-
-    /**
-     * <p>The current state of this cluster. For information about the state of a
-     * specific node, see <a>JobListEntry$JobState</a>.</p>
-     */
+    inline ClusterState GetClusterState() const { return m_clusterState; }
     inline bool ClusterStateHasBeenSet() const { return m_clusterStateHasBeenSet; }
+    inline void SetClusterState(ClusterState value) { m_clusterStateHasBeenSet = true; m_clusterState = value; }
+    inline ClusterListEntry& WithClusterState(ClusterState value) { SetClusterState(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The current state of this cluster. For information about the state of a
-     * specific node, see <a>JobListEntry$JobState</a>.</p>
-     */
-    inline void SetClusterState(const ClusterState& value) { m_clusterStateHasBeenSet = true; m_clusterState = value; }
-
-    /**
-     * <p>The current state of this cluster. For information about the state of a
-     * specific node, see <a>JobListEntry$JobState</a>.</p>
-     */
-    inline void SetClusterState(ClusterState&& value) { m_clusterStateHasBeenSet = true; m_clusterState = std::move(value); }
-
-    /**
-     * <p>The current state of this cluster. For information about the state of a
-     * specific node, see <a>JobListEntry$JobState</a>.</p>
-     */
-    inline ClusterListEntry& WithClusterState(const ClusterState& value) { SetClusterState(value); return *this;}
-
-    /**
-     * <p>The current state of this cluster. For information about the state of a
-     * specific node, see <a>JobListEntry$JobState</a>.</p>
-     */
-    inline ClusterListEntry& WithClusterState(ClusterState&& value) { SetClusterState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The creation date for this cluster.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreationDate() const{ return m_creationDate; }
-
-    /**
-     * <p>The creation date for this cluster.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreationDate() const { return m_creationDate; }
     inline bool CreationDateHasBeenSet() const { return m_creationDateHasBeenSet; }
+    template<typename CreationDateT = Aws::Utils::DateTime>
+    void SetCreationDate(CreationDateT&& value) { m_creationDateHasBeenSet = true; m_creationDate = std::forward<CreationDateT>(value); }
+    template<typename CreationDateT = Aws::Utils::DateTime>
+    ClusterListEntry& WithCreationDate(CreationDateT&& value) { SetCreationDate(std::forward<CreationDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The creation date for this cluster.</p>
-     */
-    inline void SetCreationDate(const Aws::Utils::DateTime& value) { m_creationDateHasBeenSet = true; m_creationDate = value; }
-
-    /**
-     * <p>The creation date for this cluster.</p>
-     */
-    inline void SetCreationDate(Aws::Utils::DateTime&& value) { m_creationDateHasBeenSet = true; m_creationDate = std::move(value); }
-
-    /**
-     * <p>The creation date for this cluster.</p>
-     */
-    inline ClusterListEntry& WithCreationDate(const Aws::Utils::DateTime& value) { SetCreationDate(value); return *this;}
-
-    /**
-     * <p>The creation date for this cluster.</p>
-     */
-    inline ClusterListEntry& WithCreationDate(Aws::Utils::DateTime&& value) { SetCreationDate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Defines an optional description of the cluster, for example
      * <code>Environmental Data Cluster-01</code>.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>Defines an optional description of the cluster, for example
-     * <code>Environmental Data Cluster-01</code>.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
-
-    /**
-     * <p>Defines an optional description of the cluster, for example
-     * <code>Environmental Data Cluster-01</code>.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>Defines an optional description of the cluster, for example
-     * <code>Environmental Data Cluster-01</code>.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>Defines an optional description of the cluster, for example
-     * <code>Environmental Data Cluster-01</code>.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>Defines an optional description of the cluster, for example
-     * <code>Environmental Data Cluster-01</code>.</p>
-     */
-    inline ClusterListEntry& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>Defines an optional description of the cluster, for example
-     * <code>Environmental Data Cluster-01</code>.</p>
-     */
-    inline ClusterListEntry& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>Defines an optional description of the cluster, for example
-     * <code>Environmental Data Cluster-01</code>.</p>
-     */
-    inline ClusterListEntry& WithDescription(const char* value) { SetDescription(value); return *this;}
-
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    ClusterListEntry& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_clusterId;
     bool m_clusterIdHasBeenSet = false;
 
-    ClusterState m_clusterState;
+    ClusterState m_clusterState{ClusterState::NOT_SET};
     bool m_clusterStateHasBeenSet = false;
 
-    Aws::Utils::DateTime m_creationDate;
+    Aws::Utils::DateTime m_creationDate{};
     bool m_creationDateHasBeenSet = false;
 
     Aws::String m_description;

@@ -18,15 +18,7 @@ namespace Appflow
 namespace Model
 {
 
-SnowflakeConnectorProfileCredentials::SnowflakeConnectorProfileCredentials() : 
-    m_usernameHasBeenSet(false),
-    m_passwordHasBeenSet(false)
-{
-}
-
-SnowflakeConnectorProfileCredentials::SnowflakeConnectorProfileCredentials(JsonView jsonValue) : 
-    m_usernameHasBeenSet(false),
-    m_passwordHasBeenSet(false)
+SnowflakeConnectorProfileCredentials::SnowflakeConnectorProfileCredentials(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ SnowflakeConnectorProfileCredentials& SnowflakeConnectorProfileCredentials::oper
   if(jsonValue.ValueExists("username"))
   {
     m_username = jsonValue.GetString("username");
-
     m_usernameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("password"))
   {
     m_password = jsonValue.GetString("password");
-
     m_passwordHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -33,60 +33,26 @@ namespace Model
   class FilterCriteria
   {
   public:
-    AWS_GUARDDUTY_API FilterCriteria();
+    AWS_GUARDDUTY_API FilterCriteria() = default;
     AWS_GUARDDUTY_API FilterCriteria(Aws::Utils::Json::JsonView jsonValue);
     AWS_GUARDDUTY_API FilterCriteria& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GUARDDUTY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Represents a condition that when matched will be added to the response of the
      * operation.</p>
      */
-    inline const Aws::Vector<FilterCriterion>& GetFilterCriterion() const{ return m_filterCriterion; }
-
-    /**
-     * <p>Represents a condition that when matched will be added to the response of the
-     * operation.</p>
-     */
+    inline const Aws::Vector<FilterCriterion>& GetFilterCriterion() const { return m_filterCriterion; }
     inline bool FilterCriterionHasBeenSet() const { return m_filterCriterionHasBeenSet; }
-
-    /**
-     * <p>Represents a condition that when matched will be added to the response of the
-     * operation.</p>
-     */
-    inline void SetFilterCriterion(const Aws::Vector<FilterCriterion>& value) { m_filterCriterionHasBeenSet = true; m_filterCriterion = value; }
-
-    /**
-     * <p>Represents a condition that when matched will be added to the response of the
-     * operation.</p>
-     */
-    inline void SetFilterCriterion(Aws::Vector<FilterCriterion>&& value) { m_filterCriterionHasBeenSet = true; m_filterCriterion = std::move(value); }
-
-    /**
-     * <p>Represents a condition that when matched will be added to the response of the
-     * operation.</p>
-     */
-    inline FilterCriteria& WithFilterCriterion(const Aws::Vector<FilterCriterion>& value) { SetFilterCriterion(value); return *this;}
-
-    /**
-     * <p>Represents a condition that when matched will be added to the response of the
-     * operation.</p>
-     */
-    inline FilterCriteria& WithFilterCriterion(Aws::Vector<FilterCriterion>&& value) { SetFilterCriterion(std::move(value)); return *this;}
-
-    /**
-     * <p>Represents a condition that when matched will be added to the response of the
-     * operation.</p>
-     */
-    inline FilterCriteria& AddFilterCriterion(const FilterCriterion& value) { m_filterCriterionHasBeenSet = true; m_filterCriterion.push_back(value); return *this; }
-
-    /**
-     * <p>Represents a condition that when matched will be added to the response of the
-     * operation.</p>
-     */
-    inline FilterCriteria& AddFilterCriterion(FilterCriterion&& value) { m_filterCriterionHasBeenSet = true; m_filterCriterion.push_back(std::move(value)); return *this; }
-
+    template<typename FilterCriterionT = Aws::Vector<FilterCriterion>>
+    void SetFilterCriterion(FilterCriterionT&& value) { m_filterCriterionHasBeenSet = true; m_filterCriterion = std::forward<FilterCriterionT>(value); }
+    template<typename FilterCriterionT = Aws::Vector<FilterCriterion>>
+    FilterCriteria& WithFilterCriterion(FilterCriterionT&& value) { SetFilterCriterion(std::forward<FilterCriterionT>(value)); return *this;}
+    template<typename FilterCriterionT = FilterCriterion>
+    FilterCriteria& AddFilterCriterion(FilterCriterionT&& value) { m_filterCriterionHasBeenSet = true; m_filterCriterion.emplace_back(std::forward<FilterCriterionT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<FilterCriterion> m_filterCriterion;

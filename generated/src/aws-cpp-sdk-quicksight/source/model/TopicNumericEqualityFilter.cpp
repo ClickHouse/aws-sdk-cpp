@@ -18,17 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-TopicNumericEqualityFilter::TopicNumericEqualityFilter() : 
-    m_constantHasBeenSet(false),
-    m_aggregation(NamedFilterAggType::NOT_SET),
-    m_aggregationHasBeenSet(false)
-{
-}
-
-TopicNumericEqualityFilter::TopicNumericEqualityFilter(JsonView jsonValue) : 
-    m_constantHasBeenSet(false),
-    m_aggregation(NamedFilterAggType::NOT_SET),
-    m_aggregationHasBeenSet(false)
+TopicNumericEqualityFilter::TopicNumericEqualityFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ TopicNumericEqualityFilter& TopicNumericEqualityFilter::operator =(JsonView json
   if(jsonValue.ValueExists("Constant"))
   {
     m_constant = jsonValue.GetObject("Constant");
-
     m_constantHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Aggregation"))
   {
     m_aggregation = NamedFilterAggTypeMapper::GetNamedFilterAggTypeForName(jsonValue.GetString("Aggregation"));
-
     m_aggregationHasBeenSet = true;
   }
-
   return *this;
 }
 

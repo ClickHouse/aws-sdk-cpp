@@ -18,19 +18,7 @@ namespace Connect
 namespace Model
 {
 
-AnalyticsDataAssociationResult::AnalyticsDataAssociationResult() : 
-    m_dataSetIdHasBeenSet(false),
-    m_targetAccountIdHasBeenSet(false),
-    m_resourceShareIdHasBeenSet(false),
-    m_resourceShareArnHasBeenSet(false)
-{
-}
-
-AnalyticsDataAssociationResult::AnalyticsDataAssociationResult(JsonView jsonValue) : 
-    m_dataSetIdHasBeenSet(false),
-    m_targetAccountIdHasBeenSet(false),
-    m_resourceShareIdHasBeenSet(false),
-    m_resourceShareArnHasBeenSet(false)
+AnalyticsDataAssociationResult::AnalyticsDataAssociationResult(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,31 +28,28 @@ AnalyticsDataAssociationResult& AnalyticsDataAssociationResult::operator =(JsonV
   if(jsonValue.ValueExists("DataSetId"))
   {
     m_dataSetId = jsonValue.GetString("DataSetId");
-
     m_dataSetIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TargetAccountId"))
   {
     m_targetAccountId = jsonValue.GetString("TargetAccountId");
-
     m_targetAccountIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceShareId"))
   {
     m_resourceShareId = jsonValue.GetString("ResourceShareId");
-
     m_resourceShareIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceShareArn"))
   {
     m_resourceShareArn = jsonValue.GetString("ResourceShareArn");
-
     m_resourceShareArnHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("ResourceShareStatus"))
+  {
+    m_resourceShareStatus = jsonValue.GetString("ResourceShareStatus");
+    m_resourceShareStatusHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -93,6 +78,12 @@ JsonValue AnalyticsDataAssociationResult::Jsonize() const
   if(m_resourceShareArnHasBeenSet)
   {
    payload.WithString("ResourceShareArn", m_resourceShareArn);
+
+  }
+
+  if(m_resourceShareStatusHasBeenSet)
+  {
+   payload.WithString("ResourceShareStatus", m_resourceShareStatus);
 
   }
 

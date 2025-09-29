@@ -12,14 +12,6 @@ using namespace Aws::SFN::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-StartSyncExecutionRequest::StartSyncExecutionRequest() : 
-    m_stateMachineArnHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_inputHasBeenSet(false),
-    m_traceHeaderHasBeenSet(false)
-{
-}
-
 Aws::String StartSyncExecutionRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -46,6 +38,11 @@ Aws::String StartSyncExecutionRequest::SerializePayload() const
   {
    payload.WithString("traceHeader", m_traceHeader);
 
+  }
+
+  if(m_includedDataHasBeenSet)
+  {
+   payload.WithString("includedData", IncludedDataMapper::GetNameForIncludedData(m_includedData));
   }
 
   return payload.View().WriteReadable();

@@ -20,13 +20,7 @@ namespace EC2
 namespace Model
 {
 
-IpamPublicAddressTags::IpamPublicAddressTags() : 
-    m_eipTagsHasBeenSet(false)
-{
-}
-
-IpamPublicAddressTags::IpamPublicAddressTags(const XmlNode& xmlNode) : 
-    m_eipTagsHasBeenSet(false)
+IpamPublicAddressTags::IpamPublicAddressTags(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -41,6 +35,7 @@ IpamPublicAddressTags& IpamPublicAddressTags::operator =(const XmlNode& xmlNode)
     if(!eipTagsNode.IsNull())
     {
       XmlNode eipTagsMember = eipTagsNode.FirstChild("item");
+      m_eipTagsHasBeenSet = !eipTagsMember.IsNull();
       while(!eipTagsMember.IsNull())
       {
         m_eipTags.push_back(eipTagsMember);
@@ -77,7 +72,7 @@ void IpamPublicAddressTags::OutputToStream(Aws::OStream& oStream, const char* lo
       for(auto& item : m_eipTags)
       {
         Aws::StringStream eipTagsSs;
-        eipTagsSs << location <<  ".EipTagSet." << eipTagsIdx++;
+        eipTagsSs << location << ".EipTagSet." << eipTagsIdx++;
         item.OutputToStream(oStream, eipTagsSs.str().c_str());
       }
   }

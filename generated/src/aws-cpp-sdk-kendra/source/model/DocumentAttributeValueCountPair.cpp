@@ -18,19 +18,7 @@ namespace kendra
 namespace Model
 {
 
-DocumentAttributeValueCountPair::DocumentAttributeValueCountPair() : 
-    m_documentAttributeValueHasBeenSet(false),
-    m_count(0),
-    m_countHasBeenSet(false),
-    m_facetResultsHasBeenSet(false)
-{
-}
-
-DocumentAttributeValueCountPair::DocumentAttributeValueCountPair(JsonView jsonValue) : 
-    m_documentAttributeValueHasBeenSet(false),
-    m_count(0),
-    m_countHasBeenSet(false),
-    m_facetResultsHasBeenSet(false)
+DocumentAttributeValueCountPair::DocumentAttributeValueCountPair(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ DocumentAttributeValueCountPair& DocumentAttributeValueCountPair::operator =(Jso
   if(jsonValue.ValueExists("DocumentAttributeValue"))
   {
     m_documentAttributeValue = jsonValue.GetObject("DocumentAttributeValue");
-
     m_documentAttributeValueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Count"))
   {
     m_count = jsonValue.GetInteger("Count");
-
     m_countHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FacetResults"))
   {
     Aws::Utils::Array<JsonView> facetResultsJsonList = jsonValue.GetArray("FacetResults");
@@ -60,7 +44,6 @@ DocumentAttributeValueCountPair& DocumentAttributeValueCountPair::operator =(Jso
     }
     m_facetResultsHasBeenSet = true;
   }
-
   return *this;
 }
 

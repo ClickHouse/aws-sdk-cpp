@@ -20,17 +20,7 @@ namespace CloudFront
 namespace Model
 {
 
-CachePolicyCookiesConfig::CachePolicyCookiesConfig() : 
-    m_cookieBehavior(CachePolicyCookieBehavior::NOT_SET),
-    m_cookieBehaviorHasBeenSet(false),
-    m_cookiesHasBeenSet(false)
-{
-}
-
-CachePolicyCookiesConfig::CachePolicyCookiesConfig(const XmlNode& xmlNode) : 
-    m_cookieBehavior(CachePolicyCookieBehavior::NOT_SET),
-    m_cookieBehaviorHasBeenSet(false),
-    m_cookiesHasBeenSet(false)
+CachePolicyCookiesConfig::CachePolicyCookiesConfig(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -44,7 +34,7 @@ CachePolicyCookiesConfig& CachePolicyCookiesConfig::operator =(const XmlNode& xm
     XmlNode cookieBehaviorNode = resultNode.FirstChild("CookieBehavior");
     if(!cookieBehaviorNode.IsNull())
     {
-      m_cookieBehavior = CachePolicyCookieBehaviorMapper::GetCachePolicyCookieBehaviorForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(cookieBehaviorNode.GetText()).c_str()).c_str());
+      m_cookieBehavior = CachePolicyCookieBehaviorMapper::GetCachePolicyCookieBehaviorForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(cookieBehaviorNode.GetText()).c_str()));
       m_cookieBehaviorHasBeenSet = true;
     }
     XmlNode cookiesNode = resultNode.FirstChild("Cookies");

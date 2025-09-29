@@ -32,117 +32,38 @@ namespace Model
   class Shipment
   {
   public:
-    AWS_SNOWBALL_API Shipment();
+    AWS_SNOWBALL_API Shipment() = default;
     AWS_SNOWBALL_API Shipment(Aws::Utils::Json::JsonView jsonValue);
     AWS_SNOWBALL_API Shipment& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SNOWBALL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Status information for a shipment.</p>
      */
-    inline const Aws::String& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>Status information for a shipment.</p>
-     */
+    inline const Aws::String& GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    template<typename StatusT = Aws::String>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = Aws::String>
+    Shipment& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Status information for a shipment.</p>
-     */
-    inline void SetStatus(const Aws::String& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>Status information for a shipment.</p>
-     */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>Status information for a shipment.</p>
-     */
-    inline void SetStatus(const char* value) { m_statusHasBeenSet = true; m_status.assign(value); }
-
-    /**
-     * <p>Status information for a shipment.</p>
-     */
-    inline Shipment& WithStatus(const Aws::String& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>Status information for a shipment.</p>
-     */
-    inline Shipment& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
-
-    /**
-     * <p>Status information for a shipment.</p>
-     */
-    inline Shipment& WithStatus(const char* value) { SetStatus(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The tracking number for this job. Using this tracking number with your
      * region's carrier's website, you can track a Snow device as the carrier
      * transports it.</p> <p>For India, the carrier is Amazon Logistics. For all other
      * regions, UPS is the carrier.</p>
      */
-    inline const Aws::String& GetTrackingNumber() const{ return m_trackingNumber; }
-
-    /**
-     * <p>The tracking number for this job. Using this tracking number with your
-     * region's carrier's website, you can track a Snow device as the carrier
-     * transports it.</p> <p>For India, the carrier is Amazon Logistics. For all other
-     * regions, UPS is the carrier.</p>
-     */
+    inline const Aws::String& GetTrackingNumber() const { return m_trackingNumber; }
     inline bool TrackingNumberHasBeenSet() const { return m_trackingNumberHasBeenSet; }
-
-    /**
-     * <p>The tracking number for this job. Using this tracking number with your
-     * region's carrier's website, you can track a Snow device as the carrier
-     * transports it.</p> <p>For India, the carrier is Amazon Logistics. For all other
-     * regions, UPS is the carrier.</p>
-     */
-    inline void SetTrackingNumber(const Aws::String& value) { m_trackingNumberHasBeenSet = true; m_trackingNumber = value; }
-
-    /**
-     * <p>The tracking number for this job. Using this tracking number with your
-     * region's carrier's website, you can track a Snow device as the carrier
-     * transports it.</p> <p>For India, the carrier is Amazon Logistics. For all other
-     * regions, UPS is the carrier.</p>
-     */
-    inline void SetTrackingNumber(Aws::String&& value) { m_trackingNumberHasBeenSet = true; m_trackingNumber = std::move(value); }
-
-    /**
-     * <p>The tracking number for this job. Using this tracking number with your
-     * region's carrier's website, you can track a Snow device as the carrier
-     * transports it.</p> <p>For India, the carrier is Amazon Logistics. For all other
-     * regions, UPS is the carrier.</p>
-     */
-    inline void SetTrackingNumber(const char* value) { m_trackingNumberHasBeenSet = true; m_trackingNumber.assign(value); }
-
-    /**
-     * <p>The tracking number for this job. Using this tracking number with your
-     * region's carrier's website, you can track a Snow device as the carrier
-     * transports it.</p> <p>For India, the carrier is Amazon Logistics. For all other
-     * regions, UPS is the carrier.</p>
-     */
-    inline Shipment& WithTrackingNumber(const Aws::String& value) { SetTrackingNumber(value); return *this;}
-
-    /**
-     * <p>The tracking number for this job. Using this tracking number with your
-     * region's carrier's website, you can track a Snow device as the carrier
-     * transports it.</p> <p>For India, the carrier is Amazon Logistics. For all other
-     * regions, UPS is the carrier.</p>
-     */
-    inline Shipment& WithTrackingNumber(Aws::String&& value) { SetTrackingNumber(std::move(value)); return *this;}
-
-    /**
-     * <p>The tracking number for this job. Using this tracking number with your
-     * region's carrier's website, you can track a Snow device as the carrier
-     * transports it.</p> <p>For India, the carrier is Amazon Logistics. For all other
-     * regions, UPS is the carrier.</p>
-     */
-    inline Shipment& WithTrackingNumber(const char* value) { SetTrackingNumber(value); return *this;}
-
+    template<typename TrackingNumberT = Aws::String>
+    void SetTrackingNumber(TrackingNumberT&& value) { m_trackingNumberHasBeenSet = true; m_trackingNumber = std::forward<TrackingNumberT>(value); }
+    template<typename TrackingNumberT = Aws::String>
+    Shipment& WithTrackingNumber(TrackingNumberT&& value) { SetTrackingNumber(std::forward<TrackingNumberT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_status;

@@ -33,85 +33,37 @@ namespace Model
   class FileSystemEndpoints
   {
   public:
-    AWS_FSX_API FileSystemEndpoints();
+    AWS_FSX_API FileSystemEndpoints() = default;
     AWS_FSX_API FileSystemEndpoints(Aws::Utils::Json::JsonView jsonValue);
     AWS_FSX_API FileSystemEndpoints& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FSX_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An endpoint for managing your file system by setting up NetApp SnapMirror
      * with other ONTAP systems.</p>
      */
-    inline const FileSystemEndpoint& GetIntercluster() const{ return m_intercluster; }
-
-    /**
-     * <p>An endpoint for managing your file system by setting up NetApp SnapMirror
-     * with other ONTAP systems.</p>
-     */
+    inline const FileSystemEndpoint& GetIntercluster() const { return m_intercluster; }
     inline bool InterclusterHasBeenSet() const { return m_interclusterHasBeenSet; }
+    template<typename InterclusterT = FileSystemEndpoint>
+    void SetIntercluster(InterclusterT&& value) { m_interclusterHasBeenSet = true; m_intercluster = std::forward<InterclusterT>(value); }
+    template<typename InterclusterT = FileSystemEndpoint>
+    FileSystemEndpoints& WithIntercluster(InterclusterT&& value) { SetIntercluster(std::forward<InterclusterT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An endpoint for managing your file system by setting up NetApp SnapMirror
-     * with other ONTAP systems.</p>
-     */
-    inline void SetIntercluster(const FileSystemEndpoint& value) { m_interclusterHasBeenSet = true; m_intercluster = value; }
-
-    /**
-     * <p>An endpoint for managing your file system by setting up NetApp SnapMirror
-     * with other ONTAP systems.</p>
-     */
-    inline void SetIntercluster(FileSystemEndpoint&& value) { m_interclusterHasBeenSet = true; m_intercluster = std::move(value); }
-
-    /**
-     * <p>An endpoint for managing your file system by setting up NetApp SnapMirror
-     * with other ONTAP systems.</p>
-     */
-    inline FileSystemEndpoints& WithIntercluster(const FileSystemEndpoint& value) { SetIntercluster(value); return *this;}
-
-    /**
-     * <p>An endpoint for managing your file system by setting up NetApp SnapMirror
-     * with other ONTAP systems.</p>
-     */
-    inline FileSystemEndpoints& WithIntercluster(FileSystemEndpoint&& value) { SetIntercluster(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>An endpoint for managing your file system using the NetApp ONTAP CLI and
      * NetApp ONTAP API.</p>
      */
-    inline const FileSystemEndpoint& GetManagement() const{ return m_management; }
-
-    /**
-     * <p>An endpoint for managing your file system using the NetApp ONTAP CLI and
-     * NetApp ONTAP API.</p>
-     */
+    inline const FileSystemEndpoint& GetManagement() const { return m_management; }
     inline bool ManagementHasBeenSet() const { return m_managementHasBeenSet; }
-
-    /**
-     * <p>An endpoint for managing your file system using the NetApp ONTAP CLI and
-     * NetApp ONTAP API.</p>
-     */
-    inline void SetManagement(const FileSystemEndpoint& value) { m_managementHasBeenSet = true; m_management = value; }
-
-    /**
-     * <p>An endpoint for managing your file system using the NetApp ONTAP CLI and
-     * NetApp ONTAP API.</p>
-     */
-    inline void SetManagement(FileSystemEndpoint&& value) { m_managementHasBeenSet = true; m_management = std::move(value); }
-
-    /**
-     * <p>An endpoint for managing your file system using the NetApp ONTAP CLI and
-     * NetApp ONTAP API.</p>
-     */
-    inline FileSystemEndpoints& WithManagement(const FileSystemEndpoint& value) { SetManagement(value); return *this;}
-
-    /**
-     * <p>An endpoint for managing your file system using the NetApp ONTAP CLI and
-     * NetApp ONTAP API.</p>
-     */
-    inline FileSystemEndpoints& WithManagement(FileSystemEndpoint&& value) { SetManagement(std::move(value)); return *this;}
-
+    template<typename ManagementT = FileSystemEndpoint>
+    void SetManagement(ManagementT&& value) { m_managementHasBeenSet = true; m_management = std::forward<ManagementT>(value); }
+    template<typename ManagementT = FileSystemEndpoint>
+    FileSystemEndpoints& WithManagement(ManagementT&& value) { SetManagement(std::forward<ManagementT>(value)); return *this;}
+    ///@}
   private:
 
     FileSystemEndpoint m_intercluster;

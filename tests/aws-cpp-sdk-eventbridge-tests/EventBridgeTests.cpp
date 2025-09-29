@@ -74,7 +74,7 @@ static std::shared_ptr<Aws::Http::Standard::StandardHttpResponse> buildEventBrid
 
 TEST_F(EventBridgeTests, TestPutEventsBasic)
 {
-    Aws::Client::ClientConfiguration clientConfig;
+    Aws::Client::ClientConfiguration clientConfig("default", true);
     clientConfig.region = "us-east-1";
     Aws::Auth::AWSCredentials mockCreds("accessKey", "secretKey", "sessionToken");
 
@@ -100,7 +100,7 @@ TEST_F(EventBridgeTests, TestPutEventsBasic)
 
 TEST_F(EventBridgeTests, TestPutEventsMultiRegional)
 {
-    Aws::Client::ClientConfiguration clientConfig;
+    Aws::Client::ClientConfiguration clientConfig("default", true);
     clientConfig.region = "us-east-1";
     Aws::Auth::AWSCredentials mockCreds("accessKey", "secretKey", "sessionToken");
 
@@ -137,12 +137,12 @@ struct EventBridgeEndpointTestCase
 
     const char* expectedEndpointId;
     const char* expectedException;
-    using ExpectedHeaders = Aws::Vector<std::pair<const char*, const char*>>;
+    using ExpectedHeaders = std::vector<std::pair<const char*, const char*>>;
     ExpectedHeaders expectedHeaders;
 };
 
 static const std::pair<const char*, const char*> X_AMZ_HEADER = {"x-amz-region-set", "*"};
-static const Aws::Vector<EventBridgeEndpointTestCase> TEST_CASES = {
+static const std::vector<EventBridgeEndpointTestCase> TEST_CASES = {
         {"us-east-1", false, false, nullptr, "events.us-east-1.amazonaws.com", nullptr, {}},
         {"us-east-1", false, false, "abc123.456def", "abc123.456def.endpoint.events.amazonaws.com", nullptr, {X_AMZ_HEADER}},
         {"us-east-1", false, false, "badactor.aws?foo=bar", nullptr, "EndpointId must be a valid host label.", {}},
@@ -168,7 +168,7 @@ TEST_F(EventBridgeTests, TestPutEventsEndpointTests)
     for(size_t tcIdx = 0; tcIdx < TEST_CASES.size(); ++tcIdx)
     {
         const EventBridgeEndpointTestCase& testCase = TEST_CASES[tcIdx];
-        Aws::Client::ClientConfiguration clientConfig;
+        Aws::Client::ClientConfiguration clientConfig("default", true);
         clientConfig.region = testCase.clientRegion;
         clientConfig.useDualStack = testCase.useDualStackEndpoint;
         clientConfig.useFIPS = testCase.useFipsEndpoint;

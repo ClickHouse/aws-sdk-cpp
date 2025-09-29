@@ -18,47 +18,7 @@ namespace OpenSearchService
 namespace Model
 {
 
-DomainConfig::DomainConfig() : 
-    m_engineVersionHasBeenSet(false),
-    m_clusterConfigHasBeenSet(false),
-    m_eBSOptionsHasBeenSet(false),
-    m_accessPoliciesHasBeenSet(false),
-    m_iPAddressTypeHasBeenSet(false),
-    m_snapshotOptionsHasBeenSet(false),
-    m_vPCOptionsHasBeenSet(false),
-    m_cognitoOptionsHasBeenSet(false),
-    m_encryptionAtRestOptionsHasBeenSet(false),
-    m_nodeToNodeEncryptionOptionsHasBeenSet(false),
-    m_advancedOptionsHasBeenSet(false),
-    m_logPublishingOptionsHasBeenSet(false),
-    m_domainEndpointOptionsHasBeenSet(false),
-    m_advancedSecurityOptionsHasBeenSet(false),
-    m_autoTuneOptionsHasBeenSet(false),
-    m_changeProgressDetailsHasBeenSet(false),
-    m_offPeakWindowOptionsHasBeenSet(false),
-    m_softwareUpdateOptionsHasBeenSet(false)
-{
-}
-
-DomainConfig::DomainConfig(JsonView jsonValue) : 
-    m_engineVersionHasBeenSet(false),
-    m_clusterConfigHasBeenSet(false),
-    m_eBSOptionsHasBeenSet(false),
-    m_accessPoliciesHasBeenSet(false),
-    m_iPAddressTypeHasBeenSet(false),
-    m_snapshotOptionsHasBeenSet(false),
-    m_vPCOptionsHasBeenSet(false),
-    m_cognitoOptionsHasBeenSet(false),
-    m_encryptionAtRestOptionsHasBeenSet(false),
-    m_nodeToNodeEncryptionOptionsHasBeenSet(false),
-    m_advancedOptionsHasBeenSet(false),
-    m_logPublishingOptionsHasBeenSet(false),
-    m_domainEndpointOptionsHasBeenSet(false),
-    m_advancedSecurityOptionsHasBeenSet(false),
-    m_autoTuneOptionsHasBeenSet(false),
-    m_changeProgressDetailsHasBeenSet(false),
-    m_offPeakWindowOptionsHasBeenSet(false),
-    m_softwareUpdateOptionsHasBeenSet(false)
+DomainConfig::DomainConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -68,129 +28,112 @@ DomainConfig& DomainConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("EngineVersion"))
   {
     m_engineVersion = jsonValue.GetObject("EngineVersion");
-
     m_engineVersionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ClusterConfig"))
   {
     m_clusterConfig = jsonValue.GetObject("ClusterConfig");
-
     m_clusterConfigHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("EBSOptions"))
   {
     m_eBSOptions = jsonValue.GetObject("EBSOptions");
-
     m_eBSOptionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AccessPolicies"))
   {
     m_accessPolicies = jsonValue.GetObject("AccessPolicies");
-
     m_accessPoliciesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("IPAddressType"))
   {
     m_iPAddressType = jsonValue.GetObject("IPAddressType");
-
     m_iPAddressTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SnapshotOptions"))
   {
     m_snapshotOptions = jsonValue.GetObject("SnapshotOptions");
-
     m_snapshotOptionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("VPCOptions"))
   {
     m_vPCOptions = jsonValue.GetObject("VPCOptions");
-
     m_vPCOptionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CognitoOptions"))
   {
     m_cognitoOptions = jsonValue.GetObject("CognitoOptions");
-
     m_cognitoOptionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("EncryptionAtRestOptions"))
   {
     m_encryptionAtRestOptions = jsonValue.GetObject("EncryptionAtRestOptions");
-
     m_encryptionAtRestOptionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NodeToNodeEncryptionOptions"))
   {
     m_nodeToNodeEncryptionOptions = jsonValue.GetObject("NodeToNodeEncryptionOptions");
-
     m_nodeToNodeEncryptionOptionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AdvancedOptions"))
   {
     m_advancedOptions = jsonValue.GetObject("AdvancedOptions");
-
     m_advancedOptionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LogPublishingOptions"))
   {
     m_logPublishingOptions = jsonValue.GetObject("LogPublishingOptions");
-
     m_logPublishingOptionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DomainEndpointOptions"))
   {
     m_domainEndpointOptions = jsonValue.GetObject("DomainEndpointOptions");
-
     m_domainEndpointOptionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AdvancedSecurityOptions"))
   {
     m_advancedSecurityOptions = jsonValue.GetObject("AdvancedSecurityOptions");
-
     m_advancedSecurityOptionsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("IdentityCenterOptions"))
+  {
+    m_identityCenterOptions = jsonValue.GetObject("IdentityCenterOptions");
+    m_identityCenterOptionsHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("AutoTuneOptions"))
   {
     m_autoTuneOptions = jsonValue.GetObject("AutoTuneOptions");
-
     m_autoTuneOptionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ChangeProgressDetails"))
   {
     m_changeProgressDetails = jsonValue.GetObject("ChangeProgressDetails");
-
     m_changeProgressDetailsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("OffPeakWindowOptions"))
   {
     m_offPeakWindowOptions = jsonValue.GetObject("OffPeakWindowOptions");
-
     m_offPeakWindowOptionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SoftwareUpdateOptions"))
   {
     m_softwareUpdateOptions = jsonValue.GetObject("SoftwareUpdateOptions");
-
     m_softwareUpdateOptionsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("ModifyingProperties"))
+  {
+    Aws::Utils::Array<JsonView> modifyingPropertiesJsonList = jsonValue.GetArray("ModifyingProperties");
+    for(unsigned modifyingPropertiesIndex = 0; modifyingPropertiesIndex < modifyingPropertiesJsonList.GetLength(); ++modifyingPropertiesIndex)
+    {
+      m_modifyingProperties.push_back(modifyingPropertiesJsonList[modifyingPropertiesIndex].AsObject());
+    }
+    m_modifyingPropertiesHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("AIMLOptions"))
+  {
+    m_aIMLOptions = jsonValue.GetObject("AIMLOptions");
+    m_aIMLOptionsHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -282,6 +225,12 @@ JsonValue DomainConfig::Jsonize() const
 
   }
 
+  if(m_identityCenterOptionsHasBeenSet)
+  {
+   payload.WithObject("IdentityCenterOptions", m_identityCenterOptions.Jsonize());
+
+  }
+
   if(m_autoTuneOptionsHasBeenSet)
   {
    payload.WithObject("AutoTuneOptions", m_autoTuneOptions.Jsonize());
@@ -303,6 +252,23 @@ JsonValue DomainConfig::Jsonize() const
   if(m_softwareUpdateOptionsHasBeenSet)
   {
    payload.WithObject("SoftwareUpdateOptions", m_softwareUpdateOptions.Jsonize());
+
+  }
+
+  if(m_modifyingPropertiesHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> modifyingPropertiesJsonList(m_modifyingProperties.size());
+   for(unsigned modifyingPropertiesIndex = 0; modifyingPropertiesIndex < modifyingPropertiesJsonList.GetLength(); ++modifyingPropertiesIndex)
+   {
+     modifyingPropertiesJsonList[modifyingPropertiesIndex].AsObject(m_modifyingProperties[modifyingPropertiesIndex].Jsonize());
+   }
+   payload.WithArray("ModifyingProperties", std::move(modifyingPropertiesJsonList));
+
+  }
+
+  if(m_aIMLOptionsHasBeenSet)
+  {
+   payload.WithObject("AIMLOptions", m_aIMLOptions.Jsonize());
 
   }
 

@@ -18,13 +18,7 @@ namespace Pinpoint
 namespace Model
 {
 
-RandomSplitActivity::RandomSplitActivity() : 
-    m_branchesHasBeenSet(false)
-{
-}
-
-RandomSplitActivity::RandomSplitActivity(JsonView jsonValue) : 
-    m_branchesHasBeenSet(false)
+RandomSplitActivity::RandomSplitActivity(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ RandomSplitActivity& RandomSplitActivity::operator =(JsonView jsonValue)
     }
     m_branchesHasBeenSet = true;
   }
-
   return *this;
 }
 

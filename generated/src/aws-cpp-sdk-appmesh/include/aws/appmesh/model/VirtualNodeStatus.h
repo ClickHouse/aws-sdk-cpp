@@ -32,45 +32,24 @@ namespace Model
   class VirtualNodeStatus
   {
   public:
-    AWS_APPMESH_API VirtualNodeStatus();
+    AWS_APPMESH_API VirtualNodeStatus() = default;
     AWS_APPMESH_API VirtualNodeStatus(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPMESH_API VirtualNodeStatus& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPMESH_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The current status of the virtual node.</p>
      */
-    inline const VirtualNodeStatusCode& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The current status of the virtual node.</p>
-     */
+    inline VirtualNodeStatusCode GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p>The current status of the virtual node.</p>
-     */
-    inline void SetStatus(const VirtualNodeStatusCode& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The current status of the virtual node.</p>
-     */
-    inline void SetStatus(VirtualNodeStatusCode&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The current status of the virtual node.</p>
-     */
-    inline VirtualNodeStatus& WithStatus(const VirtualNodeStatusCode& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The current status of the virtual node.</p>
-     */
-    inline VirtualNodeStatus& WithStatus(VirtualNodeStatusCode&& value) { SetStatus(std::move(value)); return *this;}
-
+    inline void SetStatus(VirtualNodeStatusCode value) { m_statusHasBeenSet = true; m_status = value; }
+    inline VirtualNodeStatus& WithStatus(VirtualNodeStatusCode value) { SetStatus(value); return *this;}
+    ///@}
   private:
 
-    VirtualNodeStatusCode m_status;
+    VirtualNodeStatusCode m_status{VirtualNodeStatusCode::NOT_SET};
     bool m_statusHasBeenSet = false;
   };
 

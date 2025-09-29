@@ -34,73 +34,35 @@ namespace Model
   class RetentionSettings
   {
   public:
-    AWS_CHIME_API RetentionSettings();
+    AWS_CHIME_API RetentionSettings() = default;
     AWS_CHIME_API RetentionSettings(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIME_API RetentionSettings& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIME_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The chat room retention settings.</p>
      */
-    inline const RoomRetentionSettings& GetRoomRetentionSettings() const{ return m_roomRetentionSettings; }
-
-    /**
-     * <p>The chat room retention settings.</p>
-     */
+    inline const RoomRetentionSettings& GetRoomRetentionSettings() const { return m_roomRetentionSettings; }
     inline bool RoomRetentionSettingsHasBeenSet() const { return m_roomRetentionSettingsHasBeenSet; }
+    template<typename RoomRetentionSettingsT = RoomRetentionSettings>
+    void SetRoomRetentionSettings(RoomRetentionSettingsT&& value) { m_roomRetentionSettingsHasBeenSet = true; m_roomRetentionSettings = std::forward<RoomRetentionSettingsT>(value); }
+    template<typename RoomRetentionSettingsT = RoomRetentionSettings>
+    RetentionSettings& WithRoomRetentionSettings(RoomRetentionSettingsT&& value) { SetRoomRetentionSettings(std::forward<RoomRetentionSettingsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The chat room retention settings.</p>
-     */
-    inline void SetRoomRetentionSettings(const RoomRetentionSettings& value) { m_roomRetentionSettingsHasBeenSet = true; m_roomRetentionSettings = value; }
-
-    /**
-     * <p>The chat room retention settings.</p>
-     */
-    inline void SetRoomRetentionSettings(RoomRetentionSettings&& value) { m_roomRetentionSettingsHasBeenSet = true; m_roomRetentionSettings = std::move(value); }
-
-    /**
-     * <p>The chat room retention settings.</p>
-     */
-    inline RetentionSettings& WithRoomRetentionSettings(const RoomRetentionSettings& value) { SetRoomRetentionSettings(value); return *this;}
-
-    /**
-     * <p>The chat room retention settings.</p>
-     */
-    inline RetentionSettings& WithRoomRetentionSettings(RoomRetentionSettings&& value) { SetRoomRetentionSettings(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The chat conversation retention settings.</p>
      */
-    inline const ConversationRetentionSettings& GetConversationRetentionSettings() const{ return m_conversationRetentionSettings; }
-
-    /**
-     * <p>The chat conversation retention settings.</p>
-     */
+    inline const ConversationRetentionSettings& GetConversationRetentionSettings() const { return m_conversationRetentionSettings; }
     inline bool ConversationRetentionSettingsHasBeenSet() const { return m_conversationRetentionSettingsHasBeenSet; }
-
-    /**
-     * <p>The chat conversation retention settings.</p>
-     */
-    inline void SetConversationRetentionSettings(const ConversationRetentionSettings& value) { m_conversationRetentionSettingsHasBeenSet = true; m_conversationRetentionSettings = value; }
-
-    /**
-     * <p>The chat conversation retention settings.</p>
-     */
-    inline void SetConversationRetentionSettings(ConversationRetentionSettings&& value) { m_conversationRetentionSettingsHasBeenSet = true; m_conversationRetentionSettings = std::move(value); }
-
-    /**
-     * <p>The chat conversation retention settings.</p>
-     */
-    inline RetentionSettings& WithConversationRetentionSettings(const ConversationRetentionSettings& value) { SetConversationRetentionSettings(value); return *this;}
-
-    /**
-     * <p>The chat conversation retention settings.</p>
-     */
-    inline RetentionSettings& WithConversationRetentionSettings(ConversationRetentionSettings&& value) { SetConversationRetentionSettings(std::move(value)); return *this;}
-
+    template<typename ConversationRetentionSettingsT = ConversationRetentionSettings>
+    void SetConversationRetentionSettings(ConversationRetentionSettingsT&& value) { m_conversationRetentionSettingsHasBeenSet = true; m_conversationRetentionSettings = std::forward<ConversationRetentionSettingsT>(value); }
+    template<typename ConversationRetentionSettingsT = ConversationRetentionSettings>
+    RetentionSettings& WithConversationRetentionSettings(ConversationRetentionSettingsT&& value) { SetConversationRetentionSettings(std::forward<ConversationRetentionSettingsT>(value)); return *this;}
+    ///@}
   private:
 
     RoomRetentionSettings m_roomRetentionSettings;

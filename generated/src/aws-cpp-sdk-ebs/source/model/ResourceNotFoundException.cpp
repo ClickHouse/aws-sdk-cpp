@@ -18,17 +18,7 @@ namespace EBS
 namespace Model
 {
 
-ResourceNotFoundException::ResourceNotFoundException() : 
-    m_messageHasBeenSet(false),
-    m_reason(ResourceNotFoundExceptionReason::NOT_SET),
-    m_reasonHasBeenSet(false)
-{
-}
-
-ResourceNotFoundException::ResourceNotFoundException(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_reason(ResourceNotFoundExceptionReason::NOT_SET),
-    m_reasonHasBeenSet(false)
+ResourceNotFoundException::ResourceNotFoundException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ResourceNotFoundException& ResourceNotFoundException::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("Message"))
   {
     m_message = jsonValue.GetString("Message");
-
     m_messageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Reason"))
   {
     m_reason = ResourceNotFoundExceptionReasonMapper::GetResourceNotFoundExceptionReasonForName(jsonValue.GetString("Reason"));
-
     m_reasonHasBeenSet = true;
   }
-
   return *this;
 }
 

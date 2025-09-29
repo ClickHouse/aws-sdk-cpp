@@ -21,7 +21,7 @@ namespace Model
   class DeleteResolverRequest : public AppSyncRequest
   {
   public:
-    AWS_APPSYNC_API DeleteResolverRequest();
+    AWS_APPSYNC_API DeleteResolverRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,128 +32,41 @@ namespace Model
     AWS_APPSYNC_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The API ID.</p>
      */
-    inline const Aws::String& GetApiId() const{ return m_apiId; }
-
-    /**
-     * <p>The API ID.</p>
-     */
+    inline const Aws::String& GetApiId() const { return m_apiId; }
     inline bool ApiIdHasBeenSet() const { return m_apiIdHasBeenSet; }
+    template<typename ApiIdT = Aws::String>
+    void SetApiId(ApiIdT&& value) { m_apiIdHasBeenSet = true; m_apiId = std::forward<ApiIdT>(value); }
+    template<typename ApiIdT = Aws::String>
+    DeleteResolverRequest& WithApiId(ApiIdT&& value) { SetApiId(std::forward<ApiIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The API ID.</p>
-     */
-    inline void SetApiId(const Aws::String& value) { m_apiIdHasBeenSet = true; m_apiId = value; }
-
-    /**
-     * <p>The API ID.</p>
-     */
-    inline void SetApiId(Aws::String&& value) { m_apiIdHasBeenSet = true; m_apiId = std::move(value); }
-
-    /**
-     * <p>The API ID.</p>
-     */
-    inline void SetApiId(const char* value) { m_apiIdHasBeenSet = true; m_apiId.assign(value); }
-
-    /**
-     * <p>The API ID.</p>
-     */
-    inline DeleteResolverRequest& WithApiId(const Aws::String& value) { SetApiId(value); return *this;}
-
-    /**
-     * <p>The API ID.</p>
-     */
-    inline DeleteResolverRequest& WithApiId(Aws::String&& value) { SetApiId(std::move(value)); return *this;}
-
-    /**
-     * <p>The API ID.</p>
-     */
-    inline DeleteResolverRequest& WithApiId(const char* value) { SetApiId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the resolver type.</p>
      */
-    inline const Aws::String& GetTypeName() const{ return m_typeName; }
-
-    /**
-     * <p>The name of the resolver type.</p>
-     */
+    inline const Aws::String& GetTypeName() const { return m_typeName; }
     inline bool TypeNameHasBeenSet() const { return m_typeNameHasBeenSet; }
+    template<typename TypeNameT = Aws::String>
+    void SetTypeName(TypeNameT&& value) { m_typeNameHasBeenSet = true; m_typeName = std::forward<TypeNameT>(value); }
+    template<typename TypeNameT = Aws::String>
+    DeleteResolverRequest& WithTypeName(TypeNameT&& value) { SetTypeName(std::forward<TypeNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the resolver type.</p>
-     */
-    inline void SetTypeName(const Aws::String& value) { m_typeNameHasBeenSet = true; m_typeName = value; }
-
-    /**
-     * <p>The name of the resolver type.</p>
-     */
-    inline void SetTypeName(Aws::String&& value) { m_typeNameHasBeenSet = true; m_typeName = std::move(value); }
-
-    /**
-     * <p>The name of the resolver type.</p>
-     */
-    inline void SetTypeName(const char* value) { m_typeNameHasBeenSet = true; m_typeName.assign(value); }
-
-    /**
-     * <p>The name of the resolver type.</p>
-     */
-    inline DeleteResolverRequest& WithTypeName(const Aws::String& value) { SetTypeName(value); return *this;}
-
-    /**
-     * <p>The name of the resolver type.</p>
-     */
-    inline DeleteResolverRequest& WithTypeName(Aws::String&& value) { SetTypeName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the resolver type.</p>
-     */
-    inline DeleteResolverRequest& WithTypeName(const char* value) { SetTypeName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The resolver field name.</p>
      */
-    inline const Aws::String& GetFieldName() const{ return m_fieldName; }
-
-    /**
-     * <p>The resolver field name.</p>
-     */
+    inline const Aws::String& GetFieldName() const { return m_fieldName; }
     inline bool FieldNameHasBeenSet() const { return m_fieldNameHasBeenSet; }
-
-    /**
-     * <p>The resolver field name.</p>
-     */
-    inline void SetFieldName(const Aws::String& value) { m_fieldNameHasBeenSet = true; m_fieldName = value; }
-
-    /**
-     * <p>The resolver field name.</p>
-     */
-    inline void SetFieldName(Aws::String&& value) { m_fieldNameHasBeenSet = true; m_fieldName = std::move(value); }
-
-    /**
-     * <p>The resolver field name.</p>
-     */
-    inline void SetFieldName(const char* value) { m_fieldNameHasBeenSet = true; m_fieldName.assign(value); }
-
-    /**
-     * <p>The resolver field name.</p>
-     */
-    inline DeleteResolverRequest& WithFieldName(const Aws::String& value) { SetFieldName(value); return *this;}
-
-    /**
-     * <p>The resolver field name.</p>
-     */
-    inline DeleteResolverRequest& WithFieldName(Aws::String&& value) { SetFieldName(std::move(value)); return *this;}
-
-    /**
-     * <p>The resolver field name.</p>
-     */
-    inline DeleteResolverRequest& WithFieldName(const char* value) { SetFieldName(value); return *this;}
-
+    template<typename FieldNameT = Aws::String>
+    void SetFieldName(FieldNameT&& value) { m_fieldNameHasBeenSet = true; m_fieldName = std::forward<FieldNameT>(value); }
+    template<typename FieldNameT = Aws::String>
+    DeleteResolverRequest& WithFieldName(FieldNameT&& value) { SetFieldName(std::forward<FieldNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_apiId;

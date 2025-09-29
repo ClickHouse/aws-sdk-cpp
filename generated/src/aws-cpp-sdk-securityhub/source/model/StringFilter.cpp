@@ -18,17 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-StringFilter::StringFilter() : 
-    m_valueHasBeenSet(false),
-    m_comparison(StringFilterComparison::NOT_SET),
-    m_comparisonHasBeenSet(false)
-{
-}
-
-StringFilter::StringFilter(JsonView jsonValue) : 
-    m_valueHasBeenSet(false),
-    m_comparison(StringFilterComparison::NOT_SET),
-    m_comparisonHasBeenSet(false)
+StringFilter::StringFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ StringFilter& StringFilter::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Value"))
   {
     m_value = jsonValue.GetString("Value");
-
     m_valueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Comparison"))
   {
     m_comparison = StringFilterComparisonMapper::GetStringFilterComparisonForName(jsonValue.GetString("Comparison"));
-
     m_comparisonHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-ClientLoginBannerResponseOptions::ClientLoginBannerResponseOptions() : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false),
-    m_bannerTextHasBeenSet(false)
-{
-}
-
-ClientLoginBannerResponseOptions::ClientLoginBannerResponseOptions(const XmlNode& xmlNode) : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false),
-    m_bannerTextHasBeenSet(false)
+ClientLoginBannerResponseOptions::ClientLoginBannerResponseOptions(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

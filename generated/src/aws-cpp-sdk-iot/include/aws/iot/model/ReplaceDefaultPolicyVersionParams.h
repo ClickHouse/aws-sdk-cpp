@@ -32,51 +32,25 @@ namespace Model
   class ReplaceDefaultPolicyVersionParams
   {
   public:
-    AWS_IOT_API ReplaceDefaultPolicyVersionParams();
+    AWS_IOT_API ReplaceDefaultPolicyVersionParams() = default;
     AWS_IOT_API ReplaceDefaultPolicyVersionParams(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API ReplaceDefaultPolicyVersionParams& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the template to be applied. The only supported value is
      * <code>BLANK_POLICY</code>.</p>
      */
-    inline const PolicyTemplateName& GetTemplateName() const{ return m_templateName; }
-
-    /**
-     * <p>The name of the template to be applied. The only supported value is
-     * <code>BLANK_POLICY</code>.</p>
-     */
+    inline PolicyTemplateName GetTemplateName() const { return m_templateName; }
     inline bool TemplateNameHasBeenSet() const { return m_templateNameHasBeenSet; }
-
-    /**
-     * <p>The name of the template to be applied. The only supported value is
-     * <code>BLANK_POLICY</code>.</p>
-     */
-    inline void SetTemplateName(const PolicyTemplateName& value) { m_templateNameHasBeenSet = true; m_templateName = value; }
-
-    /**
-     * <p>The name of the template to be applied. The only supported value is
-     * <code>BLANK_POLICY</code>.</p>
-     */
-    inline void SetTemplateName(PolicyTemplateName&& value) { m_templateNameHasBeenSet = true; m_templateName = std::move(value); }
-
-    /**
-     * <p>The name of the template to be applied. The only supported value is
-     * <code>BLANK_POLICY</code>.</p>
-     */
-    inline ReplaceDefaultPolicyVersionParams& WithTemplateName(const PolicyTemplateName& value) { SetTemplateName(value); return *this;}
-
-    /**
-     * <p>The name of the template to be applied. The only supported value is
-     * <code>BLANK_POLICY</code>.</p>
-     */
-    inline ReplaceDefaultPolicyVersionParams& WithTemplateName(PolicyTemplateName&& value) { SetTemplateName(std::move(value)); return *this;}
-
+    inline void SetTemplateName(PolicyTemplateName value) { m_templateNameHasBeenSet = true; m_templateName = value; }
+    inline ReplaceDefaultPolicyVersionParams& WithTemplateName(PolicyTemplateName value) { SetTemplateName(value); return *this;}
+    ///@}
   private:
 
-    PolicyTemplateName m_templateName;
+    PolicyTemplateName m_templateName{PolicyTemplateName::NOT_SET};
     bool m_templateNameHasBeenSet = false;
   };
 

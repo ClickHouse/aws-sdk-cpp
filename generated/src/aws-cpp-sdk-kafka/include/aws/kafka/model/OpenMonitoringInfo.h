@@ -34,54 +34,25 @@ namespace Model
   class OpenMonitoringInfo
   {
   public:
-    AWS_KAFKA_API OpenMonitoringInfo();
+    AWS_KAFKA_API OpenMonitoringInfo() = default;
     AWS_KAFKA_API OpenMonitoringInfo(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKA_API OpenMonitoringInfo& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * 
             <p>Prometheus settings.</p>
          
      */
-    inline const PrometheusInfo& GetPrometheus() const{ return m_prometheus; }
-
-    /**
-     * 
-            <p>Prometheus settings.</p>
-         
-     */
+    inline const PrometheusInfo& GetPrometheus() const { return m_prometheus; }
     inline bool PrometheusHasBeenSet() const { return m_prometheusHasBeenSet; }
-
-    /**
-     * 
-            <p>Prometheus settings.</p>
-         
-     */
-    inline void SetPrometheus(const PrometheusInfo& value) { m_prometheusHasBeenSet = true; m_prometheus = value; }
-
-    /**
-     * 
-            <p>Prometheus settings.</p>
-         
-     */
-    inline void SetPrometheus(PrometheusInfo&& value) { m_prometheusHasBeenSet = true; m_prometheus = std::move(value); }
-
-    /**
-     * 
-            <p>Prometheus settings.</p>
-         
-     */
-    inline OpenMonitoringInfo& WithPrometheus(const PrometheusInfo& value) { SetPrometheus(value); return *this;}
-
-    /**
-     * 
-            <p>Prometheus settings.</p>
-         
-     */
-    inline OpenMonitoringInfo& WithPrometheus(PrometheusInfo&& value) { SetPrometheus(std::move(value)); return *this;}
-
+    template<typename PrometheusT = PrometheusInfo>
+    void SetPrometheus(PrometheusT&& value) { m_prometheusHasBeenSet = true; m_prometheus = std::forward<PrometheusT>(value); }
+    template<typename PrometheusT = PrometheusInfo>
+    OpenMonitoringInfo& WithPrometheus(PrometheusT&& value) { SetPrometheus(std::forward<PrometheusT>(value)); return *this;}
+    ///@}
   private:
 
     PrometheusInfo m_prometheus;

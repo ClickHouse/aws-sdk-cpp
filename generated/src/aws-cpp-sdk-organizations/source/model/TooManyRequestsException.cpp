@@ -18,15 +18,7 @@ namespace Organizations
 namespace Model
 {
 
-TooManyRequestsException::TooManyRequestsException() : 
-    m_typeHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-TooManyRequestsException::TooManyRequestsException(JsonView jsonValue) : 
-    m_typeHasBeenSet(false),
-    m_messageHasBeenSet(false)
+TooManyRequestsException::TooManyRequestsException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ TooManyRequestsException& TooManyRequestsException::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("Type"))
   {
     m_type = jsonValue.GetString("Type");
-
     m_typeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Message"))
   {
     m_message = jsonValue.GetString("Message");
-
     m_messageHasBeenSet = true;
   }
-
   return *this;
 }
 

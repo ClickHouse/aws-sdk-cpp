@@ -34,303 +34,100 @@ namespace Model
   class EnvironmentVpc
   {
   public:
-    AWS_MIGRATIONHUBREFACTORSPACES_API EnvironmentVpc();
+    AWS_MIGRATIONHUBREFACTORSPACES_API EnvironmentVpc() = default;
     AWS_MIGRATIONHUBREFACTORSPACES_API EnvironmentVpc(Aws::Utils::Json::JsonView jsonValue);
     AWS_MIGRATIONHUBREFACTORSPACES_API EnvironmentVpc& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MIGRATIONHUBREFACTORSPACES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Web Services account ID of the virtual private cloud (VPC) owner.
      * </p>
      */
-    inline const Aws::String& GetAccountId() const{ return m_accountId; }
-
-    /**
-     * <p>The Amazon Web Services account ID of the virtual private cloud (VPC) owner.
-     * </p>
-     */
+    inline const Aws::String& GetAccountId() const { return m_accountId; }
     inline bool AccountIdHasBeenSet() const { return m_accountIdHasBeenSet; }
+    template<typename AccountIdT = Aws::String>
+    void SetAccountId(AccountIdT&& value) { m_accountIdHasBeenSet = true; m_accountId = std::forward<AccountIdT>(value); }
+    template<typename AccountIdT = Aws::String>
+    EnvironmentVpc& WithAccountId(AccountIdT&& value) { SetAccountId(std::forward<AccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Web Services account ID of the virtual private cloud (VPC) owner.
-     * </p>
-     */
-    inline void SetAccountId(const Aws::String& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
-
-    /**
-     * <p>The Amazon Web Services account ID of the virtual private cloud (VPC) owner.
-     * </p>
-     */
-    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID of the virtual private cloud (VPC) owner.
-     * </p>
-     */
-    inline void SetAccountId(const char* value) { m_accountIdHasBeenSet = true; m_accountId.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID of the virtual private cloud (VPC) owner.
-     * </p>
-     */
-    inline EnvironmentVpc& WithAccountId(const Aws::String& value) { SetAccountId(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID of the virtual private cloud (VPC) owner.
-     * </p>
-     */
-    inline EnvironmentVpc& WithAccountId(Aws::String&& value) { SetAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID of the virtual private cloud (VPC) owner.
-     * </p>
-     */
-    inline EnvironmentVpc& WithAccountId(const char* value) { SetAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The list of Amazon Virtual Private Cloud (Amazon VPC) CIDR blocks. </p>
      */
-    inline const Aws::Vector<Aws::String>& GetCidrBlocks() const{ return m_cidrBlocks; }
-
-    /**
-     * <p>The list of Amazon Virtual Private Cloud (Amazon VPC) CIDR blocks. </p>
-     */
+    inline const Aws::Vector<Aws::String>& GetCidrBlocks() const { return m_cidrBlocks; }
     inline bool CidrBlocksHasBeenSet() const { return m_cidrBlocksHasBeenSet; }
+    template<typename CidrBlocksT = Aws::Vector<Aws::String>>
+    void SetCidrBlocks(CidrBlocksT&& value) { m_cidrBlocksHasBeenSet = true; m_cidrBlocks = std::forward<CidrBlocksT>(value); }
+    template<typename CidrBlocksT = Aws::Vector<Aws::String>>
+    EnvironmentVpc& WithCidrBlocks(CidrBlocksT&& value) { SetCidrBlocks(std::forward<CidrBlocksT>(value)); return *this;}
+    template<typename CidrBlocksT = Aws::String>
+    EnvironmentVpc& AddCidrBlocks(CidrBlocksT&& value) { m_cidrBlocksHasBeenSet = true; m_cidrBlocks.emplace_back(std::forward<CidrBlocksT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The list of Amazon Virtual Private Cloud (Amazon VPC) CIDR blocks. </p>
-     */
-    inline void SetCidrBlocks(const Aws::Vector<Aws::String>& value) { m_cidrBlocksHasBeenSet = true; m_cidrBlocks = value; }
-
-    /**
-     * <p>The list of Amazon Virtual Private Cloud (Amazon VPC) CIDR blocks. </p>
-     */
-    inline void SetCidrBlocks(Aws::Vector<Aws::String>&& value) { m_cidrBlocksHasBeenSet = true; m_cidrBlocks = std::move(value); }
-
-    /**
-     * <p>The list of Amazon Virtual Private Cloud (Amazon VPC) CIDR blocks. </p>
-     */
-    inline EnvironmentVpc& WithCidrBlocks(const Aws::Vector<Aws::String>& value) { SetCidrBlocks(value); return *this;}
-
-    /**
-     * <p>The list of Amazon Virtual Private Cloud (Amazon VPC) CIDR blocks. </p>
-     */
-    inline EnvironmentVpc& WithCidrBlocks(Aws::Vector<Aws::String>&& value) { SetCidrBlocks(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of Amazon Virtual Private Cloud (Amazon VPC) CIDR blocks. </p>
-     */
-    inline EnvironmentVpc& AddCidrBlocks(const Aws::String& value) { m_cidrBlocksHasBeenSet = true; m_cidrBlocks.push_back(value); return *this; }
-
-    /**
-     * <p>The list of Amazon Virtual Private Cloud (Amazon VPC) CIDR blocks. </p>
-     */
-    inline EnvironmentVpc& AddCidrBlocks(Aws::String&& value) { m_cidrBlocksHasBeenSet = true; m_cidrBlocks.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The list of Amazon Virtual Private Cloud (Amazon VPC) CIDR blocks. </p>
-     */
-    inline EnvironmentVpc& AddCidrBlocks(const char* value) { m_cidrBlocksHasBeenSet = true; m_cidrBlocks.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>A timestamp that indicates when the VPC is first added to the environment.
      * </p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedTime() const{ return m_createdTime; }
-
-    /**
-     * <p>A timestamp that indicates when the VPC is first added to the environment.
-     * </p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedTime() const { return m_createdTime; }
     inline bool CreatedTimeHasBeenSet() const { return m_createdTimeHasBeenSet; }
+    template<typename CreatedTimeT = Aws::Utils::DateTime>
+    void SetCreatedTime(CreatedTimeT&& value) { m_createdTimeHasBeenSet = true; m_createdTime = std::forward<CreatedTimeT>(value); }
+    template<typename CreatedTimeT = Aws::Utils::DateTime>
+    EnvironmentVpc& WithCreatedTime(CreatedTimeT&& value) { SetCreatedTime(std::forward<CreatedTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A timestamp that indicates when the VPC is first added to the environment.
-     * </p>
-     */
-    inline void SetCreatedTime(const Aws::Utils::DateTime& value) { m_createdTimeHasBeenSet = true; m_createdTime = value; }
-
-    /**
-     * <p>A timestamp that indicates when the VPC is first added to the environment.
-     * </p>
-     */
-    inline void SetCreatedTime(Aws::Utils::DateTime&& value) { m_createdTimeHasBeenSet = true; m_createdTime = std::move(value); }
-
-    /**
-     * <p>A timestamp that indicates when the VPC is first added to the environment.
-     * </p>
-     */
-    inline EnvironmentVpc& WithCreatedTime(const Aws::Utils::DateTime& value) { SetCreatedTime(value); return *this;}
-
-    /**
-     * <p>A timestamp that indicates when the VPC is first added to the environment.
-     * </p>
-     */
-    inline EnvironmentVpc& WithCreatedTime(Aws::Utils::DateTime&& value) { SetCreatedTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique identifier of the environment. </p>
      */
-    inline const Aws::String& GetEnvironmentId() const{ return m_environmentId; }
-
-    /**
-     * <p>The unique identifier of the environment. </p>
-     */
+    inline const Aws::String& GetEnvironmentId() const { return m_environmentId; }
     inline bool EnvironmentIdHasBeenSet() const { return m_environmentIdHasBeenSet; }
+    template<typename EnvironmentIdT = Aws::String>
+    void SetEnvironmentId(EnvironmentIdT&& value) { m_environmentIdHasBeenSet = true; m_environmentId = std::forward<EnvironmentIdT>(value); }
+    template<typename EnvironmentIdT = Aws::String>
+    EnvironmentVpc& WithEnvironmentId(EnvironmentIdT&& value) { SetEnvironmentId(std::forward<EnvironmentIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier of the environment. </p>
-     */
-    inline void SetEnvironmentId(const Aws::String& value) { m_environmentIdHasBeenSet = true; m_environmentId = value; }
-
-    /**
-     * <p>The unique identifier of the environment. </p>
-     */
-    inline void SetEnvironmentId(Aws::String&& value) { m_environmentIdHasBeenSet = true; m_environmentId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the environment. </p>
-     */
-    inline void SetEnvironmentId(const char* value) { m_environmentIdHasBeenSet = true; m_environmentId.assign(value); }
-
-    /**
-     * <p>The unique identifier of the environment. </p>
-     */
-    inline EnvironmentVpc& WithEnvironmentId(const Aws::String& value) { SetEnvironmentId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the environment. </p>
-     */
-    inline EnvironmentVpc& WithEnvironmentId(Aws::String&& value) { SetEnvironmentId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the environment. </p>
-     */
-    inline EnvironmentVpc& WithEnvironmentId(const char* value) { SetEnvironmentId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A timestamp that indicates when the VPC was last updated by the environment.
      * </p>
      */
-    inline const Aws::Utils::DateTime& GetLastUpdatedTime() const{ return m_lastUpdatedTime; }
-
-    /**
-     * <p>A timestamp that indicates when the VPC was last updated by the environment.
-     * </p>
-     */
+    inline const Aws::Utils::DateTime& GetLastUpdatedTime() const { return m_lastUpdatedTime; }
     inline bool LastUpdatedTimeHasBeenSet() const { return m_lastUpdatedTimeHasBeenSet; }
+    template<typename LastUpdatedTimeT = Aws::Utils::DateTime>
+    void SetLastUpdatedTime(LastUpdatedTimeT&& value) { m_lastUpdatedTimeHasBeenSet = true; m_lastUpdatedTime = std::forward<LastUpdatedTimeT>(value); }
+    template<typename LastUpdatedTimeT = Aws::Utils::DateTime>
+    EnvironmentVpc& WithLastUpdatedTime(LastUpdatedTimeT&& value) { SetLastUpdatedTime(std::forward<LastUpdatedTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A timestamp that indicates when the VPC was last updated by the environment.
-     * </p>
-     */
-    inline void SetLastUpdatedTime(const Aws::Utils::DateTime& value) { m_lastUpdatedTimeHasBeenSet = true; m_lastUpdatedTime = value; }
-
-    /**
-     * <p>A timestamp that indicates when the VPC was last updated by the environment.
-     * </p>
-     */
-    inline void SetLastUpdatedTime(Aws::Utils::DateTime&& value) { m_lastUpdatedTimeHasBeenSet = true; m_lastUpdatedTime = std::move(value); }
-
-    /**
-     * <p>A timestamp that indicates when the VPC was last updated by the environment.
-     * </p>
-     */
-    inline EnvironmentVpc& WithLastUpdatedTime(const Aws::Utils::DateTime& value) { SetLastUpdatedTime(value); return *this;}
-
-    /**
-     * <p>A timestamp that indicates when the VPC was last updated by the environment.
-     * </p>
-     */
-    inline EnvironmentVpc& WithLastUpdatedTime(Aws::Utils::DateTime&& value) { SetLastUpdatedTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the VPC. </p>
      */
-    inline const Aws::String& GetVpcId() const{ return m_vpcId; }
-
-    /**
-     * <p>The ID of the VPC. </p>
-     */
+    inline const Aws::String& GetVpcId() const { return m_vpcId; }
     inline bool VpcIdHasBeenSet() const { return m_vpcIdHasBeenSet; }
+    template<typename VpcIdT = Aws::String>
+    void SetVpcId(VpcIdT&& value) { m_vpcIdHasBeenSet = true; m_vpcId = std::forward<VpcIdT>(value); }
+    template<typename VpcIdT = Aws::String>
+    EnvironmentVpc& WithVpcId(VpcIdT&& value) { SetVpcId(std::forward<VpcIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the VPC. </p>
-     */
-    inline void SetVpcId(const Aws::String& value) { m_vpcIdHasBeenSet = true; m_vpcId = value; }
-
-    /**
-     * <p>The ID of the VPC. </p>
-     */
-    inline void SetVpcId(Aws::String&& value) { m_vpcIdHasBeenSet = true; m_vpcId = std::move(value); }
-
-    /**
-     * <p>The ID of the VPC. </p>
-     */
-    inline void SetVpcId(const char* value) { m_vpcIdHasBeenSet = true; m_vpcId.assign(value); }
-
-    /**
-     * <p>The ID of the VPC. </p>
-     */
-    inline EnvironmentVpc& WithVpcId(const Aws::String& value) { SetVpcId(value); return *this;}
-
-    /**
-     * <p>The ID of the VPC. </p>
-     */
-    inline EnvironmentVpc& WithVpcId(Aws::String&& value) { SetVpcId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the VPC. </p>
-     */
-    inline EnvironmentVpc& WithVpcId(const char* value) { SetVpcId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the VPC at the time it is added to the environment. </p>
      */
-    inline const Aws::String& GetVpcName() const{ return m_vpcName; }
-
-    /**
-     * <p>The name of the VPC at the time it is added to the environment. </p>
-     */
+    inline const Aws::String& GetVpcName() const { return m_vpcName; }
     inline bool VpcNameHasBeenSet() const { return m_vpcNameHasBeenSet; }
-
-    /**
-     * <p>The name of the VPC at the time it is added to the environment. </p>
-     */
-    inline void SetVpcName(const Aws::String& value) { m_vpcNameHasBeenSet = true; m_vpcName = value; }
-
-    /**
-     * <p>The name of the VPC at the time it is added to the environment. </p>
-     */
-    inline void SetVpcName(Aws::String&& value) { m_vpcNameHasBeenSet = true; m_vpcName = std::move(value); }
-
-    /**
-     * <p>The name of the VPC at the time it is added to the environment. </p>
-     */
-    inline void SetVpcName(const char* value) { m_vpcNameHasBeenSet = true; m_vpcName.assign(value); }
-
-    /**
-     * <p>The name of the VPC at the time it is added to the environment. </p>
-     */
-    inline EnvironmentVpc& WithVpcName(const Aws::String& value) { SetVpcName(value); return *this;}
-
-    /**
-     * <p>The name of the VPC at the time it is added to the environment. </p>
-     */
-    inline EnvironmentVpc& WithVpcName(Aws::String&& value) { SetVpcName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the VPC at the time it is added to the environment. </p>
-     */
-    inline EnvironmentVpc& WithVpcName(const char* value) { SetVpcName(value); return *this;}
-
+    template<typename VpcNameT = Aws::String>
+    void SetVpcName(VpcNameT&& value) { m_vpcNameHasBeenSet = true; m_vpcName = std::forward<VpcNameT>(value); }
+    template<typename VpcNameT = Aws::String>
+    EnvironmentVpc& WithVpcName(VpcNameT&& value) { SetVpcName(std::forward<VpcNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_accountId;
@@ -339,13 +136,13 @@ namespace Model
     Aws::Vector<Aws::String> m_cidrBlocks;
     bool m_cidrBlocksHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdTime;
+    Aws::Utils::DateTime m_createdTime{};
     bool m_createdTimeHasBeenSet = false;
 
     Aws::String m_environmentId;
     bool m_environmentIdHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastUpdatedTime;
+    Aws::Utils::DateTime m_lastUpdatedTime{};
     bool m_lastUpdatedTimeHasBeenSet = false;
 
     Aws::String m_vpcId;

@@ -18,15 +18,7 @@ namespace MarketplaceCatalog
 namespace Model
 {
 
-BatchDescribeErrorDetail::BatchDescribeErrorDetail() : 
-    m_errorCodeHasBeenSet(false),
-    m_errorMessageHasBeenSet(false)
-{
-}
-
-BatchDescribeErrorDetail::BatchDescribeErrorDetail(JsonView jsonValue) : 
-    m_errorCodeHasBeenSet(false),
-    m_errorMessageHasBeenSet(false)
+BatchDescribeErrorDetail::BatchDescribeErrorDetail(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ BatchDescribeErrorDetail& BatchDescribeErrorDetail::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("ErrorCode"))
   {
     m_errorCode = jsonValue.GetString("ErrorCode");
-
     m_errorCodeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ErrorMessage"))
   {
     m_errorMessage = jsonValue.GetString("ErrorMessage");
-
     m_errorMessageHasBeenSet = true;
   }
-
   return *this;
 }
 

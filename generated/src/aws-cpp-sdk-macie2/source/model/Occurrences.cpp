@@ -18,21 +18,7 @@ namespace Macie2
 namespace Model
 {
 
-Occurrences::Occurrences() : 
-    m_cellsHasBeenSet(false),
-    m_lineRangesHasBeenSet(false),
-    m_offsetRangesHasBeenSet(false),
-    m_pagesHasBeenSet(false),
-    m_recordsHasBeenSet(false)
-{
-}
-
-Occurrences::Occurrences(JsonView jsonValue) : 
-    m_cellsHasBeenSet(false),
-    m_lineRangesHasBeenSet(false),
-    m_offsetRangesHasBeenSet(false),
-    m_pagesHasBeenSet(false),
-    m_recordsHasBeenSet(false)
+Occurrences::Occurrences(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -48,7 +34,6 @@ Occurrences& Occurrences::operator =(JsonView jsonValue)
     }
     m_cellsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("lineRanges"))
   {
     Aws::Utils::Array<JsonView> lineRangesJsonList = jsonValue.GetArray("lineRanges");
@@ -58,7 +43,6 @@ Occurrences& Occurrences::operator =(JsonView jsonValue)
     }
     m_lineRangesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("offsetRanges"))
   {
     Aws::Utils::Array<JsonView> offsetRangesJsonList = jsonValue.GetArray("offsetRanges");
@@ -68,7 +52,6 @@ Occurrences& Occurrences::operator =(JsonView jsonValue)
     }
     m_offsetRangesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("pages"))
   {
     Aws::Utils::Array<JsonView> pagesJsonList = jsonValue.GetArray("pages");
@@ -78,7 +61,6 @@ Occurrences& Occurrences::operator =(JsonView jsonValue)
     }
     m_pagesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("records"))
   {
     Aws::Utils::Array<JsonView> recordsJsonList = jsonValue.GetArray("records");
@@ -88,7 +70,6 @@ Occurrences& Occurrences::operator =(JsonView jsonValue)
     }
     m_recordsHasBeenSet = true;
   }
-
   return *this;
 }
 

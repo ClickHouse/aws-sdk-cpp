@@ -25,7 +25,7 @@ namespace Model
   class CreateBatchSegmentJobRequest : public PersonalizeRequest
   {
   public:
-    AWS_PERSONALIZE_API CreateBatchSegmentJobRequest();
+    AWS_PERSONALIZE_API CreateBatchSegmentJobRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,367 +38,111 @@ namespace Model
     AWS_PERSONALIZE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the batch segment job to create.</p>
      */
-    inline const Aws::String& GetJobName() const{ return m_jobName; }
-
-    /**
-     * <p>The name of the batch segment job to create.</p>
-     */
+    inline const Aws::String& GetJobName() const { return m_jobName; }
     inline bool JobNameHasBeenSet() const { return m_jobNameHasBeenSet; }
+    template<typename JobNameT = Aws::String>
+    void SetJobName(JobNameT&& value) { m_jobNameHasBeenSet = true; m_jobName = std::forward<JobNameT>(value); }
+    template<typename JobNameT = Aws::String>
+    CreateBatchSegmentJobRequest& WithJobName(JobNameT&& value) { SetJobName(std::forward<JobNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the batch segment job to create.</p>
-     */
-    inline void SetJobName(const Aws::String& value) { m_jobNameHasBeenSet = true; m_jobName = value; }
-
-    /**
-     * <p>The name of the batch segment job to create.</p>
-     */
-    inline void SetJobName(Aws::String&& value) { m_jobNameHasBeenSet = true; m_jobName = std::move(value); }
-
-    /**
-     * <p>The name of the batch segment job to create.</p>
-     */
-    inline void SetJobName(const char* value) { m_jobNameHasBeenSet = true; m_jobName.assign(value); }
-
-    /**
-     * <p>The name of the batch segment job to create.</p>
-     */
-    inline CreateBatchSegmentJobRequest& WithJobName(const Aws::String& value) { SetJobName(value); return *this;}
-
-    /**
-     * <p>The name of the batch segment job to create.</p>
-     */
-    inline CreateBatchSegmentJobRequest& WithJobName(Aws::String&& value) { SetJobName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the batch segment job to create.</p>
-     */
-    inline CreateBatchSegmentJobRequest& WithJobName(const char* value) { SetJobName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the solution version you want the batch
      * segment job to use to generate batch segments.</p>
      */
-    inline const Aws::String& GetSolutionVersionArn() const{ return m_solutionVersionArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the solution version you want the batch
-     * segment job to use to generate batch segments.</p>
-     */
+    inline const Aws::String& GetSolutionVersionArn() const { return m_solutionVersionArn; }
     inline bool SolutionVersionArnHasBeenSet() const { return m_solutionVersionArnHasBeenSet; }
+    template<typename SolutionVersionArnT = Aws::String>
+    void SetSolutionVersionArn(SolutionVersionArnT&& value) { m_solutionVersionArnHasBeenSet = true; m_solutionVersionArn = std::forward<SolutionVersionArnT>(value); }
+    template<typename SolutionVersionArnT = Aws::String>
+    CreateBatchSegmentJobRequest& WithSolutionVersionArn(SolutionVersionArnT&& value) { SetSolutionVersionArn(std::forward<SolutionVersionArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the solution version you want the batch
-     * segment job to use to generate batch segments.</p>
-     */
-    inline void SetSolutionVersionArn(const Aws::String& value) { m_solutionVersionArnHasBeenSet = true; m_solutionVersionArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the solution version you want the batch
-     * segment job to use to generate batch segments.</p>
-     */
-    inline void SetSolutionVersionArn(Aws::String&& value) { m_solutionVersionArnHasBeenSet = true; m_solutionVersionArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the solution version you want the batch
-     * segment job to use to generate batch segments.</p>
-     */
-    inline void SetSolutionVersionArn(const char* value) { m_solutionVersionArnHasBeenSet = true; m_solutionVersionArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the solution version you want the batch
-     * segment job to use to generate batch segments.</p>
-     */
-    inline CreateBatchSegmentJobRequest& WithSolutionVersionArn(const Aws::String& value) { SetSolutionVersionArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the solution version you want the batch
-     * segment job to use to generate batch segments.</p>
-     */
-    inline CreateBatchSegmentJobRequest& WithSolutionVersionArn(Aws::String&& value) { SetSolutionVersionArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the solution version you want the batch
-     * segment job to use to generate batch segments.</p>
-     */
-    inline CreateBatchSegmentJobRequest& WithSolutionVersionArn(const char* value) { SetSolutionVersionArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the filter to apply to the batch segment job. For more information
      * on using filters, see <a
      * href="https://docs.aws.amazon.com/personalize/latest/dg/filter-batch.html">Filtering
      * batch recommendations</a>.</p>
      */
-    inline const Aws::String& GetFilterArn() const{ return m_filterArn; }
-
-    /**
-     * <p>The ARN of the filter to apply to the batch segment job. For more information
-     * on using filters, see <a
-     * href="https://docs.aws.amazon.com/personalize/latest/dg/filter-batch.html">Filtering
-     * batch recommendations</a>.</p>
-     */
+    inline const Aws::String& GetFilterArn() const { return m_filterArn; }
     inline bool FilterArnHasBeenSet() const { return m_filterArnHasBeenSet; }
+    template<typename FilterArnT = Aws::String>
+    void SetFilterArn(FilterArnT&& value) { m_filterArnHasBeenSet = true; m_filterArn = std::forward<FilterArnT>(value); }
+    template<typename FilterArnT = Aws::String>
+    CreateBatchSegmentJobRequest& WithFilterArn(FilterArnT&& value) { SetFilterArn(std::forward<FilterArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the filter to apply to the batch segment job. For more information
-     * on using filters, see <a
-     * href="https://docs.aws.amazon.com/personalize/latest/dg/filter-batch.html">Filtering
-     * batch recommendations</a>.</p>
-     */
-    inline void SetFilterArn(const Aws::String& value) { m_filterArnHasBeenSet = true; m_filterArn = value; }
-
-    /**
-     * <p>The ARN of the filter to apply to the batch segment job. For more information
-     * on using filters, see <a
-     * href="https://docs.aws.amazon.com/personalize/latest/dg/filter-batch.html">Filtering
-     * batch recommendations</a>.</p>
-     */
-    inline void SetFilterArn(Aws::String&& value) { m_filterArnHasBeenSet = true; m_filterArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the filter to apply to the batch segment job. For more information
-     * on using filters, see <a
-     * href="https://docs.aws.amazon.com/personalize/latest/dg/filter-batch.html">Filtering
-     * batch recommendations</a>.</p>
-     */
-    inline void SetFilterArn(const char* value) { m_filterArnHasBeenSet = true; m_filterArn.assign(value); }
-
-    /**
-     * <p>The ARN of the filter to apply to the batch segment job. For more information
-     * on using filters, see <a
-     * href="https://docs.aws.amazon.com/personalize/latest/dg/filter-batch.html">Filtering
-     * batch recommendations</a>.</p>
-     */
-    inline CreateBatchSegmentJobRequest& WithFilterArn(const Aws::String& value) { SetFilterArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the filter to apply to the batch segment job. For more information
-     * on using filters, see <a
-     * href="https://docs.aws.amazon.com/personalize/latest/dg/filter-batch.html">Filtering
-     * batch recommendations</a>.</p>
-     */
-    inline CreateBatchSegmentJobRequest& WithFilterArn(Aws::String&& value) { SetFilterArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the filter to apply to the batch segment job. For more information
-     * on using filters, see <a
-     * href="https://docs.aws.amazon.com/personalize/latest/dg/filter-batch.html">Filtering
-     * batch recommendations</a>.</p>
-     */
-    inline CreateBatchSegmentJobRequest& WithFilterArn(const char* value) { SetFilterArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The number of predicted users generated by the batch segment job for each
      * line of input data. The maximum number of users per segment is 5 million.</p>
      */
-    inline int GetNumResults() const{ return m_numResults; }
-
-    /**
-     * <p>The number of predicted users generated by the batch segment job for each
-     * line of input data. The maximum number of users per segment is 5 million.</p>
-     */
+    inline int GetNumResults() const { return m_numResults; }
     inline bool NumResultsHasBeenSet() const { return m_numResultsHasBeenSet; }
-
-    /**
-     * <p>The number of predicted users generated by the batch segment job for each
-     * line of input data. The maximum number of users per segment is 5 million.</p>
-     */
     inline void SetNumResults(int value) { m_numResultsHasBeenSet = true; m_numResults = value; }
-
-    /**
-     * <p>The number of predicted users generated by the batch segment job for each
-     * line of input data. The maximum number of users per segment is 5 million.</p>
-     */
     inline CreateBatchSegmentJobRequest& WithNumResults(int value) { SetNumResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The Amazon S3 path for the input data used to generate the batch segment
      * job.</p>
      */
-    inline const BatchSegmentJobInput& GetJobInput() const{ return m_jobInput; }
-
-    /**
-     * <p>The Amazon S3 path for the input data used to generate the batch segment
-     * job.</p>
-     */
+    inline const BatchSegmentJobInput& GetJobInput() const { return m_jobInput; }
     inline bool JobInputHasBeenSet() const { return m_jobInputHasBeenSet; }
+    template<typename JobInputT = BatchSegmentJobInput>
+    void SetJobInput(JobInputT&& value) { m_jobInputHasBeenSet = true; m_jobInput = std::forward<JobInputT>(value); }
+    template<typename JobInputT = BatchSegmentJobInput>
+    CreateBatchSegmentJobRequest& WithJobInput(JobInputT&& value) { SetJobInput(std::forward<JobInputT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon S3 path for the input data used to generate the batch segment
-     * job.</p>
-     */
-    inline void SetJobInput(const BatchSegmentJobInput& value) { m_jobInputHasBeenSet = true; m_jobInput = value; }
-
-    /**
-     * <p>The Amazon S3 path for the input data used to generate the batch segment
-     * job.</p>
-     */
-    inline void SetJobInput(BatchSegmentJobInput&& value) { m_jobInputHasBeenSet = true; m_jobInput = std::move(value); }
-
-    /**
-     * <p>The Amazon S3 path for the input data used to generate the batch segment
-     * job.</p>
-     */
-    inline CreateBatchSegmentJobRequest& WithJobInput(const BatchSegmentJobInput& value) { SetJobInput(value); return *this;}
-
-    /**
-     * <p>The Amazon S3 path for the input data used to generate the batch segment
-     * job.</p>
-     */
-    inline CreateBatchSegmentJobRequest& WithJobInput(BatchSegmentJobInput&& value) { SetJobInput(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon S3 path for the bucket where the job's output will be stored.</p>
      */
-    inline const BatchSegmentJobOutput& GetJobOutput() const{ return m_jobOutput; }
-
-    /**
-     * <p>The Amazon S3 path for the bucket where the job's output will be stored.</p>
-     */
+    inline const BatchSegmentJobOutput& GetJobOutput() const { return m_jobOutput; }
     inline bool JobOutputHasBeenSet() const { return m_jobOutputHasBeenSet; }
+    template<typename JobOutputT = BatchSegmentJobOutput>
+    void SetJobOutput(JobOutputT&& value) { m_jobOutputHasBeenSet = true; m_jobOutput = std::forward<JobOutputT>(value); }
+    template<typename JobOutputT = BatchSegmentJobOutput>
+    CreateBatchSegmentJobRequest& WithJobOutput(JobOutputT&& value) { SetJobOutput(std::forward<JobOutputT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon S3 path for the bucket where the job's output will be stored.</p>
-     */
-    inline void SetJobOutput(const BatchSegmentJobOutput& value) { m_jobOutputHasBeenSet = true; m_jobOutput = value; }
-
-    /**
-     * <p>The Amazon S3 path for the bucket where the job's output will be stored.</p>
-     */
-    inline void SetJobOutput(BatchSegmentJobOutput&& value) { m_jobOutputHasBeenSet = true; m_jobOutput = std::move(value); }
-
-    /**
-     * <p>The Amazon S3 path for the bucket where the job's output will be stored.</p>
-     */
-    inline CreateBatchSegmentJobRequest& WithJobOutput(const BatchSegmentJobOutput& value) { SetJobOutput(value); return *this;}
-
-    /**
-     * <p>The Amazon S3 path for the bucket where the job's output will be stored.</p>
-     */
-    inline CreateBatchSegmentJobRequest& WithJobOutput(BatchSegmentJobOutput&& value) { SetJobOutput(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the Amazon Identity and Access Management role that has
      * permissions to read and write to your input and output Amazon S3 buckets
      * respectively.</p>
      */
-    inline const Aws::String& GetRoleArn() const{ return m_roleArn; }
-
-    /**
-     * <p>The ARN of the Amazon Identity and Access Management role that has
-     * permissions to read and write to your input and output Amazon S3 buckets
-     * respectively.</p>
-     */
+    inline const Aws::String& GetRoleArn() const { return m_roleArn; }
     inline bool RoleArnHasBeenSet() const { return m_roleArnHasBeenSet; }
+    template<typename RoleArnT = Aws::String>
+    void SetRoleArn(RoleArnT&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::forward<RoleArnT>(value); }
+    template<typename RoleArnT = Aws::String>
+    CreateBatchSegmentJobRequest& WithRoleArn(RoleArnT&& value) { SetRoleArn(std::forward<RoleArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the Amazon Identity and Access Management role that has
-     * permissions to read and write to your input and output Amazon S3 buckets
-     * respectively.</p>
-     */
-    inline void SetRoleArn(const Aws::String& value) { m_roleArnHasBeenSet = true; m_roleArn = value; }
-
-    /**
-     * <p>The ARN of the Amazon Identity and Access Management role that has
-     * permissions to read and write to your input and output Amazon S3 buckets
-     * respectively.</p>
-     */
-    inline void SetRoleArn(Aws::String&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the Amazon Identity and Access Management role that has
-     * permissions to read and write to your input and output Amazon S3 buckets
-     * respectively.</p>
-     */
-    inline void SetRoleArn(const char* value) { m_roleArnHasBeenSet = true; m_roleArn.assign(value); }
-
-    /**
-     * <p>The ARN of the Amazon Identity and Access Management role that has
-     * permissions to read and write to your input and output Amazon S3 buckets
-     * respectively.</p>
-     */
-    inline CreateBatchSegmentJobRequest& WithRoleArn(const Aws::String& value) { SetRoleArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the Amazon Identity and Access Management role that has
-     * permissions to read and write to your input and output Amazon S3 buckets
-     * respectively.</p>
-     */
-    inline CreateBatchSegmentJobRequest& WithRoleArn(Aws::String&& value) { SetRoleArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the Amazon Identity and Access Management role that has
-     * permissions to read and write to your input and output Amazon S3 buckets
-     * respectively.</p>
-     */
-    inline CreateBatchSegmentJobRequest& WithRoleArn(const char* value) { SetRoleArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of <a
      * href="https://docs.aws.amazon.com/personalize/latest/dg/tagging-resources.html">tags</a>
      * to apply to the batch segment job.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>A list of <a
-     * href="https://docs.aws.amazon.com/personalize/latest/dg/tagging-resources.html">tags</a>
-     * to apply to the batch segment job.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>A list of <a
-     * href="https://docs.aws.amazon.com/personalize/latest/dg/tagging-resources.html">tags</a>
-     * to apply to the batch segment job.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>A list of <a
-     * href="https://docs.aws.amazon.com/personalize/latest/dg/tagging-resources.html">tags</a>
-     * to apply to the batch segment job.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>A list of <a
-     * href="https://docs.aws.amazon.com/personalize/latest/dg/tagging-resources.html">tags</a>
-     * to apply to the batch segment job.</p>
-     */
-    inline CreateBatchSegmentJobRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>A list of <a
-     * href="https://docs.aws.amazon.com/personalize/latest/dg/tagging-resources.html">tags</a>
-     * to apply to the batch segment job.</p>
-     */
-    inline CreateBatchSegmentJobRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of <a
-     * href="https://docs.aws.amazon.com/personalize/latest/dg/tagging-resources.html">tags</a>
-     * to apply to the batch segment job.</p>
-     */
-    inline CreateBatchSegmentJobRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>A list of <a
-     * href="https://docs.aws.amazon.com/personalize/latest/dg/tagging-resources.html">tags</a>
-     * to apply to the batch segment job.</p>
-     */
-    inline CreateBatchSegmentJobRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    CreateBatchSegmentJobRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    CreateBatchSegmentJobRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_jobName;
@@ -410,7 +154,7 @@ namespace Model
     Aws::String m_filterArn;
     bool m_filterArnHasBeenSet = false;
 
-    int m_numResults;
+    int m_numResults{0};
     bool m_numResultsHasBeenSet = false;
 
     BatchSegmentJobInput m_jobInput;

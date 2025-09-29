@@ -32,48 +32,24 @@ namespace Model
   class GridLayoutCanvasSizeOptions
   {
   public:
-    AWS_QUICKSIGHT_API GridLayoutCanvasSizeOptions();
+    AWS_QUICKSIGHT_API GridLayoutCanvasSizeOptions() = default;
     AWS_QUICKSIGHT_API GridLayoutCanvasSizeOptions(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API GridLayoutCanvasSizeOptions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The options that determine the sizing of the canvas used in a grid
      * layout.</p>
      */
-    inline const GridLayoutScreenCanvasSizeOptions& GetScreenCanvasSizeOptions() const{ return m_screenCanvasSizeOptions; }
-
-    /**
-     * <p>The options that determine the sizing of the canvas used in a grid
-     * layout.</p>
-     */
+    inline const GridLayoutScreenCanvasSizeOptions& GetScreenCanvasSizeOptions() const { return m_screenCanvasSizeOptions; }
     inline bool ScreenCanvasSizeOptionsHasBeenSet() const { return m_screenCanvasSizeOptionsHasBeenSet; }
-
-    /**
-     * <p>The options that determine the sizing of the canvas used in a grid
-     * layout.</p>
-     */
-    inline void SetScreenCanvasSizeOptions(const GridLayoutScreenCanvasSizeOptions& value) { m_screenCanvasSizeOptionsHasBeenSet = true; m_screenCanvasSizeOptions = value; }
-
-    /**
-     * <p>The options that determine the sizing of the canvas used in a grid
-     * layout.</p>
-     */
-    inline void SetScreenCanvasSizeOptions(GridLayoutScreenCanvasSizeOptions&& value) { m_screenCanvasSizeOptionsHasBeenSet = true; m_screenCanvasSizeOptions = std::move(value); }
-
-    /**
-     * <p>The options that determine the sizing of the canvas used in a grid
-     * layout.</p>
-     */
-    inline GridLayoutCanvasSizeOptions& WithScreenCanvasSizeOptions(const GridLayoutScreenCanvasSizeOptions& value) { SetScreenCanvasSizeOptions(value); return *this;}
-
-    /**
-     * <p>The options that determine the sizing of the canvas used in a grid
-     * layout.</p>
-     */
-    inline GridLayoutCanvasSizeOptions& WithScreenCanvasSizeOptions(GridLayoutScreenCanvasSizeOptions&& value) { SetScreenCanvasSizeOptions(std::move(value)); return *this;}
-
+    template<typename ScreenCanvasSizeOptionsT = GridLayoutScreenCanvasSizeOptions>
+    void SetScreenCanvasSizeOptions(ScreenCanvasSizeOptionsT&& value) { m_screenCanvasSizeOptionsHasBeenSet = true; m_screenCanvasSizeOptions = std::forward<ScreenCanvasSizeOptionsT>(value); }
+    template<typename ScreenCanvasSizeOptionsT = GridLayoutScreenCanvasSizeOptions>
+    GridLayoutCanvasSizeOptions& WithScreenCanvasSizeOptions(ScreenCanvasSizeOptionsT&& value) { SetScreenCanvasSizeOptions(std::forward<ScreenCanvasSizeOptionsT>(value)); return *this;}
+    ///@}
   private:
 
     GridLayoutScreenCanvasSizeOptions m_screenCanvasSizeOptions;

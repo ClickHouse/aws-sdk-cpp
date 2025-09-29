@@ -18,23 +18,7 @@ namespace mgn
 namespace Model
 {
 
-DescribeSourceServersRequestFilters::DescribeSourceServersRequestFilters() : 
-    m_applicationIDsHasBeenSet(false),
-    m_isArchived(false),
-    m_isArchivedHasBeenSet(false),
-    m_lifeCycleStatesHasBeenSet(false),
-    m_replicationTypesHasBeenSet(false),
-    m_sourceServerIDsHasBeenSet(false)
-{
-}
-
-DescribeSourceServersRequestFilters::DescribeSourceServersRequestFilters(JsonView jsonValue) : 
-    m_applicationIDsHasBeenSet(false),
-    m_isArchived(false),
-    m_isArchivedHasBeenSet(false),
-    m_lifeCycleStatesHasBeenSet(false),
-    m_replicationTypesHasBeenSet(false),
-    m_sourceServerIDsHasBeenSet(false)
+DescribeSourceServersRequestFilters::DescribeSourceServersRequestFilters(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -50,14 +34,11 @@ DescribeSourceServersRequestFilters& DescribeSourceServersRequestFilters::operat
     }
     m_applicationIDsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("isArchived"))
   {
     m_isArchived = jsonValue.GetBool("isArchived");
-
     m_isArchivedHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("lifeCycleStates"))
   {
     Aws::Utils::Array<JsonView> lifeCycleStatesJsonList = jsonValue.GetArray("lifeCycleStates");
@@ -67,7 +48,6 @@ DescribeSourceServersRequestFilters& DescribeSourceServersRequestFilters::operat
     }
     m_lifeCycleStatesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("replicationTypes"))
   {
     Aws::Utils::Array<JsonView> replicationTypesJsonList = jsonValue.GetArray("replicationTypes");
@@ -77,7 +57,6 @@ DescribeSourceServersRequestFilters& DescribeSourceServersRequestFilters::operat
     }
     m_replicationTypesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("sourceServerIDs"))
   {
     Aws::Utils::Array<JsonView> sourceServerIDsJsonList = jsonValue.GetArray("sourceServerIDs");
@@ -87,7 +66,6 @@ DescribeSourceServersRequestFilters& DescribeSourceServersRequestFilters::operat
     }
     m_sourceServerIDsHasBeenSet = true;
   }
-
   return *this;
 }
 

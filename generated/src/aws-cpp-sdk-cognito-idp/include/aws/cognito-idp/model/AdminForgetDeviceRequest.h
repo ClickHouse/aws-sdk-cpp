@@ -25,7 +25,7 @@ namespace Model
   class AdminForgetDeviceRequest : public CognitoIdentityProviderRequest
   {
   public:
-    AWS_COGNITOIDENTITYPROVIDER_API AdminForgetDeviceRequest();
+    AWS_COGNITOIDENTITYPROVIDER_API AdminForgetDeviceRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,152 +38,45 @@ namespace Model
     AWS_COGNITOIDENTITYPROVIDER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
-     * <p>The user pool ID.</p>
+     * <p>The ID of the user pool where the device owner is a user.</p>
      */
-    inline const Aws::String& GetUserPoolId() const{ return m_userPoolId; }
-
-    /**
-     * <p>The user pool ID.</p>
-     */
+    inline const Aws::String& GetUserPoolId() const { return m_userPoolId; }
     inline bool UserPoolIdHasBeenSet() const { return m_userPoolIdHasBeenSet; }
+    template<typename UserPoolIdT = Aws::String>
+    void SetUserPoolId(UserPoolIdT&& value) { m_userPoolIdHasBeenSet = true; m_userPoolId = std::forward<UserPoolIdT>(value); }
+    template<typename UserPoolIdT = Aws::String>
+    AdminForgetDeviceRequest& WithUserPoolId(UserPoolIdT&& value) { SetUserPoolId(std::forward<UserPoolIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The user pool ID.</p>
-     */
-    inline void SetUserPoolId(const Aws::String& value) { m_userPoolIdHasBeenSet = true; m_userPoolId = value; }
-
-    /**
-     * <p>The user pool ID.</p>
-     */
-    inline void SetUserPoolId(Aws::String&& value) { m_userPoolIdHasBeenSet = true; m_userPoolId = std::move(value); }
-
-    /**
-     * <p>The user pool ID.</p>
-     */
-    inline void SetUserPoolId(const char* value) { m_userPoolIdHasBeenSet = true; m_userPoolId.assign(value); }
-
-    /**
-     * <p>The user pool ID.</p>
-     */
-    inline AdminForgetDeviceRequest& WithUserPoolId(const Aws::String& value) { SetUserPoolId(value); return *this;}
-
-    /**
-     * <p>The user pool ID.</p>
-     */
-    inline AdminForgetDeviceRequest& WithUserPoolId(Aws::String&& value) { SetUserPoolId(std::move(value)); return *this;}
-
-    /**
-     * <p>The user pool ID.</p>
-     */
-    inline AdminForgetDeviceRequest& WithUserPoolId(const char* value) { SetUserPoolId(value); return *this;}
-
-
-    /**
-     * <p>The username of the user that you want to query or modify. The value of this
+     * <p>The name of the user that you want to query or modify. The value of this
      * parameter is typically your user's username, but it can be any of their alias
      * attributes. If <code>username</code> isn't an alias attribute in your user pool,
-     * you can also use their <code>sub</code> in this request.</p>
+     * this value must be the <code>sub</code> of a local user or the username of a
+     * user from a third-party IdP.</p>
      */
-    inline const Aws::String& GetUsername() const{ return m_username; }
-
-    /**
-     * <p>The username of the user that you want to query or modify. The value of this
-     * parameter is typically your user's username, but it can be any of their alias
-     * attributes. If <code>username</code> isn't an alias attribute in your user pool,
-     * you can also use their <code>sub</code> in this request.</p>
-     */
+    inline const Aws::String& GetUsername() const { return m_username; }
     inline bool UsernameHasBeenSet() const { return m_usernameHasBeenSet; }
+    template<typename UsernameT = Aws::String>
+    void SetUsername(UsernameT&& value) { m_usernameHasBeenSet = true; m_username = std::forward<UsernameT>(value); }
+    template<typename UsernameT = Aws::String>
+    AdminForgetDeviceRequest& WithUsername(UsernameT&& value) { SetUsername(std::forward<UsernameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The username of the user that you want to query or modify. The value of this
-     * parameter is typically your user's username, but it can be any of their alias
-     * attributes. If <code>username</code> isn't an alias attribute in your user pool,
-     * you can also use their <code>sub</code> in this request.</p>
+     * <p>The key ID of the device that you want to delete.</p>
      */
-    inline void SetUsername(const Aws::String& value) { m_usernameHasBeenSet = true; m_username = value; }
-
-    /**
-     * <p>The username of the user that you want to query or modify. The value of this
-     * parameter is typically your user's username, but it can be any of their alias
-     * attributes. If <code>username</code> isn't an alias attribute in your user pool,
-     * you can also use their <code>sub</code> in this request.</p>
-     */
-    inline void SetUsername(Aws::String&& value) { m_usernameHasBeenSet = true; m_username = std::move(value); }
-
-    /**
-     * <p>The username of the user that you want to query or modify. The value of this
-     * parameter is typically your user's username, but it can be any of their alias
-     * attributes. If <code>username</code> isn't an alias attribute in your user pool,
-     * you can also use their <code>sub</code> in this request.</p>
-     */
-    inline void SetUsername(const char* value) { m_usernameHasBeenSet = true; m_username.assign(value); }
-
-    /**
-     * <p>The username of the user that you want to query or modify. The value of this
-     * parameter is typically your user's username, but it can be any of their alias
-     * attributes. If <code>username</code> isn't an alias attribute in your user pool,
-     * you can also use their <code>sub</code> in this request.</p>
-     */
-    inline AdminForgetDeviceRequest& WithUsername(const Aws::String& value) { SetUsername(value); return *this;}
-
-    /**
-     * <p>The username of the user that you want to query or modify. The value of this
-     * parameter is typically your user's username, but it can be any of their alias
-     * attributes. If <code>username</code> isn't an alias attribute in your user pool,
-     * you can also use their <code>sub</code> in this request.</p>
-     */
-    inline AdminForgetDeviceRequest& WithUsername(Aws::String&& value) { SetUsername(std::move(value)); return *this;}
-
-    /**
-     * <p>The username of the user that you want to query or modify. The value of this
-     * parameter is typically your user's username, but it can be any of their alias
-     * attributes. If <code>username</code> isn't an alias attribute in your user pool,
-     * you can also use their <code>sub</code> in this request.</p>
-     */
-    inline AdminForgetDeviceRequest& WithUsername(const char* value) { SetUsername(value); return *this;}
-
-
-    /**
-     * <p>The device key.</p>
-     */
-    inline const Aws::String& GetDeviceKey() const{ return m_deviceKey; }
-
-    /**
-     * <p>The device key.</p>
-     */
+    inline const Aws::String& GetDeviceKey() const { return m_deviceKey; }
     inline bool DeviceKeyHasBeenSet() const { return m_deviceKeyHasBeenSet; }
-
-    /**
-     * <p>The device key.</p>
-     */
-    inline void SetDeviceKey(const Aws::String& value) { m_deviceKeyHasBeenSet = true; m_deviceKey = value; }
-
-    /**
-     * <p>The device key.</p>
-     */
-    inline void SetDeviceKey(Aws::String&& value) { m_deviceKeyHasBeenSet = true; m_deviceKey = std::move(value); }
-
-    /**
-     * <p>The device key.</p>
-     */
-    inline void SetDeviceKey(const char* value) { m_deviceKeyHasBeenSet = true; m_deviceKey.assign(value); }
-
-    /**
-     * <p>The device key.</p>
-     */
-    inline AdminForgetDeviceRequest& WithDeviceKey(const Aws::String& value) { SetDeviceKey(value); return *this;}
-
-    /**
-     * <p>The device key.</p>
-     */
-    inline AdminForgetDeviceRequest& WithDeviceKey(Aws::String&& value) { SetDeviceKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The device key.</p>
-     */
-    inline AdminForgetDeviceRequest& WithDeviceKey(const char* value) { SetDeviceKey(value); return *this;}
-
+    template<typename DeviceKeyT = Aws::String>
+    void SetDeviceKey(DeviceKeyT&& value) { m_deviceKeyHasBeenSet = true; m_deviceKey = std::forward<DeviceKeyT>(value); }
+    template<typename DeviceKeyT = Aws::String>
+    AdminForgetDeviceRequest& WithDeviceKey(DeviceKeyT&& value) { SetDeviceKey(std::forward<DeviceKeyT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_userPoolId;

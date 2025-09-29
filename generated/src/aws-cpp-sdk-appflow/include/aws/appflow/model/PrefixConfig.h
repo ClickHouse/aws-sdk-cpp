@@ -35,86 +35,35 @@ namespace Model
   class PrefixConfig
   {
   public:
-    AWS_APPFLOW_API PrefixConfig();
+    AWS_APPFLOW_API PrefixConfig() = default;
     AWS_APPFLOW_API PrefixConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPFLOW_API PrefixConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPFLOW_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Determines the format of the prefix, and whether it applies to the file name,
      * file path, or both. </p>
      */
-    inline const PrefixType& GetPrefixType() const{ return m_prefixType; }
-
-    /**
-     * <p>Determines the format of the prefix, and whether it applies to the file name,
-     * file path, or both. </p>
-     */
+    inline PrefixType GetPrefixType() const { return m_prefixType; }
     inline bool PrefixTypeHasBeenSet() const { return m_prefixTypeHasBeenSet; }
+    inline void SetPrefixType(PrefixType value) { m_prefixTypeHasBeenSet = true; m_prefixType = value; }
+    inline PrefixConfig& WithPrefixType(PrefixType value) { SetPrefixType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Determines the format of the prefix, and whether it applies to the file name,
-     * file path, or both. </p>
-     */
-    inline void SetPrefixType(const PrefixType& value) { m_prefixTypeHasBeenSet = true; m_prefixType = value; }
-
-    /**
-     * <p>Determines the format of the prefix, and whether it applies to the file name,
-     * file path, or both. </p>
-     */
-    inline void SetPrefixType(PrefixType&& value) { m_prefixTypeHasBeenSet = true; m_prefixType = std::move(value); }
-
-    /**
-     * <p>Determines the format of the prefix, and whether it applies to the file name,
-     * file path, or both. </p>
-     */
-    inline PrefixConfig& WithPrefixType(const PrefixType& value) { SetPrefixType(value); return *this;}
-
-    /**
-     * <p>Determines the format of the prefix, and whether it applies to the file name,
-     * file path, or both. </p>
-     */
-    inline PrefixConfig& WithPrefixType(PrefixType&& value) { SetPrefixType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Determines the level of granularity for the date and time that's included in
      * the prefix. </p>
      */
-    inline const PrefixFormat& GetPrefixFormat() const{ return m_prefixFormat; }
-
-    /**
-     * <p>Determines the level of granularity for the date and time that's included in
-     * the prefix. </p>
-     */
+    inline PrefixFormat GetPrefixFormat() const { return m_prefixFormat; }
     inline bool PrefixFormatHasBeenSet() const { return m_prefixFormatHasBeenSet; }
+    inline void SetPrefixFormat(PrefixFormat value) { m_prefixFormatHasBeenSet = true; m_prefixFormat = value; }
+    inline PrefixConfig& WithPrefixFormat(PrefixFormat value) { SetPrefixFormat(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Determines the level of granularity for the date and time that's included in
-     * the prefix. </p>
-     */
-    inline void SetPrefixFormat(const PrefixFormat& value) { m_prefixFormatHasBeenSet = true; m_prefixFormat = value; }
-
-    /**
-     * <p>Determines the level of granularity for the date and time that's included in
-     * the prefix. </p>
-     */
-    inline void SetPrefixFormat(PrefixFormat&& value) { m_prefixFormatHasBeenSet = true; m_prefixFormat = std::move(value); }
-
-    /**
-     * <p>Determines the level of granularity for the date and time that's included in
-     * the prefix. </p>
-     */
-    inline PrefixConfig& WithPrefixFormat(const PrefixFormat& value) { SetPrefixFormat(value); return *this;}
-
-    /**
-     * <p>Determines the level of granularity for the date and time that's included in
-     * the prefix. </p>
-     */
-    inline PrefixConfig& WithPrefixFormat(PrefixFormat&& value) { SetPrefixFormat(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies whether the destination file path includes either or both of the
      * following elements:</p> <dl> <dt>EXECUTION_ID</dt> <dd> <p>The ID that Amazon
@@ -125,98 +74,20 @@ namespace Model
      * field mappings</p> </li> <li> <p>Field data types</p> </li> <li> <p>Partition
      * keys</p> </li> </ul> </dd> </dl>
      */
-    inline const Aws::Vector<PathPrefix>& GetPathPrefixHierarchy() const{ return m_pathPrefixHierarchy; }
-
-    /**
-     * <p>Specifies whether the destination file path includes either or both of the
-     * following elements:</p> <dl> <dt>EXECUTION_ID</dt> <dd> <p>The ID that Amazon
-     * AppFlow assigns to the flow run.</p> </dd> <dt>SCHEMA_VERSION</dt> <dd> <p>The
-     * version number of your data schema. Amazon AppFlow assigns this version number.
-     * The version number increases by one when you change any of the following
-     * settings in your flow configuration:</p> <ul> <li> <p>Source-to-destination
-     * field mappings</p> </li> <li> <p>Field data types</p> </li> <li> <p>Partition
-     * keys</p> </li> </ul> </dd> </dl>
-     */
+    inline const Aws::Vector<PathPrefix>& GetPathPrefixHierarchy() const { return m_pathPrefixHierarchy; }
     inline bool PathPrefixHierarchyHasBeenSet() const { return m_pathPrefixHierarchyHasBeenSet; }
-
-    /**
-     * <p>Specifies whether the destination file path includes either or both of the
-     * following elements:</p> <dl> <dt>EXECUTION_ID</dt> <dd> <p>The ID that Amazon
-     * AppFlow assigns to the flow run.</p> </dd> <dt>SCHEMA_VERSION</dt> <dd> <p>The
-     * version number of your data schema. Amazon AppFlow assigns this version number.
-     * The version number increases by one when you change any of the following
-     * settings in your flow configuration:</p> <ul> <li> <p>Source-to-destination
-     * field mappings</p> </li> <li> <p>Field data types</p> </li> <li> <p>Partition
-     * keys</p> </li> </ul> </dd> </dl>
-     */
-    inline void SetPathPrefixHierarchy(const Aws::Vector<PathPrefix>& value) { m_pathPrefixHierarchyHasBeenSet = true; m_pathPrefixHierarchy = value; }
-
-    /**
-     * <p>Specifies whether the destination file path includes either or both of the
-     * following elements:</p> <dl> <dt>EXECUTION_ID</dt> <dd> <p>The ID that Amazon
-     * AppFlow assigns to the flow run.</p> </dd> <dt>SCHEMA_VERSION</dt> <dd> <p>The
-     * version number of your data schema. Amazon AppFlow assigns this version number.
-     * The version number increases by one when you change any of the following
-     * settings in your flow configuration:</p> <ul> <li> <p>Source-to-destination
-     * field mappings</p> </li> <li> <p>Field data types</p> </li> <li> <p>Partition
-     * keys</p> </li> </ul> </dd> </dl>
-     */
-    inline void SetPathPrefixHierarchy(Aws::Vector<PathPrefix>&& value) { m_pathPrefixHierarchyHasBeenSet = true; m_pathPrefixHierarchy = std::move(value); }
-
-    /**
-     * <p>Specifies whether the destination file path includes either or both of the
-     * following elements:</p> <dl> <dt>EXECUTION_ID</dt> <dd> <p>The ID that Amazon
-     * AppFlow assigns to the flow run.</p> </dd> <dt>SCHEMA_VERSION</dt> <dd> <p>The
-     * version number of your data schema. Amazon AppFlow assigns this version number.
-     * The version number increases by one when you change any of the following
-     * settings in your flow configuration:</p> <ul> <li> <p>Source-to-destination
-     * field mappings</p> </li> <li> <p>Field data types</p> </li> <li> <p>Partition
-     * keys</p> </li> </ul> </dd> </dl>
-     */
-    inline PrefixConfig& WithPathPrefixHierarchy(const Aws::Vector<PathPrefix>& value) { SetPathPrefixHierarchy(value); return *this;}
-
-    /**
-     * <p>Specifies whether the destination file path includes either or both of the
-     * following elements:</p> <dl> <dt>EXECUTION_ID</dt> <dd> <p>The ID that Amazon
-     * AppFlow assigns to the flow run.</p> </dd> <dt>SCHEMA_VERSION</dt> <dd> <p>The
-     * version number of your data schema. Amazon AppFlow assigns this version number.
-     * The version number increases by one when you change any of the following
-     * settings in your flow configuration:</p> <ul> <li> <p>Source-to-destination
-     * field mappings</p> </li> <li> <p>Field data types</p> </li> <li> <p>Partition
-     * keys</p> </li> </ul> </dd> </dl>
-     */
-    inline PrefixConfig& WithPathPrefixHierarchy(Aws::Vector<PathPrefix>&& value) { SetPathPrefixHierarchy(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies whether the destination file path includes either or both of the
-     * following elements:</p> <dl> <dt>EXECUTION_ID</dt> <dd> <p>The ID that Amazon
-     * AppFlow assigns to the flow run.</p> </dd> <dt>SCHEMA_VERSION</dt> <dd> <p>The
-     * version number of your data schema. Amazon AppFlow assigns this version number.
-     * The version number increases by one when you change any of the following
-     * settings in your flow configuration:</p> <ul> <li> <p>Source-to-destination
-     * field mappings</p> </li> <li> <p>Field data types</p> </li> <li> <p>Partition
-     * keys</p> </li> </ul> </dd> </dl>
-     */
-    inline PrefixConfig& AddPathPrefixHierarchy(const PathPrefix& value) { m_pathPrefixHierarchyHasBeenSet = true; m_pathPrefixHierarchy.push_back(value); return *this; }
-
-    /**
-     * <p>Specifies whether the destination file path includes either or both of the
-     * following elements:</p> <dl> <dt>EXECUTION_ID</dt> <dd> <p>The ID that Amazon
-     * AppFlow assigns to the flow run.</p> </dd> <dt>SCHEMA_VERSION</dt> <dd> <p>The
-     * version number of your data schema. Amazon AppFlow assigns this version number.
-     * The version number increases by one when you change any of the following
-     * settings in your flow configuration:</p> <ul> <li> <p>Source-to-destination
-     * field mappings</p> </li> <li> <p>Field data types</p> </li> <li> <p>Partition
-     * keys</p> </li> </ul> </dd> </dl>
-     */
-    inline PrefixConfig& AddPathPrefixHierarchy(PathPrefix&& value) { m_pathPrefixHierarchyHasBeenSet = true; m_pathPrefixHierarchy.push_back(std::move(value)); return *this; }
-
+    template<typename PathPrefixHierarchyT = Aws::Vector<PathPrefix>>
+    void SetPathPrefixHierarchy(PathPrefixHierarchyT&& value) { m_pathPrefixHierarchyHasBeenSet = true; m_pathPrefixHierarchy = std::forward<PathPrefixHierarchyT>(value); }
+    template<typename PathPrefixHierarchyT = Aws::Vector<PathPrefix>>
+    PrefixConfig& WithPathPrefixHierarchy(PathPrefixHierarchyT&& value) { SetPathPrefixHierarchy(std::forward<PathPrefixHierarchyT>(value)); return *this;}
+    inline PrefixConfig& AddPathPrefixHierarchy(PathPrefix value) { m_pathPrefixHierarchyHasBeenSet = true; m_pathPrefixHierarchy.push_back(value); return *this; }
+    ///@}
   private:
 
-    PrefixType m_prefixType;
+    PrefixType m_prefixType{PrefixType::NOT_SET};
     bool m_prefixTypeHasBeenSet = false;
 
-    PrefixFormat m_prefixFormat;
+    PrefixFormat m_prefixFormat{PrefixFormat::NOT_SET};
     bool m_prefixFormatHasBeenSet = false;
 
     Aws::Vector<PathPrefix> m_pathPrefixHierarchy;

@@ -18,15 +18,7 @@ namespace CodeDeploy
 namespace Model
 {
 
-ECSService::ECSService() : 
-    m_serviceNameHasBeenSet(false),
-    m_clusterNameHasBeenSet(false)
-{
-}
-
-ECSService::ECSService(JsonView jsonValue) : 
-    m_serviceNameHasBeenSet(false),
-    m_clusterNameHasBeenSet(false)
+ECSService::ECSService(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ECSService& ECSService::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("serviceName"))
   {
     m_serviceName = jsonValue.GetString("serviceName");
-
     m_serviceNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("clusterName"))
   {
     m_clusterName = jsonValue.GetString("clusterName");
-
     m_clusterNameHasBeenSet = true;
   }
-
   return *this;
 }
 

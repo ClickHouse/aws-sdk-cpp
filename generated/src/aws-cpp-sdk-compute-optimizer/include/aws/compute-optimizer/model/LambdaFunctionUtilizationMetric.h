@@ -33,61 +33,26 @@ namespace Model
   class LambdaFunctionUtilizationMetric
   {
   public:
-    AWS_COMPUTEOPTIMIZER_API LambdaFunctionUtilizationMetric();
+    AWS_COMPUTEOPTIMIZER_API LambdaFunctionUtilizationMetric() = default;
     AWS_COMPUTEOPTIMIZER_API LambdaFunctionUtilizationMetric(Aws::Utils::Json::JsonView jsonValue);
     AWS_COMPUTEOPTIMIZER_API LambdaFunctionUtilizationMetric& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COMPUTEOPTIMIZER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the utilization metric.</p> <p>The following utilization metrics
      * are available:</p> <ul> <li> <p> <code>Duration</code> - The amount of time that
      * your function code spends processing an event.</p> </li> <li> <p>
      * <code>Memory</code> - The amount of memory used per invocation.</p> </li> </ul>
      */
-    inline const LambdaFunctionMetricName& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the utilization metric.</p> <p>The following utilization metrics
-     * are available:</p> <ul> <li> <p> <code>Duration</code> - The amount of time that
-     * your function code spends processing an event.</p> </li> <li> <p>
-     * <code>Memory</code> - The amount of memory used per invocation.</p> </li> </ul>
-     */
+    inline LambdaFunctionMetricName GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    inline void SetName(LambdaFunctionMetricName value) { m_nameHasBeenSet = true; m_name = value; }
+    inline LambdaFunctionUtilizationMetric& WithName(LambdaFunctionMetricName value) { SetName(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the utilization metric.</p> <p>The following utilization metrics
-     * are available:</p> <ul> <li> <p> <code>Duration</code> - The amount of time that
-     * your function code spends processing an event.</p> </li> <li> <p>
-     * <code>Memory</code> - The amount of memory used per invocation.</p> </li> </ul>
-     */
-    inline void SetName(const LambdaFunctionMetricName& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the utilization metric.</p> <p>The following utilization metrics
-     * are available:</p> <ul> <li> <p> <code>Duration</code> - The amount of time that
-     * your function code spends processing an event.</p> </li> <li> <p>
-     * <code>Memory</code> - The amount of memory used per invocation.</p> </li> </ul>
-     */
-    inline void SetName(LambdaFunctionMetricName&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the utilization metric.</p> <p>The following utilization metrics
-     * are available:</p> <ul> <li> <p> <code>Duration</code> - The amount of time that
-     * your function code spends processing an event.</p> </li> <li> <p>
-     * <code>Memory</code> - The amount of memory used per invocation.</p> </li> </ul>
-     */
-    inline LambdaFunctionUtilizationMetric& WithName(const LambdaFunctionMetricName& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the utilization metric.</p> <p>The following utilization metrics
-     * are available:</p> <ul> <li> <p> <code>Duration</code> - The amount of time that
-     * your function code spends processing an event.</p> </li> <li> <p>
-     * <code>Memory</code> - The amount of memory used per invocation.</p> </li> </ul>
-     */
-    inline LambdaFunctionUtilizationMetric& WithName(LambdaFunctionMetricName&& value) { SetName(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The statistic of the utilization metric.</p> <p>The Compute Optimizer API,
      * Command Line Interface (CLI), and SDKs return utilization metrics using only the
@@ -103,123 +68,30 @@ namespace Model
      * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html">Amazon
      * CloudWatch User Guide</a>.</p>
      */
-    inline const LambdaFunctionMetricStatistic& GetStatistic() const{ return m_statistic; }
-
-    /**
-     * <p>The statistic of the utilization metric.</p> <p>The Compute Optimizer API,
-     * Command Line Interface (CLI), and SDKs return utilization metrics using only the
-     * <code>Maximum</code> statistic, which is the highest value observed during the
-     * specified period.</p> <p>The Compute Optimizer console displays graphs for some
-     * utilization metrics using the <code>Average</code> statistic, which is the value
-     * of <code>Sum</code> / <code>SampleCount</code> during the specified period. For
-     * more information, see <a
-     * href="https://docs.aws.amazon.com/compute-optimizer/latest/ug/viewing-recommendations.html">Viewing
-     * resource recommendations</a> in the <i>Compute Optimizer User Guide</i>. You can
-     * also get averaged utilization metric data for your resources using Amazon
-     * CloudWatch. For more information, see the <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html">Amazon
-     * CloudWatch User Guide</a>.</p>
-     */
+    inline LambdaFunctionMetricStatistic GetStatistic() const { return m_statistic; }
     inline bool StatisticHasBeenSet() const { return m_statisticHasBeenSet; }
+    inline void SetStatistic(LambdaFunctionMetricStatistic value) { m_statisticHasBeenSet = true; m_statistic = value; }
+    inline LambdaFunctionUtilizationMetric& WithStatistic(LambdaFunctionMetricStatistic value) { SetStatistic(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The statistic of the utilization metric.</p> <p>The Compute Optimizer API,
-     * Command Line Interface (CLI), and SDKs return utilization metrics using only the
-     * <code>Maximum</code> statistic, which is the highest value observed during the
-     * specified period.</p> <p>The Compute Optimizer console displays graphs for some
-     * utilization metrics using the <code>Average</code> statistic, which is the value
-     * of <code>Sum</code> / <code>SampleCount</code> during the specified period. For
-     * more information, see <a
-     * href="https://docs.aws.amazon.com/compute-optimizer/latest/ug/viewing-recommendations.html">Viewing
-     * resource recommendations</a> in the <i>Compute Optimizer User Guide</i>. You can
-     * also get averaged utilization metric data for your resources using Amazon
-     * CloudWatch. For more information, see the <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html">Amazon
-     * CloudWatch User Guide</a>.</p>
-     */
-    inline void SetStatistic(const LambdaFunctionMetricStatistic& value) { m_statisticHasBeenSet = true; m_statistic = value; }
-
-    /**
-     * <p>The statistic of the utilization metric.</p> <p>The Compute Optimizer API,
-     * Command Line Interface (CLI), and SDKs return utilization metrics using only the
-     * <code>Maximum</code> statistic, which is the highest value observed during the
-     * specified period.</p> <p>The Compute Optimizer console displays graphs for some
-     * utilization metrics using the <code>Average</code> statistic, which is the value
-     * of <code>Sum</code> / <code>SampleCount</code> during the specified period. For
-     * more information, see <a
-     * href="https://docs.aws.amazon.com/compute-optimizer/latest/ug/viewing-recommendations.html">Viewing
-     * resource recommendations</a> in the <i>Compute Optimizer User Guide</i>. You can
-     * also get averaged utilization metric data for your resources using Amazon
-     * CloudWatch. For more information, see the <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html">Amazon
-     * CloudWatch User Guide</a>.</p>
-     */
-    inline void SetStatistic(LambdaFunctionMetricStatistic&& value) { m_statisticHasBeenSet = true; m_statistic = std::move(value); }
-
-    /**
-     * <p>The statistic of the utilization metric.</p> <p>The Compute Optimizer API,
-     * Command Line Interface (CLI), and SDKs return utilization metrics using only the
-     * <code>Maximum</code> statistic, which is the highest value observed during the
-     * specified period.</p> <p>The Compute Optimizer console displays graphs for some
-     * utilization metrics using the <code>Average</code> statistic, which is the value
-     * of <code>Sum</code> / <code>SampleCount</code> during the specified period. For
-     * more information, see <a
-     * href="https://docs.aws.amazon.com/compute-optimizer/latest/ug/viewing-recommendations.html">Viewing
-     * resource recommendations</a> in the <i>Compute Optimizer User Guide</i>. You can
-     * also get averaged utilization metric data for your resources using Amazon
-     * CloudWatch. For more information, see the <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html">Amazon
-     * CloudWatch User Guide</a>.</p>
-     */
-    inline LambdaFunctionUtilizationMetric& WithStatistic(const LambdaFunctionMetricStatistic& value) { SetStatistic(value); return *this;}
-
-    /**
-     * <p>The statistic of the utilization metric.</p> <p>The Compute Optimizer API,
-     * Command Line Interface (CLI), and SDKs return utilization metrics using only the
-     * <code>Maximum</code> statistic, which is the highest value observed during the
-     * specified period.</p> <p>The Compute Optimizer console displays graphs for some
-     * utilization metrics using the <code>Average</code> statistic, which is the value
-     * of <code>Sum</code> / <code>SampleCount</code> during the specified period. For
-     * more information, see <a
-     * href="https://docs.aws.amazon.com/compute-optimizer/latest/ug/viewing-recommendations.html">Viewing
-     * resource recommendations</a> in the <i>Compute Optimizer User Guide</i>. You can
-     * also get averaged utilization metric data for your resources using Amazon
-     * CloudWatch. For more information, see the <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html">Amazon
-     * CloudWatch User Guide</a>.</p>
-     */
-    inline LambdaFunctionUtilizationMetric& WithStatistic(LambdaFunctionMetricStatistic&& value) { SetStatistic(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The value of the utilization metric.</p>
      */
-    inline double GetValue() const{ return m_value; }
-
-    /**
-     * <p>The value of the utilization metric.</p>
-     */
+    inline double GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>The value of the utilization metric.</p>
-     */
     inline void SetValue(double value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The value of the utilization metric.</p>
-     */
     inline LambdaFunctionUtilizationMetric& WithValue(double value) { SetValue(value); return *this;}
-
+    ///@}
   private:
 
-    LambdaFunctionMetricName m_name;
+    LambdaFunctionMetricName m_name{LambdaFunctionMetricName::NOT_SET};
     bool m_nameHasBeenSet = false;
 
-    LambdaFunctionMetricStatistic m_statistic;
+    LambdaFunctionMetricStatistic m_statistic{LambdaFunctionMetricStatistic::NOT_SET};
     bool m_statisticHasBeenSet = false;
 
-    double m_value;
+    double m_value{0.0};
     bool m_valueHasBeenSet = false;
   };
 

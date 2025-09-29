@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-InstanceMarketOptionsRequest::InstanceMarketOptionsRequest() : 
-    m_marketType(MarketType::NOT_SET),
-    m_marketTypeHasBeenSet(false),
-    m_spotOptionsHasBeenSet(false)
-{
-}
-
-InstanceMarketOptionsRequest::InstanceMarketOptionsRequest(const XmlNode& xmlNode) : 
-    m_marketType(MarketType::NOT_SET),
-    m_marketTypeHasBeenSet(false),
-    m_spotOptionsHasBeenSet(false)
+InstanceMarketOptionsRequest::InstanceMarketOptionsRequest(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -44,7 +34,7 @@ InstanceMarketOptionsRequest& InstanceMarketOptionsRequest::operator =(const Xml
     XmlNode marketTypeNode = resultNode.FirstChild("MarketType");
     if(!marketTypeNode.IsNull())
     {
-      m_marketType = MarketTypeMapper::GetMarketTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(marketTypeNode.GetText()).c_str()).c_str());
+      m_marketType = MarketTypeMapper::GetMarketTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(marketTypeNode.GetText()).c_str()));
       m_marketTypeHasBeenSet = true;
     }
     XmlNode spotOptionsNode = resultNode.FirstChild("SpotOptions");
@@ -62,7 +52,7 @@ void InstanceMarketOptionsRequest::OutputToStream(Aws::OStream& oStream, const c
 {
   if(m_marketTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".MarketType=" << MarketTypeMapper::GetNameForMarketType(m_marketType) << "&";
+      oStream << location << index << locationValue << ".MarketType=" << StringUtils::URLEncode(MarketTypeMapper::GetNameForMarketType(m_marketType)) << "&";
   }
 
   if(m_spotOptionsHasBeenSet)
@@ -78,7 +68,7 @@ void InstanceMarketOptionsRequest::OutputToStream(Aws::OStream& oStream, const c
 {
   if(m_marketTypeHasBeenSet)
   {
-      oStream << location << ".MarketType=" << MarketTypeMapper::GetNameForMarketType(m_marketType) << "&";
+      oStream << location << ".MarketType=" << StringUtils::URLEncode(MarketTypeMapper::GetNameForMarketType(m_marketType)) << "&";
   }
   if(m_spotOptionsHasBeenSet)
   {

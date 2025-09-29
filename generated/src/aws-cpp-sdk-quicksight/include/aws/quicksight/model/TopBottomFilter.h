@@ -9,6 +9,7 @@
 #include <aws/quicksight/model/ColumnIdentifier.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/quicksight/model/TimeGranularity.h>
+#include <aws/quicksight/model/DefaultFilterControlConfiguration.h>
 #include <aws/quicksight/model/AggregationSortConfiguration.h>
 #include <utility>
 
@@ -36,231 +37,96 @@ namespace Model
   class TopBottomFilter
   {
   public:
-    AWS_QUICKSIGHT_API TopBottomFilter();
+    AWS_QUICKSIGHT_API TopBottomFilter() = default;
     AWS_QUICKSIGHT_API TopBottomFilter(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API TopBottomFilter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An identifier that uniquely identifies a filter within a dashboard, analysis,
      * or template.</p>
      */
-    inline const Aws::String& GetFilterId() const{ return m_filterId; }
-
-    /**
-     * <p>An identifier that uniquely identifies a filter within a dashboard, analysis,
-     * or template.</p>
-     */
+    inline const Aws::String& GetFilterId() const { return m_filterId; }
     inline bool FilterIdHasBeenSet() const { return m_filterIdHasBeenSet; }
+    template<typename FilterIdT = Aws::String>
+    void SetFilterId(FilterIdT&& value) { m_filterIdHasBeenSet = true; m_filterId = std::forward<FilterIdT>(value); }
+    template<typename FilterIdT = Aws::String>
+    TopBottomFilter& WithFilterId(FilterIdT&& value) { SetFilterId(std::forward<FilterIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An identifier that uniquely identifies a filter within a dashboard, analysis,
-     * or template.</p>
-     */
-    inline void SetFilterId(const Aws::String& value) { m_filterIdHasBeenSet = true; m_filterId = value; }
-
-    /**
-     * <p>An identifier that uniquely identifies a filter within a dashboard, analysis,
-     * or template.</p>
-     */
-    inline void SetFilterId(Aws::String&& value) { m_filterIdHasBeenSet = true; m_filterId = std::move(value); }
-
-    /**
-     * <p>An identifier that uniquely identifies a filter within a dashboard, analysis,
-     * or template.</p>
-     */
-    inline void SetFilterId(const char* value) { m_filterIdHasBeenSet = true; m_filterId.assign(value); }
-
-    /**
-     * <p>An identifier that uniquely identifies a filter within a dashboard, analysis,
-     * or template.</p>
-     */
-    inline TopBottomFilter& WithFilterId(const Aws::String& value) { SetFilterId(value); return *this;}
-
-    /**
-     * <p>An identifier that uniquely identifies a filter within a dashboard, analysis,
-     * or template.</p>
-     */
-    inline TopBottomFilter& WithFilterId(Aws::String&& value) { SetFilterId(std::move(value)); return *this;}
-
-    /**
-     * <p>An identifier that uniquely identifies a filter within a dashboard, analysis,
-     * or template.</p>
-     */
-    inline TopBottomFilter& WithFilterId(const char* value) { SetFilterId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The column that the filter is applied to.</p>
      */
-    inline const ColumnIdentifier& GetColumn() const{ return m_column; }
-
-    /**
-     * <p>The column that the filter is applied to.</p>
-     */
+    inline const ColumnIdentifier& GetColumn() const { return m_column; }
     inline bool ColumnHasBeenSet() const { return m_columnHasBeenSet; }
+    template<typename ColumnT = ColumnIdentifier>
+    void SetColumn(ColumnT&& value) { m_columnHasBeenSet = true; m_column = std::forward<ColumnT>(value); }
+    template<typename ColumnT = ColumnIdentifier>
+    TopBottomFilter& WithColumn(ColumnT&& value) { SetColumn(std::forward<ColumnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The column that the filter is applied to.</p>
-     */
-    inline void SetColumn(const ColumnIdentifier& value) { m_columnHasBeenSet = true; m_column = value; }
-
-    /**
-     * <p>The column that the filter is applied to.</p>
-     */
-    inline void SetColumn(ColumnIdentifier&& value) { m_columnHasBeenSet = true; m_column = std::move(value); }
-
-    /**
-     * <p>The column that the filter is applied to.</p>
-     */
-    inline TopBottomFilter& WithColumn(const ColumnIdentifier& value) { SetColumn(value); return *this;}
-
-    /**
-     * <p>The column that the filter is applied to.</p>
-     */
-    inline TopBottomFilter& WithColumn(ColumnIdentifier&& value) { SetColumn(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The number of items to include in the top bottom filter results.</p>
      */
-    inline int GetLimit() const{ return m_limit; }
-
-    /**
-     * <p>The number of items to include in the top bottom filter results.</p>
-     */
+    inline int GetLimit() const { return m_limit; }
     inline bool LimitHasBeenSet() const { return m_limitHasBeenSet; }
-
-    /**
-     * <p>The number of items to include in the top bottom filter results.</p>
-     */
     inline void SetLimit(int value) { m_limitHasBeenSet = true; m_limit = value; }
-
-    /**
-     * <p>The number of items to include in the top bottom filter results.</p>
-     */
     inline TopBottomFilter& WithLimit(int value) { SetLimit(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The aggregation and sort configuration of the top bottom filter.</p>
      */
-    inline const Aws::Vector<AggregationSortConfiguration>& GetAggregationSortConfigurations() const{ return m_aggregationSortConfigurations; }
-
-    /**
-     * <p>The aggregation and sort configuration of the top bottom filter.</p>
-     */
+    inline const Aws::Vector<AggregationSortConfiguration>& GetAggregationSortConfigurations() const { return m_aggregationSortConfigurations; }
     inline bool AggregationSortConfigurationsHasBeenSet() const { return m_aggregationSortConfigurationsHasBeenSet; }
+    template<typename AggregationSortConfigurationsT = Aws::Vector<AggregationSortConfiguration>>
+    void SetAggregationSortConfigurations(AggregationSortConfigurationsT&& value) { m_aggregationSortConfigurationsHasBeenSet = true; m_aggregationSortConfigurations = std::forward<AggregationSortConfigurationsT>(value); }
+    template<typename AggregationSortConfigurationsT = Aws::Vector<AggregationSortConfiguration>>
+    TopBottomFilter& WithAggregationSortConfigurations(AggregationSortConfigurationsT&& value) { SetAggregationSortConfigurations(std::forward<AggregationSortConfigurationsT>(value)); return *this;}
+    template<typename AggregationSortConfigurationsT = AggregationSortConfiguration>
+    TopBottomFilter& AddAggregationSortConfigurations(AggregationSortConfigurationsT&& value) { m_aggregationSortConfigurationsHasBeenSet = true; m_aggregationSortConfigurations.emplace_back(std::forward<AggregationSortConfigurationsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The aggregation and sort configuration of the top bottom filter.</p>
-     */
-    inline void SetAggregationSortConfigurations(const Aws::Vector<AggregationSortConfiguration>& value) { m_aggregationSortConfigurationsHasBeenSet = true; m_aggregationSortConfigurations = value; }
-
-    /**
-     * <p>The aggregation and sort configuration of the top bottom filter.</p>
-     */
-    inline void SetAggregationSortConfigurations(Aws::Vector<AggregationSortConfiguration>&& value) { m_aggregationSortConfigurationsHasBeenSet = true; m_aggregationSortConfigurations = std::move(value); }
-
-    /**
-     * <p>The aggregation and sort configuration of the top bottom filter.</p>
-     */
-    inline TopBottomFilter& WithAggregationSortConfigurations(const Aws::Vector<AggregationSortConfiguration>& value) { SetAggregationSortConfigurations(value); return *this;}
-
-    /**
-     * <p>The aggregation and sort configuration of the top bottom filter.</p>
-     */
-    inline TopBottomFilter& WithAggregationSortConfigurations(Aws::Vector<AggregationSortConfiguration>&& value) { SetAggregationSortConfigurations(std::move(value)); return *this;}
-
-    /**
-     * <p>The aggregation and sort configuration of the top bottom filter.</p>
-     */
-    inline TopBottomFilter& AddAggregationSortConfigurations(const AggregationSortConfiguration& value) { m_aggregationSortConfigurationsHasBeenSet = true; m_aggregationSortConfigurations.push_back(value); return *this; }
-
-    /**
-     * <p>The aggregation and sort configuration of the top bottom filter.</p>
-     */
-    inline TopBottomFilter& AddAggregationSortConfigurations(AggregationSortConfiguration&& value) { m_aggregationSortConfigurationsHasBeenSet = true; m_aggregationSortConfigurations.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The level of time precision that is used to aggregate <code>DateTime</code>
      * values.</p>
      */
-    inline const TimeGranularity& GetTimeGranularity() const{ return m_timeGranularity; }
-
-    /**
-     * <p>The level of time precision that is used to aggregate <code>DateTime</code>
-     * values.</p>
-     */
+    inline TimeGranularity GetTimeGranularity() const { return m_timeGranularity; }
     inline bool TimeGranularityHasBeenSet() const { return m_timeGranularityHasBeenSet; }
+    inline void SetTimeGranularity(TimeGranularity value) { m_timeGranularityHasBeenSet = true; m_timeGranularity = value; }
+    inline TopBottomFilter& WithTimeGranularity(TimeGranularity value) { SetTimeGranularity(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The level of time precision that is used to aggregate <code>DateTime</code>
-     * values.</p>
-     */
-    inline void SetTimeGranularity(const TimeGranularity& value) { m_timeGranularityHasBeenSet = true; m_timeGranularity = value; }
-
-    /**
-     * <p>The level of time precision that is used to aggregate <code>DateTime</code>
-     * values.</p>
-     */
-    inline void SetTimeGranularity(TimeGranularity&& value) { m_timeGranularityHasBeenSet = true; m_timeGranularity = std::move(value); }
-
-    /**
-     * <p>The level of time precision that is used to aggregate <code>DateTime</code>
-     * values.</p>
-     */
-    inline TopBottomFilter& WithTimeGranularity(const TimeGranularity& value) { SetTimeGranularity(value); return *this;}
-
-    /**
-     * <p>The level of time precision that is used to aggregate <code>DateTime</code>
-     * values.</p>
-     */
-    inline TopBottomFilter& WithTimeGranularity(TimeGranularity&& value) { SetTimeGranularity(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The parameter whose value should be used for the filter value.</p>
      */
-    inline const Aws::String& GetParameterName() const{ return m_parameterName; }
-
-    /**
-     * <p>The parameter whose value should be used for the filter value.</p>
-     */
+    inline const Aws::String& GetParameterName() const { return m_parameterName; }
     inline bool ParameterNameHasBeenSet() const { return m_parameterNameHasBeenSet; }
+    template<typename ParameterNameT = Aws::String>
+    void SetParameterName(ParameterNameT&& value) { m_parameterNameHasBeenSet = true; m_parameterName = std::forward<ParameterNameT>(value); }
+    template<typename ParameterNameT = Aws::String>
+    TopBottomFilter& WithParameterName(ParameterNameT&& value) { SetParameterName(std::forward<ParameterNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The parameter whose value should be used for the filter value.</p>
+     * <p>The default configurations for the associated controls. This applies only for
+     * filters that are scoped to multiple sheets.</p>
      */
-    inline void SetParameterName(const Aws::String& value) { m_parameterNameHasBeenSet = true; m_parameterName = value; }
-
-    /**
-     * <p>The parameter whose value should be used for the filter value.</p>
-     */
-    inline void SetParameterName(Aws::String&& value) { m_parameterNameHasBeenSet = true; m_parameterName = std::move(value); }
-
-    /**
-     * <p>The parameter whose value should be used for the filter value.</p>
-     */
-    inline void SetParameterName(const char* value) { m_parameterNameHasBeenSet = true; m_parameterName.assign(value); }
-
-    /**
-     * <p>The parameter whose value should be used for the filter value.</p>
-     */
-    inline TopBottomFilter& WithParameterName(const Aws::String& value) { SetParameterName(value); return *this;}
-
-    /**
-     * <p>The parameter whose value should be used for the filter value.</p>
-     */
-    inline TopBottomFilter& WithParameterName(Aws::String&& value) { SetParameterName(std::move(value)); return *this;}
-
-    /**
-     * <p>The parameter whose value should be used for the filter value.</p>
-     */
-    inline TopBottomFilter& WithParameterName(const char* value) { SetParameterName(value); return *this;}
-
+    inline const DefaultFilterControlConfiguration& GetDefaultFilterControlConfiguration() const { return m_defaultFilterControlConfiguration; }
+    inline bool DefaultFilterControlConfigurationHasBeenSet() const { return m_defaultFilterControlConfigurationHasBeenSet; }
+    template<typename DefaultFilterControlConfigurationT = DefaultFilterControlConfiguration>
+    void SetDefaultFilterControlConfiguration(DefaultFilterControlConfigurationT&& value) { m_defaultFilterControlConfigurationHasBeenSet = true; m_defaultFilterControlConfiguration = std::forward<DefaultFilterControlConfigurationT>(value); }
+    template<typename DefaultFilterControlConfigurationT = DefaultFilterControlConfiguration>
+    TopBottomFilter& WithDefaultFilterControlConfiguration(DefaultFilterControlConfigurationT&& value) { SetDefaultFilterControlConfiguration(std::forward<DefaultFilterControlConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_filterId;
@@ -269,17 +135,20 @@ namespace Model
     ColumnIdentifier m_column;
     bool m_columnHasBeenSet = false;
 
-    int m_limit;
+    int m_limit{0};
     bool m_limitHasBeenSet = false;
 
     Aws::Vector<AggregationSortConfiguration> m_aggregationSortConfigurations;
     bool m_aggregationSortConfigurationsHasBeenSet = false;
 
-    TimeGranularity m_timeGranularity;
+    TimeGranularity m_timeGranularity{TimeGranularity::NOT_SET};
     bool m_timeGranularityHasBeenSet = false;
 
     Aws::String m_parameterName;
     bool m_parameterNameHasBeenSet = false;
+
+    DefaultFilterControlConfiguration m_defaultFilterControlConfiguration;
+    bool m_defaultFilterControlConfigurationHasBeenSet = false;
   };
 
 } // namespace Model

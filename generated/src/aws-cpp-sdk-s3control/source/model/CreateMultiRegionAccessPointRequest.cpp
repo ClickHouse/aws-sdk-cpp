@@ -6,6 +6,7 @@
 #include <aws/s3control/model/CreateMultiRegionAccessPointRequest.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/core/utils/UnreferencedParam.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
 
 #include <utility>
@@ -14,13 +15,6 @@ using namespace Aws::S3Control::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 
-CreateMultiRegionAccessPointRequest::CreateMultiRegionAccessPointRequest() : 
-    m_accountIdHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_detailsHasBeenSet(false)
-{
-}
 
 Aws::String CreateMultiRegionAccessPointRequest::SerializePayload() const
 {

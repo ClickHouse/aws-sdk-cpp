@@ -18,21 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-GaugeChartConfiguration::GaugeChartConfiguration() : 
-    m_fieldWellsHasBeenSet(false),
-    m_gaugeChartOptionsHasBeenSet(false),
-    m_dataLabelsHasBeenSet(false),
-    m_tooltipOptionsHasBeenSet(false),
-    m_visualPaletteHasBeenSet(false)
-{
-}
-
-GaugeChartConfiguration::GaugeChartConfiguration(JsonView jsonValue) : 
-    m_fieldWellsHasBeenSet(false),
-    m_gaugeChartOptionsHasBeenSet(false),
-    m_dataLabelsHasBeenSet(false),
-    m_tooltipOptionsHasBeenSet(false),
-    m_visualPaletteHasBeenSet(false)
+GaugeChartConfiguration::GaugeChartConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,38 +28,38 @@ GaugeChartConfiguration& GaugeChartConfiguration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("FieldWells"))
   {
     m_fieldWells = jsonValue.GetObject("FieldWells");
-
     m_fieldWellsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("GaugeChartOptions"))
   {
     m_gaugeChartOptions = jsonValue.GetObject("GaugeChartOptions");
-
     m_gaugeChartOptionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DataLabels"))
   {
     m_dataLabels = jsonValue.GetObject("DataLabels");
-
     m_dataLabelsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TooltipOptions"))
   {
     m_tooltipOptions = jsonValue.GetObject("TooltipOptions");
-
     m_tooltipOptionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("VisualPalette"))
   {
     m_visualPalette = jsonValue.GetObject("VisualPalette");
-
     m_visualPaletteHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("ColorConfiguration"))
+  {
+    m_colorConfiguration = jsonValue.GetObject("ColorConfiguration");
+    m_colorConfigurationHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("Interactions"))
+  {
+    m_interactions = jsonValue.GetObject("Interactions");
+    m_interactionsHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -108,6 +94,18 @@ JsonValue GaugeChartConfiguration::Jsonize() const
   if(m_visualPaletteHasBeenSet)
   {
    payload.WithObject("VisualPalette", m_visualPalette.Jsonize());
+
+  }
+
+  if(m_colorConfigurationHasBeenSet)
+  {
+   payload.WithObject("ColorConfiguration", m_colorConfiguration.Jsonize());
+
+  }
+
+  if(m_interactionsHasBeenSet)
+  {
+   payload.WithObject("Interactions", m_interactions.Jsonize());
 
   }
 

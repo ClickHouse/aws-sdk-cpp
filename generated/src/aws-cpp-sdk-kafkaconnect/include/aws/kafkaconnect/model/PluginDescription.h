@@ -31,42 +31,23 @@ namespace Model
   class PluginDescription
   {
   public:
-    AWS_KAFKACONNECT_API PluginDescription();
+    AWS_KAFKACONNECT_API PluginDescription() = default;
     AWS_KAFKACONNECT_API PluginDescription(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKACONNECT_API PluginDescription& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKACONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Details about a custom plugin.</p>
      */
-    inline const CustomPluginDescription& GetCustomPlugin() const{ return m_customPlugin; }
-
-    /**
-     * <p>Details about a custom plugin.</p>
-     */
+    inline const CustomPluginDescription& GetCustomPlugin() const { return m_customPlugin; }
     inline bool CustomPluginHasBeenSet() const { return m_customPluginHasBeenSet; }
-
-    /**
-     * <p>Details about a custom plugin.</p>
-     */
-    inline void SetCustomPlugin(const CustomPluginDescription& value) { m_customPluginHasBeenSet = true; m_customPlugin = value; }
-
-    /**
-     * <p>Details about a custom plugin.</p>
-     */
-    inline void SetCustomPlugin(CustomPluginDescription&& value) { m_customPluginHasBeenSet = true; m_customPlugin = std::move(value); }
-
-    /**
-     * <p>Details about a custom plugin.</p>
-     */
-    inline PluginDescription& WithCustomPlugin(const CustomPluginDescription& value) { SetCustomPlugin(value); return *this;}
-
-    /**
-     * <p>Details about a custom plugin.</p>
-     */
-    inline PluginDescription& WithCustomPlugin(CustomPluginDescription&& value) { SetCustomPlugin(std::move(value)); return *this;}
-
+    template<typename CustomPluginT = CustomPluginDescription>
+    void SetCustomPlugin(CustomPluginT&& value) { m_customPluginHasBeenSet = true; m_customPlugin = std::forward<CustomPluginT>(value); }
+    template<typename CustomPluginT = CustomPluginDescription>
+    PluginDescription& WithCustomPlugin(CustomPluginT&& value) { SetCustomPlugin(std::forward<CustomPluginT>(value)); return *this;}
+    ///@}
   private:
 
     CustomPluginDescription m_customPlugin;

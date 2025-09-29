@@ -18,19 +18,7 @@ namespace BedrockAgentRuntime
 namespace Model
 {
 
-KnowledgeBaseRetrievalResult::KnowledgeBaseRetrievalResult() : 
-    m_contentHasBeenSet(false),
-    m_locationHasBeenSet(false),
-    m_score(0.0),
-    m_scoreHasBeenSet(false)
-{
-}
-
-KnowledgeBaseRetrievalResult::KnowledgeBaseRetrievalResult(JsonView jsonValue) : 
-    m_contentHasBeenSet(false),
-    m_locationHasBeenSet(false),
-    m_score(0.0),
-    m_scoreHasBeenSet(false)
+KnowledgeBaseRetrievalResult::KnowledgeBaseRetrievalResult(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,27 @@ KnowledgeBaseRetrievalResult& KnowledgeBaseRetrievalResult::operator =(JsonView 
   if(jsonValue.ValueExists("content"))
   {
     m_content = jsonValue.GetObject("content");
-
     m_contentHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("location"))
   {
     m_location = jsonValue.GetObject("location");
-
     m_locationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("score"))
   {
     m_score = jsonValue.GetDouble("score");
-
     m_scoreHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("metadata"))
+  {
+    Aws::Map<Aws::String, JsonView> metadataJsonMap = jsonValue.GetObject("metadata").GetAllObjects();
+    for(auto& metadataItem : metadataJsonMap)
+    {
+      m_metadata[metadataItem.first] = metadataItem.second.AsObject();
+    }
+    m_metadataHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -80,6 +71,17 @@ JsonValue KnowledgeBaseRetrievalResult::Jsonize() const
   if(m_scoreHasBeenSet)
   {
    payload.WithDouble("score", m_score);
+
+  }
+
+  if(m_metadataHasBeenSet)
+  {
+   JsonValue metadataJsonMap;
+   for(auto& metadataItem : m_metadata)
+   {
+     metadataJsonMap.WithObject(metadataItem.first, metadataItem.second.View());
+   }
+   payload.WithObject("metadata", std::move(metadataJsonMap));
 
   }
 

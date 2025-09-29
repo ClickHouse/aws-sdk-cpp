@@ -12,20 +12,6 @@ using namespace Aws::SESV2::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-SendEmailRequest::SendEmailRequest() : 
-    m_fromEmailAddressHasBeenSet(false),
-    m_fromEmailAddressIdentityArnHasBeenSet(false),
-    m_destinationHasBeenSet(false),
-    m_replyToAddressesHasBeenSet(false),
-    m_feedbackForwardingEmailAddressHasBeenSet(false),
-    m_feedbackForwardingEmailAddressIdentityArnHasBeenSet(false),
-    m_contentHasBeenSet(false),
-    m_emailTagsHasBeenSet(false),
-    m_configurationSetNameHasBeenSet(false),
-    m_listManagementOptionsHasBeenSet(false)
-{
-}
-
 Aws::String SendEmailRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -94,6 +80,18 @@ Aws::String SendEmailRequest::SerializePayload() const
 
   }
 
+  if(m_endpointIdHasBeenSet)
+  {
+   payload.WithString("EndpointId", m_endpointId);
+
+  }
+
+  if(m_tenantNameHasBeenSet)
+  {
+   payload.WithString("TenantName", m_tenantName);
+
+  }
+
   if(m_listManagementOptionsHasBeenSet)
   {
    payload.WithObject("ListManagementOptions", m_listManagementOptions.Jsonize());
@@ -104,5 +102,15 @@ Aws::String SendEmailRequest::SerializePayload() const
 }
 
 
+
+SendEmailRequest::EndpointParameters SendEmailRequest::GetEndpointContextParams() const
+{
+    EndpointParameters parameters;
+    // Operation context parameters
+    if (EndpointIdHasBeenSet()) {
+        parameters.emplace_back(Aws::String("EndpointId"), this->GetEndpointId(), Aws::Endpoint::EndpointParameter::ParameterOrigin::OPERATION_CONTEXT);
+    }
+    return parameters;
+}
 
 

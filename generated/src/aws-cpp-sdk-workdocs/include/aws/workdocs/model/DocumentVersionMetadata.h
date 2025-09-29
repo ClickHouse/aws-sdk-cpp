@@ -36,514 +36,169 @@ namespace Model
   class DocumentVersionMetadata
   {
   public:
-    AWS_WORKDOCS_API DocumentVersionMetadata();
+    AWS_WORKDOCS_API DocumentVersionMetadata() = default;
     AWS_WORKDOCS_API DocumentVersionMetadata(Aws::Utils::Json::JsonView jsonValue);
     AWS_WORKDOCS_API DocumentVersionMetadata& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WORKDOCS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ID of the version.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The ID of the version.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    DocumentVersionMetadata& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the version.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The ID of the version.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The ID of the version.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The ID of the version.</p>
-     */
-    inline DocumentVersionMetadata& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The ID of the version.</p>
-     */
-    inline DocumentVersionMetadata& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the version.</p>
-     */
-    inline DocumentVersionMetadata& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the version.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the version.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    DocumentVersionMetadata& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the version.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the version.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the version.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the version.</p>
-     */
-    inline DocumentVersionMetadata& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the version.</p>
-     */
-    inline DocumentVersionMetadata& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the version.</p>
-     */
-    inline DocumentVersionMetadata& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The content type of the document.</p>
      */
-    inline const Aws::String& GetContentType() const{ return m_contentType; }
-
-    /**
-     * <p>The content type of the document.</p>
-     */
+    inline const Aws::String& GetContentType() const { return m_contentType; }
     inline bool ContentTypeHasBeenSet() const { return m_contentTypeHasBeenSet; }
+    template<typename ContentTypeT = Aws::String>
+    void SetContentType(ContentTypeT&& value) { m_contentTypeHasBeenSet = true; m_contentType = std::forward<ContentTypeT>(value); }
+    template<typename ContentTypeT = Aws::String>
+    DocumentVersionMetadata& WithContentType(ContentTypeT&& value) { SetContentType(std::forward<ContentTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The content type of the document.</p>
-     */
-    inline void SetContentType(const Aws::String& value) { m_contentTypeHasBeenSet = true; m_contentType = value; }
-
-    /**
-     * <p>The content type of the document.</p>
-     */
-    inline void SetContentType(Aws::String&& value) { m_contentTypeHasBeenSet = true; m_contentType = std::move(value); }
-
-    /**
-     * <p>The content type of the document.</p>
-     */
-    inline void SetContentType(const char* value) { m_contentTypeHasBeenSet = true; m_contentType.assign(value); }
-
-    /**
-     * <p>The content type of the document.</p>
-     */
-    inline DocumentVersionMetadata& WithContentType(const Aws::String& value) { SetContentType(value); return *this;}
-
-    /**
-     * <p>The content type of the document.</p>
-     */
-    inline DocumentVersionMetadata& WithContentType(Aws::String&& value) { SetContentType(std::move(value)); return *this;}
-
-    /**
-     * <p>The content type of the document.</p>
-     */
-    inline DocumentVersionMetadata& WithContentType(const char* value) { SetContentType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The size of the document, in bytes.</p>
      */
-    inline long long GetSize() const{ return m_size; }
-
-    /**
-     * <p>The size of the document, in bytes.</p>
-     */
+    inline long long GetSize() const { return m_size; }
     inline bool SizeHasBeenSet() const { return m_sizeHasBeenSet; }
-
-    /**
-     * <p>The size of the document, in bytes.</p>
-     */
     inline void SetSize(long long value) { m_sizeHasBeenSet = true; m_size = value; }
-
-    /**
-     * <p>The size of the document, in bytes.</p>
-     */
     inline DocumentVersionMetadata& WithSize(long long value) { SetSize(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The signature of the document.</p>
      */
-    inline const Aws::String& GetSignature() const{ return m_signature; }
-
-    /**
-     * <p>The signature of the document.</p>
-     */
+    inline const Aws::String& GetSignature() const { return m_signature; }
     inline bool SignatureHasBeenSet() const { return m_signatureHasBeenSet; }
+    template<typename SignatureT = Aws::String>
+    void SetSignature(SignatureT&& value) { m_signatureHasBeenSet = true; m_signature = std::forward<SignatureT>(value); }
+    template<typename SignatureT = Aws::String>
+    DocumentVersionMetadata& WithSignature(SignatureT&& value) { SetSignature(std::forward<SignatureT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The signature of the document.</p>
-     */
-    inline void SetSignature(const Aws::String& value) { m_signatureHasBeenSet = true; m_signature = value; }
-
-    /**
-     * <p>The signature of the document.</p>
-     */
-    inline void SetSignature(Aws::String&& value) { m_signatureHasBeenSet = true; m_signature = std::move(value); }
-
-    /**
-     * <p>The signature of the document.</p>
-     */
-    inline void SetSignature(const char* value) { m_signatureHasBeenSet = true; m_signature.assign(value); }
-
-    /**
-     * <p>The signature of the document.</p>
-     */
-    inline DocumentVersionMetadata& WithSignature(const Aws::String& value) { SetSignature(value); return *this;}
-
-    /**
-     * <p>The signature of the document.</p>
-     */
-    inline DocumentVersionMetadata& WithSignature(Aws::String&& value) { SetSignature(std::move(value)); return *this;}
-
-    /**
-     * <p>The signature of the document.</p>
-     */
-    inline DocumentVersionMetadata& WithSignature(const char* value) { SetSignature(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the document.</p>
      */
-    inline const DocumentStatusType& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the document.</p>
-     */
+    inline DocumentStatusType GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(DocumentStatusType value) { m_statusHasBeenSet = true; m_status = value; }
+    inline DocumentVersionMetadata& WithStatus(DocumentStatusType value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the document.</p>
-     */
-    inline void SetStatus(const DocumentStatusType& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the document.</p>
-     */
-    inline void SetStatus(DocumentStatusType&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the document.</p>
-     */
-    inline DocumentVersionMetadata& WithStatus(const DocumentStatusType& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the document.</p>
-     */
-    inline DocumentVersionMetadata& WithStatus(DocumentStatusType&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The timestamp when the document was first uploaded.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedTimestamp() const{ return m_createdTimestamp; }
-
-    /**
-     * <p>The timestamp when the document was first uploaded.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedTimestamp() const { return m_createdTimestamp; }
     inline bool CreatedTimestampHasBeenSet() const { return m_createdTimestampHasBeenSet; }
+    template<typename CreatedTimestampT = Aws::Utils::DateTime>
+    void SetCreatedTimestamp(CreatedTimestampT&& value) { m_createdTimestampHasBeenSet = true; m_createdTimestamp = std::forward<CreatedTimestampT>(value); }
+    template<typename CreatedTimestampT = Aws::Utils::DateTime>
+    DocumentVersionMetadata& WithCreatedTimestamp(CreatedTimestampT&& value) { SetCreatedTimestamp(std::forward<CreatedTimestampT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp when the document was first uploaded.</p>
-     */
-    inline void SetCreatedTimestamp(const Aws::Utils::DateTime& value) { m_createdTimestampHasBeenSet = true; m_createdTimestamp = value; }
-
-    /**
-     * <p>The timestamp when the document was first uploaded.</p>
-     */
-    inline void SetCreatedTimestamp(Aws::Utils::DateTime&& value) { m_createdTimestampHasBeenSet = true; m_createdTimestamp = std::move(value); }
-
-    /**
-     * <p>The timestamp when the document was first uploaded.</p>
-     */
-    inline DocumentVersionMetadata& WithCreatedTimestamp(const Aws::Utils::DateTime& value) { SetCreatedTimestamp(value); return *this;}
-
-    /**
-     * <p>The timestamp when the document was first uploaded.</p>
-     */
-    inline DocumentVersionMetadata& WithCreatedTimestamp(Aws::Utils::DateTime&& value) { SetCreatedTimestamp(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The timestamp when the document was last uploaded.</p>
      */
-    inline const Aws::Utils::DateTime& GetModifiedTimestamp() const{ return m_modifiedTimestamp; }
-
-    /**
-     * <p>The timestamp when the document was last uploaded.</p>
-     */
+    inline const Aws::Utils::DateTime& GetModifiedTimestamp() const { return m_modifiedTimestamp; }
     inline bool ModifiedTimestampHasBeenSet() const { return m_modifiedTimestampHasBeenSet; }
+    template<typename ModifiedTimestampT = Aws::Utils::DateTime>
+    void SetModifiedTimestamp(ModifiedTimestampT&& value) { m_modifiedTimestampHasBeenSet = true; m_modifiedTimestamp = std::forward<ModifiedTimestampT>(value); }
+    template<typename ModifiedTimestampT = Aws::Utils::DateTime>
+    DocumentVersionMetadata& WithModifiedTimestamp(ModifiedTimestampT&& value) { SetModifiedTimestamp(std::forward<ModifiedTimestampT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp when the document was last uploaded.</p>
-     */
-    inline void SetModifiedTimestamp(const Aws::Utils::DateTime& value) { m_modifiedTimestampHasBeenSet = true; m_modifiedTimestamp = value; }
-
-    /**
-     * <p>The timestamp when the document was last uploaded.</p>
-     */
-    inline void SetModifiedTimestamp(Aws::Utils::DateTime&& value) { m_modifiedTimestampHasBeenSet = true; m_modifiedTimestamp = std::move(value); }
-
-    /**
-     * <p>The timestamp when the document was last uploaded.</p>
-     */
-    inline DocumentVersionMetadata& WithModifiedTimestamp(const Aws::Utils::DateTime& value) { SetModifiedTimestamp(value); return *this;}
-
-    /**
-     * <p>The timestamp when the document was last uploaded.</p>
-     */
-    inline DocumentVersionMetadata& WithModifiedTimestamp(Aws::Utils::DateTime&& value) { SetModifiedTimestamp(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The timestamp when the content of the document was originally created.</p>
      */
-    inline const Aws::Utils::DateTime& GetContentCreatedTimestamp() const{ return m_contentCreatedTimestamp; }
-
-    /**
-     * <p>The timestamp when the content of the document was originally created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetContentCreatedTimestamp() const { return m_contentCreatedTimestamp; }
     inline bool ContentCreatedTimestampHasBeenSet() const { return m_contentCreatedTimestampHasBeenSet; }
+    template<typename ContentCreatedTimestampT = Aws::Utils::DateTime>
+    void SetContentCreatedTimestamp(ContentCreatedTimestampT&& value) { m_contentCreatedTimestampHasBeenSet = true; m_contentCreatedTimestamp = std::forward<ContentCreatedTimestampT>(value); }
+    template<typename ContentCreatedTimestampT = Aws::Utils::DateTime>
+    DocumentVersionMetadata& WithContentCreatedTimestamp(ContentCreatedTimestampT&& value) { SetContentCreatedTimestamp(std::forward<ContentCreatedTimestampT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp when the content of the document was originally created.</p>
-     */
-    inline void SetContentCreatedTimestamp(const Aws::Utils::DateTime& value) { m_contentCreatedTimestampHasBeenSet = true; m_contentCreatedTimestamp = value; }
-
-    /**
-     * <p>The timestamp when the content of the document was originally created.</p>
-     */
-    inline void SetContentCreatedTimestamp(Aws::Utils::DateTime&& value) { m_contentCreatedTimestampHasBeenSet = true; m_contentCreatedTimestamp = std::move(value); }
-
-    /**
-     * <p>The timestamp when the content of the document was originally created.</p>
-     */
-    inline DocumentVersionMetadata& WithContentCreatedTimestamp(const Aws::Utils::DateTime& value) { SetContentCreatedTimestamp(value); return *this;}
-
-    /**
-     * <p>The timestamp when the content of the document was originally created.</p>
-     */
-    inline DocumentVersionMetadata& WithContentCreatedTimestamp(Aws::Utils::DateTime&& value) { SetContentCreatedTimestamp(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The timestamp when the content of the document was modified.</p>
      */
-    inline const Aws::Utils::DateTime& GetContentModifiedTimestamp() const{ return m_contentModifiedTimestamp; }
-
-    /**
-     * <p>The timestamp when the content of the document was modified.</p>
-     */
+    inline const Aws::Utils::DateTime& GetContentModifiedTimestamp() const { return m_contentModifiedTimestamp; }
     inline bool ContentModifiedTimestampHasBeenSet() const { return m_contentModifiedTimestampHasBeenSet; }
+    template<typename ContentModifiedTimestampT = Aws::Utils::DateTime>
+    void SetContentModifiedTimestamp(ContentModifiedTimestampT&& value) { m_contentModifiedTimestampHasBeenSet = true; m_contentModifiedTimestamp = std::forward<ContentModifiedTimestampT>(value); }
+    template<typename ContentModifiedTimestampT = Aws::Utils::DateTime>
+    DocumentVersionMetadata& WithContentModifiedTimestamp(ContentModifiedTimestampT&& value) { SetContentModifiedTimestamp(std::forward<ContentModifiedTimestampT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp when the content of the document was modified.</p>
-     */
-    inline void SetContentModifiedTimestamp(const Aws::Utils::DateTime& value) { m_contentModifiedTimestampHasBeenSet = true; m_contentModifiedTimestamp = value; }
-
-    /**
-     * <p>The timestamp when the content of the document was modified.</p>
-     */
-    inline void SetContentModifiedTimestamp(Aws::Utils::DateTime&& value) { m_contentModifiedTimestampHasBeenSet = true; m_contentModifiedTimestamp = std::move(value); }
-
-    /**
-     * <p>The timestamp when the content of the document was modified.</p>
-     */
-    inline DocumentVersionMetadata& WithContentModifiedTimestamp(const Aws::Utils::DateTime& value) { SetContentModifiedTimestamp(value); return *this;}
-
-    /**
-     * <p>The timestamp when the content of the document was modified.</p>
-     */
-    inline DocumentVersionMetadata& WithContentModifiedTimestamp(Aws::Utils::DateTime&& value) { SetContentModifiedTimestamp(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the creator.</p>
      */
-    inline const Aws::String& GetCreatorId() const{ return m_creatorId; }
-
-    /**
-     * <p>The ID of the creator.</p>
-     */
+    inline const Aws::String& GetCreatorId() const { return m_creatorId; }
     inline bool CreatorIdHasBeenSet() const { return m_creatorIdHasBeenSet; }
+    template<typename CreatorIdT = Aws::String>
+    void SetCreatorId(CreatorIdT&& value) { m_creatorIdHasBeenSet = true; m_creatorId = std::forward<CreatorIdT>(value); }
+    template<typename CreatorIdT = Aws::String>
+    DocumentVersionMetadata& WithCreatorId(CreatorIdT&& value) { SetCreatorId(std::forward<CreatorIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the creator.</p>
-     */
-    inline void SetCreatorId(const Aws::String& value) { m_creatorIdHasBeenSet = true; m_creatorId = value; }
-
-    /**
-     * <p>The ID of the creator.</p>
-     */
-    inline void SetCreatorId(Aws::String&& value) { m_creatorIdHasBeenSet = true; m_creatorId = std::move(value); }
-
-    /**
-     * <p>The ID of the creator.</p>
-     */
-    inline void SetCreatorId(const char* value) { m_creatorIdHasBeenSet = true; m_creatorId.assign(value); }
-
-    /**
-     * <p>The ID of the creator.</p>
-     */
-    inline DocumentVersionMetadata& WithCreatorId(const Aws::String& value) { SetCreatorId(value); return *this;}
-
-    /**
-     * <p>The ID of the creator.</p>
-     */
-    inline DocumentVersionMetadata& WithCreatorId(Aws::String&& value) { SetCreatorId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the creator.</p>
-     */
-    inline DocumentVersionMetadata& WithCreatorId(const char* value) { SetCreatorId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The thumbnail of the document.</p>
      */
-    inline const Aws::Map<DocumentThumbnailType, Aws::String>& GetThumbnail() const{ return m_thumbnail; }
-
-    /**
-     * <p>The thumbnail of the document.</p>
-     */
+    inline const Aws::Map<DocumentThumbnailType, Aws::String>& GetThumbnail() const { return m_thumbnail; }
     inline bool ThumbnailHasBeenSet() const { return m_thumbnailHasBeenSet; }
+    template<typename ThumbnailT = Aws::Map<DocumentThumbnailType, Aws::String>>
+    void SetThumbnail(ThumbnailT&& value) { m_thumbnailHasBeenSet = true; m_thumbnail = std::forward<ThumbnailT>(value); }
+    template<typename ThumbnailT = Aws::Map<DocumentThumbnailType, Aws::String>>
+    DocumentVersionMetadata& WithThumbnail(ThumbnailT&& value) { SetThumbnail(std::forward<ThumbnailT>(value)); return *this;}
+    inline DocumentVersionMetadata& AddThumbnail(DocumentThumbnailType key, Aws::String value) {
+      m_thumbnailHasBeenSet = true; m_thumbnail.emplace(key, value); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>The thumbnail of the document.</p>
-     */
-    inline void SetThumbnail(const Aws::Map<DocumentThumbnailType, Aws::String>& value) { m_thumbnailHasBeenSet = true; m_thumbnail = value; }
-
-    /**
-     * <p>The thumbnail of the document.</p>
-     */
-    inline void SetThumbnail(Aws::Map<DocumentThumbnailType, Aws::String>&& value) { m_thumbnailHasBeenSet = true; m_thumbnail = std::move(value); }
-
-    /**
-     * <p>The thumbnail of the document.</p>
-     */
-    inline DocumentVersionMetadata& WithThumbnail(const Aws::Map<DocumentThumbnailType, Aws::String>& value) { SetThumbnail(value); return *this;}
-
-    /**
-     * <p>The thumbnail of the document.</p>
-     */
-    inline DocumentVersionMetadata& WithThumbnail(Aws::Map<DocumentThumbnailType, Aws::String>&& value) { SetThumbnail(std::move(value)); return *this;}
-
-    /**
-     * <p>The thumbnail of the document.</p>
-     */
-    inline DocumentVersionMetadata& AddThumbnail(const DocumentThumbnailType& key, const Aws::String& value) { m_thumbnailHasBeenSet = true; m_thumbnail.emplace(key, value); return *this; }
-
-    /**
-     * <p>The thumbnail of the document.</p>
-     */
-    inline DocumentVersionMetadata& AddThumbnail(DocumentThumbnailType&& key, const Aws::String& value) { m_thumbnailHasBeenSet = true; m_thumbnail.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The thumbnail of the document.</p>
-     */
-    inline DocumentVersionMetadata& AddThumbnail(const DocumentThumbnailType& key, Aws::String&& value) { m_thumbnailHasBeenSet = true; m_thumbnail.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The thumbnail of the document.</p>
-     */
-    inline DocumentVersionMetadata& AddThumbnail(DocumentThumbnailType&& key, Aws::String&& value) { m_thumbnailHasBeenSet = true; m_thumbnail.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The thumbnail of the document.</p>
-     */
-    inline DocumentVersionMetadata& AddThumbnail(DocumentThumbnailType&& key, const char* value) { m_thumbnailHasBeenSet = true; m_thumbnail.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The thumbnail of the document.</p>
-     */
-    inline DocumentVersionMetadata& AddThumbnail(const DocumentThumbnailType& key, const char* value) { m_thumbnailHasBeenSet = true; m_thumbnail.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>The source of the document.</p>
      */
-    inline const Aws::Map<DocumentSourceType, Aws::String>& GetSource() const{ return m_source; }
-
-    /**
-     * <p>The source of the document.</p>
-     */
+    inline const Aws::Map<DocumentSourceType, Aws::String>& GetSource() const { return m_source; }
     inline bool SourceHasBeenSet() const { return m_sourceHasBeenSet; }
-
-    /**
-     * <p>The source of the document.</p>
-     */
-    inline void SetSource(const Aws::Map<DocumentSourceType, Aws::String>& value) { m_sourceHasBeenSet = true; m_source = value; }
-
-    /**
-     * <p>The source of the document.</p>
-     */
-    inline void SetSource(Aws::Map<DocumentSourceType, Aws::String>&& value) { m_sourceHasBeenSet = true; m_source = std::move(value); }
-
-    /**
-     * <p>The source of the document.</p>
-     */
-    inline DocumentVersionMetadata& WithSource(const Aws::Map<DocumentSourceType, Aws::String>& value) { SetSource(value); return *this;}
-
-    /**
-     * <p>The source of the document.</p>
-     */
-    inline DocumentVersionMetadata& WithSource(Aws::Map<DocumentSourceType, Aws::String>&& value) { SetSource(std::move(value)); return *this;}
-
-    /**
-     * <p>The source of the document.</p>
-     */
-    inline DocumentVersionMetadata& AddSource(const DocumentSourceType& key, const Aws::String& value) { m_sourceHasBeenSet = true; m_source.emplace(key, value); return *this; }
-
-    /**
-     * <p>The source of the document.</p>
-     */
-    inline DocumentVersionMetadata& AddSource(DocumentSourceType&& key, const Aws::String& value) { m_sourceHasBeenSet = true; m_source.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The source of the document.</p>
-     */
-    inline DocumentVersionMetadata& AddSource(const DocumentSourceType& key, Aws::String&& value) { m_sourceHasBeenSet = true; m_source.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The source of the document.</p>
-     */
-    inline DocumentVersionMetadata& AddSource(DocumentSourceType&& key, Aws::String&& value) { m_sourceHasBeenSet = true; m_source.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The source of the document.</p>
-     */
-    inline DocumentVersionMetadata& AddSource(DocumentSourceType&& key, const char* value) { m_sourceHasBeenSet = true; m_source.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The source of the document.</p>
-     */
-    inline DocumentVersionMetadata& AddSource(const DocumentSourceType& key, const char* value) { m_sourceHasBeenSet = true; m_source.emplace(key, value); return *this; }
-
+    template<typename SourceT = Aws::Map<DocumentSourceType, Aws::String>>
+    void SetSource(SourceT&& value) { m_sourceHasBeenSet = true; m_source = std::forward<SourceT>(value); }
+    template<typename SourceT = Aws::Map<DocumentSourceType, Aws::String>>
+    DocumentVersionMetadata& WithSource(SourceT&& value) { SetSource(std::forward<SourceT>(value)); return *this;}
+    inline DocumentVersionMetadata& AddSource(DocumentSourceType key, Aws::String value) {
+      m_sourceHasBeenSet = true; m_source.emplace(key, value); return *this;
+    }
+    ///@}
   private:
 
     Aws::String m_id;
@@ -555,25 +210,25 @@ namespace Model
     Aws::String m_contentType;
     bool m_contentTypeHasBeenSet = false;
 
-    long long m_size;
+    long long m_size{0};
     bool m_sizeHasBeenSet = false;
 
     Aws::String m_signature;
     bool m_signatureHasBeenSet = false;
 
-    DocumentStatusType m_status;
+    DocumentStatusType m_status{DocumentStatusType::NOT_SET};
     bool m_statusHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdTimestamp;
+    Aws::Utils::DateTime m_createdTimestamp{};
     bool m_createdTimestampHasBeenSet = false;
 
-    Aws::Utils::DateTime m_modifiedTimestamp;
+    Aws::Utils::DateTime m_modifiedTimestamp{};
     bool m_modifiedTimestampHasBeenSet = false;
 
-    Aws::Utils::DateTime m_contentCreatedTimestamp;
+    Aws::Utils::DateTime m_contentCreatedTimestamp{};
     bool m_contentCreatedTimestampHasBeenSet = false;
 
-    Aws::Utils::DateTime m_contentModifiedTimestamp;
+    Aws::Utils::DateTime m_contentModifiedTimestamp{};
     bool m_contentModifiedTimestampHasBeenSet = false;
 
     Aws::String m_creatorId;

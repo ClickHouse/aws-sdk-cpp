@@ -18,19 +18,7 @@ namespace FSx
 namespace Model
 {
 
-DurationSinceLastAccess::DurationSinceLastAccess() : 
-    m_unit(Unit::NOT_SET),
-    m_unitHasBeenSet(false),
-    m_value(0),
-    m_valueHasBeenSet(false)
-{
-}
-
-DurationSinceLastAccess::DurationSinceLastAccess(JsonView jsonValue) : 
-    m_unit(Unit::NOT_SET),
-    m_unitHasBeenSet(false),
-    m_value(0),
-    m_valueHasBeenSet(false)
+DurationSinceLastAccess::DurationSinceLastAccess(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ DurationSinceLastAccess& DurationSinceLastAccess::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Unit"))
   {
     m_unit = UnitMapper::GetUnitForName(jsonValue.GetString("Unit"));
-
     m_unitHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Value"))
   {
     m_value = jsonValue.GetInt64("Value");
-
     m_valueHasBeenSet = true;
   }
-
   return *this;
 }
 

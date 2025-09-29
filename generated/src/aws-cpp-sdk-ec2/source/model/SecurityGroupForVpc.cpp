@@ -20,23 +20,7 @@ namespace EC2
 namespace Model
 {
 
-SecurityGroupForVpc::SecurityGroupForVpc() : 
-    m_descriptionHasBeenSet(false),
-    m_groupNameHasBeenSet(false),
-    m_ownerIdHasBeenSet(false),
-    m_groupIdHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_primaryVpcIdHasBeenSet(false)
-{
-}
-
-SecurityGroupForVpc::SecurityGroupForVpc(const XmlNode& xmlNode) : 
-    m_descriptionHasBeenSet(false),
-    m_groupNameHasBeenSet(false),
-    m_ownerIdHasBeenSet(false),
-    m_groupIdHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_primaryVpcIdHasBeenSet(false)
+SecurityGroupForVpc::SecurityGroupForVpc(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -75,6 +59,7 @@ SecurityGroupForVpc& SecurityGroupForVpc::operator =(const XmlNode& xmlNode)
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -158,7 +143,7 @@ void SecurityGroupForVpc::OutputToStream(Aws::OStream& oStream, const char* loca
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }

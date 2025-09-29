@@ -17,10 +17,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-EnableOrganizationAdminAccountResult::EnableOrganizationAdminAccountResult()
-{
-}
-
 EnableOrganizationAdminAccountResult::EnableOrganizationAdminAccountResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
@@ -28,13 +24,24 @@ EnableOrganizationAdminAccountResult::EnableOrganizationAdminAccountResult(const
 
 EnableOrganizationAdminAccountResult& EnableOrganizationAdminAccountResult::operator =(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
-  AWS_UNREFERENCED_PARAM(result);
+  JsonView jsonValue = result.GetPayload().View();
+  if(jsonValue.ValueExists("AdminAccountId"))
+  {
+    m_adminAccountId = jsonValue.GetString("AdminAccountId");
+    m_adminAccountIdHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("Feature"))
+  {
+    m_feature = SecurityHubFeatureMapper::GetSecurityHubFeatureForName(jsonValue.GetString("Feature"));
+    m_featureHasBeenSet = true;
+  }
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

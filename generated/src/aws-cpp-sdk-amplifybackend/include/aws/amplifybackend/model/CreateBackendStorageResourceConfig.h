@@ -34,114 +34,45 @@ namespace Model
   class CreateBackendStorageResourceConfig
   {
   public:
-    AWS_AMPLIFYBACKEND_API CreateBackendStorageResourceConfig();
+    AWS_AMPLIFYBACKEND_API CreateBackendStorageResourceConfig() = default;
     AWS_AMPLIFYBACKEND_API CreateBackendStorageResourceConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_AMPLIFYBACKEND_API CreateBackendStorageResourceConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_AMPLIFYBACKEND_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the S3 bucket.</p>
      */
-    inline const Aws::String& GetBucketName() const{ return m_bucketName; }
-
-    /**
-     * <p>The name of the S3 bucket.</p>
-     */
+    inline const Aws::String& GetBucketName() const { return m_bucketName; }
     inline bool BucketNameHasBeenSet() const { return m_bucketNameHasBeenSet; }
+    template<typename BucketNameT = Aws::String>
+    void SetBucketName(BucketNameT&& value) { m_bucketNameHasBeenSet = true; m_bucketName = std::forward<BucketNameT>(value); }
+    template<typename BucketNameT = Aws::String>
+    CreateBackendStorageResourceConfig& WithBucketName(BucketNameT&& value) { SetBucketName(std::forward<BucketNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the S3 bucket.</p>
-     */
-    inline void SetBucketName(const Aws::String& value) { m_bucketNameHasBeenSet = true; m_bucketName = value; }
-
-    /**
-     * <p>The name of the S3 bucket.</p>
-     */
-    inline void SetBucketName(Aws::String&& value) { m_bucketNameHasBeenSet = true; m_bucketName = std::move(value); }
-
-    /**
-     * <p>The name of the S3 bucket.</p>
-     */
-    inline void SetBucketName(const char* value) { m_bucketNameHasBeenSet = true; m_bucketName.assign(value); }
-
-    /**
-     * <p>The name of the S3 bucket.</p>
-     */
-    inline CreateBackendStorageResourceConfig& WithBucketName(const Aws::String& value) { SetBucketName(value); return *this;}
-
-    /**
-     * <p>The name of the S3 bucket.</p>
-     */
-    inline CreateBackendStorageResourceConfig& WithBucketName(Aws::String&& value) { SetBucketName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the S3 bucket.</p>
-     */
-    inline CreateBackendStorageResourceConfig& WithBucketName(const char* value) { SetBucketName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The authorization configuration for the storage S3 bucket.</p>
      */
-    inline const BackendStoragePermissions& GetPermissions() const{ return m_permissions; }
-
-    /**
-     * <p>The authorization configuration for the storage S3 bucket.</p>
-     */
+    inline const BackendStoragePermissions& GetPermissions() const { return m_permissions; }
     inline bool PermissionsHasBeenSet() const { return m_permissionsHasBeenSet; }
+    template<typename PermissionsT = BackendStoragePermissions>
+    void SetPermissions(PermissionsT&& value) { m_permissionsHasBeenSet = true; m_permissions = std::forward<PermissionsT>(value); }
+    template<typename PermissionsT = BackendStoragePermissions>
+    CreateBackendStorageResourceConfig& WithPermissions(PermissionsT&& value) { SetPermissions(std::forward<PermissionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The authorization configuration for the storage S3 bucket.</p>
-     */
-    inline void SetPermissions(const BackendStoragePermissions& value) { m_permissionsHasBeenSet = true; m_permissions = value; }
-
-    /**
-     * <p>The authorization configuration for the storage S3 bucket.</p>
-     */
-    inline void SetPermissions(BackendStoragePermissions&& value) { m_permissionsHasBeenSet = true; m_permissions = std::move(value); }
-
-    /**
-     * <p>The authorization configuration for the storage S3 bucket.</p>
-     */
-    inline CreateBackendStorageResourceConfig& WithPermissions(const BackendStoragePermissions& value) { SetPermissions(value); return *this;}
-
-    /**
-     * <p>The authorization configuration for the storage S3 bucket.</p>
-     */
-    inline CreateBackendStorageResourceConfig& WithPermissions(BackendStoragePermissions&& value) { SetPermissions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the storage service.</p>
      */
-    inline const ServiceName& GetServiceName() const{ return m_serviceName; }
-
-    /**
-     * <p>The name of the storage service.</p>
-     */
+    inline ServiceName GetServiceName() const { return m_serviceName; }
     inline bool ServiceNameHasBeenSet() const { return m_serviceNameHasBeenSet; }
-
-    /**
-     * <p>The name of the storage service.</p>
-     */
-    inline void SetServiceName(const ServiceName& value) { m_serviceNameHasBeenSet = true; m_serviceName = value; }
-
-    /**
-     * <p>The name of the storage service.</p>
-     */
-    inline void SetServiceName(ServiceName&& value) { m_serviceNameHasBeenSet = true; m_serviceName = std::move(value); }
-
-    /**
-     * <p>The name of the storage service.</p>
-     */
-    inline CreateBackendStorageResourceConfig& WithServiceName(const ServiceName& value) { SetServiceName(value); return *this;}
-
-    /**
-     * <p>The name of the storage service.</p>
-     */
-    inline CreateBackendStorageResourceConfig& WithServiceName(ServiceName&& value) { SetServiceName(std::move(value)); return *this;}
-
+    inline void SetServiceName(ServiceName value) { m_serviceNameHasBeenSet = true; m_serviceName = value; }
+    inline CreateBackendStorageResourceConfig& WithServiceName(ServiceName value) { SetServiceName(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_bucketName;
@@ -150,7 +81,7 @@ namespace Model
     BackendStoragePermissions m_permissions;
     bool m_permissionsHasBeenSet = false;
 
-    ServiceName m_serviceName;
+    ServiceName m_serviceName{ServiceName::NOT_SET};
     bool m_serviceNameHasBeenSet = false;
   };
 

@@ -12,14 +12,6 @@ using namespace Aws::Amplify::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-StartDeploymentRequest::StartDeploymentRequest() : 
-    m_appIdHasBeenSet(false),
-    m_branchNameHasBeenSet(false),
-    m_jobIdHasBeenSet(false),
-    m_sourceUrlHasBeenSet(false)
-{
-}
-
 Aws::String StartDeploymentRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -34,6 +26,11 @@ Aws::String StartDeploymentRequest::SerializePayload() const
   {
    payload.WithString("sourceUrl", m_sourceUrl);
 
+  }
+
+  if(m_sourceUrlTypeHasBeenSet)
+  {
+   payload.WithString("sourceUrlType", SourceUrlTypeMapper::GetNameForSourceUrlType(m_sourceUrlType));
   }
 
   return payload.View().WriteReadable();

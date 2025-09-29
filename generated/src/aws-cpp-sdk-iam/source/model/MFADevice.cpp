@@ -20,17 +20,7 @@ namespace IAM
 namespace Model
 {
 
-MFADevice::MFADevice() : 
-    m_userNameHasBeenSet(false),
-    m_serialNumberHasBeenSet(false),
-    m_enableDateHasBeenSet(false)
-{
-}
-
-MFADevice::MFADevice(const XmlNode& xmlNode) : 
-    m_userNameHasBeenSet(false),
-    m_serialNumberHasBeenSet(false),
-    m_enableDateHasBeenSet(false)
+MFADevice::MFADevice(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

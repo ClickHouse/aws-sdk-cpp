@@ -12,35 +12,19 @@ using namespace Aws::WorkSpacesWeb::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateIpAccessSettingsRequest::UpdateIpAccessSettingsRequest() : 
-    m_clientToken(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_descriptionHasBeenSet(false),
-    m_displayNameHasBeenSet(false),
-    m_ipAccessSettingsArnHasBeenSet(false),
-    m_ipRulesHasBeenSet(false)
-{
-}
-
 Aws::String UpdateIpAccessSettingsRequest::SerializePayload() const
 {
   JsonValue payload;
 
-  if(m_clientTokenHasBeenSet)
+  if(m_displayNameHasBeenSet)
   {
-   payload.WithString("clientToken", m_clientToken);
+   payload.WithString("displayName", m_displayName);
 
   }
 
   if(m_descriptionHasBeenSet)
   {
    payload.WithString("description", m_description);
-
-  }
-
-  if(m_displayNameHasBeenSet)
-  {
-   payload.WithString("displayName", m_displayName);
 
   }
 
@@ -52,6 +36,12 @@ Aws::String UpdateIpAccessSettingsRequest::SerializePayload() const
      ipRulesJsonList[ipRulesIndex].AsObject(m_ipRules[ipRulesIndex].Jsonize());
    }
    payload.WithArray("ipRules", std::move(ipRulesJsonList));
+
+  }
+
+  if(m_clientTokenHasBeenSet)
+  {
+   payload.WithString("clientToken", m_clientToken);
 
   }
 

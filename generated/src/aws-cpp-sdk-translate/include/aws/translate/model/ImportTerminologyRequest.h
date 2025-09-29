@@ -26,7 +26,7 @@ namespace Model
   class ImportTerminologyRequest : public TranslateRequest
   {
   public:
-    AWS_TRANSLATE_API ImportTerminologyRequest();
+    AWS_TRANSLATE_API ImportTerminologyRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,193 +39,67 @@ namespace Model
     AWS_TRANSLATE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the custom terminology being imported.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the custom terminology being imported.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    ImportTerminologyRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the custom terminology being imported.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the custom terminology being imported.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the custom terminology being imported.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the custom terminology being imported.</p>
-     */
-    inline ImportTerminologyRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the custom terminology being imported.</p>
-     */
-    inline ImportTerminologyRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the custom terminology being imported.</p>
-     */
-    inline ImportTerminologyRequest& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The merge strategy of the custom terminology being imported. Currently, only
      * the OVERWRITE merge strategy is supported. In this case, the imported
      * terminology will overwrite an existing terminology of the same name.</p>
      */
-    inline const MergeStrategy& GetMergeStrategy() const{ return m_mergeStrategy; }
-
-    /**
-     * <p>The merge strategy of the custom terminology being imported. Currently, only
-     * the OVERWRITE merge strategy is supported. In this case, the imported
-     * terminology will overwrite an existing terminology of the same name.</p>
-     */
+    inline MergeStrategy GetMergeStrategy() const { return m_mergeStrategy; }
     inline bool MergeStrategyHasBeenSet() const { return m_mergeStrategyHasBeenSet; }
+    inline void SetMergeStrategy(MergeStrategy value) { m_mergeStrategyHasBeenSet = true; m_mergeStrategy = value; }
+    inline ImportTerminologyRequest& WithMergeStrategy(MergeStrategy value) { SetMergeStrategy(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The merge strategy of the custom terminology being imported. Currently, only
-     * the OVERWRITE merge strategy is supported. In this case, the imported
-     * terminology will overwrite an existing terminology of the same name.</p>
-     */
-    inline void SetMergeStrategy(const MergeStrategy& value) { m_mergeStrategyHasBeenSet = true; m_mergeStrategy = value; }
-
-    /**
-     * <p>The merge strategy of the custom terminology being imported. Currently, only
-     * the OVERWRITE merge strategy is supported. In this case, the imported
-     * terminology will overwrite an existing terminology of the same name.</p>
-     */
-    inline void SetMergeStrategy(MergeStrategy&& value) { m_mergeStrategyHasBeenSet = true; m_mergeStrategy = std::move(value); }
-
-    /**
-     * <p>The merge strategy of the custom terminology being imported. Currently, only
-     * the OVERWRITE merge strategy is supported. In this case, the imported
-     * terminology will overwrite an existing terminology of the same name.</p>
-     */
-    inline ImportTerminologyRequest& WithMergeStrategy(const MergeStrategy& value) { SetMergeStrategy(value); return *this;}
-
-    /**
-     * <p>The merge strategy of the custom terminology being imported. Currently, only
-     * the OVERWRITE merge strategy is supported. In this case, the imported
-     * terminology will overwrite an existing terminology of the same name.</p>
-     */
-    inline ImportTerminologyRequest& WithMergeStrategy(MergeStrategy&& value) { SetMergeStrategy(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The description of the custom terminology being imported.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The description of the custom terminology being imported.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    ImportTerminologyRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description of the custom terminology being imported.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The description of the custom terminology being imported.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The description of the custom terminology being imported.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The description of the custom terminology being imported.</p>
-     */
-    inline ImportTerminologyRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description of the custom terminology being imported.</p>
-     */
-    inline ImportTerminologyRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the custom terminology being imported.</p>
-     */
-    inline ImportTerminologyRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The terminology data for the custom terminology being imported.</p>
      */
-    inline const TerminologyData& GetTerminologyData() const{ return m_terminologyData; }
-
-    /**
-     * <p>The terminology data for the custom terminology being imported.</p>
-     */
+    inline const TerminologyData& GetTerminologyData() const { return m_terminologyData; }
     inline bool TerminologyDataHasBeenSet() const { return m_terminologyDataHasBeenSet; }
+    template<typename TerminologyDataT = TerminologyData>
+    void SetTerminologyData(TerminologyDataT&& value) { m_terminologyDataHasBeenSet = true; m_terminologyData = std::forward<TerminologyDataT>(value); }
+    template<typename TerminologyDataT = TerminologyData>
+    ImportTerminologyRequest& WithTerminologyData(TerminologyDataT&& value) { SetTerminologyData(std::forward<TerminologyDataT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The terminology data for the custom terminology being imported.</p>
-     */
-    inline void SetTerminologyData(const TerminologyData& value) { m_terminologyDataHasBeenSet = true; m_terminologyData = value; }
-
-    /**
-     * <p>The terminology data for the custom terminology being imported.</p>
-     */
-    inline void SetTerminologyData(TerminologyData&& value) { m_terminologyDataHasBeenSet = true; m_terminologyData = std::move(value); }
-
-    /**
-     * <p>The terminology data for the custom terminology being imported.</p>
-     */
-    inline ImportTerminologyRequest& WithTerminologyData(const TerminologyData& value) { SetTerminologyData(value); return *this;}
-
-    /**
-     * <p>The terminology data for the custom terminology being imported.</p>
-     */
-    inline ImportTerminologyRequest& WithTerminologyData(TerminologyData&& value) { SetTerminologyData(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The encryption key for the custom terminology being imported.</p>
      */
-    inline const EncryptionKey& GetEncryptionKey() const{ return m_encryptionKey; }
-
-    /**
-     * <p>The encryption key for the custom terminology being imported.</p>
-     */
+    inline const EncryptionKey& GetEncryptionKey() const { return m_encryptionKey; }
     inline bool EncryptionKeyHasBeenSet() const { return m_encryptionKeyHasBeenSet; }
+    template<typename EncryptionKeyT = EncryptionKey>
+    void SetEncryptionKey(EncryptionKeyT&& value) { m_encryptionKeyHasBeenSet = true; m_encryptionKey = std::forward<EncryptionKeyT>(value); }
+    template<typename EncryptionKeyT = EncryptionKey>
+    ImportTerminologyRequest& WithEncryptionKey(EncryptionKeyT&& value) { SetEncryptionKey(std::forward<EncryptionKeyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The encryption key for the custom terminology being imported.</p>
-     */
-    inline void SetEncryptionKey(const EncryptionKey& value) { m_encryptionKeyHasBeenSet = true; m_encryptionKey = value; }
-
-    /**
-     * <p>The encryption key for the custom terminology being imported.</p>
-     */
-    inline void SetEncryptionKey(EncryptionKey&& value) { m_encryptionKeyHasBeenSet = true; m_encryptionKey = std::move(value); }
-
-    /**
-     * <p>The encryption key for the custom terminology being imported.</p>
-     */
-    inline ImportTerminologyRequest& WithEncryptionKey(const EncryptionKey& value) { SetEncryptionKey(value); return *this;}
-
-    /**
-     * <p>The encryption key for the custom terminology being imported.</p>
-     */
-    inline ImportTerminologyRequest& WithEncryptionKey(EncryptionKey&& value) { SetEncryptionKey(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Tags to be associated with this resource. A tag is a key-value pair that adds
      * metadata to a resource. Each tag key for the resource must be unique. For more
@@ -233,77 +107,21 @@ namespace Model
      * href="https://docs.aws.amazon.com/translate/latest/dg/tagging.html"> Tagging
      * your resources</a>.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>Tags to be associated with this resource. A tag is a key-value pair that adds
-     * metadata to a resource. Each tag key for the resource must be unique. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/translate/latest/dg/tagging.html"> Tagging
-     * your resources</a>.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>Tags to be associated with this resource. A tag is a key-value pair that adds
-     * metadata to a resource. Each tag key for the resource must be unique. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/translate/latest/dg/tagging.html"> Tagging
-     * your resources</a>.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>Tags to be associated with this resource. A tag is a key-value pair that adds
-     * metadata to a resource. Each tag key for the resource must be unique. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/translate/latest/dg/tagging.html"> Tagging
-     * your resources</a>.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>Tags to be associated with this resource. A tag is a key-value pair that adds
-     * metadata to a resource. Each tag key for the resource must be unique. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/translate/latest/dg/tagging.html"> Tagging
-     * your resources</a>.</p>
-     */
-    inline ImportTerminologyRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>Tags to be associated with this resource. A tag is a key-value pair that adds
-     * metadata to a resource. Each tag key for the resource must be unique. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/translate/latest/dg/tagging.html"> Tagging
-     * your resources</a>.</p>
-     */
-    inline ImportTerminologyRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>Tags to be associated with this resource. A tag is a key-value pair that adds
-     * metadata to a resource. Each tag key for the resource must be unique. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/translate/latest/dg/tagging.html"> Tagging
-     * your resources</a>.</p>
-     */
-    inline ImportTerminologyRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>Tags to be associated with this resource. A tag is a key-value pair that adds
-     * metadata to a resource. Each tag key for the resource must be unique. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/translate/latest/dg/tagging.html"> Tagging
-     * your resources</a>.</p>
-     */
-    inline ImportTerminologyRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    ImportTerminologyRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    ImportTerminologyRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_name;
     bool m_nameHasBeenSet = false;
 
-    MergeStrategy m_mergeStrategy;
+    MergeStrategy m_mergeStrategy{MergeStrategy::NOT_SET};
     bool m_mergeStrategyHasBeenSet = false;
 
     Aws::String m_description;

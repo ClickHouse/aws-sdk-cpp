@@ -20,15 +20,7 @@ namespace EC2
 namespace Model
 {
 
-CreateTransitGatewayConnectRequestOptions::CreateTransitGatewayConnectRequestOptions() : 
-    m_protocol(ProtocolValue::NOT_SET),
-    m_protocolHasBeenSet(false)
-{
-}
-
-CreateTransitGatewayConnectRequestOptions::CreateTransitGatewayConnectRequestOptions(const XmlNode& xmlNode) : 
-    m_protocol(ProtocolValue::NOT_SET),
-    m_protocolHasBeenSet(false)
+CreateTransitGatewayConnectRequestOptions::CreateTransitGatewayConnectRequestOptions(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -42,7 +34,7 @@ CreateTransitGatewayConnectRequestOptions& CreateTransitGatewayConnectRequestOpt
     XmlNode protocolNode = resultNode.FirstChild("Protocol");
     if(!protocolNode.IsNull())
     {
-      m_protocol = ProtocolValueMapper::GetProtocolValueForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(protocolNode.GetText()).c_str()).c_str());
+      m_protocol = ProtocolValueMapper::GetProtocolValueForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(protocolNode.GetText()).c_str()));
       m_protocolHasBeenSet = true;
     }
   }
@@ -54,7 +46,7 @@ void CreateTransitGatewayConnectRequestOptions::OutputToStream(Aws::OStream& oSt
 {
   if(m_protocolHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Protocol=" << ProtocolValueMapper::GetNameForProtocolValue(m_protocol) << "&";
+      oStream << location << index << locationValue << ".Protocol=" << StringUtils::URLEncode(ProtocolValueMapper::GetNameForProtocolValue(m_protocol)) << "&";
   }
 
 }
@@ -63,7 +55,7 @@ void CreateTransitGatewayConnectRequestOptions::OutputToStream(Aws::OStream& oSt
 {
   if(m_protocolHasBeenSet)
   {
-      oStream << location << ".Protocol=" << ProtocolValueMapper::GetNameForProtocolValue(m_protocol) << "&";
+      oStream << location << ".Protocol=" << StringUtils::URLEncode(ProtocolValueMapper::GetNameForProtocolValue(m_protocol)) << "&";
   }
 }
 

@@ -24,102 +24,45 @@ namespace Model
 {
 
   /**
-   * <p>The import source for the Key Value Store.</p><p><h3>See Also:</h3>   <a
+   * <p>The import source for the key value store.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2020-05-31/ImportSource">AWS
    * API Reference</a></p>
    */
   class ImportSource
   {
   public:
-    AWS_CLOUDFRONT_API ImportSource();
+    AWS_CLOUDFRONT_API ImportSource() = default;
     AWS_CLOUDFRONT_API ImportSource(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_CLOUDFRONT_API ImportSource& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_CLOUDFRONT_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
-     * <p>The source type of the import source for the Key Value Store.</p>
+     * <p>The source type of the import source for the key value store.</p>
      */
-    inline const ImportSourceType& GetSourceType() const{ return m_sourceType; }
-
-    /**
-     * <p>The source type of the import source for the Key Value Store.</p>
-     */
+    inline ImportSourceType GetSourceType() const { return m_sourceType; }
     inline bool SourceTypeHasBeenSet() const { return m_sourceTypeHasBeenSet; }
+    inline void SetSourceType(ImportSourceType value) { m_sourceTypeHasBeenSet = true; m_sourceType = value; }
+    inline ImportSource& WithSourceType(ImportSourceType value) { SetSourceType(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The source type of the import source for the Key Value Store.</p>
+     * <p>The Amazon Resource Name (ARN) of the import source for the key value
+     * store.</p>
      */
-    inline void SetSourceType(const ImportSourceType& value) { m_sourceTypeHasBeenSet = true; m_sourceType = value; }
-
-    /**
-     * <p>The source type of the import source for the Key Value Store.</p>
-     */
-    inline void SetSourceType(ImportSourceType&& value) { m_sourceTypeHasBeenSet = true; m_sourceType = std::move(value); }
-
-    /**
-     * <p>The source type of the import source for the Key Value Store.</p>
-     */
-    inline ImportSource& WithSourceType(const ImportSourceType& value) { SetSourceType(value); return *this;}
-
-    /**
-     * <p>The source type of the import source for the Key Value Store.</p>
-     */
-    inline ImportSource& WithSourceType(ImportSourceType&& value) { SetSourceType(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the import source for the Key Value
-     * Store.</p>
-     */
-    inline const Aws::String& GetSourceARN() const{ return m_sourceARN; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the import source for the Key Value
-     * Store.</p>
-     */
+    inline const Aws::String& GetSourceARN() const { return m_sourceARN; }
     inline bool SourceARNHasBeenSet() const { return m_sourceARNHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the import source for the Key Value
-     * Store.</p>
-     */
-    inline void SetSourceARN(const Aws::String& value) { m_sourceARNHasBeenSet = true; m_sourceARN = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the import source for the Key Value
-     * Store.</p>
-     */
-    inline void SetSourceARN(Aws::String&& value) { m_sourceARNHasBeenSet = true; m_sourceARN = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the import source for the Key Value
-     * Store.</p>
-     */
-    inline void SetSourceARN(const char* value) { m_sourceARNHasBeenSet = true; m_sourceARN.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the import source for the Key Value
-     * Store.</p>
-     */
-    inline ImportSource& WithSourceARN(const Aws::String& value) { SetSourceARN(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the import source for the Key Value
-     * Store.</p>
-     */
-    inline ImportSource& WithSourceARN(Aws::String&& value) { SetSourceARN(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the import source for the Key Value
-     * Store.</p>
-     */
-    inline ImportSource& WithSourceARN(const char* value) { SetSourceARN(value); return *this;}
-
+    template<typename SourceARNT = Aws::String>
+    void SetSourceARN(SourceARNT&& value) { m_sourceARNHasBeenSet = true; m_sourceARN = std::forward<SourceARNT>(value); }
+    template<typename SourceARNT = Aws::String>
+    ImportSource& WithSourceARN(SourceARNT&& value) { SetSourceARN(std::forward<SourceARNT>(value)); return *this;}
+    ///@}
   private:
 
-    ImportSourceType m_sourceType;
+    ImportSourceType m_sourceType{ImportSourceType::NOT_SET};
     bool m_sourceTypeHasBeenSet = false;
 
     Aws::String m_sourceARN;

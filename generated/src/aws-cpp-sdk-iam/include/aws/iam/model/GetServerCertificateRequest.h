@@ -21,7 +21,7 @@ namespace Model
   class GetServerCertificateRequest : public IAMRequest
   {
   public:
-    AWS_IAM_API GetServerCertificateRequest();
+    AWS_IAM_API GetServerCertificateRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,6 +36,7 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The name of the server certificate you want to retrieve information
      * about.</p> <p>This parameter allows (through its <a
@@ -43,71 +44,13 @@ namespace Model
      * consisting of upper and lowercase alphanumeric characters with no spaces. You
      * can also include any of the following characters: _+=,.@-</p>
      */
-    inline const Aws::String& GetServerCertificateName() const{ return m_serverCertificateName; }
-
-    /**
-     * <p>The name of the server certificate you want to retrieve information
-     * about.</p> <p>This parameter allows (through its <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
-     * consisting of upper and lowercase alphanumeric characters with no spaces. You
-     * can also include any of the following characters: _+=,.@-</p>
-     */
+    inline const Aws::String& GetServerCertificateName() const { return m_serverCertificateName; }
     inline bool ServerCertificateNameHasBeenSet() const { return m_serverCertificateNameHasBeenSet; }
-
-    /**
-     * <p>The name of the server certificate you want to retrieve information
-     * about.</p> <p>This parameter allows (through its <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
-     * consisting of upper and lowercase alphanumeric characters with no spaces. You
-     * can also include any of the following characters: _+=,.@-</p>
-     */
-    inline void SetServerCertificateName(const Aws::String& value) { m_serverCertificateNameHasBeenSet = true; m_serverCertificateName = value; }
-
-    /**
-     * <p>The name of the server certificate you want to retrieve information
-     * about.</p> <p>This parameter allows (through its <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
-     * consisting of upper and lowercase alphanumeric characters with no spaces. You
-     * can also include any of the following characters: _+=,.@-</p>
-     */
-    inline void SetServerCertificateName(Aws::String&& value) { m_serverCertificateNameHasBeenSet = true; m_serverCertificateName = std::move(value); }
-
-    /**
-     * <p>The name of the server certificate you want to retrieve information
-     * about.</p> <p>This parameter allows (through its <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
-     * consisting of upper and lowercase alphanumeric characters with no spaces. You
-     * can also include any of the following characters: _+=,.@-</p>
-     */
-    inline void SetServerCertificateName(const char* value) { m_serverCertificateNameHasBeenSet = true; m_serverCertificateName.assign(value); }
-
-    /**
-     * <p>The name of the server certificate you want to retrieve information
-     * about.</p> <p>This parameter allows (through its <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
-     * consisting of upper and lowercase alphanumeric characters with no spaces. You
-     * can also include any of the following characters: _+=,.@-</p>
-     */
-    inline GetServerCertificateRequest& WithServerCertificateName(const Aws::String& value) { SetServerCertificateName(value); return *this;}
-
-    /**
-     * <p>The name of the server certificate you want to retrieve information
-     * about.</p> <p>This parameter allows (through its <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
-     * consisting of upper and lowercase alphanumeric characters with no spaces. You
-     * can also include any of the following characters: _+=,.@-</p>
-     */
-    inline GetServerCertificateRequest& WithServerCertificateName(Aws::String&& value) { SetServerCertificateName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the server certificate you want to retrieve information
-     * about.</p> <p>This parameter allows (through its <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
-     * consisting of upper and lowercase alphanumeric characters with no spaces. You
-     * can also include any of the following characters: _+=,.@-</p>
-     */
-    inline GetServerCertificateRequest& WithServerCertificateName(const char* value) { SetServerCertificateName(value); return *this;}
-
+    template<typename ServerCertificateNameT = Aws::String>
+    void SetServerCertificateName(ServerCertificateNameT&& value) { m_serverCertificateNameHasBeenSet = true; m_serverCertificateName = std::forward<ServerCertificateNameT>(value); }
+    template<typename ServerCertificateNameT = Aws::String>
+    GetServerCertificateRequest& WithServerCertificateName(ServerCertificateNameT&& value) { SetServerCertificateName(std::forward<ServerCertificateNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_serverCertificateName;

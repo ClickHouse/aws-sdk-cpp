@@ -10,14 +10,6 @@
 using namespace Aws::ElasticBeanstalk::Model;
 using namespace Aws::Utils;
 
-DescribeEnvironmentManagedActionsRequest::DescribeEnvironmentManagedActionsRequest() : 
-    m_environmentNameHasBeenSet(false),
-    m_environmentIdHasBeenSet(false),
-    m_status(ActionStatus::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
 Aws::String DescribeEnvironmentManagedActionsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -34,7 +26,7 @@ Aws::String DescribeEnvironmentManagedActionsRequest::SerializePayload() const
 
   if(m_statusHasBeenSet)
   {
-    ss << "Status=" << ActionStatusMapper::GetNameForActionStatus(m_status) << "&";
+    ss << "Status=" << StringUtils::URLEncode(ActionStatusMapper::GetNameForActionStatus(m_status)) << "&";
   }
 
   ss << "Version=2010-12-01";

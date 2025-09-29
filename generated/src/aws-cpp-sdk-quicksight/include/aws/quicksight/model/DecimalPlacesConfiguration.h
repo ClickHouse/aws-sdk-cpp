@@ -30,35 +30,24 @@ namespace Model
   class DecimalPlacesConfiguration
   {
   public:
-    AWS_QUICKSIGHT_API DecimalPlacesConfiguration();
+    AWS_QUICKSIGHT_API DecimalPlacesConfiguration() = default;
     AWS_QUICKSIGHT_API DecimalPlacesConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API DecimalPlacesConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The values of the decimal places.</p>
      */
-    inline long long GetDecimalPlaces() const{ return m_decimalPlaces; }
-
-    /**
-     * <p>The values of the decimal places.</p>
-     */
+    inline long long GetDecimalPlaces() const { return m_decimalPlaces; }
     inline bool DecimalPlacesHasBeenSet() const { return m_decimalPlacesHasBeenSet; }
-
-    /**
-     * <p>The values of the decimal places.</p>
-     */
     inline void SetDecimalPlaces(long long value) { m_decimalPlacesHasBeenSet = true; m_decimalPlaces = value; }
-
-    /**
-     * <p>The values of the decimal places.</p>
-     */
     inline DecimalPlacesConfiguration& WithDecimalPlaces(long long value) { SetDecimalPlaces(value); return *this;}
-
+    ///@}
   private:
 
-    long long m_decimalPlaces;
+    long long m_decimalPlaces{0};
     bool m_decimalPlacesHasBeenSet = false;
   };
 

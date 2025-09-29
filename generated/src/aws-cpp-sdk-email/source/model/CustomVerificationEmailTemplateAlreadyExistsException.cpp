@@ -20,13 +20,7 @@ namespace SES
 namespace Model
 {
 
-CustomVerificationEmailTemplateAlreadyExistsException::CustomVerificationEmailTemplateAlreadyExistsException() : 
-    m_customVerificationEmailTemplateNameHasBeenSet(false)
-{
-}
-
-CustomVerificationEmailTemplateAlreadyExistsException::CustomVerificationEmailTemplateAlreadyExistsException(const XmlNode& xmlNode) : 
-    m_customVerificationEmailTemplateNameHasBeenSet(false)
+CustomVerificationEmailTemplateAlreadyExistsException::CustomVerificationEmailTemplateAlreadyExistsException(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

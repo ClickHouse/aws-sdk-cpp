@@ -10,18 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-CreateVpnConnectionRequest::CreateVpnConnectionRequest() : 
-    m_customerGatewayIdHasBeenSet(false),
-    m_typeHasBeenSet(false),
-    m_vpnGatewayIdHasBeenSet(false),
-    m_transitGatewayIdHasBeenSet(false),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_optionsHasBeenSet(false),
-    m_tagSpecificationsHasBeenSet(false)
-{
-}
-
 Aws::String CreateVpnConnectionRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -46,16 +34,6 @@ Aws::String CreateVpnConnectionRequest::SerializePayload() const
     ss << "TransitGatewayId=" << StringUtils::URLEncode(m_transitGatewayId.c_str()) << "&";
   }
 
-  if(m_dryRunHasBeenSet)
-  {
-    ss << "DryRun=" << std::boolalpha << m_dryRun << "&";
-  }
-
-  if(m_optionsHasBeenSet)
-  {
-    m_options.OutputToStream(ss, "Options");
-  }
-
   if(m_tagSpecificationsHasBeenSet)
   {
     unsigned tagSpecificationsCount = 1;
@@ -64,6 +42,21 @@ Aws::String CreateVpnConnectionRequest::SerializePayload() const
       item.OutputToStream(ss, "TagSpecification.", tagSpecificationsCount, "");
       tagSpecificationsCount++;
     }
+  }
+
+  if(m_preSharedKeyStorageHasBeenSet)
+  {
+    ss << "PreSharedKeyStorage=" << StringUtils::URLEncode(m_preSharedKeyStorage.c_str()) << "&";
+  }
+
+  if(m_dryRunHasBeenSet)
+  {
+    ss << "DryRun=" << std::boolalpha << m_dryRun << "&";
+  }
+
+  if(m_optionsHasBeenSet)
+  {
+    m_options.OutputToStream(ss, "Options");
   }
 
   ss << "Version=2016-11-15";

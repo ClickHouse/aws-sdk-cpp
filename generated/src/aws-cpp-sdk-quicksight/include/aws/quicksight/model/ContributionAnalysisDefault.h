@@ -34,101 +34,38 @@ namespace Model
   class ContributionAnalysisDefault
   {
   public:
-    AWS_QUICKSIGHT_API ContributionAnalysisDefault();
+    AWS_QUICKSIGHT_API ContributionAnalysisDefault() = default;
     AWS_QUICKSIGHT_API ContributionAnalysisDefault(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API ContributionAnalysisDefault& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The measure field that is used in the contribution analysis.</p>
      */
-    inline const Aws::String& GetMeasureFieldId() const{ return m_measureFieldId; }
-
-    /**
-     * <p>The measure field that is used in the contribution analysis.</p>
-     */
+    inline const Aws::String& GetMeasureFieldId() const { return m_measureFieldId; }
     inline bool MeasureFieldIdHasBeenSet() const { return m_measureFieldIdHasBeenSet; }
+    template<typename MeasureFieldIdT = Aws::String>
+    void SetMeasureFieldId(MeasureFieldIdT&& value) { m_measureFieldIdHasBeenSet = true; m_measureFieldId = std::forward<MeasureFieldIdT>(value); }
+    template<typename MeasureFieldIdT = Aws::String>
+    ContributionAnalysisDefault& WithMeasureFieldId(MeasureFieldIdT&& value) { SetMeasureFieldId(std::forward<MeasureFieldIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The measure field that is used in the contribution analysis.</p>
-     */
-    inline void SetMeasureFieldId(const Aws::String& value) { m_measureFieldIdHasBeenSet = true; m_measureFieldId = value; }
-
-    /**
-     * <p>The measure field that is used in the contribution analysis.</p>
-     */
-    inline void SetMeasureFieldId(Aws::String&& value) { m_measureFieldIdHasBeenSet = true; m_measureFieldId = std::move(value); }
-
-    /**
-     * <p>The measure field that is used in the contribution analysis.</p>
-     */
-    inline void SetMeasureFieldId(const char* value) { m_measureFieldIdHasBeenSet = true; m_measureFieldId.assign(value); }
-
-    /**
-     * <p>The measure field that is used in the contribution analysis.</p>
-     */
-    inline ContributionAnalysisDefault& WithMeasureFieldId(const Aws::String& value) { SetMeasureFieldId(value); return *this;}
-
-    /**
-     * <p>The measure field that is used in the contribution analysis.</p>
-     */
-    inline ContributionAnalysisDefault& WithMeasureFieldId(Aws::String&& value) { SetMeasureFieldId(std::move(value)); return *this;}
-
-    /**
-     * <p>The measure field that is used in the contribution analysis.</p>
-     */
-    inline ContributionAnalysisDefault& WithMeasureFieldId(const char* value) { SetMeasureFieldId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The dimensions columns that are used in the contribution analysis, usually a
      * list of <code>ColumnIdentifiers</code>.</p>
      */
-    inline const Aws::Vector<ColumnIdentifier>& GetContributorDimensions() const{ return m_contributorDimensions; }
-
-    /**
-     * <p>The dimensions columns that are used in the contribution analysis, usually a
-     * list of <code>ColumnIdentifiers</code>.</p>
-     */
+    inline const Aws::Vector<ColumnIdentifier>& GetContributorDimensions() const { return m_contributorDimensions; }
     inline bool ContributorDimensionsHasBeenSet() const { return m_contributorDimensionsHasBeenSet; }
-
-    /**
-     * <p>The dimensions columns that are used in the contribution analysis, usually a
-     * list of <code>ColumnIdentifiers</code>.</p>
-     */
-    inline void SetContributorDimensions(const Aws::Vector<ColumnIdentifier>& value) { m_contributorDimensionsHasBeenSet = true; m_contributorDimensions = value; }
-
-    /**
-     * <p>The dimensions columns that are used in the contribution analysis, usually a
-     * list of <code>ColumnIdentifiers</code>.</p>
-     */
-    inline void SetContributorDimensions(Aws::Vector<ColumnIdentifier>&& value) { m_contributorDimensionsHasBeenSet = true; m_contributorDimensions = std::move(value); }
-
-    /**
-     * <p>The dimensions columns that are used in the contribution analysis, usually a
-     * list of <code>ColumnIdentifiers</code>.</p>
-     */
-    inline ContributionAnalysisDefault& WithContributorDimensions(const Aws::Vector<ColumnIdentifier>& value) { SetContributorDimensions(value); return *this;}
-
-    /**
-     * <p>The dimensions columns that are used in the contribution analysis, usually a
-     * list of <code>ColumnIdentifiers</code>.</p>
-     */
-    inline ContributionAnalysisDefault& WithContributorDimensions(Aws::Vector<ColumnIdentifier>&& value) { SetContributorDimensions(std::move(value)); return *this;}
-
-    /**
-     * <p>The dimensions columns that are used in the contribution analysis, usually a
-     * list of <code>ColumnIdentifiers</code>.</p>
-     */
-    inline ContributionAnalysisDefault& AddContributorDimensions(const ColumnIdentifier& value) { m_contributorDimensionsHasBeenSet = true; m_contributorDimensions.push_back(value); return *this; }
-
-    /**
-     * <p>The dimensions columns that are used in the contribution analysis, usually a
-     * list of <code>ColumnIdentifiers</code>.</p>
-     */
-    inline ContributionAnalysisDefault& AddContributorDimensions(ColumnIdentifier&& value) { m_contributorDimensionsHasBeenSet = true; m_contributorDimensions.push_back(std::move(value)); return *this; }
-
+    template<typename ContributorDimensionsT = Aws::Vector<ColumnIdentifier>>
+    void SetContributorDimensions(ContributorDimensionsT&& value) { m_contributorDimensionsHasBeenSet = true; m_contributorDimensions = std::forward<ContributorDimensionsT>(value); }
+    template<typename ContributorDimensionsT = Aws::Vector<ColumnIdentifier>>
+    ContributionAnalysisDefault& WithContributorDimensions(ContributorDimensionsT&& value) { SetContributorDimensions(std::forward<ContributorDimensionsT>(value)); return *this;}
+    template<typename ContributorDimensionsT = ColumnIdentifier>
+    ContributionAnalysisDefault& AddContributorDimensions(ContributorDimensionsT&& value) { m_contributorDimensionsHasBeenSet = true; m_contributorDimensions.emplace_back(std::forward<ContributorDimensionsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_measureFieldId;

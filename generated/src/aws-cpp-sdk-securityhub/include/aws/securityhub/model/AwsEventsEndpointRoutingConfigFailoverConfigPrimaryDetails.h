@@ -32,60 +32,24 @@ namespace Model
   class AwsEventsEndpointRoutingConfigFailoverConfigPrimaryDetails
   {
   public:
-    AWS_SECURITYHUB_API AwsEventsEndpointRoutingConfigFailoverConfigPrimaryDetails();
+    AWS_SECURITYHUB_API AwsEventsEndpointRoutingConfigFailoverConfigPrimaryDetails() = default;
     AWS_SECURITYHUB_API AwsEventsEndpointRoutingConfigFailoverConfigPrimaryDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsEventsEndpointRoutingConfigFailoverConfigPrimaryDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The Amazon Resource Name (ARN) of the health check used by the endpoint to
      * determine whether failover is triggered.</p>
      */
-    inline const Aws::String& GetHealthCheck() const{ return m_healthCheck; }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the health check used by the endpoint to
-     * determine whether failover is triggered.</p>
-     */
+    inline const Aws::String& GetHealthCheck() const { return m_healthCheck; }
     inline bool HealthCheckHasBeenSet() const { return m_healthCheckHasBeenSet; }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the health check used by the endpoint to
-     * determine whether failover is triggered.</p>
-     */
-    inline void SetHealthCheck(const Aws::String& value) { m_healthCheckHasBeenSet = true; m_healthCheck = value; }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the health check used by the endpoint to
-     * determine whether failover is triggered.</p>
-     */
-    inline void SetHealthCheck(Aws::String&& value) { m_healthCheckHasBeenSet = true; m_healthCheck = std::move(value); }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the health check used by the endpoint to
-     * determine whether failover is triggered.</p>
-     */
-    inline void SetHealthCheck(const char* value) { m_healthCheckHasBeenSet = true; m_healthCheck.assign(value); }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the health check used by the endpoint to
-     * determine whether failover is triggered.</p>
-     */
-    inline AwsEventsEndpointRoutingConfigFailoverConfigPrimaryDetails& WithHealthCheck(const Aws::String& value) { SetHealthCheck(value); return *this;}
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the health check used by the endpoint to
-     * determine whether failover is triggered.</p>
-     */
-    inline AwsEventsEndpointRoutingConfigFailoverConfigPrimaryDetails& WithHealthCheck(Aws::String&& value) { SetHealthCheck(std::move(value)); return *this;}
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the health check used by the endpoint to
-     * determine whether failover is triggered.</p>
-     */
-    inline AwsEventsEndpointRoutingConfigFailoverConfigPrimaryDetails& WithHealthCheck(const char* value) { SetHealthCheck(value); return *this;}
-
+    template<typename HealthCheckT = Aws::String>
+    void SetHealthCheck(HealthCheckT&& value) { m_healthCheckHasBeenSet = true; m_healthCheck = std::forward<HealthCheckT>(value); }
+    template<typename HealthCheckT = Aws::String>
+    AwsEventsEndpointRoutingConfigFailoverConfigPrimaryDetails& WithHealthCheck(HealthCheckT&& value) { SetHealthCheck(std::forward<HealthCheckT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_healthCheck;

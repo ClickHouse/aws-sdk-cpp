@@ -36,84 +36,37 @@ namespace Model
   class Invitation
   {
   public:
-    AWS_MANAGEDBLOCKCHAIN_API Invitation();
+    AWS_MANAGEDBLOCKCHAIN_API Invitation() = default;
     AWS_MANAGEDBLOCKCHAIN_API Invitation(Aws::Utils::Json::JsonView jsonValue);
     AWS_MANAGEDBLOCKCHAIN_API Invitation& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MANAGEDBLOCKCHAIN_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The unique identifier for the invitation.</p>
      */
-    inline const Aws::String& GetInvitationId() const{ return m_invitationId; }
-
-    /**
-     * <p>The unique identifier for the invitation.</p>
-     */
+    inline const Aws::String& GetInvitationId() const { return m_invitationId; }
     inline bool InvitationIdHasBeenSet() const { return m_invitationIdHasBeenSet; }
+    template<typename InvitationIdT = Aws::String>
+    void SetInvitationId(InvitationIdT&& value) { m_invitationIdHasBeenSet = true; m_invitationId = std::forward<InvitationIdT>(value); }
+    template<typename InvitationIdT = Aws::String>
+    Invitation& WithInvitationId(InvitationIdT&& value) { SetInvitationId(std::forward<InvitationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier for the invitation.</p>
-     */
-    inline void SetInvitationId(const Aws::String& value) { m_invitationIdHasBeenSet = true; m_invitationId = value; }
-
-    /**
-     * <p>The unique identifier for the invitation.</p>
-     */
-    inline void SetInvitationId(Aws::String&& value) { m_invitationIdHasBeenSet = true; m_invitationId = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the invitation.</p>
-     */
-    inline void SetInvitationId(const char* value) { m_invitationIdHasBeenSet = true; m_invitationId.assign(value); }
-
-    /**
-     * <p>The unique identifier for the invitation.</p>
-     */
-    inline Invitation& WithInvitationId(const Aws::String& value) { SetInvitationId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the invitation.</p>
-     */
-    inline Invitation& WithInvitationId(Aws::String&& value) { SetInvitationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the invitation.</p>
-     */
-    inline Invitation& WithInvitationId(const char* value) { SetInvitationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time that the invitation was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreationDate() const{ return m_creationDate; }
-
-    /**
-     * <p>The date and time that the invitation was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreationDate() const { return m_creationDate; }
     inline bool CreationDateHasBeenSet() const { return m_creationDateHasBeenSet; }
+    template<typename CreationDateT = Aws::Utils::DateTime>
+    void SetCreationDate(CreationDateT&& value) { m_creationDateHasBeenSet = true; m_creationDate = std::forward<CreationDateT>(value); }
+    template<typename CreationDateT = Aws::Utils::DateTime>
+    Invitation& WithCreationDate(CreationDateT&& value) { SetCreationDate(std::forward<CreationDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time that the invitation was created.</p>
-     */
-    inline void SetCreationDate(const Aws::Utils::DateTime& value) { m_creationDateHasBeenSet = true; m_creationDate = value; }
-
-    /**
-     * <p>The date and time that the invitation was created.</p>
-     */
-    inline void SetCreationDate(Aws::Utils::DateTime&& value) { m_creationDateHasBeenSet = true; m_creationDate = std::move(value); }
-
-    /**
-     * <p>The date and time that the invitation was created.</p>
-     */
-    inline Invitation& WithCreationDate(const Aws::Utils::DateTime& value) { SetCreationDate(value); return *this;}
-
-    /**
-     * <p>The date and time that the invitation was created.</p>
-     */
-    inline Invitation& WithCreationDate(Aws::Utils::DateTime&& value) { SetCreationDate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time that the invitation expires. This is the
      * <code>CreationDate</code> plus the <code>ProposalDurationInHours</code> that is
@@ -121,54 +74,15 @@ namespace Model
      * the invitee can no longer create a member and join the network using this
      * <code>InvitationId</code>.</p>
      */
-    inline const Aws::Utils::DateTime& GetExpirationDate() const{ return m_expirationDate; }
-
-    /**
-     * <p>The date and time that the invitation expires. This is the
-     * <code>CreationDate</code> plus the <code>ProposalDurationInHours</code> that is
-     * specified in the <code>ProposalThresholdPolicy</code>. After this date and time,
-     * the invitee can no longer create a member and join the network using this
-     * <code>InvitationId</code>.</p>
-     */
+    inline const Aws::Utils::DateTime& GetExpirationDate() const { return m_expirationDate; }
     inline bool ExpirationDateHasBeenSet() const { return m_expirationDateHasBeenSet; }
+    template<typename ExpirationDateT = Aws::Utils::DateTime>
+    void SetExpirationDate(ExpirationDateT&& value) { m_expirationDateHasBeenSet = true; m_expirationDate = std::forward<ExpirationDateT>(value); }
+    template<typename ExpirationDateT = Aws::Utils::DateTime>
+    Invitation& WithExpirationDate(ExpirationDateT&& value) { SetExpirationDate(std::forward<ExpirationDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time that the invitation expires. This is the
-     * <code>CreationDate</code> plus the <code>ProposalDurationInHours</code> that is
-     * specified in the <code>ProposalThresholdPolicy</code>. After this date and time,
-     * the invitee can no longer create a member and join the network using this
-     * <code>InvitationId</code>.</p>
-     */
-    inline void SetExpirationDate(const Aws::Utils::DateTime& value) { m_expirationDateHasBeenSet = true; m_expirationDate = value; }
-
-    /**
-     * <p>The date and time that the invitation expires. This is the
-     * <code>CreationDate</code> plus the <code>ProposalDurationInHours</code> that is
-     * specified in the <code>ProposalThresholdPolicy</code>. After this date and time,
-     * the invitee can no longer create a member and join the network using this
-     * <code>InvitationId</code>.</p>
-     */
-    inline void SetExpirationDate(Aws::Utils::DateTime&& value) { m_expirationDateHasBeenSet = true; m_expirationDate = std::move(value); }
-
-    /**
-     * <p>The date and time that the invitation expires. This is the
-     * <code>CreationDate</code> plus the <code>ProposalDurationInHours</code> that is
-     * specified in the <code>ProposalThresholdPolicy</code>. After this date and time,
-     * the invitee can no longer create a member and join the network using this
-     * <code>InvitationId</code>.</p>
-     */
-    inline Invitation& WithExpirationDate(const Aws::Utils::DateTime& value) { SetExpirationDate(value); return *this;}
-
-    /**
-     * <p>The date and time that the invitation expires. This is the
-     * <code>CreationDate</code> plus the <code>ProposalDurationInHours</code> that is
-     * specified in the <code>ProposalThresholdPolicy</code>. After this date and time,
-     * the invitee can no longer create a member and join the network using this
-     * <code>InvitationId</code>.</p>
-     */
-    inline Invitation& WithExpirationDate(Aws::Utils::DateTime&& value) { SetExpirationDate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the invitation:</p> <ul> <li> <p> <code>PENDING</code> - The
      * invitee hasn't created a member to join the network, and the invitation hasn't
@@ -180,93 +94,23 @@ namespace Model
      * The invitee neither created a member nor rejected the invitation before the
      * <code>ExpirationDate</code>.</p> </li> </ul>
      */
-    inline const InvitationStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the invitation:</p> <ul> <li> <p> <code>PENDING</code> - The
-     * invitee hasn't created a member to join the network, and the invitation hasn't
-     * yet expired.</p> </li> <li> <p> <code>ACCEPTING</code> - The invitee has begun
-     * creating a member, and creation hasn't yet completed.</p> </li> <li> <p>
-     * <code>ACCEPTED</code> - The invitee created a member and joined the network
-     * using the <code>InvitationID</code>.</p> </li> <li> <p> <code>REJECTED</code> -
-     * The invitee rejected the invitation.</p> </li> <li> <p> <code>EXPIRED</code> -
-     * The invitee neither created a member nor rejected the invitation before the
-     * <code>ExpirationDate</code>.</p> </li> </ul>
-     */
+    inline InvitationStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(InvitationStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline Invitation& WithStatus(InvitationStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the invitation:</p> <ul> <li> <p> <code>PENDING</code> - The
-     * invitee hasn't created a member to join the network, and the invitation hasn't
-     * yet expired.</p> </li> <li> <p> <code>ACCEPTING</code> - The invitee has begun
-     * creating a member, and creation hasn't yet completed.</p> </li> <li> <p>
-     * <code>ACCEPTED</code> - The invitee created a member and joined the network
-     * using the <code>InvitationID</code>.</p> </li> <li> <p> <code>REJECTED</code> -
-     * The invitee rejected the invitation.</p> </li> <li> <p> <code>EXPIRED</code> -
-     * The invitee neither created a member nor rejected the invitation before the
-     * <code>ExpirationDate</code>.</p> </li> </ul>
-     */
-    inline void SetStatus(const InvitationStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the invitation:</p> <ul> <li> <p> <code>PENDING</code> - The
-     * invitee hasn't created a member to join the network, and the invitation hasn't
-     * yet expired.</p> </li> <li> <p> <code>ACCEPTING</code> - The invitee has begun
-     * creating a member, and creation hasn't yet completed.</p> </li> <li> <p>
-     * <code>ACCEPTED</code> - The invitee created a member and joined the network
-     * using the <code>InvitationID</code>.</p> </li> <li> <p> <code>REJECTED</code> -
-     * The invitee rejected the invitation.</p> </li> <li> <p> <code>EXPIRED</code> -
-     * The invitee neither created a member nor rejected the invitation before the
-     * <code>ExpirationDate</code>.</p> </li> </ul>
-     */
-    inline void SetStatus(InvitationStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the invitation:</p> <ul> <li> <p> <code>PENDING</code> - The
-     * invitee hasn't created a member to join the network, and the invitation hasn't
-     * yet expired.</p> </li> <li> <p> <code>ACCEPTING</code> - The invitee has begun
-     * creating a member, and creation hasn't yet completed.</p> </li> <li> <p>
-     * <code>ACCEPTED</code> - The invitee created a member and joined the network
-     * using the <code>InvitationID</code>.</p> </li> <li> <p> <code>REJECTED</code> -
-     * The invitee rejected the invitation.</p> </li> <li> <p> <code>EXPIRED</code> -
-     * The invitee neither created a member nor rejected the invitation before the
-     * <code>ExpirationDate</code>.</p> </li> </ul>
-     */
-    inline Invitation& WithStatus(const InvitationStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the invitation:</p> <ul> <li> <p> <code>PENDING</code> - The
-     * invitee hasn't created a member to join the network, and the invitation hasn't
-     * yet expired.</p> </li> <li> <p> <code>ACCEPTING</code> - The invitee has begun
-     * creating a member, and creation hasn't yet completed.</p> </li> <li> <p>
-     * <code>ACCEPTED</code> - The invitee created a member and joined the network
-     * using the <code>InvitationID</code>.</p> </li> <li> <p> <code>REJECTED</code> -
-     * The invitee rejected the invitation.</p> </li> <li> <p> <code>EXPIRED</code> -
-     * The invitee neither created a member nor rejected the invitation before the
-     * <code>ExpirationDate</code>.</p> </li> </ul>
-     */
-    inline Invitation& WithStatus(InvitationStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const NetworkSummary& GetNetworkSummary() const{ return m_networkSummary; }
-
-    
+    inline const NetworkSummary& GetNetworkSummary() const { return m_networkSummary; }
     inline bool NetworkSummaryHasBeenSet() const { return m_networkSummaryHasBeenSet; }
+    template<typename NetworkSummaryT = NetworkSummary>
+    void SetNetworkSummary(NetworkSummaryT&& value) { m_networkSummaryHasBeenSet = true; m_networkSummary = std::forward<NetworkSummaryT>(value); }
+    template<typename NetworkSummaryT = NetworkSummary>
+    Invitation& WithNetworkSummary(NetworkSummaryT&& value) { SetNetworkSummary(std::forward<NetworkSummaryT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetNetworkSummary(const NetworkSummary& value) { m_networkSummaryHasBeenSet = true; m_networkSummary = value; }
-
-    
-    inline void SetNetworkSummary(NetworkSummary&& value) { m_networkSummaryHasBeenSet = true; m_networkSummary = std::move(value); }
-
-    
-    inline Invitation& WithNetworkSummary(const NetworkSummary& value) { SetNetworkSummary(value); return *this;}
-
-    
-    inline Invitation& WithNetworkSummary(NetworkSummary&& value) { SetNetworkSummary(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the invitation. For more information about
      * ARNs and their format, see <a
@@ -274,83 +118,25 @@ namespace Model
      * Resource Names (ARNs)</a> in the <i>Amazon Web Services General
      * Reference</i>.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the invitation. For more information about
-     * ARNs and their format, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * Resource Names (ARNs)</a> in the <i>Amazon Web Services General
-     * Reference</i>.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the invitation. For more information about
-     * ARNs and their format, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * Resource Names (ARNs)</a> in the <i>Amazon Web Services General
-     * Reference</i>.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the invitation. For more information about
-     * ARNs and their format, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * Resource Names (ARNs)</a> in the <i>Amazon Web Services General
-     * Reference</i>.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the invitation. For more information about
-     * ARNs and their format, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * Resource Names (ARNs)</a> in the <i>Amazon Web Services General
-     * Reference</i>.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the invitation. For more information about
-     * ARNs and their format, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * Resource Names (ARNs)</a> in the <i>Amazon Web Services General
-     * Reference</i>.</p>
-     */
-    inline Invitation& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the invitation. For more information about
-     * ARNs and their format, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * Resource Names (ARNs)</a> in the <i>Amazon Web Services General
-     * Reference</i>.</p>
-     */
-    inline Invitation& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the invitation. For more information about
-     * ARNs and their format, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     * Resource Names (ARNs)</a> in the <i>Amazon Web Services General
-     * Reference</i>.</p>
-     */
-    inline Invitation& WithArn(const char* value) { SetArn(value); return *this;}
-
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    Invitation& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_invitationId;
     bool m_invitationIdHasBeenSet = false;
 
-    Aws::Utils::DateTime m_creationDate;
+    Aws::Utils::DateTime m_creationDate{};
     bool m_creationDateHasBeenSet = false;
 
-    Aws::Utils::DateTime m_expirationDate;
+    Aws::Utils::DateTime m_expirationDate{};
     bool m_expirationDateHasBeenSet = false;
 
-    InvitationStatus m_status;
+    InvitationStatus m_status{InvitationStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
     NetworkSummary m_networkSummary;

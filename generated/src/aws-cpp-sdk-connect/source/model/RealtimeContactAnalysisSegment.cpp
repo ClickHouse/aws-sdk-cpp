@@ -18,21 +18,7 @@ namespace Connect
 namespace Model
 {
 
-RealtimeContactAnalysisSegment::RealtimeContactAnalysisSegment() : 
-    m_transcriptHasBeenSet(false),
-    m_categoriesHasBeenSet(false),
-    m_issuesHasBeenSet(false),
-    m_eventHasBeenSet(false),
-    m_attachmentsHasBeenSet(false)
-{
-}
-
-RealtimeContactAnalysisSegment::RealtimeContactAnalysisSegment(JsonView jsonValue) : 
-    m_transcriptHasBeenSet(false),
-    m_categoriesHasBeenSet(false),
-    m_issuesHasBeenSet(false),
-    m_eventHasBeenSet(false),
-    m_attachmentsHasBeenSet(false)
+RealtimeContactAnalysisSegment::RealtimeContactAnalysisSegment(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,38 +28,33 @@ RealtimeContactAnalysisSegment& RealtimeContactAnalysisSegment::operator =(JsonV
   if(jsonValue.ValueExists("Transcript"))
   {
     m_transcript = jsonValue.GetObject("Transcript");
-
     m_transcriptHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Categories"))
   {
     m_categories = jsonValue.GetObject("Categories");
-
     m_categoriesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Issues"))
   {
     m_issues = jsonValue.GetObject("Issues");
-
     m_issuesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Event"))
   {
     m_event = jsonValue.GetObject("Event");
-
     m_eventHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Attachments"))
   {
     m_attachments = jsonValue.GetObject("Attachments");
-
     m_attachmentsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("PostContactSummary"))
+  {
+    m_postContactSummary = jsonValue.GetObject("PostContactSummary");
+    m_postContactSummaryHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -108,6 +89,12 @@ JsonValue RealtimeContactAnalysisSegment::Jsonize() const
   if(m_attachmentsHasBeenSet)
   {
    payload.WithObject("Attachments", m_attachments.Jsonize());
+
+  }
+
+  if(m_postContactSummaryHasBeenSet)
+  {
+   payload.WithObject("PostContactSummary", m_postContactSummary.Jsonize());
 
   }
 

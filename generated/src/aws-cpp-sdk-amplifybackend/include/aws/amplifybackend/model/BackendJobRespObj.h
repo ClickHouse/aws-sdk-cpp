@@ -31,339 +31,107 @@ namespace Model
   class BackendJobRespObj
   {
   public:
-    AWS_AMPLIFYBACKEND_API BackendJobRespObj();
+    AWS_AMPLIFYBACKEND_API BackendJobRespObj() = default;
     AWS_AMPLIFYBACKEND_API BackendJobRespObj(Aws::Utils::Json::JsonView jsonValue);
     AWS_AMPLIFYBACKEND_API BackendJobRespObj& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_AMPLIFYBACKEND_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The app ID.</p>
      */
-    inline const Aws::String& GetAppId() const{ return m_appId; }
-
-    /**
-     * <p>The app ID.</p>
-     */
+    inline const Aws::String& GetAppId() const { return m_appId; }
     inline bool AppIdHasBeenSet() const { return m_appIdHasBeenSet; }
+    template<typename AppIdT = Aws::String>
+    void SetAppId(AppIdT&& value) { m_appIdHasBeenSet = true; m_appId = std::forward<AppIdT>(value); }
+    template<typename AppIdT = Aws::String>
+    BackendJobRespObj& WithAppId(AppIdT&& value) { SetAppId(std::forward<AppIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The app ID.</p>
-     */
-    inline void SetAppId(const Aws::String& value) { m_appIdHasBeenSet = true; m_appId = value; }
-
-    /**
-     * <p>The app ID.</p>
-     */
-    inline void SetAppId(Aws::String&& value) { m_appIdHasBeenSet = true; m_appId = std::move(value); }
-
-    /**
-     * <p>The app ID.</p>
-     */
-    inline void SetAppId(const char* value) { m_appIdHasBeenSet = true; m_appId.assign(value); }
-
-    /**
-     * <p>The app ID.</p>
-     */
-    inline BackendJobRespObj& WithAppId(const Aws::String& value) { SetAppId(value); return *this;}
-
-    /**
-     * <p>The app ID.</p>
-     */
-    inline BackendJobRespObj& WithAppId(Aws::String&& value) { SetAppId(std::move(value)); return *this;}
-
-    /**
-     * <p>The app ID.</p>
-     */
-    inline BackendJobRespObj& WithAppId(const char* value) { SetAppId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the backend environment.</p>
      */
-    inline const Aws::String& GetBackendEnvironmentName() const{ return m_backendEnvironmentName; }
-
-    /**
-     * <p>The name of the backend environment.</p>
-     */
+    inline const Aws::String& GetBackendEnvironmentName() const { return m_backendEnvironmentName; }
     inline bool BackendEnvironmentNameHasBeenSet() const { return m_backendEnvironmentNameHasBeenSet; }
+    template<typename BackendEnvironmentNameT = Aws::String>
+    void SetBackendEnvironmentName(BackendEnvironmentNameT&& value) { m_backendEnvironmentNameHasBeenSet = true; m_backendEnvironmentName = std::forward<BackendEnvironmentNameT>(value); }
+    template<typename BackendEnvironmentNameT = Aws::String>
+    BackendJobRespObj& WithBackendEnvironmentName(BackendEnvironmentNameT&& value) { SetBackendEnvironmentName(std::forward<BackendEnvironmentNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the backend environment.</p>
-     */
-    inline void SetBackendEnvironmentName(const Aws::String& value) { m_backendEnvironmentNameHasBeenSet = true; m_backendEnvironmentName = value; }
-
-    /**
-     * <p>The name of the backend environment.</p>
-     */
-    inline void SetBackendEnvironmentName(Aws::String&& value) { m_backendEnvironmentNameHasBeenSet = true; m_backendEnvironmentName = std::move(value); }
-
-    /**
-     * <p>The name of the backend environment.</p>
-     */
-    inline void SetBackendEnvironmentName(const char* value) { m_backendEnvironmentNameHasBeenSet = true; m_backendEnvironmentName.assign(value); }
-
-    /**
-     * <p>The name of the backend environment.</p>
-     */
-    inline BackendJobRespObj& WithBackendEnvironmentName(const Aws::String& value) { SetBackendEnvironmentName(value); return *this;}
-
-    /**
-     * <p>The name of the backend environment.</p>
-     */
-    inline BackendJobRespObj& WithBackendEnvironmentName(Aws::String&& value) { SetBackendEnvironmentName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the backend environment.</p>
-     */
-    inline BackendJobRespObj& WithBackendEnvironmentName(const char* value) { SetBackendEnvironmentName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The time when the job was created.</p>
      */
-    inline const Aws::String& GetCreateTime() const{ return m_createTime; }
-
-    /**
-     * <p>The time when the job was created.</p>
-     */
+    inline const Aws::String& GetCreateTime() const { return m_createTime; }
     inline bool CreateTimeHasBeenSet() const { return m_createTimeHasBeenSet; }
+    template<typename CreateTimeT = Aws::String>
+    void SetCreateTime(CreateTimeT&& value) { m_createTimeHasBeenSet = true; m_createTime = std::forward<CreateTimeT>(value); }
+    template<typename CreateTimeT = Aws::String>
+    BackendJobRespObj& WithCreateTime(CreateTimeT&& value) { SetCreateTime(std::forward<CreateTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time when the job was created.</p>
-     */
-    inline void SetCreateTime(const Aws::String& value) { m_createTimeHasBeenSet = true; m_createTime = value; }
-
-    /**
-     * <p>The time when the job was created.</p>
-     */
-    inline void SetCreateTime(Aws::String&& value) { m_createTimeHasBeenSet = true; m_createTime = std::move(value); }
-
-    /**
-     * <p>The time when the job was created.</p>
-     */
-    inline void SetCreateTime(const char* value) { m_createTimeHasBeenSet = true; m_createTime.assign(value); }
-
-    /**
-     * <p>The time when the job was created.</p>
-     */
-    inline BackendJobRespObj& WithCreateTime(const Aws::String& value) { SetCreateTime(value); return *this;}
-
-    /**
-     * <p>The time when the job was created.</p>
-     */
-    inline BackendJobRespObj& WithCreateTime(Aws::String&& value) { SetCreateTime(std::move(value)); return *this;}
-
-    /**
-     * <p>The time when the job was created.</p>
-     */
-    inline BackendJobRespObj& WithCreateTime(const char* value) { SetCreateTime(value); return *this;}
-
-
+    ///@{
     /**
      * <p>If the request fails, this error is returned.</p>
      */
-    inline const Aws::String& GetError() const{ return m_error; }
-
-    /**
-     * <p>If the request fails, this error is returned.</p>
-     */
+    inline const Aws::String& GetError() const { return m_error; }
     inline bool ErrorHasBeenSet() const { return m_errorHasBeenSet; }
+    template<typename ErrorT = Aws::String>
+    void SetError(ErrorT&& value) { m_errorHasBeenSet = true; m_error = std::forward<ErrorT>(value); }
+    template<typename ErrorT = Aws::String>
+    BackendJobRespObj& WithError(ErrorT&& value) { SetError(std::forward<ErrorT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If the request fails, this error is returned.</p>
-     */
-    inline void SetError(const Aws::String& value) { m_errorHasBeenSet = true; m_error = value; }
-
-    /**
-     * <p>If the request fails, this error is returned.</p>
-     */
-    inline void SetError(Aws::String&& value) { m_errorHasBeenSet = true; m_error = std::move(value); }
-
-    /**
-     * <p>If the request fails, this error is returned.</p>
-     */
-    inline void SetError(const char* value) { m_errorHasBeenSet = true; m_error.assign(value); }
-
-    /**
-     * <p>If the request fails, this error is returned.</p>
-     */
-    inline BackendJobRespObj& WithError(const Aws::String& value) { SetError(value); return *this;}
-
-    /**
-     * <p>If the request fails, this error is returned.</p>
-     */
-    inline BackendJobRespObj& WithError(Aws::String&& value) { SetError(std::move(value)); return *this;}
-
-    /**
-     * <p>If the request fails, this error is returned.</p>
-     */
-    inline BackendJobRespObj& WithError(const char* value) { SetError(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID for the job.</p>
      */
-    inline const Aws::String& GetJobId() const{ return m_jobId; }
-
-    /**
-     * <p>The ID for the job.</p>
-     */
+    inline const Aws::String& GetJobId() const { return m_jobId; }
     inline bool JobIdHasBeenSet() const { return m_jobIdHasBeenSet; }
+    template<typename JobIdT = Aws::String>
+    void SetJobId(JobIdT&& value) { m_jobIdHasBeenSet = true; m_jobId = std::forward<JobIdT>(value); }
+    template<typename JobIdT = Aws::String>
+    BackendJobRespObj& WithJobId(JobIdT&& value) { SetJobId(std::forward<JobIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID for the job.</p>
-     */
-    inline void SetJobId(const Aws::String& value) { m_jobIdHasBeenSet = true; m_jobId = value; }
-
-    /**
-     * <p>The ID for the job.</p>
-     */
-    inline void SetJobId(Aws::String&& value) { m_jobIdHasBeenSet = true; m_jobId = std::move(value); }
-
-    /**
-     * <p>The ID for the job.</p>
-     */
-    inline void SetJobId(const char* value) { m_jobIdHasBeenSet = true; m_jobId.assign(value); }
-
-    /**
-     * <p>The ID for the job.</p>
-     */
-    inline BackendJobRespObj& WithJobId(const Aws::String& value) { SetJobId(value); return *this;}
-
-    /**
-     * <p>The ID for the job.</p>
-     */
-    inline BackendJobRespObj& WithJobId(Aws::String&& value) { SetJobId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID for the job.</p>
-     */
-    inline BackendJobRespObj& WithJobId(const char* value) { SetJobId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the operation.</p>
      */
-    inline const Aws::String& GetOperation() const{ return m_operation; }
-
-    /**
-     * <p>The name of the operation.</p>
-     */
+    inline const Aws::String& GetOperation() const { return m_operation; }
     inline bool OperationHasBeenSet() const { return m_operationHasBeenSet; }
+    template<typename OperationT = Aws::String>
+    void SetOperation(OperationT&& value) { m_operationHasBeenSet = true; m_operation = std::forward<OperationT>(value); }
+    template<typename OperationT = Aws::String>
+    BackendJobRespObj& WithOperation(OperationT&& value) { SetOperation(std::forward<OperationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the operation.</p>
-     */
-    inline void SetOperation(const Aws::String& value) { m_operationHasBeenSet = true; m_operation = value; }
-
-    /**
-     * <p>The name of the operation.</p>
-     */
-    inline void SetOperation(Aws::String&& value) { m_operationHasBeenSet = true; m_operation = std::move(value); }
-
-    /**
-     * <p>The name of the operation.</p>
-     */
-    inline void SetOperation(const char* value) { m_operationHasBeenSet = true; m_operation.assign(value); }
-
-    /**
-     * <p>The name of the operation.</p>
-     */
-    inline BackendJobRespObj& WithOperation(const Aws::String& value) { SetOperation(value); return *this;}
-
-    /**
-     * <p>The name of the operation.</p>
-     */
-    inline BackendJobRespObj& WithOperation(Aws::String&& value) { SetOperation(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the operation.</p>
-     */
-    inline BackendJobRespObj& WithOperation(const char* value) { SetOperation(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The current status of the request.</p>
      */
-    inline const Aws::String& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The current status of the request.</p>
-     */
+    inline const Aws::String& GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    template<typename StatusT = Aws::String>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = Aws::String>
+    BackendJobRespObj& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The current status of the request.</p>
-     */
-    inline void SetStatus(const Aws::String& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The current status of the request.</p>
-     */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The current status of the request.</p>
-     */
-    inline void SetStatus(const char* value) { m_statusHasBeenSet = true; m_status.assign(value); }
-
-    /**
-     * <p>The current status of the request.</p>
-     */
-    inline BackendJobRespObj& WithStatus(const Aws::String& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The current status of the request.</p>
-     */
-    inline BackendJobRespObj& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
-
-    /**
-     * <p>The current status of the request.</p>
-     */
-    inline BackendJobRespObj& WithStatus(const char* value) { SetStatus(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The time when the job was last updated.</p>
      */
-    inline const Aws::String& GetUpdateTime() const{ return m_updateTime; }
-
-    /**
-     * <p>The time when the job was last updated.</p>
-     */
+    inline const Aws::String& GetUpdateTime() const { return m_updateTime; }
     inline bool UpdateTimeHasBeenSet() const { return m_updateTimeHasBeenSet; }
-
-    /**
-     * <p>The time when the job was last updated.</p>
-     */
-    inline void SetUpdateTime(const Aws::String& value) { m_updateTimeHasBeenSet = true; m_updateTime = value; }
-
-    /**
-     * <p>The time when the job was last updated.</p>
-     */
-    inline void SetUpdateTime(Aws::String&& value) { m_updateTimeHasBeenSet = true; m_updateTime = std::move(value); }
-
-    /**
-     * <p>The time when the job was last updated.</p>
-     */
-    inline void SetUpdateTime(const char* value) { m_updateTimeHasBeenSet = true; m_updateTime.assign(value); }
-
-    /**
-     * <p>The time when the job was last updated.</p>
-     */
-    inline BackendJobRespObj& WithUpdateTime(const Aws::String& value) { SetUpdateTime(value); return *this;}
-
-    /**
-     * <p>The time when the job was last updated.</p>
-     */
-    inline BackendJobRespObj& WithUpdateTime(Aws::String&& value) { SetUpdateTime(std::move(value)); return *this;}
-
-    /**
-     * <p>The time when the job was last updated.</p>
-     */
-    inline BackendJobRespObj& WithUpdateTime(const char* value) { SetUpdateTime(value); return *this;}
-
+    template<typename UpdateTimeT = Aws::String>
+    void SetUpdateTime(UpdateTimeT&& value) { m_updateTimeHasBeenSet = true; m_updateTime = std::forward<UpdateTimeT>(value); }
+    template<typename UpdateTimeT = Aws::String>
+    BackendJobRespObj& WithUpdateTime(UpdateTimeT&& value) { SetUpdateTime(std::forward<UpdateTimeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_appId;

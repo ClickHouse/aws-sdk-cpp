@@ -26,7 +26,7 @@ namespace Model
   class UpdateDeviceStatusRequest : public CognitoIdentityProviderRequest
   {
   public:
-    AWS_COGNITOIDENTITYPROVIDER_API UpdateDeviceStatusRequest();
+    AWS_COGNITOIDENTITYPROVIDER_API UpdateDeviceStatusRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,126 +39,43 @@ namespace Model
     AWS_COGNITOIDENTITYPROVIDER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
-     * <p>A valid access token that Amazon Cognito issued to the user whose device
-     * status you want to update.</p>
+     * <p>A valid access token that Amazon Cognito issued to the currently signed-in
+     * user. Must include a scope claim for
+     * <code>aws.cognito.signin.user.admin</code>.</p>
      */
-    inline const Aws::String& GetAccessToken() const{ return m_accessToken; }
-
-    /**
-     * <p>A valid access token that Amazon Cognito issued to the user whose device
-     * status you want to update.</p>
-     */
+    inline const Aws::String& GetAccessToken() const { return m_accessToken; }
     inline bool AccessTokenHasBeenSet() const { return m_accessTokenHasBeenSet; }
+    template<typename AccessTokenT = Aws::String>
+    void SetAccessToken(AccessTokenT&& value) { m_accessTokenHasBeenSet = true; m_accessToken = std::forward<AccessTokenT>(value); }
+    template<typename AccessTokenT = Aws::String>
+    UpdateDeviceStatusRequest& WithAccessToken(AccessTokenT&& value) { SetAccessToken(std::forward<AccessTokenT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A valid access token that Amazon Cognito issued to the user whose device
-     * status you want to update.</p>
+     * <p>The device key of the device you want to update, for example
+     * <code>us-west-2_a1b2c3d4-5678-90ab-cdef-EXAMPLE11111</code>.</p>
      */
-    inline void SetAccessToken(const Aws::String& value) { m_accessTokenHasBeenSet = true; m_accessToken = value; }
-
-    /**
-     * <p>A valid access token that Amazon Cognito issued to the user whose device
-     * status you want to update.</p>
-     */
-    inline void SetAccessToken(Aws::String&& value) { m_accessTokenHasBeenSet = true; m_accessToken = std::move(value); }
-
-    /**
-     * <p>A valid access token that Amazon Cognito issued to the user whose device
-     * status you want to update.</p>
-     */
-    inline void SetAccessToken(const char* value) { m_accessTokenHasBeenSet = true; m_accessToken.assign(value); }
-
-    /**
-     * <p>A valid access token that Amazon Cognito issued to the user whose device
-     * status you want to update.</p>
-     */
-    inline UpdateDeviceStatusRequest& WithAccessToken(const Aws::String& value) { SetAccessToken(value); return *this;}
-
-    /**
-     * <p>A valid access token that Amazon Cognito issued to the user whose device
-     * status you want to update.</p>
-     */
-    inline UpdateDeviceStatusRequest& WithAccessToken(Aws::String&& value) { SetAccessToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A valid access token that Amazon Cognito issued to the user whose device
-     * status you want to update.</p>
-     */
-    inline UpdateDeviceStatusRequest& WithAccessToken(const char* value) { SetAccessToken(value); return *this;}
-
-
-    /**
-     * <p>The device key.</p>
-     */
-    inline const Aws::String& GetDeviceKey() const{ return m_deviceKey; }
-
-    /**
-     * <p>The device key.</p>
-     */
+    inline const Aws::String& GetDeviceKey() const { return m_deviceKey; }
     inline bool DeviceKeyHasBeenSet() const { return m_deviceKeyHasBeenSet; }
+    template<typename DeviceKeyT = Aws::String>
+    void SetDeviceKey(DeviceKeyT&& value) { m_deviceKeyHasBeenSet = true; m_deviceKey = std::forward<DeviceKeyT>(value); }
+    template<typename DeviceKeyT = Aws::String>
+    UpdateDeviceStatusRequest& WithDeviceKey(DeviceKeyT&& value) { SetDeviceKey(std::forward<DeviceKeyT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The device key.</p>
+     * <p>To enable device authentication with the specified device, set to
+     * <code>remembered</code>.To disable, set to <code>not_remembered</code>.</p>
      */
-    inline void SetDeviceKey(const Aws::String& value) { m_deviceKeyHasBeenSet = true; m_deviceKey = value; }
-
-    /**
-     * <p>The device key.</p>
-     */
-    inline void SetDeviceKey(Aws::String&& value) { m_deviceKeyHasBeenSet = true; m_deviceKey = std::move(value); }
-
-    /**
-     * <p>The device key.</p>
-     */
-    inline void SetDeviceKey(const char* value) { m_deviceKeyHasBeenSet = true; m_deviceKey.assign(value); }
-
-    /**
-     * <p>The device key.</p>
-     */
-    inline UpdateDeviceStatusRequest& WithDeviceKey(const Aws::String& value) { SetDeviceKey(value); return *this;}
-
-    /**
-     * <p>The device key.</p>
-     */
-    inline UpdateDeviceStatusRequest& WithDeviceKey(Aws::String&& value) { SetDeviceKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The device key.</p>
-     */
-    inline UpdateDeviceStatusRequest& WithDeviceKey(const char* value) { SetDeviceKey(value); return *this;}
-
-
-    /**
-     * <p>The status of whether a device is remembered.</p>
-     */
-    inline const DeviceRememberedStatusType& GetDeviceRememberedStatus() const{ return m_deviceRememberedStatus; }
-
-    /**
-     * <p>The status of whether a device is remembered.</p>
-     */
+    inline DeviceRememberedStatusType GetDeviceRememberedStatus() const { return m_deviceRememberedStatus; }
     inline bool DeviceRememberedStatusHasBeenSet() const { return m_deviceRememberedStatusHasBeenSet; }
-
-    /**
-     * <p>The status of whether a device is remembered.</p>
-     */
-    inline void SetDeviceRememberedStatus(const DeviceRememberedStatusType& value) { m_deviceRememberedStatusHasBeenSet = true; m_deviceRememberedStatus = value; }
-
-    /**
-     * <p>The status of whether a device is remembered.</p>
-     */
-    inline void SetDeviceRememberedStatus(DeviceRememberedStatusType&& value) { m_deviceRememberedStatusHasBeenSet = true; m_deviceRememberedStatus = std::move(value); }
-
-    /**
-     * <p>The status of whether a device is remembered.</p>
-     */
-    inline UpdateDeviceStatusRequest& WithDeviceRememberedStatus(const DeviceRememberedStatusType& value) { SetDeviceRememberedStatus(value); return *this;}
-
-    /**
-     * <p>The status of whether a device is remembered.</p>
-     */
-    inline UpdateDeviceStatusRequest& WithDeviceRememberedStatus(DeviceRememberedStatusType&& value) { SetDeviceRememberedStatus(std::move(value)); return *this;}
-
+    inline void SetDeviceRememberedStatus(DeviceRememberedStatusType value) { m_deviceRememberedStatusHasBeenSet = true; m_deviceRememberedStatus = value; }
+    inline UpdateDeviceStatusRequest& WithDeviceRememberedStatus(DeviceRememberedStatusType value) { SetDeviceRememberedStatus(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_accessToken;
@@ -167,7 +84,7 @@ namespace Model
     Aws::String m_deviceKey;
     bool m_deviceKeyHasBeenSet = false;
 
-    DeviceRememberedStatusType m_deviceRememberedStatus;
+    DeviceRememberedStatusType m_deviceRememberedStatus{DeviceRememberedStatusType::NOT_SET};
     bool m_deviceRememberedStatusHasBeenSet = false;
   };
 

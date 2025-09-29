@@ -20,45 +20,7 @@ namespace EC2
 namespace Model
 {
 
-ScheduledInstancesNetworkInterface::ScheduledInstancesNetworkInterface() : 
-    m_associatePublicIpAddress(false),
-    m_associatePublicIpAddressHasBeenSet(false),
-    m_deleteOnTermination(false),
-    m_deleteOnTerminationHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_deviceIndex(0),
-    m_deviceIndexHasBeenSet(false),
-    m_groupsHasBeenSet(false),
-    m_ipv6AddressCount(0),
-    m_ipv6AddressCountHasBeenSet(false),
-    m_ipv6AddressesHasBeenSet(false),
-    m_networkInterfaceIdHasBeenSet(false),
-    m_privateIpAddressHasBeenSet(false),
-    m_privateIpAddressConfigsHasBeenSet(false),
-    m_secondaryPrivateIpAddressCount(0),
-    m_secondaryPrivateIpAddressCountHasBeenSet(false),
-    m_subnetIdHasBeenSet(false)
-{
-}
-
-ScheduledInstancesNetworkInterface::ScheduledInstancesNetworkInterface(const XmlNode& xmlNode) : 
-    m_associatePublicIpAddress(false),
-    m_associatePublicIpAddressHasBeenSet(false),
-    m_deleteOnTermination(false),
-    m_deleteOnTerminationHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_deviceIndex(0),
-    m_deviceIndexHasBeenSet(false),
-    m_groupsHasBeenSet(false),
-    m_ipv6AddressCount(0),
-    m_ipv6AddressCountHasBeenSet(false),
-    m_ipv6AddressesHasBeenSet(false),
-    m_networkInterfaceIdHasBeenSet(false),
-    m_privateIpAddressHasBeenSet(false),
-    m_privateIpAddressConfigsHasBeenSet(false),
-    m_secondaryPrivateIpAddressCount(0),
-    m_secondaryPrivateIpAddressCountHasBeenSet(false),
-    m_subnetIdHasBeenSet(false)
+ScheduledInstancesNetworkInterface::ScheduledInstancesNetworkInterface(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -97,6 +59,7 @@ ScheduledInstancesNetworkInterface& ScheduledInstancesNetworkInterface::operator
     if(!groupsNode.IsNull())
     {
       XmlNode groupsMember = groupsNode.FirstChild("SecurityGroupId");
+      m_groupsHasBeenSet = !groupsMember.IsNull();
       while(!groupsMember.IsNull())
       {
         m_groups.push_back(groupsMember.GetText());
@@ -115,6 +78,7 @@ ScheduledInstancesNetworkInterface& ScheduledInstancesNetworkInterface::operator
     if(!ipv6AddressesNode.IsNull())
     {
       XmlNode ipv6AddressesMember = ipv6AddressesNode.FirstChild("Ipv6Address");
+      m_ipv6AddressesHasBeenSet = !ipv6AddressesMember.IsNull();
       while(!ipv6AddressesMember.IsNull())
       {
         m_ipv6Addresses.push_back(ipv6AddressesMember);
@@ -139,6 +103,7 @@ ScheduledInstancesNetworkInterface& ScheduledInstancesNetworkInterface::operator
     if(!privateIpAddressConfigsNode.IsNull())
     {
       XmlNode privateIpAddressConfigsMember = privateIpAddressConfigsNode.FirstChild("PrivateIpAddressConfigSet");
+      m_privateIpAddressConfigsHasBeenSet = !privateIpAddressConfigsMember.IsNull();
       while(!privateIpAddressConfigsMember.IsNull())
       {
         m_privateIpAddressConfigs.push_back(privateIpAddressConfigsMember);
@@ -280,7 +245,7 @@ void ScheduledInstancesNetworkInterface::OutputToStream(Aws::OStream& oStream, c
       for(auto& item : m_ipv6Addresses)
       {
         Aws::StringStream ipv6AddressesSs;
-        ipv6AddressesSs << location <<  ".Ipv6Address." << ipv6AddressesIdx++;
+        ipv6AddressesSs << location << ".Ipv6Address." << ipv6AddressesIdx++;
         item.OutputToStream(oStream, ipv6AddressesSs.str().c_str());
       }
   }
@@ -298,7 +263,7 @@ void ScheduledInstancesNetworkInterface::OutputToStream(Aws::OStream& oStream, c
       for(auto& item : m_privateIpAddressConfigs)
       {
         Aws::StringStream privateIpAddressConfigsSs;
-        privateIpAddressConfigsSs << location <<  ".PrivateIpAddressConfig." << privateIpAddressConfigsIdx++;
+        privateIpAddressConfigsSs << location << ".PrivateIpAddressConfig." << privateIpAddressConfigsIdx++;
         item.OutputToStream(oStream, privateIpAddressConfigsSs.str().c_str());
       }
   }

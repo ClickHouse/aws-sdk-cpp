@@ -18,17 +18,7 @@ namespace Panorama
 namespace Model
 {
 
-NetworkPayload::NetworkPayload() : 
-    m_ethernet0HasBeenSet(false),
-    m_ethernet1HasBeenSet(false),
-    m_ntpHasBeenSet(false)
-{
-}
-
-NetworkPayload::NetworkPayload(JsonView jsonValue) : 
-    m_ethernet0HasBeenSet(false),
-    m_ethernet1HasBeenSet(false),
-    m_ntpHasBeenSet(false)
+NetworkPayload::NetworkPayload(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ NetworkPayload& NetworkPayload::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Ethernet0"))
   {
     m_ethernet0 = jsonValue.GetObject("Ethernet0");
-
     m_ethernet0HasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Ethernet1"))
   {
     m_ethernet1 = jsonValue.GetObject("Ethernet1");
-
     m_ethernet1HasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Ntp"))
   {
     m_ntp = jsonValue.GetObject("Ntp");
-
     m_ntpHasBeenSet = true;
   }
-
   return *this;
 }
 

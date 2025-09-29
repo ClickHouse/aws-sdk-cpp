@@ -31,7 +31,7 @@ namespace Model
   class LakeFormationQuery
   {
   public:
-    AWS_REDSHIFT_API LakeFormationQuery();
+    AWS_REDSHIFT_API LakeFormationQuery() = default;
     AWS_REDSHIFT_API LakeFormationQuery(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_REDSHIFT_API LakeFormationQuery& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -39,39 +39,18 @@ namespace Model
     AWS_REDSHIFT_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>Determines whether the query scope is enabled or disabled.</p>
      */
-    inline const ServiceAuthorization& GetAuthorization() const{ return m_authorization; }
-
-    /**
-     * <p>Determines whether the query scope is enabled or disabled.</p>
-     */
+    inline ServiceAuthorization GetAuthorization() const { return m_authorization; }
     inline bool AuthorizationHasBeenSet() const { return m_authorizationHasBeenSet; }
-
-    /**
-     * <p>Determines whether the query scope is enabled or disabled.</p>
-     */
-    inline void SetAuthorization(const ServiceAuthorization& value) { m_authorizationHasBeenSet = true; m_authorization = value; }
-
-    /**
-     * <p>Determines whether the query scope is enabled or disabled.</p>
-     */
-    inline void SetAuthorization(ServiceAuthorization&& value) { m_authorizationHasBeenSet = true; m_authorization = std::move(value); }
-
-    /**
-     * <p>Determines whether the query scope is enabled or disabled.</p>
-     */
-    inline LakeFormationQuery& WithAuthorization(const ServiceAuthorization& value) { SetAuthorization(value); return *this;}
-
-    /**
-     * <p>Determines whether the query scope is enabled or disabled.</p>
-     */
-    inline LakeFormationQuery& WithAuthorization(ServiceAuthorization&& value) { SetAuthorization(std::move(value)); return *this;}
-
+    inline void SetAuthorization(ServiceAuthorization value) { m_authorizationHasBeenSet = true; m_authorization = value; }
+    inline LakeFormationQuery& WithAuthorization(ServiceAuthorization value) { SetAuthorization(value); return *this;}
+    ///@}
   private:
 
-    ServiceAuthorization m_authorization;
+    ServiceAuthorization m_authorization{ServiceAuthorization::NOT_SET};
     bool m_authorizationHasBeenSet = false;
   };
 

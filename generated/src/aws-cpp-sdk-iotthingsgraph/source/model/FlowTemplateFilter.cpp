@@ -18,17 +18,7 @@ namespace IoTThingsGraph
 namespace Model
 {
 
-FlowTemplateFilter::FlowTemplateFilter() : 
-    m_name(FlowTemplateFilterName::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_valueHasBeenSet(false)
-{
-}
-
-FlowTemplateFilter::FlowTemplateFilter(JsonView jsonValue) : 
-    m_name(FlowTemplateFilterName::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_valueHasBeenSet(false)
+FlowTemplateFilter::FlowTemplateFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ FlowTemplateFilter& FlowTemplateFilter::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("name"))
   {
     m_name = FlowTemplateFilterNameMapper::GetFlowTemplateFilterNameForName(jsonValue.GetString("name"));
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("value"))
   {
     Aws::Utils::Array<JsonView> valueJsonList = jsonValue.GetArray("value");
@@ -51,7 +39,6 @@ FlowTemplateFilter& FlowTemplateFilter::operator =(JsonView jsonValue)
     }
     m_valueHasBeenSet = true;
   }
-
   return *this;
 }
 

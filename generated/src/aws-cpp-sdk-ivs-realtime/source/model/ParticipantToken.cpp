@@ -18,33 +18,28 @@ namespace ivsrealtime
 namespace Model
 {
 
-ParticipantToken::ParticipantToken() : 
-    m_attributesHasBeenSet(false),
-    m_capabilitiesHasBeenSet(false),
-    m_duration(0),
-    m_durationHasBeenSet(false),
-    m_expirationTimeHasBeenSet(false),
-    m_participantIdHasBeenSet(false),
-    m_tokenHasBeenSet(false),
-    m_userIdHasBeenSet(false)
-{
-}
-
-ParticipantToken::ParticipantToken(JsonView jsonValue) : 
-    m_attributesHasBeenSet(false),
-    m_capabilitiesHasBeenSet(false),
-    m_duration(0),
-    m_durationHasBeenSet(false),
-    m_expirationTimeHasBeenSet(false),
-    m_participantIdHasBeenSet(false),
-    m_tokenHasBeenSet(false),
-    m_userIdHasBeenSet(false)
+ParticipantToken::ParticipantToken(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 ParticipantToken& ParticipantToken::operator =(JsonView jsonValue)
 {
+  if(jsonValue.ValueExists("participantId"))
+  {
+    m_participantId = jsonValue.GetString("participantId");
+    m_participantIdHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("token"))
+  {
+    m_token = jsonValue.GetString("token");
+    m_tokenHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("userId"))
+  {
+    m_userId = jsonValue.GetString("userId");
+    m_userIdHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("attributes"))
   {
     Aws::Map<Aws::String, JsonView> attributesJsonMap = jsonValue.GetObject("attributes").GetAllObjects();
@@ -54,7 +49,11 @@ ParticipantToken& ParticipantToken::operator =(JsonView jsonValue)
     }
     m_attributesHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("duration"))
+  {
+    m_duration = jsonValue.GetInteger("duration");
+    m_durationHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("capabilities"))
   {
     Aws::Utils::Array<JsonView> capabilitiesJsonList = jsonValue.GetArray("capabilities");
@@ -64,81 +63,17 @@ ParticipantToken& ParticipantToken::operator =(JsonView jsonValue)
     }
     m_capabilitiesHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("duration"))
-  {
-    m_duration = jsonValue.GetInteger("duration");
-
-    m_durationHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("expirationTime"))
   {
     m_expirationTime = jsonValue.GetString("expirationTime");
-
     m_expirationTimeHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("participantId"))
-  {
-    m_participantId = jsonValue.GetString("participantId");
-
-    m_participantIdHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("token"))
-  {
-    m_token = jsonValue.GetString("token");
-
-    m_tokenHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("userId"))
-  {
-    m_userId = jsonValue.GetString("userId");
-
-    m_userIdHasBeenSet = true;
-  }
-
   return *this;
 }
 
 JsonValue ParticipantToken::Jsonize() const
 {
   JsonValue payload;
-
-  if(m_attributesHasBeenSet)
-  {
-   JsonValue attributesJsonMap;
-   for(auto& attributesItem : m_attributes)
-   {
-     attributesJsonMap.WithString(attributesItem.first, attributesItem.second);
-   }
-   payload.WithObject("attributes", std::move(attributesJsonMap));
-
-  }
-
-  if(m_capabilitiesHasBeenSet)
-  {
-   Aws::Utils::Array<JsonValue> capabilitiesJsonList(m_capabilities.size());
-   for(unsigned capabilitiesIndex = 0; capabilitiesIndex < capabilitiesJsonList.GetLength(); ++capabilitiesIndex)
-   {
-     capabilitiesJsonList[capabilitiesIndex].AsString(ParticipantTokenCapabilityMapper::GetNameForParticipantTokenCapability(m_capabilities[capabilitiesIndex]));
-   }
-   payload.WithArray("capabilities", std::move(capabilitiesJsonList));
-
-  }
-
-  if(m_durationHasBeenSet)
-  {
-   payload.WithInteger("duration", m_duration);
-
-  }
-
-  if(m_expirationTimeHasBeenSet)
-  {
-   payload.WithString("expirationTime", m_expirationTime.ToGmtString(Aws::Utils::DateFormat::ISO_8601));
-  }
 
   if(m_participantIdHasBeenSet)
   {
@@ -156,6 +91,39 @@ JsonValue ParticipantToken::Jsonize() const
   {
    payload.WithString("userId", m_userId);
 
+  }
+
+  if(m_attributesHasBeenSet)
+  {
+   JsonValue attributesJsonMap;
+   for(auto& attributesItem : m_attributes)
+   {
+     attributesJsonMap.WithString(attributesItem.first, attributesItem.second);
+   }
+   payload.WithObject("attributes", std::move(attributesJsonMap));
+
+  }
+
+  if(m_durationHasBeenSet)
+  {
+   payload.WithInteger("duration", m_duration);
+
+  }
+
+  if(m_capabilitiesHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> capabilitiesJsonList(m_capabilities.size());
+   for(unsigned capabilitiesIndex = 0; capabilitiesIndex < capabilitiesJsonList.GetLength(); ++capabilitiesIndex)
+   {
+     capabilitiesJsonList[capabilitiesIndex].AsString(ParticipantTokenCapabilityMapper::GetNameForParticipantTokenCapability(m_capabilities[capabilitiesIndex]));
+   }
+   payload.WithArray("capabilities", std::move(capabilitiesJsonList));
+
+  }
+
+  if(m_expirationTimeHasBeenSet)
+  {
+   payload.WithString("expirationTime", m_expirationTime.ToGmtString(Aws::Utils::DateFormat::ISO_8601));
   }
 
   return payload;

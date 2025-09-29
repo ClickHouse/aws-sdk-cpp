@@ -18,17 +18,7 @@ namespace KinesisAnalyticsV2
 namespace Model
 {
 
-CloudWatchLoggingOptionDescription::CloudWatchLoggingOptionDescription() : 
-    m_cloudWatchLoggingOptionIdHasBeenSet(false),
-    m_logStreamARNHasBeenSet(false),
-    m_roleARNHasBeenSet(false)
-{
-}
-
-CloudWatchLoggingOptionDescription::CloudWatchLoggingOptionDescription(JsonView jsonValue) : 
-    m_cloudWatchLoggingOptionIdHasBeenSet(false),
-    m_logStreamARNHasBeenSet(false),
-    m_roleARNHasBeenSet(false)
+CloudWatchLoggingOptionDescription::CloudWatchLoggingOptionDescription(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ CloudWatchLoggingOptionDescription& CloudWatchLoggingOptionDescription::operator
   if(jsonValue.ValueExists("CloudWatchLoggingOptionId"))
   {
     m_cloudWatchLoggingOptionId = jsonValue.GetString("CloudWatchLoggingOptionId");
-
     m_cloudWatchLoggingOptionIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LogStreamARN"))
   {
     m_logStreamARN = jsonValue.GetString("LogStreamARN");
-
     m_logStreamARNHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RoleARN"))
   {
     m_roleARN = jsonValue.GetString("RoleARN");
-
     m_roleARNHasBeenSet = true;
   }
-
   return *this;
 }
 

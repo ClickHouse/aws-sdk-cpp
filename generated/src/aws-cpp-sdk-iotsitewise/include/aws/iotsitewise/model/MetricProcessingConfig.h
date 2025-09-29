@@ -33,45 +33,24 @@ namespace Model
   class MetricProcessingConfig
   {
   public:
-    AWS_IOTSITEWISE_API MetricProcessingConfig();
+    AWS_IOTSITEWISE_API MetricProcessingConfig() = default;
     AWS_IOTSITEWISE_API MetricProcessingConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTSITEWISE_API MetricProcessingConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTSITEWISE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The compute location for the given metric property. </p>
      */
-    inline const ComputeLocation& GetComputeLocation() const{ return m_computeLocation; }
-
-    /**
-     * <p>The compute location for the given metric property. </p>
-     */
+    inline ComputeLocation GetComputeLocation() const { return m_computeLocation; }
     inline bool ComputeLocationHasBeenSet() const { return m_computeLocationHasBeenSet; }
-
-    /**
-     * <p>The compute location for the given metric property. </p>
-     */
-    inline void SetComputeLocation(const ComputeLocation& value) { m_computeLocationHasBeenSet = true; m_computeLocation = value; }
-
-    /**
-     * <p>The compute location for the given metric property. </p>
-     */
-    inline void SetComputeLocation(ComputeLocation&& value) { m_computeLocationHasBeenSet = true; m_computeLocation = std::move(value); }
-
-    /**
-     * <p>The compute location for the given metric property. </p>
-     */
-    inline MetricProcessingConfig& WithComputeLocation(const ComputeLocation& value) { SetComputeLocation(value); return *this;}
-
-    /**
-     * <p>The compute location for the given metric property. </p>
-     */
-    inline MetricProcessingConfig& WithComputeLocation(ComputeLocation&& value) { SetComputeLocation(std::move(value)); return *this;}
-
+    inline void SetComputeLocation(ComputeLocation value) { m_computeLocationHasBeenSet = true; m_computeLocation = value; }
+    inline MetricProcessingConfig& WithComputeLocation(ComputeLocation value) { SetComputeLocation(value); return *this;}
+    ///@}
   private:
 
-    ComputeLocation m_computeLocation;
+    ComputeLocation m_computeLocation{ComputeLocation::NOT_SET};
     bool m_computeLocationHasBeenSet = false;
   };
 

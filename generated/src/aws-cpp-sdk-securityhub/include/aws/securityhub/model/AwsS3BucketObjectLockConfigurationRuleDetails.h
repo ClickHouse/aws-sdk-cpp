@@ -33,48 +33,24 @@ namespace Model
   class AwsS3BucketObjectLockConfigurationRuleDetails
   {
   public:
-    AWS_SECURITYHUB_API AwsS3BucketObjectLockConfigurationRuleDetails();
+    AWS_SECURITYHUB_API AwsS3BucketObjectLockConfigurationRuleDetails() = default;
     AWS_SECURITYHUB_API AwsS3BucketObjectLockConfigurationRuleDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsS3BucketObjectLockConfigurationRuleDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The default Object Lock retention mode and period that you want to apply to
      * new objects placed in the specified bucket. </p>
      */
-    inline const AwsS3BucketObjectLockConfigurationRuleDefaultRetentionDetails& GetDefaultRetention() const{ return m_defaultRetention; }
-
-    /**
-     * <p> The default Object Lock retention mode and period that you want to apply to
-     * new objects placed in the specified bucket. </p>
-     */
+    inline const AwsS3BucketObjectLockConfigurationRuleDefaultRetentionDetails& GetDefaultRetention() const { return m_defaultRetention; }
     inline bool DefaultRetentionHasBeenSet() const { return m_defaultRetentionHasBeenSet; }
-
-    /**
-     * <p> The default Object Lock retention mode and period that you want to apply to
-     * new objects placed in the specified bucket. </p>
-     */
-    inline void SetDefaultRetention(const AwsS3BucketObjectLockConfigurationRuleDefaultRetentionDetails& value) { m_defaultRetentionHasBeenSet = true; m_defaultRetention = value; }
-
-    /**
-     * <p> The default Object Lock retention mode and period that you want to apply to
-     * new objects placed in the specified bucket. </p>
-     */
-    inline void SetDefaultRetention(AwsS3BucketObjectLockConfigurationRuleDefaultRetentionDetails&& value) { m_defaultRetentionHasBeenSet = true; m_defaultRetention = std::move(value); }
-
-    /**
-     * <p> The default Object Lock retention mode and period that you want to apply to
-     * new objects placed in the specified bucket. </p>
-     */
-    inline AwsS3BucketObjectLockConfigurationRuleDetails& WithDefaultRetention(const AwsS3BucketObjectLockConfigurationRuleDefaultRetentionDetails& value) { SetDefaultRetention(value); return *this;}
-
-    /**
-     * <p> The default Object Lock retention mode and period that you want to apply to
-     * new objects placed in the specified bucket. </p>
-     */
-    inline AwsS3BucketObjectLockConfigurationRuleDetails& WithDefaultRetention(AwsS3BucketObjectLockConfigurationRuleDefaultRetentionDetails&& value) { SetDefaultRetention(std::move(value)); return *this;}
-
+    template<typename DefaultRetentionT = AwsS3BucketObjectLockConfigurationRuleDefaultRetentionDetails>
+    void SetDefaultRetention(DefaultRetentionT&& value) { m_defaultRetentionHasBeenSet = true; m_defaultRetention = std::forward<DefaultRetentionT>(value); }
+    template<typename DefaultRetentionT = AwsS3BucketObjectLockConfigurationRuleDefaultRetentionDetails>
+    AwsS3BucketObjectLockConfigurationRuleDetails& WithDefaultRetention(DefaultRetentionT&& value) { SetDefaultRetention(std::forward<DefaultRetentionT>(value)); return *this;}
+    ///@}
   private:
 
     AwsS3BucketObjectLockConfigurationRuleDefaultRetentionDetails m_defaultRetention;

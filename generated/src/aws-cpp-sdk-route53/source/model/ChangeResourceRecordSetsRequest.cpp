@@ -6,6 +6,7 @@
 #include <aws/route53/model/ChangeResourceRecordSetsRequest.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/core/utils/UnreferencedParam.h>
 
 #include <utility>
 
@@ -13,11 +14,6 @@ using namespace Aws::Route53::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 
-ChangeResourceRecordSetsRequest::ChangeResourceRecordSetsRequest() : 
-    m_hostedZoneIdHasBeenSet(false),
-    m_changeBatchHasBeenSet(false)
-{
-}
 
 Aws::String ChangeResourceRecordSetsRequest::SerializePayload() const
 {

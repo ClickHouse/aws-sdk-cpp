@@ -16,6 +16,8 @@
 #include <aws/core/utils/crypto/Hash.h>
 #include <aws/core/auth/AWSAuthSignerProvider.h>
 #include <aws/core/endpoint/AWSEndpoint.h>
+#include <smithy/client/features/UserAgentInterceptor.h>
+#include <smithy/interceptor/Interceptor.h>
 #include <memory>
 #include <atomic>
 
@@ -74,7 +76,7 @@ namespace Aws
          * Abstract AWS Client. Contains most of the functionality necessary to build an http request, get it signed, and send it across the wire.
          */
         class AWS_CORE_API AWSClient
-        {
+        { 
         public:
             /**
              * configuration will be used for http client settings, retry strategy, throttles, and signing information.
@@ -168,6 +170,8 @@ namespace Aws
             Aws::String GeneratePresignedUrl(const Aws::AmazonWebServiceRequest& request, const Aws::Http::URI& uri, Aws::Http::HttpMethod method, const char* region,
                                              const Aws::Http::QueryStringParameterCollection& extraParams = Aws::Http::QueryStringParameterCollection(), long long expirationInSeconds = 0,
                                              const std::shared_ptr<Aws::Http::ServiceSpecificParameters> serviceSpecificParameter = {}) const;
+
+            const std::shared_ptr<Aws::Http::HttpClient>& GetHttpClient() const { return m_httpClient; }
 
             /**
              * Stop all requests immediately.
@@ -282,6 +286,14 @@ namespace Aws
                                           const std::shared_ptr<Aws::Http::HttpRequest>& httpRequest) const;
 
             /**
+             * Adds content-length to the request if the request has a body by attempting to seek the end of
+             * the body.
+             */
+            virtual void AddContentLengthToRequest(const std::shared_ptr<Aws::Http::HttpRequest>& httpRequest,
+                                                   const std::shared_ptr<Aws::IOStream>& body,
+                                                   bool isChunked) const;
+
+            /**
              *  Gets the underlying ErrorMarshaller for subclasses to use.
              */
             const std::shared_ptr<AWSErrorMarshaller>& GetErrorMarshaller() const
@@ -299,7 +311,6 @@ namespace Aws
             std::shared_ptr<Auth::AWSCredentialsProvider> GetCredentialsProvider() const {
                  return m_signerProvider->GetCredentialsProvider();
             }
-        protected:
 
             /**
               * Creates an HttpRequest instance with the given URI and sets the proper headers from the
@@ -336,35 +347,32 @@ namespace Aws
              */
             bool AdjustClockSkew(HttpResponseOutcome& outcome, const char* signerName) const;
             void AddHeadersToRequest(const std::shared_ptr<Aws::Http::HttpRequest>& httpRequest, const Http::HeaderValueCollection& headerValues) const;
-            void AddChecksumToRequest(const std::shared_ptr<Aws::Http::HttpRequest>& HttpRequest, const Aws::AmazonWebServiceRequest& request) const;
             void AddContentBodyToRequest(const std::shared_ptr<Aws::Http::HttpRequest>& httpRequest, const std::shared_ptr<Aws::IOStream>& body,
                                          bool needsContentMd5 = false, bool isChunked = false) const;
-            void AddCommonHeaders(Aws::Http::HttpRequest& httpRequest) const;
-            std::shared_ptr<Aws::IOStream> GetBodyStream(const Aws::AmazonWebServiceRequest& request) const;
+            void AppendHeaderValueToRequest(const std::shared_ptr<Http::HttpRequest> &request, String header, String value) const;
 
             std::shared_ptr<Aws::Http::HttpClient> m_httpClient;
             std::shared_ptr<AWSErrorMarshaller> m_errorMarshaller;
             std::shared_ptr<RetryStrategy> m_retryStrategy;
             std::shared_ptr<Aws::Utils::RateLimits::RateLimiterInterface> m_writeRateLimiter;
             std::shared_ptr<Aws::Utils::RateLimits::RateLimiterInterface> m_readRateLimiter;
-            Aws::String m_userAgent;
             std::shared_ptr<Aws::Utils::Crypto::Hash> m_hash;
             long m_requestTimeoutMs;
             bool m_enableClockSkewAdjustment;
             Aws::String m_serviceName = "AWSBaseClient";
             Aws::Client::RequestCompressionConfig m_requestCompressionConfig;
-            void AppendHeaderValueToRequest(
-                const std::shared_ptr<Http::HttpRequest> &request, String header,
-                String value) const;
+            std::shared_ptr<smithy::client::UserAgentInterceptor> m_userAgentInterceptor;
+            Aws::Vector<std::shared_ptr<smithy::interceptor::Interceptor>> m_interceptors;
         };
 
         AWS_CORE_API Aws::String GetAuthorizationHeader(const Aws::Http::HttpRequest& httpRequest);
     } // namespace Client
 } // namespace Aws
 
-#if !defined(AWS_JSON_CLIENT_H) && !defined(AWS_XML_CLIENT_H)
+#if !defined(AWS_JSON_CLIENT_H) && !defined(AWS_XML_CLIENT_H) && !defined(AWS_CBOR_CLIENT_H)
 /* Legacy backward compatibility macros to not break the build for ones including just AWSClient.h */
 #include <aws/core/client/AWSJsonClient.h>
+#include <aws/core/client/AWSRpcV2CborClient.h>
 #include <aws/core/client/AWSXmlClient.h>
-#endif // !defined(AWS_JSON_CLIENT_H) && !defined(AWS_XML_CLIENT_H)
+#endif // !defined(AWS_JSON_CLIENT_H) && !defined(AWS_XML_CLIENT_H) && !defined(AWS_CBOR_CLIENT_H)
 #endif // !defined(AWS_CLIENT_H)

@@ -35,7 +35,7 @@ namespace Model
   class DeregisterInstanceTagAttributeRequest
   {
   public:
-    AWS_EC2_API DeregisterInstanceTagAttributeRequest();
+    AWS_EC2_API DeregisterInstanceTagAttributeRequest() = default;
     AWS_EC2_API DeregisterInstanceTagAttributeRequest(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API DeregisterInstanceTagAttributeRequest& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -43,79 +43,33 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>Indicates whether to deregister all tag keys in the current Region. Specify
      * <code>false</code> to deregister all tag keys.</p>
      */
-    inline bool GetIncludeAllTagsOfInstance() const{ return m_includeAllTagsOfInstance; }
-
-    /**
-     * <p>Indicates whether to deregister all tag keys in the current Region. Specify
-     * <code>false</code> to deregister all tag keys.</p>
-     */
+    inline bool GetIncludeAllTagsOfInstance() const { return m_includeAllTagsOfInstance; }
     inline bool IncludeAllTagsOfInstanceHasBeenSet() const { return m_includeAllTagsOfInstanceHasBeenSet; }
-
-    /**
-     * <p>Indicates whether to deregister all tag keys in the current Region. Specify
-     * <code>false</code> to deregister all tag keys.</p>
-     */
     inline void SetIncludeAllTagsOfInstance(bool value) { m_includeAllTagsOfInstanceHasBeenSet = true; m_includeAllTagsOfInstance = value; }
-
-    /**
-     * <p>Indicates whether to deregister all tag keys in the current Region. Specify
-     * <code>false</code> to deregister all tag keys.</p>
-     */
     inline DeregisterInstanceTagAttributeRequest& WithIncludeAllTagsOfInstance(bool value) { SetIncludeAllTagsOfInstance(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Information about the tag keys to deregister.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetInstanceTagKeys() const{ return m_instanceTagKeys; }
-
-    /**
-     * <p>Information about the tag keys to deregister.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetInstanceTagKeys() const { return m_instanceTagKeys; }
     inline bool InstanceTagKeysHasBeenSet() const { return m_instanceTagKeysHasBeenSet; }
-
-    /**
-     * <p>Information about the tag keys to deregister.</p>
-     */
-    inline void SetInstanceTagKeys(const Aws::Vector<Aws::String>& value) { m_instanceTagKeysHasBeenSet = true; m_instanceTagKeys = value; }
-
-    /**
-     * <p>Information about the tag keys to deregister.</p>
-     */
-    inline void SetInstanceTagKeys(Aws::Vector<Aws::String>&& value) { m_instanceTagKeysHasBeenSet = true; m_instanceTagKeys = std::move(value); }
-
-    /**
-     * <p>Information about the tag keys to deregister.</p>
-     */
-    inline DeregisterInstanceTagAttributeRequest& WithInstanceTagKeys(const Aws::Vector<Aws::String>& value) { SetInstanceTagKeys(value); return *this;}
-
-    /**
-     * <p>Information about the tag keys to deregister.</p>
-     */
-    inline DeregisterInstanceTagAttributeRequest& WithInstanceTagKeys(Aws::Vector<Aws::String>&& value) { SetInstanceTagKeys(std::move(value)); return *this;}
-
-    /**
-     * <p>Information about the tag keys to deregister.</p>
-     */
-    inline DeregisterInstanceTagAttributeRequest& AddInstanceTagKeys(const Aws::String& value) { m_instanceTagKeysHasBeenSet = true; m_instanceTagKeys.push_back(value); return *this; }
-
-    /**
-     * <p>Information about the tag keys to deregister.</p>
-     */
-    inline DeregisterInstanceTagAttributeRequest& AddInstanceTagKeys(Aws::String&& value) { m_instanceTagKeysHasBeenSet = true; m_instanceTagKeys.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>Information about the tag keys to deregister.</p>
-     */
-    inline DeregisterInstanceTagAttributeRequest& AddInstanceTagKeys(const char* value) { m_instanceTagKeysHasBeenSet = true; m_instanceTagKeys.push_back(value); return *this; }
-
+    template<typename InstanceTagKeysT = Aws::Vector<Aws::String>>
+    void SetInstanceTagKeys(InstanceTagKeysT&& value) { m_instanceTagKeysHasBeenSet = true; m_instanceTagKeys = std::forward<InstanceTagKeysT>(value); }
+    template<typename InstanceTagKeysT = Aws::Vector<Aws::String>>
+    DeregisterInstanceTagAttributeRequest& WithInstanceTagKeys(InstanceTagKeysT&& value) { SetInstanceTagKeys(std::forward<InstanceTagKeysT>(value)); return *this;}
+    template<typename InstanceTagKeysT = Aws::String>
+    DeregisterInstanceTagAttributeRequest& AddInstanceTagKeys(InstanceTagKeysT&& value) { m_instanceTagKeysHasBeenSet = true; m_instanceTagKeys.emplace_back(std::forward<InstanceTagKeysT>(value)); return *this; }
+    ///@}
   private:
 
-    bool m_includeAllTagsOfInstance;
+    bool m_includeAllTagsOfInstance{false};
     bool m_includeAllTagsOfInstanceHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_instanceTagKeys;

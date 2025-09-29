@@ -21,7 +21,7 @@ namespace Model
   class GetLendingAnalysisSummaryRequest : public TextractRequest
   {
   public:
-    AWS_TEXTRACT_API GetLendingAnalysisSummaryRequest();
+    AWS_TEXTRACT_API GetLendingAnalysisSummaryRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,62 +34,19 @@ namespace Model
     AWS_TEXTRACT_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p> A unique identifier for the lending or text-detection job. The
      * <code>JobId</code> is returned from StartLendingAnalysis. A <code>JobId</code>
      * value is only valid for 7 days.</p>
      */
-    inline const Aws::String& GetJobId() const{ return m_jobId; }
-
-    /**
-     * <p> A unique identifier for the lending or text-detection job. The
-     * <code>JobId</code> is returned from StartLendingAnalysis. A <code>JobId</code>
-     * value is only valid for 7 days.</p>
-     */
+    inline const Aws::String& GetJobId() const { return m_jobId; }
     inline bool JobIdHasBeenSet() const { return m_jobIdHasBeenSet; }
-
-    /**
-     * <p> A unique identifier for the lending or text-detection job. The
-     * <code>JobId</code> is returned from StartLendingAnalysis. A <code>JobId</code>
-     * value is only valid for 7 days.</p>
-     */
-    inline void SetJobId(const Aws::String& value) { m_jobIdHasBeenSet = true; m_jobId = value; }
-
-    /**
-     * <p> A unique identifier for the lending or text-detection job. The
-     * <code>JobId</code> is returned from StartLendingAnalysis. A <code>JobId</code>
-     * value is only valid for 7 days.</p>
-     */
-    inline void SetJobId(Aws::String&& value) { m_jobIdHasBeenSet = true; m_jobId = std::move(value); }
-
-    /**
-     * <p> A unique identifier for the lending or text-detection job. The
-     * <code>JobId</code> is returned from StartLendingAnalysis. A <code>JobId</code>
-     * value is only valid for 7 days.</p>
-     */
-    inline void SetJobId(const char* value) { m_jobIdHasBeenSet = true; m_jobId.assign(value); }
-
-    /**
-     * <p> A unique identifier for the lending or text-detection job. The
-     * <code>JobId</code> is returned from StartLendingAnalysis. A <code>JobId</code>
-     * value is only valid for 7 days.</p>
-     */
-    inline GetLendingAnalysisSummaryRequest& WithJobId(const Aws::String& value) { SetJobId(value); return *this;}
-
-    /**
-     * <p> A unique identifier for the lending or text-detection job. The
-     * <code>JobId</code> is returned from StartLendingAnalysis. A <code>JobId</code>
-     * value is only valid for 7 days.</p>
-     */
-    inline GetLendingAnalysisSummaryRequest& WithJobId(Aws::String&& value) { SetJobId(std::move(value)); return *this;}
-
-    /**
-     * <p> A unique identifier for the lending or text-detection job. The
-     * <code>JobId</code> is returned from StartLendingAnalysis. A <code>JobId</code>
-     * value is only valid for 7 days.</p>
-     */
-    inline GetLendingAnalysisSummaryRequest& WithJobId(const char* value) { SetJobId(value); return *this;}
-
+    template<typename JobIdT = Aws::String>
+    void SetJobId(JobIdT&& value) { m_jobIdHasBeenSet = true; m_jobId = std::forward<JobIdT>(value); }
+    template<typename JobIdT = Aws::String>
+    GetLendingAnalysisSummaryRequest& WithJobId(JobIdT&& value) { SetJobId(std::forward<JobIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_jobId;

@@ -25,7 +25,7 @@ namespace Model
   class GetTimelineEventRequest : public SSMIncidentsRequest
   {
   public:
-    AWS_SSMINCIDENTS_API GetTimelineEventRequest();
+    AWS_SSMINCIDENTS_API GetTimelineEventRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,103 +38,31 @@ namespace Model
     AWS_SSMINCIDENTS_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>The ID of the event. You can get an event's ID when you create it, or by
      * using <code>ListTimelineEvents</code>.</p>
      */
-    inline const Aws::String& GetEventId() const{ return m_eventId; }
-
-    /**
-     * <p>The ID of the event. You can get an event's ID when you create it, or by
-     * using <code>ListTimelineEvents</code>.</p>
-     */
+    inline const Aws::String& GetEventId() const { return m_eventId; }
     inline bool EventIdHasBeenSet() const { return m_eventIdHasBeenSet; }
+    template<typename EventIdT = Aws::String>
+    void SetEventId(EventIdT&& value) { m_eventIdHasBeenSet = true; m_eventId = std::forward<EventIdT>(value); }
+    template<typename EventIdT = Aws::String>
+    GetTimelineEventRequest& WithEventId(EventIdT&& value) { SetEventId(std::forward<EventIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the event. You can get an event's ID when you create it, or by
-     * using <code>ListTimelineEvents</code>.</p>
-     */
-    inline void SetEventId(const Aws::String& value) { m_eventIdHasBeenSet = true; m_eventId = value; }
-
-    /**
-     * <p>The ID of the event. You can get an event's ID when you create it, or by
-     * using <code>ListTimelineEvents</code>.</p>
-     */
-    inline void SetEventId(Aws::String&& value) { m_eventIdHasBeenSet = true; m_eventId = std::move(value); }
-
-    /**
-     * <p>The ID of the event. You can get an event's ID when you create it, or by
-     * using <code>ListTimelineEvents</code>.</p>
-     */
-    inline void SetEventId(const char* value) { m_eventIdHasBeenSet = true; m_eventId.assign(value); }
-
-    /**
-     * <p>The ID of the event. You can get an event's ID when you create it, or by
-     * using <code>ListTimelineEvents</code>.</p>
-     */
-    inline GetTimelineEventRequest& WithEventId(const Aws::String& value) { SetEventId(value); return *this;}
-
-    /**
-     * <p>The ID of the event. You can get an event's ID when you create it, or by
-     * using <code>ListTimelineEvents</code>.</p>
-     */
-    inline GetTimelineEventRequest& WithEventId(Aws::String&& value) { SetEventId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the event. You can get an event's ID when you create it, or by
-     * using <code>ListTimelineEvents</code>.</p>
-     */
-    inline GetTimelineEventRequest& WithEventId(const char* value) { SetEventId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the incident that includes the timeline
      * event.</p>
      */
-    inline const Aws::String& GetIncidentRecordArn() const{ return m_incidentRecordArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the incident that includes the timeline
-     * event.</p>
-     */
+    inline const Aws::String& GetIncidentRecordArn() const { return m_incidentRecordArn; }
     inline bool IncidentRecordArnHasBeenSet() const { return m_incidentRecordArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the incident that includes the timeline
-     * event.</p>
-     */
-    inline void SetIncidentRecordArn(const Aws::String& value) { m_incidentRecordArnHasBeenSet = true; m_incidentRecordArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the incident that includes the timeline
-     * event.</p>
-     */
-    inline void SetIncidentRecordArn(Aws::String&& value) { m_incidentRecordArnHasBeenSet = true; m_incidentRecordArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the incident that includes the timeline
-     * event.</p>
-     */
-    inline void SetIncidentRecordArn(const char* value) { m_incidentRecordArnHasBeenSet = true; m_incidentRecordArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the incident that includes the timeline
-     * event.</p>
-     */
-    inline GetTimelineEventRequest& WithIncidentRecordArn(const Aws::String& value) { SetIncidentRecordArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the incident that includes the timeline
-     * event.</p>
-     */
-    inline GetTimelineEventRequest& WithIncidentRecordArn(Aws::String&& value) { SetIncidentRecordArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the incident that includes the timeline
-     * event.</p>
-     */
-    inline GetTimelineEventRequest& WithIncidentRecordArn(const char* value) { SetIncidentRecordArn(value); return *this;}
-
+    template<typename IncidentRecordArnT = Aws::String>
+    void SetIncidentRecordArn(IncidentRecordArnT&& value) { m_incidentRecordArnHasBeenSet = true; m_incidentRecordArn = std::forward<IncidentRecordArnT>(value); }
+    template<typename IncidentRecordArnT = Aws::String>
+    GetTimelineEventRequest& WithIncidentRecordArn(IncidentRecordArnT&& value) { SetIncidentRecordArn(std::forward<IncidentRecordArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_eventId;

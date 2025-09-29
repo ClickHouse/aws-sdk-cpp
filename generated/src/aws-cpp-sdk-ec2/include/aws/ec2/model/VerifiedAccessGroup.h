@@ -34,7 +34,7 @@ namespace Model
   class VerifiedAccessGroup
   {
   public:
-    AWS_EC2_API VerifiedAccessGroup();
+    AWS_EC2_API VerifiedAccessGroup() = default;
     AWS_EC2_API VerifiedAccessGroup(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API VerifiedAccessGroup& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -42,405 +42,127 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The ID of the Verified Access group.</p>
      */
-    inline const Aws::String& GetVerifiedAccessGroupId() const{ return m_verifiedAccessGroupId; }
-
-    /**
-     * <p>The ID of the Verified Access group.</p>
-     */
+    inline const Aws::String& GetVerifiedAccessGroupId() const { return m_verifiedAccessGroupId; }
     inline bool VerifiedAccessGroupIdHasBeenSet() const { return m_verifiedAccessGroupIdHasBeenSet; }
+    template<typename VerifiedAccessGroupIdT = Aws::String>
+    void SetVerifiedAccessGroupId(VerifiedAccessGroupIdT&& value) { m_verifiedAccessGroupIdHasBeenSet = true; m_verifiedAccessGroupId = std::forward<VerifiedAccessGroupIdT>(value); }
+    template<typename VerifiedAccessGroupIdT = Aws::String>
+    VerifiedAccessGroup& WithVerifiedAccessGroupId(VerifiedAccessGroupIdT&& value) { SetVerifiedAccessGroupId(std::forward<VerifiedAccessGroupIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Verified Access group.</p>
-     */
-    inline void SetVerifiedAccessGroupId(const Aws::String& value) { m_verifiedAccessGroupIdHasBeenSet = true; m_verifiedAccessGroupId = value; }
-
-    /**
-     * <p>The ID of the Verified Access group.</p>
-     */
-    inline void SetVerifiedAccessGroupId(Aws::String&& value) { m_verifiedAccessGroupIdHasBeenSet = true; m_verifiedAccessGroupId = std::move(value); }
-
-    /**
-     * <p>The ID of the Verified Access group.</p>
-     */
-    inline void SetVerifiedAccessGroupId(const char* value) { m_verifiedAccessGroupIdHasBeenSet = true; m_verifiedAccessGroupId.assign(value); }
-
-    /**
-     * <p>The ID of the Verified Access group.</p>
-     */
-    inline VerifiedAccessGroup& WithVerifiedAccessGroupId(const Aws::String& value) { SetVerifiedAccessGroupId(value); return *this;}
-
-    /**
-     * <p>The ID of the Verified Access group.</p>
-     */
-    inline VerifiedAccessGroup& WithVerifiedAccessGroupId(Aws::String&& value) { SetVerifiedAccessGroupId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Verified Access group.</p>
-     */
-    inline VerifiedAccessGroup& WithVerifiedAccessGroupId(const char* value) { SetVerifiedAccessGroupId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the Amazon Web Services Verified Access instance.</p>
      */
-    inline const Aws::String& GetVerifiedAccessInstanceId() const{ return m_verifiedAccessInstanceId; }
-
-    /**
-     * <p>The ID of the Amazon Web Services Verified Access instance.</p>
-     */
+    inline const Aws::String& GetVerifiedAccessInstanceId() const { return m_verifiedAccessInstanceId; }
     inline bool VerifiedAccessInstanceIdHasBeenSet() const { return m_verifiedAccessInstanceIdHasBeenSet; }
+    template<typename VerifiedAccessInstanceIdT = Aws::String>
+    void SetVerifiedAccessInstanceId(VerifiedAccessInstanceIdT&& value) { m_verifiedAccessInstanceIdHasBeenSet = true; m_verifiedAccessInstanceId = std::forward<VerifiedAccessInstanceIdT>(value); }
+    template<typename VerifiedAccessInstanceIdT = Aws::String>
+    VerifiedAccessGroup& WithVerifiedAccessInstanceId(VerifiedAccessInstanceIdT&& value) { SetVerifiedAccessInstanceId(std::forward<VerifiedAccessInstanceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Amazon Web Services Verified Access instance.</p>
-     */
-    inline void SetVerifiedAccessInstanceId(const Aws::String& value) { m_verifiedAccessInstanceIdHasBeenSet = true; m_verifiedAccessInstanceId = value; }
-
-    /**
-     * <p>The ID of the Amazon Web Services Verified Access instance.</p>
-     */
-    inline void SetVerifiedAccessInstanceId(Aws::String&& value) { m_verifiedAccessInstanceIdHasBeenSet = true; m_verifiedAccessInstanceId = std::move(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services Verified Access instance.</p>
-     */
-    inline void SetVerifiedAccessInstanceId(const char* value) { m_verifiedAccessInstanceIdHasBeenSet = true; m_verifiedAccessInstanceId.assign(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services Verified Access instance.</p>
-     */
-    inline VerifiedAccessGroup& WithVerifiedAccessInstanceId(const Aws::String& value) { SetVerifiedAccessInstanceId(value); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services Verified Access instance.</p>
-     */
-    inline VerifiedAccessGroup& WithVerifiedAccessInstanceId(Aws::String&& value) { SetVerifiedAccessInstanceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services Verified Access instance.</p>
-     */
-    inline VerifiedAccessGroup& WithVerifiedAccessInstanceId(const char* value) { SetVerifiedAccessInstanceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A description for the Amazon Web Services Verified Access group.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>A description for the Amazon Web Services Verified Access group.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    VerifiedAccessGroup& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A description for the Amazon Web Services Verified Access group.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>A description for the Amazon Web Services Verified Access group.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>A description for the Amazon Web Services Verified Access group.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>A description for the Amazon Web Services Verified Access group.</p>
-     */
-    inline VerifiedAccessGroup& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A description for the Amazon Web Services Verified Access group.</p>
-     */
-    inline VerifiedAccessGroup& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A description for the Amazon Web Services Verified Access group.</p>
-     */
-    inline VerifiedAccessGroup& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Web Services account number that owns the group.</p>
      */
-    inline const Aws::String& GetOwner() const{ return m_owner; }
-
-    /**
-     * <p>The Amazon Web Services account number that owns the group.</p>
-     */
+    inline const Aws::String& GetOwner() const { return m_owner; }
     inline bool OwnerHasBeenSet() const { return m_ownerHasBeenSet; }
+    template<typename OwnerT = Aws::String>
+    void SetOwner(OwnerT&& value) { m_ownerHasBeenSet = true; m_owner = std::forward<OwnerT>(value); }
+    template<typename OwnerT = Aws::String>
+    VerifiedAccessGroup& WithOwner(OwnerT&& value) { SetOwner(std::forward<OwnerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Web Services account number that owns the group.</p>
-     */
-    inline void SetOwner(const Aws::String& value) { m_ownerHasBeenSet = true; m_owner = value; }
-
-    /**
-     * <p>The Amazon Web Services account number that owns the group.</p>
-     */
-    inline void SetOwner(Aws::String&& value) { m_ownerHasBeenSet = true; m_owner = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services account number that owns the group.</p>
-     */
-    inline void SetOwner(const char* value) { m_ownerHasBeenSet = true; m_owner.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services account number that owns the group.</p>
-     */
-    inline VerifiedAccessGroup& WithOwner(const Aws::String& value) { SetOwner(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account number that owns the group.</p>
-     */
-    inline VerifiedAccessGroup& WithOwner(Aws::String&& value) { SetOwner(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account number that owns the group.</p>
-     */
-    inline VerifiedAccessGroup& WithOwner(const char* value) { SetOwner(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the Verified Access group.</p>
      */
-    inline const Aws::String& GetVerifiedAccessGroupArn() const{ return m_verifiedAccessGroupArn; }
-
-    /**
-     * <p>The ARN of the Verified Access group.</p>
-     */
+    inline const Aws::String& GetVerifiedAccessGroupArn() const { return m_verifiedAccessGroupArn; }
     inline bool VerifiedAccessGroupArnHasBeenSet() const { return m_verifiedAccessGroupArnHasBeenSet; }
+    template<typename VerifiedAccessGroupArnT = Aws::String>
+    void SetVerifiedAccessGroupArn(VerifiedAccessGroupArnT&& value) { m_verifiedAccessGroupArnHasBeenSet = true; m_verifiedAccessGroupArn = std::forward<VerifiedAccessGroupArnT>(value); }
+    template<typename VerifiedAccessGroupArnT = Aws::String>
+    VerifiedAccessGroup& WithVerifiedAccessGroupArn(VerifiedAccessGroupArnT&& value) { SetVerifiedAccessGroupArn(std::forward<VerifiedAccessGroupArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the Verified Access group.</p>
-     */
-    inline void SetVerifiedAccessGroupArn(const Aws::String& value) { m_verifiedAccessGroupArnHasBeenSet = true; m_verifiedAccessGroupArn = value; }
-
-    /**
-     * <p>The ARN of the Verified Access group.</p>
-     */
-    inline void SetVerifiedAccessGroupArn(Aws::String&& value) { m_verifiedAccessGroupArnHasBeenSet = true; m_verifiedAccessGroupArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the Verified Access group.</p>
-     */
-    inline void SetVerifiedAccessGroupArn(const char* value) { m_verifiedAccessGroupArnHasBeenSet = true; m_verifiedAccessGroupArn.assign(value); }
-
-    /**
-     * <p>The ARN of the Verified Access group.</p>
-     */
-    inline VerifiedAccessGroup& WithVerifiedAccessGroupArn(const Aws::String& value) { SetVerifiedAccessGroupArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the Verified Access group.</p>
-     */
-    inline VerifiedAccessGroup& WithVerifiedAccessGroupArn(Aws::String&& value) { SetVerifiedAccessGroupArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the Verified Access group.</p>
-     */
-    inline VerifiedAccessGroup& WithVerifiedAccessGroupArn(const char* value) { SetVerifiedAccessGroupArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The creation time.</p>
      */
-    inline const Aws::String& GetCreationTime() const{ return m_creationTime; }
-
-    /**
-     * <p>The creation time.</p>
-     */
+    inline const Aws::String& GetCreationTime() const { return m_creationTime; }
     inline bool CreationTimeHasBeenSet() const { return m_creationTimeHasBeenSet; }
+    template<typename CreationTimeT = Aws::String>
+    void SetCreationTime(CreationTimeT&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::forward<CreationTimeT>(value); }
+    template<typename CreationTimeT = Aws::String>
+    VerifiedAccessGroup& WithCreationTime(CreationTimeT&& value) { SetCreationTime(std::forward<CreationTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The creation time.</p>
-     */
-    inline void SetCreationTime(const Aws::String& value) { m_creationTimeHasBeenSet = true; m_creationTime = value; }
-
-    /**
-     * <p>The creation time.</p>
-     */
-    inline void SetCreationTime(Aws::String&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::move(value); }
-
-    /**
-     * <p>The creation time.</p>
-     */
-    inline void SetCreationTime(const char* value) { m_creationTimeHasBeenSet = true; m_creationTime.assign(value); }
-
-    /**
-     * <p>The creation time.</p>
-     */
-    inline VerifiedAccessGroup& WithCreationTime(const Aws::String& value) { SetCreationTime(value); return *this;}
-
-    /**
-     * <p>The creation time.</p>
-     */
-    inline VerifiedAccessGroup& WithCreationTime(Aws::String&& value) { SetCreationTime(std::move(value)); return *this;}
-
-    /**
-     * <p>The creation time.</p>
-     */
-    inline VerifiedAccessGroup& WithCreationTime(const char* value) { SetCreationTime(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The last updated time.</p>
      */
-    inline const Aws::String& GetLastUpdatedTime() const{ return m_lastUpdatedTime; }
-
-    /**
-     * <p>The last updated time.</p>
-     */
+    inline const Aws::String& GetLastUpdatedTime() const { return m_lastUpdatedTime; }
     inline bool LastUpdatedTimeHasBeenSet() const { return m_lastUpdatedTimeHasBeenSet; }
+    template<typename LastUpdatedTimeT = Aws::String>
+    void SetLastUpdatedTime(LastUpdatedTimeT&& value) { m_lastUpdatedTimeHasBeenSet = true; m_lastUpdatedTime = std::forward<LastUpdatedTimeT>(value); }
+    template<typename LastUpdatedTimeT = Aws::String>
+    VerifiedAccessGroup& WithLastUpdatedTime(LastUpdatedTimeT&& value) { SetLastUpdatedTime(std::forward<LastUpdatedTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The last updated time.</p>
-     */
-    inline void SetLastUpdatedTime(const Aws::String& value) { m_lastUpdatedTimeHasBeenSet = true; m_lastUpdatedTime = value; }
-
-    /**
-     * <p>The last updated time.</p>
-     */
-    inline void SetLastUpdatedTime(Aws::String&& value) { m_lastUpdatedTimeHasBeenSet = true; m_lastUpdatedTime = std::move(value); }
-
-    /**
-     * <p>The last updated time.</p>
-     */
-    inline void SetLastUpdatedTime(const char* value) { m_lastUpdatedTimeHasBeenSet = true; m_lastUpdatedTime.assign(value); }
-
-    /**
-     * <p>The last updated time.</p>
-     */
-    inline VerifiedAccessGroup& WithLastUpdatedTime(const Aws::String& value) { SetLastUpdatedTime(value); return *this;}
-
-    /**
-     * <p>The last updated time.</p>
-     */
-    inline VerifiedAccessGroup& WithLastUpdatedTime(Aws::String&& value) { SetLastUpdatedTime(std::move(value)); return *this;}
-
-    /**
-     * <p>The last updated time.</p>
-     */
-    inline VerifiedAccessGroup& WithLastUpdatedTime(const char* value) { SetLastUpdatedTime(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The deletion time.</p>
      */
-    inline const Aws::String& GetDeletionTime() const{ return m_deletionTime; }
-
-    /**
-     * <p>The deletion time.</p>
-     */
+    inline const Aws::String& GetDeletionTime() const { return m_deletionTime; }
     inline bool DeletionTimeHasBeenSet() const { return m_deletionTimeHasBeenSet; }
+    template<typename DeletionTimeT = Aws::String>
+    void SetDeletionTime(DeletionTimeT&& value) { m_deletionTimeHasBeenSet = true; m_deletionTime = std::forward<DeletionTimeT>(value); }
+    template<typename DeletionTimeT = Aws::String>
+    VerifiedAccessGroup& WithDeletionTime(DeletionTimeT&& value) { SetDeletionTime(std::forward<DeletionTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The deletion time.</p>
-     */
-    inline void SetDeletionTime(const Aws::String& value) { m_deletionTimeHasBeenSet = true; m_deletionTime = value; }
-
-    /**
-     * <p>The deletion time.</p>
-     */
-    inline void SetDeletionTime(Aws::String&& value) { m_deletionTimeHasBeenSet = true; m_deletionTime = std::move(value); }
-
-    /**
-     * <p>The deletion time.</p>
-     */
-    inline void SetDeletionTime(const char* value) { m_deletionTimeHasBeenSet = true; m_deletionTime.assign(value); }
-
-    /**
-     * <p>The deletion time.</p>
-     */
-    inline VerifiedAccessGroup& WithDeletionTime(const Aws::String& value) { SetDeletionTime(value); return *this;}
-
-    /**
-     * <p>The deletion time.</p>
-     */
-    inline VerifiedAccessGroup& WithDeletionTime(Aws::String&& value) { SetDeletionTime(std::move(value)); return *this;}
-
-    /**
-     * <p>The deletion time.</p>
-     */
-    inline VerifiedAccessGroup& WithDeletionTime(const char* value) { SetDeletionTime(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The tags.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>The tags.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    VerifiedAccessGroup& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    VerifiedAccessGroup& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The tags.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>The tags.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>The tags.</p>
-     */
-    inline VerifiedAccessGroup& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The tags.</p>
-     */
-    inline VerifiedAccessGroup& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags.</p>
-     */
-    inline VerifiedAccessGroup& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>The tags.</p>
-     */
-    inline VerifiedAccessGroup& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The options in use for server side encryption.</p>
      */
-    inline const VerifiedAccessSseSpecificationResponse& GetSseSpecification() const{ return m_sseSpecification; }
-
-    /**
-     * <p>The options in use for server side encryption.</p>
-     */
+    inline const VerifiedAccessSseSpecificationResponse& GetSseSpecification() const { return m_sseSpecification; }
     inline bool SseSpecificationHasBeenSet() const { return m_sseSpecificationHasBeenSet; }
-
-    /**
-     * <p>The options in use for server side encryption.</p>
-     */
-    inline void SetSseSpecification(const VerifiedAccessSseSpecificationResponse& value) { m_sseSpecificationHasBeenSet = true; m_sseSpecification = value; }
-
-    /**
-     * <p>The options in use for server side encryption.</p>
-     */
-    inline void SetSseSpecification(VerifiedAccessSseSpecificationResponse&& value) { m_sseSpecificationHasBeenSet = true; m_sseSpecification = std::move(value); }
-
-    /**
-     * <p>The options in use for server side encryption.</p>
-     */
-    inline VerifiedAccessGroup& WithSseSpecification(const VerifiedAccessSseSpecificationResponse& value) { SetSseSpecification(value); return *this;}
-
-    /**
-     * <p>The options in use for server side encryption.</p>
-     */
-    inline VerifiedAccessGroup& WithSseSpecification(VerifiedAccessSseSpecificationResponse&& value) { SetSseSpecification(std::move(value)); return *this;}
-
+    template<typename SseSpecificationT = VerifiedAccessSseSpecificationResponse>
+    void SetSseSpecification(SseSpecificationT&& value) { m_sseSpecificationHasBeenSet = true; m_sseSpecification = std::forward<SseSpecificationT>(value); }
+    template<typename SseSpecificationT = VerifiedAccessSseSpecificationResponse>
+    VerifiedAccessGroup& WithSseSpecification(SseSpecificationT&& value) { SetSseSpecification(std::forward<SseSpecificationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_verifiedAccessGroupId;

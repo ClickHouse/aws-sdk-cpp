@@ -27,136 +27,64 @@ namespace Model
   class UpdateDataSourcePermissionsResult
   {
   public:
-    AWS_QUICKSIGHT_API UpdateDataSourcePermissionsResult();
+    AWS_QUICKSIGHT_API UpdateDataSourcePermissionsResult() = default;
     AWS_QUICKSIGHT_API UpdateDataSourcePermissionsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_QUICKSIGHT_API UpdateDataSourcePermissionsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the data source.</p>
      */
-    inline const Aws::String& GetDataSourceArn() const{ return m_dataSourceArn; }
+    inline const Aws::String& GetDataSourceArn() const { return m_dataSourceArn; }
+    template<typename DataSourceArnT = Aws::String>
+    void SetDataSourceArn(DataSourceArnT&& value) { m_dataSourceArnHasBeenSet = true; m_dataSourceArn = std::forward<DataSourceArnT>(value); }
+    template<typename DataSourceArnT = Aws::String>
+    UpdateDataSourcePermissionsResult& WithDataSourceArn(DataSourceArnT&& value) { SetDataSourceArn(std::forward<DataSourceArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the data source.</p>
-     */
-    inline void SetDataSourceArn(const Aws::String& value) { m_dataSourceArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the data source.</p>
-     */
-    inline void SetDataSourceArn(Aws::String&& value) { m_dataSourceArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the data source.</p>
-     */
-    inline void SetDataSourceArn(const char* value) { m_dataSourceArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the data source.</p>
-     */
-    inline UpdateDataSourcePermissionsResult& WithDataSourceArn(const Aws::String& value) { SetDataSourceArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the data source.</p>
-     */
-    inline UpdateDataSourcePermissionsResult& WithDataSourceArn(Aws::String&& value) { SetDataSourceArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the data source.</p>
-     */
-    inline UpdateDataSourcePermissionsResult& WithDataSourceArn(const char* value) { SetDataSourceArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the data source. This ID is unique per Amazon Web Services Region
      * for each Amazon Web Services account.</p>
      */
-    inline const Aws::String& GetDataSourceId() const{ return m_dataSourceId; }
+    inline const Aws::String& GetDataSourceId() const { return m_dataSourceId; }
+    template<typename DataSourceIdT = Aws::String>
+    void SetDataSourceId(DataSourceIdT&& value) { m_dataSourceIdHasBeenSet = true; m_dataSourceId = std::forward<DataSourceIdT>(value); }
+    template<typename DataSourceIdT = Aws::String>
+    UpdateDataSourcePermissionsResult& WithDataSourceId(DataSourceIdT&& value) { SetDataSourceId(std::forward<DataSourceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the data source. This ID is unique per Amazon Web Services Region
-     * for each Amazon Web Services account.</p>
-     */
-    inline void SetDataSourceId(const Aws::String& value) { m_dataSourceId = value; }
-
-    /**
-     * <p>The ID of the data source. This ID is unique per Amazon Web Services Region
-     * for each Amazon Web Services account.</p>
-     */
-    inline void SetDataSourceId(Aws::String&& value) { m_dataSourceId = std::move(value); }
-
-    /**
-     * <p>The ID of the data source. This ID is unique per Amazon Web Services Region
-     * for each Amazon Web Services account.</p>
-     */
-    inline void SetDataSourceId(const char* value) { m_dataSourceId.assign(value); }
-
-    /**
-     * <p>The ID of the data source. This ID is unique per Amazon Web Services Region
-     * for each Amazon Web Services account.</p>
-     */
-    inline UpdateDataSourcePermissionsResult& WithDataSourceId(const Aws::String& value) { SetDataSourceId(value); return *this;}
-
-    /**
-     * <p>The ID of the data source. This ID is unique per Amazon Web Services Region
-     * for each Amazon Web Services account.</p>
-     */
-    inline UpdateDataSourcePermissionsResult& WithDataSourceId(Aws::String&& value) { SetDataSourceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the data source. This ID is unique per Amazon Web Services Region
-     * for each Amazon Web Services account.</p>
-     */
-    inline UpdateDataSourcePermissionsResult& WithDataSourceId(const char* value) { SetDataSourceId(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    UpdateDataSourcePermissionsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline UpdateDataSourcePermissionsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline UpdateDataSourcePermissionsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline UpdateDataSourcePermissionsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The HTTP status of the request.</p>
      */
-    inline int GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The HTTP status of the request.</p>
-     */
-    inline void SetStatus(int value) { m_status = value; }
-
-    /**
-     * <p>The HTTP status of the request.</p>
-     */
+    inline int GetStatus() const { return m_status; }
+    inline void SetStatus(int value) { m_statusHasBeenSet = true; m_status = value; }
     inline UpdateDataSourcePermissionsResult& WithStatus(int value) { SetStatus(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_dataSourceArn;
+    bool m_dataSourceArnHasBeenSet = false;
 
     Aws::String m_dataSourceId;
+    bool m_dataSourceIdHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
 
-    int m_status;
+    int m_status{0};
+    bool m_statusHasBeenSet = false;
   };
 
 } // namespace Model

@@ -12,18 +12,6 @@ using namespace Aws::Batch::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateComputeEnvironmentRequest::UpdateComputeEnvironmentRequest() : 
-    m_computeEnvironmentHasBeenSet(false),
-    m_state(CEState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_unmanagedvCpus(0),
-    m_unmanagedvCpusHasBeenSet(false),
-    m_computeResourcesHasBeenSet(false),
-    m_serviceRoleHasBeenSet(false),
-    m_updatePolicyHasBeenSet(false)
-{
-}
-
 Aws::String UpdateComputeEnvironmentRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -60,6 +48,12 @@ Aws::String UpdateComputeEnvironmentRequest::SerializePayload() const
   if(m_updatePolicyHasBeenSet)
   {
    payload.WithObject("updatePolicy", m_updatePolicy.Jsonize());
+
+  }
+
+  if(m_contextHasBeenSet)
+  {
+   payload.WithString("context", m_context);
 
   }
 

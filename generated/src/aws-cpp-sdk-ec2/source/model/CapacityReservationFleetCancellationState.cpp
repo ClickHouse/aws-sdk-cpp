@@ -20,21 +20,7 @@ namespace EC2
 namespace Model
 {
 
-CapacityReservationFleetCancellationState::CapacityReservationFleetCancellationState() : 
-    m_currentFleetState(CapacityReservationFleetState::NOT_SET),
-    m_currentFleetStateHasBeenSet(false),
-    m_previousFleetState(CapacityReservationFleetState::NOT_SET),
-    m_previousFleetStateHasBeenSet(false),
-    m_capacityReservationFleetIdHasBeenSet(false)
-{
-}
-
-CapacityReservationFleetCancellationState::CapacityReservationFleetCancellationState(const XmlNode& xmlNode) : 
-    m_currentFleetState(CapacityReservationFleetState::NOT_SET),
-    m_currentFleetStateHasBeenSet(false),
-    m_previousFleetState(CapacityReservationFleetState::NOT_SET),
-    m_previousFleetStateHasBeenSet(false),
-    m_capacityReservationFleetIdHasBeenSet(false)
+CapacityReservationFleetCancellationState::CapacityReservationFleetCancellationState(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -48,13 +34,13 @@ CapacityReservationFleetCancellationState& CapacityReservationFleetCancellationS
     XmlNode currentFleetStateNode = resultNode.FirstChild("currentFleetState");
     if(!currentFleetStateNode.IsNull())
     {
-      m_currentFleetState = CapacityReservationFleetStateMapper::GetCapacityReservationFleetStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(currentFleetStateNode.GetText()).c_str()).c_str());
+      m_currentFleetState = CapacityReservationFleetStateMapper::GetCapacityReservationFleetStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(currentFleetStateNode.GetText()).c_str()));
       m_currentFleetStateHasBeenSet = true;
     }
     XmlNode previousFleetStateNode = resultNode.FirstChild("previousFleetState");
     if(!previousFleetStateNode.IsNull())
     {
-      m_previousFleetState = CapacityReservationFleetStateMapper::GetCapacityReservationFleetStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(previousFleetStateNode.GetText()).c_str()).c_str());
+      m_previousFleetState = CapacityReservationFleetStateMapper::GetCapacityReservationFleetStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(previousFleetStateNode.GetText()).c_str()));
       m_previousFleetStateHasBeenSet = true;
     }
     XmlNode capacityReservationFleetIdNode = resultNode.FirstChild("capacityReservationFleetId");
@@ -72,12 +58,12 @@ void CapacityReservationFleetCancellationState::OutputToStream(Aws::OStream& oSt
 {
   if(m_currentFleetStateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".CurrentFleetState=" << CapacityReservationFleetStateMapper::GetNameForCapacityReservationFleetState(m_currentFleetState) << "&";
+      oStream << location << index << locationValue << ".CurrentFleetState=" << StringUtils::URLEncode(CapacityReservationFleetStateMapper::GetNameForCapacityReservationFleetState(m_currentFleetState)) << "&";
   }
 
   if(m_previousFleetStateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".PreviousFleetState=" << CapacityReservationFleetStateMapper::GetNameForCapacityReservationFleetState(m_previousFleetState) << "&";
+      oStream << location << index << locationValue << ".PreviousFleetState=" << StringUtils::URLEncode(CapacityReservationFleetStateMapper::GetNameForCapacityReservationFleetState(m_previousFleetState)) << "&";
   }
 
   if(m_capacityReservationFleetIdHasBeenSet)
@@ -91,11 +77,11 @@ void CapacityReservationFleetCancellationState::OutputToStream(Aws::OStream& oSt
 {
   if(m_currentFleetStateHasBeenSet)
   {
-      oStream << location << ".CurrentFleetState=" << CapacityReservationFleetStateMapper::GetNameForCapacityReservationFleetState(m_currentFleetState) << "&";
+      oStream << location << ".CurrentFleetState=" << StringUtils::URLEncode(CapacityReservationFleetStateMapper::GetNameForCapacityReservationFleetState(m_currentFleetState)) << "&";
   }
   if(m_previousFleetStateHasBeenSet)
   {
-      oStream << location << ".PreviousFleetState=" << CapacityReservationFleetStateMapper::GetNameForCapacityReservationFleetState(m_previousFleetState) << "&";
+      oStream << location << ".PreviousFleetState=" << StringUtils::URLEncode(CapacityReservationFleetStateMapper::GetNameForCapacityReservationFleetState(m_previousFleetState)) << "&";
   }
   if(m_capacityReservationFleetIdHasBeenSet)
   {

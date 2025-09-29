@@ -18,13 +18,7 @@ namespace KinesisAnalyticsV2
 namespace Model
 {
 
-KinesisFirehoseInput::KinesisFirehoseInput() : 
-    m_resourceARNHasBeenSet(false)
-{
-}
-
-KinesisFirehoseInput::KinesisFirehoseInput(JsonView jsonValue) : 
-    m_resourceARNHasBeenSet(false)
+KinesisFirehoseInput::KinesisFirehoseInput(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ KinesisFirehoseInput& KinesisFirehoseInput::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ResourceARN"))
   {
     m_resourceARN = jsonValue.GetString("ResourceARN");
-
     m_resourceARNHasBeenSet = true;
   }
-
   return *this;
 }
 

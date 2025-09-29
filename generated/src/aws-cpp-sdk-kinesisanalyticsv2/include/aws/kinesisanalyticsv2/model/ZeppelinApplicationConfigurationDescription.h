@@ -28,165 +28,72 @@ namespace Model
 {
 
   /**
-   * <p>The configuration of a Kinesis Data Analytics Studio notebook.</p><p><h3>See
-   * Also:</h3>   <a
+   * <p>The configuration of a Managed Service for Apache Flink Studio
+   * notebook.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalyticsv2-2018-05-23/ZeppelinApplicationConfigurationDescription">AWS
    * API Reference</a></p>
    */
   class ZeppelinApplicationConfigurationDescription
   {
   public:
-    AWS_KINESISANALYTICSV2_API ZeppelinApplicationConfigurationDescription();
+    AWS_KINESISANALYTICSV2_API ZeppelinApplicationConfigurationDescription() = default;
     AWS_KINESISANALYTICSV2_API ZeppelinApplicationConfigurationDescription(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISANALYTICSV2_API ZeppelinApplicationConfigurationDescription& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISANALYTICSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The monitoring configuration of a Kinesis Data Analytics Studio notebook.</p>
+     * <p>The monitoring configuration of a Managed Service for Apache Flink Studio
+     * notebook.</p>
      */
-    inline const ZeppelinMonitoringConfigurationDescription& GetMonitoringConfigurationDescription() const{ return m_monitoringConfigurationDescription; }
-
-    /**
-     * <p>The monitoring configuration of a Kinesis Data Analytics Studio notebook.</p>
-     */
+    inline const ZeppelinMonitoringConfigurationDescription& GetMonitoringConfigurationDescription() const { return m_monitoringConfigurationDescription; }
     inline bool MonitoringConfigurationDescriptionHasBeenSet() const { return m_monitoringConfigurationDescriptionHasBeenSet; }
+    template<typename MonitoringConfigurationDescriptionT = ZeppelinMonitoringConfigurationDescription>
+    void SetMonitoringConfigurationDescription(MonitoringConfigurationDescriptionT&& value) { m_monitoringConfigurationDescriptionHasBeenSet = true; m_monitoringConfigurationDescription = std::forward<MonitoringConfigurationDescriptionT>(value); }
+    template<typename MonitoringConfigurationDescriptionT = ZeppelinMonitoringConfigurationDescription>
+    ZeppelinApplicationConfigurationDescription& WithMonitoringConfigurationDescription(MonitoringConfigurationDescriptionT&& value) { SetMonitoringConfigurationDescription(std::forward<MonitoringConfigurationDescriptionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The monitoring configuration of a Kinesis Data Analytics Studio notebook.</p>
+     * <p>The Amazon Glue Data Catalog that is associated with the Managed Service for
+     * Apache Flink Studio notebook.</p>
      */
-    inline void SetMonitoringConfigurationDescription(const ZeppelinMonitoringConfigurationDescription& value) { m_monitoringConfigurationDescriptionHasBeenSet = true; m_monitoringConfigurationDescription = value; }
-
-    /**
-     * <p>The monitoring configuration of a Kinesis Data Analytics Studio notebook.</p>
-     */
-    inline void SetMonitoringConfigurationDescription(ZeppelinMonitoringConfigurationDescription&& value) { m_monitoringConfigurationDescriptionHasBeenSet = true; m_monitoringConfigurationDescription = std::move(value); }
-
-    /**
-     * <p>The monitoring configuration of a Kinesis Data Analytics Studio notebook.</p>
-     */
-    inline ZeppelinApplicationConfigurationDescription& WithMonitoringConfigurationDescription(const ZeppelinMonitoringConfigurationDescription& value) { SetMonitoringConfigurationDescription(value); return *this;}
-
-    /**
-     * <p>The monitoring configuration of a Kinesis Data Analytics Studio notebook.</p>
-     */
-    inline ZeppelinApplicationConfigurationDescription& WithMonitoringConfigurationDescription(ZeppelinMonitoringConfigurationDescription&& value) { SetMonitoringConfigurationDescription(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The Amazon Glue Data Catalog that is associated with the Kinesis Data
-     * Analytics Studio notebook.</p>
-     */
-    inline const CatalogConfigurationDescription& GetCatalogConfigurationDescription() const{ return m_catalogConfigurationDescription; }
-
-    /**
-     * <p>The Amazon Glue Data Catalog that is associated with the Kinesis Data
-     * Analytics Studio notebook.</p>
-     */
+    inline const CatalogConfigurationDescription& GetCatalogConfigurationDescription() const { return m_catalogConfigurationDescription; }
     inline bool CatalogConfigurationDescriptionHasBeenSet() const { return m_catalogConfigurationDescriptionHasBeenSet; }
+    template<typename CatalogConfigurationDescriptionT = CatalogConfigurationDescription>
+    void SetCatalogConfigurationDescription(CatalogConfigurationDescriptionT&& value) { m_catalogConfigurationDescriptionHasBeenSet = true; m_catalogConfigurationDescription = std::forward<CatalogConfigurationDescriptionT>(value); }
+    template<typename CatalogConfigurationDescriptionT = CatalogConfigurationDescription>
+    ZeppelinApplicationConfigurationDescription& WithCatalogConfigurationDescription(CatalogConfigurationDescriptionT&& value) { SetCatalogConfigurationDescription(std::forward<CatalogConfigurationDescriptionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Amazon Glue Data Catalog that is associated with the Kinesis Data
-     * Analytics Studio notebook.</p>
+     * <p>The parameters required to deploy a Managed Service for Apache Flink Studio
+     * notebook as an application with durable state.</p>
      */
-    inline void SetCatalogConfigurationDescription(const CatalogConfigurationDescription& value) { m_catalogConfigurationDescriptionHasBeenSet = true; m_catalogConfigurationDescription = value; }
-
-    /**
-     * <p>The Amazon Glue Data Catalog that is associated with the Kinesis Data
-     * Analytics Studio notebook.</p>
-     */
-    inline void SetCatalogConfigurationDescription(CatalogConfigurationDescription&& value) { m_catalogConfigurationDescriptionHasBeenSet = true; m_catalogConfigurationDescription = std::move(value); }
-
-    /**
-     * <p>The Amazon Glue Data Catalog that is associated with the Kinesis Data
-     * Analytics Studio notebook.</p>
-     */
-    inline ZeppelinApplicationConfigurationDescription& WithCatalogConfigurationDescription(const CatalogConfigurationDescription& value) { SetCatalogConfigurationDescription(value); return *this;}
-
-    /**
-     * <p>The Amazon Glue Data Catalog that is associated with the Kinesis Data
-     * Analytics Studio notebook.</p>
-     */
-    inline ZeppelinApplicationConfigurationDescription& WithCatalogConfigurationDescription(CatalogConfigurationDescription&& value) { SetCatalogConfigurationDescription(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The parameters required to deploy a Kinesis Data Analytics Studio notebook as
-     * an application with durable state.</p>
-     */
-    inline const DeployAsApplicationConfigurationDescription& GetDeployAsApplicationConfigurationDescription() const{ return m_deployAsApplicationConfigurationDescription; }
-
-    /**
-     * <p>The parameters required to deploy a Kinesis Data Analytics Studio notebook as
-     * an application with durable state.</p>
-     */
+    inline const DeployAsApplicationConfigurationDescription& GetDeployAsApplicationConfigurationDescription() const { return m_deployAsApplicationConfigurationDescription; }
     inline bool DeployAsApplicationConfigurationDescriptionHasBeenSet() const { return m_deployAsApplicationConfigurationDescriptionHasBeenSet; }
+    template<typename DeployAsApplicationConfigurationDescriptionT = DeployAsApplicationConfigurationDescription>
+    void SetDeployAsApplicationConfigurationDescription(DeployAsApplicationConfigurationDescriptionT&& value) { m_deployAsApplicationConfigurationDescriptionHasBeenSet = true; m_deployAsApplicationConfigurationDescription = std::forward<DeployAsApplicationConfigurationDescriptionT>(value); }
+    template<typename DeployAsApplicationConfigurationDescriptionT = DeployAsApplicationConfigurationDescription>
+    ZeppelinApplicationConfigurationDescription& WithDeployAsApplicationConfigurationDescription(DeployAsApplicationConfigurationDescriptionT&& value) { SetDeployAsApplicationConfigurationDescription(std::forward<DeployAsApplicationConfigurationDescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The parameters required to deploy a Kinesis Data Analytics Studio notebook as
-     * an application with durable state.</p>
-     */
-    inline void SetDeployAsApplicationConfigurationDescription(const DeployAsApplicationConfigurationDescription& value) { m_deployAsApplicationConfigurationDescriptionHasBeenSet = true; m_deployAsApplicationConfigurationDescription = value; }
-
-    /**
-     * <p>The parameters required to deploy a Kinesis Data Analytics Studio notebook as
-     * an application with durable state.</p>
-     */
-    inline void SetDeployAsApplicationConfigurationDescription(DeployAsApplicationConfigurationDescription&& value) { m_deployAsApplicationConfigurationDescriptionHasBeenSet = true; m_deployAsApplicationConfigurationDescription = std::move(value); }
-
-    /**
-     * <p>The parameters required to deploy a Kinesis Data Analytics Studio notebook as
-     * an application with durable state.</p>
-     */
-    inline ZeppelinApplicationConfigurationDescription& WithDeployAsApplicationConfigurationDescription(const DeployAsApplicationConfigurationDescription& value) { SetDeployAsApplicationConfigurationDescription(value); return *this;}
-
-    /**
-     * <p>The parameters required to deploy a Kinesis Data Analytics Studio notebook as
-     * an application with durable state.</p>
-     */
-    inline ZeppelinApplicationConfigurationDescription& WithDeployAsApplicationConfigurationDescription(DeployAsApplicationConfigurationDescription&& value) { SetDeployAsApplicationConfigurationDescription(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Custom artifacts are dependency JARs and user-defined functions (UDF).</p>
      */
-    inline const Aws::Vector<CustomArtifactConfigurationDescription>& GetCustomArtifactsConfigurationDescription() const{ return m_customArtifactsConfigurationDescription; }
-
-    /**
-     * <p>Custom artifacts are dependency JARs and user-defined functions (UDF).</p>
-     */
+    inline const Aws::Vector<CustomArtifactConfigurationDescription>& GetCustomArtifactsConfigurationDescription() const { return m_customArtifactsConfigurationDescription; }
     inline bool CustomArtifactsConfigurationDescriptionHasBeenSet() const { return m_customArtifactsConfigurationDescriptionHasBeenSet; }
-
-    /**
-     * <p>Custom artifacts are dependency JARs and user-defined functions (UDF).</p>
-     */
-    inline void SetCustomArtifactsConfigurationDescription(const Aws::Vector<CustomArtifactConfigurationDescription>& value) { m_customArtifactsConfigurationDescriptionHasBeenSet = true; m_customArtifactsConfigurationDescription = value; }
-
-    /**
-     * <p>Custom artifacts are dependency JARs and user-defined functions (UDF).</p>
-     */
-    inline void SetCustomArtifactsConfigurationDescription(Aws::Vector<CustomArtifactConfigurationDescription>&& value) { m_customArtifactsConfigurationDescriptionHasBeenSet = true; m_customArtifactsConfigurationDescription = std::move(value); }
-
-    /**
-     * <p>Custom artifacts are dependency JARs and user-defined functions (UDF).</p>
-     */
-    inline ZeppelinApplicationConfigurationDescription& WithCustomArtifactsConfigurationDescription(const Aws::Vector<CustomArtifactConfigurationDescription>& value) { SetCustomArtifactsConfigurationDescription(value); return *this;}
-
-    /**
-     * <p>Custom artifacts are dependency JARs and user-defined functions (UDF).</p>
-     */
-    inline ZeppelinApplicationConfigurationDescription& WithCustomArtifactsConfigurationDescription(Aws::Vector<CustomArtifactConfigurationDescription>&& value) { SetCustomArtifactsConfigurationDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>Custom artifacts are dependency JARs and user-defined functions (UDF).</p>
-     */
-    inline ZeppelinApplicationConfigurationDescription& AddCustomArtifactsConfigurationDescription(const CustomArtifactConfigurationDescription& value) { m_customArtifactsConfigurationDescriptionHasBeenSet = true; m_customArtifactsConfigurationDescription.push_back(value); return *this; }
-
-    /**
-     * <p>Custom artifacts are dependency JARs and user-defined functions (UDF).</p>
-     */
-    inline ZeppelinApplicationConfigurationDescription& AddCustomArtifactsConfigurationDescription(CustomArtifactConfigurationDescription&& value) { m_customArtifactsConfigurationDescriptionHasBeenSet = true; m_customArtifactsConfigurationDescription.push_back(std::move(value)); return *this; }
-
+    template<typename CustomArtifactsConfigurationDescriptionT = Aws::Vector<CustomArtifactConfigurationDescription>>
+    void SetCustomArtifactsConfigurationDescription(CustomArtifactsConfigurationDescriptionT&& value) { m_customArtifactsConfigurationDescriptionHasBeenSet = true; m_customArtifactsConfigurationDescription = std::forward<CustomArtifactsConfigurationDescriptionT>(value); }
+    template<typename CustomArtifactsConfigurationDescriptionT = Aws::Vector<CustomArtifactConfigurationDescription>>
+    ZeppelinApplicationConfigurationDescription& WithCustomArtifactsConfigurationDescription(CustomArtifactsConfigurationDescriptionT&& value) { SetCustomArtifactsConfigurationDescription(std::forward<CustomArtifactsConfigurationDescriptionT>(value)); return *this;}
+    template<typename CustomArtifactsConfigurationDescriptionT = CustomArtifactConfigurationDescription>
+    ZeppelinApplicationConfigurationDescription& AddCustomArtifactsConfigurationDescription(CustomArtifactsConfigurationDescriptionT&& value) { m_customArtifactsConfigurationDescriptionHasBeenSet = true; m_customArtifactsConfigurationDescription.emplace_back(std::forward<CustomArtifactsConfigurationDescriptionT>(value)); return *this; }
+    ///@}
   private:
 
     ZeppelinMonitoringConfigurationDescription m_monitoringConfigurationDescription;

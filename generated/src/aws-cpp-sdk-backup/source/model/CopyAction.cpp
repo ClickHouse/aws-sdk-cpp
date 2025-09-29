@@ -18,15 +18,7 @@ namespace Backup
 namespace Model
 {
 
-CopyAction::CopyAction() : 
-    m_lifecycleHasBeenSet(false),
-    m_destinationBackupVaultArnHasBeenSet(false)
-{
-}
-
-CopyAction::CopyAction(JsonView jsonValue) : 
-    m_lifecycleHasBeenSet(false),
-    m_destinationBackupVaultArnHasBeenSet(false)
+CopyAction::CopyAction(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ CopyAction& CopyAction::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Lifecycle"))
   {
     m_lifecycle = jsonValue.GetObject("Lifecycle");
-
     m_lifecycleHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DestinationBackupVaultArn"))
   {
     m_destinationBackupVaultArn = jsonValue.GetString("DestinationBackupVaultArn");
-
     m_destinationBackupVaultArnHasBeenSet = true;
   }
-
   return *this;
 }
 

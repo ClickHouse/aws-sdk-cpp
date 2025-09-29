@@ -32,42 +32,23 @@ namespace Model
   class GeospatialHeatmapConfiguration
   {
   public:
-    AWS_QUICKSIGHT_API GeospatialHeatmapConfiguration();
+    AWS_QUICKSIGHT_API GeospatialHeatmapConfiguration() = default;
     AWS_QUICKSIGHT_API GeospatialHeatmapConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API GeospatialHeatmapConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The color scale specification for the heatmap point style.</p>
      */
-    inline const GeospatialHeatmapColorScale& GetHeatmapColor() const{ return m_heatmapColor; }
-
-    /**
-     * <p>The color scale specification for the heatmap point style.</p>
-     */
+    inline const GeospatialHeatmapColorScale& GetHeatmapColor() const { return m_heatmapColor; }
     inline bool HeatmapColorHasBeenSet() const { return m_heatmapColorHasBeenSet; }
-
-    /**
-     * <p>The color scale specification for the heatmap point style.</p>
-     */
-    inline void SetHeatmapColor(const GeospatialHeatmapColorScale& value) { m_heatmapColorHasBeenSet = true; m_heatmapColor = value; }
-
-    /**
-     * <p>The color scale specification for the heatmap point style.</p>
-     */
-    inline void SetHeatmapColor(GeospatialHeatmapColorScale&& value) { m_heatmapColorHasBeenSet = true; m_heatmapColor = std::move(value); }
-
-    /**
-     * <p>The color scale specification for the heatmap point style.</p>
-     */
-    inline GeospatialHeatmapConfiguration& WithHeatmapColor(const GeospatialHeatmapColorScale& value) { SetHeatmapColor(value); return *this;}
-
-    /**
-     * <p>The color scale specification for the heatmap point style.</p>
-     */
-    inline GeospatialHeatmapConfiguration& WithHeatmapColor(GeospatialHeatmapColorScale&& value) { SetHeatmapColor(std::move(value)); return *this;}
-
+    template<typename HeatmapColorT = GeospatialHeatmapColorScale>
+    void SetHeatmapColor(HeatmapColorT&& value) { m_heatmapColorHasBeenSet = true; m_heatmapColor = std::forward<HeatmapColorT>(value); }
+    template<typename HeatmapColorT = GeospatialHeatmapColorScale>
+    GeospatialHeatmapConfiguration& WithHeatmapColor(HeatmapColorT&& value) { SetHeatmapColor(std::forward<HeatmapColorT>(value)); return *this;}
+    ///@}
   private:
 
     GeospatialHeatmapColorScale m_heatmapColor;

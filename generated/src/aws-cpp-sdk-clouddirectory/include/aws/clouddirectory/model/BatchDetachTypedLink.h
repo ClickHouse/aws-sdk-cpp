@@ -33,42 +33,23 @@ namespace Model
   class BatchDetachTypedLink
   {
   public:
-    AWS_CLOUDDIRECTORY_API BatchDetachTypedLink();
+    AWS_CLOUDDIRECTORY_API BatchDetachTypedLink() = default;
     AWS_CLOUDDIRECTORY_API BatchDetachTypedLink(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDDIRECTORY_API BatchDetachTypedLink& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDDIRECTORY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Used to accept a typed link specifier as input.</p>
      */
-    inline const TypedLinkSpecifier& GetTypedLinkSpecifier() const{ return m_typedLinkSpecifier; }
-
-    /**
-     * <p>Used to accept a typed link specifier as input.</p>
-     */
+    inline const TypedLinkSpecifier& GetTypedLinkSpecifier() const { return m_typedLinkSpecifier; }
     inline bool TypedLinkSpecifierHasBeenSet() const { return m_typedLinkSpecifierHasBeenSet; }
-
-    /**
-     * <p>Used to accept a typed link specifier as input.</p>
-     */
-    inline void SetTypedLinkSpecifier(const TypedLinkSpecifier& value) { m_typedLinkSpecifierHasBeenSet = true; m_typedLinkSpecifier = value; }
-
-    /**
-     * <p>Used to accept a typed link specifier as input.</p>
-     */
-    inline void SetTypedLinkSpecifier(TypedLinkSpecifier&& value) { m_typedLinkSpecifierHasBeenSet = true; m_typedLinkSpecifier = std::move(value); }
-
-    /**
-     * <p>Used to accept a typed link specifier as input.</p>
-     */
-    inline BatchDetachTypedLink& WithTypedLinkSpecifier(const TypedLinkSpecifier& value) { SetTypedLinkSpecifier(value); return *this;}
-
-    /**
-     * <p>Used to accept a typed link specifier as input.</p>
-     */
-    inline BatchDetachTypedLink& WithTypedLinkSpecifier(TypedLinkSpecifier&& value) { SetTypedLinkSpecifier(std::move(value)); return *this;}
-
+    template<typename TypedLinkSpecifierT = TypedLinkSpecifier>
+    void SetTypedLinkSpecifier(TypedLinkSpecifierT&& value) { m_typedLinkSpecifierHasBeenSet = true; m_typedLinkSpecifier = std::forward<TypedLinkSpecifierT>(value); }
+    template<typename TypedLinkSpecifierT = TypedLinkSpecifier>
+    BatchDetachTypedLink& WithTypedLinkSpecifier(TypedLinkSpecifierT&& value) { SetTypedLinkSpecifier(std::forward<TypedLinkSpecifierT>(value)); return *this;}
+    ///@}
   private:
 
     TypedLinkSpecifier m_typedLinkSpecifier;

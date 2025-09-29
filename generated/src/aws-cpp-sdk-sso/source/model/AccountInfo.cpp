@@ -18,17 +18,7 @@ namespace SSO
 namespace Model
 {
 
-AccountInfo::AccountInfo() : 
-    m_accountIdHasBeenSet(false),
-    m_accountNameHasBeenSet(false),
-    m_emailAddressHasBeenSet(false)
-{
-}
-
-AccountInfo::AccountInfo(JsonView jsonValue) : 
-    m_accountIdHasBeenSet(false),
-    m_accountNameHasBeenSet(false),
-    m_emailAddressHasBeenSet(false)
+AccountInfo::AccountInfo(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ AccountInfo& AccountInfo::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("accountId"))
   {
     m_accountId = jsonValue.GetString("accountId");
-
     m_accountIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("accountName"))
   {
     m_accountName = jsonValue.GetString("accountName");
-
     m_accountNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("emailAddress"))
   {
     m_emailAddress = jsonValue.GetString("emailAddress");
-
     m_emailAddressHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -21,7 +21,7 @@ namespace Model
   class DeleteCapacityProviderRequest : public ECSRequest
   {
   public:
-    AWS_ECS_API DeleteCapacityProviderRequest();
+    AWS_ECS_API DeleteCapacityProviderRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,54 +34,18 @@ namespace Model
     AWS_ECS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The short name or full Amazon Resource Name (ARN) of the capacity provider to
      * delete.</p>
      */
-    inline const Aws::String& GetCapacityProvider() const{ return m_capacityProvider; }
-
-    /**
-     * <p>The short name or full Amazon Resource Name (ARN) of the capacity provider to
-     * delete.</p>
-     */
+    inline const Aws::String& GetCapacityProvider() const { return m_capacityProvider; }
     inline bool CapacityProviderHasBeenSet() const { return m_capacityProviderHasBeenSet; }
-
-    /**
-     * <p>The short name or full Amazon Resource Name (ARN) of the capacity provider to
-     * delete.</p>
-     */
-    inline void SetCapacityProvider(const Aws::String& value) { m_capacityProviderHasBeenSet = true; m_capacityProvider = value; }
-
-    /**
-     * <p>The short name or full Amazon Resource Name (ARN) of the capacity provider to
-     * delete.</p>
-     */
-    inline void SetCapacityProvider(Aws::String&& value) { m_capacityProviderHasBeenSet = true; m_capacityProvider = std::move(value); }
-
-    /**
-     * <p>The short name or full Amazon Resource Name (ARN) of the capacity provider to
-     * delete.</p>
-     */
-    inline void SetCapacityProvider(const char* value) { m_capacityProviderHasBeenSet = true; m_capacityProvider.assign(value); }
-
-    /**
-     * <p>The short name or full Amazon Resource Name (ARN) of the capacity provider to
-     * delete.</p>
-     */
-    inline DeleteCapacityProviderRequest& WithCapacityProvider(const Aws::String& value) { SetCapacityProvider(value); return *this;}
-
-    /**
-     * <p>The short name or full Amazon Resource Name (ARN) of the capacity provider to
-     * delete.</p>
-     */
-    inline DeleteCapacityProviderRequest& WithCapacityProvider(Aws::String&& value) { SetCapacityProvider(std::move(value)); return *this;}
-
-    /**
-     * <p>The short name or full Amazon Resource Name (ARN) of the capacity provider to
-     * delete.</p>
-     */
-    inline DeleteCapacityProviderRequest& WithCapacityProvider(const char* value) { SetCapacityProvider(value); return *this;}
-
+    template<typename CapacityProviderT = Aws::String>
+    void SetCapacityProvider(CapacityProviderT&& value) { m_capacityProviderHasBeenSet = true; m_capacityProvider = std::forward<CapacityProviderT>(value); }
+    template<typename CapacityProviderT = Aws::String>
+    DeleteCapacityProviderRequest& WithCapacityProvider(CapacityProviderT&& value) { SetCapacityProvider(std::forward<CapacityProviderT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_capacityProvider;

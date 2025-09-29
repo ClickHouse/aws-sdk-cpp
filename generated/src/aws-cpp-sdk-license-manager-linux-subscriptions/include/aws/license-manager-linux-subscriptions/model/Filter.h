@@ -35,135 +35,53 @@ namespace Model
   class Filter
   {
   public:
-    AWS_LICENSEMANAGERLINUXSUBSCRIPTIONS_API Filter();
+    AWS_LICENSEMANAGERLINUXSUBSCRIPTIONS_API Filter() = default;
     AWS_LICENSEMANAGERLINUXSUBSCRIPTIONS_API Filter(Aws::Utils::Json::JsonView jsonValue);
     AWS_LICENSEMANAGERLINUXSUBSCRIPTIONS_API Filter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LICENSEMANAGERLINUXSUBSCRIPTIONS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The type of name to filter by.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The type of name to filter by.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    Filter& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of name to filter by.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The type of name to filter by.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The type of name to filter by.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The type of name to filter by.</p>
-     */
-    inline Filter& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The type of name to filter by.</p>
-     */
-    inline Filter& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of name to filter by.</p>
-     */
-    inline Filter& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An operator for filtering results.</p>
      */
-    inline const Operator& GetOperator() const{ return m_operator; }
-
-    /**
-     * <p>An operator for filtering results.</p>
-     */
+    inline Operator GetOperator() const { return m_operator; }
     inline bool OperatorHasBeenSet() const { return m_operatorHasBeenSet; }
+    inline void SetOperator(Operator value) { m_operatorHasBeenSet = true; m_operator = value; }
+    inline Filter& WithOperator(Operator value) { SetOperator(value); return *this;}
+    ///@}
 
-    /**
-     * <p>An operator for filtering results.</p>
-     */
-    inline void SetOperator(const Operator& value) { m_operatorHasBeenSet = true; m_operator = value; }
-
-    /**
-     * <p>An operator for filtering results.</p>
-     */
-    inline void SetOperator(Operator&& value) { m_operatorHasBeenSet = true; m_operator = std::move(value); }
-
-    /**
-     * <p>An operator for filtering results.</p>
-     */
-    inline Filter& WithOperator(const Operator& value) { SetOperator(value); return *this;}
-
-    /**
-     * <p>An operator for filtering results.</p>
-     */
-    inline Filter& WithOperator(Operator&& value) { SetOperator(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>One or more values for the name to filter by.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetValues() const{ return m_values; }
-
-    /**
-     * <p>One or more values for the name to filter by.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetValues() const { return m_values; }
     inline bool ValuesHasBeenSet() const { return m_valuesHasBeenSet; }
-
-    /**
-     * <p>One or more values for the name to filter by.</p>
-     */
-    inline void SetValues(const Aws::Vector<Aws::String>& value) { m_valuesHasBeenSet = true; m_values = value; }
-
-    /**
-     * <p>One or more values for the name to filter by.</p>
-     */
-    inline void SetValues(Aws::Vector<Aws::String>&& value) { m_valuesHasBeenSet = true; m_values = std::move(value); }
-
-    /**
-     * <p>One or more values for the name to filter by.</p>
-     */
-    inline Filter& WithValues(const Aws::Vector<Aws::String>& value) { SetValues(value); return *this;}
-
-    /**
-     * <p>One or more values for the name to filter by.</p>
-     */
-    inline Filter& WithValues(Aws::Vector<Aws::String>&& value) { SetValues(std::move(value)); return *this;}
-
-    /**
-     * <p>One or more values for the name to filter by.</p>
-     */
-    inline Filter& AddValues(const Aws::String& value) { m_valuesHasBeenSet = true; m_values.push_back(value); return *this; }
-
-    /**
-     * <p>One or more values for the name to filter by.</p>
-     */
-    inline Filter& AddValues(Aws::String&& value) { m_valuesHasBeenSet = true; m_values.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>One or more values for the name to filter by.</p>
-     */
-    inline Filter& AddValues(const char* value) { m_valuesHasBeenSet = true; m_values.push_back(value); return *this; }
-
+    template<typename ValuesT = Aws::Vector<Aws::String>>
+    void SetValues(ValuesT&& value) { m_valuesHasBeenSet = true; m_values = std::forward<ValuesT>(value); }
+    template<typename ValuesT = Aws::Vector<Aws::String>>
+    Filter& WithValues(ValuesT&& value) { SetValues(std::forward<ValuesT>(value)); return *this;}
+    template<typename ValuesT = Aws::String>
+    Filter& AddValues(ValuesT&& value) { m_valuesHasBeenSet = true; m_values.emplace_back(std::forward<ValuesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_name;
     bool m_nameHasBeenSet = false;
 
-    Operator m_operator;
+    Operator m_operator{Operator::NOT_SET};
     bool m_operatorHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_values;

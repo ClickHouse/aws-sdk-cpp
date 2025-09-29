@@ -18,13 +18,7 @@ namespace ChimeSDKIdentity
 namespace Model
 {
 
-Configuration::Configuration() : 
-    m_lexHasBeenSet(false)
-{
-}
-
-Configuration::Configuration(JsonView jsonValue) : 
-    m_lexHasBeenSet(false)
+Configuration::Configuration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ Configuration& Configuration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Lex"))
   {
     m_lex = jsonValue.GetObject("Lex");
-
     m_lexHasBeenSet = true;
   }
-
   return *this;
 }
 

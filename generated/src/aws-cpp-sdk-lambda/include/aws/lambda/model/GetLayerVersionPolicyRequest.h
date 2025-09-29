@@ -21,7 +21,7 @@ namespace Model
   class GetLayerVersionPolicyRequest : public LambdaRequest
   {
   public:
-    AWS_LAMBDA_API GetLayerVersionPolicyRequest();
+    AWS_LAMBDA_API GetLayerVersionPolicyRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,73 +32,33 @@ namespace Model
     AWS_LAMBDA_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name or Amazon Resource Name (ARN) of the layer.</p>
      */
-    inline const Aws::String& GetLayerName() const{ return m_layerName; }
-
-    /**
-     * <p>The name or Amazon Resource Name (ARN) of the layer.</p>
-     */
+    inline const Aws::String& GetLayerName() const { return m_layerName; }
     inline bool LayerNameHasBeenSet() const { return m_layerNameHasBeenSet; }
+    template<typename LayerNameT = Aws::String>
+    void SetLayerName(LayerNameT&& value) { m_layerNameHasBeenSet = true; m_layerName = std::forward<LayerNameT>(value); }
+    template<typename LayerNameT = Aws::String>
+    GetLayerVersionPolicyRequest& WithLayerName(LayerNameT&& value) { SetLayerName(std::forward<LayerNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name or Amazon Resource Name (ARN) of the layer.</p>
-     */
-    inline void SetLayerName(const Aws::String& value) { m_layerNameHasBeenSet = true; m_layerName = value; }
-
-    /**
-     * <p>The name or Amazon Resource Name (ARN) of the layer.</p>
-     */
-    inline void SetLayerName(Aws::String&& value) { m_layerNameHasBeenSet = true; m_layerName = std::move(value); }
-
-    /**
-     * <p>The name or Amazon Resource Name (ARN) of the layer.</p>
-     */
-    inline void SetLayerName(const char* value) { m_layerNameHasBeenSet = true; m_layerName.assign(value); }
-
-    /**
-     * <p>The name or Amazon Resource Name (ARN) of the layer.</p>
-     */
-    inline GetLayerVersionPolicyRequest& WithLayerName(const Aws::String& value) { SetLayerName(value); return *this;}
-
-    /**
-     * <p>The name or Amazon Resource Name (ARN) of the layer.</p>
-     */
-    inline GetLayerVersionPolicyRequest& WithLayerName(Aws::String&& value) { SetLayerName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name or Amazon Resource Name (ARN) of the layer.</p>
-     */
-    inline GetLayerVersionPolicyRequest& WithLayerName(const char* value) { SetLayerName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The version number.</p>
      */
-    inline long long GetVersionNumber() const{ return m_versionNumber; }
-
-    /**
-     * <p>The version number.</p>
-     */
+    inline long long GetVersionNumber() const { return m_versionNumber; }
     inline bool VersionNumberHasBeenSet() const { return m_versionNumberHasBeenSet; }
-
-    /**
-     * <p>The version number.</p>
-     */
     inline void SetVersionNumber(long long value) { m_versionNumberHasBeenSet = true; m_versionNumber = value; }
-
-    /**
-     * <p>The version number.</p>
-     */
     inline GetLayerVersionPolicyRequest& WithVersionNumber(long long value) { SetVersionNumber(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_layerName;
     bool m_layerNameHasBeenSet = false;
 
-    long long m_versionNumber;
+    long long m_versionNumber{0};
     bool m_versionNumberHasBeenSet = false;
   };
 

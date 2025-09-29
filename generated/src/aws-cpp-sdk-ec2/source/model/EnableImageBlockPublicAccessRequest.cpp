@@ -10,21 +10,13 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-EnableImageBlockPublicAccessRequest::EnableImageBlockPublicAccessRequest() : 
-    m_imageBlockPublicAccessState(ImageBlockPublicAccessEnabledState::NOT_SET),
-    m_imageBlockPublicAccessStateHasBeenSet(false),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false)
-{
-}
-
 Aws::String EnableImageBlockPublicAccessRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=EnableImageBlockPublicAccess&";
   if(m_imageBlockPublicAccessStateHasBeenSet)
   {
-    ss << "ImageBlockPublicAccessState=" << ImageBlockPublicAccessEnabledStateMapper::GetNameForImageBlockPublicAccessEnabledState(m_imageBlockPublicAccessState) << "&";
+    ss << "ImageBlockPublicAccessState=" << StringUtils::URLEncode(ImageBlockPublicAccessEnabledStateMapper::GetNameForImageBlockPublicAccessEnabledState(m_imageBlockPublicAccessState)) << "&";
   }
 
   if(m_dryRunHasBeenSet)

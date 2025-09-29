@@ -32,149 +32,53 @@ namespace Model
   class DiscoveryData
   {
   public:
-    AWS_GROUNDSTATION_API DiscoveryData();
+    AWS_GROUNDSTATION_API DiscoveryData() = default;
     AWS_GROUNDSTATION_API DiscoveryData(Aws::Utils::Json::JsonView jsonValue);
     AWS_GROUNDSTATION_API DiscoveryData& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GROUNDSTATION_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>List of capabilities to associate with agent.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetCapabilityArns() const{ return m_capabilityArns; }
-
-    /**
-     * <p>List of capabilities to associate with agent.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetCapabilityArns() const { return m_capabilityArns; }
     inline bool CapabilityArnsHasBeenSet() const { return m_capabilityArnsHasBeenSet; }
+    template<typename CapabilityArnsT = Aws::Vector<Aws::String>>
+    void SetCapabilityArns(CapabilityArnsT&& value) { m_capabilityArnsHasBeenSet = true; m_capabilityArns = std::forward<CapabilityArnsT>(value); }
+    template<typename CapabilityArnsT = Aws::Vector<Aws::String>>
+    DiscoveryData& WithCapabilityArns(CapabilityArnsT&& value) { SetCapabilityArns(std::forward<CapabilityArnsT>(value)); return *this;}
+    template<typename CapabilityArnsT = Aws::String>
+    DiscoveryData& AddCapabilityArns(CapabilityArnsT&& value) { m_capabilityArnsHasBeenSet = true; m_capabilityArns.emplace_back(std::forward<CapabilityArnsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>List of capabilities to associate with agent.</p>
-     */
-    inline void SetCapabilityArns(const Aws::Vector<Aws::String>& value) { m_capabilityArnsHasBeenSet = true; m_capabilityArns = value; }
-
-    /**
-     * <p>List of capabilities to associate with agent.</p>
-     */
-    inline void SetCapabilityArns(Aws::Vector<Aws::String>&& value) { m_capabilityArnsHasBeenSet = true; m_capabilityArns = std::move(value); }
-
-    /**
-     * <p>List of capabilities to associate with agent.</p>
-     */
-    inline DiscoveryData& WithCapabilityArns(const Aws::Vector<Aws::String>& value) { SetCapabilityArns(value); return *this;}
-
-    /**
-     * <p>List of capabilities to associate with agent.</p>
-     */
-    inline DiscoveryData& WithCapabilityArns(Aws::Vector<Aws::String>&& value) { SetCapabilityArns(std::move(value)); return *this;}
-
-    /**
-     * <p>List of capabilities to associate with agent.</p>
-     */
-    inline DiscoveryData& AddCapabilityArns(const Aws::String& value) { m_capabilityArnsHasBeenSet = true; m_capabilityArns.push_back(value); return *this; }
-
-    /**
-     * <p>List of capabilities to associate with agent.</p>
-     */
-    inline DiscoveryData& AddCapabilityArns(Aws::String&& value) { m_capabilityArnsHasBeenSet = true; m_capabilityArns.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>List of capabilities to associate with agent.</p>
-     */
-    inline DiscoveryData& AddCapabilityArns(const char* value) { m_capabilityArnsHasBeenSet = true; m_capabilityArns.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>List of private IP addresses to associate with agent.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetPrivateIpAddresses() const{ return m_privateIpAddresses; }
-
-    /**
-     * <p>List of private IP addresses to associate with agent.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetPrivateIpAddresses() const { return m_privateIpAddresses; }
     inline bool PrivateIpAddressesHasBeenSet() const { return m_privateIpAddressesHasBeenSet; }
+    template<typename PrivateIpAddressesT = Aws::Vector<Aws::String>>
+    void SetPrivateIpAddresses(PrivateIpAddressesT&& value) { m_privateIpAddressesHasBeenSet = true; m_privateIpAddresses = std::forward<PrivateIpAddressesT>(value); }
+    template<typename PrivateIpAddressesT = Aws::Vector<Aws::String>>
+    DiscoveryData& WithPrivateIpAddresses(PrivateIpAddressesT&& value) { SetPrivateIpAddresses(std::forward<PrivateIpAddressesT>(value)); return *this;}
+    template<typename PrivateIpAddressesT = Aws::String>
+    DiscoveryData& AddPrivateIpAddresses(PrivateIpAddressesT&& value) { m_privateIpAddressesHasBeenSet = true; m_privateIpAddresses.emplace_back(std::forward<PrivateIpAddressesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>List of private IP addresses to associate with agent.</p>
-     */
-    inline void SetPrivateIpAddresses(const Aws::Vector<Aws::String>& value) { m_privateIpAddressesHasBeenSet = true; m_privateIpAddresses = value; }
-
-    /**
-     * <p>List of private IP addresses to associate with agent.</p>
-     */
-    inline void SetPrivateIpAddresses(Aws::Vector<Aws::String>&& value) { m_privateIpAddressesHasBeenSet = true; m_privateIpAddresses = std::move(value); }
-
-    /**
-     * <p>List of private IP addresses to associate with agent.</p>
-     */
-    inline DiscoveryData& WithPrivateIpAddresses(const Aws::Vector<Aws::String>& value) { SetPrivateIpAddresses(value); return *this;}
-
-    /**
-     * <p>List of private IP addresses to associate with agent.</p>
-     */
-    inline DiscoveryData& WithPrivateIpAddresses(Aws::Vector<Aws::String>&& value) { SetPrivateIpAddresses(std::move(value)); return *this;}
-
-    /**
-     * <p>List of private IP addresses to associate with agent.</p>
-     */
-    inline DiscoveryData& AddPrivateIpAddresses(const Aws::String& value) { m_privateIpAddressesHasBeenSet = true; m_privateIpAddresses.push_back(value); return *this; }
-
-    /**
-     * <p>List of private IP addresses to associate with agent.</p>
-     */
-    inline DiscoveryData& AddPrivateIpAddresses(Aws::String&& value) { m_privateIpAddressesHasBeenSet = true; m_privateIpAddresses.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>List of private IP addresses to associate with agent.</p>
-     */
-    inline DiscoveryData& AddPrivateIpAddresses(const char* value) { m_privateIpAddressesHasBeenSet = true; m_privateIpAddresses.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>List of public IP addresses to associate with agent.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetPublicIpAddresses() const{ return m_publicIpAddresses; }
-
-    /**
-     * <p>List of public IP addresses to associate with agent.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetPublicIpAddresses() const { return m_publicIpAddresses; }
     inline bool PublicIpAddressesHasBeenSet() const { return m_publicIpAddressesHasBeenSet; }
-
-    /**
-     * <p>List of public IP addresses to associate with agent.</p>
-     */
-    inline void SetPublicIpAddresses(const Aws::Vector<Aws::String>& value) { m_publicIpAddressesHasBeenSet = true; m_publicIpAddresses = value; }
-
-    /**
-     * <p>List of public IP addresses to associate with agent.</p>
-     */
-    inline void SetPublicIpAddresses(Aws::Vector<Aws::String>&& value) { m_publicIpAddressesHasBeenSet = true; m_publicIpAddresses = std::move(value); }
-
-    /**
-     * <p>List of public IP addresses to associate with agent.</p>
-     */
-    inline DiscoveryData& WithPublicIpAddresses(const Aws::Vector<Aws::String>& value) { SetPublicIpAddresses(value); return *this;}
-
-    /**
-     * <p>List of public IP addresses to associate with agent.</p>
-     */
-    inline DiscoveryData& WithPublicIpAddresses(Aws::Vector<Aws::String>&& value) { SetPublicIpAddresses(std::move(value)); return *this;}
-
-    /**
-     * <p>List of public IP addresses to associate with agent.</p>
-     */
-    inline DiscoveryData& AddPublicIpAddresses(const Aws::String& value) { m_publicIpAddressesHasBeenSet = true; m_publicIpAddresses.push_back(value); return *this; }
-
-    /**
-     * <p>List of public IP addresses to associate with agent.</p>
-     */
-    inline DiscoveryData& AddPublicIpAddresses(Aws::String&& value) { m_publicIpAddressesHasBeenSet = true; m_publicIpAddresses.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>List of public IP addresses to associate with agent.</p>
-     */
-    inline DiscoveryData& AddPublicIpAddresses(const char* value) { m_publicIpAddressesHasBeenSet = true; m_publicIpAddresses.push_back(value); return *this; }
-
+    template<typename PublicIpAddressesT = Aws::Vector<Aws::String>>
+    void SetPublicIpAddresses(PublicIpAddressesT&& value) { m_publicIpAddressesHasBeenSet = true; m_publicIpAddresses = std::forward<PublicIpAddressesT>(value); }
+    template<typename PublicIpAddressesT = Aws::Vector<Aws::String>>
+    DiscoveryData& WithPublicIpAddresses(PublicIpAddressesT&& value) { SetPublicIpAddresses(std::forward<PublicIpAddressesT>(value)); return *this;}
+    template<typename PublicIpAddressesT = Aws::String>
+    DiscoveryData& AddPublicIpAddresses(PublicIpAddressesT&& value) { m_publicIpAddressesHasBeenSet = true; m_publicIpAddresses.emplace_back(std::forward<PublicIpAddressesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_capabilityArns;

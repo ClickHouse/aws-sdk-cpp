@@ -34,103 +34,43 @@ namespace Model
   class ConfigurationInfo
   {
   public:
-    AWS_KAFKA_API ConfigurationInfo();
+    AWS_KAFKA_API ConfigurationInfo() = default;
     AWS_KAFKA_API ConfigurationInfo(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKA_API ConfigurationInfo& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * 
             <p>ARN of the configuration to use.</p>
          
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * 
-            <p>ARN of the configuration to use.</p>
-         
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    ConfigurationInfo& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * 
-            <p>ARN of the configuration to use.</p>
-         
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * 
-            <p>ARN of the configuration to use.</p>
-         
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * 
-            <p>ARN of the configuration to use.</p>
-         
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * 
-            <p>ARN of the configuration to use.</p>
-         
-     */
-    inline ConfigurationInfo& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * 
-            <p>ARN of the configuration to use.</p>
-         
-     */
-    inline ConfigurationInfo& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * 
-            <p>ARN of the configuration to use.</p>
-         
-     */
-    inline ConfigurationInfo& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * 
             <p>The revision of the configuration to use.</p>
          
      */
-    inline long long GetRevision() const{ return m_revision; }
-
-    /**
-     * 
-            <p>The revision of the configuration to use.</p>
-         
-     */
+    inline long long GetRevision() const { return m_revision; }
     inline bool RevisionHasBeenSet() const { return m_revisionHasBeenSet; }
-
-    /**
-     * 
-            <p>The revision of the configuration to use.</p>
-         
-     */
     inline void SetRevision(long long value) { m_revisionHasBeenSet = true; m_revision = value; }
-
-    /**
-     * 
-            <p>The revision of the configuration to use.</p>
-         
-     */
     inline ConfigurationInfo& WithRevision(long long value) { SetRevision(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_arn;
     bool m_arnHasBeenSet = false;
 
-    long long m_revision;
+    long long m_revision{0};
     bool m_revisionHasBeenSet = false;
   };
 

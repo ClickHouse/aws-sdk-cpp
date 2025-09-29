@@ -33,7 +33,7 @@ namespace Model
   class EnableFastSnapshotRestoreStateErrorItem
   {
   public:
-    AWS_EC2_API EnableFastSnapshotRestoreStateErrorItem();
+    AWS_EC2_API EnableFastSnapshotRestoreStateErrorItem() = default;
     AWS_EC2_API EnableFastSnapshotRestoreStateErrorItem(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API EnableFastSnapshotRestoreStateErrorItem& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -41,77 +41,29 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The Availability Zone.</p>
      */
-    inline const Aws::String& GetAvailabilityZone() const{ return m_availabilityZone; }
-
-    /**
-     * <p>The Availability Zone.</p>
-     */
+    inline const Aws::String& GetAvailabilityZone() const { return m_availabilityZone; }
     inline bool AvailabilityZoneHasBeenSet() const { return m_availabilityZoneHasBeenSet; }
+    template<typename AvailabilityZoneT = Aws::String>
+    void SetAvailabilityZone(AvailabilityZoneT&& value) { m_availabilityZoneHasBeenSet = true; m_availabilityZone = std::forward<AvailabilityZoneT>(value); }
+    template<typename AvailabilityZoneT = Aws::String>
+    EnableFastSnapshotRestoreStateErrorItem& WithAvailabilityZone(AvailabilityZoneT&& value) { SetAvailabilityZone(std::forward<AvailabilityZoneT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Availability Zone.</p>
-     */
-    inline void SetAvailabilityZone(const Aws::String& value) { m_availabilityZoneHasBeenSet = true; m_availabilityZone = value; }
-
-    /**
-     * <p>The Availability Zone.</p>
-     */
-    inline void SetAvailabilityZone(Aws::String&& value) { m_availabilityZoneHasBeenSet = true; m_availabilityZone = std::move(value); }
-
-    /**
-     * <p>The Availability Zone.</p>
-     */
-    inline void SetAvailabilityZone(const char* value) { m_availabilityZoneHasBeenSet = true; m_availabilityZone.assign(value); }
-
-    /**
-     * <p>The Availability Zone.</p>
-     */
-    inline EnableFastSnapshotRestoreStateErrorItem& WithAvailabilityZone(const Aws::String& value) { SetAvailabilityZone(value); return *this;}
-
-    /**
-     * <p>The Availability Zone.</p>
-     */
-    inline EnableFastSnapshotRestoreStateErrorItem& WithAvailabilityZone(Aws::String&& value) { SetAvailabilityZone(std::move(value)); return *this;}
-
-    /**
-     * <p>The Availability Zone.</p>
-     */
-    inline EnableFastSnapshotRestoreStateErrorItem& WithAvailabilityZone(const char* value) { SetAvailabilityZone(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The error.</p>
      */
-    inline const EnableFastSnapshotRestoreStateError& GetError() const{ return m_error; }
-
-    /**
-     * <p>The error.</p>
-     */
+    inline const EnableFastSnapshotRestoreStateError& GetError() const { return m_error; }
     inline bool ErrorHasBeenSet() const { return m_errorHasBeenSet; }
-
-    /**
-     * <p>The error.</p>
-     */
-    inline void SetError(const EnableFastSnapshotRestoreStateError& value) { m_errorHasBeenSet = true; m_error = value; }
-
-    /**
-     * <p>The error.</p>
-     */
-    inline void SetError(EnableFastSnapshotRestoreStateError&& value) { m_errorHasBeenSet = true; m_error = std::move(value); }
-
-    /**
-     * <p>The error.</p>
-     */
-    inline EnableFastSnapshotRestoreStateErrorItem& WithError(const EnableFastSnapshotRestoreStateError& value) { SetError(value); return *this;}
-
-    /**
-     * <p>The error.</p>
-     */
-    inline EnableFastSnapshotRestoreStateErrorItem& WithError(EnableFastSnapshotRestoreStateError&& value) { SetError(std::move(value)); return *this;}
-
+    template<typename ErrorT = EnableFastSnapshotRestoreStateError>
+    void SetError(ErrorT&& value) { m_errorHasBeenSet = true; m_error = std::forward<ErrorT>(value); }
+    template<typename ErrorT = EnableFastSnapshotRestoreStateError>
+    EnableFastSnapshotRestoreStateErrorItem& WithError(ErrorT&& value) { SetError(std::forward<ErrorT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_availabilityZone;

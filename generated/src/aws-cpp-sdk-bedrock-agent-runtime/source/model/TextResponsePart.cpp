@@ -18,15 +18,7 @@ namespace BedrockAgentRuntime
 namespace Model
 {
 
-TextResponsePart::TextResponsePart() : 
-    m_textHasBeenSet(false),
-    m_spanHasBeenSet(false)
-{
-}
-
-TextResponsePart::TextResponsePart(JsonView jsonValue) : 
-    m_textHasBeenSet(false),
-    m_spanHasBeenSet(false)
+TextResponsePart::TextResponsePart(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ TextResponsePart& TextResponsePart::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("text"))
   {
     m_text = jsonValue.GetString("text");
-
     m_textHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("span"))
   {
     m_span = jsonValue.GetObject("span");
-
     m_spanHasBeenSet = true;
   }
-
   return *this;
 }
 

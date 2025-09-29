@@ -12,20 +12,6 @@ using namespace Aws::MediaConnect::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateFlowRequest::CreateFlowRequest() : 
-    m_availabilityZoneHasBeenSet(false),
-    m_entitlementsHasBeenSet(false),
-    m_mediaStreamsHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_outputsHasBeenSet(false),
-    m_sourceHasBeenSet(false),
-    m_sourceFailoverConfigHasBeenSet(false),
-    m_sourcesHasBeenSet(false),
-    m_vpcInterfacesHasBeenSet(false),
-    m_maintenanceHasBeenSet(false)
-{
-}
-
 Aws::String CreateFlowRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -112,6 +98,23 @@ Aws::String CreateFlowRequest::SerializePayload() const
   if(m_maintenanceHasBeenSet)
   {
    payload.WithObject("maintenance", m_maintenance.Jsonize());
+
+  }
+
+  if(m_sourceMonitoringConfigHasBeenSet)
+  {
+   payload.WithObject("sourceMonitoringConfig", m_sourceMonitoringConfig.Jsonize());
+
+  }
+
+  if(m_flowSizeHasBeenSet)
+  {
+   payload.WithString("flowSize", FlowSizeMapper::GetNameForFlowSize(m_flowSize));
+  }
+
+  if(m_ndiConfigHasBeenSet)
+  {
+   payload.WithObject("ndiConfig", m_ndiConfig.Jsonize());
 
   }
 

@@ -18,46 +18,28 @@ namespace Braket
 namespace Model
 {
 
-HybridJobQueueInfo::HybridJobQueueInfo() : 
-    m_messageHasBeenSet(false),
-    m_positionHasBeenSet(false),
-    m_queue(QueueName::NOT_SET),
-    m_queueHasBeenSet(false)
-{
-}
-
-HybridJobQueueInfo::HybridJobQueueInfo(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_positionHasBeenSet(false),
-    m_queue(QueueName::NOT_SET),
-    m_queueHasBeenSet(false)
+HybridJobQueueInfo::HybridJobQueueInfo(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 HybridJobQueueInfo& HybridJobQueueInfo::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("message"))
-  {
-    m_message = jsonValue.GetString("message");
-
-    m_messageHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("position"))
-  {
-    m_position = jsonValue.GetString("position");
-
-    m_positionHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("queue"))
   {
     m_queue = QueueNameMapper::GetQueueNameForName(jsonValue.GetString("queue"));
-
     m_queueHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("position"))
+  {
+    m_position = jsonValue.GetString("position");
+    m_positionHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("message"))
+  {
+    m_message = jsonValue.GetString("message");
+    m_messageHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -65,10 +47,9 @@ JsonValue HybridJobQueueInfo::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_messageHasBeenSet)
+  if(m_queueHasBeenSet)
   {
-   payload.WithString("message", m_message);
-
+   payload.WithString("queue", QueueNameMapper::GetNameForQueueName(m_queue));
   }
 
   if(m_positionHasBeenSet)
@@ -77,9 +58,10 @@ JsonValue HybridJobQueueInfo::Jsonize() const
 
   }
 
-  if(m_queueHasBeenSet)
+  if(m_messageHasBeenSet)
   {
-   payload.WithString("queue", QueueNameMapper::GetNameForQueueName(m_queue));
+   payload.WithString("message", m_message);
+
   }
 
   return payload;

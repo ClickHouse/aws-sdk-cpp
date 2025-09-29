@@ -20,15 +20,7 @@ namespace EC2
 namespace Model
 {
 
-LoadBalancersConfig::LoadBalancersConfig() : 
-    m_classicLoadBalancersConfigHasBeenSet(false),
-    m_targetGroupsConfigHasBeenSet(false)
-{
-}
-
-LoadBalancersConfig::LoadBalancersConfig(const XmlNode& xmlNode) : 
-    m_classicLoadBalancersConfigHasBeenSet(false),
-    m_targetGroupsConfigHasBeenSet(false)
+LoadBalancersConfig::LoadBalancersConfig(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

@@ -12,15 +12,6 @@ using namespace Aws::AppIntegrationsService::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateApplicationRequest::UpdateApplicationRequest() : 
-    m_arnHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_applicationSourceConfigHasBeenSet(false),
-    m_permissionsHasBeenSet(false)
-{
-}
-
 Aws::String UpdateApplicationRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -51,6 +42,30 @@ Aws::String UpdateApplicationRequest::SerializePayload() const
      permissionsJsonList[permissionsIndex].AsString(m_permissions[permissionsIndex]);
    }
    payload.WithArray("Permissions", std::move(permissionsJsonList));
+
+  }
+
+  if(m_isServiceHasBeenSet)
+  {
+   payload.WithBool("IsService", m_isService);
+
+  }
+
+  if(m_initializationTimeoutHasBeenSet)
+  {
+   payload.WithInteger("InitializationTimeout", m_initializationTimeout);
+
+  }
+
+  if(m_applicationConfigHasBeenSet)
+  {
+   payload.WithObject("ApplicationConfig", m_applicationConfig.Jsonize());
+
+  }
+
+  if(m_iframeConfigHasBeenSet)
+  {
+   payload.WithObject("IframeConfig", m_iframeConfig.Jsonize());
 
   }
 

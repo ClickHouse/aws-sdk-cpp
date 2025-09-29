@@ -23,8 +23,8 @@ namespace finspace
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
 
       typedef FinspaceClientConfiguration ClientConfigurationType;
       typedef FinspaceEndpointProvider EndpointProviderType;
@@ -34,14 +34,14 @@ namespace finspace
         * is not specified, it will be initialized to default values.
         */
         FinspaceClient(const Aws::finspace::FinspaceClientConfiguration& clientConfiguration = Aws::finspace::FinspaceClientConfiguration(),
-                       std::shared_ptr<FinspaceEndpointProviderBase> endpointProvider = Aws::MakeShared<FinspaceEndpointProvider>(ALLOCATION_TAG));
+                       std::shared_ptr<FinspaceEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         FinspaceClient(const Aws::Auth::AWSCredentials& credentials,
-                       std::shared_ptr<FinspaceEndpointProviderBase> endpointProvider = Aws::MakeShared<FinspaceEndpointProvider>(ALLOCATION_TAG),
+                       std::shared_ptr<FinspaceEndpointProviderBase> endpointProvider = nullptr,
                        const Aws::finspace::FinspaceClientConfiguration& clientConfiguration = Aws::finspace::FinspaceClientConfiguration());
 
        /**
@@ -49,7 +49,7 @@ namespace finspace
         * the default http client factory will be used
         */
         FinspaceClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                       std::shared_ptr<FinspaceEndpointProviderBase> endpointProvider = Aws::MakeShared<FinspaceEndpointProvider>(ALLOCATION_TAG),
+                       std::shared_ptr<FinspaceEndpointProviderBase> endpointProvider = nullptr,
                        const Aws::finspace::FinspaceClientConfiguration& clientConfiguration = Aws::finspace::FinspaceClientConfiguration());
 
 
@@ -308,6 +308,31 @@ namespace finspace
         void DeleteKxClusterAsync(const DeleteKxClusterRequestT& request, const DeleteKxClusterResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&FinspaceClient::DeleteKxCluster, request, handler, context);
+        }
+
+        /**
+         * <p>Deletes the specified nodes from a cluster. </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/finspace-2021-03-12/DeleteKxClusterNode">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DeleteKxClusterNodeOutcome DeleteKxClusterNode(const Model::DeleteKxClusterNodeRequest& request) const;
+
+        /**
+         * A Callable wrapper for DeleteKxClusterNode that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DeleteKxClusterNodeRequestT = Model::DeleteKxClusterNodeRequest>
+        Model::DeleteKxClusterNodeOutcomeCallable DeleteKxClusterNodeCallable(const DeleteKxClusterNodeRequestT& request) const
+        {
+            return SubmitCallable(&FinspaceClient::DeleteKxClusterNode, request);
+        }
+
+        /**
+         * An Async wrapper for DeleteKxClusterNode that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DeleteKxClusterNodeRequestT = Model::DeleteKxClusterNodeRequest>
+        void DeleteKxClusterNodeAsync(const DeleteKxClusterNodeRequestT& request, const DeleteKxClusterNodeResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&FinspaceClient::DeleteKxClusterNode, request, handler, context);
         }
 
         /**
@@ -834,13 +859,13 @@ namespace finspace
          * href="http://docs.aws.amazon.com/goto/WebAPI/finspace-2021-03-12/ListKxEnvironments">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListKxEnvironmentsOutcome ListKxEnvironments(const Model::ListKxEnvironmentsRequest& request) const;
+        virtual Model::ListKxEnvironmentsOutcome ListKxEnvironments(const Model::ListKxEnvironmentsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListKxEnvironments that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListKxEnvironmentsRequestT = Model::ListKxEnvironmentsRequest>
-        Model::ListKxEnvironmentsOutcomeCallable ListKxEnvironmentsCallable(const ListKxEnvironmentsRequestT& request) const
+        Model::ListKxEnvironmentsOutcomeCallable ListKxEnvironmentsCallable(const ListKxEnvironmentsRequestT& request = {}) const
         {
             return SubmitCallable(&FinspaceClient::ListKxEnvironments, request);
         }
@@ -849,7 +874,7 @@ namespace finspace
          * An Async wrapper for ListKxEnvironments that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListKxEnvironmentsRequestT = Model::ListKxEnvironmentsRequest>
-        void ListKxEnvironmentsAsync(const ListKxEnvironmentsRequestT& request, const ListKxEnvironmentsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListKxEnvironmentsAsync(const ListKxEnvironmentsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListKxEnvironmentsRequestT& request = {}) const
         {
             return SubmitAsync(&FinspaceClient::ListKxEnvironments, request, handler, context);
         }
@@ -1234,7 +1259,6 @@ namespace finspace
       void init(const FinspaceClientConfiguration& clientConfiguration);
 
       FinspaceClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<FinspaceEndpointProviderBase> m_endpointProvider;
   };
 

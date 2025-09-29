@@ -12,18 +12,6 @@ using namespace Aws::QConnect::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateAssistantRequest::CreateAssistantRequest() : 
-    m_clientToken(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_descriptionHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_serverSideEncryptionConfigurationHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_type(AssistantType::NOT_SET),
-    m_typeHasBeenSet(false)
-{
-}
-
 Aws::String CreateAssistantRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -34,21 +22,20 @@ Aws::String CreateAssistantRequest::SerializePayload() const
 
   }
 
-  if(m_descriptionHasBeenSet)
-  {
-   payload.WithString("description", m_description);
-
-  }
-
   if(m_nameHasBeenSet)
   {
    payload.WithString("name", m_name);
 
   }
 
-  if(m_serverSideEncryptionConfigurationHasBeenSet)
+  if(m_typeHasBeenSet)
   {
-   payload.WithObject("serverSideEncryptionConfiguration", m_serverSideEncryptionConfiguration.Jsonize());
+   payload.WithString("type", AssistantTypeMapper::GetNameForAssistantType(m_type));
+  }
+
+  if(m_descriptionHasBeenSet)
+  {
+   payload.WithString("description", m_description);
 
   }
 
@@ -63,9 +50,10 @@ Aws::String CreateAssistantRequest::SerializePayload() const
 
   }
 
-  if(m_typeHasBeenSet)
+  if(m_serverSideEncryptionConfigurationHasBeenSet)
   {
-   payload.WithString("type", AssistantTypeMapper::GetNameForAssistantType(m_type));
+   payload.WithObject("serverSideEncryptionConfiguration", m_serverSideEncryptionConfiguration.Jsonize());
+
   }
 
   return payload.View().WriteReadable();

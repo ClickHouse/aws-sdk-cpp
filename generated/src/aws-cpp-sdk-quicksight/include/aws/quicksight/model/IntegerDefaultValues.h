@@ -33,84 +33,37 @@ namespace Model
   class IntegerDefaultValues
   {
   public:
-    AWS_QUICKSIGHT_API IntegerDefaultValues();
+    AWS_QUICKSIGHT_API IntegerDefaultValues() = default;
     AWS_QUICKSIGHT_API IntegerDefaultValues(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API IntegerDefaultValues& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The dynamic value of the <code>IntegerDefaultValues</code>. Different
      * defaults are displayed according to users, groups, and values mapping.</p>
      */
-    inline const DynamicDefaultValue& GetDynamicValue() const{ return m_dynamicValue; }
-
-    /**
-     * <p>The dynamic value of the <code>IntegerDefaultValues</code>. Different
-     * defaults are displayed according to users, groups, and values mapping.</p>
-     */
+    inline const DynamicDefaultValue& GetDynamicValue() const { return m_dynamicValue; }
     inline bool DynamicValueHasBeenSet() const { return m_dynamicValueHasBeenSet; }
+    template<typename DynamicValueT = DynamicDefaultValue>
+    void SetDynamicValue(DynamicValueT&& value) { m_dynamicValueHasBeenSet = true; m_dynamicValue = std::forward<DynamicValueT>(value); }
+    template<typename DynamicValueT = DynamicDefaultValue>
+    IntegerDefaultValues& WithDynamicValue(DynamicValueT&& value) { SetDynamicValue(std::forward<DynamicValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The dynamic value of the <code>IntegerDefaultValues</code>. Different
-     * defaults are displayed according to users, groups, and values mapping.</p>
-     */
-    inline void SetDynamicValue(const DynamicDefaultValue& value) { m_dynamicValueHasBeenSet = true; m_dynamicValue = value; }
-
-    /**
-     * <p>The dynamic value of the <code>IntegerDefaultValues</code>. Different
-     * defaults are displayed according to users, groups, and values mapping.</p>
-     */
-    inline void SetDynamicValue(DynamicDefaultValue&& value) { m_dynamicValueHasBeenSet = true; m_dynamicValue = std::move(value); }
-
-    /**
-     * <p>The dynamic value of the <code>IntegerDefaultValues</code>. Different
-     * defaults are displayed according to users, groups, and values mapping.</p>
-     */
-    inline IntegerDefaultValues& WithDynamicValue(const DynamicDefaultValue& value) { SetDynamicValue(value); return *this;}
-
-    /**
-     * <p>The dynamic value of the <code>IntegerDefaultValues</code>. Different
-     * defaults are displayed according to users, groups, and values mapping.</p>
-     */
-    inline IntegerDefaultValues& WithDynamicValue(DynamicDefaultValue&& value) { SetDynamicValue(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The static values of the <code>IntegerDefaultValues</code>.</p>
      */
-    inline const Aws::Vector<long long>& GetStaticValues() const{ return m_staticValues; }
-
-    /**
-     * <p>The static values of the <code>IntegerDefaultValues</code>.</p>
-     */
+    inline const Aws::Vector<long long>& GetStaticValues() const { return m_staticValues; }
     inline bool StaticValuesHasBeenSet() const { return m_staticValuesHasBeenSet; }
-
-    /**
-     * <p>The static values of the <code>IntegerDefaultValues</code>.</p>
-     */
-    inline void SetStaticValues(const Aws::Vector<long long>& value) { m_staticValuesHasBeenSet = true; m_staticValues = value; }
-
-    /**
-     * <p>The static values of the <code>IntegerDefaultValues</code>.</p>
-     */
-    inline void SetStaticValues(Aws::Vector<long long>&& value) { m_staticValuesHasBeenSet = true; m_staticValues = std::move(value); }
-
-    /**
-     * <p>The static values of the <code>IntegerDefaultValues</code>.</p>
-     */
-    inline IntegerDefaultValues& WithStaticValues(const Aws::Vector<long long>& value) { SetStaticValues(value); return *this;}
-
-    /**
-     * <p>The static values of the <code>IntegerDefaultValues</code>.</p>
-     */
-    inline IntegerDefaultValues& WithStaticValues(Aws::Vector<long long>&& value) { SetStaticValues(std::move(value)); return *this;}
-
-    /**
-     * <p>The static values of the <code>IntegerDefaultValues</code>.</p>
-     */
+    template<typename StaticValuesT = Aws::Vector<long long>>
+    void SetStaticValues(StaticValuesT&& value) { m_staticValuesHasBeenSet = true; m_staticValues = std::forward<StaticValuesT>(value); }
+    template<typename StaticValuesT = Aws::Vector<long long>>
+    IntegerDefaultValues& WithStaticValues(StaticValuesT&& value) { SetStaticValues(std::forward<StaticValuesT>(value)); return *this;}
     inline IntegerDefaultValues& AddStaticValues(long long value) { m_staticValuesHasBeenSet = true; m_staticValues.push_back(value); return *this; }
-
+    ///@}
   private:
 
     DynamicDefaultValue m_dynamicValue;

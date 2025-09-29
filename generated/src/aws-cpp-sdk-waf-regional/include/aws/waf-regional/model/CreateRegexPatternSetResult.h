@@ -28,122 +28,54 @@ namespace Model
   class CreateRegexPatternSetResult
   {
   public:
-    AWS_WAFREGIONAL_API CreateRegexPatternSetResult();
+    AWS_WAFREGIONAL_API CreateRegexPatternSetResult() = default;
     AWS_WAFREGIONAL_API CreateRegexPatternSetResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_WAFREGIONAL_API CreateRegexPatternSetResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>A <a>RegexPatternSet</a> that contains no objects.</p>
      */
-    inline const RegexPatternSet& GetRegexPatternSet() const{ return m_regexPatternSet; }
+    inline const RegexPatternSet& GetRegexPatternSet() const { return m_regexPatternSet; }
+    template<typename RegexPatternSetT = RegexPatternSet>
+    void SetRegexPatternSet(RegexPatternSetT&& value) { m_regexPatternSetHasBeenSet = true; m_regexPatternSet = std::forward<RegexPatternSetT>(value); }
+    template<typename RegexPatternSetT = RegexPatternSet>
+    CreateRegexPatternSetResult& WithRegexPatternSet(RegexPatternSetT&& value) { SetRegexPatternSet(std::forward<RegexPatternSetT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A <a>RegexPatternSet</a> that contains no objects.</p>
-     */
-    inline void SetRegexPatternSet(const RegexPatternSet& value) { m_regexPatternSet = value; }
-
-    /**
-     * <p>A <a>RegexPatternSet</a> that contains no objects.</p>
-     */
-    inline void SetRegexPatternSet(RegexPatternSet&& value) { m_regexPatternSet = std::move(value); }
-
-    /**
-     * <p>A <a>RegexPatternSet</a> that contains no objects.</p>
-     */
-    inline CreateRegexPatternSetResult& WithRegexPatternSet(const RegexPatternSet& value) { SetRegexPatternSet(value); return *this;}
-
-    /**
-     * <p>A <a>RegexPatternSet</a> that contains no objects.</p>
-     */
-    inline CreateRegexPatternSetResult& WithRegexPatternSet(RegexPatternSet&& value) { SetRegexPatternSet(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The <code>ChangeToken</code> that you used to submit the
      * <code>CreateRegexPatternSet</code> request. You can also use this value to query
      * the status of the request. For more information, see
      * <a>GetChangeTokenStatus</a>.</p>
      */
-    inline const Aws::String& GetChangeToken() const{ return m_changeToken; }
+    inline const Aws::String& GetChangeToken() const { return m_changeToken; }
+    template<typename ChangeTokenT = Aws::String>
+    void SetChangeToken(ChangeTokenT&& value) { m_changeTokenHasBeenSet = true; m_changeToken = std::forward<ChangeTokenT>(value); }
+    template<typename ChangeTokenT = Aws::String>
+    CreateRegexPatternSetResult& WithChangeToken(ChangeTokenT&& value) { SetChangeToken(std::forward<ChangeTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The <code>ChangeToken</code> that you used to submit the
-     * <code>CreateRegexPatternSet</code> request. You can also use this value to query
-     * the status of the request. For more information, see
-     * <a>GetChangeTokenStatus</a>.</p>
-     */
-    inline void SetChangeToken(const Aws::String& value) { m_changeToken = value; }
-
-    /**
-     * <p>The <code>ChangeToken</code> that you used to submit the
-     * <code>CreateRegexPatternSet</code> request. You can also use this value to query
-     * the status of the request. For more information, see
-     * <a>GetChangeTokenStatus</a>.</p>
-     */
-    inline void SetChangeToken(Aws::String&& value) { m_changeToken = std::move(value); }
-
-    /**
-     * <p>The <code>ChangeToken</code> that you used to submit the
-     * <code>CreateRegexPatternSet</code> request. You can also use this value to query
-     * the status of the request. For more information, see
-     * <a>GetChangeTokenStatus</a>.</p>
-     */
-    inline void SetChangeToken(const char* value) { m_changeToken.assign(value); }
-
-    /**
-     * <p>The <code>ChangeToken</code> that you used to submit the
-     * <code>CreateRegexPatternSet</code> request. You can also use this value to query
-     * the status of the request. For more information, see
-     * <a>GetChangeTokenStatus</a>.</p>
-     */
-    inline CreateRegexPatternSetResult& WithChangeToken(const Aws::String& value) { SetChangeToken(value); return *this;}
-
-    /**
-     * <p>The <code>ChangeToken</code> that you used to submit the
-     * <code>CreateRegexPatternSet</code> request. You can also use this value to query
-     * the status of the request. For more information, see
-     * <a>GetChangeTokenStatus</a>.</p>
-     */
-    inline CreateRegexPatternSetResult& WithChangeToken(Aws::String&& value) { SetChangeToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The <code>ChangeToken</code> that you used to submit the
-     * <code>CreateRegexPatternSet</code> request. You can also use this value to query
-     * the status of the request. For more information, see
-     * <a>GetChangeTokenStatus</a>.</p>
-     */
-    inline CreateRegexPatternSetResult& WithChangeToken(const char* value) { SetChangeToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline CreateRegexPatternSetResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline CreateRegexPatternSetResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline CreateRegexPatternSetResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    CreateRegexPatternSetResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     RegexPatternSet m_regexPatternSet;
+    bool m_regexPatternSetHasBeenSet = false;
 
     Aws::String m_changeToken;
+    bool m_changeTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

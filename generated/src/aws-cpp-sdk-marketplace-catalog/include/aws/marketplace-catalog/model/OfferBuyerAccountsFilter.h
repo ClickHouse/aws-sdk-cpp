@@ -32,60 +32,24 @@ namespace Model
   class OfferBuyerAccountsFilter
   {
   public:
-    AWS_MARKETPLACECATALOG_API OfferBuyerAccountsFilter();
+    AWS_MARKETPLACECATALOG_API OfferBuyerAccountsFilter() = default;
     AWS_MARKETPLACECATALOG_API OfferBuyerAccountsFilter(Aws::Utils::Json::JsonView jsonValue);
     AWS_MARKETPLACECATALOG_API OfferBuyerAccountsFilter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MARKETPLACECATALOG_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Allows filtering on the <code>BuyerAccounts</code> of an offer with wild card
      * input.</p>
      */
-    inline const Aws::String& GetWildCardValue() const{ return m_wildCardValue; }
-
-    /**
-     * <p>Allows filtering on the <code>BuyerAccounts</code> of an offer with wild card
-     * input.</p>
-     */
+    inline const Aws::String& GetWildCardValue() const { return m_wildCardValue; }
     inline bool WildCardValueHasBeenSet() const { return m_wildCardValueHasBeenSet; }
-
-    /**
-     * <p>Allows filtering on the <code>BuyerAccounts</code> of an offer with wild card
-     * input.</p>
-     */
-    inline void SetWildCardValue(const Aws::String& value) { m_wildCardValueHasBeenSet = true; m_wildCardValue = value; }
-
-    /**
-     * <p>Allows filtering on the <code>BuyerAccounts</code> of an offer with wild card
-     * input.</p>
-     */
-    inline void SetWildCardValue(Aws::String&& value) { m_wildCardValueHasBeenSet = true; m_wildCardValue = std::move(value); }
-
-    /**
-     * <p>Allows filtering on the <code>BuyerAccounts</code> of an offer with wild card
-     * input.</p>
-     */
-    inline void SetWildCardValue(const char* value) { m_wildCardValueHasBeenSet = true; m_wildCardValue.assign(value); }
-
-    /**
-     * <p>Allows filtering on the <code>BuyerAccounts</code> of an offer with wild card
-     * input.</p>
-     */
-    inline OfferBuyerAccountsFilter& WithWildCardValue(const Aws::String& value) { SetWildCardValue(value); return *this;}
-
-    /**
-     * <p>Allows filtering on the <code>BuyerAccounts</code> of an offer with wild card
-     * input.</p>
-     */
-    inline OfferBuyerAccountsFilter& WithWildCardValue(Aws::String&& value) { SetWildCardValue(std::move(value)); return *this;}
-
-    /**
-     * <p>Allows filtering on the <code>BuyerAccounts</code> of an offer with wild card
-     * input.</p>
-     */
-    inline OfferBuyerAccountsFilter& WithWildCardValue(const char* value) { SetWildCardValue(value); return *this;}
-
+    template<typename WildCardValueT = Aws::String>
+    void SetWildCardValue(WildCardValueT&& value) { m_wildCardValueHasBeenSet = true; m_wildCardValue = std::forward<WildCardValueT>(value); }
+    template<typename WildCardValueT = Aws::String>
+    OfferBuyerAccountsFilter& WithWildCardValue(WildCardValueT&& value) { SetWildCardValue(std::forward<WildCardValueT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_wildCardValue;

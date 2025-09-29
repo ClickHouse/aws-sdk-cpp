@@ -12,17 +12,6 @@ using namespace Aws::Lightsail::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateDistributionRequest::UpdateDistributionRequest() : 
-    m_distributionNameHasBeenSet(false),
-    m_originHasBeenSet(false),
-    m_defaultCacheBehaviorHasBeenSet(false),
-    m_cacheBehaviorSettingsHasBeenSet(false),
-    m_cacheBehaviorsHasBeenSet(false),
-    m_isEnabled(false),
-    m_isEnabledHasBeenSet(false)
-{
-}
-
 Aws::String UpdateDistributionRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -65,6 +54,23 @@ Aws::String UpdateDistributionRequest::SerializePayload() const
   if(m_isEnabledHasBeenSet)
   {
    payload.WithBool("isEnabled", m_isEnabled);
+
+  }
+
+  if(m_viewerMinimumTlsProtocolVersionHasBeenSet)
+  {
+   payload.WithString("viewerMinimumTlsProtocolVersion", ViewerMinimumTlsProtocolVersionEnumMapper::GetNameForViewerMinimumTlsProtocolVersionEnum(m_viewerMinimumTlsProtocolVersion));
+  }
+
+  if(m_certificateNameHasBeenSet)
+  {
+   payload.WithString("certificateName", m_certificateName);
+
+  }
+
+  if(m_useDefaultCertificateHasBeenSet)
+  {
+   payload.WithBool("useDefaultCertificate", m_useDefaultCertificate);
 
   }
 

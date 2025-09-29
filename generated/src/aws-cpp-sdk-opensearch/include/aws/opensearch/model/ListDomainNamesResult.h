@@ -36,80 +36,40 @@ namespace Model
   class ListDomainNamesResult
   {
   public:
-    AWS_OPENSEARCHSERVICE_API ListDomainNamesResult();
+    AWS_OPENSEARCHSERVICE_API ListDomainNamesResult() = default;
     AWS_OPENSEARCHSERVICE_API ListDomainNamesResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_OPENSEARCHSERVICE_API ListDomainNamesResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The names of all OpenSearch Service domains owned by the current user and
      * their respective engine types.</p>
      */
-    inline const Aws::Vector<DomainInfo>& GetDomainNames() const{ return m_domainNames; }
+    inline const Aws::Vector<DomainInfo>& GetDomainNames() const { return m_domainNames; }
+    template<typename DomainNamesT = Aws::Vector<DomainInfo>>
+    void SetDomainNames(DomainNamesT&& value) { m_domainNamesHasBeenSet = true; m_domainNames = std::forward<DomainNamesT>(value); }
+    template<typename DomainNamesT = Aws::Vector<DomainInfo>>
+    ListDomainNamesResult& WithDomainNames(DomainNamesT&& value) { SetDomainNames(std::forward<DomainNamesT>(value)); return *this;}
+    template<typename DomainNamesT = DomainInfo>
+    ListDomainNamesResult& AddDomainNames(DomainNamesT&& value) { m_domainNamesHasBeenSet = true; m_domainNames.emplace_back(std::forward<DomainNamesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The names of all OpenSearch Service domains owned by the current user and
-     * their respective engine types.</p>
-     */
-    inline void SetDomainNames(const Aws::Vector<DomainInfo>& value) { m_domainNames = value; }
-
-    /**
-     * <p>The names of all OpenSearch Service domains owned by the current user and
-     * their respective engine types.</p>
-     */
-    inline void SetDomainNames(Aws::Vector<DomainInfo>&& value) { m_domainNames = std::move(value); }
-
-    /**
-     * <p>The names of all OpenSearch Service domains owned by the current user and
-     * their respective engine types.</p>
-     */
-    inline ListDomainNamesResult& WithDomainNames(const Aws::Vector<DomainInfo>& value) { SetDomainNames(value); return *this;}
-
-    /**
-     * <p>The names of all OpenSearch Service domains owned by the current user and
-     * their respective engine types.</p>
-     */
-    inline ListDomainNamesResult& WithDomainNames(Aws::Vector<DomainInfo>&& value) { SetDomainNames(std::move(value)); return *this;}
-
-    /**
-     * <p>The names of all OpenSearch Service domains owned by the current user and
-     * their respective engine types.</p>
-     */
-    inline ListDomainNamesResult& AddDomainNames(const DomainInfo& value) { m_domainNames.push_back(value); return *this; }
-
-    /**
-     * <p>The names of all OpenSearch Service domains owned by the current user and
-     * their respective engine types.</p>
-     */
-    inline ListDomainNamesResult& AddDomainNames(DomainInfo&& value) { m_domainNames.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListDomainNamesResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListDomainNamesResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListDomainNamesResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListDomainNamesResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<DomainInfo> m_domainNames;
+    bool m_domainNamesHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

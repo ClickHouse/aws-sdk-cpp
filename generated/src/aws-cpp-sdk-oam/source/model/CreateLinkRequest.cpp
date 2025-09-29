@@ -12,14 +12,6 @@ using namespace Aws::OAM::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateLinkRequest::CreateLinkRequest() : 
-    m_labelTemplateHasBeenSet(false),
-    m_resourceTypesHasBeenSet(false),
-    m_sinkIdentifierHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateLinkRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -27,6 +19,12 @@ Aws::String CreateLinkRequest::SerializePayload() const
   if(m_labelTemplateHasBeenSet)
   {
    payload.WithString("LabelTemplate", m_labelTemplate);
+
+  }
+
+  if(m_linkConfigurationHasBeenSet)
+  {
+   payload.WithObject("LinkConfiguration", m_linkConfiguration.Jsonize());
 
   }
 

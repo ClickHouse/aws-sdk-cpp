@@ -18,15 +18,7 @@ namespace DatabaseMigrationService
 namespace Model
 {
 
-ExportSqlDetails::ExportSqlDetails() : 
-    m_s3ObjectKeyHasBeenSet(false),
-    m_objectURLHasBeenSet(false)
-{
-}
-
-ExportSqlDetails::ExportSqlDetails(JsonView jsonValue) : 
-    m_s3ObjectKeyHasBeenSet(false),
-    m_objectURLHasBeenSet(false)
+ExportSqlDetails::ExportSqlDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ExportSqlDetails& ExportSqlDetails::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("S3ObjectKey"))
   {
     m_s3ObjectKey = jsonValue.GetString("S3ObjectKey");
-
     m_s3ObjectKeyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ObjectURL"))
   {
     m_objectURL = jsonValue.GetString("ObjectURL");
-
     m_objectURLHasBeenSet = true;
   }
-
   return *this;
 }
 

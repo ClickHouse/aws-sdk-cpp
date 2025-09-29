@@ -30,6 +30,9 @@ namespace Aws
         static const int DOTNET_6_HASH = HashingUtils::HashString("DOTNET_6");
         static const int PHP_81_HASH = HashingUtils::HashString("PHP_81");
         static const int RUBY_31_HASH = HashingUtils::HashString("RUBY_31");
+        static const int PYTHON_311_HASH = HashingUtils::HashString("PYTHON_311");
+        static const int NODEJS_18_HASH = HashingUtils::HashString("NODEJS_18");
+        static const int NODEJS_22_HASH = HashingUtils::HashString("NODEJS_22");
 
 
         Runtime GetRuntimeForName(const Aws::String& name)
@@ -75,6 +78,18 @@ namespace Aws
           {
             return Runtime::RUBY_31;
           }
+          else if (hashCode == PYTHON_311_HASH)
+          {
+            return Runtime::PYTHON_311;
+          }
+          else if (hashCode == NODEJS_18_HASH)
+          {
+            return Runtime::NODEJS_18;
+          }
+          else if (hashCode == NODEJS_22_HASH)
+          {
+            return Runtime::NODEJS_22;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -111,6 +126,12 @@ namespace Aws
             return "PHP_81";
           case Runtime::RUBY_31:
             return "RUBY_31";
+          case Runtime::PYTHON_311:
+            return "PYTHON_311";
+          case Runtime::NODEJS_18:
+            return "NODEJS_18";
+          case Runtime::NODEJS_22:
+            return "NODEJS_22";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

@@ -21,7 +21,7 @@ namespace Model
   class UpdateApprovalRuleTemplateNameRequest : public CodeCommitRequest
   {
   public:
-    AWS_CODECOMMIT_API UpdateApprovalRuleTemplateNameRequest();
+    AWS_CODECOMMIT_API UpdateApprovalRuleTemplateNameRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,87 +34,29 @@ namespace Model
     AWS_CODECOMMIT_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The current name of the approval rule template.</p>
      */
-    inline const Aws::String& GetOldApprovalRuleTemplateName() const{ return m_oldApprovalRuleTemplateName; }
-
-    /**
-     * <p>The current name of the approval rule template.</p>
-     */
+    inline const Aws::String& GetOldApprovalRuleTemplateName() const { return m_oldApprovalRuleTemplateName; }
     inline bool OldApprovalRuleTemplateNameHasBeenSet() const { return m_oldApprovalRuleTemplateNameHasBeenSet; }
+    template<typename OldApprovalRuleTemplateNameT = Aws::String>
+    void SetOldApprovalRuleTemplateName(OldApprovalRuleTemplateNameT&& value) { m_oldApprovalRuleTemplateNameHasBeenSet = true; m_oldApprovalRuleTemplateName = std::forward<OldApprovalRuleTemplateNameT>(value); }
+    template<typename OldApprovalRuleTemplateNameT = Aws::String>
+    UpdateApprovalRuleTemplateNameRequest& WithOldApprovalRuleTemplateName(OldApprovalRuleTemplateNameT&& value) { SetOldApprovalRuleTemplateName(std::forward<OldApprovalRuleTemplateNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The current name of the approval rule template.</p>
-     */
-    inline void SetOldApprovalRuleTemplateName(const Aws::String& value) { m_oldApprovalRuleTemplateNameHasBeenSet = true; m_oldApprovalRuleTemplateName = value; }
-
-    /**
-     * <p>The current name of the approval rule template.</p>
-     */
-    inline void SetOldApprovalRuleTemplateName(Aws::String&& value) { m_oldApprovalRuleTemplateNameHasBeenSet = true; m_oldApprovalRuleTemplateName = std::move(value); }
-
-    /**
-     * <p>The current name of the approval rule template.</p>
-     */
-    inline void SetOldApprovalRuleTemplateName(const char* value) { m_oldApprovalRuleTemplateNameHasBeenSet = true; m_oldApprovalRuleTemplateName.assign(value); }
-
-    /**
-     * <p>The current name of the approval rule template.</p>
-     */
-    inline UpdateApprovalRuleTemplateNameRequest& WithOldApprovalRuleTemplateName(const Aws::String& value) { SetOldApprovalRuleTemplateName(value); return *this;}
-
-    /**
-     * <p>The current name of the approval rule template.</p>
-     */
-    inline UpdateApprovalRuleTemplateNameRequest& WithOldApprovalRuleTemplateName(Aws::String&& value) { SetOldApprovalRuleTemplateName(std::move(value)); return *this;}
-
-    /**
-     * <p>The current name of the approval rule template.</p>
-     */
-    inline UpdateApprovalRuleTemplateNameRequest& WithOldApprovalRuleTemplateName(const char* value) { SetOldApprovalRuleTemplateName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The new name you want to apply to the approval rule template.</p>
      */
-    inline const Aws::String& GetNewApprovalRuleTemplateName() const{ return m_newApprovalRuleTemplateName; }
-
-    /**
-     * <p>The new name you want to apply to the approval rule template.</p>
-     */
+    inline const Aws::String& GetNewApprovalRuleTemplateName() const { return m_newApprovalRuleTemplateName; }
     inline bool NewApprovalRuleTemplateNameHasBeenSet() const { return m_newApprovalRuleTemplateNameHasBeenSet; }
-
-    /**
-     * <p>The new name you want to apply to the approval rule template.</p>
-     */
-    inline void SetNewApprovalRuleTemplateName(const Aws::String& value) { m_newApprovalRuleTemplateNameHasBeenSet = true; m_newApprovalRuleTemplateName = value; }
-
-    /**
-     * <p>The new name you want to apply to the approval rule template.</p>
-     */
-    inline void SetNewApprovalRuleTemplateName(Aws::String&& value) { m_newApprovalRuleTemplateNameHasBeenSet = true; m_newApprovalRuleTemplateName = std::move(value); }
-
-    /**
-     * <p>The new name you want to apply to the approval rule template.</p>
-     */
-    inline void SetNewApprovalRuleTemplateName(const char* value) { m_newApprovalRuleTemplateNameHasBeenSet = true; m_newApprovalRuleTemplateName.assign(value); }
-
-    /**
-     * <p>The new name you want to apply to the approval rule template.</p>
-     */
-    inline UpdateApprovalRuleTemplateNameRequest& WithNewApprovalRuleTemplateName(const Aws::String& value) { SetNewApprovalRuleTemplateName(value); return *this;}
-
-    /**
-     * <p>The new name you want to apply to the approval rule template.</p>
-     */
-    inline UpdateApprovalRuleTemplateNameRequest& WithNewApprovalRuleTemplateName(Aws::String&& value) { SetNewApprovalRuleTemplateName(std::move(value)); return *this;}
-
-    /**
-     * <p>The new name you want to apply to the approval rule template.</p>
-     */
-    inline UpdateApprovalRuleTemplateNameRequest& WithNewApprovalRuleTemplateName(const char* value) { SetNewApprovalRuleTemplateName(value); return *this;}
-
+    template<typename NewApprovalRuleTemplateNameT = Aws::String>
+    void SetNewApprovalRuleTemplateName(NewApprovalRuleTemplateNameT&& value) { m_newApprovalRuleTemplateNameHasBeenSet = true; m_newApprovalRuleTemplateName = std::forward<NewApprovalRuleTemplateNameT>(value); }
+    template<typename NewApprovalRuleTemplateNameT = Aws::String>
+    UpdateApprovalRuleTemplateNameRequest& WithNewApprovalRuleTemplateName(NewApprovalRuleTemplateNameT&& value) { SetNewApprovalRuleTemplateName(std::forward<NewApprovalRuleTemplateNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_oldApprovalRuleTemplateName;

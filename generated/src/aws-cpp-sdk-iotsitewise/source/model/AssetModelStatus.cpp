@@ -18,17 +18,7 @@ namespace IoTSiteWise
 namespace Model
 {
 
-AssetModelStatus::AssetModelStatus() : 
-    m_state(AssetModelState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_errorHasBeenSet(false)
-{
-}
-
-AssetModelStatus::AssetModelStatus(JsonView jsonValue) : 
-    m_state(AssetModelState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_errorHasBeenSet(false)
+AssetModelStatus::AssetModelStatus(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ AssetModelStatus& AssetModelStatus::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("state"))
   {
     m_state = AssetModelStateMapper::GetAssetModelStateForName(jsonValue.GetString("state"));
-
     m_stateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("error"))
   {
     m_error = jsonValue.GetObject("error");
-
     m_errorHasBeenSet = true;
   }
-
   return *this;
 }
 

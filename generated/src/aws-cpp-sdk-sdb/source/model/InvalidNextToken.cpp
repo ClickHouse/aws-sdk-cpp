@@ -20,15 +20,7 @@ namespace SimpleDB
 namespace Model
 {
 
-InvalidNextToken::InvalidNextToken() : 
-    m_boxUsage(0.0),
-    m_boxUsageHasBeenSet(false)
-{
-}
-
-InvalidNextToken::InvalidNextToken(const XmlNode& xmlNode) : 
-    m_boxUsage(0.0),
-    m_boxUsageHasBeenSet(false)
+InvalidNextToken::InvalidNextToken(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

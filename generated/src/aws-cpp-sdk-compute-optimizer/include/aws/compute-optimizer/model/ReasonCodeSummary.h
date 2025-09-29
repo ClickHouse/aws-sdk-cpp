@@ -31,69 +31,37 @@ namespace Model
   class ReasonCodeSummary
   {
   public:
-    AWS_COMPUTEOPTIMIZER_API ReasonCodeSummary();
+    AWS_COMPUTEOPTIMIZER_API ReasonCodeSummary() = default;
     AWS_COMPUTEOPTIMIZER_API ReasonCodeSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_COMPUTEOPTIMIZER_API ReasonCodeSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COMPUTEOPTIMIZER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the finding reason code.</p>
      */
-    inline const FindingReasonCode& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the finding reason code.</p>
-     */
+    inline FindingReasonCode GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    inline void SetName(FindingReasonCode value) { m_nameHasBeenSet = true; m_name = value; }
+    inline ReasonCodeSummary& WithName(FindingReasonCode value) { SetName(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the finding reason code.</p>
-     */
-    inline void SetName(const FindingReasonCode& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the finding reason code.</p>
-     */
-    inline void SetName(FindingReasonCode&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the finding reason code.</p>
-     */
-    inline ReasonCodeSummary& WithName(const FindingReasonCode& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the finding reason code.</p>
-     */
-    inline ReasonCodeSummary& WithName(FindingReasonCode&& value) { SetName(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The value of the finding reason code summary.</p>
      */
-    inline double GetValue() const{ return m_value; }
-
-    /**
-     * <p>The value of the finding reason code summary.</p>
-     */
+    inline double GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>The value of the finding reason code summary.</p>
-     */
     inline void SetValue(double value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The value of the finding reason code summary.</p>
-     */
     inline ReasonCodeSummary& WithValue(double value) { SetValue(value); return *this;}
-
+    ///@}
   private:
 
-    FindingReasonCode m_name;
+    FindingReasonCode m_name{FindingReasonCode::NOT_SET};
     bool m_nameHasBeenSet = false;
 
-    double m_value;
+    double m_value{0.0};
     bool m_valueHasBeenSet = false;
   };
 

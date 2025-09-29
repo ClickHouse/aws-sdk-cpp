@@ -31,52 +31,23 @@ namespace Model
   class Replica
   {
   public:
-    AWS_DYNAMODB_API Replica();
+    AWS_DYNAMODB_API Replica() = default;
     AWS_DYNAMODB_API Replica(Aws::Utils::Json::JsonView jsonValue);
     AWS_DYNAMODB_API Replica& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DYNAMODB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Region where the replica needs to be created.</p>
      */
-    inline const Aws::String& GetRegionName() const{ return m_regionName; }
-
-    /**
-     * <p>The Region where the replica needs to be created.</p>
-     */
+    inline const Aws::String& GetRegionName() const { return m_regionName; }
     inline bool RegionNameHasBeenSet() const { return m_regionNameHasBeenSet; }
-
-    /**
-     * <p>The Region where the replica needs to be created.</p>
-     */
-    inline void SetRegionName(const Aws::String& value) { m_regionNameHasBeenSet = true; m_regionName = value; }
-
-    /**
-     * <p>The Region where the replica needs to be created.</p>
-     */
-    inline void SetRegionName(Aws::String&& value) { m_regionNameHasBeenSet = true; m_regionName = std::move(value); }
-
-    /**
-     * <p>The Region where the replica needs to be created.</p>
-     */
-    inline void SetRegionName(const char* value) { m_regionNameHasBeenSet = true; m_regionName.assign(value); }
-
-    /**
-     * <p>The Region where the replica needs to be created.</p>
-     */
-    inline Replica& WithRegionName(const Aws::String& value) { SetRegionName(value); return *this;}
-
-    /**
-     * <p>The Region where the replica needs to be created.</p>
-     */
-    inline Replica& WithRegionName(Aws::String&& value) { SetRegionName(std::move(value)); return *this;}
-
-    /**
-     * <p>The Region where the replica needs to be created.</p>
-     */
-    inline Replica& WithRegionName(const char* value) { SetRegionName(value); return *this;}
-
+    template<typename RegionNameT = Aws::String>
+    void SetRegionName(RegionNameT&& value) { m_regionNameHasBeenSet = true; m_regionName = std::forward<RegionNameT>(value); }
+    template<typename RegionNameT = Aws::String>
+    Replica& WithRegionName(RegionNameT&& value) { SetRegionName(std::forward<RegionNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_regionName;

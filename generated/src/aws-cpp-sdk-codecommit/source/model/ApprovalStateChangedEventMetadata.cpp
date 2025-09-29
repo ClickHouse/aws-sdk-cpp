@@ -18,17 +18,7 @@ namespace CodeCommit
 namespace Model
 {
 
-ApprovalStateChangedEventMetadata::ApprovalStateChangedEventMetadata() : 
-    m_revisionIdHasBeenSet(false),
-    m_approvalStatus(ApprovalState::NOT_SET),
-    m_approvalStatusHasBeenSet(false)
-{
-}
-
-ApprovalStateChangedEventMetadata::ApprovalStateChangedEventMetadata(JsonView jsonValue) : 
-    m_revisionIdHasBeenSet(false),
-    m_approvalStatus(ApprovalState::NOT_SET),
-    m_approvalStatusHasBeenSet(false)
+ApprovalStateChangedEventMetadata::ApprovalStateChangedEventMetadata(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ApprovalStateChangedEventMetadata& ApprovalStateChangedEventMetadata::operator =
   if(jsonValue.ValueExists("revisionId"))
   {
     m_revisionId = jsonValue.GetString("revisionId");
-
     m_revisionIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("approvalStatus"))
   {
     m_approvalStatus = ApprovalStateMapper::GetApprovalStateForName(jsonValue.GetString("approvalStatus"));
-
     m_approvalStatusHasBeenSet = true;
   }
-
   return *this;
 }
 

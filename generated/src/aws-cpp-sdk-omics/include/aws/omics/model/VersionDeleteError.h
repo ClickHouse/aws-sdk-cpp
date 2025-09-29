@@ -32,93 +32,35 @@ namespace Model
   class VersionDeleteError
   {
   public:
-    AWS_OMICS_API VersionDeleteError();
+    AWS_OMICS_API VersionDeleteError() = default;
     AWS_OMICS_API VersionDeleteError(Aws::Utils::Json::JsonView jsonValue);
     AWS_OMICS_API VersionDeleteError& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_OMICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The name given to an annotation store version. </p>
      */
-    inline const Aws::String& GetVersionName() const{ return m_versionName; }
-
-    /**
-     * <p> The name given to an annotation store version. </p>
-     */
+    inline const Aws::String& GetVersionName() const { return m_versionName; }
     inline bool VersionNameHasBeenSet() const { return m_versionNameHasBeenSet; }
+    template<typename VersionNameT = Aws::String>
+    void SetVersionName(VersionNameT&& value) { m_versionNameHasBeenSet = true; m_versionName = std::forward<VersionNameT>(value); }
+    template<typename VersionNameT = Aws::String>
+    VersionDeleteError& WithVersionName(VersionNameT&& value) { SetVersionName(std::forward<VersionNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The name given to an annotation store version. </p>
-     */
-    inline void SetVersionName(const Aws::String& value) { m_versionNameHasBeenSet = true; m_versionName = value; }
-
-    /**
-     * <p> The name given to an annotation store version. </p>
-     */
-    inline void SetVersionName(Aws::String&& value) { m_versionNameHasBeenSet = true; m_versionName = std::move(value); }
-
-    /**
-     * <p> The name given to an annotation store version. </p>
-     */
-    inline void SetVersionName(const char* value) { m_versionNameHasBeenSet = true; m_versionName.assign(value); }
-
-    /**
-     * <p> The name given to an annotation store version. </p>
-     */
-    inline VersionDeleteError& WithVersionName(const Aws::String& value) { SetVersionName(value); return *this;}
-
-    /**
-     * <p> The name given to an annotation store version. </p>
-     */
-    inline VersionDeleteError& WithVersionName(Aws::String&& value) { SetVersionName(std::move(value)); return *this;}
-
-    /**
-     * <p> The name given to an annotation store version. </p>
-     */
-    inline VersionDeleteError& WithVersionName(const char* value) { SetVersionName(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The message explaining the error in annotation store deletion. </p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p> The message explaining the error in annotation store deletion. </p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
-
-    /**
-     * <p> The message explaining the error in annotation store deletion. </p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p> The message explaining the error in annotation store deletion. </p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p> The message explaining the error in annotation store deletion. </p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p> The message explaining the error in annotation store deletion. </p>
-     */
-    inline VersionDeleteError& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p> The message explaining the error in annotation store deletion. </p>
-     */
-    inline VersionDeleteError& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p> The message explaining the error in annotation store deletion. </p>
-     */
-    inline VersionDeleteError& WithMessage(const char* value) { SetMessage(value); return *this;}
-
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    VersionDeleteError& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_versionName;

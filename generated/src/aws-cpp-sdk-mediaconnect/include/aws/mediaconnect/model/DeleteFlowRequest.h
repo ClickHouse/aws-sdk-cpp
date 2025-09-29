@@ -21,7 +21,7 @@ namespace Model
   class DeleteFlowRequest : public MediaConnectRequest
   {
   public:
-    AWS_MEDIACONNECT_API DeleteFlowRequest();
+    AWS_MEDIACONNECT_API DeleteFlowRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_MEDIACONNECT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
-     * The ARN of the flow that you want to delete.
+     * <p> The Amazon Resource Name (ARN) of the flow that you want to delete.</p>
      */
-    inline const Aws::String& GetFlowArn() const{ return m_flowArn; }
-
-    /**
-     * The ARN of the flow that you want to delete.
-     */
+    inline const Aws::String& GetFlowArn() const { return m_flowArn; }
     inline bool FlowArnHasBeenSet() const { return m_flowArnHasBeenSet; }
-
-    /**
-     * The ARN of the flow that you want to delete.
-     */
-    inline void SetFlowArn(const Aws::String& value) { m_flowArnHasBeenSet = true; m_flowArn = value; }
-
-    /**
-     * The ARN of the flow that you want to delete.
-     */
-    inline void SetFlowArn(Aws::String&& value) { m_flowArnHasBeenSet = true; m_flowArn = std::move(value); }
-
-    /**
-     * The ARN of the flow that you want to delete.
-     */
-    inline void SetFlowArn(const char* value) { m_flowArnHasBeenSet = true; m_flowArn.assign(value); }
-
-    /**
-     * The ARN of the flow that you want to delete.
-     */
-    inline DeleteFlowRequest& WithFlowArn(const Aws::String& value) { SetFlowArn(value); return *this;}
-
-    /**
-     * The ARN of the flow that you want to delete.
-     */
-    inline DeleteFlowRequest& WithFlowArn(Aws::String&& value) { SetFlowArn(std::move(value)); return *this;}
-
-    /**
-     * The ARN of the flow that you want to delete.
-     */
-    inline DeleteFlowRequest& WithFlowArn(const char* value) { SetFlowArn(value); return *this;}
-
+    template<typename FlowArnT = Aws::String>
+    void SetFlowArn(FlowArnT&& value) { m_flowArnHasBeenSet = true; m_flowArn = std::forward<FlowArnT>(value); }
+    template<typename FlowArnT = Aws::String>
+    DeleteFlowRequest& WithFlowArn(FlowArnT&& value) { SetFlowArn(std::forward<FlowArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_flowArn;

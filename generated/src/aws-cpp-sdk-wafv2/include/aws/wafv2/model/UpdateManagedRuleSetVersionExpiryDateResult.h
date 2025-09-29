@@ -28,83 +28,36 @@ namespace Model
   class UpdateManagedRuleSetVersionExpiryDateResult
   {
   public:
-    AWS_WAFV2_API UpdateManagedRuleSetVersionExpiryDateResult();
+    AWS_WAFV2_API UpdateManagedRuleSetVersionExpiryDateResult() = default;
     AWS_WAFV2_API UpdateManagedRuleSetVersionExpiryDateResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_WAFV2_API UpdateManagedRuleSetVersionExpiryDateResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The version that is set to expire. </p>
      */
-    inline const Aws::String& GetExpiringVersion() const{ return m_expiringVersion; }
+    inline const Aws::String& GetExpiringVersion() const { return m_expiringVersion; }
+    template<typename ExpiringVersionT = Aws::String>
+    void SetExpiringVersion(ExpiringVersionT&& value) { m_expiringVersionHasBeenSet = true; m_expiringVersion = std::forward<ExpiringVersionT>(value); }
+    template<typename ExpiringVersionT = Aws::String>
+    UpdateManagedRuleSetVersionExpiryDateResult& WithExpiringVersion(ExpiringVersionT&& value) { SetExpiringVersion(std::forward<ExpiringVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The version that is set to expire. </p>
-     */
-    inline void SetExpiringVersion(const Aws::String& value) { m_expiringVersion = value; }
-
-    /**
-     * <p>The version that is set to expire. </p>
-     */
-    inline void SetExpiringVersion(Aws::String&& value) { m_expiringVersion = std::move(value); }
-
-    /**
-     * <p>The version that is set to expire. </p>
-     */
-    inline void SetExpiringVersion(const char* value) { m_expiringVersion.assign(value); }
-
-    /**
-     * <p>The version that is set to expire. </p>
-     */
-    inline UpdateManagedRuleSetVersionExpiryDateResult& WithExpiringVersion(const Aws::String& value) { SetExpiringVersion(value); return *this;}
-
-    /**
-     * <p>The version that is set to expire. </p>
-     */
-    inline UpdateManagedRuleSetVersionExpiryDateResult& WithExpiringVersion(Aws::String&& value) { SetExpiringVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The version that is set to expire. </p>
-     */
-    inline UpdateManagedRuleSetVersionExpiryDateResult& WithExpiringVersion(const char* value) { SetExpiringVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The time that the version will expire. </p> <p>Times are in Coordinated
      * Universal Time (UTC) format. UTC format includes the special designator, Z. For
      * example, "2016-09-27T14:50Z". </p>
      */
-    inline const Aws::Utils::DateTime& GetExpiryTimestamp() const{ return m_expiryTimestamp; }
+    inline const Aws::Utils::DateTime& GetExpiryTimestamp() const { return m_expiryTimestamp; }
+    template<typename ExpiryTimestampT = Aws::Utils::DateTime>
+    void SetExpiryTimestamp(ExpiryTimestampT&& value) { m_expiryTimestampHasBeenSet = true; m_expiryTimestamp = std::forward<ExpiryTimestampT>(value); }
+    template<typename ExpiryTimestampT = Aws::Utils::DateTime>
+    UpdateManagedRuleSetVersionExpiryDateResult& WithExpiryTimestamp(ExpiryTimestampT&& value) { SetExpiryTimestamp(std::forward<ExpiryTimestampT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time that the version will expire. </p> <p>Times are in Coordinated
-     * Universal Time (UTC) format. UTC format includes the special designator, Z. For
-     * example, "2016-09-27T14:50Z". </p>
-     */
-    inline void SetExpiryTimestamp(const Aws::Utils::DateTime& value) { m_expiryTimestamp = value; }
-
-    /**
-     * <p>The time that the version will expire. </p> <p>Times are in Coordinated
-     * Universal Time (UTC) format. UTC format includes the special designator, Z. For
-     * example, "2016-09-27T14:50Z". </p>
-     */
-    inline void SetExpiryTimestamp(Aws::Utils::DateTime&& value) { m_expiryTimestamp = std::move(value); }
-
-    /**
-     * <p>The time that the version will expire. </p> <p>Times are in Coordinated
-     * Universal Time (UTC) format. UTC format includes the special designator, Z. For
-     * example, "2016-09-27T14:50Z". </p>
-     */
-    inline UpdateManagedRuleSetVersionExpiryDateResult& WithExpiryTimestamp(const Aws::Utils::DateTime& value) { SetExpiryTimestamp(value); return *this;}
-
-    /**
-     * <p>The time that the version will expire. </p> <p>Times are in Coordinated
-     * Universal Time (UTC) format. UTC format includes the special designator, Z. For
-     * example, "2016-09-27T14:50Z". </p>
-     */
-    inline UpdateManagedRuleSetVersionExpiryDateResult& WithExpiryTimestamp(Aws::Utils::DateTime&& value) { SetExpiryTimestamp(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A token used for optimistic locking. WAF returns a token to your
      * <code>get</code> and <code>list</code> requests, to mark the state of the entity
@@ -115,111 +68,34 @@ namespace Model
      * fails with a <code>WAFOptimisticLockException</code>. If this happens, perform
      * another <code>get</code>, and use the new token returned by that operation. </p>
      */
-    inline const Aws::String& GetNextLockToken() const{ return m_nextLockToken; }
+    inline const Aws::String& GetNextLockToken() const { return m_nextLockToken; }
+    template<typename NextLockTokenT = Aws::String>
+    void SetNextLockToken(NextLockTokenT&& value) { m_nextLockTokenHasBeenSet = true; m_nextLockToken = std::forward<NextLockTokenT>(value); }
+    template<typename NextLockTokenT = Aws::String>
+    UpdateManagedRuleSetVersionExpiryDateResult& WithNextLockToken(NextLockTokenT&& value) { SetNextLockToken(std::forward<NextLockTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A token used for optimistic locking. WAF returns a token to your
-     * <code>get</code> and <code>list</code> requests, to mark the state of the entity
-     * at the time of the request. To make changes to the entity associated with the
-     * token, you provide the token to operations like <code>update</code> and
-     * <code>delete</code>. WAF uses the token to ensure that no changes have been made
-     * to the entity since you last retrieved it. If a change has been made, the update
-     * fails with a <code>WAFOptimisticLockException</code>. If this happens, perform
-     * another <code>get</code>, and use the new token returned by that operation. </p>
-     */
-    inline void SetNextLockToken(const Aws::String& value) { m_nextLockToken = value; }
-
-    /**
-     * <p>A token used for optimistic locking. WAF returns a token to your
-     * <code>get</code> and <code>list</code> requests, to mark the state of the entity
-     * at the time of the request. To make changes to the entity associated with the
-     * token, you provide the token to operations like <code>update</code> and
-     * <code>delete</code>. WAF uses the token to ensure that no changes have been made
-     * to the entity since you last retrieved it. If a change has been made, the update
-     * fails with a <code>WAFOptimisticLockException</code>. If this happens, perform
-     * another <code>get</code>, and use the new token returned by that operation. </p>
-     */
-    inline void SetNextLockToken(Aws::String&& value) { m_nextLockToken = std::move(value); }
-
-    /**
-     * <p>A token used for optimistic locking. WAF returns a token to your
-     * <code>get</code> and <code>list</code> requests, to mark the state of the entity
-     * at the time of the request. To make changes to the entity associated with the
-     * token, you provide the token to operations like <code>update</code> and
-     * <code>delete</code>. WAF uses the token to ensure that no changes have been made
-     * to the entity since you last retrieved it. If a change has been made, the update
-     * fails with a <code>WAFOptimisticLockException</code>. If this happens, perform
-     * another <code>get</code>, and use the new token returned by that operation. </p>
-     */
-    inline void SetNextLockToken(const char* value) { m_nextLockToken.assign(value); }
-
-    /**
-     * <p>A token used for optimistic locking. WAF returns a token to your
-     * <code>get</code> and <code>list</code> requests, to mark the state of the entity
-     * at the time of the request. To make changes to the entity associated with the
-     * token, you provide the token to operations like <code>update</code> and
-     * <code>delete</code>. WAF uses the token to ensure that no changes have been made
-     * to the entity since you last retrieved it. If a change has been made, the update
-     * fails with a <code>WAFOptimisticLockException</code>. If this happens, perform
-     * another <code>get</code>, and use the new token returned by that operation. </p>
-     */
-    inline UpdateManagedRuleSetVersionExpiryDateResult& WithNextLockToken(const Aws::String& value) { SetNextLockToken(value); return *this;}
-
-    /**
-     * <p>A token used for optimistic locking. WAF returns a token to your
-     * <code>get</code> and <code>list</code> requests, to mark the state of the entity
-     * at the time of the request. To make changes to the entity associated with the
-     * token, you provide the token to operations like <code>update</code> and
-     * <code>delete</code>. WAF uses the token to ensure that no changes have been made
-     * to the entity since you last retrieved it. If a change has been made, the update
-     * fails with a <code>WAFOptimisticLockException</code>. If this happens, perform
-     * another <code>get</code>, and use the new token returned by that operation. </p>
-     */
-    inline UpdateManagedRuleSetVersionExpiryDateResult& WithNextLockToken(Aws::String&& value) { SetNextLockToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A token used for optimistic locking. WAF returns a token to your
-     * <code>get</code> and <code>list</code> requests, to mark the state of the entity
-     * at the time of the request. To make changes to the entity associated with the
-     * token, you provide the token to operations like <code>update</code> and
-     * <code>delete</code>. WAF uses the token to ensure that no changes have been made
-     * to the entity since you last retrieved it. If a change has been made, the update
-     * fails with a <code>WAFOptimisticLockException</code>. If this happens, perform
-     * another <code>get</code>, and use the new token returned by that operation. </p>
-     */
-    inline UpdateManagedRuleSetVersionExpiryDateResult& WithNextLockToken(const char* value) { SetNextLockToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline UpdateManagedRuleSetVersionExpiryDateResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline UpdateManagedRuleSetVersionExpiryDateResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline UpdateManagedRuleSetVersionExpiryDateResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    UpdateManagedRuleSetVersionExpiryDateResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_expiringVersion;
+    bool m_expiringVersionHasBeenSet = false;
 
-    Aws::Utils::DateTime m_expiryTimestamp;
+    Aws::Utils::DateTime m_expiryTimestamp{};
+    bool m_expiryTimestampHasBeenSet = false;
 
     Aws::String m_nextLockToken;
+    bool m_nextLockTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

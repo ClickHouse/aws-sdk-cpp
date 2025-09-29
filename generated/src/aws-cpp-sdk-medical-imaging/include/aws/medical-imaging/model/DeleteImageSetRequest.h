@@ -21,7 +21,7 @@ namespace Model
   class DeleteImageSetRequest : public MedicalImagingRequest
   {
   public:
-    AWS_MEDICALIMAGING_API DeleteImageSetRequest();
+    AWS_MEDICALIMAGING_API DeleteImageSetRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,87 +32,29 @@ namespace Model
     AWS_MEDICALIMAGING_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The data store identifier.</p>
      */
-    inline const Aws::String& GetDatastoreId() const{ return m_datastoreId; }
-
-    /**
-     * <p>The data store identifier.</p>
-     */
+    inline const Aws::String& GetDatastoreId() const { return m_datastoreId; }
     inline bool DatastoreIdHasBeenSet() const { return m_datastoreIdHasBeenSet; }
+    template<typename DatastoreIdT = Aws::String>
+    void SetDatastoreId(DatastoreIdT&& value) { m_datastoreIdHasBeenSet = true; m_datastoreId = std::forward<DatastoreIdT>(value); }
+    template<typename DatastoreIdT = Aws::String>
+    DeleteImageSetRequest& WithDatastoreId(DatastoreIdT&& value) { SetDatastoreId(std::forward<DatastoreIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The data store identifier.</p>
-     */
-    inline void SetDatastoreId(const Aws::String& value) { m_datastoreIdHasBeenSet = true; m_datastoreId = value; }
-
-    /**
-     * <p>The data store identifier.</p>
-     */
-    inline void SetDatastoreId(Aws::String&& value) { m_datastoreIdHasBeenSet = true; m_datastoreId = std::move(value); }
-
-    /**
-     * <p>The data store identifier.</p>
-     */
-    inline void SetDatastoreId(const char* value) { m_datastoreIdHasBeenSet = true; m_datastoreId.assign(value); }
-
-    /**
-     * <p>The data store identifier.</p>
-     */
-    inline DeleteImageSetRequest& WithDatastoreId(const Aws::String& value) { SetDatastoreId(value); return *this;}
-
-    /**
-     * <p>The data store identifier.</p>
-     */
-    inline DeleteImageSetRequest& WithDatastoreId(Aws::String&& value) { SetDatastoreId(std::move(value)); return *this;}
-
-    /**
-     * <p>The data store identifier.</p>
-     */
-    inline DeleteImageSetRequest& WithDatastoreId(const char* value) { SetDatastoreId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The image set identifier.</p>
      */
-    inline const Aws::String& GetImageSetId() const{ return m_imageSetId; }
-
-    /**
-     * <p>The image set identifier.</p>
-     */
+    inline const Aws::String& GetImageSetId() const { return m_imageSetId; }
     inline bool ImageSetIdHasBeenSet() const { return m_imageSetIdHasBeenSet; }
-
-    /**
-     * <p>The image set identifier.</p>
-     */
-    inline void SetImageSetId(const Aws::String& value) { m_imageSetIdHasBeenSet = true; m_imageSetId = value; }
-
-    /**
-     * <p>The image set identifier.</p>
-     */
-    inline void SetImageSetId(Aws::String&& value) { m_imageSetIdHasBeenSet = true; m_imageSetId = std::move(value); }
-
-    /**
-     * <p>The image set identifier.</p>
-     */
-    inline void SetImageSetId(const char* value) { m_imageSetIdHasBeenSet = true; m_imageSetId.assign(value); }
-
-    /**
-     * <p>The image set identifier.</p>
-     */
-    inline DeleteImageSetRequest& WithImageSetId(const Aws::String& value) { SetImageSetId(value); return *this;}
-
-    /**
-     * <p>The image set identifier.</p>
-     */
-    inline DeleteImageSetRequest& WithImageSetId(Aws::String&& value) { SetImageSetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The image set identifier.</p>
-     */
-    inline DeleteImageSetRequest& WithImageSetId(const char* value) { SetImageSetId(value); return *this;}
-
+    template<typename ImageSetIdT = Aws::String>
+    void SetImageSetId(ImageSetIdT&& value) { m_imageSetIdHasBeenSet = true; m_imageSetId = std::forward<ImageSetIdT>(value); }
+    template<typename ImageSetIdT = Aws::String>
+    DeleteImageSetRequest& WithImageSetId(ImageSetIdT&& value) { SetImageSetId(std::forward<ImageSetIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_datastoreId;

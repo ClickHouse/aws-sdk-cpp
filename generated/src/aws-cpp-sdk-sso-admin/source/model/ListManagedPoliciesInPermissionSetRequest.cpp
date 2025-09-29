@@ -12,15 +12,6 @@ using namespace Aws::SSOAdmin::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ListManagedPoliciesInPermissionSetRequest::ListManagedPoliciesInPermissionSetRequest() : 
-    m_instanceArnHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_permissionSetArnHasBeenSet(false)
-{
-}
-
 Aws::String ListManagedPoliciesInPermissionSetRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -28,6 +19,12 @@ Aws::String ListManagedPoliciesInPermissionSetRequest::SerializePayload() const
   if(m_instanceArnHasBeenSet)
   {
    payload.WithString("InstanceArn", m_instanceArn);
+
+  }
+
+  if(m_permissionSetArnHasBeenSet)
+  {
+   payload.WithString("PermissionSetArn", m_permissionSetArn);
 
   }
 
@@ -40,12 +37,6 @@ Aws::String ListManagedPoliciesInPermissionSetRequest::SerializePayload() const
   if(m_nextTokenHasBeenSet)
   {
    payload.WithString("NextToken", m_nextToken);
-
-  }
-
-  if(m_permissionSetArnHasBeenSet)
-  {
-   payload.WithString("PermissionSetArn", m_permissionSetArn);
 
   }
 

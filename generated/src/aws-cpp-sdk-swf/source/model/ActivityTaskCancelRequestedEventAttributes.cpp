@@ -18,17 +18,7 @@ namespace SWF
 namespace Model
 {
 
-ActivityTaskCancelRequestedEventAttributes::ActivityTaskCancelRequestedEventAttributes() : 
-    m_decisionTaskCompletedEventId(0),
-    m_decisionTaskCompletedEventIdHasBeenSet(false),
-    m_activityIdHasBeenSet(false)
-{
-}
-
-ActivityTaskCancelRequestedEventAttributes::ActivityTaskCancelRequestedEventAttributes(JsonView jsonValue) : 
-    m_decisionTaskCompletedEventId(0),
-    m_decisionTaskCompletedEventIdHasBeenSet(false),
-    m_activityIdHasBeenSet(false)
+ActivityTaskCancelRequestedEventAttributes::ActivityTaskCancelRequestedEventAttributes(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ActivityTaskCancelRequestedEventAttributes& ActivityTaskCancelRequestedEventAttr
   if(jsonValue.ValueExists("decisionTaskCompletedEventId"))
   {
     m_decisionTaskCompletedEventId = jsonValue.GetInt64("decisionTaskCompletedEventId");
-
     m_decisionTaskCompletedEventIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("activityId"))
   {
     m_activityId = jsonValue.GetString("activityId");
-
     m_activityIdHasBeenSet = true;
   }
-
   return *this;
 }
 

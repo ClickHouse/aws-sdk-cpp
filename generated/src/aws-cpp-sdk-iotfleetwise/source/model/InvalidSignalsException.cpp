@@ -18,15 +18,7 @@ namespace IoTFleetWise
 namespace Model
 {
 
-InvalidSignalsException::InvalidSignalsException() : 
-    m_messageHasBeenSet(false),
-    m_invalidSignalsHasBeenSet(false)
-{
-}
-
-InvalidSignalsException::InvalidSignalsException(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_invalidSignalsHasBeenSet(false)
+InvalidSignalsException::InvalidSignalsException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ InvalidSignalsException& InvalidSignalsException::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("invalidSignals"))
   {
     Aws::Utils::Array<JsonView> invalidSignalsJsonList = jsonValue.GetArray("invalidSignals");
@@ -49,7 +39,6 @@ InvalidSignalsException& InvalidSignalsException::operator =(JsonView jsonValue)
     }
     m_invalidSignalsHasBeenSet = true;
   }
-
   return *this;
 }
 

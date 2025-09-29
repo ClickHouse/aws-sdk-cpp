@@ -31,7 +31,7 @@ namespace Model
   class VpnTunnelLogOptions
   {
   public:
-    AWS_EC2_API VpnTunnelLogOptions();
+    AWS_EC2_API VpnTunnelLogOptions() = default;
     AWS_EC2_API VpnTunnelLogOptions(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API VpnTunnelLogOptions& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -39,36 +39,17 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>Options for sending VPN tunnel logs to CloudWatch.</p>
      */
-    inline const CloudWatchLogOptions& GetCloudWatchLogOptions() const{ return m_cloudWatchLogOptions; }
-
-    /**
-     * <p>Options for sending VPN tunnel logs to CloudWatch.</p>
-     */
+    inline const CloudWatchLogOptions& GetCloudWatchLogOptions() const { return m_cloudWatchLogOptions; }
     inline bool CloudWatchLogOptionsHasBeenSet() const { return m_cloudWatchLogOptionsHasBeenSet; }
-
-    /**
-     * <p>Options for sending VPN tunnel logs to CloudWatch.</p>
-     */
-    inline void SetCloudWatchLogOptions(const CloudWatchLogOptions& value) { m_cloudWatchLogOptionsHasBeenSet = true; m_cloudWatchLogOptions = value; }
-
-    /**
-     * <p>Options for sending VPN tunnel logs to CloudWatch.</p>
-     */
-    inline void SetCloudWatchLogOptions(CloudWatchLogOptions&& value) { m_cloudWatchLogOptionsHasBeenSet = true; m_cloudWatchLogOptions = std::move(value); }
-
-    /**
-     * <p>Options for sending VPN tunnel logs to CloudWatch.</p>
-     */
-    inline VpnTunnelLogOptions& WithCloudWatchLogOptions(const CloudWatchLogOptions& value) { SetCloudWatchLogOptions(value); return *this;}
-
-    /**
-     * <p>Options for sending VPN tunnel logs to CloudWatch.</p>
-     */
-    inline VpnTunnelLogOptions& WithCloudWatchLogOptions(CloudWatchLogOptions&& value) { SetCloudWatchLogOptions(std::move(value)); return *this;}
-
+    template<typename CloudWatchLogOptionsT = CloudWatchLogOptions>
+    void SetCloudWatchLogOptions(CloudWatchLogOptionsT&& value) { m_cloudWatchLogOptionsHasBeenSet = true; m_cloudWatchLogOptions = std::forward<CloudWatchLogOptionsT>(value); }
+    template<typename CloudWatchLogOptionsT = CloudWatchLogOptions>
+    VpnTunnelLogOptions& WithCloudWatchLogOptions(CloudWatchLogOptionsT&& value) { SetCloudWatchLogOptions(std::forward<CloudWatchLogOptionsT>(value)); return *this;}
+    ///@}
   private:
 
     CloudWatchLogOptions m_cloudWatchLogOptions;

@@ -8,6 +8,7 @@
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/DateTime.h>
 #include <aws/cleanrooms/model/MemberStatus.h>
+#include <aws/cleanrooms/model/AnalyticsEngine.h>
 #include <utility>
 
 namespace Aws
@@ -33,407 +34,142 @@ namespace Model
   class CollaborationSummary
   {
   public:
-    AWS_CLEANROOMS_API CollaborationSummary();
+    AWS_CLEANROOMS_API CollaborationSummary() = default;
     AWS_CLEANROOMS_API CollaborationSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLEANROOMS_API CollaborationSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLEANROOMS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The identifier for the collaboration.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The identifier for the collaboration.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    CollaborationSummary& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier for the collaboration.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The identifier for the collaboration.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The identifier for the collaboration.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The identifier for the collaboration.</p>
-     */
-    inline CollaborationSummary& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The identifier for the collaboration.</p>
-     */
-    inline CollaborationSummary& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier for the collaboration.</p>
-     */
-    inline CollaborationSummary& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the collaboration.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The ARN of the collaboration.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    CollaborationSummary& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the collaboration.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The ARN of the collaboration.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The ARN of the collaboration.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The ARN of the collaboration.</p>
-     */
-    inline CollaborationSummary& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the collaboration.</p>
-     */
-    inline CollaborationSummary& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the collaboration.</p>
-     */
-    inline CollaborationSummary& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A human-readable identifier provided by the collaboration owner. Display
      * names are not unique.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>A human-readable identifier provided by the collaboration owner. Display
-     * names are not unique.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    CollaborationSummary& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A human-readable identifier provided by the collaboration owner. Display
-     * names are not unique.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>A human-readable identifier provided by the collaboration owner. Display
-     * names are not unique.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>A human-readable identifier provided by the collaboration owner. Display
-     * names are not unique.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>A human-readable identifier provided by the collaboration owner. Display
-     * names are not unique.</p>
-     */
-    inline CollaborationSummary& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>A human-readable identifier provided by the collaboration owner. Display
-     * names are not unique.</p>
-     */
-    inline CollaborationSummary& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>A human-readable identifier provided by the collaboration owner. Display
-     * names are not unique.</p>
-     */
-    inline CollaborationSummary& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier used to reference members of the collaboration. Currently only
      * supports Amazon Web Services account ID.</p>
      */
-    inline const Aws::String& GetCreatorAccountId() const{ return m_creatorAccountId; }
-
-    /**
-     * <p>The identifier used to reference members of the collaboration. Currently only
-     * supports Amazon Web Services account ID.</p>
-     */
+    inline const Aws::String& GetCreatorAccountId() const { return m_creatorAccountId; }
     inline bool CreatorAccountIdHasBeenSet() const { return m_creatorAccountIdHasBeenSet; }
+    template<typename CreatorAccountIdT = Aws::String>
+    void SetCreatorAccountId(CreatorAccountIdT&& value) { m_creatorAccountIdHasBeenSet = true; m_creatorAccountId = std::forward<CreatorAccountIdT>(value); }
+    template<typename CreatorAccountIdT = Aws::String>
+    CollaborationSummary& WithCreatorAccountId(CreatorAccountIdT&& value) { SetCreatorAccountId(std::forward<CreatorAccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier used to reference members of the collaboration. Currently only
-     * supports Amazon Web Services account ID.</p>
-     */
-    inline void SetCreatorAccountId(const Aws::String& value) { m_creatorAccountIdHasBeenSet = true; m_creatorAccountId = value; }
-
-    /**
-     * <p>The identifier used to reference members of the collaboration. Currently only
-     * supports Amazon Web Services account ID.</p>
-     */
-    inline void SetCreatorAccountId(Aws::String&& value) { m_creatorAccountIdHasBeenSet = true; m_creatorAccountId = std::move(value); }
-
-    /**
-     * <p>The identifier used to reference members of the collaboration. Currently only
-     * supports Amazon Web Services account ID.</p>
-     */
-    inline void SetCreatorAccountId(const char* value) { m_creatorAccountIdHasBeenSet = true; m_creatorAccountId.assign(value); }
-
-    /**
-     * <p>The identifier used to reference members of the collaboration. Currently only
-     * supports Amazon Web Services account ID.</p>
-     */
-    inline CollaborationSummary& WithCreatorAccountId(const Aws::String& value) { SetCreatorAccountId(value); return *this;}
-
-    /**
-     * <p>The identifier used to reference members of the collaboration. Currently only
-     * supports Amazon Web Services account ID.</p>
-     */
-    inline CollaborationSummary& WithCreatorAccountId(Aws::String&& value) { SetCreatorAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier used to reference members of the collaboration. Currently only
-     * supports Amazon Web Services account ID.</p>
-     */
-    inline CollaborationSummary& WithCreatorAccountId(const char* value) { SetCreatorAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The display name of the collaboration creator.</p>
      */
-    inline const Aws::String& GetCreatorDisplayName() const{ return m_creatorDisplayName; }
-
-    /**
-     * <p>The display name of the collaboration creator.</p>
-     */
+    inline const Aws::String& GetCreatorDisplayName() const { return m_creatorDisplayName; }
     inline bool CreatorDisplayNameHasBeenSet() const { return m_creatorDisplayNameHasBeenSet; }
+    template<typename CreatorDisplayNameT = Aws::String>
+    void SetCreatorDisplayName(CreatorDisplayNameT&& value) { m_creatorDisplayNameHasBeenSet = true; m_creatorDisplayName = std::forward<CreatorDisplayNameT>(value); }
+    template<typename CreatorDisplayNameT = Aws::String>
+    CollaborationSummary& WithCreatorDisplayName(CreatorDisplayNameT&& value) { SetCreatorDisplayName(std::forward<CreatorDisplayNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The display name of the collaboration creator.</p>
-     */
-    inline void SetCreatorDisplayName(const Aws::String& value) { m_creatorDisplayNameHasBeenSet = true; m_creatorDisplayName = value; }
-
-    /**
-     * <p>The display name of the collaboration creator.</p>
-     */
-    inline void SetCreatorDisplayName(Aws::String&& value) { m_creatorDisplayNameHasBeenSet = true; m_creatorDisplayName = std::move(value); }
-
-    /**
-     * <p>The display name of the collaboration creator.</p>
-     */
-    inline void SetCreatorDisplayName(const char* value) { m_creatorDisplayNameHasBeenSet = true; m_creatorDisplayName.assign(value); }
-
-    /**
-     * <p>The display name of the collaboration creator.</p>
-     */
-    inline CollaborationSummary& WithCreatorDisplayName(const Aws::String& value) { SetCreatorDisplayName(value); return *this;}
-
-    /**
-     * <p>The display name of the collaboration creator.</p>
-     */
-    inline CollaborationSummary& WithCreatorDisplayName(Aws::String&& value) { SetCreatorDisplayName(std::move(value)); return *this;}
-
-    /**
-     * <p>The display name of the collaboration creator.</p>
-     */
-    inline CollaborationSummary& WithCreatorDisplayName(const char* value) { SetCreatorDisplayName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The time when the collaboration was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreateTime() const{ return m_createTime; }
-
-    /**
-     * <p>The time when the collaboration was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreateTime() const { return m_createTime; }
     inline bool CreateTimeHasBeenSet() const { return m_createTimeHasBeenSet; }
+    template<typename CreateTimeT = Aws::Utils::DateTime>
+    void SetCreateTime(CreateTimeT&& value) { m_createTimeHasBeenSet = true; m_createTime = std::forward<CreateTimeT>(value); }
+    template<typename CreateTimeT = Aws::Utils::DateTime>
+    CollaborationSummary& WithCreateTime(CreateTimeT&& value) { SetCreateTime(std::forward<CreateTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time when the collaboration was created.</p>
-     */
-    inline void SetCreateTime(const Aws::Utils::DateTime& value) { m_createTimeHasBeenSet = true; m_createTime = value; }
-
-    /**
-     * <p>The time when the collaboration was created.</p>
-     */
-    inline void SetCreateTime(Aws::Utils::DateTime&& value) { m_createTimeHasBeenSet = true; m_createTime = std::move(value); }
-
-    /**
-     * <p>The time when the collaboration was created.</p>
-     */
-    inline CollaborationSummary& WithCreateTime(const Aws::Utils::DateTime& value) { SetCreateTime(value); return *this;}
-
-    /**
-     * <p>The time when the collaboration was created.</p>
-     */
-    inline CollaborationSummary& WithCreateTime(Aws::Utils::DateTime&& value) { SetCreateTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The time the collaboration metadata was last updated.</p>
      */
-    inline const Aws::Utils::DateTime& GetUpdateTime() const{ return m_updateTime; }
-
-    /**
-     * <p>The time the collaboration metadata was last updated.</p>
-     */
+    inline const Aws::Utils::DateTime& GetUpdateTime() const { return m_updateTime; }
     inline bool UpdateTimeHasBeenSet() const { return m_updateTimeHasBeenSet; }
+    template<typename UpdateTimeT = Aws::Utils::DateTime>
+    void SetUpdateTime(UpdateTimeT&& value) { m_updateTimeHasBeenSet = true; m_updateTime = std::forward<UpdateTimeT>(value); }
+    template<typename UpdateTimeT = Aws::Utils::DateTime>
+    CollaborationSummary& WithUpdateTime(UpdateTimeT&& value) { SetUpdateTime(std::forward<UpdateTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time the collaboration metadata was last updated.</p>
-     */
-    inline void SetUpdateTime(const Aws::Utils::DateTime& value) { m_updateTimeHasBeenSet = true; m_updateTime = value; }
-
-    /**
-     * <p>The time the collaboration metadata was last updated.</p>
-     */
-    inline void SetUpdateTime(Aws::Utils::DateTime&& value) { m_updateTimeHasBeenSet = true; m_updateTime = std::move(value); }
-
-    /**
-     * <p>The time the collaboration metadata was last updated.</p>
-     */
-    inline CollaborationSummary& WithUpdateTime(const Aws::Utils::DateTime& value) { SetUpdateTime(value); return *this;}
-
-    /**
-     * <p>The time the collaboration metadata was last updated.</p>
-     */
-    inline CollaborationSummary& WithUpdateTime(Aws::Utils::DateTime&& value) { SetUpdateTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of a member in a collaboration.</p>
      */
-    inline const MemberStatus& GetMemberStatus() const{ return m_memberStatus; }
-
-    /**
-     * <p>The status of a member in a collaboration.</p>
-     */
+    inline MemberStatus GetMemberStatus() const { return m_memberStatus; }
     inline bool MemberStatusHasBeenSet() const { return m_memberStatusHasBeenSet; }
+    inline void SetMemberStatus(MemberStatus value) { m_memberStatusHasBeenSet = true; m_memberStatus = value; }
+    inline CollaborationSummary& WithMemberStatus(MemberStatus value) { SetMemberStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of a member in a collaboration.</p>
-     */
-    inline void SetMemberStatus(const MemberStatus& value) { m_memberStatusHasBeenSet = true; m_memberStatus = value; }
-
-    /**
-     * <p>The status of a member in a collaboration.</p>
-     */
-    inline void SetMemberStatus(MemberStatus&& value) { m_memberStatusHasBeenSet = true; m_memberStatus = std::move(value); }
-
-    /**
-     * <p>The status of a member in a collaboration.</p>
-     */
-    inline CollaborationSummary& WithMemberStatus(const MemberStatus& value) { SetMemberStatus(value); return *this;}
-
-    /**
-     * <p>The status of a member in a collaboration.</p>
-     */
-    inline CollaborationSummary& WithMemberStatus(MemberStatus&& value) { SetMemberStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of a member in a collaboration.</p>
      */
-    inline const Aws::String& GetMembershipId() const{ return m_membershipId; }
-
-    /**
-     * <p>The identifier of a member in a collaboration.</p>
-     */
+    inline const Aws::String& GetMembershipId() const { return m_membershipId; }
     inline bool MembershipIdHasBeenSet() const { return m_membershipIdHasBeenSet; }
+    template<typename MembershipIdT = Aws::String>
+    void SetMembershipId(MembershipIdT&& value) { m_membershipIdHasBeenSet = true; m_membershipId = std::forward<MembershipIdT>(value); }
+    template<typename MembershipIdT = Aws::String>
+    CollaborationSummary& WithMembershipId(MembershipIdT&& value) { SetMembershipId(std::forward<MembershipIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of a member in a collaboration.</p>
-     */
-    inline void SetMembershipId(const Aws::String& value) { m_membershipIdHasBeenSet = true; m_membershipId = value; }
-
-    /**
-     * <p>The identifier of a member in a collaboration.</p>
-     */
-    inline void SetMembershipId(Aws::String&& value) { m_membershipIdHasBeenSet = true; m_membershipId = std::move(value); }
-
-    /**
-     * <p>The identifier of a member in a collaboration.</p>
-     */
-    inline void SetMembershipId(const char* value) { m_membershipIdHasBeenSet = true; m_membershipId.assign(value); }
-
-    /**
-     * <p>The identifier of a member in a collaboration.</p>
-     */
-    inline CollaborationSummary& WithMembershipId(const Aws::String& value) { SetMembershipId(value); return *this;}
-
-    /**
-     * <p>The identifier of a member in a collaboration.</p>
-     */
-    inline CollaborationSummary& WithMembershipId(Aws::String&& value) { SetMembershipId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of a member in a collaboration.</p>
-     */
-    inline CollaborationSummary& WithMembershipId(const char* value) { SetMembershipId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of a member in a collaboration.</p>
      */
-    inline const Aws::String& GetMembershipArn() const{ return m_membershipArn; }
-
-    /**
-     * <p>The ARN of a member in a collaboration.</p>
-     */
+    inline const Aws::String& GetMembershipArn() const { return m_membershipArn; }
     inline bool MembershipArnHasBeenSet() const { return m_membershipArnHasBeenSet; }
+    template<typename MembershipArnT = Aws::String>
+    void SetMembershipArn(MembershipArnT&& value) { m_membershipArnHasBeenSet = true; m_membershipArn = std::forward<MembershipArnT>(value); }
+    template<typename MembershipArnT = Aws::String>
+    CollaborationSummary& WithMembershipArn(MembershipArnT&& value) { SetMembershipArn(std::forward<MembershipArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ARN of a member in a collaboration.</p>
+     * <p> The analytics engine.</p>  <p>After July 16, 2025, the
+     * <code>CLEAN_ROOMS_SQL</code> parameter will no longer be available. </p> 
      */
-    inline void SetMembershipArn(const Aws::String& value) { m_membershipArnHasBeenSet = true; m_membershipArn = value; }
-
-    /**
-     * <p>The ARN of a member in a collaboration.</p>
-     */
-    inline void SetMembershipArn(Aws::String&& value) { m_membershipArnHasBeenSet = true; m_membershipArn = std::move(value); }
-
-    /**
-     * <p>The ARN of a member in a collaboration.</p>
-     */
-    inline void SetMembershipArn(const char* value) { m_membershipArnHasBeenSet = true; m_membershipArn.assign(value); }
-
-    /**
-     * <p>The ARN of a member in a collaboration.</p>
-     */
-    inline CollaborationSummary& WithMembershipArn(const Aws::String& value) { SetMembershipArn(value); return *this;}
-
-    /**
-     * <p>The ARN of a member in a collaboration.</p>
-     */
-    inline CollaborationSummary& WithMembershipArn(Aws::String&& value) { SetMembershipArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of a member in a collaboration.</p>
-     */
-    inline CollaborationSummary& WithMembershipArn(const char* value) { SetMembershipArn(value); return *this;}
-
+    inline AnalyticsEngine GetAnalyticsEngine() const { return m_analyticsEngine; }
+    inline bool AnalyticsEngineHasBeenSet() const { return m_analyticsEngineHasBeenSet; }
+    inline void SetAnalyticsEngine(AnalyticsEngine value) { m_analyticsEngineHasBeenSet = true; m_analyticsEngine = value; }
+    inline CollaborationSummary& WithAnalyticsEngine(AnalyticsEngine value) { SetAnalyticsEngine(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_id;
@@ -451,13 +187,13 @@ namespace Model
     Aws::String m_creatorDisplayName;
     bool m_creatorDisplayNameHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createTime;
+    Aws::Utils::DateTime m_createTime{};
     bool m_createTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_updateTime;
+    Aws::Utils::DateTime m_updateTime{};
     bool m_updateTimeHasBeenSet = false;
 
-    MemberStatus m_memberStatus;
+    MemberStatus m_memberStatus{MemberStatus::NOT_SET};
     bool m_memberStatusHasBeenSet = false;
 
     Aws::String m_membershipId;
@@ -465,6 +201,9 @@ namespace Model
 
     Aws::String m_membershipArn;
     bool m_membershipArnHasBeenSet = false;
+
+    AnalyticsEngine m_analyticsEngine{AnalyticsEngine::NOT_SET};
+    bool m_analyticsEngineHasBeenSet = false;
   };
 
 } // namespace Model

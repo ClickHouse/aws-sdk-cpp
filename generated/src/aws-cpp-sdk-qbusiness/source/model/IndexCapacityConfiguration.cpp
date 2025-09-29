@@ -18,15 +18,7 @@ namespace QBusiness
 namespace Model
 {
 
-IndexCapacityConfiguration::IndexCapacityConfiguration() : 
-    m_units(0),
-    m_unitsHasBeenSet(false)
-{
-}
-
-IndexCapacityConfiguration::IndexCapacityConfiguration(JsonView jsonValue) : 
-    m_units(0),
-    m_unitsHasBeenSet(false)
+IndexCapacityConfiguration::IndexCapacityConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ IndexCapacityConfiguration& IndexCapacityConfiguration::operator =(JsonView json
   if(jsonValue.ValueExists("units"))
   {
     m_units = jsonValue.GetInteger("units");
-
     m_unitsHasBeenSet = true;
   }
-
   return *this;
 }
 

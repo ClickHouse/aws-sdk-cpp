@@ -28,63 +28,37 @@ namespace Model
   class GetTriggerResult
   {
   public:
-    AWS_GLUE_API GetTriggerResult();
+    AWS_GLUE_API GetTriggerResult() = default;
     AWS_GLUE_API GetTriggerResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_GLUE_API GetTriggerResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The requested trigger definition.</p>
      */
-    inline const Trigger& GetTrigger() const{ return m_trigger; }
+    inline const Trigger& GetTrigger() const { return m_trigger; }
+    template<typename TriggerT = Trigger>
+    void SetTrigger(TriggerT&& value) { m_triggerHasBeenSet = true; m_trigger = std::forward<TriggerT>(value); }
+    template<typename TriggerT = Trigger>
+    GetTriggerResult& WithTrigger(TriggerT&& value) { SetTrigger(std::forward<TriggerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The requested trigger definition.</p>
-     */
-    inline void SetTrigger(const Trigger& value) { m_trigger = value; }
-
-    /**
-     * <p>The requested trigger definition.</p>
-     */
-    inline void SetTrigger(Trigger&& value) { m_trigger = std::move(value); }
-
-    /**
-     * <p>The requested trigger definition.</p>
-     */
-    inline GetTriggerResult& WithTrigger(const Trigger& value) { SetTrigger(value); return *this;}
-
-    /**
-     * <p>The requested trigger definition.</p>
-     */
-    inline GetTriggerResult& WithTrigger(Trigger&& value) { SetTrigger(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetTriggerResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetTriggerResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetTriggerResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetTriggerResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Trigger m_trigger;
+    bool m_triggerHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

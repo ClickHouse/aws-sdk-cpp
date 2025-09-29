@@ -27,6 +27,8 @@
 #include <aws/s3-crt/model/CompleteMultipartUploadRequest.h>
 #include <aws/s3-crt/model/CopyObjectRequest.h>
 #include <aws/s3-crt/model/CreateBucketRequest.h>
+#include <aws/s3-crt/model/CreateBucketMetadataConfigurationRequest.h>
+#include <aws/s3-crt/model/CreateBucketMetadataTableConfigurationRequest.h>
 #include <aws/s3-crt/model/CreateMultipartUploadRequest.h>
 #include <aws/s3-crt/model/CreateSessionRequest.h>
 #include <aws/s3-crt/model/DeleteBucketRequest.h>
@@ -36,6 +38,8 @@
 #include <aws/s3-crt/model/DeleteBucketIntelligentTieringConfigurationRequest.h>
 #include <aws/s3-crt/model/DeleteBucketInventoryConfigurationRequest.h>
 #include <aws/s3-crt/model/DeleteBucketLifecycleRequest.h>
+#include <aws/s3-crt/model/DeleteBucketMetadataConfigurationRequest.h>
+#include <aws/s3-crt/model/DeleteBucketMetadataTableConfigurationRequest.h>
 #include <aws/s3-crt/model/DeleteBucketMetricsConfigurationRequest.h>
 #include <aws/s3-crt/model/DeleteBucketOwnershipControlsRequest.h>
 #include <aws/s3-crt/model/DeleteBucketPolicyRequest.h>
@@ -56,6 +60,8 @@
 #include <aws/s3-crt/model/GetBucketLifecycleConfigurationRequest.h>
 #include <aws/s3-crt/model/GetBucketLocationRequest.h>
 #include <aws/s3-crt/model/GetBucketLoggingRequest.h>
+#include <aws/s3-crt/model/GetBucketMetadataConfigurationRequest.h>
+#include <aws/s3-crt/model/GetBucketMetadataTableConfigurationRequest.h>
 #include <aws/s3-crt/model/GetBucketMetricsConfigurationRequest.h>
 #include <aws/s3-crt/model/GetBucketNotificationConfigurationRequest.h>
 #include <aws/s3-crt/model/GetBucketOwnershipControlsRequest.h>
@@ -81,6 +87,7 @@
 #include <aws/s3-crt/model/ListBucketIntelligentTieringConfigurationsRequest.h>
 #include <aws/s3-crt/model/ListBucketInventoryConfigurationsRequest.h>
 #include <aws/s3-crt/model/ListBucketMetricsConfigurationsRequest.h>
+#include <aws/s3-crt/model/ListBucketsRequest.h>
 #include <aws/s3-crt/model/ListDirectoryBucketsRequest.h>
 #include <aws/s3-crt/model/ListMultipartUploadsRequest.h>
 #include <aws/s3-crt/model/ListObjectVersionsRequest.h>
@@ -112,8 +119,11 @@
 #include <aws/s3-crt/model/PutObjectRetentionRequest.h>
 #include <aws/s3-crt/model/PutObjectTaggingRequest.h>
 #include <aws/s3-crt/model/PutPublicAccessBlockRequest.h>
+#include <aws/s3-crt/model/RenameObjectRequest.h>
 #include <aws/s3-crt/model/RestoreObjectRequest.h>
 #include <aws/s3-crt/model/SelectObjectContentRequest.h>
+#include <aws/s3-crt/model/UpdateBucketMetadataInventoryTableConfigurationRequest.h>
+#include <aws/s3-crt/model/UpdateBucketMetadataJournalTableConfigurationRequest.h>
 #include <aws/s3-crt/model/UploadPartRequest.h>
 #include <aws/s3-crt/model/UploadPartCopyRequest.h>
 #include <aws/s3-crt/model/WriteGetObjectResponseRequest.h>
@@ -148,8 +158,16 @@ using namespace smithy::components::tracing;
 using ResolveEndpointOutcome = Aws::Endpoint::ResolveEndpointOutcome;
 
 
-const char* S3CrtClient::SERVICE_NAME = "s3";
-const char* S3CrtClient::ALLOCATION_TAG = "S3CrtClient";
+namespace Aws
+{
+  namespace S3Crt
+  {
+    const char SERVICE_NAME[] = "s3";
+    const char ALLOCATION_TAG[] = "S3CrtClient";
+  }
+}
+const char* S3CrtClient::GetServiceName() {return SERVICE_NAME;}
+const char* S3CrtClient::GetAllocationTag() {return ALLOCATION_TAG;}
 
 S3CrtClient::S3CrtClient(const S3CrtClient &rhs) :
     BASECLASS(rhs.m_clientConfiguration,
@@ -163,11 +181,14 @@ S3CrtClient::S3CrtClient(const S3CrtClient &rhs) :
         Aws::MakeShared<S3CrtErrorMarshaller>(ALLOCATION_TAG)),
     Aws::Client::ClientWithAsyncTemplateMethods<S3CrtClient>(),
     m_clientConfiguration(rhs.m_clientConfiguration),
-    m_executor(rhs.m_clientConfiguration.executor),
     m_endpointProvider(rhs.m_endpointProvider),
     m_identityProvider(rhs.m_identityProvider){}
 
 S3CrtClient& S3CrtClient::operator=(const S3CrtClient &rhs) {
+    if (&rhs == this) {
+      return *this;
+    }
+    BASECLASS::operator=(rhs);
     m_signerProvider = Aws::MakeShared<Aws::Auth::S3ExpressSignerProvider>(ALLOCATION_TAG,
           rhs.GetCredentialsProvider(),
           rhs.m_clientConfiguration.identityProviderSupplier(*this),
@@ -176,13 +197,12 @@ S3CrtClient& S3CrtClient::operator=(const S3CrtClient &rhs) {
           rhs.m_clientConfiguration.payloadSigningPolicy,
           /*doubleEncodeValue*/ false);
     m_clientConfiguration = rhs.m_clientConfiguration;
-    m_executor = rhs.m_executor;
     m_endpointProvider = rhs.m_endpointProvider;
     init(m_clientConfiguration, m_credProvider);
     return *this;
 }
 
-S3CrtClient::S3CrtClient(S3CrtClient &&rhs) :
+S3CrtClient::S3CrtClient(S3CrtClient &&rhs) noexcept :
     BASECLASS(rhs.m_clientConfiguration,
         Aws::MakeShared<Aws::Auth::S3ExpressSignerProvider>(ALLOCATION_TAG,
             rhs.GetCredentialsProvider(),
@@ -194,13 +214,13 @@ S3CrtClient::S3CrtClient(S3CrtClient &&rhs) :
             Aws::MakeShared<S3CrtErrorMarshaller>(ALLOCATION_TAG)),
     Aws::Client::ClientWithAsyncTemplateMethods<S3CrtClient>(),
     m_clientConfiguration(std::move(rhs.m_clientConfiguration)),
-    m_executor(std::move(rhs.m_clientConfiguration.executor)),
     m_endpointProvider(std::move(rhs.m_endpointProvider)) {}
 
-S3CrtClient& S3CrtClient::operator=(S3CrtClient &&rhs) {
+S3CrtClient& S3CrtClient::operator=(S3CrtClient &&rhs) noexcept {
   if (&rhs == this) {
     return *this;
   }
+  BASECLASS::operator=(std::move(rhs));
   m_signerProvider = Aws::MakeShared<Aws::Auth::S3ExpressSignerProvider>(ALLOCATION_TAG,
         rhs.GetCredentialsProvider(),
         rhs.m_clientConfiguration.identityProviderSupplier(*this),
@@ -209,7 +229,6 @@ S3CrtClient& S3CrtClient::operator=(S3CrtClient &&rhs) {
         rhs.m_clientConfiguration.payloadSigningPolicy,
         /*doubleEncodeValue*/ false);
   m_clientConfiguration = std::move(rhs.m_clientConfiguration);
-  m_executor = std::move(rhs.m_executor);
   m_endpointProvider = std::move(rhs.m_endpointProvider);
   init(m_clientConfiguration, m_credProvider);
   return *this;
@@ -225,10 +244,12 @@ S3CrtClient::S3CrtClient(const S3Crt::ClientConfiguration& clientConfiguration, 
             signPayloads,
             false),
     Aws::MakeShared<S3CrtErrorMarshaller>(ALLOCATION_TAG)),
-    m_clientConfiguration(clientConfiguration, signPayloads, useVirtualAddressing, USEast1RegionalEndPointOption),
-    m_executor(clientConfiguration.executor), m_credProvider(Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, credentialsProvider)),
+    m_clientConfiguration(clientConfiguration),
+    m_credProvider(Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, credentialsProvider)),
     m_identityProvider(Aws::MakeShared<DefaultS3ExpressIdentityProvider>(ALLOCATION_TAG, *this))
 {
+  AWS_UNREFERENCED_PARAM(useVirtualAddressing);
+  AWS_UNREFERENCED_PARAM(USEast1RegionalEndPointOption);
   init(clientConfiguration, m_credProvider);
 }
 
@@ -242,10 +263,12 @@ S3CrtClient::S3CrtClient(const AWSCredentials& credentials, const S3Crt::ClientC
             signPayloads,
             false),
     Aws::MakeShared<S3CrtErrorMarshaller>(ALLOCATION_TAG)),
-    m_clientConfiguration(clientConfiguration, signPayloads, useVirtualAddressing, USEast1RegionalEndPointOption),
-    m_executor(clientConfiguration.executor), m_credProvider(Aws::MakeShared<SimpleAWSCredentialsProvider>(ALLOCATION_TAG, credentials)),
+    m_clientConfiguration(clientConfiguration),
+    m_credProvider(Aws::MakeShared<SimpleAWSCredentialsProvider>(ALLOCATION_TAG, credentials)),
     m_identityProvider(Aws::MakeShared<DefaultS3ExpressIdentityProvider>(ALLOCATION_TAG, *this))
 {
+  AWS_UNREFERENCED_PARAM(useVirtualAddressing);
+  AWS_UNREFERENCED_PARAM(USEast1RegionalEndPointOption);
   init(clientConfiguration, m_credProvider);
 }
 
@@ -260,10 +283,12 @@ S3CrtClient::S3CrtClient(const std::shared_ptr<AWSCredentialsProvider>& credenti
             signPayloads,
             false),
     Aws::MakeShared<S3CrtErrorMarshaller>(ALLOCATION_TAG)),
-    m_clientConfiguration(clientConfiguration, signPayloads, useVirtualAddressing, USEast1RegionalEndPointOption),
-    m_executor(clientConfiguration.executor), m_credProvider(credentialsProvider),
+    m_clientConfiguration(clientConfiguration, signPayloads),
+    m_credProvider(credentialsProvider),
     m_identityProvider(Aws::MakeShared<DefaultS3ExpressIdentityProvider>(ALLOCATION_TAG, *this))
 {
+  AWS_UNREFERENCED_PARAM(useVirtualAddressing);
+  AWS_UNREFERENCED_PARAM(USEast1RegionalEndPointOption);
   init(clientConfiguration, m_credProvider);
 }
 
@@ -286,6 +311,14 @@ void S3CrtClient::init(const S3Crt::ClientConfiguration& config,
     const std::shared_ptr<Aws::Auth::AWSCredentialsProvider> credentialsProvider)
 {
   AWSClient::SetServiceClientName("S3");
+  if (!m_clientConfiguration.executor) {
+    if (!m_clientConfiguration.configFactories.executorCreateFn()) {
+      AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "Failed to initialize client: config is missing Executor or executorCreateFn");
+      m_isInitialized = false;
+      return;
+    }
+    m_clientConfiguration.executor = m_clientConfiguration.configFactories.executorCreateFn();
+  }
   m_endpointProvider = Aws::MakeShared<S3CrtEndpointProvider>(ALLOCATION_TAG);
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
   m_endpointProvider->InitBuiltInParameters(config);
@@ -299,6 +332,9 @@ void S3CrtClient::init(const S3Crt::ClientConfiguration& config,
   // Download flow-control configuration:
   s3CrtConfig.enable_read_backpressure = (config.downloadMemoryUsageWindow > 0);
   s3CrtConfig.initial_read_window = config.downloadMemoryUsageWindow;
+
+  // Memory usage config:
+  s3CrtConfig.memory_limit_in_bytes = config.memoryLimitBytes;
 
   aws_s3_tcp_keep_alive_options tcp_keep_alive_options;
   if (config.enableTcpKeepAlive) {
@@ -330,10 +366,14 @@ void S3CrtClient::init(const S3Crt::ClientConfiguration& config,
   Aws::Crt::Io::ClientBootstrap* clientBootstrap = config.clientBootstrap ? config.clientBootstrap.get() : Aws::GetDefaultClientBootstrap();
   s3CrtConfig.client_bootstrap = clientBootstrap->GetUnderlyingHandle();
 
+  using CrtRetryStrategyUniquePtr = std::unique_ptr<aws_retry_strategy, decltype(&aws_retry_strategy_release)>;
+  auto retry_strategy = CrtRetryStrategyUniquePtr(config.crtConfigFactories.retryStrategyCreateFn(config), aws_retry_strategy_release);
+  s3CrtConfig.retry_strategy = retry_strategy.get();
+
   m_crtCredProvider = Aws::Crt::Auth::CredentialsProvider::CreateCredentialsProviderDelegate({
      std::bind([](const std::shared_ptr<AWSCredentialsProvider>& provider) {
          if (provider == nullptr) {
-             AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "No provider provided, using anonymous provider")
+             AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "No provider provided, using anonymous provider");
              return Aws::MakeShared<Aws::Crt::Auth::Credentials>(ALLOCATION_TAG);
          }
          AWSCredentials credentials = provider->GetAWSCredentials();
@@ -354,20 +394,22 @@ void S3CrtClient::init(const S3Crt::ClientConfiguration& config,
   m_s3CrtSigningConfig.flags.use_double_uri_encode = false;
   s3CrtConfig.signing_config = &m_s3CrtSigningConfig;
 
-  static const size_t DEFAULT_PART_SIZE = 5 * 1024 * 1024; // 5MB
+  static const size_t DEFAULT_PART_SIZE = 8 * 1024 * 1024; // 8MB
   s3CrtConfig.part_size = config.partSize < DEFAULT_PART_SIZE ? DEFAULT_PART_SIZE : config.partSize;
+  s3CrtConfig.multipart_upload_threshold = config.multipartUploadThreshold;
 
-  Aws::UniquePtr<Aws::Crt::Io::TlsConnectionOptions> pTlsConnectionOptions;
+  Aws::Crt::Io::TlsConnectionOptions *rawPTlsConnectionOptions = nullptr;
   if (config.tlsConnectionOptions)
   {
-    pTlsConnectionOptions = Aws::MakeUnique<Aws::Crt::Io::TlsConnectionOptions>(ALLOCATION_TAG, *config.tlsConnectionOptions);
+    rawPTlsConnectionOptions = config.tlsConnectionOptions.get();
     if (!config.caPath.empty() || !config.caFile.empty())
     {
       AWS_LOGSTREAM_WARN(ALLOCATION_TAG, "caPath or caFile on client configuration are ignored in case of user-configured TlsConnectionOptions provided");
     }
   }
 
-  if (!pTlsConnectionOptions)
+  Aws::UniquePtr<Aws::Crt::Io::TlsConnectionOptions> pTlsConnectionOptions;
+  if (!rawPTlsConnectionOptions)
   {
     Aws::Crt::Io::TlsContextOptions crtTlsContextOptions = Aws::Crt::Io::TlsContextOptions::InitDefaultClient();
     if (!config.caPath.empty() || !config.caFile.empty())
@@ -382,28 +424,14 @@ void S3CrtClient::init(const S3Crt::ClientConfiguration& config,
     }
     Aws::Crt::Io::TlsContext crtTlsContext(crtTlsContextOptions, Aws::Crt::Io::TlsMode::CLIENT);
     pTlsConnectionOptions = Aws::MakeUnique<Aws::Crt::Io::TlsConnectionOptions>(ALLOCATION_TAG, crtTlsContext.NewConnectionOptions());
+    rawPTlsConnectionOptions = pTlsConnectionOptions.get();
   }
 
-  aws_tls_connection_options nonConstTlsOptions;
-  AWS_ZERO_STRUCT(nonConstTlsOptions);
-  if (pTlsConnectionOptions)
-  {
-    ResolveEndpointOutcome endpointOutcome = m_endpointProvider->ResolveEndpoint({});
-    if (!endpointOutcome.IsSuccess())
-    {
-      AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "Failed to initialize S3 Crt client: failed to resolve base URI: " << endpointOutcome.GetError().GetMessage());
-      m_isInitialized = false;
-      return;
-    }
-    Aws::Crt::ByteCursor serverName = Aws::Crt::ByteCursorFromCString(endpointOutcome.GetResult().GetURI().GetAuthority().c_str());
-    pTlsConnectionOptions->SetServerName(serverName);
-    aws_tls_connection_options_copy(&nonConstTlsOptions, pTlsConnectionOptions->GetUnderlyingHandle());
-    s3CrtConfig.tls_connection_options = &nonConstTlsOptions;
+  if (!rawPTlsConnectionOptions) {
+    rawPTlsConnectionOptions = Aws::GetDefaultTlsConnectionOptions();
   }
-  else
-  {
-    s3CrtConfig.tls_connection_options = nullptr;
-  }
+
+  s3CrtConfig.tls_connection_options = rawPTlsConnectionOptions ? rawPTlsConnectionOptions->GetUnderlyingHandle() : nullptr;
 
   Aws::Crt::Http::HttpClientConnectionProxyOptions proxyOptions;
   aws_http_proxy_options raw_proxy_options;
@@ -472,14 +500,22 @@ void S3CrtClient::init(const S3Crt::ClientConfiguration& config,
   s3CrtConfig.shutdown_callback = CrtClientShutdownCallback;
   s3CrtConfig.shutdown_callback_user_data = static_cast<void*>(&m_wrappedData);
   s3CrtConfig.enable_s3express = !config.disableS3ExpressAuth;
-  s3CrtConfig.factory_user_data = static_cast<void *>(m_identityProvider.get());
+  s3CrtConfig.factory_user_data = static_cast<void *>(&m_identityProviderUserData);
   s3CrtConfig.s3express_provider_override_factory = S3CrtIdentityProviderAdapter::ProviderFactory;
 
-  m_s3CrtClient = aws_s3_client_new(Aws::get_aws_allocator(), &s3CrtConfig);
-  if (pTlsConnectionOptions)
+  UniqueArrayPtr<aws_byte_cursor> interfacesNameCRTArr;
+  if (!config.networkInterfaceNames.empty())
   {
-    aws_tls_connection_options_clean_up(&nonConstTlsOptions);
+    interfacesNameCRTArr = Aws::MakeUniqueArray<aws_byte_cursor>(config.networkInterfaceNames.size(), ALLOCATION_TAG);
+    for(size_t i = 0; i < config.networkInterfaceNames.size(); ++i)
+    {
+      interfacesNameCRTArr.get()[i] = Crt::ByteCursorFromCString(config.networkInterfaceNames[i].c_str());
+    }
+    s3CrtConfig.network_interface_names_array = interfacesNameCRTArr.get();
+    s3CrtConfig.num_network_interface_names = config.networkInterfaceNames.size();
   }
+
+  m_s3CrtClient = aws_s3_client_new(Aws::get_aws_allocator(), &s3CrtConfig);
   if (!m_s3CrtClient)
   {
     AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "Failed to allocate aws_s3_client instance, abort.");
@@ -493,28 +529,59 @@ void S3CrtClient::OverrideEndpoint(const Aws::String& endpoint)
     m_endpointProvider->OverrideEndpoint(endpoint);
 }
 
+void S3CrtClient::CrtClientShutdownCallback(void *data)
+{
+  AWS_CHECK_PTR(SERVICE_NAME, data);
+  auto *wrappedData = static_cast<CrtClientShutdownCallbackDataWrapper*>(data);
+  if (wrappedData->fn)
+  {
+    wrappedData->fn(wrappedData->data);
+  }
+  AWS_CHECK_PTR(SERVICE_NAME, wrappedData->clientShutdownSem);
+  wrappedData->clientShutdownSem->Release();
+}
 
-static int S3CrtRequestHeadersCallback(struct aws_s3_meta_request *meta_request, const struct aws_http_headers *headers,
+void S3CrtClient::CancelCrtRequestAsync(aws_s3_meta_request *meta_request) const {
+  assert(meta_request);
+  m_clientConfiguration.executor->Submit([meta_request]() {
+    aws_s3_meta_request_cancel(meta_request);
+  });
+}
+
+int S3CrtClient::S3CrtRequestHeadersCallback(struct aws_s3_meta_request *meta_request, const struct aws_http_headers *headers,
     int response_status, void *user_data)
 {
   AWS_UNREFERENCED_PARAM(meta_request);
   auto *userData = static_cast<S3CrtClient::CrtRequestCallbackUserData*>(user_data);
+  if (!userData || !userData->response || !userData->originalRequest) {
+    return AWS_OP_ERR;
+  }
+
   size_t headersCount = aws_http_headers_count(headers);
-  for (size_t i = 0; i < headersCount; i++)
-  {
+  for (size_t i = 0; i < headersCount; i++) {
     struct aws_http_header header;
     aws_http_headers_get_index(headers, i, &header);
     userData->response->AddHeader(StringUtils::FromByteCursor(header.name), StringUtils::FromByteCursor(header.value));
   }
   userData->response->SetResponseCode(static_cast<HttpResponseCode>(response_status));
+
+  auto& shouldContinueFn = userData->originalRequest->GetContinueRequestHandler();
+  const HttpRequest* httpRequest = userData->request ? userData->request.get() : nullptr;
+  if (shouldContinueFn && !shouldContinueFn(httpRequest)) {
+    userData->s3CrtClient->CancelCrtRequestAsync(meta_request);
+  }
+
   return AWS_OP_SUCCESS;
 }
 
-static int S3CrtRequestGetBodyCallback(struct aws_s3_meta_request *meta_request, const struct aws_byte_cursor *body, uint64_t range_start, void *user_data)
+int S3CrtClient::S3CrtRequestGetBodyCallback(struct aws_s3_meta_request *meta_request, const struct aws_byte_cursor *body, uint64_t range_start, void *user_data)
 {
   AWS_UNREFERENCED_PARAM(range_start);
 
   auto *userData = static_cast<S3CrtClient::CrtRequestCallbackUserData*>(user_data);
+  if (!userData || !userData->response || !userData->request) {
+    return AWS_OP_ERR;
+  }
   auto& bodyStream = userData->response->GetResponseBody();
 
   bodyStream.write(reinterpret_cast<char*>(body->ptr), static_cast<std::streamsize>(body->len));
@@ -532,12 +599,91 @@ static int S3CrtRequestGetBodyCallback(struct aws_s3_meta_request *meta_request,
   {
       receivedHandler(userData->request.get(), userData->response.get(), static_cast<long long>(body->len));
   }
-  AWS_LOGSTREAM_TRACE(S3CrtClient::ALLOCATION_TAG, body->len << " bytes written to response.");
+  AWS_LOGSTREAM_TRACE(ALLOCATION_TAG, body->len << " bytes written to response.");
+  auto& shouldContinueFn = userData->originalRequest->GetContinueRequestHandler();
+  const HttpRequest* httpRequest = userData->request ? userData->request.get() : nullptr;
+  if (shouldContinueFn && !shouldContinueFn(httpRequest)) {
+    userData->s3CrtClient->CancelCrtRequestAsync(meta_request);
+  }
 
   return AWS_OP_SUCCESS;
 }
 
-static void S3CrtRequestFinishCallback(struct aws_s3_meta_request *meta_request,
+void S3CrtClient::S3CrtRequestProgressCallback(struct aws_s3_meta_request *meta_request, const struct aws_s3_meta_request_progress *progress, void *user_data)
+{
+  AWS_UNREFERENCED_PARAM(meta_request);
+  AWS_CHECK_PTR(SERVICE_NAME, user_data);
+  auto *userData = static_cast<S3CrtClient::CrtRequestCallbackUserData*>(user_data);
+
+  AWS_CHECK_PTR(SERVICE_NAME, userData->request);
+  auto& progressHandler = userData->request->GetDataSentEventHandler();
+  if (progressHandler) {
+    progressHandler(userData->request.get(), static_cast<long long>(progress->bytes_transferred));
+  }
+  AWS_LOGSTREAM_TRACE(ALLOCATION_TAG, progress->bytes_transferred << " bytes transferred.");
+  AWS_CHECK_PTR(SERVICE_NAME, userData->originalRequest);
+  auto& shouldContinueFn = userData->originalRequest->GetContinueRequestHandler();
+  const HttpRequest* httpRequest = userData->request ? userData->request.get() : nullptr;
+  if (shouldContinueFn && !shouldContinueFn(httpRequest)) {
+    userData->s3CrtClient->CancelCrtRequestAsync(meta_request);
+  }
+
+  return;
+}
+
+CoreErrors MapCrtError(const int crtErrorCode) {
+  switch (crtErrorCode) {
+    case aws_s3_errors::AWS_ERROR_S3_REQUEST_HAS_COMPLETED:
+      return CoreErrors::OK;
+    case aws_s3_errors::AWS_ERROR_S3_MISSING_CONTENT_RANGE_HEADER:
+    case aws_s3_errors::AWS_ERROR_S3_MISSING_CONTENT_LENGTH_HEADER:
+    case aws_s3_errors::AWS_ERROR_S3_MISSING_ETAG:
+    case aws_s3_errors::AWS_ERROR_S3_MISSING_UPLOAD_ID:
+      return CoreErrors::MISSING_PARAMETER;
+    case aws_s3_errors::AWS_ERROR_S3_INVALID_CONTENT_RANGE_HEADER:
+    case aws_s3_errors::AWS_ERROR_S3_INVALID_CONTENT_LENGTH_HEADER:
+    case aws_s3_errors::AWS_ERROR_S3_INVALID_RANGE_HEADER:
+    case aws_s3_errors::AWS_ERROR_S3_MULTIRANGE_HEADER_UNSUPPORTED:
+    case aws_s3_errors::AWS_ERROR_S3_INCORRECT_CONTENT_LENGTH:
+    case aws_s3_errors::AWS_ERROR_S3_INVALID_MEMORY_LIMIT_CONFIG:
+      return CoreErrors::INVALID_PARAMETER_VALUE;
+    case aws_s3_errors::AWS_ERROR_S3_INTERNAL_ERROR:
+    case aws_s3_errors::AWS_ERROR_S3_PROXY_PARSE_FAILED:
+    case aws_s3_errors::AWS_ERROR_S3_UNSUPPORTED_PROXY_SCHEME:
+    case aws_s3_errors::AWS_ERROR_S3_NON_RECOVERABLE_ASYNC_ERROR:
+    case aws_s3_errors::AWS_ERROR_S3_METRIC_DATA_NOT_AVAILABLE:
+    case aws_s3_errors::AWS_ERROR_S3_EXCEEDS_MEMORY_LIMIT:
+      return CoreErrors::INTERNAL_FAILURE;
+    case aws_s3_errors::AWS_ERROR_S3_SLOW_DOWN:
+      return CoreErrors::SLOW_DOWN;
+    case aws_s3_errors::AWS_ERROR_S3_INVALID_RESPONSE_STATUS:
+    case aws_s3_errors::AWS_ERROR_S3_RESPONSE_CHECKSUM_MISMATCH:
+    case aws_s3_errors::AWS_ERROR_S3_CHECKSUM_CALCULATION_FAILED:
+    case aws_s3_errors::AWS_ERROR_S3_LIST_PARTS_PARSE_FAILED:
+    case aws_s3_errors::AWS_ERROR_S3_RESUMED_PART_CHECKSUM_MISMATCH:
+    case aws_s3_errors::AWS_ERROR_S3_FILE_MODIFIED:
+    case aws_s3_errors::AWS_ERROR_S3_INTERNAL_PART_SIZE_MISMATCH_RETRYING_WITH_RANGE:
+    case aws_s3_errors::AWS_ERROR_S3_RECV_FILE_ALREADY_EXISTS:
+    case aws_s3_errors::AWS_ERROR_S3_RECV_FILE_NOT_FOUND:
+      return CoreErrors::VALIDATION;
+    case aws_s3_errors::AWS_ERROR_S3_CANCELED:
+      return CoreErrors::USER_CANCELLED;
+    case aws_s3_errors::AWS_ERROR_S3_PAUSED:
+    case aws_s3_errors::AWS_ERROR_S3_RESUME_FAILED:
+    case aws_s3_errors::AWS_ERROR_S3_OBJECT_MODIFIED:
+      return CoreErrors::UNKNOWN;
+    case aws_s3_errors::AWS_ERROR_S3_REQUEST_TIME_TOO_SKEWED:
+      return CoreErrors::REQUEST_TIME_TOO_SKEWED;
+    case aws_s3_errors::AWS_ERROR_S3EXPRESS_CREATE_SESSION_FAILED:
+      return CoreErrors::CLIENT_SIGNING_FAILURE;
+    case aws_s3_errors::AWS_ERROR_S3_REQUEST_TIMEOUT:
+      return CoreErrors::REQUEST_TIMEOUT;
+    default:
+      return CoreErrors::INTERNAL_FAILURE;
+  }
+}
+
+void S3CrtClient::S3CrtRequestFinishCallback(struct aws_s3_meta_request *meta_request,
     const struct aws_s3_meta_request_result *meta_request_result, void *user_data)
 {
   AWS_UNREFERENCED_PARAM(meta_request);
@@ -584,7 +730,7 @@ static void S3CrtRequestFinishCallback(struct aws_s3_meta_request *meta_request,
          << " (" << aws_error_lib_name(meta_request_result->error_code) << ": " << aws_error_name(meta_request_result->error_code) << ")";
 
       userData->response->SetClientErrorMessage(ss.str());
-      userData->response->SetClientErrorType(CoreErrors::INTERNAL_FAILURE);
+      userData->response->SetClientErrorType(MapCrtError(meta_request_result->error_code));
   }
 
   aws_s3_meta_request_release(meta_request);
@@ -650,6 +796,12 @@ Aws::Client::StreamOutcome S3CrtClient::GenerateStreamOutcome(const std::shared_
   return StreamOutcome(std::move(httpOutcome));
 }
 
+void S3CrtClient::InitCrtEndpointFromUri(aws_uri &endpoint_uri, const Aws::Http::URI &uri) const {
+  const auto endpointStr = uri.GetURIString();
+  const auto endpointCursor{ aws_byte_cursor_from_array(endpointStr.c_str(), endpointStr.size()) };
+  aws_uri_init_parse(&endpoint_uri, Aws::get_aws_allocator(), &endpointCursor);
+}
+
 void S3CrtClient::InitCommonCrtRequestOption(CrtRequestCallbackUserData *userData,
                                              aws_s3_meta_request_options *options,
                                              const Aws::AmazonWebServiceRequest *request,
@@ -677,17 +829,33 @@ void S3CrtClient::InitCommonCrtRequestOption(CrtRequestCallbackUserData *userDat
   options->user_data = static_cast<void*>(userData);
   options->headers_callback = S3CrtRequestHeadersCallback;
   options->body_callback = S3CrtRequestGetBodyCallback;
+  options->progress_callback = S3CrtRequestProgressCallback;
   options->finish_callback = S3CrtRequestFinishCallback;
-  const auto endpointStr = uri.GetURIString();
-  const auto endpointCursor{ aws_byte_cursor_from_array(endpointStr.c_str(), endpointStr.size()) };
-  aws_uri_init_parse(options->endpoint, Aws::get_aws_allocator(), &endpointCursor);
 }
 
 static void CopyObjectRequestShutdownCallback(void *user_data)
 {
+  if(!user_data)
+  {
+    AWS_LOGSTREAM_ERROR("CopyObject", "user data passed is NULL ");
+    return;
+  }
   auto *userData = static_cast<S3CrtClient::CrtRequestCallbackUserData*>(user_data);
+
   // call user callback and release user_data
   S3Crt::Model::CopyObjectOutcome outcome(userData->s3CrtClient->GenerateXmlOutcome(userData->response));
+  //log into monitor 
+  if (userData->asyncCallerContext)
+  {
+    if(!outcome.IsSuccess())
+    {
+      userData->asyncCallerContext->GetMonitorContext().OnRequestFailed(userData->request,userData->response);
+    }
+    else
+    {
+      userData->asyncCallerContext->GetMonitorContext().OnRequestSucceeded(userData->request, userData->response);
+    }
+  }
   userData->copyResponseHandler(userData->s3CrtClient, *(reinterpret_cast<const CopyObjectRequest*>(userData->originalRequest)), std::move(outcome), userData->asyncCallerContext);
 
   Aws::Delete(userData);
@@ -695,6 +863,7 @@ static void CopyObjectRequestShutdownCallback(void *user_data)
 
 void S3CrtClient::CopyObjectAsync(const CopyObjectRequest& request, const CopyObjectResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& handlerContext) const
 {
+  AWS_ASYNC_OPERATION_GUARD(CopyObject);
   if (!m_endpointProvider) {
     return handler(this, request, CopyObjectOutcome(Aws::Client::AWSError<S3CrtErrors>(S3CrtErrors::INTERNAL_FAILURE, "INTERNAL_FAILURE", "Endpoint provider is not initialized", false)), handlerContext);
   }
@@ -739,12 +908,15 @@ void S3CrtClient::CopyObjectAsync(const CopyObjectRequest& request, const CopyOb
   aws_s3_meta_request_options options;
   AWS_ZERO_STRUCT(options);
   aws_uri endpoint;
-  AWS_ZERO_STRUCT(endpoint);
+  InitCrtEndpointFromUri(endpoint, endpointResolutionOutcome.GetResult().GetURI());
   options.endpoint = &endpoint;
-  std::unique_ptr<aws_uri, void(*)(aws_uri*)> endpointCleanup { options.endpoint, &aws_uri_clean_up };
+  std::unique_ptr<aws_uri, void(*)(aws_uri*)> endpointCleanup { &endpoint, &aws_uri_clean_up };
 
   userData->copyResponseHandler = handler;
-  userData->asyncCallerContext = handlerContext;
+  if(handlerContext)
+  {
+    userData->asyncCallerContext = handlerContext;
+  }
   InitCommonCrtRequestOption(userData, &options, &request, endpointResolutionOutcome.GetResult().GetURI(), Aws::Http::HttpMethod::HTTP_PUT);
   if (userData != nullptr &&
     userData->request != nullptr &&
@@ -752,6 +924,10 @@ void S3CrtClient::CopyObjectAsync(const CopyObjectRequest& request, const CopyOb
     userData->request->GetContentBody()->fail())
   {
     return handler(this, request, CopyObjectOutcome(Aws::Client::AWSError<S3CrtErrors>(S3CrtErrors::INTERNAL_FAILURE, "INTERNAL_FAILURE", "Unable to create s3 meta request", false)), handlerContext);
+  }
+  if(handlerContext)
+  {
+    handlerContext->GetMonitorContext().StartMonitorContext(Aws::String{"S3CrtClient"},request.GetServiceRequestName(), userData->request);
   }
   options.shutdown_callback = CopyObjectRequestShutdownCallback;
   options.type = AWS_S3_META_REQUEST_TYPE_COPY_OBJECT;
@@ -772,13 +948,52 @@ void S3CrtClient::CopyObjectAsync(const CopyObjectRequest& request, const CopyOb
   }
   options.signing_config = &signing_config_override;
 
+  const auto headers = request.GetHeaders();
+  const auto checksumHeader = std::find_if(headers.begin(),
+    headers.end(),
+    [](const Aws::Http::HeaderValuePair& header) -> bool { return header.first.find("x-amz-checksum-") != Aws::String::npos; });
+  if (request.ChecksumAlgorithmHasBeenSet() && checksumHeader == headers.end())
+  {
+    static std::pair<ChecksumAlgorithm, aws_s3_checksum_algorithm> crtChecksumMapping[]{
+      {ChecksumAlgorithm::CRC32, aws_s3_checksum_algorithm::AWS_SCA_CRC32},
+      {ChecksumAlgorithm::CRC32C, aws_s3_checksum_algorithm::AWS_SCA_CRC32C},
+      {ChecksumAlgorithm::SHA1, aws_s3_checksum_algorithm::AWS_SCA_SHA1},
+      {ChecksumAlgorithm::SHA256, aws_s3_checksum_algorithm::AWS_SCA_SHA256},
+      {ChecksumAlgorithm::CRC64NVME, aws_s3_checksum_algorithm::AWS_SCA_CRC64NVME},
+    };
+
+    const auto checksumAlgorithm = request.GetChecksumAlgorithm();
+    const auto mapping = std::find_if(std::begin(crtChecksumMapping),
+      std::end(crtChecksumMapping),
+      [&checksumAlgorithm](const std::pair<ChecksumAlgorithm, aws_s3_checksum_algorithm>& mapping){ return mapping.first == checksumAlgorithm; });
+    if (mapping != std::end(crtChecksumMapping))
+    {
+      Aws::UniquePtr<struct aws_s3_checksum_config> checksumConfig{Aws::New<struct aws_s3_checksum_config>(ALLOCATION_TAG)};
+      checksumConfig->checksum_algorithm = mapping->second;
+      checksumConfig->location = AWS_SCL_TRAILER;
+      userData->checksumConfig = std::move(checksumConfig);
+      options.checksum_config = userData->checksumConfig.get();
+    }
+    else
+    {
+      AWS_LOGSTREAM_ERROR("CopyObject", "Could not set CRT checksum for " << ChecksumAlgorithmMapper::GetNameForChecksumAlgorithm(checksumAlgorithm));
+    }
+  }
+  
   std::shared_ptr<Aws::Crt::Http::HttpRequest> crtHttpRequest = userData->request->ToCrtHttpRequest();
   options.message= crtHttpRequest->GetUnderlyingMessage();
   userData->crtHttpRequest = crtHttpRequest;
 
-  if (aws_s3_client_make_meta_request(m_s3CrtClient, &options) == nullptr)
-  {
-    return handler(this, request, CopyObjectOutcome(Aws::Client::AWSError<S3CrtErrors>(S3CrtErrors::INTERNAL_FAILURE, "INTERNAL_FAILURE", "Unable to create s3 meta request", false)), handlerContext);
+  aws_s3_meta_request* meta_request = aws_s3_client_make_meta_request(m_s3CrtClient, &options);
+  if (meta_request == nullptr) {
+    return handler(this, request,
+                   CopyObjectOutcome(Aws::Client::AWSError<S3CrtErrors>(S3CrtErrors::INTERNAL_FAILURE, "INTERNAL_FAILURE",
+                                                                       "Unable to create s3 meta request", false)), handlerContext);
+  }
+  auto& shouldContinueFn = request.GetContinueRequestHandler();
+  const HttpRequest* httpRequest = userData->request ? userData->request.get() : nullptr;
+  if (shouldContinueFn && !shouldContinueFn(httpRequest)) {
+    aws_s3_meta_request_cancel(meta_request);
   }
 }
 
@@ -792,13 +1007,13 @@ CopyObjectOutcome S3CrtClient::CopyObject(const CopyObjectRequest& request) cons
     [&]()-> CopyObjectOutcome {
       Aws::Utils::Threading::Semaphore sem(0, 1);
       CopyObjectOutcome res;
-
+      auto handlerContext = Aws::MakeShared<AsyncCallerContext>(ALLOCATION_TAG);
       auto handler = CopyObjectResponseReceivedHandler{[&](const S3CrtClient*, const CopyObjectRequest&, const CopyObjectOutcome& outcome, const std::shared_ptr<const Aws::Client::AsyncCallerContext> &) {
         res = std::move(outcome);
         sem.ReleaseAll();
       }};
 
-      S3CrtClient::CopyObjectAsync(request, handler, nullptr);
+      S3CrtClient::CopyObjectAsync(request, handler, handlerContext);
       sem.WaitOne();
       return res;
     },
@@ -809,9 +1024,27 @@ CopyObjectOutcome S3CrtClient::CopyObject(const CopyObjectRequest& request) cons
 
 static void GetObjectRequestShutdownCallback(void *user_data)
 {
+  if(!user_data)
+  {
+    AWS_LOGSTREAM_ERROR("GetObject", "user data passed is NULL ");
+    return;
+  }
   auto *userData = static_cast<S3CrtClient::CrtRequestCallbackUserData*>(user_data);
+
   // call user callback and release user_data
   S3Crt::Model::GetObjectOutcome outcome(userData->s3CrtClient->GenerateStreamOutcome(userData->response));
+  //log into monitor 
+  if (userData->asyncCallerContext)
+  {
+    if(!outcome.IsSuccess())
+    {
+      userData->asyncCallerContext->GetMonitorContext().OnRequestFailed(userData->request,userData->response);
+    }
+    else
+    {
+      userData->asyncCallerContext->GetMonitorContext().OnRequestSucceeded(userData->request, userData->response);
+    }
+  }
   userData->getResponseHandler(userData->s3CrtClient, *(reinterpret_cast<const GetObjectRequest*>(userData->originalRequest)), std::move(outcome), userData->asyncCallerContext);
 
   Aws::Delete(userData);
@@ -819,6 +1052,7 @@ static void GetObjectRequestShutdownCallback(void *user_data)
 
 void S3CrtClient::GetObjectAsync(const GetObjectRequest& request, const GetObjectResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& handlerContext) const
 {
+  AWS_ASYNC_OPERATION_GUARD(GetObject);
   if (!m_endpointProvider) {
     return handler(this, request, GetObjectOutcome(Aws::Client::AWSError<S3CrtErrors>(S3CrtErrors::INTERNAL_FAILURE, "INTERNAL_FAILURE", "Endpoint provider is not initialized", false)), handlerContext);
   }
@@ -858,12 +1092,15 @@ void S3CrtClient::GetObjectAsync(const GetObjectRequest& request, const GetObjec
   aws_s3_meta_request_options options;
   AWS_ZERO_STRUCT(options);
   aws_uri endpoint;
-  AWS_ZERO_STRUCT(endpoint);
+  InitCrtEndpointFromUri(endpoint, endpointResolutionOutcome.GetResult().GetURI());
   options.endpoint = &endpoint;
-  std::unique_ptr<aws_uri, void(*)(aws_uri*)> endpointCleanup { options.endpoint, &aws_uri_clean_up };
+  std::unique_ptr<aws_uri, void(*)(aws_uri*)> endpointCleanup { &endpoint, &aws_uri_clean_up };
 
   userData->getResponseHandler = handler;
-  userData->asyncCallerContext = handlerContext;
+  if(handlerContext)
+  {
+    userData->asyncCallerContext = handlerContext;
+  }
   InitCommonCrtRequestOption(userData, &options, &request, endpointResolutionOutcome.GetResult().GetURI(), Aws::Http::HttpMethod::HTTP_GET);
   if (userData != nullptr &&
     userData->request != nullptr &&
@@ -871,6 +1108,10 @@ void S3CrtClient::GetObjectAsync(const GetObjectRequest& request, const GetObjec
     userData->request->GetContentBody()->fail())
   {
     return handler(this, request, GetObjectOutcome(Aws::Client::AWSError<S3CrtErrors>(S3CrtErrors::INVALID_PARAMETER_VALUE, "INVALID_PARAMETER_VALUE", "Output stream in bad state", false)), handlerContext);
+  }
+  if(handlerContext)
+  {
+    handlerContext->GetMonitorContext().StartMonitorContext(Aws::String{"S3CrtClient"},request.GetServiceRequestName(), userData->request);
   }
   options.shutdown_callback = GetObjectRequestShutdownCallback;
   options.type = AWS_S3_META_REQUEST_TYPE_GET_OBJECT;
@@ -895,9 +1136,16 @@ void S3CrtClient::GetObjectAsync(const GetObjectRequest& request, const GetObjec
   options.message= crtHttpRequest->GetUnderlyingMessage();
   userData->crtHttpRequest = crtHttpRequest;
 
-  if (aws_s3_client_make_meta_request(m_s3CrtClient, &options) == nullptr)
-  {
-    return handler(this, request, GetObjectOutcome(Aws::Client::AWSError<S3CrtErrors>(S3CrtErrors::INTERNAL_FAILURE, "INTERNAL_FAILURE", "Unable to create s3 meta request", false)), handlerContext);
+  aws_s3_meta_request* meta_request = aws_s3_client_make_meta_request(m_s3CrtClient, &options);
+  if (meta_request == nullptr) {
+    return handler(this, request,
+                   GetObjectOutcome(Aws::Client::AWSError<S3CrtErrors>(S3CrtErrors::INTERNAL_FAILURE, "INTERNAL_FAILURE",
+                                                                       "Unable to create s3 meta request", false)), handlerContext);
+  }
+  auto& shouldContinueFn = request.GetContinueRequestHandler();
+  const HttpRequest* httpRequest = userData->request ? userData->request.get() : nullptr;
+  if (shouldContinueFn && !shouldContinueFn(httpRequest)) {
+    aws_s3_meta_request_cancel(meta_request);
   }
 }
 
@@ -911,13 +1159,13 @@ GetObjectOutcome S3CrtClient::GetObject(const GetObjectRequest& request) const
     [&]()-> GetObjectOutcome {
       Aws::Utils::Threading::Semaphore sem(0, 1);
       GetObjectOutcome res;
-
+      auto handlerContext = Aws::MakeShared<AsyncCallerContext>(ALLOCATION_TAG);
       auto handler = GetObjectResponseReceivedHandler{[&](const S3CrtClient*, const GetObjectRequest&, GetObjectOutcome outcome, const std::shared_ptr<const Aws::Client::AsyncCallerContext> &) {
         res = std::move(outcome);
         sem.ReleaseAll();
       }};
 
-      S3CrtClient::GetObjectAsync(request, handler, nullptr);
+      S3CrtClient::GetObjectAsync(request, handler, handlerContext);
       sem.WaitOne();
       return res;
     },
@@ -928,9 +1176,27 @@ GetObjectOutcome S3CrtClient::GetObject(const GetObjectRequest& request) const
 
 static void PutObjectRequestShutdownCallback(void *user_data)
 {
+  if(!user_data)
+  {
+    AWS_LOGSTREAM_ERROR("PutObject", "user data passed is NULL ");
+    return;
+  }
   auto *userData = static_cast<S3CrtClient::CrtRequestCallbackUserData*>(user_data);
+
   // call user callback and release user_data
   S3Crt::Model::PutObjectOutcome outcome(userData->s3CrtClient->GenerateXmlOutcome(userData->response));
+  //log into monitor 
+  if (userData->asyncCallerContext)
+  {
+    if(!outcome.IsSuccess())
+    {
+      userData->asyncCallerContext->GetMonitorContext().OnRequestFailed(userData->request,userData->response);
+    }
+    else
+    {
+      userData->asyncCallerContext->GetMonitorContext().OnRequestSucceeded(userData->request, userData->response);
+    }
+  }
   userData->putResponseHandler(userData->s3CrtClient, *(reinterpret_cast<const PutObjectRequest*>(userData->originalRequest)), std::move(outcome), userData->asyncCallerContext);
 
   Aws::Delete(userData);
@@ -938,6 +1204,7 @@ static void PutObjectRequestShutdownCallback(void *user_data)
 
 void S3CrtClient::PutObjectAsync(const PutObjectRequest& request, const PutObjectResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& handlerContext) const
 {
+  AWS_ASYNC_OPERATION_GUARD(PutObject);
   if (!m_endpointProvider) {
     return handler(this, request, PutObjectOutcome(Aws::Client::AWSError<S3CrtErrors>(S3CrtErrors::INTERNAL_FAILURE, "INTERNAL_FAILURE", "Endpoint provider is not initialized", false)), handlerContext);
   }
@@ -967,10 +1234,6 @@ void S3CrtClient::PutObjectAsync(const PutObjectRequest& request, const PutObjec
   request.SetServiceSpecificParameters(
       [&]() -> std::shared_ptr<Http::ServiceSpecificParameters> {
           Aws::Map<Aws::String, Aws::String> params;
-          auto isExpress = endpointResolutionOutcome.GetResult().AccessAttributes().value().backend == "S3Express";
-          if (!request.ChecksumAlgorithmHasBeenSet() && isExpress && request.GetChecksumAlgorithmName() == "md5") {
-              params.emplace("overrideChecksum", "crc32");
-          }
           params.emplace("bucketName", request.GetBucket());
           ServiceSpecificParameters serviceSpecificParameters{params};
           return Aws::MakeShared<ServiceSpecificParameters>(ALLOCATION_TAG, serviceSpecificParameters);
@@ -981,12 +1244,15 @@ void S3CrtClient::PutObjectAsync(const PutObjectRequest& request, const PutObjec
   aws_s3_meta_request_options options;
   AWS_ZERO_STRUCT(options);
   aws_uri endpoint;
-  AWS_ZERO_STRUCT(endpoint);
+  InitCrtEndpointFromUri(endpoint, endpointResolutionOutcome.GetResult().GetURI());
   options.endpoint = &endpoint;
-  std::unique_ptr<aws_uri, void(*)(aws_uri*)> endpointCleanup { options.endpoint, &aws_uri_clean_up };
+  std::unique_ptr<aws_uri, void(*)(aws_uri*)> endpointCleanup { &endpoint, &aws_uri_clean_up };
 
   userData->putResponseHandler = handler;
-  userData->asyncCallerContext = handlerContext;
+  if(handlerContext)
+  {
+    userData->asyncCallerContext = handlerContext;
+  }
   InitCommonCrtRequestOption(userData, &options, &request, endpointResolutionOutcome.GetResult().GetURI(), Aws::Http::HttpMethod::HTTP_PUT);
   if (userData != nullptr &&
     userData->request != nullptr &&
@@ -994,6 +1260,10 @@ void S3CrtClient::PutObjectAsync(const PutObjectRequest& request, const PutObjec
     userData->request->GetContentBody()->fail())
   {
     return handler(this, request, PutObjectOutcome(Aws::Client::AWSError<S3CrtErrors>(S3CrtErrors::INVALID_PARAMETER_VALUE, "INVALID_PARAMETER_VALUE", "Input stream in bad state", false)), handlerContext);
+  }
+  if(handlerContext)
+  {
+    handlerContext->GetMonitorContext().StartMonitorContext(Aws::String{"S3CrtClient"},request.GetServiceRequestName(), userData->request);
   }
   options.shutdown_callback = PutObjectRequestShutdownCallback;
   options.type = AWS_S3_META_REQUEST_TYPE_PUT_OBJECT;
@@ -1014,13 +1284,52 @@ void S3CrtClient::PutObjectAsync(const PutObjectRequest& request, const PutObjec
   }
   options.signing_config = &signing_config_override;
 
+  const auto headers = request.GetHeaders();
+  const auto checksumHeader = std::find_if(headers.begin(),
+    headers.end(),
+    [](const Aws::Http::HeaderValuePair& header) -> bool { return header.first.find("x-amz-checksum-") != Aws::String::npos; });
+  if (request.ChecksumAlgorithmHasBeenSet() && checksumHeader == headers.end())
+  {
+    static std::pair<ChecksumAlgorithm, aws_s3_checksum_algorithm> crtChecksumMapping[]{
+      {ChecksumAlgorithm::CRC32, aws_s3_checksum_algorithm::AWS_SCA_CRC32},
+      {ChecksumAlgorithm::CRC32C, aws_s3_checksum_algorithm::AWS_SCA_CRC32C},
+      {ChecksumAlgorithm::SHA1, aws_s3_checksum_algorithm::AWS_SCA_SHA1},
+      {ChecksumAlgorithm::SHA256, aws_s3_checksum_algorithm::AWS_SCA_SHA256},
+      {ChecksumAlgorithm::CRC64NVME, aws_s3_checksum_algorithm::AWS_SCA_CRC64NVME},
+    };
+
+    const auto checksumAlgorithm = request.GetChecksumAlgorithm();
+    const auto mapping = std::find_if(std::begin(crtChecksumMapping),
+      std::end(crtChecksumMapping),
+      [&checksumAlgorithm](const std::pair<ChecksumAlgorithm, aws_s3_checksum_algorithm>& mapping){ return mapping.first == checksumAlgorithm; });
+    if (mapping != std::end(crtChecksumMapping))
+    {
+      Aws::UniquePtr<struct aws_s3_checksum_config> checksumConfig{Aws::New<struct aws_s3_checksum_config>(ALLOCATION_TAG)};
+      checksumConfig->checksum_algorithm = mapping->second;
+      checksumConfig->location = AWS_SCL_TRAILER;
+      userData->checksumConfig = std::move(checksumConfig);
+      options.checksum_config = userData->checksumConfig.get();
+    }
+    else
+    {
+      AWS_LOGSTREAM_ERROR("PutObject", "Could not set CRT checksum for " << ChecksumAlgorithmMapper::GetNameForChecksumAlgorithm(checksumAlgorithm));
+    }
+  }
+  
   std::shared_ptr<Aws::Crt::Http::HttpRequest> crtHttpRequest = userData->request->ToCrtHttpRequest();
   options.message= crtHttpRequest->GetUnderlyingMessage();
   userData->crtHttpRequest = crtHttpRequest;
 
-  if (aws_s3_client_make_meta_request(m_s3CrtClient, &options) == nullptr)
-  {
-    return handler(this, request, PutObjectOutcome(Aws::Client::AWSError<S3CrtErrors>(S3CrtErrors::INTERNAL_FAILURE, "INTERNAL_FAILURE", "Unable to create s3 meta request", false)), handlerContext);
+  aws_s3_meta_request* meta_request = aws_s3_client_make_meta_request(m_s3CrtClient, &options);
+  if (meta_request == nullptr) {
+    return handler(this, request,
+                   PutObjectOutcome(Aws::Client::AWSError<S3CrtErrors>(S3CrtErrors::INTERNAL_FAILURE, "INTERNAL_FAILURE",
+                                                                       "Unable to create s3 meta request", false)), handlerContext);
+  }
+  auto& shouldContinueFn = request.GetContinueRequestHandler();
+  const HttpRequest* httpRequest = userData->request ? userData->request.get() : nullptr;
+  if (shouldContinueFn && !shouldContinueFn(httpRequest)) {
+    aws_s3_meta_request_cancel(meta_request);
   }
 }
 
@@ -1034,13 +1343,13 @@ PutObjectOutcome S3CrtClient::PutObject(const PutObjectRequest& request) const
     [&]()-> PutObjectOutcome {
       Aws::Utils::Threading::Semaphore sem(0, 1);
       PutObjectOutcome res;
-
+      auto handlerContext = Aws::MakeShared<AsyncCallerContext>(ALLOCATION_TAG);
       auto handler = PutObjectResponseReceivedHandler{[&](const S3CrtClient*, const PutObjectRequest&, const PutObjectOutcome& outcome, const std::shared_ptr<const Aws::Client::AsyncCallerContext> &) {
         res = std::move(outcome);
         sem.ReleaseAll();
       }};
 
-      S3CrtClient::PutObjectAsync(request, handler, nullptr);
+      S3CrtClient::PutObjectAsync(request, handler, handlerContext);
       sem.WaitOne();
       return res;
     },
@@ -1179,6 +1488,88 @@ CreateBucketOutcome S3CrtClient::CreateBucket(const CreateBucketRequest& request
           return Aws::MakeShared<ServiceSpecificParameters>(ALLOCATION_TAG, serviceSpecificParameters);
         }());
       return CreateBucketOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_PUT));
+    },
+    TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
+    *meter,
+    {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+}
+
+CreateBucketMetadataConfigurationOutcome S3CrtClient::CreateBucketMetadataConfiguration(const CreateBucketMetadataConfigurationRequest& request) const
+{
+  AWS_OPERATION_GUARD(CreateBucketMetadataConfiguration);
+  AWS_OPERATION_CHECK_PTR(m_endpointProvider, CreateBucketMetadataConfiguration, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE);
+  if (!request.BucketHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("CreateBucketMetadataConfiguration", "Required field: Bucket, is not set");
+    return CreateBucketMetadataConfigurationOutcome(Aws::Client::AWSError<S3CrtErrors>(S3CrtErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [Bucket]", false));
+  }
+  AWS_OPERATION_CHECK_PTR(m_telemetryProvider, CreateBucketMetadataConfiguration, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto tracer = m_telemetryProvider->getTracer(this->GetServiceClientName(), {});
+  auto meter = m_telemetryProvider->getMeter(this->GetServiceClientName(), {});
+  AWS_OPERATION_CHECK_PTR(meter, CreateBucketMetadataConfiguration, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto span = tracer->CreateSpan(Aws::String(this->GetServiceClientName()) + "." + request.GetServiceRequestName(),
+    {{ TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName() }, { TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName() }, { TracingUtils::SMITHY_SYSTEM_DIMENSION, TracingUtils::SMITHY_METHOD_AWS_VALUE }},
+    smithy::components::tracing::SpanKind::CLIENT);
+  return TracingUtils::MakeCallWithTiming<CreateBucketMetadataConfigurationOutcome>(
+    [&]()-> CreateBucketMetadataConfigurationOutcome {
+      auto endpointResolutionOutcome = TracingUtils::MakeCallWithTiming<ResolveEndpointOutcome>(
+          [&]() -> ResolveEndpointOutcome { return m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams()); },
+          TracingUtils::SMITHY_CLIENT_ENDPOINT_RESOLUTION_METRIC,
+          *meter,
+          {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+      AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, CreateBucketMetadataConfiguration, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
+      Aws::StringStream ss;
+      ss.str("?metadataConfiguration");
+      endpointResolutionOutcome.GetResult().SetQueryString(ss.str());
+      request.SetServiceSpecificParameters(
+        [&]() -> std::shared_ptr<Http::ServiceSpecificParameters> {
+          Aws::Map<Aws::String, Aws::String> params;
+          params.emplace("bucketName", request.GetBucket());
+          ServiceSpecificParameters serviceSpecificParameters{params};
+          return Aws::MakeShared<ServiceSpecificParameters>(ALLOCATION_TAG, serviceSpecificParameters);
+        }());
+      return CreateBucketMetadataConfigurationOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_POST));
+    },
+    TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
+    *meter,
+    {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+}
+
+CreateBucketMetadataTableConfigurationOutcome S3CrtClient::CreateBucketMetadataTableConfiguration(const CreateBucketMetadataTableConfigurationRequest& request) const
+{
+  AWS_OPERATION_GUARD(CreateBucketMetadataTableConfiguration);
+  AWS_OPERATION_CHECK_PTR(m_endpointProvider, CreateBucketMetadataTableConfiguration, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE);
+  if (!request.BucketHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("CreateBucketMetadataTableConfiguration", "Required field: Bucket, is not set");
+    return CreateBucketMetadataTableConfigurationOutcome(Aws::Client::AWSError<S3CrtErrors>(S3CrtErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [Bucket]", false));
+  }
+  AWS_OPERATION_CHECK_PTR(m_telemetryProvider, CreateBucketMetadataTableConfiguration, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto tracer = m_telemetryProvider->getTracer(this->GetServiceClientName(), {});
+  auto meter = m_telemetryProvider->getMeter(this->GetServiceClientName(), {});
+  AWS_OPERATION_CHECK_PTR(meter, CreateBucketMetadataTableConfiguration, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto span = tracer->CreateSpan(Aws::String(this->GetServiceClientName()) + "." + request.GetServiceRequestName(),
+    {{ TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName() }, { TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName() }, { TracingUtils::SMITHY_SYSTEM_DIMENSION, TracingUtils::SMITHY_METHOD_AWS_VALUE }},
+    smithy::components::tracing::SpanKind::CLIENT);
+  return TracingUtils::MakeCallWithTiming<CreateBucketMetadataTableConfigurationOutcome>(
+    [&]()-> CreateBucketMetadataTableConfigurationOutcome {
+      auto endpointResolutionOutcome = TracingUtils::MakeCallWithTiming<ResolveEndpointOutcome>(
+          [&]() -> ResolveEndpointOutcome { return m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams()); },
+          TracingUtils::SMITHY_CLIENT_ENDPOINT_RESOLUTION_METRIC,
+          *meter,
+          {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+      AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, CreateBucketMetadataTableConfiguration, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
+      Aws::StringStream ss;
+      ss.str("?metadataTable");
+      endpointResolutionOutcome.GetResult().SetQueryString(ss.str());
+      request.SetServiceSpecificParameters(
+        [&]() -> std::shared_ptr<Http::ServiceSpecificParameters> {
+          Aws::Map<Aws::String, Aws::String> params;
+          params.emplace("bucketName", request.GetBucket());
+          ServiceSpecificParameters serviceSpecificParameters{params};
+          return Aws::MakeShared<ServiceSpecificParameters>(ALLOCATION_TAG, serviceSpecificParameters);
+        }());
+      return CreateBucketMetadataTableConfigurationOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_POST));
     },
     TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
     *meter,
@@ -1572,6 +1963,88 @@ DeleteBucketLifecycleOutcome S3CrtClient::DeleteBucketLifecycle(const DeleteBuck
     {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
 }
 
+DeleteBucketMetadataConfigurationOutcome S3CrtClient::DeleteBucketMetadataConfiguration(const DeleteBucketMetadataConfigurationRequest& request) const
+{
+  AWS_OPERATION_GUARD(DeleteBucketMetadataConfiguration);
+  AWS_OPERATION_CHECK_PTR(m_endpointProvider, DeleteBucketMetadataConfiguration, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE);
+  if (!request.BucketHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("DeleteBucketMetadataConfiguration", "Required field: Bucket, is not set");
+    return DeleteBucketMetadataConfigurationOutcome(Aws::Client::AWSError<S3CrtErrors>(S3CrtErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [Bucket]", false));
+  }
+  AWS_OPERATION_CHECK_PTR(m_telemetryProvider, DeleteBucketMetadataConfiguration, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto tracer = m_telemetryProvider->getTracer(this->GetServiceClientName(), {});
+  auto meter = m_telemetryProvider->getMeter(this->GetServiceClientName(), {});
+  AWS_OPERATION_CHECK_PTR(meter, DeleteBucketMetadataConfiguration, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto span = tracer->CreateSpan(Aws::String(this->GetServiceClientName()) + "." + request.GetServiceRequestName(),
+    {{ TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName() }, { TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName() }, { TracingUtils::SMITHY_SYSTEM_DIMENSION, TracingUtils::SMITHY_METHOD_AWS_VALUE }},
+    smithy::components::tracing::SpanKind::CLIENT);
+  return TracingUtils::MakeCallWithTiming<DeleteBucketMetadataConfigurationOutcome>(
+    [&]()-> DeleteBucketMetadataConfigurationOutcome {
+      auto endpointResolutionOutcome = TracingUtils::MakeCallWithTiming<ResolveEndpointOutcome>(
+          [&]() -> ResolveEndpointOutcome { return m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams()); },
+          TracingUtils::SMITHY_CLIENT_ENDPOINT_RESOLUTION_METRIC,
+          *meter,
+          {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+      AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, DeleteBucketMetadataConfiguration, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
+      Aws::StringStream ss;
+      ss.str("?metadataConfiguration");
+      endpointResolutionOutcome.GetResult().SetQueryString(ss.str());
+      request.SetServiceSpecificParameters(
+        [&]() -> std::shared_ptr<Http::ServiceSpecificParameters> {
+          Aws::Map<Aws::String, Aws::String> params;
+          params.emplace("bucketName", request.GetBucket());
+          ServiceSpecificParameters serviceSpecificParameters{params};
+          return Aws::MakeShared<ServiceSpecificParameters>(ALLOCATION_TAG, serviceSpecificParameters);
+        }());
+      return DeleteBucketMetadataConfigurationOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_DELETE));
+    },
+    TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
+    *meter,
+    {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+}
+
+DeleteBucketMetadataTableConfigurationOutcome S3CrtClient::DeleteBucketMetadataTableConfiguration(const DeleteBucketMetadataTableConfigurationRequest& request) const
+{
+  AWS_OPERATION_GUARD(DeleteBucketMetadataTableConfiguration);
+  AWS_OPERATION_CHECK_PTR(m_endpointProvider, DeleteBucketMetadataTableConfiguration, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE);
+  if (!request.BucketHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("DeleteBucketMetadataTableConfiguration", "Required field: Bucket, is not set");
+    return DeleteBucketMetadataTableConfigurationOutcome(Aws::Client::AWSError<S3CrtErrors>(S3CrtErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [Bucket]", false));
+  }
+  AWS_OPERATION_CHECK_PTR(m_telemetryProvider, DeleteBucketMetadataTableConfiguration, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto tracer = m_telemetryProvider->getTracer(this->GetServiceClientName(), {});
+  auto meter = m_telemetryProvider->getMeter(this->GetServiceClientName(), {});
+  AWS_OPERATION_CHECK_PTR(meter, DeleteBucketMetadataTableConfiguration, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto span = tracer->CreateSpan(Aws::String(this->GetServiceClientName()) + "." + request.GetServiceRequestName(),
+    {{ TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName() }, { TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName() }, { TracingUtils::SMITHY_SYSTEM_DIMENSION, TracingUtils::SMITHY_METHOD_AWS_VALUE }},
+    smithy::components::tracing::SpanKind::CLIENT);
+  return TracingUtils::MakeCallWithTiming<DeleteBucketMetadataTableConfigurationOutcome>(
+    [&]()-> DeleteBucketMetadataTableConfigurationOutcome {
+      auto endpointResolutionOutcome = TracingUtils::MakeCallWithTiming<ResolveEndpointOutcome>(
+          [&]() -> ResolveEndpointOutcome { return m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams()); },
+          TracingUtils::SMITHY_CLIENT_ENDPOINT_RESOLUTION_METRIC,
+          *meter,
+          {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+      AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, DeleteBucketMetadataTableConfiguration, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
+      Aws::StringStream ss;
+      ss.str("?metadataTable");
+      endpointResolutionOutcome.GetResult().SetQueryString(ss.str());
+      request.SetServiceSpecificParameters(
+        [&]() -> std::shared_ptr<Http::ServiceSpecificParameters> {
+          Aws::Map<Aws::String, Aws::String> params;
+          params.emplace("bucketName", request.GetBucket());
+          ServiceSpecificParameters serviceSpecificParameters{params};
+          return Aws::MakeShared<ServiceSpecificParameters>(ALLOCATION_TAG, serviceSpecificParameters);
+        }());
+      return DeleteBucketMetadataTableConfigurationOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_DELETE));
+    },
+    TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
+    *meter,
+    {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+}
+
 DeleteBucketMetricsConfigurationOutcome S3CrtClient::DeleteBucketMetricsConfiguration(const DeleteBucketMetricsConfigurationRequest& request) const
 {
   AWS_OPERATION_GUARD(DeleteBucketMetricsConfiguration);
@@ -1944,10 +2417,6 @@ DeleteObjectsOutcome S3CrtClient::DeleteObjects(const DeleteObjectsRequest& requ
       request.SetServiceSpecificParameters(
         [&]() -> std::shared_ptr<Http::ServiceSpecificParameters> {
           Aws::Map<Aws::String, Aws::String> params;
-          auto isExpress = endpointResolutionOutcome.GetResult().AccessAttributes().value().backend == "S3Express";
-          if (!request.ChecksumAlgorithmHasBeenSet() && isExpress && request.GetChecksumAlgorithmName() == "md5") {
-            params.emplace("overrideChecksum", "crc32");
-          }
           params.emplace("bucketName", request.GetBucket());
           ServiceSpecificParameters serviceSpecificParameters{params};
           return Aws::MakeShared<ServiceSpecificParameters>(ALLOCATION_TAG, serviceSpecificParameters);
@@ -2419,6 +2888,88 @@ GetBucketLoggingOutcome S3CrtClient::GetBucketLogging(const GetBucketLoggingRequ
           return Aws::MakeShared<ServiceSpecificParameters>(ALLOCATION_TAG, serviceSpecificParameters);
         }());
       return GetBucketLoggingOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_GET));
+    },
+    TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
+    *meter,
+    {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+}
+
+GetBucketMetadataConfigurationOutcome S3CrtClient::GetBucketMetadataConfiguration(const GetBucketMetadataConfigurationRequest& request) const
+{
+  AWS_OPERATION_GUARD(GetBucketMetadataConfiguration);
+  AWS_OPERATION_CHECK_PTR(m_endpointProvider, GetBucketMetadataConfiguration, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE);
+  if (!request.BucketHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("GetBucketMetadataConfiguration", "Required field: Bucket, is not set");
+    return GetBucketMetadataConfigurationOutcome(Aws::Client::AWSError<S3CrtErrors>(S3CrtErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [Bucket]", false));
+  }
+  AWS_OPERATION_CHECK_PTR(m_telemetryProvider, GetBucketMetadataConfiguration, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto tracer = m_telemetryProvider->getTracer(this->GetServiceClientName(), {});
+  auto meter = m_telemetryProvider->getMeter(this->GetServiceClientName(), {});
+  AWS_OPERATION_CHECK_PTR(meter, GetBucketMetadataConfiguration, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto span = tracer->CreateSpan(Aws::String(this->GetServiceClientName()) + "." + request.GetServiceRequestName(),
+    {{ TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName() }, { TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName() }, { TracingUtils::SMITHY_SYSTEM_DIMENSION, TracingUtils::SMITHY_METHOD_AWS_VALUE }},
+    smithy::components::tracing::SpanKind::CLIENT);
+  return TracingUtils::MakeCallWithTiming<GetBucketMetadataConfigurationOutcome>(
+    [&]()-> GetBucketMetadataConfigurationOutcome {
+      auto endpointResolutionOutcome = TracingUtils::MakeCallWithTiming<ResolveEndpointOutcome>(
+          [&]() -> ResolveEndpointOutcome { return m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams()); },
+          TracingUtils::SMITHY_CLIENT_ENDPOINT_RESOLUTION_METRIC,
+          *meter,
+          {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+      AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, GetBucketMetadataConfiguration, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
+      Aws::StringStream ss;
+      ss.str("?metadataConfiguration");
+      endpointResolutionOutcome.GetResult().SetQueryString(ss.str());
+      request.SetServiceSpecificParameters(
+        [&]() -> std::shared_ptr<Http::ServiceSpecificParameters> {
+          Aws::Map<Aws::String, Aws::String> params;
+          params.emplace("bucketName", request.GetBucket());
+          ServiceSpecificParameters serviceSpecificParameters{params};
+          return Aws::MakeShared<ServiceSpecificParameters>(ALLOCATION_TAG, serviceSpecificParameters);
+        }());
+      return GetBucketMetadataConfigurationOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_GET));
+    },
+    TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
+    *meter,
+    {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+}
+
+GetBucketMetadataTableConfigurationOutcome S3CrtClient::GetBucketMetadataTableConfiguration(const GetBucketMetadataTableConfigurationRequest& request) const
+{
+  AWS_OPERATION_GUARD(GetBucketMetadataTableConfiguration);
+  AWS_OPERATION_CHECK_PTR(m_endpointProvider, GetBucketMetadataTableConfiguration, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE);
+  if (!request.BucketHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("GetBucketMetadataTableConfiguration", "Required field: Bucket, is not set");
+    return GetBucketMetadataTableConfigurationOutcome(Aws::Client::AWSError<S3CrtErrors>(S3CrtErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [Bucket]", false));
+  }
+  AWS_OPERATION_CHECK_PTR(m_telemetryProvider, GetBucketMetadataTableConfiguration, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto tracer = m_telemetryProvider->getTracer(this->GetServiceClientName(), {});
+  auto meter = m_telemetryProvider->getMeter(this->GetServiceClientName(), {});
+  AWS_OPERATION_CHECK_PTR(meter, GetBucketMetadataTableConfiguration, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto span = tracer->CreateSpan(Aws::String(this->GetServiceClientName()) + "." + request.GetServiceRequestName(),
+    {{ TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName() }, { TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName() }, { TracingUtils::SMITHY_SYSTEM_DIMENSION, TracingUtils::SMITHY_METHOD_AWS_VALUE }},
+    smithy::components::tracing::SpanKind::CLIENT);
+  return TracingUtils::MakeCallWithTiming<GetBucketMetadataTableConfigurationOutcome>(
+    [&]()-> GetBucketMetadataTableConfigurationOutcome {
+      auto endpointResolutionOutcome = TracingUtils::MakeCallWithTiming<ResolveEndpointOutcome>(
+          [&]() -> ResolveEndpointOutcome { return m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams()); },
+          TracingUtils::SMITHY_CLIENT_ENDPOINT_RESOLUTION_METRIC,
+          *meter,
+          {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+      AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, GetBucketMetadataTableConfiguration, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
+      Aws::StringStream ss;
+      ss.str("?metadataTable");
+      endpointResolutionOutcome.GetResult().SetQueryString(ss.str());
+      request.SetServiceSpecificParameters(
+        [&]() -> std::shared_ptr<Http::ServiceSpecificParameters> {
+          Aws::Map<Aws::String, Aws::String> params;
+          params.emplace("bucketName", request.GetBucket());
+          ServiceSpecificParameters serviceSpecificParameters{params};
+          return Aws::MakeShared<ServiceSpecificParameters>(ALLOCATION_TAG, serviceSpecificParameters);
+        }());
+      return GetBucketMetadataTableConfigurationOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_GET));
     },
     TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
     *meter,
@@ -3455,32 +4006,30 @@ ListBucketMetricsConfigurationsOutcome S3CrtClient::ListBucketMetricsConfigurati
     {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
 }
 
-ListBucketsOutcome S3CrtClient::ListBuckets() const
+ListBucketsOutcome S3CrtClient::ListBuckets(const ListBucketsRequest& request) const
 {
   AWS_OPERATION_GUARD(ListBuckets);
+  AWS_OPERATION_CHECK_PTR(m_endpointProvider, ListBuckets, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE);
   AWS_OPERATION_CHECK_PTR(m_telemetryProvider, ListBuckets, CoreErrors, CoreErrors::NOT_INITIALIZED);
   auto tracer = m_telemetryProvider->getTracer(this->GetServiceClientName(), {});
   auto meter = m_telemetryProvider->getMeter(this->GetServiceClientName(), {});
   AWS_OPERATION_CHECK_PTR(meter, ListBuckets, CoreErrors, CoreErrors::NOT_INITIALIZED);
-  auto span = tracer->CreateSpan(Aws::String(this->GetServiceClientName()) + ".ListBuckets",
-    {{ TracingUtils::SMITHY_METHOD_DIMENSION, "ListBuckets" }, { TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName() }, { TracingUtils::SMITHY_SYSTEM_DIMENSION, TracingUtils::SMITHY_METHOD_AWS_VALUE }},
+  auto span = tracer->CreateSpan(Aws::String(this->GetServiceClientName()) + "." + request.GetServiceRequestName(),
+    {{ TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName() }, { TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName() }, { TracingUtils::SMITHY_SYSTEM_DIMENSION, TracingUtils::SMITHY_METHOD_AWS_VALUE }},
     smithy::components::tracing::SpanKind::CLIENT);
   return TracingUtils::MakeCallWithTiming<ListBucketsOutcome>(
     [&]()-> ListBucketsOutcome {
-
-        AWS_OPERATION_CHECK_PTR(m_endpointProvider, ListBuckets, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE);
-        const Aws::Vector<Aws::Endpoint::EndpointParameter> staticEndpointParameters;
-        auto endpointResolutionOutcome = TracingUtils::MakeCallWithTiming<ResolveEndpointOutcome>(
-            [&]() -> ResolveEndpointOutcome { return m_endpointProvider->ResolveEndpoint(staticEndpointParameters); },
-            TracingUtils::SMITHY_CLIENT_ENDPOINT_RESOLUTION_METRIC,
-            *meter,
-            {{TracingUtils::SMITHY_METHOD_DIMENSION, "ListBuckets"}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
-        AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, ListBuckets, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
-        return ListBucketsOutcome(MakeRequest(endpointResolutionOutcome.GetResult(), "ListBuckets", Aws::Http::HttpMethod::HTTP_GET));
+      auto endpointResolutionOutcome = TracingUtils::MakeCallWithTiming<ResolveEndpointOutcome>(
+          [&]() -> ResolveEndpointOutcome { return m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams()); },
+          TracingUtils::SMITHY_CLIENT_ENDPOINT_RESOLUTION_METRIC,
+          *meter,
+          {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+      AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, ListBuckets, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
+      return ListBucketsOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_GET));
     },
     TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
     *meter,
-    {{TracingUtils::SMITHY_METHOD_DIMENSION, "ListBuckets"}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+    {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
 }
 
 ListDirectoryBucketsOutcome S3CrtClient::ListDirectoryBuckets(const ListDirectoryBucketsRequest& request) const
@@ -3749,10 +4298,6 @@ PutBucketAccelerateConfigurationOutcome S3CrtClient::PutBucketAccelerateConfigur
       request.SetServiceSpecificParameters(
         [&]() -> std::shared_ptr<Http::ServiceSpecificParameters> {
           Aws::Map<Aws::String, Aws::String> params;
-          auto isExpress = endpointResolutionOutcome.GetResult().AccessAttributes().value().backend == "S3Express";
-          if (!request.ChecksumAlgorithmHasBeenSet() && isExpress && request.GetChecksumAlgorithmName() == "md5") {
-            params.emplace("overrideChecksum", "crc32");
-          }
           params.emplace("bucketName", request.GetBucket());
           ServiceSpecificParameters serviceSpecificParameters{params};
           return Aws::MakeShared<ServiceSpecificParameters>(ALLOCATION_TAG, serviceSpecificParameters);
@@ -3794,10 +4339,6 @@ PutBucketAclOutcome S3CrtClient::PutBucketAcl(const PutBucketAclRequest& request
       request.SetServiceSpecificParameters(
         [&]() -> std::shared_ptr<Http::ServiceSpecificParameters> {
           Aws::Map<Aws::String, Aws::String> params;
-          auto isExpress = endpointResolutionOutcome.GetResult().AccessAttributes().value().backend == "S3Express";
-          if (!request.ChecksumAlgorithmHasBeenSet() && isExpress && request.GetChecksumAlgorithmName() == "md5") {
-            params.emplace("overrideChecksum", "crc32");
-          }
           params.emplace("bucketName", request.GetBucket());
           ServiceSpecificParameters serviceSpecificParameters{params};
           return Aws::MakeShared<ServiceSpecificParameters>(ALLOCATION_TAG, serviceSpecificParameters);
@@ -3885,10 +4426,6 @@ PutBucketCorsOutcome S3CrtClient::PutBucketCors(const PutBucketCorsRequest& requ
       request.SetServiceSpecificParameters(
         [&]() -> std::shared_ptr<Http::ServiceSpecificParameters> {
           Aws::Map<Aws::String, Aws::String> params;
-          auto isExpress = endpointResolutionOutcome.GetResult().AccessAttributes().value().backend == "S3Express";
-          if (!request.ChecksumAlgorithmHasBeenSet() && isExpress && request.GetChecksumAlgorithmName() == "md5") {
-            params.emplace("overrideChecksum", "crc32");
-          }
           params.emplace("bucketName", request.GetBucket());
           ServiceSpecificParameters serviceSpecificParameters{params};
           return Aws::MakeShared<ServiceSpecificParameters>(ALLOCATION_TAG, serviceSpecificParameters);
@@ -3930,10 +4467,6 @@ PutBucketEncryptionOutcome S3CrtClient::PutBucketEncryption(const PutBucketEncry
       request.SetServiceSpecificParameters(
         [&]() -> std::shared_ptr<Http::ServiceSpecificParameters> {
           Aws::Map<Aws::String, Aws::String> params;
-          auto isExpress = endpointResolutionOutcome.GetResult().AccessAttributes().value().backend == "S3Express";
-          if (!request.ChecksumAlgorithmHasBeenSet() && isExpress && request.GetChecksumAlgorithmName() == "md5") {
-            params.emplace("overrideChecksum", "crc32");
-          }
           params.emplace("bucketName", request.GetBucket());
           ServiceSpecificParameters serviceSpecificParameters{params};
           return Aws::MakeShared<ServiceSpecificParameters>(ALLOCATION_TAG, serviceSpecificParameters);
@@ -4067,10 +4600,6 @@ PutBucketLifecycleConfigurationOutcome S3CrtClient::PutBucketLifecycleConfigurat
       request.SetServiceSpecificParameters(
         [&]() -> std::shared_ptr<Http::ServiceSpecificParameters> {
           Aws::Map<Aws::String, Aws::String> params;
-          auto isExpress = endpointResolutionOutcome.GetResult().AccessAttributes().value().backend == "S3Express";
-          if (!request.ChecksumAlgorithmHasBeenSet() && isExpress && request.GetChecksumAlgorithmName() == "md5") {
-            params.emplace("overrideChecksum", "crc32");
-          }
           params.emplace("bucketName", request.GetBucket());
           ServiceSpecificParameters serviceSpecificParameters{params};
           return Aws::MakeShared<ServiceSpecificParameters>(ALLOCATION_TAG, serviceSpecificParameters);
@@ -4112,10 +4641,6 @@ PutBucketLoggingOutcome S3CrtClient::PutBucketLogging(const PutBucketLoggingRequ
       request.SetServiceSpecificParameters(
         [&]() -> std::shared_ptr<Http::ServiceSpecificParameters> {
           Aws::Map<Aws::String, Aws::String> params;
-          auto isExpress = endpointResolutionOutcome.GetResult().AccessAttributes().value().backend == "S3Express";
-          if (!request.ChecksumAlgorithmHasBeenSet() && isExpress && request.GetChecksumAlgorithmName() == "md5") {
-            params.emplace("overrideChecksum", "crc32");
-          }
           params.emplace("bucketName", request.GetBucket());
           ServiceSpecificParameters serviceSpecificParameters{params};
           return Aws::MakeShared<ServiceSpecificParameters>(ALLOCATION_TAG, serviceSpecificParameters);
@@ -4285,10 +4810,6 @@ PutBucketPolicyOutcome S3CrtClient::PutBucketPolicy(const PutBucketPolicyRequest
       request.SetServiceSpecificParameters(
         [&]() -> std::shared_ptr<Http::ServiceSpecificParameters> {
           Aws::Map<Aws::String, Aws::String> params;
-          auto isExpress = endpointResolutionOutcome.GetResult().AccessAttributes().value().backend == "S3Express";
-          if (!request.ChecksumAlgorithmHasBeenSet() && isExpress && request.GetChecksumAlgorithmName() == "md5") {
-            params.emplace("overrideChecksum", "crc32");
-          }
           params.emplace("bucketName", request.GetBucket());
           ServiceSpecificParameters serviceSpecificParameters{params};
           return Aws::MakeShared<ServiceSpecificParameters>(ALLOCATION_TAG, serviceSpecificParameters);
@@ -4330,10 +4851,6 @@ PutBucketReplicationOutcome S3CrtClient::PutBucketReplication(const PutBucketRep
       request.SetServiceSpecificParameters(
         [&]() -> std::shared_ptr<Http::ServiceSpecificParameters> {
           Aws::Map<Aws::String, Aws::String> params;
-          auto isExpress = endpointResolutionOutcome.GetResult().AccessAttributes().value().backend == "S3Express";
-          if (!request.ChecksumAlgorithmHasBeenSet() && isExpress && request.GetChecksumAlgorithmName() == "md5") {
-            params.emplace("overrideChecksum", "crc32");
-          }
           params.emplace("bucketName", request.GetBucket());
           ServiceSpecificParameters serviceSpecificParameters{params};
           return Aws::MakeShared<ServiceSpecificParameters>(ALLOCATION_TAG, serviceSpecificParameters);
@@ -4375,10 +4892,6 @@ PutBucketRequestPaymentOutcome S3CrtClient::PutBucketRequestPayment(const PutBuc
       request.SetServiceSpecificParameters(
         [&]() -> std::shared_ptr<Http::ServiceSpecificParameters> {
           Aws::Map<Aws::String, Aws::String> params;
-          auto isExpress = endpointResolutionOutcome.GetResult().AccessAttributes().value().backend == "S3Express";
-          if (!request.ChecksumAlgorithmHasBeenSet() && isExpress && request.GetChecksumAlgorithmName() == "md5") {
-            params.emplace("overrideChecksum", "crc32");
-          }
           params.emplace("bucketName", request.GetBucket());
           ServiceSpecificParameters serviceSpecificParameters{params};
           return Aws::MakeShared<ServiceSpecificParameters>(ALLOCATION_TAG, serviceSpecificParameters);
@@ -4420,10 +4933,6 @@ PutBucketTaggingOutcome S3CrtClient::PutBucketTagging(const PutBucketTaggingRequ
       request.SetServiceSpecificParameters(
         [&]() -> std::shared_ptr<Http::ServiceSpecificParameters> {
           Aws::Map<Aws::String, Aws::String> params;
-          auto isExpress = endpointResolutionOutcome.GetResult().AccessAttributes().value().backend == "S3Express";
-          if (!request.ChecksumAlgorithmHasBeenSet() && isExpress && request.GetChecksumAlgorithmName() == "md5") {
-            params.emplace("overrideChecksum", "crc32");
-          }
           params.emplace("bucketName", request.GetBucket());
           ServiceSpecificParameters serviceSpecificParameters{params};
           return Aws::MakeShared<ServiceSpecificParameters>(ALLOCATION_TAG, serviceSpecificParameters);
@@ -4465,10 +4974,6 @@ PutBucketVersioningOutcome S3CrtClient::PutBucketVersioning(const PutBucketVersi
       request.SetServiceSpecificParameters(
         [&]() -> std::shared_ptr<Http::ServiceSpecificParameters> {
           Aws::Map<Aws::String, Aws::String> params;
-          auto isExpress = endpointResolutionOutcome.GetResult().AccessAttributes().value().backend == "S3Express";
-          if (!request.ChecksumAlgorithmHasBeenSet() && isExpress && request.GetChecksumAlgorithmName() == "md5") {
-            params.emplace("overrideChecksum", "crc32");
-          }
           params.emplace("bucketName", request.GetBucket());
           ServiceSpecificParameters serviceSpecificParameters{params};
           return Aws::MakeShared<ServiceSpecificParameters>(ALLOCATION_TAG, serviceSpecificParameters);
@@ -4510,10 +5015,6 @@ PutBucketWebsiteOutcome S3CrtClient::PutBucketWebsite(const PutBucketWebsiteRequ
       request.SetServiceSpecificParameters(
         [&]() -> std::shared_ptr<Http::ServiceSpecificParameters> {
           Aws::Map<Aws::String, Aws::String> params;
-          auto isExpress = endpointResolutionOutcome.GetResult().AccessAttributes().value().backend == "S3Express";
-          if (!request.ChecksumAlgorithmHasBeenSet() && isExpress && request.GetChecksumAlgorithmName() == "md5") {
-            params.emplace("overrideChecksum", "crc32");
-          }
           params.emplace("bucketName", request.GetBucket());
           ServiceSpecificParameters serviceSpecificParameters{params};
           return Aws::MakeShared<ServiceSpecificParameters>(ALLOCATION_TAG, serviceSpecificParameters);
@@ -4561,10 +5062,6 @@ PutObjectAclOutcome S3CrtClient::PutObjectAcl(const PutObjectAclRequest& request
       request.SetServiceSpecificParameters(
         [&]() -> std::shared_ptr<Http::ServiceSpecificParameters> {
           Aws::Map<Aws::String, Aws::String> params;
-          auto isExpress = endpointResolutionOutcome.GetResult().AccessAttributes().value().backend == "S3Express";
-          if (!request.ChecksumAlgorithmHasBeenSet() && isExpress && request.GetChecksumAlgorithmName() == "md5") {
-            params.emplace("overrideChecksum", "crc32");
-          }
           params.emplace("bucketName", request.GetBucket());
           ServiceSpecificParameters serviceSpecificParameters{params};
           return Aws::MakeShared<ServiceSpecificParameters>(ALLOCATION_TAG, serviceSpecificParameters);
@@ -4612,10 +5109,6 @@ PutObjectLegalHoldOutcome S3CrtClient::PutObjectLegalHold(const PutObjectLegalHo
       request.SetServiceSpecificParameters(
         [&]() -> std::shared_ptr<Http::ServiceSpecificParameters> {
           Aws::Map<Aws::String, Aws::String> params;
-          auto isExpress = endpointResolutionOutcome.GetResult().AccessAttributes().value().backend == "S3Express";
-          if (!request.ChecksumAlgorithmHasBeenSet() && isExpress && request.GetChecksumAlgorithmName() == "md5") {
-            params.emplace("overrideChecksum", "crc32");
-          }
           params.emplace("bucketName", request.GetBucket());
           ServiceSpecificParameters serviceSpecificParameters{params};
           return Aws::MakeShared<ServiceSpecificParameters>(ALLOCATION_TAG, serviceSpecificParameters);
@@ -4657,10 +5150,6 @@ PutObjectLockConfigurationOutcome S3CrtClient::PutObjectLockConfiguration(const 
       request.SetServiceSpecificParameters(
         [&]() -> std::shared_ptr<Http::ServiceSpecificParameters> {
           Aws::Map<Aws::String, Aws::String> params;
-          auto isExpress = endpointResolutionOutcome.GetResult().AccessAttributes().value().backend == "S3Express";
-          if (!request.ChecksumAlgorithmHasBeenSet() && isExpress && request.GetChecksumAlgorithmName() == "md5") {
-            params.emplace("overrideChecksum", "crc32");
-          }
           params.emplace("bucketName", request.GetBucket());
           ServiceSpecificParameters serviceSpecificParameters{params};
           return Aws::MakeShared<ServiceSpecificParameters>(ALLOCATION_TAG, serviceSpecificParameters);
@@ -4708,10 +5197,6 @@ PutObjectRetentionOutcome S3CrtClient::PutObjectRetention(const PutObjectRetenti
       request.SetServiceSpecificParameters(
         [&]() -> std::shared_ptr<Http::ServiceSpecificParameters> {
           Aws::Map<Aws::String, Aws::String> params;
-          auto isExpress = endpointResolutionOutcome.GetResult().AccessAttributes().value().backend == "S3Express";
-          if (!request.ChecksumAlgorithmHasBeenSet() && isExpress && request.GetChecksumAlgorithmName() == "md5") {
-            params.emplace("overrideChecksum", "crc32");
-          }
           params.emplace("bucketName", request.GetBucket());
           ServiceSpecificParameters serviceSpecificParameters{params};
           return Aws::MakeShared<ServiceSpecificParameters>(ALLOCATION_TAG, serviceSpecificParameters);
@@ -4759,10 +5244,6 @@ PutObjectTaggingOutcome S3CrtClient::PutObjectTagging(const PutObjectTaggingRequ
       request.SetServiceSpecificParameters(
         [&]() -> std::shared_ptr<Http::ServiceSpecificParameters> {
           Aws::Map<Aws::String, Aws::String> params;
-          auto isExpress = endpointResolutionOutcome.GetResult().AccessAttributes().value().backend == "S3Express";
-          if (!request.ChecksumAlgorithmHasBeenSet() && isExpress && request.GetChecksumAlgorithmName() == "md5") {
-            params.emplace("overrideChecksum", "crc32");
-          }
           params.emplace("bucketName", request.GetBucket());
           ServiceSpecificParameters serviceSpecificParameters{params};
           return Aws::MakeShared<ServiceSpecificParameters>(ALLOCATION_TAG, serviceSpecificParameters);
@@ -4804,15 +5285,63 @@ PutPublicAccessBlockOutcome S3CrtClient::PutPublicAccessBlock(const PutPublicAcc
       request.SetServiceSpecificParameters(
         [&]() -> std::shared_ptr<Http::ServiceSpecificParameters> {
           Aws::Map<Aws::String, Aws::String> params;
-          auto isExpress = endpointResolutionOutcome.GetResult().AccessAttributes().value().backend == "S3Express";
-          if (!request.ChecksumAlgorithmHasBeenSet() && isExpress && request.GetChecksumAlgorithmName() == "md5") {
-            params.emplace("overrideChecksum", "crc32");
-          }
           params.emplace("bucketName", request.GetBucket());
           ServiceSpecificParameters serviceSpecificParameters{params};
           return Aws::MakeShared<ServiceSpecificParameters>(ALLOCATION_TAG, serviceSpecificParameters);
         }());
       return PutPublicAccessBlockOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_PUT));
+    },
+    TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
+    *meter,
+    {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+}
+
+RenameObjectOutcome S3CrtClient::RenameObject(const RenameObjectRequest& request) const
+{
+  AWS_OPERATION_GUARD(RenameObject);
+  AWS_OPERATION_CHECK_PTR(m_endpointProvider, RenameObject, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE);
+  if (!request.BucketHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("RenameObject", "Required field: Bucket, is not set");
+    return RenameObjectOutcome(Aws::Client::AWSError<S3CrtErrors>(S3CrtErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [Bucket]", false));
+  }
+  if (!request.KeyHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("RenameObject", "Required field: Key, is not set");
+    return RenameObjectOutcome(Aws::Client::AWSError<S3CrtErrors>(S3CrtErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [Key]", false));
+  }
+  if (!request.RenameSourceHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("RenameObject", "Required field: RenameSource, is not set");
+    return RenameObjectOutcome(Aws::Client::AWSError<S3CrtErrors>(S3CrtErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [RenameSource]", false));
+  }
+  AWS_OPERATION_CHECK_PTR(m_telemetryProvider, RenameObject, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto tracer = m_telemetryProvider->getTracer(this->GetServiceClientName(), {});
+  auto meter = m_telemetryProvider->getMeter(this->GetServiceClientName(), {});
+  AWS_OPERATION_CHECK_PTR(meter, RenameObject, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto span = tracer->CreateSpan(Aws::String(this->GetServiceClientName()) + "." + request.GetServiceRequestName(),
+    {{ TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName() }, { TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName() }, { TracingUtils::SMITHY_SYSTEM_DIMENSION, TracingUtils::SMITHY_METHOD_AWS_VALUE }},
+    smithy::components::tracing::SpanKind::CLIENT);
+  return TracingUtils::MakeCallWithTiming<RenameObjectOutcome>(
+    [&]()-> RenameObjectOutcome {
+      auto endpointResolutionOutcome = TracingUtils::MakeCallWithTiming<ResolveEndpointOutcome>(
+          [&]() -> ResolveEndpointOutcome { return m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams()); },
+          TracingUtils::SMITHY_CLIENT_ENDPOINT_RESOLUTION_METRIC,
+          *meter,
+          {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+      AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, RenameObject, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
+      Aws::StringStream ss;
+      endpointResolutionOutcome.GetResult().AddPathSegments(request.GetKey());
+      ss.str("?renameObject");
+      endpointResolutionOutcome.GetResult().SetQueryString(ss.str());
+      request.SetServiceSpecificParameters(
+        [&]() -> std::shared_ptr<Http::ServiceSpecificParameters> {
+          Aws::Map<Aws::String, Aws::String> params;
+          params.emplace("bucketName", request.GetBucket());
+          ServiceSpecificParameters serviceSpecificParameters{params};
+          return Aws::MakeShared<ServiceSpecificParameters>(ALLOCATION_TAG, serviceSpecificParameters);
+        }());
+      return RenameObjectOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_PUT));
     },
     TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
     *meter,
@@ -4855,10 +5384,6 @@ RestoreObjectOutcome S3CrtClient::RestoreObject(const RestoreObjectRequest& requ
       request.SetServiceSpecificParameters(
         [&]() -> std::shared_ptr<Http::ServiceSpecificParameters> {
           Aws::Map<Aws::String, Aws::String> params;
-          auto isExpress = endpointResolutionOutcome.GetResult().AccessAttributes().value().backend == "S3Express";
-          if (!request.ChecksumAlgorithmHasBeenSet() && isExpress && request.GetChecksumAlgorithmName() == "md5") {
-            params.emplace("overrideChecksum", "crc32");
-          }
           params.emplace("bucketName", request.GetBucket());
           ServiceSpecificParameters serviceSpecificParameters{params};
           return Aws::MakeShared<ServiceSpecificParameters>(ALLOCATION_TAG, serviceSpecificParameters);
@@ -4920,6 +5445,88 @@ SelectObjectContentOutcome S3CrtClient::SelectObjectContent(SelectObjectContentR
     {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
 }
 
+UpdateBucketMetadataInventoryTableConfigurationOutcome S3CrtClient::UpdateBucketMetadataInventoryTableConfiguration(const UpdateBucketMetadataInventoryTableConfigurationRequest& request) const
+{
+  AWS_OPERATION_GUARD(UpdateBucketMetadataInventoryTableConfiguration);
+  AWS_OPERATION_CHECK_PTR(m_endpointProvider, UpdateBucketMetadataInventoryTableConfiguration, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE);
+  if (!request.BucketHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("UpdateBucketMetadataInventoryTableConfiguration", "Required field: Bucket, is not set");
+    return UpdateBucketMetadataInventoryTableConfigurationOutcome(Aws::Client::AWSError<S3CrtErrors>(S3CrtErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [Bucket]", false));
+  }
+  AWS_OPERATION_CHECK_PTR(m_telemetryProvider, UpdateBucketMetadataInventoryTableConfiguration, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto tracer = m_telemetryProvider->getTracer(this->GetServiceClientName(), {});
+  auto meter = m_telemetryProvider->getMeter(this->GetServiceClientName(), {});
+  AWS_OPERATION_CHECK_PTR(meter, UpdateBucketMetadataInventoryTableConfiguration, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto span = tracer->CreateSpan(Aws::String(this->GetServiceClientName()) + "." + request.GetServiceRequestName(),
+    {{ TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName() }, { TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName() }, { TracingUtils::SMITHY_SYSTEM_DIMENSION, TracingUtils::SMITHY_METHOD_AWS_VALUE }},
+    smithy::components::tracing::SpanKind::CLIENT);
+  return TracingUtils::MakeCallWithTiming<UpdateBucketMetadataInventoryTableConfigurationOutcome>(
+    [&]()-> UpdateBucketMetadataInventoryTableConfigurationOutcome {
+      auto endpointResolutionOutcome = TracingUtils::MakeCallWithTiming<ResolveEndpointOutcome>(
+          [&]() -> ResolveEndpointOutcome { return m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams()); },
+          TracingUtils::SMITHY_CLIENT_ENDPOINT_RESOLUTION_METRIC,
+          *meter,
+          {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+      AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, UpdateBucketMetadataInventoryTableConfiguration, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
+      Aws::StringStream ss;
+      ss.str("?metadataInventoryTable");
+      endpointResolutionOutcome.GetResult().SetQueryString(ss.str());
+      request.SetServiceSpecificParameters(
+        [&]() -> std::shared_ptr<Http::ServiceSpecificParameters> {
+          Aws::Map<Aws::String, Aws::String> params;
+          params.emplace("bucketName", request.GetBucket());
+          ServiceSpecificParameters serviceSpecificParameters{params};
+          return Aws::MakeShared<ServiceSpecificParameters>(ALLOCATION_TAG, serviceSpecificParameters);
+        }());
+      return UpdateBucketMetadataInventoryTableConfigurationOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_PUT));
+    },
+    TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
+    *meter,
+    {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+}
+
+UpdateBucketMetadataJournalTableConfigurationOutcome S3CrtClient::UpdateBucketMetadataJournalTableConfiguration(const UpdateBucketMetadataJournalTableConfigurationRequest& request) const
+{
+  AWS_OPERATION_GUARD(UpdateBucketMetadataJournalTableConfiguration);
+  AWS_OPERATION_CHECK_PTR(m_endpointProvider, UpdateBucketMetadataJournalTableConfiguration, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE);
+  if (!request.BucketHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("UpdateBucketMetadataJournalTableConfiguration", "Required field: Bucket, is not set");
+    return UpdateBucketMetadataJournalTableConfigurationOutcome(Aws::Client::AWSError<S3CrtErrors>(S3CrtErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [Bucket]", false));
+  }
+  AWS_OPERATION_CHECK_PTR(m_telemetryProvider, UpdateBucketMetadataJournalTableConfiguration, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto tracer = m_telemetryProvider->getTracer(this->GetServiceClientName(), {});
+  auto meter = m_telemetryProvider->getMeter(this->GetServiceClientName(), {});
+  AWS_OPERATION_CHECK_PTR(meter, UpdateBucketMetadataJournalTableConfiguration, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto span = tracer->CreateSpan(Aws::String(this->GetServiceClientName()) + "." + request.GetServiceRequestName(),
+    {{ TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName() }, { TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName() }, { TracingUtils::SMITHY_SYSTEM_DIMENSION, TracingUtils::SMITHY_METHOD_AWS_VALUE }},
+    smithy::components::tracing::SpanKind::CLIENT);
+  return TracingUtils::MakeCallWithTiming<UpdateBucketMetadataJournalTableConfigurationOutcome>(
+    [&]()-> UpdateBucketMetadataJournalTableConfigurationOutcome {
+      auto endpointResolutionOutcome = TracingUtils::MakeCallWithTiming<ResolveEndpointOutcome>(
+          [&]() -> ResolveEndpointOutcome { return m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams()); },
+          TracingUtils::SMITHY_CLIENT_ENDPOINT_RESOLUTION_METRIC,
+          *meter,
+          {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+      AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, UpdateBucketMetadataJournalTableConfiguration, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
+      Aws::StringStream ss;
+      ss.str("?metadataJournalTable");
+      endpointResolutionOutcome.GetResult().SetQueryString(ss.str());
+      request.SetServiceSpecificParameters(
+        [&]() -> std::shared_ptr<Http::ServiceSpecificParameters> {
+          Aws::Map<Aws::String, Aws::String> params;
+          params.emplace("bucketName", request.GetBucket());
+          ServiceSpecificParameters serviceSpecificParameters{params};
+          return Aws::MakeShared<ServiceSpecificParameters>(ALLOCATION_TAG, serviceSpecificParameters);
+        }());
+      return UpdateBucketMetadataJournalTableConfigurationOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_PUT));
+    },
+    TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
+    *meter,
+    {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+}
+
 UploadPartOutcome S3CrtClient::UploadPart(const UploadPartRequest& request) const
 {
   AWS_OPERATION_GUARD(UploadPart);
@@ -4963,13 +5570,6 @@ UploadPartOutcome S3CrtClient::UploadPart(const UploadPartRequest& request) cons
       request.SetServiceSpecificParameters(
         [&]() -> std::shared_ptr<Http::ServiceSpecificParameters> {
           Aws::Map<Aws::String, Aws::String> params;
-          auto isExpress = endpointResolutionOutcome.GetResult().AccessAttributes().value().backend == "S3Express";
-          if (!request.ChecksumAlgorithmHasBeenSet() && isExpress) {
-            params.emplace("overrideChecksumDisable", "noop");
-          }
-          if (!request.ChecksumAlgorithmHasBeenSet() && isExpress && request.GetChecksumAlgorithmName() == "md5") {
-            params.emplace("overrideChecksum", "crc32");
-          }
           params.emplace("bucketName", request.GetBucket());
           ServiceSpecificParameters serviceSpecificParameters{params};
           return Aws::MakeShared<ServiceSpecificParameters>(ALLOCATION_TAG, serviceSpecificParameters);
@@ -5195,4 +5795,13 @@ Aws::String S3CrtClient::GeneratePresignedUrlWithSSEC(const Aws::String& bucket,
 bool S3CrtClient::MultipartUploadSupported() const
 {
     return true;
+}
+
+void S3CrtClient::AddContentLengthToRequest(const std::shared_ptr<Aws::Http::HttpRequest>& httpRequest,
+    const std::shared_ptr<Aws::IOStream>& body,
+    bool isChunked) const
+{
+    if (m_clientConfiguration.contentLengthConfiguration == S3CrtClientConfiguration::CONTENT_LENGTH_CONFIGURATION::SEEK_STREAM) {
+        BASECLASS::AddContentLengthToRequest(httpRequest, body, isChunked);
+    }
 }

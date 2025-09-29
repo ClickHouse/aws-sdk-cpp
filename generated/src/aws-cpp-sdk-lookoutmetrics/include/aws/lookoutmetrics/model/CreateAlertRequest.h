@@ -24,7 +24,7 @@ namespace Model
   class CreateAlertRequest : public LookoutMetricsRequest
   {
   public:
-    AWS_LOOKOUTMETRICS_API CreateAlertRequest();
+    AWS_LOOKOUTMETRICS_API CreateAlertRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,315 +35,100 @@ namespace Model
     AWS_LOOKOUTMETRICS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of the alert.</p>
      */
-    inline const Aws::String& GetAlertName() const{ return m_alertName; }
-
-    /**
-     * <p>The name of the alert.</p>
-     */
+    inline const Aws::String& GetAlertName() const { return m_alertName; }
     inline bool AlertNameHasBeenSet() const { return m_alertNameHasBeenSet; }
+    template<typename AlertNameT = Aws::String>
+    void SetAlertName(AlertNameT&& value) { m_alertNameHasBeenSet = true; m_alertName = std::forward<AlertNameT>(value); }
+    template<typename AlertNameT = Aws::String>
+    CreateAlertRequest& WithAlertName(AlertNameT&& value) { SetAlertName(std::forward<AlertNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the alert.</p>
-     */
-    inline void SetAlertName(const Aws::String& value) { m_alertNameHasBeenSet = true; m_alertName = value; }
-
-    /**
-     * <p>The name of the alert.</p>
-     */
-    inline void SetAlertName(Aws::String&& value) { m_alertNameHasBeenSet = true; m_alertName = std::move(value); }
-
-    /**
-     * <p>The name of the alert.</p>
-     */
-    inline void SetAlertName(const char* value) { m_alertNameHasBeenSet = true; m_alertName.assign(value); }
-
-    /**
-     * <p>The name of the alert.</p>
-     */
-    inline CreateAlertRequest& WithAlertName(const Aws::String& value) { SetAlertName(value); return *this;}
-
-    /**
-     * <p>The name of the alert.</p>
-     */
-    inline CreateAlertRequest& WithAlertName(Aws::String&& value) { SetAlertName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the alert.</p>
-     */
-    inline CreateAlertRequest& WithAlertName(const char* value) { SetAlertName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An integer from 0 to 100 specifying the alert sensitivity threshold.</p>
      */
-    inline int GetAlertSensitivityThreshold() const{ return m_alertSensitivityThreshold; }
-
-    /**
-     * <p>An integer from 0 to 100 specifying the alert sensitivity threshold.</p>
-     */
+    inline int GetAlertSensitivityThreshold() const { return m_alertSensitivityThreshold; }
     inline bool AlertSensitivityThresholdHasBeenSet() const { return m_alertSensitivityThresholdHasBeenSet; }
-
-    /**
-     * <p>An integer from 0 to 100 specifying the alert sensitivity threshold.</p>
-     */
     inline void SetAlertSensitivityThreshold(int value) { m_alertSensitivityThresholdHasBeenSet = true; m_alertSensitivityThreshold = value; }
-
-    /**
-     * <p>An integer from 0 to 100 specifying the alert sensitivity threshold.</p>
-     */
     inline CreateAlertRequest& WithAlertSensitivityThreshold(int value) { SetAlertSensitivityThreshold(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>A description of the alert.</p>
      */
-    inline const Aws::String& GetAlertDescription() const{ return m_alertDescription; }
-
-    /**
-     * <p>A description of the alert.</p>
-     */
+    inline const Aws::String& GetAlertDescription() const { return m_alertDescription; }
     inline bool AlertDescriptionHasBeenSet() const { return m_alertDescriptionHasBeenSet; }
+    template<typename AlertDescriptionT = Aws::String>
+    void SetAlertDescription(AlertDescriptionT&& value) { m_alertDescriptionHasBeenSet = true; m_alertDescription = std::forward<AlertDescriptionT>(value); }
+    template<typename AlertDescriptionT = Aws::String>
+    CreateAlertRequest& WithAlertDescription(AlertDescriptionT&& value) { SetAlertDescription(std::forward<AlertDescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A description of the alert.</p>
-     */
-    inline void SetAlertDescription(const Aws::String& value) { m_alertDescriptionHasBeenSet = true; m_alertDescription = value; }
-
-    /**
-     * <p>A description of the alert.</p>
-     */
-    inline void SetAlertDescription(Aws::String&& value) { m_alertDescriptionHasBeenSet = true; m_alertDescription = std::move(value); }
-
-    /**
-     * <p>A description of the alert.</p>
-     */
-    inline void SetAlertDescription(const char* value) { m_alertDescriptionHasBeenSet = true; m_alertDescription.assign(value); }
-
-    /**
-     * <p>A description of the alert.</p>
-     */
-    inline CreateAlertRequest& WithAlertDescription(const Aws::String& value) { SetAlertDescription(value); return *this;}
-
-    /**
-     * <p>A description of the alert.</p>
-     */
-    inline CreateAlertRequest& WithAlertDescription(Aws::String&& value) { SetAlertDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A description of the alert.</p>
-     */
-    inline CreateAlertRequest& WithAlertDescription(const char* value) { SetAlertDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the detector to which the alert is attached.</p>
      */
-    inline const Aws::String& GetAnomalyDetectorArn() const{ return m_anomalyDetectorArn; }
-
-    /**
-     * <p>The ARN of the detector to which the alert is attached.</p>
-     */
+    inline const Aws::String& GetAnomalyDetectorArn() const { return m_anomalyDetectorArn; }
     inline bool AnomalyDetectorArnHasBeenSet() const { return m_anomalyDetectorArnHasBeenSet; }
+    template<typename AnomalyDetectorArnT = Aws::String>
+    void SetAnomalyDetectorArn(AnomalyDetectorArnT&& value) { m_anomalyDetectorArnHasBeenSet = true; m_anomalyDetectorArn = std::forward<AnomalyDetectorArnT>(value); }
+    template<typename AnomalyDetectorArnT = Aws::String>
+    CreateAlertRequest& WithAnomalyDetectorArn(AnomalyDetectorArnT&& value) { SetAnomalyDetectorArn(std::forward<AnomalyDetectorArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the detector to which the alert is attached.</p>
-     */
-    inline void SetAnomalyDetectorArn(const Aws::String& value) { m_anomalyDetectorArnHasBeenSet = true; m_anomalyDetectorArn = value; }
-
-    /**
-     * <p>The ARN of the detector to which the alert is attached.</p>
-     */
-    inline void SetAnomalyDetectorArn(Aws::String&& value) { m_anomalyDetectorArnHasBeenSet = true; m_anomalyDetectorArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the detector to which the alert is attached.</p>
-     */
-    inline void SetAnomalyDetectorArn(const char* value) { m_anomalyDetectorArnHasBeenSet = true; m_anomalyDetectorArn.assign(value); }
-
-    /**
-     * <p>The ARN of the detector to which the alert is attached.</p>
-     */
-    inline CreateAlertRequest& WithAnomalyDetectorArn(const Aws::String& value) { SetAnomalyDetectorArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the detector to which the alert is attached.</p>
-     */
-    inline CreateAlertRequest& WithAnomalyDetectorArn(Aws::String&& value) { SetAnomalyDetectorArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the detector to which the alert is attached.</p>
-     */
-    inline CreateAlertRequest& WithAnomalyDetectorArn(const char* value) { SetAnomalyDetectorArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Action that will be triggered when there is an alert.</p>
      */
-    inline const Action& GetAction() const{ return m_action; }
-
-    /**
-     * <p>Action that will be triggered when there is an alert.</p>
-     */
+    inline const Action& GetAction() const { return m_action; }
     inline bool ActionHasBeenSet() const { return m_actionHasBeenSet; }
+    template<typename ActionT = Action>
+    void SetAction(ActionT&& value) { m_actionHasBeenSet = true; m_action = std::forward<ActionT>(value); }
+    template<typename ActionT = Action>
+    CreateAlertRequest& WithAction(ActionT&& value) { SetAction(std::forward<ActionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Action that will be triggered when there is an alert.</p>
-     */
-    inline void SetAction(const Action& value) { m_actionHasBeenSet = true; m_action = value; }
-
-    /**
-     * <p>Action that will be triggered when there is an alert.</p>
-     */
-    inline void SetAction(Action&& value) { m_actionHasBeenSet = true; m_action = std::move(value); }
-
-    /**
-     * <p>Action that will be triggered when there is an alert.</p>
-     */
-    inline CreateAlertRequest& WithAction(const Action& value) { SetAction(value); return *this;}
-
-    /**
-     * <p>Action that will be triggered when there is an alert.</p>
-     */
-    inline CreateAlertRequest& WithAction(Action&& value) { SetAction(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of <a
      * href="https://docs.aws.amazon.com/lookoutmetrics/latest/dev/detectors-tags.html">tags</a>
      * to apply to the alert.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>A list of <a
-     * href="https://docs.aws.amazon.com/lookoutmetrics/latest/dev/detectors-tags.html">tags</a>
-     * to apply to the alert.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    CreateAlertRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    CreateAlertRequest& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>A list of <a
-     * href="https://docs.aws.amazon.com/lookoutmetrics/latest/dev/detectors-tags.html">tags</a>
-     * to apply to the alert.</p>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>A list of <a
-     * href="https://docs.aws.amazon.com/lookoutmetrics/latest/dev/detectors-tags.html">tags</a>
-     * to apply to the alert.</p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>A list of <a
-     * href="https://docs.aws.amazon.com/lookoutmetrics/latest/dev/detectors-tags.html">tags</a>
-     * to apply to the alert.</p>
-     */
-    inline CreateAlertRequest& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>A list of <a
-     * href="https://docs.aws.amazon.com/lookoutmetrics/latest/dev/detectors-tags.html">tags</a>
-     * to apply to the alert.</p>
-     */
-    inline CreateAlertRequest& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of <a
-     * href="https://docs.aws.amazon.com/lookoutmetrics/latest/dev/detectors-tags.html">tags</a>
-     * to apply to the alert.</p>
-     */
-    inline CreateAlertRequest& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>A list of <a
-     * href="https://docs.aws.amazon.com/lookoutmetrics/latest/dev/detectors-tags.html">tags</a>
-     * to apply to the alert.</p>
-     */
-    inline CreateAlertRequest& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A list of <a
-     * href="https://docs.aws.amazon.com/lookoutmetrics/latest/dev/detectors-tags.html">tags</a>
-     * to apply to the alert.</p>
-     */
-    inline CreateAlertRequest& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A list of <a
-     * href="https://docs.aws.amazon.com/lookoutmetrics/latest/dev/detectors-tags.html">tags</a>
-     * to apply to the alert.</p>
-     */
-    inline CreateAlertRequest& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>A list of <a
-     * href="https://docs.aws.amazon.com/lookoutmetrics/latest/dev/detectors-tags.html">tags</a>
-     * to apply to the alert.</p>
-     */
-    inline CreateAlertRequest& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A list of <a
-     * href="https://docs.aws.amazon.com/lookoutmetrics/latest/dev/detectors-tags.html">tags</a>
-     * to apply to the alert.</p>
-     */
-    inline CreateAlertRequest& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A list of <a
-     * href="https://docs.aws.amazon.com/lookoutmetrics/latest/dev/detectors-tags.html">tags</a>
-     * to apply to the alert.</p>
-     */
-    inline CreateAlertRequest& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>The configuration of the alert filters, containing MetricList and
      * DimensionFilterList.</p>
      */
-    inline const AlertFilters& GetAlertFilters() const{ return m_alertFilters; }
-
-    /**
-     * <p>The configuration of the alert filters, containing MetricList and
-     * DimensionFilterList.</p>
-     */
+    inline const AlertFilters& GetAlertFilters() const { return m_alertFilters; }
     inline bool AlertFiltersHasBeenSet() const { return m_alertFiltersHasBeenSet; }
-
-    /**
-     * <p>The configuration of the alert filters, containing MetricList and
-     * DimensionFilterList.</p>
-     */
-    inline void SetAlertFilters(const AlertFilters& value) { m_alertFiltersHasBeenSet = true; m_alertFilters = value; }
-
-    /**
-     * <p>The configuration of the alert filters, containing MetricList and
-     * DimensionFilterList.</p>
-     */
-    inline void SetAlertFilters(AlertFilters&& value) { m_alertFiltersHasBeenSet = true; m_alertFilters = std::move(value); }
-
-    /**
-     * <p>The configuration of the alert filters, containing MetricList and
-     * DimensionFilterList.</p>
-     */
-    inline CreateAlertRequest& WithAlertFilters(const AlertFilters& value) { SetAlertFilters(value); return *this;}
-
-    /**
-     * <p>The configuration of the alert filters, containing MetricList and
-     * DimensionFilterList.</p>
-     */
-    inline CreateAlertRequest& WithAlertFilters(AlertFilters&& value) { SetAlertFilters(std::move(value)); return *this;}
-
+    template<typename AlertFiltersT = AlertFilters>
+    void SetAlertFilters(AlertFiltersT&& value) { m_alertFiltersHasBeenSet = true; m_alertFilters = std::forward<AlertFiltersT>(value); }
+    template<typename AlertFiltersT = AlertFilters>
+    CreateAlertRequest& WithAlertFilters(AlertFiltersT&& value) { SetAlertFilters(std::forward<AlertFiltersT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_alertName;
     bool m_alertNameHasBeenSet = false;
 
-    int m_alertSensitivityThreshold;
+    int m_alertSensitivityThreshold{0};
     bool m_alertSensitivityThresholdHasBeenSet = false;
 
     Aws::String m_alertDescription;

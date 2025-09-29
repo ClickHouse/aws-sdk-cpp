@@ -20,49 +20,7 @@ namespace EC2
 namespace Model
 {
 
-FlowLog::FlowLog() : 
-    m_creationTimeHasBeenSet(false),
-    m_deliverLogsErrorMessageHasBeenSet(false),
-    m_deliverLogsPermissionArnHasBeenSet(false),
-    m_deliverCrossAccountRoleHasBeenSet(false),
-    m_deliverLogsStatusHasBeenSet(false),
-    m_flowLogIdHasBeenSet(false),
-    m_flowLogStatusHasBeenSet(false),
-    m_logGroupNameHasBeenSet(false),
-    m_resourceIdHasBeenSet(false),
-    m_trafficType(TrafficType::NOT_SET),
-    m_trafficTypeHasBeenSet(false),
-    m_logDestinationType(LogDestinationType::NOT_SET),
-    m_logDestinationTypeHasBeenSet(false),
-    m_logDestinationHasBeenSet(false),
-    m_logFormatHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_maxAggregationInterval(0),
-    m_maxAggregationIntervalHasBeenSet(false),
-    m_destinationOptionsHasBeenSet(false)
-{
-}
-
-FlowLog::FlowLog(const XmlNode& xmlNode) : 
-    m_creationTimeHasBeenSet(false),
-    m_deliverLogsErrorMessageHasBeenSet(false),
-    m_deliverLogsPermissionArnHasBeenSet(false),
-    m_deliverCrossAccountRoleHasBeenSet(false),
-    m_deliverLogsStatusHasBeenSet(false),
-    m_flowLogIdHasBeenSet(false),
-    m_flowLogStatusHasBeenSet(false),
-    m_logGroupNameHasBeenSet(false),
-    m_resourceIdHasBeenSet(false),
-    m_trafficType(TrafficType::NOT_SET),
-    m_trafficTypeHasBeenSet(false),
-    m_logDestinationType(LogDestinationType::NOT_SET),
-    m_logDestinationTypeHasBeenSet(false),
-    m_logDestinationHasBeenSet(false),
-    m_logFormatHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_maxAggregationInterval(0),
-    m_maxAggregationIntervalHasBeenSet(false),
-    m_destinationOptionsHasBeenSet(false)
+FlowLog::FlowLog(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -130,13 +88,13 @@ FlowLog& FlowLog::operator =(const XmlNode& xmlNode)
     XmlNode trafficTypeNode = resultNode.FirstChild("trafficType");
     if(!trafficTypeNode.IsNull())
     {
-      m_trafficType = TrafficTypeMapper::GetTrafficTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(trafficTypeNode.GetText()).c_str()).c_str());
+      m_trafficType = TrafficTypeMapper::GetTrafficTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(trafficTypeNode.GetText()).c_str()));
       m_trafficTypeHasBeenSet = true;
     }
     XmlNode logDestinationTypeNode = resultNode.FirstChild("logDestinationType");
     if(!logDestinationTypeNode.IsNull())
     {
-      m_logDestinationType = LogDestinationTypeMapper::GetLogDestinationTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(logDestinationTypeNode.GetText()).c_str()).c_str());
+      m_logDestinationType = LogDestinationTypeMapper::GetLogDestinationTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(logDestinationTypeNode.GetText()).c_str()));
       m_logDestinationTypeHasBeenSet = true;
     }
     XmlNode logDestinationNode = resultNode.FirstChild("logDestination");
@@ -155,6 +113,7 @@ FlowLog& FlowLog::operator =(const XmlNode& xmlNode)
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -229,12 +188,12 @@ void FlowLog::OutputToStream(Aws::OStream& oStream, const char* location, unsign
 
   if(m_trafficTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".TrafficType=" << TrafficTypeMapper::GetNameForTrafficType(m_trafficType) << "&";
+      oStream << location << index << locationValue << ".TrafficType=" << StringUtils::URLEncode(TrafficTypeMapper::GetNameForTrafficType(m_trafficType)) << "&";
   }
 
   if(m_logDestinationTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".LogDestinationType=" << LogDestinationTypeMapper::GetNameForLogDestinationType(m_logDestinationType) << "&";
+      oStream << location << index << locationValue << ".LogDestinationType=" << StringUtils::URLEncode(LogDestinationTypeMapper::GetNameForLogDestinationType(m_logDestinationType)) << "&";
   }
 
   if(m_logDestinationHasBeenSet)
@@ -312,11 +271,11 @@ void FlowLog::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_trafficTypeHasBeenSet)
   {
-      oStream << location << ".TrafficType=" << TrafficTypeMapper::GetNameForTrafficType(m_trafficType) << "&";
+      oStream << location << ".TrafficType=" << StringUtils::URLEncode(TrafficTypeMapper::GetNameForTrafficType(m_trafficType)) << "&";
   }
   if(m_logDestinationTypeHasBeenSet)
   {
-      oStream << location << ".LogDestinationType=" << LogDestinationTypeMapper::GetNameForLogDestinationType(m_logDestinationType) << "&";
+      oStream << location << ".LogDestinationType=" << StringUtils::URLEncode(LogDestinationTypeMapper::GetNameForLogDestinationType(m_logDestinationType)) << "&";
   }
   if(m_logDestinationHasBeenSet)
   {
@@ -332,7 +291,7 @@ void FlowLog::OutputToStream(Aws::OStream& oStream, const char* location) const
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }

@@ -30,39 +30,25 @@ namespace Model
   class UnsupportedTimestamps
   {
   public:
-    AWS_LOOKOUTEQUIPMENT_API UnsupportedTimestamps();
+    AWS_LOOKOUTEQUIPMENT_API UnsupportedTimestamps() = default;
     AWS_LOOKOUTEQUIPMENT_API UnsupportedTimestamps(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOOKOUTEQUIPMENT_API UnsupportedTimestamps& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOOKOUTEQUIPMENT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> Indicates the total number of unsupported timestamps across the ingested
      * data. </p>
      */
-    inline int GetTotalNumberOfUnsupportedTimestamps() const{ return m_totalNumberOfUnsupportedTimestamps; }
-
-    /**
-     * <p> Indicates the total number of unsupported timestamps across the ingested
-     * data. </p>
-     */
+    inline int GetTotalNumberOfUnsupportedTimestamps() const { return m_totalNumberOfUnsupportedTimestamps; }
     inline bool TotalNumberOfUnsupportedTimestampsHasBeenSet() const { return m_totalNumberOfUnsupportedTimestampsHasBeenSet; }
-
-    /**
-     * <p> Indicates the total number of unsupported timestamps across the ingested
-     * data. </p>
-     */
     inline void SetTotalNumberOfUnsupportedTimestamps(int value) { m_totalNumberOfUnsupportedTimestampsHasBeenSet = true; m_totalNumberOfUnsupportedTimestamps = value; }
-
-    /**
-     * <p> Indicates the total number of unsupported timestamps across the ingested
-     * data. </p>
-     */
     inline UnsupportedTimestamps& WithTotalNumberOfUnsupportedTimestamps(int value) { SetTotalNumberOfUnsupportedTimestamps(value); return *this;}
-
+    ///@}
   private:
 
-    int m_totalNumberOfUnsupportedTimestamps;
+    int m_totalNumberOfUnsupportedTimestamps{0};
     bool m_totalNumberOfUnsupportedTimestampsHasBeenSet = false;
   };
 

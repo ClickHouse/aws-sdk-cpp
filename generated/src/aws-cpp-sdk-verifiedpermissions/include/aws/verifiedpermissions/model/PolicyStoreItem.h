@@ -35,204 +35,72 @@ namespace Model
   class PolicyStoreItem
   {
   public:
-    AWS_VERIFIEDPERMISSIONS_API PolicyStoreItem();
+    AWS_VERIFIEDPERMISSIONS_API PolicyStoreItem() = default;
     AWS_VERIFIEDPERMISSIONS_API PolicyStoreItem(Aws::Utils::Json::JsonView jsonValue);
     AWS_VERIFIEDPERMISSIONS_API PolicyStoreItem& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_VERIFIEDPERMISSIONS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The unique identifier of the policy store.</p>
      */
-    inline const Aws::String& GetPolicyStoreId() const{ return m_policyStoreId; }
-
-    /**
-     * <p>The unique identifier of the policy store.</p>
-     */
+    inline const Aws::String& GetPolicyStoreId() const { return m_policyStoreId; }
     inline bool PolicyStoreIdHasBeenSet() const { return m_policyStoreIdHasBeenSet; }
+    template<typename PolicyStoreIdT = Aws::String>
+    void SetPolicyStoreId(PolicyStoreIdT&& value) { m_policyStoreIdHasBeenSet = true; m_policyStoreId = std::forward<PolicyStoreIdT>(value); }
+    template<typename PolicyStoreIdT = Aws::String>
+    PolicyStoreItem& WithPolicyStoreId(PolicyStoreIdT&& value) { SetPolicyStoreId(std::forward<PolicyStoreIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier of the policy store.</p>
-     */
-    inline void SetPolicyStoreId(const Aws::String& value) { m_policyStoreIdHasBeenSet = true; m_policyStoreId = value; }
-
-    /**
-     * <p>The unique identifier of the policy store.</p>
-     */
-    inline void SetPolicyStoreId(Aws::String&& value) { m_policyStoreIdHasBeenSet = true; m_policyStoreId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the policy store.</p>
-     */
-    inline void SetPolicyStoreId(const char* value) { m_policyStoreIdHasBeenSet = true; m_policyStoreId.assign(value); }
-
-    /**
-     * <p>The unique identifier of the policy store.</p>
-     */
-    inline PolicyStoreItem& WithPolicyStoreId(const Aws::String& value) { SetPolicyStoreId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the policy store.</p>
-     */
-    inline PolicyStoreItem& WithPolicyStoreId(Aws::String&& value) { SetPolicyStoreId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the policy store.</p>
-     */
-    inline PolicyStoreItem& WithPolicyStoreId(const char* value) { SetPolicyStoreId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the policy store.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the policy store.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    PolicyStoreItem& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the policy store.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the policy store.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the policy store.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the policy store.</p>
-     */
-    inline PolicyStoreItem& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the policy store.</p>
-     */
-    inline PolicyStoreItem& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the policy store.</p>
-     */
-    inline PolicyStoreItem& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time the policy was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedDate() const{ return m_createdDate; }
-
-    /**
-     * <p>The date and time the policy was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedDate() const { return m_createdDate; }
     inline bool CreatedDateHasBeenSet() const { return m_createdDateHasBeenSet; }
+    template<typename CreatedDateT = Aws::Utils::DateTime>
+    void SetCreatedDate(CreatedDateT&& value) { m_createdDateHasBeenSet = true; m_createdDate = std::forward<CreatedDateT>(value); }
+    template<typename CreatedDateT = Aws::Utils::DateTime>
+    PolicyStoreItem& WithCreatedDate(CreatedDateT&& value) { SetCreatedDate(std::forward<CreatedDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time the policy was created.</p>
-     */
-    inline void SetCreatedDate(const Aws::Utils::DateTime& value) { m_createdDateHasBeenSet = true; m_createdDate = value; }
-
-    /**
-     * <p>The date and time the policy was created.</p>
-     */
-    inline void SetCreatedDate(Aws::Utils::DateTime&& value) { m_createdDateHasBeenSet = true; m_createdDate = std::move(value); }
-
-    /**
-     * <p>The date and time the policy was created.</p>
-     */
-    inline PolicyStoreItem& WithCreatedDate(const Aws::Utils::DateTime& value) { SetCreatedDate(value); return *this;}
-
-    /**
-     * <p>The date and time the policy was created.</p>
-     */
-    inline PolicyStoreItem& WithCreatedDate(Aws::Utils::DateTime&& value) { SetCreatedDate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time the policy store was most recently updated.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastUpdatedDate() const{ return m_lastUpdatedDate; }
-
-    /**
-     * <p>The date and time the policy store was most recently updated.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastUpdatedDate() const { return m_lastUpdatedDate; }
     inline bool LastUpdatedDateHasBeenSet() const { return m_lastUpdatedDateHasBeenSet; }
+    template<typename LastUpdatedDateT = Aws::Utils::DateTime>
+    void SetLastUpdatedDate(LastUpdatedDateT&& value) { m_lastUpdatedDateHasBeenSet = true; m_lastUpdatedDate = std::forward<LastUpdatedDateT>(value); }
+    template<typename LastUpdatedDateT = Aws::Utils::DateTime>
+    PolicyStoreItem& WithLastUpdatedDate(LastUpdatedDateT&& value) { SetLastUpdatedDate(std::forward<LastUpdatedDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time the policy store was most recently updated.</p>
-     */
-    inline void SetLastUpdatedDate(const Aws::Utils::DateTime& value) { m_lastUpdatedDateHasBeenSet = true; m_lastUpdatedDate = value; }
-
-    /**
-     * <p>The date and time the policy store was most recently updated.</p>
-     */
-    inline void SetLastUpdatedDate(Aws::Utils::DateTime&& value) { m_lastUpdatedDateHasBeenSet = true; m_lastUpdatedDate = std::move(value); }
-
-    /**
-     * <p>The date and time the policy store was most recently updated.</p>
-     */
-    inline PolicyStoreItem& WithLastUpdatedDate(const Aws::Utils::DateTime& value) { SetLastUpdatedDate(value); return *this;}
-
-    /**
-     * <p>The date and time the policy store was most recently updated.</p>
-     */
-    inline PolicyStoreItem& WithLastUpdatedDate(Aws::Utils::DateTime&& value) { SetLastUpdatedDate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Descriptive text that you can provide to help with identification of the
      * current policy store.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>Descriptive text that you can provide to help with identification of the
-     * current policy store.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
-
-    /**
-     * <p>Descriptive text that you can provide to help with identification of the
-     * current policy store.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>Descriptive text that you can provide to help with identification of the
-     * current policy store.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>Descriptive text that you can provide to help with identification of the
-     * current policy store.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>Descriptive text that you can provide to help with identification of the
-     * current policy store.</p>
-     */
-    inline PolicyStoreItem& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>Descriptive text that you can provide to help with identification of the
-     * current policy store.</p>
-     */
-    inline PolicyStoreItem& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>Descriptive text that you can provide to help with identification of the
-     * current policy store.</p>
-     */
-    inline PolicyStoreItem& WithDescription(const char* value) { SetDescription(value); return *this;}
-
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    PolicyStoreItem& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_policyStoreId;
@@ -241,10 +109,10 @@ namespace Model
     Aws::String m_arn;
     bool m_arnHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdDate;
+    Aws::Utils::DateTime m_createdDate{};
     bool m_createdDateHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastUpdatedDate;
+    Aws::Utils::DateTime m_lastUpdatedDate{};
     bool m_lastUpdatedDateHasBeenSet = false;
 
     Aws::String m_description;

@@ -18,15 +18,7 @@ namespace Glue
 namespace Model
 {
 
-ColumnError::ColumnError() : 
-    m_columnNameHasBeenSet(false),
-    m_errorHasBeenSet(false)
-{
-}
-
-ColumnError::ColumnError(JsonView jsonValue) : 
-    m_columnNameHasBeenSet(false),
-    m_errorHasBeenSet(false)
+ColumnError::ColumnError(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ColumnError& ColumnError::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ColumnName"))
   {
     m_columnName = jsonValue.GetString("ColumnName");
-
     m_columnNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Error"))
   {
     m_error = jsonValue.GetObject("Error");
-
     m_errorHasBeenSet = true;
   }
-
   return *this;
 }
 

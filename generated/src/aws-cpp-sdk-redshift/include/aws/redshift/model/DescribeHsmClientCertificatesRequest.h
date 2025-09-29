@@ -25,7 +25,7 @@ namespace Model
   class DescribeHsmClientCertificatesRequest : public RedshiftRequest
   {
   public:
-    AWS_REDSHIFT_API DescribeHsmClientCertificatesRequest();
+    AWS_REDSHIFT_API DescribeHsmClientCertificatesRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -40,63 +40,21 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The identifier of a specific HSM client certificate for which you want
      * information. If no identifier is specified, information is returned for all HSM
      * client certificates owned by your Amazon Web Services account.</p>
      */
-    inline const Aws::String& GetHsmClientCertificateIdentifier() const{ return m_hsmClientCertificateIdentifier; }
-
-    /**
-     * <p>The identifier of a specific HSM client certificate for which you want
-     * information. If no identifier is specified, information is returned for all HSM
-     * client certificates owned by your Amazon Web Services account.</p>
-     */
+    inline const Aws::String& GetHsmClientCertificateIdentifier() const { return m_hsmClientCertificateIdentifier; }
     inline bool HsmClientCertificateIdentifierHasBeenSet() const { return m_hsmClientCertificateIdentifierHasBeenSet; }
+    template<typename HsmClientCertificateIdentifierT = Aws::String>
+    void SetHsmClientCertificateIdentifier(HsmClientCertificateIdentifierT&& value) { m_hsmClientCertificateIdentifierHasBeenSet = true; m_hsmClientCertificateIdentifier = std::forward<HsmClientCertificateIdentifierT>(value); }
+    template<typename HsmClientCertificateIdentifierT = Aws::String>
+    DescribeHsmClientCertificatesRequest& WithHsmClientCertificateIdentifier(HsmClientCertificateIdentifierT&& value) { SetHsmClientCertificateIdentifier(std::forward<HsmClientCertificateIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of a specific HSM client certificate for which you want
-     * information. If no identifier is specified, information is returned for all HSM
-     * client certificates owned by your Amazon Web Services account.</p>
-     */
-    inline void SetHsmClientCertificateIdentifier(const Aws::String& value) { m_hsmClientCertificateIdentifierHasBeenSet = true; m_hsmClientCertificateIdentifier = value; }
-
-    /**
-     * <p>The identifier of a specific HSM client certificate for which you want
-     * information. If no identifier is specified, information is returned for all HSM
-     * client certificates owned by your Amazon Web Services account.</p>
-     */
-    inline void SetHsmClientCertificateIdentifier(Aws::String&& value) { m_hsmClientCertificateIdentifierHasBeenSet = true; m_hsmClientCertificateIdentifier = std::move(value); }
-
-    /**
-     * <p>The identifier of a specific HSM client certificate for which you want
-     * information. If no identifier is specified, information is returned for all HSM
-     * client certificates owned by your Amazon Web Services account.</p>
-     */
-    inline void SetHsmClientCertificateIdentifier(const char* value) { m_hsmClientCertificateIdentifierHasBeenSet = true; m_hsmClientCertificateIdentifier.assign(value); }
-
-    /**
-     * <p>The identifier of a specific HSM client certificate for which you want
-     * information. If no identifier is specified, information is returned for all HSM
-     * client certificates owned by your Amazon Web Services account.</p>
-     */
-    inline DescribeHsmClientCertificatesRequest& WithHsmClientCertificateIdentifier(const Aws::String& value) { SetHsmClientCertificateIdentifier(value); return *this;}
-
-    /**
-     * <p>The identifier of a specific HSM client certificate for which you want
-     * information. If no identifier is specified, information is returned for all HSM
-     * client certificates owned by your Amazon Web Services account.</p>
-     */
-    inline DescribeHsmClientCertificatesRequest& WithHsmClientCertificateIdentifier(Aws::String&& value) { SetHsmClientCertificateIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of a specific HSM client certificate for which you want
-     * information. If no identifier is specified, information is returned for all HSM
-     * client certificates owned by your Amazon Web Services account.</p>
-     */
-    inline DescribeHsmClientCertificatesRequest& WithHsmClientCertificateIdentifier(const char* value) { SetHsmClientCertificateIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of response records to return in each call. If the number
      * of remaining response records exceeds the specified <code>MaxRecords</code>
@@ -105,39 +63,13 @@ namespace Model
      * marker value. </p> <p>Default: <code>100</code> </p> <p>Constraints: minimum 20,
      * maximum 100.</p>
      */
-    inline int GetMaxRecords() const{ return m_maxRecords; }
-
-    /**
-     * <p>The maximum number of response records to return in each call. If the number
-     * of remaining response records exceeds the specified <code>MaxRecords</code>
-     * value, a value is returned in a <code>marker</code> field of the response. You
-     * can retrieve the next set of records by retrying the command with the returned
-     * marker value. </p> <p>Default: <code>100</code> </p> <p>Constraints: minimum 20,
-     * maximum 100.</p>
-     */
+    inline int GetMaxRecords() const { return m_maxRecords; }
     inline bool MaxRecordsHasBeenSet() const { return m_maxRecordsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of response records to return in each call. If the number
-     * of remaining response records exceeds the specified <code>MaxRecords</code>
-     * value, a value is returned in a <code>marker</code> field of the response. You
-     * can retrieve the next set of records by retrying the command with the returned
-     * marker value. </p> <p>Default: <code>100</code> </p> <p>Constraints: minimum 20,
-     * maximum 100.</p>
-     */
     inline void SetMaxRecords(int value) { m_maxRecordsHasBeenSet = true; m_maxRecords = value; }
-
-    /**
-     * <p>The maximum number of response records to return in each call. If the number
-     * of remaining response records exceeds the specified <code>MaxRecords</code>
-     * value, a value is returned in a <code>marker</code> field of the response. You
-     * can retrieve the next set of records by retrying the command with the returned
-     * marker value. </p> <p>Default: <code>100</code> </p> <p>Constraints: minimum 20,
-     * maximum 100.</p>
-     */
     inline DescribeHsmClientCertificatesRequest& WithMaxRecords(int value) { SetMaxRecords(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>An optional parameter that specifies the starting point to return a set of
      * response records. When the results of a <a>DescribeHsmClientCertificates</a>
@@ -146,79 +78,15 @@ namespace Model
      * can retrieve the next set of response records by providing the returned marker
      * value in the <code>Marker</code> parameter and retrying the request. </p>
      */
-    inline const Aws::String& GetMarker() const{ return m_marker; }
-
-    /**
-     * <p>An optional parameter that specifies the starting point to return a set of
-     * response records. When the results of a <a>DescribeHsmClientCertificates</a>
-     * request exceed the value specified in <code>MaxRecords</code>, Amazon Web
-     * Services returns a value in the <code>Marker</code> field of the response. You
-     * can retrieve the next set of response records by providing the returned marker
-     * value in the <code>Marker</code> parameter and retrying the request. </p>
-     */
+    inline const Aws::String& GetMarker() const { return m_marker; }
     inline bool MarkerHasBeenSet() const { return m_markerHasBeenSet; }
+    template<typename MarkerT = Aws::String>
+    void SetMarker(MarkerT&& value) { m_markerHasBeenSet = true; m_marker = std::forward<MarkerT>(value); }
+    template<typename MarkerT = Aws::String>
+    DescribeHsmClientCertificatesRequest& WithMarker(MarkerT&& value) { SetMarker(std::forward<MarkerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An optional parameter that specifies the starting point to return a set of
-     * response records. When the results of a <a>DescribeHsmClientCertificates</a>
-     * request exceed the value specified in <code>MaxRecords</code>, Amazon Web
-     * Services returns a value in the <code>Marker</code> field of the response. You
-     * can retrieve the next set of response records by providing the returned marker
-     * value in the <code>Marker</code> parameter and retrying the request. </p>
-     */
-    inline void SetMarker(const Aws::String& value) { m_markerHasBeenSet = true; m_marker = value; }
-
-    /**
-     * <p>An optional parameter that specifies the starting point to return a set of
-     * response records. When the results of a <a>DescribeHsmClientCertificates</a>
-     * request exceed the value specified in <code>MaxRecords</code>, Amazon Web
-     * Services returns a value in the <code>Marker</code> field of the response. You
-     * can retrieve the next set of response records by providing the returned marker
-     * value in the <code>Marker</code> parameter and retrying the request. </p>
-     */
-    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = std::move(value); }
-
-    /**
-     * <p>An optional parameter that specifies the starting point to return a set of
-     * response records. When the results of a <a>DescribeHsmClientCertificates</a>
-     * request exceed the value specified in <code>MaxRecords</code>, Amazon Web
-     * Services returns a value in the <code>Marker</code> field of the response. You
-     * can retrieve the next set of response records by providing the returned marker
-     * value in the <code>Marker</code> parameter and retrying the request. </p>
-     */
-    inline void SetMarker(const char* value) { m_markerHasBeenSet = true; m_marker.assign(value); }
-
-    /**
-     * <p>An optional parameter that specifies the starting point to return a set of
-     * response records. When the results of a <a>DescribeHsmClientCertificates</a>
-     * request exceed the value specified in <code>MaxRecords</code>, Amazon Web
-     * Services returns a value in the <code>Marker</code> field of the response. You
-     * can retrieve the next set of response records by providing the returned marker
-     * value in the <code>Marker</code> parameter and retrying the request. </p>
-     */
-    inline DescribeHsmClientCertificatesRequest& WithMarker(const Aws::String& value) { SetMarker(value); return *this;}
-
-    /**
-     * <p>An optional parameter that specifies the starting point to return a set of
-     * response records. When the results of a <a>DescribeHsmClientCertificates</a>
-     * request exceed the value specified in <code>MaxRecords</code>, Amazon Web
-     * Services returns a value in the <code>Marker</code> field of the response. You
-     * can retrieve the next set of response records by providing the returned marker
-     * value in the <code>Marker</code> parameter and retrying the request. </p>
-     */
-    inline DescribeHsmClientCertificatesRequest& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
-
-    /**
-     * <p>An optional parameter that specifies the starting point to return a set of
-     * response records. When the results of a <a>DescribeHsmClientCertificates</a>
-     * request exceed the value specified in <code>MaxRecords</code>, Amazon Web
-     * Services returns a value in the <code>Marker</code> field of the response. You
-     * can retrieve the next set of response records by providing the returned marker
-     * value in the <code>Marker</code> parameter and retrying the request. </p>
-     */
-    inline DescribeHsmClientCertificatesRequest& WithMarker(const char* value) { SetMarker(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A tag key or keys for which you want to return all matching HSM client
      * certificates that are associated with the specified key or keys. For example,
@@ -228,97 +96,17 @@ namespace Model
      * certificates that have either or both of these tag keys associated with
      * them.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetTagKeys() const{ return m_tagKeys; }
-
-    /**
-     * <p>A tag key or keys for which you want to return all matching HSM client
-     * certificates that are associated with the specified key or keys. For example,
-     * suppose that you have HSM client certificates that are tagged with keys called
-     * <code>owner</code> and <code>environment</code>. If you specify both of these
-     * tag keys in the request, Amazon Redshift returns a response with the HSM client
-     * certificates that have either or both of these tag keys associated with
-     * them.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetTagKeys() const { return m_tagKeys; }
     inline bool TagKeysHasBeenSet() const { return m_tagKeysHasBeenSet; }
+    template<typename TagKeysT = Aws::Vector<Aws::String>>
+    void SetTagKeys(TagKeysT&& value) { m_tagKeysHasBeenSet = true; m_tagKeys = std::forward<TagKeysT>(value); }
+    template<typename TagKeysT = Aws::Vector<Aws::String>>
+    DescribeHsmClientCertificatesRequest& WithTagKeys(TagKeysT&& value) { SetTagKeys(std::forward<TagKeysT>(value)); return *this;}
+    template<typename TagKeysT = Aws::String>
+    DescribeHsmClientCertificatesRequest& AddTagKeys(TagKeysT&& value) { m_tagKeysHasBeenSet = true; m_tagKeys.emplace_back(std::forward<TagKeysT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A tag key or keys for which you want to return all matching HSM client
-     * certificates that are associated with the specified key or keys. For example,
-     * suppose that you have HSM client certificates that are tagged with keys called
-     * <code>owner</code> and <code>environment</code>. If you specify both of these
-     * tag keys in the request, Amazon Redshift returns a response with the HSM client
-     * certificates that have either or both of these tag keys associated with
-     * them.</p>
-     */
-    inline void SetTagKeys(const Aws::Vector<Aws::String>& value) { m_tagKeysHasBeenSet = true; m_tagKeys = value; }
-
-    /**
-     * <p>A tag key or keys for which you want to return all matching HSM client
-     * certificates that are associated with the specified key or keys. For example,
-     * suppose that you have HSM client certificates that are tagged with keys called
-     * <code>owner</code> and <code>environment</code>. If you specify both of these
-     * tag keys in the request, Amazon Redshift returns a response with the HSM client
-     * certificates that have either or both of these tag keys associated with
-     * them.</p>
-     */
-    inline void SetTagKeys(Aws::Vector<Aws::String>&& value) { m_tagKeysHasBeenSet = true; m_tagKeys = std::move(value); }
-
-    /**
-     * <p>A tag key or keys for which you want to return all matching HSM client
-     * certificates that are associated with the specified key or keys. For example,
-     * suppose that you have HSM client certificates that are tagged with keys called
-     * <code>owner</code> and <code>environment</code>. If you specify both of these
-     * tag keys in the request, Amazon Redshift returns a response with the HSM client
-     * certificates that have either or both of these tag keys associated with
-     * them.</p>
-     */
-    inline DescribeHsmClientCertificatesRequest& WithTagKeys(const Aws::Vector<Aws::String>& value) { SetTagKeys(value); return *this;}
-
-    /**
-     * <p>A tag key or keys for which you want to return all matching HSM client
-     * certificates that are associated with the specified key or keys. For example,
-     * suppose that you have HSM client certificates that are tagged with keys called
-     * <code>owner</code> and <code>environment</code>. If you specify both of these
-     * tag keys in the request, Amazon Redshift returns a response with the HSM client
-     * certificates that have either or both of these tag keys associated with
-     * them.</p>
-     */
-    inline DescribeHsmClientCertificatesRequest& WithTagKeys(Aws::Vector<Aws::String>&& value) { SetTagKeys(std::move(value)); return *this;}
-
-    /**
-     * <p>A tag key or keys for which you want to return all matching HSM client
-     * certificates that are associated with the specified key or keys. For example,
-     * suppose that you have HSM client certificates that are tagged with keys called
-     * <code>owner</code> and <code>environment</code>. If you specify both of these
-     * tag keys in the request, Amazon Redshift returns a response with the HSM client
-     * certificates that have either or both of these tag keys associated with
-     * them.</p>
-     */
-    inline DescribeHsmClientCertificatesRequest& AddTagKeys(const Aws::String& value) { m_tagKeysHasBeenSet = true; m_tagKeys.push_back(value); return *this; }
-
-    /**
-     * <p>A tag key or keys for which you want to return all matching HSM client
-     * certificates that are associated with the specified key or keys. For example,
-     * suppose that you have HSM client certificates that are tagged with keys called
-     * <code>owner</code> and <code>environment</code>. If you specify both of these
-     * tag keys in the request, Amazon Redshift returns a response with the HSM client
-     * certificates that have either or both of these tag keys associated with
-     * them.</p>
-     */
-    inline DescribeHsmClientCertificatesRequest& AddTagKeys(Aws::String&& value) { m_tagKeysHasBeenSet = true; m_tagKeys.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A tag key or keys for which you want to return all matching HSM client
-     * certificates that are associated with the specified key or keys. For example,
-     * suppose that you have HSM client certificates that are tagged with keys called
-     * <code>owner</code> and <code>environment</code>. If you specify both of these
-     * tag keys in the request, Amazon Redshift returns a response with the HSM client
-     * certificates that have either or both of these tag keys associated with
-     * them.</p>
-     */
-    inline DescribeHsmClientCertificatesRequest& AddTagKeys(const char* value) { m_tagKeysHasBeenSet = true; m_tagKeys.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>A tag value or values for which you want to return all matching HSM client
      * certificates that are associated with the specified tag value or values. For
@@ -328,102 +116,21 @@ namespace Model
      * client certificates that have either or both of these tag values associated with
      * them.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetTagValues() const{ return m_tagValues; }
-
-    /**
-     * <p>A tag value or values for which you want to return all matching HSM client
-     * certificates that are associated with the specified tag value or values. For
-     * example, suppose that you have HSM client certificates that are tagged with
-     * values called <code>admin</code> and <code>test</code>. If you specify both of
-     * these tag values in the request, Amazon Redshift returns a response with the HSM
-     * client certificates that have either or both of these tag values associated with
-     * them.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetTagValues() const { return m_tagValues; }
     inline bool TagValuesHasBeenSet() const { return m_tagValuesHasBeenSet; }
-
-    /**
-     * <p>A tag value or values for which you want to return all matching HSM client
-     * certificates that are associated with the specified tag value or values. For
-     * example, suppose that you have HSM client certificates that are tagged with
-     * values called <code>admin</code> and <code>test</code>. If you specify both of
-     * these tag values in the request, Amazon Redshift returns a response with the HSM
-     * client certificates that have either or both of these tag values associated with
-     * them.</p>
-     */
-    inline void SetTagValues(const Aws::Vector<Aws::String>& value) { m_tagValuesHasBeenSet = true; m_tagValues = value; }
-
-    /**
-     * <p>A tag value or values for which you want to return all matching HSM client
-     * certificates that are associated with the specified tag value or values. For
-     * example, suppose that you have HSM client certificates that are tagged with
-     * values called <code>admin</code> and <code>test</code>. If you specify both of
-     * these tag values in the request, Amazon Redshift returns a response with the HSM
-     * client certificates that have either or both of these tag values associated with
-     * them.</p>
-     */
-    inline void SetTagValues(Aws::Vector<Aws::String>&& value) { m_tagValuesHasBeenSet = true; m_tagValues = std::move(value); }
-
-    /**
-     * <p>A tag value or values for which you want to return all matching HSM client
-     * certificates that are associated with the specified tag value or values. For
-     * example, suppose that you have HSM client certificates that are tagged with
-     * values called <code>admin</code> and <code>test</code>. If you specify both of
-     * these tag values in the request, Amazon Redshift returns a response with the HSM
-     * client certificates that have either or both of these tag values associated with
-     * them.</p>
-     */
-    inline DescribeHsmClientCertificatesRequest& WithTagValues(const Aws::Vector<Aws::String>& value) { SetTagValues(value); return *this;}
-
-    /**
-     * <p>A tag value or values for which you want to return all matching HSM client
-     * certificates that are associated with the specified tag value or values. For
-     * example, suppose that you have HSM client certificates that are tagged with
-     * values called <code>admin</code> and <code>test</code>. If you specify both of
-     * these tag values in the request, Amazon Redshift returns a response with the HSM
-     * client certificates that have either or both of these tag values associated with
-     * them.</p>
-     */
-    inline DescribeHsmClientCertificatesRequest& WithTagValues(Aws::Vector<Aws::String>&& value) { SetTagValues(std::move(value)); return *this;}
-
-    /**
-     * <p>A tag value or values for which you want to return all matching HSM client
-     * certificates that are associated with the specified tag value or values. For
-     * example, suppose that you have HSM client certificates that are tagged with
-     * values called <code>admin</code> and <code>test</code>. If you specify both of
-     * these tag values in the request, Amazon Redshift returns a response with the HSM
-     * client certificates that have either or both of these tag values associated with
-     * them.</p>
-     */
-    inline DescribeHsmClientCertificatesRequest& AddTagValues(const Aws::String& value) { m_tagValuesHasBeenSet = true; m_tagValues.push_back(value); return *this; }
-
-    /**
-     * <p>A tag value or values for which you want to return all matching HSM client
-     * certificates that are associated with the specified tag value or values. For
-     * example, suppose that you have HSM client certificates that are tagged with
-     * values called <code>admin</code> and <code>test</code>. If you specify both of
-     * these tag values in the request, Amazon Redshift returns a response with the HSM
-     * client certificates that have either or both of these tag values associated with
-     * them.</p>
-     */
-    inline DescribeHsmClientCertificatesRequest& AddTagValues(Aws::String&& value) { m_tagValuesHasBeenSet = true; m_tagValues.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A tag value or values for which you want to return all matching HSM client
-     * certificates that are associated with the specified tag value or values. For
-     * example, suppose that you have HSM client certificates that are tagged with
-     * values called <code>admin</code> and <code>test</code>. If you specify both of
-     * these tag values in the request, Amazon Redshift returns a response with the HSM
-     * client certificates that have either or both of these tag values associated with
-     * them.</p>
-     */
-    inline DescribeHsmClientCertificatesRequest& AddTagValues(const char* value) { m_tagValuesHasBeenSet = true; m_tagValues.push_back(value); return *this; }
-
+    template<typename TagValuesT = Aws::Vector<Aws::String>>
+    void SetTagValues(TagValuesT&& value) { m_tagValuesHasBeenSet = true; m_tagValues = std::forward<TagValuesT>(value); }
+    template<typename TagValuesT = Aws::Vector<Aws::String>>
+    DescribeHsmClientCertificatesRequest& WithTagValues(TagValuesT&& value) { SetTagValues(std::forward<TagValuesT>(value)); return *this;}
+    template<typename TagValuesT = Aws::String>
+    DescribeHsmClientCertificatesRequest& AddTagValues(TagValuesT&& value) { m_tagValuesHasBeenSet = true; m_tagValues.emplace_back(std::forward<TagValuesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_hsmClientCertificateIdentifier;
     bool m_hsmClientCertificateIdentifierHasBeenSet = false;
 
-    int m_maxRecords;
+    int m_maxRecords{0};
     bool m_maxRecordsHasBeenSet = false;
 
     Aws::String m_marker;

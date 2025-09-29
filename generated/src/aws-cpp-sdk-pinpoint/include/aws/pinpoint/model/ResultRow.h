@@ -34,117 +34,42 @@ namespace Model
   class ResultRow
   {
   public:
-    AWS_PINPOINT_API ResultRow();
+    AWS_PINPOINT_API ResultRow() = default;
     AWS_PINPOINT_API ResultRow(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API ResultRow& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An array of objects that defines the field and field values that were used to
      * group data in a result set that contains multiple results. This value is null if
      * the data in a result set isn’t grouped.</p>
      */
-    inline const Aws::Vector<ResultRowValue>& GetGroupedBys() const{ return m_groupedBys; }
-
-    /**
-     * <p>An array of objects that defines the field and field values that were used to
-     * group data in a result set that contains multiple results. This value is null if
-     * the data in a result set isn’t grouped.</p>
-     */
+    inline const Aws::Vector<ResultRowValue>& GetGroupedBys() const { return m_groupedBys; }
     inline bool GroupedBysHasBeenSet() const { return m_groupedBysHasBeenSet; }
+    template<typename GroupedBysT = Aws::Vector<ResultRowValue>>
+    void SetGroupedBys(GroupedBysT&& value) { m_groupedBysHasBeenSet = true; m_groupedBys = std::forward<GroupedBysT>(value); }
+    template<typename GroupedBysT = Aws::Vector<ResultRowValue>>
+    ResultRow& WithGroupedBys(GroupedBysT&& value) { SetGroupedBys(std::forward<GroupedBysT>(value)); return *this;}
+    template<typename GroupedBysT = ResultRowValue>
+    ResultRow& AddGroupedBys(GroupedBysT&& value) { m_groupedBysHasBeenSet = true; m_groupedBys.emplace_back(std::forward<GroupedBysT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of objects that defines the field and field values that were used to
-     * group data in a result set that contains multiple results. This value is null if
-     * the data in a result set isn’t grouped.</p>
-     */
-    inline void SetGroupedBys(const Aws::Vector<ResultRowValue>& value) { m_groupedBysHasBeenSet = true; m_groupedBys = value; }
-
-    /**
-     * <p>An array of objects that defines the field and field values that were used to
-     * group data in a result set that contains multiple results. This value is null if
-     * the data in a result set isn’t grouped.</p>
-     */
-    inline void SetGroupedBys(Aws::Vector<ResultRowValue>&& value) { m_groupedBysHasBeenSet = true; m_groupedBys = std::move(value); }
-
-    /**
-     * <p>An array of objects that defines the field and field values that were used to
-     * group data in a result set that contains multiple results. This value is null if
-     * the data in a result set isn’t grouped.</p>
-     */
-    inline ResultRow& WithGroupedBys(const Aws::Vector<ResultRowValue>& value) { SetGroupedBys(value); return *this;}
-
-    /**
-     * <p>An array of objects that defines the field and field values that were used to
-     * group data in a result set that contains multiple results. This value is null if
-     * the data in a result set isn’t grouped.</p>
-     */
-    inline ResultRow& WithGroupedBys(Aws::Vector<ResultRowValue>&& value) { SetGroupedBys(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of objects that defines the field and field values that were used to
-     * group data in a result set that contains multiple results. This value is null if
-     * the data in a result set isn’t grouped.</p>
-     */
-    inline ResultRow& AddGroupedBys(const ResultRowValue& value) { m_groupedBysHasBeenSet = true; m_groupedBys.push_back(value); return *this; }
-
-    /**
-     * <p>An array of objects that defines the field and field values that were used to
-     * group data in a result set that contains multiple results. This value is null if
-     * the data in a result set isn’t grouped.</p>
-     */
-    inline ResultRow& AddGroupedBys(ResultRowValue&& value) { m_groupedBysHasBeenSet = true; m_groupedBys.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>An array of objects that provides pre-aggregated values for a standard metric
      * that applies to an application, campaign, or journey.</p>
      */
-    inline const Aws::Vector<ResultRowValue>& GetValues() const{ return m_values; }
-
-    /**
-     * <p>An array of objects that provides pre-aggregated values for a standard metric
-     * that applies to an application, campaign, or journey.</p>
-     */
+    inline const Aws::Vector<ResultRowValue>& GetValues() const { return m_values; }
     inline bool ValuesHasBeenSet() const { return m_valuesHasBeenSet; }
-
-    /**
-     * <p>An array of objects that provides pre-aggregated values for a standard metric
-     * that applies to an application, campaign, or journey.</p>
-     */
-    inline void SetValues(const Aws::Vector<ResultRowValue>& value) { m_valuesHasBeenSet = true; m_values = value; }
-
-    /**
-     * <p>An array of objects that provides pre-aggregated values for a standard metric
-     * that applies to an application, campaign, or journey.</p>
-     */
-    inline void SetValues(Aws::Vector<ResultRowValue>&& value) { m_valuesHasBeenSet = true; m_values = std::move(value); }
-
-    /**
-     * <p>An array of objects that provides pre-aggregated values for a standard metric
-     * that applies to an application, campaign, or journey.</p>
-     */
-    inline ResultRow& WithValues(const Aws::Vector<ResultRowValue>& value) { SetValues(value); return *this;}
-
-    /**
-     * <p>An array of objects that provides pre-aggregated values for a standard metric
-     * that applies to an application, campaign, or journey.</p>
-     */
-    inline ResultRow& WithValues(Aws::Vector<ResultRowValue>&& value) { SetValues(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of objects that provides pre-aggregated values for a standard metric
-     * that applies to an application, campaign, or journey.</p>
-     */
-    inline ResultRow& AddValues(const ResultRowValue& value) { m_valuesHasBeenSet = true; m_values.push_back(value); return *this; }
-
-    /**
-     * <p>An array of objects that provides pre-aggregated values for a standard metric
-     * that applies to an application, campaign, or journey.</p>
-     */
-    inline ResultRow& AddValues(ResultRowValue&& value) { m_valuesHasBeenSet = true; m_values.push_back(std::move(value)); return *this; }
-
+    template<typename ValuesT = Aws::Vector<ResultRowValue>>
+    void SetValues(ValuesT&& value) { m_valuesHasBeenSet = true; m_values = std::forward<ValuesT>(value); }
+    template<typename ValuesT = Aws::Vector<ResultRowValue>>
+    ResultRow& WithValues(ValuesT&& value) { SetValues(std::forward<ValuesT>(value)); return *this;}
+    template<typename ValuesT = ResultRowValue>
+    ResultRow& AddValues(ValuesT&& value) { m_valuesHasBeenSet = true; m_values.emplace_back(std::forward<ValuesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<ResultRowValue> m_groupedBys;

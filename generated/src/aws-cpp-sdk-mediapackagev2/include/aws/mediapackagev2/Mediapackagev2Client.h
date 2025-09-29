@@ -16,17 +16,17 @@ namespace Aws
 namespace mediapackagev2
 {
   /**
-   *  <p>This guide is intended for creating AWS Elemental MediaPackage
+   * <p> <p>This guide is intended for creating AWS Elemental MediaPackage
    * resources in MediaPackage Version 2 (v2) starting from May 2023. To get started
    * with MediaPackage v2, create your MediaPackage resources. There isn't an
    * automated process to migrate your resources from MediaPackage v1 to MediaPackage
    * v2. </p> <p>The names of the entities that you use to access this API, like URLs
-   * and ARNs, all have the versioning information added, like "v2", to distinguish
-   * from the prior version. If you used MediaPackage prior to this release, you
-   * can't use the MediaPackage v2 CLI or the MediaPackage v2 API to access any
-   * MediaPackage v1 resources.</p> <p>If you created resources in MediaPackage v1,
-   * use video on demand (VOD) workflows, and aren't looking to migrate to
-   * MediaPackage v2 yet, see the <a
+   * and ARNs, all have the versioning information added, like &quot;v2&quot;, to
+   * distinguish from the prior version. If you used MediaPackage prior to this
+   * release, you can't use the MediaPackage v2 CLI or the MediaPackage v2 API to
+   * access any MediaPackage v1 resources.</p> <p>If you created resources in
+   * MediaPackage v1, use video on demand (VOD) workflows, and aren't looking to
+   * migrate to MediaPackage v2 yet, see the <a
    * href="https://docs.aws.amazon.com/mediapackage/latest/apireference/what-is.html">MediaPackage
    * v1 Live API Reference</a>.</p>  <p>This is the AWS Elemental MediaPackage
    * v2 Live REST API Reference. It describes all the MediaPackage API operations for
@@ -34,14 +34,14 @@ namespace mediapackagev2
    * the supported web services protocols.</p> <p>We assume that you have the IAM
    * permissions that you need to use MediaPackage via the REST API. We also assume
    * that you are familiar with the features and operations of MediaPackage, as
-   * described in the AWS Elemental MediaPackage User Guide.</p>
+   * described in the AWS Elemental MediaPackage User Guide.</p></p>
    */
   class AWS_MEDIAPACKAGEV2_API Mediapackagev2Client : public Aws::Client::AWSJsonClient, public Aws::Client::ClientWithAsyncTemplateMethods<Mediapackagev2Client>
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
 
       typedef Mediapackagev2ClientConfiguration ClientConfigurationType;
       typedef Mediapackagev2EndpointProvider EndpointProviderType;
@@ -51,14 +51,14 @@ namespace mediapackagev2
         * is not specified, it will be initialized to default values.
         */
         Mediapackagev2Client(const Aws::mediapackagev2::Mediapackagev2ClientConfiguration& clientConfiguration = Aws::mediapackagev2::Mediapackagev2ClientConfiguration(),
-                             std::shared_ptr<Mediapackagev2EndpointProviderBase> endpointProvider = Aws::MakeShared<Mediapackagev2EndpointProvider>(ALLOCATION_TAG));
+                             std::shared_ptr<Mediapackagev2EndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         Mediapackagev2Client(const Aws::Auth::AWSCredentials& credentials,
-                             std::shared_ptr<Mediapackagev2EndpointProviderBase> endpointProvider = Aws::MakeShared<Mediapackagev2EndpointProvider>(ALLOCATION_TAG),
+                             std::shared_ptr<Mediapackagev2EndpointProviderBase> endpointProvider = nullptr,
                              const Aws::mediapackagev2::Mediapackagev2ClientConfiguration& clientConfiguration = Aws::mediapackagev2::Mediapackagev2ClientConfiguration());
 
        /**
@@ -66,7 +66,7 @@ namespace mediapackagev2
         * the default http client factory will be used
         */
         Mediapackagev2Client(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                             std::shared_ptr<Mediapackagev2EndpointProviderBase> endpointProvider = Aws::MakeShared<Mediapackagev2EndpointProvider>(ALLOCATION_TAG),
+                             std::shared_ptr<Mediapackagev2EndpointProviderBase> endpointProvider = nullptr,
                              const Aws::mediapackagev2::Mediapackagev2ClientConfiguration& clientConfiguration = Aws::mediapackagev2::Mediapackagev2ClientConfiguration());
 
 
@@ -93,6 +93,31 @@ namespace mediapackagev2
 
         /* End of legacy constructors due deprecation */
         virtual ~Mediapackagev2Client();
+
+        /**
+         * <p>Cancels an in-progress harvest job.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/mediapackagev2-2022-12-25/CancelHarvestJob">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::CancelHarvestJobOutcome CancelHarvestJob(const Model::CancelHarvestJobRequest& request) const;
+
+        /**
+         * A Callable wrapper for CancelHarvestJob that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename CancelHarvestJobRequestT = Model::CancelHarvestJobRequest>
+        Model::CancelHarvestJobOutcomeCallable CancelHarvestJobCallable(const CancelHarvestJobRequestT& request) const
+        {
+            return SubmitCallable(&Mediapackagev2Client::CancelHarvestJob, request);
+        }
+
+        /**
+         * An Async wrapper for CancelHarvestJob that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename CancelHarvestJobRequestT = Model::CancelHarvestJobRequest>
+        void CancelHarvestJobAsync(const CancelHarvestJobRequestT& request, const CancelHarvestJobResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&Mediapackagev2Client::CancelHarvestJob, request, handler, context);
+        }
 
         /**
          * <p>Create a channel to start receiving content streams. The channel represents
@@ -154,6 +179,32 @@ namespace mediapackagev2
         void CreateChannelGroupAsync(const CreateChannelGroupRequestT& request, const CreateChannelGroupResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&Mediapackagev2Client::CreateChannelGroup, request, handler, context);
+        }
+
+        /**
+         * <p>Creates a new harvest job to export content from a MediaPackage v2 channel to
+         * an S3 bucket.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/mediapackagev2-2022-12-25/CreateHarvestJob">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::CreateHarvestJobOutcome CreateHarvestJob(const Model::CreateHarvestJobRequest& request) const;
+
+        /**
+         * A Callable wrapper for CreateHarvestJob that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename CreateHarvestJobRequestT = Model::CreateHarvestJobRequest>
+        Model::CreateHarvestJobOutcomeCallable CreateHarvestJobCallable(const CreateHarvestJobRequestT& request) const
+        {
+            return SubmitCallable(&Mediapackagev2Client::CreateHarvestJob, request);
+        }
+
+        /**
+         * An Async wrapper for CreateHarvestJob that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename CreateHarvestJobRequestT = Model::CreateHarvestJobRequest>
+        void CreateHarvestJobAsync(const CreateHarvestJobRequestT& request, const CreateHarvestJobResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&Mediapackagev2Client::CreateHarvestJob, request, handler, context);
         }
 
         /**
@@ -321,8 +372,7 @@ namespace mediapackagev2
 
         /**
          * <p>Retrieves the specified channel that's configured in AWS Elemental
-         * MediaPackage, including the origin endpoints that are associated with
-         * it.</p><p><h3>See Also:</h3>   <a
+         * MediaPackage.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/mediapackagev2-2022-12-25/GetChannel">AWS
          * API Reference</a></p>
          */
@@ -348,8 +398,7 @@ namespace mediapackagev2
 
         /**
          * <p>Retrieves the specified channel group that's configured in AWS Elemental
-         * MediaPackage, including the channels and origin endpoints that are associated
-         * with it.</p><p><h3>See Also:</h3>   <a
+         * MediaPackage.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/mediapackagev2-2022-12-25/GetChannelGroup">AWS
          * API Reference</a></p>
          */
@@ -398,6 +447,32 @@ namespace mediapackagev2
         void GetChannelPolicyAsync(const GetChannelPolicyRequestT& request, const GetChannelPolicyResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&Mediapackagev2Client::GetChannelPolicy, request, handler, context);
+        }
+
+        /**
+         * <p>Retrieves the details of a specific harvest job.</p><p><h3>See Also:</h3>  
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/mediapackagev2-2022-12-25/GetHarvestJob">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetHarvestJobOutcome GetHarvestJob(const Model::GetHarvestJobRequest& request) const;
+
+        /**
+         * A Callable wrapper for GetHarvestJob that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetHarvestJobRequestT = Model::GetHarvestJobRequest>
+        Model::GetHarvestJobOutcomeCallable GetHarvestJobCallable(const GetHarvestJobRequestT& request) const
+        {
+            return SubmitCallable(&Mediapackagev2Client::GetHarvestJob, request);
+        }
+
+        /**
+         * An Async wrapper for GetHarvestJob that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetHarvestJobRequestT = Model::GetHarvestJobRequest>
+        void GetHarvestJobAsync(const GetHarvestJobRequestT& request, const GetHarvestJobResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&Mediapackagev2Client::GetHarvestJob, request, handler, context);
         }
 
         /**
@@ -454,19 +529,18 @@ namespace mediapackagev2
         }
 
         /**
-         * <p>Retrieves all channel groups that are configured in AWS Elemental
-         * MediaPackage, including the channels and origin endpoints that are associated
-         * with it.</p><p><h3>See Also:</h3>   <a
+         * <p>Retrieves all channel groups that are configured in Elemental
+         * MediaPackage.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/mediapackagev2-2022-12-25/ListChannelGroups">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListChannelGroupsOutcome ListChannelGroups(const Model::ListChannelGroupsRequest& request) const;
+        virtual Model::ListChannelGroupsOutcome ListChannelGroups(const Model::ListChannelGroupsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListChannelGroups that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListChannelGroupsRequestT = Model::ListChannelGroupsRequest>
-        Model::ListChannelGroupsOutcomeCallable ListChannelGroupsCallable(const ListChannelGroupsRequestT& request) const
+        Model::ListChannelGroupsOutcomeCallable ListChannelGroupsCallable(const ListChannelGroupsRequestT& request = {}) const
         {
             return SubmitCallable(&Mediapackagev2Client::ListChannelGroups, request);
         }
@@ -475,15 +549,14 @@ namespace mediapackagev2
          * An Async wrapper for ListChannelGroups that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListChannelGroupsRequestT = Model::ListChannelGroupsRequest>
-        void ListChannelGroupsAsync(const ListChannelGroupsRequestT& request, const ListChannelGroupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListChannelGroupsAsync(const ListChannelGroupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListChannelGroupsRequestT& request = {}) const
         {
             return SubmitAsync(&Mediapackagev2Client::ListChannelGroups, request, handler, context);
         }
 
         /**
          * <p>Retrieves all channels in a specific channel group that are configured in AWS
-         * Elemental MediaPackage, including the origin endpoints that are associated with
-         * it.</p><p><h3>See Also:</h3>   <a
+         * Elemental MediaPackage.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/mediapackagev2-2022-12-25/ListChannels">AWS
          * API Reference</a></p>
          */
@@ -505,6 +578,32 @@ namespace mediapackagev2
         void ListChannelsAsync(const ListChannelsRequestT& request, const ListChannelsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&Mediapackagev2Client::ListChannels, request, handler, context);
+        }
+
+        /**
+         * <p>Retrieves a list of harvest jobs that match the specified
+         * criteria.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/mediapackagev2-2022-12-25/ListHarvestJobs">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListHarvestJobsOutcome ListHarvestJobs(const Model::ListHarvestJobsRequest& request) const;
+
+        /**
+         * A Callable wrapper for ListHarvestJobs that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListHarvestJobsRequestT = Model::ListHarvestJobsRequest>
+        Model::ListHarvestJobsOutcomeCallable ListHarvestJobsCallable(const ListHarvestJobsRequestT& request) const
+        {
+            return SubmitCallable(&Mediapackagev2Client::ListHarvestJobs, request);
+        }
+
+        /**
+         * An Async wrapper for ListHarvestJobs that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListHarvestJobsRequestT = Model::ListHarvestJobsRequest>
+        void ListHarvestJobsAsync(const ListHarvestJobsRequestT& request, const ListHarvestJobsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&Mediapackagev2Client::ListHarvestJobs, request, handler, context);
         }
 
         /**
@@ -610,6 +709,65 @@ namespace mediapackagev2
         void PutOriginEndpointPolicyAsync(const PutOriginEndpointPolicyRequestT& request, const PutOriginEndpointPolicyResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&Mediapackagev2Client::PutOriginEndpointPolicy, request, handler, context);
+        }
+
+        /**
+         * <p>Resetting the channel can help to clear errors from misconfigurations in the
+         * encoder. A reset refreshes the ingest stream and removes previous content. </p>
+         * <p> Be sure to stop the encoder before you reset the channel, and wait at least
+         * 30 seconds before you restart the encoder. </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/mediapackagev2-2022-12-25/ResetChannelState">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ResetChannelStateOutcome ResetChannelState(const Model::ResetChannelStateRequest& request) const;
+
+        /**
+         * A Callable wrapper for ResetChannelState that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ResetChannelStateRequestT = Model::ResetChannelStateRequest>
+        Model::ResetChannelStateOutcomeCallable ResetChannelStateCallable(const ResetChannelStateRequestT& request) const
+        {
+            return SubmitCallable(&Mediapackagev2Client::ResetChannelState, request);
+        }
+
+        /**
+         * An Async wrapper for ResetChannelState that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ResetChannelStateRequestT = Model::ResetChannelStateRequest>
+        void ResetChannelStateAsync(const ResetChannelStateRequestT& request, const ResetChannelStateResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&Mediapackagev2Client::ResetChannelState, request, handler, context);
+        }
+
+        /**
+         * <p>Resetting the origin endpoint can help to resolve unexpected behavior and
+         * other content packaging issues. It also helps to preserve special events when
+         * you don't want the previous content to be available for viewing. A reset clears
+         * out all previous content from the origin endpoint.</p> <p>MediaPackage might
+         * return old content from this endpoint in the first 30 seconds after the endpoint
+         * reset. For best results, when possible, wait 30 seconds from endpoint reset to
+         * send playback requests to this endpoint. </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/mediapackagev2-2022-12-25/ResetOriginEndpointState">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ResetOriginEndpointStateOutcome ResetOriginEndpointState(const Model::ResetOriginEndpointStateRequest& request) const;
+
+        /**
+         * A Callable wrapper for ResetOriginEndpointState that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ResetOriginEndpointStateRequestT = Model::ResetOriginEndpointStateRequest>
+        Model::ResetOriginEndpointStateOutcomeCallable ResetOriginEndpointStateCallable(const ResetOriginEndpointStateRequestT& request) const
+        {
+            return SubmitCallable(&Mediapackagev2Client::ResetOriginEndpointState, request);
+        }
+
+        /**
+         * An Async wrapper for ResetOriginEndpointState that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ResetOriginEndpointStateRequestT = Model::ResetOriginEndpointStateRequest>
+        void ResetOriginEndpointStateAsync(const ResetOriginEndpointStateRequestT& request, const ResetOriginEndpointStateResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&Mediapackagev2Client::ResetOriginEndpointState, request, handler, context);
         }
 
         /**
@@ -766,7 +924,6 @@ namespace mediapackagev2
       void init(const Mediapackagev2ClientConfiguration& clientConfiguration);
 
       Mediapackagev2ClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<Mediapackagev2EndpointProviderBase> m_endpointProvider;
   };
 

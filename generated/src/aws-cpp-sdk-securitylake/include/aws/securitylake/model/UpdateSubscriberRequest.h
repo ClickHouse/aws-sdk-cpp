@@ -24,7 +24,7 @@ namespace Model
   class UpdateSubscriberRequest : public SecurityLakeRequest
   {
   public:
-    AWS_SECURITYLAKE_API UpdateSubscriberRequest();
+    AWS_SECURITYLAKE_API UpdateSubscriberRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,232 +35,71 @@ namespace Model
     AWS_SECURITYLAKE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
-     * <p>The supported Amazon Web Services from which logs and events are collected.
-     * For the list of supported Amazon Web Services, see the <a
+     * <p>The supported Amazon Web Services services from which logs and events are
+     * collected. For the list of supported Amazon Web Services services, see the <a
      * href="https://docs.aws.amazon.com/security-lake/latest/userguide/internal-sources.html">Amazon
      * Security Lake User Guide</a>.</p>
      */
-    inline const Aws::Vector<LogSourceResource>& GetSources() const{ return m_sources; }
-
-    /**
-     * <p>The supported Amazon Web Services from which logs and events are collected.
-     * For the list of supported Amazon Web Services, see the <a
-     * href="https://docs.aws.amazon.com/security-lake/latest/userguide/internal-sources.html">Amazon
-     * Security Lake User Guide</a>.</p>
-     */
+    inline const Aws::Vector<LogSourceResource>& GetSources() const { return m_sources; }
     inline bool SourcesHasBeenSet() const { return m_sourcesHasBeenSet; }
+    template<typename SourcesT = Aws::Vector<LogSourceResource>>
+    void SetSources(SourcesT&& value) { m_sourcesHasBeenSet = true; m_sources = std::forward<SourcesT>(value); }
+    template<typename SourcesT = Aws::Vector<LogSourceResource>>
+    UpdateSubscriberRequest& WithSources(SourcesT&& value) { SetSources(std::forward<SourcesT>(value)); return *this;}
+    template<typename SourcesT = LogSourceResource>
+    UpdateSubscriberRequest& AddSources(SourcesT&& value) { m_sourcesHasBeenSet = true; m_sources.emplace_back(std::forward<SourcesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The supported Amazon Web Services from which logs and events are collected.
-     * For the list of supported Amazon Web Services, see the <a
-     * href="https://docs.aws.amazon.com/security-lake/latest/userguide/internal-sources.html">Amazon
-     * Security Lake User Guide</a>.</p>
-     */
-    inline void SetSources(const Aws::Vector<LogSourceResource>& value) { m_sourcesHasBeenSet = true; m_sources = value; }
-
-    /**
-     * <p>The supported Amazon Web Services from which logs and events are collected.
-     * For the list of supported Amazon Web Services, see the <a
-     * href="https://docs.aws.amazon.com/security-lake/latest/userguide/internal-sources.html">Amazon
-     * Security Lake User Guide</a>.</p>
-     */
-    inline void SetSources(Aws::Vector<LogSourceResource>&& value) { m_sourcesHasBeenSet = true; m_sources = std::move(value); }
-
-    /**
-     * <p>The supported Amazon Web Services from which logs and events are collected.
-     * For the list of supported Amazon Web Services, see the <a
-     * href="https://docs.aws.amazon.com/security-lake/latest/userguide/internal-sources.html">Amazon
-     * Security Lake User Guide</a>.</p>
-     */
-    inline UpdateSubscriberRequest& WithSources(const Aws::Vector<LogSourceResource>& value) { SetSources(value); return *this;}
-
-    /**
-     * <p>The supported Amazon Web Services from which logs and events are collected.
-     * For the list of supported Amazon Web Services, see the <a
-     * href="https://docs.aws.amazon.com/security-lake/latest/userguide/internal-sources.html">Amazon
-     * Security Lake User Guide</a>.</p>
-     */
-    inline UpdateSubscriberRequest& WithSources(Aws::Vector<LogSourceResource>&& value) { SetSources(std::move(value)); return *this;}
-
-    /**
-     * <p>The supported Amazon Web Services from which logs and events are collected.
-     * For the list of supported Amazon Web Services, see the <a
-     * href="https://docs.aws.amazon.com/security-lake/latest/userguide/internal-sources.html">Amazon
-     * Security Lake User Guide</a>.</p>
-     */
-    inline UpdateSubscriberRequest& AddSources(const LogSourceResource& value) { m_sourcesHasBeenSet = true; m_sources.push_back(value); return *this; }
-
-    /**
-     * <p>The supported Amazon Web Services from which logs and events are collected.
-     * For the list of supported Amazon Web Services, see the <a
-     * href="https://docs.aws.amazon.com/security-lake/latest/userguide/internal-sources.html">Amazon
-     * Security Lake User Guide</a>.</p>
-     */
-    inline UpdateSubscriberRequest& AddSources(LogSourceResource&& value) { m_sourcesHasBeenSet = true; m_sources.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The description of the Security Lake account subscriber.</p>
      */
-    inline const Aws::String& GetSubscriberDescription() const{ return m_subscriberDescription; }
-
-    /**
-     * <p>The description of the Security Lake account subscriber.</p>
-     */
+    inline const Aws::String& GetSubscriberDescription() const { return m_subscriberDescription; }
     inline bool SubscriberDescriptionHasBeenSet() const { return m_subscriberDescriptionHasBeenSet; }
+    template<typename SubscriberDescriptionT = Aws::String>
+    void SetSubscriberDescription(SubscriberDescriptionT&& value) { m_subscriberDescriptionHasBeenSet = true; m_subscriberDescription = std::forward<SubscriberDescriptionT>(value); }
+    template<typename SubscriberDescriptionT = Aws::String>
+    UpdateSubscriberRequest& WithSubscriberDescription(SubscriberDescriptionT&& value) { SetSubscriberDescription(std::forward<SubscriberDescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description of the Security Lake account subscriber.</p>
-     */
-    inline void SetSubscriberDescription(const Aws::String& value) { m_subscriberDescriptionHasBeenSet = true; m_subscriberDescription = value; }
-
-    /**
-     * <p>The description of the Security Lake account subscriber.</p>
-     */
-    inline void SetSubscriberDescription(Aws::String&& value) { m_subscriberDescriptionHasBeenSet = true; m_subscriberDescription = std::move(value); }
-
-    /**
-     * <p>The description of the Security Lake account subscriber.</p>
-     */
-    inline void SetSubscriberDescription(const char* value) { m_subscriberDescriptionHasBeenSet = true; m_subscriberDescription.assign(value); }
-
-    /**
-     * <p>The description of the Security Lake account subscriber.</p>
-     */
-    inline UpdateSubscriberRequest& WithSubscriberDescription(const Aws::String& value) { SetSubscriberDescription(value); return *this;}
-
-    /**
-     * <p>The description of the Security Lake account subscriber.</p>
-     */
-    inline UpdateSubscriberRequest& WithSubscriberDescription(Aws::String&& value) { SetSubscriberDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the Security Lake account subscriber.</p>
-     */
-    inline UpdateSubscriberRequest& WithSubscriberDescription(const char* value) { SetSubscriberDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A value created by Security Lake that uniquely identifies your
      * subscription.</p>
      */
-    inline const Aws::String& GetSubscriberId() const{ return m_subscriberId; }
-
-    /**
-     * <p>A value created by Security Lake that uniquely identifies your
-     * subscription.</p>
-     */
+    inline const Aws::String& GetSubscriberId() const { return m_subscriberId; }
     inline bool SubscriberIdHasBeenSet() const { return m_subscriberIdHasBeenSet; }
+    template<typename SubscriberIdT = Aws::String>
+    void SetSubscriberId(SubscriberIdT&& value) { m_subscriberIdHasBeenSet = true; m_subscriberId = std::forward<SubscriberIdT>(value); }
+    template<typename SubscriberIdT = Aws::String>
+    UpdateSubscriberRequest& WithSubscriberId(SubscriberIdT&& value) { SetSubscriberId(std::forward<SubscriberIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A value created by Security Lake that uniquely identifies your
-     * subscription.</p>
+     * <p>The Amazon Web Services identity used to access your data.</p>
      */
-    inline void SetSubscriberId(const Aws::String& value) { m_subscriberIdHasBeenSet = true; m_subscriberId = value; }
-
-    /**
-     * <p>A value created by Security Lake that uniquely identifies your
-     * subscription.</p>
-     */
-    inline void SetSubscriberId(Aws::String&& value) { m_subscriberIdHasBeenSet = true; m_subscriberId = std::move(value); }
-
-    /**
-     * <p>A value created by Security Lake that uniquely identifies your
-     * subscription.</p>
-     */
-    inline void SetSubscriberId(const char* value) { m_subscriberIdHasBeenSet = true; m_subscriberId.assign(value); }
-
-    /**
-     * <p>A value created by Security Lake that uniquely identifies your
-     * subscription.</p>
-     */
-    inline UpdateSubscriberRequest& WithSubscriberId(const Aws::String& value) { SetSubscriberId(value); return *this;}
-
-    /**
-     * <p>A value created by Security Lake that uniquely identifies your
-     * subscription.</p>
-     */
-    inline UpdateSubscriberRequest& WithSubscriberId(Aws::String&& value) { SetSubscriberId(std::move(value)); return *this;}
-
-    /**
-     * <p>A value created by Security Lake that uniquely identifies your
-     * subscription.</p>
-     */
-    inline UpdateSubscriberRequest& WithSubscriberId(const char* value) { SetSubscriberId(value); return *this;}
-
-
-    /**
-     * <p>The AWS identity used to access your data.</p>
-     */
-    inline const AwsIdentity& GetSubscriberIdentity() const{ return m_subscriberIdentity; }
-
-    /**
-     * <p>The AWS identity used to access your data.</p>
-     */
+    inline const AwsIdentity& GetSubscriberIdentity() const { return m_subscriberIdentity; }
     inline bool SubscriberIdentityHasBeenSet() const { return m_subscriberIdentityHasBeenSet; }
+    template<typename SubscriberIdentityT = AwsIdentity>
+    void SetSubscriberIdentity(SubscriberIdentityT&& value) { m_subscriberIdentityHasBeenSet = true; m_subscriberIdentity = std::forward<SubscriberIdentityT>(value); }
+    template<typename SubscriberIdentityT = AwsIdentity>
+    UpdateSubscriberRequest& WithSubscriberIdentity(SubscriberIdentityT&& value) { SetSubscriberIdentity(std::forward<SubscriberIdentityT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The AWS identity used to access your data.</p>
-     */
-    inline void SetSubscriberIdentity(const AwsIdentity& value) { m_subscriberIdentityHasBeenSet = true; m_subscriberIdentity = value; }
-
-    /**
-     * <p>The AWS identity used to access your data.</p>
-     */
-    inline void SetSubscriberIdentity(AwsIdentity&& value) { m_subscriberIdentityHasBeenSet = true; m_subscriberIdentity = std::move(value); }
-
-    /**
-     * <p>The AWS identity used to access your data.</p>
-     */
-    inline UpdateSubscriberRequest& WithSubscriberIdentity(const AwsIdentity& value) { SetSubscriberIdentity(value); return *this;}
-
-    /**
-     * <p>The AWS identity used to access your data.</p>
-     */
-    inline UpdateSubscriberRequest& WithSubscriberIdentity(AwsIdentity&& value) { SetSubscriberIdentity(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the Security Lake account subscriber.</p>
      */
-    inline const Aws::String& GetSubscriberName() const{ return m_subscriberName; }
-
-    /**
-     * <p>The name of the Security Lake account subscriber.</p>
-     */
+    inline const Aws::String& GetSubscriberName() const { return m_subscriberName; }
     inline bool SubscriberNameHasBeenSet() const { return m_subscriberNameHasBeenSet; }
-
-    /**
-     * <p>The name of the Security Lake account subscriber.</p>
-     */
-    inline void SetSubscriberName(const Aws::String& value) { m_subscriberNameHasBeenSet = true; m_subscriberName = value; }
-
-    /**
-     * <p>The name of the Security Lake account subscriber.</p>
-     */
-    inline void SetSubscriberName(Aws::String&& value) { m_subscriberNameHasBeenSet = true; m_subscriberName = std::move(value); }
-
-    /**
-     * <p>The name of the Security Lake account subscriber.</p>
-     */
-    inline void SetSubscriberName(const char* value) { m_subscriberNameHasBeenSet = true; m_subscriberName.assign(value); }
-
-    /**
-     * <p>The name of the Security Lake account subscriber.</p>
-     */
-    inline UpdateSubscriberRequest& WithSubscriberName(const Aws::String& value) { SetSubscriberName(value); return *this;}
-
-    /**
-     * <p>The name of the Security Lake account subscriber.</p>
-     */
-    inline UpdateSubscriberRequest& WithSubscriberName(Aws::String&& value) { SetSubscriberName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Security Lake account subscriber.</p>
-     */
-    inline UpdateSubscriberRequest& WithSubscriberName(const char* value) { SetSubscriberName(value); return *this;}
-
+    template<typename SubscriberNameT = Aws::String>
+    void SetSubscriberName(SubscriberNameT&& value) { m_subscriberNameHasBeenSet = true; m_subscriberName = std::forward<SubscriberNameT>(value); }
+    template<typename SubscriberNameT = Aws::String>
+    UpdateSubscriberRequest& WithSubscriberName(SubscriberNameT&& value) { SetSubscriberName(std::forward<SubscriberNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<LogSourceResource> m_sources;

@@ -27,73 +27,37 @@ namespace Model
   class GetRandomPasswordResult
   {
   public:
-    AWS_SECRETSMANAGER_API GetRandomPasswordResult();
+    AWS_SECRETSMANAGER_API GetRandomPasswordResult() = default;
     AWS_SECRETSMANAGER_API GetRandomPasswordResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_SECRETSMANAGER_API GetRandomPasswordResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>A string with the password.</p>
      */
-    inline const Aws::String& GetRandomPassword() const{ return m_randomPassword; }
+    inline const Aws::String& GetRandomPassword() const { return m_randomPassword; }
+    template<typename RandomPasswordT = Aws::String>
+    void SetRandomPassword(RandomPasswordT&& value) { m_randomPasswordHasBeenSet = true; m_randomPassword = std::forward<RandomPasswordT>(value); }
+    template<typename RandomPasswordT = Aws::String>
+    GetRandomPasswordResult& WithRandomPassword(RandomPasswordT&& value) { SetRandomPassword(std::forward<RandomPasswordT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A string with the password.</p>
-     */
-    inline void SetRandomPassword(const Aws::String& value) { m_randomPassword = value; }
-
-    /**
-     * <p>A string with the password.</p>
-     */
-    inline void SetRandomPassword(Aws::String&& value) { m_randomPassword = std::move(value); }
-
-    /**
-     * <p>A string with the password.</p>
-     */
-    inline void SetRandomPassword(const char* value) { m_randomPassword.assign(value); }
-
-    /**
-     * <p>A string with the password.</p>
-     */
-    inline GetRandomPasswordResult& WithRandomPassword(const Aws::String& value) { SetRandomPassword(value); return *this;}
-
-    /**
-     * <p>A string with the password.</p>
-     */
-    inline GetRandomPasswordResult& WithRandomPassword(Aws::String&& value) { SetRandomPassword(std::move(value)); return *this;}
-
-    /**
-     * <p>A string with the password.</p>
-     */
-    inline GetRandomPasswordResult& WithRandomPassword(const char* value) { SetRandomPassword(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetRandomPasswordResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetRandomPasswordResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetRandomPasswordResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetRandomPasswordResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_randomPassword;
+    bool m_randomPasswordHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

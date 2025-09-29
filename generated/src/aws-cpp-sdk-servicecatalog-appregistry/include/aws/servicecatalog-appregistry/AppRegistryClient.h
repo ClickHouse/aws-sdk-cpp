@@ -10,7 +10,6 @@
 #include <aws/core/client/AWSClientAsyncCRTP.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 #include <aws/servicecatalog-appregistry/AppRegistryServiceClientModel.h>
-#include <aws/servicecatalog-appregistry/model/GetConfigurationRequest.h>
 
 namespace Aws
 {
@@ -26,8 +25,8 @@ namespace AppRegistry
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
 
       typedef AppRegistryClientConfiguration ClientConfigurationType;
       typedef AppRegistryEndpointProvider EndpointProviderType;
@@ -37,14 +36,14 @@ namespace AppRegistry
         * is not specified, it will be initialized to default values.
         */
         AppRegistryClient(const Aws::AppRegistry::AppRegistryClientConfiguration& clientConfiguration = Aws::AppRegistry::AppRegistryClientConfiguration(),
-                          std::shared_ptr<AppRegistryEndpointProviderBase> endpointProvider = Aws::MakeShared<AppRegistryEndpointProvider>(ALLOCATION_TAG));
+                          std::shared_ptr<AppRegistryEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         AppRegistryClient(const Aws::Auth::AWSCredentials& credentials,
-                          std::shared_ptr<AppRegistryEndpointProviderBase> endpointProvider = Aws::MakeShared<AppRegistryEndpointProvider>(ALLOCATION_TAG),
+                          std::shared_ptr<AppRegistryEndpointProviderBase> endpointProvider = nullptr,
                           const Aws::AppRegistry::AppRegistryClientConfiguration& clientConfiguration = Aws::AppRegistry::AppRegistryClientConfiguration());
 
        /**
@@ -52,7 +51,7 @@ namespace AppRegistry
         * the default http client factory will be used
         */
         AppRegistryClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                          std::shared_ptr<AppRegistryEndpointProviderBase> endpointProvider = Aws::MakeShared<AppRegistryEndpointProvider>(ALLOCATION_TAG),
+                          std::shared_ptr<AppRegistryEndpointProviderBase> endpointProvider = nullptr,
                           const Aws::AppRegistry::AppRegistryClientConfiguration& clientConfiguration = Aws::AppRegistry::AppRegistryClientConfiguration());
 
 
@@ -446,13 +445,13 @@ namespace AppRegistry
          * href="http://docs.aws.amazon.com/goto/WebAPI/AWS242AppRegistry-2020-06-24/ListApplications">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListApplicationsOutcome ListApplications(const Model::ListApplicationsRequest& request) const;
+        virtual Model::ListApplicationsOutcome ListApplications(const Model::ListApplicationsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListApplications that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListApplicationsRequestT = Model::ListApplicationsRequest>
-        Model::ListApplicationsOutcomeCallable ListApplicationsCallable(const ListApplicationsRequestT& request) const
+        Model::ListApplicationsOutcomeCallable ListApplicationsCallable(const ListApplicationsRequestT& request = {}) const
         {
             return SubmitCallable(&AppRegistryClient::ListApplications, request);
         }
@@ -461,7 +460,7 @@ namespace AppRegistry
          * An Async wrapper for ListApplications that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListApplicationsRequestT = Model::ListApplicationsRequest>
-        void ListApplicationsAsync(const ListApplicationsRequestT& request, const ListApplicationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListApplicationsAsync(const ListApplicationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListApplicationsRequestT& request = {}) const
         {
             return SubmitAsync(&AppRegistryClient::ListApplications, request, handler, context);
         }
@@ -528,13 +527,13 @@ namespace AppRegistry
          * href="http://docs.aws.amazon.com/goto/WebAPI/AWS242AppRegistry-2020-06-24/ListAttributeGroups">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListAttributeGroupsOutcome ListAttributeGroups(const Model::ListAttributeGroupsRequest& request) const;
+        virtual Model::ListAttributeGroupsOutcome ListAttributeGroups(const Model::ListAttributeGroupsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListAttributeGroups that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListAttributeGroupsRequestT = Model::ListAttributeGroupsRequest>
-        Model::ListAttributeGroupsOutcomeCallable ListAttributeGroupsCallable(const ListAttributeGroupsRequestT& request) const
+        Model::ListAttributeGroupsOutcomeCallable ListAttributeGroupsCallable(const ListAttributeGroupsRequestT& request = {}) const
         {
             return SubmitCallable(&AppRegistryClient::ListAttributeGroups, request);
         }
@@ -543,7 +542,7 @@ namespace AppRegistry
          * An Async wrapper for ListAttributeGroups that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListAttributeGroupsRequestT = Model::ListAttributeGroupsRequest>
-        void ListAttributeGroupsAsync(const ListAttributeGroupsRequestT& request, const ListAttributeGroupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListAttributeGroupsAsync(const ListAttributeGroupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListAttributeGroupsRequestT& request = {}) const
         {
             return SubmitAsync(&AppRegistryClient::ListAttributeGroups, request, handler, context);
         }
@@ -769,7 +768,6 @@ namespace AppRegistry
       void init(const AppRegistryClientConfiguration& clientConfiguration);
 
       AppRegistryClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<AppRegistryEndpointProviderBase> m_endpointProvider;
   };
 

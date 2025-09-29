@@ -18,13 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-StatelessCustomActionDefinition::StatelessCustomActionDefinition() : 
-    m_publishMetricActionHasBeenSet(false)
-{
-}
-
-StatelessCustomActionDefinition::StatelessCustomActionDefinition(JsonView jsonValue) : 
-    m_publishMetricActionHasBeenSet(false)
+StatelessCustomActionDefinition::StatelessCustomActionDefinition(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ StatelessCustomActionDefinition& StatelessCustomActionDefinition::operator =(Jso
   if(jsonValue.ValueExists("PublishMetricAction"))
   {
     m_publishMetricAction = jsonValue.GetObject("PublishMetricAction");
-
     m_publishMetricActionHasBeenSet = true;
   }
-
   return *this;
 }
 

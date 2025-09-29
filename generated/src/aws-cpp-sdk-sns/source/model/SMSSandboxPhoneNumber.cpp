@@ -20,17 +20,7 @@ namespace SNS
 namespace Model
 {
 
-SMSSandboxPhoneNumber::SMSSandboxPhoneNumber() : 
-    m_phoneNumberHasBeenSet(false),
-    m_status(SMSSandboxPhoneNumberVerificationStatus::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
-SMSSandboxPhoneNumber::SMSSandboxPhoneNumber(const XmlNode& xmlNode) : 
-    m_phoneNumberHasBeenSet(false),
-    m_status(SMSSandboxPhoneNumberVerificationStatus::NOT_SET),
-    m_statusHasBeenSet(false)
+SMSSandboxPhoneNumber::SMSSandboxPhoneNumber(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -50,7 +40,7 @@ SMSSandboxPhoneNumber& SMSSandboxPhoneNumber::operator =(const XmlNode& xmlNode)
     XmlNode statusNode = resultNode.FirstChild("Status");
     if(!statusNode.IsNull())
     {
-      m_status = SMSSandboxPhoneNumberVerificationStatusMapper::GetSMSSandboxPhoneNumberVerificationStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()).c_str());
+      m_status = SMSSandboxPhoneNumberVerificationStatusMapper::GetSMSSandboxPhoneNumberVerificationStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()));
       m_statusHasBeenSet = true;
     }
   }
@@ -67,7 +57,7 @@ void SMSSandboxPhoneNumber::OutputToStream(Aws::OStream& oStream, const char* lo
 
   if(m_statusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Status=" << SMSSandboxPhoneNumberVerificationStatusMapper::GetNameForSMSSandboxPhoneNumberVerificationStatus(m_status) << "&";
+      oStream << location << index << locationValue << ".Status=" << StringUtils::URLEncode(SMSSandboxPhoneNumberVerificationStatusMapper::GetNameForSMSSandboxPhoneNumberVerificationStatus(m_status)) << "&";
   }
 
 }
@@ -80,7 +70,7 @@ void SMSSandboxPhoneNumber::OutputToStream(Aws::OStream& oStream, const char* lo
   }
   if(m_statusHasBeenSet)
   {
-      oStream << location << ".Status=" << SMSSandboxPhoneNumberVerificationStatusMapper::GetNameForSMSSandboxPhoneNumberVerificationStatus(m_status) << "&";
+      oStream << location << ".Status=" << StringUtils::URLEncode(SMSSandboxPhoneNumberVerificationStatusMapper::GetNameForSMSSandboxPhoneNumberVerificationStatus(m_status)) << "&";
   }
 }
 

@@ -33,118 +33,47 @@ namespace Model
   class SchemaReference
   {
   public:
-    AWS_GLUE_API SchemaReference();
+    AWS_GLUE_API SchemaReference() = default;
     AWS_GLUE_API SchemaReference(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API SchemaReference& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A structure that contains schema identity fields. Either this or the
      * <code>SchemaVersionId</code> has to be provided.</p>
      */
-    inline const SchemaId& GetSchemaId() const{ return m_schemaId; }
-
-    /**
-     * <p>A structure that contains schema identity fields. Either this or the
-     * <code>SchemaVersionId</code> has to be provided.</p>
-     */
+    inline const SchemaId& GetSchemaId() const { return m_schemaId; }
     inline bool SchemaIdHasBeenSet() const { return m_schemaIdHasBeenSet; }
+    template<typename SchemaIdT = SchemaId>
+    void SetSchemaId(SchemaIdT&& value) { m_schemaIdHasBeenSet = true; m_schemaId = std::forward<SchemaIdT>(value); }
+    template<typename SchemaIdT = SchemaId>
+    SchemaReference& WithSchemaId(SchemaIdT&& value) { SetSchemaId(std::forward<SchemaIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A structure that contains schema identity fields. Either this or the
-     * <code>SchemaVersionId</code> has to be provided.</p>
-     */
-    inline void SetSchemaId(const SchemaId& value) { m_schemaIdHasBeenSet = true; m_schemaId = value; }
-
-    /**
-     * <p>A structure that contains schema identity fields. Either this or the
-     * <code>SchemaVersionId</code> has to be provided.</p>
-     */
-    inline void SetSchemaId(SchemaId&& value) { m_schemaIdHasBeenSet = true; m_schemaId = std::move(value); }
-
-    /**
-     * <p>A structure that contains schema identity fields. Either this or the
-     * <code>SchemaVersionId</code> has to be provided.</p>
-     */
-    inline SchemaReference& WithSchemaId(const SchemaId& value) { SetSchemaId(value); return *this;}
-
-    /**
-     * <p>A structure that contains schema identity fields. Either this or the
-     * <code>SchemaVersionId</code> has to be provided.</p>
-     */
-    inline SchemaReference& WithSchemaId(SchemaId&& value) { SetSchemaId(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique ID assigned to a version of the schema. Either this or the
      * <code>SchemaId</code> has to be provided.</p>
      */
-    inline const Aws::String& GetSchemaVersionId() const{ return m_schemaVersionId; }
-
-    /**
-     * <p>The unique ID assigned to a version of the schema. Either this or the
-     * <code>SchemaId</code> has to be provided.</p>
-     */
+    inline const Aws::String& GetSchemaVersionId() const { return m_schemaVersionId; }
     inline bool SchemaVersionIdHasBeenSet() const { return m_schemaVersionIdHasBeenSet; }
+    template<typename SchemaVersionIdT = Aws::String>
+    void SetSchemaVersionId(SchemaVersionIdT&& value) { m_schemaVersionIdHasBeenSet = true; m_schemaVersionId = std::forward<SchemaVersionIdT>(value); }
+    template<typename SchemaVersionIdT = Aws::String>
+    SchemaReference& WithSchemaVersionId(SchemaVersionIdT&& value) { SetSchemaVersionId(std::forward<SchemaVersionIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique ID assigned to a version of the schema. Either this or the
-     * <code>SchemaId</code> has to be provided.</p>
-     */
-    inline void SetSchemaVersionId(const Aws::String& value) { m_schemaVersionIdHasBeenSet = true; m_schemaVersionId = value; }
-
-    /**
-     * <p>The unique ID assigned to a version of the schema. Either this or the
-     * <code>SchemaId</code> has to be provided.</p>
-     */
-    inline void SetSchemaVersionId(Aws::String&& value) { m_schemaVersionIdHasBeenSet = true; m_schemaVersionId = std::move(value); }
-
-    /**
-     * <p>The unique ID assigned to a version of the schema. Either this or the
-     * <code>SchemaId</code> has to be provided.</p>
-     */
-    inline void SetSchemaVersionId(const char* value) { m_schemaVersionIdHasBeenSet = true; m_schemaVersionId.assign(value); }
-
-    /**
-     * <p>The unique ID assigned to a version of the schema. Either this or the
-     * <code>SchemaId</code> has to be provided.</p>
-     */
-    inline SchemaReference& WithSchemaVersionId(const Aws::String& value) { SetSchemaVersionId(value); return *this;}
-
-    /**
-     * <p>The unique ID assigned to a version of the schema. Either this or the
-     * <code>SchemaId</code> has to be provided.</p>
-     */
-    inline SchemaReference& WithSchemaVersionId(Aws::String&& value) { SetSchemaVersionId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique ID assigned to a version of the schema. Either this or the
-     * <code>SchemaId</code> has to be provided.</p>
-     */
-    inline SchemaReference& WithSchemaVersionId(const char* value) { SetSchemaVersionId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The version number of the schema.</p>
      */
-    inline long long GetSchemaVersionNumber() const{ return m_schemaVersionNumber; }
-
-    /**
-     * <p>The version number of the schema.</p>
-     */
+    inline long long GetSchemaVersionNumber() const { return m_schemaVersionNumber; }
     inline bool SchemaVersionNumberHasBeenSet() const { return m_schemaVersionNumberHasBeenSet; }
-
-    /**
-     * <p>The version number of the schema.</p>
-     */
     inline void SetSchemaVersionNumber(long long value) { m_schemaVersionNumberHasBeenSet = true; m_schemaVersionNumber = value; }
-
-    /**
-     * <p>The version number of the schema.</p>
-     */
     inline SchemaReference& WithSchemaVersionNumber(long long value) { SetSchemaVersionNumber(value); return *this;}
-
+    ///@}
   private:
 
     SchemaId m_schemaId;
@@ -153,7 +82,7 @@ namespace Model
     Aws::String m_schemaVersionId;
     bool m_schemaVersionIdHasBeenSet = false;
 
-    long long m_schemaVersionNumber;
+    long long m_schemaVersionNumber{0};
     bool m_schemaVersionNumberHasBeenSet = false;
   };
 

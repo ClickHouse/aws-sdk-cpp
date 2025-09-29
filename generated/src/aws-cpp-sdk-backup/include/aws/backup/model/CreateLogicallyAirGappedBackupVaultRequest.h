@@ -9,6 +9,7 @@
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSMap.h>
 #include <utility>
+#include <aws/core/utils/UUID.h>
 
 namespace Aws
 {
@@ -22,7 +23,7 @@ namespace Model
   class CreateLogicallyAirGappedBackupVaultRequest : public BackupRequest
   {
   public:
-    AWS_BACKUP_API CreateLogicallyAirGappedBackupVaultRequest();
+    AWS_BACKUP_API CreateLogicallyAirGappedBackupVaultRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,259 +34,69 @@ namespace Model
     AWS_BACKUP_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
-     * <p>This is the name of the vault that is being created.</p>
+     * <p>The name of a logical container where backups are stored. Logically
+     * air-gapped backup vaults are identified by names that are unique to the account
+     * used to create them and the Region where they are created.</p>
      */
-    inline const Aws::String& GetBackupVaultName() const{ return m_backupVaultName; }
-
-    /**
-     * <p>This is the name of the vault that is being created.</p>
-     */
+    inline const Aws::String& GetBackupVaultName() const { return m_backupVaultName; }
     inline bool BackupVaultNameHasBeenSet() const { return m_backupVaultNameHasBeenSet; }
+    template<typename BackupVaultNameT = Aws::String>
+    void SetBackupVaultName(BackupVaultNameT&& value) { m_backupVaultNameHasBeenSet = true; m_backupVaultName = std::forward<BackupVaultNameT>(value); }
+    template<typename BackupVaultNameT = Aws::String>
+    CreateLogicallyAirGappedBackupVaultRequest& WithBackupVaultName(BackupVaultNameT&& value) { SetBackupVaultName(std::forward<BackupVaultNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>This is the name of the vault that is being created.</p>
+     * <p>The tags to assign to the vault.</p>
      */
-    inline void SetBackupVaultName(const Aws::String& value) { m_backupVaultNameHasBeenSet = true; m_backupVaultName = value; }
-
-    /**
-     * <p>This is the name of the vault that is being created.</p>
-     */
-    inline void SetBackupVaultName(Aws::String&& value) { m_backupVaultNameHasBeenSet = true; m_backupVaultName = std::move(value); }
-
-    /**
-     * <p>This is the name of the vault that is being created.</p>
-     */
-    inline void SetBackupVaultName(const char* value) { m_backupVaultNameHasBeenSet = true; m_backupVaultName.assign(value); }
-
-    /**
-     * <p>This is the name of the vault that is being created.</p>
-     */
-    inline CreateLogicallyAirGappedBackupVaultRequest& WithBackupVaultName(const Aws::String& value) { SetBackupVaultName(value); return *this;}
-
-    /**
-     * <p>This is the name of the vault that is being created.</p>
-     */
-    inline CreateLogicallyAirGappedBackupVaultRequest& WithBackupVaultName(Aws::String&& value) { SetBackupVaultName(std::move(value)); return *this;}
-
-    /**
-     * <p>This is the name of the vault that is being created.</p>
-     */
-    inline CreateLogicallyAirGappedBackupVaultRequest& WithBackupVaultName(const char* value) { SetBackupVaultName(value); return *this;}
-
-
-    /**
-     * <p>These are the tags that will be included in the newly-created vault.</p>
-     */
-    inline const Aws::Map<Aws::String, Aws::String>& GetBackupVaultTags() const{ return m_backupVaultTags; }
-
-    /**
-     * <p>These are the tags that will be included in the newly-created vault.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetBackupVaultTags() const { return m_backupVaultTags; }
     inline bool BackupVaultTagsHasBeenSet() const { return m_backupVaultTagsHasBeenSet; }
+    template<typename BackupVaultTagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetBackupVaultTags(BackupVaultTagsT&& value) { m_backupVaultTagsHasBeenSet = true; m_backupVaultTags = std::forward<BackupVaultTagsT>(value); }
+    template<typename BackupVaultTagsT = Aws::Map<Aws::String, Aws::String>>
+    CreateLogicallyAirGappedBackupVaultRequest& WithBackupVaultTags(BackupVaultTagsT&& value) { SetBackupVaultTags(std::forward<BackupVaultTagsT>(value)); return *this;}
+    template<typename BackupVaultTagsKeyT = Aws::String, typename BackupVaultTagsValueT = Aws::String>
+    CreateLogicallyAirGappedBackupVaultRequest& AddBackupVaultTags(BackupVaultTagsKeyT&& key, BackupVaultTagsValueT&& value) {
+      m_backupVaultTagsHasBeenSet = true; m_backupVaultTags.emplace(std::forward<BackupVaultTagsKeyT>(key), std::forward<BackupVaultTagsValueT>(value)); return *this;
+    }
+    ///@}
 
+    ///@{
     /**
-     * <p>These are the tags that will be included in the newly-created vault.</p>
+     * <p>The ID of the creation request.</p> <p>This parameter is optional. If used,
+     * this parameter must contain 1 to 50 alphanumeric or '-_.' characters.</p>
      */
-    inline void SetBackupVaultTags(const Aws::Map<Aws::String, Aws::String>& value) { m_backupVaultTagsHasBeenSet = true; m_backupVaultTags = value; }
-
-    /**
-     * <p>These are the tags that will be included in the newly-created vault.</p>
-     */
-    inline void SetBackupVaultTags(Aws::Map<Aws::String, Aws::String>&& value) { m_backupVaultTagsHasBeenSet = true; m_backupVaultTags = std::move(value); }
-
-    /**
-     * <p>These are the tags that will be included in the newly-created vault.</p>
-     */
-    inline CreateLogicallyAirGappedBackupVaultRequest& WithBackupVaultTags(const Aws::Map<Aws::String, Aws::String>& value) { SetBackupVaultTags(value); return *this;}
-
-    /**
-     * <p>These are the tags that will be included in the newly-created vault.</p>
-     */
-    inline CreateLogicallyAirGappedBackupVaultRequest& WithBackupVaultTags(Aws::Map<Aws::String, Aws::String>&& value) { SetBackupVaultTags(std::move(value)); return *this;}
-
-    /**
-     * <p>These are the tags that will be included in the newly-created vault.</p>
-     */
-    inline CreateLogicallyAirGappedBackupVaultRequest& AddBackupVaultTags(const Aws::String& key, const Aws::String& value) { m_backupVaultTagsHasBeenSet = true; m_backupVaultTags.emplace(key, value); return *this; }
-
-    /**
-     * <p>These are the tags that will be included in the newly-created vault.</p>
-     */
-    inline CreateLogicallyAirGappedBackupVaultRequest& AddBackupVaultTags(Aws::String&& key, const Aws::String& value) { m_backupVaultTagsHasBeenSet = true; m_backupVaultTags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>These are the tags that will be included in the newly-created vault.</p>
-     */
-    inline CreateLogicallyAirGappedBackupVaultRequest& AddBackupVaultTags(const Aws::String& key, Aws::String&& value) { m_backupVaultTagsHasBeenSet = true; m_backupVaultTags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>These are the tags that will be included in the newly-created vault.</p>
-     */
-    inline CreateLogicallyAirGappedBackupVaultRequest& AddBackupVaultTags(Aws::String&& key, Aws::String&& value) { m_backupVaultTagsHasBeenSet = true; m_backupVaultTags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>These are the tags that will be included in the newly-created vault.</p>
-     */
-    inline CreateLogicallyAirGappedBackupVaultRequest& AddBackupVaultTags(const char* key, Aws::String&& value) { m_backupVaultTagsHasBeenSet = true; m_backupVaultTags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>These are the tags that will be included in the newly-created vault.</p>
-     */
-    inline CreateLogicallyAirGappedBackupVaultRequest& AddBackupVaultTags(Aws::String&& key, const char* value) { m_backupVaultTagsHasBeenSet = true; m_backupVaultTags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>These are the tags that will be included in the newly-created vault.</p>
-     */
-    inline CreateLogicallyAirGappedBackupVaultRequest& AddBackupVaultTags(const char* key, const char* value) { m_backupVaultTagsHasBeenSet = true; m_backupVaultTags.emplace(key, value); return *this; }
-
-
-    /**
-     * <p>This is the ID of the creation request.</p> <p>This parameter is optional. If
-     * used, this parameter must contain 1 to 50 alphanumeric or '-_.' characters.</p>
-     */
-    inline const Aws::String& GetCreatorRequestId() const{ return m_creatorRequestId; }
-
-    /**
-     * <p>This is the ID of the creation request.</p> <p>This parameter is optional. If
-     * used, this parameter must contain 1 to 50 alphanumeric or '-_.' characters.</p>
-     */
+    inline const Aws::String& GetCreatorRequestId() const { return m_creatorRequestId; }
     inline bool CreatorRequestIdHasBeenSet() const { return m_creatorRequestIdHasBeenSet; }
+    template<typename CreatorRequestIdT = Aws::String>
+    void SetCreatorRequestId(CreatorRequestIdT&& value) { m_creatorRequestIdHasBeenSet = true; m_creatorRequestId = std::forward<CreatorRequestIdT>(value); }
+    template<typename CreatorRequestIdT = Aws::String>
+    CreateLogicallyAirGappedBackupVaultRequest& WithCreatorRequestId(CreatorRequestIdT&& value) { SetCreatorRequestId(std::forward<CreatorRequestIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>This is the ID of the creation request.</p> <p>This parameter is optional. If
-     * used, this parameter must contain 1 to 50 alphanumeric or '-_.' characters.</p>
-     */
-    inline void SetCreatorRequestId(const Aws::String& value) { m_creatorRequestIdHasBeenSet = true; m_creatorRequestId = value; }
-
-    /**
-     * <p>This is the ID of the creation request.</p> <p>This parameter is optional. If
-     * used, this parameter must contain 1 to 50 alphanumeric or '-_.' characters.</p>
-     */
-    inline void SetCreatorRequestId(Aws::String&& value) { m_creatorRequestIdHasBeenSet = true; m_creatorRequestId = std::move(value); }
-
-    /**
-     * <p>This is the ID of the creation request.</p> <p>This parameter is optional. If
-     * used, this parameter must contain 1 to 50 alphanumeric or '-_.' characters.</p>
-     */
-    inline void SetCreatorRequestId(const char* value) { m_creatorRequestIdHasBeenSet = true; m_creatorRequestId.assign(value); }
-
-    /**
-     * <p>This is the ID of the creation request.</p> <p>This parameter is optional. If
-     * used, this parameter must contain 1 to 50 alphanumeric or '-_.' characters.</p>
-     */
-    inline CreateLogicallyAirGappedBackupVaultRequest& WithCreatorRequestId(const Aws::String& value) { SetCreatorRequestId(value); return *this;}
-
-    /**
-     * <p>This is the ID of the creation request.</p> <p>This parameter is optional. If
-     * used, this parameter must contain 1 to 50 alphanumeric or '-_.' characters.</p>
-     */
-    inline CreateLogicallyAirGappedBackupVaultRequest& WithCreatorRequestId(Aws::String&& value) { SetCreatorRequestId(std::move(value)); return *this;}
-
-    /**
-     * <p>This is the ID of the creation request.</p> <p>This parameter is optional. If
-     * used, this parameter must contain 1 to 50 alphanumeric or '-_.' characters.</p>
-     */
-    inline CreateLogicallyAirGappedBackupVaultRequest& WithCreatorRequestId(const char* value) { SetCreatorRequestId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>This setting specifies the minimum retention period that the vault retains
-     * its recovery points. If this parameter is not specified, no minimum retention
-     * period is enforced.</p> <p>If specified, any backup or copy job to the vault
-     * must have a lifecycle policy with a retention period equal to or longer than the
-     * minimum retention period. If a job retention period is shorter than that minimum
-     * retention period, then the vault fails the backup or copy job, and you should
-     * either modify your lifecycle settings or use a different vault.</p>
+     * its recovery points.</p> <p>The minimum value accepted is 7 days.</p>
      */
-    inline long long GetMinRetentionDays() const{ return m_minRetentionDays; }
-
-    /**
-     * <p>This setting specifies the minimum retention period that the vault retains
-     * its recovery points. If this parameter is not specified, no minimum retention
-     * period is enforced.</p> <p>If specified, any backup or copy job to the vault
-     * must have a lifecycle policy with a retention period equal to or longer than the
-     * minimum retention period. If a job retention period is shorter than that minimum
-     * retention period, then the vault fails the backup or copy job, and you should
-     * either modify your lifecycle settings or use a different vault.</p>
-     */
+    inline long long GetMinRetentionDays() const { return m_minRetentionDays; }
     inline bool MinRetentionDaysHasBeenSet() const { return m_minRetentionDaysHasBeenSet; }
-
-    /**
-     * <p>This setting specifies the minimum retention period that the vault retains
-     * its recovery points. If this parameter is not specified, no minimum retention
-     * period is enforced.</p> <p>If specified, any backup or copy job to the vault
-     * must have a lifecycle policy with a retention period equal to or longer than the
-     * minimum retention period. If a job retention period is shorter than that minimum
-     * retention period, then the vault fails the backup or copy job, and you should
-     * either modify your lifecycle settings or use a different vault.</p>
-     */
     inline void SetMinRetentionDays(long long value) { m_minRetentionDaysHasBeenSet = true; m_minRetentionDays = value; }
-
-    /**
-     * <p>This setting specifies the minimum retention period that the vault retains
-     * its recovery points. If this parameter is not specified, no minimum retention
-     * period is enforced.</p> <p>If specified, any backup or copy job to the vault
-     * must have a lifecycle policy with a retention period equal to or longer than the
-     * minimum retention period. If a job retention period is shorter than that minimum
-     * retention period, then the vault fails the backup or copy job, and you should
-     * either modify your lifecycle settings or use a different vault.</p>
-     */
     inline CreateLogicallyAirGappedBackupVaultRequest& WithMinRetentionDays(long long value) { SetMinRetentionDays(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
-     * <p>This is the setting that specifies the maximum retention period that the
-     * vault retains its recovery points. If this parameter is not specified, Backup
-     * does not enforce a maximum retention period on the recovery points in the vault
-     * (allowing indefinite storage).</p> <p>If specified, any backup or copy job to
-     * the vault must have a lifecycle policy with a retention period equal to or
-     * shorter than the maximum retention period. If the job retention period is longer
-     * than that maximum retention period, then the vault fails the backup or copy job,
-     * and you should either modify your lifecycle settings or use a different
-     * vault.</p>
+     * <p>The maximum retention period that the vault retains its recovery points.</p>
      */
-    inline long long GetMaxRetentionDays() const{ return m_maxRetentionDays; }
-
-    /**
-     * <p>This is the setting that specifies the maximum retention period that the
-     * vault retains its recovery points. If this parameter is not specified, Backup
-     * does not enforce a maximum retention period on the recovery points in the vault
-     * (allowing indefinite storage).</p> <p>If specified, any backup or copy job to
-     * the vault must have a lifecycle policy with a retention period equal to or
-     * shorter than the maximum retention period. If the job retention period is longer
-     * than that maximum retention period, then the vault fails the backup or copy job,
-     * and you should either modify your lifecycle settings or use a different
-     * vault.</p>
-     */
+    inline long long GetMaxRetentionDays() const { return m_maxRetentionDays; }
     inline bool MaxRetentionDaysHasBeenSet() const { return m_maxRetentionDaysHasBeenSet; }
-
-    /**
-     * <p>This is the setting that specifies the maximum retention period that the
-     * vault retains its recovery points. If this parameter is not specified, Backup
-     * does not enforce a maximum retention period on the recovery points in the vault
-     * (allowing indefinite storage).</p> <p>If specified, any backup or copy job to
-     * the vault must have a lifecycle policy with a retention period equal to or
-     * shorter than the maximum retention period. If the job retention period is longer
-     * than that maximum retention period, then the vault fails the backup or copy job,
-     * and you should either modify your lifecycle settings or use a different
-     * vault.</p>
-     */
     inline void SetMaxRetentionDays(long long value) { m_maxRetentionDaysHasBeenSet = true; m_maxRetentionDays = value; }
-
-    /**
-     * <p>This is the setting that specifies the maximum retention period that the
-     * vault retains its recovery points. If this parameter is not specified, Backup
-     * does not enforce a maximum retention period on the recovery points in the vault
-     * (allowing indefinite storage).</p> <p>If specified, any backup or copy job to
-     * the vault must have a lifecycle policy with a retention period equal to or
-     * shorter than the maximum retention period. If the job retention period is longer
-     * than that maximum retention period, then the vault fails the backup or copy job,
-     * and you should either modify your lifecycle settings or use a different
-     * vault.</p>
-     */
     inline CreateLogicallyAirGappedBackupVaultRequest& WithMaxRetentionDays(long long value) { SetMaxRetentionDays(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_backupVaultName;
@@ -294,13 +105,13 @@ namespace Model
     Aws::Map<Aws::String, Aws::String> m_backupVaultTags;
     bool m_backupVaultTagsHasBeenSet = false;
 
-    Aws::String m_creatorRequestId;
-    bool m_creatorRequestIdHasBeenSet = false;
+    Aws::String m_creatorRequestId{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_creatorRequestIdHasBeenSet = true;
 
-    long long m_minRetentionDays;
+    long long m_minRetentionDays{0};
     bool m_minRetentionDaysHasBeenSet = false;
 
-    long long m_maxRetentionDays;
+    long long m_maxRetentionDays{0};
     bool m_maxRetentionDaysHasBeenSet = false;
   };
 

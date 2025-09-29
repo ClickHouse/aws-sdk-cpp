@@ -21,7 +21,7 @@ namespace Model
   class GetProjectRequest : public DataZoneRequest
   {
   public:
-    AWS_DATAZONE_API GetProjectRequest();
+    AWS_DATAZONE_API GetProjectRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,87 +32,29 @@ namespace Model
     AWS_DATAZONE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the Amazon DataZone domain in which the project exists.</p>
      */
-    inline const Aws::String& GetDomainIdentifier() const{ return m_domainIdentifier; }
-
-    /**
-     * <p>The ID of the Amazon DataZone domain in which the project exists.</p>
-     */
+    inline const Aws::String& GetDomainIdentifier() const { return m_domainIdentifier; }
     inline bool DomainIdentifierHasBeenSet() const { return m_domainIdentifierHasBeenSet; }
+    template<typename DomainIdentifierT = Aws::String>
+    void SetDomainIdentifier(DomainIdentifierT&& value) { m_domainIdentifierHasBeenSet = true; m_domainIdentifier = std::forward<DomainIdentifierT>(value); }
+    template<typename DomainIdentifierT = Aws::String>
+    GetProjectRequest& WithDomainIdentifier(DomainIdentifierT&& value) { SetDomainIdentifier(std::forward<DomainIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Amazon DataZone domain in which the project exists.</p>
-     */
-    inline void SetDomainIdentifier(const Aws::String& value) { m_domainIdentifierHasBeenSet = true; m_domainIdentifier = value; }
-
-    /**
-     * <p>The ID of the Amazon DataZone domain in which the project exists.</p>
-     */
-    inline void SetDomainIdentifier(Aws::String&& value) { m_domainIdentifierHasBeenSet = true; m_domainIdentifier = std::move(value); }
-
-    /**
-     * <p>The ID of the Amazon DataZone domain in which the project exists.</p>
-     */
-    inline void SetDomainIdentifier(const char* value) { m_domainIdentifierHasBeenSet = true; m_domainIdentifier.assign(value); }
-
-    /**
-     * <p>The ID of the Amazon DataZone domain in which the project exists.</p>
-     */
-    inline GetProjectRequest& WithDomainIdentifier(const Aws::String& value) { SetDomainIdentifier(value); return *this;}
-
-    /**
-     * <p>The ID of the Amazon DataZone domain in which the project exists.</p>
-     */
-    inline GetProjectRequest& WithDomainIdentifier(Aws::String&& value) { SetDomainIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Amazon DataZone domain in which the project exists.</p>
-     */
-    inline GetProjectRequest& WithDomainIdentifier(const char* value) { SetDomainIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the project.</p>
      */
-    inline const Aws::String& GetIdentifier() const{ return m_identifier; }
-
-    /**
-     * <p>The ID of the project.</p>
-     */
+    inline const Aws::String& GetIdentifier() const { return m_identifier; }
     inline bool IdentifierHasBeenSet() const { return m_identifierHasBeenSet; }
-
-    /**
-     * <p>The ID of the project.</p>
-     */
-    inline void SetIdentifier(const Aws::String& value) { m_identifierHasBeenSet = true; m_identifier = value; }
-
-    /**
-     * <p>The ID of the project.</p>
-     */
-    inline void SetIdentifier(Aws::String&& value) { m_identifierHasBeenSet = true; m_identifier = std::move(value); }
-
-    /**
-     * <p>The ID of the project.</p>
-     */
-    inline void SetIdentifier(const char* value) { m_identifierHasBeenSet = true; m_identifier.assign(value); }
-
-    /**
-     * <p>The ID of the project.</p>
-     */
-    inline GetProjectRequest& WithIdentifier(const Aws::String& value) { SetIdentifier(value); return *this;}
-
-    /**
-     * <p>The ID of the project.</p>
-     */
-    inline GetProjectRequest& WithIdentifier(Aws::String&& value) { SetIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the project.</p>
-     */
-    inline GetProjectRequest& WithIdentifier(const char* value) { SetIdentifier(value); return *this;}
-
+    template<typename IdentifierT = Aws::String>
+    void SetIdentifier(IdentifierT&& value) { m_identifierHasBeenSet = true; m_identifier = std::forward<IdentifierT>(value); }
+    template<typename IdentifierT = Aws::String>
+    GetProjectRequest& WithIdentifier(IdentifierT&& value) { SetIdentifier(std::forward<IdentifierT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_domainIdentifier;

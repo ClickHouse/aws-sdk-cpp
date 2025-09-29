@@ -21,7 +21,7 @@ namespace Model
   class GetFoundationModelRequest : public BedrockRequest
   {
   public:
-    AWS_BEDROCK_API GetFoundationModelRequest();
+    AWS_BEDROCK_API GetFoundationModelRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_BEDROCK_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The model identifier. </p>
      */
-    inline const Aws::String& GetModelIdentifier() const{ return m_modelIdentifier; }
-
-    /**
-     * <p>The model identifier. </p>
-     */
+    inline const Aws::String& GetModelIdentifier() const { return m_modelIdentifier; }
     inline bool ModelIdentifierHasBeenSet() const { return m_modelIdentifierHasBeenSet; }
-
-    /**
-     * <p>The model identifier. </p>
-     */
-    inline void SetModelIdentifier(const Aws::String& value) { m_modelIdentifierHasBeenSet = true; m_modelIdentifier = value; }
-
-    /**
-     * <p>The model identifier. </p>
-     */
-    inline void SetModelIdentifier(Aws::String&& value) { m_modelIdentifierHasBeenSet = true; m_modelIdentifier = std::move(value); }
-
-    /**
-     * <p>The model identifier. </p>
-     */
-    inline void SetModelIdentifier(const char* value) { m_modelIdentifierHasBeenSet = true; m_modelIdentifier.assign(value); }
-
-    /**
-     * <p>The model identifier. </p>
-     */
-    inline GetFoundationModelRequest& WithModelIdentifier(const Aws::String& value) { SetModelIdentifier(value); return *this;}
-
-    /**
-     * <p>The model identifier. </p>
-     */
-    inline GetFoundationModelRequest& WithModelIdentifier(Aws::String&& value) { SetModelIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The model identifier. </p>
-     */
-    inline GetFoundationModelRequest& WithModelIdentifier(const char* value) { SetModelIdentifier(value); return *this;}
-
+    template<typename ModelIdentifierT = Aws::String>
+    void SetModelIdentifier(ModelIdentifierT&& value) { m_modelIdentifierHasBeenSet = true; m_modelIdentifier = std::forward<ModelIdentifierT>(value); }
+    template<typename ModelIdentifierT = Aws::String>
+    GetFoundationModelRequest& WithModelIdentifier(ModelIdentifierT&& value) { SetModelIdentifier(std::forward<ModelIdentifierT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_modelIdentifier;

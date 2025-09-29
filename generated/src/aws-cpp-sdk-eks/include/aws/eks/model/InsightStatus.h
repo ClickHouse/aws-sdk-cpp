@@ -32,86 +32,36 @@ namespace Model
   class InsightStatus
   {
   public:
-    AWS_EKS_API InsightStatus();
+    AWS_EKS_API InsightStatus() = default;
     AWS_EKS_API InsightStatus(Aws::Utils::Json::JsonView jsonValue);
     AWS_EKS_API InsightStatus& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_EKS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The status of the resource.</p>
      */
-    inline const InsightStatusValue& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the resource.</p>
-     */
+    inline InsightStatusValue GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(InsightStatusValue value) { m_statusHasBeenSet = true; m_status = value; }
+    inline InsightStatus& WithStatus(InsightStatusValue value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the resource.</p>
-     */
-    inline void SetStatus(const InsightStatusValue& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the resource.</p>
-     */
-    inline void SetStatus(InsightStatusValue&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the resource.</p>
-     */
-    inline InsightStatus& WithStatus(const InsightStatusValue& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the resource.</p>
-     */
-    inline InsightStatus& WithStatus(InsightStatusValue&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Explanation on the reasoning for the status of the resource. </p>
      */
-    inline const Aws::String& GetReason() const{ return m_reason; }
-
-    /**
-     * <p>Explanation on the reasoning for the status of the resource. </p>
-     */
+    inline const Aws::String& GetReason() const { return m_reason; }
     inline bool ReasonHasBeenSet() const { return m_reasonHasBeenSet; }
-
-    /**
-     * <p>Explanation on the reasoning for the status of the resource. </p>
-     */
-    inline void SetReason(const Aws::String& value) { m_reasonHasBeenSet = true; m_reason = value; }
-
-    /**
-     * <p>Explanation on the reasoning for the status of the resource. </p>
-     */
-    inline void SetReason(Aws::String&& value) { m_reasonHasBeenSet = true; m_reason = std::move(value); }
-
-    /**
-     * <p>Explanation on the reasoning for the status of the resource. </p>
-     */
-    inline void SetReason(const char* value) { m_reasonHasBeenSet = true; m_reason.assign(value); }
-
-    /**
-     * <p>Explanation on the reasoning for the status of the resource. </p>
-     */
-    inline InsightStatus& WithReason(const Aws::String& value) { SetReason(value); return *this;}
-
-    /**
-     * <p>Explanation on the reasoning for the status of the resource. </p>
-     */
-    inline InsightStatus& WithReason(Aws::String&& value) { SetReason(std::move(value)); return *this;}
-
-    /**
-     * <p>Explanation on the reasoning for the status of the resource. </p>
-     */
-    inline InsightStatus& WithReason(const char* value) { SetReason(value); return *this;}
-
+    template<typename ReasonT = Aws::String>
+    void SetReason(ReasonT&& value) { m_reasonHasBeenSet = true; m_reason = std::forward<ReasonT>(value); }
+    template<typename ReasonT = Aws::String>
+    InsightStatus& WithReason(ReasonT&& value) { SetReason(std::forward<ReasonT>(value)); return *this;}
+    ///@}
   private:
 
-    InsightStatusValue m_status;
+    InsightStatusValue m_status{InsightStatusValue::NOT_SET};
     bool m_statusHasBeenSet = false;
 
     Aws::String m_reason;

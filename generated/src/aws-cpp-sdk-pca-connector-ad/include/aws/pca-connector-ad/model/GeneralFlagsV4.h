@@ -31,67 +31,39 @@ namespace Model
   class GeneralFlagsV4
   {
   public:
-    AWS_PCACONNECTORAD_API GeneralFlagsV4();
+    AWS_PCACONNECTORAD_API GeneralFlagsV4() = default;
     AWS_PCACONNECTORAD_API GeneralFlagsV4(Aws::Utils::Json::JsonView jsonValue);
     AWS_PCACONNECTORAD_API GeneralFlagsV4& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PCACONNECTORAD_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Allows certificate issuance using autoenrollment. Set to TRUE to allow
      * autoenrollment.</p>
      */
-    inline bool GetAutoEnrollment() const{ return m_autoEnrollment; }
-
-    /**
-     * <p>Allows certificate issuance using autoenrollment. Set to TRUE to allow
-     * autoenrollment.</p>
-     */
+    inline bool GetAutoEnrollment() const { return m_autoEnrollment; }
     inline bool AutoEnrollmentHasBeenSet() const { return m_autoEnrollmentHasBeenSet; }
-
-    /**
-     * <p>Allows certificate issuance using autoenrollment. Set to TRUE to allow
-     * autoenrollment.</p>
-     */
     inline void SetAutoEnrollment(bool value) { m_autoEnrollmentHasBeenSet = true; m_autoEnrollment = value; }
-
-    /**
-     * <p>Allows certificate issuance using autoenrollment. Set to TRUE to allow
-     * autoenrollment.</p>
-     */
     inline GeneralFlagsV4& WithAutoEnrollment(bool value) { SetAutoEnrollment(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Defines if the template is for machines or users. Set to TRUE if the template
      * is for machines. Set to FALSE if the template is for users</p>
      */
-    inline bool GetMachineType() const{ return m_machineType; }
-
-    /**
-     * <p>Defines if the template is for machines or users. Set to TRUE if the template
-     * is for machines. Set to FALSE if the template is for users</p>
-     */
+    inline bool GetMachineType() const { return m_machineType; }
     inline bool MachineTypeHasBeenSet() const { return m_machineTypeHasBeenSet; }
-
-    /**
-     * <p>Defines if the template is for machines or users. Set to TRUE if the template
-     * is for machines. Set to FALSE if the template is for users</p>
-     */
     inline void SetMachineType(bool value) { m_machineTypeHasBeenSet = true; m_machineType = value; }
-
-    /**
-     * <p>Defines if the template is for machines or users. Set to TRUE if the template
-     * is for machines. Set to FALSE if the template is for users</p>
-     */
     inline GeneralFlagsV4& WithMachineType(bool value) { SetMachineType(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_autoEnrollment;
+    bool m_autoEnrollment{false};
     bool m_autoEnrollmentHasBeenSet = false;
 
-    bool m_machineType;
+    bool m_machineType{false};
     bool m_machineTypeHasBeenSet = false;
   };
 

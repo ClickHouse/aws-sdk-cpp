@@ -23,7 +23,7 @@ namespace Model
   class CopyProjectVersionRequest : public RekognitionRequest
   {
   public:
-    AWS_REKOGNITION_API CopyProjectVersionRequest();
+    AWS_REKOGNITION_API CopyProjectVersionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,297 +36,87 @@ namespace Model
     AWS_REKOGNITION_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ARN of the source project in the trusting AWS account.</p>
      */
-    inline const Aws::String& GetSourceProjectArn() const{ return m_sourceProjectArn; }
-
-    /**
-     * <p>The ARN of the source project in the trusting AWS account.</p>
-     */
+    inline const Aws::String& GetSourceProjectArn() const { return m_sourceProjectArn; }
     inline bool SourceProjectArnHasBeenSet() const { return m_sourceProjectArnHasBeenSet; }
+    template<typename SourceProjectArnT = Aws::String>
+    void SetSourceProjectArn(SourceProjectArnT&& value) { m_sourceProjectArnHasBeenSet = true; m_sourceProjectArn = std::forward<SourceProjectArnT>(value); }
+    template<typename SourceProjectArnT = Aws::String>
+    CopyProjectVersionRequest& WithSourceProjectArn(SourceProjectArnT&& value) { SetSourceProjectArn(std::forward<SourceProjectArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the source project in the trusting AWS account.</p>
-     */
-    inline void SetSourceProjectArn(const Aws::String& value) { m_sourceProjectArnHasBeenSet = true; m_sourceProjectArn = value; }
-
-    /**
-     * <p>The ARN of the source project in the trusting AWS account.</p>
-     */
-    inline void SetSourceProjectArn(Aws::String&& value) { m_sourceProjectArnHasBeenSet = true; m_sourceProjectArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the source project in the trusting AWS account.</p>
-     */
-    inline void SetSourceProjectArn(const char* value) { m_sourceProjectArnHasBeenSet = true; m_sourceProjectArn.assign(value); }
-
-    /**
-     * <p>The ARN of the source project in the trusting AWS account.</p>
-     */
-    inline CopyProjectVersionRequest& WithSourceProjectArn(const Aws::String& value) { SetSourceProjectArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the source project in the trusting AWS account.</p>
-     */
-    inline CopyProjectVersionRequest& WithSourceProjectArn(Aws::String&& value) { SetSourceProjectArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the source project in the trusting AWS account.</p>
-     */
-    inline CopyProjectVersionRequest& WithSourceProjectArn(const char* value) { SetSourceProjectArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the model version in the source project that you want to copy to a
      * destination project.</p>
      */
-    inline const Aws::String& GetSourceProjectVersionArn() const{ return m_sourceProjectVersionArn; }
-
-    /**
-     * <p>The ARN of the model version in the source project that you want to copy to a
-     * destination project.</p>
-     */
+    inline const Aws::String& GetSourceProjectVersionArn() const { return m_sourceProjectVersionArn; }
     inline bool SourceProjectVersionArnHasBeenSet() const { return m_sourceProjectVersionArnHasBeenSet; }
+    template<typename SourceProjectVersionArnT = Aws::String>
+    void SetSourceProjectVersionArn(SourceProjectVersionArnT&& value) { m_sourceProjectVersionArnHasBeenSet = true; m_sourceProjectVersionArn = std::forward<SourceProjectVersionArnT>(value); }
+    template<typename SourceProjectVersionArnT = Aws::String>
+    CopyProjectVersionRequest& WithSourceProjectVersionArn(SourceProjectVersionArnT&& value) { SetSourceProjectVersionArn(std::forward<SourceProjectVersionArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the model version in the source project that you want to copy to a
-     * destination project.</p>
-     */
-    inline void SetSourceProjectVersionArn(const Aws::String& value) { m_sourceProjectVersionArnHasBeenSet = true; m_sourceProjectVersionArn = value; }
-
-    /**
-     * <p>The ARN of the model version in the source project that you want to copy to a
-     * destination project.</p>
-     */
-    inline void SetSourceProjectVersionArn(Aws::String&& value) { m_sourceProjectVersionArnHasBeenSet = true; m_sourceProjectVersionArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the model version in the source project that you want to copy to a
-     * destination project.</p>
-     */
-    inline void SetSourceProjectVersionArn(const char* value) { m_sourceProjectVersionArnHasBeenSet = true; m_sourceProjectVersionArn.assign(value); }
-
-    /**
-     * <p>The ARN of the model version in the source project that you want to copy to a
-     * destination project.</p>
-     */
-    inline CopyProjectVersionRequest& WithSourceProjectVersionArn(const Aws::String& value) { SetSourceProjectVersionArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the model version in the source project that you want to copy to a
-     * destination project.</p>
-     */
-    inline CopyProjectVersionRequest& WithSourceProjectVersionArn(Aws::String&& value) { SetSourceProjectVersionArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the model version in the source project that you want to copy to a
-     * destination project.</p>
-     */
-    inline CopyProjectVersionRequest& WithSourceProjectVersionArn(const char* value) { SetSourceProjectVersionArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the project in the trusted AWS account that you want to copy the
      * model version to. </p>
      */
-    inline const Aws::String& GetDestinationProjectArn() const{ return m_destinationProjectArn; }
-
-    /**
-     * <p>The ARN of the project in the trusted AWS account that you want to copy the
-     * model version to. </p>
-     */
+    inline const Aws::String& GetDestinationProjectArn() const { return m_destinationProjectArn; }
     inline bool DestinationProjectArnHasBeenSet() const { return m_destinationProjectArnHasBeenSet; }
+    template<typename DestinationProjectArnT = Aws::String>
+    void SetDestinationProjectArn(DestinationProjectArnT&& value) { m_destinationProjectArnHasBeenSet = true; m_destinationProjectArn = std::forward<DestinationProjectArnT>(value); }
+    template<typename DestinationProjectArnT = Aws::String>
+    CopyProjectVersionRequest& WithDestinationProjectArn(DestinationProjectArnT&& value) { SetDestinationProjectArn(std::forward<DestinationProjectArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the project in the trusted AWS account that you want to copy the
-     * model version to. </p>
-     */
-    inline void SetDestinationProjectArn(const Aws::String& value) { m_destinationProjectArnHasBeenSet = true; m_destinationProjectArn = value; }
-
-    /**
-     * <p>The ARN of the project in the trusted AWS account that you want to copy the
-     * model version to. </p>
-     */
-    inline void SetDestinationProjectArn(Aws::String&& value) { m_destinationProjectArnHasBeenSet = true; m_destinationProjectArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the project in the trusted AWS account that you want to copy the
-     * model version to. </p>
-     */
-    inline void SetDestinationProjectArn(const char* value) { m_destinationProjectArnHasBeenSet = true; m_destinationProjectArn.assign(value); }
-
-    /**
-     * <p>The ARN of the project in the trusted AWS account that you want to copy the
-     * model version to. </p>
-     */
-    inline CopyProjectVersionRequest& WithDestinationProjectArn(const Aws::String& value) { SetDestinationProjectArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the project in the trusted AWS account that you want to copy the
-     * model version to. </p>
-     */
-    inline CopyProjectVersionRequest& WithDestinationProjectArn(Aws::String&& value) { SetDestinationProjectArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the project in the trusted AWS account that you want to copy the
-     * model version to. </p>
-     */
-    inline CopyProjectVersionRequest& WithDestinationProjectArn(const char* value) { SetDestinationProjectArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A name for the version of the model that's copied to the destination
      * project.</p>
      */
-    inline const Aws::String& GetVersionName() const{ return m_versionName; }
-
-    /**
-     * <p>A name for the version of the model that's copied to the destination
-     * project.</p>
-     */
+    inline const Aws::String& GetVersionName() const { return m_versionName; }
     inline bool VersionNameHasBeenSet() const { return m_versionNameHasBeenSet; }
+    template<typename VersionNameT = Aws::String>
+    void SetVersionName(VersionNameT&& value) { m_versionNameHasBeenSet = true; m_versionName = std::forward<VersionNameT>(value); }
+    template<typename VersionNameT = Aws::String>
+    CopyProjectVersionRequest& WithVersionName(VersionNameT&& value) { SetVersionName(std::forward<VersionNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A name for the version of the model that's copied to the destination
-     * project.</p>
-     */
-    inline void SetVersionName(const Aws::String& value) { m_versionNameHasBeenSet = true; m_versionName = value; }
-
-    /**
-     * <p>A name for the version of the model that's copied to the destination
-     * project.</p>
-     */
-    inline void SetVersionName(Aws::String&& value) { m_versionNameHasBeenSet = true; m_versionName = std::move(value); }
-
-    /**
-     * <p>A name for the version of the model that's copied to the destination
-     * project.</p>
-     */
-    inline void SetVersionName(const char* value) { m_versionNameHasBeenSet = true; m_versionName.assign(value); }
-
-    /**
-     * <p>A name for the version of the model that's copied to the destination
-     * project.</p>
-     */
-    inline CopyProjectVersionRequest& WithVersionName(const Aws::String& value) { SetVersionName(value); return *this;}
-
-    /**
-     * <p>A name for the version of the model that's copied to the destination
-     * project.</p>
-     */
-    inline CopyProjectVersionRequest& WithVersionName(Aws::String&& value) { SetVersionName(std::move(value)); return *this;}
-
-    /**
-     * <p>A name for the version of the model that's copied to the destination
-     * project.</p>
-     */
-    inline CopyProjectVersionRequest& WithVersionName(const char* value) { SetVersionName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The S3 bucket and folder location where the training output for the source
      * model version is placed.</p>
      */
-    inline const OutputConfig& GetOutputConfig() const{ return m_outputConfig; }
-
-    /**
-     * <p>The S3 bucket and folder location where the training output for the source
-     * model version is placed.</p>
-     */
+    inline const OutputConfig& GetOutputConfig() const { return m_outputConfig; }
     inline bool OutputConfigHasBeenSet() const { return m_outputConfigHasBeenSet; }
+    template<typename OutputConfigT = OutputConfig>
+    void SetOutputConfig(OutputConfigT&& value) { m_outputConfigHasBeenSet = true; m_outputConfig = std::forward<OutputConfigT>(value); }
+    template<typename OutputConfigT = OutputConfig>
+    CopyProjectVersionRequest& WithOutputConfig(OutputConfigT&& value) { SetOutputConfig(std::forward<OutputConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The S3 bucket and folder location where the training output for the source
-     * model version is placed.</p>
-     */
-    inline void SetOutputConfig(const OutputConfig& value) { m_outputConfigHasBeenSet = true; m_outputConfig = value; }
-
-    /**
-     * <p>The S3 bucket and folder location where the training output for the source
-     * model version is placed.</p>
-     */
-    inline void SetOutputConfig(OutputConfig&& value) { m_outputConfigHasBeenSet = true; m_outputConfig = std::move(value); }
-
-    /**
-     * <p>The S3 bucket and folder location where the training output for the source
-     * model version is placed.</p>
-     */
-    inline CopyProjectVersionRequest& WithOutputConfig(const OutputConfig& value) { SetOutputConfig(value); return *this;}
-
-    /**
-     * <p>The S3 bucket and folder location where the training output for the source
-     * model version is placed.</p>
-     */
-    inline CopyProjectVersionRequest& WithOutputConfig(OutputConfig&& value) { SetOutputConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The key-value tags to assign to the model version. </p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>The key-value tags to assign to the model version. </p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    CopyProjectVersionRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    CopyProjectVersionRequest& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>The key-value tags to assign to the model version. </p>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>The key-value tags to assign to the model version. </p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>The key-value tags to assign to the model version. </p>
-     */
-    inline CopyProjectVersionRequest& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The key-value tags to assign to the model version. </p>
-     */
-    inline CopyProjectVersionRequest& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The key-value tags to assign to the model version. </p>
-     */
-    inline CopyProjectVersionRequest& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>The key-value tags to assign to the model version. </p>
-     */
-    inline CopyProjectVersionRequest& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The key-value tags to assign to the model version. </p>
-     */
-    inline CopyProjectVersionRequest& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The key-value tags to assign to the model version. </p>
-     */
-    inline CopyProjectVersionRequest& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The key-value tags to assign to the model version. </p>
-     */
-    inline CopyProjectVersionRequest& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The key-value tags to assign to the model version. </p>
-     */
-    inline CopyProjectVersionRequest& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The key-value tags to assign to the model version. </p>
-     */
-    inline CopyProjectVersionRequest& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>The identifier for your AWS Key Management Service key (AWS KMS key). You can
      * supply the Amazon Resource Name (ARN) of your KMS key, the ID of your KMS key,
@@ -339,106 +129,13 @@ namespace Model
      * don't specify a value for <code>KmsKeyId</code>, images copied into the service
      * are encrypted using a key that AWS owns and manages.</p>
      */
-    inline const Aws::String& GetKmsKeyId() const{ return m_kmsKeyId; }
-
-    /**
-     * <p>The identifier for your AWS Key Management Service key (AWS KMS key). You can
-     * supply the Amazon Resource Name (ARN) of your KMS key, the ID of your KMS key,
-     * an alias for your KMS key, or an alias ARN. The key is used to encrypt training
-     * results and manifest files written to the output Amazon S3 bucket
-     * (<code>OutputConfig</code>).</p> <p>If you choose to use your own KMS key, you
-     * need the following permissions on the KMS key.</p> <ul> <li>
-     * <p>kms:CreateGrant</p> </li> <li> <p>kms:DescribeKey</p> </li> <li>
-     * <p>kms:GenerateDataKey</p> </li> <li> <p>kms:Decrypt</p> </li> </ul> <p>If you
-     * don't specify a value for <code>KmsKeyId</code>, images copied into the service
-     * are encrypted using a key that AWS owns and manages.</p>
-     */
+    inline const Aws::String& GetKmsKeyId() const { return m_kmsKeyId; }
     inline bool KmsKeyIdHasBeenSet() const { return m_kmsKeyIdHasBeenSet; }
-
-    /**
-     * <p>The identifier for your AWS Key Management Service key (AWS KMS key). You can
-     * supply the Amazon Resource Name (ARN) of your KMS key, the ID of your KMS key,
-     * an alias for your KMS key, or an alias ARN. The key is used to encrypt training
-     * results and manifest files written to the output Amazon S3 bucket
-     * (<code>OutputConfig</code>).</p> <p>If you choose to use your own KMS key, you
-     * need the following permissions on the KMS key.</p> <ul> <li>
-     * <p>kms:CreateGrant</p> </li> <li> <p>kms:DescribeKey</p> </li> <li>
-     * <p>kms:GenerateDataKey</p> </li> <li> <p>kms:Decrypt</p> </li> </ul> <p>If you
-     * don't specify a value for <code>KmsKeyId</code>, images copied into the service
-     * are encrypted using a key that AWS owns and manages.</p>
-     */
-    inline void SetKmsKeyId(const Aws::String& value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId = value; }
-
-    /**
-     * <p>The identifier for your AWS Key Management Service key (AWS KMS key). You can
-     * supply the Amazon Resource Name (ARN) of your KMS key, the ID of your KMS key,
-     * an alias for your KMS key, or an alias ARN. The key is used to encrypt training
-     * results and manifest files written to the output Amazon S3 bucket
-     * (<code>OutputConfig</code>).</p> <p>If you choose to use your own KMS key, you
-     * need the following permissions on the KMS key.</p> <ul> <li>
-     * <p>kms:CreateGrant</p> </li> <li> <p>kms:DescribeKey</p> </li> <li>
-     * <p>kms:GenerateDataKey</p> </li> <li> <p>kms:Decrypt</p> </li> </ul> <p>If you
-     * don't specify a value for <code>KmsKeyId</code>, images copied into the service
-     * are encrypted using a key that AWS owns and manages.</p>
-     */
-    inline void SetKmsKeyId(Aws::String&& value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId = std::move(value); }
-
-    /**
-     * <p>The identifier for your AWS Key Management Service key (AWS KMS key). You can
-     * supply the Amazon Resource Name (ARN) of your KMS key, the ID of your KMS key,
-     * an alias for your KMS key, or an alias ARN. The key is used to encrypt training
-     * results and manifest files written to the output Amazon S3 bucket
-     * (<code>OutputConfig</code>).</p> <p>If you choose to use your own KMS key, you
-     * need the following permissions on the KMS key.</p> <ul> <li>
-     * <p>kms:CreateGrant</p> </li> <li> <p>kms:DescribeKey</p> </li> <li>
-     * <p>kms:GenerateDataKey</p> </li> <li> <p>kms:Decrypt</p> </li> </ul> <p>If you
-     * don't specify a value for <code>KmsKeyId</code>, images copied into the service
-     * are encrypted using a key that AWS owns and manages.</p>
-     */
-    inline void SetKmsKeyId(const char* value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId.assign(value); }
-
-    /**
-     * <p>The identifier for your AWS Key Management Service key (AWS KMS key). You can
-     * supply the Amazon Resource Name (ARN) of your KMS key, the ID of your KMS key,
-     * an alias for your KMS key, or an alias ARN. The key is used to encrypt training
-     * results and manifest files written to the output Amazon S3 bucket
-     * (<code>OutputConfig</code>).</p> <p>If you choose to use your own KMS key, you
-     * need the following permissions on the KMS key.</p> <ul> <li>
-     * <p>kms:CreateGrant</p> </li> <li> <p>kms:DescribeKey</p> </li> <li>
-     * <p>kms:GenerateDataKey</p> </li> <li> <p>kms:Decrypt</p> </li> </ul> <p>If you
-     * don't specify a value for <code>KmsKeyId</code>, images copied into the service
-     * are encrypted using a key that AWS owns and manages.</p>
-     */
-    inline CopyProjectVersionRequest& WithKmsKeyId(const Aws::String& value) { SetKmsKeyId(value); return *this;}
-
-    /**
-     * <p>The identifier for your AWS Key Management Service key (AWS KMS key). You can
-     * supply the Amazon Resource Name (ARN) of your KMS key, the ID of your KMS key,
-     * an alias for your KMS key, or an alias ARN. The key is used to encrypt training
-     * results and manifest files written to the output Amazon S3 bucket
-     * (<code>OutputConfig</code>).</p> <p>If you choose to use your own KMS key, you
-     * need the following permissions on the KMS key.</p> <ul> <li>
-     * <p>kms:CreateGrant</p> </li> <li> <p>kms:DescribeKey</p> </li> <li>
-     * <p>kms:GenerateDataKey</p> </li> <li> <p>kms:Decrypt</p> </li> </ul> <p>If you
-     * don't specify a value for <code>KmsKeyId</code>, images copied into the service
-     * are encrypted using a key that AWS owns and manages.</p>
-     */
-    inline CopyProjectVersionRequest& WithKmsKeyId(Aws::String&& value) { SetKmsKeyId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier for your AWS Key Management Service key (AWS KMS key). You can
-     * supply the Amazon Resource Name (ARN) of your KMS key, the ID of your KMS key,
-     * an alias for your KMS key, or an alias ARN. The key is used to encrypt training
-     * results and manifest files written to the output Amazon S3 bucket
-     * (<code>OutputConfig</code>).</p> <p>If you choose to use your own KMS key, you
-     * need the following permissions on the KMS key.</p> <ul> <li>
-     * <p>kms:CreateGrant</p> </li> <li> <p>kms:DescribeKey</p> </li> <li>
-     * <p>kms:GenerateDataKey</p> </li> <li> <p>kms:Decrypt</p> </li> </ul> <p>If you
-     * don't specify a value for <code>KmsKeyId</code>, images copied into the service
-     * are encrypted using a key that AWS owns and manages.</p>
-     */
-    inline CopyProjectVersionRequest& WithKmsKeyId(const char* value) { SetKmsKeyId(value); return *this;}
-
+    template<typename KmsKeyIdT = Aws::String>
+    void SetKmsKeyId(KmsKeyIdT&& value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId = std::forward<KmsKeyIdT>(value); }
+    template<typename KmsKeyIdT = Aws::String>
+    CopyProjectVersionRequest& WithKmsKeyId(KmsKeyIdT&& value) { SetKmsKeyId(std::forward<KmsKeyIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_sourceProjectArn;

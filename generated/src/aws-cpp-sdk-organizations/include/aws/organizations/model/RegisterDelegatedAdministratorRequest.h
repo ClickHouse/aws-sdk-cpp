@@ -21,7 +21,7 @@ namespace Model
   class RegisterDelegatedAdministratorRequest : public OrganizationsRequest
   {
   public:
-    AWS_ORGANIZATIONS_API RegisterDelegatedAdministratorRequest();
+    AWS_ORGANIZATIONS_API RegisterDelegatedAdministratorRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,103 +34,31 @@ namespace Model
     AWS_ORGANIZATIONS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The account ID number of the member account in the organization to register
      * as a delegated administrator.</p>
      */
-    inline const Aws::String& GetAccountId() const{ return m_accountId; }
-
-    /**
-     * <p>The account ID number of the member account in the organization to register
-     * as a delegated administrator.</p>
-     */
+    inline const Aws::String& GetAccountId() const { return m_accountId; }
     inline bool AccountIdHasBeenSet() const { return m_accountIdHasBeenSet; }
+    template<typename AccountIdT = Aws::String>
+    void SetAccountId(AccountIdT&& value) { m_accountIdHasBeenSet = true; m_accountId = std::forward<AccountIdT>(value); }
+    template<typename AccountIdT = Aws::String>
+    RegisterDelegatedAdministratorRequest& WithAccountId(AccountIdT&& value) { SetAccountId(std::forward<AccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The account ID number of the member account in the organization to register
-     * as a delegated administrator.</p>
-     */
-    inline void SetAccountId(const Aws::String& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
-
-    /**
-     * <p>The account ID number of the member account in the organization to register
-     * as a delegated administrator.</p>
-     */
-    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = std::move(value); }
-
-    /**
-     * <p>The account ID number of the member account in the organization to register
-     * as a delegated administrator.</p>
-     */
-    inline void SetAccountId(const char* value) { m_accountIdHasBeenSet = true; m_accountId.assign(value); }
-
-    /**
-     * <p>The account ID number of the member account in the organization to register
-     * as a delegated administrator.</p>
-     */
-    inline RegisterDelegatedAdministratorRequest& WithAccountId(const Aws::String& value) { SetAccountId(value); return *this;}
-
-    /**
-     * <p>The account ID number of the member account in the organization to register
-     * as a delegated administrator.</p>
-     */
-    inline RegisterDelegatedAdministratorRequest& WithAccountId(Aws::String&& value) { SetAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The account ID number of the member account in the organization to register
-     * as a delegated administrator.</p>
-     */
-    inline RegisterDelegatedAdministratorRequest& WithAccountId(const char* value) { SetAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The service principal of the Amazon Web Services service for which you want
      * to make the member account a delegated administrator.</p>
      */
-    inline const Aws::String& GetServicePrincipal() const{ return m_servicePrincipal; }
-
-    /**
-     * <p>The service principal of the Amazon Web Services service for which you want
-     * to make the member account a delegated administrator.</p>
-     */
+    inline const Aws::String& GetServicePrincipal() const { return m_servicePrincipal; }
     inline bool ServicePrincipalHasBeenSet() const { return m_servicePrincipalHasBeenSet; }
-
-    /**
-     * <p>The service principal of the Amazon Web Services service for which you want
-     * to make the member account a delegated administrator.</p>
-     */
-    inline void SetServicePrincipal(const Aws::String& value) { m_servicePrincipalHasBeenSet = true; m_servicePrincipal = value; }
-
-    /**
-     * <p>The service principal of the Amazon Web Services service for which you want
-     * to make the member account a delegated administrator.</p>
-     */
-    inline void SetServicePrincipal(Aws::String&& value) { m_servicePrincipalHasBeenSet = true; m_servicePrincipal = std::move(value); }
-
-    /**
-     * <p>The service principal of the Amazon Web Services service for which you want
-     * to make the member account a delegated administrator.</p>
-     */
-    inline void SetServicePrincipal(const char* value) { m_servicePrincipalHasBeenSet = true; m_servicePrincipal.assign(value); }
-
-    /**
-     * <p>The service principal of the Amazon Web Services service for which you want
-     * to make the member account a delegated administrator.</p>
-     */
-    inline RegisterDelegatedAdministratorRequest& WithServicePrincipal(const Aws::String& value) { SetServicePrincipal(value); return *this;}
-
-    /**
-     * <p>The service principal of the Amazon Web Services service for which you want
-     * to make the member account a delegated administrator.</p>
-     */
-    inline RegisterDelegatedAdministratorRequest& WithServicePrincipal(Aws::String&& value) { SetServicePrincipal(std::move(value)); return *this;}
-
-    /**
-     * <p>The service principal of the Amazon Web Services service for which you want
-     * to make the member account a delegated administrator.</p>
-     */
-    inline RegisterDelegatedAdministratorRequest& WithServicePrincipal(const char* value) { SetServicePrincipal(value); return *this;}
-
+    template<typename ServicePrincipalT = Aws::String>
+    void SetServicePrincipal(ServicePrincipalT&& value) { m_servicePrincipalHasBeenSet = true; m_servicePrincipal = std::forward<ServicePrincipalT>(value); }
+    template<typename ServicePrincipalT = Aws::String>
+    RegisterDelegatedAdministratorRequest& WithServicePrincipal(ServicePrincipalT&& value) { SetServicePrincipal(std::forward<ServicePrincipalT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_accountId;

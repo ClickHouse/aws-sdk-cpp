@@ -18,21 +18,7 @@ namespace VPCLattice
 namespace Model
 {
 
-RuleUpdate::RuleUpdate() : 
-    m_actionHasBeenSet(false),
-    m_matchHasBeenSet(false),
-    m_priority(0),
-    m_priorityHasBeenSet(false),
-    m_ruleIdentifierHasBeenSet(false)
-{
-}
-
-RuleUpdate::RuleUpdate(JsonView jsonValue) : 
-    m_actionHasBeenSet(false),
-    m_matchHasBeenSet(false),
-    m_priority(0),
-    m_priorityHasBeenSet(false),
-    m_ruleIdentifierHasBeenSet(false)
+RuleUpdate::RuleUpdate(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,31 +28,23 @@ RuleUpdate& RuleUpdate::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("action"))
   {
     m_action = jsonValue.GetObject("action");
-
     m_actionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("match"))
   {
     m_match = jsonValue.GetObject("match");
-
     m_matchHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("priority"))
   {
     m_priority = jsonValue.GetInteger("priority");
-
     m_priorityHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ruleIdentifier"))
   {
     m_ruleIdentifier = jsonValue.GetString("ruleIdentifier");
-
     m_ruleIdentifierHasBeenSet = true;
   }
-
   return *this;
 }
 

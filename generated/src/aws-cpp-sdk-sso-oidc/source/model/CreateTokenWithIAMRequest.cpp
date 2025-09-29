@@ -12,20 +12,6 @@ using namespace Aws::SSOOIDC::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateTokenWithIAMRequest::CreateTokenWithIAMRequest() : 
-    m_clientIdHasBeenSet(false),
-    m_grantTypeHasBeenSet(false),
-    m_codeHasBeenSet(false),
-    m_refreshTokenHasBeenSet(false),
-    m_assertionHasBeenSet(false),
-    m_scopeHasBeenSet(false),
-    m_redirectUriHasBeenSet(false),
-    m_subjectTokenHasBeenSet(false),
-    m_subjectTokenTypeHasBeenSet(false),
-    m_requestedTokenTypeHasBeenSet(false)
-{
-}
-
 Aws::String CreateTokenWithIAMRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -92,6 +78,12 @@ Aws::String CreateTokenWithIAMRequest::SerializePayload() const
   if(m_requestedTokenTypeHasBeenSet)
   {
    payload.WithString("requestedTokenType", m_requestedTokenType);
+
+  }
+
+  if(m_codeVerifierHasBeenSet)
+  {
+   payload.WithString("codeVerifier", m_codeVerifier);
 
   }
 

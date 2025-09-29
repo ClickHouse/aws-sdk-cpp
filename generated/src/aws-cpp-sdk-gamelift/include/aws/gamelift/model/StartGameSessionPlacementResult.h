@@ -28,73 +28,39 @@ namespace Model
   class StartGameSessionPlacementResult
   {
   public:
-    AWS_GAMELIFT_API StartGameSessionPlacementResult();
+    AWS_GAMELIFT_API StartGameSessionPlacementResult() = default;
     AWS_GAMELIFT_API StartGameSessionPlacementResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_GAMELIFT_API StartGameSessionPlacementResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Object that describes the newly created game session placement. This object
      * includes all the information provided in the request, as well as start/end time
      * stamps and placement status. </p>
      */
-    inline const GameSessionPlacement& GetGameSessionPlacement() const{ return m_gameSessionPlacement; }
+    inline const GameSessionPlacement& GetGameSessionPlacement() const { return m_gameSessionPlacement; }
+    template<typename GameSessionPlacementT = GameSessionPlacement>
+    void SetGameSessionPlacement(GameSessionPlacementT&& value) { m_gameSessionPlacementHasBeenSet = true; m_gameSessionPlacement = std::forward<GameSessionPlacementT>(value); }
+    template<typename GameSessionPlacementT = GameSessionPlacement>
+    StartGameSessionPlacementResult& WithGameSessionPlacement(GameSessionPlacementT&& value) { SetGameSessionPlacement(std::forward<GameSessionPlacementT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Object that describes the newly created game session placement. This object
-     * includes all the information provided in the request, as well as start/end time
-     * stamps and placement status. </p>
-     */
-    inline void SetGameSessionPlacement(const GameSessionPlacement& value) { m_gameSessionPlacement = value; }
-
-    /**
-     * <p>Object that describes the newly created game session placement. This object
-     * includes all the information provided in the request, as well as start/end time
-     * stamps and placement status. </p>
-     */
-    inline void SetGameSessionPlacement(GameSessionPlacement&& value) { m_gameSessionPlacement = std::move(value); }
-
-    /**
-     * <p>Object that describes the newly created game session placement. This object
-     * includes all the information provided in the request, as well as start/end time
-     * stamps and placement status. </p>
-     */
-    inline StartGameSessionPlacementResult& WithGameSessionPlacement(const GameSessionPlacement& value) { SetGameSessionPlacement(value); return *this;}
-
-    /**
-     * <p>Object that describes the newly created game session placement. This object
-     * includes all the information provided in the request, as well as start/end time
-     * stamps and placement status. </p>
-     */
-    inline StartGameSessionPlacementResult& WithGameSessionPlacement(GameSessionPlacement&& value) { SetGameSessionPlacement(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline StartGameSessionPlacementResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline StartGameSessionPlacementResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline StartGameSessionPlacementResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    StartGameSessionPlacementResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     GameSessionPlacement m_gameSessionPlacement;
+    bool m_gameSessionPlacementHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

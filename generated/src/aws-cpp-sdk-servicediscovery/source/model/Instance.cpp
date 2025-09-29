@@ -18,17 +18,7 @@ namespace ServiceDiscovery
 namespace Model
 {
 
-Instance::Instance() : 
-    m_idHasBeenSet(false),
-    m_creatorRequestIdHasBeenSet(false),
-    m_attributesHasBeenSet(false)
-{
-}
-
-Instance::Instance(JsonView jsonValue) : 
-    m_idHasBeenSet(false),
-    m_creatorRequestIdHasBeenSet(false),
-    m_attributesHasBeenSet(false)
+Instance::Instance(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ Instance& Instance::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Id"))
   {
     m_id = jsonValue.GetString("Id");
-
     m_idHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CreatorRequestId"))
   {
     m_creatorRequestId = jsonValue.GetString("CreatorRequestId");
-
     m_creatorRequestIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Attributes"))
   {
     Aws::Map<Aws::String, JsonView> attributesJsonMap = jsonValue.GetObject("Attributes").GetAllObjects();
@@ -58,7 +44,11 @@ Instance& Instance::operator =(JsonView jsonValue)
     }
     m_attributesHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("CreatedByAccount"))
+  {
+    m_createdByAccount = jsonValue.GetString("CreatedByAccount");
+    m_createdByAccountHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -86,6 +76,12 @@ JsonValue Instance::Jsonize() const
      attributesJsonMap.WithString(attributesItem.first, attributesItem.second);
    }
    payload.WithObject("Attributes", std::move(attributesJsonMap));
+
+  }
+
+  if(m_createdByAccountHasBeenSet)
+  {
+   payload.WithString("CreatedByAccount", m_createdByAccount);
 
   }
 

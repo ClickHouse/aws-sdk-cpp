@@ -20,13 +20,7 @@ namespace EC2
 namespace Model
 {
 
-ThroughResourcesStatement::ThroughResourcesStatement() : 
-    m_resourceStatementHasBeenSet(false)
-{
-}
-
-ThroughResourcesStatement::ThroughResourcesStatement(const XmlNode& xmlNode) : 
-    m_resourceStatementHasBeenSet(false)
+ThroughResourcesStatement::ThroughResourcesStatement(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

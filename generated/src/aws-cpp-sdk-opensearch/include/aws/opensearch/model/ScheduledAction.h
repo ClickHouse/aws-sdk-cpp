@@ -40,313 +40,133 @@ namespace Model
   class ScheduledAction
   {
   public:
-    AWS_OPENSEARCHSERVICE_API ScheduledAction();
+    AWS_OPENSEARCHSERVICE_API ScheduledAction() = default;
     AWS_OPENSEARCHSERVICE_API ScheduledAction(Aws::Utils::Json::JsonView jsonValue);
     AWS_OPENSEARCHSERVICE_API ScheduledAction& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_OPENSEARCHSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The unique identifier of the scheduled action.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The unique identifier of the scheduled action.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    ScheduledAction& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier of the scheduled action.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The unique identifier of the scheduled action.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the scheduled action.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The unique identifier of the scheduled action.</p>
-     */
-    inline ScheduledAction& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the scheduled action.</p>
-     */
-    inline ScheduledAction& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the scheduled action.</p>
-     */
-    inline ScheduledAction& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of action that will be taken on the domain.</p>
      */
-    inline const ActionType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of action that will be taken on the domain.</p>
-     */
+    inline ActionType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    inline void SetType(ActionType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline ScheduledAction& WithType(ActionType value) { SetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of action that will be taken on the domain.</p>
-     */
-    inline void SetType(const ActionType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of action that will be taken on the domain.</p>
-     */
-    inline void SetType(ActionType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of action that will be taken on the domain.</p>
-     */
-    inline ScheduledAction& WithType(const ActionType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of action that will be taken on the domain.</p>
-     */
-    inline ScheduledAction& WithType(ActionType&& value) { SetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The severity of the action.</p>
      */
-    inline const ActionSeverity& GetSeverity() const{ return m_severity; }
-
-    /**
-     * <p>The severity of the action.</p>
-     */
+    inline ActionSeverity GetSeverity() const { return m_severity; }
     inline bool SeverityHasBeenSet() const { return m_severityHasBeenSet; }
+    inline void SetSeverity(ActionSeverity value) { m_severityHasBeenSet = true; m_severity = value; }
+    inline ScheduledAction& WithSeverity(ActionSeverity value) { SetSeverity(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The severity of the action.</p>
-     */
-    inline void SetSeverity(const ActionSeverity& value) { m_severityHasBeenSet = true; m_severity = value; }
-
-    /**
-     * <p>The severity of the action.</p>
-     */
-    inline void SetSeverity(ActionSeverity&& value) { m_severityHasBeenSet = true; m_severity = std::move(value); }
-
-    /**
-     * <p>The severity of the action.</p>
-     */
-    inline ScheduledAction& WithSeverity(const ActionSeverity& value) { SetSeverity(value); return *this;}
-
-    /**
-     * <p>The severity of the action.</p>
-     */
-    inline ScheduledAction& WithSeverity(ActionSeverity&& value) { SetSeverity(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The time when the change is scheduled to happen.</p>
      */
-    inline long long GetScheduledTime() const{ return m_scheduledTime; }
-
-    /**
-     * <p>The time when the change is scheduled to happen.</p>
-     */
+    inline long long GetScheduledTime() const { return m_scheduledTime; }
     inline bool ScheduledTimeHasBeenSet() const { return m_scheduledTimeHasBeenSet; }
-
-    /**
-     * <p>The time when the change is scheduled to happen.</p>
-     */
     inline void SetScheduledTime(long long value) { m_scheduledTimeHasBeenSet = true; m_scheduledTime = value; }
-
-    /**
-     * <p>The time when the change is scheduled to happen.</p>
-     */
     inline ScheduledAction& WithScheduledTime(long long value) { SetScheduledTime(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>A description of the action to be taken.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>A description of the action to be taken.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    ScheduledAction& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A description of the action to be taken.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>A description of the action to be taken.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>A description of the action to be taken.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>A description of the action to be taken.</p>
-     */
-    inline ScheduledAction& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A description of the action to be taken.</p>
-     */
-    inline ScheduledAction& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A description of the action to be taken.</p>
-     */
-    inline ScheduledAction& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Whether the action was scheduled manually (<code>CUSTOMER</code>, or by
      * OpenSearch Service automatically (<code>SYSTEM</code>).</p>
      */
-    inline const ScheduledBy& GetScheduledBy() const{ return m_scheduledBy; }
-
-    /**
-     * <p>Whether the action was scheduled manually (<code>CUSTOMER</code>, or by
-     * OpenSearch Service automatically (<code>SYSTEM</code>).</p>
-     */
+    inline ScheduledBy GetScheduledBy() const { return m_scheduledBy; }
     inline bool ScheduledByHasBeenSet() const { return m_scheduledByHasBeenSet; }
+    inline void SetScheduledBy(ScheduledBy value) { m_scheduledByHasBeenSet = true; m_scheduledBy = value; }
+    inline ScheduledAction& WithScheduledBy(ScheduledBy value) { SetScheduledBy(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Whether the action was scheduled manually (<code>CUSTOMER</code>, or by
-     * OpenSearch Service automatically (<code>SYSTEM</code>).</p>
-     */
-    inline void SetScheduledBy(const ScheduledBy& value) { m_scheduledByHasBeenSet = true; m_scheduledBy = value; }
-
-    /**
-     * <p>Whether the action was scheduled manually (<code>CUSTOMER</code>, or by
-     * OpenSearch Service automatically (<code>SYSTEM</code>).</p>
-     */
-    inline void SetScheduledBy(ScheduledBy&& value) { m_scheduledByHasBeenSet = true; m_scheduledBy = std::move(value); }
-
-    /**
-     * <p>Whether the action was scheduled manually (<code>CUSTOMER</code>, or by
-     * OpenSearch Service automatically (<code>SYSTEM</code>).</p>
-     */
-    inline ScheduledAction& WithScheduledBy(const ScheduledBy& value) { SetScheduledBy(value); return *this;}
-
-    /**
-     * <p>Whether the action was scheduled manually (<code>CUSTOMER</code>, or by
-     * OpenSearch Service automatically (<code>SYSTEM</code>).</p>
-     */
-    inline ScheduledAction& WithScheduledBy(ScheduledBy&& value) { SetScheduledBy(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The current status of the scheduled action.</p>
      */
-    inline const ActionStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The current status of the scheduled action.</p>
-     */
+    inline ActionStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(ActionStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline ScheduledAction& WithStatus(ActionStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The current status of the scheduled action.</p>
-     */
-    inline void SetStatus(const ActionStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The current status of the scheduled action.</p>
-     */
-    inline void SetStatus(ActionStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The current status of the scheduled action.</p>
-     */
-    inline ScheduledAction& WithStatus(const ActionStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The current status of the scheduled action.</p>
-     */
-    inline ScheduledAction& WithStatus(ActionStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Whether the action is required or optional.</p>
      */
-    inline bool GetMandatory() const{ return m_mandatory; }
-
-    /**
-     * <p>Whether the action is required or optional.</p>
-     */
+    inline bool GetMandatory() const { return m_mandatory; }
     inline bool MandatoryHasBeenSet() const { return m_mandatoryHasBeenSet; }
-
-    /**
-     * <p>Whether the action is required or optional.</p>
-     */
     inline void SetMandatory(bool value) { m_mandatoryHasBeenSet = true; m_mandatory = value; }
-
-    /**
-     * <p>Whether the action is required or optional.</p>
-     */
     inline ScheduledAction& WithMandatory(bool value) { SetMandatory(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Whether or not the scheduled action is cancellable.</p>
      */
-    inline bool GetCancellable() const{ return m_cancellable; }
-
-    /**
-     * <p>Whether or not the scheduled action is cancellable.</p>
-     */
+    inline bool GetCancellable() const { return m_cancellable; }
     inline bool CancellableHasBeenSet() const { return m_cancellableHasBeenSet; }
-
-    /**
-     * <p>Whether or not the scheduled action is cancellable.</p>
-     */
     inline void SetCancellable(bool value) { m_cancellableHasBeenSet = true; m_cancellable = value; }
-
-    /**
-     * <p>Whether or not the scheduled action is cancellable.</p>
-     */
     inline ScheduledAction& WithCancellable(bool value) { SetCancellable(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_id;
     bool m_idHasBeenSet = false;
 
-    ActionType m_type;
+    ActionType m_type{ActionType::NOT_SET};
     bool m_typeHasBeenSet = false;
 
-    ActionSeverity m_severity;
+    ActionSeverity m_severity{ActionSeverity::NOT_SET};
     bool m_severityHasBeenSet = false;
 
-    long long m_scheduledTime;
+    long long m_scheduledTime{0};
     bool m_scheduledTimeHasBeenSet = false;
 
     Aws::String m_description;
     bool m_descriptionHasBeenSet = false;
 
-    ScheduledBy m_scheduledBy;
+    ScheduledBy m_scheduledBy{ScheduledBy::NOT_SET};
     bool m_scheduledByHasBeenSet = false;
 
-    ActionStatus m_status;
+    ActionStatus m_status{ActionStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
-    bool m_mandatory;
+    bool m_mandatory{false};
     bool m_mandatoryHasBeenSet = false;
 
-    bool m_cancellable;
+    bool m_cancellable{false};
     bool m_cancellableHasBeenSet = false;
   };
 

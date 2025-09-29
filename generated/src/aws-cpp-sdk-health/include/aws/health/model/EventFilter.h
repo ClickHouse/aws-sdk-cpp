@@ -40,666 +40,201 @@ namespace Model
   class EventFilter
   {
   public:
-    AWS_HEALTH_API EventFilter();
+    AWS_HEALTH_API EventFilter() = default;
     AWS_HEALTH_API EventFilter(Aws::Utils::Json::JsonView jsonValue);
     AWS_HEALTH_API EventFilter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_HEALTH_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A list of event ARNs (unique identifiers). For example:
      * <code>"arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-CDE456",
      * "arn:aws:health:us-west-1::event/EBS/AWS_EBS_LOST_VOLUME/AWS_EBS_LOST_VOLUME_CHI789_JKL101"</code>
      * </p>
      */
-    inline const Aws::Vector<Aws::String>& GetEventArns() const{ return m_eventArns; }
-
-    /**
-     * <p>A list of event ARNs (unique identifiers). For example:
-     * <code>"arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-CDE456",
-     * "arn:aws:health:us-west-1::event/EBS/AWS_EBS_LOST_VOLUME/AWS_EBS_LOST_VOLUME_CHI789_JKL101"</code>
-     * </p>
-     */
+    inline const Aws::Vector<Aws::String>& GetEventArns() const { return m_eventArns; }
     inline bool EventArnsHasBeenSet() const { return m_eventArnsHasBeenSet; }
+    template<typename EventArnsT = Aws::Vector<Aws::String>>
+    void SetEventArns(EventArnsT&& value) { m_eventArnsHasBeenSet = true; m_eventArns = std::forward<EventArnsT>(value); }
+    template<typename EventArnsT = Aws::Vector<Aws::String>>
+    EventFilter& WithEventArns(EventArnsT&& value) { SetEventArns(std::forward<EventArnsT>(value)); return *this;}
+    template<typename EventArnsT = Aws::String>
+    EventFilter& AddEventArns(EventArnsT&& value) { m_eventArnsHasBeenSet = true; m_eventArns.emplace_back(std::forward<EventArnsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of event ARNs (unique identifiers). For example:
-     * <code>"arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-CDE456",
-     * "arn:aws:health:us-west-1::event/EBS/AWS_EBS_LOST_VOLUME/AWS_EBS_LOST_VOLUME_CHI789_JKL101"</code>
-     * </p>
-     */
-    inline void SetEventArns(const Aws::Vector<Aws::String>& value) { m_eventArnsHasBeenSet = true; m_eventArns = value; }
-
-    /**
-     * <p>A list of event ARNs (unique identifiers). For example:
-     * <code>"arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-CDE456",
-     * "arn:aws:health:us-west-1::event/EBS/AWS_EBS_LOST_VOLUME/AWS_EBS_LOST_VOLUME_CHI789_JKL101"</code>
-     * </p>
-     */
-    inline void SetEventArns(Aws::Vector<Aws::String>&& value) { m_eventArnsHasBeenSet = true; m_eventArns = std::move(value); }
-
-    /**
-     * <p>A list of event ARNs (unique identifiers). For example:
-     * <code>"arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-CDE456",
-     * "arn:aws:health:us-west-1::event/EBS/AWS_EBS_LOST_VOLUME/AWS_EBS_LOST_VOLUME_CHI789_JKL101"</code>
-     * </p>
-     */
-    inline EventFilter& WithEventArns(const Aws::Vector<Aws::String>& value) { SetEventArns(value); return *this;}
-
-    /**
-     * <p>A list of event ARNs (unique identifiers). For example:
-     * <code>"arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-CDE456",
-     * "arn:aws:health:us-west-1::event/EBS/AWS_EBS_LOST_VOLUME/AWS_EBS_LOST_VOLUME_CHI789_JKL101"</code>
-     * </p>
-     */
-    inline EventFilter& WithEventArns(Aws::Vector<Aws::String>&& value) { SetEventArns(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of event ARNs (unique identifiers). For example:
-     * <code>"arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-CDE456",
-     * "arn:aws:health:us-west-1::event/EBS/AWS_EBS_LOST_VOLUME/AWS_EBS_LOST_VOLUME_CHI789_JKL101"</code>
-     * </p>
-     */
-    inline EventFilter& AddEventArns(const Aws::String& value) { m_eventArnsHasBeenSet = true; m_eventArns.push_back(value); return *this; }
-
-    /**
-     * <p>A list of event ARNs (unique identifiers). For example:
-     * <code>"arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-CDE456",
-     * "arn:aws:health:us-west-1::event/EBS/AWS_EBS_LOST_VOLUME/AWS_EBS_LOST_VOLUME_CHI789_JKL101"</code>
-     * </p>
-     */
-    inline EventFilter& AddEventArns(Aws::String&& value) { m_eventArnsHasBeenSet = true; m_eventArns.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of event ARNs (unique identifiers). For example:
-     * <code>"arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-CDE456",
-     * "arn:aws:health:us-west-1::event/EBS/AWS_EBS_LOST_VOLUME/AWS_EBS_LOST_VOLUME_CHI789_JKL101"</code>
-     * </p>
-     */
-    inline EventFilter& AddEventArns(const char* value) { m_eventArnsHasBeenSet = true; m_eventArns.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of unique identifiers for event types. For example,
      * <code>"AWS_EC2_SYSTEM_MAINTENANCE_EVENT","AWS_RDS_MAINTENANCE_SCHEDULED".</code>
      * </p>
      */
-    inline const Aws::Vector<Aws::String>& GetEventTypeCodes() const{ return m_eventTypeCodes; }
-
-    /**
-     * <p>A list of unique identifiers for event types. For example,
-     * <code>"AWS_EC2_SYSTEM_MAINTENANCE_EVENT","AWS_RDS_MAINTENANCE_SCHEDULED".</code>
-     * </p>
-     */
+    inline const Aws::Vector<Aws::String>& GetEventTypeCodes() const { return m_eventTypeCodes; }
     inline bool EventTypeCodesHasBeenSet() const { return m_eventTypeCodesHasBeenSet; }
+    template<typename EventTypeCodesT = Aws::Vector<Aws::String>>
+    void SetEventTypeCodes(EventTypeCodesT&& value) { m_eventTypeCodesHasBeenSet = true; m_eventTypeCodes = std::forward<EventTypeCodesT>(value); }
+    template<typename EventTypeCodesT = Aws::Vector<Aws::String>>
+    EventFilter& WithEventTypeCodes(EventTypeCodesT&& value) { SetEventTypeCodes(std::forward<EventTypeCodesT>(value)); return *this;}
+    template<typename EventTypeCodesT = Aws::String>
+    EventFilter& AddEventTypeCodes(EventTypeCodesT&& value) { m_eventTypeCodesHasBeenSet = true; m_eventTypeCodes.emplace_back(std::forward<EventTypeCodesT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>A list of unique identifiers for event types. For example,
-     * <code>"AWS_EC2_SYSTEM_MAINTENANCE_EVENT","AWS_RDS_MAINTENANCE_SCHEDULED".</code>
-     * </p>
-     */
-    inline void SetEventTypeCodes(const Aws::Vector<Aws::String>& value) { m_eventTypeCodesHasBeenSet = true; m_eventTypeCodes = value; }
-
-    /**
-     * <p>A list of unique identifiers for event types. For example,
-     * <code>"AWS_EC2_SYSTEM_MAINTENANCE_EVENT","AWS_RDS_MAINTENANCE_SCHEDULED".</code>
-     * </p>
-     */
-    inline void SetEventTypeCodes(Aws::Vector<Aws::String>&& value) { m_eventTypeCodesHasBeenSet = true; m_eventTypeCodes = std::move(value); }
-
-    /**
-     * <p>A list of unique identifiers for event types. For example,
-     * <code>"AWS_EC2_SYSTEM_MAINTENANCE_EVENT","AWS_RDS_MAINTENANCE_SCHEDULED".</code>
-     * </p>
-     */
-    inline EventFilter& WithEventTypeCodes(const Aws::Vector<Aws::String>& value) { SetEventTypeCodes(value); return *this;}
-
-    /**
-     * <p>A list of unique identifiers for event types. For example,
-     * <code>"AWS_EC2_SYSTEM_MAINTENANCE_EVENT","AWS_RDS_MAINTENANCE_SCHEDULED".</code>
-     * </p>
-     */
-    inline EventFilter& WithEventTypeCodes(Aws::Vector<Aws::String>&& value) { SetEventTypeCodes(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of unique identifiers for event types. For example,
-     * <code>"AWS_EC2_SYSTEM_MAINTENANCE_EVENT","AWS_RDS_MAINTENANCE_SCHEDULED".</code>
-     * </p>
-     */
-    inline EventFilter& AddEventTypeCodes(const Aws::String& value) { m_eventTypeCodesHasBeenSet = true; m_eventTypeCodes.push_back(value); return *this; }
-
-    /**
-     * <p>A list of unique identifiers for event types. For example,
-     * <code>"AWS_EC2_SYSTEM_MAINTENANCE_EVENT","AWS_RDS_MAINTENANCE_SCHEDULED".</code>
-     * </p>
-     */
-    inline EventFilter& AddEventTypeCodes(Aws::String&& value) { m_eventTypeCodesHasBeenSet = true; m_eventTypeCodes.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of unique identifiers for event types. For example,
-     * <code>"AWS_EC2_SYSTEM_MAINTENANCE_EVENT","AWS_RDS_MAINTENANCE_SCHEDULED".</code>
-     * </p>
-     */
-    inline EventFilter& AddEventTypeCodes(const char* value) { m_eventTypeCodesHasBeenSet = true; m_eventTypeCodes.push_back(value); return *this; }
-
-
-    /**
-     * <p>The Amazon Web Services associated with the event. For example,
+     * <p>The Amazon Web Services services associated with the event. For example,
      * <code>EC2</code>, <code>RDS</code>.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetServices() const{ return m_services; }
-
-    /**
-     * <p>The Amazon Web Services associated with the event. For example,
-     * <code>EC2</code>, <code>RDS</code>.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetServices() const { return m_services; }
     inline bool ServicesHasBeenSet() const { return m_servicesHasBeenSet; }
+    template<typename ServicesT = Aws::Vector<Aws::String>>
+    void SetServices(ServicesT&& value) { m_servicesHasBeenSet = true; m_services = std::forward<ServicesT>(value); }
+    template<typename ServicesT = Aws::Vector<Aws::String>>
+    EventFilter& WithServices(ServicesT&& value) { SetServices(std::forward<ServicesT>(value)); return *this;}
+    template<typename ServicesT = Aws::String>
+    EventFilter& AddServices(ServicesT&& value) { m_servicesHasBeenSet = true; m_services.emplace_back(std::forward<ServicesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The Amazon Web Services associated with the event. For example,
-     * <code>EC2</code>, <code>RDS</code>.</p>
-     */
-    inline void SetServices(const Aws::Vector<Aws::String>& value) { m_servicesHasBeenSet = true; m_services = value; }
-
-    /**
-     * <p>The Amazon Web Services associated with the event. For example,
-     * <code>EC2</code>, <code>RDS</code>.</p>
-     */
-    inline void SetServices(Aws::Vector<Aws::String>&& value) { m_servicesHasBeenSet = true; m_services = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services associated with the event. For example,
-     * <code>EC2</code>, <code>RDS</code>.</p>
-     */
-    inline EventFilter& WithServices(const Aws::Vector<Aws::String>& value) { SetServices(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services associated with the event. For example,
-     * <code>EC2</code>, <code>RDS</code>.</p>
-     */
-    inline EventFilter& WithServices(Aws::Vector<Aws::String>&& value) { SetServices(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services associated with the event. For example,
-     * <code>EC2</code>, <code>RDS</code>.</p>
-     */
-    inline EventFilter& AddServices(const Aws::String& value) { m_servicesHasBeenSet = true; m_services.push_back(value); return *this; }
-
-    /**
-     * <p>The Amazon Web Services associated with the event. For example,
-     * <code>EC2</code>, <code>RDS</code>.</p>
-     */
-    inline EventFilter& AddServices(Aws::String&& value) { m_servicesHasBeenSet = true; m_services.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The Amazon Web Services associated with the event. For example,
-     * <code>EC2</code>, <code>RDS</code>.</p>
-     */
-    inline EventFilter& AddServices(const char* value) { m_servicesHasBeenSet = true; m_services.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of Amazon Web Services Regions.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetRegions() const{ return m_regions; }
-
-    /**
-     * <p>A list of Amazon Web Services Regions.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetRegions() const { return m_regions; }
     inline bool RegionsHasBeenSet() const { return m_regionsHasBeenSet; }
+    template<typename RegionsT = Aws::Vector<Aws::String>>
+    void SetRegions(RegionsT&& value) { m_regionsHasBeenSet = true; m_regions = std::forward<RegionsT>(value); }
+    template<typename RegionsT = Aws::Vector<Aws::String>>
+    EventFilter& WithRegions(RegionsT&& value) { SetRegions(std::forward<RegionsT>(value)); return *this;}
+    template<typename RegionsT = Aws::String>
+    EventFilter& AddRegions(RegionsT&& value) { m_regionsHasBeenSet = true; m_regions.emplace_back(std::forward<RegionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of Amazon Web Services Regions.</p>
-     */
-    inline void SetRegions(const Aws::Vector<Aws::String>& value) { m_regionsHasBeenSet = true; m_regions = value; }
-
-    /**
-     * <p>A list of Amazon Web Services Regions.</p>
-     */
-    inline void SetRegions(Aws::Vector<Aws::String>&& value) { m_regionsHasBeenSet = true; m_regions = std::move(value); }
-
-    /**
-     * <p>A list of Amazon Web Services Regions.</p>
-     */
-    inline EventFilter& WithRegions(const Aws::Vector<Aws::String>& value) { SetRegions(value); return *this;}
-
-    /**
-     * <p>A list of Amazon Web Services Regions.</p>
-     */
-    inline EventFilter& WithRegions(Aws::Vector<Aws::String>&& value) { SetRegions(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of Amazon Web Services Regions.</p>
-     */
-    inline EventFilter& AddRegions(const Aws::String& value) { m_regionsHasBeenSet = true; m_regions.push_back(value); return *this; }
-
-    /**
-     * <p>A list of Amazon Web Services Regions.</p>
-     */
-    inline EventFilter& AddRegions(Aws::String&& value) { m_regionsHasBeenSet = true; m_regions.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of Amazon Web Services Regions.</p>
-     */
-    inline EventFilter& AddRegions(const char* value) { m_regionsHasBeenSet = true; m_regions.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of Amazon Web Services Availability Zones.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetAvailabilityZones() const{ return m_availabilityZones; }
-
-    /**
-     * <p>A list of Amazon Web Services Availability Zones.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetAvailabilityZones() const { return m_availabilityZones; }
     inline bool AvailabilityZonesHasBeenSet() const { return m_availabilityZonesHasBeenSet; }
+    template<typename AvailabilityZonesT = Aws::Vector<Aws::String>>
+    void SetAvailabilityZones(AvailabilityZonesT&& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones = std::forward<AvailabilityZonesT>(value); }
+    template<typename AvailabilityZonesT = Aws::Vector<Aws::String>>
+    EventFilter& WithAvailabilityZones(AvailabilityZonesT&& value) { SetAvailabilityZones(std::forward<AvailabilityZonesT>(value)); return *this;}
+    template<typename AvailabilityZonesT = Aws::String>
+    EventFilter& AddAvailabilityZones(AvailabilityZonesT&& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones.emplace_back(std::forward<AvailabilityZonesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of Amazon Web Services Availability Zones.</p>
-     */
-    inline void SetAvailabilityZones(const Aws::Vector<Aws::String>& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones = value; }
-
-    /**
-     * <p>A list of Amazon Web Services Availability Zones.</p>
-     */
-    inline void SetAvailabilityZones(Aws::Vector<Aws::String>&& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones = std::move(value); }
-
-    /**
-     * <p>A list of Amazon Web Services Availability Zones.</p>
-     */
-    inline EventFilter& WithAvailabilityZones(const Aws::Vector<Aws::String>& value) { SetAvailabilityZones(value); return *this;}
-
-    /**
-     * <p>A list of Amazon Web Services Availability Zones.</p>
-     */
-    inline EventFilter& WithAvailabilityZones(Aws::Vector<Aws::String>&& value) { SetAvailabilityZones(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of Amazon Web Services Availability Zones.</p>
-     */
-    inline EventFilter& AddAvailabilityZones(const Aws::String& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones.push_back(value); return *this; }
-
-    /**
-     * <p>A list of Amazon Web Services Availability Zones.</p>
-     */
-    inline EventFilter& AddAvailabilityZones(Aws::String&& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of Amazon Web Services Availability Zones.</p>
-     */
-    inline EventFilter& AddAvailabilityZones(const char* value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of dates and times that the event began.</p>
      */
-    inline const Aws::Vector<DateTimeRange>& GetStartTimes() const{ return m_startTimes; }
-
-    /**
-     * <p>A list of dates and times that the event began.</p>
-     */
+    inline const Aws::Vector<DateTimeRange>& GetStartTimes() const { return m_startTimes; }
     inline bool StartTimesHasBeenSet() const { return m_startTimesHasBeenSet; }
+    template<typename StartTimesT = Aws::Vector<DateTimeRange>>
+    void SetStartTimes(StartTimesT&& value) { m_startTimesHasBeenSet = true; m_startTimes = std::forward<StartTimesT>(value); }
+    template<typename StartTimesT = Aws::Vector<DateTimeRange>>
+    EventFilter& WithStartTimes(StartTimesT&& value) { SetStartTimes(std::forward<StartTimesT>(value)); return *this;}
+    template<typename StartTimesT = DateTimeRange>
+    EventFilter& AddStartTimes(StartTimesT&& value) { m_startTimesHasBeenSet = true; m_startTimes.emplace_back(std::forward<StartTimesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of dates and times that the event began.</p>
-     */
-    inline void SetStartTimes(const Aws::Vector<DateTimeRange>& value) { m_startTimesHasBeenSet = true; m_startTimes = value; }
-
-    /**
-     * <p>A list of dates and times that the event began.</p>
-     */
-    inline void SetStartTimes(Aws::Vector<DateTimeRange>&& value) { m_startTimesHasBeenSet = true; m_startTimes = std::move(value); }
-
-    /**
-     * <p>A list of dates and times that the event began.</p>
-     */
-    inline EventFilter& WithStartTimes(const Aws::Vector<DateTimeRange>& value) { SetStartTimes(value); return *this;}
-
-    /**
-     * <p>A list of dates and times that the event began.</p>
-     */
-    inline EventFilter& WithStartTimes(Aws::Vector<DateTimeRange>&& value) { SetStartTimes(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of dates and times that the event began.</p>
-     */
-    inline EventFilter& AddStartTimes(const DateTimeRange& value) { m_startTimesHasBeenSet = true; m_startTimes.push_back(value); return *this; }
-
-    /**
-     * <p>A list of dates and times that the event began.</p>
-     */
-    inline EventFilter& AddStartTimes(DateTimeRange&& value) { m_startTimesHasBeenSet = true; m_startTimes.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of dates and times that the event ended.</p>
      */
-    inline const Aws::Vector<DateTimeRange>& GetEndTimes() const{ return m_endTimes; }
-
-    /**
-     * <p>A list of dates and times that the event ended.</p>
-     */
+    inline const Aws::Vector<DateTimeRange>& GetEndTimes() const { return m_endTimes; }
     inline bool EndTimesHasBeenSet() const { return m_endTimesHasBeenSet; }
+    template<typename EndTimesT = Aws::Vector<DateTimeRange>>
+    void SetEndTimes(EndTimesT&& value) { m_endTimesHasBeenSet = true; m_endTimes = std::forward<EndTimesT>(value); }
+    template<typename EndTimesT = Aws::Vector<DateTimeRange>>
+    EventFilter& WithEndTimes(EndTimesT&& value) { SetEndTimes(std::forward<EndTimesT>(value)); return *this;}
+    template<typename EndTimesT = DateTimeRange>
+    EventFilter& AddEndTimes(EndTimesT&& value) { m_endTimesHasBeenSet = true; m_endTimes.emplace_back(std::forward<EndTimesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of dates and times that the event ended.</p>
-     */
-    inline void SetEndTimes(const Aws::Vector<DateTimeRange>& value) { m_endTimesHasBeenSet = true; m_endTimes = value; }
-
-    /**
-     * <p>A list of dates and times that the event ended.</p>
-     */
-    inline void SetEndTimes(Aws::Vector<DateTimeRange>&& value) { m_endTimesHasBeenSet = true; m_endTimes = std::move(value); }
-
-    /**
-     * <p>A list of dates and times that the event ended.</p>
-     */
-    inline EventFilter& WithEndTimes(const Aws::Vector<DateTimeRange>& value) { SetEndTimes(value); return *this;}
-
-    /**
-     * <p>A list of dates and times that the event ended.</p>
-     */
-    inline EventFilter& WithEndTimes(Aws::Vector<DateTimeRange>&& value) { SetEndTimes(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of dates and times that the event ended.</p>
-     */
-    inline EventFilter& AddEndTimes(const DateTimeRange& value) { m_endTimesHasBeenSet = true; m_endTimes.push_back(value); return *this; }
-
-    /**
-     * <p>A list of dates and times that the event ended.</p>
-     */
-    inline EventFilter& AddEndTimes(DateTimeRange&& value) { m_endTimesHasBeenSet = true; m_endTimes.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of dates and times that the event was last updated.</p>
      */
-    inline const Aws::Vector<DateTimeRange>& GetLastUpdatedTimes() const{ return m_lastUpdatedTimes; }
-
-    /**
-     * <p>A list of dates and times that the event was last updated.</p>
-     */
+    inline const Aws::Vector<DateTimeRange>& GetLastUpdatedTimes() const { return m_lastUpdatedTimes; }
     inline bool LastUpdatedTimesHasBeenSet() const { return m_lastUpdatedTimesHasBeenSet; }
+    template<typename LastUpdatedTimesT = Aws::Vector<DateTimeRange>>
+    void SetLastUpdatedTimes(LastUpdatedTimesT&& value) { m_lastUpdatedTimesHasBeenSet = true; m_lastUpdatedTimes = std::forward<LastUpdatedTimesT>(value); }
+    template<typename LastUpdatedTimesT = Aws::Vector<DateTimeRange>>
+    EventFilter& WithLastUpdatedTimes(LastUpdatedTimesT&& value) { SetLastUpdatedTimes(std::forward<LastUpdatedTimesT>(value)); return *this;}
+    template<typename LastUpdatedTimesT = DateTimeRange>
+    EventFilter& AddLastUpdatedTimes(LastUpdatedTimesT&& value) { m_lastUpdatedTimesHasBeenSet = true; m_lastUpdatedTimes.emplace_back(std::forward<LastUpdatedTimesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of dates and times that the event was last updated.</p>
-     */
-    inline void SetLastUpdatedTimes(const Aws::Vector<DateTimeRange>& value) { m_lastUpdatedTimesHasBeenSet = true; m_lastUpdatedTimes = value; }
-
-    /**
-     * <p>A list of dates and times that the event was last updated.</p>
-     */
-    inline void SetLastUpdatedTimes(Aws::Vector<DateTimeRange>&& value) { m_lastUpdatedTimesHasBeenSet = true; m_lastUpdatedTimes = std::move(value); }
-
-    /**
-     * <p>A list of dates and times that the event was last updated.</p>
-     */
-    inline EventFilter& WithLastUpdatedTimes(const Aws::Vector<DateTimeRange>& value) { SetLastUpdatedTimes(value); return *this;}
-
-    /**
-     * <p>A list of dates and times that the event was last updated.</p>
-     */
-    inline EventFilter& WithLastUpdatedTimes(Aws::Vector<DateTimeRange>&& value) { SetLastUpdatedTimes(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of dates and times that the event was last updated.</p>
-     */
-    inline EventFilter& AddLastUpdatedTimes(const DateTimeRange& value) { m_lastUpdatedTimesHasBeenSet = true; m_lastUpdatedTimes.push_back(value); return *this; }
-
-    /**
-     * <p>A list of dates and times that the event was last updated.</p>
-     */
-    inline EventFilter& AddLastUpdatedTimes(DateTimeRange&& value) { m_lastUpdatedTimesHasBeenSet = true; m_lastUpdatedTimes.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of entity ARNs (unique identifiers).</p>
      */
-    inline const Aws::Vector<Aws::String>& GetEntityArns() const{ return m_entityArns; }
-
-    /**
-     * <p>A list of entity ARNs (unique identifiers).</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetEntityArns() const { return m_entityArns; }
     inline bool EntityArnsHasBeenSet() const { return m_entityArnsHasBeenSet; }
+    template<typename EntityArnsT = Aws::Vector<Aws::String>>
+    void SetEntityArns(EntityArnsT&& value) { m_entityArnsHasBeenSet = true; m_entityArns = std::forward<EntityArnsT>(value); }
+    template<typename EntityArnsT = Aws::Vector<Aws::String>>
+    EventFilter& WithEntityArns(EntityArnsT&& value) { SetEntityArns(std::forward<EntityArnsT>(value)); return *this;}
+    template<typename EntityArnsT = Aws::String>
+    EventFilter& AddEntityArns(EntityArnsT&& value) { m_entityArnsHasBeenSet = true; m_entityArns.emplace_back(std::forward<EntityArnsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of entity ARNs (unique identifiers).</p>
-     */
-    inline void SetEntityArns(const Aws::Vector<Aws::String>& value) { m_entityArnsHasBeenSet = true; m_entityArns = value; }
-
-    /**
-     * <p>A list of entity ARNs (unique identifiers).</p>
-     */
-    inline void SetEntityArns(Aws::Vector<Aws::String>&& value) { m_entityArnsHasBeenSet = true; m_entityArns = std::move(value); }
-
-    /**
-     * <p>A list of entity ARNs (unique identifiers).</p>
-     */
-    inline EventFilter& WithEntityArns(const Aws::Vector<Aws::String>& value) { SetEntityArns(value); return *this;}
-
-    /**
-     * <p>A list of entity ARNs (unique identifiers).</p>
-     */
-    inline EventFilter& WithEntityArns(Aws::Vector<Aws::String>&& value) { SetEntityArns(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of entity ARNs (unique identifiers).</p>
-     */
-    inline EventFilter& AddEntityArns(const Aws::String& value) { m_entityArnsHasBeenSet = true; m_entityArns.push_back(value); return *this; }
-
-    /**
-     * <p>A list of entity ARNs (unique identifiers).</p>
-     */
-    inline EventFilter& AddEntityArns(Aws::String&& value) { m_entityArnsHasBeenSet = true; m_entityArns.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of entity ARNs (unique identifiers).</p>
-     */
-    inline EventFilter& AddEntityArns(const char* value) { m_entityArnsHasBeenSet = true; m_entityArns.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of entity identifiers, such as EC2 instance IDs
      * (<code>i-34ab692e</code>) or EBS volumes (<code>vol-426ab23e</code>).</p>
      */
-    inline const Aws::Vector<Aws::String>& GetEntityValues() const{ return m_entityValues; }
-
-    /**
-     * <p>A list of entity identifiers, such as EC2 instance IDs
-     * (<code>i-34ab692e</code>) or EBS volumes (<code>vol-426ab23e</code>).</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetEntityValues() const { return m_entityValues; }
     inline bool EntityValuesHasBeenSet() const { return m_entityValuesHasBeenSet; }
+    template<typename EntityValuesT = Aws::Vector<Aws::String>>
+    void SetEntityValues(EntityValuesT&& value) { m_entityValuesHasBeenSet = true; m_entityValues = std::forward<EntityValuesT>(value); }
+    template<typename EntityValuesT = Aws::Vector<Aws::String>>
+    EventFilter& WithEntityValues(EntityValuesT&& value) { SetEntityValues(std::forward<EntityValuesT>(value)); return *this;}
+    template<typename EntityValuesT = Aws::String>
+    EventFilter& AddEntityValues(EntityValuesT&& value) { m_entityValuesHasBeenSet = true; m_entityValues.emplace_back(std::forward<EntityValuesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of entity identifiers, such as EC2 instance IDs
-     * (<code>i-34ab692e</code>) or EBS volumes (<code>vol-426ab23e</code>).</p>
-     */
-    inline void SetEntityValues(const Aws::Vector<Aws::String>& value) { m_entityValuesHasBeenSet = true; m_entityValues = value; }
-
-    /**
-     * <p>A list of entity identifiers, such as EC2 instance IDs
-     * (<code>i-34ab692e</code>) or EBS volumes (<code>vol-426ab23e</code>).</p>
-     */
-    inline void SetEntityValues(Aws::Vector<Aws::String>&& value) { m_entityValuesHasBeenSet = true; m_entityValues = std::move(value); }
-
-    /**
-     * <p>A list of entity identifiers, such as EC2 instance IDs
-     * (<code>i-34ab692e</code>) or EBS volumes (<code>vol-426ab23e</code>).</p>
-     */
-    inline EventFilter& WithEntityValues(const Aws::Vector<Aws::String>& value) { SetEntityValues(value); return *this;}
-
-    /**
-     * <p>A list of entity identifiers, such as EC2 instance IDs
-     * (<code>i-34ab692e</code>) or EBS volumes (<code>vol-426ab23e</code>).</p>
-     */
-    inline EventFilter& WithEntityValues(Aws::Vector<Aws::String>&& value) { SetEntityValues(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of entity identifiers, such as EC2 instance IDs
-     * (<code>i-34ab692e</code>) or EBS volumes (<code>vol-426ab23e</code>).</p>
-     */
-    inline EventFilter& AddEntityValues(const Aws::String& value) { m_entityValuesHasBeenSet = true; m_entityValues.push_back(value); return *this; }
-
-    /**
-     * <p>A list of entity identifiers, such as EC2 instance IDs
-     * (<code>i-34ab692e</code>) or EBS volumes (<code>vol-426ab23e</code>).</p>
-     */
-    inline EventFilter& AddEntityValues(Aws::String&& value) { m_entityValuesHasBeenSet = true; m_entityValues.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of entity identifiers, such as EC2 instance IDs
-     * (<code>i-34ab692e</code>) or EBS volumes (<code>vol-426ab23e</code>).</p>
-     */
-    inline EventFilter& AddEntityValues(const char* value) { m_entityValuesHasBeenSet = true; m_entityValues.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of event type category codes. Possible values are <code>issue</code>,
      * <code>accountNotification</code>, or <code>scheduledChange</code>. Currently,
      * the <code>investigation</code> value isn't supported at this time.</p>
      */
-    inline const Aws::Vector<EventTypeCategory>& GetEventTypeCategories() const{ return m_eventTypeCategories; }
-
-    /**
-     * <p>A list of event type category codes. Possible values are <code>issue</code>,
-     * <code>accountNotification</code>, or <code>scheduledChange</code>. Currently,
-     * the <code>investigation</code> value isn't supported at this time.</p>
-     */
+    inline const Aws::Vector<EventTypeCategory>& GetEventTypeCategories() const { return m_eventTypeCategories; }
     inline bool EventTypeCategoriesHasBeenSet() const { return m_eventTypeCategoriesHasBeenSet; }
+    template<typename EventTypeCategoriesT = Aws::Vector<EventTypeCategory>>
+    void SetEventTypeCategories(EventTypeCategoriesT&& value) { m_eventTypeCategoriesHasBeenSet = true; m_eventTypeCategories = std::forward<EventTypeCategoriesT>(value); }
+    template<typename EventTypeCategoriesT = Aws::Vector<EventTypeCategory>>
+    EventFilter& WithEventTypeCategories(EventTypeCategoriesT&& value) { SetEventTypeCategories(std::forward<EventTypeCategoriesT>(value)); return *this;}
+    inline EventFilter& AddEventTypeCategories(EventTypeCategory value) { m_eventTypeCategoriesHasBeenSet = true; m_eventTypeCategories.push_back(value); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of event type category codes. Possible values are <code>issue</code>,
-     * <code>accountNotification</code>, or <code>scheduledChange</code>. Currently,
-     * the <code>investigation</code> value isn't supported at this time.</p>
-     */
-    inline void SetEventTypeCategories(const Aws::Vector<EventTypeCategory>& value) { m_eventTypeCategoriesHasBeenSet = true; m_eventTypeCategories = value; }
-
-    /**
-     * <p>A list of event type category codes. Possible values are <code>issue</code>,
-     * <code>accountNotification</code>, or <code>scheduledChange</code>. Currently,
-     * the <code>investigation</code> value isn't supported at this time.</p>
-     */
-    inline void SetEventTypeCategories(Aws::Vector<EventTypeCategory>&& value) { m_eventTypeCategoriesHasBeenSet = true; m_eventTypeCategories = std::move(value); }
-
-    /**
-     * <p>A list of event type category codes. Possible values are <code>issue</code>,
-     * <code>accountNotification</code>, or <code>scheduledChange</code>. Currently,
-     * the <code>investigation</code> value isn't supported at this time.</p>
-     */
-    inline EventFilter& WithEventTypeCategories(const Aws::Vector<EventTypeCategory>& value) { SetEventTypeCategories(value); return *this;}
-
-    /**
-     * <p>A list of event type category codes. Possible values are <code>issue</code>,
-     * <code>accountNotification</code>, or <code>scheduledChange</code>. Currently,
-     * the <code>investigation</code> value isn't supported at this time.</p>
-     */
-    inline EventFilter& WithEventTypeCategories(Aws::Vector<EventTypeCategory>&& value) { SetEventTypeCategories(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of event type category codes. Possible values are <code>issue</code>,
-     * <code>accountNotification</code>, or <code>scheduledChange</code>. Currently,
-     * the <code>investigation</code> value isn't supported at this time.</p>
-     */
-    inline EventFilter& AddEventTypeCategories(const EventTypeCategory& value) { m_eventTypeCategoriesHasBeenSet = true; m_eventTypeCategories.push_back(value); return *this; }
-
-    /**
-     * <p>A list of event type category codes. Possible values are <code>issue</code>,
-     * <code>accountNotification</code>, or <code>scheduledChange</code>. Currently,
-     * the <code>investigation</code> value isn't supported at this time.</p>
-     */
-    inline EventFilter& AddEventTypeCategories(EventTypeCategory&& value) { m_eventTypeCategoriesHasBeenSet = true; m_eventTypeCategories.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A map of entity tags attached to the affected entity.</p> 
      * <p>Currently, the <code>tags</code> property isn't supported.</p> 
      */
-    inline const Aws::Vector<Aws::Map<Aws::String, Aws::String>>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>A map of entity tags attached to the affected entity.</p> 
-     * <p>Currently, the <code>tags</code> property isn't supported.</p> 
-     */
+    inline const Aws::Vector<Aws::Map<Aws::String, Aws::String>>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Vector<Aws::Map<Aws::String, Aws::String>>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Aws::Map<Aws::String, Aws::String>>>
+    EventFilter& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    EventFilter& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A map of entity tags attached to the affected entity.</p> 
-     * <p>Currently, the <code>tags</code> property isn't supported.</p> 
-     */
-    inline void SetTags(const Aws::Vector<Aws::Map<Aws::String, Aws::String>>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>A map of entity tags attached to the affected entity.</p> 
-     * <p>Currently, the <code>tags</code> property isn't supported.</p> 
-     */
-    inline void SetTags(Aws::Vector<Aws::Map<Aws::String, Aws::String>>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>A map of entity tags attached to the affected entity.</p> 
-     * <p>Currently, the <code>tags</code> property isn't supported.</p> 
-     */
-    inline EventFilter& WithTags(const Aws::Vector<Aws::Map<Aws::String, Aws::String>>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>A map of entity tags attached to the affected entity.</p> 
-     * <p>Currently, the <code>tags</code> property isn't supported.</p> 
-     */
-    inline EventFilter& WithTags(Aws::Vector<Aws::Map<Aws::String, Aws::String>>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>A map of entity tags attached to the affected entity.</p> 
-     * <p>Currently, the <code>tags</code> property isn't supported.</p> 
-     */
-    inline EventFilter& AddTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>A map of entity tags attached to the affected entity.</p> 
-     * <p>Currently, the <code>tags</code> property isn't supported.</p> 
-     */
-    inline EventFilter& AddTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of event status codes.</p>
      */
-    inline const Aws::Vector<EventStatusCode>& GetEventStatusCodes() const{ return m_eventStatusCodes; }
-
-    /**
-     * <p>A list of event status codes.</p>
-     */
+    inline const Aws::Vector<EventStatusCode>& GetEventStatusCodes() const { return m_eventStatusCodes; }
     inline bool EventStatusCodesHasBeenSet() const { return m_eventStatusCodesHasBeenSet; }
-
-    /**
-     * <p>A list of event status codes.</p>
-     */
-    inline void SetEventStatusCodes(const Aws::Vector<EventStatusCode>& value) { m_eventStatusCodesHasBeenSet = true; m_eventStatusCodes = value; }
-
-    /**
-     * <p>A list of event status codes.</p>
-     */
-    inline void SetEventStatusCodes(Aws::Vector<EventStatusCode>&& value) { m_eventStatusCodesHasBeenSet = true; m_eventStatusCodes = std::move(value); }
-
-    /**
-     * <p>A list of event status codes.</p>
-     */
-    inline EventFilter& WithEventStatusCodes(const Aws::Vector<EventStatusCode>& value) { SetEventStatusCodes(value); return *this;}
-
-    /**
-     * <p>A list of event status codes.</p>
-     */
-    inline EventFilter& WithEventStatusCodes(Aws::Vector<EventStatusCode>&& value) { SetEventStatusCodes(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of event status codes.</p>
-     */
-    inline EventFilter& AddEventStatusCodes(const EventStatusCode& value) { m_eventStatusCodesHasBeenSet = true; m_eventStatusCodes.push_back(value); return *this; }
-
-    /**
-     * <p>A list of event status codes.</p>
-     */
-    inline EventFilter& AddEventStatusCodes(EventStatusCode&& value) { m_eventStatusCodesHasBeenSet = true; m_eventStatusCodes.push_back(std::move(value)); return *this; }
-
+    template<typename EventStatusCodesT = Aws::Vector<EventStatusCode>>
+    void SetEventStatusCodes(EventStatusCodesT&& value) { m_eventStatusCodesHasBeenSet = true; m_eventStatusCodes = std::forward<EventStatusCodesT>(value); }
+    template<typename EventStatusCodesT = Aws::Vector<EventStatusCode>>
+    EventFilter& WithEventStatusCodes(EventStatusCodesT&& value) { SetEventStatusCodes(std::forward<EventStatusCodesT>(value)); return *this;}
+    inline EventFilter& AddEventStatusCodes(EventStatusCode value) { m_eventStatusCodesHasBeenSet = true; m_eventStatusCodes.push_back(value); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_eventArns;

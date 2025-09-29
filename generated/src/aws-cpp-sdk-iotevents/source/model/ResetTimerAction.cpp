@@ -18,13 +18,7 @@ namespace IoTEvents
 namespace Model
 {
 
-ResetTimerAction::ResetTimerAction() : 
-    m_timerNameHasBeenSet(false)
-{
-}
-
-ResetTimerAction::ResetTimerAction(JsonView jsonValue) : 
-    m_timerNameHasBeenSet(false)
+ResetTimerAction::ResetTimerAction(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ ResetTimerAction& ResetTimerAction::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("timerName"))
   {
     m_timerName = jsonValue.GetString("timerName");
-
     m_timerNameHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -29,111 +29,53 @@ namespace Model
   class GetConnectPeerAssociationsResult
   {
   public:
-    AWS_NETWORKMANAGER_API GetConnectPeerAssociationsResult();
+    AWS_NETWORKMANAGER_API GetConnectPeerAssociationsResult() = default;
     AWS_NETWORKMANAGER_API GetConnectPeerAssociationsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_NETWORKMANAGER_API GetConnectPeerAssociationsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Displays a list of Connect peer associations.</p>
      */
-    inline const Aws::Vector<ConnectPeerAssociation>& GetConnectPeerAssociations() const{ return m_connectPeerAssociations; }
+    inline const Aws::Vector<ConnectPeerAssociation>& GetConnectPeerAssociations() const { return m_connectPeerAssociations; }
+    template<typename ConnectPeerAssociationsT = Aws::Vector<ConnectPeerAssociation>>
+    void SetConnectPeerAssociations(ConnectPeerAssociationsT&& value) { m_connectPeerAssociationsHasBeenSet = true; m_connectPeerAssociations = std::forward<ConnectPeerAssociationsT>(value); }
+    template<typename ConnectPeerAssociationsT = Aws::Vector<ConnectPeerAssociation>>
+    GetConnectPeerAssociationsResult& WithConnectPeerAssociations(ConnectPeerAssociationsT&& value) { SetConnectPeerAssociations(std::forward<ConnectPeerAssociationsT>(value)); return *this;}
+    template<typename ConnectPeerAssociationsT = ConnectPeerAssociation>
+    GetConnectPeerAssociationsResult& AddConnectPeerAssociations(ConnectPeerAssociationsT&& value) { m_connectPeerAssociationsHasBeenSet = true; m_connectPeerAssociations.emplace_back(std::forward<ConnectPeerAssociationsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Displays a list of Connect peer associations.</p>
-     */
-    inline void SetConnectPeerAssociations(const Aws::Vector<ConnectPeerAssociation>& value) { m_connectPeerAssociations = value; }
-
-    /**
-     * <p>Displays a list of Connect peer associations.</p>
-     */
-    inline void SetConnectPeerAssociations(Aws::Vector<ConnectPeerAssociation>&& value) { m_connectPeerAssociations = std::move(value); }
-
-    /**
-     * <p>Displays a list of Connect peer associations.</p>
-     */
-    inline GetConnectPeerAssociationsResult& WithConnectPeerAssociations(const Aws::Vector<ConnectPeerAssociation>& value) { SetConnectPeerAssociations(value); return *this;}
-
-    /**
-     * <p>Displays a list of Connect peer associations.</p>
-     */
-    inline GetConnectPeerAssociationsResult& WithConnectPeerAssociations(Aws::Vector<ConnectPeerAssociation>&& value) { SetConnectPeerAssociations(std::move(value)); return *this;}
-
-    /**
-     * <p>Displays a list of Connect peer associations.</p>
-     */
-    inline GetConnectPeerAssociationsResult& AddConnectPeerAssociations(const ConnectPeerAssociation& value) { m_connectPeerAssociations.push_back(value); return *this; }
-
-    /**
-     * <p>Displays a list of Connect peer associations.</p>
-     */
-    inline GetConnectPeerAssociationsResult& AddConnectPeerAssociations(ConnectPeerAssociation&& value) { m_connectPeerAssociations.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The token for the next page of results.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    GetConnectPeerAssociationsResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The token for the next page of results.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>The token for the next page of results.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>The token for the next page of results.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>The token for the next page of results.</p>
-     */
-    inline GetConnectPeerAssociationsResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The token for the next page of results.</p>
-     */
-    inline GetConnectPeerAssociationsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The token for the next page of results.</p>
-     */
-    inline GetConnectPeerAssociationsResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetConnectPeerAssociationsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetConnectPeerAssociationsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetConnectPeerAssociationsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetConnectPeerAssociationsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<ConnectPeerAssociation> m_connectPeerAssociations;
+    bool m_connectPeerAssociationsHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

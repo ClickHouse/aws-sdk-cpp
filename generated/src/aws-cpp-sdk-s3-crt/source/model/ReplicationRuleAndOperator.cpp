@@ -20,15 +20,7 @@ namespace S3Crt
 namespace Model
 {
 
-ReplicationRuleAndOperator::ReplicationRuleAndOperator() : 
-    m_prefixHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-ReplicationRuleAndOperator::ReplicationRuleAndOperator(const XmlNode& xmlNode) : 
-    m_prefixHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+ReplicationRuleAndOperator::ReplicationRuleAndOperator(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -49,6 +41,7 @@ ReplicationRuleAndOperator& ReplicationRuleAndOperator::operator =(const XmlNode
     if(!tagsNode.IsNull())
     {
       XmlNode tagMember = tagsNode;
+      m_tagsHasBeenSet = !tagMember.IsNull();
       while(!tagMember.IsNull())
       {
         m_tags.push_back(tagMember);

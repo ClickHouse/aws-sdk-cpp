@@ -31,52 +31,23 @@ namespace Model
   class AmazonElasticsearchParameters
   {
   public:
-    AWS_QUICKSIGHT_API AmazonElasticsearchParameters();
+    AWS_QUICKSIGHT_API AmazonElasticsearchParameters() = default;
     AWS_QUICKSIGHT_API AmazonElasticsearchParameters(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API AmazonElasticsearchParameters& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The OpenSearch domain.</p>
      */
-    inline const Aws::String& GetDomain() const{ return m_domain; }
-
-    /**
-     * <p>The OpenSearch domain.</p>
-     */
+    inline const Aws::String& GetDomain() const { return m_domain; }
     inline bool DomainHasBeenSet() const { return m_domainHasBeenSet; }
-
-    /**
-     * <p>The OpenSearch domain.</p>
-     */
-    inline void SetDomain(const Aws::String& value) { m_domainHasBeenSet = true; m_domain = value; }
-
-    /**
-     * <p>The OpenSearch domain.</p>
-     */
-    inline void SetDomain(Aws::String&& value) { m_domainHasBeenSet = true; m_domain = std::move(value); }
-
-    /**
-     * <p>The OpenSearch domain.</p>
-     */
-    inline void SetDomain(const char* value) { m_domainHasBeenSet = true; m_domain.assign(value); }
-
-    /**
-     * <p>The OpenSearch domain.</p>
-     */
-    inline AmazonElasticsearchParameters& WithDomain(const Aws::String& value) { SetDomain(value); return *this;}
-
-    /**
-     * <p>The OpenSearch domain.</p>
-     */
-    inline AmazonElasticsearchParameters& WithDomain(Aws::String&& value) { SetDomain(std::move(value)); return *this;}
-
-    /**
-     * <p>The OpenSearch domain.</p>
-     */
-    inline AmazonElasticsearchParameters& WithDomain(const char* value) { SetDomain(value); return *this;}
-
+    template<typename DomainT = Aws::String>
+    void SetDomain(DomainT&& value) { m_domainHasBeenSet = true; m_domain = std::forward<DomainT>(value); }
+    template<typename DomainT = Aws::String>
+    AmazonElasticsearchParameters& WithDomain(DomainT&& value) { SetDomain(std::forward<DomainT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_domain;

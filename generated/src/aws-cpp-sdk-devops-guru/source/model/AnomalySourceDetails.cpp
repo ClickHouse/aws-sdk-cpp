@@ -18,15 +18,7 @@ namespace DevOpsGuru
 namespace Model
 {
 
-AnomalySourceDetails::AnomalySourceDetails() : 
-    m_cloudWatchMetricsHasBeenSet(false),
-    m_performanceInsightsMetricsHasBeenSet(false)
-{
-}
-
-AnomalySourceDetails::AnomalySourceDetails(JsonView jsonValue) : 
-    m_cloudWatchMetricsHasBeenSet(false),
-    m_performanceInsightsMetricsHasBeenSet(false)
+AnomalySourceDetails::AnomalySourceDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ AnomalySourceDetails& AnomalySourceDetails::operator =(JsonView jsonValue)
     }
     m_cloudWatchMetricsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PerformanceInsightsMetrics"))
   {
     Aws::Utils::Array<JsonView> performanceInsightsMetricsJsonList = jsonValue.GetArray("PerformanceInsightsMetrics");
@@ -52,7 +43,6 @@ AnomalySourceDetails& AnomalySourceDetails::operator =(JsonView jsonValue)
     }
     m_performanceInsightsMetricsHasBeenSet = true;
   }
-
   return *this;
 }
 

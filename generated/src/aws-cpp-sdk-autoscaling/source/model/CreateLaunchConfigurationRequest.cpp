@@ -10,31 +10,6 @@
 using namespace Aws::AutoScaling::Model;
 using namespace Aws::Utils;
 
-CreateLaunchConfigurationRequest::CreateLaunchConfigurationRequest() : 
-    m_launchConfigurationNameHasBeenSet(false),
-    m_imageIdHasBeenSet(false),
-    m_keyNameHasBeenSet(false),
-    m_securityGroupsHasBeenSet(false),
-    m_classicLinkVPCIdHasBeenSet(false),
-    m_classicLinkVPCSecurityGroupsHasBeenSet(false),
-    m_userDataHasBeenSet(false),
-    m_instanceIdHasBeenSet(false),
-    m_instanceTypeHasBeenSet(false),
-    m_kernelIdHasBeenSet(false),
-    m_ramdiskIdHasBeenSet(false),
-    m_blockDeviceMappingsHasBeenSet(false),
-    m_instanceMonitoringHasBeenSet(false),
-    m_spotPriceHasBeenSet(false),
-    m_iamInstanceProfileHasBeenSet(false),
-    m_ebsOptimized(false),
-    m_ebsOptimizedHasBeenSet(false),
-    m_associatePublicIpAddress(false),
-    m_associatePublicIpAddressHasBeenSet(false),
-    m_placementTenancyHasBeenSet(false),
-    m_metadataOptionsHasBeenSet(false)
-{
-}
-
 Aws::String CreateLaunchConfigurationRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -56,12 +31,19 @@ Aws::String CreateLaunchConfigurationRequest::SerializePayload() const
 
   if(m_securityGroupsHasBeenSet)
   {
-    unsigned securityGroupsCount = 1;
-    for(auto& item : m_securityGroups)
+    if (m_securityGroups.empty())
     {
-      ss << "SecurityGroups.member." << securityGroupsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      securityGroupsCount++;
+      ss << "SecurityGroups=&";
+    }
+    else
+    {
+      unsigned securityGroupsCount = 1;
+      for(auto& item : m_securityGroups)
+      {
+        ss << "SecurityGroups.member." << securityGroupsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        securityGroupsCount++;
+      }
     }
   }
 
@@ -72,12 +54,19 @@ Aws::String CreateLaunchConfigurationRequest::SerializePayload() const
 
   if(m_classicLinkVPCSecurityGroupsHasBeenSet)
   {
-    unsigned classicLinkVPCSecurityGroupsCount = 1;
-    for(auto& item : m_classicLinkVPCSecurityGroups)
+    if (m_classicLinkVPCSecurityGroups.empty())
     {
-      ss << "ClassicLinkVPCSecurityGroups.member." << classicLinkVPCSecurityGroupsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      classicLinkVPCSecurityGroupsCount++;
+      ss << "ClassicLinkVPCSecurityGroups=&";
+    }
+    else
+    {
+      unsigned classicLinkVPCSecurityGroupsCount = 1;
+      for(auto& item : m_classicLinkVPCSecurityGroups)
+      {
+        ss << "ClassicLinkVPCSecurityGroups.member." << classicLinkVPCSecurityGroupsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        classicLinkVPCSecurityGroupsCount++;
+      }
     }
   }
 
@@ -108,11 +97,18 @@ Aws::String CreateLaunchConfigurationRequest::SerializePayload() const
 
   if(m_blockDeviceMappingsHasBeenSet)
   {
-    unsigned blockDeviceMappingsCount = 1;
-    for(auto& item : m_blockDeviceMappings)
+    if (m_blockDeviceMappings.empty())
     {
-      item.OutputToStream(ss, "BlockDeviceMappings.member.", blockDeviceMappingsCount, "");
-      blockDeviceMappingsCount++;
+      ss << "BlockDeviceMappings=&";
+    }
+    else
+    {
+      unsigned blockDeviceMappingsCount = 1;
+      for(auto& item : m_blockDeviceMappings)
+      {
+        item.OutputToStream(ss, "BlockDeviceMappings.member.", blockDeviceMappingsCount, "");
+        blockDeviceMappingsCount++;
+      }
     }
   }
 

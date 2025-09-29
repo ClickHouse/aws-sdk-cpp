@@ -31,52 +31,23 @@ namespace Model
   class VaultLockPolicy
   {
   public:
-    AWS_GLACIER_API VaultLockPolicy();
+    AWS_GLACIER_API VaultLockPolicy() = default;
     AWS_GLACIER_API VaultLockPolicy(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLACIER_API VaultLockPolicy& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLACIER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The vault lock policy.</p>
      */
-    inline const Aws::String& GetPolicy() const{ return m_policy; }
-
-    /**
-     * <p>The vault lock policy.</p>
-     */
+    inline const Aws::String& GetPolicy() const { return m_policy; }
     inline bool PolicyHasBeenSet() const { return m_policyHasBeenSet; }
-
-    /**
-     * <p>The vault lock policy.</p>
-     */
-    inline void SetPolicy(const Aws::String& value) { m_policyHasBeenSet = true; m_policy = value; }
-
-    /**
-     * <p>The vault lock policy.</p>
-     */
-    inline void SetPolicy(Aws::String&& value) { m_policyHasBeenSet = true; m_policy = std::move(value); }
-
-    /**
-     * <p>The vault lock policy.</p>
-     */
-    inline void SetPolicy(const char* value) { m_policyHasBeenSet = true; m_policy.assign(value); }
-
-    /**
-     * <p>The vault lock policy.</p>
-     */
-    inline VaultLockPolicy& WithPolicy(const Aws::String& value) { SetPolicy(value); return *this;}
-
-    /**
-     * <p>The vault lock policy.</p>
-     */
-    inline VaultLockPolicy& WithPolicy(Aws::String&& value) { SetPolicy(std::move(value)); return *this;}
-
-    /**
-     * <p>The vault lock policy.</p>
-     */
-    inline VaultLockPolicy& WithPolicy(const char* value) { SetPolicy(value); return *this;}
-
+    template<typename PolicyT = Aws::String>
+    void SetPolicy(PolicyT&& value) { m_policyHasBeenSet = true; m_policy = std::forward<PolicyT>(value); }
+    template<typename PolicyT = Aws::String>
+    VaultLockPolicy& WithPolicy(PolicyT&& value) { SetPolicy(std::forward<PolicyT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_policy;

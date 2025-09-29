@@ -36,49 +36,24 @@ namespace Model
   class ApplicationLayerAutomaticResponseConfiguration
   {
   public:
-    AWS_SHIELD_API ApplicationLayerAutomaticResponseConfiguration();
+    AWS_SHIELD_API ApplicationLayerAutomaticResponseConfiguration() = default;
     AWS_SHIELD_API ApplicationLayerAutomaticResponseConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_SHIELD_API ApplicationLayerAutomaticResponseConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SHIELD_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Indicates whether automatic application layer DDoS mitigation is enabled for
      * the protection. </p>
      */
-    inline const ApplicationLayerAutomaticResponseStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>Indicates whether automatic application layer DDoS mitigation is enabled for
-     * the protection. </p>
-     */
+    inline ApplicationLayerAutomaticResponseStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(ApplicationLayerAutomaticResponseStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline ApplicationLayerAutomaticResponseConfiguration& WithStatus(ApplicationLayerAutomaticResponseStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Indicates whether automatic application layer DDoS mitigation is enabled for
-     * the protection. </p>
-     */
-    inline void SetStatus(const ApplicationLayerAutomaticResponseStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>Indicates whether automatic application layer DDoS mitigation is enabled for
-     * the protection. </p>
-     */
-    inline void SetStatus(ApplicationLayerAutomaticResponseStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>Indicates whether automatic application layer DDoS mitigation is enabled for
-     * the protection. </p>
-     */
-    inline ApplicationLayerAutomaticResponseConfiguration& WithStatus(const ApplicationLayerAutomaticResponseStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>Indicates whether automatic application layer DDoS mitigation is enabled for
-     * the protection. </p>
-     */
-    inline ApplicationLayerAutomaticResponseConfiguration& WithStatus(ApplicationLayerAutomaticResponseStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the action setting that Shield Advanced should use in the WAF rules
      * that it creates on behalf of the protected resource in response to DDoS attacks.
@@ -87,61 +62,16 @@ namespace Model
      * Shield Advanced creates the WAF rules in a Shield Advanced-managed rule group,
      * inside the web ACL that you have associated with the resource. </p>
      */
-    inline const ResponseAction& GetAction() const{ return m_action; }
-
-    /**
-     * <p>Specifies the action setting that Shield Advanced should use in the WAF rules
-     * that it creates on behalf of the protected resource in response to DDoS attacks.
-     * You specify this as part of the configuration for the automatic application
-     * layer DDoS mitigation feature, when you enable or update automatic mitigation.
-     * Shield Advanced creates the WAF rules in a Shield Advanced-managed rule group,
-     * inside the web ACL that you have associated with the resource. </p>
-     */
+    inline const ResponseAction& GetAction() const { return m_action; }
     inline bool ActionHasBeenSet() const { return m_actionHasBeenSet; }
-
-    /**
-     * <p>Specifies the action setting that Shield Advanced should use in the WAF rules
-     * that it creates on behalf of the protected resource in response to DDoS attacks.
-     * You specify this as part of the configuration for the automatic application
-     * layer DDoS mitigation feature, when you enable or update automatic mitigation.
-     * Shield Advanced creates the WAF rules in a Shield Advanced-managed rule group,
-     * inside the web ACL that you have associated with the resource. </p>
-     */
-    inline void SetAction(const ResponseAction& value) { m_actionHasBeenSet = true; m_action = value; }
-
-    /**
-     * <p>Specifies the action setting that Shield Advanced should use in the WAF rules
-     * that it creates on behalf of the protected resource in response to DDoS attacks.
-     * You specify this as part of the configuration for the automatic application
-     * layer DDoS mitigation feature, when you enable or update automatic mitigation.
-     * Shield Advanced creates the WAF rules in a Shield Advanced-managed rule group,
-     * inside the web ACL that you have associated with the resource. </p>
-     */
-    inline void SetAction(ResponseAction&& value) { m_actionHasBeenSet = true; m_action = std::move(value); }
-
-    /**
-     * <p>Specifies the action setting that Shield Advanced should use in the WAF rules
-     * that it creates on behalf of the protected resource in response to DDoS attacks.
-     * You specify this as part of the configuration for the automatic application
-     * layer DDoS mitigation feature, when you enable or update automatic mitigation.
-     * Shield Advanced creates the WAF rules in a Shield Advanced-managed rule group,
-     * inside the web ACL that you have associated with the resource. </p>
-     */
-    inline ApplicationLayerAutomaticResponseConfiguration& WithAction(const ResponseAction& value) { SetAction(value); return *this;}
-
-    /**
-     * <p>Specifies the action setting that Shield Advanced should use in the WAF rules
-     * that it creates on behalf of the protected resource in response to DDoS attacks.
-     * You specify this as part of the configuration for the automatic application
-     * layer DDoS mitigation feature, when you enable or update automatic mitigation.
-     * Shield Advanced creates the WAF rules in a Shield Advanced-managed rule group,
-     * inside the web ACL that you have associated with the resource. </p>
-     */
-    inline ApplicationLayerAutomaticResponseConfiguration& WithAction(ResponseAction&& value) { SetAction(std::move(value)); return *this;}
-
+    template<typename ActionT = ResponseAction>
+    void SetAction(ActionT&& value) { m_actionHasBeenSet = true; m_action = std::forward<ActionT>(value); }
+    template<typename ActionT = ResponseAction>
+    ApplicationLayerAutomaticResponseConfiguration& WithAction(ActionT&& value) { SetAction(std::forward<ActionT>(value)); return *this;}
+    ///@}
   private:
 
-    ApplicationLayerAutomaticResponseStatus m_status;
+    ApplicationLayerAutomaticResponseStatus m_status{ApplicationLayerAutomaticResponseStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
     ResponseAction m_action;

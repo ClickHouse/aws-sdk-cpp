@@ -10,29 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-CreateVerifiedAccessEndpointRequest::CreateVerifiedAccessEndpointRequest() : 
-    m_verifiedAccessGroupIdHasBeenSet(false),
-    m_endpointType(VerifiedAccessEndpointType::NOT_SET),
-    m_endpointTypeHasBeenSet(false),
-    m_attachmentType(VerifiedAccessEndpointAttachmentType::NOT_SET),
-    m_attachmentTypeHasBeenSet(false),
-    m_domainCertificateArnHasBeenSet(false),
-    m_applicationDomainHasBeenSet(false),
-    m_endpointDomainPrefixHasBeenSet(false),
-    m_securityGroupIdsHasBeenSet(false),
-    m_loadBalancerOptionsHasBeenSet(false),
-    m_networkInterfaceOptionsHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_policyDocumentHasBeenSet(false),
-    m_tagSpecificationsHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_sseSpecificationHasBeenSet(false)
-{
-}
-
 Aws::String CreateVerifiedAccessEndpointRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -44,12 +21,12 @@ Aws::String CreateVerifiedAccessEndpointRequest::SerializePayload() const
 
   if(m_endpointTypeHasBeenSet)
   {
-    ss << "EndpointType=" << VerifiedAccessEndpointTypeMapper::GetNameForVerifiedAccessEndpointType(m_endpointType) << "&";
+    ss << "EndpointType=" << StringUtils::URLEncode(VerifiedAccessEndpointTypeMapper::GetNameForVerifiedAccessEndpointType(m_endpointType)) << "&";
   }
 
   if(m_attachmentTypeHasBeenSet)
   {
-    ss << "AttachmentType=" << VerifiedAccessEndpointAttachmentTypeMapper::GetNameForVerifiedAccessEndpointAttachmentType(m_attachmentType) << "&";
+    ss << "AttachmentType=" << StringUtils::URLEncode(VerifiedAccessEndpointAttachmentTypeMapper::GetNameForVerifiedAccessEndpointAttachmentType(m_attachmentType)) << "&";
   }
 
   if(m_domainCertificateArnHasBeenSet)
@@ -121,6 +98,16 @@ Aws::String CreateVerifiedAccessEndpointRequest::SerializePayload() const
   if(m_sseSpecificationHasBeenSet)
   {
     m_sseSpecification.OutputToStream(ss, "SseSpecification");
+  }
+
+  if(m_rdsOptionsHasBeenSet)
+  {
+    m_rdsOptions.OutputToStream(ss, "RdsOptions");
+  }
+
+  if(m_cidrOptionsHasBeenSet)
+  {
+    m_cidrOptions.OutputToStream(ss, "CidrOptions");
   }
 
   ss << "Version=2016-11-15";

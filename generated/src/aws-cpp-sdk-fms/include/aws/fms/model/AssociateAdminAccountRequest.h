@@ -21,7 +21,7 @@ namespace Model
   class AssociateAdminAccountRequest : public FMSRequest
   {
   public:
-    AWS_FMS_API AssociateAdminAccountRequest();
+    AWS_FMS_API AssociateAdminAccountRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,6 +34,7 @@ namespace Model
     AWS_FMS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Web Services account ID to associate with Firewall Manager as the
      * Firewall Manager default administrator account. This account must be a member
@@ -42,78 +43,13 @@ namespace Model
      * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts.html">Managing
      * the Amazon Web Services Accounts in Your Organization</a>. </p>
      */
-    inline const Aws::String& GetAdminAccount() const{ return m_adminAccount; }
-
-    /**
-     * <p>The Amazon Web Services account ID to associate with Firewall Manager as the
-     * Firewall Manager default administrator account. This account must be a member
-     * account of the organization in Organizations whose resources you want to
-     * protect. For more information about Organizations, see <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts.html">Managing
-     * the Amazon Web Services Accounts in Your Organization</a>. </p>
-     */
+    inline const Aws::String& GetAdminAccount() const { return m_adminAccount; }
     inline bool AdminAccountHasBeenSet() const { return m_adminAccountHasBeenSet; }
-
-    /**
-     * <p>The Amazon Web Services account ID to associate with Firewall Manager as the
-     * Firewall Manager default administrator account. This account must be a member
-     * account of the organization in Organizations whose resources you want to
-     * protect. For more information about Organizations, see <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts.html">Managing
-     * the Amazon Web Services Accounts in Your Organization</a>. </p>
-     */
-    inline void SetAdminAccount(const Aws::String& value) { m_adminAccountHasBeenSet = true; m_adminAccount = value; }
-
-    /**
-     * <p>The Amazon Web Services account ID to associate with Firewall Manager as the
-     * Firewall Manager default administrator account. This account must be a member
-     * account of the organization in Organizations whose resources you want to
-     * protect. For more information about Organizations, see <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts.html">Managing
-     * the Amazon Web Services Accounts in Your Organization</a>. </p>
-     */
-    inline void SetAdminAccount(Aws::String&& value) { m_adminAccountHasBeenSet = true; m_adminAccount = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID to associate with Firewall Manager as the
-     * Firewall Manager default administrator account. This account must be a member
-     * account of the organization in Organizations whose resources you want to
-     * protect. For more information about Organizations, see <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts.html">Managing
-     * the Amazon Web Services Accounts in Your Organization</a>. </p>
-     */
-    inline void SetAdminAccount(const char* value) { m_adminAccountHasBeenSet = true; m_adminAccount.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID to associate with Firewall Manager as the
-     * Firewall Manager default administrator account. This account must be a member
-     * account of the organization in Organizations whose resources you want to
-     * protect. For more information about Organizations, see <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts.html">Managing
-     * the Amazon Web Services Accounts in Your Organization</a>. </p>
-     */
-    inline AssociateAdminAccountRequest& WithAdminAccount(const Aws::String& value) { SetAdminAccount(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID to associate with Firewall Manager as the
-     * Firewall Manager default administrator account. This account must be a member
-     * account of the organization in Organizations whose resources you want to
-     * protect. For more information about Organizations, see <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts.html">Managing
-     * the Amazon Web Services Accounts in Your Organization</a>. </p>
-     */
-    inline AssociateAdminAccountRequest& WithAdminAccount(Aws::String&& value) { SetAdminAccount(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID to associate with Firewall Manager as the
-     * Firewall Manager default administrator account. This account must be a member
-     * account of the organization in Organizations whose resources you want to
-     * protect. For more information about Organizations, see <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts.html">Managing
-     * the Amazon Web Services Accounts in Your Organization</a>. </p>
-     */
-    inline AssociateAdminAccountRequest& WithAdminAccount(const char* value) { SetAdminAccount(value); return *this;}
-
+    template<typename AdminAccountT = Aws::String>
+    void SetAdminAccount(AdminAccountT&& value) { m_adminAccountHasBeenSet = true; m_adminAccount = std::forward<AdminAccountT>(value); }
+    template<typename AdminAccountT = Aws::String>
+    AssociateAdminAccountRequest& WithAdminAccount(AdminAccountT&& value) { SetAdminAccount(std::forward<AdminAccountT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_adminAccount;

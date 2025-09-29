@@ -21,7 +21,7 @@ namespace Model
   class GetCalculatedAttributeForProfileRequest : public CustomerProfilesRequest
   {
   public:
-    AWS_CUSTOMERPROFILES_API GetCalculatedAttributeForProfileRequest();
+    AWS_CUSTOMERPROFILES_API GetCalculatedAttributeForProfileRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,128 +32,41 @@ namespace Model
     AWS_CUSTOMERPROFILES_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The unique name of the domain.</p>
      */
-    inline const Aws::String& GetDomainName() const{ return m_domainName; }
-
-    /**
-     * <p>The unique name of the domain.</p>
-     */
+    inline const Aws::String& GetDomainName() const { return m_domainName; }
     inline bool DomainNameHasBeenSet() const { return m_domainNameHasBeenSet; }
+    template<typename DomainNameT = Aws::String>
+    void SetDomainName(DomainNameT&& value) { m_domainNameHasBeenSet = true; m_domainName = std::forward<DomainNameT>(value); }
+    template<typename DomainNameT = Aws::String>
+    GetCalculatedAttributeForProfileRequest& WithDomainName(DomainNameT&& value) { SetDomainName(std::forward<DomainNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique name of the domain.</p>
-     */
-    inline void SetDomainName(const Aws::String& value) { m_domainNameHasBeenSet = true; m_domainName = value; }
-
-    /**
-     * <p>The unique name of the domain.</p>
-     */
-    inline void SetDomainName(Aws::String&& value) { m_domainNameHasBeenSet = true; m_domainName = std::move(value); }
-
-    /**
-     * <p>The unique name of the domain.</p>
-     */
-    inline void SetDomainName(const char* value) { m_domainNameHasBeenSet = true; m_domainName.assign(value); }
-
-    /**
-     * <p>The unique name of the domain.</p>
-     */
-    inline GetCalculatedAttributeForProfileRequest& WithDomainName(const Aws::String& value) { SetDomainName(value); return *this;}
-
-    /**
-     * <p>The unique name of the domain.</p>
-     */
-    inline GetCalculatedAttributeForProfileRequest& WithDomainName(Aws::String&& value) { SetDomainName(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique name of the domain.</p>
-     */
-    inline GetCalculatedAttributeForProfileRequest& WithDomainName(const char* value) { SetDomainName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique identifier of a customer profile.</p>
      */
-    inline const Aws::String& GetProfileId() const{ return m_profileId; }
-
-    /**
-     * <p>The unique identifier of a customer profile.</p>
-     */
+    inline const Aws::String& GetProfileId() const { return m_profileId; }
     inline bool ProfileIdHasBeenSet() const { return m_profileIdHasBeenSet; }
+    template<typename ProfileIdT = Aws::String>
+    void SetProfileId(ProfileIdT&& value) { m_profileIdHasBeenSet = true; m_profileId = std::forward<ProfileIdT>(value); }
+    template<typename ProfileIdT = Aws::String>
+    GetCalculatedAttributeForProfileRequest& WithProfileId(ProfileIdT&& value) { SetProfileId(std::forward<ProfileIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier of a customer profile.</p>
-     */
-    inline void SetProfileId(const Aws::String& value) { m_profileIdHasBeenSet = true; m_profileId = value; }
-
-    /**
-     * <p>The unique identifier of a customer profile.</p>
-     */
-    inline void SetProfileId(Aws::String&& value) { m_profileIdHasBeenSet = true; m_profileId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of a customer profile.</p>
-     */
-    inline void SetProfileId(const char* value) { m_profileIdHasBeenSet = true; m_profileId.assign(value); }
-
-    /**
-     * <p>The unique identifier of a customer profile.</p>
-     */
-    inline GetCalculatedAttributeForProfileRequest& WithProfileId(const Aws::String& value) { SetProfileId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of a customer profile.</p>
-     */
-    inline GetCalculatedAttributeForProfileRequest& WithProfileId(Aws::String&& value) { SetProfileId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of a customer profile.</p>
-     */
-    inline GetCalculatedAttributeForProfileRequest& WithProfileId(const char* value) { SetProfileId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique name of the calculated attribute.</p>
      */
-    inline const Aws::String& GetCalculatedAttributeName() const{ return m_calculatedAttributeName; }
-
-    /**
-     * <p>The unique name of the calculated attribute.</p>
-     */
+    inline const Aws::String& GetCalculatedAttributeName() const { return m_calculatedAttributeName; }
     inline bool CalculatedAttributeNameHasBeenSet() const { return m_calculatedAttributeNameHasBeenSet; }
-
-    /**
-     * <p>The unique name of the calculated attribute.</p>
-     */
-    inline void SetCalculatedAttributeName(const Aws::String& value) { m_calculatedAttributeNameHasBeenSet = true; m_calculatedAttributeName = value; }
-
-    /**
-     * <p>The unique name of the calculated attribute.</p>
-     */
-    inline void SetCalculatedAttributeName(Aws::String&& value) { m_calculatedAttributeNameHasBeenSet = true; m_calculatedAttributeName = std::move(value); }
-
-    /**
-     * <p>The unique name of the calculated attribute.</p>
-     */
-    inline void SetCalculatedAttributeName(const char* value) { m_calculatedAttributeNameHasBeenSet = true; m_calculatedAttributeName.assign(value); }
-
-    /**
-     * <p>The unique name of the calculated attribute.</p>
-     */
-    inline GetCalculatedAttributeForProfileRequest& WithCalculatedAttributeName(const Aws::String& value) { SetCalculatedAttributeName(value); return *this;}
-
-    /**
-     * <p>The unique name of the calculated attribute.</p>
-     */
-    inline GetCalculatedAttributeForProfileRequest& WithCalculatedAttributeName(Aws::String&& value) { SetCalculatedAttributeName(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique name of the calculated attribute.</p>
-     */
-    inline GetCalculatedAttributeForProfileRequest& WithCalculatedAttributeName(const char* value) { SetCalculatedAttributeName(value); return *this;}
-
+    template<typename CalculatedAttributeNameT = Aws::String>
+    void SetCalculatedAttributeName(CalculatedAttributeNameT&& value) { m_calculatedAttributeNameHasBeenSet = true; m_calculatedAttributeName = std::forward<CalculatedAttributeNameT>(value); }
+    template<typename CalculatedAttributeNameT = Aws::String>
+    GetCalculatedAttributeForProfileRequest& WithCalculatedAttributeName(CalculatedAttributeNameT&& value) { SetCalculatedAttributeName(std::forward<CalculatedAttributeNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_domainName;

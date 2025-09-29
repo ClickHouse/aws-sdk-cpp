@@ -31,73 +31,40 @@ namespace Model
   class DataConnector
   {
   public:
-    AWS_IOTTWINMAKER_API DataConnector();
+    AWS_IOTTWINMAKER_API DataConnector() = default;
     AWS_IOTTWINMAKER_API DataConnector(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTTWINMAKER_API DataConnector& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTTWINMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Lambda function associated with this data connector.</p>
      */
-    inline const LambdaFunction& GetLambda() const{ return m_lambda; }
-
-    /**
-     * <p>The Lambda function associated with this data connector.</p>
-     */
+    inline const LambdaFunction& GetLambda() const { return m_lambda; }
     inline bool LambdaHasBeenSet() const { return m_lambdaHasBeenSet; }
+    template<typename LambdaT = LambdaFunction>
+    void SetLambda(LambdaT&& value) { m_lambdaHasBeenSet = true; m_lambda = std::forward<LambdaT>(value); }
+    template<typename LambdaT = LambdaFunction>
+    DataConnector& WithLambda(LambdaT&& value) { SetLambda(std::forward<LambdaT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Lambda function associated with this data connector.</p>
-     */
-    inline void SetLambda(const LambdaFunction& value) { m_lambdaHasBeenSet = true; m_lambda = value; }
-
-    /**
-     * <p>The Lambda function associated with this data connector.</p>
-     */
-    inline void SetLambda(LambdaFunction&& value) { m_lambdaHasBeenSet = true; m_lambda = std::move(value); }
-
-    /**
-     * <p>The Lambda function associated with this data connector.</p>
-     */
-    inline DataConnector& WithLambda(const LambdaFunction& value) { SetLambda(value); return *this;}
-
-    /**
-     * <p>The Lambda function associated with this data connector.</p>
-     */
-    inline DataConnector& WithLambda(LambdaFunction&& value) { SetLambda(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A Boolean value that specifies whether the data connector is native to IoT
      * TwinMaker.</p>
      */
-    inline bool GetIsNative() const{ return m_isNative; }
-
-    /**
-     * <p>A Boolean value that specifies whether the data connector is native to IoT
-     * TwinMaker.</p>
-     */
+    inline bool GetIsNative() const { return m_isNative; }
     inline bool IsNativeHasBeenSet() const { return m_isNativeHasBeenSet; }
-
-    /**
-     * <p>A Boolean value that specifies whether the data connector is native to IoT
-     * TwinMaker.</p>
-     */
     inline void SetIsNative(bool value) { m_isNativeHasBeenSet = true; m_isNative = value; }
-
-    /**
-     * <p>A Boolean value that specifies whether the data connector is native to IoT
-     * TwinMaker.</p>
-     */
     inline DataConnector& WithIsNative(bool value) { SetIsNative(value); return *this;}
-
+    ///@}
   private:
 
     LambdaFunction m_lambda;
     bool m_lambdaHasBeenSet = false;
 
-    bool m_isNative;
+    bool m_isNative{false};
     bool m_isNativeHasBeenSet = false;
   };
 

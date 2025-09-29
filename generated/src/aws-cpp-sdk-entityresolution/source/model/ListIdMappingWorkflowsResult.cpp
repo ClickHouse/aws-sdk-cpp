@@ -17,10 +17,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-ListIdMappingWorkflowsResult::ListIdMappingWorkflowsResult()
-{
-}
-
 ListIdMappingWorkflowsResult::ListIdMappingWorkflowsResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
@@ -29,12 +25,6 @@ ListIdMappingWorkflowsResult::ListIdMappingWorkflowsResult(const Aws::AmazonWebS
 ListIdMappingWorkflowsResult& ListIdMappingWorkflowsResult::operator =(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   JsonView jsonValue = result.GetPayload().View();
-  if(jsonValue.ValueExists("nextToken"))
-  {
-    m_nextToken = jsonValue.GetString("nextToken");
-
-  }
-
   if(jsonValue.ValueExists("workflowSummaries"))
   {
     Aws::Utils::Array<JsonView> workflowSummariesJsonList = jsonValue.GetArray("workflowSummaries");
@@ -42,14 +32,20 @@ ListIdMappingWorkflowsResult& ListIdMappingWorkflowsResult::operator =(const Aws
     {
       m_workflowSummaries.push_back(workflowSummariesJsonList[workflowSummariesIndex].AsObject());
     }
+    m_workflowSummariesHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("nextToken"))
+  {
+    m_nextToken = jsonValue.GetString("nextToken");
+    m_nextTokenHasBeenSet = true;
+  }
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

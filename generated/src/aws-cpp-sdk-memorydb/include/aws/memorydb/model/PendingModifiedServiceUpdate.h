@@ -33,89 +33,39 @@ namespace Model
   class PendingModifiedServiceUpdate
   {
   public:
-    AWS_MEMORYDB_API PendingModifiedServiceUpdate();
+    AWS_MEMORYDB_API PendingModifiedServiceUpdate() = default;
     AWS_MEMORYDB_API PendingModifiedServiceUpdate(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEMORYDB_API PendingModifiedServiceUpdate& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEMORYDB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The unique ID of the service update</p>
      */
-    inline const Aws::String& GetServiceUpdateName() const{ return m_serviceUpdateName; }
-
-    /**
-     * <p>The unique ID of the service update</p>
-     */
+    inline const Aws::String& GetServiceUpdateName() const { return m_serviceUpdateName; }
     inline bool ServiceUpdateNameHasBeenSet() const { return m_serviceUpdateNameHasBeenSet; }
+    template<typename ServiceUpdateNameT = Aws::String>
+    void SetServiceUpdateName(ServiceUpdateNameT&& value) { m_serviceUpdateNameHasBeenSet = true; m_serviceUpdateName = std::forward<ServiceUpdateNameT>(value); }
+    template<typename ServiceUpdateNameT = Aws::String>
+    PendingModifiedServiceUpdate& WithServiceUpdateName(ServiceUpdateNameT&& value) { SetServiceUpdateName(std::forward<ServiceUpdateNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique ID of the service update</p>
-     */
-    inline void SetServiceUpdateName(const Aws::String& value) { m_serviceUpdateNameHasBeenSet = true; m_serviceUpdateName = value; }
-
-    /**
-     * <p>The unique ID of the service update</p>
-     */
-    inline void SetServiceUpdateName(Aws::String&& value) { m_serviceUpdateNameHasBeenSet = true; m_serviceUpdateName = std::move(value); }
-
-    /**
-     * <p>The unique ID of the service update</p>
-     */
-    inline void SetServiceUpdateName(const char* value) { m_serviceUpdateNameHasBeenSet = true; m_serviceUpdateName.assign(value); }
-
-    /**
-     * <p>The unique ID of the service update</p>
-     */
-    inline PendingModifiedServiceUpdate& WithServiceUpdateName(const Aws::String& value) { SetServiceUpdateName(value); return *this;}
-
-    /**
-     * <p>The unique ID of the service update</p>
-     */
-    inline PendingModifiedServiceUpdate& WithServiceUpdateName(Aws::String&& value) { SetServiceUpdateName(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique ID of the service update</p>
-     */
-    inline PendingModifiedServiceUpdate& WithServiceUpdateName(const char* value) { SetServiceUpdateName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the service update</p>
      */
-    inline const ServiceUpdateStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the service update</p>
-     */
+    inline ServiceUpdateStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p>The status of the service update</p>
-     */
-    inline void SetStatus(const ServiceUpdateStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the service update</p>
-     */
-    inline void SetStatus(ServiceUpdateStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the service update</p>
-     */
-    inline PendingModifiedServiceUpdate& WithStatus(const ServiceUpdateStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the service update</p>
-     */
-    inline PendingModifiedServiceUpdate& WithStatus(ServiceUpdateStatus&& value) { SetStatus(std::move(value)); return *this;}
-
+    inline void SetStatus(ServiceUpdateStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline PendingModifiedServiceUpdate& WithStatus(ServiceUpdateStatus value) { SetStatus(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_serviceUpdateName;
     bool m_serviceUpdateNameHasBeenSet = false;
 
-    ServiceUpdateStatus m_status;
+    ServiceUpdateStatus m_status{ServiceUpdateStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
   };
 

@@ -21,7 +21,7 @@ namespace Model
   class DescribeBillingGroupRequest : public IoTRequest
   {
   public:
-    AWS_IOT_API DescribeBillingGroupRequest();
+    AWS_IOT_API DescribeBillingGroupRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_IOT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of the billing group.</p>
      */
-    inline const Aws::String& GetBillingGroupName() const{ return m_billingGroupName; }
-
-    /**
-     * <p>The name of the billing group.</p>
-     */
+    inline const Aws::String& GetBillingGroupName() const { return m_billingGroupName; }
     inline bool BillingGroupNameHasBeenSet() const { return m_billingGroupNameHasBeenSet; }
-
-    /**
-     * <p>The name of the billing group.</p>
-     */
-    inline void SetBillingGroupName(const Aws::String& value) { m_billingGroupNameHasBeenSet = true; m_billingGroupName = value; }
-
-    /**
-     * <p>The name of the billing group.</p>
-     */
-    inline void SetBillingGroupName(Aws::String&& value) { m_billingGroupNameHasBeenSet = true; m_billingGroupName = std::move(value); }
-
-    /**
-     * <p>The name of the billing group.</p>
-     */
-    inline void SetBillingGroupName(const char* value) { m_billingGroupNameHasBeenSet = true; m_billingGroupName.assign(value); }
-
-    /**
-     * <p>The name of the billing group.</p>
-     */
-    inline DescribeBillingGroupRequest& WithBillingGroupName(const Aws::String& value) { SetBillingGroupName(value); return *this;}
-
-    /**
-     * <p>The name of the billing group.</p>
-     */
-    inline DescribeBillingGroupRequest& WithBillingGroupName(Aws::String&& value) { SetBillingGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the billing group.</p>
-     */
-    inline DescribeBillingGroupRequest& WithBillingGroupName(const char* value) { SetBillingGroupName(value); return *this;}
-
+    template<typename BillingGroupNameT = Aws::String>
+    void SetBillingGroupName(BillingGroupNameT&& value) { m_billingGroupNameHasBeenSet = true; m_billingGroupName = std::forward<BillingGroupNameT>(value); }
+    template<typename BillingGroupNameT = Aws::String>
+    DescribeBillingGroupRequest& WithBillingGroupName(BillingGroupNameT&& value) { SetBillingGroupName(std::forward<BillingGroupNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_billingGroupName;

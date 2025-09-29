@@ -27,111 +27,51 @@ namespace Model
   class UpdateConnectivityInfoResult
   {
   public:
-    AWS_GREENGRASS_API UpdateConnectivityInfoResult();
+    AWS_GREENGRASS_API UpdateConnectivityInfoResult() = default;
     AWS_GREENGRASS_API UpdateConnectivityInfoResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_GREENGRASS_API UpdateConnectivityInfoResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * A message about the connectivity info update request.
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
+    inline const Aws::String& GetMessage() const { return m_message; }
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    UpdateConnectivityInfoResult& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * A message about the connectivity info update request.
-     */
-    inline void SetMessage(const Aws::String& value) { m_message = value; }
-
-    /**
-     * A message about the connectivity info update request.
-     */
-    inline void SetMessage(Aws::String&& value) { m_message = std::move(value); }
-
-    /**
-     * A message about the connectivity info update request.
-     */
-    inline void SetMessage(const char* value) { m_message.assign(value); }
-
-    /**
-     * A message about the connectivity info update request.
-     */
-    inline UpdateConnectivityInfoResult& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * A message about the connectivity info update request.
-     */
-    inline UpdateConnectivityInfoResult& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * A message about the connectivity info update request.
-     */
-    inline UpdateConnectivityInfoResult& WithMessage(const char* value) { SetMessage(value); return *this;}
-
-
+    ///@{
     /**
      * The new version of the connectivity info.
      */
-    inline const Aws::String& GetVersion() const{ return m_version; }
+    inline const Aws::String& GetVersion() const { return m_version; }
+    template<typename VersionT = Aws::String>
+    void SetVersion(VersionT&& value) { m_versionHasBeenSet = true; m_version = std::forward<VersionT>(value); }
+    template<typename VersionT = Aws::String>
+    UpdateConnectivityInfoResult& WithVersion(VersionT&& value) { SetVersion(std::forward<VersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The new version of the connectivity info.
-     */
-    inline void SetVersion(const Aws::String& value) { m_version = value; }
-
-    /**
-     * The new version of the connectivity info.
-     */
-    inline void SetVersion(Aws::String&& value) { m_version = std::move(value); }
-
-    /**
-     * The new version of the connectivity info.
-     */
-    inline void SetVersion(const char* value) { m_version.assign(value); }
-
-    /**
-     * The new version of the connectivity info.
-     */
-    inline UpdateConnectivityInfoResult& WithVersion(const Aws::String& value) { SetVersion(value); return *this;}
-
-    /**
-     * The new version of the connectivity info.
-     */
-    inline UpdateConnectivityInfoResult& WithVersion(Aws::String&& value) { SetVersion(std::move(value)); return *this;}
-
-    /**
-     * The new version of the connectivity info.
-     */
-    inline UpdateConnectivityInfoResult& WithVersion(const char* value) { SetVersion(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline UpdateConnectivityInfoResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline UpdateConnectivityInfoResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline UpdateConnectivityInfoResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    UpdateConnectivityInfoResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_message;
+    bool m_messageHasBeenSet = false;
 
     Aws::String m_version;
+    bool m_versionHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

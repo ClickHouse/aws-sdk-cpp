@@ -32,109 +32,37 @@ namespace Model
   class KinesisFirehoseDestination
   {
   public:
-    AWS_PINPOINTSMSVOICE_API KinesisFirehoseDestination();
+    AWS_PINPOINTSMSVOICE_API KinesisFirehoseDestination() = default;
     AWS_PINPOINTSMSVOICE_API KinesisFirehoseDestination(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINTSMSVOICE_API KinesisFirehoseDestination& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINTSMSVOICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * The Amazon Resource Name (ARN) of an IAM role that can write data to an Amazon
      * Kinesis Data Firehose stream.
      */
-    inline const Aws::String& GetDeliveryStreamArn() const{ return m_deliveryStreamArn; }
-
-    /**
-     * The Amazon Resource Name (ARN) of an IAM role that can write data to an Amazon
-     * Kinesis Data Firehose stream.
-     */
+    inline const Aws::String& GetDeliveryStreamArn() const { return m_deliveryStreamArn; }
     inline bool DeliveryStreamArnHasBeenSet() const { return m_deliveryStreamArnHasBeenSet; }
+    template<typename DeliveryStreamArnT = Aws::String>
+    void SetDeliveryStreamArn(DeliveryStreamArnT&& value) { m_deliveryStreamArnHasBeenSet = true; m_deliveryStreamArn = std::forward<DeliveryStreamArnT>(value); }
+    template<typename DeliveryStreamArnT = Aws::String>
+    KinesisFirehoseDestination& WithDeliveryStreamArn(DeliveryStreamArnT&& value) { SetDeliveryStreamArn(std::forward<DeliveryStreamArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The Amazon Resource Name (ARN) of an IAM role that can write data to an Amazon
-     * Kinesis Data Firehose stream.
-     */
-    inline void SetDeliveryStreamArn(const Aws::String& value) { m_deliveryStreamArnHasBeenSet = true; m_deliveryStreamArn = value; }
-
-    /**
-     * The Amazon Resource Name (ARN) of an IAM role that can write data to an Amazon
-     * Kinesis Data Firehose stream.
-     */
-    inline void SetDeliveryStreamArn(Aws::String&& value) { m_deliveryStreamArnHasBeenSet = true; m_deliveryStreamArn = std::move(value); }
-
-    /**
-     * The Amazon Resource Name (ARN) of an IAM role that can write data to an Amazon
-     * Kinesis Data Firehose stream.
-     */
-    inline void SetDeliveryStreamArn(const char* value) { m_deliveryStreamArnHasBeenSet = true; m_deliveryStreamArn.assign(value); }
-
-    /**
-     * The Amazon Resource Name (ARN) of an IAM role that can write data to an Amazon
-     * Kinesis Data Firehose stream.
-     */
-    inline KinesisFirehoseDestination& WithDeliveryStreamArn(const Aws::String& value) { SetDeliveryStreamArn(value); return *this;}
-
-    /**
-     * The Amazon Resource Name (ARN) of an IAM role that can write data to an Amazon
-     * Kinesis Data Firehose stream.
-     */
-    inline KinesisFirehoseDestination& WithDeliveryStreamArn(Aws::String&& value) { SetDeliveryStreamArn(std::move(value)); return *this;}
-
-    /**
-     * The Amazon Resource Name (ARN) of an IAM role that can write data to an Amazon
-     * Kinesis Data Firehose stream.
-     */
-    inline KinesisFirehoseDestination& WithDeliveryStreamArn(const char* value) { SetDeliveryStreamArn(value); return *this;}
-
-
+    ///@{
     /**
      * The Amazon Resource Name (ARN) of the Amazon Kinesis Data Firehose destination
      * that you want to use in the event destination.
      */
-    inline const Aws::String& GetIamRoleArn() const{ return m_iamRoleArn; }
-
-    /**
-     * The Amazon Resource Name (ARN) of the Amazon Kinesis Data Firehose destination
-     * that you want to use in the event destination.
-     */
+    inline const Aws::String& GetIamRoleArn() const { return m_iamRoleArn; }
     inline bool IamRoleArnHasBeenSet() const { return m_iamRoleArnHasBeenSet; }
-
-    /**
-     * The Amazon Resource Name (ARN) of the Amazon Kinesis Data Firehose destination
-     * that you want to use in the event destination.
-     */
-    inline void SetIamRoleArn(const Aws::String& value) { m_iamRoleArnHasBeenSet = true; m_iamRoleArn = value; }
-
-    /**
-     * The Amazon Resource Name (ARN) of the Amazon Kinesis Data Firehose destination
-     * that you want to use in the event destination.
-     */
-    inline void SetIamRoleArn(Aws::String&& value) { m_iamRoleArnHasBeenSet = true; m_iamRoleArn = std::move(value); }
-
-    /**
-     * The Amazon Resource Name (ARN) of the Amazon Kinesis Data Firehose destination
-     * that you want to use in the event destination.
-     */
-    inline void SetIamRoleArn(const char* value) { m_iamRoleArnHasBeenSet = true; m_iamRoleArn.assign(value); }
-
-    /**
-     * The Amazon Resource Name (ARN) of the Amazon Kinesis Data Firehose destination
-     * that you want to use in the event destination.
-     */
-    inline KinesisFirehoseDestination& WithIamRoleArn(const Aws::String& value) { SetIamRoleArn(value); return *this;}
-
-    /**
-     * The Amazon Resource Name (ARN) of the Amazon Kinesis Data Firehose destination
-     * that you want to use in the event destination.
-     */
-    inline KinesisFirehoseDestination& WithIamRoleArn(Aws::String&& value) { SetIamRoleArn(std::move(value)); return *this;}
-
-    /**
-     * The Amazon Resource Name (ARN) of the Amazon Kinesis Data Firehose destination
-     * that you want to use in the event destination.
-     */
-    inline KinesisFirehoseDestination& WithIamRoleArn(const char* value) { SetIamRoleArn(value); return *this;}
-
+    template<typename IamRoleArnT = Aws::String>
+    void SetIamRoleArn(IamRoleArnT&& value) { m_iamRoleArnHasBeenSet = true; m_iamRoleArn = std::forward<IamRoleArnT>(value); }
+    template<typename IamRoleArnT = Aws::String>
+    KinesisFirehoseDestination& WithIamRoleArn(IamRoleArnT&& value) { SetIamRoleArn(std::forward<IamRoleArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_deliveryStreamArn;

@@ -18,17 +18,7 @@ namespace ApplicationDiscoveryService
 namespace Model
 {
 
-ImportTaskFilter::ImportTaskFilter() : 
-    m_name(ImportTaskFilterName::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_valuesHasBeenSet(false)
-{
-}
-
-ImportTaskFilter::ImportTaskFilter(JsonView jsonValue) : 
-    m_name(ImportTaskFilterName::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_valuesHasBeenSet(false)
+ImportTaskFilter::ImportTaskFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ ImportTaskFilter& ImportTaskFilter::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("name"))
   {
     m_name = ImportTaskFilterNameMapper::GetImportTaskFilterNameForName(jsonValue.GetString("name"));
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("values"))
   {
     Aws::Utils::Array<JsonView> valuesJsonList = jsonValue.GetArray("values");
@@ -51,7 +39,6 @@ ImportTaskFilter& ImportTaskFilter::operator =(JsonView jsonValue)
     }
     m_valuesHasBeenSet = true;
   }
-
   return *this;
 }
 

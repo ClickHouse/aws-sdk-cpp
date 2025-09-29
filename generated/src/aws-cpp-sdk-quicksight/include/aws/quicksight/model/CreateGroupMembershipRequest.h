@@ -21,7 +21,7 @@ namespace Model
   class CreateGroupMembershipRequest : public QuickSightRequest
   {
   public:
-    AWS_QUICKSIGHT_API CreateGroupMembershipRequest();
+    AWS_QUICKSIGHT_API CreateGroupMembershipRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,185 +32,55 @@ namespace Model
     AWS_QUICKSIGHT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of the user that you want to add to the group membership.</p>
      */
-    inline const Aws::String& GetMemberName() const{ return m_memberName; }
-
-    /**
-     * <p>The name of the user that you want to add to the group membership.</p>
-     */
+    inline const Aws::String& GetMemberName() const { return m_memberName; }
     inline bool MemberNameHasBeenSet() const { return m_memberNameHasBeenSet; }
+    template<typename MemberNameT = Aws::String>
+    void SetMemberName(MemberNameT&& value) { m_memberNameHasBeenSet = true; m_memberName = std::forward<MemberNameT>(value); }
+    template<typename MemberNameT = Aws::String>
+    CreateGroupMembershipRequest& WithMemberName(MemberNameT&& value) { SetMemberName(std::forward<MemberNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the user that you want to add to the group membership.</p>
-     */
-    inline void SetMemberName(const Aws::String& value) { m_memberNameHasBeenSet = true; m_memberName = value; }
-
-    /**
-     * <p>The name of the user that you want to add to the group membership.</p>
-     */
-    inline void SetMemberName(Aws::String&& value) { m_memberNameHasBeenSet = true; m_memberName = std::move(value); }
-
-    /**
-     * <p>The name of the user that you want to add to the group membership.</p>
-     */
-    inline void SetMemberName(const char* value) { m_memberNameHasBeenSet = true; m_memberName.assign(value); }
-
-    /**
-     * <p>The name of the user that you want to add to the group membership.</p>
-     */
-    inline CreateGroupMembershipRequest& WithMemberName(const Aws::String& value) { SetMemberName(value); return *this;}
-
-    /**
-     * <p>The name of the user that you want to add to the group membership.</p>
-     */
-    inline CreateGroupMembershipRequest& WithMemberName(Aws::String&& value) { SetMemberName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the user that you want to add to the group membership.</p>
-     */
-    inline CreateGroupMembershipRequest& WithMemberName(const char* value) { SetMemberName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the group that you want to add the user to.</p>
      */
-    inline const Aws::String& GetGroupName() const{ return m_groupName; }
-
-    /**
-     * <p>The name of the group that you want to add the user to.</p>
-     */
+    inline const Aws::String& GetGroupName() const { return m_groupName; }
     inline bool GroupNameHasBeenSet() const { return m_groupNameHasBeenSet; }
+    template<typename GroupNameT = Aws::String>
+    void SetGroupName(GroupNameT&& value) { m_groupNameHasBeenSet = true; m_groupName = std::forward<GroupNameT>(value); }
+    template<typename GroupNameT = Aws::String>
+    CreateGroupMembershipRequest& WithGroupName(GroupNameT&& value) { SetGroupName(std::forward<GroupNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the group that you want to add the user to.</p>
-     */
-    inline void SetGroupName(const Aws::String& value) { m_groupNameHasBeenSet = true; m_groupName = value; }
-
-    /**
-     * <p>The name of the group that you want to add the user to.</p>
-     */
-    inline void SetGroupName(Aws::String&& value) { m_groupNameHasBeenSet = true; m_groupName = std::move(value); }
-
-    /**
-     * <p>The name of the group that you want to add the user to.</p>
-     */
-    inline void SetGroupName(const char* value) { m_groupNameHasBeenSet = true; m_groupName.assign(value); }
-
-    /**
-     * <p>The name of the group that you want to add the user to.</p>
-     */
-    inline CreateGroupMembershipRequest& WithGroupName(const Aws::String& value) { SetGroupName(value); return *this;}
-
-    /**
-     * <p>The name of the group that you want to add the user to.</p>
-     */
-    inline CreateGroupMembershipRequest& WithGroupName(Aws::String&& value) { SetGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the group that you want to add the user to.</p>
-     */
-    inline CreateGroupMembershipRequest& WithGroupName(const char* value) { SetGroupName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID for the Amazon Web Services account that the group is in. Currently,
      * you use the ID for the Amazon Web Services account that contains your Amazon
      * QuickSight account.</p>
      */
-    inline const Aws::String& GetAwsAccountId() const{ return m_awsAccountId; }
-
-    /**
-     * <p>The ID for the Amazon Web Services account that the group is in. Currently,
-     * you use the ID for the Amazon Web Services account that contains your Amazon
-     * QuickSight account.</p>
-     */
+    inline const Aws::String& GetAwsAccountId() const { return m_awsAccountId; }
     inline bool AwsAccountIdHasBeenSet() const { return m_awsAccountIdHasBeenSet; }
+    template<typename AwsAccountIdT = Aws::String>
+    void SetAwsAccountId(AwsAccountIdT&& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = std::forward<AwsAccountIdT>(value); }
+    template<typename AwsAccountIdT = Aws::String>
+    CreateGroupMembershipRequest& WithAwsAccountId(AwsAccountIdT&& value) { SetAwsAccountId(std::forward<AwsAccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID for the Amazon Web Services account that the group is in. Currently,
-     * you use the ID for the Amazon Web Services account that contains your Amazon
-     * QuickSight account.</p>
-     */
-    inline void SetAwsAccountId(const Aws::String& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = value; }
-
-    /**
-     * <p>The ID for the Amazon Web Services account that the group is in. Currently,
-     * you use the ID for the Amazon Web Services account that contains your Amazon
-     * QuickSight account.</p>
-     */
-    inline void SetAwsAccountId(Aws::String&& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = std::move(value); }
-
-    /**
-     * <p>The ID for the Amazon Web Services account that the group is in. Currently,
-     * you use the ID for the Amazon Web Services account that contains your Amazon
-     * QuickSight account.</p>
-     */
-    inline void SetAwsAccountId(const char* value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId.assign(value); }
-
-    /**
-     * <p>The ID for the Amazon Web Services account that the group is in. Currently,
-     * you use the ID for the Amazon Web Services account that contains your Amazon
-     * QuickSight account.</p>
-     */
-    inline CreateGroupMembershipRequest& WithAwsAccountId(const Aws::String& value) { SetAwsAccountId(value); return *this;}
-
-    /**
-     * <p>The ID for the Amazon Web Services account that the group is in. Currently,
-     * you use the ID for the Amazon Web Services account that contains your Amazon
-     * QuickSight account.</p>
-     */
-    inline CreateGroupMembershipRequest& WithAwsAccountId(Aws::String&& value) { SetAwsAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID for the Amazon Web Services account that the group is in. Currently,
-     * you use the ID for the Amazon Web Services account that contains your Amazon
-     * QuickSight account.</p>
-     */
-    inline CreateGroupMembershipRequest& WithAwsAccountId(const char* value) { SetAwsAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The namespace that you want the user to be a part of.</p>
      */
-    inline const Aws::String& GetNamespace() const{ return m_namespace; }
-
-    /**
-     * <p>The namespace that you want the user to be a part of.</p>
-     */
+    inline const Aws::String& GetNamespace() const { return m_namespace; }
     inline bool NamespaceHasBeenSet() const { return m_namespaceHasBeenSet; }
-
-    /**
-     * <p>The namespace that you want the user to be a part of.</p>
-     */
-    inline void SetNamespace(const Aws::String& value) { m_namespaceHasBeenSet = true; m_namespace = value; }
-
-    /**
-     * <p>The namespace that you want the user to be a part of.</p>
-     */
-    inline void SetNamespace(Aws::String&& value) { m_namespaceHasBeenSet = true; m_namespace = std::move(value); }
-
-    /**
-     * <p>The namespace that you want the user to be a part of.</p>
-     */
-    inline void SetNamespace(const char* value) { m_namespaceHasBeenSet = true; m_namespace.assign(value); }
-
-    /**
-     * <p>The namespace that you want the user to be a part of.</p>
-     */
-    inline CreateGroupMembershipRequest& WithNamespace(const Aws::String& value) { SetNamespace(value); return *this;}
-
-    /**
-     * <p>The namespace that you want the user to be a part of.</p>
-     */
-    inline CreateGroupMembershipRequest& WithNamespace(Aws::String&& value) { SetNamespace(std::move(value)); return *this;}
-
-    /**
-     * <p>The namespace that you want the user to be a part of.</p>
-     */
-    inline CreateGroupMembershipRequest& WithNamespace(const char* value) { SetNamespace(value); return *this;}
-
+    template<typename NamespaceT = Aws::String>
+    void SetNamespace(NamespaceT&& value) { m_namespaceHasBeenSet = true; m_namespace = std::forward<NamespaceT>(value); }
+    template<typename NamespaceT = Aws::String>
+    CreateGroupMembershipRequest& WithNamespace(NamespaceT&& value) { SetNamespace(std::forward<NamespaceT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_memberName;

@@ -18,15 +18,7 @@ namespace Appflow
 namespace Model
 {
 
-BasicAuthCredentials::BasicAuthCredentials() : 
-    m_usernameHasBeenSet(false),
-    m_passwordHasBeenSet(false)
-{
-}
-
-BasicAuthCredentials::BasicAuthCredentials(JsonView jsonValue) : 
-    m_usernameHasBeenSet(false),
-    m_passwordHasBeenSet(false)
+BasicAuthCredentials::BasicAuthCredentials(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ BasicAuthCredentials& BasicAuthCredentials::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("username"))
   {
     m_username = jsonValue.GetString("username");
-
     m_usernameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("password"))
   {
     m_password = jsonValue.GetString("password");
-
     m_passwordHasBeenSet = true;
   }
-
   return *this;
 }
 

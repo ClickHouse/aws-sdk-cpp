@@ -21,14 +21,18 @@
 #include <aws/arc-zonal-shift/ARCZonalShiftClient.h>
 #include <aws/arc-zonal-shift/ARCZonalShiftErrorMarshaller.h>
 #include <aws/arc-zonal-shift/ARCZonalShiftEndpointProvider.h>
+#include <aws/arc-zonal-shift/model/CancelPracticeRunRequest.h>
 #include <aws/arc-zonal-shift/model/CancelZonalShiftRequest.h>
 #include <aws/arc-zonal-shift/model/CreatePracticeRunConfigurationRequest.h>
 #include <aws/arc-zonal-shift/model/DeletePracticeRunConfigurationRequest.h>
+#include <aws/arc-zonal-shift/model/GetAutoshiftObserverNotificationStatusRequest.h>
 #include <aws/arc-zonal-shift/model/GetManagedResourceRequest.h>
 #include <aws/arc-zonal-shift/model/ListAutoshiftsRequest.h>
 #include <aws/arc-zonal-shift/model/ListManagedResourcesRequest.h>
 #include <aws/arc-zonal-shift/model/ListZonalShiftsRequest.h>
+#include <aws/arc-zonal-shift/model/StartPracticeRunRequest.h>
 #include <aws/arc-zonal-shift/model/StartZonalShiftRequest.h>
+#include <aws/arc-zonal-shift/model/UpdateAutoshiftObserverNotificationStatusRequest.h>
 #include <aws/arc-zonal-shift/model/UpdatePracticeRunConfigurationRequest.h>
 #include <aws/arc-zonal-shift/model/UpdateZonalAutoshiftConfigurationRequest.h>
 #include <aws/arc-zonal-shift/model/UpdateZonalShiftRequest.h>
@@ -46,20 +50,27 @@ using namespace Aws::Utils::Json;
 using namespace smithy::components::tracing;
 using ResolveEndpointOutcome = Aws::Endpoint::ResolveEndpointOutcome;
 
-const char* ARCZonalShiftClient::SERVICE_NAME = "arc-zonal-shift";
-const char* ARCZonalShiftClient::ALLOCATION_TAG = "ARCZonalShiftClient";
+namespace Aws
+{
+  namespace ARCZonalShift
+  {
+    const char SERVICE_NAME[] = "arc-zonal-shift";
+    const char ALLOCATION_TAG[] = "ARCZonalShiftClient";
+  }
+}
+const char* ARCZonalShiftClient::GetServiceName() {return SERVICE_NAME;}
+const char* ARCZonalShiftClient::GetAllocationTag() {return ALLOCATION_TAG;}
 
 ARCZonalShiftClient::ARCZonalShiftClient(const ARCZonalShift::ARCZonalShiftClientConfiguration& clientConfiguration,
                                          std::shared_ptr<ARCZonalShiftEndpointProviderBase> endpointProvider) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<ARCZonalShiftErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
-  m_endpointProvider(std::move(endpointProvider))
+  m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<ARCZonalShiftEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -74,8 +85,7 @@ ARCZonalShiftClient::ARCZonalShiftClient(const AWSCredentials& credentials,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<ARCZonalShiftErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<ARCZonalShiftEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -90,8 +100,7 @@ ARCZonalShiftClient::ARCZonalShiftClient(const std::shared_ptr<AWSCredentialsPro
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<ARCZonalShiftErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<ARCZonalShiftEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -100,12 +109,11 @@ ARCZonalShiftClient::ARCZonalShiftClient(const std::shared_ptr<AWSCredentialsPro
   ARCZonalShiftClient::ARCZonalShiftClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<ARCZonalShiftErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
   m_endpointProvider(Aws::MakeShared<ARCZonalShiftEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -120,7 +128,6 @@ ARCZonalShiftClient::ARCZonalShiftClient(const AWSCredentials& credentials,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<ARCZonalShiftErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<ARCZonalShiftEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -135,7 +142,6 @@ ARCZonalShiftClient::ARCZonalShiftClient(const std::shared_ptr<AWSCredentialsPro
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<ARCZonalShiftErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<ARCZonalShiftEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -155,6 +161,14 @@ std::shared_ptr<ARCZonalShiftEndpointProviderBase>& ARCZonalShiftClient::accessE
 void ARCZonalShiftClient::init(const ARCZonalShift::ARCZonalShiftClientConfiguration& config)
 {
   AWSClient::SetServiceClientName("ARC Zonal Shift");
+  if (!m_clientConfiguration.executor) {
+    if (!m_clientConfiguration.configFactories.executorCreateFn()) {
+      AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "Failed to initialize client: config is missing Executor or executorCreateFn");
+      m_isInitialized = false;
+      return;
+    }
+    m_clientConfiguration.executor = m_clientConfiguration.configFactories.executorCreateFn();
+  }
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
   m_endpointProvider->InitBuiltInParameters(config);
 }
@@ -163,6 +177,39 @@ void ARCZonalShiftClient::OverrideEndpoint(const Aws::String& endpoint)
 {
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
   m_endpointProvider->OverrideEndpoint(endpoint);
+}
+
+CancelPracticeRunOutcome ARCZonalShiftClient::CancelPracticeRun(const CancelPracticeRunRequest& request) const
+{
+  AWS_OPERATION_GUARD(CancelPracticeRun);
+  AWS_OPERATION_CHECK_PTR(m_endpointProvider, CancelPracticeRun, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE);
+  if (!request.ZonalShiftIdHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("CancelPracticeRun", "Required field: ZonalShiftId, is not set");
+    return CancelPracticeRunOutcome(Aws::Client::AWSError<ARCZonalShiftErrors>(ARCZonalShiftErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [ZonalShiftId]", false));
+  }
+  AWS_OPERATION_CHECK_PTR(m_telemetryProvider, CancelPracticeRun, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto tracer = m_telemetryProvider->getTracer(this->GetServiceClientName(), {});
+  auto meter = m_telemetryProvider->getMeter(this->GetServiceClientName(), {});
+  AWS_OPERATION_CHECK_PTR(meter, CancelPracticeRun, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto span = tracer->CreateSpan(Aws::String(this->GetServiceClientName()) + ".CancelPracticeRun",
+    {{ TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName() }, { TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName() }, { TracingUtils::SMITHY_SYSTEM_DIMENSION, TracingUtils::SMITHY_METHOD_AWS_VALUE }},
+    smithy::components::tracing::SpanKind::CLIENT);
+  return TracingUtils::MakeCallWithTiming<CancelPracticeRunOutcome>(
+    [&]()-> CancelPracticeRunOutcome {
+      auto endpointResolutionOutcome = TracingUtils::MakeCallWithTiming<ResolveEndpointOutcome>(
+          [&]() -> ResolveEndpointOutcome { return m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams()); },
+          TracingUtils::SMITHY_CLIENT_ENDPOINT_RESOLUTION_METRIC,
+          *meter,
+          {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+      AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, CancelPracticeRun, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/practiceruns/");
+      endpointResolutionOutcome.GetResult().AddPathSegment(request.GetZonalShiftId());
+      return CancelPracticeRunOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_DELETE, Aws::Auth::SIGV4_SIGNER));
+    },
+    TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
+    *meter,
+    {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
 }
 
 CancelZonalShiftOutcome ARCZonalShiftClient::CancelZonalShift(const CancelZonalShiftRequest& request) const
@@ -252,6 +299,33 @@ DeletePracticeRunConfigurationOutcome ARCZonalShiftClient::DeletePracticeRunConf
       endpointResolutionOutcome.GetResult().AddPathSegments("/configuration/");
       endpointResolutionOutcome.GetResult().AddPathSegment(request.GetResourceIdentifier());
       return DeletePracticeRunConfigurationOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_DELETE, Aws::Auth::SIGV4_SIGNER));
+    },
+    TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
+    *meter,
+    {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+}
+
+GetAutoshiftObserverNotificationStatusOutcome ARCZonalShiftClient::GetAutoshiftObserverNotificationStatus(const GetAutoshiftObserverNotificationStatusRequest& request) const
+{
+  AWS_OPERATION_GUARD(GetAutoshiftObserverNotificationStatus);
+  AWS_OPERATION_CHECK_PTR(m_endpointProvider, GetAutoshiftObserverNotificationStatus, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE);
+  AWS_OPERATION_CHECK_PTR(m_telemetryProvider, GetAutoshiftObserverNotificationStatus, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto tracer = m_telemetryProvider->getTracer(this->GetServiceClientName(), {});
+  auto meter = m_telemetryProvider->getMeter(this->GetServiceClientName(), {});
+  AWS_OPERATION_CHECK_PTR(meter, GetAutoshiftObserverNotificationStatus, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto span = tracer->CreateSpan(Aws::String(this->GetServiceClientName()) + ".GetAutoshiftObserverNotificationStatus",
+    {{ TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName() }, { TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName() }, { TracingUtils::SMITHY_SYSTEM_DIMENSION, TracingUtils::SMITHY_METHOD_AWS_VALUE }},
+    smithy::components::tracing::SpanKind::CLIENT);
+  return TracingUtils::MakeCallWithTiming<GetAutoshiftObserverNotificationStatusOutcome>(
+    [&]()-> GetAutoshiftObserverNotificationStatusOutcome {
+      auto endpointResolutionOutcome = TracingUtils::MakeCallWithTiming<ResolveEndpointOutcome>(
+          [&]() -> ResolveEndpointOutcome { return m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams()); },
+          TracingUtils::SMITHY_CLIENT_ENDPOINT_RESOLUTION_METRIC,
+          *meter,
+          {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+      AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, GetAutoshiftObserverNotificationStatus, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/autoshift-observer-notification");
+      return GetAutoshiftObserverNotificationStatusOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_GET, Aws::Auth::SIGV4_SIGNER));
     },
     TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
     *meter,
@@ -372,6 +446,33 @@ ListZonalShiftsOutcome ARCZonalShiftClient::ListZonalShifts(const ListZonalShift
     {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
 }
 
+StartPracticeRunOutcome ARCZonalShiftClient::StartPracticeRun(const StartPracticeRunRequest& request) const
+{
+  AWS_OPERATION_GUARD(StartPracticeRun);
+  AWS_OPERATION_CHECK_PTR(m_endpointProvider, StartPracticeRun, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE);
+  AWS_OPERATION_CHECK_PTR(m_telemetryProvider, StartPracticeRun, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto tracer = m_telemetryProvider->getTracer(this->GetServiceClientName(), {});
+  auto meter = m_telemetryProvider->getMeter(this->GetServiceClientName(), {});
+  AWS_OPERATION_CHECK_PTR(meter, StartPracticeRun, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto span = tracer->CreateSpan(Aws::String(this->GetServiceClientName()) + ".StartPracticeRun",
+    {{ TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName() }, { TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName() }, { TracingUtils::SMITHY_SYSTEM_DIMENSION, TracingUtils::SMITHY_METHOD_AWS_VALUE }},
+    smithy::components::tracing::SpanKind::CLIENT);
+  return TracingUtils::MakeCallWithTiming<StartPracticeRunOutcome>(
+    [&]()-> StartPracticeRunOutcome {
+      auto endpointResolutionOutcome = TracingUtils::MakeCallWithTiming<ResolveEndpointOutcome>(
+          [&]() -> ResolveEndpointOutcome { return m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams()); },
+          TracingUtils::SMITHY_CLIENT_ENDPOINT_RESOLUTION_METRIC,
+          *meter,
+          {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+      AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, StartPracticeRun, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/practiceruns");
+      return StartPracticeRunOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
+    },
+    TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
+    *meter,
+    {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+}
+
 StartZonalShiftOutcome ARCZonalShiftClient::StartZonalShift(const StartZonalShiftRequest& request) const
 {
   AWS_OPERATION_GUARD(StartZonalShift);
@@ -393,6 +494,33 @@ StartZonalShiftOutcome ARCZonalShiftClient::StartZonalShift(const StartZonalShif
       AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, StartZonalShift, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
       endpointResolutionOutcome.GetResult().AddPathSegments("/zonalshifts");
       return StartZonalShiftOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
+    },
+    TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
+    *meter,
+    {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+}
+
+UpdateAutoshiftObserverNotificationStatusOutcome ARCZonalShiftClient::UpdateAutoshiftObserverNotificationStatus(const UpdateAutoshiftObserverNotificationStatusRequest& request) const
+{
+  AWS_OPERATION_GUARD(UpdateAutoshiftObserverNotificationStatus);
+  AWS_OPERATION_CHECK_PTR(m_endpointProvider, UpdateAutoshiftObserverNotificationStatus, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE);
+  AWS_OPERATION_CHECK_PTR(m_telemetryProvider, UpdateAutoshiftObserverNotificationStatus, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto tracer = m_telemetryProvider->getTracer(this->GetServiceClientName(), {});
+  auto meter = m_telemetryProvider->getMeter(this->GetServiceClientName(), {});
+  AWS_OPERATION_CHECK_PTR(meter, UpdateAutoshiftObserverNotificationStatus, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto span = tracer->CreateSpan(Aws::String(this->GetServiceClientName()) + ".UpdateAutoshiftObserverNotificationStatus",
+    {{ TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName() }, { TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName() }, { TracingUtils::SMITHY_SYSTEM_DIMENSION, TracingUtils::SMITHY_METHOD_AWS_VALUE }},
+    smithy::components::tracing::SpanKind::CLIENT);
+  return TracingUtils::MakeCallWithTiming<UpdateAutoshiftObserverNotificationStatusOutcome>(
+    [&]()-> UpdateAutoshiftObserverNotificationStatusOutcome {
+      auto endpointResolutionOutcome = TracingUtils::MakeCallWithTiming<ResolveEndpointOutcome>(
+          [&]() -> ResolveEndpointOutcome { return m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams()); },
+          TracingUtils::SMITHY_CLIENT_ENDPOINT_RESOLUTION_METRIC,
+          *meter,
+          {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+      AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, UpdateAutoshiftObserverNotificationStatus, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/autoshift-observer-notification");
+      return UpdateAutoshiftObserverNotificationStatusOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_PUT, Aws::Auth::SIGV4_SIGNER));
     },
     TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
     *meter,

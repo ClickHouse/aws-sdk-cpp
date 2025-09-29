@@ -18,15 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-VariantProperty::VariantProperty() : 
-    m_variantPropertyType(VariantPropertyType::NOT_SET),
-    m_variantPropertyTypeHasBeenSet(false)
-{
-}
-
-VariantProperty::VariantProperty(JsonView jsonValue) : 
-    m_variantPropertyType(VariantPropertyType::NOT_SET),
-    m_variantPropertyTypeHasBeenSet(false)
+VariantProperty::VariantProperty(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ VariantProperty& VariantProperty::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("VariantPropertyType"))
   {
     m_variantPropertyType = VariantPropertyTypeMapper::GetVariantPropertyTypeForName(jsonValue.GetString("VariantPropertyType"));
-
     m_variantPropertyTypeHasBeenSet = true;
   }
-
   return *this;
 }
 

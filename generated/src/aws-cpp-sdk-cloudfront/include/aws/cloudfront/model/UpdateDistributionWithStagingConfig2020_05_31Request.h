@@ -25,7 +25,7 @@ namespace Model
   class UpdateDistributionWithStagingConfig2020_05_31Request : public CloudFrontRequest
   {
   public:
-    AWS_CLOUDFRONT_API UpdateDistributionWithStagingConfig2020_05_31Request();
+    AWS_CLOUDFRONT_API UpdateDistributionWithStagingConfig2020_05_31Request() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -40,160 +40,45 @@ namespace Model
     AWS_CLOUDFRONT_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The identifier of the primary distribution to which you are copying a staging
      * distribution's configuration.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The identifier of the primary distribution to which you are copying a staging
-     * distribution's configuration.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    UpdateDistributionWithStagingConfig2020_05_31Request& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the primary distribution to which you are copying a staging
-     * distribution's configuration.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The identifier of the primary distribution to which you are copying a staging
-     * distribution's configuration.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The identifier of the primary distribution to which you are copying a staging
-     * distribution's configuration.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The identifier of the primary distribution to which you are copying a staging
-     * distribution's configuration.</p>
-     */
-    inline UpdateDistributionWithStagingConfig2020_05_31Request& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The identifier of the primary distribution to which you are copying a staging
-     * distribution's configuration.</p>
-     */
-    inline UpdateDistributionWithStagingConfig2020_05_31Request& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the primary distribution to which you are copying a staging
-     * distribution's configuration.</p>
-     */
-    inline UpdateDistributionWithStagingConfig2020_05_31Request& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the staging distribution whose configuration you are
      * copying to the primary distribution.</p>
      */
-    inline const Aws::String& GetStagingDistributionId() const{ return m_stagingDistributionId; }
-
-    /**
-     * <p>The identifier of the staging distribution whose configuration you are
-     * copying to the primary distribution.</p>
-     */
+    inline const Aws::String& GetStagingDistributionId() const { return m_stagingDistributionId; }
     inline bool StagingDistributionIdHasBeenSet() const { return m_stagingDistributionIdHasBeenSet; }
+    template<typename StagingDistributionIdT = Aws::String>
+    void SetStagingDistributionId(StagingDistributionIdT&& value) { m_stagingDistributionIdHasBeenSet = true; m_stagingDistributionId = std::forward<StagingDistributionIdT>(value); }
+    template<typename StagingDistributionIdT = Aws::String>
+    UpdateDistributionWithStagingConfig2020_05_31Request& WithStagingDistributionId(StagingDistributionIdT&& value) { SetStagingDistributionId(std::forward<StagingDistributionIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the staging distribution whose configuration you are
-     * copying to the primary distribution.</p>
-     */
-    inline void SetStagingDistributionId(const Aws::String& value) { m_stagingDistributionIdHasBeenSet = true; m_stagingDistributionId = value; }
-
-    /**
-     * <p>The identifier of the staging distribution whose configuration you are
-     * copying to the primary distribution.</p>
-     */
-    inline void SetStagingDistributionId(Aws::String&& value) { m_stagingDistributionIdHasBeenSet = true; m_stagingDistributionId = std::move(value); }
-
-    /**
-     * <p>The identifier of the staging distribution whose configuration you are
-     * copying to the primary distribution.</p>
-     */
-    inline void SetStagingDistributionId(const char* value) { m_stagingDistributionIdHasBeenSet = true; m_stagingDistributionId.assign(value); }
-
-    /**
-     * <p>The identifier of the staging distribution whose configuration you are
-     * copying to the primary distribution.</p>
-     */
-    inline UpdateDistributionWithStagingConfig2020_05_31Request& WithStagingDistributionId(const Aws::String& value) { SetStagingDistributionId(value); return *this;}
-
-    /**
-     * <p>The identifier of the staging distribution whose configuration you are
-     * copying to the primary distribution.</p>
-     */
-    inline UpdateDistributionWithStagingConfig2020_05_31Request& WithStagingDistributionId(Aws::String&& value) { SetStagingDistributionId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the staging distribution whose configuration you are
-     * copying to the primary distribution.</p>
-     */
-    inline UpdateDistributionWithStagingConfig2020_05_31Request& WithStagingDistributionId(const char* value) { SetStagingDistributionId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The current versions (<code>ETag</code> values) of both primary and staging
      * distributions. Provide these in the following format:</p> <p> <code>&lt;primary
      * ETag&gt;, &lt;staging ETag&gt;</code> </p>
      */
-    inline const Aws::String& GetIfMatch() const{ return m_ifMatch; }
-
-    /**
-     * <p>The current versions (<code>ETag</code> values) of both primary and staging
-     * distributions. Provide these in the following format:</p> <p> <code>&lt;primary
-     * ETag&gt;, &lt;staging ETag&gt;</code> </p>
-     */
+    inline const Aws::String& GetIfMatch() const { return m_ifMatch; }
     inline bool IfMatchHasBeenSet() const { return m_ifMatchHasBeenSet; }
-
-    /**
-     * <p>The current versions (<code>ETag</code> values) of both primary and staging
-     * distributions. Provide these in the following format:</p> <p> <code>&lt;primary
-     * ETag&gt;, &lt;staging ETag&gt;</code> </p>
-     */
-    inline void SetIfMatch(const Aws::String& value) { m_ifMatchHasBeenSet = true; m_ifMatch = value; }
-
-    /**
-     * <p>The current versions (<code>ETag</code> values) of both primary and staging
-     * distributions. Provide these in the following format:</p> <p> <code>&lt;primary
-     * ETag&gt;, &lt;staging ETag&gt;</code> </p>
-     */
-    inline void SetIfMatch(Aws::String&& value) { m_ifMatchHasBeenSet = true; m_ifMatch = std::move(value); }
-
-    /**
-     * <p>The current versions (<code>ETag</code> values) of both primary and staging
-     * distributions. Provide these in the following format:</p> <p> <code>&lt;primary
-     * ETag&gt;, &lt;staging ETag&gt;</code> </p>
-     */
-    inline void SetIfMatch(const char* value) { m_ifMatchHasBeenSet = true; m_ifMatch.assign(value); }
-
-    /**
-     * <p>The current versions (<code>ETag</code> values) of both primary and staging
-     * distributions. Provide these in the following format:</p> <p> <code>&lt;primary
-     * ETag&gt;, &lt;staging ETag&gt;</code> </p>
-     */
-    inline UpdateDistributionWithStagingConfig2020_05_31Request& WithIfMatch(const Aws::String& value) { SetIfMatch(value); return *this;}
-
-    /**
-     * <p>The current versions (<code>ETag</code> values) of both primary and staging
-     * distributions. Provide these in the following format:</p> <p> <code>&lt;primary
-     * ETag&gt;, &lt;staging ETag&gt;</code> </p>
-     */
-    inline UpdateDistributionWithStagingConfig2020_05_31Request& WithIfMatch(Aws::String&& value) { SetIfMatch(std::move(value)); return *this;}
-
-    /**
-     * <p>The current versions (<code>ETag</code> values) of both primary and staging
-     * distributions. Provide these in the following format:</p> <p> <code>&lt;primary
-     * ETag&gt;, &lt;staging ETag&gt;</code> </p>
-     */
-    inline UpdateDistributionWithStagingConfig2020_05_31Request& WithIfMatch(const char* value) { SetIfMatch(value); return *this;}
-
+    template<typename IfMatchT = Aws::String>
+    void SetIfMatch(IfMatchT&& value) { m_ifMatchHasBeenSet = true; m_ifMatch = std::forward<IfMatchT>(value); }
+    template<typename IfMatchT = Aws::String>
+    UpdateDistributionWithStagingConfig2020_05_31Request& WithIfMatch(IfMatchT&& value) { SetIfMatch(std::forward<IfMatchT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_id;

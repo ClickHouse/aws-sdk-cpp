@@ -12,12 +12,6 @@ using namespace Aws::Budgets::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DescribeBudgetRequest::DescribeBudgetRequest() : 
-    m_accountIdHasBeenSet(false),
-    m_budgetNameHasBeenSet(false)
-{
-}
-
 Aws::String DescribeBudgetRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -31,6 +25,12 @@ Aws::String DescribeBudgetRequest::SerializePayload() const
   if(m_budgetNameHasBeenSet)
   {
    payload.WithString("BudgetName", m_budgetName);
+
+  }
+
+  if(m_showFilterExpressionHasBeenSet)
+  {
+   payload.WithBool("ShowFilterExpression", m_showFilterExpression);
 
   }
 

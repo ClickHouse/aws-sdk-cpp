@@ -22,8 +22,8 @@ namespace Account
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
 
       typedef AccountClientConfiguration ClientConfigurationType;
       typedef AccountEndpointProvider EndpointProviderType;
@@ -33,14 +33,14 @@ namespace Account
         * is not specified, it will be initialized to default values.
         */
         AccountClient(const Aws::Account::AccountClientConfiguration& clientConfiguration = Aws::Account::AccountClientConfiguration(),
-                      std::shared_ptr<AccountEndpointProviderBase> endpointProvider = Aws::MakeShared<AccountEndpointProvider>(ALLOCATION_TAG));
+                      std::shared_ptr<AccountEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         AccountClient(const Aws::Auth::AWSCredentials& credentials,
-                      std::shared_ptr<AccountEndpointProviderBase> endpointProvider = Aws::MakeShared<AccountEndpointProvider>(ALLOCATION_TAG),
+                      std::shared_ptr<AccountEndpointProviderBase> endpointProvider = nullptr,
                       const Aws::Account::AccountClientConfiguration& clientConfiguration = Aws::Account::AccountClientConfiguration());
 
        /**
@@ -48,7 +48,7 @@ namespace Account
         * the default http client factory will be used
         */
         AccountClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                      std::shared_ptr<AccountEndpointProviderBase> endpointProvider = Aws::MakeShared<AccountEndpointProvider>(ALLOCATION_TAG),
+                      std::shared_ptr<AccountEndpointProviderBase> endpointProvider = nullptr,
                       const Aws::Account::AccountClientConfiguration& clientConfiguration = Aws::Account::AccountClientConfiguration());
 
 
@@ -75,6 +75,33 @@ namespace Account
 
         /* End of legacy constructors due deprecation */
         virtual ~AccountClient();
+
+        /**
+         * <p>Accepts the request that originated from <a>StartPrimaryEmailUpdate</a> to
+         * update the primary email address (also known as the root user email address) for
+         * the specified account.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/account-2021-02-01/AcceptPrimaryEmailUpdate">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::AcceptPrimaryEmailUpdateOutcome AcceptPrimaryEmailUpdate(const Model::AcceptPrimaryEmailUpdateRequest& request) const;
+
+        /**
+         * A Callable wrapper for AcceptPrimaryEmailUpdate that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename AcceptPrimaryEmailUpdateRequestT = Model::AcceptPrimaryEmailUpdateRequest>
+        Model::AcceptPrimaryEmailUpdateOutcomeCallable AcceptPrimaryEmailUpdateCallable(const AcceptPrimaryEmailUpdateRequestT& request) const
+        {
+            return SubmitCallable(&AccountClient::AcceptPrimaryEmailUpdate, request);
+        }
+
+        /**
+         * An Async wrapper for AcceptPrimaryEmailUpdate that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename AcceptPrimaryEmailUpdateRequestT = Model::AcceptPrimaryEmailUpdateRequest>
+        void AcceptPrimaryEmailUpdateAsync(const AcceptPrimaryEmailUpdateRequestT& request, const AcceptPrimaryEmailUpdateResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&AccountClient::AcceptPrimaryEmailUpdate, request, handler, context);
+        }
 
         /**
          * <p>Deletes the specified alternate contact from an Amazon Web Services
@@ -112,8 +139,9 @@ namespace Account
         }
 
         /**
-         * <p>Disables (opts-out) a particular Region for an account.</p><p><h3>See
-         * Also:</h3>   <a
+         * <p>Disables (opts-out) a particular Region for an account.</p>  <p>The act
+         * of disabling a Region will remove all IAM access to any resources that reside in
+         * that Region.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/account-2021-02-01/DisableRegion">AWS
          * API Reference</a></p>
          */
@@ -164,6 +192,34 @@ namespace Account
         }
 
         /**
+         * <p>Retrieves information about the specified account including its account name,
+         * account ID, and account creation date and time. To use this API, an IAM user or
+         * role must have the <code>account:GetAccountInformation</code> IAM permission.
+         * </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/account-2021-02-01/GetAccountInformation">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetAccountInformationOutcome GetAccountInformation(const Model::GetAccountInformationRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for GetAccountInformation that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetAccountInformationRequestT = Model::GetAccountInformationRequest>
+        Model::GetAccountInformationOutcomeCallable GetAccountInformationCallable(const GetAccountInformationRequestT& request = {}) const
+        {
+            return SubmitCallable(&AccountClient::GetAccountInformation, request);
+        }
+
+        /**
+         * An Async wrapper for GetAccountInformation that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetAccountInformationRequestT = Model::GetAccountInformationRequest>
+        void GetAccountInformationAsync(const GetAccountInformationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const GetAccountInformationRequestT& request = {}) const
+        {
+            return SubmitAsync(&AccountClient::GetAccountInformation, request, handler, context);
+        }
+
+        /**
          * <p>Retrieves the specified alternate contact attached to an Amazon Web Services
          * account.</p> <p>For complete details about how to use the alternate contact
          * operations, see <a
@@ -207,13 +263,13 @@ namespace Account
          * href="http://docs.aws.amazon.com/goto/WebAPI/account-2021-02-01/GetContactInformation">AWS
          * API Reference</a></p>
          */
-        virtual Model::GetContactInformationOutcome GetContactInformation(const Model::GetContactInformationRequest& request) const;
+        virtual Model::GetContactInformationOutcome GetContactInformation(const Model::GetContactInformationRequest& request = {}) const;
 
         /**
          * A Callable wrapper for GetContactInformation that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename GetContactInformationRequestT = Model::GetContactInformationRequest>
-        Model::GetContactInformationOutcomeCallable GetContactInformationCallable(const GetContactInformationRequestT& request) const
+        Model::GetContactInformationOutcomeCallable GetContactInformationCallable(const GetContactInformationRequestT& request = {}) const
         {
             return SubmitCallable(&AccountClient::GetContactInformation, request);
         }
@@ -222,9 +278,35 @@ namespace Account
          * An Async wrapper for GetContactInformation that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename GetContactInformationRequestT = Model::GetContactInformationRequest>
-        void GetContactInformationAsync(const GetContactInformationRequestT& request, const GetContactInformationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void GetContactInformationAsync(const GetContactInformationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const GetContactInformationRequestT& request = {}) const
         {
             return SubmitAsync(&AccountClient::GetContactInformation, request, handler, context);
+        }
+
+        /**
+         * <p>Retrieves the primary email address for the specified account.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/account-2021-02-01/GetPrimaryEmail">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetPrimaryEmailOutcome GetPrimaryEmail(const Model::GetPrimaryEmailRequest& request) const;
+
+        /**
+         * A Callable wrapper for GetPrimaryEmail that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetPrimaryEmailRequestT = Model::GetPrimaryEmailRequest>
+        Model::GetPrimaryEmailOutcomeCallable GetPrimaryEmailCallable(const GetPrimaryEmailRequestT& request) const
+        {
+            return SubmitCallable(&AccountClient::GetPrimaryEmail, request);
+        }
+
+        /**
+         * An Async wrapper for GetPrimaryEmail that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetPrimaryEmailRequestT = Model::GetPrimaryEmailRequest>
+        void GetPrimaryEmailAsync(const GetPrimaryEmailRequestT& request, const GetPrimaryEmailResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&AccountClient::GetPrimaryEmail, request, handler, context);
         }
 
         /**
@@ -261,13 +343,13 @@ namespace Account
          * href="http://docs.aws.amazon.com/goto/WebAPI/account-2021-02-01/ListRegions">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListRegionsOutcome ListRegions(const Model::ListRegionsRequest& request) const;
+        virtual Model::ListRegionsOutcome ListRegions(const Model::ListRegionsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListRegions that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListRegionsRequestT = Model::ListRegionsRequest>
-        Model::ListRegionsOutcomeCallable ListRegionsCallable(const ListRegionsRequestT& request) const
+        Model::ListRegionsOutcomeCallable ListRegionsCallable(const ListRegionsRequestT& request = {}) const
         {
             return SubmitCallable(&AccountClient::ListRegions, request);
         }
@@ -276,9 +358,36 @@ namespace Account
          * An Async wrapper for ListRegions that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListRegionsRequestT = Model::ListRegionsRequest>
-        void ListRegionsAsync(const ListRegionsRequestT& request, const ListRegionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListRegionsAsync(const ListRegionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListRegionsRequestT& request = {}) const
         {
             return SubmitAsync(&AccountClient::ListRegions, request, handler, context);
+        }
+
+        /**
+         * <p>Updates the account name of the specified account. To use this API, IAM
+         * principals must have the <code>account:PutAccountName</code> IAM permission.
+         * </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/account-2021-02-01/PutAccountName">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::PutAccountNameOutcome PutAccountName(const Model::PutAccountNameRequest& request) const;
+
+        /**
+         * A Callable wrapper for PutAccountName that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename PutAccountNameRequestT = Model::PutAccountNameRequest>
+        Model::PutAccountNameOutcomeCallable PutAccountNameCallable(const PutAccountNameRequestT& request) const
+        {
+            return SubmitCallable(&AccountClient::PutAccountName, request);
+        }
+
+        /**
+         * An Async wrapper for PutAccountName that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename PutAccountNameRequestT = Model::PutAccountNameRequest>
+        void PutAccountNameAsync(const PutAccountNameRequestT& request, const PutAccountNameResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&AccountClient::PutAccountName, request, handler, context);
         }
 
         /**
@@ -345,6 +454,32 @@ namespace Account
             return SubmitAsync(&AccountClient::PutContactInformation, request, handler, context);
         }
 
+        /**
+         * <p>Starts the process to update the primary email address for the specified
+         * account.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/account-2021-02-01/StartPrimaryEmailUpdate">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::StartPrimaryEmailUpdateOutcome StartPrimaryEmailUpdate(const Model::StartPrimaryEmailUpdateRequest& request) const;
+
+        /**
+         * A Callable wrapper for StartPrimaryEmailUpdate that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename StartPrimaryEmailUpdateRequestT = Model::StartPrimaryEmailUpdateRequest>
+        Model::StartPrimaryEmailUpdateOutcomeCallable StartPrimaryEmailUpdateCallable(const StartPrimaryEmailUpdateRequestT& request) const
+        {
+            return SubmitCallable(&AccountClient::StartPrimaryEmailUpdate, request);
+        }
+
+        /**
+         * An Async wrapper for StartPrimaryEmailUpdate that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename StartPrimaryEmailUpdateRequestT = Model::StartPrimaryEmailUpdateRequest>
+        void StartPrimaryEmailUpdateAsync(const StartPrimaryEmailUpdateRequestT& request, const StartPrimaryEmailUpdateResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&AccountClient::StartPrimaryEmailUpdate, request, handler, context);
+        }
+
 
       void OverrideEndpoint(const Aws::String& endpoint);
       std::shared_ptr<AccountEndpointProviderBase>& accessEndpointProvider();
@@ -353,7 +488,6 @@ namespace Account
       void init(const AccountClientConfiguration& clientConfiguration);
 
       AccountClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<AccountEndpointProviderBase> m_endpointProvider;
   };
 

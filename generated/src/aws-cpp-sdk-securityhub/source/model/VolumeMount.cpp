@@ -18,15 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-VolumeMount::VolumeMount() : 
-    m_nameHasBeenSet(false),
-    m_mountPathHasBeenSet(false)
-{
-}
-
-VolumeMount::VolumeMount(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_mountPathHasBeenSet(false)
+VolumeMount::VolumeMount(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ VolumeMount& VolumeMount::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MountPath"))
   {
     m_mountPath = jsonValue.GetString("MountPath");
-
     m_mountPathHasBeenSet = true;
   }
-
   return *this;
 }
 

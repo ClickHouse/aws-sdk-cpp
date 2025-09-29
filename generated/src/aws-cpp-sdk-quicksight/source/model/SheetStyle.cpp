@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-SheetStyle::SheetStyle() : 
-    m_tileHasBeenSet(false),
-    m_tileLayoutHasBeenSet(false)
-{
-}
-
-SheetStyle::SheetStyle(JsonView jsonValue) : 
-    m_tileHasBeenSet(false),
-    m_tileLayoutHasBeenSet(false)
+SheetStyle::SheetStyle(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ SheetStyle& SheetStyle::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Tile"))
   {
     m_tile = jsonValue.GetObject("Tile");
-
     m_tileHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TileLayout"))
   {
     m_tileLayout = jsonValue.GetObject("TileLayout");
-
     m_tileLayoutHasBeenSet = true;
   }
-
   return *this;
 }
 

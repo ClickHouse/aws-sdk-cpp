@@ -27,89 +27,39 @@ namespace Model
   class DomainInfo
   {
   public:
-    AWS_ELASTICSEARCHSERVICE_API DomainInfo();
+    AWS_ELASTICSEARCHSERVICE_API DomainInfo() = default;
     AWS_ELASTICSEARCHSERVICE_API DomainInfo(Aws::Utils::Json::JsonView jsonValue);
     AWS_ELASTICSEARCHSERVICE_API DomainInfo& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ELASTICSEARCHSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> Specifies the <code>DomainName</code>.</p>
      */
-    inline const Aws::String& GetDomainName() const{ return m_domainName; }
-
-    /**
-     * <p> Specifies the <code>DomainName</code>.</p>
-     */
+    inline const Aws::String& GetDomainName() const { return m_domainName; }
     inline bool DomainNameHasBeenSet() const { return m_domainNameHasBeenSet; }
+    template<typename DomainNameT = Aws::String>
+    void SetDomainName(DomainNameT&& value) { m_domainNameHasBeenSet = true; m_domainName = std::forward<DomainNameT>(value); }
+    template<typename DomainNameT = Aws::String>
+    DomainInfo& WithDomainName(DomainNameT&& value) { SetDomainName(std::forward<DomainNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> Specifies the <code>DomainName</code>.</p>
-     */
-    inline void SetDomainName(const Aws::String& value) { m_domainNameHasBeenSet = true; m_domainName = value; }
-
-    /**
-     * <p> Specifies the <code>DomainName</code>.</p>
-     */
-    inline void SetDomainName(Aws::String&& value) { m_domainNameHasBeenSet = true; m_domainName = std::move(value); }
-
-    /**
-     * <p> Specifies the <code>DomainName</code>.</p>
-     */
-    inline void SetDomainName(const char* value) { m_domainNameHasBeenSet = true; m_domainName.assign(value); }
-
-    /**
-     * <p> Specifies the <code>DomainName</code>.</p>
-     */
-    inline DomainInfo& WithDomainName(const Aws::String& value) { SetDomainName(value); return *this;}
-
-    /**
-     * <p> Specifies the <code>DomainName</code>.</p>
-     */
-    inline DomainInfo& WithDomainName(Aws::String&& value) { SetDomainName(std::move(value)); return *this;}
-
-    /**
-     * <p> Specifies the <code>DomainName</code>.</p>
-     */
-    inline DomainInfo& WithDomainName(const char* value) { SetDomainName(value); return *this;}
-
-
+    ///@{
     /**
      * <p> Specifies the <code>EngineType</code> of the domain.</p>
      */
-    inline const EngineType& GetEngineType() const{ return m_engineType; }
-
-    /**
-     * <p> Specifies the <code>EngineType</code> of the domain.</p>
-     */
+    inline EngineType GetEngineType() const { return m_engineType; }
     inline bool EngineTypeHasBeenSet() const { return m_engineTypeHasBeenSet; }
-
-    /**
-     * <p> Specifies the <code>EngineType</code> of the domain.</p>
-     */
-    inline void SetEngineType(const EngineType& value) { m_engineTypeHasBeenSet = true; m_engineType = value; }
-
-    /**
-     * <p> Specifies the <code>EngineType</code> of the domain.</p>
-     */
-    inline void SetEngineType(EngineType&& value) { m_engineTypeHasBeenSet = true; m_engineType = std::move(value); }
-
-    /**
-     * <p> Specifies the <code>EngineType</code> of the domain.</p>
-     */
-    inline DomainInfo& WithEngineType(const EngineType& value) { SetEngineType(value); return *this;}
-
-    /**
-     * <p> Specifies the <code>EngineType</code> of the domain.</p>
-     */
-    inline DomainInfo& WithEngineType(EngineType&& value) { SetEngineType(std::move(value)); return *this;}
-
+    inline void SetEngineType(EngineType value) { m_engineTypeHasBeenSet = true; m_engineType = value; }
+    inline DomainInfo& WithEngineType(EngineType value) { SetEngineType(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_domainName;
     bool m_domainNameHasBeenSet = false;
 
-    EngineType m_engineType;
+    EngineType m_engineType{EngineType::NOT_SET};
     bool m_engineTypeHasBeenSet = false;
   };
 

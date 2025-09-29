@@ -18,19 +18,7 @@ namespace MediaConvert
 namespace Model
 {
 
-MinTopRenditionSize::MinTopRenditionSize() : 
-    m_height(0),
-    m_heightHasBeenSet(false),
-    m_width(0),
-    m_widthHasBeenSet(false)
-{
-}
-
-MinTopRenditionSize::MinTopRenditionSize(JsonView jsonValue) : 
-    m_height(0),
-    m_heightHasBeenSet(false),
-    m_width(0),
-    m_widthHasBeenSet(false)
+MinTopRenditionSize::MinTopRenditionSize(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ MinTopRenditionSize& MinTopRenditionSize::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("height"))
   {
     m_height = jsonValue.GetInteger("height");
-
     m_heightHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("width"))
   {
     m_width = jsonValue.GetInteger("width");
-
     m_widthHasBeenSet = true;
   }
-
   return *this;
 }
 

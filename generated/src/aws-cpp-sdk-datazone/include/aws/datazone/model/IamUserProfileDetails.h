@@ -32,56 +32,42 @@ namespace Model
   class IamUserProfileDetails
   {
   public:
-    AWS_DATAZONE_API IamUserProfileDetails();
+    AWS_DATAZONE_API IamUserProfileDetails() = default;
     AWS_DATAZONE_API IamUserProfileDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAZONE_API IamUserProfileDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAZONE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ARN of an IAM user profile in Amazon DataZone.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The ARN of an IAM user profile in Amazon DataZone.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    IamUserProfileDetails& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ARN of an IAM user profile in Amazon DataZone.</p>
+     * <p>Principal ID of the IAM user.</p>
      */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The ARN of an IAM user profile in Amazon DataZone.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The ARN of an IAM user profile in Amazon DataZone.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The ARN of an IAM user profile in Amazon DataZone.</p>
-     */
-    inline IamUserProfileDetails& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The ARN of an IAM user profile in Amazon DataZone.</p>
-     */
-    inline IamUserProfileDetails& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of an IAM user profile in Amazon DataZone.</p>
-     */
-    inline IamUserProfileDetails& WithArn(const char* value) { SetArn(value); return *this;}
-
+    inline const Aws::String& GetPrincipalId() const { return m_principalId; }
+    inline bool PrincipalIdHasBeenSet() const { return m_principalIdHasBeenSet; }
+    template<typename PrincipalIdT = Aws::String>
+    void SetPrincipalId(PrincipalIdT&& value) { m_principalIdHasBeenSet = true; m_principalId = std::forward<PrincipalIdT>(value); }
+    template<typename PrincipalIdT = Aws::String>
+    IamUserProfileDetails& WithPrincipalId(PrincipalIdT&& value) { SetPrincipalId(std::forward<PrincipalIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;
     bool m_arnHasBeenSet = false;
+
+    Aws::String m_principalId;
+    bool m_principalIdHasBeenSet = false;
   };
 
 } // namespace Model

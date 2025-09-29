@@ -35,53 +35,24 @@ namespace Model
   class ProposedMultiRegionAccessPointPolicy
   {
   public:
-    AWS_S3CONTROL_API ProposedMultiRegionAccessPointPolicy();
+    AWS_S3CONTROL_API ProposedMultiRegionAccessPointPolicy() = default;
     AWS_S3CONTROL_API ProposedMultiRegionAccessPointPolicy(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3CONTROL_API ProposedMultiRegionAccessPointPolicy& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3CONTROL_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>The details of the proposed policy.</p>
      */
-    inline const Aws::String& GetPolicy() const{ return m_policy; }
-
-    /**
-     * <p>The details of the proposed policy.</p>
-     */
+    inline const Aws::String& GetPolicy() const { return m_policy; }
     inline bool PolicyHasBeenSet() const { return m_policyHasBeenSet; }
-
-    /**
-     * <p>The details of the proposed policy.</p>
-     */
-    inline void SetPolicy(const Aws::String& value) { m_policyHasBeenSet = true; m_policy = value; }
-
-    /**
-     * <p>The details of the proposed policy.</p>
-     */
-    inline void SetPolicy(Aws::String&& value) { m_policyHasBeenSet = true; m_policy = std::move(value); }
-
-    /**
-     * <p>The details of the proposed policy.</p>
-     */
-    inline void SetPolicy(const char* value) { m_policyHasBeenSet = true; m_policy.assign(value); }
-
-    /**
-     * <p>The details of the proposed policy.</p>
-     */
-    inline ProposedMultiRegionAccessPointPolicy& WithPolicy(const Aws::String& value) { SetPolicy(value); return *this;}
-
-    /**
-     * <p>The details of the proposed policy.</p>
-     */
-    inline ProposedMultiRegionAccessPointPolicy& WithPolicy(Aws::String&& value) { SetPolicy(std::move(value)); return *this;}
-
-    /**
-     * <p>The details of the proposed policy.</p>
-     */
-    inline ProposedMultiRegionAccessPointPolicy& WithPolicy(const char* value) { SetPolicy(value); return *this;}
-
+    template<typename PolicyT = Aws::String>
+    void SetPolicy(PolicyT&& value) { m_policyHasBeenSet = true; m_policy = std::forward<PolicyT>(value); }
+    template<typename PolicyT = Aws::String>
+    ProposedMultiRegionAccessPointPolicy& WithPolicy(PolicyT&& value) { SetPolicy(std::forward<PolicyT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_policy;

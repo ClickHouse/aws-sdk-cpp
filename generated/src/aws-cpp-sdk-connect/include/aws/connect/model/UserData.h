@@ -39,404 +39,139 @@ namespace Model
   class UserData
   {
   public:
-    AWS_CONNECT_API UserData();
+    AWS_CONNECT_API UserData() = default;
     AWS_CONNECT_API UserData(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API UserData& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Information about the user for the data that is returned. It contains the
      * <code>resourceId</code> and ARN of the user. </p>
      */
-    inline const UserReference& GetUser() const{ return m_user; }
-
-    /**
-     * <p>Information about the user for the data that is returned. It contains the
-     * <code>resourceId</code> and ARN of the user. </p>
-     */
+    inline const UserReference& GetUser() const { return m_user; }
     inline bool UserHasBeenSet() const { return m_userHasBeenSet; }
+    template<typename UserT = UserReference>
+    void SetUser(UserT&& value) { m_userHasBeenSet = true; m_user = std::forward<UserT>(value); }
+    template<typename UserT = UserReference>
+    UserData& WithUser(UserT&& value) { SetUser(std::forward<UserT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about the user for the data that is returned. It contains the
-     * <code>resourceId</code> and ARN of the user. </p>
-     */
-    inline void SetUser(const UserReference& value) { m_userHasBeenSet = true; m_user = value; }
-
-    /**
-     * <p>Information about the user for the data that is returned. It contains the
-     * <code>resourceId</code> and ARN of the user. </p>
-     */
-    inline void SetUser(UserReference&& value) { m_userHasBeenSet = true; m_user = std::move(value); }
-
-    /**
-     * <p>Information about the user for the data that is returned. It contains the
-     * <code>resourceId</code> and ARN of the user. </p>
-     */
-    inline UserData& WithUser(const UserReference& value) { SetUser(value); return *this;}
-
-    /**
-     * <p>Information about the user for the data that is returned. It contains the
-     * <code>resourceId</code> and ARN of the user. </p>
-     */
-    inline UserData& WithUser(UserReference&& value) { SetUser(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about the routing profile that is assigned to the user.</p>
      */
-    inline const RoutingProfileReference& GetRoutingProfile() const{ return m_routingProfile; }
-
-    /**
-     * <p>Information about the routing profile that is assigned to the user.</p>
-     */
+    inline const RoutingProfileReference& GetRoutingProfile() const { return m_routingProfile; }
     inline bool RoutingProfileHasBeenSet() const { return m_routingProfileHasBeenSet; }
+    template<typename RoutingProfileT = RoutingProfileReference>
+    void SetRoutingProfile(RoutingProfileT&& value) { m_routingProfileHasBeenSet = true; m_routingProfile = std::forward<RoutingProfileT>(value); }
+    template<typename RoutingProfileT = RoutingProfileReference>
+    UserData& WithRoutingProfile(RoutingProfileT&& value) { SetRoutingProfile(std::forward<RoutingProfileT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about the routing profile that is assigned to the user.</p>
-     */
-    inline void SetRoutingProfile(const RoutingProfileReference& value) { m_routingProfileHasBeenSet = true; m_routingProfile = value; }
-
-    /**
-     * <p>Information about the routing profile that is assigned to the user.</p>
-     */
-    inline void SetRoutingProfile(RoutingProfileReference&& value) { m_routingProfileHasBeenSet = true; m_routingProfile = std::move(value); }
-
-    /**
-     * <p>Information about the routing profile that is assigned to the user.</p>
-     */
-    inline UserData& WithRoutingProfile(const RoutingProfileReference& value) { SetRoutingProfile(value); return *this;}
-
-    /**
-     * <p>Information about the routing profile that is assigned to the user.</p>
-     */
-    inline UserData& WithRoutingProfile(RoutingProfileReference&& value) { SetRoutingProfile(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Contains information about the levels of a hierarchy group assigned to a
      * user.</p>
      */
-    inline const HierarchyPathReference& GetHierarchyPath() const{ return m_hierarchyPath; }
-
-    /**
-     * <p>Contains information about the levels of a hierarchy group assigned to a
-     * user.</p>
-     */
+    inline const HierarchyPathReference& GetHierarchyPath() const { return m_hierarchyPath; }
     inline bool HierarchyPathHasBeenSet() const { return m_hierarchyPathHasBeenSet; }
+    template<typename HierarchyPathT = HierarchyPathReference>
+    void SetHierarchyPath(HierarchyPathT&& value) { m_hierarchyPathHasBeenSet = true; m_hierarchyPath = std::forward<HierarchyPathT>(value); }
+    template<typename HierarchyPathT = HierarchyPathReference>
+    UserData& WithHierarchyPath(HierarchyPathT&& value) { SetHierarchyPath(std::forward<HierarchyPathT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Contains information about the levels of a hierarchy group assigned to a
-     * user.</p>
-     */
-    inline void SetHierarchyPath(const HierarchyPathReference& value) { m_hierarchyPathHasBeenSet = true; m_hierarchyPath = value; }
-
-    /**
-     * <p>Contains information about the levels of a hierarchy group assigned to a
-     * user.</p>
-     */
-    inline void SetHierarchyPath(HierarchyPathReference&& value) { m_hierarchyPathHasBeenSet = true; m_hierarchyPath = std::move(value); }
-
-    /**
-     * <p>Contains information about the levels of a hierarchy group assigned to a
-     * user.</p>
-     */
-    inline UserData& WithHierarchyPath(const HierarchyPathReference& value) { SetHierarchyPath(value); return *this;}
-
-    /**
-     * <p>Contains information about the levels of a hierarchy group assigned to a
-     * user.</p>
-     */
-    inline UserData& WithHierarchyPath(HierarchyPathReference&& value) { SetHierarchyPath(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the agent that they manually set in their Contact Control Panel
      * (CCP), or that the supervisor manually changes in the real-time metrics
      * report.</p>
      */
-    inline const AgentStatusReference& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the agent that they manually set in their Contact Control Panel
-     * (CCP), or that the supervisor manually changes in the real-time metrics
-     * report.</p>
-     */
+    inline const AgentStatusReference& GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    template<typename StatusT = AgentStatusReference>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = AgentStatusReference>
+    UserData& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the agent that they manually set in their Contact Control Panel
-     * (CCP), or that the supervisor manually changes in the real-time metrics
-     * report.</p>
-     */
-    inline void SetStatus(const AgentStatusReference& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the agent that they manually set in their Contact Control Panel
-     * (CCP), or that the supervisor manually changes in the real-time metrics
-     * report.</p>
-     */
-    inline void SetStatus(AgentStatusReference&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the agent that they manually set in their Contact Control Panel
-     * (CCP), or that the supervisor manually changes in the real-time metrics
-     * report.</p>
-     */
-    inline UserData& WithStatus(const AgentStatusReference& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the agent that they manually set in their Contact Control Panel
-     * (CCP), or that the supervisor manually changes in the real-time metrics
-     * report.</p>
-     */
-    inline UserData& WithStatus(AgentStatusReference&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A map of available slots by channel. The key is a channel name. The value is
      * an integer: the available number of slots. </p>
      */
-    inline const Aws::Map<Channel, int>& GetAvailableSlotsByChannel() const{ return m_availableSlotsByChannel; }
-
-    /**
-     * <p>A map of available slots by channel. The key is a channel name. The value is
-     * an integer: the available number of slots. </p>
-     */
+    inline const Aws::Map<Channel, int>& GetAvailableSlotsByChannel() const { return m_availableSlotsByChannel; }
     inline bool AvailableSlotsByChannelHasBeenSet() const { return m_availableSlotsByChannelHasBeenSet; }
+    template<typename AvailableSlotsByChannelT = Aws::Map<Channel, int>>
+    void SetAvailableSlotsByChannel(AvailableSlotsByChannelT&& value) { m_availableSlotsByChannelHasBeenSet = true; m_availableSlotsByChannel = std::forward<AvailableSlotsByChannelT>(value); }
+    template<typename AvailableSlotsByChannelT = Aws::Map<Channel, int>>
+    UserData& WithAvailableSlotsByChannel(AvailableSlotsByChannelT&& value) { SetAvailableSlotsByChannel(std::forward<AvailableSlotsByChannelT>(value)); return *this;}
+    inline UserData& AddAvailableSlotsByChannel(Channel key, int value) {
+      m_availableSlotsByChannelHasBeenSet = true; m_availableSlotsByChannel.emplace(key, value); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>A map of available slots by channel. The key is a channel name. The value is
-     * an integer: the available number of slots. </p>
-     */
-    inline void SetAvailableSlotsByChannel(const Aws::Map<Channel, int>& value) { m_availableSlotsByChannelHasBeenSet = true; m_availableSlotsByChannel = value; }
-
-    /**
-     * <p>A map of available slots by channel. The key is a channel name. The value is
-     * an integer: the available number of slots. </p>
-     */
-    inline void SetAvailableSlotsByChannel(Aws::Map<Channel, int>&& value) { m_availableSlotsByChannelHasBeenSet = true; m_availableSlotsByChannel = std::move(value); }
-
-    /**
-     * <p>A map of available slots by channel. The key is a channel name. The value is
-     * an integer: the available number of slots. </p>
-     */
-    inline UserData& WithAvailableSlotsByChannel(const Aws::Map<Channel, int>& value) { SetAvailableSlotsByChannel(value); return *this;}
-
-    /**
-     * <p>A map of available slots by channel. The key is a channel name. The value is
-     * an integer: the available number of slots. </p>
-     */
-    inline UserData& WithAvailableSlotsByChannel(Aws::Map<Channel, int>&& value) { SetAvailableSlotsByChannel(std::move(value)); return *this;}
-
-    /**
-     * <p>A map of available slots by channel. The key is a channel name. The value is
-     * an integer: the available number of slots. </p>
-     */
-    inline UserData& AddAvailableSlotsByChannel(const Channel& key, int value) { m_availableSlotsByChannelHasBeenSet = true; m_availableSlotsByChannel.emplace(key, value); return *this; }
-
-    /**
-     * <p>A map of available slots by channel. The key is a channel name. The value is
-     * an integer: the available number of slots. </p>
-     */
-    inline UserData& AddAvailableSlotsByChannel(Channel&& key, int value) { m_availableSlotsByChannelHasBeenSet = true; m_availableSlotsByChannel.emplace(std::move(key), value); return *this; }
-
-
+    ///@{
     /**
      * <p>A map of maximum slots by channel. The key is a channel name. The value is an
      * integer: the maximum number of slots. This is calculated from <a
      * href="https://docs.aws.amazon.com/connect/latest/APIReference/API_MediaConcurrency.html">MediaConcurrency</a>
      * of the <code>RoutingProfile</code> assigned to the agent. </p>
      */
-    inline const Aws::Map<Channel, int>& GetMaxSlotsByChannel() const{ return m_maxSlotsByChannel; }
-
-    /**
-     * <p>A map of maximum slots by channel. The key is a channel name. The value is an
-     * integer: the maximum number of slots. This is calculated from <a
-     * href="https://docs.aws.amazon.com/connect/latest/APIReference/API_MediaConcurrency.html">MediaConcurrency</a>
-     * of the <code>RoutingProfile</code> assigned to the agent. </p>
-     */
+    inline const Aws::Map<Channel, int>& GetMaxSlotsByChannel() const { return m_maxSlotsByChannel; }
     inline bool MaxSlotsByChannelHasBeenSet() const { return m_maxSlotsByChannelHasBeenSet; }
+    template<typename MaxSlotsByChannelT = Aws::Map<Channel, int>>
+    void SetMaxSlotsByChannel(MaxSlotsByChannelT&& value) { m_maxSlotsByChannelHasBeenSet = true; m_maxSlotsByChannel = std::forward<MaxSlotsByChannelT>(value); }
+    template<typename MaxSlotsByChannelT = Aws::Map<Channel, int>>
+    UserData& WithMaxSlotsByChannel(MaxSlotsByChannelT&& value) { SetMaxSlotsByChannel(std::forward<MaxSlotsByChannelT>(value)); return *this;}
+    inline UserData& AddMaxSlotsByChannel(Channel key, int value) {
+      m_maxSlotsByChannelHasBeenSet = true; m_maxSlotsByChannel.emplace(key, value); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>A map of maximum slots by channel. The key is a channel name. The value is an
-     * integer: the maximum number of slots. This is calculated from <a
-     * href="https://docs.aws.amazon.com/connect/latest/APIReference/API_MediaConcurrency.html">MediaConcurrency</a>
-     * of the <code>RoutingProfile</code> assigned to the agent. </p>
-     */
-    inline void SetMaxSlotsByChannel(const Aws::Map<Channel, int>& value) { m_maxSlotsByChannelHasBeenSet = true; m_maxSlotsByChannel = value; }
-
-    /**
-     * <p>A map of maximum slots by channel. The key is a channel name. The value is an
-     * integer: the maximum number of slots. This is calculated from <a
-     * href="https://docs.aws.amazon.com/connect/latest/APIReference/API_MediaConcurrency.html">MediaConcurrency</a>
-     * of the <code>RoutingProfile</code> assigned to the agent. </p>
-     */
-    inline void SetMaxSlotsByChannel(Aws::Map<Channel, int>&& value) { m_maxSlotsByChannelHasBeenSet = true; m_maxSlotsByChannel = std::move(value); }
-
-    /**
-     * <p>A map of maximum slots by channel. The key is a channel name. The value is an
-     * integer: the maximum number of slots. This is calculated from <a
-     * href="https://docs.aws.amazon.com/connect/latest/APIReference/API_MediaConcurrency.html">MediaConcurrency</a>
-     * of the <code>RoutingProfile</code> assigned to the agent. </p>
-     */
-    inline UserData& WithMaxSlotsByChannel(const Aws::Map<Channel, int>& value) { SetMaxSlotsByChannel(value); return *this;}
-
-    /**
-     * <p>A map of maximum slots by channel. The key is a channel name. The value is an
-     * integer: the maximum number of slots. This is calculated from <a
-     * href="https://docs.aws.amazon.com/connect/latest/APIReference/API_MediaConcurrency.html">MediaConcurrency</a>
-     * of the <code>RoutingProfile</code> assigned to the agent. </p>
-     */
-    inline UserData& WithMaxSlotsByChannel(Aws::Map<Channel, int>&& value) { SetMaxSlotsByChannel(std::move(value)); return *this;}
-
-    /**
-     * <p>A map of maximum slots by channel. The key is a channel name. The value is an
-     * integer: the maximum number of slots. This is calculated from <a
-     * href="https://docs.aws.amazon.com/connect/latest/APIReference/API_MediaConcurrency.html">MediaConcurrency</a>
-     * of the <code>RoutingProfile</code> assigned to the agent. </p>
-     */
-    inline UserData& AddMaxSlotsByChannel(const Channel& key, int value) { m_maxSlotsByChannelHasBeenSet = true; m_maxSlotsByChannel.emplace(key, value); return *this; }
-
-    /**
-     * <p>A map of maximum slots by channel. The key is a channel name. The value is an
-     * integer: the maximum number of slots. This is calculated from <a
-     * href="https://docs.aws.amazon.com/connect/latest/APIReference/API_MediaConcurrency.html">MediaConcurrency</a>
-     * of the <code>RoutingProfile</code> assigned to the agent. </p>
-     */
-    inline UserData& AddMaxSlotsByChannel(Channel&& key, int value) { m_maxSlotsByChannelHasBeenSet = true; m_maxSlotsByChannel.emplace(std::move(key), value); return *this; }
-
-
+    ///@{
     /**
      * <p> A map of active slots by channel. The key is a channel name. The value is an
      * integer: the number of active slots. </p>
      */
-    inline const Aws::Map<Channel, int>& GetActiveSlotsByChannel() const{ return m_activeSlotsByChannel; }
-
-    /**
-     * <p> A map of active slots by channel. The key is a channel name. The value is an
-     * integer: the number of active slots. </p>
-     */
+    inline const Aws::Map<Channel, int>& GetActiveSlotsByChannel() const { return m_activeSlotsByChannel; }
     inline bool ActiveSlotsByChannelHasBeenSet() const { return m_activeSlotsByChannelHasBeenSet; }
+    template<typename ActiveSlotsByChannelT = Aws::Map<Channel, int>>
+    void SetActiveSlotsByChannel(ActiveSlotsByChannelT&& value) { m_activeSlotsByChannelHasBeenSet = true; m_activeSlotsByChannel = std::forward<ActiveSlotsByChannelT>(value); }
+    template<typename ActiveSlotsByChannelT = Aws::Map<Channel, int>>
+    UserData& WithActiveSlotsByChannel(ActiveSlotsByChannelT&& value) { SetActiveSlotsByChannel(std::forward<ActiveSlotsByChannelT>(value)); return *this;}
+    inline UserData& AddActiveSlotsByChannel(Channel key, int value) {
+      m_activeSlotsByChannelHasBeenSet = true; m_activeSlotsByChannel.emplace(key, value); return *this;
+    }
+    ///@}
 
-    /**
-     * <p> A map of active slots by channel. The key is a channel name. The value is an
-     * integer: the number of active slots. </p>
-     */
-    inline void SetActiveSlotsByChannel(const Aws::Map<Channel, int>& value) { m_activeSlotsByChannelHasBeenSet = true; m_activeSlotsByChannel = value; }
-
-    /**
-     * <p> A map of active slots by channel. The key is a channel name. The value is an
-     * integer: the number of active slots. </p>
-     */
-    inline void SetActiveSlotsByChannel(Aws::Map<Channel, int>&& value) { m_activeSlotsByChannelHasBeenSet = true; m_activeSlotsByChannel = std::move(value); }
-
-    /**
-     * <p> A map of active slots by channel. The key is a channel name. The value is an
-     * integer: the number of active slots. </p>
-     */
-    inline UserData& WithActiveSlotsByChannel(const Aws::Map<Channel, int>& value) { SetActiveSlotsByChannel(value); return *this;}
-
-    /**
-     * <p> A map of active slots by channel. The key is a channel name. The value is an
-     * integer: the number of active slots. </p>
-     */
-    inline UserData& WithActiveSlotsByChannel(Aws::Map<Channel, int>&& value) { SetActiveSlotsByChannel(std::move(value)); return *this;}
-
-    /**
-     * <p> A map of active slots by channel. The key is a channel name. The value is an
-     * integer: the number of active slots. </p>
-     */
-    inline UserData& AddActiveSlotsByChannel(const Channel& key, int value) { m_activeSlotsByChannelHasBeenSet = true; m_activeSlotsByChannel.emplace(key, value); return *this; }
-
-    /**
-     * <p> A map of active slots by channel. The key is a channel name. The value is an
-     * integer: the number of active slots. </p>
-     */
-    inline UserData& AddActiveSlotsByChannel(Channel&& key, int value) { m_activeSlotsByChannelHasBeenSet = true; m_activeSlotsByChannel.emplace(std::move(key), value); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of contact reference information.</p>
      */
-    inline const Aws::Vector<AgentContactReference>& GetContacts() const{ return m_contacts; }
-
-    /**
-     * <p>A list of contact reference information.</p>
-     */
+    inline const Aws::Vector<AgentContactReference>& GetContacts() const { return m_contacts; }
     inline bool ContactsHasBeenSet() const { return m_contactsHasBeenSet; }
+    template<typename ContactsT = Aws::Vector<AgentContactReference>>
+    void SetContacts(ContactsT&& value) { m_contactsHasBeenSet = true; m_contacts = std::forward<ContactsT>(value); }
+    template<typename ContactsT = Aws::Vector<AgentContactReference>>
+    UserData& WithContacts(ContactsT&& value) { SetContacts(std::forward<ContactsT>(value)); return *this;}
+    template<typename ContactsT = AgentContactReference>
+    UserData& AddContacts(ContactsT&& value) { m_contactsHasBeenSet = true; m_contacts.emplace_back(std::forward<ContactsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of contact reference information.</p>
-     */
-    inline void SetContacts(const Aws::Vector<AgentContactReference>& value) { m_contactsHasBeenSet = true; m_contacts = value; }
-
-    /**
-     * <p>A list of contact reference information.</p>
-     */
-    inline void SetContacts(Aws::Vector<AgentContactReference>&& value) { m_contactsHasBeenSet = true; m_contacts = std::move(value); }
-
-    /**
-     * <p>A list of contact reference information.</p>
-     */
-    inline UserData& WithContacts(const Aws::Vector<AgentContactReference>& value) { SetContacts(value); return *this;}
-
-    /**
-     * <p>A list of contact reference information.</p>
-     */
-    inline UserData& WithContacts(Aws::Vector<AgentContactReference>&& value) { SetContacts(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of contact reference information.</p>
-     */
-    inline UserData& AddContacts(const AgentContactReference& value) { m_contactsHasBeenSet = true; m_contacts.push_back(value); return *this; }
-
-    /**
-     * <p>A list of contact reference information.</p>
-     */
-    inline UserData& AddContacts(AgentContactReference&& value) { m_contactsHasBeenSet = true; m_contacts.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The Next status of the agent.</p>
      */
-    inline const Aws::String& GetNextStatus() const{ return m_nextStatus; }
-
-    /**
-     * <p>The Next status of the agent.</p>
-     */
+    inline const Aws::String& GetNextStatus() const { return m_nextStatus; }
     inline bool NextStatusHasBeenSet() const { return m_nextStatusHasBeenSet; }
-
-    /**
-     * <p>The Next status of the agent.</p>
-     */
-    inline void SetNextStatus(const Aws::String& value) { m_nextStatusHasBeenSet = true; m_nextStatus = value; }
-
-    /**
-     * <p>The Next status of the agent.</p>
-     */
-    inline void SetNextStatus(Aws::String&& value) { m_nextStatusHasBeenSet = true; m_nextStatus = std::move(value); }
-
-    /**
-     * <p>The Next status of the agent.</p>
-     */
-    inline void SetNextStatus(const char* value) { m_nextStatusHasBeenSet = true; m_nextStatus.assign(value); }
-
-    /**
-     * <p>The Next status of the agent.</p>
-     */
-    inline UserData& WithNextStatus(const Aws::String& value) { SetNextStatus(value); return *this;}
-
-    /**
-     * <p>The Next status of the agent.</p>
-     */
-    inline UserData& WithNextStatus(Aws::String&& value) { SetNextStatus(std::move(value)); return *this;}
-
-    /**
-     * <p>The Next status of the agent.</p>
-     */
-    inline UserData& WithNextStatus(const char* value) { SetNextStatus(value); return *this;}
-
+    template<typename NextStatusT = Aws::String>
+    void SetNextStatus(NextStatusT&& value) { m_nextStatusHasBeenSet = true; m_nextStatus = std::forward<NextStatusT>(value); }
+    template<typename NextStatusT = Aws::String>
+    UserData& WithNextStatus(NextStatusT&& value) { SetNextStatus(std::forward<NextStatusT>(value)); return *this;}
+    ///@}
   private:
 
     UserReference m_user;

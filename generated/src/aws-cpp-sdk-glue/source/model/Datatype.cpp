@@ -18,15 +18,7 @@ namespace Glue
 namespace Model
 {
 
-Datatype::Datatype() : 
-    m_idHasBeenSet(false),
-    m_labelHasBeenSet(false)
-{
-}
-
-Datatype::Datatype(JsonView jsonValue) : 
-    m_idHasBeenSet(false),
-    m_labelHasBeenSet(false)
+Datatype::Datatype(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ Datatype& Datatype::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Id"))
   {
     m_id = jsonValue.GetString("Id");
-
     m_idHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Label"))
   {
     m_label = jsonValue.GetString("Label");
-
     m_labelHasBeenSet = true;
   }
-
   return *this;
 }
 

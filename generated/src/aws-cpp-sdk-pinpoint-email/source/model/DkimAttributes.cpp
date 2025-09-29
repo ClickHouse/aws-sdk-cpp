@@ -18,21 +18,7 @@ namespace PinpointEmail
 namespace Model
 {
 
-DkimAttributes::DkimAttributes() : 
-    m_signingEnabled(false),
-    m_signingEnabledHasBeenSet(false),
-    m_status(DkimStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_tokensHasBeenSet(false)
-{
-}
-
-DkimAttributes::DkimAttributes(JsonView jsonValue) : 
-    m_signingEnabled(false),
-    m_signingEnabledHasBeenSet(false),
-    m_status(DkimStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_tokensHasBeenSet(false)
+DkimAttributes::DkimAttributes(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,17 +28,13 @@ DkimAttributes& DkimAttributes::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("SigningEnabled"))
   {
     m_signingEnabled = jsonValue.GetBool("SigningEnabled");
-
     m_signingEnabledHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Status"))
   {
     m_status = DkimStatusMapper::GetDkimStatusForName(jsonValue.GetString("Status"));
-
     m_statusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Tokens"))
   {
     Aws::Utils::Array<JsonView> tokensJsonList = jsonValue.GetArray("Tokens");
@@ -62,7 +44,6 @@ DkimAttributes& DkimAttributes::operator =(JsonView jsonValue)
     }
     m_tokensHasBeenSet = true;
   }
-
   return *this;
 }
 

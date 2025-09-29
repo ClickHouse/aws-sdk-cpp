@@ -21,7 +21,7 @@ namespace Model
   class GetFunctionDefinitionRequest : public GreengrassRequest
   {
   public:
-    AWS_GREENGRASS_API GetFunctionDefinitionRequest();
+    AWS_GREENGRASS_API GetFunctionDefinitionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_GREENGRASS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * The ID of the Lambda function definition.
      */
-    inline const Aws::String& GetFunctionDefinitionId() const{ return m_functionDefinitionId; }
-
-    /**
-     * The ID of the Lambda function definition.
-     */
+    inline const Aws::String& GetFunctionDefinitionId() const { return m_functionDefinitionId; }
     inline bool FunctionDefinitionIdHasBeenSet() const { return m_functionDefinitionIdHasBeenSet; }
-
-    /**
-     * The ID of the Lambda function definition.
-     */
-    inline void SetFunctionDefinitionId(const Aws::String& value) { m_functionDefinitionIdHasBeenSet = true; m_functionDefinitionId = value; }
-
-    /**
-     * The ID of the Lambda function definition.
-     */
-    inline void SetFunctionDefinitionId(Aws::String&& value) { m_functionDefinitionIdHasBeenSet = true; m_functionDefinitionId = std::move(value); }
-
-    /**
-     * The ID of the Lambda function definition.
-     */
-    inline void SetFunctionDefinitionId(const char* value) { m_functionDefinitionIdHasBeenSet = true; m_functionDefinitionId.assign(value); }
-
-    /**
-     * The ID of the Lambda function definition.
-     */
-    inline GetFunctionDefinitionRequest& WithFunctionDefinitionId(const Aws::String& value) { SetFunctionDefinitionId(value); return *this;}
-
-    /**
-     * The ID of the Lambda function definition.
-     */
-    inline GetFunctionDefinitionRequest& WithFunctionDefinitionId(Aws::String&& value) { SetFunctionDefinitionId(std::move(value)); return *this;}
-
-    /**
-     * The ID of the Lambda function definition.
-     */
-    inline GetFunctionDefinitionRequest& WithFunctionDefinitionId(const char* value) { SetFunctionDefinitionId(value); return *this;}
-
+    template<typename FunctionDefinitionIdT = Aws::String>
+    void SetFunctionDefinitionId(FunctionDefinitionIdT&& value) { m_functionDefinitionIdHasBeenSet = true; m_functionDefinitionId = std::forward<FunctionDefinitionIdT>(value); }
+    template<typename FunctionDefinitionIdT = Aws::String>
+    GetFunctionDefinitionRequest& WithFunctionDefinitionId(FunctionDefinitionIdT&& value) { SetFunctionDefinitionId(std::forward<FunctionDefinitionIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_functionDefinitionId;

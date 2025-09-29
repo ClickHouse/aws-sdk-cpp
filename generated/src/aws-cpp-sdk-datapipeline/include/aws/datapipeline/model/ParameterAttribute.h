@@ -32,93 +32,35 @@ namespace Model
   class ParameterAttribute
   {
   public:
-    AWS_DATAPIPELINE_API ParameterAttribute();
+    AWS_DATAPIPELINE_API ParameterAttribute() = default;
     AWS_DATAPIPELINE_API ParameterAttribute(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAPIPELINE_API ParameterAttribute& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAPIPELINE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The field identifier.</p>
      */
-    inline const Aws::String& GetKey() const{ return m_key; }
-
-    /**
-     * <p>The field identifier.</p>
-     */
+    inline const Aws::String& GetKey() const { return m_key; }
     inline bool KeyHasBeenSet() const { return m_keyHasBeenSet; }
+    template<typename KeyT = Aws::String>
+    void SetKey(KeyT&& value) { m_keyHasBeenSet = true; m_key = std::forward<KeyT>(value); }
+    template<typename KeyT = Aws::String>
+    ParameterAttribute& WithKey(KeyT&& value) { SetKey(std::forward<KeyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The field identifier.</p>
-     */
-    inline void SetKey(const Aws::String& value) { m_keyHasBeenSet = true; m_key = value; }
-
-    /**
-     * <p>The field identifier.</p>
-     */
-    inline void SetKey(Aws::String&& value) { m_keyHasBeenSet = true; m_key = std::move(value); }
-
-    /**
-     * <p>The field identifier.</p>
-     */
-    inline void SetKey(const char* value) { m_keyHasBeenSet = true; m_key.assign(value); }
-
-    /**
-     * <p>The field identifier.</p>
-     */
-    inline ParameterAttribute& WithKey(const Aws::String& value) { SetKey(value); return *this;}
-
-    /**
-     * <p>The field identifier.</p>
-     */
-    inline ParameterAttribute& WithKey(Aws::String&& value) { SetKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The field identifier.</p>
-     */
-    inline ParameterAttribute& WithKey(const char* value) { SetKey(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The field value, expressed as a String.</p>
      */
-    inline const Aws::String& GetStringValue() const{ return m_stringValue; }
-
-    /**
-     * <p>The field value, expressed as a String.</p>
-     */
+    inline const Aws::String& GetStringValue() const { return m_stringValue; }
     inline bool StringValueHasBeenSet() const { return m_stringValueHasBeenSet; }
-
-    /**
-     * <p>The field value, expressed as a String.</p>
-     */
-    inline void SetStringValue(const Aws::String& value) { m_stringValueHasBeenSet = true; m_stringValue = value; }
-
-    /**
-     * <p>The field value, expressed as a String.</p>
-     */
-    inline void SetStringValue(Aws::String&& value) { m_stringValueHasBeenSet = true; m_stringValue = std::move(value); }
-
-    /**
-     * <p>The field value, expressed as a String.</p>
-     */
-    inline void SetStringValue(const char* value) { m_stringValueHasBeenSet = true; m_stringValue.assign(value); }
-
-    /**
-     * <p>The field value, expressed as a String.</p>
-     */
-    inline ParameterAttribute& WithStringValue(const Aws::String& value) { SetStringValue(value); return *this;}
-
-    /**
-     * <p>The field value, expressed as a String.</p>
-     */
-    inline ParameterAttribute& WithStringValue(Aws::String&& value) { SetStringValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The field value, expressed as a String.</p>
-     */
-    inline ParameterAttribute& WithStringValue(const char* value) { SetStringValue(value); return *this;}
-
+    template<typename StringValueT = Aws::String>
+    void SetStringValue(StringValueT&& value) { m_stringValueHasBeenSet = true; m_stringValue = std::forward<StringValueT>(value); }
+    template<typename StringValueT = Aws::String>
+    ParameterAttribute& WithStringValue(StringValueT&& value) { SetStringValue(std::forward<StringValueT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_key;

@@ -18,17 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsEc2VpnConnectionOptionsDetails::AwsEc2VpnConnectionOptionsDetails() : 
-    m_staticRoutesOnly(false),
-    m_staticRoutesOnlyHasBeenSet(false),
-    m_tunnelOptionsHasBeenSet(false)
-{
-}
-
-AwsEc2VpnConnectionOptionsDetails::AwsEc2VpnConnectionOptionsDetails(JsonView jsonValue) : 
-    m_staticRoutesOnly(false),
-    m_staticRoutesOnlyHasBeenSet(false),
-    m_tunnelOptionsHasBeenSet(false)
+AwsEc2VpnConnectionOptionsDetails::AwsEc2VpnConnectionOptionsDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ AwsEc2VpnConnectionOptionsDetails& AwsEc2VpnConnectionOptionsDetails::operator =
   if(jsonValue.ValueExists("StaticRoutesOnly"))
   {
     m_staticRoutesOnly = jsonValue.GetBool("StaticRoutesOnly");
-
     m_staticRoutesOnlyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TunnelOptions"))
   {
     Aws::Utils::Array<JsonView> tunnelOptionsJsonList = jsonValue.GetArray("TunnelOptions");
@@ -51,7 +39,6 @@ AwsEc2VpnConnectionOptionsDetails& AwsEc2VpnConnectionOptionsDetails::operator =
     }
     m_tunnelOptionsHasBeenSet = true;
   }
-
   return *this;
 }
 

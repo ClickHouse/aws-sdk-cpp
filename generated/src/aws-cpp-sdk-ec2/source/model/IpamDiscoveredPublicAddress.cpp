@@ -20,55 +20,7 @@ namespace EC2
 namespace Model
 {
 
-IpamDiscoveredPublicAddress::IpamDiscoveredPublicAddress() : 
-    m_ipamResourceDiscoveryIdHasBeenSet(false),
-    m_addressRegionHasBeenSet(false),
-    m_addressHasBeenSet(false),
-    m_addressOwnerIdHasBeenSet(false),
-    m_addressAllocationIdHasBeenSet(false),
-    m_associationStatus(IpamPublicAddressAssociationStatus::NOT_SET),
-    m_associationStatusHasBeenSet(false),
-    m_addressType(IpamPublicAddressType::NOT_SET),
-    m_addressTypeHasBeenSet(false),
-    m_service(IpamPublicAddressAwsService::NOT_SET),
-    m_serviceHasBeenSet(false),
-    m_serviceResourceHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_subnetIdHasBeenSet(false),
-    m_publicIpv4PoolIdHasBeenSet(false),
-    m_networkInterfaceIdHasBeenSet(false),
-    m_networkInterfaceDescriptionHasBeenSet(false),
-    m_instanceIdHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_networkBorderGroupHasBeenSet(false),
-    m_securityGroupsHasBeenSet(false),
-    m_sampleTimeHasBeenSet(false)
-{
-}
-
-IpamDiscoveredPublicAddress::IpamDiscoveredPublicAddress(const XmlNode& xmlNode) : 
-    m_ipamResourceDiscoveryIdHasBeenSet(false),
-    m_addressRegionHasBeenSet(false),
-    m_addressHasBeenSet(false),
-    m_addressOwnerIdHasBeenSet(false),
-    m_addressAllocationIdHasBeenSet(false),
-    m_associationStatus(IpamPublicAddressAssociationStatus::NOT_SET),
-    m_associationStatusHasBeenSet(false),
-    m_addressType(IpamPublicAddressType::NOT_SET),
-    m_addressTypeHasBeenSet(false),
-    m_service(IpamPublicAddressAwsService::NOT_SET),
-    m_serviceHasBeenSet(false),
-    m_serviceResourceHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_subnetIdHasBeenSet(false),
-    m_publicIpv4PoolIdHasBeenSet(false),
-    m_networkInterfaceIdHasBeenSet(false),
-    m_networkInterfaceDescriptionHasBeenSet(false),
-    m_instanceIdHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_networkBorderGroupHasBeenSet(false),
-    m_securityGroupsHasBeenSet(false),
-    m_sampleTimeHasBeenSet(false)
+IpamDiscoveredPublicAddress::IpamDiscoveredPublicAddress(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -112,19 +64,19 @@ IpamDiscoveredPublicAddress& IpamDiscoveredPublicAddress::operator =(const XmlNo
     XmlNode associationStatusNode = resultNode.FirstChild("associationStatus");
     if(!associationStatusNode.IsNull())
     {
-      m_associationStatus = IpamPublicAddressAssociationStatusMapper::GetIpamPublicAddressAssociationStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(associationStatusNode.GetText()).c_str()).c_str());
+      m_associationStatus = IpamPublicAddressAssociationStatusMapper::GetIpamPublicAddressAssociationStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(associationStatusNode.GetText()).c_str()));
       m_associationStatusHasBeenSet = true;
     }
     XmlNode addressTypeNode = resultNode.FirstChild("addressType");
     if(!addressTypeNode.IsNull())
     {
-      m_addressType = IpamPublicAddressTypeMapper::GetIpamPublicAddressTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(addressTypeNode.GetText()).c_str()).c_str());
+      m_addressType = IpamPublicAddressTypeMapper::GetIpamPublicAddressTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(addressTypeNode.GetText()).c_str()));
       m_addressTypeHasBeenSet = true;
     }
     XmlNode serviceNode = resultNode.FirstChild("service");
     if(!serviceNode.IsNull())
     {
-      m_service = IpamPublicAddressAwsServiceMapper::GetIpamPublicAddressAwsServiceForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(serviceNode.GetText()).c_str()).c_str());
+      m_service = IpamPublicAddressAwsServiceMapper::GetIpamPublicAddressAwsServiceForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(serviceNode.GetText()).c_str()));
       m_serviceHasBeenSet = true;
     }
     XmlNode serviceResourceNode = resultNode.FirstChild("serviceResource");
@@ -185,6 +137,7 @@ IpamDiscoveredPublicAddress& IpamDiscoveredPublicAddress::operator =(const XmlNo
     if(!securityGroupsNode.IsNull())
     {
       XmlNode securityGroupsMember = securityGroupsNode.FirstChild("item");
+      m_securityGroupsHasBeenSet = !securityGroupsMember.IsNull();
       while(!securityGroupsMember.IsNull())
       {
         m_securityGroups.push_back(securityGroupsMember);
@@ -233,17 +186,17 @@ void IpamDiscoveredPublicAddress::OutputToStream(Aws::OStream& oStream, const ch
 
   if(m_associationStatusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".AssociationStatus=" << IpamPublicAddressAssociationStatusMapper::GetNameForIpamPublicAddressAssociationStatus(m_associationStatus) << "&";
+      oStream << location << index << locationValue << ".AssociationStatus=" << StringUtils::URLEncode(IpamPublicAddressAssociationStatusMapper::GetNameForIpamPublicAddressAssociationStatus(m_associationStatus)) << "&";
   }
 
   if(m_addressTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".AddressType=" << IpamPublicAddressTypeMapper::GetNameForIpamPublicAddressType(m_addressType) << "&";
+      oStream << location << index << locationValue << ".AddressType=" << StringUtils::URLEncode(IpamPublicAddressTypeMapper::GetNameForIpamPublicAddressType(m_addressType)) << "&";
   }
 
   if(m_serviceHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Service=" << IpamPublicAddressAwsServiceMapper::GetNameForIpamPublicAddressAwsService(m_service) << "&";
+      oStream << location << index << locationValue << ".Service=" << StringUtils::URLEncode(IpamPublicAddressAwsServiceMapper::GetNameForIpamPublicAddressAwsService(m_service)) << "&";
   }
 
   if(m_serviceResourceHasBeenSet)
@@ -335,15 +288,15 @@ void IpamDiscoveredPublicAddress::OutputToStream(Aws::OStream& oStream, const ch
   }
   if(m_associationStatusHasBeenSet)
   {
-      oStream << location << ".AssociationStatus=" << IpamPublicAddressAssociationStatusMapper::GetNameForIpamPublicAddressAssociationStatus(m_associationStatus) << "&";
+      oStream << location << ".AssociationStatus=" << StringUtils::URLEncode(IpamPublicAddressAssociationStatusMapper::GetNameForIpamPublicAddressAssociationStatus(m_associationStatus)) << "&";
   }
   if(m_addressTypeHasBeenSet)
   {
-      oStream << location << ".AddressType=" << IpamPublicAddressTypeMapper::GetNameForIpamPublicAddressType(m_addressType) << "&";
+      oStream << location << ".AddressType=" << StringUtils::URLEncode(IpamPublicAddressTypeMapper::GetNameForIpamPublicAddressType(m_addressType)) << "&";
   }
   if(m_serviceHasBeenSet)
   {
-      oStream << location << ".Service=" << IpamPublicAddressAwsServiceMapper::GetNameForIpamPublicAddressAwsService(m_service) << "&";
+      oStream << location << ".Service=" << StringUtils::URLEncode(IpamPublicAddressAwsServiceMapper::GetNameForIpamPublicAddressAwsService(m_service)) << "&";
   }
   if(m_serviceResourceHasBeenSet)
   {
@@ -389,7 +342,7 @@ void IpamDiscoveredPublicAddress::OutputToStream(Aws::OStream& oStream, const ch
       for(auto& item : m_securityGroups)
       {
         Aws::StringStream securityGroupsSs;
-        securityGroupsSs << location <<  ".SecurityGroupSet." << securityGroupsIdx++;
+        securityGroupsSs << location << ".SecurityGroupSet." << securityGroupsIdx++;
         item.OutputToStream(oStream, securityGroupsSs.str().c_str());
       }
   }

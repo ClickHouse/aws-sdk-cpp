@@ -32,93 +32,35 @@ namespace Model
   class IpRuleItem
   {
   public:
-    AWS_WORKSPACES_API IpRuleItem();
+    AWS_WORKSPACES_API IpRuleItem() = default;
     AWS_WORKSPACES_API IpRuleItem(Aws::Utils::Json::JsonView jsonValue);
     AWS_WORKSPACES_API IpRuleItem& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WORKSPACES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The IP address range, in CIDR notation.</p>
      */
-    inline const Aws::String& GetIpRule() const{ return m_ipRule; }
-
-    /**
-     * <p>The IP address range, in CIDR notation.</p>
-     */
+    inline const Aws::String& GetIpRule() const { return m_ipRule; }
     inline bool IpRuleHasBeenSet() const { return m_ipRuleHasBeenSet; }
+    template<typename IpRuleT = Aws::String>
+    void SetIpRule(IpRuleT&& value) { m_ipRuleHasBeenSet = true; m_ipRule = std::forward<IpRuleT>(value); }
+    template<typename IpRuleT = Aws::String>
+    IpRuleItem& WithIpRule(IpRuleT&& value) { SetIpRule(std::forward<IpRuleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The IP address range, in CIDR notation.</p>
-     */
-    inline void SetIpRule(const Aws::String& value) { m_ipRuleHasBeenSet = true; m_ipRule = value; }
-
-    /**
-     * <p>The IP address range, in CIDR notation.</p>
-     */
-    inline void SetIpRule(Aws::String&& value) { m_ipRuleHasBeenSet = true; m_ipRule = std::move(value); }
-
-    /**
-     * <p>The IP address range, in CIDR notation.</p>
-     */
-    inline void SetIpRule(const char* value) { m_ipRuleHasBeenSet = true; m_ipRule.assign(value); }
-
-    /**
-     * <p>The IP address range, in CIDR notation.</p>
-     */
-    inline IpRuleItem& WithIpRule(const Aws::String& value) { SetIpRule(value); return *this;}
-
-    /**
-     * <p>The IP address range, in CIDR notation.</p>
-     */
-    inline IpRuleItem& WithIpRule(Aws::String&& value) { SetIpRule(std::move(value)); return *this;}
-
-    /**
-     * <p>The IP address range, in CIDR notation.</p>
-     */
-    inline IpRuleItem& WithIpRule(const char* value) { SetIpRule(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The description.</p>
      */
-    inline const Aws::String& GetRuleDesc() const{ return m_ruleDesc; }
-
-    /**
-     * <p>The description.</p>
-     */
+    inline const Aws::String& GetRuleDesc() const { return m_ruleDesc; }
     inline bool RuleDescHasBeenSet() const { return m_ruleDescHasBeenSet; }
-
-    /**
-     * <p>The description.</p>
-     */
-    inline void SetRuleDesc(const Aws::String& value) { m_ruleDescHasBeenSet = true; m_ruleDesc = value; }
-
-    /**
-     * <p>The description.</p>
-     */
-    inline void SetRuleDesc(Aws::String&& value) { m_ruleDescHasBeenSet = true; m_ruleDesc = std::move(value); }
-
-    /**
-     * <p>The description.</p>
-     */
-    inline void SetRuleDesc(const char* value) { m_ruleDescHasBeenSet = true; m_ruleDesc.assign(value); }
-
-    /**
-     * <p>The description.</p>
-     */
-    inline IpRuleItem& WithRuleDesc(const Aws::String& value) { SetRuleDesc(value); return *this;}
-
-    /**
-     * <p>The description.</p>
-     */
-    inline IpRuleItem& WithRuleDesc(Aws::String&& value) { SetRuleDesc(std::move(value)); return *this;}
-
-    /**
-     * <p>The description.</p>
-     */
-    inline IpRuleItem& WithRuleDesc(const char* value) { SetRuleDesc(value); return *this;}
-
+    template<typename RuleDescT = Aws::String>
+    void SetRuleDesc(RuleDescT&& value) { m_ruleDescHasBeenSet = true; m_ruleDesc = std::forward<RuleDescT>(value); }
+    template<typename RuleDescT = Aws::String>
+    IpRuleItem& WithRuleDesc(RuleDescT&& value) { SetRuleDesc(std::forward<RuleDescT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_ipRule;

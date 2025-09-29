@@ -8,6 +8,7 @@
 #include <aws/sagemaker/SageMakerRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/sagemaker/model/HubContentType.h>
+#include <aws/sagemaker/model/HubContentSupportStatus.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/sagemaker/model/Tag.h>
 #include <utility>
@@ -24,7 +25,7 @@ namespace Model
   class ImportHubContentRequest : public SageMakerRequest
   {
   public:
-    AWS_SAGEMAKER_API ImportHubContentRequest();
+    AWS_SAGEMAKER_API ImportHubContentRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,467 +38,151 @@ namespace Model
     AWS_SAGEMAKER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the hub content to import.</p>
      */
-    inline const Aws::String& GetHubContentName() const{ return m_hubContentName; }
-
-    /**
-     * <p>The name of the hub content to import.</p>
-     */
+    inline const Aws::String& GetHubContentName() const { return m_hubContentName; }
     inline bool HubContentNameHasBeenSet() const { return m_hubContentNameHasBeenSet; }
+    template<typename HubContentNameT = Aws::String>
+    void SetHubContentName(HubContentNameT&& value) { m_hubContentNameHasBeenSet = true; m_hubContentName = std::forward<HubContentNameT>(value); }
+    template<typename HubContentNameT = Aws::String>
+    ImportHubContentRequest& WithHubContentName(HubContentNameT&& value) { SetHubContentName(std::forward<HubContentNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the hub content to import.</p>
-     */
-    inline void SetHubContentName(const Aws::String& value) { m_hubContentNameHasBeenSet = true; m_hubContentName = value; }
-
-    /**
-     * <p>The name of the hub content to import.</p>
-     */
-    inline void SetHubContentName(Aws::String&& value) { m_hubContentNameHasBeenSet = true; m_hubContentName = std::move(value); }
-
-    /**
-     * <p>The name of the hub content to import.</p>
-     */
-    inline void SetHubContentName(const char* value) { m_hubContentNameHasBeenSet = true; m_hubContentName.assign(value); }
-
-    /**
-     * <p>The name of the hub content to import.</p>
-     */
-    inline ImportHubContentRequest& WithHubContentName(const Aws::String& value) { SetHubContentName(value); return *this;}
-
-    /**
-     * <p>The name of the hub content to import.</p>
-     */
-    inline ImportHubContentRequest& WithHubContentName(Aws::String&& value) { SetHubContentName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the hub content to import.</p>
-     */
-    inline ImportHubContentRequest& WithHubContentName(const char* value) { SetHubContentName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The version of the hub content to import.</p>
      */
-    inline const Aws::String& GetHubContentVersion() const{ return m_hubContentVersion; }
-
-    /**
-     * <p>The version of the hub content to import.</p>
-     */
+    inline const Aws::String& GetHubContentVersion() const { return m_hubContentVersion; }
     inline bool HubContentVersionHasBeenSet() const { return m_hubContentVersionHasBeenSet; }
+    template<typename HubContentVersionT = Aws::String>
+    void SetHubContentVersion(HubContentVersionT&& value) { m_hubContentVersionHasBeenSet = true; m_hubContentVersion = std::forward<HubContentVersionT>(value); }
+    template<typename HubContentVersionT = Aws::String>
+    ImportHubContentRequest& WithHubContentVersion(HubContentVersionT&& value) { SetHubContentVersion(std::forward<HubContentVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The version of the hub content to import.</p>
-     */
-    inline void SetHubContentVersion(const Aws::String& value) { m_hubContentVersionHasBeenSet = true; m_hubContentVersion = value; }
-
-    /**
-     * <p>The version of the hub content to import.</p>
-     */
-    inline void SetHubContentVersion(Aws::String&& value) { m_hubContentVersionHasBeenSet = true; m_hubContentVersion = std::move(value); }
-
-    /**
-     * <p>The version of the hub content to import.</p>
-     */
-    inline void SetHubContentVersion(const char* value) { m_hubContentVersionHasBeenSet = true; m_hubContentVersion.assign(value); }
-
-    /**
-     * <p>The version of the hub content to import.</p>
-     */
-    inline ImportHubContentRequest& WithHubContentVersion(const Aws::String& value) { SetHubContentVersion(value); return *this;}
-
-    /**
-     * <p>The version of the hub content to import.</p>
-     */
-    inline ImportHubContentRequest& WithHubContentVersion(Aws::String&& value) { SetHubContentVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The version of the hub content to import.</p>
-     */
-    inline ImportHubContentRequest& WithHubContentVersion(const char* value) { SetHubContentVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of hub content to import.</p>
      */
-    inline const HubContentType& GetHubContentType() const{ return m_hubContentType; }
-
-    /**
-     * <p>The type of hub content to import.</p>
-     */
+    inline HubContentType GetHubContentType() const { return m_hubContentType; }
     inline bool HubContentTypeHasBeenSet() const { return m_hubContentTypeHasBeenSet; }
+    inline void SetHubContentType(HubContentType value) { m_hubContentTypeHasBeenSet = true; m_hubContentType = value; }
+    inline ImportHubContentRequest& WithHubContentType(HubContentType value) { SetHubContentType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of hub content to import.</p>
-     */
-    inline void SetHubContentType(const HubContentType& value) { m_hubContentTypeHasBeenSet = true; m_hubContentType = value; }
-
-    /**
-     * <p>The type of hub content to import.</p>
-     */
-    inline void SetHubContentType(HubContentType&& value) { m_hubContentTypeHasBeenSet = true; m_hubContentType = std::move(value); }
-
-    /**
-     * <p>The type of hub content to import.</p>
-     */
-    inline ImportHubContentRequest& WithHubContentType(const HubContentType& value) { SetHubContentType(value); return *this;}
-
-    /**
-     * <p>The type of hub content to import.</p>
-     */
-    inline ImportHubContentRequest& WithHubContentType(HubContentType&& value) { SetHubContentType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The version of the hub content schema to import.</p>
      */
-    inline const Aws::String& GetDocumentSchemaVersion() const{ return m_documentSchemaVersion; }
-
-    /**
-     * <p>The version of the hub content schema to import.</p>
-     */
+    inline const Aws::String& GetDocumentSchemaVersion() const { return m_documentSchemaVersion; }
     inline bool DocumentSchemaVersionHasBeenSet() const { return m_documentSchemaVersionHasBeenSet; }
+    template<typename DocumentSchemaVersionT = Aws::String>
+    void SetDocumentSchemaVersion(DocumentSchemaVersionT&& value) { m_documentSchemaVersionHasBeenSet = true; m_documentSchemaVersion = std::forward<DocumentSchemaVersionT>(value); }
+    template<typename DocumentSchemaVersionT = Aws::String>
+    ImportHubContentRequest& WithDocumentSchemaVersion(DocumentSchemaVersionT&& value) { SetDocumentSchemaVersion(std::forward<DocumentSchemaVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The version of the hub content schema to import.</p>
-     */
-    inline void SetDocumentSchemaVersion(const Aws::String& value) { m_documentSchemaVersionHasBeenSet = true; m_documentSchemaVersion = value; }
-
-    /**
-     * <p>The version of the hub content schema to import.</p>
-     */
-    inline void SetDocumentSchemaVersion(Aws::String&& value) { m_documentSchemaVersionHasBeenSet = true; m_documentSchemaVersion = std::move(value); }
-
-    /**
-     * <p>The version of the hub content schema to import.</p>
-     */
-    inline void SetDocumentSchemaVersion(const char* value) { m_documentSchemaVersionHasBeenSet = true; m_documentSchemaVersion.assign(value); }
-
-    /**
-     * <p>The version of the hub content schema to import.</p>
-     */
-    inline ImportHubContentRequest& WithDocumentSchemaVersion(const Aws::String& value) { SetDocumentSchemaVersion(value); return *this;}
-
-    /**
-     * <p>The version of the hub content schema to import.</p>
-     */
-    inline ImportHubContentRequest& WithDocumentSchemaVersion(Aws::String&& value) { SetDocumentSchemaVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The version of the hub content schema to import.</p>
-     */
-    inline ImportHubContentRequest& WithDocumentSchemaVersion(const char* value) { SetDocumentSchemaVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the hub to import content into.</p>
      */
-    inline const Aws::String& GetHubName() const{ return m_hubName; }
-
-    /**
-     * <p>The name of the hub to import content into.</p>
-     */
+    inline const Aws::String& GetHubName() const { return m_hubName; }
     inline bool HubNameHasBeenSet() const { return m_hubNameHasBeenSet; }
+    template<typename HubNameT = Aws::String>
+    void SetHubName(HubNameT&& value) { m_hubNameHasBeenSet = true; m_hubName = std::forward<HubNameT>(value); }
+    template<typename HubNameT = Aws::String>
+    ImportHubContentRequest& WithHubName(HubNameT&& value) { SetHubName(std::forward<HubNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the hub to import content into.</p>
-     */
-    inline void SetHubName(const Aws::String& value) { m_hubNameHasBeenSet = true; m_hubName = value; }
-
-    /**
-     * <p>The name of the hub to import content into.</p>
-     */
-    inline void SetHubName(Aws::String&& value) { m_hubNameHasBeenSet = true; m_hubName = std::move(value); }
-
-    /**
-     * <p>The name of the hub to import content into.</p>
-     */
-    inline void SetHubName(const char* value) { m_hubNameHasBeenSet = true; m_hubName.assign(value); }
-
-    /**
-     * <p>The name of the hub to import content into.</p>
-     */
-    inline ImportHubContentRequest& WithHubName(const Aws::String& value) { SetHubName(value); return *this;}
-
-    /**
-     * <p>The name of the hub to import content into.</p>
-     */
-    inline ImportHubContentRequest& WithHubName(Aws::String&& value) { SetHubName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the hub to import content into.</p>
-     */
-    inline ImportHubContentRequest& WithHubName(const char* value) { SetHubName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The display name of the hub content to import.</p>
      */
-    inline const Aws::String& GetHubContentDisplayName() const{ return m_hubContentDisplayName; }
-
-    /**
-     * <p>The display name of the hub content to import.</p>
-     */
+    inline const Aws::String& GetHubContentDisplayName() const { return m_hubContentDisplayName; }
     inline bool HubContentDisplayNameHasBeenSet() const { return m_hubContentDisplayNameHasBeenSet; }
+    template<typename HubContentDisplayNameT = Aws::String>
+    void SetHubContentDisplayName(HubContentDisplayNameT&& value) { m_hubContentDisplayNameHasBeenSet = true; m_hubContentDisplayName = std::forward<HubContentDisplayNameT>(value); }
+    template<typename HubContentDisplayNameT = Aws::String>
+    ImportHubContentRequest& WithHubContentDisplayName(HubContentDisplayNameT&& value) { SetHubContentDisplayName(std::forward<HubContentDisplayNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The display name of the hub content to import.</p>
-     */
-    inline void SetHubContentDisplayName(const Aws::String& value) { m_hubContentDisplayNameHasBeenSet = true; m_hubContentDisplayName = value; }
-
-    /**
-     * <p>The display name of the hub content to import.</p>
-     */
-    inline void SetHubContentDisplayName(Aws::String&& value) { m_hubContentDisplayNameHasBeenSet = true; m_hubContentDisplayName = std::move(value); }
-
-    /**
-     * <p>The display name of the hub content to import.</p>
-     */
-    inline void SetHubContentDisplayName(const char* value) { m_hubContentDisplayNameHasBeenSet = true; m_hubContentDisplayName.assign(value); }
-
-    /**
-     * <p>The display name of the hub content to import.</p>
-     */
-    inline ImportHubContentRequest& WithHubContentDisplayName(const Aws::String& value) { SetHubContentDisplayName(value); return *this;}
-
-    /**
-     * <p>The display name of the hub content to import.</p>
-     */
-    inline ImportHubContentRequest& WithHubContentDisplayName(Aws::String&& value) { SetHubContentDisplayName(std::move(value)); return *this;}
-
-    /**
-     * <p>The display name of the hub content to import.</p>
-     */
-    inline ImportHubContentRequest& WithHubContentDisplayName(const char* value) { SetHubContentDisplayName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A description of the hub content to import.</p>
      */
-    inline const Aws::String& GetHubContentDescription() const{ return m_hubContentDescription; }
-
-    /**
-     * <p>A description of the hub content to import.</p>
-     */
+    inline const Aws::String& GetHubContentDescription() const { return m_hubContentDescription; }
     inline bool HubContentDescriptionHasBeenSet() const { return m_hubContentDescriptionHasBeenSet; }
+    template<typename HubContentDescriptionT = Aws::String>
+    void SetHubContentDescription(HubContentDescriptionT&& value) { m_hubContentDescriptionHasBeenSet = true; m_hubContentDescription = std::forward<HubContentDescriptionT>(value); }
+    template<typename HubContentDescriptionT = Aws::String>
+    ImportHubContentRequest& WithHubContentDescription(HubContentDescriptionT&& value) { SetHubContentDescription(std::forward<HubContentDescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A description of the hub content to import.</p>
-     */
-    inline void SetHubContentDescription(const Aws::String& value) { m_hubContentDescriptionHasBeenSet = true; m_hubContentDescription = value; }
-
-    /**
-     * <p>A description of the hub content to import.</p>
-     */
-    inline void SetHubContentDescription(Aws::String&& value) { m_hubContentDescriptionHasBeenSet = true; m_hubContentDescription = std::move(value); }
-
-    /**
-     * <p>A description of the hub content to import.</p>
-     */
-    inline void SetHubContentDescription(const char* value) { m_hubContentDescriptionHasBeenSet = true; m_hubContentDescription.assign(value); }
-
-    /**
-     * <p>A description of the hub content to import.</p>
-     */
-    inline ImportHubContentRequest& WithHubContentDescription(const Aws::String& value) { SetHubContentDescription(value); return *this;}
-
-    /**
-     * <p>A description of the hub content to import.</p>
-     */
-    inline ImportHubContentRequest& WithHubContentDescription(Aws::String&& value) { SetHubContentDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A description of the hub content to import.</p>
-     */
-    inline ImportHubContentRequest& WithHubContentDescription(const char* value) { SetHubContentDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A string that provides a description of the hub content. This string can
      * include links, tables, and standard markdown formating.</p>
      */
-    inline const Aws::String& GetHubContentMarkdown() const{ return m_hubContentMarkdown; }
-
-    /**
-     * <p>A string that provides a description of the hub content. This string can
-     * include links, tables, and standard markdown formating.</p>
-     */
+    inline const Aws::String& GetHubContentMarkdown() const { return m_hubContentMarkdown; }
     inline bool HubContentMarkdownHasBeenSet() const { return m_hubContentMarkdownHasBeenSet; }
+    template<typename HubContentMarkdownT = Aws::String>
+    void SetHubContentMarkdown(HubContentMarkdownT&& value) { m_hubContentMarkdownHasBeenSet = true; m_hubContentMarkdown = std::forward<HubContentMarkdownT>(value); }
+    template<typename HubContentMarkdownT = Aws::String>
+    ImportHubContentRequest& WithHubContentMarkdown(HubContentMarkdownT&& value) { SetHubContentMarkdown(std::forward<HubContentMarkdownT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A string that provides a description of the hub content. This string can
-     * include links, tables, and standard markdown formating.</p>
-     */
-    inline void SetHubContentMarkdown(const Aws::String& value) { m_hubContentMarkdownHasBeenSet = true; m_hubContentMarkdown = value; }
-
-    /**
-     * <p>A string that provides a description of the hub content. This string can
-     * include links, tables, and standard markdown formating.</p>
-     */
-    inline void SetHubContentMarkdown(Aws::String&& value) { m_hubContentMarkdownHasBeenSet = true; m_hubContentMarkdown = std::move(value); }
-
-    /**
-     * <p>A string that provides a description of the hub content. This string can
-     * include links, tables, and standard markdown formating.</p>
-     */
-    inline void SetHubContentMarkdown(const char* value) { m_hubContentMarkdownHasBeenSet = true; m_hubContentMarkdown.assign(value); }
-
-    /**
-     * <p>A string that provides a description of the hub content. This string can
-     * include links, tables, and standard markdown formating.</p>
-     */
-    inline ImportHubContentRequest& WithHubContentMarkdown(const Aws::String& value) { SetHubContentMarkdown(value); return *this;}
-
-    /**
-     * <p>A string that provides a description of the hub content. This string can
-     * include links, tables, and standard markdown formating.</p>
-     */
-    inline ImportHubContentRequest& WithHubContentMarkdown(Aws::String&& value) { SetHubContentMarkdown(std::move(value)); return *this;}
-
-    /**
-     * <p>A string that provides a description of the hub content. This string can
-     * include links, tables, and standard markdown formating.</p>
-     */
-    inline ImportHubContentRequest& WithHubContentMarkdown(const char* value) { SetHubContentMarkdown(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The hub content document that describes information about the hub content
      * such as type, associated containers, scripts, and more.</p>
      */
-    inline const Aws::String& GetHubContentDocument() const{ return m_hubContentDocument; }
-
-    /**
-     * <p>The hub content document that describes information about the hub content
-     * such as type, associated containers, scripts, and more.</p>
-     */
+    inline const Aws::String& GetHubContentDocument() const { return m_hubContentDocument; }
     inline bool HubContentDocumentHasBeenSet() const { return m_hubContentDocumentHasBeenSet; }
+    template<typename HubContentDocumentT = Aws::String>
+    void SetHubContentDocument(HubContentDocumentT&& value) { m_hubContentDocumentHasBeenSet = true; m_hubContentDocument = std::forward<HubContentDocumentT>(value); }
+    template<typename HubContentDocumentT = Aws::String>
+    ImportHubContentRequest& WithHubContentDocument(HubContentDocumentT&& value) { SetHubContentDocument(std::forward<HubContentDocumentT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The hub content document that describes information about the hub content
-     * such as type, associated containers, scripts, and more.</p>
+     * <p>The status of the hub content resource.</p>
      */
-    inline void SetHubContentDocument(const Aws::String& value) { m_hubContentDocumentHasBeenSet = true; m_hubContentDocument = value; }
+    inline HubContentSupportStatus GetSupportStatus() const { return m_supportStatus; }
+    inline bool SupportStatusHasBeenSet() const { return m_supportStatusHasBeenSet; }
+    inline void SetSupportStatus(HubContentSupportStatus value) { m_supportStatusHasBeenSet = true; m_supportStatus = value; }
+    inline ImportHubContentRequest& WithSupportStatus(HubContentSupportStatus value) { SetSupportStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The hub content document that describes information about the hub content
-     * such as type, associated containers, scripts, and more.</p>
-     */
-    inline void SetHubContentDocument(Aws::String&& value) { m_hubContentDocumentHasBeenSet = true; m_hubContentDocument = std::move(value); }
-
-    /**
-     * <p>The hub content document that describes information about the hub content
-     * such as type, associated containers, scripts, and more.</p>
-     */
-    inline void SetHubContentDocument(const char* value) { m_hubContentDocumentHasBeenSet = true; m_hubContentDocument.assign(value); }
-
-    /**
-     * <p>The hub content document that describes information about the hub content
-     * such as type, associated containers, scripts, and more.</p>
-     */
-    inline ImportHubContentRequest& WithHubContentDocument(const Aws::String& value) { SetHubContentDocument(value); return *this;}
-
-    /**
-     * <p>The hub content document that describes information about the hub content
-     * such as type, associated containers, scripts, and more.</p>
-     */
-    inline ImportHubContentRequest& WithHubContentDocument(Aws::String&& value) { SetHubContentDocument(std::move(value)); return *this;}
-
-    /**
-     * <p>The hub content document that describes information about the hub content
-     * such as type, associated containers, scripts, and more.</p>
-     */
-    inline ImportHubContentRequest& WithHubContentDocument(const char* value) { SetHubContentDocument(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The searchable keywords of the hub content.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetHubContentSearchKeywords() const{ return m_hubContentSearchKeywords; }
-
-    /**
-     * <p>The searchable keywords of the hub content.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetHubContentSearchKeywords() const { return m_hubContentSearchKeywords; }
     inline bool HubContentSearchKeywordsHasBeenSet() const { return m_hubContentSearchKeywordsHasBeenSet; }
+    template<typename HubContentSearchKeywordsT = Aws::Vector<Aws::String>>
+    void SetHubContentSearchKeywords(HubContentSearchKeywordsT&& value) { m_hubContentSearchKeywordsHasBeenSet = true; m_hubContentSearchKeywords = std::forward<HubContentSearchKeywordsT>(value); }
+    template<typename HubContentSearchKeywordsT = Aws::Vector<Aws::String>>
+    ImportHubContentRequest& WithHubContentSearchKeywords(HubContentSearchKeywordsT&& value) { SetHubContentSearchKeywords(std::forward<HubContentSearchKeywordsT>(value)); return *this;}
+    template<typename HubContentSearchKeywordsT = Aws::String>
+    ImportHubContentRequest& AddHubContentSearchKeywords(HubContentSearchKeywordsT&& value) { m_hubContentSearchKeywordsHasBeenSet = true; m_hubContentSearchKeywords.emplace_back(std::forward<HubContentSearchKeywordsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The searchable keywords of the hub content.</p>
-     */
-    inline void SetHubContentSearchKeywords(const Aws::Vector<Aws::String>& value) { m_hubContentSearchKeywordsHasBeenSet = true; m_hubContentSearchKeywords = value; }
-
-    /**
-     * <p>The searchable keywords of the hub content.</p>
-     */
-    inline void SetHubContentSearchKeywords(Aws::Vector<Aws::String>&& value) { m_hubContentSearchKeywordsHasBeenSet = true; m_hubContentSearchKeywords = std::move(value); }
-
-    /**
-     * <p>The searchable keywords of the hub content.</p>
-     */
-    inline ImportHubContentRequest& WithHubContentSearchKeywords(const Aws::Vector<Aws::String>& value) { SetHubContentSearchKeywords(value); return *this;}
-
-    /**
-     * <p>The searchable keywords of the hub content.</p>
-     */
-    inline ImportHubContentRequest& WithHubContentSearchKeywords(Aws::Vector<Aws::String>&& value) { SetHubContentSearchKeywords(std::move(value)); return *this;}
-
-    /**
-     * <p>The searchable keywords of the hub content.</p>
-     */
-    inline ImportHubContentRequest& AddHubContentSearchKeywords(const Aws::String& value) { m_hubContentSearchKeywordsHasBeenSet = true; m_hubContentSearchKeywords.push_back(value); return *this; }
-
-    /**
-     * <p>The searchable keywords of the hub content.</p>
-     */
-    inline ImportHubContentRequest& AddHubContentSearchKeywords(Aws::String&& value) { m_hubContentSearchKeywordsHasBeenSet = true; m_hubContentSearchKeywords.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The searchable keywords of the hub content.</p>
-     */
-    inline ImportHubContentRequest& AddHubContentSearchKeywords(const char* value) { m_hubContentSearchKeywordsHasBeenSet = true; m_hubContentSearchKeywords.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>Any tags associated with the hub content.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>Any tags associated with the hub content.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>Any tags associated with the hub content.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>Any tags associated with the hub content.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>Any tags associated with the hub content.</p>
-     */
-    inline ImportHubContentRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>Any tags associated with the hub content.</p>
-     */
-    inline ImportHubContentRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>Any tags associated with the hub content.</p>
-     */
-    inline ImportHubContentRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>Any tags associated with the hub content.</p>
-     */
-    inline ImportHubContentRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    ImportHubContentRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    ImportHubContentRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_hubContentName;
@@ -506,7 +191,7 @@ namespace Model
     Aws::String m_hubContentVersion;
     bool m_hubContentVersionHasBeenSet = false;
 
-    HubContentType m_hubContentType;
+    HubContentType m_hubContentType{HubContentType::NOT_SET};
     bool m_hubContentTypeHasBeenSet = false;
 
     Aws::String m_documentSchemaVersion;
@@ -526,6 +211,9 @@ namespace Model
 
     Aws::String m_hubContentDocument;
     bool m_hubContentDocumentHasBeenSet = false;
+
+    HubContentSupportStatus m_supportStatus{HubContentSupportStatus::NOT_SET};
+    bool m_supportStatusHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_hubContentSearchKeywords;
     bool m_hubContentSearchKeywordsHasBeenSet = false;

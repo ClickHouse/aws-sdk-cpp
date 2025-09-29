@@ -20,27 +20,7 @@ namespace CloudWatch
 namespace Model
 {
 
-AlarmHistoryItem::AlarmHistoryItem() : 
-    m_alarmNameHasBeenSet(false),
-    m_alarmType(AlarmType::NOT_SET),
-    m_alarmTypeHasBeenSet(false),
-    m_timestampHasBeenSet(false),
-    m_historyItemType(HistoryItemType::NOT_SET),
-    m_historyItemTypeHasBeenSet(false),
-    m_historySummaryHasBeenSet(false),
-    m_historyDataHasBeenSet(false)
-{
-}
-
-AlarmHistoryItem::AlarmHistoryItem(const XmlNode& xmlNode) : 
-    m_alarmNameHasBeenSet(false),
-    m_alarmType(AlarmType::NOT_SET),
-    m_alarmTypeHasBeenSet(false),
-    m_timestampHasBeenSet(false),
-    m_historyItemType(HistoryItemType::NOT_SET),
-    m_historyItemTypeHasBeenSet(false),
-    m_historySummaryHasBeenSet(false),
-    m_historyDataHasBeenSet(false)
+AlarmHistoryItem::AlarmHistoryItem(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -57,10 +37,16 @@ AlarmHistoryItem& AlarmHistoryItem::operator =(const XmlNode& xmlNode)
       m_alarmName = Aws::Utils::Xml::DecodeEscapedXmlText(alarmNameNode.GetText());
       m_alarmNameHasBeenSet = true;
     }
+    XmlNode alarmContributorIdNode = resultNode.FirstChild("AlarmContributorId");
+    if(!alarmContributorIdNode.IsNull())
+    {
+      m_alarmContributorId = Aws::Utils::Xml::DecodeEscapedXmlText(alarmContributorIdNode.GetText());
+      m_alarmContributorIdHasBeenSet = true;
+    }
     XmlNode alarmTypeNode = resultNode.FirstChild("AlarmType");
     if(!alarmTypeNode.IsNull())
     {
-      m_alarmType = AlarmTypeMapper::GetAlarmTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(alarmTypeNode.GetText()).c_str()).c_str());
+      m_alarmType = AlarmTypeMapper::GetAlarmTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(alarmTypeNode.GetText()).c_str()));
       m_alarmTypeHasBeenSet = true;
     }
     XmlNode timestampNode = resultNode.FirstChild("Timestamp");
@@ -72,7 +58,7 @@ AlarmHistoryItem& AlarmHistoryItem::operator =(const XmlNode& xmlNode)
     XmlNode historyItemTypeNode = resultNode.FirstChild("HistoryItemType");
     if(!historyItemTypeNode.IsNull())
     {
-      m_historyItemType = HistoryItemTypeMapper::GetHistoryItemTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(historyItemTypeNode.GetText()).c_str()).c_str());
+      m_historyItemType = HistoryItemTypeMapper::GetHistoryItemTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(historyItemTypeNode.GetText()).c_str()));
       m_historyItemTypeHasBeenSet = true;
     }
     XmlNode historySummaryNode = resultNode.FirstChild("HistorySummary");
@@ -87,6 +73,23 @@ AlarmHistoryItem& AlarmHistoryItem::operator =(const XmlNode& xmlNode)
       m_historyData = Aws::Utils::Xml::DecodeEscapedXmlText(historyDataNode.GetText());
       m_historyDataHasBeenSet = true;
     }
+    XmlNode alarmContributorAttributesNode = resultNode.FirstChild("AlarmContributorAttributes");
+
+    if(!alarmContributorAttributesNode.IsNull())
+    {
+      XmlNode alarmContributorAttributesEntry = alarmContributorAttributesNode.FirstChild("entry");
+      m_alarmContributorAttributesHasBeenSet = !alarmContributorAttributesEntry.IsNull();
+      while(!alarmContributorAttributesEntry.IsNull())
+      {
+        XmlNode keyNode = alarmContributorAttributesEntry.FirstChild("key");
+        XmlNode valueNode = alarmContributorAttributesEntry.FirstChild("value");
+        m_alarmContributorAttributes[keyNode.GetText()] =
+            valueNode.GetText();
+        alarmContributorAttributesEntry = alarmContributorAttributesEntry.NextNode("entry");
+      }
+
+      m_alarmContributorAttributesHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -99,9 +102,14 @@ void AlarmHistoryItem::OutputToStream(Aws::OStream& oStream, const char* locatio
       oStream << location << index << locationValue << ".AlarmName=" << StringUtils::URLEncode(m_alarmName.c_str()) << "&";
   }
 
+  if(m_alarmContributorIdHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".AlarmContributorId=" << StringUtils::URLEncode(m_alarmContributorId.c_str()) << "&";
+  }
+
   if(m_alarmTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".AlarmType=" << AlarmTypeMapper::GetNameForAlarmType(m_alarmType) << "&";
+      oStream << location << index << locationValue << ".AlarmType=" << StringUtils::URLEncode(AlarmTypeMapper::GetNameForAlarmType(m_alarmType)) << "&";
   }
 
   if(m_timestampHasBeenSet)
@@ -111,7 +119,7 @@ void AlarmHistoryItem::OutputToStream(Aws::OStream& oStream, const char* locatio
 
   if(m_historyItemTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".HistoryItemType=" << HistoryItemTypeMapper::GetNameForHistoryItemType(m_historyItemType) << "&";
+      oStream << location << index << locationValue << ".HistoryItemType=" << StringUtils::URLEncode(HistoryItemTypeMapper::GetNameForHistoryItemType(m_historyItemType)) << "&";
   }
 
   if(m_historySummaryHasBeenSet)
@@ -124,6 +132,19 @@ void AlarmHistoryItem::OutputToStream(Aws::OStream& oStream, const char* locatio
       oStream << location << index << locationValue << ".HistoryData=" << StringUtils::URLEncode(m_historyData.c_str()) << "&";
   }
 
+  if(m_alarmContributorAttributesHasBeenSet)
+  {
+      unsigned alarmContributorAttributesIdx = 1;
+      for(auto& item : m_alarmContributorAttributes)
+      {
+        oStream << location << index << locationValue << ".AlarmContributorAttributes.entry." << alarmContributorAttributesIdx << ".key="
+            << StringUtils::URLEncode(item.first.c_str()) << "&";
+        oStream << location << index << locationValue << ".AlarmContributorAttributes.entry." << alarmContributorAttributesIdx << ".value="
+            << StringUtils::URLEncode(item.second.c_str()) << "&";
+        alarmContributorAttributesIdx++;
+      }
+  }
+
 }
 
 void AlarmHistoryItem::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -132,9 +153,13 @@ void AlarmHistoryItem::OutputToStream(Aws::OStream& oStream, const char* locatio
   {
       oStream << location << ".AlarmName=" << StringUtils::URLEncode(m_alarmName.c_str()) << "&";
   }
+  if(m_alarmContributorIdHasBeenSet)
+  {
+      oStream << location << ".AlarmContributorId=" << StringUtils::URLEncode(m_alarmContributorId.c_str()) << "&";
+  }
   if(m_alarmTypeHasBeenSet)
   {
-      oStream << location << ".AlarmType=" << AlarmTypeMapper::GetNameForAlarmType(m_alarmType) << "&";
+      oStream << location << ".AlarmType=" << StringUtils::URLEncode(AlarmTypeMapper::GetNameForAlarmType(m_alarmType)) << "&";
   }
   if(m_timestampHasBeenSet)
   {
@@ -142,7 +167,7 @@ void AlarmHistoryItem::OutputToStream(Aws::OStream& oStream, const char* locatio
   }
   if(m_historyItemTypeHasBeenSet)
   {
-      oStream << location << ".HistoryItemType=" << HistoryItemTypeMapper::GetNameForHistoryItemType(m_historyItemType) << "&";
+      oStream << location << ".HistoryItemType=" << StringUtils::URLEncode(HistoryItemTypeMapper::GetNameForHistoryItemType(m_historyItemType)) << "&";
   }
   if(m_historySummaryHasBeenSet)
   {
@@ -151,6 +176,18 @@ void AlarmHistoryItem::OutputToStream(Aws::OStream& oStream, const char* locatio
   if(m_historyDataHasBeenSet)
   {
       oStream << location << ".HistoryData=" << StringUtils::URLEncode(m_historyData.c_str()) << "&";
+  }
+  if(m_alarmContributorAttributesHasBeenSet)
+  {
+      unsigned alarmContributorAttributesIdx = 1;
+      for(auto& item : m_alarmContributorAttributes)
+      {
+        oStream << location << ".AlarmContributorAttributes.entry." << alarmContributorAttributesIdx << ".key="
+            << StringUtils::URLEncode(item.first.c_str()) << "&";
+        oStream << location << ".AlarmContributorAttributes.entry." << alarmContributorAttributesIdx << ".value="
+            << StringUtils::URLEncode(item.second.c_str()) << "&";
+        alarmContributorAttributesIdx++;
+      }
   }
 }
 

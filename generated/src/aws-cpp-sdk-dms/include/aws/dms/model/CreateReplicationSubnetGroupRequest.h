@@ -26,7 +26,7 @@ namespace Model
   class CreateReplicationSubnetGroupRequest : public DatabaseMigrationServiceRequest
   {
   public:
-    AWS_DATABASEMIGRATIONSERVICE_API CreateReplicationSubnetGroupRequest();
+    AWS_DATABASEMIGRATIONSERVICE_API CreateReplicationSubnetGroupRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,198 +39,61 @@ namespace Model
     AWS_DATABASEMIGRATIONSERVICE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name for the replication subnet group. This value is stored as a
      * lowercase string.</p> <p>Constraints: Must contain no more than 255 alphanumeric
-     * characters, periods, spaces, underscores, or hyphens. Must not be "default".</p>
+     * characters, periods, underscores, or hyphens. Must not be "default".</p>
      * <p>Example: <code>mySubnetgroup</code> </p>
      */
-    inline const Aws::String& GetReplicationSubnetGroupIdentifier() const{ return m_replicationSubnetGroupIdentifier; }
-
-    /**
-     * <p>The name for the replication subnet group. This value is stored as a
-     * lowercase string.</p> <p>Constraints: Must contain no more than 255 alphanumeric
-     * characters, periods, spaces, underscores, or hyphens. Must not be "default".</p>
-     * <p>Example: <code>mySubnetgroup</code> </p>
-     */
+    inline const Aws::String& GetReplicationSubnetGroupIdentifier() const { return m_replicationSubnetGroupIdentifier; }
     inline bool ReplicationSubnetGroupIdentifierHasBeenSet() const { return m_replicationSubnetGroupIdentifierHasBeenSet; }
+    template<typename ReplicationSubnetGroupIdentifierT = Aws::String>
+    void SetReplicationSubnetGroupIdentifier(ReplicationSubnetGroupIdentifierT&& value) { m_replicationSubnetGroupIdentifierHasBeenSet = true; m_replicationSubnetGroupIdentifier = std::forward<ReplicationSubnetGroupIdentifierT>(value); }
+    template<typename ReplicationSubnetGroupIdentifierT = Aws::String>
+    CreateReplicationSubnetGroupRequest& WithReplicationSubnetGroupIdentifier(ReplicationSubnetGroupIdentifierT&& value) { SetReplicationSubnetGroupIdentifier(std::forward<ReplicationSubnetGroupIdentifierT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name for the replication subnet group. This value is stored as a
-     * lowercase string.</p> <p>Constraints: Must contain no more than 255 alphanumeric
-     * characters, periods, spaces, underscores, or hyphens. Must not be "default".</p>
-     * <p>Example: <code>mySubnetgroup</code> </p>
+     * <p>The description for the subnet group. </p> <p>Constraints: This parameter
+     * Must not contain non-printable control characters.</p>
      */
-    inline void SetReplicationSubnetGroupIdentifier(const Aws::String& value) { m_replicationSubnetGroupIdentifierHasBeenSet = true; m_replicationSubnetGroupIdentifier = value; }
-
-    /**
-     * <p>The name for the replication subnet group. This value is stored as a
-     * lowercase string.</p> <p>Constraints: Must contain no more than 255 alphanumeric
-     * characters, periods, spaces, underscores, or hyphens. Must not be "default".</p>
-     * <p>Example: <code>mySubnetgroup</code> </p>
-     */
-    inline void SetReplicationSubnetGroupIdentifier(Aws::String&& value) { m_replicationSubnetGroupIdentifierHasBeenSet = true; m_replicationSubnetGroupIdentifier = std::move(value); }
-
-    /**
-     * <p>The name for the replication subnet group. This value is stored as a
-     * lowercase string.</p> <p>Constraints: Must contain no more than 255 alphanumeric
-     * characters, periods, spaces, underscores, or hyphens. Must not be "default".</p>
-     * <p>Example: <code>mySubnetgroup</code> </p>
-     */
-    inline void SetReplicationSubnetGroupIdentifier(const char* value) { m_replicationSubnetGroupIdentifierHasBeenSet = true; m_replicationSubnetGroupIdentifier.assign(value); }
-
-    /**
-     * <p>The name for the replication subnet group. This value is stored as a
-     * lowercase string.</p> <p>Constraints: Must contain no more than 255 alphanumeric
-     * characters, periods, spaces, underscores, or hyphens. Must not be "default".</p>
-     * <p>Example: <code>mySubnetgroup</code> </p>
-     */
-    inline CreateReplicationSubnetGroupRequest& WithReplicationSubnetGroupIdentifier(const Aws::String& value) { SetReplicationSubnetGroupIdentifier(value); return *this;}
-
-    /**
-     * <p>The name for the replication subnet group. This value is stored as a
-     * lowercase string.</p> <p>Constraints: Must contain no more than 255 alphanumeric
-     * characters, periods, spaces, underscores, or hyphens. Must not be "default".</p>
-     * <p>Example: <code>mySubnetgroup</code> </p>
-     */
-    inline CreateReplicationSubnetGroupRequest& WithReplicationSubnetGroupIdentifier(Aws::String&& value) { SetReplicationSubnetGroupIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The name for the replication subnet group. This value is stored as a
-     * lowercase string.</p> <p>Constraints: Must contain no more than 255 alphanumeric
-     * characters, periods, spaces, underscores, or hyphens. Must not be "default".</p>
-     * <p>Example: <code>mySubnetgroup</code> </p>
-     */
-    inline CreateReplicationSubnetGroupRequest& WithReplicationSubnetGroupIdentifier(const char* value) { SetReplicationSubnetGroupIdentifier(value); return *this;}
-
-
-    /**
-     * <p>The description for the subnet group.</p>
-     */
-    inline const Aws::String& GetReplicationSubnetGroupDescription() const{ return m_replicationSubnetGroupDescription; }
-
-    /**
-     * <p>The description for the subnet group.</p>
-     */
+    inline const Aws::String& GetReplicationSubnetGroupDescription() const { return m_replicationSubnetGroupDescription; }
     inline bool ReplicationSubnetGroupDescriptionHasBeenSet() const { return m_replicationSubnetGroupDescriptionHasBeenSet; }
+    template<typename ReplicationSubnetGroupDescriptionT = Aws::String>
+    void SetReplicationSubnetGroupDescription(ReplicationSubnetGroupDescriptionT&& value) { m_replicationSubnetGroupDescriptionHasBeenSet = true; m_replicationSubnetGroupDescription = std::forward<ReplicationSubnetGroupDescriptionT>(value); }
+    template<typename ReplicationSubnetGroupDescriptionT = Aws::String>
+    CreateReplicationSubnetGroupRequest& WithReplicationSubnetGroupDescription(ReplicationSubnetGroupDescriptionT&& value) { SetReplicationSubnetGroupDescription(std::forward<ReplicationSubnetGroupDescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description for the subnet group.</p>
-     */
-    inline void SetReplicationSubnetGroupDescription(const Aws::String& value) { m_replicationSubnetGroupDescriptionHasBeenSet = true; m_replicationSubnetGroupDescription = value; }
-
-    /**
-     * <p>The description for the subnet group.</p>
-     */
-    inline void SetReplicationSubnetGroupDescription(Aws::String&& value) { m_replicationSubnetGroupDescriptionHasBeenSet = true; m_replicationSubnetGroupDescription = std::move(value); }
-
-    /**
-     * <p>The description for the subnet group.</p>
-     */
-    inline void SetReplicationSubnetGroupDescription(const char* value) { m_replicationSubnetGroupDescriptionHasBeenSet = true; m_replicationSubnetGroupDescription.assign(value); }
-
-    /**
-     * <p>The description for the subnet group.</p>
-     */
-    inline CreateReplicationSubnetGroupRequest& WithReplicationSubnetGroupDescription(const Aws::String& value) { SetReplicationSubnetGroupDescription(value); return *this;}
-
-    /**
-     * <p>The description for the subnet group.</p>
-     */
-    inline CreateReplicationSubnetGroupRequest& WithReplicationSubnetGroupDescription(Aws::String&& value) { SetReplicationSubnetGroupDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description for the subnet group.</p>
-     */
-    inline CreateReplicationSubnetGroupRequest& WithReplicationSubnetGroupDescription(const char* value) { SetReplicationSubnetGroupDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Two or more subnet IDs to be assigned to the subnet group.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetSubnetIds() const{ return m_subnetIds; }
-
-    /**
-     * <p>Two or more subnet IDs to be assigned to the subnet group.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetSubnetIds() const { return m_subnetIds; }
     inline bool SubnetIdsHasBeenSet() const { return m_subnetIdsHasBeenSet; }
+    template<typename SubnetIdsT = Aws::Vector<Aws::String>>
+    void SetSubnetIds(SubnetIdsT&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds = std::forward<SubnetIdsT>(value); }
+    template<typename SubnetIdsT = Aws::Vector<Aws::String>>
+    CreateReplicationSubnetGroupRequest& WithSubnetIds(SubnetIdsT&& value) { SetSubnetIds(std::forward<SubnetIdsT>(value)); return *this;}
+    template<typename SubnetIdsT = Aws::String>
+    CreateReplicationSubnetGroupRequest& AddSubnetIds(SubnetIdsT&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds.emplace_back(std::forward<SubnetIdsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Two or more subnet IDs to be assigned to the subnet group.</p>
-     */
-    inline void SetSubnetIds(const Aws::Vector<Aws::String>& value) { m_subnetIdsHasBeenSet = true; m_subnetIds = value; }
-
-    /**
-     * <p>Two or more subnet IDs to be assigned to the subnet group.</p>
-     */
-    inline void SetSubnetIds(Aws::Vector<Aws::String>&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds = std::move(value); }
-
-    /**
-     * <p>Two or more subnet IDs to be assigned to the subnet group.</p>
-     */
-    inline CreateReplicationSubnetGroupRequest& WithSubnetIds(const Aws::Vector<Aws::String>& value) { SetSubnetIds(value); return *this;}
-
-    /**
-     * <p>Two or more subnet IDs to be assigned to the subnet group.</p>
-     */
-    inline CreateReplicationSubnetGroupRequest& WithSubnetIds(Aws::Vector<Aws::String>&& value) { SetSubnetIds(std::move(value)); return *this;}
-
-    /**
-     * <p>Two or more subnet IDs to be assigned to the subnet group.</p>
-     */
-    inline CreateReplicationSubnetGroupRequest& AddSubnetIds(const Aws::String& value) { m_subnetIdsHasBeenSet = true; m_subnetIds.push_back(value); return *this; }
-
-    /**
-     * <p>Two or more subnet IDs to be assigned to the subnet group.</p>
-     */
-    inline CreateReplicationSubnetGroupRequest& AddSubnetIds(Aws::String&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>Two or more subnet IDs to be assigned to the subnet group.</p>
-     */
-    inline CreateReplicationSubnetGroupRequest& AddSubnetIds(const char* value) { m_subnetIdsHasBeenSet = true; m_subnetIds.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>One or more tags to be assigned to the subnet group.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>One or more tags to be assigned to the subnet group.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>One or more tags to be assigned to the subnet group.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>One or more tags to be assigned to the subnet group.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>One or more tags to be assigned to the subnet group.</p>
-     */
-    inline CreateReplicationSubnetGroupRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>One or more tags to be assigned to the subnet group.</p>
-     */
-    inline CreateReplicationSubnetGroupRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>One or more tags to be assigned to the subnet group.</p>
-     */
-    inline CreateReplicationSubnetGroupRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>One or more tags to be assigned to the subnet group.</p>
-     */
-    inline CreateReplicationSubnetGroupRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    CreateReplicationSubnetGroupRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    CreateReplicationSubnetGroupRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_replicationSubnetGroupIdentifier;

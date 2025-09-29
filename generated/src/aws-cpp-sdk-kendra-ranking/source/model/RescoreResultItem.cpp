@@ -18,17 +18,7 @@ namespace KendraRanking
 namespace Model
 {
 
-RescoreResultItem::RescoreResultItem() : 
-    m_documentIdHasBeenSet(false),
-    m_score(0.0),
-    m_scoreHasBeenSet(false)
-{
-}
-
-RescoreResultItem::RescoreResultItem(JsonView jsonValue) : 
-    m_documentIdHasBeenSet(false),
-    m_score(0.0),
-    m_scoreHasBeenSet(false)
+RescoreResultItem::RescoreResultItem(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ RescoreResultItem& RescoreResultItem::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("DocumentId"))
   {
     m_documentId = jsonValue.GetString("DocumentId");
-
     m_documentIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Score"))
   {
     m_score = jsonValue.GetDouble("Score");
-
     m_scoreHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,15 +18,7 @@ namespace VoiceID
 namespace Model
 {
 
-AuthenticationConfiguration::AuthenticationConfiguration() : 
-    m_acceptanceThreshold(0),
-    m_acceptanceThresholdHasBeenSet(false)
-{
-}
-
-AuthenticationConfiguration::AuthenticationConfiguration(JsonView jsonValue) : 
-    m_acceptanceThreshold(0),
-    m_acceptanceThresholdHasBeenSet(false)
+AuthenticationConfiguration::AuthenticationConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ AuthenticationConfiguration& AuthenticationConfiguration::operator =(JsonView js
   if(jsonValue.ValueExists("AcceptanceThreshold"))
   {
     m_acceptanceThreshold = jsonValue.GetInteger("AcceptanceThreshold");
-
     m_acceptanceThresholdHasBeenSet = true;
   }
-
   return *this;
 }
 

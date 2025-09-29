@@ -34,151 +34,51 @@ namespace Model
   class SalesforceCustomKnowledgeArticleTypeConfiguration
   {
   public:
-    AWS_KENDRA_API SalesforceCustomKnowledgeArticleTypeConfiguration();
+    AWS_KENDRA_API SalesforceCustomKnowledgeArticleTypeConfiguration() = default;
     AWS_KENDRA_API SalesforceCustomKnowledgeArticleTypeConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_KENDRA_API SalesforceCustomKnowledgeArticleTypeConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KENDRA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the configuration.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the configuration.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    SalesforceCustomKnowledgeArticleTypeConfiguration& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the configuration.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the configuration.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the configuration.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the configuration.</p>
-     */
-    inline SalesforceCustomKnowledgeArticleTypeConfiguration& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the configuration.</p>
-     */
-    inline SalesforceCustomKnowledgeArticleTypeConfiguration& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the configuration.</p>
-     */
-    inline SalesforceCustomKnowledgeArticleTypeConfiguration& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the field in the custom knowledge article that contains the
      * document data to index.</p>
      */
-    inline const Aws::String& GetDocumentDataFieldName() const{ return m_documentDataFieldName; }
-
-    /**
-     * <p>The name of the field in the custom knowledge article that contains the
-     * document data to index.</p>
-     */
+    inline const Aws::String& GetDocumentDataFieldName() const { return m_documentDataFieldName; }
     inline bool DocumentDataFieldNameHasBeenSet() const { return m_documentDataFieldNameHasBeenSet; }
+    template<typename DocumentDataFieldNameT = Aws::String>
+    void SetDocumentDataFieldName(DocumentDataFieldNameT&& value) { m_documentDataFieldNameHasBeenSet = true; m_documentDataFieldName = std::forward<DocumentDataFieldNameT>(value); }
+    template<typename DocumentDataFieldNameT = Aws::String>
+    SalesforceCustomKnowledgeArticleTypeConfiguration& WithDocumentDataFieldName(DocumentDataFieldNameT&& value) { SetDocumentDataFieldName(std::forward<DocumentDataFieldNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the field in the custom knowledge article that contains the
-     * document data to index.</p>
-     */
-    inline void SetDocumentDataFieldName(const Aws::String& value) { m_documentDataFieldNameHasBeenSet = true; m_documentDataFieldName = value; }
-
-    /**
-     * <p>The name of the field in the custom knowledge article that contains the
-     * document data to index.</p>
-     */
-    inline void SetDocumentDataFieldName(Aws::String&& value) { m_documentDataFieldNameHasBeenSet = true; m_documentDataFieldName = std::move(value); }
-
-    /**
-     * <p>The name of the field in the custom knowledge article that contains the
-     * document data to index.</p>
-     */
-    inline void SetDocumentDataFieldName(const char* value) { m_documentDataFieldNameHasBeenSet = true; m_documentDataFieldName.assign(value); }
-
-    /**
-     * <p>The name of the field in the custom knowledge article that contains the
-     * document data to index.</p>
-     */
-    inline SalesforceCustomKnowledgeArticleTypeConfiguration& WithDocumentDataFieldName(const Aws::String& value) { SetDocumentDataFieldName(value); return *this;}
-
-    /**
-     * <p>The name of the field in the custom knowledge article that contains the
-     * document data to index.</p>
-     */
-    inline SalesforceCustomKnowledgeArticleTypeConfiguration& WithDocumentDataFieldName(Aws::String&& value) { SetDocumentDataFieldName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the field in the custom knowledge article that contains the
-     * document data to index.</p>
-     */
-    inline SalesforceCustomKnowledgeArticleTypeConfiguration& WithDocumentDataFieldName(const char* value) { SetDocumentDataFieldName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the field in the custom knowledge article that contains the
      * document title.</p>
      */
-    inline const Aws::String& GetDocumentTitleFieldName() const{ return m_documentTitleFieldName; }
-
-    /**
-     * <p>The name of the field in the custom knowledge article that contains the
-     * document title.</p>
-     */
+    inline const Aws::String& GetDocumentTitleFieldName() const { return m_documentTitleFieldName; }
     inline bool DocumentTitleFieldNameHasBeenSet() const { return m_documentTitleFieldNameHasBeenSet; }
+    template<typename DocumentTitleFieldNameT = Aws::String>
+    void SetDocumentTitleFieldName(DocumentTitleFieldNameT&& value) { m_documentTitleFieldNameHasBeenSet = true; m_documentTitleFieldName = std::forward<DocumentTitleFieldNameT>(value); }
+    template<typename DocumentTitleFieldNameT = Aws::String>
+    SalesforceCustomKnowledgeArticleTypeConfiguration& WithDocumentTitleFieldName(DocumentTitleFieldNameT&& value) { SetDocumentTitleFieldName(std::forward<DocumentTitleFieldNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the field in the custom knowledge article that contains the
-     * document title.</p>
-     */
-    inline void SetDocumentTitleFieldName(const Aws::String& value) { m_documentTitleFieldNameHasBeenSet = true; m_documentTitleFieldName = value; }
-
-    /**
-     * <p>The name of the field in the custom knowledge article that contains the
-     * document title.</p>
-     */
-    inline void SetDocumentTitleFieldName(Aws::String&& value) { m_documentTitleFieldNameHasBeenSet = true; m_documentTitleFieldName = std::move(value); }
-
-    /**
-     * <p>The name of the field in the custom knowledge article that contains the
-     * document title.</p>
-     */
-    inline void SetDocumentTitleFieldName(const char* value) { m_documentTitleFieldNameHasBeenSet = true; m_documentTitleFieldName.assign(value); }
-
-    /**
-     * <p>The name of the field in the custom knowledge article that contains the
-     * document title.</p>
-     */
-    inline SalesforceCustomKnowledgeArticleTypeConfiguration& WithDocumentTitleFieldName(const Aws::String& value) { SetDocumentTitleFieldName(value); return *this;}
-
-    /**
-     * <p>The name of the field in the custom knowledge article that contains the
-     * document title.</p>
-     */
-    inline SalesforceCustomKnowledgeArticleTypeConfiguration& WithDocumentTitleFieldName(Aws::String&& value) { SetDocumentTitleFieldName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the field in the custom knowledge article that contains the
-     * document title.</p>
-     */
-    inline SalesforceCustomKnowledgeArticleTypeConfiguration& WithDocumentTitleFieldName(const char* value) { SetDocumentTitleFieldName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Maps attributes or field names of the custom knowledge article to Amazon
      * Kendra index field names. To create custom fields, use the
@@ -188,85 +88,15 @@ namespace Model
      * data source fields</a>. The Salesforce data source field names must exist in
      * your Salesforce custom metadata.</p>
      */
-    inline const Aws::Vector<DataSourceToIndexFieldMapping>& GetFieldMappings() const{ return m_fieldMappings; }
-
-    /**
-     * <p>Maps attributes or field names of the custom knowledge article to Amazon
-     * Kendra index field names. To create custom fields, use the
-     * <code>UpdateIndex</code> API before you map to Salesforce fields. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/field-mapping.html">Mapping
-     * data source fields</a>. The Salesforce data source field names must exist in
-     * your Salesforce custom metadata.</p>
-     */
+    inline const Aws::Vector<DataSourceToIndexFieldMapping>& GetFieldMappings() const { return m_fieldMappings; }
     inline bool FieldMappingsHasBeenSet() const { return m_fieldMappingsHasBeenSet; }
-
-    /**
-     * <p>Maps attributes or field names of the custom knowledge article to Amazon
-     * Kendra index field names. To create custom fields, use the
-     * <code>UpdateIndex</code> API before you map to Salesforce fields. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/field-mapping.html">Mapping
-     * data source fields</a>. The Salesforce data source field names must exist in
-     * your Salesforce custom metadata.</p>
-     */
-    inline void SetFieldMappings(const Aws::Vector<DataSourceToIndexFieldMapping>& value) { m_fieldMappingsHasBeenSet = true; m_fieldMappings = value; }
-
-    /**
-     * <p>Maps attributes or field names of the custom knowledge article to Amazon
-     * Kendra index field names. To create custom fields, use the
-     * <code>UpdateIndex</code> API before you map to Salesforce fields. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/field-mapping.html">Mapping
-     * data source fields</a>. The Salesforce data source field names must exist in
-     * your Salesforce custom metadata.</p>
-     */
-    inline void SetFieldMappings(Aws::Vector<DataSourceToIndexFieldMapping>&& value) { m_fieldMappingsHasBeenSet = true; m_fieldMappings = std::move(value); }
-
-    /**
-     * <p>Maps attributes or field names of the custom knowledge article to Amazon
-     * Kendra index field names. To create custom fields, use the
-     * <code>UpdateIndex</code> API before you map to Salesforce fields. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/field-mapping.html">Mapping
-     * data source fields</a>. The Salesforce data source field names must exist in
-     * your Salesforce custom metadata.</p>
-     */
-    inline SalesforceCustomKnowledgeArticleTypeConfiguration& WithFieldMappings(const Aws::Vector<DataSourceToIndexFieldMapping>& value) { SetFieldMappings(value); return *this;}
-
-    /**
-     * <p>Maps attributes or field names of the custom knowledge article to Amazon
-     * Kendra index field names. To create custom fields, use the
-     * <code>UpdateIndex</code> API before you map to Salesforce fields. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/field-mapping.html">Mapping
-     * data source fields</a>. The Salesforce data source field names must exist in
-     * your Salesforce custom metadata.</p>
-     */
-    inline SalesforceCustomKnowledgeArticleTypeConfiguration& WithFieldMappings(Aws::Vector<DataSourceToIndexFieldMapping>&& value) { SetFieldMappings(std::move(value)); return *this;}
-
-    /**
-     * <p>Maps attributes or field names of the custom knowledge article to Amazon
-     * Kendra index field names. To create custom fields, use the
-     * <code>UpdateIndex</code> API before you map to Salesforce fields. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/field-mapping.html">Mapping
-     * data source fields</a>. The Salesforce data source field names must exist in
-     * your Salesforce custom metadata.</p>
-     */
-    inline SalesforceCustomKnowledgeArticleTypeConfiguration& AddFieldMappings(const DataSourceToIndexFieldMapping& value) { m_fieldMappingsHasBeenSet = true; m_fieldMappings.push_back(value); return *this; }
-
-    /**
-     * <p>Maps attributes or field names of the custom knowledge article to Amazon
-     * Kendra index field names. To create custom fields, use the
-     * <code>UpdateIndex</code> API before you map to Salesforce fields. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/field-mapping.html">Mapping
-     * data source fields</a>. The Salesforce data source field names must exist in
-     * your Salesforce custom metadata.</p>
-     */
-    inline SalesforceCustomKnowledgeArticleTypeConfiguration& AddFieldMappings(DataSourceToIndexFieldMapping&& value) { m_fieldMappingsHasBeenSet = true; m_fieldMappings.push_back(std::move(value)); return *this; }
-
+    template<typename FieldMappingsT = Aws::Vector<DataSourceToIndexFieldMapping>>
+    void SetFieldMappings(FieldMappingsT&& value) { m_fieldMappingsHasBeenSet = true; m_fieldMappings = std::forward<FieldMappingsT>(value); }
+    template<typename FieldMappingsT = Aws::Vector<DataSourceToIndexFieldMapping>>
+    SalesforceCustomKnowledgeArticleTypeConfiguration& WithFieldMappings(FieldMappingsT&& value) { SetFieldMappings(std::forward<FieldMappingsT>(value)); return *this;}
+    template<typename FieldMappingsT = DataSourceToIndexFieldMapping>
+    SalesforceCustomKnowledgeArticleTypeConfiguration& AddFieldMappings(FieldMappingsT&& value) { m_fieldMappingsHasBeenSet = true; m_fieldMappings.emplace_back(std::forward<FieldMappingsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_name;

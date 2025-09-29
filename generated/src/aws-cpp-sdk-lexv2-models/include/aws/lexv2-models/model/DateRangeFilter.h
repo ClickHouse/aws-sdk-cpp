@@ -32,79 +32,41 @@ namespace Model
   class DateRangeFilter
   {
   public:
-    AWS_LEXMODELSV2_API DateRangeFilter();
+    AWS_LEXMODELSV2_API DateRangeFilter() = default;
     AWS_LEXMODELSV2_API DateRangeFilter(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API DateRangeFilter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A timestamp indicating the start date for the date range filter.</p>
      */
-    inline const Aws::Utils::DateTime& GetStartDateTime() const{ return m_startDateTime; }
-
-    /**
-     * <p>A timestamp indicating the start date for the date range filter.</p>
-     */
+    inline const Aws::Utils::DateTime& GetStartDateTime() const { return m_startDateTime; }
     inline bool StartDateTimeHasBeenSet() const { return m_startDateTimeHasBeenSet; }
+    template<typename StartDateTimeT = Aws::Utils::DateTime>
+    void SetStartDateTime(StartDateTimeT&& value) { m_startDateTimeHasBeenSet = true; m_startDateTime = std::forward<StartDateTimeT>(value); }
+    template<typename StartDateTimeT = Aws::Utils::DateTime>
+    DateRangeFilter& WithStartDateTime(StartDateTimeT&& value) { SetStartDateTime(std::forward<StartDateTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A timestamp indicating the start date for the date range filter.</p>
-     */
-    inline void SetStartDateTime(const Aws::Utils::DateTime& value) { m_startDateTimeHasBeenSet = true; m_startDateTime = value; }
-
-    /**
-     * <p>A timestamp indicating the start date for the date range filter.</p>
-     */
-    inline void SetStartDateTime(Aws::Utils::DateTime&& value) { m_startDateTimeHasBeenSet = true; m_startDateTime = std::move(value); }
-
-    /**
-     * <p>A timestamp indicating the start date for the date range filter.</p>
-     */
-    inline DateRangeFilter& WithStartDateTime(const Aws::Utils::DateTime& value) { SetStartDateTime(value); return *this;}
-
-    /**
-     * <p>A timestamp indicating the start date for the date range filter.</p>
-     */
-    inline DateRangeFilter& WithStartDateTime(Aws::Utils::DateTime&& value) { SetStartDateTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A timestamp indicating the end date for the date range filter.</p>
      */
-    inline const Aws::Utils::DateTime& GetEndDateTime() const{ return m_endDateTime; }
-
-    /**
-     * <p>A timestamp indicating the end date for the date range filter.</p>
-     */
+    inline const Aws::Utils::DateTime& GetEndDateTime() const { return m_endDateTime; }
     inline bool EndDateTimeHasBeenSet() const { return m_endDateTimeHasBeenSet; }
-
-    /**
-     * <p>A timestamp indicating the end date for the date range filter.</p>
-     */
-    inline void SetEndDateTime(const Aws::Utils::DateTime& value) { m_endDateTimeHasBeenSet = true; m_endDateTime = value; }
-
-    /**
-     * <p>A timestamp indicating the end date for the date range filter.</p>
-     */
-    inline void SetEndDateTime(Aws::Utils::DateTime&& value) { m_endDateTimeHasBeenSet = true; m_endDateTime = std::move(value); }
-
-    /**
-     * <p>A timestamp indicating the end date for the date range filter.</p>
-     */
-    inline DateRangeFilter& WithEndDateTime(const Aws::Utils::DateTime& value) { SetEndDateTime(value); return *this;}
-
-    /**
-     * <p>A timestamp indicating the end date for the date range filter.</p>
-     */
-    inline DateRangeFilter& WithEndDateTime(Aws::Utils::DateTime&& value) { SetEndDateTime(std::move(value)); return *this;}
-
+    template<typename EndDateTimeT = Aws::Utils::DateTime>
+    void SetEndDateTime(EndDateTimeT&& value) { m_endDateTimeHasBeenSet = true; m_endDateTime = std::forward<EndDateTimeT>(value); }
+    template<typename EndDateTimeT = Aws::Utils::DateTime>
+    DateRangeFilter& WithEndDateTime(EndDateTimeT&& value) { SetEndDateTime(std::forward<EndDateTimeT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::Utils::DateTime m_startDateTime;
+    Aws::Utils::DateTime m_startDateTime{};
     bool m_startDateTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_endDateTime;
+    Aws::Utils::DateTime m_endDateTime{};
     bool m_endDateTimeHasBeenSet = false;
   };
 

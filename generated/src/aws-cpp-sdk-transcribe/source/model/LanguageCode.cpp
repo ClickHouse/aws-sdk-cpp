@@ -73,6 +73,7 @@ namespace Aws
         static const int cs_CZ_HASH = HashingUtils::HashString("cs-CZ");
         static const int cy_WL_HASH = HashingUtils::HashString("cy-WL");
         static const int el_GR_HASH = HashingUtils::HashString("el-GR");
+        static const int et_EE_HASH = HashingUtils::HashString("et-EE");
         static const int et_ET_HASH = HashingUtils::HashString("et-ET");
         static const int eu_ES_HASH = HashingUtils::HashString("eu-ES");
         static const int fi_FI_HASH = HashingUtils::HashString("fi-FI");
@@ -122,6 +123,7 @@ namespace Aws
         static const int uk_UA_HASH = HashingUtils::HashString("uk-UA");
         static const int uz_UZ_HASH = HashingUtils::HashString("uz-UZ");
         static const int wo_SN_HASH = HashingUtils::HashString("wo-SN");
+        static const int zh_HK_HASH = HashingUtils::HashString("zh-HK");
         static const int zu_ZA_HASH = HashingUtils::HashString("zu-ZA");
 
 
@@ -340,6 +342,10 @@ namespace Aws
           {
             return LanguageCode::el_GR;
           }
+          else if (hashCode == et_EE_HASH)
+          {
+            return LanguageCode::et_EE;
+          }
           else if (hashCode == et_ET_HASH)
           {
             return LanguageCode::et_ET;
@@ -536,6 +542,10 @@ namespace Aws
           {
             return LanguageCode::wo_SN;
           }
+          else if (hashCode == zh_HK_HASH)
+          {
+            return LanguageCode::zh_HK;
+          }
           else if (hashCode == zu_ZA_HASH)
           {
             return LanguageCode::zu_ZA;
@@ -662,6 +672,8 @@ namespace Aws
             return "cy-WL";
           case LanguageCode::el_GR:
             return "el-GR";
+          case LanguageCode::et_EE:
+            return "et-EE";
           case LanguageCode::et_ET:
             return "et-ET";
           case LanguageCode::eu_ES:
@@ -760,6 +772,8 @@ namespace Aws
             return "uz-UZ";
           case LanguageCode::wo_SN:
             return "wo-SN";
+          case LanguageCode::zh_HK:
+            return "zh-HK";
           case LanguageCode::zu_ZA:
             return "zu-ZA";
           default:

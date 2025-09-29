@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-StatePersistenceConfigurations::StatePersistenceConfigurations() : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false)
-{
-}
-
-StatePersistenceConfigurations::StatePersistenceConfigurations(JsonView jsonValue) : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false)
+StatePersistenceConfigurations::StatePersistenceConfigurations(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ StatePersistenceConfigurations& StatePersistenceConfigurations::operator =(JsonV
   if(jsonValue.ValueExists("Enabled"))
   {
     m_enabled = jsonValue.GetBool("Enabled");
-
     m_enabledHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -12,13 +12,6 @@ using namespace Aws::ConnectCases::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateCaseRequest::UpdateCaseRequest() : 
-    m_caseIdHasBeenSet(false),
-    m_domainIdHasBeenSet(false),
-    m_fieldsHasBeenSet(false)
-{
-}
-
 Aws::String UpdateCaseRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -31,6 +24,12 @@ Aws::String UpdateCaseRequest::SerializePayload() const
      fieldsJsonList[fieldsIndex].AsObject(m_fields[fieldsIndex].Jsonize());
    }
    payload.WithArray("fields", std::move(fieldsJsonList));
+
+  }
+
+  if(m_performedByHasBeenSet)
+  {
+   payload.WithObject("performedBy", m_performedBy.Jsonize());
 
   }
 

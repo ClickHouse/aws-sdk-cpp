@@ -18,15 +18,7 @@ namespace Glue
 namespace Model
 {
 
-ColumnRowFilter::ColumnRowFilter() : 
-    m_columnNameHasBeenSet(false),
-    m_rowFilterExpressionHasBeenSet(false)
-{
-}
-
-ColumnRowFilter::ColumnRowFilter(JsonView jsonValue) : 
-    m_columnNameHasBeenSet(false),
-    m_rowFilterExpressionHasBeenSet(false)
+ColumnRowFilter::ColumnRowFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ColumnRowFilter& ColumnRowFilter::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ColumnName"))
   {
     m_columnName = jsonValue.GetString("ColumnName");
-
     m_columnNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RowFilterExpression"))
   {
     m_rowFilterExpression = jsonValue.GetString("RowFilterExpression");
-
     m_rowFilterExpressionHasBeenSet = true;
   }
-
   return *this;
 }
 

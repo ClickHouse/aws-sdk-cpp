@@ -12,25 +12,19 @@ using namespace Aws::SSOAdmin::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateInstanceAccessControlAttributeConfigurationRequest::UpdateInstanceAccessControlAttributeConfigurationRequest() : 
-    m_instanceAccessControlAttributeConfigurationHasBeenSet(false),
-    m_instanceArnHasBeenSet(false)
-{
-}
-
 Aws::String UpdateInstanceAccessControlAttributeConfigurationRequest::SerializePayload() const
 {
   JsonValue payload;
 
-  if(m_instanceAccessControlAttributeConfigurationHasBeenSet)
-  {
-   payload.WithObject("InstanceAccessControlAttributeConfiguration", m_instanceAccessControlAttributeConfiguration.Jsonize());
-
-  }
-
   if(m_instanceArnHasBeenSet)
   {
    payload.WithString("InstanceArn", m_instanceArn);
+
+  }
+
+  if(m_instanceAccessControlAttributeConfigurationHasBeenSet)
+  {
+   payload.WithObject("InstanceAccessControlAttributeConfiguration", m_instanceAccessControlAttributeConfiguration.Jsonize());
 
   }
 

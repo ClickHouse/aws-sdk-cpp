@@ -12,25 +12,6 @@ using namespace Aws::AppSync::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateResolverRequest::CreateResolverRequest() : 
-    m_apiIdHasBeenSet(false),
-    m_typeNameHasBeenSet(false),
-    m_fieldNameHasBeenSet(false),
-    m_dataSourceNameHasBeenSet(false),
-    m_requestMappingTemplateHasBeenSet(false),
-    m_responseMappingTemplateHasBeenSet(false),
-    m_kind(ResolverKind::NOT_SET),
-    m_kindHasBeenSet(false),
-    m_pipelineConfigHasBeenSet(false),
-    m_syncConfigHasBeenSet(false),
-    m_cachingConfigHasBeenSet(false),
-    m_maxBatchSize(0),
-    m_maxBatchSizeHasBeenSet(false),
-    m_runtimeHasBeenSet(false),
-    m_codeHasBeenSet(false)
-{
-}
-
 Aws::String CreateResolverRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -98,6 +79,11 @@ Aws::String CreateResolverRequest::SerializePayload() const
   {
    payload.WithString("code", m_code);
 
+  }
+
+  if(m_metricsConfigHasBeenSet)
+  {
+   payload.WithString("metricsConfig", ResolverLevelMetricsConfigMapper::GetNameForResolverLevelMetricsConfig(m_metricsConfig));
   }
 
   return payload.View().WriteReadable();

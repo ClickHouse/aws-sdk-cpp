@@ -35,79 +35,39 @@ namespace Model
   class UplinkEchoConfig
   {
   public:
-    AWS_GROUNDSTATION_API UplinkEchoConfig();
+    AWS_GROUNDSTATION_API UplinkEchoConfig() = default;
     AWS_GROUNDSTATION_API UplinkEchoConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_GROUNDSTATION_API UplinkEchoConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GROUNDSTATION_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>ARN of an uplink <code>Config</code>.</p>
      */
-    inline const Aws::String& GetAntennaUplinkConfigArn() const{ return m_antennaUplinkConfigArn; }
-
-    /**
-     * <p>ARN of an uplink <code>Config</code>.</p>
-     */
+    inline const Aws::String& GetAntennaUplinkConfigArn() const { return m_antennaUplinkConfigArn; }
     inline bool AntennaUplinkConfigArnHasBeenSet() const { return m_antennaUplinkConfigArnHasBeenSet; }
+    template<typename AntennaUplinkConfigArnT = Aws::String>
+    void SetAntennaUplinkConfigArn(AntennaUplinkConfigArnT&& value) { m_antennaUplinkConfigArnHasBeenSet = true; m_antennaUplinkConfigArn = std::forward<AntennaUplinkConfigArnT>(value); }
+    template<typename AntennaUplinkConfigArnT = Aws::String>
+    UplinkEchoConfig& WithAntennaUplinkConfigArn(AntennaUplinkConfigArnT&& value) { SetAntennaUplinkConfigArn(std::forward<AntennaUplinkConfigArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>ARN of an uplink <code>Config</code>.</p>
-     */
-    inline void SetAntennaUplinkConfigArn(const Aws::String& value) { m_antennaUplinkConfigArnHasBeenSet = true; m_antennaUplinkConfigArn = value; }
-
-    /**
-     * <p>ARN of an uplink <code>Config</code>.</p>
-     */
-    inline void SetAntennaUplinkConfigArn(Aws::String&& value) { m_antennaUplinkConfigArnHasBeenSet = true; m_antennaUplinkConfigArn = std::move(value); }
-
-    /**
-     * <p>ARN of an uplink <code>Config</code>.</p>
-     */
-    inline void SetAntennaUplinkConfigArn(const char* value) { m_antennaUplinkConfigArnHasBeenSet = true; m_antennaUplinkConfigArn.assign(value); }
-
-    /**
-     * <p>ARN of an uplink <code>Config</code>.</p>
-     */
-    inline UplinkEchoConfig& WithAntennaUplinkConfigArn(const Aws::String& value) { SetAntennaUplinkConfigArn(value); return *this;}
-
-    /**
-     * <p>ARN of an uplink <code>Config</code>.</p>
-     */
-    inline UplinkEchoConfig& WithAntennaUplinkConfigArn(Aws::String&& value) { SetAntennaUplinkConfigArn(std::move(value)); return *this;}
-
-    /**
-     * <p>ARN of an uplink <code>Config</code>.</p>
-     */
-    inline UplinkEchoConfig& WithAntennaUplinkConfigArn(const char* value) { SetAntennaUplinkConfigArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Whether or not an uplink <code>Config</code> is enabled.</p>
      */
-    inline bool GetEnabled() const{ return m_enabled; }
-
-    /**
-     * <p>Whether or not an uplink <code>Config</code> is enabled.</p>
-     */
+    inline bool GetEnabled() const { return m_enabled; }
     inline bool EnabledHasBeenSet() const { return m_enabledHasBeenSet; }
-
-    /**
-     * <p>Whether or not an uplink <code>Config</code> is enabled.</p>
-     */
     inline void SetEnabled(bool value) { m_enabledHasBeenSet = true; m_enabled = value; }
-
-    /**
-     * <p>Whether or not an uplink <code>Config</code> is enabled.</p>
-     */
     inline UplinkEchoConfig& WithEnabled(bool value) { SetEnabled(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_antennaUplinkConfigArn;
     bool m_antennaUplinkConfigArnHasBeenSet = false;
 
-    bool m_enabled;
+    bool m_enabled{false};
     bool m_enabledHasBeenSet = false;
   };
 

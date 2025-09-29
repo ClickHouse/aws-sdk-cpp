@@ -12,37 +12,15 @@ using namespace Aws::MWAA::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateEnvironmentRequest::UpdateEnvironmentRequest() : 
-    m_airflowConfigurationOptionsHasBeenSet(false),
-    m_airflowVersionHasBeenSet(false),
-    m_dagS3PathHasBeenSet(false),
-    m_environmentClassHasBeenSet(false),
-    m_executionRoleArnHasBeenSet(false),
-    m_loggingConfigurationHasBeenSet(false),
-    m_maxWorkers(0),
-    m_maxWorkersHasBeenSet(false),
-    m_minWorkers(0),
-    m_minWorkersHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_networkConfigurationHasBeenSet(false),
-    m_pluginsS3ObjectVersionHasBeenSet(false),
-    m_pluginsS3PathHasBeenSet(false),
-    m_requirementsS3ObjectVersionHasBeenSet(false),
-    m_requirementsS3PathHasBeenSet(false),
-    m_schedulers(0),
-    m_schedulersHasBeenSet(false),
-    m_sourceBucketArnHasBeenSet(false),
-    m_startupScriptS3ObjectVersionHasBeenSet(false),
-    m_startupScriptS3PathHasBeenSet(false),
-    m_webserverAccessMode(WebserverAccessMode::NOT_SET),
-    m_webserverAccessModeHasBeenSet(false),
-    m_weeklyMaintenanceWindowStartHasBeenSet(false)
-{
-}
-
 Aws::String UpdateEnvironmentRequest::SerializePayload() const
 {
   JsonValue payload;
+
+  if(m_executionRoleArnHasBeenSet)
+  {
+   payload.WithString("ExecutionRoleArn", m_executionRoleArn);
+
+  }
 
   if(m_airflowConfigurationOptionsHasBeenSet)
   {
@@ -73,12 +51,6 @@ Aws::String UpdateEnvironmentRequest::SerializePayload() const
 
   }
 
-  if(m_executionRoleArnHasBeenSet)
-  {
-   payload.WithString("ExecutionRoleArn", m_executionRoleArn);
-
-  }
-
   if(m_loggingConfigurationHasBeenSet)
   {
    payload.WithObject("LoggingConfiguration", m_loggingConfiguration.Jsonize());
@@ -97,15 +69,26 @@ Aws::String UpdateEnvironmentRequest::SerializePayload() const
 
   }
 
-  if(m_networkConfigurationHasBeenSet)
+  if(m_maxWebserversHasBeenSet)
   {
-   payload.WithObject("NetworkConfiguration", m_networkConfiguration.Jsonize());
+   payload.WithInteger("MaxWebservers", m_maxWebservers);
 
   }
 
-  if(m_pluginsS3ObjectVersionHasBeenSet)
+  if(m_minWebserversHasBeenSet)
   {
-   payload.WithString("PluginsS3ObjectVersion", m_pluginsS3ObjectVersion);
+   payload.WithInteger("MinWebservers", m_minWebservers);
+
+  }
+
+  if(m_workerReplacementStrategyHasBeenSet)
+  {
+   payload.WithString("WorkerReplacementStrategy", WorkerReplacementStrategyMapper::GetNameForWorkerReplacementStrategy(m_workerReplacementStrategy));
+  }
+
+  if(m_networkConfigurationHasBeenSet)
+  {
+   payload.WithObject("NetworkConfiguration", m_networkConfiguration.Jsonize());
 
   }
 
@@ -115,15 +98,21 @@ Aws::String UpdateEnvironmentRequest::SerializePayload() const
 
   }
 
-  if(m_requirementsS3ObjectVersionHasBeenSet)
+  if(m_pluginsS3ObjectVersionHasBeenSet)
   {
-   payload.WithString("RequirementsS3ObjectVersion", m_requirementsS3ObjectVersion);
+   payload.WithString("PluginsS3ObjectVersion", m_pluginsS3ObjectVersion);
 
   }
 
   if(m_requirementsS3PathHasBeenSet)
   {
    payload.WithString("RequirementsS3Path", m_requirementsS3Path);
+
+  }
+
+  if(m_requirementsS3ObjectVersionHasBeenSet)
+  {
+   payload.WithString("RequirementsS3ObjectVersion", m_requirementsS3ObjectVersion);
 
   }
 
@@ -139,15 +128,15 @@ Aws::String UpdateEnvironmentRequest::SerializePayload() const
 
   }
 
-  if(m_startupScriptS3ObjectVersionHasBeenSet)
-  {
-   payload.WithString("StartupScriptS3ObjectVersion", m_startupScriptS3ObjectVersion);
-
-  }
-
   if(m_startupScriptS3PathHasBeenSet)
   {
    payload.WithString("StartupScriptS3Path", m_startupScriptS3Path);
+
+  }
+
+  if(m_startupScriptS3ObjectVersionHasBeenSet)
+  {
+   payload.WithString("StartupScriptS3ObjectVersion", m_startupScriptS3ObjectVersion);
 
   }
 

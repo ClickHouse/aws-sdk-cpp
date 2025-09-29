@@ -18,23 +18,7 @@ namespace EKS
 namespace Model
 {
 
-AddonInfo::AddonInfo() : 
-    m_addonNameHasBeenSet(false),
-    m_typeHasBeenSet(false),
-    m_addonVersionsHasBeenSet(false),
-    m_publisherHasBeenSet(false),
-    m_ownerHasBeenSet(false),
-    m_marketplaceInformationHasBeenSet(false)
-{
-}
-
-AddonInfo::AddonInfo(JsonView jsonValue) : 
-    m_addonNameHasBeenSet(false),
-    m_typeHasBeenSet(false),
-    m_addonVersionsHasBeenSet(false),
-    m_publisherHasBeenSet(false),
-    m_ownerHasBeenSet(false),
-    m_marketplaceInformationHasBeenSet(false)
+AddonInfo::AddonInfo(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,17 +28,13 @@ AddonInfo& AddonInfo::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("addonName"))
   {
     m_addonName = jsonValue.GetString("addonName");
-
     m_addonNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("type"))
   {
     m_type = jsonValue.GetString("type");
-
     m_typeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("addonVersions"))
   {
     Aws::Utils::Array<JsonView> addonVersionsJsonList = jsonValue.GetArray("addonVersions");
@@ -64,28 +44,26 @@ AddonInfo& AddonInfo::operator =(JsonView jsonValue)
     }
     m_addonVersionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("publisher"))
   {
     m_publisher = jsonValue.GetString("publisher");
-
     m_publisherHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("owner"))
   {
     m_owner = jsonValue.GetString("owner");
-
     m_ownerHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("marketplaceInformation"))
   {
     m_marketplaceInformation = jsonValue.GetObject("marketplaceInformation");
-
     m_marketplaceInformationHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("defaultNamespace"))
+  {
+    m_defaultNamespace = jsonValue.GetString("defaultNamespace");
+    m_defaultNamespaceHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -131,6 +109,12 @@ JsonValue AddonInfo::Jsonize() const
   if(m_marketplaceInformationHasBeenSet)
   {
    payload.WithObject("marketplaceInformation", m_marketplaceInformation.Jsonize());
+
+  }
+
+  if(m_defaultNamespaceHasBeenSet)
+  {
+   payload.WithString("defaultNamespace", m_defaultNamespace);
 
   }
 

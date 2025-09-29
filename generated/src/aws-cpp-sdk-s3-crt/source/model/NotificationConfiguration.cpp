@@ -21,21 +21,7 @@ namespace S3Crt
 namespace Model
 {
 
-NotificationConfiguration::NotificationConfiguration() : 
-    m_topicConfigurationsHasBeenSet(false),
-    m_queueConfigurationsHasBeenSet(false),
-    m_lambdaFunctionConfigurationsHasBeenSet(false),
-    m_eventBridgeConfigurationHasBeenSet(false),
-    m_requestIdHasBeenSet(false)
-{
-}
-
-NotificationConfiguration::NotificationConfiguration(const XmlNode& xmlNode) : 
-    m_topicConfigurationsHasBeenSet(false),
-    m_queueConfigurationsHasBeenSet(false),
-    m_lambdaFunctionConfigurationsHasBeenSet(false),
-    m_eventBridgeConfigurationHasBeenSet(false),
-    m_requestIdHasBeenSet(false)
+NotificationConfiguration::NotificationConfiguration(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -50,6 +36,7 @@ NotificationConfiguration& NotificationConfiguration::operator =(const XmlNode& 
     if(!topicConfigurationsNode.IsNull())
     {
       XmlNode topicConfigurationMember = topicConfigurationsNode;
+      m_topicConfigurationsHasBeenSet = !topicConfigurationMember.IsNull();
       while(!topicConfigurationMember.IsNull())
       {
         m_topicConfigurations.push_back(topicConfigurationMember);
@@ -62,6 +49,7 @@ NotificationConfiguration& NotificationConfiguration::operator =(const XmlNode& 
     if(!queueConfigurationsNode.IsNull())
     {
       XmlNode queueConfigurationMember = queueConfigurationsNode;
+      m_queueConfigurationsHasBeenSet = !queueConfigurationMember.IsNull();
       while(!queueConfigurationMember.IsNull())
       {
         m_queueConfigurations.push_back(queueConfigurationMember);
@@ -74,6 +62,7 @@ NotificationConfiguration& NotificationConfiguration::operator =(const XmlNode& 
     if(!lambdaFunctionConfigurationsNode.IsNull())
     {
       XmlNode cloudFunctionConfigurationMember = lambdaFunctionConfigurationsNode;
+      m_lambdaFunctionConfigurationsHasBeenSet = !cloudFunctionConfigurationMember.IsNull();
       while(!cloudFunctionConfigurationMember.IsNull())
       {
         m_lambdaFunctionConfigurations.push_back(cloudFunctionConfigurationMember);

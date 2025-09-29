@@ -29,111 +29,53 @@ namespace Model
   class ListStagingAccountsResult
   {
   public:
-    AWS_DRS_API ListStagingAccountsResult();
+    AWS_DRS_API ListStagingAccountsResult() = default;
     AWS_DRS_API ListStagingAccountsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_DRS_API ListStagingAccountsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>An array of staging AWS Accounts.</p>
      */
-    inline const Aws::Vector<Account>& GetAccounts() const{ return m_accounts; }
+    inline const Aws::Vector<Account>& GetAccounts() const { return m_accounts; }
+    template<typename AccountsT = Aws::Vector<Account>>
+    void SetAccounts(AccountsT&& value) { m_accountsHasBeenSet = true; m_accounts = std::forward<AccountsT>(value); }
+    template<typename AccountsT = Aws::Vector<Account>>
+    ListStagingAccountsResult& WithAccounts(AccountsT&& value) { SetAccounts(std::forward<AccountsT>(value)); return *this;}
+    template<typename AccountsT = Account>
+    ListStagingAccountsResult& AddAccounts(AccountsT&& value) { m_accountsHasBeenSet = true; m_accounts.emplace_back(std::forward<AccountsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of staging AWS Accounts.</p>
-     */
-    inline void SetAccounts(const Aws::Vector<Account>& value) { m_accounts = value; }
-
-    /**
-     * <p>An array of staging AWS Accounts.</p>
-     */
-    inline void SetAccounts(Aws::Vector<Account>&& value) { m_accounts = std::move(value); }
-
-    /**
-     * <p>An array of staging AWS Accounts.</p>
-     */
-    inline ListStagingAccountsResult& WithAccounts(const Aws::Vector<Account>& value) { SetAccounts(value); return *this;}
-
-    /**
-     * <p>An array of staging AWS Accounts.</p>
-     */
-    inline ListStagingAccountsResult& WithAccounts(Aws::Vector<Account>&& value) { SetAccounts(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of staging AWS Accounts.</p>
-     */
-    inline ListStagingAccountsResult& AddAccounts(const Account& value) { m_accounts.push_back(value); return *this; }
-
-    /**
-     * <p>An array of staging AWS Accounts.</p>
-     */
-    inline ListStagingAccountsResult& AddAccounts(Account&& value) { m_accounts.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The token of the next staging Account to retrieve.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListStagingAccountsResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The token of the next staging Account to retrieve.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>The token of the next staging Account to retrieve.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>The token of the next staging Account to retrieve.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>The token of the next staging Account to retrieve.</p>
-     */
-    inline ListStagingAccountsResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The token of the next staging Account to retrieve.</p>
-     */
-    inline ListStagingAccountsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The token of the next staging Account to retrieve.</p>
-     */
-    inline ListStagingAccountsResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListStagingAccountsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListStagingAccountsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListStagingAccountsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListStagingAccountsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<Account> m_accounts;
+    bool m_accountsHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

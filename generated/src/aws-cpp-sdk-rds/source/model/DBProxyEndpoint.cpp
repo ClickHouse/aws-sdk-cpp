@@ -20,39 +20,7 @@ namespace RDS
 namespace Model
 {
 
-DBProxyEndpoint::DBProxyEndpoint() : 
-    m_dBProxyEndpointNameHasBeenSet(false),
-    m_dBProxyEndpointArnHasBeenSet(false),
-    m_dBProxyNameHasBeenSet(false),
-    m_status(DBProxyEndpointStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_vpcSecurityGroupIdsHasBeenSet(false),
-    m_vpcSubnetIdsHasBeenSet(false),
-    m_endpointHasBeenSet(false),
-    m_createdDateHasBeenSet(false),
-    m_targetRole(DBProxyEndpointTargetRole::NOT_SET),
-    m_targetRoleHasBeenSet(false),
-    m_isDefault(false),
-    m_isDefaultHasBeenSet(false)
-{
-}
-
-DBProxyEndpoint::DBProxyEndpoint(const XmlNode& xmlNode) : 
-    m_dBProxyEndpointNameHasBeenSet(false),
-    m_dBProxyEndpointArnHasBeenSet(false),
-    m_dBProxyNameHasBeenSet(false),
-    m_status(DBProxyEndpointStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_vpcSecurityGroupIdsHasBeenSet(false),
-    m_vpcSubnetIdsHasBeenSet(false),
-    m_endpointHasBeenSet(false),
-    m_createdDateHasBeenSet(false),
-    m_targetRole(DBProxyEndpointTargetRole::NOT_SET),
-    m_targetRoleHasBeenSet(false),
-    m_isDefault(false),
-    m_isDefaultHasBeenSet(false)
+DBProxyEndpoint::DBProxyEndpoint(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -84,7 +52,7 @@ DBProxyEndpoint& DBProxyEndpoint::operator =(const XmlNode& xmlNode)
     XmlNode statusNode = resultNode.FirstChild("Status");
     if(!statusNode.IsNull())
     {
-      m_status = DBProxyEndpointStatusMapper::GetDBProxyEndpointStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()).c_str());
+      m_status = DBProxyEndpointStatusMapper::GetDBProxyEndpointStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()));
       m_statusHasBeenSet = true;
     }
     XmlNode vpcIdNode = resultNode.FirstChild("VpcId");
@@ -97,6 +65,7 @@ DBProxyEndpoint& DBProxyEndpoint::operator =(const XmlNode& xmlNode)
     if(!vpcSecurityGroupIdsNode.IsNull())
     {
       XmlNode vpcSecurityGroupIdsMember = vpcSecurityGroupIdsNode.FirstChild("member");
+      m_vpcSecurityGroupIdsHasBeenSet = !vpcSecurityGroupIdsMember.IsNull();
       while(!vpcSecurityGroupIdsMember.IsNull())
       {
         m_vpcSecurityGroupIds.push_back(vpcSecurityGroupIdsMember.GetText());
@@ -109,6 +78,7 @@ DBProxyEndpoint& DBProxyEndpoint::operator =(const XmlNode& xmlNode)
     if(!vpcSubnetIdsNode.IsNull())
     {
       XmlNode vpcSubnetIdsMember = vpcSubnetIdsNode.FirstChild("member");
+      m_vpcSubnetIdsHasBeenSet = !vpcSubnetIdsMember.IsNull();
       while(!vpcSubnetIdsMember.IsNull())
       {
         m_vpcSubnetIds.push_back(vpcSubnetIdsMember.GetText());
@@ -132,7 +102,7 @@ DBProxyEndpoint& DBProxyEndpoint::operator =(const XmlNode& xmlNode)
     XmlNode targetRoleNode = resultNode.FirstChild("TargetRole");
     if(!targetRoleNode.IsNull())
     {
-      m_targetRole = DBProxyEndpointTargetRoleMapper::GetDBProxyEndpointTargetRoleForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(targetRoleNode.GetText()).c_str()).c_str());
+      m_targetRole = DBProxyEndpointTargetRoleMapper::GetDBProxyEndpointTargetRoleForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(targetRoleNode.GetText()).c_str()));
       m_targetRoleHasBeenSet = true;
     }
     XmlNode isDefaultNode = resultNode.FirstChild("IsDefault");
@@ -140,6 +110,12 @@ DBProxyEndpoint& DBProxyEndpoint::operator =(const XmlNode& xmlNode)
     {
       m_isDefault = StringUtils::ConvertToBool(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(isDefaultNode.GetText()).c_str()).c_str());
       m_isDefaultHasBeenSet = true;
+    }
+    XmlNode endpointNetworkTypeNode = resultNode.FirstChild("EndpointNetworkType");
+    if(!endpointNetworkTypeNode.IsNull())
+    {
+      m_endpointNetworkType = EndpointNetworkTypeMapper::GetEndpointNetworkTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(endpointNetworkTypeNode.GetText()).c_str()));
+      m_endpointNetworkTypeHasBeenSet = true;
     }
   }
 
@@ -165,7 +141,7 @@ void DBProxyEndpoint::OutputToStream(Aws::OStream& oStream, const char* location
 
   if(m_statusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Status=" << DBProxyEndpointStatusMapper::GetNameForDBProxyEndpointStatus(m_status) << "&";
+      oStream << location << index << locationValue << ".Status=" << StringUtils::URLEncode(DBProxyEndpointStatusMapper::GetNameForDBProxyEndpointStatus(m_status)) << "&";
   }
 
   if(m_vpcIdHasBeenSet)
@@ -203,12 +179,17 @@ void DBProxyEndpoint::OutputToStream(Aws::OStream& oStream, const char* location
 
   if(m_targetRoleHasBeenSet)
   {
-      oStream << location << index << locationValue << ".TargetRole=" << DBProxyEndpointTargetRoleMapper::GetNameForDBProxyEndpointTargetRole(m_targetRole) << "&";
+      oStream << location << index << locationValue << ".TargetRole=" << StringUtils::URLEncode(DBProxyEndpointTargetRoleMapper::GetNameForDBProxyEndpointTargetRole(m_targetRole)) << "&";
   }
 
   if(m_isDefaultHasBeenSet)
   {
       oStream << location << index << locationValue << ".IsDefault=" << std::boolalpha << m_isDefault << "&";
+  }
+
+  if(m_endpointNetworkTypeHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".EndpointNetworkType=" << StringUtils::URLEncode(EndpointNetworkTypeMapper::GetNameForEndpointNetworkType(m_endpointNetworkType)) << "&";
   }
 
 }
@@ -229,7 +210,7 @@ void DBProxyEndpoint::OutputToStream(Aws::OStream& oStream, const char* location
   }
   if(m_statusHasBeenSet)
   {
-      oStream << location << ".Status=" << DBProxyEndpointStatusMapper::GetNameForDBProxyEndpointStatus(m_status) << "&";
+      oStream << location << ".Status=" << StringUtils::URLEncode(DBProxyEndpointStatusMapper::GetNameForDBProxyEndpointStatus(m_status)) << "&";
   }
   if(m_vpcIdHasBeenSet)
   {
@@ -261,11 +242,15 @@ void DBProxyEndpoint::OutputToStream(Aws::OStream& oStream, const char* location
   }
   if(m_targetRoleHasBeenSet)
   {
-      oStream << location << ".TargetRole=" << DBProxyEndpointTargetRoleMapper::GetNameForDBProxyEndpointTargetRole(m_targetRole) << "&";
+      oStream << location << ".TargetRole=" << StringUtils::URLEncode(DBProxyEndpointTargetRoleMapper::GetNameForDBProxyEndpointTargetRole(m_targetRole)) << "&";
   }
   if(m_isDefaultHasBeenSet)
   {
       oStream << location << ".IsDefault=" << std::boolalpha << m_isDefault << "&";
+  }
+  if(m_endpointNetworkTypeHasBeenSet)
+  {
+      oStream << location << ".EndpointNetworkType=" << StringUtils::URLEncode(EndpointNetworkTypeMapper::GetNameForEndpointNetworkType(m_endpointNetworkType)) << "&";
   }
 }
 

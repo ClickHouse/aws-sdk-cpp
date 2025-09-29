@@ -28,63 +28,37 @@ namespace Model
   class UpdateIngestionDestinationResult
   {
   public:
-    AWS_APPFABRIC_API UpdateIngestionDestinationResult();
+    AWS_APPFABRIC_API UpdateIngestionDestinationResult() = default;
     AWS_APPFABRIC_API UpdateIngestionDestinationResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_APPFABRIC_API UpdateIngestionDestinationResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Contains information about an ingestion destination.</p>
      */
-    inline const IngestionDestination& GetIngestionDestination() const{ return m_ingestionDestination; }
+    inline const IngestionDestination& GetIngestionDestination() const { return m_ingestionDestination; }
+    template<typename IngestionDestinationT = IngestionDestination>
+    void SetIngestionDestination(IngestionDestinationT&& value) { m_ingestionDestinationHasBeenSet = true; m_ingestionDestination = std::forward<IngestionDestinationT>(value); }
+    template<typename IngestionDestinationT = IngestionDestination>
+    UpdateIngestionDestinationResult& WithIngestionDestination(IngestionDestinationT&& value) { SetIngestionDestination(std::forward<IngestionDestinationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Contains information about an ingestion destination.</p>
-     */
-    inline void SetIngestionDestination(const IngestionDestination& value) { m_ingestionDestination = value; }
-
-    /**
-     * <p>Contains information about an ingestion destination.</p>
-     */
-    inline void SetIngestionDestination(IngestionDestination&& value) { m_ingestionDestination = std::move(value); }
-
-    /**
-     * <p>Contains information about an ingestion destination.</p>
-     */
-    inline UpdateIngestionDestinationResult& WithIngestionDestination(const IngestionDestination& value) { SetIngestionDestination(value); return *this;}
-
-    /**
-     * <p>Contains information about an ingestion destination.</p>
-     */
-    inline UpdateIngestionDestinationResult& WithIngestionDestination(IngestionDestination&& value) { SetIngestionDestination(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline UpdateIngestionDestinationResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline UpdateIngestionDestinationResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline UpdateIngestionDestinationResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    UpdateIngestionDestinationResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     IngestionDestination m_ingestionDestination;
+    bool m_ingestionDestinationHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

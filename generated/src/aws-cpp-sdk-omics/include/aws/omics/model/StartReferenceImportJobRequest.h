@@ -23,7 +23,7 @@ namespace Model
   class StartReferenceImportJobRequest : public OmicsRequest
   {
   public:
-    AWS_OMICS_API StartReferenceImportJobRequest();
+    AWS_OMICS_API StartReferenceImportJobRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,177 +34,56 @@ namespace Model
     AWS_OMICS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The job's reference store ID.</p>
      */
-    inline const Aws::String& GetReferenceStoreId() const{ return m_referenceStoreId; }
-
-    /**
-     * <p>The job's reference store ID.</p>
-     */
+    inline const Aws::String& GetReferenceStoreId() const { return m_referenceStoreId; }
     inline bool ReferenceStoreIdHasBeenSet() const { return m_referenceStoreIdHasBeenSet; }
+    template<typename ReferenceStoreIdT = Aws::String>
+    void SetReferenceStoreId(ReferenceStoreIdT&& value) { m_referenceStoreIdHasBeenSet = true; m_referenceStoreId = std::forward<ReferenceStoreIdT>(value); }
+    template<typename ReferenceStoreIdT = Aws::String>
+    StartReferenceImportJobRequest& WithReferenceStoreId(ReferenceStoreIdT&& value) { SetReferenceStoreId(std::forward<ReferenceStoreIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The job's reference store ID.</p>
-     */
-    inline void SetReferenceStoreId(const Aws::String& value) { m_referenceStoreIdHasBeenSet = true; m_referenceStoreId = value; }
-
-    /**
-     * <p>The job's reference store ID.</p>
-     */
-    inline void SetReferenceStoreId(Aws::String&& value) { m_referenceStoreIdHasBeenSet = true; m_referenceStoreId = std::move(value); }
-
-    /**
-     * <p>The job's reference store ID.</p>
-     */
-    inline void SetReferenceStoreId(const char* value) { m_referenceStoreIdHasBeenSet = true; m_referenceStoreId.assign(value); }
-
-    /**
-     * <p>The job's reference store ID.</p>
-     */
-    inline StartReferenceImportJobRequest& WithReferenceStoreId(const Aws::String& value) { SetReferenceStoreId(value); return *this;}
-
-    /**
-     * <p>The job's reference store ID.</p>
-     */
-    inline StartReferenceImportJobRequest& WithReferenceStoreId(Aws::String&& value) { SetReferenceStoreId(std::move(value)); return *this;}
-
-    /**
-     * <p>The job's reference store ID.</p>
-     */
-    inline StartReferenceImportJobRequest& WithReferenceStoreId(const char* value) { SetReferenceStoreId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A service role for the job.</p>
      */
-    inline const Aws::String& GetRoleArn() const{ return m_roleArn; }
-
-    /**
-     * <p>A service role for the job.</p>
-     */
+    inline const Aws::String& GetRoleArn() const { return m_roleArn; }
     inline bool RoleArnHasBeenSet() const { return m_roleArnHasBeenSet; }
+    template<typename RoleArnT = Aws::String>
+    void SetRoleArn(RoleArnT&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::forward<RoleArnT>(value); }
+    template<typename RoleArnT = Aws::String>
+    StartReferenceImportJobRequest& WithRoleArn(RoleArnT&& value) { SetRoleArn(std::forward<RoleArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A service role for the job.</p>
-     */
-    inline void SetRoleArn(const Aws::String& value) { m_roleArnHasBeenSet = true; m_roleArn = value; }
-
-    /**
-     * <p>A service role for the job.</p>
-     */
-    inline void SetRoleArn(Aws::String&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::move(value); }
-
-    /**
-     * <p>A service role for the job.</p>
-     */
-    inline void SetRoleArn(const char* value) { m_roleArnHasBeenSet = true; m_roleArn.assign(value); }
-
-    /**
-     * <p>A service role for the job.</p>
-     */
-    inline StartReferenceImportJobRequest& WithRoleArn(const Aws::String& value) { SetRoleArn(value); return *this;}
-
-    /**
-     * <p>A service role for the job.</p>
-     */
-    inline StartReferenceImportJobRequest& WithRoleArn(Aws::String&& value) { SetRoleArn(std::move(value)); return *this;}
-
-    /**
-     * <p>A service role for the job.</p>
-     */
-    inline StartReferenceImportJobRequest& WithRoleArn(const char* value) { SetRoleArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>To ensure that jobs don't run multiple times, specify a unique token for each
      * job.</p>
      */
-    inline const Aws::String& GetClientToken() const{ return m_clientToken; }
-
-    /**
-     * <p>To ensure that jobs don't run multiple times, specify a unique token for each
-     * job.</p>
-     */
+    inline const Aws::String& GetClientToken() const { return m_clientToken; }
     inline bool ClientTokenHasBeenSet() const { return m_clientTokenHasBeenSet; }
+    template<typename ClientTokenT = Aws::String>
+    void SetClientToken(ClientTokenT&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::forward<ClientTokenT>(value); }
+    template<typename ClientTokenT = Aws::String>
+    StartReferenceImportJobRequest& WithClientToken(ClientTokenT&& value) { SetClientToken(std::forward<ClientTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>To ensure that jobs don't run multiple times, specify a unique token for each
-     * job.</p>
-     */
-    inline void SetClientToken(const Aws::String& value) { m_clientTokenHasBeenSet = true; m_clientToken = value; }
-
-    /**
-     * <p>To ensure that jobs don't run multiple times, specify a unique token for each
-     * job.</p>
-     */
-    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::move(value); }
-
-    /**
-     * <p>To ensure that jobs don't run multiple times, specify a unique token for each
-     * job.</p>
-     */
-    inline void SetClientToken(const char* value) { m_clientTokenHasBeenSet = true; m_clientToken.assign(value); }
-
-    /**
-     * <p>To ensure that jobs don't run multiple times, specify a unique token for each
-     * job.</p>
-     */
-    inline StartReferenceImportJobRequest& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
-
-    /**
-     * <p>To ensure that jobs don't run multiple times, specify a unique token for each
-     * job.</p>
-     */
-    inline StartReferenceImportJobRequest& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
-
-    /**
-     * <p>To ensure that jobs don't run multiple times, specify a unique token for each
-     * job.</p>
-     */
-    inline StartReferenceImportJobRequest& WithClientToken(const char* value) { SetClientToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The job's source files.</p>
      */
-    inline const Aws::Vector<StartReferenceImportJobSourceItem>& GetSources() const{ return m_sources; }
-
-    /**
-     * <p>The job's source files.</p>
-     */
+    inline const Aws::Vector<StartReferenceImportJobSourceItem>& GetSources() const { return m_sources; }
     inline bool SourcesHasBeenSet() const { return m_sourcesHasBeenSet; }
-
-    /**
-     * <p>The job's source files.</p>
-     */
-    inline void SetSources(const Aws::Vector<StartReferenceImportJobSourceItem>& value) { m_sourcesHasBeenSet = true; m_sources = value; }
-
-    /**
-     * <p>The job's source files.</p>
-     */
-    inline void SetSources(Aws::Vector<StartReferenceImportJobSourceItem>&& value) { m_sourcesHasBeenSet = true; m_sources = std::move(value); }
-
-    /**
-     * <p>The job's source files.</p>
-     */
-    inline StartReferenceImportJobRequest& WithSources(const Aws::Vector<StartReferenceImportJobSourceItem>& value) { SetSources(value); return *this;}
-
-    /**
-     * <p>The job's source files.</p>
-     */
-    inline StartReferenceImportJobRequest& WithSources(Aws::Vector<StartReferenceImportJobSourceItem>&& value) { SetSources(std::move(value)); return *this;}
-
-    /**
-     * <p>The job's source files.</p>
-     */
-    inline StartReferenceImportJobRequest& AddSources(const StartReferenceImportJobSourceItem& value) { m_sourcesHasBeenSet = true; m_sources.push_back(value); return *this; }
-
-    /**
-     * <p>The job's source files.</p>
-     */
-    inline StartReferenceImportJobRequest& AddSources(StartReferenceImportJobSourceItem&& value) { m_sourcesHasBeenSet = true; m_sources.push_back(std::move(value)); return *this; }
-
+    template<typename SourcesT = Aws::Vector<StartReferenceImportJobSourceItem>>
+    void SetSources(SourcesT&& value) { m_sourcesHasBeenSet = true; m_sources = std::forward<SourcesT>(value); }
+    template<typename SourcesT = Aws::Vector<StartReferenceImportJobSourceItem>>
+    StartReferenceImportJobRequest& WithSources(SourcesT&& value) { SetSources(std::forward<SourcesT>(value)); return *this;}
+    template<typename SourcesT = StartReferenceImportJobSourceItem>
+    StartReferenceImportJobRequest& AddSources(SourcesT&& value) { m_sourcesHasBeenSet = true; m_sources.emplace_back(std::forward<SourcesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_referenceStoreId;

@@ -20,29 +20,7 @@ namespace SES
 namespace Model
 {
 
-ReceiptRule::ReceiptRule() : 
-    m_nameHasBeenSet(false),
-    m_enabled(false),
-    m_enabledHasBeenSet(false),
-    m_tlsPolicy(TlsPolicy::NOT_SET),
-    m_tlsPolicyHasBeenSet(false),
-    m_recipientsHasBeenSet(false),
-    m_actionsHasBeenSet(false),
-    m_scanEnabled(false),
-    m_scanEnabledHasBeenSet(false)
-{
-}
-
-ReceiptRule::ReceiptRule(const XmlNode& xmlNode) : 
-    m_nameHasBeenSet(false),
-    m_enabled(false),
-    m_enabledHasBeenSet(false),
-    m_tlsPolicy(TlsPolicy::NOT_SET),
-    m_tlsPolicyHasBeenSet(false),
-    m_recipientsHasBeenSet(false),
-    m_actionsHasBeenSet(false),
-    m_scanEnabled(false),
-    m_scanEnabledHasBeenSet(false)
+ReceiptRule::ReceiptRule(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -68,13 +46,14 @@ ReceiptRule& ReceiptRule::operator =(const XmlNode& xmlNode)
     XmlNode tlsPolicyNode = resultNode.FirstChild("TlsPolicy");
     if(!tlsPolicyNode.IsNull())
     {
-      m_tlsPolicy = TlsPolicyMapper::GetTlsPolicyForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(tlsPolicyNode.GetText()).c_str()).c_str());
+      m_tlsPolicy = TlsPolicyMapper::GetTlsPolicyForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(tlsPolicyNode.GetText()).c_str()));
       m_tlsPolicyHasBeenSet = true;
     }
     XmlNode recipientsNode = resultNode.FirstChild("Recipients");
     if(!recipientsNode.IsNull())
     {
       XmlNode recipientsMember = recipientsNode.FirstChild("member");
+      m_recipientsHasBeenSet = !recipientsMember.IsNull();
       while(!recipientsMember.IsNull())
       {
         m_recipients.push_back(recipientsMember.GetText());
@@ -87,6 +66,7 @@ ReceiptRule& ReceiptRule::operator =(const XmlNode& xmlNode)
     if(!actionsNode.IsNull())
     {
       XmlNode actionsMember = actionsNode.FirstChild("member");
+      m_actionsHasBeenSet = !actionsMember.IsNull();
       while(!actionsMember.IsNull())
       {
         m_actions.push_back(actionsMember);
@@ -120,7 +100,7 @@ void ReceiptRule::OutputToStream(Aws::OStream& oStream, const char* location, un
 
   if(m_tlsPolicyHasBeenSet)
   {
-      oStream << location << index << locationValue << ".TlsPolicy=" << TlsPolicyMapper::GetNameForTlsPolicy(m_tlsPolicy) << "&";
+      oStream << location << index << locationValue << ".TlsPolicy=" << StringUtils::URLEncode(TlsPolicyMapper::GetNameForTlsPolicy(m_tlsPolicy)) << "&";
   }
 
   if(m_recipientsHasBeenSet)
@@ -162,7 +142,7 @@ void ReceiptRule::OutputToStream(Aws::OStream& oStream, const char* location) co
   }
   if(m_tlsPolicyHasBeenSet)
   {
-      oStream << location << ".TlsPolicy=" << TlsPolicyMapper::GetNameForTlsPolicy(m_tlsPolicy) << "&";
+      oStream << location << ".TlsPolicy=" << StringUtils::URLEncode(TlsPolicyMapper::GetNameForTlsPolicy(m_tlsPolicy)) << "&";
   }
   if(m_recipientsHasBeenSet)
   {
@@ -178,7 +158,7 @@ void ReceiptRule::OutputToStream(Aws::OStream& oStream, const char* location) co
       for(auto& item : m_actions)
       {
         Aws::StringStream actionsSs;
-        actionsSs << location <<  ".Actions.member." << actionsIdx++;
+        actionsSs << location << ".Actions.member." << actionsIdx++;
         item.OutputToStream(oStream, actionsSs.str().c_str());
       }
   }

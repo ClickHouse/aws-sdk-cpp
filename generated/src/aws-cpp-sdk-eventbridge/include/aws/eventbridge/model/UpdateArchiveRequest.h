@@ -21,7 +21,7 @@ namespace Model
   class UpdateArchiveRequest : public EventBridgeRequest
   {
   public:
-    AWS_EVENTBRIDGE_API UpdateArchiveRequest();
+    AWS_EVENTBRIDGE_API UpdateArchiveRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,149 +34,76 @@ namespace Model
     AWS_EVENTBRIDGE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the archive to update.</p>
      */
-    inline const Aws::String& GetArchiveName() const{ return m_archiveName; }
-
-    /**
-     * <p>The name of the archive to update.</p>
-     */
+    inline const Aws::String& GetArchiveName() const { return m_archiveName; }
     inline bool ArchiveNameHasBeenSet() const { return m_archiveNameHasBeenSet; }
+    template<typename ArchiveNameT = Aws::String>
+    void SetArchiveName(ArchiveNameT&& value) { m_archiveNameHasBeenSet = true; m_archiveName = std::forward<ArchiveNameT>(value); }
+    template<typename ArchiveNameT = Aws::String>
+    UpdateArchiveRequest& WithArchiveName(ArchiveNameT&& value) { SetArchiveName(std::forward<ArchiveNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the archive to update.</p>
-     */
-    inline void SetArchiveName(const Aws::String& value) { m_archiveNameHasBeenSet = true; m_archiveName = value; }
-
-    /**
-     * <p>The name of the archive to update.</p>
-     */
-    inline void SetArchiveName(Aws::String&& value) { m_archiveNameHasBeenSet = true; m_archiveName = std::move(value); }
-
-    /**
-     * <p>The name of the archive to update.</p>
-     */
-    inline void SetArchiveName(const char* value) { m_archiveNameHasBeenSet = true; m_archiveName.assign(value); }
-
-    /**
-     * <p>The name of the archive to update.</p>
-     */
-    inline UpdateArchiveRequest& WithArchiveName(const Aws::String& value) { SetArchiveName(value); return *this;}
-
-    /**
-     * <p>The name of the archive to update.</p>
-     */
-    inline UpdateArchiveRequest& WithArchiveName(Aws::String&& value) { SetArchiveName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the archive to update.</p>
-     */
-    inline UpdateArchiveRequest& WithArchiveName(const char* value) { SetArchiveName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The description for the archive.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The description for the archive.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    UpdateArchiveRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description for the archive.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The description for the archive.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The description for the archive.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The description for the archive.</p>
-     */
-    inline UpdateArchiveRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description for the archive.</p>
-     */
-    inline UpdateArchiveRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description for the archive.</p>
-     */
-    inline UpdateArchiveRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The event pattern to use to filter events sent to the archive.</p>
      */
-    inline const Aws::String& GetEventPattern() const{ return m_eventPattern; }
-
-    /**
-     * <p>The event pattern to use to filter events sent to the archive.</p>
-     */
+    inline const Aws::String& GetEventPattern() const { return m_eventPattern; }
     inline bool EventPatternHasBeenSet() const { return m_eventPatternHasBeenSet; }
+    template<typename EventPatternT = Aws::String>
+    void SetEventPattern(EventPatternT&& value) { m_eventPatternHasBeenSet = true; m_eventPattern = std::forward<EventPatternT>(value); }
+    template<typename EventPatternT = Aws::String>
+    UpdateArchiveRequest& WithEventPattern(EventPatternT&& value) { SetEventPattern(std::forward<EventPatternT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The event pattern to use to filter events sent to the archive.</p>
-     */
-    inline void SetEventPattern(const Aws::String& value) { m_eventPatternHasBeenSet = true; m_eventPattern = value; }
-
-    /**
-     * <p>The event pattern to use to filter events sent to the archive.</p>
-     */
-    inline void SetEventPattern(Aws::String&& value) { m_eventPatternHasBeenSet = true; m_eventPattern = std::move(value); }
-
-    /**
-     * <p>The event pattern to use to filter events sent to the archive.</p>
-     */
-    inline void SetEventPattern(const char* value) { m_eventPatternHasBeenSet = true; m_eventPattern.assign(value); }
-
-    /**
-     * <p>The event pattern to use to filter events sent to the archive.</p>
-     */
-    inline UpdateArchiveRequest& WithEventPattern(const Aws::String& value) { SetEventPattern(value); return *this;}
-
-    /**
-     * <p>The event pattern to use to filter events sent to the archive.</p>
-     */
-    inline UpdateArchiveRequest& WithEventPattern(Aws::String&& value) { SetEventPattern(std::move(value)); return *this;}
-
-    /**
-     * <p>The event pattern to use to filter events sent to the archive.</p>
-     */
-    inline UpdateArchiveRequest& WithEventPattern(const char* value) { SetEventPattern(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The number of days to retain events in the archive.</p>
      */
-    inline int GetRetentionDays() const{ return m_retentionDays; }
-
-    /**
-     * <p>The number of days to retain events in the archive.</p>
-     */
+    inline int GetRetentionDays() const { return m_retentionDays; }
     inline bool RetentionDaysHasBeenSet() const { return m_retentionDaysHasBeenSet; }
-
-    /**
-     * <p>The number of days to retain events in the archive.</p>
-     */
     inline void SetRetentionDays(int value) { m_retentionDaysHasBeenSet = true; m_retentionDays = value; }
-
-    /**
-     * <p>The number of days to retain events in the archive.</p>
-     */
     inline UpdateArchiveRequest& WithRetentionDays(int value) { SetRetentionDays(value); return *this;}
+    ///@}
 
+    ///@{
+    /**
+     * <p>The identifier of the KMS customer managed key for EventBridge to use, if you
+     * choose to use a customer managed key to encrypt this archive. The identifier can
+     * be the key Amazon Resource Name (ARN), KeyId, key alias, or key alias ARN.</p>
+     * <p>If you do not specify a customer managed key identifier, EventBridge uses an
+     * Amazon Web Services owned key to encrypt the archive.</p> <p>For more
+     * information, see <a
+     * href="https://docs.aws.amazon.com/kms/latest/developerguide/viewing-keys.html">Identify
+     * and view keys</a> in the <i>Key Management Service Developer Guide</i>. </p>
+     *  <p>If you have specified that EventBridge use a customer managed key
+     * for encrypting the source event bus, we strongly recommend you also specify a
+     * customer managed key for any archives for the event bus as well. </p> <p>For
+     * more information, see <a
+     * href="https://docs.aws.amazon.com/eventbridge/latest/userguide/encryption-archives.html">Encrypting
+     * archives</a> in the <i>Amazon EventBridge User Guide</i>.</p> 
+     */
+    inline const Aws::String& GetKmsKeyIdentifier() const { return m_kmsKeyIdentifier; }
+    inline bool KmsKeyIdentifierHasBeenSet() const { return m_kmsKeyIdentifierHasBeenSet; }
+    template<typename KmsKeyIdentifierT = Aws::String>
+    void SetKmsKeyIdentifier(KmsKeyIdentifierT&& value) { m_kmsKeyIdentifierHasBeenSet = true; m_kmsKeyIdentifier = std::forward<KmsKeyIdentifierT>(value); }
+    template<typename KmsKeyIdentifierT = Aws::String>
+    UpdateArchiveRequest& WithKmsKeyIdentifier(KmsKeyIdentifierT&& value) { SetKmsKeyIdentifier(std::forward<KmsKeyIdentifierT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_archiveName;
@@ -188,8 +115,11 @@ namespace Model
     Aws::String m_eventPattern;
     bool m_eventPatternHasBeenSet = false;
 
-    int m_retentionDays;
+    int m_retentionDays{0};
     bool m_retentionDaysHasBeenSet = false;
+
+    Aws::String m_kmsKeyIdentifier;
+    bool m_kmsKeyIdentifierHasBeenSet = false;
   };
 
 } // namespace Model

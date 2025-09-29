@@ -31,42 +31,23 @@ namespace Model
   class AppRegistryConfiguration
   {
   public:
-    AWS_APPREGISTRY_API AppRegistryConfiguration();
+    AWS_APPREGISTRY_API AppRegistryConfiguration() = default;
     AWS_APPREGISTRY_API AppRegistryConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPREGISTRY_API AppRegistryConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPREGISTRY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> Includes the definition of a <code>tagQuery</code>. </p>
      */
-    inline const TagQueryConfiguration& GetTagQueryConfiguration() const{ return m_tagQueryConfiguration; }
-
-    /**
-     * <p> Includes the definition of a <code>tagQuery</code>. </p>
-     */
+    inline const TagQueryConfiguration& GetTagQueryConfiguration() const { return m_tagQueryConfiguration; }
     inline bool TagQueryConfigurationHasBeenSet() const { return m_tagQueryConfigurationHasBeenSet; }
-
-    /**
-     * <p> Includes the definition of a <code>tagQuery</code>. </p>
-     */
-    inline void SetTagQueryConfiguration(const TagQueryConfiguration& value) { m_tagQueryConfigurationHasBeenSet = true; m_tagQueryConfiguration = value; }
-
-    /**
-     * <p> Includes the definition of a <code>tagQuery</code>. </p>
-     */
-    inline void SetTagQueryConfiguration(TagQueryConfiguration&& value) { m_tagQueryConfigurationHasBeenSet = true; m_tagQueryConfiguration = std::move(value); }
-
-    /**
-     * <p> Includes the definition of a <code>tagQuery</code>. </p>
-     */
-    inline AppRegistryConfiguration& WithTagQueryConfiguration(const TagQueryConfiguration& value) { SetTagQueryConfiguration(value); return *this;}
-
-    /**
-     * <p> Includes the definition of a <code>tagQuery</code>. </p>
-     */
-    inline AppRegistryConfiguration& WithTagQueryConfiguration(TagQueryConfiguration&& value) { SetTagQueryConfiguration(std::move(value)); return *this;}
-
+    template<typename TagQueryConfigurationT = TagQueryConfiguration>
+    void SetTagQueryConfiguration(TagQueryConfigurationT&& value) { m_tagQueryConfigurationHasBeenSet = true; m_tagQueryConfiguration = std::forward<TagQueryConfigurationT>(value); }
+    template<typename TagQueryConfigurationT = TagQueryConfiguration>
+    AppRegistryConfiguration& WithTagQueryConfiguration(TagQueryConfigurationT&& value) { SetTagQueryConfiguration(std::forward<TagQueryConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     TagQueryConfiguration m_tagQueryConfiguration;

@@ -32,42 +32,23 @@ namespace Model
   class IamAuthenticationMethod
   {
   public:
-    AWS_SSOADMIN_API IamAuthenticationMethod();
+    AWS_SSOADMIN_API IamAuthenticationMethod() = default;
     AWS_SSOADMIN_API IamAuthenticationMethod(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSOADMIN_API IamAuthenticationMethod& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSOADMIN_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An IAM policy document in JSON.</p>
      */
-    inline Aws::Utils::DocumentView GetActorPolicy() const{ return m_actorPolicy; }
-
-    /**
-     * <p>An IAM policy document in JSON.</p>
-     */
+    inline Aws::Utils::DocumentView GetActorPolicy() const { return m_actorPolicy; }
     inline bool ActorPolicyHasBeenSet() const { return m_actorPolicyHasBeenSet; }
-
-    /**
-     * <p>An IAM policy document in JSON.</p>
-     */
-    inline void SetActorPolicy(const Aws::Utils::Document& value) { m_actorPolicyHasBeenSet = true; m_actorPolicy = value; }
-
-    /**
-     * <p>An IAM policy document in JSON.</p>
-     */
-    inline void SetActorPolicy(Aws::Utils::Document&& value) { m_actorPolicyHasBeenSet = true; m_actorPolicy = std::move(value); }
-
-    /**
-     * <p>An IAM policy document in JSON.</p>
-     */
-    inline IamAuthenticationMethod& WithActorPolicy(const Aws::Utils::Document& value) { SetActorPolicy(value); return *this;}
-
-    /**
-     * <p>An IAM policy document in JSON.</p>
-     */
-    inline IamAuthenticationMethod& WithActorPolicy(Aws::Utils::Document&& value) { SetActorPolicy(std::move(value)); return *this;}
-
+    template<typename ActorPolicyT = Aws::Utils::Document>
+    void SetActorPolicy(ActorPolicyT&& value) { m_actorPolicyHasBeenSet = true; m_actorPolicy = std::forward<ActorPolicyT>(value); }
+    template<typename ActorPolicyT = Aws::Utils::Document>
+    IamAuthenticationMethod& WithActorPolicy(ActorPolicyT&& value) { SetActorPolicy(std::forward<ActorPolicyT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Utils::Document m_actorPolicy;

@@ -32,7 +32,7 @@ namespace Model
   class ClusterVersion
   {
   public:
-    AWS_REDSHIFT_API ClusterVersion();
+    AWS_REDSHIFT_API ClusterVersion() = default;
     AWS_REDSHIFT_API ClusterVersion(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_REDSHIFT_API ClusterVersion& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,128 +40,41 @@ namespace Model
     AWS_REDSHIFT_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The version number used by the cluster.</p>
      */
-    inline const Aws::String& GetClusterVersion() const{ return m_clusterVersion; }
-
-    /**
-     * <p>The version number used by the cluster.</p>
-     */
+    inline const Aws::String& GetClusterVersion() const { return m_clusterVersion; }
     inline bool ClusterVersionHasBeenSet() const { return m_clusterVersionHasBeenSet; }
+    template<typename ClusterVersionT = Aws::String>
+    void SetClusterVersion(ClusterVersionT&& value) { m_clusterVersionHasBeenSet = true; m_clusterVersion = std::forward<ClusterVersionT>(value); }
+    template<typename ClusterVersionT = Aws::String>
+    ClusterVersion& WithClusterVersion(ClusterVersionT&& value) { SetClusterVersion(std::forward<ClusterVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The version number used by the cluster.</p>
-     */
-    inline void SetClusterVersion(const Aws::String& value) { m_clusterVersionHasBeenSet = true; m_clusterVersion = value; }
-
-    /**
-     * <p>The version number used by the cluster.</p>
-     */
-    inline void SetClusterVersion(Aws::String&& value) { m_clusterVersionHasBeenSet = true; m_clusterVersion = std::move(value); }
-
-    /**
-     * <p>The version number used by the cluster.</p>
-     */
-    inline void SetClusterVersion(const char* value) { m_clusterVersionHasBeenSet = true; m_clusterVersion.assign(value); }
-
-    /**
-     * <p>The version number used by the cluster.</p>
-     */
-    inline ClusterVersion& WithClusterVersion(const Aws::String& value) { SetClusterVersion(value); return *this;}
-
-    /**
-     * <p>The version number used by the cluster.</p>
-     */
-    inline ClusterVersion& WithClusterVersion(Aws::String&& value) { SetClusterVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The version number used by the cluster.</p>
-     */
-    inline ClusterVersion& WithClusterVersion(const char* value) { SetClusterVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the cluster parameter group family for the cluster.</p>
      */
-    inline const Aws::String& GetClusterParameterGroupFamily() const{ return m_clusterParameterGroupFamily; }
-
-    /**
-     * <p>The name of the cluster parameter group family for the cluster.</p>
-     */
+    inline const Aws::String& GetClusterParameterGroupFamily() const { return m_clusterParameterGroupFamily; }
     inline bool ClusterParameterGroupFamilyHasBeenSet() const { return m_clusterParameterGroupFamilyHasBeenSet; }
+    template<typename ClusterParameterGroupFamilyT = Aws::String>
+    void SetClusterParameterGroupFamily(ClusterParameterGroupFamilyT&& value) { m_clusterParameterGroupFamilyHasBeenSet = true; m_clusterParameterGroupFamily = std::forward<ClusterParameterGroupFamilyT>(value); }
+    template<typename ClusterParameterGroupFamilyT = Aws::String>
+    ClusterVersion& WithClusterParameterGroupFamily(ClusterParameterGroupFamilyT&& value) { SetClusterParameterGroupFamily(std::forward<ClusterParameterGroupFamilyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the cluster parameter group family for the cluster.</p>
-     */
-    inline void SetClusterParameterGroupFamily(const Aws::String& value) { m_clusterParameterGroupFamilyHasBeenSet = true; m_clusterParameterGroupFamily = value; }
-
-    /**
-     * <p>The name of the cluster parameter group family for the cluster.</p>
-     */
-    inline void SetClusterParameterGroupFamily(Aws::String&& value) { m_clusterParameterGroupFamilyHasBeenSet = true; m_clusterParameterGroupFamily = std::move(value); }
-
-    /**
-     * <p>The name of the cluster parameter group family for the cluster.</p>
-     */
-    inline void SetClusterParameterGroupFamily(const char* value) { m_clusterParameterGroupFamilyHasBeenSet = true; m_clusterParameterGroupFamily.assign(value); }
-
-    /**
-     * <p>The name of the cluster parameter group family for the cluster.</p>
-     */
-    inline ClusterVersion& WithClusterParameterGroupFamily(const Aws::String& value) { SetClusterParameterGroupFamily(value); return *this;}
-
-    /**
-     * <p>The name of the cluster parameter group family for the cluster.</p>
-     */
-    inline ClusterVersion& WithClusterParameterGroupFamily(Aws::String&& value) { SetClusterParameterGroupFamily(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the cluster parameter group family for the cluster.</p>
-     */
-    inline ClusterVersion& WithClusterParameterGroupFamily(const char* value) { SetClusterParameterGroupFamily(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The description of the cluster version.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The description of the cluster version.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
-
-    /**
-     * <p>The description of the cluster version.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The description of the cluster version.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The description of the cluster version.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The description of the cluster version.</p>
-     */
-    inline ClusterVersion& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description of the cluster version.</p>
-     */
-    inline ClusterVersion& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the cluster version.</p>
-     */
-    inline ClusterVersion& WithDescription(const char* value) { SetDescription(value); return *this;}
-
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    ClusterVersion& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_clusterVersion;

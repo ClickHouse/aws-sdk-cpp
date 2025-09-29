@@ -18,17 +18,7 @@ namespace Chime
 namespace Model
 {
 
-EventsConfiguration::EventsConfiguration() : 
-    m_botIdHasBeenSet(false),
-    m_outboundEventsHTTPSEndpointHasBeenSet(false),
-    m_lambdaFunctionArnHasBeenSet(false)
-{
-}
-
-EventsConfiguration::EventsConfiguration(JsonView jsonValue) : 
-    m_botIdHasBeenSet(false),
-    m_outboundEventsHTTPSEndpointHasBeenSet(false),
-    m_lambdaFunctionArnHasBeenSet(false)
+EventsConfiguration::EventsConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ EventsConfiguration& EventsConfiguration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("BotId"))
   {
     m_botId = jsonValue.GetString("BotId");
-
     m_botIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("OutboundEventsHTTPSEndpoint"))
   {
     m_outboundEventsHTTPSEndpoint = jsonValue.GetString("OutboundEventsHTTPSEndpoint");
-
     m_outboundEventsHTTPSEndpointHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LambdaFunctionArn"))
   {
     m_lambdaFunctionArn = jsonValue.GetString("LambdaFunctionArn");
-
     m_lambdaFunctionArnHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -32,52 +32,26 @@ namespace Model
   class LocationConfiguration
   {
   public:
-    AWS_GAMELIFT_API LocationConfiguration();
+    AWS_GAMELIFT_API LocationConfiguration() = default;
     AWS_GAMELIFT_API LocationConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_GAMELIFT_API LocationConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GAMELIFT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>An Amazon Web Services Region code, such as <code>us-west-2</code>. </p>
+     * <p>An Amazon Web Services Region code, such as <code>us-west-2</code>. For a
+     * list of supported Regions and Local Zones, see <a
+     * href="https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-regions.html">
+     * Amazon GameLift Servers service locations</a> for managed hosting.</p>
      */
-    inline const Aws::String& GetLocation() const{ return m_location; }
-
-    /**
-     * <p>An Amazon Web Services Region code, such as <code>us-west-2</code>. </p>
-     */
+    inline const Aws::String& GetLocation() const { return m_location; }
     inline bool LocationHasBeenSet() const { return m_locationHasBeenSet; }
-
-    /**
-     * <p>An Amazon Web Services Region code, such as <code>us-west-2</code>. </p>
-     */
-    inline void SetLocation(const Aws::String& value) { m_locationHasBeenSet = true; m_location = value; }
-
-    /**
-     * <p>An Amazon Web Services Region code, such as <code>us-west-2</code>. </p>
-     */
-    inline void SetLocation(Aws::String&& value) { m_locationHasBeenSet = true; m_location = std::move(value); }
-
-    /**
-     * <p>An Amazon Web Services Region code, such as <code>us-west-2</code>. </p>
-     */
-    inline void SetLocation(const char* value) { m_locationHasBeenSet = true; m_location.assign(value); }
-
-    /**
-     * <p>An Amazon Web Services Region code, such as <code>us-west-2</code>. </p>
-     */
-    inline LocationConfiguration& WithLocation(const Aws::String& value) { SetLocation(value); return *this;}
-
-    /**
-     * <p>An Amazon Web Services Region code, such as <code>us-west-2</code>. </p>
-     */
-    inline LocationConfiguration& WithLocation(Aws::String&& value) { SetLocation(std::move(value)); return *this;}
-
-    /**
-     * <p>An Amazon Web Services Region code, such as <code>us-west-2</code>. </p>
-     */
-    inline LocationConfiguration& WithLocation(const char* value) { SetLocation(value); return *this;}
-
+    template<typename LocationT = Aws::String>
+    void SetLocation(LocationT&& value) { m_locationHasBeenSet = true; m_location = std::forward<LocationT>(value); }
+    template<typename LocationT = Aws::String>
+    LocationConfiguration& WithLocation(LocationT&& value) { SetLocation(std::forward<LocationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_location;

@@ -29,19 +29,30 @@ namespace Model
 
   /**
    * <p>Provides the configuration information to connect to Amazon FSx as your data
-   * source.</p><p><h3>See Also:</h3>   <a
+   * source.</p>  <p>Amazon Kendra now supports an upgraded Amazon FSx Windows
+   * connector.</p> <p>You must now use the <a
+   * href="https://docs.aws.amazon.com/kendra/latest/APIReference/API_TemplateConfiguration.html">TemplateConfiguration</a>
+   * object instead of the <code>FsxConfiguration</code> object to configure your
+   * connector.</p> <p>Connectors configured using the older console and API
+   * architecture will continue to function as configured. However, you won't be able
+   * to edit or update them. If you want to edit or update your connector
+   * configuration, you must create a new connector.</p> <p>We recommended migrating
+   * your connector workflow to the upgraded version. Support for connectors
+   * configured using the older architecture is scheduled to end by June 2024.</p>
+   * <p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/kendra-2019-02-03/FsxConfiguration">AWS
    * API Reference</a></p>
    */
   class FsxConfiguration
   {
   public:
-    AWS_KENDRA_API FsxConfiguration();
+    AWS_KENDRA_API FsxConfiguration() = default;
     AWS_KENDRA_API FsxConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_KENDRA_API FsxConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KENDRA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The identifier of the Amazon FSx file system.</p> <p>You can find your file
      * system ID on the file system dashboard in the Amazon FSx console. For
@@ -50,153 +61,39 @@ namespace Model
      * href="https://docs.aws.amazon.com/fsx/latest/WindowsGuide/getting-started-step1.html">Amazon
      * FSx Getting started guide</a>.</p>
      */
-    inline const Aws::String& GetFileSystemId() const{ return m_fileSystemId; }
-
-    /**
-     * <p>The identifier of the Amazon FSx file system.</p> <p>You can find your file
-     * system ID on the file system dashboard in the Amazon FSx console. For
-     * information on how to create a file system in Amazon FSx console, using Windows
-     * File Server as an example, see <a
-     * href="https://docs.aws.amazon.com/fsx/latest/WindowsGuide/getting-started-step1.html">Amazon
-     * FSx Getting started guide</a>.</p>
-     */
+    inline const Aws::String& GetFileSystemId() const { return m_fileSystemId; }
     inline bool FileSystemIdHasBeenSet() const { return m_fileSystemIdHasBeenSet; }
+    template<typename FileSystemIdT = Aws::String>
+    void SetFileSystemId(FileSystemIdT&& value) { m_fileSystemIdHasBeenSet = true; m_fileSystemId = std::forward<FileSystemIdT>(value); }
+    template<typename FileSystemIdT = Aws::String>
+    FsxConfiguration& WithFileSystemId(FileSystemIdT&& value) { SetFileSystemId(std::forward<FileSystemIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the Amazon FSx file system.</p> <p>You can find your file
-     * system ID on the file system dashboard in the Amazon FSx console. For
-     * information on how to create a file system in Amazon FSx console, using Windows
-     * File Server as an example, see <a
-     * href="https://docs.aws.amazon.com/fsx/latest/WindowsGuide/getting-started-step1.html">Amazon
-     * FSx Getting started guide</a>.</p>
-     */
-    inline void SetFileSystemId(const Aws::String& value) { m_fileSystemIdHasBeenSet = true; m_fileSystemId = value; }
-
-    /**
-     * <p>The identifier of the Amazon FSx file system.</p> <p>You can find your file
-     * system ID on the file system dashboard in the Amazon FSx console. For
-     * information on how to create a file system in Amazon FSx console, using Windows
-     * File Server as an example, see <a
-     * href="https://docs.aws.amazon.com/fsx/latest/WindowsGuide/getting-started-step1.html">Amazon
-     * FSx Getting started guide</a>.</p>
-     */
-    inline void SetFileSystemId(Aws::String&& value) { m_fileSystemIdHasBeenSet = true; m_fileSystemId = std::move(value); }
-
-    /**
-     * <p>The identifier of the Amazon FSx file system.</p> <p>You can find your file
-     * system ID on the file system dashboard in the Amazon FSx console. For
-     * information on how to create a file system in Amazon FSx console, using Windows
-     * File Server as an example, see <a
-     * href="https://docs.aws.amazon.com/fsx/latest/WindowsGuide/getting-started-step1.html">Amazon
-     * FSx Getting started guide</a>.</p>
-     */
-    inline void SetFileSystemId(const char* value) { m_fileSystemIdHasBeenSet = true; m_fileSystemId.assign(value); }
-
-    /**
-     * <p>The identifier of the Amazon FSx file system.</p> <p>You can find your file
-     * system ID on the file system dashboard in the Amazon FSx console. For
-     * information on how to create a file system in Amazon FSx console, using Windows
-     * File Server as an example, see <a
-     * href="https://docs.aws.amazon.com/fsx/latest/WindowsGuide/getting-started-step1.html">Amazon
-     * FSx Getting started guide</a>.</p>
-     */
-    inline FsxConfiguration& WithFileSystemId(const Aws::String& value) { SetFileSystemId(value); return *this;}
-
-    /**
-     * <p>The identifier of the Amazon FSx file system.</p> <p>You can find your file
-     * system ID on the file system dashboard in the Amazon FSx console. For
-     * information on how to create a file system in Amazon FSx console, using Windows
-     * File Server as an example, see <a
-     * href="https://docs.aws.amazon.com/fsx/latest/WindowsGuide/getting-started-step1.html">Amazon
-     * FSx Getting started guide</a>.</p>
-     */
-    inline FsxConfiguration& WithFileSystemId(Aws::String&& value) { SetFileSystemId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the Amazon FSx file system.</p> <p>You can find your file
-     * system ID on the file system dashboard in the Amazon FSx console. For
-     * information on how to create a file system in Amazon FSx console, using Windows
-     * File Server as an example, see <a
-     * href="https://docs.aws.amazon.com/fsx/latest/WindowsGuide/getting-started-step1.html">Amazon
-     * FSx Getting started guide</a>.</p>
-     */
-    inline FsxConfiguration& WithFileSystemId(const char* value) { SetFileSystemId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon FSx file system type. Windows is currently the only supported
      * type.</p>
      */
-    inline const FsxFileSystemType& GetFileSystemType() const{ return m_fileSystemType; }
-
-    /**
-     * <p>The Amazon FSx file system type. Windows is currently the only supported
-     * type.</p>
-     */
+    inline FsxFileSystemType GetFileSystemType() const { return m_fileSystemType; }
     inline bool FileSystemTypeHasBeenSet() const { return m_fileSystemTypeHasBeenSet; }
+    inline void SetFileSystemType(FsxFileSystemType value) { m_fileSystemTypeHasBeenSet = true; m_fileSystemType = value; }
+    inline FsxConfiguration& WithFileSystemType(FsxFileSystemType value) { SetFileSystemType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon FSx file system type. Windows is currently the only supported
-     * type.</p>
-     */
-    inline void SetFileSystemType(const FsxFileSystemType& value) { m_fileSystemTypeHasBeenSet = true; m_fileSystemType = value; }
-
-    /**
-     * <p>The Amazon FSx file system type. Windows is currently the only supported
-     * type.</p>
-     */
-    inline void SetFileSystemType(FsxFileSystemType&& value) { m_fileSystemTypeHasBeenSet = true; m_fileSystemType = std::move(value); }
-
-    /**
-     * <p>The Amazon FSx file system type. Windows is currently the only supported
-     * type.</p>
-     */
-    inline FsxConfiguration& WithFileSystemType(const FsxFileSystemType& value) { SetFileSystemType(value); return *this;}
-
-    /**
-     * <p>The Amazon FSx file system type. Windows is currently the only supported
-     * type.</p>
-     */
-    inline FsxConfiguration& WithFileSystemType(FsxFileSystemType&& value) { SetFileSystemType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Configuration information for an Amazon Virtual Private Cloud to connect to
      * your Amazon FSx. Your Amazon FSx instance must reside inside your VPC.</p>
      */
-    inline const DataSourceVpcConfiguration& GetVpcConfiguration() const{ return m_vpcConfiguration; }
-
-    /**
-     * <p>Configuration information for an Amazon Virtual Private Cloud to connect to
-     * your Amazon FSx. Your Amazon FSx instance must reside inside your VPC.</p>
-     */
+    inline const DataSourceVpcConfiguration& GetVpcConfiguration() const { return m_vpcConfiguration; }
     inline bool VpcConfigurationHasBeenSet() const { return m_vpcConfigurationHasBeenSet; }
+    template<typename VpcConfigurationT = DataSourceVpcConfiguration>
+    void SetVpcConfiguration(VpcConfigurationT&& value) { m_vpcConfigurationHasBeenSet = true; m_vpcConfiguration = std::forward<VpcConfigurationT>(value); }
+    template<typename VpcConfigurationT = DataSourceVpcConfiguration>
+    FsxConfiguration& WithVpcConfiguration(VpcConfigurationT&& value) { SetVpcConfiguration(std::forward<VpcConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Configuration information for an Amazon Virtual Private Cloud to connect to
-     * your Amazon FSx. Your Amazon FSx instance must reside inside your VPC.</p>
-     */
-    inline void SetVpcConfiguration(const DataSourceVpcConfiguration& value) { m_vpcConfigurationHasBeenSet = true; m_vpcConfiguration = value; }
-
-    /**
-     * <p>Configuration information for an Amazon Virtual Private Cloud to connect to
-     * your Amazon FSx. Your Amazon FSx instance must reside inside your VPC.</p>
-     */
-    inline void SetVpcConfiguration(DataSourceVpcConfiguration&& value) { m_vpcConfigurationHasBeenSet = true; m_vpcConfiguration = std::move(value); }
-
-    /**
-     * <p>Configuration information for an Amazon Virtual Private Cloud to connect to
-     * your Amazon FSx. Your Amazon FSx instance must reside inside your VPC.</p>
-     */
-    inline FsxConfiguration& WithVpcConfiguration(const DataSourceVpcConfiguration& value) { SetVpcConfiguration(value); return *this;}
-
-    /**
-     * <p>Configuration information for an Amazon Virtual Private Cloud to connect to
-     * your Amazon FSx. Your Amazon FSx instance must reside inside your VPC.</p>
-     */
-    inline FsxConfiguration& WithVpcConfiguration(DataSourceVpcConfiguration&& value) { SetVpcConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of an Secrets Manager secret that contains the
      * key-value pairs required to connect to your Amazon FSx file system. Windows is
@@ -208,100 +105,15 @@ namespace Model
      * <p>password—The password of the Active Directory user account with read and
      * mounting access to the Amazon FSx Windows file system.</p> </li> </ul>
      */
-    inline const Aws::String& GetSecretArn() const{ return m_secretArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an Secrets Manager secret that contains the
-     * key-value pairs required to connect to your Amazon FSx file system. Windows is
-     * currently the only supported type. The secret must contain a JSON structure with
-     * the following keys:</p> <ul> <li> <p>username—The Active Directory user name,
-     * along with the Domain Name System (DNS) domain name. For example,
-     * <i>user@corp.example.com</i>. The Active Directory user account must have read
-     * and mounting access to the Amazon FSx file system for Windows.</p> </li> <li>
-     * <p>password—The password of the Active Directory user account with read and
-     * mounting access to the Amazon FSx Windows file system.</p> </li> </ul>
-     */
+    inline const Aws::String& GetSecretArn() const { return m_secretArn; }
     inline bool SecretArnHasBeenSet() const { return m_secretArnHasBeenSet; }
+    template<typename SecretArnT = Aws::String>
+    void SetSecretArn(SecretArnT&& value) { m_secretArnHasBeenSet = true; m_secretArn = std::forward<SecretArnT>(value); }
+    template<typename SecretArnT = Aws::String>
+    FsxConfiguration& WithSecretArn(SecretArnT&& value) { SetSecretArn(std::forward<SecretArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of an Secrets Manager secret that contains the
-     * key-value pairs required to connect to your Amazon FSx file system. Windows is
-     * currently the only supported type. The secret must contain a JSON structure with
-     * the following keys:</p> <ul> <li> <p>username—The Active Directory user name,
-     * along with the Domain Name System (DNS) domain name. For example,
-     * <i>user@corp.example.com</i>. The Active Directory user account must have read
-     * and mounting access to the Amazon FSx file system for Windows.</p> </li> <li>
-     * <p>password—The password of the Active Directory user account with read and
-     * mounting access to the Amazon FSx Windows file system.</p> </li> </ul>
-     */
-    inline void SetSecretArn(const Aws::String& value) { m_secretArnHasBeenSet = true; m_secretArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an Secrets Manager secret that contains the
-     * key-value pairs required to connect to your Amazon FSx file system. Windows is
-     * currently the only supported type. The secret must contain a JSON structure with
-     * the following keys:</p> <ul> <li> <p>username—The Active Directory user name,
-     * along with the Domain Name System (DNS) domain name. For example,
-     * <i>user@corp.example.com</i>. The Active Directory user account must have read
-     * and mounting access to the Amazon FSx file system for Windows.</p> </li> <li>
-     * <p>password—The password of the Active Directory user account with read and
-     * mounting access to the Amazon FSx Windows file system.</p> </li> </ul>
-     */
-    inline void SetSecretArn(Aws::String&& value) { m_secretArnHasBeenSet = true; m_secretArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an Secrets Manager secret that contains the
-     * key-value pairs required to connect to your Amazon FSx file system. Windows is
-     * currently the only supported type. The secret must contain a JSON structure with
-     * the following keys:</p> <ul> <li> <p>username—The Active Directory user name,
-     * along with the Domain Name System (DNS) domain name. For example,
-     * <i>user@corp.example.com</i>. The Active Directory user account must have read
-     * and mounting access to the Amazon FSx file system for Windows.</p> </li> <li>
-     * <p>password—The password of the Active Directory user account with read and
-     * mounting access to the Amazon FSx Windows file system.</p> </li> </ul>
-     */
-    inline void SetSecretArn(const char* value) { m_secretArnHasBeenSet = true; m_secretArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an Secrets Manager secret that contains the
-     * key-value pairs required to connect to your Amazon FSx file system. Windows is
-     * currently the only supported type. The secret must contain a JSON structure with
-     * the following keys:</p> <ul> <li> <p>username—The Active Directory user name,
-     * along with the Domain Name System (DNS) domain name. For example,
-     * <i>user@corp.example.com</i>. The Active Directory user account must have read
-     * and mounting access to the Amazon FSx file system for Windows.</p> </li> <li>
-     * <p>password—The password of the Active Directory user account with read and
-     * mounting access to the Amazon FSx Windows file system.</p> </li> </ul>
-     */
-    inline FsxConfiguration& WithSecretArn(const Aws::String& value) { SetSecretArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an Secrets Manager secret that contains the
-     * key-value pairs required to connect to your Amazon FSx file system. Windows is
-     * currently the only supported type. The secret must contain a JSON structure with
-     * the following keys:</p> <ul> <li> <p>username—The Active Directory user name,
-     * along with the Domain Name System (DNS) domain name. For example,
-     * <i>user@corp.example.com</i>. The Active Directory user account must have read
-     * and mounting access to the Amazon FSx file system for Windows.</p> </li> <li>
-     * <p>password—The password of the Active Directory user account with read and
-     * mounting access to the Amazon FSx Windows file system.</p> </li> </ul>
-     */
-    inline FsxConfiguration& WithSecretArn(Aws::String&& value) { SetSecretArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an Secrets Manager secret that contains the
-     * key-value pairs required to connect to your Amazon FSx file system. Windows is
-     * currently the only supported type. The secret must contain a JSON structure with
-     * the following keys:</p> <ul> <li> <p>username—The Active Directory user name,
-     * along with the Domain Name System (DNS) domain name. For example,
-     * <i>user@corp.example.com</i>. The Active Directory user account must have read
-     * and mounting access to the Amazon FSx file system for Windows.</p> </li> <li>
-     * <p>password—The password of the Active Directory user account with read and
-     * mounting access to the Amazon FSx Windows file system.</p> </li> </ul>
-     */
-    inline FsxConfiguration& WithSecretArn(const char* value) { SetSecretArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of regular expression patterns to include certain files in your Amazon
      * FSx file system. Files that match the patterns are included in the index. Files
@@ -309,81 +121,17 @@ namespace Model
      * both an inclusion and exclusion pattern, the exclusion pattern takes precedence
      * and the file isn't included in the index.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetInclusionPatterns() const{ return m_inclusionPatterns; }
-
-    /**
-     * <p>A list of regular expression patterns to include certain files in your Amazon
-     * FSx file system. Files that match the patterns are included in the index. Files
-     * that don't match the patterns are excluded from the index. If a file matches
-     * both an inclusion and exclusion pattern, the exclusion pattern takes precedence
-     * and the file isn't included in the index.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetInclusionPatterns() const { return m_inclusionPatterns; }
     inline bool InclusionPatternsHasBeenSet() const { return m_inclusionPatternsHasBeenSet; }
+    template<typename InclusionPatternsT = Aws::Vector<Aws::String>>
+    void SetInclusionPatterns(InclusionPatternsT&& value) { m_inclusionPatternsHasBeenSet = true; m_inclusionPatterns = std::forward<InclusionPatternsT>(value); }
+    template<typename InclusionPatternsT = Aws::Vector<Aws::String>>
+    FsxConfiguration& WithInclusionPatterns(InclusionPatternsT&& value) { SetInclusionPatterns(std::forward<InclusionPatternsT>(value)); return *this;}
+    template<typename InclusionPatternsT = Aws::String>
+    FsxConfiguration& AddInclusionPatterns(InclusionPatternsT&& value) { m_inclusionPatternsHasBeenSet = true; m_inclusionPatterns.emplace_back(std::forward<InclusionPatternsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of regular expression patterns to include certain files in your Amazon
-     * FSx file system. Files that match the patterns are included in the index. Files
-     * that don't match the patterns are excluded from the index. If a file matches
-     * both an inclusion and exclusion pattern, the exclusion pattern takes precedence
-     * and the file isn't included in the index.</p>
-     */
-    inline void SetInclusionPatterns(const Aws::Vector<Aws::String>& value) { m_inclusionPatternsHasBeenSet = true; m_inclusionPatterns = value; }
-
-    /**
-     * <p>A list of regular expression patterns to include certain files in your Amazon
-     * FSx file system. Files that match the patterns are included in the index. Files
-     * that don't match the patterns are excluded from the index. If a file matches
-     * both an inclusion and exclusion pattern, the exclusion pattern takes precedence
-     * and the file isn't included in the index.</p>
-     */
-    inline void SetInclusionPatterns(Aws::Vector<Aws::String>&& value) { m_inclusionPatternsHasBeenSet = true; m_inclusionPatterns = std::move(value); }
-
-    /**
-     * <p>A list of regular expression patterns to include certain files in your Amazon
-     * FSx file system. Files that match the patterns are included in the index. Files
-     * that don't match the patterns are excluded from the index. If a file matches
-     * both an inclusion and exclusion pattern, the exclusion pattern takes precedence
-     * and the file isn't included in the index.</p>
-     */
-    inline FsxConfiguration& WithInclusionPatterns(const Aws::Vector<Aws::String>& value) { SetInclusionPatterns(value); return *this;}
-
-    /**
-     * <p>A list of regular expression patterns to include certain files in your Amazon
-     * FSx file system. Files that match the patterns are included in the index. Files
-     * that don't match the patterns are excluded from the index. If a file matches
-     * both an inclusion and exclusion pattern, the exclusion pattern takes precedence
-     * and the file isn't included in the index.</p>
-     */
-    inline FsxConfiguration& WithInclusionPatterns(Aws::Vector<Aws::String>&& value) { SetInclusionPatterns(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of regular expression patterns to include certain files in your Amazon
-     * FSx file system. Files that match the patterns are included in the index. Files
-     * that don't match the patterns are excluded from the index. If a file matches
-     * both an inclusion and exclusion pattern, the exclusion pattern takes precedence
-     * and the file isn't included in the index.</p>
-     */
-    inline FsxConfiguration& AddInclusionPatterns(const Aws::String& value) { m_inclusionPatternsHasBeenSet = true; m_inclusionPatterns.push_back(value); return *this; }
-
-    /**
-     * <p>A list of regular expression patterns to include certain files in your Amazon
-     * FSx file system. Files that match the patterns are included in the index. Files
-     * that don't match the patterns are excluded from the index. If a file matches
-     * both an inclusion and exclusion pattern, the exclusion pattern takes precedence
-     * and the file isn't included in the index.</p>
-     */
-    inline FsxConfiguration& AddInclusionPatterns(Aws::String&& value) { m_inclusionPatternsHasBeenSet = true; m_inclusionPatterns.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of regular expression patterns to include certain files in your Amazon
-     * FSx file system. Files that match the patterns are included in the index. Files
-     * that don't match the patterns are excluded from the index. If a file matches
-     * both an inclusion and exclusion pattern, the exclusion pattern takes precedence
-     * and the file isn't included in the index.</p>
-     */
-    inline FsxConfiguration& AddInclusionPatterns(const char* value) { m_inclusionPatternsHasBeenSet = true; m_inclusionPatterns.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of regular expression patterns to exclude certain files in your Amazon
      * FSx file system. Files that match the patterns are excluded from the index.
@@ -391,81 +139,17 @@ namespace Model
      * both an inclusion and exclusion pattern, the exclusion pattern takes precedence
      * and the file isn't included in the index.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetExclusionPatterns() const{ return m_exclusionPatterns; }
-
-    /**
-     * <p>A list of regular expression patterns to exclude certain files in your Amazon
-     * FSx file system. Files that match the patterns are excluded from the index.
-     * Files that don't match the patterns are included in the index. If a file matches
-     * both an inclusion and exclusion pattern, the exclusion pattern takes precedence
-     * and the file isn't included in the index.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetExclusionPatterns() const { return m_exclusionPatterns; }
     inline bool ExclusionPatternsHasBeenSet() const { return m_exclusionPatternsHasBeenSet; }
+    template<typename ExclusionPatternsT = Aws::Vector<Aws::String>>
+    void SetExclusionPatterns(ExclusionPatternsT&& value) { m_exclusionPatternsHasBeenSet = true; m_exclusionPatterns = std::forward<ExclusionPatternsT>(value); }
+    template<typename ExclusionPatternsT = Aws::Vector<Aws::String>>
+    FsxConfiguration& WithExclusionPatterns(ExclusionPatternsT&& value) { SetExclusionPatterns(std::forward<ExclusionPatternsT>(value)); return *this;}
+    template<typename ExclusionPatternsT = Aws::String>
+    FsxConfiguration& AddExclusionPatterns(ExclusionPatternsT&& value) { m_exclusionPatternsHasBeenSet = true; m_exclusionPatterns.emplace_back(std::forward<ExclusionPatternsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of regular expression patterns to exclude certain files in your Amazon
-     * FSx file system. Files that match the patterns are excluded from the index.
-     * Files that don't match the patterns are included in the index. If a file matches
-     * both an inclusion and exclusion pattern, the exclusion pattern takes precedence
-     * and the file isn't included in the index.</p>
-     */
-    inline void SetExclusionPatterns(const Aws::Vector<Aws::String>& value) { m_exclusionPatternsHasBeenSet = true; m_exclusionPatterns = value; }
-
-    /**
-     * <p>A list of regular expression patterns to exclude certain files in your Amazon
-     * FSx file system. Files that match the patterns are excluded from the index.
-     * Files that don't match the patterns are included in the index. If a file matches
-     * both an inclusion and exclusion pattern, the exclusion pattern takes precedence
-     * and the file isn't included in the index.</p>
-     */
-    inline void SetExclusionPatterns(Aws::Vector<Aws::String>&& value) { m_exclusionPatternsHasBeenSet = true; m_exclusionPatterns = std::move(value); }
-
-    /**
-     * <p>A list of regular expression patterns to exclude certain files in your Amazon
-     * FSx file system. Files that match the patterns are excluded from the index.
-     * Files that don't match the patterns are included in the index. If a file matches
-     * both an inclusion and exclusion pattern, the exclusion pattern takes precedence
-     * and the file isn't included in the index.</p>
-     */
-    inline FsxConfiguration& WithExclusionPatterns(const Aws::Vector<Aws::String>& value) { SetExclusionPatterns(value); return *this;}
-
-    /**
-     * <p>A list of regular expression patterns to exclude certain files in your Amazon
-     * FSx file system. Files that match the patterns are excluded from the index.
-     * Files that don't match the patterns are included in the index. If a file matches
-     * both an inclusion and exclusion pattern, the exclusion pattern takes precedence
-     * and the file isn't included in the index.</p>
-     */
-    inline FsxConfiguration& WithExclusionPatterns(Aws::Vector<Aws::String>&& value) { SetExclusionPatterns(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of regular expression patterns to exclude certain files in your Amazon
-     * FSx file system. Files that match the patterns are excluded from the index.
-     * Files that don't match the patterns are included in the index. If a file matches
-     * both an inclusion and exclusion pattern, the exclusion pattern takes precedence
-     * and the file isn't included in the index.</p>
-     */
-    inline FsxConfiguration& AddExclusionPatterns(const Aws::String& value) { m_exclusionPatternsHasBeenSet = true; m_exclusionPatterns.push_back(value); return *this; }
-
-    /**
-     * <p>A list of regular expression patterns to exclude certain files in your Amazon
-     * FSx file system. Files that match the patterns are excluded from the index.
-     * Files that don't match the patterns are included in the index. If a file matches
-     * both an inclusion and exclusion pattern, the exclusion pattern takes precedence
-     * and the file isn't included in the index.</p>
-     */
-    inline FsxConfiguration& AddExclusionPatterns(Aws::String&& value) { m_exclusionPatternsHasBeenSet = true; m_exclusionPatterns.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of regular expression patterns to exclude certain files in your Amazon
-     * FSx file system. Files that match the patterns are excluded from the index.
-     * Files that don't match the patterns are included in the index. If a file matches
-     * both an inclusion and exclusion pattern, the exclusion pattern takes precedence
-     * and the file isn't included in the index.</p>
-     */
-    inline FsxConfiguration& AddExclusionPatterns(const char* value) { m_exclusionPatternsHasBeenSet = true; m_exclusionPatterns.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of <code>DataSourceToIndexFieldMapping</code> objects that map Amazon
      * FSx data source attributes or field names to Amazon Kendra index field names. To
@@ -475,91 +159,21 @@ namespace Model
      * data source fields</a>. The Amazon FSx data source field names must exist in
      * your Amazon FSx custom metadata.</p>
      */
-    inline const Aws::Vector<DataSourceToIndexFieldMapping>& GetFieldMappings() const{ return m_fieldMappings; }
-
-    /**
-     * <p>A list of <code>DataSourceToIndexFieldMapping</code> objects that map Amazon
-     * FSx data source attributes or field names to Amazon Kendra index field names. To
-     * create custom fields, use the <code>UpdateIndex</code> API before you map to
-     * Amazon FSx fields. For more information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/field-mapping.html">Mapping
-     * data source fields</a>. The Amazon FSx data source field names must exist in
-     * your Amazon FSx custom metadata.</p>
-     */
+    inline const Aws::Vector<DataSourceToIndexFieldMapping>& GetFieldMappings() const { return m_fieldMappings; }
     inline bool FieldMappingsHasBeenSet() const { return m_fieldMappingsHasBeenSet; }
-
-    /**
-     * <p>A list of <code>DataSourceToIndexFieldMapping</code> objects that map Amazon
-     * FSx data source attributes or field names to Amazon Kendra index field names. To
-     * create custom fields, use the <code>UpdateIndex</code> API before you map to
-     * Amazon FSx fields. For more information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/field-mapping.html">Mapping
-     * data source fields</a>. The Amazon FSx data source field names must exist in
-     * your Amazon FSx custom metadata.</p>
-     */
-    inline void SetFieldMappings(const Aws::Vector<DataSourceToIndexFieldMapping>& value) { m_fieldMappingsHasBeenSet = true; m_fieldMappings = value; }
-
-    /**
-     * <p>A list of <code>DataSourceToIndexFieldMapping</code> objects that map Amazon
-     * FSx data source attributes or field names to Amazon Kendra index field names. To
-     * create custom fields, use the <code>UpdateIndex</code> API before you map to
-     * Amazon FSx fields. For more information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/field-mapping.html">Mapping
-     * data source fields</a>. The Amazon FSx data source field names must exist in
-     * your Amazon FSx custom metadata.</p>
-     */
-    inline void SetFieldMappings(Aws::Vector<DataSourceToIndexFieldMapping>&& value) { m_fieldMappingsHasBeenSet = true; m_fieldMappings = std::move(value); }
-
-    /**
-     * <p>A list of <code>DataSourceToIndexFieldMapping</code> objects that map Amazon
-     * FSx data source attributes or field names to Amazon Kendra index field names. To
-     * create custom fields, use the <code>UpdateIndex</code> API before you map to
-     * Amazon FSx fields. For more information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/field-mapping.html">Mapping
-     * data source fields</a>. The Amazon FSx data source field names must exist in
-     * your Amazon FSx custom metadata.</p>
-     */
-    inline FsxConfiguration& WithFieldMappings(const Aws::Vector<DataSourceToIndexFieldMapping>& value) { SetFieldMappings(value); return *this;}
-
-    /**
-     * <p>A list of <code>DataSourceToIndexFieldMapping</code> objects that map Amazon
-     * FSx data source attributes or field names to Amazon Kendra index field names. To
-     * create custom fields, use the <code>UpdateIndex</code> API before you map to
-     * Amazon FSx fields. For more information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/field-mapping.html">Mapping
-     * data source fields</a>. The Amazon FSx data source field names must exist in
-     * your Amazon FSx custom metadata.</p>
-     */
-    inline FsxConfiguration& WithFieldMappings(Aws::Vector<DataSourceToIndexFieldMapping>&& value) { SetFieldMappings(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of <code>DataSourceToIndexFieldMapping</code> objects that map Amazon
-     * FSx data source attributes or field names to Amazon Kendra index field names. To
-     * create custom fields, use the <code>UpdateIndex</code> API before you map to
-     * Amazon FSx fields. For more information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/field-mapping.html">Mapping
-     * data source fields</a>. The Amazon FSx data source field names must exist in
-     * your Amazon FSx custom metadata.</p>
-     */
-    inline FsxConfiguration& AddFieldMappings(const DataSourceToIndexFieldMapping& value) { m_fieldMappingsHasBeenSet = true; m_fieldMappings.push_back(value); return *this; }
-
-    /**
-     * <p>A list of <code>DataSourceToIndexFieldMapping</code> objects that map Amazon
-     * FSx data source attributes or field names to Amazon Kendra index field names. To
-     * create custom fields, use the <code>UpdateIndex</code> API before you map to
-     * Amazon FSx fields. For more information, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/field-mapping.html">Mapping
-     * data source fields</a>. The Amazon FSx data source field names must exist in
-     * your Amazon FSx custom metadata.</p>
-     */
-    inline FsxConfiguration& AddFieldMappings(DataSourceToIndexFieldMapping&& value) { m_fieldMappingsHasBeenSet = true; m_fieldMappings.push_back(std::move(value)); return *this; }
-
+    template<typename FieldMappingsT = Aws::Vector<DataSourceToIndexFieldMapping>>
+    void SetFieldMappings(FieldMappingsT&& value) { m_fieldMappingsHasBeenSet = true; m_fieldMappings = std::forward<FieldMappingsT>(value); }
+    template<typename FieldMappingsT = Aws::Vector<DataSourceToIndexFieldMapping>>
+    FsxConfiguration& WithFieldMappings(FieldMappingsT&& value) { SetFieldMappings(std::forward<FieldMappingsT>(value)); return *this;}
+    template<typename FieldMappingsT = DataSourceToIndexFieldMapping>
+    FsxConfiguration& AddFieldMappings(FieldMappingsT&& value) { m_fieldMappingsHasBeenSet = true; m_fieldMappings.emplace_back(std::forward<FieldMappingsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_fileSystemId;
     bool m_fileSystemIdHasBeenSet = false;
 
-    FsxFileSystemType m_fileSystemType;
+    FsxFileSystemType m_fileSystemType{FsxFileSystemType::NOT_SET};
     bool m_fileSystemTypeHasBeenSet = false;
 
     DataSourceVpcConfiguration m_vpcConfiguration;

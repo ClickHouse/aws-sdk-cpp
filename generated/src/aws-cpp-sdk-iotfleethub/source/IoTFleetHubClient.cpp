@@ -43,20 +43,27 @@ using namespace Aws::Utils::Json;
 using namespace smithy::components::tracing;
 using ResolveEndpointOutcome = Aws::Endpoint::ResolveEndpointOutcome;
 
-const char* IoTFleetHubClient::SERVICE_NAME = "iotfleethub";
-const char* IoTFleetHubClient::ALLOCATION_TAG = "IoTFleetHubClient";
+namespace Aws
+{
+  namespace IoTFleetHub
+  {
+    const char SERVICE_NAME[] = "iotfleethub";
+    const char ALLOCATION_TAG[] = "IoTFleetHubClient";
+  }
+}
+const char* IoTFleetHubClient::GetServiceName() {return SERVICE_NAME;}
+const char* IoTFleetHubClient::GetAllocationTag() {return ALLOCATION_TAG;}
 
 IoTFleetHubClient::IoTFleetHubClient(const IoTFleetHub::IoTFleetHubClientConfiguration& clientConfiguration,
                                      std::shared_ptr<IoTFleetHubEndpointProviderBase> endpointProvider) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<IoTFleetHubErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
-  m_endpointProvider(std::move(endpointProvider))
+  m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<IoTFleetHubEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -71,8 +78,7 @@ IoTFleetHubClient::IoTFleetHubClient(const AWSCredentials& credentials,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<IoTFleetHubErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<IoTFleetHubEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -87,8 +93,7 @@ IoTFleetHubClient::IoTFleetHubClient(const std::shared_ptr<AWSCredentialsProvide
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<IoTFleetHubErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<IoTFleetHubEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -97,12 +102,11 @@ IoTFleetHubClient::IoTFleetHubClient(const std::shared_ptr<AWSCredentialsProvide
   IoTFleetHubClient::IoTFleetHubClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<IoTFleetHubErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
   m_endpointProvider(Aws::MakeShared<IoTFleetHubEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -117,7 +121,6 @@ IoTFleetHubClient::IoTFleetHubClient(const AWSCredentials& credentials,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<IoTFleetHubErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<IoTFleetHubEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -132,7 +135,6 @@ IoTFleetHubClient::IoTFleetHubClient(const std::shared_ptr<AWSCredentialsProvide
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<IoTFleetHubErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<IoTFleetHubEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -152,6 +154,14 @@ std::shared_ptr<IoTFleetHubEndpointProviderBase>& IoTFleetHubClient::accessEndpo
 void IoTFleetHubClient::init(const IoTFleetHub::IoTFleetHubClientConfiguration& config)
 {
   AWSClient::SetServiceClientName("IoTFleetHub");
+  if (!m_clientConfiguration.executor) {
+    if (!m_clientConfiguration.configFactories.executorCreateFn()) {
+      AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "Failed to initialize client: config is missing Executor or executorCreateFn");
+      m_isInitialized = false;
+      return;
+    }
+    m_clientConfiguration.executor = m_clientConfiguration.configFactories.executorCreateFn();
+  }
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
   m_endpointProvider->InitBuiltInParameters(config);
 }

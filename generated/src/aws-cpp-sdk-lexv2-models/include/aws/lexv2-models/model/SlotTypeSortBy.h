@@ -33,79 +33,37 @@ namespace Model
   class SlotTypeSortBy
   {
   public:
-    AWS_LEXMODELSV2_API SlotTypeSortBy();
+    AWS_LEXMODELSV2_API SlotTypeSortBy() = default;
     AWS_LEXMODELSV2_API SlotTypeSortBy(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API SlotTypeSortBy& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The attribute to use to sort the list of slot types.</p>
      */
-    inline const SlotTypeSortAttribute& GetAttribute() const{ return m_attribute; }
-
-    /**
-     * <p>The attribute to use to sort the list of slot types.</p>
-     */
+    inline SlotTypeSortAttribute GetAttribute() const { return m_attribute; }
     inline bool AttributeHasBeenSet() const { return m_attributeHasBeenSet; }
+    inline void SetAttribute(SlotTypeSortAttribute value) { m_attributeHasBeenSet = true; m_attribute = value; }
+    inline SlotTypeSortBy& WithAttribute(SlotTypeSortAttribute value) { SetAttribute(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The attribute to use to sort the list of slot types.</p>
-     */
-    inline void SetAttribute(const SlotTypeSortAttribute& value) { m_attributeHasBeenSet = true; m_attribute = value; }
-
-    /**
-     * <p>The attribute to use to sort the list of slot types.</p>
-     */
-    inline void SetAttribute(SlotTypeSortAttribute&& value) { m_attributeHasBeenSet = true; m_attribute = std::move(value); }
-
-    /**
-     * <p>The attribute to use to sort the list of slot types.</p>
-     */
-    inline SlotTypeSortBy& WithAttribute(const SlotTypeSortAttribute& value) { SetAttribute(value); return *this;}
-
-    /**
-     * <p>The attribute to use to sort the list of slot types.</p>
-     */
-    inline SlotTypeSortBy& WithAttribute(SlotTypeSortAttribute&& value) { SetAttribute(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The order to sort the list. You can say ascending or descending.</p>
      */
-    inline const SortOrder& GetOrder() const{ return m_order; }
-
-    /**
-     * <p>The order to sort the list. You can say ascending or descending.</p>
-     */
+    inline SortOrder GetOrder() const { return m_order; }
     inline bool OrderHasBeenSet() const { return m_orderHasBeenSet; }
-
-    /**
-     * <p>The order to sort the list. You can say ascending or descending.</p>
-     */
-    inline void SetOrder(const SortOrder& value) { m_orderHasBeenSet = true; m_order = value; }
-
-    /**
-     * <p>The order to sort the list. You can say ascending or descending.</p>
-     */
-    inline void SetOrder(SortOrder&& value) { m_orderHasBeenSet = true; m_order = std::move(value); }
-
-    /**
-     * <p>The order to sort the list. You can say ascending or descending.</p>
-     */
-    inline SlotTypeSortBy& WithOrder(const SortOrder& value) { SetOrder(value); return *this;}
-
-    /**
-     * <p>The order to sort the list. You can say ascending or descending.</p>
-     */
-    inline SlotTypeSortBy& WithOrder(SortOrder&& value) { SetOrder(std::move(value)); return *this;}
-
+    inline void SetOrder(SortOrder value) { m_orderHasBeenSet = true; m_order = value; }
+    inline SlotTypeSortBy& WithOrder(SortOrder value) { SetOrder(value); return *this;}
+    ///@}
   private:
 
-    SlotTypeSortAttribute m_attribute;
+    SlotTypeSortAttribute m_attribute{SlotTypeSortAttribute::NOT_SET};
     bool m_attributeHasBeenSet = false;
 
-    SortOrder m_order;
+    SortOrder m_order{SortOrder::NOT_SET};
     bool m_orderHasBeenSet = false;
   };
 

@@ -20,33 +20,7 @@ namespace CloudFront
 namespace Model
 {
 
-CustomOriginConfig::CustomOriginConfig() : 
-    m_hTTPPort(0),
-    m_hTTPPortHasBeenSet(false),
-    m_hTTPSPort(0),
-    m_hTTPSPortHasBeenSet(false),
-    m_originProtocolPolicy(OriginProtocolPolicy::NOT_SET),
-    m_originProtocolPolicyHasBeenSet(false),
-    m_originSslProtocolsHasBeenSet(false),
-    m_originReadTimeout(0),
-    m_originReadTimeoutHasBeenSet(false),
-    m_originKeepaliveTimeout(0),
-    m_originKeepaliveTimeoutHasBeenSet(false)
-{
-}
-
-CustomOriginConfig::CustomOriginConfig(const XmlNode& xmlNode) : 
-    m_hTTPPort(0),
-    m_hTTPPortHasBeenSet(false),
-    m_hTTPSPort(0),
-    m_hTTPSPortHasBeenSet(false),
-    m_originProtocolPolicy(OriginProtocolPolicy::NOT_SET),
-    m_originProtocolPolicyHasBeenSet(false),
-    m_originSslProtocolsHasBeenSet(false),
-    m_originReadTimeout(0),
-    m_originReadTimeoutHasBeenSet(false),
-    m_originKeepaliveTimeout(0),
-    m_originKeepaliveTimeoutHasBeenSet(false)
+CustomOriginConfig::CustomOriginConfig(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -72,7 +46,7 @@ CustomOriginConfig& CustomOriginConfig::operator =(const XmlNode& xmlNode)
     XmlNode originProtocolPolicyNode = resultNode.FirstChild("OriginProtocolPolicy");
     if(!originProtocolPolicyNode.IsNull())
     {
-      m_originProtocolPolicy = OriginProtocolPolicyMapper::GetOriginProtocolPolicyForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(originProtocolPolicyNode.GetText()).c_str()).c_str());
+      m_originProtocolPolicy = OriginProtocolPolicyMapper::GetOriginProtocolPolicyForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(originProtocolPolicyNode.GetText()).c_str()));
       m_originProtocolPolicyHasBeenSet = true;
     }
     XmlNode originSslProtocolsNode = resultNode.FirstChild("OriginSslProtocols");
@@ -92,6 +66,12 @@ CustomOriginConfig& CustomOriginConfig::operator =(const XmlNode& xmlNode)
     {
       m_originKeepaliveTimeout = StringUtils::ConvertToInt32(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(originKeepaliveTimeoutNode.GetText()).c_str()).c_str());
       m_originKeepaliveTimeoutHasBeenSet = true;
+    }
+    XmlNode ipAddressTypeNode = resultNode.FirstChild("IpAddressType");
+    if(!ipAddressTypeNode.IsNull())
+    {
+      m_ipAddressType = IpAddressTypeMapper::GetIpAddressTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(ipAddressTypeNode.GetText()).c_str()));
+      m_ipAddressTypeHasBeenSet = true;
     }
   }
 
@@ -143,6 +123,12 @@ void CustomOriginConfig::AddToNode(XmlNode& parentNode) const
    ss << m_originKeepaliveTimeout;
    originKeepaliveTimeoutNode.SetText(ss.str());
    ss.str("");
+  }
+
+  if(m_ipAddressTypeHasBeenSet)
+  {
+   XmlNode ipAddressTypeNode = parentNode.CreateChildElement("IpAddressType");
+   ipAddressTypeNode.SetText(IpAddressTypeMapper::GetNameForIpAddressType(m_ipAddressType));
   }
 
 }

@@ -34,199 +34,66 @@ namespace Model
   class AwsEc2VpcDetails
   {
   public:
-    AWS_SECURITYHUB_API AwsEc2VpcDetails();
+    AWS_SECURITYHUB_API AwsEc2VpcDetails() = default;
     AWS_SECURITYHUB_API AwsEc2VpcDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsEc2VpcDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Information about the IPv4 CIDR blocks associated with the VPC.</p>
      */
-    inline const Aws::Vector<CidrBlockAssociation>& GetCidrBlockAssociationSet() const{ return m_cidrBlockAssociationSet; }
-
-    /**
-     * <p>Information about the IPv4 CIDR blocks associated with the VPC.</p>
-     */
+    inline const Aws::Vector<CidrBlockAssociation>& GetCidrBlockAssociationSet() const { return m_cidrBlockAssociationSet; }
     inline bool CidrBlockAssociationSetHasBeenSet() const { return m_cidrBlockAssociationSetHasBeenSet; }
+    template<typename CidrBlockAssociationSetT = Aws::Vector<CidrBlockAssociation>>
+    void SetCidrBlockAssociationSet(CidrBlockAssociationSetT&& value) { m_cidrBlockAssociationSetHasBeenSet = true; m_cidrBlockAssociationSet = std::forward<CidrBlockAssociationSetT>(value); }
+    template<typename CidrBlockAssociationSetT = Aws::Vector<CidrBlockAssociation>>
+    AwsEc2VpcDetails& WithCidrBlockAssociationSet(CidrBlockAssociationSetT&& value) { SetCidrBlockAssociationSet(std::forward<CidrBlockAssociationSetT>(value)); return *this;}
+    template<typename CidrBlockAssociationSetT = CidrBlockAssociation>
+    AwsEc2VpcDetails& AddCidrBlockAssociationSet(CidrBlockAssociationSetT&& value) { m_cidrBlockAssociationSetHasBeenSet = true; m_cidrBlockAssociationSet.emplace_back(std::forward<CidrBlockAssociationSetT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Information about the IPv4 CIDR blocks associated with the VPC.</p>
-     */
-    inline void SetCidrBlockAssociationSet(const Aws::Vector<CidrBlockAssociation>& value) { m_cidrBlockAssociationSetHasBeenSet = true; m_cidrBlockAssociationSet = value; }
-
-    /**
-     * <p>Information about the IPv4 CIDR blocks associated with the VPC.</p>
-     */
-    inline void SetCidrBlockAssociationSet(Aws::Vector<CidrBlockAssociation>&& value) { m_cidrBlockAssociationSetHasBeenSet = true; m_cidrBlockAssociationSet = std::move(value); }
-
-    /**
-     * <p>Information about the IPv4 CIDR blocks associated with the VPC.</p>
-     */
-    inline AwsEc2VpcDetails& WithCidrBlockAssociationSet(const Aws::Vector<CidrBlockAssociation>& value) { SetCidrBlockAssociationSet(value); return *this;}
-
-    /**
-     * <p>Information about the IPv4 CIDR blocks associated with the VPC.</p>
-     */
-    inline AwsEc2VpcDetails& WithCidrBlockAssociationSet(Aws::Vector<CidrBlockAssociation>&& value) { SetCidrBlockAssociationSet(std::move(value)); return *this;}
-
-    /**
-     * <p>Information about the IPv4 CIDR blocks associated with the VPC.</p>
-     */
-    inline AwsEc2VpcDetails& AddCidrBlockAssociationSet(const CidrBlockAssociation& value) { m_cidrBlockAssociationSetHasBeenSet = true; m_cidrBlockAssociationSet.push_back(value); return *this; }
-
-    /**
-     * <p>Information about the IPv4 CIDR blocks associated with the VPC.</p>
-     */
-    inline AwsEc2VpcDetails& AddCidrBlockAssociationSet(CidrBlockAssociation&& value) { m_cidrBlockAssociationSetHasBeenSet = true; m_cidrBlockAssociationSet.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Information about the IPv6 CIDR blocks associated with the VPC.</p>
      */
-    inline const Aws::Vector<Ipv6CidrBlockAssociation>& GetIpv6CidrBlockAssociationSet() const{ return m_ipv6CidrBlockAssociationSet; }
-
-    /**
-     * <p>Information about the IPv6 CIDR blocks associated with the VPC.</p>
-     */
+    inline const Aws::Vector<Ipv6CidrBlockAssociation>& GetIpv6CidrBlockAssociationSet() const { return m_ipv6CidrBlockAssociationSet; }
     inline bool Ipv6CidrBlockAssociationSetHasBeenSet() const { return m_ipv6CidrBlockAssociationSetHasBeenSet; }
+    template<typename Ipv6CidrBlockAssociationSetT = Aws::Vector<Ipv6CidrBlockAssociation>>
+    void SetIpv6CidrBlockAssociationSet(Ipv6CidrBlockAssociationSetT&& value) { m_ipv6CidrBlockAssociationSetHasBeenSet = true; m_ipv6CidrBlockAssociationSet = std::forward<Ipv6CidrBlockAssociationSetT>(value); }
+    template<typename Ipv6CidrBlockAssociationSetT = Aws::Vector<Ipv6CidrBlockAssociation>>
+    AwsEc2VpcDetails& WithIpv6CidrBlockAssociationSet(Ipv6CidrBlockAssociationSetT&& value) { SetIpv6CidrBlockAssociationSet(std::forward<Ipv6CidrBlockAssociationSetT>(value)); return *this;}
+    template<typename Ipv6CidrBlockAssociationSetT = Ipv6CidrBlockAssociation>
+    AwsEc2VpcDetails& AddIpv6CidrBlockAssociationSet(Ipv6CidrBlockAssociationSetT&& value) { m_ipv6CidrBlockAssociationSetHasBeenSet = true; m_ipv6CidrBlockAssociationSet.emplace_back(std::forward<Ipv6CidrBlockAssociationSetT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Information about the IPv6 CIDR blocks associated with the VPC.</p>
-     */
-    inline void SetIpv6CidrBlockAssociationSet(const Aws::Vector<Ipv6CidrBlockAssociation>& value) { m_ipv6CidrBlockAssociationSetHasBeenSet = true; m_ipv6CidrBlockAssociationSet = value; }
-
-    /**
-     * <p>Information about the IPv6 CIDR blocks associated with the VPC.</p>
-     */
-    inline void SetIpv6CidrBlockAssociationSet(Aws::Vector<Ipv6CidrBlockAssociation>&& value) { m_ipv6CidrBlockAssociationSetHasBeenSet = true; m_ipv6CidrBlockAssociationSet = std::move(value); }
-
-    /**
-     * <p>Information about the IPv6 CIDR blocks associated with the VPC.</p>
-     */
-    inline AwsEc2VpcDetails& WithIpv6CidrBlockAssociationSet(const Aws::Vector<Ipv6CidrBlockAssociation>& value) { SetIpv6CidrBlockAssociationSet(value); return *this;}
-
-    /**
-     * <p>Information about the IPv6 CIDR blocks associated with the VPC.</p>
-     */
-    inline AwsEc2VpcDetails& WithIpv6CidrBlockAssociationSet(Aws::Vector<Ipv6CidrBlockAssociation>&& value) { SetIpv6CidrBlockAssociationSet(std::move(value)); return *this;}
-
-    /**
-     * <p>Information about the IPv6 CIDR blocks associated with the VPC.</p>
-     */
-    inline AwsEc2VpcDetails& AddIpv6CidrBlockAssociationSet(const Ipv6CidrBlockAssociation& value) { m_ipv6CidrBlockAssociationSetHasBeenSet = true; m_ipv6CidrBlockAssociationSet.push_back(value); return *this; }
-
-    /**
-     * <p>Information about the IPv6 CIDR blocks associated with the VPC.</p>
-     */
-    inline AwsEc2VpcDetails& AddIpv6CidrBlockAssociationSet(Ipv6CidrBlockAssociation&& value) { m_ipv6CidrBlockAssociationSetHasBeenSet = true; m_ipv6CidrBlockAssociationSet.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The identifier of the set of Dynamic Host Configuration Protocol (DHCP)
      * options that are associated with the VPC. If the default options are associated
      * with the VPC, then this is default.</p>
      */
-    inline const Aws::String& GetDhcpOptionsId() const{ return m_dhcpOptionsId; }
-
-    /**
-     * <p>The identifier of the set of Dynamic Host Configuration Protocol (DHCP)
-     * options that are associated with the VPC. If the default options are associated
-     * with the VPC, then this is default.</p>
-     */
+    inline const Aws::String& GetDhcpOptionsId() const { return m_dhcpOptionsId; }
     inline bool DhcpOptionsIdHasBeenSet() const { return m_dhcpOptionsIdHasBeenSet; }
+    template<typename DhcpOptionsIdT = Aws::String>
+    void SetDhcpOptionsId(DhcpOptionsIdT&& value) { m_dhcpOptionsIdHasBeenSet = true; m_dhcpOptionsId = std::forward<DhcpOptionsIdT>(value); }
+    template<typename DhcpOptionsIdT = Aws::String>
+    AwsEc2VpcDetails& WithDhcpOptionsId(DhcpOptionsIdT&& value) { SetDhcpOptionsId(std::forward<DhcpOptionsIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the set of Dynamic Host Configuration Protocol (DHCP)
-     * options that are associated with the VPC. If the default options are associated
-     * with the VPC, then this is default.</p>
-     */
-    inline void SetDhcpOptionsId(const Aws::String& value) { m_dhcpOptionsIdHasBeenSet = true; m_dhcpOptionsId = value; }
-
-    /**
-     * <p>The identifier of the set of Dynamic Host Configuration Protocol (DHCP)
-     * options that are associated with the VPC. If the default options are associated
-     * with the VPC, then this is default.</p>
-     */
-    inline void SetDhcpOptionsId(Aws::String&& value) { m_dhcpOptionsIdHasBeenSet = true; m_dhcpOptionsId = std::move(value); }
-
-    /**
-     * <p>The identifier of the set of Dynamic Host Configuration Protocol (DHCP)
-     * options that are associated with the VPC. If the default options are associated
-     * with the VPC, then this is default.</p>
-     */
-    inline void SetDhcpOptionsId(const char* value) { m_dhcpOptionsIdHasBeenSet = true; m_dhcpOptionsId.assign(value); }
-
-    /**
-     * <p>The identifier of the set of Dynamic Host Configuration Protocol (DHCP)
-     * options that are associated with the VPC. If the default options are associated
-     * with the VPC, then this is default.</p>
-     */
-    inline AwsEc2VpcDetails& WithDhcpOptionsId(const Aws::String& value) { SetDhcpOptionsId(value); return *this;}
-
-    /**
-     * <p>The identifier of the set of Dynamic Host Configuration Protocol (DHCP)
-     * options that are associated with the VPC. If the default options are associated
-     * with the VPC, then this is default.</p>
-     */
-    inline AwsEc2VpcDetails& WithDhcpOptionsId(Aws::String&& value) { SetDhcpOptionsId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the set of Dynamic Host Configuration Protocol (DHCP)
-     * options that are associated with the VPC. If the default options are associated
-     * with the VPC, then this is default.</p>
-     */
-    inline AwsEc2VpcDetails& WithDhcpOptionsId(const char* value) { SetDhcpOptionsId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The current state of the VPC. Valid values are <code>available</code> or
      * <code>pending</code>.</p>
      */
-    inline const Aws::String& GetState() const{ return m_state; }
-
-    /**
-     * <p>The current state of the VPC. Valid values are <code>available</code> or
-     * <code>pending</code>.</p>
-     */
+    inline const Aws::String& GetState() const { return m_state; }
     inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
-
-    /**
-     * <p>The current state of the VPC. Valid values are <code>available</code> or
-     * <code>pending</code>.</p>
-     */
-    inline void SetState(const Aws::String& value) { m_stateHasBeenSet = true; m_state = value; }
-
-    /**
-     * <p>The current state of the VPC. Valid values are <code>available</code> or
-     * <code>pending</code>.</p>
-     */
-    inline void SetState(Aws::String&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
-
-    /**
-     * <p>The current state of the VPC. Valid values are <code>available</code> or
-     * <code>pending</code>.</p>
-     */
-    inline void SetState(const char* value) { m_stateHasBeenSet = true; m_state.assign(value); }
-
-    /**
-     * <p>The current state of the VPC. Valid values are <code>available</code> or
-     * <code>pending</code>.</p>
-     */
-    inline AwsEc2VpcDetails& WithState(const Aws::String& value) { SetState(value); return *this;}
-
-    /**
-     * <p>The current state of the VPC. Valid values are <code>available</code> or
-     * <code>pending</code>.</p>
-     */
-    inline AwsEc2VpcDetails& WithState(Aws::String&& value) { SetState(std::move(value)); return *this;}
-
-    /**
-     * <p>The current state of the VPC. Valid values are <code>available</code> or
-     * <code>pending</code>.</p>
-     */
-    inline AwsEc2VpcDetails& WithState(const char* value) { SetState(value); return *this;}
-
+    template<typename StateT = Aws::String>
+    void SetState(StateT&& value) { m_stateHasBeenSet = true; m_state = std::forward<StateT>(value); }
+    template<typename StateT = Aws::String>
+    AwsEc2VpcDetails& WithState(StateT&& value) { SetState(std::forward<StateT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<CidrBlockAssociation> m_cidrBlockAssociationSet;

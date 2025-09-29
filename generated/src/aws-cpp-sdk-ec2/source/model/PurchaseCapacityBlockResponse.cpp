@@ -17,10 +17,6 @@ using namespace Aws::Utils::Logging;
 using namespace Aws::Utils;
 using namespace Aws;
 
-PurchaseCapacityBlockResponse::PurchaseCapacityBlockResponse()
-{
-}
-
 PurchaseCapacityBlockResponse::PurchaseCapacityBlockResponse(const Aws::AmazonWebServiceResult<XmlDocument>& result)
 {
   *this = result;
@@ -42,6 +38,20 @@ PurchaseCapacityBlockResponse& PurchaseCapacityBlockResponse::operator =(const A
     if(!capacityReservationNode.IsNull())
     {
       m_capacityReservation = capacityReservationNode;
+      m_capacityReservationHasBeenSet = true;
+    }
+    XmlNode capacityBlocksNode = resultNode.FirstChild("capacityBlockSet");
+    if(!capacityBlocksNode.IsNull())
+    {
+      XmlNode capacityBlocksMember = capacityBlocksNode.FirstChild("item");
+      m_capacityBlocksHasBeenSet = !capacityBlocksMember.IsNull();
+      while(!capacityBlocksMember.IsNull())
+      {
+        m_capacityBlocks.push_back(capacityBlocksMember);
+        capacityBlocksMember = capacityBlocksMember.NextNode("item");
+      }
+
+      m_capacityBlocksHasBeenSet = true;
     }
   }
 
@@ -50,6 +60,7 @@ PurchaseCapacityBlockResponse& PurchaseCapacityBlockResponse::operator =(const A
     if (!requestIdNode.IsNull())
     {
       m_responseMetadata.SetRequestId(StringUtils::Trim(requestIdNode.GetText().c_str()));
+      m_responseMetadataHasBeenSet = true;
     }
     AWS_LOGSTREAM_DEBUG("Aws::EC2::Model::PurchaseCapacityBlockResponse", "x-amzn-request-id: " << m_responseMetadata.GetRequestId() );
   }

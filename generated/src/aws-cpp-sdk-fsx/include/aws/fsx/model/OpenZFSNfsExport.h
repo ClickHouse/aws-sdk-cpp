@@ -33,60 +33,26 @@ namespace Model
   class OpenZFSNfsExport
   {
   public:
-    AWS_FSX_API OpenZFSNfsExport();
+    AWS_FSX_API OpenZFSNfsExport() = default;
     AWS_FSX_API OpenZFSNfsExport(Aws::Utils::Json::JsonView jsonValue);
     AWS_FSX_API OpenZFSNfsExport& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FSX_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A list of configuration objects that contain the client and options for
      * mounting the OpenZFS file system. </p>
      */
-    inline const Aws::Vector<OpenZFSClientConfiguration>& GetClientConfigurations() const{ return m_clientConfigurations; }
-
-    /**
-     * <p>A list of configuration objects that contain the client and options for
-     * mounting the OpenZFS file system. </p>
-     */
+    inline const Aws::Vector<OpenZFSClientConfiguration>& GetClientConfigurations() const { return m_clientConfigurations; }
     inline bool ClientConfigurationsHasBeenSet() const { return m_clientConfigurationsHasBeenSet; }
-
-    /**
-     * <p>A list of configuration objects that contain the client and options for
-     * mounting the OpenZFS file system. </p>
-     */
-    inline void SetClientConfigurations(const Aws::Vector<OpenZFSClientConfiguration>& value) { m_clientConfigurationsHasBeenSet = true; m_clientConfigurations = value; }
-
-    /**
-     * <p>A list of configuration objects that contain the client and options for
-     * mounting the OpenZFS file system. </p>
-     */
-    inline void SetClientConfigurations(Aws::Vector<OpenZFSClientConfiguration>&& value) { m_clientConfigurationsHasBeenSet = true; m_clientConfigurations = std::move(value); }
-
-    /**
-     * <p>A list of configuration objects that contain the client and options for
-     * mounting the OpenZFS file system. </p>
-     */
-    inline OpenZFSNfsExport& WithClientConfigurations(const Aws::Vector<OpenZFSClientConfiguration>& value) { SetClientConfigurations(value); return *this;}
-
-    /**
-     * <p>A list of configuration objects that contain the client and options for
-     * mounting the OpenZFS file system. </p>
-     */
-    inline OpenZFSNfsExport& WithClientConfigurations(Aws::Vector<OpenZFSClientConfiguration>&& value) { SetClientConfigurations(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of configuration objects that contain the client and options for
-     * mounting the OpenZFS file system. </p>
-     */
-    inline OpenZFSNfsExport& AddClientConfigurations(const OpenZFSClientConfiguration& value) { m_clientConfigurationsHasBeenSet = true; m_clientConfigurations.push_back(value); return *this; }
-
-    /**
-     * <p>A list of configuration objects that contain the client and options for
-     * mounting the OpenZFS file system. </p>
-     */
-    inline OpenZFSNfsExport& AddClientConfigurations(OpenZFSClientConfiguration&& value) { m_clientConfigurationsHasBeenSet = true; m_clientConfigurations.push_back(std::move(value)); return *this; }
-
+    template<typename ClientConfigurationsT = Aws::Vector<OpenZFSClientConfiguration>>
+    void SetClientConfigurations(ClientConfigurationsT&& value) { m_clientConfigurationsHasBeenSet = true; m_clientConfigurations = std::forward<ClientConfigurationsT>(value); }
+    template<typename ClientConfigurationsT = Aws::Vector<OpenZFSClientConfiguration>>
+    OpenZFSNfsExport& WithClientConfigurations(ClientConfigurationsT&& value) { SetClientConfigurations(std::forward<ClientConfigurationsT>(value)); return *this;}
+    template<typename ClientConfigurationsT = OpenZFSClientConfiguration>
+    OpenZFSNfsExport& AddClientConfigurations(ClientConfigurationsT&& value) { m_clientConfigurationsHasBeenSet = true; m_clientConfigurations.emplace_back(std::forward<ClientConfigurationsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<OpenZFSClientConfiguration> m_clientConfigurations;

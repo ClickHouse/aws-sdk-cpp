@@ -31,59 +31,37 @@ namespace Model
   class UncertaintyRange
   {
   public:
-    AWS_FRAUDDETECTOR_API UncertaintyRange();
+    AWS_FRAUDDETECTOR_API UncertaintyRange() = default;
     AWS_FRAUDDETECTOR_API UncertaintyRange(Aws::Utils::Json::JsonView jsonValue);
     AWS_FRAUDDETECTOR_API UncertaintyRange& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FRAUDDETECTOR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The lower bound value of the area under curve (auc). </p>
      */
-    inline double GetLowerBoundValue() const{ return m_lowerBoundValue; }
-
-    /**
-     * <p> The lower bound value of the area under curve (auc). </p>
-     */
+    inline double GetLowerBoundValue() const { return m_lowerBoundValue; }
     inline bool LowerBoundValueHasBeenSet() const { return m_lowerBoundValueHasBeenSet; }
-
-    /**
-     * <p> The lower bound value of the area under curve (auc). </p>
-     */
     inline void SetLowerBoundValue(double value) { m_lowerBoundValueHasBeenSet = true; m_lowerBoundValue = value; }
-
-    /**
-     * <p> The lower bound value of the area under curve (auc). </p>
-     */
     inline UncertaintyRange& WithLowerBoundValue(double value) { SetLowerBoundValue(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p> The upper bound value of the area under curve (auc). </p>
      */
-    inline double GetUpperBoundValue() const{ return m_upperBoundValue; }
-
-    /**
-     * <p> The upper bound value of the area under curve (auc). </p>
-     */
+    inline double GetUpperBoundValue() const { return m_upperBoundValue; }
     inline bool UpperBoundValueHasBeenSet() const { return m_upperBoundValueHasBeenSet; }
-
-    /**
-     * <p> The upper bound value of the area under curve (auc). </p>
-     */
     inline void SetUpperBoundValue(double value) { m_upperBoundValueHasBeenSet = true; m_upperBoundValue = value; }
-
-    /**
-     * <p> The upper bound value of the area under curve (auc). </p>
-     */
     inline UncertaintyRange& WithUpperBoundValue(double value) { SetUpperBoundValue(value); return *this;}
-
+    ///@}
   private:
 
-    double m_lowerBoundValue;
+    double m_lowerBoundValue{0.0};
     bool m_lowerBoundValueHasBeenSet = false;
 
-    double m_upperBoundValue;
+    double m_upperBoundValue{0.0};
     bool m_upperBoundValueHasBeenSet = false;
   };
 

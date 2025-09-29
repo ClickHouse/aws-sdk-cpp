@@ -12,33 +12,6 @@ using namespace Aws::SageMaker::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateModelPackageRequest::CreateModelPackageRequest() : 
-    m_modelPackageNameHasBeenSet(false),
-    m_modelPackageGroupNameHasBeenSet(false),
-    m_modelPackageDescriptionHasBeenSet(false),
-    m_inferenceSpecificationHasBeenSet(false),
-    m_validationSpecificationHasBeenSet(false),
-    m_sourceAlgorithmSpecificationHasBeenSet(false),
-    m_certifyForMarketplace(false),
-    m_certifyForMarketplaceHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_modelApprovalStatus(ModelApprovalStatus::NOT_SET),
-    m_modelApprovalStatusHasBeenSet(false),
-    m_metadataPropertiesHasBeenSet(false),
-    m_modelMetricsHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_domainHasBeenSet(false),
-    m_taskHasBeenSet(false),
-    m_samplePayloadUrlHasBeenSet(false),
-    m_customerMetadataPropertiesHasBeenSet(false),
-    m_driftCheckBaselinesHasBeenSet(false),
-    m_additionalInferenceSpecificationsHasBeenSet(false),
-    m_skipModelValidation(SkipModelValidation::NOT_SET),
-    m_skipModelValidationHasBeenSet(false)
-{
-}
-
 Aws::String CreateModelPackageRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -168,6 +141,30 @@ Aws::String CreateModelPackageRequest::SerializePayload() const
   if(m_skipModelValidationHasBeenSet)
   {
    payload.WithString("SkipModelValidation", SkipModelValidationMapper::GetNameForSkipModelValidation(m_skipModelValidation));
+  }
+
+  if(m_sourceUriHasBeenSet)
+  {
+   payload.WithString("SourceUri", m_sourceUri);
+
+  }
+
+  if(m_securityConfigHasBeenSet)
+  {
+   payload.WithObject("SecurityConfig", m_securityConfig.Jsonize());
+
+  }
+
+  if(m_modelCardHasBeenSet)
+  {
+   payload.WithObject("ModelCard", m_modelCard.Jsonize());
+
+  }
+
+  if(m_modelLifeCycleHasBeenSet)
+  {
+   payload.WithObject("ModelLifeCycle", m_modelLifeCycle.Jsonize());
+
   }
 
   return payload.View().WriteReadable();

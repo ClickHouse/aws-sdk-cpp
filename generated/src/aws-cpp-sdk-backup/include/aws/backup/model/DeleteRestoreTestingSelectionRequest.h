@@ -21,7 +21,7 @@ namespace Model
   class DeleteRestoreTestingSelectionRequest : public BackupRequest
   {
   public:
-    AWS_BACKUP_API DeleteRestoreTestingSelectionRequest();
+    AWS_BACKUP_API DeleteRestoreTestingSelectionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,95 +32,30 @@ namespace Model
     AWS_BACKUP_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>Required unique name of the restore testing plan that contains the restore
      * testing selection you wish to delete.</p>
      */
-    inline const Aws::String& GetRestoreTestingPlanName() const{ return m_restoreTestingPlanName; }
-
-    /**
-     * <p>Required unique name of the restore testing plan that contains the restore
-     * testing selection you wish to delete.</p>
-     */
+    inline const Aws::String& GetRestoreTestingPlanName() const { return m_restoreTestingPlanName; }
     inline bool RestoreTestingPlanNameHasBeenSet() const { return m_restoreTestingPlanNameHasBeenSet; }
+    template<typename RestoreTestingPlanNameT = Aws::String>
+    void SetRestoreTestingPlanName(RestoreTestingPlanNameT&& value) { m_restoreTestingPlanNameHasBeenSet = true; m_restoreTestingPlanName = std::forward<RestoreTestingPlanNameT>(value); }
+    template<typename RestoreTestingPlanNameT = Aws::String>
+    DeleteRestoreTestingSelectionRequest& WithRestoreTestingPlanName(RestoreTestingPlanNameT&& value) { SetRestoreTestingPlanName(std::forward<RestoreTestingPlanNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Required unique name of the restore testing plan that contains the restore
-     * testing selection you wish to delete.</p>
-     */
-    inline void SetRestoreTestingPlanName(const Aws::String& value) { m_restoreTestingPlanNameHasBeenSet = true; m_restoreTestingPlanName = value; }
-
-    /**
-     * <p>Required unique name of the restore testing plan that contains the restore
-     * testing selection you wish to delete.</p>
-     */
-    inline void SetRestoreTestingPlanName(Aws::String&& value) { m_restoreTestingPlanNameHasBeenSet = true; m_restoreTestingPlanName = std::move(value); }
-
-    /**
-     * <p>Required unique name of the restore testing plan that contains the restore
-     * testing selection you wish to delete.</p>
-     */
-    inline void SetRestoreTestingPlanName(const char* value) { m_restoreTestingPlanNameHasBeenSet = true; m_restoreTestingPlanName.assign(value); }
-
-    /**
-     * <p>Required unique name of the restore testing plan that contains the restore
-     * testing selection you wish to delete.</p>
-     */
-    inline DeleteRestoreTestingSelectionRequest& WithRestoreTestingPlanName(const Aws::String& value) { SetRestoreTestingPlanName(value); return *this;}
-
-    /**
-     * <p>Required unique name of the restore testing plan that contains the restore
-     * testing selection you wish to delete.</p>
-     */
-    inline DeleteRestoreTestingSelectionRequest& WithRestoreTestingPlanName(Aws::String&& value) { SetRestoreTestingPlanName(std::move(value)); return *this;}
-
-    /**
-     * <p>Required unique name of the restore testing plan that contains the restore
-     * testing selection you wish to delete.</p>
-     */
-    inline DeleteRestoreTestingSelectionRequest& WithRestoreTestingPlanName(const char* value) { SetRestoreTestingPlanName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Required unique name of the restore testing selection you wish to delete.</p>
      */
-    inline const Aws::String& GetRestoreTestingSelectionName() const{ return m_restoreTestingSelectionName; }
-
-    /**
-     * <p>Required unique name of the restore testing selection you wish to delete.</p>
-     */
+    inline const Aws::String& GetRestoreTestingSelectionName() const { return m_restoreTestingSelectionName; }
     inline bool RestoreTestingSelectionNameHasBeenSet() const { return m_restoreTestingSelectionNameHasBeenSet; }
-
-    /**
-     * <p>Required unique name of the restore testing selection you wish to delete.</p>
-     */
-    inline void SetRestoreTestingSelectionName(const Aws::String& value) { m_restoreTestingSelectionNameHasBeenSet = true; m_restoreTestingSelectionName = value; }
-
-    /**
-     * <p>Required unique name of the restore testing selection you wish to delete.</p>
-     */
-    inline void SetRestoreTestingSelectionName(Aws::String&& value) { m_restoreTestingSelectionNameHasBeenSet = true; m_restoreTestingSelectionName = std::move(value); }
-
-    /**
-     * <p>Required unique name of the restore testing selection you wish to delete.</p>
-     */
-    inline void SetRestoreTestingSelectionName(const char* value) { m_restoreTestingSelectionNameHasBeenSet = true; m_restoreTestingSelectionName.assign(value); }
-
-    /**
-     * <p>Required unique name of the restore testing selection you wish to delete.</p>
-     */
-    inline DeleteRestoreTestingSelectionRequest& WithRestoreTestingSelectionName(const Aws::String& value) { SetRestoreTestingSelectionName(value); return *this;}
-
-    /**
-     * <p>Required unique name of the restore testing selection you wish to delete.</p>
-     */
-    inline DeleteRestoreTestingSelectionRequest& WithRestoreTestingSelectionName(Aws::String&& value) { SetRestoreTestingSelectionName(std::move(value)); return *this;}
-
-    /**
-     * <p>Required unique name of the restore testing selection you wish to delete.</p>
-     */
-    inline DeleteRestoreTestingSelectionRequest& WithRestoreTestingSelectionName(const char* value) { SetRestoreTestingSelectionName(value); return *this;}
-
+    template<typename RestoreTestingSelectionNameT = Aws::String>
+    void SetRestoreTestingSelectionName(RestoreTestingSelectionNameT&& value) { m_restoreTestingSelectionNameHasBeenSet = true; m_restoreTestingSelectionName = std::forward<RestoreTestingSelectionNameT>(value); }
+    template<typename RestoreTestingSelectionNameT = Aws::String>
+    DeleteRestoreTestingSelectionRequest& WithRestoreTestingSelectionName(RestoreTestingSelectionNameT&& value) { SetRestoreTestingSelectionName(std::forward<RestoreTestingSelectionNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_restoreTestingPlanName;

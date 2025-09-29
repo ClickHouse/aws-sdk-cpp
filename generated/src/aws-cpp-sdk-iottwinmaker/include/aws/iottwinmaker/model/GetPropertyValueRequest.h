@@ -23,7 +23,7 @@ namespace Model
   class GetPropertyValueRequest : public IoTTwinMakerRequest
   {
   public:
-    AWS_IOTTWINMAKER_API GetPropertyValueRequest();
+    AWS_IOTTWINMAKER_API GetPropertyValueRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,402 +34,127 @@ namespace Model
     AWS_IOTTWINMAKER_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of the component whose property values the operation returns.</p>
      */
-    inline const Aws::String& GetComponentName() const{ return m_componentName; }
-
-    /**
-     * <p>The name of the component whose property values the operation returns.</p>
-     */
+    inline const Aws::String& GetComponentName() const { return m_componentName; }
     inline bool ComponentNameHasBeenSet() const { return m_componentNameHasBeenSet; }
+    template<typename ComponentNameT = Aws::String>
+    void SetComponentName(ComponentNameT&& value) { m_componentNameHasBeenSet = true; m_componentName = std::forward<ComponentNameT>(value); }
+    template<typename ComponentNameT = Aws::String>
+    GetPropertyValueRequest& WithComponentName(ComponentNameT&& value) { SetComponentName(std::forward<ComponentNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the component whose property values the operation returns.</p>
-     */
-    inline void SetComponentName(const Aws::String& value) { m_componentNameHasBeenSet = true; m_componentName = value; }
-
-    /**
-     * <p>The name of the component whose property values the operation returns.</p>
-     */
-    inline void SetComponentName(Aws::String&& value) { m_componentNameHasBeenSet = true; m_componentName = std::move(value); }
-
-    /**
-     * <p>The name of the component whose property values the operation returns.</p>
-     */
-    inline void SetComponentName(const char* value) { m_componentNameHasBeenSet = true; m_componentName.assign(value); }
-
-    /**
-     * <p>The name of the component whose property values the operation returns.</p>
-     */
-    inline GetPropertyValueRequest& WithComponentName(const Aws::String& value) { SetComponentName(value); return *this;}
-
-    /**
-     * <p>The name of the component whose property values the operation returns.</p>
-     */
-    inline GetPropertyValueRequest& WithComponentName(Aws::String&& value) { SetComponentName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the component whose property values the operation returns.</p>
-     */
-    inline GetPropertyValueRequest& WithComponentName(const char* value) { SetComponentName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>This string specifies the path to the composite component, starting from the
      * top-level component.</p>
      */
-    inline const Aws::String& GetComponentPath() const{ return m_componentPath; }
-
-    /**
-     * <p>This string specifies the path to the composite component, starting from the
-     * top-level component.</p>
-     */
+    inline const Aws::String& GetComponentPath() const { return m_componentPath; }
     inline bool ComponentPathHasBeenSet() const { return m_componentPathHasBeenSet; }
+    template<typename ComponentPathT = Aws::String>
+    void SetComponentPath(ComponentPathT&& value) { m_componentPathHasBeenSet = true; m_componentPath = std::forward<ComponentPathT>(value); }
+    template<typename ComponentPathT = Aws::String>
+    GetPropertyValueRequest& WithComponentPath(ComponentPathT&& value) { SetComponentPath(std::forward<ComponentPathT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>This string specifies the path to the composite component, starting from the
-     * top-level component.</p>
-     */
-    inline void SetComponentPath(const Aws::String& value) { m_componentPathHasBeenSet = true; m_componentPath = value; }
-
-    /**
-     * <p>This string specifies the path to the composite component, starting from the
-     * top-level component.</p>
-     */
-    inline void SetComponentPath(Aws::String&& value) { m_componentPathHasBeenSet = true; m_componentPath = std::move(value); }
-
-    /**
-     * <p>This string specifies the path to the composite component, starting from the
-     * top-level component.</p>
-     */
-    inline void SetComponentPath(const char* value) { m_componentPathHasBeenSet = true; m_componentPath.assign(value); }
-
-    /**
-     * <p>This string specifies the path to the composite component, starting from the
-     * top-level component.</p>
-     */
-    inline GetPropertyValueRequest& WithComponentPath(const Aws::String& value) { SetComponentPath(value); return *this;}
-
-    /**
-     * <p>This string specifies the path to the composite component, starting from the
-     * top-level component.</p>
-     */
-    inline GetPropertyValueRequest& WithComponentPath(Aws::String&& value) { SetComponentPath(std::move(value)); return *this;}
-
-    /**
-     * <p>This string specifies the path to the composite component, starting from the
-     * top-level component.</p>
-     */
-    inline GetPropertyValueRequest& WithComponentPath(const char* value) { SetComponentPath(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the component type whose property values the operation returns.</p>
      */
-    inline const Aws::String& GetComponentTypeId() const{ return m_componentTypeId; }
-
-    /**
-     * <p>The ID of the component type whose property values the operation returns.</p>
-     */
+    inline const Aws::String& GetComponentTypeId() const { return m_componentTypeId; }
     inline bool ComponentTypeIdHasBeenSet() const { return m_componentTypeIdHasBeenSet; }
+    template<typename ComponentTypeIdT = Aws::String>
+    void SetComponentTypeId(ComponentTypeIdT&& value) { m_componentTypeIdHasBeenSet = true; m_componentTypeId = std::forward<ComponentTypeIdT>(value); }
+    template<typename ComponentTypeIdT = Aws::String>
+    GetPropertyValueRequest& WithComponentTypeId(ComponentTypeIdT&& value) { SetComponentTypeId(std::forward<ComponentTypeIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the component type whose property values the operation returns.</p>
-     */
-    inline void SetComponentTypeId(const Aws::String& value) { m_componentTypeIdHasBeenSet = true; m_componentTypeId = value; }
-
-    /**
-     * <p>The ID of the component type whose property values the operation returns.</p>
-     */
-    inline void SetComponentTypeId(Aws::String&& value) { m_componentTypeIdHasBeenSet = true; m_componentTypeId = std::move(value); }
-
-    /**
-     * <p>The ID of the component type whose property values the operation returns.</p>
-     */
-    inline void SetComponentTypeId(const char* value) { m_componentTypeIdHasBeenSet = true; m_componentTypeId.assign(value); }
-
-    /**
-     * <p>The ID of the component type whose property values the operation returns.</p>
-     */
-    inline GetPropertyValueRequest& WithComponentTypeId(const Aws::String& value) { SetComponentTypeId(value); return *this;}
-
-    /**
-     * <p>The ID of the component type whose property values the operation returns.</p>
-     */
-    inline GetPropertyValueRequest& WithComponentTypeId(Aws::String&& value) { SetComponentTypeId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the component type whose property values the operation returns.</p>
-     */
-    inline GetPropertyValueRequest& WithComponentTypeId(const char* value) { SetComponentTypeId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the entity whose property values the operation returns.</p>
      */
-    inline const Aws::String& GetEntityId() const{ return m_entityId; }
-
-    /**
-     * <p>The ID of the entity whose property values the operation returns.</p>
-     */
+    inline const Aws::String& GetEntityId() const { return m_entityId; }
     inline bool EntityIdHasBeenSet() const { return m_entityIdHasBeenSet; }
+    template<typename EntityIdT = Aws::String>
+    void SetEntityId(EntityIdT&& value) { m_entityIdHasBeenSet = true; m_entityId = std::forward<EntityIdT>(value); }
+    template<typename EntityIdT = Aws::String>
+    GetPropertyValueRequest& WithEntityId(EntityIdT&& value) { SetEntityId(std::forward<EntityIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the entity whose property values the operation returns.</p>
-     */
-    inline void SetEntityId(const Aws::String& value) { m_entityIdHasBeenSet = true; m_entityId = value; }
-
-    /**
-     * <p>The ID of the entity whose property values the operation returns.</p>
-     */
-    inline void SetEntityId(Aws::String&& value) { m_entityIdHasBeenSet = true; m_entityId = std::move(value); }
-
-    /**
-     * <p>The ID of the entity whose property values the operation returns.</p>
-     */
-    inline void SetEntityId(const char* value) { m_entityIdHasBeenSet = true; m_entityId.assign(value); }
-
-    /**
-     * <p>The ID of the entity whose property values the operation returns.</p>
-     */
-    inline GetPropertyValueRequest& WithEntityId(const Aws::String& value) { SetEntityId(value); return *this;}
-
-    /**
-     * <p>The ID of the entity whose property values the operation returns.</p>
-     */
-    inline GetPropertyValueRequest& WithEntityId(Aws::String&& value) { SetEntityId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the entity whose property values the operation returns.</p>
-     */
-    inline GetPropertyValueRequest& WithEntityId(const char* value) { SetEntityId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The properties whose values the operation returns.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetSelectedProperties() const{ return m_selectedProperties; }
-
-    /**
-     * <p>The properties whose values the operation returns.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetSelectedProperties() const { return m_selectedProperties; }
     inline bool SelectedPropertiesHasBeenSet() const { return m_selectedPropertiesHasBeenSet; }
+    template<typename SelectedPropertiesT = Aws::Vector<Aws::String>>
+    void SetSelectedProperties(SelectedPropertiesT&& value) { m_selectedPropertiesHasBeenSet = true; m_selectedProperties = std::forward<SelectedPropertiesT>(value); }
+    template<typename SelectedPropertiesT = Aws::Vector<Aws::String>>
+    GetPropertyValueRequest& WithSelectedProperties(SelectedPropertiesT&& value) { SetSelectedProperties(std::forward<SelectedPropertiesT>(value)); return *this;}
+    template<typename SelectedPropertiesT = Aws::String>
+    GetPropertyValueRequest& AddSelectedProperties(SelectedPropertiesT&& value) { m_selectedPropertiesHasBeenSet = true; m_selectedProperties.emplace_back(std::forward<SelectedPropertiesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The properties whose values the operation returns.</p>
-     */
-    inline void SetSelectedProperties(const Aws::Vector<Aws::String>& value) { m_selectedPropertiesHasBeenSet = true; m_selectedProperties = value; }
-
-    /**
-     * <p>The properties whose values the operation returns.</p>
-     */
-    inline void SetSelectedProperties(Aws::Vector<Aws::String>&& value) { m_selectedPropertiesHasBeenSet = true; m_selectedProperties = std::move(value); }
-
-    /**
-     * <p>The properties whose values the operation returns.</p>
-     */
-    inline GetPropertyValueRequest& WithSelectedProperties(const Aws::Vector<Aws::String>& value) { SetSelectedProperties(value); return *this;}
-
-    /**
-     * <p>The properties whose values the operation returns.</p>
-     */
-    inline GetPropertyValueRequest& WithSelectedProperties(Aws::Vector<Aws::String>&& value) { SetSelectedProperties(std::move(value)); return *this;}
-
-    /**
-     * <p>The properties whose values the operation returns.</p>
-     */
-    inline GetPropertyValueRequest& AddSelectedProperties(const Aws::String& value) { m_selectedPropertiesHasBeenSet = true; m_selectedProperties.push_back(value); return *this; }
-
-    /**
-     * <p>The properties whose values the operation returns.</p>
-     */
-    inline GetPropertyValueRequest& AddSelectedProperties(Aws::String&& value) { m_selectedPropertiesHasBeenSet = true; m_selectedProperties.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The properties whose values the operation returns.</p>
-     */
-    inline GetPropertyValueRequest& AddSelectedProperties(const char* value) { m_selectedPropertiesHasBeenSet = true; m_selectedProperties.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The ID of the workspace whose values the operation returns.</p>
      */
-    inline const Aws::String& GetWorkspaceId() const{ return m_workspaceId; }
-
-    /**
-     * <p>The ID of the workspace whose values the operation returns.</p>
-     */
+    inline const Aws::String& GetWorkspaceId() const { return m_workspaceId; }
     inline bool WorkspaceIdHasBeenSet() const { return m_workspaceIdHasBeenSet; }
+    template<typename WorkspaceIdT = Aws::String>
+    void SetWorkspaceId(WorkspaceIdT&& value) { m_workspaceIdHasBeenSet = true; m_workspaceId = std::forward<WorkspaceIdT>(value); }
+    template<typename WorkspaceIdT = Aws::String>
+    GetPropertyValueRequest& WithWorkspaceId(WorkspaceIdT&& value) { SetWorkspaceId(std::forward<WorkspaceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the workspace whose values the operation returns.</p>
-     */
-    inline void SetWorkspaceId(const Aws::String& value) { m_workspaceIdHasBeenSet = true; m_workspaceId = value; }
-
-    /**
-     * <p>The ID of the workspace whose values the operation returns.</p>
-     */
-    inline void SetWorkspaceId(Aws::String&& value) { m_workspaceIdHasBeenSet = true; m_workspaceId = std::move(value); }
-
-    /**
-     * <p>The ID of the workspace whose values the operation returns.</p>
-     */
-    inline void SetWorkspaceId(const char* value) { m_workspaceIdHasBeenSet = true; m_workspaceId.assign(value); }
-
-    /**
-     * <p>The ID of the workspace whose values the operation returns.</p>
-     */
-    inline GetPropertyValueRequest& WithWorkspaceId(const Aws::String& value) { SetWorkspaceId(value); return *this;}
-
-    /**
-     * <p>The ID of the workspace whose values the operation returns.</p>
-     */
-    inline GetPropertyValueRequest& WithWorkspaceId(Aws::String&& value) { SetWorkspaceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the workspace whose values the operation returns.</p>
-     */
-    inline GetPropertyValueRequest& WithWorkspaceId(const char* value) { SetWorkspaceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of results to return at one time. The default is 25.</p>
      * <p>Valid Range: Minimum value of 1. Maximum value of 250.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of results to return at one time. The default is 25.</p>
-     * <p>Valid Range: Minimum value of 1. Maximum value of 250.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of results to return at one time. The default is 25.</p>
-     * <p>Valid Range: Minimum value of 1. Maximum value of 250.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of results to return at one time. The default is 25.</p>
-     * <p>Valid Range: Minimum value of 1. Maximum value of 250.</p>
-     */
     inline GetPropertyValueRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The string that specifies the next page of results.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The string that specifies the next page of results.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    GetPropertyValueRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The string that specifies the next page of results.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The string that specifies the next page of results.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The string that specifies the next page of results.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The string that specifies the next page of results.</p>
-     */
-    inline GetPropertyValueRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The string that specifies the next page of results.</p>
-     */
-    inline GetPropertyValueRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The string that specifies the next page of results.</p>
-     */
-    inline GetPropertyValueRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The property group name.</p>
      */
-    inline const Aws::String& GetPropertyGroupName() const{ return m_propertyGroupName; }
-
-    /**
-     * <p>The property group name.</p>
-     */
+    inline const Aws::String& GetPropertyGroupName() const { return m_propertyGroupName; }
     inline bool PropertyGroupNameHasBeenSet() const { return m_propertyGroupNameHasBeenSet; }
+    template<typename PropertyGroupNameT = Aws::String>
+    void SetPropertyGroupName(PropertyGroupNameT&& value) { m_propertyGroupNameHasBeenSet = true; m_propertyGroupName = std::forward<PropertyGroupNameT>(value); }
+    template<typename PropertyGroupNameT = Aws::String>
+    GetPropertyValueRequest& WithPropertyGroupName(PropertyGroupNameT&& value) { SetPropertyGroupName(std::forward<PropertyGroupNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The property group name.</p>
-     */
-    inline void SetPropertyGroupName(const Aws::String& value) { m_propertyGroupNameHasBeenSet = true; m_propertyGroupName = value; }
-
-    /**
-     * <p>The property group name.</p>
-     */
-    inline void SetPropertyGroupName(Aws::String&& value) { m_propertyGroupNameHasBeenSet = true; m_propertyGroupName = std::move(value); }
-
-    /**
-     * <p>The property group name.</p>
-     */
-    inline void SetPropertyGroupName(const char* value) { m_propertyGroupNameHasBeenSet = true; m_propertyGroupName.assign(value); }
-
-    /**
-     * <p>The property group name.</p>
-     */
-    inline GetPropertyValueRequest& WithPropertyGroupName(const Aws::String& value) { SetPropertyGroupName(value); return *this;}
-
-    /**
-     * <p>The property group name.</p>
-     */
-    inline GetPropertyValueRequest& WithPropertyGroupName(Aws::String&& value) { SetPropertyGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The property group name.</p>
-     */
-    inline GetPropertyValueRequest& WithPropertyGroupName(const char* value) { SetPropertyGroupName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The tabular conditions.</p>
      */
-    inline const TabularConditions& GetTabularConditions() const{ return m_tabularConditions; }
-
-    /**
-     * <p>The tabular conditions.</p>
-     */
+    inline const TabularConditions& GetTabularConditions() const { return m_tabularConditions; }
     inline bool TabularConditionsHasBeenSet() const { return m_tabularConditionsHasBeenSet; }
-
-    /**
-     * <p>The tabular conditions.</p>
-     */
-    inline void SetTabularConditions(const TabularConditions& value) { m_tabularConditionsHasBeenSet = true; m_tabularConditions = value; }
-
-    /**
-     * <p>The tabular conditions.</p>
-     */
-    inline void SetTabularConditions(TabularConditions&& value) { m_tabularConditionsHasBeenSet = true; m_tabularConditions = std::move(value); }
-
-    /**
-     * <p>The tabular conditions.</p>
-     */
-    inline GetPropertyValueRequest& WithTabularConditions(const TabularConditions& value) { SetTabularConditions(value); return *this;}
-
-    /**
-     * <p>The tabular conditions.</p>
-     */
-    inline GetPropertyValueRequest& WithTabularConditions(TabularConditions&& value) { SetTabularConditions(std::move(value)); return *this;}
-
+    template<typename TabularConditionsT = TabularConditions>
+    void SetTabularConditions(TabularConditionsT&& value) { m_tabularConditionsHasBeenSet = true; m_tabularConditions = std::forward<TabularConditionsT>(value); }
+    template<typename TabularConditionsT = TabularConditions>
+    GetPropertyValueRequest& WithTabularConditions(TabularConditionsT&& value) { SetTabularConditions(std::forward<TabularConditionsT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_componentName;
@@ -450,7 +175,7 @@ namespace Model
     Aws::String m_workspaceId;
     bool m_workspaceIdHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     Aws::String m_nextToken;

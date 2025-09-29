@@ -49,20 +49,27 @@ using namespace Aws::Utils::Json;
 using namespace smithy::components::tracing;
 using ResolveEndpointOutcome = Aws::Endpoint::ResolveEndpointOutcome;
 
-const char* ServerlessApplicationRepositoryClient::SERVICE_NAME = "serverlessrepo";
-const char* ServerlessApplicationRepositoryClient::ALLOCATION_TAG = "ServerlessApplicationRepositoryClient";
+namespace Aws
+{
+  namespace ServerlessApplicationRepository
+  {
+    const char SERVICE_NAME[] = "serverlessrepo";
+    const char ALLOCATION_TAG[] = "ServerlessApplicationRepositoryClient";
+  }
+}
+const char* ServerlessApplicationRepositoryClient::GetServiceName() {return SERVICE_NAME;}
+const char* ServerlessApplicationRepositoryClient::GetAllocationTag() {return ALLOCATION_TAG;}
 
 ServerlessApplicationRepositoryClient::ServerlessApplicationRepositoryClient(const ServerlessApplicationRepository::ServerlessApplicationRepositoryClientConfiguration& clientConfiguration,
                                                                              std::shared_ptr<ServerlessApplicationRepositoryEndpointProviderBase> endpointProvider) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<ServerlessApplicationRepositoryErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
-  m_endpointProvider(std::move(endpointProvider))
+  m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<ServerlessApplicationRepositoryEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -77,8 +84,7 @@ ServerlessApplicationRepositoryClient::ServerlessApplicationRepositoryClient(con
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<ServerlessApplicationRepositoryErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<ServerlessApplicationRepositoryEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -93,8 +99,7 @@ ServerlessApplicationRepositoryClient::ServerlessApplicationRepositoryClient(con
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<ServerlessApplicationRepositoryErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<ServerlessApplicationRepositoryEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -103,12 +108,11 @@ ServerlessApplicationRepositoryClient::ServerlessApplicationRepositoryClient(con
   ServerlessApplicationRepositoryClient::ServerlessApplicationRepositoryClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<ServerlessApplicationRepositoryErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
   m_endpointProvider(Aws::MakeShared<ServerlessApplicationRepositoryEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -123,7 +127,6 @@ ServerlessApplicationRepositoryClient::ServerlessApplicationRepositoryClient(con
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<ServerlessApplicationRepositoryErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<ServerlessApplicationRepositoryEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -138,7 +141,6 @@ ServerlessApplicationRepositoryClient::ServerlessApplicationRepositoryClient(con
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<ServerlessApplicationRepositoryErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<ServerlessApplicationRepositoryEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -158,6 +160,14 @@ std::shared_ptr<ServerlessApplicationRepositoryEndpointProviderBase>& Serverless
 void ServerlessApplicationRepositoryClient::init(const ServerlessApplicationRepository::ServerlessApplicationRepositoryClientConfiguration& config)
 {
   AWSClient::SetServiceClientName("ServerlessApplicationRepository");
+  if (!m_clientConfiguration.executor) {
+    if (!m_clientConfiguration.configFactories.executorCreateFn()) {
+      AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "Failed to initialize client: config is missing Executor or executorCreateFn");
+      m_isInitialized = false;
+      return;
+    }
+    m_clientConfiguration.executor = m_clientConfiguration.configFactories.executorCreateFn();
+  }
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
   m_endpointProvider->InitBuiltInParameters(config);
 }

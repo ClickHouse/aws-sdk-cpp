@@ -18,17 +18,7 @@ namespace Inspector2
 namespace Model
 {
 
-MemberAccountEc2DeepInspectionStatus::MemberAccountEc2DeepInspectionStatus() : 
-    m_accountIdHasBeenSet(false),
-    m_activateDeepInspection(false),
-    m_activateDeepInspectionHasBeenSet(false)
-{
-}
-
-MemberAccountEc2DeepInspectionStatus::MemberAccountEc2DeepInspectionStatus(JsonView jsonValue) : 
-    m_accountIdHasBeenSet(false),
-    m_activateDeepInspection(false),
-    m_activateDeepInspectionHasBeenSet(false)
+MemberAccountEc2DeepInspectionStatus::MemberAccountEc2DeepInspectionStatus(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ MemberAccountEc2DeepInspectionStatus& MemberAccountEc2DeepInspectionStatus::oper
   if(jsonValue.ValueExists("accountId"))
   {
     m_accountId = jsonValue.GetString("accountId");
-
     m_accountIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("activateDeepInspection"))
   {
     m_activateDeepInspection = jsonValue.GetBool("activateDeepInspection");
-
     m_activateDeepInspectionHasBeenSet = true;
   }
-
   return *this;
 }
 

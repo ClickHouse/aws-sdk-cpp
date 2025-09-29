@@ -10,19 +10,6 @@
 using namespace Aws::CloudWatch::Model;
 using namespace Aws::Utils;
 
-ListMetricsRequest::ListMetricsRequest() : 
-    m_namespaceHasBeenSet(false),
-    m_metricNameHasBeenSet(false),
-    m_dimensionsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_recentlyActive(RecentlyActive::NOT_SET),
-    m_recentlyActiveHasBeenSet(false),
-    m_includeLinkedAccounts(false),
-    m_includeLinkedAccountsHasBeenSet(false),
-    m_owningAccountHasBeenSet(false)
-{
-}
-
 Aws::String ListMetricsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -39,11 +26,18 @@ Aws::String ListMetricsRequest::SerializePayload() const
 
   if(m_dimensionsHasBeenSet)
   {
-    unsigned dimensionsCount = 1;
-    for(auto& item : m_dimensions)
+    if (m_dimensions.empty())
     {
-      item.OutputToStream(ss, "Dimensions.member.", dimensionsCount, "");
-      dimensionsCount++;
+      ss << "Dimensions=&";
+    }
+    else
+    {
+      unsigned dimensionsCount = 1;
+      for(auto& item : m_dimensions)
+      {
+        item.OutputToStream(ss, "Dimensions.member.", dimensionsCount, "");
+        dimensionsCount++;
+      }
     }
   }
 
@@ -54,7 +48,7 @@ Aws::String ListMetricsRequest::SerializePayload() const
 
   if(m_recentlyActiveHasBeenSet)
   {
-    ss << "RecentlyActive=" << RecentlyActiveMapper::GetNameForRecentlyActive(m_recentlyActive) << "&";
+    ss << "RecentlyActive=" << StringUtils::URLEncode(RecentlyActiveMapper::GetNameForRecentlyActive(m_recentlyActive)) << "&";
   }
 
   if(m_includeLinkedAccountsHasBeenSet)

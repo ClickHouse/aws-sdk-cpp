@@ -18,15 +18,7 @@ namespace AppMesh
 namespace Model
 {
 
-ListenerTlsFileCertificate::ListenerTlsFileCertificate() : 
-    m_certificateChainHasBeenSet(false),
-    m_privateKeyHasBeenSet(false)
-{
-}
-
-ListenerTlsFileCertificate::ListenerTlsFileCertificate(JsonView jsonValue) : 
-    m_certificateChainHasBeenSet(false),
-    m_privateKeyHasBeenSet(false)
+ListenerTlsFileCertificate::ListenerTlsFileCertificate(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ListenerTlsFileCertificate& ListenerTlsFileCertificate::operator =(JsonView json
   if(jsonValue.ValueExists("certificateChain"))
   {
     m_certificateChain = jsonValue.GetString("certificateChain");
-
     m_certificateChainHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("privateKey"))
   {
     m_privateKey = jsonValue.GetString("privateKey");
-
     m_privateKeyHasBeenSet = true;
   }
-
   return *this;
 }
 

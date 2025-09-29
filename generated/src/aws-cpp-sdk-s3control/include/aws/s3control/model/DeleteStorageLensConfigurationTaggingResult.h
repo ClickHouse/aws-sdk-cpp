@@ -27,35 +27,39 @@ namespace Model
   class DeleteStorageLensConfigurationTaggingResult
   {
   public:
-    AWS_S3CONTROL_API DeleteStorageLensConfigurationTaggingResult();
+    AWS_S3CONTROL_API DeleteStorageLensConfigurationTaggingResult() = default;
     AWS_S3CONTROL_API DeleteStorageLensConfigurationTaggingResult(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_S3CONTROL_API DeleteStorageLensConfigurationTaggingResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
-    
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
+    ///@{
+    /**
+     * AWS Request Id value
+     */
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DeleteStorageLensConfigurationTaggingResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DeleteStorageLensConfigurationTaggingResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DeleteStorageLensConfigurationTaggingResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DeleteStorageLensConfigurationTaggingResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    ///@{
+    /**
+     * x-amz-id-2 header value, also known as Host Id
+     */
+    inline const Aws::String& GetHostId() const { return m_hostId; }
+    template<typename HostIdT = Aws::String>
+    void SetHostId(HostIdT&& value) { m_hostIdHasBeenSet = true; m_hostId = std::forward<HostIdT>(value); }
+    template<typename HostIdT = Aws::String>
+    DeleteStorageLensConfigurationTaggingResult& WithHostId(HostIdT&& value) { SetHostId(std::forward<HostIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
+
+    Aws::String m_hostId;
+    bool m_hostIdHasBeenSet = false;
   };
 
 } // namespace Model

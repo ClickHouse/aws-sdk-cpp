@@ -19,14 +19,11 @@ namespace Model
 {
 
   /**
-   * A request to add sources to the flow.<p><h3>See Also:</h3>   <a
-   * href="http://docs.aws.amazon.com/goto/WebAPI/mediaconnect-2018-11-14/AddFlowSourcesRequest">AWS
-   * API Reference</a></p>
    */
   class AddFlowSourcesRequest : public MediaConnectRequest
   {
   public:
-    AWS_MEDIACONNECT_API AddFlowSourcesRequest();
+    AWS_MEDIACONNECT_API AddFlowSourcesRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,87 +34,31 @@ namespace Model
     AWS_MEDIACONNECT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
-     * The flow that you want to mutate.
+     * <p> The Amazon Resource Name (ARN) of the flow that you want to update.</p>
      */
-    inline const Aws::String& GetFlowArn() const{ return m_flowArn; }
-
-    /**
-     * The flow that you want to mutate.
-     */
+    inline const Aws::String& GetFlowArn() const { return m_flowArn; }
     inline bool FlowArnHasBeenSet() const { return m_flowArnHasBeenSet; }
+    template<typename FlowArnT = Aws::String>
+    void SetFlowArn(FlowArnT&& value) { m_flowArnHasBeenSet = true; m_flowArn = std::forward<FlowArnT>(value); }
+    template<typename FlowArnT = Aws::String>
+    AddFlowSourcesRequest& WithFlowArn(FlowArnT&& value) { SetFlowArn(std::forward<FlowArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * The flow that you want to mutate.
+     * <p> A list of sources that you want to add to the flow.</p>
      */
-    inline void SetFlowArn(const Aws::String& value) { m_flowArnHasBeenSet = true; m_flowArn = value; }
-
-    /**
-     * The flow that you want to mutate.
-     */
-    inline void SetFlowArn(Aws::String&& value) { m_flowArnHasBeenSet = true; m_flowArn = std::move(value); }
-
-    /**
-     * The flow that you want to mutate.
-     */
-    inline void SetFlowArn(const char* value) { m_flowArnHasBeenSet = true; m_flowArn.assign(value); }
-
-    /**
-     * The flow that you want to mutate.
-     */
-    inline AddFlowSourcesRequest& WithFlowArn(const Aws::String& value) { SetFlowArn(value); return *this;}
-
-    /**
-     * The flow that you want to mutate.
-     */
-    inline AddFlowSourcesRequest& WithFlowArn(Aws::String&& value) { SetFlowArn(std::move(value)); return *this;}
-
-    /**
-     * The flow that you want to mutate.
-     */
-    inline AddFlowSourcesRequest& WithFlowArn(const char* value) { SetFlowArn(value); return *this;}
-
-
-    /**
-     * A list of sources that you want to add.
-     */
-    inline const Aws::Vector<SetSourceRequest>& GetSources() const{ return m_sources; }
-
-    /**
-     * A list of sources that you want to add.
-     */
+    inline const Aws::Vector<SetSourceRequest>& GetSources() const { return m_sources; }
     inline bool SourcesHasBeenSet() const { return m_sourcesHasBeenSet; }
-
-    /**
-     * A list of sources that you want to add.
-     */
-    inline void SetSources(const Aws::Vector<SetSourceRequest>& value) { m_sourcesHasBeenSet = true; m_sources = value; }
-
-    /**
-     * A list of sources that you want to add.
-     */
-    inline void SetSources(Aws::Vector<SetSourceRequest>&& value) { m_sourcesHasBeenSet = true; m_sources = std::move(value); }
-
-    /**
-     * A list of sources that you want to add.
-     */
-    inline AddFlowSourcesRequest& WithSources(const Aws::Vector<SetSourceRequest>& value) { SetSources(value); return *this;}
-
-    /**
-     * A list of sources that you want to add.
-     */
-    inline AddFlowSourcesRequest& WithSources(Aws::Vector<SetSourceRequest>&& value) { SetSources(std::move(value)); return *this;}
-
-    /**
-     * A list of sources that you want to add.
-     */
-    inline AddFlowSourcesRequest& AddSources(const SetSourceRequest& value) { m_sourcesHasBeenSet = true; m_sources.push_back(value); return *this; }
-
-    /**
-     * A list of sources that you want to add.
-     */
-    inline AddFlowSourcesRequest& AddSources(SetSourceRequest&& value) { m_sourcesHasBeenSet = true; m_sources.push_back(std::move(value)); return *this; }
-
+    template<typename SourcesT = Aws::Vector<SetSourceRequest>>
+    void SetSources(SourcesT&& value) { m_sourcesHasBeenSet = true; m_sources = std::forward<SourcesT>(value); }
+    template<typename SourcesT = Aws::Vector<SetSourceRequest>>
+    AddFlowSourcesRequest& WithSources(SourcesT&& value) { SetSources(std::forward<SourcesT>(value)); return *this;}
+    template<typename SourcesT = SetSourceRequest>
+    AddFlowSourcesRequest& AddSources(SourcesT&& value) { m_sourcesHasBeenSet = true; m_sources.emplace_back(std::forward<SourcesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_flowArn;

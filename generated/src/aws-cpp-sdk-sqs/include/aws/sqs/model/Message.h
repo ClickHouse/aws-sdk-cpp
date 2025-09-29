@@ -34,208 +34,65 @@ namespace Model
   class Message
   {
   public:
-    AWS_SQS_API Message();
+    AWS_SQS_API Message() = default;
     AWS_SQS_API Message(Aws::Utils::Json::JsonView jsonValue);
     AWS_SQS_API Message& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SQS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A unique identifier for the message. A <code>MessageId</code>is considered
      * unique across all Amazon Web Services accounts for an extended period of
      * time.</p>
      */
-    inline const Aws::String& GetMessageId() const{ return m_messageId; }
-
-    /**
-     * <p>A unique identifier for the message. A <code>MessageId</code>is considered
-     * unique across all Amazon Web Services accounts for an extended period of
-     * time.</p>
-     */
+    inline const Aws::String& GetMessageId() const { return m_messageId; }
     inline bool MessageIdHasBeenSet() const { return m_messageIdHasBeenSet; }
+    template<typename MessageIdT = Aws::String>
+    void SetMessageId(MessageIdT&& value) { m_messageIdHasBeenSet = true; m_messageId = std::forward<MessageIdT>(value); }
+    template<typename MessageIdT = Aws::String>
+    Message& WithMessageId(MessageIdT&& value) { SetMessageId(std::forward<MessageIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier for the message. A <code>MessageId</code>is considered
-     * unique across all Amazon Web Services accounts for an extended period of
-     * time.</p>
-     */
-    inline void SetMessageId(const Aws::String& value) { m_messageIdHasBeenSet = true; m_messageId = value; }
-
-    /**
-     * <p>A unique identifier for the message. A <code>MessageId</code>is considered
-     * unique across all Amazon Web Services accounts for an extended period of
-     * time.</p>
-     */
-    inline void SetMessageId(Aws::String&& value) { m_messageIdHasBeenSet = true; m_messageId = std::move(value); }
-
-    /**
-     * <p>A unique identifier for the message. A <code>MessageId</code>is considered
-     * unique across all Amazon Web Services accounts for an extended period of
-     * time.</p>
-     */
-    inline void SetMessageId(const char* value) { m_messageIdHasBeenSet = true; m_messageId.assign(value); }
-
-    /**
-     * <p>A unique identifier for the message. A <code>MessageId</code>is considered
-     * unique across all Amazon Web Services accounts for an extended period of
-     * time.</p>
-     */
-    inline Message& WithMessageId(const Aws::String& value) { SetMessageId(value); return *this;}
-
-    /**
-     * <p>A unique identifier for the message. A <code>MessageId</code>is considered
-     * unique across all Amazon Web Services accounts for an extended period of
-     * time.</p>
-     */
-    inline Message& WithMessageId(Aws::String&& value) { SetMessageId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier for the message. A <code>MessageId</code>is considered
-     * unique across all Amazon Web Services accounts for an extended period of
-     * time.</p>
-     */
-    inline Message& WithMessageId(const char* value) { SetMessageId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An identifier associated with the act of receiving the message. A new receipt
      * handle is returned every time you receive a message. When deleting a message,
      * you provide the last received receipt handle to delete the message.</p>
      */
-    inline const Aws::String& GetReceiptHandle() const{ return m_receiptHandle; }
-
-    /**
-     * <p>An identifier associated with the act of receiving the message. A new receipt
-     * handle is returned every time you receive a message. When deleting a message,
-     * you provide the last received receipt handle to delete the message.</p>
-     */
+    inline const Aws::String& GetReceiptHandle() const { return m_receiptHandle; }
     inline bool ReceiptHandleHasBeenSet() const { return m_receiptHandleHasBeenSet; }
+    template<typename ReceiptHandleT = Aws::String>
+    void SetReceiptHandle(ReceiptHandleT&& value) { m_receiptHandleHasBeenSet = true; m_receiptHandle = std::forward<ReceiptHandleT>(value); }
+    template<typename ReceiptHandleT = Aws::String>
+    Message& WithReceiptHandle(ReceiptHandleT&& value) { SetReceiptHandle(std::forward<ReceiptHandleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An identifier associated with the act of receiving the message. A new receipt
-     * handle is returned every time you receive a message. When deleting a message,
-     * you provide the last received receipt handle to delete the message.</p>
-     */
-    inline void SetReceiptHandle(const Aws::String& value) { m_receiptHandleHasBeenSet = true; m_receiptHandle = value; }
-
-    /**
-     * <p>An identifier associated with the act of receiving the message. A new receipt
-     * handle is returned every time you receive a message. When deleting a message,
-     * you provide the last received receipt handle to delete the message.</p>
-     */
-    inline void SetReceiptHandle(Aws::String&& value) { m_receiptHandleHasBeenSet = true; m_receiptHandle = std::move(value); }
-
-    /**
-     * <p>An identifier associated with the act of receiving the message. A new receipt
-     * handle is returned every time you receive a message. When deleting a message,
-     * you provide the last received receipt handle to delete the message.</p>
-     */
-    inline void SetReceiptHandle(const char* value) { m_receiptHandleHasBeenSet = true; m_receiptHandle.assign(value); }
-
-    /**
-     * <p>An identifier associated with the act of receiving the message. A new receipt
-     * handle is returned every time you receive a message. When deleting a message,
-     * you provide the last received receipt handle to delete the message.</p>
-     */
-    inline Message& WithReceiptHandle(const Aws::String& value) { SetReceiptHandle(value); return *this;}
-
-    /**
-     * <p>An identifier associated with the act of receiving the message. A new receipt
-     * handle is returned every time you receive a message. When deleting a message,
-     * you provide the last received receipt handle to delete the message.</p>
-     */
-    inline Message& WithReceiptHandle(Aws::String&& value) { SetReceiptHandle(std::move(value)); return *this;}
-
-    /**
-     * <p>An identifier associated with the act of receiving the message. A new receipt
-     * handle is returned every time you receive a message. When deleting a message,
-     * you provide the last received receipt handle to delete the message.</p>
-     */
-    inline Message& WithReceiptHandle(const char* value) { SetReceiptHandle(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An MD5 digest of the non-URL-encoded message body string.</p>
      */
-    inline const Aws::String& GetMD5OfBody() const{ return m_mD5OfBody; }
-
-    /**
-     * <p>An MD5 digest of the non-URL-encoded message body string.</p>
-     */
+    inline const Aws::String& GetMD5OfBody() const { return m_mD5OfBody; }
     inline bool MD5OfBodyHasBeenSet() const { return m_mD5OfBodyHasBeenSet; }
+    template<typename MD5OfBodyT = Aws::String>
+    void SetMD5OfBody(MD5OfBodyT&& value) { m_mD5OfBodyHasBeenSet = true; m_mD5OfBody = std::forward<MD5OfBodyT>(value); }
+    template<typename MD5OfBodyT = Aws::String>
+    Message& WithMD5OfBody(MD5OfBodyT&& value) { SetMD5OfBody(std::forward<MD5OfBodyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An MD5 digest of the non-URL-encoded message body string.</p>
-     */
-    inline void SetMD5OfBody(const Aws::String& value) { m_mD5OfBodyHasBeenSet = true; m_mD5OfBody = value; }
-
-    /**
-     * <p>An MD5 digest of the non-URL-encoded message body string.</p>
-     */
-    inline void SetMD5OfBody(Aws::String&& value) { m_mD5OfBodyHasBeenSet = true; m_mD5OfBody = std::move(value); }
-
-    /**
-     * <p>An MD5 digest of the non-URL-encoded message body string.</p>
-     */
-    inline void SetMD5OfBody(const char* value) { m_mD5OfBodyHasBeenSet = true; m_mD5OfBody.assign(value); }
-
-    /**
-     * <p>An MD5 digest of the non-URL-encoded message body string.</p>
-     */
-    inline Message& WithMD5OfBody(const Aws::String& value) { SetMD5OfBody(value); return *this;}
-
-    /**
-     * <p>An MD5 digest of the non-URL-encoded message body string.</p>
-     */
-    inline Message& WithMD5OfBody(Aws::String&& value) { SetMD5OfBody(std::move(value)); return *this;}
-
-    /**
-     * <p>An MD5 digest of the non-URL-encoded message body string.</p>
-     */
-    inline Message& WithMD5OfBody(const char* value) { SetMD5OfBody(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The message's contents (not URL-encoded).</p>
      */
-    inline const Aws::String& GetBody() const{ return m_body; }
-
-    /**
-     * <p>The message's contents (not URL-encoded).</p>
-     */
+    inline const Aws::String& GetBody() const { return m_body; }
     inline bool BodyHasBeenSet() const { return m_bodyHasBeenSet; }
+    template<typename BodyT = Aws::String>
+    void SetBody(BodyT&& value) { m_bodyHasBeenSet = true; m_body = std::forward<BodyT>(value); }
+    template<typename BodyT = Aws::String>
+    Message& WithBody(BodyT&& value) { SetBody(std::forward<BodyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The message's contents (not URL-encoded).</p>
-     */
-    inline void SetBody(const Aws::String& value) { m_bodyHasBeenSet = true; m_body = value; }
-
-    /**
-     * <p>The message's contents (not URL-encoded).</p>
-     */
-    inline void SetBody(Aws::String&& value) { m_bodyHasBeenSet = true; m_body = std::move(value); }
-
-    /**
-     * <p>The message's contents (not URL-encoded).</p>
-     */
-    inline void SetBody(const char* value) { m_bodyHasBeenSet = true; m_body.assign(value); }
-
-    /**
-     * <p>The message's contents (not URL-encoded).</p>
-     */
-    inline Message& WithBody(const Aws::String& value) { SetBody(value); return *this;}
-
-    /**
-     * <p>The message's contents (not URL-encoded).</p>
-     */
-    inline Message& WithBody(Aws::String&& value) { SetBody(std::move(value)); return *this;}
-
-    /**
-     * <p>The message's contents (not URL-encoded).</p>
-     */
-    inline Message& WithBody(const char* value) { SetBody(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A map of the attributes requested in <code> <a>ReceiveMessage</a> </code> to
      * their respective values. Supported attributes:</p> <ul> <li> <p>
@@ -250,346 +107,50 @@ namespace Model
      * href="http://en.wikipedia.org/wiki/Unix_time">epoch time</a> in
      * milliseconds.</p>
      */
-    inline const Aws::Map<MessageSystemAttributeName, Aws::String>& GetAttributes() const{ return m_attributes; }
-
-    /**
-     * <p>A map of the attributes requested in <code> <a>ReceiveMessage</a> </code> to
-     * their respective values. Supported attributes:</p> <ul> <li> <p>
-     * <code>ApproximateReceiveCount</code> </p> </li> <li> <p>
-     * <code>ApproximateFirstReceiveTimestamp</code> </p> </li> <li> <p>
-     * <code>MessageDeduplicationId</code> </p> </li> <li> <p>
-     * <code>MessageGroupId</code> </p> </li> <li> <p> <code>SenderId</code> </p> </li>
-     * <li> <p> <code>SentTimestamp</code> </p> </li> <li> <p>
-     * <code>SequenceNumber</code> </p> </li> </ul> <p>
-     * <code>ApproximateFirstReceiveTimestamp</code> and <code>SentTimestamp</code> are
-     * each returned as an integer representing the <a
-     * href="http://en.wikipedia.org/wiki/Unix_time">epoch time</a> in
-     * milliseconds.</p>
-     */
+    inline const Aws::Map<MessageSystemAttributeName, Aws::String>& GetAttributes() const { return m_attributes; }
     inline bool AttributesHasBeenSet() const { return m_attributesHasBeenSet; }
+    template<typename AttributesT = Aws::Map<MessageSystemAttributeName, Aws::String>>
+    void SetAttributes(AttributesT&& value) { m_attributesHasBeenSet = true; m_attributes = std::forward<AttributesT>(value); }
+    template<typename AttributesT = Aws::Map<MessageSystemAttributeName, Aws::String>>
+    Message& WithAttributes(AttributesT&& value) { SetAttributes(std::forward<AttributesT>(value)); return *this;}
+    inline Message& AddAttributes(MessageSystemAttributeName key, Aws::String value) {
+      m_attributesHasBeenSet = true; m_attributes.emplace(key, value); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>A map of the attributes requested in <code> <a>ReceiveMessage</a> </code> to
-     * their respective values. Supported attributes:</p> <ul> <li> <p>
-     * <code>ApproximateReceiveCount</code> </p> </li> <li> <p>
-     * <code>ApproximateFirstReceiveTimestamp</code> </p> </li> <li> <p>
-     * <code>MessageDeduplicationId</code> </p> </li> <li> <p>
-     * <code>MessageGroupId</code> </p> </li> <li> <p> <code>SenderId</code> </p> </li>
-     * <li> <p> <code>SentTimestamp</code> </p> </li> <li> <p>
-     * <code>SequenceNumber</code> </p> </li> </ul> <p>
-     * <code>ApproximateFirstReceiveTimestamp</code> and <code>SentTimestamp</code> are
-     * each returned as an integer representing the <a
-     * href="http://en.wikipedia.org/wiki/Unix_time">epoch time</a> in
-     * milliseconds.</p>
-     */
-    inline void SetAttributes(const Aws::Map<MessageSystemAttributeName, Aws::String>& value) { m_attributesHasBeenSet = true; m_attributes = value; }
-
-    /**
-     * <p>A map of the attributes requested in <code> <a>ReceiveMessage</a> </code> to
-     * their respective values. Supported attributes:</p> <ul> <li> <p>
-     * <code>ApproximateReceiveCount</code> </p> </li> <li> <p>
-     * <code>ApproximateFirstReceiveTimestamp</code> </p> </li> <li> <p>
-     * <code>MessageDeduplicationId</code> </p> </li> <li> <p>
-     * <code>MessageGroupId</code> </p> </li> <li> <p> <code>SenderId</code> </p> </li>
-     * <li> <p> <code>SentTimestamp</code> </p> </li> <li> <p>
-     * <code>SequenceNumber</code> </p> </li> </ul> <p>
-     * <code>ApproximateFirstReceiveTimestamp</code> and <code>SentTimestamp</code> are
-     * each returned as an integer representing the <a
-     * href="http://en.wikipedia.org/wiki/Unix_time">epoch time</a> in
-     * milliseconds.</p>
-     */
-    inline void SetAttributes(Aws::Map<MessageSystemAttributeName, Aws::String>&& value) { m_attributesHasBeenSet = true; m_attributes = std::move(value); }
-
-    /**
-     * <p>A map of the attributes requested in <code> <a>ReceiveMessage</a> </code> to
-     * their respective values. Supported attributes:</p> <ul> <li> <p>
-     * <code>ApproximateReceiveCount</code> </p> </li> <li> <p>
-     * <code>ApproximateFirstReceiveTimestamp</code> </p> </li> <li> <p>
-     * <code>MessageDeduplicationId</code> </p> </li> <li> <p>
-     * <code>MessageGroupId</code> </p> </li> <li> <p> <code>SenderId</code> </p> </li>
-     * <li> <p> <code>SentTimestamp</code> </p> </li> <li> <p>
-     * <code>SequenceNumber</code> </p> </li> </ul> <p>
-     * <code>ApproximateFirstReceiveTimestamp</code> and <code>SentTimestamp</code> are
-     * each returned as an integer representing the <a
-     * href="http://en.wikipedia.org/wiki/Unix_time">epoch time</a> in
-     * milliseconds.</p>
-     */
-    inline Message& WithAttributes(const Aws::Map<MessageSystemAttributeName, Aws::String>& value) { SetAttributes(value); return *this;}
-
-    /**
-     * <p>A map of the attributes requested in <code> <a>ReceiveMessage</a> </code> to
-     * their respective values. Supported attributes:</p> <ul> <li> <p>
-     * <code>ApproximateReceiveCount</code> </p> </li> <li> <p>
-     * <code>ApproximateFirstReceiveTimestamp</code> </p> </li> <li> <p>
-     * <code>MessageDeduplicationId</code> </p> </li> <li> <p>
-     * <code>MessageGroupId</code> </p> </li> <li> <p> <code>SenderId</code> </p> </li>
-     * <li> <p> <code>SentTimestamp</code> </p> </li> <li> <p>
-     * <code>SequenceNumber</code> </p> </li> </ul> <p>
-     * <code>ApproximateFirstReceiveTimestamp</code> and <code>SentTimestamp</code> are
-     * each returned as an integer representing the <a
-     * href="http://en.wikipedia.org/wiki/Unix_time">epoch time</a> in
-     * milliseconds.</p>
-     */
-    inline Message& WithAttributes(Aws::Map<MessageSystemAttributeName, Aws::String>&& value) { SetAttributes(std::move(value)); return *this;}
-
-    /**
-     * <p>A map of the attributes requested in <code> <a>ReceiveMessage</a> </code> to
-     * their respective values. Supported attributes:</p> <ul> <li> <p>
-     * <code>ApproximateReceiveCount</code> </p> </li> <li> <p>
-     * <code>ApproximateFirstReceiveTimestamp</code> </p> </li> <li> <p>
-     * <code>MessageDeduplicationId</code> </p> </li> <li> <p>
-     * <code>MessageGroupId</code> </p> </li> <li> <p> <code>SenderId</code> </p> </li>
-     * <li> <p> <code>SentTimestamp</code> </p> </li> <li> <p>
-     * <code>SequenceNumber</code> </p> </li> </ul> <p>
-     * <code>ApproximateFirstReceiveTimestamp</code> and <code>SentTimestamp</code> are
-     * each returned as an integer representing the <a
-     * href="http://en.wikipedia.org/wiki/Unix_time">epoch time</a> in
-     * milliseconds.</p>
-     */
-    inline Message& AddAttributes(const MessageSystemAttributeName& key, const Aws::String& value) { m_attributesHasBeenSet = true; m_attributes.emplace(key, value); return *this; }
-
-    /**
-     * <p>A map of the attributes requested in <code> <a>ReceiveMessage</a> </code> to
-     * their respective values. Supported attributes:</p> <ul> <li> <p>
-     * <code>ApproximateReceiveCount</code> </p> </li> <li> <p>
-     * <code>ApproximateFirstReceiveTimestamp</code> </p> </li> <li> <p>
-     * <code>MessageDeduplicationId</code> </p> </li> <li> <p>
-     * <code>MessageGroupId</code> </p> </li> <li> <p> <code>SenderId</code> </p> </li>
-     * <li> <p> <code>SentTimestamp</code> </p> </li> <li> <p>
-     * <code>SequenceNumber</code> </p> </li> </ul> <p>
-     * <code>ApproximateFirstReceiveTimestamp</code> and <code>SentTimestamp</code> are
-     * each returned as an integer representing the <a
-     * href="http://en.wikipedia.org/wiki/Unix_time">epoch time</a> in
-     * milliseconds.</p>
-     */
-    inline Message& AddAttributes(MessageSystemAttributeName&& key, const Aws::String& value) { m_attributesHasBeenSet = true; m_attributes.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A map of the attributes requested in <code> <a>ReceiveMessage</a> </code> to
-     * their respective values. Supported attributes:</p> <ul> <li> <p>
-     * <code>ApproximateReceiveCount</code> </p> </li> <li> <p>
-     * <code>ApproximateFirstReceiveTimestamp</code> </p> </li> <li> <p>
-     * <code>MessageDeduplicationId</code> </p> </li> <li> <p>
-     * <code>MessageGroupId</code> </p> </li> <li> <p> <code>SenderId</code> </p> </li>
-     * <li> <p> <code>SentTimestamp</code> </p> </li> <li> <p>
-     * <code>SequenceNumber</code> </p> </li> </ul> <p>
-     * <code>ApproximateFirstReceiveTimestamp</code> and <code>SentTimestamp</code> are
-     * each returned as an integer representing the <a
-     * href="http://en.wikipedia.org/wiki/Unix_time">epoch time</a> in
-     * milliseconds.</p>
-     */
-    inline Message& AddAttributes(const MessageSystemAttributeName& key, Aws::String&& value) { m_attributesHasBeenSet = true; m_attributes.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A map of the attributes requested in <code> <a>ReceiveMessage</a> </code> to
-     * their respective values. Supported attributes:</p> <ul> <li> <p>
-     * <code>ApproximateReceiveCount</code> </p> </li> <li> <p>
-     * <code>ApproximateFirstReceiveTimestamp</code> </p> </li> <li> <p>
-     * <code>MessageDeduplicationId</code> </p> </li> <li> <p>
-     * <code>MessageGroupId</code> </p> </li> <li> <p> <code>SenderId</code> </p> </li>
-     * <li> <p> <code>SentTimestamp</code> </p> </li> <li> <p>
-     * <code>SequenceNumber</code> </p> </li> </ul> <p>
-     * <code>ApproximateFirstReceiveTimestamp</code> and <code>SentTimestamp</code> are
-     * each returned as an integer representing the <a
-     * href="http://en.wikipedia.org/wiki/Unix_time">epoch time</a> in
-     * milliseconds.</p>
-     */
-    inline Message& AddAttributes(MessageSystemAttributeName&& key, Aws::String&& value) { m_attributesHasBeenSet = true; m_attributes.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>A map of the attributes requested in <code> <a>ReceiveMessage</a> </code> to
-     * their respective values. Supported attributes:</p> <ul> <li> <p>
-     * <code>ApproximateReceiveCount</code> </p> </li> <li> <p>
-     * <code>ApproximateFirstReceiveTimestamp</code> </p> </li> <li> <p>
-     * <code>MessageDeduplicationId</code> </p> </li> <li> <p>
-     * <code>MessageGroupId</code> </p> </li> <li> <p> <code>SenderId</code> </p> </li>
-     * <li> <p> <code>SentTimestamp</code> </p> </li> <li> <p>
-     * <code>SequenceNumber</code> </p> </li> </ul> <p>
-     * <code>ApproximateFirstReceiveTimestamp</code> and <code>SentTimestamp</code> are
-     * each returned as an integer representing the <a
-     * href="http://en.wikipedia.org/wiki/Unix_time">epoch time</a> in
-     * milliseconds.</p>
-     */
-    inline Message& AddAttributes(MessageSystemAttributeName&& key, const char* value) { m_attributesHasBeenSet = true; m_attributes.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A map of the attributes requested in <code> <a>ReceiveMessage</a> </code> to
-     * their respective values. Supported attributes:</p> <ul> <li> <p>
-     * <code>ApproximateReceiveCount</code> </p> </li> <li> <p>
-     * <code>ApproximateFirstReceiveTimestamp</code> </p> </li> <li> <p>
-     * <code>MessageDeduplicationId</code> </p> </li> <li> <p>
-     * <code>MessageGroupId</code> </p> </li> <li> <p> <code>SenderId</code> </p> </li>
-     * <li> <p> <code>SentTimestamp</code> </p> </li> <li> <p>
-     * <code>SequenceNumber</code> </p> </li> </ul> <p>
-     * <code>ApproximateFirstReceiveTimestamp</code> and <code>SentTimestamp</code> are
-     * each returned as an integer representing the <a
-     * href="http://en.wikipedia.org/wiki/Unix_time">epoch time</a> in
-     * milliseconds.</p>
-     */
-    inline Message& AddAttributes(const MessageSystemAttributeName& key, const char* value) { m_attributesHasBeenSet = true; m_attributes.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>An MD5 digest of the non-URL-encoded message attribute string. You can use
      * this attribute to verify that Amazon SQS received the message correctly. Amazon
      * SQS URL-decodes the message before creating the MD5 digest. For information
      * about MD5, see <a href="https://www.ietf.org/rfc/rfc1321.txt">RFC1321</a>.</p>
      */
-    inline const Aws::String& GetMD5OfMessageAttributes() const{ return m_mD5OfMessageAttributes; }
-
-    /**
-     * <p>An MD5 digest of the non-URL-encoded message attribute string. You can use
-     * this attribute to verify that Amazon SQS received the message correctly. Amazon
-     * SQS URL-decodes the message before creating the MD5 digest. For information
-     * about MD5, see <a href="https://www.ietf.org/rfc/rfc1321.txt">RFC1321</a>.</p>
-     */
+    inline const Aws::String& GetMD5OfMessageAttributes() const { return m_mD5OfMessageAttributes; }
     inline bool MD5OfMessageAttributesHasBeenSet() const { return m_mD5OfMessageAttributesHasBeenSet; }
+    template<typename MD5OfMessageAttributesT = Aws::String>
+    void SetMD5OfMessageAttributes(MD5OfMessageAttributesT&& value) { m_mD5OfMessageAttributesHasBeenSet = true; m_mD5OfMessageAttributes = std::forward<MD5OfMessageAttributesT>(value); }
+    template<typename MD5OfMessageAttributesT = Aws::String>
+    Message& WithMD5OfMessageAttributes(MD5OfMessageAttributesT&& value) { SetMD5OfMessageAttributes(std::forward<MD5OfMessageAttributesT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An MD5 digest of the non-URL-encoded message attribute string. You can use
-     * this attribute to verify that Amazon SQS received the message correctly. Amazon
-     * SQS URL-decodes the message before creating the MD5 digest. For information
-     * about MD5, see <a href="https://www.ietf.org/rfc/rfc1321.txt">RFC1321</a>.</p>
-     */
-    inline void SetMD5OfMessageAttributes(const Aws::String& value) { m_mD5OfMessageAttributesHasBeenSet = true; m_mD5OfMessageAttributes = value; }
-
-    /**
-     * <p>An MD5 digest of the non-URL-encoded message attribute string. You can use
-     * this attribute to verify that Amazon SQS received the message correctly. Amazon
-     * SQS URL-decodes the message before creating the MD5 digest. For information
-     * about MD5, see <a href="https://www.ietf.org/rfc/rfc1321.txt">RFC1321</a>.</p>
-     */
-    inline void SetMD5OfMessageAttributes(Aws::String&& value) { m_mD5OfMessageAttributesHasBeenSet = true; m_mD5OfMessageAttributes = std::move(value); }
-
-    /**
-     * <p>An MD5 digest of the non-URL-encoded message attribute string. You can use
-     * this attribute to verify that Amazon SQS received the message correctly. Amazon
-     * SQS URL-decodes the message before creating the MD5 digest. For information
-     * about MD5, see <a href="https://www.ietf.org/rfc/rfc1321.txt">RFC1321</a>.</p>
-     */
-    inline void SetMD5OfMessageAttributes(const char* value) { m_mD5OfMessageAttributesHasBeenSet = true; m_mD5OfMessageAttributes.assign(value); }
-
-    /**
-     * <p>An MD5 digest of the non-URL-encoded message attribute string. You can use
-     * this attribute to verify that Amazon SQS received the message correctly. Amazon
-     * SQS URL-decodes the message before creating the MD5 digest. For information
-     * about MD5, see <a href="https://www.ietf.org/rfc/rfc1321.txt">RFC1321</a>.</p>
-     */
-    inline Message& WithMD5OfMessageAttributes(const Aws::String& value) { SetMD5OfMessageAttributes(value); return *this;}
-
-    /**
-     * <p>An MD5 digest of the non-URL-encoded message attribute string. You can use
-     * this attribute to verify that Amazon SQS received the message correctly. Amazon
-     * SQS URL-decodes the message before creating the MD5 digest. For information
-     * about MD5, see <a href="https://www.ietf.org/rfc/rfc1321.txt">RFC1321</a>.</p>
-     */
-    inline Message& WithMD5OfMessageAttributes(Aws::String&& value) { SetMD5OfMessageAttributes(std::move(value)); return *this;}
-
-    /**
-     * <p>An MD5 digest of the non-URL-encoded message attribute string. You can use
-     * this attribute to verify that Amazon SQS received the message correctly. Amazon
-     * SQS URL-decodes the message before creating the MD5 digest. For information
-     * about MD5, see <a href="https://www.ietf.org/rfc/rfc1321.txt">RFC1321</a>.</p>
-     */
-    inline Message& WithMD5OfMessageAttributes(const char* value) { SetMD5OfMessageAttributes(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Each message attribute consists of a <code>Name</code>, <code>Type</code>,
      * and <code>Value</code>. For more information, see <a
      * href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html#sqs-message-attributes">Amazon
      * SQS message attributes</a> in the <i>Amazon SQS Developer Guide</i>.</p>
      */
-    inline const Aws::Map<Aws::String, MessageAttributeValue>& GetMessageAttributes() const{ return m_messageAttributes; }
-
-    /**
-     * <p>Each message attribute consists of a <code>Name</code>, <code>Type</code>,
-     * and <code>Value</code>. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html#sqs-message-attributes">Amazon
-     * SQS message attributes</a> in the <i>Amazon SQS Developer Guide</i>.</p>
-     */
+    inline const Aws::Map<Aws::String, MessageAttributeValue>& GetMessageAttributes() const { return m_messageAttributes; }
     inline bool MessageAttributesHasBeenSet() const { return m_messageAttributesHasBeenSet; }
-
-    /**
-     * <p>Each message attribute consists of a <code>Name</code>, <code>Type</code>,
-     * and <code>Value</code>. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html#sqs-message-attributes">Amazon
-     * SQS message attributes</a> in the <i>Amazon SQS Developer Guide</i>.</p>
-     */
-    inline void SetMessageAttributes(const Aws::Map<Aws::String, MessageAttributeValue>& value) { m_messageAttributesHasBeenSet = true; m_messageAttributes = value; }
-
-    /**
-     * <p>Each message attribute consists of a <code>Name</code>, <code>Type</code>,
-     * and <code>Value</code>. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html#sqs-message-attributes">Amazon
-     * SQS message attributes</a> in the <i>Amazon SQS Developer Guide</i>.</p>
-     */
-    inline void SetMessageAttributes(Aws::Map<Aws::String, MessageAttributeValue>&& value) { m_messageAttributesHasBeenSet = true; m_messageAttributes = std::move(value); }
-
-    /**
-     * <p>Each message attribute consists of a <code>Name</code>, <code>Type</code>,
-     * and <code>Value</code>. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html#sqs-message-attributes">Amazon
-     * SQS message attributes</a> in the <i>Amazon SQS Developer Guide</i>.</p>
-     */
-    inline Message& WithMessageAttributes(const Aws::Map<Aws::String, MessageAttributeValue>& value) { SetMessageAttributes(value); return *this;}
-
-    /**
-     * <p>Each message attribute consists of a <code>Name</code>, <code>Type</code>,
-     * and <code>Value</code>. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html#sqs-message-attributes">Amazon
-     * SQS message attributes</a> in the <i>Amazon SQS Developer Guide</i>.</p>
-     */
-    inline Message& WithMessageAttributes(Aws::Map<Aws::String, MessageAttributeValue>&& value) { SetMessageAttributes(std::move(value)); return *this;}
-
-    /**
-     * <p>Each message attribute consists of a <code>Name</code>, <code>Type</code>,
-     * and <code>Value</code>. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html#sqs-message-attributes">Amazon
-     * SQS message attributes</a> in the <i>Amazon SQS Developer Guide</i>.</p>
-     */
-    inline Message& AddMessageAttributes(const Aws::String& key, const MessageAttributeValue& value) { m_messageAttributesHasBeenSet = true; m_messageAttributes.emplace(key, value); return *this; }
-
-    /**
-     * <p>Each message attribute consists of a <code>Name</code>, <code>Type</code>,
-     * and <code>Value</code>. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html#sqs-message-attributes">Amazon
-     * SQS message attributes</a> in the <i>Amazon SQS Developer Guide</i>.</p>
-     */
-    inline Message& AddMessageAttributes(Aws::String&& key, const MessageAttributeValue& value) { m_messageAttributesHasBeenSet = true; m_messageAttributes.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Each message attribute consists of a <code>Name</code>, <code>Type</code>,
-     * and <code>Value</code>. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html#sqs-message-attributes">Amazon
-     * SQS message attributes</a> in the <i>Amazon SQS Developer Guide</i>.</p>
-     */
-    inline Message& AddMessageAttributes(const Aws::String& key, MessageAttributeValue&& value) { m_messageAttributesHasBeenSet = true; m_messageAttributes.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Each message attribute consists of a <code>Name</code>, <code>Type</code>,
-     * and <code>Value</code>. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html#sqs-message-attributes">Amazon
-     * SQS message attributes</a> in the <i>Amazon SQS Developer Guide</i>.</p>
-     */
-    inline Message& AddMessageAttributes(Aws::String&& key, MessageAttributeValue&& value) { m_messageAttributesHasBeenSet = true; m_messageAttributes.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>Each message attribute consists of a <code>Name</code>, <code>Type</code>,
-     * and <code>Value</code>. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html#sqs-message-attributes">Amazon
-     * SQS message attributes</a> in the <i>Amazon SQS Developer Guide</i>.</p>
-     */
-    inline Message& AddMessageAttributes(const char* key, MessageAttributeValue&& value) { m_messageAttributesHasBeenSet = true; m_messageAttributes.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Each message attribute consists of a <code>Name</code>, <code>Type</code>,
-     * and <code>Value</code>. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html#sqs-message-attributes">Amazon
-     * SQS message attributes</a> in the <i>Amazon SQS Developer Guide</i>.</p>
-     */
-    inline Message& AddMessageAttributes(const char* key, const MessageAttributeValue& value) { m_messageAttributesHasBeenSet = true; m_messageAttributes.emplace(key, value); return *this; }
-
+    template<typename MessageAttributesT = Aws::Map<Aws::String, MessageAttributeValue>>
+    void SetMessageAttributes(MessageAttributesT&& value) { m_messageAttributesHasBeenSet = true; m_messageAttributes = std::forward<MessageAttributesT>(value); }
+    template<typename MessageAttributesT = Aws::Map<Aws::String, MessageAttributeValue>>
+    Message& WithMessageAttributes(MessageAttributesT&& value) { SetMessageAttributes(std::forward<MessageAttributesT>(value)); return *this;}
+    template<typename MessageAttributesKeyT = Aws::String, typename MessageAttributesValueT = MessageAttributeValue>
+    Message& AddMessageAttributes(MessageAttributesKeyT&& key, MessageAttributesValueT&& value) {
+      m_messageAttributesHasBeenSet = true; m_messageAttributes.emplace(std::forward<MessageAttributesKeyT>(key), std::forward<MessageAttributesValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
     Aws::String m_messageId;

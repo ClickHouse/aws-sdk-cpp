@@ -22,6 +22,8 @@ namespace Aws
 
         static const int FINE_TUNING_HASH = HashingUtils::HashString("FINE_TUNING");
         static const int CONTINUED_PRE_TRAINING_HASH = HashingUtils::HashString("CONTINUED_PRE_TRAINING");
+        static const int DISTILLATION_HASH = HashingUtils::HashString("DISTILLATION");
+        static const int IMPORTED_HASH = HashingUtils::HashString("IMPORTED");
 
 
         CustomizationType GetCustomizationTypeForName(const Aws::String& name)
@@ -34,6 +36,14 @@ namespace Aws
           else if (hashCode == CONTINUED_PRE_TRAINING_HASH)
           {
             return CustomizationType::CONTINUED_PRE_TRAINING;
+          }
+          else if (hashCode == DISTILLATION_HASH)
+          {
+            return CustomizationType::DISTILLATION;
+          }
+          else if (hashCode == IMPORTED_HASH)
+          {
+            return CustomizationType::IMPORTED;
           }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
@@ -55,6 +65,10 @@ namespace Aws
             return "FINE_TUNING";
           case CustomizationType::CONTINUED_PRE_TRAINING:
             return "CONTINUED_PRE_TRAINING";
+          case CustomizationType::DISTILLATION:
+            return "DISTILLATION";
+          case CustomizationType::IMPORTED:
+            return "IMPORTED";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

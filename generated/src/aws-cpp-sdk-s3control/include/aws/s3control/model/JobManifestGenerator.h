@@ -31,43 +31,24 @@ namespace Model
   class JobManifestGenerator
   {
   public:
-    AWS_S3CONTROL_API JobManifestGenerator();
+    AWS_S3CONTROL_API JobManifestGenerator() = default;
     AWS_S3CONTROL_API JobManifestGenerator(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3CONTROL_API JobManifestGenerator& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3CONTROL_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>The S3 job ManifestGenerator's configuration details.</p>
      */
-    inline const S3JobManifestGenerator& GetS3JobManifestGenerator() const{ return m_s3JobManifestGenerator; }
-
-    /**
-     * <p>The S3 job ManifestGenerator's configuration details.</p>
-     */
+    inline const S3JobManifestGenerator& GetS3JobManifestGenerator() const { return m_s3JobManifestGenerator; }
     inline bool S3JobManifestGeneratorHasBeenSet() const { return m_s3JobManifestGeneratorHasBeenSet; }
-
-    /**
-     * <p>The S3 job ManifestGenerator's configuration details.</p>
-     */
-    inline void SetS3JobManifestGenerator(const S3JobManifestGenerator& value) { m_s3JobManifestGeneratorHasBeenSet = true; m_s3JobManifestGenerator = value; }
-
-    /**
-     * <p>The S3 job ManifestGenerator's configuration details.</p>
-     */
-    inline void SetS3JobManifestGenerator(S3JobManifestGenerator&& value) { m_s3JobManifestGeneratorHasBeenSet = true; m_s3JobManifestGenerator = std::move(value); }
-
-    /**
-     * <p>The S3 job ManifestGenerator's configuration details.</p>
-     */
-    inline JobManifestGenerator& WithS3JobManifestGenerator(const S3JobManifestGenerator& value) { SetS3JobManifestGenerator(value); return *this;}
-
-    /**
-     * <p>The S3 job ManifestGenerator's configuration details.</p>
-     */
-    inline JobManifestGenerator& WithS3JobManifestGenerator(S3JobManifestGenerator&& value) { SetS3JobManifestGenerator(std::move(value)); return *this;}
-
+    template<typename S3JobManifestGeneratorT = S3JobManifestGenerator>
+    void SetS3JobManifestGenerator(S3JobManifestGeneratorT&& value) { m_s3JobManifestGeneratorHasBeenSet = true; m_s3JobManifestGenerator = std::forward<S3JobManifestGeneratorT>(value); }
+    template<typename S3JobManifestGeneratorT = S3JobManifestGenerator>
+    JobManifestGenerator& WithS3JobManifestGenerator(S3JobManifestGeneratorT&& value) { SetS3JobManifestGenerator(std::forward<S3JobManifestGeneratorT>(value)); return *this;}
+    ///@}
   private:
 
     S3JobManifestGenerator m_s3JobManifestGenerator;

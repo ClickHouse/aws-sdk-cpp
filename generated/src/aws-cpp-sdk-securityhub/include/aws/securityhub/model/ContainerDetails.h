@@ -33,322 +33,98 @@ namespace Model
   class ContainerDetails
   {
   public:
-    AWS_SECURITYHUB_API ContainerDetails();
+    AWS_SECURITYHUB_API ContainerDetails() = default;
     AWS_SECURITYHUB_API ContainerDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API ContainerDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The runtime of the container. </p>
      */
-    inline const Aws::String& GetContainerRuntime() const{ return m_containerRuntime; }
-
-    /**
-     * <p>The runtime of the container. </p>
-     */
+    inline const Aws::String& GetContainerRuntime() const { return m_containerRuntime; }
     inline bool ContainerRuntimeHasBeenSet() const { return m_containerRuntimeHasBeenSet; }
+    template<typename ContainerRuntimeT = Aws::String>
+    void SetContainerRuntime(ContainerRuntimeT&& value) { m_containerRuntimeHasBeenSet = true; m_containerRuntime = std::forward<ContainerRuntimeT>(value); }
+    template<typename ContainerRuntimeT = Aws::String>
+    ContainerDetails& WithContainerRuntime(ContainerRuntimeT&& value) { SetContainerRuntime(std::forward<ContainerRuntimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The runtime of the container. </p>
-     */
-    inline void SetContainerRuntime(const Aws::String& value) { m_containerRuntimeHasBeenSet = true; m_containerRuntime = value; }
-
-    /**
-     * <p>The runtime of the container. </p>
-     */
-    inline void SetContainerRuntime(Aws::String&& value) { m_containerRuntimeHasBeenSet = true; m_containerRuntime = std::move(value); }
-
-    /**
-     * <p>The runtime of the container. </p>
-     */
-    inline void SetContainerRuntime(const char* value) { m_containerRuntimeHasBeenSet = true; m_containerRuntime.assign(value); }
-
-    /**
-     * <p>The runtime of the container. </p>
-     */
-    inline ContainerDetails& WithContainerRuntime(const Aws::String& value) { SetContainerRuntime(value); return *this;}
-
-    /**
-     * <p>The runtime of the container. </p>
-     */
-    inline ContainerDetails& WithContainerRuntime(Aws::String&& value) { SetContainerRuntime(std::move(value)); return *this;}
-
-    /**
-     * <p>The runtime of the container. </p>
-     */
-    inline ContainerDetails& WithContainerRuntime(const char* value) { SetContainerRuntime(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the container related to a finding.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the container related to a finding.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    ContainerDetails& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the container related to a finding.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the container related to a finding.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the container related to a finding.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the container related to a finding.</p>
-     */
-    inline ContainerDetails& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the container related to a finding.</p>
-     */
-    inline ContainerDetails& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the container related to a finding.</p>
-     */
-    inline ContainerDetails& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the container image related to a finding.</p>
      */
-    inline const Aws::String& GetImageId() const{ return m_imageId; }
-
-    /**
-     * <p>The identifier of the container image related to a finding.</p>
-     */
+    inline const Aws::String& GetImageId() const { return m_imageId; }
     inline bool ImageIdHasBeenSet() const { return m_imageIdHasBeenSet; }
+    template<typename ImageIdT = Aws::String>
+    void SetImageId(ImageIdT&& value) { m_imageIdHasBeenSet = true; m_imageId = std::forward<ImageIdT>(value); }
+    template<typename ImageIdT = Aws::String>
+    ContainerDetails& WithImageId(ImageIdT&& value) { SetImageId(std::forward<ImageIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the container image related to a finding.</p>
-     */
-    inline void SetImageId(const Aws::String& value) { m_imageIdHasBeenSet = true; m_imageId = value; }
-
-    /**
-     * <p>The identifier of the container image related to a finding.</p>
-     */
-    inline void SetImageId(Aws::String&& value) { m_imageIdHasBeenSet = true; m_imageId = std::move(value); }
-
-    /**
-     * <p>The identifier of the container image related to a finding.</p>
-     */
-    inline void SetImageId(const char* value) { m_imageIdHasBeenSet = true; m_imageId.assign(value); }
-
-    /**
-     * <p>The identifier of the container image related to a finding.</p>
-     */
-    inline ContainerDetails& WithImageId(const Aws::String& value) { SetImageId(value); return *this;}
-
-    /**
-     * <p>The identifier of the container image related to a finding.</p>
-     */
-    inline ContainerDetails& WithImageId(Aws::String&& value) { SetImageId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the container image related to a finding.</p>
-     */
-    inline ContainerDetails& WithImageId(const char* value) { SetImageId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the container image related to a finding.</p>
      */
-    inline const Aws::String& GetImageName() const{ return m_imageName; }
-
-    /**
-     * <p>The name of the container image related to a finding.</p>
-     */
+    inline const Aws::String& GetImageName() const { return m_imageName; }
     inline bool ImageNameHasBeenSet() const { return m_imageNameHasBeenSet; }
+    template<typename ImageNameT = Aws::String>
+    void SetImageName(ImageNameT&& value) { m_imageNameHasBeenSet = true; m_imageName = std::forward<ImageNameT>(value); }
+    template<typename ImageNameT = Aws::String>
+    ContainerDetails& WithImageName(ImageNameT&& value) { SetImageName(std::forward<ImageNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name of the container image related to a finding.</p>
+     * <p>Indicates when the container started.</p> <p>For more information about the
+     * validation and formatting of timestamp fields in Security Hub, see <a
+     * href="https://docs.aws.amazon.com/securityhub/1.0/APIReference/Welcome.html#timestamps">Timestamps</a>.</p>
      */
-    inline void SetImageName(const Aws::String& value) { m_imageNameHasBeenSet = true; m_imageName = value; }
-
-    /**
-     * <p>The name of the container image related to a finding.</p>
-     */
-    inline void SetImageName(Aws::String&& value) { m_imageNameHasBeenSet = true; m_imageName = std::move(value); }
-
-    /**
-     * <p>The name of the container image related to a finding.</p>
-     */
-    inline void SetImageName(const char* value) { m_imageNameHasBeenSet = true; m_imageName.assign(value); }
-
-    /**
-     * <p>The name of the container image related to a finding.</p>
-     */
-    inline ContainerDetails& WithImageName(const Aws::String& value) { SetImageName(value); return *this;}
-
-    /**
-     * <p>The name of the container image related to a finding.</p>
-     */
-    inline ContainerDetails& WithImageName(Aws::String&& value) { SetImageName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the container image related to a finding.</p>
-     */
-    inline ContainerDetails& WithImageName(const char* value) { SetImageName(value); return *this;}
-
-
-    /**
-     * <p>Indicates when the container started.</p> <p>Uses the <code>date-time</code>
-     * format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline const Aws::String& GetLaunchedAt() const{ return m_launchedAt; }
-
-    /**
-     * <p>Indicates when the container started.</p> <p>Uses the <code>date-time</code>
-     * format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
+    inline const Aws::String& GetLaunchedAt() const { return m_launchedAt; }
     inline bool LaunchedAtHasBeenSet() const { return m_launchedAtHasBeenSet; }
+    template<typename LaunchedAtT = Aws::String>
+    void SetLaunchedAt(LaunchedAtT&& value) { m_launchedAtHasBeenSet = true; m_launchedAt = std::forward<LaunchedAtT>(value); }
+    template<typename LaunchedAtT = Aws::String>
+    ContainerDetails& WithLaunchedAt(LaunchedAtT&& value) { SetLaunchedAt(std::forward<LaunchedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Indicates when the container started.</p> <p>Uses the <code>date-time</code>
-     * format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline void SetLaunchedAt(const Aws::String& value) { m_launchedAtHasBeenSet = true; m_launchedAt = value; }
-
-    /**
-     * <p>Indicates when the container started.</p> <p>Uses the <code>date-time</code>
-     * format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline void SetLaunchedAt(Aws::String&& value) { m_launchedAtHasBeenSet = true; m_launchedAt = std::move(value); }
-
-    /**
-     * <p>Indicates when the container started.</p> <p>Uses the <code>date-time</code>
-     * format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline void SetLaunchedAt(const char* value) { m_launchedAtHasBeenSet = true; m_launchedAt.assign(value); }
-
-    /**
-     * <p>Indicates when the container started.</p> <p>Uses the <code>date-time</code>
-     * format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline ContainerDetails& WithLaunchedAt(const Aws::String& value) { SetLaunchedAt(value); return *this;}
-
-    /**
-     * <p>Indicates when the container started.</p> <p>Uses the <code>date-time</code>
-     * format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline ContainerDetails& WithLaunchedAt(Aws::String&& value) { SetLaunchedAt(std::move(value)); return *this;}
-
-    /**
-     * <p>Indicates when the container started.</p> <p>Uses the <code>date-time</code>
-     * format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline ContainerDetails& WithLaunchedAt(const char* value) { SetLaunchedAt(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Provides information about the mounting of a volume in a container. </p>
      */
-    inline const Aws::Vector<VolumeMount>& GetVolumeMounts() const{ return m_volumeMounts; }
-
-    /**
-     * <p>Provides information about the mounting of a volume in a container. </p>
-     */
+    inline const Aws::Vector<VolumeMount>& GetVolumeMounts() const { return m_volumeMounts; }
     inline bool VolumeMountsHasBeenSet() const { return m_volumeMountsHasBeenSet; }
+    template<typename VolumeMountsT = Aws::Vector<VolumeMount>>
+    void SetVolumeMounts(VolumeMountsT&& value) { m_volumeMountsHasBeenSet = true; m_volumeMounts = std::forward<VolumeMountsT>(value); }
+    template<typename VolumeMountsT = Aws::Vector<VolumeMount>>
+    ContainerDetails& WithVolumeMounts(VolumeMountsT&& value) { SetVolumeMounts(std::forward<VolumeMountsT>(value)); return *this;}
+    template<typename VolumeMountsT = VolumeMount>
+    ContainerDetails& AddVolumeMounts(VolumeMountsT&& value) { m_volumeMountsHasBeenSet = true; m_volumeMounts.emplace_back(std::forward<VolumeMountsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Provides information about the mounting of a volume in a container. </p>
-     */
-    inline void SetVolumeMounts(const Aws::Vector<VolumeMount>& value) { m_volumeMountsHasBeenSet = true; m_volumeMounts = value; }
-
-    /**
-     * <p>Provides information about the mounting of a volume in a container. </p>
-     */
-    inline void SetVolumeMounts(Aws::Vector<VolumeMount>&& value) { m_volumeMountsHasBeenSet = true; m_volumeMounts = std::move(value); }
-
-    /**
-     * <p>Provides information about the mounting of a volume in a container. </p>
-     */
-    inline ContainerDetails& WithVolumeMounts(const Aws::Vector<VolumeMount>& value) { SetVolumeMounts(value); return *this;}
-
-    /**
-     * <p>Provides information about the mounting of a volume in a container. </p>
-     */
-    inline ContainerDetails& WithVolumeMounts(Aws::Vector<VolumeMount>&& value) { SetVolumeMounts(std::move(value)); return *this;}
-
-    /**
-     * <p>Provides information about the mounting of a volume in a container. </p>
-     */
-    inline ContainerDetails& AddVolumeMounts(const VolumeMount& value) { m_volumeMountsHasBeenSet = true; m_volumeMounts.push_back(value); return *this; }
-
-    /**
-     * <p>Provides information about the mounting of a volume in a container. </p>
-     */
-    inline ContainerDetails& AddVolumeMounts(VolumeMount&& value) { m_volumeMountsHasBeenSet = true; m_volumeMounts.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>When this parameter is <code>true</code>, the container is given elevated
      * privileges on the host container instance (similar to the root user). </p>
      */
-    inline bool GetPrivileged() const{ return m_privileged; }
-
-    /**
-     * <p>When this parameter is <code>true</code>, the container is given elevated
-     * privileges on the host container instance (similar to the root user). </p>
-     */
+    inline bool GetPrivileged() const { return m_privileged; }
     inline bool PrivilegedHasBeenSet() const { return m_privilegedHasBeenSet; }
-
-    /**
-     * <p>When this parameter is <code>true</code>, the container is given elevated
-     * privileges on the host container instance (similar to the root user). </p>
-     */
     inline void SetPrivileged(bool value) { m_privilegedHasBeenSet = true; m_privileged = value; }
-
-    /**
-     * <p>When this parameter is <code>true</code>, the container is given elevated
-     * privileges on the host container instance (similar to the root user). </p>
-     */
     inline ContainerDetails& WithPrivileged(bool value) { SetPrivileged(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_containerRuntime;
@@ -369,7 +145,7 @@ namespace Model
     Aws::Vector<VolumeMount> m_volumeMounts;
     bool m_volumeMountsHasBeenSet = false;
 
-    bool m_privileged;
+    bool m_privileged{false};
     bool m_privilegedHasBeenSet = false;
   };
 

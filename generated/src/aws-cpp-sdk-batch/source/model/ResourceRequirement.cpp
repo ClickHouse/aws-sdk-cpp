@@ -18,17 +18,7 @@ namespace Batch
 namespace Model
 {
 
-ResourceRequirement::ResourceRequirement() : 
-    m_valueHasBeenSet(false),
-    m_type(ResourceType::NOT_SET),
-    m_typeHasBeenSet(false)
-{
-}
-
-ResourceRequirement::ResourceRequirement(JsonView jsonValue) : 
-    m_valueHasBeenSet(false),
-    m_type(ResourceType::NOT_SET),
-    m_typeHasBeenSet(false)
+ResourceRequirement::ResourceRequirement(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ResourceRequirement& ResourceRequirement::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("value"))
   {
     m_value = jsonValue.GetString("value");
-
     m_valueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("type"))
   {
     m_type = ResourceTypeMapper::GetResourceTypeForName(jsonValue.GetString("type"));
-
     m_typeHasBeenSet = true;
   }
-
   return *this;
 }
 

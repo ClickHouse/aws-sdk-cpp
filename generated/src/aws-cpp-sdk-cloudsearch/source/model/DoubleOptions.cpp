@@ -20,33 +20,7 @@ namespace CloudSearch
 namespace Model
 {
 
-DoubleOptions::DoubleOptions() : 
-    m_defaultValue(0.0),
-    m_defaultValueHasBeenSet(false),
-    m_sourceFieldHasBeenSet(false),
-    m_facetEnabled(false),
-    m_facetEnabledHasBeenSet(false),
-    m_searchEnabled(false),
-    m_searchEnabledHasBeenSet(false),
-    m_returnEnabled(false),
-    m_returnEnabledHasBeenSet(false),
-    m_sortEnabled(false),
-    m_sortEnabledHasBeenSet(false)
-{
-}
-
-DoubleOptions::DoubleOptions(const XmlNode& xmlNode) : 
-    m_defaultValue(0.0),
-    m_defaultValueHasBeenSet(false),
-    m_sourceFieldHasBeenSet(false),
-    m_facetEnabled(false),
-    m_facetEnabledHasBeenSet(false),
-    m_searchEnabled(false),
-    m_searchEnabledHasBeenSet(false),
-    m_returnEnabled(false),
-    m_returnEnabledHasBeenSet(false),
-    m_sortEnabled(false),
-    m_sortEnabledHasBeenSet(false)
+DoubleOptions::DoubleOptions(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -136,7 +110,7 @@ void DoubleOptions::OutputToStream(Aws::OStream& oStream, const char* location) 
 {
   if(m_defaultValueHasBeenSet)
   {
-        oStream << location << ".DefaultValue=" << StringUtils::URLEncode(m_defaultValue) << "&";
+      oStream << location << ".DefaultValue=" << StringUtils::URLEncode(m_defaultValue) << "&";
   }
   if(m_sourceFieldHasBeenSet)
   {

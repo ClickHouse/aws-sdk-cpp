@@ -31,89 +31,39 @@ namespace Model
   class OriginRequestPolicySummary
   {
   public:
-    AWS_CLOUDFRONT_API OriginRequestPolicySummary();
+    AWS_CLOUDFRONT_API OriginRequestPolicySummary() = default;
     AWS_CLOUDFRONT_API OriginRequestPolicySummary(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_CLOUDFRONT_API OriginRequestPolicySummary& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_CLOUDFRONT_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>The type of origin request policy, either <code>managed</code> (created by
      * Amazon Web Services) or <code>custom</code> (created in this Amazon Web Services
      * account).</p>
      */
-    inline const OriginRequestPolicyType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of origin request policy, either <code>managed</code> (created by
-     * Amazon Web Services) or <code>custom</code> (created in this Amazon Web Services
-     * account).</p>
-     */
+    inline OriginRequestPolicyType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    inline void SetType(OriginRequestPolicyType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline OriginRequestPolicySummary& WithType(OriginRequestPolicyType value) { SetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of origin request policy, either <code>managed</code> (created by
-     * Amazon Web Services) or <code>custom</code> (created in this Amazon Web Services
-     * account).</p>
-     */
-    inline void SetType(const OriginRequestPolicyType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of origin request policy, either <code>managed</code> (created by
-     * Amazon Web Services) or <code>custom</code> (created in this Amazon Web Services
-     * account).</p>
-     */
-    inline void SetType(OriginRequestPolicyType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of origin request policy, either <code>managed</code> (created by
-     * Amazon Web Services) or <code>custom</code> (created in this Amazon Web Services
-     * account).</p>
-     */
-    inline OriginRequestPolicySummary& WithType(const OriginRequestPolicyType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of origin request policy, either <code>managed</code> (created by
-     * Amazon Web Services) or <code>custom</code> (created in this Amazon Web Services
-     * account).</p>
-     */
-    inline OriginRequestPolicySummary& WithType(OriginRequestPolicyType&& value) { SetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The origin request policy.</p>
      */
-    inline const OriginRequestPolicy& GetOriginRequestPolicy() const{ return m_originRequestPolicy; }
-
-    /**
-     * <p>The origin request policy.</p>
-     */
+    inline const OriginRequestPolicy& GetOriginRequestPolicy() const { return m_originRequestPolicy; }
     inline bool OriginRequestPolicyHasBeenSet() const { return m_originRequestPolicyHasBeenSet; }
-
-    /**
-     * <p>The origin request policy.</p>
-     */
-    inline void SetOriginRequestPolicy(const OriginRequestPolicy& value) { m_originRequestPolicyHasBeenSet = true; m_originRequestPolicy = value; }
-
-    /**
-     * <p>The origin request policy.</p>
-     */
-    inline void SetOriginRequestPolicy(OriginRequestPolicy&& value) { m_originRequestPolicyHasBeenSet = true; m_originRequestPolicy = std::move(value); }
-
-    /**
-     * <p>The origin request policy.</p>
-     */
-    inline OriginRequestPolicySummary& WithOriginRequestPolicy(const OriginRequestPolicy& value) { SetOriginRequestPolicy(value); return *this;}
-
-    /**
-     * <p>The origin request policy.</p>
-     */
-    inline OriginRequestPolicySummary& WithOriginRequestPolicy(OriginRequestPolicy&& value) { SetOriginRequestPolicy(std::move(value)); return *this;}
-
+    template<typename OriginRequestPolicyT = OriginRequestPolicy>
+    void SetOriginRequestPolicy(OriginRequestPolicyT&& value) { m_originRequestPolicyHasBeenSet = true; m_originRequestPolicy = std::forward<OriginRequestPolicyT>(value); }
+    template<typename OriginRequestPolicyT = OriginRequestPolicy>
+    OriginRequestPolicySummary& WithOriginRequestPolicy(OriginRequestPolicyT&& value) { SetOriginRequestPolicy(std::forward<OriginRequestPolicyT>(value)); return *this;}
+    ///@}
   private:
 
-    OriginRequestPolicyType m_type;
+    OriginRequestPolicyType m_type{OriginRequestPolicyType::NOT_SET};
     bool m_typeHasBeenSet = false;
 
     OriginRequestPolicy m_originRequestPolicy;

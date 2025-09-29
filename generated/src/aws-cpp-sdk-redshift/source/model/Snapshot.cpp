@@ -20,109 +20,7 @@ namespace Redshift
 namespace Model
 {
 
-Snapshot::Snapshot() : 
-    m_snapshotIdentifierHasBeenSet(false),
-    m_clusterIdentifierHasBeenSet(false),
-    m_snapshotCreateTimeHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_availabilityZoneHasBeenSet(false),
-    m_clusterCreateTimeHasBeenSet(false),
-    m_masterUsernameHasBeenSet(false),
-    m_clusterVersionHasBeenSet(false),
-    m_engineFullVersionHasBeenSet(false),
-    m_snapshotTypeHasBeenSet(false),
-    m_nodeTypeHasBeenSet(false),
-    m_numberOfNodes(0),
-    m_numberOfNodesHasBeenSet(false),
-    m_dBNameHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_encrypted(false),
-    m_encryptedHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false),
-    m_encryptedWithHSM(false),
-    m_encryptedWithHSMHasBeenSet(false),
-    m_accountsWithRestoreAccessHasBeenSet(false),
-    m_ownerAccountHasBeenSet(false),
-    m_totalBackupSizeInMegaBytes(0.0),
-    m_totalBackupSizeInMegaBytesHasBeenSet(false),
-    m_actualIncrementalBackupSizeInMegaBytes(0.0),
-    m_actualIncrementalBackupSizeInMegaBytesHasBeenSet(false),
-    m_backupProgressInMegaBytes(0.0),
-    m_backupProgressInMegaBytesHasBeenSet(false),
-    m_currentBackupRateInMegaBytesPerSecond(0.0),
-    m_currentBackupRateInMegaBytesPerSecondHasBeenSet(false),
-    m_estimatedSecondsToCompletion(0),
-    m_estimatedSecondsToCompletionHasBeenSet(false),
-    m_elapsedTimeInSeconds(0),
-    m_elapsedTimeInSecondsHasBeenSet(false),
-    m_sourceRegionHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_restorableNodeTypesHasBeenSet(false),
-    m_enhancedVpcRouting(false),
-    m_enhancedVpcRoutingHasBeenSet(false),
-    m_maintenanceTrackNameHasBeenSet(false),
-    m_manualSnapshotRetentionPeriod(0),
-    m_manualSnapshotRetentionPeriodHasBeenSet(false),
-    m_manualSnapshotRemainingDays(0),
-    m_manualSnapshotRemainingDaysHasBeenSet(false),
-    m_snapshotRetentionStartTimeHasBeenSet(false),
-    m_masterPasswordSecretArnHasBeenSet(false),
-    m_masterPasswordSecretKmsKeyIdHasBeenSet(false)
-{
-}
-
-Snapshot::Snapshot(const XmlNode& xmlNode) : 
-    m_snapshotIdentifierHasBeenSet(false),
-    m_clusterIdentifierHasBeenSet(false),
-    m_snapshotCreateTimeHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_availabilityZoneHasBeenSet(false),
-    m_clusterCreateTimeHasBeenSet(false),
-    m_masterUsernameHasBeenSet(false),
-    m_clusterVersionHasBeenSet(false),
-    m_engineFullVersionHasBeenSet(false),
-    m_snapshotTypeHasBeenSet(false),
-    m_nodeTypeHasBeenSet(false),
-    m_numberOfNodes(0),
-    m_numberOfNodesHasBeenSet(false),
-    m_dBNameHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_encrypted(false),
-    m_encryptedHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false),
-    m_encryptedWithHSM(false),
-    m_encryptedWithHSMHasBeenSet(false),
-    m_accountsWithRestoreAccessHasBeenSet(false),
-    m_ownerAccountHasBeenSet(false),
-    m_totalBackupSizeInMegaBytes(0.0),
-    m_totalBackupSizeInMegaBytesHasBeenSet(false),
-    m_actualIncrementalBackupSizeInMegaBytes(0.0),
-    m_actualIncrementalBackupSizeInMegaBytesHasBeenSet(false),
-    m_backupProgressInMegaBytes(0.0),
-    m_backupProgressInMegaBytesHasBeenSet(false),
-    m_currentBackupRateInMegaBytesPerSecond(0.0),
-    m_currentBackupRateInMegaBytesPerSecondHasBeenSet(false),
-    m_estimatedSecondsToCompletion(0),
-    m_estimatedSecondsToCompletionHasBeenSet(false),
-    m_elapsedTimeInSeconds(0),
-    m_elapsedTimeInSecondsHasBeenSet(false),
-    m_sourceRegionHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_restorableNodeTypesHasBeenSet(false),
-    m_enhancedVpcRouting(false),
-    m_enhancedVpcRoutingHasBeenSet(false),
-    m_maintenanceTrackNameHasBeenSet(false),
-    m_manualSnapshotRetentionPeriod(0),
-    m_manualSnapshotRetentionPeriodHasBeenSet(false),
-    m_manualSnapshotRemainingDays(0),
-    m_manualSnapshotRemainingDaysHasBeenSet(false),
-    m_snapshotRetentionStartTimeHasBeenSet(false),
-    m_masterPasswordSecretArnHasBeenSet(false),
-    m_masterPasswordSecretKmsKeyIdHasBeenSet(false)
+Snapshot::Snapshot(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -245,6 +143,7 @@ Snapshot& Snapshot::operator =(const XmlNode& xmlNode)
     if(!accountsWithRestoreAccessNode.IsNull())
     {
       XmlNode accountsWithRestoreAccessMember = accountsWithRestoreAccessNode.FirstChild("AccountWithRestoreAccess");
+      m_accountsWithRestoreAccessHasBeenSet = !accountsWithRestoreAccessMember.IsNull();
       while(!accountsWithRestoreAccessMember.IsNull())
       {
         m_accountsWithRestoreAccess.push_back(accountsWithRestoreAccessMember);
@@ -305,6 +204,7 @@ Snapshot& Snapshot::operator =(const XmlNode& xmlNode)
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("Tag");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -317,6 +217,7 @@ Snapshot& Snapshot::operator =(const XmlNode& xmlNode)
     if(!restorableNodeTypesNode.IsNull())
     {
       XmlNode restorableNodeTypesMember = restorableNodeTypesNode.FirstChild("NodeType");
+      m_restorableNodeTypesHasBeenSet = !restorableNodeTypesMember.IsNull();
       while(!restorableNodeTypesMember.IsNull())
       {
         m_restorableNodeTypes.push_back(restorableNodeTypesMember.GetText());
@@ -366,6 +267,12 @@ Snapshot& Snapshot::operator =(const XmlNode& xmlNode)
     {
       m_masterPasswordSecretKmsKeyId = Aws::Utils::Xml::DecodeEscapedXmlText(masterPasswordSecretKmsKeyIdNode.GetText());
       m_masterPasswordSecretKmsKeyIdHasBeenSet = true;
+    }
+    XmlNode snapshotArnNode = resultNode.FirstChild("SnapshotArn");
+    if(!snapshotArnNode.IsNull())
+    {
+      m_snapshotArn = Aws::Utils::Xml::DecodeEscapedXmlText(snapshotArnNode.GetText());
+      m_snapshotArnHasBeenSet = true;
     }
   }
 
@@ -470,7 +377,7 @@ void Snapshot::OutputToStream(Aws::OStream& oStream, const char* location, unsig
       for(auto& item : m_accountsWithRestoreAccess)
       {
         Aws::StringStream accountsWithRestoreAccessSs;
-        accountsWithRestoreAccessSs << location << index << locationValue << ".AccountWithRestoreAccess." << accountsWithRestoreAccessIdx++;
+        accountsWithRestoreAccessSs << location << index << locationValue << ".AccountsWithRestoreAccess.AccountWithRestoreAccess." << accountsWithRestoreAccessIdx++;
         item.OutputToStream(oStream, accountsWithRestoreAccessSs.str().c_str());
       }
   }
@@ -521,7 +428,7 @@ void Snapshot::OutputToStream(Aws::OStream& oStream, const char* location, unsig
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location << index << locationValue << ".Tag." << tagsIdx++;
+        tagsSs << location << index << locationValue << ".Tags.Tag." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
@@ -531,7 +438,7 @@ void Snapshot::OutputToStream(Aws::OStream& oStream, const char* location, unsig
       unsigned restorableNodeTypesIdx = 1;
       for(auto& item : m_restorableNodeTypes)
       {
-        oStream << location << index << locationValue << ".NodeType." << restorableNodeTypesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << index << locationValue << ".RestorableNodeTypes.NodeType." << restorableNodeTypesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
 
@@ -568,6 +475,11 @@ void Snapshot::OutputToStream(Aws::OStream& oStream, const char* location, unsig
   if(m_masterPasswordSecretKmsKeyIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".MasterPasswordSecretKmsKeyId=" << StringUtils::URLEncode(m_masterPasswordSecretKmsKeyId.c_str()) << "&";
+  }
+
+  if(m_snapshotArnHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".SnapshotArn=" << StringUtils::URLEncode(m_snapshotArn.c_str()) << "&";
   }
 
 }
@@ -652,7 +564,7 @@ void Snapshot::OutputToStream(Aws::OStream& oStream, const char* location) const
       for(auto& item : m_accountsWithRestoreAccess)
       {
         Aws::StringStream accountsWithRestoreAccessSs;
-        accountsWithRestoreAccessSs << location <<  ".AccountWithRestoreAccess." << accountsWithRestoreAccessIdx++;
+        accountsWithRestoreAccessSs << location << ".AccountsWithRestoreAccess.AccountWithRestoreAccess." << accountsWithRestoreAccessIdx++;
         item.OutputToStream(oStream, accountsWithRestoreAccessSs.str().c_str());
       }
   }
@@ -662,19 +574,19 @@ void Snapshot::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_totalBackupSizeInMegaBytesHasBeenSet)
   {
-        oStream << location << ".TotalBackupSizeInMegaBytes=" << StringUtils::URLEncode(m_totalBackupSizeInMegaBytes) << "&";
+      oStream << location << ".TotalBackupSizeInMegaBytes=" << StringUtils::URLEncode(m_totalBackupSizeInMegaBytes) << "&";
   }
   if(m_actualIncrementalBackupSizeInMegaBytesHasBeenSet)
   {
-        oStream << location << ".ActualIncrementalBackupSizeInMegaBytes=" << StringUtils::URLEncode(m_actualIncrementalBackupSizeInMegaBytes) << "&";
+      oStream << location << ".ActualIncrementalBackupSizeInMegaBytes=" << StringUtils::URLEncode(m_actualIncrementalBackupSizeInMegaBytes) << "&";
   }
   if(m_backupProgressInMegaBytesHasBeenSet)
   {
-        oStream << location << ".BackupProgressInMegaBytes=" << StringUtils::URLEncode(m_backupProgressInMegaBytes) << "&";
+      oStream << location << ".BackupProgressInMegaBytes=" << StringUtils::URLEncode(m_backupProgressInMegaBytes) << "&";
   }
   if(m_currentBackupRateInMegaBytesPerSecondHasBeenSet)
   {
-        oStream << location << ".CurrentBackupRateInMegaBytesPerSecond=" << StringUtils::URLEncode(m_currentBackupRateInMegaBytesPerSecond) << "&";
+      oStream << location << ".CurrentBackupRateInMegaBytesPerSecond=" << StringUtils::URLEncode(m_currentBackupRateInMegaBytesPerSecond) << "&";
   }
   if(m_estimatedSecondsToCompletionHasBeenSet)
   {
@@ -694,7 +606,7 @@ void Snapshot::OutputToStream(Aws::OStream& oStream, const char* location) const
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".Tag." << tagsIdx++;
+        tagsSs << location << ".Tags.Tag." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
@@ -703,7 +615,7 @@ void Snapshot::OutputToStream(Aws::OStream& oStream, const char* location) const
       unsigned restorableNodeTypesIdx = 1;
       for(auto& item : m_restorableNodeTypes)
       {
-        oStream << location << ".NodeType." << restorableNodeTypesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".RestorableNodeTypes.NodeType." << restorableNodeTypesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_enhancedVpcRoutingHasBeenSet)
@@ -733,6 +645,10 @@ void Snapshot::OutputToStream(Aws::OStream& oStream, const char* location) const
   if(m_masterPasswordSecretKmsKeyIdHasBeenSet)
   {
       oStream << location << ".MasterPasswordSecretKmsKeyId=" << StringUtils::URLEncode(m_masterPasswordSecretKmsKeyId.c_str()) << "&";
+  }
+  if(m_snapshotArnHasBeenSet)
+  {
+      oStream << location << ".SnapshotArn=" << StringUtils::URLEncode(m_snapshotArn.c_str()) << "&";
   }
 }
 

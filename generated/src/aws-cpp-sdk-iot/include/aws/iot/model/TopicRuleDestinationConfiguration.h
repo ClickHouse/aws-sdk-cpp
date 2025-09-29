@@ -32,73 +32,35 @@ namespace Model
   class TopicRuleDestinationConfiguration
   {
   public:
-    AWS_IOT_API TopicRuleDestinationConfiguration();
+    AWS_IOT_API TopicRuleDestinationConfiguration() = default;
     AWS_IOT_API TopicRuleDestinationConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API TopicRuleDestinationConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Configuration of the HTTP URL.</p>
      */
-    inline const HttpUrlDestinationConfiguration& GetHttpUrlConfiguration() const{ return m_httpUrlConfiguration; }
-
-    /**
-     * <p>Configuration of the HTTP URL.</p>
-     */
+    inline const HttpUrlDestinationConfiguration& GetHttpUrlConfiguration() const { return m_httpUrlConfiguration; }
     inline bool HttpUrlConfigurationHasBeenSet() const { return m_httpUrlConfigurationHasBeenSet; }
+    template<typename HttpUrlConfigurationT = HttpUrlDestinationConfiguration>
+    void SetHttpUrlConfiguration(HttpUrlConfigurationT&& value) { m_httpUrlConfigurationHasBeenSet = true; m_httpUrlConfiguration = std::forward<HttpUrlConfigurationT>(value); }
+    template<typename HttpUrlConfigurationT = HttpUrlDestinationConfiguration>
+    TopicRuleDestinationConfiguration& WithHttpUrlConfiguration(HttpUrlConfigurationT&& value) { SetHttpUrlConfiguration(std::forward<HttpUrlConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Configuration of the HTTP URL.</p>
-     */
-    inline void SetHttpUrlConfiguration(const HttpUrlDestinationConfiguration& value) { m_httpUrlConfigurationHasBeenSet = true; m_httpUrlConfiguration = value; }
-
-    /**
-     * <p>Configuration of the HTTP URL.</p>
-     */
-    inline void SetHttpUrlConfiguration(HttpUrlDestinationConfiguration&& value) { m_httpUrlConfigurationHasBeenSet = true; m_httpUrlConfiguration = std::move(value); }
-
-    /**
-     * <p>Configuration of the HTTP URL.</p>
-     */
-    inline TopicRuleDestinationConfiguration& WithHttpUrlConfiguration(const HttpUrlDestinationConfiguration& value) { SetHttpUrlConfiguration(value); return *this;}
-
-    /**
-     * <p>Configuration of the HTTP URL.</p>
-     */
-    inline TopicRuleDestinationConfiguration& WithHttpUrlConfiguration(HttpUrlDestinationConfiguration&& value) { SetHttpUrlConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Configuration of the virtual private cloud (VPC) connection.</p>
      */
-    inline const VpcDestinationConfiguration& GetVpcConfiguration() const{ return m_vpcConfiguration; }
-
-    /**
-     * <p>Configuration of the virtual private cloud (VPC) connection.</p>
-     */
+    inline const VpcDestinationConfiguration& GetVpcConfiguration() const { return m_vpcConfiguration; }
     inline bool VpcConfigurationHasBeenSet() const { return m_vpcConfigurationHasBeenSet; }
-
-    /**
-     * <p>Configuration of the virtual private cloud (VPC) connection.</p>
-     */
-    inline void SetVpcConfiguration(const VpcDestinationConfiguration& value) { m_vpcConfigurationHasBeenSet = true; m_vpcConfiguration = value; }
-
-    /**
-     * <p>Configuration of the virtual private cloud (VPC) connection.</p>
-     */
-    inline void SetVpcConfiguration(VpcDestinationConfiguration&& value) { m_vpcConfigurationHasBeenSet = true; m_vpcConfiguration = std::move(value); }
-
-    /**
-     * <p>Configuration of the virtual private cloud (VPC) connection.</p>
-     */
-    inline TopicRuleDestinationConfiguration& WithVpcConfiguration(const VpcDestinationConfiguration& value) { SetVpcConfiguration(value); return *this;}
-
-    /**
-     * <p>Configuration of the virtual private cloud (VPC) connection.</p>
-     */
-    inline TopicRuleDestinationConfiguration& WithVpcConfiguration(VpcDestinationConfiguration&& value) { SetVpcConfiguration(std::move(value)); return *this;}
-
+    template<typename VpcConfigurationT = VpcDestinationConfiguration>
+    void SetVpcConfiguration(VpcConfigurationT&& value) { m_vpcConfigurationHasBeenSet = true; m_vpcConfiguration = std::forward<VpcConfigurationT>(value); }
+    template<typename VpcConfigurationT = VpcDestinationConfiguration>
+    TopicRuleDestinationConfiguration& WithVpcConfiguration(VpcConfigurationT&& value) { SetVpcConfiguration(std::forward<VpcConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     HttpUrlDestinationConfiguration m_httpUrlConfiguration;

@@ -21,7 +21,7 @@ namespace Model
   class GetSampleDataRequest : public LookoutMetricsRequest
   {
   public:
-    AWS_LOOKOUTMETRICS_API GetSampleDataRequest();
+    AWS_LOOKOUTMETRICS_API GetSampleDataRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,36 +32,17 @@ namespace Model
     AWS_LOOKOUTMETRICS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>A datasource bucket in Amazon S3.</p>
      */
-    inline const SampleDataS3SourceConfig& GetS3SourceConfig() const{ return m_s3SourceConfig; }
-
-    /**
-     * <p>A datasource bucket in Amazon S3.</p>
-     */
+    inline const SampleDataS3SourceConfig& GetS3SourceConfig() const { return m_s3SourceConfig; }
     inline bool S3SourceConfigHasBeenSet() const { return m_s3SourceConfigHasBeenSet; }
-
-    /**
-     * <p>A datasource bucket in Amazon S3.</p>
-     */
-    inline void SetS3SourceConfig(const SampleDataS3SourceConfig& value) { m_s3SourceConfigHasBeenSet = true; m_s3SourceConfig = value; }
-
-    /**
-     * <p>A datasource bucket in Amazon S3.</p>
-     */
-    inline void SetS3SourceConfig(SampleDataS3SourceConfig&& value) { m_s3SourceConfigHasBeenSet = true; m_s3SourceConfig = std::move(value); }
-
-    /**
-     * <p>A datasource bucket in Amazon S3.</p>
-     */
-    inline GetSampleDataRequest& WithS3SourceConfig(const SampleDataS3SourceConfig& value) { SetS3SourceConfig(value); return *this;}
-
-    /**
-     * <p>A datasource bucket in Amazon S3.</p>
-     */
-    inline GetSampleDataRequest& WithS3SourceConfig(SampleDataS3SourceConfig&& value) { SetS3SourceConfig(std::move(value)); return *this;}
-
+    template<typename S3SourceConfigT = SampleDataS3SourceConfig>
+    void SetS3SourceConfig(S3SourceConfigT&& value) { m_s3SourceConfigHasBeenSet = true; m_s3SourceConfig = std::forward<S3SourceConfigT>(value); }
+    template<typename S3SourceConfigT = SampleDataS3SourceConfig>
+    GetSampleDataRequest& WithS3SourceConfig(S3SourceConfigT&& value) { SetS3SourceConfig(std::forward<S3SourceConfigT>(value)); return *this;}
+    ///@}
   private:
 
     SampleDataS3SourceConfig m_s3SourceConfig;

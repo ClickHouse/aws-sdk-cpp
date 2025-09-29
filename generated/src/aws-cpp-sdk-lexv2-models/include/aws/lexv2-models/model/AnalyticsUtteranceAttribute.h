@@ -32,51 +32,25 @@ namespace Model
   class AnalyticsUtteranceAttribute
   {
   public:
-    AWS_LEXMODELSV2_API AnalyticsUtteranceAttribute();
+    AWS_LEXMODELSV2_API AnalyticsUtteranceAttribute() = default;
     AWS_LEXMODELSV2_API AnalyticsUtteranceAttribute(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API AnalyticsUtteranceAttribute& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An attribute to return. The only available attribute is the intent that the
      * bot mapped the utterance to.</p>
      */
-    inline const AnalyticsUtteranceAttributeName& GetName() const{ return m_name; }
-
-    /**
-     * <p>An attribute to return. The only available attribute is the intent that the
-     * bot mapped the utterance to.</p>
-     */
+    inline AnalyticsUtteranceAttributeName GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
-
-    /**
-     * <p>An attribute to return. The only available attribute is the intent that the
-     * bot mapped the utterance to.</p>
-     */
-    inline void SetName(const AnalyticsUtteranceAttributeName& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>An attribute to return. The only available attribute is the intent that the
-     * bot mapped the utterance to.</p>
-     */
-    inline void SetName(AnalyticsUtteranceAttributeName&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>An attribute to return. The only available attribute is the intent that the
-     * bot mapped the utterance to.</p>
-     */
-    inline AnalyticsUtteranceAttribute& WithName(const AnalyticsUtteranceAttributeName& value) { SetName(value); return *this;}
-
-    /**
-     * <p>An attribute to return. The only available attribute is the intent that the
-     * bot mapped the utterance to.</p>
-     */
-    inline AnalyticsUtteranceAttribute& WithName(AnalyticsUtteranceAttributeName&& value) { SetName(std::move(value)); return *this;}
-
+    inline void SetName(AnalyticsUtteranceAttributeName value) { m_nameHasBeenSet = true; m_name = value; }
+    inline AnalyticsUtteranceAttribute& WithName(AnalyticsUtteranceAttributeName value) { SetName(value); return *this;}
+    ///@}
   private:
 
-    AnalyticsUtteranceAttributeName m_name;
+    AnalyticsUtteranceAttributeName m_name{AnalyticsUtteranceAttributeName::NOT_SET};
     bool m_nameHasBeenSet = false;
   };
 

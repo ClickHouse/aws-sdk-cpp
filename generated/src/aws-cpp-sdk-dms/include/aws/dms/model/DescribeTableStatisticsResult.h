@@ -34,163 +34,69 @@ namespace Model
   class DescribeTableStatisticsResult
   {
   public:
-    AWS_DATABASEMIGRATIONSERVICE_API DescribeTableStatisticsResult();
+    AWS_DATABASEMIGRATIONSERVICE_API DescribeTableStatisticsResult() = default;
     AWS_DATABASEMIGRATIONSERVICE_API DescribeTableStatisticsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_DATABASEMIGRATIONSERVICE_API DescribeTableStatisticsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the replication task.</p>
      */
-    inline const Aws::String& GetReplicationTaskArn() const{ return m_replicationTaskArn; }
+    inline const Aws::String& GetReplicationTaskArn() const { return m_replicationTaskArn; }
+    template<typename ReplicationTaskArnT = Aws::String>
+    void SetReplicationTaskArn(ReplicationTaskArnT&& value) { m_replicationTaskArnHasBeenSet = true; m_replicationTaskArn = std::forward<ReplicationTaskArnT>(value); }
+    template<typename ReplicationTaskArnT = Aws::String>
+    DescribeTableStatisticsResult& WithReplicationTaskArn(ReplicationTaskArnT&& value) { SetReplicationTaskArn(std::forward<ReplicationTaskArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the replication task.</p>
-     */
-    inline void SetReplicationTaskArn(const Aws::String& value) { m_replicationTaskArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the replication task.</p>
-     */
-    inline void SetReplicationTaskArn(Aws::String&& value) { m_replicationTaskArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the replication task.</p>
-     */
-    inline void SetReplicationTaskArn(const char* value) { m_replicationTaskArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the replication task.</p>
-     */
-    inline DescribeTableStatisticsResult& WithReplicationTaskArn(const Aws::String& value) { SetReplicationTaskArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the replication task.</p>
-     */
-    inline DescribeTableStatisticsResult& WithReplicationTaskArn(Aws::String&& value) { SetReplicationTaskArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the replication task.</p>
-     */
-    inline DescribeTableStatisticsResult& WithReplicationTaskArn(const char* value) { SetReplicationTaskArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The table statistics.</p>
      */
-    inline const Aws::Vector<TableStatistics>& GetTableStatistics() const{ return m_tableStatistics; }
+    inline const Aws::Vector<TableStatistics>& GetTableStatistics() const { return m_tableStatistics; }
+    template<typename TableStatisticsT = Aws::Vector<TableStatistics>>
+    void SetTableStatistics(TableStatisticsT&& value) { m_tableStatisticsHasBeenSet = true; m_tableStatistics = std::forward<TableStatisticsT>(value); }
+    template<typename TableStatisticsT = Aws::Vector<TableStatistics>>
+    DescribeTableStatisticsResult& WithTableStatistics(TableStatisticsT&& value) { SetTableStatistics(std::forward<TableStatisticsT>(value)); return *this;}
+    template<typename TableStatisticsT = TableStatistics>
+    DescribeTableStatisticsResult& AddTableStatistics(TableStatisticsT&& value) { m_tableStatisticsHasBeenSet = true; m_tableStatistics.emplace_back(std::forward<TableStatisticsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The table statistics.</p>
-     */
-    inline void SetTableStatistics(const Aws::Vector<TableStatistics>& value) { m_tableStatistics = value; }
-
-    /**
-     * <p>The table statistics.</p>
-     */
-    inline void SetTableStatistics(Aws::Vector<TableStatistics>&& value) { m_tableStatistics = std::move(value); }
-
-    /**
-     * <p>The table statistics.</p>
-     */
-    inline DescribeTableStatisticsResult& WithTableStatistics(const Aws::Vector<TableStatistics>& value) { SetTableStatistics(value); return *this;}
-
-    /**
-     * <p>The table statistics.</p>
-     */
-    inline DescribeTableStatisticsResult& WithTableStatistics(Aws::Vector<TableStatistics>&& value) { SetTableStatistics(std::move(value)); return *this;}
-
-    /**
-     * <p>The table statistics.</p>
-     */
-    inline DescribeTableStatisticsResult& AddTableStatistics(const TableStatistics& value) { m_tableStatistics.push_back(value); return *this; }
-
-    /**
-     * <p>The table statistics.</p>
-     */
-    inline DescribeTableStatisticsResult& AddTableStatistics(TableStatistics&& value) { m_tableStatistics.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p> An optional pagination token provided by a previous request. If this
      * parameter is specified, the response includes only records beyond the marker, up
      * to the value specified by <code>MaxRecords</code>. </p>
      */
-    inline const Aws::String& GetMarker() const{ return m_marker; }
+    inline const Aws::String& GetMarker() const { return m_marker; }
+    template<typename MarkerT = Aws::String>
+    void SetMarker(MarkerT&& value) { m_markerHasBeenSet = true; m_marker = std::forward<MarkerT>(value); }
+    template<typename MarkerT = Aws::String>
+    DescribeTableStatisticsResult& WithMarker(MarkerT&& value) { SetMarker(std::forward<MarkerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> An optional pagination token provided by a previous request. If this
-     * parameter is specified, the response includes only records beyond the marker, up
-     * to the value specified by <code>MaxRecords</code>. </p>
-     */
-    inline void SetMarker(const Aws::String& value) { m_marker = value; }
-
-    /**
-     * <p> An optional pagination token provided by a previous request. If this
-     * parameter is specified, the response includes only records beyond the marker, up
-     * to the value specified by <code>MaxRecords</code>. </p>
-     */
-    inline void SetMarker(Aws::String&& value) { m_marker = std::move(value); }
-
-    /**
-     * <p> An optional pagination token provided by a previous request. If this
-     * parameter is specified, the response includes only records beyond the marker, up
-     * to the value specified by <code>MaxRecords</code>. </p>
-     */
-    inline void SetMarker(const char* value) { m_marker.assign(value); }
-
-    /**
-     * <p> An optional pagination token provided by a previous request. If this
-     * parameter is specified, the response includes only records beyond the marker, up
-     * to the value specified by <code>MaxRecords</code>. </p>
-     */
-    inline DescribeTableStatisticsResult& WithMarker(const Aws::String& value) { SetMarker(value); return *this;}
-
-    /**
-     * <p> An optional pagination token provided by a previous request. If this
-     * parameter is specified, the response includes only records beyond the marker, up
-     * to the value specified by <code>MaxRecords</code>. </p>
-     */
-    inline DescribeTableStatisticsResult& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
-
-    /**
-     * <p> An optional pagination token provided by a previous request. If this
-     * parameter is specified, the response includes only records beyond the marker, up
-     * to the value specified by <code>MaxRecords</code>. </p>
-     */
-    inline DescribeTableStatisticsResult& WithMarker(const char* value) { SetMarker(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeTableStatisticsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeTableStatisticsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeTableStatisticsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeTableStatisticsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_replicationTaskArn;
+    bool m_replicationTaskArnHasBeenSet = false;
 
     Aws::Vector<TableStatistics> m_tableStatistics;
+    bool m_tableStatisticsHasBeenSet = false;
 
     Aws::String m_marker;
+    bool m_markerHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

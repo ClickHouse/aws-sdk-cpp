@@ -31,52 +31,23 @@ namespace Model
   class IngressAccessLogs
   {
   public:
-    AWS_MEDIAPACKAGE_API IngressAccessLogs();
+    AWS_MEDIAPACKAGE_API IngressAccessLogs() = default;
     AWS_MEDIAPACKAGE_API IngressAccessLogs(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIAPACKAGE_API IngressAccessLogs& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIAPACKAGE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * Customize the log group name.
      */
-    inline const Aws::String& GetLogGroupName() const{ return m_logGroupName; }
-
-    /**
-     * Customize the log group name.
-     */
+    inline const Aws::String& GetLogGroupName() const { return m_logGroupName; }
     inline bool LogGroupNameHasBeenSet() const { return m_logGroupNameHasBeenSet; }
-
-    /**
-     * Customize the log group name.
-     */
-    inline void SetLogGroupName(const Aws::String& value) { m_logGroupNameHasBeenSet = true; m_logGroupName = value; }
-
-    /**
-     * Customize the log group name.
-     */
-    inline void SetLogGroupName(Aws::String&& value) { m_logGroupNameHasBeenSet = true; m_logGroupName = std::move(value); }
-
-    /**
-     * Customize the log group name.
-     */
-    inline void SetLogGroupName(const char* value) { m_logGroupNameHasBeenSet = true; m_logGroupName.assign(value); }
-
-    /**
-     * Customize the log group name.
-     */
-    inline IngressAccessLogs& WithLogGroupName(const Aws::String& value) { SetLogGroupName(value); return *this;}
-
-    /**
-     * Customize the log group name.
-     */
-    inline IngressAccessLogs& WithLogGroupName(Aws::String&& value) { SetLogGroupName(std::move(value)); return *this;}
-
-    /**
-     * Customize the log group name.
-     */
-    inline IngressAccessLogs& WithLogGroupName(const char* value) { SetLogGroupName(value); return *this;}
-
+    template<typename LogGroupNameT = Aws::String>
+    void SetLogGroupName(LogGroupNameT&& value) { m_logGroupNameHasBeenSet = true; m_logGroupName = std::forward<LogGroupNameT>(value); }
+    template<typename LogGroupNameT = Aws::String>
+    IngressAccessLogs& WithLogGroupName(LogGroupNameT&& value) { SetLogGroupName(std::forward<LogGroupNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_logGroupName;

@@ -28,120 +28,68 @@ namespace Model
   class GenerateDataKeyWithoutPlaintextResult
   {
   public:
-    AWS_KMS_API GenerateDataKeyWithoutPlaintextResult();
+    AWS_KMS_API GenerateDataKeyWithoutPlaintextResult() = default;
     AWS_KMS_API GenerateDataKeyWithoutPlaintextResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_KMS_API GenerateDataKeyWithoutPlaintextResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The encrypted data key. When you use the HTTP API or the Amazon Web Services
      * CLI, the value is Base64-encoded. Otherwise, it is not Base64-encoded.</p>
      */
-    inline const Aws::Utils::ByteBuffer& GetCiphertextBlob() const{ return m_ciphertextBlob; }
+    inline const Aws::Utils::ByteBuffer& GetCiphertextBlob() const { return m_ciphertextBlob; }
+    template<typename CiphertextBlobT = Aws::Utils::ByteBuffer>
+    void SetCiphertextBlob(CiphertextBlobT&& value) { m_ciphertextBlobHasBeenSet = true; m_ciphertextBlob = std::forward<CiphertextBlobT>(value); }
+    template<typename CiphertextBlobT = Aws::Utils::ByteBuffer>
+    GenerateDataKeyWithoutPlaintextResult& WithCiphertextBlob(CiphertextBlobT&& value) { SetCiphertextBlob(std::forward<CiphertextBlobT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The encrypted data key. When you use the HTTP API or the Amazon Web Services
-     * CLI, the value is Base64-encoded. Otherwise, it is not Base64-encoded.</p>
-     */
-    inline void SetCiphertextBlob(const Aws::Utils::ByteBuffer& value) { m_ciphertextBlob = value; }
-
-    /**
-     * <p>The encrypted data key. When you use the HTTP API or the Amazon Web Services
-     * CLI, the value is Base64-encoded. Otherwise, it is not Base64-encoded.</p>
-     */
-    inline void SetCiphertextBlob(Aws::Utils::ByteBuffer&& value) { m_ciphertextBlob = std::move(value); }
-
-    /**
-     * <p>The encrypted data key. When you use the HTTP API or the Amazon Web Services
-     * CLI, the value is Base64-encoded. Otherwise, it is not Base64-encoded.</p>
-     */
-    inline GenerateDataKeyWithoutPlaintextResult& WithCiphertextBlob(const Aws::Utils::ByteBuffer& value) { SetCiphertextBlob(value); return *this;}
-
-    /**
-     * <p>The encrypted data key. When you use the HTTP API or the Amazon Web Services
-     * CLI, the value is Base64-encoded. Otherwise, it is not Base64-encoded.</p>
-     */
-    inline GenerateDataKeyWithoutPlaintextResult& WithCiphertextBlob(Aws::Utils::ByteBuffer&& value) { SetCiphertextBlob(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (<a
      * href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key
      * ARN</a>) of the KMS key that encrypted the data key.</p>
      */
-    inline const Aws::String& GetKeyId() const{ return m_keyId; }
+    inline const Aws::String& GetKeyId() const { return m_keyId; }
+    template<typename KeyIdT = Aws::String>
+    void SetKeyId(KeyIdT&& value) { m_keyIdHasBeenSet = true; m_keyId = std::forward<KeyIdT>(value); }
+    template<typename KeyIdT = Aws::String>
+    GenerateDataKeyWithoutPlaintextResult& WithKeyId(KeyIdT&& value) { SetKeyId(std::forward<KeyIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Amazon Resource Name (<a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key
-     * ARN</a>) of the KMS key that encrypted the data key.</p>
+     * <p>The identifier of the key material used to encrypt the data key.</p>
      */
-    inline void SetKeyId(const Aws::String& value) { m_keyId = value; }
+    inline const Aws::String& GetKeyMaterialId() const { return m_keyMaterialId; }
+    template<typename KeyMaterialIdT = Aws::String>
+    void SetKeyMaterialId(KeyMaterialIdT&& value) { m_keyMaterialIdHasBeenSet = true; m_keyMaterialId = std::forward<KeyMaterialIdT>(value); }
+    template<typename KeyMaterialIdT = Aws::String>
+    GenerateDataKeyWithoutPlaintextResult& WithKeyMaterialId(KeyMaterialIdT&& value) { SetKeyMaterialId(std::forward<KeyMaterialIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (<a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key
-     * ARN</a>) of the KMS key that encrypted the data key.</p>
-     */
-    inline void SetKeyId(Aws::String&& value) { m_keyId = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (<a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key
-     * ARN</a>) of the KMS key that encrypted the data key.</p>
-     */
-    inline void SetKeyId(const char* value) { m_keyId.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (<a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key
-     * ARN</a>) of the KMS key that encrypted the data key.</p>
-     */
-    inline GenerateDataKeyWithoutPlaintextResult& WithKeyId(const Aws::String& value) { SetKeyId(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (<a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key
-     * ARN</a>) of the KMS key that encrypted the data key.</p>
-     */
-    inline GenerateDataKeyWithoutPlaintextResult& WithKeyId(Aws::String&& value) { SetKeyId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (<a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key
-     * ARN</a>) of the KMS key that encrypted the data key.</p>
-     */
-    inline GenerateDataKeyWithoutPlaintextResult& WithKeyId(const char* value) { SetKeyId(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GenerateDataKeyWithoutPlaintextResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GenerateDataKeyWithoutPlaintextResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GenerateDataKeyWithoutPlaintextResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GenerateDataKeyWithoutPlaintextResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::Utils::ByteBuffer m_ciphertextBlob;
+    Aws::Utils::ByteBuffer m_ciphertextBlob{};
+    bool m_ciphertextBlobHasBeenSet = false;
 
     Aws::String m_keyId;
+    bool m_keyIdHasBeenSet = false;
+
+    Aws::String m_keyMaterialId;
+    bool m_keyMaterialIdHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -21,7 +21,7 @@ namespace Model
   class UpdateDataLakeExceptionSubscriptionRequest : public SecurityLakeRequest
   {
   public:
-    AWS_SECURITYLAKE_API UpdateDataLakeExceptionSubscriptionRequest();
+    AWS_SECURITYLAKE_API UpdateDataLakeExceptionSubscriptionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,111 +32,43 @@ namespace Model
     AWS_SECURITYLAKE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
-     * <p>The time-to-live (TTL) for the exception message to remain.</p>
+     * <p>The time-to-live (TTL) for the exception message to remain. It is the
+     * duration of time until which the exception message remains. </p>
      */
-    inline long long GetExceptionTimeToLive() const{ return m_exceptionTimeToLive; }
-
-    /**
-     * <p>The time-to-live (TTL) for the exception message to remain.</p>
-     */
+    inline long long GetExceptionTimeToLive() const { return m_exceptionTimeToLive; }
     inline bool ExceptionTimeToLiveHasBeenSet() const { return m_exceptionTimeToLiveHasBeenSet; }
-
-    /**
-     * <p>The time-to-live (TTL) for the exception message to remain.</p>
-     */
     inline void SetExceptionTimeToLive(long long value) { m_exceptionTimeToLiveHasBeenSet = true; m_exceptionTimeToLive = value; }
-
-    /**
-     * <p>The time-to-live (TTL) for the exception message to remain.</p>
-     */
     inline UpdateDataLakeExceptionSubscriptionRequest& WithExceptionTimeToLive(long long value) { SetExceptionTimeToLive(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The account that is subscribed to receive exception notifications.</p>
      */
-    inline const Aws::String& GetNotificationEndpoint() const{ return m_notificationEndpoint; }
-
-    /**
-     * <p>The account that is subscribed to receive exception notifications.</p>
-     */
+    inline const Aws::String& GetNotificationEndpoint() const { return m_notificationEndpoint; }
     inline bool NotificationEndpointHasBeenSet() const { return m_notificationEndpointHasBeenSet; }
+    template<typename NotificationEndpointT = Aws::String>
+    void SetNotificationEndpoint(NotificationEndpointT&& value) { m_notificationEndpointHasBeenSet = true; m_notificationEndpoint = std::forward<NotificationEndpointT>(value); }
+    template<typename NotificationEndpointT = Aws::String>
+    UpdateDataLakeExceptionSubscriptionRequest& WithNotificationEndpoint(NotificationEndpointT&& value) { SetNotificationEndpoint(std::forward<NotificationEndpointT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The account that is subscribed to receive exception notifications.</p>
-     */
-    inline void SetNotificationEndpoint(const Aws::String& value) { m_notificationEndpointHasBeenSet = true; m_notificationEndpoint = value; }
-
-    /**
-     * <p>The account that is subscribed to receive exception notifications.</p>
-     */
-    inline void SetNotificationEndpoint(Aws::String&& value) { m_notificationEndpointHasBeenSet = true; m_notificationEndpoint = std::move(value); }
-
-    /**
-     * <p>The account that is subscribed to receive exception notifications.</p>
-     */
-    inline void SetNotificationEndpoint(const char* value) { m_notificationEndpointHasBeenSet = true; m_notificationEndpoint.assign(value); }
-
-    /**
-     * <p>The account that is subscribed to receive exception notifications.</p>
-     */
-    inline UpdateDataLakeExceptionSubscriptionRequest& WithNotificationEndpoint(const Aws::String& value) { SetNotificationEndpoint(value); return *this;}
-
-    /**
-     * <p>The account that is subscribed to receive exception notifications.</p>
-     */
-    inline UpdateDataLakeExceptionSubscriptionRequest& WithNotificationEndpoint(Aws::String&& value) { SetNotificationEndpoint(std::move(value)); return *this;}
-
-    /**
-     * <p>The account that is subscribed to receive exception notifications.</p>
-     */
-    inline UpdateDataLakeExceptionSubscriptionRequest& WithNotificationEndpoint(const char* value) { SetNotificationEndpoint(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The subscription protocol to which exception messages are posted.</p>
      */
-    inline const Aws::String& GetSubscriptionProtocol() const{ return m_subscriptionProtocol; }
-
-    /**
-     * <p>The subscription protocol to which exception messages are posted.</p>
-     */
+    inline const Aws::String& GetSubscriptionProtocol() const { return m_subscriptionProtocol; }
     inline bool SubscriptionProtocolHasBeenSet() const { return m_subscriptionProtocolHasBeenSet; }
-
-    /**
-     * <p>The subscription protocol to which exception messages are posted.</p>
-     */
-    inline void SetSubscriptionProtocol(const Aws::String& value) { m_subscriptionProtocolHasBeenSet = true; m_subscriptionProtocol = value; }
-
-    /**
-     * <p>The subscription protocol to which exception messages are posted.</p>
-     */
-    inline void SetSubscriptionProtocol(Aws::String&& value) { m_subscriptionProtocolHasBeenSet = true; m_subscriptionProtocol = std::move(value); }
-
-    /**
-     * <p>The subscription protocol to which exception messages are posted.</p>
-     */
-    inline void SetSubscriptionProtocol(const char* value) { m_subscriptionProtocolHasBeenSet = true; m_subscriptionProtocol.assign(value); }
-
-    /**
-     * <p>The subscription protocol to which exception messages are posted.</p>
-     */
-    inline UpdateDataLakeExceptionSubscriptionRequest& WithSubscriptionProtocol(const Aws::String& value) { SetSubscriptionProtocol(value); return *this;}
-
-    /**
-     * <p>The subscription protocol to which exception messages are posted.</p>
-     */
-    inline UpdateDataLakeExceptionSubscriptionRequest& WithSubscriptionProtocol(Aws::String&& value) { SetSubscriptionProtocol(std::move(value)); return *this;}
-
-    /**
-     * <p>The subscription protocol to which exception messages are posted.</p>
-     */
-    inline UpdateDataLakeExceptionSubscriptionRequest& WithSubscriptionProtocol(const char* value) { SetSubscriptionProtocol(value); return *this;}
-
+    template<typename SubscriptionProtocolT = Aws::String>
+    void SetSubscriptionProtocol(SubscriptionProtocolT&& value) { m_subscriptionProtocolHasBeenSet = true; m_subscriptionProtocol = std::forward<SubscriptionProtocolT>(value); }
+    template<typename SubscriptionProtocolT = Aws::String>
+    UpdateDataLakeExceptionSubscriptionRequest& WithSubscriptionProtocol(SubscriptionProtocolT&& value) { SetSubscriptionProtocol(std::forward<SubscriptionProtocolT>(value)); return *this;}
+    ///@}
   private:
 
-    long long m_exceptionTimeToLive;
+    long long m_exceptionTimeToLive{0};
     bool m_exceptionTimeToLiveHasBeenSet = false;
 
     Aws::String m_notificationEndpoint;

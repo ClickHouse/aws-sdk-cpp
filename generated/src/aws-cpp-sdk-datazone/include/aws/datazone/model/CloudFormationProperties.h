@@ -32,60 +32,24 @@ namespace Model
   class CloudFormationProperties
   {
   public:
-    AWS_DATAZONE_API CloudFormationProperties();
+    AWS_DATAZONE_API CloudFormationProperties() = default;
     AWS_DATAZONE_API CloudFormationProperties(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAZONE_API CloudFormationProperties& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAZONE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The template URL of the cloud formation provisioning properties of the
      * environment blueprint.</p>
      */
-    inline const Aws::String& GetTemplateUrl() const{ return m_templateUrl; }
-
-    /**
-     * <p>The template URL of the cloud formation provisioning properties of the
-     * environment blueprint.</p>
-     */
+    inline const Aws::String& GetTemplateUrl() const { return m_templateUrl; }
     inline bool TemplateUrlHasBeenSet() const { return m_templateUrlHasBeenSet; }
-
-    /**
-     * <p>The template URL of the cloud formation provisioning properties of the
-     * environment blueprint.</p>
-     */
-    inline void SetTemplateUrl(const Aws::String& value) { m_templateUrlHasBeenSet = true; m_templateUrl = value; }
-
-    /**
-     * <p>The template URL of the cloud formation provisioning properties of the
-     * environment blueprint.</p>
-     */
-    inline void SetTemplateUrl(Aws::String&& value) { m_templateUrlHasBeenSet = true; m_templateUrl = std::move(value); }
-
-    /**
-     * <p>The template URL of the cloud formation provisioning properties of the
-     * environment blueprint.</p>
-     */
-    inline void SetTemplateUrl(const char* value) { m_templateUrlHasBeenSet = true; m_templateUrl.assign(value); }
-
-    /**
-     * <p>The template URL of the cloud formation provisioning properties of the
-     * environment blueprint.</p>
-     */
-    inline CloudFormationProperties& WithTemplateUrl(const Aws::String& value) { SetTemplateUrl(value); return *this;}
-
-    /**
-     * <p>The template URL of the cloud formation provisioning properties of the
-     * environment blueprint.</p>
-     */
-    inline CloudFormationProperties& WithTemplateUrl(Aws::String&& value) { SetTemplateUrl(std::move(value)); return *this;}
-
-    /**
-     * <p>The template URL of the cloud formation provisioning properties of the
-     * environment blueprint.</p>
-     */
-    inline CloudFormationProperties& WithTemplateUrl(const char* value) { SetTemplateUrl(value); return *this;}
-
+    template<typename TemplateUrlT = Aws::String>
+    void SetTemplateUrl(TemplateUrlT&& value) { m_templateUrlHasBeenSet = true; m_templateUrl = std::forward<TemplateUrlT>(value); }
+    template<typename TemplateUrlT = Aws::String>
+    CloudFormationProperties& WithTemplateUrl(TemplateUrlT&& value) { SetTemplateUrl(std::forward<TemplateUrlT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_templateUrl;

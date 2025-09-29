@@ -32,7 +32,7 @@ namespace Model
   class ElasticIpStatus
   {
   public:
-    AWS_REDSHIFT_API ElasticIpStatus();
+    AWS_REDSHIFT_API ElasticIpStatus() = default;
     AWS_REDSHIFT_API ElasticIpStatus(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_REDSHIFT_API ElasticIpStatus& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,87 +40,29 @@ namespace Model
     AWS_REDSHIFT_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The elastic IP (EIP) address for the cluster.</p>
      */
-    inline const Aws::String& GetElasticIp() const{ return m_elasticIp; }
-
-    /**
-     * <p>The elastic IP (EIP) address for the cluster.</p>
-     */
+    inline const Aws::String& GetElasticIp() const { return m_elasticIp; }
     inline bool ElasticIpHasBeenSet() const { return m_elasticIpHasBeenSet; }
+    template<typename ElasticIpT = Aws::String>
+    void SetElasticIp(ElasticIpT&& value) { m_elasticIpHasBeenSet = true; m_elasticIp = std::forward<ElasticIpT>(value); }
+    template<typename ElasticIpT = Aws::String>
+    ElasticIpStatus& WithElasticIp(ElasticIpT&& value) { SetElasticIp(std::forward<ElasticIpT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The elastic IP (EIP) address for the cluster.</p>
-     */
-    inline void SetElasticIp(const Aws::String& value) { m_elasticIpHasBeenSet = true; m_elasticIp = value; }
-
-    /**
-     * <p>The elastic IP (EIP) address for the cluster.</p>
-     */
-    inline void SetElasticIp(Aws::String&& value) { m_elasticIpHasBeenSet = true; m_elasticIp = std::move(value); }
-
-    /**
-     * <p>The elastic IP (EIP) address for the cluster.</p>
-     */
-    inline void SetElasticIp(const char* value) { m_elasticIpHasBeenSet = true; m_elasticIp.assign(value); }
-
-    /**
-     * <p>The elastic IP (EIP) address for the cluster.</p>
-     */
-    inline ElasticIpStatus& WithElasticIp(const Aws::String& value) { SetElasticIp(value); return *this;}
-
-    /**
-     * <p>The elastic IP (EIP) address for the cluster.</p>
-     */
-    inline ElasticIpStatus& WithElasticIp(Aws::String&& value) { SetElasticIp(std::move(value)); return *this;}
-
-    /**
-     * <p>The elastic IP (EIP) address for the cluster.</p>
-     */
-    inline ElasticIpStatus& WithElasticIp(const char* value) { SetElasticIp(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the elastic IP (EIP) address.</p>
      */
-    inline const Aws::String& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the elastic IP (EIP) address.</p>
-     */
+    inline const Aws::String& GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p>The status of the elastic IP (EIP) address.</p>
-     */
-    inline void SetStatus(const Aws::String& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the elastic IP (EIP) address.</p>
-     */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the elastic IP (EIP) address.</p>
-     */
-    inline void SetStatus(const char* value) { m_statusHasBeenSet = true; m_status.assign(value); }
-
-    /**
-     * <p>The status of the elastic IP (EIP) address.</p>
-     */
-    inline ElasticIpStatus& WithStatus(const Aws::String& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the elastic IP (EIP) address.</p>
-     */
-    inline ElasticIpStatus& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
-
-    /**
-     * <p>The status of the elastic IP (EIP) address.</p>
-     */
-    inline ElasticIpStatus& WithStatus(const char* value) { SetStatus(value); return *this;}
-
+    template<typename StatusT = Aws::String>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = Aws::String>
+    ElasticIpStatus& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_elasticIp;

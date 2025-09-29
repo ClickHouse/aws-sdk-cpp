@@ -20,17 +20,7 @@ namespace Redshift
 namespace Model
 {
 
-TaggedResource::TaggedResource() : 
-    m_tagHasBeenSet(false),
-    m_resourceNameHasBeenSet(false),
-    m_resourceTypeHasBeenSet(false)
-{
-}
-
-TaggedResource::TaggedResource(const XmlNode& xmlNode) : 
-    m_tagHasBeenSet(false),
-    m_resourceNameHasBeenSet(false),
-    m_resourceTypeHasBeenSet(false)
+TaggedResource::TaggedResource(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

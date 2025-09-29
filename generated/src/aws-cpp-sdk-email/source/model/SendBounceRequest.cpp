@@ -10,16 +10,6 @@
 using namespace Aws::SES::Model;
 using namespace Aws::Utils;
 
-SendBounceRequest::SendBounceRequest() : 
-    m_originalMessageIdHasBeenSet(false),
-    m_bounceSenderHasBeenSet(false),
-    m_explanationHasBeenSet(false),
-    m_messageDsnHasBeenSet(false),
-    m_bouncedRecipientInfoListHasBeenSet(false),
-    m_bounceSenderArnHasBeenSet(false)
-{
-}
-
 Aws::String SendBounceRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -46,11 +36,18 @@ Aws::String SendBounceRequest::SerializePayload() const
 
   if(m_bouncedRecipientInfoListHasBeenSet)
   {
-    unsigned bouncedRecipientInfoListCount = 1;
-    for(auto& item : m_bouncedRecipientInfoList)
+    if (m_bouncedRecipientInfoList.empty())
     {
-      item.OutputToStream(ss, "BouncedRecipientInfoList.member.", bouncedRecipientInfoListCount, "");
-      bouncedRecipientInfoListCount++;
+      ss << "BouncedRecipientInfoList=&";
+    }
+    else
+    {
+      unsigned bouncedRecipientInfoListCount = 1;
+      for(auto& item : m_bouncedRecipientInfoList)
+      {
+        item.OutputToStream(ss, "BouncedRecipientInfoList.member.", bouncedRecipientInfoListCount, "");
+        bouncedRecipientInfoListCount++;
+      }
     }
   }
 

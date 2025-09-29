@@ -12,17 +12,6 @@ using namespace Aws::Inspector2::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateFilterRequest::CreateFilterRequest() : 
-    m_action(FilterAction::NOT_SET),
-    m_actionHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_filterCriteriaHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_reasonHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateFilterRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -50,12 +39,6 @@ Aws::String CreateFilterRequest::SerializePayload() const
 
   }
 
-  if(m_reasonHasBeenSet)
-  {
-   payload.WithString("reason", m_reason);
-
-  }
-
   if(m_tagsHasBeenSet)
   {
    JsonValue tagsJsonMap;
@@ -64,6 +47,12 @@ Aws::String CreateFilterRequest::SerializePayload() const
      tagsJsonMap.WithString(tagsItem.first, tagsItem.second);
    }
    payload.WithObject("tags", std::move(tagsJsonMap));
+
+  }
+
+  if(m_reasonHasBeenSet)
+  {
+   payload.WithString("reason", m_reason);
 
   }
 

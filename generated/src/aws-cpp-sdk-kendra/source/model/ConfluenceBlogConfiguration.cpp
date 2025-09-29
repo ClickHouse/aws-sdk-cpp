@@ -18,13 +18,7 @@ namespace kendra
 namespace Model
 {
 
-ConfluenceBlogConfiguration::ConfluenceBlogConfiguration() : 
-    m_blogFieldMappingsHasBeenSet(false)
-{
-}
-
-ConfluenceBlogConfiguration::ConfluenceBlogConfiguration(JsonView jsonValue) : 
-    m_blogFieldMappingsHasBeenSet(false)
+ConfluenceBlogConfiguration::ConfluenceBlogConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ ConfluenceBlogConfiguration& ConfluenceBlogConfiguration::operator =(JsonView js
     }
     m_blogFieldMappingsHasBeenSet = true;
   }
-
   return *this;
 }
 

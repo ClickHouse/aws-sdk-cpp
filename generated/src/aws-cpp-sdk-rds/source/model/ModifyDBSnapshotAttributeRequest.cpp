@@ -10,14 +10,6 @@
 using namespace Aws::RDS::Model;
 using namespace Aws::Utils;
 
-ModifyDBSnapshotAttributeRequest::ModifyDBSnapshotAttributeRequest() : 
-    m_dBSnapshotIdentifierHasBeenSet(false),
-    m_attributeNameHasBeenSet(false),
-    m_valuesToAddHasBeenSet(false),
-    m_valuesToRemoveHasBeenSet(false)
-{
-}
-
 Aws::String ModifyDBSnapshotAttributeRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -34,23 +26,37 @@ Aws::String ModifyDBSnapshotAttributeRequest::SerializePayload() const
 
   if(m_valuesToAddHasBeenSet)
   {
-    unsigned valuesToAddCount = 1;
-    for(auto& item : m_valuesToAdd)
+    if (m_valuesToAdd.empty())
     {
-      ss << "ValuesToAdd.member." << valuesToAddCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      valuesToAddCount++;
+      ss << "ValuesToAdd=&";
+    }
+    else
+    {
+      unsigned valuesToAddCount = 1;
+      for(auto& item : m_valuesToAdd)
+      {
+        ss << "ValuesToAdd.AttributeValue." << valuesToAddCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        valuesToAddCount++;
+      }
     }
   }
 
   if(m_valuesToRemoveHasBeenSet)
   {
-    unsigned valuesToRemoveCount = 1;
-    for(auto& item : m_valuesToRemove)
+    if (m_valuesToRemove.empty())
     {
-      ss << "ValuesToRemove.member." << valuesToRemoveCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      valuesToRemoveCount++;
+      ss << "ValuesToRemove=&";
+    }
+    else
+    {
+      unsigned valuesToRemoveCount = 1;
+      for(auto& item : m_valuesToRemove)
+      {
+        ss << "ValuesToRemove.AttributeValue." << valuesToRemoveCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        valuesToRemoveCount++;
+      }
     }
   }
 

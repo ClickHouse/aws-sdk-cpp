@@ -15,16 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-ListActionsRequest::ListActionsRequest() : 
-    m_targetResourceType(TargetResourceType::NOT_SET),
-    m_targetResourceTypeHasBeenSet(false),
-    m_targetResourceIdHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false)
-{
-}
-
 Aws::String ListActionsRequest::SerializePayload() const
 {
   return {};
@@ -58,6 +48,20 @@ void ListActionsRequest::AddQueryStringParameters(URI& uri) const
     {
       ss << m_maxResults;
       uri.AddQueryStringParameter("maxResults", ss.str());
+      ss.str("");
+    }
+
+    if(m_resolveToResourceTypeHasBeenSet)
+    {
+      ss << ResolveToResourceTypeMapper::GetNameForResolveToResourceType(m_resolveToResourceType);
+      uri.AddQueryStringParameter("resolveToResourceType", ss.str());
+      ss.str("");
+    }
+
+    if(m_resolveToResourceIdHasBeenSet)
+    {
+      ss << m_resolveToResourceId;
+      uri.AddQueryStringParameter("resolveToResourceId", ss.str());
       ss.str("");
     }
 

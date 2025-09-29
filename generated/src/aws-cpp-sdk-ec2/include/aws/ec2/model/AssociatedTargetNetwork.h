@@ -33,7 +33,7 @@ namespace Model
   class AssociatedTargetNetwork
   {
   public:
-    AWS_EC2_API AssociatedTargetNetwork();
+    AWS_EC2_API AssociatedTargetNetwork() = default;
     AWS_EC2_API AssociatedTargetNetwork(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API AssociatedTargetNetwork& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -41,83 +41,33 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The ID of the subnet.</p>
      */
-    inline const Aws::String& GetNetworkId() const{ return m_networkId; }
-
-    /**
-     * <p>The ID of the subnet.</p>
-     */
+    inline const Aws::String& GetNetworkId() const { return m_networkId; }
     inline bool NetworkIdHasBeenSet() const { return m_networkIdHasBeenSet; }
+    template<typename NetworkIdT = Aws::String>
+    void SetNetworkId(NetworkIdT&& value) { m_networkIdHasBeenSet = true; m_networkId = std::forward<NetworkIdT>(value); }
+    template<typename NetworkIdT = Aws::String>
+    AssociatedTargetNetwork& WithNetworkId(NetworkIdT&& value) { SetNetworkId(std::forward<NetworkIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the subnet.</p>
-     */
-    inline void SetNetworkId(const Aws::String& value) { m_networkIdHasBeenSet = true; m_networkId = value; }
-
-    /**
-     * <p>The ID of the subnet.</p>
-     */
-    inline void SetNetworkId(Aws::String&& value) { m_networkIdHasBeenSet = true; m_networkId = std::move(value); }
-
-    /**
-     * <p>The ID of the subnet.</p>
-     */
-    inline void SetNetworkId(const char* value) { m_networkIdHasBeenSet = true; m_networkId.assign(value); }
-
-    /**
-     * <p>The ID of the subnet.</p>
-     */
-    inline AssociatedTargetNetwork& WithNetworkId(const Aws::String& value) { SetNetworkId(value); return *this;}
-
-    /**
-     * <p>The ID of the subnet.</p>
-     */
-    inline AssociatedTargetNetwork& WithNetworkId(Aws::String&& value) { SetNetworkId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the subnet.</p>
-     */
-    inline AssociatedTargetNetwork& WithNetworkId(const char* value) { SetNetworkId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The target network type.</p>
      */
-    inline const AssociatedNetworkType& GetNetworkType() const{ return m_networkType; }
-
-    /**
-     * <p>The target network type.</p>
-     */
+    inline AssociatedNetworkType GetNetworkType() const { return m_networkType; }
     inline bool NetworkTypeHasBeenSet() const { return m_networkTypeHasBeenSet; }
-
-    /**
-     * <p>The target network type.</p>
-     */
-    inline void SetNetworkType(const AssociatedNetworkType& value) { m_networkTypeHasBeenSet = true; m_networkType = value; }
-
-    /**
-     * <p>The target network type.</p>
-     */
-    inline void SetNetworkType(AssociatedNetworkType&& value) { m_networkTypeHasBeenSet = true; m_networkType = std::move(value); }
-
-    /**
-     * <p>The target network type.</p>
-     */
-    inline AssociatedTargetNetwork& WithNetworkType(const AssociatedNetworkType& value) { SetNetworkType(value); return *this;}
-
-    /**
-     * <p>The target network type.</p>
-     */
-    inline AssociatedTargetNetwork& WithNetworkType(AssociatedNetworkType&& value) { SetNetworkType(std::move(value)); return *this;}
-
+    inline void SetNetworkType(AssociatedNetworkType value) { m_networkTypeHasBeenSet = true; m_networkType = value; }
+    inline AssociatedTargetNetwork& WithNetworkType(AssociatedNetworkType value) { SetNetworkType(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_networkId;
     bool m_networkIdHasBeenSet = false;
 
-    AssociatedNetworkType m_networkType;
+    AssociatedNetworkType m_networkType{AssociatedNetworkType::NOT_SET};
     bool m_networkTypeHasBeenSet = false;
   };
 

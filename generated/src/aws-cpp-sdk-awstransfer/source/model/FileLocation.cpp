@@ -18,15 +18,7 @@ namespace Transfer
 namespace Model
 {
 
-FileLocation::FileLocation() : 
-    m_s3FileLocationHasBeenSet(false),
-    m_efsFileLocationHasBeenSet(false)
-{
-}
-
-FileLocation::FileLocation(JsonView jsonValue) : 
-    m_s3FileLocationHasBeenSet(false),
-    m_efsFileLocationHasBeenSet(false)
+FileLocation::FileLocation(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ FileLocation& FileLocation::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("S3FileLocation"))
   {
     m_s3FileLocation = jsonValue.GetObject("S3FileLocation");
-
     m_s3FileLocationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("EfsFileLocation"))
   {
     m_efsFileLocation = jsonValue.GetObject("EfsFileLocation");
-
     m_efsFileLocationHasBeenSet = true;
   }
-
   return *this;
 }
 

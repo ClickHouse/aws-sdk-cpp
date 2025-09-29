@@ -32,117 +32,38 @@ namespace Model
   class CustomRoutingEndpointConfiguration
   {
   public:
-    AWS_GLOBALACCELERATOR_API CustomRoutingEndpointConfiguration();
+    AWS_GLOBALACCELERATOR_API CustomRoutingEndpointConfiguration() = default;
     AWS_GLOBALACCELERATOR_API CustomRoutingEndpointConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLOBALACCELERATOR_API CustomRoutingEndpointConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLOBALACCELERATOR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An ID for the endpoint. For custom routing accelerators, this is the virtual
      * private cloud (VPC) subnet ID. </p>
      */
-    inline const Aws::String& GetEndpointId() const{ return m_endpointId; }
-
-    /**
-     * <p>An ID for the endpoint. For custom routing accelerators, this is the virtual
-     * private cloud (VPC) subnet ID. </p>
-     */
+    inline const Aws::String& GetEndpointId() const { return m_endpointId; }
     inline bool EndpointIdHasBeenSet() const { return m_endpointIdHasBeenSet; }
+    template<typename EndpointIdT = Aws::String>
+    void SetEndpointId(EndpointIdT&& value) { m_endpointIdHasBeenSet = true; m_endpointId = std::forward<EndpointIdT>(value); }
+    template<typename EndpointIdT = Aws::String>
+    CustomRoutingEndpointConfiguration& WithEndpointId(EndpointIdT&& value) { SetEndpointId(std::forward<EndpointIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An ID for the endpoint. For custom routing accelerators, this is the virtual
-     * private cloud (VPC) subnet ID. </p>
-     */
-    inline void SetEndpointId(const Aws::String& value) { m_endpointIdHasBeenSet = true; m_endpointId = value; }
-
-    /**
-     * <p>An ID for the endpoint. For custom routing accelerators, this is the virtual
-     * private cloud (VPC) subnet ID. </p>
-     */
-    inline void SetEndpointId(Aws::String&& value) { m_endpointIdHasBeenSet = true; m_endpointId = std::move(value); }
-
-    /**
-     * <p>An ID for the endpoint. For custom routing accelerators, this is the virtual
-     * private cloud (VPC) subnet ID. </p>
-     */
-    inline void SetEndpointId(const char* value) { m_endpointIdHasBeenSet = true; m_endpointId.assign(value); }
-
-    /**
-     * <p>An ID for the endpoint. For custom routing accelerators, this is the virtual
-     * private cloud (VPC) subnet ID. </p>
-     */
-    inline CustomRoutingEndpointConfiguration& WithEndpointId(const Aws::String& value) { SetEndpointId(value); return *this;}
-
-    /**
-     * <p>An ID for the endpoint. For custom routing accelerators, this is the virtual
-     * private cloud (VPC) subnet ID. </p>
-     */
-    inline CustomRoutingEndpointConfiguration& WithEndpointId(Aws::String&& value) { SetEndpointId(std::move(value)); return *this;}
-
-    /**
-     * <p>An ID for the endpoint. For custom routing accelerators, this is the virtual
-     * private cloud (VPC) subnet ID. </p>
-     */
-    inline CustomRoutingEndpointConfiguration& WithEndpointId(const char* value) { SetEndpointId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the cross-account attachment that specifies
      * the endpoints (resources) that can be added to accelerators and principals that
-     * have permission to add the endpoints to accelerators.</p>
+     * have permission to add the endpoints.</p>
      */
-    inline const Aws::String& GetAttachmentArn() const{ return m_attachmentArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the cross-account attachment that specifies
-     * the endpoints (resources) that can be added to accelerators and principals that
-     * have permission to add the endpoints to accelerators.</p>
-     */
+    inline const Aws::String& GetAttachmentArn() const { return m_attachmentArn; }
     inline bool AttachmentArnHasBeenSet() const { return m_attachmentArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the cross-account attachment that specifies
-     * the endpoints (resources) that can be added to accelerators and principals that
-     * have permission to add the endpoints to accelerators.</p>
-     */
-    inline void SetAttachmentArn(const Aws::String& value) { m_attachmentArnHasBeenSet = true; m_attachmentArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the cross-account attachment that specifies
-     * the endpoints (resources) that can be added to accelerators and principals that
-     * have permission to add the endpoints to accelerators.</p>
-     */
-    inline void SetAttachmentArn(Aws::String&& value) { m_attachmentArnHasBeenSet = true; m_attachmentArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the cross-account attachment that specifies
-     * the endpoints (resources) that can be added to accelerators and principals that
-     * have permission to add the endpoints to accelerators.</p>
-     */
-    inline void SetAttachmentArn(const char* value) { m_attachmentArnHasBeenSet = true; m_attachmentArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the cross-account attachment that specifies
-     * the endpoints (resources) that can be added to accelerators and principals that
-     * have permission to add the endpoints to accelerators.</p>
-     */
-    inline CustomRoutingEndpointConfiguration& WithAttachmentArn(const Aws::String& value) { SetAttachmentArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the cross-account attachment that specifies
-     * the endpoints (resources) that can be added to accelerators and principals that
-     * have permission to add the endpoints to accelerators.</p>
-     */
-    inline CustomRoutingEndpointConfiguration& WithAttachmentArn(Aws::String&& value) { SetAttachmentArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the cross-account attachment that specifies
-     * the endpoints (resources) that can be added to accelerators and principals that
-     * have permission to add the endpoints to accelerators.</p>
-     */
-    inline CustomRoutingEndpointConfiguration& WithAttachmentArn(const char* value) { SetAttachmentArn(value); return *this;}
-
+    template<typename AttachmentArnT = Aws::String>
+    void SetAttachmentArn(AttachmentArnT&& value) { m_attachmentArnHasBeenSet = true; m_attachmentArn = std::forward<AttachmentArnT>(value); }
+    template<typename AttachmentArnT = Aws::String>
+    CustomRoutingEndpointConfiguration& WithAttachmentArn(AttachmentArnT&& value) { SetAttachmentArn(std::forward<AttachmentArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_endpointId;

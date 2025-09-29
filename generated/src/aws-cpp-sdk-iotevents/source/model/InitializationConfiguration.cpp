@@ -18,15 +18,7 @@ namespace IoTEvents
 namespace Model
 {
 
-InitializationConfiguration::InitializationConfiguration() : 
-    m_disabledOnInitialization(false),
-    m_disabledOnInitializationHasBeenSet(false)
-{
-}
-
-InitializationConfiguration::InitializationConfiguration(JsonView jsonValue) : 
-    m_disabledOnInitialization(false),
-    m_disabledOnInitializationHasBeenSet(false)
+InitializationConfiguration::InitializationConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ InitializationConfiguration& InitializationConfiguration::operator =(JsonView js
   if(jsonValue.ValueExists("disabledOnInitialization"))
   {
     m_disabledOnInitialization = jsonValue.GetBool("disabledOnInitialization");
-
     m_disabledOnInitializationHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,17 +18,7 @@ namespace LexRuntimeV2
 namespace Model
 {
 
-ActiveContext::ActiveContext() : 
-    m_nameHasBeenSet(false),
-    m_timeToLiveHasBeenSet(false),
-    m_contextAttributesHasBeenSet(false)
-{
-}
-
-ActiveContext::ActiveContext(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_timeToLiveHasBeenSet(false),
-    m_contextAttributesHasBeenSet(false)
+ActiveContext::ActiveContext(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ActiveContext& ActiveContext::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("timeToLive"))
   {
     m_timeToLive = jsonValue.GetObject("timeToLive");
-
     m_timeToLiveHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("contextAttributes"))
   {
     Aws::Map<Aws::String, JsonView> contextAttributesJsonMap = jsonValue.GetObject("contextAttributes").GetAllObjects();
@@ -58,7 +44,6 @@ ActiveContext& ActiveContext::operator =(JsonView jsonValue)
     }
     m_contextAttributesHasBeenSet = true;
   }
-
   return *this;
 }
 

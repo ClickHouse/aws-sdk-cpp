@@ -10,14 +10,6 @@
 using namespace Aws::CloudFormation::Model;
 using namespace Aws::Utils;
 
-ContinueUpdateRollbackRequest::ContinueUpdateRollbackRequest() : 
-    m_stackNameHasBeenSet(false),
-    m_roleARNHasBeenSet(false),
-    m_resourcesToSkipHasBeenSet(false),
-    m_clientRequestTokenHasBeenSet(false)
-{
-}
-
 Aws::String ContinueUpdateRollbackRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -34,12 +26,19 @@ Aws::String ContinueUpdateRollbackRequest::SerializePayload() const
 
   if(m_resourcesToSkipHasBeenSet)
   {
-    unsigned resourcesToSkipCount = 1;
-    for(auto& item : m_resourcesToSkip)
+    if (m_resourcesToSkip.empty())
     {
-      ss << "ResourcesToSkip.member." << resourcesToSkipCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      resourcesToSkipCount++;
+      ss << "ResourcesToSkip=&";
+    }
+    else
+    {
+      unsigned resourcesToSkipCount = 1;
+      for(auto& item : m_resourcesToSkip)
+      {
+        ss << "ResourcesToSkip.member." << resourcesToSkipCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        resourcesToSkipCount++;
+      }
     }
   }
 

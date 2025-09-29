@@ -18,15 +18,7 @@ namespace BCMDataExports
 namespace Model
 {
 
-RefreshCadence::RefreshCadence() : 
-    m_frequency(FrequencyOption::NOT_SET),
-    m_frequencyHasBeenSet(false)
-{
-}
-
-RefreshCadence::RefreshCadence(JsonView jsonValue) : 
-    m_frequency(FrequencyOption::NOT_SET),
-    m_frequencyHasBeenSet(false)
+RefreshCadence::RefreshCadence(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ RefreshCadence& RefreshCadence::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Frequency"))
   {
     m_frequency = FrequencyOptionMapper::GetFrequencyOptionForName(jsonValue.GetString("Frequency"));
-
     m_frequencyHasBeenSet = true;
   }
-
   return *this;
 }
 

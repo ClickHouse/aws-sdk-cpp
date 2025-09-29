@@ -33,7 +33,7 @@ namespace Model
   class VerifiedAccessInstanceLoggingConfiguration
   {
   public:
-    AWS_EC2_API VerifiedAccessInstanceLoggingConfiguration();
+    AWS_EC2_API VerifiedAccessInstanceLoggingConfiguration() = default;
     AWS_EC2_API VerifiedAccessInstanceLoggingConfiguration(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API VerifiedAccessInstanceLoggingConfiguration& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -41,77 +41,29 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The ID of the Amazon Web Services Verified Access instance.</p>
      */
-    inline const Aws::String& GetVerifiedAccessInstanceId() const{ return m_verifiedAccessInstanceId; }
-
-    /**
-     * <p>The ID of the Amazon Web Services Verified Access instance.</p>
-     */
+    inline const Aws::String& GetVerifiedAccessInstanceId() const { return m_verifiedAccessInstanceId; }
     inline bool VerifiedAccessInstanceIdHasBeenSet() const { return m_verifiedAccessInstanceIdHasBeenSet; }
+    template<typename VerifiedAccessInstanceIdT = Aws::String>
+    void SetVerifiedAccessInstanceId(VerifiedAccessInstanceIdT&& value) { m_verifiedAccessInstanceIdHasBeenSet = true; m_verifiedAccessInstanceId = std::forward<VerifiedAccessInstanceIdT>(value); }
+    template<typename VerifiedAccessInstanceIdT = Aws::String>
+    VerifiedAccessInstanceLoggingConfiguration& WithVerifiedAccessInstanceId(VerifiedAccessInstanceIdT&& value) { SetVerifiedAccessInstanceId(std::forward<VerifiedAccessInstanceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Amazon Web Services Verified Access instance.</p>
-     */
-    inline void SetVerifiedAccessInstanceId(const Aws::String& value) { m_verifiedAccessInstanceIdHasBeenSet = true; m_verifiedAccessInstanceId = value; }
-
-    /**
-     * <p>The ID of the Amazon Web Services Verified Access instance.</p>
-     */
-    inline void SetVerifiedAccessInstanceId(Aws::String&& value) { m_verifiedAccessInstanceIdHasBeenSet = true; m_verifiedAccessInstanceId = std::move(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services Verified Access instance.</p>
-     */
-    inline void SetVerifiedAccessInstanceId(const char* value) { m_verifiedAccessInstanceIdHasBeenSet = true; m_verifiedAccessInstanceId.assign(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services Verified Access instance.</p>
-     */
-    inline VerifiedAccessInstanceLoggingConfiguration& WithVerifiedAccessInstanceId(const Aws::String& value) { SetVerifiedAccessInstanceId(value); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services Verified Access instance.</p>
-     */
-    inline VerifiedAccessInstanceLoggingConfiguration& WithVerifiedAccessInstanceId(Aws::String&& value) { SetVerifiedAccessInstanceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services Verified Access instance.</p>
-     */
-    inline VerifiedAccessInstanceLoggingConfiguration& WithVerifiedAccessInstanceId(const char* value) { SetVerifiedAccessInstanceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Details about the logging options.</p>
      */
-    inline const VerifiedAccessLogs& GetAccessLogs() const{ return m_accessLogs; }
-
-    /**
-     * <p>Details about the logging options.</p>
-     */
+    inline const VerifiedAccessLogs& GetAccessLogs() const { return m_accessLogs; }
     inline bool AccessLogsHasBeenSet() const { return m_accessLogsHasBeenSet; }
-
-    /**
-     * <p>Details about the logging options.</p>
-     */
-    inline void SetAccessLogs(const VerifiedAccessLogs& value) { m_accessLogsHasBeenSet = true; m_accessLogs = value; }
-
-    /**
-     * <p>Details about the logging options.</p>
-     */
-    inline void SetAccessLogs(VerifiedAccessLogs&& value) { m_accessLogsHasBeenSet = true; m_accessLogs = std::move(value); }
-
-    /**
-     * <p>Details about the logging options.</p>
-     */
-    inline VerifiedAccessInstanceLoggingConfiguration& WithAccessLogs(const VerifiedAccessLogs& value) { SetAccessLogs(value); return *this;}
-
-    /**
-     * <p>Details about the logging options.</p>
-     */
-    inline VerifiedAccessInstanceLoggingConfiguration& WithAccessLogs(VerifiedAccessLogs&& value) { SetAccessLogs(std::move(value)); return *this;}
-
+    template<typename AccessLogsT = VerifiedAccessLogs>
+    void SetAccessLogs(AccessLogsT&& value) { m_accessLogsHasBeenSet = true; m_accessLogs = std::forward<AccessLogsT>(value); }
+    template<typename AccessLogsT = VerifiedAccessLogs>
+    VerifiedAccessInstanceLoggingConfiguration& WithAccessLogs(AccessLogsT&& value) { SetAccessLogs(std::forward<AccessLogsT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_verifiedAccessInstanceId;

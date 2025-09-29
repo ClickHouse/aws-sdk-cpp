@@ -29,35 +29,24 @@ namespace Model
   class AudioPidSelection
   {
   public:
-    AWS_MEDIALIVE_API AudioPidSelection();
+    AWS_MEDIALIVE_API AudioPidSelection() = default;
     AWS_MEDIALIVE_API AudioPidSelection(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API AudioPidSelection& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * Selects a specific PID from within a source.
      */
-    inline int GetPid() const{ return m_pid; }
-
-    /**
-     * Selects a specific PID from within a source.
-     */
+    inline int GetPid() const { return m_pid; }
     inline bool PidHasBeenSet() const { return m_pidHasBeenSet; }
-
-    /**
-     * Selects a specific PID from within a source.
-     */
     inline void SetPid(int value) { m_pidHasBeenSet = true; m_pid = value; }
-
-    /**
-     * Selects a specific PID from within a source.
-     */
     inline AudioPidSelection& WithPid(int value) { SetPid(value); return *this;}
-
+    ///@}
   private:
 
-    int m_pid;
+    int m_pid{0};
     bool m_pidHasBeenSet = false;
   };
 

@@ -21,7 +21,7 @@ namespace Model
   class GetLicenseUsageRequest : public LicenseManagerRequest
   {
   public:
-    AWS_LICENSEMANAGER_API GetLicenseUsageRequest();
+    AWS_LICENSEMANAGER_API GetLicenseUsageRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_LICENSEMANAGER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>Amazon Resource Name (ARN) of the license.</p>
      */
-    inline const Aws::String& GetLicenseArn() const{ return m_licenseArn; }
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the license.</p>
-     */
+    inline const Aws::String& GetLicenseArn() const { return m_licenseArn; }
     inline bool LicenseArnHasBeenSet() const { return m_licenseArnHasBeenSet; }
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the license.</p>
-     */
-    inline void SetLicenseArn(const Aws::String& value) { m_licenseArnHasBeenSet = true; m_licenseArn = value; }
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the license.</p>
-     */
-    inline void SetLicenseArn(Aws::String&& value) { m_licenseArnHasBeenSet = true; m_licenseArn = std::move(value); }
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the license.</p>
-     */
-    inline void SetLicenseArn(const char* value) { m_licenseArnHasBeenSet = true; m_licenseArn.assign(value); }
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the license.</p>
-     */
-    inline GetLicenseUsageRequest& WithLicenseArn(const Aws::String& value) { SetLicenseArn(value); return *this;}
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the license.</p>
-     */
-    inline GetLicenseUsageRequest& WithLicenseArn(Aws::String&& value) { SetLicenseArn(std::move(value)); return *this;}
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the license.</p>
-     */
-    inline GetLicenseUsageRequest& WithLicenseArn(const char* value) { SetLicenseArn(value); return *this;}
-
+    template<typename LicenseArnT = Aws::String>
+    void SetLicenseArn(LicenseArnT&& value) { m_licenseArnHasBeenSet = true; m_licenseArn = std::forward<LicenseArnT>(value); }
+    template<typename LicenseArnT = Aws::String>
+    GetLicenseUsageRequest& WithLicenseArn(LicenseArnT&& value) { SetLicenseArn(std::forward<LicenseArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_licenseArn;

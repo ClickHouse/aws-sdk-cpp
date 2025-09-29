@@ -28,6 +28,7 @@
 #include <aws/application-autoscaling/model/DescribeScalingActivitiesRequest.h>
 #include <aws/application-autoscaling/model/DescribeScalingPoliciesRequest.h>
 #include <aws/application-autoscaling/model/DescribeScheduledActionsRequest.h>
+#include <aws/application-autoscaling/model/GetPredictiveScalingForecastRequest.h>
 #include <aws/application-autoscaling/model/ListTagsForResourceRequest.h>
 #include <aws/application-autoscaling/model/PutScalingPolicyRequest.h>
 #include <aws/application-autoscaling/model/PutScheduledActionRequest.h>
@@ -48,20 +49,27 @@ using namespace Aws::Utils::Json;
 using namespace smithy::components::tracing;
 using ResolveEndpointOutcome = Aws::Endpoint::ResolveEndpointOutcome;
 
-const char* ApplicationAutoScalingClient::SERVICE_NAME = "application-autoscaling";
-const char* ApplicationAutoScalingClient::ALLOCATION_TAG = "ApplicationAutoScalingClient";
+namespace Aws
+{
+  namespace ApplicationAutoScaling
+  {
+    const char SERVICE_NAME[] = "application-autoscaling";
+    const char ALLOCATION_TAG[] = "ApplicationAutoScalingClient";
+  }
+}
+const char* ApplicationAutoScalingClient::GetServiceName() {return SERVICE_NAME;}
+const char* ApplicationAutoScalingClient::GetAllocationTag() {return ALLOCATION_TAG;}
 
 ApplicationAutoScalingClient::ApplicationAutoScalingClient(const ApplicationAutoScaling::ApplicationAutoScalingClientConfiguration& clientConfiguration,
                                                            std::shared_ptr<ApplicationAutoScalingEndpointProviderBase> endpointProvider) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<ApplicationAutoScalingErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
-  m_endpointProvider(std::move(endpointProvider))
+  m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<ApplicationAutoScalingEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -76,8 +84,7 @@ ApplicationAutoScalingClient::ApplicationAutoScalingClient(const AWSCredentials&
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<ApplicationAutoScalingErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<ApplicationAutoScalingEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -92,8 +99,7 @@ ApplicationAutoScalingClient::ApplicationAutoScalingClient(const std::shared_ptr
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<ApplicationAutoScalingErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<ApplicationAutoScalingEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -102,12 +108,11 @@ ApplicationAutoScalingClient::ApplicationAutoScalingClient(const std::shared_ptr
   ApplicationAutoScalingClient::ApplicationAutoScalingClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<ApplicationAutoScalingErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
   m_endpointProvider(Aws::MakeShared<ApplicationAutoScalingEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -122,7 +127,6 @@ ApplicationAutoScalingClient::ApplicationAutoScalingClient(const AWSCredentials&
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<ApplicationAutoScalingErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<ApplicationAutoScalingEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -137,7 +141,6 @@ ApplicationAutoScalingClient::ApplicationAutoScalingClient(const std::shared_ptr
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<ApplicationAutoScalingErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<ApplicationAutoScalingEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -157,6 +160,14 @@ std::shared_ptr<ApplicationAutoScalingEndpointProviderBase>& ApplicationAutoScal
 void ApplicationAutoScalingClient::init(const ApplicationAutoScaling::ApplicationAutoScalingClientConfiguration& config)
 {
   AWSClient::SetServiceClientName("Application Auto Scaling");
+  if (!m_clientConfiguration.executor) {
+    if (!m_clientConfiguration.configFactories.executorCreateFn()) {
+      AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "Failed to initialize client: config is missing Executor or executorCreateFn");
+      m_isInitialized = false;
+      return;
+    }
+    m_clientConfiguration.executor = m_clientConfiguration.configFactories.executorCreateFn();
+  }
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
   m_endpointProvider->InitBuiltInParameters(config);
 }
@@ -343,6 +354,32 @@ DescribeScheduledActionsOutcome ApplicationAutoScalingClient::DescribeScheduledA
           {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
       AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, DescribeScheduledActions, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
       return DescribeScheduledActionsOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
+    },
+    TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
+    *meter,
+    {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+}
+
+GetPredictiveScalingForecastOutcome ApplicationAutoScalingClient::GetPredictiveScalingForecast(const GetPredictiveScalingForecastRequest& request) const
+{
+  AWS_OPERATION_GUARD(GetPredictiveScalingForecast);
+  AWS_OPERATION_CHECK_PTR(m_endpointProvider, GetPredictiveScalingForecast, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE);
+  AWS_OPERATION_CHECK_PTR(m_telemetryProvider, GetPredictiveScalingForecast, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto tracer = m_telemetryProvider->getTracer(this->GetServiceClientName(), {});
+  auto meter = m_telemetryProvider->getMeter(this->GetServiceClientName(), {});
+  AWS_OPERATION_CHECK_PTR(meter, GetPredictiveScalingForecast, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto span = tracer->CreateSpan(Aws::String(this->GetServiceClientName()) + ".GetPredictiveScalingForecast",
+    {{ TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName() }, { TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName() }, { TracingUtils::SMITHY_SYSTEM_DIMENSION, TracingUtils::SMITHY_METHOD_AWS_VALUE }},
+    smithy::components::tracing::SpanKind::CLIENT);
+  return TracingUtils::MakeCallWithTiming<GetPredictiveScalingForecastOutcome>(
+    [&]()-> GetPredictiveScalingForecastOutcome {
+      auto endpointResolutionOutcome = TracingUtils::MakeCallWithTiming<ResolveEndpointOutcome>(
+          [&]() -> ResolveEndpointOutcome { return m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams()); },
+          TracingUtils::SMITHY_CLIENT_ENDPOINT_RESOLUTION_METRIC,
+          *meter,
+          {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+      AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, GetPredictiveScalingForecast, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
+      return GetPredictiveScalingForecastOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
     },
     TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
     *meter,

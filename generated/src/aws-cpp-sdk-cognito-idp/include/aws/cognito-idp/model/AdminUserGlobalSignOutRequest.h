@@ -25,7 +25,7 @@ namespace Model
   class AdminUserGlobalSignOutRequest : public CognitoIdentityProviderRequest
   {
   public:
-    AWS_COGNITOIDENTITYPROVIDER_API AdminUserGlobalSignOutRequest();
+    AWS_COGNITOIDENTITYPROVIDER_API AdminUserGlobalSignOutRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,111 +38,33 @@ namespace Model
     AWS_COGNITOIDENTITYPROVIDER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
-     * <p>The user pool ID.</p>
+     * <p>The ID of the user pool where you want to sign out a user.</p>
      */
-    inline const Aws::String& GetUserPoolId() const{ return m_userPoolId; }
-
-    /**
-     * <p>The user pool ID.</p>
-     */
+    inline const Aws::String& GetUserPoolId() const { return m_userPoolId; }
     inline bool UserPoolIdHasBeenSet() const { return m_userPoolIdHasBeenSet; }
+    template<typename UserPoolIdT = Aws::String>
+    void SetUserPoolId(UserPoolIdT&& value) { m_userPoolIdHasBeenSet = true; m_userPoolId = std::forward<UserPoolIdT>(value); }
+    template<typename UserPoolIdT = Aws::String>
+    AdminUserGlobalSignOutRequest& WithUserPoolId(UserPoolIdT&& value) { SetUserPoolId(std::forward<UserPoolIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The user pool ID.</p>
-     */
-    inline void SetUserPoolId(const Aws::String& value) { m_userPoolIdHasBeenSet = true; m_userPoolId = value; }
-
-    /**
-     * <p>The user pool ID.</p>
-     */
-    inline void SetUserPoolId(Aws::String&& value) { m_userPoolIdHasBeenSet = true; m_userPoolId = std::move(value); }
-
-    /**
-     * <p>The user pool ID.</p>
-     */
-    inline void SetUserPoolId(const char* value) { m_userPoolIdHasBeenSet = true; m_userPoolId.assign(value); }
-
-    /**
-     * <p>The user pool ID.</p>
-     */
-    inline AdminUserGlobalSignOutRequest& WithUserPoolId(const Aws::String& value) { SetUserPoolId(value); return *this;}
-
-    /**
-     * <p>The user pool ID.</p>
-     */
-    inline AdminUserGlobalSignOutRequest& WithUserPoolId(Aws::String&& value) { SetUserPoolId(std::move(value)); return *this;}
-
-    /**
-     * <p>The user pool ID.</p>
-     */
-    inline AdminUserGlobalSignOutRequest& WithUserPoolId(const char* value) { SetUserPoolId(value); return *this;}
-
-
-    /**
-     * <p>The username of the user that you want to query or modify. The value of this
+     * <p>The name of the user that you want to query or modify. The value of this
      * parameter is typically your user's username, but it can be any of their alias
      * attributes. If <code>username</code> isn't an alias attribute in your user pool,
-     * you can also use their <code>sub</code> in this request.</p>
+     * this value must be the <code>sub</code> of a local user or the username of a
+     * user from a third-party IdP.</p>
      */
-    inline const Aws::String& GetUsername() const{ return m_username; }
-
-    /**
-     * <p>The username of the user that you want to query or modify. The value of this
-     * parameter is typically your user's username, but it can be any of their alias
-     * attributes. If <code>username</code> isn't an alias attribute in your user pool,
-     * you can also use their <code>sub</code> in this request.</p>
-     */
+    inline const Aws::String& GetUsername() const { return m_username; }
     inline bool UsernameHasBeenSet() const { return m_usernameHasBeenSet; }
-
-    /**
-     * <p>The username of the user that you want to query or modify. The value of this
-     * parameter is typically your user's username, but it can be any of their alias
-     * attributes. If <code>username</code> isn't an alias attribute in your user pool,
-     * you can also use their <code>sub</code> in this request.</p>
-     */
-    inline void SetUsername(const Aws::String& value) { m_usernameHasBeenSet = true; m_username = value; }
-
-    /**
-     * <p>The username of the user that you want to query or modify. The value of this
-     * parameter is typically your user's username, but it can be any of their alias
-     * attributes. If <code>username</code> isn't an alias attribute in your user pool,
-     * you can also use their <code>sub</code> in this request.</p>
-     */
-    inline void SetUsername(Aws::String&& value) { m_usernameHasBeenSet = true; m_username = std::move(value); }
-
-    /**
-     * <p>The username of the user that you want to query or modify. The value of this
-     * parameter is typically your user's username, but it can be any of their alias
-     * attributes. If <code>username</code> isn't an alias attribute in your user pool,
-     * you can also use their <code>sub</code> in this request.</p>
-     */
-    inline void SetUsername(const char* value) { m_usernameHasBeenSet = true; m_username.assign(value); }
-
-    /**
-     * <p>The username of the user that you want to query or modify. The value of this
-     * parameter is typically your user's username, but it can be any of their alias
-     * attributes. If <code>username</code> isn't an alias attribute in your user pool,
-     * you can also use their <code>sub</code> in this request.</p>
-     */
-    inline AdminUserGlobalSignOutRequest& WithUsername(const Aws::String& value) { SetUsername(value); return *this;}
-
-    /**
-     * <p>The username of the user that you want to query or modify. The value of this
-     * parameter is typically your user's username, but it can be any of their alias
-     * attributes. If <code>username</code> isn't an alias attribute in your user pool,
-     * you can also use their <code>sub</code> in this request.</p>
-     */
-    inline AdminUserGlobalSignOutRequest& WithUsername(Aws::String&& value) { SetUsername(std::move(value)); return *this;}
-
-    /**
-     * <p>The username of the user that you want to query or modify. The value of this
-     * parameter is typically your user's username, but it can be any of their alias
-     * attributes. If <code>username</code> isn't an alias attribute in your user pool,
-     * you can also use their <code>sub</code> in this request.</p>
-     */
-    inline AdminUserGlobalSignOutRequest& WithUsername(const char* value) { SetUsername(value); return *this;}
-
+    template<typename UsernameT = Aws::String>
+    void SetUsername(UsernameT&& value) { m_usernameHasBeenSet = true; m_username = std::forward<UsernameT>(value); }
+    template<typename UsernameT = Aws::String>
+    AdminUserGlobalSignOutRequest& WithUsername(UsernameT&& value) { SetUsername(std::forward<UsernameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_userPoolId;

@@ -18,17 +18,7 @@ namespace AuditManager
 namespace Model
 {
 
-ControlComment::ControlComment() : 
-    m_authorNameHasBeenSet(false),
-    m_commentBodyHasBeenSet(false),
-    m_postedDateHasBeenSet(false)
-{
-}
-
-ControlComment::ControlComment(JsonView jsonValue) : 
-    m_authorNameHasBeenSet(false),
-    m_commentBodyHasBeenSet(false),
-    m_postedDateHasBeenSet(false)
+ControlComment::ControlComment(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ ControlComment& ControlComment::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("authorName"))
   {
     m_authorName = jsonValue.GetString("authorName");
-
     m_authorNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("commentBody"))
   {
     m_commentBody = jsonValue.GetString("commentBody");
-
     m_commentBodyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("postedDate"))
   {
     m_postedDate = jsonValue.GetDouble("postedDate");
-
     m_postedDateHasBeenSet = true;
   }
-
   return *this;
 }
 

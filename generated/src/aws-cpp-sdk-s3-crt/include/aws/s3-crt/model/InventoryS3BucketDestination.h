@@ -26,242 +26,83 @@ namespace Model
 
   /**
    * <p>Contains the bucket name, file format, bucket owner (optional), and prefix
-   * (optional) where inventory results are published.</p><p><h3>See Also:</h3>   <a
+   * (optional) where S3 Inventory results are published.</p><p><h3>See Also:</h3>  
+   * <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/InventoryS3BucketDestination">AWS
    * API Reference</a></p>
    */
   class InventoryS3BucketDestination
   {
   public:
-    AWS_S3CRT_API InventoryS3BucketDestination();
+    AWS_S3CRT_API InventoryS3BucketDestination() = default;
     AWS_S3CRT_API InventoryS3BucketDestination(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3CRT_API InventoryS3BucketDestination& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3CRT_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>The account ID that owns the destination S3 bucket. If no account ID is
      * provided, the owner is not validated before exporting data. </p>  <p>
      * Although this value is optional, we strongly recommend that you set it to help
      * prevent problems if the destination bucket ownership changes. </p> 
      */
-    inline const Aws::String& GetAccountId() const{ return m_accountId; }
-
-    /**
-     * <p>The account ID that owns the destination S3 bucket. If no account ID is
-     * provided, the owner is not validated before exporting data. </p>  <p>
-     * Although this value is optional, we strongly recommend that you set it to help
-     * prevent problems if the destination bucket ownership changes. </p> 
-     */
+    inline const Aws::String& GetAccountId() const { return m_accountId; }
     inline bool AccountIdHasBeenSet() const { return m_accountIdHasBeenSet; }
+    template<typename AccountIdT = Aws::String>
+    void SetAccountId(AccountIdT&& value) { m_accountIdHasBeenSet = true; m_accountId = std::forward<AccountIdT>(value); }
+    template<typename AccountIdT = Aws::String>
+    InventoryS3BucketDestination& WithAccountId(AccountIdT&& value) { SetAccountId(std::forward<AccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The account ID that owns the destination S3 bucket. If no account ID is
-     * provided, the owner is not validated before exporting data. </p>  <p>
-     * Although this value is optional, we strongly recommend that you set it to help
-     * prevent problems if the destination bucket ownership changes. </p> 
-     */
-    inline void SetAccountId(const Aws::String& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
-
-    /**
-     * <p>The account ID that owns the destination S3 bucket. If no account ID is
-     * provided, the owner is not validated before exporting data. </p>  <p>
-     * Although this value is optional, we strongly recommend that you set it to help
-     * prevent problems if the destination bucket ownership changes. </p> 
-     */
-    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = std::move(value); }
-
-    /**
-     * <p>The account ID that owns the destination S3 bucket. If no account ID is
-     * provided, the owner is not validated before exporting data. </p>  <p>
-     * Although this value is optional, we strongly recommend that you set it to help
-     * prevent problems if the destination bucket ownership changes. </p> 
-     */
-    inline void SetAccountId(const char* value) { m_accountIdHasBeenSet = true; m_accountId.assign(value); }
-
-    /**
-     * <p>The account ID that owns the destination S3 bucket. If no account ID is
-     * provided, the owner is not validated before exporting data. </p>  <p>
-     * Although this value is optional, we strongly recommend that you set it to help
-     * prevent problems if the destination bucket ownership changes. </p> 
-     */
-    inline InventoryS3BucketDestination& WithAccountId(const Aws::String& value) { SetAccountId(value); return *this;}
-
-    /**
-     * <p>The account ID that owns the destination S3 bucket. If no account ID is
-     * provided, the owner is not validated before exporting data. </p>  <p>
-     * Although this value is optional, we strongly recommend that you set it to help
-     * prevent problems if the destination bucket ownership changes. </p> 
-     */
-    inline InventoryS3BucketDestination& WithAccountId(Aws::String&& value) { SetAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The account ID that owns the destination S3 bucket. If no account ID is
-     * provided, the owner is not validated before exporting data. </p>  <p>
-     * Although this value is optional, we strongly recommend that you set it to help
-     * prevent problems if the destination bucket ownership changes. </p> 
-     */
-    inline InventoryS3BucketDestination& WithAccountId(const char* value) { SetAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the bucket where inventory results will be
      * published.</p>
      */
-    inline const Aws::String& GetBucket() const{ return m_bucket; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the bucket where inventory results will be
-     * published.</p>
-     */
+    inline const Aws::String& GetBucket() const { return m_bucket; }
     inline bool BucketHasBeenSet() const { return m_bucketHasBeenSet; }
+    template<typename BucketT = Aws::String>
+    void SetBucket(BucketT&& value) { m_bucketHasBeenSet = true; m_bucket = std::forward<BucketT>(value); }
+    template<typename BucketT = Aws::String>
+    InventoryS3BucketDestination& WithBucket(BucketT&& value) { SetBucket(std::forward<BucketT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the bucket where inventory results will be
-     * published.</p>
-     */
-    inline void SetBucket(const Aws::String& value) { m_bucketHasBeenSet = true; m_bucket = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the bucket where inventory results will be
-     * published.</p>
-     */
-    inline void SetBucket(Aws::String&& value) { m_bucketHasBeenSet = true; m_bucket = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the bucket where inventory results will be
-     * published.</p>
-     */
-    inline void SetBucket(const char* value) { m_bucketHasBeenSet = true; m_bucket.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the bucket where inventory results will be
-     * published.</p>
-     */
-    inline InventoryS3BucketDestination& WithBucket(const Aws::String& value) { SetBucket(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the bucket where inventory results will be
-     * published.</p>
-     */
-    inline InventoryS3BucketDestination& WithBucket(Aws::String&& value) { SetBucket(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the bucket where inventory results will be
-     * published.</p>
-     */
-    inline InventoryS3BucketDestination& WithBucket(const char* value) { SetBucket(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the output format of the inventory results.</p>
      */
-    inline const InventoryFormat& GetFormat() const{ return m_format; }
-
-    /**
-     * <p>Specifies the output format of the inventory results.</p>
-     */
+    inline InventoryFormat GetFormat() const { return m_format; }
     inline bool FormatHasBeenSet() const { return m_formatHasBeenSet; }
+    inline void SetFormat(InventoryFormat value) { m_formatHasBeenSet = true; m_format = value; }
+    inline InventoryS3BucketDestination& WithFormat(InventoryFormat value) { SetFormat(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the output format of the inventory results.</p>
-     */
-    inline void SetFormat(const InventoryFormat& value) { m_formatHasBeenSet = true; m_format = value; }
-
-    /**
-     * <p>Specifies the output format of the inventory results.</p>
-     */
-    inline void SetFormat(InventoryFormat&& value) { m_formatHasBeenSet = true; m_format = std::move(value); }
-
-    /**
-     * <p>Specifies the output format of the inventory results.</p>
-     */
-    inline InventoryS3BucketDestination& WithFormat(const InventoryFormat& value) { SetFormat(value); return *this;}
-
-    /**
-     * <p>Specifies the output format of the inventory results.</p>
-     */
-    inline InventoryS3BucketDestination& WithFormat(InventoryFormat&& value) { SetFormat(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The prefix that is prepended to all inventory results.</p>
      */
-    inline const Aws::String& GetPrefix() const{ return m_prefix; }
-
-    /**
-     * <p>The prefix that is prepended to all inventory results.</p>
-     */
+    inline const Aws::String& GetPrefix() const { return m_prefix; }
     inline bool PrefixHasBeenSet() const { return m_prefixHasBeenSet; }
+    template<typename PrefixT = Aws::String>
+    void SetPrefix(PrefixT&& value) { m_prefixHasBeenSet = true; m_prefix = std::forward<PrefixT>(value); }
+    template<typename PrefixT = Aws::String>
+    InventoryS3BucketDestination& WithPrefix(PrefixT&& value) { SetPrefix(std::forward<PrefixT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The prefix that is prepended to all inventory results.</p>
-     */
-    inline void SetPrefix(const Aws::String& value) { m_prefixHasBeenSet = true; m_prefix = value; }
-
-    /**
-     * <p>The prefix that is prepended to all inventory results.</p>
-     */
-    inline void SetPrefix(Aws::String&& value) { m_prefixHasBeenSet = true; m_prefix = std::move(value); }
-
-    /**
-     * <p>The prefix that is prepended to all inventory results.</p>
-     */
-    inline void SetPrefix(const char* value) { m_prefixHasBeenSet = true; m_prefix.assign(value); }
-
-    /**
-     * <p>The prefix that is prepended to all inventory results.</p>
-     */
-    inline InventoryS3BucketDestination& WithPrefix(const Aws::String& value) { SetPrefix(value); return *this;}
-
-    /**
-     * <p>The prefix that is prepended to all inventory results.</p>
-     */
-    inline InventoryS3BucketDestination& WithPrefix(Aws::String&& value) { SetPrefix(std::move(value)); return *this;}
-
-    /**
-     * <p>The prefix that is prepended to all inventory results.</p>
-     */
-    inline InventoryS3BucketDestination& WithPrefix(const char* value) { SetPrefix(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Contains the type of server-side encryption used to encrypt the inventory
      * results.</p>
      */
-    inline const InventoryEncryption& GetEncryption() const{ return m_encryption; }
-
-    /**
-     * <p>Contains the type of server-side encryption used to encrypt the inventory
-     * results.</p>
-     */
+    inline const InventoryEncryption& GetEncryption() const { return m_encryption; }
     inline bool EncryptionHasBeenSet() const { return m_encryptionHasBeenSet; }
-
-    /**
-     * <p>Contains the type of server-side encryption used to encrypt the inventory
-     * results.</p>
-     */
-    inline void SetEncryption(const InventoryEncryption& value) { m_encryptionHasBeenSet = true; m_encryption = value; }
-
-    /**
-     * <p>Contains the type of server-side encryption used to encrypt the inventory
-     * results.</p>
-     */
-    inline void SetEncryption(InventoryEncryption&& value) { m_encryptionHasBeenSet = true; m_encryption = std::move(value); }
-
-    /**
-     * <p>Contains the type of server-side encryption used to encrypt the inventory
-     * results.</p>
-     */
-    inline InventoryS3BucketDestination& WithEncryption(const InventoryEncryption& value) { SetEncryption(value); return *this;}
-
-    /**
-     * <p>Contains the type of server-side encryption used to encrypt the inventory
-     * results.</p>
-     */
-    inline InventoryS3BucketDestination& WithEncryption(InventoryEncryption&& value) { SetEncryption(std::move(value)); return *this;}
-
+    template<typename EncryptionT = InventoryEncryption>
+    void SetEncryption(EncryptionT&& value) { m_encryptionHasBeenSet = true; m_encryption = std::forward<EncryptionT>(value); }
+    template<typename EncryptionT = InventoryEncryption>
+    InventoryS3BucketDestination& WithEncryption(EncryptionT&& value) { SetEncryption(std::forward<EncryptionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_accountId;
@@ -270,7 +111,7 @@ namespace Model
     Aws::String m_bucket;
     bool m_bucketHasBeenSet = false;
 
-    InventoryFormat m_format;
+    InventoryFormat m_format{InventoryFormat::NOT_SET};
     bool m_formatHasBeenSet = false;
 
     Aws::String m_prefix;

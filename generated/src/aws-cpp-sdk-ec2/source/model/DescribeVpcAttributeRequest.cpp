@@ -10,22 +10,13 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-DescribeVpcAttributeRequest::DescribeVpcAttributeRequest() : 
-    m_attribute(VpcAttributeName::NOT_SET),
-    m_attributeHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false)
-{
-}
-
 Aws::String DescribeVpcAttributeRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=DescribeVpcAttribute&";
   if(m_attributeHasBeenSet)
   {
-    ss << "Attribute=" << VpcAttributeNameMapper::GetNameForVpcAttributeName(m_attribute) << "&";
+    ss << "Attribute=" << StringUtils::URLEncode(VpcAttributeNameMapper::GetNameForVpcAttributeName(m_attribute)) << "&";
   }
 
   if(m_vpcIdHasBeenSet)

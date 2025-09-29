@@ -33,52 +33,25 @@ namespace Model
   class AgentConfig
   {
   public:
-    AWS_CONNECT_API AgentConfig();
+    AWS_CONNECT_API AgentConfig() = default;
     AWS_CONNECT_API AgentConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API AgentConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Information about traffic distributions.</p>
      */
-    inline const Aws::Vector<Distribution>& GetDistributions() const{ return m_distributions; }
-
-    /**
-     * <p>Information about traffic distributions.</p>
-     */
+    inline const Aws::Vector<Distribution>& GetDistributions() const { return m_distributions; }
     inline bool DistributionsHasBeenSet() const { return m_distributionsHasBeenSet; }
-
-    /**
-     * <p>Information about traffic distributions.</p>
-     */
-    inline void SetDistributions(const Aws::Vector<Distribution>& value) { m_distributionsHasBeenSet = true; m_distributions = value; }
-
-    /**
-     * <p>Information about traffic distributions.</p>
-     */
-    inline void SetDistributions(Aws::Vector<Distribution>&& value) { m_distributionsHasBeenSet = true; m_distributions = std::move(value); }
-
-    /**
-     * <p>Information about traffic distributions.</p>
-     */
-    inline AgentConfig& WithDistributions(const Aws::Vector<Distribution>& value) { SetDistributions(value); return *this;}
-
-    /**
-     * <p>Information about traffic distributions.</p>
-     */
-    inline AgentConfig& WithDistributions(Aws::Vector<Distribution>&& value) { SetDistributions(std::move(value)); return *this;}
-
-    /**
-     * <p>Information about traffic distributions.</p>
-     */
-    inline AgentConfig& AddDistributions(const Distribution& value) { m_distributionsHasBeenSet = true; m_distributions.push_back(value); return *this; }
-
-    /**
-     * <p>Information about traffic distributions.</p>
-     */
-    inline AgentConfig& AddDistributions(Distribution&& value) { m_distributionsHasBeenSet = true; m_distributions.push_back(std::move(value)); return *this; }
-
+    template<typename DistributionsT = Aws::Vector<Distribution>>
+    void SetDistributions(DistributionsT&& value) { m_distributionsHasBeenSet = true; m_distributions = std::forward<DistributionsT>(value); }
+    template<typename DistributionsT = Aws::Vector<Distribution>>
+    AgentConfig& WithDistributions(DistributionsT&& value) { SetDistributions(std::forward<DistributionsT>(value)); return *this;}
+    template<typename DistributionsT = Distribution>
+    AgentConfig& AddDistributions(DistributionsT&& value) { m_distributionsHasBeenSet = true; m_distributions.emplace_back(std::forward<DistributionsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Distribution> m_distributions;

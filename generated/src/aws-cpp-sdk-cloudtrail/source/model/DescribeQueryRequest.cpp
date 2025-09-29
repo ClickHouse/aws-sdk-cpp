@@ -12,12 +12,6 @@ using namespace Aws::CloudTrail::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DescribeQueryRequest::DescribeQueryRequest() : 
-    m_queryIdHasBeenSet(false),
-    m_queryAliasHasBeenSet(false)
-{
-}
-
 Aws::String DescribeQueryRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -31,6 +25,18 @@ Aws::String DescribeQueryRequest::SerializePayload() const
   if(m_queryAliasHasBeenSet)
   {
    payload.WithString("QueryAlias", m_queryAlias);
+
+  }
+
+  if(m_refreshIdHasBeenSet)
+  {
+   payload.WithString("RefreshId", m_refreshId);
+
+  }
+
+  if(m_eventDataStoreOwnerAccountIdHasBeenSet)
+  {
+   payload.WithString("EventDataStoreOwnerAccountId", m_eventDataStoreOwnerAccountId);
 
   }
 

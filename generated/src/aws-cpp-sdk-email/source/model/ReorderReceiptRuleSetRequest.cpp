@@ -10,12 +10,6 @@
 using namespace Aws::SES::Model;
 using namespace Aws::Utils;
 
-ReorderReceiptRuleSetRequest::ReorderReceiptRuleSetRequest() : 
-    m_ruleSetNameHasBeenSet(false),
-    m_ruleNamesHasBeenSet(false)
-{
-}
-
 Aws::String ReorderReceiptRuleSetRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -27,12 +21,19 @@ Aws::String ReorderReceiptRuleSetRequest::SerializePayload() const
 
   if(m_ruleNamesHasBeenSet)
   {
-    unsigned ruleNamesCount = 1;
-    for(auto& item : m_ruleNames)
+    if (m_ruleNames.empty())
     {
-      ss << "RuleNames.member." << ruleNamesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      ruleNamesCount++;
+      ss << "RuleNames=&";
+    }
+    else
+    {
+      unsigned ruleNamesCount = 1;
+      for(auto& item : m_ruleNames)
+      {
+        ss << "RuleNames.member." << ruleNamesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        ruleNamesCount++;
+      }
     }
   }
 

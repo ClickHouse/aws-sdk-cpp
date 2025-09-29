@@ -18,19 +18,7 @@ namespace IoT
 namespace Model
 {
 
-ServerCertificateSummary::ServerCertificateSummary() : 
-    m_serverCertificateArnHasBeenSet(false),
-    m_serverCertificateStatus(ServerCertificateStatus::NOT_SET),
-    m_serverCertificateStatusHasBeenSet(false),
-    m_serverCertificateStatusDetailHasBeenSet(false)
-{
-}
-
-ServerCertificateSummary::ServerCertificateSummary(JsonView jsonValue) : 
-    m_serverCertificateArnHasBeenSet(false),
-    m_serverCertificateStatus(ServerCertificateStatus::NOT_SET),
-    m_serverCertificateStatusHasBeenSet(false),
-    m_serverCertificateStatusDetailHasBeenSet(false)
+ServerCertificateSummary::ServerCertificateSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ ServerCertificateSummary& ServerCertificateSummary::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("serverCertificateArn"))
   {
     m_serverCertificateArn = jsonValue.GetString("serverCertificateArn");
-
     m_serverCertificateArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("serverCertificateStatus"))
   {
     m_serverCertificateStatus = ServerCertificateStatusMapper::GetServerCertificateStatusForName(jsonValue.GetString("serverCertificateStatus"));
-
     m_serverCertificateStatusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("serverCertificateStatusDetail"))
   {
     m_serverCertificateStatusDetail = jsonValue.GetString("serverCertificateStatusDetail");
-
     m_serverCertificateStatusDetailHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -37,130 +37,46 @@ namespace Model
   class S3Config
   {
   public:
-    AWS_INTERNETMONITOR_API S3Config();
+    AWS_INTERNETMONITOR_API S3Config() = default;
     AWS_INTERNETMONITOR_API S3Config(Aws::Utils::Json::JsonView jsonValue);
     AWS_INTERNETMONITOR_API S3Config& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_INTERNETMONITOR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon S3 bucket name.</p>
      */
-    inline const Aws::String& GetBucketName() const{ return m_bucketName; }
-
-    /**
-     * <p>The Amazon S3 bucket name.</p>
-     */
+    inline const Aws::String& GetBucketName() const { return m_bucketName; }
     inline bool BucketNameHasBeenSet() const { return m_bucketNameHasBeenSet; }
+    template<typename BucketNameT = Aws::String>
+    void SetBucketName(BucketNameT&& value) { m_bucketNameHasBeenSet = true; m_bucketName = std::forward<BucketNameT>(value); }
+    template<typename BucketNameT = Aws::String>
+    S3Config& WithBucketName(BucketNameT&& value) { SetBucketName(std::forward<BucketNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon S3 bucket name.</p>
-     */
-    inline void SetBucketName(const Aws::String& value) { m_bucketNameHasBeenSet = true; m_bucketName = value; }
-
-    /**
-     * <p>The Amazon S3 bucket name.</p>
-     */
-    inline void SetBucketName(Aws::String&& value) { m_bucketNameHasBeenSet = true; m_bucketName = std::move(value); }
-
-    /**
-     * <p>The Amazon S3 bucket name.</p>
-     */
-    inline void SetBucketName(const char* value) { m_bucketNameHasBeenSet = true; m_bucketName.assign(value); }
-
-    /**
-     * <p>The Amazon S3 bucket name.</p>
-     */
-    inline S3Config& WithBucketName(const Aws::String& value) { SetBucketName(value); return *this;}
-
-    /**
-     * <p>The Amazon S3 bucket name.</p>
-     */
-    inline S3Config& WithBucketName(Aws::String&& value) { SetBucketName(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon S3 bucket name.</p>
-     */
-    inline S3Config& WithBucketName(const char* value) { SetBucketName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon S3 bucket prefix.</p>
      */
-    inline const Aws::String& GetBucketPrefix() const{ return m_bucketPrefix; }
-
-    /**
-     * <p>The Amazon S3 bucket prefix.</p>
-     */
+    inline const Aws::String& GetBucketPrefix() const { return m_bucketPrefix; }
     inline bool BucketPrefixHasBeenSet() const { return m_bucketPrefixHasBeenSet; }
+    template<typename BucketPrefixT = Aws::String>
+    void SetBucketPrefix(BucketPrefixT&& value) { m_bucketPrefixHasBeenSet = true; m_bucketPrefix = std::forward<BucketPrefixT>(value); }
+    template<typename BucketPrefixT = Aws::String>
+    S3Config& WithBucketPrefix(BucketPrefixT&& value) { SetBucketPrefix(std::forward<BucketPrefixT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon S3 bucket prefix.</p>
-     */
-    inline void SetBucketPrefix(const Aws::String& value) { m_bucketPrefixHasBeenSet = true; m_bucketPrefix = value; }
-
-    /**
-     * <p>The Amazon S3 bucket prefix.</p>
-     */
-    inline void SetBucketPrefix(Aws::String&& value) { m_bucketPrefixHasBeenSet = true; m_bucketPrefix = std::move(value); }
-
-    /**
-     * <p>The Amazon S3 bucket prefix.</p>
-     */
-    inline void SetBucketPrefix(const char* value) { m_bucketPrefixHasBeenSet = true; m_bucketPrefix.assign(value); }
-
-    /**
-     * <p>The Amazon S3 bucket prefix.</p>
-     */
-    inline S3Config& WithBucketPrefix(const Aws::String& value) { SetBucketPrefix(value); return *this;}
-
-    /**
-     * <p>The Amazon S3 bucket prefix.</p>
-     */
-    inline S3Config& WithBucketPrefix(Aws::String&& value) { SetBucketPrefix(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon S3 bucket prefix.</p>
-     */
-    inline S3Config& WithBucketPrefix(const char* value) { SetBucketPrefix(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of publishing Internet Monitor internet measurements to an Amazon
      * S3 bucket.</p>
      */
-    inline const LogDeliveryStatus& GetLogDeliveryStatus() const{ return m_logDeliveryStatus; }
-
-    /**
-     * <p>The status of publishing Internet Monitor internet measurements to an Amazon
-     * S3 bucket.</p>
-     */
+    inline LogDeliveryStatus GetLogDeliveryStatus() const { return m_logDeliveryStatus; }
     inline bool LogDeliveryStatusHasBeenSet() const { return m_logDeliveryStatusHasBeenSet; }
-
-    /**
-     * <p>The status of publishing Internet Monitor internet measurements to an Amazon
-     * S3 bucket.</p>
-     */
-    inline void SetLogDeliveryStatus(const LogDeliveryStatus& value) { m_logDeliveryStatusHasBeenSet = true; m_logDeliveryStatus = value; }
-
-    /**
-     * <p>The status of publishing Internet Monitor internet measurements to an Amazon
-     * S3 bucket.</p>
-     */
-    inline void SetLogDeliveryStatus(LogDeliveryStatus&& value) { m_logDeliveryStatusHasBeenSet = true; m_logDeliveryStatus = std::move(value); }
-
-    /**
-     * <p>The status of publishing Internet Monitor internet measurements to an Amazon
-     * S3 bucket.</p>
-     */
-    inline S3Config& WithLogDeliveryStatus(const LogDeliveryStatus& value) { SetLogDeliveryStatus(value); return *this;}
-
-    /**
-     * <p>The status of publishing Internet Monitor internet measurements to an Amazon
-     * S3 bucket.</p>
-     */
-    inline S3Config& WithLogDeliveryStatus(LogDeliveryStatus&& value) { SetLogDeliveryStatus(std::move(value)); return *this;}
-
+    inline void SetLogDeliveryStatus(LogDeliveryStatus value) { m_logDeliveryStatusHasBeenSet = true; m_logDeliveryStatus = value; }
+    inline S3Config& WithLogDeliveryStatus(LogDeliveryStatus value) { SetLogDeliveryStatus(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_bucketName;
@@ -169,7 +85,7 @@ namespace Model
     Aws::String m_bucketPrefix;
     bool m_bucketPrefixHasBeenSet = false;
 
-    LogDeliveryStatus m_logDeliveryStatus;
+    LogDeliveryStatus m_logDeliveryStatus{LogDeliveryStatus::NOT_SET};
     bool m_logDeliveryStatusHasBeenSet = false;
   };
 

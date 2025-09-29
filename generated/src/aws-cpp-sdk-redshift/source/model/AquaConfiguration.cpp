@@ -20,19 +20,7 @@ namespace Redshift
 namespace Model
 {
 
-AquaConfiguration::AquaConfiguration() : 
-    m_aquaStatus(AquaStatus::NOT_SET),
-    m_aquaStatusHasBeenSet(false),
-    m_aquaConfigurationStatus(AquaConfigurationStatus::NOT_SET),
-    m_aquaConfigurationStatusHasBeenSet(false)
-{
-}
-
-AquaConfiguration::AquaConfiguration(const XmlNode& xmlNode) : 
-    m_aquaStatus(AquaStatus::NOT_SET),
-    m_aquaStatusHasBeenSet(false),
-    m_aquaConfigurationStatus(AquaConfigurationStatus::NOT_SET),
-    m_aquaConfigurationStatusHasBeenSet(false)
+AquaConfiguration::AquaConfiguration(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -46,13 +34,13 @@ AquaConfiguration& AquaConfiguration::operator =(const XmlNode& xmlNode)
     XmlNode aquaStatusNode = resultNode.FirstChild("AquaStatus");
     if(!aquaStatusNode.IsNull())
     {
-      m_aquaStatus = AquaStatusMapper::GetAquaStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(aquaStatusNode.GetText()).c_str()).c_str());
+      m_aquaStatus = AquaStatusMapper::GetAquaStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(aquaStatusNode.GetText()).c_str()));
       m_aquaStatusHasBeenSet = true;
     }
     XmlNode aquaConfigurationStatusNode = resultNode.FirstChild("AquaConfigurationStatus");
     if(!aquaConfigurationStatusNode.IsNull())
     {
-      m_aquaConfigurationStatus = AquaConfigurationStatusMapper::GetAquaConfigurationStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(aquaConfigurationStatusNode.GetText()).c_str()).c_str());
+      m_aquaConfigurationStatus = AquaConfigurationStatusMapper::GetAquaConfigurationStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(aquaConfigurationStatusNode.GetText()).c_str()));
       m_aquaConfigurationStatusHasBeenSet = true;
     }
   }
@@ -64,12 +52,12 @@ void AquaConfiguration::OutputToStream(Aws::OStream& oStream, const char* locati
 {
   if(m_aquaStatusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".AquaStatus=" << AquaStatusMapper::GetNameForAquaStatus(m_aquaStatus) << "&";
+      oStream << location << index << locationValue << ".AquaStatus=" << StringUtils::URLEncode(AquaStatusMapper::GetNameForAquaStatus(m_aquaStatus)) << "&";
   }
 
   if(m_aquaConfigurationStatusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".AquaConfigurationStatus=" << AquaConfigurationStatusMapper::GetNameForAquaConfigurationStatus(m_aquaConfigurationStatus) << "&";
+      oStream << location << index << locationValue << ".AquaConfigurationStatus=" << StringUtils::URLEncode(AquaConfigurationStatusMapper::GetNameForAquaConfigurationStatus(m_aquaConfigurationStatus)) << "&";
   }
 
 }
@@ -78,11 +66,11 @@ void AquaConfiguration::OutputToStream(Aws::OStream& oStream, const char* locati
 {
   if(m_aquaStatusHasBeenSet)
   {
-      oStream << location << ".AquaStatus=" << AquaStatusMapper::GetNameForAquaStatus(m_aquaStatus) << "&";
+      oStream << location << ".AquaStatus=" << StringUtils::URLEncode(AquaStatusMapper::GetNameForAquaStatus(m_aquaStatus)) << "&";
   }
   if(m_aquaConfigurationStatusHasBeenSet)
   {
-      oStream << location << ".AquaConfigurationStatus=" << AquaConfigurationStatusMapper::GetNameForAquaConfigurationStatus(m_aquaConfigurationStatus) << "&";
+      oStream << location << ".AquaConfigurationStatus=" << StringUtils::URLEncode(AquaConfigurationStatusMapper::GetNameForAquaConfigurationStatus(m_aquaConfigurationStatus)) << "&";
   }
 }
 

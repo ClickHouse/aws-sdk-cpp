@@ -18,13 +18,7 @@ namespace DataSync
 namespace Model
 {
 
-Platform::Platform() : 
-    m_versionHasBeenSet(false)
-{
-}
-
-Platform::Platform(JsonView jsonValue) : 
-    m_versionHasBeenSet(false)
+Platform::Platform(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ Platform& Platform::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Version"))
   {
     m_version = jsonValue.GetString("Version");
-
     m_versionHasBeenSet = true;
   }
-
   return *this;
 }
 

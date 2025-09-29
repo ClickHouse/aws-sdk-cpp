@@ -31,93 +31,35 @@ namespace Model
   class RdsParameters
   {
   public:
-    AWS_QUICKSIGHT_API RdsParameters();
+    AWS_QUICKSIGHT_API RdsParameters() = default;
     AWS_QUICKSIGHT_API RdsParameters(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API RdsParameters& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Instance ID.</p>
      */
-    inline const Aws::String& GetInstanceId() const{ return m_instanceId; }
-
-    /**
-     * <p>Instance ID.</p>
-     */
+    inline const Aws::String& GetInstanceId() const { return m_instanceId; }
     inline bool InstanceIdHasBeenSet() const { return m_instanceIdHasBeenSet; }
+    template<typename InstanceIdT = Aws::String>
+    void SetInstanceId(InstanceIdT&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::forward<InstanceIdT>(value); }
+    template<typename InstanceIdT = Aws::String>
+    RdsParameters& WithInstanceId(InstanceIdT&& value) { SetInstanceId(std::forward<InstanceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Instance ID.</p>
-     */
-    inline void SetInstanceId(const Aws::String& value) { m_instanceIdHasBeenSet = true; m_instanceId = value; }
-
-    /**
-     * <p>Instance ID.</p>
-     */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::move(value); }
-
-    /**
-     * <p>Instance ID.</p>
-     */
-    inline void SetInstanceId(const char* value) { m_instanceIdHasBeenSet = true; m_instanceId.assign(value); }
-
-    /**
-     * <p>Instance ID.</p>
-     */
-    inline RdsParameters& WithInstanceId(const Aws::String& value) { SetInstanceId(value); return *this;}
-
-    /**
-     * <p>Instance ID.</p>
-     */
-    inline RdsParameters& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
-
-    /**
-     * <p>Instance ID.</p>
-     */
-    inline RdsParameters& WithInstanceId(const char* value) { SetInstanceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Database.</p>
      */
-    inline const Aws::String& GetDatabase() const{ return m_database; }
-
-    /**
-     * <p>Database.</p>
-     */
+    inline const Aws::String& GetDatabase() const { return m_database; }
     inline bool DatabaseHasBeenSet() const { return m_databaseHasBeenSet; }
-
-    /**
-     * <p>Database.</p>
-     */
-    inline void SetDatabase(const Aws::String& value) { m_databaseHasBeenSet = true; m_database = value; }
-
-    /**
-     * <p>Database.</p>
-     */
-    inline void SetDatabase(Aws::String&& value) { m_databaseHasBeenSet = true; m_database = std::move(value); }
-
-    /**
-     * <p>Database.</p>
-     */
-    inline void SetDatabase(const char* value) { m_databaseHasBeenSet = true; m_database.assign(value); }
-
-    /**
-     * <p>Database.</p>
-     */
-    inline RdsParameters& WithDatabase(const Aws::String& value) { SetDatabase(value); return *this;}
-
-    /**
-     * <p>Database.</p>
-     */
-    inline RdsParameters& WithDatabase(Aws::String&& value) { SetDatabase(std::move(value)); return *this;}
-
-    /**
-     * <p>Database.</p>
-     */
-    inline RdsParameters& WithDatabase(const char* value) { SetDatabase(value); return *this;}
-
+    template<typename DatabaseT = Aws::String>
+    void SetDatabase(DatabaseT&& value) { m_databaseHasBeenSet = true; m_database = std::forward<DatabaseT>(value); }
+    template<typename DatabaseT = Aws::String>
+    RdsParameters& WithDatabase(DatabaseT&& value) { SetDatabase(std::forward<DatabaseT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_instanceId;

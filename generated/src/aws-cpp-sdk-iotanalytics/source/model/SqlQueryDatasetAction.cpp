@@ -18,15 +18,7 @@ namespace IoTAnalytics
 namespace Model
 {
 
-SqlQueryDatasetAction::SqlQueryDatasetAction() : 
-    m_sqlQueryHasBeenSet(false),
-    m_filtersHasBeenSet(false)
-{
-}
-
-SqlQueryDatasetAction::SqlQueryDatasetAction(JsonView jsonValue) : 
-    m_sqlQueryHasBeenSet(false),
-    m_filtersHasBeenSet(false)
+SqlQueryDatasetAction::SqlQueryDatasetAction(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ SqlQueryDatasetAction& SqlQueryDatasetAction::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("sqlQuery"))
   {
     m_sqlQuery = jsonValue.GetString("sqlQuery");
-
     m_sqlQueryHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("filters"))
   {
     Aws::Utils::Array<JsonView> filtersJsonList = jsonValue.GetArray("filters");
@@ -49,7 +39,6 @@ SqlQueryDatasetAction& SqlQueryDatasetAction::operator =(JsonView jsonValue)
     }
     m_filtersHasBeenSet = true;
   }
-
   return *this;
 }
 

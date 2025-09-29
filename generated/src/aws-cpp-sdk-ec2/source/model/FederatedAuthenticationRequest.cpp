@@ -20,15 +20,7 @@ namespace EC2
 namespace Model
 {
 
-FederatedAuthenticationRequest::FederatedAuthenticationRequest() : 
-    m_sAMLProviderArnHasBeenSet(false),
-    m_selfServiceSAMLProviderArnHasBeenSet(false)
-{
-}
-
-FederatedAuthenticationRequest::FederatedAuthenticationRequest(const XmlNode& xmlNode) : 
-    m_sAMLProviderArnHasBeenSet(false),
-    m_selfServiceSAMLProviderArnHasBeenSet(false)
+FederatedAuthenticationRequest::FederatedAuthenticationRequest(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

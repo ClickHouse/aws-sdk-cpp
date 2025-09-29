@@ -20,35 +20,7 @@ namespace Redshift
 namespace Model
 {
 
-ReservedNodeExchangeStatus::ReservedNodeExchangeStatus() : 
-    m_reservedNodeExchangeRequestIdHasBeenSet(false),
-    m_status(ReservedNodeExchangeStatusType::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_requestTimeHasBeenSet(false),
-    m_sourceReservedNodeIdHasBeenSet(false),
-    m_sourceReservedNodeTypeHasBeenSet(false),
-    m_sourceReservedNodeCount(0),
-    m_sourceReservedNodeCountHasBeenSet(false),
-    m_targetReservedNodeOfferingIdHasBeenSet(false),
-    m_targetReservedNodeTypeHasBeenSet(false),
-    m_targetReservedNodeCount(0),
-    m_targetReservedNodeCountHasBeenSet(false)
-{
-}
-
-ReservedNodeExchangeStatus::ReservedNodeExchangeStatus(const XmlNode& xmlNode) : 
-    m_reservedNodeExchangeRequestIdHasBeenSet(false),
-    m_status(ReservedNodeExchangeStatusType::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_requestTimeHasBeenSet(false),
-    m_sourceReservedNodeIdHasBeenSet(false),
-    m_sourceReservedNodeTypeHasBeenSet(false),
-    m_sourceReservedNodeCount(0),
-    m_sourceReservedNodeCountHasBeenSet(false),
-    m_targetReservedNodeOfferingIdHasBeenSet(false),
-    m_targetReservedNodeTypeHasBeenSet(false),
-    m_targetReservedNodeCount(0),
-    m_targetReservedNodeCountHasBeenSet(false)
+ReservedNodeExchangeStatus::ReservedNodeExchangeStatus(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -68,7 +40,7 @@ ReservedNodeExchangeStatus& ReservedNodeExchangeStatus::operator =(const XmlNode
     XmlNode statusNode = resultNode.FirstChild("Status");
     if(!statusNode.IsNull())
     {
-      m_status = ReservedNodeExchangeStatusTypeMapper::GetReservedNodeExchangeStatusTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()).c_str());
+      m_status = ReservedNodeExchangeStatusTypeMapper::GetReservedNodeExchangeStatusTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()));
       m_statusHasBeenSet = true;
     }
     XmlNode requestTimeNode = resultNode.FirstChild("RequestTime");
@@ -127,7 +99,7 @@ void ReservedNodeExchangeStatus::OutputToStream(Aws::OStream& oStream, const cha
 
   if(m_statusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Status=" << ReservedNodeExchangeStatusTypeMapper::GetNameForReservedNodeExchangeStatusType(m_status) << "&";
+      oStream << location << index << locationValue << ".Status=" << StringUtils::URLEncode(ReservedNodeExchangeStatusTypeMapper::GetNameForReservedNodeExchangeStatusType(m_status)) << "&";
   }
 
   if(m_requestTimeHasBeenSet)
@@ -175,7 +147,7 @@ void ReservedNodeExchangeStatus::OutputToStream(Aws::OStream& oStream, const cha
   }
   if(m_statusHasBeenSet)
   {
-      oStream << location << ".Status=" << ReservedNodeExchangeStatusTypeMapper::GetNameForReservedNodeExchangeStatusType(m_status) << "&";
+      oStream << location << ".Status=" << StringUtils::URLEncode(ReservedNodeExchangeStatusTypeMapper::GetNameForReservedNodeExchangeStatusType(m_status)) << "&";
   }
   if(m_requestTimeHasBeenSet)
   {

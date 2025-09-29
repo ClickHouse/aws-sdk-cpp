@@ -6,6 +6,8 @@
 #pragma once
 #include <aws/qbusiness/QBusiness_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/core/utils/memory/stl/AWSMap.h>
+#include <aws/qbusiness/model/DocumentAttributeBoostingConfiguration.h>
 #include <utility>
 
 namespace Aws
@@ -24,64 +26,80 @@ namespace Model
 {
 
   /**
-   * <p>Configuration information for an Amazon Q index.</p><p><h3>See Also:</h3>  
-   * <a
+   * <p>Configuration information for an Amazon Q Business index.</p><p><h3>See
+   * Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/qbusiness-2023-11-27/NativeIndexConfiguration">AWS
    * API Reference</a></p>
    */
   class NativeIndexConfiguration
   {
   public:
-    AWS_QBUSINESS_API NativeIndexConfiguration();
+    AWS_QBUSINESS_API NativeIndexConfiguration() = default;
     AWS_QBUSINESS_API NativeIndexConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_QBUSINESS_API NativeIndexConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QBUSINESS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The identifier for the Amazon Q index.</p>
+     * <p>The identifier for the Amazon Q Business index.</p>
      */
-    inline const Aws::String& GetIndexId() const{ return m_indexId; }
-
-    /**
-     * <p>The identifier for the Amazon Q index.</p>
-     */
+    inline const Aws::String& GetIndexId() const { return m_indexId; }
     inline bool IndexIdHasBeenSet() const { return m_indexIdHasBeenSet; }
+    template<typename IndexIdT = Aws::String>
+    void SetIndexId(IndexIdT&& value) { m_indexIdHasBeenSet = true; m_indexId = std::forward<IndexIdT>(value); }
+    template<typename IndexIdT = Aws::String>
+    NativeIndexConfiguration& WithIndexId(IndexIdT&& value) { SetIndexId(std::forward<IndexIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The identifier for the Amazon Q index.</p>
+     * <p>A read-only field that specifies the version of the
+     * <code>NativeIndexConfiguration</code>.</p> <p>Amazon Q Business introduces
+     * enhanced document retrieval capabilities in version 2 of
+     * <code>NativeIndexConfiguration</code>, focusing on streamlined metadata boosting
+     * that prioritizes recency and source relevance to deliver more accurate responses
+     * to your queries. Version 2 has the following differences from version 1:</p>
+     * <ul> <li> <p>Version 2 supports a single Date field (created_at OR
+     * last_updated_at) for recency boosting</p> </li> <li> <p>Version 2 supports a
+     * single String field with an ordered list of up to 5 values</p> </li> <li>
+     * <p>Version 2 introduces number-based boost levels (ONE, TWO) alongside the
+     * text-based levels</p> </li> <li> <p>Version 2 allows specifying prioritization
+     * between Date and String fields</p> </li> <li> <p>Version 2 maintains backward
+     * compatibility with existing configurations</p> </li> </ul>
      */
-    inline void SetIndexId(const Aws::String& value) { m_indexIdHasBeenSet = true; m_indexId = value; }
+    inline long long GetVersion() const { return m_version; }
+    inline bool VersionHasBeenSet() const { return m_versionHasBeenSet; }
+    inline void SetVersion(long long value) { m_versionHasBeenSet = true; m_version = value; }
+    inline NativeIndexConfiguration& WithVersion(long long value) { SetVersion(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The identifier for the Amazon Q index.</p>
+     * <p>Overrides the default boosts applied by Amazon Q Business to supported
+     * document attribute data types.</p>
      */
-    inline void SetIndexId(Aws::String&& value) { m_indexIdHasBeenSet = true; m_indexId = std::move(value); }
-
-    /**
-     * <p>The identifier for the Amazon Q index.</p>
-     */
-    inline void SetIndexId(const char* value) { m_indexIdHasBeenSet = true; m_indexId.assign(value); }
-
-    /**
-     * <p>The identifier for the Amazon Q index.</p>
-     */
-    inline NativeIndexConfiguration& WithIndexId(const Aws::String& value) { SetIndexId(value); return *this;}
-
-    /**
-     * <p>The identifier for the Amazon Q index.</p>
-     */
-    inline NativeIndexConfiguration& WithIndexId(Aws::String&& value) { SetIndexId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier for the Amazon Q index.</p>
-     */
-    inline NativeIndexConfiguration& WithIndexId(const char* value) { SetIndexId(value); return *this;}
-
+    inline const Aws::Map<Aws::String, DocumentAttributeBoostingConfiguration>& GetBoostingOverride() const { return m_boostingOverride; }
+    inline bool BoostingOverrideHasBeenSet() const { return m_boostingOverrideHasBeenSet; }
+    template<typename BoostingOverrideT = Aws::Map<Aws::String, DocumentAttributeBoostingConfiguration>>
+    void SetBoostingOverride(BoostingOverrideT&& value) { m_boostingOverrideHasBeenSet = true; m_boostingOverride = std::forward<BoostingOverrideT>(value); }
+    template<typename BoostingOverrideT = Aws::Map<Aws::String, DocumentAttributeBoostingConfiguration>>
+    NativeIndexConfiguration& WithBoostingOverride(BoostingOverrideT&& value) { SetBoostingOverride(std::forward<BoostingOverrideT>(value)); return *this;}
+    template<typename BoostingOverrideKeyT = Aws::String, typename BoostingOverrideValueT = DocumentAttributeBoostingConfiguration>
+    NativeIndexConfiguration& AddBoostingOverride(BoostingOverrideKeyT&& key, BoostingOverrideValueT&& value) {
+      m_boostingOverrideHasBeenSet = true; m_boostingOverride.emplace(std::forward<BoostingOverrideKeyT>(key), std::forward<BoostingOverrideValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
     Aws::String m_indexId;
     bool m_indexIdHasBeenSet = false;
+
+    long long m_version{0};
+    bool m_versionHasBeenSet = false;
+
+    Aws::Map<Aws::String, DocumentAttributeBoostingConfiguration> m_boostingOverride;
+    bool m_boostingOverrideHasBeenSet = false;
   };
 
 } // namespace Model

@@ -18,13 +18,7 @@ namespace ManagedGrafana
 namespace Model
 {
 
-AwsSsoAuthentication::AwsSsoAuthentication() : 
-    m_ssoClientIdHasBeenSet(false)
-{
-}
-
-AwsSsoAuthentication::AwsSsoAuthentication(JsonView jsonValue) : 
-    m_ssoClientIdHasBeenSet(false)
+AwsSsoAuthentication::AwsSsoAuthentication(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ AwsSsoAuthentication& AwsSsoAuthentication::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ssoClientId"))
   {
     m_ssoClientId = jsonValue.GetString("ssoClientId");
-
     m_ssoClientIdHasBeenSet = true;
   }
-
   return *this;
 }
 

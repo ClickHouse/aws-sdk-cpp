@@ -20,15 +20,7 @@ namespace Redshift
 namespace Model
 {
 
-AccountAttribute::AccountAttribute() : 
-    m_attributeNameHasBeenSet(false),
-    m_attributeValuesHasBeenSet(false)
-{
-}
-
-AccountAttribute::AccountAttribute(const XmlNode& xmlNode) : 
-    m_attributeNameHasBeenSet(false),
-    m_attributeValuesHasBeenSet(false)
+AccountAttribute::AccountAttribute(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -49,6 +41,7 @@ AccountAttribute& AccountAttribute::operator =(const XmlNode& xmlNode)
     if(!attributeValuesNode.IsNull())
     {
       XmlNode attributeValuesMember = attributeValuesNode.FirstChild("AttributeValueTarget");
+      m_attributeValuesHasBeenSet = !attributeValuesMember.IsNull();
       while(!attributeValuesMember.IsNull())
       {
         m_attributeValues.push_back(attributeValuesMember);
@@ -75,7 +68,7 @@ void AccountAttribute::OutputToStream(Aws::OStream& oStream, const char* locatio
       for(auto& item : m_attributeValues)
       {
         Aws::StringStream attributeValuesSs;
-        attributeValuesSs << location << index << locationValue << ".AttributeValueTarget." << attributeValuesIdx++;
+        attributeValuesSs << location << index << locationValue << ".AttributeValues.AttributeValueTarget." << attributeValuesIdx++;
         item.OutputToStream(oStream, attributeValuesSs.str().c_str());
       }
   }
@@ -94,7 +87,7 @@ void AccountAttribute::OutputToStream(Aws::OStream& oStream, const char* locatio
       for(auto& item : m_attributeValues)
       {
         Aws::StringStream attributeValuesSs;
-        attributeValuesSs << location <<  ".AttributeValueTarget." << attributeValuesIdx++;
+        attributeValuesSs << location << ".AttributeValues.AttributeValueTarget." << attributeValuesIdx++;
         item.OutputToStream(oStream, attributeValuesSs.str().c_str());
       }
   }

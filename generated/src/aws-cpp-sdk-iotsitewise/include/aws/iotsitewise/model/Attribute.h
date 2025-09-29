@@ -33,12 +33,13 @@ namespace Model
   class Attribute
   {
   public:
-    AWS_IOTSITEWISE_API Attribute();
+    AWS_IOTSITEWISE_API Attribute() = default;
     AWS_IOTSITEWISE_API Attribute(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTSITEWISE_API Attribute& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTSITEWISE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The default value of the asset model property attribute. All assets that you
      * create from the asset model contain this attribute value. You can update an
@@ -46,71 +47,13 @@ namespace Model
      * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/update-attribute-values.html">Updating
      * attribute values</a> in the <i>IoT SiteWise User Guide</i>.</p>
      */
-    inline const Aws::String& GetDefaultValue() const{ return m_defaultValue; }
-
-    /**
-     * <p>The default value of the asset model property attribute. All assets that you
-     * create from the asset model contain this attribute value. You can update an
-     * attribute's value after you create an asset. For more information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/update-attribute-values.html">Updating
-     * attribute values</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
+    inline const Aws::String& GetDefaultValue() const { return m_defaultValue; }
     inline bool DefaultValueHasBeenSet() const { return m_defaultValueHasBeenSet; }
-
-    /**
-     * <p>The default value of the asset model property attribute. All assets that you
-     * create from the asset model contain this attribute value. You can update an
-     * attribute's value after you create an asset. For more information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/update-attribute-values.html">Updating
-     * attribute values</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline void SetDefaultValue(const Aws::String& value) { m_defaultValueHasBeenSet = true; m_defaultValue = value; }
-
-    /**
-     * <p>The default value of the asset model property attribute. All assets that you
-     * create from the asset model contain this attribute value. You can update an
-     * attribute's value after you create an asset. For more information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/update-attribute-values.html">Updating
-     * attribute values</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline void SetDefaultValue(Aws::String&& value) { m_defaultValueHasBeenSet = true; m_defaultValue = std::move(value); }
-
-    /**
-     * <p>The default value of the asset model property attribute. All assets that you
-     * create from the asset model contain this attribute value. You can update an
-     * attribute's value after you create an asset. For more information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/update-attribute-values.html">Updating
-     * attribute values</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline void SetDefaultValue(const char* value) { m_defaultValueHasBeenSet = true; m_defaultValue.assign(value); }
-
-    /**
-     * <p>The default value of the asset model property attribute. All assets that you
-     * create from the asset model contain this attribute value. You can update an
-     * attribute's value after you create an asset. For more information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/update-attribute-values.html">Updating
-     * attribute values</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline Attribute& WithDefaultValue(const Aws::String& value) { SetDefaultValue(value); return *this;}
-
-    /**
-     * <p>The default value of the asset model property attribute. All assets that you
-     * create from the asset model contain this attribute value. You can update an
-     * attribute's value after you create an asset. For more information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/update-attribute-values.html">Updating
-     * attribute values</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline Attribute& WithDefaultValue(Aws::String&& value) { SetDefaultValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The default value of the asset model property attribute. All assets that you
-     * create from the asset model contain this attribute value. You can update an
-     * attribute's value after you create an asset. For more information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/update-attribute-values.html">Updating
-     * attribute values</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline Attribute& WithDefaultValue(const char* value) { SetDefaultValue(value); return *this;}
-
+    template<typename DefaultValueT = Aws::String>
+    void SetDefaultValue(DefaultValueT&& value) { m_defaultValueHasBeenSet = true; m_defaultValue = std::forward<DefaultValueT>(value); }
+    template<typename DefaultValueT = Aws::String>
+    Attribute& WithDefaultValue(DefaultValueT&& value) { SetDefaultValue(std::forward<DefaultValueT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_defaultValue;

@@ -18,19 +18,7 @@ namespace AppStream
 namespace Model
 {
 
-UserStackAssociationError::UserStackAssociationError() : 
-    m_userStackAssociationHasBeenSet(false),
-    m_errorCode(UserStackAssociationErrorCode::NOT_SET),
-    m_errorCodeHasBeenSet(false),
-    m_errorMessageHasBeenSet(false)
-{
-}
-
-UserStackAssociationError::UserStackAssociationError(JsonView jsonValue) : 
-    m_userStackAssociationHasBeenSet(false),
-    m_errorCode(UserStackAssociationErrorCode::NOT_SET),
-    m_errorCodeHasBeenSet(false),
-    m_errorMessageHasBeenSet(false)
+UserStackAssociationError::UserStackAssociationError(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ UserStackAssociationError& UserStackAssociationError::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("UserStackAssociation"))
   {
     m_userStackAssociation = jsonValue.GetObject("UserStackAssociation");
-
     m_userStackAssociationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ErrorCode"))
   {
     m_errorCode = UserStackAssociationErrorCodeMapper::GetUserStackAssociationErrorCodeForName(jsonValue.GetString("ErrorCode"));
-
     m_errorCodeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ErrorMessage"))
   {
     m_errorMessage = jsonValue.GetString("ErrorMessage");
-
     m_errorMessageHasBeenSet = true;
   }
-
   return *this;
 }
 

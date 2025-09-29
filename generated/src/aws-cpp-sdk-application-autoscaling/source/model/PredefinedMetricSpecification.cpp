@@ -18,17 +18,7 @@ namespace ApplicationAutoScaling
 namespace Model
 {
 
-PredefinedMetricSpecification::PredefinedMetricSpecification() : 
-    m_predefinedMetricType(MetricType::NOT_SET),
-    m_predefinedMetricTypeHasBeenSet(false),
-    m_resourceLabelHasBeenSet(false)
-{
-}
-
-PredefinedMetricSpecification::PredefinedMetricSpecification(JsonView jsonValue) : 
-    m_predefinedMetricType(MetricType::NOT_SET),
-    m_predefinedMetricTypeHasBeenSet(false),
-    m_resourceLabelHasBeenSet(false)
+PredefinedMetricSpecification::PredefinedMetricSpecification(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ PredefinedMetricSpecification& PredefinedMetricSpecification::operator =(JsonVie
   if(jsonValue.ValueExists("PredefinedMetricType"))
   {
     m_predefinedMetricType = MetricTypeMapper::GetMetricTypeForName(jsonValue.GetString("PredefinedMetricType"));
-
     m_predefinedMetricTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceLabel"))
   {
     m_resourceLabel = jsonValue.GetString("ResourceLabel");
-
     m_resourceLabelHasBeenSet = true;
   }
-
   return *this;
 }
 

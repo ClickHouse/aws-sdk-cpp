@@ -21,7 +21,7 @@ namespace Model
   class CreateApplicationVersionRequest : public ServerlessApplicationRepositoryRequest
   {
   public:
-    AWS_SERVERLESSAPPLICATIONREPOSITORY_API CreateApplicationVersionRequest();
+    AWS_SERVERLESSAPPLICATIONREPOSITORY_API CreateApplicationVersionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,267 +32,79 @@ namespace Model
     AWS_SERVERLESSAPPLICATIONREPOSITORY_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the application.</p>
      */
-    inline const Aws::String& GetApplicationId() const{ return m_applicationId; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the application.</p>
-     */
+    inline const Aws::String& GetApplicationId() const { return m_applicationId; }
     inline bool ApplicationIdHasBeenSet() const { return m_applicationIdHasBeenSet; }
+    template<typename ApplicationIdT = Aws::String>
+    void SetApplicationId(ApplicationIdT&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::forward<ApplicationIdT>(value); }
+    template<typename ApplicationIdT = Aws::String>
+    CreateApplicationVersionRequest& WithApplicationId(ApplicationIdT&& value) { SetApplicationId(std::forward<ApplicationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the application.</p>
-     */
-    inline void SetApplicationId(const Aws::String& value) { m_applicationIdHasBeenSet = true; m_applicationId = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the application.</p>
-     */
-    inline void SetApplicationId(Aws::String&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the application.</p>
-     */
-    inline void SetApplicationId(const char* value) { m_applicationIdHasBeenSet = true; m_applicationId.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the application.</p>
-     */
-    inline CreateApplicationVersionRequest& WithApplicationId(const Aws::String& value) { SetApplicationId(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the application.</p>
-     */
-    inline CreateApplicationVersionRequest& WithApplicationId(Aws::String&& value) { SetApplicationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the application.</p>
-     */
-    inline CreateApplicationVersionRequest& WithApplicationId(const char* value) { SetApplicationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The semantic version of the new version.</p>
      */
-    inline const Aws::String& GetSemanticVersion() const{ return m_semanticVersion; }
-
-    /**
-     * <p>The semantic version of the new version.</p>
-     */
+    inline const Aws::String& GetSemanticVersion() const { return m_semanticVersion; }
     inline bool SemanticVersionHasBeenSet() const { return m_semanticVersionHasBeenSet; }
+    template<typename SemanticVersionT = Aws::String>
+    void SetSemanticVersion(SemanticVersionT&& value) { m_semanticVersionHasBeenSet = true; m_semanticVersion = std::forward<SemanticVersionT>(value); }
+    template<typename SemanticVersionT = Aws::String>
+    CreateApplicationVersionRequest& WithSemanticVersion(SemanticVersionT&& value) { SetSemanticVersion(std::forward<SemanticVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The semantic version of the new version.</p>
-     */
-    inline void SetSemanticVersion(const Aws::String& value) { m_semanticVersionHasBeenSet = true; m_semanticVersion = value; }
-
-    /**
-     * <p>The semantic version of the new version.</p>
-     */
-    inline void SetSemanticVersion(Aws::String&& value) { m_semanticVersionHasBeenSet = true; m_semanticVersion = std::move(value); }
-
-    /**
-     * <p>The semantic version of the new version.</p>
-     */
-    inline void SetSemanticVersion(const char* value) { m_semanticVersionHasBeenSet = true; m_semanticVersion.assign(value); }
-
-    /**
-     * <p>The semantic version of the new version.</p>
-     */
-    inline CreateApplicationVersionRequest& WithSemanticVersion(const Aws::String& value) { SetSemanticVersion(value); return *this;}
-
-    /**
-     * <p>The semantic version of the new version.</p>
-     */
-    inline CreateApplicationVersionRequest& WithSemanticVersion(Aws::String&& value) { SetSemanticVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The semantic version of the new version.</p>
-     */
-    inline CreateApplicationVersionRequest& WithSemanticVersion(const char* value) { SetSemanticVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A link to the S3 object that contains the ZIP archive of the source code for
      * this version of your application.</p><p>Maximum size 50 MB</p>
      */
-    inline const Aws::String& GetSourceCodeArchiveUrl() const{ return m_sourceCodeArchiveUrl; }
-
-    /**
-     * <p>A link to the S3 object that contains the ZIP archive of the source code for
-     * this version of your application.</p><p>Maximum size 50 MB</p>
-     */
+    inline const Aws::String& GetSourceCodeArchiveUrl() const { return m_sourceCodeArchiveUrl; }
     inline bool SourceCodeArchiveUrlHasBeenSet() const { return m_sourceCodeArchiveUrlHasBeenSet; }
+    template<typename SourceCodeArchiveUrlT = Aws::String>
+    void SetSourceCodeArchiveUrl(SourceCodeArchiveUrlT&& value) { m_sourceCodeArchiveUrlHasBeenSet = true; m_sourceCodeArchiveUrl = std::forward<SourceCodeArchiveUrlT>(value); }
+    template<typename SourceCodeArchiveUrlT = Aws::String>
+    CreateApplicationVersionRequest& WithSourceCodeArchiveUrl(SourceCodeArchiveUrlT&& value) { SetSourceCodeArchiveUrl(std::forward<SourceCodeArchiveUrlT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A link to the S3 object that contains the ZIP archive of the source code for
-     * this version of your application.</p><p>Maximum size 50 MB</p>
-     */
-    inline void SetSourceCodeArchiveUrl(const Aws::String& value) { m_sourceCodeArchiveUrlHasBeenSet = true; m_sourceCodeArchiveUrl = value; }
-
-    /**
-     * <p>A link to the S3 object that contains the ZIP archive of the source code for
-     * this version of your application.</p><p>Maximum size 50 MB</p>
-     */
-    inline void SetSourceCodeArchiveUrl(Aws::String&& value) { m_sourceCodeArchiveUrlHasBeenSet = true; m_sourceCodeArchiveUrl = std::move(value); }
-
-    /**
-     * <p>A link to the S3 object that contains the ZIP archive of the source code for
-     * this version of your application.</p><p>Maximum size 50 MB</p>
-     */
-    inline void SetSourceCodeArchiveUrl(const char* value) { m_sourceCodeArchiveUrlHasBeenSet = true; m_sourceCodeArchiveUrl.assign(value); }
-
-    /**
-     * <p>A link to the S3 object that contains the ZIP archive of the source code for
-     * this version of your application.</p><p>Maximum size 50 MB</p>
-     */
-    inline CreateApplicationVersionRequest& WithSourceCodeArchiveUrl(const Aws::String& value) { SetSourceCodeArchiveUrl(value); return *this;}
-
-    /**
-     * <p>A link to the S3 object that contains the ZIP archive of the source code for
-     * this version of your application.</p><p>Maximum size 50 MB</p>
-     */
-    inline CreateApplicationVersionRequest& WithSourceCodeArchiveUrl(Aws::String&& value) { SetSourceCodeArchiveUrl(std::move(value)); return *this;}
-
-    /**
-     * <p>A link to the S3 object that contains the ZIP archive of the source code for
-     * this version of your application.</p><p>Maximum size 50 MB</p>
-     */
-    inline CreateApplicationVersionRequest& WithSourceCodeArchiveUrl(const char* value) { SetSourceCodeArchiveUrl(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A link to a public repository for the source code of your application, for
      * example the URL of a specific GitHub commit.</p>
      */
-    inline const Aws::String& GetSourceCodeUrl() const{ return m_sourceCodeUrl; }
-
-    /**
-     * <p>A link to a public repository for the source code of your application, for
-     * example the URL of a specific GitHub commit.</p>
-     */
+    inline const Aws::String& GetSourceCodeUrl() const { return m_sourceCodeUrl; }
     inline bool SourceCodeUrlHasBeenSet() const { return m_sourceCodeUrlHasBeenSet; }
+    template<typename SourceCodeUrlT = Aws::String>
+    void SetSourceCodeUrl(SourceCodeUrlT&& value) { m_sourceCodeUrlHasBeenSet = true; m_sourceCodeUrl = std::forward<SourceCodeUrlT>(value); }
+    template<typename SourceCodeUrlT = Aws::String>
+    CreateApplicationVersionRequest& WithSourceCodeUrl(SourceCodeUrlT&& value) { SetSourceCodeUrl(std::forward<SourceCodeUrlT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A link to a public repository for the source code of your application, for
-     * example the URL of a specific GitHub commit.</p>
-     */
-    inline void SetSourceCodeUrl(const Aws::String& value) { m_sourceCodeUrlHasBeenSet = true; m_sourceCodeUrl = value; }
-
-    /**
-     * <p>A link to a public repository for the source code of your application, for
-     * example the URL of a specific GitHub commit.</p>
-     */
-    inline void SetSourceCodeUrl(Aws::String&& value) { m_sourceCodeUrlHasBeenSet = true; m_sourceCodeUrl = std::move(value); }
-
-    /**
-     * <p>A link to a public repository for the source code of your application, for
-     * example the URL of a specific GitHub commit.</p>
-     */
-    inline void SetSourceCodeUrl(const char* value) { m_sourceCodeUrlHasBeenSet = true; m_sourceCodeUrl.assign(value); }
-
-    /**
-     * <p>A link to a public repository for the source code of your application, for
-     * example the URL of a specific GitHub commit.</p>
-     */
-    inline CreateApplicationVersionRequest& WithSourceCodeUrl(const Aws::String& value) { SetSourceCodeUrl(value); return *this;}
-
-    /**
-     * <p>A link to a public repository for the source code of your application, for
-     * example the URL of a specific GitHub commit.</p>
-     */
-    inline CreateApplicationVersionRequest& WithSourceCodeUrl(Aws::String&& value) { SetSourceCodeUrl(std::move(value)); return *this;}
-
-    /**
-     * <p>A link to a public repository for the source code of your application, for
-     * example the URL of a specific GitHub commit.</p>
-     */
-    inline CreateApplicationVersionRequest& WithSourceCodeUrl(const char* value) { SetSourceCodeUrl(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The raw packaged AWS SAM template of your application.</p>
      */
-    inline const Aws::String& GetTemplateBody() const{ return m_templateBody; }
-
-    /**
-     * <p>The raw packaged AWS SAM template of your application.</p>
-     */
+    inline const Aws::String& GetTemplateBody() const { return m_templateBody; }
     inline bool TemplateBodyHasBeenSet() const { return m_templateBodyHasBeenSet; }
+    template<typename TemplateBodyT = Aws::String>
+    void SetTemplateBody(TemplateBodyT&& value) { m_templateBodyHasBeenSet = true; m_templateBody = std::forward<TemplateBodyT>(value); }
+    template<typename TemplateBodyT = Aws::String>
+    CreateApplicationVersionRequest& WithTemplateBody(TemplateBodyT&& value) { SetTemplateBody(std::forward<TemplateBodyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The raw packaged AWS SAM template of your application.</p>
-     */
-    inline void SetTemplateBody(const Aws::String& value) { m_templateBodyHasBeenSet = true; m_templateBody = value; }
-
-    /**
-     * <p>The raw packaged AWS SAM template of your application.</p>
-     */
-    inline void SetTemplateBody(Aws::String&& value) { m_templateBodyHasBeenSet = true; m_templateBody = std::move(value); }
-
-    /**
-     * <p>The raw packaged AWS SAM template of your application.</p>
-     */
-    inline void SetTemplateBody(const char* value) { m_templateBodyHasBeenSet = true; m_templateBody.assign(value); }
-
-    /**
-     * <p>The raw packaged AWS SAM template of your application.</p>
-     */
-    inline CreateApplicationVersionRequest& WithTemplateBody(const Aws::String& value) { SetTemplateBody(value); return *this;}
-
-    /**
-     * <p>The raw packaged AWS SAM template of your application.</p>
-     */
-    inline CreateApplicationVersionRequest& WithTemplateBody(Aws::String&& value) { SetTemplateBody(std::move(value)); return *this;}
-
-    /**
-     * <p>The raw packaged AWS SAM template of your application.</p>
-     */
-    inline CreateApplicationVersionRequest& WithTemplateBody(const char* value) { SetTemplateBody(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A link to the packaged AWS SAM template of your application.</p>
      */
-    inline const Aws::String& GetTemplateUrl() const{ return m_templateUrl; }
-
-    /**
-     * <p>A link to the packaged AWS SAM template of your application.</p>
-     */
+    inline const Aws::String& GetTemplateUrl() const { return m_templateUrl; }
     inline bool TemplateUrlHasBeenSet() const { return m_templateUrlHasBeenSet; }
-
-    /**
-     * <p>A link to the packaged AWS SAM template of your application.</p>
-     */
-    inline void SetTemplateUrl(const Aws::String& value) { m_templateUrlHasBeenSet = true; m_templateUrl = value; }
-
-    /**
-     * <p>A link to the packaged AWS SAM template of your application.</p>
-     */
-    inline void SetTemplateUrl(Aws::String&& value) { m_templateUrlHasBeenSet = true; m_templateUrl = std::move(value); }
-
-    /**
-     * <p>A link to the packaged AWS SAM template of your application.</p>
-     */
-    inline void SetTemplateUrl(const char* value) { m_templateUrlHasBeenSet = true; m_templateUrl.assign(value); }
-
-    /**
-     * <p>A link to the packaged AWS SAM template of your application.</p>
-     */
-    inline CreateApplicationVersionRequest& WithTemplateUrl(const Aws::String& value) { SetTemplateUrl(value); return *this;}
-
-    /**
-     * <p>A link to the packaged AWS SAM template of your application.</p>
-     */
-    inline CreateApplicationVersionRequest& WithTemplateUrl(Aws::String&& value) { SetTemplateUrl(std::move(value)); return *this;}
-
-    /**
-     * <p>A link to the packaged AWS SAM template of your application.</p>
-     */
-    inline CreateApplicationVersionRequest& WithTemplateUrl(const char* value) { SetTemplateUrl(value); return *this;}
-
+    template<typename TemplateUrlT = Aws::String>
+    void SetTemplateUrl(TemplateUrlT&& value) { m_templateUrlHasBeenSet = true; m_templateUrl = std::forward<TemplateUrlT>(value); }
+    template<typename TemplateUrlT = Aws::String>
+    CreateApplicationVersionRequest& WithTemplateUrl(TemplateUrlT&& value) { SetTemplateUrl(std::forward<TemplateUrlT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_applicationId;

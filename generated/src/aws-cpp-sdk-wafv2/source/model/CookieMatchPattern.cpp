@@ -18,17 +18,7 @@ namespace WAFV2
 namespace Model
 {
 
-CookieMatchPattern::CookieMatchPattern() : 
-    m_allHasBeenSet(false),
-    m_includedCookiesHasBeenSet(false),
-    m_excludedCookiesHasBeenSet(false)
-{
-}
-
-CookieMatchPattern::CookieMatchPattern(JsonView jsonValue) : 
-    m_allHasBeenSet(false),
-    m_includedCookiesHasBeenSet(false),
-    m_excludedCookiesHasBeenSet(false)
+CookieMatchPattern::CookieMatchPattern(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ CookieMatchPattern& CookieMatchPattern::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("All"))
   {
     m_all = jsonValue.GetObject("All");
-
     m_allHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("IncludedCookies"))
   {
     Aws::Utils::Array<JsonView> includedCookiesJsonList = jsonValue.GetArray("IncludedCookies");
@@ -51,7 +39,6 @@ CookieMatchPattern& CookieMatchPattern::operator =(JsonView jsonValue)
     }
     m_includedCookiesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ExcludedCookies"))
   {
     Aws::Utils::Array<JsonView> excludedCookiesJsonList = jsonValue.GetArray("ExcludedCookies");
@@ -61,7 +48,6 @@ CookieMatchPattern& CookieMatchPattern::operator =(JsonView jsonValue)
     }
     m_excludedCookiesHasBeenSet = true;
   }
-
   return *this;
 }
 

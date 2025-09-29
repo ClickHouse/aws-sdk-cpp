@@ -21,7 +21,7 @@ namespace Model
   class DescribeProjectRequest : public IoTSiteWiseRequest
   {
   public:
-    AWS_IOTSITEWISE_API DescribeProjectRequest();
+    AWS_IOTSITEWISE_API DescribeProjectRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_IOTSITEWISE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the project.</p>
      */
-    inline const Aws::String& GetProjectId() const{ return m_projectId; }
-
-    /**
-     * <p>The ID of the project.</p>
-     */
+    inline const Aws::String& GetProjectId() const { return m_projectId; }
     inline bool ProjectIdHasBeenSet() const { return m_projectIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the project.</p>
-     */
-    inline void SetProjectId(const Aws::String& value) { m_projectIdHasBeenSet = true; m_projectId = value; }
-
-    /**
-     * <p>The ID of the project.</p>
-     */
-    inline void SetProjectId(Aws::String&& value) { m_projectIdHasBeenSet = true; m_projectId = std::move(value); }
-
-    /**
-     * <p>The ID of the project.</p>
-     */
-    inline void SetProjectId(const char* value) { m_projectIdHasBeenSet = true; m_projectId.assign(value); }
-
-    /**
-     * <p>The ID of the project.</p>
-     */
-    inline DescribeProjectRequest& WithProjectId(const Aws::String& value) { SetProjectId(value); return *this;}
-
-    /**
-     * <p>The ID of the project.</p>
-     */
-    inline DescribeProjectRequest& WithProjectId(Aws::String&& value) { SetProjectId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the project.</p>
-     */
-    inline DescribeProjectRequest& WithProjectId(const char* value) { SetProjectId(value); return *this;}
-
+    template<typename ProjectIdT = Aws::String>
+    void SetProjectId(ProjectIdT&& value) { m_projectIdHasBeenSet = true; m_projectId = std::forward<ProjectIdT>(value); }
+    template<typename ProjectIdT = Aws::String>
+    DescribeProjectRequest& WithProjectId(ProjectIdT&& value) { SetProjectId(std::forward<ProjectIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_projectId;

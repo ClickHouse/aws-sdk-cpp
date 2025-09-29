@@ -18,23 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-BarChartSortConfiguration::BarChartSortConfiguration() : 
-    m_categorySortHasBeenSet(false),
-    m_categoryItemsLimitHasBeenSet(false),
-    m_colorSortHasBeenSet(false),
-    m_colorItemsLimitHasBeenSet(false),
-    m_smallMultiplesSortHasBeenSet(false),
-    m_smallMultiplesLimitConfigurationHasBeenSet(false)
-{
-}
-
-BarChartSortConfiguration::BarChartSortConfiguration(JsonView jsonValue) : 
-    m_categorySortHasBeenSet(false),
-    m_categoryItemsLimitHasBeenSet(false),
-    m_colorSortHasBeenSet(false),
-    m_colorItemsLimitHasBeenSet(false),
-    m_smallMultiplesSortHasBeenSet(false),
-    m_smallMultiplesLimitConfigurationHasBeenSet(false)
+BarChartSortConfiguration::BarChartSortConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -50,14 +34,11 @@ BarChartSortConfiguration& BarChartSortConfiguration::operator =(JsonView jsonVa
     }
     m_categorySortHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CategoryItemsLimit"))
   {
     m_categoryItemsLimit = jsonValue.GetObject("CategoryItemsLimit");
-
     m_categoryItemsLimitHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ColorSort"))
   {
     Aws::Utils::Array<JsonView> colorSortJsonList = jsonValue.GetArray("ColorSort");
@@ -67,14 +48,11 @@ BarChartSortConfiguration& BarChartSortConfiguration::operator =(JsonView jsonVa
     }
     m_colorSortHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ColorItemsLimit"))
   {
     m_colorItemsLimit = jsonValue.GetObject("ColorItemsLimit");
-
     m_colorItemsLimitHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SmallMultiplesSort"))
   {
     Aws::Utils::Array<JsonView> smallMultiplesSortJsonList = jsonValue.GetArray("SmallMultiplesSort");
@@ -84,14 +62,11 @@ BarChartSortConfiguration& BarChartSortConfiguration::operator =(JsonView jsonVa
     }
     m_smallMultiplesSortHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SmallMultiplesLimitConfiguration"))
   {
     m_smallMultiplesLimitConfiguration = jsonValue.GetObject("SmallMultiplesLimitConfiguration");
-
     m_smallMultiplesLimitConfigurationHasBeenSet = true;
   }
-
   return *this;
 }
 

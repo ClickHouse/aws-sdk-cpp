@@ -31,232 +31,73 @@ namespace Model
   class OrganizationSummary
   {
   public:
-    AWS_WORKMAIL_API OrganizationSummary();
+    AWS_WORKMAIL_API OrganizationSummary() = default;
     AWS_WORKMAIL_API OrganizationSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_WORKMAIL_API OrganizationSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WORKMAIL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The identifier associated with the organization.</p>
      */
-    inline const Aws::String& GetOrganizationId() const{ return m_organizationId; }
-
-    /**
-     * <p>The identifier associated with the organization.</p>
-     */
+    inline const Aws::String& GetOrganizationId() const { return m_organizationId; }
     inline bool OrganizationIdHasBeenSet() const { return m_organizationIdHasBeenSet; }
+    template<typename OrganizationIdT = Aws::String>
+    void SetOrganizationId(OrganizationIdT&& value) { m_organizationIdHasBeenSet = true; m_organizationId = std::forward<OrganizationIdT>(value); }
+    template<typename OrganizationIdT = Aws::String>
+    OrganizationSummary& WithOrganizationId(OrganizationIdT&& value) { SetOrganizationId(std::forward<OrganizationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier associated with the organization.</p>
-     */
-    inline void SetOrganizationId(const Aws::String& value) { m_organizationIdHasBeenSet = true; m_organizationId = value; }
-
-    /**
-     * <p>The identifier associated with the organization.</p>
-     */
-    inline void SetOrganizationId(Aws::String&& value) { m_organizationIdHasBeenSet = true; m_organizationId = std::move(value); }
-
-    /**
-     * <p>The identifier associated with the organization.</p>
-     */
-    inline void SetOrganizationId(const char* value) { m_organizationIdHasBeenSet = true; m_organizationId.assign(value); }
-
-    /**
-     * <p>The identifier associated with the organization.</p>
-     */
-    inline OrganizationSummary& WithOrganizationId(const Aws::String& value) { SetOrganizationId(value); return *this;}
-
-    /**
-     * <p>The identifier associated with the organization.</p>
-     */
-    inline OrganizationSummary& WithOrganizationId(Aws::String&& value) { SetOrganizationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier associated with the organization.</p>
-     */
-    inline OrganizationSummary& WithOrganizationId(const char* value) { SetOrganizationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The alias associated with the organization.</p>
      */
-    inline const Aws::String& GetAlias() const{ return m_alias; }
-
-    /**
-     * <p>The alias associated with the organization.</p>
-     */
+    inline const Aws::String& GetAlias() const { return m_alias; }
     inline bool AliasHasBeenSet() const { return m_aliasHasBeenSet; }
+    template<typename AliasT = Aws::String>
+    void SetAlias(AliasT&& value) { m_aliasHasBeenSet = true; m_alias = std::forward<AliasT>(value); }
+    template<typename AliasT = Aws::String>
+    OrganizationSummary& WithAlias(AliasT&& value) { SetAlias(std::forward<AliasT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The alias associated with the organization.</p>
-     */
-    inline void SetAlias(const Aws::String& value) { m_aliasHasBeenSet = true; m_alias = value; }
-
-    /**
-     * <p>The alias associated with the organization.</p>
-     */
-    inline void SetAlias(Aws::String&& value) { m_aliasHasBeenSet = true; m_alias = std::move(value); }
-
-    /**
-     * <p>The alias associated with the organization.</p>
-     */
-    inline void SetAlias(const char* value) { m_aliasHasBeenSet = true; m_alias.assign(value); }
-
-    /**
-     * <p>The alias associated with the organization.</p>
-     */
-    inline OrganizationSummary& WithAlias(const Aws::String& value) { SetAlias(value); return *this;}
-
-    /**
-     * <p>The alias associated with the organization.</p>
-     */
-    inline OrganizationSummary& WithAlias(Aws::String&& value) { SetAlias(std::move(value)); return *this;}
-
-    /**
-     * <p>The alias associated with the organization.</p>
-     */
-    inline OrganizationSummary& WithAlias(const char* value) { SetAlias(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The default email domain associated with the organization.</p>
      */
-    inline const Aws::String& GetDefaultMailDomain() const{ return m_defaultMailDomain; }
-
-    /**
-     * <p>The default email domain associated with the organization.</p>
-     */
+    inline const Aws::String& GetDefaultMailDomain() const { return m_defaultMailDomain; }
     inline bool DefaultMailDomainHasBeenSet() const { return m_defaultMailDomainHasBeenSet; }
+    template<typename DefaultMailDomainT = Aws::String>
+    void SetDefaultMailDomain(DefaultMailDomainT&& value) { m_defaultMailDomainHasBeenSet = true; m_defaultMailDomain = std::forward<DefaultMailDomainT>(value); }
+    template<typename DefaultMailDomainT = Aws::String>
+    OrganizationSummary& WithDefaultMailDomain(DefaultMailDomainT&& value) { SetDefaultMailDomain(std::forward<DefaultMailDomainT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The default email domain associated with the organization.</p>
-     */
-    inline void SetDefaultMailDomain(const Aws::String& value) { m_defaultMailDomainHasBeenSet = true; m_defaultMailDomain = value; }
-
-    /**
-     * <p>The default email domain associated with the organization.</p>
-     */
-    inline void SetDefaultMailDomain(Aws::String&& value) { m_defaultMailDomainHasBeenSet = true; m_defaultMailDomain = std::move(value); }
-
-    /**
-     * <p>The default email domain associated with the organization.</p>
-     */
-    inline void SetDefaultMailDomain(const char* value) { m_defaultMailDomainHasBeenSet = true; m_defaultMailDomain.assign(value); }
-
-    /**
-     * <p>The default email domain associated with the organization.</p>
-     */
-    inline OrganizationSummary& WithDefaultMailDomain(const Aws::String& value) { SetDefaultMailDomain(value); return *this;}
-
-    /**
-     * <p>The default email domain associated with the organization.</p>
-     */
-    inline OrganizationSummary& WithDefaultMailDomain(Aws::String&& value) { SetDefaultMailDomain(std::move(value)); return *this;}
-
-    /**
-     * <p>The default email domain associated with the organization.</p>
-     */
-    inline OrganizationSummary& WithDefaultMailDomain(const char* value) { SetDefaultMailDomain(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The error message associated with the organization. It is only present if
      * unexpected behavior has occurred with regards to the organization. It provides
      * insight or solutions regarding unexpected behavior.</p>
      */
-    inline const Aws::String& GetErrorMessage() const{ return m_errorMessage; }
-
-    /**
-     * <p>The error message associated with the organization. It is only present if
-     * unexpected behavior has occurred with regards to the organization. It provides
-     * insight or solutions regarding unexpected behavior.</p>
-     */
+    inline const Aws::String& GetErrorMessage() const { return m_errorMessage; }
     inline bool ErrorMessageHasBeenSet() const { return m_errorMessageHasBeenSet; }
+    template<typename ErrorMessageT = Aws::String>
+    void SetErrorMessage(ErrorMessageT&& value) { m_errorMessageHasBeenSet = true; m_errorMessage = std::forward<ErrorMessageT>(value); }
+    template<typename ErrorMessageT = Aws::String>
+    OrganizationSummary& WithErrorMessage(ErrorMessageT&& value) { SetErrorMessage(std::forward<ErrorMessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The error message associated with the organization. It is only present if
-     * unexpected behavior has occurred with regards to the organization. It provides
-     * insight or solutions regarding unexpected behavior.</p>
-     */
-    inline void SetErrorMessage(const Aws::String& value) { m_errorMessageHasBeenSet = true; m_errorMessage = value; }
-
-    /**
-     * <p>The error message associated with the organization. It is only present if
-     * unexpected behavior has occurred with regards to the organization. It provides
-     * insight or solutions regarding unexpected behavior.</p>
-     */
-    inline void SetErrorMessage(Aws::String&& value) { m_errorMessageHasBeenSet = true; m_errorMessage = std::move(value); }
-
-    /**
-     * <p>The error message associated with the organization. It is only present if
-     * unexpected behavior has occurred with regards to the organization. It provides
-     * insight or solutions regarding unexpected behavior.</p>
-     */
-    inline void SetErrorMessage(const char* value) { m_errorMessageHasBeenSet = true; m_errorMessage.assign(value); }
-
-    /**
-     * <p>The error message associated with the organization. It is only present if
-     * unexpected behavior has occurred with regards to the organization. It provides
-     * insight or solutions regarding unexpected behavior.</p>
-     */
-    inline OrganizationSummary& WithErrorMessage(const Aws::String& value) { SetErrorMessage(value); return *this;}
-
-    /**
-     * <p>The error message associated with the organization. It is only present if
-     * unexpected behavior has occurred with regards to the organization. It provides
-     * insight or solutions regarding unexpected behavior.</p>
-     */
-    inline OrganizationSummary& WithErrorMessage(Aws::String&& value) { SetErrorMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The error message associated with the organization. It is only present if
-     * unexpected behavior has occurred with regards to the organization. It provides
-     * insight or solutions regarding unexpected behavior.</p>
-     */
-    inline OrganizationSummary& WithErrorMessage(const char* value) { SetErrorMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The state associated with the organization.</p>
      */
-    inline const Aws::String& GetState() const{ return m_state; }
-
-    /**
-     * <p>The state associated with the organization.</p>
-     */
+    inline const Aws::String& GetState() const { return m_state; }
     inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
-
-    /**
-     * <p>The state associated with the organization.</p>
-     */
-    inline void SetState(const Aws::String& value) { m_stateHasBeenSet = true; m_state = value; }
-
-    /**
-     * <p>The state associated with the organization.</p>
-     */
-    inline void SetState(Aws::String&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
-
-    /**
-     * <p>The state associated with the organization.</p>
-     */
-    inline void SetState(const char* value) { m_stateHasBeenSet = true; m_state.assign(value); }
-
-    /**
-     * <p>The state associated with the organization.</p>
-     */
-    inline OrganizationSummary& WithState(const Aws::String& value) { SetState(value); return *this;}
-
-    /**
-     * <p>The state associated with the organization.</p>
-     */
-    inline OrganizationSummary& WithState(Aws::String&& value) { SetState(std::move(value)); return *this;}
-
-    /**
-     * <p>The state associated with the organization.</p>
-     */
-    inline OrganizationSummary& WithState(const char* value) { SetState(value); return *this;}
-
+    template<typename StateT = Aws::String>
+    void SetState(StateT&& value) { m_stateHasBeenSet = true; m_state = std::forward<StateT>(value); }
+    template<typename StateT = Aws::String>
+    OrganizationSummary& WithState(StateT&& value) { SetState(std::forward<StateT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_organizationId;

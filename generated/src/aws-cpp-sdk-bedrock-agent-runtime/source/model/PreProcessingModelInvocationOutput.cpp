@@ -18,15 +18,7 @@ namespace BedrockAgentRuntime
 namespace Model
 {
 
-PreProcessingModelInvocationOutput::PreProcessingModelInvocationOutput() : 
-    m_traceIdHasBeenSet(false),
-    m_parsedResponseHasBeenSet(false)
-{
-}
-
-PreProcessingModelInvocationOutput::PreProcessingModelInvocationOutput(JsonView jsonValue) : 
-    m_traceIdHasBeenSet(false),
-    m_parsedResponseHasBeenSet(false)
+PreProcessingModelInvocationOutput::PreProcessingModelInvocationOutput(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,28 @@ PreProcessingModelInvocationOutput& PreProcessingModelInvocationOutput::operator
   if(jsonValue.ValueExists("traceId"))
   {
     m_traceId = jsonValue.GetString("traceId");
-
     m_traceIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("parsedResponse"))
   {
     m_parsedResponse = jsonValue.GetObject("parsedResponse");
-
     m_parsedResponseHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("rawResponse"))
+  {
+    m_rawResponse = jsonValue.GetObject("rawResponse");
+    m_rawResponseHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("metadata"))
+  {
+    m_metadata = jsonValue.GetObject("metadata");
+    m_metadataHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("reasoningContent"))
+  {
+    m_reasoningContent = jsonValue.GetObject("reasoningContent");
+    m_reasoningContentHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -63,6 +66,24 @@ JsonValue PreProcessingModelInvocationOutput::Jsonize() const
   if(m_parsedResponseHasBeenSet)
   {
    payload.WithObject("parsedResponse", m_parsedResponse.Jsonize());
+
+  }
+
+  if(m_rawResponseHasBeenSet)
+  {
+   payload.WithObject("rawResponse", m_rawResponse.Jsonize());
+
+  }
+
+  if(m_metadataHasBeenSet)
+  {
+   payload.WithObject("metadata", m_metadata.Jsonize());
+
+  }
+
+  if(m_reasoningContentHasBeenSet)
+  {
+   payload.WithObject("reasoningContent", m_reasoningContent.Jsonize());
 
   }
 

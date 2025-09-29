@@ -34,104 +34,47 @@ namespace Model
   class HttpGatewayRouteRewrite
   {
   public:
-    AWS_APPMESH_API HttpGatewayRouteRewrite();
+    AWS_APPMESH_API HttpGatewayRouteRewrite() = default;
     AWS_APPMESH_API HttpGatewayRouteRewrite(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPMESH_API HttpGatewayRouteRewrite& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPMESH_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The host name to rewrite.</p>
      */
-    inline const GatewayRouteHostnameRewrite& GetHostname() const{ return m_hostname; }
-
-    /**
-     * <p>The host name to rewrite.</p>
-     */
+    inline const GatewayRouteHostnameRewrite& GetHostname() const { return m_hostname; }
     inline bool HostnameHasBeenSet() const { return m_hostnameHasBeenSet; }
+    template<typename HostnameT = GatewayRouteHostnameRewrite>
+    void SetHostname(HostnameT&& value) { m_hostnameHasBeenSet = true; m_hostname = std::forward<HostnameT>(value); }
+    template<typename HostnameT = GatewayRouteHostnameRewrite>
+    HttpGatewayRouteRewrite& WithHostname(HostnameT&& value) { SetHostname(std::forward<HostnameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The host name to rewrite.</p>
-     */
-    inline void SetHostname(const GatewayRouteHostnameRewrite& value) { m_hostnameHasBeenSet = true; m_hostname = value; }
-
-    /**
-     * <p>The host name to rewrite.</p>
-     */
-    inline void SetHostname(GatewayRouteHostnameRewrite&& value) { m_hostnameHasBeenSet = true; m_hostname = std::move(value); }
-
-    /**
-     * <p>The host name to rewrite.</p>
-     */
-    inline HttpGatewayRouteRewrite& WithHostname(const GatewayRouteHostnameRewrite& value) { SetHostname(value); return *this;}
-
-    /**
-     * <p>The host name to rewrite.</p>
-     */
-    inline HttpGatewayRouteRewrite& WithHostname(GatewayRouteHostnameRewrite&& value) { SetHostname(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The path to rewrite.</p>
      */
-    inline const HttpGatewayRoutePathRewrite& GetPath() const{ return m_path; }
-
-    /**
-     * <p>The path to rewrite.</p>
-     */
+    inline const HttpGatewayRoutePathRewrite& GetPath() const { return m_path; }
     inline bool PathHasBeenSet() const { return m_pathHasBeenSet; }
+    template<typename PathT = HttpGatewayRoutePathRewrite>
+    void SetPath(PathT&& value) { m_pathHasBeenSet = true; m_path = std::forward<PathT>(value); }
+    template<typename PathT = HttpGatewayRoutePathRewrite>
+    HttpGatewayRouteRewrite& WithPath(PathT&& value) { SetPath(std::forward<PathT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The path to rewrite.</p>
-     */
-    inline void SetPath(const HttpGatewayRoutePathRewrite& value) { m_pathHasBeenSet = true; m_path = value; }
-
-    /**
-     * <p>The path to rewrite.</p>
-     */
-    inline void SetPath(HttpGatewayRoutePathRewrite&& value) { m_pathHasBeenSet = true; m_path = std::move(value); }
-
-    /**
-     * <p>The path to rewrite.</p>
-     */
-    inline HttpGatewayRouteRewrite& WithPath(const HttpGatewayRoutePathRewrite& value) { SetPath(value); return *this;}
-
-    /**
-     * <p>The path to rewrite.</p>
-     */
-    inline HttpGatewayRouteRewrite& WithPath(HttpGatewayRoutePathRewrite&& value) { SetPath(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The specified beginning characters to rewrite.</p>
      */
-    inline const HttpGatewayRoutePrefixRewrite& GetPrefix() const{ return m_prefix; }
-
-    /**
-     * <p>The specified beginning characters to rewrite.</p>
-     */
+    inline const HttpGatewayRoutePrefixRewrite& GetPrefix() const { return m_prefix; }
     inline bool PrefixHasBeenSet() const { return m_prefixHasBeenSet; }
-
-    /**
-     * <p>The specified beginning characters to rewrite.</p>
-     */
-    inline void SetPrefix(const HttpGatewayRoutePrefixRewrite& value) { m_prefixHasBeenSet = true; m_prefix = value; }
-
-    /**
-     * <p>The specified beginning characters to rewrite.</p>
-     */
-    inline void SetPrefix(HttpGatewayRoutePrefixRewrite&& value) { m_prefixHasBeenSet = true; m_prefix = std::move(value); }
-
-    /**
-     * <p>The specified beginning characters to rewrite.</p>
-     */
-    inline HttpGatewayRouteRewrite& WithPrefix(const HttpGatewayRoutePrefixRewrite& value) { SetPrefix(value); return *this;}
-
-    /**
-     * <p>The specified beginning characters to rewrite.</p>
-     */
-    inline HttpGatewayRouteRewrite& WithPrefix(HttpGatewayRoutePrefixRewrite&& value) { SetPrefix(std::move(value)); return *this;}
-
+    template<typename PrefixT = HttpGatewayRoutePrefixRewrite>
+    void SetPrefix(PrefixT&& value) { m_prefixHasBeenSet = true; m_prefix = std::forward<PrefixT>(value); }
+    template<typename PrefixT = HttpGatewayRoutePrefixRewrite>
+    HttpGatewayRouteRewrite& WithPrefix(PrefixT&& value) { SetPrefix(std::forward<PrefixT>(value)); return *this;}
+    ///@}
   private:
 
     GatewayRouteHostnameRewrite m_hostname;

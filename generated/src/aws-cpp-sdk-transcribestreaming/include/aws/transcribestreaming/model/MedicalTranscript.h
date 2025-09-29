@@ -36,12 +36,13 @@ namespace Model
   class MedicalTranscript
   {
   public:
-    AWS_TRANSCRIBESTREAMINGSERVICE_API MedicalTranscript();
+    AWS_TRANSCRIBESTREAMINGSERVICE_API MedicalTranscript() = default;
     AWS_TRANSCRIBESTREAMINGSERVICE_API MedicalTranscript(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRANSCRIBESTREAMINGSERVICE_API MedicalTranscript& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRANSCRIBESTREAMINGSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Contains a set of transcription results from one or more audio segments,
      * along with additional information per your request parameters. This can include
@@ -49,71 +50,15 @@ namespace Model
      * partial result stabilization, language identification, and other
      * transcription-related data.</p>
      */
-    inline const Aws::Vector<MedicalResult>& GetResults() const{ return m_results; }
-
-    /**
-     * <p>Contains a set of transcription results from one or more audio segments,
-     * along with additional information per your request parameters. This can include
-     * information relating to alternative transcriptions, channel identification,
-     * partial result stabilization, language identification, and other
-     * transcription-related data.</p>
-     */
+    inline const Aws::Vector<MedicalResult>& GetResults() const { return m_results; }
     inline bool ResultsHasBeenSet() const { return m_resultsHasBeenSet; }
-
-    /**
-     * <p>Contains a set of transcription results from one or more audio segments,
-     * along with additional information per your request parameters. This can include
-     * information relating to alternative transcriptions, channel identification,
-     * partial result stabilization, language identification, and other
-     * transcription-related data.</p>
-     */
-    inline void SetResults(const Aws::Vector<MedicalResult>& value) { m_resultsHasBeenSet = true; m_results = value; }
-
-    /**
-     * <p>Contains a set of transcription results from one or more audio segments,
-     * along with additional information per your request parameters. This can include
-     * information relating to alternative transcriptions, channel identification,
-     * partial result stabilization, language identification, and other
-     * transcription-related data.</p>
-     */
-    inline void SetResults(Aws::Vector<MedicalResult>&& value) { m_resultsHasBeenSet = true; m_results = std::move(value); }
-
-    /**
-     * <p>Contains a set of transcription results from one or more audio segments,
-     * along with additional information per your request parameters. This can include
-     * information relating to alternative transcriptions, channel identification,
-     * partial result stabilization, language identification, and other
-     * transcription-related data.</p>
-     */
-    inline MedicalTranscript& WithResults(const Aws::Vector<MedicalResult>& value) { SetResults(value); return *this;}
-
-    /**
-     * <p>Contains a set of transcription results from one or more audio segments,
-     * along with additional information per your request parameters. This can include
-     * information relating to alternative transcriptions, channel identification,
-     * partial result stabilization, language identification, and other
-     * transcription-related data.</p>
-     */
-    inline MedicalTranscript& WithResults(Aws::Vector<MedicalResult>&& value) { SetResults(std::move(value)); return *this;}
-
-    /**
-     * <p>Contains a set of transcription results from one or more audio segments,
-     * along with additional information per your request parameters. This can include
-     * information relating to alternative transcriptions, channel identification,
-     * partial result stabilization, language identification, and other
-     * transcription-related data.</p>
-     */
-    inline MedicalTranscript& AddResults(const MedicalResult& value) { m_resultsHasBeenSet = true; m_results.push_back(value); return *this; }
-
-    /**
-     * <p>Contains a set of transcription results from one or more audio segments,
-     * along with additional information per your request parameters. This can include
-     * information relating to alternative transcriptions, channel identification,
-     * partial result stabilization, language identification, and other
-     * transcription-related data.</p>
-     */
-    inline MedicalTranscript& AddResults(MedicalResult&& value) { m_resultsHasBeenSet = true; m_results.push_back(std::move(value)); return *this; }
-
+    template<typename ResultsT = Aws::Vector<MedicalResult>>
+    void SetResults(ResultsT&& value) { m_resultsHasBeenSet = true; m_results = std::forward<ResultsT>(value); }
+    template<typename ResultsT = Aws::Vector<MedicalResult>>
+    MedicalTranscript& WithResults(ResultsT&& value) { SetResults(std::forward<ResultsT>(value)); return *this;}
+    template<typename ResultsT = MedicalResult>
+    MedicalTranscript& AddResults(ResultsT&& value) { m_resultsHasBeenSet = true; m_results.emplace_back(std::forward<ResultsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<MedicalResult> m_results;

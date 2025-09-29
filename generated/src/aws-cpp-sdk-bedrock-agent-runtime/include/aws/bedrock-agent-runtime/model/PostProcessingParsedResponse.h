@@ -24,44 +24,31 @@ namespace Model
 {
 
   /**
-   * <p>Trace Part which contains information if preprocessing was
-   * successful</p><p><h3>See Also:</h3>   <a
+   * <p>Details about the response from the Lambda parsing of the output from the
+   * post-processing step.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/bedrock-agent-runtime-2023-07-26/PostProcessingParsedResponse">AWS
    * API Reference</a></p>
    */
   class PostProcessingParsedResponse
   {
   public:
-    AWS_BEDROCKAGENTRUNTIME_API PostProcessingParsedResponse();
+    AWS_BEDROCKAGENTRUNTIME_API PostProcessingParsedResponse() = default;
     AWS_BEDROCKAGENTRUNTIME_API PostProcessingParsedResponse(Aws::Utils::Json::JsonView jsonValue);
     AWS_BEDROCKAGENTRUNTIME_API PostProcessingParsedResponse& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_BEDROCKAGENTRUNTIME_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
-    
-    inline const Aws::String& GetText() const{ return m_text; }
-
-    
+    ///@{
+    /**
+     * <p>The text returned by the parser.</p>
+     */
+    inline const Aws::String& GetText() const { return m_text; }
     inline bool TextHasBeenSet() const { return m_textHasBeenSet; }
-
-    
-    inline void SetText(const Aws::String& value) { m_textHasBeenSet = true; m_text = value; }
-
-    
-    inline void SetText(Aws::String&& value) { m_textHasBeenSet = true; m_text = std::move(value); }
-
-    
-    inline void SetText(const char* value) { m_textHasBeenSet = true; m_text.assign(value); }
-
-    
-    inline PostProcessingParsedResponse& WithText(const Aws::String& value) { SetText(value); return *this;}
-
-    
-    inline PostProcessingParsedResponse& WithText(Aws::String&& value) { SetText(std::move(value)); return *this;}
-
-    
-    inline PostProcessingParsedResponse& WithText(const char* value) { SetText(value); return *this;}
-
+    template<typename TextT = Aws::String>
+    void SetText(TextT&& value) { m_textHasBeenSet = true; m_text = std::forward<TextT>(value); }
+    template<typename TextT = Aws::String>
+    PostProcessingParsedResponse& WithText(TextT&& value) { SetText(std::forward<TextT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_text;

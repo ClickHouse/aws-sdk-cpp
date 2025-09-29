@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-ListControlSearchOptions::ListControlSearchOptions() : 
-    m_visibility(Visibility::NOT_SET),
-    m_visibilityHasBeenSet(false)
-{
-}
-
-ListControlSearchOptions::ListControlSearchOptions(JsonView jsonValue) : 
-    m_visibility(Visibility::NOT_SET),
-    m_visibilityHasBeenSet(false)
+ListControlSearchOptions::ListControlSearchOptions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ListControlSearchOptions& ListControlSearchOptions::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("Visibility"))
   {
     m_visibility = VisibilityMapper::GetVisibilityForName(jsonValue.GetString("Visibility"));
-
     m_visibilityHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,13 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-CollectiveConstant::CollectiveConstant() : 
-    m_valueListHasBeenSet(false)
-{
-}
-
-CollectiveConstant::CollectiveConstant(JsonView jsonValue) : 
-    m_valueListHasBeenSet(false)
+CollectiveConstant::CollectiveConstant(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ CollectiveConstant& CollectiveConstant::operator =(JsonView jsonValue)
     }
     m_valueListHasBeenSet = true;
   }
-
   return *this;
 }
 

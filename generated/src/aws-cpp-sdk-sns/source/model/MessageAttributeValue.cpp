@@ -21,17 +21,7 @@ namespace SNS
 namespace Model
 {
 
-MessageAttributeValue::MessageAttributeValue() : 
-    m_dataTypeHasBeenSet(false),
-    m_stringValueHasBeenSet(false),
-    m_binaryValueHasBeenSet(false)
-{
-}
-
-MessageAttributeValue::MessageAttributeValue(const XmlNode& xmlNode) : 
-    m_dataTypeHasBeenSet(false),
-    m_stringValueHasBeenSet(false),
-    m_binaryValueHasBeenSet(false)
+MessageAttributeValue::MessageAttributeValue(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

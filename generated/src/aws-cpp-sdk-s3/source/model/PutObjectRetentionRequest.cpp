@@ -6,6 +6,7 @@
 #include <aws/s3/model/PutObjectRetentionRequest.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/core/utils/UnreferencedParam.h>
 #include <aws/core/http/URI.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
 
@@ -16,21 +17,24 @@ using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-PutObjectRetentionRequest::PutObjectRetentionRequest() : 
-    m_bucketHasBeenSet(false),
-    m_keyHasBeenSet(false),
-    m_retentionHasBeenSet(false),
-    m_requestPayer(RequestPayer::NOT_SET),
-    m_requestPayerHasBeenSet(false),
-    m_versionIdHasBeenSet(false),
-    m_bypassGovernanceRetention(false),
-    m_bypassGovernanceRetentionHasBeenSet(false),
-    m_contentMD5HasBeenSet(false),
-    m_checksumAlgorithm(ChecksumAlgorithm::NOT_SET),
-    m_checksumAlgorithmHasBeenSet(false),
-    m_expectedBucketOwnerHasBeenSet(false),
-    m_customizedAccessLogTagHasBeenSet(false)
+
+bool PutObjectRetentionRequest::HasEmbeddedError(Aws::IOStream &body,
+  const Aws::Http::HeaderValueCollection &header) const
 {
+  // Header is unused
+  AWS_UNREFERENCED_PARAM(header);
+
+  auto readPointer = body.tellg();
+  Utils::Xml::XmlDocument doc = XmlDocument::CreateFromXmlStream(body);
+  body.seekg(readPointer);
+  if (!doc.WasParseSuccessful()) {
+    return false;
+  }
+
+  if (!doc.GetRootElement().IsNull() && doc.GetRootElement().GetName() == Aws::String("Error")) {
+    return true;
+  }
+  return false;
 }
 
 Aws::String PutObjectRetentionRequest::SerializePayload() const
@@ -82,7 +86,7 @@ Aws::Http::HeaderValueCollection PutObjectRetentionRequest::GetRequestSpecificHe
 {
   Aws::Http::HeaderValueCollection headers;
   Aws::StringStream ss;
-  if(m_requestPayerHasBeenSet)
+  if(m_requestPayerHasBeenSet && m_requestPayer != RequestPayer::NOT_SET)
   {
     headers.emplace("x-amz-request-payer", RequestPayerMapper::GetNameForRequestPayer(m_requestPayer));
   }
@@ -101,7 +105,7 @@ Aws::Http::HeaderValueCollection PutObjectRetentionRequest::GetRequestSpecificHe
     ss.str("");
   }
 
-  if(m_checksumAlgorithmHasBeenSet)
+  if(m_checksumAlgorithmHasBeenSet && m_checksumAlgorithm != ChecksumAlgorithm::NOT_SET)
   {
     headers.emplace("x-amz-sdk-checksum-algorithm", ChecksumAlgorithmMapper::GetNameForChecksumAlgorithm(m_checksumAlgorithm));
   }
@@ -130,7 +134,7 @@ Aws::String PutObjectRetentionRequest::GetChecksumAlgorithmName() const
 {
   if (m_checksumAlgorithm == ChecksumAlgorithm::NOT_SET)
   {
-    return "md5";
+    return "crc64nvme";
   }
   else
   {

@@ -18,19 +18,7 @@ namespace MQ
 namespace Model
 {
 
-ConfigurationRevision::ConfigurationRevision() : 
-    m_createdHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_revision(0),
-    m_revisionHasBeenSet(false)
-{
-}
-
-ConfigurationRevision::ConfigurationRevision(JsonView jsonValue) : 
-    m_createdHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_revision(0),
-    m_revisionHasBeenSet(false)
+ConfigurationRevision::ConfigurationRevision(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ ConfigurationRevision& ConfigurationRevision::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("created"))
   {
     m_created = jsonValue.GetString("created");
-
     m_createdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("description"))
   {
     m_description = jsonValue.GetString("description");
-
     m_descriptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("revision"))
   {
     m_revision = jsonValue.GetInteger("revision");
-
     m_revisionHasBeenSet = true;
   }
-
   return *this;
 }
 

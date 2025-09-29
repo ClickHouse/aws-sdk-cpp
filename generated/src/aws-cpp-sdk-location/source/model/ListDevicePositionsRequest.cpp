@@ -12,24 +12,9 @@ using namespace Aws::LocationService::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ListDevicePositionsRequest::ListDevicePositionsRequest() : 
-    m_filterGeometryHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_trackerNameHasBeenSet(false)
-{
-}
-
 Aws::String ListDevicePositionsRequest::SerializePayload() const
 {
   JsonValue payload;
-
-  if(m_filterGeometryHasBeenSet)
-  {
-   payload.WithObject("FilterGeometry", m_filterGeometry.Jsonize());
-
-  }
 
   if(m_maxResultsHasBeenSet)
   {
@@ -40,6 +25,12 @@ Aws::String ListDevicePositionsRequest::SerializePayload() const
   if(m_nextTokenHasBeenSet)
   {
    payload.WithString("NextToken", m_nextToken);
+
+  }
+
+  if(m_filterGeometryHasBeenSet)
+  {
+   payload.WithObject("FilterGeometry", m_filterGeometry.Jsonize());
 
   }
 

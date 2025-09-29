@@ -6,6 +6,7 @@
 #include <aws/s3control/model/PutBucketPolicyRequest.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/core/utils/UnreferencedParam.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
 
 #include <utility>
@@ -14,14 +15,6 @@ using namespace Aws::S3Control::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 
-PutBucketPolicyRequest::PutBucketPolicyRequest() : 
-    m_accountIdHasBeenSet(false),
-    m_bucketHasBeenSet(false),
-    m_confirmRemoveSelfBucketAccess(false),
-    m_confirmRemoveSelfBucketAccessHasBeenSet(false),
-    m_policyHasBeenSet(false)
-{
-}
 
 Aws::String PutBucketPolicyRequest::SerializePayload() const
 {

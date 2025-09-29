@@ -34,109 +34,39 @@ namespace Model
   class BackendStoragePermissions
   {
   public:
-    AWS_AMPLIFYBACKEND_API BackendStoragePermissions();
+    AWS_AMPLIFYBACKEND_API BackendStoragePermissions() = default;
     AWS_AMPLIFYBACKEND_API BackendStoragePermissions(Aws::Utils::Json::JsonView jsonValue);
     AWS_AMPLIFYBACKEND_API BackendStoragePermissions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_AMPLIFYBACKEND_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Lists all authenticated user read, write, and delete permissions for your S3
      * bucket.</p>
      */
-    inline const Aws::Vector<AuthenticatedElement>& GetAuthenticated() const{ return m_authenticated; }
-
-    /**
-     * <p>Lists all authenticated user read, write, and delete permissions for your S3
-     * bucket.</p>
-     */
+    inline const Aws::Vector<AuthenticatedElement>& GetAuthenticated() const { return m_authenticated; }
     inline bool AuthenticatedHasBeenSet() const { return m_authenticatedHasBeenSet; }
+    template<typename AuthenticatedT = Aws::Vector<AuthenticatedElement>>
+    void SetAuthenticated(AuthenticatedT&& value) { m_authenticatedHasBeenSet = true; m_authenticated = std::forward<AuthenticatedT>(value); }
+    template<typename AuthenticatedT = Aws::Vector<AuthenticatedElement>>
+    BackendStoragePermissions& WithAuthenticated(AuthenticatedT&& value) { SetAuthenticated(std::forward<AuthenticatedT>(value)); return *this;}
+    inline BackendStoragePermissions& AddAuthenticated(AuthenticatedElement value) { m_authenticatedHasBeenSet = true; m_authenticated.push_back(value); return *this; }
+    ///@}
 
-    /**
-     * <p>Lists all authenticated user read, write, and delete permissions for your S3
-     * bucket.</p>
-     */
-    inline void SetAuthenticated(const Aws::Vector<AuthenticatedElement>& value) { m_authenticatedHasBeenSet = true; m_authenticated = value; }
-
-    /**
-     * <p>Lists all authenticated user read, write, and delete permissions for your S3
-     * bucket.</p>
-     */
-    inline void SetAuthenticated(Aws::Vector<AuthenticatedElement>&& value) { m_authenticatedHasBeenSet = true; m_authenticated = std::move(value); }
-
-    /**
-     * <p>Lists all authenticated user read, write, and delete permissions for your S3
-     * bucket.</p>
-     */
-    inline BackendStoragePermissions& WithAuthenticated(const Aws::Vector<AuthenticatedElement>& value) { SetAuthenticated(value); return *this;}
-
-    /**
-     * <p>Lists all authenticated user read, write, and delete permissions for your S3
-     * bucket.</p>
-     */
-    inline BackendStoragePermissions& WithAuthenticated(Aws::Vector<AuthenticatedElement>&& value) { SetAuthenticated(std::move(value)); return *this;}
-
-    /**
-     * <p>Lists all authenticated user read, write, and delete permissions for your S3
-     * bucket.</p>
-     */
-    inline BackendStoragePermissions& AddAuthenticated(const AuthenticatedElement& value) { m_authenticatedHasBeenSet = true; m_authenticated.push_back(value); return *this; }
-
-    /**
-     * <p>Lists all authenticated user read, write, and delete permissions for your S3
-     * bucket.</p>
-     */
-    inline BackendStoragePermissions& AddAuthenticated(AuthenticatedElement&& value) { m_authenticatedHasBeenSet = true; m_authenticated.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Lists all unauthenticated user read, write, and delete permissions for your
      * S3 bucket.</p>
      */
-    inline const Aws::Vector<UnAuthenticatedElement>& GetUnAuthenticated() const{ return m_unAuthenticated; }
-
-    /**
-     * <p>Lists all unauthenticated user read, write, and delete permissions for your
-     * S3 bucket.</p>
-     */
+    inline const Aws::Vector<UnAuthenticatedElement>& GetUnAuthenticated() const { return m_unAuthenticated; }
     inline bool UnAuthenticatedHasBeenSet() const { return m_unAuthenticatedHasBeenSet; }
-
-    /**
-     * <p>Lists all unauthenticated user read, write, and delete permissions for your
-     * S3 bucket.</p>
-     */
-    inline void SetUnAuthenticated(const Aws::Vector<UnAuthenticatedElement>& value) { m_unAuthenticatedHasBeenSet = true; m_unAuthenticated = value; }
-
-    /**
-     * <p>Lists all unauthenticated user read, write, and delete permissions for your
-     * S3 bucket.</p>
-     */
-    inline void SetUnAuthenticated(Aws::Vector<UnAuthenticatedElement>&& value) { m_unAuthenticatedHasBeenSet = true; m_unAuthenticated = std::move(value); }
-
-    /**
-     * <p>Lists all unauthenticated user read, write, and delete permissions for your
-     * S3 bucket.</p>
-     */
-    inline BackendStoragePermissions& WithUnAuthenticated(const Aws::Vector<UnAuthenticatedElement>& value) { SetUnAuthenticated(value); return *this;}
-
-    /**
-     * <p>Lists all unauthenticated user read, write, and delete permissions for your
-     * S3 bucket.</p>
-     */
-    inline BackendStoragePermissions& WithUnAuthenticated(Aws::Vector<UnAuthenticatedElement>&& value) { SetUnAuthenticated(std::move(value)); return *this;}
-
-    /**
-     * <p>Lists all unauthenticated user read, write, and delete permissions for your
-     * S3 bucket.</p>
-     */
-    inline BackendStoragePermissions& AddUnAuthenticated(const UnAuthenticatedElement& value) { m_unAuthenticatedHasBeenSet = true; m_unAuthenticated.push_back(value); return *this; }
-
-    /**
-     * <p>Lists all unauthenticated user read, write, and delete permissions for your
-     * S3 bucket.</p>
-     */
-    inline BackendStoragePermissions& AddUnAuthenticated(UnAuthenticatedElement&& value) { m_unAuthenticatedHasBeenSet = true; m_unAuthenticated.push_back(std::move(value)); return *this; }
-
+    template<typename UnAuthenticatedT = Aws::Vector<UnAuthenticatedElement>>
+    void SetUnAuthenticated(UnAuthenticatedT&& value) { m_unAuthenticatedHasBeenSet = true; m_unAuthenticated = std::forward<UnAuthenticatedT>(value); }
+    template<typename UnAuthenticatedT = Aws::Vector<UnAuthenticatedElement>>
+    BackendStoragePermissions& WithUnAuthenticated(UnAuthenticatedT&& value) { SetUnAuthenticated(std::forward<UnAuthenticatedT>(value)); return *this;}
+    inline BackendStoragePermissions& AddUnAuthenticated(UnAuthenticatedElement value) { m_unAuthenticatedHasBeenSet = true; m_unAuthenticated.push_back(value); return *this; }
+    ///@}
   private:
 
     Aws::Vector<AuthenticatedElement> m_authenticated;

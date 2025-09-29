@@ -33,229 +33,91 @@ namespace Model
   class DashboardVersionSummary
   {
   public:
-    AWS_QUICKSIGHT_API DashboardVersionSummary();
+    AWS_QUICKSIGHT_API DashboardVersionSummary() = default;
     AWS_QUICKSIGHT_API DashboardVersionSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API DashboardVersionSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the resource.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resource.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    DashboardVersionSummary& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resource.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resource.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resource.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resource.</p>
-     */
-    inline DashboardVersionSummary& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resource.</p>
-     */
-    inline DashboardVersionSummary& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resource.</p>
-     */
-    inline DashboardVersionSummary& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The time that this dashboard version was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedTime() const{ return m_createdTime; }
-
-    /**
-     * <p>The time that this dashboard version was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedTime() const { return m_createdTime; }
     inline bool CreatedTimeHasBeenSet() const { return m_createdTimeHasBeenSet; }
+    template<typename CreatedTimeT = Aws::Utils::DateTime>
+    void SetCreatedTime(CreatedTimeT&& value) { m_createdTimeHasBeenSet = true; m_createdTime = std::forward<CreatedTimeT>(value); }
+    template<typename CreatedTimeT = Aws::Utils::DateTime>
+    DashboardVersionSummary& WithCreatedTime(CreatedTimeT&& value) { SetCreatedTime(std::forward<CreatedTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time that this dashboard version was created.</p>
-     */
-    inline void SetCreatedTime(const Aws::Utils::DateTime& value) { m_createdTimeHasBeenSet = true; m_createdTime = value; }
-
-    /**
-     * <p>The time that this dashboard version was created.</p>
-     */
-    inline void SetCreatedTime(Aws::Utils::DateTime&& value) { m_createdTimeHasBeenSet = true; m_createdTime = std::move(value); }
-
-    /**
-     * <p>The time that this dashboard version was created.</p>
-     */
-    inline DashboardVersionSummary& WithCreatedTime(const Aws::Utils::DateTime& value) { SetCreatedTime(value); return *this;}
-
-    /**
-     * <p>The time that this dashboard version was created.</p>
-     */
-    inline DashboardVersionSummary& WithCreatedTime(Aws::Utils::DateTime&& value) { SetCreatedTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Version number.</p>
      */
-    inline long long GetVersionNumber() const{ return m_versionNumber; }
-
-    /**
-     * <p>Version number.</p>
-     */
+    inline long long GetVersionNumber() const { return m_versionNumber; }
     inline bool VersionNumberHasBeenSet() const { return m_versionNumberHasBeenSet; }
-
-    /**
-     * <p>Version number.</p>
-     */
     inline void SetVersionNumber(long long value) { m_versionNumberHasBeenSet = true; m_versionNumber = value; }
-
-    /**
-     * <p>Version number.</p>
-     */
     inline DashboardVersionSummary& WithVersionNumber(long long value) { SetVersionNumber(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The HTTP status of the request.</p>
      */
-    inline const ResourceStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The HTTP status of the request.</p>
-     */
+    inline ResourceStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(ResourceStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline DashboardVersionSummary& WithStatus(ResourceStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The HTTP status of the request.</p>
-     */
-    inline void SetStatus(const ResourceStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The HTTP status of the request.</p>
-     */
-    inline void SetStatus(ResourceStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The HTTP status of the request.</p>
-     */
-    inline DashboardVersionSummary& WithStatus(const ResourceStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The HTTP status of the request.</p>
-     */
-    inline DashboardVersionSummary& WithStatus(ResourceStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Source entity ARN.</p>
      */
-    inline const Aws::String& GetSourceEntityArn() const{ return m_sourceEntityArn; }
-
-    /**
-     * <p>Source entity ARN.</p>
-     */
+    inline const Aws::String& GetSourceEntityArn() const { return m_sourceEntityArn; }
     inline bool SourceEntityArnHasBeenSet() const { return m_sourceEntityArnHasBeenSet; }
+    template<typename SourceEntityArnT = Aws::String>
+    void SetSourceEntityArn(SourceEntityArnT&& value) { m_sourceEntityArnHasBeenSet = true; m_sourceEntityArn = std::forward<SourceEntityArnT>(value); }
+    template<typename SourceEntityArnT = Aws::String>
+    DashboardVersionSummary& WithSourceEntityArn(SourceEntityArnT&& value) { SetSourceEntityArn(std::forward<SourceEntityArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Source entity ARN.</p>
-     */
-    inline void SetSourceEntityArn(const Aws::String& value) { m_sourceEntityArnHasBeenSet = true; m_sourceEntityArn = value; }
-
-    /**
-     * <p>Source entity ARN.</p>
-     */
-    inline void SetSourceEntityArn(Aws::String&& value) { m_sourceEntityArnHasBeenSet = true; m_sourceEntityArn = std::move(value); }
-
-    /**
-     * <p>Source entity ARN.</p>
-     */
-    inline void SetSourceEntityArn(const char* value) { m_sourceEntityArnHasBeenSet = true; m_sourceEntityArn.assign(value); }
-
-    /**
-     * <p>Source entity ARN.</p>
-     */
-    inline DashboardVersionSummary& WithSourceEntityArn(const Aws::String& value) { SetSourceEntityArn(value); return *this;}
-
-    /**
-     * <p>Source entity ARN.</p>
-     */
-    inline DashboardVersionSummary& WithSourceEntityArn(Aws::String&& value) { SetSourceEntityArn(std::move(value)); return *this;}
-
-    /**
-     * <p>Source entity ARN.</p>
-     */
-    inline DashboardVersionSummary& WithSourceEntityArn(const char* value) { SetSourceEntityArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Description.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>Description.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
-
-    /**
-     * <p>Description.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>Description.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>Description.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>Description.</p>
-     */
-    inline DashboardVersionSummary& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>Description.</p>
-     */
-    inline DashboardVersionSummary& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>Description.</p>
-     */
-    inline DashboardVersionSummary& WithDescription(const char* value) { SetDescription(value); return *this;}
-
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    DashboardVersionSummary& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;
     bool m_arnHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdTime;
+    Aws::Utils::DateTime m_createdTime{};
     bool m_createdTimeHasBeenSet = false;
 
-    long long m_versionNumber;
+    long long m_versionNumber{0};
     bool m_versionNumberHasBeenSet = false;
 
-    ResourceStatus m_status;
+    ResourceStatus m_status{ResourceStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
     Aws::String m_sourceEntityArn;

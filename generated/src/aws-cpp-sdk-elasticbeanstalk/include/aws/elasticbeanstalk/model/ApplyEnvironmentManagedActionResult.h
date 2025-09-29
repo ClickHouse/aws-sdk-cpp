@@ -35,171 +35,77 @@ namespace Model
   class ApplyEnvironmentManagedActionResult
   {
   public:
-    AWS_ELASTICBEANSTALK_API ApplyEnvironmentManagedActionResult();
+    AWS_ELASTICBEANSTALK_API ApplyEnvironmentManagedActionResult() = default;
     AWS_ELASTICBEANSTALK_API ApplyEnvironmentManagedActionResult(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_ELASTICBEANSTALK_API ApplyEnvironmentManagedActionResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * <p>The action ID of the managed action.</p>
      */
-    inline const Aws::String& GetActionId() const{ return m_actionId; }
+    inline const Aws::String& GetActionId() const { return m_actionId; }
+    template<typename ActionIdT = Aws::String>
+    void SetActionId(ActionIdT&& value) { m_actionIdHasBeenSet = true; m_actionId = std::forward<ActionIdT>(value); }
+    template<typename ActionIdT = Aws::String>
+    ApplyEnvironmentManagedActionResult& WithActionId(ActionIdT&& value) { SetActionId(std::forward<ActionIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The action ID of the managed action.</p>
-     */
-    inline void SetActionId(const Aws::String& value) { m_actionId = value; }
-
-    /**
-     * <p>The action ID of the managed action.</p>
-     */
-    inline void SetActionId(Aws::String&& value) { m_actionId = std::move(value); }
-
-    /**
-     * <p>The action ID of the managed action.</p>
-     */
-    inline void SetActionId(const char* value) { m_actionId.assign(value); }
-
-    /**
-     * <p>The action ID of the managed action.</p>
-     */
-    inline ApplyEnvironmentManagedActionResult& WithActionId(const Aws::String& value) { SetActionId(value); return *this;}
-
-    /**
-     * <p>The action ID of the managed action.</p>
-     */
-    inline ApplyEnvironmentManagedActionResult& WithActionId(Aws::String&& value) { SetActionId(std::move(value)); return *this;}
-
-    /**
-     * <p>The action ID of the managed action.</p>
-     */
-    inline ApplyEnvironmentManagedActionResult& WithActionId(const char* value) { SetActionId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A description of the managed action.</p>
      */
-    inline const Aws::String& GetActionDescription() const{ return m_actionDescription; }
+    inline const Aws::String& GetActionDescription() const { return m_actionDescription; }
+    template<typename ActionDescriptionT = Aws::String>
+    void SetActionDescription(ActionDescriptionT&& value) { m_actionDescriptionHasBeenSet = true; m_actionDescription = std::forward<ActionDescriptionT>(value); }
+    template<typename ActionDescriptionT = Aws::String>
+    ApplyEnvironmentManagedActionResult& WithActionDescription(ActionDescriptionT&& value) { SetActionDescription(std::forward<ActionDescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A description of the managed action.</p>
-     */
-    inline void SetActionDescription(const Aws::String& value) { m_actionDescription = value; }
-
-    /**
-     * <p>A description of the managed action.</p>
-     */
-    inline void SetActionDescription(Aws::String&& value) { m_actionDescription = std::move(value); }
-
-    /**
-     * <p>A description of the managed action.</p>
-     */
-    inline void SetActionDescription(const char* value) { m_actionDescription.assign(value); }
-
-    /**
-     * <p>A description of the managed action.</p>
-     */
-    inline ApplyEnvironmentManagedActionResult& WithActionDescription(const Aws::String& value) { SetActionDescription(value); return *this;}
-
-    /**
-     * <p>A description of the managed action.</p>
-     */
-    inline ApplyEnvironmentManagedActionResult& WithActionDescription(Aws::String&& value) { SetActionDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A description of the managed action.</p>
-     */
-    inline ApplyEnvironmentManagedActionResult& WithActionDescription(const char* value) { SetActionDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of managed action.</p>
      */
-    inline const ActionType& GetActionType() const{ return m_actionType; }
+    inline ActionType GetActionType() const { return m_actionType; }
+    inline void SetActionType(ActionType value) { m_actionTypeHasBeenSet = true; m_actionType = value; }
+    inline ApplyEnvironmentManagedActionResult& WithActionType(ActionType value) { SetActionType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of managed action.</p>
-     */
-    inline void SetActionType(const ActionType& value) { m_actionType = value; }
-
-    /**
-     * <p>The type of managed action.</p>
-     */
-    inline void SetActionType(ActionType&& value) { m_actionType = std::move(value); }
-
-    /**
-     * <p>The type of managed action.</p>
-     */
-    inline ApplyEnvironmentManagedActionResult& WithActionType(const ActionType& value) { SetActionType(value); return *this;}
-
-    /**
-     * <p>The type of managed action.</p>
-     */
-    inline ApplyEnvironmentManagedActionResult& WithActionType(ActionType&& value) { SetActionType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the managed action.</p>
      */
-    inline const Aws::String& GetStatus() const{ return m_status; }
+    inline const Aws::String& GetStatus() const { return m_status; }
+    template<typename StatusT = Aws::String>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = Aws::String>
+    ApplyEnvironmentManagedActionResult& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the managed action.</p>
-     */
-    inline void SetStatus(const Aws::String& value) { m_status = value; }
-
-    /**
-     * <p>The status of the managed action.</p>
-     */
-    inline void SetStatus(Aws::String&& value) { m_status = std::move(value); }
-
-    /**
-     * <p>The status of the managed action.</p>
-     */
-    inline void SetStatus(const char* value) { m_status.assign(value); }
-
-    /**
-     * <p>The status of the managed action.</p>
-     */
-    inline ApplyEnvironmentManagedActionResult& WithStatus(const Aws::String& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the managed action.</p>
-     */
-    inline ApplyEnvironmentManagedActionResult& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
-
-    /**
-     * <p>The status of the managed action.</p>
-     */
-    inline ApplyEnvironmentManagedActionResult& WithStatus(const char* value) { SetStatus(value); return *this;}
-
-
+    ///@{
     
-    inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
-
-    
-    inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
-
-    
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
-
-    
-    inline ApplyEnvironmentManagedActionResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
-
-    
-    inline ApplyEnvironmentManagedActionResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
-
+    inline const ResponseMetadata& GetResponseMetadata() const { return m_responseMetadata; }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    void SetResponseMetadata(ResponseMetadataT&& value) { m_responseMetadataHasBeenSet = true; m_responseMetadata = std::forward<ResponseMetadataT>(value); }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    ApplyEnvironmentManagedActionResult& WithResponseMetadata(ResponseMetadataT&& value) { SetResponseMetadata(std::forward<ResponseMetadataT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_actionId;
+    bool m_actionIdHasBeenSet = false;
 
     Aws::String m_actionDescription;
+    bool m_actionDescriptionHasBeenSet = false;
 
-    ActionType m_actionType;
+    ActionType m_actionType{ActionType::NOT_SET};
+    bool m_actionTypeHasBeenSet = false;
 
     Aws::String m_status;
+    bool m_statusHasBeenSet = false;
 
     ResponseMetadata m_responseMetadata;
+    bool m_responseMetadataHasBeenSet = false;
   };
 
 } // namespace Model

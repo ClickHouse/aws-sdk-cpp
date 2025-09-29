@@ -39,89 +39,39 @@ namespace Model
   class QuickResponseOrderField
   {
   public:
-    AWS_CONNECTWISDOMSERVICE_API QuickResponseOrderField();
+    AWS_CONNECTWISDOMSERVICE_API QuickResponseOrderField() = default;
     AWS_CONNECTWISDOMSERVICE_API QuickResponseOrderField(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECTWISDOMSERVICE_API QuickResponseOrderField& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECTWISDOMSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the attribute to order the quick response query results by.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the attribute to order the quick response query results by.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    QuickResponseOrderField& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the attribute to order the quick response query results by.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the attribute to order the quick response query results by.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the attribute to order the quick response query results by.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the attribute to order the quick response query results by.</p>
-     */
-    inline QuickResponseOrderField& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the attribute to order the quick response query results by.</p>
-     */
-    inline QuickResponseOrderField& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the attribute to order the quick response query results by.</p>
-     */
-    inline QuickResponseOrderField& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The order at which the quick responses are sorted by.</p>
      */
-    inline const Order& GetOrder() const{ return m_order; }
-
-    /**
-     * <p>The order at which the quick responses are sorted by.</p>
-     */
+    inline Order GetOrder() const { return m_order; }
     inline bool OrderHasBeenSet() const { return m_orderHasBeenSet; }
-
-    /**
-     * <p>The order at which the quick responses are sorted by.</p>
-     */
-    inline void SetOrder(const Order& value) { m_orderHasBeenSet = true; m_order = value; }
-
-    /**
-     * <p>The order at which the quick responses are sorted by.</p>
-     */
-    inline void SetOrder(Order&& value) { m_orderHasBeenSet = true; m_order = std::move(value); }
-
-    /**
-     * <p>The order at which the quick responses are sorted by.</p>
-     */
-    inline QuickResponseOrderField& WithOrder(const Order& value) { SetOrder(value); return *this;}
-
-    /**
-     * <p>The order at which the quick responses are sorted by.</p>
-     */
-    inline QuickResponseOrderField& WithOrder(Order&& value) { SetOrder(std::move(value)); return *this;}
-
+    inline void SetOrder(Order value) { m_orderHasBeenSet = true; m_order = value; }
+    inline QuickResponseOrderField& WithOrder(Order value) { SetOrder(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;
     bool m_nameHasBeenSet = false;
 
-    Order m_order;
+    Order m_order{Order::NOT_SET};
     bool m_orderHasBeenSet = false;
   };
 

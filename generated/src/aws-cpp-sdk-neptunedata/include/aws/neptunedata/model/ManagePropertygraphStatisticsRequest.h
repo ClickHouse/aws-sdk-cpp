@@ -21,7 +21,7 @@ namespace Model
   class ManagePropertygraphStatisticsRequest : public NeptunedataRequest
   {
   public:
-    AWS_NEPTUNEDATA_API ManagePropertygraphStatisticsRequest();
+    AWS_NEPTUNEDATA_API ManagePropertygraphStatisticsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,51 +32,20 @@ namespace Model
     AWS_NEPTUNEDATA_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The statistics generation mode. One of: <code>DISABLE_AUTOCOMPUTE</code>,
      * <code>ENABLE_AUTOCOMPUTE</code>, or <code>REFRESH</code>, the last of which
      * manually triggers DFE statistics generation.</p>
      */
-    inline const StatisticsAutoGenerationMode& GetMode() const{ return m_mode; }
-
-    /**
-     * <p>The statistics generation mode. One of: <code>DISABLE_AUTOCOMPUTE</code>,
-     * <code>ENABLE_AUTOCOMPUTE</code>, or <code>REFRESH</code>, the last of which
-     * manually triggers DFE statistics generation.</p>
-     */
+    inline StatisticsAutoGenerationMode GetMode() const { return m_mode; }
     inline bool ModeHasBeenSet() const { return m_modeHasBeenSet; }
-
-    /**
-     * <p>The statistics generation mode. One of: <code>DISABLE_AUTOCOMPUTE</code>,
-     * <code>ENABLE_AUTOCOMPUTE</code>, or <code>REFRESH</code>, the last of which
-     * manually triggers DFE statistics generation.</p>
-     */
-    inline void SetMode(const StatisticsAutoGenerationMode& value) { m_modeHasBeenSet = true; m_mode = value; }
-
-    /**
-     * <p>The statistics generation mode. One of: <code>DISABLE_AUTOCOMPUTE</code>,
-     * <code>ENABLE_AUTOCOMPUTE</code>, or <code>REFRESH</code>, the last of which
-     * manually triggers DFE statistics generation.</p>
-     */
-    inline void SetMode(StatisticsAutoGenerationMode&& value) { m_modeHasBeenSet = true; m_mode = std::move(value); }
-
-    /**
-     * <p>The statistics generation mode. One of: <code>DISABLE_AUTOCOMPUTE</code>,
-     * <code>ENABLE_AUTOCOMPUTE</code>, or <code>REFRESH</code>, the last of which
-     * manually triggers DFE statistics generation.</p>
-     */
-    inline ManagePropertygraphStatisticsRequest& WithMode(const StatisticsAutoGenerationMode& value) { SetMode(value); return *this;}
-
-    /**
-     * <p>The statistics generation mode. One of: <code>DISABLE_AUTOCOMPUTE</code>,
-     * <code>ENABLE_AUTOCOMPUTE</code>, or <code>REFRESH</code>, the last of which
-     * manually triggers DFE statistics generation.</p>
-     */
-    inline ManagePropertygraphStatisticsRequest& WithMode(StatisticsAutoGenerationMode&& value) { SetMode(std::move(value)); return *this;}
-
+    inline void SetMode(StatisticsAutoGenerationMode value) { m_modeHasBeenSet = true; m_mode = value; }
+    inline ManagePropertygraphStatisticsRequest& WithMode(StatisticsAutoGenerationMode value) { SetMode(value); return *this;}
+    ///@}
   private:
 
-    StatisticsAutoGenerationMode m_mode;
+    StatisticsAutoGenerationMode m_mode{StatisticsAutoGenerationMode::NOT_SET};
     bool m_modeHasBeenSet = false;
   };
 

@@ -34,357 +34,112 @@ namespace Model
   class QuickConnect
   {
   public:
-    AWS_CONNECT_API QuickConnect();
+    AWS_CONNECT_API QuickConnect() = default;
     AWS_CONNECT_API QuickConnect(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API QuickConnect& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the quick connect.</p>
      */
-    inline const Aws::String& GetQuickConnectARN() const{ return m_quickConnectARN; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the quick connect.</p>
-     */
+    inline const Aws::String& GetQuickConnectARN() const { return m_quickConnectARN; }
     inline bool QuickConnectARNHasBeenSet() const { return m_quickConnectARNHasBeenSet; }
+    template<typename QuickConnectARNT = Aws::String>
+    void SetQuickConnectARN(QuickConnectARNT&& value) { m_quickConnectARNHasBeenSet = true; m_quickConnectARN = std::forward<QuickConnectARNT>(value); }
+    template<typename QuickConnectARNT = Aws::String>
+    QuickConnect& WithQuickConnectARN(QuickConnectARNT&& value) { SetQuickConnectARN(std::forward<QuickConnectARNT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the quick connect.</p>
-     */
-    inline void SetQuickConnectARN(const Aws::String& value) { m_quickConnectARNHasBeenSet = true; m_quickConnectARN = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the quick connect.</p>
-     */
-    inline void SetQuickConnectARN(Aws::String&& value) { m_quickConnectARNHasBeenSet = true; m_quickConnectARN = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the quick connect.</p>
-     */
-    inline void SetQuickConnectARN(const char* value) { m_quickConnectARNHasBeenSet = true; m_quickConnectARN.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the quick connect.</p>
-     */
-    inline QuickConnect& WithQuickConnectARN(const Aws::String& value) { SetQuickConnectARN(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the quick connect.</p>
-     */
-    inline QuickConnect& WithQuickConnectARN(Aws::String&& value) { SetQuickConnectARN(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the quick connect.</p>
-     */
-    inline QuickConnect& WithQuickConnectARN(const char* value) { SetQuickConnectARN(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier for the quick connect.</p>
      */
-    inline const Aws::String& GetQuickConnectId() const{ return m_quickConnectId; }
-
-    /**
-     * <p>The identifier for the quick connect.</p>
-     */
+    inline const Aws::String& GetQuickConnectId() const { return m_quickConnectId; }
     inline bool QuickConnectIdHasBeenSet() const { return m_quickConnectIdHasBeenSet; }
+    template<typename QuickConnectIdT = Aws::String>
+    void SetQuickConnectId(QuickConnectIdT&& value) { m_quickConnectIdHasBeenSet = true; m_quickConnectId = std::forward<QuickConnectIdT>(value); }
+    template<typename QuickConnectIdT = Aws::String>
+    QuickConnect& WithQuickConnectId(QuickConnectIdT&& value) { SetQuickConnectId(std::forward<QuickConnectIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier for the quick connect.</p>
-     */
-    inline void SetQuickConnectId(const Aws::String& value) { m_quickConnectIdHasBeenSet = true; m_quickConnectId = value; }
-
-    /**
-     * <p>The identifier for the quick connect.</p>
-     */
-    inline void SetQuickConnectId(Aws::String&& value) { m_quickConnectIdHasBeenSet = true; m_quickConnectId = std::move(value); }
-
-    /**
-     * <p>The identifier for the quick connect.</p>
-     */
-    inline void SetQuickConnectId(const char* value) { m_quickConnectIdHasBeenSet = true; m_quickConnectId.assign(value); }
-
-    /**
-     * <p>The identifier for the quick connect.</p>
-     */
-    inline QuickConnect& WithQuickConnectId(const Aws::String& value) { SetQuickConnectId(value); return *this;}
-
-    /**
-     * <p>The identifier for the quick connect.</p>
-     */
-    inline QuickConnect& WithQuickConnectId(Aws::String&& value) { SetQuickConnectId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier for the quick connect.</p>
-     */
-    inline QuickConnect& WithQuickConnectId(const char* value) { SetQuickConnectId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the quick connect.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the quick connect.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    QuickConnect& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the quick connect.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the quick connect.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the quick connect.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the quick connect.</p>
-     */
-    inline QuickConnect& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the quick connect.</p>
-     */
-    inline QuickConnect& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the quick connect.</p>
-     */
-    inline QuickConnect& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The description.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The description.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    QuickConnect& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The description.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The description.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The description.</p>
-     */
-    inline QuickConnect& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description.</p>
-     */
-    inline QuickConnect& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description.</p>
-     */
-    inline QuickConnect& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Contains information about the quick connect.</p>
      */
-    inline const QuickConnectConfig& GetQuickConnectConfig() const{ return m_quickConnectConfig; }
-
-    /**
-     * <p>Contains information about the quick connect.</p>
-     */
+    inline const QuickConnectConfig& GetQuickConnectConfig() const { return m_quickConnectConfig; }
     inline bool QuickConnectConfigHasBeenSet() const { return m_quickConnectConfigHasBeenSet; }
+    template<typename QuickConnectConfigT = QuickConnectConfig>
+    void SetQuickConnectConfig(QuickConnectConfigT&& value) { m_quickConnectConfigHasBeenSet = true; m_quickConnectConfig = std::forward<QuickConnectConfigT>(value); }
+    template<typename QuickConnectConfigT = QuickConnectConfig>
+    QuickConnect& WithQuickConnectConfig(QuickConnectConfigT&& value) { SetQuickConnectConfig(std::forward<QuickConnectConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Contains information about the quick connect.</p>
-     */
-    inline void SetQuickConnectConfig(const QuickConnectConfig& value) { m_quickConnectConfigHasBeenSet = true; m_quickConnectConfig = value; }
-
-    /**
-     * <p>Contains information about the quick connect.</p>
-     */
-    inline void SetQuickConnectConfig(QuickConnectConfig&& value) { m_quickConnectConfigHasBeenSet = true; m_quickConnectConfig = std::move(value); }
-
-    /**
-     * <p>Contains information about the quick connect.</p>
-     */
-    inline QuickConnect& WithQuickConnectConfig(const QuickConnectConfig& value) { SetQuickConnectConfig(value); return *this;}
-
-    /**
-     * <p>Contains information about the quick connect.</p>
-     */
-    inline QuickConnect& WithQuickConnectConfig(QuickConnectConfig&& value) { SetQuickConnectConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The tags used to organize, track, or control access for this resource. For
      * example, { "Tags": {"key1":"value1", "key2":"value2"} }.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "Tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    QuickConnect& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    QuickConnect& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "Tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "Tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "Tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline QuickConnect& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "Tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline QuickConnect& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "Tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline QuickConnect& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "Tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline QuickConnect& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "Tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline QuickConnect& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "Tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline QuickConnect& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "Tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline QuickConnect& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "Tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline QuickConnect& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "Tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline QuickConnect& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>The timestamp when this resource was last modified.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastModifiedTime() const{ return m_lastModifiedTime; }
-
-    /**
-     * <p>The timestamp when this resource was last modified.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastModifiedTime() const { return m_lastModifiedTime; }
     inline bool LastModifiedTimeHasBeenSet() const { return m_lastModifiedTimeHasBeenSet; }
+    template<typename LastModifiedTimeT = Aws::Utils::DateTime>
+    void SetLastModifiedTime(LastModifiedTimeT&& value) { m_lastModifiedTimeHasBeenSet = true; m_lastModifiedTime = std::forward<LastModifiedTimeT>(value); }
+    template<typename LastModifiedTimeT = Aws::Utils::DateTime>
+    QuickConnect& WithLastModifiedTime(LastModifiedTimeT&& value) { SetLastModifiedTime(std::forward<LastModifiedTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp when this resource was last modified.</p>
-     */
-    inline void SetLastModifiedTime(const Aws::Utils::DateTime& value) { m_lastModifiedTimeHasBeenSet = true; m_lastModifiedTime = value; }
-
-    /**
-     * <p>The timestamp when this resource was last modified.</p>
-     */
-    inline void SetLastModifiedTime(Aws::Utils::DateTime&& value) { m_lastModifiedTimeHasBeenSet = true; m_lastModifiedTime = std::move(value); }
-
-    /**
-     * <p>The timestamp when this resource was last modified.</p>
-     */
-    inline QuickConnect& WithLastModifiedTime(const Aws::Utils::DateTime& value) { SetLastModifiedTime(value); return *this;}
-
-    /**
-     * <p>The timestamp when this resource was last modified.</p>
-     */
-    inline QuickConnect& WithLastModifiedTime(Aws::Utils::DateTime&& value) { SetLastModifiedTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Web Services Region where this resource was last modified.</p>
      */
-    inline const Aws::String& GetLastModifiedRegion() const{ return m_lastModifiedRegion; }
-
-    /**
-     * <p>The Amazon Web Services Region where this resource was last modified.</p>
-     */
+    inline const Aws::String& GetLastModifiedRegion() const { return m_lastModifiedRegion; }
     inline bool LastModifiedRegionHasBeenSet() const { return m_lastModifiedRegionHasBeenSet; }
-
-    /**
-     * <p>The Amazon Web Services Region where this resource was last modified.</p>
-     */
-    inline void SetLastModifiedRegion(const Aws::String& value) { m_lastModifiedRegionHasBeenSet = true; m_lastModifiedRegion = value; }
-
-    /**
-     * <p>The Amazon Web Services Region where this resource was last modified.</p>
-     */
-    inline void SetLastModifiedRegion(Aws::String&& value) { m_lastModifiedRegionHasBeenSet = true; m_lastModifiedRegion = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services Region where this resource was last modified.</p>
-     */
-    inline void SetLastModifiedRegion(const char* value) { m_lastModifiedRegionHasBeenSet = true; m_lastModifiedRegion.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services Region where this resource was last modified.</p>
-     */
-    inline QuickConnect& WithLastModifiedRegion(const Aws::String& value) { SetLastModifiedRegion(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services Region where this resource was last modified.</p>
-     */
-    inline QuickConnect& WithLastModifiedRegion(Aws::String&& value) { SetLastModifiedRegion(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services Region where this resource was last modified.</p>
-     */
-    inline QuickConnect& WithLastModifiedRegion(const char* value) { SetLastModifiedRegion(value); return *this;}
-
+    template<typename LastModifiedRegionT = Aws::String>
+    void SetLastModifiedRegion(LastModifiedRegionT&& value) { m_lastModifiedRegionHasBeenSet = true; m_lastModifiedRegion = std::forward<LastModifiedRegionT>(value); }
+    template<typename LastModifiedRegionT = Aws::String>
+    QuickConnect& WithLastModifiedRegion(LastModifiedRegionT&& value) { SetLastModifiedRegion(std::forward<LastModifiedRegionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_quickConnectARN;
@@ -405,7 +160,7 @@ namespace Model
     Aws::Map<Aws::String, Aws::String> m_tags;
     bool m_tagsHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastModifiedTime;
+    Aws::Utils::DateTime m_lastModifiedTime{};
     bool m_lastModifiedTimeHasBeenSet = false;
 
     Aws::String m_lastModifiedRegion;

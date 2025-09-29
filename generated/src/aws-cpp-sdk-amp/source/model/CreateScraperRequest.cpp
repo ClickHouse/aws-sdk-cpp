@@ -12,17 +12,6 @@ using namespace Aws::PrometheusService::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateScraperRequest::CreateScraperRequest() : 
-    m_aliasHasBeenSet(false),
-    m_scrapeConfigurationHasBeenSet(false),
-    m_sourceHasBeenSet(false),
-    m_destinationHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateScraperRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -48,6 +37,12 @@ Aws::String CreateScraperRequest::SerializePayload() const
   if(m_destinationHasBeenSet)
   {
    payload.WithObject("destination", m_destination.Jsonize());
+
+  }
+
+  if(m_roleConfigurationHasBeenSet)
+  {
+   payload.WithObject("roleConfiguration", m_roleConfiguration.Jsonize());
 
   }
 

@@ -33,82 +33,37 @@ namespace Model
   class ConcatenationSource
   {
   public:
-    AWS_CHIMESDKMEDIAPIPELINES_API ConcatenationSource();
+    AWS_CHIMESDKMEDIAPIPELINES_API ConcatenationSource() = default;
     AWS_CHIMESDKMEDIAPIPELINES_API ConcatenationSource(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMEDIAPIPELINES_API ConcatenationSource& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMEDIAPIPELINES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The type of concatenation source in a configuration object.</p>
      */
-    inline const ConcatenationSourceType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of concatenation source in a configuration object.</p>
-     */
+    inline ConcatenationSourceType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    inline void SetType(ConcatenationSourceType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline ConcatenationSource& WithType(ConcatenationSourceType value) { SetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of concatenation source in a configuration object.</p>
-     */
-    inline void SetType(const ConcatenationSourceType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of concatenation source in a configuration object.</p>
-     */
-    inline void SetType(ConcatenationSourceType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of concatenation source in a configuration object.</p>
-     */
-    inline ConcatenationSource& WithType(const ConcatenationSourceType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of concatenation source in a configuration object.</p>
-     */
-    inline ConcatenationSource& WithType(ConcatenationSourceType&& value) { SetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The concatenation settings for the media pipeline in a configuration
      * object.</p>
      */
-    inline const MediaCapturePipelineSourceConfiguration& GetMediaCapturePipelineSourceConfiguration() const{ return m_mediaCapturePipelineSourceConfiguration; }
-
-    /**
-     * <p>The concatenation settings for the media pipeline in a configuration
-     * object.</p>
-     */
+    inline const MediaCapturePipelineSourceConfiguration& GetMediaCapturePipelineSourceConfiguration() const { return m_mediaCapturePipelineSourceConfiguration; }
     inline bool MediaCapturePipelineSourceConfigurationHasBeenSet() const { return m_mediaCapturePipelineSourceConfigurationHasBeenSet; }
-
-    /**
-     * <p>The concatenation settings for the media pipeline in a configuration
-     * object.</p>
-     */
-    inline void SetMediaCapturePipelineSourceConfiguration(const MediaCapturePipelineSourceConfiguration& value) { m_mediaCapturePipelineSourceConfigurationHasBeenSet = true; m_mediaCapturePipelineSourceConfiguration = value; }
-
-    /**
-     * <p>The concatenation settings for the media pipeline in a configuration
-     * object.</p>
-     */
-    inline void SetMediaCapturePipelineSourceConfiguration(MediaCapturePipelineSourceConfiguration&& value) { m_mediaCapturePipelineSourceConfigurationHasBeenSet = true; m_mediaCapturePipelineSourceConfiguration = std::move(value); }
-
-    /**
-     * <p>The concatenation settings for the media pipeline in a configuration
-     * object.</p>
-     */
-    inline ConcatenationSource& WithMediaCapturePipelineSourceConfiguration(const MediaCapturePipelineSourceConfiguration& value) { SetMediaCapturePipelineSourceConfiguration(value); return *this;}
-
-    /**
-     * <p>The concatenation settings for the media pipeline in a configuration
-     * object.</p>
-     */
-    inline ConcatenationSource& WithMediaCapturePipelineSourceConfiguration(MediaCapturePipelineSourceConfiguration&& value) { SetMediaCapturePipelineSourceConfiguration(std::move(value)); return *this;}
-
+    template<typename MediaCapturePipelineSourceConfigurationT = MediaCapturePipelineSourceConfiguration>
+    void SetMediaCapturePipelineSourceConfiguration(MediaCapturePipelineSourceConfigurationT&& value) { m_mediaCapturePipelineSourceConfigurationHasBeenSet = true; m_mediaCapturePipelineSourceConfiguration = std::forward<MediaCapturePipelineSourceConfigurationT>(value); }
+    template<typename MediaCapturePipelineSourceConfigurationT = MediaCapturePipelineSourceConfiguration>
+    ConcatenationSource& WithMediaCapturePipelineSourceConfiguration(MediaCapturePipelineSourceConfigurationT&& value) { SetMediaCapturePipelineSourceConfiguration(std::forward<MediaCapturePipelineSourceConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
-    ConcatenationSourceType m_type;
+    ConcatenationSourceType m_type{ConcatenationSourceType::NOT_SET};
     bool m_typeHasBeenSet = false;
 
     MediaCapturePipelineSourceConfiguration m_mediaCapturePipelineSourceConfiguration;

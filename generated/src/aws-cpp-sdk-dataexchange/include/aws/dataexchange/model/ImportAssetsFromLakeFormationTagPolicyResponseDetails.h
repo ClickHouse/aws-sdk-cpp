@@ -34,245 +34,84 @@ namespace Model
   class ImportAssetsFromLakeFormationTagPolicyResponseDetails
   {
   public:
-    AWS_DATAEXCHANGE_API ImportAssetsFromLakeFormationTagPolicyResponseDetails();
+    AWS_DATAEXCHANGE_API ImportAssetsFromLakeFormationTagPolicyResponseDetails() = default;
     AWS_DATAEXCHANGE_API ImportAssetsFromLakeFormationTagPolicyResponseDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAEXCHANGE_API ImportAssetsFromLakeFormationTagPolicyResponseDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAEXCHANGE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The identifier for the AWS Glue Data Catalog.</p>
      */
-    inline const Aws::String& GetCatalogId() const{ return m_catalogId; }
-
-    /**
-     * <p>The identifier for the AWS Glue Data Catalog.</p>
-     */
+    inline const Aws::String& GetCatalogId() const { return m_catalogId; }
     inline bool CatalogIdHasBeenSet() const { return m_catalogIdHasBeenSet; }
+    template<typename CatalogIdT = Aws::String>
+    void SetCatalogId(CatalogIdT&& value) { m_catalogIdHasBeenSet = true; m_catalogId = std::forward<CatalogIdT>(value); }
+    template<typename CatalogIdT = Aws::String>
+    ImportAssetsFromLakeFormationTagPolicyResponseDetails& WithCatalogId(CatalogIdT&& value) { SetCatalogId(std::forward<CatalogIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier for the AWS Glue Data Catalog.</p>
-     */
-    inline void SetCatalogId(const Aws::String& value) { m_catalogIdHasBeenSet = true; m_catalogId = value; }
-
-    /**
-     * <p>The identifier for the AWS Glue Data Catalog.</p>
-     */
-    inline void SetCatalogId(Aws::String&& value) { m_catalogIdHasBeenSet = true; m_catalogId = std::move(value); }
-
-    /**
-     * <p>The identifier for the AWS Glue Data Catalog.</p>
-     */
-    inline void SetCatalogId(const char* value) { m_catalogIdHasBeenSet = true; m_catalogId.assign(value); }
-
-    /**
-     * <p>The identifier for the AWS Glue Data Catalog.</p>
-     */
-    inline ImportAssetsFromLakeFormationTagPolicyResponseDetails& WithCatalogId(const Aws::String& value) { SetCatalogId(value); return *this;}
-
-    /**
-     * <p>The identifier for the AWS Glue Data Catalog.</p>
-     */
-    inline ImportAssetsFromLakeFormationTagPolicyResponseDetails& WithCatalogId(Aws::String&& value) { SetCatalogId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier for the AWS Glue Data Catalog.</p>
-     */
-    inline ImportAssetsFromLakeFormationTagPolicyResponseDetails& WithCatalogId(const char* value) { SetCatalogId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A structure for the database object.</p>
      */
-    inline const DatabaseLFTagPolicyAndPermissions& GetDatabase() const{ return m_database; }
-
-    /**
-     * <p>A structure for the database object.</p>
-     */
+    inline const DatabaseLFTagPolicyAndPermissions& GetDatabase() const { return m_database; }
     inline bool DatabaseHasBeenSet() const { return m_databaseHasBeenSet; }
+    template<typename DatabaseT = DatabaseLFTagPolicyAndPermissions>
+    void SetDatabase(DatabaseT&& value) { m_databaseHasBeenSet = true; m_database = std::forward<DatabaseT>(value); }
+    template<typename DatabaseT = DatabaseLFTagPolicyAndPermissions>
+    ImportAssetsFromLakeFormationTagPolicyResponseDetails& WithDatabase(DatabaseT&& value) { SetDatabase(std::forward<DatabaseT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A structure for the database object.</p>
-     */
-    inline void SetDatabase(const DatabaseLFTagPolicyAndPermissions& value) { m_databaseHasBeenSet = true; m_database = value; }
-
-    /**
-     * <p>A structure for the database object.</p>
-     */
-    inline void SetDatabase(DatabaseLFTagPolicyAndPermissions&& value) { m_databaseHasBeenSet = true; m_database = std::move(value); }
-
-    /**
-     * <p>A structure for the database object.</p>
-     */
-    inline ImportAssetsFromLakeFormationTagPolicyResponseDetails& WithDatabase(const DatabaseLFTagPolicyAndPermissions& value) { SetDatabase(value); return *this;}
-
-    /**
-     * <p>A structure for the database object.</p>
-     */
-    inline ImportAssetsFromLakeFormationTagPolicyResponseDetails& WithDatabase(DatabaseLFTagPolicyAndPermissions&& value) { SetDatabase(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A structure for the table object.</p>
      */
-    inline const TableLFTagPolicyAndPermissions& GetTable() const{ return m_table; }
-
-    /**
-     * <p>A structure for the table object.</p>
-     */
+    inline const TableLFTagPolicyAndPermissions& GetTable() const { return m_table; }
     inline bool TableHasBeenSet() const { return m_tableHasBeenSet; }
+    template<typename TableT = TableLFTagPolicyAndPermissions>
+    void SetTable(TableT&& value) { m_tableHasBeenSet = true; m_table = std::forward<TableT>(value); }
+    template<typename TableT = TableLFTagPolicyAndPermissions>
+    ImportAssetsFromLakeFormationTagPolicyResponseDetails& WithTable(TableT&& value) { SetTable(std::forward<TableT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A structure for the table object.</p>
-     */
-    inline void SetTable(const TableLFTagPolicyAndPermissions& value) { m_tableHasBeenSet = true; m_table = value; }
-
-    /**
-     * <p>A structure for the table object.</p>
-     */
-    inline void SetTable(TableLFTagPolicyAndPermissions&& value) { m_tableHasBeenSet = true; m_table = std::move(value); }
-
-    /**
-     * <p>A structure for the table object.</p>
-     */
-    inline ImportAssetsFromLakeFormationTagPolicyResponseDetails& WithTable(const TableLFTagPolicyAndPermissions& value) { SetTable(value); return *this;}
-
-    /**
-     * <p>A structure for the table object.</p>
-     */
-    inline ImportAssetsFromLakeFormationTagPolicyResponseDetails& WithTable(TableLFTagPolicyAndPermissions&& value) { SetTable(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The IAM role's ARN that allows AWS Data Exchange to assume the role and grant
      * and revoke permissions to AWS Lake Formation data permissions.</p>
      */
-    inline const Aws::String& GetRoleArn() const{ return m_roleArn; }
-
-    /**
-     * <p>The IAM role's ARN that allows AWS Data Exchange to assume the role and grant
-     * and revoke permissions to AWS Lake Formation data permissions.</p>
-     */
+    inline const Aws::String& GetRoleArn() const { return m_roleArn; }
     inline bool RoleArnHasBeenSet() const { return m_roleArnHasBeenSet; }
+    template<typename RoleArnT = Aws::String>
+    void SetRoleArn(RoleArnT&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::forward<RoleArnT>(value); }
+    template<typename RoleArnT = Aws::String>
+    ImportAssetsFromLakeFormationTagPolicyResponseDetails& WithRoleArn(RoleArnT&& value) { SetRoleArn(std::forward<RoleArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The IAM role's ARN that allows AWS Data Exchange to assume the role and grant
-     * and revoke permissions to AWS Lake Formation data permissions.</p>
-     */
-    inline void SetRoleArn(const Aws::String& value) { m_roleArnHasBeenSet = true; m_roleArn = value; }
-
-    /**
-     * <p>The IAM role's ARN that allows AWS Data Exchange to assume the role and grant
-     * and revoke permissions to AWS Lake Formation data permissions.</p>
-     */
-    inline void SetRoleArn(Aws::String&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::move(value); }
-
-    /**
-     * <p>The IAM role's ARN that allows AWS Data Exchange to assume the role and grant
-     * and revoke permissions to AWS Lake Formation data permissions.</p>
-     */
-    inline void SetRoleArn(const char* value) { m_roleArnHasBeenSet = true; m_roleArn.assign(value); }
-
-    /**
-     * <p>The IAM role's ARN that allows AWS Data Exchange to assume the role and grant
-     * and revoke permissions to AWS Lake Formation data permissions.</p>
-     */
-    inline ImportAssetsFromLakeFormationTagPolicyResponseDetails& WithRoleArn(const Aws::String& value) { SetRoleArn(value); return *this;}
-
-    /**
-     * <p>The IAM role's ARN that allows AWS Data Exchange to assume the role and grant
-     * and revoke permissions to AWS Lake Formation data permissions.</p>
-     */
-    inline ImportAssetsFromLakeFormationTagPolicyResponseDetails& WithRoleArn(Aws::String&& value) { SetRoleArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The IAM role's ARN that allows AWS Data Exchange to assume the role and grant
-     * and revoke permissions to AWS Lake Formation data permissions.</p>
-     */
-    inline ImportAssetsFromLakeFormationTagPolicyResponseDetails& WithRoleArn(const char* value) { SetRoleArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique identifier for the data set associated with this import job.</p>
      */
-    inline const Aws::String& GetDataSetId() const{ return m_dataSetId; }
-
-    /**
-     * <p>The unique identifier for the data set associated with this import job.</p>
-     */
+    inline const Aws::String& GetDataSetId() const { return m_dataSetId; }
     inline bool DataSetIdHasBeenSet() const { return m_dataSetIdHasBeenSet; }
+    template<typename DataSetIdT = Aws::String>
+    void SetDataSetId(DataSetIdT&& value) { m_dataSetIdHasBeenSet = true; m_dataSetId = std::forward<DataSetIdT>(value); }
+    template<typename DataSetIdT = Aws::String>
+    ImportAssetsFromLakeFormationTagPolicyResponseDetails& WithDataSetId(DataSetIdT&& value) { SetDataSetId(std::forward<DataSetIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier for the data set associated with this import job.</p>
-     */
-    inline void SetDataSetId(const Aws::String& value) { m_dataSetIdHasBeenSet = true; m_dataSetId = value; }
-
-    /**
-     * <p>The unique identifier for the data set associated with this import job.</p>
-     */
-    inline void SetDataSetId(Aws::String&& value) { m_dataSetIdHasBeenSet = true; m_dataSetId = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the data set associated with this import job.</p>
-     */
-    inline void SetDataSetId(const char* value) { m_dataSetIdHasBeenSet = true; m_dataSetId.assign(value); }
-
-    /**
-     * <p>The unique identifier for the data set associated with this import job.</p>
-     */
-    inline ImportAssetsFromLakeFormationTagPolicyResponseDetails& WithDataSetId(const Aws::String& value) { SetDataSetId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the data set associated with this import job.</p>
-     */
-    inline ImportAssetsFromLakeFormationTagPolicyResponseDetails& WithDataSetId(Aws::String&& value) { SetDataSetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the data set associated with this import job.</p>
-     */
-    inline ImportAssetsFromLakeFormationTagPolicyResponseDetails& WithDataSetId(const char* value) { SetDataSetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique identifier for the revision associated with this import job.</p>
      */
-    inline const Aws::String& GetRevisionId() const{ return m_revisionId; }
-
-    /**
-     * <p>The unique identifier for the revision associated with this import job.</p>
-     */
+    inline const Aws::String& GetRevisionId() const { return m_revisionId; }
     inline bool RevisionIdHasBeenSet() const { return m_revisionIdHasBeenSet; }
-
-    /**
-     * <p>The unique identifier for the revision associated with this import job.</p>
-     */
-    inline void SetRevisionId(const Aws::String& value) { m_revisionIdHasBeenSet = true; m_revisionId = value; }
-
-    /**
-     * <p>The unique identifier for the revision associated with this import job.</p>
-     */
-    inline void SetRevisionId(Aws::String&& value) { m_revisionIdHasBeenSet = true; m_revisionId = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the revision associated with this import job.</p>
-     */
-    inline void SetRevisionId(const char* value) { m_revisionIdHasBeenSet = true; m_revisionId.assign(value); }
-
-    /**
-     * <p>The unique identifier for the revision associated with this import job.</p>
-     */
-    inline ImportAssetsFromLakeFormationTagPolicyResponseDetails& WithRevisionId(const Aws::String& value) { SetRevisionId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the revision associated with this import job.</p>
-     */
-    inline ImportAssetsFromLakeFormationTagPolicyResponseDetails& WithRevisionId(Aws::String&& value) { SetRevisionId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the revision associated with this import job.</p>
-     */
-    inline ImportAssetsFromLakeFormationTagPolicyResponseDetails& WithRevisionId(const char* value) { SetRevisionId(value); return *this;}
-
+    template<typename RevisionIdT = Aws::String>
+    void SetRevisionId(RevisionIdT&& value) { m_revisionIdHasBeenSet = true; m_revisionId = std::forward<RevisionIdT>(value); }
+    template<typename RevisionIdT = Aws::String>
+    ImportAssetsFromLakeFormationTagPolicyResponseDetails& WithRevisionId(RevisionIdT&& value) { SetRevisionId(std::forward<RevisionIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_catalogId;

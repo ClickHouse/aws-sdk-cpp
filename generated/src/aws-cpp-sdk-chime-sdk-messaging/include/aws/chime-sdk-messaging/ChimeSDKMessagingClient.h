@@ -20,15 +20,15 @@ namespace ChimeSDKMessaging
    * to send and receive messages in custom messaging applications. These APIs depend
    * on the frameworks provided by the Amazon Chime SDK identity APIs. For more
    * information about the messaging APIs, see <a
-   * href="https://docs.aws.amazon.com/chime/latest/APIReference/API_Operations_Amazon_Chime_SDK_Messaging.html">Amazon
+   * href="https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_Operations_Amazon_Chime_SDK_Messaging.html">Amazon
    * Chime SDK messaging</a>.</p>
    */
   class AWS_CHIMESDKMESSAGING_API ChimeSDKMessagingClient : public Aws::Client::AWSJsonClient, public Aws::Client::ClientWithAsyncTemplateMethods<ChimeSDKMessagingClient>
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
 
       typedef ChimeSDKMessagingClientConfiguration ClientConfigurationType;
       typedef ChimeSDKMessagingEndpointProvider EndpointProviderType;
@@ -38,14 +38,14 @@ namespace ChimeSDKMessaging
         * is not specified, it will be initialized to default values.
         */
         ChimeSDKMessagingClient(const Aws::ChimeSDKMessaging::ChimeSDKMessagingClientConfiguration& clientConfiguration = Aws::ChimeSDKMessaging::ChimeSDKMessagingClientConfiguration(),
-                                std::shared_ptr<ChimeSDKMessagingEndpointProviderBase> endpointProvider = Aws::MakeShared<ChimeSDKMessagingEndpointProvider>(ALLOCATION_TAG));
+                                std::shared_ptr<ChimeSDKMessagingEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         ChimeSDKMessagingClient(const Aws::Auth::AWSCredentials& credentials,
-                                std::shared_ptr<ChimeSDKMessagingEndpointProviderBase> endpointProvider = Aws::MakeShared<ChimeSDKMessagingEndpointProvider>(ALLOCATION_TAG),
+                                std::shared_ptr<ChimeSDKMessagingEndpointProviderBase> endpointProvider = nullptr,
                                 const Aws::ChimeSDKMessaging::ChimeSDKMessagingClientConfiguration& clientConfiguration = Aws::ChimeSDKMessaging::ChimeSDKMessagingClientConfiguration());
 
        /**
@@ -53,7 +53,7 @@ namespace ChimeSDKMessaging
         * the default http client factory will be used
         */
         ChimeSDKMessagingClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                                std::shared_ptr<ChimeSDKMessagingEndpointProviderBase> endpointProvider = Aws::MakeShared<ChimeSDKMessagingEndpointProvider>(ALLOCATION_TAG),
+                                std::shared_ptr<ChimeSDKMessagingEndpointProviderBase> endpointProvider = nullptr,
                                 const Aws::ChimeSDKMessaging::ChimeSDKMessagingClientConfiguration& clientConfiguration = Aws::ChimeSDKMessaging::ChimeSDKMessagingClientConfiguration());
 
 
@@ -238,7 +238,7 @@ namespace ChimeSDKMessaging
          * messages</p> </li> <li> <p>The Standard message type</p> </li> </ol> 
          * <p>Channel flows don't process Control or System messages. For more information
          * about the message types provided by Chime SDK messaging, refer to <a
-         * href="https://docs.aws.amazon.com/chime/latest/dg/using-the-messaging-sdk.html#msg-types">Message
+         * href="https://docs.aws.amazon.com/chime-sdk/latest/dg/using-the-messaging-sdk.html#msg-types">Message
          * types</a> in the <i>Amazon Chime developer guide</i>.</p> <p><h3>See
          * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/chime-sdk-messaging-2021-05-15/CreateChannelFlow">AWS
@@ -870,13 +870,13 @@ namespace ChimeSDKMessaging
          * href="http://docs.aws.amazon.com/goto/WebAPI/chime-sdk-messaging-2021-05-15/GetMessagingSessionEndpoint">AWS
          * API Reference</a></p>
          */
-        virtual Model::GetMessagingSessionEndpointOutcome GetMessagingSessionEndpoint(const Model::GetMessagingSessionEndpointRequest& request) const;
+        virtual Model::GetMessagingSessionEndpointOutcome GetMessagingSessionEndpoint(const Model::GetMessagingSessionEndpointRequest& request = {}) const;
 
         /**
          * A Callable wrapper for GetMessagingSessionEndpoint that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename GetMessagingSessionEndpointRequestT = Model::GetMessagingSessionEndpointRequest>
-        Model::GetMessagingSessionEndpointOutcomeCallable GetMessagingSessionEndpointCallable(const GetMessagingSessionEndpointRequestT& request) const
+        Model::GetMessagingSessionEndpointOutcomeCallable GetMessagingSessionEndpointCallable(const GetMessagingSessionEndpointRequestT& request = {}) const
         {
             return SubmitCallable(&ChimeSDKMessagingClient::GetMessagingSessionEndpoint, request);
         }
@@ -885,7 +885,7 @@ namespace ChimeSDKMessaging
          * An Async wrapper for GetMessagingSessionEndpoint that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename GetMessagingSessionEndpointRequestT = Model::GetMessagingSessionEndpointRequest>
-        void GetMessagingSessionEndpointAsync(const GetMessagingSessionEndpointRequestT& request, const GetMessagingSessionEndpointResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void GetMessagingSessionEndpointAsync(const GetMessagingSessionEndpointResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const GetMessagingSessionEndpointRequestT& request = {}) const
         {
             return SubmitAsync(&ChimeSDKMessagingClient::GetMessagingSessionEndpoint, request, handler, context);
         }
@@ -979,7 +979,7 @@ namespace ChimeSDKMessaging
          * <code>AppInstanceUser</code> or <code>AppInstanceBot</code> that makes the API
          * call as the value in the header.</p>  <p>If you want to list the channels
          * to which a specific app instance user belongs, see the <a
-         * href="https://docs.aws.amazon.com/chime/latest/APIReference/API_messaging-chime_ListChannelMembershipsForAppInstanceUser.html">ListChannelMembershipsForAppInstanceUser</a>
+         * href="https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_messaging-chime_ListChannelMembershipsForAppInstanceUser.html">ListChannelMembershipsForAppInstanceUser</a>
          * API.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/chime-sdk-messaging-2021-05-15/ListChannelMemberships">AWS
          * API Reference</a></p>
@@ -1334,12 +1334,11 @@ namespace ChimeSDKMessaging
         }
 
         /**
-         * <p>Redacts message content, but not metadata. The message exists in the back
-         * end, but the action returns null content, and the state shows as redacted.</p>
-         *  <p>The <code>x-amz-chime-bearer</code> request header is mandatory. Use
-         * the ARN of the <code>AppInstanceUser</code> or <code>AppInstanceBot</code> that
-         * makes the API call as the value in the header.</p> <p><h3>See Also:</h3> 
-         * <a
+         * <p>Redacts message content and metadata. The message exists in the back end, but
+         * the action returns null content, and the state shows as redacted.</p> 
+         * <p>The <code>x-amz-chime-bearer</code> request header is mandatory. Use the ARN
+         * of the <code>AppInstanceUser</code> or <code>AppInstanceBot</code> that makes
+         * the API call as the value in the header.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/chime-sdk-messaging-2021-05-15/RedactChannelMessage">AWS
          * API Reference</a></p>
          */
@@ -1369,7 +1368,9 @@ namespace ChimeSDKMessaging
          * <code>AppInstanceAdmin</code> role can search across all channels.</p> <p>The
          * <code>x-amz-chime-bearer</code> request header is mandatory. Use the ARN of the
          * <code>AppInstanceUser</code> or <code>AppInstanceBot</code> that makes the API
-         * call as the value in the header.</p><p><h3>See Also:</h3>   <a
+         * call as the value in the header.</p>  <p>This operation isn't supported
+         * for <code>AppInstanceUsers</code> with a large number of memberships.</p>
+         * <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/chime-sdk-messaging-2021-05-15/SearchChannels">AWS
          * API Reference</a></p>
          */
@@ -1598,7 +1599,6 @@ namespace ChimeSDKMessaging
       void init(const ChimeSDKMessagingClientConfiguration& clientConfiguration);
 
       ChimeSDKMessagingClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<ChimeSDKMessagingEndpointProviderBase> m_endpointProvider;
   };
 

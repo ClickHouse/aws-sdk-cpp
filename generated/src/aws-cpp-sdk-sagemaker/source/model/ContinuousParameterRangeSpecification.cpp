@@ -18,15 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-ContinuousParameterRangeSpecification::ContinuousParameterRangeSpecification() : 
-    m_minValueHasBeenSet(false),
-    m_maxValueHasBeenSet(false)
-{
-}
-
-ContinuousParameterRangeSpecification::ContinuousParameterRangeSpecification(JsonView jsonValue) : 
-    m_minValueHasBeenSet(false),
-    m_maxValueHasBeenSet(false)
+ContinuousParameterRangeSpecification::ContinuousParameterRangeSpecification(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ContinuousParameterRangeSpecification& ContinuousParameterRangeSpecification::op
   if(jsonValue.ValueExists("MinValue"))
   {
     m_minValue = jsonValue.GetString("MinValue");
-
     m_minValueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MaxValue"))
   {
     m_maxValue = jsonValue.GetString("MaxValue");
-
     m_maxValueHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -32,57 +32,25 @@ namespace Model
   class AnalysisSchema
   {
   public:
-    AWS_CLEANROOMS_API AnalysisSchema();
+    AWS_CLEANROOMS_API AnalysisSchema() = default;
     AWS_CLEANROOMS_API AnalysisSchema(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLEANROOMS_API AnalysisSchema& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLEANROOMS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The tables referenced in the analysis schema.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetReferencedTables() const{ return m_referencedTables; }
-
-    /**
-     * <p>The tables referenced in the analysis schema.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetReferencedTables() const { return m_referencedTables; }
     inline bool ReferencedTablesHasBeenSet() const { return m_referencedTablesHasBeenSet; }
-
-    /**
-     * <p>The tables referenced in the analysis schema.</p>
-     */
-    inline void SetReferencedTables(const Aws::Vector<Aws::String>& value) { m_referencedTablesHasBeenSet = true; m_referencedTables = value; }
-
-    /**
-     * <p>The tables referenced in the analysis schema.</p>
-     */
-    inline void SetReferencedTables(Aws::Vector<Aws::String>&& value) { m_referencedTablesHasBeenSet = true; m_referencedTables = std::move(value); }
-
-    /**
-     * <p>The tables referenced in the analysis schema.</p>
-     */
-    inline AnalysisSchema& WithReferencedTables(const Aws::Vector<Aws::String>& value) { SetReferencedTables(value); return *this;}
-
-    /**
-     * <p>The tables referenced in the analysis schema.</p>
-     */
-    inline AnalysisSchema& WithReferencedTables(Aws::Vector<Aws::String>&& value) { SetReferencedTables(std::move(value)); return *this;}
-
-    /**
-     * <p>The tables referenced in the analysis schema.</p>
-     */
-    inline AnalysisSchema& AddReferencedTables(const Aws::String& value) { m_referencedTablesHasBeenSet = true; m_referencedTables.push_back(value); return *this; }
-
-    /**
-     * <p>The tables referenced in the analysis schema.</p>
-     */
-    inline AnalysisSchema& AddReferencedTables(Aws::String&& value) { m_referencedTablesHasBeenSet = true; m_referencedTables.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The tables referenced in the analysis schema.</p>
-     */
-    inline AnalysisSchema& AddReferencedTables(const char* value) { m_referencedTablesHasBeenSet = true; m_referencedTables.push_back(value); return *this; }
-
+    template<typename ReferencedTablesT = Aws::Vector<Aws::String>>
+    void SetReferencedTables(ReferencedTablesT&& value) { m_referencedTablesHasBeenSet = true; m_referencedTables = std::forward<ReferencedTablesT>(value); }
+    template<typename ReferencedTablesT = Aws::Vector<Aws::String>>
+    AnalysisSchema& WithReferencedTables(ReferencedTablesT&& value) { SetReferencedTables(std::forward<ReferencedTablesT>(value)); return *this;}
+    template<typename ReferencedTablesT = Aws::String>
+    AnalysisSchema& AddReferencedTables(ReferencedTablesT&& value) { m_referencedTablesHasBeenSet = true; m_referencedTables.emplace_back(std::forward<ReferencedTablesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_referencedTables;

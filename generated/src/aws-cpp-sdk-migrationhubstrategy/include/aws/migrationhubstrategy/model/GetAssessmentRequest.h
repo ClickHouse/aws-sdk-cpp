@@ -21,7 +21,7 @@ namespace Model
   class GetAssessmentRequest : public MigrationHubStrategyRecommendationsRequest
   {
   public:
-    AWS_MIGRATIONHUBSTRATEGYRECOMMENDATIONS_API GetAssessmentRequest();
+    AWS_MIGRATIONHUBSTRATEGYRECOMMENDATIONS_API GetAssessmentRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_MIGRATIONHUBSTRATEGYRECOMMENDATIONS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p> The <code>assessmentid</code> returned by <a>StartAssessment</a>.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p> The <code>assessmentid</code> returned by <a>StartAssessment</a>.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
-
-    /**
-     * <p> The <code>assessmentid</code> returned by <a>StartAssessment</a>.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p> The <code>assessmentid</code> returned by <a>StartAssessment</a>.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p> The <code>assessmentid</code> returned by <a>StartAssessment</a>.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p> The <code>assessmentid</code> returned by <a>StartAssessment</a>.</p>
-     */
-    inline GetAssessmentRequest& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p> The <code>assessmentid</code> returned by <a>StartAssessment</a>.</p>
-     */
-    inline GetAssessmentRequest& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p> The <code>assessmentid</code> returned by <a>StartAssessment</a>.</p>
-     */
-    inline GetAssessmentRequest& WithId(const char* value) { SetId(value); return *this;}
-
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    GetAssessmentRequest& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_id;

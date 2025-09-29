@@ -18,15 +18,7 @@ namespace EMRContainers
 namespace Model
 {
 
-RetryPolicyExecution::RetryPolicyExecution() : 
-    m_currentAttemptCount(0),
-    m_currentAttemptCountHasBeenSet(false)
-{
-}
-
-RetryPolicyExecution::RetryPolicyExecution(JsonView jsonValue) : 
-    m_currentAttemptCount(0),
-    m_currentAttemptCountHasBeenSet(false)
+RetryPolicyExecution::RetryPolicyExecution(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ RetryPolicyExecution& RetryPolicyExecution::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("currentAttemptCount"))
   {
     m_currentAttemptCount = jsonValue.GetInteger("currentAttemptCount");
-
     m_currentAttemptCountHasBeenSet = true;
   }
-
   return *this;
 }
 

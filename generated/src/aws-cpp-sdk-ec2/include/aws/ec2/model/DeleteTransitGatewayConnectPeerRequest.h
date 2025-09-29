@@ -21,7 +21,7 @@ namespace Model
   class DeleteTransitGatewayConnectPeerRequest : public EC2Request
   {
   public:
-    AWS_EC2_API DeleteTransitGatewayConnectPeerRequest();
+    AWS_EC2_API DeleteTransitGatewayConnectPeerRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,85 +36,36 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The ID of the Connect peer.</p>
      */
-    inline const Aws::String& GetTransitGatewayConnectPeerId() const{ return m_transitGatewayConnectPeerId; }
-
-    /**
-     * <p>The ID of the Connect peer.</p>
-     */
+    inline const Aws::String& GetTransitGatewayConnectPeerId() const { return m_transitGatewayConnectPeerId; }
     inline bool TransitGatewayConnectPeerIdHasBeenSet() const { return m_transitGatewayConnectPeerIdHasBeenSet; }
+    template<typename TransitGatewayConnectPeerIdT = Aws::String>
+    void SetTransitGatewayConnectPeerId(TransitGatewayConnectPeerIdT&& value) { m_transitGatewayConnectPeerIdHasBeenSet = true; m_transitGatewayConnectPeerId = std::forward<TransitGatewayConnectPeerIdT>(value); }
+    template<typename TransitGatewayConnectPeerIdT = Aws::String>
+    DeleteTransitGatewayConnectPeerRequest& WithTransitGatewayConnectPeerId(TransitGatewayConnectPeerIdT&& value) { SetTransitGatewayConnectPeerId(std::forward<TransitGatewayConnectPeerIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Connect peer.</p>
-     */
-    inline void SetTransitGatewayConnectPeerId(const Aws::String& value) { m_transitGatewayConnectPeerIdHasBeenSet = true; m_transitGatewayConnectPeerId = value; }
-
-    /**
-     * <p>The ID of the Connect peer.</p>
-     */
-    inline void SetTransitGatewayConnectPeerId(Aws::String&& value) { m_transitGatewayConnectPeerIdHasBeenSet = true; m_transitGatewayConnectPeerId = std::move(value); }
-
-    /**
-     * <p>The ID of the Connect peer.</p>
-     */
-    inline void SetTransitGatewayConnectPeerId(const char* value) { m_transitGatewayConnectPeerIdHasBeenSet = true; m_transitGatewayConnectPeerId.assign(value); }
-
-    /**
-     * <p>The ID of the Connect peer.</p>
-     */
-    inline DeleteTransitGatewayConnectPeerRequest& WithTransitGatewayConnectPeerId(const Aws::String& value) { SetTransitGatewayConnectPeerId(value); return *this;}
-
-    /**
-     * <p>The ID of the Connect peer.</p>
-     */
-    inline DeleteTransitGatewayConnectPeerRequest& WithTransitGatewayConnectPeerId(Aws::String&& value) { SetTransitGatewayConnectPeerId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Connect peer.</p>
-     */
-    inline DeleteTransitGatewayConnectPeerRequest& WithTransitGatewayConnectPeerId(const char* value) { SetTransitGatewayConnectPeerId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
      * required permissions, the error response is <code>DryRunOperation</code>.
      * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
      */
-    inline bool GetDryRun() const{ return m_dryRun; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
+    inline bool GetDryRun() const { return m_dryRun; }
     inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline DeleteTransitGatewayConnectPeerRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_transitGatewayConnectPeerId;
     bool m_transitGatewayConnectPeerIdHasBeenSet = false;
 
-    bool m_dryRun;
+    bool m_dryRun{false};
     bool m_dryRunHasBeenSet = false;
   };
 

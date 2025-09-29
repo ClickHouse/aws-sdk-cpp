@@ -18,13 +18,7 @@ namespace FSx
 namespace Model
 {
 
-AutoImportPolicy::AutoImportPolicy() : 
-    m_eventsHasBeenSet(false)
-{
-}
-
-AutoImportPolicy::AutoImportPolicy(JsonView jsonValue) : 
-    m_eventsHasBeenSet(false)
+AutoImportPolicy::AutoImportPolicy(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ AutoImportPolicy& AutoImportPolicy::operator =(JsonView jsonValue)
     }
     m_eventsHasBeenSet = true;
   }
-
   return *this;
 }
 

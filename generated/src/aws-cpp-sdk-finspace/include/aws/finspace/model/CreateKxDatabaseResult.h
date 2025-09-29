@@ -28,263 +28,111 @@ namespace Model
   class CreateKxDatabaseResult
   {
   public:
-    AWS_FINSPACE_API CreateKxDatabaseResult();
+    AWS_FINSPACE_API CreateKxDatabaseResult() = default;
     AWS_FINSPACE_API CreateKxDatabaseResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_FINSPACE_API CreateKxDatabaseResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The name of the kdb database.</p>
      */
-    inline const Aws::String& GetDatabaseName() const{ return m_databaseName; }
+    inline const Aws::String& GetDatabaseName() const { return m_databaseName; }
+    template<typename DatabaseNameT = Aws::String>
+    void SetDatabaseName(DatabaseNameT&& value) { m_databaseNameHasBeenSet = true; m_databaseName = std::forward<DatabaseNameT>(value); }
+    template<typename DatabaseNameT = Aws::String>
+    CreateKxDatabaseResult& WithDatabaseName(DatabaseNameT&& value) { SetDatabaseName(std::forward<DatabaseNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the kdb database.</p>
-     */
-    inline void SetDatabaseName(const Aws::String& value) { m_databaseName = value; }
-
-    /**
-     * <p>The name of the kdb database.</p>
-     */
-    inline void SetDatabaseName(Aws::String&& value) { m_databaseName = std::move(value); }
-
-    /**
-     * <p>The name of the kdb database.</p>
-     */
-    inline void SetDatabaseName(const char* value) { m_databaseName.assign(value); }
-
-    /**
-     * <p>The name of the kdb database.</p>
-     */
-    inline CreateKxDatabaseResult& WithDatabaseName(const Aws::String& value) { SetDatabaseName(value); return *this;}
-
-    /**
-     * <p>The name of the kdb database.</p>
-     */
-    inline CreateKxDatabaseResult& WithDatabaseName(Aws::String&& value) { SetDatabaseName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the kdb database.</p>
-     */
-    inline CreateKxDatabaseResult& WithDatabaseName(const char* value) { SetDatabaseName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN identifier of the database.</p>
      */
-    inline const Aws::String& GetDatabaseArn() const{ return m_databaseArn; }
+    inline const Aws::String& GetDatabaseArn() const { return m_databaseArn; }
+    template<typename DatabaseArnT = Aws::String>
+    void SetDatabaseArn(DatabaseArnT&& value) { m_databaseArnHasBeenSet = true; m_databaseArn = std::forward<DatabaseArnT>(value); }
+    template<typename DatabaseArnT = Aws::String>
+    CreateKxDatabaseResult& WithDatabaseArn(DatabaseArnT&& value) { SetDatabaseArn(std::forward<DatabaseArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN identifier of the database.</p>
-     */
-    inline void SetDatabaseArn(const Aws::String& value) { m_databaseArn = value; }
-
-    /**
-     * <p>The ARN identifier of the database.</p>
-     */
-    inline void SetDatabaseArn(Aws::String&& value) { m_databaseArn = std::move(value); }
-
-    /**
-     * <p>The ARN identifier of the database.</p>
-     */
-    inline void SetDatabaseArn(const char* value) { m_databaseArn.assign(value); }
-
-    /**
-     * <p>The ARN identifier of the database.</p>
-     */
-    inline CreateKxDatabaseResult& WithDatabaseArn(const Aws::String& value) { SetDatabaseArn(value); return *this;}
-
-    /**
-     * <p>The ARN identifier of the database.</p>
-     */
-    inline CreateKxDatabaseResult& WithDatabaseArn(Aws::String&& value) { SetDatabaseArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN identifier of the database.</p>
-     */
-    inline CreateKxDatabaseResult& WithDatabaseArn(const char* value) { SetDatabaseArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A unique identifier for the kdb environment.</p>
      */
-    inline const Aws::String& GetEnvironmentId() const{ return m_environmentId; }
+    inline const Aws::String& GetEnvironmentId() const { return m_environmentId; }
+    template<typename EnvironmentIdT = Aws::String>
+    void SetEnvironmentId(EnvironmentIdT&& value) { m_environmentIdHasBeenSet = true; m_environmentId = std::forward<EnvironmentIdT>(value); }
+    template<typename EnvironmentIdT = Aws::String>
+    CreateKxDatabaseResult& WithEnvironmentId(EnvironmentIdT&& value) { SetEnvironmentId(std::forward<EnvironmentIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier for the kdb environment.</p>
-     */
-    inline void SetEnvironmentId(const Aws::String& value) { m_environmentId = value; }
-
-    /**
-     * <p>A unique identifier for the kdb environment.</p>
-     */
-    inline void SetEnvironmentId(Aws::String&& value) { m_environmentId = std::move(value); }
-
-    /**
-     * <p>A unique identifier for the kdb environment.</p>
-     */
-    inline void SetEnvironmentId(const char* value) { m_environmentId.assign(value); }
-
-    /**
-     * <p>A unique identifier for the kdb environment.</p>
-     */
-    inline CreateKxDatabaseResult& WithEnvironmentId(const Aws::String& value) { SetEnvironmentId(value); return *this;}
-
-    /**
-     * <p>A unique identifier for the kdb environment.</p>
-     */
-    inline CreateKxDatabaseResult& WithEnvironmentId(Aws::String&& value) { SetEnvironmentId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier for the kdb environment.</p>
-     */
-    inline CreateKxDatabaseResult& WithEnvironmentId(const char* value) { SetEnvironmentId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A description of the database.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
+    inline const Aws::String& GetDescription() const { return m_description; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    CreateKxDatabaseResult& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A description of the database.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_description = value; }
-
-    /**
-     * <p>A description of the database.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_description = std::move(value); }
-
-    /**
-     * <p>A description of the database.</p>
-     */
-    inline void SetDescription(const char* value) { m_description.assign(value); }
-
-    /**
-     * <p>A description of the database.</p>
-     */
-    inline CreateKxDatabaseResult& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A description of the database.</p>
-     */
-    inline CreateKxDatabaseResult& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A description of the database.</p>
-     */
-    inline CreateKxDatabaseResult& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The timestamp at which the database is created in FinSpace. The value is
      * determined as epoch time in milliseconds. For example, the value for Monday,
      * November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedTimestamp() const{ return m_createdTimestamp; }
+    inline const Aws::Utils::DateTime& GetCreatedTimestamp() const { return m_createdTimestamp; }
+    template<typename CreatedTimestampT = Aws::Utils::DateTime>
+    void SetCreatedTimestamp(CreatedTimestampT&& value) { m_createdTimestampHasBeenSet = true; m_createdTimestamp = std::forward<CreatedTimestampT>(value); }
+    template<typename CreatedTimestampT = Aws::Utils::DateTime>
+    CreateKxDatabaseResult& WithCreatedTimestamp(CreatedTimestampT&& value) { SetCreatedTimestamp(std::forward<CreatedTimestampT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp at which the database is created in FinSpace. The value is
-     * determined as epoch time in milliseconds. For example, the value for Monday,
-     * November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</p>
-     */
-    inline void SetCreatedTimestamp(const Aws::Utils::DateTime& value) { m_createdTimestamp = value; }
-
-    /**
-     * <p>The timestamp at which the database is created in FinSpace. The value is
-     * determined as epoch time in milliseconds. For example, the value for Monday,
-     * November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</p>
-     */
-    inline void SetCreatedTimestamp(Aws::Utils::DateTime&& value) { m_createdTimestamp = std::move(value); }
-
-    /**
-     * <p>The timestamp at which the database is created in FinSpace. The value is
-     * determined as epoch time in milliseconds. For example, the value for Monday,
-     * November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</p>
-     */
-    inline CreateKxDatabaseResult& WithCreatedTimestamp(const Aws::Utils::DateTime& value) { SetCreatedTimestamp(value); return *this;}
-
-    /**
-     * <p>The timestamp at which the database is created in FinSpace. The value is
-     * determined as epoch time in milliseconds. For example, the value for Monday,
-     * November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</p>
-     */
-    inline CreateKxDatabaseResult& WithCreatedTimestamp(Aws::Utils::DateTime&& value) { SetCreatedTimestamp(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The last time that the database was updated in FinSpace. The value is
      * determined as epoch time in milliseconds. For example, the value for Monday,
      * November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastModifiedTimestamp() const{ return m_lastModifiedTimestamp; }
+    inline const Aws::Utils::DateTime& GetLastModifiedTimestamp() const { return m_lastModifiedTimestamp; }
+    template<typename LastModifiedTimestampT = Aws::Utils::DateTime>
+    void SetLastModifiedTimestamp(LastModifiedTimestampT&& value) { m_lastModifiedTimestampHasBeenSet = true; m_lastModifiedTimestamp = std::forward<LastModifiedTimestampT>(value); }
+    template<typename LastModifiedTimestampT = Aws::Utils::DateTime>
+    CreateKxDatabaseResult& WithLastModifiedTimestamp(LastModifiedTimestampT&& value) { SetLastModifiedTimestamp(std::forward<LastModifiedTimestampT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The last time that the database was updated in FinSpace. The value is
-     * determined as epoch time in milliseconds. For example, the value for Monday,
-     * November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</p>
-     */
-    inline void SetLastModifiedTimestamp(const Aws::Utils::DateTime& value) { m_lastModifiedTimestamp = value; }
-
-    /**
-     * <p>The last time that the database was updated in FinSpace. The value is
-     * determined as epoch time in milliseconds. For example, the value for Monday,
-     * November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</p>
-     */
-    inline void SetLastModifiedTimestamp(Aws::Utils::DateTime&& value) { m_lastModifiedTimestamp = std::move(value); }
-
-    /**
-     * <p>The last time that the database was updated in FinSpace. The value is
-     * determined as epoch time in milliseconds. For example, the value for Monday,
-     * November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</p>
-     */
-    inline CreateKxDatabaseResult& WithLastModifiedTimestamp(const Aws::Utils::DateTime& value) { SetLastModifiedTimestamp(value); return *this;}
-
-    /**
-     * <p>The last time that the database was updated in FinSpace. The value is
-     * determined as epoch time in milliseconds. For example, the value for Monday,
-     * November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</p>
-     */
-    inline CreateKxDatabaseResult& WithLastModifiedTimestamp(Aws::Utils::DateTime&& value) { SetLastModifiedTimestamp(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline CreateKxDatabaseResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline CreateKxDatabaseResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline CreateKxDatabaseResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    CreateKxDatabaseResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_databaseName;
+    bool m_databaseNameHasBeenSet = false;
 
     Aws::String m_databaseArn;
+    bool m_databaseArnHasBeenSet = false;
 
     Aws::String m_environmentId;
+    bool m_environmentIdHasBeenSet = false;
 
     Aws::String m_description;
+    bool m_descriptionHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdTimestamp;
+    Aws::Utils::DateTime m_createdTimestamp{};
+    bool m_createdTimestampHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastModifiedTimestamp;
+    Aws::Utils::DateTime m_lastModifiedTimestamp{};
+    bool m_lastModifiedTimestampHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

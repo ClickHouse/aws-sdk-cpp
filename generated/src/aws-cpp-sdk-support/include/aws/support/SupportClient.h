@@ -41,13 +41,14 @@ namespace Support
    * and <a>AddAttachmentsToSet</a> operations retrieve and add communications and
    * attachments to Amazon Web Services Support cases.</p> </li> <li> <p>The
    * <a>DescribeServices</a> and <a>DescribeSeverityLevels</a> operations return
-   * Amazon Web Service names, service codes, service categories, and problem
-   * severity levels. You use these values when you call the <a>CreateCase</a>
-   * operation.</p> </li> </ul> <p>You can also use the Amazon Web Services Support
-   * API to call the Trusted Advisor operations. For more information, see <a
-   * href="https://docs.aws.amazon.com/">Trusted Advisor</a> in the <i>Amazon Web
-   * Services Support User Guide</i>.</p> <p>For authentication of requests, Amazon
-   * Web Services Support uses <a
+   * Amazon Web Services service names, service codes, service categories, and
+   * problem severity levels. You use these values when you call the
+   * <a>CreateCase</a> operation.</p> </li> </ul> <p>You can also use the Amazon Web
+   * Services Support API to call the Trusted Advisor operations. For more
+   * information, see <a
+   * href="https://docs.aws.amazon.com/awssupport/latest/user/trusted-advisor.html">Trusted
+   * Advisor</a> in the <i>Amazon Web Services Support User Guide</i>.</p> <p>For
+   * authentication of requests, Amazon Web Services Support uses <a
    * href="https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html">Signature
    * Version 4 Signing Process</a>.</p> <p>For more information about this service
    * and the endpoints to use, see <a
@@ -59,8 +60,8 @@ namespace Support
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
 
       typedef SupportClientConfiguration ClientConfigurationType;
       typedef SupportEndpointProvider EndpointProviderType;
@@ -70,14 +71,14 @@ namespace Support
         * is not specified, it will be initialized to default values.
         */
         SupportClient(const Aws::Support::SupportClientConfiguration& clientConfiguration = Aws::Support::SupportClientConfiguration(),
-                      std::shared_ptr<SupportEndpointProviderBase> endpointProvider = Aws::MakeShared<SupportEndpointProvider>(ALLOCATION_TAG));
+                      std::shared_ptr<SupportEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         SupportClient(const Aws::Auth::AWSCredentials& credentials,
-                      std::shared_ptr<SupportEndpointProviderBase> endpointProvider = Aws::MakeShared<SupportEndpointProvider>(ALLOCATION_TAG),
+                      std::shared_ptr<SupportEndpointProviderBase> endpointProvider = nullptr,
                       const Aws::Support::SupportClientConfiguration& clientConfiguration = Aws::Support::SupportClientConfiguration());
 
        /**
@@ -85,7 +86,7 @@ namespace Support
         * the default http client factory will be used
         */
         SupportClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                      std::shared_ptr<SupportEndpointProviderBase> endpointProvider = Aws::MakeShared<SupportEndpointProvider>(ALLOCATION_TAG),
+                      std::shared_ptr<SupportEndpointProviderBase> endpointProvider = nullptr,
                       const Aws::Support::SupportClientConfiguration& clientConfiguration = Aws::Support::SupportClientConfiguration());
 
 
@@ -297,13 +298,13 @@ namespace Support
          * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeCases">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeCasesOutcome DescribeCases(const Model::DescribeCasesRequest& request) const;
+        virtual Model::DescribeCasesOutcome DescribeCases(const Model::DescribeCasesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeCases that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeCasesRequestT = Model::DescribeCasesRequest>
-        Model::DescribeCasesOutcomeCallable DescribeCasesCallable(const DescribeCasesRequestT& request) const
+        Model::DescribeCasesOutcomeCallable DescribeCasesCallable(const DescribeCasesRequestT& request = {}) const
         {
             return SubmitCallable(&SupportClient::DescribeCases, request);
         }
@@ -312,7 +313,7 @@ namespace Support
          * An Async wrapper for DescribeCases that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeCasesRequestT = Model::DescribeCasesRequest>
-        void DescribeCasesAsync(const DescribeCasesRequestT& request, const DescribeCasesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeCasesAsync(const DescribeCasesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeCasesRequestT& request = {}) const
         {
             return SubmitAsync(&SupportClient::DescribeCases, request, handler, context);
         }
@@ -417,13 +418,13 @@ namespace Support
          * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeServices">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeServicesOutcome DescribeServices(const Model::DescribeServicesRequest& request) const;
+        virtual Model::DescribeServicesOutcome DescribeServices(const Model::DescribeServicesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeServices that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeServicesRequestT = Model::DescribeServicesRequest>
-        Model::DescribeServicesOutcomeCallable DescribeServicesCallable(const DescribeServicesRequestT& request) const
+        Model::DescribeServicesOutcomeCallable DescribeServicesCallable(const DescribeServicesRequestT& request = {}) const
         {
             return SubmitCallable(&SupportClient::DescribeServices, request);
         }
@@ -432,7 +433,7 @@ namespace Support
          * An Async wrapper for DescribeServices that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeServicesRequestT = Model::DescribeServicesRequest>
-        void DescribeServicesAsync(const DescribeServicesRequestT& request, const DescribeServicesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeServicesAsync(const DescribeServicesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeServicesRequestT& request = {}) const
         {
             return SubmitAsync(&SupportClient::DescribeServices, request, handler, context);
         }
@@ -452,13 +453,13 @@ namespace Support
          * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeSeverityLevels">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeSeverityLevelsOutcome DescribeSeverityLevels(const Model::DescribeSeverityLevelsRequest& request) const;
+        virtual Model::DescribeSeverityLevelsOutcome DescribeSeverityLevels(const Model::DescribeSeverityLevelsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeSeverityLevels that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeSeverityLevelsRequestT = Model::DescribeSeverityLevelsRequest>
-        Model::DescribeSeverityLevelsOutcomeCallable DescribeSeverityLevelsCallable(const DescribeSeverityLevelsRequestT& request) const
+        Model::DescribeSeverityLevelsOutcomeCallable DescribeSeverityLevelsCallable(const DescribeSeverityLevelsRequestT& request = {}) const
         {
             return SubmitCallable(&SupportClient::DescribeSeverityLevels, request);
         }
@@ -467,7 +468,7 @@ namespace Support
          * An Async wrapper for DescribeSeverityLevels that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeSeverityLevelsRequestT = Model::DescribeSeverityLevelsRequest>
-        void DescribeSeverityLevelsAsync(const DescribeSeverityLevelsRequestT& request, const DescribeSeverityLevelsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeSeverityLevelsAsync(const DescribeSeverityLevelsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeSeverityLevelsRequestT& request = {}) const
         {
             return SubmitAsync(&SupportClient::DescribeSeverityLevels, request, handler, context);
         }
@@ -747,13 +748,13 @@ namespace Support
          * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/ResolveCase">AWS
          * API Reference</a></p>
          */
-        virtual Model::ResolveCaseOutcome ResolveCase(const Model::ResolveCaseRequest& request) const;
+        virtual Model::ResolveCaseOutcome ResolveCase(const Model::ResolveCaseRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ResolveCase that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ResolveCaseRequestT = Model::ResolveCaseRequest>
-        Model::ResolveCaseOutcomeCallable ResolveCaseCallable(const ResolveCaseRequestT& request) const
+        Model::ResolveCaseOutcomeCallable ResolveCaseCallable(const ResolveCaseRequestT& request = {}) const
         {
             return SubmitCallable(&SupportClient::ResolveCase, request);
         }
@@ -762,7 +763,7 @@ namespace Support
          * An Async wrapper for ResolveCase that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ResolveCaseRequestT = Model::ResolveCaseRequest>
-        void ResolveCaseAsync(const ResolveCaseRequestT& request, const ResolveCaseResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ResolveCaseAsync(const ResolveCaseResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ResolveCaseRequestT& request = {}) const
         {
             return SubmitAsync(&SupportClient::ResolveCase, request, handler, context);
         }
@@ -775,7 +776,6 @@ namespace Support
       void init(const SupportClientConfiguration& clientConfiguration);
 
       SupportClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<SupportEndpointProviderBase> m_endpointProvider;
   };
 

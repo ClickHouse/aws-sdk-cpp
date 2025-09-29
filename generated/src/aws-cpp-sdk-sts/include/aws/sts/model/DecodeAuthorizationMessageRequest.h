@@ -21,7 +21,7 @@ namespace Model
   class DecodeAuthorizationMessageRequest : public STSRequest
   {
   public:
-    AWS_STS_API DecodeAuthorizationMessageRequest();
+    AWS_STS_API DecodeAuthorizationMessageRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,46 +36,17 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The encoded message that was returned with the response.</p>
      */
-    inline const Aws::String& GetEncodedMessage() const{ return m_encodedMessage; }
-
-    /**
-     * <p>The encoded message that was returned with the response.</p>
-     */
+    inline const Aws::String& GetEncodedMessage() const { return m_encodedMessage; }
     inline bool EncodedMessageHasBeenSet() const { return m_encodedMessageHasBeenSet; }
-
-    /**
-     * <p>The encoded message that was returned with the response.</p>
-     */
-    inline void SetEncodedMessage(const Aws::String& value) { m_encodedMessageHasBeenSet = true; m_encodedMessage = value; }
-
-    /**
-     * <p>The encoded message that was returned with the response.</p>
-     */
-    inline void SetEncodedMessage(Aws::String&& value) { m_encodedMessageHasBeenSet = true; m_encodedMessage = std::move(value); }
-
-    /**
-     * <p>The encoded message that was returned with the response.</p>
-     */
-    inline void SetEncodedMessage(const char* value) { m_encodedMessageHasBeenSet = true; m_encodedMessage.assign(value); }
-
-    /**
-     * <p>The encoded message that was returned with the response.</p>
-     */
-    inline DecodeAuthorizationMessageRequest& WithEncodedMessage(const Aws::String& value) { SetEncodedMessage(value); return *this;}
-
-    /**
-     * <p>The encoded message that was returned with the response.</p>
-     */
-    inline DecodeAuthorizationMessageRequest& WithEncodedMessage(Aws::String&& value) { SetEncodedMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The encoded message that was returned with the response.</p>
-     */
-    inline DecodeAuthorizationMessageRequest& WithEncodedMessage(const char* value) { SetEncodedMessage(value); return *this;}
-
+    template<typename EncodedMessageT = Aws::String>
+    void SetEncodedMessage(EncodedMessageT&& value) { m_encodedMessageHasBeenSet = true; m_encodedMessage = std::forward<EncodedMessageT>(value); }
+    template<typename EncodedMessageT = Aws::String>
+    DecodeAuthorizationMessageRequest& WithEncodedMessage(EncodedMessageT&& value) { SetEncodedMessage(std::forward<EncodedMessageT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_encodedMessage;

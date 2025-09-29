@@ -32,47 +32,27 @@ namespace Model
   class VpcConnectivityTls
   {
   public:
-    AWS_KAFKA_API VpcConnectivityTls();
+    AWS_KAFKA_API VpcConnectivityTls() = default;
     AWS_KAFKA_API VpcConnectivityTls(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKA_API VpcConnectivityTls& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * 
             <p>TLS authentication is on or off for VPC connectivity.</p>
       
      *   
      */
-    inline bool GetEnabled() const{ return m_enabled; }
-
-    /**
-     * 
-            <p>TLS authentication is on or off for VPC connectivity.</p>
-      
-     *   
-     */
+    inline bool GetEnabled() const { return m_enabled; }
     inline bool EnabledHasBeenSet() const { return m_enabledHasBeenSet; }
-
-    /**
-     * 
-            <p>TLS authentication is on or off for VPC connectivity.</p>
-      
-     *   
-     */
     inline void SetEnabled(bool value) { m_enabledHasBeenSet = true; m_enabled = value; }
-
-    /**
-     * 
-            <p>TLS authentication is on or off for VPC connectivity.</p>
-      
-     *   
-     */
     inline VpcConnectivityTls& WithEnabled(bool value) { SetEnabled(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_enabled;
+    bool m_enabled{false};
     bool m_enabledHasBeenSet = false;
   };
 

@@ -18,13 +18,7 @@ namespace Macie2
 namespace Model
 {
 
-S3ClassificationScopeExclusion::S3ClassificationScopeExclusion() : 
-    m_bucketNamesHasBeenSet(false)
-{
-}
-
-S3ClassificationScopeExclusion::S3ClassificationScopeExclusion(JsonView jsonValue) : 
-    m_bucketNamesHasBeenSet(false)
+S3ClassificationScopeExclusion::S3ClassificationScopeExclusion(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ S3ClassificationScopeExclusion& S3ClassificationScopeExclusion::operator =(JsonV
     }
     m_bucketNamesHasBeenSet = true;
   }
-
   return *this;
 }
 

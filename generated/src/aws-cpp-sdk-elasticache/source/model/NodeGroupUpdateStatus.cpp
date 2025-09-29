@@ -20,15 +20,7 @@ namespace ElastiCache
 namespace Model
 {
 
-NodeGroupUpdateStatus::NodeGroupUpdateStatus() : 
-    m_nodeGroupIdHasBeenSet(false),
-    m_nodeGroupMemberUpdateStatusHasBeenSet(false)
-{
-}
-
-NodeGroupUpdateStatus::NodeGroupUpdateStatus(const XmlNode& xmlNode) : 
-    m_nodeGroupIdHasBeenSet(false),
-    m_nodeGroupMemberUpdateStatusHasBeenSet(false)
+NodeGroupUpdateStatus::NodeGroupUpdateStatus(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -49,6 +41,7 @@ NodeGroupUpdateStatus& NodeGroupUpdateStatus::operator =(const XmlNode& xmlNode)
     if(!nodeGroupMemberUpdateStatusNode.IsNull())
     {
       XmlNode nodeGroupMemberUpdateStatusMember = nodeGroupMemberUpdateStatusNode.FirstChild("NodeGroupMemberUpdateStatus");
+      m_nodeGroupMemberUpdateStatusHasBeenSet = !nodeGroupMemberUpdateStatusMember.IsNull();
       while(!nodeGroupMemberUpdateStatusMember.IsNull())
       {
         m_nodeGroupMemberUpdateStatus.push_back(nodeGroupMemberUpdateStatusMember);
@@ -75,7 +68,7 @@ void NodeGroupUpdateStatus::OutputToStream(Aws::OStream& oStream, const char* lo
       for(auto& item : m_nodeGroupMemberUpdateStatus)
       {
         Aws::StringStream nodeGroupMemberUpdateStatusSs;
-        nodeGroupMemberUpdateStatusSs << location << index << locationValue << ".NodeGroupMemberUpdateStatus." << nodeGroupMemberUpdateStatusIdx++;
+        nodeGroupMemberUpdateStatusSs << location << index << locationValue << ".NodeGroupMemberUpdateStatus.NodeGroupMemberUpdateStatus." << nodeGroupMemberUpdateStatusIdx++;
         item.OutputToStream(oStream, nodeGroupMemberUpdateStatusSs.str().c_str());
       }
   }
@@ -94,7 +87,7 @@ void NodeGroupUpdateStatus::OutputToStream(Aws::OStream& oStream, const char* lo
       for(auto& item : m_nodeGroupMemberUpdateStatus)
       {
         Aws::StringStream nodeGroupMemberUpdateStatusSs;
-        nodeGroupMemberUpdateStatusSs << location <<  ".NodeGroupMemberUpdateStatus." << nodeGroupMemberUpdateStatusIdx++;
+        nodeGroupMemberUpdateStatusSs << location << ".NodeGroupMemberUpdateStatus.NodeGroupMemberUpdateStatus." << nodeGroupMemberUpdateStatusIdx++;
         item.OutputToStream(oStream, nodeGroupMemberUpdateStatusSs.str().c_str());
       }
   }

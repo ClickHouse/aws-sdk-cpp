@@ -32,52 +32,25 @@ namespace Model
   class ExplicitDeny
   {
   public:
-    AWS_IOT_API ExplicitDeny();
+    AWS_IOT_API ExplicitDeny() = default;
     AWS_IOT_API ExplicitDeny(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API ExplicitDeny& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The policies that denied the authorization.</p>
      */
-    inline const Aws::Vector<Policy>& GetPolicies() const{ return m_policies; }
-
-    /**
-     * <p>The policies that denied the authorization.</p>
-     */
+    inline const Aws::Vector<Policy>& GetPolicies() const { return m_policies; }
     inline bool PoliciesHasBeenSet() const { return m_policiesHasBeenSet; }
-
-    /**
-     * <p>The policies that denied the authorization.</p>
-     */
-    inline void SetPolicies(const Aws::Vector<Policy>& value) { m_policiesHasBeenSet = true; m_policies = value; }
-
-    /**
-     * <p>The policies that denied the authorization.</p>
-     */
-    inline void SetPolicies(Aws::Vector<Policy>&& value) { m_policiesHasBeenSet = true; m_policies = std::move(value); }
-
-    /**
-     * <p>The policies that denied the authorization.</p>
-     */
-    inline ExplicitDeny& WithPolicies(const Aws::Vector<Policy>& value) { SetPolicies(value); return *this;}
-
-    /**
-     * <p>The policies that denied the authorization.</p>
-     */
-    inline ExplicitDeny& WithPolicies(Aws::Vector<Policy>&& value) { SetPolicies(std::move(value)); return *this;}
-
-    /**
-     * <p>The policies that denied the authorization.</p>
-     */
-    inline ExplicitDeny& AddPolicies(const Policy& value) { m_policiesHasBeenSet = true; m_policies.push_back(value); return *this; }
-
-    /**
-     * <p>The policies that denied the authorization.</p>
-     */
-    inline ExplicitDeny& AddPolicies(Policy&& value) { m_policiesHasBeenSet = true; m_policies.push_back(std::move(value)); return *this; }
-
+    template<typename PoliciesT = Aws::Vector<Policy>>
+    void SetPolicies(PoliciesT&& value) { m_policiesHasBeenSet = true; m_policies = std::forward<PoliciesT>(value); }
+    template<typename PoliciesT = Aws::Vector<Policy>>
+    ExplicitDeny& WithPolicies(PoliciesT&& value) { SetPolicies(std::forward<PoliciesT>(value)); return *this;}
+    template<typename PoliciesT = Policy>
+    ExplicitDeny& AddPolicies(PoliciesT&& value) { m_policiesHasBeenSet = true; m_policies.emplace_back(std::forward<PoliciesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Policy> m_policies;

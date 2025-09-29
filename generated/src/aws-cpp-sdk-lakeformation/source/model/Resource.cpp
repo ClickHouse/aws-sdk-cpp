@@ -18,27 +18,7 @@ namespace LakeFormation
 namespace Model
 {
 
-Resource::Resource() : 
-    m_catalogHasBeenSet(false),
-    m_databaseHasBeenSet(false),
-    m_tableHasBeenSet(false),
-    m_tableWithColumnsHasBeenSet(false),
-    m_dataLocationHasBeenSet(false),
-    m_dataCellsFilterHasBeenSet(false),
-    m_lFTagHasBeenSet(false),
-    m_lFTagPolicyHasBeenSet(false)
-{
-}
-
-Resource::Resource(JsonView jsonValue) : 
-    m_catalogHasBeenSet(false),
-    m_databaseHasBeenSet(false),
-    m_tableHasBeenSet(false),
-    m_tableWithColumnsHasBeenSet(false),
-    m_dataLocationHasBeenSet(false),
-    m_dataCellsFilterHasBeenSet(false),
-    m_lFTagHasBeenSet(false),
-    m_lFTagPolicyHasBeenSet(false)
+Resource::Resource(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -48,59 +28,48 @@ Resource& Resource::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Catalog"))
   {
     m_catalog = jsonValue.GetObject("Catalog");
-
     m_catalogHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Database"))
   {
     m_database = jsonValue.GetObject("Database");
-
     m_databaseHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Table"))
   {
     m_table = jsonValue.GetObject("Table");
-
     m_tableHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TableWithColumns"))
   {
     m_tableWithColumns = jsonValue.GetObject("TableWithColumns");
-
     m_tableWithColumnsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DataLocation"))
   {
     m_dataLocation = jsonValue.GetObject("DataLocation");
-
     m_dataLocationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DataCellsFilter"))
   {
     m_dataCellsFilter = jsonValue.GetObject("DataCellsFilter");
-
     m_dataCellsFilterHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LFTag"))
   {
     m_lFTag = jsonValue.GetObject("LFTag");
-
     m_lFTagHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LFTagPolicy"))
   {
     m_lFTagPolicy = jsonValue.GetObject("LFTagPolicy");
-
     m_lFTagPolicyHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("LFTagExpression"))
+  {
+    m_lFTagExpression = jsonValue.GetObject("LFTagExpression");
+    m_lFTagExpressionHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -153,6 +122,12 @@ JsonValue Resource::Jsonize() const
   if(m_lFTagPolicyHasBeenSet)
   {
    payload.WithObject("LFTagPolicy", m_lFTagPolicy.Jsonize());
+
+  }
+
+  if(m_lFTagExpressionHasBeenSet)
+  {
+   payload.WithObject("LFTagExpression", m_lFTagExpression.Jsonize());
 
   }
 

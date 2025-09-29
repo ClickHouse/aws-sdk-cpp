@@ -12,16 +12,6 @@ using namespace Aws::Connect::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateContactRoutingDataRequest::UpdateContactRoutingDataRequest() : 
-    m_instanceIdHasBeenSet(false),
-    m_contactIdHasBeenSet(false),
-    m_queueTimeAdjustmentSeconds(0),
-    m_queueTimeAdjustmentSecondsHasBeenSet(false),
-    m_queuePriority(0),
-    m_queuePriorityHasBeenSet(false)
-{
-}
-
 Aws::String UpdateContactRoutingDataRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -35,6 +25,12 @@ Aws::String UpdateContactRoutingDataRequest::SerializePayload() const
   if(m_queuePriorityHasBeenSet)
   {
    payload.WithInt64("QueuePriority", m_queuePriority);
+
+  }
+
+  if(m_routingCriteriaHasBeenSet)
+  {
+   payload.WithObject("RoutingCriteria", m_routingCriteria.Jsonize());
 
   }
 

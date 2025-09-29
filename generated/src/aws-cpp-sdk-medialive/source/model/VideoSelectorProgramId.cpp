@@ -18,15 +18,7 @@ namespace MediaLive
 namespace Model
 {
 
-VideoSelectorProgramId::VideoSelectorProgramId() : 
-    m_programId(0),
-    m_programIdHasBeenSet(false)
-{
-}
-
-VideoSelectorProgramId::VideoSelectorProgramId(JsonView jsonValue) : 
-    m_programId(0),
-    m_programIdHasBeenSet(false)
+VideoSelectorProgramId::VideoSelectorProgramId(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ VideoSelectorProgramId& VideoSelectorProgramId::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("programId"))
   {
     m_programId = jsonValue.GetInteger("programId");
-
     m_programIdHasBeenSet = true;
   }
-
   return *this;
 }
 

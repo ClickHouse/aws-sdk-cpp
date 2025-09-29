@@ -32,73 +32,35 @@ namespace Model
   class StringFormatConfiguration
   {
   public:
-    AWS_QUICKSIGHT_API StringFormatConfiguration();
+    AWS_QUICKSIGHT_API StringFormatConfiguration() = default;
     AWS_QUICKSIGHT_API StringFormatConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API StringFormatConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The options that determine the null value format configuration.</p>
      */
-    inline const NullValueFormatConfiguration& GetNullValueFormatConfiguration() const{ return m_nullValueFormatConfiguration; }
-
-    /**
-     * <p>The options that determine the null value format configuration.</p>
-     */
+    inline const NullValueFormatConfiguration& GetNullValueFormatConfiguration() const { return m_nullValueFormatConfiguration; }
     inline bool NullValueFormatConfigurationHasBeenSet() const { return m_nullValueFormatConfigurationHasBeenSet; }
+    template<typename NullValueFormatConfigurationT = NullValueFormatConfiguration>
+    void SetNullValueFormatConfiguration(NullValueFormatConfigurationT&& value) { m_nullValueFormatConfigurationHasBeenSet = true; m_nullValueFormatConfiguration = std::forward<NullValueFormatConfigurationT>(value); }
+    template<typename NullValueFormatConfigurationT = NullValueFormatConfiguration>
+    StringFormatConfiguration& WithNullValueFormatConfiguration(NullValueFormatConfigurationT&& value) { SetNullValueFormatConfiguration(std::forward<NullValueFormatConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The options that determine the null value format configuration.</p>
-     */
-    inline void SetNullValueFormatConfiguration(const NullValueFormatConfiguration& value) { m_nullValueFormatConfigurationHasBeenSet = true; m_nullValueFormatConfiguration = value; }
-
-    /**
-     * <p>The options that determine the null value format configuration.</p>
-     */
-    inline void SetNullValueFormatConfiguration(NullValueFormatConfiguration&& value) { m_nullValueFormatConfigurationHasBeenSet = true; m_nullValueFormatConfiguration = std::move(value); }
-
-    /**
-     * <p>The options that determine the null value format configuration.</p>
-     */
-    inline StringFormatConfiguration& WithNullValueFormatConfiguration(const NullValueFormatConfiguration& value) { SetNullValueFormatConfiguration(value); return *this;}
-
-    /**
-     * <p>The options that determine the null value format configuration.</p>
-     */
-    inline StringFormatConfiguration& WithNullValueFormatConfiguration(NullValueFormatConfiguration&& value) { SetNullValueFormatConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The formatting configuration for numeric strings.</p>
      */
-    inline const NumericFormatConfiguration& GetNumericFormatConfiguration() const{ return m_numericFormatConfiguration; }
-
-    /**
-     * <p>The formatting configuration for numeric strings.</p>
-     */
+    inline const NumericFormatConfiguration& GetNumericFormatConfiguration() const { return m_numericFormatConfiguration; }
     inline bool NumericFormatConfigurationHasBeenSet() const { return m_numericFormatConfigurationHasBeenSet; }
-
-    /**
-     * <p>The formatting configuration for numeric strings.</p>
-     */
-    inline void SetNumericFormatConfiguration(const NumericFormatConfiguration& value) { m_numericFormatConfigurationHasBeenSet = true; m_numericFormatConfiguration = value; }
-
-    /**
-     * <p>The formatting configuration for numeric strings.</p>
-     */
-    inline void SetNumericFormatConfiguration(NumericFormatConfiguration&& value) { m_numericFormatConfigurationHasBeenSet = true; m_numericFormatConfiguration = std::move(value); }
-
-    /**
-     * <p>The formatting configuration for numeric strings.</p>
-     */
-    inline StringFormatConfiguration& WithNumericFormatConfiguration(const NumericFormatConfiguration& value) { SetNumericFormatConfiguration(value); return *this;}
-
-    /**
-     * <p>The formatting configuration for numeric strings.</p>
-     */
-    inline StringFormatConfiguration& WithNumericFormatConfiguration(NumericFormatConfiguration&& value) { SetNumericFormatConfiguration(std::move(value)); return *this;}
-
+    template<typename NumericFormatConfigurationT = NumericFormatConfiguration>
+    void SetNumericFormatConfiguration(NumericFormatConfigurationT&& value) { m_numericFormatConfigurationHasBeenSet = true; m_numericFormatConfiguration = std::forward<NumericFormatConfigurationT>(value); }
+    template<typename NumericFormatConfigurationT = NumericFormatConfiguration>
+    StringFormatConfiguration& WithNumericFormatConfiguration(NumericFormatConfigurationT&& value) { SetNumericFormatConfiguration(std::forward<NumericFormatConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     NullValueFormatConfiguration m_nullValueFormatConfiguration;

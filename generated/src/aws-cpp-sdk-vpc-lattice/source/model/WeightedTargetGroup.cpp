@@ -18,17 +18,7 @@ namespace VPCLattice
 namespace Model
 {
 
-WeightedTargetGroup::WeightedTargetGroup() : 
-    m_targetGroupIdentifierHasBeenSet(false),
-    m_weight(0),
-    m_weightHasBeenSet(false)
-{
-}
-
-WeightedTargetGroup::WeightedTargetGroup(JsonView jsonValue) : 
-    m_targetGroupIdentifierHasBeenSet(false),
-    m_weight(0),
-    m_weightHasBeenSet(false)
+WeightedTargetGroup::WeightedTargetGroup(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ WeightedTargetGroup& WeightedTargetGroup::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("targetGroupIdentifier"))
   {
     m_targetGroupIdentifier = jsonValue.GetString("targetGroupIdentifier");
-
     m_targetGroupIdentifierHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("weight"))
   {
     m_weight = jsonValue.GetInteger("weight");
-
     m_weightHasBeenSet = true;
   }
-
   return *this;
 }
 

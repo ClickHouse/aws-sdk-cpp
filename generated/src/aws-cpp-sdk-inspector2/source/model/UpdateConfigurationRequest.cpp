@@ -12,11 +12,6 @@ using namespace Aws::Inspector2::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateConfigurationRequest::UpdateConfigurationRequest() : 
-    m_ecrConfigurationHasBeenSet(false)
-{
-}
-
 Aws::String UpdateConfigurationRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -24,6 +19,12 @@ Aws::String UpdateConfigurationRequest::SerializePayload() const
   if(m_ecrConfigurationHasBeenSet)
   {
    payload.WithObject("ecrConfiguration", m_ecrConfiguration.Jsonize());
+
+  }
+
+  if(m_ec2ConfigurationHasBeenSet)
+  {
+   payload.WithObject("ec2Configuration", m_ec2Configuration.Jsonize());
 
   }
 

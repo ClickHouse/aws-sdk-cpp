@@ -36,211 +36,81 @@ namespace Model
   class ConversationLevelTestResultItem
   {
   public:
-    AWS_LEXMODELSV2_API ConversationLevelTestResultItem();
+    AWS_LEXMODELSV2_API ConversationLevelTestResultItem() = default;
     AWS_LEXMODELSV2_API ConversationLevelTestResultItem(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API ConversationLevelTestResultItem& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The conversation Id of the test result evaluation item.</p>
      */
-    inline const Aws::String& GetConversationId() const{ return m_conversationId; }
-
-    /**
-     * <p>The conversation Id of the test result evaluation item.</p>
-     */
+    inline const Aws::String& GetConversationId() const { return m_conversationId; }
     inline bool ConversationIdHasBeenSet() const { return m_conversationIdHasBeenSet; }
+    template<typename ConversationIdT = Aws::String>
+    void SetConversationId(ConversationIdT&& value) { m_conversationIdHasBeenSet = true; m_conversationId = std::forward<ConversationIdT>(value); }
+    template<typename ConversationIdT = Aws::String>
+    ConversationLevelTestResultItem& WithConversationId(ConversationIdT&& value) { SetConversationId(std::forward<ConversationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The conversation Id of the test result evaluation item.</p>
-     */
-    inline void SetConversationId(const Aws::String& value) { m_conversationIdHasBeenSet = true; m_conversationId = value; }
-
-    /**
-     * <p>The conversation Id of the test result evaluation item.</p>
-     */
-    inline void SetConversationId(Aws::String&& value) { m_conversationIdHasBeenSet = true; m_conversationId = std::move(value); }
-
-    /**
-     * <p>The conversation Id of the test result evaluation item.</p>
-     */
-    inline void SetConversationId(const char* value) { m_conversationIdHasBeenSet = true; m_conversationId.assign(value); }
-
-    /**
-     * <p>The conversation Id of the test result evaluation item.</p>
-     */
-    inline ConversationLevelTestResultItem& WithConversationId(const Aws::String& value) { SetConversationId(value); return *this;}
-
-    /**
-     * <p>The conversation Id of the test result evaluation item.</p>
-     */
-    inline ConversationLevelTestResultItem& WithConversationId(Aws::String&& value) { SetConversationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The conversation Id of the test result evaluation item.</p>
-     */
-    inline ConversationLevelTestResultItem& WithConversationId(const char* value) { SetConversationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The end-to-end success or failure of the test result evaluation item.</p>
      */
-    inline const TestResultMatchStatus& GetEndToEndResult() const{ return m_endToEndResult; }
-
-    /**
-     * <p>The end-to-end success or failure of the test result evaluation item.</p>
-     */
+    inline TestResultMatchStatus GetEndToEndResult() const { return m_endToEndResult; }
     inline bool EndToEndResultHasBeenSet() const { return m_endToEndResultHasBeenSet; }
+    inline void SetEndToEndResult(TestResultMatchStatus value) { m_endToEndResultHasBeenSet = true; m_endToEndResult = value; }
+    inline ConversationLevelTestResultItem& WithEndToEndResult(TestResultMatchStatus value) { SetEndToEndResult(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The end-to-end success or failure of the test result evaluation item.</p>
-     */
-    inline void SetEndToEndResult(const TestResultMatchStatus& value) { m_endToEndResultHasBeenSet = true; m_endToEndResult = value; }
-
-    /**
-     * <p>The end-to-end success or failure of the test result evaluation item.</p>
-     */
-    inline void SetEndToEndResult(TestResultMatchStatus&& value) { m_endToEndResultHasBeenSet = true; m_endToEndResult = std::move(value); }
-
-    /**
-     * <p>The end-to-end success or failure of the test result evaluation item.</p>
-     */
-    inline ConversationLevelTestResultItem& WithEndToEndResult(const TestResultMatchStatus& value) { SetEndToEndResult(value); return *this;}
-
-    /**
-     * <p>The end-to-end success or failure of the test result evaluation item.</p>
-     */
-    inline ConversationLevelTestResultItem& WithEndToEndResult(TestResultMatchStatus&& value) { SetEndToEndResult(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The speech transcription success or failure of the test result evaluation
      * item.</p>
      */
-    inline const TestResultMatchStatus& GetSpeechTranscriptionResult() const{ return m_speechTranscriptionResult; }
-
-    /**
-     * <p>The speech transcription success or failure of the test result evaluation
-     * item.</p>
-     */
+    inline TestResultMatchStatus GetSpeechTranscriptionResult() const { return m_speechTranscriptionResult; }
     inline bool SpeechTranscriptionResultHasBeenSet() const { return m_speechTranscriptionResultHasBeenSet; }
+    inline void SetSpeechTranscriptionResult(TestResultMatchStatus value) { m_speechTranscriptionResultHasBeenSet = true; m_speechTranscriptionResult = value; }
+    inline ConversationLevelTestResultItem& WithSpeechTranscriptionResult(TestResultMatchStatus value) { SetSpeechTranscriptionResult(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The speech transcription success or failure of the test result evaluation
-     * item.</p>
-     */
-    inline void SetSpeechTranscriptionResult(const TestResultMatchStatus& value) { m_speechTranscriptionResultHasBeenSet = true; m_speechTranscriptionResult = value; }
-
-    /**
-     * <p>The speech transcription success or failure of the test result evaluation
-     * item.</p>
-     */
-    inline void SetSpeechTranscriptionResult(TestResultMatchStatus&& value) { m_speechTranscriptionResultHasBeenSet = true; m_speechTranscriptionResult = std::move(value); }
-
-    /**
-     * <p>The speech transcription success or failure of the test result evaluation
-     * item.</p>
-     */
-    inline ConversationLevelTestResultItem& WithSpeechTranscriptionResult(const TestResultMatchStatus& value) { SetSpeechTranscriptionResult(value); return *this;}
-
-    /**
-     * <p>The speech transcription success or failure of the test result evaluation
-     * item.</p>
-     */
-    inline ConversationLevelTestResultItem& WithSpeechTranscriptionResult(TestResultMatchStatus&& value) { SetSpeechTranscriptionResult(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The intent classification of the test result evaluation item.</p>
      */
-    inline const Aws::Vector<ConversationLevelIntentClassificationResultItem>& GetIntentClassificationResults() const{ return m_intentClassificationResults; }
-
-    /**
-     * <p>The intent classification of the test result evaluation item.</p>
-     */
+    inline const Aws::Vector<ConversationLevelIntentClassificationResultItem>& GetIntentClassificationResults() const { return m_intentClassificationResults; }
     inline bool IntentClassificationResultsHasBeenSet() const { return m_intentClassificationResultsHasBeenSet; }
+    template<typename IntentClassificationResultsT = Aws::Vector<ConversationLevelIntentClassificationResultItem>>
+    void SetIntentClassificationResults(IntentClassificationResultsT&& value) { m_intentClassificationResultsHasBeenSet = true; m_intentClassificationResults = std::forward<IntentClassificationResultsT>(value); }
+    template<typename IntentClassificationResultsT = Aws::Vector<ConversationLevelIntentClassificationResultItem>>
+    ConversationLevelTestResultItem& WithIntentClassificationResults(IntentClassificationResultsT&& value) { SetIntentClassificationResults(std::forward<IntentClassificationResultsT>(value)); return *this;}
+    template<typename IntentClassificationResultsT = ConversationLevelIntentClassificationResultItem>
+    ConversationLevelTestResultItem& AddIntentClassificationResults(IntentClassificationResultsT&& value) { m_intentClassificationResultsHasBeenSet = true; m_intentClassificationResults.emplace_back(std::forward<IntentClassificationResultsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The intent classification of the test result evaluation item.</p>
-     */
-    inline void SetIntentClassificationResults(const Aws::Vector<ConversationLevelIntentClassificationResultItem>& value) { m_intentClassificationResultsHasBeenSet = true; m_intentClassificationResults = value; }
-
-    /**
-     * <p>The intent classification of the test result evaluation item.</p>
-     */
-    inline void SetIntentClassificationResults(Aws::Vector<ConversationLevelIntentClassificationResultItem>&& value) { m_intentClassificationResultsHasBeenSet = true; m_intentClassificationResults = std::move(value); }
-
-    /**
-     * <p>The intent classification of the test result evaluation item.</p>
-     */
-    inline ConversationLevelTestResultItem& WithIntentClassificationResults(const Aws::Vector<ConversationLevelIntentClassificationResultItem>& value) { SetIntentClassificationResults(value); return *this;}
-
-    /**
-     * <p>The intent classification of the test result evaluation item.</p>
-     */
-    inline ConversationLevelTestResultItem& WithIntentClassificationResults(Aws::Vector<ConversationLevelIntentClassificationResultItem>&& value) { SetIntentClassificationResults(std::move(value)); return *this;}
-
-    /**
-     * <p>The intent classification of the test result evaluation item.</p>
-     */
-    inline ConversationLevelTestResultItem& AddIntentClassificationResults(const ConversationLevelIntentClassificationResultItem& value) { m_intentClassificationResultsHasBeenSet = true; m_intentClassificationResults.push_back(value); return *this; }
-
-    /**
-     * <p>The intent classification of the test result evaluation item.</p>
-     */
-    inline ConversationLevelTestResultItem& AddIntentClassificationResults(ConversationLevelIntentClassificationResultItem&& value) { m_intentClassificationResultsHasBeenSet = true; m_intentClassificationResults.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The slot success or failure of the test result evaluation item.</p>
      */
-    inline const Aws::Vector<ConversationLevelSlotResolutionResultItem>& GetSlotResolutionResults() const{ return m_slotResolutionResults; }
-
-    /**
-     * <p>The slot success or failure of the test result evaluation item.</p>
-     */
+    inline const Aws::Vector<ConversationLevelSlotResolutionResultItem>& GetSlotResolutionResults() const { return m_slotResolutionResults; }
     inline bool SlotResolutionResultsHasBeenSet() const { return m_slotResolutionResultsHasBeenSet; }
-
-    /**
-     * <p>The slot success or failure of the test result evaluation item.</p>
-     */
-    inline void SetSlotResolutionResults(const Aws::Vector<ConversationLevelSlotResolutionResultItem>& value) { m_slotResolutionResultsHasBeenSet = true; m_slotResolutionResults = value; }
-
-    /**
-     * <p>The slot success or failure of the test result evaluation item.</p>
-     */
-    inline void SetSlotResolutionResults(Aws::Vector<ConversationLevelSlotResolutionResultItem>&& value) { m_slotResolutionResultsHasBeenSet = true; m_slotResolutionResults = std::move(value); }
-
-    /**
-     * <p>The slot success or failure of the test result evaluation item.</p>
-     */
-    inline ConversationLevelTestResultItem& WithSlotResolutionResults(const Aws::Vector<ConversationLevelSlotResolutionResultItem>& value) { SetSlotResolutionResults(value); return *this;}
-
-    /**
-     * <p>The slot success or failure of the test result evaluation item.</p>
-     */
-    inline ConversationLevelTestResultItem& WithSlotResolutionResults(Aws::Vector<ConversationLevelSlotResolutionResultItem>&& value) { SetSlotResolutionResults(std::move(value)); return *this;}
-
-    /**
-     * <p>The slot success or failure of the test result evaluation item.</p>
-     */
-    inline ConversationLevelTestResultItem& AddSlotResolutionResults(const ConversationLevelSlotResolutionResultItem& value) { m_slotResolutionResultsHasBeenSet = true; m_slotResolutionResults.push_back(value); return *this; }
-
-    /**
-     * <p>The slot success or failure of the test result evaluation item.</p>
-     */
-    inline ConversationLevelTestResultItem& AddSlotResolutionResults(ConversationLevelSlotResolutionResultItem&& value) { m_slotResolutionResultsHasBeenSet = true; m_slotResolutionResults.push_back(std::move(value)); return *this; }
-
+    template<typename SlotResolutionResultsT = Aws::Vector<ConversationLevelSlotResolutionResultItem>>
+    void SetSlotResolutionResults(SlotResolutionResultsT&& value) { m_slotResolutionResultsHasBeenSet = true; m_slotResolutionResults = std::forward<SlotResolutionResultsT>(value); }
+    template<typename SlotResolutionResultsT = Aws::Vector<ConversationLevelSlotResolutionResultItem>>
+    ConversationLevelTestResultItem& WithSlotResolutionResults(SlotResolutionResultsT&& value) { SetSlotResolutionResults(std::forward<SlotResolutionResultsT>(value)); return *this;}
+    template<typename SlotResolutionResultsT = ConversationLevelSlotResolutionResultItem>
+    ConversationLevelTestResultItem& AddSlotResolutionResults(SlotResolutionResultsT&& value) { m_slotResolutionResultsHasBeenSet = true; m_slotResolutionResults.emplace_back(std::forward<SlotResolutionResultsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_conversationId;
     bool m_conversationIdHasBeenSet = false;
 
-    TestResultMatchStatus m_endToEndResult;
+    TestResultMatchStatus m_endToEndResult{TestResultMatchStatus::NOT_SET};
     bool m_endToEndResultHasBeenSet = false;
 
-    TestResultMatchStatus m_speechTranscriptionResult;
+    TestResultMatchStatus m_speechTranscriptionResult{TestResultMatchStatus::NOT_SET};
     bool m_speechTranscriptionResultHasBeenSet = false;
 
     Aws::Vector<ConversationLevelIntentClassificationResultItem> m_intentClassificationResults;

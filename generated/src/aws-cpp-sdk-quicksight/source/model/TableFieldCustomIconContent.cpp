@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-TableFieldCustomIconContent::TableFieldCustomIconContent() : 
-    m_icon(TableFieldIconSetType::NOT_SET),
-    m_iconHasBeenSet(false)
-{
-}
-
-TableFieldCustomIconContent::TableFieldCustomIconContent(JsonView jsonValue) : 
-    m_icon(TableFieldIconSetType::NOT_SET),
-    m_iconHasBeenSet(false)
+TableFieldCustomIconContent::TableFieldCustomIconContent(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ TableFieldCustomIconContent& TableFieldCustomIconContent::operator =(JsonView js
   if(jsonValue.ValueExists("Icon"))
   {
     m_icon = TableFieldIconSetTypeMapper::GetTableFieldIconSetTypeForName(jsonValue.GetString("Icon"));
-
     m_iconHasBeenSet = true;
   }
-
   return *this;
 }
 

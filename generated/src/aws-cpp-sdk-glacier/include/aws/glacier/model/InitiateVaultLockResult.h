@@ -33,73 +33,37 @@ namespace Model
   class InitiateVaultLockResult
   {
   public:
-    AWS_GLACIER_API InitiateVaultLockResult();
+    AWS_GLACIER_API InitiateVaultLockResult() = default;
     AWS_GLACIER_API InitiateVaultLockResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_GLACIER_API InitiateVaultLockResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The lock ID, which is used to complete the vault locking process.</p>
      */
-    inline const Aws::String& GetLockId() const{ return m_lockId; }
+    inline const Aws::String& GetLockId() const { return m_lockId; }
+    template<typename LockIdT = Aws::String>
+    void SetLockId(LockIdT&& value) { m_lockIdHasBeenSet = true; m_lockId = std::forward<LockIdT>(value); }
+    template<typename LockIdT = Aws::String>
+    InitiateVaultLockResult& WithLockId(LockIdT&& value) { SetLockId(std::forward<LockIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The lock ID, which is used to complete the vault locking process.</p>
-     */
-    inline void SetLockId(const Aws::String& value) { m_lockId = value; }
-
-    /**
-     * <p>The lock ID, which is used to complete the vault locking process.</p>
-     */
-    inline void SetLockId(Aws::String&& value) { m_lockId = std::move(value); }
-
-    /**
-     * <p>The lock ID, which is used to complete the vault locking process.</p>
-     */
-    inline void SetLockId(const char* value) { m_lockId.assign(value); }
-
-    /**
-     * <p>The lock ID, which is used to complete the vault locking process.</p>
-     */
-    inline InitiateVaultLockResult& WithLockId(const Aws::String& value) { SetLockId(value); return *this;}
-
-    /**
-     * <p>The lock ID, which is used to complete the vault locking process.</p>
-     */
-    inline InitiateVaultLockResult& WithLockId(Aws::String&& value) { SetLockId(std::move(value)); return *this;}
-
-    /**
-     * <p>The lock ID, which is used to complete the vault locking process.</p>
-     */
-    inline InitiateVaultLockResult& WithLockId(const char* value) { SetLockId(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline InitiateVaultLockResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline InitiateVaultLockResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline InitiateVaultLockResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    InitiateVaultLockResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_lockId;
+    bool m_lockIdHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -18,15 +18,7 @@ namespace SecurityLake
 namespace Model
 {
 
-DataLakeLifecycleExpiration::DataLakeLifecycleExpiration() : 
-    m_days(0),
-    m_daysHasBeenSet(false)
-{
-}
-
-DataLakeLifecycleExpiration::DataLakeLifecycleExpiration(JsonView jsonValue) : 
-    m_days(0),
-    m_daysHasBeenSet(false)
+DataLakeLifecycleExpiration::DataLakeLifecycleExpiration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ DataLakeLifecycleExpiration& DataLakeLifecycleExpiration::operator =(JsonView js
   if(jsonValue.ValueExists("days"))
   {
     m_days = jsonValue.GetInteger("days");
-
     m_daysHasBeenSet = true;
   }
-
   return *this;
 }
 

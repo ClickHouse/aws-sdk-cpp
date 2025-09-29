@@ -21,7 +21,7 @@ namespace Model
   class PutLoggingOptionsRequest : public IoTSiteWiseRequest
   {
   public:
-    AWS_IOTSITEWISE_API PutLoggingOptionsRequest();
+    AWS_IOTSITEWISE_API PutLoggingOptionsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,36 +32,17 @@ namespace Model
     AWS_IOTSITEWISE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The logging options to set.</p>
      */
-    inline const LoggingOptions& GetLoggingOptions() const{ return m_loggingOptions; }
-
-    /**
-     * <p>The logging options to set.</p>
-     */
+    inline const LoggingOptions& GetLoggingOptions() const { return m_loggingOptions; }
     inline bool LoggingOptionsHasBeenSet() const { return m_loggingOptionsHasBeenSet; }
-
-    /**
-     * <p>The logging options to set.</p>
-     */
-    inline void SetLoggingOptions(const LoggingOptions& value) { m_loggingOptionsHasBeenSet = true; m_loggingOptions = value; }
-
-    /**
-     * <p>The logging options to set.</p>
-     */
-    inline void SetLoggingOptions(LoggingOptions&& value) { m_loggingOptionsHasBeenSet = true; m_loggingOptions = std::move(value); }
-
-    /**
-     * <p>The logging options to set.</p>
-     */
-    inline PutLoggingOptionsRequest& WithLoggingOptions(const LoggingOptions& value) { SetLoggingOptions(value); return *this;}
-
-    /**
-     * <p>The logging options to set.</p>
-     */
-    inline PutLoggingOptionsRequest& WithLoggingOptions(LoggingOptions&& value) { SetLoggingOptions(std::move(value)); return *this;}
-
+    template<typename LoggingOptionsT = LoggingOptions>
+    void SetLoggingOptions(LoggingOptionsT&& value) { m_loggingOptionsHasBeenSet = true; m_loggingOptions = std::forward<LoggingOptionsT>(value); }
+    template<typename LoggingOptionsT = LoggingOptions>
+    PutLoggingOptionsRequest& WithLoggingOptions(LoggingOptionsT&& value) { SetLoggingOptions(std::forward<LoggingOptionsT>(value)); return *this;}
+    ///@}
   private:
 
     LoggingOptions m_loggingOptions;

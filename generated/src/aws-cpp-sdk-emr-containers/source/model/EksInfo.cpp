@@ -18,13 +18,7 @@ namespace EMRContainers
 namespace Model
 {
 
-EksInfo::EksInfo() : 
-    m_namespaceHasBeenSet(false)
-{
-}
-
-EksInfo::EksInfo(JsonView jsonValue) : 
-    m_namespaceHasBeenSet(false)
+EksInfo::EksInfo(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,13 @@ EksInfo& EksInfo::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("namespace"))
   {
     m_namespace = jsonValue.GetString("namespace");
-
     m_namespaceHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("nodeLabel"))
+  {
+    m_nodeLabel = jsonValue.GetString("nodeLabel");
+    m_nodeLabelHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -48,6 +45,12 @@ JsonValue EksInfo::Jsonize() const
   if(m_namespaceHasBeenSet)
   {
    payload.WithString("namespace", m_namespace);
+
+  }
+
+  if(m_nodeLabelHasBeenSet)
+  {
+   payload.WithString("nodeLabel", m_nodeLabel);
 
   }
 

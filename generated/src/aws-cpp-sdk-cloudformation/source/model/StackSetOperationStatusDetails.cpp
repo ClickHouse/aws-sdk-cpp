@@ -20,15 +20,7 @@ namespace CloudFormation
 namespace Model
 {
 
-StackSetOperationStatusDetails::StackSetOperationStatusDetails() : 
-    m_failedStackInstancesCount(0),
-    m_failedStackInstancesCountHasBeenSet(false)
-{
-}
-
-StackSetOperationStatusDetails::StackSetOperationStatusDetails(const XmlNode& xmlNode) : 
-    m_failedStackInstancesCount(0),
-    m_failedStackInstancesCountHasBeenSet(false)
+StackSetOperationStatusDetails::StackSetOperationStatusDetails(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

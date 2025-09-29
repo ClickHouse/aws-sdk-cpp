@@ -34,109 +34,41 @@ namespace Model
   class FunnelChartAggregatedFieldWells
   {
   public:
-    AWS_QUICKSIGHT_API FunnelChartAggregatedFieldWells();
+    AWS_QUICKSIGHT_API FunnelChartAggregatedFieldWells() = default;
     AWS_QUICKSIGHT_API FunnelChartAggregatedFieldWells(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API FunnelChartAggregatedFieldWells& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The category field wells of a funnel chart. Values are grouped by category
      * fields.</p>
      */
-    inline const Aws::Vector<DimensionField>& GetCategory() const{ return m_category; }
-
-    /**
-     * <p>The category field wells of a funnel chart. Values are grouped by category
-     * fields.</p>
-     */
+    inline const Aws::Vector<DimensionField>& GetCategory() const { return m_category; }
     inline bool CategoryHasBeenSet() const { return m_categoryHasBeenSet; }
+    template<typename CategoryT = Aws::Vector<DimensionField>>
+    void SetCategory(CategoryT&& value) { m_categoryHasBeenSet = true; m_category = std::forward<CategoryT>(value); }
+    template<typename CategoryT = Aws::Vector<DimensionField>>
+    FunnelChartAggregatedFieldWells& WithCategory(CategoryT&& value) { SetCategory(std::forward<CategoryT>(value)); return *this;}
+    template<typename CategoryT = DimensionField>
+    FunnelChartAggregatedFieldWells& AddCategory(CategoryT&& value) { m_categoryHasBeenSet = true; m_category.emplace_back(std::forward<CategoryT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The category field wells of a funnel chart. Values are grouped by category
-     * fields.</p>
-     */
-    inline void SetCategory(const Aws::Vector<DimensionField>& value) { m_categoryHasBeenSet = true; m_category = value; }
-
-    /**
-     * <p>The category field wells of a funnel chart. Values are grouped by category
-     * fields.</p>
-     */
-    inline void SetCategory(Aws::Vector<DimensionField>&& value) { m_categoryHasBeenSet = true; m_category = std::move(value); }
-
-    /**
-     * <p>The category field wells of a funnel chart. Values are grouped by category
-     * fields.</p>
-     */
-    inline FunnelChartAggregatedFieldWells& WithCategory(const Aws::Vector<DimensionField>& value) { SetCategory(value); return *this;}
-
-    /**
-     * <p>The category field wells of a funnel chart. Values are grouped by category
-     * fields.</p>
-     */
-    inline FunnelChartAggregatedFieldWells& WithCategory(Aws::Vector<DimensionField>&& value) { SetCategory(std::move(value)); return *this;}
-
-    /**
-     * <p>The category field wells of a funnel chart. Values are grouped by category
-     * fields.</p>
-     */
-    inline FunnelChartAggregatedFieldWells& AddCategory(const DimensionField& value) { m_categoryHasBeenSet = true; m_category.push_back(value); return *this; }
-
-    /**
-     * <p>The category field wells of a funnel chart. Values are grouped by category
-     * fields.</p>
-     */
-    inline FunnelChartAggregatedFieldWells& AddCategory(DimensionField&& value) { m_categoryHasBeenSet = true; m_category.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The value field wells of a funnel chart. Values are aggregated based on
      * categories.</p>
      */
-    inline const Aws::Vector<MeasureField>& GetValues() const{ return m_values; }
-
-    /**
-     * <p>The value field wells of a funnel chart. Values are aggregated based on
-     * categories.</p>
-     */
+    inline const Aws::Vector<MeasureField>& GetValues() const { return m_values; }
     inline bool ValuesHasBeenSet() const { return m_valuesHasBeenSet; }
-
-    /**
-     * <p>The value field wells of a funnel chart. Values are aggregated based on
-     * categories.</p>
-     */
-    inline void SetValues(const Aws::Vector<MeasureField>& value) { m_valuesHasBeenSet = true; m_values = value; }
-
-    /**
-     * <p>The value field wells of a funnel chart. Values are aggregated based on
-     * categories.</p>
-     */
-    inline void SetValues(Aws::Vector<MeasureField>&& value) { m_valuesHasBeenSet = true; m_values = std::move(value); }
-
-    /**
-     * <p>The value field wells of a funnel chart. Values are aggregated based on
-     * categories.</p>
-     */
-    inline FunnelChartAggregatedFieldWells& WithValues(const Aws::Vector<MeasureField>& value) { SetValues(value); return *this;}
-
-    /**
-     * <p>The value field wells of a funnel chart. Values are aggregated based on
-     * categories.</p>
-     */
-    inline FunnelChartAggregatedFieldWells& WithValues(Aws::Vector<MeasureField>&& value) { SetValues(std::move(value)); return *this;}
-
-    /**
-     * <p>The value field wells of a funnel chart. Values are aggregated based on
-     * categories.</p>
-     */
-    inline FunnelChartAggregatedFieldWells& AddValues(const MeasureField& value) { m_valuesHasBeenSet = true; m_values.push_back(value); return *this; }
-
-    /**
-     * <p>The value field wells of a funnel chart. Values are aggregated based on
-     * categories.</p>
-     */
-    inline FunnelChartAggregatedFieldWells& AddValues(MeasureField&& value) { m_valuesHasBeenSet = true; m_values.push_back(std::move(value)); return *this; }
-
+    template<typename ValuesT = Aws::Vector<MeasureField>>
+    void SetValues(ValuesT&& value) { m_valuesHasBeenSet = true; m_values = std::forward<ValuesT>(value); }
+    template<typename ValuesT = Aws::Vector<MeasureField>>
+    FunnelChartAggregatedFieldWells& WithValues(ValuesT&& value) { SetValues(std::forward<ValuesT>(value)); return *this;}
+    template<typename ValuesT = MeasureField>
+    FunnelChartAggregatedFieldWells& AddValues(ValuesT&& value) { m_valuesHasBeenSet = true; m_values.emplace_back(std::forward<ValuesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<DimensionField> m_category;

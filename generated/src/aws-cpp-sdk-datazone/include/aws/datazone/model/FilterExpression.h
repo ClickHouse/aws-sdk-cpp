@@ -32,89 +32,39 @@ namespace Model
   class FilterExpression
   {
   public:
-    AWS_DATAZONE_API FilterExpression();
+    AWS_DATAZONE_API FilterExpression() = default;
     AWS_DATAZONE_API FilterExpression(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAZONE_API FilterExpression& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAZONE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The search filter expression.</p>
      */
-    inline const Aws::String& GetExpression() const{ return m_expression; }
-
-    /**
-     * <p>The search filter expression.</p>
-     */
+    inline const Aws::String& GetExpression() const { return m_expression; }
     inline bool ExpressionHasBeenSet() const { return m_expressionHasBeenSet; }
+    template<typename ExpressionT = Aws::String>
+    void SetExpression(ExpressionT&& value) { m_expressionHasBeenSet = true; m_expression = std::forward<ExpressionT>(value); }
+    template<typename ExpressionT = Aws::String>
+    FilterExpression& WithExpression(ExpressionT&& value) { SetExpression(std::forward<ExpressionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The search filter expression.</p>
-     */
-    inline void SetExpression(const Aws::String& value) { m_expressionHasBeenSet = true; m_expression = value; }
-
-    /**
-     * <p>The search filter expression.</p>
-     */
-    inline void SetExpression(Aws::String&& value) { m_expressionHasBeenSet = true; m_expression = std::move(value); }
-
-    /**
-     * <p>The search filter expression.</p>
-     */
-    inline void SetExpression(const char* value) { m_expressionHasBeenSet = true; m_expression.assign(value); }
-
-    /**
-     * <p>The search filter expression.</p>
-     */
-    inline FilterExpression& WithExpression(const Aws::String& value) { SetExpression(value); return *this;}
-
-    /**
-     * <p>The search filter expression.</p>
-     */
-    inline FilterExpression& WithExpression(Aws::String&& value) { SetExpression(std::move(value)); return *this;}
-
-    /**
-     * <p>The search filter expression.</p>
-     */
-    inline FilterExpression& WithExpression(const char* value) { SetExpression(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The search filter explresison type.</p>
      */
-    inline const FilterExpressionType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The search filter explresison type.</p>
-     */
+    inline FilterExpressionType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
-
-    /**
-     * <p>The search filter explresison type.</p>
-     */
-    inline void SetType(const FilterExpressionType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The search filter explresison type.</p>
-     */
-    inline void SetType(FilterExpressionType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The search filter explresison type.</p>
-     */
-    inline FilterExpression& WithType(const FilterExpressionType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The search filter explresison type.</p>
-     */
-    inline FilterExpression& WithType(FilterExpressionType&& value) { SetType(std::move(value)); return *this;}
-
+    inline void SetType(FilterExpressionType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline FilterExpression& WithType(FilterExpressionType value) { SetType(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_expression;
     bool m_expressionHasBeenSet = false;
 
-    FilterExpressionType m_type;
+    FilterExpressionType m_type{FilterExpressionType::NOT_SET};
     bool m_typeHasBeenSet = false;
   };
 

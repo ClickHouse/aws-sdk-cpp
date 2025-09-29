@@ -25,7 +25,7 @@ namespace Model
   class GetCognitoEventsRequest : public CognitoSyncRequest
   {
   public:
-    AWS_COGNITOSYNC_API GetCognitoEventsRequest();
+    AWS_COGNITOSYNC_API GetCognitoEventsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,46 +36,17 @@ namespace Model
     AWS_COGNITOSYNC_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The Cognito Identity Pool ID for the request</p>
      */
-    inline const Aws::String& GetIdentityPoolId() const{ return m_identityPoolId; }
-
-    /**
-     * <p>The Cognito Identity Pool ID for the request</p>
-     */
+    inline const Aws::String& GetIdentityPoolId() const { return m_identityPoolId; }
     inline bool IdentityPoolIdHasBeenSet() const { return m_identityPoolIdHasBeenSet; }
-
-    /**
-     * <p>The Cognito Identity Pool ID for the request</p>
-     */
-    inline void SetIdentityPoolId(const Aws::String& value) { m_identityPoolIdHasBeenSet = true; m_identityPoolId = value; }
-
-    /**
-     * <p>The Cognito Identity Pool ID for the request</p>
-     */
-    inline void SetIdentityPoolId(Aws::String&& value) { m_identityPoolIdHasBeenSet = true; m_identityPoolId = std::move(value); }
-
-    /**
-     * <p>The Cognito Identity Pool ID for the request</p>
-     */
-    inline void SetIdentityPoolId(const char* value) { m_identityPoolIdHasBeenSet = true; m_identityPoolId.assign(value); }
-
-    /**
-     * <p>The Cognito Identity Pool ID for the request</p>
-     */
-    inline GetCognitoEventsRequest& WithIdentityPoolId(const Aws::String& value) { SetIdentityPoolId(value); return *this;}
-
-    /**
-     * <p>The Cognito Identity Pool ID for the request</p>
-     */
-    inline GetCognitoEventsRequest& WithIdentityPoolId(Aws::String&& value) { SetIdentityPoolId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Cognito Identity Pool ID for the request</p>
-     */
-    inline GetCognitoEventsRequest& WithIdentityPoolId(const char* value) { SetIdentityPoolId(value); return *this;}
-
+    template<typename IdentityPoolIdT = Aws::String>
+    void SetIdentityPoolId(IdentityPoolIdT&& value) { m_identityPoolIdHasBeenSet = true; m_identityPoolId = std::forward<IdentityPoolIdT>(value); }
+    template<typename IdentityPoolIdT = Aws::String>
+    GetCognitoEventsRequest& WithIdentityPoolId(IdentityPoolIdT&& value) { SetIdentityPoolId(std::forward<IdentityPoolIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_identityPoolId;

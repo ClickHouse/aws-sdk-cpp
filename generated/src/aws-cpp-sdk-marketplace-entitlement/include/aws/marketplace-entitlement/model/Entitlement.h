@@ -36,212 +36,80 @@ namespace Model
   class Entitlement
   {
   public:
-    AWS_MARKETPLACEENTITLEMENTSERVICE_API Entitlement();
+    AWS_MARKETPLACEENTITLEMENTSERVICE_API Entitlement() = default;
     AWS_MARKETPLACEENTITLEMENTSERVICE_API Entitlement(Aws::Utils::Json::JsonView jsonValue);
     AWS_MARKETPLACEENTITLEMENTSERVICE_API Entitlement& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MARKETPLACEENTITLEMENTSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The product code for which the given entitlement applies. Product codes are
      * provided by AWS Marketplace when the product listing is created.</p>
      */
-    inline const Aws::String& GetProductCode() const{ return m_productCode; }
-
-    /**
-     * <p>The product code for which the given entitlement applies. Product codes are
-     * provided by AWS Marketplace when the product listing is created.</p>
-     */
+    inline const Aws::String& GetProductCode() const { return m_productCode; }
     inline bool ProductCodeHasBeenSet() const { return m_productCodeHasBeenSet; }
+    template<typename ProductCodeT = Aws::String>
+    void SetProductCode(ProductCodeT&& value) { m_productCodeHasBeenSet = true; m_productCode = std::forward<ProductCodeT>(value); }
+    template<typename ProductCodeT = Aws::String>
+    Entitlement& WithProductCode(ProductCodeT&& value) { SetProductCode(std::forward<ProductCodeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The product code for which the given entitlement applies. Product codes are
-     * provided by AWS Marketplace when the product listing is created.</p>
-     */
-    inline void SetProductCode(const Aws::String& value) { m_productCodeHasBeenSet = true; m_productCode = value; }
-
-    /**
-     * <p>The product code for which the given entitlement applies. Product codes are
-     * provided by AWS Marketplace when the product listing is created.</p>
-     */
-    inline void SetProductCode(Aws::String&& value) { m_productCodeHasBeenSet = true; m_productCode = std::move(value); }
-
-    /**
-     * <p>The product code for which the given entitlement applies. Product codes are
-     * provided by AWS Marketplace when the product listing is created.</p>
-     */
-    inline void SetProductCode(const char* value) { m_productCodeHasBeenSet = true; m_productCode.assign(value); }
-
-    /**
-     * <p>The product code for which the given entitlement applies. Product codes are
-     * provided by AWS Marketplace when the product listing is created.</p>
-     */
-    inline Entitlement& WithProductCode(const Aws::String& value) { SetProductCode(value); return *this;}
-
-    /**
-     * <p>The product code for which the given entitlement applies. Product codes are
-     * provided by AWS Marketplace when the product listing is created.</p>
-     */
-    inline Entitlement& WithProductCode(Aws::String&& value) { SetProductCode(std::move(value)); return *this;}
-
-    /**
-     * <p>The product code for which the given entitlement applies. Product codes are
-     * provided by AWS Marketplace when the product listing is created.</p>
-     */
-    inline Entitlement& WithProductCode(const char* value) { SetProductCode(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The dimension for which the given entitlement applies. Dimensions represent
      * categories of capacity in a product and are specified when the product is listed
      * in AWS Marketplace.</p>
      */
-    inline const Aws::String& GetDimension() const{ return m_dimension; }
-
-    /**
-     * <p>The dimension for which the given entitlement applies. Dimensions represent
-     * categories of capacity in a product and are specified when the product is listed
-     * in AWS Marketplace.</p>
-     */
+    inline const Aws::String& GetDimension() const { return m_dimension; }
     inline bool DimensionHasBeenSet() const { return m_dimensionHasBeenSet; }
+    template<typename DimensionT = Aws::String>
+    void SetDimension(DimensionT&& value) { m_dimensionHasBeenSet = true; m_dimension = std::forward<DimensionT>(value); }
+    template<typename DimensionT = Aws::String>
+    Entitlement& WithDimension(DimensionT&& value) { SetDimension(std::forward<DimensionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The dimension for which the given entitlement applies. Dimensions represent
-     * categories of capacity in a product and are specified when the product is listed
-     * in AWS Marketplace.</p>
-     */
-    inline void SetDimension(const Aws::String& value) { m_dimensionHasBeenSet = true; m_dimension = value; }
-
-    /**
-     * <p>The dimension for which the given entitlement applies. Dimensions represent
-     * categories of capacity in a product and are specified when the product is listed
-     * in AWS Marketplace.</p>
-     */
-    inline void SetDimension(Aws::String&& value) { m_dimensionHasBeenSet = true; m_dimension = std::move(value); }
-
-    /**
-     * <p>The dimension for which the given entitlement applies. Dimensions represent
-     * categories of capacity in a product and are specified when the product is listed
-     * in AWS Marketplace.</p>
-     */
-    inline void SetDimension(const char* value) { m_dimensionHasBeenSet = true; m_dimension.assign(value); }
-
-    /**
-     * <p>The dimension for which the given entitlement applies. Dimensions represent
-     * categories of capacity in a product and are specified when the product is listed
-     * in AWS Marketplace.</p>
-     */
-    inline Entitlement& WithDimension(const Aws::String& value) { SetDimension(value); return *this;}
-
-    /**
-     * <p>The dimension for which the given entitlement applies. Dimensions represent
-     * categories of capacity in a product and are specified when the product is listed
-     * in AWS Marketplace.</p>
-     */
-    inline Entitlement& WithDimension(Aws::String&& value) { SetDimension(std::move(value)); return *this;}
-
-    /**
-     * <p>The dimension for which the given entitlement applies. Dimensions represent
-     * categories of capacity in a product and are specified when the product is listed
-     * in AWS Marketplace.</p>
-     */
-    inline Entitlement& WithDimension(const char* value) { SetDimension(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The customer identifier is a handle to each unique customer in an
      * application. Customer identifiers are obtained through the ResolveCustomer
      * operation in AWS Marketplace Metering Service.</p>
      */
-    inline const Aws::String& GetCustomerIdentifier() const{ return m_customerIdentifier; }
-
-    /**
-     * <p>The customer identifier is a handle to each unique customer in an
-     * application. Customer identifiers are obtained through the ResolveCustomer
-     * operation in AWS Marketplace Metering Service.</p>
-     */
+    inline const Aws::String& GetCustomerIdentifier() const { return m_customerIdentifier; }
     inline bool CustomerIdentifierHasBeenSet() const { return m_customerIdentifierHasBeenSet; }
+    template<typename CustomerIdentifierT = Aws::String>
+    void SetCustomerIdentifier(CustomerIdentifierT&& value) { m_customerIdentifierHasBeenSet = true; m_customerIdentifier = std::forward<CustomerIdentifierT>(value); }
+    template<typename CustomerIdentifierT = Aws::String>
+    Entitlement& WithCustomerIdentifier(CustomerIdentifierT&& value) { SetCustomerIdentifier(std::forward<CustomerIdentifierT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The customer identifier is a handle to each unique customer in an
-     * application. Customer identifiers are obtained through the ResolveCustomer
-     * operation in AWS Marketplace Metering Service.</p>
+     * <p> The <code>CustomerAWSAccountID</code> parameter specifies the AWS account ID
+     * of the buyer. </p>
      */
-    inline void SetCustomerIdentifier(const Aws::String& value) { m_customerIdentifierHasBeenSet = true; m_customerIdentifier = value; }
+    inline const Aws::String& GetCustomerAWSAccountId() const { return m_customerAWSAccountId; }
+    inline bool CustomerAWSAccountIdHasBeenSet() const { return m_customerAWSAccountIdHasBeenSet; }
+    template<typename CustomerAWSAccountIdT = Aws::String>
+    void SetCustomerAWSAccountId(CustomerAWSAccountIdT&& value) { m_customerAWSAccountIdHasBeenSet = true; m_customerAWSAccountId = std::forward<CustomerAWSAccountIdT>(value); }
+    template<typename CustomerAWSAccountIdT = Aws::String>
+    Entitlement& WithCustomerAWSAccountId(CustomerAWSAccountIdT&& value) { SetCustomerAWSAccountId(std::forward<CustomerAWSAccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The customer identifier is a handle to each unique customer in an
-     * application. Customer identifiers are obtained through the ResolveCustomer
-     * operation in AWS Marketplace Metering Service.</p>
-     */
-    inline void SetCustomerIdentifier(Aws::String&& value) { m_customerIdentifierHasBeenSet = true; m_customerIdentifier = std::move(value); }
-
-    /**
-     * <p>The customer identifier is a handle to each unique customer in an
-     * application. Customer identifiers are obtained through the ResolveCustomer
-     * operation in AWS Marketplace Metering Service.</p>
-     */
-    inline void SetCustomerIdentifier(const char* value) { m_customerIdentifierHasBeenSet = true; m_customerIdentifier.assign(value); }
-
-    /**
-     * <p>The customer identifier is a handle to each unique customer in an
-     * application. Customer identifiers are obtained through the ResolveCustomer
-     * operation in AWS Marketplace Metering Service.</p>
-     */
-    inline Entitlement& WithCustomerIdentifier(const Aws::String& value) { SetCustomerIdentifier(value); return *this;}
-
-    /**
-     * <p>The customer identifier is a handle to each unique customer in an
-     * application. Customer identifiers are obtained through the ResolveCustomer
-     * operation in AWS Marketplace Metering Service.</p>
-     */
-    inline Entitlement& WithCustomerIdentifier(Aws::String&& value) { SetCustomerIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The customer identifier is a handle to each unique customer in an
-     * application. Customer identifiers are obtained through the ResolveCustomer
-     * operation in AWS Marketplace Metering Service.</p>
-     */
-    inline Entitlement& WithCustomerIdentifier(const char* value) { SetCustomerIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The EntitlementValue represents the amount of capacity that the customer is
      * entitled to for the product.</p>
      */
-    inline const EntitlementValue& GetValue() const{ return m_value; }
-
-    /**
-     * <p>The EntitlementValue represents the amount of capacity that the customer is
-     * entitled to for the product.</p>
-     */
+    inline const EntitlementValue& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
+    template<typename ValueT = EntitlementValue>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = EntitlementValue>
+    Entitlement& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The EntitlementValue represents the amount of capacity that the customer is
-     * entitled to for the product.</p>
-     */
-    inline void SetValue(const EntitlementValue& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The EntitlementValue represents the amount of capacity that the customer is
-     * entitled to for the product.</p>
-     */
-    inline void SetValue(EntitlementValue&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>The EntitlementValue represents the amount of capacity that the customer is
-     * entitled to for the product.</p>
-     */
-    inline Entitlement& WithValue(const EntitlementValue& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>The EntitlementValue represents the amount of capacity that the customer is
-     * entitled to for the product.</p>
-     */
-    inline Entitlement& WithValue(EntitlementValue&& value) { SetValue(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The expiration date represents the minimum date through which this
      * entitlement is expected to remain valid. For contractual products listed on AWS
@@ -249,53 +117,13 @@ namespace Model
      * cancel their contract. Customers who are opting to renew their contract will
      * still have entitlements with an expiration date.</p>
      */
-    inline const Aws::Utils::DateTime& GetExpirationDate() const{ return m_expirationDate; }
-
-    /**
-     * <p>The expiration date represents the minimum date through which this
-     * entitlement is expected to remain valid. For contractual products listed on AWS
-     * Marketplace, the expiration date is the date at which the customer will renew or
-     * cancel their contract. Customers who are opting to renew their contract will
-     * still have entitlements with an expiration date.</p>
-     */
+    inline const Aws::Utils::DateTime& GetExpirationDate() const { return m_expirationDate; }
     inline bool ExpirationDateHasBeenSet() const { return m_expirationDateHasBeenSet; }
-
-    /**
-     * <p>The expiration date represents the minimum date through which this
-     * entitlement is expected to remain valid. For contractual products listed on AWS
-     * Marketplace, the expiration date is the date at which the customer will renew or
-     * cancel their contract. Customers who are opting to renew their contract will
-     * still have entitlements with an expiration date.</p>
-     */
-    inline void SetExpirationDate(const Aws::Utils::DateTime& value) { m_expirationDateHasBeenSet = true; m_expirationDate = value; }
-
-    /**
-     * <p>The expiration date represents the minimum date through which this
-     * entitlement is expected to remain valid. For contractual products listed on AWS
-     * Marketplace, the expiration date is the date at which the customer will renew or
-     * cancel their contract. Customers who are opting to renew their contract will
-     * still have entitlements with an expiration date.</p>
-     */
-    inline void SetExpirationDate(Aws::Utils::DateTime&& value) { m_expirationDateHasBeenSet = true; m_expirationDate = std::move(value); }
-
-    /**
-     * <p>The expiration date represents the minimum date through which this
-     * entitlement is expected to remain valid. For contractual products listed on AWS
-     * Marketplace, the expiration date is the date at which the customer will renew or
-     * cancel their contract. Customers who are opting to renew their contract will
-     * still have entitlements with an expiration date.</p>
-     */
-    inline Entitlement& WithExpirationDate(const Aws::Utils::DateTime& value) { SetExpirationDate(value); return *this;}
-
-    /**
-     * <p>The expiration date represents the minimum date through which this
-     * entitlement is expected to remain valid. For contractual products listed on AWS
-     * Marketplace, the expiration date is the date at which the customer will renew or
-     * cancel their contract. Customers who are opting to renew their contract will
-     * still have entitlements with an expiration date.</p>
-     */
-    inline Entitlement& WithExpirationDate(Aws::Utils::DateTime&& value) { SetExpirationDate(std::move(value)); return *this;}
-
+    template<typename ExpirationDateT = Aws::Utils::DateTime>
+    void SetExpirationDate(ExpirationDateT&& value) { m_expirationDateHasBeenSet = true; m_expirationDate = std::forward<ExpirationDateT>(value); }
+    template<typename ExpirationDateT = Aws::Utils::DateTime>
+    Entitlement& WithExpirationDate(ExpirationDateT&& value) { SetExpirationDate(std::forward<ExpirationDateT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_productCode;
@@ -307,10 +135,13 @@ namespace Model
     Aws::String m_customerIdentifier;
     bool m_customerIdentifierHasBeenSet = false;
 
+    Aws::String m_customerAWSAccountId;
+    bool m_customerAWSAccountIdHasBeenSet = false;
+
     EntitlementValue m_value;
     bool m_valueHasBeenSet = false;
 
-    Aws::Utils::DateTime m_expirationDate;
+    Aws::Utils::DateTime m_expirationDate{};
     bool m_expirationDateHasBeenSet = false;
   };
 

@@ -18,15 +18,7 @@ namespace SSMContacts
 namespace Model
 {
 
-Plan::Plan() : 
-    m_stagesHasBeenSet(false),
-    m_rotationIdsHasBeenSet(false)
-{
-}
-
-Plan::Plan(JsonView jsonValue) : 
-    m_stagesHasBeenSet(false),
-    m_rotationIdsHasBeenSet(false)
+Plan::Plan(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ Plan& Plan::operator =(JsonView jsonValue)
     }
     m_stagesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RotationIds"))
   {
     Aws::Utils::Array<JsonView> rotationIdsJsonList = jsonValue.GetArray("RotationIds");
@@ -52,7 +43,6 @@ Plan& Plan::operator =(JsonView jsonValue)
     }
     m_rotationIdsHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -29,136 +29,66 @@ namespace Model
   class ListAssetBundleExportJobsResult
   {
   public:
-    AWS_QUICKSIGHT_API ListAssetBundleExportJobsResult();
+    AWS_QUICKSIGHT_API ListAssetBundleExportJobsResult() = default;
     AWS_QUICKSIGHT_API ListAssetBundleExportJobsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_QUICKSIGHT_API ListAssetBundleExportJobsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>A list of export job summaries.</p>
      */
-    inline const Aws::Vector<AssetBundleExportJobSummary>& GetAssetBundleExportJobSummaryList() const{ return m_assetBundleExportJobSummaryList; }
+    inline const Aws::Vector<AssetBundleExportJobSummary>& GetAssetBundleExportJobSummaryList() const { return m_assetBundleExportJobSummaryList; }
+    template<typename AssetBundleExportJobSummaryListT = Aws::Vector<AssetBundleExportJobSummary>>
+    void SetAssetBundleExportJobSummaryList(AssetBundleExportJobSummaryListT&& value) { m_assetBundleExportJobSummaryListHasBeenSet = true; m_assetBundleExportJobSummaryList = std::forward<AssetBundleExportJobSummaryListT>(value); }
+    template<typename AssetBundleExportJobSummaryListT = Aws::Vector<AssetBundleExportJobSummary>>
+    ListAssetBundleExportJobsResult& WithAssetBundleExportJobSummaryList(AssetBundleExportJobSummaryListT&& value) { SetAssetBundleExportJobSummaryList(std::forward<AssetBundleExportJobSummaryListT>(value)); return *this;}
+    template<typename AssetBundleExportJobSummaryListT = AssetBundleExportJobSummary>
+    ListAssetBundleExportJobsResult& AddAssetBundleExportJobSummaryList(AssetBundleExportJobSummaryListT&& value) { m_assetBundleExportJobSummaryListHasBeenSet = true; m_assetBundleExportJobSummaryList.emplace_back(std::forward<AssetBundleExportJobSummaryListT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of export job summaries.</p>
-     */
-    inline void SetAssetBundleExportJobSummaryList(const Aws::Vector<AssetBundleExportJobSummary>& value) { m_assetBundleExportJobSummaryList = value; }
-
-    /**
-     * <p>A list of export job summaries.</p>
-     */
-    inline void SetAssetBundleExportJobSummaryList(Aws::Vector<AssetBundleExportJobSummary>&& value) { m_assetBundleExportJobSummaryList = std::move(value); }
-
-    /**
-     * <p>A list of export job summaries.</p>
-     */
-    inline ListAssetBundleExportJobsResult& WithAssetBundleExportJobSummaryList(const Aws::Vector<AssetBundleExportJobSummary>& value) { SetAssetBundleExportJobSummaryList(value); return *this;}
-
-    /**
-     * <p>A list of export job summaries.</p>
-     */
-    inline ListAssetBundleExportJobsResult& WithAssetBundleExportJobSummaryList(Aws::Vector<AssetBundleExportJobSummary>&& value) { SetAssetBundleExportJobSummaryList(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of export job summaries.</p>
-     */
-    inline ListAssetBundleExportJobsResult& AddAssetBundleExportJobSummaryList(const AssetBundleExportJobSummary& value) { m_assetBundleExportJobSummaryList.push_back(value); return *this; }
-
-    /**
-     * <p>A list of export job summaries.</p>
-     */
-    inline ListAssetBundleExportJobsResult& AddAssetBundleExportJobSummaryList(AssetBundleExportJobSummary&& value) { m_assetBundleExportJobSummaryList.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The token for the next set of results, or null if there are no more
      * results.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListAssetBundleExportJobsResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The token for the next set of results, or null if there are no more
-     * results.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>The token for the next set of results, or null if there are no more
-     * results.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>The token for the next set of results, or null if there are no more
-     * results.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>The token for the next set of results, or null if there are no more
-     * results.</p>
-     */
-    inline ListAssetBundleExportJobsResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The token for the next set of results, or null if there are no more
-     * results.</p>
-     */
-    inline ListAssetBundleExportJobsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The token for the next set of results, or null if there are no more
-     * results.</p>
-     */
-    inline ListAssetBundleExportJobsResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListAssetBundleExportJobsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListAssetBundleExportJobsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListAssetBundleExportJobsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListAssetBundleExportJobsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The HTTP status of the request.</p>
      */
-    inline int GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The HTTP status of the request.</p>
-     */
-    inline void SetStatus(int value) { m_status = value; }
-
-    /**
-     * <p>The HTTP status of the request.</p>
-     */
+    inline int GetStatus() const { return m_status; }
+    inline void SetStatus(int value) { m_statusHasBeenSet = true; m_status = value; }
     inline ListAssetBundleExportJobsResult& WithStatus(int value) { SetStatus(value); return *this;}
-
+    ///@}
   private:
 
     Aws::Vector<AssetBundleExportJobSummary> m_assetBundleExportJobSummaryList;
+    bool m_assetBundleExportJobSummaryListHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
 
-    int m_status;
+    int m_status{0};
+    bool m_statusHasBeenSet = false;
   };
 
 } // namespace Model

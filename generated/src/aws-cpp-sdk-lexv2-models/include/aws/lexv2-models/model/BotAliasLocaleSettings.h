@@ -33,70 +33,37 @@ namespace Model
   class BotAliasLocaleSettings
   {
   public:
-    AWS_LEXMODELSV2_API BotAliasLocaleSettings();
+    AWS_LEXMODELSV2_API BotAliasLocaleSettings() = default;
     AWS_LEXMODELSV2_API BotAliasLocaleSettings(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API BotAliasLocaleSettings& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Determines whether the locale is enabled for the bot. If the value is
      * <code>false</code>, the locale isn't available for use.</p>
      */
-    inline bool GetEnabled() const{ return m_enabled; }
-
-    /**
-     * <p>Determines whether the locale is enabled for the bot. If the value is
-     * <code>false</code>, the locale isn't available for use.</p>
-     */
+    inline bool GetEnabled() const { return m_enabled; }
     inline bool EnabledHasBeenSet() const { return m_enabledHasBeenSet; }
-
-    /**
-     * <p>Determines whether the locale is enabled for the bot. If the value is
-     * <code>false</code>, the locale isn't available for use.</p>
-     */
     inline void SetEnabled(bool value) { m_enabledHasBeenSet = true; m_enabled = value; }
-
-    /**
-     * <p>Determines whether the locale is enabled for the bot. If the value is
-     * <code>false</code>, the locale isn't available for use.</p>
-     */
     inline BotAliasLocaleSettings& WithEnabled(bool value) { SetEnabled(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Specifies the Lambda function that should be used in the locale.</p>
      */
-    inline const CodeHookSpecification& GetCodeHookSpecification() const{ return m_codeHookSpecification; }
-
-    /**
-     * <p>Specifies the Lambda function that should be used in the locale.</p>
-     */
+    inline const CodeHookSpecification& GetCodeHookSpecification() const { return m_codeHookSpecification; }
     inline bool CodeHookSpecificationHasBeenSet() const { return m_codeHookSpecificationHasBeenSet; }
-
-    /**
-     * <p>Specifies the Lambda function that should be used in the locale.</p>
-     */
-    inline void SetCodeHookSpecification(const CodeHookSpecification& value) { m_codeHookSpecificationHasBeenSet = true; m_codeHookSpecification = value; }
-
-    /**
-     * <p>Specifies the Lambda function that should be used in the locale.</p>
-     */
-    inline void SetCodeHookSpecification(CodeHookSpecification&& value) { m_codeHookSpecificationHasBeenSet = true; m_codeHookSpecification = std::move(value); }
-
-    /**
-     * <p>Specifies the Lambda function that should be used in the locale.</p>
-     */
-    inline BotAliasLocaleSettings& WithCodeHookSpecification(const CodeHookSpecification& value) { SetCodeHookSpecification(value); return *this;}
-
-    /**
-     * <p>Specifies the Lambda function that should be used in the locale.</p>
-     */
-    inline BotAliasLocaleSettings& WithCodeHookSpecification(CodeHookSpecification&& value) { SetCodeHookSpecification(std::move(value)); return *this;}
-
+    template<typename CodeHookSpecificationT = CodeHookSpecification>
+    void SetCodeHookSpecification(CodeHookSpecificationT&& value) { m_codeHookSpecificationHasBeenSet = true; m_codeHookSpecification = std::forward<CodeHookSpecificationT>(value); }
+    template<typename CodeHookSpecificationT = CodeHookSpecification>
+    BotAliasLocaleSettings& WithCodeHookSpecification(CodeHookSpecificationT&& value) { SetCodeHookSpecification(std::forward<CodeHookSpecificationT>(value)); return *this;}
+    ///@}
   private:
 
-    bool m_enabled;
+    bool m_enabled{false};
     bool m_enabledHasBeenSet = false;
 
     CodeHookSpecification m_codeHookSpecification;

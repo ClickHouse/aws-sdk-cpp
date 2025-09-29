@@ -18,19 +18,7 @@ namespace DynamoDB
 namespace Model
 {
 
-ContributorInsightsSummary::ContributorInsightsSummary() : 
-    m_tableNameHasBeenSet(false),
-    m_indexNameHasBeenSet(false),
-    m_contributorInsightsStatus(ContributorInsightsStatus::NOT_SET),
-    m_contributorInsightsStatusHasBeenSet(false)
-{
-}
-
-ContributorInsightsSummary::ContributorInsightsSummary(JsonView jsonValue) : 
-    m_tableNameHasBeenSet(false),
-    m_indexNameHasBeenSet(false),
-    m_contributorInsightsStatus(ContributorInsightsStatus::NOT_SET),
-    m_contributorInsightsStatusHasBeenSet(false)
+ContributorInsightsSummary::ContributorInsightsSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,23 @@ ContributorInsightsSummary& ContributorInsightsSummary::operator =(JsonView json
   if(jsonValue.ValueExists("TableName"))
   {
     m_tableName = jsonValue.GetString("TableName");
-
     m_tableNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("IndexName"))
   {
     m_indexName = jsonValue.GetString("IndexName");
-
     m_indexNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ContributorInsightsStatus"))
   {
     m_contributorInsightsStatus = ContributorInsightsStatusMapper::GetContributorInsightsStatusForName(jsonValue.GetString("ContributorInsightsStatus"));
-
     m_contributorInsightsStatusHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("ContributorInsightsMode"))
+  {
+    m_contributorInsightsMode = ContributorInsightsModeMapper::GetContributorInsightsModeForName(jsonValue.GetString("ContributorInsightsMode"));
+    m_contributorInsightsModeHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -80,6 +67,11 @@ JsonValue ContributorInsightsSummary::Jsonize() const
   if(m_contributorInsightsStatusHasBeenSet)
   {
    payload.WithString("ContributorInsightsStatus", ContributorInsightsStatusMapper::GetNameForContributorInsightsStatus(m_contributorInsightsStatus));
+  }
+
+  if(m_contributorInsightsModeHasBeenSet)
+  {
+   payload.WithString("ContributorInsightsMode", ContributorInsightsModeMapper::GetNameForContributorInsightsMode(m_contributorInsightsMode));
   }
 
   return payload;

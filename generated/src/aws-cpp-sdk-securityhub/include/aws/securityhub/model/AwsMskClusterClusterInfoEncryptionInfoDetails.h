@@ -34,79 +34,36 @@ namespace Model
   class AwsMskClusterClusterInfoEncryptionInfoDetails
   {
   public:
-    AWS_SECURITYHUB_API AwsMskClusterClusterInfoEncryptionInfoDetails();
+    AWS_SECURITYHUB_API AwsMskClusterClusterInfoEncryptionInfoDetails() = default;
     AWS_SECURITYHUB_API AwsMskClusterClusterInfoEncryptionInfoDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsMskClusterClusterInfoEncryptionInfoDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The settings for encrypting data in transit.</p>
      */
-    inline const AwsMskClusterClusterInfoEncryptionInfoEncryptionInTransitDetails& GetEncryptionInTransit() const{ return m_encryptionInTransit; }
-
-    /**
-     * <p> The settings for encrypting data in transit.</p>
-     */
+    inline const AwsMskClusterClusterInfoEncryptionInfoEncryptionInTransitDetails& GetEncryptionInTransit() const { return m_encryptionInTransit; }
     inline bool EncryptionInTransitHasBeenSet() const { return m_encryptionInTransitHasBeenSet; }
+    template<typename EncryptionInTransitT = AwsMskClusterClusterInfoEncryptionInfoEncryptionInTransitDetails>
+    void SetEncryptionInTransit(EncryptionInTransitT&& value) { m_encryptionInTransitHasBeenSet = true; m_encryptionInTransit = std::forward<EncryptionInTransitT>(value); }
+    template<typename EncryptionInTransitT = AwsMskClusterClusterInfoEncryptionInfoEncryptionInTransitDetails>
+    AwsMskClusterClusterInfoEncryptionInfoDetails& WithEncryptionInTransit(EncryptionInTransitT&& value) { SetEncryptionInTransit(std::forward<EncryptionInTransitT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The settings for encrypting data in transit.</p>
-     */
-    inline void SetEncryptionInTransit(const AwsMskClusterClusterInfoEncryptionInfoEncryptionInTransitDetails& value) { m_encryptionInTransitHasBeenSet = true; m_encryptionInTransit = value; }
-
-    /**
-     * <p> The settings for encrypting data in transit.</p>
-     */
-    inline void SetEncryptionInTransit(AwsMskClusterClusterInfoEncryptionInfoEncryptionInTransitDetails&& value) { m_encryptionInTransitHasBeenSet = true; m_encryptionInTransit = std::move(value); }
-
-    /**
-     * <p> The settings for encrypting data in transit.</p>
-     */
-    inline AwsMskClusterClusterInfoEncryptionInfoDetails& WithEncryptionInTransit(const AwsMskClusterClusterInfoEncryptionInfoEncryptionInTransitDetails& value) { SetEncryptionInTransit(value); return *this;}
-
-    /**
-     * <p> The settings for encrypting data in transit.</p>
-     */
-    inline AwsMskClusterClusterInfoEncryptionInfoDetails& WithEncryptionInTransit(AwsMskClusterClusterInfoEncryptionInfoEncryptionInTransitDetails&& value) { SetEncryptionInTransit(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> The data-volume encryption details. You can't update encryption at rest
      * settings for existing clusters.</p>
      */
-    inline const AwsMskClusterClusterInfoEncryptionInfoEncryptionAtRestDetails& GetEncryptionAtRest() const{ return m_encryptionAtRest; }
-
-    /**
-     * <p> The data-volume encryption details. You can't update encryption at rest
-     * settings for existing clusters.</p>
-     */
+    inline const AwsMskClusterClusterInfoEncryptionInfoEncryptionAtRestDetails& GetEncryptionAtRest() const { return m_encryptionAtRest; }
     inline bool EncryptionAtRestHasBeenSet() const { return m_encryptionAtRestHasBeenSet; }
-
-    /**
-     * <p> The data-volume encryption details. You can't update encryption at rest
-     * settings for existing clusters.</p>
-     */
-    inline void SetEncryptionAtRest(const AwsMskClusterClusterInfoEncryptionInfoEncryptionAtRestDetails& value) { m_encryptionAtRestHasBeenSet = true; m_encryptionAtRest = value; }
-
-    /**
-     * <p> The data-volume encryption details. You can't update encryption at rest
-     * settings for existing clusters.</p>
-     */
-    inline void SetEncryptionAtRest(AwsMskClusterClusterInfoEncryptionInfoEncryptionAtRestDetails&& value) { m_encryptionAtRestHasBeenSet = true; m_encryptionAtRest = std::move(value); }
-
-    /**
-     * <p> The data-volume encryption details. You can't update encryption at rest
-     * settings for existing clusters.</p>
-     */
-    inline AwsMskClusterClusterInfoEncryptionInfoDetails& WithEncryptionAtRest(const AwsMskClusterClusterInfoEncryptionInfoEncryptionAtRestDetails& value) { SetEncryptionAtRest(value); return *this;}
-
-    /**
-     * <p> The data-volume encryption details. You can't update encryption at rest
-     * settings for existing clusters.</p>
-     */
-    inline AwsMskClusterClusterInfoEncryptionInfoDetails& WithEncryptionAtRest(AwsMskClusterClusterInfoEncryptionInfoEncryptionAtRestDetails&& value) { SetEncryptionAtRest(std::move(value)); return *this;}
-
+    template<typename EncryptionAtRestT = AwsMskClusterClusterInfoEncryptionInfoEncryptionAtRestDetails>
+    void SetEncryptionAtRest(EncryptionAtRestT&& value) { m_encryptionAtRestHasBeenSet = true; m_encryptionAtRest = std::forward<EncryptionAtRestT>(value); }
+    template<typename EncryptionAtRestT = AwsMskClusterClusterInfoEncryptionInfoEncryptionAtRestDetails>
+    AwsMskClusterClusterInfoEncryptionInfoDetails& WithEncryptionAtRest(EncryptionAtRestT&& value) { SetEncryptionAtRest(std::forward<EncryptionAtRestT>(value)); return *this;}
+    ///@}
   private:
 
     AwsMskClusterClusterInfoEncryptionInfoEncryptionInTransitDetails m_encryptionInTransit;

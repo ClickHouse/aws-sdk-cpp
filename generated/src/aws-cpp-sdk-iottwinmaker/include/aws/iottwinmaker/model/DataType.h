@@ -36,189 +36,79 @@ namespace Model
   class DataType
   {
   public:
-    AWS_IOTTWINMAKER_API DataType();
+    AWS_IOTTWINMAKER_API DataType() = default;
     AWS_IOTTWINMAKER_API DataType(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTTWINMAKER_API DataType& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTTWINMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The underlying type of the data type.</p>
      */
-    inline const Type& GetType() const{ return m_type; }
-
-    /**
-     * <p>The underlying type of the data type.</p>
-     */
+    inline Type GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    inline void SetType(Type value) { m_typeHasBeenSet = true; m_type = value; }
+    inline DataType& WithType(Type value) { SetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The underlying type of the data type.</p>
-     */
-    inline void SetType(const Type& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The underlying type of the data type.</p>
-     */
-    inline void SetType(Type&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The underlying type of the data type.</p>
-     */
-    inline DataType& WithType(const Type& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The underlying type of the data type.</p>
-     */
-    inline DataType& WithType(Type&& value) { SetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The nested type in the data type.</p>
      */
-    AWS_IOTTWINMAKER_API const DataType& GetNestedType() const;
+    inline const DataType& GetNestedType() const{
+      return *m_nestedType;
+    }
+    inline bool NestedTypeHasBeenSet() const { return m_nestedTypeHasBeenSet; }
+    template<typename NestedTypeT = DataType>
+    void SetNestedType(NestedTypeT&& value) {
+      m_nestedTypeHasBeenSet = true; 
+      m_nestedType = Aws::MakeShared<DataType>("DataType", std::forward<NestedTypeT>(value));
+    }
+    template<typename NestedTypeT = DataType>
+    DataType& WithNestedType(NestedTypeT&& value) { SetNestedType(std::forward<NestedTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The nested type in the data type.</p>
-     */
-    AWS_IOTTWINMAKER_API bool NestedTypeHasBeenSet() const;
-
-    /**
-     * <p>The nested type in the data type.</p>
-     */
-    AWS_IOTTWINMAKER_API void SetNestedType(const DataType& value);
-
-    /**
-     * <p>The nested type in the data type.</p>
-     */
-    AWS_IOTTWINMAKER_API void SetNestedType(DataType&& value);
-
-    /**
-     * <p>The nested type in the data type.</p>
-     */
-    AWS_IOTTWINMAKER_API DataType& WithNestedType(const DataType& value);
-
-    /**
-     * <p>The nested type in the data type.</p>
-     */
-    AWS_IOTTWINMAKER_API DataType& WithNestedType(DataType&& value);
-
-
+    ///@{
     /**
      * <p>The allowed values for this data type.</p>
      */
-    inline const Aws::Vector<DataValue>& GetAllowedValues() const{ return m_allowedValues; }
-
-    /**
-     * <p>The allowed values for this data type.</p>
-     */
+    inline const Aws::Vector<DataValue>& GetAllowedValues() const { return m_allowedValues; }
     inline bool AllowedValuesHasBeenSet() const { return m_allowedValuesHasBeenSet; }
+    template<typename AllowedValuesT = Aws::Vector<DataValue>>
+    void SetAllowedValues(AllowedValuesT&& value) { m_allowedValuesHasBeenSet = true; m_allowedValues = std::forward<AllowedValuesT>(value); }
+    template<typename AllowedValuesT = Aws::Vector<DataValue>>
+    DataType& WithAllowedValues(AllowedValuesT&& value) { SetAllowedValues(std::forward<AllowedValuesT>(value)); return *this;}
+    template<typename AllowedValuesT = DataValue>
+    DataType& AddAllowedValues(AllowedValuesT&& value) { m_allowedValuesHasBeenSet = true; m_allowedValues.emplace_back(std::forward<AllowedValuesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The allowed values for this data type.</p>
-     */
-    inline void SetAllowedValues(const Aws::Vector<DataValue>& value) { m_allowedValuesHasBeenSet = true; m_allowedValues = value; }
-
-    /**
-     * <p>The allowed values for this data type.</p>
-     */
-    inline void SetAllowedValues(Aws::Vector<DataValue>&& value) { m_allowedValuesHasBeenSet = true; m_allowedValues = std::move(value); }
-
-    /**
-     * <p>The allowed values for this data type.</p>
-     */
-    inline DataType& WithAllowedValues(const Aws::Vector<DataValue>& value) { SetAllowedValues(value); return *this;}
-
-    /**
-     * <p>The allowed values for this data type.</p>
-     */
-    inline DataType& WithAllowedValues(Aws::Vector<DataValue>&& value) { SetAllowedValues(std::move(value)); return *this;}
-
-    /**
-     * <p>The allowed values for this data type.</p>
-     */
-    inline DataType& AddAllowedValues(const DataValue& value) { m_allowedValuesHasBeenSet = true; m_allowedValues.push_back(value); return *this; }
-
-    /**
-     * <p>The allowed values for this data type.</p>
-     */
-    inline DataType& AddAllowedValues(DataValue&& value) { m_allowedValuesHasBeenSet = true; m_allowedValues.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The unit of measure used in this data type.</p>
      */
-    inline const Aws::String& GetUnitOfMeasure() const{ return m_unitOfMeasure; }
-
-    /**
-     * <p>The unit of measure used in this data type.</p>
-     */
+    inline const Aws::String& GetUnitOfMeasure() const { return m_unitOfMeasure; }
     inline bool UnitOfMeasureHasBeenSet() const { return m_unitOfMeasureHasBeenSet; }
+    template<typename UnitOfMeasureT = Aws::String>
+    void SetUnitOfMeasure(UnitOfMeasureT&& value) { m_unitOfMeasureHasBeenSet = true; m_unitOfMeasure = std::forward<UnitOfMeasureT>(value); }
+    template<typename UnitOfMeasureT = Aws::String>
+    DataType& WithUnitOfMeasure(UnitOfMeasureT&& value) { SetUnitOfMeasure(std::forward<UnitOfMeasureT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unit of measure used in this data type.</p>
-     */
-    inline void SetUnitOfMeasure(const Aws::String& value) { m_unitOfMeasureHasBeenSet = true; m_unitOfMeasure = value; }
-
-    /**
-     * <p>The unit of measure used in this data type.</p>
-     */
-    inline void SetUnitOfMeasure(Aws::String&& value) { m_unitOfMeasureHasBeenSet = true; m_unitOfMeasure = std::move(value); }
-
-    /**
-     * <p>The unit of measure used in this data type.</p>
-     */
-    inline void SetUnitOfMeasure(const char* value) { m_unitOfMeasureHasBeenSet = true; m_unitOfMeasure.assign(value); }
-
-    /**
-     * <p>The unit of measure used in this data type.</p>
-     */
-    inline DataType& WithUnitOfMeasure(const Aws::String& value) { SetUnitOfMeasure(value); return *this;}
-
-    /**
-     * <p>The unit of measure used in this data type.</p>
-     */
-    inline DataType& WithUnitOfMeasure(Aws::String&& value) { SetUnitOfMeasure(std::move(value)); return *this;}
-
-    /**
-     * <p>The unit of measure used in this data type.</p>
-     */
-    inline DataType& WithUnitOfMeasure(const char* value) { SetUnitOfMeasure(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A relationship that associates a component with another component.</p>
      */
-    inline const Relationship& GetRelationship() const{ return m_relationship; }
-
-    /**
-     * <p>A relationship that associates a component with another component.</p>
-     */
+    inline const Relationship& GetRelationship() const { return m_relationship; }
     inline bool RelationshipHasBeenSet() const { return m_relationshipHasBeenSet; }
-
-    /**
-     * <p>A relationship that associates a component with another component.</p>
-     */
-    inline void SetRelationship(const Relationship& value) { m_relationshipHasBeenSet = true; m_relationship = value; }
-
-    /**
-     * <p>A relationship that associates a component with another component.</p>
-     */
-    inline void SetRelationship(Relationship&& value) { m_relationshipHasBeenSet = true; m_relationship = std::move(value); }
-
-    /**
-     * <p>A relationship that associates a component with another component.</p>
-     */
-    inline DataType& WithRelationship(const Relationship& value) { SetRelationship(value); return *this;}
-
-    /**
-     * <p>A relationship that associates a component with another component.</p>
-     */
-    inline DataType& WithRelationship(Relationship&& value) { SetRelationship(std::move(value)); return *this;}
-
+    template<typename RelationshipT = Relationship>
+    void SetRelationship(RelationshipT&& value) { m_relationshipHasBeenSet = true; m_relationship = std::forward<RelationshipT>(value); }
+    template<typename RelationshipT = Relationship>
+    DataType& WithRelationship(RelationshipT&& value) { SetRelationship(std::forward<RelationshipT>(value)); return *this;}
+    ///@}
   private:
 
-    Type m_type;
+    Type m_type{Type::NOT_SET};
     bool m_typeHasBeenSet = false;
 
     std::shared_ptr<DataType> m_nestedType;

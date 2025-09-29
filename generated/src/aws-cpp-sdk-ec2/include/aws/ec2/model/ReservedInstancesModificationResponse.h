@@ -32,7 +32,7 @@ namespace Model
   class ReservedInstancesModificationResponse
   {
   public:
-    AWS_EC2_API ReservedInstancesModificationResponse();
+    AWS_EC2_API ReservedInstancesModificationResponse() = default;
     AWS_EC2_API ReservedInstancesModificationResponse(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API ReservedInstancesModificationResponse& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,99 +40,32 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The ID for the Reserved Instances that were created as part of the
      * modification request. This field is only available when the modification is
      * fulfilled.</p>
      */
-    inline const Aws::String& GetReservedInstancesId() const{ return m_reservedInstancesId; }
-
-    /**
-     * <p>The ID for the Reserved Instances that were created as part of the
-     * modification request. This field is only available when the modification is
-     * fulfilled.</p>
-     */
+    inline const Aws::String& GetReservedInstancesId() const { return m_reservedInstancesId; }
     inline bool ReservedInstancesIdHasBeenSet() const { return m_reservedInstancesIdHasBeenSet; }
+    template<typename ReservedInstancesIdT = Aws::String>
+    void SetReservedInstancesId(ReservedInstancesIdT&& value) { m_reservedInstancesIdHasBeenSet = true; m_reservedInstancesId = std::forward<ReservedInstancesIdT>(value); }
+    template<typename ReservedInstancesIdT = Aws::String>
+    ReservedInstancesModificationResponse& WithReservedInstancesId(ReservedInstancesIdT&& value) { SetReservedInstancesId(std::forward<ReservedInstancesIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID for the Reserved Instances that were created as part of the
-     * modification request. This field is only available when the modification is
-     * fulfilled.</p>
-     */
-    inline void SetReservedInstancesId(const Aws::String& value) { m_reservedInstancesIdHasBeenSet = true; m_reservedInstancesId = value; }
-
-    /**
-     * <p>The ID for the Reserved Instances that were created as part of the
-     * modification request. This field is only available when the modification is
-     * fulfilled.</p>
-     */
-    inline void SetReservedInstancesId(Aws::String&& value) { m_reservedInstancesIdHasBeenSet = true; m_reservedInstancesId = std::move(value); }
-
-    /**
-     * <p>The ID for the Reserved Instances that were created as part of the
-     * modification request. This field is only available when the modification is
-     * fulfilled.</p>
-     */
-    inline void SetReservedInstancesId(const char* value) { m_reservedInstancesIdHasBeenSet = true; m_reservedInstancesId.assign(value); }
-
-    /**
-     * <p>The ID for the Reserved Instances that were created as part of the
-     * modification request. This field is only available when the modification is
-     * fulfilled.</p>
-     */
-    inline ReservedInstancesModificationResponse& WithReservedInstancesId(const Aws::String& value) { SetReservedInstancesId(value); return *this;}
-
-    /**
-     * <p>The ID for the Reserved Instances that were created as part of the
-     * modification request. This field is only available when the modification is
-     * fulfilled.</p>
-     */
-    inline ReservedInstancesModificationResponse& WithReservedInstancesId(Aws::String&& value) { SetReservedInstancesId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID for the Reserved Instances that were created as part of the
-     * modification request. This field is only available when the modification is
-     * fulfilled.</p>
-     */
-    inline ReservedInstancesModificationResponse& WithReservedInstancesId(const char* value) { SetReservedInstancesId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The target Reserved Instances configurations supplied as part of the
      * modification request.</p>
      */
-    inline const ReservedInstancesConfiguration& GetTargetConfiguration() const{ return m_targetConfiguration; }
-
-    /**
-     * <p>The target Reserved Instances configurations supplied as part of the
-     * modification request.</p>
-     */
+    inline const ReservedInstancesConfiguration& GetTargetConfiguration() const { return m_targetConfiguration; }
     inline bool TargetConfigurationHasBeenSet() const { return m_targetConfigurationHasBeenSet; }
-
-    /**
-     * <p>The target Reserved Instances configurations supplied as part of the
-     * modification request.</p>
-     */
-    inline void SetTargetConfiguration(const ReservedInstancesConfiguration& value) { m_targetConfigurationHasBeenSet = true; m_targetConfiguration = value; }
-
-    /**
-     * <p>The target Reserved Instances configurations supplied as part of the
-     * modification request.</p>
-     */
-    inline void SetTargetConfiguration(ReservedInstancesConfiguration&& value) { m_targetConfigurationHasBeenSet = true; m_targetConfiguration = std::move(value); }
-
-    /**
-     * <p>The target Reserved Instances configurations supplied as part of the
-     * modification request.</p>
-     */
-    inline ReservedInstancesModificationResponse& WithTargetConfiguration(const ReservedInstancesConfiguration& value) { SetTargetConfiguration(value); return *this;}
-
-    /**
-     * <p>The target Reserved Instances configurations supplied as part of the
-     * modification request.</p>
-     */
-    inline ReservedInstancesModificationResponse& WithTargetConfiguration(ReservedInstancesConfiguration&& value) { SetTargetConfiguration(std::move(value)); return *this;}
-
+    template<typename TargetConfigurationT = ReservedInstancesConfiguration>
+    void SetTargetConfiguration(TargetConfigurationT&& value) { m_targetConfigurationHasBeenSet = true; m_targetConfiguration = std::forward<TargetConfigurationT>(value); }
+    template<typename TargetConfigurationT = ReservedInstancesConfiguration>
+    ReservedInstancesModificationResponse& WithTargetConfiguration(TargetConfigurationT&& value) { SetTargetConfiguration(std::forward<TargetConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_reservedInstancesId;

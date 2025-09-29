@@ -18,15 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-StandardsSubscriptionRequest::StandardsSubscriptionRequest() : 
-    m_standardsArnHasBeenSet(false),
-    m_standardsInputHasBeenSet(false)
-{
-}
-
-StandardsSubscriptionRequest::StandardsSubscriptionRequest(JsonView jsonValue) : 
-    m_standardsArnHasBeenSet(false),
-    m_standardsInputHasBeenSet(false)
+StandardsSubscriptionRequest::StandardsSubscriptionRequest(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ StandardsSubscriptionRequest& StandardsSubscriptionRequest::operator =(JsonView 
   if(jsonValue.ValueExists("StandardsArn"))
   {
     m_standardsArn = jsonValue.GetString("StandardsArn");
-
     m_standardsArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StandardsInput"))
   {
     Aws::Map<Aws::String, JsonView> standardsInputJsonMap = jsonValue.GetObject("StandardsInput").GetAllObjects();
@@ -49,7 +39,6 @@ StandardsSubscriptionRequest& StandardsSubscriptionRequest::operator =(JsonView 
     }
     m_standardsInputHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -37,8 +37,8 @@ namespace CodeGuruReviewer
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
 
       typedef CodeGuruReviewerClientConfiguration ClientConfigurationType;
       typedef CodeGuruReviewerEndpointProvider EndpointProviderType;
@@ -48,14 +48,14 @@ namespace CodeGuruReviewer
         * is not specified, it will be initialized to default values.
         */
         CodeGuruReviewerClient(const Aws::CodeGuruReviewer::CodeGuruReviewerClientConfiguration& clientConfiguration = Aws::CodeGuruReviewer::CodeGuruReviewerClientConfiguration(),
-                               std::shared_ptr<CodeGuruReviewerEndpointProviderBase> endpointProvider = Aws::MakeShared<CodeGuruReviewerEndpointProvider>(ALLOCATION_TAG));
+                               std::shared_ptr<CodeGuruReviewerEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         CodeGuruReviewerClient(const Aws::Auth::AWSCredentials& credentials,
-                               std::shared_ptr<CodeGuruReviewerEndpointProviderBase> endpointProvider = Aws::MakeShared<CodeGuruReviewerEndpointProvider>(ALLOCATION_TAG),
+                               std::shared_ptr<CodeGuruReviewerEndpointProviderBase> endpointProvider = nullptr,
                                const Aws::CodeGuruReviewer::CodeGuruReviewerClientConfiguration& clientConfiguration = Aws::CodeGuruReviewer::CodeGuruReviewerClientConfiguration());
 
        /**
@@ -63,7 +63,7 @@ namespace CodeGuruReviewer
         * the default http client factory will be used
         */
         CodeGuruReviewerClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                               std::shared_ptr<CodeGuruReviewerEndpointProviderBase> endpointProvider = Aws::MakeShared<CodeGuruReviewerEndpointProvider>(ALLOCATION_TAG),
+                               std::shared_ptr<CodeGuruReviewerEndpointProviderBase> endpointProvider = nullptr,
                                const Aws::CodeGuruReviewer::CodeGuruReviewerClientConfiguration& clientConfiguration = Aws::CodeGuruReviewer::CodeGuruReviewerClientConfiguration());
 
 
@@ -368,13 +368,13 @@ namespace CodeGuruReviewer
          * href="http://docs.aws.amazon.com/goto/WebAPI/codeguru-reviewer-2019-09-19/ListRepositoryAssociations">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListRepositoryAssociationsOutcome ListRepositoryAssociations(const Model::ListRepositoryAssociationsRequest& request) const;
+        virtual Model::ListRepositoryAssociationsOutcome ListRepositoryAssociations(const Model::ListRepositoryAssociationsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListRepositoryAssociations that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListRepositoryAssociationsRequestT = Model::ListRepositoryAssociationsRequest>
-        Model::ListRepositoryAssociationsOutcomeCallable ListRepositoryAssociationsCallable(const ListRepositoryAssociationsRequestT& request) const
+        Model::ListRepositoryAssociationsOutcomeCallable ListRepositoryAssociationsCallable(const ListRepositoryAssociationsRequestT& request = {}) const
         {
             return SubmitCallable(&CodeGuruReviewerClient::ListRepositoryAssociations, request);
         }
@@ -383,7 +383,7 @@ namespace CodeGuruReviewer
          * An Async wrapper for ListRepositoryAssociations that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListRepositoryAssociationsRequestT = Model::ListRepositoryAssociationsRequest>
-        void ListRepositoryAssociationsAsync(const ListRepositoryAssociationsRequestT& request, const ListRepositoryAssociationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListRepositoryAssociationsAsync(const ListRepositoryAssociationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListRepositoryAssociationsRequestT& request = {}) const
         {
             return SubmitAsync(&CodeGuruReviewerClient::ListRepositoryAssociations, request, handler, context);
         }
@@ -500,7 +500,6 @@ namespace CodeGuruReviewer
       void init(const CodeGuruReviewerClientConfiguration& clientConfiguration);
 
       CodeGuruReviewerClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<CodeGuruReviewerEndpointProviderBase> m_endpointProvider;
   };
 

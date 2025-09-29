@@ -33,180 +33,62 @@ namespace Model
   class DataQualityAnalyzerResult
   {
   public:
-    AWS_GLUE_API DataQualityAnalyzerResult();
+    AWS_GLUE_API DataQualityAnalyzerResult() = default;
     AWS_GLUE_API DataQualityAnalyzerResult(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API DataQualityAnalyzerResult& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the data quality analyzer.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the data quality analyzer.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    DataQualityAnalyzerResult& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the data quality analyzer.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the data quality analyzer.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the data quality analyzer.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the data quality analyzer.</p>
-     */
-    inline DataQualityAnalyzerResult& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the data quality analyzer.</p>
-     */
-    inline DataQualityAnalyzerResult& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the data quality analyzer.</p>
-     */
-    inline DataQualityAnalyzerResult& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A description of the data quality analyzer.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>A description of the data quality analyzer.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    DataQualityAnalyzerResult& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A description of the data quality analyzer.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>A description of the data quality analyzer.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>A description of the data quality analyzer.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>A description of the data quality analyzer.</p>
-     */
-    inline DataQualityAnalyzerResult& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A description of the data quality analyzer.</p>
-     */
-    inline DataQualityAnalyzerResult& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A description of the data quality analyzer.</p>
-     */
-    inline DataQualityAnalyzerResult& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An evaluation message.</p>
      */
-    inline const Aws::String& GetEvaluationMessage() const{ return m_evaluationMessage; }
-
-    /**
-     * <p>An evaluation message.</p>
-     */
+    inline const Aws::String& GetEvaluationMessage() const { return m_evaluationMessage; }
     inline bool EvaluationMessageHasBeenSet() const { return m_evaluationMessageHasBeenSet; }
+    template<typename EvaluationMessageT = Aws::String>
+    void SetEvaluationMessage(EvaluationMessageT&& value) { m_evaluationMessageHasBeenSet = true; m_evaluationMessage = std::forward<EvaluationMessageT>(value); }
+    template<typename EvaluationMessageT = Aws::String>
+    DataQualityAnalyzerResult& WithEvaluationMessage(EvaluationMessageT&& value) { SetEvaluationMessage(std::forward<EvaluationMessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An evaluation message.</p>
-     */
-    inline void SetEvaluationMessage(const Aws::String& value) { m_evaluationMessageHasBeenSet = true; m_evaluationMessage = value; }
-
-    /**
-     * <p>An evaluation message.</p>
-     */
-    inline void SetEvaluationMessage(Aws::String&& value) { m_evaluationMessageHasBeenSet = true; m_evaluationMessage = std::move(value); }
-
-    /**
-     * <p>An evaluation message.</p>
-     */
-    inline void SetEvaluationMessage(const char* value) { m_evaluationMessageHasBeenSet = true; m_evaluationMessage.assign(value); }
-
-    /**
-     * <p>An evaluation message.</p>
-     */
-    inline DataQualityAnalyzerResult& WithEvaluationMessage(const Aws::String& value) { SetEvaluationMessage(value); return *this;}
-
-    /**
-     * <p>An evaluation message.</p>
-     */
-    inline DataQualityAnalyzerResult& WithEvaluationMessage(Aws::String&& value) { SetEvaluationMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>An evaluation message.</p>
-     */
-    inline DataQualityAnalyzerResult& WithEvaluationMessage(const char* value) { SetEvaluationMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A map of metrics associated with the evaluation of the analyzer.</p>
      */
-    inline const Aws::Map<Aws::String, double>& GetEvaluatedMetrics() const{ return m_evaluatedMetrics; }
-
-    /**
-     * <p>A map of metrics associated with the evaluation of the analyzer.</p>
-     */
+    inline const Aws::Map<Aws::String, double>& GetEvaluatedMetrics() const { return m_evaluatedMetrics; }
     inline bool EvaluatedMetricsHasBeenSet() const { return m_evaluatedMetricsHasBeenSet; }
-
-    /**
-     * <p>A map of metrics associated with the evaluation of the analyzer.</p>
-     */
-    inline void SetEvaluatedMetrics(const Aws::Map<Aws::String, double>& value) { m_evaluatedMetricsHasBeenSet = true; m_evaluatedMetrics = value; }
-
-    /**
-     * <p>A map of metrics associated with the evaluation of the analyzer.</p>
-     */
-    inline void SetEvaluatedMetrics(Aws::Map<Aws::String, double>&& value) { m_evaluatedMetricsHasBeenSet = true; m_evaluatedMetrics = std::move(value); }
-
-    /**
-     * <p>A map of metrics associated with the evaluation of the analyzer.</p>
-     */
-    inline DataQualityAnalyzerResult& WithEvaluatedMetrics(const Aws::Map<Aws::String, double>& value) { SetEvaluatedMetrics(value); return *this;}
-
-    /**
-     * <p>A map of metrics associated with the evaluation of the analyzer.</p>
-     */
-    inline DataQualityAnalyzerResult& WithEvaluatedMetrics(Aws::Map<Aws::String, double>&& value) { SetEvaluatedMetrics(std::move(value)); return *this;}
-
-    /**
-     * <p>A map of metrics associated with the evaluation of the analyzer.</p>
-     */
-    inline DataQualityAnalyzerResult& AddEvaluatedMetrics(const Aws::String& key, double value) { m_evaluatedMetricsHasBeenSet = true; m_evaluatedMetrics.emplace(key, value); return *this; }
-
-    /**
-     * <p>A map of metrics associated with the evaluation of the analyzer.</p>
-     */
-    inline DataQualityAnalyzerResult& AddEvaluatedMetrics(Aws::String&& key, double value) { m_evaluatedMetricsHasBeenSet = true; m_evaluatedMetrics.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A map of metrics associated with the evaluation of the analyzer.</p>
-     */
-    inline DataQualityAnalyzerResult& AddEvaluatedMetrics(const char* key, double value) { m_evaluatedMetricsHasBeenSet = true; m_evaluatedMetrics.emplace(key, value); return *this; }
-
+    template<typename EvaluatedMetricsT = Aws::Map<Aws::String, double>>
+    void SetEvaluatedMetrics(EvaluatedMetricsT&& value) { m_evaluatedMetricsHasBeenSet = true; m_evaluatedMetrics = std::forward<EvaluatedMetricsT>(value); }
+    template<typename EvaluatedMetricsT = Aws::Map<Aws::String, double>>
+    DataQualityAnalyzerResult& WithEvaluatedMetrics(EvaluatedMetricsT&& value) { SetEvaluatedMetrics(std::forward<EvaluatedMetricsT>(value)); return *this;}
+    inline DataQualityAnalyzerResult& AddEvaluatedMetrics(Aws::String key, double value) {
+      m_evaluatedMetricsHasBeenSet = true; m_evaluatedMetrics.emplace(key, value); return *this;
+    }
+    ///@}
   private:
 
     Aws::String m_name;

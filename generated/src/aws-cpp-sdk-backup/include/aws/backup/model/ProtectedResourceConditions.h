@@ -25,119 +25,49 @@ namespace Model
 {
 
   /**
-   * <p>A list of conditions that you define for resources in your restore testing
-   * plan using tags.</p> <p>For example, <code>"StringEquals": { "Key":
-   * "aws:ResourceTag/CreatedByCryo", "Value": "true" },</code>. Condition operators
-   * are case sensitive.</p><p><h3>See Also:</h3>   <a
+   * <p>The conditions that you define for resources in your restore testing plan
+   * using tags.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/backup-2018-11-15/ProtectedResourceConditions">AWS
    * API Reference</a></p>
    */
   class ProtectedResourceConditions
   {
   public:
-    AWS_BACKUP_API ProtectedResourceConditions();
+    AWS_BACKUP_API ProtectedResourceConditions() = default;
     AWS_BACKUP_API ProtectedResourceConditions(Aws::Utils::Json::JsonView jsonValue);
     AWS_BACKUP_API ProtectedResourceConditions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_BACKUP_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Filters the values of your tagged resources for only those resources that you
      * tagged with the same value. Also called "exact matching."</p>
      */
-    inline const Aws::Vector<KeyValue>& GetStringEquals() const{ return m_stringEquals; }
-
-    /**
-     * <p>Filters the values of your tagged resources for only those resources that you
-     * tagged with the same value. Also called "exact matching."</p>
-     */
+    inline const Aws::Vector<KeyValue>& GetStringEquals() const { return m_stringEquals; }
     inline bool StringEqualsHasBeenSet() const { return m_stringEqualsHasBeenSet; }
+    template<typename StringEqualsT = Aws::Vector<KeyValue>>
+    void SetStringEquals(StringEqualsT&& value) { m_stringEqualsHasBeenSet = true; m_stringEquals = std::forward<StringEqualsT>(value); }
+    template<typename StringEqualsT = Aws::Vector<KeyValue>>
+    ProtectedResourceConditions& WithStringEquals(StringEqualsT&& value) { SetStringEquals(std::forward<StringEqualsT>(value)); return *this;}
+    template<typename StringEqualsT = KeyValue>
+    ProtectedResourceConditions& AddStringEquals(StringEqualsT&& value) { m_stringEqualsHasBeenSet = true; m_stringEquals.emplace_back(std::forward<StringEqualsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Filters the values of your tagged resources for only those resources that you
-     * tagged with the same value. Also called "exact matching."</p>
-     */
-    inline void SetStringEquals(const Aws::Vector<KeyValue>& value) { m_stringEqualsHasBeenSet = true; m_stringEquals = value; }
-
-    /**
-     * <p>Filters the values of your tagged resources for only those resources that you
-     * tagged with the same value. Also called "exact matching."</p>
-     */
-    inline void SetStringEquals(Aws::Vector<KeyValue>&& value) { m_stringEqualsHasBeenSet = true; m_stringEquals = std::move(value); }
-
-    /**
-     * <p>Filters the values of your tagged resources for only those resources that you
-     * tagged with the same value. Also called "exact matching."</p>
-     */
-    inline ProtectedResourceConditions& WithStringEquals(const Aws::Vector<KeyValue>& value) { SetStringEquals(value); return *this;}
-
-    /**
-     * <p>Filters the values of your tagged resources for only those resources that you
-     * tagged with the same value. Also called "exact matching."</p>
-     */
-    inline ProtectedResourceConditions& WithStringEquals(Aws::Vector<KeyValue>&& value) { SetStringEquals(std::move(value)); return *this;}
-
-    /**
-     * <p>Filters the values of your tagged resources for only those resources that you
-     * tagged with the same value. Also called "exact matching."</p>
-     */
-    inline ProtectedResourceConditions& AddStringEquals(const KeyValue& value) { m_stringEqualsHasBeenSet = true; m_stringEquals.push_back(value); return *this; }
-
-    /**
-     * <p>Filters the values of your tagged resources for only those resources that you
-     * tagged with the same value. Also called "exact matching."</p>
-     */
-    inline ProtectedResourceConditions& AddStringEquals(KeyValue&& value) { m_stringEqualsHasBeenSet = true; m_stringEquals.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Filters the values of your tagged resources for only those resources that you
      * tagged that do not have the same value. Also called "negated matching."</p>
      */
-    inline const Aws::Vector<KeyValue>& GetStringNotEquals() const{ return m_stringNotEquals; }
-
-    /**
-     * <p>Filters the values of your tagged resources for only those resources that you
-     * tagged that do not have the same value. Also called "negated matching."</p>
-     */
+    inline const Aws::Vector<KeyValue>& GetStringNotEquals() const { return m_stringNotEquals; }
     inline bool StringNotEqualsHasBeenSet() const { return m_stringNotEqualsHasBeenSet; }
-
-    /**
-     * <p>Filters the values of your tagged resources for only those resources that you
-     * tagged that do not have the same value. Also called "negated matching."</p>
-     */
-    inline void SetStringNotEquals(const Aws::Vector<KeyValue>& value) { m_stringNotEqualsHasBeenSet = true; m_stringNotEquals = value; }
-
-    /**
-     * <p>Filters the values of your tagged resources for only those resources that you
-     * tagged that do not have the same value. Also called "negated matching."</p>
-     */
-    inline void SetStringNotEquals(Aws::Vector<KeyValue>&& value) { m_stringNotEqualsHasBeenSet = true; m_stringNotEquals = std::move(value); }
-
-    /**
-     * <p>Filters the values of your tagged resources for only those resources that you
-     * tagged that do not have the same value. Also called "negated matching."</p>
-     */
-    inline ProtectedResourceConditions& WithStringNotEquals(const Aws::Vector<KeyValue>& value) { SetStringNotEquals(value); return *this;}
-
-    /**
-     * <p>Filters the values of your tagged resources for only those resources that you
-     * tagged that do not have the same value. Also called "negated matching."</p>
-     */
-    inline ProtectedResourceConditions& WithStringNotEquals(Aws::Vector<KeyValue>&& value) { SetStringNotEquals(std::move(value)); return *this;}
-
-    /**
-     * <p>Filters the values of your tagged resources for only those resources that you
-     * tagged that do not have the same value. Also called "negated matching."</p>
-     */
-    inline ProtectedResourceConditions& AddStringNotEquals(const KeyValue& value) { m_stringNotEqualsHasBeenSet = true; m_stringNotEquals.push_back(value); return *this; }
-
-    /**
-     * <p>Filters the values of your tagged resources for only those resources that you
-     * tagged that do not have the same value. Also called "negated matching."</p>
-     */
-    inline ProtectedResourceConditions& AddStringNotEquals(KeyValue&& value) { m_stringNotEqualsHasBeenSet = true; m_stringNotEquals.push_back(std::move(value)); return *this; }
-
+    template<typename StringNotEqualsT = Aws::Vector<KeyValue>>
+    void SetStringNotEquals(StringNotEqualsT&& value) { m_stringNotEqualsHasBeenSet = true; m_stringNotEquals = std::forward<StringNotEqualsT>(value); }
+    template<typename StringNotEqualsT = Aws::Vector<KeyValue>>
+    ProtectedResourceConditions& WithStringNotEquals(StringNotEqualsT&& value) { SetStringNotEquals(std::forward<StringNotEqualsT>(value)); return *this;}
+    template<typename StringNotEqualsT = KeyValue>
+    ProtectedResourceConditions& AddStringNotEquals(StringNotEqualsT&& value) { m_stringNotEqualsHasBeenSet = true; m_stringNotEquals.emplace_back(std::forward<StringNotEqualsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<KeyValue> m_stringEquals;

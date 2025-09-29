@@ -18,17 +18,7 @@ namespace Macie2
 namespace Model
 {
 
-AdminAccount::AdminAccount() : 
-    m_accountIdHasBeenSet(false),
-    m_status(AdminStatus::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
-AdminAccount::AdminAccount(JsonView jsonValue) : 
-    m_accountIdHasBeenSet(false),
-    m_status(AdminStatus::NOT_SET),
-    m_statusHasBeenSet(false)
+AdminAccount::AdminAccount(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ AdminAccount& AdminAccount::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("accountId"))
   {
     m_accountId = jsonValue.GetString("accountId");
-
     m_accountIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("status"))
   {
     m_status = AdminStatusMapper::GetAdminStatusForName(jsonValue.GetString("status"));
-
     m_statusHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -21,7 +21,7 @@ namespace Model
   class DescribeAccessEntryRequest : public EKSRequest
   {
   public:
-    AWS_EKS_API DescribeAccessEntryRequest();
+    AWS_EKS_API DescribeAccessEntryRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,87 +32,29 @@ namespace Model
     AWS_EKS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of your cluster.</p>
      */
-    inline const Aws::String& GetClusterName() const{ return m_clusterName; }
-
-    /**
-     * <p>The name of your cluster.</p>
-     */
+    inline const Aws::String& GetClusterName() const { return m_clusterName; }
     inline bool ClusterNameHasBeenSet() const { return m_clusterNameHasBeenSet; }
+    template<typename ClusterNameT = Aws::String>
+    void SetClusterName(ClusterNameT&& value) { m_clusterNameHasBeenSet = true; m_clusterName = std::forward<ClusterNameT>(value); }
+    template<typename ClusterNameT = Aws::String>
+    DescribeAccessEntryRequest& WithClusterName(ClusterNameT&& value) { SetClusterName(std::forward<ClusterNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of your cluster.</p>
-     */
-    inline void SetClusterName(const Aws::String& value) { m_clusterNameHasBeenSet = true; m_clusterName = value; }
-
-    /**
-     * <p>The name of your cluster.</p>
-     */
-    inline void SetClusterName(Aws::String&& value) { m_clusterNameHasBeenSet = true; m_clusterName = std::move(value); }
-
-    /**
-     * <p>The name of your cluster.</p>
-     */
-    inline void SetClusterName(const char* value) { m_clusterNameHasBeenSet = true; m_clusterName.assign(value); }
-
-    /**
-     * <p>The name of your cluster.</p>
-     */
-    inline DescribeAccessEntryRequest& WithClusterName(const Aws::String& value) { SetClusterName(value); return *this;}
-
-    /**
-     * <p>The name of your cluster.</p>
-     */
-    inline DescribeAccessEntryRequest& WithClusterName(Aws::String&& value) { SetClusterName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of your cluster.</p>
-     */
-    inline DescribeAccessEntryRequest& WithClusterName(const char* value) { SetClusterName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the IAM principal for the <code>AccessEntry</code>.</p>
      */
-    inline const Aws::String& GetPrincipalArn() const{ return m_principalArn; }
-
-    /**
-     * <p>The ARN of the IAM principal for the <code>AccessEntry</code>.</p>
-     */
+    inline const Aws::String& GetPrincipalArn() const { return m_principalArn; }
     inline bool PrincipalArnHasBeenSet() const { return m_principalArnHasBeenSet; }
-
-    /**
-     * <p>The ARN of the IAM principal for the <code>AccessEntry</code>.</p>
-     */
-    inline void SetPrincipalArn(const Aws::String& value) { m_principalArnHasBeenSet = true; m_principalArn = value; }
-
-    /**
-     * <p>The ARN of the IAM principal for the <code>AccessEntry</code>.</p>
-     */
-    inline void SetPrincipalArn(Aws::String&& value) { m_principalArnHasBeenSet = true; m_principalArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the IAM principal for the <code>AccessEntry</code>.</p>
-     */
-    inline void SetPrincipalArn(const char* value) { m_principalArnHasBeenSet = true; m_principalArn.assign(value); }
-
-    /**
-     * <p>The ARN of the IAM principal for the <code>AccessEntry</code>.</p>
-     */
-    inline DescribeAccessEntryRequest& WithPrincipalArn(const Aws::String& value) { SetPrincipalArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the IAM principal for the <code>AccessEntry</code>.</p>
-     */
-    inline DescribeAccessEntryRequest& WithPrincipalArn(Aws::String&& value) { SetPrincipalArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the IAM principal for the <code>AccessEntry</code>.</p>
-     */
-    inline DescribeAccessEntryRequest& WithPrincipalArn(const char* value) { SetPrincipalArn(value); return *this;}
-
+    template<typename PrincipalArnT = Aws::String>
+    void SetPrincipalArn(PrincipalArnT&& value) { m_principalArnHasBeenSet = true; m_principalArn = std::forward<PrincipalArnT>(value); }
+    template<typename PrincipalArnT = Aws::String>
+    DescribeAccessEntryRequest& WithPrincipalArn(PrincipalArnT&& value) { SetPrincipalArn(std::forward<PrincipalArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_clusterName;

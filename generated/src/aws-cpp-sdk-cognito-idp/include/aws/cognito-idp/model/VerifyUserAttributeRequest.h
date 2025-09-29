@@ -25,7 +25,7 @@ namespace Model
   class VerifyUserAttributeRequest : public CognitoIdentityProviderRequest
   {
   public:
-    AWS_COGNITOIDENTITYPROVIDER_API VerifyUserAttributeRequest();
+    AWS_COGNITOIDENTITYPROVIDER_API VerifyUserAttributeRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,136 +38,44 @@ namespace Model
     AWS_COGNITOIDENTITYPROVIDER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
-     * <p>A valid access token that Amazon Cognito issued to the user whose user
-     * attributes you want to verify.</p>
+     * <p>A valid access token that Amazon Cognito issued to the currently signed-in
+     * user. Must include a scope claim for
+     * <code>aws.cognito.signin.user.admin</code>.</p>
      */
-    inline const Aws::String& GetAccessToken() const{ return m_accessToken; }
-
-    /**
-     * <p>A valid access token that Amazon Cognito issued to the user whose user
-     * attributes you want to verify.</p>
-     */
+    inline const Aws::String& GetAccessToken() const { return m_accessToken; }
     inline bool AccessTokenHasBeenSet() const { return m_accessTokenHasBeenSet; }
+    template<typename AccessTokenT = Aws::String>
+    void SetAccessToken(AccessTokenT&& value) { m_accessTokenHasBeenSet = true; m_accessToken = std::forward<AccessTokenT>(value); }
+    template<typename AccessTokenT = Aws::String>
+    VerifyUserAttributeRequest& WithAccessToken(AccessTokenT&& value) { SetAccessToken(std::forward<AccessTokenT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A valid access token that Amazon Cognito issued to the user whose user
-     * attributes you want to verify.</p>
+     * <p>The name of the attribute that you want to verify.</p>
      */
-    inline void SetAccessToken(const Aws::String& value) { m_accessTokenHasBeenSet = true; m_accessToken = value; }
-
-    /**
-     * <p>A valid access token that Amazon Cognito issued to the user whose user
-     * attributes you want to verify.</p>
-     */
-    inline void SetAccessToken(Aws::String&& value) { m_accessTokenHasBeenSet = true; m_accessToken = std::move(value); }
-
-    /**
-     * <p>A valid access token that Amazon Cognito issued to the user whose user
-     * attributes you want to verify.</p>
-     */
-    inline void SetAccessToken(const char* value) { m_accessTokenHasBeenSet = true; m_accessToken.assign(value); }
-
-    /**
-     * <p>A valid access token that Amazon Cognito issued to the user whose user
-     * attributes you want to verify.</p>
-     */
-    inline VerifyUserAttributeRequest& WithAccessToken(const Aws::String& value) { SetAccessToken(value); return *this;}
-
-    /**
-     * <p>A valid access token that Amazon Cognito issued to the user whose user
-     * attributes you want to verify.</p>
-     */
-    inline VerifyUserAttributeRequest& WithAccessToken(Aws::String&& value) { SetAccessToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A valid access token that Amazon Cognito issued to the user whose user
-     * attributes you want to verify.</p>
-     */
-    inline VerifyUserAttributeRequest& WithAccessToken(const char* value) { SetAccessToken(value); return *this;}
-
-
-    /**
-     * <p>The attribute name in the request to verify user attributes.</p>
-     */
-    inline const Aws::String& GetAttributeName() const{ return m_attributeName; }
-
-    /**
-     * <p>The attribute name in the request to verify user attributes.</p>
-     */
+    inline const Aws::String& GetAttributeName() const { return m_attributeName; }
     inline bool AttributeNameHasBeenSet() const { return m_attributeNameHasBeenSet; }
+    template<typename AttributeNameT = Aws::String>
+    void SetAttributeName(AttributeNameT&& value) { m_attributeNameHasBeenSet = true; m_attributeName = std::forward<AttributeNameT>(value); }
+    template<typename AttributeNameT = Aws::String>
+    VerifyUserAttributeRequest& WithAttributeName(AttributeNameT&& value) { SetAttributeName(std::forward<AttributeNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The attribute name in the request to verify user attributes.</p>
+     * <p>The verification code that your user pool sent to the added or changed
+     * attribute, for example the user's email address.</p>
      */
-    inline void SetAttributeName(const Aws::String& value) { m_attributeNameHasBeenSet = true; m_attributeName = value; }
-
-    /**
-     * <p>The attribute name in the request to verify user attributes.</p>
-     */
-    inline void SetAttributeName(Aws::String&& value) { m_attributeNameHasBeenSet = true; m_attributeName = std::move(value); }
-
-    /**
-     * <p>The attribute name in the request to verify user attributes.</p>
-     */
-    inline void SetAttributeName(const char* value) { m_attributeNameHasBeenSet = true; m_attributeName.assign(value); }
-
-    /**
-     * <p>The attribute name in the request to verify user attributes.</p>
-     */
-    inline VerifyUserAttributeRequest& WithAttributeName(const Aws::String& value) { SetAttributeName(value); return *this;}
-
-    /**
-     * <p>The attribute name in the request to verify user attributes.</p>
-     */
-    inline VerifyUserAttributeRequest& WithAttributeName(Aws::String&& value) { SetAttributeName(std::move(value)); return *this;}
-
-    /**
-     * <p>The attribute name in the request to verify user attributes.</p>
-     */
-    inline VerifyUserAttributeRequest& WithAttributeName(const char* value) { SetAttributeName(value); return *this;}
-
-
-    /**
-     * <p>The verification code in the request to verify user attributes.</p>
-     */
-    inline const Aws::String& GetCode() const{ return m_code; }
-
-    /**
-     * <p>The verification code in the request to verify user attributes.</p>
-     */
+    inline const Aws::String& GetCode() const { return m_code; }
     inline bool CodeHasBeenSet() const { return m_codeHasBeenSet; }
-
-    /**
-     * <p>The verification code in the request to verify user attributes.</p>
-     */
-    inline void SetCode(const Aws::String& value) { m_codeHasBeenSet = true; m_code = value; }
-
-    /**
-     * <p>The verification code in the request to verify user attributes.</p>
-     */
-    inline void SetCode(Aws::String&& value) { m_codeHasBeenSet = true; m_code = std::move(value); }
-
-    /**
-     * <p>The verification code in the request to verify user attributes.</p>
-     */
-    inline void SetCode(const char* value) { m_codeHasBeenSet = true; m_code.assign(value); }
-
-    /**
-     * <p>The verification code in the request to verify user attributes.</p>
-     */
-    inline VerifyUserAttributeRequest& WithCode(const Aws::String& value) { SetCode(value); return *this;}
-
-    /**
-     * <p>The verification code in the request to verify user attributes.</p>
-     */
-    inline VerifyUserAttributeRequest& WithCode(Aws::String&& value) { SetCode(std::move(value)); return *this;}
-
-    /**
-     * <p>The verification code in the request to verify user attributes.</p>
-     */
-    inline VerifyUserAttributeRequest& WithCode(const char* value) { SetCode(value); return *this;}
-
+    template<typename CodeT = Aws::String>
+    void SetCode(CodeT&& value) { m_codeHasBeenSet = true; m_code = std::forward<CodeT>(value); }
+    template<typename CodeT = Aws::String>
+    VerifyUserAttributeRequest& WithCode(CodeT&& value) { SetCode(std::forward<CodeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_accessToken;

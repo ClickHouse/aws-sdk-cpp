@@ -33,12 +33,13 @@ namespace Model
   class TCPFlagField
   {
   public:
-    AWS_NETWORKFIREWALL_API TCPFlagField();
+    AWS_NETWORKFIREWALL_API TCPFlagField() = default;
     AWS_NETWORKFIREWALL_API TCPFlagField(Aws::Utils::Json::JsonView jsonValue);
     AWS_NETWORKFIREWALL_API TCPFlagField& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_NETWORKFIREWALL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Used in conjunction with the <code>Masks</code> setting to define the flags
      * that must be set and flags that must not be set in order for the packet to
@@ -49,141 +50,28 @@ namespace Model
      * </li> <li> <p>The ones that are not set in this flags setting must also not be
      * set in the packet. </p> </li> </ul>
      */
-    inline const Aws::Vector<TCPFlag>& GetFlags() const{ return m_flags; }
-
-    /**
-     * <p>Used in conjunction with the <code>Masks</code> setting to define the flags
-     * that must be set and flags that must not be set in order for the packet to
-     * match. This setting can only specify values that are also specified in the
-     * <code>Masks</code> setting.</p> <p>For the flags that are specified in the masks
-     * setting, the following must be true for the packet to match: </p> <ul> <li>
-     * <p>The ones that are set in this flags setting must be set in the packet. </p>
-     * </li> <li> <p>The ones that are not set in this flags setting must also not be
-     * set in the packet. </p> </li> </ul>
-     */
+    inline const Aws::Vector<TCPFlag>& GetFlags() const { return m_flags; }
     inline bool FlagsHasBeenSet() const { return m_flagsHasBeenSet; }
+    template<typename FlagsT = Aws::Vector<TCPFlag>>
+    void SetFlags(FlagsT&& value) { m_flagsHasBeenSet = true; m_flags = std::forward<FlagsT>(value); }
+    template<typename FlagsT = Aws::Vector<TCPFlag>>
+    TCPFlagField& WithFlags(FlagsT&& value) { SetFlags(std::forward<FlagsT>(value)); return *this;}
+    inline TCPFlagField& AddFlags(TCPFlag value) { m_flagsHasBeenSet = true; m_flags.push_back(value); return *this; }
+    ///@}
 
-    /**
-     * <p>Used in conjunction with the <code>Masks</code> setting to define the flags
-     * that must be set and flags that must not be set in order for the packet to
-     * match. This setting can only specify values that are also specified in the
-     * <code>Masks</code> setting.</p> <p>For the flags that are specified in the masks
-     * setting, the following must be true for the packet to match: </p> <ul> <li>
-     * <p>The ones that are set in this flags setting must be set in the packet. </p>
-     * </li> <li> <p>The ones that are not set in this flags setting must also not be
-     * set in the packet. </p> </li> </ul>
-     */
-    inline void SetFlags(const Aws::Vector<TCPFlag>& value) { m_flagsHasBeenSet = true; m_flags = value; }
-
-    /**
-     * <p>Used in conjunction with the <code>Masks</code> setting to define the flags
-     * that must be set and flags that must not be set in order for the packet to
-     * match. This setting can only specify values that are also specified in the
-     * <code>Masks</code> setting.</p> <p>For the flags that are specified in the masks
-     * setting, the following must be true for the packet to match: </p> <ul> <li>
-     * <p>The ones that are set in this flags setting must be set in the packet. </p>
-     * </li> <li> <p>The ones that are not set in this flags setting must also not be
-     * set in the packet. </p> </li> </ul>
-     */
-    inline void SetFlags(Aws::Vector<TCPFlag>&& value) { m_flagsHasBeenSet = true; m_flags = std::move(value); }
-
-    /**
-     * <p>Used in conjunction with the <code>Masks</code> setting to define the flags
-     * that must be set and flags that must not be set in order for the packet to
-     * match. This setting can only specify values that are also specified in the
-     * <code>Masks</code> setting.</p> <p>For the flags that are specified in the masks
-     * setting, the following must be true for the packet to match: </p> <ul> <li>
-     * <p>The ones that are set in this flags setting must be set in the packet. </p>
-     * </li> <li> <p>The ones that are not set in this flags setting must also not be
-     * set in the packet. </p> </li> </ul>
-     */
-    inline TCPFlagField& WithFlags(const Aws::Vector<TCPFlag>& value) { SetFlags(value); return *this;}
-
-    /**
-     * <p>Used in conjunction with the <code>Masks</code> setting to define the flags
-     * that must be set and flags that must not be set in order for the packet to
-     * match. This setting can only specify values that are also specified in the
-     * <code>Masks</code> setting.</p> <p>For the flags that are specified in the masks
-     * setting, the following must be true for the packet to match: </p> <ul> <li>
-     * <p>The ones that are set in this flags setting must be set in the packet. </p>
-     * </li> <li> <p>The ones that are not set in this flags setting must also not be
-     * set in the packet. </p> </li> </ul>
-     */
-    inline TCPFlagField& WithFlags(Aws::Vector<TCPFlag>&& value) { SetFlags(std::move(value)); return *this;}
-
-    /**
-     * <p>Used in conjunction with the <code>Masks</code> setting to define the flags
-     * that must be set and flags that must not be set in order for the packet to
-     * match. This setting can only specify values that are also specified in the
-     * <code>Masks</code> setting.</p> <p>For the flags that are specified in the masks
-     * setting, the following must be true for the packet to match: </p> <ul> <li>
-     * <p>The ones that are set in this flags setting must be set in the packet. </p>
-     * </li> <li> <p>The ones that are not set in this flags setting must also not be
-     * set in the packet. </p> </li> </ul>
-     */
-    inline TCPFlagField& AddFlags(const TCPFlag& value) { m_flagsHasBeenSet = true; m_flags.push_back(value); return *this; }
-
-    /**
-     * <p>Used in conjunction with the <code>Masks</code> setting to define the flags
-     * that must be set and flags that must not be set in order for the packet to
-     * match. This setting can only specify values that are also specified in the
-     * <code>Masks</code> setting.</p> <p>For the flags that are specified in the masks
-     * setting, the following must be true for the packet to match: </p> <ul> <li>
-     * <p>The ones that are set in this flags setting must be set in the packet. </p>
-     * </li> <li> <p>The ones that are not set in this flags setting must also not be
-     * set in the packet. </p> </li> </ul>
-     */
-    inline TCPFlagField& AddFlags(TCPFlag&& value) { m_flagsHasBeenSet = true; m_flags.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The set of flags to consider in the inspection. To inspect all flags in the
      * valid values list, leave this with no setting.</p>
      */
-    inline const Aws::Vector<TCPFlag>& GetMasks() const{ return m_masks; }
-
-    /**
-     * <p>The set of flags to consider in the inspection. To inspect all flags in the
-     * valid values list, leave this with no setting.</p>
-     */
+    inline const Aws::Vector<TCPFlag>& GetMasks() const { return m_masks; }
     inline bool MasksHasBeenSet() const { return m_masksHasBeenSet; }
-
-    /**
-     * <p>The set of flags to consider in the inspection. To inspect all flags in the
-     * valid values list, leave this with no setting.</p>
-     */
-    inline void SetMasks(const Aws::Vector<TCPFlag>& value) { m_masksHasBeenSet = true; m_masks = value; }
-
-    /**
-     * <p>The set of flags to consider in the inspection. To inspect all flags in the
-     * valid values list, leave this with no setting.</p>
-     */
-    inline void SetMasks(Aws::Vector<TCPFlag>&& value) { m_masksHasBeenSet = true; m_masks = std::move(value); }
-
-    /**
-     * <p>The set of flags to consider in the inspection. To inspect all flags in the
-     * valid values list, leave this with no setting.</p>
-     */
-    inline TCPFlagField& WithMasks(const Aws::Vector<TCPFlag>& value) { SetMasks(value); return *this;}
-
-    /**
-     * <p>The set of flags to consider in the inspection. To inspect all flags in the
-     * valid values list, leave this with no setting.</p>
-     */
-    inline TCPFlagField& WithMasks(Aws::Vector<TCPFlag>&& value) { SetMasks(std::move(value)); return *this;}
-
-    /**
-     * <p>The set of flags to consider in the inspection. To inspect all flags in the
-     * valid values list, leave this with no setting.</p>
-     */
-    inline TCPFlagField& AddMasks(const TCPFlag& value) { m_masksHasBeenSet = true; m_masks.push_back(value); return *this; }
-
-    /**
-     * <p>The set of flags to consider in the inspection. To inspect all flags in the
-     * valid values list, leave this with no setting.</p>
-     */
-    inline TCPFlagField& AddMasks(TCPFlag&& value) { m_masksHasBeenSet = true; m_masks.push_back(std::move(value)); return *this; }
-
+    template<typename MasksT = Aws::Vector<TCPFlag>>
+    void SetMasks(MasksT&& value) { m_masksHasBeenSet = true; m_masks = std::forward<MasksT>(value); }
+    template<typename MasksT = Aws::Vector<TCPFlag>>
+    TCPFlagField& WithMasks(MasksT&& value) { SetMasks(std::forward<MasksT>(value)); return *this;}
+    inline TCPFlagField& AddMasks(TCPFlag value) { m_masksHasBeenSet = true; m_masks.push_back(value); return *this; }
+    ///@}
   private:
 
     Aws::Vector<TCPFlag> m_flags;

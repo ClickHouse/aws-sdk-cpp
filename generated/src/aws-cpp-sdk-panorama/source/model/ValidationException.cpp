@@ -18,23 +18,7 @@ namespace Panorama
 namespace Model
 {
 
-ValidationException::ValidationException() : 
-    m_errorArgumentsHasBeenSet(false),
-    m_errorIdHasBeenSet(false),
-    m_fieldsHasBeenSet(false),
-    m_messageHasBeenSet(false),
-    m_reason(ValidationExceptionReason::NOT_SET),
-    m_reasonHasBeenSet(false)
-{
-}
-
-ValidationException::ValidationException(JsonView jsonValue) : 
-    m_errorArgumentsHasBeenSet(false),
-    m_errorIdHasBeenSet(false),
-    m_fieldsHasBeenSet(false),
-    m_messageHasBeenSet(false),
-    m_reason(ValidationExceptionReason::NOT_SET),
-    m_reasonHasBeenSet(false)
+ValidationException::ValidationException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -50,14 +34,11 @@ ValidationException& ValidationException::operator =(JsonView jsonValue)
     }
     m_errorArgumentsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ErrorId"))
   {
     m_errorId = jsonValue.GetString("ErrorId");
-
     m_errorIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Fields"))
   {
     Aws::Utils::Array<JsonView> fieldsJsonList = jsonValue.GetArray("Fields");
@@ -67,21 +48,16 @@ ValidationException& ValidationException::operator =(JsonView jsonValue)
     }
     m_fieldsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Message"))
   {
     m_message = jsonValue.GetString("Message");
-
     m_messageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Reason"))
   {
     m_reason = ValidationExceptionReasonMapper::GetValidationExceptionReasonForName(jsonValue.GetString("Reason"));
-
     m_reasonHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -20,13 +20,7 @@ namespace EC2
 namespace Model
 {
 
-PlacementResponse::PlacementResponse() : 
-    m_groupNameHasBeenSet(false)
-{
-}
-
-PlacementResponse::PlacementResponse(const XmlNode& xmlNode) : 
-    m_groupNameHasBeenSet(false)
+PlacementResponse::PlacementResponse(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

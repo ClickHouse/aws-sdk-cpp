@@ -18,25 +18,7 @@ namespace SimSpaceWeaver
 namespace Model
 {
 
-SimulationAppMetadata::SimulationAppMetadata() : 
-    m_domainHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_simulationHasBeenSet(false),
-    m_status(SimulationAppStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_targetStatus(SimulationAppTargetStatus::NOT_SET),
-    m_targetStatusHasBeenSet(false)
-{
-}
-
-SimulationAppMetadata::SimulationAppMetadata(JsonView jsonValue) : 
-    m_domainHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_simulationHasBeenSet(false),
-    m_status(SimulationAppStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_targetStatus(SimulationAppTargetStatus::NOT_SET),
-    m_targetStatusHasBeenSet(false)
+SimulationAppMetadata::SimulationAppMetadata(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,38 +28,28 @@ SimulationAppMetadata& SimulationAppMetadata::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Domain"))
   {
     m_domain = jsonValue.GetString("Domain");
-
     m_domainHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Simulation"))
   {
     m_simulation = jsonValue.GetString("Simulation");
-
     m_simulationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Status"))
   {
     m_status = SimulationAppStatusMapper::GetSimulationAppStatusForName(jsonValue.GetString("Status"));
-
     m_statusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TargetStatus"))
   {
     m_targetStatus = SimulationAppTargetStatusMapper::GetSimulationAppTargetStatusForName(jsonValue.GetString("TargetStatus"));
-
     m_targetStatusHasBeenSet = true;
   }
-
   return *this;
 }
 

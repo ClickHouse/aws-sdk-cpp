@@ -18,17 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-S3StorageConfig::S3StorageConfig() : 
-    m_s3UriHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false),
-    m_resolvedOutputS3UriHasBeenSet(false)
-{
-}
-
-S3StorageConfig::S3StorageConfig(JsonView jsonValue) : 
-    m_s3UriHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false),
-    m_resolvedOutputS3UriHasBeenSet(false)
+S3StorageConfig::S3StorageConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ S3StorageConfig& S3StorageConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("S3Uri"))
   {
     m_s3Uri = jsonValue.GetString("S3Uri");
-
     m_s3UriHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("KmsKeyId"))
   {
     m_kmsKeyId = jsonValue.GetString("KmsKeyId");
-
     m_kmsKeyIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResolvedOutputS3Uri"))
   {
     m_resolvedOutputS3Uri = jsonValue.GetString("ResolvedOutputS3Uri");
-
     m_resolvedOutputS3UriHasBeenSet = true;
   }
-
   return *this;
 }
 

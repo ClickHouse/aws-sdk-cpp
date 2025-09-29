@@ -18,17 +18,7 @@ namespace IoTEvents
 namespace Model
 {
 
-FirehoseAction::FirehoseAction() : 
-    m_deliveryStreamNameHasBeenSet(false),
-    m_separatorHasBeenSet(false),
-    m_payloadHasBeenSet(false)
-{
-}
-
-FirehoseAction::FirehoseAction(JsonView jsonValue) : 
-    m_deliveryStreamNameHasBeenSet(false),
-    m_separatorHasBeenSet(false),
-    m_payloadHasBeenSet(false)
+FirehoseAction::FirehoseAction(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ FirehoseAction& FirehoseAction::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("deliveryStreamName"))
   {
     m_deliveryStreamName = jsonValue.GetString("deliveryStreamName");
-
     m_deliveryStreamNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("separator"))
   {
     m_separator = jsonValue.GetString("separator");
-
     m_separatorHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("payload"))
   {
     m_payload = jsonValue.GetObject("payload");
-
     m_payloadHasBeenSet = true;
   }
-
   return *this;
 }
 

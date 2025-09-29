@@ -10,19 +10,13 @@
 using namespace Aws::IAM::Model;
 using namespace Aws::Utils;
 
-SetSecurityTokenServicePreferencesRequest::SetSecurityTokenServicePreferencesRequest() : 
-    m_globalEndpointTokenVersion(GlobalEndpointTokenVersion::NOT_SET),
-    m_globalEndpointTokenVersionHasBeenSet(false)
-{
-}
-
 Aws::String SetSecurityTokenServicePreferencesRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=SetSecurityTokenServicePreferences&";
   if(m_globalEndpointTokenVersionHasBeenSet)
   {
-    ss << "GlobalEndpointTokenVersion=" << GlobalEndpointTokenVersionMapper::GetNameForGlobalEndpointTokenVersion(m_globalEndpointTokenVersion) << "&";
+    ss << "GlobalEndpointTokenVersion=" << StringUtils::URLEncode(GlobalEndpointTokenVersionMapper::GetNameForGlobalEndpointTokenVersion(m_globalEndpointTokenVersion)) << "&";
   }
 
   ss << "Version=2010-05-08";

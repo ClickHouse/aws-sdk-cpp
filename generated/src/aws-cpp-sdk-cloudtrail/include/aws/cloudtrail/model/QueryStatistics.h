@@ -30,91 +30,52 @@ namespace Model
   class QueryStatistics
   {
   public:
-    AWS_CLOUDTRAIL_API QueryStatistics();
+    AWS_CLOUDTRAIL_API QueryStatistics() = default;
     AWS_CLOUDTRAIL_API QueryStatistics(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDTRAIL_API QueryStatistics& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDTRAIL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The number of results returned.</p>
      */
-    inline int GetResultsCount() const{ return m_resultsCount; }
-
-    /**
-     * <p>The number of results returned.</p>
-     */
+    inline int GetResultsCount() const { return m_resultsCount; }
     inline bool ResultsCountHasBeenSet() const { return m_resultsCountHasBeenSet; }
-
-    /**
-     * <p>The number of results returned.</p>
-     */
     inline void SetResultsCount(int value) { m_resultsCountHasBeenSet = true; m_resultsCount = value; }
-
-    /**
-     * <p>The number of results returned.</p>
-     */
     inline QueryStatistics& WithResultsCount(int value) { SetResultsCount(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The total number of results returned by a query.</p>
      */
-    inline int GetTotalResultsCount() const{ return m_totalResultsCount; }
-
-    /**
-     * <p>The total number of results returned by a query.</p>
-     */
+    inline int GetTotalResultsCount() const { return m_totalResultsCount; }
     inline bool TotalResultsCountHasBeenSet() const { return m_totalResultsCountHasBeenSet; }
-
-    /**
-     * <p>The total number of results returned by a query.</p>
-     */
     inline void SetTotalResultsCount(int value) { m_totalResultsCountHasBeenSet = true; m_totalResultsCount = value; }
-
-    /**
-     * <p>The total number of results returned by a query.</p>
-     */
     inline QueryStatistics& WithTotalResultsCount(int value) { SetTotalResultsCount(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The total bytes that the query scanned in the event data store. This value
      * matches the number of bytes for which your account is billed for the query,
      * unless the query is still running.</p>
      */
-    inline long long GetBytesScanned() const{ return m_bytesScanned; }
-
-    /**
-     * <p>The total bytes that the query scanned in the event data store. This value
-     * matches the number of bytes for which your account is billed for the query,
-     * unless the query is still running.</p>
-     */
+    inline long long GetBytesScanned() const { return m_bytesScanned; }
     inline bool BytesScannedHasBeenSet() const { return m_bytesScannedHasBeenSet; }
-
-    /**
-     * <p>The total bytes that the query scanned in the event data store. This value
-     * matches the number of bytes for which your account is billed for the query,
-     * unless the query is still running.</p>
-     */
     inline void SetBytesScanned(long long value) { m_bytesScannedHasBeenSet = true; m_bytesScanned = value; }
-
-    /**
-     * <p>The total bytes that the query scanned in the event data store. This value
-     * matches the number of bytes for which your account is billed for the query,
-     * unless the query is still running.</p>
-     */
     inline QueryStatistics& WithBytesScanned(long long value) { SetBytesScanned(value); return *this;}
-
+    ///@}
   private:
 
-    int m_resultsCount;
+    int m_resultsCount{0};
     bool m_resultsCountHasBeenSet = false;
 
-    int m_totalResultsCount;
+    int m_totalResultsCount{0};
     bool m_totalResultsCountHasBeenSet = false;
 
-    long long m_bytesScanned;
+    long long m_bytesScanned{0};
     bool m_bytesScannedHasBeenSet = false;
   };
 

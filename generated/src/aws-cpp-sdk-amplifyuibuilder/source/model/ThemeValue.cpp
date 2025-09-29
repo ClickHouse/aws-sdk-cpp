@@ -18,15 +18,7 @@ namespace AmplifyUIBuilder
 namespace Model
 {
 
-ThemeValue::ThemeValue() : 
-    m_valueHasBeenSet(false),
-    m_childrenHasBeenSet(false)
-{
-}
-
-ThemeValue::ThemeValue(JsonView jsonValue) : 
-    m_valueHasBeenSet(false),
-    m_childrenHasBeenSet(false)
+ThemeValue::ThemeValue(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ThemeValue& ThemeValue::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("value"))
   {
     m_value = jsonValue.GetString("value");
-
     m_valueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("children"))
   {
     Aws::Utils::Array<JsonView> childrenJsonList = jsonValue.GetArray("children");
@@ -49,7 +39,6 @@ ThemeValue& ThemeValue::operator =(JsonView jsonValue)
     }
     m_childrenHasBeenSet = true;
   }
-
   return *this;
 }
 

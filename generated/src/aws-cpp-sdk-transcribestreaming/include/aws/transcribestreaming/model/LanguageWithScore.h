@@ -35,77 +35,39 @@ namespace Model
   class LanguageWithScore
   {
   public:
-    AWS_TRANSCRIBESTREAMINGSERVICE_API LanguageWithScore();
+    AWS_TRANSCRIBESTREAMINGSERVICE_API LanguageWithScore() = default;
     AWS_TRANSCRIBESTREAMINGSERVICE_API LanguageWithScore(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRANSCRIBESTREAMINGSERVICE_API LanguageWithScore& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRANSCRIBESTREAMINGSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The language code of the identified language.</p>
      */
-    inline const LanguageCode& GetLanguageCode() const{ return m_languageCode; }
-
-    /**
-     * <p>The language code of the identified language.</p>
-     */
+    inline LanguageCode GetLanguageCode() const { return m_languageCode; }
     inline bool LanguageCodeHasBeenSet() const { return m_languageCodeHasBeenSet; }
+    inline void SetLanguageCode(LanguageCode value) { m_languageCodeHasBeenSet = true; m_languageCode = value; }
+    inline LanguageWithScore& WithLanguageCode(LanguageCode value) { SetLanguageCode(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The language code of the identified language.</p>
-     */
-    inline void SetLanguageCode(const LanguageCode& value) { m_languageCodeHasBeenSet = true; m_languageCode = value; }
-
-    /**
-     * <p>The language code of the identified language.</p>
-     */
-    inline void SetLanguageCode(LanguageCode&& value) { m_languageCodeHasBeenSet = true; m_languageCode = std::move(value); }
-
-    /**
-     * <p>The language code of the identified language.</p>
-     */
-    inline LanguageWithScore& WithLanguageCode(const LanguageCode& value) { SetLanguageCode(value); return *this;}
-
-    /**
-     * <p>The language code of the identified language.</p>
-     */
-    inline LanguageWithScore& WithLanguageCode(LanguageCode&& value) { SetLanguageCode(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The confidence score associated with the identified language code. Confidence
      * scores are values between zero and one; larger values indicate a higher
      * confidence in the identified language.</p>
      */
-    inline double GetScore() const{ return m_score; }
-
-    /**
-     * <p>The confidence score associated with the identified language code. Confidence
-     * scores are values between zero and one; larger values indicate a higher
-     * confidence in the identified language.</p>
-     */
+    inline double GetScore() const { return m_score; }
     inline bool ScoreHasBeenSet() const { return m_scoreHasBeenSet; }
-
-    /**
-     * <p>The confidence score associated with the identified language code. Confidence
-     * scores are values between zero and one; larger values indicate a higher
-     * confidence in the identified language.</p>
-     */
     inline void SetScore(double value) { m_scoreHasBeenSet = true; m_score = value; }
-
-    /**
-     * <p>The confidence score associated with the identified language code. Confidence
-     * scores are values between zero and one; larger values indicate a higher
-     * confidence in the identified language.</p>
-     */
     inline LanguageWithScore& WithScore(double value) { SetScore(value); return *this;}
-
+    ///@}
   private:
 
-    LanguageCode m_languageCode;
+    LanguageCode m_languageCode{LanguageCode::NOT_SET};
     bool m_languageCodeHasBeenSet = false;
 
-    double m_score;
+    double m_score{0.0};
     bool m_scoreHasBeenSet = false;
   };
 

@@ -29,59 +29,37 @@ namespace Model
   class DeviceStats
   {
   public:
-    AWS_SAGEMAKER_API DeviceStats();
+    AWS_SAGEMAKER_API DeviceStats() = default;
     AWS_SAGEMAKER_API DeviceStats(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API DeviceStats& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The number of devices connected with a heartbeat.</p>
      */
-    inline long long GetConnectedDeviceCount() const{ return m_connectedDeviceCount; }
-
-    /**
-     * <p>The number of devices connected with a heartbeat.</p>
-     */
+    inline long long GetConnectedDeviceCount() const { return m_connectedDeviceCount; }
     inline bool ConnectedDeviceCountHasBeenSet() const { return m_connectedDeviceCountHasBeenSet; }
-
-    /**
-     * <p>The number of devices connected with a heartbeat.</p>
-     */
     inline void SetConnectedDeviceCount(long long value) { m_connectedDeviceCountHasBeenSet = true; m_connectedDeviceCount = value; }
-
-    /**
-     * <p>The number of devices connected with a heartbeat.</p>
-     */
     inline DeviceStats& WithConnectedDeviceCount(long long value) { SetConnectedDeviceCount(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The number of registered devices.</p>
      */
-    inline long long GetRegisteredDeviceCount() const{ return m_registeredDeviceCount; }
-
-    /**
-     * <p>The number of registered devices.</p>
-     */
+    inline long long GetRegisteredDeviceCount() const { return m_registeredDeviceCount; }
     inline bool RegisteredDeviceCountHasBeenSet() const { return m_registeredDeviceCountHasBeenSet; }
-
-    /**
-     * <p>The number of registered devices.</p>
-     */
     inline void SetRegisteredDeviceCount(long long value) { m_registeredDeviceCountHasBeenSet = true; m_registeredDeviceCount = value; }
-
-    /**
-     * <p>The number of registered devices.</p>
-     */
     inline DeviceStats& WithRegisteredDeviceCount(long long value) { SetRegisteredDeviceCount(value); return *this;}
-
+    ///@}
   private:
 
-    long long m_connectedDeviceCount;
+    long long m_connectedDeviceCount{0};
     bool m_connectedDeviceCountHasBeenSet = false;
 
-    long long m_registeredDeviceCount;
+    long long m_registeredDeviceCount{0};
     bool m_registeredDeviceCountHasBeenSet = false;
   };
 

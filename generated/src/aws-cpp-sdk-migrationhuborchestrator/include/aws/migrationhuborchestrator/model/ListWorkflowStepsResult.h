@@ -29,111 +29,53 @@ namespace Model
   class ListWorkflowStepsResult
   {
   public:
-    AWS_MIGRATIONHUBORCHESTRATOR_API ListWorkflowStepsResult();
+    AWS_MIGRATIONHUBORCHESTRATOR_API ListWorkflowStepsResult() = default;
     AWS_MIGRATIONHUBORCHESTRATOR_API ListWorkflowStepsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_MIGRATIONHUBORCHESTRATOR_API ListWorkflowStepsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The pagination token.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListWorkflowStepsResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The pagination token.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>The pagination token.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>The pagination token.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>The pagination token.</p>
-     */
-    inline ListWorkflowStepsResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The pagination token.</p>
-     */
-    inline ListWorkflowStepsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The pagination token.</p>
-     */
-    inline ListWorkflowStepsResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The summary of steps in a migration workflow.</p>
      */
-    inline const Aws::Vector<WorkflowStepSummary>& GetWorkflowStepsSummary() const{ return m_workflowStepsSummary; }
+    inline const Aws::Vector<WorkflowStepSummary>& GetWorkflowStepsSummary() const { return m_workflowStepsSummary; }
+    template<typename WorkflowStepsSummaryT = Aws::Vector<WorkflowStepSummary>>
+    void SetWorkflowStepsSummary(WorkflowStepsSummaryT&& value) { m_workflowStepsSummaryHasBeenSet = true; m_workflowStepsSummary = std::forward<WorkflowStepsSummaryT>(value); }
+    template<typename WorkflowStepsSummaryT = Aws::Vector<WorkflowStepSummary>>
+    ListWorkflowStepsResult& WithWorkflowStepsSummary(WorkflowStepsSummaryT&& value) { SetWorkflowStepsSummary(std::forward<WorkflowStepsSummaryT>(value)); return *this;}
+    template<typename WorkflowStepsSummaryT = WorkflowStepSummary>
+    ListWorkflowStepsResult& AddWorkflowStepsSummary(WorkflowStepsSummaryT&& value) { m_workflowStepsSummaryHasBeenSet = true; m_workflowStepsSummary.emplace_back(std::forward<WorkflowStepsSummaryT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The summary of steps in a migration workflow.</p>
-     */
-    inline void SetWorkflowStepsSummary(const Aws::Vector<WorkflowStepSummary>& value) { m_workflowStepsSummary = value; }
-
-    /**
-     * <p>The summary of steps in a migration workflow.</p>
-     */
-    inline void SetWorkflowStepsSummary(Aws::Vector<WorkflowStepSummary>&& value) { m_workflowStepsSummary = std::move(value); }
-
-    /**
-     * <p>The summary of steps in a migration workflow.</p>
-     */
-    inline ListWorkflowStepsResult& WithWorkflowStepsSummary(const Aws::Vector<WorkflowStepSummary>& value) { SetWorkflowStepsSummary(value); return *this;}
-
-    /**
-     * <p>The summary of steps in a migration workflow.</p>
-     */
-    inline ListWorkflowStepsResult& WithWorkflowStepsSummary(Aws::Vector<WorkflowStepSummary>&& value) { SetWorkflowStepsSummary(std::move(value)); return *this;}
-
-    /**
-     * <p>The summary of steps in a migration workflow.</p>
-     */
-    inline ListWorkflowStepsResult& AddWorkflowStepsSummary(const WorkflowStepSummary& value) { m_workflowStepsSummary.push_back(value); return *this; }
-
-    /**
-     * <p>The summary of steps in a migration workflow.</p>
-     */
-    inline ListWorkflowStepsResult& AddWorkflowStepsSummary(WorkflowStepSummary&& value) { m_workflowStepsSummary.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListWorkflowStepsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListWorkflowStepsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListWorkflowStepsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListWorkflowStepsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::Vector<WorkflowStepSummary> m_workflowStepsSummary;
+    bool m_workflowStepsSummaryHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -32,272 +32,89 @@ namespace Model
   class AttributeValue
   {
   public:
-    AWS_LOOKOUTMETRICS_API AttributeValue();
+    AWS_LOOKOUTMETRICS_API AttributeValue() = default;
     AWS_LOOKOUTMETRICS_API AttributeValue(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOOKOUTMETRICS_API AttributeValue& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOOKOUTMETRICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A string.</p>
      */
-    inline const Aws::String& GetS() const{ return m_s; }
-
-    /**
-     * <p>A string.</p>
-     */
+    inline const Aws::String& GetS() const { return m_s; }
     inline bool SHasBeenSet() const { return m_sHasBeenSet; }
+    template<typename ST = Aws::String>
+    void SetS(ST&& value) { m_sHasBeenSet = true; m_s = std::forward<ST>(value); }
+    template<typename ST = Aws::String>
+    AttributeValue& WithS(ST&& value) { SetS(std::forward<ST>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A string.</p>
-     */
-    inline void SetS(const Aws::String& value) { m_sHasBeenSet = true; m_s = value; }
-
-    /**
-     * <p>A string.</p>
-     */
-    inline void SetS(Aws::String&& value) { m_sHasBeenSet = true; m_s = std::move(value); }
-
-    /**
-     * <p>A string.</p>
-     */
-    inline void SetS(const char* value) { m_sHasBeenSet = true; m_s.assign(value); }
-
-    /**
-     * <p>A string.</p>
-     */
-    inline AttributeValue& WithS(const Aws::String& value) { SetS(value); return *this;}
-
-    /**
-     * <p>A string.</p>
-     */
-    inline AttributeValue& WithS(Aws::String&& value) { SetS(std::move(value)); return *this;}
-
-    /**
-     * <p>A string.</p>
-     */
-    inline AttributeValue& WithS(const char* value) { SetS(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A number.</p>
      */
-    inline const Aws::String& GetN() const{ return m_n; }
-
-    /**
-     * <p>A number.</p>
-     */
+    inline const Aws::String& GetN() const { return m_n; }
     inline bool NHasBeenSet() const { return m_nHasBeenSet; }
+    template<typename NT = Aws::String>
+    void SetN(NT&& value) { m_nHasBeenSet = true; m_n = std::forward<NT>(value); }
+    template<typename NT = Aws::String>
+    AttributeValue& WithN(NT&& value) { SetN(std::forward<NT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A number.</p>
-     */
-    inline void SetN(const Aws::String& value) { m_nHasBeenSet = true; m_n = value; }
-
-    /**
-     * <p>A number.</p>
-     */
-    inline void SetN(Aws::String&& value) { m_nHasBeenSet = true; m_n = std::move(value); }
-
-    /**
-     * <p>A number.</p>
-     */
-    inline void SetN(const char* value) { m_nHasBeenSet = true; m_n.assign(value); }
-
-    /**
-     * <p>A number.</p>
-     */
-    inline AttributeValue& WithN(const Aws::String& value) { SetN(value); return *this;}
-
-    /**
-     * <p>A number.</p>
-     */
-    inline AttributeValue& WithN(Aws::String&& value) { SetN(std::move(value)); return *this;}
-
-    /**
-     * <p>A number.</p>
-     */
-    inline AttributeValue& WithN(const char* value) { SetN(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A binary value.</p>
      */
-    inline const Aws::String& GetB() const{ return m_b; }
-
-    /**
-     * <p>A binary value.</p>
-     */
+    inline const Aws::String& GetB() const { return m_b; }
     inline bool BHasBeenSet() const { return m_bHasBeenSet; }
+    template<typename BT = Aws::String>
+    void SetB(BT&& value) { m_bHasBeenSet = true; m_b = std::forward<BT>(value); }
+    template<typename BT = Aws::String>
+    AttributeValue& WithB(BT&& value) { SetB(std::forward<BT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A binary value.</p>
-     */
-    inline void SetB(const Aws::String& value) { m_bHasBeenSet = true; m_b = value; }
-
-    /**
-     * <p>A binary value.</p>
-     */
-    inline void SetB(Aws::String&& value) { m_bHasBeenSet = true; m_b = std::move(value); }
-
-    /**
-     * <p>A binary value.</p>
-     */
-    inline void SetB(const char* value) { m_bHasBeenSet = true; m_b.assign(value); }
-
-    /**
-     * <p>A binary value.</p>
-     */
-    inline AttributeValue& WithB(const Aws::String& value) { SetB(value); return *this;}
-
-    /**
-     * <p>A binary value.</p>
-     */
-    inline AttributeValue& WithB(Aws::String&& value) { SetB(std::move(value)); return *this;}
-
-    /**
-     * <p>A binary value.</p>
-     */
-    inline AttributeValue& WithB(const char* value) { SetB(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of strings.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetSS() const{ return m_sS; }
-
-    /**
-     * <p>A list of strings.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetSS() const { return m_sS; }
     inline bool SSHasBeenSet() const { return m_sSHasBeenSet; }
+    template<typename SST = Aws::Vector<Aws::String>>
+    void SetSS(SST&& value) { m_sSHasBeenSet = true; m_sS = std::forward<SST>(value); }
+    template<typename SST = Aws::Vector<Aws::String>>
+    AttributeValue& WithSS(SST&& value) { SetSS(std::forward<SST>(value)); return *this;}
+    template<typename SST = Aws::String>
+    AttributeValue& AddSS(SST&& value) { m_sSHasBeenSet = true; m_sS.emplace_back(std::forward<SST>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of strings.</p>
-     */
-    inline void SetSS(const Aws::Vector<Aws::String>& value) { m_sSHasBeenSet = true; m_sS = value; }
-
-    /**
-     * <p>A list of strings.</p>
-     */
-    inline void SetSS(Aws::Vector<Aws::String>&& value) { m_sSHasBeenSet = true; m_sS = std::move(value); }
-
-    /**
-     * <p>A list of strings.</p>
-     */
-    inline AttributeValue& WithSS(const Aws::Vector<Aws::String>& value) { SetSS(value); return *this;}
-
-    /**
-     * <p>A list of strings.</p>
-     */
-    inline AttributeValue& WithSS(Aws::Vector<Aws::String>&& value) { SetSS(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of strings.</p>
-     */
-    inline AttributeValue& AddSS(const Aws::String& value) { m_sSHasBeenSet = true; m_sS.push_back(value); return *this; }
-
-    /**
-     * <p>A list of strings.</p>
-     */
-    inline AttributeValue& AddSS(Aws::String&& value) { m_sSHasBeenSet = true; m_sS.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of strings.</p>
-     */
-    inline AttributeValue& AddSS(const char* value) { m_sSHasBeenSet = true; m_sS.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of numbers.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetNS() const{ return m_nS; }
-
-    /**
-     * <p>A list of numbers.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetNS() const { return m_nS; }
     inline bool NSHasBeenSet() const { return m_nSHasBeenSet; }
+    template<typename NST = Aws::Vector<Aws::String>>
+    void SetNS(NST&& value) { m_nSHasBeenSet = true; m_nS = std::forward<NST>(value); }
+    template<typename NST = Aws::Vector<Aws::String>>
+    AttributeValue& WithNS(NST&& value) { SetNS(std::forward<NST>(value)); return *this;}
+    template<typename NST = Aws::String>
+    AttributeValue& AddNS(NST&& value) { m_nSHasBeenSet = true; m_nS.emplace_back(std::forward<NST>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of numbers.</p>
-     */
-    inline void SetNS(const Aws::Vector<Aws::String>& value) { m_nSHasBeenSet = true; m_nS = value; }
-
-    /**
-     * <p>A list of numbers.</p>
-     */
-    inline void SetNS(Aws::Vector<Aws::String>&& value) { m_nSHasBeenSet = true; m_nS = std::move(value); }
-
-    /**
-     * <p>A list of numbers.</p>
-     */
-    inline AttributeValue& WithNS(const Aws::Vector<Aws::String>& value) { SetNS(value); return *this;}
-
-    /**
-     * <p>A list of numbers.</p>
-     */
-    inline AttributeValue& WithNS(Aws::Vector<Aws::String>&& value) { SetNS(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of numbers.</p>
-     */
-    inline AttributeValue& AddNS(const Aws::String& value) { m_nSHasBeenSet = true; m_nS.push_back(value); return *this; }
-
-    /**
-     * <p>A list of numbers.</p>
-     */
-    inline AttributeValue& AddNS(Aws::String&& value) { m_nSHasBeenSet = true; m_nS.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of numbers.</p>
-     */
-    inline AttributeValue& AddNS(const char* value) { m_nSHasBeenSet = true; m_nS.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of binary values.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetBS() const{ return m_bS; }
-
-    /**
-     * <p>A list of binary values.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetBS() const { return m_bS; }
     inline bool BSHasBeenSet() const { return m_bSHasBeenSet; }
-
-    /**
-     * <p>A list of binary values.</p>
-     */
-    inline void SetBS(const Aws::Vector<Aws::String>& value) { m_bSHasBeenSet = true; m_bS = value; }
-
-    /**
-     * <p>A list of binary values.</p>
-     */
-    inline void SetBS(Aws::Vector<Aws::String>&& value) { m_bSHasBeenSet = true; m_bS = std::move(value); }
-
-    /**
-     * <p>A list of binary values.</p>
-     */
-    inline AttributeValue& WithBS(const Aws::Vector<Aws::String>& value) { SetBS(value); return *this;}
-
-    /**
-     * <p>A list of binary values.</p>
-     */
-    inline AttributeValue& WithBS(Aws::Vector<Aws::String>&& value) { SetBS(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of binary values.</p>
-     */
-    inline AttributeValue& AddBS(const Aws::String& value) { m_bSHasBeenSet = true; m_bS.push_back(value); return *this; }
-
-    /**
-     * <p>A list of binary values.</p>
-     */
-    inline AttributeValue& AddBS(Aws::String&& value) { m_bSHasBeenSet = true; m_bS.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of binary values.</p>
-     */
-    inline AttributeValue& AddBS(const char* value) { m_bSHasBeenSet = true; m_bS.push_back(value); return *this; }
-
+    template<typename BST = Aws::Vector<Aws::String>>
+    void SetBS(BST&& value) { m_bSHasBeenSet = true; m_bS = std::forward<BST>(value); }
+    template<typename BST = Aws::Vector<Aws::String>>
+    AttributeValue& WithBS(BST&& value) { SetBS(std::forward<BST>(value)); return *this;}
+    template<typename BST = Aws::String>
+    AttributeValue& AddBS(BST&& value) { m_bSHasBeenSet = true; m_bS.emplace_back(std::forward<BST>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_s;

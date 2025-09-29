@@ -12,12 +12,6 @@ using namespace Aws::DynamoDB::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-TagResourceRequest::TagResourceRequest() : 
-    m_resourceArnHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String TagResourceRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -51,5 +45,15 @@ Aws::Http::HeaderValueCollection TagResourceRequest::GetRequestSpecificHeaders()
 }
 
 
+
+TagResourceRequest::EndpointParameters TagResourceRequest::GetEndpointContextParams() const
+{
+    EndpointParameters parameters;
+    // Operation context parameters
+    if (ResourceArnHasBeenSet()) {
+        parameters.emplace_back(Aws::String("ResourceArn"), this->GetResourceArn(), Aws::Endpoint::EndpointParameter::ParameterOrigin::OPERATION_CONTEXT);
+    }
+    return parameters;
+}
 
 

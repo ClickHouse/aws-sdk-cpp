@@ -33,89 +33,41 @@ namespace Model
   class SearchFilter
   {
   public:
-    AWS_MEDICALIMAGING_API SearchFilter();
+    AWS_MEDICALIMAGING_API SearchFilter() = default;
     AWS_MEDICALIMAGING_API SearchFilter(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDICALIMAGING_API SearchFilter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDICALIMAGING_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The search filter values.</p>
      */
-    inline const Aws::Vector<SearchByAttributeValue>& GetValues() const{ return m_values; }
-
-    /**
-     * <p>The search filter values.</p>
-     */
+    inline const Aws::Vector<SearchByAttributeValue>& GetValues() const { return m_values; }
     inline bool ValuesHasBeenSet() const { return m_valuesHasBeenSet; }
+    template<typename ValuesT = Aws::Vector<SearchByAttributeValue>>
+    void SetValues(ValuesT&& value) { m_valuesHasBeenSet = true; m_values = std::forward<ValuesT>(value); }
+    template<typename ValuesT = Aws::Vector<SearchByAttributeValue>>
+    SearchFilter& WithValues(ValuesT&& value) { SetValues(std::forward<ValuesT>(value)); return *this;}
+    template<typename ValuesT = SearchByAttributeValue>
+    SearchFilter& AddValues(ValuesT&& value) { m_valuesHasBeenSet = true; m_values.emplace_back(std::forward<ValuesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The search filter values.</p>
-     */
-    inline void SetValues(const Aws::Vector<SearchByAttributeValue>& value) { m_valuesHasBeenSet = true; m_values = value; }
-
-    /**
-     * <p>The search filter values.</p>
-     */
-    inline void SetValues(Aws::Vector<SearchByAttributeValue>&& value) { m_valuesHasBeenSet = true; m_values = std::move(value); }
-
-    /**
-     * <p>The search filter values.</p>
-     */
-    inline SearchFilter& WithValues(const Aws::Vector<SearchByAttributeValue>& value) { SetValues(value); return *this;}
-
-    /**
-     * <p>The search filter values.</p>
-     */
-    inline SearchFilter& WithValues(Aws::Vector<SearchByAttributeValue>&& value) { SetValues(std::move(value)); return *this;}
-
-    /**
-     * <p>The search filter values.</p>
-     */
-    inline SearchFilter& AddValues(const SearchByAttributeValue& value) { m_valuesHasBeenSet = true; m_values.push_back(value); return *this; }
-
-    /**
-     * <p>The search filter values.</p>
-     */
-    inline SearchFilter& AddValues(SearchByAttributeValue&& value) { m_valuesHasBeenSet = true; m_values.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The search filter operator for <code>imageSetDateTime</code>.</p>
      */
-    inline const Operator& GetOperator() const{ return m_operator; }
-
-    /**
-     * <p>The search filter operator for <code>imageSetDateTime</code>.</p>
-     */
+    inline Operator GetOperator() const { return m_operator; }
     inline bool OperatorHasBeenSet() const { return m_operatorHasBeenSet; }
-
-    /**
-     * <p>The search filter operator for <code>imageSetDateTime</code>.</p>
-     */
-    inline void SetOperator(const Operator& value) { m_operatorHasBeenSet = true; m_operator = value; }
-
-    /**
-     * <p>The search filter operator for <code>imageSetDateTime</code>.</p>
-     */
-    inline void SetOperator(Operator&& value) { m_operatorHasBeenSet = true; m_operator = std::move(value); }
-
-    /**
-     * <p>The search filter operator for <code>imageSetDateTime</code>.</p>
-     */
-    inline SearchFilter& WithOperator(const Operator& value) { SetOperator(value); return *this;}
-
-    /**
-     * <p>The search filter operator for <code>imageSetDateTime</code>.</p>
-     */
-    inline SearchFilter& WithOperator(Operator&& value) { SetOperator(std::move(value)); return *this;}
-
+    inline void SetOperator(Operator value) { m_operatorHasBeenSet = true; m_operator = value; }
+    inline SearchFilter& WithOperator(Operator value) { SetOperator(value); return *this;}
+    ///@}
   private:
 
     Aws::Vector<SearchByAttributeValue> m_values;
     bool m_valuesHasBeenSet = false;
 
-    Operator m_operator;
+    Operator m_operator{Operator::NOT_SET};
     bool m_operatorHasBeenSet = false;
   };
 

@@ -18,13 +18,7 @@ namespace CleanRooms
 namespace Model
 {
 
-PaymentConfiguration::PaymentConfiguration() : 
-    m_queryComputeHasBeenSet(false)
-{
-}
-
-PaymentConfiguration::PaymentConfiguration(JsonView jsonValue) : 
-    m_queryComputeHasBeenSet(false)
+PaymentConfiguration::PaymentConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,18 @@ PaymentConfiguration& PaymentConfiguration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("queryCompute"))
   {
     m_queryCompute = jsonValue.GetObject("queryCompute");
-
     m_queryComputeHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("machineLearning"))
+  {
+    m_machineLearning = jsonValue.GetObject("machineLearning");
+    m_machineLearningHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("jobCompute"))
+  {
+    m_jobCompute = jsonValue.GetObject("jobCompute");
+    m_jobComputeHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -48,6 +50,18 @@ JsonValue PaymentConfiguration::Jsonize() const
   if(m_queryComputeHasBeenSet)
   {
    payload.WithObject("queryCompute", m_queryCompute.Jsonize());
+
+  }
+
+  if(m_machineLearningHasBeenSet)
+  {
+   payload.WithObject("machineLearning", m_machineLearning.Jsonize());
+
+  }
+
+  if(m_jobComputeHasBeenSet)
+  {
+   payload.WithObject("jobCompute", m_jobCompute.Jsonize());
 
   }
 

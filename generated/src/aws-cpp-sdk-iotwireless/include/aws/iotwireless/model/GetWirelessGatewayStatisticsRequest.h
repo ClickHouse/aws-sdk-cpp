@@ -21,7 +21,7 @@ namespace Model
   class GetWirelessGatewayStatisticsRequest : public IoTWirelessRequest
   {
   public:
-    AWS_IOTWIRELESS_API GetWirelessGatewayStatisticsRequest();
+    AWS_IOTWIRELESS_API GetWirelessGatewayStatisticsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_IOTWIRELESS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the wireless gateway for which to get the data.</p>
      */
-    inline const Aws::String& GetWirelessGatewayId() const{ return m_wirelessGatewayId; }
-
-    /**
-     * <p>The ID of the wireless gateway for which to get the data.</p>
-     */
+    inline const Aws::String& GetWirelessGatewayId() const { return m_wirelessGatewayId; }
     inline bool WirelessGatewayIdHasBeenSet() const { return m_wirelessGatewayIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the wireless gateway for which to get the data.</p>
-     */
-    inline void SetWirelessGatewayId(const Aws::String& value) { m_wirelessGatewayIdHasBeenSet = true; m_wirelessGatewayId = value; }
-
-    /**
-     * <p>The ID of the wireless gateway for which to get the data.</p>
-     */
-    inline void SetWirelessGatewayId(Aws::String&& value) { m_wirelessGatewayIdHasBeenSet = true; m_wirelessGatewayId = std::move(value); }
-
-    /**
-     * <p>The ID of the wireless gateway for which to get the data.</p>
-     */
-    inline void SetWirelessGatewayId(const char* value) { m_wirelessGatewayIdHasBeenSet = true; m_wirelessGatewayId.assign(value); }
-
-    /**
-     * <p>The ID of the wireless gateway for which to get the data.</p>
-     */
-    inline GetWirelessGatewayStatisticsRequest& WithWirelessGatewayId(const Aws::String& value) { SetWirelessGatewayId(value); return *this;}
-
-    /**
-     * <p>The ID of the wireless gateway for which to get the data.</p>
-     */
-    inline GetWirelessGatewayStatisticsRequest& WithWirelessGatewayId(Aws::String&& value) { SetWirelessGatewayId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the wireless gateway for which to get the data.</p>
-     */
-    inline GetWirelessGatewayStatisticsRequest& WithWirelessGatewayId(const char* value) { SetWirelessGatewayId(value); return *this;}
-
+    template<typename WirelessGatewayIdT = Aws::String>
+    void SetWirelessGatewayId(WirelessGatewayIdT&& value) { m_wirelessGatewayIdHasBeenSet = true; m_wirelessGatewayId = std::forward<WirelessGatewayIdT>(value); }
+    template<typename WirelessGatewayIdT = Aws::String>
+    GetWirelessGatewayStatisticsRequest& WithWirelessGatewayId(WirelessGatewayIdT&& value) { SetWirelessGatewayId(std::forward<WirelessGatewayIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_wirelessGatewayId;

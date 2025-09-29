@@ -18,13 +18,7 @@ namespace AppMesh
 namespace Model
 {
 
-TcpRouteAction::TcpRouteAction() : 
-    m_weightedTargetsHasBeenSet(false)
-{
-}
-
-TcpRouteAction::TcpRouteAction(JsonView jsonValue) : 
-    m_weightedTargetsHasBeenSet(false)
+TcpRouteAction::TcpRouteAction(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ TcpRouteAction& TcpRouteAction::operator =(JsonView jsonValue)
     }
     m_weightedTargetsHasBeenSet = true;
   }
-
   return *this;
 }
 

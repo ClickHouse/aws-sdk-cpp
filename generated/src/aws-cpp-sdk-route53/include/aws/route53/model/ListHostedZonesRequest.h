@@ -31,7 +31,7 @@ namespace Model
   class ListHostedZonesRequest : public Route53Request
   {
   public:
-    AWS_ROUTE53_API ListHostedZonesRequest();
+    AWS_ROUTE53_API ListHostedZonesRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -44,6 +44,7 @@ namespace Model
     AWS_ROUTE53_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>If the value of <code>IsTruncated</code> in the previous response was
      * <code>true</code>, you have more hosted zones. To get more hosted zones, submit
@@ -54,93 +55,15 @@ namespace Model
      * <code>IsTruncated</code> in the previous response was <code>false</code>, there
      * are no more hosted zones to get.</p>
      */
-    inline const Aws::String& GetMarker() const{ return m_marker; }
-
-    /**
-     * <p>If the value of <code>IsTruncated</code> in the previous response was
-     * <code>true</code>, you have more hosted zones. To get more hosted zones, submit
-     * another <code>ListHostedZones</code> request. </p> <p>For the value of
-     * <code>marker</code>, specify the value of <code>NextMarker</code> from the
-     * previous response, which is the ID of the first hosted zone that Amazon Route 53
-     * will return if you submit another request.</p> <p>If the value of
-     * <code>IsTruncated</code> in the previous response was <code>false</code>, there
-     * are no more hosted zones to get.</p>
-     */
+    inline const Aws::String& GetMarker() const { return m_marker; }
     inline bool MarkerHasBeenSet() const { return m_markerHasBeenSet; }
+    template<typename MarkerT = Aws::String>
+    void SetMarker(MarkerT&& value) { m_markerHasBeenSet = true; m_marker = std::forward<MarkerT>(value); }
+    template<typename MarkerT = Aws::String>
+    ListHostedZonesRequest& WithMarker(MarkerT&& value) { SetMarker(std::forward<MarkerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If the value of <code>IsTruncated</code> in the previous response was
-     * <code>true</code>, you have more hosted zones. To get more hosted zones, submit
-     * another <code>ListHostedZones</code> request. </p> <p>For the value of
-     * <code>marker</code>, specify the value of <code>NextMarker</code> from the
-     * previous response, which is the ID of the first hosted zone that Amazon Route 53
-     * will return if you submit another request.</p> <p>If the value of
-     * <code>IsTruncated</code> in the previous response was <code>false</code>, there
-     * are no more hosted zones to get.</p>
-     */
-    inline void SetMarker(const Aws::String& value) { m_markerHasBeenSet = true; m_marker = value; }
-
-    /**
-     * <p>If the value of <code>IsTruncated</code> in the previous response was
-     * <code>true</code>, you have more hosted zones. To get more hosted zones, submit
-     * another <code>ListHostedZones</code> request. </p> <p>For the value of
-     * <code>marker</code>, specify the value of <code>NextMarker</code> from the
-     * previous response, which is the ID of the first hosted zone that Amazon Route 53
-     * will return if you submit another request.</p> <p>If the value of
-     * <code>IsTruncated</code> in the previous response was <code>false</code>, there
-     * are no more hosted zones to get.</p>
-     */
-    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = std::move(value); }
-
-    /**
-     * <p>If the value of <code>IsTruncated</code> in the previous response was
-     * <code>true</code>, you have more hosted zones. To get more hosted zones, submit
-     * another <code>ListHostedZones</code> request. </p> <p>For the value of
-     * <code>marker</code>, specify the value of <code>NextMarker</code> from the
-     * previous response, which is the ID of the first hosted zone that Amazon Route 53
-     * will return if you submit another request.</p> <p>If the value of
-     * <code>IsTruncated</code> in the previous response was <code>false</code>, there
-     * are no more hosted zones to get.</p>
-     */
-    inline void SetMarker(const char* value) { m_markerHasBeenSet = true; m_marker.assign(value); }
-
-    /**
-     * <p>If the value of <code>IsTruncated</code> in the previous response was
-     * <code>true</code>, you have more hosted zones. To get more hosted zones, submit
-     * another <code>ListHostedZones</code> request. </p> <p>For the value of
-     * <code>marker</code>, specify the value of <code>NextMarker</code> from the
-     * previous response, which is the ID of the first hosted zone that Amazon Route 53
-     * will return if you submit another request.</p> <p>If the value of
-     * <code>IsTruncated</code> in the previous response was <code>false</code>, there
-     * are no more hosted zones to get.</p>
-     */
-    inline ListHostedZonesRequest& WithMarker(const Aws::String& value) { SetMarker(value); return *this;}
-
-    /**
-     * <p>If the value of <code>IsTruncated</code> in the previous response was
-     * <code>true</code>, you have more hosted zones. To get more hosted zones, submit
-     * another <code>ListHostedZones</code> request. </p> <p>For the value of
-     * <code>marker</code>, specify the value of <code>NextMarker</code> from the
-     * previous response, which is the ID of the first hosted zone that Amazon Route 53
-     * will return if you submit another request.</p> <p>If the value of
-     * <code>IsTruncated</code> in the previous response was <code>false</code>, there
-     * are no more hosted zones to get.</p>
-     */
-    inline ListHostedZonesRequest& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
-
-    /**
-     * <p>If the value of <code>IsTruncated</code> in the previous response was
-     * <code>true</code>, you have more hosted zones. To get more hosted zones, submit
-     * another <code>ListHostedZones</code> request. </p> <p>For the value of
-     * <code>marker</code>, specify the value of <code>NextMarker</code> from the
-     * previous response, which is the ID of the first hosted zone that Amazon Route 53
-     * will return if you submit another request.</p> <p>If the value of
-     * <code>IsTruncated</code> in the previous response was <code>false</code>, there
-     * are no more hosted zones to get.</p>
-     */
-    inline ListHostedZonesRequest& WithMarker(const char* value) { SetMarker(value); return *this;}
-
-
+    ///@{
     /**
      * <p>(Optional) The maximum number of hosted zones that you want Amazon Route 53
      * to return. If you have more than <code>maxitems</code> hosted zones, the value
@@ -148,159 +71,37 @@ namespace Model
      * of <code>NextMarker</code> is the hosted zone ID of the first hosted zone that
      * Route 53 will return if you submit another request.</p>
      */
-    inline const Aws::String& GetMaxItems() const{ return m_maxItems; }
-
-    /**
-     * <p>(Optional) The maximum number of hosted zones that you want Amazon Route 53
-     * to return. If you have more than <code>maxitems</code> hosted zones, the value
-     * of <code>IsTruncated</code> in the response is <code>true</code>, and the value
-     * of <code>NextMarker</code> is the hosted zone ID of the first hosted zone that
-     * Route 53 will return if you submit another request.</p>
-     */
+    inline const Aws::String& GetMaxItems() const { return m_maxItems; }
     inline bool MaxItemsHasBeenSet() const { return m_maxItemsHasBeenSet; }
+    template<typename MaxItemsT = Aws::String>
+    void SetMaxItems(MaxItemsT&& value) { m_maxItemsHasBeenSet = true; m_maxItems = std::forward<MaxItemsT>(value); }
+    template<typename MaxItemsT = Aws::String>
+    ListHostedZonesRequest& WithMaxItems(MaxItemsT&& value) { SetMaxItems(std::forward<MaxItemsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>(Optional) The maximum number of hosted zones that you want Amazon Route 53
-     * to return. If you have more than <code>maxitems</code> hosted zones, the value
-     * of <code>IsTruncated</code> in the response is <code>true</code>, and the value
-     * of <code>NextMarker</code> is the hosted zone ID of the first hosted zone that
-     * Route 53 will return if you submit another request.</p>
-     */
-    inline void SetMaxItems(const Aws::String& value) { m_maxItemsHasBeenSet = true; m_maxItems = value; }
-
-    /**
-     * <p>(Optional) The maximum number of hosted zones that you want Amazon Route 53
-     * to return. If you have more than <code>maxitems</code> hosted zones, the value
-     * of <code>IsTruncated</code> in the response is <code>true</code>, and the value
-     * of <code>NextMarker</code> is the hosted zone ID of the first hosted zone that
-     * Route 53 will return if you submit another request.</p>
-     */
-    inline void SetMaxItems(Aws::String&& value) { m_maxItemsHasBeenSet = true; m_maxItems = std::move(value); }
-
-    /**
-     * <p>(Optional) The maximum number of hosted zones that you want Amazon Route 53
-     * to return. If you have more than <code>maxitems</code> hosted zones, the value
-     * of <code>IsTruncated</code> in the response is <code>true</code>, and the value
-     * of <code>NextMarker</code> is the hosted zone ID of the first hosted zone that
-     * Route 53 will return if you submit another request.</p>
-     */
-    inline void SetMaxItems(const char* value) { m_maxItemsHasBeenSet = true; m_maxItems.assign(value); }
-
-    /**
-     * <p>(Optional) The maximum number of hosted zones that you want Amazon Route 53
-     * to return. If you have more than <code>maxitems</code> hosted zones, the value
-     * of <code>IsTruncated</code> in the response is <code>true</code>, and the value
-     * of <code>NextMarker</code> is the hosted zone ID of the first hosted zone that
-     * Route 53 will return if you submit another request.</p>
-     */
-    inline ListHostedZonesRequest& WithMaxItems(const Aws::String& value) { SetMaxItems(value); return *this;}
-
-    /**
-     * <p>(Optional) The maximum number of hosted zones that you want Amazon Route 53
-     * to return. If you have more than <code>maxitems</code> hosted zones, the value
-     * of <code>IsTruncated</code> in the response is <code>true</code>, and the value
-     * of <code>NextMarker</code> is the hosted zone ID of the first hosted zone that
-     * Route 53 will return if you submit another request.</p>
-     */
-    inline ListHostedZonesRequest& WithMaxItems(Aws::String&& value) { SetMaxItems(std::move(value)); return *this;}
-
-    /**
-     * <p>(Optional) The maximum number of hosted zones that you want Amazon Route 53
-     * to return. If you have more than <code>maxitems</code> hosted zones, the value
-     * of <code>IsTruncated</code> in the response is <code>true</code>, and the value
-     * of <code>NextMarker</code> is the hosted zone ID of the first hosted zone that
-     * Route 53 will return if you submit another request.</p>
-     */
-    inline ListHostedZonesRequest& WithMaxItems(const char* value) { SetMaxItems(value); return *this;}
-
-
+    ///@{
     /**
      * <p>If you're using reusable delegation sets and you want to list all of the
      * hosted zones that are associated with a reusable delegation set, specify the ID
      * of that reusable delegation set. </p>
      */
-    inline const Aws::String& GetDelegationSetId() const{ return m_delegationSetId; }
-
-    /**
-     * <p>If you're using reusable delegation sets and you want to list all of the
-     * hosted zones that are associated with a reusable delegation set, specify the ID
-     * of that reusable delegation set. </p>
-     */
+    inline const Aws::String& GetDelegationSetId() const { return m_delegationSetId; }
     inline bool DelegationSetIdHasBeenSet() const { return m_delegationSetIdHasBeenSet; }
+    template<typename DelegationSetIdT = Aws::String>
+    void SetDelegationSetId(DelegationSetIdT&& value) { m_delegationSetIdHasBeenSet = true; m_delegationSetId = std::forward<DelegationSetIdT>(value); }
+    template<typename DelegationSetIdT = Aws::String>
+    ListHostedZonesRequest& WithDelegationSetId(DelegationSetIdT&& value) { SetDelegationSetId(std::forward<DelegationSetIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If you're using reusable delegation sets and you want to list all of the
-     * hosted zones that are associated with a reusable delegation set, specify the ID
-     * of that reusable delegation set. </p>
-     */
-    inline void SetDelegationSetId(const Aws::String& value) { m_delegationSetIdHasBeenSet = true; m_delegationSetId = value; }
-
-    /**
-     * <p>If you're using reusable delegation sets and you want to list all of the
-     * hosted zones that are associated with a reusable delegation set, specify the ID
-     * of that reusable delegation set. </p>
-     */
-    inline void SetDelegationSetId(Aws::String&& value) { m_delegationSetIdHasBeenSet = true; m_delegationSetId = std::move(value); }
-
-    /**
-     * <p>If you're using reusable delegation sets and you want to list all of the
-     * hosted zones that are associated with a reusable delegation set, specify the ID
-     * of that reusable delegation set. </p>
-     */
-    inline void SetDelegationSetId(const char* value) { m_delegationSetIdHasBeenSet = true; m_delegationSetId.assign(value); }
-
-    /**
-     * <p>If you're using reusable delegation sets and you want to list all of the
-     * hosted zones that are associated with a reusable delegation set, specify the ID
-     * of that reusable delegation set. </p>
-     */
-    inline ListHostedZonesRequest& WithDelegationSetId(const Aws::String& value) { SetDelegationSetId(value); return *this;}
-
-    /**
-     * <p>If you're using reusable delegation sets and you want to list all of the
-     * hosted zones that are associated with a reusable delegation set, specify the ID
-     * of that reusable delegation set. </p>
-     */
-    inline ListHostedZonesRequest& WithDelegationSetId(Aws::String&& value) { SetDelegationSetId(std::move(value)); return *this;}
-
-    /**
-     * <p>If you're using reusable delegation sets and you want to list all of the
-     * hosted zones that are associated with a reusable delegation set, specify the ID
-     * of that reusable delegation set. </p>
-     */
-    inline ListHostedZonesRequest& WithDelegationSetId(const char* value) { SetDelegationSetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p> (Optional) Specifies if the hosted zone is private. </p>
      */
-    inline const HostedZoneType& GetHostedZoneType() const{ return m_hostedZoneType; }
-
-    /**
-     * <p> (Optional) Specifies if the hosted zone is private. </p>
-     */
+    inline HostedZoneType GetHostedZoneType() const { return m_hostedZoneType; }
     inline bool HostedZoneTypeHasBeenSet() const { return m_hostedZoneTypeHasBeenSet; }
-
-    /**
-     * <p> (Optional) Specifies if the hosted zone is private. </p>
-     */
-    inline void SetHostedZoneType(const HostedZoneType& value) { m_hostedZoneTypeHasBeenSet = true; m_hostedZoneType = value; }
-
-    /**
-     * <p> (Optional) Specifies if the hosted zone is private. </p>
-     */
-    inline void SetHostedZoneType(HostedZoneType&& value) { m_hostedZoneTypeHasBeenSet = true; m_hostedZoneType = std::move(value); }
-
-    /**
-     * <p> (Optional) Specifies if the hosted zone is private. </p>
-     */
-    inline ListHostedZonesRequest& WithHostedZoneType(const HostedZoneType& value) { SetHostedZoneType(value); return *this;}
-
-    /**
-     * <p> (Optional) Specifies if the hosted zone is private. </p>
-     */
-    inline ListHostedZonesRequest& WithHostedZoneType(HostedZoneType&& value) { SetHostedZoneType(std::move(value)); return *this;}
-
+    inline void SetHostedZoneType(HostedZoneType value) { m_hostedZoneTypeHasBeenSet = true; m_hostedZoneType = value; }
+    inline ListHostedZonesRequest& WithHostedZoneType(HostedZoneType value) { SetHostedZoneType(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_marker;
@@ -312,7 +113,7 @@ namespace Model
     Aws::String m_delegationSetId;
     bool m_delegationSetIdHasBeenSet = false;
 
-    HostedZoneType m_hostedZoneType;
+    HostedZoneType m_hostedZoneType{HostedZoneType::NOT_SET};
     bool m_hostedZoneTypeHasBeenSet = false;
   };
 

@@ -31,257 +31,83 @@ namespace Model
   class Name
   {
   public:
-    AWS_IDENTITYSTORE_API Name();
+    AWS_IDENTITYSTORE_API Name() = default;
     AWS_IDENTITYSTORE_API Name(Aws::Utils::Json::JsonView jsonValue);
     AWS_IDENTITYSTORE_API Name& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IDENTITYSTORE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A string containing a formatted version of the name for display.</p>
      */
-    inline const Aws::String& GetFormatted() const{ return m_formatted; }
-
-    /**
-     * <p>A string containing a formatted version of the name for display.</p>
-     */
+    inline const Aws::String& GetFormatted() const { return m_formatted; }
     inline bool FormattedHasBeenSet() const { return m_formattedHasBeenSet; }
+    template<typename FormattedT = Aws::String>
+    void SetFormatted(FormattedT&& value) { m_formattedHasBeenSet = true; m_formatted = std::forward<FormattedT>(value); }
+    template<typename FormattedT = Aws::String>
+    Name& WithFormatted(FormattedT&& value) { SetFormatted(std::forward<FormattedT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A string containing a formatted version of the name for display.</p>
-     */
-    inline void SetFormatted(const Aws::String& value) { m_formattedHasBeenSet = true; m_formatted = value; }
-
-    /**
-     * <p>A string containing a formatted version of the name for display.</p>
-     */
-    inline void SetFormatted(Aws::String&& value) { m_formattedHasBeenSet = true; m_formatted = std::move(value); }
-
-    /**
-     * <p>A string containing a formatted version of the name for display.</p>
-     */
-    inline void SetFormatted(const char* value) { m_formattedHasBeenSet = true; m_formatted.assign(value); }
-
-    /**
-     * <p>A string containing a formatted version of the name for display.</p>
-     */
-    inline Name& WithFormatted(const Aws::String& value) { SetFormatted(value); return *this;}
-
-    /**
-     * <p>A string containing a formatted version of the name for display.</p>
-     */
-    inline Name& WithFormatted(Aws::String&& value) { SetFormatted(std::move(value)); return *this;}
-
-    /**
-     * <p>A string containing a formatted version of the name for display.</p>
-     */
-    inline Name& WithFormatted(const char* value) { SetFormatted(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The family name of the user.</p>
      */
-    inline const Aws::String& GetFamilyName() const{ return m_familyName; }
-
-    /**
-     * <p>The family name of the user.</p>
-     */
+    inline const Aws::String& GetFamilyName() const { return m_familyName; }
     inline bool FamilyNameHasBeenSet() const { return m_familyNameHasBeenSet; }
+    template<typename FamilyNameT = Aws::String>
+    void SetFamilyName(FamilyNameT&& value) { m_familyNameHasBeenSet = true; m_familyName = std::forward<FamilyNameT>(value); }
+    template<typename FamilyNameT = Aws::String>
+    Name& WithFamilyName(FamilyNameT&& value) { SetFamilyName(std::forward<FamilyNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The family name of the user.</p>
-     */
-    inline void SetFamilyName(const Aws::String& value) { m_familyNameHasBeenSet = true; m_familyName = value; }
-
-    /**
-     * <p>The family name of the user.</p>
-     */
-    inline void SetFamilyName(Aws::String&& value) { m_familyNameHasBeenSet = true; m_familyName = std::move(value); }
-
-    /**
-     * <p>The family name of the user.</p>
-     */
-    inline void SetFamilyName(const char* value) { m_familyNameHasBeenSet = true; m_familyName.assign(value); }
-
-    /**
-     * <p>The family name of the user.</p>
-     */
-    inline Name& WithFamilyName(const Aws::String& value) { SetFamilyName(value); return *this;}
-
-    /**
-     * <p>The family name of the user.</p>
-     */
-    inline Name& WithFamilyName(Aws::String&& value) { SetFamilyName(std::move(value)); return *this;}
-
-    /**
-     * <p>The family name of the user.</p>
-     */
-    inline Name& WithFamilyName(const char* value) { SetFamilyName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The given name of the user.</p>
      */
-    inline const Aws::String& GetGivenName() const{ return m_givenName; }
-
-    /**
-     * <p>The given name of the user.</p>
-     */
+    inline const Aws::String& GetGivenName() const { return m_givenName; }
     inline bool GivenNameHasBeenSet() const { return m_givenNameHasBeenSet; }
+    template<typename GivenNameT = Aws::String>
+    void SetGivenName(GivenNameT&& value) { m_givenNameHasBeenSet = true; m_givenName = std::forward<GivenNameT>(value); }
+    template<typename GivenNameT = Aws::String>
+    Name& WithGivenName(GivenNameT&& value) { SetGivenName(std::forward<GivenNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The given name of the user.</p>
-     */
-    inline void SetGivenName(const Aws::String& value) { m_givenNameHasBeenSet = true; m_givenName = value; }
-
-    /**
-     * <p>The given name of the user.</p>
-     */
-    inline void SetGivenName(Aws::String&& value) { m_givenNameHasBeenSet = true; m_givenName = std::move(value); }
-
-    /**
-     * <p>The given name of the user.</p>
-     */
-    inline void SetGivenName(const char* value) { m_givenNameHasBeenSet = true; m_givenName.assign(value); }
-
-    /**
-     * <p>The given name of the user.</p>
-     */
-    inline Name& WithGivenName(const Aws::String& value) { SetGivenName(value); return *this;}
-
-    /**
-     * <p>The given name of the user.</p>
-     */
-    inline Name& WithGivenName(Aws::String&& value) { SetGivenName(std::move(value)); return *this;}
-
-    /**
-     * <p>The given name of the user.</p>
-     */
-    inline Name& WithGivenName(const char* value) { SetGivenName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The middle name of the user.</p>
      */
-    inline const Aws::String& GetMiddleName() const{ return m_middleName; }
-
-    /**
-     * <p>The middle name of the user.</p>
-     */
+    inline const Aws::String& GetMiddleName() const { return m_middleName; }
     inline bool MiddleNameHasBeenSet() const { return m_middleNameHasBeenSet; }
+    template<typename MiddleNameT = Aws::String>
+    void SetMiddleName(MiddleNameT&& value) { m_middleNameHasBeenSet = true; m_middleName = std::forward<MiddleNameT>(value); }
+    template<typename MiddleNameT = Aws::String>
+    Name& WithMiddleName(MiddleNameT&& value) { SetMiddleName(std::forward<MiddleNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The middle name of the user.</p>
-     */
-    inline void SetMiddleName(const Aws::String& value) { m_middleNameHasBeenSet = true; m_middleName = value; }
-
-    /**
-     * <p>The middle name of the user.</p>
-     */
-    inline void SetMiddleName(Aws::String&& value) { m_middleNameHasBeenSet = true; m_middleName = std::move(value); }
-
-    /**
-     * <p>The middle name of the user.</p>
-     */
-    inline void SetMiddleName(const char* value) { m_middleNameHasBeenSet = true; m_middleName.assign(value); }
-
-    /**
-     * <p>The middle name of the user.</p>
-     */
-    inline Name& WithMiddleName(const Aws::String& value) { SetMiddleName(value); return *this;}
-
-    /**
-     * <p>The middle name of the user.</p>
-     */
-    inline Name& WithMiddleName(Aws::String&& value) { SetMiddleName(std::move(value)); return *this;}
-
-    /**
-     * <p>The middle name of the user.</p>
-     */
-    inline Name& WithMiddleName(const char* value) { SetMiddleName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The honorific prefix of the user. For example, "Dr."</p>
      */
-    inline const Aws::String& GetHonorificPrefix() const{ return m_honorificPrefix; }
-
-    /**
-     * <p>The honorific prefix of the user. For example, "Dr."</p>
-     */
+    inline const Aws::String& GetHonorificPrefix() const { return m_honorificPrefix; }
     inline bool HonorificPrefixHasBeenSet() const { return m_honorificPrefixHasBeenSet; }
+    template<typename HonorificPrefixT = Aws::String>
+    void SetHonorificPrefix(HonorificPrefixT&& value) { m_honorificPrefixHasBeenSet = true; m_honorificPrefix = std::forward<HonorificPrefixT>(value); }
+    template<typename HonorificPrefixT = Aws::String>
+    Name& WithHonorificPrefix(HonorificPrefixT&& value) { SetHonorificPrefix(std::forward<HonorificPrefixT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The honorific prefix of the user. For example, "Dr."</p>
-     */
-    inline void SetHonorificPrefix(const Aws::String& value) { m_honorificPrefixHasBeenSet = true; m_honorificPrefix = value; }
-
-    /**
-     * <p>The honorific prefix of the user. For example, "Dr."</p>
-     */
-    inline void SetHonorificPrefix(Aws::String&& value) { m_honorificPrefixHasBeenSet = true; m_honorificPrefix = std::move(value); }
-
-    /**
-     * <p>The honorific prefix of the user. For example, "Dr."</p>
-     */
-    inline void SetHonorificPrefix(const char* value) { m_honorificPrefixHasBeenSet = true; m_honorificPrefix.assign(value); }
-
-    /**
-     * <p>The honorific prefix of the user. For example, "Dr."</p>
-     */
-    inline Name& WithHonorificPrefix(const Aws::String& value) { SetHonorificPrefix(value); return *this;}
-
-    /**
-     * <p>The honorific prefix of the user. For example, "Dr."</p>
-     */
-    inline Name& WithHonorificPrefix(Aws::String&& value) { SetHonorificPrefix(std::move(value)); return *this;}
-
-    /**
-     * <p>The honorific prefix of the user. For example, "Dr."</p>
-     */
-    inline Name& WithHonorificPrefix(const char* value) { SetHonorificPrefix(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The honorific suffix of the user. For example, "M.D."</p>
      */
-    inline const Aws::String& GetHonorificSuffix() const{ return m_honorificSuffix; }
-
-    /**
-     * <p>The honorific suffix of the user. For example, "M.D."</p>
-     */
+    inline const Aws::String& GetHonorificSuffix() const { return m_honorificSuffix; }
     inline bool HonorificSuffixHasBeenSet() const { return m_honorificSuffixHasBeenSet; }
-
-    /**
-     * <p>The honorific suffix of the user. For example, "M.D."</p>
-     */
-    inline void SetHonorificSuffix(const Aws::String& value) { m_honorificSuffixHasBeenSet = true; m_honorificSuffix = value; }
-
-    /**
-     * <p>The honorific suffix of the user. For example, "M.D."</p>
-     */
-    inline void SetHonorificSuffix(Aws::String&& value) { m_honorificSuffixHasBeenSet = true; m_honorificSuffix = std::move(value); }
-
-    /**
-     * <p>The honorific suffix of the user. For example, "M.D."</p>
-     */
-    inline void SetHonorificSuffix(const char* value) { m_honorificSuffixHasBeenSet = true; m_honorificSuffix.assign(value); }
-
-    /**
-     * <p>The honorific suffix of the user. For example, "M.D."</p>
-     */
-    inline Name& WithHonorificSuffix(const Aws::String& value) { SetHonorificSuffix(value); return *this;}
-
-    /**
-     * <p>The honorific suffix of the user. For example, "M.D."</p>
-     */
-    inline Name& WithHonorificSuffix(Aws::String&& value) { SetHonorificSuffix(std::move(value)); return *this;}
-
-    /**
-     * <p>The honorific suffix of the user. For example, "M.D."</p>
-     */
-    inline Name& WithHonorificSuffix(const char* value) { SetHonorificSuffix(value); return *this;}
-
+    template<typename HonorificSuffixT = Aws::String>
+    void SetHonorificSuffix(HonorificSuffixT&& value) { m_honorificSuffixHasBeenSet = true; m_honorificSuffix = std::forward<HonorificSuffixT>(value); }
+    template<typename HonorificSuffixT = Aws::String>
+    Name& WithHonorificSuffix(HonorificSuffixT&& value) { SetHonorificSuffix(std::forward<HonorificSuffixT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_formatted;

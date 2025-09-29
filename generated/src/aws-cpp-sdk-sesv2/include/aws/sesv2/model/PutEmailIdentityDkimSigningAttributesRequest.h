@@ -27,7 +27,7 @@ namespace Model
   class PutEmailIdentityDkimSigningAttributesRequest : public SESV2Request
   {
   public:
-    AWS_SESV2_API PutEmailIdentityDkimSigningAttributesRequest();
+    AWS_SESV2_API PutEmailIdentityDkimSigningAttributesRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,47 +38,19 @@ namespace Model
     AWS_SESV2_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The email identity.</p>
      */
-    inline const Aws::String& GetEmailIdentity() const{ return m_emailIdentity; }
-
-    /**
-     * <p>The email identity.</p>
-     */
+    inline const Aws::String& GetEmailIdentity() const { return m_emailIdentity; }
     inline bool EmailIdentityHasBeenSet() const { return m_emailIdentityHasBeenSet; }
+    template<typename EmailIdentityT = Aws::String>
+    void SetEmailIdentity(EmailIdentityT&& value) { m_emailIdentityHasBeenSet = true; m_emailIdentity = std::forward<EmailIdentityT>(value); }
+    template<typename EmailIdentityT = Aws::String>
+    PutEmailIdentityDkimSigningAttributesRequest& WithEmailIdentity(EmailIdentityT&& value) { SetEmailIdentity(std::forward<EmailIdentityT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The email identity.</p>
-     */
-    inline void SetEmailIdentity(const Aws::String& value) { m_emailIdentityHasBeenSet = true; m_emailIdentity = value; }
-
-    /**
-     * <p>The email identity.</p>
-     */
-    inline void SetEmailIdentity(Aws::String&& value) { m_emailIdentityHasBeenSet = true; m_emailIdentity = std::move(value); }
-
-    /**
-     * <p>The email identity.</p>
-     */
-    inline void SetEmailIdentity(const char* value) { m_emailIdentityHasBeenSet = true; m_emailIdentity.assign(value); }
-
-    /**
-     * <p>The email identity.</p>
-     */
-    inline PutEmailIdentityDkimSigningAttributesRequest& WithEmailIdentity(const Aws::String& value) { SetEmailIdentity(value); return *this;}
-
-    /**
-     * <p>The email identity.</p>
-     */
-    inline PutEmailIdentityDkimSigningAttributesRequest& WithEmailIdentity(Aws::String&& value) { SetEmailIdentity(std::move(value)); return *this;}
-
-    /**
-     * <p>The email identity.</p>
-     */
-    inline PutEmailIdentityDkimSigningAttributesRequest& WithEmailIdentity(const char* value) { SetEmailIdentity(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The method to use to configure DKIM for the identity. There are the following
      * possible values:</p> <ul> <li> <p> <code>AWS_SES</code> – Configure DKIM for the
@@ -87,59 +59,13 @@ namespace Model
      * DKIM</a>.</p> </li> <li> <p> <code>EXTERNAL</code> – Configure DKIM for the
      * identity by using Bring Your Own DKIM (BYODKIM).</p> </li> </ul>
      */
-    inline const DkimSigningAttributesOrigin& GetSigningAttributesOrigin() const{ return m_signingAttributesOrigin; }
-
-    /**
-     * <p>The method to use to configure DKIM for the identity. There are the following
-     * possible values:</p> <ul> <li> <p> <code>AWS_SES</code> – Configure DKIM for the
-     * identity by using <a
-     * href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html">Easy
-     * DKIM</a>.</p> </li> <li> <p> <code>EXTERNAL</code> – Configure DKIM for the
-     * identity by using Bring Your Own DKIM (BYODKIM).</p> </li> </ul>
-     */
+    inline DkimSigningAttributesOrigin GetSigningAttributesOrigin() const { return m_signingAttributesOrigin; }
     inline bool SigningAttributesOriginHasBeenSet() const { return m_signingAttributesOriginHasBeenSet; }
+    inline void SetSigningAttributesOrigin(DkimSigningAttributesOrigin value) { m_signingAttributesOriginHasBeenSet = true; m_signingAttributesOrigin = value; }
+    inline PutEmailIdentityDkimSigningAttributesRequest& WithSigningAttributesOrigin(DkimSigningAttributesOrigin value) { SetSigningAttributesOrigin(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The method to use to configure DKIM for the identity. There are the following
-     * possible values:</p> <ul> <li> <p> <code>AWS_SES</code> – Configure DKIM for the
-     * identity by using <a
-     * href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html">Easy
-     * DKIM</a>.</p> </li> <li> <p> <code>EXTERNAL</code> – Configure DKIM for the
-     * identity by using Bring Your Own DKIM (BYODKIM).</p> </li> </ul>
-     */
-    inline void SetSigningAttributesOrigin(const DkimSigningAttributesOrigin& value) { m_signingAttributesOriginHasBeenSet = true; m_signingAttributesOrigin = value; }
-
-    /**
-     * <p>The method to use to configure DKIM for the identity. There are the following
-     * possible values:</p> <ul> <li> <p> <code>AWS_SES</code> – Configure DKIM for the
-     * identity by using <a
-     * href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html">Easy
-     * DKIM</a>.</p> </li> <li> <p> <code>EXTERNAL</code> – Configure DKIM for the
-     * identity by using Bring Your Own DKIM (BYODKIM).</p> </li> </ul>
-     */
-    inline void SetSigningAttributesOrigin(DkimSigningAttributesOrigin&& value) { m_signingAttributesOriginHasBeenSet = true; m_signingAttributesOrigin = std::move(value); }
-
-    /**
-     * <p>The method to use to configure DKIM for the identity. There are the following
-     * possible values:</p> <ul> <li> <p> <code>AWS_SES</code> – Configure DKIM for the
-     * identity by using <a
-     * href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html">Easy
-     * DKIM</a>.</p> </li> <li> <p> <code>EXTERNAL</code> – Configure DKIM for the
-     * identity by using Bring Your Own DKIM (BYODKIM).</p> </li> </ul>
-     */
-    inline PutEmailIdentityDkimSigningAttributesRequest& WithSigningAttributesOrigin(const DkimSigningAttributesOrigin& value) { SetSigningAttributesOrigin(value); return *this;}
-
-    /**
-     * <p>The method to use to configure DKIM for the identity. There are the following
-     * possible values:</p> <ul> <li> <p> <code>AWS_SES</code> – Configure DKIM for the
-     * identity by using <a
-     * href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html">Easy
-     * DKIM</a>.</p> </li> <li> <p> <code>EXTERNAL</code> – Configure DKIM for the
-     * identity by using Bring Your Own DKIM (BYODKIM).</p> </li> </ul>
-     */
-    inline PutEmailIdentityDkimSigningAttributesRequest& WithSigningAttributesOrigin(DkimSigningAttributesOrigin&& value) { SetSigningAttributesOrigin(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>An object that contains information about the private key and selector that
      * you want to use to configure DKIM for the identity for Bring Your Own DKIM
@@ -147,59 +73,19 @@ namespace Model
      * href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html">Easy
      * DKIM</a>.</p>
      */
-    inline const DkimSigningAttributes& GetSigningAttributes() const{ return m_signingAttributes; }
-
-    /**
-     * <p>An object that contains information about the private key and selector that
-     * you want to use to configure DKIM for the identity for Bring Your Own DKIM
-     * (BYODKIM) for the identity, or, configures the key length to be used for <a
-     * href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html">Easy
-     * DKIM</a>.</p>
-     */
+    inline const DkimSigningAttributes& GetSigningAttributes() const { return m_signingAttributes; }
     inline bool SigningAttributesHasBeenSet() const { return m_signingAttributesHasBeenSet; }
-
-    /**
-     * <p>An object that contains information about the private key and selector that
-     * you want to use to configure DKIM for the identity for Bring Your Own DKIM
-     * (BYODKIM) for the identity, or, configures the key length to be used for <a
-     * href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html">Easy
-     * DKIM</a>.</p>
-     */
-    inline void SetSigningAttributes(const DkimSigningAttributes& value) { m_signingAttributesHasBeenSet = true; m_signingAttributes = value; }
-
-    /**
-     * <p>An object that contains information about the private key and selector that
-     * you want to use to configure DKIM for the identity for Bring Your Own DKIM
-     * (BYODKIM) for the identity, or, configures the key length to be used for <a
-     * href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html">Easy
-     * DKIM</a>.</p>
-     */
-    inline void SetSigningAttributes(DkimSigningAttributes&& value) { m_signingAttributesHasBeenSet = true; m_signingAttributes = std::move(value); }
-
-    /**
-     * <p>An object that contains information about the private key and selector that
-     * you want to use to configure DKIM for the identity for Bring Your Own DKIM
-     * (BYODKIM) for the identity, or, configures the key length to be used for <a
-     * href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html">Easy
-     * DKIM</a>.</p>
-     */
-    inline PutEmailIdentityDkimSigningAttributesRequest& WithSigningAttributes(const DkimSigningAttributes& value) { SetSigningAttributes(value); return *this;}
-
-    /**
-     * <p>An object that contains information about the private key and selector that
-     * you want to use to configure DKIM for the identity for Bring Your Own DKIM
-     * (BYODKIM) for the identity, or, configures the key length to be used for <a
-     * href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html">Easy
-     * DKIM</a>.</p>
-     */
-    inline PutEmailIdentityDkimSigningAttributesRequest& WithSigningAttributes(DkimSigningAttributes&& value) { SetSigningAttributes(std::move(value)); return *this;}
-
+    template<typename SigningAttributesT = DkimSigningAttributes>
+    void SetSigningAttributes(SigningAttributesT&& value) { m_signingAttributesHasBeenSet = true; m_signingAttributes = std::forward<SigningAttributesT>(value); }
+    template<typename SigningAttributesT = DkimSigningAttributes>
+    PutEmailIdentityDkimSigningAttributesRequest& WithSigningAttributes(SigningAttributesT&& value) { SetSigningAttributes(std::forward<SigningAttributesT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_emailIdentity;
     bool m_emailIdentityHasBeenSet = false;
 
-    DkimSigningAttributesOrigin m_signingAttributesOrigin;
+    DkimSigningAttributesOrigin m_signingAttributesOrigin{DkimSigningAttributesOrigin::NOT_SET};
     bool m_signingAttributesOriginHasBeenSet = false;
 
     DkimSigningAttributes m_signingAttributes;

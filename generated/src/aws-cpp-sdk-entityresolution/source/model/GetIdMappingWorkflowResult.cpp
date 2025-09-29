@@ -17,10 +17,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-GetIdMappingWorkflowResult::GetIdMappingWorkflowResult()
-{
-}
-
 GetIdMappingWorkflowResult::GetIdMappingWorkflowResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
@@ -29,24 +25,21 @@ GetIdMappingWorkflowResult::GetIdMappingWorkflowResult(const Aws::AmazonWebServi
 GetIdMappingWorkflowResult& GetIdMappingWorkflowResult::operator =(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   JsonView jsonValue = result.GetPayload().View();
-  if(jsonValue.ValueExists("createdAt"))
+  if(jsonValue.ValueExists("workflowName"))
   {
-    m_createdAt = jsonValue.GetDouble("createdAt");
-
+    m_workflowName = jsonValue.GetString("workflowName");
+    m_workflowNameHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("workflowArn"))
+  {
+    m_workflowArn = jsonValue.GetString("workflowArn");
+    m_workflowArnHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("description"))
   {
     m_description = jsonValue.GetString("description");
-
+    m_descriptionHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("idMappingTechniques"))
-  {
-    m_idMappingTechniques = jsonValue.GetObject("idMappingTechniques");
-
-  }
-
   if(jsonValue.ValueExists("inputSourceConfig"))
   {
     Aws::Utils::Array<JsonView> inputSourceConfigJsonList = jsonValue.GetArray("inputSourceConfig");
@@ -54,8 +47,8 @@ GetIdMappingWorkflowResult& GetIdMappingWorkflowResult::operator =(const Aws::Am
     {
       m_inputSourceConfig.push_back(inputSourceConfigJsonList[inputSourceConfigIndex].AsObject());
     }
+    m_inputSourceConfigHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("outputSourceConfig"))
   {
     Aws::Utils::Array<JsonView> outputSourceConfigJsonList = jsonValue.GetArray("outputSourceConfig");
@@ -63,14 +56,33 @@ GetIdMappingWorkflowResult& GetIdMappingWorkflowResult::operator =(const Aws::Am
     {
       m_outputSourceConfig.push_back(outputSourceConfigJsonList[outputSourceConfigIndex].AsObject());
     }
+    m_outputSourceConfigHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("idMappingTechniques"))
+  {
+    m_idMappingTechniques = jsonValue.GetObject("idMappingTechniques");
+    m_idMappingTechniquesHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("createdAt"))
+  {
+    m_createdAt = jsonValue.GetDouble("createdAt");
+    m_createdAtHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("updatedAt"))
+  {
+    m_updatedAt = jsonValue.GetDouble("updatedAt");
+    m_updatedAtHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("incrementalRunConfig"))
+  {
+    m_incrementalRunConfig = jsonValue.GetObject("incrementalRunConfig");
+    m_incrementalRunConfigHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("roleArn"))
   {
     m_roleArn = jsonValue.GetString("roleArn");
-
+    m_roleArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("tags"))
   {
     Aws::Map<Aws::String, JsonView> tagsJsonMap = jsonValue.GetObject("tags").GetAllObjects();
@@ -78,32 +90,15 @@ GetIdMappingWorkflowResult& GetIdMappingWorkflowResult::operator =(const Aws::Am
     {
       m_tags[tagsItem.first] = tagsItem.second.AsString();
     }
+    m_tagsHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("updatedAt"))
-  {
-    m_updatedAt = jsonValue.GetDouble("updatedAt");
-
-  }
-
-  if(jsonValue.ValueExists("workflowArn"))
-  {
-    m_workflowArn = jsonValue.GetString("workflowArn");
-
-  }
-
-  if(jsonValue.ValueExists("workflowName"))
-  {
-    m_workflowName = jsonValue.GetString("workflowName");
-
-  }
-
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

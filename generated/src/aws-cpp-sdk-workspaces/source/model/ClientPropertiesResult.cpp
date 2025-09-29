@@ -18,15 +18,7 @@ namespace WorkSpaces
 namespace Model
 {
 
-ClientPropertiesResult::ClientPropertiesResult() : 
-    m_resourceIdHasBeenSet(false),
-    m_clientPropertiesHasBeenSet(false)
-{
-}
-
-ClientPropertiesResult::ClientPropertiesResult(JsonView jsonValue) : 
-    m_resourceIdHasBeenSet(false),
-    m_clientPropertiesHasBeenSet(false)
+ClientPropertiesResult::ClientPropertiesResult(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ClientPropertiesResult& ClientPropertiesResult::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ResourceId"))
   {
     m_resourceId = jsonValue.GetString("ResourceId");
-
     m_resourceIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ClientProperties"))
   {
     m_clientProperties = jsonValue.GetObject("ClientProperties");
-
     m_clientPropertiesHasBeenSet = true;
   }
-
   return *this;
 }
 

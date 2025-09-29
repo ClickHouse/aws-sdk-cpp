@@ -18,19 +18,7 @@ namespace Inspector2
 namespace Model
 {
 
-Account::Account() : 
-    m_accountIdHasBeenSet(false),
-    m_resourceStatusHasBeenSet(false),
-    m_status(Status::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
-Account::Account(JsonView jsonValue) : 
-    m_accountIdHasBeenSet(false),
-    m_resourceStatusHasBeenSet(false),
-    m_status(Status::NOT_SET),
-    m_statusHasBeenSet(false)
+Account::Account(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ Account& Account::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("accountId"))
   {
     m_accountId = jsonValue.GetString("accountId");
-
     m_accountIdHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("resourceStatus"))
-  {
-    m_resourceStatus = jsonValue.GetObject("resourceStatus");
-
-    m_resourceStatusHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("status"))
   {
     m_status = StatusMapper::GetStatusForName(jsonValue.GetString("status"));
-
     m_statusHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("resourceStatus"))
+  {
+    m_resourceStatus = jsonValue.GetObject("resourceStatus");
+    m_resourceStatusHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -71,15 +53,15 @@ JsonValue Account::Jsonize() const
 
   }
 
+  if(m_statusHasBeenSet)
+  {
+   payload.WithString("status", StatusMapper::GetNameForStatus(m_status));
+  }
+
   if(m_resourceStatusHasBeenSet)
   {
    payload.WithObject("resourceStatus", m_resourceStatus.Jsonize());
 
-  }
-
-  if(m_statusHasBeenSet)
-  {
-   payload.WithString("status", StatusMapper::GetNameForStatus(m_status));
   }
 
   return payload;

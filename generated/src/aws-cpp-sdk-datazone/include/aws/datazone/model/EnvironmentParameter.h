@@ -31,93 +31,35 @@ namespace Model
   class EnvironmentParameter
   {
   public:
-    AWS_DATAZONE_API EnvironmentParameter();
+    AWS_DATAZONE_API EnvironmentParameter() = default;
     AWS_DATAZONE_API EnvironmentParameter(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAZONE_API EnvironmentParameter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAZONE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of an environment profile parameter.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of an environment profile parameter.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    EnvironmentParameter& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of an environment profile parameter.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of an environment profile parameter.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of an environment profile parameter.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of an environment profile parameter.</p>
-     */
-    inline EnvironmentParameter& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of an environment profile parameter.</p>
-     */
-    inline EnvironmentParameter& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of an environment profile parameter.</p>
-     */
-    inline EnvironmentParameter& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The value of an environment profile parameter.</p>
      */
-    inline const Aws::String& GetValue() const{ return m_value; }
-
-    /**
-     * <p>The value of an environment profile parameter.</p>
-     */
+    inline const Aws::String& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>The value of an environment profile parameter.</p>
-     */
-    inline void SetValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The value of an environment profile parameter.</p>
-     */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>The value of an environment profile parameter.</p>
-     */
-    inline void SetValue(const char* value) { m_valueHasBeenSet = true; m_value.assign(value); }
-
-    /**
-     * <p>The value of an environment profile parameter.</p>
-     */
-    inline EnvironmentParameter& WithValue(const Aws::String& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>The value of an environment profile parameter.</p>
-     */
-    inline EnvironmentParameter& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The value of an environment profile parameter.</p>
-     */
-    inline EnvironmentParameter& WithValue(const char* value) { SetValue(value); return *this;}
-
+    template<typename ValueT = Aws::String>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::String>
+    EnvironmentParameter& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;

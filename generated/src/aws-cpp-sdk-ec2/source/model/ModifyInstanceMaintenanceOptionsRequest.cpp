@@ -10,15 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-ModifyInstanceMaintenanceOptionsRequest::ModifyInstanceMaintenanceOptionsRequest() : 
-    m_instanceIdHasBeenSet(false),
-    m_autoRecovery(InstanceAutoRecoveryState::NOT_SET),
-    m_autoRecoveryHasBeenSet(false),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false)
-{
-}
-
 Aws::String ModifyInstanceMaintenanceOptionsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -30,7 +21,12 @@ Aws::String ModifyInstanceMaintenanceOptionsRequest::SerializePayload() const
 
   if(m_autoRecoveryHasBeenSet)
   {
-    ss << "AutoRecovery=" << InstanceAutoRecoveryStateMapper::GetNameForInstanceAutoRecoveryState(m_autoRecovery) << "&";
+    ss << "AutoRecovery=" << StringUtils::URLEncode(InstanceAutoRecoveryStateMapper::GetNameForInstanceAutoRecoveryState(m_autoRecovery)) << "&";
+  }
+
+  if(m_rebootMigrationHasBeenSet)
+  {
+    ss << "RebootMigration=" << StringUtils::URLEncode(InstanceRebootMigrationStateMapper::GetNameForInstanceRebootMigrationState(m_rebootMigration)) << "&";
   }
 
   if(m_dryRunHasBeenSet)

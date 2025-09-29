@@ -25,6 +25,7 @@
 #include <aws/payment-cryptography-data/model/EncryptDataRequest.h>
 #include <aws/payment-cryptography-data/model/GenerateCardValidationDataRequest.h>
 #include <aws/payment-cryptography-data/model/GenerateMacRequest.h>
+#include <aws/payment-cryptography-data/model/GenerateMacEmvPinChangeRequest.h>
 #include <aws/payment-cryptography-data/model/GeneratePinDataRequest.h>
 #include <aws/payment-cryptography-data/model/ReEncryptDataRequest.h>
 #include <aws/payment-cryptography-data/model/TranslatePinDataRequest.h>
@@ -46,20 +47,27 @@ using namespace Aws::Utils::Json;
 using namespace smithy::components::tracing;
 using ResolveEndpointOutcome = Aws::Endpoint::ResolveEndpointOutcome;
 
-const char* PaymentCryptographyDataClient::SERVICE_NAME = "payment-cryptography";
-const char* PaymentCryptographyDataClient::ALLOCATION_TAG = "PaymentCryptographyDataClient";
+namespace Aws
+{
+  namespace PaymentCryptographyData
+  {
+    const char SERVICE_NAME[] = "payment-cryptography";
+    const char ALLOCATION_TAG[] = "PaymentCryptographyDataClient";
+  }
+}
+const char* PaymentCryptographyDataClient::GetServiceName() {return SERVICE_NAME;}
+const char* PaymentCryptographyDataClient::GetAllocationTag() {return ALLOCATION_TAG;}
 
 PaymentCryptographyDataClient::PaymentCryptographyDataClient(const PaymentCryptographyData::PaymentCryptographyDataClientConfiguration& clientConfiguration,
                                                              std::shared_ptr<PaymentCryptographyDataEndpointProviderBase> endpointProvider) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<PaymentCryptographyDataErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
-  m_endpointProvider(std::move(endpointProvider))
+  m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<PaymentCryptographyDataEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -74,8 +82,7 @@ PaymentCryptographyDataClient::PaymentCryptographyDataClient(const AWSCredential
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<PaymentCryptographyDataErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<PaymentCryptographyDataEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -90,8 +97,7 @@ PaymentCryptographyDataClient::PaymentCryptographyDataClient(const std::shared_p
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<PaymentCryptographyDataErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<PaymentCryptographyDataEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -100,12 +106,11 @@ PaymentCryptographyDataClient::PaymentCryptographyDataClient(const std::shared_p
   PaymentCryptographyDataClient::PaymentCryptographyDataClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<PaymentCryptographyDataErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
   m_endpointProvider(Aws::MakeShared<PaymentCryptographyDataEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -120,7 +125,6 @@ PaymentCryptographyDataClient::PaymentCryptographyDataClient(const AWSCredential
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<PaymentCryptographyDataErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<PaymentCryptographyDataEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -135,7 +139,6 @@ PaymentCryptographyDataClient::PaymentCryptographyDataClient(const std::shared_p
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<PaymentCryptographyDataErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<PaymentCryptographyDataEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -155,6 +158,14 @@ std::shared_ptr<PaymentCryptographyDataEndpointProviderBase>& PaymentCryptograph
 void PaymentCryptographyDataClient::init(const PaymentCryptographyData::PaymentCryptographyDataClientConfiguration& config)
 {
   AWSClient::SetServiceClientName("Payment Cryptography Data");
+  if (!m_clientConfiguration.executor) {
+    if (!m_clientConfiguration.configFactories.executorCreateFn()) {
+      AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "Failed to initialize client: config is missing Executor or executorCreateFn");
+      m_isInitialized = false;
+      return;
+    }
+    m_clientConfiguration.executor = m_clientConfiguration.configFactories.executorCreateFn();
+  }
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
   m_endpointProvider->InitBuiltInParameters(config);
 }
@@ -281,6 +292,33 @@ GenerateMacOutcome PaymentCryptographyDataClient::GenerateMac(const GenerateMacR
       AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, GenerateMac, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
       endpointResolutionOutcome.GetResult().AddPathSegments("/mac/generate");
       return GenerateMacOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
+    },
+    TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
+    *meter,
+    {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+}
+
+GenerateMacEmvPinChangeOutcome PaymentCryptographyDataClient::GenerateMacEmvPinChange(const GenerateMacEmvPinChangeRequest& request) const
+{
+  AWS_OPERATION_GUARD(GenerateMacEmvPinChange);
+  AWS_OPERATION_CHECK_PTR(m_endpointProvider, GenerateMacEmvPinChange, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE);
+  AWS_OPERATION_CHECK_PTR(m_telemetryProvider, GenerateMacEmvPinChange, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto tracer = m_telemetryProvider->getTracer(this->GetServiceClientName(), {});
+  auto meter = m_telemetryProvider->getMeter(this->GetServiceClientName(), {});
+  AWS_OPERATION_CHECK_PTR(meter, GenerateMacEmvPinChange, CoreErrors, CoreErrors::NOT_INITIALIZED);
+  auto span = tracer->CreateSpan(Aws::String(this->GetServiceClientName()) + ".GenerateMacEmvPinChange",
+    {{ TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName() }, { TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName() }, { TracingUtils::SMITHY_SYSTEM_DIMENSION, TracingUtils::SMITHY_METHOD_AWS_VALUE }},
+    smithy::components::tracing::SpanKind::CLIENT);
+  return TracingUtils::MakeCallWithTiming<GenerateMacEmvPinChangeOutcome>(
+    [&]()-> GenerateMacEmvPinChangeOutcome {
+      auto endpointResolutionOutcome = TracingUtils::MakeCallWithTiming<ResolveEndpointOutcome>(
+          [&]() -> ResolveEndpointOutcome { return m_endpointProvider->ResolveEndpoint(request.GetEndpointContextParams()); },
+          TracingUtils::SMITHY_CLIENT_ENDPOINT_RESOLUTION_METRIC,
+          *meter,
+          {{TracingUtils::SMITHY_METHOD_DIMENSION, request.GetServiceRequestName()}, {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
+      AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, GenerateMacEmvPinChange, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE, endpointResolutionOutcome.GetError().GetMessage());
+      endpointResolutionOutcome.GetResult().AddPathSegments("/macemvpinchange/generate");
+      return GenerateMacEmvPinChangeOutcome(MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
     },
     TracingUtils::SMITHY_CLIENT_DURATION_METRIC,
     *meter,

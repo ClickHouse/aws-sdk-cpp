@@ -18,27 +18,7 @@ namespace mediapackagev2
 namespace Model
 {
 
-CreateLowLatencyHlsManifestConfiguration::CreateLowLatencyHlsManifestConfiguration() : 
-    m_manifestNameHasBeenSet(false),
-    m_childManifestNameHasBeenSet(false),
-    m_scteHlsHasBeenSet(false),
-    m_manifestWindowSeconds(0),
-    m_manifestWindowSecondsHasBeenSet(false),
-    m_programDateTimeIntervalSeconds(0),
-    m_programDateTimeIntervalSecondsHasBeenSet(false),
-    m_filterConfigurationHasBeenSet(false)
-{
-}
-
-CreateLowLatencyHlsManifestConfiguration::CreateLowLatencyHlsManifestConfiguration(JsonView jsonValue) : 
-    m_manifestNameHasBeenSet(false),
-    m_childManifestNameHasBeenSet(false),
-    m_scteHlsHasBeenSet(false),
-    m_manifestWindowSeconds(0),
-    m_manifestWindowSecondsHasBeenSet(false),
-    m_programDateTimeIntervalSeconds(0),
-    m_programDateTimeIntervalSecondsHasBeenSet(false),
-    m_filterConfigurationHasBeenSet(false)
+CreateLowLatencyHlsManifestConfiguration::CreateLowLatencyHlsManifestConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -48,45 +28,43 @@ CreateLowLatencyHlsManifestConfiguration& CreateLowLatencyHlsManifestConfigurati
   if(jsonValue.ValueExists("ManifestName"))
   {
     m_manifestName = jsonValue.GetString("ManifestName");
-
     m_manifestNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ChildManifestName"))
   {
     m_childManifestName = jsonValue.GetString("ChildManifestName");
-
     m_childManifestNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ScteHls"))
   {
     m_scteHls = jsonValue.GetObject("ScteHls");
-
     m_scteHlsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("StartTag"))
+  {
+    m_startTag = jsonValue.GetObject("StartTag");
+    m_startTagHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("ManifestWindowSeconds"))
   {
     m_manifestWindowSeconds = jsonValue.GetInteger("ManifestWindowSeconds");
-
     m_manifestWindowSecondsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ProgramDateTimeIntervalSeconds"))
   {
     m_programDateTimeIntervalSeconds = jsonValue.GetInteger("ProgramDateTimeIntervalSeconds");
-
     m_programDateTimeIntervalSecondsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FilterConfiguration"))
   {
     m_filterConfiguration = jsonValue.GetObject("FilterConfiguration");
-
     m_filterConfigurationHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("UrlEncodeChildManifest"))
+  {
+    m_urlEncodeChildManifest = jsonValue.GetBool("UrlEncodeChildManifest");
+    m_urlEncodeChildManifestHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -112,6 +90,12 @@ JsonValue CreateLowLatencyHlsManifestConfiguration::Jsonize() const
 
   }
 
+  if(m_startTagHasBeenSet)
+  {
+   payload.WithObject("StartTag", m_startTag.Jsonize());
+
+  }
+
   if(m_manifestWindowSecondsHasBeenSet)
   {
    payload.WithInteger("ManifestWindowSeconds", m_manifestWindowSeconds);
@@ -127,6 +111,12 @@ JsonValue CreateLowLatencyHlsManifestConfiguration::Jsonize() const
   if(m_filterConfigurationHasBeenSet)
   {
    payload.WithObject("FilterConfiguration", m_filterConfiguration.Jsonize());
+
+  }
+
+  if(m_urlEncodeChildManifestHasBeenSet)
+  {
+   payload.WithBool("UrlEncodeChildManifest", m_urlEncodeChildManifest);
 
   }
 

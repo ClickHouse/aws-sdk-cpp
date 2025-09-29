@@ -12,11 +12,6 @@ using namespace Aws::WAFV2::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DeleteLoggingConfigurationRequest::DeleteLoggingConfigurationRequest() : 
-    m_resourceArnHasBeenSet(false)
-{
-}
-
 Aws::String DeleteLoggingConfigurationRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -25,6 +20,16 @@ Aws::String DeleteLoggingConfigurationRequest::SerializePayload() const
   {
    payload.WithString("ResourceArn", m_resourceArn);
 
+  }
+
+  if(m_logTypeHasBeenSet)
+  {
+   payload.WithString("LogType", LogTypeMapper::GetNameForLogType(m_logType));
+  }
+
+  if(m_logScopeHasBeenSet)
+  {
+   payload.WithString("LogScope", LogScopeMapper::GetNameForLogScope(m_logScope));
   }
 
   return payload.View().WriteReadable();

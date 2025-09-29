@@ -31,52 +31,23 @@ namespace Model
   class S3DestinationConfiguration
   {
   public:
-    AWS_IOTTWINMAKER_API S3DestinationConfiguration();
+    AWS_IOTTWINMAKER_API S3DestinationConfiguration() = default;
     AWS_IOTTWINMAKER_API S3DestinationConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTTWINMAKER_API S3DestinationConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTTWINMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The S3 destination configuration location.</p>
      */
-    inline const Aws::String& GetLocation() const{ return m_location; }
-
-    /**
-     * <p>The S3 destination configuration location.</p>
-     */
+    inline const Aws::String& GetLocation() const { return m_location; }
     inline bool LocationHasBeenSet() const { return m_locationHasBeenSet; }
-
-    /**
-     * <p>The S3 destination configuration location.</p>
-     */
-    inline void SetLocation(const Aws::String& value) { m_locationHasBeenSet = true; m_location = value; }
-
-    /**
-     * <p>The S3 destination configuration location.</p>
-     */
-    inline void SetLocation(Aws::String&& value) { m_locationHasBeenSet = true; m_location = std::move(value); }
-
-    /**
-     * <p>The S3 destination configuration location.</p>
-     */
-    inline void SetLocation(const char* value) { m_locationHasBeenSet = true; m_location.assign(value); }
-
-    /**
-     * <p>The S3 destination configuration location.</p>
-     */
-    inline S3DestinationConfiguration& WithLocation(const Aws::String& value) { SetLocation(value); return *this;}
-
-    /**
-     * <p>The S3 destination configuration location.</p>
-     */
-    inline S3DestinationConfiguration& WithLocation(Aws::String&& value) { SetLocation(std::move(value)); return *this;}
-
-    /**
-     * <p>The S3 destination configuration location.</p>
-     */
-    inline S3DestinationConfiguration& WithLocation(const char* value) { SetLocation(value); return *this;}
-
+    template<typename LocationT = Aws::String>
+    void SetLocation(LocationT&& value) { m_locationHasBeenSet = true; m_location = std::forward<LocationT>(value); }
+    template<typename LocationT = Aws::String>
+    S3DestinationConfiguration& WithLocation(LocationT&& value) { SetLocation(std::forward<LocationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_location;

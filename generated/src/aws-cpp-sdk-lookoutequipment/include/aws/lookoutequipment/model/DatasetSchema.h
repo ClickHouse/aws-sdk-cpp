@@ -32,52 +32,23 @@ namespace Model
   class DatasetSchema
   {
   public:
-    AWS_LOOKOUTEQUIPMENT_API DatasetSchema();
+    AWS_LOOKOUTEQUIPMENT_API DatasetSchema() = default;
     AWS_LOOKOUTEQUIPMENT_API DatasetSchema(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOOKOUTEQUIPMENT_API DatasetSchema& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOOKOUTEQUIPMENT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The data schema used within the given dataset.</p>
      */
-    inline const Aws::String& GetInlineDataSchema() const{ return m_inlineDataSchema; }
-
-    /**
-     * <p>The data schema used within the given dataset.</p>
-     */
+    inline const Aws::String& GetInlineDataSchema() const { return m_inlineDataSchema; }
     inline bool InlineDataSchemaHasBeenSet() const { return m_inlineDataSchemaHasBeenSet; }
-
-    /**
-     * <p>The data schema used within the given dataset.</p>
-     */
-    inline void SetInlineDataSchema(const Aws::String& value) { m_inlineDataSchemaHasBeenSet = true; m_inlineDataSchema = value; }
-
-    /**
-     * <p>The data schema used within the given dataset.</p>
-     */
-    inline void SetInlineDataSchema(Aws::String&& value) { m_inlineDataSchemaHasBeenSet = true; m_inlineDataSchema = std::move(value); }
-
-    /**
-     * <p>The data schema used within the given dataset.</p>
-     */
-    inline void SetInlineDataSchema(const char* value) { m_inlineDataSchemaHasBeenSet = true; m_inlineDataSchema.assign(value); }
-
-    /**
-     * <p>The data schema used within the given dataset.</p>
-     */
-    inline DatasetSchema& WithInlineDataSchema(const Aws::String& value) { SetInlineDataSchema(value); return *this;}
-
-    /**
-     * <p>The data schema used within the given dataset.</p>
-     */
-    inline DatasetSchema& WithInlineDataSchema(Aws::String&& value) { SetInlineDataSchema(std::move(value)); return *this;}
-
-    /**
-     * <p>The data schema used within the given dataset.</p>
-     */
-    inline DatasetSchema& WithInlineDataSchema(const char* value) { SetInlineDataSchema(value); return *this;}
-
+    template<typename InlineDataSchemaT = Aws::String>
+    void SetInlineDataSchema(InlineDataSchemaT&& value) { m_inlineDataSchemaHasBeenSet = true; m_inlineDataSchema = std::forward<InlineDataSchemaT>(value); }
+    template<typename InlineDataSchemaT = Aws::String>
+    DatasetSchema& WithInlineDataSchema(InlineDataSchemaT&& value) { SetInlineDataSchema(std::forward<InlineDataSchemaT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_inlineDataSchema;

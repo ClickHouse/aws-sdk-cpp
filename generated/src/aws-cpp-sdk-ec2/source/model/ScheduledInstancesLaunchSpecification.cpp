@@ -20,41 +20,7 @@ namespace EC2
 namespace Model
 {
 
-ScheduledInstancesLaunchSpecification::ScheduledInstancesLaunchSpecification() : 
-    m_blockDeviceMappingsHasBeenSet(false),
-    m_ebsOptimized(false),
-    m_ebsOptimizedHasBeenSet(false),
-    m_iamInstanceProfileHasBeenSet(false),
-    m_imageIdHasBeenSet(false),
-    m_instanceTypeHasBeenSet(false),
-    m_kernelIdHasBeenSet(false),
-    m_keyNameHasBeenSet(false),
-    m_monitoringHasBeenSet(false),
-    m_networkInterfacesHasBeenSet(false),
-    m_placementHasBeenSet(false),
-    m_ramdiskIdHasBeenSet(false),
-    m_securityGroupIdsHasBeenSet(false),
-    m_subnetIdHasBeenSet(false),
-    m_userDataHasBeenSet(false)
-{
-}
-
-ScheduledInstancesLaunchSpecification::ScheduledInstancesLaunchSpecification(const XmlNode& xmlNode) : 
-    m_blockDeviceMappingsHasBeenSet(false),
-    m_ebsOptimized(false),
-    m_ebsOptimizedHasBeenSet(false),
-    m_iamInstanceProfileHasBeenSet(false),
-    m_imageIdHasBeenSet(false),
-    m_instanceTypeHasBeenSet(false),
-    m_kernelIdHasBeenSet(false),
-    m_keyNameHasBeenSet(false),
-    m_monitoringHasBeenSet(false),
-    m_networkInterfacesHasBeenSet(false),
-    m_placementHasBeenSet(false),
-    m_ramdiskIdHasBeenSet(false),
-    m_securityGroupIdsHasBeenSet(false),
-    m_subnetIdHasBeenSet(false),
-    m_userDataHasBeenSet(false)
+ScheduledInstancesLaunchSpecification::ScheduledInstancesLaunchSpecification(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -69,6 +35,7 @@ ScheduledInstancesLaunchSpecification& ScheduledInstancesLaunchSpecification::op
     if(!blockDeviceMappingsNode.IsNull())
     {
       XmlNode blockDeviceMappingsMember = blockDeviceMappingsNode.FirstChild("BlockDeviceMapping");
+      m_blockDeviceMappingsHasBeenSet = !blockDeviceMappingsMember.IsNull();
       while(!blockDeviceMappingsMember.IsNull())
       {
         m_blockDeviceMappings.push_back(blockDeviceMappingsMember);
@@ -123,6 +90,7 @@ ScheduledInstancesLaunchSpecification& ScheduledInstancesLaunchSpecification::op
     if(!networkInterfacesNode.IsNull())
     {
       XmlNode networkInterfacesMember = networkInterfacesNode.FirstChild("NetworkInterface");
+      m_networkInterfacesHasBeenSet = !networkInterfacesMember.IsNull();
       while(!networkInterfacesMember.IsNull())
       {
         m_networkInterfaces.push_back(networkInterfacesMember);
@@ -147,6 +115,7 @@ ScheduledInstancesLaunchSpecification& ScheduledInstancesLaunchSpecification::op
     if(!securityGroupIdsNode.IsNull())
     {
       XmlNode securityGroupIdsMember = securityGroupIdsNode.FirstChild("SecurityGroupId");
+      m_securityGroupIdsHasBeenSet = !securityGroupIdsMember.IsNull();
       while(!securityGroupIdsMember.IsNull())
       {
         m_securityGroupIds.push_back(securityGroupIdsMember.GetText());
@@ -276,7 +245,7 @@ void ScheduledInstancesLaunchSpecification::OutputToStream(Aws::OStream& oStream
       for(auto& item : m_blockDeviceMappings)
       {
         Aws::StringStream blockDeviceMappingsSs;
-        blockDeviceMappingsSs << location <<  ".BlockDeviceMapping." << blockDeviceMappingsIdx++;
+        blockDeviceMappingsSs << location << ".BlockDeviceMapping." << blockDeviceMappingsIdx++;
         item.OutputToStream(oStream, blockDeviceMappingsSs.str().c_str());
       }
   }
@@ -318,7 +287,7 @@ void ScheduledInstancesLaunchSpecification::OutputToStream(Aws::OStream& oStream
       for(auto& item : m_networkInterfaces)
       {
         Aws::StringStream networkInterfacesSs;
-        networkInterfacesSs << location <<  ".NetworkInterface." << networkInterfacesIdx++;
+        networkInterfacesSs << location << ".NetworkInterface." << networkInterfacesIdx++;
         item.OutputToStream(oStream, networkInterfacesSs.str().c_str());
       }
   }

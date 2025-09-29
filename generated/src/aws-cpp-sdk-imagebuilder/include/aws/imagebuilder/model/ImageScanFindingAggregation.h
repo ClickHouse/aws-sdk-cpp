@@ -35,153 +35,62 @@ namespace Model
   class ImageScanFindingAggregation
   {
   public:
-    AWS_IMAGEBUILDER_API ImageScanFindingAggregation();
+    AWS_IMAGEBUILDER_API ImageScanFindingAggregation() = default;
     AWS_IMAGEBUILDER_API ImageScanFindingAggregation(Aws::Utils::Json::JsonView jsonValue);
     AWS_IMAGEBUILDER_API ImageScanFindingAggregation& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IMAGEBUILDER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Returns an object that contains severity counts based on an account ID.</p>
      */
-    inline const AccountAggregation& GetAccountAggregation() const{ return m_accountAggregation; }
-
-    /**
-     * <p>Returns an object that contains severity counts based on an account ID.</p>
-     */
+    inline const AccountAggregation& GetAccountAggregation() const { return m_accountAggregation; }
     inline bool AccountAggregationHasBeenSet() const { return m_accountAggregationHasBeenSet; }
+    template<typename AccountAggregationT = AccountAggregation>
+    void SetAccountAggregation(AccountAggregationT&& value) { m_accountAggregationHasBeenSet = true; m_accountAggregation = std::forward<AccountAggregationT>(value); }
+    template<typename AccountAggregationT = AccountAggregation>
+    ImageScanFindingAggregation& WithAccountAggregation(AccountAggregationT&& value) { SetAccountAggregation(std::forward<AccountAggregationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Returns an object that contains severity counts based on an account ID.</p>
-     */
-    inline void SetAccountAggregation(const AccountAggregation& value) { m_accountAggregationHasBeenSet = true; m_accountAggregation = value; }
-
-    /**
-     * <p>Returns an object that contains severity counts based on an account ID.</p>
-     */
-    inline void SetAccountAggregation(AccountAggregation&& value) { m_accountAggregationHasBeenSet = true; m_accountAggregation = std::move(value); }
-
-    /**
-     * <p>Returns an object that contains severity counts based on an account ID.</p>
-     */
-    inline ImageScanFindingAggregation& WithAccountAggregation(const AccountAggregation& value) { SetAccountAggregation(value); return *this;}
-
-    /**
-     * <p>Returns an object that contains severity counts based on an account ID.</p>
-     */
-    inline ImageScanFindingAggregation& WithAccountAggregation(AccountAggregation&& value) { SetAccountAggregation(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Returns an object that contains severity counts based on the Amazon Resource
      * Name (ARN) for a specific image.</p>
      */
-    inline const ImageAggregation& GetImageAggregation() const{ return m_imageAggregation; }
-
-    /**
-     * <p>Returns an object that contains severity counts based on the Amazon Resource
-     * Name (ARN) for a specific image.</p>
-     */
+    inline const ImageAggregation& GetImageAggregation() const { return m_imageAggregation; }
     inline bool ImageAggregationHasBeenSet() const { return m_imageAggregationHasBeenSet; }
+    template<typename ImageAggregationT = ImageAggregation>
+    void SetImageAggregation(ImageAggregationT&& value) { m_imageAggregationHasBeenSet = true; m_imageAggregation = std::forward<ImageAggregationT>(value); }
+    template<typename ImageAggregationT = ImageAggregation>
+    ImageScanFindingAggregation& WithImageAggregation(ImageAggregationT&& value) { SetImageAggregation(std::forward<ImageAggregationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Returns an object that contains severity counts based on the Amazon Resource
-     * Name (ARN) for a specific image.</p>
-     */
-    inline void SetImageAggregation(const ImageAggregation& value) { m_imageAggregationHasBeenSet = true; m_imageAggregation = value; }
-
-    /**
-     * <p>Returns an object that contains severity counts based on the Amazon Resource
-     * Name (ARN) for a specific image.</p>
-     */
-    inline void SetImageAggregation(ImageAggregation&& value) { m_imageAggregationHasBeenSet = true; m_imageAggregation = std::move(value); }
-
-    /**
-     * <p>Returns an object that contains severity counts based on the Amazon Resource
-     * Name (ARN) for a specific image.</p>
-     */
-    inline ImageScanFindingAggregation& WithImageAggregation(const ImageAggregation& value) { SetImageAggregation(value); return *this;}
-
-    /**
-     * <p>Returns an object that contains severity counts based on the Amazon Resource
-     * Name (ARN) for a specific image.</p>
-     */
-    inline ImageScanFindingAggregation& WithImageAggregation(ImageAggregation&& value) { SetImageAggregation(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Returns an object that contains severity counts based on an image pipeline
      * ARN.</p>
      */
-    inline const ImagePipelineAggregation& GetImagePipelineAggregation() const{ return m_imagePipelineAggregation; }
-
-    /**
-     * <p>Returns an object that contains severity counts based on an image pipeline
-     * ARN.</p>
-     */
+    inline const ImagePipelineAggregation& GetImagePipelineAggregation() const { return m_imagePipelineAggregation; }
     inline bool ImagePipelineAggregationHasBeenSet() const { return m_imagePipelineAggregationHasBeenSet; }
+    template<typename ImagePipelineAggregationT = ImagePipelineAggregation>
+    void SetImagePipelineAggregation(ImagePipelineAggregationT&& value) { m_imagePipelineAggregationHasBeenSet = true; m_imagePipelineAggregation = std::forward<ImagePipelineAggregationT>(value); }
+    template<typename ImagePipelineAggregationT = ImagePipelineAggregation>
+    ImageScanFindingAggregation& WithImagePipelineAggregation(ImagePipelineAggregationT&& value) { SetImagePipelineAggregation(std::forward<ImagePipelineAggregationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Returns an object that contains severity counts based on an image pipeline
-     * ARN.</p>
-     */
-    inline void SetImagePipelineAggregation(const ImagePipelineAggregation& value) { m_imagePipelineAggregationHasBeenSet = true; m_imagePipelineAggregation = value; }
-
-    /**
-     * <p>Returns an object that contains severity counts based on an image pipeline
-     * ARN.</p>
-     */
-    inline void SetImagePipelineAggregation(ImagePipelineAggregation&& value) { m_imagePipelineAggregationHasBeenSet = true; m_imagePipelineAggregation = std::move(value); }
-
-    /**
-     * <p>Returns an object that contains severity counts based on an image pipeline
-     * ARN.</p>
-     */
-    inline ImageScanFindingAggregation& WithImagePipelineAggregation(const ImagePipelineAggregation& value) { SetImagePipelineAggregation(value); return *this;}
-
-    /**
-     * <p>Returns an object that contains severity counts based on an image pipeline
-     * ARN.</p>
-     */
-    inline ImageScanFindingAggregation& WithImagePipelineAggregation(ImagePipelineAggregation&& value) { SetImagePipelineAggregation(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Returns an object that contains severity counts based on vulnerability
      * ID.</p>
      */
-    inline const VulnerabilityIdAggregation& GetVulnerabilityIdAggregation() const{ return m_vulnerabilityIdAggregation; }
-
-    /**
-     * <p>Returns an object that contains severity counts based on vulnerability
-     * ID.</p>
-     */
+    inline const VulnerabilityIdAggregation& GetVulnerabilityIdAggregation() const { return m_vulnerabilityIdAggregation; }
     inline bool VulnerabilityIdAggregationHasBeenSet() const { return m_vulnerabilityIdAggregationHasBeenSet; }
-
-    /**
-     * <p>Returns an object that contains severity counts based on vulnerability
-     * ID.</p>
-     */
-    inline void SetVulnerabilityIdAggregation(const VulnerabilityIdAggregation& value) { m_vulnerabilityIdAggregationHasBeenSet = true; m_vulnerabilityIdAggregation = value; }
-
-    /**
-     * <p>Returns an object that contains severity counts based on vulnerability
-     * ID.</p>
-     */
-    inline void SetVulnerabilityIdAggregation(VulnerabilityIdAggregation&& value) { m_vulnerabilityIdAggregationHasBeenSet = true; m_vulnerabilityIdAggregation = std::move(value); }
-
-    /**
-     * <p>Returns an object that contains severity counts based on vulnerability
-     * ID.</p>
-     */
-    inline ImageScanFindingAggregation& WithVulnerabilityIdAggregation(const VulnerabilityIdAggregation& value) { SetVulnerabilityIdAggregation(value); return *this;}
-
-    /**
-     * <p>Returns an object that contains severity counts based on vulnerability
-     * ID.</p>
-     */
-    inline ImageScanFindingAggregation& WithVulnerabilityIdAggregation(VulnerabilityIdAggregation&& value) { SetVulnerabilityIdAggregation(std::move(value)); return *this;}
-
+    template<typename VulnerabilityIdAggregationT = VulnerabilityIdAggregation>
+    void SetVulnerabilityIdAggregation(VulnerabilityIdAggregationT&& value) { m_vulnerabilityIdAggregationHasBeenSet = true; m_vulnerabilityIdAggregation = std::forward<VulnerabilityIdAggregationT>(value); }
+    template<typename VulnerabilityIdAggregationT = VulnerabilityIdAggregation>
+    ImageScanFindingAggregation& WithVulnerabilityIdAggregation(VulnerabilityIdAggregationT&& value) { SetVulnerabilityIdAggregation(std::forward<VulnerabilityIdAggregationT>(value)); return *this;}
+    ///@}
   private:
 
     AccountAggregation m_accountAggregation;

@@ -29,95 +29,53 @@ namespace Model
   class Phase
   {
   public:
-    AWS_SAGEMAKER_API Phase();
+    AWS_SAGEMAKER_API Phase() = default;
     AWS_SAGEMAKER_API Phase(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Phase& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specifies how many concurrent users to start with. The value should be
      * between 1 and 3.</p>
      */
-    inline int GetInitialNumberOfUsers() const{ return m_initialNumberOfUsers; }
-
-    /**
-     * <p>Specifies how many concurrent users to start with. The value should be
-     * between 1 and 3.</p>
-     */
+    inline int GetInitialNumberOfUsers() const { return m_initialNumberOfUsers; }
     inline bool InitialNumberOfUsersHasBeenSet() const { return m_initialNumberOfUsersHasBeenSet; }
-
-    /**
-     * <p>Specifies how many concurrent users to start with. The value should be
-     * between 1 and 3.</p>
-     */
     inline void SetInitialNumberOfUsers(int value) { m_initialNumberOfUsersHasBeenSet = true; m_initialNumberOfUsers = value; }
-
-    /**
-     * <p>Specifies how many concurrent users to start with. The value should be
-     * between 1 and 3.</p>
-     */
     inline Phase& WithInitialNumberOfUsers(int value) { SetInitialNumberOfUsers(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Specified how many new users to spawn in a minute.</p>
      */
-    inline int GetSpawnRate() const{ return m_spawnRate; }
-
-    /**
-     * <p>Specified how many new users to spawn in a minute.</p>
-     */
+    inline int GetSpawnRate() const { return m_spawnRate; }
     inline bool SpawnRateHasBeenSet() const { return m_spawnRateHasBeenSet; }
-
-    /**
-     * <p>Specified how many new users to spawn in a minute.</p>
-     */
     inline void SetSpawnRate(int value) { m_spawnRateHasBeenSet = true; m_spawnRate = value; }
-
-    /**
-     * <p>Specified how many new users to spawn in a minute.</p>
-     */
     inline Phase& WithSpawnRate(int value) { SetSpawnRate(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Specifies how long a traffic phase should be. For custom load tests, the
      * value should be between 120 and 3600. This value should not exceed
      * <code>JobDurationInSeconds</code>.</p>
      */
-    inline int GetDurationInSeconds() const{ return m_durationInSeconds; }
-
-    /**
-     * <p>Specifies how long a traffic phase should be. For custom load tests, the
-     * value should be between 120 and 3600. This value should not exceed
-     * <code>JobDurationInSeconds</code>.</p>
-     */
+    inline int GetDurationInSeconds() const { return m_durationInSeconds; }
     inline bool DurationInSecondsHasBeenSet() const { return m_durationInSecondsHasBeenSet; }
-
-    /**
-     * <p>Specifies how long a traffic phase should be. For custom load tests, the
-     * value should be between 120 and 3600. This value should not exceed
-     * <code>JobDurationInSeconds</code>.</p>
-     */
     inline void SetDurationInSeconds(int value) { m_durationInSecondsHasBeenSet = true; m_durationInSeconds = value; }
-
-    /**
-     * <p>Specifies how long a traffic phase should be. For custom load tests, the
-     * value should be between 120 and 3600. This value should not exceed
-     * <code>JobDurationInSeconds</code>.</p>
-     */
     inline Phase& WithDurationInSeconds(int value) { SetDurationInSeconds(value); return *this;}
-
+    ///@}
   private:
 
-    int m_initialNumberOfUsers;
+    int m_initialNumberOfUsers{0};
     bool m_initialNumberOfUsersHasBeenSet = false;
 
-    int m_spawnRate;
+    int m_spawnRate{0};
     bool m_spawnRateHasBeenSet = false;
 
-    int m_durationInSeconds;
+    int m_durationInSeconds{0};
     bool m_durationInSecondsHasBeenSet = false;
   };
 

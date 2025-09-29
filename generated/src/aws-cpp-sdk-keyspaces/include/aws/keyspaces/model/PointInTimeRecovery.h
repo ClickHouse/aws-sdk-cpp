@@ -36,51 +36,25 @@ namespace Model
   class PointInTimeRecovery
   {
   public:
-    AWS_KEYSPACES_API PointInTimeRecovery();
+    AWS_KEYSPACES_API PointInTimeRecovery() = default;
     AWS_KEYSPACES_API PointInTimeRecovery(Aws::Utils::Json::JsonView jsonValue);
     AWS_KEYSPACES_API PointInTimeRecovery& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KEYSPACES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The options are:</p> <ul> <li> <p> <code>status=ENABLED</code> </p> </li>
      * <li> <p> <code>status=DISABLED</code> </p> </li> </ul>
      */
-    inline const PointInTimeRecoveryStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The options are:</p> <ul> <li> <p> <code>status=ENABLED</code> </p> </li>
-     * <li> <p> <code>status=DISABLED</code> </p> </li> </ul>
-     */
+    inline PointInTimeRecoveryStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p>The options are:</p> <ul> <li> <p> <code>status=ENABLED</code> </p> </li>
-     * <li> <p> <code>status=DISABLED</code> </p> </li> </ul>
-     */
-    inline void SetStatus(const PointInTimeRecoveryStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The options are:</p> <ul> <li> <p> <code>status=ENABLED</code> </p> </li>
-     * <li> <p> <code>status=DISABLED</code> </p> </li> </ul>
-     */
-    inline void SetStatus(PointInTimeRecoveryStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The options are:</p> <ul> <li> <p> <code>status=ENABLED</code> </p> </li>
-     * <li> <p> <code>status=DISABLED</code> </p> </li> </ul>
-     */
-    inline PointInTimeRecovery& WithStatus(const PointInTimeRecoveryStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The options are:</p> <ul> <li> <p> <code>status=ENABLED</code> </p> </li>
-     * <li> <p> <code>status=DISABLED</code> </p> </li> </ul>
-     */
-    inline PointInTimeRecovery& WithStatus(PointInTimeRecoveryStatus&& value) { SetStatus(std::move(value)); return *this;}
-
+    inline void SetStatus(PointInTimeRecoveryStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline PointInTimeRecovery& WithStatus(PointInTimeRecoveryStatus value) { SetStatus(value); return *this;}
+    ///@}
   private:
 
-    PointInTimeRecoveryStatus m_status;
+    PointInTimeRecoveryStatus m_status{PointInTimeRecoveryStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
   };
 

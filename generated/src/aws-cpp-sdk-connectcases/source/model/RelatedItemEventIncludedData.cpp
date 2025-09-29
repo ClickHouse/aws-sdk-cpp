@@ -18,15 +18,7 @@ namespace ConnectCases
 namespace Model
 {
 
-RelatedItemEventIncludedData::RelatedItemEventIncludedData() : 
-    m_includeContent(false),
-    m_includeContentHasBeenSet(false)
-{
-}
-
-RelatedItemEventIncludedData::RelatedItemEventIncludedData(JsonView jsonValue) : 
-    m_includeContent(false),
-    m_includeContentHasBeenSet(false)
+RelatedItemEventIncludedData::RelatedItemEventIncludedData(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ RelatedItemEventIncludedData& RelatedItemEventIncludedData::operator =(JsonView 
   if(jsonValue.ValueExists("includeContent"))
   {
     m_includeContent = jsonValue.GetBool("includeContent");
-
     m_includeContentHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -30,46 +30,25 @@ namespace Model
   class RequestPaymentConfiguration
   {
   public:
-    AWS_S3CRT_API RequestPaymentConfiguration();
+    AWS_S3CRT_API RequestPaymentConfiguration() = default;
     AWS_S3CRT_API RequestPaymentConfiguration(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3CRT_API RequestPaymentConfiguration& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3CRT_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>Specifies who pays for the download and request fees.</p>
      */
-    inline const Payer& GetPayer() const{ return m_payer; }
-
-    /**
-     * <p>Specifies who pays for the download and request fees.</p>
-     */
+    inline Payer GetPayer() const { return m_payer; }
     inline bool PayerHasBeenSet() const { return m_payerHasBeenSet; }
-
-    /**
-     * <p>Specifies who pays for the download and request fees.</p>
-     */
-    inline void SetPayer(const Payer& value) { m_payerHasBeenSet = true; m_payer = value; }
-
-    /**
-     * <p>Specifies who pays for the download and request fees.</p>
-     */
-    inline void SetPayer(Payer&& value) { m_payerHasBeenSet = true; m_payer = std::move(value); }
-
-    /**
-     * <p>Specifies who pays for the download and request fees.</p>
-     */
-    inline RequestPaymentConfiguration& WithPayer(const Payer& value) { SetPayer(value); return *this;}
-
-    /**
-     * <p>Specifies who pays for the download and request fees.</p>
-     */
-    inline RequestPaymentConfiguration& WithPayer(Payer&& value) { SetPayer(std::move(value)); return *this;}
-
+    inline void SetPayer(Payer value) { m_payerHasBeenSet = true; m_payer = value; }
+    inline RequestPaymentConfiguration& WithPayer(Payer value) { SetPayer(value); return *this;}
+    ///@}
   private:
 
-    Payer m_payer;
+    Payer m_payer{Payer::NOT_SET};
     bool m_payerHasBeenSet = false;
   };
 

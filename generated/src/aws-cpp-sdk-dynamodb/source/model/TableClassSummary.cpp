@@ -18,17 +18,7 @@ namespace DynamoDB
 namespace Model
 {
 
-TableClassSummary::TableClassSummary() : 
-    m_tableClass(TableClass::NOT_SET),
-    m_tableClassHasBeenSet(false),
-    m_lastUpdateDateTimeHasBeenSet(false)
-{
-}
-
-TableClassSummary::TableClassSummary(JsonView jsonValue) : 
-    m_tableClass(TableClass::NOT_SET),
-    m_tableClassHasBeenSet(false),
-    m_lastUpdateDateTimeHasBeenSet(false)
+TableClassSummary::TableClassSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ TableClassSummary& TableClassSummary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("TableClass"))
   {
     m_tableClass = TableClassMapper::GetTableClassForName(jsonValue.GetString("TableClass"));
-
     m_tableClassHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LastUpdateDateTime"))
   {
     m_lastUpdateDateTime = jsonValue.GetDouble("LastUpdateDateTime");
-
     m_lastUpdateDateTimeHasBeenSet = true;
   }
-
   return *this;
 }
 

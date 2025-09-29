@@ -33,8 +33,8 @@ namespace SimSpaceWeaver
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
 
       typedef SimSpaceWeaverClientConfiguration ClientConfigurationType;
       typedef SimSpaceWeaverEndpointProvider EndpointProviderType;
@@ -44,14 +44,14 @@ namespace SimSpaceWeaver
         * is not specified, it will be initialized to default values.
         */
         SimSpaceWeaverClient(const Aws::SimSpaceWeaver::SimSpaceWeaverClientConfiguration& clientConfiguration = Aws::SimSpaceWeaver::SimSpaceWeaverClientConfiguration(),
-                             std::shared_ptr<SimSpaceWeaverEndpointProviderBase> endpointProvider = Aws::MakeShared<SimSpaceWeaverEndpointProvider>(ALLOCATION_TAG));
+                             std::shared_ptr<SimSpaceWeaverEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         SimSpaceWeaverClient(const Aws::Auth::AWSCredentials& credentials,
-                             std::shared_ptr<SimSpaceWeaverEndpointProviderBase> endpointProvider = Aws::MakeShared<SimSpaceWeaverEndpointProvider>(ALLOCATION_TAG),
+                             std::shared_ptr<SimSpaceWeaverEndpointProviderBase> endpointProvider = nullptr,
                              const Aws::SimSpaceWeaver::SimSpaceWeaverClientConfiguration& clientConfiguration = Aws::SimSpaceWeaver::SimSpaceWeaverClientConfiguration());
 
        /**
@@ -59,7 +59,7 @@ namespace SimSpaceWeaver
         * the default http client factory will be used
         */
         SimSpaceWeaverClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                             std::shared_ptr<SimSpaceWeaverEndpointProviderBase> endpointProvider = Aws::MakeShared<SimSpaceWeaverEndpointProvider>(ALLOCATION_TAG),
+                             std::shared_ptr<SimSpaceWeaverEndpointProviderBase> endpointProvider = nullptr,
                              const Aws::SimSpaceWeaver::SimSpaceWeaverClientConfiguration& clientConfiguration = Aws::SimSpaceWeaver::SimSpaceWeaverClientConfiguration());
 
 
@@ -269,13 +269,13 @@ namespace SimSpaceWeaver
          * href="http://docs.aws.amazon.com/goto/WebAPI/simspaceweaver-2022-10-28/ListSimulations">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListSimulationsOutcome ListSimulations(const Model::ListSimulationsRequest& request) const;
+        virtual Model::ListSimulationsOutcome ListSimulations(const Model::ListSimulationsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListSimulations that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListSimulationsRequestT = Model::ListSimulationsRequest>
-        Model::ListSimulationsOutcomeCallable ListSimulationsCallable(const ListSimulationsRequestT& request) const
+        Model::ListSimulationsOutcomeCallable ListSimulationsCallable(const ListSimulationsRequestT& request = {}) const
         {
             return SubmitCallable(&SimSpaceWeaverClient::ListSimulations, request);
         }
@@ -284,7 +284,7 @@ namespace SimSpaceWeaver
          * An Async wrapper for ListSimulations that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListSimulationsRequestT = Model::ListSimulationsRequest>
-        void ListSimulationsAsync(const ListSimulationsRequestT& request, const ListSimulationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListSimulationsAsync(const ListSimulationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListSimulationsRequestT& request = {}) const
         {
             return SubmitAsync(&SimSpaceWeaverClient::ListSimulations, request, handler, context);
         }
@@ -541,7 +541,6 @@ namespace SimSpaceWeaver
       void init(const SimSpaceWeaverClientConfiguration& clientConfiguration);
 
       SimSpaceWeaverClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<SimSpaceWeaverEndpointProviderBase> m_endpointProvider;
   };
 

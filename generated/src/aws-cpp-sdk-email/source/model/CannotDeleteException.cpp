@@ -20,13 +20,7 @@ namespace SES
 namespace Model
 {
 
-CannotDeleteException::CannotDeleteException() : 
-    m_nameHasBeenSet(false)
-{
-}
-
-CannotDeleteException::CannotDeleteException(const XmlNode& xmlNode) : 
-    m_nameHasBeenSet(false)
+CannotDeleteException::CannotDeleteException(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

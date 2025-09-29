@@ -21,7 +21,7 @@ namespace Model
   class PutProfileObjectRequest : public CustomerProfilesRequest
   {
   public:
-    AWS_CUSTOMERPROFILES_API PutProfileObjectRequest();
+    AWS_CUSTOMERPROFILES_API PutProfileObjectRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,128 +32,41 @@ namespace Model
     AWS_CUSTOMERPROFILES_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of the profile object type.</p>
      */
-    inline const Aws::String& GetObjectTypeName() const{ return m_objectTypeName; }
-
-    /**
-     * <p>The name of the profile object type.</p>
-     */
+    inline const Aws::String& GetObjectTypeName() const { return m_objectTypeName; }
     inline bool ObjectTypeNameHasBeenSet() const { return m_objectTypeNameHasBeenSet; }
+    template<typename ObjectTypeNameT = Aws::String>
+    void SetObjectTypeName(ObjectTypeNameT&& value) { m_objectTypeNameHasBeenSet = true; m_objectTypeName = std::forward<ObjectTypeNameT>(value); }
+    template<typename ObjectTypeNameT = Aws::String>
+    PutProfileObjectRequest& WithObjectTypeName(ObjectTypeNameT&& value) { SetObjectTypeName(std::forward<ObjectTypeNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the profile object type.</p>
-     */
-    inline void SetObjectTypeName(const Aws::String& value) { m_objectTypeNameHasBeenSet = true; m_objectTypeName = value; }
-
-    /**
-     * <p>The name of the profile object type.</p>
-     */
-    inline void SetObjectTypeName(Aws::String&& value) { m_objectTypeNameHasBeenSet = true; m_objectTypeName = std::move(value); }
-
-    /**
-     * <p>The name of the profile object type.</p>
-     */
-    inline void SetObjectTypeName(const char* value) { m_objectTypeNameHasBeenSet = true; m_objectTypeName.assign(value); }
-
-    /**
-     * <p>The name of the profile object type.</p>
-     */
-    inline PutProfileObjectRequest& WithObjectTypeName(const Aws::String& value) { SetObjectTypeName(value); return *this;}
-
-    /**
-     * <p>The name of the profile object type.</p>
-     */
-    inline PutProfileObjectRequest& WithObjectTypeName(Aws::String&& value) { SetObjectTypeName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the profile object type.</p>
-     */
-    inline PutProfileObjectRequest& WithObjectTypeName(const char* value) { SetObjectTypeName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A string that is serialized from a JSON object.</p>
      */
-    inline const Aws::String& GetObject() const{ return m_object; }
-
-    /**
-     * <p>A string that is serialized from a JSON object.</p>
-     */
+    inline const Aws::String& GetObject() const { return m_object; }
     inline bool ObjectHasBeenSet() const { return m_objectHasBeenSet; }
+    template<typename ObjectT = Aws::String>
+    void SetObject(ObjectT&& value) { m_objectHasBeenSet = true; m_object = std::forward<ObjectT>(value); }
+    template<typename ObjectT = Aws::String>
+    PutProfileObjectRequest& WithObject(ObjectT&& value) { SetObject(std::forward<ObjectT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A string that is serialized from a JSON object.</p>
-     */
-    inline void SetObject(const Aws::String& value) { m_objectHasBeenSet = true; m_object = value; }
-
-    /**
-     * <p>A string that is serialized from a JSON object.</p>
-     */
-    inline void SetObject(Aws::String&& value) { m_objectHasBeenSet = true; m_object = std::move(value); }
-
-    /**
-     * <p>A string that is serialized from a JSON object.</p>
-     */
-    inline void SetObject(const char* value) { m_objectHasBeenSet = true; m_object.assign(value); }
-
-    /**
-     * <p>A string that is serialized from a JSON object.</p>
-     */
-    inline PutProfileObjectRequest& WithObject(const Aws::String& value) { SetObject(value); return *this;}
-
-    /**
-     * <p>A string that is serialized from a JSON object.</p>
-     */
-    inline PutProfileObjectRequest& WithObject(Aws::String&& value) { SetObject(std::move(value)); return *this;}
-
-    /**
-     * <p>A string that is serialized from a JSON object.</p>
-     */
-    inline PutProfileObjectRequest& WithObject(const char* value) { SetObject(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique name of the domain.</p>
      */
-    inline const Aws::String& GetDomainName() const{ return m_domainName; }
-
-    /**
-     * <p>The unique name of the domain.</p>
-     */
+    inline const Aws::String& GetDomainName() const { return m_domainName; }
     inline bool DomainNameHasBeenSet() const { return m_domainNameHasBeenSet; }
-
-    /**
-     * <p>The unique name of the domain.</p>
-     */
-    inline void SetDomainName(const Aws::String& value) { m_domainNameHasBeenSet = true; m_domainName = value; }
-
-    /**
-     * <p>The unique name of the domain.</p>
-     */
-    inline void SetDomainName(Aws::String&& value) { m_domainNameHasBeenSet = true; m_domainName = std::move(value); }
-
-    /**
-     * <p>The unique name of the domain.</p>
-     */
-    inline void SetDomainName(const char* value) { m_domainNameHasBeenSet = true; m_domainName.assign(value); }
-
-    /**
-     * <p>The unique name of the domain.</p>
-     */
-    inline PutProfileObjectRequest& WithDomainName(const Aws::String& value) { SetDomainName(value); return *this;}
-
-    /**
-     * <p>The unique name of the domain.</p>
-     */
-    inline PutProfileObjectRequest& WithDomainName(Aws::String&& value) { SetDomainName(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique name of the domain.</p>
-     */
-    inline PutProfileObjectRequest& WithDomainName(const char* value) { SetDomainName(value); return *this;}
-
+    template<typename DomainNameT = Aws::String>
+    void SetDomainName(DomainNameT&& value) { m_domainNameHasBeenSet = true; m_domainName = std::forward<DomainNameT>(value); }
+    template<typename DomainNameT = Aws::String>
+    PutProfileObjectRequest& WithDomainName(DomainNameT&& value) { SetDomainName(std::forward<DomainNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_objectTypeName;

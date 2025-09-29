@@ -18,15 +18,7 @@ namespace Synthetics
 namespace Model
 {
 
-CanaryCodeOutput::CanaryCodeOutput() : 
-    m_sourceLocationArnHasBeenSet(false),
-    m_handlerHasBeenSet(false)
-{
-}
-
-CanaryCodeOutput::CanaryCodeOutput(JsonView jsonValue) : 
-    m_sourceLocationArnHasBeenSet(false),
-    m_handlerHasBeenSet(false)
+CanaryCodeOutput::CanaryCodeOutput(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,22 @@ CanaryCodeOutput& CanaryCodeOutput::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("SourceLocationArn"))
   {
     m_sourceLocationArn = jsonValue.GetString("SourceLocationArn");
-
     m_sourceLocationArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Handler"))
   {
     m_handler = jsonValue.GetString("Handler");
-
     m_handlerHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("Dependencies"))
+  {
+    Aws::Utils::Array<JsonView> dependenciesJsonList = jsonValue.GetArray("Dependencies");
+    for(unsigned dependenciesIndex = 0; dependenciesIndex < dependenciesJsonList.GetLength(); ++dependenciesIndex)
+    {
+      m_dependencies.push_back(dependenciesJsonList[dependenciesIndex].AsObject());
+    }
+    m_dependenciesHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -63,6 +60,17 @@ JsonValue CanaryCodeOutput::Jsonize() const
   if(m_handlerHasBeenSet)
   {
    payload.WithString("Handler", m_handler);
+
+  }
+
+  if(m_dependenciesHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> dependenciesJsonList(m_dependencies.size());
+   for(unsigned dependenciesIndex = 0; dependenciesIndex < dependenciesJsonList.GetLength(); ++dependenciesIndex)
+   {
+     dependenciesJsonList[dependenciesIndex].AsObject(m_dependencies[dependenciesIndex].Jsonize());
+   }
+   payload.WithArray("Dependencies", std::move(dependenciesJsonList));
 
   }
 

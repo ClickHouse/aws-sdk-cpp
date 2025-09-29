@@ -33,97 +33,42 @@ namespace Model
   class UplinkSpectrumConfig
   {
   public:
-    AWS_GROUNDSTATION_API UplinkSpectrumConfig();
+    AWS_GROUNDSTATION_API UplinkSpectrumConfig() = default;
     AWS_GROUNDSTATION_API UplinkSpectrumConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_GROUNDSTATION_API UplinkSpectrumConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GROUNDSTATION_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Center frequency of an uplink spectral <code>Config</code>. Valid values are
      * between 2025 to 2120 MHz.</p>
      */
-    inline const Frequency& GetCenterFrequency() const{ return m_centerFrequency; }
-
-    /**
-     * <p>Center frequency of an uplink spectral <code>Config</code>. Valid values are
-     * between 2025 to 2120 MHz.</p>
-     */
+    inline const Frequency& GetCenterFrequency() const { return m_centerFrequency; }
     inline bool CenterFrequencyHasBeenSet() const { return m_centerFrequencyHasBeenSet; }
+    template<typename CenterFrequencyT = Frequency>
+    void SetCenterFrequency(CenterFrequencyT&& value) { m_centerFrequencyHasBeenSet = true; m_centerFrequency = std::forward<CenterFrequencyT>(value); }
+    template<typename CenterFrequencyT = Frequency>
+    UplinkSpectrumConfig& WithCenterFrequency(CenterFrequencyT&& value) { SetCenterFrequency(std::forward<CenterFrequencyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Center frequency of an uplink spectral <code>Config</code>. Valid values are
-     * between 2025 to 2120 MHz.</p>
-     */
-    inline void SetCenterFrequency(const Frequency& value) { m_centerFrequencyHasBeenSet = true; m_centerFrequency = value; }
-
-    /**
-     * <p>Center frequency of an uplink spectral <code>Config</code>. Valid values are
-     * between 2025 to 2120 MHz.</p>
-     */
-    inline void SetCenterFrequency(Frequency&& value) { m_centerFrequencyHasBeenSet = true; m_centerFrequency = std::move(value); }
-
-    /**
-     * <p>Center frequency of an uplink spectral <code>Config</code>. Valid values are
-     * between 2025 to 2120 MHz.</p>
-     */
-    inline UplinkSpectrumConfig& WithCenterFrequency(const Frequency& value) { SetCenterFrequency(value); return *this;}
-
-    /**
-     * <p>Center frequency of an uplink spectral <code>Config</code>. Valid values are
-     * between 2025 to 2120 MHz.</p>
-     */
-    inline UplinkSpectrumConfig& WithCenterFrequency(Frequency&& value) { SetCenterFrequency(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Polarization of an uplink spectral <code>Config</code>. Capturing both
      * <code>"RIGHT_HAND"</code> and <code>"LEFT_HAND"</code> polarization requires two
      * separate configs.</p>
      */
-    inline const Polarization& GetPolarization() const{ return m_polarization; }
-
-    /**
-     * <p>Polarization of an uplink spectral <code>Config</code>. Capturing both
-     * <code>"RIGHT_HAND"</code> and <code>"LEFT_HAND"</code> polarization requires two
-     * separate configs.</p>
-     */
+    inline Polarization GetPolarization() const { return m_polarization; }
     inline bool PolarizationHasBeenSet() const { return m_polarizationHasBeenSet; }
-
-    /**
-     * <p>Polarization of an uplink spectral <code>Config</code>. Capturing both
-     * <code>"RIGHT_HAND"</code> and <code>"LEFT_HAND"</code> polarization requires two
-     * separate configs.</p>
-     */
-    inline void SetPolarization(const Polarization& value) { m_polarizationHasBeenSet = true; m_polarization = value; }
-
-    /**
-     * <p>Polarization of an uplink spectral <code>Config</code>. Capturing both
-     * <code>"RIGHT_HAND"</code> and <code>"LEFT_HAND"</code> polarization requires two
-     * separate configs.</p>
-     */
-    inline void SetPolarization(Polarization&& value) { m_polarizationHasBeenSet = true; m_polarization = std::move(value); }
-
-    /**
-     * <p>Polarization of an uplink spectral <code>Config</code>. Capturing both
-     * <code>"RIGHT_HAND"</code> and <code>"LEFT_HAND"</code> polarization requires two
-     * separate configs.</p>
-     */
-    inline UplinkSpectrumConfig& WithPolarization(const Polarization& value) { SetPolarization(value); return *this;}
-
-    /**
-     * <p>Polarization of an uplink spectral <code>Config</code>. Capturing both
-     * <code>"RIGHT_HAND"</code> and <code>"LEFT_HAND"</code> polarization requires two
-     * separate configs.</p>
-     */
-    inline UplinkSpectrumConfig& WithPolarization(Polarization&& value) { SetPolarization(std::move(value)); return *this;}
-
+    inline void SetPolarization(Polarization value) { m_polarizationHasBeenSet = true; m_polarization = value; }
+    inline UplinkSpectrumConfig& WithPolarization(Polarization value) { SetPolarization(value); return *this;}
+    ///@}
   private:
 
     Frequency m_centerFrequency;
     bool m_centerFrequencyHasBeenSet = false;
 
-    Polarization m_polarization;
+    Polarization m_polarization{Polarization::NOT_SET};
     bool m_polarizationHasBeenSet = false;
   };
 

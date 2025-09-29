@@ -18,15 +18,7 @@ namespace IoT
 namespace Model
 {
 
-ViolationEventOccurrenceRange::ViolationEventOccurrenceRange() : 
-    m_startTimeHasBeenSet(false),
-    m_endTimeHasBeenSet(false)
-{
-}
-
-ViolationEventOccurrenceRange::ViolationEventOccurrenceRange(JsonView jsonValue) : 
-    m_startTimeHasBeenSet(false),
-    m_endTimeHasBeenSet(false)
+ViolationEventOccurrenceRange::ViolationEventOccurrenceRange(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ViolationEventOccurrenceRange& ViolationEventOccurrenceRange::operator =(JsonVie
   if(jsonValue.ValueExists("startTime"))
   {
     m_startTime = jsonValue.GetDouble("startTime");
-
     m_startTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("endTime"))
   {
     m_endTime = jsonValue.GetDouble("endTime");
-
     m_endTimeHasBeenSet = true;
   }
-
   return *this;
 }
 

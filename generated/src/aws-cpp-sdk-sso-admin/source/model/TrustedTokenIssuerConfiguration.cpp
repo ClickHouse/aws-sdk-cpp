@@ -18,13 +18,7 @@ namespace SSOAdmin
 namespace Model
 {
 
-TrustedTokenIssuerConfiguration::TrustedTokenIssuerConfiguration() : 
-    m_oidcJwtConfigurationHasBeenSet(false)
-{
-}
-
-TrustedTokenIssuerConfiguration::TrustedTokenIssuerConfiguration(JsonView jsonValue) : 
-    m_oidcJwtConfigurationHasBeenSet(false)
+TrustedTokenIssuerConfiguration::TrustedTokenIssuerConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ TrustedTokenIssuerConfiguration& TrustedTokenIssuerConfiguration::operator =(Jso
   if(jsonValue.ValueExists("OidcJwtConfiguration"))
   {
     m_oidcJwtConfiguration = jsonValue.GetObject("OidcJwtConfiguration");
-
     m_oidcJwtConfigurationHasBeenSet = true;
   }
-
   return *this;
 }
 

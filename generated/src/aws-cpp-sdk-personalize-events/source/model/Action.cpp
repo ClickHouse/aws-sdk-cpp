@@ -18,15 +18,7 @@ namespace PersonalizeEvents
 namespace Model
 {
 
-Action::Action() : 
-    m_actionIdHasBeenSet(false),
-    m_propertiesHasBeenSet(false)
-{
-}
-
-Action::Action(JsonView jsonValue) : 
-    m_actionIdHasBeenSet(false),
-    m_propertiesHasBeenSet(false)
+Action::Action(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ Action& Action::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("actionId"))
   {
     m_actionId = jsonValue.GetString("actionId");
-
     m_actionIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("properties"))
   {
     m_properties = jsonValue.GetString("properties");
-
     m_propertiesHasBeenSet = true;
   }
-
   return *this;
 }
 

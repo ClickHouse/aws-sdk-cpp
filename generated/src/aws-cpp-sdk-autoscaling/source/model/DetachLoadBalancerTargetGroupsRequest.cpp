@@ -10,12 +10,6 @@
 using namespace Aws::AutoScaling::Model;
 using namespace Aws::Utils;
 
-DetachLoadBalancerTargetGroupsRequest::DetachLoadBalancerTargetGroupsRequest() : 
-    m_autoScalingGroupNameHasBeenSet(false),
-    m_targetGroupARNsHasBeenSet(false)
-{
-}
-
 Aws::String DetachLoadBalancerTargetGroupsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -27,12 +21,19 @@ Aws::String DetachLoadBalancerTargetGroupsRequest::SerializePayload() const
 
   if(m_targetGroupARNsHasBeenSet)
   {
-    unsigned targetGroupARNsCount = 1;
-    for(auto& item : m_targetGroupARNs)
+    if (m_targetGroupARNs.empty())
     {
-      ss << "TargetGroupARNs.member." << targetGroupARNsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      targetGroupARNsCount++;
+      ss << "TargetGroupARNs=&";
+    }
+    else
+    {
+      unsigned targetGroupARNsCount = 1;
+      for(auto& item : m_targetGroupARNs)
+      {
+        ss << "TargetGroupARNs.member." << targetGroupARNsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        targetGroupARNsCount++;
+      }
     }
   }
 

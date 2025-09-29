@@ -29,126 +29,55 @@ namespace Model
   class GetDocumentVersionResult
   {
   public:
-    AWS_WORKDOCS_API GetDocumentVersionResult();
+    AWS_WORKDOCS_API GetDocumentVersionResult() = default;
     AWS_WORKDOCS_API GetDocumentVersionResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_WORKDOCS_API GetDocumentVersionResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The version metadata.</p>
      */
-    inline const DocumentVersionMetadata& GetMetadata() const{ return m_metadata; }
+    inline const DocumentVersionMetadata& GetMetadata() const { return m_metadata; }
+    template<typename MetadataT = DocumentVersionMetadata>
+    void SetMetadata(MetadataT&& value) { m_metadataHasBeenSet = true; m_metadata = std::forward<MetadataT>(value); }
+    template<typename MetadataT = DocumentVersionMetadata>
+    GetDocumentVersionResult& WithMetadata(MetadataT&& value) { SetMetadata(std::forward<MetadataT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The version metadata.</p>
-     */
-    inline void SetMetadata(const DocumentVersionMetadata& value) { m_metadata = value; }
-
-    /**
-     * <p>The version metadata.</p>
-     */
-    inline void SetMetadata(DocumentVersionMetadata&& value) { m_metadata = std::move(value); }
-
-    /**
-     * <p>The version metadata.</p>
-     */
-    inline GetDocumentVersionResult& WithMetadata(const DocumentVersionMetadata& value) { SetMetadata(value); return *this;}
-
-    /**
-     * <p>The version metadata.</p>
-     */
-    inline GetDocumentVersionResult& WithMetadata(DocumentVersionMetadata&& value) { SetMetadata(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The custom metadata on the document version.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetCustomMetadata() const{ return m_customMetadata; }
+    inline const Aws::Map<Aws::String, Aws::String>& GetCustomMetadata() const { return m_customMetadata; }
+    template<typename CustomMetadataT = Aws::Map<Aws::String, Aws::String>>
+    void SetCustomMetadata(CustomMetadataT&& value) { m_customMetadataHasBeenSet = true; m_customMetadata = std::forward<CustomMetadataT>(value); }
+    template<typename CustomMetadataT = Aws::Map<Aws::String, Aws::String>>
+    GetDocumentVersionResult& WithCustomMetadata(CustomMetadataT&& value) { SetCustomMetadata(std::forward<CustomMetadataT>(value)); return *this;}
+    template<typename CustomMetadataKeyT = Aws::String, typename CustomMetadataValueT = Aws::String>
+    GetDocumentVersionResult& AddCustomMetadata(CustomMetadataKeyT&& key, CustomMetadataValueT&& value) {
+      m_customMetadataHasBeenSet = true; m_customMetadata.emplace(std::forward<CustomMetadataKeyT>(key), std::forward<CustomMetadataValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>The custom metadata on the document version.</p>
-     */
-    inline void SetCustomMetadata(const Aws::Map<Aws::String, Aws::String>& value) { m_customMetadata = value; }
-
-    /**
-     * <p>The custom metadata on the document version.</p>
-     */
-    inline void SetCustomMetadata(Aws::Map<Aws::String, Aws::String>&& value) { m_customMetadata = std::move(value); }
-
-    /**
-     * <p>The custom metadata on the document version.</p>
-     */
-    inline GetDocumentVersionResult& WithCustomMetadata(const Aws::Map<Aws::String, Aws::String>& value) { SetCustomMetadata(value); return *this;}
-
-    /**
-     * <p>The custom metadata on the document version.</p>
-     */
-    inline GetDocumentVersionResult& WithCustomMetadata(Aws::Map<Aws::String, Aws::String>&& value) { SetCustomMetadata(std::move(value)); return *this;}
-
-    /**
-     * <p>The custom metadata on the document version.</p>
-     */
-    inline GetDocumentVersionResult& AddCustomMetadata(const Aws::String& key, const Aws::String& value) { m_customMetadata.emplace(key, value); return *this; }
-
-    /**
-     * <p>The custom metadata on the document version.</p>
-     */
-    inline GetDocumentVersionResult& AddCustomMetadata(Aws::String&& key, const Aws::String& value) { m_customMetadata.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The custom metadata on the document version.</p>
-     */
-    inline GetDocumentVersionResult& AddCustomMetadata(const Aws::String& key, Aws::String&& value) { m_customMetadata.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The custom metadata on the document version.</p>
-     */
-    inline GetDocumentVersionResult& AddCustomMetadata(Aws::String&& key, Aws::String&& value) { m_customMetadata.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The custom metadata on the document version.</p>
-     */
-    inline GetDocumentVersionResult& AddCustomMetadata(const char* key, Aws::String&& value) { m_customMetadata.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The custom metadata on the document version.</p>
-     */
-    inline GetDocumentVersionResult& AddCustomMetadata(Aws::String&& key, const char* value) { m_customMetadata.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The custom metadata on the document version.</p>
-     */
-    inline GetDocumentVersionResult& AddCustomMetadata(const char* key, const char* value) { m_customMetadata.emplace(key, value); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetDocumentVersionResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetDocumentVersionResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetDocumentVersionResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetDocumentVersionResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     DocumentVersionMetadata m_metadata;
+    bool m_metadataHasBeenSet = false;
 
     Aws::Map<Aws::String, Aws::String> m_customMetadata;
+    bool m_customMetadataHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

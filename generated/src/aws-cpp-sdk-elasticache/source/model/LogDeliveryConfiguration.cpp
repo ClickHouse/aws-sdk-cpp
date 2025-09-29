@@ -20,31 +20,7 @@ namespace ElastiCache
 namespace Model
 {
 
-LogDeliveryConfiguration::LogDeliveryConfiguration() : 
-    m_logType(LogType::NOT_SET),
-    m_logTypeHasBeenSet(false),
-    m_destinationType(DestinationType::NOT_SET),
-    m_destinationTypeHasBeenSet(false),
-    m_destinationDetailsHasBeenSet(false),
-    m_logFormat(LogFormat::NOT_SET),
-    m_logFormatHasBeenSet(false),
-    m_status(LogDeliveryConfigurationStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-LogDeliveryConfiguration::LogDeliveryConfiguration(const XmlNode& xmlNode) : 
-    m_logType(LogType::NOT_SET),
-    m_logTypeHasBeenSet(false),
-    m_destinationType(DestinationType::NOT_SET),
-    m_destinationTypeHasBeenSet(false),
-    m_destinationDetailsHasBeenSet(false),
-    m_logFormat(LogFormat::NOT_SET),
-    m_logFormatHasBeenSet(false),
-    m_status(LogDeliveryConfigurationStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_messageHasBeenSet(false)
+LogDeliveryConfiguration::LogDeliveryConfiguration(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -58,13 +34,13 @@ LogDeliveryConfiguration& LogDeliveryConfiguration::operator =(const XmlNode& xm
     XmlNode logTypeNode = resultNode.FirstChild("LogType");
     if(!logTypeNode.IsNull())
     {
-      m_logType = LogTypeMapper::GetLogTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(logTypeNode.GetText()).c_str()).c_str());
+      m_logType = LogTypeMapper::GetLogTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(logTypeNode.GetText()).c_str()));
       m_logTypeHasBeenSet = true;
     }
     XmlNode destinationTypeNode = resultNode.FirstChild("DestinationType");
     if(!destinationTypeNode.IsNull())
     {
-      m_destinationType = DestinationTypeMapper::GetDestinationTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(destinationTypeNode.GetText()).c_str()).c_str());
+      m_destinationType = DestinationTypeMapper::GetDestinationTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(destinationTypeNode.GetText()).c_str()));
       m_destinationTypeHasBeenSet = true;
     }
     XmlNode destinationDetailsNode = resultNode.FirstChild("DestinationDetails");
@@ -76,13 +52,13 @@ LogDeliveryConfiguration& LogDeliveryConfiguration::operator =(const XmlNode& xm
     XmlNode logFormatNode = resultNode.FirstChild("LogFormat");
     if(!logFormatNode.IsNull())
     {
-      m_logFormat = LogFormatMapper::GetLogFormatForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(logFormatNode.GetText()).c_str()).c_str());
+      m_logFormat = LogFormatMapper::GetLogFormatForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(logFormatNode.GetText()).c_str()));
       m_logFormatHasBeenSet = true;
     }
     XmlNode statusNode = resultNode.FirstChild("Status");
     if(!statusNode.IsNull())
     {
-      m_status = LogDeliveryConfigurationStatusMapper::GetLogDeliveryConfigurationStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()).c_str());
+      m_status = LogDeliveryConfigurationStatusMapper::GetLogDeliveryConfigurationStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()));
       m_statusHasBeenSet = true;
     }
     XmlNode messageNode = resultNode.FirstChild("Message");
@@ -100,12 +76,12 @@ void LogDeliveryConfiguration::OutputToStream(Aws::OStream& oStream, const char*
 {
   if(m_logTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".LogType=" << LogTypeMapper::GetNameForLogType(m_logType) << "&";
+      oStream << location << index << locationValue << ".LogType=" << StringUtils::URLEncode(LogTypeMapper::GetNameForLogType(m_logType)) << "&";
   }
 
   if(m_destinationTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".DestinationType=" << DestinationTypeMapper::GetNameForDestinationType(m_destinationType) << "&";
+      oStream << location << index << locationValue << ".DestinationType=" << StringUtils::URLEncode(DestinationTypeMapper::GetNameForDestinationType(m_destinationType)) << "&";
   }
 
   if(m_destinationDetailsHasBeenSet)
@@ -117,12 +93,12 @@ void LogDeliveryConfiguration::OutputToStream(Aws::OStream& oStream, const char*
 
   if(m_logFormatHasBeenSet)
   {
-      oStream << location << index << locationValue << ".LogFormat=" << LogFormatMapper::GetNameForLogFormat(m_logFormat) << "&";
+      oStream << location << index << locationValue << ".LogFormat=" << StringUtils::URLEncode(LogFormatMapper::GetNameForLogFormat(m_logFormat)) << "&";
   }
 
   if(m_statusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Status=" << LogDeliveryConfigurationStatusMapper::GetNameForLogDeliveryConfigurationStatus(m_status) << "&";
+      oStream << location << index << locationValue << ".Status=" << StringUtils::URLEncode(LogDeliveryConfigurationStatusMapper::GetNameForLogDeliveryConfigurationStatus(m_status)) << "&";
   }
 
   if(m_messageHasBeenSet)
@@ -136,11 +112,11 @@ void LogDeliveryConfiguration::OutputToStream(Aws::OStream& oStream, const char*
 {
   if(m_logTypeHasBeenSet)
   {
-      oStream << location << ".LogType=" << LogTypeMapper::GetNameForLogType(m_logType) << "&";
+      oStream << location << ".LogType=" << StringUtils::URLEncode(LogTypeMapper::GetNameForLogType(m_logType)) << "&";
   }
   if(m_destinationTypeHasBeenSet)
   {
-      oStream << location << ".DestinationType=" << DestinationTypeMapper::GetNameForDestinationType(m_destinationType) << "&";
+      oStream << location << ".DestinationType=" << StringUtils::URLEncode(DestinationTypeMapper::GetNameForDestinationType(m_destinationType)) << "&";
   }
   if(m_destinationDetailsHasBeenSet)
   {
@@ -150,11 +126,11 @@ void LogDeliveryConfiguration::OutputToStream(Aws::OStream& oStream, const char*
   }
   if(m_logFormatHasBeenSet)
   {
-      oStream << location << ".LogFormat=" << LogFormatMapper::GetNameForLogFormat(m_logFormat) << "&";
+      oStream << location << ".LogFormat=" << StringUtils::URLEncode(LogFormatMapper::GetNameForLogFormat(m_logFormat)) << "&";
   }
   if(m_statusHasBeenSet)
   {
-      oStream << location << ".Status=" << LogDeliveryConfigurationStatusMapper::GetNameForLogDeliveryConfigurationStatus(m_status) << "&";
+      oStream << location << ".Status=" << StringUtils::URLEncode(LogDeliveryConfigurationStatusMapper::GetNameForLogDeliveryConfigurationStatus(m_status)) << "&";
   }
   if(m_messageHasBeenSet)
   {

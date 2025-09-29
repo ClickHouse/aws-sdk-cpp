@@ -39,20 +39,27 @@ using namespace Aws::Utils::Json;
 using namespace smithy::components::tracing;
 using ResolveEndpointOutcome = Aws::Endpoint::ResolveEndpointOutcome;
 
-const char* Route53RecoveryClusterClient::SERVICE_NAME = "route53-recovery-cluster";
-const char* Route53RecoveryClusterClient::ALLOCATION_TAG = "Route53RecoveryClusterClient";
+namespace Aws
+{
+  namespace Route53RecoveryCluster
+  {
+    const char SERVICE_NAME[] = "route53-recovery-cluster";
+    const char ALLOCATION_TAG[] = "Route53RecoveryClusterClient";
+  }
+}
+const char* Route53RecoveryClusterClient::GetServiceName() {return SERVICE_NAME;}
+const char* Route53RecoveryClusterClient::GetAllocationTag() {return ALLOCATION_TAG;}
 
 Route53RecoveryClusterClient::Route53RecoveryClusterClient(const Route53RecoveryCluster::Route53RecoveryClusterClientConfiguration& clientConfiguration,
                                                            std::shared_ptr<Route53RecoveryClusterEndpointProviderBase> endpointProvider) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<Route53RecoveryClusterErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
-  m_endpointProvider(std::move(endpointProvider))
+  m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<Route53RecoveryClusterEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -67,8 +74,7 @@ Route53RecoveryClusterClient::Route53RecoveryClusterClient(const AWSCredentials&
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<Route53RecoveryClusterErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<Route53RecoveryClusterEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -83,8 +89,7 @@ Route53RecoveryClusterClient::Route53RecoveryClusterClient(const std::shared_ptr
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<Route53RecoveryClusterErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<Route53RecoveryClusterEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -93,12 +98,11 @@ Route53RecoveryClusterClient::Route53RecoveryClusterClient(const std::shared_ptr
   Route53RecoveryClusterClient::Route53RecoveryClusterClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<Route53RecoveryClusterErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
   m_endpointProvider(Aws::MakeShared<Route53RecoveryClusterEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -113,7 +117,6 @@ Route53RecoveryClusterClient::Route53RecoveryClusterClient(const AWSCredentials&
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<Route53RecoveryClusterErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<Route53RecoveryClusterEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -128,7 +131,6 @@ Route53RecoveryClusterClient::Route53RecoveryClusterClient(const std::shared_ptr
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<Route53RecoveryClusterErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<Route53RecoveryClusterEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -148,6 +150,14 @@ std::shared_ptr<Route53RecoveryClusterEndpointProviderBase>& Route53RecoveryClus
 void Route53RecoveryClusterClient::init(const Route53RecoveryCluster::Route53RecoveryClusterClientConfiguration& config)
 {
   AWSClient::SetServiceClientName("Route53 Recovery Cluster");
+  if (!m_clientConfiguration.executor) {
+    if (!m_clientConfiguration.configFactories.executorCreateFn()) {
+      AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "Failed to initialize client: config is missing Executor or executorCreateFn");
+      m_isInitialized = false;
+      return;
+    }
+    m_clientConfiguration.executor = m_clientConfiguration.configFactories.executorCreateFn();
+  }
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
   m_endpointProvider->InitBuiltInParameters(config);
 }

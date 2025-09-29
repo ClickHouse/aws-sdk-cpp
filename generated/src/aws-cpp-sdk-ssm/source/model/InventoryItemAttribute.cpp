@@ -18,17 +18,7 @@ namespace SSM
 namespace Model
 {
 
-InventoryItemAttribute::InventoryItemAttribute() : 
-    m_nameHasBeenSet(false),
-    m_dataType(InventoryAttributeDataType::NOT_SET),
-    m_dataTypeHasBeenSet(false)
-{
-}
-
-InventoryItemAttribute::InventoryItemAttribute(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_dataType(InventoryAttributeDataType::NOT_SET),
-    m_dataTypeHasBeenSet(false)
+InventoryItemAttribute::InventoryItemAttribute(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ InventoryItemAttribute& InventoryItemAttribute::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DataType"))
   {
     m_dataType = InventoryAttributeDataTypeMapper::GetInventoryAttributeDataTypeForName(jsonValue.GetString("DataType"));
-
     m_dataTypeHasBeenSet = true;
   }
-
   return *this;
 }
 

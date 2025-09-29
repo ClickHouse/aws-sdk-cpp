@@ -35,7 +35,7 @@ namespace Model
   class TransitGatewayPolicyTable
   {
   public:
-    AWS_EC2_API TransitGatewayPolicyTable();
+    AWS_EC2_API TransitGatewayPolicyTable() = default;
     AWS_EC2_API TransitGatewayPolicyTable(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API TransitGatewayPolicyTable& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -43,190 +43,65 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The ID of the transit gateway policy table.</p>
      */
-    inline const Aws::String& GetTransitGatewayPolicyTableId() const{ return m_transitGatewayPolicyTableId; }
-
-    /**
-     * <p>The ID of the transit gateway policy table.</p>
-     */
+    inline const Aws::String& GetTransitGatewayPolicyTableId() const { return m_transitGatewayPolicyTableId; }
     inline bool TransitGatewayPolicyTableIdHasBeenSet() const { return m_transitGatewayPolicyTableIdHasBeenSet; }
+    template<typename TransitGatewayPolicyTableIdT = Aws::String>
+    void SetTransitGatewayPolicyTableId(TransitGatewayPolicyTableIdT&& value) { m_transitGatewayPolicyTableIdHasBeenSet = true; m_transitGatewayPolicyTableId = std::forward<TransitGatewayPolicyTableIdT>(value); }
+    template<typename TransitGatewayPolicyTableIdT = Aws::String>
+    TransitGatewayPolicyTable& WithTransitGatewayPolicyTableId(TransitGatewayPolicyTableIdT&& value) { SetTransitGatewayPolicyTableId(std::forward<TransitGatewayPolicyTableIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the transit gateway policy table.</p>
-     */
-    inline void SetTransitGatewayPolicyTableId(const Aws::String& value) { m_transitGatewayPolicyTableIdHasBeenSet = true; m_transitGatewayPolicyTableId = value; }
-
-    /**
-     * <p>The ID of the transit gateway policy table.</p>
-     */
-    inline void SetTransitGatewayPolicyTableId(Aws::String&& value) { m_transitGatewayPolicyTableIdHasBeenSet = true; m_transitGatewayPolicyTableId = std::move(value); }
-
-    /**
-     * <p>The ID of the transit gateway policy table.</p>
-     */
-    inline void SetTransitGatewayPolicyTableId(const char* value) { m_transitGatewayPolicyTableIdHasBeenSet = true; m_transitGatewayPolicyTableId.assign(value); }
-
-    /**
-     * <p>The ID of the transit gateway policy table.</p>
-     */
-    inline TransitGatewayPolicyTable& WithTransitGatewayPolicyTableId(const Aws::String& value) { SetTransitGatewayPolicyTableId(value); return *this;}
-
-    /**
-     * <p>The ID of the transit gateway policy table.</p>
-     */
-    inline TransitGatewayPolicyTable& WithTransitGatewayPolicyTableId(Aws::String&& value) { SetTransitGatewayPolicyTableId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the transit gateway policy table.</p>
-     */
-    inline TransitGatewayPolicyTable& WithTransitGatewayPolicyTableId(const char* value) { SetTransitGatewayPolicyTableId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the transit gateway.</p>
      */
-    inline const Aws::String& GetTransitGatewayId() const{ return m_transitGatewayId; }
-
-    /**
-     * <p>The ID of the transit gateway.</p>
-     */
+    inline const Aws::String& GetTransitGatewayId() const { return m_transitGatewayId; }
     inline bool TransitGatewayIdHasBeenSet() const { return m_transitGatewayIdHasBeenSet; }
+    template<typename TransitGatewayIdT = Aws::String>
+    void SetTransitGatewayId(TransitGatewayIdT&& value) { m_transitGatewayIdHasBeenSet = true; m_transitGatewayId = std::forward<TransitGatewayIdT>(value); }
+    template<typename TransitGatewayIdT = Aws::String>
+    TransitGatewayPolicyTable& WithTransitGatewayId(TransitGatewayIdT&& value) { SetTransitGatewayId(std::forward<TransitGatewayIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the transit gateway.</p>
-     */
-    inline void SetTransitGatewayId(const Aws::String& value) { m_transitGatewayIdHasBeenSet = true; m_transitGatewayId = value; }
-
-    /**
-     * <p>The ID of the transit gateway.</p>
-     */
-    inline void SetTransitGatewayId(Aws::String&& value) { m_transitGatewayIdHasBeenSet = true; m_transitGatewayId = std::move(value); }
-
-    /**
-     * <p>The ID of the transit gateway.</p>
-     */
-    inline void SetTransitGatewayId(const char* value) { m_transitGatewayIdHasBeenSet = true; m_transitGatewayId.assign(value); }
-
-    /**
-     * <p>The ID of the transit gateway.</p>
-     */
-    inline TransitGatewayPolicyTable& WithTransitGatewayId(const Aws::String& value) { SetTransitGatewayId(value); return *this;}
-
-    /**
-     * <p>The ID of the transit gateway.</p>
-     */
-    inline TransitGatewayPolicyTable& WithTransitGatewayId(Aws::String&& value) { SetTransitGatewayId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the transit gateway.</p>
-     */
-    inline TransitGatewayPolicyTable& WithTransitGatewayId(const char* value) { SetTransitGatewayId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The state of the transit gateway policy table</p>
      */
-    inline const TransitGatewayPolicyTableState& GetState() const{ return m_state; }
-
-    /**
-     * <p>The state of the transit gateway policy table</p>
-     */
+    inline TransitGatewayPolicyTableState GetState() const { return m_state; }
     inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
+    inline void SetState(TransitGatewayPolicyTableState value) { m_stateHasBeenSet = true; m_state = value; }
+    inline TransitGatewayPolicyTable& WithState(TransitGatewayPolicyTableState value) { SetState(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The state of the transit gateway policy table</p>
-     */
-    inline void SetState(const TransitGatewayPolicyTableState& value) { m_stateHasBeenSet = true; m_state = value; }
-
-    /**
-     * <p>The state of the transit gateway policy table</p>
-     */
-    inline void SetState(TransitGatewayPolicyTableState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
-
-    /**
-     * <p>The state of the transit gateway policy table</p>
-     */
-    inline TransitGatewayPolicyTable& WithState(const TransitGatewayPolicyTableState& value) { SetState(value); return *this;}
-
-    /**
-     * <p>The state of the transit gateway policy table</p>
-     */
-    inline TransitGatewayPolicyTable& WithState(TransitGatewayPolicyTableState&& value) { SetState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The timestamp when the transit gateway policy table was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreationTime() const{ return m_creationTime; }
-
-    /**
-     * <p>The timestamp when the transit gateway policy table was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreationTime() const { return m_creationTime; }
     inline bool CreationTimeHasBeenSet() const { return m_creationTimeHasBeenSet; }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    void SetCreationTime(CreationTimeT&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::forward<CreationTimeT>(value); }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    TransitGatewayPolicyTable& WithCreationTime(CreationTimeT&& value) { SetCreationTime(std::forward<CreationTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp when the transit gateway policy table was created.</p>
-     */
-    inline void SetCreationTime(const Aws::Utils::DateTime& value) { m_creationTimeHasBeenSet = true; m_creationTime = value; }
-
-    /**
-     * <p>The timestamp when the transit gateway policy table was created.</p>
-     */
-    inline void SetCreationTime(Aws::Utils::DateTime&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::move(value); }
-
-    /**
-     * <p>The timestamp when the transit gateway policy table was created.</p>
-     */
-    inline TransitGatewayPolicyTable& WithCreationTime(const Aws::Utils::DateTime& value) { SetCreationTime(value); return *this;}
-
-    /**
-     * <p>The timestamp when the transit gateway policy table was created.</p>
-     */
-    inline TransitGatewayPolicyTable& WithCreationTime(Aws::Utils::DateTime&& value) { SetCreationTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>he key-value pairs associated with the transit gateway policy table.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>he key-value pairs associated with the transit gateway policy table.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>he key-value pairs associated with the transit gateway policy table.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>he key-value pairs associated with the transit gateway policy table.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>he key-value pairs associated with the transit gateway policy table.</p>
-     */
-    inline TransitGatewayPolicyTable& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>he key-value pairs associated with the transit gateway policy table.</p>
-     */
-    inline TransitGatewayPolicyTable& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>he key-value pairs associated with the transit gateway policy table.</p>
-     */
-    inline TransitGatewayPolicyTable& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>he key-value pairs associated with the transit gateway policy table.</p>
-     */
-    inline TransitGatewayPolicyTable& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    TransitGatewayPolicyTable& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    TransitGatewayPolicyTable& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_transitGatewayPolicyTableId;
@@ -235,10 +110,10 @@ namespace Model
     Aws::String m_transitGatewayId;
     bool m_transitGatewayIdHasBeenSet = false;
 
-    TransitGatewayPolicyTableState m_state;
+    TransitGatewayPolicyTableState m_state{TransitGatewayPolicyTableState::NOT_SET};
     bool m_stateHasBeenSet = false;
 
-    Aws::Utils::DateTime m_creationTime;
+    Aws::Utils::DateTime m_creationTime{};
     bool m_creationTimeHasBeenSet = false;
 
     Aws::Vector<Tag> m_tags;

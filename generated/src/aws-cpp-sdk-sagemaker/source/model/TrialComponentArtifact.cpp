@@ -18,15 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-TrialComponentArtifact::TrialComponentArtifact() : 
-    m_mediaTypeHasBeenSet(false),
-    m_valueHasBeenSet(false)
-{
-}
-
-TrialComponentArtifact::TrialComponentArtifact(JsonView jsonValue) : 
-    m_mediaTypeHasBeenSet(false),
-    m_valueHasBeenSet(false)
+TrialComponentArtifact::TrialComponentArtifact(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ TrialComponentArtifact& TrialComponentArtifact::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("MediaType"))
   {
     m_mediaType = jsonValue.GetString("MediaType");
-
     m_mediaTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Value"))
   {
     m_value = jsonValue.GetString("Value");
-
     m_valueHasBeenSet = true;
   }
-
   return *this;
 }
 

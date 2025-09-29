@@ -6,8 +6,8 @@
 #pragma once
 #include <aws/qbusiness/QBusiness_EXPORTS.h>
 #include <aws/qbusiness/model/UsersAndGroups.h>
-#include <aws/qbusiness/model/RuleConfiguration.h>
 #include <aws/qbusiness/model/RuleType.h>
+#include <aws/qbusiness/model/RuleConfiguration.h>
 #include <utility>
 
 namespace Aws
@@ -26,156 +26,78 @@ namespace Model
 {
 
   /**
-   * <p>Guardrail rules for an Amazon Q application. Amazon Q supports only one rule
-   * at a time.</p><p><h3>See Also:</h3>   <a
+   * <p>Guardrail rules for an Amazon Q Business application. Amazon Q Business
+   * supports only one rule at a time.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/qbusiness-2023-11-27/Rule">AWS API
    * Reference</a></p>
    */
   class Rule
   {
   public:
-    AWS_QBUSINESS_API Rule();
+    AWS_QBUSINESS_API Rule() = default;
     AWS_QBUSINESS_API Rule(Aws::Utils::Json::JsonView jsonValue);
     AWS_QBUSINESS_API Rule& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QBUSINESS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
-    /**
-     * <p>Users and groups to be excluded from a rule.</p>
-     */
-    inline const UsersAndGroups& GetExcludedUsersAndGroups() const{ return m_excludedUsersAndGroups; }
-
-    /**
-     * <p>Users and groups to be excluded from a rule.</p>
-     */
-    inline bool ExcludedUsersAndGroupsHasBeenSet() const { return m_excludedUsersAndGroupsHasBeenSet; }
-
-    /**
-     * <p>Users and groups to be excluded from a rule.</p>
-     */
-    inline void SetExcludedUsersAndGroups(const UsersAndGroups& value) { m_excludedUsersAndGroupsHasBeenSet = true; m_excludedUsersAndGroups = value; }
-
-    /**
-     * <p>Users and groups to be excluded from a rule.</p>
-     */
-    inline void SetExcludedUsersAndGroups(UsersAndGroups&& value) { m_excludedUsersAndGroupsHasBeenSet = true; m_excludedUsersAndGroups = std::move(value); }
-
-    /**
-     * <p>Users and groups to be excluded from a rule.</p>
-     */
-    inline Rule& WithExcludedUsersAndGroups(const UsersAndGroups& value) { SetExcludedUsersAndGroups(value); return *this;}
-
-    /**
-     * <p>Users and groups to be excluded from a rule.</p>
-     */
-    inline Rule& WithExcludedUsersAndGroups(UsersAndGroups&& value) { SetExcludedUsersAndGroups(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Users and groups to be included in a rule.</p>
      */
-    inline const UsersAndGroups& GetIncludedUsersAndGroups() const{ return m_includedUsersAndGroups; }
-
-    /**
-     * <p>Users and groups to be included in a rule.</p>
-     */
+    inline const UsersAndGroups& GetIncludedUsersAndGroups() const { return m_includedUsersAndGroups; }
     inline bool IncludedUsersAndGroupsHasBeenSet() const { return m_includedUsersAndGroupsHasBeenSet; }
+    template<typename IncludedUsersAndGroupsT = UsersAndGroups>
+    void SetIncludedUsersAndGroups(IncludedUsersAndGroupsT&& value) { m_includedUsersAndGroupsHasBeenSet = true; m_includedUsersAndGroups = std::forward<IncludedUsersAndGroupsT>(value); }
+    template<typename IncludedUsersAndGroupsT = UsersAndGroups>
+    Rule& WithIncludedUsersAndGroups(IncludedUsersAndGroupsT&& value) { SetIncludedUsersAndGroups(std::forward<IncludedUsersAndGroupsT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Users and groups to be included in a rule.</p>
+     * <p>Users and groups to be excluded from a rule.</p>
      */
-    inline void SetIncludedUsersAndGroups(const UsersAndGroups& value) { m_includedUsersAndGroupsHasBeenSet = true; m_includedUsersAndGroups = value; }
+    inline const UsersAndGroups& GetExcludedUsersAndGroups() const { return m_excludedUsersAndGroups; }
+    inline bool ExcludedUsersAndGroupsHasBeenSet() const { return m_excludedUsersAndGroupsHasBeenSet; }
+    template<typename ExcludedUsersAndGroupsT = UsersAndGroups>
+    void SetExcludedUsersAndGroups(ExcludedUsersAndGroupsT&& value) { m_excludedUsersAndGroupsHasBeenSet = true; m_excludedUsersAndGroups = std::forward<ExcludedUsersAndGroupsT>(value); }
+    template<typename ExcludedUsersAndGroupsT = UsersAndGroups>
+    Rule& WithExcludedUsersAndGroups(ExcludedUsersAndGroupsT&& value) { SetExcludedUsersAndGroups(std::forward<ExcludedUsersAndGroupsT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Users and groups to be included in a rule.</p>
+     * <p>The type of rule.</p>
      */
-    inline void SetIncludedUsersAndGroups(UsersAndGroups&& value) { m_includedUsersAndGroupsHasBeenSet = true; m_includedUsersAndGroups = std::move(value); }
-
-    /**
-     * <p>Users and groups to be included in a rule.</p>
-     */
-    inline Rule& WithIncludedUsersAndGroups(const UsersAndGroups& value) { SetIncludedUsersAndGroups(value); return *this;}
-
-    /**
-     * <p>Users and groups to be included in a rule.</p>
-     */
-    inline Rule& WithIncludedUsersAndGroups(UsersAndGroups&& value) { SetIncludedUsersAndGroups(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The configuration information for a rule.</p>
-     */
-    inline const RuleConfiguration& GetRuleConfiguration() const{ return m_ruleConfiguration; }
-
-    /**
-     * <p>The configuration information for a rule.</p>
-     */
-    inline bool RuleConfigurationHasBeenSet() const { return m_ruleConfigurationHasBeenSet; }
-
-    /**
-     * <p>The configuration information for a rule.</p>
-     */
-    inline void SetRuleConfiguration(const RuleConfiguration& value) { m_ruleConfigurationHasBeenSet = true; m_ruleConfiguration = value; }
-
-    /**
-     * <p>The configuration information for a rule.</p>
-     */
-    inline void SetRuleConfiguration(RuleConfiguration&& value) { m_ruleConfigurationHasBeenSet = true; m_ruleConfiguration = std::move(value); }
-
-    /**
-     * <p>The configuration information for a rule.</p>
-     */
-    inline Rule& WithRuleConfiguration(const RuleConfiguration& value) { SetRuleConfiguration(value); return *this;}
-
-    /**
-     * <p>The configuration information for a rule.</p>
-     */
-    inline Rule& WithRuleConfiguration(RuleConfiguration&& value) { SetRuleConfiguration(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The type fo rule.</p>
-     */
-    inline const RuleType& GetRuleType() const{ return m_ruleType; }
-
-    /**
-     * <p>The type fo rule.</p>
-     */
+    inline RuleType GetRuleType() const { return m_ruleType; }
     inline bool RuleTypeHasBeenSet() const { return m_ruleTypeHasBeenSet; }
+    inline void SetRuleType(RuleType value) { m_ruleTypeHasBeenSet = true; m_ruleType = value; }
+    inline Rule& WithRuleType(RuleType value) { SetRuleType(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The type fo rule.</p>
+     * <p>The configuration information for a rule.</p>
      */
-    inline void SetRuleType(const RuleType& value) { m_ruleTypeHasBeenSet = true; m_ruleType = value; }
-
-    /**
-     * <p>The type fo rule.</p>
-     */
-    inline void SetRuleType(RuleType&& value) { m_ruleTypeHasBeenSet = true; m_ruleType = std::move(value); }
-
-    /**
-     * <p>The type fo rule.</p>
-     */
-    inline Rule& WithRuleType(const RuleType& value) { SetRuleType(value); return *this;}
-
-    /**
-     * <p>The type fo rule.</p>
-     */
-    inline Rule& WithRuleType(RuleType&& value) { SetRuleType(std::move(value)); return *this;}
-
+    inline const RuleConfiguration& GetRuleConfiguration() const { return m_ruleConfiguration; }
+    inline bool RuleConfigurationHasBeenSet() const { return m_ruleConfigurationHasBeenSet; }
+    template<typename RuleConfigurationT = RuleConfiguration>
+    void SetRuleConfiguration(RuleConfigurationT&& value) { m_ruleConfigurationHasBeenSet = true; m_ruleConfiguration = std::forward<RuleConfigurationT>(value); }
+    template<typename RuleConfigurationT = RuleConfiguration>
+    Rule& WithRuleConfiguration(RuleConfigurationT&& value) { SetRuleConfiguration(std::forward<RuleConfigurationT>(value)); return *this;}
+    ///@}
   private:
-
-    UsersAndGroups m_excludedUsersAndGroups;
-    bool m_excludedUsersAndGroupsHasBeenSet = false;
 
     UsersAndGroups m_includedUsersAndGroups;
     bool m_includedUsersAndGroupsHasBeenSet = false;
 
+    UsersAndGroups m_excludedUsersAndGroups;
+    bool m_excludedUsersAndGroupsHasBeenSet = false;
+
+    RuleType m_ruleType{RuleType::NOT_SET};
+    bool m_ruleTypeHasBeenSet = false;
+
     RuleConfiguration m_ruleConfiguration;
     bool m_ruleConfigurationHasBeenSet = false;
-
-    RuleType m_ruleType;
-    bool m_ruleTypeHasBeenSet = false;
   };
 
 } // namespace Model

@@ -32,12 +32,13 @@ namespace Model
   class InputDefinition
   {
   public:
-    AWS_IOTEVENTS_API InputDefinition();
+    AWS_IOTEVENTS_API InputDefinition() = default;
     AWS_IOTEVENTS_API InputDefinition(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTEVENTS_API InputDefinition& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTEVENTS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The attributes from the JSON payload that are made available by the input.
      * Inputs are derived from messages sent to the AWS IoT Events system using
@@ -46,78 +47,15 @@ namespace Model
      * in the <code>condition</code> expressions used by detectors that monitor this
      * input. </p>
      */
-    inline const Aws::Vector<Attribute>& GetAttributes() const{ return m_attributes; }
-
-    /**
-     * <p>The attributes from the JSON payload that are made available by the input.
-     * Inputs are derived from messages sent to the AWS IoT Events system using
-     * <code>BatchPutMessage</code>. Each such message contains a JSON payload, and
-     * those attributes (and their paired values) specified here are available for use
-     * in the <code>condition</code> expressions used by detectors that monitor this
-     * input. </p>
-     */
+    inline const Aws::Vector<Attribute>& GetAttributes() const { return m_attributes; }
     inline bool AttributesHasBeenSet() const { return m_attributesHasBeenSet; }
-
-    /**
-     * <p>The attributes from the JSON payload that are made available by the input.
-     * Inputs are derived from messages sent to the AWS IoT Events system using
-     * <code>BatchPutMessage</code>. Each such message contains a JSON payload, and
-     * those attributes (and their paired values) specified here are available for use
-     * in the <code>condition</code> expressions used by detectors that monitor this
-     * input. </p>
-     */
-    inline void SetAttributes(const Aws::Vector<Attribute>& value) { m_attributesHasBeenSet = true; m_attributes = value; }
-
-    /**
-     * <p>The attributes from the JSON payload that are made available by the input.
-     * Inputs are derived from messages sent to the AWS IoT Events system using
-     * <code>BatchPutMessage</code>. Each such message contains a JSON payload, and
-     * those attributes (and their paired values) specified here are available for use
-     * in the <code>condition</code> expressions used by detectors that monitor this
-     * input. </p>
-     */
-    inline void SetAttributes(Aws::Vector<Attribute>&& value) { m_attributesHasBeenSet = true; m_attributes = std::move(value); }
-
-    /**
-     * <p>The attributes from the JSON payload that are made available by the input.
-     * Inputs are derived from messages sent to the AWS IoT Events system using
-     * <code>BatchPutMessage</code>. Each such message contains a JSON payload, and
-     * those attributes (and their paired values) specified here are available for use
-     * in the <code>condition</code> expressions used by detectors that monitor this
-     * input. </p>
-     */
-    inline InputDefinition& WithAttributes(const Aws::Vector<Attribute>& value) { SetAttributes(value); return *this;}
-
-    /**
-     * <p>The attributes from the JSON payload that are made available by the input.
-     * Inputs are derived from messages sent to the AWS IoT Events system using
-     * <code>BatchPutMessage</code>. Each such message contains a JSON payload, and
-     * those attributes (and their paired values) specified here are available for use
-     * in the <code>condition</code> expressions used by detectors that monitor this
-     * input. </p>
-     */
-    inline InputDefinition& WithAttributes(Aws::Vector<Attribute>&& value) { SetAttributes(std::move(value)); return *this;}
-
-    /**
-     * <p>The attributes from the JSON payload that are made available by the input.
-     * Inputs are derived from messages sent to the AWS IoT Events system using
-     * <code>BatchPutMessage</code>. Each such message contains a JSON payload, and
-     * those attributes (and their paired values) specified here are available for use
-     * in the <code>condition</code> expressions used by detectors that monitor this
-     * input. </p>
-     */
-    inline InputDefinition& AddAttributes(const Attribute& value) { m_attributesHasBeenSet = true; m_attributes.push_back(value); return *this; }
-
-    /**
-     * <p>The attributes from the JSON payload that are made available by the input.
-     * Inputs are derived from messages sent to the AWS IoT Events system using
-     * <code>BatchPutMessage</code>. Each such message contains a JSON payload, and
-     * those attributes (and their paired values) specified here are available for use
-     * in the <code>condition</code> expressions used by detectors that monitor this
-     * input. </p>
-     */
-    inline InputDefinition& AddAttributes(Attribute&& value) { m_attributesHasBeenSet = true; m_attributes.push_back(std::move(value)); return *this; }
-
+    template<typename AttributesT = Aws::Vector<Attribute>>
+    void SetAttributes(AttributesT&& value) { m_attributesHasBeenSet = true; m_attributes = std::forward<AttributesT>(value); }
+    template<typename AttributesT = Aws::Vector<Attribute>>
+    InputDefinition& WithAttributes(AttributesT&& value) { SetAttributes(std::forward<AttributesT>(value)); return *this;}
+    template<typename AttributesT = Attribute>
+    InputDefinition& AddAttributes(AttributesT&& value) { m_attributesHasBeenSet = true; m_attributes.emplace_back(std::forward<AttributesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Attribute> m_attributes;

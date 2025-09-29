@@ -18,15 +18,7 @@ namespace Lightsail
 namespace Model
 {
 
-DiskSnapshotInfo::DiskSnapshotInfo() : 
-    m_sizeInGb(0),
-    m_sizeInGbHasBeenSet(false)
-{
-}
-
-DiskSnapshotInfo::DiskSnapshotInfo(JsonView jsonValue) : 
-    m_sizeInGb(0),
-    m_sizeInGbHasBeenSet(false)
+DiskSnapshotInfo::DiskSnapshotInfo(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ DiskSnapshotInfo& DiskSnapshotInfo::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("sizeInGb"))
   {
     m_sizeInGb = jsonValue.GetInteger("sizeInGb");
-
     m_sizeInGbHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -28,6 +28,10 @@ namespace Aws
         static const int scheduled_HASH = HashingUtils::HashString("scheduled");
         static const int payment_pending_HASH = HashingUtils::HashString("payment-pending");
         static const int payment_failed_HASH = HashingUtils::HashString("payment-failed");
+        static const int assessing_HASH = HashingUtils::HashString("assessing");
+        static const int delayed_HASH = HashingUtils::HashString("delayed");
+        static const int unsupported_HASH = HashingUtils::HashString("unsupported");
+        static const int unavailable_HASH = HashingUtils::HashString("unavailable");
 
 
         CapacityReservationState GetCapacityReservationStateForName(const Aws::String& name)
@@ -65,6 +69,22 @@ namespace Aws
           {
             return CapacityReservationState::payment_failed;
           }
+          else if (hashCode == assessing_HASH)
+          {
+            return CapacityReservationState::assessing;
+          }
+          else if (hashCode == delayed_HASH)
+          {
+            return CapacityReservationState::delayed;
+          }
+          else if (hashCode == unsupported_HASH)
+          {
+            return CapacityReservationState::unsupported;
+          }
+          else if (hashCode == unavailable_HASH)
+          {
+            return CapacityReservationState::unavailable;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -97,6 +117,14 @@ namespace Aws
             return "payment-pending";
           case CapacityReservationState::payment_failed:
             return "payment-failed";
+          case CapacityReservationState::assessing:
+            return "assessing";
+          case CapacityReservationState::delayed:
+            return "delayed";
+          case CapacityReservationState::unsupported:
+            return "unsupported";
+          case CapacityReservationState::unavailable:
+            return "unavailable";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

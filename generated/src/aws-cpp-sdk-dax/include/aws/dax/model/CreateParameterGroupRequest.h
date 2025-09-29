@@ -21,7 +21,7 @@ namespace Model
   class CreateParameterGroupRequest : public DAXRequest
   {
   public:
-    AWS_DAX_API CreateParameterGroupRequest();
+    AWS_DAX_API CreateParameterGroupRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,95 +34,30 @@ namespace Model
     AWS_DAX_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the parameter group to apply to all of the clusters in this
      * replication group.</p>
      */
-    inline const Aws::String& GetParameterGroupName() const{ return m_parameterGroupName; }
-
-    /**
-     * <p>The name of the parameter group to apply to all of the clusters in this
-     * replication group.</p>
-     */
+    inline const Aws::String& GetParameterGroupName() const { return m_parameterGroupName; }
     inline bool ParameterGroupNameHasBeenSet() const { return m_parameterGroupNameHasBeenSet; }
+    template<typename ParameterGroupNameT = Aws::String>
+    void SetParameterGroupName(ParameterGroupNameT&& value) { m_parameterGroupNameHasBeenSet = true; m_parameterGroupName = std::forward<ParameterGroupNameT>(value); }
+    template<typename ParameterGroupNameT = Aws::String>
+    CreateParameterGroupRequest& WithParameterGroupName(ParameterGroupNameT&& value) { SetParameterGroupName(std::forward<ParameterGroupNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the parameter group to apply to all of the clusters in this
-     * replication group.</p>
-     */
-    inline void SetParameterGroupName(const Aws::String& value) { m_parameterGroupNameHasBeenSet = true; m_parameterGroupName = value; }
-
-    /**
-     * <p>The name of the parameter group to apply to all of the clusters in this
-     * replication group.</p>
-     */
-    inline void SetParameterGroupName(Aws::String&& value) { m_parameterGroupNameHasBeenSet = true; m_parameterGroupName = std::move(value); }
-
-    /**
-     * <p>The name of the parameter group to apply to all of the clusters in this
-     * replication group.</p>
-     */
-    inline void SetParameterGroupName(const char* value) { m_parameterGroupNameHasBeenSet = true; m_parameterGroupName.assign(value); }
-
-    /**
-     * <p>The name of the parameter group to apply to all of the clusters in this
-     * replication group.</p>
-     */
-    inline CreateParameterGroupRequest& WithParameterGroupName(const Aws::String& value) { SetParameterGroupName(value); return *this;}
-
-    /**
-     * <p>The name of the parameter group to apply to all of the clusters in this
-     * replication group.</p>
-     */
-    inline CreateParameterGroupRequest& WithParameterGroupName(Aws::String&& value) { SetParameterGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the parameter group to apply to all of the clusters in this
-     * replication group.</p>
-     */
-    inline CreateParameterGroupRequest& WithParameterGroupName(const char* value) { SetParameterGroupName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A description of the parameter group.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>A description of the parameter group.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
-
-    /**
-     * <p>A description of the parameter group.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>A description of the parameter group.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>A description of the parameter group.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>A description of the parameter group.</p>
-     */
-    inline CreateParameterGroupRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A description of the parameter group.</p>
-     */
-    inline CreateParameterGroupRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A description of the parameter group.</p>
-     */
-    inline CreateParameterGroupRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    CreateParameterGroupRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_parameterGroupName;

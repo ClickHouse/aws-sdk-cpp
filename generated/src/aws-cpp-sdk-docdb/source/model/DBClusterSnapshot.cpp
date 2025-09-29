@@ -20,53 +20,7 @@ namespace DocDB
 namespace Model
 {
 
-DBClusterSnapshot::DBClusterSnapshot() : 
-    m_availabilityZonesHasBeenSet(false),
-    m_dBClusterSnapshotIdentifierHasBeenSet(false),
-    m_dBClusterIdentifierHasBeenSet(false),
-    m_snapshotCreateTimeHasBeenSet(false),
-    m_engineHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_clusterCreateTimeHasBeenSet(false),
-    m_masterUsernameHasBeenSet(false),
-    m_engineVersionHasBeenSet(false),
-    m_snapshotTypeHasBeenSet(false),
-    m_percentProgress(0),
-    m_percentProgressHasBeenSet(false),
-    m_storageEncrypted(false),
-    m_storageEncryptedHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false),
-    m_dBClusterSnapshotArnHasBeenSet(false),
-    m_sourceDBClusterSnapshotArnHasBeenSet(false),
-    m_storageTypeHasBeenSet(false)
-{
-}
-
-DBClusterSnapshot::DBClusterSnapshot(const XmlNode& xmlNode) : 
-    m_availabilityZonesHasBeenSet(false),
-    m_dBClusterSnapshotIdentifierHasBeenSet(false),
-    m_dBClusterIdentifierHasBeenSet(false),
-    m_snapshotCreateTimeHasBeenSet(false),
-    m_engineHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_clusterCreateTimeHasBeenSet(false),
-    m_masterUsernameHasBeenSet(false),
-    m_engineVersionHasBeenSet(false),
-    m_snapshotTypeHasBeenSet(false),
-    m_percentProgress(0),
-    m_percentProgressHasBeenSet(false),
-    m_storageEncrypted(false),
-    m_storageEncryptedHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false),
-    m_dBClusterSnapshotArnHasBeenSet(false),
-    m_sourceDBClusterSnapshotArnHasBeenSet(false),
-    m_storageTypeHasBeenSet(false)
+DBClusterSnapshot::DBClusterSnapshot(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -81,6 +35,7 @@ DBClusterSnapshot& DBClusterSnapshot::operator =(const XmlNode& xmlNode)
     if(!availabilityZonesNode.IsNull())
     {
       XmlNode availabilityZonesMember = availabilityZonesNode.FirstChild("AvailabilityZone");
+      m_availabilityZonesHasBeenSet = !availabilityZonesMember.IsNull();
       while(!availabilityZonesMember.IsNull())
       {
         m_availabilityZones.push_back(availabilityZonesMember.GetText());
@@ -203,7 +158,7 @@ void DBClusterSnapshot::OutputToStream(Aws::OStream& oStream, const char* locati
       unsigned availabilityZonesIdx = 1;
       for(auto& item : m_availabilityZones)
       {
-        oStream << location << index << locationValue << ".AvailabilityZone." << availabilityZonesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << index << locationValue << ".AvailabilityZones.AvailabilityZone." << availabilityZonesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
 
@@ -301,7 +256,7 @@ void DBClusterSnapshot::OutputToStream(Aws::OStream& oStream, const char* locati
       unsigned availabilityZonesIdx = 1;
       for(auto& item : m_availabilityZones)
       {
-        oStream << location << ".AvailabilityZone." << availabilityZonesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".AvailabilityZones.AvailabilityZone." << availabilityZonesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_dBClusterSnapshotIdentifierHasBeenSet)

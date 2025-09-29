@@ -30,63 +30,38 @@ namespace Model
   class InferenceMetrics
   {
   public:
-    AWS_SAGEMAKER_API InferenceMetrics();
+    AWS_SAGEMAKER_API InferenceMetrics() = default;
     AWS_SAGEMAKER_API InferenceMetrics(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API InferenceMetrics& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The expected maximum number of requests per minute for the instance.</p>
      */
-    inline int GetMaxInvocations() const{ return m_maxInvocations; }
-
-    /**
-     * <p>The expected maximum number of requests per minute for the instance.</p>
-     */
+    inline int GetMaxInvocations() const { return m_maxInvocations; }
     inline bool MaxInvocationsHasBeenSet() const { return m_maxInvocationsHasBeenSet; }
-
-    /**
-     * <p>The expected maximum number of requests per minute for the instance.</p>
-     */
     inline void SetMaxInvocations(int value) { m_maxInvocationsHasBeenSet = true; m_maxInvocations = value; }
-
-    /**
-     * <p>The expected maximum number of requests per minute for the instance.</p>
-     */
     inline InferenceMetrics& WithMaxInvocations(int value) { SetMaxInvocations(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The expected model latency at maximum invocations per minute for the
      * instance.</p>
      */
-    inline int GetModelLatency() const{ return m_modelLatency; }
-
-    /**
-     * <p>The expected model latency at maximum invocations per minute for the
-     * instance.</p>
-     */
+    inline int GetModelLatency() const { return m_modelLatency; }
     inline bool ModelLatencyHasBeenSet() const { return m_modelLatencyHasBeenSet; }
-
-    /**
-     * <p>The expected model latency at maximum invocations per minute for the
-     * instance.</p>
-     */
     inline void SetModelLatency(int value) { m_modelLatencyHasBeenSet = true; m_modelLatency = value; }
-
-    /**
-     * <p>The expected model latency at maximum invocations per minute for the
-     * instance.</p>
-     */
     inline InferenceMetrics& WithModelLatency(int value) { SetModelLatency(value); return *this;}
-
+    ///@}
   private:
 
-    int m_maxInvocations;
+    int m_maxInvocations{0};
     bool m_maxInvocationsHasBeenSet = false;
 
-    int m_modelLatency;
+    int m_modelLatency{0};
     bool m_modelLatencyHasBeenSet = false;
   };
 

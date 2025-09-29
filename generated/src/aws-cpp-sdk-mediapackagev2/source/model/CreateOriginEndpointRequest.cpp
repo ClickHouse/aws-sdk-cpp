@@ -13,24 +13,6 @@ using namespace Aws::mediapackagev2::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateOriginEndpointRequest::CreateOriginEndpointRequest() : 
-    m_channelGroupNameHasBeenSet(false),
-    m_channelNameHasBeenSet(false),
-    m_originEndpointNameHasBeenSet(false),
-    m_containerType(ContainerType::NOT_SET),
-    m_containerTypeHasBeenSet(false),
-    m_segmentHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_descriptionHasBeenSet(false),
-    m_startoverWindowSeconds(0),
-    m_startoverWindowSecondsHasBeenSet(false),
-    m_hlsManifestsHasBeenSet(false),
-    m_lowLatencyHlsManifestsHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateOriginEndpointRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -83,6 +65,34 @@ Aws::String CreateOriginEndpointRequest::SerializePayload() const
      lowLatencyHlsManifestsJsonList[lowLatencyHlsManifestsIndex].AsObject(m_lowLatencyHlsManifests[lowLatencyHlsManifestsIndex].Jsonize());
    }
    payload.WithArray("LowLatencyHlsManifests", std::move(lowLatencyHlsManifestsJsonList));
+
+  }
+
+  if(m_dashManifestsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> dashManifestsJsonList(m_dashManifests.size());
+   for(unsigned dashManifestsIndex = 0; dashManifestsIndex < dashManifestsJsonList.GetLength(); ++dashManifestsIndex)
+   {
+     dashManifestsJsonList[dashManifestsIndex].AsObject(m_dashManifests[dashManifestsIndex].Jsonize());
+   }
+   payload.WithArray("DashManifests", std::move(dashManifestsJsonList));
+
+  }
+
+  if(m_mssManifestsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> mssManifestsJsonList(m_mssManifests.size());
+   for(unsigned mssManifestsIndex = 0; mssManifestsIndex < mssManifestsJsonList.GetLength(); ++mssManifestsIndex)
+   {
+     mssManifestsJsonList[mssManifestsIndex].AsObject(m_mssManifests[mssManifestsIndex].Jsonize());
+   }
+   payload.WithArray("MssManifests", std::move(mssManifestsJsonList));
+
+  }
+
+  if(m_forceEndpointErrorConfigurationHasBeenSet)
+  {
+   payload.WithObject("ForceEndpointErrorConfiguration", m_forceEndpointErrorConfiguration.Jsonize());
 
   }
 

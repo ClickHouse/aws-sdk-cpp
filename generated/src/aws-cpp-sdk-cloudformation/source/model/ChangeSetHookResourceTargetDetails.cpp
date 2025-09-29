@@ -20,19 +20,7 @@ namespace CloudFormation
 namespace Model
 {
 
-ChangeSetHookResourceTargetDetails::ChangeSetHookResourceTargetDetails() : 
-    m_logicalResourceIdHasBeenSet(false),
-    m_resourceTypeHasBeenSet(false),
-    m_resourceAction(ChangeAction::NOT_SET),
-    m_resourceActionHasBeenSet(false)
-{
-}
-
-ChangeSetHookResourceTargetDetails::ChangeSetHookResourceTargetDetails(const XmlNode& xmlNode) : 
-    m_logicalResourceIdHasBeenSet(false),
-    m_resourceTypeHasBeenSet(false),
-    m_resourceAction(ChangeAction::NOT_SET),
-    m_resourceActionHasBeenSet(false)
+ChangeSetHookResourceTargetDetails::ChangeSetHookResourceTargetDetails(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -58,7 +46,7 @@ ChangeSetHookResourceTargetDetails& ChangeSetHookResourceTargetDetails::operator
     XmlNode resourceActionNode = resultNode.FirstChild("ResourceAction");
     if(!resourceActionNode.IsNull())
     {
-      m_resourceAction = ChangeActionMapper::GetChangeActionForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(resourceActionNode.GetText()).c_str()).c_str());
+      m_resourceAction = ChangeActionMapper::GetChangeActionForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(resourceActionNode.GetText()).c_str()));
       m_resourceActionHasBeenSet = true;
     }
   }
@@ -80,7 +68,7 @@ void ChangeSetHookResourceTargetDetails::OutputToStream(Aws::OStream& oStream, c
 
   if(m_resourceActionHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ResourceAction=" << ChangeActionMapper::GetNameForChangeAction(m_resourceAction) << "&";
+      oStream << location << index << locationValue << ".ResourceAction=" << StringUtils::URLEncode(ChangeActionMapper::GetNameForChangeAction(m_resourceAction)) << "&";
   }
 
 }
@@ -97,7 +85,7 @@ void ChangeSetHookResourceTargetDetails::OutputToStream(Aws::OStream& oStream, c
   }
   if(m_resourceActionHasBeenSet)
   {
-      oStream << location << ".ResourceAction=" << ChangeActionMapper::GetNameForChangeAction(m_resourceAction) << "&";
+      oStream << location << ".ResourceAction=" << StringUtils::URLEncode(ChangeActionMapper::GetNameForChangeAction(m_resourceAction)) << "&";
   }
 }
 

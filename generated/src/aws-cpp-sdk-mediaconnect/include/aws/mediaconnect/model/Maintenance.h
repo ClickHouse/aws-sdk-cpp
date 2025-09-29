@@ -25,205 +25,71 @@ namespace Model
 {
 
   /**
-   * The maintenance setting of a flow<p><h3>See Also:</h3>   <a
+   * <p> The maintenance setting of a flow.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/mediaconnect-2018-11-14/Maintenance">AWS
    * API Reference</a></p>
    */
   class Maintenance
   {
   public:
-    AWS_MEDIACONNECT_API Maintenance();
+    AWS_MEDIACONNECT_API Maintenance() = default;
     AWS_MEDIACONNECT_API Maintenance(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONNECT_API Maintenance& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * A day of a week when the maintenance will happen. Use
-     * Monday/Tuesday/Wednesday/Thursday/Friday/Saturday/Sunday.
+     * <p> A day of a week when the maintenance will happen. Use
+     * Monday/Tuesday/Wednesday/Thursday/Friday/Saturday/Sunday.</p>
      */
-    inline const MaintenanceDay& GetMaintenanceDay() const{ return m_maintenanceDay; }
-
-    /**
-     * A day of a week when the maintenance will happen. Use
-     * Monday/Tuesday/Wednesday/Thursday/Friday/Saturday/Sunday.
-     */
+    inline MaintenanceDay GetMaintenanceDay() const { return m_maintenanceDay; }
     inline bool MaintenanceDayHasBeenSet() const { return m_maintenanceDayHasBeenSet; }
+    inline void SetMaintenanceDay(MaintenanceDay value) { m_maintenanceDayHasBeenSet = true; m_maintenanceDay = value; }
+    inline Maintenance& WithMaintenanceDay(MaintenanceDay value) { SetMaintenanceDay(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * A day of a week when the maintenance will happen. Use
-     * Monday/Tuesday/Wednesday/Thursday/Friday/Saturday/Sunday.
+     * <p> The Maintenance has to be performed before this deadline in ISO UTC format.
+     * Example: 2021-01-30T08:30:00Z.</p>
      */
-    inline void SetMaintenanceDay(const MaintenanceDay& value) { m_maintenanceDayHasBeenSet = true; m_maintenanceDay = value; }
-
-    /**
-     * A day of a week when the maintenance will happen. Use
-     * Monday/Tuesday/Wednesday/Thursday/Friday/Saturday/Sunday.
-     */
-    inline void SetMaintenanceDay(MaintenanceDay&& value) { m_maintenanceDayHasBeenSet = true; m_maintenanceDay = std::move(value); }
-
-    /**
-     * A day of a week when the maintenance will happen. Use
-     * Monday/Tuesday/Wednesday/Thursday/Friday/Saturday/Sunday.
-     */
-    inline Maintenance& WithMaintenanceDay(const MaintenanceDay& value) { SetMaintenanceDay(value); return *this;}
-
-    /**
-     * A day of a week when the maintenance will happen. Use
-     * Monday/Tuesday/Wednesday/Thursday/Friday/Saturday/Sunday.
-     */
-    inline Maintenance& WithMaintenanceDay(MaintenanceDay&& value) { SetMaintenanceDay(std::move(value)); return *this;}
-
-
-    /**
-     * The Maintenance has to be performed before this deadline in ISO UTC format.
-     * Example: 2021-01-30T08:30:00Z.
-     */
-    inline const Aws::String& GetMaintenanceDeadline() const{ return m_maintenanceDeadline; }
-
-    /**
-     * The Maintenance has to be performed before this deadline in ISO UTC format.
-     * Example: 2021-01-30T08:30:00Z.
-     */
+    inline const Aws::String& GetMaintenanceDeadline() const { return m_maintenanceDeadline; }
     inline bool MaintenanceDeadlineHasBeenSet() const { return m_maintenanceDeadlineHasBeenSet; }
+    template<typename MaintenanceDeadlineT = Aws::String>
+    void SetMaintenanceDeadline(MaintenanceDeadlineT&& value) { m_maintenanceDeadlineHasBeenSet = true; m_maintenanceDeadline = std::forward<MaintenanceDeadlineT>(value); }
+    template<typename MaintenanceDeadlineT = Aws::String>
+    Maintenance& WithMaintenanceDeadline(MaintenanceDeadlineT&& value) { SetMaintenanceDeadline(std::forward<MaintenanceDeadlineT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * The Maintenance has to be performed before this deadline in ISO UTC format.
-     * Example: 2021-01-30T08:30:00Z.
+     * <p> A scheduled date in ISO UTC format when the maintenance will happen. Use
+     * YYYY-MM-DD format. Example: 2021-01-30.</p>
      */
-    inline void SetMaintenanceDeadline(const Aws::String& value) { m_maintenanceDeadlineHasBeenSet = true; m_maintenanceDeadline = value; }
-
-    /**
-     * The Maintenance has to be performed before this deadline in ISO UTC format.
-     * Example: 2021-01-30T08:30:00Z.
-     */
-    inline void SetMaintenanceDeadline(Aws::String&& value) { m_maintenanceDeadlineHasBeenSet = true; m_maintenanceDeadline = std::move(value); }
-
-    /**
-     * The Maintenance has to be performed before this deadline in ISO UTC format.
-     * Example: 2021-01-30T08:30:00Z.
-     */
-    inline void SetMaintenanceDeadline(const char* value) { m_maintenanceDeadlineHasBeenSet = true; m_maintenanceDeadline.assign(value); }
-
-    /**
-     * The Maintenance has to be performed before this deadline in ISO UTC format.
-     * Example: 2021-01-30T08:30:00Z.
-     */
-    inline Maintenance& WithMaintenanceDeadline(const Aws::String& value) { SetMaintenanceDeadline(value); return *this;}
-
-    /**
-     * The Maintenance has to be performed before this deadline in ISO UTC format.
-     * Example: 2021-01-30T08:30:00Z.
-     */
-    inline Maintenance& WithMaintenanceDeadline(Aws::String&& value) { SetMaintenanceDeadline(std::move(value)); return *this;}
-
-    /**
-     * The Maintenance has to be performed before this deadline in ISO UTC format.
-     * Example: 2021-01-30T08:30:00Z.
-     */
-    inline Maintenance& WithMaintenanceDeadline(const char* value) { SetMaintenanceDeadline(value); return *this;}
-
-
-    /**
-     * A scheduled date in ISO UTC format when the maintenance will happen. Use
-     * YYYY-MM-DD format. Example: 2021-01-30.
-     */
-    inline const Aws::String& GetMaintenanceScheduledDate() const{ return m_maintenanceScheduledDate; }
-
-    /**
-     * A scheduled date in ISO UTC format when the maintenance will happen. Use
-     * YYYY-MM-DD format. Example: 2021-01-30.
-     */
+    inline const Aws::String& GetMaintenanceScheduledDate() const { return m_maintenanceScheduledDate; }
     inline bool MaintenanceScheduledDateHasBeenSet() const { return m_maintenanceScheduledDateHasBeenSet; }
+    template<typename MaintenanceScheduledDateT = Aws::String>
+    void SetMaintenanceScheduledDate(MaintenanceScheduledDateT&& value) { m_maintenanceScheduledDateHasBeenSet = true; m_maintenanceScheduledDate = std::forward<MaintenanceScheduledDateT>(value); }
+    template<typename MaintenanceScheduledDateT = Aws::String>
+    Maintenance& WithMaintenanceScheduledDate(MaintenanceScheduledDateT&& value) { SetMaintenanceScheduledDate(std::forward<MaintenanceScheduledDateT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * A scheduled date in ISO UTC format when the maintenance will happen. Use
-     * YYYY-MM-DD format. Example: 2021-01-30.
+     * <p> UTC time when the maintenance will happen. Use 24-hour HH:MM format. Minutes
+     * must be 00. Example: 13:00. The default value is 02:00.</p>
      */
-    inline void SetMaintenanceScheduledDate(const Aws::String& value) { m_maintenanceScheduledDateHasBeenSet = true; m_maintenanceScheduledDate = value; }
-
-    /**
-     * A scheduled date in ISO UTC format when the maintenance will happen. Use
-     * YYYY-MM-DD format. Example: 2021-01-30.
-     */
-    inline void SetMaintenanceScheduledDate(Aws::String&& value) { m_maintenanceScheduledDateHasBeenSet = true; m_maintenanceScheduledDate = std::move(value); }
-
-    /**
-     * A scheduled date in ISO UTC format when the maintenance will happen. Use
-     * YYYY-MM-DD format. Example: 2021-01-30.
-     */
-    inline void SetMaintenanceScheduledDate(const char* value) { m_maintenanceScheduledDateHasBeenSet = true; m_maintenanceScheduledDate.assign(value); }
-
-    /**
-     * A scheduled date in ISO UTC format when the maintenance will happen. Use
-     * YYYY-MM-DD format. Example: 2021-01-30.
-     */
-    inline Maintenance& WithMaintenanceScheduledDate(const Aws::String& value) { SetMaintenanceScheduledDate(value); return *this;}
-
-    /**
-     * A scheduled date in ISO UTC format when the maintenance will happen. Use
-     * YYYY-MM-DD format. Example: 2021-01-30.
-     */
-    inline Maintenance& WithMaintenanceScheduledDate(Aws::String&& value) { SetMaintenanceScheduledDate(std::move(value)); return *this;}
-
-    /**
-     * A scheduled date in ISO UTC format when the maintenance will happen. Use
-     * YYYY-MM-DD format. Example: 2021-01-30.
-     */
-    inline Maintenance& WithMaintenanceScheduledDate(const char* value) { SetMaintenanceScheduledDate(value); return *this;}
-
-
-    /**
-     * UTC time when the maintenance will happen. Use 24-hour HH:MM format. Minutes
-     * must be 00. Example: 13:00. The default value is 02:00.
-     */
-    inline const Aws::String& GetMaintenanceStartHour() const{ return m_maintenanceStartHour; }
-
-    /**
-     * UTC time when the maintenance will happen. Use 24-hour HH:MM format. Minutes
-     * must be 00. Example: 13:00. The default value is 02:00.
-     */
+    inline const Aws::String& GetMaintenanceStartHour() const { return m_maintenanceStartHour; }
     inline bool MaintenanceStartHourHasBeenSet() const { return m_maintenanceStartHourHasBeenSet; }
-
-    /**
-     * UTC time when the maintenance will happen. Use 24-hour HH:MM format. Minutes
-     * must be 00. Example: 13:00. The default value is 02:00.
-     */
-    inline void SetMaintenanceStartHour(const Aws::String& value) { m_maintenanceStartHourHasBeenSet = true; m_maintenanceStartHour = value; }
-
-    /**
-     * UTC time when the maintenance will happen. Use 24-hour HH:MM format. Minutes
-     * must be 00. Example: 13:00. The default value is 02:00.
-     */
-    inline void SetMaintenanceStartHour(Aws::String&& value) { m_maintenanceStartHourHasBeenSet = true; m_maintenanceStartHour = std::move(value); }
-
-    /**
-     * UTC time when the maintenance will happen. Use 24-hour HH:MM format. Minutes
-     * must be 00. Example: 13:00. The default value is 02:00.
-     */
-    inline void SetMaintenanceStartHour(const char* value) { m_maintenanceStartHourHasBeenSet = true; m_maintenanceStartHour.assign(value); }
-
-    /**
-     * UTC time when the maintenance will happen. Use 24-hour HH:MM format. Minutes
-     * must be 00. Example: 13:00. The default value is 02:00.
-     */
-    inline Maintenance& WithMaintenanceStartHour(const Aws::String& value) { SetMaintenanceStartHour(value); return *this;}
-
-    /**
-     * UTC time when the maintenance will happen. Use 24-hour HH:MM format. Minutes
-     * must be 00. Example: 13:00. The default value is 02:00.
-     */
-    inline Maintenance& WithMaintenanceStartHour(Aws::String&& value) { SetMaintenanceStartHour(std::move(value)); return *this;}
-
-    /**
-     * UTC time when the maintenance will happen. Use 24-hour HH:MM format. Minutes
-     * must be 00. Example: 13:00. The default value is 02:00.
-     */
-    inline Maintenance& WithMaintenanceStartHour(const char* value) { SetMaintenanceStartHour(value); return *this;}
-
+    template<typename MaintenanceStartHourT = Aws::String>
+    void SetMaintenanceStartHour(MaintenanceStartHourT&& value) { m_maintenanceStartHourHasBeenSet = true; m_maintenanceStartHour = std::forward<MaintenanceStartHourT>(value); }
+    template<typename MaintenanceStartHourT = Aws::String>
+    Maintenance& WithMaintenanceStartHour(MaintenanceStartHourT&& value) { SetMaintenanceStartHour(std::forward<MaintenanceStartHourT>(value)); return *this;}
+    ///@}
   private:
 
-    MaintenanceDay m_maintenanceDay;
+    MaintenanceDay m_maintenanceDay{MaintenanceDay::NOT_SET};
     bool m_maintenanceDayHasBeenSet = false;
 
     Aws::String m_maintenanceDeadline;

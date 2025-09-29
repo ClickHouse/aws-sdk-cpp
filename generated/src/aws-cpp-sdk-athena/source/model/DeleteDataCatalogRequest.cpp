@@ -12,11 +12,6 @@ using namespace Aws::Athena::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DeleteDataCatalogRequest::DeleteDataCatalogRequest() : 
-    m_nameHasBeenSet(false)
-{
-}
-
 Aws::String DeleteDataCatalogRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -24,6 +19,12 @@ Aws::String DeleteDataCatalogRequest::SerializePayload() const
   if(m_nameHasBeenSet)
   {
    payload.WithString("Name", m_name);
+
+  }
+
+  if(m_deleteCatalogOnlyHasBeenSet)
+  {
+   payload.WithBool("DeleteCatalogOnly", m_deleteCatalogOnly);
 
   }
 

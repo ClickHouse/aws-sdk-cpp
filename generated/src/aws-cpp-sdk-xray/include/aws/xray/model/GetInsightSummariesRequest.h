@@ -24,7 +24,7 @@ namespace Model
   class GetInsightSummariesRequest : public XRayRequest
   {
   public:
-    AWS_XRAY_API GetInsightSummariesRequest();
+    AWS_XRAY_API GetInsightSummariesRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,272 +35,91 @@ namespace Model
     AWS_XRAY_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The list of insight states. </p>
      */
-    inline const Aws::Vector<InsightState>& GetStates() const{ return m_states; }
-
-    /**
-     * <p>The list of insight states. </p>
-     */
+    inline const Aws::Vector<InsightState>& GetStates() const { return m_states; }
     inline bool StatesHasBeenSet() const { return m_statesHasBeenSet; }
+    template<typename StatesT = Aws::Vector<InsightState>>
+    void SetStates(StatesT&& value) { m_statesHasBeenSet = true; m_states = std::forward<StatesT>(value); }
+    template<typename StatesT = Aws::Vector<InsightState>>
+    GetInsightSummariesRequest& WithStates(StatesT&& value) { SetStates(std::forward<StatesT>(value)); return *this;}
+    inline GetInsightSummariesRequest& AddStates(InsightState value) { m_statesHasBeenSet = true; m_states.push_back(value); return *this; }
+    ///@}
 
-    /**
-     * <p>The list of insight states. </p>
-     */
-    inline void SetStates(const Aws::Vector<InsightState>& value) { m_statesHasBeenSet = true; m_states = value; }
-
-    /**
-     * <p>The list of insight states. </p>
-     */
-    inline void SetStates(Aws::Vector<InsightState>&& value) { m_statesHasBeenSet = true; m_states = std::move(value); }
-
-    /**
-     * <p>The list of insight states. </p>
-     */
-    inline GetInsightSummariesRequest& WithStates(const Aws::Vector<InsightState>& value) { SetStates(value); return *this;}
-
-    /**
-     * <p>The list of insight states. </p>
-     */
-    inline GetInsightSummariesRequest& WithStates(Aws::Vector<InsightState>&& value) { SetStates(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of insight states. </p>
-     */
-    inline GetInsightSummariesRequest& AddStates(const InsightState& value) { m_statesHasBeenSet = true; m_states.push_back(value); return *this; }
-
-    /**
-     * <p>The list of insight states. </p>
-     */
-    inline GetInsightSummariesRequest& AddStates(InsightState&& value) { m_statesHasBeenSet = true; m_states.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the group. Required if the GroupName isn't
      * provided.</p>
      */
-    inline const Aws::String& GetGroupARN() const{ return m_groupARN; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the group. Required if the GroupName isn't
-     * provided.</p>
-     */
+    inline const Aws::String& GetGroupARN() const { return m_groupARN; }
     inline bool GroupARNHasBeenSet() const { return m_groupARNHasBeenSet; }
+    template<typename GroupARNT = Aws::String>
+    void SetGroupARN(GroupARNT&& value) { m_groupARNHasBeenSet = true; m_groupARN = std::forward<GroupARNT>(value); }
+    template<typename GroupARNT = Aws::String>
+    GetInsightSummariesRequest& WithGroupARN(GroupARNT&& value) { SetGroupARN(std::forward<GroupARNT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the group. Required if the GroupName isn't
-     * provided.</p>
-     */
-    inline void SetGroupARN(const Aws::String& value) { m_groupARNHasBeenSet = true; m_groupARN = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the group. Required if the GroupName isn't
-     * provided.</p>
-     */
-    inline void SetGroupARN(Aws::String&& value) { m_groupARNHasBeenSet = true; m_groupARN = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the group. Required if the GroupName isn't
-     * provided.</p>
-     */
-    inline void SetGroupARN(const char* value) { m_groupARNHasBeenSet = true; m_groupARN.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the group. Required if the GroupName isn't
-     * provided.</p>
-     */
-    inline GetInsightSummariesRequest& WithGroupARN(const Aws::String& value) { SetGroupARN(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the group. Required if the GroupName isn't
-     * provided.</p>
-     */
-    inline GetInsightSummariesRequest& WithGroupARN(Aws::String&& value) { SetGroupARN(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the group. Required if the GroupName isn't
-     * provided.</p>
-     */
-    inline GetInsightSummariesRequest& WithGroupARN(const char* value) { SetGroupARN(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the group. Required if the GroupARN isn't provided.</p>
      */
-    inline const Aws::String& GetGroupName() const{ return m_groupName; }
-
-    /**
-     * <p>The name of the group. Required if the GroupARN isn't provided.</p>
-     */
+    inline const Aws::String& GetGroupName() const { return m_groupName; }
     inline bool GroupNameHasBeenSet() const { return m_groupNameHasBeenSet; }
+    template<typename GroupNameT = Aws::String>
+    void SetGroupName(GroupNameT&& value) { m_groupNameHasBeenSet = true; m_groupName = std::forward<GroupNameT>(value); }
+    template<typename GroupNameT = Aws::String>
+    GetInsightSummariesRequest& WithGroupName(GroupNameT&& value) { SetGroupName(std::forward<GroupNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the group. Required if the GroupARN isn't provided.</p>
-     */
-    inline void SetGroupName(const Aws::String& value) { m_groupNameHasBeenSet = true; m_groupName = value; }
-
-    /**
-     * <p>The name of the group. Required if the GroupARN isn't provided.</p>
-     */
-    inline void SetGroupName(Aws::String&& value) { m_groupNameHasBeenSet = true; m_groupName = std::move(value); }
-
-    /**
-     * <p>The name of the group. Required if the GroupARN isn't provided.</p>
-     */
-    inline void SetGroupName(const char* value) { m_groupNameHasBeenSet = true; m_groupName.assign(value); }
-
-    /**
-     * <p>The name of the group. Required if the GroupARN isn't provided.</p>
-     */
-    inline GetInsightSummariesRequest& WithGroupName(const Aws::String& value) { SetGroupName(value); return *this;}
-
-    /**
-     * <p>The name of the group. Required if the GroupARN isn't provided.</p>
-     */
-    inline GetInsightSummariesRequest& WithGroupName(Aws::String&& value) { SetGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the group. Required if the GroupARN isn't provided.</p>
-     */
-    inline GetInsightSummariesRequest& WithGroupName(const char* value) { SetGroupName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The beginning of the time frame in which the insights started. The start time
      * can't be more than 30 days old.</p>
      */
-    inline const Aws::Utils::DateTime& GetStartTime() const{ return m_startTime; }
-
-    /**
-     * <p>The beginning of the time frame in which the insights started. The start time
-     * can't be more than 30 days old.</p>
-     */
+    inline const Aws::Utils::DateTime& GetStartTime() const { return m_startTime; }
     inline bool StartTimeHasBeenSet() const { return m_startTimeHasBeenSet; }
+    template<typename StartTimeT = Aws::Utils::DateTime>
+    void SetStartTime(StartTimeT&& value) { m_startTimeHasBeenSet = true; m_startTime = std::forward<StartTimeT>(value); }
+    template<typename StartTimeT = Aws::Utils::DateTime>
+    GetInsightSummariesRequest& WithStartTime(StartTimeT&& value) { SetStartTime(std::forward<StartTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The beginning of the time frame in which the insights started. The start time
-     * can't be more than 30 days old.</p>
-     */
-    inline void SetStartTime(const Aws::Utils::DateTime& value) { m_startTimeHasBeenSet = true; m_startTime = value; }
-
-    /**
-     * <p>The beginning of the time frame in which the insights started. The start time
-     * can't be more than 30 days old.</p>
-     */
-    inline void SetStartTime(Aws::Utils::DateTime&& value) { m_startTimeHasBeenSet = true; m_startTime = std::move(value); }
-
-    /**
-     * <p>The beginning of the time frame in which the insights started. The start time
-     * can't be more than 30 days old.</p>
-     */
-    inline GetInsightSummariesRequest& WithStartTime(const Aws::Utils::DateTime& value) { SetStartTime(value); return *this;}
-
-    /**
-     * <p>The beginning of the time frame in which the insights started. The start time
-     * can't be more than 30 days old.</p>
-     */
-    inline GetInsightSummariesRequest& WithStartTime(Aws::Utils::DateTime&& value) { SetStartTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The end of the time frame in which the insights ended. The end time can't be
      * more than 30 days old.</p>
      */
-    inline const Aws::Utils::DateTime& GetEndTime() const{ return m_endTime; }
-
-    /**
-     * <p>The end of the time frame in which the insights ended. The end time can't be
-     * more than 30 days old.</p>
-     */
+    inline const Aws::Utils::DateTime& GetEndTime() const { return m_endTime; }
     inline bool EndTimeHasBeenSet() const { return m_endTimeHasBeenSet; }
+    template<typename EndTimeT = Aws::Utils::DateTime>
+    void SetEndTime(EndTimeT&& value) { m_endTimeHasBeenSet = true; m_endTime = std::forward<EndTimeT>(value); }
+    template<typename EndTimeT = Aws::Utils::DateTime>
+    GetInsightSummariesRequest& WithEndTime(EndTimeT&& value) { SetEndTime(std::forward<EndTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The end of the time frame in which the insights ended. The end time can't be
-     * more than 30 days old.</p>
-     */
-    inline void SetEndTime(const Aws::Utils::DateTime& value) { m_endTimeHasBeenSet = true; m_endTime = value; }
-
-    /**
-     * <p>The end of the time frame in which the insights ended. The end time can't be
-     * more than 30 days old.</p>
-     */
-    inline void SetEndTime(Aws::Utils::DateTime&& value) { m_endTimeHasBeenSet = true; m_endTime = std::move(value); }
-
-    /**
-     * <p>The end of the time frame in which the insights ended. The end time can't be
-     * more than 30 days old.</p>
-     */
-    inline GetInsightSummariesRequest& WithEndTime(const Aws::Utils::DateTime& value) { SetEndTime(value); return *this;}
-
-    /**
-     * <p>The end of the time frame in which the insights ended. The end time can't be
-     * more than 30 days old.</p>
-     */
-    inline GetInsightSummariesRequest& WithEndTime(Aws::Utils::DateTime&& value) { SetEndTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of results to display.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of results to display.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of results to display.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of results to display.</p>
-     */
     inline GetInsightSummariesRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Pagination token.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>Pagination token.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
-
-    /**
-     * <p>Pagination token.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>Pagination token.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>Pagination token.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>Pagination token.</p>
-     */
-    inline GetInsightSummariesRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>Pagination token.</p>
-     */
-    inline GetInsightSummariesRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>Pagination token.</p>
-     */
-    inline GetInsightSummariesRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    GetInsightSummariesRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<InsightState> m_states;
@@ -312,13 +131,13 @@ namespace Model
     Aws::String m_groupName;
     bool m_groupNameHasBeenSet = false;
 
-    Aws::Utils::DateTime m_startTime;
+    Aws::Utils::DateTime m_startTime{};
     bool m_startTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_endTime;
+    Aws::Utils::DateTime m_endTime{};
     bool m_endTimeHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     Aws::String m_nextToken;

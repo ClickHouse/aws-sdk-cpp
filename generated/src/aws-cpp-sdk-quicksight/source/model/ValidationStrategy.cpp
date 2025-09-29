@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-ValidationStrategy::ValidationStrategy() : 
-    m_mode(ValidationStrategyMode::NOT_SET),
-    m_modeHasBeenSet(false)
-{
-}
-
-ValidationStrategy::ValidationStrategy(JsonView jsonValue) : 
-    m_mode(ValidationStrategyMode::NOT_SET),
-    m_modeHasBeenSet(false)
+ValidationStrategy::ValidationStrategy(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ValidationStrategy& ValidationStrategy::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Mode"))
   {
     m_mode = ValidationStrategyModeMapper::GetValidationStrategyModeForName(jsonValue.GetString("Mode"));
-
     m_modeHasBeenSet = true;
   }
-
   return *this;
 }
 

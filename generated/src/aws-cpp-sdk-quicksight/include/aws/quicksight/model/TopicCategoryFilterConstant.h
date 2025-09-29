@@ -33,143 +33,52 @@ namespace Model
   class TopicCategoryFilterConstant
   {
   public:
-    AWS_QUICKSIGHT_API TopicCategoryFilterConstant();
+    AWS_QUICKSIGHT_API TopicCategoryFilterConstant() = default;
     AWS_QUICKSIGHT_API TopicCategoryFilterConstant(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API TopicCategoryFilterConstant& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The type of category filter constant. This element is used to specify whether
      * a constant is a singular or collective. Valid values are <code>SINGULAR</code>
      * and <code>COLLECTIVE</code>.</p>
      */
-    inline const ConstantType& GetConstantType() const{ return m_constantType; }
-
-    /**
-     * <p>The type of category filter constant. This element is used to specify whether
-     * a constant is a singular or collective. Valid values are <code>SINGULAR</code>
-     * and <code>COLLECTIVE</code>.</p>
-     */
+    inline ConstantType GetConstantType() const { return m_constantType; }
     inline bool ConstantTypeHasBeenSet() const { return m_constantTypeHasBeenSet; }
+    inline void SetConstantType(ConstantType value) { m_constantTypeHasBeenSet = true; m_constantType = value; }
+    inline TopicCategoryFilterConstant& WithConstantType(ConstantType value) { SetConstantType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of category filter constant. This element is used to specify whether
-     * a constant is a singular or collective. Valid values are <code>SINGULAR</code>
-     * and <code>COLLECTIVE</code>.</p>
-     */
-    inline void SetConstantType(const ConstantType& value) { m_constantTypeHasBeenSet = true; m_constantType = value; }
-
-    /**
-     * <p>The type of category filter constant. This element is used to specify whether
-     * a constant is a singular or collective. Valid values are <code>SINGULAR</code>
-     * and <code>COLLECTIVE</code>.</p>
-     */
-    inline void SetConstantType(ConstantType&& value) { m_constantTypeHasBeenSet = true; m_constantType = std::move(value); }
-
-    /**
-     * <p>The type of category filter constant. This element is used to specify whether
-     * a constant is a singular or collective. Valid values are <code>SINGULAR</code>
-     * and <code>COLLECTIVE</code>.</p>
-     */
-    inline TopicCategoryFilterConstant& WithConstantType(const ConstantType& value) { SetConstantType(value); return *this;}
-
-    /**
-     * <p>The type of category filter constant. This element is used to specify whether
-     * a constant is a singular or collective. Valid values are <code>SINGULAR</code>
-     * and <code>COLLECTIVE</code>.</p>
-     */
-    inline TopicCategoryFilterConstant& WithConstantType(ConstantType&& value) { SetConstantType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A singular constant used in a category filter. This element is used to
      * specify a single value for the constant.</p>
      */
-    inline const Aws::String& GetSingularConstant() const{ return m_singularConstant; }
-
-    /**
-     * <p>A singular constant used in a category filter. This element is used to
-     * specify a single value for the constant.</p>
-     */
+    inline const Aws::String& GetSingularConstant() const { return m_singularConstant; }
     inline bool SingularConstantHasBeenSet() const { return m_singularConstantHasBeenSet; }
+    template<typename SingularConstantT = Aws::String>
+    void SetSingularConstant(SingularConstantT&& value) { m_singularConstantHasBeenSet = true; m_singularConstant = std::forward<SingularConstantT>(value); }
+    template<typename SingularConstantT = Aws::String>
+    TopicCategoryFilterConstant& WithSingularConstant(SingularConstantT&& value) { SetSingularConstant(std::forward<SingularConstantT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A singular constant used in a category filter. This element is used to
-     * specify a single value for the constant.</p>
-     */
-    inline void SetSingularConstant(const Aws::String& value) { m_singularConstantHasBeenSet = true; m_singularConstant = value; }
-
-    /**
-     * <p>A singular constant used in a category filter. This element is used to
-     * specify a single value for the constant.</p>
-     */
-    inline void SetSingularConstant(Aws::String&& value) { m_singularConstantHasBeenSet = true; m_singularConstant = std::move(value); }
-
-    /**
-     * <p>A singular constant used in a category filter. This element is used to
-     * specify a single value for the constant.</p>
-     */
-    inline void SetSingularConstant(const char* value) { m_singularConstantHasBeenSet = true; m_singularConstant.assign(value); }
-
-    /**
-     * <p>A singular constant used in a category filter. This element is used to
-     * specify a single value for the constant.</p>
-     */
-    inline TopicCategoryFilterConstant& WithSingularConstant(const Aws::String& value) { SetSingularConstant(value); return *this;}
-
-    /**
-     * <p>A singular constant used in a category filter. This element is used to
-     * specify a single value for the constant.</p>
-     */
-    inline TopicCategoryFilterConstant& WithSingularConstant(Aws::String&& value) { SetSingularConstant(std::move(value)); return *this;}
-
-    /**
-     * <p>A singular constant used in a category filter. This element is used to
-     * specify a single value for the constant.</p>
-     */
-    inline TopicCategoryFilterConstant& WithSingularConstant(const char* value) { SetSingularConstant(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A collective constant used in a category filter. This element is used to
      * specify a list of values for the constant.</p>
      */
-    inline const CollectiveConstant& GetCollectiveConstant() const{ return m_collectiveConstant; }
-
-    /**
-     * <p>A collective constant used in a category filter. This element is used to
-     * specify a list of values for the constant.</p>
-     */
+    inline const CollectiveConstant& GetCollectiveConstant() const { return m_collectiveConstant; }
     inline bool CollectiveConstantHasBeenSet() const { return m_collectiveConstantHasBeenSet; }
-
-    /**
-     * <p>A collective constant used in a category filter. This element is used to
-     * specify a list of values for the constant.</p>
-     */
-    inline void SetCollectiveConstant(const CollectiveConstant& value) { m_collectiveConstantHasBeenSet = true; m_collectiveConstant = value; }
-
-    /**
-     * <p>A collective constant used in a category filter. This element is used to
-     * specify a list of values for the constant.</p>
-     */
-    inline void SetCollectiveConstant(CollectiveConstant&& value) { m_collectiveConstantHasBeenSet = true; m_collectiveConstant = std::move(value); }
-
-    /**
-     * <p>A collective constant used in a category filter. This element is used to
-     * specify a list of values for the constant.</p>
-     */
-    inline TopicCategoryFilterConstant& WithCollectiveConstant(const CollectiveConstant& value) { SetCollectiveConstant(value); return *this;}
-
-    /**
-     * <p>A collective constant used in a category filter. This element is used to
-     * specify a list of values for the constant.</p>
-     */
-    inline TopicCategoryFilterConstant& WithCollectiveConstant(CollectiveConstant&& value) { SetCollectiveConstant(std::move(value)); return *this;}
-
+    template<typename CollectiveConstantT = CollectiveConstant>
+    void SetCollectiveConstant(CollectiveConstantT&& value) { m_collectiveConstantHasBeenSet = true; m_collectiveConstant = std::forward<CollectiveConstantT>(value); }
+    template<typename CollectiveConstantT = CollectiveConstant>
+    TopicCategoryFilterConstant& WithCollectiveConstant(CollectiveConstantT&& value) { SetCollectiveConstant(std::forward<CollectiveConstantT>(value)); return *this;}
+    ///@}
   private:
 
-    ConstantType m_constantType;
+    ConstantType m_constantType{ConstantType::NOT_SET};
     bool m_constantTypeHasBeenSet = false;
 
     Aws::String m_singularConstant;

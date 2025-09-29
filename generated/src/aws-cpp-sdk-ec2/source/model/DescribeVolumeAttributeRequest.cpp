@@ -10,22 +10,13 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-DescribeVolumeAttributeRequest::DescribeVolumeAttributeRequest() : 
-    m_attribute(VolumeAttributeName::NOT_SET),
-    m_attributeHasBeenSet(false),
-    m_volumeIdHasBeenSet(false),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false)
-{
-}
-
 Aws::String DescribeVolumeAttributeRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=DescribeVolumeAttribute&";
   if(m_attributeHasBeenSet)
   {
-    ss << "Attribute=" << VolumeAttributeNameMapper::GetNameForVolumeAttributeName(m_attribute) << "&";
+    ss << "Attribute=" << StringUtils::URLEncode(VolumeAttributeNameMapper::GetNameForVolumeAttributeName(m_attribute)) << "&";
   }
 
   if(m_volumeIdHasBeenSet)

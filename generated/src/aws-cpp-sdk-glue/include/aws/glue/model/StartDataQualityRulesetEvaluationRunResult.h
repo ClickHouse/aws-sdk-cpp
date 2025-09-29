@@ -27,73 +27,37 @@ namespace Model
   class StartDataQualityRulesetEvaluationRunResult
   {
   public:
-    AWS_GLUE_API StartDataQualityRulesetEvaluationRunResult();
+    AWS_GLUE_API StartDataQualityRulesetEvaluationRunResult() = default;
     AWS_GLUE_API StartDataQualityRulesetEvaluationRunResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_GLUE_API StartDataQualityRulesetEvaluationRunResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The unique run identifier associated with this run.</p>
      */
-    inline const Aws::String& GetRunId() const{ return m_runId; }
+    inline const Aws::String& GetRunId() const { return m_runId; }
+    template<typename RunIdT = Aws::String>
+    void SetRunId(RunIdT&& value) { m_runIdHasBeenSet = true; m_runId = std::forward<RunIdT>(value); }
+    template<typename RunIdT = Aws::String>
+    StartDataQualityRulesetEvaluationRunResult& WithRunId(RunIdT&& value) { SetRunId(std::forward<RunIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique run identifier associated with this run.</p>
-     */
-    inline void SetRunId(const Aws::String& value) { m_runId = value; }
-
-    /**
-     * <p>The unique run identifier associated with this run.</p>
-     */
-    inline void SetRunId(Aws::String&& value) { m_runId = std::move(value); }
-
-    /**
-     * <p>The unique run identifier associated with this run.</p>
-     */
-    inline void SetRunId(const char* value) { m_runId.assign(value); }
-
-    /**
-     * <p>The unique run identifier associated with this run.</p>
-     */
-    inline StartDataQualityRulesetEvaluationRunResult& WithRunId(const Aws::String& value) { SetRunId(value); return *this;}
-
-    /**
-     * <p>The unique run identifier associated with this run.</p>
-     */
-    inline StartDataQualityRulesetEvaluationRunResult& WithRunId(Aws::String&& value) { SetRunId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique run identifier associated with this run.</p>
-     */
-    inline StartDataQualityRulesetEvaluationRunResult& WithRunId(const char* value) { SetRunId(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline StartDataQualityRulesetEvaluationRunResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline StartDataQualityRulesetEvaluationRunResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline StartDataQualityRulesetEvaluationRunResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    StartDataQualityRulesetEvaluationRunResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_runId;
+    bool m_runIdHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

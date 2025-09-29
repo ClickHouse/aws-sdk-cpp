@@ -23,7 +23,7 @@ namespace Model
   class DescribeAccountPoliciesRequest : public CloudWatchLogsRequest
   {
   public:
-    AWS_CLOUDWATCHLOGS_API DescribeAccountPoliciesRequest();
+    AWS_CLOUDWATCHLOGS_API DescribeAccountPoliciesRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,98 +36,31 @@ namespace Model
     AWS_CLOUDWATCHLOGS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>Use this parameter to limit the returned policies to only the policies that
-     * match the policy type that you specify. Currently, the only valid value is
-     * <code>DATA_PROTECTION_POLICY</code>.</p>
+     * match the policy type that you specify.</p>
      */
-    inline const PolicyType& GetPolicyType() const{ return m_policyType; }
-
-    /**
-     * <p>Use this parameter to limit the returned policies to only the policies that
-     * match the policy type that you specify. Currently, the only valid value is
-     * <code>DATA_PROTECTION_POLICY</code>.</p>
-     */
+    inline PolicyType GetPolicyType() const { return m_policyType; }
     inline bool PolicyTypeHasBeenSet() const { return m_policyTypeHasBeenSet; }
+    inline void SetPolicyType(PolicyType value) { m_policyTypeHasBeenSet = true; m_policyType = value; }
+    inline DescribeAccountPoliciesRequest& WithPolicyType(PolicyType value) { SetPolicyType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Use this parameter to limit the returned policies to only the policies that
-     * match the policy type that you specify. Currently, the only valid value is
-     * <code>DATA_PROTECTION_POLICY</code>.</p>
-     */
-    inline void SetPolicyType(const PolicyType& value) { m_policyTypeHasBeenSet = true; m_policyType = value; }
-
-    /**
-     * <p>Use this parameter to limit the returned policies to only the policies that
-     * match the policy type that you specify. Currently, the only valid value is
-     * <code>DATA_PROTECTION_POLICY</code>.</p>
-     */
-    inline void SetPolicyType(PolicyType&& value) { m_policyTypeHasBeenSet = true; m_policyType = std::move(value); }
-
-    /**
-     * <p>Use this parameter to limit the returned policies to only the policies that
-     * match the policy type that you specify. Currently, the only valid value is
-     * <code>DATA_PROTECTION_POLICY</code>.</p>
-     */
-    inline DescribeAccountPoliciesRequest& WithPolicyType(const PolicyType& value) { SetPolicyType(value); return *this;}
-
-    /**
-     * <p>Use this parameter to limit the returned policies to only the policies that
-     * match the policy type that you specify. Currently, the only valid value is
-     * <code>DATA_PROTECTION_POLICY</code>.</p>
-     */
-    inline DescribeAccountPoliciesRequest& WithPolicyType(PolicyType&& value) { SetPolicyType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Use this parameter to limit the returned policies to only the policy with the
      * name that you specify.</p>
      */
-    inline const Aws::String& GetPolicyName() const{ return m_policyName; }
-
-    /**
-     * <p>Use this parameter to limit the returned policies to only the policy with the
-     * name that you specify.</p>
-     */
+    inline const Aws::String& GetPolicyName() const { return m_policyName; }
     inline bool PolicyNameHasBeenSet() const { return m_policyNameHasBeenSet; }
+    template<typename PolicyNameT = Aws::String>
+    void SetPolicyName(PolicyNameT&& value) { m_policyNameHasBeenSet = true; m_policyName = std::forward<PolicyNameT>(value); }
+    template<typename PolicyNameT = Aws::String>
+    DescribeAccountPoliciesRequest& WithPolicyName(PolicyNameT&& value) { SetPolicyName(std::forward<PolicyNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Use this parameter to limit the returned policies to only the policy with the
-     * name that you specify.</p>
-     */
-    inline void SetPolicyName(const Aws::String& value) { m_policyNameHasBeenSet = true; m_policyName = value; }
-
-    /**
-     * <p>Use this parameter to limit the returned policies to only the policy with the
-     * name that you specify.</p>
-     */
-    inline void SetPolicyName(Aws::String&& value) { m_policyNameHasBeenSet = true; m_policyName = std::move(value); }
-
-    /**
-     * <p>Use this parameter to limit the returned policies to only the policy with the
-     * name that you specify.</p>
-     */
-    inline void SetPolicyName(const char* value) { m_policyNameHasBeenSet = true; m_policyName.assign(value); }
-
-    /**
-     * <p>Use this parameter to limit the returned policies to only the policy with the
-     * name that you specify.</p>
-     */
-    inline DescribeAccountPoliciesRequest& WithPolicyName(const Aws::String& value) { SetPolicyName(value); return *this;}
-
-    /**
-     * <p>Use this parameter to limit the returned policies to only the policy with the
-     * name that you specify.</p>
-     */
-    inline DescribeAccountPoliciesRequest& WithPolicyName(Aws::String&& value) { SetPolicyName(std::move(value)); return *this;}
-
-    /**
-     * <p>Use this parameter to limit the returned policies to only the policy with the
-     * name that you specify.</p>
-     */
-    inline DescribeAccountPoliciesRequest& WithPolicyName(const char* value) { SetPolicyName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>If you are using an account that is set up as a monitoring account for
      * CloudWatch unified cross-account observability, you can use this to specify the
@@ -136,91 +69,31 @@ namespace Model
      * in this parameter.</p> <p>If you omit this parameter, only the policy in the
      * current account is returned.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetAccountIdentifiers() const{ return m_accountIdentifiers; }
-
-    /**
-     * <p>If you are using an account that is set up as a monitoring account for
-     * CloudWatch unified cross-account observability, you can use this to specify the
-     * account ID of a source account. If you do, the operation returns the account
-     * policy for the specified account. Currently, you can specify only one account ID
-     * in this parameter.</p> <p>If you omit this parameter, only the policy in the
-     * current account is returned.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetAccountIdentifiers() const { return m_accountIdentifiers; }
     inline bool AccountIdentifiersHasBeenSet() const { return m_accountIdentifiersHasBeenSet; }
+    template<typename AccountIdentifiersT = Aws::Vector<Aws::String>>
+    void SetAccountIdentifiers(AccountIdentifiersT&& value) { m_accountIdentifiersHasBeenSet = true; m_accountIdentifiers = std::forward<AccountIdentifiersT>(value); }
+    template<typename AccountIdentifiersT = Aws::Vector<Aws::String>>
+    DescribeAccountPoliciesRequest& WithAccountIdentifiers(AccountIdentifiersT&& value) { SetAccountIdentifiers(std::forward<AccountIdentifiersT>(value)); return *this;}
+    template<typename AccountIdentifiersT = Aws::String>
+    DescribeAccountPoliciesRequest& AddAccountIdentifiers(AccountIdentifiersT&& value) { m_accountIdentifiersHasBeenSet = true; m_accountIdentifiers.emplace_back(std::forward<AccountIdentifiersT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>If you are using an account that is set up as a monitoring account for
-     * CloudWatch unified cross-account observability, you can use this to specify the
-     * account ID of a source account. If you do, the operation returns the account
-     * policy for the specified account. Currently, you can specify only one account ID
-     * in this parameter.</p> <p>If you omit this parameter, only the policy in the
-     * current account is returned.</p>
+     * <p>The token for the next set of items to return. (You received this token from
+     * a previous call.)</p>
      */
-    inline void SetAccountIdentifiers(const Aws::Vector<Aws::String>& value) { m_accountIdentifiersHasBeenSet = true; m_accountIdentifiers = value; }
-
-    /**
-     * <p>If you are using an account that is set up as a monitoring account for
-     * CloudWatch unified cross-account observability, you can use this to specify the
-     * account ID of a source account. If you do, the operation returns the account
-     * policy for the specified account. Currently, you can specify only one account ID
-     * in this parameter.</p> <p>If you omit this parameter, only the policy in the
-     * current account is returned.</p>
-     */
-    inline void SetAccountIdentifiers(Aws::Vector<Aws::String>&& value) { m_accountIdentifiersHasBeenSet = true; m_accountIdentifiers = std::move(value); }
-
-    /**
-     * <p>If you are using an account that is set up as a monitoring account for
-     * CloudWatch unified cross-account observability, you can use this to specify the
-     * account ID of a source account. If you do, the operation returns the account
-     * policy for the specified account. Currently, you can specify only one account ID
-     * in this parameter.</p> <p>If you omit this parameter, only the policy in the
-     * current account is returned.</p>
-     */
-    inline DescribeAccountPoliciesRequest& WithAccountIdentifiers(const Aws::Vector<Aws::String>& value) { SetAccountIdentifiers(value); return *this;}
-
-    /**
-     * <p>If you are using an account that is set up as a monitoring account for
-     * CloudWatch unified cross-account observability, you can use this to specify the
-     * account ID of a source account. If you do, the operation returns the account
-     * policy for the specified account. Currently, you can specify only one account ID
-     * in this parameter.</p> <p>If you omit this parameter, only the policy in the
-     * current account is returned.</p>
-     */
-    inline DescribeAccountPoliciesRequest& WithAccountIdentifiers(Aws::Vector<Aws::String>&& value) { SetAccountIdentifiers(std::move(value)); return *this;}
-
-    /**
-     * <p>If you are using an account that is set up as a monitoring account for
-     * CloudWatch unified cross-account observability, you can use this to specify the
-     * account ID of a source account. If you do, the operation returns the account
-     * policy for the specified account. Currently, you can specify only one account ID
-     * in this parameter.</p> <p>If you omit this parameter, only the policy in the
-     * current account is returned.</p>
-     */
-    inline DescribeAccountPoliciesRequest& AddAccountIdentifiers(const Aws::String& value) { m_accountIdentifiersHasBeenSet = true; m_accountIdentifiers.push_back(value); return *this; }
-
-    /**
-     * <p>If you are using an account that is set up as a monitoring account for
-     * CloudWatch unified cross-account observability, you can use this to specify the
-     * account ID of a source account. If you do, the operation returns the account
-     * policy for the specified account. Currently, you can specify only one account ID
-     * in this parameter.</p> <p>If you omit this parameter, only the policy in the
-     * current account is returned.</p>
-     */
-    inline DescribeAccountPoliciesRequest& AddAccountIdentifiers(Aws::String&& value) { m_accountIdentifiersHasBeenSet = true; m_accountIdentifiers.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>If you are using an account that is set up as a monitoring account for
-     * CloudWatch unified cross-account observability, you can use this to specify the
-     * account ID of a source account. If you do, the operation returns the account
-     * policy for the specified account. Currently, you can specify only one account ID
-     * in this parameter.</p> <p>If you omit this parameter, only the policy in the
-     * current account is returned.</p>
-     */
-    inline DescribeAccountPoliciesRequest& AddAccountIdentifiers(const char* value) { m_accountIdentifiersHasBeenSet = true; m_accountIdentifiers.push_back(value); return *this; }
-
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    DescribeAccountPoliciesRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
   private:
 
-    PolicyType m_policyType;
+    PolicyType m_policyType{PolicyType::NOT_SET};
     bool m_policyTypeHasBeenSet = false;
 
     Aws::String m_policyName;
@@ -228,6 +101,9 @@ namespace Model
 
     Aws::Vector<Aws::String> m_accountIdentifiers;
     bool m_accountIdentifiersHasBeenSet = false;
+
+    Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
   };
 
 } // namespace Model

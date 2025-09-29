@@ -30,35 +30,24 @@ namespace Model
   class LifecyclePolicyPreviewSummary
   {
   public:
-    AWS_ECR_API LifecyclePolicyPreviewSummary();
+    AWS_ECR_API LifecyclePolicyPreviewSummary() = default;
     AWS_ECR_API LifecyclePolicyPreviewSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_ECR_API LifecyclePolicyPreviewSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ECR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The number of expiring images.</p>
      */
-    inline int GetExpiringImageTotalCount() const{ return m_expiringImageTotalCount; }
-
-    /**
-     * <p>The number of expiring images.</p>
-     */
+    inline int GetExpiringImageTotalCount() const { return m_expiringImageTotalCount; }
     inline bool ExpiringImageTotalCountHasBeenSet() const { return m_expiringImageTotalCountHasBeenSet; }
-
-    /**
-     * <p>The number of expiring images.</p>
-     */
     inline void SetExpiringImageTotalCount(int value) { m_expiringImageTotalCountHasBeenSet = true; m_expiringImageTotalCount = value; }
-
-    /**
-     * <p>The number of expiring images.</p>
-     */
     inline LifecyclePolicyPreviewSummary& WithExpiringImageTotalCount(int value) { SetExpiringImageTotalCount(value); return *this;}
-
+    ///@}
   private:
 
-    int m_expiringImageTotalCount;
+    int m_expiringImageTotalCount{0};
     bool m_expiringImageTotalCountHasBeenSet = false;
   };
 

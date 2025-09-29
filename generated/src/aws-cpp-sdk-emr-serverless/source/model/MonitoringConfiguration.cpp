@@ -18,17 +18,7 @@ namespace EMRServerless
 namespace Model
 {
 
-MonitoringConfiguration::MonitoringConfiguration() : 
-    m_s3MonitoringConfigurationHasBeenSet(false),
-    m_managedPersistenceMonitoringConfigurationHasBeenSet(false),
-    m_cloudWatchLoggingConfigurationHasBeenSet(false)
-{
-}
-
-MonitoringConfiguration::MonitoringConfiguration(JsonView jsonValue) : 
-    m_s3MonitoringConfigurationHasBeenSet(false),
-    m_managedPersistenceMonitoringConfigurationHasBeenSet(false),
-    m_cloudWatchLoggingConfigurationHasBeenSet(false)
+MonitoringConfiguration::MonitoringConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,23 @@ MonitoringConfiguration& MonitoringConfiguration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("s3MonitoringConfiguration"))
   {
     m_s3MonitoringConfiguration = jsonValue.GetObject("s3MonitoringConfiguration");
-
     m_s3MonitoringConfigurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("managedPersistenceMonitoringConfiguration"))
   {
     m_managedPersistenceMonitoringConfiguration = jsonValue.GetObject("managedPersistenceMonitoringConfiguration");
-
     m_managedPersistenceMonitoringConfigurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("cloudWatchLoggingConfiguration"))
   {
     m_cloudWatchLoggingConfiguration = jsonValue.GetObject("cloudWatchLoggingConfiguration");
-
     m_cloudWatchLoggingConfigurationHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("prometheusMonitoringConfiguration"))
+  {
+    m_prometheusMonitoringConfiguration = jsonValue.GetObject("prometheusMonitoringConfiguration");
+    m_prometheusMonitoringConfigurationHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -78,6 +67,12 @@ JsonValue MonitoringConfiguration::Jsonize() const
   if(m_cloudWatchLoggingConfigurationHasBeenSet)
   {
    payload.WithObject("cloudWatchLoggingConfiguration", m_cloudWatchLoggingConfiguration.Jsonize());
+
+  }
+
+  if(m_prometheusMonitoringConfigurationHasBeenSet)
+  {
+   payload.WithObject("prometheusMonitoringConfiguration", m_prometheusMonitoringConfiguration.Jsonize());
 
   }
 

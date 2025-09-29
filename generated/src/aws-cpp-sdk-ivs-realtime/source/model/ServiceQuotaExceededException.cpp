@@ -5,6 +5,7 @@
 
 #include <aws/ivs-realtime/model/ServiceQuotaExceededException.h>
 #include <aws/core/utils/json/JsonSerializer.h>
+#include <aws/core/utils/memory/stl/AWSStringStream.h>
 
 #include <utility>
 
@@ -18,13 +19,7 @@ namespace ivsrealtime
 namespace Model
 {
 
-ServiceQuotaExceededException::ServiceQuotaExceededException() : 
-    m_exceptionMessageHasBeenSet(false)
-{
-}
-
-ServiceQuotaExceededException::ServiceQuotaExceededException(JsonView jsonValue) : 
-    m_exceptionMessageHasBeenSet(false)
+ServiceQuotaExceededException::ServiceQuotaExceededException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +29,8 @@ ServiceQuotaExceededException& ServiceQuotaExceededException::operator =(JsonVie
   if(jsonValue.ValueExists("exceptionMessage"))
   {
     m_exceptionMessage = jsonValue.GetString("exceptionMessage");
-
     m_exceptionMessageHasBeenSet = true;
   }
-
   return *this;
 }
 

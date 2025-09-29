@@ -34,60 +34,24 @@ namespace Model
   class RepositoryHeadSourceCodeType
   {
   public:
-    AWS_CODEGURUREVIEWER_API RepositoryHeadSourceCodeType();
+    AWS_CODEGURUREVIEWER_API RepositoryHeadSourceCodeType() = default;
     AWS_CODEGURUREVIEWER_API RepositoryHeadSourceCodeType(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEGURUREVIEWER_API RepositoryHeadSourceCodeType& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEGURUREVIEWER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the branch in an associated repository. The
      * <code>RepositoryHeadSourceCodeType</code> specifies the tip of this branch.</p>
      */
-    inline const Aws::String& GetBranchName() const{ return m_branchName; }
-
-    /**
-     * <p>The name of the branch in an associated repository. The
-     * <code>RepositoryHeadSourceCodeType</code> specifies the tip of this branch.</p>
-     */
+    inline const Aws::String& GetBranchName() const { return m_branchName; }
     inline bool BranchNameHasBeenSet() const { return m_branchNameHasBeenSet; }
-
-    /**
-     * <p>The name of the branch in an associated repository. The
-     * <code>RepositoryHeadSourceCodeType</code> specifies the tip of this branch.</p>
-     */
-    inline void SetBranchName(const Aws::String& value) { m_branchNameHasBeenSet = true; m_branchName = value; }
-
-    /**
-     * <p>The name of the branch in an associated repository. The
-     * <code>RepositoryHeadSourceCodeType</code> specifies the tip of this branch.</p>
-     */
-    inline void SetBranchName(Aws::String&& value) { m_branchNameHasBeenSet = true; m_branchName = std::move(value); }
-
-    /**
-     * <p>The name of the branch in an associated repository. The
-     * <code>RepositoryHeadSourceCodeType</code> specifies the tip of this branch.</p>
-     */
-    inline void SetBranchName(const char* value) { m_branchNameHasBeenSet = true; m_branchName.assign(value); }
-
-    /**
-     * <p>The name of the branch in an associated repository. The
-     * <code>RepositoryHeadSourceCodeType</code> specifies the tip of this branch.</p>
-     */
-    inline RepositoryHeadSourceCodeType& WithBranchName(const Aws::String& value) { SetBranchName(value); return *this;}
-
-    /**
-     * <p>The name of the branch in an associated repository. The
-     * <code>RepositoryHeadSourceCodeType</code> specifies the tip of this branch.</p>
-     */
-    inline RepositoryHeadSourceCodeType& WithBranchName(Aws::String&& value) { SetBranchName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the branch in an associated repository. The
-     * <code>RepositoryHeadSourceCodeType</code> specifies the tip of this branch.</p>
-     */
-    inline RepositoryHeadSourceCodeType& WithBranchName(const char* value) { SetBranchName(value); return *this;}
-
+    template<typename BranchNameT = Aws::String>
+    void SetBranchName(BranchNameT&& value) { m_branchNameHasBeenSet = true; m_branchName = std::forward<BranchNameT>(value); }
+    template<typename BranchNameT = Aws::String>
+    RepositoryHeadSourceCodeType& WithBranchName(BranchNameT&& value) { SetBranchName(std::forward<BranchNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_branchName;

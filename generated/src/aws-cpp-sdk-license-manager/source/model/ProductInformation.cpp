@@ -18,15 +18,7 @@ namespace LicenseManager
 namespace Model
 {
 
-ProductInformation::ProductInformation() : 
-    m_resourceTypeHasBeenSet(false),
-    m_productInformationFilterListHasBeenSet(false)
-{
-}
-
-ProductInformation::ProductInformation(JsonView jsonValue) : 
-    m_resourceTypeHasBeenSet(false),
-    m_productInformationFilterListHasBeenSet(false)
+ProductInformation::ProductInformation(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ProductInformation& ProductInformation::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ResourceType"))
   {
     m_resourceType = jsonValue.GetString("ResourceType");
-
     m_resourceTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ProductInformationFilterList"))
   {
     Aws::Utils::Array<JsonView> productInformationFilterListJsonList = jsonValue.GetArray("ProductInformationFilterList");
@@ -49,7 +39,6 @@ ProductInformation& ProductInformation::operator =(JsonView jsonValue)
     }
     m_productInformationFilterListHasBeenSet = true;
   }
-
   return *this;
 }
 

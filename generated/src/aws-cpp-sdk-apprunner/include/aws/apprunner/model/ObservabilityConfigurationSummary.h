@@ -39,130 +39,48 @@ namespace Model
   class ObservabilityConfigurationSummary
   {
   public:
-    AWS_APPRUNNER_API ObservabilityConfigurationSummary();
+    AWS_APPRUNNER_API ObservabilityConfigurationSummary() = default;
     AWS_APPRUNNER_API ObservabilityConfigurationSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPRUNNER_API ObservabilityConfigurationSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPRUNNER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of this observability configuration.</p>
      */
-    inline const Aws::String& GetObservabilityConfigurationArn() const{ return m_observabilityConfigurationArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of this observability configuration.</p>
-     */
+    inline const Aws::String& GetObservabilityConfigurationArn() const { return m_observabilityConfigurationArn; }
     inline bool ObservabilityConfigurationArnHasBeenSet() const { return m_observabilityConfigurationArnHasBeenSet; }
+    template<typename ObservabilityConfigurationArnT = Aws::String>
+    void SetObservabilityConfigurationArn(ObservabilityConfigurationArnT&& value) { m_observabilityConfigurationArnHasBeenSet = true; m_observabilityConfigurationArn = std::forward<ObservabilityConfigurationArnT>(value); }
+    template<typename ObservabilityConfigurationArnT = Aws::String>
+    ObservabilityConfigurationSummary& WithObservabilityConfigurationArn(ObservabilityConfigurationArnT&& value) { SetObservabilityConfigurationArn(std::forward<ObservabilityConfigurationArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of this observability configuration.</p>
-     */
-    inline void SetObservabilityConfigurationArn(const Aws::String& value) { m_observabilityConfigurationArnHasBeenSet = true; m_observabilityConfigurationArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of this observability configuration.</p>
-     */
-    inline void SetObservabilityConfigurationArn(Aws::String&& value) { m_observabilityConfigurationArnHasBeenSet = true; m_observabilityConfigurationArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of this observability configuration.</p>
-     */
-    inline void SetObservabilityConfigurationArn(const char* value) { m_observabilityConfigurationArnHasBeenSet = true; m_observabilityConfigurationArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of this observability configuration.</p>
-     */
-    inline ObservabilityConfigurationSummary& WithObservabilityConfigurationArn(const Aws::String& value) { SetObservabilityConfigurationArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of this observability configuration.</p>
-     */
-    inline ObservabilityConfigurationSummary& WithObservabilityConfigurationArn(Aws::String&& value) { SetObservabilityConfigurationArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of this observability configuration.</p>
-     */
-    inline ObservabilityConfigurationSummary& WithObservabilityConfigurationArn(const char* value) { SetObservabilityConfigurationArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The customer-provided observability configuration name. It can be used in
      * multiple revisions of a configuration.</p>
      */
-    inline const Aws::String& GetObservabilityConfigurationName() const{ return m_observabilityConfigurationName; }
-
-    /**
-     * <p>The customer-provided observability configuration name. It can be used in
-     * multiple revisions of a configuration.</p>
-     */
+    inline const Aws::String& GetObservabilityConfigurationName() const { return m_observabilityConfigurationName; }
     inline bool ObservabilityConfigurationNameHasBeenSet() const { return m_observabilityConfigurationNameHasBeenSet; }
+    template<typename ObservabilityConfigurationNameT = Aws::String>
+    void SetObservabilityConfigurationName(ObservabilityConfigurationNameT&& value) { m_observabilityConfigurationNameHasBeenSet = true; m_observabilityConfigurationName = std::forward<ObservabilityConfigurationNameT>(value); }
+    template<typename ObservabilityConfigurationNameT = Aws::String>
+    ObservabilityConfigurationSummary& WithObservabilityConfigurationName(ObservabilityConfigurationNameT&& value) { SetObservabilityConfigurationName(std::forward<ObservabilityConfigurationNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The customer-provided observability configuration name. It can be used in
-     * multiple revisions of a configuration.</p>
-     */
-    inline void SetObservabilityConfigurationName(const Aws::String& value) { m_observabilityConfigurationNameHasBeenSet = true; m_observabilityConfigurationName = value; }
-
-    /**
-     * <p>The customer-provided observability configuration name. It can be used in
-     * multiple revisions of a configuration.</p>
-     */
-    inline void SetObservabilityConfigurationName(Aws::String&& value) { m_observabilityConfigurationNameHasBeenSet = true; m_observabilityConfigurationName = std::move(value); }
-
-    /**
-     * <p>The customer-provided observability configuration name. It can be used in
-     * multiple revisions of a configuration.</p>
-     */
-    inline void SetObservabilityConfigurationName(const char* value) { m_observabilityConfigurationNameHasBeenSet = true; m_observabilityConfigurationName.assign(value); }
-
-    /**
-     * <p>The customer-provided observability configuration name. It can be used in
-     * multiple revisions of a configuration.</p>
-     */
-    inline ObservabilityConfigurationSummary& WithObservabilityConfigurationName(const Aws::String& value) { SetObservabilityConfigurationName(value); return *this;}
-
-    /**
-     * <p>The customer-provided observability configuration name. It can be used in
-     * multiple revisions of a configuration.</p>
-     */
-    inline ObservabilityConfigurationSummary& WithObservabilityConfigurationName(Aws::String&& value) { SetObservabilityConfigurationName(std::move(value)); return *this;}
-
-    /**
-     * <p>The customer-provided observability configuration name. It can be used in
-     * multiple revisions of a configuration.</p>
-     */
-    inline ObservabilityConfigurationSummary& WithObservabilityConfigurationName(const char* value) { SetObservabilityConfigurationName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The revision of this observability configuration. It's unique among all the
      * active configurations (<code>"Status": "ACTIVE"</code>) that share the same
      * <code>ObservabilityConfigurationName</code>.</p>
      */
-    inline int GetObservabilityConfigurationRevision() const{ return m_observabilityConfigurationRevision; }
-
-    /**
-     * <p>The revision of this observability configuration. It's unique among all the
-     * active configurations (<code>"Status": "ACTIVE"</code>) that share the same
-     * <code>ObservabilityConfigurationName</code>.</p>
-     */
+    inline int GetObservabilityConfigurationRevision() const { return m_observabilityConfigurationRevision; }
     inline bool ObservabilityConfigurationRevisionHasBeenSet() const { return m_observabilityConfigurationRevisionHasBeenSet; }
-
-    /**
-     * <p>The revision of this observability configuration. It's unique among all the
-     * active configurations (<code>"Status": "ACTIVE"</code>) that share the same
-     * <code>ObservabilityConfigurationName</code>.</p>
-     */
     inline void SetObservabilityConfigurationRevision(int value) { m_observabilityConfigurationRevisionHasBeenSet = true; m_observabilityConfigurationRevision = value; }
-
-    /**
-     * <p>The revision of this observability configuration. It's unique among all the
-     * active configurations (<code>"Status": "ACTIVE"</code>) that share the same
-     * <code>ObservabilityConfigurationName</code>.</p>
-     */
     inline ObservabilityConfigurationSummary& WithObservabilityConfigurationRevision(int value) { SetObservabilityConfigurationRevision(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_observabilityConfigurationArn;
@@ -171,7 +89,7 @@ namespace Model
     Aws::String m_observabilityConfigurationName;
     bool m_observabilityConfigurationNameHasBeenSet = false;
 
-    int m_observabilityConfigurationRevision;
+    int m_observabilityConfigurationRevision{0};
     bool m_observabilityConfigurationRevisionHasBeenSet = false;
   };
 

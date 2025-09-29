@@ -27,111 +27,51 @@ namespace Model
   class DeleteVehicleResult
   {
   public:
-    AWS_IOTFLEETWISE_API DeleteVehicleResult();
+    AWS_IOTFLEETWISE_API DeleteVehicleResult() = default;
     AWS_IOTFLEETWISE_API DeleteVehicleResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_IOTFLEETWISE_API DeleteVehicleResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The ID of the deleted vehicle.</p>
      */
-    inline const Aws::String& GetVehicleName() const{ return m_vehicleName; }
+    inline const Aws::String& GetVehicleName() const { return m_vehicleName; }
+    template<typename VehicleNameT = Aws::String>
+    void SetVehicleName(VehicleNameT&& value) { m_vehicleNameHasBeenSet = true; m_vehicleName = std::forward<VehicleNameT>(value); }
+    template<typename VehicleNameT = Aws::String>
+    DeleteVehicleResult& WithVehicleName(VehicleNameT&& value) { SetVehicleName(std::forward<VehicleNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the deleted vehicle.</p>
-     */
-    inline void SetVehicleName(const Aws::String& value) { m_vehicleName = value; }
-
-    /**
-     * <p>The ID of the deleted vehicle.</p>
-     */
-    inline void SetVehicleName(Aws::String&& value) { m_vehicleName = std::move(value); }
-
-    /**
-     * <p>The ID of the deleted vehicle.</p>
-     */
-    inline void SetVehicleName(const char* value) { m_vehicleName.assign(value); }
-
-    /**
-     * <p>The ID of the deleted vehicle.</p>
-     */
-    inline DeleteVehicleResult& WithVehicleName(const Aws::String& value) { SetVehicleName(value); return *this;}
-
-    /**
-     * <p>The ID of the deleted vehicle.</p>
-     */
-    inline DeleteVehicleResult& WithVehicleName(Aws::String&& value) { SetVehicleName(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the deleted vehicle.</p>
-     */
-    inline DeleteVehicleResult& WithVehicleName(const char* value) { SetVehicleName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the deleted vehicle.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
+    inline const Aws::String& GetArn() const { return m_arn; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    DeleteVehicleResult& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the deleted vehicle.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the deleted vehicle.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the deleted vehicle.</p>
-     */
-    inline void SetArn(const char* value) { m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the deleted vehicle.</p>
-     */
-    inline DeleteVehicleResult& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the deleted vehicle.</p>
-     */
-    inline DeleteVehicleResult& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the deleted vehicle.</p>
-     */
-    inline DeleteVehicleResult& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DeleteVehicleResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DeleteVehicleResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DeleteVehicleResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DeleteVehicleResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_vehicleName;
+    bool m_vehicleNameHasBeenSet = false;
 
     Aws::String m_arn;
+    bool m_arnHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

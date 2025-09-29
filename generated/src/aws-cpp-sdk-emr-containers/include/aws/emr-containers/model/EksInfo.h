@@ -31,56 +31,43 @@ namespace Model
   class EksInfo
   {
   public:
-    AWS_EMRCONTAINERS_API EksInfo();
+    AWS_EMRCONTAINERS_API EksInfo() = default;
     AWS_EMRCONTAINERS_API EksInfo(Aws::Utils::Json::JsonView jsonValue);
     AWS_EMRCONTAINERS_API EksInfo& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_EMRCONTAINERS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The namespaces of the Amazon EKS cluster.</p>
      */
-    inline const Aws::String& GetNamespace() const{ return m_namespace; }
-
-    /**
-     * <p>The namespaces of the Amazon EKS cluster.</p>
-     */
+    inline const Aws::String& GetNamespace() const { return m_namespace; }
     inline bool NamespaceHasBeenSet() const { return m_namespaceHasBeenSet; }
+    template<typename NamespaceT = Aws::String>
+    void SetNamespace(NamespaceT&& value) { m_namespaceHasBeenSet = true; m_namespace = std::forward<NamespaceT>(value); }
+    template<typename NamespaceT = Aws::String>
+    EksInfo& WithNamespace(NamespaceT&& value) { SetNamespace(std::forward<NamespaceT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The namespaces of the Amazon EKS cluster.</p>
+     * <p>The nodeLabel of the nodes where the resources of this virtual cluster can
+     * get scheduled. It requires relevant scaling and policy engine addons.</p>
      */
-    inline void SetNamespace(const Aws::String& value) { m_namespaceHasBeenSet = true; m_namespace = value; }
-
-    /**
-     * <p>The namespaces of the Amazon EKS cluster.</p>
-     */
-    inline void SetNamespace(Aws::String&& value) { m_namespaceHasBeenSet = true; m_namespace = std::move(value); }
-
-    /**
-     * <p>The namespaces of the Amazon EKS cluster.</p>
-     */
-    inline void SetNamespace(const char* value) { m_namespaceHasBeenSet = true; m_namespace.assign(value); }
-
-    /**
-     * <p>The namespaces of the Amazon EKS cluster.</p>
-     */
-    inline EksInfo& WithNamespace(const Aws::String& value) { SetNamespace(value); return *this;}
-
-    /**
-     * <p>The namespaces of the Amazon EKS cluster.</p>
-     */
-    inline EksInfo& WithNamespace(Aws::String&& value) { SetNamespace(std::move(value)); return *this;}
-
-    /**
-     * <p>The namespaces of the Amazon EKS cluster.</p>
-     */
-    inline EksInfo& WithNamespace(const char* value) { SetNamespace(value); return *this;}
-
+    inline const Aws::String& GetNodeLabel() const { return m_nodeLabel; }
+    inline bool NodeLabelHasBeenSet() const { return m_nodeLabelHasBeenSet; }
+    template<typename NodeLabelT = Aws::String>
+    void SetNodeLabel(NodeLabelT&& value) { m_nodeLabelHasBeenSet = true; m_nodeLabel = std::forward<NodeLabelT>(value); }
+    template<typename NodeLabelT = Aws::String>
+    EksInfo& WithNodeLabel(NodeLabelT&& value) { SetNodeLabel(std::forward<NodeLabelT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_namespace;
     bool m_namespaceHasBeenSet = false;
+
+    Aws::String m_nodeLabel;
+    bool m_nodeLabelHasBeenSet = false;
   };
 
 } // namespace Model

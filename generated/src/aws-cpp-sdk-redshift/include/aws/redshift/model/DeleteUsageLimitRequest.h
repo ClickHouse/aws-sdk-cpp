@@ -21,7 +21,7 @@ namespace Model
   class DeleteUsageLimitRequest : public RedshiftRequest
   {
   public:
-    AWS_REDSHIFT_API DeleteUsageLimitRequest();
+    AWS_REDSHIFT_API DeleteUsageLimitRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,46 +36,17 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The identifier of the usage limit to delete.</p>
      */
-    inline const Aws::String& GetUsageLimitId() const{ return m_usageLimitId; }
-
-    /**
-     * <p>The identifier of the usage limit to delete.</p>
-     */
+    inline const Aws::String& GetUsageLimitId() const { return m_usageLimitId; }
     inline bool UsageLimitIdHasBeenSet() const { return m_usageLimitIdHasBeenSet; }
-
-    /**
-     * <p>The identifier of the usage limit to delete.</p>
-     */
-    inline void SetUsageLimitId(const Aws::String& value) { m_usageLimitIdHasBeenSet = true; m_usageLimitId = value; }
-
-    /**
-     * <p>The identifier of the usage limit to delete.</p>
-     */
-    inline void SetUsageLimitId(Aws::String&& value) { m_usageLimitIdHasBeenSet = true; m_usageLimitId = std::move(value); }
-
-    /**
-     * <p>The identifier of the usage limit to delete.</p>
-     */
-    inline void SetUsageLimitId(const char* value) { m_usageLimitIdHasBeenSet = true; m_usageLimitId.assign(value); }
-
-    /**
-     * <p>The identifier of the usage limit to delete.</p>
-     */
-    inline DeleteUsageLimitRequest& WithUsageLimitId(const Aws::String& value) { SetUsageLimitId(value); return *this;}
-
-    /**
-     * <p>The identifier of the usage limit to delete.</p>
-     */
-    inline DeleteUsageLimitRequest& WithUsageLimitId(Aws::String&& value) { SetUsageLimitId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the usage limit to delete.</p>
-     */
-    inline DeleteUsageLimitRequest& WithUsageLimitId(const char* value) { SetUsageLimitId(value); return *this;}
-
+    template<typename UsageLimitIdT = Aws::String>
+    void SetUsageLimitId(UsageLimitIdT&& value) { m_usageLimitIdHasBeenSet = true; m_usageLimitId = std::forward<UsageLimitIdT>(value); }
+    template<typename UsageLimitIdT = Aws::String>
+    DeleteUsageLimitRequest& WithUsageLimitId(UsageLimitIdT&& value) { SetUsageLimitId(std::forward<UsageLimitIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_usageLimitId;

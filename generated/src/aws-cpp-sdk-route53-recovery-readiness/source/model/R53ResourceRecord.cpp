@@ -18,15 +18,7 @@ namespace Route53RecoveryReadiness
 namespace Model
 {
 
-R53ResourceRecord::R53ResourceRecord() : 
-    m_domainNameHasBeenSet(false),
-    m_recordSetIdHasBeenSet(false)
-{
-}
-
-R53ResourceRecord::R53ResourceRecord(JsonView jsonValue) : 
-    m_domainNameHasBeenSet(false),
-    m_recordSetIdHasBeenSet(false)
+R53ResourceRecord::R53ResourceRecord(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ R53ResourceRecord& R53ResourceRecord::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("domainName"))
   {
     m_domainName = jsonValue.GetString("domainName");
-
     m_domainNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("recordSetId"))
   {
     m_recordSetId = jsonValue.GetString("recordSetId");
-
     m_recordSetIdHasBeenSet = true;
   }
-
   return *this;
 }
 

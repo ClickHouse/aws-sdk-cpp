@@ -20,17 +20,7 @@ namespace Redshift
 namespace Model
 {
 
-VpcEndpoint::VpcEndpoint() : 
-    m_vpcEndpointIdHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_networkInterfacesHasBeenSet(false)
-{
-}
-
-VpcEndpoint::VpcEndpoint(const XmlNode& xmlNode) : 
-    m_vpcEndpointIdHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_networkInterfacesHasBeenSet(false)
+VpcEndpoint::VpcEndpoint(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -57,6 +47,7 @@ VpcEndpoint& VpcEndpoint::operator =(const XmlNode& xmlNode)
     if(!networkInterfacesNode.IsNull())
     {
       XmlNode networkInterfacesMember = networkInterfacesNode.FirstChild("NetworkInterface");
+      m_networkInterfacesHasBeenSet = !networkInterfacesMember.IsNull();
       while(!networkInterfacesMember.IsNull())
       {
         m_networkInterfaces.push_back(networkInterfacesMember);
@@ -88,7 +79,7 @@ void VpcEndpoint::OutputToStream(Aws::OStream& oStream, const char* location, un
       for(auto& item : m_networkInterfaces)
       {
         Aws::StringStream networkInterfacesSs;
-        networkInterfacesSs << location << index << locationValue << ".NetworkInterface." << networkInterfacesIdx++;
+        networkInterfacesSs << location << index << locationValue << ".NetworkInterfaces.NetworkInterface." << networkInterfacesIdx++;
         item.OutputToStream(oStream, networkInterfacesSs.str().c_str());
       }
   }
@@ -111,7 +102,7 @@ void VpcEndpoint::OutputToStream(Aws::OStream& oStream, const char* location) co
       for(auto& item : m_networkInterfaces)
       {
         Aws::StringStream networkInterfacesSs;
-        networkInterfacesSs << location <<  ".NetworkInterface." << networkInterfacesIdx++;
+        networkInterfacesSs << location << ".NetworkInterfaces.NetworkInterface." << networkInterfacesIdx++;
         item.OutputToStream(oStream, networkInterfacesSs.str().c_str());
       }
   }

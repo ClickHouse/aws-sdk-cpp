@@ -31,42 +31,23 @@ namespace Model
   class RuleEvaluation
   {
   public:
-    AWS_IOTEVENTSDATA_API RuleEvaluation();
+    AWS_IOTEVENTSDATA_API RuleEvaluation() = default;
     AWS_IOTEVENTSDATA_API RuleEvaluation(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTEVENTSDATA_API RuleEvaluation& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTEVENTSDATA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Information needed to compare two values with a comparison operator.</p>
      */
-    inline const SimpleRuleEvaluation& GetSimpleRuleEvaluation() const{ return m_simpleRuleEvaluation; }
-
-    /**
-     * <p>Information needed to compare two values with a comparison operator.</p>
-     */
+    inline const SimpleRuleEvaluation& GetSimpleRuleEvaluation() const { return m_simpleRuleEvaluation; }
     inline bool SimpleRuleEvaluationHasBeenSet() const { return m_simpleRuleEvaluationHasBeenSet; }
-
-    /**
-     * <p>Information needed to compare two values with a comparison operator.</p>
-     */
-    inline void SetSimpleRuleEvaluation(const SimpleRuleEvaluation& value) { m_simpleRuleEvaluationHasBeenSet = true; m_simpleRuleEvaluation = value; }
-
-    /**
-     * <p>Information needed to compare two values with a comparison operator.</p>
-     */
-    inline void SetSimpleRuleEvaluation(SimpleRuleEvaluation&& value) { m_simpleRuleEvaluationHasBeenSet = true; m_simpleRuleEvaluation = std::move(value); }
-
-    /**
-     * <p>Information needed to compare two values with a comparison operator.</p>
-     */
-    inline RuleEvaluation& WithSimpleRuleEvaluation(const SimpleRuleEvaluation& value) { SetSimpleRuleEvaluation(value); return *this;}
-
-    /**
-     * <p>Information needed to compare two values with a comparison operator.</p>
-     */
-    inline RuleEvaluation& WithSimpleRuleEvaluation(SimpleRuleEvaluation&& value) { SetSimpleRuleEvaluation(std::move(value)); return *this;}
-
+    template<typename SimpleRuleEvaluationT = SimpleRuleEvaluation>
+    void SetSimpleRuleEvaluation(SimpleRuleEvaluationT&& value) { m_simpleRuleEvaluationHasBeenSet = true; m_simpleRuleEvaluation = std::forward<SimpleRuleEvaluationT>(value); }
+    template<typename SimpleRuleEvaluationT = SimpleRuleEvaluation>
+    RuleEvaluation& WithSimpleRuleEvaluation(SimpleRuleEvaluationT&& value) { SetSimpleRuleEvaluation(std::forward<SimpleRuleEvaluationT>(value)); return *this;}
+    ///@}
   private:
 
     SimpleRuleEvaluation m_simpleRuleEvaluation;

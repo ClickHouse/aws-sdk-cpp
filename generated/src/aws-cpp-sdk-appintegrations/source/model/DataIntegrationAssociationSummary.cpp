@@ -18,17 +18,7 @@ namespace AppIntegrationsService
 namespace Model
 {
 
-DataIntegrationAssociationSummary::DataIntegrationAssociationSummary() : 
-    m_dataIntegrationAssociationArnHasBeenSet(false),
-    m_dataIntegrationArnHasBeenSet(false),
-    m_clientIdHasBeenSet(false)
-{
-}
-
-DataIntegrationAssociationSummary::DataIntegrationAssociationSummary(JsonView jsonValue) : 
-    m_dataIntegrationAssociationArnHasBeenSet(false),
-    m_dataIntegrationArnHasBeenSet(false),
-    m_clientIdHasBeenSet(false)
+DataIntegrationAssociationSummary::DataIntegrationAssociationSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,33 @@ DataIntegrationAssociationSummary& DataIntegrationAssociationSummary::operator =
   if(jsonValue.ValueExists("DataIntegrationAssociationArn"))
   {
     m_dataIntegrationAssociationArn = jsonValue.GetString("DataIntegrationAssociationArn");
-
     m_dataIntegrationAssociationArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DataIntegrationArn"))
   {
     m_dataIntegrationArn = jsonValue.GetString("DataIntegrationArn");
-
     m_dataIntegrationArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ClientId"))
   {
     m_clientId = jsonValue.GetString("ClientId");
-
     m_clientIdHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("DestinationURI"))
+  {
+    m_destinationURI = jsonValue.GetString("DestinationURI");
+    m_destinationURIHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("LastExecutionStatus"))
+  {
+    m_lastExecutionStatus = jsonValue.GetObject("LastExecutionStatus");
+    m_lastExecutionStatusHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("ExecutionConfiguration"))
+  {
+    m_executionConfiguration = jsonValue.GetObject("ExecutionConfiguration");
+    m_executionConfigurationHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -78,6 +77,24 @@ JsonValue DataIntegrationAssociationSummary::Jsonize() const
   if(m_clientIdHasBeenSet)
   {
    payload.WithString("ClientId", m_clientId);
+
+  }
+
+  if(m_destinationURIHasBeenSet)
+  {
+   payload.WithString("DestinationURI", m_destinationURI);
+
+  }
+
+  if(m_lastExecutionStatusHasBeenSet)
+  {
+   payload.WithObject("LastExecutionStatus", m_lastExecutionStatus.Jsonize());
+
+  }
+
+  if(m_executionConfigurationHasBeenSet)
+  {
+   payload.WithObject("ExecutionConfiguration", m_executionConfiguration.Jsonize());
 
   }
 

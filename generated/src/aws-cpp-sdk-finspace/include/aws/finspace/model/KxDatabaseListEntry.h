@@ -32,147 +32,60 @@ namespace Model
   class KxDatabaseListEntry
   {
   public:
-    AWS_FINSPACE_API KxDatabaseListEntry();
+    AWS_FINSPACE_API KxDatabaseListEntry() = default;
     AWS_FINSPACE_API KxDatabaseListEntry(Aws::Utils::Json::JsonView jsonValue);
     AWS_FINSPACE_API KxDatabaseListEntry& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FINSPACE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the kdb database.</p>
      */
-    inline const Aws::String& GetDatabaseName() const{ return m_databaseName; }
-
-    /**
-     * <p>The name of the kdb database.</p>
-     */
+    inline const Aws::String& GetDatabaseName() const { return m_databaseName; }
     inline bool DatabaseNameHasBeenSet() const { return m_databaseNameHasBeenSet; }
+    template<typename DatabaseNameT = Aws::String>
+    void SetDatabaseName(DatabaseNameT&& value) { m_databaseNameHasBeenSet = true; m_databaseName = std::forward<DatabaseNameT>(value); }
+    template<typename DatabaseNameT = Aws::String>
+    KxDatabaseListEntry& WithDatabaseName(DatabaseNameT&& value) { SetDatabaseName(std::forward<DatabaseNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the kdb database.</p>
-     */
-    inline void SetDatabaseName(const Aws::String& value) { m_databaseNameHasBeenSet = true; m_databaseName = value; }
-
-    /**
-     * <p>The name of the kdb database.</p>
-     */
-    inline void SetDatabaseName(Aws::String&& value) { m_databaseNameHasBeenSet = true; m_databaseName = std::move(value); }
-
-    /**
-     * <p>The name of the kdb database.</p>
-     */
-    inline void SetDatabaseName(const char* value) { m_databaseNameHasBeenSet = true; m_databaseName.assign(value); }
-
-    /**
-     * <p>The name of the kdb database.</p>
-     */
-    inline KxDatabaseListEntry& WithDatabaseName(const Aws::String& value) { SetDatabaseName(value); return *this;}
-
-    /**
-     * <p>The name of the kdb database.</p>
-     */
-    inline KxDatabaseListEntry& WithDatabaseName(Aws::String&& value) { SetDatabaseName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the kdb database.</p>
-     */
-    inline KxDatabaseListEntry& WithDatabaseName(const char* value) { SetDatabaseName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The timestamp at which the database was created in FinSpace. The value is
      * determined as epoch time in milliseconds. For example, the value for Monday,
      * November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedTimestamp() const{ return m_createdTimestamp; }
-
-    /**
-     * <p>The timestamp at which the database was created in FinSpace. The value is
-     * determined as epoch time in milliseconds. For example, the value for Monday,
-     * November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedTimestamp() const { return m_createdTimestamp; }
     inline bool CreatedTimestampHasBeenSet() const { return m_createdTimestampHasBeenSet; }
+    template<typename CreatedTimestampT = Aws::Utils::DateTime>
+    void SetCreatedTimestamp(CreatedTimestampT&& value) { m_createdTimestampHasBeenSet = true; m_createdTimestamp = std::forward<CreatedTimestampT>(value); }
+    template<typename CreatedTimestampT = Aws::Utils::DateTime>
+    KxDatabaseListEntry& WithCreatedTimestamp(CreatedTimestampT&& value) { SetCreatedTimestamp(std::forward<CreatedTimestampT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp at which the database was created in FinSpace. The value is
-     * determined as epoch time in milliseconds. For example, the value for Monday,
-     * November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</p>
-     */
-    inline void SetCreatedTimestamp(const Aws::Utils::DateTime& value) { m_createdTimestampHasBeenSet = true; m_createdTimestamp = value; }
-
-    /**
-     * <p>The timestamp at which the database was created in FinSpace. The value is
-     * determined as epoch time in milliseconds. For example, the value for Monday,
-     * November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</p>
-     */
-    inline void SetCreatedTimestamp(Aws::Utils::DateTime&& value) { m_createdTimestampHasBeenSet = true; m_createdTimestamp = std::move(value); }
-
-    /**
-     * <p>The timestamp at which the database was created in FinSpace. The value is
-     * determined as epoch time in milliseconds. For example, the value for Monday,
-     * November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</p>
-     */
-    inline KxDatabaseListEntry& WithCreatedTimestamp(const Aws::Utils::DateTime& value) { SetCreatedTimestamp(value); return *this;}
-
-    /**
-     * <p>The timestamp at which the database was created in FinSpace. The value is
-     * determined as epoch time in milliseconds. For example, the value for Monday,
-     * November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</p>
-     */
-    inline KxDatabaseListEntry& WithCreatedTimestamp(Aws::Utils::DateTime&& value) { SetCreatedTimestamp(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The last time that the database was modified. The value is determined as
      * epoch time in milliseconds. For example, the value for Monday, November 1, 2021
      * 12:00:00 PM UTC is specified as 1635768000000.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastModifiedTimestamp() const{ return m_lastModifiedTimestamp; }
-
-    /**
-     * <p>The last time that the database was modified. The value is determined as
-     * epoch time in milliseconds. For example, the value for Monday, November 1, 2021
-     * 12:00:00 PM UTC is specified as 1635768000000.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastModifiedTimestamp() const { return m_lastModifiedTimestamp; }
     inline bool LastModifiedTimestampHasBeenSet() const { return m_lastModifiedTimestampHasBeenSet; }
-
-    /**
-     * <p>The last time that the database was modified. The value is determined as
-     * epoch time in milliseconds. For example, the value for Monday, November 1, 2021
-     * 12:00:00 PM UTC is specified as 1635768000000.</p>
-     */
-    inline void SetLastModifiedTimestamp(const Aws::Utils::DateTime& value) { m_lastModifiedTimestampHasBeenSet = true; m_lastModifiedTimestamp = value; }
-
-    /**
-     * <p>The last time that the database was modified. The value is determined as
-     * epoch time in milliseconds. For example, the value for Monday, November 1, 2021
-     * 12:00:00 PM UTC is specified as 1635768000000.</p>
-     */
-    inline void SetLastModifiedTimestamp(Aws::Utils::DateTime&& value) { m_lastModifiedTimestampHasBeenSet = true; m_lastModifiedTimestamp = std::move(value); }
-
-    /**
-     * <p>The last time that the database was modified. The value is determined as
-     * epoch time in milliseconds. For example, the value for Monday, November 1, 2021
-     * 12:00:00 PM UTC is specified as 1635768000000.</p>
-     */
-    inline KxDatabaseListEntry& WithLastModifiedTimestamp(const Aws::Utils::DateTime& value) { SetLastModifiedTimestamp(value); return *this;}
-
-    /**
-     * <p>The last time that the database was modified. The value is determined as
-     * epoch time in milliseconds. For example, the value for Monday, November 1, 2021
-     * 12:00:00 PM UTC is specified as 1635768000000.</p>
-     */
-    inline KxDatabaseListEntry& WithLastModifiedTimestamp(Aws::Utils::DateTime&& value) { SetLastModifiedTimestamp(std::move(value)); return *this;}
-
+    template<typename LastModifiedTimestampT = Aws::Utils::DateTime>
+    void SetLastModifiedTimestamp(LastModifiedTimestampT&& value) { m_lastModifiedTimestampHasBeenSet = true; m_lastModifiedTimestamp = std::forward<LastModifiedTimestampT>(value); }
+    template<typename LastModifiedTimestampT = Aws::Utils::DateTime>
+    KxDatabaseListEntry& WithLastModifiedTimestamp(LastModifiedTimestampT&& value) { SetLastModifiedTimestamp(std::forward<LastModifiedTimestampT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_databaseName;
     bool m_databaseNameHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdTimestamp;
+    Aws::Utils::DateTime m_createdTimestamp{};
     bool m_createdTimestampHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastModifiedTimestamp;
+    Aws::Utils::DateTime m_lastModifiedTimestamp{};
     bool m_lastModifiedTimestampHasBeenSet = false;
   };
 

@@ -18,17 +18,7 @@ namespace Comprehend
 namespace Model
 {
 
-DominantLanguage::DominantLanguage() : 
-    m_languageCodeHasBeenSet(false),
-    m_score(0.0),
-    m_scoreHasBeenSet(false)
-{
-}
-
-DominantLanguage::DominantLanguage(JsonView jsonValue) : 
-    m_languageCodeHasBeenSet(false),
-    m_score(0.0),
-    m_scoreHasBeenSet(false)
+DominantLanguage::DominantLanguage(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ DominantLanguage& DominantLanguage::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("LanguageCode"))
   {
     m_languageCode = jsonValue.GetString("LanguageCode");
-
     m_languageCodeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Score"))
   {
     m_score = jsonValue.GetDouble("Score");
-
     m_scoreHasBeenSet = true;
   }
-
   return *this;
 }
 

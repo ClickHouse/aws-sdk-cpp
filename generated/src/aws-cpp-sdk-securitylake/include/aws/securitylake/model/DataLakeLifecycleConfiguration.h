@@ -34,83 +34,37 @@ namespace Model
   class DataLakeLifecycleConfiguration
   {
   public:
-    AWS_SECURITYLAKE_API DataLakeLifecycleConfiguration();
+    AWS_SECURITYLAKE_API DataLakeLifecycleConfiguration() = default;
     AWS_SECURITYLAKE_API DataLakeLifecycleConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYLAKE_API DataLakeLifecycleConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYLAKE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Provides data expiration details of Amazon Security Lake object.</p>
      */
-    inline const DataLakeLifecycleExpiration& GetExpiration() const{ return m_expiration; }
-
-    /**
-     * <p>Provides data expiration details of Amazon Security Lake object.</p>
-     */
+    inline const DataLakeLifecycleExpiration& GetExpiration() const { return m_expiration; }
     inline bool ExpirationHasBeenSet() const { return m_expirationHasBeenSet; }
+    template<typename ExpirationT = DataLakeLifecycleExpiration>
+    void SetExpiration(ExpirationT&& value) { m_expirationHasBeenSet = true; m_expiration = std::forward<ExpirationT>(value); }
+    template<typename ExpirationT = DataLakeLifecycleExpiration>
+    DataLakeLifecycleConfiguration& WithExpiration(ExpirationT&& value) { SetExpiration(std::forward<ExpirationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Provides data expiration details of Amazon Security Lake object.</p>
-     */
-    inline void SetExpiration(const DataLakeLifecycleExpiration& value) { m_expirationHasBeenSet = true; m_expiration = value; }
-
-    /**
-     * <p>Provides data expiration details of Amazon Security Lake object.</p>
-     */
-    inline void SetExpiration(DataLakeLifecycleExpiration&& value) { m_expirationHasBeenSet = true; m_expiration = std::move(value); }
-
-    /**
-     * <p>Provides data expiration details of Amazon Security Lake object.</p>
-     */
-    inline DataLakeLifecycleConfiguration& WithExpiration(const DataLakeLifecycleExpiration& value) { SetExpiration(value); return *this;}
-
-    /**
-     * <p>Provides data expiration details of Amazon Security Lake object.</p>
-     */
-    inline DataLakeLifecycleConfiguration& WithExpiration(DataLakeLifecycleExpiration&& value) { SetExpiration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Provides data storage transition details of Amazon Security Lake object.</p>
      */
-    inline const Aws::Vector<DataLakeLifecycleTransition>& GetTransitions() const{ return m_transitions; }
-
-    /**
-     * <p>Provides data storage transition details of Amazon Security Lake object.</p>
-     */
+    inline const Aws::Vector<DataLakeLifecycleTransition>& GetTransitions() const { return m_transitions; }
     inline bool TransitionsHasBeenSet() const { return m_transitionsHasBeenSet; }
-
-    /**
-     * <p>Provides data storage transition details of Amazon Security Lake object.</p>
-     */
-    inline void SetTransitions(const Aws::Vector<DataLakeLifecycleTransition>& value) { m_transitionsHasBeenSet = true; m_transitions = value; }
-
-    /**
-     * <p>Provides data storage transition details of Amazon Security Lake object.</p>
-     */
-    inline void SetTransitions(Aws::Vector<DataLakeLifecycleTransition>&& value) { m_transitionsHasBeenSet = true; m_transitions = std::move(value); }
-
-    /**
-     * <p>Provides data storage transition details of Amazon Security Lake object.</p>
-     */
-    inline DataLakeLifecycleConfiguration& WithTransitions(const Aws::Vector<DataLakeLifecycleTransition>& value) { SetTransitions(value); return *this;}
-
-    /**
-     * <p>Provides data storage transition details of Amazon Security Lake object.</p>
-     */
-    inline DataLakeLifecycleConfiguration& WithTransitions(Aws::Vector<DataLakeLifecycleTransition>&& value) { SetTransitions(std::move(value)); return *this;}
-
-    /**
-     * <p>Provides data storage transition details of Amazon Security Lake object.</p>
-     */
-    inline DataLakeLifecycleConfiguration& AddTransitions(const DataLakeLifecycleTransition& value) { m_transitionsHasBeenSet = true; m_transitions.push_back(value); return *this; }
-
-    /**
-     * <p>Provides data storage transition details of Amazon Security Lake object.</p>
-     */
-    inline DataLakeLifecycleConfiguration& AddTransitions(DataLakeLifecycleTransition&& value) { m_transitionsHasBeenSet = true; m_transitions.push_back(std::move(value)); return *this; }
-
+    template<typename TransitionsT = Aws::Vector<DataLakeLifecycleTransition>>
+    void SetTransitions(TransitionsT&& value) { m_transitionsHasBeenSet = true; m_transitions = std::forward<TransitionsT>(value); }
+    template<typename TransitionsT = Aws::Vector<DataLakeLifecycleTransition>>
+    DataLakeLifecycleConfiguration& WithTransitions(TransitionsT&& value) { SetTransitions(std::forward<TransitionsT>(value)); return *this;}
+    template<typename TransitionsT = DataLakeLifecycleTransition>
+    DataLakeLifecycleConfiguration& AddTransitions(TransitionsT&& value) { m_transitionsHasBeenSet = true; m_transitions.emplace_back(std::forward<TransitionsT>(value)); return *this; }
+    ///@}
   private:
 
     DataLakeLifecycleExpiration m_expiration;

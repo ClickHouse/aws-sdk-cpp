@@ -30,63 +30,38 @@ namespace Model
   class VersioningConfiguration
   {
   public:
-    AWS_IOTANALYTICS_API VersioningConfiguration();
+    AWS_IOTANALYTICS_API VersioningConfiguration() = default;
     AWS_IOTANALYTICS_API VersioningConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTANALYTICS_API VersioningConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTANALYTICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>If true, unlimited versions of dataset contents are kept.</p>
      */
-    inline bool GetUnlimited() const{ return m_unlimited; }
-
-    /**
-     * <p>If true, unlimited versions of dataset contents are kept.</p>
-     */
+    inline bool GetUnlimited() const { return m_unlimited; }
     inline bool UnlimitedHasBeenSet() const { return m_unlimitedHasBeenSet; }
-
-    /**
-     * <p>If true, unlimited versions of dataset contents are kept.</p>
-     */
     inline void SetUnlimited(bool value) { m_unlimitedHasBeenSet = true; m_unlimited = value; }
-
-    /**
-     * <p>If true, unlimited versions of dataset contents are kept.</p>
-     */
     inline VersioningConfiguration& WithUnlimited(bool value) { SetUnlimited(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>How many versions of dataset contents are kept. The <code>unlimited</code>
      * parameter must be <code>false</code>.</p>
      */
-    inline int GetMaxVersions() const{ return m_maxVersions; }
-
-    /**
-     * <p>How many versions of dataset contents are kept. The <code>unlimited</code>
-     * parameter must be <code>false</code>.</p>
-     */
+    inline int GetMaxVersions() const { return m_maxVersions; }
     inline bool MaxVersionsHasBeenSet() const { return m_maxVersionsHasBeenSet; }
-
-    /**
-     * <p>How many versions of dataset contents are kept. The <code>unlimited</code>
-     * parameter must be <code>false</code>.</p>
-     */
     inline void SetMaxVersions(int value) { m_maxVersionsHasBeenSet = true; m_maxVersions = value; }
-
-    /**
-     * <p>How many versions of dataset contents are kept. The <code>unlimited</code>
-     * parameter must be <code>false</code>.</p>
-     */
     inline VersioningConfiguration& WithMaxVersions(int value) { SetMaxVersions(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_unlimited;
+    bool m_unlimited{false};
     bool m_unlimitedHasBeenSet = false;
 
-    int m_maxVersions;
+    int m_maxVersions{0};
     bool m_maxVersionsHasBeenSet = false;
   };
 

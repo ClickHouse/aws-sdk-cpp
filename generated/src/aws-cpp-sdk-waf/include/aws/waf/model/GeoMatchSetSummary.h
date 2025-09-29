@@ -39,117 +39,38 @@ namespace Model
   class GeoMatchSetSummary
   {
   public:
-    AWS_WAF_API GeoMatchSetSummary();
+    AWS_WAF_API GeoMatchSetSummary() = default;
     AWS_WAF_API GeoMatchSetSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAF_API GeoMatchSetSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAF_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The <code>GeoMatchSetId</code> for an <a>GeoMatchSet</a>. You can use
      * <code>GeoMatchSetId</code> in a <a>GetGeoMatchSet</a> request to get detailed
      * information about an <a>GeoMatchSet</a>.</p>
      */
-    inline const Aws::String& GetGeoMatchSetId() const{ return m_geoMatchSetId; }
-
-    /**
-     * <p>The <code>GeoMatchSetId</code> for an <a>GeoMatchSet</a>. You can use
-     * <code>GeoMatchSetId</code> in a <a>GetGeoMatchSet</a> request to get detailed
-     * information about an <a>GeoMatchSet</a>.</p>
-     */
+    inline const Aws::String& GetGeoMatchSetId() const { return m_geoMatchSetId; }
     inline bool GeoMatchSetIdHasBeenSet() const { return m_geoMatchSetIdHasBeenSet; }
+    template<typename GeoMatchSetIdT = Aws::String>
+    void SetGeoMatchSetId(GeoMatchSetIdT&& value) { m_geoMatchSetIdHasBeenSet = true; m_geoMatchSetId = std::forward<GeoMatchSetIdT>(value); }
+    template<typename GeoMatchSetIdT = Aws::String>
+    GeoMatchSetSummary& WithGeoMatchSetId(GeoMatchSetIdT&& value) { SetGeoMatchSetId(std::forward<GeoMatchSetIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The <code>GeoMatchSetId</code> for an <a>GeoMatchSet</a>. You can use
-     * <code>GeoMatchSetId</code> in a <a>GetGeoMatchSet</a> request to get detailed
-     * information about an <a>GeoMatchSet</a>.</p>
-     */
-    inline void SetGeoMatchSetId(const Aws::String& value) { m_geoMatchSetIdHasBeenSet = true; m_geoMatchSetId = value; }
-
-    /**
-     * <p>The <code>GeoMatchSetId</code> for an <a>GeoMatchSet</a>. You can use
-     * <code>GeoMatchSetId</code> in a <a>GetGeoMatchSet</a> request to get detailed
-     * information about an <a>GeoMatchSet</a>.</p>
-     */
-    inline void SetGeoMatchSetId(Aws::String&& value) { m_geoMatchSetIdHasBeenSet = true; m_geoMatchSetId = std::move(value); }
-
-    /**
-     * <p>The <code>GeoMatchSetId</code> for an <a>GeoMatchSet</a>. You can use
-     * <code>GeoMatchSetId</code> in a <a>GetGeoMatchSet</a> request to get detailed
-     * information about an <a>GeoMatchSet</a>.</p>
-     */
-    inline void SetGeoMatchSetId(const char* value) { m_geoMatchSetIdHasBeenSet = true; m_geoMatchSetId.assign(value); }
-
-    /**
-     * <p>The <code>GeoMatchSetId</code> for an <a>GeoMatchSet</a>. You can use
-     * <code>GeoMatchSetId</code> in a <a>GetGeoMatchSet</a> request to get detailed
-     * information about an <a>GeoMatchSet</a>.</p>
-     */
-    inline GeoMatchSetSummary& WithGeoMatchSetId(const Aws::String& value) { SetGeoMatchSetId(value); return *this;}
-
-    /**
-     * <p>The <code>GeoMatchSetId</code> for an <a>GeoMatchSet</a>. You can use
-     * <code>GeoMatchSetId</code> in a <a>GetGeoMatchSet</a> request to get detailed
-     * information about an <a>GeoMatchSet</a>.</p>
-     */
-    inline GeoMatchSetSummary& WithGeoMatchSetId(Aws::String&& value) { SetGeoMatchSetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The <code>GeoMatchSetId</code> for an <a>GeoMatchSet</a>. You can use
-     * <code>GeoMatchSetId</code> in a <a>GetGeoMatchSet</a> request to get detailed
-     * information about an <a>GeoMatchSet</a>.</p>
-     */
-    inline GeoMatchSetSummary& WithGeoMatchSetId(const char* value) { SetGeoMatchSetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A friendly name or description of the <a>GeoMatchSet</a>. You can't change
      * the name of an <code>GeoMatchSet</code> after you create it.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>A friendly name or description of the <a>GeoMatchSet</a>. You can't change
-     * the name of an <code>GeoMatchSet</code> after you create it.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
-
-    /**
-     * <p>A friendly name or description of the <a>GeoMatchSet</a>. You can't change
-     * the name of an <code>GeoMatchSet</code> after you create it.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>A friendly name or description of the <a>GeoMatchSet</a>. You can't change
-     * the name of an <code>GeoMatchSet</code> after you create it.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>A friendly name or description of the <a>GeoMatchSet</a>. You can't change
-     * the name of an <code>GeoMatchSet</code> after you create it.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>A friendly name or description of the <a>GeoMatchSet</a>. You can't change
-     * the name of an <code>GeoMatchSet</code> after you create it.</p>
-     */
-    inline GeoMatchSetSummary& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>A friendly name or description of the <a>GeoMatchSet</a>. You can't change
-     * the name of an <code>GeoMatchSet</code> after you create it.</p>
-     */
-    inline GeoMatchSetSummary& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>A friendly name or description of the <a>GeoMatchSet</a>. You can't change
-     * the name of an <code>GeoMatchSet</code> after you create it.</p>
-     */
-    inline GeoMatchSetSummary& WithName(const char* value) { SetName(value); return *this;}
-
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    GeoMatchSetSummary& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_geoMatchSetId;

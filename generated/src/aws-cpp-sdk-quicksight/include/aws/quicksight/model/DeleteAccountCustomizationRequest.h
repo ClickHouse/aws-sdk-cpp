@@ -25,7 +25,7 @@ namespace Model
   class DeleteAccountCustomizationRequest : public QuickSightRequest
   {
   public:
-    AWS_QUICKSIGHT_API DeleteAccountCustomizationRequest();
+    AWS_QUICKSIGHT_API DeleteAccountCustomizationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,103 +38,30 @@ namespace Model
     AWS_QUICKSIGHT_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
-     * <p>The ID for the Amazon Web Services account that you want to delete Amazon
-     * QuickSight customizations from in this Amazon Web Services Region.</p>
+     * <p>The ID for the Amazon Web Services account that you want to delete QuickSight
+     * customizations from in this Amazon Web Services Region.</p>
      */
-    inline const Aws::String& GetAwsAccountId() const{ return m_awsAccountId; }
-
-    /**
-     * <p>The ID for the Amazon Web Services account that you want to delete Amazon
-     * QuickSight customizations from in this Amazon Web Services Region.</p>
-     */
+    inline const Aws::String& GetAwsAccountId() const { return m_awsAccountId; }
     inline bool AwsAccountIdHasBeenSet() const { return m_awsAccountIdHasBeenSet; }
+    template<typename AwsAccountIdT = Aws::String>
+    void SetAwsAccountId(AwsAccountIdT&& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = std::forward<AwsAccountIdT>(value); }
+    template<typename AwsAccountIdT = Aws::String>
+    DeleteAccountCustomizationRequest& WithAwsAccountId(AwsAccountIdT&& value) { SetAwsAccountId(std::forward<AwsAccountIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ID for the Amazon Web Services account that you want to delete Amazon
-     * QuickSight customizations from in this Amazon Web Services Region.</p>
+     * <p>The QuickSight namespace that you're deleting the customizations from.</p>
      */
-    inline void SetAwsAccountId(const Aws::String& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = value; }
-
-    /**
-     * <p>The ID for the Amazon Web Services account that you want to delete Amazon
-     * QuickSight customizations from in this Amazon Web Services Region.</p>
-     */
-    inline void SetAwsAccountId(Aws::String&& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = std::move(value); }
-
-    /**
-     * <p>The ID for the Amazon Web Services account that you want to delete Amazon
-     * QuickSight customizations from in this Amazon Web Services Region.</p>
-     */
-    inline void SetAwsAccountId(const char* value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId.assign(value); }
-
-    /**
-     * <p>The ID for the Amazon Web Services account that you want to delete Amazon
-     * QuickSight customizations from in this Amazon Web Services Region.</p>
-     */
-    inline DeleteAccountCustomizationRequest& WithAwsAccountId(const Aws::String& value) { SetAwsAccountId(value); return *this;}
-
-    /**
-     * <p>The ID for the Amazon Web Services account that you want to delete Amazon
-     * QuickSight customizations from in this Amazon Web Services Region.</p>
-     */
-    inline DeleteAccountCustomizationRequest& WithAwsAccountId(Aws::String&& value) { SetAwsAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID for the Amazon Web Services account that you want to delete Amazon
-     * QuickSight customizations from in this Amazon Web Services Region.</p>
-     */
-    inline DeleteAccountCustomizationRequest& WithAwsAccountId(const char* value) { SetAwsAccountId(value); return *this;}
-
-
-    /**
-     * <p>The Amazon QuickSight namespace that you're deleting the customizations
-     * from.</p>
-     */
-    inline const Aws::String& GetNamespace() const{ return m_namespace; }
-
-    /**
-     * <p>The Amazon QuickSight namespace that you're deleting the customizations
-     * from.</p>
-     */
+    inline const Aws::String& GetNamespace() const { return m_namespace; }
     inline bool NamespaceHasBeenSet() const { return m_namespaceHasBeenSet; }
-
-    /**
-     * <p>The Amazon QuickSight namespace that you're deleting the customizations
-     * from.</p>
-     */
-    inline void SetNamespace(const Aws::String& value) { m_namespaceHasBeenSet = true; m_namespace = value; }
-
-    /**
-     * <p>The Amazon QuickSight namespace that you're deleting the customizations
-     * from.</p>
-     */
-    inline void SetNamespace(Aws::String&& value) { m_namespaceHasBeenSet = true; m_namespace = std::move(value); }
-
-    /**
-     * <p>The Amazon QuickSight namespace that you're deleting the customizations
-     * from.</p>
-     */
-    inline void SetNamespace(const char* value) { m_namespaceHasBeenSet = true; m_namespace.assign(value); }
-
-    /**
-     * <p>The Amazon QuickSight namespace that you're deleting the customizations
-     * from.</p>
-     */
-    inline DeleteAccountCustomizationRequest& WithNamespace(const Aws::String& value) { SetNamespace(value); return *this;}
-
-    /**
-     * <p>The Amazon QuickSight namespace that you're deleting the customizations
-     * from.</p>
-     */
-    inline DeleteAccountCustomizationRequest& WithNamespace(Aws::String&& value) { SetNamespace(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon QuickSight namespace that you're deleting the customizations
-     * from.</p>
-     */
-    inline DeleteAccountCustomizationRequest& WithNamespace(const char* value) { SetNamespace(value); return *this;}
-
+    template<typename NamespaceT = Aws::String>
+    void SetNamespace(NamespaceT&& value) { m_namespaceHasBeenSet = true; m_namespace = std::forward<NamespaceT>(value); }
+    template<typename NamespaceT = Aws::String>
+    DeleteAccountCustomizationRequest& WithNamespace(NamespaceT&& value) { SetNamespace(std::forward<NamespaceT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_awsAccountId;

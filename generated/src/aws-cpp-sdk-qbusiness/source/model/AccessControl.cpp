@@ -18,30 +18,13 @@ namespace QBusiness
 namespace Model
 {
 
-AccessControl::AccessControl() : 
-    m_memberRelation(MemberRelation::NOT_SET),
-    m_memberRelationHasBeenSet(false),
-    m_principalsHasBeenSet(false)
-{
-}
-
-AccessControl::AccessControl(JsonView jsonValue) : 
-    m_memberRelation(MemberRelation::NOT_SET),
-    m_memberRelationHasBeenSet(false),
-    m_principalsHasBeenSet(false)
+AccessControl::AccessControl(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 AccessControl& AccessControl::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("memberRelation"))
-  {
-    m_memberRelation = MemberRelationMapper::GetMemberRelationForName(jsonValue.GetString("memberRelation"));
-
-    m_memberRelationHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("principals"))
   {
     Aws::Utils::Array<JsonView> principalsJsonList = jsonValue.GetArray("principals");
@@ -51,18 +34,17 @@ AccessControl& AccessControl::operator =(JsonView jsonValue)
     }
     m_principalsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("memberRelation"))
+  {
+    m_memberRelation = MemberRelationMapper::GetMemberRelationForName(jsonValue.GetString("memberRelation"));
+    m_memberRelationHasBeenSet = true;
+  }
   return *this;
 }
 
 JsonValue AccessControl::Jsonize() const
 {
   JsonValue payload;
-
-  if(m_memberRelationHasBeenSet)
-  {
-   payload.WithString("memberRelation", MemberRelationMapper::GetNameForMemberRelation(m_memberRelation));
-  }
 
   if(m_principalsHasBeenSet)
   {
@@ -73,6 +55,11 @@ JsonValue AccessControl::Jsonize() const
    }
    payload.WithArray("principals", std::move(principalsJsonList));
 
+  }
+
+  if(m_memberRelationHasBeenSet)
+  {
+   payload.WithString("memberRelation", MemberRelationMapper::GetNameForMemberRelation(m_memberRelation));
   }
 
   return payload;

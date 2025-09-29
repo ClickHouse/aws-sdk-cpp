@@ -18,15 +18,7 @@ namespace LicenseManager
 namespace Model
 {
 
-OrganizationConfiguration::OrganizationConfiguration() : 
-    m_enableIntegration(false),
-    m_enableIntegrationHasBeenSet(false)
-{
-}
-
-OrganizationConfiguration::OrganizationConfiguration(JsonView jsonValue) : 
-    m_enableIntegration(false),
-    m_enableIntegrationHasBeenSet(false)
+OrganizationConfiguration::OrganizationConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ OrganizationConfiguration& OrganizationConfiguration::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("EnableIntegration"))
   {
     m_enableIntegration = jsonValue.GetBool("EnableIntegration");
-
     m_enableIntegrationHasBeenSet = true;
   }
-
   return *this;
 }
 

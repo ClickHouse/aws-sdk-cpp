@@ -18,15 +18,7 @@ namespace PaymentCryptography
 namespace Model
 {
 
-Alias::Alias() : 
-    m_aliasNameHasBeenSet(false),
-    m_keyArnHasBeenSet(false)
-{
-}
-
-Alias::Alias(JsonView jsonValue) : 
-    m_aliasNameHasBeenSet(false),
-    m_keyArnHasBeenSet(false)
+Alias::Alias(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ Alias& Alias::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("AliasName"))
   {
     m_aliasName = jsonValue.GetString("AliasName");
-
     m_aliasNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("KeyArn"))
   {
     m_keyArn = jsonValue.GetString("KeyArn");
-
     m_keyArnHasBeenSet = true;
   }
-
   return *this;
 }
 

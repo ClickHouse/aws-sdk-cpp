@@ -18,13 +18,7 @@ namespace IVS
 namespace Model
 {
 
-StreamUnavailable::StreamUnavailable() : 
-    m_exceptionMessageHasBeenSet(false)
-{
-}
-
-StreamUnavailable::StreamUnavailable(JsonView jsonValue) : 
-    m_exceptionMessageHasBeenSet(false)
+StreamUnavailable::StreamUnavailable(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ StreamUnavailable& StreamUnavailable::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("exceptionMessage"))
   {
     m_exceptionMessage = jsonValue.GetString("exceptionMessage");
-
     m_exceptionMessageHasBeenSet = true;
   }
-
   return *this;
 }
 

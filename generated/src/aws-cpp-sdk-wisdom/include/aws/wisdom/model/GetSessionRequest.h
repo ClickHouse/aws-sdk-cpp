@@ -21,7 +21,7 @@ namespace Model
   class GetSessionRequest : public ConnectWisdomServiceRequest
   {
   public:
-    AWS_CONNECTWISDOMSERVICE_API GetSessionRequest();
+    AWS_CONNECTWISDOMSERVICE_API GetSessionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,103 +32,31 @@ namespace Model
     AWS_CONNECTWISDOMSERVICE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The identifier of the Wisdom assistant. Can be either the ID or the ARN. URLs
      * cannot contain the ARN.</p>
      */
-    inline const Aws::String& GetAssistantId() const{ return m_assistantId; }
-
-    /**
-     * <p>The identifier of the Wisdom assistant. Can be either the ID or the ARN. URLs
-     * cannot contain the ARN.</p>
-     */
+    inline const Aws::String& GetAssistantId() const { return m_assistantId; }
     inline bool AssistantIdHasBeenSet() const { return m_assistantIdHasBeenSet; }
+    template<typename AssistantIdT = Aws::String>
+    void SetAssistantId(AssistantIdT&& value) { m_assistantIdHasBeenSet = true; m_assistantId = std::forward<AssistantIdT>(value); }
+    template<typename AssistantIdT = Aws::String>
+    GetSessionRequest& WithAssistantId(AssistantIdT&& value) { SetAssistantId(std::forward<AssistantIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the Wisdom assistant. Can be either the ID or the ARN. URLs
-     * cannot contain the ARN.</p>
-     */
-    inline void SetAssistantId(const Aws::String& value) { m_assistantIdHasBeenSet = true; m_assistantId = value; }
-
-    /**
-     * <p>The identifier of the Wisdom assistant. Can be either the ID or the ARN. URLs
-     * cannot contain the ARN.</p>
-     */
-    inline void SetAssistantId(Aws::String&& value) { m_assistantIdHasBeenSet = true; m_assistantId = std::move(value); }
-
-    /**
-     * <p>The identifier of the Wisdom assistant. Can be either the ID or the ARN. URLs
-     * cannot contain the ARN.</p>
-     */
-    inline void SetAssistantId(const char* value) { m_assistantIdHasBeenSet = true; m_assistantId.assign(value); }
-
-    /**
-     * <p>The identifier of the Wisdom assistant. Can be either the ID or the ARN. URLs
-     * cannot contain the ARN.</p>
-     */
-    inline GetSessionRequest& WithAssistantId(const Aws::String& value) { SetAssistantId(value); return *this;}
-
-    /**
-     * <p>The identifier of the Wisdom assistant. Can be either the ID or the ARN. URLs
-     * cannot contain the ARN.</p>
-     */
-    inline GetSessionRequest& WithAssistantId(Aws::String&& value) { SetAssistantId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the Wisdom assistant. Can be either the ID or the ARN. URLs
-     * cannot contain the ARN.</p>
-     */
-    inline GetSessionRequest& WithAssistantId(const char* value) { SetAssistantId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the session. Can be either the ID or the ARN. URLs cannot
      * contain the ARN.</p>
      */
-    inline const Aws::String& GetSessionId() const{ return m_sessionId; }
-
-    /**
-     * <p>The identifier of the session. Can be either the ID or the ARN. URLs cannot
-     * contain the ARN.</p>
-     */
+    inline const Aws::String& GetSessionId() const { return m_sessionId; }
     inline bool SessionIdHasBeenSet() const { return m_sessionIdHasBeenSet; }
-
-    /**
-     * <p>The identifier of the session. Can be either the ID or the ARN. URLs cannot
-     * contain the ARN.</p>
-     */
-    inline void SetSessionId(const Aws::String& value) { m_sessionIdHasBeenSet = true; m_sessionId = value; }
-
-    /**
-     * <p>The identifier of the session. Can be either the ID or the ARN. URLs cannot
-     * contain the ARN.</p>
-     */
-    inline void SetSessionId(Aws::String&& value) { m_sessionIdHasBeenSet = true; m_sessionId = std::move(value); }
-
-    /**
-     * <p>The identifier of the session. Can be either the ID or the ARN. URLs cannot
-     * contain the ARN.</p>
-     */
-    inline void SetSessionId(const char* value) { m_sessionIdHasBeenSet = true; m_sessionId.assign(value); }
-
-    /**
-     * <p>The identifier of the session. Can be either the ID or the ARN. URLs cannot
-     * contain the ARN.</p>
-     */
-    inline GetSessionRequest& WithSessionId(const Aws::String& value) { SetSessionId(value); return *this;}
-
-    /**
-     * <p>The identifier of the session. Can be either the ID or the ARN. URLs cannot
-     * contain the ARN.</p>
-     */
-    inline GetSessionRequest& WithSessionId(Aws::String&& value) { SetSessionId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the session. Can be either the ID or the ARN. URLs cannot
-     * contain the ARN.</p>
-     */
-    inline GetSessionRequest& WithSessionId(const char* value) { SetSessionId(value); return *this;}
-
+    template<typename SessionIdT = Aws::String>
+    void SetSessionId(SessionIdT&& value) { m_sessionIdHasBeenSet = true; m_sessionId = std::forward<SessionIdT>(value); }
+    template<typename SessionIdT = Aws::String>
+    GetSessionRequest& WithSessionId(SessionIdT&& value) { SetSessionId(std::forward<SessionIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_assistantId;

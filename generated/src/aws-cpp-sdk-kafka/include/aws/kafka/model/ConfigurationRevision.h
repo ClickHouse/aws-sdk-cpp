@@ -35,155 +35,61 @@ namespace Model
   class ConfigurationRevision
   {
   public:
-    AWS_KAFKA_API ConfigurationRevision();
+    AWS_KAFKA_API ConfigurationRevision() = default;
     AWS_KAFKA_API ConfigurationRevision(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKA_API ConfigurationRevision& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * 
             <p>The time when the configuration revision was created.</p>
       
      *   
      */
-    inline const Aws::Utils::DateTime& GetCreationTime() const{ return m_creationTime; }
-
-    /**
-     * 
-            <p>The time when the configuration revision was created.</p>
-      
-     *   
-     */
+    inline const Aws::Utils::DateTime& GetCreationTime() const { return m_creationTime; }
     inline bool CreationTimeHasBeenSet() const { return m_creationTimeHasBeenSet; }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    void SetCreationTime(CreationTimeT&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::forward<CreationTimeT>(value); }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    ConfigurationRevision& WithCreationTime(CreationTimeT&& value) { SetCreationTime(std::forward<CreationTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * 
-            <p>The time when the configuration revision was created.</p>
-      
-     *   
-     */
-    inline void SetCreationTime(const Aws::Utils::DateTime& value) { m_creationTimeHasBeenSet = true; m_creationTime = value; }
-
-    /**
-     * 
-            <p>The time when the configuration revision was created.</p>
-      
-     *   
-     */
-    inline void SetCreationTime(Aws::Utils::DateTime&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::move(value); }
-
-    /**
-     * 
-            <p>The time when the configuration revision was created.</p>
-      
-     *   
-     */
-    inline ConfigurationRevision& WithCreationTime(const Aws::Utils::DateTime& value) { SetCreationTime(value); return *this;}
-
-    /**
-     * 
-            <p>The time when the configuration revision was created.</p>
-      
-     *   
-     */
-    inline ConfigurationRevision& WithCreationTime(Aws::Utils::DateTime&& value) { SetCreationTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * 
             <p>The description of the configuration revision.</p>
          
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * 
-            <p>The description of the configuration revision.</p>
-         
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    ConfigurationRevision& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * 
-            <p>The description of the configuration revision.</p>
-         
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * 
-            <p>The description of the configuration revision.</p>
-         
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * 
-            <p>The description of the configuration revision.</p>
-         
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * 
-            <p>The description of the configuration revision.</p>
-         
-     */
-    inline ConfigurationRevision& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * 
-            <p>The description of the configuration revision.</p>
-         
-     */
-    inline ConfigurationRevision& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * 
-            <p>The description of the configuration revision.</p>
-         
-     */
-    inline ConfigurationRevision& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * 
             <p>The revision number.</p>
          
      */
-    inline long long GetRevision() const{ return m_revision; }
-
-    /**
-     * 
-            <p>The revision number.</p>
-         
-     */
+    inline long long GetRevision() const { return m_revision; }
     inline bool RevisionHasBeenSet() const { return m_revisionHasBeenSet; }
-
-    /**
-     * 
-            <p>The revision number.</p>
-         
-     */
     inline void SetRevision(long long value) { m_revisionHasBeenSet = true; m_revision = value; }
-
-    /**
-     * 
-            <p>The revision number.</p>
-         
-     */
     inline ConfigurationRevision& WithRevision(long long value) { SetRevision(value); return *this;}
-
+    ///@}
   private:
 
-    Aws::Utils::DateTime m_creationTime;
+    Aws::Utils::DateTime m_creationTime{};
     bool m_creationTimeHasBeenSet = false;
 
     Aws::String m_description;
     bool m_descriptionHasBeenSet = false;
 
-    long long m_revision;
+    long long m_revision{0};
     bool m_revisionHasBeenSet = false;
   };
 

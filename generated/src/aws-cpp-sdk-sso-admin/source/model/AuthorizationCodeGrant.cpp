@@ -18,13 +18,7 @@ namespace SSOAdmin
 namespace Model
 {
 
-AuthorizationCodeGrant::AuthorizationCodeGrant() : 
-    m_redirectUrisHasBeenSet(false)
-{
-}
-
-AuthorizationCodeGrant::AuthorizationCodeGrant(JsonView jsonValue) : 
-    m_redirectUrisHasBeenSet(false)
+AuthorizationCodeGrant::AuthorizationCodeGrant(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ AuthorizationCodeGrant& AuthorizationCodeGrant::operator =(JsonView jsonValue)
     }
     m_redirectUrisHasBeenSet = true;
   }
-
   return *this;
 }
 

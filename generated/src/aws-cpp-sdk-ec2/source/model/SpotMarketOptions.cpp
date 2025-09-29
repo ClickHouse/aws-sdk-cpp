@@ -20,27 +20,7 @@ namespace EC2
 namespace Model
 {
 
-SpotMarketOptions::SpotMarketOptions() : 
-    m_maxPriceHasBeenSet(false),
-    m_spotInstanceType(SpotInstanceType::NOT_SET),
-    m_spotInstanceTypeHasBeenSet(false),
-    m_blockDurationMinutes(0),
-    m_blockDurationMinutesHasBeenSet(false),
-    m_validUntilHasBeenSet(false),
-    m_instanceInterruptionBehavior(InstanceInterruptionBehavior::NOT_SET),
-    m_instanceInterruptionBehaviorHasBeenSet(false)
-{
-}
-
-SpotMarketOptions::SpotMarketOptions(const XmlNode& xmlNode) : 
-    m_maxPriceHasBeenSet(false),
-    m_spotInstanceType(SpotInstanceType::NOT_SET),
-    m_spotInstanceTypeHasBeenSet(false),
-    m_blockDurationMinutes(0),
-    m_blockDurationMinutesHasBeenSet(false),
-    m_validUntilHasBeenSet(false),
-    m_instanceInterruptionBehavior(InstanceInterruptionBehavior::NOT_SET),
-    m_instanceInterruptionBehaviorHasBeenSet(false)
+SpotMarketOptions::SpotMarketOptions(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -60,7 +40,7 @@ SpotMarketOptions& SpotMarketOptions::operator =(const XmlNode& xmlNode)
     XmlNode spotInstanceTypeNode = resultNode.FirstChild("SpotInstanceType");
     if(!spotInstanceTypeNode.IsNull())
     {
-      m_spotInstanceType = SpotInstanceTypeMapper::GetSpotInstanceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(spotInstanceTypeNode.GetText()).c_str()).c_str());
+      m_spotInstanceType = SpotInstanceTypeMapper::GetSpotInstanceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(spotInstanceTypeNode.GetText()).c_str()));
       m_spotInstanceTypeHasBeenSet = true;
     }
     XmlNode blockDurationMinutesNode = resultNode.FirstChild("BlockDurationMinutes");
@@ -78,7 +58,7 @@ SpotMarketOptions& SpotMarketOptions::operator =(const XmlNode& xmlNode)
     XmlNode instanceInterruptionBehaviorNode = resultNode.FirstChild("InstanceInterruptionBehavior");
     if(!instanceInterruptionBehaviorNode.IsNull())
     {
-      m_instanceInterruptionBehavior = InstanceInterruptionBehaviorMapper::GetInstanceInterruptionBehaviorForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(instanceInterruptionBehaviorNode.GetText()).c_str()).c_str());
+      m_instanceInterruptionBehavior = InstanceInterruptionBehaviorMapper::GetInstanceInterruptionBehaviorForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(instanceInterruptionBehaviorNode.GetText()).c_str()));
       m_instanceInterruptionBehaviorHasBeenSet = true;
     }
   }
@@ -95,7 +75,7 @@ void SpotMarketOptions::OutputToStream(Aws::OStream& oStream, const char* locati
 
   if(m_spotInstanceTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".SpotInstanceType=" << SpotInstanceTypeMapper::GetNameForSpotInstanceType(m_spotInstanceType) << "&";
+      oStream << location << index << locationValue << ".SpotInstanceType=" << StringUtils::URLEncode(SpotInstanceTypeMapper::GetNameForSpotInstanceType(m_spotInstanceType)) << "&";
   }
 
   if(m_blockDurationMinutesHasBeenSet)
@@ -110,7 +90,7 @@ void SpotMarketOptions::OutputToStream(Aws::OStream& oStream, const char* locati
 
   if(m_instanceInterruptionBehaviorHasBeenSet)
   {
-      oStream << location << index << locationValue << ".InstanceInterruptionBehavior=" << InstanceInterruptionBehaviorMapper::GetNameForInstanceInterruptionBehavior(m_instanceInterruptionBehavior) << "&";
+      oStream << location << index << locationValue << ".InstanceInterruptionBehavior=" << StringUtils::URLEncode(InstanceInterruptionBehaviorMapper::GetNameForInstanceInterruptionBehavior(m_instanceInterruptionBehavior)) << "&";
   }
 
 }
@@ -123,7 +103,7 @@ void SpotMarketOptions::OutputToStream(Aws::OStream& oStream, const char* locati
   }
   if(m_spotInstanceTypeHasBeenSet)
   {
-      oStream << location << ".SpotInstanceType=" << SpotInstanceTypeMapper::GetNameForSpotInstanceType(m_spotInstanceType) << "&";
+      oStream << location << ".SpotInstanceType=" << StringUtils::URLEncode(SpotInstanceTypeMapper::GetNameForSpotInstanceType(m_spotInstanceType)) << "&";
   }
   if(m_blockDurationMinutesHasBeenSet)
   {
@@ -135,7 +115,7 @@ void SpotMarketOptions::OutputToStream(Aws::OStream& oStream, const char* locati
   }
   if(m_instanceInterruptionBehaviorHasBeenSet)
   {
-      oStream << location << ".InstanceInterruptionBehavior=" << InstanceInterruptionBehaviorMapper::GetNameForInstanceInterruptionBehavior(m_instanceInterruptionBehavior) << "&";
+      oStream << location << ".InstanceInterruptionBehavior=" << StringUtils::URLEncode(InstanceInterruptionBehaviorMapper::GetNameForInstanceInterruptionBehavior(m_instanceInterruptionBehavior)) << "&";
   }
 }
 

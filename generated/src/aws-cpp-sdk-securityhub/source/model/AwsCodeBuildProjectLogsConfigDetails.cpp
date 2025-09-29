@@ -18,15 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsCodeBuildProjectLogsConfigDetails::AwsCodeBuildProjectLogsConfigDetails() : 
-    m_cloudWatchLogsHasBeenSet(false),
-    m_s3LogsHasBeenSet(false)
-{
-}
-
-AwsCodeBuildProjectLogsConfigDetails::AwsCodeBuildProjectLogsConfigDetails(JsonView jsonValue) : 
-    m_cloudWatchLogsHasBeenSet(false),
-    m_s3LogsHasBeenSet(false)
+AwsCodeBuildProjectLogsConfigDetails::AwsCodeBuildProjectLogsConfigDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ AwsCodeBuildProjectLogsConfigDetails& AwsCodeBuildProjectLogsConfigDetails::oper
   if(jsonValue.ValueExists("CloudWatchLogs"))
   {
     m_cloudWatchLogs = jsonValue.GetObject("CloudWatchLogs");
-
     m_cloudWatchLogsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("S3Logs"))
   {
     m_s3Logs = jsonValue.GetObject("S3Logs");
-
     m_s3LogsHasBeenSet = true;
   }
-
   return *this;
 }
 

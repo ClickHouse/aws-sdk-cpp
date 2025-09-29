@@ -21,7 +21,7 @@ namespace Model
   class DeleteApplicationCloudWatchLoggingOptionRequest : public KinesisAnalyticsV2Request
   {
   public:
-    AWS_KINESISANALYTICSV2_API DeleteApplicationCloudWatchLoggingOptionRequest();
+    AWS_KINESISANALYTICSV2_API DeleteApplicationCloudWatchLoggingOptionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,47 +34,19 @@ namespace Model
     AWS_KINESISANALYTICSV2_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The application name.</p>
      */
-    inline const Aws::String& GetApplicationName() const{ return m_applicationName; }
-
-    /**
-     * <p>The application name.</p>
-     */
+    inline const Aws::String& GetApplicationName() const { return m_applicationName; }
     inline bool ApplicationNameHasBeenSet() const { return m_applicationNameHasBeenSet; }
+    template<typename ApplicationNameT = Aws::String>
+    void SetApplicationName(ApplicationNameT&& value) { m_applicationNameHasBeenSet = true; m_applicationName = std::forward<ApplicationNameT>(value); }
+    template<typename ApplicationNameT = Aws::String>
+    DeleteApplicationCloudWatchLoggingOptionRequest& WithApplicationName(ApplicationNameT&& value) { SetApplicationName(std::forward<ApplicationNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The application name.</p>
-     */
-    inline void SetApplicationName(const Aws::String& value) { m_applicationNameHasBeenSet = true; m_applicationName = value; }
-
-    /**
-     * <p>The application name.</p>
-     */
-    inline void SetApplicationName(Aws::String&& value) { m_applicationNameHasBeenSet = true; m_applicationName = std::move(value); }
-
-    /**
-     * <p>The application name.</p>
-     */
-    inline void SetApplicationName(const char* value) { m_applicationNameHasBeenSet = true; m_applicationName.assign(value); }
-
-    /**
-     * <p>The application name.</p>
-     */
-    inline DeleteApplicationCloudWatchLoggingOptionRequest& WithApplicationName(const Aws::String& value) { SetApplicationName(value); return *this;}
-
-    /**
-     * <p>The application name.</p>
-     */
-    inline DeleteApplicationCloudWatchLoggingOptionRequest& WithApplicationName(Aws::String&& value) { SetApplicationName(std::move(value)); return *this;}
-
-    /**
-     * <p>The application name.</p>
-     */
-    inline DeleteApplicationCloudWatchLoggingOptionRequest& WithApplicationName(const char* value) { SetApplicationName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The version ID of the application. You must provide the
      * <code>CurrentApplicationVersionId</code> or the <code>ConditionalToken</code>.
@@ -82,93 +54,27 @@ namespace Model
      * For better concurrency support, use the <code>ConditionalToken</code> parameter
      * instead of <code>CurrentApplicationVersionId</code>.</p>
      */
-    inline long long GetCurrentApplicationVersionId() const{ return m_currentApplicationVersionId; }
-
-    /**
-     * <p>The version ID of the application. You must provide the
-     * <code>CurrentApplicationVersionId</code> or the <code>ConditionalToken</code>.
-     * You can retrieve the application version ID using <a>DescribeApplication</a>.
-     * For better concurrency support, use the <code>ConditionalToken</code> parameter
-     * instead of <code>CurrentApplicationVersionId</code>.</p>
-     */
+    inline long long GetCurrentApplicationVersionId() const { return m_currentApplicationVersionId; }
     inline bool CurrentApplicationVersionIdHasBeenSet() const { return m_currentApplicationVersionIdHasBeenSet; }
-
-    /**
-     * <p>The version ID of the application. You must provide the
-     * <code>CurrentApplicationVersionId</code> or the <code>ConditionalToken</code>.
-     * You can retrieve the application version ID using <a>DescribeApplication</a>.
-     * For better concurrency support, use the <code>ConditionalToken</code> parameter
-     * instead of <code>CurrentApplicationVersionId</code>.</p>
-     */
     inline void SetCurrentApplicationVersionId(long long value) { m_currentApplicationVersionIdHasBeenSet = true; m_currentApplicationVersionId = value; }
-
-    /**
-     * <p>The version ID of the application. You must provide the
-     * <code>CurrentApplicationVersionId</code> or the <code>ConditionalToken</code>.
-     * You can retrieve the application version ID using <a>DescribeApplication</a>.
-     * For better concurrency support, use the <code>ConditionalToken</code> parameter
-     * instead of <code>CurrentApplicationVersionId</code>.</p>
-     */
     inline DeleteApplicationCloudWatchLoggingOptionRequest& WithCurrentApplicationVersionId(long long value) { SetCurrentApplicationVersionId(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The <code>CloudWatchLoggingOptionId</code> of the Amazon CloudWatch logging
      * option to delete. You can get the <code>CloudWatchLoggingOptionId</code> by
      * using the <a>DescribeApplication</a> operation. </p>
      */
-    inline const Aws::String& GetCloudWatchLoggingOptionId() const{ return m_cloudWatchLoggingOptionId; }
-
-    /**
-     * <p>The <code>CloudWatchLoggingOptionId</code> of the Amazon CloudWatch logging
-     * option to delete. You can get the <code>CloudWatchLoggingOptionId</code> by
-     * using the <a>DescribeApplication</a> operation. </p>
-     */
+    inline const Aws::String& GetCloudWatchLoggingOptionId() const { return m_cloudWatchLoggingOptionId; }
     inline bool CloudWatchLoggingOptionIdHasBeenSet() const { return m_cloudWatchLoggingOptionIdHasBeenSet; }
+    template<typename CloudWatchLoggingOptionIdT = Aws::String>
+    void SetCloudWatchLoggingOptionId(CloudWatchLoggingOptionIdT&& value) { m_cloudWatchLoggingOptionIdHasBeenSet = true; m_cloudWatchLoggingOptionId = std::forward<CloudWatchLoggingOptionIdT>(value); }
+    template<typename CloudWatchLoggingOptionIdT = Aws::String>
+    DeleteApplicationCloudWatchLoggingOptionRequest& WithCloudWatchLoggingOptionId(CloudWatchLoggingOptionIdT&& value) { SetCloudWatchLoggingOptionId(std::forward<CloudWatchLoggingOptionIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The <code>CloudWatchLoggingOptionId</code> of the Amazon CloudWatch logging
-     * option to delete. You can get the <code>CloudWatchLoggingOptionId</code> by
-     * using the <a>DescribeApplication</a> operation. </p>
-     */
-    inline void SetCloudWatchLoggingOptionId(const Aws::String& value) { m_cloudWatchLoggingOptionIdHasBeenSet = true; m_cloudWatchLoggingOptionId = value; }
-
-    /**
-     * <p>The <code>CloudWatchLoggingOptionId</code> of the Amazon CloudWatch logging
-     * option to delete. You can get the <code>CloudWatchLoggingOptionId</code> by
-     * using the <a>DescribeApplication</a> operation. </p>
-     */
-    inline void SetCloudWatchLoggingOptionId(Aws::String&& value) { m_cloudWatchLoggingOptionIdHasBeenSet = true; m_cloudWatchLoggingOptionId = std::move(value); }
-
-    /**
-     * <p>The <code>CloudWatchLoggingOptionId</code> of the Amazon CloudWatch logging
-     * option to delete. You can get the <code>CloudWatchLoggingOptionId</code> by
-     * using the <a>DescribeApplication</a> operation. </p>
-     */
-    inline void SetCloudWatchLoggingOptionId(const char* value) { m_cloudWatchLoggingOptionIdHasBeenSet = true; m_cloudWatchLoggingOptionId.assign(value); }
-
-    /**
-     * <p>The <code>CloudWatchLoggingOptionId</code> of the Amazon CloudWatch logging
-     * option to delete. You can get the <code>CloudWatchLoggingOptionId</code> by
-     * using the <a>DescribeApplication</a> operation. </p>
-     */
-    inline DeleteApplicationCloudWatchLoggingOptionRequest& WithCloudWatchLoggingOptionId(const Aws::String& value) { SetCloudWatchLoggingOptionId(value); return *this;}
-
-    /**
-     * <p>The <code>CloudWatchLoggingOptionId</code> of the Amazon CloudWatch logging
-     * option to delete. You can get the <code>CloudWatchLoggingOptionId</code> by
-     * using the <a>DescribeApplication</a> operation. </p>
-     */
-    inline DeleteApplicationCloudWatchLoggingOptionRequest& WithCloudWatchLoggingOptionId(Aws::String&& value) { SetCloudWatchLoggingOptionId(std::move(value)); return *this;}
-
-    /**
-     * <p>The <code>CloudWatchLoggingOptionId</code> of the Amazon CloudWatch logging
-     * option to delete. You can get the <code>CloudWatchLoggingOptionId</code> by
-     * using the <a>DescribeApplication</a> operation. </p>
-     */
-    inline DeleteApplicationCloudWatchLoggingOptionRequest& WithCloudWatchLoggingOptionId(const char* value) { SetCloudWatchLoggingOptionId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A value you use to implement strong concurrency for application updates. You
      * must provide the <code>CurrentApplicationVersionId</code> or the
@@ -177,84 +83,19 @@ namespace Model
      * concurrency support, use the <code>ConditionalToken</code> parameter instead of
      * <code>CurrentApplicationVersionId</code>.</p>
      */
-    inline const Aws::String& GetConditionalToken() const{ return m_conditionalToken; }
-
-    /**
-     * <p>A value you use to implement strong concurrency for application updates. You
-     * must provide the <code>CurrentApplicationVersionId</code> or the
-     * <code>ConditionalToken</code>. You get the application's current
-     * <code>ConditionalToken</code> using <a>DescribeApplication</a>. For better
-     * concurrency support, use the <code>ConditionalToken</code> parameter instead of
-     * <code>CurrentApplicationVersionId</code>.</p>
-     */
+    inline const Aws::String& GetConditionalToken() const { return m_conditionalToken; }
     inline bool ConditionalTokenHasBeenSet() const { return m_conditionalTokenHasBeenSet; }
-
-    /**
-     * <p>A value you use to implement strong concurrency for application updates. You
-     * must provide the <code>CurrentApplicationVersionId</code> or the
-     * <code>ConditionalToken</code>. You get the application's current
-     * <code>ConditionalToken</code> using <a>DescribeApplication</a>. For better
-     * concurrency support, use the <code>ConditionalToken</code> parameter instead of
-     * <code>CurrentApplicationVersionId</code>.</p>
-     */
-    inline void SetConditionalToken(const Aws::String& value) { m_conditionalTokenHasBeenSet = true; m_conditionalToken = value; }
-
-    /**
-     * <p>A value you use to implement strong concurrency for application updates. You
-     * must provide the <code>CurrentApplicationVersionId</code> or the
-     * <code>ConditionalToken</code>. You get the application's current
-     * <code>ConditionalToken</code> using <a>DescribeApplication</a>. For better
-     * concurrency support, use the <code>ConditionalToken</code> parameter instead of
-     * <code>CurrentApplicationVersionId</code>.</p>
-     */
-    inline void SetConditionalToken(Aws::String&& value) { m_conditionalTokenHasBeenSet = true; m_conditionalToken = std::move(value); }
-
-    /**
-     * <p>A value you use to implement strong concurrency for application updates. You
-     * must provide the <code>CurrentApplicationVersionId</code> or the
-     * <code>ConditionalToken</code>. You get the application's current
-     * <code>ConditionalToken</code> using <a>DescribeApplication</a>. For better
-     * concurrency support, use the <code>ConditionalToken</code> parameter instead of
-     * <code>CurrentApplicationVersionId</code>.</p>
-     */
-    inline void SetConditionalToken(const char* value) { m_conditionalTokenHasBeenSet = true; m_conditionalToken.assign(value); }
-
-    /**
-     * <p>A value you use to implement strong concurrency for application updates. You
-     * must provide the <code>CurrentApplicationVersionId</code> or the
-     * <code>ConditionalToken</code>. You get the application's current
-     * <code>ConditionalToken</code> using <a>DescribeApplication</a>. For better
-     * concurrency support, use the <code>ConditionalToken</code> parameter instead of
-     * <code>CurrentApplicationVersionId</code>.</p>
-     */
-    inline DeleteApplicationCloudWatchLoggingOptionRequest& WithConditionalToken(const Aws::String& value) { SetConditionalToken(value); return *this;}
-
-    /**
-     * <p>A value you use to implement strong concurrency for application updates. You
-     * must provide the <code>CurrentApplicationVersionId</code> or the
-     * <code>ConditionalToken</code>. You get the application's current
-     * <code>ConditionalToken</code> using <a>DescribeApplication</a>. For better
-     * concurrency support, use the <code>ConditionalToken</code> parameter instead of
-     * <code>CurrentApplicationVersionId</code>.</p>
-     */
-    inline DeleteApplicationCloudWatchLoggingOptionRequest& WithConditionalToken(Aws::String&& value) { SetConditionalToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A value you use to implement strong concurrency for application updates. You
-     * must provide the <code>CurrentApplicationVersionId</code> or the
-     * <code>ConditionalToken</code>. You get the application's current
-     * <code>ConditionalToken</code> using <a>DescribeApplication</a>. For better
-     * concurrency support, use the <code>ConditionalToken</code> parameter instead of
-     * <code>CurrentApplicationVersionId</code>.</p>
-     */
-    inline DeleteApplicationCloudWatchLoggingOptionRequest& WithConditionalToken(const char* value) { SetConditionalToken(value); return *this;}
-
+    template<typename ConditionalTokenT = Aws::String>
+    void SetConditionalToken(ConditionalTokenT&& value) { m_conditionalTokenHasBeenSet = true; m_conditionalToken = std::forward<ConditionalTokenT>(value); }
+    template<typename ConditionalTokenT = Aws::String>
+    DeleteApplicationCloudWatchLoggingOptionRequest& WithConditionalToken(ConditionalTokenT&& value) { SetConditionalToken(std::forward<ConditionalTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_applicationName;
     bool m_applicationNameHasBeenSet = false;
 
-    long long m_currentApplicationVersionId;
+    long long m_currentApplicationVersionId{0};
     bool m_currentApplicationVersionIdHasBeenSet = false;
 
     Aws::String m_cloudWatchLoggingOptionId;

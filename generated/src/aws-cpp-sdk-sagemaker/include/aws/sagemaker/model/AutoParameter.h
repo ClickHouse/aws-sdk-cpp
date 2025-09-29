@@ -34,93 +34,35 @@ namespace Model
   class AutoParameter
   {
   public:
-    AWS_SAGEMAKER_API AutoParameter();
+    AWS_SAGEMAKER_API AutoParameter() = default;
     AWS_SAGEMAKER_API AutoParameter(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API AutoParameter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the hyperparameter to optimize using Autotune.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the hyperparameter to optimize using Autotune.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    AutoParameter& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the hyperparameter to optimize using Autotune.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the hyperparameter to optimize using Autotune.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the hyperparameter to optimize using Autotune.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the hyperparameter to optimize using Autotune.</p>
-     */
-    inline AutoParameter& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the hyperparameter to optimize using Autotune.</p>
-     */
-    inline AutoParameter& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the hyperparameter to optimize using Autotune.</p>
-     */
-    inline AutoParameter& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An example value of the hyperparameter to optimize using Autotune.</p>
      */
-    inline const Aws::String& GetValueHint() const{ return m_valueHint; }
-
-    /**
-     * <p>An example value of the hyperparameter to optimize using Autotune.</p>
-     */
+    inline const Aws::String& GetValueHint() const { return m_valueHint; }
     inline bool ValueHintHasBeenSet() const { return m_valueHintHasBeenSet; }
-
-    /**
-     * <p>An example value of the hyperparameter to optimize using Autotune.</p>
-     */
-    inline void SetValueHint(const Aws::String& value) { m_valueHintHasBeenSet = true; m_valueHint = value; }
-
-    /**
-     * <p>An example value of the hyperparameter to optimize using Autotune.</p>
-     */
-    inline void SetValueHint(Aws::String&& value) { m_valueHintHasBeenSet = true; m_valueHint = std::move(value); }
-
-    /**
-     * <p>An example value of the hyperparameter to optimize using Autotune.</p>
-     */
-    inline void SetValueHint(const char* value) { m_valueHintHasBeenSet = true; m_valueHint.assign(value); }
-
-    /**
-     * <p>An example value of the hyperparameter to optimize using Autotune.</p>
-     */
-    inline AutoParameter& WithValueHint(const Aws::String& value) { SetValueHint(value); return *this;}
-
-    /**
-     * <p>An example value of the hyperparameter to optimize using Autotune.</p>
-     */
-    inline AutoParameter& WithValueHint(Aws::String&& value) { SetValueHint(std::move(value)); return *this;}
-
-    /**
-     * <p>An example value of the hyperparameter to optimize using Autotune.</p>
-     */
-    inline AutoParameter& WithValueHint(const char* value) { SetValueHint(value); return *this;}
-
+    template<typename ValueHintT = Aws::String>
+    void SetValueHint(ValueHintT&& value) { m_valueHintHasBeenSet = true; m_valueHint = std::forward<ValueHintT>(value); }
+    template<typename ValueHintT = Aws::String>
+    AutoParameter& WithValueHint(ValueHintT&& value) { SetValueHint(std::forward<ValueHintT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;

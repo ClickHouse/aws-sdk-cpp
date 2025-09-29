@@ -20,19 +20,7 @@ namespace ElastiCache
 namespace Model
 {
 
-Authentication::Authentication() : 
-    m_type(AuthenticationType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_passwordCount(0),
-    m_passwordCountHasBeenSet(false)
-{
-}
-
-Authentication::Authentication(const XmlNode& xmlNode) : 
-    m_type(AuthenticationType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_passwordCount(0),
-    m_passwordCountHasBeenSet(false)
+Authentication::Authentication(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -46,7 +34,7 @@ Authentication& Authentication::operator =(const XmlNode& xmlNode)
     XmlNode typeNode = resultNode.FirstChild("Type");
     if(!typeNode.IsNull())
     {
-      m_type = AuthenticationTypeMapper::GetAuthenticationTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(typeNode.GetText()).c_str()).c_str());
+      m_type = AuthenticationTypeMapper::GetAuthenticationTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(typeNode.GetText()).c_str()));
       m_typeHasBeenSet = true;
     }
     XmlNode passwordCountNode = resultNode.FirstChild("PasswordCount");
@@ -64,7 +52,7 @@ void Authentication::OutputToStream(Aws::OStream& oStream, const char* location,
 {
   if(m_typeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Type=" << AuthenticationTypeMapper::GetNameForAuthenticationType(m_type) << "&";
+      oStream << location << index << locationValue << ".Type=" << StringUtils::URLEncode(AuthenticationTypeMapper::GetNameForAuthenticationType(m_type)) << "&";
   }
 
   if(m_passwordCountHasBeenSet)
@@ -78,7 +66,7 @@ void Authentication::OutputToStream(Aws::OStream& oStream, const char* location)
 {
   if(m_typeHasBeenSet)
   {
-      oStream << location << ".Type=" << AuthenticationTypeMapper::GetNameForAuthenticationType(m_type) << "&";
+      oStream << location << ".Type=" << StringUtils::URLEncode(AuthenticationTypeMapper::GetNameForAuthenticationType(m_type)) << "&";
   }
   if(m_passwordCountHasBeenSet)
   {

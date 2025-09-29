@@ -20,59 +20,7 @@ namespace EC2
 namespace Model
 {
 
-SpotInstanceRequest::SpotInstanceRequest() : 
-    m_actualBlockHourlyPriceHasBeenSet(false),
-    m_availabilityZoneGroupHasBeenSet(false),
-    m_blockDurationMinutes(0),
-    m_blockDurationMinutesHasBeenSet(false),
-    m_createTimeHasBeenSet(false),
-    m_faultHasBeenSet(false),
-    m_instanceIdHasBeenSet(false),
-    m_launchGroupHasBeenSet(false),
-    m_launchSpecificationHasBeenSet(false),
-    m_launchedAvailabilityZoneHasBeenSet(false),
-    m_productDescription(RIProductDescription::NOT_SET),
-    m_productDescriptionHasBeenSet(false),
-    m_spotInstanceRequestIdHasBeenSet(false),
-    m_spotPriceHasBeenSet(false),
-    m_state(SpotInstanceState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_type(SpotInstanceType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_validFromHasBeenSet(false),
-    m_validUntilHasBeenSet(false),
-    m_instanceInterruptionBehavior(InstanceInterruptionBehavior::NOT_SET),
-    m_instanceInterruptionBehaviorHasBeenSet(false)
-{
-}
-
-SpotInstanceRequest::SpotInstanceRequest(const XmlNode& xmlNode) : 
-    m_actualBlockHourlyPriceHasBeenSet(false),
-    m_availabilityZoneGroupHasBeenSet(false),
-    m_blockDurationMinutes(0),
-    m_blockDurationMinutesHasBeenSet(false),
-    m_createTimeHasBeenSet(false),
-    m_faultHasBeenSet(false),
-    m_instanceIdHasBeenSet(false),
-    m_launchGroupHasBeenSet(false),
-    m_launchSpecificationHasBeenSet(false),
-    m_launchedAvailabilityZoneHasBeenSet(false),
-    m_productDescription(RIProductDescription::NOT_SET),
-    m_productDescriptionHasBeenSet(false),
-    m_spotInstanceRequestIdHasBeenSet(false),
-    m_spotPriceHasBeenSet(false),
-    m_state(SpotInstanceState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_type(SpotInstanceType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_validFromHasBeenSet(false),
-    m_validUntilHasBeenSet(false),
-    m_instanceInterruptionBehavior(InstanceInterruptionBehavior::NOT_SET),
-    m_instanceInterruptionBehaviorHasBeenSet(false)
+SpotInstanceRequest::SpotInstanceRequest(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -137,10 +85,16 @@ SpotInstanceRequest& SpotInstanceRequest::operator =(const XmlNode& xmlNode)
       m_launchedAvailabilityZone = Aws::Utils::Xml::DecodeEscapedXmlText(launchedAvailabilityZoneNode.GetText());
       m_launchedAvailabilityZoneHasBeenSet = true;
     }
+    XmlNode launchedAvailabilityZoneIdNode = resultNode.FirstChild("launchedAvailabilityZoneId");
+    if(!launchedAvailabilityZoneIdNode.IsNull())
+    {
+      m_launchedAvailabilityZoneId = Aws::Utils::Xml::DecodeEscapedXmlText(launchedAvailabilityZoneIdNode.GetText());
+      m_launchedAvailabilityZoneIdHasBeenSet = true;
+    }
     XmlNode productDescriptionNode = resultNode.FirstChild("productDescription");
     if(!productDescriptionNode.IsNull())
     {
-      m_productDescription = RIProductDescriptionMapper::GetRIProductDescriptionForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(productDescriptionNode.GetText()).c_str()).c_str());
+      m_productDescription = RIProductDescriptionMapper::GetRIProductDescriptionForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(productDescriptionNode.GetText()).c_str()));
       m_productDescriptionHasBeenSet = true;
     }
     XmlNode spotInstanceRequestIdNode = resultNode.FirstChild("spotInstanceRequestId");
@@ -158,7 +112,7 @@ SpotInstanceRequest& SpotInstanceRequest::operator =(const XmlNode& xmlNode)
     XmlNode stateNode = resultNode.FirstChild("state");
     if(!stateNode.IsNull())
     {
-      m_state = SpotInstanceStateMapper::GetSpotInstanceStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()).c_str());
+      m_state = SpotInstanceStateMapper::GetSpotInstanceStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()));
       m_stateHasBeenSet = true;
     }
     XmlNode statusNode = resultNode.FirstChild("status");
@@ -171,6 +125,7 @@ SpotInstanceRequest& SpotInstanceRequest::operator =(const XmlNode& xmlNode)
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -182,7 +137,7 @@ SpotInstanceRequest& SpotInstanceRequest::operator =(const XmlNode& xmlNode)
     XmlNode typeNode = resultNode.FirstChild("type");
     if(!typeNode.IsNull())
     {
-      m_type = SpotInstanceTypeMapper::GetSpotInstanceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(typeNode.GetText()).c_str()).c_str());
+      m_type = SpotInstanceTypeMapper::GetSpotInstanceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(typeNode.GetText()).c_str()));
       m_typeHasBeenSet = true;
     }
     XmlNode validFromNode = resultNode.FirstChild("validFrom");
@@ -200,7 +155,7 @@ SpotInstanceRequest& SpotInstanceRequest::operator =(const XmlNode& xmlNode)
     XmlNode instanceInterruptionBehaviorNode = resultNode.FirstChild("instanceInterruptionBehavior");
     if(!instanceInterruptionBehaviorNode.IsNull())
     {
-      m_instanceInterruptionBehavior = InstanceInterruptionBehaviorMapper::GetInstanceInterruptionBehaviorForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(instanceInterruptionBehaviorNode.GetText()).c_str()).c_str());
+      m_instanceInterruptionBehavior = InstanceInterruptionBehaviorMapper::GetInstanceInterruptionBehaviorForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(instanceInterruptionBehaviorNode.GetText()).c_str()));
       m_instanceInterruptionBehaviorHasBeenSet = true;
     }
   }
@@ -259,9 +214,14 @@ void SpotInstanceRequest::OutputToStream(Aws::OStream& oStream, const char* loca
       oStream << location << index << locationValue << ".LaunchedAvailabilityZone=" << StringUtils::URLEncode(m_launchedAvailabilityZone.c_str()) << "&";
   }
 
+  if(m_launchedAvailabilityZoneIdHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".LaunchedAvailabilityZoneId=" << StringUtils::URLEncode(m_launchedAvailabilityZoneId.c_str()) << "&";
+  }
+
   if(m_productDescriptionHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ProductDescription=" << RIProductDescriptionMapper::GetNameForRIProductDescription(m_productDescription) << "&";
+      oStream << location << index << locationValue << ".ProductDescription=" << StringUtils::URLEncode(RIProductDescriptionMapper::GetNameForRIProductDescription(m_productDescription)) << "&";
   }
 
   if(m_spotInstanceRequestIdHasBeenSet)
@@ -276,7 +236,7 @@ void SpotInstanceRequest::OutputToStream(Aws::OStream& oStream, const char* loca
 
   if(m_stateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".State=" << SpotInstanceStateMapper::GetNameForSpotInstanceState(m_state) << "&";
+      oStream << location << index << locationValue << ".State=" << StringUtils::URLEncode(SpotInstanceStateMapper::GetNameForSpotInstanceState(m_state)) << "&";
   }
 
   if(m_statusHasBeenSet)
@@ -299,7 +259,7 @@ void SpotInstanceRequest::OutputToStream(Aws::OStream& oStream, const char* loca
 
   if(m_typeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Type=" << SpotInstanceTypeMapper::GetNameForSpotInstanceType(m_type) << "&";
+      oStream << location << index << locationValue << ".Type=" << StringUtils::URLEncode(SpotInstanceTypeMapper::GetNameForSpotInstanceType(m_type)) << "&";
   }
 
   if(m_validFromHasBeenSet)
@@ -314,7 +274,7 @@ void SpotInstanceRequest::OutputToStream(Aws::OStream& oStream, const char* loca
 
   if(m_instanceInterruptionBehaviorHasBeenSet)
   {
-      oStream << location << index << locationValue << ".InstanceInterruptionBehavior=" << InstanceInterruptionBehaviorMapper::GetNameForInstanceInterruptionBehavior(m_instanceInterruptionBehavior) << "&";
+      oStream << location << index << locationValue << ".InstanceInterruptionBehavior=" << StringUtils::URLEncode(InstanceInterruptionBehaviorMapper::GetNameForInstanceInterruptionBehavior(m_instanceInterruptionBehavior)) << "&";
   }
 
 }
@@ -361,9 +321,13 @@ void SpotInstanceRequest::OutputToStream(Aws::OStream& oStream, const char* loca
   {
       oStream << location << ".LaunchedAvailabilityZone=" << StringUtils::URLEncode(m_launchedAvailabilityZone.c_str()) << "&";
   }
+  if(m_launchedAvailabilityZoneIdHasBeenSet)
+  {
+      oStream << location << ".LaunchedAvailabilityZoneId=" << StringUtils::URLEncode(m_launchedAvailabilityZoneId.c_str()) << "&";
+  }
   if(m_productDescriptionHasBeenSet)
   {
-      oStream << location << ".ProductDescription=" << RIProductDescriptionMapper::GetNameForRIProductDescription(m_productDescription) << "&";
+      oStream << location << ".ProductDescription=" << StringUtils::URLEncode(RIProductDescriptionMapper::GetNameForRIProductDescription(m_productDescription)) << "&";
   }
   if(m_spotInstanceRequestIdHasBeenSet)
   {
@@ -375,7 +339,7 @@ void SpotInstanceRequest::OutputToStream(Aws::OStream& oStream, const char* loca
   }
   if(m_stateHasBeenSet)
   {
-      oStream << location << ".State=" << SpotInstanceStateMapper::GetNameForSpotInstanceState(m_state) << "&";
+      oStream << location << ".State=" << StringUtils::URLEncode(SpotInstanceStateMapper::GetNameForSpotInstanceState(m_state)) << "&";
   }
   if(m_statusHasBeenSet)
   {
@@ -389,13 +353,13 @@ void SpotInstanceRequest::OutputToStream(Aws::OStream& oStream, const char* loca
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
   if(m_typeHasBeenSet)
   {
-      oStream << location << ".Type=" << SpotInstanceTypeMapper::GetNameForSpotInstanceType(m_type) << "&";
+      oStream << location << ".Type=" << StringUtils::URLEncode(SpotInstanceTypeMapper::GetNameForSpotInstanceType(m_type)) << "&";
   }
   if(m_validFromHasBeenSet)
   {
@@ -407,7 +371,7 @@ void SpotInstanceRequest::OutputToStream(Aws::OStream& oStream, const char* loca
   }
   if(m_instanceInterruptionBehaviorHasBeenSet)
   {
-      oStream << location << ".InstanceInterruptionBehavior=" << InstanceInterruptionBehaviorMapper::GetNameForInstanceInterruptionBehavior(m_instanceInterruptionBehavior) << "&";
+      oStream << location << ".InstanceInterruptionBehavior=" << StringUtils::URLEncode(InstanceInterruptionBehaviorMapper::GetNameForInstanceInterruptionBehavior(m_instanceInterruptionBehavior)) << "&";
   }
 }
 

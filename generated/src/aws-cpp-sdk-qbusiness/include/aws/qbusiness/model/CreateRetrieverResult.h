@@ -27,118 +27,52 @@ namespace Model
   class CreateRetrieverResult
   {
   public:
-    AWS_QBUSINESS_API CreateRetrieverResult();
+    AWS_QBUSINESS_API CreateRetrieverResult() = default;
     AWS_QBUSINESS_API CreateRetrieverResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_QBUSINESS_API CreateRetrieverResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
+    /**
+     * <p>The identifier of the retriever you are using.</p>
+     */
+    inline const Aws::String& GetRetrieverId() const { return m_retrieverId; }
+    template<typename RetrieverIdT = Aws::String>
+    void SetRetrieverId(RetrieverIdT&& value) { m_retrieverIdHasBeenSet = true; m_retrieverId = std::forward<RetrieverIdT>(value); }
+    template<typename RetrieverIdT = Aws::String>
+    CreateRetrieverResult& WithRetrieverId(RetrieverIdT&& value) { SetRetrieverId(std::forward<RetrieverIdT>(value)); return *this;}
+    ///@}
+
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of an IAM role associated with a
      * retriever.</p>
      */
-    inline const Aws::String& GetRetrieverArn() const{ return m_retrieverArn; }
+    inline const Aws::String& GetRetrieverArn() const { return m_retrieverArn; }
+    template<typename RetrieverArnT = Aws::String>
+    void SetRetrieverArn(RetrieverArnT&& value) { m_retrieverArnHasBeenSet = true; m_retrieverArn = std::forward<RetrieverArnT>(value); }
+    template<typename RetrieverArnT = Aws::String>
+    CreateRetrieverResult& WithRetrieverArn(RetrieverArnT&& value) { SetRetrieverArn(std::forward<RetrieverArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of an IAM role associated with a
-     * retriever.</p>
-     */
-    inline void SetRetrieverArn(const Aws::String& value) { m_retrieverArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an IAM role associated with a
-     * retriever.</p>
-     */
-    inline void SetRetrieverArn(Aws::String&& value) { m_retrieverArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an IAM role associated with a
-     * retriever.</p>
-     */
-    inline void SetRetrieverArn(const char* value) { m_retrieverArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an IAM role associated with a
-     * retriever.</p>
-     */
-    inline CreateRetrieverResult& WithRetrieverArn(const Aws::String& value) { SetRetrieverArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an IAM role associated with a
-     * retriever.</p>
-     */
-    inline CreateRetrieverResult& WithRetrieverArn(Aws::String&& value) { SetRetrieverArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an IAM role associated with a
-     * retriever.</p>
-     */
-    inline CreateRetrieverResult& WithRetrieverArn(const char* value) { SetRetrieverArn(value); return *this;}
-
-
-    /**
-     * <p>The identifier of the retriever you are using.</p>
-     */
-    inline const Aws::String& GetRetrieverId() const{ return m_retrieverId; }
-
-    /**
-     * <p>The identifier of the retriever you are using.</p>
-     */
-    inline void SetRetrieverId(const Aws::String& value) { m_retrieverId = value; }
-
-    /**
-     * <p>The identifier of the retriever you are using.</p>
-     */
-    inline void SetRetrieverId(Aws::String&& value) { m_retrieverId = std::move(value); }
-
-    /**
-     * <p>The identifier of the retriever you are using.</p>
-     */
-    inline void SetRetrieverId(const char* value) { m_retrieverId.assign(value); }
-
-    /**
-     * <p>The identifier of the retriever you are using.</p>
-     */
-    inline CreateRetrieverResult& WithRetrieverId(const Aws::String& value) { SetRetrieverId(value); return *this;}
-
-    /**
-     * <p>The identifier of the retriever you are using.</p>
-     */
-    inline CreateRetrieverResult& WithRetrieverId(Aws::String&& value) { SetRetrieverId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the retriever you are using.</p>
-     */
-    inline CreateRetrieverResult& WithRetrieverId(const char* value) { SetRetrieverId(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline CreateRetrieverResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline CreateRetrieverResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline CreateRetrieverResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    CreateRetrieverResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::String m_retrieverArn;
-
     Aws::String m_retrieverId;
+    bool m_retrieverIdHasBeenSet = false;
+
+    Aws::String m_retrieverArn;
+    bool m_retrieverArnHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

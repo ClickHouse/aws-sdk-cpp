@@ -37,320 +37,114 @@ namespace Model
   class GetDataSourceResult
   {
   public:
-    AWS_MACHINELEARNING_API GetDataSourceResult();
+    AWS_MACHINELEARNING_API GetDataSourceResult() = default;
     AWS_MACHINELEARNING_API GetDataSourceResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_MACHINELEARNING_API GetDataSourceResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The ID assigned to the <code>DataSource</code> at creation. This value should
      * be identical to the value of the <code>DataSourceId</code> in the request.</p>
      */
-    inline const Aws::String& GetDataSourceId() const{ return m_dataSourceId; }
+    inline const Aws::String& GetDataSourceId() const { return m_dataSourceId; }
+    template<typename DataSourceIdT = Aws::String>
+    void SetDataSourceId(DataSourceIdT&& value) { m_dataSourceIdHasBeenSet = true; m_dataSourceId = std::forward<DataSourceIdT>(value); }
+    template<typename DataSourceIdT = Aws::String>
+    GetDataSourceResult& WithDataSourceId(DataSourceIdT&& value) { SetDataSourceId(std::forward<DataSourceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID assigned to the <code>DataSource</code> at creation. This value should
-     * be identical to the value of the <code>DataSourceId</code> in the request.</p>
-     */
-    inline void SetDataSourceId(const Aws::String& value) { m_dataSourceId = value; }
-
-    /**
-     * <p>The ID assigned to the <code>DataSource</code> at creation. This value should
-     * be identical to the value of the <code>DataSourceId</code> in the request.</p>
-     */
-    inline void SetDataSourceId(Aws::String&& value) { m_dataSourceId = std::move(value); }
-
-    /**
-     * <p>The ID assigned to the <code>DataSource</code> at creation. This value should
-     * be identical to the value of the <code>DataSourceId</code> in the request.</p>
-     */
-    inline void SetDataSourceId(const char* value) { m_dataSourceId.assign(value); }
-
-    /**
-     * <p>The ID assigned to the <code>DataSource</code> at creation. This value should
-     * be identical to the value of the <code>DataSourceId</code> in the request.</p>
-     */
-    inline GetDataSourceResult& WithDataSourceId(const Aws::String& value) { SetDataSourceId(value); return *this;}
-
-    /**
-     * <p>The ID assigned to the <code>DataSource</code> at creation. This value should
-     * be identical to the value of the <code>DataSourceId</code> in the request.</p>
-     */
-    inline GetDataSourceResult& WithDataSourceId(Aws::String&& value) { SetDataSourceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID assigned to the <code>DataSource</code> at creation. This value should
-     * be identical to the value of the <code>DataSourceId</code> in the request.</p>
-     */
-    inline GetDataSourceResult& WithDataSourceId(const char* value) { SetDataSourceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The location of the data file or directory in Amazon Simple Storage Service
      * (Amazon S3).</p>
      */
-    inline const Aws::String& GetDataLocationS3() const{ return m_dataLocationS3; }
+    inline const Aws::String& GetDataLocationS3() const { return m_dataLocationS3; }
+    template<typename DataLocationS3T = Aws::String>
+    void SetDataLocationS3(DataLocationS3T&& value) { m_dataLocationS3HasBeenSet = true; m_dataLocationS3 = std::forward<DataLocationS3T>(value); }
+    template<typename DataLocationS3T = Aws::String>
+    GetDataSourceResult& WithDataLocationS3(DataLocationS3T&& value) { SetDataLocationS3(std::forward<DataLocationS3T>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The location of the data file or directory in Amazon Simple Storage Service
-     * (Amazon S3).</p>
-     */
-    inline void SetDataLocationS3(const Aws::String& value) { m_dataLocationS3 = value; }
-
-    /**
-     * <p>The location of the data file or directory in Amazon Simple Storage Service
-     * (Amazon S3).</p>
-     */
-    inline void SetDataLocationS3(Aws::String&& value) { m_dataLocationS3 = std::move(value); }
-
-    /**
-     * <p>The location of the data file or directory in Amazon Simple Storage Service
-     * (Amazon S3).</p>
-     */
-    inline void SetDataLocationS3(const char* value) { m_dataLocationS3.assign(value); }
-
-    /**
-     * <p>The location of the data file or directory in Amazon Simple Storage Service
-     * (Amazon S3).</p>
-     */
-    inline GetDataSourceResult& WithDataLocationS3(const Aws::String& value) { SetDataLocationS3(value); return *this;}
-
-    /**
-     * <p>The location of the data file or directory in Amazon Simple Storage Service
-     * (Amazon S3).</p>
-     */
-    inline GetDataSourceResult& WithDataLocationS3(Aws::String&& value) { SetDataLocationS3(std::move(value)); return *this;}
-
-    /**
-     * <p>The location of the data file or directory in Amazon Simple Storage Service
-     * (Amazon S3).</p>
-     */
-    inline GetDataSourceResult& WithDataLocationS3(const char* value) { SetDataLocationS3(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A JSON string that represents the splitting and rearrangement requirement
      * used when this <code>DataSource</code> was created.</p>
      */
-    inline const Aws::String& GetDataRearrangement() const{ return m_dataRearrangement; }
+    inline const Aws::String& GetDataRearrangement() const { return m_dataRearrangement; }
+    template<typename DataRearrangementT = Aws::String>
+    void SetDataRearrangement(DataRearrangementT&& value) { m_dataRearrangementHasBeenSet = true; m_dataRearrangement = std::forward<DataRearrangementT>(value); }
+    template<typename DataRearrangementT = Aws::String>
+    GetDataSourceResult& WithDataRearrangement(DataRearrangementT&& value) { SetDataRearrangement(std::forward<DataRearrangementT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A JSON string that represents the splitting and rearrangement requirement
-     * used when this <code>DataSource</code> was created.</p>
-     */
-    inline void SetDataRearrangement(const Aws::String& value) { m_dataRearrangement = value; }
-
-    /**
-     * <p>A JSON string that represents the splitting and rearrangement requirement
-     * used when this <code>DataSource</code> was created.</p>
-     */
-    inline void SetDataRearrangement(Aws::String&& value) { m_dataRearrangement = std::move(value); }
-
-    /**
-     * <p>A JSON string that represents the splitting and rearrangement requirement
-     * used when this <code>DataSource</code> was created.</p>
-     */
-    inline void SetDataRearrangement(const char* value) { m_dataRearrangement.assign(value); }
-
-    /**
-     * <p>A JSON string that represents the splitting and rearrangement requirement
-     * used when this <code>DataSource</code> was created.</p>
-     */
-    inline GetDataSourceResult& WithDataRearrangement(const Aws::String& value) { SetDataRearrangement(value); return *this;}
-
-    /**
-     * <p>A JSON string that represents the splitting and rearrangement requirement
-     * used when this <code>DataSource</code> was created.</p>
-     */
-    inline GetDataSourceResult& WithDataRearrangement(Aws::String&& value) { SetDataRearrangement(std::move(value)); return *this;}
-
-    /**
-     * <p>A JSON string that represents the splitting and rearrangement requirement
-     * used when this <code>DataSource</code> was created.</p>
-     */
-    inline GetDataSourceResult& WithDataRearrangement(const char* value) { SetDataRearrangement(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The AWS user account from which the <code>DataSource</code> was created. The
      * account type can be either an AWS root account or an AWS Identity and Access
      * Management (IAM) user account.</p>
      */
-    inline const Aws::String& GetCreatedByIamUser() const{ return m_createdByIamUser; }
+    inline const Aws::String& GetCreatedByIamUser() const { return m_createdByIamUser; }
+    template<typename CreatedByIamUserT = Aws::String>
+    void SetCreatedByIamUser(CreatedByIamUserT&& value) { m_createdByIamUserHasBeenSet = true; m_createdByIamUser = std::forward<CreatedByIamUserT>(value); }
+    template<typename CreatedByIamUserT = Aws::String>
+    GetDataSourceResult& WithCreatedByIamUser(CreatedByIamUserT&& value) { SetCreatedByIamUser(std::forward<CreatedByIamUserT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The AWS user account from which the <code>DataSource</code> was created. The
-     * account type can be either an AWS root account or an AWS Identity and Access
-     * Management (IAM) user account.</p>
-     */
-    inline void SetCreatedByIamUser(const Aws::String& value) { m_createdByIamUser = value; }
-
-    /**
-     * <p>The AWS user account from which the <code>DataSource</code> was created. The
-     * account type can be either an AWS root account or an AWS Identity and Access
-     * Management (IAM) user account.</p>
-     */
-    inline void SetCreatedByIamUser(Aws::String&& value) { m_createdByIamUser = std::move(value); }
-
-    /**
-     * <p>The AWS user account from which the <code>DataSource</code> was created. The
-     * account type can be either an AWS root account or an AWS Identity and Access
-     * Management (IAM) user account.</p>
-     */
-    inline void SetCreatedByIamUser(const char* value) { m_createdByIamUser.assign(value); }
-
-    /**
-     * <p>The AWS user account from which the <code>DataSource</code> was created. The
-     * account type can be either an AWS root account or an AWS Identity and Access
-     * Management (IAM) user account.</p>
-     */
-    inline GetDataSourceResult& WithCreatedByIamUser(const Aws::String& value) { SetCreatedByIamUser(value); return *this;}
-
-    /**
-     * <p>The AWS user account from which the <code>DataSource</code> was created. The
-     * account type can be either an AWS root account or an AWS Identity and Access
-     * Management (IAM) user account.</p>
-     */
-    inline GetDataSourceResult& WithCreatedByIamUser(Aws::String&& value) { SetCreatedByIamUser(std::move(value)); return *this;}
-
-    /**
-     * <p>The AWS user account from which the <code>DataSource</code> was created. The
-     * account type can be either an AWS root account or an AWS Identity and Access
-     * Management (IAM) user account.</p>
-     */
-    inline GetDataSourceResult& WithCreatedByIamUser(const char* value) { SetCreatedByIamUser(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The time that the <code>DataSource</code> was created. The time is expressed
      * in epoch time.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedAt() const{ return m_createdAt; }
+    inline const Aws::Utils::DateTime& GetCreatedAt() const { return m_createdAt; }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    void SetCreatedAt(CreatedAtT&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::forward<CreatedAtT>(value); }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    GetDataSourceResult& WithCreatedAt(CreatedAtT&& value) { SetCreatedAt(std::forward<CreatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time that the <code>DataSource</code> was created. The time is expressed
-     * in epoch time.</p>
-     */
-    inline void SetCreatedAt(const Aws::Utils::DateTime& value) { m_createdAt = value; }
-
-    /**
-     * <p>The time that the <code>DataSource</code> was created. The time is expressed
-     * in epoch time.</p>
-     */
-    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAt = std::move(value); }
-
-    /**
-     * <p>The time that the <code>DataSource</code> was created. The time is expressed
-     * in epoch time.</p>
-     */
-    inline GetDataSourceResult& WithCreatedAt(const Aws::Utils::DateTime& value) { SetCreatedAt(value); return *this;}
-
-    /**
-     * <p>The time that the <code>DataSource</code> was created. The time is expressed
-     * in epoch time.</p>
-     */
-    inline GetDataSourceResult& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The time of the most recent edit to the <code>DataSource</code>. The time is
      * expressed in epoch time.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastUpdatedAt() const{ return m_lastUpdatedAt; }
+    inline const Aws::Utils::DateTime& GetLastUpdatedAt() const { return m_lastUpdatedAt; }
+    template<typename LastUpdatedAtT = Aws::Utils::DateTime>
+    void SetLastUpdatedAt(LastUpdatedAtT&& value) { m_lastUpdatedAtHasBeenSet = true; m_lastUpdatedAt = std::forward<LastUpdatedAtT>(value); }
+    template<typename LastUpdatedAtT = Aws::Utils::DateTime>
+    GetDataSourceResult& WithLastUpdatedAt(LastUpdatedAtT&& value) { SetLastUpdatedAt(std::forward<LastUpdatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time of the most recent edit to the <code>DataSource</code>. The time is
-     * expressed in epoch time.</p>
-     */
-    inline void SetLastUpdatedAt(const Aws::Utils::DateTime& value) { m_lastUpdatedAt = value; }
-
-    /**
-     * <p>The time of the most recent edit to the <code>DataSource</code>. The time is
-     * expressed in epoch time.</p>
-     */
-    inline void SetLastUpdatedAt(Aws::Utils::DateTime&& value) { m_lastUpdatedAt = std::move(value); }
-
-    /**
-     * <p>The time of the most recent edit to the <code>DataSource</code>. The time is
-     * expressed in epoch time.</p>
-     */
-    inline GetDataSourceResult& WithLastUpdatedAt(const Aws::Utils::DateTime& value) { SetLastUpdatedAt(value); return *this;}
-
-    /**
-     * <p>The time of the most recent edit to the <code>DataSource</code>. The time is
-     * expressed in epoch time.</p>
-     */
-    inline GetDataSourceResult& WithLastUpdatedAt(Aws::Utils::DateTime&& value) { SetLastUpdatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The total size of observations in the data files.</p>
      */
-    inline long long GetDataSizeInBytes() const{ return m_dataSizeInBytes; }
-
-    /**
-     * <p>The total size of observations in the data files.</p>
-     */
-    inline void SetDataSizeInBytes(long long value) { m_dataSizeInBytes = value; }
-
-    /**
-     * <p>The total size of observations in the data files.</p>
-     */
+    inline long long GetDataSizeInBytes() const { return m_dataSizeInBytes; }
+    inline void SetDataSizeInBytes(long long value) { m_dataSizeInBytesHasBeenSet = true; m_dataSizeInBytes = value; }
     inline GetDataSourceResult& WithDataSizeInBytes(long long value) { SetDataSizeInBytes(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The number of data files referenced by the <code>DataSource</code>.</p>
      */
-    inline long long GetNumberOfFiles() const{ return m_numberOfFiles; }
-
-    /**
-     * <p>The number of data files referenced by the <code>DataSource</code>.</p>
-     */
-    inline void SetNumberOfFiles(long long value) { m_numberOfFiles = value; }
-
-    /**
-     * <p>The number of data files referenced by the <code>DataSource</code>.</p>
-     */
+    inline long long GetNumberOfFiles() const { return m_numberOfFiles; }
+    inline void SetNumberOfFiles(long long value) { m_numberOfFilesHasBeenSet = true; m_numberOfFiles = value; }
     inline GetDataSourceResult& WithNumberOfFiles(long long value) { SetNumberOfFiles(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>A user-supplied name or description of the <code>DataSource</code>.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
+    inline const Aws::String& GetName() const { return m_name; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    GetDataSourceResult& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A user-supplied name or description of the <code>DataSource</code>.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_name = value; }
-
-    /**
-     * <p>A user-supplied name or description of the <code>DataSource</code>.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_name = std::move(value); }
-
-    /**
-     * <p>A user-supplied name or description of the <code>DataSource</code>.</p>
-     */
-    inline void SetName(const char* value) { m_name.assign(value); }
-
-    /**
-     * <p>A user-supplied name or description of the <code>DataSource</code>.</p>
-     */
-    inline GetDataSourceResult& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>A user-supplied name or description of the <code>DataSource</code>.</p>
-     */
-    inline GetDataSourceResult& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>A user-supplied name or description of the <code>DataSource</code>.</p>
-     */
-    inline GetDataSourceResult& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The current status of the <code>DataSource</code>. This element can have one
      * of the following values:</p> <ul> <li> <p> <code>PENDING</code> - Amazon ML
@@ -362,220 +156,73 @@ namespace Model
      * <code>DELETED</code> - The <code>DataSource</code> is marked as deleted. It is
      * not usable.</p> </li> </ul>
      */
-    inline const EntityStatus& GetStatus() const{ return m_status; }
+    inline EntityStatus GetStatus() const { return m_status; }
+    inline void SetStatus(EntityStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline GetDataSourceResult& WithStatus(EntityStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The current status of the <code>DataSource</code>. This element can have one
-     * of the following values:</p> <ul> <li> <p> <code>PENDING</code> - Amazon ML
-     * submitted a request to create a <code>DataSource</code>.</p> </li> <li> <p>
-     * <code>INPROGRESS</code> - The creation process is underway.</p> </li> <li> <p>
-     * <code>FAILED</code> - The request to create a <code>DataSource</code> did not
-     * run to completion. It is not usable.</p> </li> <li> <p> <code>COMPLETED</code> -
-     * The creation process completed successfully.</p> </li> <li> <p>
-     * <code>DELETED</code> - The <code>DataSource</code> is marked as deleted. It is
-     * not usable.</p> </li> </ul>
-     */
-    inline void SetStatus(const EntityStatus& value) { m_status = value; }
-
-    /**
-     * <p>The current status of the <code>DataSource</code>. This element can have one
-     * of the following values:</p> <ul> <li> <p> <code>PENDING</code> - Amazon ML
-     * submitted a request to create a <code>DataSource</code>.</p> </li> <li> <p>
-     * <code>INPROGRESS</code> - The creation process is underway.</p> </li> <li> <p>
-     * <code>FAILED</code> - The request to create a <code>DataSource</code> did not
-     * run to completion. It is not usable.</p> </li> <li> <p> <code>COMPLETED</code> -
-     * The creation process completed successfully.</p> </li> <li> <p>
-     * <code>DELETED</code> - The <code>DataSource</code> is marked as deleted. It is
-     * not usable.</p> </li> </ul>
-     */
-    inline void SetStatus(EntityStatus&& value) { m_status = std::move(value); }
-
-    /**
-     * <p>The current status of the <code>DataSource</code>. This element can have one
-     * of the following values:</p> <ul> <li> <p> <code>PENDING</code> - Amazon ML
-     * submitted a request to create a <code>DataSource</code>.</p> </li> <li> <p>
-     * <code>INPROGRESS</code> - The creation process is underway.</p> </li> <li> <p>
-     * <code>FAILED</code> - The request to create a <code>DataSource</code> did not
-     * run to completion. It is not usable.</p> </li> <li> <p> <code>COMPLETED</code> -
-     * The creation process completed successfully.</p> </li> <li> <p>
-     * <code>DELETED</code> - The <code>DataSource</code> is marked as deleted. It is
-     * not usable.</p> </li> </ul>
-     */
-    inline GetDataSourceResult& WithStatus(const EntityStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The current status of the <code>DataSource</code>. This element can have one
-     * of the following values:</p> <ul> <li> <p> <code>PENDING</code> - Amazon ML
-     * submitted a request to create a <code>DataSource</code>.</p> </li> <li> <p>
-     * <code>INPROGRESS</code> - The creation process is underway.</p> </li> <li> <p>
-     * <code>FAILED</code> - The request to create a <code>DataSource</code> did not
-     * run to completion. It is not usable.</p> </li> <li> <p> <code>COMPLETED</code> -
-     * The creation process completed successfully.</p> </li> <li> <p>
-     * <code>DELETED</code> - The <code>DataSource</code> is marked as deleted. It is
-     * not usable.</p> </li> </ul>
-     */
-    inline GetDataSourceResult& WithStatus(EntityStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A link to the file containing logs of <code>CreateDataSourceFrom*</code>
      * operations.</p>
      */
-    inline const Aws::String& GetLogUri() const{ return m_logUri; }
+    inline const Aws::String& GetLogUri() const { return m_logUri; }
+    template<typename LogUriT = Aws::String>
+    void SetLogUri(LogUriT&& value) { m_logUriHasBeenSet = true; m_logUri = std::forward<LogUriT>(value); }
+    template<typename LogUriT = Aws::String>
+    GetDataSourceResult& WithLogUri(LogUriT&& value) { SetLogUri(std::forward<LogUriT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A link to the file containing logs of <code>CreateDataSourceFrom*</code>
-     * operations.</p>
-     */
-    inline void SetLogUri(const Aws::String& value) { m_logUri = value; }
-
-    /**
-     * <p>A link to the file containing logs of <code>CreateDataSourceFrom*</code>
-     * operations.</p>
-     */
-    inline void SetLogUri(Aws::String&& value) { m_logUri = std::move(value); }
-
-    /**
-     * <p>A link to the file containing logs of <code>CreateDataSourceFrom*</code>
-     * operations.</p>
-     */
-    inline void SetLogUri(const char* value) { m_logUri.assign(value); }
-
-    /**
-     * <p>A link to the file containing logs of <code>CreateDataSourceFrom*</code>
-     * operations.</p>
-     */
-    inline GetDataSourceResult& WithLogUri(const Aws::String& value) { SetLogUri(value); return *this;}
-
-    /**
-     * <p>A link to the file containing logs of <code>CreateDataSourceFrom*</code>
-     * operations.</p>
-     */
-    inline GetDataSourceResult& WithLogUri(Aws::String&& value) { SetLogUri(std::move(value)); return *this;}
-
-    /**
-     * <p>A link to the file containing logs of <code>CreateDataSourceFrom*</code>
-     * operations.</p>
-     */
-    inline GetDataSourceResult& WithLogUri(const char* value) { SetLogUri(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The user-supplied description of the most recent details about creating the
      * <code>DataSource</code>.</p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
+    inline const Aws::String& GetMessage() const { return m_message; }
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    GetDataSourceResult& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The user-supplied description of the most recent details about creating the
-     * <code>DataSource</code>.</p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_message = value; }
-
-    /**
-     * <p>The user-supplied description of the most recent details about creating the
-     * <code>DataSource</code>.</p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_message = std::move(value); }
-
-    /**
-     * <p>The user-supplied description of the most recent details about creating the
-     * <code>DataSource</code>.</p>
-     */
-    inline void SetMessage(const char* value) { m_message.assign(value); }
-
-    /**
-     * <p>The user-supplied description of the most recent details about creating the
-     * <code>DataSource</code>.</p>
-     */
-    inline GetDataSourceResult& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>The user-supplied description of the most recent details about creating the
-     * <code>DataSource</code>.</p>
-     */
-    inline GetDataSourceResult& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The user-supplied description of the most recent details about creating the
-     * <code>DataSource</code>.</p>
-     */
-    inline GetDataSourceResult& WithMessage(const char* value) { SetMessage(value); return *this;}
-
-
+    ///@{
     
-    inline const RedshiftMetadata& GetRedshiftMetadata() const{ return m_redshiftMetadata; }
+    inline const RedshiftMetadata& GetRedshiftMetadata() const { return m_redshiftMetadata; }
+    template<typename RedshiftMetadataT = RedshiftMetadata>
+    void SetRedshiftMetadata(RedshiftMetadataT&& value) { m_redshiftMetadataHasBeenSet = true; m_redshiftMetadata = std::forward<RedshiftMetadataT>(value); }
+    template<typename RedshiftMetadataT = RedshiftMetadata>
+    GetDataSourceResult& WithRedshiftMetadata(RedshiftMetadataT&& value) { SetRedshiftMetadata(std::forward<RedshiftMetadataT>(value)); return *this;}
+    ///@}
 
+    ///@{
     
-    inline void SetRedshiftMetadata(const RedshiftMetadata& value) { m_redshiftMetadata = value; }
+    inline const RDSMetadata& GetRDSMetadata() const { return m_rDSMetadata; }
+    template<typename RDSMetadataT = RDSMetadata>
+    void SetRDSMetadata(RDSMetadataT&& value) { m_rDSMetadataHasBeenSet = true; m_rDSMetadata = std::forward<RDSMetadataT>(value); }
+    template<typename RDSMetadataT = RDSMetadata>
+    GetDataSourceResult& WithRDSMetadata(RDSMetadataT&& value) { SetRDSMetadata(std::forward<RDSMetadataT>(value)); return *this;}
+    ///@}
 
+    ///@{
     
-    inline void SetRedshiftMetadata(RedshiftMetadata&& value) { m_redshiftMetadata = std::move(value); }
+    inline const Aws::String& GetRoleARN() const { return m_roleARN; }
+    template<typename RoleARNT = Aws::String>
+    void SetRoleARN(RoleARNT&& value) { m_roleARNHasBeenSet = true; m_roleARN = std::forward<RoleARNT>(value); }
+    template<typename RoleARNT = Aws::String>
+    GetDataSourceResult& WithRoleARN(RoleARNT&& value) { SetRoleARN(std::forward<RoleARNT>(value)); return *this;}
+    ///@}
 
-    
-    inline GetDataSourceResult& WithRedshiftMetadata(const RedshiftMetadata& value) { SetRedshiftMetadata(value); return *this;}
-
-    
-    inline GetDataSourceResult& WithRedshiftMetadata(RedshiftMetadata&& value) { SetRedshiftMetadata(std::move(value)); return *this;}
-
-
-    
-    inline const RDSMetadata& GetRDSMetadata() const{ return m_rDSMetadata; }
-
-    
-    inline void SetRDSMetadata(const RDSMetadata& value) { m_rDSMetadata = value; }
-
-    
-    inline void SetRDSMetadata(RDSMetadata&& value) { m_rDSMetadata = std::move(value); }
-
-    
-    inline GetDataSourceResult& WithRDSMetadata(const RDSMetadata& value) { SetRDSMetadata(value); return *this;}
-
-    
-    inline GetDataSourceResult& WithRDSMetadata(RDSMetadata&& value) { SetRDSMetadata(std::move(value)); return *this;}
-
-
-    
-    inline const Aws::String& GetRoleARN() const{ return m_roleARN; }
-
-    
-    inline void SetRoleARN(const Aws::String& value) { m_roleARN = value; }
-
-    
-    inline void SetRoleARN(Aws::String&& value) { m_roleARN = std::move(value); }
-
-    
-    inline void SetRoleARN(const char* value) { m_roleARN.assign(value); }
-
-    
-    inline GetDataSourceResult& WithRoleARN(const Aws::String& value) { SetRoleARN(value); return *this;}
-
-    
-    inline GetDataSourceResult& WithRoleARN(Aws::String&& value) { SetRoleARN(std::move(value)); return *this;}
-
-    
-    inline GetDataSourceResult& WithRoleARN(const char* value) { SetRoleARN(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The parameter is <code>true</code> if statistics need to be generated from
      * the observation data. </p>
      */
-    inline bool GetComputeStatistics() const{ return m_computeStatistics; }
-
-    /**
-     * <p> The parameter is <code>true</code> if statistics need to be generated from
-     * the observation data. </p>
-     */
-    inline void SetComputeStatistics(bool value) { m_computeStatistics = value; }
-
-    /**
-     * <p> The parameter is <code>true</code> if statistics need to be generated from
-     * the observation data. </p>
-     */
+    inline bool GetComputeStatistics() const { return m_computeStatistics; }
+    inline void SetComputeStatistics(bool value) { m_computeStatisticsHasBeenSet = true; m_computeStatistics = value; }
     inline GetDataSourceResult& WithComputeStatistics(bool value) { SetComputeStatistics(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The approximate CPU time in milliseconds that Amazon Machine Learning spent
      * processing the <code>DataSource</code>, normalized and scaled on computation
@@ -583,216 +230,123 @@ namespace Model
      * <code>DataSource</code> is in the <code>COMPLETED</code> state and the
      * <code>ComputeStatistics</code> is set to true.</p>
      */
-    inline long long GetComputeTime() const{ return m_computeTime; }
-
-    /**
-     * <p>The approximate CPU time in milliseconds that Amazon Machine Learning spent
-     * processing the <code>DataSource</code>, normalized and scaled on computation
-     * resources. <code>ComputeTime</code> is only available if the
-     * <code>DataSource</code> is in the <code>COMPLETED</code> state and the
-     * <code>ComputeStatistics</code> is set to true.</p>
-     */
-    inline void SetComputeTime(long long value) { m_computeTime = value; }
-
-    /**
-     * <p>The approximate CPU time in milliseconds that Amazon Machine Learning spent
-     * processing the <code>DataSource</code>, normalized and scaled on computation
-     * resources. <code>ComputeTime</code> is only available if the
-     * <code>DataSource</code> is in the <code>COMPLETED</code> state and the
-     * <code>ComputeStatistics</code> is set to true.</p>
-     */
+    inline long long GetComputeTime() const { return m_computeTime; }
+    inline void SetComputeTime(long long value) { m_computeTimeHasBeenSet = true; m_computeTime = value; }
     inline GetDataSourceResult& WithComputeTime(long long value) { SetComputeTime(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The epoch time when Amazon Machine Learning marked the
      * <code>DataSource</code> as <code>COMPLETED</code> or <code>FAILED</code>.
      * <code>FinishedAt</code> is only available when the <code>DataSource</code> is in
      * the <code>COMPLETED</code> or <code>FAILED</code> state.</p>
      */
-    inline const Aws::Utils::DateTime& GetFinishedAt() const{ return m_finishedAt; }
+    inline const Aws::Utils::DateTime& GetFinishedAt() const { return m_finishedAt; }
+    template<typename FinishedAtT = Aws::Utils::DateTime>
+    void SetFinishedAt(FinishedAtT&& value) { m_finishedAtHasBeenSet = true; m_finishedAt = std::forward<FinishedAtT>(value); }
+    template<typename FinishedAtT = Aws::Utils::DateTime>
+    GetDataSourceResult& WithFinishedAt(FinishedAtT&& value) { SetFinishedAt(std::forward<FinishedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The epoch time when Amazon Machine Learning marked the
-     * <code>DataSource</code> as <code>COMPLETED</code> or <code>FAILED</code>.
-     * <code>FinishedAt</code> is only available when the <code>DataSource</code> is in
-     * the <code>COMPLETED</code> or <code>FAILED</code> state.</p>
-     */
-    inline void SetFinishedAt(const Aws::Utils::DateTime& value) { m_finishedAt = value; }
-
-    /**
-     * <p>The epoch time when Amazon Machine Learning marked the
-     * <code>DataSource</code> as <code>COMPLETED</code> or <code>FAILED</code>.
-     * <code>FinishedAt</code> is only available when the <code>DataSource</code> is in
-     * the <code>COMPLETED</code> or <code>FAILED</code> state.</p>
-     */
-    inline void SetFinishedAt(Aws::Utils::DateTime&& value) { m_finishedAt = std::move(value); }
-
-    /**
-     * <p>The epoch time when Amazon Machine Learning marked the
-     * <code>DataSource</code> as <code>COMPLETED</code> or <code>FAILED</code>.
-     * <code>FinishedAt</code> is only available when the <code>DataSource</code> is in
-     * the <code>COMPLETED</code> or <code>FAILED</code> state.</p>
-     */
-    inline GetDataSourceResult& WithFinishedAt(const Aws::Utils::DateTime& value) { SetFinishedAt(value); return *this;}
-
-    /**
-     * <p>The epoch time when Amazon Machine Learning marked the
-     * <code>DataSource</code> as <code>COMPLETED</code> or <code>FAILED</code>.
-     * <code>FinishedAt</code> is only available when the <code>DataSource</code> is in
-     * the <code>COMPLETED</code> or <code>FAILED</code> state.</p>
-     */
-    inline GetDataSourceResult& WithFinishedAt(Aws::Utils::DateTime&& value) { SetFinishedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The epoch time when Amazon Machine Learning marked the
      * <code>DataSource</code> as <code>INPROGRESS</code>. <code>StartedAt</code> isn't
      * available if the <code>DataSource</code> is in the <code>PENDING</code>
      * state.</p>
      */
-    inline const Aws::Utils::DateTime& GetStartedAt() const{ return m_startedAt; }
+    inline const Aws::Utils::DateTime& GetStartedAt() const { return m_startedAt; }
+    template<typename StartedAtT = Aws::Utils::DateTime>
+    void SetStartedAt(StartedAtT&& value) { m_startedAtHasBeenSet = true; m_startedAt = std::forward<StartedAtT>(value); }
+    template<typename StartedAtT = Aws::Utils::DateTime>
+    GetDataSourceResult& WithStartedAt(StartedAtT&& value) { SetStartedAt(std::forward<StartedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The epoch time when Amazon Machine Learning marked the
-     * <code>DataSource</code> as <code>INPROGRESS</code>. <code>StartedAt</code> isn't
-     * available if the <code>DataSource</code> is in the <code>PENDING</code>
-     * state.</p>
-     */
-    inline void SetStartedAt(const Aws::Utils::DateTime& value) { m_startedAt = value; }
-
-    /**
-     * <p>The epoch time when Amazon Machine Learning marked the
-     * <code>DataSource</code> as <code>INPROGRESS</code>. <code>StartedAt</code> isn't
-     * available if the <code>DataSource</code> is in the <code>PENDING</code>
-     * state.</p>
-     */
-    inline void SetStartedAt(Aws::Utils::DateTime&& value) { m_startedAt = std::move(value); }
-
-    /**
-     * <p>The epoch time when Amazon Machine Learning marked the
-     * <code>DataSource</code> as <code>INPROGRESS</code>. <code>StartedAt</code> isn't
-     * available if the <code>DataSource</code> is in the <code>PENDING</code>
-     * state.</p>
-     */
-    inline GetDataSourceResult& WithStartedAt(const Aws::Utils::DateTime& value) { SetStartedAt(value); return *this;}
-
-    /**
-     * <p>The epoch time when Amazon Machine Learning marked the
-     * <code>DataSource</code> as <code>INPROGRESS</code>. <code>StartedAt</code> isn't
-     * available if the <code>DataSource</code> is in the <code>PENDING</code>
-     * state.</p>
-     */
-    inline GetDataSourceResult& WithStartedAt(Aws::Utils::DateTime&& value) { SetStartedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The schema used by all of the data files of this <code>DataSource</code>.</p>
      * <p> <b>Note:</b> This parameter is provided as part of the verbose format.</p>
      */
-    inline const Aws::String& GetDataSourceSchema() const{ return m_dataSourceSchema; }
+    inline const Aws::String& GetDataSourceSchema() const { return m_dataSourceSchema; }
+    template<typename DataSourceSchemaT = Aws::String>
+    void SetDataSourceSchema(DataSourceSchemaT&& value) { m_dataSourceSchemaHasBeenSet = true; m_dataSourceSchema = std::forward<DataSourceSchemaT>(value); }
+    template<typename DataSourceSchemaT = Aws::String>
+    GetDataSourceResult& WithDataSourceSchema(DataSourceSchemaT&& value) { SetDataSourceSchema(std::forward<DataSourceSchemaT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The schema used by all of the data files of this <code>DataSource</code>.</p>
-     * <p> <b>Note:</b> This parameter is provided as part of the verbose format.</p>
-     */
-    inline void SetDataSourceSchema(const Aws::String& value) { m_dataSourceSchema = value; }
-
-    /**
-     * <p>The schema used by all of the data files of this <code>DataSource</code>.</p>
-     * <p> <b>Note:</b> This parameter is provided as part of the verbose format.</p>
-     */
-    inline void SetDataSourceSchema(Aws::String&& value) { m_dataSourceSchema = std::move(value); }
-
-    /**
-     * <p>The schema used by all of the data files of this <code>DataSource</code>.</p>
-     * <p> <b>Note:</b> This parameter is provided as part of the verbose format.</p>
-     */
-    inline void SetDataSourceSchema(const char* value) { m_dataSourceSchema.assign(value); }
-
-    /**
-     * <p>The schema used by all of the data files of this <code>DataSource</code>.</p>
-     * <p> <b>Note:</b> This parameter is provided as part of the verbose format.</p>
-     */
-    inline GetDataSourceResult& WithDataSourceSchema(const Aws::String& value) { SetDataSourceSchema(value); return *this;}
-
-    /**
-     * <p>The schema used by all of the data files of this <code>DataSource</code>.</p>
-     * <p> <b>Note:</b> This parameter is provided as part of the verbose format.</p>
-     */
-    inline GetDataSourceResult& WithDataSourceSchema(Aws::String&& value) { SetDataSourceSchema(std::move(value)); return *this;}
-
-    /**
-     * <p>The schema used by all of the data files of this <code>DataSource</code>.</p>
-     * <p> <b>Note:</b> This parameter is provided as part of the verbose format.</p>
-     */
-    inline GetDataSourceResult& WithDataSourceSchema(const char* value) { SetDataSourceSchema(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetDataSourceResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetDataSourceResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetDataSourceResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetDataSourceResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_dataSourceId;
+    bool m_dataSourceIdHasBeenSet = false;
 
     Aws::String m_dataLocationS3;
+    bool m_dataLocationS3HasBeenSet = false;
 
     Aws::String m_dataRearrangement;
+    bool m_dataRearrangementHasBeenSet = false;
 
     Aws::String m_createdByIamUser;
+    bool m_createdByIamUserHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdAt;
+    Aws::Utils::DateTime m_createdAt{};
+    bool m_createdAtHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastUpdatedAt;
+    Aws::Utils::DateTime m_lastUpdatedAt{};
+    bool m_lastUpdatedAtHasBeenSet = false;
 
-    long long m_dataSizeInBytes;
+    long long m_dataSizeInBytes{0};
+    bool m_dataSizeInBytesHasBeenSet = false;
 
-    long long m_numberOfFiles;
+    long long m_numberOfFiles{0};
+    bool m_numberOfFilesHasBeenSet = false;
 
     Aws::String m_name;
+    bool m_nameHasBeenSet = false;
 
-    EntityStatus m_status;
+    EntityStatus m_status{EntityStatus::NOT_SET};
+    bool m_statusHasBeenSet = false;
 
     Aws::String m_logUri;
+    bool m_logUriHasBeenSet = false;
 
     Aws::String m_message;
+    bool m_messageHasBeenSet = false;
 
     RedshiftMetadata m_redshiftMetadata;
+    bool m_redshiftMetadataHasBeenSet = false;
 
     RDSMetadata m_rDSMetadata;
+    bool m_rDSMetadataHasBeenSet = false;
 
     Aws::String m_roleARN;
+    bool m_roleARNHasBeenSet = false;
 
-    bool m_computeStatistics;
+    bool m_computeStatistics{false};
+    bool m_computeStatisticsHasBeenSet = false;
 
-    long long m_computeTime;
+    long long m_computeTime{0};
+    bool m_computeTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_finishedAt;
+    Aws::Utils::DateTime m_finishedAt{};
+    bool m_finishedAtHasBeenSet = false;
 
-    Aws::Utils::DateTime m_startedAt;
+    Aws::Utils::DateTime m_startedAt{};
+    bool m_startedAtHasBeenSet = false;
 
     Aws::String m_dataSourceSchema;
+    bool m_dataSourceSchemaHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

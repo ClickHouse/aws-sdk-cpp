@@ -32,48 +32,24 @@ namespace Model
   class CaptchaConfig
   {
   public:
-    AWS_WAFV2_API CaptchaConfig();
+    AWS_WAFV2_API CaptchaConfig() = default;
     AWS_WAFV2_API CaptchaConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFV2_API CaptchaConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Determines how long a <code>CAPTCHA</code> timestamp in the token remains
      * valid after the client successfully solves a <code>CAPTCHA</code> puzzle. </p>
      */
-    inline const ImmunityTimeProperty& GetImmunityTimeProperty() const{ return m_immunityTimeProperty; }
-
-    /**
-     * <p>Determines how long a <code>CAPTCHA</code> timestamp in the token remains
-     * valid after the client successfully solves a <code>CAPTCHA</code> puzzle. </p>
-     */
+    inline const ImmunityTimeProperty& GetImmunityTimeProperty() const { return m_immunityTimeProperty; }
     inline bool ImmunityTimePropertyHasBeenSet() const { return m_immunityTimePropertyHasBeenSet; }
-
-    /**
-     * <p>Determines how long a <code>CAPTCHA</code> timestamp in the token remains
-     * valid after the client successfully solves a <code>CAPTCHA</code> puzzle. </p>
-     */
-    inline void SetImmunityTimeProperty(const ImmunityTimeProperty& value) { m_immunityTimePropertyHasBeenSet = true; m_immunityTimeProperty = value; }
-
-    /**
-     * <p>Determines how long a <code>CAPTCHA</code> timestamp in the token remains
-     * valid after the client successfully solves a <code>CAPTCHA</code> puzzle. </p>
-     */
-    inline void SetImmunityTimeProperty(ImmunityTimeProperty&& value) { m_immunityTimePropertyHasBeenSet = true; m_immunityTimeProperty = std::move(value); }
-
-    /**
-     * <p>Determines how long a <code>CAPTCHA</code> timestamp in the token remains
-     * valid after the client successfully solves a <code>CAPTCHA</code> puzzle. </p>
-     */
-    inline CaptchaConfig& WithImmunityTimeProperty(const ImmunityTimeProperty& value) { SetImmunityTimeProperty(value); return *this;}
-
-    /**
-     * <p>Determines how long a <code>CAPTCHA</code> timestamp in the token remains
-     * valid after the client successfully solves a <code>CAPTCHA</code> puzzle. </p>
-     */
-    inline CaptchaConfig& WithImmunityTimeProperty(ImmunityTimeProperty&& value) { SetImmunityTimeProperty(std::move(value)); return *this;}
-
+    template<typename ImmunityTimePropertyT = ImmunityTimeProperty>
+    void SetImmunityTimeProperty(ImmunityTimePropertyT&& value) { m_immunityTimePropertyHasBeenSet = true; m_immunityTimeProperty = std::forward<ImmunityTimePropertyT>(value); }
+    template<typename ImmunityTimePropertyT = ImmunityTimeProperty>
+    CaptchaConfig& WithImmunityTimeProperty(ImmunityTimePropertyT&& value) { SetImmunityTimeProperty(std::forward<ImmunityTimePropertyT>(value)); return *this;}
+    ///@}
   private:
 
     ImmunityTimeProperty m_immunityTimeProperty;

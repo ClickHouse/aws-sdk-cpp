@@ -10,21 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-ExportImageRequest::ExportImageRequest() : 
-    m_clientToken(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_descriptionHasBeenSet(false),
-    m_diskImageFormat(DiskImageFormat::NOT_SET),
-    m_diskImageFormatHasBeenSet(false),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_imageIdHasBeenSet(false),
-    m_s3ExportLocationHasBeenSet(false),
-    m_roleNameHasBeenSet(false),
-    m_tagSpecificationsHasBeenSet(false)
-{
-}
-
 Aws::String ExportImageRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -41,7 +26,7 @@ Aws::String ExportImageRequest::SerializePayload() const
 
   if(m_diskImageFormatHasBeenSet)
   {
-    ss << "DiskImageFormat=" << DiskImageFormatMapper::GetNameForDiskImageFormat(m_diskImageFormat) << "&";
+    ss << "DiskImageFormat=" << StringUtils::URLEncode(DiskImageFormatMapper::GetNameForDiskImageFormat(m_diskImageFormat)) << "&";
   }
 
   if(m_dryRunHasBeenSet)

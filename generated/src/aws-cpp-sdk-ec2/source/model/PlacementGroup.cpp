@@ -20,35 +20,7 @@ namespace EC2
 namespace Model
 {
 
-PlacementGroup::PlacementGroup() : 
-    m_groupNameHasBeenSet(false),
-    m_state(PlacementGroupState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_strategy(PlacementStrategy::NOT_SET),
-    m_strategyHasBeenSet(false),
-    m_partitionCount(0),
-    m_partitionCountHasBeenSet(false),
-    m_groupIdHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_groupArnHasBeenSet(false),
-    m_spreadLevel(SpreadLevel::NOT_SET),
-    m_spreadLevelHasBeenSet(false)
-{
-}
-
-PlacementGroup::PlacementGroup(const XmlNode& xmlNode) : 
-    m_groupNameHasBeenSet(false),
-    m_state(PlacementGroupState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_strategy(PlacementStrategy::NOT_SET),
-    m_strategyHasBeenSet(false),
-    m_partitionCount(0),
-    m_partitionCountHasBeenSet(false),
-    m_groupIdHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_groupArnHasBeenSet(false),
-    m_spreadLevel(SpreadLevel::NOT_SET),
-    m_spreadLevelHasBeenSet(false)
+PlacementGroup::PlacementGroup(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -68,13 +40,13 @@ PlacementGroup& PlacementGroup::operator =(const XmlNode& xmlNode)
     XmlNode stateNode = resultNode.FirstChild("state");
     if(!stateNode.IsNull())
     {
-      m_state = PlacementGroupStateMapper::GetPlacementGroupStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()).c_str());
+      m_state = PlacementGroupStateMapper::GetPlacementGroupStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()));
       m_stateHasBeenSet = true;
     }
     XmlNode strategyNode = resultNode.FirstChild("strategy");
     if(!strategyNode.IsNull())
     {
-      m_strategy = PlacementStrategyMapper::GetPlacementStrategyForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(strategyNode.GetText()).c_str()).c_str());
+      m_strategy = PlacementStrategyMapper::GetPlacementStrategyForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(strategyNode.GetText()).c_str()));
       m_strategyHasBeenSet = true;
     }
     XmlNode partitionCountNode = resultNode.FirstChild("partitionCount");
@@ -93,6 +65,7 @@ PlacementGroup& PlacementGroup::operator =(const XmlNode& xmlNode)
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -110,7 +83,7 @@ PlacementGroup& PlacementGroup::operator =(const XmlNode& xmlNode)
     XmlNode spreadLevelNode = resultNode.FirstChild("spreadLevel");
     if(!spreadLevelNode.IsNull())
     {
-      m_spreadLevel = SpreadLevelMapper::GetSpreadLevelForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(spreadLevelNode.GetText()).c_str()).c_str());
+      m_spreadLevel = SpreadLevelMapper::GetSpreadLevelForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(spreadLevelNode.GetText()).c_str()));
       m_spreadLevelHasBeenSet = true;
     }
   }
@@ -127,12 +100,12 @@ void PlacementGroup::OutputToStream(Aws::OStream& oStream, const char* location,
 
   if(m_stateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".State=" << PlacementGroupStateMapper::GetNameForPlacementGroupState(m_state) << "&";
+      oStream << location << index << locationValue << ".State=" << StringUtils::URLEncode(PlacementGroupStateMapper::GetNameForPlacementGroupState(m_state)) << "&";
   }
 
   if(m_strategyHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Strategy=" << PlacementStrategyMapper::GetNameForPlacementStrategy(m_strategy) << "&";
+      oStream << location << index << locationValue << ".Strategy=" << StringUtils::URLEncode(PlacementStrategyMapper::GetNameForPlacementStrategy(m_strategy)) << "&";
   }
 
   if(m_partitionCountHasBeenSet)
@@ -163,7 +136,7 @@ void PlacementGroup::OutputToStream(Aws::OStream& oStream, const char* location,
 
   if(m_spreadLevelHasBeenSet)
   {
-      oStream << location << index << locationValue << ".SpreadLevel=" << SpreadLevelMapper::GetNameForSpreadLevel(m_spreadLevel) << "&";
+      oStream << location << index << locationValue << ".SpreadLevel=" << StringUtils::URLEncode(SpreadLevelMapper::GetNameForSpreadLevel(m_spreadLevel)) << "&";
   }
 
 }
@@ -176,11 +149,11 @@ void PlacementGroup::OutputToStream(Aws::OStream& oStream, const char* location)
   }
   if(m_stateHasBeenSet)
   {
-      oStream << location << ".State=" << PlacementGroupStateMapper::GetNameForPlacementGroupState(m_state) << "&";
+      oStream << location << ".State=" << StringUtils::URLEncode(PlacementGroupStateMapper::GetNameForPlacementGroupState(m_state)) << "&";
   }
   if(m_strategyHasBeenSet)
   {
-      oStream << location << ".Strategy=" << PlacementStrategyMapper::GetNameForPlacementStrategy(m_strategy) << "&";
+      oStream << location << ".Strategy=" << StringUtils::URLEncode(PlacementStrategyMapper::GetNameForPlacementStrategy(m_strategy)) << "&";
   }
   if(m_partitionCountHasBeenSet)
   {
@@ -196,7 +169,7 @@ void PlacementGroup::OutputToStream(Aws::OStream& oStream, const char* location)
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
@@ -206,7 +179,7 @@ void PlacementGroup::OutputToStream(Aws::OStream& oStream, const char* location)
   }
   if(m_spreadLevelHasBeenSet)
   {
-      oStream << location << ".SpreadLevel=" << SpreadLevelMapper::GetNameForSpreadLevel(m_spreadLevel) << "&";
+      oStream << location << ".SpreadLevel=" << StringUtils::URLEncode(SpreadLevelMapper::GetNameForSpreadLevel(m_spreadLevel)) << "&";
   }
 }
 

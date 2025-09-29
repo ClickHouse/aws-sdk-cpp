@@ -20,19 +20,7 @@ namespace EC2
 namespace Model
 {
 
-CapacityAllocation::CapacityAllocation() : 
-    m_allocationType(AllocationType::NOT_SET),
-    m_allocationTypeHasBeenSet(false),
-    m_count(0),
-    m_countHasBeenSet(false)
-{
-}
-
-CapacityAllocation::CapacityAllocation(const XmlNode& xmlNode) : 
-    m_allocationType(AllocationType::NOT_SET),
-    m_allocationTypeHasBeenSet(false),
-    m_count(0),
-    m_countHasBeenSet(false)
+CapacityAllocation::CapacityAllocation(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -46,7 +34,7 @@ CapacityAllocation& CapacityAllocation::operator =(const XmlNode& xmlNode)
     XmlNode allocationTypeNode = resultNode.FirstChild("allocationType");
     if(!allocationTypeNode.IsNull())
     {
-      m_allocationType = AllocationTypeMapper::GetAllocationTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(allocationTypeNode.GetText()).c_str()).c_str());
+      m_allocationType = AllocationTypeMapper::GetAllocationTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(allocationTypeNode.GetText()).c_str()));
       m_allocationTypeHasBeenSet = true;
     }
     XmlNode countNode = resultNode.FirstChild("count");
@@ -64,7 +52,7 @@ void CapacityAllocation::OutputToStream(Aws::OStream& oStream, const char* locat
 {
   if(m_allocationTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".AllocationType=" << AllocationTypeMapper::GetNameForAllocationType(m_allocationType) << "&";
+      oStream << location << index << locationValue << ".AllocationType=" << StringUtils::URLEncode(AllocationTypeMapper::GetNameForAllocationType(m_allocationType)) << "&";
   }
 
   if(m_countHasBeenSet)
@@ -78,7 +66,7 @@ void CapacityAllocation::OutputToStream(Aws::OStream& oStream, const char* locat
 {
   if(m_allocationTypeHasBeenSet)
   {
-      oStream << location << ".AllocationType=" << AllocationTypeMapper::GetNameForAllocationType(m_allocationType) << "&";
+      oStream << location << ".AllocationType=" << StringUtils::URLEncode(AllocationTypeMapper::GetNameForAllocationType(m_allocationType)) << "&";
   }
   if(m_countHasBeenSet)
   {

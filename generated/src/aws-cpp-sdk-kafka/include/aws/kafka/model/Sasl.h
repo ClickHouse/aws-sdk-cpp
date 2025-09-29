@@ -35,97 +35,39 @@ namespace Model
   class Sasl
   {
   public:
-    AWS_KAFKA_API Sasl();
+    AWS_KAFKA_API Sasl() = default;
     AWS_KAFKA_API Sasl(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKA_API Sasl& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * 
             <p>Details for SASL/SCRAM client authentication.</p>
          
      */
-    inline const Scram& GetScram() const{ return m_scram; }
-
-    /**
-     * 
-            <p>Details for SASL/SCRAM client authentication.</p>
-         
-     */
+    inline const Scram& GetScram() const { return m_scram; }
     inline bool ScramHasBeenSet() const { return m_scramHasBeenSet; }
+    template<typename ScramT = Scram>
+    void SetScram(ScramT&& value) { m_scramHasBeenSet = true; m_scram = std::forward<ScramT>(value); }
+    template<typename ScramT = Scram>
+    Sasl& WithScram(ScramT&& value) { SetScram(std::forward<ScramT>(value)); return *this;}
+    ///@}
 
-    /**
-     * 
-            <p>Details for SASL/SCRAM client authentication.</p>
-         
-     */
-    inline void SetScram(const Scram& value) { m_scramHasBeenSet = true; m_scram = value; }
-
-    /**
-     * 
-            <p>Details for SASL/SCRAM client authentication.</p>
-         
-     */
-    inline void SetScram(Scram&& value) { m_scramHasBeenSet = true; m_scram = std::move(value); }
-
-    /**
-     * 
-            <p>Details for SASL/SCRAM client authentication.</p>
-         
-     */
-    inline Sasl& WithScram(const Scram& value) { SetScram(value); return *this;}
-
-    /**
-     * 
-            <p>Details for SASL/SCRAM client authentication.</p>
-         
-     */
-    inline Sasl& WithScram(Scram&& value) { SetScram(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * 
             <p>Indicates whether IAM access control is enabled.</p>
          
      */
-    inline const Iam& GetIam() const{ return m_iam; }
-
-    /**
-     * 
-            <p>Indicates whether IAM access control is enabled.</p>
-         
-     */
+    inline const Iam& GetIam() const { return m_iam; }
     inline bool IamHasBeenSet() const { return m_iamHasBeenSet; }
-
-    /**
-     * 
-            <p>Indicates whether IAM access control is enabled.</p>
-         
-     */
-    inline void SetIam(const Iam& value) { m_iamHasBeenSet = true; m_iam = value; }
-
-    /**
-     * 
-            <p>Indicates whether IAM access control is enabled.</p>
-         
-     */
-    inline void SetIam(Iam&& value) { m_iamHasBeenSet = true; m_iam = std::move(value); }
-
-    /**
-     * 
-            <p>Indicates whether IAM access control is enabled.</p>
-         
-     */
-    inline Sasl& WithIam(const Iam& value) { SetIam(value); return *this;}
-
-    /**
-     * 
-            <p>Indicates whether IAM access control is enabled.</p>
-         
-     */
-    inline Sasl& WithIam(Iam&& value) { SetIam(std::move(value)); return *this;}
-
+    template<typename IamT = Iam>
+    void SetIam(IamT&& value) { m_iamHasBeenSet = true; m_iam = std::forward<IamT>(value); }
+    template<typename IamT = Iam>
+    Sasl& WithIam(IamT&& value) { SetIam(std::forward<IamT>(value)); return *this;}
+    ///@}
   private:
 
     Scram m_scram;

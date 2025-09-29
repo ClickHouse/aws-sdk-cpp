@@ -18,19 +18,7 @@ namespace ConfigService
 namespace Model
 {
 
-AggregateConformancePackComplianceCount::AggregateConformancePackComplianceCount() : 
-    m_compliantConformancePackCount(0),
-    m_compliantConformancePackCountHasBeenSet(false),
-    m_nonCompliantConformancePackCount(0),
-    m_nonCompliantConformancePackCountHasBeenSet(false)
-{
-}
-
-AggregateConformancePackComplianceCount::AggregateConformancePackComplianceCount(JsonView jsonValue) : 
-    m_compliantConformancePackCount(0),
-    m_compliantConformancePackCountHasBeenSet(false),
-    m_nonCompliantConformancePackCount(0),
-    m_nonCompliantConformancePackCountHasBeenSet(false)
+AggregateConformancePackComplianceCount::AggregateConformancePackComplianceCount(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ AggregateConformancePackComplianceCount& AggregateConformancePackComplianceCount
   if(jsonValue.ValueExists("CompliantConformancePackCount"))
   {
     m_compliantConformancePackCount = jsonValue.GetInteger("CompliantConformancePackCount");
-
     m_compliantConformancePackCountHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NonCompliantConformancePackCount"))
   {
     m_nonCompliantConformancePackCount = jsonValue.GetInteger("NonCompliantConformancePackCount");
-
     m_nonCompliantConformancePackCountHasBeenSet = true;
   }
-
   return *this;
 }
 

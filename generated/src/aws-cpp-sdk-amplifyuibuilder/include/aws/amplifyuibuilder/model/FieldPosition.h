@@ -32,133 +32,49 @@ namespace Model
   class FieldPosition
   {
   public:
-    AWS_AMPLIFYUIBUILDER_API FieldPosition();
+    AWS_AMPLIFYUIBUILDER_API FieldPosition() = default;
     AWS_AMPLIFYUIBUILDER_API FieldPosition(Aws::Utils::Json::JsonView jsonValue);
     AWS_AMPLIFYUIBUILDER_API FieldPosition& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_AMPLIFYUIBUILDER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The field position is fixed and doesn't change in relation to other
      * fields.</p>
      */
-    inline const FixedPosition& GetFixed() const{ return m_fixed; }
-
-    /**
-     * <p>The field position is fixed and doesn't change in relation to other
-     * fields.</p>
-     */
+    inline FixedPosition GetFixed() const { return m_fixed; }
     inline bool FixedHasBeenSet() const { return m_fixedHasBeenSet; }
+    inline void SetFixed(FixedPosition value) { m_fixedHasBeenSet = true; m_fixed = value; }
+    inline FieldPosition& WithFixed(FixedPosition value) { SetFixed(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The field position is fixed and doesn't change in relation to other
-     * fields.</p>
-     */
-    inline void SetFixed(const FixedPosition& value) { m_fixedHasBeenSet = true; m_fixed = value; }
-
-    /**
-     * <p>The field position is fixed and doesn't change in relation to other
-     * fields.</p>
-     */
-    inline void SetFixed(FixedPosition&& value) { m_fixedHasBeenSet = true; m_fixed = std::move(value); }
-
-    /**
-     * <p>The field position is fixed and doesn't change in relation to other
-     * fields.</p>
-     */
-    inline FieldPosition& WithFixed(const FixedPosition& value) { SetFixed(value); return *this;}
-
-    /**
-     * <p>The field position is fixed and doesn't change in relation to other
-     * fields.</p>
-     */
-    inline FieldPosition& WithFixed(FixedPosition&& value) { SetFixed(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The field position is to the right of the field specified by the string.</p>
      */
-    inline const Aws::String& GetRightOf() const{ return m_rightOf; }
-
-    /**
-     * <p>The field position is to the right of the field specified by the string.</p>
-     */
+    inline const Aws::String& GetRightOf() const { return m_rightOf; }
     inline bool RightOfHasBeenSet() const { return m_rightOfHasBeenSet; }
+    template<typename RightOfT = Aws::String>
+    void SetRightOf(RightOfT&& value) { m_rightOfHasBeenSet = true; m_rightOf = std::forward<RightOfT>(value); }
+    template<typename RightOfT = Aws::String>
+    FieldPosition& WithRightOf(RightOfT&& value) { SetRightOf(std::forward<RightOfT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The field position is to the right of the field specified by the string.</p>
-     */
-    inline void SetRightOf(const Aws::String& value) { m_rightOfHasBeenSet = true; m_rightOf = value; }
-
-    /**
-     * <p>The field position is to the right of the field specified by the string.</p>
-     */
-    inline void SetRightOf(Aws::String&& value) { m_rightOfHasBeenSet = true; m_rightOf = std::move(value); }
-
-    /**
-     * <p>The field position is to the right of the field specified by the string.</p>
-     */
-    inline void SetRightOf(const char* value) { m_rightOfHasBeenSet = true; m_rightOf.assign(value); }
-
-    /**
-     * <p>The field position is to the right of the field specified by the string.</p>
-     */
-    inline FieldPosition& WithRightOf(const Aws::String& value) { SetRightOf(value); return *this;}
-
-    /**
-     * <p>The field position is to the right of the field specified by the string.</p>
-     */
-    inline FieldPosition& WithRightOf(Aws::String&& value) { SetRightOf(std::move(value)); return *this;}
-
-    /**
-     * <p>The field position is to the right of the field specified by the string.</p>
-     */
-    inline FieldPosition& WithRightOf(const char* value) { SetRightOf(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The field position is below the field specified by the string.</p>
      */
-    inline const Aws::String& GetBelow() const{ return m_below; }
-
-    /**
-     * <p>The field position is below the field specified by the string.</p>
-     */
+    inline const Aws::String& GetBelow() const { return m_below; }
     inline bool BelowHasBeenSet() const { return m_belowHasBeenSet; }
-
-    /**
-     * <p>The field position is below the field specified by the string.</p>
-     */
-    inline void SetBelow(const Aws::String& value) { m_belowHasBeenSet = true; m_below = value; }
-
-    /**
-     * <p>The field position is below the field specified by the string.</p>
-     */
-    inline void SetBelow(Aws::String&& value) { m_belowHasBeenSet = true; m_below = std::move(value); }
-
-    /**
-     * <p>The field position is below the field specified by the string.</p>
-     */
-    inline void SetBelow(const char* value) { m_belowHasBeenSet = true; m_below.assign(value); }
-
-    /**
-     * <p>The field position is below the field specified by the string.</p>
-     */
-    inline FieldPosition& WithBelow(const Aws::String& value) { SetBelow(value); return *this;}
-
-    /**
-     * <p>The field position is below the field specified by the string.</p>
-     */
-    inline FieldPosition& WithBelow(Aws::String&& value) { SetBelow(std::move(value)); return *this;}
-
-    /**
-     * <p>The field position is below the field specified by the string.</p>
-     */
-    inline FieldPosition& WithBelow(const char* value) { SetBelow(value); return *this;}
-
+    template<typename BelowT = Aws::String>
+    void SetBelow(BelowT&& value) { m_belowHasBeenSet = true; m_below = std::forward<BelowT>(value); }
+    template<typename BelowT = Aws::String>
+    FieldPosition& WithBelow(BelowT&& value) { SetBelow(std::forward<BelowT>(value)); return *this;}
+    ///@}
   private:
 
-    FixedPosition m_fixed;
+    FixedPosition m_fixed{FixedPosition::NOT_SET};
     bool m_fixedHasBeenSet = false;
 
     Aws::String m_rightOf;

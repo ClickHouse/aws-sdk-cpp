@@ -18,13 +18,7 @@ namespace CleanRooms
 namespace Model
 {
 
-ProtectedQueryOutputConfiguration::ProtectedQueryOutputConfiguration() : 
-    m_s3HasBeenSet(false)
-{
-}
-
-ProtectedQueryOutputConfiguration::ProtectedQueryOutputConfiguration(JsonView jsonValue) : 
-    m_s3HasBeenSet(false)
+ProtectedQueryOutputConfiguration::ProtectedQueryOutputConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,18 @@ ProtectedQueryOutputConfiguration& ProtectedQueryOutputConfiguration::operator =
   if(jsonValue.ValueExists("s3"))
   {
     m_s3 = jsonValue.GetObject("s3");
-
     m_s3HasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("member"))
+  {
+    m_member = jsonValue.GetObject("member");
+    m_memberHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("distribute"))
+  {
+    m_distribute = jsonValue.GetObject("distribute");
+    m_distributeHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -48,6 +50,18 @@ JsonValue ProtectedQueryOutputConfiguration::Jsonize() const
   if(m_s3HasBeenSet)
   {
    payload.WithObject("s3", m_s3.Jsonize());
+
+  }
+
+  if(m_memberHasBeenSet)
+  {
+   payload.WithObject("member", m_member.Jsonize());
+
+  }
+
+  if(m_distributeHasBeenSet)
+  {
+   payload.WithObject("distribute", m_distribute.Jsonize());
 
   }
 

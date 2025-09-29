@@ -10,22 +10,13 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-DescribeImageAttributeRequest::DescribeImageAttributeRequest() : 
-    m_attribute(ImageAttributeName::NOT_SET),
-    m_attributeHasBeenSet(false),
-    m_imageIdHasBeenSet(false),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false)
-{
-}
-
 Aws::String DescribeImageAttributeRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=DescribeImageAttribute&";
   if(m_attributeHasBeenSet)
   {
-    ss << "Attribute=" << ImageAttributeNameMapper::GetNameForImageAttributeName(m_attribute) << "&";
+    ss << "Attribute=" << StringUtils::URLEncode(ImageAttributeNameMapper::GetNameForImageAttributeName(m_attribute)) << "&";
   }
 
   if(m_imageIdHasBeenSet)

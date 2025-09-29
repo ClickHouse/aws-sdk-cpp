@@ -18,35 +18,7 @@ namespace AmplifyUIBuilder
 namespace Model
 {
 
-UpdateComponentData::UpdateComponentData() : 
-    m_idHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_sourceIdHasBeenSet(false),
-    m_componentTypeHasBeenSet(false),
-    m_propertiesHasBeenSet(false),
-    m_childrenHasBeenSet(false),
-    m_variantsHasBeenSet(false),
-    m_overridesHasBeenSet(false),
-    m_bindingPropertiesHasBeenSet(false),
-    m_collectionPropertiesHasBeenSet(false),
-    m_eventsHasBeenSet(false),
-    m_schemaVersionHasBeenSet(false)
-{
-}
-
-UpdateComponentData::UpdateComponentData(JsonView jsonValue) : 
-    m_idHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_sourceIdHasBeenSet(false),
-    m_componentTypeHasBeenSet(false),
-    m_propertiesHasBeenSet(false),
-    m_childrenHasBeenSet(false),
-    m_variantsHasBeenSet(false),
-    m_overridesHasBeenSet(false),
-    m_bindingPropertiesHasBeenSet(false),
-    m_collectionPropertiesHasBeenSet(false),
-    m_eventsHasBeenSet(false),
-    m_schemaVersionHasBeenSet(false)
+UpdateComponentData::UpdateComponentData(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -56,31 +28,23 @@ UpdateComponentData& UpdateComponentData::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("id"))
   {
     m_id = jsonValue.GetString("id");
-
     m_idHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("sourceId"))
   {
     m_sourceId = jsonValue.GetString("sourceId");
-
     m_sourceIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("componentType"))
   {
     m_componentType = jsonValue.GetString("componentType");
-
     m_componentTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("properties"))
   {
     Aws::Map<Aws::String, JsonView> propertiesJsonMap = jsonValue.GetObject("properties").GetAllObjects();
@@ -90,7 +54,6 @@ UpdateComponentData& UpdateComponentData::operator =(JsonView jsonValue)
     }
     m_propertiesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("children"))
   {
     Aws::Utils::Array<JsonView> childrenJsonList = jsonValue.GetArray("children");
@@ -100,7 +63,6 @@ UpdateComponentData& UpdateComponentData::operator =(JsonView jsonValue)
     }
     m_childrenHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("variants"))
   {
     Aws::Utils::Array<JsonView> variantsJsonList = jsonValue.GetArray("variants");
@@ -110,7 +72,6 @@ UpdateComponentData& UpdateComponentData::operator =(JsonView jsonValue)
     }
     m_variantsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("overrides"))
   {
     Aws::Map<Aws::String, JsonView> overridesJsonMap = jsonValue.GetObject("overrides").GetAllObjects();
@@ -126,7 +87,6 @@ UpdateComponentData& UpdateComponentData::operator =(JsonView jsonValue)
     }
     m_overridesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("bindingProperties"))
   {
     Aws::Map<Aws::String, JsonView> bindingPropertiesJsonMap = jsonValue.GetObject("bindingProperties").GetAllObjects();
@@ -136,7 +96,6 @@ UpdateComponentData& UpdateComponentData::operator =(JsonView jsonValue)
     }
     m_bindingPropertiesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("collectionProperties"))
   {
     Aws::Map<Aws::String, JsonView> collectionPropertiesJsonMap = jsonValue.GetObject("collectionProperties").GetAllObjects();
@@ -146,7 +105,6 @@ UpdateComponentData& UpdateComponentData::operator =(JsonView jsonValue)
     }
     m_collectionPropertiesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("events"))
   {
     Aws::Map<Aws::String, JsonView> eventsJsonMap = jsonValue.GetObject("events").GetAllObjects();
@@ -156,14 +114,11 @@ UpdateComponentData& UpdateComponentData::operator =(JsonView jsonValue)
     }
     m_eventsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("schemaVersion"))
   {
     m_schemaVersion = jsonValue.GetString("schemaVersion");
-
     m_schemaVersionHasBeenSet = true;
   }
-
   return *this;
 }
 

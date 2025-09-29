@@ -21,7 +21,7 @@ namespace Model
   class DeleteTrafficMirrorTargetRequest : public EC2Request
   {
   public:
-    AWS_EC2_API DeleteTrafficMirrorTargetRequest();
+    AWS_EC2_API DeleteTrafficMirrorTargetRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,85 +36,36 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The ID of the Traffic Mirror target.</p>
      */
-    inline const Aws::String& GetTrafficMirrorTargetId() const{ return m_trafficMirrorTargetId; }
-
-    /**
-     * <p>The ID of the Traffic Mirror target.</p>
-     */
+    inline const Aws::String& GetTrafficMirrorTargetId() const { return m_trafficMirrorTargetId; }
     inline bool TrafficMirrorTargetIdHasBeenSet() const { return m_trafficMirrorTargetIdHasBeenSet; }
+    template<typename TrafficMirrorTargetIdT = Aws::String>
+    void SetTrafficMirrorTargetId(TrafficMirrorTargetIdT&& value) { m_trafficMirrorTargetIdHasBeenSet = true; m_trafficMirrorTargetId = std::forward<TrafficMirrorTargetIdT>(value); }
+    template<typename TrafficMirrorTargetIdT = Aws::String>
+    DeleteTrafficMirrorTargetRequest& WithTrafficMirrorTargetId(TrafficMirrorTargetIdT&& value) { SetTrafficMirrorTargetId(std::forward<TrafficMirrorTargetIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Traffic Mirror target.</p>
-     */
-    inline void SetTrafficMirrorTargetId(const Aws::String& value) { m_trafficMirrorTargetIdHasBeenSet = true; m_trafficMirrorTargetId = value; }
-
-    /**
-     * <p>The ID of the Traffic Mirror target.</p>
-     */
-    inline void SetTrafficMirrorTargetId(Aws::String&& value) { m_trafficMirrorTargetIdHasBeenSet = true; m_trafficMirrorTargetId = std::move(value); }
-
-    /**
-     * <p>The ID of the Traffic Mirror target.</p>
-     */
-    inline void SetTrafficMirrorTargetId(const char* value) { m_trafficMirrorTargetIdHasBeenSet = true; m_trafficMirrorTargetId.assign(value); }
-
-    /**
-     * <p>The ID of the Traffic Mirror target.</p>
-     */
-    inline DeleteTrafficMirrorTargetRequest& WithTrafficMirrorTargetId(const Aws::String& value) { SetTrafficMirrorTargetId(value); return *this;}
-
-    /**
-     * <p>The ID of the Traffic Mirror target.</p>
-     */
-    inline DeleteTrafficMirrorTargetRequest& WithTrafficMirrorTargetId(Aws::String&& value) { SetTrafficMirrorTargetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Traffic Mirror target.</p>
-     */
-    inline DeleteTrafficMirrorTargetRequest& WithTrafficMirrorTargetId(const char* value) { SetTrafficMirrorTargetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
      * required permissions, the error response is <code>DryRunOperation</code>.
      * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
      */
-    inline bool GetDryRun() const{ return m_dryRun; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
+    inline bool GetDryRun() const { return m_dryRun; }
     inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline DeleteTrafficMirrorTargetRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_trafficMirrorTargetId;
     bool m_trafficMirrorTargetIdHasBeenSet = false;
 
-    bool m_dryRun;
+    bool m_dryRun{false};
     bool m_dryRunHasBeenSet = false;
   };
 

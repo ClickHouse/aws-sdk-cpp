@@ -18,35 +18,23 @@ namespace WorkSpacesWeb
 namespace Model
 {
 
-UserAccessLoggingSettingsSummary::UserAccessLoggingSettingsSummary() : 
-    m_kinesisStreamArnHasBeenSet(false),
-    m_userAccessLoggingSettingsArnHasBeenSet(false)
-{
-}
-
-UserAccessLoggingSettingsSummary::UserAccessLoggingSettingsSummary(JsonView jsonValue) : 
-    m_kinesisStreamArnHasBeenSet(false),
-    m_userAccessLoggingSettingsArnHasBeenSet(false)
+UserAccessLoggingSettingsSummary::UserAccessLoggingSettingsSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 UserAccessLoggingSettingsSummary& UserAccessLoggingSettingsSummary::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("kinesisStreamArn"))
-  {
-    m_kinesisStreamArn = jsonValue.GetString("kinesisStreamArn");
-
-    m_kinesisStreamArnHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("userAccessLoggingSettingsArn"))
   {
     m_userAccessLoggingSettingsArn = jsonValue.GetString("userAccessLoggingSettingsArn");
-
     m_userAccessLoggingSettingsArnHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("kinesisStreamArn"))
+  {
+    m_kinesisStreamArn = jsonValue.GetString("kinesisStreamArn");
+    m_kinesisStreamArnHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -54,15 +42,15 @@ JsonValue UserAccessLoggingSettingsSummary::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_kinesisStreamArnHasBeenSet)
-  {
-   payload.WithString("kinesisStreamArn", m_kinesisStreamArn);
-
-  }
-
   if(m_userAccessLoggingSettingsArnHasBeenSet)
   {
    payload.WithString("userAccessLoggingSettingsArn", m_userAccessLoggingSettingsArn);
+
+  }
+
+  if(m_kinesisStreamArnHasBeenSet)
+  {
+   payload.WithString("kinesisStreamArn", m_kinesisStreamArn);
 
   }
 

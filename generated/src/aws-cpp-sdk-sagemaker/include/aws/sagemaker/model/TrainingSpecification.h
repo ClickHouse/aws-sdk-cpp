@@ -39,410 +39,134 @@ namespace Model
   class TrainingSpecification
   {
   public:
-    AWS_SAGEMAKER_API TrainingSpecification();
+    AWS_SAGEMAKER_API TrainingSpecification() = default;
     AWS_SAGEMAKER_API TrainingSpecification(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API TrainingSpecification& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon ECR registry path of the Docker image that contains the training
      * algorithm.</p>
      */
-    inline const Aws::String& GetTrainingImage() const{ return m_trainingImage; }
-
-    /**
-     * <p>The Amazon ECR registry path of the Docker image that contains the training
-     * algorithm.</p>
-     */
+    inline const Aws::String& GetTrainingImage() const { return m_trainingImage; }
     inline bool TrainingImageHasBeenSet() const { return m_trainingImageHasBeenSet; }
+    template<typename TrainingImageT = Aws::String>
+    void SetTrainingImage(TrainingImageT&& value) { m_trainingImageHasBeenSet = true; m_trainingImage = std::forward<TrainingImageT>(value); }
+    template<typename TrainingImageT = Aws::String>
+    TrainingSpecification& WithTrainingImage(TrainingImageT&& value) { SetTrainingImage(std::forward<TrainingImageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon ECR registry path of the Docker image that contains the training
-     * algorithm.</p>
-     */
-    inline void SetTrainingImage(const Aws::String& value) { m_trainingImageHasBeenSet = true; m_trainingImage = value; }
-
-    /**
-     * <p>The Amazon ECR registry path of the Docker image that contains the training
-     * algorithm.</p>
-     */
-    inline void SetTrainingImage(Aws::String&& value) { m_trainingImageHasBeenSet = true; m_trainingImage = std::move(value); }
-
-    /**
-     * <p>The Amazon ECR registry path of the Docker image that contains the training
-     * algorithm.</p>
-     */
-    inline void SetTrainingImage(const char* value) { m_trainingImageHasBeenSet = true; m_trainingImage.assign(value); }
-
-    /**
-     * <p>The Amazon ECR registry path of the Docker image that contains the training
-     * algorithm.</p>
-     */
-    inline TrainingSpecification& WithTrainingImage(const Aws::String& value) { SetTrainingImage(value); return *this;}
-
-    /**
-     * <p>The Amazon ECR registry path of the Docker image that contains the training
-     * algorithm.</p>
-     */
-    inline TrainingSpecification& WithTrainingImage(Aws::String&& value) { SetTrainingImage(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon ECR registry path of the Docker image that contains the training
-     * algorithm.</p>
-     */
-    inline TrainingSpecification& WithTrainingImage(const char* value) { SetTrainingImage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An MD5 hash of the training algorithm that identifies the Docker image used
      * for training.</p>
      */
-    inline const Aws::String& GetTrainingImageDigest() const{ return m_trainingImageDigest; }
-
-    /**
-     * <p>An MD5 hash of the training algorithm that identifies the Docker image used
-     * for training.</p>
-     */
+    inline const Aws::String& GetTrainingImageDigest() const { return m_trainingImageDigest; }
     inline bool TrainingImageDigestHasBeenSet() const { return m_trainingImageDigestHasBeenSet; }
+    template<typename TrainingImageDigestT = Aws::String>
+    void SetTrainingImageDigest(TrainingImageDigestT&& value) { m_trainingImageDigestHasBeenSet = true; m_trainingImageDigest = std::forward<TrainingImageDigestT>(value); }
+    template<typename TrainingImageDigestT = Aws::String>
+    TrainingSpecification& WithTrainingImageDigest(TrainingImageDigestT&& value) { SetTrainingImageDigest(std::forward<TrainingImageDigestT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An MD5 hash of the training algorithm that identifies the Docker image used
-     * for training.</p>
-     */
-    inline void SetTrainingImageDigest(const Aws::String& value) { m_trainingImageDigestHasBeenSet = true; m_trainingImageDigest = value; }
-
-    /**
-     * <p>An MD5 hash of the training algorithm that identifies the Docker image used
-     * for training.</p>
-     */
-    inline void SetTrainingImageDigest(Aws::String&& value) { m_trainingImageDigestHasBeenSet = true; m_trainingImageDigest = std::move(value); }
-
-    /**
-     * <p>An MD5 hash of the training algorithm that identifies the Docker image used
-     * for training.</p>
-     */
-    inline void SetTrainingImageDigest(const char* value) { m_trainingImageDigestHasBeenSet = true; m_trainingImageDigest.assign(value); }
-
-    /**
-     * <p>An MD5 hash of the training algorithm that identifies the Docker image used
-     * for training.</p>
-     */
-    inline TrainingSpecification& WithTrainingImageDigest(const Aws::String& value) { SetTrainingImageDigest(value); return *this;}
-
-    /**
-     * <p>An MD5 hash of the training algorithm that identifies the Docker image used
-     * for training.</p>
-     */
-    inline TrainingSpecification& WithTrainingImageDigest(Aws::String&& value) { SetTrainingImageDigest(std::move(value)); return *this;}
-
-    /**
-     * <p>An MD5 hash of the training algorithm that identifies the Docker image used
-     * for training.</p>
-     */
-    inline TrainingSpecification& WithTrainingImageDigest(const char* value) { SetTrainingImageDigest(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of the <code>HyperParameterSpecification</code> objects, that define
      * the supported hyperparameters. This is required if the algorithm supports
      * automatic model tuning.&gt;</p>
      */
-    inline const Aws::Vector<HyperParameterSpecification>& GetSupportedHyperParameters() const{ return m_supportedHyperParameters; }
-
-    /**
-     * <p>A list of the <code>HyperParameterSpecification</code> objects, that define
-     * the supported hyperparameters. This is required if the algorithm supports
-     * automatic model tuning.&gt;</p>
-     */
+    inline const Aws::Vector<HyperParameterSpecification>& GetSupportedHyperParameters() const { return m_supportedHyperParameters; }
     inline bool SupportedHyperParametersHasBeenSet() const { return m_supportedHyperParametersHasBeenSet; }
+    template<typename SupportedHyperParametersT = Aws::Vector<HyperParameterSpecification>>
+    void SetSupportedHyperParameters(SupportedHyperParametersT&& value) { m_supportedHyperParametersHasBeenSet = true; m_supportedHyperParameters = std::forward<SupportedHyperParametersT>(value); }
+    template<typename SupportedHyperParametersT = Aws::Vector<HyperParameterSpecification>>
+    TrainingSpecification& WithSupportedHyperParameters(SupportedHyperParametersT&& value) { SetSupportedHyperParameters(std::forward<SupportedHyperParametersT>(value)); return *this;}
+    template<typename SupportedHyperParametersT = HyperParameterSpecification>
+    TrainingSpecification& AddSupportedHyperParameters(SupportedHyperParametersT&& value) { m_supportedHyperParametersHasBeenSet = true; m_supportedHyperParameters.emplace_back(std::forward<SupportedHyperParametersT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of the <code>HyperParameterSpecification</code> objects, that define
-     * the supported hyperparameters. This is required if the algorithm supports
-     * automatic model tuning.&gt;</p>
-     */
-    inline void SetSupportedHyperParameters(const Aws::Vector<HyperParameterSpecification>& value) { m_supportedHyperParametersHasBeenSet = true; m_supportedHyperParameters = value; }
-
-    /**
-     * <p>A list of the <code>HyperParameterSpecification</code> objects, that define
-     * the supported hyperparameters. This is required if the algorithm supports
-     * automatic model tuning.&gt;</p>
-     */
-    inline void SetSupportedHyperParameters(Aws::Vector<HyperParameterSpecification>&& value) { m_supportedHyperParametersHasBeenSet = true; m_supportedHyperParameters = std::move(value); }
-
-    /**
-     * <p>A list of the <code>HyperParameterSpecification</code> objects, that define
-     * the supported hyperparameters. This is required if the algorithm supports
-     * automatic model tuning.&gt;</p>
-     */
-    inline TrainingSpecification& WithSupportedHyperParameters(const Aws::Vector<HyperParameterSpecification>& value) { SetSupportedHyperParameters(value); return *this;}
-
-    /**
-     * <p>A list of the <code>HyperParameterSpecification</code> objects, that define
-     * the supported hyperparameters. This is required if the algorithm supports
-     * automatic model tuning.&gt;</p>
-     */
-    inline TrainingSpecification& WithSupportedHyperParameters(Aws::Vector<HyperParameterSpecification>&& value) { SetSupportedHyperParameters(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of the <code>HyperParameterSpecification</code> objects, that define
-     * the supported hyperparameters. This is required if the algorithm supports
-     * automatic model tuning.&gt;</p>
-     */
-    inline TrainingSpecification& AddSupportedHyperParameters(const HyperParameterSpecification& value) { m_supportedHyperParametersHasBeenSet = true; m_supportedHyperParameters.push_back(value); return *this; }
-
-    /**
-     * <p>A list of the <code>HyperParameterSpecification</code> objects, that define
-     * the supported hyperparameters. This is required if the algorithm supports
-     * automatic model tuning.&gt;</p>
-     */
-    inline TrainingSpecification& AddSupportedHyperParameters(HyperParameterSpecification&& value) { m_supportedHyperParametersHasBeenSet = true; m_supportedHyperParameters.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of the instance types that this algorithm can use for training.</p>
      */
-    inline const Aws::Vector<TrainingInstanceType>& GetSupportedTrainingInstanceTypes() const{ return m_supportedTrainingInstanceTypes; }
-
-    /**
-     * <p>A list of the instance types that this algorithm can use for training.</p>
-     */
+    inline const Aws::Vector<TrainingInstanceType>& GetSupportedTrainingInstanceTypes() const { return m_supportedTrainingInstanceTypes; }
     inline bool SupportedTrainingInstanceTypesHasBeenSet() const { return m_supportedTrainingInstanceTypesHasBeenSet; }
+    template<typename SupportedTrainingInstanceTypesT = Aws::Vector<TrainingInstanceType>>
+    void SetSupportedTrainingInstanceTypes(SupportedTrainingInstanceTypesT&& value) { m_supportedTrainingInstanceTypesHasBeenSet = true; m_supportedTrainingInstanceTypes = std::forward<SupportedTrainingInstanceTypesT>(value); }
+    template<typename SupportedTrainingInstanceTypesT = Aws::Vector<TrainingInstanceType>>
+    TrainingSpecification& WithSupportedTrainingInstanceTypes(SupportedTrainingInstanceTypesT&& value) { SetSupportedTrainingInstanceTypes(std::forward<SupportedTrainingInstanceTypesT>(value)); return *this;}
+    inline TrainingSpecification& AddSupportedTrainingInstanceTypes(TrainingInstanceType value) { m_supportedTrainingInstanceTypesHasBeenSet = true; m_supportedTrainingInstanceTypes.push_back(value); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of the instance types that this algorithm can use for training.</p>
-     */
-    inline void SetSupportedTrainingInstanceTypes(const Aws::Vector<TrainingInstanceType>& value) { m_supportedTrainingInstanceTypesHasBeenSet = true; m_supportedTrainingInstanceTypes = value; }
-
-    /**
-     * <p>A list of the instance types that this algorithm can use for training.</p>
-     */
-    inline void SetSupportedTrainingInstanceTypes(Aws::Vector<TrainingInstanceType>&& value) { m_supportedTrainingInstanceTypesHasBeenSet = true; m_supportedTrainingInstanceTypes = std::move(value); }
-
-    /**
-     * <p>A list of the instance types that this algorithm can use for training.</p>
-     */
-    inline TrainingSpecification& WithSupportedTrainingInstanceTypes(const Aws::Vector<TrainingInstanceType>& value) { SetSupportedTrainingInstanceTypes(value); return *this;}
-
-    /**
-     * <p>A list of the instance types that this algorithm can use for training.</p>
-     */
-    inline TrainingSpecification& WithSupportedTrainingInstanceTypes(Aws::Vector<TrainingInstanceType>&& value) { SetSupportedTrainingInstanceTypes(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of the instance types that this algorithm can use for training.</p>
-     */
-    inline TrainingSpecification& AddSupportedTrainingInstanceTypes(const TrainingInstanceType& value) { m_supportedTrainingInstanceTypesHasBeenSet = true; m_supportedTrainingInstanceTypes.push_back(value); return *this; }
-
-    /**
-     * <p>A list of the instance types that this algorithm can use for training.</p>
-     */
-    inline TrainingSpecification& AddSupportedTrainingInstanceTypes(TrainingInstanceType&& value) { m_supportedTrainingInstanceTypesHasBeenSet = true; m_supportedTrainingInstanceTypes.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Indicates whether the algorithm supports distributed training. If set to
      * false, buyers can't request more than one instance during training.</p>
      */
-    inline bool GetSupportsDistributedTraining() const{ return m_supportsDistributedTraining; }
-
-    /**
-     * <p>Indicates whether the algorithm supports distributed training. If set to
-     * false, buyers can't request more than one instance during training.</p>
-     */
+    inline bool GetSupportsDistributedTraining() const { return m_supportsDistributedTraining; }
     inline bool SupportsDistributedTrainingHasBeenSet() const { return m_supportsDistributedTrainingHasBeenSet; }
-
-    /**
-     * <p>Indicates whether the algorithm supports distributed training. If set to
-     * false, buyers can't request more than one instance during training.</p>
-     */
     inline void SetSupportsDistributedTraining(bool value) { m_supportsDistributedTrainingHasBeenSet = true; m_supportsDistributedTraining = value; }
-
-    /**
-     * <p>Indicates whether the algorithm supports distributed training. If set to
-     * false, buyers can't request more than one instance during training.</p>
-     */
     inline TrainingSpecification& WithSupportsDistributedTraining(bool value) { SetSupportsDistributedTraining(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>A list of <code>MetricDefinition</code> objects, which are used for parsing
      * metrics generated by the algorithm.</p>
      */
-    inline const Aws::Vector<MetricDefinition>& GetMetricDefinitions() const{ return m_metricDefinitions; }
-
-    /**
-     * <p>A list of <code>MetricDefinition</code> objects, which are used for parsing
-     * metrics generated by the algorithm.</p>
-     */
+    inline const Aws::Vector<MetricDefinition>& GetMetricDefinitions() const { return m_metricDefinitions; }
     inline bool MetricDefinitionsHasBeenSet() const { return m_metricDefinitionsHasBeenSet; }
+    template<typename MetricDefinitionsT = Aws::Vector<MetricDefinition>>
+    void SetMetricDefinitions(MetricDefinitionsT&& value) { m_metricDefinitionsHasBeenSet = true; m_metricDefinitions = std::forward<MetricDefinitionsT>(value); }
+    template<typename MetricDefinitionsT = Aws::Vector<MetricDefinition>>
+    TrainingSpecification& WithMetricDefinitions(MetricDefinitionsT&& value) { SetMetricDefinitions(std::forward<MetricDefinitionsT>(value)); return *this;}
+    template<typename MetricDefinitionsT = MetricDefinition>
+    TrainingSpecification& AddMetricDefinitions(MetricDefinitionsT&& value) { m_metricDefinitionsHasBeenSet = true; m_metricDefinitions.emplace_back(std::forward<MetricDefinitionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of <code>MetricDefinition</code> objects, which are used for parsing
-     * metrics generated by the algorithm.</p>
-     */
-    inline void SetMetricDefinitions(const Aws::Vector<MetricDefinition>& value) { m_metricDefinitionsHasBeenSet = true; m_metricDefinitions = value; }
-
-    /**
-     * <p>A list of <code>MetricDefinition</code> objects, which are used for parsing
-     * metrics generated by the algorithm.</p>
-     */
-    inline void SetMetricDefinitions(Aws::Vector<MetricDefinition>&& value) { m_metricDefinitionsHasBeenSet = true; m_metricDefinitions = std::move(value); }
-
-    /**
-     * <p>A list of <code>MetricDefinition</code> objects, which are used for parsing
-     * metrics generated by the algorithm.</p>
-     */
-    inline TrainingSpecification& WithMetricDefinitions(const Aws::Vector<MetricDefinition>& value) { SetMetricDefinitions(value); return *this;}
-
-    /**
-     * <p>A list of <code>MetricDefinition</code> objects, which are used for parsing
-     * metrics generated by the algorithm.</p>
-     */
-    inline TrainingSpecification& WithMetricDefinitions(Aws::Vector<MetricDefinition>&& value) { SetMetricDefinitions(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of <code>MetricDefinition</code> objects, which are used for parsing
-     * metrics generated by the algorithm.</p>
-     */
-    inline TrainingSpecification& AddMetricDefinitions(const MetricDefinition& value) { m_metricDefinitionsHasBeenSet = true; m_metricDefinitions.push_back(value); return *this; }
-
-    /**
-     * <p>A list of <code>MetricDefinition</code> objects, which are used for parsing
-     * metrics generated by the algorithm.</p>
-     */
-    inline TrainingSpecification& AddMetricDefinitions(MetricDefinition&& value) { m_metricDefinitionsHasBeenSet = true; m_metricDefinitions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of <code>ChannelSpecification</code> objects, which specify the input
      * sources to be used by the algorithm.</p>
      */
-    inline const Aws::Vector<ChannelSpecification>& GetTrainingChannels() const{ return m_trainingChannels; }
-
-    /**
-     * <p>A list of <code>ChannelSpecification</code> objects, which specify the input
-     * sources to be used by the algorithm.</p>
-     */
+    inline const Aws::Vector<ChannelSpecification>& GetTrainingChannels() const { return m_trainingChannels; }
     inline bool TrainingChannelsHasBeenSet() const { return m_trainingChannelsHasBeenSet; }
+    template<typename TrainingChannelsT = Aws::Vector<ChannelSpecification>>
+    void SetTrainingChannels(TrainingChannelsT&& value) { m_trainingChannelsHasBeenSet = true; m_trainingChannels = std::forward<TrainingChannelsT>(value); }
+    template<typename TrainingChannelsT = Aws::Vector<ChannelSpecification>>
+    TrainingSpecification& WithTrainingChannels(TrainingChannelsT&& value) { SetTrainingChannels(std::forward<TrainingChannelsT>(value)); return *this;}
+    template<typename TrainingChannelsT = ChannelSpecification>
+    TrainingSpecification& AddTrainingChannels(TrainingChannelsT&& value) { m_trainingChannelsHasBeenSet = true; m_trainingChannels.emplace_back(std::forward<TrainingChannelsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of <code>ChannelSpecification</code> objects, which specify the input
-     * sources to be used by the algorithm.</p>
-     */
-    inline void SetTrainingChannels(const Aws::Vector<ChannelSpecification>& value) { m_trainingChannelsHasBeenSet = true; m_trainingChannels = value; }
-
-    /**
-     * <p>A list of <code>ChannelSpecification</code> objects, which specify the input
-     * sources to be used by the algorithm.</p>
-     */
-    inline void SetTrainingChannels(Aws::Vector<ChannelSpecification>&& value) { m_trainingChannelsHasBeenSet = true; m_trainingChannels = std::move(value); }
-
-    /**
-     * <p>A list of <code>ChannelSpecification</code> objects, which specify the input
-     * sources to be used by the algorithm.</p>
-     */
-    inline TrainingSpecification& WithTrainingChannels(const Aws::Vector<ChannelSpecification>& value) { SetTrainingChannels(value); return *this;}
-
-    /**
-     * <p>A list of <code>ChannelSpecification</code> objects, which specify the input
-     * sources to be used by the algorithm.</p>
-     */
-    inline TrainingSpecification& WithTrainingChannels(Aws::Vector<ChannelSpecification>&& value) { SetTrainingChannels(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of <code>ChannelSpecification</code> objects, which specify the input
-     * sources to be used by the algorithm.</p>
-     */
-    inline TrainingSpecification& AddTrainingChannels(const ChannelSpecification& value) { m_trainingChannelsHasBeenSet = true; m_trainingChannels.push_back(value); return *this; }
-
-    /**
-     * <p>A list of <code>ChannelSpecification</code> objects, which specify the input
-     * sources to be used by the algorithm.</p>
-     */
-    inline TrainingSpecification& AddTrainingChannels(ChannelSpecification&& value) { m_trainingChannelsHasBeenSet = true; m_trainingChannels.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of the metrics that the algorithm emits that can be used as the
      * objective metric in a hyperparameter tuning job.</p>
      */
-    inline const Aws::Vector<HyperParameterTuningJobObjective>& GetSupportedTuningJobObjectiveMetrics() const{ return m_supportedTuningJobObjectiveMetrics; }
-
-    /**
-     * <p>A list of the metrics that the algorithm emits that can be used as the
-     * objective metric in a hyperparameter tuning job.</p>
-     */
+    inline const Aws::Vector<HyperParameterTuningJobObjective>& GetSupportedTuningJobObjectiveMetrics() const { return m_supportedTuningJobObjectiveMetrics; }
     inline bool SupportedTuningJobObjectiveMetricsHasBeenSet() const { return m_supportedTuningJobObjectiveMetricsHasBeenSet; }
+    template<typename SupportedTuningJobObjectiveMetricsT = Aws::Vector<HyperParameterTuningJobObjective>>
+    void SetSupportedTuningJobObjectiveMetrics(SupportedTuningJobObjectiveMetricsT&& value) { m_supportedTuningJobObjectiveMetricsHasBeenSet = true; m_supportedTuningJobObjectiveMetrics = std::forward<SupportedTuningJobObjectiveMetricsT>(value); }
+    template<typename SupportedTuningJobObjectiveMetricsT = Aws::Vector<HyperParameterTuningJobObjective>>
+    TrainingSpecification& WithSupportedTuningJobObjectiveMetrics(SupportedTuningJobObjectiveMetricsT&& value) { SetSupportedTuningJobObjectiveMetrics(std::forward<SupportedTuningJobObjectiveMetricsT>(value)); return *this;}
+    template<typename SupportedTuningJobObjectiveMetricsT = HyperParameterTuningJobObjective>
+    TrainingSpecification& AddSupportedTuningJobObjectiveMetrics(SupportedTuningJobObjectiveMetricsT&& value) { m_supportedTuningJobObjectiveMetricsHasBeenSet = true; m_supportedTuningJobObjectiveMetrics.emplace_back(std::forward<SupportedTuningJobObjectiveMetricsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of the metrics that the algorithm emits that can be used as the
-     * objective metric in a hyperparameter tuning job.</p>
-     */
-    inline void SetSupportedTuningJobObjectiveMetrics(const Aws::Vector<HyperParameterTuningJobObjective>& value) { m_supportedTuningJobObjectiveMetricsHasBeenSet = true; m_supportedTuningJobObjectiveMetrics = value; }
-
-    /**
-     * <p>A list of the metrics that the algorithm emits that can be used as the
-     * objective metric in a hyperparameter tuning job.</p>
-     */
-    inline void SetSupportedTuningJobObjectiveMetrics(Aws::Vector<HyperParameterTuningJobObjective>&& value) { m_supportedTuningJobObjectiveMetricsHasBeenSet = true; m_supportedTuningJobObjectiveMetrics = std::move(value); }
-
-    /**
-     * <p>A list of the metrics that the algorithm emits that can be used as the
-     * objective metric in a hyperparameter tuning job.</p>
-     */
-    inline TrainingSpecification& WithSupportedTuningJobObjectiveMetrics(const Aws::Vector<HyperParameterTuningJobObjective>& value) { SetSupportedTuningJobObjectiveMetrics(value); return *this;}
-
-    /**
-     * <p>A list of the metrics that the algorithm emits that can be used as the
-     * objective metric in a hyperparameter tuning job.</p>
-     */
-    inline TrainingSpecification& WithSupportedTuningJobObjectiveMetrics(Aws::Vector<HyperParameterTuningJobObjective>&& value) { SetSupportedTuningJobObjectiveMetrics(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of the metrics that the algorithm emits that can be used as the
-     * objective metric in a hyperparameter tuning job.</p>
-     */
-    inline TrainingSpecification& AddSupportedTuningJobObjectiveMetrics(const HyperParameterTuningJobObjective& value) { m_supportedTuningJobObjectiveMetricsHasBeenSet = true; m_supportedTuningJobObjectiveMetrics.push_back(value); return *this; }
-
-    /**
-     * <p>A list of the metrics that the algorithm emits that can be used as the
-     * objective metric in a hyperparameter tuning job.</p>
-     */
-    inline TrainingSpecification& AddSupportedTuningJobObjectiveMetrics(HyperParameterTuningJobObjective&& value) { m_supportedTuningJobObjectiveMetricsHasBeenSet = true; m_supportedTuningJobObjectiveMetrics.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The additional data source used during the training job.</p>
      */
-    inline const AdditionalS3DataSource& GetAdditionalS3DataSource() const{ return m_additionalS3DataSource; }
-
-    /**
-     * <p>The additional data source used during the training job.</p>
-     */
+    inline const AdditionalS3DataSource& GetAdditionalS3DataSource() const { return m_additionalS3DataSource; }
     inline bool AdditionalS3DataSourceHasBeenSet() const { return m_additionalS3DataSourceHasBeenSet; }
-
-    /**
-     * <p>The additional data source used during the training job.</p>
-     */
-    inline void SetAdditionalS3DataSource(const AdditionalS3DataSource& value) { m_additionalS3DataSourceHasBeenSet = true; m_additionalS3DataSource = value; }
-
-    /**
-     * <p>The additional data source used during the training job.</p>
-     */
-    inline void SetAdditionalS3DataSource(AdditionalS3DataSource&& value) { m_additionalS3DataSourceHasBeenSet = true; m_additionalS3DataSource = std::move(value); }
-
-    /**
-     * <p>The additional data source used during the training job.</p>
-     */
-    inline TrainingSpecification& WithAdditionalS3DataSource(const AdditionalS3DataSource& value) { SetAdditionalS3DataSource(value); return *this;}
-
-    /**
-     * <p>The additional data source used during the training job.</p>
-     */
-    inline TrainingSpecification& WithAdditionalS3DataSource(AdditionalS3DataSource&& value) { SetAdditionalS3DataSource(std::move(value)); return *this;}
-
+    template<typename AdditionalS3DataSourceT = AdditionalS3DataSource>
+    void SetAdditionalS3DataSource(AdditionalS3DataSourceT&& value) { m_additionalS3DataSourceHasBeenSet = true; m_additionalS3DataSource = std::forward<AdditionalS3DataSourceT>(value); }
+    template<typename AdditionalS3DataSourceT = AdditionalS3DataSource>
+    TrainingSpecification& WithAdditionalS3DataSource(AdditionalS3DataSourceT&& value) { SetAdditionalS3DataSource(std::forward<AdditionalS3DataSourceT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_trainingImage;
@@ -457,7 +181,7 @@ namespace Model
     Aws::Vector<TrainingInstanceType> m_supportedTrainingInstanceTypes;
     bool m_supportedTrainingInstanceTypesHasBeenSet = false;
 
-    bool m_supportsDistributedTraining;
+    bool m_supportsDistributedTraining{false};
     bool m_supportsDistributedTrainingHasBeenSet = false;
 
     Aws::Vector<MetricDefinition> m_metricDefinitions;

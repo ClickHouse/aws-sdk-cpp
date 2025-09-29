@@ -40,249 +40,73 @@ namespace Model
   class LaunchPermissionConfiguration
   {
   public:
-    AWS_IMAGEBUILDER_API LaunchPermissionConfiguration();
+    AWS_IMAGEBUILDER_API LaunchPermissionConfiguration() = default;
     AWS_IMAGEBUILDER_API LaunchPermissionConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_IMAGEBUILDER_API LaunchPermissionConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IMAGEBUILDER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Web Services account ID.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetUserIds() const{ return m_userIds; }
-
-    /**
-     * <p>The Amazon Web Services account ID.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetUserIds() const { return m_userIds; }
     inline bool UserIdsHasBeenSet() const { return m_userIdsHasBeenSet; }
+    template<typename UserIdsT = Aws::Vector<Aws::String>>
+    void SetUserIds(UserIdsT&& value) { m_userIdsHasBeenSet = true; m_userIds = std::forward<UserIdsT>(value); }
+    template<typename UserIdsT = Aws::Vector<Aws::String>>
+    LaunchPermissionConfiguration& WithUserIds(UserIdsT&& value) { SetUserIds(std::forward<UserIdsT>(value)); return *this;}
+    template<typename UserIdsT = Aws::String>
+    LaunchPermissionConfiguration& AddUserIds(UserIdsT&& value) { m_userIdsHasBeenSet = true; m_userIds.emplace_back(std::forward<UserIdsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The Amazon Web Services account ID.</p>
-     */
-    inline void SetUserIds(const Aws::Vector<Aws::String>& value) { m_userIdsHasBeenSet = true; m_userIds = value; }
-
-    /**
-     * <p>The Amazon Web Services account ID.</p>
-     */
-    inline void SetUserIds(Aws::Vector<Aws::String>&& value) { m_userIdsHasBeenSet = true; m_userIds = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID.</p>
-     */
-    inline LaunchPermissionConfiguration& WithUserIds(const Aws::Vector<Aws::String>& value) { SetUserIds(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID.</p>
-     */
-    inline LaunchPermissionConfiguration& WithUserIds(Aws::Vector<Aws::String>&& value) { SetUserIds(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID.</p>
-     */
-    inline LaunchPermissionConfiguration& AddUserIds(const Aws::String& value) { m_userIdsHasBeenSet = true; m_userIds.push_back(value); return *this; }
-
-    /**
-     * <p>The Amazon Web Services account ID.</p>
-     */
-    inline LaunchPermissionConfiguration& AddUserIds(Aws::String&& value) { m_userIdsHasBeenSet = true; m_userIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The Amazon Web Services account ID.</p>
-     */
-    inline LaunchPermissionConfiguration& AddUserIds(const char* value) { m_userIdsHasBeenSet = true; m_userIds.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The name of the group.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetUserGroups() const{ return m_userGroups; }
-
-    /**
-     * <p>The name of the group.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetUserGroups() const { return m_userGroups; }
     inline bool UserGroupsHasBeenSet() const { return m_userGroupsHasBeenSet; }
+    template<typename UserGroupsT = Aws::Vector<Aws::String>>
+    void SetUserGroups(UserGroupsT&& value) { m_userGroupsHasBeenSet = true; m_userGroups = std::forward<UserGroupsT>(value); }
+    template<typename UserGroupsT = Aws::Vector<Aws::String>>
+    LaunchPermissionConfiguration& WithUserGroups(UserGroupsT&& value) { SetUserGroups(std::forward<UserGroupsT>(value)); return *this;}
+    template<typename UserGroupsT = Aws::String>
+    LaunchPermissionConfiguration& AddUserGroups(UserGroupsT&& value) { m_userGroupsHasBeenSet = true; m_userGroups.emplace_back(std::forward<UserGroupsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The name of the group.</p>
-     */
-    inline void SetUserGroups(const Aws::Vector<Aws::String>& value) { m_userGroupsHasBeenSet = true; m_userGroups = value; }
-
-    /**
-     * <p>The name of the group.</p>
-     */
-    inline void SetUserGroups(Aws::Vector<Aws::String>&& value) { m_userGroupsHasBeenSet = true; m_userGroups = std::move(value); }
-
-    /**
-     * <p>The name of the group.</p>
-     */
-    inline LaunchPermissionConfiguration& WithUserGroups(const Aws::Vector<Aws::String>& value) { SetUserGroups(value); return *this;}
-
-    /**
-     * <p>The name of the group.</p>
-     */
-    inline LaunchPermissionConfiguration& WithUserGroups(Aws::Vector<Aws::String>&& value) { SetUserGroups(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the group.</p>
-     */
-    inline LaunchPermissionConfiguration& AddUserGroups(const Aws::String& value) { m_userGroupsHasBeenSet = true; m_userGroups.push_back(value); return *this; }
-
-    /**
-     * <p>The name of the group.</p>
-     */
-    inline LaunchPermissionConfiguration& AddUserGroups(Aws::String&& value) { m_userGroupsHasBeenSet = true; m_userGroups.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The name of the group.</p>
-     */
-    inline LaunchPermissionConfiguration& AddUserGroups(const char* value) { m_userGroupsHasBeenSet = true; m_userGroups.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The ARN for an Amazon Web Services Organization that you want to share your
      * AMI with. For more information, see <a
      * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html">What
      * is Organizations?</a>.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetOrganizationArns() const{ return m_organizationArns; }
-
-    /**
-     * <p>The ARN for an Amazon Web Services Organization that you want to share your
-     * AMI with. For more information, see <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html">What
-     * is Organizations?</a>.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetOrganizationArns() const { return m_organizationArns; }
     inline bool OrganizationArnsHasBeenSet() const { return m_organizationArnsHasBeenSet; }
+    template<typename OrganizationArnsT = Aws::Vector<Aws::String>>
+    void SetOrganizationArns(OrganizationArnsT&& value) { m_organizationArnsHasBeenSet = true; m_organizationArns = std::forward<OrganizationArnsT>(value); }
+    template<typename OrganizationArnsT = Aws::Vector<Aws::String>>
+    LaunchPermissionConfiguration& WithOrganizationArns(OrganizationArnsT&& value) { SetOrganizationArns(std::forward<OrganizationArnsT>(value)); return *this;}
+    template<typename OrganizationArnsT = Aws::String>
+    LaunchPermissionConfiguration& AddOrganizationArns(OrganizationArnsT&& value) { m_organizationArnsHasBeenSet = true; m_organizationArns.emplace_back(std::forward<OrganizationArnsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The ARN for an Amazon Web Services Organization that you want to share your
-     * AMI with. For more information, see <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html">What
-     * is Organizations?</a>.</p>
-     */
-    inline void SetOrganizationArns(const Aws::Vector<Aws::String>& value) { m_organizationArnsHasBeenSet = true; m_organizationArns = value; }
-
-    /**
-     * <p>The ARN for an Amazon Web Services Organization that you want to share your
-     * AMI with. For more information, see <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html">What
-     * is Organizations?</a>.</p>
-     */
-    inline void SetOrganizationArns(Aws::Vector<Aws::String>&& value) { m_organizationArnsHasBeenSet = true; m_organizationArns = std::move(value); }
-
-    /**
-     * <p>The ARN for an Amazon Web Services Organization that you want to share your
-     * AMI with. For more information, see <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html">What
-     * is Organizations?</a>.</p>
-     */
-    inline LaunchPermissionConfiguration& WithOrganizationArns(const Aws::Vector<Aws::String>& value) { SetOrganizationArns(value); return *this;}
-
-    /**
-     * <p>The ARN for an Amazon Web Services Organization that you want to share your
-     * AMI with. For more information, see <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html">What
-     * is Organizations?</a>.</p>
-     */
-    inline LaunchPermissionConfiguration& WithOrganizationArns(Aws::Vector<Aws::String>&& value) { SetOrganizationArns(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN for an Amazon Web Services Organization that you want to share your
-     * AMI with. For more information, see <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html">What
-     * is Organizations?</a>.</p>
-     */
-    inline LaunchPermissionConfiguration& AddOrganizationArns(const Aws::String& value) { m_organizationArnsHasBeenSet = true; m_organizationArns.push_back(value); return *this; }
-
-    /**
-     * <p>The ARN for an Amazon Web Services Organization that you want to share your
-     * AMI with. For more information, see <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html">What
-     * is Organizations?</a>.</p>
-     */
-    inline LaunchPermissionConfiguration& AddOrganizationArns(Aws::String&& value) { m_organizationArnsHasBeenSet = true; m_organizationArns.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The ARN for an Amazon Web Services Organization that you want to share your
-     * AMI with. For more information, see <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html">What
-     * is Organizations?</a>.</p>
-     */
-    inline LaunchPermissionConfiguration& AddOrganizationArns(const char* value) { m_organizationArnsHasBeenSet = true; m_organizationArns.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The ARN for an Organizations organizational unit (OU) that you want to share
      * your AMI with. For more information about key concepts for Organizations, see <a
      * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html">Organizations
      * terminology and concepts</a>.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetOrganizationalUnitArns() const{ return m_organizationalUnitArns; }
-
-    /**
-     * <p>The ARN for an Organizations organizational unit (OU) that you want to share
-     * your AMI with. For more information about key concepts for Organizations, see <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html">Organizations
-     * terminology and concepts</a>.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetOrganizationalUnitArns() const { return m_organizationalUnitArns; }
     inline bool OrganizationalUnitArnsHasBeenSet() const { return m_organizationalUnitArnsHasBeenSet; }
-
-    /**
-     * <p>The ARN for an Organizations organizational unit (OU) that you want to share
-     * your AMI with. For more information about key concepts for Organizations, see <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html">Organizations
-     * terminology and concepts</a>.</p>
-     */
-    inline void SetOrganizationalUnitArns(const Aws::Vector<Aws::String>& value) { m_organizationalUnitArnsHasBeenSet = true; m_organizationalUnitArns = value; }
-
-    /**
-     * <p>The ARN for an Organizations organizational unit (OU) that you want to share
-     * your AMI with. For more information about key concepts for Organizations, see <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html">Organizations
-     * terminology and concepts</a>.</p>
-     */
-    inline void SetOrganizationalUnitArns(Aws::Vector<Aws::String>&& value) { m_organizationalUnitArnsHasBeenSet = true; m_organizationalUnitArns = std::move(value); }
-
-    /**
-     * <p>The ARN for an Organizations organizational unit (OU) that you want to share
-     * your AMI with. For more information about key concepts for Organizations, see <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html">Organizations
-     * terminology and concepts</a>.</p>
-     */
-    inline LaunchPermissionConfiguration& WithOrganizationalUnitArns(const Aws::Vector<Aws::String>& value) { SetOrganizationalUnitArns(value); return *this;}
-
-    /**
-     * <p>The ARN for an Organizations organizational unit (OU) that you want to share
-     * your AMI with. For more information about key concepts for Organizations, see <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html">Organizations
-     * terminology and concepts</a>.</p>
-     */
-    inline LaunchPermissionConfiguration& WithOrganizationalUnitArns(Aws::Vector<Aws::String>&& value) { SetOrganizationalUnitArns(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN for an Organizations organizational unit (OU) that you want to share
-     * your AMI with. For more information about key concepts for Organizations, see <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html">Organizations
-     * terminology and concepts</a>.</p>
-     */
-    inline LaunchPermissionConfiguration& AddOrganizationalUnitArns(const Aws::String& value) { m_organizationalUnitArnsHasBeenSet = true; m_organizationalUnitArns.push_back(value); return *this; }
-
-    /**
-     * <p>The ARN for an Organizations organizational unit (OU) that you want to share
-     * your AMI with. For more information about key concepts for Organizations, see <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html">Organizations
-     * terminology and concepts</a>.</p>
-     */
-    inline LaunchPermissionConfiguration& AddOrganizationalUnitArns(Aws::String&& value) { m_organizationalUnitArnsHasBeenSet = true; m_organizationalUnitArns.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The ARN for an Organizations organizational unit (OU) that you want to share
-     * your AMI with. For more information about key concepts for Organizations, see <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html">Organizations
-     * terminology and concepts</a>.</p>
-     */
-    inline LaunchPermissionConfiguration& AddOrganizationalUnitArns(const char* value) { m_organizationalUnitArnsHasBeenSet = true; m_organizationalUnitArns.push_back(value); return *this; }
-
+    template<typename OrganizationalUnitArnsT = Aws::Vector<Aws::String>>
+    void SetOrganizationalUnitArns(OrganizationalUnitArnsT&& value) { m_organizationalUnitArnsHasBeenSet = true; m_organizationalUnitArns = std::forward<OrganizationalUnitArnsT>(value); }
+    template<typename OrganizationalUnitArnsT = Aws::Vector<Aws::String>>
+    LaunchPermissionConfiguration& WithOrganizationalUnitArns(OrganizationalUnitArnsT&& value) { SetOrganizationalUnitArns(std::forward<OrganizationalUnitArnsT>(value)); return *this;}
+    template<typename OrganizationalUnitArnsT = Aws::String>
+    LaunchPermissionConfiguration& AddOrganizationalUnitArns(OrganizationalUnitArnsT&& value) { m_organizationalUnitArnsHasBeenSet = true; m_organizationalUnitArns.emplace_back(std::forward<OrganizationalUnitArnsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_userIds;

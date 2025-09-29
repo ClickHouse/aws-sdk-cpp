@@ -28,68 +28,54 @@ namespace Model
   class DescribeJobResult
   {
   public:
-    AWS_S3CONTROL_API DescribeJobResult();
+    AWS_S3CONTROL_API DescribeJobResult() = default;
     AWS_S3CONTROL_API DescribeJobResult(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_S3CONTROL_API DescribeJobResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * <p>Contains the configuration parameters and status for the job specified in the
      * <code>Describe Job</code> request.</p>
      */
-    inline const JobDescriptor& GetJob() const{ return m_job; }
+    inline const JobDescriptor& GetJob() const { return m_job; }
+    template<typename JobT = JobDescriptor>
+    void SetJob(JobT&& value) { m_jobHasBeenSet = true; m_job = std::forward<JobT>(value); }
+    template<typename JobT = JobDescriptor>
+    DescribeJobResult& WithJob(JobT&& value) { SetJob(std::forward<JobT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Contains the configuration parameters and status for the job specified in the
-     * <code>Describe Job</code> request.</p>
+     * AWS Request Id value
      */
-    inline void SetJob(const JobDescriptor& value) { m_job = value; }
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeJobResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Contains the configuration parameters and status for the job specified in the
-     * <code>Describe Job</code> request.</p>
+     * x-amz-id-2 header value, also known as Host Id
      */
-    inline void SetJob(JobDescriptor&& value) { m_job = std::move(value); }
-
-    /**
-     * <p>Contains the configuration parameters and status for the job specified in the
-     * <code>Describe Job</code> request.</p>
-     */
-    inline DescribeJobResult& WithJob(const JobDescriptor& value) { SetJob(value); return *this;}
-
-    /**
-     * <p>Contains the configuration parameters and status for the job specified in the
-     * <code>Describe Job</code> request.</p>
-     */
-    inline DescribeJobResult& WithJob(JobDescriptor&& value) { SetJob(std::move(value)); return *this;}
-
-
-    
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeJobResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeJobResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeJobResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetHostId() const { return m_hostId; }
+    template<typename HostIdT = Aws::String>
+    void SetHostId(HostIdT&& value) { m_hostIdHasBeenSet = true; m_hostId = std::forward<HostIdT>(value); }
+    template<typename HostIdT = Aws::String>
+    DescribeJobResult& WithHostId(HostIdT&& value) { SetHostId(std::forward<HostIdT>(value)); return *this;}
+    ///@}
   private:
 
     JobDescriptor m_job;
+    bool m_jobHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
+
+    Aws::String m_hostId;
+    bool m_hostIdHasBeenSet = false;
   };
 
 } // namespace Model

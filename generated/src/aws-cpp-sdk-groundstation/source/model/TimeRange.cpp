@@ -18,15 +18,7 @@ namespace GroundStation
 namespace Model
 {
 
-TimeRange::TimeRange() : 
-    m_endTimeHasBeenSet(false),
-    m_startTimeHasBeenSet(false)
-{
-}
-
-TimeRange::TimeRange(JsonView jsonValue) : 
-    m_endTimeHasBeenSet(false),
-    m_startTimeHasBeenSet(false)
+TimeRange::TimeRange(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ TimeRange& TimeRange::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("endTime"))
   {
     m_endTime = jsonValue.GetDouble("endTime");
-
     m_endTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("startTime"))
   {
     m_startTime = jsonValue.GetDouble("startTime");
-
     m_startTimeHasBeenSet = true;
   }
-
   return *this;
 }
 

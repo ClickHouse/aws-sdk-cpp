@@ -18,15 +18,7 @@ namespace Kafka
 namespace Model
 {
 
-ErrorInfo::ErrorInfo() : 
-    m_errorCodeHasBeenSet(false),
-    m_errorStringHasBeenSet(false)
-{
-}
-
-ErrorInfo::ErrorInfo(JsonView jsonValue) : 
-    m_errorCodeHasBeenSet(false),
-    m_errorStringHasBeenSet(false)
+ErrorInfo::ErrorInfo(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ErrorInfo& ErrorInfo::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("errorCode"))
   {
     m_errorCode = jsonValue.GetString("errorCode");
-
     m_errorCodeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("errorString"))
   {
     m_errorString = jsonValue.GetString("errorString");
-
     m_errorStringHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -6,6 +6,7 @@
 #include <aws/s3/model/GetBucketIntelligentTieringConfigurationRequest.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/core/utils/UnreferencedParam.h>
 #include <aws/core/http/URI.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
 
@@ -16,11 +17,24 @@ using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-GetBucketIntelligentTieringConfigurationRequest::GetBucketIntelligentTieringConfigurationRequest() : 
-    m_bucketHasBeenSet(false),
-    m_idHasBeenSet(false),
-    m_customizedAccessLogTagHasBeenSet(false)
+
+bool GetBucketIntelligentTieringConfigurationRequest::HasEmbeddedError(Aws::IOStream &body,
+  const Aws::Http::HeaderValueCollection &header) const
 {
+  // Header is unused
+  AWS_UNREFERENCED_PARAM(header);
+
+  auto readPointer = body.tellg();
+  Utils::Xml::XmlDocument doc = XmlDocument::CreateFromXmlStream(body);
+  body.seekg(readPointer);
+  if (!doc.WasParseSuccessful()) {
+    return false;
+  }
+
+  if (!doc.GetRootElement().IsNull() && doc.GetRootElement().GetName() == Aws::String("Error")) {
+    return true;
+  }
+  return false;
 }
 
 Aws::String GetBucketIntelligentTieringConfigurationRequest::SerializePayload() const
@@ -57,6 +71,19 @@ void GetBucketIntelligentTieringConfigurationRequest::AddQueryStringParameters(U
     }
 }
 
+Aws::Http::HeaderValueCollection GetBucketIntelligentTieringConfigurationRequest::GetRequestSpecificHeaders() const
+{
+  Aws::Http::HeaderValueCollection headers;
+  Aws::StringStream ss;
+  if(m_expectedBucketOwnerHasBeenSet)
+  {
+    ss << m_expectedBucketOwner;
+    headers.emplace("x-amz-expected-bucket-owner",  ss.str());
+    ss.str("");
+  }
+
+  return headers;
+}
 
 GetBucketIntelligentTieringConfigurationRequest::EndpointParameters GetBucketIntelligentTieringConfigurationRequest::GetEndpointContextParams() const
 {

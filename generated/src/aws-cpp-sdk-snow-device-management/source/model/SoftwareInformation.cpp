@@ -18,17 +18,7 @@ namespace SnowDeviceManagement
 namespace Model
 {
 
-SoftwareInformation::SoftwareInformation() : 
-    m_installStateHasBeenSet(false),
-    m_installedVersionHasBeenSet(false),
-    m_installingVersionHasBeenSet(false)
-{
-}
-
-SoftwareInformation::SoftwareInformation(JsonView jsonValue) : 
-    m_installStateHasBeenSet(false),
-    m_installedVersionHasBeenSet(false),
-    m_installingVersionHasBeenSet(false)
+SoftwareInformation::SoftwareInformation(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ SoftwareInformation& SoftwareInformation::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("installState"))
   {
     m_installState = jsonValue.GetString("installState");
-
     m_installStateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("installedVersion"))
   {
     m_installedVersion = jsonValue.GetString("installedVersion");
-
     m_installedVersionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("installingVersion"))
   {
     m_installingVersion = jsonValue.GetString("installingVersion");
-
     m_installingVersionHasBeenSet = true;
   }
-
   return *this;
 }
 

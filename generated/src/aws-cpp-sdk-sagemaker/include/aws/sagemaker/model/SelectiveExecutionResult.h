@@ -32,52 +32,23 @@ namespace Model
   class SelectiveExecutionResult
   {
   public:
-    AWS_SAGEMAKER_API SelectiveExecutionResult();
+    AWS_SAGEMAKER_API SelectiveExecutionResult() = default;
     AWS_SAGEMAKER_API SelectiveExecutionResult(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API SelectiveExecutionResult& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ARN from an execution of the current pipeline.</p>
      */
-    inline const Aws::String& GetSourcePipelineExecutionArn() const{ return m_sourcePipelineExecutionArn; }
-
-    /**
-     * <p>The ARN from an execution of the current pipeline.</p>
-     */
+    inline const Aws::String& GetSourcePipelineExecutionArn() const { return m_sourcePipelineExecutionArn; }
     inline bool SourcePipelineExecutionArnHasBeenSet() const { return m_sourcePipelineExecutionArnHasBeenSet; }
-
-    /**
-     * <p>The ARN from an execution of the current pipeline.</p>
-     */
-    inline void SetSourcePipelineExecutionArn(const Aws::String& value) { m_sourcePipelineExecutionArnHasBeenSet = true; m_sourcePipelineExecutionArn = value; }
-
-    /**
-     * <p>The ARN from an execution of the current pipeline.</p>
-     */
-    inline void SetSourcePipelineExecutionArn(Aws::String&& value) { m_sourcePipelineExecutionArnHasBeenSet = true; m_sourcePipelineExecutionArn = std::move(value); }
-
-    /**
-     * <p>The ARN from an execution of the current pipeline.</p>
-     */
-    inline void SetSourcePipelineExecutionArn(const char* value) { m_sourcePipelineExecutionArnHasBeenSet = true; m_sourcePipelineExecutionArn.assign(value); }
-
-    /**
-     * <p>The ARN from an execution of the current pipeline.</p>
-     */
-    inline SelectiveExecutionResult& WithSourcePipelineExecutionArn(const Aws::String& value) { SetSourcePipelineExecutionArn(value); return *this;}
-
-    /**
-     * <p>The ARN from an execution of the current pipeline.</p>
-     */
-    inline SelectiveExecutionResult& WithSourcePipelineExecutionArn(Aws::String&& value) { SetSourcePipelineExecutionArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN from an execution of the current pipeline.</p>
-     */
-    inline SelectiveExecutionResult& WithSourcePipelineExecutionArn(const char* value) { SetSourcePipelineExecutionArn(value); return *this;}
-
+    template<typename SourcePipelineExecutionArnT = Aws::String>
+    void SetSourcePipelineExecutionArn(SourcePipelineExecutionArnT&& value) { m_sourcePipelineExecutionArnHasBeenSet = true; m_sourcePipelineExecutionArn = std::forward<SourcePipelineExecutionArnT>(value); }
+    template<typename SourcePipelineExecutionArnT = Aws::String>
+    SelectiveExecutionResult& WithSourcePipelineExecutionArn(SourcePipelineExecutionArnT&& value) { SetSourcePipelineExecutionArn(std::forward<SourcePipelineExecutionArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_sourcePipelineExecutionArn;

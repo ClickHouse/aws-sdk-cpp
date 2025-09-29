@@ -18,29 +18,7 @@ namespace drs
 namespace Model
 {
 
-DataReplicationInfoReplicatedDisk::DataReplicationInfoReplicatedDisk() : 
-    m_backloggedStorageBytes(0),
-    m_backloggedStorageBytesHasBeenSet(false),
-    m_deviceNameHasBeenSet(false),
-    m_replicatedStorageBytes(0),
-    m_replicatedStorageBytesHasBeenSet(false),
-    m_rescannedStorageBytes(0),
-    m_rescannedStorageBytesHasBeenSet(false),
-    m_totalStorageBytes(0),
-    m_totalStorageBytesHasBeenSet(false)
-{
-}
-
-DataReplicationInfoReplicatedDisk::DataReplicationInfoReplicatedDisk(JsonView jsonValue) : 
-    m_backloggedStorageBytes(0),
-    m_backloggedStorageBytesHasBeenSet(false),
-    m_deviceNameHasBeenSet(false),
-    m_replicatedStorageBytes(0),
-    m_replicatedStorageBytesHasBeenSet(false),
-    m_rescannedStorageBytes(0),
-    m_rescannedStorageBytesHasBeenSet(false),
-    m_totalStorageBytes(0),
-    m_totalStorageBytesHasBeenSet(false)
+DataReplicationInfoReplicatedDisk::DataReplicationInfoReplicatedDisk(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -50,38 +28,33 @@ DataReplicationInfoReplicatedDisk& DataReplicationInfoReplicatedDisk::operator =
   if(jsonValue.ValueExists("backloggedStorageBytes"))
   {
     m_backloggedStorageBytes = jsonValue.GetInt64("backloggedStorageBytes");
-
     m_backloggedStorageBytesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("deviceName"))
   {
     m_deviceName = jsonValue.GetString("deviceName");
-
     m_deviceNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("replicatedStorageBytes"))
   {
     m_replicatedStorageBytes = jsonValue.GetInt64("replicatedStorageBytes");
-
     m_replicatedStorageBytesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("rescannedStorageBytes"))
   {
     m_rescannedStorageBytes = jsonValue.GetInt64("rescannedStorageBytes");
-
     m_rescannedStorageBytesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("totalStorageBytes"))
   {
     m_totalStorageBytes = jsonValue.GetInt64("totalStorageBytes");
-
     m_totalStorageBytesHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("volumeStatus"))
+  {
+    m_volumeStatus = VolumeStatusMapper::GetVolumeStatusForName(jsonValue.GetString("volumeStatus"));
+    m_volumeStatusHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -117,6 +90,11 @@ JsonValue DataReplicationInfoReplicatedDisk::Jsonize() const
   {
    payload.WithInt64("totalStorageBytes", m_totalStorageBytes);
 
+  }
+
+  if(m_volumeStatusHasBeenSet)
+  {
+   payload.WithString("volumeStatus", VolumeStatusMapper::GetNameForVolumeStatus(m_volumeStatus));
   }
 
   return payload;

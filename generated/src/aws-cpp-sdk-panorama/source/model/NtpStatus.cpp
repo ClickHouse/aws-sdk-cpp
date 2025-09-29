@@ -18,19 +18,7 @@ namespace Panorama
 namespace Model
 {
 
-NtpStatus::NtpStatus() : 
-    m_connectionStatus(NetworkConnectionStatus::NOT_SET),
-    m_connectionStatusHasBeenSet(false),
-    m_ipAddressHasBeenSet(false),
-    m_ntpServerNameHasBeenSet(false)
-{
-}
-
-NtpStatus::NtpStatus(JsonView jsonValue) : 
-    m_connectionStatus(NetworkConnectionStatus::NOT_SET),
-    m_connectionStatusHasBeenSet(false),
-    m_ipAddressHasBeenSet(false),
-    m_ntpServerNameHasBeenSet(false)
+NtpStatus::NtpStatus(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ NtpStatus& NtpStatus::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ConnectionStatus"))
   {
     m_connectionStatus = NetworkConnectionStatusMapper::GetNetworkConnectionStatusForName(jsonValue.GetString("ConnectionStatus"));
-
     m_connectionStatusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("IpAddress"))
   {
     m_ipAddress = jsonValue.GetString("IpAddress");
-
     m_ipAddressHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NtpServerName"))
   {
     m_ntpServerName = jsonValue.GetString("NtpServerName");
-
     m_ntpServerNameHasBeenSet = true;
   }
-
   return *this;
 }
 

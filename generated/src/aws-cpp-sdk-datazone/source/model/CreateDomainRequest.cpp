@@ -12,18 +12,6 @@ using namespace Aws::DataZone::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateDomainRequest::CreateDomainRequest() : 
-    m_clientToken(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_descriptionHasBeenSet(false),
-    m_domainExecutionRoleHasBeenSet(false),
-    m_kmsKeyIdentifierHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_singleSignOnHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateDomainRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -46,6 +34,11 @@ Aws::String CreateDomainRequest::SerializePayload() const
 
   }
 
+  if(m_domainVersionHasBeenSet)
+  {
+   payload.WithString("domainVersion", DomainVersionMapper::GetNameForDomainVersion(m_domainVersion));
+  }
+
   if(m_kmsKeyIdentifierHasBeenSet)
   {
    payload.WithString("kmsKeyIdentifier", m_kmsKeyIdentifier);
@@ -55,6 +48,12 @@ Aws::String CreateDomainRequest::SerializePayload() const
   if(m_nameHasBeenSet)
   {
    payload.WithString("name", m_name);
+
+  }
+
+  if(m_serviceRoleHasBeenSet)
+  {
+   payload.WithString("serviceRole", m_serviceRole);
 
   }
 

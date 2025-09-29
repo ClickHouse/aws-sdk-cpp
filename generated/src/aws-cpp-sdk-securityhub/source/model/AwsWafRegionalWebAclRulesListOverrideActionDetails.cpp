@@ -18,13 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsWafRegionalWebAclRulesListOverrideActionDetails::AwsWafRegionalWebAclRulesListOverrideActionDetails() : 
-    m_typeHasBeenSet(false)
-{
-}
-
-AwsWafRegionalWebAclRulesListOverrideActionDetails::AwsWafRegionalWebAclRulesListOverrideActionDetails(JsonView jsonValue) : 
-    m_typeHasBeenSet(false)
+AwsWafRegionalWebAclRulesListOverrideActionDetails::AwsWafRegionalWebAclRulesListOverrideActionDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ AwsWafRegionalWebAclRulesListOverrideActionDetails& AwsWafRegionalWebAclRulesLis
   if(jsonValue.ValueExists("Type"))
   {
     m_type = jsonValue.GetString("Type");
-
     m_typeHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -21,7 +21,7 @@ namespace Model
   class DeletePendingAggregationRequestRequest : public ConfigServiceRequest
   {
   public:
-    AWS_CONFIGSERVICE_API DeletePendingAggregationRequestRequest();
+    AWS_CONFIGSERVICE_API DeletePendingAggregationRequestRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,87 +34,29 @@ namespace Model
     AWS_CONFIGSERVICE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The 12-digit account ID of the account requesting to aggregate data.</p>
      */
-    inline const Aws::String& GetRequesterAccountId() const{ return m_requesterAccountId; }
-
-    /**
-     * <p>The 12-digit account ID of the account requesting to aggregate data.</p>
-     */
+    inline const Aws::String& GetRequesterAccountId() const { return m_requesterAccountId; }
     inline bool RequesterAccountIdHasBeenSet() const { return m_requesterAccountIdHasBeenSet; }
+    template<typename RequesterAccountIdT = Aws::String>
+    void SetRequesterAccountId(RequesterAccountIdT&& value) { m_requesterAccountIdHasBeenSet = true; m_requesterAccountId = std::forward<RequesterAccountIdT>(value); }
+    template<typename RequesterAccountIdT = Aws::String>
+    DeletePendingAggregationRequestRequest& WithRequesterAccountId(RequesterAccountIdT&& value) { SetRequesterAccountId(std::forward<RequesterAccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The 12-digit account ID of the account requesting to aggregate data.</p>
-     */
-    inline void SetRequesterAccountId(const Aws::String& value) { m_requesterAccountIdHasBeenSet = true; m_requesterAccountId = value; }
-
-    /**
-     * <p>The 12-digit account ID of the account requesting to aggregate data.</p>
-     */
-    inline void SetRequesterAccountId(Aws::String&& value) { m_requesterAccountIdHasBeenSet = true; m_requesterAccountId = std::move(value); }
-
-    /**
-     * <p>The 12-digit account ID of the account requesting to aggregate data.</p>
-     */
-    inline void SetRequesterAccountId(const char* value) { m_requesterAccountIdHasBeenSet = true; m_requesterAccountId.assign(value); }
-
-    /**
-     * <p>The 12-digit account ID of the account requesting to aggregate data.</p>
-     */
-    inline DeletePendingAggregationRequestRequest& WithRequesterAccountId(const Aws::String& value) { SetRequesterAccountId(value); return *this;}
-
-    /**
-     * <p>The 12-digit account ID of the account requesting to aggregate data.</p>
-     */
-    inline DeletePendingAggregationRequestRequest& WithRequesterAccountId(Aws::String&& value) { SetRequesterAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The 12-digit account ID of the account requesting to aggregate data.</p>
-     */
-    inline DeletePendingAggregationRequestRequest& WithRequesterAccountId(const char* value) { SetRequesterAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The region requesting to aggregate data.</p>
      */
-    inline const Aws::String& GetRequesterAwsRegion() const{ return m_requesterAwsRegion; }
-
-    /**
-     * <p>The region requesting to aggregate data.</p>
-     */
+    inline const Aws::String& GetRequesterAwsRegion() const { return m_requesterAwsRegion; }
     inline bool RequesterAwsRegionHasBeenSet() const { return m_requesterAwsRegionHasBeenSet; }
-
-    /**
-     * <p>The region requesting to aggregate data.</p>
-     */
-    inline void SetRequesterAwsRegion(const Aws::String& value) { m_requesterAwsRegionHasBeenSet = true; m_requesterAwsRegion = value; }
-
-    /**
-     * <p>The region requesting to aggregate data.</p>
-     */
-    inline void SetRequesterAwsRegion(Aws::String&& value) { m_requesterAwsRegionHasBeenSet = true; m_requesterAwsRegion = std::move(value); }
-
-    /**
-     * <p>The region requesting to aggregate data.</p>
-     */
-    inline void SetRequesterAwsRegion(const char* value) { m_requesterAwsRegionHasBeenSet = true; m_requesterAwsRegion.assign(value); }
-
-    /**
-     * <p>The region requesting to aggregate data.</p>
-     */
-    inline DeletePendingAggregationRequestRequest& WithRequesterAwsRegion(const Aws::String& value) { SetRequesterAwsRegion(value); return *this;}
-
-    /**
-     * <p>The region requesting to aggregate data.</p>
-     */
-    inline DeletePendingAggregationRequestRequest& WithRequesterAwsRegion(Aws::String&& value) { SetRequesterAwsRegion(std::move(value)); return *this;}
-
-    /**
-     * <p>The region requesting to aggregate data.</p>
-     */
-    inline DeletePendingAggregationRequestRequest& WithRequesterAwsRegion(const char* value) { SetRequesterAwsRegion(value); return *this;}
-
+    template<typename RequesterAwsRegionT = Aws::String>
+    void SetRequesterAwsRegion(RequesterAwsRegionT&& value) { m_requesterAwsRegionHasBeenSet = true; m_requesterAwsRegion = std::forward<RequesterAwsRegionT>(value); }
+    template<typename RequesterAwsRegionT = Aws::String>
+    DeletePendingAggregationRequestRequest& WithRequesterAwsRegion(RequesterAwsRegionT&& value) { SetRequesterAwsRegion(std::forward<RequesterAwsRegionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_requesterAccountId;

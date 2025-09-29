@@ -30,91 +30,52 @@ namespace Model
   class ResourceLimits
   {
   public:
-    AWS_SAGEMAKER_API ResourceLimits();
+    AWS_SAGEMAKER_API ResourceLimits() = default;
     AWS_SAGEMAKER_API ResourceLimits(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API ResourceLimits& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The maximum number of training jobs that a hyperparameter tuning job can
      * launch.</p>
      */
-    inline int GetMaxNumberOfTrainingJobs() const{ return m_maxNumberOfTrainingJobs; }
-
-    /**
-     * <p>The maximum number of training jobs that a hyperparameter tuning job can
-     * launch.</p>
-     */
+    inline int GetMaxNumberOfTrainingJobs() const { return m_maxNumberOfTrainingJobs; }
     inline bool MaxNumberOfTrainingJobsHasBeenSet() const { return m_maxNumberOfTrainingJobsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of training jobs that a hyperparameter tuning job can
-     * launch.</p>
-     */
     inline void SetMaxNumberOfTrainingJobs(int value) { m_maxNumberOfTrainingJobsHasBeenSet = true; m_maxNumberOfTrainingJobs = value; }
-
-    /**
-     * <p>The maximum number of training jobs that a hyperparameter tuning job can
-     * launch.</p>
-     */
     inline ResourceLimits& WithMaxNumberOfTrainingJobs(int value) { SetMaxNumberOfTrainingJobs(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The maximum number of concurrent training jobs that a hyperparameter tuning
      * job can launch.</p>
      */
-    inline int GetMaxParallelTrainingJobs() const{ return m_maxParallelTrainingJobs; }
-
-    /**
-     * <p>The maximum number of concurrent training jobs that a hyperparameter tuning
-     * job can launch.</p>
-     */
+    inline int GetMaxParallelTrainingJobs() const { return m_maxParallelTrainingJobs; }
     inline bool MaxParallelTrainingJobsHasBeenSet() const { return m_maxParallelTrainingJobsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of concurrent training jobs that a hyperparameter tuning
-     * job can launch.</p>
-     */
     inline void SetMaxParallelTrainingJobs(int value) { m_maxParallelTrainingJobsHasBeenSet = true; m_maxParallelTrainingJobs = value; }
-
-    /**
-     * <p>The maximum number of concurrent training jobs that a hyperparameter tuning
-     * job can launch.</p>
-     */
     inline ResourceLimits& WithMaxParallelTrainingJobs(int value) { SetMaxParallelTrainingJobs(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The maximum time in seconds that a hyperparameter tuning job can run.</p>
      */
-    inline int GetMaxRuntimeInSeconds() const{ return m_maxRuntimeInSeconds; }
-
-    /**
-     * <p>The maximum time in seconds that a hyperparameter tuning job can run.</p>
-     */
+    inline int GetMaxRuntimeInSeconds() const { return m_maxRuntimeInSeconds; }
     inline bool MaxRuntimeInSecondsHasBeenSet() const { return m_maxRuntimeInSecondsHasBeenSet; }
-
-    /**
-     * <p>The maximum time in seconds that a hyperparameter tuning job can run.</p>
-     */
     inline void SetMaxRuntimeInSeconds(int value) { m_maxRuntimeInSecondsHasBeenSet = true; m_maxRuntimeInSeconds = value; }
-
-    /**
-     * <p>The maximum time in seconds that a hyperparameter tuning job can run.</p>
-     */
     inline ResourceLimits& WithMaxRuntimeInSeconds(int value) { SetMaxRuntimeInSeconds(value); return *this;}
-
+    ///@}
   private:
 
-    int m_maxNumberOfTrainingJobs;
+    int m_maxNumberOfTrainingJobs{0};
     bool m_maxNumberOfTrainingJobsHasBeenSet = false;
 
-    int m_maxParallelTrainingJobs;
+    int m_maxParallelTrainingJobs{0};
     bool m_maxParallelTrainingJobsHasBeenSet = false;
 
-    int m_maxRuntimeInSeconds;
+    int m_maxRuntimeInSeconds{0};
     bool m_maxRuntimeInSecondsHasBeenSet = false;
   };
 

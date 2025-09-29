@@ -18,15 +18,7 @@ namespace CodeBuild
 namespace Model
 {
 
-NetworkInterface::NetworkInterface() : 
-    m_subnetIdHasBeenSet(false),
-    m_networkInterfaceIdHasBeenSet(false)
-{
-}
-
-NetworkInterface::NetworkInterface(JsonView jsonValue) : 
-    m_subnetIdHasBeenSet(false),
-    m_networkInterfaceIdHasBeenSet(false)
+NetworkInterface::NetworkInterface(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ NetworkInterface& NetworkInterface::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("subnetId"))
   {
     m_subnetId = jsonValue.GetString("subnetId");
-
     m_subnetIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("networkInterfaceId"))
   {
     m_networkInterfaceId = jsonValue.GetString("networkInterfaceId");
-
     m_networkInterfaceIdHasBeenSet = true;
   }
-
   return *this;
 }
 

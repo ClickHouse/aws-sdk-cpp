@@ -32,317 +32,145 @@ namespace Model
   class UpdateAnnotationStoreResult
   {
   public:
-    AWS_OMICS_API UpdateAnnotationStoreResult();
+    AWS_OMICS_API UpdateAnnotationStoreResult() = default;
     AWS_OMICS_API UpdateAnnotationStoreResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_OMICS_API UpdateAnnotationStoreResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The store's ID.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
+    inline const Aws::String& GetId() const { return m_id; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    UpdateAnnotationStoreResult& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The store's ID.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_id = value; }
-
-    /**
-     * <p>The store's ID.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_id = std::move(value); }
-
-    /**
-     * <p>The store's ID.</p>
-     */
-    inline void SetId(const char* value) { m_id.assign(value); }
-
-    /**
-     * <p>The store's ID.</p>
-     */
-    inline UpdateAnnotationStoreResult& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The store's ID.</p>
-     */
-    inline UpdateAnnotationStoreResult& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The store's ID.</p>
-     */
-    inline UpdateAnnotationStoreResult& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The store's genome reference.</p>
      */
-    inline const ReferenceItem& GetReference() const{ return m_reference; }
+    inline const ReferenceItem& GetReference() const { return m_reference; }
+    template<typename ReferenceT = ReferenceItem>
+    void SetReference(ReferenceT&& value) { m_referenceHasBeenSet = true; m_reference = std::forward<ReferenceT>(value); }
+    template<typename ReferenceT = ReferenceItem>
+    UpdateAnnotationStoreResult& WithReference(ReferenceT&& value) { SetReference(std::forward<ReferenceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The store's genome reference.</p>
-     */
-    inline void SetReference(const ReferenceItem& value) { m_reference = value; }
-
-    /**
-     * <p>The store's genome reference.</p>
-     */
-    inline void SetReference(ReferenceItem&& value) { m_reference = std::move(value); }
-
-    /**
-     * <p>The store's genome reference.</p>
-     */
-    inline UpdateAnnotationStoreResult& WithReference(const ReferenceItem& value) { SetReference(value); return *this;}
-
-    /**
-     * <p>The store's genome reference.</p>
-     */
-    inline UpdateAnnotationStoreResult& WithReference(ReferenceItem&& value) { SetReference(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The store's status.</p>
      */
-    inline const StoreStatus& GetStatus() const{ return m_status; }
+    inline StoreStatus GetStatus() const { return m_status; }
+    inline void SetStatus(StoreStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline UpdateAnnotationStoreResult& WithStatus(StoreStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The store's status.</p>
-     */
-    inline void SetStatus(const StoreStatus& value) { m_status = value; }
-
-    /**
-     * <p>The store's status.</p>
-     */
-    inline void SetStatus(StoreStatus&& value) { m_status = std::move(value); }
-
-    /**
-     * <p>The store's status.</p>
-     */
-    inline UpdateAnnotationStoreResult& WithStatus(const StoreStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The store's status.</p>
-     */
-    inline UpdateAnnotationStoreResult& WithStatus(StoreStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The store's name.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
+    inline const Aws::String& GetName() const { return m_name; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    UpdateAnnotationStoreResult& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The store's name.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_name = value; }
-
-    /**
-     * <p>The store's name.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_name = std::move(value); }
-
-    /**
-     * <p>The store's name.</p>
-     */
-    inline void SetName(const char* value) { m_name.assign(value); }
-
-    /**
-     * <p>The store's name.</p>
-     */
-    inline UpdateAnnotationStoreResult& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The store's name.</p>
-     */
-    inline UpdateAnnotationStoreResult& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The store's name.</p>
-     */
-    inline UpdateAnnotationStoreResult& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The store's description.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
+    inline const Aws::String& GetDescription() const { return m_description; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    UpdateAnnotationStoreResult& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The store's description.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_description = value; }
-
-    /**
-     * <p>The store's description.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_description = std::move(value); }
-
-    /**
-     * <p>The store's description.</p>
-     */
-    inline void SetDescription(const char* value) { m_description.assign(value); }
-
-    /**
-     * <p>The store's description.</p>
-     */
-    inline UpdateAnnotationStoreResult& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The store's description.</p>
-     */
-    inline UpdateAnnotationStoreResult& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The store's description.</p>
-     */
-    inline UpdateAnnotationStoreResult& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>When the store was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreationTime() const{ return m_creationTime; }
+    inline const Aws::Utils::DateTime& GetCreationTime() const { return m_creationTime; }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    void SetCreationTime(CreationTimeT&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::forward<CreationTimeT>(value); }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    UpdateAnnotationStoreResult& WithCreationTime(CreationTimeT&& value) { SetCreationTime(std::forward<CreationTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>When the store was created.</p>
-     */
-    inline void SetCreationTime(const Aws::Utils::DateTime& value) { m_creationTime = value; }
-
-    /**
-     * <p>When the store was created.</p>
-     */
-    inline void SetCreationTime(Aws::Utils::DateTime&& value) { m_creationTime = std::move(value); }
-
-    /**
-     * <p>When the store was created.</p>
-     */
-    inline UpdateAnnotationStoreResult& WithCreationTime(const Aws::Utils::DateTime& value) { SetCreationTime(value); return *this;}
-
-    /**
-     * <p>When the store was created.</p>
-     */
-    inline UpdateAnnotationStoreResult& WithCreationTime(Aws::Utils::DateTime&& value) { SetCreationTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>When the store was updated.</p>
      */
-    inline const Aws::Utils::DateTime& GetUpdateTime() const{ return m_updateTime; }
+    inline const Aws::Utils::DateTime& GetUpdateTime() const { return m_updateTime; }
+    template<typename UpdateTimeT = Aws::Utils::DateTime>
+    void SetUpdateTime(UpdateTimeT&& value) { m_updateTimeHasBeenSet = true; m_updateTime = std::forward<UpdateTimeT>(value); }
+    template<typename UpdateTimeT = Aws::Utils::DateTime>
+    UpdateAnnotationStoreResult& WithUpdateTime(UpdateTimeT&& value) { SetUpdateTime(std::forward<UpdateTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>When the store was updated.</p>
-     */
-    inline void SetUpdateTime(const Aws::Utils::DateTime& value) { m_updateTime = value; }
-
-    /**
-     * <p>When the store was updated.</p>
-     */
-    inline void SetUpdateTime(Aws::Utils::DateTime&& value) { m_updateTime = std::move(value); }
-
-    /**
-     * <p>When the store was updated.</p>
-     */
-    inline UpdateAnnotationStoreResult& WithUpdateTime(const Aws::Utils::DateTime& value) { SetUpdateTime(value); return *this;}
-
-    /**
-     * <p>When the store was updated.</p>
-     */
-    inline UpdateAnnotationStoreResult& WithUpdateTime(Aws::Utils::DateTime&& value) { SetUpdateTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Parsing options for the store.</p>
      */
-    inline const StoreOptions& GetStoreOptions() const{ return m_storeOptions; }
+    inline const StoreOptions& GetStoreOptions() const { return m_storeOptions; }
+    template<typename StoreOptionsT = StoreOptions>
+    void SetStoreOptions(StoreOptionsT&& value) { m_storeOptionsHasBeenSet = true; m_storeOptions = std::forward<StoreOptionsT>(value); }
+    template<typename StoreOptionsT = StoreOptions>
+    UpdateAnnotationStoreResult& WithStoreOptions(StoreOptionsT&& value) { SetStoreOptions(std::forward<StoreOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Parsing options for the store.</p>
-     */
-    inline void SetStoreOptions(const StoreOptions& value) { m_storeOptions = value; }
-
-    /**
-     * <p>Parsing options for the store.</p>
-     */
-    inline void SetStoreOptions(StoreOptions&& value) { m_storeOptions = std::move(value); }
-
-    /**
-     * <p>Parsing options for the store.</p>
-     */
-    inline UpdateAnnotationStoreResult& WithStoreOptions(const StoreOptions& value) { SetStoreOptions(value); return *this;}
-
-    /**
-     * <p>Parsing options for the store.</p>
-     */
-    inline UpdateAnnotationStoreResult& WithStoreOptions(StoreOptions&& value) { SetStoreOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The annotation file format of the store.</p>
      */
-    inline const StoreFormat& GetStoreFormat() const{ return m_storeFormat; }
+    inline StoreFormat GetStoreFormat() const { return m_storeFormat; }
+    inline void SetStoreFormat(StoreFormat value) { m_storeFormatHasBeenSet = true; m_storeFormat = value; }
+    inline UpdateAnnotationStoreResult& WithStoreFormat(StoreFormat value) { SetStoreFormat(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The annotation file format of the store.</p>
-     */
-    inline void SetStoreFormat(const StoreFormat& value) { m_storeFormat = value; }
-
-    /**
-     * <p>The annotation file format of the store.</p>
-     */
-    inline void SetStoreFormat(StoreFormat&& value) { m_storeFormat = std::move(value); }
-
-    /**
-     * <p>The annotation file format of the store.</p>
-     */
-    inline UpdateAnnotationStoreResult& WithStoreFormat(const StoreFormat& value) { SetStoreFormat(value); return *this;}
-
-    /**
-     * <p>The annotation file format of the store.</p>
-     */
-    inline UpdateAnnotationStoreResult& WithStoreFormat(StoreFormat&& value) { SetStoreFormat(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline UpdateAnnotationStoreResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline UpdateAnnotationStoreResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline UpdateAnnotationStoreResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    UpdateAnnotationStoreResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_id;
+    bool m_idHasBeenSet = false;
 
     ReferenceItem m_reference;
+    bool m_referenceHasBeenSet = false;
 
-    StoreStatus m_status;
+    StoreStatus m_status{StoreStatus::NOT_SET};
+    bool m_statusHasBeenSet = false;
 
     Aws::String m_name;
+    bool m_nameHasBeenSet = false;
 
     Aws::String m_description;
+    bool m_descriptionHasBeenSet = false;
 
-    Aws::Utils::DateTime m_creationTime;
+    Aws::Utils::DateTime m_creationTime{};
+    bool m_creationTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_updateTime;
+    Aws::Utils::DateTime m_updateTime{};
+    bool m_updateTimeHasBeenSet = false;
 
     StoreOptions m_storeOptions;
+    bool m_storeOptionsHasBeenSet = false;
 
-    StoreFormat m_storeFormat;
+    StoreFormat m_storeFormat{StoreFormat::NOT_SET};
+    bool m_storeFormatHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

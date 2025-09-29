@@ -21,7 +21,7 @@ namespace Model
   class CancelConversionTaskRequest : public EC2Request
   {
   public:
-    AWS_EC2_API CancelConversionTaskRequest();
+    AWS_EC2_API CancelConversionTaskRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,127 +36,49 @@ namespace Model
 
   public:
 
-    /**
-     * <p>The ID of the conversion task.</p>
-     */
-    inline const Aws::String& GetConversionTaskId() const{ return m_conversionTaskId; }
-
-    /**
-     * <p>The ID of the conversion task.</p>
-     */
-    inline bool ConversionTaskIdHasBeenSet() const { return m_conversionTaskIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the conversion task.</p>
-     */
-    inline void SetConversionTaskId(const Aws::String& value) { m_conversionTaskIdHasBeenSet = true; m_conversionTaskId = value; }
-
-    /**
-     * <p>The ID of the conversion task.</p>
-     */
-    inline void SetConversionTaskId(Aws::String&& value) { m_conversionTaskIdHasBeenSet = true; m_conversionTaskId = std::move(value); }
-
-    /**
-     * <p>The ID of the conversion task.</p>
-     */
-    inline void SetConversionTaskId(const char* value) { m_conversionTaskIdHasBeenSet = true; m_conversionTaskId.assign(value); }
-
-    /**
-     * <p>The ID of the conversion task.</p>
-     */
-    inline CancelConversionTaskRequest& WithConversionTaskId(const Aws::String& value) { SetConversionTaskId(value); return *this;}
-
-    /**
-     * <p>The ID of the conversion task.</p>
-     */
-    inline CancelConversionTaskRequest& WithConversionTaskId(Aws::String&& value) { SetConversionTaskId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the conversion task.</p>
-     */
-    inline CancelConversionTaskRequest& WithConversionTaskId(const char* value) { SetConversionTaskId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
      * required permissions, the error response is <code>DryRunOperation</code>.
      * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
      */
-    inline bool GetDryRun() const{ return m_dryRun; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
+    inline bool GetDryRun() const { return m_dryRun; }
     inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline CancelConversionTaskRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
+    ///@}
 
+    ///@{
+    /**
+     * <p>The ID of the conversion task.</p>
+     */
+    inline const Aws::String& GetConversionTaskId() const { return m_conversionTaskId; }
+    inline bool ConversionTaskIdHasBeenSet() const { return m_conversionTaskIdHasBeenSet; }
+    template<typename ConversionTaskIdT = Aws::String>
+    void SetConversionTaskId(ConversionTaskIdT&& value) { m_conversionTaskIdHasBeenSet = true; m_conversionTaskId = std::forward<ConversionTaskIdT>(value); }
+    template<typename ConversionTaskIdT = Aws::String>
+    CancelConversionTaskRequest& WithConversionTaskId(ConversionTaskIdT&& value) { SetConversionTaskId(std::forward<ConversionTaskIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
      * <p>The reason for canceling the conversion task.</p>
      */
-    inline const Aws::String& GetReasonMessage() const{ return m_reasonMessage; }
-
-    /**
-     * <p>The reason for canceling the conversion task.</p>
-     */
+    inline const Aws::String& GetReasonMessage() const { return m_reasonMessage; }
     inline bool ReasonMessageHasBeenSet() const { return m_reasonMessageHasBeenSet; }
-
-    /**
-     * <p>The reason for canceling the conversion task.</p>
-     */
-    inline void SetReasonMessage(const Aws::String& value) { m_reasonMessageHasBeenSet = true; m_reasonMessage = value; }
-
-    /**
-     * <p>The reason for canceling the conversion task.</p>
-     */
-    inline void SetReasonMessage(Aws::String&& value) { m_reasonMessageHasBeenSet = true; m_reasonMessage = std::move(value); }
-
-    /**
-     * <p>The reason for canceling the conversion task.</p>
-     */
-    inline void SetReasonMessage(const char* value) { m_reasonMessageHasBeenSet = true; m_reasonMessage.assign(value); }
-
-    /**
-     * <p>The reason for canceling the conversion task.</p>
-     */
-    inline CancelConversionTaskRequest& WithReasonMessage(const Aws::String& value) { SetReasonMessage(value); return *this;}
-
-    /**
-     * <p>The reason for canceling the conversion task.</p>
-     */
-    inline CancelConversionTaskRequest& WithReasonMessage(Aws::String&& value) { SetReasonMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The reason for canceling the conversion task.</p>
-     */
-    inline CancelConversionTaskRequest& WithReasonMessage(const char* value) { SetReasonMessage(value); return *this;}
-
+    template<typename ReasonMessageT = Aws::String>
+    void SetReasonMessage(ReasonMessageT&& value) { m_reasonMessageHasBeenSet = true; m_reasonMessage = std::forward<ReasonMessageT>(value); }
+    template<typename ReasonMessageT = Aws::String>
+    CancelConversionTaskRequest& WithReasonMessage(ReasonMessageT&& value) { SetReasonMessage(std::forward<ReasonMessageT>(value)); return *this;}
+    ///@}
   private:
+
+    bool m_dryRun{false};
+    bool m_dryRunHasBeenSet = false;
 
     Aws::String m_conversionTaskId;
     bool m_conversionTaskIdHasBeenSet = false;
-
-    bool m_dryRun;
-    bool m_dryRunHasBeenSet = false;
 
     Aws::String m_reasonMessage;
     bool m_reasonMessageHasBeenSet = false;

@@ -20,35 +20,7 @@ namespace EC2
 namespace Model
 {
 
-FleetLaunchTemplateOverridesRequest::FleetLaunchTemplateOverridesRequest() : 
-    m_instanceType(InstanceType::NOT_SET),
-    m_instanceTypeHasBeenSet(false),
-    m_maxPriceHasBeenSet(false),
-    m_subnetIdHasBeenSet(false),
-    m_availabilityZoneHasBeenSet(false),
-    m_weightedCapacity(0.0),
-    m_weightedCapacityHasBeenSet(false),
-    m_priority(0.0),
-    m_priorityHasBeenSet(false),
-    m_placementHasBeenSet(false),
-    m_instanceRequirementsHasBeenSet(false),
-    m_imageIdHasBeenSet(false)
-{
-}
-
-FleetLaunchTemplateOverridesRequest::FleetLaunchTemplateOverridesRequest(const XmlNode& xmlNode) : 
-    m_instanceType(InstanceType::NOT_SET),
-    m_instanceTypeHasBeenSet(false),
-    m_maxPriceHasBeenSet(false),
-    m_subnetIdHasBeenSet(false),
-    m_availabilityZoneHasBeenSet(false),
-    m_weightedCapacity(0.0),
-    m_weightedCapacityHasBeenSet(false),
-    m_priority(0.0),
-    m_priorityHasBeenSet(false),
-    m_placementHasBeenSet(false),
-    m_instanceRequirementsHasBeenSet(false),
-    m_imageIdHasBeenSet(false)
+FleetLaunchTemplateOverridesRequest::FleetLaunchTemplateOverridesRequest(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -62,7 +34,7 @@ FleetLaunchTemplateOverridesRequest& FleetLaunchTemplateOverridesRequest::operat
     XmlNode instanceTypeNode = resultNode.FirstChild("InstanceType");
     if(!instanceTypeNode.IsNull())
     {
-      m_instanceType = InstanceTypeMapper::GetInstanceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(instanceTypeNode.GetText()).c_str()).c_str());
+      m_instanceType = InstanceTypeMapper::GetInstanceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(instanceTypeNode.GetText()).c_str()));
       m_instanceTypeHasBeenSet = true;
     }
     XmlNode maxPriceNode = resultNode.FirstChild("MaxPrice");
@@ -101,6 +73,19 @@ FleetLaunchTemplateOverridesRequest& FleetLaunchTemplateOverridesRequest::operat
       m_placement = placementNode;
       m_placementHasBeenSet = true;
     }
+    XmlNode blockDeviceMappingsNode = resultNode.FirstChild("BlockDeviceMapping");
+    if(!blockDeviceMappingsNode.IsNull())
+    {
+      XmlNode blockDeviceMappingsMember = blockDeviceMappingsNode.FirstChild("BlockDeviceMapping");
+      m_blockDeviceMappingsHasBeenSet = !blockDeviceMappingsMember.IsNull();
+      while(!blockDeviceMappingsMember.IsNull())
+      {
+        m_blockDeviceMappings.push_back(blockDeviceMappingsMember);
+        blockDeviceMappingsMember = blockDeviceMappingsMember.NextNode("BlockDeviceMapping");
+      }
+
+      m_blockDeviceMappingsHasBeenSet = true;
+    }
     XmlNode instanceRequirementsNode = resultNode.FirstChild("InstanceRequirements");
     if(!instanceRequirementsNode.IsNull())
     {
@@ -122,7 +107,7 @@ void FleetLaunchTemplateOverridesRequest::OutputToStream(Aws::OStream& oStream, 
 {
   if(m_instanceTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".InstanceType=" << InstanceTypeMapper::GetNameForInstanceType(m_instanceType) << "&";
+      oStream << location << index << locationValue << ".InstanceType=" << StringUtils::URLEncode(InstanceTypeMapper::GetNameForInstanceType(m_instanceType)) << "&";
   }
 
   if(m_maxPriceHasBeenSet)
@@ -157,6 +142,17 @@ void FleetLaunchTemplateOverridesRequest::OutputToStream(Aws::OStream& oStream, 
       m_placement.OutputToStream(oStream, placementLocationAndMemberSs.str().c_str());
   }
 
+  if(m_blockDeviceMappingsHasBeenSet)
+  {
+      unsigned blockDeviceMappingsIdx = 1;
+      for(auto& item : m_blockDeviceMappings)
+      {
+        Aws::StringStream blockDeviceMappingsSs;
+        blockDeviceMappingsSs << location << index << locationValue << ".BlockDeviceMapping." << blockDeviceMappingsIdx++;
+        item.OutputToStream(oStream, blockDeviceMappingsSs.str().c_str());
+      }
+  }
+
   if(m_instanceRequirementsHasBeenSet)
   {
       Aws::StringStream instanceRequirementsLocationAndMemberSs;
@@ -175,7 +171,7 @@ void FleetLaunchTemplateOverridesRequest::OutputToStream(Aws::OStream& oStream, 
 {
   if(m_instanceTypeHasBeenSet)
   {
-      oStream << location << ".InstanceType=" << InstanceTypeMapper::GetNameForInstanceType(m_instanceType) << "&";
+      oStream << location << ".InstanceType=" << StringUtils::URLEncode(InstanceTypeMapper::GetNameForInstanceType(m_instanceType)) << "&";
   }
   if(m_maxPriceHasBeenSet)
   {
@@ -191,17 +187,27 @@ void FleetLaunchTemplateOverridesRequest::OutputToStream(Aws::OStream& oStream, 
   }
   if(m_weightedCapacityHasBeenSet)
   {
-        oStream << location << ".WeightedCapacity=" << StringUtils::URLEncode(m_weightedCapacity) << "&";
+      oStream << location << ".WeightedCapacity=" << StringUtils::URLEncode(m_weightedCapacity) << "&";
   }
   if(m_priorityHasBeenSet)
   {
-        oStream << location << ".Priority=" << StringUtils::URLEncode(m_priority) << "&";
+      oStream << location << ".Priority=" << StringUtils::URLEncode(m_priority) << "&";
   }
   if(m_placementHasBeenSet)
   {
       Aws::String placementLocationAndMember(location);
       placementLocationAndMember += ".Placement";
       m_placement.OutputToStream(oStream, placementLocationAndMember.c_str());
+  }
+  if(m_blockDeviceMappingsHasBeenSet)
+  {
+      unsigned blockDeviceMappingsIdx = 1;
+      for(auto& item : m_blockDeviceMappings)
+      {
+        Aws::StringStream blockDeviceMappingsSs;
+        blockDeviceMappingsSs << location << ".BlockDeviceMapping." << blockDeviceMappingsIdx++;
+        item.OutputToStream(oStream, blockDeviceMappingsSs.str().c_str());
+      }
   }
   if(m_instanceRequirementsHasBeenSet)
   {

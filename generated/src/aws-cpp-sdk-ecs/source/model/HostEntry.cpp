@@ -18,15 +18,7 @@ namespace ECS
 namespace Model
 {
 
-HostEntry::HostEntry() : 
-    m_hostnameHasBeenSet(false),
-    m_ipAddressHasBeenSet(false)
-{
-}
-
-HostEntry::HostEntry(JsonView jsonValue) : 
-    m_hostnameHasBeenSet(false),
-    m_ipAddressHasBeenSet(false)
+HostEntry::HostEntry(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ HostEntry& HostEntry::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("hostname"))
   {
     m_hostname = jsonValue.GetString("hostname");
-
     m_hostnameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ipAddress"))
   {
     m_ipAddress = jsonValue.GetString("ipAddress");
-
     m_ipAddressHasBeenSet = true;
   }
-
   return *this;
 }
 

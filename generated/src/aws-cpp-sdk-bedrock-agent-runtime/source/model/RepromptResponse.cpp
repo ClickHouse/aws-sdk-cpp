@@ -18,17 +18,7 @@ namespace BedrockAgentRuntime
 namespace Model
 {
 
-RepromptResponse::RepromptResponse() : 
-    m_textHasBeenSet(false),
-    m_source(Source::NOT_SET),
-    m_sourceHasBeenSet(false)
-{
-}
-
-RepromptResponse::RepromptResponse(JsonView jsonValue) : 
-    m_textHasBeenSet(false),
-    m_source(Source::NOT_SET),
-    m_sourceHasBeenSet(false)
+RepromptResponse::RepromptResponse(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ RepromptResponse& RepromptResponse::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("text"))
   {
     m_text = jsonValue.GetString("text");
-
     m_textHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("source"))
   {
     m_source = SourceMapper::GetSourceForName(jsonValue.GetString("source"));
-
     m_sourceHasBeenSet = true;
   }
-
   return *this;
 }
 

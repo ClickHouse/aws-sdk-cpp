@@ -21,7 +21,7 @@ namespace Model
   class DescribeHumanTaskUiRequest : public SageMakerRequest
   {
   public:
-    AWS_SAGEMAKER_API DescribeHumanTaskUiRequest();
+    AWS_SAGEMAKER_API DescribeHumanTaskUiRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,54 +34,18 @@ namespace Model
     AWS_SAGEMAKER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the human task user interface (worker task template) you want
      * information about.</p>
      */
-    inline const Aws::String& GetHumanTaskUiName() const{ return m_humanTaskUiName; }
-
-    /**
-     * <p>The name of the human task user interface (worker task template) you want
-     * information about.</p>
-     */
+    inline const Aws::String& GetHumanTaskUiName() const { return m_humanTaskUiName; }
     inline bool HumanTaskUiNameHasBeenSet() const { return m_humanTaskUiNameHasBeenSet; }
-
-    /**
-     * <p>The name of the human task user interface (worker task template) you want
-     * information about.</p>
-     */
-    inline void SetHumanTaskUiName(const Aws::String& value) { m_humanTaskUiNameHasBeenSet = true; m_humanTaskUiName = value; }
-
-    /**
-     * <p>The name of the human task user interface (worker task template) you want
-     * information about.</p>
-     */
-    inline void SetHumanTaskUiName(Aws::String&& value) { m_humanTaskUiNameHasBeenSet = true; m_humanTaskUiName = std::move(value); }
-
-    /**
-     * <p>The name of the human task user interface (worker task template) you want
-     * information about.</p>
-     */
-    inline void SetHumanTaskUiName(const char* value) { m_humanTaskUiNameHasBeenSet = true; m_humanTaskUiName.assign(value); }
-
-    /**
-     * <p>The name of the human task user interface (worker task template) you want
-     * information about.</p>
-     */
-    inline DescribeHumanTaskUiRequest& WithHumanTaskUiName(const Aws::String& value) { SetHumanTaskUiName(value); return *this;}
-
-    /**
-     * <p>The name of the human task user interface (worker task template) you want
-     * information about.</p>
-     */
-    inline DescribeHumanTaskUiRequest& WithHumanTaskUiName(Aws::String&& value) { SetHumanTaskUiName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the human task user interface (worker task template) you want
-     * information about.</p>
-     */
-    inline DescribeHumanTaskUiRequest& WithHumanTaskUiName(const char* value) { SetHumanTaskUiName(value); return *this;}
-
+    template<typename HumanTaskUiNameT = Aws::String>
+    void SetHumanTaskUiName(HumanTaskUiNameT&& value) { m_humanTaskUiNameHasBeenSet = true; m_humanTaskUiName = std::forward<HumanTaskUiNameT>(value); }
+    template<typename HumanTaskUiNameT = Aws::String>
+    DescribeHumanTaskUiRequest& WithHumanTaskUiName(HumanTaskUiNameT&& value) { SetHumanTaskUiName(std::forward<HumanTaskUiNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_humanTaskUiName;

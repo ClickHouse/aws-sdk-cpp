@@ -32,69 +32,27 @@ namespace Model
   class EngineVersion
   {
   public:
-    AWS_ATHENA_API EngineVersion();
+    AWS_ATHENA_API EngineVersion() = default;
     AWS_ATHENA_API EngineVersion(Aws::Utils::Json::JsonView jsonValue);
     AWS_ATHENA_API EngineVersion& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ATHENA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The engine version requested by the user. Possible values are determined by
      * the output of <code>ListEngineVersions</code>, including AUTO. The default is
      * AUTO.</p>
      */
-    inline const Aws::String& GetSelectedEngineVersion() const{ return m_selectedEngineVersion; }
-
-    /**
-     * <p>The engine version requested by the user. Possible values are determined by
-     * the output of <code>ListEngineVersions</code>, including AUTO. The default is
-     * AUTO.</p>
-     */
+    inline const Aws::String& GetSelectedEngineVersion() const { return m_selectedEngineVersion; }
     inline bool SelectedEngineVersionHasBeenSet() const { return m_selectedEngineVersionHasBeenSet; }
+    template<typename SelectedEngineVersionT = Aws::String>
+    void SetSelectedEngineVersion(SelectedEngineVersionT&& value) { m_selectedEngineVersionHasBeenSet = true; m_selectedEngineVersion = std::forward<SelectedEngineVersionT>(value); }
+    template<typename SelectedEngineVersionT = Aws::String>
+    EngineVersion& WithSelectedEngineVersion(SelectedEngineVersionT&& value) { SetSelectedEngineVersion(std::forward<SelectedEngineVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The engine version requested by the user. Possible values are determined by
-     * the output of <code>ListEngineVersions</code>, including AUTO. The default is
-     * AUTO.</p>
-     */
-    inline void SetSelectedEngineVersion(const Aws::String& value) { m_selectedEngineVersionHasBeenSet = true; m_selectedEngineVersion = value; }
-
-    /**
-     * <p>The engine version requested by the user. Possible values are determined by
-     * the output of <code>ListEngineVersions</code>, including AUTO. The default is
-     * AUTO.</p>
-     */
-    inline void SetSelectedEngineVersion(Aws::String&& value) { m_selectedEngineVersionHasBeenSet = true; m_selectedEngineVersion = std::move(value); }
-
-    /**
-     * <p>The engine version requested by the user. Possible values are determined by
-     * the output of <code>ListEngineVersions</code>, including AUTO. The default is
-     * AUTO.</p>
-     */
-    inline void SetSelectedEngineVersion(const char* value) { m_selectedEngineVersionHasBeenSet = true; m_selectedEngineVersion.assign(value); }
-
-    /**
-     * <p>The engine version requested by the user. Possible values are determined by
-     * the output of <code>ListEngineVersions</code>, including AUTO. The default is
-     * AUTO.</p>
-     */
-    inline EngineVersion& WithSelectedEngineVersion(const Aws::String& value) { SetSelectedEngineVersion(value); return *this;}
-
-    /**
-     * <p>The engine version requested by the user. Possible values are determined by
-     * the output of <code>ListEngineVersions</code>, including AUTO. The default is
-     * AUTO.</p>
-     */
-    inline EngineVersion& WithSelectedEngineVersion(Aws::String&& value) { SetSelectedEngineVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The engine version requested by the user. Possible values are determined by
-     * the output of <code>ListEngineVersions</code>, including AUTO. The default is
-     * AUTO.</p>
-     */
-    inline EngineVersion& WithSelectedEngineVersion(const char* value) { SetSelectedEngineVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Read only. The engine version on which the query runs. If the user requests a
      * valid engine version other than Auto, the effective engine version is the same
@@ -104,85 +62,13 @@ namespace Model
      * <code>UpdateWorkGroup</code> operation, the <code>EffectiveEngineVersion</code>
      * field is ignored.</p>
      */
-    inline const Aws::String& GetEffectiveEngineVersion() const{ return m_effectiveEngineVersion; }
-
-    /**
-     * <p>Read only. The engine version on which the query runs. If the user requests a
-     * valid engine version other than Auto, the effective engine version is the same
-     * as the engine version that the user requested. If the user requests Auto, the
-     * effective engine version is chosen by Athena. When a request to update the
-     * engine version is made by a <code>CreateWorkGroup</code> or
-     * <code>UpdateWorkGroup</code> operation, the <code>EffectiveEngineVersion</code>
-     * field is ignored.</p>
-     */
+    inline const Aws::String& GetEffectiveEngineVersion() const { return m_effectiveEngineVersion; }
     inline bool EffectiveEngineVersionHasBeenSet() const { return m_effectiveEngineVersionHasBeenSet; }
-
-    /**
-     * <p>Read only. The engine version on which the query runs. If the user requests a
-     * valid engine version other than Auto, the effective engine version is the same
-     * as the engine version that the user requested. If the user requests Auto, the
-     * effective engine version is chosen by Athena. When a request to update the
-     * engine version is made by a <code>CreateWorkGroup</code> or
-     * <code>UpdateWorkGroup</code> operation, the <code>EffectiveEngineVersion</code>
-     * field is ignored.</p>
-     */
-    inline void SetEffectiveEngineVersion(const Aws::String& value) { m_effectiveEngineVersionHasBeenSet = true; m_effectiveEngineVersion = value; }
-
-    /**
-     * <p>Read only. The engine version on which the query runs. If the user requests a
-     * valid engine version other than Auto, the effective engine version is the same
-     * as the engine version that the user requested. If the user requests Auto, the
-     * effective engine version is chosen by Athena. When a request to update the
-     * engine version is made by a <code>CreateWorkGroup</code> or
-     * <code>UpdateWorkGroup</code> operation, the <code>EffectiveEngineVersion</code>
-     * field is ignored.</p>
-     */
-    inline void SetEffectiveEngineVersion(Aws::String&& value) { m_effectiveEngineVersionHasBeenSet = true; m_effectiveEngineVersion = std::move(value); }
-
-    /**
-     * <p>Read only. The engine version on which the query runs. If the user requests a
-     * valid engine version other than Auto, the effective engine version is the same
-     * as the engine version that the user requested. If the user requests Auto, the
-     * effective engine version is chosen by Athena. When a request to update the
-     * engine version is made by a <code>CreateWorkGroup</code> or
-     * <code>UpdateWorkGroup</code> operation, the <code>EffectiveEngineVersion</code>
-     * field is ignored.</p>
-     */
-    inline void SetEffectiveEngineVersion(const char* value) { m_effectiveEngineVersionHasBeenSet = true; m_effectiveEngineVersion.assign(value); }
-
-    /**
-     * <p>Read only. The engine version on which the query runs. If the user requests a
-     * valid engine version other than Auto, the effective engine version is the same
-     * as the engine version that the user requested. If the user requests Auto, the
-     * effective engine version is chosen by Athena. When a request to update the
-     * engine version is made by a <code>CreateWorkGroup</code> or
-     * <code>UpdateWorkGroup</code> operation, the <code>EffectiveEngineVersion</code>
-     * field is ignored.</p>
-     */
-    inline EngineVersion& WithEffectiveEngineVersion(const Aws::String& value) { SetEffectiveEngineVersion(value); return *this;}
-
-    /**
-     * <p>Read only. The engine version on which the query runs. If the user requests a
-     * valid engine version other than Auto, the effective engine version is the same
-     * as the engine version that the user requested. If the user requests Auto, the
-     * effective engine version is chosen by Athena. When a request to update the
-     * engine version is made by a <code>CreateWorkGroup</code> or
-     * <code>UpdateWorkGroup</code> operation, the <code>EffectiveEngineVersion</code>
-     * field is ignored.</p>
-     */
-    inline EngineVersion& WithEffectiveEngineVersion(Aws::String&& value) { SetEffectiveEngineVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>Read only. The engine version on which the query runs. If the user requests a
-     * valid engine version other than Auto, the effective engine version is the same
-     * as the engine version that the user requested. If the user requests Auto, the
-     * effective engine version is chosen by Athena. When a request to update the
-     * engine version is made by a <code>CreateWorkGroup</code> or
-     * <code>UpdateWorkGroup</code> operation, the <code>EffectiveEngineVersion</code>
-     * field is ignored.</p>
-     */
-    inline EngineVersion& WithEffectiveEngineVersion(const char* value) { SetEffectiveEngineVersion(value); return *this;}
-
+    template<typename EffectiveEngineVersionT = Aws::String>
+    void SetEffectiveEngineVersion(EffectiveEngineVersionT&& value) { m_effectiveEngineVersionHasBeenSet = true; m_effectiveEngineVersion = std::forward<EffectiveEngineVersionT>(value); }
+    template<typename EffectiveEngineVersionT = Aws::String>
+    EngineVersion& WithEffectiveEngineVersion(EffectiveEngineVersionT&& value) { SetEffectiveEngineVersion(std::forward<EffectiveEngineVersionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_selectedEngineVersion;

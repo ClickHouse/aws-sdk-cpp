@@ -18,15 +18,7 @@ namespace Translate
 namespace Model
 {
 
-AppliedTerminology::AppliedTerminology() : 
-    m_nameHasBeenSet(false),
-    m_termsHasBeenSet(false)
-{
-}
-
-AppliedTerminology::AppliedTerminology(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_termsHasBeenSet(false)
+AppliedTerminology::AppliedTerminology(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ AppliedTerminology& AppliedTerminology::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Terms"))
   {
     Aws::Utils::Array<JsonView> termsJsonList = jsonValue.GetArray("Terms");
@@ -49,7 +39,6 @@ AppliedTerminology& AppliedTerminology::operator =(JsonView jsonValue)
     }
     m_termsHasBeenSet = true;
   }
-
   return *this;
 }
 

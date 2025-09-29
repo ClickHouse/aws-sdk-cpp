@@ -18,17 +18,7 @@ namespace Comprehend
 namespace Model
 {
 
-BatchDetectTargetedSentimentItemResult::BatchDetectTargetedSentimentItemResult() : 
-    m_index(0),
-    m_indexHasBeenSet(false),
-    m_entitiesHasBeenSet(false)
-{
-}
-
-BatchDetectTargetedSentimentItemResult::BatchDetectTargetedSentimentItemResult(JsonView jsonValue) : 
-    m_index(0),
-    m_indexHasBeenSet(false),
-    m_entitiesHasBeenSet(false)
+BatchDetectTargetedSentimentItemResult::BatchDetectTargetedSentimentItemResult(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ BatchDetectTargetedSentimentItemResult& BatchDetectTargetedSentimentItemResult::
   if(jsonValue.ValueExists("Index"))
   {
     m_index = jsonValue.GetInteger("Index");
-
     m_indexHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Entities"))
   {
     Aws::Utils::Array<JsonView> entitiesJsonList = jsonValue.GetArray("Entities");
@@ -51,7 +39,6 @@ BatchDetectTargetedSentimentItemResult& BatchDetectTargetedSentimentItemResult::
     }
     m_entitiesHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,17 +18,7 @@ namespace drs
 namespace Model
 {
 
-LaunchActionParameter::LaunchActionParameter() : 
-    m_type(LaunchActionParameterType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_valueHasBeenSet(false)
-{
-}
-
-LaunchActionParameter::LaunchActionParameter(JsonView jsonValue) : 
-    m_type(LaunchActionParameterType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_valueHasBeenSet(false)
+LaunchActionParameter::LaunchActionParameter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ LaunchActionParameter& LaunchActionParameter::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("type"))
   {
     m_type = LaunchActionParameterTypeMapper::GetLaunchActionParameterTypeForName(jsonValue.GetString("type"));
-
     m_typeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("value"))
   {
     m_value = jsonValue.GetString("value");
-
     m_valueHasBeenSet = true;
   }
-
   return *this;
 }
 

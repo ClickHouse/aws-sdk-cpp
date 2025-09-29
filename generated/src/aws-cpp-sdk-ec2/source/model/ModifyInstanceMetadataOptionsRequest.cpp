@@ -10,23 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-ModifyInstanceMetadataOptionsRequest::ModifyInstanceMetadataOptionsRequest() : 
-    m_instanceIdHasBeenSet(false),
-    m_httpTokens(HttpTokensState::NOT_SET),
-    m_httpTokensHasBeenSet(false),
-    m_httpPutResponseHopLimit(0),
-    m_httpPutResponseHopLimitHasBeenSet(false),
-    m_httpEndpoint(InstanceMetadataEndpointState::NOT_SET),
-    m_httpEndpointHasBeenSet(false),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_httpProtocolIpv6(InstanceMetadataProtocolState::NOT_SET),
-    m_httpProtocolIpv6HasBeenSet(false),
-    m_instanceMetadataTags(InstanceMetadataTagsState::NOT_SET),
-    m_instanceMetadataTagsHasBeenSet(false)
-{
-}
-
 Aws::String ModifyInstanceMetadataOptionsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -38,7 +21,7 @@ Aws::String ModifyInstanceMetadataOptionsRequest::SerializePayload() const
 
   if(m_httpTokensHasBeenSet)
   {
-    ss << "HttpTokens=" << HttpTokensStateMapper::GetNameForHttpTokensState(m_httpTokens) << "&";
+    ss << "HttpTokens=" << StringUtils::URLEncode(HttpTokensStateMapper::GetNameForHttpTokensState(m_httpTokens)) << "&";
   }
 
   if(m_httpPutResponseHopLimitHasBeenSet)
@@ -48,7 +31,7 @@ Aws::String ModifyInstanceMetadataOptionsRequest::SerializePayload() const
 
   if(m_httpEndpointHasBeenSet)
   {
-    ss << "HttpEndpoint=" << InstanceMetadataEndpointStateMapper::GetNameForInstanceMetadataEndpointState(m_httpEndpoint) << "&";
+    ss << "HttpEndpoint=" << StringUtils::URLEncode(InstanceMetadataEndpointStateMapper::GetNameForInstanceMetadataEndpointState(m_httpEndpoint)) << "&";
   }
 
   if(m_dryRunHasBeenSet)
@@ -58,12 +41,12 @@ Aws::String ModifyInstanceMetadataOptionsRequest::SerializePayload() const
 
   if(m_httpProtocolIpv6HasBeenSet)
   {
-    ss << "HttpProtocolIpv6=" << InstanceMetadataProtocolStateMapper::GetNameForInstanceMetadataProtocolState(m_httpProtocolIpv6) << "&";
+    ss << "HttpProtocolIpv6=" << StringUtils::URLEncode(InstanceMetadataProtocolStateMapper::GetNameForInstanceMetadataProtocolState(m_httpProtocolIpv6)) << "&";
   }
 
   if(m_instanceMetadataTagsHasBeenSet)
   {
-    ss << "InstanceMetadataTags=" << InstanceMetadataTagsStateMapper::GetNameForInstanceMetadataTagsState(m_instanceMetadataTags) << "&";
+    ss << "InstanceMetadataTags=" << StringUtils::URLEncode(InstanceMetadataTagsStateMapper::GetNameForInstanceMetadataTagsState(m_instanceMetadataTags)) << "&";
   }
 
   ss << "Version=2016-11-15";

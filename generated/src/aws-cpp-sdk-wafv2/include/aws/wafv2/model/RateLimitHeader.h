@@ -36,53 +36,25 @@ namespace Model
   class RateLimitHeader
   {
   public:
-    AWS_WAFV2_API RateLimitHeader();
+    AWS_WAFV2_API RateLimitHeader() = default;
     AWS_WAFV2_API RateLimitHeader(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFV2_API RateLimitHeader& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the header to use. </p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the header to use. </p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    RateLimitHeader& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the header to use. </p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the header to use. </p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the header to use. </p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the header to use. </p>
-     */
-    inline RateLimitHeader& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the header to use. </p>
-     */
-    inline RateLimitHeader& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the header to use. </p>
-     */
-    inline RateLimitHeader& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Text transformations eliminate some of the unusual formatting that attackers
      * use in web requests in an effort to bypass detection. Text transformations are
@@ -93,92 +65,15 @@ namespace Model
      * performs all transformations on the specified content, starting from the lowest
      * priority setting, and then uses the transformed component contents. </p>
      */
-    inline const Aws::Vector<TextTransformation>& GetTextTransformations() const{ return m_textTransformations; }
-
-    /**
-     * <p>Text transformations eliminate some of the unusual formatting that attackers
-     * use in web requests in an effort to bypass detection. Text transformations are
-     * used in rule match statements, to transform the <code>FieldToMatch</code>
-     * request component before inspecting it, and they're used in rate-based rule
-     * statements, to transform request components before using them as custom
-     * aggregation keys. If you specify one or more transformations to apply, WAF
-     * performs all transformations on the specified content, starting from the lowest
-     * priority setting, and then uses the transformed component contents. </p>
-     */
+    inline const Aws::Vector<TextTransformation>& GetTextTransformations() const { return m_textTransformations; }
     inline bool TextTransformationsHasBeenSet() const { return m_textTransformationsHasBeenSet; }
-
-    /**
-     * <p>Text transformations eliminate some of the unusual formatting that attackers
-     * use in web requests in an effort to bypass detection. Text transformations are
-     * used in rule match statements, to transform the <code>FieldToMatch</code>
-     * request component before inspecting it, and they're used in rate-based rule
-     * statements, to transform request components before using them as custom
-     * aggregation keys. If you specify one or more transformations to apply, WAF
-     * performs all transformations on the specified content, starting from the lowest
-     * priority setting, and then uses the transformed component contents. </p>
-     */
-    inline void SetTextTransformations(const Aws::Vector<TextTransformation>& value) { m_textTransformationsHasBeenSet = true; m_textTransformations = value; }
-
-    /**
-     * <p>Text transformations eliminate some of the unusual formatting that attackers
-     * use in web requests in an effort to bypass detection. Text transformations are
-     * used in rule match statements, to transform the <code>FieldToMatch</code>
-     * request component before inspecting it, and they're used in rate-based rule
-     * statements, to transform request components before using them as custom
-     * aggregation keys. If you specify one or more transformations to apply, WAF
-     * performs all transformations on the specified content, starting from the lowest
-     * priority setting, and then uses the transformed component contents. </p>
-     */
-    inline void SetTextTransformations(Aws::Vector<TextTransformation>&& value) { m_textTransformationsHasBeenSet = true; m_textTransformations = std::move(value); }
-
-    /**
-     * <p>Text transformations eliminate some of the unusual formatting that attackers
-     * use in web requests in an effort to bypass detection. Text transformations are
-     * used in rule match statements, to transform the <code>FieldToMatch</code>
-     * request component before inspecting it, and they're used in rate-based rule
-     * statements, to transform request components before using them as custom
-     * aggregation keys. If you specify one or more transformations to apply, WAF
-     * performs all transformations on the specified content, starting from the lowest
-     * priority setting, and then uses the transformed component contents. </p>
-     */
-    inline RateLimitHeader& WithTextTransformations(const Aws::Vector<TextTransformation>& value) { SetTextTransformations(value); return *this;}
-
-    /**
-     * <p>Text transformations eliminate some of the unusual formatting that attackers
-     * use in web requests in an effort to bypass detection. Text transformations are
-     * used in rule match statements, to transform the <code>FieldToMatch</code>
-     * request component before inspecting it, and they're used in rate-based rule
-     * statements, to transform request components before using them as custom
-     * aggregation keys. If you specify one or more transformations to apply, WAF
-     * performs all transformations on the specified content, starting from the lowest
-     * priority setting, and then uses the transformed component contents. </p>
-     */
-    inline RateLimitHeader& WithTextTransformations(Aws::Vector<TextTransformation>&& value) { SetTextTransformations(std::move(value)); return *this;}
-
-    /**
-     * <p>Text transformations eliminate some of the unusual formatting that attackers
-     * use in web requests in an effort to bypass detection. Text transformations are
-     * used in rule match statements, to transform the <code>FieldToMatch</code>
-     * request component before inspecting it, and they're used in rate-based rule
-     * statements, to transform request components before using them as custom
-     * aggregation keys. If you specify one or more transformations to apply, WAF
-     * performs all transformations on the specified content, starting from the lowest
-     * priority setting, and then uses the transformed component contents. </p>
-     */
-    inline RateLimitHeader& AddTextTransformations(const TextTransformation& value) { m_textTransformationsHasBeenSet = true; m_textTransformations.push_back(value); return *this; }
-
-    /**
-     * <p>Text transformations eliminate some of the unusual formatting that attackers
-     * use in web requests in an effort to bypass detection. Text transformations are
-     * used in rule match statements, to transform the <code>FieldToMatch</code>
-     * request component before inspecting it, and they're used in rate-based rule
-     * statements, to transform request components before using them as custom
-     * aggregation keys. If you specify one or more transformations to apply, WAF
-     * performs all transformations on the specified content, starting from the lowest
-     * priority setting, and then uses the transformed component contents. </p>
-     */
-    inline RateLimitHeader& AddTextTransformations(TextTransformation&& value) { m_textTransformationsHasBeenSet = true; m_textTransformations.push_back(std::move(value)); return *this; }
-
+    template<typename TextTransformationsT = Aws::Vector<TextTransformation>>
+    void SetTextTransformations(TextTransformationsT&& value) { m_textTransformationsHasBeenSet = true; m_textTransformations = std::forward<TextTransformationsT>(value); }
+    template<typename TextTransformationsT = Aws::Vector<TextTransformation>>
+    RateLimitHeader& WithTextTransformations(TextTransformationsT&& value) { SetTextTransformations(std::forward<TextTransformationsT>(value)); return *this;}
+    template<typename TextTransformationsT = TextTransformation>
+    RateLimitHeader& AddTextTransformations(TextTransformationsT&& value) { m_textTransformationsHasBeenSet = true; m_textTransformations.emplace_back(std::forward<TextTransformationsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_name;

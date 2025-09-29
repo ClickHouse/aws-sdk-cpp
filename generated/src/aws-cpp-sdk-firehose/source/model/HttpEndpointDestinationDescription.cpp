@@ -18,31 +18,7 @@ namespace Firehose
 namespace Model
 {
 
-HttpEndpointDestinationDescription::HttpEndpointDestinationDescription() : 
-    m_endpointConfigurationHasBeenSet(false),
-    m_bufferingHintsHasBeenSet(false),
-    m_cloudWatchLoggingOptionsHasBeenSet(false),
-    m_requestConfigurationHasBeenSet(false),
-    m_processingConfigurationHasBeenSet(false),
-    m_roleARNHasBeenSet(false),
-    m_retryOptionsHasBeenSet(false),
-    m_s3BackupMode(HttpEndpointS3BackupMode::NOT_SET),
-    m_s3BackupModeHasBeenSet(false),
-    m_s3DestinationDescriptionHasBeenSet(false)
-{
-}
-
-HttpEndpointDestinationDescription::HttpEndpointDestinationDescription(JsonView jsonValue) : 
-    m_endpointConfigurationHasBeenSet(false),
-    m_bufferingHintsHasBeenSet(false),
-    m_cloudWatchLoggingOptionsHasBeenSet(false),
-    m_requestConfigurationHasBeenSet(false),
-    m_processingConfigurationHasBeenSet(false),
-    m_roleARNHasBeenSet(false),
-    m_retryOptionsHasBeenSet(false),
-    m_s3BackupMode(HttpEndpointS3BackupMode::NOT_SET),
-    m_s3BackupModeHasBeenSet(false),
-    m_s3DestinationDescriptionHasBeenSet(false)
+HttpEndpointDestinationDescription::HttpEndpointDestinationDescription(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -52,66 +28,53 @@ HttpEndpointDestinationDescription& HttpEndpointDestinationDescription::operator
   if(jsonValue.ValueExists("EndpointConfiguration"))
   {
     m_endpointConfiguration = jsonValue.GetObject("EndpointConfiguration");
-
     m_endpointConfigurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("BufferingHints"))
   {
     m_bufferingHints = jsonValue.GetObject("BufferingHints");
-
     m_bufferingHintsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CloudWatchLoggingOptions"))
   {
     m_cloudWatchLoggingOptions = jsonValue.GetObject("CloudWatchLoggingOptions");
-
     m_cloudWatchLoggingOptionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RequestConfiguration"))
   {
     m_requestConfiguration = jsonValue.GetObject("RequestConfiguration");
-
     m_requestConfigurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ProcessingConfiguration"))
   {
     m_processingConfiguration = jsonValue.GetObject("ProcessingConfiguration");
-
     m_processingConfigurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RoleARN"))
   {
     m_roleARN = jsonValue.GetString("RoleARN");
-
     m_roleARNHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RetryOptions"))
   {
     m_retryOptions = jsonValue.GetObject("RetryOptions");
-
     m_retryOptionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("S3BackupMode"))
   {
     m_s3BackupMode = HttpEndpointS3BackupModeMapper::GetHttpEndpointS3BackupModeForName(jsonValue.GetString("S3BackupMode"));
-
     m_s3BackupModeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("S3DestinationDescription"))
   {
     m_s3DestinationDescription = jsonValue.GetObject("S3DestinationDescription");
-
     m_s3DestinationDescriptionHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("SecretsManagerConfiguration"))
+  {
+    m_secretsManagerConfiguration = jsonValue.GetObject("SecretsManagerConfiguration");
+    m_secretsManagerConfigurationHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -169,6 +132,12 @@ JsonValue HttpEndpointDestinationDescription::Jsonize() const
   if(m_s3DestinationDescriptionHasBeenSet)
   {
    payload.WithObject("S3DestinationDescription", m_s3DestinationDescription.Jsonize());
+
+  }
+
+  if(m_secretsManagerConfigurationHasBeenSet)
+  {
+   payload.WithObject("SecretsManagerConfiguration", m_secretsManagerConfiguration.Jsonize());
 
   }
 

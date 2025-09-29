@@ -23,7 +23,7 @@ namespace Model
   class GetFindingsRequest : public GuardDutyRequest
   {
   public:
-    AWS_GUARDDUTY_API GetFindingsRequest();
+    AWS_GUARDDUTY_API GetFindingsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,131 +34,47 @@ namespace Model
     AWS_GUARDDUTY_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the detector that specifies the GuardDuty service whose findings
-     * you want to retrieve.</p>
+     * you want to retrieve.</p> <p>To find the <code>detectorId</code> in the current
+     * Region, see the Settings page in the GuardDuty console, or run the <a
+     * href="https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ListDetectors.html">ListDetectors</a>
+     * API.</p>
      */
-    inline const Aws::String& GetDetectorId() const{ return m_detectorId; }
-
-    /**
-     * <p>The ID of the detector that specifies the GuardDuty service whose findings
-     * you want to retrieve.</p>
-     */
+    inline const Aws::String& GetDetectorId() const { return m_detectorId; }
     inline bool DetectorIdHasBeenSet() const { return m_detectorIdHasBeenSet; }
+    template<typename DetectorIdT = Aws::String>
+    void SetDetectorId(DetectorIdT&& value) { m_detectorIdHasBeenSet = true; m_detectorId = std::forward<DetectorIdT>(value); }
+    template<typename DetectorIdT = Aws::String>
+    GetFindingsRequest& WithDetectorId(DetectorIdT&& value) { SetDetectorId(std::forward<DetectorIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the detector that specifies the GuardDuty service whose findings
-     * you want to retrieve.</p>
-     */
-    inline void SetDetectorId(const Aws::String& value) { m_detectorIdHasBeenSet = true; m_detectorId = value; }
-
-    /**
-     * <p>The ID of the detector that specifies the GuardDuty service whose findings
-     * you want to retrieve.</p>
-     */
-    inline void SetDetectorId(Aws::String&& value) { m_detectorIdHasBeenSet = true; m_detectorId = std::move(value); }
-
-    /**
-     * <p>The ID of the detector that specifies the GuardDuty service whose findings
-     * you want to retrieve.</p>
-     */
-    inline void SetDetectorId(const char* value) { m_detectorIdHasBeenSet = true; m_detectorId.assign(value); }
-
-    /**
-     * <p>The ID of the detector that specifies the GuardDuty service whose findings
-     * you want to retrieve.</p>
-     */
-    inline GetFindingsRequest& WithDetectorId(const Aws::String& value) { SetDetectorId(value); return *this;}
-
-    /**
-     * <p>The ID of the detector that specifies the GuardDuty service whose findings
-     * you want to retrieve.</p>
-     */
-    inline GetFindingsRequest& WithDetectorId(Aws::String&& value) { SetDetectorId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the detector that specifies the GuardDuty service whose findings
-     * you want to retrieve.</p>
-     */
-    inline GetFindingsRequest& WithDetectorId(const char* value) { SetDetectorId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The IDs of the findings that you want to retrieve.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetFindingIds() const{ return m_findingIds; }
-
-    /**
-     * <p>The IDs of the findings that you want to retrieve.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetFindingIds() const { return m_findingIds; }
     inline bool FindingIdsHasBeenSet() const { return m_findingIdsHasBeenSet; }
+    template<typename FindingIdsT = Aws::Vector<Aws::String>>
+    void SetFindingIds(FindingIdsT&& value) { m_findingIdsHasBeenSet = true; m_findingIds = std::forward<FindingIdsT>(value); }
+    template<typename FindingIdsT = Aws::Vector<Aws::String>>
+    GetFindingsRequest& WithFindingIds(FindingIdsT&& value) { SetFindingIds(std::forward<FindingIdsT>(value)); return *this;}
+    template<typename FindingIdsT = Aws::String>
+    GetFindingsRequest& AddFindingIds(FindingIdsT&& value) { m_findingIdsHasBeenSet = true; m_findingIds.emplace_back(std::forward<FindingIdsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The IDs of the findings that you want to retrieve.</p>
-     */
-    inline void SetFindingIds(const Aws::Vector<Aws::String>& value) { m_findingIdsHasBeenSet = true; m_findingIds = value; }
-
-    /**
-     * <p>The IDs of the findings that you want to retrieve.</p>
-     */
-    inline void SetFindingIds(Aws::Vector<Aws::String>&& value) { m_findingIdsHasBeenSet = true; m_findingIds = std::move(value); }
-
-    /**
-     * <p>The IDs of the findings that you want to retrieve.</p>
-     */
-    inline GetFindingsRequest& WithFindingIds(const Aws::Vector<Aws::String>& value) { SetFindingIds(value); return *this;}
-
-    /**
-     * <p>The IDs of the findings that you want to retrieve.</p>
-     */
-    inline GetFindingsRequest& WithFindingIds(Aws::Vector<Aws::String>&& value) { SetFindingIds(std::move(value)); return *this;}
-
-    /**
-     * <p>The IDs of the findings that you want to retrieve.</p>
-     */
-    inline GetFindingsRequest& AddFindingIds(const Aws::String& value) { m_findingIdsHasBeenSet = true; m_findingIds.push_back(value); return *this; }
-
-    /**
-     * <p>The IDs of the findings that you want to retrieve.</p>
-     */
-    inline GetFindingsRequest& AddFindingIds(Aws::String&& value) { m_findingIdsHasBeenSet = true; m_findingIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The IDs of the findings that you want to retrieve.</p>
-     */
-    inline GetFindingsRequest& AddFindingIds(const char* value) { m_findingIdsHasBeenSet = true; m_findingIds.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>Represents the criteria used for sorting findings.</p>
      */
-    inline const SortCriteria& GetSortCriteria() const{ return m_sortCriteria; }
-
-    /**
-     * <p>Represents the criteria used for sorting findings.</p>
-     */
+    inline const SortCriteria& GetSortCriteria() const { return m_sortCriteria; }
     inline bool SortCriteriaHasBeenSet() const { return m_sortCriteriaHasBeenSet; }
-
-    /**
-     * <p>Represents the criteria used for sorting findings.</p>
-     */
-    inline void SetSortCriteria(const SortCriteria& value) { m_sortCriteriaHasBeenSet = true; m_sortCriteria = value; }
-
-    /**
-     * <p>Represents the criteria used for sorting findings.</p>
-     */
-    inline void SetSortCriteria(SortCriteria&& value) { m_sortCriteriaHasBeenSet = true; m_sortCriteria = std::move(value); }
-
-    /**
-     * <p>Represents the criteria used for sorting findings.</p>
-     */
-    inline GetFindingsRequest& WithSortCriteria(const SortCriteria& value) { SetSortCriteria(value); return *this;}
-
-    /**
-     * <p>Represents the criteria used for sorting findings.</p>
-     */
-    inline GetFindingsRequest& WithSortCriteria(SortCriteria&& value) { SetSortCriteria(std::move(value)); return *this;}
-
+    template<typename SortCriteriaT = SortCriteria>
+    void SetSortCriteria(SortCriteriaT&& value) { m_sortCriteriaHasBeenSet = true; m_sortCriteria = std::forward<SortCriteriaT>(value); }
+    template<typename SortCriteriaT = SortCriteria>
+    GetFindingsRequest& WithSortCriteria(SortCriteriaT&& value) { SetSortCriteria(std::forward<SortCriteriaT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_detectorId;

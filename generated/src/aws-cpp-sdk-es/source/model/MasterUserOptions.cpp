@@ -18,17 +18,7 @@ namespace ElasticsearchService
 namespace Model
 {
 
-MasterUserOptions::MasterUserOptions() : 
-    m_masterUserARNHasBeenSet(false),
-    m_masterUserNameHasBeenSet(false),
-    m_masterUserPasswordHasBeenSet(false)
-{
-}
-
-MasterUserOptions::MasterUserOptions(JsonView jsonValue) : 
-    m_masterUserARNHasBeenSet(false),
-    m_masterUserNameHasBeenSet(false),
-    m_masterUserPasswordHasBeenSet(false)
+MasterUserOptions::MasterUserOptions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ MasterUserOptions& MasterUserOptions::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("MasterUserARN"))
   {
     m_masterUserARN = jsonValue.GetString("MasterUserARN");
-
     m_masterUserARNHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MasterUserName"))
   {
     m_masterUserName = jsonValue.GetString("MasterUserName");
-
     m_masterUserNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MasterUserPassword"))
   {
     m_masterUserPassword = jsonValue.GetString("MasterUserPassword");
-
     m_masterUserPasswordHasBeenSet = true;
   }
-
   return *this;
 }
 

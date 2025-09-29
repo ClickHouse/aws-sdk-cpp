@@ -12,18 +12,15 @@ using namespace Aws::MediaConvert::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateQueueRequest::UpdateQueueRequest() : 
-    m_descriptionHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_reservationPlanSettingsHasBeenSet(false),
-    m_status(QueueStatus::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
 Aws::String UpdateQueueRequest::SerializePayload() const
 {
   JsonValue payload;
+
+  if(m_concurrentJobsHasBeenSet)
+  {
+   payload.WithInteger("concurrentJobs", m_concurrentJobs);
+
+  }
 
   if(m_descriptionHasBeenSet)
   {

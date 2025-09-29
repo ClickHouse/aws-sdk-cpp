@@ -31,48 +31,24 @@ namespace Model
   class PrivateDnsPropertiesMutable
   {
   public:
-    AWS_SERVICEDISCOVERY_API PrivateDnsPropertiesMutable();
+    AWS_SERVICEDISCOVERY_API PrivateDnsPropertiesMutable() = default;
     AWS_SERVICEDISCOVERY_API PrivateDnsPropertiesMutable(Aws::Utils::Json::JsonView jsonValue);
     AWS_SERVICEDISCOVERY_API PrivateDnsPropertiesMutable& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SERVICEDISCOVERY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Fields for the Start of Authority (SOA) record for the hosted zone for the
      * private DNS namespace.</p>
      */
-    inline const SOA& GetSOA() const{ return m_sOA; }
-
-    /**
-     * <p>Fields for the Start of Authority (SOA) record for the hosted zone for the
-     * private DNS namespace.</p>
-     */
+    inline const SOA& GetSOA() const { return m_sOA; }
     inline bool SOAHasBeenSet() const { return m_sOAHasBeenSet; }
-
-    /**
-     * <p>Fields for the Start of Authority (SOA) record for the hosted zone for the
-     * private DNS namespace.</p>
-     */
-    inline void SetSOA(const SOA& value) { m_sOAHasBeenSet = true; m_sOA = value; }
-
-    /**
-     * <p>Fields for the Start of Authority (SOA) record for the hosted zone for the
-     * private DNS namespace.</p>
-     */
-    inline void SetSOA(SOA&& value) { m_sOAHasBeenSet = true; m_sOA = std::move(value); }
-
-    /**
-     * <p>Fields for the Start of Authority (SOA) record for the hosted zone for the
-     * private DNS namespace.</p>
-     */
-    inline PrivateDnsPropertiesMutable& WithSOA(const SOA& value) { SetSOA(value); return *this;}
-
-    /**
-     * <p>Fields for the Start of Authority (SOA) record for the hosted zone for the
-     * private DNS namespace.</p>
-     */
-    inline PrivateDnsPropertiesMutable& WithSOA(SOA&& value) { SetSOA(std::move(value)); return *this;}
-
+    template<typename SOAT = SOA>
+    void SetSOA(SOAT&& value) { m_sOAHasBeenSet = true; m_sOA = std::forward<SOAT>(value); }
+    template<typename SOAT = SOA>
+    PrivateDnsPropertiesMutable& WithSOA(SOAT&& value) { SetSOA(std::forward<SOAT>(value)); return *this;}
+    ///@}
   private:
 
     SOA m_sOA;

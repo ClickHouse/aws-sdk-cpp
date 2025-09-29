@@ -18,15 +18,7 @@ namespace SSM
 namespace Model
 {
 
-OpsMetadataFilter::OpsMetadataFilter() : 
-    m_keyHasBeenSet(false),
-    m_valuesHasBeenSet(false)
-{
-}
-
-OpsMetadataFilter::OpsMetadataFilter(JsonView jsonValue) : 
-    m_keyHasBeenSet(false),
-    m_valuesHasBeenSet(false)
+OpsMetadataFilter::OpsMetadataFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ OpsMetadataFilter& OpsMetadataFilter::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Key"))
   {
     m_key = jsonValue.GetString("Key");
-
     m_keyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Values"))
   {
     Aws::Utils::Array<JsonView> valuesJsonList = jsonValue.GetArray("Values");
@@ -49,7 +39,6 @@ OpsMetadataFilter& OpsMetadataFilter::operator =(JsonView jsonValue)
     }
     m_valuesHasBeenSet = true;
   }
-
   return *this;
 }
 

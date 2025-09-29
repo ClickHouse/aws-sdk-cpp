@@ -18,19 +18,7 @@ namespace FreeTier
 namespace Model
 {
 
-DimensionValues::DimensionValues() : 
-    m_key(Dimension::NOT_SET),
-    m_keyHasBeenSet(false),
-    m_matchOptionsHasBeenSet(false),
-    m_valuesHasBeenSet(false)
-{
-}
-
-DimensionValues::DimensionValues(JsonView jsonValue) : 
-    m_key(Dimension::NOT_SET),
-    m_keyHasBeenSet(false),
-    m_matchOptionsHasBeenSet(false),
-    m_valuesHasBeenSet(false)
+DimensionValues::DimensionValues(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,20 +28,8 @@ DimensionValues& DimensionValues::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Key"))
   {
     m_key = DimensionMapper::GetDimensionForName(jsonValue.GetString("Key"));
-
     m_keyHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("MatchOptions"))
-  {
-    Aws::Utils::Array<JsonView> matchOptionsJsonList = jsonValue.GetArray("MatchOptions");
-    for(unsigned matchOptionsIndex = 0; matchOptionsIndex < matchOptionsJsonList.GetLength(); ++matchOptionsIndex)
-    {
-      m_matchOptions.push_back(MatchOptionMapper::GetMatchOptionForName(matchOptionsJsonList[matchOptionsIndex].AsString()));
-    }
-    m_matchOptionsHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("Values"))
   {
     Aws::Utils::Array<JsonView> valuesJsonList = jsonValue.GetArray("Values");
@@ -63,7 +39,15 @@ DimensionValues& DimensionValues::operator =(JsonView jsonValue)
     }
     m_valuesHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("MatchOptions"))
+  {
+    Aws::Utils::Array<JsonView> matchOptionsJsonList = jsonValue.GetArray("MatchOptions");
+    for(unsigned matchOptionsIndex = 0; matchOptionsIndex < matchOptionsJsonList.GetLength(); ++matchOptionsIndex)
+    {
+      m_matchOptions.push_back(MatchOptionMapper::GetMatchOptionForName(matchOptionsJsonList[matchOptionsIndex].AsString()));
+    }
+    m_matchOptionsHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -76,17 +60,6 @@ JsonValue DimensionValues::Jsonize() const
    payload.WithString("Key", DimensionMapper::GetNameForDimension(m_key));
   }
 
-  if(m_matchOptionsHasBeenSet)
-  {
-   Aws::Utils::Array<JsonValue> matchOptionsJsonList(m_matchOptions.size());
-   for(unsigned matchOptionsIndex = 0; matchOptionsIndex < matchOptionsJsonList.GetLength(); ++matchOptionsIndex)
-   {
-     matchOptionsJsonList[matchOptionsIndex].AsString(MatchOptionMapper::GetNameForMatchOption(m_matchOptions[matchOptionsIndex]));
-   }
-   payload.WithArray("MatchOptions", std::move(matchOptionsJsonList));
-
-  }
-
   if(m_valuesHasBeenSet)
   {
    Aws::Utils::Array<JsonValue> valuesJsonList(m_values.size());
@@ -95,6 +68,17 @@ JsonValue DimensionValues::Jsonize() const
      valuesJsonList[valuesIndex].AsString(m_values[valuesIndex]);
    }
    payload.WithArray("Values", std::move(valuesJsonList));
+
+  }
+
+  if(m_matchOptionsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> matchOptionsJsonList(m_matchOptions.size());
+   for(unsigned matchOptionsIndex = 0; matchOptionsIndex < matchOptionsJsonList.GetLength(); ++matchOptionsIndex)
+   {
+     matchOptionsJsonList[matchOptionsIndex].AsString(MatchOptionMapper::GetNameForMatchOption(m_matchOptions[matchOptionsIndex]));
+   }
+   payload.WithArray("MatchOptions", std::move(matchOptionsJsonList));
 
   }
 

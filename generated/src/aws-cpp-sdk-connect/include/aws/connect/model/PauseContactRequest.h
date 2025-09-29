@@ -21,7 +21,7 @@ namespace Model
   class PauseContactRequest : public ConnectRequest
   {
   public:
-    AWS_CONNECT_API PauseContactRequest();
+    AWS_CONNECT_API PauseContactRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,136 +32,42 @@ namespace Model
     AWS_CONNECT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The identifier of the contact.</p>
      */
-    inline const Aws::String& GetContactId() const{ return m_contactId; }
-
-    /**
-     * <p>The identifier of the contact.</p>
-     */
+    inline const Aws::String& GetContactId() const { return m_contactId; }
     inline bool ContactIdHasBeenSet() const { return m_contactIdHasBeenSet; }
+    template<typename ContactIdT = Aws::String>
+    void SetContactId(ContactIdT&& value) { m_contactIdHasBeenSet = true; m_contactId = std::forward<ContactIdT>(value); }
+    template<typename ContactIdT = Aws::String>
+    PauseContactRequest& WithContactId(ContactIdT&& value) { SetContactId(std::forward<ContactIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the contact.</p>
-     */
-    inline void SetContactId(const Aws::String& value) { m_contactIdHasBeenSet = true; m_contactId = value; }
-
-    /**
-     * <p>The identifier of the contact.</p>
-     */
-    inline void SetContactId(Aws::String&& value) { m_contactIdHasBeenSet = true; m_contactId = std::move(value); }
-
-    /**
-     * <p>The identifier of the contact.</p>
-     */
-    inline void SetContactId(const char* value) { m_contactIdHasBeenSet = true; m_contactId.assign(value); }
-
-    /**
-     * <p>The identifier of the contact.</p>
-     */
-    inline PauseContactRequest& WithContactId(const Aws::String& value) { SetContactId(value); return *this;}
-
-    /**
-     * <p>The identifier of the contact.</p>
-     */
-    inline PauseContactRequest& WithContactId(Aws::String&& value) { SetContactId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the contact.</p>
-     */
-    inline PauseContactRequest& WithContactId(const char* value) { SetContactId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the Amazon Connect instance. You can find the
      * <code>instanceId</code> in the ARN of the instance.</p>
      */
-    inline const Aws::String& GetInstanceId() const{ return m_instanceId; }
-
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can find the
-     * <code>instanceId</code> in the ARN of the instance.</p>
-     */
+    inline const Aws::String& GetInstanceId() const { return m_instanceId; }
     inline bool InstanceIdHasBeenSet() const { return m_instanceIdHasBeenSet; }
+    template<typename InstanceIdT = Aws::String>
+    void SetInstanceId(InstanceIdT&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::forward<InstanceIdT>(value); }
+    template<typename InstanceIdT = Aws::String>
+    PauseContactRequest& WithInstanceId(InstanceIdT&& value) { SetInstanceId(std::forward<InstanceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can find the
-     * <code>instanceId</code> in the ARN of the instance.</p>
-     */
-    inline void SetInstanceId(const Aws::String& value) { m_instanceIdHasBeenSet = true; m_instanceId = value; }
-
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can find the
-     * <code>instanceId</code> in the ARN of the instance.</p>
-     */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::move(value); }
-
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can find the
-     * <code>instanceId</code> in the ARN of the instance.</p>
-     */
-    inline void SetInstanceId(const char* value) { m_instanceIdHasBeenSet = true; m_instanceId.assign(value); }
-
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can find the
-     * <code>instanceId</code> in the ARN of the instance.</p>
-     */
-    inline PauseContactRequest& WithInstanceId(const Aws::String& value) { SetInstanceId(value); return *this;}
-
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can find the
-     * <code>instanceId</code> in the ARN of the instance.</p>
-     */
-    inline PauseContactRequest& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can find the
-     * <code>instanceId</code> in the ARN of the instance.</p>
-     */
-    inline PauseContactRequest& WithInstanceId(const char* value) { SetInstanceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the flow.</p>
      */
-    inline const Aws::String& GetContactFlowId() const{ return m_contactFlowId; }
-
-    /**
-     * <p>The identifier of the flow.</p>
-     */
+    inline const Aws::String& GetContactFlowId() const { return m_contactFlowId; }
     inline bool ContactFlowIdHasBeenSet() const { return m_contactFlowIdHasBeenSet; }
-
-    /**
-     * <p>The identifier of the flow.</p>
-     */
-    inline void SetContactFlowId(const Aws::String& value) { m_contactFlowIdHasBeenSet = true; m_contactFlowId = value; }
-
-    /**
-     * <p>The identifier of the flow.</p>
-     */
-    inline void SetContactFlowId(Aws::String&& value) { m_contactFlowIdHasBeenSet = true; m_contactFlowId = std::move(value); }
-
-    /**
-     * <p>The identifier of the flow.</p>
-     */
-    inline void SetContactFlowId(const char* value) { m_contactFlowIdHasBeenSet = true; m_contactFlowId.assign(value); }
-
-    /**
-     * <p>The identifier of the flow.</p>
-     */
-    inline PauseContactRequest& WithContactFlowId(const Aws::String& value) { SetContactFlowId(value); return *this;}
-
-    /**
-     * <p>The identifier of the flow.</p>
-     */
-    inline PauseContactRequest& WithContactFlowId(Aws::String&& value) { SetContactFlowId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the flow.</p>
-     */
-    inline PauseContactRequest& WithContactFlowId(const char* value) { SetContactFlowId(value); return *this;}
-
+    template<typename ContactFlowIdT = Aws::String>
+    void SetContactFlowId(ContactFlowIdT&& value) { m_contactFlowIdHasBeenSet = true; m_contactFlowId = std::forward<ContactFlowIdT>(value); }
+    template<typename ContactFlowIdT = Aws::String>
+    PauseContactRequest& WithContactFlowId(ContactFlowIdT&& value) { SetContactFlowId(std::forward<ContactFlowIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_contactId;

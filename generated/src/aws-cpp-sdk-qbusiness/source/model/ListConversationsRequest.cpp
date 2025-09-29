@@ -15,15 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-ListConversationsRequest::ListConversationsRequest() : 
-    m_applicationIdHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_userIdHasBeenSet(false)
-{
-}
-
 Aws::String ListConversationsRequest::SerializePayload() const
 {
   return {};
@@ -32,10 +23,10 @@ Aws::String ListConversationsRequest::SerializePayload() const
 void ListConversationsRequest::AddQueryStringParameters(URI& uri) const
 {
     Aws::StringStream ss;
-    if(m_maxResultsHasBeenSet)
+    if(m_userIdHasBeenSet)
     {
-      ss << m_maxResults;
-      uri.AddQueryStringParameter("maxResults", ss.str());
+      ss << m_userId;
+      uri.AddQueryStringParameter("userId", ss.str());
       ss.str("");
     }
 
@@ -46,10 +37,10 @@ void ListConversationsRequest::AddQueryStringParameters(URI& uri) const
       ss.str("");
     }
 
-    if(m_userIdHasBeenSet)
+    if(m_maxResultsHasBeenSet)
     {
-      ss << m_userId;
-      uri.AddQueryStringParameter("userId", ss.str());
+      ss << m_maxResults;
+      uri.AddQueryStringParameter("maxResults", ss.str());
       ss.str("");
     }
 

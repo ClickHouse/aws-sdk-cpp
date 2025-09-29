@@ -10,16 +10,20 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-DescribeExportTasksRequest::DescribeExportTasksRequest() : 
-    m_exportTaskIdsHasBeenSet(false),
-    m_filtersHasBeenSet(false)
-{
-}
-
 Aws::String DescribeExportTasksRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=DescribeExportTasks&";
+  if(m_filtersHasBeenSet)
+  {
+    unsigned filtersCount = 1;
+    for(auto& item : m_filters)
+    {
+      item.OutputToStream(ss, "Filter.", filtersCount, "");
+      filtersCount++;
+    }
+  }
+
   if(m_exportTaskIdsHasBeenSet)
   {
     unsigned exportTaskIdsCount = 1;
@@ -28,16 +32,6 @@ Aws::String DescribeExportTasksRequest::SerializePayload() const
       ss << "ExportTaskId." << exportTaskIdsCount << "="
           << StringUtils::URLEncode(item.c_str()) << "&";
       exportTaskIdsCount++;
-    }
-  }
-
-  if(m_filtersHasBeenSet)
-  {
-    unsigned filtersCount = 1;
-    for(auto& item : m_filters)
-    {
-      item.OutputToStream(ss, "Filter.", filtersCount, "");
-      filtersCount++;
     }
   }
 

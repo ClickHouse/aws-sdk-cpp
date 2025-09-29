@@ -28,63 +28,37 @@ namespace Model
   class UpdateProvisionedProductResult
   {
   public:
-    AWS_SERVICECATALOG_API UpdateProvisionedProductResult();
+    AWS_SERVICECATALOG_API UpdateProvisionedProductResult() = default;
     AWS_SERVICECATALOG_API UpdateProvisionedProductResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_SERVICECATALOG_API UpdateProvisionedProductResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Information about the result of the request.</p>
      */
-    inline const RecordDetail& GetRecordDetail() const{ return m_recordDetail; }
+    inline const RecordDetail& GetRecordDetail() const { return m_recordDetail; }
+    template<typename RecordDetailT = RecordDetail>
+    void SetRecordDetail(RecordDetailT&& value) { m_recordDetailHasBeenSet = true; m_recordDetail = std::forward<RecordDetailT>(value); }
+    template<typename RecordDetailT = RecordDetail>
+    UpdateProvisionedProductResult& WithRecordDetail(RecordDetailT&& value) { SetRecordDetail(std::forward<RecordDetailT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about the result of the request.</p>
-     */
-    inline void SetRecordDetail(const RecordDetail& value) { m_recordDetail = value; }
-
-    /**
-     * <p>Information about the result of the request.</p>
-     */
-    inline void SetRecordDetail(RecordDetail&& value) { m_recordDetail = std::move(value); }
-
-    /**
-     * <p>Information about the result of the request.</p>
-     */
-    inline UpdateProvisionedProductResult& WithRecordDetail(const RecordDetail& value) { SetRecordDetail(value); return *this;}
-
-    /**
-     * <p>Information about the result of the request.</p>
-     */
-    inline UpdateProvisionedProductResult& WithRecordDetail(RecordDetail&& value) { SetRecordDetail(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline UpdateProvisionedProductResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline UpdateProvisionedProductResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline UpdateProvisionedProductResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    UpdateProvisionedProductResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     RecordDetail m_recordDetail;
+    bool m_recordDetailHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

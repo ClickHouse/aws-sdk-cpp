@@ -33,93 +33,35 @@ namespace Model
   class ListManagementOptions
   {
   public:
-    AWS_SESV2_API ListManagementOptions();
+    AWS_SESV2_API ListManagementOptions() = default;
     AWS_SESV2_API ListManagementOptions(Aws::Utils::Json::JsonView jsonValue);
     AWS_SESV2_API ListManagementOptions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SESV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the contact list.</p>
      */
-    inline const Aws::String& GetContactListName() const{ return m_contactListName; }
-
-    /**
-     * <p>The name of the contact list.</p>
-     */
+    inline const Aws::String& GetContactListName() const { return m_contactListName; }
     inline bool ContactListNameHasBeenSet() const { return m_contactListNameHasBeenSet; }
+    template<typename ContactListNameT = Aws::String>
+    void SetContactListName(ContactListNameT&& value) { m_contactListNameHasBeenSet = true; m_contactListName = std::forward<ContactListNameT>(value); }
+    template<typename ContactListNameT = Aws::String>
+    ListManagementOptions& WithContactListName(ContactListNameT&& value) { SetContactListName(std::forward<ContactListNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the contact list.</p>
-     */
-    inline void SetContactListName(const Aws::String& value) { m_contactListNameHasBeenSet = true; m_contactListName = value; }
-
-    /**
-     * <p>The name of the contact list.</p>
-     */
-    inline void SetContactListName(Aws::String&& value) { m_contactListNameHasBeenSet = true; m_contactListName = std::move(value); }
-
-    /**
-     * <p>The name of the contact list.</p>
-     */
-    inline void SetContactListName(const char* value) { m_contactListNameHasBeenSet = true; m_contactListName.assign(value); }
-
-    /**
-     * <p>The name of the contact list.</p>
-     */
-    inline ListManagementOptions& WithContactListName(const Aws::String& value) { SetContactListName(value); return *this;}
-
-    /**
-     * <p>The name of the contact list.</p>
-     */
-    inline ListManagementOptions& WithContactListName(Aws::String&& value) { SetContactListName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the contact list.</p>
-     */
-    inline ListManagementOptions& WithContactListName(const char* value) { SetContactListName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the topic.</p>
      */
-    inline const Aws::String& GetTopicName() const{ return m_topicName; }
-
-    /**
-     * <p>The name of the topic.</p>
-     */
+    inline const Aws::String& GetTopicName() const { return m_topicName; }
     inline bool TopicNameHasBeenSet() const { return m_topicNameHasBeenSet; }
-
-    /**
-     * <p>The name of the topic.</p>
-     */
-    inline void SetTopicName(const Aws::String& value) { m_topicNameHasBeenSet = true; m_topicName = value; }
-
-    /**
-     * <p>The name of the topic.</p>
-     */
-    inline void SetTopicName(Aws::String&& value) { m_topicNameHasBeenSet = true; m_topicName = std::move(value); }
-
-    /**
-     * <p>The name of the topic.</p>
-     */
-    inline void SetTopicName(const char* value) { m_topicNameHasBeenSet = true; m_topicName.assign(value); }
-
-    /**
-     * <p>The name of the topic.</p>
-     */
-    inline ListManagementOptions& WithTopicName(const Aws::String& value) { SetTopicName(value); return *this;}
-
-    /**
-     * <p>The name of the topic.</p>
-     */
-    inline ListManagementOptions& WithTopicName(Aws::String&& value) { SetTopicName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the topic.</p>
-     */
-    inline ListManagementOptions& WithTopicName(const char* value) { SetTopicName(value); return *this;}
-
+    template<typename TopicNameT = Aws::String>
+    void SetTopicName(TopicNameT&& value) { m_topicNameHasBeenSet = true; m_topicName = std::forward<TopicNameT>(value); }
+    template<typename TopicNameT = Aws::String>
+    ListManagementOptions& WithTopicName(TopicNameT&& value) { SetTopicName(std::forward<TopicNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_contactListName;

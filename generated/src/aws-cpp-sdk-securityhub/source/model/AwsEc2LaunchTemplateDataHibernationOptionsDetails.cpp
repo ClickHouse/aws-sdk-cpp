@@ -18,15 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsEc2LaunchTemplateDataHibernationOptionsDetails::AwsEc2LaunchTemplateDataHibernationOptionsDetails() : 
-    m_configured(false),
-    m_configuredHasBeenSet(false)
-{
-}
-
-AwsEc2LaunchTemplateDataHibernationOptionsDetails::AwsEc2LaunchTemplateDataHibernationOptionsDetails(JsonView jsonValue) : 
-    m_configured(false),
-    m_configuredHasBeenSet(false)
+AwsEc2LaunchTemplateDataHibernationOptionsDetails::AwsEc2LaunchTemplateDataHibernationOptionsDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ AwsEc2LaunchTemplateDataHibernationOptionsDetails& AwsEc2LaunchTemplateDataHiber
   if(jsonValue.ValueExists("Configured"))
   {
     m_configured = jsonValue.GetBool("Configured");
-
     m_configuredHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,17 +18,7 @@ namespace FMS
 namespace Model
 {
 
-FailedItem::FailedItem() : 
-    m_uRIHasBeenSet(false),
-    m_reason(FailedItemReason::NOT_SET),
-    m_reasonHasBeenSet(false)
-{
-}
-
-FailedItem::FailedItem(JsonView jsonValue) : 
-    m_uRIHasBeenSet(false),
-    m_reason(FailedItemReason::NOT_SET),
-    m_reasonHasBeenSet(false)
+FailedItem::FailedItem(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ FailedItem& FailedItem::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("URI"))
   {
     m_uRI = jsonValue.GetString("URI");
-
     m_uRIHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Reason"))
   {
     m_reason = FailedItemReasonMapper::GetFailedItemReasonForName(jsonValue.GetString("Reason"));
-
     m_reasonHasBeenSet = true;
   }
-
   return *this;
 }
 

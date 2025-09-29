@@ -20,21 +20,7 @@ namespace EC2
 namespace Model
 {
 
-ClientVpnAuthentication::ClientVpnAuthentication() : 
-    m_type(ClientVpnAuthenticationType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_activeDirectoryHasBeenSet(false),
-    m_mutualAuthenticationHasBeenSet(false),
-    m_federatedAuthenticationHasBeenSet(false)
-{
-}
-
-ClientVpnAuthentication::ClientVpnAuthentication(const XmlNode& xmlNode) : 
-    m_type(ClientVpnAuthenticationType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_activeDirectoryHasBeenSet(false),
-    m_mutualAuthenticationHasBeenSet(false),
-    m_federatedAuthenticationHasBeenSet(false)
+ClientVpnAuthentication::ClientVpnAuthentication(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -48,7 +34,7 @@ ClientVpnAuthentication& ClientVpnAuthentication::operator =(const XmlNode& xmlN
     XmlNode typeNode = resultNode.FirstChild("type");
     if(!typeNode.IsNull())
     {
-      m_type = ClientVpnAuthenticationTypeMapper::GetClientVpnAuthenticationTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(typeNode.GetText()).c_str()).c_str());
+      m_type = ClientVpnAuthenticationTypeMapper::GetClientVpnAuthenticationTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(typeNode.GetText()).c_str()));
       m_typeHasBeenSet = true;
     }
     XmlNode activeDirectoryNode = resultNode.FirstChild("activeDirectory");
@@ -78,7 +64,7 @@ void ClientVpnAuthentication::OutputToStream(Aws::OStream& oStream, const char* 
 {
   if(m_typeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Type=" << ClientVpnAuthenticationTypeMapper::GetNameForClientVpnAuthenticationType(m_type) << "&";
+      oStream << location << index << locationValue << ".Type=" << StringUtils::URLEncode(ClientVpnAuthenticationTypeMapper::GetNameForClientVpnAuthenticationType(m_type)) << "&";
   }
 
   if(m_activeDirectoryHasBeenSet)
@@ -108,7 +94,7 @@ void ClientVpnAuthentication::OutputToStream(Aws::OStream& oStream, const char* 
 {
   if(m_typeHasBeenSet)
   {
-      oStream << location << ".Type=" << ClientVpnAuthenticationTypeMapper::GetNameForClientVpnAuthenticationType(m_type) << "&";
+      oStream << location << ".Type=" << StringUtils::URLEncode(ClientVpnAuthenticationTypeMapper::GetNameForClientVpnAuthenticationType(m_type)) << "&";
   }
   if(m_activeDirectoryHasBeenSet)
   {

@@ -12,13 +12,6 @@ using namespace Aws::MediaConnect::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateFlowRequest::UpdateFlowRequest() : 
-    m_flowArnHasBeenSet(false),
-    m_sourceFailoverConfigHasBeenSet(false),
-    m_maintenanceHasBeenSet(false)
-{
-}
-
 Aws::String UpdateFlowRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -32,6 +25,18 @@ Aws::String UpdateFlowRequest::SerializePayload() const
   if(m_maintenanceHasBeenSet)
   {
    payload.WithObject("maintenance", m_maintenance.Jsonize());
+
+  }
+
+  if(m_sourceMonitoringConfigHasBeenSet)
+  {
+   payload.WithObject("sourceMonitoringConfig", m_sourceMonitoringConfig.Jsonize());
+
+  }
+
+  if(m_ndiConfigHasBeenSet)
+  {
+   payload.WithObject("ndiConfig", m_ndiConfig.Jsonize());
 
   }
 

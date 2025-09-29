@@ -24,69 +24,44 @@ namespace Model
 {
 
   /**
-   * <p>Trace Part which contains information related to reasoning</p><p><h3>See
-   * Also:</h3>   <a
+   * <p>Contains the reasoning, based on the input, that the agent uses to justify
+   * carrying out an action group or getting information from a knowledge
+   * base.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/bedrock-agent-runtime-2023-07-26/Rationale">AWS
    * API Reference</a></p>
    */
   class Rationale
   {
   public:
-    AWS_BEDROCKAGENTRUNTIME_API Rationale();
+    AWS_BEDROCKAGENTRUNTIME_API Rationale() = default;
     AWS_BEDROCKAGENTRUNTIME_API Rationale(Aws::Utils::Json::JsonView jsonValue);
     AWS_BEDROCKAGENTRUNTIME_API Rationale& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_BEDROCKAGENTRUNTIME_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
-    
-    inline const Aws::String& GetTraceId() const{ return m_traceId; }
-
-    
+    ///@{
+    /**
+     * <p>The unique identifier of the trace step.</p>
+     */
+    inline const Aws::String& GetTraceId() const { return m_traceId; }
     inline bool TraceIdHasBeenSet() const { return m_traceIdHasBeenSet; }
+    template<typename TraceIdT = Aws::String>
+    void SetTraceId(TraceIdT&& value) { m_traceIdHasBeenSet = true; m_traceId = std::forward<TraceIdT>(value); }
+    template<typename TraceIdT = Aws::String>
+    Rationale& WithTraceId(TraceIdT&& value) { SetTraceId(std::forward<TraceIdT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetTraceId(const Aws::String& value) { m_traceIdHasBeenSet = true; m_traceId = value; }
-
-    
-    inline void SetTraceId(Aws::String&& value) { m_traceIdHasBeenSet = true; m_traceId = std::move(value); }
-
-    
-    inline void SetTraceId(const char* value) { m_traceIdHasBeenSet = true; m_traceId.assign(value); }
-
-    
-    inline Rationale& WithTraceId(const Aws::String& value) { SetTraceId(value); return *this;}
-
-    
-    inline Rationale& WithTraceId(Aws::String&& value) { SetTraceId(std::move(value)); return *this;}
-
-    
-    inline Rationale& WithTraceId(const char* value) { SetTraceId(value); return *this;}
-
-
-    
-    inline const Aws::String& GetText() const{ return m_text; }
-
-    
+    ///@{
+    /**
+     * <p>The reasoning or thought process of the agent, based on the input.</p>
+     */
+    inline const Aws::String& GetText() const { return m_text; }
     inline bool TextHasBeenSet() const { return m_textHasBeenSet; }
-
-    
-    inline void SetText(const Aws::String& value) { m_textHasBeenSet = true; m_text = value; }
-
-    
-    inline void SetText(Aws::String&& value) { m_textHasBeenSet = true; m_text = std::move(value); }
-
-    
-    inline void SetText(const char* value) { m_textHasBeenSet = true; m_text.assign(value); }
-
-    
-    inline Rationale& WithText(const Aws::String& value) { SetText(value); return *this;}
-
-    
-    inline Rationale& WithText(Aws::String&& value) { SetText(std::move(value)); return *this;}
-
-    
-    inline Rationale& WithText(const char* value) { SetText(value); return *this;}
-
+    template<typename TextT = Aws::String>
+    void SetText(TextT&& value) { m_textHasBeenSet = true; m_text = std::forward<TextT>(value); }
+    template<typename TextT = Aws::String>
+    Rationale& WithText(TextT&& value) { SetText(std::forward<TextT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_traceId;

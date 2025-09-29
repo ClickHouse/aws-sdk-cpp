@@ -18,17 +18,7 @@ namespace Rekognition
 namespace Model
 {
 
-ProtectiveEquipmentSummary::ProtectiveEquipmentSummary() : 
-    m_personsWithRequiredEquipmentHasBeenSet(false),
-    m_personsWithoutRequiredEquipmentHasBeenSet(false),
-    m_personsIndeterminateHasBeenSet(false)
-{
-}
-
-ProtectiveEquipmentSummary::ProtectiveEquipmentSummary(JsonView jsonValue) : 
-    m_personsWithRequiredEquipmentHasBeenSet(false),
-    m_personsWithoutRequiredEquipmentHasBeenSet(false),
-    m_personsIndeterminateHasBeenSet(false)
+ProtectiveEquipmentSummary::ProtectiveEquipmentSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,7 +34,6 @@ ProtectiveEquipmentSummary& ProtectiveEquipmentSummary::operator =(JsonView json
     }
     m_personsWithRequiredEquipmentHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PersonsWithoutRequiredEquipment"))
   {
     Aws::Utils::Array<JsonView> personsWithoutRequiredEquipmentJsonList = jsonValue.GetArray("PersonsWithoutRequiredEquipment");
@@ -54,7 +43,6 @@ ProtectiveEquipmentSummary& ProtectiveEquipmentSummary::operator =(JsonView json
     }
     m_personsWithoutRequiredEquipmentHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PersonsIndeterminate"))
   {
     Aws::Utils::Array<JsonView> personsIndeterminateJsonList = jsonValue.GetArray("PersonsIndeterminate");
@@ -64,7 +52,6 @@ ProtectiveEquipmentSummary& ProtectiveEquipmentSummary::operator =(JsonView json
     }
     m_personsIndeterminateHasBeenSet = true;
   }
-
   return *this;
 }
 

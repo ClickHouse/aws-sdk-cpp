@@ -20,25 +20,7 @@ namespace RDS
 namespace Model
 {
 
-DBSubnetGroup::DBSubnetGroup() : 
-    m_dBSubnetGroupNameHasBeenSet(false),
-    m_dBSubnetGroupDescriptionHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_subnetGroupStatusHasBeenSet(false),
-    m_subnetsHasBeenSet(false),
-    m_dBSubnetGroupArnHasBeenSet(false),
-    m_supportedNetworkTypesHasBeenSet(false)
-{
-}
-
-DBSubnetGroup::DBSubnetGroup(const XmlNode& xmlNode) : 
-    m_dBSubnetGroupNameHasBeenSet(false),
-    m_dBSubnetGroupDescriptionHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_subnetGroupStatusHasBeenSet(false),
-    m_subnetsHasBeenSet(false),
-    m_dBSubnetGroupArnHasBeenSet(false),
-    m_supportedNetworkTypesHasBeenSet(false)
+DBSubnetGroup::DBSubnetGroup(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -77,6 +59,7 @@ DBSubnetGroup& DBSubnetGroup::operator =(const XmlNode& xmlNode)
     if(!subnetsNode.IsNull())
     {
       XmlNode subnetsMember = subnetsNode.FirstChild("Subnet");
+      m_subnetsHasBeenSet = !subnetsMember.IsNull();
       while(!subnetsMember.IsNull())
       {
         m_subnets.push_back(subnetsMember);
@@ -95,6 +78,7 @@ DBSubnetGroup& DBSubnetGroup::operator =(const XmlNode& xmlNode)
     if(!supportedNetworkTypesNode.IsNull())
     {
       XmlNode supportedNetworkTypesMember = supportedNetworkTypesNode.FirstChild("member");
+      m_supportedNetworkTypesHasBeenSet = !supportedNetworkTypesMember.IsNull();
       while(!supportedNetworkTypesMember.IsNull())
       {
         m_supportedNetworkTypes.push_back(supportedNetworkTypesMember.GetText());
@@ -136,7 +120,7 @@ void DBSubnetGroup::OutputToStream(Aws::OStream& oStream, const char* location, 
       for(auto& item : m_subnets)
       {
         Aws::StringStream subnetsSs;
-        subnetsSs << location << index << locationValue << ".Subnet." << subnetsIdx++;
+        subnetsSs << location << index << locationValue << ".Subnets.Subnet." << subnetsIdx++;
         item.OutputToStream(oStream, subnetsSs.str().c_str());
       }
   }
@@ -181,7 +165,7 @@ void DBSubnetGroup::OutputToStream(Aws::OStream& oStream, const char* location) 
       for(auto& item : m_subnets)
       {
         Aws::StringStream subnetsSs;
-        subnetsSs << location <<  ".Subnet." << subnetsIdx++;
+        subnetsSs << location << ".Subnets.Subnet." << subnetsIdx++;
         item.OutputToStream(oStream, subnetsSs.str().c_str());
       }
   }

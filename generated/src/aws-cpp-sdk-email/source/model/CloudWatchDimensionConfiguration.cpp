@@ -20,19 +20,7 @@ namespace SES
 namespace Model
 {
 
-CloudWatchDimensionConfiguration::CloudWatchDimensionConfiguration() : 
-    m_dimensionNameHasBeenSet(false),
-    m_dimensionValueSource(DimensionValueSource::NOT_SET),
-    m_dimensionValueSourceHasBeenSet(false),
-    m_defaultDimensionValueHasBeenSet(false)
-{
-}
-
-CloudWatchDimensionConfiguration::CloudWatchDimensionConfiguration(const XmlNode& xmlNode) : 
-    m_dimensionNameHasBeenSet(false),
-    m_dimensionValueSource(DimensionValueSource::NOT_SET),
-    m_dimensionValueSourceHasBeenSet(false),
-    m_defaultDimensionValueHasBeenSet(false)
+CloudWatchDimensionConfiguration::CloudWatchDimensionConfiguration(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -52,7 +40,7 @@ CloudWatchDimensionConfiguration& CloudWatchDimensionConfiguration::operator =(c
     XmlNode dimensionValueSourceNode = resultNode.FirstChild("DimensionValueSource");
     if(!dimensionValueSourceNode.IsNull())
     {
-      m_dimensionValueSource = DimensionValueSourceMapper::GetDimensionValueSourceForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(dimensionValueSourceNode.GetText()).c_str()).c_str());
+      m_dimensionValueSource = DimensionValueSourceMapper::GetDimensionValueSourceForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(dimensionValueSourceNode.GetText()).c_str()));
       m_dimensionValueSourceHasBeenSet = true;
     }
     XmlNode defaultDimensionValueNode = resultNode.FirstChild("DefaultDimensionValue");
@@ -75,7 +63,7 @@ void CloudWatchDimensionConfiguration::OutputToStream(Aws::OStream& oStream, con
 
   if(m_dimensionValueSourceHasBeenSet)
   {
-      oStream << location << index << locationValue << ".DimensionValueSource=" << DimensionValueSourceMapper::GetNameForDimensionValueSource(m_dimensionValueSource) << "&";
+      oStream << location << index << locationValue << ".DimensionValueSource=" << StringUtils::URLEncode(DimensionValueSourceMapper::GetNameForDimensionValueSource(m_dimensionValueSource)) << "&";
   }
 
   if(m_defaultDimensionValueHasBeenSet)
@@ -93,7 +81,7 @@ void CloudWatchDimensionConfiguration::OutputToStream(Aws::OStream& oStream, con
   }
   if(m_dimensionValueSourceHasBeenSet)
   {
-      oStream << location << ".DimensionValueSource=" << DimensionValueSourceMapper::GetNameForDimensionValueSource(m_dimensionValueSource) << "&";
+      oStream << location << ".DimensionValueSource=" << StringUtils::URLEncode(DimensionValueSourceMapper::GetNameForDimensionValueSource(m_dimensionValueSource)) << "&";
   }
   if(m_defaultDimensionValueHasBeenSet)
   {

@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-DataSetIdentifierDeclaration::DataSetIdentifierDeclaration() : 
-    m_identifierHasBeenSet(false),
-    m_dataSetArnHasBeenSet(false)
-{
-}
-
-DataSetIdentifierDeclaration::DataSetIdentifierDeclaration(JsonView jsonValue) : 
-    m_identifierHasBeenSet(false),
-    m_dataSetArnHasBeenSet(false)
+DataSetIdentifierDeclaration::DataSetIdentifierDeclaration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ DataSetIdentifierDeclaration& DataSetIdentifierDeclaration::operator =(JsonView 
   if(jsonValue.ValueExists("Identifier"))
   {
     m_identifier = jsonValue.GetString("Identifier");
-
     m_identifierHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DataSetArn"))
   {
     m_dataSetArn = jsonValue.GetString("DataSetArn");
-
     m_dataSetArnHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,27 +18,7 @@ namespace Transfer
 namespace Model
 {
 
-DescribedConnector::DescribedConnector() : 
-    m_arnHasBeenSet(false),
-    m_connectorIdHasBeenSet(false),
-    m_urlHasBeenSet(false),
-    m_as2ConfigHasBeenSet(false),
-    m_accessRoleHasBeenSet(false),
-    m_loggingRoleHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_sftpConfigHasBeenSet(false)
-{
-}
-
-DescribedConnector::DescribedConnector(JsonView jsonValue) : 
-    m_arnHasBeenSet(false),
-    m_connectorIdHasBeenSet(false),
-    m_urlHasBeenSet(false),
-    m_as2ConfigHasBeenSet(false),
-    m_accessRoleHasBeenSet(false),
-    m_loggingRoleHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_sftpConfigHasBeenSet(false)
+DescribedConnector::DescribedConnector(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -48,45 +28,33 @@ DescribedConnector& DescribedConnector::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Arn"))
   {
     m_arn = jsonValue.GetString("Arn");
-
     m_arnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ConnectorId"))
   {
     m_connectorId = jsonValue.GetString("ConnectorId");
-
     m_connectorIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Url"))
   {
     m_url = jsonValue.GetString("Url");
-
     m_urlHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("As2Config"))
   {
     m_as2Config = jsonValue.GetObject("As2Config");
-
     m_as2ConfigHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AccessRole"))
   {
     m_accessRole = jsonValue.GetString("AccessRole");
-
     m_accessRoleHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LoggingRole"))
   {
     m_loggingRole = jsonValue.GetString("LoggingRole");
-
     m_loggingRoleHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Tags"))
   {
     Aws::Utils::Array<JsonView> tagsJsonList = jsonValue.GetArray("Tags");
@@ -96,14 +64,25 @@ DescribedConnector& DescribedConnector::operator =(JsonView jsonValue)
     }
     m_tagsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SftpConfig"))
   {
     m_sftpConfig = jsonValue.GetObject("SftpConfig");
-
     m_sftpConfigHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("ServiceManagedEgressIpAddresses"))
+  {
+    Aws::Utils::Array<JsonView> serviceManagedEgressIpAddressesJsonList = jsonValue.GetArray("ServiceManagedEgressIpAddresses");
+    for(unsigned serviceManagedEgressIpAddressesIndex = 0; serviceManagedEgressIpAddressesIndex < serviceManagedEgressIpAddressesJsonList.GetLength(); ++serviceManagedEgressIpAddressesIndex)
+    {
+      m_serviceManagedEgressIpAddresses.push_back(serviceManagedEgressIpAddressesJsonList[serviceManagedEgressIpAddressesIndex].AsString());
+    }
+    m_serviceManagedEgressIpAddressesHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("SecurityPolicyName"))
+  {
+    m_securityPolicyName = jsonValue.GetString("SecurityPolicyName");
+    m_securityPolicyNameHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -161,6 +140,23 @@ JsonValue DescribedConnector::Jsonize() const
   if(m_sftpConfigHasBeenSet)
   {
    payload.WithObject("SftpConfig", m_sftpConfig.Jsonize());
+
+  }
+
+  if(m_serviceManagedEgressIpAddressesHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> serviceManagedEgressIpAddressesJsonList(m_serviceManagedEgressIpAddresses.size());
+   for(unsigned serviceManagedEgressIpAddressesIndex = 0; serviceManagedEgressIpAddressesIndex < serviceManagedEgressIpAddressesJsonList.GetLength(); ++serviceManagedEgressIpAddressesIndex)
+   {
+     serviceManagedEgressIpAddressesJsonList[serviceManagedEgressIpAddressesIndex].AsString(m_serviceManagedEgressIpAddresses[serviceManagedEgressIpAddressesIndex]);
+   }
+   payload.WithArray("ServiceManagedEgressIpAddresses", std::move(serviceManagedEgressIpAddressesJsonList));
+
+  }
+
+  if(m_securityPolicyNameHasBeenSet)
+  {
+   payload.WithString("SecurityPolicyName", m_securityPolicyName);
 
   }
 

@@ -18,15 +18,7 @@ namespace MediaConvert
 namespace Model
 {
 
-AccelerationSettings::AccelerationSettings() : 
-    m_mode(AccelerationMode::NOT_SET),
-    m_modeHasBeenSet(false)
-{
-}
-
-AccelerationSettings::AccelerationSettings(JsonView jsonValue) : 
-    m_mode(AccelerationMode::NOT_SET),
-    m_modeHasBeenSet(false)
+AccelerationSettings::AccelerationSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ AccelerationSettings& AccelerationSettings::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("mode"))
   {
     m_mode = AccelerationModeMapper::GetAccelerationModeForName(jsonValue.GetString("mode"));
-
     m_modeHasBeenSet = true;
   }
-
   return *this;
 }
 

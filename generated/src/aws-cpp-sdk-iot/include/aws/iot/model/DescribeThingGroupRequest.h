@@ -21,7 +21,7 @@ namespace Model
   class DescribeThingGroupRequest : public IoTRequest
   {
   public:
-    AWS_IOT_API DescribeThingGroupRequest();
+    AWS_IOT_API DescribeThingGroupRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_IOT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of the thing group.</p>
      */
-    inline const Aws::String& GetThingGroupName() const{ return m_thingGroupName; }
-
-    /**
-     * <p>The name of the thing group.</p>
-     */
+    inline const Aws::String& GetThingGroupName() const { return m_thingGroupName; }
     inline bool ThingGroupNameHasBeenSet() const { return m_thingGroupNameHasBeenSet; }
-
-    /**
-     * <p>The name of the thing group.</p>
-     */
-    inline void SetThingGroupName(const Aws::String& value) { m_thingGroupNameHasBeenSet = true; m_thingGroupName = value; }
-
-    /**
-     * <p>The name of the thing group.</p>
-     */
-    inline void SetThingGroupName(Aws::String&& value) { m_thingGroupNameHasBeenSet = true; m_thingGroupName = std::move(value); }
-
-    /**
-     * <p>The name of the thing group.</p>
-     */
-    inline void SetThingGroupName(const char* value) { m_thingGroupNameHasBeenSet = true; m_thingGroupName.assign(value); }
-
-    /**
-     * <p>The name of the thing group.</p>
-     */
-    inline DescribeThingGroupRequest& WithThingGroupName(const Aws::String& value) { SetThingGroupName(value); return *this;}
-
-    /**
-     * <p>The name of the thing group.</p>
-     */
-    inline DescribeThingGroupRequest& WithThingGroupName(Aws::String&& value) { SetThingGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the thing group.</p>
-     */
-    inline DescribeThingGroupRequest& WithThingGroupName(const char* value) { SetThingGroupName(value); return *this;}
-
+    template<typename ThingGroupNameT = Aws::String>
+    void SetThingGroupName(ThingGroupNameT&& value) { m_thingGroupNameHasBeenSet = true; m_thingGroupName = std::forward<ThingGroupNameT>(value); }
+    template<typename ThingGroupNameT = Aws::String>
+    DescribeThingGroupRequest& WithThingGroupName(ThingGroupNameT&& value) { SetThingGroupName(std::forward<ThingGroupNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_thingGroupName;

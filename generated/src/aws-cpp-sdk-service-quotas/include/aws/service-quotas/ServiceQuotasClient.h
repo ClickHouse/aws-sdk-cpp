@@ -21,14 +21,16 @@ namespace ServiceQuotas
    * maximum number of resources that you can create in your Amazon Web Services
    * account. For more information, see the <a
    * href="https://docs.aws.amazon.com/servicequotas/latest/userguide/">Service
-   * Quotas User Guide</a>.</p>
+   * Quotas User Guide</a>.</p> <p>You need Amazon Web Services CLI version 2.13.20
+   * or higher to view and manage resource-level quotas such as <code>Instances per
+   * domain</code> for Amazon OpenSearch Service.</p>
    */
   class AWS_SERVICEQUOTAS_API ServiceQuotasClient : public Aws::Client::AWSJsonClient, public Aws::Client::ClientWithAsyncTemplateMethods<ServiceQuotasClient>
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
 
       typedef ServiceQuotasClientConfiguration ClientConfigurationType;
       typedef ServiceQuotasEndpointProvider EndpointProviderType;
@@ -38,14 +40,14 @@ namespace ServiceQuotas
         * is not specified, it will be initialized to default values.
         */
         ServiceQuotasClient(const Aws::ServiceQuotas::ServiceQuotasClientConfiguration& clientConfiguration = Aws::ServiceQuotas::ServiceQuotasClientConfiguration(),
-                            std::shared_ptr<ServiceQuotasEndpointProviderBase> endpointProvider = Aws::MakeShared<ServiceQuotasEndpointProvider>(ALLOCATION_TAG));
+                            std::shared_ptr<ServiceQuotasEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         ServiceQuotasClient(const Aws::Auth::AWSCredentials& credentials,
-                            std::shared_ptr<ServiceQuotasEndpointProviderBase> endpointProvider = Aws::MakeShared<ServiceQuotasEndpointProvider>(ALLOCATION_TAG),
+                            std::shared_ptr<ServiceQuotasEndpointProviderBase> endpointProvider = nullptr,
                             const Aws::ServiceQuotas::ServiceQuotasClientConfiguration& clientConfiguration = Aws::ServiceQuotas::ServiceQuotasClientConfiguration());
 
        /**
@@ -53,7 +55,7 @@ namespace ServiceQuotas
         * the default http client factory will be used
         */
         ServiceQuotasClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                            std::shared_ptr<ServiceQuotasEndpointProviderBase> endpointProvider = Aws::MakeShared<ServiceQuotasEndpointProvider>(ALLOCATION_TAG),
+                            std::shared_ptr<ServiceQuotasEndpointProviderBase> endpointProvider = nullptr,
                             const Aws::ServiceQuotas::ServiceQuotasClientConfiguration& clientConfiguration = Aws::ServiceQuotas::ServiceQuotasClientConfiguration());
 
 
@@ -90,13 +92,13 @@ namespace ServiceQuotas
          * href="http://docs.aws.amazon.com/goto/WebAPI/service-quotas-2019-06-24/AssociateServiceQuotaTemplate">AWS
          * API Reference</a></p>
          */
-        virtual Model::AssociateServiceQuotaTemplateOutcome AssociateServiceQuotaTemplate(const Model::AssociateServiceQuotaTemplateRequest& request) const;
+        virtual Model::AssociateServiceQuotaTemplateOutcome AssociateServiceQuotaTemplate(const Model::AssociateServiceQuotaTemplateRequest& request = {}) const;
 
         /**
          * A Callable wrapper for AssociateServiceQuotaTemplate that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename AssociateServiceQuotaTemplateRequestT = Model::AssociateServiceQuotaTemplateRequest>
-        Model::AssociateServiceQuotaTemplateOutcomeCallable AssociateServiceQuotaTemplateCallable(const AssociateServiceQuotaTemplateRequestT& request) const
+        Model::AssociateServiceQuotaTemplateOutcomeCallable AssociateServiceQuotaTemplateCallable(const AssociateServiceQuotaTemplateRequestT& request = {}) const
         {
             return SubmitCallable(&ServiceQuotasClient::AssociateServiceQuotaTemplate, request);
         }
@@ -105,9 +107,36 @@ namespace ServiceQuotas
          * An Async wrapper for AssociateServiceQuotaTemplate that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename AssociateServiceQuotaTemplateRequestT = Model::AssociateServiceQuotaTemplateRequest>
-        void AssociateServiceQuotaTemplateAsync(const AssociateServiceQuotaTemplateRequestT& request, const AssociateServiceQuotaTemplateResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void AssociateServiceQuotaTemplateAsync(const AssociateServiceQuotaTemplateResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const AssociateServiceQuotaTemplateRequestT& request = {}) const
         {
             return SubmitAsync(&ServiceQuotasClient::AssociateServiceQuotaTemplate, request, handler, context);
+        }
+
+        /**
+         * <p>Creates a Support case for an existing quota increase request. This call only
+         * creates a Support case if the request has a <code>Pending</code> status.
+         * </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/service-quotas-2019-06-24/CreateSupportCase">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::CreateSupportCaseOutcome CreateSupportCase(const Model::CreateSupportCaseRequest& request) const;
+
+        /**
+         * A Callable wrapper for CreateSupportCase that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename CreateSupportCaseRequestT = Model::CreateSupportCaseRequest>
+        Model::CreateSupportCaseOutcomeCallable CreateSupportCaseCallable(const CreateSupportCaseRequestT& request) const
+        {
+            return SubmitCallable(&ServiceQuotasClient::CreateSupportCase, request);
+        }
+
+        /**
+         * An Async wrapper for CreateSupportCase that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename CreateSupportCaseRequestT = Model::CreateSupportCaseRequest>
+        void CreateSupportCaseAsync(const CreateSupportCaseRequestT& request, const CreateSupportCaseResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&ServiceQuotasClient::CreateSupportCase, request, handler, context);
         }
 
         /**
@@ -144,13 +173,13 @@ namespace ServiceQuotas
          * href="http://docs.aws.amazon.com/goto/WebAPI/service-quotas-2019-06-24/DisassociateServiceQuotaTemplate">AWS
          * API Reference</a></p>
          */
-        virtual Model::DisassociateServiceQuotaTemplateOutcome DisassociateServiceQuotaTemplate(const Model::DisassociateServiceQuotaTemplateRequest& request) const;
+        virtual Model::DisassociateServiceQuotaTemplateOutcome DisassociateServiceQuotaTemplate(const Model::DisassociateServiceQuotaTemplateRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DisassociateServiceQuotaTemplate that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DisassociateServiceQuotaTemplateRequestT = Model::DisassociateServiceQuotaTemplateRequest>
-        Model::DisassociateServiceQuotaTemplateOutcomeCallable DisassociateServiceQuotaTemplateCallable(const DisassociateServiceQuotaTemplateRequestT& request) const
+        Model::DisassociateServiceQuotaTemplateOutcomeCallable DisassociateServiceQuotaTemplateCallable(const DisassociateServiceQuotaTemplateRequestT& request = {}) const
         {
             return SubmitCallable(&ServiceQuotasClient::DisassociateServiceQuotaTemplate, request);
         }
@@ -159,7 +188,7 @@ namespace ServiceQuotas
          * An Async wrapper for DisassociateServiceQuotaTemplate that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DisassociateServiceQuotaTemplateRequestT = Model::DisassociateServiceQuotaTemplateRequest>
-        void DisassociateServiceQuotaTemplateAsync(const DisassociateServiceQuotaTemplateRequestT& request, const DisassociateServiceQuotaTemplateResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DisassociateServiceQuotaTemplateAsync(const DisassociateServiceQuotaTemplateResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DisassociateServiceQuotaTemplateRequestT& request = {}) const
         {
             return SubmitAsync(&ServiceQuotasClient::DisassociateServiceQuotaTemplate, request, handler, context);
         }
@@ -196,13 +225,13 @@ namespace ServiceQuotas
          * href="http://docs.aws.amazon.com/goto/WebAPI/service-quotas-2019-06-24/GetAssociationForServiceQuotaTemplate">AWS
          * API Reference</a></p>
          */
-        virtual Model::GetAssociationForServiceQuotaTemplateOutcome GetAssociationForServiceQuotaTemplate(const Model::GetAssociationForServiceQuotaTemplateRequest& request) const;
+        virtual Model::GetAssociationForServiceQuotaTemplateOutcome GetAssociationForServiceQuotaTemplate(const Model::GetAssociationForServiceQuotaTemplateRequest& request = {}) const;
 
         /**
          * A Callable wrapper for GetAssociationForServiceQuotaTemplate that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename GetAssociationForServiceQuotaTemplateRequestT = Model::GetAssociationForServiceQuotaTemplateRequest>
-        Model::GetAssociationForServiceQuotaTemplateOutcomeCallable GetAssociationForServiceQuotaTemplateCallable(const GetAssociationForServiceQuotaTemplateRequestT& request) const
+        Model::GetAssociationForServiceQuotaTemplateOutcomeCallable GetAssociationForServiceQuotaTemplateCallable(const GetAssociationForServiceQuotaTemplateRequestT& request = {}) const
         {
             return SubmitCallable(&ServiceQuotasClient::GetAssociationForServiceQuotaTemplate, request);
         }
@@ -211,7 +240,7 @@ namespace ServiceQuotas
          * An Async wrapper for GetAssociationForServiceQuotaTemplate that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename GetAssociationForServiceQuotaTemplateRequestT = Model::GetAssociationForServiceQuotaTemplateRequest>
-        void GetAssociationForServiceQuotaTemplateAsync(const GetAssociationForServiceQuotaTemplateRequestT& request, const GetAssociationForServiceQuotaTemplateResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void GetAssociationForServiceQuotaTemplateAsync(const GetAssociationForServiceQuotaTemplateResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const GetAssociationForServiceQuotaTemplateRequestT& request = {}) const
         {
             return SubmitAsync(&ServiceQuotasClient::GetAssociationForServiceQuotaTemplate, request, handler, context);
         }
@@ -243,9 +272,10 @@ namespace ServiceQuotas
         }
 
         /**
-         * <p>Retrieves the applied quota value for the specified quota. For some quotas,
-         * only the default values are available. If the applied quota value is not
-         * available for a quota, the quota is not retrieved.</p><p><h3>See Also:</h3>   <a
+         * <p>Retrieves the applied quota value for the specified account-level or
+         * resource-level quota. For some quotas, only the default values are available. If
+         * the applied quota value is not available for a quota, the quota is not
+         * retrieved.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/service-quotas-2019-06-24/GetServiceQuota">AWS
          * API Reference</a></p>
          */
@@ -296,9 +326,9 @@ namespace ServiceQuotas
         }
 
         /**
-         * <p>Lists the default values for the quotas for the specified Amazon Web Service.
-         * A default value does not reflect any quota increases.</p><p><h3>See Also:</h3>  
-         * <a
+         * <p>Lists the default values for the quotas for the specified Amazon Web Services
+         * service. A default value does not reflect any quota increases.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/service-quotas-2019-06-24/ListAWSDefaultServiceQuotas">AWS
          * API Reference</a></p>
          */
@@ -323,18 +353,20 @@ namespace ServiceQuotas
         }
 
         /**
-         * <p>Retrieves the quota increase requests for the specified Amazon Web
-         * Service.</p><p><h3>See Also:</h3>   <a
+         * <p>Retrieves the quota increase requests for the specified Amazon Web Services
+         * service. Filter responses to return quota requests at either the account level,
+         * resource level, or all levels. Responses include any open or closed requests
+         * within 90 days.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/service-quotas-2019-06-24/ListRequestedServiceQuotaChangeHistory">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListRequestedServiceQuotaChangeHistoryOutcome ListRequestedServiceQuotaChangeHistory(const Model::ListRequestedServiceQuotaChangeHistoryRequest& request) const;
+        virtual Model::ListRequestedServiceQuotaChangeHistoryOutcome ListRequestedServiceQuotaChangeHistory(const Model::ListRequestedServiceQuotaChangeHistoryRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListRequestedServiceQuotaChangeHistory that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListRequestedServiceQuotaChangeHistoryRequestT = Model::ListRequestedServiceQuotaChangeHistoryRequest>
-        Model::ListRequestedServiceQuotaChangeHistoryOutcomeCallable ListRequestedServiceQuotaChangeHistoryCallable(const ListRequestedServiceQuotaChangeHistoryRequestT& request) const
+        Model::ListRequestedServiceQuotaChangeHistoryOutcomeCallable ListRequestedServiceQuotaChangeHistoryCallable(const ListRequestedServiceQuotaChangeHistoryRequestT& request = {}) const
         {
             return SubmitCallable(&ServiceQuotasClient::ListRequestedServiceQuotaChangeHistory, request);
         }
@@ -343,14 +375,15 @@ namespace ServiceQuotas
          * An Async wrapper for ListRequestedServiceQuotaChangeHistory that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListRequestedServiceQuotaChangeHistoryRequestT = Model::ListRequestedServiceQuotaChangeHistoryRequest>
-        void ListRequestedServiceQuotaChangeHistoryAsync(const ListRequestedServiceQuotaChangeHistoryRequestT& request, const ListRequestedServiceQuotaChangeHistoryResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListRequestedServiceQuotaChangeHistoryAsync(const ListRequestedServiceQuotaChangeHistoryResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListRequestedServiceQuotaChangeHistoryRequestT& request = {}) const
         {
             return SubmitAsync(&ServiceQuotasClient::ListRequestedServiceQuotaChangeHistory, request, handler, context);
         }
 
         /**
-         * <p>Retrieves the quota increase requests for the specified quota.</p><p><h3>See
-         * Also:</h3>   <a
+         * <p>Retrieves the quota increase requests for the specified quota. Filter
+         * responses to return quota requests at either the account level, resource level,
+         * or all levels.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/service-quotas-2019-06-24/ListRequestedServiceQuotaChangeHistoryByQuota">AWS
          * API Reference</a></p>
          */
@@ -380,13 +413,13 @@ namespace ServiceQuotas
          * href="http://docs.aws.amazon.com/goto/WebAPI/service-quotas-2019-06-24/ListServiceQuotaIncreaseRequestsInTemplate">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListServiceQuotaIncreaseRequestsInTemplateOutcome ListServiceQuotaIncreaseRequestsInTemplate(const Model::ListServiceQuotaIncreaseRequestsInTemplateRequest& request) const;
+        virtual Model::ListServiceQuotaIncreaseRequestsInTemplateOutcome ListServiceQuotaIncreaseRequestsInTemplate(const Model::ListServiceQuotaIncreaseRequestsInTemplateRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListServiceQuotaIncreaseRequestsInTemplate that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListServiceQuotaIncreaseRequestsInTemplateRequestT = Model::ListServiceQuotaIncreaseRequestsInTemplateRequest>
-        Model::ListServiceQuotaIncreaseRequestsInTemplateOutcomeCallable ListServiceQuotaIncreaseRequestsInTemplateCallable(const ListServiceQuotaIncreaseRequestsInTemplateRequestT& request) const
+        Model::ListServiceQuotaIncreaseRequestsInTemplateOutcomeCallable ListServiceQuotaIncreaseRequestsInTemplateCallable(const ListServiceQuotaIncreaseRequestsInTemplateRequestT& request = {}) const
         {
             return SubmitCallable(&ServiceQuotasClient::ListServiceQuotaIncreaseRequestsInTemplate, request);
         }
@@ -395,15 +428,17 @@ namespace ServiceQuotas
          * An Async wrapper for ListServiceQuotaIncreaseRequestsInTemplate that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListServiceQuotaIncreaseRequestsInTemplateRequestT = Model::ListServiceQuotaIncreaseRequestsInTemplateRequest>
-        void ListServiceQuotaIncreaseRequestsInTemplateAsync(const ListServiceQuotaIncreaseRequestsInTemplateRequestT& request, const ListServiceQuotaIncreaseRequestsInTemplateResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListServiceQuotaIncreaseRequestsInTemplateAsync(const ListServiceQuotaIncreaseRequestsInTemplateResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListServiceQuotaIncreaseRequestsInTemplateRequestT& request = {}) const
         {
             return SubmitAsync(&ServiceQuotasClient::ListServiceQuotaIncreaseRequestsInTemplate, request, handler, context);
         }
 
         /**
-         * <p>Lists the applied quota values for the specified Amazon Web Service. For some
-         * quotas, only the default values are available. If the applied quota value is not
-         * available for a quota, the quota is not retrieved.</p><p><h3>See Also:</h3>   <a
+         * <p>Lists the applied quota values for the specified Amazon Web Services service.
+         * For some quotas, only the default values are available. If the applied quota
+         * value is not available for a quota, the quota is not retrieved. Filter responses
+         * to return applied quota values at either the account level, resource level, or
+         * all levels.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/service-quotas-2019-06-24/ListServiceQuotas">AWS
          * API Reference</a></p>
          */
@@ -428,18 +463,18 @@ namespace ServiceQuotas
         }
 
         /**
-         * <p>Lists the names and codes for the Amazon Web Services integrated with Service
-         * Quotas.</p><p><h3>See Also:</h3>   <a
+         * <p>Lists the names and codes for the Amazon Web Services services integrated
+         * with Service Quotas.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/service-quotas-2019-06-24/ListServices">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListServicesOutcome ListServices(const Model::ListServicesRequest& request) const;
+        virtual Model::ListServicesOutcome ListServices(const Model::ListServicesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListServices that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListServicesRequestT = Model::ListServicesRequest>
-        Model::ListServicesOutcomeCallable ListServicesCallable(const ListServicesRequestT& request) const
+        Model::ListServicesOutcomeCallable ListServicesCallable(const ListServicesRequestT& request = {}) const
         {
             return SubmitCallable(&ServiceQuotasClient::ListServices, request);
         }
@@ -448,7 +483,7 @@ namespace ServiceQuotas
          * An Async wrapper for ListServices that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListServicesRequestT = Model::ListServicesRequest>
-        void ListServicesAsync(const ListServicesRequestT& request, const ListServicesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListServicesAsync(const ListServicesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListServicesRequestT& request = {}) const
         {
             return SubmitAsync(&ServiceQuotasClient::ListServices, request, handler, context);
         }
@@ -506,8 +541,8 @@ namespace ServiceQuotas
         }
 
         /**
-         * <p>Submits a quota increase request for the specified quota.</p><p><h3>See
-         * Also:</h3>   <a
+         * <p>Submits a quota increase request for the specified quota at the account or
+         * resource level.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/service-quotas-2019-06-24/RequestServiceQuotaIncrease">AWS
          * API Reference</a></p>
          */
@@ -591,7 +626,6 @@ namespace ServiceQuotas
       void init(const ServiceQuotasClientConfiguration& clientConfiguration);
 
       ServiceQuotasClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<ServiceQuotasEndpointProviderBase> m_endpointProvider;
   };
 

@@ -18,15 +18,7 @@ namespace WorkSpaces
 namespace Model
 {
 
-OperationNotSupportedException::OperationNotSupportedException() : 
-    m_messageHasBeenSet(false),
-    m_reasonHasBeenSet(false)
-{
-}
-
-OperationNotSupportedException::OperationNotSupportedException(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_reasonHasBeenSet(false)
+OperationNotSupportedException::OperationNotSupportedException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ OperationNotSupportedException& OperationNotSupportedException::operator =(JsonV
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("reason"))
   {
     m_reason = jsonValue.GetString("reason");
-
     m_reasonHasBeenSet = true;
   }
-
   return *this;
 }
 

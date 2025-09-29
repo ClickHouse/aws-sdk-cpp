@@ -28,63 +28,53 @@ namespace Model
   class DescribeMultiRegionAccessPointOperationResult
   {
   public:
-    AWS_S3CONTROL_API DescribeMultiRegionAccessPointOperationResult();
+    AWS_S3CONTROL_API DescribeMultiRegionAccessPointOperationResult() = default;
     AWS_S3CONTROL_API DescribeMultiRegionAccessPointOperationResult(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_S3CONTROL_API DescribeMultiRegionAccessPointOperationResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * <p>A container element containing the details of the asynchronous operation.</p>
      */
-    inline const AsyncOperation& GetAsyncOperation() const{ return m_asyncOperation; }
+    inline const AsyncOperation& GetAsyncOperation() const { return m_asyncOperation; }
+    template<typename AsyncOperationT = AsyncOperation>
+    void SetAsyncOperation(AsyncOperationT&& value) { m_asyncOperationHasBeenSet = true; m_asyncOperation = std::forward<AsyncOperationT>(value); }
+    template<typename AsyncOperationT = AsyncOperation>
+    DescribeMultiRegionAccessPointOperationResult& WithAsyncOperation(AsyncOperationT&& value) { SetAsyncOperation(std::forward<AsyncOperationT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A container element containing the details of the asynchronous operation.</p>
+     * AWS Request Id value
      */
-    inline void SetAsyncOperation(const AsyncOperation& value) { m_asyncOperation = value; }
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeMultiRegionAccessPointOperationResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A container element containing the details of the asynchronous operation.</p>
+     * x-amz-id-2 header value, also known as Host Id
      */
-    inline void SetAsyncOperation(AsyncOperation&& value) { m_asyncOperation = std::move(value); }
-
-    /**
-     * <p>A container element containing the details of the asynchronous operation.</p>
-     */
-    inline DescribeMultiRegionAccessPointOperationResult& WithAsyncOperation(const AsyncOperation& value) { SetAsyncOperation(value); return *this;}
-
-    /**
-     * <p>A container element containing the details of the asynchronous operation.</p>
-     */
-    inline DescribeMultiRegionAccessPointOperationResult& WithAsyncOperation(AsyncOperation&& value) { SetAsyncOperation(std::move(value)); return *this;}
-
-
-    
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeMultiRegionAccessPointOperationResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeMultiRegionAccessPointOperationResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeMultiRegionAccessPointOperationResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetHostId() const { return m_hostId; }
+    template<typename HostIdT = Aws::String>
+    void SetHostId(HostIdT&& value) { m_hostIdHasBeenSet = true; m_hostId = std::forward<HostIdT>(value); }
+    template<typename HostIdT = Aws::String>
+    DescribeMultiRegionAccessPointOperationResult& WithHostId(HostIdT&& value) { SetHostId(std::forward<HostIdT>(value)); return *this;}
+    ///@}
   private:
 
     AsyncOperation m_asyncOperation;
+    bool m_asyncOperationHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
+
+    Aws::String m_hostId;
+    bool m_hostIdHasBeenSet = false;
   };
 
 } // namespace Model

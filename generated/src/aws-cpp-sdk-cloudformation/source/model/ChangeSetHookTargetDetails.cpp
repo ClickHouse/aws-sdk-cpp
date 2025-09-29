@@ -20,17 +20,7 @@ namespace CloudFormation
 namespace Model
 {
 
-ChangeSetHookTargetDetails::ChangeSetHookTargetDetails() : 
-    m_targetType(HookTargetType::NOT_SET),
-    m_targetTypeHasBeenSet(false),
-    m_resourceTargetDetailsHasBeenSet(false)
-{
-}
-
-ChangeSetHookTargetDetails::ChangeSetHookTargetDetails(const XmlNode& xmlNode) : 
-    m_targetType(HookTargetType::NOT_SET),
-    m_targetTypeHasBeenSet(false),
-    m_resourceTargetDetailsHasBeenSet(false)
+ChangeSetHookTargetDetails::ChangeSetHookTargetDetails(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -44,7 +34,7 @@ ChangeSetHookTargetDetails& ChangeSetHookTargetDetails::operator =(const XmlNode
     XmlNode targetTypeNode = resultNode.FirstChild("TargetType");
     if(!targetTypeNode.IsNull())
     {
-      m_targetType = HookTargetTypeMapper::GetHookTargetTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(targetTypeNode.GetText()).c_str()).c_str());
+      m_targetType = HookTargetTypeMapper::GetHookTargetTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(targetTypeNode.GetText()).c_str()));
       m_targetTypeHasBeenSet = true;
     }
     XmlNode resourceTargetDetailsNode = resultNode.FirstChild("ResourceTargetDetails");
@@ -62,7 +52,7 @@ void ChangeSetHookTargetDetails::OutputToStream(Aws::OStream& oStream, const cha
 {
   if(m_targetTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".TargetType=" << HookTargetTypeMapper::GetNameForHookTargetType(m_targetType) << "&";
+      oStream << location << index << locationValue << ".TargetType=" << StringUtils::URLEncode(HookTargetTypeMapper::GetNameForHookTargetType(m_targetType)) << "&";
   }
 
   if(m_resourceTargetDetailsHasBeenSet)
@@ -78,7 +68,7 @@ void ChangeSetHookTargetDetails::OutputToStream(Aws::OStream& oStream, const cha
 {
   if(m_targetTypeHasBeenSet)
   {
-      oStream << location << ".TargetType=" << HookTargetTypeMapper::GetNameForHookTargetType(m_targetType) << "&";
+      oStream << location << ".TargetType=" << StringUtils::URLEncode(HookTargetTypeMapper::GetNameForHookTargetType(m_targetType)) << "&";
   }
   if(m_resourceTargetDetailsHasBeenSet)
   {

@@ -18,17 +18,7 @@ namespace DevOpsGuru
 namespace Model
 {
 
-CloudWatchMetricsDataSummary::CloudWatchMetricsDataSummary() : 
-    m_timestampMetricValuePairListHasBeenSet(false),
-    m_statusCode(CloudWatchMetricDataStatusCode::NOT_SET),
-    m_statusCodeHasBeenSet(false)
-{
-}
-
-CloudWatchMetricsDataSummary::CloudWatchMetricsDataSummary(JsonView jsonValue) : 
-    m_timestampMetricValuePairListHasBeenSet(false),
-    m_statusCode(CloudWatchMetricDataStatusCode::NOT_SET),
-    m_statusCodeHasBeenSet(false)
+CloudWatchMetricsDataSummary::CloudWatchMetricsDataSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,14 +34,11 @@ CloudWatchMetricsDataSummary& CloudWatchMetricsDataSummary::operator =(JsonView 
     }
     m_timestampMetricValuePairListHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StatusCode"))
   {
     m_statusCode = CloudWatchMetricDataStatusCodeMapper::GetCloudWatchMetricDataStatusCodeForName(jsonValue.GetString("StatusCode"));
-
     m_statusCodeHasBeenSet = true;
   }
-
   return *this;
 }
 

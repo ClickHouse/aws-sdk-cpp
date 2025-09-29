@@ -33,85 +33,38 @@ namespace Model
   class BotLocaleSortBy
   {
   public:
-    AWS_LEXMODELSV2_API BotLocaleSortBy();
+    AWS_LEXMODELSV2_API BotLocaleSortBy() = default;
     AWS_LEXMODELSV2_API BotLocaleSortBy(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API BotLocaleSortBy& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The bot locale attribute to sort by.</p>
      */
-    inline const BotLocaleSortAttribute& GetAttribute() const{ return m_attribute; }
-
-    /**
-     * <p>The bot locale attribute to sort by.</p>
-     */
+    inline BotLocaleSortAttribute GetAttribute() const { return m_attribute; }
     inline bool AttributeHasBeenSet() const { return m_attributeHasBeenSet; }
+    inline void SetAttribute(BotLocaleSortAttribute value) { m_attributeHasBeenSet = true; m_attribute = value; }
+    inline BotLocaleSortBy& WithAttribute(BotLocaleSortAttribute value) { SetAttribute(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The bot locale attribute to sort by.</p>
-     */
-    inline void SetAttribute(const BotLocaleSortAttribute& value) { m_attributeHasBeenSet = true; m_attribute = value; }
-
-    /**
-     * <p>The bot locale attribute to sort by.</p>
-     */
-    inline void SetAttribute(BotLocaleSortAttribute&& value) { m_attributeHasBeenSet = true; m_attribute = std::move(value); }
-
-    /**
-     * <p>The bot locale attribute to sort by.</p>
-     */
-    inline BotLocaleSortBy& WithAttribute(const BotLocaleSortAttribute& value) { SetAttribute(value); return *this;}
-
-    /**
-     * <p>The bot locale attribute to sort by.</p>
-     */
-    inline BotLocaleSortBy& WithAttribute(BotLocaleSortAttribute&& value) { SetAttribute(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies whether to sort the bot locales in ascending or descending
      * order.</p>
      */
-    inline const SortOrder& GetOrder() const{ return m_order; }
-
-    /**
-     * <p>Specifies whether to sort the bot locales in ascending or descending
-     * order.</p>
-     */
+    inline SortOrder GetOrder() const { return m_order; }
     inline bool OrderHasBeenSet() const { return m_orderHasBeenSet; }
-
-    /**
-     * <p>Specifies whether to sort the bot locales in ascending or descending
-     * order.</p>
-     */
-    inline void SetOrder(const SortOrder& value) { m_orderHasBeenSet = true; m_order = value; }
-
-    /**
-     * <p>Specifies whether to sort the bot locales in ascending or descending
-     * order.</p>
-     */
-    inline void SetOrder(SortOrder&& value) { m_orderHasBeenSet = true; m_order = std::move(value); }
-
-    /**
-     * <p>Specifies whether to sort the bot locales in ascending or descending
-     * order.</p>
-     */
-    inline BotLocaleSortBy& WithOrder(const SortOrder& value) { SetOrder(value); return *this;}
-
-    /**
-     * <p>Specifies whether to sort the bot locales in ascending or descending
-     * order.</p>
-     */
-    inline BotLocaleSortBy& WithOrder(SortOrder&& value) { SetOrder(std::move(value)); return *this;}
-
+    inline void SetOrder(SortOrder value) { m_orderHasBeenSet = true; m_order = value; }
+    inline BotLocaleSortBy& WithOrder(SortOrder value) { SetOrder(value); return *this;}
+    ///@}
   private:
 
-    BotLocaleSortAttribute m_attribute;
+    BotLocaleSortAttribute m_attribute{BotLocaleSortAttribute::NOT_SET};
     bool m_attributeHasBeenSet = false;
 
-    SortOrder m_order;
+    SortOrder m_order{SortOrder::NOT_SET};
     bool m_orderHasBeenSet = false;
   };
 

@@ -32,114 +32,45 @@ namespace Model
   class ReplicationInstanceTaskLog
   {
   public:
-    AWS_DATABASEMIGRATIONSERVICE_API ReplicationInstanceTaskLog();
+    AWS_DATABASEMIGRATIONSERVICE_API ReplicationInstanceTaskLog() = default;
     AWS_DATABASEMIGRATIONSERVICE_API ReplicationInstanceTaskLog(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATABASEMIGRATIONSERVICE_API ReplicationInstanceTaskLog& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATABASEMIGRATIONSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the replication task.</p>
      */
-    inline const Aws::String& GetReplicationTaskName() const{ return m_replicationTaskName; }
-
-    /**
-     * <p>The name of the replication task.</p>
-     */
+    inline const Aws::String& GetReplicationTaskName() const { return m_replicationTaskName; }
     inline bool ReplicationTaskNameHasBeenSet() const { return m_replicationTaskNameHasBeenSet; }
+    template<typename ReplicationTaskNameT = Aws::String>
+    void SetReplicationTaskName(ReplicationTaskNameT&& value) { m_replicationTaskNameHasBeenSet = true; m_replicationTaskName = std::forward<ReplicationTaskNameT>(value); }
+    template<typename ReplicationTaskNameT = Aws::String>
+    ReplicationInstanceTaskLog& WithReplicationTaskName(ReplicationTaskNameT&& value) { SetReplicationTaskName(std::forward<ReplicationTaskNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the replication task.</p>
-     */
-    inline void SetReplicationTaskName(const Aws::String& value) { m_replicationTaskNameHasBeenSet = true; m_replicationTaskName = value; }
-
-    /**
-     * <p>The name of the replication task.</p>
-     */
-    inline void SetReplicationTaskName(Aws::String&& value) { m_replicationTaskNameHasBeenSet = true; m_replicationTaskName = std::move(value); }
-
-    /**
-     * <p>The name of the replication task.</p>
-     */
-    inline void SetReplicationTaskName(const char* value) { m_replicationTaskNameHasBeenSet = true; m_replicationTaskName.assign(value); }
-
-    /**
-     * <p>The name of the replication task.</p>
-     */
-    inline ReplicationInstanceTaskLog& WithReplicationTaskName(const Aws::String& value) { SetReplicationTaskName(value); return *this;}
-
-    /**
-     * <p>The name of the replication task.</p>
-     */
-    inline ReplicationInstanceTaskLog& WithReplicationTaskName(Aws::String&& value) { SetReplicationTaskName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the replication task.</p>
-     */
-    inline ReplicationInstanceTaskLog& WithReplicationTaskName(const char* value) { SetReplicationTaskName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the replication task.</p>
      */
-    inline const Aws::String& GetReplicationTaskArn() const{ return m_replicationTaskArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the replication task.</p>
-     */
+    inline const Aws::String& GetReplicationTaskArn() const { return m_replicationTaskArn; }
     inline bool ReplicationTaskArnHasBeenSet() const { return m_replicationTaskArnHasBeenSet; }
+    template<typename ReplicationTaskArnT = Aws::String>
+    void SetReplicationTaskArn(ReplicationTaskArnT&& value) { m_replicationTaskArnHasBeenSet = true; m_replicationTaskArn = std::forward<ReplicationTaskArnT>(value); }
+    template<typename ReplicationTaskArnT = Aws::String>
+    ReplicationInstanceTaskLog& WithReplicationTaskArn(ReplicationTaskArnT&& value) { SetReplicationTaskArn(std::forward<ReplicationTaskArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the replication task.</p>
-     */
-    inline void SetReplicationTaskArn(const Aws::String& value) { m_replicationTaskArnHasBeenSet = true; m_replicationTaskArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the replication task.</p>
-     */
-    inline void SetReplicationTaskArn(Aws::String&& value) { m_replicationTaskArnHasBeenSet = true; m_replicationTaskArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the replication task.</p>
-     */
-    inline void SetReplicationTaskArn(const char* value) { m_replicationTaskArnHasBeenSet = true; m_replicationTaskArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the replication task.</p>
-     */
-    inline ReplicationInstanceTaskLog& WithReplicationTaskArn(const Aws::String& value) { SetReplicationTaskArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the replication task.</p>
-     */
-    inline ReplicationInstanceTaskLog& WithReplicationTaskArn(Aws::String&& value) { SetReplicationTaskArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the replication task.</p>
-     */
-    inline ReplicationInstanceTaskLog& WithReplicationTaskArn(const char* value) { SetReplicationTaskArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The size, in bytes, of the replication task log.</p>
      */
-    inline long long GetReplicationInstanceTaskLogSize() const{ return m_replicationInstanceTaskLogSize; }
-
-    /**
-     * <p>The size, in bytes, of the replication task log.</p>
-     */
+    inline long long GetReplicationInstanceTaskLogSize() const { return m_replicationInstanceTaskLogSize; }
     inline bool ReplicationInstanceTaskLogSizeHasBeenSet() const { return m_replicationInstanceTaskLogSizeHasBeenSet; }
-
-    /**
-     * <p>The size, in bytes, of the replication task log.</p>
-     */
     inline void SetReplicationInstanceTaskLogSize(long long value) { m_replicationInstanceTaskLogSizeHasBeenSet = true; m_replicationInstanceTaskLogSize = value; }
-
-    /**
-     * <p>The size, in bytes, of the replication task log.</p>
-     */
     inline ReplicationInstanceTaskLog& WithReplicationInstanceTaskLogSize(long long value) { SetReplicationInstanceTaskLogSize(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_replicationTaskName;
@@ -148,7 +79,7 @@ namespace Model
     Aws::String m_replicationTaskArn;
     bool m_replicationTaskArnHasBeenSet = false;
 
-    long long m_replicationInstanceTaskLogSize;
+    long long m_replicationInstanceTaskLogSize{0};
     bool m_replicationInstanceTaskLogSizeHasBeenSet = false;
   };
 

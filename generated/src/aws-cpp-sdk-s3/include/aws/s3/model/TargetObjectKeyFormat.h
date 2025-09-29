@@ -32,80 +32,37 @@ namespace Model
   class TargetObjectKeyFormat
   {
   public:
-    AWS_S3_API TargetObjectKeyFormat();
+    AWS_S3_API TargetObjectKeyFormat() = default;
     AWS_S3_API TargetObjectKeyFormat(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3_API TargetObjectKeyFormat& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>To use the simple format for S3 keys for log objects. To specify SimplePrefix
      * format, set SimplePrefix to {}.</p>
      */
-    inline const SimplePrefix& GetSimplePrefix() const{ return m_simplePrefix; }
-
-    /**
-     * <p>To use the simple format for S3 keys for log objects. To specify SimplePrefix
-     * format, set SimplePrefix to {}.</p>
-     */
+    inline const SimplePrefix& GetSimplePrefix() const { return m_simplePrefix; }
     inline bool SimplePrefixHasBeenSet() const { return m_simplePrefixHasBeenSet; }
+    template<typename SimplePrefixT = SimplePrefix>
+    void SetSimplePrefix(SimplePrefixT&& value) { m_simplePrefixHasBeenSet = true; m_simplePrefix = std::forward<SimplePrefixT>(value); }
+    template<typename SimplePrefixT = SimplePrefix>
+    TargetObjectKeyFormat& WithSimplePrefix(SimplePrefixT&& value) { SetSimplePrefix(std::forward<SimplePrefixT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>To use the simple format for S3 keys for log objects. To specify SimplePrefix
-     * format, set SimplePrefix to {}.</p>
-     */
-    inline void SetSimplePrefix(const SimplePrefix& value) { m_simplePrefixHasBeenSet = true; m_simplePrefix = value; }
-
-    /**
-     * <p>To use the simple format for S3 keys for log objects. To specify SimplePrefix
-     * format, set SimplePrefix to {}.</p>
-     */
-    inline void SetSimplePrefix(SimplePrefix&& value) { m_simplePrefixHasBeenSet = true; m_simplePrefix = std::move(value); }
-
-    /**
-     * <p>To use the simple format for S3 keys for log objects. To specify SimplePrefix
-     * format, set SimplePrefix to {}.</p>
-     */
-    inline TargetObjectKeyFormat& WithSimplePrefix(const SimplePrefix& value) { SetSimplePrefix(value); return *this;}
-
-    /**
-     * <p>To use the simple format for S3 keys for log objects. To specify SimplePrefix
-     * format, set SimplePrefix to {}.</p>
-     */
-    inline TargetObjectKeyFormat& WithSimplePrefix(SimplePrefix&& value) { SetSimplePrefix(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Partitioned S3 key for log objects.</p>
      */
-    inline const PartitionedPrefix& GetPartitionedPrefix() const{ return m_partitionedPrefix; }
-
-    /**
-     * <p>Partitioned S3 key for log objects.</p>
-     */
+    inline const PartitionedPrefix& GetPartitionedPrefix() const { return m_partitionedPrefix; }
     inline bool PartitionedPrefixHasBeenSet() const { return m_partitionedPrefixHasBeenSet; }
-
-    /**
-     * <p>Partitioned S3 key for log objects.</p>
-     */
-    inline void SetPartitionedPrefix(const PartitionedPrefix& value) { m_partitionedPrefixHasBeenSet = true; m_partitionedPrefix = value; }
-
-    /**
-     * <p>Partitioned S3 key for log objects.</p>
-     */
-    inline void SetPartitionedPrefix(PartitionedPrefix&& value) { m_partitionedPrefixHasBeenSet = true; m_partitionedPrefix = std::move(value); }
-
-    /**
-     * <p>Partitioned S3 key for log objects.</p>
-     */
-    inline TargetObjectKeyFormat& WithPartitionedPrefix(const PartitionedPrefix& value) { SetPartitionedPrefix(value); return *this;}
-
-    /**
-     * <p>Partitioned S3 key for log objects.</p>
-     */
-    inline TargetObjectKeyFormat& WithPartitionedPrefix(PartitionedPrefix&& value) { SetPartitionedPrefix(std::move(value)); return *this;}
-
+    template<typename PartitionedPrefixT = PartitionedPrefix>
+    void SetPartitionedPrefix(PartitionedPrefixT&& value) { m_partitionedPrefixHasBeenSet = true; m_partitionedPrefix = std::forward<PartitionedPrefixT>(value); }
+    template<typename PartitionedPrefixT = PartitionedPrefix>
+    TargetObjectKeyFormat& WithPartitionedPrefix(PartitionedPrefixT&& value) { SetPartitionedPrefix(std::forward<PartitionedPrefixT>(value)); return *this;}
+    ///@}
   private:
 
     SimplePrefix m_simplePrefix;

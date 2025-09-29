@@ -20,21 +20,7 @@ namespace S3Control
 namespace Model
 {
 
-StorageLensGroupAndOperator::StorageLensGroupAndOperator() : 
-    m_matchAnyPrefixHasBeenSet(false),
-    m_matchAnySuffixHasBeenSet(false),
-    m_matchAnyTagHasBeenSet(false),
-    m_matchObjectAgeHasBeenSet(false),
-    m_matchObjectSizeHasBeenSet(false)
-{
-}
-
-StorageLensGroupAndOperator::StorageLensGroupAndOperator(const XmlNode& xmlNode) : 
-    m_matchAnyPrefixHasBeenSet(false),
-    m_matchAnySuffixHasBeenSet(false),
-    m_matchAnyTagHasBeenSet(false),
-    m_matchObjectAgeHasBeenSet(false),
-    m_matchObjectSizeHasBeenSet(false)
+StorageLensGroupAndOperator::StorageLensGroupAndOperator(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -49,6 +35,7 @@ StorageLensGroupAndOperator& StorageLensGroupAndOperator::operator =(const XmlNo
     if(!matchAnyPrefixNode.IsNull())
     {
       XmlNode matchAnyPrefixMember = matchAnyPrefixNode.FirstChild("Prefix");
+      m_matchAnyPrefixHasBeenSet = !matchAnyPrefixMember.IsNull();
       while(!matchAnyPrefixMember.IsNull())
       {
         m_matchAnyPrefix.push_back(matchAnyPrefixMember.GetText());
@@ -61,6 +48,7 @@ StorageLensGroupAndOperator& StorageLensGroupAndOperator::operator =(const XmlNo
     if(!matchAnySuffixNode.IsNull())
     {
       XmlNode matchAnySuffixMember = matchAnySuffixNode.FirstChild("Suffix");
+      m_matchAnySuffixHasBeenSet = !matchAnySuffixMember.IsNull();
       while(!matchAnySuffixMember.IsNull())
       {
         m_matchAnySuffix.push_back(matchAnySuffixMember.GetText());
@@ -73,6 +61,7 @@ StorageLensGroupAndOperator& StorageLensGroupAndOperator::operator =(const XmlNo
     if(!matchAnyTagNode.IsNull())
     {
       XmlNode matchAnyTagMember = matchAnyTagNode.FirstChild("Tag");
+      m_matchAnyTagHasBeenSet = !matchAnyTagMember.IsNull();
       while(!matchAnyTagMember.IsNull())
       {
         m_matchAnyTag.push_back(matchAnyTagMember);

@@ -21,7 +21,7 @@ namespace Model
   class DescribeAlgorithmRequest : public SageMakerRequest
   {
   public:
-    AWS_SAGEMAKER_API DescribeAlgorithmRequest();
+    AWS_SAGEMAKER_API DescribeAlgorithmRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_SAGEMAKER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the algorithm to describe.</p>
      */
-    inline const Aws::String& GetAlgorithmName() const{ return m_algorithmName; }
-
-    /**
-     * <p>The name of the algorithm to describe.</p>
-     */
+    inline const Aws::String& GetAlgorithmName() const { return m_algorithmName; }
     inline bool AlgorithmNameHasBeenSet() const { return m_algorithmNameHasBeenSet; }
-
-    /**
-     * <p>The name of the algorithm to describe.</p>
-     */
-    inline void SetAlgorithmName(const Aws::String& value) { m_algorithmNameHasBeenSet = true; m_algorithmName = value; }
-
-    /**
-     * <p>The name of the algorithm to describe.</p>
-     */
-    inline void SetAlgorithmName(Aws::String&& value) { m_algorithmNameHasBeenSet = true; m_algorithmName = std::move(value); }
-
-    /**
-     * <p>The name of the algorithm to describe.</p>
-     */
-    inline void SetAlgorithmName(const char* value) { m_algorithmNameHasBeenSet = true; m_algorithmName.assign(value); }
-
-    /**
-     * <p>The name of the algorithm to describe.</p>
-     */
-    inline DescribeAlgorithmRequest& WithAlgorithmName(const Aws::String& value) { SetAlgorithmName(value); return *this;}
-
-    /**
-     * <p>The name of the algorithm to describe.</p>
-     */
-    inline DescribeAlgorithmRequest& WithAlgorithmName(Aws::String&& value) { SetAlgorithmName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the algorithm to describe.</p>
-     */
-    inline DescribeAlgorithmRequest& WithAlgorithmName(const char* value) { SetAlgorithmName(value); return *this;}
-
+    template<typename AlgorithmNameT = Aws::String>
+    void SetAlgorithmName(AlgorithmNameT&& value) { m_algorithmNameHasBeenSet = true; m_algorithmName = std::forward<AlgorithmNameT>(value); }
+    template<typename AlgorithmNameT = Aws::String>
+    DescribeAlgorithmRequest& WithAlgorithmName(AlgorithmNameT&& value) { SetAlgorithmName(std::forward<AlgorithmNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_algorithmName;

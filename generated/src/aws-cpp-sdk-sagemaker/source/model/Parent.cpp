@@ -18,15 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-Parent::Parent() : 
-    m_trialNameHasBeenSet(false),
-    m_experimentNameHasBeenSet(false)
-{
-}
-
-Parent::Parent(JsonView jsonValue) : 
-    m_trialNameHasBeenSet(false),
-    m_experimentNameHasBeenSet(false)
+Parent::Parent(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ Parent& Parent::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("TrialName"))
   {
     m_trialName = jsonValue.GetString("TrialName");
-
     m_trialNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ExperimentName"))
   {
     m_experimentName = jsonValue.GetString("ExperimentName");
-
     m_experimentNameHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,15 +18,7 @@ namespace Textract
 namespace Model
 {
 
-ExpenseGroupProperty::ExpenseGroupProperty() : 
-    m_typesHasBeenSet(false),
-    m_idHasBeenSet(false)
-{
-}
-
-ExpenseGroupProperty::ExpenseGroupProperty(JsonView jsonValue) : 
-    m_typesHasBeenSet(false),
-    m_idHasBeenSet(false)
+ExpenseGroupProperty::ExpenseGroupProperty(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ ExpenseGroupProperty& ExpenseGroupProperty::operator =(JsonView jsonValue)
     }
     m_typesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Id"))
   {
     m_id = jsonValue.GetString("Id");
-
     m_idHasBeenSet = true;
   }
-
   return *this;
 }
 

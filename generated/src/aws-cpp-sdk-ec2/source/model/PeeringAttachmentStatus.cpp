@@ -20,15 +20,7 @@ namespace EC2
 namespace Model
 {
 
-PeeringAttachmentStatus::PeeringAttachmentStatus() : 
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-PeeringAttachmentStatus::PeeringAttachmentStatus(const XmlNode& xmlNode) : 
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
+PeeringAttachmentStatus::PeeringAttachmentStatus(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

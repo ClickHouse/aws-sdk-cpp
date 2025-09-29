@@ -35,439 +35,133 @@ namespace Model
   class FirewallDomainList
   {
   public:
-    AWS_ROUTE53RESOLVER_API FirewallDomainList();
+    AWS_ROUTE53RESOLVER_API FirewallDomainList() = default;
     AWS_ROUTE53RESOLVER_API FirewallDomainList(Aws::Utils::Json::JsonView jsonValue);
     AWS_ROUTE53RESOLVER_API FirewallDomainList& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ROUTE53RESOLVER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ID of the domain list. </p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The ID of the domain list. </p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    FirewallDomainList& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the domain list. </p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The ID of the domain list. </p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The ID of the domain list. </p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The ID of the domain list. </p>
-     */
-    inline FirewallDomainList& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The ID of the domain list. </p>
-     */
-    inline FirewallDomainList& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the domain list. </p>
-     */
-    inline FirewallDomainList& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the firewall domain list.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the firewall domain list.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    FirewallDomainList& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the firewall domain list.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the firewall domain list.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the firewall domain list.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the firewall domain list.</p>
-     */
-    inline FirewallDomainList& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the firewall domain list.</p>
-     */
-    inline FirewallDomainList& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the firewall domain list.</p>
-     */
-    inline FirewallDomainList& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the domain list. </p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the domain list. </p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    FirewallDomainList& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the domain list. </p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the domain list. </p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the domain list. </p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the domain list. </p>
-     */
-    inline FirewallDomainList& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the domain list. </p>
-     */
-    inline FirewallDomainList& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the domain list. </p>
-     */
-    inline FirewallDomainList& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The number of domain names that are specified in the domain list.</p>
      */
-    inline int GetDomainCount() const{ return m_domainCount; }
-
-    /**
-     * <p>The number of domain names that are specified in the domain list.</p>
-     */
+    inline int GetDomainCount() const { return m_domainCount; }
     inline bool DomainCountHasBeenSet() const { return m_domainCountHasBeenSet; }
-
-    /**
-     * <p>The number of domain names that are specified in the domain list.</p>
-     */
     inline void SetDomainCount(int value) { m_domainCountHasBeenSet = true; m_domainCount = value; }
-
-    /**
-     * <p>The number of domain names that are specified in the domain list.</p>
-     */
     inline FirewallDomainList& WithDomainCount(int value) { SetDomainCount(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The status of the domain list. </p>
      */
-    inline const FirewallDomainListStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the domain list. </p>
-     */
+    inline FirewallDomainListStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(FirewallDomainListStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline FirewallDomainList& WithStatus(FirewallDomainListStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the domain list. </p>
-     */
-    inline void SetStatus(const FirewallDomainListStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the domain list. </p>
-     */
-    inline void SetStatus(FirewallDomainListStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the domain list. </p>
-     */
-    inline FirewallDomainList& WithStatus(const FirewallDomainListStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the domain list. </p>
-     */
-    inline FirewallDomainList& WithStatus(FirewallDomainListStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Additional information about the status of the list, if available.</p>
      */
-    inline const Aws::String& GetStatusMessage() const{ return m_statusMessage; }
-
-    /**
-     * <p>Additional information about the status of the list, if available.</p>
-     */
+    inline const Aws::String& GetStatusMessage() const { return m_statusMessage; }
     inline bool StatusMessageHasBeenSet() const { return m_statusMessageHasBeenSet; }
+    template<typename StatusMessageT = Aws::String>
+    void SetStatusMessage(StatusMessageT&& value) { m_statusMessageHasBeenSet = true; m_statusMessage = std::forward<StatusMessageT>(value); }
+    template<typename StatusMessageT = Aws::String>
+    FirewallDomainList& WithStatusMessage(StatusMessageT&& value) { SetStatusMessage(std::forward<StatusMessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Additional information about the status of the list, if available.</p>
-     */
-    inline void SetStatusMessage(const Aws::String& value) { m_statusMessageHasBeenSet = true; m_statusMessage = value; }
-
-    /**
-     * <p>Additional information about the status of the list, if available.</p>
-     */
-    inline void SetStatusMessage(Aws::String&& value) { m_statusMessageHasBeenSet = true; m_statusMessage = std::move(value); }
-
-    /**
-     * <p>Additional information about the status of the list, if available.</p>
-     */
-    inline void SetStatusMessage(const char* value) { m_statusMessageHasBeenSet = true; m_statusMessage.assign(value); }
-
-    /**
-     * <p>Additional information about the status of the list, if available.</p>
-     */
-    inline FirewallDomainList& WithStatusMessage(const Aws::String& value) { SetStatusMessage(value); return *this;}
-
-    /**
-     * <p>Additional information about the status of the list, if available.</p>
-     */
-    inline FirewallDomainList& WithStatusMessage(Aws::String&& value) { SetStatusMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>Additional information about the status of the list, if available.</p>
-     */
-    inline FirewallDomainList& WithStatusMessage(const char* value) { SetStatusMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The owner of the list, used only for lists that are not managed by you. For
      * example, the managed domain list <code>AWSManagedDomainsMalwareDomainList</code>
      * has the managed owner name <code>Route 53 Resolver DNS Firewall</code>.</p>
      */
-    inline const Aws::String& GetManagedOwnerName() const{ return m_managedOwnerName; }
-
-    /**
-     * <p>The owner of the list, used only for lists that are not managed by you. For
-     * example, the managed domain list <code>AWSManagedDomainsMalwareDomainList</code>
-     * has the managed owner name <code>Route 53 Resolver DNS Firewall</code>.</p>
-     */
+    inline const Aws::String& GetManagedOwnerName() const { return m_managedOwnerName; }
     inline bool ManagedOwnerNameHasBeenSet() const { return m_managedOwnerNameHasBeenSet; }
+    template<typename ManagedOwnerNameT = Aws::String>
+    void SetManagedOwnerName(ManagedOwnerNameT&& value) { m_managedOwnerNameHasBeenSet = true; m_managedOwnerName = std::forward<ManagedOwnerNameT>(value); }
+    template<typename ManagedOwnerNameT = Aws::String>
+    FirewallDomainList& WithManagedOwnerName(ManagedOwnerNameT&& value) { SetManagedOwnerName(std::forward<ManagedOwnerNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The owner of the list, used only for lists that are not managed by you. For
-     * example, the managed domain list <code>AWSManagedDomainsMalwareDomainList</code>
-     * has the managed owner name <code>Route 53 Resolver DNS Firewall</code>.</p>
-     */
-    inline void SetManagedOwnerName(const Aws::String& value) { m_managedOwnerNameHasBeenSet = true; m_managedOwnerName = value; }
-
-    /**
-     * <p>The owner of the list, used only for lists that are not managed by you. For
-     * example, the managed domain list <code>AWSManagedDomainsMalwareDomainList</code>
-     * has the managed owner name <code>Route 53 Resolver DNS Firewall</code>.</p>
-     */
-    inline void SetManagedOwnerName(Aws::String&& value) { m_managedOwnerNameHasBeenSet = true; m_managedOwnerName = std::move(value); }
-
-    /**
-     * <p>The owner of the list, used only for lists that are not managed by you. For
-     * example, the managed domain list <code>AWSManagedDomainsMalwareDomainList</code>
-     * has the managed owner name <code>Route 53 Resolver DNS Firewall</code>.</p>
-     */
-    inline void SetManagedOwnerName(const char* value) { m_managedOwnerNameHasBeenSet = true; m_managedOwnerName.assign(value); }
-
-    /**
-     * <p>The owner of the list, used only for lists that are not managed by you. For
-     * example, the managed domain list <code>AWSManagedDomainsMalwareDomainList</code>
-     * has the managed owner name <code>Route 53 Resolver DNS Firewall</code>.</p>
-     */
-    inline FirewallDomainList& WithManagedOwnerName(const Aws::String& value) { SetManagedOwnerName(value); return *this;}
-
-    /**
-     * <p>The owner of the list, used only for lists that are not managed by you. For
-     * example, the managed domain list <code>AWSManagedDomainsMalwareDomainList</code>
-     * has the managed owner name <code>Route 53 Resolver DNS Firewall</code>.</p>
-     */
-    inline FirewallDomainList& WithManagedOwnerName(Aws::String&& value) { SetManagedOwnerName(std::move(value)); return *this;}
-
-    /**
-     * <p>The owner of the list, used only for lists that are not managed by you. For
-     * example, the managed domain list <code>AWSManagedDomainsMalwareDomainList</code>
-     * has the managed owner name <code>Route 53 Resolver DNS Firewall</code>.</p>
-     */
-    inline FirewallDomainList& WithManagedOwnerName(const char* value) { SetManagedOwnerName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A unique string defined by you to identify the request. This allows you to
      * retry failed requests without the risk of running the operation twice. This can
      * be any unique string, for example, a timestamp. </p>
      */
-    inline const Aws::String& GetCreatorRequestId() const{ return m_creatorRequestId; }
-
-    /**
-     * <p>A unique string defined by you to identify the request. This allows you to
-     * retry failed requests without the risk of running the operation twice. This can
-     * be any unique string, for example, a timestamp. </p>
-     */
+    inline const Aws::String& GetCreatorRequestId() const { return m_creatorRequestId; }
     inline bool CreatorRequestIdHasBeenSet() const { return m_creatorRequestIdHasBeenSet; }
+    template<typename CreatorRequestIdT = Aws::String>
+    void SetCreatorRequestId(CreatorRequestIdT&& value) { m_creatorRequestIdHasBeenSet = true; m_creatorRequestId = std::forward<CreatorRequestIdT>(value); }
+    template<typename CreatorRequestIdT = Aws::String>
+    FirewallDomainList& WithCreatorRequestId(CreatorRequestIdT&& value) { SetCreatorRequestId(std::forward<CreatorRequestIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique string defined by you to identify the request. This allows you to
-     * retry failed requests without the risk of running the operation twice. This can
-     * be any unique string, for example, a timestamp. </p>
-     */
-    inline void SetCreatorRequestId(const Aws::String& value) { m_creatorRequestIdHasBeenSet = true; m_creatorRequestId = value; }
-
-    /**
-     * <p>A unique string defined by you to identify the request. This allows you to
-     * retry failed requests without the risk of running the operation twice. This can
-     * be any unique string, for example, a timestamp. </p>
-     */
-    inline void SetCreatorRequestId(Aws::String&& value) { m_creatorRequestIdHasBeenSet = true; m_creatorRequestId = std::move(value); }
-
-    /**
-     * <p>A unique string defined by you to identify the request. This allows you to
-     * retry failed requests without the risk of running the operation twice. This can
-     * be any unique string, for example, a timestamp. </p>
-     */
-    inline void SetCreatorRequestId(const char* value) { m_creatorRequestIdHasBeenSet = true; m_creatorRequestId.assign(value); }
-
-    /**
-     * <p>A unique string defined by you to identify the request. This allows you to
-     * retry failed requests without the risk of running the operation twice. This can
-     * be any unique string, for example, a timestamp. </p>
-     */
-    inline FirewallDomainList& WithCreatorRequestId(const Aws::String& value) { SetCreatorRequestId(value); return *this;}
-
-    /**
-     * <p>A unique string defined by you to identify the request. This allows you to
-     * retry failed requests without the risk of running the operation twice. This can
-     * be any unique string, for example, a timestamp. </p>
-     */
-    inline FirewallDomainList& WithCreatorRequestId(Aws::String&& value) { SetCreatorRequestId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique string defined by you to identify the request. This allows you to
-     * retry failed requests without the risk of running the operation twice. This can
-     * be any unique string, for example, a timestamp. </p>
-     */
-    inline FirewallDomainList& WithCreatorRequestId(const char* value) { SetCreatorRequestId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time that the domain list was created, in Unix time format and
      * Coordinated Universal Time (UTC). </p>
      */
-    inline const Aws::String& GetCreationTime() const{ return m_creationTime; }
-
-    /**
-     * <p>The date and time that the domain list was created, in Unix time format and
-     * Coordinated Universal Time (UTC). </p>
-     */
+    inline const Aws::String& GetCreationTime() const { return m_creationTime; }
     inline bool CreationTimeHasBeenSet() const { return m_creationTimeHasBeenSet; }
+    template<typename CreationTimeT = Aws::String>
+    void SetCreationTime(CreationTimeT&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::forward<CreationTimeT>(value); }
+    template<typename CreationTimeT = Aws::String>
+    FirewallDomainList& WithCreationTime(CreationTimeT&& value) { SetCreationTime(std::forward<CreationTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time that the domain list was created, in Unix time format and
-     * Coordinated Universal Time (UTC). </p>
-     */
-    inline void SetCreationTime(const Aws::String& value) { m_creationTimeHasBeenSet = true; m_creationTime = value; }
-
-    /**
-     * <p>The date and time that the domain list was created, in Unix time format and
-     * Coordinated Universal Time (UTC). </p>
-     */
-    inline void SetCreationTime(Aws::String&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::move(value); }
-
-    /**
-     * <p>The date and time that the domain list was created, in Unix time format and
-     * Coordinated Universal Time (UTC). </p>
-     */
-    inline void SetCreationTime(const char* value) { m_creationTimeHasBeenSet = true; m_creationTime.assign(value); }
-
-    /**
-     * <p>The date and time that the domain list was created, in Unix time format and
-     * Coordinated Universal Time (UTC). </p>
-     */
-    inline FirewallDomainList& WithCreationTime(const Aws::String& value) { SetCreationTime(value); return *this;}
-
-    /**
-     * <p>The date and time that the domain list was created, in Unix time format and
-     * Coordinated Universal Time (UTC). </p>
-     */
-    inline FirewallDomainList& WithCreationTime(Aws::String&& value) { SetCreationTime(std::move(value)); return *this;}
-
-    /**
-     * <p>The date and time that the domain list was created, in Unix time format and
-     * Coordinated Universal Time (UTC). </p>
-     */
-    inline FirewallDomainList& WithCreationTime(const char* value) { SetCreationTime(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time that the domain list was last modified, in Unix time format
      * and Coordinated Universal Time (UTC). </p>
      */
-    inline const Aws::String& GetModificationTime() const{ return m_modificationTime; }
-
-    /**
-     * <p>The date and time that the domain list was last modified, in Unix time format
-     * and Coordinated Universal Time (UTC). </p>
-     */
+    inline const Aws::String& GetModificationTime() const { return m_modificationTime; }
     inline bool ModificationTimeHasBeenSet() const { return m_modificationTimeHasBeenSet; }
-
-    /**
-     * <p>The date and time that the domain list was last modified, in Unix time format
-     * and Coordinated Universal Time (UTC). </p>
-     */
-    inline void SetModificationTime(const Aws::String& value) { m_modificationTimeHasBeenSet = true; m_modificationTime = value; }
-
-    /**
-     * <p>The date and time that the domain list was last modified, in Unix time format
-     * and Coordinated Universal Time (UTC). </p>
-     */
-    inline void SetModificationTime(Aws::String&& value) { m_modificationTimeHasBeenSet = true; m_modificationTime = std::move(value); }
-
-    /**
-     * <p>The date and time that the domain list was last modified, in Unix time format
-     * and Coordinated Universal Time (UTC). </p>
-     */
-    inline void SetModificationTime(const char* value) { m_modificationTimeHasBeenSet = true; m_modificationTime.assign(value); }
-
-    /**
-     * <p>The date and time that the domain list was last modified, in Unix time format
-     * and Coordinated Universal Time (UTC). </p>
-     */
-    inline FirewallDomainList& WithModificationTime(const Aws::String& value) { SetModificationTime(value); return *this;}
-
-    /**
-     * <p>The date and time that the domain list was last modified, in Unix time format
-     * and Coordinated Universal Time (UTC). </p>
-     */
-    inline FirewallDomainList& WithModificationTime(Aws::String&& value) { SetModificationTime(std::move(value)); return *this;}
-
-    /**
-     * <p>The date and time that the domain list was last modified, in Unix time format
-     * and Coordinated Universal Time (UTC). </p>
-     */
-    inline FirewallDomainList& WithModificationTime(const char* value) { SetModificationTime(value); return *this;}
-
+    template<typename ModificationTimeT = Aws::String>
+    void SetModificationTime(ModificationTimeT&& value) { m_modificationTimeHasBeenSet = true; m_modificationTime = std::forward<ModificationTimeT>(value); }
+    template<typename ModificationTimeT = Aws::String>
+    FirewallDomainList& WithModificationTime(ModificationTimeT&& value) { SetModificationTime(std::forward<ModificationTimeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_id;
@@ -479,10 +173,10 @@ namespace Model
     Aws::String m_name;
     bool m_nameHasBeenSet = false;
 
-    int m_domainCount;
+    int m_domainCount{0};
     bool m_domainCountHasBeenSet = false;
 
-    FirewallDomainListStatus m_status;
+    FirewallDomainListStatus m_status{FirewallDomainListStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
     Aws::String m_statusMessage;

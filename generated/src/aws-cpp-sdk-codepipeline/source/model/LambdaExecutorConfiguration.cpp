@@ -18,13 +18,7 @@ namespace CodePipeline
 namespace Model
 {
 
-LambdaExecutorConfiguration::LambdaExecutorConfiguration() : 
-    m_lambdaFunctionArnHasBeenSet(false)
-{
-}
-
-LambdaExecutorConfiguration::LambdaExecutorConfiguration(JsonView jsonValue) : 
-    m_lambdaFunctionArnHasBeenSet(false)
+LambdaExecutorConfiguration::LambdaExecutorConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ LambdaExecutorConfiguration& LambdaExecutorConfiguration::operator =(JsonView js
   if(jsonValue.ValueExists("lambdaFunctionArn"))
   {
     m_lambdaFunctionArn = jsonValue.GetString("lambdaFunctionArn");
-
     m_lambdaFunctionArnHasBeenSet = true;
   }
-
   return *this;
 }
 

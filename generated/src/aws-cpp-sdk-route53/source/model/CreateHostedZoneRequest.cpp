@@ -6,6 +6,7 @@
 #include <aws/route53/model/CreateHostedZoneRequest.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/core/utils/UnreferencedParam.h>
 
 #include <utility>
 
@@ -13,14 +14,6 @@ using namespace Aws::Route53::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 
-CreateHostedZoneRequest::CreateHostedZoneRequest() : 
-    m_nameHasBeenSet(false),
-    m_vPCHasBeenSet(false),
-    m_callerReferenceHasBeenSet(false),
-    m_hostedZoneConfigHasBeenSet(false),
-    m_delegationSetIdHasBeenSet(false)
-{
-}
 
 Aws::String CreateHostedZoneRequest::SerializePayload() const
 {

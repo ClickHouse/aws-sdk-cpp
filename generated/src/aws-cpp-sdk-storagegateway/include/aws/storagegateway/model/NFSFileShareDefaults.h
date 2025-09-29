@@ -36,175 +36,61 @@ namespace Model
   class NFSFileShareDefaults
   {
   public:
-    AWS_STORAGEGATEWAY_API NFSFileShareDefaults();
+    AWS_STORAGEGATEWAY_API NFSFileShareDefaults() = default;
     AWS_STORAGEGATEWAY_API NFSFileShareDefaults(Aws::Utils::Json::JsonView jsonValue);
     AWS_STORAGEGATEWAY_API NFSFileShareDefaults& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_STORAGEGATEWAY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Unix file mode in the form "nnnn". For example, <code>0666</code>
      * represents the default file mode inside the file share. The default value is
      * <code>0666</code>.</p>
      */
-    inline const Aws::String& GetFileMode() const{ return m_fileMode; }
-
-    /**
-     * <p>The Unix file mode in the form "nnnn". For example, <code>0666</code>
-     * represents the default file mode inside the file share. The default value is
-     * <code>0666</code>.</p>
-     */
+    inline const Aws::String& GetFileMode() const { return m_fileMode; }
     inline bool FileModeHasBeenSet() const { return m_fileModeHasBeenSet; }
+    template<typename FileModeT = Aws::String>
+    void SetFileMode(FileModeT&& value) { m_fileModeHasBeenSet = true; m_fileMode = std::forward<FileModeT>(value); }
+    template<typename FileModeT = Aws::String>
+    NFSFileShareDefaults& WithFileMode(FileModeT&& value) { SetFileMode(std::forward<FileModeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Unix file mode in the form "nnnn". For example, <code>0666</code>
-     * represents the default file mode inside the file share. The default value is
-     * <code>0666</code>.</p>
-     */
-    inline void SetFileMode(const Aws::String& value) { m_fileModeHasBeenSet = true; m_fileMode = value; }
-
-    /**
-     * <p>The Unix file mode in the form "nnnn". For example, <code>0666</code>
-     * represents the default file mode inside the file share. The default value is
-     * <code>0666</code>.</p>
-     */
-    inline void SetFileMode(Aws::String&& value) { m_fileModeHasBeenSet = true; m_fileMode = std::move(value); }
-
-    /**
-     * <p>The Unix file mode in the form "nnnn". For example, <code>0666</code>
-     * represents the default file mode inside the file share. The default value is
-     * <code>0666</code>.</p>
-     */
-    inline void SetFileMode(const char* value) { m_fileModeHasBeenSet = true; m_fileMode.assign(value); }
-
-    /**
-     * <p>The Unix file mode in the form "nnnn". For example, <code>0666</code>
-     * represents the default file mode inside the file share. The default value is
-     * <code>0666</code>.</p>
-     */
-    inline NFSFileShareDefaults& WithFileMode(const Aws::String& value) { SetFileMode(value); return *this;}
-
-    /**
-     * <p>The Unix file mode in the form "nnnn". For example, <code>0666</code>
-     * represents the default file mode inside the file share. The default value is
-     * <code>0666</code>.</p>
-     */
-    inline NFSFileShareDefaults& WithFileMode(Aws::String&& value) { SetFileMode(std::move(value)); return *this;}
-
-    /**
-     * <p>The Unix file mode in the form "nnnn". For example, <code>0666</code>
-     * represents the default file mode inside the file share. The default value is
-     * <code>0666</code>.</p>
-     */
-    inline NFSFileShareDefaults& WithFileMode(const char* value) { SetFileMode(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Unix directory mode in the form "nnnn". For example, <code>0666</code>
      * represents the default access mode for all directories inside the file share.
      * The default value is <code>0777</code>.</p>
      */
-    inline const Aws::String& GetDirectoryMode() const{ return m_directoryMode; }
-
-    /**
-     * <p>The Unix directory mode in the form "nnnn". For example, <code>0666</code>
-     * represents the default access mode for all directories inside the file share.
-     * The default value is <code>0777</code>.</p>
-     */
+    inline const Aws::String& GetDirectoryMode() const { return m_directoryMode; }
     inline bool DirectoryModeHasBeenSet() const { return m_directoryModeHasBeenSet; }
+    template<typename DirectoryModeT = Aws::String>
+    void SetDirectoryMode(DirectoryModeT&& value) { m_directoryModeHasBeenSet = true; m_directoryMode = std::forward<DirectoryModeT>(value); }
+    template<typename DirectoryModeT = Aws::String>
+    NFSFileShareDefaults& WithDirectoryMode(DirectoryModeT&& value) { SetDirectoryMode(std::forward<DirectoryModeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Unix directory mode in the form "nnnn". For example, <code>0666</code>
-     * represents the default access mode for all directories inside the file share.
-     * The default value is <code>0777</code>.</p>
-     */
-    inline void SetDirectoryMode(const Aws::String& value) { m_directoryModeHasBeenSet = true; m_directoryMode = value; }
-
-    /**
-     * <p>The Unix directory mode in the form "nnnn". For example, <code>0666</code>
-     * represents the default access mode for all directories inside the file share.
-     * The default value is <code>0777</code>.</p>
-     */
-    inline void SetDirectoryMode(Aws::String&& value) { m_directoryModeHasBeenSet = true; m_directoryMode = std::move(value); }
-
-    /**
-     * <p>The Unix directory mode in the form "nnnn". For example, <code>0666</code>
-     * represents the default access mode for all directories inside the file share.
-     * The default value is <code>0777</code>.</p>
-     */
-    inline void SetDirectoryMode(const char* value) { m_directoryModeHasBeenSet = true; m_directoryMode.assign(value); }
-
-    /**
-     * <p>The Unix directory mode in the form "nnnn". For example, <code>0666</code>
-     * represents the default access mode for all directories inside the file share.
-     * The default value is <code>0777</code>.</p>
-     */
-    inline NFSFileShareDefaults& WithDirectoryMode(const Aws::String& value) { SetDirectoryMode(value); return *this;}
-
-    /**
-     * <p>The Unix directory mode in the form "nnnn". For example, <code>0666</code>
-     * represents the default access mode for all directories inside the file share.
-     * The default value is <code>0777</code>.</p>
-     */
-    inline NFSFileShareDefaults& WithDirectoryMode(Aws::String&& value) { SetDirectoryMode(std::move(value)); return *this;}
-
-    /**
-     * <p>The Unix directory mode in the form "nnnn". For example, <code>0666</code>
-     * represents the default access mode for all directories inside the file share.
-     * The default value is <code>0777</code>.</p>
-     */
-    inline NFSFileShareDefaults& WithDirectoryMode(const char* value) { SetDirectoryMode(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The default group ID for the file share (unless the files have another group
      * ID specified). The default value is <code>nfsnobody</code>.</p>
      */
-    inline long long GetGroupId() const{ return m_groupId; }
-
-    /**
-     * <p>The default group ID for the file share (unless the files have another group
-     * ID specified). The default value is <code>nfsnobody</code>.</p>
-     */
+    inline long long GetGroupId() const { return m_groupId; }
     inline bool GroupIdHasBeenSet() const { return m_groupIdHasBeenSet; }
-
-    /**
-     * <p>The default group ID for the file share (unless the files have another group
-     * ID specified). The default value is <code>nfsnobody</code>.</p>
-     */
     inline void SetGroupId(long long value) { m_groupIdHasBeenSet = true; m_groupId = value; }
-
-    /**
-     * <p>The default group ID for the file share (unless the files have another group
-     * ID specified). The default value is <code>nfsnobody</code>.</p>
-     */
     inline NFSFileShareDefaults& WithGroupId(long long value) { SetGroupId(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The default owner ID for files in the file share (unless the files have
      * another owner ID specified). The default value is <code>nfsnobody</code>.</p>
      */
-    inline long long GetOwnerId() const{ return m_ownerId; }
-
-    /**
-     * <p>The default owner ID for files in the file share (unless the files have
-     * another owner ID specified). The default value is <code>nfsnobody</code>.</p>
-     */
+    inline long long GetOwnerId() const { return m_ownerId; }
     inline bool OwnerIdHasBeenSet() const { return m_ownerIdHasBeenSet; }
-
-    /**
-     * <p>The default owner ID for files in the file share (unless the files have
-     * another owner ID specified). The default value is <code>nfsnobody</code>.</p>
-     */
     inline void SetOwnerId(long long value) { m_ownerIdHasBeenSet = true; m_ownerId = value; }
-
-    /**
-     * <p>The default owner ID for files in the file share (unless the files have
-     * another owner ID specified). The default value is <code>nfsnobody</code>.</p>
-     */
     inline NFSFileShareDefaults& WithOwnerId(long long value) { SetOwnerId(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_fileMode;
@@ -213,10 +99,10 @@ namespace Model
     Aws::String m_directoryMode;
     bool m_directoryModeHasBeenSet = false;
 
-    long long m_groupId;
+    long long m_groupId{0};
     bool m_groupIdHasBeenSet = false;
 
-    long long m_ownerId;
+    long long m_ownerId{0};
     bool m_ownerIdHasBeenSet = false;
   };
 

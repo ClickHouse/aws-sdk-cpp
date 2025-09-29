@@ -23,7 +23,7 @@ namespace Model
   class BatchPutGeofenceRequest : public LocationServiceRequest
   {
   public:
-    AWS_LOCATIONSERVICE_API BatchPutGeofenceRequest();
+    AWS_LOCATIONSERVICE_API BatchPutGeofenceRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,87 +34,31 @@ namespace Model
     AWS_LOCATIONSERVICE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The geofence collection storing the geofences.</p>
      */
-    inline const Aws::String& GetCollectionName() const{ return m_collectionName; }
-
-    /**
-     * <p>The geofence collection storing the geofences.</p>
-     */
+    inline const Aws::String& GetCollectionName() const { return m_collectionName; }
     inline bool CollectionNameHasBeenSet() const { return m_collectionNameHasBeenSet; }
+    template<typename CollectionNameT = Aws::String>
+    void SetCollectionName(CollectionNameT&& value) { m_collectionNameHasBeenSet = true; m_collectionName = std::forward<CollectionNameT>(value); }
+    template<typename CollectionNameT = Aws::String>
+    BatchPutGeofenceRequest& WithCollectionName(CollectionNameT&& value) { SetCollectionName(std::forward<CollectionNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The geofence collection storing the geofences.</p>
-     */
-    inline void SetCollectionName(const Aws::String& value) { m_collectionNameHasBeenSet = true; m_collectionName = value; }
-
-    /**
-     * <p>The geofence collection storing the geofences.</p>
-     */
-    inline void SetCollectionName(Aws::String&& value) { m_collectionNameHasBeenSet = true; m_collectionName = std::move(value); }
-
-    /**
-     * <p>The geofence collection storing the geofences.</p>
-     */
-    inline void SetCollectionName(const char* value) { m_collectionNameHasBeenSet = true; m_collectionName.assign(value); }
-
-    /**
-     * <p>The geofence collection storing the geofences.</p>
-     */
-    inline BatchPutGeofenceRequest& WithCollectionName(const Aws::String& value) { SetCollectionName(value); return *this;}
-
-    /**
-     * <p>The geofence collection storing the geofences.</p>
-     */
-    inline BatchPutGeofenceRequest& WithCollectionName(Aws::String&& value) { SetCollectionName(std::move(value)); return *this;}
-
-    /**
-     * <p>The geofence collection storing the geofences.</p>
-     */
-    inline BatchPutGeofenceRequest& WithCollectionName(const char* value) { SetCollectionName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The batch of geofences to be stored in a geofence collection.</p>
      */
-    inline const Aws::Vector<BatchPutGeofenceRequestEntry>& GetEntries() const{ return m_entries; }
-
-    /**
-     * <p>The batch of geofences to be stored in a geofence collection.</p>
-     */
+    inline const Aws::Vector<BatchPutGeofenceRequestEntry>& GetEntries() const { return m_entries; }
     inline bool EntriesHasBeenSet() const { return m_entriesHasBeenSet; }
-
-    /**
-     * <p>The batch of geofences to be stored in a geofence collection.</p>
-     */
-    inline void SetEntries(const Aws::Vector<BatchPutGeofenceRequestEntry>& value) { m_entriesHasBeenSet = true; m_entries = value; }
-
-    /**
-     * <p>The batch of geofences to be stored in a geofence collection.</p>
-     */
-    inline void SetEntries(Aws::Vector<BatchPutGeofenceRequestEntry>&& value) { m_entriesHasBeenSet = true; m_entries = std::move(value); }
-
-    /**
-     * <p>The batch of geofences to be stored in a geofence collection.</p>
-     */
-    inline BatchPutGeofenceRequest& WithEntries(const Aws::Vector<BatchPutGeofenceRequestEntry>& value) { SetEntries(value); return *this;}
-
-    /**
-     * <p>The batch of geofences to be stored in a geofence collection.</p>
-     */
-    inline BatchPutGeofenceRequest& WithEntries(Aws::Vector<BatchPutGeofenceRequestEntry>&& value) { SetEntries(std::move(value)); return *this;}
-
-    /**
-     * <p>The batch of geofences to be stored in a geofence collection.</p>
-     */
-    inline BatchPutGeofenceRequest& AddEntries(const BatchPutGeofenceRequestEntry& value) { m_entriesHasBeenSet = true; m_entries.push_back(value); return *this; }
-
-    /**
-     * <p>The batch of geofences to be stored in a geofence collection.</p>
-     */
-    inline BatchPutGeofenceRequest& AddEntries(BatchPutGeofenceRequestEntry&& value) { m_entriesHasBeenSet = true; m_entries.push_back(std::move(value)); return *this; }
-
+    template<typename EntriesT = Aws::Vector<BatchPutGeofenceRequestEntry>>
+    void SetEntries(EntriesT&& value) { m_entriesHasBeenSet = true; m_entries = std::forward<EntriesT>(value); }
+    template<typename EntriesT = Aws::Vector<BatchPutGeofenceRequestEntry>>
+    BatchPutGeofenceRequest& WithEntries(EntriesT&& value) { SetEntries(std::forward<EntriesT>(value)); return *this;}
+    template<typename EntriesT = BatchPutGeofenceRequestEntry>
+    BatchPutGeofenceRequest& AddEntries(EntriesT&& value) { m_entriesHasBeenSet = true; m_entries.emplace_back(std::forward<EntriesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_collectionName;

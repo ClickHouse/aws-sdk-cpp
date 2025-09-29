@@ -18,15 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsS3BucketBucketLifecycleConfigurationRulesAbortIncompleteMultipartUploadDetails::AwsS3BucketBucketLifecycleConfigurationRulesAbortIncompleteMultipartUploadDetails() : 
-    m_daysAfterInitiation(0),
-    m_daysAfterInitiationHasBeenSet(false)
-{
-}
-
-AwsS3BucketBucketLifecycleConfigurationRulesAbortIncompleteMultipartUploadDetails::AwsS3BucketBucketLifecycleConfigurationRulesAbortIncompleteMultipartUploadDetails(JsonView jsonValue) : 
-    m_daysAfterInitiation(0),
-    m_daysAfterInitiationHasBeenSet(false)
+AwsS3BucketBucketLifecycleConfigurationRulesAbortIncompleteMultipartUploadDetails::AwsS3BucketBucketLifecycleConfigurationRulesAbortIncompleteMultipartUploadDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ AwsS3BucketBucketLifecycleConfigurationRulesAbortIncompleteMultipartUploadDetail
   if(jsonValue.ValueExists("DaysAfterInitiation"))
   {
     m_daysAfterInitiation = jsonValue.GetInteger("DaysAfterInitiation");
-
     m_daysAfterInitiationHasBeenSet = true;
   }
-
   return *this;
 }
 

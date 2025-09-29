@@ -32,134 +32,47 @@ namespace Model
   class QueryLimitException
   {
   public:
-    AWS_NEPTUNEDATA_API QueryLimitException();
+    AWS_NEPTUNEDATA_API QueryLimitException() = default;
     AWS_NEPTUNEDATA_API QueryLimitException(Aws::Utils::Json::JsonView jsonValue);
     AWS_NEPTUNEDATA_API QueryLimitException& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_NEPTUNEDATA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A detailed message describing the problem.</p>
      */
-    inline const Aws::String& GetDetailedMessage() const{ return m_detailedMessage; }
-
-    /**
-     * <p>A detailed message describing the problem.</p>
-     */
+    inline const Aws::String& GetDetailedMessage() const { return m_detailedMessage; }
     inline bool DetailedMessageHasBeenSet() const { return m_detailedMessageHasBeenSet; }
+    template<typename DetailedMessageT = Aws::String>
+    void SetDetailedMessage(DetailedMessageT&& value) { m_detailedMessageHasBeenSet = true; m_detailedMessage = std::forward<DetailedMessageT>(value); }
+    template<typename DetailedMessageT = Aws::String>
+    QueryLimitException& WithDetailedMessage(DetailedMessageT&& value) { SetDetailedMessage(std::forward<DetailedMessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A detailed message describing the problem.</p>
-     */
-    inline void SetDetailedMessage(const Aws::String& value) { m_detailedMessageHasBeenSet = true; m_detailedMessage = value; }
-
-    /**
-     * <p>A detailed message describing the problem.</p>
-     */
-    inline void SetDetailedMessage(Aws::String&& value) { m_detailedMessageHasBeenSet = true; m_detailedMessage = std::move(value); }
-
-    /**
-     * <p>A detailed message describing the problem.</p>
-     */
-    inline void SetDetailedMessage(const char* value) { m_detailedMessageHasBeenSet = true; m_detailedMessage.assign(value); }
-
-    /**
-     * <p>A detailed message describing the problem.</p>
-     */
-    inline QueryLimitException& WithDetailedMessage(const Aws::String& value) { SetDetailedMessage(value); return *this;}
-
-    /**
-     * <p>A detailed message describing the problem.</p>
-     */
-    inline QueryLimitException& WithDetailedMessage(Aws::String&& value) { SetDetailedMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>A detailed message describing the problem.</p>
-     */
-    inline QueryLimitException& WithDetailedMessage(const char* value) { SetDetailedMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the request that exceeded the limit.</p>
      */
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    /**
-     * <p>The ID of the request that exceeded the limit.</p>
-     */
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
     inline bool RequestIdHasBeenSet() const { return m_requestIdHasBeenSet; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    QueryLimitException& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the request that exceeded the limit.</p>
-     */
-    inline void SetRequestId(const Aws::String& value) { m_requestIdHasBeenSet = true; m_requestId = value; }
-
-    /**
-     * <p>The ID of the request that exceeded the limit.</p>
-     */
-    inline void SetRequestId(Aws::String&& value) { m_requestIdHasBeenSet = true; m_requestId = std::move(value); }
-
-    /**
-     * <p>The ID of the request that exceeded the limit.</p>
-     */
-    inline void SetRequestId(const char* value) { m_requestIdHasBeenSet = true; m_requestId.assign(value); }
-
-    /**
-     * <p>The ID of the request that exceeded the limit.</p>
-     */
-    inline QueryLimitException& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    /**
-     * <p>The ID of the request that exceeded the limit.</p>
-     */
-    inline QueryLimitException& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the request that exceeded the limit.</p>
-     */
-    inline QueryLimitException& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The HTTP status code returned with the exception.</p>
      */
-    inline const Aws::String& GetCode() const{ return m_code; }
-
-    /**
-     * <p>The HTTP status code returned with the exception.</p>
-     */
+    inline const Aws::String& GetCode() const { return m_code; }
     inline bool CodeHasBeenSet() const { return m_codeHasBeenSet; }
-
-    /**
-     * <p>The HTTP status code returned with the exception.</p>
-     */
-    inline void SetCode(const Aws::String& value) { m_codeHasBeenSet = true; m_code = value; }
-
-    /**
-     * <p>The HTTP status code returned with the exception.</p>
-     */
-    inline void SetCode(Aws::String&& value) { m_codeHasBeenSet = true; m_code = std::move(value); }
-
-    /**
-     * <p>The HTTP status code returned with the exception.</p>
-     */
-    inline void SetCode(const char* value) { m_codeHasBeenSet = true; m_code.assign(value); }
-
-    /**
-     * <p>The HTTP status code returned with the exception.</p>
-     */
-    inline QueryLimitException& WithCode(const Aws::String& value) { SetCode(value); return *this;}
-
-    /**
-     * <p>The HTTP status code returned with the exception.</p>
-     */
-    inline QueryLimitException& WithCode(Aws::String&& value) { SetCode(std::move(value)); return *this;}
-
-    /**
-     * <p>The HTTP status code returned with the exception.</p>
-     */
-    inline QueryLimitException& WithCode(const char* value) { SetCode(value); return *this;}
-
+    template<typename CodeT = Aws::String>
+    void SetCode(CodeT&& value) { m_codeHasBeenSet = true; m_code = std::forward<CodeT>(value); }
+    template<typename CodeT = Aws::String>
+    QueryLimitException& WithCode(CodeT&& value) { SetCode(std::forward<CodeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_detailedMessage;

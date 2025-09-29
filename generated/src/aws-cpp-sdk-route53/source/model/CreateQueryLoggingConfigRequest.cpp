@@ -6,6 +6,7 @@
 #include <aws/route53/model/CreateQueryLoggingConfigRequest.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/core/utils/UnreferencedParam.h>
 
 #include <utility>
 
@@ -13,11 +14,6 @@ using namespace Aws::Route53::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 
-CreateQueryLoggingConfigRequest::CreateQueryLoggingConfigRequest() : 
-    m_hostedZoneIdHasBeenSet(false),
-    m_cloudWatchLogsLogGroupArnHasBeenSet(false)
-{
-}
 
 Aws::String CreateQueryLoggingConfigRequest::SerializePayload() const
 {

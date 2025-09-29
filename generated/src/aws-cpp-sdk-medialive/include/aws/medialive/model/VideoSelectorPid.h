@@ -29,35 +29,24 @@ namespace Model
   class VideoSelectorPid
   {
   public:
-    AWS_MEDIALIVE_API VideoSelectorPid();
+    AWS_MEDIALIVE_API VideoSelectorPid() = default;
     AWS_MEDIALIVE_API VideoSelectorPid(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API VideoSelectorPid& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * Selects a specific PID from within a video source.
      */
-    inline int GetPid() const{ return m_pid; }
-
-    /**
-     * Selects a specific PID from within a video source.
-     */
+    inline int GetPid() const { return m_pid; }
     inline bool PidHasBeenSet() const { return m_pidHasBeenSet; }
-
-    /**
-     * Selects a specific PID from within a video source.
-     */
     inline void SetPid(int value) { m_pidHasBeenSet = true; m_pid = value; }
-
-    /**
-     * Selects a specific PID from within a video source.
-     */
     inline VideoSelectorPid& WithPid(int value) { SetPid(value); return *this;}
-
+    ///@}
   private:
 
-    int m_pid;
+    int m_pid{0};
     bool m_pidHasBeenSet = false;
   };
 

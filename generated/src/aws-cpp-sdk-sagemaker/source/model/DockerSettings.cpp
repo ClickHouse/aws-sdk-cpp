@@ -18,17 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-DockerSettings::DockerSettings() : 
-    m_enableDockerAccess(FeatureStatus::NOT_SET),
-    m_enableDockerAccessHasBeenSet(false),
-    m_vpcOnlyTrustedAccountsHasBeenSet(false)
-{
-}
-
-DockerSettings::DockerSettings(JsonView jsonValue) : 
-    m_enableDockerAccess(FeatureStatus::NOT_SET),
-    m_enableDockerAccessHasBeenSet(false),
-    m_vpcOnlyTrustedAccountsHasBeenSet(false)
+DockerSettings::DockerSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ DockerSettings& DockerSettings::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("EnableDockerAccess"))
   {
     m_enableDockerAccess = FeatureStatusMapper::GetFeatureStatusForName(jsonValue.GetString("EnableDockerAccess"));
-
     m_enableDockerAccessHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("VpcOnlyTrustedAccounts"))
   {
     Aws::Utils::Array<JsonView> vpcOnlyTrustedAccountsJsonList = jsonValue.GetArray("VpcOnlyTrustedAccounts");
@@ -51,7 +39,11 @@ DockerSettings& DockerSettings::operator =(JsonView jsonValue)
     }
     m_vpcOnlyTrustedAccountsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("RootlessDocker"))
+  {
+    m_rootlessDocker = FeatureStatusMapper::GetFeatureStatusForName(jsonValue.GetString("RootlessDocker"));
+    m_rootlessDockerHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -73,6 +65,11 @@ JsonValue DockerSettings::Jsonize() const
    }
    payload.WithArray("VpcOnlyTrustedAccounts", std::move(vpcOnlyTrustedAccountsJsonList));
 
+  }
+
+  if(m_rootlessDockerHasBeenSet)
+  {
+   payload.WithString("RootlessDocker", FeatureStatusMapper::GetNameForFeatureStatus(m_rootlessDocker));
   }
 
   return payload;

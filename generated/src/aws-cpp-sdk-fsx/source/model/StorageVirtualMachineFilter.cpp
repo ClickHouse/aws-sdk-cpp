@@ -18,17 +18,7 @@ namespace FSx
 namespace Model
 {
 
-StorageVirtualMachineFilter::StorageVirtualMachineFilter() : 
-    m_name(StorageVirtualMachineFilterName::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_valuesHasBeenSet(false)
-{
-}
-
-StorageVirtualMachineFilter::StorageVirtualMachineFilter(JsonView jsonValue) : 
-    m_name(StorageVirtualMachineFilterName::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_valuesHasBeenSet(false)
+StorageVirtualMachineFilter::StorageVirtualMachineFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ StorageVirtualMachineFilter& StorageVirtualMachineFilter::operator =(JsonView js
   if(jsonValue.ValueExists("Name"))
   {
     m_name = StorageVirtualMachineFilterNameMapper::GetStorageVirtualMachineFilterNameForName(jsonValue.GetString("Name"));
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Values"))
   {
     Aws::Utils::Array<JsonView> valuesJsonList = jsonValue.GetArray("Values");
@@ -51,7 +39,6 @@ StorageVirtualMachineFilter& StorageVirtualMachineFilter::operator =(JsonView js
     }
     m_valuesHasBeenSet = true;
   }
-
   return *this;
 }
 

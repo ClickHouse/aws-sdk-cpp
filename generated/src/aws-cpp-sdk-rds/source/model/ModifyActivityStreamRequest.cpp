@@ -10,13 +10,6 @@
 using namespace Aws::RDS::Model;
 using namespace Aws::Utils;
 
-ModifyActivityStreamRequest::ModifyActivityStreamRequest() : 
-    m_resourceArnHasBeenSet(false),
-    m_auditPolicyState(AuditPolicyState::NOT_SET),
-    m_auditPolicyStateHasBeenSet(false)
-{
-}
-
 Aws::String ModifyActivityStreamRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -28,7 +21,7 @@ Aws::String ModifyActivityStreamRequest::SerializePayload() const
 
   if(m_auditPolicyStateHasBeenSet)
   {
-    ss << "AuditPolicyState=" << AuditPolicyStateMapper::GetNameForAuditPolicyState(m_auditPolicyState) << "&";
+    ss << "AuditPolicyState=" << StringUtils::URLEncode(AuditPolicyStateMapper::GetNameForAuditPolicyState(m_auditPolicyState)) << "&";
   }
 
   ss << "Version=2014-10-31";

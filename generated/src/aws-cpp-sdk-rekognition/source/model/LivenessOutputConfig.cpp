@@ -18,15 +18,7 @@ namespace Rekognition
 namespace Model
 {
 
-LivenessOutputConfig::LivenessOutputConfig() : 
-    m_s3BucketHasBeenSet(false),
-    m_s3KeyPrefixHasBeenSet(false)
-{
-}
-
-LivenessOutputConfig::LivenessOutputConfig(JsonView jsonValue) : 
-    m_s3BucketHasBeenSet(false),
-    m_s3KeyPrefixHasBeenSet(false)
+LivenessOutputConfig::LivenessOutputConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ LivenessOutputConfig& LivenessOutputConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("S3Bucket"))
   {
     m_s3Bucket = jsonValue.GetString("S3Bucket");
-
     m_s3BucketHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("S3KeyPrefix"))
   {
     m_s3KeyPrefix = jsonValue.GetString("S3KeyPrefix");
-
     m_s3KeyPrefixHasBeenSet = true;
   }
-
   return *this;
 }
 

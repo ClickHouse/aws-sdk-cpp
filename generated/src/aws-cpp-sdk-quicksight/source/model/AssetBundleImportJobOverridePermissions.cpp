@@ -18,21 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-AssetBundleImportJobOverridePermissions::AssetBundleImportJobOverridePermissions() : 
-    m_dataSourcesHasBeenSet(false),
-    m_dataSetsHasBeenSet(false),
-    m_themesHasBeenSet(false),
-    m_analysesHasBeenSet(false),
-    m_dashboardsHasBeenSet(false)
-{
-}
-
-AssetBundleImportJobOverridePermissions::AssetBundleImportJobOverridePermissions(JsonView jsonValue) : 
-    m_dataSourcesHasBeenSet(false),
-    m_dataSetsHasBeenSet(false),
-    m_themesHasBeenSet(false),
-    m_analysesHasBeenSet(false),
-    m_dashboardsHasBeenSet(false)
+AssetBundleImportJobOverridePermissions::AssetBundleImportJobOverridePermissions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -48,7 +34,6 @@ AssetBundleImportJobOverridePermissions& AssetBundleImportJobOverridePermissions
     }
     m_dataSourcesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DataSets"))
   {
     Aws::Utils::Array<JsonView> dataSetsJsonList = jsonValue.GetArray("DataSets");
@@ -58,7 +43,6 @@ AssetBundleImportJobOverridePermissions& AssetBundleImportJobOverridePermissions
     }
     m_dataSetsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Themes"))
   {
     Aws::Utils::Array<JsonView> themesJsonList = jsonValue.GetArray("Themes");
@@ -68,7 +52,6 @@ AssetBundleImportJobOverridePermissions& AssetBundleImportJobOverridePermissions
     }
     m_themesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Analyses"))
   {
     Aws::Utils::Array<JsonView> analysesJsonList = jsonValue.GetArray("Analyses");
@@ -78,7 +61,6 @@ AssetBundleImportJobOverridePermissions& AssetBundleImportJobOverridePermissions
     }
     m_analysesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Dashboards"))
   {
     Aws::Utils::Array<JsonView> dashboardsJsonList = jsonValue.GetArray("Dashboards");
@@ -88,7 +70,15 @@ AssetBundleImportJobOverridePermissions& AssetBundleImportJobOverridePermissions
     }
     m_dashboardsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("Folders"))
+  {
+    Aws::Utils::Array<JsonView> foldersJsonList = jsonValue.GetArray("Folders");
+    for(unsigned foldersIndex = 0; foldersIndex < foldersJsonList.GetLength(); ++foldersIndex)
+    {
+      m_folders.push_back(foldersJsonList[foldersIndex].AsObject());
+    }
+    m_foldersHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -148,6 +138,17 @@ JsonValue AssetBundleImportJobOverridePermissions::Jsonize() const
      dashboardsJsonList[dashboardsIndex].AsObject(m_dashboards[dashboardsIndex].Jsonize());
    }
    payload.WithArray("Dashboards", std::move(dashboardsJsonList));
+
+  }
+
+  if(m_foldersHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> foldersJsonList(m_folders.size());
+   for(unsigned foldersIndex = 0; foldersIndex < foldersJsonList.GetLength(); ++foldersIndex)
+   {
+     foldersJsonList[foldersIndex].AsObject(m_folders[foldersIndex].Jsonize());
+   }
+   payload.WithArray("Folders", std::move(foldersJsonList));
 
   }
 

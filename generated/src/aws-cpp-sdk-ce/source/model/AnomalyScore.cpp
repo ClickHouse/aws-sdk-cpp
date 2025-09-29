@@ -18,19 +18,7 @@ namespace CostExplorer
 namespace Model
 {
 
-AnomalyScore::AnomalyScore() : 
-    m_maxScore(0.0),
-    m_maxScoreHasBeenSet(false),
-    m_currentScore(0.0),
-    m_currentScoreHasBeenSet(false)
-{
-}
-
-AnomalyScore::AnomalyScore(JsonView jsonValue) : 
-    m_maxScore(0.0),
-    m_maxScoreHasBeenSet(false),
-    m_currentScore(0.0),
-    m_currentScoreHasBeenSet(false)
+AnomalyScore::AnomalyScore(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ AnomalyScore& AnomalyScore::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("MaxScore"))
   {
     m_maxScore = jsonValue.GetDouble("MaxScore");
-
     m_maxScoreHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CurrentScore"))
   {
     m_currentScore = jsonValue.GetDouble("CurrentScore");
-
     m_currentScoreHasBeenSet = true;
   }
-
   return *this;
 }
 

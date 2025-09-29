@@ -18,17 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-FindingHistoryUpdateSource::FindingHistoryUpdateSource() : 
-    m_type(FindingHistoryUpdateSourceType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_identityHasBeenSet(false)
-{
-}
-
-FindingHistoryUpdateSource::FindingHistoryUpdateSource(JsonView jsonValue) : 
-    m_type(FindingHistoryUpdateSourceType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_identityHasBeenSet(false)
+FindingHistoryUpdateSource::FindingHistoryUpdateSource(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ FindingHistoryUpdateSource& FindingHistoryUpdateSource::operator =(JsonView json
   if(jsonValue.ValueExists("Type"))
   {
     m_type = FindingHistoryUpdateSourceTypeMapper::GetFindingHistoryUpdateSourceTypeForName(jsonValue.GetString("Type"));
-
     m_typeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Identity"))
   {
     m_identity = jsonValue.GetString("Identity");
-
     m_identityHasBeenSet = true;
   }
-
   return *this;
 }
 

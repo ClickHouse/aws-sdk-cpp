@@ -18,13 +18,7 @@ namespace Panorama
 namespace Model
 {
 
-PackageImportJobInputConfig::PackageImportJobInputConfig() : 
-    m_packageVersionInputConfigHasBeenSet(false)
-{
-}
-
-PackageImportJobInputConfig::PackageImportJobInputConfig(JsonView jsonValue) : 
-    m_packageVersionInputConfigHasBeenSet(false)
+PackageImportJobInputConfig::PackageImportJobInputConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ PackageImportJobInputConfig& PackageImportJobInputConfig::operator =(JsonView js
   if(jsonValue.ValueExists("PackageVersionInputConfig"))
   {
     m_packageVersionInputConfig = jsonValue.GetObject("PackageVersionInputConfig");
-
     m_packageVersionInputConfigHasBeenSet = true;
   }
-
   return *this;
 }
 

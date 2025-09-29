@@ -32,99 +32,37 @@ namespace Model
   class TeletextSourceSettings
   {
   public:
-    AWS_MEDIALIVE_API TeletextSourceSettings();
+    AWS_MEDIALIVE_API TeletextSourceSettings() = default;
     AWS_MEDIALIVE_API TeletextSourceSettings(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API TeletextSourceSettings& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * Optionally defines a region where TTML style captions will be displayed
      */
-    inline const CaptionRectangle& GetOutputRectangle() const{ return m_outputRectangle; }
-
-    /**
-     * Optionally defines a region where TTML style captions will be displayed
-     */
+    inline const CaptionRectangle& GetOutputRectangle() const { return m_outputRectangle; }
     inline bool OutputRectangleHasBeenSet() const { return m_outputRectangleHasBeenSet; }
+    template<typename OutputRectangleT = CaptionRectangle>
+    void SetOutputRectangle(OutputRectangleT&& value) { m_outputRectangleHasBeenSet = true; m_outputRectangle = std::forward<OutputRectangleT>(value); }
+    template<typename OutputRectangleT = CaptionRectangle>
+    TeletextSourceSettings& WithOutputRectangle(OutputRectangleT&& value) { SetOutputRectangle(std::forward<OutputRectangleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * Optionally defines a region where TTML style captions will be displayed
-     */
-    inline void SetOutputRectangle(const CaptionRectangle& value) { m_outputRectangleHasBeenSet = true; m_outputRectangle = value; }
-
-    /**
-     * Optionally defines a region where TTML style captions will be displayed
-     */
-    inline void SetOutputRectangle(CaptionRectangle&& value) { m_outputRectangleHasBeenSet = true; m_outputRectangle = std::move(value); }
-
-    /**
-     * Optionally defines a region where TTML style captions will be displayed
-     */
-    inline TeletextSourceSettings& WithOutputRectangle(const CaptionRectangle& value) { SetOutputRectangle(value); return *this;}
-
-    /**
-     * Optionally defines a region where TTML style captions will be displayed
-     */
-    inline TeletextSourceSettings& WithOutputRectangle(CaptionRectangle&& value) { SetOutputRectangle(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * Specifies the teletext page number within the data stream from which to extract
      * captions. Range of 0x100 (256) to 0x8FF (2303). Unused for passthrough. Should
      * be specified as a hexadecimal string with no "0x" prefix.
      */
-    inline const Aws::String& GetPageNumber() const{ return m_pageNumber; }
-
-    /**
-     * Specifies the teletext page number within the data stream from which to extract
-     * captions. Range of 0x100 (256) to 0x8FF (2303). Unused for passthrough. Should
-     * be specified as a hexadecimal string with no "0x" prefix.
-     */
+    inline const Aws::String& GetPageNumber() const { return m_pageNumber; }
     inline bool PageNumberHasBeenSet() const { return m_pageNumberHasBeenSet; }
-
-    /**
-     * Specifies the teletext page number within the data stream from which to extract
-     * captions. Range of 0x100 (256) to 0x8FF (2303). Unused for passthrough. Should
-     * be specified as a hexadecimal string with no "0x" prefix.
-     */
-    inline void SetPageNumber(const Aws::String& value) { m_pageNumberHasBeenSet = true; m_pageNumber = value; }
-
-    /**
-     * Specifies the teletext page number within the data stream from which to extract
-     * captions. Range of 0x100 (256) to 0x8FF (2303). Unused for passthrough. Should
-     * be specified as a hexadecimal string with no "0x" prefix.
-     */
-    inline void SetPageNumber(Aws::String&& value) { m_pageNumberHasBeenSet = true; m_pageNumber = std::move(value); }
-
-    /**
-     * Specifies the teletext page number within the data stream from which to extract
-     * captions. Range of 0x100 (256) to 0x8FF (2303). Unused for passthrough. Should
-     * be specified as a hexadecimal string with no "0x" prefix.
-     */
-    inline void SetPageNumber(const char* value) { m_pageNumberHasBeenSet = true; m_pageNumber.assign(value); }
-
-    /**
-     * Specifies the teletext page number within the data stream from which to extract
-     * captions. Range of 0x100 (256) to 0x8FF (2303). Unused for passthrough. Should
-     * be specified as a hexadecimal string with no "0x" prefix.
-     */
-    inline TeletextSourceSettings& WithPageNumber(const Aws::String& value) { SetPageNumber(value); return *this;}
-
-    /**
-     * Specifies the teletext page number within the data stream from which to extract
-     * captions. Range of 0x100 (256) to 0x8FF (2303). Unused for passthrough. Should
-     * be specified as a hexadecimal string with no "0x" prefix.
-     */
-    inline TeletextSourceSettings& WithPageNumber(Aws::String&& value) { SetPageNumber(std::move(value)); return *this;}
-
-    /**
-     * Specifies the teletext page number within the data stream from which to extract
-     * captions. Range of 0x100 (256) to 0x8FF (2303). Unused for passthrough. Should
-     * be specified as a hexadecimal string with no "0x" prefix.
-     */
-    inline TeletextSourceSettings& WithPageNumber(const char* value) { SetPageNumber(value); return *this;}
-
+    template<typename PageNumberT = Aws::String>
+    void SetPageNumber(PageNumberT&& value) { m_pageNumberHasBeenSet = true; m_pageNumber = std::forward<PageNumberT>(value); }
+    template<typename PageNumberT = Aws::String>
+    TeletextSourceSettings& WithPageNumber(PageNumberT&& value) { SetPageNumber(std::forward<PageNumberT>(value)); return *this;}
+    ///@}
   private:
 
     CaptionRectangle m_outputRectangle;

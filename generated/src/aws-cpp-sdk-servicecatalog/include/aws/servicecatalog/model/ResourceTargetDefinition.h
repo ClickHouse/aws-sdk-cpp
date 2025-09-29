@@ -34,137 +34,54 @@ namespace Model
   class ResourceTargetDefinition
   {
   public:
-    AWS_SERVICECATALOG_API ResourceTargetDefinition();
+    AWS_SERVICECATALOG_API ResourceTargetDefinition() = default;
     AWS_SERVICECATALOG_API ResourceTargetDefinition(Aws::Utils::Json::JsonView jsonValue);
     AWS_SERVICECATALOG_API ResourceTargetDefinition& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SERVICECATALOG_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The attribute to be changed.</p>
      */
-    inline const ResourceAttribute& GetAttribute() const{ return m_attribute; }
-
-    /**
-     * <p>The attribute to be changed.</p>
-     */
+    inline ResourceAttribute GetAttribute() const { return m_attribute; }
     inline bool AttributeHasBeenSet() const { return m_attributeHasBeenSet; }
+    inline void SetAttribute(ResourceAttribute value) { m_attributeHasBeenSet = true; m_attribute = value; }
+    inline ResourceTargetDefinition& WithAttribute(ResourceAttribute value) { SetAttribute(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The attribute to be changed.</p>
-     */
-    inline void SetAttribute(const ResourceAttribute& value) { m_attributeHasBeenSet = true; m_attribute = value; }
-
-    /**
-     * <p>The attribute to be changed.</p>
-     */
-    inline void SetAttribute(ResourceAttribute&& value) { m_attributeHasBeenSet = true; m_attribute = std::move(value); }
-
-    /**
-     * <p>The attribute to be changed.</p>
-     */
-    inline ResourceTargetDefinition& WithAttribute(const ResourceAttribute& value) { SetAttribute(value); return *this;}
-
-    /**
-     * <p>The attribute to be changed.</p>
-     */
-    inline ResourceTargetDefinition& WithAttribute(ResourceAttribute&& value) { SetAttribute(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>If the attribute is <code>Properties</code>, the value is the name of the
      * property. Otherwise, the value is null.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>If the attribute is <code>Properties</code>, the value is the name of the
-     * property. Otherwise, the value is null.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    ResourceTargetDefinition& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If the attribute is <code>Properties</code>, the value is the name of the
-     * property. Otherwise, the value is null.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>If the attribute is <code>Properties</code>, the value is the name of the
-     * property. Otherwise, the value is null.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>If the attribute is <code>Properties</code>, the value is the name of the
-     * property. Otherwise, the value is null.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>If the attribute is <code>Properties</code>, the value is the name of the
-     * property. Otherwise, the value is null.</p>
-     */
-    inline ResourceTargetDefinition& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>If the attribute is <code>Properties</code>, the value is the name of the
-     * property. Otherwise, the value is null.</p>
-     */
-    inline ResourceTargetDefinition& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>If the attribute is <code>Properties</code>, the value is the name of the
-     * property. Otherwise, the value is null.</p>
-     */
-    inline ResourceTargetDefinition& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>If the attribute is <code>Properties</code>, indicates whether a change to
      * this property causes the resource to be re-created.</p>
      */
-    inline const RequiresRecreation& GetRequiresRecreation() const{ return m_requiresRecreation; }
-
-    /**
-     * <p>If the attribute is <code>Properties</code>, indicates whether a change to
-     * this property causes the resource to be re-created.</p>
-     */
+    inline RequiresRecreation GetRequiresRecreation() const { return m_requiresRecreation; }
     inline bool RequiresRecreationHasBeenSet() const { return m_requiresRecreationHasBeenSet; }
-
-    /**
-     * <p>If the attribute is <code>Properties</code>, indicates whether a change to
-     * this property causes the resource to be re-created.</p>
-     */
-    inline void SetRequiresRecreation(const RequiresRecreation& value) { m_requiresRecreationHasBeenSet = true; m_requiresRecreation = value; }
-
-    /**
-     * <p>If the attribute is <code>Properties</code>, indicates whether a change to
-     * this property causes the resource to be re-created.</p>
-     */
-    inline void SetRequiresRecreation(RequiresRecreation&& value) { m_requiresRecreationHasBeenSet = true; m_requiresRecreation = std::move(value); }
-
-    /**
-     * <p>If the attribute is <code>Properties</code>, indicates whether a change to
-     * this property causes the resource to be re-created.</p>
-     */
-    inline ResourceTargetDefinition& WithRequiresRecreation(const RequiresRecreation& value) { SetRequiresRecreation(value); return *this;}
-
-    /**
-     * <p>If the attribute is <code>Properties</code>, indicates whether a change to
-     * this property causes the resource to be re-created.</p>
-     */
-    inline ResourceTargetDefinition& WithRequiresRecreation(RequiresRecreation&& value) { SetRequiresRecreation(std::move(value)); return *this;}
-
+    inline void SetRequiresRecreation(RequiresRecreation value) { m_requiresRecreationHasBeenSet = true; m_requiresRecreation = value; }
+    inline ResourceTargetDefinition& WithRequiresRecreation(RequiresRecreation value) { SetRequiresRecreation(value); return *this;}
+    ///@}
   private:
 
-    ResourceAttribute m_attribute;
+    ResourceAttribute m_attribute{ResourceAttribute::NOT_SET};
     bool m_attributeHasBeenSet = false;
 
     Aws::String m_name;
     bool m_nameHasBeenSet = false;
 
-    RequiresRecreation m_requiresRecreation;
+    RequiresRecreation m_requiresRecreation{RequiresRecreation::NOT_SET};
     bool m_requiresRecreationHasBeenSet = false;
   };
 

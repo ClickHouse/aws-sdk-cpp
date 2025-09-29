@@ -21,7 +21,7 @@ namespace Model
   class DeleteFleetAdvisorCollectorRequest : public DatabaseMigrationServiceRequest
   {
   public:
-    AWS_DATABASEMIGRATIONSERVICE_API DeleteFleetAdvisorCollectorRequest();
+    AWS_DATABASEMIGRATIONSERVICE_API DeleteFleetAdvisorCollectorRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_DATABASEMIGRATIONSERVICE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The reference ID of the Fleet Advisor collector to delete.</p>
      */
-    inline const Aws::String& GetCollectorReferencedId() const{ return m_collectorReferencedId; }
-
-    /**
-     * <p>The reference ID of the Fleet Advisor collector to delete.</p>
-     */
+    inline const Aws::String& GetCollectorReferencedId() const { return m_collectorReferencedId; }
     inline bool CollectorReferencedIdHasBeenSet() const { return m_collectorReferencedIdHasBeenSet; }
-
-    /**
-     * <p>The reference ID of the Fleet Advisor collector to delete.</p>
-     */
-    inline void SetCollectorReferencedId(const Aws::String& value) { m_collectorReferencedIdHasBeenSet = true; m_collectorReferencedId = value; }
-
-    /**
-     * <p>The reference ID of the Fleet Advisor collector to delete.</p>
-     */
-    inline void SetCollectorReferencedId(Aws::String&& value) { m_collectorReferencedIdHasBeenSet = true; m_collectorReferencedId = std::move(value); }
-
-    /**
-     * <p>The reference ID of the Fleet Advisor collector to delete.</p>
-     */
-    inline void SetCollectorReferencedId(const char* value) { m_collectorReferencedIdHasBeenSet = true; m_collectorReferencedId.assign(value); }
-
-    /**
-     * <p>The reference ID of the Fleet Advisor collector to delete.</p>
-     */
-    inline DeleteFleetAdvisorCollectorRequest& WithCollectorReferencedId(const Aws::String& value) { SetCollectorReferencedId(value); return *this;}
-
-    /**
-     * <p>The reference ID of the Fleet Advisor collector to delete.</p>
-     */
-    inline DeleteFleetAdvisorCollectorRequest& WithCollectorReferencedId(Aws::String&& value) { SetCollectorReferencedId(std::move(value)); return *this;}
-
-    /**
-     * <p>The reference ID of the Fleet Advisor collector to delete.</p>
-     */
-    inline DeleteFleetAdvisorCollectorRequest& WithCollectorReferencedId(const char* value) { SetCollectorReferencedId(value); return *this;}
-
+    template<typename CollectorReferencedIdT = Aws::String>
+    void SetCollectorReferencedId(CollectorReferencedIdT&& value) { m_collectorReferencedIdHasBeenSet = true; m_collectorReferencedId = std::forward<CollectorReferencedIdT>(value); }
+    template<typename CollectorReferencedIdT = Aws::String>
+    DeleteFleetAdvisorCollectorRequest& WithCollectorReferencedId(CollectorReferencedIdT&& value) { SetCollectorReferencedId(std::forward<CollectorReferencedIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_collectorReferencedId;

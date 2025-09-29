@@ -20,15 +20,7 @@ namespace S3Crt
 namespace Model
 {
 
-ObjectLockLegalHold::ObjectLockLegalHold() : 
-    m_status(ObjectLockLegalHoldStatus::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
-ObjectLockLegalHold::ObjectLockLegalHold(const XmlNode& xmlNode) : 
-    m_status(ObjectLockLegalHoldStatus::NOT_SET),
-    m_statusHasBeenSet(false)
+ObjectLockLegalHold::ObjectLockLegalHold(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -42,7 +34,7 @@ ObjectLockLegalHold& ObjectLockLegalHold::operator =(const XmlNode& xmlNode)
     XmlNode statusNode = resultNode.FirstChild("Status");
     if(!statusNode.IsNull())
     {
-      m_status = ObjectLockLegalHoldStatusMapper::GetObjectLockLegalHoldStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()).c_str());
+      m_status = ObjectLockLegalHoldStatusMapper::GetObjectLockLegalHoldStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()));
       m_statusHasBeenSet = true;
     }
   }

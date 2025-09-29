@@ -18,13 +18,7 @@ namespace EKS
 namespace Model
 {
 
-Provider::Provider() : 
-    m_keyArnHasBeenSet(false)
-{
-}
-
-Provider::Provider(JsonView jsonValue) : 
-    m_keyArnHasBeenSet(false)
+Provider::Provider(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ Provider& Provider::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("keyArn"))
   {
     m_keyArn = jsonValue.GetString("keyArn");
-
     m_keyArnHasBeenSet = true;
   }
-
   return *this;
 }
 

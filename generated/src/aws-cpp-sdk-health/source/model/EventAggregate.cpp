@@ -18,17 +18,7 @@ namespace Health
 namespace Model
 {
 
-EventAggregate::EventAggregate() : 
-    m_aggregateValueHasBeenSet(false),
-    m_count(0),
-    m_countHasBeenSet(false)
-{
-}
-
-EventAggregate::EventAggregate(JsonView jsonValue) : 
-    m_aggregateValueHasBeenSet(false),
-    m_count(0),
-    m_countHasBeenSet(false)
+EventAggregate::EventAggregate(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ EventAggregate& EventAggregate::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("aggregateValue"))
   {
     m_aggregateValue = jsonValue.GetString("aggregateValue");
-
     m_aggregateValueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("count"))
   {
     m_count = jsonValue.GetInteger("count");
-
     m_countHasBeenSet = true;
   }
-
   return *this;
 }
 

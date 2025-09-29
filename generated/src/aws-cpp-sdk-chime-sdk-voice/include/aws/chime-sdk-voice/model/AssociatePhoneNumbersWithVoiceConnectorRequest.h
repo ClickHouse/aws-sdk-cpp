@@ -22,7 +22,7 @@ namespace Model
   class AssociatePhoneNumbersWithVoiceConnectorRequest : public ChimeSDKVoiceRequest
   {
   public:
-    AWS_CHIMESDKVOICE_API AssociatePhoneNumbersWithVoiceConnectorRequest();
+    AWS_CHIMESDKVOICE_API AssociatePhoneNumbersWithVoiceConnectorRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,125 +33,44 @@ namespace Model
     AWS_CHIMESDKVOICE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The Voice Connector ID.</p>
      */
-    inline const Aws::String& GetVoiceConnectorId() const{ return m_voiceConnectorId; }
-
-    /**
-     * <p>The Voice Connector ID.</p>
-     */
+    inline const Aws::String& GetVoiceConnectorId() const { return m_voiceConnectorId; }
     inline bool VoiceConnectorIdHasBeenSet() const { return m_voiceConnectorIdHasBeenSet; }
+    template<typename VoiceConnectorIdT = Aws::String>
+    void SetVoiceConnectorId(VoiceConnectorIdT&& value) { m_voiceConnectorIdHasBeenSet = true; m_voiceConnectorId = std::forward<VoiceConnectorIdT>(value); }
+    template<typename VoiceConnectorIdT = Aws::String>
+    AssociatePhoneNumbersWithVoiceConnectorRequest& WithVoiceConnectorId(VoiceConnectorIdT&& value) { SetVoiceConnectorId(std::forward<VoiceConnectorIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Voice Connector ID.</p>
-     */
-    inline void SetVoiceConnectorId(const Aws::String& value) { m_voiceConnectorIdHasBeenSet = true; m_voiceConnectorId = value; }
-
-    /**
-     * <p>The Voice Connector ID.</p>
-     */
-    inline void SetVoiceConnectorId(Aws::String&& value) { m_voiceConnectorIdHasBeenSet = true; m_voiceConnectorId = std::move(value); }
-
-    /**
-     * <p>The Voice Connector ID.</p>
-     */
-    inline void SetVoiceConnectorId(const char* value) { m_voiceConnectorIdHasBeenSet = true; m_voiceConnectorId.assign(value); }
-
-    /**
-     * <p>The Voice Connector ID.</p>
-     */
-    inline AssociatePhoneNumbersWithVoiceConnectorRequest& WithVoiceConnectorId(const Aws::String& value) { SetVoiceConnectorId(value); return *this;}
-
-    /**
-     * <p>The Voice Connector ID.</p>
-     */
-    inline AssociatePhoneNumbersWithVoiceConnectorRequest& WithVoiceConnectorId(Aws::String&& value) { SetVoiceConnectorId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Voice Connector ID.</p>
-     */
-    inline AssociatePhoneNumbersWithVoiceConnectorRequest& WithVoiceConnectorId(const char* value) { SetVoiceConnectorId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>List of phone numbers, in E.164 format.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetE164PhoneNumbers() const{ return m_e164PhoneNumbers; }
-
-    /**
-     * <p>List of phone numbers, in E.164 format.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetE164PhoneNumbers() const { return m_e164PhoneNumbers; }
     inline bool E164PhoneNumbersHasBeenSet() const { return m_e164PhoneNumbersHasBeenSet; }
+    template<typename E164PhoneNumbersT = Aws::Vector<Aws::String>>
+    void SetE164PhoneNumbers(E164PhoneNumbersT&& value) { m_e164PhoneNumbersHasBeenSet = true; m_e164PhoneNumbers = std::forward<E164PhoneNumbersT>(value); }
+    template<typename E164PhoneNumbersT = Aws::Vector<Aws::String>>
+    AssociatePhoneNumbersWithVoiceConnectorRequest& WithE164PhoneNumbers(E164PhoneNumbersT&& value) { SetE164PhoneNumbers(std::forward<E164PhoneNumbersT>(value)); return *this;}
+    template<typename E164PhoneNumbersT = Aws::String>
+    AssociatePhoneNumbersWithVoiceConnectorRequest& AddE164PhoneNumbers(E164PhoneNumbersT&& value) { m_e164PhoneNumbersHasBeenSet = true; m_e164PhoneNumbers.emplace_back(std::forward<E164PhoneNumbersT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>List of phone numbers, in E.164 format.</p>
-     */
-    inline void SetE164PhoneNumbers(const Aws::Vector<Aws::String>& value) { m_e164PhoneNumbersHasBeenSet = true; m_e164PhoneNumbers = value; }
-
-    /**
-     * <p>List of phone numbers, in E.164 format.</p>
-     */
-    inline void SetE164PhoneNumbers(Aws::Vector<Aws::String>&& value) { m_e164PhoneNumbersHasBeenSet = true; m_e164PhoneNumbers = std::move(value); }
-
-    /**
-     * <p>List of phone numbers, in E.164 format.</p>
-     */
-    inline AssociatePhoneNumbersWithVoiceConnectorRequest& WithE164PhoneNumbers(const Aws::Vector<Aws::String>& value) { SetE164PhoneNumbers(value); return *this;}
-
-    /**
-     * <p>List of phone numbers, in E.164 format.</p>
-     */
-    inline AssociatePhoneNumbersWithVoiceConnectorRequest& WithE164PhoneNumbers(Aws::Vector<Aws::String>&& value) { SetE164PhoneNumbers(std::move(value)); return *this;}
-
-    /**
-     * <p>List of phone numbers, in E.164 format.</p>
-     */
-    inline AssociatePhoneNumbersWithVoiceConnectorRequest& AddE164PhoneNumbers(const Aws::String& value) { m_e164PhoneNumbersHasBeenSet = true; m_e164PhoneNumbers.push_back(value); return *this; }
-
-    /**
-     * <p>List of phone numbers, in E.164 format.</p>
-     */
-    inline AssociatePhoneNumbersWithVoiceConnectorRequest& AddE164PhoneNumbers(Aws::String&& value) { m_e164PhoneNumbersHasBeenSet = true; m_e164PhoneNumbers.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>List of phone numbers, in E.164 format.</p>
-     */
-    inline AssociatePhoneNumbersWithVoiceConnectorRequest& AddE164PhoneNumbers(const char* value) { m_e164PhoneNumbersHasBeenSet = true; m_e164PhoneNumbers.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>If true, associates the provided phone numbers with the provided Amazon Chime
      * SDK Voice Connector and removes any previously existing associations. If false,
      * does not associate any phone numbers that have previously existing
      * associations.</p>
      */
-    inline bool GetForceAssociate() const{ return m_forceAssociate; }
-
-    /**
-     * <p>If true, associates the provided phone numbers with the provided Amazon Chime
-     * SDK Voice Connector and removes any previously existing associations. If false,
-     * does not associate any phone numbers that have previously existing
-     * associations.</p>
-     */
+    inline bool GetForceAssociate() const { return m_forceAssociate; }
     inline bool ForceAssociateHasBeenSet() const { return m_forceAssociateHasBeenSet; }
-
-    /**
-     * <p>If true, associates the provided phone numbers with the provided Amazon Chime
-     * SDK Voice Connector and removes any previously existing associations. If false,
-     * does not associate any phone numbers that have previously existing
-     * associations.</p>
-     */
     inline void SetForceAssociate(bool value) { m_forceAssociateHasBeenSet = true; m_forceAssociate = value; }
-
-    /**
-     * <p>If true, associates the provided phone numbers with the provided Amazon Chime
-     * SDK Voice Connector and removes any previously existing associations. If false,
-     * does not associate any phone numbers that have previously existing
-     * associations.</p>
-     */
     inline AssociatePhoneNumbersWithVoiceConnectorRequest& WithForceAssociate(bool value) { SetForceAssociate(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_voiceConnectorId;
@@ -160,7 +79,7 @@ namespace Model
     Aws::Vector<Aws::String> m_e164PhoneNumbers;
     bool m_e164PhoneNumbersHasBeenSet = false;
 
-    bool m_forceAssociate;
+    bool m_forceAssociate{false};
     bool m_forceAssociateHasBeenSet = false;
   };
 

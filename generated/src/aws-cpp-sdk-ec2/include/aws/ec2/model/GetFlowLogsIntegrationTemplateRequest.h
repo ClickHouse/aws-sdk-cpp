@@ -22,7 +22,7 @@ namespace Model
   class GetFlowLogsIntegrationTemplateRequest : public EC2Request
   {
   public:
-    AWS_EC2_API GetFlowLogsIntegrationTemplateRequest();
+    AWS_EC2_API GetFlowLogsIntegrationTemplateRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,162 +37,58 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
      * required permissions, the error response is <code>DryRunOperation</code>.
      * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
      */
-    inline bool GetDryRun() const{ return m_dryRun; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
+    inline bool GetDryRun() const { return m_dryRun; }
     inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline GetFlowLogsIntegrationTemplateRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The ID of the flow log.</p>
      */
-    inline const Aws::String& GetFlowLogId() const{ return m_flowLogId; }
-
-    /**
-     * <p>The ID of the flow log.</p>
-     */
+    inline const Aws::String& GetFlowLogId() const { return m_flowLogId; }
     inline bool FlowLogIdHasBeenSet() const { return m_flowLogIdHasBeenSet; }
+    template<typename FlowLogIdT = Aws::String>
+    void SetFlowLogId(FlowLogIdT&& value) { m_flowLogIdHasBeenSet = true; m_flowLogId = std::forward<FlowLogIdT>(value); }
+    template<typename FlowLogIdT = Aws::String>
+    GetFlowLogsIntegrationTemplateRequest& WithFlowLogId(FlowLogIdT&& value) { SetFlowLogId(std::forward<FlowLogIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the flow log.</p>
-     */
-    inline void SetFlowLogId(const Aws::String& value) { m_flowLogIdHasBeenSet = true; m_flowLogId = value; }
-
-    /**
-     * <p>The ID of the flow log.</p>
-     */
-    inline void SetFlowLogId(Aws::String&& value) { m_flowLogIdHasBeenSet = true; m_flowLogId = std::move(value); }
-
-    /**
-     * <p>The ID of the flow log.</p>
-     */
-    inline void SetFlowLogId(const char* value) { m_flowLogIdHasBeenSet = true; m_flowLogId.assign(value); }
-
-    /**
-     * <p>The ID of the flow log.</p>
-     */
-    inline GetFlowLogsIntegrationTemplateRequest& WithFlowLogId(const Aws::String& value) { SetFlowLogId(value); return *this;}
-
-    /**
-     * <p>The ID of the flow log.</p>
-     */
-    inline GetFlowLogsIntegrationTemplateRequest& WithFlowLogId(Aws::String&& value) { SetFlowLogId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the flow log.</p>
-     */
-    inline GetFlowLogsIntegrationTemplateRequest& WithFlowLogId(const char* value) { SetFlowLogId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>To store the CloudFormation template in Amazon S3, specify the location in
      * Amazon S3.</p>
      */
-    inline const Aws::String& GetConfigDeliveryS3DestinationArn() const{ return m_configDeliveryS3DestinationArn; }
-
-    /**
-     * <p>To store the CloudFormation template in Amazon S3, specify the location in
-     * Amazon S3.</p>
-     */
+    inline const Aws::String& GetConfigDeliveryS3DestinationArn() const { return m_configDeliveryS3DestinationArn; }
     inline bool ConfigDeliveryS3DestinationArnHasBeenSet() const { return m_configDeliveryS3DestinationArnHasBeenSet; }
+    template<typename ConfigDeliveryS3DestinationArnT = Aws::String>
+    void SetConfigDeliveryS3DestinationArn(ConfigDeliveryS3DestinationArnT&& value) { m_configDeliveryS3DestinationArnHasBeenSet = true; m_configDeliveryS3DestinationArn = std::forward<ConfigDeliveryS3DestinationArnT>(value); }
+    template<typename ConfigDeliveryS3DestinationArnT = Aws::String>
+    GetFlowLogsIntegrationTemplateRequest& WithConfigDeliveryS3DestinationArn(ConfigDeliveryS3DestinationArnT&& value) { SetConfigDeliveryS3DestinationArn(std::forward<ConfigDeliveryS3DestinationArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>To store the CloudFormation template in Amazon S3, specify the location in
-     * Amazon S3.</p>
-     */
-    inline void SetConfigDeliveryS3DestinationArn(const Aws::String& value) { m_configDeliveryS3DestinationArnHasBeenSet = true; m_configDeliveryS3DestinationArn = value; }
-
-    /**
-     * <p>To store the CloudFormation template in Amazon S3, specify the location in
-     * Amazon S3.</p>
-     */
-    inline void SetConfigDeliveryS3DestinationArn(Aws::String&& value) { m_configDeliveryS3DestinationArnHasBeenSet = true; m_configDeliveryS3DestinationArn = std::move(value); }
-
-    /**
-     * <p>To store the CloudFormation template in Amazon S3, specify the location in
-     * Amazon S3.</p>
-     */
-    inline void SetConfigDeliveryS3DestinationArn(const char* value) { m_configDeliveryS3DestinationArnHasBeenSet = true; m_configDeliveryS3DestinationArn.assign(value); }
-
-    /**
-     * <p>To store the CloudFormation template in Amazon S3, specify the location in
-     * Amazon S3.</p>
-     */
-    inline GetFlowLogsIntegrationTemplateRequest& WithConfigDeliveryS3DestinationArn(const Aws::String& value) { SetConfigDeliveryS3DestinationArn(value); return *this;}
-
-    /**
-     * <p>To store the CloudFormation template in Amazon S3, specify the location in
-     * Amazon S3.</p>
-     */
-    inline GetFlowLogsIntegrationTemplateRequest& WithConfigDeliveryS3DestinationArn(Aws::String&& value) { SetConfigDeliveryS3DestinationArn(std::move(value)); return *this;}
-
-    /**
-     * <p>To store the CloudFormation template in Amazon S3, specify the location in
-     * Amazon S3.</p>
-     */
-    inline GetFlowLogsIntegrationTemplateRequest& WithConfigDeliveryS3DestinationArn(const char* value) { SetConfigDeliveryS3DestinationArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about the service integration.</p>
      */
-    inline const IntegrateServices& GetIntegrateServices() const{ return m_integrateServices; }
-
-    /**
-     * <p>Information about the service integration.</p>
-     */
+    inline const IntegrateServices& GetIntegrateServices() const { return m_integrateServices; }
     inline bool IntegrateServicesHasBeenSet() const { return m_integrateServicesHasBeenSet; }
-
-    /**
-     * <p>Information about the service integration.</p>
-     */
-    inline void SetIntegrateServices(const IntegrateServices& value) { m_integrateServicesHasBeenSet = true; m_integrateServices = value; }
-
-    /**
-     * <p>Information about the service integration.</p>
-     */
-    inline void SetIntegrateServices(IntegrateServices&& value) { m_integrateServicesHasBeenSet = true; m_integrateServices = std::move(value); }
-
-    /**
-     * <p>Information about the service integration.</p>
-     */
-    inline GetFlowLogsIntegrationTemplateRequest& WithIntegrateServices(const IntegrateServices& value) { SetIntegrateServices(value); return *this;}
-
-    /**
-     * <p>Information about the service integration.</p>
-     */
-    inline GetFlowLogsIntegrationTemplateRequest& WithIntegrateServices(IntegrateServices&& value) { SetIntegrateServices(std::move(value)); return *this;}
-
+    template<typename IntegrateServicesT = IntegrateServices>
+    void SetIntegrateServices(IntegrateServicesT&& value) { m_integrateServicesHasBeenSet = true; m_integrateServices = std::forward<IntegrateServicesT>(value); }
+    template<typename IntegrateServicesT = IntegrateServices>
+    GetFlowLogsIntegrationTemplateRequest& WithIntegrateServices(IntegrateServicesT&& value) { SetIntegrateServices(std::forward<IntegrateServicesT>(value)); return *this;}
+    ///@}
   private:
 
-    bool m_dryRun;
+    bool m_dryRun{false};
     bool m_dryRunHasBeenSet = false;
 
     Aws::String m_flowLogId;

@@ -18,15 +18,7 @@ namespace Snowball
 namespace Model
 {
 
-Shipment::Shipment() : 
-    m_statusHasBeenSet(false),
-    m_trackingNumberHasBeenSet(false)
-{
-}
-
-Shipment::Shipment(JsonView jsonValue) : 
-    m_statusHasBeenSet(false),
-    m_trackingNumberHasBeenSet(false)
+Shipment::Shipment(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ Shipment& Shipment::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Status"))
   {
     m_status = jsonValue.GetString("Status");
-
     m_statusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TrackingNumber"))
   {
     m_trackingNumber = jsonValue.GetString("TrackingNumber");
-
     m_trackingNumberHasBeenSet = true;
   }
-
   return *this;
 }
 

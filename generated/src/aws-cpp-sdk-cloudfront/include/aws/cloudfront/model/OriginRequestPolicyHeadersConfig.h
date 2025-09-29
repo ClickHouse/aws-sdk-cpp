@@ -33,13 +33,14 @@ namespace Model
   class OriginRequestPolicyHeadersConfig
   {
   public:
-    AWS_CLOUDFRONT_API OriginRequestPolicyHeadersConfig();
+    AWS_CLOUDFRONT_API OriginRequestPolicyHeadersConfig() = default;
     AWS_CLOUDFRONT_API OriginRequestPolicyHeadersConfig(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_CLOUDFRONT_API OriginRequestPolicyHeadersConfig& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_CLOUDFRONT_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>Determines whether any HTTP headers are included in requests that CloudFront
      * sends to the origin. Valid values are:</p> <ul> <li> <p> <code>none</code> – No
@@ -59,135 +60,24 @@ namespace Model
      * <i> <b>except</b> </i> for those listed in the <code>Headers</code> type, which
      * are not included.</p> </li> </ul>
      */
-    inline const OriginRequestPolicyHeaderBehavior& GetHeaderBehavior() const{ return m_headerBehavior; }
-
-    /**
-     * <p>Determines whether any HTTP headers are included in requests that CloudFront
-     * sends to the origin. Valid values are:</p> <ul> <li> <p> <code>none</code> – No
-     * HTTP headers in viewer requests are included in requests that CloudFront sends
-     * to the origin. Even when this field is set to <code>none</code>, any headers
-     * that are listed in a <code>CachePolicy</code> <i>are</i> included in origin
-     * requests.</p> </li> <li> <p> <code>whitelist</code> – Only the HTTP headers that
-     * are listed in the <code>Headers</code> type are included in requests that
-     * CloudFront sends to the origin.</p> </li> <li> <p> <code>allViewer</code> – All
-     * HTTP headers in viewer requests are included in requests that CloudFront sends
-     * to the origin.</p> </li> <li> <p> <code>allViewerAndWhitelistCloudFront</code> –
-     * All HTTP headers in viewer requests and the additional CloudFront headers that
-     * are listed in the <code>Headers</code> type are included in requests that
-     * CloudFront sends to the origin. The additional headers are added by
-     * CloudFront.</p> </li> <li> <p> <code>allExcept</code> – All HTTP headers in
-     * viewer requests are included in requests that CloudFront sends to the origin,
-     * <i> <b>except</b> </i> for those listed in the <code>Headers</code> type, which
-     * are not included.</p> </li> </ul>
-     */
+    inline OriginRequestPolicyHeaderBehavior GetHeaderBehavior() const { return m_headerBehavior; }
     inline bool HeaderBehaviorHasBeenSet() const { return m_headerBehaviorHasBeenSet; }
+    inline void SetHeaderBehavior(OriginRequestPolicyHeaderBehavior value) { m_headerBehaviorHasBeenSet = true; m_headerBehavior = value; }
+    inline OriginRequestPolicyHeadersConfig& WithHeaderBehavior(OriginRequestPolicyHeaderBehavior value) { SetHeaderBehavior(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Determines whether any HTTP headers are included in requests that CloudFront
-     * sends to the origin. Valid values are:</p> <ul> <li> <p> <code>none</code> – No
-     * HTTP headers in viewer requests are included in requests that CloudFront sends
-     * to the origin. Even when this field is set to <code>none</code>, any headers
-     * that are listed in a <code>CachePolicy</code> <i>are</i> included in origin
-     * requests.</p> </li> <li> <p> <code>whitelist</code> – Only the HTTP headers that
-     * are listed in the <code>Headers</code> type are included in requests that
-     * CloudFront sends to the origin.</p> </li> <li> <p> <code>allViewer</code> – All
-     * HTTP headers in viewer requests are included in requests that CloudFront sends
-     * to the origin.</p> </li> <li> <p> <code>allViewerAndWhitelistCloudFront</code> –
-     * All HTTP headers in viewer requests and the additional CloudFront headers that
-     * are listed in the <code>Headers</code> type are included in requests that
-     * CloudFront sends to the origin. The additional headers are added by
-     * CloudFront.</p> </li> <li> <p> <code>allExcept</code> – All HTTP headers in
-     * viewer requests are included in requests that CloudFront sends to the origin,
-     * <i> <b>except</b> </i> for those listed in the <code>Headers</code> type, which
-     * are not included.</p> </li> </ul>
-     */
-    inline void SetHeaderBehavior(const OriginRequestPolicyHeaderBehavior& value) { m_headerBehaviorHasBeenSet = true; m_headerBehavior = value; }
-
-    /**
-     * <p>Determines whether any HTTP headers are included in requests that CloudFront
-     * sends to the origin. Valid values are:</p> <ul> <li> <p> <code>none</code> – No
-     * HTTP headers in viewer requests are included in requests that CloudFront sends
-     * to the origin. Even when this field is set to <code>none</code>, any headers
-     * that are listed in a <code>CachePolicy</code> <i>are</i> included in origin
-     * requests.</p> </li> <li> <p> <code>whitelist</code> – Only the HTTP headers that
-     * are listed in the <code>Headers</code> type are included in requests that
-     * CloudFront sends to the origin.</p> </li> <li> <p> <code>allViewer</code> – All
-     * HTTP headers in viewer requests are included in requests that CloudFront sends
-     * to the origin.</p> </li> <li> <p> <code>allViewerAndWhitelistCloudFront</code> –
-     * All HTTP headers in viewer requests and the additional CloudFront headers that
-     * are listed in the <code>Headers</code> type are included in requests that
-     * CloudFront sends to the origin. The additional headers are added by
-     * CloudFront.</p> </li> <li> <p> <code>allExcept</code> – All HTTP headers in
-     * viewer requests are included in requests that CloudFront sends to the origin,
-     * <i> <b>except</b> </i> for those listed in the <code>Headers</code> type, which
-     * are not included.</p> </li> </ul>
-     */
-    inline void SetHeaderBehavior(OriginRequestPolicyHeaderBehavior&& value) { m_headerBehaviorHasBeenSet = true; m_headerBehavior = std::move(value); }
-
-    /**
-     * <p>Determines whether any HTTP headers are included in requests that CloudFront
-     * sends to the origin. Valid values are:</p> <ul> <li> <p> <code>none</code> – No
-     * HTTP headers in viewer requests are included in requests that CloudFront sends
-     * to the origin. Even when this field is set to <code>none</code>, any headers
-     * that are listed in a <code>CachePolicy</code> <i>are</i> included in origin
-     * requests.</p> </li> <li> <p> <code>whitelist</code> – Only the HTTP headers that
-     * are listed in the <code>Headers</code> type are included in requests that
-     * CloudFront sends to the origin.</p> </li> <li> <p> <code>allViewer</code> – All
-     * HTTP headers in viewer requests are included in requests that CloudFront sends
-     * to the origin.</p> </li> <li> <p> <code>allViewerAndWhitelistCloudFront</code> –
-     * All HTTP headers in viewer requests and the additional CloudFront headers that
-     * are listed in the <code>Headers</code> type are included in requests that
-     * CloudFront sends to the origin. The additional headers are added by
-     * CloudFront.</p> </li> <li> <p> <code>allExcept</code> – All HTTP headers in
-     * viewer requests are included in requests that CloudFront sends to the origin,
-     * <i> <b>except</b> </i> for those listed in the <code>Headers</code> type, which
-     * are not included.</p> </li> </ul>
-     */
-    inline OriginRequestPolicyHeadersConfig& WithHeaderBehavior(const OriginRequestPolicyHeaderBehavior& value) { SetHeaderBehavior(value); return *this;}
-
-    /**
-     * <p>Determines whether any HTTP headers are included in requests that CloudFront
-     * sends to the origin. Valid values are:</p> <ul> <li> <p> <code>none</code> – No
-     * HTTP headers in viewer requests are included in requests that CloudFront sends
-     * to the origin. Even when this field is set to <code>none</code>, any headers
-     * that are listed in a <code>CachePolicy</code> <i>are</i> included in origin
-     * requests.</p> </li> <li> <p> <code>whitelist</code> – Only the HTTP headers that
-     * are listed in the <code>Headers</code> type are included in requests that
-     * CloudFront sends to the origin.</p> </li> <li> <p> <code>allViewer</code> – All
-     * HTTP headers in viewer requests are included in requests that CloudFront sends
-     * to the origin.</p> </li> <li> <p> <code>allViewerAndWhitelistCloudFront</code> –
-     * All HTTP headers in viewer requests and the additional CloudFront headers that
-     * are listed in the <code>Headers</code> type are included in requests that
-     * CloudFront sends to the origin. The additional headers are added by
-     * CloudFront.</p> </li> <li> <p> <code>allExcept</code> – All HTTP headers in
-     * viewer requests are included in requests that CloudFront sends to the origin,
-     * <i> <b>except</b> </i> for those listed in the <code>Headers</code> type, which
-     * are not included.</p> </li> </ul>
-     */
-    inline OriginRequestPolicyHeadersConfig& WithHeaderBehavior(OriginRequestPolicyHeaderBehavior&& value) { SetHeaderBehavior(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Headers& GetHeaders() const{ return m_headers; }
-
-    
+    inline const Headers& GetHeaders() const { return m_headers; }
     inline bool HeadersHasBeenSet() const { return m_headersHasBeenSet; }
-
-    
-    inline void SetHeaders(const Headers& value) { m_headersHasBeenSet = true; m_headers = value; }
-
-    
-    inline void SetHeaders(Headers&& value) { m_headersHasBeenSet = true; m_headers = std::move(value); }
-
-    
-    inline OriginRequestPolicyHeadersConfig& WithHeaders(const Headers& value) { SetHeaders(value); return *this;}
-
-    
-    inline OriginRequestPolicyHeadersConfig& WithHeaders(Headers&& value) { SetHeaders(std::move(value)); return *this;}
-
+    template<typename HeadersT = Headers>
+    void SetHeaders(HeadersT&& value) { m_headersHasBeenSet = true; m_headers = std::forward<HeadersT>(value); }
+    template<typename HeadersT = Headers>
+    OriginRequestPolicyHeadersConfig& WithHeaders(HeadersT&& value) { SetHeaders(std::forward<HeadersT>(value)); return *this;}
+    ///@}
   private:
 
-    OriginRequestPolicyHeaderBehavior m_headerBehavior;
+    OriginRequestPolicyHeaderBehavior m_headerBehavior{OriginRequestPolicyHeaderBehavior::NOT_SET};
     bool m_headerBehaviorHasBeenSet = false;
 
     Headers m_headers;

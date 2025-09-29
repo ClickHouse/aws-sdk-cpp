@@ -10,24 +10,13 @@
 using namespace Aws::CloudFormation::Model;
 using namespace Aws::Utils;
 
-DescribeTypeRequest::DescribeTypeRequest() : 
-    m_type(RegistryType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_typeNameHasBeenSet(false),
-    m_arnHasBeenSet(false),
-    m_versionIdHasBeenSet(false),
-    m_publisherIdHasBeenSet(false),
-    m_publicVersionNumberHasBeenSet(false)
-{
-}
-
 Aws::String DescribeTypeRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=DescribeType&";
   if(m_typeHasBeenSet)
   {
-    ss << "Type=" << RegistryTypeMapper::GetNameForRegistryType(m_type) << "&";
+    ss << "Type=" << StringUtils::URLEncode(RegistryTypeMapper::GetNameForRegistryType(m_type)) << "&";
   }
 
   if(m_typeNameHasBeenSet)

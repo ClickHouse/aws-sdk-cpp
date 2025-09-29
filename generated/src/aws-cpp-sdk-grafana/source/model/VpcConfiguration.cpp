@@ -18,15 +18,7 @@ namespace ManagedGrafana
 namespace Model
 {
 
-VpcConfiguration::VpcConfiguration() : 
-    m_securityGroupIdsHasBeenSet(false),
-    m_subnetIdsHasBeenSet(false)
-{
-}
-
-VpcConfiguration::VpcConfiguration(JsonView jsonValue) : 
-    m_securityGroupIdsHasBeenSet(false),
-    m_subnetIdsHasBeenSet(false)
+VpcConfiguration::VpcConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ VpcConfiguration& VpcConfiguration::operator =(JsonView jsonValue)
     }
     m_securityGroupIdsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("subnetIds"))
   {
     Aws::Utils::Array<JsonView> subnetIdsJsonList = jsonValue.GetArray("subnetIds");
@@ -52,7 +43,6 @@ VpcConfiguration& VpcConfiguration::operator =(JsonView jsonValue)
     }
     m_subnetIdsHasBeenSet = true;
   }
-
   return *this;
 }
 

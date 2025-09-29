@@ -21,7 +21,7 @@ namespace Model
   class DescribeObservationRequest : public ApplicationInsightsRequest
   {
   public:
-    AWS_APPLICATIONINSIGHTS_API DescribeObservationRequest();
+    AWS_APPLICATIONINSIGHTS_API DescribeObservationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,87 +34,29 @@ namespace Model
     AWS_APPLICATIONINSIGHTS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the observation.</p>
      */
-    inline const Aws::String& GetObservationId() const{ return m_observationId; }
-
-    /**
-     * <p>The ID of the observation.</p>
-     */
+    inline const Aws::String& GetObservationId() const { return m_observationId; }
     inline bool ObservationIdHasBeenSet() const { return m_observationIdHasBeenSet; }
+    template<typename ObservationIdT = Aws::String>
+    void SetObservationId(ObservationIdT&& value) { m_observationIdHasBeenSet = true; m_observationId = std::forward<ObservationIdT>(value); }
+    template<typename ObservationIdT = Aws::String>
+    DescribeObservationRequest& WithObservationId(ObservationIdT&& value) { SetObservationId(std::forward<ObservationIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ID of the observation.</p>
+     * <p>The Amazon Web Services account ID for the resource group owner.</p>
      */
-    inline void SetObservationId(const Aws::String& value) { m_observationIdHasBeenSet = true; m_observationId = value; }
-
-    /**
-     * <p>The ID of the observation.</p>
-     */
-    inline void SetObservationId(Aws::String&& value) { m_observationIdHasBeenSet = true; m_observationId = std::move(value); }
-
-    /**
-     * <p>The ID of the observation.</p>
-     */
-    inline void SetObservationId(const char* value) { m_observationIdHasBeenSet = true; m_observationId.assign(value); }
-
-    /**
-     * <p>The ID of the observation.</p>
-     */
-    inline DescribeObservationRequest& WithObservationId(const Aws::String& value) { SetObservationId(value); return *this;}
-
-    /**
-     * <p>The ID of the observation.</p>
-     */
-    inline DescribeObservationRequest& WithObservationId(Aws::String&& value) { SetObservationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the observation.</p>
-     */
-    inline DescribeObservationRequest& WithObservationId(const char* value) { SetObservationId(value); return *this;}
-
-
-    /**
-     * <p>The AWS account ID for the resource group owner.</p>
-     */
-    inline const Aws::String& GetAccountId() const{ return m_accountId; }
-
-    /**
-     * <p>The AWS account ID for the resource group owner.</p>
-     */
+    inline const Aws::String& GetAccountId() const { return m_accountId; }
     inline bool AccountIdHasBeenSet() const { return m_accountIdHasBeenSet; }
-
-    /**
-     * <p>The AWS account ID for the resource group owner.</p>
-     */
-    inline void SetAccountId(const Aws::String& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
-
-    /**
-     * <p>The AWS account ID for the resource group owner.</p>
-     */
-    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = std::move(value); }
-
-    /**
-     * <p>The AWS account ID for the resource group owner.</p>
-     */
-    inline void SetAccountId(const char* value) { m_accountIdHasBeenSet = true; m_accountId.assign(value); }
-
-    /**
-     * <p>The AWS account ID for the resource group owner.</p>
-     */
-    inline DescribeObservationRequest& WithAccountId(const Aws::String& value) { SetAccountId(value); return *this;}
-
-    /**
-     * <p>The AWS account ID for the resource group owner.</p>
-     */
-    inline DescribeObservationRequest& WithAccountId(Aws::String&& value) { SetAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The AWS account ID for the resource group owner.</p>
-     */
-    inline DescribeObservationRequest& WithAccountId(const char* value) { SetAccountId(value); return *this;}
-
+    template<typename AccountIdT = Aws::String>
+    void SetAccountId(AccountIdT&& value) { m_accountIdHasBeenSet = true; m_accountId = std::forward<AccountIdT>(value); }
+    template<typename AccountIdT = Aws::String>
+    DescribeObservationRequest& WithAccountId(AccountIdT&& value) { SetAccountId(std::forward<AccountIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_observationId;

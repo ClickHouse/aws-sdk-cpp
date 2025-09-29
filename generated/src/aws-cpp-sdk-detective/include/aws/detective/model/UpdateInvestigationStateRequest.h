@@ -22,7 +22,7 @@ namespace Model
   class UpdateInvestigationStateRequest : public DetectiveRequest
   {
   public:
-    AWS_DETECTIVE_API UpdateInvestigationStateRequest();
+    AWS_DETECTIVE_API UpdateInvestigationStateRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,124 +33,40 @@ namespace Model
     AWS_DETECTIVE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
-     * <p>The ARN of the behavior graph.</p>
+     * <p>The Amazon Resource Name (ARN) of the behavior graph.</p>
      */
-    inline const Aws::String& GetGraphArn() const{ return m_graphArn; }
-
-    /**
-     * <p>The ARN of the behavior graph.</p>
-     */
+    inline const Aws::String& GetGraphArn() const { return m_graphArn; }
     inline bool GraphArnHasBeenSet() const { return m_graphArnHasBeenSet; }
+    template<typename GraphArnT = Aws::String>
+    void SetGraphArn(GraphArnT&& value) { m_graphArnHasBeenSet = true; m_graphArn = std::forward<GraphArnT>(value); }
+    template<typename GraphArnT = Aws::String>
+    UpdateInvestigationStateRequest& WithGraphArn(GraphArnT&& value) { SetGraphArn(std::forward<GraphArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the behavior graph.</p>
-     */
-    inline void SetGraphArn(const Aws::String& value) { m_graphArnHasBeenSet = true; m_graphArn = value; }
-
-    /**
-     * <p>The ARN of the behavior graph.</p>
-     */
-    inline void SetGraphArn(Aws::String&& value) { m_graphArnHasBeenSet = true; m_graphArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the behavior graph.</p>
-     */
-    inline void SetGraphArn(const char* value) { m_graphArnHasBeenSet = true; m_graphArn.assign(value); }
-
-    /**
-     * <p>The ARN of the behavior graph.</p>
-     */
-    inline UpdateInvestigationStateRequest& WithGraphArn(const Aws::String& value) { SetGraphArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the behavior graph.</p>
-     */
-    inline UpdateInvestigationStateRequest& WithGraphArn(Aws::String&& value) { SetGraphArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the behavior graph.</p>
-     */
-    inline UpdateInvestigationStateRequest& WithGraphArn(const char* value) { SetGraphArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The investigation ID of the investigation report.</p>
      */
-    inline const Aws::String& GetInvestigationId() const{ return m_investigationId; }
-
-    /**
-     * <p>The investigation ID of the investigation report.</p>
-     */
+    inline const Aws::String& GetInvestigationId() const { return m_investigationId; }
     inline bool InvestigationIdHasBeenSet() const { return m_investigationIdHasBeenSet; }
+    template<typename InvestigationIdT = Aws::String>
+    void SetInvestigationId(InvestigationIdT&& value) { m_investigationIdHasBeenSet = true; m_investigationId = std::forward<InvestigationIdT>(value); }
+    template<typename InvestigationIdT = Aws::String>
+    UpdateInvestigationStateRequest& WithInvestigationId(InvestigationIdT&& value) { SetInvestigationId(std::forward<InvestigationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The investigation ID of the investigation report.</p>
-     */
-    inline void SetInvestigationId(const Aws::String& value) { m_investigationIdHasBeenSet = true; m_investigationId = value; }
-
-    /**
-     * <p>The investigation ID of the investigation report.</p>
-     */
-    inline void SetInvestigationId(Aws::String&& value) { m_investigationIdHasBeenSet = true; m_investigationId = std::move(value); }
-
-    /**
-     * <p>The investigation ID of the investigation report.</p>
-     */
-    inline void SetInvestigationId(const char* value) { m_investigationIdHasBeenSet = true; m_investigationId.assign(value); }
-
-    /**
-     * <p>The investigation ID of the investigation report.</p>
-     */
-    inline UpdateInvestigationStateRequest& WithInvestigationId(const Aws::String& value) { SetInvestigationId(value); return *this;}
-
-    /**
-     * <p>The investigation ID of the investigation report.</p>
-     */
-    inline UpdateInvestigationStateRequest& WithInvestigationId(Aws::String&& value) { SetInvestigationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The investigation ID of the investigation report.</p>
-     */
-    inline UpdateInvestigationStateRequest& WithInvestigationId(const char* value) { SetInvestigationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The current state of the investigation. An archived investigation indicates
      * you have completed reviewing the investigation.</p>
      */
-    inline const State& GetState() const{ return m_state; }
-
-    /**
-     * <p>The current state of the investigation. An archived investigation indicates
-     * you have completed reviewing the investigation.</p>
-     */
+    inline State GetState() const { return m_state; }
     inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
-
-    /**
-     * <p>The current state of the investigation. An archived investigation indicates
-     * you have completed reviewing the investigation.</p>
-     */
-    inline void SetState(const State& value) { m_stateHasBeenSet = true; m_state = value; }
-
-    /**
-     * <p>The current state of the investigation. An archived investigation indicates
-     * you have completed reviewing the investigation.</p>
-     */
-    inline void SetState(State&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
-
-    /**
-     * <p>The current state of the investigation. An archived investigation indicates
-     * you have completed reviewing the investigation.</p>
-     */
-    inline UpdateInvestigationStateRequest& WithState(const State& value) { SetState(value); return *this;}
-
-    /**
-     * <p>The current state of the investigation. An archived investigation indicates
-     * you have completed reviewing the investigation.</p>
-     */
-    inline UpdateInvestigationStateRequest& WithState(State&& value) { SetState(std::move(value)); return *this;}
-
+    inline void SetState(State value) { m_stateHasBeenSet = true; m_state = value; }
+    inline UpdateInvestigationStateRequest& WithState(State value) { SetState(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_graphArn;
@@ -159,7 +75,7 @@ namespace Model
     Aws::String m_investigationId;
     bool m_investigationIdHasBeenSet = false;
 
-    State m_state;
+    State m_state{State::NOT_SET};
     bool m_stateHasBeenSet = false;
   };
 

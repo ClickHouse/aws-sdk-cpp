@@ -18,15 +18,7 @@ namespace Rekognition
 namespace Model
 {
 
-UnsearchedFace::UnsearchedFace() : 
-    m_faceDetailsHasBeenSet(false),
-    m_reasonsHasBeenSet(false)
-{
-}
-
-UnsearchedFace::UnsearchedFace(JsonView jsonValue) : 
-    m_faceDetailsHasBeenSet(false),
-    m_reasonsHasBeenSet(false)
+UnsearchedFace::UnsearchedFace(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ UnsearchedFace& UnsearchedFace::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("FaceDetails"))
   {
     m_faceDetails = jsonValue.GetObject("FaceDetails");
-
     m_faceDetailsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Reasons"))
   {
     Aws::Utils::Array<JsonView> reasonsJsonList = jsonValue.GetArray("Reasons");
@@ -49,7 +39,6 @@ UnsearchedFace& UnsearchedFace::operator =(JsonView jsonValue)
     }
     m_reasonsHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-ResponseError::ResponseError() : 
-    m_code(LaunchTemplateErrorCode::NOT_SET),
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-ResponseError::ResponseError(const XmlNode& xmlNode) : 
-    m_code(LaunchTemplateErrorCode::NOT_SET),
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
+ResponseError::ResponseError(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -44,7 +34,7 @@ ResponseError& ResponseError::operator =(const XmlNode& xmlNode)
     XmlNode codeNode = resultNode.FirstChild("code");
     if(!codeNode.IsNull())
     {
-      m_code = LaunchTemplateErrorCodeMapper::GetLaunchTemplateErrorCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(codeNode.GetText()).c_str()).c_str());
+      m_code = LaunchTemplateErrorCodeMapper::GetLaunchTemplateErrorCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(codeNode.GetText()).c_str()));
       m_codeHasBeenSet = true;
     }
     XmlNode messageNode = resultNode.FirstChild("message");
@@ -62,7 +52,7 @@ void ResponseError::OutputToStream(Aws::OStream& oStream, const char* location, 
 {
   if(m_codeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Code=" << LaunchTemplateErrorCodeMapper::GetNameForLaunchTemplateErrorCode(m_code) << "&";
+      oStream << location << index << locationValue << ".Code=" << StringUtils::URLEncode(LaunchTemplateErrorCodeMapper::GetNameForLaunchTemplateErrorCode(m_code)) << "&";
   }
 
   if(m_messageHasBeenSet)
@@ -76,7 +66,7 @@ void ResponseError::OutputToStream(Aws::OStream& oStream, const char* location) 
 {
   if(m_codeHasBeenSet)
   {
-      oStream << location << ".Code=" << LaunchTemplateErrorCodeMapper::GetNameForLaunchTemplateErrorCode(m_code) << "&";
+      oStream << location << ".Code=" << StringUtils::URLEncode(LaunchTemplateErrorCodeMapper::GetNameForLaunchTemplateErrorCode(m_code)) << "&";
   }
   if(m_messageHasBeenSet)
   {

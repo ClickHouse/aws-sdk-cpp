@@ -18,33 +18,7 @@ namespace mediapackagev2
 namespace Model
 {
 
-OriginEndpointListConfiguration::OriginEndpointListConfiguration() : 
-    m_arnHasBeenSet(false),
-    m_channelGroupNameHasBeenSet(false),
-    m_channelNameHasBeenSet(false),
-    m_originEndpointNameHasBeenSet(false),
-    m_containerType(ContainerType::NOT_SET),
-    m_containerTypeHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_createdAtHasBeenSet(false),
-    m_modifiedAtHasBeenSet(false),
-    m_hlsManifestsHasBeenSet(false),
-    m_lowLatencyHlsManifestsHasBeenSet(false)
-{
-}
-
-OriginEndpointListConfiguration::OriginEndpointListConfiguration(JsonView jsonValue) : 
-    m_arnHasBeenSet(false),
-    m_channelGroupNameHasBeenSet(false),
-    m_channelNameHasBeenSet(false),
-    m_originEndpointNameHasBeenSet(false),
-    m_containerType(ContainerType::NOT_SET),
-    m_containerTypeHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_createdAtHasBeenSet(false),
-    m_modifiedAtHasBeenSet(false),
-    m_hlsManifestsHasBeenSet(false),
-    m_lowLatencyHlsManifestsHasBeenSet(false)
+OriginEndpointListConfiguration::OriginEndpointListConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -54,59 +28,43 @@ OriginEndpointListConfiguration& OriginEndpointListConfiguration::operator =(Jso
   if(jsonValue.ValueExists("Arn"))
   {
     m_arn = jsonValue.GetString("Arn");
-
     m_arnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ChannelGroupName"))
   {
     m_channelGroupName = jsonValue.GetString("ChannelGroupName");
-
     m_channelGroupNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ChannelName"))
   {
     m_channelName = jsonValue.GetString("ChannelName");
-
     m_channelNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("OriginEndpointName"))
   {
     m_originEndpointName = jsonValue.GetString("OriginEndpointName");
-
     m_originEndpointNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ContainerType"))
   {
     m_containerType = ContainerTypeMapper::GetContainerTypeForName(jsonValue.GetString("ContainerType"));
-
     m_containerTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Description"))
   {
     m_description = jsonValue.GetString("Description");
-
     m_descriptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CreatedAt"))
   {
     m_createdAt = jsonValue.GetDouble("CreatedAt");
-
     m_createdAtHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ModifiedAt"))
   {
     m_modifiedAt = jsonValue.GetDouble("ModifiedAt");
-
     m_modifiedAtHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("HlsManifests"))
   {
     Aws::Utils::Array<JsonView> hlsManifestsJsonList = jsonValue.GetArray("HlsManifests");
@@ -116,7 +74,6 @@ OriginEndpointListConfiguration& OriginEndpointListConfiguration::operator =(Jso
     }
     m_hlsManifestsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LowLatencyHlsManifests"))
   {
     Aws::Utils::Array<JsonView> lowLatencyHlsManifestsJsonList = jsonValue.GetArray("LowLatencyHlsManifests");
@@ -126,7 +83,29 @@ OriginEndpointListConfiguration& OriginEndpointListConfiguration::operator =(Jso
     }
     m_lowLatencyHlsManifestsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("DashManifests"))
+  {
+    Aws::Utils::Array<JsonView> dashManifestsJsonList = jsonValue.GetArray("DashManifests");
+    for(unsigned dashManifestsIndex = 0; dashManifestsIndex < dashManifestsJsonList.GetLength(); ++dashManifestsIndex)
+    {
+      m_dashManifests.push_back(dashManifestsJsonList[dashManifestsIndex].AsObject());
+    }
+    m_dashManifestsHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("MssManifests"))
+  {
+    Aws::Utils::Array<JsonView> mssManifestsJsonList = jsonValue.GetArray("MssManifests");
+    for(unsigned mssManifestsIndex = 0; mssManifestsIndex < mssManifestsJsonList.GetLength(); ++mssManifestsIndex)
+    {
+      m_mssManifests.push_back(mssManifestsJsonList[mssManifestsIndex].AsObject());
+    }
+    m_mssManifestsHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("ForceEndpointErrorConfiguration"))
+  {
+    m_forceEndpointErrorConfiguration = jsonValue.GetObject("ForceEndpointErrorConfiguration");
+    m_forceEndpointErrorConfigurationHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -198,6 +177,34 @@ JsonValue OriginEndpointListConfiguration::Jsonize() const
      lowLatencyHlsManifestsJsonList[lowLatencyHlsManifestsIndex].AsObject(m_lowLatencyHlsManifests[lowLatencyHlsManifestsIndex].Jsonize());
    }
    payload.WithArray("LowLatencyHlsManifests", std::move(lowLatencyHlsManifestsJsonList));
+
+  }
+
+  if(m_dashManifestsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> dashManifestsJsonList(m_dashManifests.size());
+   for(unsigned dashManifestsIndex = 0; dashManifestsIndex < dashManifestsJsonList.GetLength(); ++dashManifestsIndex)
+   {
+     dashManifestsJsonList[dashManifestsIndex].AsObject(m_dashManifests[dashManifestsIndex].Jsonize());
+   }
+   payload.WithArray("DashManifests", std::move(dashManifestsJsonList));
+
+  }
+
+  if(m_mssManifestsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> mssManifestsJsonList(m_mssManifests.size());
+   for(unsigned mssManifestsIndex = 0; mssManifestsIndex < mssManifestsJsonList.GetLength(); ++mssManifestsIndex)
+   {
+     mssManifestsJsonList[mssManifestsIndex].AsObject(m_mssManifests[mssManifestsIndex].Jsonize());
+   }
+   payload.WithArray("MssManifests", std::move(mssManifestsJsonList));
+
+  }
+
+  if(m_forceEndpointErrorConfigurationHasBeenSet)
+  {
+   payload.WithObject("ForceEndpointErrorConfiguration", m_forceEndpointErrorConfiguration.Jsonize());
 
   }
 

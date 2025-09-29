@@ -34,127 +34,65 @@ namespace Model
   class DefaultContinuousHyperParameterRange
   {
   public:
-    AWS_PERSONALIZE_API DefaultContinuousHyperParameterRange();
+    AWS_PERSONALIZE_API DefaultContinuousHyperParameterRange() = default;
     AWS_PERSONALIZE_API DefaultContinuousHyperParameterRange(Aws::Utils::Json::JsonView jsonValue);
     AWS_PERSONALIZE_API DefaultContinuousHyperParameterRange& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PERSONALIZE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the hyperparameter.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the hyperparameter.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    DefaultContinuousHyperParameterRange& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the hyperparameter.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the hyperparameter.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the hyperparameter.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the hyperparameter.</p>
-     */
-    inline DefaultContinuousHyperParameterRange& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the hyperparameter.</p>
-     */
-    inline DefaultContinuousHyperParameterRange& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the hyperparameter.</p>
-     */
-    inline DefaultContinuousHyperParameterRange& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The minimum allowable value for the hyperparameter.</p>
      */
-    inline double GetMinValue() const{ return m_minValue; }
-
-    /**
-     * <p>The minimum allowable value for the hyperparameter.</p>
-     */
+    inline double GetMinValue() const { return m_minValue; }
     inline bool MinValueHasBeenSet() const { return m_minValueHasBeenSet; }
-
-    /**
-     * <p>The minimum allowable value for the hyperparameter.</p>
-     */
     inline void SetMinValue(double value) { m_minValueHasBeenSet = true; m_minValue = value; }
-
-    /**
-     * <p>The minimum allowable value for the hyperparameter.</p>
-     */
     inline DefaultContinuousHyperParameterRange& WithMinValue(double value) { SetMinValue(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The maximum allowable value for the hyperparameter.</p>
      */
-    inline double GetMaxValue() const{ return m_maxValue; }
-
-    /**
-     * <p>The maximum allowable value for the hyperparameter.</p>
-     */
+    inline double GetMaxValue() const { return m_maxValue; }
     inline bool MaxValueHasBeenSet() const { return m_maxValueHasBeenSet; }
-
-    /**
-     * <p>The maximum allowable value for the hyperparameter.</p>
-     */
     inline void SetMaxValue(double value) { m_maxValueHasBeenSet = true; m_maxValue = value; }
-
-    /**
-     * <p>The maximum allowable value for the hyperparameter.</p>
-     */
     inline DefaultContinuousHyperParameterRange& WithMaxValue(double value) { SetMaxValue(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Whether the hyperparameter is tunable.</p>
      */
-    inline bool GetIsTunable() const{ return m_isTunable; }
-
-    /**
-     * <p>Whether the hyperparameter is tunable.</p>
-     */
+    inline bool GetIsTunable() const { return m_isTunable; }
     inline bool IsTunableHasBeenSet() const { return m_isTunableHasBeenSet; }
-
-    /**
-     * <p>Whether the hyperparameter is tunable.</p>
-     */
     inline void SetIsTunable(bool value) { m_isTunableHasBeenSet = true; m_isTunable = value; }
-
-    /**
-     * <p>Whether the hyperparameter is tunable.</p>
-     */
     inline DefaultContinuousHyperParameterRange& WithIsTunable(bool value) { SetIsTunable(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_name;
     bool m_nameHasBeenSet = false;
 
-    double m_minValue;
+    double m_minValue{0.0};
     bool m_minValueHasBeenSet = false;
 
-    double m_maxValue;
+    double m_maxValue{0.0};
     bool m_maxValueHasBeenSet = false;
 
-    bool m_isTunable;
+    bool m_isTunable{false};
     bool m_isTunableHasBeenSet = false;
   };
 

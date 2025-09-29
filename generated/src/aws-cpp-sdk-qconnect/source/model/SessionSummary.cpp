@@ -18,53 +18,33 @@ namespace QConnect
 namespace Model
 {
 
-SessionSummary::SessionSummary() : 
-    m_assistantArnHasBeenSet(false),
-    m_assistantIdHasBeenSet(false),
-    m_sessionArnHasBeenSet(false),
-    m_sessionIdHasBeenSet(false)
-{
-}
-
-SessionSummary::SessionSummary(JsonView jsonValue) : 
-    m_assistantArnHasBeenSet(false),
-    m_assistantIdHasBeenSet(false),
-    m_sessionArnHasBeenSet(false),
-    m_sessionIdHasBeenSet(false)
+SessionSummary::SessionSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 SessionSummary& SessionSummary::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("assistantArn"))
-  {
-    m_assistantArn = jsonValue.GetString("assistantArn");
-
-    m_assistantArnHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("assistantId"))
-  {
-    m_assistantId = jsonValue.GetString("assistantId");
-
-    m_assistantIdHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("sessionArn"))
-  {
-    m_sessionArn = jsonValue.GetString("sessionArn");
-
-    m_sessionArnHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("sessionId"))
   {
     m_sessionId = jsonValue.GetString("sessionId");
-
     m_sessionIdHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("sessionArn"))
+  {
+    m_sessionArn = jsonValue.GetString("sessionArn");
+    m_sessionArnHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("assistantId"))
+  {
+    m_assistantId = jsonValue.GetString("assistantId");
+    m_assistantIdHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("assistantArn"))
+  {
+    m_assistantArn = jsonValue.GetString("assistantArn");
+    m_assistantArnHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -72,15 +52,9 @@ JsonValue SessionSummary::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_assistantArnHasBeenSet)
+  if(m_sessionIdHasBeenSet)
   {
-   payload.WithString("assistantArn", m_assistantArn);
-
-  }
-
-  if(m_assistantIdHasBeenSet)
-  {
-   payload.WithString("assistantId", m_assistantId);
+   payload.WithString("sessionId", m_sessionId);
 
   }
 
@@ -90,9 +64,15 @@ JsonValue SessionSummary::Jsonize() const
 
   }
 
-  if(m_sessionIdHasBeenSet)
+  if(m_assistantIdHasBeenSet)
   {
-   payload.WithString("sessionId", m_sessionId);
+   payload.WithString("assistantId", m_assistantId);
+
+  }
+
+  if(m_assistantArnHasBeenSet)
+  {
+   payload.WithString("assistantArn", m_assistantArn);
 
   }
 

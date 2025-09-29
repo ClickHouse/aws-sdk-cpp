@@ -35,7 +35,7 @@ namespace Model
   class InstanceRefreshProgressDetails
   {
   public:
-    AWS_AUTOSCALING_API InstanceRefreshProgressDetails();
+    AWS_AUTOSCALING_API InstanceRefreshProgressDetails() = default;
     AWS_AUTOSCALING_API InstanceRefreshProgressDetails(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_AUTOSCALING_API InstanceRefreshProgressDetails& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -43,73 +43,30 @@ namespace Model
     AWS_AUTOSCALING_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>Reports progress on replacing instances that are in the Auto Scaling
      * group.</p>
      */
-    inline const InstanceRefreshLivePoolProgress& GetLivePoolProgress() const{ return m_livePoolProgress; }
-
-    /**
-     * <p>Reports progress on replacing instances that are in the Auto Scaling
-     * group.</p>
-     */
+    inline const InstanceRefreshLivePoolProgress& GetLivePoolProgress() const { return m_livePoolProgress; }
     inline bool LivePoolProgressHasBeenSet() const { return m_livePoolProgressHasBeenSet; }
+    template<typename LivePoolProgressT = InstanceRefreshLivePoolProgress>
+    void SetLivePoolProgress(LivePoolProgressT&& value) { m_livePoolProgressHasBeenSet = true; m_livePoolProgress = std::forward<LivePoolProgressT>(value); }
+    template<typename LivePoolProgressT = InstanceRefreshLivePoolProgress>
+    InstanceRefreshProgressDetails& WithLivePoolProgress(LivePoolProgressT&& value) { SetLivePoolProgress(std::forward<LivePoolProgressT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Reports progress on replacing instances that are in the Auto Scaling
-     * group.</p>
-     */
-    inline void SetLivePoolProgress(const InstanceRefreshLivePoolProgress& value) { m_livePoolProgressHasBeenSet = true; m_livePoolProgress = value; }
-
-    /**
-     * <p>Reports progress on replacing instances that are in the Auto Scaling
-     * group.</p>
-     */
-    inline void SetLivePoolProgress(InstanceRefreshLivePoolProgress&& value) { m_livePoolProgressHasBeenSet = true; m_livePoolProgress = std::move(value); }
-
-    /**
-     * <p>Reports progress on replacing instances that are in the Auto Scaling
-     * group.</p>
-     */
-    inline InstanceRefreshProgressDetails& WithLivePoolProgress(const InstanceRefreshLivePoolProgress& value) { SetLivePoolProgress(value); return *this;}
-
-    /**
-     * <p>Reports progress on replacing instances that are in the Auto Scaling
-     * group.</p>
-     */
-    inline InstanceRefreshProgressDetails& WithLivePoolProgress(InstanceRefreshLivePoolProgress&& value) { SetLivePoolProgress(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Reports progress on replacing instances that are in the warm pool.</p>
      */
-    inline const InstanceRefreshWarmPoolProgress& GetWarmPoolProgress() const{ return m_warmPoolProgress; }
-
-    /**
-     * <p>Reports progress on replacing instances that are in the warm pool.</p>
-     */
+    inline const InstanceRefreshWarmPoolProgress& GetWarmPoolProgress() const { return m_warmPoolProgress; }
     inline bool WarmPoolProgressHasBeenSet() const { return m_warmPoolProgressHasBeenSet; }
-
-    /**
-     * <p>Reports progress on replacing instances that are in the warm pool.</p>
-     */
-    inline void SetWarmPoolProgress(const InstanceRefreshWarmPoolProgress& value) { m_warmPoolProgressHasBeenSet = true; m_warmPoolProgress = value; }
-
-    /**
-     * <p>Reports progress on replacing instances that are in the warm pool.</p>
-     */
-    inline void SetWarmPoolProgress(InstanceRefreshWarmPoolProgress&& value) { m_warmPoolProgressHasBeenSet = true; m_warmPoolProgress = std::move(value); }
-
-    /**
-     * <p>Reports progress on replacing instances that are in the warm pool.</p>
-     */
-    inline InstanceRefreshProgressDetails& WithWarmPoolProgress(const InstanceRefreshWarmPoolProgress& value) { SetWarmPoolProgress(value); return *this;}
-
-    /**
-     * <p>Reports progress on replacing instances that are in the warm pool.</p>
-     */
-    inline InstanceRefreshProgressDetails& WithWarmPoolProgress(InstanceRefreshWarmPoolProgress&& value) { SetWarmPoolProgress(std::move(value)); return *this;}
-
+    template<typename WarmPoolProgressT = InstanceRefreshWarmPoolProgress>
+    void SetWarmPoolProgress(WarmPoolProgressT&& value) { m_warmPoolProgressHasBeenSet = true; m_warmPoolProgress = std::forward<WarmPoolProgressT>(value); }
+    template<typename WarmPoolProgressT = InstanceRefreshWarmPoolProgress>
+    InstanceRefreshProgressDetails& WithWarmPoolProgress(WarmPoolProgressT&& value) { SetWarmPoolProgress(std::forward<WarmPoolProgressT>(value)); return *this;}
+    ///@}
   private:
 
     InstanceRefreshLivePoolProgress m_livePoolProgress;

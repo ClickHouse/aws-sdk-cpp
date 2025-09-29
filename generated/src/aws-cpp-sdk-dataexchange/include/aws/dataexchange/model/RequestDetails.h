@@ -39,296 +39,120 @@ namespace Model
   class RequestDetails
   {
   public:
-    AWS_DATAEXCHANGE_API RequestDetails();
+    AWS_DATAEXCHANGE_API RequestDetails() = default;
     AWS_DATAEXCHANGE_API RequestDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAEXCHANGE_API RequestDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAEXCHANGE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Details about the export to signed URL request.</p>
      */
-    inline const ExportAssetToSignedUrlRequestDetails& GetExportAssetToSignedUrl() const{ return m_exportAssetToSignedUrl; }
-
-    /**
-     * <p>Details about the export to signed URL request.</p>
-     */
+    inline const ExportAssetToSignedUrlRequestDetails& GetExportAssetToSignedUrl() const { return m_exportAssetToSignedUrl; }
     inline bool ExportAssetToSignedUrlHasBeenSet() const { return m_exportAssetToSignedUrlHasBeenSet; }
+    template<typename ExportAssetToSignedUrlT = ExportAssetToSignedUrlRequestDetails>
+    void SetExportAssetToSignedUrl(ExportAssetToSignedUrlT&& value) { m_exportAssetToSignedUrlHasBeenSet = true; m_exportAssetToSignedUrl = std::forward<ExportAssetToSignedUrlT>(value); }
+    template<typename ExportAssetToSignedUrlT = ExportAssetToSignedUrlRequestDetails>
+    RequestDetails& WithExportAssetToSignedUrl(ExportAssetToSignedUrlT&& value) { SetExportAssetToSignedUrl(std::forward<ExportAssetToSignedUrlT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Details about the export to signed URL request.</p>
-     */
-    inline void SetExportAssetToSignedUrl(const ExportAssetToSignedUrlRequestDetails& value) { m_exportAssetToSignedUrlHasBeenSet = true; m_exportAssetToSignedUrl = value; }
-
-    /**
-     * <p>Details about the export to signed URL request.</p>
-     */
-    inline void SetExportAssetToSignedUrl(ExportAssetToSignedUrlRequestDetails&& value) { m_exportAssetToSignedUrlHasBeenSet = true; m_exportAssetToSignedUrl = std::move(value); }
-
-    /**
-     * <p>Details about the export to signed URL request.</p>
-     */
-    inline RequestDetails& WithExportAssetToSignedUrl(const ExportAssetToSignedUrlRequestDetails& value) { SetExportAssetToSignedUrl(value); return *this;}
-
-    /**
-     * <p>Details about the export to signed URL request.</p>
-     */
-    inline RequestDetails& WithExportAssetToSignedUrl(ExportAssetToSignedUrlRequestDetails&& value) { SetExportAssetToSignedUrl(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Details about the export to Amazon S3 request.</p>
      */
-    inline const ExportAssetsToS3RequestDetails& GetExportAssetsToS3() const{ return m_exportAssetsToS3; }
-
-    /**
-     * <p>Details about the export to Amazon S3 request.</p>
-     */
+    inline const ExportAssetsToS3RequestDetails& GetExportAssetsToS3() const { return m_exportAssetsToS3; }
     inline bool ExportAssetsToS3HasBeenSet() const { return m_exportAssetsToS3HasBeenSet; }
+    template<typename ExportAssetsToS3T = ExportAssetsToS3RequestDetails>
+    void SetExportAssetsToS3(ExportAssetsToS3T&& value) { m_exportAssetsToS3HasBeenSet = true; m_exportAssetsToS3 = std::forward<ExportAssetsToS3T>(value); }
+    template<typename ExportAssetsToS3T = ExportAssetsToS3RequestDetails>
+    RequestDetails& WithExportAssetsToS3(ExportAssetsToS3T&& value) { SetExportAssetsToS3(std::forward<ExportAssetsToS3T>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
      * <p>Details about the export to Amazon S3 request.</p>
      */
-    inline void SetExportAssetsToS3(const ExportAssetsToS3RequestDetails& value) { m_exportAssetsToS3HasBeenSet = true; m_exportAssetsToS3 = value; }
-
-    /**
-     * <p>Details about the export to Amazon S3 request.</p>
-     */
-    inline void SetExportAssetsToS3(ExportAssetsToS3RequestDetails&& value) { m_exportAssetsToS3HasBeenSet = true; m_exportAssetsToS3 = std::move(value); }
-
-    /**
-     * <p>Details about the export to Amazon S3 request.</p>
-     */
-    inline RequestDetails& WithExportAssetsToS3(const ExportAssetsToS3RequestDetails& value) { SetExportAssetsToS3(value); return *this;}
-
-    /**
-     * <p>Details about the export to Amazon S3 request.</p>
-     */
-    inline RequestDetails& WithExportAssetsToS3(ExportAssetsToS3RequestDetails&& value) { SetExportAssetsToS3(std::move(value)); return *this;}
-
-
-    /**
-     * <p>Details about the export to Amazon S3 request.</p>
-     */
-    inline const ExportRevisionsToS3RequestDetails& GetExportRevisionsToS3() const{ return m_exportRevisionsToS3; }
-
-    /**
-     * <p>Details about the export to Amazon S3 request.</p>
-     */
+    inline const ExportRevisionsToS3RequestDetails& GetExportRevisionsToS3() const { return m_exportRevisionsToS3; }
     inline bool ExportRevisionsToS3HasBeenSet() const { return m_exportRevisionsToS3HasBeenSet; }
+    template<typename ExportRevisionsToS3T = ExportRevisionsToS3RequestDetails>
+    void SetExportRevisionsToS3(ExportRevisionsToS3T&& value) { m_exportRevisionsToS3HasBeenSet = true; m_exportRevisionsToS3 = std::forward<ExportRevisionsToS3T>(value); }
+    template<typename ExportRevisionsToS3T = ExportRevisionsToS3RequestDetails>
+    RequestDetails& WithExportRevisionsToS3(ExportRevisionsToS3T&& value) { SetExportRevisionsToS3(std::forward<ExportRevisionsToS3T>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Details about the export to Amazon S3 request.</p>
-     */
-    inline void SetExportRevisionsToS3(const ExportRevisionsToS3RequestDetails& value) { m_exportRevisionsToS3HasBeenSet = true; m_exportRevisionsToS3 = value; }
-
-    /**
-     * <p>Details about the export to Amazon S3 request.</p>
-     */
-    inline void SetExportRevisionsToS3(ExportRevisionsToS3RequestDetails&& value) { m_exportRevisionsToS3HasBeenSet = true; m_exportRevisionsToS3 = std::move(value); }
-
-    /**
-     * <p>Details about the export to Amazon S3 request.</p>
-     */
-    inline RequestDetails& WithExportRevisionsToS3(const ExportRevisionsToS3RequestDetails& value) { SetExportRevisionsToS3(value); return *this;}
-
-    /**
-     * <p>Details about the export to Amazon S3 request.</p>
-     */
-    inline RequestDetails& WithExportRevisionsToS3(ExportRevisionsToS3RequestDetails&& value) { SetExportRevisionsToS3(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Details about the import from Amazon S3 request.</p>
      */
-    inline const ImportAssetFromSignedUrlRequestDetails& GetImportAssetFromSignedUrl() const{ return m_importAssetFromSignedUrl; }
-
-    /**
-     * <p>Details about the import from Amazon S3 request.</p>
-     */
+    inline const ImportAssetFromSignedUrlRequestDetails& GetImportAssetFromSignedUrl() const { return m_importAssetFromSignedUrl; }
     inline bool ImportAssetFromSignedUrlHasBeenSet() const { return m_importAssetFromSignedUrlHasBeenSet; }
+    template<typename ImportAssetFromSignedUrlT = ImportAssetFromSignedUrlRequestDetails>
+    void SetImportAssetFromSignedUrl(ImportAssetFromSignedUrlT&& value) { m_importAssetFromSignedUrlHasBeenSet = true; m_importAssetFromSignedUrl = std::forward<ImportAssetFromSignedUrlT>(value); }
+    template<typename ImportAssetFromSignedUrlT = ImportAssetFromSignedUrlRequestDetails>
+    RequestDetails& WithImportAssetFromSignedUrl(ImportAssetFromSignedUrlT&& value) { SetImportAssetFromSignedUrl(std::forward<ImportAssetFromSignedUrlT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Details about the import from Amazon S3 request.</p>
-     */
-    inline void SetImportAssetFromSignedUrl(const ImportAssetFromSignedUrlRequestDetails& value) { m_importAssetFromSignedUrlHasBeenSet = true; m_importAssetFromSignedUrl = value; }
-
-    /**
-     * <p>Details about the import from Amazon S3 request.</p>
-     */
-    inline void SetImportAssetFromSignedUrl(ImportAssetFromSignedUrlRequestDetails&& value) { m_importAssetFromSignedUrlHasBeenSet = true; m_importAssetFromSignedUrl = std::move(value); }
-
-    /**
-     * <p>Details about the import from Amazon S3 request.</p>
-     */
-    inline RequestDetails& WithImportAssetFromSignedUrl(const ImportAssetFromSignedUrlRequestDetails& value) { SetImportAssetFromSignedUrl(value); return *this;}
-
-    /**
-     * <p>Details about the import from Amazon S3 request.</p>
-     */
-    inline RequestDetails& WithImportAssetFromSignedUrl(ImportAssetFromSignedUrlRequestDetails&& value) { SetImportAssetFromSignedUrl(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Details about the import asset from API Gateway API request.</p>
      */
-    inline const ImportAssetsFromS3RequestDetails& GetImportAssetsFromS3() const{ return m_importAssetsFromS3; }
-
-    /**
-     * <p>Details about the import asset from API Gateway API request.</p>
-     */
+    inline const ImportAssetsFromS3RequestDetails& GetImportAssetsFromS3() const { return m_importAssetsFromS3; }
     inline bool ImportAssetsFromS3HasBeenSet() const { return m_importAssetsFromS3HasBeenSet; }
+    template<typename ImportAssetsFromS3T = ImportAssetsFromS3RequestDetails>
+    void SetImportAssetsFromS3(ImportAssetsFromS3T&& value) { m_importAssetsFromS3HasBeenSet = true; m_importAssetsFromS3 = std::forward<ImportAssetsFromS3T>(value); }
+    template<typename ImportAssetsFromS3T = ImportAssetsFromS3RequestDetails>
+    RequestDetails& WithImportAssetsFromS3(ImportAssetsFromS3T&& value) { SetImportAssetsFromS3(std::forward<ImportAssetsFromS3T>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Details about the import asset from API Gateway API request.</p>
-     */
-    inline void SetImportAssetsFromS3(const ImportAssetsFromS3RequestDetails& value) { m_importAssetsFromS3HasBeenSet = true; m_importAssetsFromS3 = value; }
-
-    /**
-     * <p>Details about the import asset from API Gateway API request.</p>
-     */
-    inline void SetImportAssetsFromS3(ImportAssetsFromS3RequestDetails&& value) { m_importAssetsFromS3HasBeenSet = true; m_importAssetsFromS3 = std::move(value); }
-
-    /**
-     * <p>Details about the import asset from API Gateway API request.</p>
-     */
-    inline RequestDetails& WithImportAssetsFromS3(const ImportAssetsFromS3RequestDetails& value) { SetImportAssetsFromS3(value); return *this;}
-
-    /**
-     * <p>Details about the import asset from API Gateway API request.</p>
-     */
-    inline RequestDetails& WithImportAssetsFromS3(ImportAssetsFromS3RequestDetails&& value) { SetImportAssetsFromS3(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Details from an import from Amazon Redshift datashare request.</p>
      */
-    inline const ImportAssetsFromRedshiftDataSharesRequestDetails& GetImportAssetsFromRedshiftDataShares() const{ return m_importAssetsFromRedshiftDataShares; }
-
-    /**
-     * <p>Details from an import from Amazon Redshift datashare request.</p>
-     */
+    inline const ImportAssetsFromRedshiftDataSharesRequestDetails& GetImportAssetsFromRedshiftDataShares() const { return m_importAssetsFromRedshiftDataShares; }
     inline bool ImportAssetsFromRedshiftDataSharesHasBeenSet() const { return m_importAssetsFromRedshiftDataSharesHasBeenSet; }
+    template<typename ImportAssetsFromRedshiftDataSharesT = ImportAssetsFromRedshiftDataSharesRequestDetails>
+    void SetImportAssetsFromRedshiftDataShares(ImportAssetsFromRedshiftDataSharesT&& value) { m_importAssetsFromRedshiftDataSharesHasBeenSet = true; m_importAssetsFromRedshiftDataShares = std::forward<ImportAssetsFromRedshiftDataSharesT>(value); }
+    template<typename ImportAssetsFromRedshiftDataSharesT = ImportAssetsFromRedshiftDataSharesRequestDetails>
+    RequestDetails& WithImportAssetsFromRedshiftDataShares(ImportAssetsFromRedshiftDataSharesT&& value) { SetImportAssetsFromRedshiftDataShares(std::forward<ImportAssetsFromRedshiftDataSharesT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Details from an import from Amazon Redshift datashare request.</p>
-     */
-    inline void SetImportAssetsFromRedshiftDataShares(const ImportAssetsFromRedshiftDataSharesRequestDetails& value) { m_importAssetsFromRedshiftDataSharesHasBeenSet = true; m_importAssetsFromRedshiftDataShares = value; }
-
-    /**
-     * <p>Details from an import from Amazon Redshift datashare request.</p>
-     */
-    inline void SetImportAssetsFromRedshiftDataShares(ImportAssetsFromRedshiftDataSharesRequestDetails&& value) { m_importAssetsFromRedshiftDataSharesHasBeenSet = true; m_importAssetsFromRedshiftDataShares = std::move(value); }
-
-    /**
-     * <p>Details from an import from Amazon Redshift datashare request.</p>
-     */
-    inline RequestDetails& WithImportAssetsFromRedshiftDataShares(const ImportAssetsFromRedshiftDataSharesRequestDetails& value) { SetImportAssetsFromRedshiftDataShares(value); return *this;}
-
-    /**
-     * <p>Details from an import from Amazon Redshift datashare request.</p>
-     */
-    inline RequestDetails& WithImportAssetsFromRedshiftDataShares(ImportAssetsFromRedshiftDataSharesRequestDetails&& value) { SetImportAssetsFromRedshiftDataShares(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Details about the import from signed URL request.</p>
      */
-    inline const ImportAssetFromApiGatewayApiRequestDetails& GetImportAssetFromApiGatewayApi() const{ return m_importAssetFromApiGatewayApi; }
-
-    /**
-     * <p>Details about the import from signed URL request.</p>
-     */
+    inline const ImportAssetFromApiGatewayApiRequestDetails& GetImportAssetFromApiGatewayApi() const { return m_importAssetFromApiGatewayApi; }
     inline bool ImportAssetFromApiGatewayApiHasBeenSet() const { return m_importAssetFromApiGatewayApiHasBeenSet; }
+    template<typename ImportAssetFromApiGatewayApiT = ImportAssetFromApiGatewayApiRequestDetails>
+    void SetImportAssetFromApiGatewayApi(ImportAssetFromApiGatewayApiT&& value) { m_importAssetFromApiGatewayApiHasBeenSet = true; m_importAssetFromApiGatewayApi = std::forward<ImportAssetFromApiGatewayApiT>(value); }
+    template<typename ImportAssetFromApiGatewayApiT = ImportAssetFromApiGatewayApiRequestDetails>
+    RequestDetails& WithImportAssetFromApiGatewayApi(ImportAssetFromApiGatewayApiT&& value) { SetImportAssetFromApiGatewayApi(std::forward<ImportAssetFromApiGatewayApiT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Details about the import from signed URL request.</p>
-     */
-    inline void SetImportAssetFromApiGatewayApi(const ImportAssetFromApiGatewayApiRequestDetails& value) { m_importAssetFromApiGatewayApiHasBeenSet = true; m_importAssetFromApiGatewayApi = value; }
-
-    /**
-     * <p>Details about the import from signed URL request.</p>
-     */
-    inline void SetImportAssetFromApiGatewayApi(ImportAssetFromApiGatewayApiRequestDetails&& value) { m_importAssetFromApiGatewayApiHasBeenSet = true; m_importAssetFromApiGatewayApi = std::move(value); }
-
-    /**
-     * <p>Details about the import from signed URL request.</p>
-     */
-    inline RequestDetails& WithImportAssetFromApiGatewayApi(const ImportAssetFromApiGatewayApiRequestDetails& value) { SetImportAssetFromApiGatewayApi(value); return *this;}
-
-    /**
-     * <p>Details about the import from signed URL request.</p>
-     */
-    inline RequestDetails& WithImportAssetFromApiGatewayApi(ImportAssetFromApiGatewayApiRequestDetails&& value) { SetImportAssetFromApiGatewayApi(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Details of the request to create S3 data access from the Amazon S3
      * bucket.</p>
      */
-    inline const CreateS3DataAccessFromS3BucketRequestDetails& GetCreateS3DataAccessFromS3Bucket() const{ return m_createS3DataAccessFromS3Bucket; }
-
-    /**
-     * <p>Details of the request to create S3 data access from the Amazon S3
-     * bucket.</p>
-     */
+    inline const CreateS3DataAccessFromS3BucketRequestDetails& GetCreateS3DataAccessFromS3Bucket() const { return m_createS3DataAccessFromS3Bucket; }
     inline bool CreateS3DataAccessFromS3BucketHasBeenSet() const { return m_createS3DataAccessFromS3BucketHasBeenSet; }
+    template<typename CreateS3DataAccessFromS3BucketT = CreateS3DataAccessFromS3BucketRequestDetails>
+    void SetCreateS3DataAccessFromS3Bucket(CreateS3DataAccessFromS3BucketT&& value) { m_createS3DataAccessFromS3BucketHasBeenSet = true; m_createS3DataAccessFromS3Bucket = std::forward<CreateS3DataAccessFromS3BucketT>(value); }
+    template<typename CreateS3DataAccessFromS3BucketT = CreateS3DataAccessFromS3BucketRequestDetails>
+    RequestDetails& WithCreateS3DataAccessFromS3Bucket(CreateS3DataAccessFromS3BucketT&& value) { SetCreateS3DataAccessFromS3Bucket(std::forward<CreateS3DataAccessFromS3BucketT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Details of the request to create S3 data access from the Amazon S3
-     * bucket.</p>
-     */
-    inline void SetCreateS3DataAccessFromS3Bucket(const CreateS3DataAccessFromS3BucketRequestDetails& value) { m_createS3DataAccessFromS3BucketHasBeenSet = true; m_createS3DataAccessFromS3Bucket = value; }
-
-    /**
-     * <p>Details of the request to create S3 data access from the Amazon S3
-     * bucket.</p>
-     */
-    inline void SetCreateS3DataAccessFromS3Bucket(CreateS3DataAccessFromS3BucketRequestDetails&& value) { m_createS3DataAccessFromS3BucketHasBeenSet = true; m_createS3DataAccessFromS3Bucket = std::move(value); }
-
-    /**
-     * <p>Details of the request to create S3 data access from the Amazon S3
-     * bucket.</p>
-     */
-    inline RequestDetails& WithCreateS3DataAccessFromS3Bucket(const CreateS3DataAccessFromS3BucketRequestDetails& value) { SetCreateS3DataAccessFromS3Bucket(value); return *this;}
-
-    /**
-     * <p>Details of the request to create S3 data access from the Amazon S3
-     * bucket.</p>
-     */
-    inline RequestDetails& WithCreateS3DataAccessFromS3Bucket(CreateS3DataAccessFromS3BucketRequestDetails&& value) { SetCreateS3DataAccessFromS3Bucket(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Request details for the ImportAssetsFromLakeFormationTagPolicy job.</p>
      */
-    inline const ImportAssetsFromLakeFormationTagPolicyRequestDetails& GetImportAssetsFromLakeFormationTagPolicy() const{ return m_importAssetsFromLakeFormationTagPolicy; }
-
-    /**
-     * <p>Request details for the ImportAssetsFromLakeFormationTagPolicy job.</p>
-     */
+    inline const ImportAssetsFromLakeFormationTagPolicyRequestDetails& GetImportAssetsFromLakeFormationTagPolicy() const { return m_importAssetsFromLakeFormationTagPolicy; }
     inline bool ImportAssetsFromLakeFormationTagPolicyHasBeenSet() const { return m_importAssetsFromLakeFormationTagPolicyHasBeenSet; }
-
-    /**
-     * <p>Request details for the ImportAssetsFromLakeFormationTagPolicy job.</p>
-     */
-    inline void SetImportAssetsFromLakeFormationTagPolicy(const ImportAssetsFromLakeFormationTagPolicyRequestDetails& value) { m_importAssetsFromLakeFormationTagPolicyHasBeenSet = true; m_importAssetsFromLakeFormationTagPolicy = value; }
-
-    /**
-     * <p>Request details for the ImportAssetsFromLakeFormationTagPolicy job.</p>
-     */
-    inline void SetImportAssetsFromLakeFormationTagPolicy(ImportAssetsFromLakeFormationTagPolicyRequestDetails&& value) { m_importAssetsFromLakeFormationTagPolicyHasBeenSet = true; m_importAssetsFromLakeFormationTagPolicy = std::move(value); }
-
-    /**
-     * <p>Request details for the ImportAssetsFromLakeFormationTagPolicy job.</p>
-     */
-    inline RequestDetails& WithImportAssetsFromLakeFormationTagPolicy(const ImportAssetsFromLakeFormationTagPolicyRequestDetails& value) { SetImportAssetsFromLakeFormationTagPolicy(value); return *this;}
-
-    /**
-     * <p>Request details for the ImportAssetsFromLakeFormationTagPolicy job.</p>
-     */
-    inline RequestDetails& WithImportAssetsFromLakeFormationTagPolicy(ImportAssetsFromLakeFormationTagPolicyRequestDetails&& value) { SetImportAssetsFromLakeFormationTagPolicy(std::move(value)); return *this;}
-
+    template<typename ImportAssetsFromLakeFormationTagPolicyT = ImportAssetsFromLakeFormationTagPolicyRequestDetails>
+    void SetImportAssetsFromLakeFormationTagPolicy(ImportAssetsFromLakeFormationTagPolicyT&& value) { m_importAssetsFromLakeFormationTagPolicyHasBeenSet = true; m_importAssetsFromLakeFormationTagPolicy = std::forward<ImportAssetsFromLakeFormationTagPolicyT>(value); }
+    template<typename ImportAssetsFromLakeFormationTagPolicyT = ImportAssetsFromLakeFormationTagPolicyRequestDetails>
+    RequestDetails& WithImportAssetsFromLakeFormationTagPolicy(ImportAssetsFromLakeFormationTagPolicyT&& value) { SetImportAssetsFromLakeFormationTagPolicy(std::forward<ImportAssetsFromLakeFormationTagPolicyT>(value)); return *this;}
+    ///@}
   private:
 
     ExportAssetToSignedUrlRequestDetails m_exportAssetToSignedUrl;

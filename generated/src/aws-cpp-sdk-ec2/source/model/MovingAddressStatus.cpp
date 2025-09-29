@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-MovingAddressStatus::MovingAddressStatus() : 
-    m_moveStatus(MoveStatus::NOT_SET),
-    m_moveStatusHasBeenSet(false),
-    m_publicIpHasBeenSet(false)
-{
-}
-
-MovingAddressStatus::MovingAddressStatus(const XmlNode& xmlNode) : 
-    m_moveStatus(MoveStatus::NOT_SET),
-    m_moveStatusHasBeenSet(false),
-    m_publicIpHasBeenSet(false)
+MovingAddressStatus::MovingAddressStatus(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -44,7 +34,7 @@ MovingAddressStatus& MovingAddressStatus::operator =(const XmlNode& xmlNode)
     XmlNode moveStatusNode = resultNode.FirstChild("moveStatus");
     if(!moveStatusNode.IsNull())
     {
-      m_moveStatus = MoveStatusMapper::GetMoveStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(moveStatusNode.GetText()).c_str()).c_str());
+      m_moveStatus = MoveStatusMapper::GetMoveStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(moveStatusNode.GetText()).c_str()));
       m_moveStatusHasBeenSet = true;
     }
     XmlNode publicIpNode = resultNode.FirstChild("publicIp");
@@ -62,7 +52,7 @@ void MovingAddressStatus::OutputToStream(Aws::OStream& oStream, const char* loca
 {
   if(m_moveStatusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".MoveStatus=" << MoveStatusMapper::GetNameForMoveStatus(m_moveStatus) << "&";
+      oStream << location << index << locationValue << ".MoveStatus=" << StringUtils::URLEncode(MoveStatusMapper::GetNameForMoveStatus(m_moveStatus)) << "&";
   }
 
   if(m_publicIpHasBeenSet)
@@ -76,7 +66,7 @@ void MovingAddressStatus::OutputToStream(Aws::OStream& oStream, const char* loca
 {
   if(m_moveStatusHasBeenSet)
   {
-      oStream << location << ".MoveStatus=" << MoveStatusMapper::GetNameForMoveStatus(m_moveStatus) << "&";
+      oStream << location << ".MoveStatus=" << StringUtils::URLEncode(MoveStatusMapper::GetNameForMoveStatus(m_moveStatus)) << "&";
   }
   if(m_publicIpHasBeenSet)
   {

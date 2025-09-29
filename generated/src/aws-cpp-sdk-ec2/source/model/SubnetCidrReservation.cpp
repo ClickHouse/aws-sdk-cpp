@@ -20,27 +20,7 @@ namespace EC2
 namespace Model
 {
 
-SubnetCidrReservation::SubnetCidrReservation() : 
-    m_subnetCidrReservationIdHasBeenSet(false),
-    m_subnetIdHasBeenSet(false),
-    m_cidrHasBeenSet(false),
-    m_reservationType(SubnetCidrReservationType::NOT_SET),
-    m_reservationTypeHasBeenSet(false),
-    m_ownerIdHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-SubnetCidrReservation::SubnetCidrReservation(const XmlNode& xmlNode) : 
-    m_subnetCidrReservationIdHasBeenSet(false),
-    m_subnetIdHasBeenSet(false),
-    m_cidrHasBeenSet(false),
-    m_reservationType(SubnetCidrReservationType::NOT_SET),
-    m_reservationTypeHasBeenSet(false),
-    m_ownerIdHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+SubnetCidrReservation::SubnetCidrReservation(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -72,7 +52,7 @@ SubnetCidrReservation& SubnetCidrReservation::operator =(const XmlNode& xmlNode)
     XmlNode reservationTypeNode = resultNode.FirstChild("reservationType");
     if(!reservationTypeNode.IsNull())
     {
-      m_reservationType = SubnetCidrReservationTypeMapper::GetSubnetCidrReservationTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(reservationTypeNode.GetText()).c_str()).c_str());
+      m_reservationType = SubnetCidrReservationTypeMapper::GetSubnetCidrReservationTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(reservationTypeNode.GetText()).c_str()));
       m_reservationTypeHasBeenSet = true;
     }
     XmlNode ownerIdNode = resultNode.FirstChild("ownerId");
@@ -91,6 +71,7 @@ SubnetCidrReservation& SubnetCidrReservation::operator =(const XmlNode& xmlNode)
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -123,7 +104,7 @@ void SubnetCidrReservation::OutputToStream(Aws::OStream& oStream, const char* lo
 
   if(m_reservationTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ReservationType=" << SubnetCidrReservationTypeMapper::GetNameForSubnetCidrReservationType(m_reservationType) << "&";
+      oStream << location << index << locationValue << ".ReservationType=" << StringUtils::URLEncode(SubnetCidrReservationTypeMapper::GetNameForSubnetCidrReservationType(m_reservationType)) << "&";
   }
 
   if(m_ownerIdHasBeenSet)
@@ -165,7 +146,7 @@ void SubnetCidrReservation::OutputToStream(Aws::OStream& oStream, const char* lo
   }
   if(m_reservationTypeHasBeenSet)
   {
-      oStream << location << ".ReservationType=" << SubnetCidrReservationTypeMapper::GetNameForSubnetCidrReservationType(m_reservationType) << "&";
+      oStream << location << ".ReservationType=" << StringUtils::URLEncode(SubnetCidrReservationTypeMapper::GetNameForSubnetCidrReservationType(m_reservationType)) << "&";
   }
   if(m_ownerIdHasBeenSet)
   {
@@ -181,7 +162,7 @@ void SubnetCidrReservation::OutputToStream(Aws::OStream& oStream, const char* lo
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }

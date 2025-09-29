@@ -18,13 +18,7 @@ namespace DataZone
 namespace Model
 {
 
-ListingItem::ListingItem() : 
-    m_assetListingHasBeenSet(false)
-{
-}
-
-ListingItem::ListingItem(JsonView jsonValue) : 
-    m_assetListingHasBeenSet(false)
+ListingItem::ListingItem(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,13 @@ ListingItem& ListingItem::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("assetListing"))
   {
     m_assetListing = jsonValue.GetObject("assetListing");
-
     m_assetListingHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("dataProductListing"))
+  {
+    m_dataProductListing = jsonValue.GetObject("dataProductListing");
+    m_dataProductListingHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -48,6 +45,12 @@ JsonValue ListingItem::Jsonize() const
   if(m_assetListingHasBeenSet)
   {
    payload.WithObject("assetListing", m_assetListing.Jsonize());
+
+  }
+
+  if(m_dataProductListingHasBeenSet)
+  {
+   payload.WithObject("dataProductListing", m_dataProductListing.Jsonize());
 
   }
 

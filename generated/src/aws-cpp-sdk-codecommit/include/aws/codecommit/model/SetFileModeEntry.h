@@ -32,89 +32,39 @@ namespace Model
   class SetFileModeEntry
   {
   public:
-    AWS_CODECOMMIT_API SetFileModeEntry();
+    AWS_CODECOMMIT_API SetFileModeEntry() = default;
     AWS_CODECOMMIT_API SetFileModeEntry(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODECOMMIT_API SetFileModeEntry& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODECOMMIT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The full path to the file, including the name of the file.</p>
      */
-    inline const Aws::String& GetFilePath() const{ return m_filePath; }
-
-    /**
-     * <p>The full path to the file, including the name of the file.</p>
-     */
+    inline const Aws::String& GetFilePath() const { return m_filePath; }
     inline bool FilePathHasBeenSet() const { return m_filePathHasBeenSet; }
+    template<typename FilePathT = Aws::String>
+    void SetFilePath(FilePathT&& value) { m_filePathHasBeenSet = true; m_filePath = std::forward<FilePathT>(value); }
+    template<typename FilePathT = Aws::String>
+    SetFileModeEntry& WithFilePath(FilePathT&& value) { SetFilePath(std::forward<FilePathT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The full path to the file, including the name of the file.</p>
-     */
-    inline void SetFilePath(const Aws::String& value) { m_filePathHasBeenSet = true; m_filePath = value; }
-
-    /**
-     * <p>The full path to the file, including the name of the file.</p>
-     */
-    inline void SetFilePath(Aws::String&& value) { m_filePathHasBeenSet = true; m_filePath = std::move(value); }
-
-    /**
-     * <p>The full path to the file, including the name of the file.</p>
-     */
-    inline void SetFilePath(const char* value) { m_filePathHasBeenSet = true; m_filePath.assign(value); }
-
-    /**
-     * <p>The full path to the file, including the name of the file.</p>
-     */
-    inline SetFileModeEntry& WithFilePath(const Aws::String& value) { SetFilePath(value); return *this;}
-
-    /**
-     * <p>The full path to the file, including the name of the file.</p>
-     */
-    inline SetFileModeEntry& WithFilePath(Aws::String&& value) { SetFilePath(std::move(value)); return *this;}
-
-    /**
-     * <p>The full path to the file, including the name of the file.</p>
-     */
-    inline SetFileModeEntry& WithFilePath(const char* value) { SetFilePath(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The file mode for the file.</p>
      */
-    inline const FileModeTypeEnum& GetFileMode() const{ return m_fileMode; }
-
-    /**
-     * <p>The file mode for the file.</p>
-     */
+    inline FileModeTypeEnum GetFileMode() const { return m_fileMode; }
     inline bool FileModeHasBeenSet() const { return m_fileModeHasBeenSet; }
-
-    /**
-     * <p>The file mode for the file.</p>
-     */
-    inline void SetFileMode(const FileModeTypeEnum& value) { m_fileModeHasBeenSet = true; m_fileMode = value; }
-
-    /**
-     * <p>The file mode for the file.</p>
-     */
-    inline void SetFileMode(FileModeTypeEnum&& value) { m_fileModeHasBeenSet = true; m_fileMode = std::move(value); }
-
-    /**
-     * <p>The file mode for the file.</p>
-     */
-    inline SetFileModeEntry& WithFileMode(const FileModeTypeEnum& value) { SetFileMode(value); return *this;}
-
-    /**
-     * <p>The file mode for the file.</p>
-     */
-    inline SetFileModeEntry& WithFileMode(FileModeTypeEnum&& value) { SetFileMode(std::move(value)); return *this;}
-
+    inline void SetFileMode(FileModeTypeEnum value) { m_fileModeHasBeenSet = true; m_fileMode = value; }
+    inline SetFileModeEntry& WithFileMode(FileModeTypeEnum value) { SetFileMode(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_filePath;
     bool m_filePathHasBeenSet = false;
 
-    FileModeTypeEnum m_fileMode;
+    FileModeTypeEnum m_fileMode{FileModeTypeEnum::NOT_SET};
     bool m_fileModeHasBeenSet = false;
   };
 

@@ -25,7 +25,7 @@ namespace Model
   class ListAssessmentControlInsightsByControlDomainRequest : public AuditManagerRequest
   {
   public:
-    AWS_AUDITMANAGER_API ListAssessmentControlInsightsByControlDomainRequest();
+    AWS_AUDITMANAGER_API ListAssessmentControlInsightsByControlDomainRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,153 +38,57 @@ namespace Model
     AWS_AUDITMANAGER_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
-     * <p>The unique identifier for the control domain. </p>
+     * <p>The unique identifier for the control domain. </p> <p>Audit Manager supports
+     * the control domains that are provided by Amazon Web Services Control Catalog.
+     * For information about how to find a list of available control domains, see <a
+     * href="https://docs.aws.amazon.com/controlcatalog/latest/APIReference/API_ListDomains.html">
+     * <code>ListDomains</code> </a> in the Amazon Web Services Control Catalog API
+     * Reference.</p>
      */
-    inline const Aws::String& GetControlDomainId() const{ return m_controlDomainId; }
-
-    /**
-     * <p>The unique identifier for the control domain. </p>
-     */
+    inline const Aws::String& GetControlDomainId() const { return m_controlDomainId; }
     inline bool ControlDomainIdHasBeenSet() const { return m_controlDomainIdHasBeenSet; }
+    template<typename ControlDomainIdT = Aws::String>
+    void SetControlDomainId(ControlDomainIdT&& value) { m_controlDomainIdHasBeenSet = true; m_controlDomainId = std::forward<ControlDomainIdT>(value); }
+    template<typename ControlDomainIdT = Aws::String>
+    ListAssessmentControlInsightsByControlDomainRequest& WithControlDomainId(ControlDomainIdT&& value) { SetControlDomainId(std::forward<ControlDomainIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier for the control domain. </p>
-     */
-    inline void SetControlDomainId(const Aws::String& value) { m_controlDomainIdHasBeenSet = true; m_controlDomainId = value; }
-
-    /**
-     * <p>The unique identifier for the control domain. </p>
-     */
-    inline void SetControlDomainId(Aws::String&& value) { m_controlDomainIdHasBeenSet = true; m_controlDomainId = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the control domain. </p>
-     */
-    inline void SetControlDomainId(const char* value) { m_controlDomainIdHasBeenSet = true; m_controlDomainId.assign(value); }
-
-    /**
-     * <p>The unique identifier for the control domain. </p>
-     */
-    inline ListAssessmentControlInsightsByControlDomainRequest& WithControlDomainId(const Aws::String& value) { SetControlDomainId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the control domain. </p>
-     */
-    inline ListAssessmentControlInsightsByControlDomainRequest& WithControlDomainId(Aws::String&& value) { SetControlDomainId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the control domain. </p>
-     */
-    inline ListAssessmentControlInsightsByControlDomainRequest& WithControlDomainId(const char* value) { SetControlDomainId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique identifier for the active assessment. </p>
      */
-    inline const Aws::String& GetAssessmentId() const{ return m_assessmentId; }
-
-    /**
-     * <p>The unique identifier for the active assessment. </p>
-     */
+    inline const Aws::String& GetAssessmentId() const { return m_assessmentId; }
     inline bool AssessmentIdHasBeenSet() const { return m_assessmentIdHasBeenSet; }
+    template<typename AssessmentIdT = Aws::String>
+    void SetAssessmentId(AssessmentIdT&& value) { m_assessmentIdHasBeenSet = true; m_assessmentId = std::forward<AssessmentIdT>(value); }
+    template<typename AssessmentIdT = Aws::String>
+    ListAssessmentControlInsightsByControlDomainRequest& WithAssessmentId(AssessmentIdT&& value) { SetAssessmentId(std::forward<AssessmentIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier for the active assessment. </p>
-     */
-    inline void SetAssessmentId(const Aws::String& value) { m_assessmentIdHasBeenSet = true; m_assessmentId = value; }
-
-    /**
-     * <p>The unique identifier for the active assessment. </p>
-     */
-    inline void SetAssessmentId(Aws::String&& value) { m_assessmentIdHasBeenSet = true; m_assessmentId = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the active assessment. </p>
-     */
-    inline void SetAssessmentId(const char* value) { m_assessmentIdHasBeenSet = true; m_assessmentId.assign(value); }
-
-    /**
-     * <p>The unique identifier for the active assessment. </p>
-     */
-    inline ListAssessmentControlInsightsByControlDomainRequest& WithAssessmentId(const Aws::String& value) { SetAssessmentId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the active assessment. </p>
-     */
-    inline ListAssessmentControlInsightsByControlDomainRequest& WithAssessmentId(Aws::String&& value) { SetAssessmentId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the active assessment. </p>
-     */
-    inline ListAssessmentControlInsightsByControlDomainRequest& WithAssessmentId(const char* value) { SetAssessmentId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The pagination token that's used to fetch the next set of results. </p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The pagination token that's used to fetch the next set of results. </p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListAssessmentControlInsightsByControlDomainRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The pagination token that's used to fetch the next set of results. </p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The pagination token that's used to fetch the next set of results. </p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The pagination token that's used to fetch the next set of results. </p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The pagination token that's used to fetch the next set of results. </p>
-     */
-    inline ListAssessmentControlInsightsByControlDomainRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The pagination token that's used to fetch the next set of results. </p>
-     */
-    inline ListAssessmentControlInsightsByControlDomainRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The pagination token that's used to fetch the next set of results. </p>
-     */
-    inline ListAssessmentControlInsightsByControlDomainRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Represents the maximum number of results on a page or for an API request
      * call. </p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>Represents the maximum number of results on a page or for an API request
-     * call. </p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>Represents the maximum number of results on a page or for an API request
-     * call. </p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>Represents the maximum number of results on a page or for an API request
-     * call. </p>
-     */
     inline ListAssessmentControlInsightsByControlDomainRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_controlDomainId;
@@ -196,7 +100,7 @@ namespace Model
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
   };
 

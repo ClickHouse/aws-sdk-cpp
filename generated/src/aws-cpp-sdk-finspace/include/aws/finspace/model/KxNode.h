@@ -7,6 +7,7 @@
 #include <aws/finspace/Finspace_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/DateTime.h>
+#include <aws/finspace/model/KxNodeStatus.h>
 #include <utility>
 
 namespace Aws
@@ -32,144 +33,62 @@ namespace Model
   class KxNode
   {
   public:
-    AWS_FINSPACE_API KxNode();
+    AWS_FINSPACE_API KxNode() = default;
     AWS_FINSPACE_API KxNode(Aws::Utils::Json::JsonView jsonValue);
     AWS_FINSPACE_API KxNode& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FINSPACE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A unique identifier for the node.</p>
      */
-    inline const Aws::String& GetNodeId() const{ return m_nodeId; }
-
-    /**
-     * <p>A unique identifier for the node.</p>
-     */
+    inline const Aws::String& GetNodeId() const { return m_nodeId; }
     inline bool NodeIdHasBeenSet() const { return m_nodeIdHasBeenSet; }
+    template<typename NodeIdT = Aws::String>
+    void SetNodeId(NodeIdT&& value) { m_nodeIdHasBeenSet = true; m_nodeId = std::forward<NodeIdT>(value); }
+    template<typename NodeIdT = Aws::String>
+    KxNode& WithNodeId(NodeIdT&& value) { SetNodeId(std::forward<NodeIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier for the node.</p>
-     */
-    inline void SetNodeId(const Aws::String& value) { m_nodeIdHasBeenSet = true; m_nodeId = value; }
-
-    /**
-     * <p>A unique identifier for the node.</p>
-     */
-    inline void SetNodeId(Aws::String&& value) { m_nodeIdHasBeenSet = true; m_nodeId = std::move(value); }
-
-    /**
-     * <p>A unique identifier for the node.</p>
-     */
-    inline void SetNodeId(const char* value) { m_nodeIdHasBeenSet = true; m_nodeId.assign(value); }
-
-    /**
-     * <p>A unique identifier for the node.</p>
-     */
-    inline KxNode& WithNodeId(const Aws::String& value) { SetNodeId(value); return *this;}
-
-    /**
-     * <p>A unique identifier for the node.</p>
-     */
-    inline KxNode& WithNodeId(Aws::String&& value) { SetNodeId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier for the node.</p>
-     */
-    inline KxNode& WithNodeId(const char* value) { SetNodeId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the availability zones where subnets for the environment
      * are created.</p>
      */
-    inline const Aws::String& GetAvailabilityZoneId() const{ return m_availabilityZoneId; }
-
-    /**
-     * <p>The identifier of the availability zones where subnets for the environment
-     * are created.</p>
-     */
+    inline const Aws::String& GetAvailabilityZoneId() const { return m_availabilityZoneId; }
     inline bool AvailabilityZoneIdHasBeenSet() const { return m_availabilityZoneIdHasBeenSet; }
+    template<typename AvailabilityZoneIdT = Aws::String>
+    void SetAvailabilityZoneId(AvailabilityZoneIdT&& value) { m_availabilityZoneIdHasBeenSet = true; m_availabilityZoneId = std::forward<AvailabilityZoneIdT>(value); }
+    template<typename AvailabilityZoneIdT = Aws::String>
+    KxNode& WithAvailabilityZoneId(AvailabilityZoneIdT&& value) { SetAvailabilityZoneId(std::forward<AvailabilityZoneIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the availability zones where subnets for the environment
-     * are created.</p>
-     */
-    inline void SetAvailabilityZoneId(const Aws::String& value) { m_availabilityZoneIdHasBeenSet = true; m_availabilityZoneId = value; }
-
-    /**
-     * <p>The identifier of the availability zones where subnets for the environment
-     * are created.</p>
-     */
-    inline void SetAvailabilityZoneId(Aws::String&& value) { m_availabilityZoneIdHasBeenSet = true; m_availabilityZoneId = std::move(value); }
-
-    /**
-     * <p>The identifier of the availability zones where subnets for the environment
-     * are created.</p>
-     */
-    inline void SetAvailabilityZoneId(const char* value) { m_availabilityZoneIdHasBeenSet = true; m_availabilityZoneId.assign(value); }
-
-    /**
-     * <p>The identifier of the availability zones where subnets for the environment
-     * are created.</p>
-     */
-    inline KxNode& WithAvailabilityZoneId(const Aws::String& value) { SetAvailabilityZoneId(value); return *this;}
-
-    /**
-     * <p>The identifier of the availability zones where subnets for the environment
-     * are created.</p>
-     */
-    inline KxNode& WithAvailabilityZoneId(Aws::String&& value) { SetAvailabilityZoneId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the availability zones where subnets for the environment
-     * are created.</p>
-     */
-    inline KxNode& WithAvailabilityZoneId(const char* value) { SetAvailabilityZoneId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The time when a particular node is started. The value is determined as epoch
      * time in milliseconds. For example, the value for Monday, November 1, 2021
      * 12:00:00 PM UTC is specified as 1635768000000.</p>
      */
-    inline const Aws::Utils::DateTime& GetLaunchTime() const{ return m_launchTime; }
-
-    /**
-     * <p>The time when a particular node is started. The value is determined as epoch
-     * time in milliseconds. For example, the value for Monday, November 1, 2021
-     * 12:00:00 PM UTC is specified as 1635768000000.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLaunchTime() const { return m_launchTime; }
     inline bool LaunchTimeHasBeenSet() const { return m_launchTimeHasBeenSet; }
+    template<typename LaunchTimeT = Aws::Utils::DateTime>
+    void SetLaunchTime(LaunchTimeT&& value) { m_launchTimeHasBeenSet = true; m_launchTime = std::forward<LaunchTimeT>(value); }
+    template<typename LaunchTimeT = Aws::Utils::DateTime>
+    KxNode& WithLaunchTime(LaunchTimeT&& value) { SetLaunchTime(std::forward<LaunchTimeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The time when a particular node is started. The value is determined as epoch
-     * time in milliseconds. For example, the value for Monday, November 1, 2021
-     * 12:00:00 PM UTC is specified as 1635768000000.</p>
+     * <p> Specifies the status of the cluster nodes. </p> <ul> <li> <p>
+     * <code>RUNNING</code> – The node is actively serving.</p> </li> <li> <p>
+     * <code>PROVISIONING</code> – The node is being prepared.</p> </li> </ul>
      */
-    inline void SetLaunchTime(const Aws::Utils::DateTime& value) { m_launchTimeHasBeenSet = true; m_launchTime = value; }
-
-    /**
-     * <p>The time when a particular node is started. The value is determined as epoch
-     * time in milliseconds. For example, the value for Monday, November 1, 2021
-     * 12:00:00 PM UTC is specified as 1635768000000.</p>
-     */
-    inline void SetLaunchTime(Aws::Utils::DateTime&& value) { m_launchTimeHasBeenSet = true; m_launchTime = std::move(value); }
-
-    /**
-     * <p>The time when a particular node is started. The value is determined as epoch
-     * time in milliseconds. For example, the value for Monday, November 1, 2021
-     * 12:00:00 PM UTC is specified as 1635768000000.</p>
-     */
-    inline KxNode& WithLaunchTime(const Aws::Utils::DateTime& value) { SetLaunchTime(value); return *this;}
-
-    /**
-     * <p>The time when a particular node is started. The value is determined as epoch
-     * time in milliseconds. For example, the value for Monday, November 1, 2021
-     * 12:00:00 PM UTC is specified as 1635768000000.</p>
-     */
-    inline KxNode& WithLaunchTime(Aws::Utils::DateTime&& value) { SetLaunchTime(std::move(value)); return *this;}
-
+    inline KxNodeStatus GetStatus() const { return m_status; }
+    inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(KxNodeStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline KxNode& WithStatus(KxNodeStatus value) { SetStatus(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_nodeId;
@@ -178,8 +97,11 @@ namespace Model
     Aws::String m_availabilityZoneId;
     bool m_availabilityZoneIdHasBeenSet = false;
 
-    Aws::Utils::DateTime m_launchTime;
+    Aws::Utils::DateTime m_launchTime{};
     bool m_launchTimeHasBeenSet = false;
+
+    KxNodeStatus m_status{KxNodeStatus::NOT_SET};
+    bool m_statusHasBeenSet = false;
   };
 
 } // namespace Model

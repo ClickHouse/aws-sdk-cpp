@@ -32,52 +32,25 @@ namespace Model
   class TestResult
   {
   public:
-    AWS_IOTDEVICEADVISOR_API TestResult();
+    AWS_IOTDEVICEADVISOR_API TestResult() = default;
     AWS_IOTDEVICEADVISOR_API TestResult(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTDEVICEADVISOR_API TestResult& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTDEVICEADVISOR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Show each group of test results.</p>
      */
-    inline const Aws::Vector<GroupResult>& GetGroups() const{ return m_groups; }
-
-    /**
-     * <p>Show each group of test results.</p>
-     */
+    inline const Aws::Vector<GroupResult>& GetGroups() const { return m_groups; }
     inline bool GroupsHasBeenSet() const { return m_groupsHasBeenSet; }
-
-    /**
-     * <p>Show each group of test results.</p>
-     */
-    inline void SetGroups(const Aws::Vector<GroupResult>& value) { m_groupsHasBeenSet = true; m_groups = value; }
-
-    /**
-     * <p>Show each group of test results.</p>
-     */
-    inline void SetGroups(Aws::Vector<GroupResult>&& value) { m_groupsHasBeenSet = true; m_groups = std::move(value); }
-
-    /**
-     * <p>Show each group of test results.</p>
-     */
-    inline TestResult& WithGroups(const Aws::Vector<GroupResult>& value) { SetGroups(value); return *this;}
-
-    /**
-     * <p>Show each group of test results.</p>
-     */
-    inline TestResult& WithGroups(Aws::Vector<GroupResult>&& value) { SetGroups(std::move(value)); return *this;}
-
-    /**
-     * <p>Show each group of test results.</p>
-     */
-    inline TestResult& AddGroups(const GroupResult& value) { m_groupsHasBeenSet = true; m_groups.push_back(value); return *this; }
-
-    /**
-     * <p>Show each group of test results.</p>
-     */
-    inline TestResult& AddGroups(GroupResult&& value) { m_groupsHasBeenSet = true; m_groups.push_back(std::move(value)); return *this; }
-
+    template<typename GroupsT = Aws::Vector<GroupResult>>
+    void SetGroups(GroupsT&& value) { m_groupsHasBeenSet = true; m_groups = std::forward<GroupsT>(value); }
+    template<typename GroupsT = Aws::Vector<GroupResult>>
+    TestResult& WithGroups(GroupsT&& value) { SetGroups(std::forward<GroupsT>(value)); return *this;}
+    template<typename GroupsT = GroupResult>
+    TestResult& AddGroups(GroupsT&& value) { m_groupsHasBeenSet = true; m_groups.emplace_back(std::forward<GroupsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<GroupResult> m_groups;

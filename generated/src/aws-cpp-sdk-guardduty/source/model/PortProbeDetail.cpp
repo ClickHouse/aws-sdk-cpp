@@ -18,17 +18,7 @@ namespace GuardDuty
 namespace Model
 {
 
-PortProbeDetail::PortProbeDetail() : 
-    m_localPortDetailsHasBeenSet(false),
-    m_localIpDetailsHasBeenSet(false),
-    m_remoteIpDetailsHasBeenSet(false)
-{
-}
-
-PortProbeDetail::PortProbeDetail(JsonView jsonValue) : 
-    m_localPortDetailsHasBeenSet(false),
-    m_localIpDetailsHasBeenSet(false),
-    m_remoteIpDetailsHasBeenSet(false)
+PortProbeDetail::PortProbeDetail(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ PortProbeDetail& PortProbeDetail::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("localPortDetails"))
   {
     m_localPortDetails = jsonValue.GetObject("localPortDetails");
-
     m_localPortDetailsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("localIpDetails"))
   {
     m_localIpDetails = jsonValue.GetObject("localIpDetails");
-
     m_localIpDetailsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("remoteIpDetails"))
   {
     m_remoteIpDetails = jsonValue.GetObject("remoteIpDetails");
-
     m_remoteIpDetailsHasBeenSet = true;
   }
-
   return *this;
 }
 

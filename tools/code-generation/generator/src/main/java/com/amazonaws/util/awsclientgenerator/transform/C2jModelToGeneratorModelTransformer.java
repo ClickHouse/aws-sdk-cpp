@@ -16,11 +16,19 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonParseException;
+import lombok.Data;
 import lombok.Value;
 import org.apache.commons.lang.WordUtils;
 
 import java.util.*;
 import java.util.stream.Collectors;
+
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.tuple.Pair;
+import software.amazon.smithy.jmespath.JmespathExpression;
 
 public class C2jModelToGeneratorModelTransformer {
 
@@ -104,6 +112,11 @@ public class C2jModelToGeneratorModelTransformer {
     }
 
     /**
+     * HTTP response status codes that should be retried if found in a modeled error.
+     */
+    private static Set<Integer> RESPONSE_CODES_TO_RETRY = ImmutableSet.of(500, 502, 503, 504);
+
+    /**
      * Type representing what a member should be remapped to and services that it
      * cannot be renamed to, to preserve backwards compat.
      */
@@ -115,7 +128,8 @@ public class C2jModelToGeneratorModelTransformer {
 
     private static final Map<String, MemberMapping> RESERVED_REQUEST_MEMBER_MAPPING = ImmutableMap.of(
         "body", new MemberMapping("requestBody", ImmutableSet.of("amplifyuibuilder", "apigateway", "apigateway2", "bedrock-runtime", "glacier", "repostspace")),
-        "headers", new MemberMapping("headerValues", ImmutableSet.of("apigateway"))
+        "headers", new MemberMapping("headerValues", ImmutableSet.of("apigateway")),
+        "Headers", new MemberMapping("headerValues", ImmutableSet.of())
     );
 
     /**
@@ -146,6 +160,13 @@ public class C2jModelToGeneratorModelTransformer {
         serviceModel.setVersion(c2jServiceModel.getVersion());
         serviceModel.setDocumentation(formatDocumentation(c2jServiceModel.getDocumentation(), 3));
         serviceModel.setServiceName(c2jServiceModel.getServiceName());
+        serviceModel.setAuthSchemes(c2jServiceModel.getMetadata().getAuth());
+        //if auth field is not present, check for SignatureVersion
+        if( (c2jServiceModel.getMetadata().getAuth() == null || c2jServiceModel.getMetadata().getAuth().isEmpty() )
+            && (c2jServiceModel.getMetadata().getSignatureVersion() != null))
+        {
+            serviceModel.setAuthSchemes(Arrays.asList(c2jServiceModel.getMetadata().getSignatureVersion()));
+        }
 
         convertShapes();
         convertOperations();
@@ -155,12 +176,22 @@ public class C2jModelToGeneratorModelTransformer {
 
         serviceModel.setShapes(shapes);
         serviceModel.setOperations(operations);
+        //for operations with context params, extract using jmespath expression and populate in endpoint params
         serviceModel.setServiceErrors(allErrors);
         serviceModel.getMetadata().setHasEndpointTrait(hasEndpointTrait);
         serviceModel.getMetadata().setHasEndpointDiscoveryTrait(hasEndpointDiscoveryTrait && !endpointOperationName.isEmpty());
         serviceModel.getMetadata().setRequireEndpointDiscovery(requireEndpointDiscovery);
         serviceModel.getMetadata().setEndpointOperationName(endpointOperationName);
-        serviceModel.getMetadata().setAwsQueryCompatible(c2jServiceModel.getMetadata().getAwsQueryCompatible() != null);
+
+        // add protocol check. only for json, query protocols
+        final String protocol = serviceModel.getMetadata().findFirstSupportedProtocol();
+
+        if ("json".equals(protocol)) {
+            serviceModel.getMetadata().setAwsQueryCompatible(
+                    c2jServiceModel.getMetadata().getAwsQueryCompatible() != null);
+        } else {
+            serviceModel.getMetadata().setAwsQueryCompatible(false);
+        }
 
         if (c2jServiceModel.getEndpointRules() != null) {
             ObjectMapper objectMapper = new ObjectMapper();
@@ -175,6 +206,8 @@ public class C2jModelToGeneratorModelTransformer {
             shortenedRules += "\0";
             serviceModel.setEndpointRules(shortenedRules);
         }
+        serviceModel.setRawEndpointRules(c2jServiceModel.getEndpointRules() );
+        serviceModel.setEndpointRuleSetModel(c2jServiceModel.getEndpointRuleSetModel());
         serviceModel.setEndpointTests(c2jServiceModel.getEndpointTests());
         serviceModel.setClientContextParams(c2jServiceModel.getClientContextParams());
 
@@ -235,6 +268,8 @@ public class C2jModelToGeneratorModelTransformer {
             metadata.setEndpointPrefix(c2jMetadata.getEndpointPrefix());
             metadata.setProtocol(c2jMetadata.getProtocol());
         }
+        metadata.setProtocols(c2jMetadata.getProtocols());
+        metadata.setAuth(c2jMetadata.getAuth());
         metadata.setNamespace(c2jMetadata.getServiceAbbreviation());
         metadata.setServiceFullName(c2jMetadata.getServiceFullName());
         metadata.setSignatureVersion(c2jMetadata.getSignatureVersion());
@@ -302,14 +337,46 @@ public class C2jModelToGeneratorModelTransformer {
                     // Header only event
                     shape.setEventPayloadType(null);
                 } else if (shape.hasEventPayloadMembers() || shape.getMembers().size() == 1) {
-                    if (shape.getMembers().size() == 1) {
-                        shape.getMembers().entrySet().stream().forEach(memberEntry -> {
+                    if (shape.getMembers().values().stream().filter(member -> !member.isEventHeader()).count() == 1) {
+                        final List<Map.Entry<String, ShapeMember>> memberEntries = shape.getMembers().entrySet().stream()
+                                .filter(member -> !member.getValue().isEventHeader())
+                                .collect(Collectors.toList());
+                        if (memberEntries.size() != 1) {
+                            throw new RuntimeException("Event shape should have exactly one payload member for event payload.");
+                        }
+                        /**
+                         * Note: this is complicated and potentially not completely correct.
+                         * So touch at your own risk until we have protocol tests supported.
+                         * In summary:
+                         * - we need to determine how to serialize events in eventstream
+                         * - to specify payload there is an eventpayload trait
+                         * - but what happens if that trait is not specified
+                         * - if there is one field and its a string or struct then we assume that field is event payload
+                         * - if there is one field and its a blob within structure and not explicitly marked as eventpayload then parent shape is eventpayload
+                         * - if that one field is of any other type then treat parent shape as eventpayload
+                         * - if there is more than one field then parent shape is the payload
+                         */
+                        final Map.Entry<String, ShapeMember> memberEntry = memberEntries.get(0);
+                        final Shape memberShape = memberEntry.getValue().getShape();
+                        if (memberShape.isString() ||
+                            memberShape.isBlob() && !shape.isStructure() ||
+                            memberShape.isBlob() && memberEntry.getValue().isEventPayload() ||
+                            memberShape.isStructure()) {
                             memberEntry.getValue().setEventPayload(true);
                             shape.setEventPayloadMemberName(memberEntry.getKey());
-                            shape.setEventPayloadType(memberEntry.getValue().getShape().getType());
-                        });
+                            shape.setEventPayloadType(memberShape.getType());
+                        } else {
+                            if (!shape.getType().equals("structure")) {
+                                throw new RuntimeException("Event shape should always has \"structure\" type if single member cannot be event payload.");
+                            }
+                            shape.setEventPayloadType(shape.getType());
+                        }
+                        shape.setEventStreamHeaders(shape.getMembers().entrySet().stream()
+                                .filter(headerEntry -> headerEntry.getValue().isEventHeader())
+                                .map(headerEntry -> Pair.of(headerEntry.getKey(), headerEntry.getValue().getShape()))
+                                .collect(Collectors.toMap(Pair::getKey, Pair::getValue)));
                     } else {
-                        throw new RuntimeException("Event shape used in Event Stream should only has one member if it has event payload member.");
+                        throw new RuntimeException("Event shape used in Event Stream should only has one non header member if it has event payload member.");
                     }
                 } else if (shape.getMembers().size() > 1) {
                     if (!shape.getType().equals("structure")) {
@@ -537,7 +604,6 @@ public class C2jModelToGeneratorModelTransformer {
         if (operation.isRequireEndpointDiscovery()) {
             requireEndpointDiscovery = true;
         }
-
         // Documentation
         String crossLinkedShapeDocs =
                 addDocCrossLinks(c2jOperation.getDocumentation(), c2jServiceModel.getMetadata().getUid(), c2jOperation.getName());
@@ -567,10 +633,8 @@ public class C2jModelToGeneratorModelTransformer {
         } else {
             operation.setSignerName("Aws::Auth::NULL_SIGNER");
         }
-
-
+        //set operation context params
         operation.setStaticContextParams(c2jOperation.getStaticContextParams());
-
         // input
         if (c2jOperation.getInput() != null) {
             Shape requestShape = renameShape(shapes.get(c2jOperation.getInput().getShape()), c2jOperation.getName(), SHAPE_SDK_REQUEST_SUFFIX);
@@ -618,12 +682,26 @@ public class C2jModelToGeneratorModelTransformer {
                     }
                 }
             }
+            Map<String, Map<String, String>> operationContextParams = c2jOperation.getOperationContextParams();
+            if (operationContextParams != null )
+            {
+                Map<String, List<String>> operationContextParamMap = new HashMap<>();
+                //find first element in nested map with key "path"
+                operationContextParams.entrySet().stream().filter(entry -> entry.getValue().containsKey("path"))
+                .forEach(entry -> {
+                    Optional<Map.Entry<String, String>> firstEntry = entry.getValue().entrySet().stream().filter(innerMap -> "path".equals(innerMap.getKey())).findFirst();
+                    if (firstEntry.isPresent()) {
+                        OperationContextCppCodeGenerator ctxt = new OperationContextCppCodeGenerator();
+                        JmespathExpression.parse(firstEntry.get().getValue()).accept(new CppEndpointsJmesPathVisitor(ctxt, requestShape));
+                        operationContextParamMap.put(entry.getKey() ,Arrays.asList(ctxt.getCppCode().toString().split("\n")) );
+                    }
+                });
+                operation.setOperationContextParamsCode(operationContextParamMap);
+            }
         }
-
         // output
         if (c2jOperation.getOutput() != null) {
             Shape resultShape = renameShape(shapes.get(c2jOperation.getOutput().getShape()), c2jOperation.getName(), SHAPE_SDK_RESULT_SUFFIX);
-
             resultShape.setResult(true);
             resultShape.setReferenced(true);
             resultShape.getReferencedBy().add(c2jOperation.getName());
@@ -648,8 +726,8 @@ public class C2jModelToGeneratorModelTransformer {
         }
 
         //RequestCompression
-        if (c2jOperation.getRequestCompression() != null) {
-            C2jRequestCompression c2jRequestCompression = c2jOperation.getRequestCompression();
+        if (c2jOperation.getRequestcompression() != null) {
+            C2jRequestCompression c2jRequestCompression = c2jOperation.getRequestcompression();
             // Supporting only Gzip for now.
             if (c2jRequestCompression.getEncodings().isEmpty()) {
                 throw new RuntimeException("When Request Compression is requested, at least 1 algorithm needs to be declared");
@@ -740,7 +818,7 @@ public class C2jModelToGeneratorModelTransformer {
                             member.getShape().getName(),
                             reservedMapping.getValue().remappingName,
                             member.getShape().getName(),
-                            false);
+                            reservedMapping.getKey().equals(shape.getPayload()));
                 });
         }
     }
@@ -856,7 +934,12 @@ public class C2jModelToGeneratorModelTransformer {
             // 1. Its shape is defined in C2J model.
             // 2. For XML payload type, it has extra member other than "message" and "code" (case insensitive).
             // 3. For JSON payload type, it has extra member other than "message" (case insensitive).
-            String errorPayloadType = CppViewHelper.computeServicePayloadType(this.c2jServiceModel.getMetadata().getProtocol());
+            // Look through priority list of protocols falling back to singular protocol if not found.
+            final Set<String> protocols = ImmutableSet.<String>builder()
+                    .addAll(this.c2jServiceModel.getMetadata().getProtocols() == null ? ImmutableSet.of(): this.c2jServiceModel.getMetadata().getProtocols())
+                    .addAll(StringUtils.isEmpty(this.c2jServiceModel.getMetadata().getProtocol()) ? ImmutableSet.of() : ImmutableSet.of(this.c2jServiceModel.getMetadata().getProtocol()))
+                    .build();
+            String errorPayloadType = CppViewHelper.computeServicePayloadType(protocols);
             if (errorPayloadType.equals("xml") && referencedShape.isXmlModeledException() ||
                 errorPayloadType.equals("json") && referencedShape.isJsonModeledException()) {
                 error.setModeled(true);
@@ -875,12 +958,14 @@ public class C2jModelToGeneratorModelTransformer {
         error.setCoreError(CoreErrors.VARIANTS.containsKey(error.getName()));
 
         //query xml loads this inner structure to do this work.
-        if (c2jError.getError() != null && c2jError.getError().getCode() != null) {
-            if(c2jError.getError().getHttpStatusCode() >= 500 || !c2jError.getError().isSenderFault()) {
+        if (c2jError.getError() != null) {
+            if(RESPONSE_CODES_TO_RETRY.contains(c2jError.getError().getHttpStatusCode()) && !c2jError.getError().isSenderFault()) {
                 error.setRetryable(true);
             }
 
-            error.setText(c2jError.getError().getCode());
+            if (c2jError.getError().getCode() != null) {
+                error.setText(c2jError.getError().getCode());
+            }
         }
 
         allErrors.add(error);

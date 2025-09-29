@@ -32,42 +32,23 @@ namespace Model
   class LambdaFunctionConfiguration
   {
   public:
-    AWS_COSTOPTIMIZATIONHUB_API LambdaFunctionConfiguration();
+    AWS_COSTOPTIMIZATIONHUB_API LambdaFunctionConfiguration() = default;
     AWS_COSTOPTIMIZATIONHUB_API LambdaFunctionConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_COSTOPTIMIZATIONHUB_API LambdaFunctionConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COSTOPTIMIZATIONHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Details about the compute configuration.</p>
      */
-    inline const ComputeConfiguration& GetCompute() const{ return m_compute; }
-
-    /**
-     * <p>Details about the compute configuration.</p>
-     */
+    inline const ComputeConfiguration& GetCompute() const { return m_compute; }
     inline bool ComputeHasBeenSet() const { return m_computeHasBeenSet; }
-
-    /**
-     * <p>Details about the compute configuration.</p>
-     */
-    inline void SetCompute(const ComputeConfiguration& value) { m_computeHasBeenSet = true; m_compute = value; }
-
-    /**
-     * <p>Details about the compute configuration.</p>
-     */
-    inline void SetCompute(ComputeConfiguration&& value) { m_computeHasBeenSet = true; m_compute = std::move(value); }
-
-    /**
-     * <p>Details about the compute configuration.</p>
-     */
-    inline LambdaFunctionConfiguration& WithCompute(const ComputeConfiguration& value) { SetCompute(value); return *this;}
-
-    /**
-     * <p>Details about the compute configuration.</p>
-     */
-    inline LambdaFunctionConfiguration& WithCompute(ComputeConfiguration&& value) { SetCompute(std::move(value)); return *this;}
-
+    template<typename ComputeT = ComputeConfiguration>
+    void SetCompute(ComputeT&& value) { m_computeHasBeenSet = true; m_compute = std::forward<ComputeT>(value); }
+    template<typename ComputeT = ComputeConfiguration>
+    LambdaFunctionConfiguration& WithCompute(ComputeT&& value) { SetCompute(std::forward<ComputeT>(value)); return *this;}
+    ///@}
   private:
 
     ComputeConfiguration m_compute;

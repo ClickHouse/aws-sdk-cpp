@@ -6,6 +6,8 @@
 #pragma once
 #include <aws/quicksight/QuickSight_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/quicksight/model/SheetImage.h>
 #include <utility>
 
 namespace Aws
@@ -36,101 +38,50 @@ namespace Model
   class Sheet
   {
   public:
-    AWS_QUICKSIGHT_API Sheet();
+    AWS_QUICKSIGHT_API Sheet() = default;
     AWS_QUICKSIGHT_API Sheet(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Sheet& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The unique identifier associated with a sheet.</p>
      */
-    inline const Aws::String& GetSheetId() const{ return m_sheetId; }
-
-    /**
-     * <p>The unique identifier associated with a sheet.</p>
-     */
+    inline const Aws::String& GetSheetId() const { return m_sheetId; }
     inline bool SheetIdHasBeenSet() const { return m_sheetIdHasBeenSet; }
+    template<typename SheetIdT = Aws::String>
+    void SetSheetId(SheetIdT&& value) { m_sheetIdHasBeenSet = true; m_sheetId = std::forward<SheetIdT>(value); }
+    template<typename SheetIdT = Aws::String>
+    Sheet& WithSheetId(SheetIdT&& value) { SetSheetId(std::forward<SheetIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The unique identifier associated with a sheet.</p>
-     */
-    inline void SetSheetId(const Aws::String& value) { m_sheetIdHasBeenSet = true; m_sheetId = value; }
-
-    /**
-     * <p>The unique identifier associated with a sheet.</p>
-     */
-    inline void SetSheetId(Aws::String&& value) { m_sheetIdHasBeenSet = true; m_sheetId = std::move(value); }
-
-    /**
-     * <p>The unique identifier associated with a sheet.</p>
-     */
-    inline void SetSheetId(const char* value) { m_sheetIdHasBeenSet = true; m_sheetId.assign(value); }
-
-    /**
-     * <p>The unique identifier associated with a sheet.</p>
-     */
-    inline Sheet& WithSheetId(const Aws::String& value) { SetSheetId(value); return *this;}
-
-    /**
-     * <p>The unique identifier associated with a sheet.</p>
-     */
-    inline Sheet& WithSheetId(Aws::String&& value) { SetSheetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier associated with a sheet.</p>
-     */
-    inline Sheet& WithSheetId(const char* value) { SetSheetId(value); return *this;}
-
-
-    /**
-     * <p>The name of a sheet. This name is displayed on the sheet's tab in the Amazon
+     * <p>The name of a sheet. This name is displayed on the sheet's tab in the
      * QuickSight console.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of a sheet. This name is displayed on the sheet's tab in the Amazon
-     * QuickSight console.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    Sheet& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name of a sheet. This name is displayed on the sheet's tab in the Amazon
-     * QuickSight console.</p>
+     * <p>A list of images on a sheet.</p>
      */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of a sheet. This name is displayed on the sheet's tab in the Amazon
-     * QuickSight console.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of a sheet. This name is displayed on the sheet's tab in the Amazon
-     * QuickSight console.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of a sheet. This name is displayed on the sheet's tab in the Amazon
-     * QuickSight console.</p>
-     */
-    inline Sheet& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of a sheet. This name is displayed on the sheet's tab in the Amazon
-     * QuickSight console.</p>
-     */
-    inline Sheet& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of a sheet. This name is displayed on the sheet's tab in the Amazon
-     * QuickSight console.</p>
-     */
-    inline Sheet& WithName(const char* value) { SetName(value); return *this;}
-
+    inline const Aws::Vector<SheetImage>& GetImages() const { return m_images; }
+    inline bool ImagesHasBeenSet() const { return m_imagesHasBeenSet; }
+    template<typename ImagesT = Aws::Vector<SheetImage>>
+    void SetImages(ImagesT&& value) { m_imagesHasBeenSet = true; m_images = std::forward<ImagesT>(value); }
+    template<typename ImagesT = Aws::Vector<SheetImage>>
+    Sheet& WithImages(ImagesT&& value) { SetImages(std::forward<ImagesT>(value)); return *this;}
+    template<typename ImagesT = SheetImage>
+    Sheet& AddImages(ImagesT&& value) { m_imagesHasBeenSet = true; m_images.emplace_back(std::forward<ImagesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_sheetId;
@@ -138,6 +89,9 @@ namespace Model
 
     Aws::String m_name;
     bool m_nameHasBeenSet = false;
+
+    Aws::Vector<SheetImage> m_images;
+    bool m_imagesHasBeenSet = false;
   };
 
 } // namespace Model

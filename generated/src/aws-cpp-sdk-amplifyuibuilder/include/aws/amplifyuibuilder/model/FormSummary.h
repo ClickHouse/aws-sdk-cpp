@@ -33,237 +33,81 @@ namespace Model
   class FormSummary
   {
   public:
-    AWS_AMPLIFYUIBUILDER_API FormSummary();
+    AWS_AMPLIFYUIBUILDER_API FormSummary() = default;
     AWS_AMPLIFYUIBUILDER_API FormSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_AMPLIFYUIBUILDER_API FormSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_AMPLIFYUIBUILDER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The unique ID for the app associated with the form summary.</p>
      */
-    inline const Aws::String& GetAppId() const{ return m_appId; }
-
-    /**
-     * <p>The unique ID for the app associated with the form summary.</p>
-     */
+    inline const Aws::String& GetAppId() const { return m_appId; }
     inline bool AppIdHasBeenSet() const { return m_appIdHasBeenSet; }
+    template<typename AppIdT = Aws::String>
+    void SetAppId(AppIdT&& value) { m_appIdHasBeenSet = true; m_appId = std::forward<AppIdT>(value); }
+    template<typename AppIdT = Aws::String>
+    FormSummary& WithAppId(AppIdT&& value) { SetAppId(std::forward<AppIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique ID for the app associated with the form summary.</p>
-     */
-    inline void SetAppId(const Aws::String& value) { m_appIdHasBeenSet = true; m_appId = value; }
-
-    /**
-     * <p>The unique ID for the app associated with the form summary.</p>
-     */
-    inline void SetAppId(Aws::String&& value) { m_appIdHasBeenSet = true; m_appId = std::move(value); }
-
-    /**
-     * <p>The unique ID for the app associated with the form summary.</p>
-     */
-    inline void SetAppId(const char* value) { m_appIdHasBeenSet = true; m_appId.assign(value); }
-
-    /**
-     * <p>The unique ID for the app associated with the form summary.</p>
-     */
-    inline FormSummary& WithAppId(const Aws::String& value) { SetAppId(value); return *this;}
-
-    /**
-     * <p>The unique ID for the app associated with the form summary.</p>
-     */
-    inline FormSummary& WithAppId(Aws::String&& value) { SetAppId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique ID for the app associated with the form summary.</p>
-     */
-    inline FormSummary& WithAppId(const char* value) { SetAppId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The form's data source type.</p>
      */
-    inline const FormDataTypeConfig& GetDataType() const{ return m_dataType; }
-
-    /**
-     * <p>The form's data source type.</p>
-     */
+    inline const FormDataTypeConfig& GetDataType() const { return m_dataType; }
     inline bool DataTypeHasBeenSet() const { return m_dataTypeHasBeenSet; }
+    template<typename DataTypeT = FormDataTypeConfig>
+    void SetDataType(DataTypeT&& value) { m_dataTypeHasBeenSet = true; m_dataType = std::forward<DataTypeT>(value); }
+    template<typename DataTypeT = FormDataTypeConfig>
+    FormSummary& WithDataType(DataTypeT&& value) { SetDataType(std::forward<DataTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The form's data source type.</p>
-     */
-    inline void SetDataType(const FormDataTypeConfig& value) { m_dataTypeHasBeenSet = true; m_dataType = value; }
-
-    /**
-     * <p>The form's data source type.</p>
-     */
-    inline void SetDataType(FormDataTypeConfig&& value) { m_dataTypeHasBeenSet = true; m_dataType = std::move(value); }
-
-    /**
-     * <p>The form's data source type.</p>
-     */
-    inline FormSummary& WithDataType(const FormDataTypeConfig& value) { SetDataType(value); return *this;}
-
-    /**
-     * <p>The form's data source type.</p>
-     */
-    inline FormSummary& WithDataType(FormDataTypeConfig&& value) { SetDataType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the backend environment that is part of the Amplify app.</p>
      */
-    inline const Aws::String& GetEnvironmentName() const{ return m_environmentName; }
-
-    /**
-     * <p>The name of the backend environment that is part of the Amplify app.</p>
-     */
+    inline const Aws::String& GetEnvironmentName() const { return m_environmentName; }
     inline bool EnvironmentNameHasBeenSet() const { return m_environmentNameHasBeenSet; }
+    template<typename EnvironmentNameT = Aws::String>
+    void SetEnvironmentName(EnvironmentNameT&& value) { m_environmentNameHasBeenSet = true; m_environmentName = std::forward<EnvironmentNameT>(value); }
+    template<typename EnvironmentNameT = Aws::String>
+    FormSummary& WithEnvironmentName(EnvironmentNameT&& value) { SetEnvironmentName(std::forward<EnvironmentNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the backend environment that is part of the Amplify app.</p>
-     */
-    inline void SetEnvironmentName(const Aws::String& value) { m_environmentNameHasBeenSet = true; m_environmentName = value; }
-
-    /**
-     * <p>The name of the backend environment that is part of the Amplify app.</p>
-     */
-    inline void SetEnvironmentName(Aws::String&& value) { m_environmentNameHasBeenSet = true; m_environmentName = std::move(value); }
-
-    /**
-     * <p>The name of the backend environment that is part of the Amplify app.</p>
-     */
-    inline void SetEnvironmentName(const char* value) { m_environmentNameHasBeenSet = true; m_environmentName.assign(value); }
-
-    /**
-     * <p>The name of the backend environment that is part of the Amplify app.</p>
-     */
-    inline FormSummary& WithEnvironmentName(const Aws::String& value) { SetEnvironmentName(value); return *this;}
-
-    /**
-     * <p>The name of the backend environment that is part of the Amplify app.</p>
-     */
-    inline FormSummary& WithEnvironmentName(Aws::String&& value) { SetEnvironmentName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the backend environment that is part of the Amplify app.</p>
-     */
-    inline FormSummary& WithEnvironmentName(const char* value) { SetEnvironmentName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of operation to perform on the form.</p>
      */
-    inline const FormActionType& GetFormActionType() const{ return m_formActionType; }
-
-    /**
-     * <p>The type of operation to perform on the form.</p>
-     */
+    inline FormActionType GetFormActionType() const { return m_formActionType; }
     inline bool FormActionTypeHasBeenSet() const { return m_formActionTypeHasBeenSet; }
+    inline void SetFormActionType(FormActionType value) { m_formActionTypeHasBeenSet = true; m_formActionType = value; }
+    inline FormSummary& WithFormActionType(FormActionType value) { SetFormActionType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of operation to perform on the form.</p>
-     */
-    inline void SetFormActionType(const FormActionType& value) { m_formActionTypeHasBeenSet = true; m_formActionType = value; }
-
-    /**
-     * <p>The type of operation to perform on the form.</p>
-     */
-    inline void SetFormActionType(FormActionType&& value) { m_formActionTypeHasBeenSet = true; m_formActionType = std::move(value); }
-
-    /**
-     * <p>The type of operation to perform on the form.</p>
-     */
-    inline FormSummary& WithFormActionType(const FormActionType& value) { SetFormActionType(value); return *this;}
-
-    /**
-     * <p>The type of operation to perform on the form.</p>
-     */
-    inline FormSummary& WithFormActionType(FormActionType&& value) { SetFormActionType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the form.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The ID of the form.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    FormSummary& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the form.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The ID of the form.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The ID of the form.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The ID of the form.</p>
-     */
-    inline FormSummary& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The ID of the form.</p>
-     */
-    inline FormSummary& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the form.</p>
-     */
-    inline FormSummary& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the form.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the form.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
-
-    /**
-     * <p>The name of the form.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the form.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the form.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the form.</p>
-     */
-    inline FormSummary& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the form.</p>
-     */
-    inline FormSummary& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the form.</p>
-     */
-    inline FormSummary& WithName(const char* value) { SetName(value); return *this;}
-
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    FormSummary& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_appId;
@@ -275,7 +119,7 @@ namespace Model
     Aws::String m_environmentName;
     bool m_environmentNameHasBeenSet = false;
 
-    FormActionType m_formActionType;
+    FormActionType m_formActionType{FormActionType::NOT_SET};
     bool m_formActionTypeHasBeenSet = false;
 
     Aws::String m_id;

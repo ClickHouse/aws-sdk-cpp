@@ -17,10 +17,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-BatchGetDevicePositionResult::BatchGetDevicePositionResult()
-{
-}
-
 BatchGetDevicePositionResult::BatchGetDevicePositionResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
@@ -29,15 +25,6 @@ BatchGetDevicePositionResult::BatchGetDevicePositionResult(const Aws::AmazonWebS
 BatchGetDevicePositionResult& BatchGetDevicePositionResult::operator =(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   JsonView jsonValue = result.GetPayload().View();
-  if(jsonValue.ValueExists("DevicePositions"))
-  {
-    Aws::Utils::Array<JsonView> devicePositionsJsonList = jsonValue.GetArray("DevicePositions");
-    for(unsigned devicePositionsIndex = 0; devicePositionsIndex < devicePositionsJsonList.GetLength(); ++devicePositionsIndex)
-    {
-      m_devicePositions.push_back(devicePositionsJsonList[devicePositionsIndex].AsObject());
-    }
-  }
-
   if(jsonValue.ValueExists("Errors"))
   {
     Aws::Utils::Array<JsonView> errorsJsonList = jsonValue.GetArray("Errors");
@@ -45,14 +32,24 @@ BatchGetDevicePositionResult& BatchGetDevicePositionResult::operator =(const Aws
     {
       m_errors.push_back(errorsJsonList[errorsIndex].AsObject());
     }
+    m_errorsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("DevicePositions"))
+  {
+    Aws::Utils::Array<JsonView> devicePositionsJsonList = jsonValue.GetArray("DevicePositions");
+    for(unsigned devicePositionsIndex = 0; devicePositionsIndex < devicePositionsJsonList.GetLength(); ++devicePositionsIndex)
+    {
+      m_devicePositions.push_back(devicePositionsJsonList[devicePositionsIndex].AsObject());
+    }
+    m_devicePositionsHasBeenSet = true;
+  }
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

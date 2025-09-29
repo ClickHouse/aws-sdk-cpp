@@ -18,15 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-ModelDashboardIndicatorAction::ModelDashboardIndicatorAction() : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false)
-{
-}
-
-ModelDashboardIndicatorAction::ModelDashboardIndicatorAction(JsonView jsonValue) : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false)
+ModelDashboardIndicatorAction::ModelDashboardIndicatorAction(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ModelDashboardIndicatorAction& ModelDashboardIndicatorAction::operator =(JsonVie
   if(jsonValue.ValueExists("Enabled"))
   {
     m_enabled = jsonValue.GetBool("Enabled");
-
     m_enabledHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -20,17 +20,7 @@ namespace Redshift
 namespace Model
 {
 
-MaintenanceTrack::MaintenanceTrack() : 
-    m_maintenanceTrackNameHasBeenSet(false),
-    m_databaseVersionHasBeenSet(false),
-    m_updateTargetsHasBeenSet(false)
-{
-}
-
-MaintenanceTrack::MaintenanceTrack(const XmlNode& xmlNode) : 
-    m_maintenanceTrackNameHasBeenSet(false),
-    m_databaseVersionHasBeenSet(false),
-    m_updateTargetsHasBeenSet(false)
+MaintenanceTrack::MaintenanceTrack(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -57,6 +47,7 @@ MaintenanceTrack& MaintenanceTrack::operator =(const XmlNode& xmlNode)
     if(!updateTargetsNode.IsNull())
     {
       XmlNode updateTargetsMember = updateTargetsNode.FirstChild("UpdateTarget");
+      m_updateTargetsHasBeenSet = !updateTargetsMember.IsNull();
       while(!updateTargetsMember.IsNull())
       {
         m_updateTargets.push_back(updateTargetsMember);
@@ -88,7 +79,7 @@ void MaintenanceTrack::OutputToStream(Aws::OStream& oStream, const char* locatio
       for(auto& item : m_updateTargets)
       {
         Aws::StringStream updateTargetsSs;
-        updateTargetsSs << location << index << locationValue << ".UpdateTarget." << updateTargetsIdx++;
+        updateTargetsSs << location << index << locationValue << ".UpdateTargets.UpdateTarget." << updateTargetsIdx++;
         item.OutputToStream(oStream, updateTargetsSs.str().c_str());
       }
   }
@@ -111,7 +102,7 @@ void MaintenanceTrack::OutputToStream(Aws::OStream& oStream, const char* locatio
       for(auto& item : m_updateTargets)
       {
         Aws::StringStream updateTargetsSs;
-        updateTargetsSs << location <<  ".UpdateTarget." << updateTargetsIdx++;
+        updateTargetsSs << location << ".UpdateTargets.UpdateTarget." << updateTargetsIdx++;
         item.OutputToStream(oStream, updateTargetsSs.str().c_str());
       }
   }

@@ -12,24 +12,9 @@ using namespace Aws::Inspector2::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ListFindingsRequest::ListFindingsRequest() : 
-    m_filterCriteriaHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_sortCriteriaHasBeenSet(false)
-{
-}
-
 Aws::String ListFindingsRequest::SerializePayload() const
 {
   JsonValue payload;
-
-  if(m_filterCriteriaHasBeenSet)
-  {
-   payload.WithObject("filterCriteria", m_filterCriteria.Jsonize());
-
-  }
 
   if(m_maxResultsHasBeenSet)
   {
@@ -40,6 +25,12 @@ Aws::String ListFindingsRequest::SerializePayload() const
   if(m_nextTokenHasBeenSet)
   {
    payload.WithString("nextToken", m_nextToken);
+
+  }
+
+  if(m_filterCriteriaHasBeenSet)
+  {
+   payload.WithObject("filterCriteria", m_filterCriteria.Jsonize());
 
   }
 

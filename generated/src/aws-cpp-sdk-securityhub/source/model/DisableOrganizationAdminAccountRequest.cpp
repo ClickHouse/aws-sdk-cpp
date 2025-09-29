@@ -12,11 +12,6 @@ using namespace Aws::SecurityHub::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DisableOrganizationAdminAccountRequest::DisableOrganizationAdminAccountRequest() : 
-    m_adminAccountIdHasBeenSet(false)
-{
-}
-
 Aws::String DisableOrganizationAdminAccountRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -25,6 +20,11 @@ Aws::String DisableOrganizationAdminAccountRequest::SerializePayload() const
   {
    payload.WithString("AdminAccountId", m_adminAccountId);
 
+  }
+
+  if(m_featureHasBeenSet)
+  {
+   payload.WithString("Feature", SecurityHubFeatureMapper::GetNameForSecurityHubFeature(m_feature));
   }
 
   return payload.View().WriteReadable();

@@ -28,68 +28,38 @@ namespace Model
   class GetVPCEConfigurationResult
   {
   public:
-    AWS_DEVICEFARM_API GetVPCEConfigurationResult();
+    AWS_DEVICEFARM_API GetVPCEConfigurationResult() = default;
     AWS_DEVICEFARM_API GetVPCEConfigurationResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_DEVICEFARM_API GetVPCEConfigurationResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>An object that contains information about your VPC endpoint
      * configuration.</p>
      */
-    inline const VPCEConfiguration& GetVpceConfiguration() const{ return m_vpceConfiguration; }
+    inline const VPCEConfiguration& GetVpceConfiguration() const { return m_vpceConfiguration; }
+    template<typename VpceConfigurationT = VPCEConfiguration>
+    void SetVpceConfiguration(VpceConfigurationT&& value) { m_vpceConfigurationHasBeenSet = true; m_vpceConfiguration = std::forward<VpceConfigurationT>(value); }
+    template<typename VpceConfigurationT = VPCEConfiguration>
+    GetVPCEConfigurationResult& WithVpceConfiguration(VpceConfigurationT&& value) { SetVpceConfiguration(std::forward<VpceConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An object that contains information about your VPC endpoint
-     * configuration.</p>
-     */
-    inline void SetVpceConfiguration(const VPCEConfiguration& value) { m_vpceConfiguration = value; }
-
-    /**
-     * <p>An object that contains information about your VPC endpoint
-     * configuration.</p>
-     */
-    inline void SetVpceConfiguration(VPCEConfiguration&& value) { m_vpceConfiguration = std::move(value); }
-
-    /**
-     * <p>An object that contains information about your VPC endpoint
-     * configuration.</p>
-     */
-    inline GetVPCEConfigurationResult& WithVpceConfiguration(const VPCEConfiguration& value) { SetVpceConfiguration(value); return *this;}
-
-    /**
-     * <p>An object that contains information about your VPC endpoint
-     * configuration.</p>
-     */
-    inline GetVPCEConfigurationResult& WithVpceConfiguration(VPCEConfiguration&& value) { SetVpceConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetVPCEConfigurationResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetVPCEConfigurationResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetVPCEConfigurationResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetVPCEConfigurationResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     VPCEConfiguration m_vpceConfiguration;
+    bool m_vpceConfigurationHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

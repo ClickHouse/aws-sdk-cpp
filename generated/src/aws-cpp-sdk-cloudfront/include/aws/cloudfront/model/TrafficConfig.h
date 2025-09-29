@@ -33,105 +33,46 @@ namespace Model
   class TrafficConfig
   {
   public:
-    AWS_CLOUDFRONT_API TrafficConfig();
+    AWS_CLOUDFRONT_API TrafficConfig() = default;
     AWS_CLOUDFRONT_API TrafficConfig(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_CLOUDFRONT_API TrafficConfig& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_CLOUDFRONT_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>Contains the percentage of traffic to send to the staging distribution.</p>
      */
-    inline const ContinuousDeploymentSingleWeightConfig& GetSingleWeightConfig() const{ return m_singleWeightConfig; }
-
-    /**
-     * <p>Contains the percentage of traffic to send to the staging distribution.</p>
-     */
+    inline const ContinuousDeploymentSingleWeightConfig& GetSingleWeightConfig() const { return m_singleWeightConfig; }
     inline bool SingleWeightConfigHasBeenSet() const { return m_singleWeightConfigHasBeenSet; }
+    template<typename SingleWeightConfigT = ContinuousDeploymentSingleWeightConfig>
+    void SetSingleWeightConfig(SingleWeightConfigT&& value) { m_singleWeightConfigHasBeenSet = true; m_singleWeightConfig = std::forward<SingleWeightConfigT>(value); }
+    template<typename SingleWeightConfigT = ContinuousDeploymentSingleWeightConfig>
+    TrafficConfig& WithSingleWeightConfig(SingleWeightConfigT&& value) { SetSingleWeightConfig(std::forward<SingleWeightConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Contains the percentage of traffic to send to the staging distribution.</p>
-     */
-    inline void SetSingleWeightConfig(const ContinuousDeploymentSingleWeightConfig& value) { m_singleWeightConfigHasBeenSet = true; m_singleWeightConfig = value; }
-
-    /**
-     * <p>Contains the percentage of traffic to send to the staging distribution.</p>
-     */
-    inline void SetSingleWeightConfig(ContinuousDeploymentSingleWeightConfig&& value) { m_singleWeightConfigHasBeenSet = true; m_singleWeightConfig = std::move(value); }
-
-    /**
-     * <p>Contains the percentage of traffic to send to the staging distribution.</p>
-     */
-    inline TrafficConfig& WithSingleWeightConfig(const ContinuousDeploymentSingleWeightConfig& value) { SetSingleWeightConfig(value); return *this;}
-
-    /**
-     * <p>Contains the percentage of traffic to send to the staging distribution.</p>
-     */
-    inline TrafficConfig& WithSingleWeightConfig(ContinuousDeploymentSingleWeightConfig&& value) { SetSingleWeightConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Determines which HTTP requests are sent to the staging distribution.</p>
      */
-    inline const ContinuousDeploymentSingleHeaderConfig& GetSingleHeaderConfig() const{ return m_singleHeaderConfig; }
-
-    /**
-     * <p>Determines which HTTP requests are sent to the staging distribution.</p>
-     */
+    inline const ContinuousDeploymentSingleHeaderConfig& GetSingleHeaderConfig() const { return m_singleHeaderConfig; }
     inline bool SingleHeaderConfigHasBeenSet() const { return m_singleHeaderConfigHasBeenSet; }
+    template<typename SingleHeaderConfigT = ContinuousDeploymentSingleHeaderConfig>
+    void SetSingleHeaderConfig(SingleHeaderConfigT&& value) { m_singleHeaderConfigHasBeenSet = true; m_singleHeaderConfig = std::forward<SingleHeaderConfigT>(value); }
+    template<typename SingleHeaderConfigT = ContinuousDeploymentSingleHeaderConfig>
+    TrafficConfig& WithSingleHeaderConfig(SingleHeaderConfigT&& value) { SetSingleHeaderConfig(std::forward<SingleHeaderConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Determines which HTTP requests are sent to the staging distribution.</p>
-     */
-    inline void SetSingleHeaderConfig(const ContinuousDeploymentSingleHeaderConfig& value) { m_singleHeaderConfigHasBeenSet = true; m_singleHeaderConfig = value; }
-
-    /**
-     * <p>Determines which HTTP requests are sent to the staging distribution.</p>
-     */
-    inline void SetSingleHeaderConfig(ContinuousDeploymentSingleHeaderConfig&& value) { m_singleHeaderConfigHasBeenSet = true; m_singleHeaderConfig = std::move(value); }
-
-    /**
-     * <p>Determines which HTTP requests are sent to the staging distribution.</p>
-     */
-    inline TrafficConfig& WithSingleHeaderConfig(const ContinuousDeploymentSingleHeaderConfig& value) { SetSingleHeaderConfig(value); return *this;}
-
-    /**
-     * <p>Determines which HTTP requests are sent to the staging distribution.</p>
-     */
-    inline TrafficConfig& WithSingleHeaderConfig(ContinuousDeploymentSingleHeaderConfig&& value) { SetSingleHeaderConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of traffic configuration.</p>
      */
-    inline const ContinuousDeploymentPolicyType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of traffic configuration.</p>
-     */
+    inline ContinuousDeploymentPolicyType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
-
-    /**
-     * <p>The type of traffic configuration.</p>
-     */
-    inline void SetType(const ContinuousDeploymentPolicyType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of traffic configuration.</p>
-     */
-    inline void SetType(ContinuousDeploymentPolicyType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of traffic configuration.</p>
-     */
-    inline TrafficConfig& WithType(const ContinuousDeploymentPolicyType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of traffic configuration.</p>
-     */
-    inline TrafficConfig& WithType(ContinuousDeploymentPolicyType&& value) { SetType(std::move(value)); return *this;}
-
+    inline void SetType(ContinuousDeploymentPolicyType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline TrafficConfig& WithType(ContinuousDeploymentPolicyType value) { SetType(value); return *this;}
+    ///@}
   private:
 
     ContinuousDeploymentSingleWeightConfig m_singleWeightConfig;
@@ -140,7 +81,7 @@ namespace Model
     ContinuousDeploymentSingleHeaderConfig m_singleHeaderConfig;
     bool m_singleHeaderConfigHasBeenSet = false;
 
-    ContinuousDeploymentPolicyType m_type;
+    ContinuousDeploymentPolicyType m_type{ContinuousDeploymentPolicyType::NOT_SET};
     bool m_typeHasBeenSet = false;
   };
 

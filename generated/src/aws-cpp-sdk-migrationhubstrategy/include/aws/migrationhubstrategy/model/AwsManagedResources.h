@@ -33,52 +33,24 @@ namespace Model
   class AwsManagedResources
   {
   public:
-    AWS_MIGRATIONHUBSTRATEGYRECOMMENDATIONS_API AwsManagedResources();
+    AWS_MIGRATIONHUBSTRATEGYRECOMMENDATIONS_API AwsManagedResources() = default;
     AWS_MIGRATIONHUBSTRATEGYRECOMMENDATIONS_API AwsManagedResources(Aws::Utils::Json::JsonView jsonValue);
     AWS_MIGRATIONHUBSTRATEGYRECOMMENDATIONS_API AwsManagedResources& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MIGRATIONHUBSTRATEGYRECOMMENDATIONS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The choice of application destination that you specify. </p>
      */
-    inline const Aws::Vector<AwsManagedTargetDestination>& GetTargetDestination() const{ return m_targetDestination; }
-
-    /**
-     * <p> The choice of application destination that you specify. </p>
-     */
+    inline const Aws::Vector<AwsManagedTargetDestination>& GetTargetDestination() const { return m_targetDestination; }
     inline bool TargetDestinationHasBeenSet() const { return m_targetDestinationHasBeenSet; }
-
-    /**
-     * <p> The choice of application destination that you specify. </p>
-     */
-    inline void SetTargetDestination(const Aws::Vector<AwsManagedTargetDestination>& value) { m_targetDestinationHasBeenSet = true; m_targetDestination = value; }
-
-    /**
-     * <p> The choice of application destination that you specify. </p>
-     */
-    inline void SetTargetDestination(Aws::Vector<AwsManagedTargetDestination>&& value) { m_targetDestinationHasBeenSet = true; m_targetDestination = std::move(value); }
-
-    /**
-     * <p> The choice of application destination that you specify. </p>
-     */
-    inline AwsManagedResources& WithTargetDestination(const Aws::Vector<AwsManagedTargetDestination>& value) { SetTargetDestination(value); return *this;}
-
-    /**
-     * <p> The choice of application destination that you specify. </p>
-     */
-    inline AwsManagedResources& WithTargetDestination(Aws::Vector<AwsManagedTargetDestination>&& value) { SetTargetDestination(std::move(value)); return *this;}
-
-    /**
-     * <p> The choice of application destination that you specify. </p>
-     */
-    inline AwsManagedResources& AddTargetDestination(const AwsManagedTargetDestination& value) { m_targetDestinationHasBeenSet = true; m_targetDestination.push_back(value); return *this; }
-
-    /**
-     * <p> The choice of application destination that you specify. </p>
-     */
-    inline AwsManagedResources& AddTargetDestination(AwsManagedTargetDestination&& value) { m_targetDestinationHasBeenSet = true; m_targetDestination.push_back(std::move(value)); return *this; }
-
+    template<typename TargetDestinationT = Aws::Vector<AwsManagedTargetDestination>>
+    void SetTargetDestination(TargetDestinationT&& value) { m_targetDestinationHasBeenSet = true; m_targetDestination = std::forward<TargetDestinationT>(value); }
+    template<typename TargetDestinationT = Aws::Vector<AwsManagedTargetDestination>>
+    AwsManagedResources& WithTargetDestination(TargetDestinationT&& value) { SetTargetDestination(std::forward<TargetDestinationT>(value)); return *this;}
+    inline AwsManagedResources& AddTargetDestination(AwsManagedTargetDestination value) { m_targetDestinationHasBeenSet = true; m_targetDestination.push_back(value); return *this; }
+    ///@}
   private:
 
     Aws::Vector<AwsManagedTargetDestination> m_targetDestination;

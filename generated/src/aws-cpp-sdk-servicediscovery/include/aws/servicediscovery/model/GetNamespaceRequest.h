@@ -21,7 +21,7 @@ namespace Model
   class GetNamespaceRequest : public ServiceDiscoveryRequest
   {
   public:
-    AWS_SERVICEDISCOVERY_API GetNamespaceRequest();
+    AWS_SERVICEDISCOVERY_API GetNamespaceRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,21 @@ namespace Model
     AWS_SERVICEDISCOVERY_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
-     * <p>The ID of the namespace that you want to get information about.</p>
+     * <p>The ID or Amazon Resource Name (ARN) of the namespace that you want to get
+     * information about. For namespaces shared with your Amazon Web Services account,
+     * specify the namespace ARN. For more information about shared namespaces, see <a
+     * href="https://docs.aws.amazon.com/cloud-map/latest/dg/sharing-namespaces.html">Cross-account
+     * Cloud Map namespace sharing</a> in the <i>Cloud Map Developer Guide</i> </p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The ID of the namespace that you want to get information about.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
-
-    /**
-     * <p>The ID of the namespace that you want to get information about.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The ID of the namespace that you want to get information about.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The ID of the namespace that you want to get information about.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The ID of the namespace that you want to get information about.</p>
-     */
-    inline GetNamespaceRequest& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The ID of the namespace that you want to get information about.</p>
-     */
-    inline GetNamespaceRequest& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the namespace that you want to get information about.</p>
-     */
-    inline GetNamespaceRequest& WithId(const char* value) { SetId(value); return *this;}
-
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    GetNamespaceRequest& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_id;

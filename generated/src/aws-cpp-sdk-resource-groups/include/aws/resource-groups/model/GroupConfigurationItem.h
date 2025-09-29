@@ -36,12 +36,13 @@ namespace Model
   class GroupConfigurationItem
   {
   public:
-    AWS_RESOURCEGROUPS_API GroupConfigurationItem();
+    AWS_RESOURCEGROUPS_API GroupConfigurationItem() = default;
     AWS_RESOURCEGROUPS_API GroupConfigurationItem(Aws::Utils::Json::JsonView jsonValue);
     AWS_RESOURCEGROUPS_API GroupConfigurationItem& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_RESOURCEGROUPS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specifies the type of group configuration item. Each item must have a unique
      * value for <code>type</code>. For the list of types that you can specify for a
@@ -49,136 +50,30 @@ namespace Model
      * href="https://docs.aws.amazon.com/ARG/latest/APIReference/about-slg.html#about-slg-types">Supported
      * resource types and parameters</a>.</p>
      */
-    inline const Aws::String& GetType() const{ return m_type; }
-
-    /**
-     * <p>Specifies the type of group configuration item. Each item must have a unique
-     * value for <code>type</code>. For the list of types that you can specify for a
-     * configuration item, see <a
-     * href="https://docs.aws.amazon.com/ARG/latest/APIReference/about-slg.html#about-slg-types">Supported
-     * resource types and parameters</a>.</p>
-     */
+    inline const Aws::String& GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    template<typename TypeT = Aws::String>
+    void SetType(TypeT&& value) { m_typeHasBeenSet = true; m_type = std::forward<TypeT>(value); }
+    template<typename TypeT = Aws::String>
+    GroupConfigurationItem& WithType(TypeT&& value) { SetType(std::forward<TypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the type of group configuration item. Each item must have a unique
-     * value for <code>type</code>. For the list of types that you can specify for a
-     * configuration item, see <a
-     * href="https://docs.aws.amazon.com/ARG/latest/APIReference/about-slg.html#about-slg-types">Supported
-     * resource types and parameters</a>.</p>
-     */
-    inline void SetType(const Aws::String& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>Specifies the type of group configuration item. Each item must have a unique
-     * value for <code>type</code>. For the list of types that you can specify for a
-     * configuration item, see <a
-     * href="https://docs.aws.amazon.com/ARG/latest/APIReference/about-slg.html#about-slg-types">Supported
-     * resource types and parameters</a>.</p>
-     */
-    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>Specifies the type of group configuration item. Each item must have a unique
-     * value for <code>type</code>. For the list of types that you can specify for a
-     * configuration item, see <a
-     * href="https://docs.aws.amazon.com/ARG/latest/APIReference/about-slg.html#about-slg-types">Supported
-     * resource types and parameters</a>.</p>
-     */
-    inline void SetType(const char* value) { m_typeHasBeenSet = true; m_type.assign(value); }
-
-    /**
-     * <p>Specifies the type of group configuration item. Each item must have a unique
-     * value for <code>type</code>. For the list of types that you can specify for a
-     * configuration item, see <a
-     * href="https://docs.aws.amazon.com/ARG/latest/APIReference/about-slg.html#about-slg-types">Supported
-     * resource types and parameters</a>.</p>
-     */
-    inline GroupConfigurationItem& WithType(const Aws::String& value) { SetType(value); return *this;}
-
-    /**
-     * <p>Specifies the type of group configuration item. Each item must have a unique
-     * value for <code>type</code>. For the list of types that you can specify for a
-     * configuration item, see <a
-     * href="https://docs.aws.amazon.com/ARG/latest/APIReference/about-slg.html#about-slg-types">Supported
-     * resource types and parameters</a>.</p>
-     */
-    inline GroupConfigurationItem& WithType(Aws::String&& value) { SetType(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the type of group configuration item. Each item must have a unique
-     * value for <code>type</code>. For the list of types that you can specify for a
-     * configuration item, see <a
-     * href="https://docs.aws.amazon.com/ARG/latest/APIReference/about-slg.html#about-slg-types">Supported
-     * resource types and parameters</a>.</p>
-     */
-    inline GroupConfigurationItem& WithType(const char* value) { SetType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A collection of parameters for this group configuration item. For the list of
      * parameters that you can use with each configuration item type, see <a
      * href="https://docs.aws.amazon.com/ARG/latest/APIReference/about-slg.html#about-slg-types">Supported
      * resource types and parameters</a>.</p>
      */
-    inline const Aws::Vector<GroupConfigurationParameter>& GetParameters() const{ return m_parameters; }
-
-    /**
-     * <p>A collection of parameters for this group configuration item. For the list of
-     * parameters that you can use with each configuration item type, see <a
-     * href="https://docs.aws.amazon.com/ARG/latest/APIReference/about-slg.html#about-slg-types">Supported
-     * resource types and parameters</a>.</p>
-     */
+    inline const Aws::Vector<GroupConfigurationParameter>& GetParameters() const { return m_parameters; }
     inline bool ParametersHasBeenSet() const { return m_parametersHasBeenSet; }
-
-    /**
-     * <p>A collection of parameters for this group configuration item. For the list of
-     * parameters that you can use with each configuration item type, see <a
-     * href="https://docs.aws.amazon.com/ARG/latest/APIReference/about-slg.html#about-slg-types">Supported
-     * resource types and parameters</a>.</p>
-     */
-    inline void SetParameters(const Aws::Vector<GroupConfigurationParameter>& value) { m_parametersHasBeenSet = true; m_parameters = value; }
-
-    /**
-     * <p>A collection of parameters for this group configuration item. For the list of
-     * parameters that you can use with each configuration item type, see <a
-     * href="https://docs.aws.amazon.com/ARG/latest/APIReference/about-slg.html#about-slg-types">Supported
-     * resource types and parameters</a>.</p>
-     */
-    inline void SetParameters(Aws::Vector<GroupConfigurationParameter>&& value) { m_parametersHasBeenSet = true; m_parameters = std::move(value); }
-
-    /**
-     * <p>A collection of parameters for this group configuration item. For the list of
-     * parameters that you can use with each configuration item type, see <a
-     * href="https://docs.aws.amazon.com/ARG/latest/APIReference/about-slg.html#about-slg-types">Supported
-     * resource types and parameters</a>.</p>
-     */
-    inline GroupConfigurationItem& WithParameters(const Aws::Vector<GroupConfigurationParameter>& value) { SetParameters(value); return *this;}
-
-    /**
-     * <p>A collection of parameters for this group configuration item. For the list of
-     * parameters that you can use with each configuration item type, see <a
-     * href="https://docs.aws.amazon.com/ARG/latest/APIReference/about-slg.html#about-slg-types">Supported
-     * resource types and parameters</a>.</p>
-     */
-    inline GroupConfigurationItem& WithParameters(Aws::Vector<GroupConfigurationParameter>&& value) { SetParameters(std::move(value)); return *this;}
-
-    /**
-     * <p>A collection of parameters for this group configuration item. For the list of
-     * parameters that you can use with each configuration item type, see <a
-     * href="https://docs.aws.amazon.com/ARG/latest/APIReference/about-slg.html#about-slg-types">Supported
-     * resource types and parameters</a>.</p>
-     */
-    inline GroupConfigurationItem& AddParameters(const GroupConfigurationParameter& value) { m_parametersHasBeenSet = true; m_parameters.push_back(value); return *this; }
-
-    /**
-     * <p>A collection of parameters for this group configuration item. For the list of
-     * parameters that you can use with each configuration item type, see <a
-     * href="https://docs.aws.amazon.com/ARG/latest/APIReference/about-slg.html#about-slg-types">Supported
-     * resource types and parameters</a>.</p>
-     */
-    inline GroupConfigurationItem& AddParameters(GroupConfigurationParameter&& value) { m_parametersHasBeenSet = true; m_parameters.push_back(std::move(value)); return *this; }
-
+    template<typename ParametersT = Aws::Vector<GroupConfigurationParameter>>
+    void SetParameters(ParametersT&& value) { m_parametersHasBeenSet = true; m_parameters = std::forward<ParametersT>(value); }
+    template<typename ParametersT = Aws::Vector<GroupConfigurationParameter>>
+    GroupConfigurationItem& WithParameters(ParametersT&& value) { SetParameters(std::forward<ParametersT>(value)); return *this;}
+    template<typename ParametersT = GroupConfigurationParameter>
+    GroupConfigurationItem& AddParameters(ParametersT&& value) { m_parametersHasBeenSet = true; m_parameters.emplace_back(std::forward<ParametersT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_type;

@@ -30,170 +30,72 @@ namespace Model
   class SearchOrganizationInsightsResult
   {
   public:
-    AWS_DEVOPSGURU_API SearchOrganizationInsightsResult();
+    AWS_DEVOPSGURU_API SearchOrganizationInsightsResult() = default;
     AWS_DEVOPSGURU_API SearchOrganizationInsightsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_DEVOPSGURU_API SearchOrganizationInsightsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>An integer that specifies the number of open proactive insights in your
      * Amazon Web Services account.</p>
      */
-    inline const Aws::Vector<ProactiveInsightSummary>& GetProactiveInsights() const{ return m_proactiveInsights; }
+    inline const Aws::Vector<ProactiveInsightSummary>& GetProactiveInsights() const { return m_proactiveInsights; }
+    template<typename ProactiveInsightsT = Aws::Vector<ProactiveInsightSummary>>
+    void SetProactiveInsights(ProactiveInsightsT&& value) { m_proactiveInsightsHasBeenSet = true; m_proactiveInsights = std::forward<ProactiveInsightsT>(value); }
+    template<typename ProactiveInsightsT = Aws::Vector<ProactiveInsightSummary>>
+    SearchOrganizationInsightsResult& WithProactiveInsights(ProactiveInsightsT&& value) { SetProactiveInsights(std::forward<ProactiveInsightsT>(value)); return *this;}
+    template<typename ProactiveInsightsT = ProactiveInsightSummary>
+    SearchOrganizationInsightsResult& AddProactiveInsights(ProactiveInsightsT&& value) { m_proactiveInsightsHasBeenSet = true; m_proactiveInsights.emplace_back(std::forward<ProactiveInsightsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An integer that specifies the number of open proactive insights in your
-     * Amazon Web Services account.</p>
-     */
-    inline void SetProactiveInsights(const Aws::Vector<ProactiveInsightSummary>& value) { m_proactiveInsights = value; }
-
-    /**
-     * <p>An integer that specifies the number of open proactive insights in your
-     * Amazon Web Services account.</p>
-     */
-    inline void SetProactiveInsights(Aws::Vector<ProactiveInsightSummary>&& value) { m_proactiveInsights = std::move(value); }
-
-    /**
-     * <p>An integer that specifies the number of open proactive insights in your
-     * Amazon Web Services account.</p>
-     */
-    inline SearchOrganizationInsightsResult& WithProactiveInsights(const Aws::Vector<ProactiveInsightSummary>& value) { SetProactiveInsights(value); return *this;}
-
-    /**
-     * <p>An integer that specifies the number of open proactive insights in your
-     * Amazon Web Services account.</p>
-     */
-    inline SearchOrganizationInsightsResult& WithProactiveInsights(Aws::Vector<ProactiveInsightSummary>&& value) { SetProactiveInsights(std::move(value)); return *this;}
-
-    /**
-     * <p>An integer that specifies the number of open proactive insights in your
-     * Amazon Web Services account.</p>
-     */
-    inline SearchOrganizationInsightsResult& AddProactiveInsights(const ProactiveInsightSummary& value) { m_proactiveInsights.push_back(value); return *this; }
-
-    /**
-     * <p>An integer that specifies the number of open proactive insights in your
-     * Amazon Web Services account.</p>
-     */
-    inline SearchOrganizationInsightsResult& AddProactiveInsights(ProactiveInsightSummary&& value) { m_proactiveInsights.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>An integer that specifies the number of open reactive insights in your Amazon
      * Web Services account.</p>
      */
-    inline const Aws::Vector<ReactiveInsightSummary>& GetReactiveInsights() const{ return m_reactiveInsights; }
+    inline const Aws::Vector<ReactiveInsightSummary>& GetReactiveInsights() const { return m_reactiveInsights; }
+    template<typename ReactiveInsightsT = Aws::Vector<ReactiveInsightSummary>>
+    void SetReactiveInsights(ReactiveInsightsT&& value) { m_reactiveInsightsHasBeenSet = true; m_reactiveInsights = std::forward<ReactiveInsightsT>(value); }
+    template<typename ReactiveInsightsT = Aws::Vector<ReactiveInsightSummary>>
+    SearchOrganizationInsightsResult& WithReactiveInsights(ReactiveInsightsT&& value) { SetReactiveInsights(std::forward<ReactiveInsightsT>(value)); return *this;}
+    template<typename ReactiveInsightsT = ReactiveInsightSummary>
+    SearchOrganizationInsightsResult& AddReactiveInsights(ReactiveInsightsT&& value) { m_reactiveInsightsHasBeenSet = true; m_reactiveInsights.emplace_back(std::forward<ReactiveInsightsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An integer that specifies the number of open reactive insights in your Amazon
-     * Web Services account.</p>
-     */
-    inline void SetReactiveInsights(const Aws::Vector<ReactiveInsightSummary>& value) { m_reactiveInsights = value; }
-
-    /**
-     * <p>An integer that specifies the number of open reactive insights in your Amazon
-     * Web Services account.</p>
-     */
-    inline void SetReactiveInsights(Aws::Vector<ReactiveInsightSummary>&& value) { m_reactiveInsights = std::move(value); }
-
-    /**
-     * <p>An integer that specifies the number of open reactive insights in your Amazon
-     * Web Services account.</p>
-     */
-    inline SearchOrganizationInsightsResult& WithReactiveInsights(const Aws::Vector<ReactiveInsightSummary>& value) { SetReactiveInsights(value); return *this;}
-
-    /**
-     * <p>An integer that specifies the number of open reactive insights in your Amazon
-     * Web Services account.</p>
-     */
-    inline SearchOrganizationInsightsResult& WithReactiveInsights(Aws::Vector<ReactiveInsightSummary>&& value) { SetReactiveInsights(std::move(value)); return *this;}
-
-    /**
-     * <p>An integer that specifies the number of open reactive insights in your Amazon
-     * Web Services account.</p>
-     */
-    inline SearchOrganizationInsightsResult& AddReactiveInsights(const ReactiveInsightSummary& value) { m_reactiveInsights.push_back(value); return *this; }
-
-    /**
-     * <p>An integer that specifies the number of open reactive insights in your Amazon
-     * Web Services account.</p>
-     */
-    inline SearchOrganizationInsightsResult& AddReactiveInsights(ReactiveInsightSummary&& value) { m_reactiveInsights.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The pagination token to use to retrieve the next page of results for this
      * operation. If there are no more pages, this value is null.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    SearchOrganizationInsightsResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The pagination token to use to retrieve the next page of results for this
-     * operation. If there are no more pages, this value is null.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>The pagination token to use to retrieve the next page of results for this
-     * operation. If there are no more pages, this value is null.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>The pagination token to use to retrieve the next page of results for this
-     * operation. If there are no more pages, this value is null.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>The pagination token to use to retrieve the next page of results for this
-     * operation. If there are no more pages, this value is null.</p>
-     */
-    inline SearchOrganizationInsightsResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The pagination token to use to retrieve the next page of results for this
-     * operation. If there are no more pages, this value is null.</p>
-     */
-    inline SearchOrganizationInsightsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The pagination token to use to retrieve the next page of results for this
-     * operation. If there are no more pages, this value is null.</p>
-     */
-    inline SearchOrganizationInsightsResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline SearchOrganizationInsightsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline SearchOrganizationInsightsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline SearchOrganizationInsightsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    SearchOrganizationInsightsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<ProactiveInsightSummary> m_proactiveInsights;
+    bool m_proactiveInsightsHasBeenSet = false;
 
     Aws::Vector<ReactiveInsightSummary> m_reactiveInsights;
+    bool m_reactiveInsightsHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

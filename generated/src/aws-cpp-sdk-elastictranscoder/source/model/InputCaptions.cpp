@@ -18,15 +18,7 @@ namespace ElasticTranscoder
 namespace Model
 {
 
-InputCaptions::InputCaptions() : 
-    m_mergePolicyHasBeenSet(false),
-    m_captionSourcesHasBeenSet(false)
-{
-}
-
-InputCaptions::InputCaptions(JsonView jsonValue) : 
-    m_mergePolicyHasBeenSet(false),
-    m_captionSourcesHasBeenSet(false)
+InputCaptions::InputCaptions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ InputCaptions& InputCaptions::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("MergePolicy"))
   {
     m_mergePolicy = jsonValue.GetString("MergePolicy");
-
     m_mergePolicyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CaptionSources"))
   {
     Aws::Utils::Array<JsonView> captionSourcesJsonList = jsonValue.GetArray("CaptionSources");
@@ -49,7 +39,6 @@ InputCaptions& InputCaptions::operator =(JsonView jsonValue)
     }
     m_captionSourcesHasBeenSet = true;
   }
-
   return *this;
 }
 

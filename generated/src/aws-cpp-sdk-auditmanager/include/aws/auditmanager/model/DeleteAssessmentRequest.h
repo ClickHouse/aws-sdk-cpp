@@ -21,7 +21,7 @@ namespace Model
   class DeleteAssessmentRequest : public AuditManagerRequest
   {
   public:
-    AWS_AUDITMANAGER_API DeleteAssessmentRequest();
+    AWS_AUDITMANAGER_API DeleteAssessmentRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_AUDITMANAGER_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p> The identifier for the assessment. </p>
      */
-    inline const Aws::String& GetAssessmentId() const{ return m_assessmentId; }
-
-    /**
-     * <p> The identifier for the assessment. </p>
-     */
+    inline const Aws::String& GetAssessmentId() const { return m_assessmentId; }
     inline bool AssessmentIdHasBeenSet() const { return m_assessmentIdHasBeenSet; }
-
-    /**
-     * <p> The identifier for the assessment. </p>
-     */
-    inline void SetAssessmentId(const Aws::String& value) { m_assessmentIdHasBeenSet = true; m_assessmentId = value; }
-
-    /**
-     * <p> The identifier for the assessment. </p>
-     */
-    inline void SetAssessmentId(Aws::String&& value) { m_assessmentIdHasBeenSet = true; m_assessmentId = std::move(value); }
-
-    /**
-     * <p> The identifier for the assessment. </p>
-     */
-    inline void SetAssessmentId(const char* value) { m_assessmentIdHasBeenSet = true; m_assessmentId.assign(value); }
-
-    /**
-     * <p> The identifier for the assessment. </p>
-     */
-    inline DeleteAssessmentRequest& WithAssessmentId(const Aws::String& value) { SetAssessmentId(value); return *this;}
-
-    /**
-     * <p> The identifier for the assessment. </p>
-     */
-    inline DeleteAssessmentRequest& WithAssessmentId(Aws::String&& value) { SetAssessmentId(std::move(value)); return *this;}
-
-    /**
-     * <p> The identifier for the assessment. </p>
-     */
-    inline DeleteAssessmentRequest& WithAssessmentId(const char* value) { SetAssessmentId(value); return *this;}
-
+    template<typename AssessmentIdT = Aws::String>
+    void SetAssessmentId(AssessmentIdT&& value) { m_assessmentIdHasBeenSet = true; m_assessmentId = std::forward<AssessmentIdT>(value); }
+    template<typename AssessmentIdT = Aws::String>
+    DeleteAssessmentRequest& WithAssessmentId(AssessmentIdT&& value) { SetAssessmentId(std::forward<AssessmentIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_assessmentId;

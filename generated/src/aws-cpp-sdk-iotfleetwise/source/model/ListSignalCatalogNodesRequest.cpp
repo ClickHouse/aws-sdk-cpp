@@ -12,14 +12,6 @@ using namespace Aws::IoTFleetWise::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ListSignalCatalogNodesRequest::ListSignalCatalogNodesRequest() : 
-    m_nameHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false)
-{
-}
-
 Aws::String ListSignalCatalogNodesRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -40,6 +32,11 @@ Aws::String ListSignalCatalogNodesRequest::SerializePayload() const
   {
    payload.WithInteger("maxResults", m_maxResults);
 
+  }
+
+  if(m_signalNodeTypeHasBeenSet)
+  {
+   payload.WithString("signalNodeType", SignalNodeTypeMapper::GetNameForSignalNodeType(m_signalNodeType));
   }
 
   return payload.View().WriteReadable();

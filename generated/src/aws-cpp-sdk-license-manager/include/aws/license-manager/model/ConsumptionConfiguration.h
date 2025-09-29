@@ -33,107 +33,48 @@ namespace Model
   class ConsumptionConfiguration
   {
   public:
-    AWS_LICENSEMANAGER_API ConsumptionConfiguration();
+    AWS_LICENSEMANAGER_API ConsumptionConfiguration() = default;
     AWS_LICENSEMANAGER_API ConsumptionConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_LICENSEMANAGER_API ConsumptionConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LICENSEMANAGER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Renewal frequency.</p>
      */
-    inline const RenewType& GetRenewType() const{ return m_renewType; }
-
-    /**
-     * <p>Renewal frequency.</p>
-     */
+    inline RenewType GetRenewType() const { return m_renewType; }
     inline bool RenewTypeHasBeenSet() const { return m_renewTypeHasBeenSet; }
+    inline void SetRenewType(RenewType value) { m_renewTypeHasBeenSet = true; m_renewType = value; }
+    inline ConsumptionConfiguration& WithRenewType(RenewType value) { SetRenewType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Renewal frequency.</p>
-     */
-    inline void SetRenewType(const RenewType& value) { m_renewTypeHasBeenSet = true; m_renewType = value; }
-
-    /**
-     * <p>Renewal frequency.</p>
-     */
-    inline void SetRenewType(RenewType&& value) { m_renewTypeHasBeenSet = true; m_renewType = std::move(value); }
-
-    /**
-     * <p>Renewal frequency.</p>
-     */
-    inline ConsumptionConfiguration& WithRenewType(const RenewType& value) { SetRenewType(value); return *this;}
-
-    /**
-     * <p>Renewal frequency.</p>
-     */
-    inline ConsumptionConfiguration& WithRenewType(RenewType&& value) { SetRenewType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Details about a provisional configuration.</p>
      */
-    inline const ProvisionalConfiguration& GetProvisionalConfiguration() const{ return m_provisionalConfiguration; }
-
-    /**
-     * <p>Details about a provisional configuration.</p>
-     */
+    inline const ProvisionalConfiguration& GetProvisionalConfiguration() const { return m_provisionalConfiguration; }
     inline bool ProvisionalConfigurationHasBeenSet() const { return m_provisionalConfigurationHasBeenSet; }
+    template<typename ProvisionalConfigurationT = ProvisionalConfiguration>
+    void SetProvisionalConfiguration(ProvisionalConfigurationT&& value) { m_provisionalConfigurationHasBeenSet = true; m_provisionalConfiguration = std::forward<ProvisionalConfigurationT>(value); }
+    template<typename ProvisionalConfigurationT = ProvisionalConfiguration>
+    ConsumptionConfiguration& WithProvisionalConfiguration(ProvisionalConfigurationT&& value) { SetProvisionalConfiguration(std::forward<ProvisionalConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Details about a provisional configuration.</p>
-     */
-    inline void SetProvisionalConfiguration(const ProvisionalConfiguration& value) { m_provisionalConfigurationHasBeenSet = true; m_provisionalConfiguration = value; }
-
-    /**
-     * <p>Details about a provisional configuration.</p>
-     */
-    inline void SetProvisionalConfiguration(ProvisionalConfiguration&& value) { m_provisionalConfigurationHasBeenSet = true; m_provisionalConfiguration = std::move(value); }
-
-    /**
-     * <p>Details about a provisional configuration.</p>
-     */
-    inline ConsumptionConfiguration& WithProvisionalConfiguration(const ProvisionalConfiguration& value) { SetProvisionalConfiguration(value); return *this;}
-
-    /**
-     * <p>Details about a provisional configuration.</p>
-     */
-    inline ConsumptionConfiguration& WithProvisionalConfiguration(ProvisionalConfiguration&& value) { SetProvisionalConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Details about a borrow configuration.</p>
      */
-    inline const BorrowConfiguration& GetBorrowConfiguration() const{ return m_borrowConfiguration; }
-
-    /**
-     * <p>Details about a borrow configuration.</p>
-     */
+    inline const BorrowConfiguration& GetBorrowConfiguration() const { return m_borrowConfiguration; }
     inline bool BorrowConfigurationHasBeenSet() const { return m_borrowConfigurationHasBeenSet; }
-
-    /**
-     * <p>Details about a borrow configuration.</p>
-     */
-    inline void SetBorrowConfiguration(const BorrowConfiguration& value) { m_borrowConfigurationHasBeenSet = true; m_borrowConfiguration = value; }
-
-    /**
-     * <p>Details about a borrow configuration.</p>
-     */
-    inline void SetBorrowConfiguration(BorrowConfiguration&& value) { m_borrowConfigurationHasBeenSet = true; m_borrowConfiguration = std::move(value); }
-
-    /**
-     * <p>Details about a borrow configuration.</p>
-     */
-    inline ConsumptionConfiguration& WithBorrowConfiguration(const BorrowConfiguration& value) { SetBorrowConfiguration(value); return *this;}
-
-    /**
-     * <p>Details about a borrow configuration.</p>
-     */
-    inline ConsumptionConfiguration& WithBorrowConfiguration(BorrowConfiguration&& value) { SetBorrowConfiguration(std::move(value)); return *this;}
-
+    template<typename BorrowConfigurationT = BorrowConfiguration>
+    void SetBorrowConfiguration(BorrowConfigurationT&& value) { m_borrowConfigurationHasBeenSet = true; m_borrowConfiguration = std::forward<BorrowConfigurationT>(value); }
+    template<typename BorrowConfigurationT = BorrowConfiguration>
+    ConsumptionConfiguration& WithBorrowConfiguration(BorrowConfigurationT&& value) { SetBorrowConfiguration(std::forward<BorrowConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
-    RenewType m_renewType;
+    RenewType m_renewType{RenewType::NOT_SET};
     bool m_renewTypeHasBeenSet = false;
 
     ProvisionalConfiguration m_provisionalConfiguration;

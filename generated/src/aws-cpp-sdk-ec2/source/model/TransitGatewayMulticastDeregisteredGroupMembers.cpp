@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-TransitGatewayMulticastDeregisteredGroupMembers::TransitGatewayMulticastDeregisteredGroupMembers() : 
-    m_transitGatewayMulticastDomainIdHasBeenSet(false),
-    m_deregisteredNetworkInterfaceIdsHasBeenSet(false),
-    m_groupIpAddressHasBeenSet(false)
-{
-}
-
-TransitGatewayMulticastDeregisteredGroupMembers::TransitGatewayMulticastDeregisteredGroupMembers(const XmlNode& xmlNode) : 
-    m_transitGatewayMulticastDomainIdHasBeenSet(false),
-    m_deregisteredNetworkInterfaceIdsHasBeenSet(false),
-    m_groupIpAddressHasBeenSet(false)
+TransitGatewayMulticastDeregisteredGroupMembers::TransitGatewayMulticastDeregisteredGroupMembers(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -51,6 +41,7 @@ TransitGatewayMulticastDeregisteredGroupMembers& TransitGatewayMulticastDeregist
     if(!deregisteredNetworkInterfaceIdsNode.IsNull())
     {
       XmlNode deregisteredNetworkInterfaceIdsMember = deregisteredNetworkInterfaceIdsNode.FirstChild("item");
+      m_deregisteredNetworkInterfaceIdsHasBeenSet = !deregisteredNetworkInterfaceIdsMember.IsNull();
       while(!deregisteredNetworkInterfaceIdsMember.IsNull())
       {
         m_deregisteredNetworkInterfaceIds.push_back(deregisteredNetworkInterfaceIdsMember.GetText());

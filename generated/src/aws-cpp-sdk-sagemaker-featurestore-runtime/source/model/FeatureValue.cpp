@@ -18,17 +18,7 @@ namespace SageMakerFeatureStoreRuntime
 namespace Model
 {
 
-FeatureValue::FeatureValue() : 
-    m_featureNameHasBeenSet(false),
-    m_valueAsStringHasBeenSet(false),
-    m_valueAsStringListHasBeenSet(false)
-{
-}
-
-FeatureValue::FeatureValue(JsonView jsonValue) : 
-    m_featureNameHasBeenSet(false),
-    m_valueAsStringHasBeenSet(false),
-    m_valueAsStringListHasBeenSet(false)
+FeatureValue::FeatureValue(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ FeatureValue& FeatureValue::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("FeatureName"))
   {
     m_featureName = jsonValue.GetString("FeatureName");
-
     m_featureNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ValueAsString"))
   {
     m_valueAsString = jsonValue.GetString("ValueAsString");
-
     m_valueAsStringHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ValueAsStringList"))
   {
     Aws::Utils::Array<JsonView> valueAsStringListJsonList = jsonValue.GetArray("ValueAsStringList");
@@ -58,7 +44,6 @@ FeatureValue& FeatureValue::operator =(JsonView jsonValue)
     }
     m_valueAsStringListHasBeenSet = true;
   }
-
   return *this;
 }
 

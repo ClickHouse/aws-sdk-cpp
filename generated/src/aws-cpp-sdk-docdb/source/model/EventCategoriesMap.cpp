@@ -20,15 +20,7 @@ namespace DocDB
 namespace Model
 {
 
-EventCategoriesMap::EventCategoriesMap() : 
-    m_sourceTypeHasBeenSet(false),
-    m_eventCategoriesHasBeenSet(false)
-{
-}
-
-EventCategoriesMap::EventCategoriesMap(const XmlNode& xmlNode) : 
-    m_sourceTypeHasBeenSet(false),
-    m_eventCategoriesHasBeenSet(false)
+EventCategoriesMap::EventCategoriesMap(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -49,6 +41,7 @@ EventCategoriesMap& EventCategoriesMap::operator =(const XmlNode& xmlNode)
     if(!eventCategoriesNode.IsNull())
     {
       XmlNode eventCategoriesMember = eventCategoriesNode.FirstChild("EventCategory");
+      m_eventCategoriesHasBeenSet = !eventCategoriesMember.IsNull();
       while(!eventCategoriesMember.IsNull())
       {
         m_eventCategories.push_back(eventCategoriesMember.GetText());
@@ -74,7 +67,7 @@ void EventCategoriesMap::OutputToStream(Aws::OStream& oStream, const char* locat
       unsigned eventCategoriesIdx = 1;
       for(auto& item : m_eventCategories)
       {
-        oStream << location << index << locationValue << ".EventCategory." << eventCategoriesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << index << locationValue << ".EventCategories.EventCategory." << eventCategoriesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
 
@@ -91,7 +84,7 @@ void EventCategoriesMap::OutputToStream(Aws::OStream& oStream, const char* locat
       unsigned eventCategoriesIdx = 1;
       for(auto& item : m_eventCategories)
       {
-        oStream << location << ".EventCategory." << eventCategoriesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".EventCategories.EventCategory." << eventCategoriesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
 }

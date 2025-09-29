@@ -24,7 +24,7 @@ namespace Model
   class CreateTransitGatewayPeeringAttachmentRequest : public EC2Request
   {
   public:
-    AWS_EC2_API CreateTransitGatewayPeeringAttachmentRequest();
+    AWS_EC2_API CreateTransitGatewayPeeringAttachmentRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,290 +39,94 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The ID of the transit gateway.</p>
      */
-    inline const Aws::String& GetTransitGatewayId() const{ return m_transitGatewayId; }
-
-    /**
-     * <p>The ID of the transit gateway.</p>
-     */
+    inline const Aws::String& GetTransitGatewayId() const { return m_transitGatewayId; }
     inline bool TransitGatewayIdHasBeenSet() const { return m_transitGatewayIdHasBeenSet; }
+    template<typename TransitGatewayIdT = Aws::String>
+    void SetTransitGatewayId(TransitGatewayIdT&& value) { m_transitGatewayIdHasBeenSet = true; m_transitGatewayId = std::forward<TransitGatewayIdT>(value); }
+    template<typename TransitGatewayIdT = Aws::String>
+    CreateTransitGatewayPeeringAttachmentRequest& WithTransitGatewayId(TransitGatewayIdT&& value) { SetTransitGatewayId(std::forward<TransitGatewayIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the transit gateway.</p>
-     */
-    inline void SetTransitGatewayId(const Aws::String& value) { m_transitGatewayIdHasBeenSet = true; m_transitGatewayId = value; }
-
-    /**
-     * <p>The ID of the transit gateway.</p>
-     */
-    inline void SetTransitGatewayId(Aws::String&& value) { m_transitGatewayIdHasBeenSet = true; m_transitGatewayId = std::move(value); }
-
-    /**
-     * <p>The ID of the transit gateway.</p>
-     */
-    inline void SetTransitGatewayId(const char* value) { m_transitGatewayIdHasBeenSet = true; m_transitGatewayId.assign(value); }
-
-    /**
-     * <p>The ID of the transit gateway.</p>
-     */
-    inline CreateTransitGatewayPeeringAttachmentRequest& WithTransitGatewayId(const Aws::String& value) { SetTransitGatewayId(value); return *this;}
-
-    /**
-     * <p>The ID of the transit gateway.</p>
-     */
-    inline CreateTransitGatewayPeeringAttachmentRequest& WithTransitGatewayId(Aws::String&& value) { SetTransitGatewayId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the transit gateway.</p>
-     */
-    inline CreateTransitGatewayPeeringAttachmentRequest& WithTransitGatewayId(const char* value) { SetTransitGatewayId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the peer transit gateway with which to create the peering
      * attachment.</p>
      */
-    inline const Aws::String& GetPeerTransitGatewayId() const{ return m_peerTransitGatewayId; }
-
-    /**
-     * <p>The ID of the peer transit gateway with which to create the peering
-     * attachment.</p>
-     */
+    inline const Aws::String& GetPeerTransitGatewayId() const { return m_peerTransitGatewayId; }
     inline bool PeerTransitGatewayIdHasBeenSet() const { return m_peerTransitGatewayIdHasBeenSet; }
+    template<typename PeerTransitGatewayIdT = Aws::String>
+    void SetPeerTransitGatewayId(PeerTransitGatewayIdT&& value) { m_peerTransitGatewayIdHasBeenSet = true; m_peerTransitGatewayId = std::forward<PeerTransitGatewayIdT>(value); }
+    template<typename PeerTransitGatewayIdT = Aws::String>
+    CreateTransitGatewayPeeringAttachmentRequest& WithPeerTransitGatewayId(PeerTransitGatewayIdT&& value) { SetPeerTransitGatewayId(std::forward<PeerTransitGatewayIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the peer transit gateway with which to create the peering
-     * attachment.</p>
-     */
-    inline void SetPeerTransitGatewayId(const Aws::String& value) { m_peerTransitGatewayIdHasBeenSet = true; m_peerTransitGatewayId = value; }
-
-    /**
-     * <p>The ID of the peer transit gateway with which to create the peering
-     * attachment.</p>
-     */
-    inline void SetPeerTransitGatewayId(Aws::String&& value) { m_peerTransitGatewayIdHasBeenSet = true; m_peerTransitGatewayId = std::move(value); }
-
-    /**
-     * <p>The ID of the peer transit gateway with which to create the peering
-     * attachment.</p>
-     */
-    inline void SetPeerTransitGatewayId(const char* value) { m_peerTransitGatewayIdHasBeenSet = true; m_peerTransitGatewayId.assign(value); }
-
-    /**
-     * <p>The ID of the peer transit gateway with which to create the peering
-     * attachment.</p>
-     */
-    inline CreateTransitGatewayPeeringAttachmentRequest& WithPeerTransitGatewayId(const Aws::String& value) { SetPeerTransitGatewayId(value); return *this;}
-
-    /**
-     * <p>The ID of the peer transit gateway with which to create the peering
-     * attachment.</p>
-     */
-    inline CreateTransitGatewayPeeringAttachmentRequest& WithPeerTransitGatewayId(Aws::String&& value) { SetPeerTransitGatewayId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the peer transit gateway with which to create the peering
-     * attachment.</p>
-     */
-    inline CreateTransitGatewayPeeringAttachmentRequest& WithPeerTransitGatewayId(const char* value) { SetPeerTransitGatewayId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the Amazon Web Services account that owns the peer transit
      * gateway.</p>
      */
-    inline const Aws::String& GetPeerAccountId() const{ return m_peerAccountId; }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that owns the peer transit
-     * gateway.</p>
-     */
+    inline const Aws::String& GetPeerAccountId() const { return m_peerAccountId; }
     inline bool PeerAccountIdHasBeenSet() const { return m_peerAccountIdHasBeenSet; }
+    template<typename PeerAccountIdT = Aws::String>
+    void SetPeerAccountId(PeerAccountIdT&& value) { m_peerAccountIdHasBeenSet = true; m_peerAccountId = std::forward<PeerAccountIdT>(value); }
+    template<typename PeerAccountIdT = Aws::String>
+    CreateTransitGatewayPeeringAttachmentRequest& WithPeerAccountId(PeerAccountIdT&& value) { SetPeerAccountId(std::forward<PeerAccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Amazon Web Services account that owns the peer transit
-     * gateway.</p>
-     */
-    inline void SetPeerAccountId(const Aws::String& value) { m_peerAccountIdHasBeenSet = true; m_peerAccountId = value; }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that owns the peer transit
-     * gateway.</p>
-     */
-    inline void SetPeerAccountId(Aws::String&& value) { m_peerAccountIdHasBeenSet = true; m_peerAccountId = std::move(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that owns the peer transit
-     * gateway.</p>
-     */
-    inline void SetPeerAccountId(const char* value) { m_peerAccountIdHasBeenSet = true; m_peerAccountId.assign(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that owns the peer transit
-     * gateway.</p>
-     */
-    inline CreateTransitGatewayPeeringAttachmentRequest& WithPeerAccountId(const Aws::String& value) { SetPeerAccountId(value); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services account that owns the peer transit
-     * gateway.</p>
-     */
-    inline CreateTransitGatewayPeeringAttachmentRequest& WithPeerAccountId(Aws::String&& value) { SetPeerAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services account that owns the peer transit
-     * gateway.</p>
-     */
-    inline CreateTransitGatewayPeeringAttachmentRequest& WithPeerAccountId(const char* value) { SetPeerAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Region where the peer transit gateway is located.</p>
      */
-    inline const Aws::String& GetPeerRegion() const{ return m_peerRegion; }
-
-    /**
-     * <p>The Region where the peer transit gateway is located.</p>
-     */
+    inline const Aws::String& GetPeerRegion() const { return m_peerRegion; }
     inline bool PeerRegionHasBeenSet() const { return m_peerRegionHasBeenSet; }
+    template<typename PeerRegionT = Aws::String>
+    void SetPeerRegion(PeerRegionT&& value) { m_peerRegionHasBeenSet = true; m_peerRegion = std::forward<PeerRegionT>(value); }
+    template<typename PeerRegionT = Aws::String>
+    CreateTransitGatewayPeeringAttachmentRequest& WithPeerRegion(PeerRegionT&& value) { SetPeerRegion(std::forward<PeerRegionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Region where the peer transit gateway is located.</p>
-     */
-    inline void SetPeerRegion(const Aws::String& value) { m_peerRegionHasBeenSet = true; m_peerRegion = value; }
-
-    /**
-     * <p>The Region where the peer transit gateway is located.</p>
-     */
-    inline void SetPeerRegion(Aws::String&& value) { m_peerRegionHasBeenSet = true; m_peerRegion = std::move(value); }
-
-    /**
-     * <p>The Region where the peer transit gateway is located.</p>
-     */
-    inline void SetPeerRegion(const char* value) { m_peerRegionHasBeenSet = true; m_peerRegion.assign(value); }
-
-    /**
-     * <p>The Region where the peer transit gateway is located.</p>
-     */
-    inline CreateTransitGatewayPeeringAttachmentRequest& WithPeerRegion(const Aws::String& value) { SetPeerRegion(value); return *this;}
-
-    /**
-     * <p>The Region where the peer transit gateway is located.</p>
-     */
-    inline CreateTransitGatewayPeeringAttachmentRequest& WithPeerRegion(Aws::String&& value) { SetPeerRegion(std::move(value)); return *this;}
-
-    /**
-     * <p>The Region where the peer transit gateway is located.</p>
-     */
-    inline CreateTransitGatewayPeeringAttachmentRequest& WithPeerRegion(const char* value) { SetPeerRegion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Requests a transit gateway peering attachment.</p>
      */
-    inline const CreateTransitGatewayPeeringAttachmentRequestOptions& GetOptions() const{ return m_options; }
-
-    /**
-     * <p>Requests a transit gateway peering attachment.</p>
-     */
+    inline const CreateTransitGatewayPeeringAttachmentRequestOptions& GetOptions() const { return m_options; }
     inline bool OptionsHasBeenSet() const { return m_optionsHasBeenSet; }
+    template<typename OptionsT = CreateTransitGatewayPeeringAttachmentRequestOptions>
+    void SetOptions(OptionsT&& value) { m_optionsHasBeenSet = true; m_options = std::forward<OptionsT>(value); }
+    template<typename OptionsT = CreateTransitGatewayPeeringAttachmentRequestOptions>
+    CreateTransitGatewayPeeringAttachmentRequest& WithOptions(OptionsT&& value) { SetOptions(std::forward<OptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Requests a transit gateway peering attachment.</p>
-     */
-    inline void SetOptions(const CreateTransitGatewayPeeringAttachmentRequestOptions& value) { m_optionsHasBeenSet = true; m_options = value; }
-
-    /**
-     * <p>Requests a transit gateway peering attachment.</p>
-     */
-    inline void SetOptions(CreateTransitGatewayPeeringAttachmentRequestOptions&& value) { m_optionsHasBeenSet = true; m_options = std::move(value); }
-
-    /**
-     * <p>Requests a transit gateway peering attachment.</p>
-     */
-    inline CreateTransitGatewayPeeringAttachmentRequest& WithOptions(const CreateTransitGatewayPeeringAttachmentRequestOptions& value) { SetOptions(value); return *this;}
-
-    /**
-     * <p>Requests a transit gateway peering attachment.</p>
-     */
-    inline CreateTransitGatewayPeeringAttachmentRequest& WithOptions(CreateTransitGatewayPeeringAttachmentRequestOptions&& value) { SetOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The tags to apply to the transit gateway peering attachment.</p>
      */
-    inline const Aws::Vector<TagSpecification>& GetTagSpecifications() const{ return m_tagSpecifications; }
-
-    /**
-     * <p>The tags to apply to the transit gateway peering attachment.</p>
-     */
+    inline const Aws::Vector<TagSpecification>& GetTagSpecifications() const { return m_tagSpecifications; }
     inline bool TagSpecificationsHasBeenSet() const { return m_tagSpecificationsHasBeenSet; }
+    template<typename TagSpecificationsT = Aws::Vector<TagSpecification>>
+    void SetTagSpecifications(TagSpecificationsT&& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications = std::forward<TagSpecificationsT>(value); }
+    template<typename TagSpecificationsT = Aws::Vector<TagSpecification>>
+    CreateTransitGatewayPeeringAttachmentRequest& WithTagSpecifications(TagSpecificationsT&& value) { SetTagSpecifications(std::forward<TagSpecificationsT>(value)); return *this;}
+    template<typename TagSpecificationsT = TagSpecification>
+    CreateTransitGatewayPeeringAttachmentRequest& AddTagSpecifications(TagSpecificationsT&& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications.emplace_back(std::forward<TagSpecificationsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The tags to apply to the transit gateway peering attachment.</p>
-     */
-    inline void SetTagSpecifications(const Aws::Vector<TagSpecification>& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications = value; }
-
-    /**
-     * <p>The tags to apply to the transit gateway peering attachment.</p>
-     */
-    inline void SetTagSpecifications(Aws::Vector<TagSpecification>&& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications = std::move(value); }
-
-    /**
-     * <p>The tags to apply to the transit gateway peering attachment.</p>
-     */
-    inline CreateTransitGatewayPeeringAttachmentRequest& WithTagSpecifications(const Aws::Vector<TagSpecification>& value) { SetTagSpecifications(value); return *this;}
-
-    /**
-     * <p>The tags to apply to the transit gateway peering attachment.</p>
-     */
-    inline CreateTransitGatewayPeeringAttachmentRequest& WithTagSpecifications(Aws::Vector<TagSpecification>&& value) { SetTagSpecifications(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags to apply to the transit gateway peering attachment.</p>
-     */
-    inline CreateTransitGatewayPeeringAttachmentRequest& AddTagSpecifications(const TagSpecification& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications.push_back(value); return *this; }
-
-    /**
-     * <p>The tags to apply to the transit gateway peering attachment.</p>
-     */
-    inline CreateTransitGatewayPeeringAttachmentRequest& AddTagSpecifications(TagSpecification&& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
      * required permissions, the error response is <code>DryRunOperation</code>.
      * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
      */
-    inline bool GetDryRun() const{ return m_dryRun; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
+    inline bool GetDryRun() const { return m_dryRun; }
     inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline CreateTransitGatewayPeeringAttachmentRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_transitGatewayId;
@@ -343,7 +147,7 @@ namespace Model
     Aws::Vector<TagSpecification> m_tagSpecifications;
     bool m_tagSpecificationsHasBeenSet = false;
 
-    bool m_dryRun;
+    bool m_dryRun{false};
     bool m_dryRunHasBeenSet = false;
   };
 

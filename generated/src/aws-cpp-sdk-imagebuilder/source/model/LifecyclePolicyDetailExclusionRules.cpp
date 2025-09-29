@@ -18,15 +18,7 @@ namespace imagebuilder
 namespace Model
 {
 
-LifecyclePolicyDetailExclusionRules::LifecyclePolicyDetailExclusionRules() : 
-    m_tagMapHasBeenSet(false),
-    m_amisHasBeenSet(false)
-{
-}
-
-LifecyclePolicyDetailExclusionRules::LifecyclePolicyDetailExclusionRules(JsonView jsonValue) : 
-    m_tagMapHasBeenSet(false),
-    m_amisHasBeenSet(false)
+LifecyclePolicyDetailExclusionRules::LifecyclePolicyDetailExclusionRules(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ LifecyclePolicyDetailExclusionRules& LifecyclePolicyDetailExclusionRules::operat
     }
     m_tagMapHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("amis"))
   {
     m_amis = jsonValue.GetObject("amis");
-
     m_amisHasBeenSet = true;
   }
-
   return *this;
 }
 

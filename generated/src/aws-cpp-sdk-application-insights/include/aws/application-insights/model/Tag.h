@@ -37,134 +37,48 @@ namespace Model
    * apply to tags:</p> <ul> <li> <p>Tag keys and values are case sensitive.</p>
    * </li> <li> <p>For each associated resource, each tag key must be unique and it
    * can have only one value.</p> </li> <li> <p>The <code>aws:</code> prefix is
-   * reserved for use by AWS; you can’t use it in any tag keys or values that you
-   * define. In addition, you can't edit or remove tag keys or values that use this
-   * prefix. </p> </li> </ul><p><h3>See Also:</h3>   <a
+   * reserved for use by Amazon Web Services; you can’t use it in any tag keys or
+   * values that you define. In addition, you can't edit or remove tag keys or values
+   * that use this prefix. </p> </li> </ul><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/application-insights-2018-11-25/Tag">AWS
    * API Reference</a></p>
    */
   class Tag
   {
   public:
-    AWS_APPLICATIONINSIGHTS_API Tag();
+    AWS_APPLICATIONINSIGHTS_API Tag() = default;
     AWS_APPLICATIONINSIGHTS_API Tag(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPLICATIONINSIGHTS_API Tag& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPLICATIONINSIGHTS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>One part of a key-value pair that defines a tag. The maximum length of a tag
      * key is 128 characters. The minimum length is 1 character.</p>
      */
-    inline const Aws::String& GetKey() const{ return m_key; }
-
-    /**
-     * <p>One part of a key-value pair that defines a tag. The maximum length of a tag
-     * key is 128 characters. The minimum length is 1 character.</p>
-     */
+    inline const Aws::String& GetKey() const { return m_key; }
     inline bool KeyHasBeenSet() const { return m_keyHasBeenSet; }
+    template<typename KeyT = Aws::String>
+    void SetKey(KeyT&& value) { m_keyHasBeenSet = true; m_key = std::forward<KeyT>(value); }
+    template<typename KeyT = Aws::String>
+    Tag& WithKey(KeyT&& value) { SetKey(std::forward<KeyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>One part of a key-value pair that defines a tag. The maximum length of a tag
-     * key is 128 characters. The minimum length is 1 character.</p>
-     */
-    inline void SetKey(const Aws::String& value) { m_keyHasBeenSet = true; m_key = value; }
-
-    /**
-     * <p>One part of a key-value pair that defines a tag. The maximum length of a tag
-     * key is 128 characters. The minimum length is 1 character.</p>
-     */
-    inline void SetKey(Aws::String&& value) { m_keyHasBeenSet = true; m_key = std::move(value); }
-
-    /**
-     * <p>One part of a key-value pair that defines a tag. The maximum length of a tag
-     * key is 128 characters. The minimum length is 1 character.</p>
-     */
-    inline void SetKey(const char* value) { m_keyHasBeenSet = true; m_key.assign(value); }
-
-    /**
-     * <p>One part of a key-value pair that defines a tag. The maximum length of a tag
-     * key is 128 characters. The minimum length is 1 character.</p>
-     */
-    inline Tag& WithKey(const Aws::String& value) { SetKey(value); return *this;}
-
-    /**
-     * <p>One part of a key-value pair that defines a tag. The maximum length of a tag
-     * key is 128 characters. The minimum length is 1 character.</p>
-     */
-    inline Tag& WithKey(Aws::String&& value) { SetKey(std::move(value)); return *this;}
-
-    /**
-     * <p>One part of a key-value pair that defines a tag. The maximum length of a tag
-     * key is 128 characters. The minimum length is 1 character.</p>
-     */
-    inline Tag& WithKey(const char* value) { SetKey(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The optional part of a key-value pair that defines a tag. The maximum length
      * of a tag value is 256 characters. The minimum length is 0 characters. If you
      * don't want an application to have a specific tag value, don't specify a value
      * for this parameter.</p>
      */
-    inline const Aws::String& GetValue() const{ return m_value; }
-
-    /**
-     * <p>The optional part of a key-value pair that defines a tag. The maximum length
-     * of a tag value is 256 characters. The minimum length is 0 characters. If you
-     * don't want an application to have a specific tag value, don't specify a value
-     * for this parameter.</p>
-     */
+    inline const Aws::String& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>The optional part of a key-value pair that defines a tag. The maximum length
-     * of a tag value is 256 characters. The minimum length is 0 characters. If you
-     * don't want an application to have a specific tag value, don't specify a value
-     * for this parameter.</p>
-     */
-    inline void SetValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The optional part of a key-value pair that defines a tag. The maximum length
-     * of a tag value is 256 characters. The minimum length is 0 characters. If you
-     * don't want an application to have a specific tag value, don't specify a value
-     * for this parameter.</p>
-     */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>The optional part of a key-value pair that defines a tag. The maximum length
-     * of a tag value is 256 characters. The minimum length is 0 characters. If you
-     * don't want an application to have a specific tag value, don't specify a value
-     * for this parameter.</p>
-     */
-    inline void SetValue(const char* value) { m_valueHasBeenSet = true; m_value.assign(value); }
-
-    /**
-     * <p>The optional part of a key-value pair that defines a tag. The maximum length
-     * of a tag value is 256 characters. The minimum length is 0 characters. If you
-     * don't want an application to have a specific tag value, don't specify a value
-     * for this parameter.</p>
-     */
-    inline Tag& WithValue(const Aws::String& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>The optional part of a key-value pair that defines a tag. The maximum length
-     * of a tag value is 256 characters. The minimum length is 0 characters. If you
-     * don't want an application to have a specific tag value, don't specify a value
-     * for this parameter.</p>
-     */
-    inline Tag& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The optional part of a key-value pair that defines a tag. The maximum length
-     * of a tag value is 256 characters. The minimum length is 0 characters. If you
-     * don't want an application to have a specific tag value, don't specify a value
-     * for this parameter.</p>
-     */
-    inline Tag& WithValue(const char* value) { SetValue(value); return *this;}
-
+    template<typename ValueT = Aws::String>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::String>
+    Tag& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_key;

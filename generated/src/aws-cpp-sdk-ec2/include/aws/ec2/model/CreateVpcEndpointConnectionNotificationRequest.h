@@ -22,7 +22,7 @@ namespace Model
   class CreateVpcEndpointConnectionNotificationRequest : public EC2Request
   {
   public:
-    AWS_EC2_API CreateVpcEndpointConnectionNotificationRequest();
+    AWS_EC2_API CreateVpcEndpointConnectionNotificationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,293 +37,88 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
      * required permissions, the error response is <code>DryRunOperation</code>.
      * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
      */
-    inline bool GetDryRun() const{ return m_dryRun; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
+    inline bool GetDryRun() const { return m_dryRun; }
     inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline CreateVpcEndpointConnectionNotificationRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The ID of the endpoint service.</p>
      */
-    inline const Aws::String& GetServiceId() const{ return m_serviceId; }
-
-    /**
-     * <p>The ID of the endpoint service.</p>
-     */
+    inline const Aws::String& GetServiceId() const { return m_serviceId; }
     inline bool ServiceIdHasBeenSet() const { return m_serviceIdHasBeenSet; }
+    template<typename ServiceIdT = Aws::String>
+    void SetServiceId(ServiceIdT&& value) { m_serviceIdHasBeenSet = true; m_serviceId = std::forward<ServiceIdT>(value); }
+    template<typename ServiceIdT = Aws::String>
+    CreateVpcEndpointConnectionNotificationRequest& WithServiceId(ServiceIdT&& value) { SetServiceId(std::forward<ServiceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the endpoint service.</p>
-     */
-    inline void SetServiceId(const Aws::String& value) { m_serviceIdHasBeenSet = true; m_serviceId = value; }
-
-    /**
-     * <p>The ID of the endpoint service.</p>
-     */
-    inline void SetServiceId(Aws::String&& value) { m_serviceIdHasBeenSet = true; m_serviceId = std::move(value); }
-
-    /**
-     * <p>The ID of the endpoint service.</p>
-     */
-    inline void SetServiceId(const char* value) { m_serviceIdHasBeenSet = true; m_serviceId.assign(value); }
-
-    /**
-     * <p>The ID of the endpoint service.</p>
-     */
-    inline CreateVpcEndpointConnectionNotificationRequest& WithServiceId(const Aws::String& value) { SetServiceId(value); return *this;}
-
-    /**
-     * <p>The ID of the endpoint service.</p>
-     */
-    inline CreateVpcEndpointConnectionNotificationRequest& WithServiceId(Aws::String&& value) { SetServiceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the endpoint service.</p>
-     */
-    inline CreateVpcEndpointConnectionNotificationRequest& WithServiceId(const char* value) { SetServiceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the endpoint.</p>
      */
-    inline const Aws::String& GetVpcEndpointId() const{ return m_vpcEndpointId; }
-
-    /**
-     * <p>The ID of the endpoint.</p>
-     */
+    inline const Aws::String& GetVpcEndpointId() const { return m_vpcEndpointId; }
     inline bool VpcEndpointIdHasBeenSet() const { return m_vpcEndpointIdHasBeenSet; }
+    template<typename VpcEndpointIdT = Aws::String>
+    void SetVpcEndpointId(VpcEndpointIdT&& value) { m_vpcEndpointIdHasBeenSet = true; m_vpcEndpointId = std::forward<VpcEndpointIdT>(value); }
+    template<typename VpcEndpointIdT = Aws::String>
+    CreateVpcEndpointConnectionNotificationRequest& WithVpcEndpointId(VpcEndpointIdT&& value) { SetVpcEndpointId(std::forward<VpcEndpointIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the endpoint.</p>
-     */
-    inline void SetVpcEndpointId(const Aws::String& value) { m_vpcEndpointIdHasBeenSet = true; m_vpcEndpointId = value; }
-
-    /**
-     * <p>The ID of the endpoint.</p>
-     */
-    inline void SetVpcEndpointId(Aws::String&& value) { m_vpcEndpointIdHasBeenSet = true; m_vpcEndpointId = std::move(value); }
-
-    /**
-     * <p>The ID of the endpoint.</p>
-     */
-    inline void SetVpcEndpointId(const char* value) { m_vpcEndpointIdHasBeenSet = true; m_vpcEndpointId.assign(value); }
-
-    /**
-     * <p>The ID of the endpoint.</p>
-     */
-    inline CreateVpcEndpointConnectionNotificationRequest& WithVpcEndpointId(const Aws::String& value) { SetVpcEndpointId(value); return *this;}
-
-    /**
-     * <p>The ID of the endpoint.</p>
-     */
-    inline CreateVpcEndpointConnectionNotificationRequest& WithVpcEndpointId(Aws::String&& value) { SetVpcEndpointId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the endpoint.</p>
-     */
-    inline CreateVpcEndpointConnectionNotificationRequest& WithVpcEndpointId(const char* value) { SetVpcEndpointId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the SNS topic for the notifications.</p>
      */
-    inline const Aws::String& GetConnectionNotificationArn() const{ return m_connectionNotificationArn; }
-
-    /**
-     * <p>The ARN of the SNS topic for the notifications.</p>
-     */
+    inline const Aws::String& GetConnectionNotificationArn() const { return m_connectionNotificationArn; }
     inline bool ConnectionNotificationArnHasBeenSet() const { return m_connectionNotificationArnHasBeenSet; }
+    template<typename ConnectionNotificationArnT = Aws::String>
+    void SetConnectionNotificationArn(ConnectionNotificationArnT&& value) { m_connectionNotificationArnHasBeenSet = true; m_connectionNotificationArn = std::forward<ConnectionNotificationArnT>(value); }
+    template<typename ConnectionNotificationArnT = Aws::String>
+    CreateVpcEndpointConnectionNotificationRequest& WithConnectionNotificationArn(ConnectionNotificationArnT&& value) { SetConnectionNotificationArn(std::forward<ConnectionNotificationArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the SNS topic for the notifications.</p>
-     */
-    inline void SetConnectionNotificationArn(const Aws::String& value) { m_connectionNotificationArnHasBeenSet = true; m_connectionNotificationArn = value; }
-
-    /**
-     * <p>The ARN of the SNS topic for the notifications.</p>
-     */
-    inline void SetConnectionNotificationArn(Aws::String&& value) { m_connectionNotificationArnHasBeenSet = true; m_connectionNotificationArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the SNS topic for the notifications.</p>
-     */
-    inline void SetConnectionNotificationArn(const char* value) { m_connectionNotificationArnHasBeenSet = true; m_connectionNotificationArn.assign(value); }
-
-    /**
-     * <p>The ARN of the SNS topic for the notifications.</p>
-     */
-    inline CreateVpcEndpointConnectionNotificationRequest& WithConnectionNotificationArn(const Aws::String& value) { SetConnectionNotificationArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the SNS topic for the notifications.</p>
-     */
-    inline CreateVpcEndpointConnectionNotificationRequest& WithConnectionNotificationArn(Aws::String&& value) { SetConnectionNotificationArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the SNS topic for the notifications.</p>
-     */
-    inline CreateVpcEndpointConnectionNotificationRequest& WithConnectionNotificationArn(const char* value) { SetConnectionNotificationArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The endpoint events for which to receive notifications. Valid values are
      * <code>Accept</code>, <code>Connect</code>, <code>Delete</code>, and
      * <code>Reject</code>.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetConnectionEvents() const{ return m_connectionEvents; }
-
-    /**
-     * <p>The endpoint events for which to receive notifications. Valid values are
-     * <code>Accept</code>, <code>Connect</code>, <code>Delete</code>, and
-     * <code>Reject</code>.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetConnectionEvents() const { return m_connectionEvents; }
     inline bool ConnectionEventsHasBeenSet() const { return m_connectionEventsHasBeenSet; }
+    template<typename ConnectionEventsT = Aws::Vector<Aws::String>>
+    void SetConnectionEvents(ConnectionEventsT&& value) { m_connectionEventsHasBeenSet = true; m_connectionEvents = std::forward<ConnectionEventsT>(value); }
+    template<typename ConnectionEventsT = Aws::Vector<Aws::String>>
+    CreateVpcEndpointConnectionNotificationRequest& WithConnectionEvents(ConnectionEventsT&& value) { SetConnectionEvents(std::forward<ConnectionEventsT>(value)); return *this;}
+    template<typename ConnectionEventsT = Aws::String>
+    CreateVpcEndpointConnectionNotificationRequest& AddConnectionEvents(ConnectionEventsT&& value) { m_connectionEventsHasBeenSet = true; m_connectionEvents.emplace_back(std::forward<ConnectionEventsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The endpoint events for which to receive notifications. Valid values are
-     * <code>Accept</code>, <code>Connect</code>, <code>Delete</code>, and
-     * <code>Reject</code>.</p>
-     */
-    inline void SetConnectionEvents(const Aws::Vector<Aws::String>& value) { m_connectionEventsHasBeenSet = true; m_connectionEvents = value; }
-
-    /**
-     * <p>The endpoint events for which to receive notifications. Valid values are
-     * <code>Accept</code>, <code>Connect</code>, <code>Delete</code>, and
-     * <code>Reject</code>.</p>
-     */
-    inline void SetConnectionEvents(Aws::Vector<Aws::String>&& value) { m_connectionEventsHasBeenSet = true; m_connectionEvents = std::move(value); }
-
-    /**
-     * <p>The endpoint events for which to receive notifications. Valid values are
-     * <code>Accept</code>, <code>Connect</code>, <code>Delete</code>, and
-     * <code>Reject</code>.</p>
-     */
-    inline CreateVpcEndpointConnectionNotificationRequest& WithConnectionEvents(const Aws::Vector<Aws::String>& value) { SetConnectionEvents(value); return *this;}
-
-    /**
-     * <p>The endpoint events for which to receive notifications. Valid values are
-     * <code>Accept</code>, <code>Connect</code>, <code>Delete</code>, and
-     * <code>Reject</code>.</p>
-     */
-    inline CreateVpcEndpointConnectionNotificationRequest& WithConnectionEvents(Aws::Vector<Aws::String>&& value) { SetConnectionEvents(std::move(value)); return *this;}
-
-    /**
-     * <p>The endpoint events for which to receive notifications. Valid values are
-     * <code>Accept</code>, <code>Connect</code>, <code>Delete</code>, and
-     * <code>Reject</code>.</p>
-     */
-    inline CreateVpcEndpointConnectionNotificationRequest& AddConnectionEvents(const Aws::String& value) { m_connectionEventsHasBeenSet = true; m_connectionEvents.push_back(value); return *this; }
-
-    /**
-     * <p>The endpoint events for which to receive notifications. Valid values are
-     * <code>Accept</code>, <code>Connect</code>, <code>Delete</code>, and
-     * <code>Reject</code>.</p>
-     */
-    inline CreateVpcEndpointConnectionNotificationRequest& AddConnectionEvents(Aws::String&& value) { m_connectionEventsHasBeenSet = true; m_connectionEvents.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The endpoint events for which to receive notifications. Valid values are
-     * <code>Accept</code>, <code>Connect</code>, <code>Delete</code>, and
-     * <code>Reject</code>.</p>
-     */
-    inline CreateVpcEndpointConnectionNotificationRequest& AddConnectionEvents(const char* value) { m_connectionEventsHasBeenSet = true; m_connectionEvents.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
      * of the request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">How
+     * href="https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html">How
      * to ensure idempotency</a>.</p>
      */
-    inline const Aws::String& GetClientToken() const{ return m_clientToken; }
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">How
-     * to ensure idempotency</a>.</p>
-     */
+    inline const Aws::String& GetClientToken() const { return m_clientToken; }
     inline bool ClientTokenHasBeenSet() const { return m_clientTokenHasBeenSet; }
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">How
-     * to ensure idempotency</a>.</p>
-     */
-    inline void SetClientToken(const Aws::String& value) { m_clientTokenHasBeenSet = true; m_clientToken = value; }
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">How
-     * to ensure idempotency</a>.</p>
-     */
-    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::move(value); }
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">How
-     * to ensure idempotency</a>.</p>
-     */
-    inline void SetClientToken(const char* value) { m_clientTokenHasBeenSet = true; m_clientToken.assign(value); }
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">How
-     * to ensure idempotency</a>.</p>
-     */
-    inline CreateVpcEndpointConnectionNotificationRequest& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">How
-     * to ensure idempotency</a>.</p>
-     */
-    inline CreateVpcEndpointConnectionNotificationRequest& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
-
-    /**
-     * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency
-     * of the request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">How
-     * to ensure idempotency</a>.</p>
-     */
-    inline CreateVpcEndpointConnectionNotificationRequest& WithClientToken(const char* value) { SetClientToken(value); return *this;}
-
+    template<typename ClientTokenT = Aws::String>
+    void SetClientToken(ClientTokenT&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::forward<ClientTokenT>(value); }
+    template<typename ClientTokenT = Aws::String>
+    CreateVpcEndpointConnectionNotificationRequest& WithClientToken(ClientTokenT&& value) { SetClientToken(std::forward<ClientTokenT>(value)); return *this;}
+    ///@}
   private:
 
-    bool m_dryRun;
+    bool m_dryRun{false};
     bool m_dryRunHasBeenSet = false;
 
     Aws::String m_serviceId;

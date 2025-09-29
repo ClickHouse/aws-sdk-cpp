@@ -21,7 +21,7 @@ namespace Model
   class DeleteReplicationConfigurationTemplateRequest : public MgnRequest
   {
   public:
-    AWS_MGN_API DeleteReplicationConfigurationTemplateRequest();
+    AWS_MGN_API DeleteReplicationConfigurationTemplateRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,54 +32,18 @@ namespace Model
     AWS_MGN_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>Request to delete Replication Configuration Template from service by
      * Replication Configuration Template ID.</p>
      */
-    inline const Aws::String& GetReplicationConfigurationTemplateID() const{ return m_replicationConfigurationTemplateID; }
-
-    /**
-     * <p>Request to delete Replication Configuration Template from service by
-     * Replication Configuration Template ID.</p>
-     */
+    inline const Aws::String& GetReplicationConfigurationTemplateID() const { return m_replicationConfigurationTemplateID; }
     inline bool ReplicationConfigurationTemplateIDHasBeenSet() const { return m_replicationConfigurationTemplateIDHasBeenSet; }
-
-    /**
-     * <p>Request to delete Replication Configuration Template from service by
-     * Replication Configuration Template ID.</p>
-     */
-    inline void SetReplicationConfigurationTemplateID(const Aws::String& value) { m_replicationConfigurationTemplateIDHasBeenSet = true; m_replicationConfigurationTemplateID = value; }
-
-    /**
-     * <p>Request to delete Replication Configuration Template from service by
-     * Replication Configuration Template ID.</p>
-     */
-    inline void SetReplicationConfigurationTemplateID(Aws::String&& value) { m_replicationConfigurationTemplateIDHasBeenSet = true; m_replicationConfigurationTemplateID = std::move(value); }
-
-    /**
-     * <p>Request to delete Replication Configuration Template from service by
-     * Replication Configuration Template ID.</p>
-     */
-    inline void SetReplicationConfigurationTemplateID(const char* value) { m_replicationConfigurationTemplateIDHasBeenSet = true; m_replicationConfigurationTemplateID.assign(value); }
-
-    /**
-     * <p>Request to delete Replication Configuration Template from service by
-     * Replication Configuration Template ID.</p>
-     */
-    inline DeleteReplicationConfigurationTemplateRequest& WithReplicationConfigurationTemplateID(const Aws::String& value) { SetReplicationConfigurationTemplateID(value); return *this;}
-
-    /**
-     * <p>Request to delete Replication Configuration Template from service by
-     * Replication Configuration Template ID.</p>
-     */
-    inline DeleteReplicationConfigurationTemplateRequest& WithReplicationConfigurationTemplateID(Aws::String&& value) { SetReplicationConfigurationTemplateID(std::move(value)); return *this;}
-
-    /**
-     * <p>Request to delete Replication Configuration Template from service by
-     * Replication Configuration Template ID.</p>
-     */
-    inline DeleteReplicationConfigurationTemplateRequest& WithReplicationConfigurationTemplateID(const char* value) { SetReplicationConfigurationTemplateID(value); return *this;}
-
+    template<typename ReplicationConfigurationTemplateIDT = Aws::String>
+    void SetReplicationConfigurationTemplateID(ReplicationConfigurationTemplateIDT&& value) { m_replicationConfigurationTemplateIDHasBeenSet = true; m_replicationConfigurationTemplateID = std::forward<ReplicationConfigurationTemplateIDT>(value); }
+    template<typename ReplicationConfigurationTemplateIDT = Aws::String>
+    DeleteReplicationConfigurationTemplateRequest& WithReplicationConfigurationTemplateID(ReplicationConfigurationTemplateIDT&& value) { SetReplicationConfigurationTemplateID(std::forward<ReplicationConfigurationTemplateIDT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_replicationConfigurationTemplateID;

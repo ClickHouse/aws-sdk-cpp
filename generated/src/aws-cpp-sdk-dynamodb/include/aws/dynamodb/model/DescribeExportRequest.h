@@ -21,7 +21,7 @@ namespace Model
   class DescribeExportRequest : public DynamoDBRequest
   {
   public:
-    AWS_DYNAMODB_API DescribeExportRequest();
+    AWS_DYNAMODB_API DescribeExportRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,47 +33,22 @@ namespace Model
 
     AWS_DYNAMODB_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+    /**
+     * Helper function to collect parameters (configurable and static hardcoded) required for endpoint computation.
+     */
+    AWS_DYNAMODB_API EndpointParameters GetEndpointContextParams() const override;
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) associated with the export.</p>
      */
-    inline const Aws::String& GetExportArn() const{ return m_exportArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) associated with the export.</p>
-     */
+    inline const Aws::String& GetExportArn() const { return m_exportArn; }
     inline bool ExportArnHasBeenSet() const { return m_exportArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) associated with the export.</p>
-     */
-    inline void SetExportArn(const Aws::String& value) { m_exportArnHasBeenSet = true; m_exportArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) associated with the export.</p>
-     */
-    inline void SetExportArn(Aws::String&& value) { m_exportArnHasBeenSet = true; m_exportArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) associated with the export.</p>
-     */
-    inline void SetExportArn(const char* value) { m_exportArnHasBeenSet = true; m_exportArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) associated with the export.</p>
-     */
-    inline DescribeExportRequest& WithExportArn(const Aws::String& value) { SetExportArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) associated with the export.</p>
-     */
-    inline DescribeExportRequest& WithExportArn(Aws::String&& value) { SetExportArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) associated with the export.</p>
-     */
-    inline DescribeExportRequest& WithExportArn(const char* value) { SetExportArn(value); return *this;}
-
+    template<typename ExportArnT = Aws::String>
+    void SetExportArn(ExportArnT&& value) { m_exportArnHasBeenSet = true; m_exportArn = std::forward<ExportArnT>(value); }
+    template<typename ExportArnT = Aws::String>
+    DescribeExportRequest& WithExportArn(ExportArnT&& value) { SetExportArn(std::forward<ExportArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_exportArn;

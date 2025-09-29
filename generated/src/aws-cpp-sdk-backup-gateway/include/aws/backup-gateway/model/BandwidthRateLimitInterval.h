@@ -35,216 +35,102 @@ namespace Model
   class BandwidthRateLimitInterval
   {
   public:
-    AWS_BACKUPGATEWAY_API BandwidthRateLimitInterval();
+    AWS_BACKUPGATEWAY_API BandwidthRateLimitInterval() = default;
     AWS_BACKUPGATEWAY_API BandwidthRateLimitInterval(Aws::Utils::Json::JsonView jsonValue);
     AWS_BACKUPGATEWAY_API BandwidthRateLimitInterval& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_BACKUPGATEWAY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The average upload rate limit component of the bandwidth rate limit interval,
      * in bits per second. This field does not appear in the response if the upload
      * rate limit is not set.</p>  <p>For Backup Gateway, the minimum value is
      * <code>(Value)</code>.</p> 
      */
-    inline long long GetAverageUploadRateLimitInBitsPerSec() const{ return m_averageUploadRateLimitInBitsPerSec; }
-
-    /**
-     * <p>The average upload rate limit component of the bandwidth rate limit interval,
-     * in bits per second. This field does not appear in the response if the upload
-     * rate limit is not set.</p>  <p>For Backup Gateway, the minimum value is
-     * <code>(Value)</code>.</p> 
-     */
+    inline long long GetAverageUploadRateLimitInBitsPerSec() const { return m_averageUploadRateLimitInBitsPerSec; }
     inline bool AverageUploadRateLimitInBitsPerSecHasBeenSet() const { return m_averageUploadRateLimitInBitsPerSecHasBeenSet; }
-
-    /**
-     * <p>The average upload rate limit component of the bandwidth rate limit interval,
-     * in bits per second. This field does not appear in the response if the upload
-     * rate limit is not set.</p>  <p>For Backup Gateway, the minimum value is
-     * <code>(Value)</code>.</p> 
-     */
     inline void SetAverageUploadRateLimitInBitsPerSec(long long value) { m_averageUploadRateLimitInBitsPerSecHasBeenSet = true; m_averageUploadRateLimitInBitsPerSec = value; }
-
-    /**
-     * <p>The average upload rate limit component of the bandwidth rate limit interval,
-     * in bits per second. This field does not appear in the response if the upload
-     * rate limit is not set.</p>  <p>For Backup Gateway, the minimum value is
-     * <code>(Value)</code>.</p> 
-     */
     inline BandwidthRateLimitInterval& WithAverageUploadRateLimitInBitsPerSec(long long value) { SetAverageUploadRateLimitInBitsPerSec(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The days of the week component of the bandwidth rate limit interval,
      * represented as ordinal numbers from 0 to 6, where 0 represents Sunday and 6
      * represents Saturday.</p>
      */
-    inline const Aws::Vector<int>& GetDaysOfWeek() const{ return m_daysOfWeek; }
-
-    /**
-     * <p>The days of the week component of the bandwidth rate limit interval,
-     * represented as ordinal numbers from 0 to 6, where 0 represents Sunday and 6
-     * represents Saturday.</p>
-     */
+    inline const Aws::Vector<int>& GetDaysOfWeek() const { return m_daysOfWeek; }
     inline bool DaysOfWeekHasBeenSet() const { return m_daysOfWeekHasBeenSet; }
-
-    /**
-     * <p>The days of the week component of the bandwidth rate limit interval,
-     * represented as ordinal numbers from 0 to 6, where 0 represents Sunday and 6
-     * represents Saturday.</p>
-     */
-    inline void SetDaysOfWeek(const Aws::Vector<int>& value) { m_daysOfWeekHasBeenSet = true; m_daysOfWeek = value; }
-
-    /**
-     * <p>The days of the week component of the bandwidth rate limit interval,
-     * represented as ordinal numbers from 0 to 6, where 0 represents Sunday and 6
-     * represents Saturday.</p>
-     */
-    inline void SetDaysOfWeek(Aws::Vector<int>&& value) { m_daysOfWeekHasBeenSet = true; m_daysOfWeek = std::move(value); }
-
-    /**
-     * <p>The days of the week component of the bandwidth rate limit interval,
-     * represented as ordinal numbers from 0 to 6, where 0 represents Sunday and 6
-     * represents Saturday.</p>
-     */
-    inline BandwidthRateLimitInterval& WithDaysOfWeek(const Aws::Vector<int>& value) { SetDaysOfWeek(value); return *this;}
-
-    /**
-     * <p>The days of the week component of the bandwidth rate limit interval,
-     * represented as ordinal numbers from 0 to 6, where 0 represents Sunday and 6
-     * represents Saturday.</p>
-     */
-    inline BandwidthRateLimitInterval& WithDaysOfWeek(Aws::Vector<int>&& value) { SetDaysOfWeek(std::move(value)); return *this;}
-
-    /**
-     * <p>The days of the week component of the bandwidth rate limit interval,
-     * represented as ordinal numbers from 0 to 6, where 0 represents Sunday and 6
-     * represents Saturday.</p>
-     */
+    template<typename DaysOfWeekT = Aws::Vector<int>>
+    void SetDaysOfWeek(DaysOfWeekT&& value) { m_daysOfWeekHasBeenSet = true; m_daysOfWeek = std::forward<DaysOfWeekT>(value); }
+    template<typename DaysOfWeekT = Aws::Vector<int>>
+    BandwidthRateLimitInterval& WithDaysOfWeek(DaysOfWeekT&& value) { SetDaysOfWeek(std::forward<DaysOfWeekT>(value)); return *this;}
     inline BandwidthRateLimitInterval& AddDaysOfWeek(int value) { m_daysOfWeekHasBeenSet = true; m_daysOfWeek.push_back(value); return *this; }
+    ///@}
 
-
+    ///@{
     /**
      * <p>The hour of the day to end the bandwidth rate limit interval.</p>
      */
-    inline int GetEndHourOfDay() const{ return m_endHourOfDay; }
-
-    /**
-     * <p>The hour of the day to end the bandwidth rate limit interval.</p>
-     */
+    inline int GetEndHourOfDay() const { return m_endHourOfDay; }
     inline bool EndHourOfDayHasBeenSet() const { return m_endHourOfDayHasBeenSet; }
-
-    /**
-     * <p>The hour of the day to end the bandwidth rate limit interval.</p>
-     */
     inline void SetEndHourOfDay(int value) { m_endHourOfDayHasBeenSet = true; m_endHourOfDay = value; }
-
-    /**
-     * <p>The hour of the day to end the bandwidth rate limit interval.</p>
-     */
     inline BandwidthRateLimitInterval& WithEndHourOfDay(int value) { SetEndHourOfDay(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The minute of the hour to end the bandwidth rate limit interval.</p>
      *  <p>The bandwidth rate limit interval ends at the end of the minute.
      * To end an interval at the end of an hour, use the value <code>59</code>.</p>
      * 
      */
-    inline int GetEndMinuteOfHour() const{ return m_endMinuteOfHour; }
-
-    /**
-     * <p>The minute of the hour to end the bandwidth rate limit interval.</p>
-     *  <p>The bandwidth rate limit interval ends at the end of the minute.
-     * To end an interval at the end of an hour, use the value <code>59</code>.</p>
-     * 
-     */
+    inline int GetEndMinuteOfHour() const { return m_endMinuteOfHour; }
     inline bool EndMinuteOfHourHasBeenSet() const { return m_endMinuteOfHourHasBeenSet; }
-
-    /**
-     * <p>The minute of the hour to end the bandwidth rate limit interval.</p>
-     *  <p>The bandwidth rate limit interval ends at the end of the minute.
-     * To end an interval at the end of an hour, use the value <code>59</code>.</p>
-     * 
-     */
     inline void SetEndMinuteOfHour(int value) { m_endMinuteOfHourHasBeenSet = true; m_endMinuteOfHour = value; }
-
-    /**
-     * <p>The minute of the hour to end the bandwidth rate limit interval.</p>
-     *  <p>The bandwidth rate limit interval ends at the end of the minute.
-     * To end an interval at the end of an hour, use the value <code>59</code>.</p>
-     * 
-     */
     inline BandwidthRateLimitInterval& WithEndMinuteOfHour(int value) { SetEndMinuteOfHour(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The hour of the day to start the bandwidth rate limit interval.</p>
      */
-    inline int GetStartHourOfDay() const{ return m_startHourOfDay; }
-
-    /**
-     * <p>The hour of the day to start the bandwidth rate limit interval.</p>
-     */
+    inline int GetStartHourOfDay() const { return m_startHourOfDay; }
     inline bool StartHourOfDayHasBeenSet() const { return m_startHourOfDayHasBeenSet; }
-
-    /**
-     * <p>The hour of the day to start the bandwidth rate limit interval.</p>
-     */
     inline void SetStartHourOfDay(int value) { m_startHourOfDayHasBeenSet = true; m_startHourOfDay = value; }
-
-    /**
-     * <p>The hour of the day to start the bandwidth rate limit interval.</p>
-     */
     inline BandwidthRateLimitInterval& WithStartHourOfDay(int value) { SetStartHourOfDay(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The minute of the hour to start the bandwidth rate limit interval. The
      * interval begins at the start of that minute. To begin an interval exactly at the
      * start of the hour, use the value <code>0</code>.</p>
      */
-    inline int GetStartMinuteOfHour() const{ return m_startMinuteOfHour; }
-
-    /**
-     * <p>The minute of the hour to start the bandwidth rate limit interval. The
-     * interval begins at the start of that minute. To begin an interval exactly at the
-     * start of the hour, use the value <code>0</code>.</p>
-     */
+    inline int GetStartMinuteOfHour() const { return m_startMinuteOfHour; }
     inline bool StartMinuteOfHourHasBeenSet() const { return m_startMinuteOfHourHasBeenSet; }
-
-    /**
-     * <p>The minute of the hour to start the bandwidth rate limit interval. The
-     * interval begins at the start of that minute. To begin an interval exactly at the
-     * start of the hour, use the value <code>0</code>.</p>
-     */
     inline void SetStartMinuteOfHour(int value) { m_startMinuteOfHourHasBeenSet = true; m_startMinuteOfHour = value; }
-
-    /**
-     * <p>The minute of the hour to start the bandwidth rate limit interval. The
-     * interval begins at the start of that minute. To begin an interval exactly at the
-     * start of the hour, use the value <code>0</code>.</p>
-     */
     inline BandwidthRateLimitInterval& WithStartMinuteOfHour(int value) { SetStartMinuteOfHour(value); return *this;}
-
+    ///@}
   private:
 
-    long long m_averageUploadRateLimitInBitsPerSec;
+    long long m_averageUploadRateLimitInBitsPerSec{0};
     bool m_averageUploadRateLimitInBitsPerSecHasBeenSet = false;
 
     Aws::Vector<int> m_daysOfWeek;
     bool m_daysOfWeekHasBeenSet = false;
 
-    int m_endHourOfDay;
+    int m_endHourOfDay{0};
     bool m_endHourOfDayHasBeenSet = false;
 
-    int m_endMinuteOfHour;
+    int m_endMinuteOfHour{0};
     bool m_endMinuteOfHourHasBeenSet = false;
 
-    int m_startHourOfDay;
+    int m_startHourOfDay{0};
     bool m_startHourOfDayHasBeenSet = false;
 
-    int m_startMinuteOfHour;
+    int m_startMinuteOfHour{0};
     bool m_startMinuteOfHourHasBeenSet = false;
   };
 

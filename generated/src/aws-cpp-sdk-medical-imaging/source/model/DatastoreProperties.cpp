@@ -18,27 +18,7 @@ namespace MedicalImaging
 namespace Model
 {
 
-DatastoreProperties::DatastoreProperties() : 
-    m_datastoreIdHasBeenSet(false),
-    m_datastoreNameHasBeenSet(false),
-    m_datastoreStatus(DatastoreStatus::NOT_SET),
-    m_datastoreStatusHasBeenSet(false),
-    m_kmsKeyArnHasBeenSet(false),
-    m_datastoreArnHasBeenSet(false),
-    m_createdAtHasBeenSet(false),
-    m_updatedAtHasBeenSet(false)
-{
-}
-
-DatastoreProperties::DatastoreProperties(JsonView jsonValue) : 
-    m_datastoreIdHasBeenSet(false),
-    m_datastoreNameHasBeenSet(false),
-    m_datastoreStatus(DatastoreStatus::NOT_SET),
-    m_datastoreStatusHasBeenSet(false),
-    m_kmsKeyArnHasBeenSet(false),
-    m_datastoreArnHasBeenSet(false),
-    m_createdAtHasBeenSet(false),
-    m_updatedAtHasBeenSet(false)
+DatastoreProperties::DatastoreProperties(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -48,52 +28,43 @@ DatastoreProperties& DatastoreProperties::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("datastoreId"))
   {
     m_datastoreId = jsonValue.GetString("datastoreId");
-
     m_datastoreIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("datastoreName"))
   {
     m_datastoreName = jsonValue.GetString("datastoreName");
-
     m_datastoreNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("datastoreStatus"))
   {
     m_datastoreStatus = DatastoreStatusMapper::GetDatastoreStatusForName(jsonValue.GetString("datastoreStatus"));
-
     m_datastoreStatusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("kmsKeyArn"))
   {
     m_kmsKeyArn = jsonValue.GetString("kmsKeyArn");
-
     m_kmsKeyArnHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("lambdaAuthorizerArn"))
+  {
+    m_lambdaAuthorizerArn = jsonValue.GetString("lambdaAuthorizerArn");
+    m_lambdaAuthorizerArnHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("datastoreArn"))
   {
     m_datastoreArn = jsonValue.GetString("datastoreArn");
-
     m_datastoreArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("createdAt"))
   {
     m_createdAt = jsonValue.GetDouble("createdAt");
-
     m_createdAtHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("updatedAt"))
   {
     m_updatedAt = jsonValue.GetDouble("updatedAt");
-
     m_updatedAtHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -121,6 +92,12 @@ JsonValue DatastoreProperties::Jsonize() const
   if(m_kmsKeyArnHasBeenSet)
   {
    payload.WithString("kmsKeyArn", m_kmsKeyArn);
+
+  }
+
+  if(m_lambdaAuthorizerArnHasBeenSet)
+  {
+   payload.WithString("lambdaAuthorizerArn", m_lambdaAuthorizerArn);
 
   }
 

@@ -18,21 +18,7 @@ namespace NetworkFirewall
 namespace Model
 {
 
-ServerCertificateScope::ServerCertificateScope() : 
-    m_sourcesHasBeenSet(false),
-    m_destinationsHasBeenSet(false),
-    m_sourcePortsHasBeenSet(false),
-    m_destinationPortsHasBeenSet(false),
-    m_protocolsHasBeenSet(false)
-{
-}
-
-ServerCertificateScope::ServerCertificateScope(JsonView jsonValue) : 
-    m_sourcesHasBeenSet(false),
-    m_destinationsHasBeenSet(false),
-    m_sourcePortsHasBeenSet(false),
-    m_destinationPortsHasBeenSet(false),
-    m_protocolsHasBeenSet(false)
+ServerCertificateScope::ServerCertificateScope(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -48,7 +34,6 @@ ServerCertificateScope& ServerCertificateScope::operator =(JsonView jsonValue)
     }
     m_sourcesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Destinations"))
   {
     Aws::Utils::Array<JsonView> destinationsJsonList = jsonValue.GetArray("Destinations");
@@ -58,7 +43,6 @@ ServerCertificateScope& ServerCertificateScope::operator =(JsonView jsonValue)
     }
     m_destinationsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SourcePorts"))
   {
     Aws::Utils::Array<JsonView> sourcePortsJsonList = jsonValue.GetArray("SourcePorts");
@@ -68,7 +52,6 @@ ServerCertificateScope& ServerCertificateScope::operator =(JsonView jsonValue)
     }
     m_sourcePortsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DestinationPorts"))
   {
     Aws::Utils::Array<JsonView> destinationPortsJsonList = jsonValue.GetArray("DestinationPorts");
@@ -78,7 +61,6 @@ ServerCertificateScope& ServerCertificateScope::operator =(JsonView jsonValue)
     }
     m_destinationPortsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Protocols"))
   {
     Aws::Utils::Array<JsonView> protocolsJsonList = jsonValue.GetArray("Protocols");
@@ -88,7 +70,6 @@ ServerCertificateScope& ServerCertificateScope::operator =(JsonView jsonValue)
     }
     m_protocolsHasBeenSet = true;
   }
-
   return *this;
 }
 

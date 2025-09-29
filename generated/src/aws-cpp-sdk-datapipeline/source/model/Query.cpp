@@ -18,13 +18,7 @@ namespace DataPipeline
 namespace Model
 {
 
-Query::Query() : 
-    m_selectorsHasBeenSet(false)
-{
-}
-
-Query::Query(JsonView jsonValue) : 
-    m_selectorsHasBeenSet(false)
+Query::Query(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ Query& Query::operator =(JsonView jsonValue)
     }
     m_selectorsHasBeenSet = true;
   }
-
   return *this;
 }
 

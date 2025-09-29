@@ -32,52 +32,23 @@ namespace Model
   class SingularSourceProperties
   {
   public:
-    AWS_APPFLOW_API SingularSourceProperties();
+    AWS_APPFLOW_API SingularSourceProperties() = default;
     AWS_APPFLOW_API SingularSourceProperties(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPFLOW_API SingularSourceProperties& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPFLOW_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The object specified in the Singular flow source. </p>
      */
-    inline const Aws::String& GetObject() const{ return m_object; }
-
-    /**
-     * <p> The object specified in the Singular flow source. </p>
-     */
+    inline const Aws::String& GetObject() const { return m_object; }
     inline bool ObjectHasBeenSet() const { return m_objectHasBeenSet; }
-
-    /**
-     * <p> The object specified in the Singular flow source. </p>
-     */
-    inline void SetObject(const Aws::String& value) { m_objectHasBeenSet = true; m_object = value; }
-
-    /**
-     * <p> The object specified in the Singular flow source. </p>
-     */
-    inline void SetObject(Aws::String&& value) { m_objectHasBeenSet = true; m_object = std::move(value); }
-
-    /**
-     * <p> The object specified in the Singular flow source. </p>
-     */
-    inline void SetObject(const char* value) { m_objectHasBeenSet = true; m_object.assign(value); }
-
-    /**
-     * <p> The object specified in the Singular flow source. </p>
-     */
-    inline SingularSourceProperties& WithObject(const Aws::String& value) { SetObject(value); return *this;}
-
-    /**
-     * <p> The object specified in the Singular flow source. </p>
-     */
-    inline SingularSourceProperties& WithObject(Aws::String&& value) { SetObject(std::move(value)); return *this;}
-
-    /**
-     * <p> The object specified in the Singular flow source. </p>
-     */
-    inline SingularSourceProperties& WithObject(const char* value) { SetObject(value); return *this;}
-
+    template<typename ObjectT = Aws::String>
+    void SetObject(ObjectT&& value) { m_objectHasBeenSet = true; m_object = std::forward<ObjectT>(value); }
+    template<typename ObjectT = Aws::String>
+    SingularSourceProperties& WithObject(ObjectT&& value) { SetObject(std::forward<ObjectT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_object;

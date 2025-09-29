@@ -25,7 +25,7 @@ namespace Model
   class DescribeChapCredentialsRequest : public StorageGatewayRequest
   {
   public:
-    AWS_STORAGEGATEWAY_API DescribeChapCredentialsRequest();
+    AWS_STORAGEGATEWAY_API DescribeChapCredentialsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,62 +38,19 @@ namespace Model
     AWS_STORAGEGATEWAY_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the iSCSI volume target. Use the
      * <a>DescribeStorediSCSIVolumes</a> operation to return to retrieve the TargetARN
      * for specified VolumeARN.</p>
      */
-    inline const Aws::String& GetTargetARN() const{ return m_targetARN; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the iSCSI volume target. Use the
-     * <a>DescribeStorediSCSIVolumes</a> operation to return to retrieve the TargetARN
-     * for specified VolumeARN.</p>
-     */
+    inline const Aws::String& GetTargetARN() const { return m_targetARN; }
     inline bool TargetARNHasBeenSet() const { return m_targetARNHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the iSCSI volume target. Use the
-     * <a>DescribeStorediSCSIVolumes</a> operation to return to retrieve the TargetARN
-     * for specified VolumeARN.</p>
-     */
-    inline void SetTargetARN(const Aws::String& value) { m_targetARNHasBeenSet = true; m_targetARN = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the iSCSI volume target. Use the
-     * <a>DescribeStorediSCSIVolumes</a> operation to return to retrieve the TargetARN
-     * for specified VolumeARN.</p>
-     */
-    inline void SetTargetARN(Aws::String&& value) { m_targetARNHasBeenSet = true; m_targetARN = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the iSCSI volume target. Use the
-     * <a>DescribeStorediSCSIVolumes</a> operation to return to retrieve the TargetARN
-     * for specified VolumeARN.</p>
-     */
-    inline void SetTargetARN(const char* value) { m_targetARNHasBeenSet = true; m_targetARN.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the iSCSI volume target. Use the
-     * <a>DescribeStorediSCSIVolumes</a> operation to return to retrieve the TargetARN
-     * for specified VolumeARN.</p>
-     */
-    inline DescribeChapCredentialsRequest& WithTargetARN(const Aws::String& value) { SetTargetARN(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the iSCSI volume target. Use the
-     * <a>DescribeStorediSCSIVolumes</a> operation to return to retrieve the TargetARN
-     * for specified VolumeARN.</p>
-     */
-    inline DescribeChapCredentialsRequest& WithTargetARN(Aws::String&& value) { SetTargetARN(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the iSCSI volume target. Use the
-     * <a>DescribeStorediSCSIVolumes</a> operation to return to retrieve the TargetARN
-     * for specified VolumeARN.</p>
-     */
-    inline DescribeChapCredentialsRequest& WithTargetARN(const char* value) { SetTargetARN(value); return *this;}
-
+    template<typename TargetARNT = Aws::String>
+    void SetTargetARN(TargetARNT&& value) { m_targetARNHasBeenSet = true; m_targetARN = std::forward<TargetARNT>(value); }
+    template<typename TargetARNT = Aws::String>
+    DescribeChapCredentialsRequest& WithTargetARN(TargetARNT&& value) { SetTargetARN(std::forward<TargetARNT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_targetARN;

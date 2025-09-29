@@ -18,13 +18,7 @@ namespace CognitoIdentityProvider
 namespace Model
 {
 
-UserAttributeUpdateSettingsType::UserAttributeUpdateSettingsType() : 
-    m_attributesRequireVerificationBeforeUpdateHasBeenSet(false)
-{
-}
-
-UserAttributeUpdateSettingsType::UserAttributeUpdateSettingsType(JsonView jsonValue) : 
-    m_attributesRequireVerificationBeforeUpdateHasBeenSet(false)
+UserAttributeUpdateSettingsType::UserAttributeUpdateSettingsType(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ UserAttributeUpdateSettingsType& UserAttributeUpdateSettingsType::operator =(Jso
     }
     m_attributesRequireVerificationBeforeUpdateHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -20,27 +20,7 @@ namespace EC2
 namespace Model
 {
 
-ElasticGpus::ElasticGpus() : 
-    m_elasticGpuIdHasBeenSet(false),
-    m_availabilityZoneHasBeenSet(false),
-    m_elasticGpuTypeHasBeenSet(false),
-    m_elasticGpuHealthHasBeenSet(false),
-    m_elasticGpuState(ElasticGpuState::NOT_SET),
-    m_elasticGpuStateHasBeenSet(false),
-    m_instanceIdHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-ElasticGpus::ElasticGpus(const XmlNode& xmlNode) : 
-    m_elasticGpuIdHasBeenSet(false),
-    m_availabilityZoneHasBeenSet(false),
-    m_elasticGpuTypeHasBeenSet(false),
-    m_elasticGpuHealthHasBeenSet(false),
-    m_elasticGpuState(ElasticGpuState::NOT_SET),
-    m_elasticGpuStateHasBeenSet(false),
-    m_instanceIdHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+ElasticGpus::ElasticGpus(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -78,7 +58,7 @@ ElasticGpus& ElasticGpus::operator =(const XmlNode& xmlNode)
     XmlNode elasticGpuStateNode = resultNode.FirstChild("elasticGpuState");
     if(!elasticGpuStateNode.IsNull())
     {
-      m_elasticGpuState = ElasticGpuStateMapper::GetElasticGpuStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(elasticGpuStateNode.GetText()).c_str()).c_str());
+      m_elasticGpuState = ElasticGpuStateMapper::GetElasticGpuStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(elasticGpuStateNode.GetText()).c_str()));
       m_elasticGpuStateHasBeenSet = true;
     }
     XmlNode instanceIdNode = resultNode.FirstChild("instanceId");
@@ -91,6 +71,7 @@ ElasticGpus& ElasticGpus::operator =(const XmlNode& xmlNode)
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -130,7 +111,7 @@ void ElasticGpus::OutputToStream(Aws::OStream& oStream, const char* location, un
 
   if(m_elasticGpuStateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ElasticGpuState=" << ElasticGpuStateMapper::GetNameForElasticGpuState(m_elasticGpuState) << "&";
+      oStream << location << index << locationValue << ".ElasticGpuState=" << StringUtils::URLEncode(ElasticGpuStateMapper::GetNameForElasticGpuState(m_elasticGpuState)) << "&";
   }
 
   if(m_instanceIdHasBeenSet)
@@ -173,7 +154,7 @@ void ElasticGpus::OutputToStream(Aws::OStream& oStream, const char* location) co
   }
   if(m_elasticGpuStateHasBeenSet)
   {
-      oStream << location << ".ElasticGpuState=" << ElasticGpuStateMapper::GetNameForElasticGpuState(m_elasticGpuState) << "&";
+      oStream << location << ".ElasticGpuState=" << StringUtils::URLEncode(ElasticGpuStateMapper::GetNameForElasticGpuState(m_elasticGpuState)) << "&";
   }
   if(m_instanceIdHasBeenSet)
   {
@@ -185,7 +166,7 @@ void ElasticGpus::OutputToStream(Aws::OStream& oStream, const char* location) co
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }

@@ -34,12 +34,13 @@ namespace Model
   class MutualTlsAuthenticationInput
   {
   public:
-    AWS_APIGATEWAY_API MutualTlsAuthenticationInput();
+    AWS_APIGATEWAY_API MutualTlsAuthenticationInput() = default;
     AWS_APIGATEWAY_API MutualTlsAuthenticationInput(Aws::Utils::Json::JsonView jsonValue);
     AWS_APIGATEWAY_API MutualTlsAuthenticationInput& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APIGATEWAY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An Amazon S3 URL that specifies the truststore for mutual TLS authentication,
      * for example <code>s3://bucket-name/key-name</code>. The truststore can contain
@@ -48,127 +49,26 @@ namespace Model
      * to use the new version. To update the truststore, you must have permissions to
      * access the S3 object.</p>
      */
-    inline const Aws::String& GetTruststoreUri() const{ return m_truststoreUri; }
-
-    /**
-     * <p>An Amazon S3 URL that specifies the truststore for mutual TLS authentication,
-     * for example <code>s3://bucket-name/key-name</code>. The truststore can contain
-     * certificates from public or private certificate authorities. To update the
-     * truststore, upload a new version to S3, and then update your custom domain name
-     * to use the new version. To update the truststore, you must have permissions to
-     * access the S3 object.</p>
-     */
+    inline const Aws::String& GetTruststoreUri() const { return m_truststoreUri; }
     inline bool TruststoreUriHasBeenSet() const { return m_truststoreUriHasBeenSet; }
+    template<typename TruststoreUriT = Aws::String>
+    void SetTruststoreUri(TruststoreUriT&& value) { m_truststoreUriHasBeenSet = true; m_truststoreUri = std::forward<TruststoreUriT>(value); }
+    template<typename TruststoreUriT = Aws::String>
+    MutualTlsAuthenticationInput& WithTruststoreUri(TruststoreUriT&& value) { SetTruststoreUri(std::forward<TruststoreUriT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An Amazon S3 URL that specifies the truststore for mutual TLS authentication,
-     * for example <code>s3://bucket-name/key-name</code>. The truststore can contain
-     * certificates from public or private certificate authorities. To update the
-     * truststore, upload a new version to S3, and then update your custom domain name
-     * to use the new version. To update the truststore, you must have permissions to
-     * access the S3 object.</p>
-     */
-    inline void SetTruststoreUri(const Aws::String& value) { m_truststoreUriHasBeenSet = true; m_truststoreUri = value; }
-
-    /**
-     * <p>An Amazon S3 URL that specifies the truststore for mutual TLS authentication,
-     * for example <code>s3://bucket-name/key-name</code>. The truststore can contain
-     * certificates from public or private certificate authorities. To update the
-     * truststore, upload a new version to S3, and then update your custom domain name
-     * to use the new version. To update the truststore, you must have permissions to
-     * access the S3 object.</p>
-     */
-    inline void SetTruststoreUri(Aws::String&& value) { m_truststoreUriHasBeenSet = true; m_truststoreUri = std::move(value); }
-
-    /**
-     * <p>An Amazon S3 URL that specifies the truststore for mutual TLS authentication,
-     * for example <code>s3://bucket-name/key-name</code>. The truststore can contain
-     * certificates from public or private certificate authorities. To update the
-     * truststore, upload a new version to S3, and then update your custom domain name
-     * to use the new version. To update the truststore, you must have permissions to
-     * access the S3 object.</p>
-     */
-    inline void SetTruststoreUri(const char* value) { m_truststoreUriHasBeenSet = true; m_truststoreUri.assign(value); }
-
-    /**
-     * <p>An Amazon S3 URL that specifies the truststore for mutual TLS authentication,
-     * for example <code>s3://bucket-name/key-name</code>. The truststore can contain
-     * certificates from public or private certificate authorities. To update the
-     * truststore, upload a new version to S3, and then update your custom domain name
-     * to use the new version. To update the truststore, you must have permissions to
-     * access the S3 object.</p>
-     */
-    inline MutualTlsAuthenticationInput& WithTruststoreUri(const Aws::String& value) { SetTruststoreUri(value); return *this;}
-
-    /**
-     * <p>An Amazon S3 URL that specifies the truststore for mutual TLS authentication,
-     * for example <code>s3://bucket-name/key-name</code>. The truststore can contain
-     * certificates from public or private certificate authorities. To update the
-     * truststore, upload a new version to S3, and then update your custom domain name
-     * to use the new version. To update the truststore, you must have permissions to
-     * access the S3 object.</p>
-     */
-    inline MutualTlsAuthenticationInput& WithTruststoreUri(Aws::String&& value) { SetTruststoreUri(std::move(value)); return *this;}
-
-    /**
-     * <p>An Amazon S3 URL that specifies the truststore for mutual TLS authentication,
-     * for example <code>s3://bucket-name/key-name</code>. The truststore can contain
-     * certificates from public or private certificate authorities. To update the
-     * truststore, upload a new version to S3, and then update your custom domain name
-     * to use the new version. To update the truststore, you must have permissions to
-     * access the S3 object.</p>
-     */
-    inline MutualTlsAuthenticationInput& WithTruststoreUri(const char* value) { SetTruststoreUri(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The version of the S3 object that contains your truststore. To specify a
      * version, you must have versioning enabled for the S3 bucket</p>
      */
-    inline const Aws::String& GetTruststoreVersion() const{ return m_truststoreVersion; }
-
-    /**
-     * <p>The version of the S3 object that contains your truststore. To specify a
-     * version, you must have versioning enabled for the S3 bucket</p>
-     */
+    inline const Aws::String& GetTruststoreVersion() const { return m_truststoreVersion; }
     inline bool TruststoreVersionHasBeenSet() const { return m_truststoreVersionHasBeenSet; }
-
-    /**
-     * <p>The version of the S3 object that contains your truststore. To specify a
-     * version, you must have versioning enabled for the S3 bucket</p>
-     */
-    inline void SetTruststoreVersion(const Aws::String& value) { m_truststoreVersionHasBeenSet = true; m_truststoreVersion = value; }
-
-    /**
-     * <p>The version of the S3 object that contains your truststore. To specify a
-     * version, you must have versioning enabled for the S3 bucket</p>
-     */
-    inline void SetTruststoreVersion(Aws::String&& value) { m_truststoreVersionHasBeenSet = true; m_truststoreVersion = std::move(value); }
-
-    /**
-     * <p>The version of the S3 object that contains your truststore. To specify a
-     * version, you must have versioning enabled for the S3 bucket</p>
-     */
-    inline void SetTruststoreVersion(const char* value) { m_truststoreVersionHasBeenSet = true; m_truststoreVersion.assign(value); }
-
-    /**
-     * <p>The version of the S3 object that contains your truststore. To specify a
-     * version, you must have versioning enabled for the S3 bucket</p>
-     */
-    inline MutualTlsAuthenticationInput& WithTruststoreVersion(const Aws::String& value) { SetTruststoreVersion(value); return *this;}
-
-    /**
-     * <p>The version of the S3 object that contains your truststore. To specify a
-     * version, you must have versioning enabled for the S3 bucket</p>
-     */
-    inline MutualTlsAuthenticationInput& WithTruststoreVersion(Aws::String&& value) { SetTruststoreVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The version of the S3 object that contains your truststore. To specify a
-     * version, you must have versioning enabled for the S3 bucket</p>
-     */
-    inline MutualTlsAuthenticationInput& WithTruststoreVersion(const char* value) { SetTruststoreVersion(value); return *this;}
-
+    template<typename TruststoreVersionT = Aws::String>
+    void SetTruststoreVersion(TruststoreVersionT&& value) { m_truststoreVersionHasBeenSet = true; m_truststoreVersion = std::forward<TruststoreVersionT>(value); }
+    template<typename TruststoreVersionT = Aws::String>
+    MutualTlsAuthenticationInput& WithTruststoreVersion(TruststoreVersionT&& value) { SetTruststoreVersion(std::forward<TruststoreVersionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_truststoreUri;

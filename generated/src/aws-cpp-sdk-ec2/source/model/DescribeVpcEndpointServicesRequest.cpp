@@ -10,17 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-DescribeVpcEndpointServicesRequest::DescribeVpcEndpointServicesRequest() : 
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_serviceNamesHasBeenSet(false),
-    m_filtersHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
 Aws::String DescribeVpcEndpointServicesRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -59,6 +48,17 @@ Aws::String DescribeVpcEndpointServicesRequest::SerializePayload() const
   if(m_nextTokenHasBeenSet)
   {
     ss << "NextToken=" << StringUtils::URLEncode(m_nextToken.c_str()) << "&";
+  }
+
+  if(m_serviceRegionsHasBeenSet)
+  {
+    unsigned serviceRegionsCount = 1;
+    for(auto& item : m_serviceRegions)
+    {
+      ss << "ServiceRegion." << serviceRegionsCount << "="
+          << StringUtils::URLEncode(item.c_str()) << "&";
+      serviceRegionsCount++;
+    }
   }
 
   ss << "Version=2016-11-15";

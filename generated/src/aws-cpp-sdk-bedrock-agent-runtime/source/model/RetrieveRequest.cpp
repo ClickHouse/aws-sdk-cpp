@@ -12,14 +12,6 @@ using namespace Aws::BedrockAgentRuntime::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-RetrieveRequest::RetrieveRequest() : 
-    m_knowledgeBaseIdHasBeenSet(false),
-    m_retrievalQueryHasBeenSet(false),
-    m_retrievalConfigurationHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
 Aws::String RetrieveRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -33,6 +25,12 @@ Aws::String RetrieveRequest::SerializePayload() const
   if(m_retrievalConfigurationHasBeenSet)
   {
    payload.WithObject("retrievalConfiguration", m_retrievalConfiguration.Jsonize());
+
+  }
+
+  if(m_guardrailConfigurationHasBeenSet)
+  {
+   payload.WithObject("guardrailConfiguration", m_guardrailConfiguration.Jsonize());
 
   }
 

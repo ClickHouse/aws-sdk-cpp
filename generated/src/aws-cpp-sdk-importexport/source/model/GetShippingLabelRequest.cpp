@@ -10,34 +10,25 @@
 using namespace Aws::ImportExport::Model;
 using namespace Aws::Utils;
 
-GetShippingLabelRequest::GetShippingLabelRequest() : 
-    m_jobIdsHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_companyHasBeenSet(false),
-    m_phoneNumberHasBeenSet(false),
-    m_countryHasBeenSet(false),
-    m_stateOrProvinceHasBeenSet(false),
-    m_cityHasBeenSet(false),
-    m_postalCodeHasBeenSet(false),
-    m_street1HasBeenSet(false),
-    m_street2HasBeenSet(false),
-    m_street3HasBeenSet(false),
-    m_aPIVersionHasBeenSet(false)
-{
-}
-
 Aws::String GetShippingLabelRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=GetShippingLabel&";
   if(m_jobIdsHasBeenSet)
   {
-    unsigned jobIdsCount = 1;
-    for(auto& item : m_jobIds)
+    if (m_jobIds.empty())
     {
-      ss << "jobIds.member." << jobIdsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      jobIdsCount++;
+      ss << "jobIds=&";
+    }
+    else
+    {
+      unsigned jobIdsCount = 1;
+      for(auto& item : m_jobIds)
+      {
+        ss << "jobIds.member." << jobIdsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        jobIdsCount++;
+      }
     }
   }
 

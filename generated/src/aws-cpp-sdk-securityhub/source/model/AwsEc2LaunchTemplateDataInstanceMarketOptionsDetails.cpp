@@ -18,15 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsEc2LaunchTemplateDataInstanceMarketOptionsDetails::AwsEc2LaunchTemplateDataInstanceMarketOptionsDetails() : 
-    m_marketTypeHasBeenSet(false),
-    m_spotOptionsHasBeenSet(false)
-{
-}
-
-AwsEc2LaunchTemplateDataInstanceMarketOptionsDetails::AwsEc2LaunchTemplateDataInstanceMarketOptionsDetails(JsonView jsonValue) : 
-    m_marketTypeHasBeenSet(false),
-    m_spotOptionsHasBeenSet(false)
+AwsEc2LaunchTemplateDataInstanceMarketOptionsDetails::AwsEc2LaunchTemplateDataInstanceMarketOptionsDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ AwsEc2LaunchTemplateDataInstanceMarketOptionsDetails& AwsEc2LaunchTemplateDataIn
   if(jsonValue.ValueExists("MarketType"))
   {
     m_marketType = jsonValue.GetString("MarketType");
-
     m_marketTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SpotOptions"))
   {
     m_spotOptions = jsonValue.GetObject("SpotOptions");
-
     m_spotOptionsHasBeenSet = true;
   }
-
   return *this;
 }
 

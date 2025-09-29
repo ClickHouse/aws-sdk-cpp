@@ -12,27 +12,19 @@ using namespace Aws::Inspector2::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateSbomExportRequest::CreateSbomExportRequest() : 
-    m_reportFormat(SbomReportFormat::NOT_SET),
-    m_reportFormatHasBeenSet(false),
-    m_resourceFilterCriteriaHasBeenSet(false),
-    m_s3DestinationHasBeenSet(false)
-{
-}
-
 Aws::String CreateSbomExportRequest::SerializePayload() const
 {
   JsonValue payload;
-
-  if(m_reportFormatHasBeenSet)
-  {
-   payload.WithString("reportFormat", SbomReportFormatMapper::GetNameForSbomReportFormat(m_reportFormat));
-  }
 
   if(m_resourceFilterCriteriaHasBeenSet)
   {
    payload.WithObject("resourceFilterCriteria", m_resourceFilterCriteria.Jsonize());
 
+  }
+
+  if(m_reportFormatHasBeenSet)
+  {
+   payload.WithString("reportFormat", SbomReportFormatMapper::GetNameForSbomReportFormat(m_reportFormat));
   }
 
   if(m_s3DestinationHasBeenSet)

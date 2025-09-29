@@ -18,17 +18,7 @@ namespace ARCZonalShift
 namespace Model
 {
 
-ValidationException::ValidationException() : 
-    m_messageHasBeenSet(false),
-    m_reason(ValidationExceptionReason::NOT_SET),
-    m_reasonHasBeenSet(false)
-{
-}
-
-ValidationException::ValidationException(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_reason(ValidationExceptionReason::NOT_SET),
-    m_reasonHasBeenSet(false)
+ValidationException::ValidationException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ValidationException& ValidationException::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("reason"))
   {
     m_reason = ValidationExceptionReasonMapper::GetValidationExceptionReasonForName(jsonValue.GetString("reason"));
-
     m_reasonHasBeenSet = true;
   }
-
   return *this;
 }
 

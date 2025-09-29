@@ -32,150 +32,49 @@ namespace Model
   class PutProjectEventsResultEntry
   {
   public:
-    AWS_CLOUDWATCHEVIDENTLY_API PutProjectEventsResultEntry();
+    AWS_CLOUDWATCHEVIDENTLY_API PutProjectEventsResultEntry() = default;
     AWS_CLOUDWATCHEVIDENTLY_API PutProjectEventsResultEntry(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDWATCHEVIDENTLY_API PutProjectEventsResultEntry& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDWATCHEVIDENTLY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>If the <code>PutProjectEvents</code> operation has an error, the error code
      * is returned here.</p>
      */
-    inline const Aws::String& GetErrorCode() const{ return m_errorCode; }
-
-    /**
-     * <p>If the <code>PutProjectEvents</code> operation has an error, the error code
-     * is returned here.</p>
-     */
+    inline const Aws::String& GetErrorCode() const { return m_errorCode; }
     inline bool ErrorCodeHasBeenSet() const { return m_errorCodeHasBeenSet; }
+    template<typename ErrorCodeT = Aws::String>
+    void SetErrorCode(ErrorCodeT&& value) { m_errorCodeHasBeenSet = true; m_errorCode = std::forward<ErrorCodeT>(value); }
+    template<typename ErrorCodeT = Aws::String>
+    PutProjectEventsResultEntry& WithErrorCode(ErrorCodeT&& value) { SetErrorCode(std::forward<ErrorCodeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If the <code>PutProjectEvents</code> operation has an error, the error code
-     * is returned here.</p>
-     */
-    inline void SetErrorCode(const Aws::String& value) { m_errorCodeHasBeenSet = true; m_errorCode = value; }
-
-    /**
-     * <p>If the <code>PutProjectEvents</code> operation has an error, the error code
-     * is returned here.</p>
-     */
-    inline void SetErrorCode(Aws::String&& value) { m_errorCodeHasBeenSet = true; m_errorCode = std::move(value); }
-
-    /**
-     * <p>If the <code>PutProjectEvents</code> operation has an error, the error code
-     * is returned here.</p>
-     */
-    inline void SetErrorCode(const char* value) { m_errorCodeHasBeenSet = true; m_errorCode.assign(value); }
-
-    /**
-     * <p>If the <code>PutProjectEvents</code> operation has an error, the error code
-     * is returned here.</p>
-     */
-    inline PutProjectEventsResultEntry& WithErrorCode(const Aws::String& value) { SetErrorCode(value); return *this;}
-
-    /**
-     * <p>If the <code>PutProjectEvents</code> operation has an error, the error code
-     * is returned here.</p>
-     */
-    inline PutProjectEventsResultEntry& WithErrorCode(Aws::String&& value) { SetErrorCode(std::move(value)); return *this;}
-
-    /**
-     * <p>If the <code>PutProjectEvents</code> operation has an error, the error code
-     * is returned here.</p>
-     */
-    inline PutProjectEventsResultEntry& WithErrorCode(const char* value) { SetErrorCode(value); return *this;}
-
-
+    ///@{
     /**
      * <p>If the <code>PutProjectEvents</code> operation has an error, the error
      * message is returned here.</p>
      */
-    inline const Aws::String& GetErrorMessage() const{ return m_errorMessage; }
-
-    /**
-     * <p>If the <code>PutProjectEvents</code> operation has an error, the error
-     * message is returned here.</p>
-     */
+    inline const Aws::String& GetErrorMessage() const { return m_errorMessage; }
     inline bool ErrorMessageHasBeenSet() const { return m_errorMessageHasBeenSet; }
+    template<typename ErrorMessageT = Aws::String>
+    void SetErrorMessage(ErrorMessageT&& value) { m_errorMessageHasBeenSet = true; m_errorMessage = std::forward<ErrorMessageT>(value); }
+    template<typename ErrorMessageT = Aws::String>
+    PutProjectEventsResultEntry& WithErrorMessage(ErrorMessageT&& value) { SetErrorMessage(std::forward<ErrorMessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If the <code>PutProjectEvents</code> operation has an error, the error
-     * message is returned here.</p>
-     */
-    inline void SetErrorMessage(const Aws::String& value) { m_errorMessageHasBeenSet = true; m_errorMessage = value; }
-
-    /**
-     * <p>If the <code>PutProjectEvents</code> operation has an error, the error
-     * message is returned here.</p>
-     */
-    inline void SetErrorMessage(Aws::String&& value) { m_errorMessageHasBeenSet = true; m_errorMessage = std::move(value); }
-
-    /**
-     * <p>If the <code>PutProjectEvents</code> operation has an error, the error
-     * message is returned here.</p>
-     */
-    inline void SetErrorMessage(const char* value) { m_errorMessageHasBeenSet = true; m_errorMessage.assign(value); }
-
-    /**
-     * <p>If the <code>PutProjectEvents</code> operation has an error, the error
-     * message is returned here.</p>
-     */
-    inline PutProjectEventsResultEntry& WithErrorMessage(const Aws::String& value) { SetErrorMessage(value); return *this;}
-
-    /**
-     * <p>If the <code>PutProjectEvents</code> operation has an error, the error
-     * message is returned here.</p>
-     */
-    inline PutProjectEventsResultEntry& WithErrorMessage(Aws::String&& value) { SetErrorMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>If the <code>PutProjectEvents</code> operation has an error, the error
-     * message is returned here.</p>
-     */
-    inline PutProjectEventsResultEntry& WithErrorMessage(const char* value) { SetErrorMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A unique ID assigned to this <code>PutProjectEvents</code> operation. </p>
      */
-    inline const Aws::String& GetEventId() const{ return m_eventId; }
-
-    /**
-     * <p>A unique ID assigned to this <code>PutProjectEvents</code> operation. </p>
-     */
+    inline const Aws::String& GetEventId() const { return m_eventId; }
     inline bool EventIdHasBeenSet() const { return m_eventIdHasBeenSet; }
-
-    /**
-     * <p>A unique ID assigned to this <code>PutProjectEvents</code> operation. </p>
-     */
-    inline void SetEventId(const Aws::String& value) { m_eventIdHasBeenSet = true; m_eventId = value; }
-
-    /**
-     * <p>A unique ID assigned to this <code>PutProjectEvents</code> operation. </p>
-     */
-    inline void SetEventId(Aws::String&& value) { m_eventIdHasBeenSet = true; m_eventId = std::move(value); }
-
-    /**
-     * <p>A unique ID assigned to this <code>PutProjectEvents</code> operation. </p>
-     */
-    inline void SetEventId(const char* value) { m_eventIdHasBeenSet = true; m_eventId.assign(value); }
-
-    /**
-     * <p>A unique ID assigned to this <code>PutProjectEvents</code> operation. </p>
-     */
-    inline PutProjectEventsResultEntry& WithEventId(const Aws::String& value) { SetEventId(value); return *this;}
-
-    /**
-     * <p>A unique ID assigned to this <code>PutProjectEvents</code> operation. </p>
-     */
-    inline PutProjectEventsResultEntry& WithEventId(Aws::String&& value) { SetEventId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique ID assigned to this <code>PutProjectEvents</code> operation. </p>
-     */
-    inline PutProjectEventsResultEntry& WithEventId(const char* value) { SetEventId(value); return *this;}
-
+    template<typename EventIdT = Aws::String>
+    void SetEventId(EventIdT&& value) { m_eventIdHasBeenSet = true; m_eventId = std::forward<EventIdT>(value); }
+    template<typename EventIdT = Aws::String>
+    PutProjectEventsResultEntry& WithEventId(EventIdT&& value) { SetEventId(std::forward<EventIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_errorCode;

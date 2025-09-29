@@ -20,19 +20,7 @@ namespace RDS
 namespace Model
 {
 
-Metric::Metric() : 
-    m_nameHasBeenSet(false),
-    m_referencesHasBeenSet(false),
-    m_statisticsDetailsHasBeenSet(false),
-    m_metricQueryHasBeenSet(false)
-{
-}
-
-Metric::Metric(const XmlNode& xmlNode) : 
-    m_nameHasBeenSet(false),
-    m_referencesHasBeenSet(false),
-    m_statisticsDetailsHasBeenSet(false),
-    m_metricQueryHasBeenSet(false)
+Metric::Metric(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -53,6 +41,7 @@ Metric& Metric::operator =(const XmlNode& xmlNode)
     if(!referencesNode.IsNull())
     {
       XmlNode referencesMember = referencesNode.FirstChild("member");
+      m_referencesHasBeenSet = !referencesMember.IsNull();
       while(!referencesMember.IsNull())
       {
         m_references.push_back(referencesMember);
@@ -122,7 +111,7 @@ void Metric::OutputToStream(Aws::OStream& oStream, const char* location) const
       for(auto& item : m_references)
       {
         Aws::StringStream referencesSs;
-        referencesSs << location <<  ".References.member." << referencesIdx++;
+        referencesSs << location << ".References.member." << referencesIdx++;
         item.OutputToStream(oStream, referencesSs.str().c_str());
       }
   }

@@ -33,143 +33,57 @@ namespace Model
   class EnumListConfigurationOptions
   {
   public:
-    AWS_SECURITYHUB_API EnumListConfigurationOptions();
+    AWS_SECURITYHUB_API EnumListConfigurationOptions() = default;
     AWS_SECURITYHUB_API EnumListConfigurationOptions(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API EnumListConfigurationOptions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The Security Hub default value for a control parameter that is a list of
      * enums. </p>
      */
-    inline const Aws::Vector<Aws::String>& GetDefaultValue() const{ return m_defaultValue; }
-
-    /**
-     * <p> The Security Hub default value for a control parameter that is a list of
-     * enums. </p>
-     */
+    inline const Aws::Vector<Aws::String>& GetDefaultValue() const { return m_defaultValue; }
     inline bool DefaultValueHasBeenSet() const { return m_defaultValueHasBeenSet; }
+    template<typename DefaultValueT = Aws::Vector<Aws::String>>
+    void SetDefaultValue(DefaultValueT&& value) { m_defaultValueHasBeenSet = true; m_defaultValue = std::forward<DefaultValueT>(value); }
+    template<typename DefaultValueT = Aws::Vector<Aws::String>>
+    EnumListConfigurationOptions& WithDefaultValue(DefaultValueT&& value) { SetDefaultValue(std::forward<DefaultValueT>(value)); return *this;}
+    template<typename DefaultValueT = Aws::String>
+    EnumListConfigurationOptions& AddDefaultValue(DefaultValueT&& value) { m_defaultValueHasBeenSet = true; m_defaultValue.emplace_back(std::forward<DefaultValueT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p> The Security Hub default value for a control parameter that is a list of
-     * enums. </p>
-     */
-    inline void SetDefaultValue(const Aws::Vector<Aws::String>& value) { m_defaultValueHasBeenSet = true; m_defaultValue = value; }
-
-    /**
-     * <p> The Security Hub default value for a control parameter that is a list of
-     * enums. </p>
-     */
-    inline void SetDefaultValue(Aws::Vector<Aws::String>&& value) { m_defaultValueHasBeenSet = true; m_defaultValue = std::move(value); }
-
-    /**
-     * <p> The Security Hub default value for a control parameter that is a list of
-     * enums. </p>
-     */
-    inline EnumListConfigurationOptions& WithDefaultValue(const Aws::Vector<Aws::String>& value) { SetDefaultValue(value); return *this;}
-
-    /**
-     * <p> The Security Hub default value for a control parameter that is a list of
-     * enums. </p>
-     */
-    inline EnumListConfigurationOptions& WithDefaultValue(Aws::Vector<Aws::String>&& value) { SetDefaultValue(std::move(value)); return *this;}
-
-    /**
-     * <p> The Security Hub default value for a control parameter that is a list of
-     * enums. </p>
-     */
-    inline EnumListConfigurationOptions& AddDefaultValue(const Aws::String& value) { m_defaultValueHasBeenSet = true; m_defaultValue.push_back(value); return *this; }
-
-    /**
-     * <p> The Security Hub default value for a control parameter that is a list of
-     * enums. </p>
-     */
-    inline EnumListConfigurationOptions& AddDefaultValue(Aws::String&& value) { m_defaultValueHasBeenSet = true; m_defaultValue.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p> The Security Hub default value for a control parameter that is a list of
-     * enums. </p>
-     */
-    inline EnumListConfigurationOptions& AddDefaultValue(const char* value) { m_defaultValueHasBeenSet = true; m_defaultValue.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p> The maximum number of list items that an enum list control parameter can
      * accept. </p>
      */
-    inline int GetMaxItems() const{ return m_maxItems; }
-
-    /**
-     * <p> The maximum number of list items that an enum list control parameter can
-     * accept. </p>
-     */
+    inline int GetMaxItems() const { return m_maxItems; }
     inline bool MaxItemsHasBeenSet() const { return m_maxItemsHasBeenSet; }
-
-    /**
-     * <p> The maximum number of list items that an enum list control parameter can
-     * accept. </p>
-     */
     inline void SetMaxItems(int value) { m_maxItemsHasBeenSet = true; m_maxItems = value; }
-
-    /**
-     * <p> The maximum number of list items that an enum list control parameter can
-     * accept. </p>
-     */
     inline EnumListConfigurationOptions& WithMaxItems(int value) { SetMaxItems(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p> The valid values for a control parameter that is a list of enums. </p>
      */
-    inline const Aws::Vector<Aws::String>& GetAllowedValues() const{ return m_allowedValues; }
-
-    /**
-     * <p> The valid values for a control parameter that is a list of enums. </p>
-     */
+    inline const Aws::Vector<Aws::String>& GetAllowedValues() const { return m_allowedValues; }
     inline bool AllowedValuesHasBeenSet() const { return m_allowedValuesHasBeenSet; }
-
-    /**
-     * <p> The valid values for a control parameter that is a list of enums. </p>
-     */
-    inline void SetAllowedValues(const Aws::Vector<Aws::String>& value) { m_allowedValuesHasBeenSet = true; m_allowedValues = value; }
-
-    /**
-     * <p> The valid values for a control parameter that is a list of enums. </p>
-     */
-    inline void SetAllowedValues(Aws::Vector<Aws::String>&& value) { m_allowedValuesHasBeenSet = true; m_allowedValues = std::move(value); }
-
-    /**
-     * <p> The valid values for a control parameter that is a list of enums. </p>
-     */
-    inline EnumListConfigurationOptions& WithAllowedValues(const Aws::Vector<Aws::String>& value) { SetAllowedValues(value); return *this;}
-
-    /**
-     * <p> The valid values for a control parameter that is a list of enums. </p>
-     */
-    inline EnumListConfigurationOptions& WithAllowedValues(Aws::Vector<Aws::String>&& value) { SetAllowedValues(std::move(value)); return *this;}
-
-    /**
-     * <p> The valid values for a control parameter that is a list of enums. </p>
-     */
-    inline EnumListConfigurationOptions& AddAllowedValues(const Aws::String& value) { m_allowedValuesHasBeenSet = true; m_allowedValues.push_back(value); return *this; }
-
-    /**
-     * <p> The valid values for a control parameter that is a list of enums. </p>
-     */
-    inline EnumListConfigurationOptions& AddAllowedValues(Aws::String&& value) { m_allowedValuesHasBeenSet = true; m_allowedValues.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p> The valid values for a control parameter that is a list of enums. </p>
-     */
-    inline EnumListConfigurationOptions& AddAllowedValues(const char* value) { m_allowedValuesHasBeenSet = true; m_allowedValues.push_back(value); return *this; }
-
+    template<typename AllowedValuesT = Aws::Vector<Aws::String>>
+    void SetAllowedValues(AllowedValuesT&& value) { m_allowedValuesHasBeenSet = true; m_allowedValues = std::forward<AllowedValuesT>(value); }
+    template<typename AllowedValuesT = Aws::Vector<Aws::String>>
+    EnumListConfigurationOptions& WithAllowedValues(AllowedValuesT&& value) { SetAllowedValues(std::forward<AllowedValuesT>(value)); return *this;}
+    template<typename AllowedValuesT = Aws::String>
+    EnumListConfigurationOptions& AddAllowedValues(AllowedValuesT&& value) { m_allowedValuesHasBeenSet = true; m_allowedValues.emplace_back(std::forward<AllowedValuesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_defaultValue;
     bool m_defaultValueHasBeenSet = false;
 
-    int m_maxItems;
+    int m_maxItems{0};
     bool m_maxItemsHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_allowedValues;

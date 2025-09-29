@@ -20,15 +20,7 @@ namespace CloudSearch
 namespace Model
 {
 
-IndexFieldStatus::IndexFieldStatus() : 
-    m_optionsHasBeenSet(false),
-    m_statusHasBeenSet(false)
-{
-}
-
-IndexFieldStatus::IndexFieldStatus(const XmlNode& xmlNode) : 
-    m_optionsHasBeenSet(false),
-    m_statusHasBeenSet(false)
+IndexFieldStatus::IndexFieldStatus(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

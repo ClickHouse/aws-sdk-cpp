@@ -34,48 +34,24 @@ namespace Model
   class SuggestionQuery
   {
   public:
-    AWS_SAGEMAKER_API SuggestionQuery();
+    AWS_SAGEMAKER_API SuggestionQuery() = default;
     AWS_SAGEMAKER_API SuggestionQuery(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API SuggestionQuery& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Defines a property name hint. Only property names that begin with the
      * specified hint are included in the response.</p>
      */
-    inline const PropertyNameQuery& GetPropertyNameQuery() const{ return m_propertyNameQuery; }
-
-    /**
-     * <p>Defines a property name hint. Only property names that begin with the
-     * specified hint are included in the response.</p>
-     */
+    inline const PropertyNameQuery& GetPropertyNameQuery() const { return m_propertyNameQuery; }
     inline bool PropertyNameQueryHasBeenSet() const { return m_propertyNameQueryHasBeenSet; }
-
-    /**
-     * <p>Defines a property name hint. Only property names that begin with the
-     * specified hint are included in the response.</p>
-     */
-    inline void SetPropertyNameQuery(const PropertyNameQuery& value) { m_propertyNameQueryHasBeenSet = true; m_propertyNameQuery = value; }
-
-    /**
-     * <p>Defines a property name hint. Only property names that begin with the
-     * specified hint are included in the response.</p>
-     */
-    inline void SetPropertyNameQuery(PropertyNameQuery&& value) { m_propertyNameQueryHasBeenSet = true; m_propertyNameQuery = std::move(value); }
-
-    /**
-     * <p>Defines a property name hint. Only property names that begin with the
-     * specified hint are included in the response.</p>
-     */
-    inline SuggestionQuery& WithPropertyNameQuery(const PropertyNameQuery& value) { SetPropertyNameQuery(value); return *this;}
-
-    /**
-     * <p>Defines a property name hint. Only property names that begin with the
-     * specified hint are included in the response.</p>
-     */
-    inline SuggestionQuery& WithPropertyNameQuery(PropertyNameQuery&& value) { SetPropertyNameQuery(std::move(value)); return *this;}
-
+    template<typename PropertyNameQueryT = PropertyNameQuery>
+    void SetPropertyNameQuery(PropertyNameQueryT&& value) { m_propertyNameQueryHasBeenSet = true; m_propertyNameQuery = std::forward<PropertyNameQueryT>(value); }
+    template<typename PropertyNameQueryT = PropertyNameQuery>
+    SuggestionQuery& WithPropertyNameQuery(PropertyNameQueryT&& value) { SetPropertyNameQuery(std::forward<PropertyNameQueryT>(value)); return *this;}
+    ///@}
   private:
 
     PropertyNameQuery m_propertyNameQuery;

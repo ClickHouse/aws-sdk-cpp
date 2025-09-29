@@ -25,7 +25,7 @@ namespace Model
   class ListChannelMembershipsForAppInstanceUserRequest : public ChimeSDKMessagingRequest
   {
   public:
-    AWS_CHIMESDKMESSAGING_API ListChannelMembershipsForAppInstanceUserRequest();
+    AWS_CHIMESDKMESSAGING_API ListChannelMembershipsForAppInstanceUserRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -40,171 +40,59 @@ namespace Model
     AWS_CHIMESDKMESSAGING_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ARN of the user or bot.</p>
      */
-    inline const Aws::String& GetAppInstanceUserArn() const{ return m_appInstanceUserArn; }
-
-    /**
-     * <p>The ARN of the user or bot.</p>
-     */
+    inline const Aws::String& GetAppInstanceUserArn() const { return m_appInstanceUserArn; }
     inline bool AppInstanceUserArnHasBeenSet() const { return m_appInstanceUserArnHasBeenSet; }
+    template<typename AppInstanceUserArnT = Aws::String>
+    void SetAppInstanceUserArn(AppInstanceUserArnT&& value) { m_appInstanceUserArnHasBeenSet = true; m_appInstanceUserArn = std::forward<AppInstanceUserArnT>(value); }
+    template<typename AppInstanceUserArnT = Aws::String>
+    ListChannelMembershipsForAppInstanceUserRequest& WithAppInstanceUserArn(AppInstanceUserArnT&& value) { SetAppInstanceUserArn(std::forward<AppInstanceUserArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the user or bot.</p>
-     */
-    inline void SetAppInstanceUserArn(const Aws::String& value) { m_appInstanceUserArnHasBeenSet = true; m_appInstanceUserArn = value; }
-
-    /**
-     * <p>The ARN of the user or bot.</p>
-     */
-    inline void SetAppInstanceUserArn(Aws::String&& value) { m_appInstanceUserArnHasBeenSet = true; m_appInstanceUserArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the user or bot.</p>
-     */
-    inline void SetAppInstanceUserArn(const char* value) { m_appInstanceUserArnHasBeenSet = true; m_appInstanceUserArn.assign(value); }
-
-    /**
-     * <p>The ARN of the user or bot.</p>
-     */
-    inline ListChannelMembershipsForAppInstanceUserRequest& WithAppInstanceUserArn(const Aws::String& value) { SetAppInstanceUserArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the user or bot.</p>
-     */
-    inline ListChannelMembershipsForAppInstanceUserRequest& WithAppInstanceUserArn(Aws::String&& value) { SetAppInstanceUserArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the user or bot.</p>
-     */
-    inline ListChannelMembershipsForAppInstanceUserRequest& WithAppInstanceUserArn(const char* value) { SetAppInstanceUserArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of users that you want returned.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of users that you want returned.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of users that you want returned.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of users that you want returned.</p>
-     */
     inline ListChannelMembershipsForAppInstanceUserRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The token returned from previous API requests until the number of channel
      * memberships is reached.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The token returned from previous API requests until the number of channel
-     * memberships is reached.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListChannelMembershipsForAppInstanceUserRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The token returned from previous API requests until the number of channel
-     * memberships is reached.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The token returned from previous API requests until the number of channel
-     * memberships is reached.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The token returned from previous API requests until the number of channel
-     * memberships is reached.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The token returned from previous API requests until the number of channel
-     * memberships is reached.</p>
-     */
-    inline ListChannelMembershipsForAppInstanceUserRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The token returned from previous API requests until the number of channel
-     * memberships is reached.</p>
-     */
-    inline ListChannelMembershipsForAppInstanceUserRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The token returned from previous API requests until the number of channel
-     * memberships is reached.</p>
-     */
-    inline ListChannelMembershipsForAppInstanceUserRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the <code>AppInstanceUser</code> or <code>AppInstanceBot</code>
      * that makes the API call.</p>
      */
-    inline const Aws::String& GetChimeBearer() const{ return m_chimeBearer; }
-
-    /**
-     * <p>The ARN of the <code>AppInstanceUser</code> or <code>AppInstanceBot</code>
-     * that makes the API call.</p>
-     */
+    inline const Aws::String& GetChimeBearer() const { return m_chimeBearer; }
     inline bool ChimeBearerHasBeenSet() const { return m_chimeBearerHasBeenSet; }
-
-    /**
-     * <p>The ARN of the <code>AppInstanceUser</code> or <code>AppInstanceBot</code>
-     * that makes the API call.</p>
-     */
-    inline void SetChimeBearer(const Aws::String& value) { m_chimeBearerHasBeenSet = true; m_chimeBearer = value; }
-
-    /**
-     * <p>The ARN of the <code>AppInstanceUser</code> or <code>AppInstanceBot</code>
-     * that makes the API call.</p>
-     */
-    inline void SetChimeBearer(Aws::String&& value) { m_chimeBearerHasBeenSet = true; m_chimeBearer = std::move(value); }
-
-    /**
-     * <p>The ARN of the <code>AppInstanceUser</code> or <code>AppInstanceBot</code>
-     * that makes the API call.</p>
-     */
-    inline void SetChimeBearer(const char* value) { m_chimeBearerHasBeenSet = true; m_chimeBearer.assign(value); }
-
-    /**
-     * <p>The ARN of the <code>AppInstanceUser</code> or <code>AppInstanceBot</code>
-     * that makes the API call.</p>
-     */
-    inline ListChannelMembershipsForAppInstanceUserRequest& WithChimeBearer(const Aws::String& value) { SetChimeBearer(value); return *this;}
-
-    /**
-     * <p>The ARN of the <code>AppInstanceUser</code> or <code>AppInstanceBot</code>
-     * that makes the API call.</p>
-     */
-    inline ListChannelMembershipsForAppInstanceUserRequest& WithChimeBearer(Aws::String&& value) { SetChimeBearer(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the <code>AppInstanceUser</code> or <code>AppInstanceBot</code>
-     * that makes the API call.</p>
-     */
-    inline ListChannelMembershipsForAppInstanceUserRequest& WithChimeBearer(const char* value) { SetChimeBearer(value); return *this;}
-
+    template<typename ChimeBearerT = Aws::String>
+    void SetChimeBearer(ChimeBearerT&& value) { m_chimeBearerHasBeenSet = true; m_chimeBearer = std::forward<ChimeBearerT>(value); }
+    template<typename ChimeBearerT = Aws::String>
+    ListChannelMembershipsForAppInstanceUserRequest& WithChimeBearer(ChimeBearerT&& value) { SetChimeBearer(std::forward<ChimeBearerT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_appInstanceUserArn;
     bool m_appInstanceUserArnHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     Aws::String m_nextToken;

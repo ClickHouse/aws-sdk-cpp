@@ -12,17 +12,6 @@ using namespace Aws::HealthLake::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-StartFHIRImportJobRequest::StartFHIRImportJobRequest() : 
-    m_jobNameHasBeenSet(false),
-    m_inputDataConfigHasBeenSet(false),
-    m_jobOutputDataConfigHasBeenSet(false),
-    m_datastoreIdHasBeenSet(false),
-    m_dataAccessRoleArnHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_clientTokenHasBeenSet(true)
-{
-}
-
 Aws::String StartFHIRImportJobRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -61,6 +50,11 @@ Aws::String StartFHIRImportJobRequest::SerializePayload() const
   {
    payload.WithString("ClientToken", m_clientToken);
 
+  }
+
+  if(m_validationLevelHasBeenSet)
+  {
+   payload.WithString("ValidationLevel", ValidationLevelMapper::GetNameForValidationLevel(m_validationLevel));
   }
 
   return payload.View().WriteReadable();

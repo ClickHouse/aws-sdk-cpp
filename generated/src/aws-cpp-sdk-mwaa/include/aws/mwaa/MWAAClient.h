@@ -43,6 +43,8 @@ namespace MWAA
    * href="https://docs.aws.amazon.com/mwaa/latest/API/API_CreateCliToken.html
    * ">CreateCliToken</a> </p> </li> <li> <p> <a
    * href="https://docs.aws.amazon.com/mwaa/latest/API/API_CreateWebLoginToken.html">CreateWebLoginToken</a>
+   * </p> </li> <li> <p> <a
+   * href="https://docs.aws.amazon.com/mwaa/latest/API/API_InvokeRestApi.html">InvokeRestApi</a>
    * </p> </li> </ul> </li> </ul> <p> <b>Regions</b> </p> <p>For a list of supported
    * regions, see <a
    * href="https://docs.aws.amazon.com/general/latest/gr/mwaa.html">Amazon MWAA
@@ -53,8 +55,8 @@ namespace MWAA
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
 
       typedef MWAAClientConfiguration ClientConfigurationType;
       typedef MWAAEndpointProvider EndpointProviderType;
@@ -64,14 +66,14 @@ namespace MWAA
         * is not specified, it will be initialized to default values.
         */
         MWAAClient(const Aws::MWAA::MWAAClientConfiguration& clientConfiguration = Aws::MWAA::MWAAClientConfiguration(),
-                   std::shared_ptr<MWAAEndpointProviderBase> endpointProvider = Aws::MakeShared<MWAAEndpointProvider>(ALLOCATION_TAG));
+                   std::shared_ptr<MWAAEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         MWAAClient(const Aws::Auth::AWSCredentials& credentials,
-                   std::shared_ptr<MWAAEndpointProviderBase> endpointProvider = Aws::MakeShared<MWAAEndpointProvider>(ALLOCATION_TAG),
+                   std::shared_ptr<MWAAEndpointProviderBase> endpointProvider = nullptr,
                    const Aws::MWAA::MWAAClientConfiguration& clientConfiguration = Aws::MWAA::MWAAClientConfiguration());
 
        /**
@@ -79,7 +81,7 @@ namespace MWAA
         * the default http client factory will be used
         */
         MWAAClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                   std::shared_ptr<MWAAEndpointProviderBase> endpointProvider = Aws::MakeShared<MWAAEndpointProvider>(ALLOCATION_TAG),
+                   std::shared_ptr<MWAAEndpointProviderBase> endpointProvider = nullptr,
                    const Aws::MWAA::MWAAClientConfiguration& clientConfiguration = Aws::MWAA::MWAAClientConfiguration());
 
 
@@ -135,7 +137,7 @@ namespace MWAA
         }
 
         /**
-         * <p>Creates an Amazon Managed Workflows for Apache Airflow (MWAA)
+         * <p>Creates an Amazon Managed Workflows for Apache Airflow (Amazon MWAA)
          * environment.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/mwaa-2020-07-01/CreateEnvironment">AWS
          * API Reference</a></p>
@@ -188,7 +190,7 @@ namespace MWAA
         }
 
         /**
-         * <p>Deletes an Amazon Managed Workflows for Apache Airflow (MWAA)
+         * <p>Deletes an Amazon Managed Workflows for Apache Airflow (Amazon MWAA)
          * environment.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/mwaa-2020-07-01/DeleteEnvironment">AWS
          * API Reference</a></p>
@@ -240,18 +242,46 @@ namespace MWAA
         }
 
         /**
+         * <p>Invokes the Apache Airflow REST API on the webserver with the specified
+         * inputs. To learn more, see <a
+         * href="https://docs.aws.amazon.com/mwaa/latest/userguide/access-mwaa-apache-airflow-rest-api.html">Using
+         * the Apache Airflow REST API</a> </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/mwaa-2020-07-01/InvokeRestApi">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::InvokeRestApiOutcome InvokeRestApi(const Model::InvokeRestApiRequest& request) const;
+
+        /**
+         * A Callable wrapper for InvokeRestApi that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename InvokeRestApiRequestT = Model::InvokeRestApiRequest>
+        Model::InvokeRestApiOutcomeCallable InvokeRestApiCallable(const InvokeRestApiRequestT& request) const
+        {
+            return SubmitCallable(&MWAAClient::InvokeRestApi, request);
+        }
+
+        /**
+         * An Async wrapper for InvokeRestApi that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename InvokeRestApiRequestT = Model::InvokeRestApiRequest>
+        void InvokeRestApiAsync(const InvokeRestApiRequestT& request, const InvokeRestApiResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&MWAAClient::InvokeRestApi, request, handler, context);
+        }
+
+        /**
          * <p>Lists the Amazon Managed Workflows for Apache Airflow (MWAA)
          * environments.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/mwaa-2020-07-01/ListEnvironments">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListEnvironmentsOutcome ListEnvironments(const Model::ListEnvironmentsRequest& request) const;
+        virtual Model::ListEnvironmentsOutcome ListEnvironments(const Model::ListEnvironmentsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListEnvironments that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListEnvironmentsRequestT = Model::ListEnvironmentsRequest>
-        Model::ListEnvironmentsOutcomeCallable ListEnvironmentsCallable(const ListEnvironmentsRequestT& request) const
+        Model::ListEnvironmentsOutcomeCallable ListEnvironmentsCallable(const ListEnvironmentsRequestT& request = {}) const
         {
             return SubmitCallable(&MWAAClient::ListEnvironments, request);
         }
@@ -260,7 +290,7 @@ namespace MWAA
          * An Async wrapper for ListEnvironments that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListEnvironmentsRequestT = Model::ListEnvironmentsRequest>
-        void ListEnvironmentsAsync(const ListEnvironmentsRequestT& request, const ListEnvironmentsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListEnvironmentsAsync(const ListEnvironmentsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListEnvironmentsRequestT& request = {}) const
         {
             return SubmitAsync(&MWAAClient::ListEnvironments, request, handler, context);
         }
@@ -379,7 +409,6 @@ namespace MWAA
       void init(const MWAAClientConfiguration& clientConfiguration);
 
       MWAAClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<MWAAEndpointProviderBase> m_endpointProvider;
   };
 

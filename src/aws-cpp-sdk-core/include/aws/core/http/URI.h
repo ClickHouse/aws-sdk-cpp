@@ -24,6 +24,9 @@ namespace Aws
         extern bool s_compliantRfc3986Encoding;
         AWS_CORE_API void SetCompliantRfc3986Encoding(bool compliant);
 
+        extern AWS_CORE_API bool s_preservePathSeparators;
+        AWS_CORE_API void SetPreservePathSeparators(bool preservePathSeparators);
+
         //per https://tools.ietf.org/html/rfc3986#section-3.4 there is nothing preventing servers from allowing
         //multiple values for the same key. So use a multimap instead of a map.
         typedef Aws::MultiMap<Aws::String, Aws::String> QueryStringParameterCollection;
@@ -68,12 +71,14 @@ namespace Aws
             void SetScheme(Scheme value);
 
             /**
-            * Gets the domain portion of the uri
+            * Gets the authority portion of the URI. Differs from the authority definition in RFC 3986. user information
+            * and the port information are not included. It is functionally the host as defined by  RFC 3986 with encoding included.
             */
             inline const Aws::String& GetAuthority() const { return m_authority; }
 
             /**
-            * Sets the domain portion of the uri
+            * Sets the authority portion of the URI. Differs from the authority definition in RFC 3986. user information
+            * and the port information are not included. It is functionally the host as defined by  RFC 3986 with encoding included.
             */
             inline void SetAuthority(const Aws::String& value) { m_authority = value; }
 
@@ -135,11 +140,20 @@ namespace Aws
                 Aws::StringStream ss;
                 ss << pathSegments;
                 Aws::String segments = ss.str();
-                for (const auto& segment : Aws::Utils::StringUtils::Split(segments, '/'))
+                const auto splitOption = s_preservePathSeparators
+                                           ? Utils::StringUtils::SplitOptions::INCLUDE_EMPTY_SEGMENTS
+                                           : Utils::StringUtils::SplitOptions::NOT_SET;
+                // Preserve legacy behavior -- we need to remove a leading "/" if use `INCLUDE_EMPTY_SEGMENTS` is specified
+                // because string split will no longer ignore leading delimiters -- which is correct.
+                auto split = Aws::Utils::StringUtils::Split(segments, '/', splitOption);
+                if (s_preservePathSeparators && m_pathSegments.empty() && !split.empty() && split.front().empty() && !m_pathHasTrailingSlash) {
+                  split.erase(split.begin());
+                }
+                for (const auto& segment: split)
                 {
                     m_pathSegments.push_back(segment);
                 }
-                m_pathHasTrailingSlash = (!segments.empty() && segments.back() == '/');
+                m_pathHasTrailingSlash = (m_pathSegments.empty() || !s_preservePathSeparators) && (!segments.empty() && segments.back() == '/');
             }
 
             /**
@@ -200,6 +214,17 @@ namespace Aws
              * URLEncodes the path portion of the URI according to RFC3986
              */
             static Aws::String URLEncodePathRFC3986(const Aws::String& path, bool rfcCompliantEncoding = false);
+
+            /**
+             * The host portion of the URI as described in rfc3986.
+             *
+             * The host subcomponent of authority is identified by an IPv6 literal
+             * encapsulated within square brackets, an IPv4 address in dotted-
+             * decimal form, or a registered name.
+             *
+             * @return The host portion of the URI
+             */
+            Aws::String GetHost() const;
 
         private:
             void ParseURIParts(const Aws::String& uri);

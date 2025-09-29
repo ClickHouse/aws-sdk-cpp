@@ -18,15 +18,7 @@ namespace BillingConductor
 namespace Model
 {
 
-FreeTierConfig::FreeTierConfig() : 
-    m_activated(false),
-    m_activatedHasBeenSet(false)
-{
-}
-
-FreeTierConfig::FreeTierConfig(JsonView jsonValue) : 
-    m_activated(false),
-    m_activatedHasBeenSet(false)
+FreeTierConfig::FreeTierConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ FreeTierConfig& FreeTierConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Activated"))
   {
     m_activated = jsonValue.GetBool("Activated");
-
     m_activatedHasBeenSet = true;
   }
-
   return *this;
 }
 

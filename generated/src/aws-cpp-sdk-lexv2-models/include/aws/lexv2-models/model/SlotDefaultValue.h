@@ -32,52 +32,23 @@ namespace Model
   class SlotDefaultValue
   {
   public:
-    AWS_LEXMODELSV2_API SlotDefaultValue();
+    AWS_LEXMODELSV2_API SlotDefaultValue() = default;
     AWS_LEXMODELSV2_API SlotDefaultValue(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API SlotDefaultValue& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The default value to use when a user doesn't provide a value for a slot.</p>
      */
-    inline const Aws::String& GetDefaultValue() const{ return m_defaultValue; }
-
-    /**
-     * <p>The default value to use when a user doesn't provide a value for a slot.</p>
-     */
+    inline const Aws::String& GetDefaultValue() const { return m_defaultValue; }
     inline bool DefaultValueHasBeenSet() const { return m_defaultValueHasBeenSet; }
-
-    /**
-     * <p>The default value to use when a user doesn't provide a value for a slot.</p>
-     */
-    inline void SetDefaultValue(const Aws::String& value) { m_defaultValueHasBeenSet = true; m_defaultValue = value; }
-
-    /**
-     * <p>The default value to use when a user doesn't provide a value for a slot.</p>
-     */
-    inline void SetDefaultValue(Aws::String&& value) { m_defaultValueHasBeenSet = true; m_defaultValue = std::move(value); }
-
-    /**
-     * <p>The default value to use when a user doesn't provide a value for a slot.</p>
-     */
-    inline void SetDefaultValue(const char* value) { m_defaultValueHasBeenSet = true; m_defaultValue.assign(value); }
-
-    /**
-     * <p>The default value to use when a user doesn't provide a value for a slot.</p>
-     */
-    inline SlotDefaultValue& WithDefaultValue(const Aws::String& value) { SetDefaultValue(value); return *this;}
-
-    /**
-     * <p>The default value to use when a user doesn't provide a value for a slot.</p>
-     */
-    inline SlotDefaultValue& WithDefaultValue(Aws::String&& value) { SetDefaultValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The default value to use when a user doesn't provide a value for a slot.</p>
-     */
-    inline SlotDefaultValue& WithDefaultValue(const char* value) { SetDefaultValue(value); return *this;}
-
+    template<typename DefaultValueT = Aws::String>
+    void SetDefaultValue(DefaultValueT&& value) { m_defaultValueHasBeenSet = true; m_defaultValue = std::forward<DefaultValueT>(value); }
+    template<typename DefaultValueT = Aws::String>
+    SlotDefaultValue& WithDefaultValue(DefaultValueT&& value) { SetDefaultValue(std::forward<DefaultValueT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_defaultValue;

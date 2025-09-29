@@ -37,98 +37,37 @@ namespace Model
   class TrustStore
   {
   public:
-    AWS_WORKSPACESWEB_API TrustStore();
+    AWS_WORKSPACESWEB_API TrustStore() = default;
     AWS_WORKSPACESWEB_API TrustStore(Aws::Utils::Json::JsonView jsonValue);
     AWS_WORKSPACESWEB_API TrustStore& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WORKSPACESWEB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A list of web portal ARNs that this trust store is associated with.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetAssociatedPortalArns() const{ return m_associatedPortalArns; }
-
-    /**
-     * <p>A list of web portal ARNs that this trust store is associated with.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetAssociatedPortalArns() const { return m_associatedPortalArns; }
     inline bool AssociatedPortalArnsHasBeenSet() const { return m_associatedPortalArnsHasBeenSet; }
+    template<typename AssociatedPortalArnsT = Aws::Vector<Aws::String>>
+    void SetAssociatedPortalArns(AssociatedPortalArnsT&& value) { m_associatedPortalArnsHasBeenSet = true; m_associatedPortalArns = std::forward<AssociatedPortalArnsT>(value); }
+    template<typename AssociatedPortalArnsT = Aws::Vector<Aws::String>>
+    TrustStore& WithAssociatedPortalArns(AssociatedPortalArnsT&& value) { SetAssociatedPortalArns(std::forward<AssociatedPortalArnsT>(value)); return *this;}
+    template<typename AssociatedPortalArnsT = Aws::String>
+    TrustStore& AddAssociatedPortalArns(AssociatedPortalArnsT&& value) { m_associatedPortalArnsHasBeenSet = true; m_associatedPortalArns.emplace_back(std::forward<AssociatedPortalArnsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of web portal ARNs that this trust store is associated with.</p>
-     */
-    inline void SetAssociatedPortalArns(const Aws::Vector<Aws::String>& value) { m_associatedPortalArnsHasBeenSet = true; m_associatedPortalArns = value; }
-
-    /**
-     * <p>A list of web portal ARNs that this trust store is associated with.</p>
-     */
-    inline void SetAssociatedPortalArns(Aws::Vector<Aws::String>&& value) { m_associatedPortalArnsHasBeenSet = true; m_associatedPortalArns = std::move(value); }
-
-    /**
-     * <p>A list of web portal ARNs that this trust store is associated with.</p>
-     */
-    inline TrustStore& WithAssociatedPortalArns(const Aws::Vector<Aws::String>& value) { SetAssociatedPortalArns(value); return *this;}
-
-    /**
-     * <p>A list of web portal ARNs that this trust store is associated with.</p>
-     */
-    inline TrustStore& WithAssociatedPortalArns(Aws::Vector<Aws::String>&& value) { SetAssociatedPortalArns(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of web portal ARNs that this trust store is associated with.</p>
-     */
-    inline TrustStore& AddAssociatedPortalArns(const Aws::String& value) { m_associatedPortalArnsHasBeenSet = true; m_associatedPortalArns.push_back(value); return *this; }
-
-    /**
-     * <p>A list of web portal ARNs that this trust store is associated with.</p>
-     */
-    inline TrustStore& AddAssociatedPortalArns(Aws::String&& value) { m_associatedPortalArnsHasBeenSet = true; m_associatedPortalArns.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of web portal ARNs that this trust store is associated with.</p>
-     */
-    inline TrustStore& AddAssociatedPortalArns(const char* value) { m_associatedPortalArnsHasBeenSet = true; m_associatedPortalArns.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The ARN of the trust store.</p>
      */
-    inline const Aws::String& GetTrustStoreArn() const{ return m_trustStoreArn; }
-
-    /**
-     * <p>The ARN of the trust store.</p>
-     */
+    inline const Aws::String& GetTrustStoreArn() const { return m_trustStoreArn; }
     inline bool TrustStoreArnHasBeenSet() const { return m_trustStoreArnHasBeenSet; }
-
-    /**
-     * <p>The ARN of the trust store.</p>
-     */
-    inline void SetTrustStoreArn(const Aws::String& value) { m_trustStoreArnHasBeenSet = true; m_trustStoreArn = value; }
-
-    /**
-     * <p>The ARN of the trust store.</p>
-     */
-    inline void SetTrustStoreArn(Aws::String&& value) { m_trustStoreArnHasBeenSet = true; m_trustStoreArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the trust store.</p>
-     */
-    inline void SetTrustStoreArn(const char* value) { m_trustStoreArnHasBeenSet = true; m_trustStoreArn.assign(value); }
-
-    /**
-     * <p>The ARN of the trust store.</p>
-     */
-    inline TrustStore& WithTrustStoreArn(const Aws::String& value) { SetTrustStoreArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the trust store.</p>
-     */
-    inline TrustStore& WithTrustStoreArn(Aws::String&& value) { SetTrustStoreArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the trust store.</p>
-     */
-    inline TrustStore& WithTrustStoreArn(const char* value) { SetTrustStoreArn(value); return *this;}
-
+    template<typename TrustStoreArnT = Aws::String>
+    void SetTrustStoreArn(TrustStoreArnT&& value) { m_trustStoreArnHasBeenSet = true; m_trustStoreArn = std::forward<TrustStoreArnT>(value); }
+    template<typename TrustStoreArnT = Aws::String>
+    TrustStore& WithTrustStoreArn(TrustStoreArnT&& value) { SetTrustStoreArn(std::forward<TrustStoreArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_associatedPortalArns;

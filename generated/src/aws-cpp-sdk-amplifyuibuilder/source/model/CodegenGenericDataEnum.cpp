@@ -18,13 +18,7 @@ namespace AmplifyUIBuilder
 namespace Model
 {
 
-CodegenGenericDataEnum::CodegenGenericDataEnum() : 
-    m_valuesHasBeenSet(false)
-{
-}
-
-CodegenGenericDataEnum::CodegenGenericDataEnum(JsonView jsonValue) : 
-    m_valuesHasBeenSet(false)
+CodegenGenericDataEnum::CodegenGenericDataEnum(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ CodegenGenericDataEnum& CodegenGenericDataEnum::operator =(JsonView jsonValue)
     }
     m_valuesHasBeenSet = true;
   }
-
   return *this;
 }
 

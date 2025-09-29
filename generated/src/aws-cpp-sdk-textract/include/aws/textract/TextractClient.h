@@ -24,8 +24,8 @@ namespace Textract
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
 
       typedef TextractClientConfiguration ClientConfigurationType;
       typedef TextractEndpointProvider EndpointProviderType;
@@ -35,14 +35,14 @@ namespace Textract
         * is not specified, it will be initialized to default values.
         */
         TextractClient(const Aws::Textract::TextractClientConfiguration& clientConfiguration = Aws::Textract::TextractClientConfiguration(),
-                       std::shared_ptr<TextractEndpointProviderBase> endpointProvider = Aws::MakeShared<TextractEndpointProvider>(ALLOCATION_TAG));
+                       std::shared_ptr<TextractEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         TextractClient(const Aws::Auth::AWSCredentials& credentials,
-                       std::shared_ptr<TextractEndpointProviderBase> endpointProvider = Aws::MakeShared<TextractEndpointProvider>(ALLOCATION_TAG),
+                       std::shared_ptr<TextractEndpointProviderBase> endpointProvider = nullptr,
                        const Aws::Textract::TextractClientConfiguration& clientConfiguration = Aws::Textract::TextractClientConfiguration());
 
        /**
@@ -50,7 +50,7 @@ namespace Textract
         * the default http client factory will be used
         */
         TextractClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                       std::shared_ptr<TextractEndpointProviderBase> endpointProvider = Aws::MakeShared<TextractEndpointProvider>(ALLOCATION_TAG),
+                       std::shared_ptr<TextractEndpointProviderBase> endpointProvider = nullptr,
                        const Aws::Textract::TextractClientConfiguration& clientConfiguration = Aws::Textract::TextractClientConfiguration());
 
 
@@ -645,13 +645,13 @@ namespace Textract
          * href="http://docs.aws.amazon.com/goto/WebAPI/textract-2018-06-27/ListAdapterVersions">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListAdapterVersionsOutcome ListAdapterVersions(const Model::ListAdapterVersionsRequest& request) const;
+        virtual Model::ListAdapterVersionsOutcome ListAdapterVersions(const Model::ListAdapterVersionsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListAdapterVersions that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListAdapterVersionsRequestT = Model::ListAdapterVersionsRequest>
-        Model::ListAdapterVersionsOutcomeCallable ListAdapterVersionsCallable(const ListAdapterVersionsRequestT& request) const
+        Model::ListAdapterVersionsOutcomeCallable ListAdapterVersionsCallable(const ListAdapterVersionsRequestT& request = {}) const
         {
             return SubmitCallable(&TextractClient::ListAdapterVersions, request);
         }
@@ -660,7 +660,7 @@ namespace Textract
          * An Async wrapper for ListAdapterVersions that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListAdapterVersionsRequestT = Model::ListAdapterVersionsRequest>
-        void ListAdapterVersionsAsync(const ListAdapterVersionsRequestT& request, const ListAdapterVersionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListAdapterVersionsAsync(const ListAdapterVersionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListAdapterVersionsRequestT& request = {}) const
         {
             return SubmitAsync(&TextractClient::ListAdapterVersions, request, handler, context);
         }
@@ -671,13 +671,13 @@ namespace Textract
          * href="http://docs.aws.amazon.com/goto/WebAPI/textract-2018-06-27/ListAdapters">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListAdaptersOutcome ListAdapters(const Model::ListAdaptersRequest& request) const;
+        virtual Model::ListAdaptersOutcome ListAdapters(const Model::ListAdaptersRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListAdapters that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListAdaptersRequestT = Model::ListAdaptersRequest>
-        Model::ListAdaptersOutcomeCallable ListAdaptersCallable(const ListAdaptersRequestT& request) const
+        Model::ListAdaptersOutcomeCallable ListAdaptersCallable(const ListAdaptersRequestT& request = {}) const
         {
             return SubmitCallable(&TextractClient::ListAdapters, request);
         }
@@ -686,7 +686,7 @@ namespace Textract
          * An Async wrapper for ListAdapters that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListAdaptersRequestT = Model::ListAdaptersRequest>
-        void ListAdaptersAsync(const ListAdaptersRequestT& request, const ListAdaptersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListAdaptersAsync(const ListAdaptersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListAdaptersRequestT& request = {}) const
         {
             return SubmitAsync(&TextractClient::ListAdapters, request, handler, context);
         }
@@ -763,14 +763,15 @@ namespace Textract
          * <code>StartDocumentTextDetection</code> can analyze text in documents that are
          * in JPEG, PNG, TIFF, and PDF format. The documents are stored in an Amazon S3
          * bucket. Use <a>DocumentLocation</a> to specify the bucket name and file name of
-         * the document. </p> <p> <code>StartTextDetection</code> returns a job identifier
-         * (<code>JobId</code>) that you use to get the results of the operation. When text
-         * detection is finished, Amazon Textract publishes a completion status to the
-         * Amazon Simple Notification Service (Amazon SNS) topic that you specify in
-         * <code>NotificationChannel</code>. To get the results of the text detection
-         * operation, first check that the status value published to the Amazon SNS topic
-         * is <code>SUCCEEDED</code>. If so, call <a>GetDocumentTextDetection</a>, and pass
-         * the job identifier (<code>JobId</code>) from the initial call to
+         * the document. </p> <p> <code>StartDocumentTextDetection</code> returns a job
+         * identifier (<code>JobId</code>) that you use to get the results of the
+         * operation. When text detection is finished, Amazon Textract publishes a
+         * completion status to the Amazon Simple Notification Service (Amazon SNS) topic
+         * that you specify in <code>NotificationChannel</code>. To get the results of the
+         * text detection operation, first check that the status value published to the
+         * Amazon SNS topic is <code>SUCCEEDED</code>. If so, call
+         * <a>GetDocumentTextDetection</a>, and pass the job identifier
+         * (<code>JobId</code>) from the initial call to
          * <code>StartDocumentTextDetection</code>.</p> <p>For more information, see <a
          * href="https://docs.aws.amazon.com/textract/latest/dg/how-it-works-detecting.html">Document
          * Text Detection</a>.</p><p><h3>See Also:</h3>   <a
@@ -973,7 +974,6 @@ namespace Textract
       void init(const TextractClientConfiguration& clientConfiguration);
 
       TextractClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<TextractEndpointProviderBase> m_endpointProvider;
   };
 

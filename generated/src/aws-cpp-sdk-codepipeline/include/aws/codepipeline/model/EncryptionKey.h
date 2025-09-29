@@ -34,12 +34,13 @@ namespace Model
   class EncryptionKey
   {
   public:
-    AWS_CODEPIPELINE_API EncryptionKey();
+    AWS_CODEPIPELINE_API EncryptionKey() = default;
     AWS_CODEPIPELINE_API EncryptionKey(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEPIPELINE_API EncryptionKey& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEPIPELINE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ID used to identify the key. For an Amazon Web Services KMS key, you can
      * use the key ID, the key ARN, or the alias ARN.</p>  <p>Aliases are
@@ -49,128 +50,30 @@ namespace Model
      * so specifying the key ID will use the key from the other account (AccountB).</p>
      * 
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The ID used to identify the key. For an Amazon Web Services KMS key, you can
-     * use the key ID, the key ARN, or the alias ARN.</p>  <p>Aliases are
-     * recognized only in the account that created the KMS key. For cross-account
-     * actions, you can only use the key ID or key ARN to identify the key.
-     * Cross-account actions involve using the role from the other account (AccountB),
-     * so specifying the key ID will use the key from the other account (AccountB).</p>
-     * 
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    EncryptionKey& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID used to identify the key. For an Amazon Web Services KMS key, you can
-     * use the key ID, the key ARN, or the alias ARN.</p>  <p>Aliases are
-     * recognized only in the account that created the KMS key. For cross-account
-     * actions, you can only use the key ID or key ARN to identify the key.
-     * Cross-account actions involve using the role from the other account (AccountB),
-     * so specifying the key ID will use the key from the other account (AccountB).</p>
-     * 
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The ID used to identify the key. For an Amazon Web Services KMS key, you can
-     * use the key ID, the key ARN, or the alias ARN.</p>  <p>Aliases are
-     * recognized only in the account that created the KMS key. For cross-account
-     * actions, you can only use the key ID or key ARN to identify the key.
-     * Cross-account actions involve using the role from the other account (AccountB),
-     * so specifying the key ID will use the key from the other account (AccountB).</p>
-     * 
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The ID used to identify the key. For an Amazon Web Services KMS key, you can
-     * use the key ID, the key ARN, or the alias ARN.</p>  <p>Aliases are
-     * recognized only in the account that created the KMS key. For cross-account
-     * actions, you can only use the key ID or key ARN to identify the key.
-     * Cross-account actions involve using the role from the other account (AccountB),
-     * so specifying the key ID will use the key from the other account (AccountB).</p>
-     * 
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The ID used to identify the key. For an Amazon Web Services KMS key, you can
-     * use the key ID, the key ARN, or the alias ARN.</p>  <p>Aliases are
-     * recognized only in the account that created the KMS key. For cross-account
-     * actions, you can only use the key ID or key ARN to identify the key.
-     * Cross-account actions involve using the role from the other account (AccountB),
-     * so specifying the key ID will use the key from the other account (AccountB).</p>
-     * 
-     */
-    inline EncryptionKey& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The ID used to identify the key. For an Amazon Web Services KMS key, you can
-     * use the key ID, the key ARN, or the alias ARN.</p>  <p>Aliases are
-     * recognized only in the account that created the KMS key. For cross-account
-     * actions, you can only use the key ID or key ARN to identify the key.
-     * Cross-account actions involve using the role from the other account (AccountB),
-     * so specifying the key ID will use the key from the other account (AccountB).</p>
-     * 
-     */
-    inline EncryptionKey& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID used to identify the key. For an Amazon Web Services KMS key, you can
-     * use the key ID, the key ARN, or the alias ARN.</p>  <p>Aliases are
-     * recognized only in the account that created the KMS key. For cross-account
-     * actions, you can only use the key ID or key ARN to identify the key.
-     * Cross-account actions involve using the role from the other account (AccountB),
-     * so specifying the key ID will use the key from the other account (AccountB).</p>
-     * 
-     */
-    inline EncryptionKey& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of encryption key, such as an Amazon Web Services KMS key. When
      * creating or updating a pipeline, the value must be set to 'KMS'.</p>
      */
-    inline const EncryptionKeyType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of encryption key, such as an Amazon Web Services KMS key. When
-     * creating or updating a pipeline, the value must be set to 'KMS'.</p>
-     */
+    inline EncryptionKeyType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
-
-    /**
-     * <p>The type of encryption key, such as an Amazon Web Services KMS key. When
-     * creating or updating a pipeline, the value must be set to 'KMS'.</p>
-     */
-    inline void SetType(const EncryptionKeyType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of encryption key, such as an Amazon Web Services KMS key. When
-     * creating or updating a pipeline, the value must be set to 'KMS'.</p>
-     */
-    inline void SetType(EncryptionKeyType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of encryption key, such as an Amazon Web Services KMS key. When
-     * creating or updating a pipeline, the value must be set to 'KMS'.</p>
-     */
-    inline EncryptionKey& WithType(const EncryptionKeyType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of encryption key, such as an Amazon Web Services KMS key. When
-     * creating or updating a pipeline, the value must be set to 'KMS'.</p>
-     */
-    inline EncryptionKey& WithType(EncryptionKeyType&& value) { SetType(std::move(value)); return *this;}
-
+    inline void SetType(EncryptionKeyType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline EncryptionKey& WithType(EncryptionKeyType value) { SetType(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_id;
     bool m_idHasBeenSet = false;
 
-    EncryptionKeyType m_type;
+    EncryptionKeyType m_type{EncryptionKeyType::NOT_SET};
     bool m_typeHasBeenSet = false;
   };
 

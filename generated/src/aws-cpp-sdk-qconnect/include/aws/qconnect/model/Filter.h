@@ -33,126 +33,50 @@ namespace Model
   class Filter
   {
   public:
-    AWS_QCONNECT_API Filter();
+    AWS_QCONNECT_API Filter() = default;
     AWS_QCONNECT_API Filter(Aws::Utils::Json::JsonView jsonValue);
     AWS_QCONNECT_API Filter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QCONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The field on which to filter.</p>
      */
-    inline const FilterField& GetField() const{ return m_field; }
-
-    /**
-     * <p>The field on which to filter.</p>
-     */
+    inline FilterField GetField() const { return m_field; }
     inline bool FieldHasBeenSet() const { return m_fieldHasBeenSet; }
+    inline void SetField(FilterField value) { m_fieldHasBeenSet = true; m_field = value; }
+    inline Filter& WithField(FilterField value) { SetField(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The field on which to filter.</p>
-     */
-    inline void SetField(const FilterField& value) { m_fieldHasBeenSet = true; m_field = value; }
-
-    /**
-     * <p>The field on which to filter.</p>
-     */
-    inline void SetField(FilterField&& value) { m_fieldHasBeenSet = true; m_field = std::move(value); }
-
-    /**
-     * <p>The field on which to filter.</p>
-     */
-    inline Filter& WithField(const FilterField& value) { SetField(value); return *this;}
-
-    /**
-     * <p>The field on which to filter.</p>
-     */
-    inline Filter& WithField(FilterField&& value) { SetField(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The operator to use for comparing the field’s value with the provided
      * value.</p>
      */
-    inline const FilterOperator& GetOperator() const{ return m_operator; }
-
-    /**
-     * <p>The operator to use for comparing the field’s value with the provided
-     * value.</p>
-     */
+    inline FilterOperator GetOperator() const { return m_operator; }
     inline bool OperatorHasBeenSet() const { return m_operatorHasBeenSet; }
+    inline void SetOperator(FilterOperator value) { m_operatorHasBeenSet = true; m_operator = value; }
+    inline Filter& WithOperator(FilterOperator value) { SetOperator(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The operator to use for comparing the field’s value with the provided
-     * value.</p>
-     */
-    inline void SetOperator(const FilterOperator& value) { m_operatorHasBeenSet = true; m_operator = value; }
-
-    /**
-     * <p>The operator to use for comparing the field’s value with the provided
-     * value.</p>
-     */
-    inline void SetOperator(FilterOperator&& value) { m_operatorHasBeenSet = true; m_operator = std::move(value); }
-
-    /**
-     * <p>The operator to use for comparing the field’s value with the provided
-     * value.</p>
-     */
-    inline Filter& WithOperator(const FilterOperator& value) { SetOperator(value); return *this;}
-
-    /**
-     * <p>The operator to use for comparing the field’s value with the provided
-     * value.</p>
-     */
-    inline Filter& WithOperator(FilterOperator&& value) { SetOperator(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The desired field value on which to filter.</p>
      */
-    inline const Aws::String& GetValue() const{ return m_value; }
-
-    /**
-     * <p>The desired field value on which to filter.</p>
-     */
+    inline const Aws::String& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>The desired field value on which to filter.</p>
-     */
-    inline void SetValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The desired field value on which to filter.</p>
-     */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>The desired field value on which to filter.</p>
-     */
-    inline void SetValue(const char* value) { m_valueHasBeenSet = true; m_value.assign(value); }
-
-    /**
-     * <p>The desired field value on which to filter.</p>
-     */
-    inline Filter& WithValue(const Aws::String& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>The desired field value on which to filter.</p>
-     */
-    inline Filter& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The desired field value on which to filter.</p>
-     */
-    inline Filter& WithValue(const char* value) { SetValue(value); return *this;}
-
+    template<typename ValueT = Aws::String>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::String>
+    Filter& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
   private:
 
-    FilterField m_field;
+    FilterField m_field{FilterField::NOT_SET};
     bool m_fieldHasBeenSet = false;
 
-    FilterOperator m_operator;
+    FilterOperator m_operator{FilterOperator::NOT_SET};
     bool m_operatorHasBeenSet = false;
 
     Aws::String m_value;

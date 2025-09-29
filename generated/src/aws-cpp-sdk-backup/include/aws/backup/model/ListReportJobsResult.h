@@ -29,118 +29,54 @@ namespace Model
   class ListReportJobsResult
   {
   public:
-    AWS_BACKUP_API ListReportJobsResult();
+    AWS_BACKUP_API ListReportJobsResult() = default;
     AWS_BACKUP_API ListReportJobsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_BACKUP_API ListReportJobsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Details about your report jobs in JSON format.</p>
      */
-    inline const Aws::Vector<ReportJob>& GetReportJobs() const{ return m_reportJobs; }
+    inline const Aws::Vector<ReportJob>& GetReportJobs() const { return m_reportJobs; }
+    template<typename ReportJobsT = Aws::Vector<ReportJob>>
+    void SetReportJobs(ReportJobsT&& value) { m_reportJobsHasBeenSet = true; m_reportJobs = std::forward<ReportJobsT>(value); }
+    template<typename ReportJobsT = Aws::Vector<ReportJob>>
+    ListReportJobsResult& WithReportJobs(ReportJobsT&& value) { SetReportJobs(std::forward<ReportJobsT>(value)); return *this;}
+    template<typename ReportJobsT = ReportJob>
+    ListReportJobsResult& AddReportJobs(ReportJobsT&& value) { m_reportJobsHasBeenSet = true; m_reportJobs.emplace_back(std::forward<ReportJobsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Details about your report jobs in JSON format.</p>
-     */
-    inline void SetReportJobs(const Aws::Vector<ReportJob>& value) { m_reportJobs = value; }
-
-    /**
-     * <p>Details about your report jobs in JSON format.</p>
-     */
-    inline void SetReportJobs(Aws::Vector<ReportJob>&& value) { m_reportJobs = std::move(value); }
-
-    /**
-     * <p>Details about your report jobs in JSON format.</p>
-     */
-    inline ListReportJobsResult& WithReportJobs(const Aws::Vector<ReportJob>& value) { SetReportJobs(value); return *this;}
-
-    /**
-     * <p>Details about your report jobs in JSON format.</p>
-     */
-    inline ListReportJobsResult& WithReportJobs(Aws::Vector<ReportJob>&& value) { SetReportJobs(std::move(value)); return *this;}
-
-    /**
-     * <p>Details about your report jobs in JSON format.</p>
-     */
-    inline ListReportJobsResult& AddReportJobs(const ReportJob& value) { m_reportJobs.push_back(value); return *this; }
-
-    /**
-     * <p>Details about your report jobs in JSON format.</p>
-     */
-    inline ListReportJobsResult& AddReportJobs(ReportJob&& value) { m_reportJobs.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>An identifier that was returned from the previous call to this operation,
      * which can be used to return the next set of items in the list.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListReportJobsResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An identifier that was returned from the previous call to this operation,
-     * which can be used to return the next set of items in the list.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>An identifier that was returned from the previous call to this operation,
-     * which can be used to return the next set of items in the list.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>An identifier that was returned from the previous call to this operation,
-     * which can be used to return the next set of items in the list.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>An identifier that was returned from the previous call to this operation,
-     * which can be used to return the next set of items in the list.</p>
-     */
-    inline ListReportJobsResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>An identifier that was returned from the previous call to this operation,
-     * which can be used to return the next set of items in the list.</p>
-     */
-    inline ListReportJobsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>An identifier that was returned from the previous call to this operation,
-     * which can be used to return the next set of items in the list.</p>
-     */
-    inline ListReportJobsResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListReportJobsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListReportJobsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListReportJobsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListReportJobsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<ReportJob> m_reportJobs;
+    bool m_reportJobsHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

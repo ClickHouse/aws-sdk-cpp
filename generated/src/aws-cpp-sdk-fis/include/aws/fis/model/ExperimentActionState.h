@@ -32,86 +32,36 @@ namespace Model
   class ExperimentActionState
   {
   public:
-    AWS_FIS_API ExperimentActionState();
+    AWS_FIS_API ExperimentActionState() = default;
     AWS_FIS_API ExperimentActionState(Aws::Utils::Json::JsonView jsonValue);
     AWS_FIS_API ExperimentActionState& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FIS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The state of the action.</p>
      */
-    inline const ExperimentActionStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The state of the action.</p>
-     */
+    inline ExperimentActionStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(ExperimentActionStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline ExperimentActionState& WithStatus(ExperimentActionStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The state of the action.</p>
-     */
-    inline void SetStatus(const ExperimentActionStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The state of the action.</p>
-     */
-    inline void SetStatus(ExperimentActionStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The state of the action.</p>
-     */
-    inline ExperimentActionState& WithStatus(const ExperimentActionStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The state of the action.</p>
-     */
-    inline ExperimentActionState& WithStatus(ExperimentActionStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The reason for the state.</p>
      */
-    inline const Aws::String& GetReason() const{ return m_reason; }
-
-    /**
-     * <p>The reason for the state.</p>
-     */
+    inline const Aws::String& GetReason() const { return m_reason; }
     inline bool ReasonHasBeenSet() const { return m_reasonHasBeenSet; }
-
-    /**
-     * <p>The reason for the state.</p>
-     */
-    inline void SetReason(const Aws::String& value) { m_reasonHasBeenSet = true; m_reason = value; }
-
-    /**
-     * <p>The reason for the state.</p>
-     */
-    inline void SetReason(Aws::String&& value) { m_reasonHasBeenSet = true; m_reason = std::move(value); }
-
-    /**
-     * <p>The reason for the state.</p>
-     */
-    inline void SetReason(const char* value) { m_reasonHasBeenSet = true; m_reason.assign(value); }
-
-    /**
-     * <p>The reason for the state.</p>
-     */
-    inline ExperimentActionState& WithReason(const Aws::String& value) { SetReason(value); return *this;}
-
-    /**
-     * <p>The reason for the state.</p>
-     */
-    inline ExperimentActionState& WithReason(Aws::String&& value) { SetReason(std::move(value)); return *this;}
-
-    /**
-     * <p>The reason for the state.</p>
-     */
-    inline ExperimentActionState& WithReason(const char* value) { SetReason(value); return *this;}
-
+    template<typename ReasonT = Aws::String>
+    void SetReason(ReasonT&& value) { m_reasonHasBeenSet = true; m_reason = std::forward<ReasonT>(value); }
+    template<typename ReasonT = Aws::String>
+    ExperimentActionState& WithReason(ReasonT&& value) { SetReason(std::forward<ReasonT>(value)); return *this;}
+    ///@}
   private:
 
-    ExperimentActionStatus m_status;
+    ExperimentActionStatus m_status{ExperimentActionStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
     Aws::String m_reason;

@@ -18,15 +18,7 @@ namespace CostExplorer
 namespace Model
 {
 
-MetricValue::MetricValue() : 
-    m_amountHasBeenSet(false),
-    m_unitHasBeenSet(false)
-{
-}
-
-MetricValue::MetricValue(JsonView jsonValue) : 
-    m_amountHasBeenSet(false),
-    m_unitHasBeenSet(false)
+MetricValue::MetricValue(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ MetricValue& MetricValue::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Amount"))
   {
     m_amount = jsonValue.GetString("Amount");
-
     m_amountHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Unit"))
   {
     m_unit = jsonValue.GetString("Unit");
-
     m_unitHasBeenSet = true;
   }
-
   return *this;
 }
 

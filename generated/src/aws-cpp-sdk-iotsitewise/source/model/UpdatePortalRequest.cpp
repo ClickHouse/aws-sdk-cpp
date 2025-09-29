@@ -12,20 +12,6 @@ using namespace Aws::IoTSiteWise::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdatePortalRequest::UpdatePortalRequest() : 
-    m_portalIdHasBeenSet(false),
-    m_portalNameHasBeenSet(false),
-    m_portalDescriptionHasBeenSet(false),
-    m_portalContactEmailHasBeenSet(false),
-    m_portalLogoImageHasBeenSet(false),
-    m_roleArnHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_notificationSenderEmailHasBeenSet(false),
-    m_alarmsHasBeenSet(false)
-{
-}
-
 Aws::String UpdatePortalRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -75,6 +61,22 @@ Aws::String UpdatePortalRequest::SerializePayload() const
   if(m_alarmsHasBeenSet)
   {
    payload.WithObject("alarms", m_alarms.Jsonize());
+
+  }
+
+  if(m_portalTypeHasBeenSet)
+  {
+   payload.WithString("portalType", PortalTypeMapper::GetNameForPortalType(m_portalType));
+  }
+
+  if(m_portalTypeConfigurationHasBeenSet)
+  {
+   JsonValue portalTypeConfigurationJsonMap;
+   for(auto& portalTypeConfigurationItem : m_portalTypeConfiguration)
+   {
+     portalTypeConfigurationJsonMap.WithObject(portalTypeConfigurationItem.first, portalTypeConfigurationItem.second.Jsonize());
+   }
+   payload.WithObject("portalTypeConfiguration", std::move(portalTypeConfigurationJsonMap));
 
   }
 

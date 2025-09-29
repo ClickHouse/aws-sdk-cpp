@@ -20,15 +20,7 @@ namespace RDS
 namespace Model
 {
 
-PerformanceInsightsMetricQuery::PerformanceInsightsMetricQuery() : 
-    m_groupByHasBeenSet(false),
-    m_metricHasBeenSet(false)
-{
-}
-
-PerformanceInsightsMetricQuery::PerformanceInsightsMetricQuery(const XmlNode& xmlNode) : 
-    m_groupByHasBeenSet(false),
-    m_metricHasBeenSet(false)
+PerformanceInsightsMetricQuery::PerformanceInsightsMetricQuery(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

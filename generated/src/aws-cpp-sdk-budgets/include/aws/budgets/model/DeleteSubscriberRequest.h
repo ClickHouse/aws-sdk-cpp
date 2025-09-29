@@ -26,7 +26,7 @@ namespace Model
   class DeleteSubscriberRequest : public BudgetsRequest
   {
   public:
-    AWS_BUDGETS_API DeleteSubscriberRequest();
+    AWS_BUDGETS_API DeleteSubscriberRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,157 +39,54 @@ namespace Model
     AWS_BUDGETS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The <code>accountId</code> that is associated with the budget whose
      * subscriber you want to delete.</p>
      */
-    inline const Aws::String& GetAccountId() const{ return m_accountId; }
-
-    /**
-     * <p>The <code>accountId</code> that is associated with the budget whose
-     * subscriber you want to delete.</p>
-     */
+    inline const Aws::String& GetAccountId() const { return m_accountId; }
     inline bool AccountIdHasBeenSet() const { return m_accountIdHasBeenSet; }
+    template<typename AccountIdT = Aws::String>
+    void SetAccountId(AccountIdT&& value) { m_accountIdHasBeenSet = true; m_accountId = std::forward<AccountIdT>(value); }
+    template<typename AccountIdT = Aws::String>
+    DeleteSubscriberRequest& WithAccountId(AccountIdT&& value) { SetAccountId(std::forward<AccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The <code>accountId</code> that is associated with the budget whose
-     * subscriber you want to delete.</p>
-     */
-    inline void SetAccountId(const Aws::String& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
-
-    /**
-     * <p>The <code>accountId</code> that is associated with the budget whose
-     * subscriber you want to delete.</p>
-     */
-    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = std::move(value); }
-
-    /**
-     * <p>The <code>accountId</code> that is associated with the budget whose
-     * subscriber you want to delete.</p>
-     */
-    inline void SetAccountId(const char* value) { m_accountIdHasBeenSet = true; m_accountId.assign(value); }
-
-    /**
-     * <p>The <code>accountId</code> that is associated with the budget whose
-     * subscriber you want to delete.</p>
-     */
-    inline DeleteSubscriberRequest& WithAccountId(const Aws::String& value) { SetAccountId(value); return *this;}
-
-    /**
-     * <p>The <code>accountId</code> that is associated with the budget whose
-     * subscriber you want to delete.</p>
-     */
-    inline DeleteSubscriberRequest& WithAccountId(Aws::String&& value) { SetAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The <code>accountId</code> that is associated with the budget whose
-     * subscriber you want to delete.</p>
-     */
-    inline DeleteSubscriberRequest& WithAccountId(const char* value) { SetAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the budget whose subscriber you want to delete.</p>
      */
-    inline const Aws::String& GetBudgetName() const{ return m_budgetName; }
-
-    /**
-     * <p>The name of the budget whose subscriber you want to delete.</p>
-     */
+    inline const Aws::String& GetBudgetName() const { return m_budgetName; }
     inline bool BudgetNameHasBeenSet() const { return m_budgetNameHasBeenSet; }
+    template<typename BudgetNameT = Aws::String>
+    void SetBudgetName(BudgetNameT&& value) { m_budgetNameHasBeenSet = true; m_budgetName = std::forward<BudgetNameT>(value); }
+    template<typename BudgetNameT = Aws::String>
+    DeleteSubscriberRequest& WithBudgetName(BudgetNameT&& value) { SetBudgetName(std::forward<BudgetNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the budget whose subscriber you want to delete.</p>
-     */
-    inline void SetBudgetName(const Aws::String& value) { m_budgetNameHasBeenSet = true; m_budgetName = value; }
-
-    /**
-     * <p>The name of the budget whose subscriber you want to delete.</p>
-     */
-    inline void SetBudgetName(Aws::String&& value) { m_budgetNameHasBeenSet = true; m_budgetName = std::move(value); }
-
-    /**
-     * <p>The name of the budget whose subscriber you want to delete.</p>
-     */
-    inline void SetBudgetName(const char* value) { m_budgetNameHasBeenSet = true; m_budgetName.assign(value); }
-
-    /**
-     * <p>The name of the budget whose subscriber you want to delete.</p>
-     */
-    inline DeleteSubscriberRequest& WithBudgetName(const Aws::String& value) { SetBudgetName(value); return *this;}
-
-    /**
-     * <p>The name of the budget whose subscriber you want to delete.</p>
-     */
-    inline DeleteSubscriberRequest& WithBudgetName(Aws::String&& value) { SetBudgetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the budget whose subscriber you want to delete.</p>
-     */
-    inline DeleteSubscriberRequest& WithBudgetName(const char* value) { SetBudgetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The notification whose subscriber you want to delete.</p>
      */
-    inline const Notification& GetNotification() const{ return m_notification; }
-
-    /**
-     * <p>The notification whose subscriber you want to delete.</p>
-     */
+    inline const Notification& GetNotification() const { return m_notification; }
     inline bool NotificationHasBeenSet() const { return m_notificationHasBeenSet; }
+    template<typename NotificationT = Notification>
+    void SetNotification(NotificationT&& value) { m_notificationHasBeenSet = true; m_notification = std::forward<NotificationT>(value); }
+    template<typename NotificationT = Notification>
+    DeleteSubscriberRequest& WithNotification(NotificationT&& value) { SetNotification(std::forward<NotificationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The notification whose subscriber you want to delete.</p>
-     */
-    inline void SetNotification(const Notification& value) { m_notificationHasBeenSet = true; m_notification = value; }
-
-    /**
-     * <p>The notification whose subscriber you want to delete.</p>
-     */
-    inline void SetNotification(Notification&& value) { m_notificationHasBeenSet = true; m_notification = std::move(value); }
-
-    /**
-     * <p>The notification whose subscriber you want to delete.</p>
-     */
-    inline DeleteSubscriberRequest& WithNotification(const Notification& value) { SetNotification(value); return *this;}
-
-    /**
-     * <p>The notification whose subscriber you want to delete.</p>
-     */
-    inline DeleteSubscriberRequest& WithNotification(Notification&& value) { SetNotification(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The subscriber that you want to delete.</p>
      */
-    inline const Subscriber& GetSubscriber() const{ return m_subscriber; }
-
-    /**
-     * <p>The subscriber that you want to delete.</p>
-     */
+    inline const Subscriber& GetSubscriber() const { return m_subscriber; }
     inline bool SubscriberHasBeenSet() const { return m_subscriberHasBeenSet; }
-
-    /**
-     * <p>The subscriber that you want to delete.</p>
-     */
-    inline void SetSubscriber(const Subscriber& value) { m_subscriberHasBeenSet = true; m_subscriber = value; }
-
-    /**
-     * <p>The subscriber that you want to delete.</p>
-     */
-    inline void SetSubscriber(Subscriber&& value) { m_subscriberHasBeenSet = true; m_subscriber = std::move(value); }
-
-    /**
-     * <p>The subscriber that you want to delete.</p>
-     */
-    inline DeleteSubscriberRequest& WithSubscriber(const Subscriber& value) { SetSubscriber(value); return *this;}
-
-    /**
-     * <p>The subscriber that you want to delete.</p>
-     */
-    inline DeleteSubscriberRequest& WithSubscriber(Subscriber&& value) { SetSubscriber(std::move(value)); return *this;}
-
+    template<typename SubscriberT = Subscriber>
+    void SetSubscriber(SubscriberT&& value) { m_subscriberHasBeenSet = true; m_subscriber = std::forward<SubscriberT>(value); }
+    template<typename SubscriberT = Subscriber>
+    DeleteSubscriberRequest& WithSubscriber(SubscriberT&& value) { SetSubscriber(std::forward<SubscriberT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_accountId;

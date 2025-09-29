@@ -31,93 +31,35 @@ namespace Model
   class PsAttributes
   {
   public:
-    AWS_MAINFRAMEMODERNIZATION_API PsAttributes();
+    AWS_MAINFRAMEMODERNIZATION_API PsAttributes() = default;
     AWS_MAINFRAMEMODERNIZATION_API PsAttributes(Aws::Utils::Json::JsonView jsonValue);
     AWS_MAINFRAMEMODERNIZATION_API PsAttributes& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MAINFRAMEMODERNIZATION_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The character set encoding of the data set.</p>
      */
-    inline const Aws::String& GetEncoding() const{ return m_encoding; }
-
-    /**
-     * <p>The character set encoding of the data set.</p>
-     */
+    inline const Aws::String& GetEncoding() const { return m_encoding; }
     inline bool EncodingHasBeenSet() const { return m_encodingHasBeenSet; }
+    template<typename EncodingT = Aws::String>
+    void SetEncoding(EncodingT&& value) { m_encodingHasBeenSet = true; m_encoding = std::forward<EncodingT>(value); }
+    template<typename EncodingT = Aws::String>
+    PsAttributes& WithEncoding(EncodingT&& value) { SetEncoding(std::forward<EncodingT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The character set encoding of the data set.</p>
-     */
-    inline void SetEncoding(const Aws::String& value) { m_encodingHasBeenSet = true; m_encoding = value; }
-
-    /**
-     * <p>The character set encoding of the data set.</p>
-     */
-    inline void SetEncoding(Aws::String&& value) { m_encodingHasBeenSet = true; m_encoding = std::move(value); }
-
-    /**
-     * <p>The character set encoding of the data set.</p>
-     */
-    inline void SetEncoding(const char* value) { m_encodingHasBeenSet = true; m_encoding.assign(value); }
-
-    /**
-     * <p>The character set encoding of the data set.</p>
-     */
-    inline PsAttributes& WithEncoding(const Aws::String& value) { SetEncoding(value); return *this;}
-
-    /**
-     * <p>The character set encoding of the data set.</p>
-     */
-    inline PsAttributes& WithEncoding(Aws::String&& value) { SetEncoding(std::move(value)); return *this;}
-
-    /**
-     * <p>The character set encoding of the data set.</p>
-     */
-    inline PsAttributes& WithEncoding(const char* value) { SetEncoding(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The format of the data set records.</p>
      */
-    inline const Aws::String& GetFormat() const{ return m_format; }
-
-    /**
-     * <p>The format of the data set records.</p>
-     */
+    inline const Aws::String& GetFormat() const { return m_format; }
     inline bool FormatHasBeenSet() const { return m_formatHasBeenSet; }
-
-    /**
-     * <p>The format of the data set records.</p>
-     */
-    inline void SetFormat(const Aws::String& value) { m_formatHasBeenSet = true; m_format = value; }
-
-    /**
-     * <p>The format of the data set records.</p>
-     */
-    inline void SetFormat(Aws::String&& value) { m_formatHasBeenSet = true; m_format = std::move(value); }
-
-    /**
-     * <p>The format of the data set records.</p>
-     */
-    inline void SetFormat(const char* value) { m_formatHasBeenSet = true; m_format.assign(value); }
-
-    /**
-     * <p>The format of the data set records.</p>
-     */
-    inline PsAttributes& WithFormat(const Aws::String& value) { SetFormat(value); return *this;}
-
-    /**
-     * <p>The format of the data set records.</p>
-     */
-    inline PsAttributes& WithFormat(Aws::String&& value) { SetFormat(std::move(value)); return *this;}
-
-    /**
-     * <p>The format of the data set records.</p>
-     */
-    inline PsAttributes& WithFormat(const char* value) { SetFormat(value); return *this;}
-
+    template<typename FormatT = Aws::String>
+    void SetFormat(FormatT&& value) { m_formatHasBeenSet = true; m_format = std::forward<FormatT>(value); }
+    template<typename FormatT = Aws::String>
+    PsAttributes& WithFormat(FormatT&& value) { SetFormat(std::forward<FormatT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_encoding;

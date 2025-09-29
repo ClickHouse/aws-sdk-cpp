@@ -9,6 +9,7 @@
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/rekognition/model/CustomizationFeature.h>
 #include <aws/rekognition/model/ProjectAutoUpdate.h>
+#include <aws/core/utils/memory/stl/AWSMap.h>
 #include <utility>
 
 namespace Aws
@@ -23,7 +24,7 @@ namespace Model
   class CreateProjectRequest : public RekognitionRequest
   {
   public:
-    AWS_REKOGNITION_API CreateProjectRequest();
+    AWS_REKOGNITION_API CreateProjectRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,136 +37,69 @@ namespace Model
     AWS_REKOGNITION_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the project to create.</p>
      */
-    inline const Aws::String& GetProjectName() const{ return m_projectName; }
-
-    /**
-     * <p>The name of the project to create.</p>
-     */
+    inline const Aws::String& GetProjectName() const { return m_projectName; }
     inline bool ProjectNameHasBeenSet() const { return m_projectNameHasBeenSet; }
+    template<typename ProjectNameT = Aws::String>
+    void SetProjectName(ProjectNameT&& value) { m_projectNameHasBeenSet = true; m_projectName = std::forward<ProjectNameT>(value); }
+    template<typename ProjectNameT = Aws::String>
+    CreateProjectRequest& WithProjectName(ProjectNameT&& value) { SetProjectName(std::forward<ProjectNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the project to create.</p>
-     */
-    inline void SetProjectName(const Aws::String& value) { m_projectNameHasBeenSet = true; m_projectName = value; }
-
-    /**
-     * <p>The name of the project to create.</p>
-     */
-    inline void SetProjectName(Aws::String&& value) { m_projectNameHasBeenSet = true; m_projectName = std::move(value); }
-
-    /**
-     * <p>The name of the project to create.</p>
-     */
-    inline void SetProjectName(const char* value) { m_projectNameHasBeenSet = true; m_projectName.assign(value); }
-
-    /**
-     * <p>The name of the project to create.</p>
-     */
-    inline CreateProjectRequest& WithProjectName(const Aws::String& value) { SetProjectName(value); return *this;}
-
-    /**
-     * <p>The name of the project to create.</p>
-     */
-    inline CreateProjectRequest& WithProjectName(Aws::String&& value) { SetProjectName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the project to create.</p>
-     */
-    inline CreateProjectRequest& WithProjectName(const char* value) { SetProjectName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies feature that is being customized. If no value is provided
      * CUSTOM_LABELS is used as a default.</p>
      */
-    inline const CustomizationFeature& GetFeature() const{ return m_feature; }
-
-    /**
-     * <p>Specifies feature that is being customized. If no value is provided
-     * CUSTOM_LABELS is used as a default.</p>
-     */
+    inline CustomizationFeature GetFeature() const { return m_feature; }
     inline bool FeatureHasBeenSet() const { return m_featureHasBeenSet; }
+    inline void SetFeature(CustomizationFeature value) { m_featureHasBeenSet = true; m_feature = value; }
+    inline CreateProjectRequest& WithFeature(CustomizationFeature value) { SetFeature(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies feature that is being customized. If no value is provided
-     * CUSTOM_LABELS is used as a default.</p>
-     */
-    inline void SetFeature(const CustomizationFeature& value) { m_featureHasBeenSet = true; m_feature = value; }
-
-    /**
-     * <p>Specifies feature that is being customized. If no value is provided
-     * CUSTOM_LABELS is used as a default.</p>
-     */
-    inline void SetFeature(CustomizationFeature&& value) { m_featureHasBeenSet = true; m_feature = std::move(value); }
-
-    /**
-     * <p>Specifies feature that is being customized. If no value is provided
-     * CUSTOM_LABELS is used as a default.</p>
-     */
-    inline CreateProjectRequest& WithFeature(const CustomizationFeature& value) { SetFeature(value); return *this;}
-
-    /**
-     * <p>Specifies feature that is being customized. If no value is provided
-     * CUSTOM_LABELS is used as a default.</p>
-     */
-    inline CreateProjectRequest& WithFeature(CustomizationFeature&& value) { SetFeature(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies whether automatic retraining should be attempted for the versions
      * of the project. Automatic retraining is done as a best effort. Required argument
      * for Content Moderation. Applicable only to adapters.</p>
      */
-    inline const ProjectAutoUpdate& GetAutoUpdate() const{ return m_autoUpdate; }
-
-    /**
-     * <p>Specifies whether automatic retraining should be attempted for the versions
-     * of the project. Automatic retraining is done as a best effort. Required argument
-     * for Content Moderation. Applicable only to adapters.</p>
-     */
+    inline ProjectAutoUpdate GetAutoUpdate() const { return m_autoUpdate; }
     inline bool AutoUpdateHasBeenSet() const { return m_autoUpdateHasBeenSet; }
+    inline void SetAutoUpdate(ProjectAutoUpdate value) { m_autoUpdateHasBeenSet = true; m_autoUpdate = value; }
+    inline CreateProjectRequest& WithAutoUpdate(ProjectAutoUpdate value) { SetAutoUpdate(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Specifies whether automatic retraining should be attempted for the versions
-     * of the project. Automatic retraining is done as a best effort. Required argument
-     * for Content Moderation. Applicable only to adapters.</p>
+     * <p>A set of tags (key-value pairs) that you want to attach to the project.</p>
      */
-    inline void SetAutoUpdate(const ProjectAutoUpdate& value) { m_autoUpdateHasBeenSet = true; m_autoUpdate = value; }
-
-    /**
-     * <p>Specifies whether automatic retraining should be attempted for the versions
-     * of the project. Automatic retraining is done as a best effort. Required argument
-     * for Content Moderation. Applicable only to adapters.</p>
-     */
-    inline void SetAutoUpdate(ProjectAutoUpdate&& value) { m_autoUpdateHasBeenSet = true; m_autoUpdate = std::move(value); }
-
-    /**
-     * <p>Specifies whether automatic retraining should be attempted for the versions
-     * of the project. Automatic retraining is done as a best effort. Required argument
-     * for Content Moderation. Applicable only to adapters.</p>
-     */
-    inline CreateProjectRequest& WithAutoUpdate(const ProjectAutoUpdate& value) { SetAutoUpdate(value); return *this;}
-
-    /**
-     * <p>Specifies whether automatic retraining should be attempted for the versions
-     * of the project. Automatic retraining is done as a best effort. Required argument
-     * for Content Moderation. Applicable only to adapters.</p>
-     */
-    inline CreateProjectRequest& WithAutoUpdate(ProjectAutoUpdate&& value) { SetAutoUpdate(std::move(value)); return *this;}
-
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
+    inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    CreateProjectRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    CreateProjectRequest& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
     Aws::String m_projectName;
     bool m_projectNameHasBeenSet = false;
 
-    CustomizationFeature m_feature;
+    CustomizationFeature m_feature{CustomizationFeature::NOT_SET};
     bool m_featureHasBeenSet = false;
 
-    ProjectAutoUpdate m_autoUpdate;
+    ProjectAutoUpdate m_autoUpdate{ProjectAutoUpdate::NOT_SET};
     bool m_autoUpdateHasBeenSet = false;
+
+    Aws::Map<Aws::String, Aws::String> m_tags;
+    bool m_tagsHasBeenSet = false;
   };
 
 } // namespace Model

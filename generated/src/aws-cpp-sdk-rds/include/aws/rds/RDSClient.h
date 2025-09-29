@@ -58,9 +58,9 @@ namespace Aws
                 class AWS_RDS_API RDSClient : public Aws::Client::AWSXMLClient, public Aws::Client::ClientWithAsyncTemplateMethods<RDSClient>
     {
     public:
-    typedef Aws::Client::AWSXMLClient BASECLASS;
-    static const char* SERVICE_NAME;
-    static const char* ALLOCATION_TAG;
+        typedef Aws::Client::AWSXMLClient BASECLASS;
+        static const char* GetServiceName();
+        static const char* GetAllocationTag();
 
       typedef RDSClientConfiguration ClientConfigurationType;
       typedef RDSEndpointProvider EndpointProviderType;
@@ -70,14 +70,14 @@ namespace Aws
         * is not specified, it will be initialized to default values.
         */
         RDSClient(const Aws::RDS::RDSClientConfiguration& clientConfiguration = Aws::RDS::RDSClientConfiguration(),
-                  std::shared_ptr<RDSEndpointProviderBase> endpointProvider = Aws::MakeShared<RDSEndpointProvider>(ALLOCATION_TAG));
+                  std::shared_ptr<RDSEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         RDSClient(const Aws::Auth::AWSCredentials& credentials,
-                  std::shared_ptr<RDSEndpointProviderBase> endpointProvider = Aws::MakeShared<RDSEndpointProvider>(ALLOCATION_TAG),
+                  std::shared_ptr<RDSEndpointProviderBase> endpointProvider = nullptr,
                   const Aws::RDS::RDSClientConfiguration& clientConfiguration = Aws::RDS::RDSClientConfiguration());
 
        /**
@@ -85,7 +85,7 @@ namespace Aws
         * the default http client factory will be used
         */
         RDSClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                  std::shared_ptr<RDSEndpointProviderBase> endpointProvider = Aws::MakeShared<RDSEndpointProvider>(ALLOCATION_TAG),
+                  std::shared_ptr<RDSEndpointProviderBase> endpointProvider = nullptr,
                   const Aws::RDS::RDSClientConfiguration& clientConfiguration = Aws::RDS::RDSClientConfiguration());
 
 
@@ -209,9 +209,11 @@ namespace Aws
          * <p>Adds metadata tags to an Amazon RDS resource. These tags can also be used
          * with cost allocation reporting to track cost associated with Amazon RDS
          * resources, or used in a Condition statement in an IAM policy for Amazon RDS.</p>
-         * <p>For an overview on tagging Amazon RDS resources, see <a
-         * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Tagging.html">Tagging
-         * Amazon RDS Resources</a>.</p><p><h3>See Also:</h3>   <a
+         * <p>For an overview on tagging your relational database resources, see <a
+         * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html">Tagging
+         * Amazon RDS Resources</a> or <a
+         * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_Tagging.html">Tagging
+         * Amazon Aurora and Amazon RDS Resources</a>. </p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/AddTagsToResource">AWS
          * API Reference</a></p>
          */
@@ -541,15 +543,14 @@ namespace Aws
          * <p>Creates a blue/green deployment.</p> <p>A blue/green deployment creates a
          * staging environment that copies the production environment. In a blue/green
          * deployment, the blue environment is the current production environment. The
-         * green environment is the staging environment. The staging environment stays in
-         * sync with the current production environment using logical replication.</p>
-         * <p>You can make changes to the databases in the green environment without
-         * affecting production workloads. For example, you can upgrade the major or minor
-         * DB engine version, change database parameters, or make schema changes in the
-         * staging environment. You can thoroughly test changes in the green environment.
-         * When ready, you can switch over the environments to promote the green
-         * environment to be the new production environment. The switchover typically takes
-         * under a minute.</p> <p>For more information, see <a
+         * green environment is the staging environment, and it stays in sync with the
+         * current production environment.</p> <p>You can make changes to the databases in
+         * the green environment without affecting production workloads. For example, you
+         * can upgrade the major or minor DB engine version, change database parameters, or
+         * make schema changes in the staging environment. You can thoroughly test changes
+         * in the green environment. When ready, you can switch over the environments to
+         * promote the green environment to be the new production environment. The
+         * switchover typically takes under a minute.</p> <p>For more information, see <a
          * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/blue-green-deployments.html">Using
          * Amazon RDS Blue/Green Deployments for database updates</a> in the <i>Amazon RDS
          * User Guide</i> and <a
@@ -808,12 +809,11 @@ namespace Aws
          * from a Multi-AZ DB cluster to a DB instance using a read replica</a> in the
          * <i>Amazon RDS User Guide</i>.</p> <p>Amazon Aurora doesn't support this
          * operation. To create a DB instance for an Aurora DB cluster, use the
-         * <code>CreateDBInstance</code> operation.</p> <p>All read replica DB instances
-         * are created with backups disabled. All other attributes (including DB security
-         * groups and DB parameter groups) are inherited from the source DB instance or
-         * cluster, except as specified.</p>  <p>Your source DB instance or
-         * cluster must have backup retention enabled.</p> <p><h3>See
-         * Also:</h3>   <a
+         * <code>CreateDBInstance</code> operation.</p> <p>RDS creates read replicas with
+         * backups disabled. All other attributes (including DB security groups and DB
+         * parameter groups) are inherited from the source DB instance or cluster, except
+         * as specified.</p>  <p>Your source DB instance or cluster must have
+         * backup retention enabled.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CreateDBInstanceReadReplica">AWS
          * API Reference</a></p>
          */
@@ -846,18 +846,8 @@ namespace Aws
          * instance using <code>ModifyDBInstance</code>. When you associate a new DB
          * parameter group with a running DB instance, you need to reboot the DB instance
          * without failover for the new DB parameter group and associated settings to take
-         * effect.</p> <p>This command doesn't apply to RDS Custom.</p> 
-         * <p>After you create a DB parameter group, you should wait at least 5 minutes
-         * before creating your first DB instance that uses that DB parameter group as the
-         * default parameter group. This allows Amazon RDS to fully complete the create
-         * action before the parameter group is used as the default for a new DB instance.
-         * This is especially important for parameters that are critical when creating the
-         * default database for a DB instance, such as the character set for the default
-         * database defined by the <code>character_set_database</code> parameter. You can
-         * use the <i>Parameter Groups</i> option of the <a
-         * href="https://console.aws.amazon.com/rds/">Amazon RDS console</a> or the
-         * <i>DescribeDBParameters</i> command to verify that your DB parameter group has
-         * been created or modified.</p> <p><h3>See Also:</h3>   <a
+         * effect.</p> <p>This command doesn't apply to RDS Custom.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CreateDBParameterGroup">AWS
          * API Reference</a></p>
          */
@@ -969,6 +959,33 @@ namespace Aws
         void CreateDBSecurityGroupAsync(const CreateDBSecurityGroupRequestT& request, const CreateDBSecurityGroupResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&RDSClient::CreateDBSecurityGroup, request, handler, context);
+        }
+
+        /**
+         * <p>Creates a new DB shard group for Aurora Limitless Database. You must enable
+         * Aurora Limitless Database to create a DB shard group.</p> <p>Valid for: Aurora
+         * DB clusters only</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CreateDBShardGroup">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::CreateDBShardGroupOutcome CreateDBShardGroup(const Model::CreateDBShardGroupRequest& request) const;
+
+        /**
+         * A Callable wrapper for CreateDBShardGroup that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename CreateDBShardGroupRequestT = Model::CreateDBShardGroupRequest>
+        Model::CreateDBShardGroupOutcomeCallable CreateDBShardGroupCallable(const CreateDBShardGroupRequestT& request) const
+        {
+            return SubmitCallable(&RDSClient::CreateDBShardGroup, request);
+        }
+
+        /**
+         * An Async wrapper for CreateDBShardGroup that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename CreateDBShardGroupRequestT = Model::CreateDBShardGroupRequest>
+        void CreateDBShardGroupAsync(const CreateDBShardGroupRequestT& request, const CreateDBShardGroupResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&RDSClient::CreateDBShardGroup, request, handler, context);
         }
 
         /**
@@ -1091,13 +1108,13 @@ namespace Aws
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CreateGlobalCluster">AWS
          * API Reference</a></p>
          */
-        virtual Model::CreateGlobalClusterOutcome CreateGlobalCluster(const Model::CreateGlobalClusterRequest& request) const;
+        virtual Model::CreateGlobalClusterOutcome CreateGlobalCluster(const Model::CreateGlobalClusterRequest& request = {}) const;
 
         /**
          * A Callable wrapper for CreateGlobalCluster that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename CreateGlobalClusterRequestT = Model::CreateGlobalClusterRequest>
-        Model::CreateGlobalClusterOutcomeCallable CreateGlobalClusterCallable(const CreateGlobalClusterRequestT& request) const
+        Model::CreateGlobalClusterOutcomeCallable CreateGlobalClusterCallable(const CreateGlobalClusterRequestT& request = {}) const
         {
             return SubmitCallable(&RDSClient::CreateGlobalCluster, request);
         }
@@ -1106,7 +1123,7 @@ namespace Aws
          * An Async wrapper for CreateGlobalCluster that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename CreateGlobalClusterRequestT = Model::CreateGlobalClusterRequest>
-        void CreateGlobalClusterAsync(const CreateGlobalClusterRequestT& request, const CreateGlobalClusterResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void CreateGlobalClusterAsync(const CreateGlobalClusterResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const CreateGlobalClusterRequestT& request = {}) const
         {
             return SubmitAsync(&RDSClient::CreateGlobalCluster, request, handler, context);
         }
@@ -1472,13 +1489,13 @@ namespace Aws
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DeleteDBInstanceAutomatedBackup">AWS
          * API Reference</a></p>
          */
-        virtual Model::DeleteDBInstanceAutomatedBackupOutcome DeleteDBInstanceAutomatedBackup(const Model::DeleteDBInstanceAutomatedBackupRequest& request) const;
+        virtual Model::DeleteDBInstanceAutomatedBackupOutcome DeleteDBInstanceAutomatedBackup(const Model::DeleteDBInstanceAutomatedBackupRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DeleteDBInstanceAutomatedBackup that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DeleteDBInstanceAutomatedBackupRequestT = Model::DeleteDBInstanceAutomatedBackupRequest>
-        Model::DeleteDBInstanceAutomatedBackupOutcomeCallable DeleteDBInstanceAutomatedBackupCallable(const DeleteDBInstanceAutomatedBackupRequestT& request) const
+        Model::DeleteDBInstanceAutomatedBackupOutcomeCallable DeleteDBInstanceAutomatedBackupCallable(const DeleteDBInstanceAutomatedBackupRequestT& request = {}) const
         {
             return SubmitCallable(&RDSClient::DeleteDBInstanceAutomatedBackup, request);
         }
@@ -1487,7 +1504,7 @@ namespace Aws
          * An Async wrapper for DeleteDBInstanceAutomatedBackup that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DeleteDBInstanceAutomatedBackupRequestT = Model::DeleteDBInstanceAutomatedBackupRequest>
-        void DeleteDBInstanceAutomatedBackupAsync(const DeleteDBInstanceAutomatedBackupRequestT& request, const DeleteDBInstanceAutomatedBackupResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DeleteDBInstanceAutomatedBackupAsync(const DeleteDBInstanceAutomatedBackupResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DeleteDBInstanceAutomatedBackupRequestT& request = {}) const
         {
             return SubmitAsync(&RDSClient::DeleteDBInstanceAutomatedBackup, request, handler, context);
         }
@@ -1605,6 +1622,32 @@ namespace Aws
         void DeleteDBSecurityGroupAsync(const DeleteDBSecurityGroupRequestT& request, const DeleteDBSecurityGroupResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&RDSClient::DeleteDBSecurityGroup, request, handler, context);
+        }
+
+        /**
+         * <p>Deletes an Aurora Limitless Database DB shard group.</p><p><h3>See Also:</h3>
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DeleteDBShardGroup">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DeleteDBShardGroupOutcome DeleteDBShardGroup(const Model::DeleteDBShardGroupRequest& request) const;
+
+        /**
+         * A Callable wrapper for DeleteDBShardGroup that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DeleteDBShardGroupRequestT = Model::DeleteDBShardGroupRequest>
+        Model::DeleteDBShardGroupOutcomeCallable DeleteDBShardGroupCallable(const DeleteDBShardGroupRequestT& request) const
+        {
+            return SubmitCallable(&RDSClient::DeleteDBShardGroup, request);
+        }
+
+        /**
+         * An Async wrapper for DeleteDBShardGroup that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DeleteDBShardGroupRequestT = Model::DeleteDBShardGroupRequest>
+        void DeleteDBShardGroupAsync(const DeleteDBShardGroupRequestT& request, const DeleteDBShardGroupResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&RDSClient::DeleteDBShardGroup, request, handler, context);
         }
 
         /**
@@ -1827,13 +1870,13 @@ namespace Aws
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeAccountAttributes">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeAccountAttributesOutcome DescribeAccountAttributes(const Model::DescribeAccountAttributesRequest& request) const;
+        virtual Model::DescribeAccountAttributesOutcome DescribeAccountAttributes(const Model::DescribeAccountAttributesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeAccountAttributes that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeAccountAttributesRequestT = Model::DescribeAccountAttributesRequest>
-        Model::DescribeAccountAttributesOutcomeCallable DescribeAccountAttributesCallable(const DescribeAccountAttributesRequestT& request) const
+        Model::DescribeAccountAttributesOutcomeCallable DescribeAccountAttributesCallable(const DescribeAccountAttributesRequestT& request = {}) const
         {
             return SubmitCallable(&RDSClient::DescribeAccountAttributes, request);
         }
@@ -1842,7 +1885,7 @@ namespace Aws
          * An Async wrapper for DescribeAccountAttributes that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeAccountAttributesRequestT = Model::DescribeAccountAttributesRequest>
-        void DescribeAccountAttributesAsync(const DescribeAccountAttributesRequestT& request, const DescribeAccountAttributesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeAccountAttributesAsync(const DescribeAccountAttributesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeAccountAttributesRequestT& request = {}) const
         {
             return SubmitAsync(&RDSClient::DescribeAccountAttributes, request, handler, context);
         }
@@ -1859,13 +1902,13 @@ namespace Aws
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeBlueGreenDeployments">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeBlueGreenDeploymentsOutcome DescribeBlueGreenDeployments(const Model::DescribeBlueGreenDeploymentsRequest& request) const;
+        virtual Model::DescribeBlueGreenDeploymentsOutcome DescribeBlueGreenDeployments(const Model::DescribeBlueGreenDeploymentsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeBlueGreenDeployments that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeBlueGreenDeploymentsRequestT = Model::DescribeBlueGreenDeploymentsRequest>
-        Model::DescribeBlueGreenDeploymentsOutcomeCallable DescribeBlueGreenDeploymentsCallable(const DescribeBlueGreenDeploymentsRequestT& request) const
+        Model::DescribeBlueGreenDeploymentsOutcomeCallable DescribeBlueGreenDeploymentsCallable(const DescribeBlueGreenDeploymentsRequestT& request = {}) const
         {
             return SubmitCallable(&RDSClient::DescribeBlueGreenDeployments, request);
         }
@@ -1874,7 +1917,7 @@ namespace Aws
          * An Async wrapper for DescribeBlueGreenDeployments that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeBlueGreenDeploymentsRequestT = Model::DescribeBlueGreenDeploymentsRequest>
-        void DescribeBlueGreenDeploymentsAsync(const DescribeBlueGreenDeploymentsRequestT& request, const DescribeBlueGreenDeploymentsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeBlueGreenDeploymentsAsync(const DescribeBlueGreenDeploymentsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeBlueGreenDeploymentsRequestT& request = {}) const
         {
             return SubmitAsync(&RDSClient::DescribeBlueGreenDeployments, request, handler, context);
         }
@@ -1891,13 +1934,13 @@ namespace Aws
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeCertificates">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeCertificatesOutcome DescribeCertificates(const Model::DescribeCertificatesRequest& request) const;
+        virtual Model::DescribeCertificatesOutcome DescribeCertificates(const Model::DescribeCertificatesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeCertificates that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeCertificatesRequestT = Model::DescribeCertificatesRequest>
-        Model::DescribeCertificatesOutcomeCallable DescribeCertificatesCallable(const DescribeCertificatesRequestT& request) const
+        Model::DescribeCertificatesOutcomeCallable DescribeCertificatesCallable(const DescribeCertificatesRequestT& request = {}) const
         {
             return SubmitCallable(&RDSClient::DescribeCertificates, request);
         }
@@ -1906,7 +1949,7 @@ namespace Aws
          * An Async wrapper for DescribeCertificates that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeCertificatesRequestT = Model::DescribeCertificatesRequest>
-        void DescribeCertificatesAsync(const DescribeCertificatesRequestT& request, const DescribeCertificatesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeCertificatesAsync(const DescribeCertificatesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeCertificatesRequestT& request = {}) const
         {
             return SubmitAsync(&RDSClient::DescribeCertificates, request, handler, context);
         }
@@ -1921,13 +1964,13 @@ namespace Aws
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBClusterAutomatedBackups">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeDBClusterAutomatedBackupsOutcome DescribeDBClusterAutomatedBackups(const Model::DescribeDBClusterAutomatedBackupsRequest& request) const;
+        virtual Model::DescribeDBClusterAutomatedBackupsOutcome DescribeDBClusterAutomatedBackups(const Model::DescribeDBClusterAutomatedBackupsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeDBClusterAutomatedBackups that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeDBClusterAutomatedBackupsRequestT = Model::DescribeDBClusterAutomatedBackupsRequest>
-        Model::DescribeDBClusterAutomatedBackupsOutcomeCallable DescribeDBClusterAutomatedBackupsCallable(const DescribeDBClusterAutomatedBackupsRequestT& request) const
+        Model::DescribeDBClusterAutomatedBackupsOutcomeCallable DescribeDBClusterAutomatedBackupsCallable(const DescribeDBClusterAutomatedBackupsRequestT& request = {}) const
         {
             return SubmitCallable(&RDSClient::DescribeDBClusterAutomatedBackups, request);
         }
@@ -1936,7 +1979,7 @@ namespace Aws
          * An Async wrapper for DescribeDBClusterAutomatedBackups that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeDBClusterAutomatedBackupsRequestT = Model::DescribeDBClusterAutomatedBackupsRequest>
-        void DescribeDBClusterAutomatedBackupsAsync(const DescribeDBClusterAutomatedBackupsRequestT& request, const DescribeDBClusterAutomatedBackupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeDBClusterAutomatedBackupsAsync(const DescribeDBClusterAutomatedBackupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeDBClusterAutomatedBackupsRequestT& request = {}) const
         {
             return SubmitAsync(&RDSClient::DescribeDBClusterAutomatedBackups, request, handler, context);
         }
@@ -1978,13 +2021,13 @@ namespace Aws
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBClusterEndpoints">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeDBClusterEndpointsOutcome DescribeDBClusterEndpoints(const Model::DescribeDBClusterEndpointsRequest& request) const;
+        virtual Model::DescribeDBClusterEndpointsOutcome DescribeDBClusterEndpoints(const Model::DescribeDBClusterEndpointsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeDBClusterEndpoints that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeDBClusterEndpointsRequestT = Model::DescribeDBClusterEndpointsRequest>
-        Model::DescribeDBClusterEndpointsOutcomeCallable DescribeDBClusterEndpointsCallable(const DescribeDBClusterEndpointsRequestT& request) const
+        Model::DescribeDBClusterEndpointsOutcomeCallable DescribeDBClusterEndpointsCallable(const DescribeDBClusterEndpointsRequestT& request = {}) const
         {
             return SubmitCallable(&RDSClient::DescribeDBClusterEndpoints, request);
         }
@@ -1993,7 +2036,7 @@ namespace Aws
          * An Async wrapper for DescribeDBClusterEndpoints that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeDBClusterEndpointsRequestT = Model::DescribeDBClusterEndpointsRequest>
-        void DescribeDBClusterEndpointsAsync(const DescribeDBClusterEndpointsRequestT& request, const DescribeDBClusterEndpointsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeDBClusterEndpointsAsync(const DescribeDBClusterEndpointsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeDBClusterEndpointsRequestT& request = {}) const
         {
             return SubmitAsync(&RDSClient::DescribeDBClusterEndpoints, request, handler, context);
         }
@@ -2012,13 +2055,13 @@ namespace Aws
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBClusterParameterGroups">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeDBClusterParameterGroupsOutcome DescribeDBClusterParameterGroups(const Model::DescribeDBClusterParameterGroupsRequest& request) const;
+        virtual Model::DescribeDBClusterParameterGroupsOutcome DescribeDBClusterParameterGroups(const Model::DescribeDBClusterParameterGroupsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeDBClusterParameterGroups that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeDBClusterParameterGroupsRequestT = Model::DescribeDBClusterParameterGroupsRequest>
-        Model::DescribeDBClusterParameterGroupsOutcomeCallable DescribeDBClusterParameterGroupsCallable(const DescribeDBClusterParameterGroupsRequestT& request) const
+        Model::DescribeDBClusterParameterGroupsOutcomeCallable DescribeDBClusterParameterGroupsCallable(const DescribeDBClusterParameterGroupsRequestT& request = {}) const
         {
             return SubmitCallable(&RDSClient::DescribeDBClusterParameterGroups, request);
         }
@@ -2027,7 +2070,7 @@ namespace Aws
          * An Async wrapper for DescribeDBClusterParameterGroups that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeDBClusterParameterGroupsRequestT = Model::DescribeDBClusterParameterGroupsRequest>
-        void DescribeDBClusterParameterGroupsAsync(const DescribeDBClusterParameterGroupsRequestT& request, const DescribeDBClusterParameterGroupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeDBClusterParameterGroupsAsync(const DescribeDBClusterParameterGroupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeDBClusterParameterGroupsRequestT& request = {}) const
         {
             return SubmitAsync(&RDSClient::DescribeDBClusterParameterGroups, request, handler, context);
         }
@@ -2112,13 +2155,13 @@ namespace Aws
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBClusterSnapshots">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeDBClusterSnapshotsOutcome DescribeDBClusterSnapshots(const Model::DescribeDBClusterSnapshotsRequest& request) const;
+        virtual Model::DescribeDBClusterSnapshotsOutcome DescribeDBClusterSnapshots(const Model::DescribeDBClusterSnapshotsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeDBClusterSnapshots that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeDBClusterSnapshotsRequestT = Model::DescribeDBClusterSnapshotsRequest>
-        Model::DescribeDBClusterSnapshotsOutcomeCallable DescribeDBClusterSnapshotsCallable(const DescribeDBClusterSnapshotsRequestT& request) const
+        Model::DescribeDBClusterSnapshotsOutcomeCallable DescribeDBClusterSnapshotsCallable(const DescribeDBClusterSnapshotsRequestT& request = {}) const
         {
             return SubmitCallable(&RDSClient::DescribeDBClusterSnapshots, request);
         }
@@ -2127,7 +2170,7 @@ namespace Aws
          * An Async wrapper for DescribeDBClusterSnapshots that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeDBClusterSnapshotsRequestT = Model::DescribeDBClusterSnapshotsRequest>
-        void DescribeDBClusterSnapshotsAsync(const DescribeDBClusterSnapshotsRequestT& request, const DescribeDBClusterSnapshotsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeDBClusterSnapshotsAsync(const DescribeDBClusterSnapshotsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeDBClusterSnapshotsRequestT& request = {}) const
         {
             return SubmitAsync(&RDSClient::DescribeDBClusterSnapshots, request, handler, context);
         }
@@ -2146,13 +2189,13 @@ namespace Aws
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBClusters">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeDBClustersOutcome DescribeDBClusters(const Model::DescribeDBClustersRequest& request) const;
+        virtual Model::DescribeDBClustersOutcome DescribeDBClusters(const Model::DescribeDBClustersRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeDBClusters that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeDBClustersRequestT = Model::DescribeDBClustersRequest>
-        Model::DescribeDBClustersOutcomeCallable DescribeDBClustersCallable(const DescribeDBClustersRequestT& request) const
+        Model::DescribeDBClustersOutcomeCallable DescribeDBClustersCallable(const DescribeDBClustersRequestT& request = {}) const
         {
             return SubmitCallable(&RDSClient::DescribeDBClusters, request);
         }
@@ -2161,7 +2204,7 @@ namespace Aws
          * An Async wrapper for DescribeDBClusters that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeDBClustersRequestT = Model::DescribeDBClustersRequest>
-        void DescribeDBClustersAsync(const DescribeDBClustersRequestT& request, const DescribeDBClustersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeDBClustersAsync(const DescribeDBClustersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeDBClustersRequestT& request = {}) const
         {
             return SubmitAsync(&RDSClient::DescribeDBClusters, request, handler, context);
         }
@@ -2172,13 +2215,13 @@ namespace Aws
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBEngineVersions">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeDBEngineVersionsOutcome DescribeDBEngineVersions(const Model::DescribeDBEngineVersionsRequest& request) const;
+        virtual Model::DescribeDBEngineVersionsOutcome DescribeDBEngineVersions(const Model::DescribeDBEngineVersionsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeDBEngineVersions that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeDBEngineVersionsRequestT = Model::DescribeDBEngineVersionsRequest>
-        Model::DescribeDBEngineVersionsOutcomeCallable DescribeDBEngineVersionsCallable(const DescribeDBEngineVersionsRequestT& request) const
+        Model::DescribeDBEngineVersionsOutcomeCallable DescribeDBEngineVersionsCallable(const DescribeDBEngineVersionsRequestT& request = {}) const
         {
             return SubmitCallable(&RDSClient::DescribeDBEngineVersions, request);
         }
@@ -2187,7 +2230,7 @@ namespace Aws
          * An Async wrapper for DescribeDBEngineVersions that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeDBEngineVersionsRequestT = Model::DescribeDBEngineVersionsRequest>
-        void DescribeDBEngineVersionsAsync(const DescribeDBEngineVersionsRequestT& request, const DescribeDBEngineVersionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeDBEngineVersionsAsync(const DescribeDBEngineVersionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeDBEngineVersionsRequestT& request = {}) const
         {
             return SubmitAsync(&RDSClient::DescribeDBEngineVersions, request, handler, context);
         }
@@ -2202,13 +2245,13 @@ namespace Aws
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBInstanceAutomatedBackups">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeDBInstanceAutomatedBackupsOutcome DescribeDBInstanceAutomatedBackups(const Model::DescribeDBInstanceAutomatedBackupsRequest& request) const;
+        virtual Model::DescribeDBInstanceAutomatedBackupsOutcome DescribeDBInstanceAutomatedBackups(const Model::DescribeDBInstanceAutomatedBackupsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeDBInstanceAutomatedBackups that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeDBInstanceAutomatedBackupsRequestT = Model::DescribeDBInstanceAutomatedBackupsRequest>
-        Model::DescribeDBInstanceAutomatedBackupsOutcomeCallable DescribeDBInstanceAutomatedBackupsCallable(const DescribeDBInstanceAutomatedBackupsRequestT& request) const
+        Model::DescribeDBInstanceAutomatedBackupsOutcomeCallable DescribeDBInstanceAutomatedBackupsCallable(const DescribeDBInstanceAutomatedBackupsRequestT& request = {}) const
         {
             return SubmitCallable(&RDSClient::DescribeDBInstanceAutomatedBackups, request);
         }
@@ -2217,7 +2260,7 @@ namespace Aws
          * An Async wrapper for DescribeDBInstanceAutomatedBackups that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeDBInstanceAutomatedBackupsRequestT = Model::DescribeDBInstanceAutomatedBackupsRequest>
-        void DescribeDBInstanceAutomatedBackupsAsync(const DescribeDBInstanceAutomatedBackupsRequestT& request, const DescribeDBInstanceAutomatedBackupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeDBInstanceAutomatedBackupsAsync(const DescribeDBInstanceAutomatedBackupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeDBInstanceAutomatedBackupsRequestT& request = {}) const
         {
             return SubmitAsync(&RDSClient::DescribeDBInstanceAutomatedBackups, request, handler, context);
         }
@@ -2229,13 +2272,13 @@ namespace Aws
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBInstances">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeDBInstancesOutcome DescribeDBInstances(const Model::DescribeDBInstancesRequest& request) const;
+        virtual Model::DescribeDBInstancesOutcome DescribeDBInstances(const Model::DescribeDBInstancesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeDBInstances that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeDBInstancesRequestT = Model::DescribeDBInstancesRequest>
-        Model::DescribeDBInstancesOutcomeCallable DescribeDBInstancesCallable(const DescribeDBInstancesRequestT& request) const
+        Model::DescribeDBInstancesOutcomeCallable DescribeDBInstancesCallable(const DescribeDBInstancesRequestT& request = {}) const
         {
             return SubmitCallable(&RDSClient::DescribeDBInstances, request);
         }
@@ -2244,7 +2287,7 @@ namespace Aws
          * An Async wrapper for DescribeDBInstances that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeDBInstancesRequestT = Model::DescribeDBInstancesRequest>
-        void DescribeDBInstancesAsync(const DescribeDBInstancesRequestT& request, const DescribeDBInstancesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeDBInstancesAsync(const DescribeDBInstancesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeDBInstancesRequestT& request = {}) const
         {
             return SubmitAsync(&RDSClient::DescribeDBInstances, request, handler, context);
         }
@@ -2276,19 +2319,45 @@ namespace Aws
         }
 
         /**
+         * <p>Describes the properties of specific major versions of DB
+         * engines.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBMajorEngineVersions">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DescribeDBMajorEngineVersionsOutcome DescribeDBMajorEngineVersions(const Model::DescribeDBMajorEngineVersionsRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for DescribeDBMajorEngineVersions that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DescribeDBMajorEngineVersionsRequestT = Model::DescribeDBMajorEngineVersionsRequest>
+        Model::DescribeDBMajorEngineVersionsOutcomeCallable DescribeDBMajorEngineVersionsCallable(const DescribeDBMajorEngineVersionsRequestT& request = {}) const
+        {
+            return SubmitCallable(&RDSClient::DescribeDBMajorEngineVersions, request);
+        }
+
+        /**
+         * An Async wrapper for DescribeDBMajorEngineVersions that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DescribeDBMajorEngineVersionsRequestT = Model::DescribeDBMajorEngineVersionsRequest>
+        void DescribeDBMajorEngineVersionsAsync(const DescribeDBMajorEngineVersionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeDBMajorEngineVersionsRequestT& request = {}) const
+        {
+            return SubmitAsync(&RDSClient::DescribeDBMajorEngineVersions, request, handler, context);
+        }
+
+        /**
          * <p>Returns a list of <code>DBParameterGroup</code> descriptions. If a
          * <code>DBParameterGroupName</code> is specified, the list will contain only the
          * description of the specified DB parameter group.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBParameterGroups">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeDBParameterGroupsOutcome DescribeDBParameterGroups(const Model::DescribeDBParameterGroupsRequest& request) const;
+        virtual Model::DescribeDBParameterGroupsOutcome DescribeDBParameterGroups(const Model::DescribeDBParameterGroupsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeDBParameterGroups that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeDBParameterGroupsRequestT = Model::DescribeDBParameterGroupsRequest>
-        Model::DescribeDBParameterGroupsOutcomeCallable DescribeDBParameterGroupsCallable(const DescribeDBParameterGroupsRequestT& request) const
+        Model::DescribeDBParameterGroupsOutcomeCallable DescribeDBParameterGroupsCallable(const DescribeDBParameterGroupsRequestT& request = {}) const
         {
             return SubmitCallable(&RDSClient::DescribeDBParameterGroups, request);
         }
@@ -2297,7 +2366,7 @@ namespace Aws
          * An Async wrapper for DescribeDBParameterGroups that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeDBParameterGroupsRequestT = Model::DescribeDBParameterGroupsRequest>
-        void DescribeDBParameterGroupsAsync(const DescribeDBParameterGroupsRequestT& request, const DescribeDBParameterGroupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeDBParameterGroupsAsync(const DescribeDBParameterGroupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeDBParameterGroupsRequestT& request = {}) const
         {
             return SubmitAsync(&RDSClient::DescribeDBParameterGroups, request, handler, context);
         }
@@ -2333,13 +2402,13 @@ namespace Aws
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBProxies">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeDBProxiesOutcome DescribeDBProxies(const Model::DescribeDBProxiesRequest& request) const;
+        virtual Model::DescribeDBProxiesOutcome DescribeDBProxies(const Model::DescribeDBProxiesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeDBProxies that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeDBProxiesRequestT = Model::DescribeDBProxiesRequest>
-        Model::DescribeDBProxiesOutcomeCallable DescribeDBProxiesCallable(const DescribeDBProxiesRequestT& request) const
+        Model::DescribeDBProxiesOutcomeCallable DescribeDBProxiesCallable(const DescribeDBProxiesRequestT& request = {}) const
         {
             return SubmitCallable(&RDSClient::DescribeDBProxies, request);
         }
@@ -2348,7 +2417,7 @@ namespace Aws
          * An Async wrapper for DescribeDBProxies that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeDBProxiesRequestT = Model::DescribeDBProxiesRequest>
-        void DescribeDBProxiesAsync(const DescribeDBProxiesRequestT& request, const DescribeDBProxiesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeDBProxiesAsync(const DescribeDBProxiesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeDBProxiesRequestT& request = {}) const
         {
             return SubmitAsync(&RDSClient::DescribeDBProxies, request, handler, context);
         }
@@ -2358,13 +2427,13 @@ namespace Aws
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBProxyEndpoints">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeDBProxyEndpointsOutcome DescribeDBProxyEndpoints(const Model::DescribeDBProxyEndpointsRequest& request) const;
+        virtual Model::DescribeDBProxyEndpointsOutcome DescribeDBProxyEndpoints(const Model::DescribeDBProxyEndpointsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeDBProxyEndpoints that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeDBProxyEndpointsRequestT = Model::DescribeDBProxyEndpointsRequest>
-        Model::DescribeDBProxyEndpointsOutcomeCallable DescribeDBProxyEndpointsCallable(const DescribeDBProxyEndpointsRequestT& request) const
+        Model::DescribeDBProxyEndpointsOutcomeCallable DescribeDBProxyEndpointsCallable(const DescribeDBProxyEndpointsRequestT& request = {}) const
         {
             return SubmitCallable(&RDSClient::DescribeDBProxyEndpoints, request);
         }
@@ -2373,7 +2442,7 @@ namespace Aws
          * An Async wrapper for DescribeDBProxyEndpoints that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeDBProxyEndpointsRequestT = Model::DescribeDBProxyEndpointsRequest>
-        void DescribeDBProxyEndpointsAsync(const DescribeDBProxyEndpointsRequestT& request, const DescribeDBProxyEndpointsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeDBProxyEndpointsAsync(const DescribeDBProxyEndpointsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeDBProxyEndpointsRequestT& request = {}) const
         {
             return SubmitAsync(&RDSClient::DescribeDBProxyEndpoints, request, handler, context);
         }
@@ -2436,13 +2505,13 @@ namespace Aws
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBRecommendations">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeDBRecommendationsOutcome DescribeDBRecommendations(const Model::DescribeDBRecommendationsRequest& request) const;
+        virtual Model::DescribeDBRecommendationsOutcome DescribeDBRecommendations(const Model::DescribeDBRecommendationsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeDBRecommendations that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeDBRecommendationsRequestT = Model::DescribeDBRecommendationsRequest>
-        Model::DescribeDBRecommendationsOutcomeCallable DescribeDBRecommendationsCallable(const DescribeDBRecommendationsRequestT& request) const
+        Model::DescribeDBRecommendationsOutcomeCallable DescribeDBRecommendationsCallable(const DescribeDBRecommendationsRequestT& request = {}) const
         {
             return SubmitCallable(&RDSClient::DescribeDBRecommendations, request);
         }
@@ -2451,7 +2520,7 @@ namespace Aws
          * An Async wrapper for DescribeDBRecommendations that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeDBRecommendationsRequestT = Model::DescribeDBRecommendationsRequest>
-        void DescribeDBRecommendationsAsync(const DescribeDBRecommendationsRequestT& request, const DescribeDBRecommendationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeDBRecommendationsAsync(const DescribeDBRecommendationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeDBRecommendationsRequestT& request = {}) const
         {
             return SubmitAsync(&RDSClient::DescribeDBRecommendations, request, handler, context);
         }
@@ -2472,13 +2541,13 @@ namespace Aws
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBSecurityGroups">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeDBSecurityGroupsOutcome DescribeDBSecurityGroups(const Model::DescribeDBSecurityGroupsRequest& request) const;
+        virtual Model::DescribeDBSecurityGroupsOutcome DescribeDBSecurityGroups(const Model::DescribeDBSecurityGroupsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeDBSecurityGroups that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeDBSecurityGroupsRequestT = Model::DescribeDBSecurityGroupsRequest>
-        Model::DescribeDBSecurityGroupsOutcomeCallable DescribeDBSecurityGroupsCallable(const DescribeDBSecurityGroupsRequestT& request) const
+        Model::DescribeDBSecurityGroupsOutcomeCallable DescribeDBSecurityGroupsCallable(const DescribeDBSecurityGroupsRequestT& request = {}) const
         {
             return SubmitCallable(&RDSClient::DescribeDBSecurityGroups, request);
         }
@@ -2487,9 +2556,35 @@ namespace Aws
          * An Async wrapper for DescribeDBSecurityGroups that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeDBSecurityGroupsRequestT = Model::DescribeDBSecurityGroupsRequest>
-        void DescribeDBSecurityGroupsAsync(const DescribeDBSecurityGroupsRequestT& request, const DescribeDBSecurityGroupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeDBSecurityGroupsAsync(const DescribeDBSecurityGroupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeDBSecurityGroupsRequestT& request = {}) const
         {
             return SubmitAsync(&RDSClient::DescribeDBSecurityGroups, request, handler, context);
+        }
+
+        /**
+         * <p>Describes existing Aurora Limitless Database DB shard groups.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBShardGroups">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DescribeDBShardGroupsOutcome DescribeDBShardGroups(const Model::DescribeDBShardGroupsRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for DescribeDBShardGroups that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DescribeDBShardGroupsRequestT = Model::DescribeDBShardGroupsRequest>
+        Model::DescribeDBShardGroupsOutcomeCallable DescribeDBShardGroupsCallable(const DescribeDBShardGroupsRequestT& request = {}) const
+        {
+            return SubmitCallable(&RDSClient::DescribeDBShardGroups, request);
+        }
+
+        /**
+         * An Async wrapper for DescribeDBShardGroups that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DescribeDBShardGroupsRequestT = Model::DescribeDBShardGroupsRequest>
+        void DescribeDBShardGroupsAsync(const DescribeDBShardGroupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeDBShardGroupsRequestT& request = {}) const
+        {
+            return SubmitAsync(&RDSClient::DescribeDBShardGroups, request, handler, context);
         }
 
         /**
@@ -2538,13 +2633,13 @@ namespace Aws
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBSnapshotTenantDatabases">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeDBSnapshotTenantDatabasesOutcome DescribeDBSnapshotTenantDatabases(const Model::DescribeDBSnapshotTenantDatabasesRequest& request) const;
+        virtual Model::DescribeDBSnapshotTenantDatabasesOutcome DescribeDBSnapshotTenantDatabases(const Model::DescribeDBSnapshotTenantDatabasesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeDBSnapshotTenantDatabases that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeDBSnapshotTenantDatabasesRequestT = Model::DescribeDBSnapshotTenantDatabasesRequest>
-        Model::DescribeDBSnapshotTenantDatabasesOutcomeCallable DescribeDBSnapshotTenantDatabasesCallable(const DescribeDBSnapshotTenantDatabasesRequestT& request) const
+        Model::DescribeDBSnapshotTenantDatabasesOutcomeCallable DescribeDBSnapshotTenantDatabasesCallable(const DescribeDBSnapshotTenantDatabasesRequestT& request = {}) const
         {
             return SubmitCallable(&RDSClient::DescribeDBSnapshotTenantDatabases, request);
         }
@@ -2553,7 +2648,7 @@ namespace Aws
          * An Async wrapper for DescribeDBSnapshotTenantDatabases that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeDBSnapshotTenantDatabasesRequestT = Model::DescribeDBSnapshotTenantDatabasesRequest>
-        void DescribeDBSnapshotTenantDatabasesAsync(const DescribeDBSnapshotTenantDatabasesRequestT& request, const DescribeDBSnapshotTenantDatabasesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeDBSnapshotTenantDatabasesAsync(const DescribeDBSnapshotTenantDatabasesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeDBSnapshotTenantDatabasesRequestT& request = {}) const
         {
             return SubmitAsync(&RDSClient::DescribeDBSnapshotTenantDatabases, request, handler, context);
         }
@@ -2564,13 +2659,13 @@ namespace Aws
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBSnapshots">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeDBSnapshotsOutcome DescribeDBSnapshots(const Model::DescribeDBSnapshotsRequest& request) const;
+        virtual Model::DescribeDBSnapshotsOutcome DescribeDBSnapshots(const Model::DescribeDBSnapshotsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeDBSnapshots that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeDBSnapshotsRequestT = Model::DescribeDBSnapshotsRequest>
-        Model::DescribeDBSnapshotsOutcomeCallable DescribeDBSnapshotsCallable(const DescribeDBSnapshotsRequestT& request) const
+        Model::DescribeDBSnapshotsOutcomeCallable DescribeDBSnapshotsCallable(const DescribeDBSnapshotsRequestT& request = {}) const
         {
             return SubmitCallable(&RDSClient::DescribeDBSnapshots, request);
         }
@@ -2579,7 +2674,7 @@ namespace Aws
          * An Async wrapper for DescribeDBSnapshots that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeDBSnapshotsRequestT = Model::DescribeDBSnapshotsRequest>
-        void DescribeDBSnapshotsAsync(const DescribeDBSnapshotsRequestT& request, const DescribeDBSnapshotsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeDBSnapshotsAsync(const DescribeDBSnapshotsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeDBSnapshotsRequestT& request = {}) const
         {
             return SubmitAsync(&RDSClient::DescribeDBSnapshots, request, handler, context);
         }
@@ -2593,13 +2688,13 @@ namespace Aws
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBSubnetGroups">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeDBSubnetGroupsOutcome DescribeDBSubnetGroups(const Model::DescribeDBSubnetGroupsRequest& request) const;
+        virtual Model::DescribeDBSubnetGroupsOutcome DescribeDBSubnetGroups(const Model::DescribeDBSubnetGroupsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeDBSubnetGroups that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeDBSubnetGroupsRequestT = Model::DescribeDBSubnetGroupsRequest>
-        Model::DescribeDBSubnetGroupsOutcomeCallable DescribeDBSubnetGroupsCallable(const DescribeDBSubnetGroupsRequestT& request) const
+        Model::DescribeDBSubnetGroupsOutcomeCallable DescribeDBSubnetGroupsCallable(const DescribeDBSubnetGroupsRequestT& request = {}) const
         {
             return SubmitCallable(&RDSClient::DescribeDBSubnetGroups, request);
         }
@@ -2608,7 +2703,7 @@ namespace Aws
          * An Async wrapper for DescribeDBSubnetGroups that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeDBSubnetGroupsRequestT = Model::DescribeDBSubnetGroupsRequest>
-        void DescribeDBSubnetGroupsAsync(const DescribeDBSubnetGroupsRequestT& request, const DescribeDBSubnetGroupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeDBSubnetGroupsAsync(const DescribeDBSubnetGroupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeDBSubnetGroupsRequestT& request = {}) const
         {
             return SubmitAsync(&RDSClient::DescribeDBSubnetGroups, request, handler, context);
         }
@@ -2679,13 +2774,13 @@ namespace Aws
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeEventCategories">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeEventCategoriesOutcome DescribeEventCategories(const Model::DescribeEventCategoriesRequest& request) const;
+        virtual Model::DescribeEventCategoriesOutcome DescribeEventCategories(const Model::DescribeEventCategoriesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeEventCategories that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeEventCategoriesRequestT = Model::DescribeEventCategoriesRequest>
-        Model::DescribeEventCategoriesOutcomeCallable DescribeEventCategoriesCallable(const DescribeEventCategoriesRequestT& request) const
+        Model::DescribeEventCategoriesOutcomeCallable DescribeEventCategoriesCallable(const DescribeEventCategoriesRequestT& request = {}) const
         {
             return SubmitCallable(&RDSClient::DescribeEventCategories, request);
         }
@@ -2694,7 +2789,7 @@ namespace Aws
          * An Async wrapper for DescribeEventCategories that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeEventCategoriesRequestT = Model::DescribeEventCategoriesRequest>
-        void DescribeEventCategoriesAsync(const DescribeEventCategoriesRequestT& request, const DescribeEventCategoriesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeEventCategoriesAsync(const DescribeEventCategoriesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeEventCategoriesRequestT& request = {}) const
         {
             return SubmitAsync(&RDSClient::DescribeEventCategories, request, handler, context);
         }
@@ -2709,13 +2804,13 @@ namespace Aws
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeEventSubscriptions">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeEventSubscriptionsOutcome DescribeEventSubscriptions(const Model::DescribeEventSubscriptionsRequest& request) const;
+        virtual Model::DescribeEventSubscriptionsOutcome DescribeEventSubscriptions(const Model::DescribeEventSubscriptionsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeEventSubscriptions that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeEventSubscriptionsRequestT = Model::DescribeEventSubscriptionsRequest>
-        Model::DescribeEventSubscriptionsOutcomeCallable DescribeEventSubscriptionsCallable(const DescribeEventSubscriptionsRequestT& request) const
+        Model::DescribeEventSubscriptionsOutcomeCallable DescribeEventSubscriptionsCallable(const DescribeEventSubscriptionsRequestT& request = {}) const
         {
             return SubmitCallable(&RDSClient::DescribeEventSubscriptions, request);
         }
@@ -2724,7 +2819,7 @@ namespace Aws
          * An Async wrapper for DescribeEventSubscriptions that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeEventSubscriptionsRequestT = Model::DescribeEventSubscriptionsRequest>
-        void DescribeEventSubscriptionsAsync(const DescribeEventSubscriptionsRequestT& request, const DescribeEventSubscriptionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeEventSubscriptionsAsync(const DescribeEventSubscriptionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeEventSubscriptionsRequestT& request = {}) const
         {
             return SubmitAsync(&RDSClient::DescribeEventSubscriptions, request, handler, context);
         }
@@ -2745,13 +2840,13 @@ namespace Aws
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeEvents">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeEventsOutcome DescribeEvents(const Model::DescribeEventsRequest& request) const;
+        virtual Model::DescribeEventsOutcome DescribeEvents(const Model::DescribeEventsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeEvents that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeEventsRequestT = Model::DescribeEventsRequest>
-        Model::DescribeEventsOutcomeCallable DescribeEventsCallable(const DescribeEventsRequestT& request) const
+        Model::DescribeEventsOutcomeCallable DescribeEventsCallable(const DescribeEventsRequestT& request = {}) const
         {
             return SubmitCallable(&RDSClient::DescribeEvents, request);
         }
@@ -2760,7 +2855,7 @@ namespace Aws
          * An Async wrapper for DescribeEvents that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeEventsRequestT = Model::DescribeEventsRequest>
-        void DescribeEventsAsync(const DescribeEventsRequestT& request, const DescribeEventsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeEventsAsync(const DescribeEventsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeEventsRequestT& request = {}) const
         {
             return SubmitAsync(&RDSClient::DescribeEvents, request, handler, context);
         }
@@ -2771,13 +2866,13 @@ namespace Aws
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeExportTasks">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeExportTasksOutcome DescribeExportTasks(const Model::DescribeExportTasksRequest& request) const;
+        virtual Model::DescribeExportTasksOutcome DescribeExportTasks(const Model::DescribeExportTasksRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeExportTasks that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeExportTasksRequestT = Model::DescribeExportTasksRequest>
-        Model::DescribeExportTasksOutcomeCallable DescribeExportTasksCallable(const DescribeExportTasksRequestT& request) const
+        Model::DescribeExportTasksOutcomeCallable DescribeExportTasksCallable(const DescribeExportTasksRequestT& request = {}) const
         {
             return SubmitCallable(&RDSClient::DescribeExportTasks, request);
         }
@@ -2786,7 +2881,7 @@ namespace Aws
          * An Async wrapper for DescribeExportTasks that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeExportTasksRequestT = Model::DescribeExportTasksRequest>
-        void DescribeExportTasksAsync(const DescribeExportTasksRequestT& request, const DescribeExportTasksResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeExportTasksAsync(const DescribeExportTasksResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeExportTasksRequestT& request = {}) const
         {
             return SubmitAsync(&RDSClient::DescribeExportTasks, request, handler, context);
         }
@@ -2801,13 +2896,13 @@ namespace Aws
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeGlobalClusters">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeGlobalClustersOutcome DescribeGlobalClusters(const Model::DescribeGlobalClustersRequest& request) const;
+        virtual Model::DescribeGlobalClustersOutcome DescribeGlobalClusters(const Model::DescribeGlobalClustersRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeGlobalClusters that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeGlobalClustersRequestT = Model::DescribeGlobalClustersRequest>
-        Model::DescribeGlobalClustersOutcomeCallable DescribeGlobalClustersCallable(const DescribeGlobalClustersRequestT& request) const
+        Model::DescribeGlobalClustersOutcomeCallable DescribeGlobalClustersCallable(const DescribeGlobalClustersRequestT& request = {}) const
         {
             return SubmitCallable(&RDSClient::DescribeGlobalClusters, request);
         }
@@ -2816,7 +2911,7 @@ namespace Aws
          * An Async wrapper for DescribeGlobalClusters that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeGlobalClustersRequestT = Model::DescribeGlobalClustersRequest>
-        void DescribeGlobalClustersAsync(const DescribeGlobalClustersRequestT& request, const DescribeGlobalClustersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeGlobalClustersAsync(const DescribeGlobalClustersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeGlobalClustersRequestT& request = {}) const
         {
             return SubmitAsync(&RDSClient::DescribeGlobalClusters, request, handler, context);
         }
@@ -2827,13 +2922,13 @@ namespace Aws
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeIntegrations">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeIntegrationsOutcome DescribeIntegrations(const Model::DescribeIntegrationsRequest& request) const;
+        virtual Model::DescribeIntegrationsOutcome DescribeIntegrations(const Model::DescribeIntegrationsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeIntegrations that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeIntegrationsRequestT = Model::DescribeIntegrationsRequest>
-        Model::DescribeIntegrationsOutcomeCallable DescribeIntegrationsCallable(const DescribeIntegrationsRequestT& request) const
+        Model::DescribeIntegrationsOutcomeCallable DescribeIntegrationsCallable(const DescribeIntegrationsRequestT& request = {}) const
         {
             return SubmitCallable(&RDSClient::DescribeIntegrations, request);
         }
@@ -2842,7 +2937,7 @@ namespace Aws
          * An Async wrapper for DescribeIntegrations that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeIntegrationsRequestT = Model::DescribeIntegrationsRequest>
-        void DescribeIntegrationsAsync(const DescribeIntegrationsRequestT& request, const DescribeIntegrationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeIntegrationsAsync(const DescribeIntegrationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeIntegrationsRequestT& request = {}) const
         {
             return SubmitAsync(&RDSClient::DescribeIntegrations, request, handler, context);
         }
@@ -2878,13 +2973,13 @@ namespace Aws
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeOptionGroups">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeOptionGroupsOutcome DescribeOptionGroups(const Model::DescribeOptionGroupsRequest& request) const;
+        virtual Model::DescribeOptionGroupsOutcome DescribeOptionGroups(const Model::DescribeOptionGroupsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeOptionGroups that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeOptionGroupsRequestT = Model::DescribeOptionGroupsRequest>
-        Model::DescribeOptionGroupsOutcomeCallable DescribeOptionGroupsCallable(const DescribeOptionGroupsRequestT& request) const
+        Model::DescribeOptionGroupsOutcomeCallable DescribeOptionGroupsCallable(const DescribeOptionGroupsRequestT& request = {}) const
         {
             return SubmitCallable(&RDSClient::DescribeOptionGroups, request);
         }
@@ -2893,7 +2988,7 @@ namespace Aws
          * An Async wrapper for DescribeOptionGroups that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeOptionGroupsRequestT = Model::DescribeOptionGroupsRequest>
-        void DescribeOptionGroupsAsync(const DescribeOptionGroupsRequestT& request, const DescribeOptionGroupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeOptionGroupsAsync(const DescribeOptionGroupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeOptionGroupsRequestT& request = {}) const
         {
             return SubmitAsync(&RDSClient::DescribeOptionGroups, request, handler, context);
         }
@@ -2926,17 +3021,23 @@ namespace Aws
 
         /**
          * <p>Returns a list of resources (for example, DB instances) that have at least
-         * one pending maintenance action.</p><p><h3>See Also:</h3>   <a
+         * one pending maintenance action.</p> <p>This API follows an eventual consistency
+         * model. This means that the result of the
+         * <code>DescribePendingMaintenanceActions</code> command might not be immediately
+         * visible to all subsequent RDS commands. Keep this in mind when you use
+         * <code>DescribePendingMaintenanceActions</code> immediately after using a
+         * previous API command such as
+         * <code>ApplyPendingMaintenanceActions</code>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribePendingMaintenanceActions">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribePendingMaintenanceActionsOutcome DescribePendingMaintenanceActions(const Model::DescribePendingMaintenanceActionsRequest& request) const;
+        virtual Model::DescribePendingMaintenanceActionsOutcome DescribePendingMaintenanceActions(const Model::DescribePendingMaintenanceActionsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribePendingMaintenanceActions that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribePendingMaintenanceActionsRequestT = Model::DescribePendingMaintenanceActionsRequest>
-        Model::DescribePendingMaintenanceActionsOutcomeCallable DescribePendingMaintenanceActionsCallable(const DescribePendingMaintenanceActionsRequestT& request) const
+        Model::DescribePendingMaintenanceActionsOutcomeCallable DescribePendingMaintenanceActionsCallable(const DescribePendingMaintenanceActionsRequestT& request = {}) const
         {
             return SubmitCallable(&RDSClient::DescribePendingMaintenanceActions, request);
         }
@@ -2945,7 +3046,7 @@ namespace Aws
          * An Async wrapper for DescribePendingMaintenanceActions that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribePendingMaintenanceActionsRequestT = Model::DescribePendingMaintenanceActionsRequest>
-        void DescribePendingMaintenanceActionsAsync(const DescribePendingMaintenanceActionsRequestT& request, const DescribePendingMaintenanceActionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribePendingMaintenanceActionsAsync(const DescribePendingMaintenanceActionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribePendingMaintenanceActionsRequestT& request = {}) const
         {
             return SubmitAsync(&RDSClient::DescribePendingMaintenanceActions, request, handler, context);
         }
@@ -2956,13 +3057,13 @@ namespace Aws
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeReservedDBInstances">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeReservedDBInstancesOutcome DescribeReservedDBInstances(const Model::DescribeReservedDBInstancesRequest& request) const;
+        virtual Model::DescribeReservedDBInstancesOutcome DescribeReservedDBInstances(const Model::DescribeReservedDBInstancesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeReservedDBInstances that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeReservedDBInstancesRequestT = Model::DescribeReservedDBInstancesRequest>
-        Model::DescribeReservedDBInstancesOutcomeCallable DescribeReservedDBInstancesCallable(const DescribeReservedDBInstancesRequestT& request) const
+        Model::DescribeReservedDBInstancesOutcomeCallable DescribeReservedDBInstancesCallable(const DescribeReservedDBInstancesRequestT& request = {}) const
         {
             return SubmitCallable(&RDSClient::DescribeReservedDBInstances, request);
         }
@@ -2971,7 +3072,7 @@ namespace Aws
          * An Async wrapper for DescribeReservedDBInstances that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeReservedDBInstancesRequestT = Model::DescribeReservedDBInstancesRequest>
-        void DescribeReservedDBInstancesAsync(const DescribeReservedDBInstancesRequestT& request, const DescribeReservedDBInstancesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeReservedDBInstancesAsync(const DescribeReservedDBInstancesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeReservedDBInstancesRequestT& request = {}) const
         {
             return SubmitAsync(&RDSClient::DescribeReservedDBInstances, request, handler, context);
         }
@@ -2981,13 +3082,13 @@ namespace Aws
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeReservedDBInstancesOfferings">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeReservedDBInstancesOfferingsOutcome DescribeReservedDBInstancesOfferings(const Model::DescribeReservedDBInstancesOfferingsRequest& request) const;
+        virtual Model::DescribeReservedDBInstancesOfferingsOutcome DescribeReservedDBInstancesOfferings(const Model::DescribeReservedDBInstancesOfferingsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeReservedDBInstancesOfferings that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeReservedDBInstancesOfferingsRequestT = Model::DescribeReservedDBInstancesOfferingsRequest>
-        Model::DescribeReservedDBInstancesOfferingsOutcomeCallable DescribeReservedDBInstancesOfferingsCallable(const DescribeReservedDBInstancesOfferingsRequestT& request) const
+        Model::DescribeReservedDBInstancesOfferingsOutcomeCallable DescribeReservedDBInstancesOfferingsCallable(const DescribeReservedDBInstancesOfferingsRequestT& request = {}) const
         {
             return SubmitCallable(&RDSClient::DescribeReservedDBInstancesOfferings, request);
         }
@@ -2996,7 +3097,7 @@ namespace Aws
          * An Async wrapper for DescribeReservedDBInstancesOfferings that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeReservedDBInstancesOfferingsRequestT = Model::DescribeReservedDBInstancesOfferingsRequest>
-        void DescribeReservedDBInstancesOfferingsAsync(const DescribeReservedDBInstancesOfferingsRequestT& request, const DescribeReservedDBInstancesOfferingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeReservedDBInstancesOfferingsAsync(const DescribeReservedDBInstancesOfferingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeReservedDBInstancesOfferingsRequestT& request = {}) const
         {
             return SubmitAsync(&RDSClient::DescribeReservedDBInstancesOfferings, request, handler, context);
         }
@@ -3015,13 +3116,13 @@ namespace Aws
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeSourceRegions">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeSourceRegionsOutcome DescribeSourceRegions(const Model::DescribeSourceRegionsRequest& request) const;
+        virtual Model::DescribeSourceRegionsOutcome DescribeSourceRegions(const Model::DescribeSourceRegionsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeSourceRegions that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeSourceRegionsRequestT = Model::DescribeSourceRegionsRequest>
-        Model::DescribeSourceRegionsOutcomeCallable DescribeSourceRegionsCallable(const DescribeSourceRegionsRequestT& request) const
+        Model::DescribeSourceRegionsOutcomeCallable DescribeSourceRegionsCallable(const DescribeSourceRegionsRequestT& request = {}) const
         {
             return SubmitCallable(&RDSClient::DescribeSourceRegions, request);
         }
@@ -3030,7 +3131,7 @@ namespace Aws
          * An Async wrapper for DescribeSourceRegions that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeSourceRegionsRequestT = Model::DescribeSourceRegionsRequest>
-        void DescribeSourceRegionsAsync(const DescribeSourceRegionsRequestT& request, const DescribeSourceRegionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeSourceRegionsAsync(const DescribeSourceRegionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeSourceRegionsRequestT& request = {}) const
         {
             return SubmitAsync(&RDSClient::DescribeSourceRegions, request, handler, context);
         }
@@ -3042,13 +3143,13 @@ namespace Aws
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeTenantDatabases">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeTenantDatabasesOutcome DescribeTenantDatabases(const Model::DescribeTenantDatabasesRequest& request) const;
+        virtual Model::DescribeTenantDatabasesOutcome DescribeTenantDatabases(const Model::DescribeTenantDatabasesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeTenantDatabases that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeTenantDatabasesRequestT = Model::DescribeTenantDatabasesRequest>
-        Model::DescribeTenantDatabasesOutcomeCallable DescribeTenantDatabasesCallable(const DescribeTenantDatabasesRequestT& request) const
+        Model::DescribeTenantDatabasesOutcomeCallable DescribeTenantDatabasesCallable(const DescribeTenantDatabasesRequestT& request = {}) const
         {
             return SubmitCallable(&RDSClient::DescribeTenantDatabases, request);
         }
@@ -3057,7 +3158,7 @@ namespace Aws
          * An Async wrapper for DescribeTenantDatabases that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeTenantDatabasesRequestT = Model::DescribeTenantDatabasesRequest>
-        void DescribeTenantDatabasesAsync(const DescribeTenantDatabasesRequestT& request, const DescribeTenantDatabasesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeTenantDatabasesAsync(const DescribeTenantDatabasesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeTenantDatabasesRequestT& request = {}) const
         {
             return SubmitAsync(&RDSClient::DescribeTenantDatabases, request, handler, context);
         }
@@ -3095,10 +3196,10 @@ namespace Aws
          * endpoint disables RDS Data API.</p> <p>For more information, see <a
          * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html">Using
          * RDS Data API</a> in the <i>Amazon Aurora User Guide</i>.</p>  <p>This
-         * operation applies only to Aurora PostgreSQL Serverless v2 and provisioned DB
-         * clusters. To disable the HTTP endpoint for Aurora Serverless v1 DB clusters, use
-         * the <code>EnableHttpEndpoint</code> parameter of the
-         * <code>ModifyDBCluster</code> operation.</p> <p><h3>See Also:</h3>   <a
+         * operation applies only to Aurora Serverless v2 and provisioned DB clusters. To
+         * disable the HTTP endpoint for Aurora Serverless v1 DB clusters, use the
+         * <code>EnableHttpEndpoint</code> parameter of the <code>ModifyDBCluster</code>
+         * operation.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DisableHttpEndpoint">AWS
          * API Reference</a></p>
          */
@@ -3124,7 +3225,13 @@ namespace Aws
 
         /**
          * <p>Downloads all or a portion of the specified log file, up to 1 MB in size.</p>
-         * <p>This command doesn't apply to RDS Custom.</p><p><h3>See Also:</h3>   <a
+         * <p>This command doesn't apply to RDS Custom.</p>  <p>This operation uses
+         * resources on database instances. Because of this, we recommend publishing
+         * database logs to CloudWatch and then using the GetLogEvents operation. For more
+         * information, see <a
+         * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_GetLogEvents.html">GetLogEvents</a>
+         * in the <i>Amazon CloudWatch Logs API Reference</i>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DownloadDBLogFilePortion">AWS
          * API Reference</a></p>
          */
@@ -3156,10 +3263,10 @@ namespace Aws
          * editor.</p> <p>For more information, see <a
          * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html">Using
          * RDS Data API</a> in the <i>Amazon Aurora User Guide</i>.</p>  <p>This
-         * operation applies only to Aurora PostgreSQL Serverless v2 and provisioned DB
-         * clusters. To enable the HTTP endpoint for Aurora Serverless v1 DB clusters, use
-         * the <code>EnableHttpEndpoint</code> parameter of the
-         * <code>ModifyDBCluster</code> operation.</p> <p><h3>See Also:</h3>   <a
+         * operation applies only to Aurora Serverless v2 and provisioned DB clusters. To
+         * enable the HTTP endpoint for Aurora Serverless v1 DB clusters, use the
+         * <code>EnableHttpEndpoint</code> parameter of the <code>ModifyDBCluster</code>
+         * operation.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/EnableHttpEndpoint">AWS
          * API Reference</a></p>
          */
@@ -3187,17 +3294,18 @@ namespace Aws
          * <p>Forces a failover for a DB cluster.</p> <p>For an Aurora DB cluster, failover
          * for a DB cluster promotes one of the Aurora Replicas (read-only instances) in
          * the DB cluster to be the primary DB instance (the cluster writer).</p> <p>For a
-         * Multi-AZ DB cluster, failover for a DB cluster promotes one of the readable
-         * standby DB instances (read-only instances) in the DB cluster to be the primary
-         * DB instance (the cluster writer).</p> <p>An Amazon Aurora DB cluster
-         * automatically fails over to an Aurora Replica, if one exists, when the primary
-         * DB instance fails. A Multi-AZ DB cluster automatically fails over to a readable
-         * standby DB instance when the primary DB instance fails.</p> <p>To simulate a
-         * failure of a primary instance for testing, you can force a failover. Because
-         * each instance in a DB cluster has its own endpoint address, make sure to clean
-         * up and re-establish any existing connections that use those endpoint addresses
-         * when the failover is complete.</p> <p>For more information on Amazon Aurora DB
-         * clusters, see <a
+         * Multi-AZ DB cluster, after RDS terminates the primary DB instance, the internal
+         * monitoring system detects that the primary DB instance is unhealthy and promotes
+         * a readable standby (read-only instances) in the DB cluster to be the primary DB
+         * instance (the cluster writer). Failover times are typically less than 35
+         * seconds.</p> <p>An Amazon Aurora DB cluster automatically fails over to an
+         * Aurora Replica, if one exists, when the primary DB instance fails. A Multi-AZ DB
+         * cluster automatically fails over to a readable standby DB instance when the
+         * primary DB instance fails.</p> <p>To simulate a failure of a primary instance
+         * for testing, you can force a failover. Because each instance in a DB cluster has
+         * its own endpoint address, make sure to clean up and re-establish any existing
+         * connections that use those endpoint addresses when the failover is complete.</p>
+         * <p>For more information on Amazon Aurora DB clusters, see <a
          * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html">
          * What is Amazon Aurora?</a> in the <i>Amazon Aurora User Guide</i>.</p> <p>For
          * more information on Multi-AZ DB clusters, see <a
@@ -3287,9 +3395,11 @@ namespace Aws
         /**
          * <p>Lists all tags on an Amazon RDS resource.</p> <p>For an overview on tagging
          * an Amazon RDS resource, see <a
-         * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Tagging.html">Tagging
-         * Amazon RDS Resources</a> in the <i>Amazon RDS User Guide</i>.</p><p><h3>See
-         * Also:</h3>   <a
+         * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html">Tagging
+         * Amazon RDS Resources</a> in the <i>Amazon RDS User Guide</i> or <a
+         * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_Tagging.html">Tagging
+         * Amazon Aurora and Amazon RDS Resources</a> in the <i>Amazon Aurora User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ListTagsForResource">AWS
          * API Reference</a></p>
          */
@@ -3326,13 +3436,13 @@ namespace Aws
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ModifyActivityStream">AWS
          * API Reference</a></p>
          */
-        virtual Model::ModifyActivityStreamOutcome ModifyActivityStream(const Model::ModifyActivityStreamRequest& request) const;
+        virtual Model::ModifyActivityStreamOutcome ModifyActivityStream(const Model::ModifyActivityStreamRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ModifyActivityStream that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ModifyActivityStreamRequestT = Model::ModifyActivityStreamRequest>
-        Model::ModifyActivityStreamOutcomeCallable ModifyActivityStreamCallable(const ModifyActivityStreamRequestT& request) const
+        Model::ModifyActivityStreamOutcomeCallable ModifyActivityStreamCallable(const ModifyActivityStreamRequestT& request = {}) const
         {
             return SubmitCallable(&RDSClient::ModifyActivityStream, request);
         }
@@ -3341,7 +3451,7 @@ namespace Aws
          * An Async wrapper for ModifyActivityStream that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ModifyActivityStreamRequestT = Model::ModifyActivityStreamRequest>
-        void ModifyActivityStreamAsync(const ModifyActivityStreamRequestT& request, const ModifyActivityStreamResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ModifyActivityStreamAsync(const ModifyActivityStreamResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ModifyActivityStreamRequestT& request = {}) const
         {
             return SubmitAsync(&RDSClient::ModifyActivityStream, request, handler, context);
         }
@@ -3372,13 +3482,13 @@ namespace Aws
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ModifyCertificates">AWS
          * API Reference</a></p>
          */
-        virtual Model::ModifyCertificatesOutcome ModifyCertificates(const Model::ModifyCertificatesRequest& request) const;
+        virtual Model::ModifyCertificatesOutcome ModifyCertificates(const Model::ModifyCertificatesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ModifyCertificates that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ModifyCertificatesRequestT = Model::ModifyCertificatesRequest>
-        Model::ModifyCertificatesOutcomeCallable ModifyCertificatesCallable(const ModifyCertificatesRequestT& request) const
+        Model::ModifyCertificatesOutcomeCallable ModifyCertificatesCallable(const ModifyCertificatesRequestT& request = {}) const
         {
             return SubmitCallable(&RDSClient::ModifyCertificates, request);
         }
@@ -3387,7 +3497,7 @@ namespace Aws
          * An Async wrapper for ModifyCertificates that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ModifyCertificatesRequestT = Model::ModifyCertificatesRequest>
-        void ModifyCertificatesAsync(const ModifyCertificatesRequestT& request, const ModifyCertificatesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ModifyCertificatesAsync(const ModifyCertificatesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ModifyCertificatesRequestT& request = {}) const
         {
             return SubmitAsync(&RDSClient::ModifyCertificates, request, handler, context);
         }
@@ -3797,10 +3907,38 @@ namespace Aws
         }
 
         /**
+         * <p>Modifies the settings of an Aurora Limitless Database DB shard group. You can
+         * change one or more settings by specifying these parameters and the new values in
+         * the request.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ModifyDBShardGroup">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ModifyDBShardGroupOutcome ModifyDBShardGroup(const Model::ModifyDBShardGroupRequest& request) const;
+
+        /**
+         * A Callable wrapper for ModifyDBShardGroup that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ModifyDBShardGroupRequestT = Model::ModifyDBShardGroupRequest>
+        Model::ModifyDBShardGroupOutcomeCallable ModifyDBShardGroupCallable(const ModifyDBShardGroupRequestT& request) const
+        {
+            return SubmitCallable(&RDSClient::ModifyDBShardGroup, request);
+        }
+
+        /**
+         * An Async wrapper for ModifyDBShardGroup that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ModifyDBShardGroupRequestT = Model::ModifyDBShardGroupRequest>
+        void ModifyDBShardGroupAsync(const ModifyDBShardGroupRequestT& request, const ModifyDBShardGroupResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&RDSClient::ModifyDBShardGroup, request, handler, context);
+        }
+
+        /**
          * <p>Updates a manual DB snapshot with a new engine version. The snapshot can be
          * encrypted or unencrypted, but not shared or public. </p> <p>Amazon RDS supports
-         * upgrading DB snapshots for MySQL, PostgreSQL, and Oracle. This operation doesn't
-         * apply to RDS Custom or RDS for Db2.</p><p><h3>See Also:</h3>   <a
+         * upgrading DB snapshots for MariaDB, MySQL, PostgreSQL, and Oracle. This
+         * operation doesn't apply to RDS Custom or RDS for Db2.</p><p><h3>See Also:</h3>  
+         * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ModifyDBSnapshot">AWS
          * API Reference</a></p>
          */
@@ -3938,13 +4076,13 @@ namespace Aws
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ModifyGlobalCluster">AWS
          * API Reference</a></p>
          */
-        virtual Model::ModifyGlobalClusterOutcome ModifyGlobalCluster(const Model::ModifyGlobalClusterRequest& request) const;
+        virtual Model::ModifyGlobalClusterOutcome ModifyGlobalCluster(const Model::ModifyGlobalClusterRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ModifyGlobalCluster that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ModifyGlobalClusterRequestT = Model::ModifyGlobalClusterRequest>
-        Model::ModifyGlobalClusterOutcomeCallable ModifyGlobalClusterCallable(const ModifyGlobalClusterRequestT& request) const
+        Model::ModifyGlobalClusterOutcomeCallable ModifyGlobalClusterCallable(const ModifyGlobalClusterRequestT& request = {}) const
         {
             return SubmitCallable(&RDSClient::ModifyGlobalCluster, request);
         }
@@ -3953,9 +4091,35 @@ namespace Aws
          * An Async wrapper for ModifyGlobalCluster that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ModifyGlobalClusterRequestT = Model::ModifyGlobalClusterRequest>
-        void ModifyGlobalClusterAsync(const ModifyGlobalClusterRequestT& request, const ModifyGlobalClusterResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ModifyGlobalClusterAsync(const ModifyGlobalClusterResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ModifyGlobalClusterRequestT& request = {}) const
         {
             return SubmitAsync(&RDSClient::ModifyGlobalCluster, request, handler, context);
+        }
+
+        /**
+         * <p>Modifies a zero-ETL integration with Amazon Redshift.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ModifyIntegration">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ModifyIntegrationOutcome ModifyIntegration(const Model::ModifyIntegrationRequest& request) const;
+
+        /**
+         * A Callable wrapper for ModifyIntegration that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ModifyIntegrationRequestT = Model::ModifyIntegrationRequest>
+        Model::ModifyIntegrationOutcomeCallable ModifyIntegrationCallable(const ModifyIntegrationRequestT& request) const
+        {
+            return SubmitCallable(&RDSClient::ModifyIntegration, request);
+        }
+
+        /**
+         * An Async wrapper for ModifyIntegration that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ModifyIntegrationRequestT = Model::ModifyIntegrationRequest>
+        void ModifyIntegrationAsync(const ModifyIntegrationRequestT& request, const ModifyIntegrationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&RDSClient::ModifyIntegration, request, handler, context);
         }
 
         /**
@@ -4168,6 +4332,34 @@ namespace Aws
         }
 
         /**
+         * <p>You might need to reboot your DB shard group, usually for maintenance
+         * reasons. For example, if you make certain modifications, reboot the DB shard
+         * group for the changes to take effect.</p> <p>This operation applies only to
+         * Aurora Limitless Database DBb shard groups.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/RebootDBShardGroup">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::RebootDBShardGroupOutcome RebootDBShardGroup(const Model::RebootDBShardGroupRequest& request) const;
+
+        /**
+         * A Callable wrapper for RebootDBShardGroup that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename RebootDBShardGroupRequestT = Model::RebootDBShardGroupRequest>
+        Model::RebootDBShardGroupOutcomeCallable RebootDBShardGroupCallable(const RebootDBShardGroupRequestT& request) const
+        {
+            return SubmitCallable(&RDSClient::RebootDBShardGroup, request);
+        }
+
+        /**
+         * An Async wrapper for RebootDBShardGroup that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename RebootDBShardGroupRequestT = Model::RebootDBShardGroupRequest>
+        void RebootDBShardGroupAsync(const RebootDBShardGroupRequestT& request, const RebootDBShardGroupResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&RDSClient::RebootDBShardGroup, request, handler, context);
+        }
+
+        /**
          * <p>Associate one or more <code>DBProxyTarget</code> data structures with a
          * <code>DBProxyTargetGroup</code>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/RegisterDBProxyTargets">AWS
@@ -4202,13 +4394,13 @@ namespace Aws
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/RemoveFromGlobalCluster">AWS
          * API Reference</a></p>
          */
-        virtual Model::RemoveFromGlobalClusterOutcome RemoveFromGlobalCluster(const Model::RemoveFromGlobalClusterRequest& request) const;
+        virtual Model::RemoveFromGlobalClusterOutcome RemoveFromGlobalCluster(const Model::RemoveFromGlobalClusterRequest& request = {}) const;
 
         /**
          * A Callable wrapper for RemoveFromGlobalCluster that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename RemoveFromGlobalClusterRequestT = Model::RemoveFromGlobalClusterRequest>
-        Model::RemoveFromGlobalClusterOutcomeCallable RemoveFromGlobalClusterCallable(const RemoveFromGlobalClusterRequestT& request) const
+        Model::RemoveFromGlobalClusterOutcomeCallable RemoveFromGlobalClusterCallable(const RemoveFromGlobalClusterRequestT& request = {}) const
         {
             return SubmitCallable(&RDSClient::RemoveFromGlobalCluster, request);
         }
@@ -4217,7 +4409,7 @@ namespace Aws
          * An Async wrapper for RemoveFromGlobalCluster that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename RemoveFromGlobalClusterRequestT = Model::RemoveFromGlobalClusterRequest>
-        void RemoveFromGlobalClusterAsync(const RemoveFromGlobalClusterRequestT& request, const RemoveFromGlobalClusterResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void RemoveFromGlobalClusterAsync(const RemoveFromGlobalClusterResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const RemoveFromGlobalClusterRequestT& request = {}) const
         {
             return SubmitAsync(&RDSClient::RemoveFromGlobalCluster, request, handler, context);
         }
@@ -4310,9 +4502,11 @@ namespace Aws
         /**
          * <p>Removes metadata tags from an Amazon RDS resource.</p> <p>For an overview on
          * tagging an Amazon RDS resource, see <a
-         * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Tagging.html">Tagging
-         * Amazon RDS Resources</a> in the <i>Amazon RDS User Guide.</i> </p><p><h3>See
-         * Also:</h3>   <a
+         * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html">Tagging
+         * Amazon RDS Resources</a> in the <i>Amazon RDS User Guide</i> or <a
+         * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_Tagging.html">Tagging
+         * Amazon Aurora and Amazon RDS Resources</a> in the <i>Amazon Aurora User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/RemoveTagsFromResource">AWS
          * API Reference</a></p>
          */
@@ -4495,9 +4689,12 @@ namespace Aws
          * point in time before <code>LatestRestorableTime</code> for up to
          * <code>BackupRetentionPeriod</code> days. The target DB cluster is created from
          * the source DB cluster with the same configuration as the original DB cluster,
-         * except that the new DB cluster is created with the default DB security
-         * group.</p>  <p>For Aurora, this operation only restores the DB cluster,
-         * not the DB instances for that DB cluster. You must invoke the
+         * except that the new DB cluster is created with the default DB security group.
+         * Unless the <code>RestoreType</code> is set to <code>copy-on-write</code>, the
+         * restore may occur in a different Availability Zone (AZ) from the original DB
+         * cluster. The AZ where RDS restores the DB cluster depends on the AZs in the
+         * specified subnet group.</p>  <p>For Aurora, this operation only restores
+         * the DB cluster, not the DB instances for that DB cluster. You must invoke the
          * <code>CreateDBInstance</code> operation to create DB instances for the restored
          * DB cluster, specifying the identifier of the restored DB cluster in
          * <code>DBClusterIdentifier</code>. You can create DB instances only after the
@@ -4550,9 +4747,16 @@ namespace Aws
          * replace the original DB instance with the DB instance created from the
          * snapshot.</p> <p>If you are restoring from a shared manual DB snapshot, the
          * <code>DBSnapshotIdentifier</code> must be the ARN of the shared DB snapshot.</p>
-         *  <p>This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
-         * Aurora, use <code>RestoreDBClusterFromSnapshot</code>.</p> <p><h3>See
-         * Also:</h3>   <a
+         * <p>To restore from a DB snapshot with an unsupported engine version, you must
+         * first upgrade the engine version of the snapshot. For more information about
+         * upgrading a RDS for MySQL DB snapshot engine version, see <a
+         * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/mysql-upgrade-snapshot.html">Upgrading
+         * a MySQL DB snapshot engine version</a>. For more information about upgrading a
+         * RDS for PostgreSQL DB snapshot engine version, <a
+         * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBSnapshot.PostgreSQL.html">Upgrading
+         * a PostgreSQL DB snapshot engine version</a>.</p>  <p>This command doesn't
+         * apply to Aurora MySQL and Aurora PostgreSQL. For Aurora, use
+         * <code>RestoreDBClusterFromSnapshot</code>.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/RestoreDBInstanceFromDBSnapshot">AWS
          * API Reference</a></p>
          */
@@ -4582,8 +4786,8 @@ namespace Aws
          * database, store it on Amazon Simple Storage Service (Amazon S3), and then
          * restore the backup file onto a new Amazon RDS DB instance running MySQL. For
          * more information, see <a
-         * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/MySQL.Procedural.Importing.html">Importing
-         * Data into an Amazon RDS MySQL DB Instance</a> in the <i>Amazon RDS User
+         * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/MySQL.Procedural.Importing.html">Restoring
+         * a backup into an Amazon RDS for MySQL DB instance</a> in the <i>Amazon RDS User
          * Guide.</i> </p> <p>This operation doesn't apply to RDS Custom.</p><p><h3>See
          * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/RestoreDBInstanceFromS3">AWS
@@ -4812,9 +5016,10 @@ namespace Aws
         /**
          * <p>Starts an export of DB snapshot or DB cluster data to Amazon S3. The provided
          * IAM role must have access to the S3 bucket.</p> <p>You can't export snapshot
-         * data from Db2 or RDS Custom DB instances.</p> <p>You can't export cluster data
-         * from Multi-AZ DB clusters.</p> <p>For more information on exporting DB snapshot
-         * data, see <a
+         * data from RDS Custom DB instances. For more information, see <a
+         * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RDS_Fea_Regions_DB-eng.Feature.ExportSnapshotToS3.html">
+         * Supported Regions and DB engines for exporting snapshots to S3 in Amazon
+         * RDS</a>.</p> <p>For more information on exporting DB snapshot data, see <a
          * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ExportSnapshot.html">Exporting
          * DB snapshot data to Amazon S3</a> in the <i>Amazon RDS User Guide</i> or <a
          * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-export-snapshot.html">Exporting
@@ -4912,10 +5117,12 @@ namespace Aws
         }
 
         /**
-         * <p>Stops an Amazon RDS DB instance. When you stop a DB instance, Amazon RDS
-         * retains the DB instance's metadata, including its endpoint, DB parameter group,
-         * and option group membership. Amazon RDS also retains the transaction logs so you
-         * can do a point-in-time restore if necessary.</p> <p>For more information, see <a
+         * <p>Stops an Amazon RDS DB instance temporarily. When you stop a DB instance,
+         * Amazon RDS retains the DB instance's metadata, including its endpoint, DB
+         * parameter group, and option group membership. Amazon RDS also retains the
+         * transaction logs so you can do a point-in-time restore if necessary. The
+         * instance restarts automatically after 7 days.</p> <p>For more information, see
+         * <a
          * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_StopInstance.html">
          * Stopping an Amazon RDS DB Instance Temporarily</a> in the <i>Amazon RDS User
          * Guide.</i> </p>  <p>This command doesn't apply to RDS Custom, Aurora
@@ -5083,7 +5290,6 @@ namespace Aws
         void init(const RDSClientConfiguration& clientConfiguration);
 
         RDSClientConfiguration m_clientConfiguration;
-        std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
         std::shared_ptr<RDSEndpointProviderBase> m_endpointProvider;
     };
   } // namespace RDS

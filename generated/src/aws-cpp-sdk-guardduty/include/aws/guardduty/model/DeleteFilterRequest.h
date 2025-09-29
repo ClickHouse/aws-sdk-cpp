@@ -21,7 +21,7 @@ namespace Model
   class DeleteFilterRequest : public GuardDutyRequest
   {
   public:
-    AWS_GUARDDUTY_API DeleteFilterRequest();
+    AWS_GUARDDUTY_API DeleteFilterRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,87 +32,33 @@ namespace Model
     AWS_GUARDDUTY_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
-     * <p>The unique ID of the detector that the filter is associated with.</p>
+     * <p>The unique ID of the detector that is associated with the filter.</p> <p>To
+     * find the <code>detectorId</code> in the current Region, see the Settings page in
+     * the GuardDuty console, or run the <a
+     * href="https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ListDetectors.html">ListDetectors</a>
+     * API.</p>
      */
-    inline const Aws::String& GetDetectorId() const{ return m_detectorId; }
-
-    /**
-     * <p>The unique ID of the detector that the filter is associated with.</p>
-     */
+    inline const Aws::String& GetDetectorId() const { return m_detectorId; }
     inline bool DetectorIdHasBeenSet() const { return m_detectorIdHasBeenSet; }
+    template<typename DetectorIdT = Aws::String>
+    void SetDetectorId(DetectorIdT&& value) { m_detectorIdHasBeenSet = true; m_detectorId = std::forward<DetectorIdT>(value); }
+    template<typename DetectorIdT = Aws::String>
+    DeleteFilterRequest& WithDetectorId(DetectorIdT&& value) { SetDetectorId(std::forward<DetectorIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique ID of the detector that the filter is associated with.</p>
-     */
-    inline void SetDetectorId(const Aws::String& value) { m_detectorIdHasBeenSet = true; m_detectorId = value; }
-
-    /**
-     * <p>The unique ID of the detector that the filter is associated with.</p>
-     */
-    inline void SetDetectorId(Aws::String&& value) { m_detectorIdHasBeenSet = true; m_detectorId = std::move(value); }
-
-    /**
-     * <p>The unique ID of the detector that the filter is associated with.</p>
-     */
-    inline void SetDetectorId(const char* value) { m_detectorIdHasBeenSet = true; m_detectorId.assign(value); }
-
-    /**
-     * <p>The unique ID of the detector that the filter is associated with.</p>
-     */
-    inline DeleteFilterRequest& WithDetectorId(const Aws::String& value) { SetDetectorId(value); return *this;}
-
-    /**
-     * <p>The unique ID of the detector that the filter is associated with.</p>
-     */
-    inline DeleteFilterRequest& WithDetectorId(Aws::String&& value) { SetDetectorId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique ID of the detector that the filter is associated with.</p>
-     */
-    inline DeleteFilterRequest& WithDetectorId(const char* value) { SetDetectorId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the filter that you want to delete.</p>
      */
-    inline const Aws::String& GetFilterName() const{ return m_filterName; }
-
-    /**
-     * <p>The name of the filter that you want to delete.</p>
-     */
+    inline const Aws::String& GetFilterName() const { return m_filterName; }
     inline bool FilterNameHasBeenSet() const { return m_filterNameHasBeenSet; }
-
-    /**
-     * <p>The name of the filter that you want to delete.</p>
-     */
-    inline void SetFilterName(const Aws::String& value) { m_filterNameHasBeenSet = true; m_filterName = value; }
-
-    /**
-     * <p>The name of the filter that you want to delete.</p>
-     */
-    inline void SetFilterName(Aws::String&& value) { m_filterNameHasBeenSet = true; m_filterName = std::move(value); }
-
-    /**
-     * <p>The name of the filter that you want to delete.</p>
-     */
-    inline void SetFilterName(const char* value) { m_filterNameHasBeenSet = true; m_filterName.assign(value); }
-
-    /**
-     * <p>The name of the filter that you want to delete.</p>
-     */
-    inline DeleteFilterRequest& WithFilterName(const Aws::String& value) { SetFilterName(value); return *this;}
-
-    /**
-     * <p>The name of the filter that you want to delete.</p>
-     */
-    inline DeleteFilterRequest& WithFilterName(Aws::String&& value) { SetFilterName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the filter that you want to delete.</p>
-     */
-    inline DeleteFilterRequest& WithFilterName(const char* value) { SetFilterName(value); return *this;}
-
+    template<typename FilterNameT = Aws::String>
+    void SetFilterName(FilterNameT&& value) { m_filterNameHasBeenSet = true; m_filterName = std::forward<FilterNameT>(value); }
+    template<typename FilterNameT = Aws::String>
+    DeleteFilterRequest& WithFilterName(FilterNameT&& value) { SetFilterName(std::forward<FilterNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_detectorId;

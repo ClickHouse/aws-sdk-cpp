@@ -18,15 +18,7 @@ namespace CodeDeploy
 namespace Model
 {
 
-GreenFleetProvisioningOption::GreenFleetProvisioningOption() : 
-    m_action(GreenFleetProvisioningAction::NOT_SET),
-    m_actionHasBeenSet(false)
-{
-}
-
-GreenFleetProvisioningOption::GreenFleetProvisioningOption(JsonView jsonValue) : 
-    m_action(GreenFleetProvisioningAction::NOT_SET),
-    m_actionHasBeenSet(false)
+GreenFleetProvisioningOption::GreenFleetProvisioningOption(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ GreenFleetProvisioningOption& GreenFleetProvisioningOption::operator =(JsonView 
   if(jsonValue.ValueExists("action"))
   {
     m_action = GreenFleetProvisioningActionMapper::GetGreenFleetProvisioningActionForName(jsonValue.GetString("action"));
-
     m_actionHasBeenSet = true;
   }
-
   return *this;
 }
 

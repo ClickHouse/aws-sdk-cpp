@@ -20,15 +20,7 @@ namespace DocDB
 namespace Model
 {
 
-VpcSecurityGroupMembership::VpcSecurityGroupMembership() : 
-    m_vpcSecurityGroupIdHasBeenSet(false),
-    m_statusHasBeenSet(false)
-{
-}
-
-VpcSecurityGroupMembership::VpcSecurityGroupMembership(const XmlNode& xmlNode) : 
-    m_vpcSecurityGroupIdHasBeenSet(false),
-    m_statusHasBeenSet(false)
+VpcSecurityGroupMembership::VpcSecurityGroupMembership(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

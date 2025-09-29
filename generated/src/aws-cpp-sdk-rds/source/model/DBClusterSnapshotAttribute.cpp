@@ -20,15 +20,7 @@ namespace RDS
 namespace Model
 {
 
-DBClusterSnapshotAttribute::DBClusterSnapshotAttribute() : 
-    m_attributeNameHasBeenSet(false),
-    m_attributeValuesHasBeenSet(false)
-{
-}
-
-DBClusterSnapshotAttribute::DBClusterSnapshotAttribute(const XmlNode& xmlNode) : 
-    m_attributeNameHasBeenSet(false),
-    m_attributeValuesHasBeenSet(false)
+DBClusterSnapshotAttribute::DBClusterSnapshotAttribute(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -49,6 +41,7 @@ DBClusterSnapshotAttribute& DBClusterSnapshotAttribute::operator =(const XmlNode
     if(!attributeValuesNode.IsNull())
     {
       XmlNode attributeValuesMember = attributeValuesNode.FirstChild("AttributeValue");
+      m_attributeValuesHasBeenSet = !attributeValuesMember.IsNull();
       while(!attributeValuesMember.IsNull())
       {
         m_attributeValues.push_back(attributeValuesMember.GetText());
@@ -74,7 +67,7 @@ void DBClusterSnapshotAttribute::OutputToStream(Aws::OStream& oStream, const cha
       unsigned attributeValuesIdx = 1;
       for(auto& item : m_attributeValues)
       {
-        oStream << location << index << locationValue << ".AttributeValue." << attributeValuesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << index << locationValue << ".AttributeValues.AttributeValue." << attributeValuesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
 
@@ -91,7 +84,7 @@ void DBClusterSnapshotAttribute::OutputToStream(Aws::OStream& oStream, const cha
       unsigned attributeValuesIdx = 1;
       for(auto& item : m_attributeValues)
       {
-        oStream << location << ".AttributeValue." << attributeValuesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".AttributeValues.AttributeValue." << attributeValuesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
 }

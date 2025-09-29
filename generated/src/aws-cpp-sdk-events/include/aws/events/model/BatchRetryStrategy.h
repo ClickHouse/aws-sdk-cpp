@@ -31,39 +31,25 @@ namespace Model
   class BatchRetryStrategy
   {
   public:
-    AWS_CLOUDWATCHEVENTS_API BatchRetryStrategy();
+    AWS_CLOUDWATCHEVENTS_API BatchRetryStrategy() = default;
     AWS_CLOUDWATCHEVENTS_API BatchRetryStrategy(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDWATCHEVENTS_API BatchRetryStrategy& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDWATCHEVENTS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The number of times to attempt to retry, if the job fails. Valid values are
      * 1–10.</p>
      */
-    inline int GetAttempts() const{ return m_attempts; }
-
-    /**
-     * <p>The number of times to attempt to retry, if the job fails. Valid values are
-     * 1–10.</p>
-     */
+    inline int GetAttempts() const { return m_attempts; }
     inline bool AttemptsHasBeenSet() const { return m_attemptsHasBeenSet; }
-
-    /**
-     * <p>The number of times to attempt to retry, if the job fails. Valid values are
-     * 1–10.</p>
-     */
     inline void SetAttempts(int value) { m_attemptsHasBeenSet = true; m_attempts = value; }
-
-    /**
-     * <p>The number of times to attempt to retry, if the job fails. Valid values are
-     * 1–10.</p>
-     */
     inline BatchRetryStrategy& WithAttempts(int value) { SetAttempts(value); return *this;}
-
+    ///@}
   private:
 
-    int m_attempts;
+    int m_attempts{0};
     bool m_attemptsHasBeenSet = false;
   };
 

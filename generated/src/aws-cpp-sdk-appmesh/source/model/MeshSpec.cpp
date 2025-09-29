@@ -18,15 +18,7 @@ namespace AppMesh
 namespace Model
 {
 
-MeshSpec::MeshSpec() : 
-    m_egressFilterHasBeenSet(false),
-    m_serviceDiscoveryHasBeenSet(false)
-{
-}
-
-MeshSpec::MeshSpec(JsonView jsonValue) : 
-    m_egressFilterHasBeenSet(false),
-    m_serviceDiscoveryHasBeenSet(false)
+MeshSpec::MeshSpec(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ MeshSpec& MeshSpec::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("egressFilter"))
   {
     m_egressFilter = jsonValue.GetObject("egressFilter");
-
     m_egressFilterHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("serviceDiscovery"))
   {
     m_serviceDiscovery = jsonValue.GetObject("serviceDiscovery");
-
     m_serviceDiscoveryHasBeenSet = true;
   }
-
   return *this;
 }
 

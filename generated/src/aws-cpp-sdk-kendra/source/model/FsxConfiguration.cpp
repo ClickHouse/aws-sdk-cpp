@@ -18,27 +18,7 @@ namespace kendra
 namespace Model
 {
 
-FsxConfiguration::FsxConfiguration() : 
-    m_fileSystemIdHasBeenSet(false),
-    m_fileSystemType(FsxFileSystemType::NOT_SET),
-    m_fileSystemTypeHasBeenSet(false),
-    m_vpcConfigurationHasBeenSet(false),
-    m_secretArnHasBeenSet(false),
-    m_inclusionPatternsHasBeenSet(false),
-    m_exclusionPatternsHasBeenSet(false),
-    m_fieldMappingsHasBeenSet(false)
-{
-}
-
-FsxConfiguration::FsxConfiguration(JsonView jsonValue) : 
-    m_fileSystemIdHasBeenSet(false),
-    m_fileSystemType(FsxFileSystemType::NOT_SET),
-    m_fileSystemTypeHasBeenSet(false),
-    m_vpcConfigurationHasBeenSet(false),
-    m_secretArnHasBeenSet(false),
-    m_inclusionPatternsHasBeenSet(false),
-    m_exclusionPatternsHasBeenSet(false),
-    m_fieldMappingsHasBeenSet(false)
+FsxConfiguration::FsxConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -48,31 +28,23 @@ FsxConfiguration& FsxConfiguration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("FileSystemId"))
   {
     m_fileSystemId = jsonValue.GetString("FileSystemId");
-
     m_fileSystemIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FileSystemType"))
   {
     m_fileSystemType = FsxFileSystemTypeMapper::GetFsxFileSystemTypeForName(jsonValue.GetString("FileSystemType"));
-
     m_fileSystemTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("VpcConfiguration"))
   {
     m_vpcConfiguration = jsonValue.GetObject("VpcConfiguration");
-
     m_vpcConfigurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SecretArn"))
   {
     m_secretArn = jsonValue.GetString("SecretArn");
-
     m_secretArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("InclusionPatterns"))
   {
     Aws::Utils::Array<JsonView> inclusionPatternsJsonList = jsonValue.GetArray("InclusionPatterns");
@@ -82,7 +54,6 @@ FsxConfiguration& FsxConfiguration::operator =(JsonView jsonValue)
     }
     m_inclusionPatternsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ExclusionPatterns"))
   {
     Aws::Utils::Array<JsonView> exclusionPatternsJsonList = jsonValue.GetArray("ExclusionPatterns");
@@ -92,7 +63,6 @@ FsxConfiguration& FsxConfiguration::operator =(JsonView jsonValue)
     }
     m_exclusionPatternsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FieldMappings"))
   {
     Aws::Utils::Array<JsonView> fieldMappingsJsonList = jsonValue.GetArray("FieldMappings");
@@ -102,7 +72,6 @@ FsxConfiguration& FsxConfiguration::operator =(JsonView jsonValue)
     }
     m_fieldMappingsHasBeenSet = true;
   }
-
   return *this;
 }
 

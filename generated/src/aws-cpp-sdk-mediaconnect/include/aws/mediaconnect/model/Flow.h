@@ -11,6 +11,9 @@
 #include <aws/mediaconnect/model/FailoverConfig.h>
 #include <aws/mediaconnect/model/Status.h>
 #include <aws/mediaconnect/model/Maintenance.h>
+#include <aws/mediaconnect/model/MonitoringConfig.h>
+#include <aws/mediaconnect/model/FlowSize.h>
+#include <aws/mediaconnect/model/NdiConfig.h>
 #include <aws/mediaconnect/model/Entitlement.h>
 #include <aws/mediaconnect/model/MediaStream.h>
 #include <aws/mediaconnect/model/Output.h>
@@ -33,525 +36,236 @@ namespace Model
 {
 
   /**
-   * The settings for a flow, including its source, outputs, and
-   * entitlements.<p><h3>See Also:</h3>   <a
+   * <p> The settings for a flow, including its source, outputs, and
+   * entitlements.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/mediaconnect-2018-11-14/Flow">AWS
    * API Reference</a></p>
    */
   class Flow
   {
   public:
-    AWS_MEDIACONNECT_API Flow();
+    AWS_MEDIACONNECT_API Flow() = default;
     AWS_MEDIACONNECT_API Flow(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONNECT_API Flow& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * The Availability Zone that you want to create the flow in. These options are
-     * limited to the Availability Zones within the current AWS.
+     * <p> The Availability Zone that you want to create the flow in. These options are
+     * limited to the Availability Zones within the current Amazon Web Services
+     * Region.</p>
      */
-    inline const Aws::String& GetAvailabilityZone() const{ return m_availabilityZone; }
-
-    /**
-     * The Availability Zone that you want to create the flow in. These options are
-     * limited to the Availability Zones within the current AWS.
-     */
+    inline const Aws::String& GetAvailabilityZone() const { return m_availabilityZone; }
     inline bool AvailabilityZoneHasBeenSet() const { return m_availabilityZoneHasBeenSet; }
+    template<typename AvailabilityZoneT = Aws::String>
+    void SetAvailabilityZone(AvailabilityZoneT&& value) { m_availabilityZoneHasBeenSet = true; m_availabilityZone = std::forward<AvailabilityZoneT>(value); }
+    template<typename AvailabilityZoneT = Aws::String>
+    Flow& WithAvailabilityZone(AvailabilityZoneT&& value) { SetAvailabilityZone(std::forward<AvailabilityZoneT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * The Availability Zone that you want to create the flow in. These options are
-     * limited to the Availability Zones within the current AWS.
+     * <p> A description of the flow. This value is not used or seen outside of the
+     * current MediaConnect account.</p>
      */
-    inline void SetAvailabilityZone(const Aws::String& value) { m_availabilityZoneHasBeenSet = true; m_availabilityZone = value; }
-
-    /**
-     * The Availability Zone that you want to create the flow in. These options are
-     * limited to the Availability Zones within the current AWS.
-     */
-    inline void SetAvailabilityZone(Aws::String&& value) { m_availabilityZoneHasBeenSet = true; m_availabilityZone = std::move(value); }
-
-    /**
-     * The Availability Zone that you want to create the flow in. These options are
-     * limited to the Availability Zones within the current AWS.
-     */
-    inline void SetAvailabilityZone(const char* value) { m_availabilityZoneHasBeenSet = true; m_availabilityZone.assign(value); }
-
-    /**
-     * The Availability Zone that you want to create the flow in. These options are
-     * limited to the Availability Zones within the current AWS.
-     */
-    inline Flow& WithAvailabilityZone(const Aws::String& value) { SetAvailabilityZone(value); return *this;}
-
-    /**
-     * The Availability Zone that you want to create the flow in. These options are
-     * limited to the Availability Zones within the current AWS.
-     */
-    inline Flow& WithAvailabilityZone(Aws::String&& value) { SetAvailabilityZone(std::move(value)); return *this;}
-
-    /**
-     * The Availability Zone that you want to create the flow in. These options are
-     * limited to the Availability Zones within the current AWS.
-     */
-    inline Flow& WithAvailabilityZone(const char* value) { SetAvailabilityZone(value); return *this;}
-
-
-    /**
-     * A description of the flow. This value is not used or seen outside of the current
-     * AWS Elemental MediaConnect account.
-     */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * A description of the flow. This value is not used or seen outside of the current
-     * AWS Elemental MediaConnect account.
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    Flow& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * A description of the flow. This value is not used or seen outside of the current
-     * AWS Elemental MediaConnect account.
+     * <p> The IP address from which video will be sent to output destinations.</p>
      */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * A description of the flow. This value is not used or seen outside of the current
-     * AWS Elemental MediaConnect account.
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * A description of the flow. This value is not used or seen outside of the current
-     * AWS Elemental MediaConnect account.
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * A description of the flow. This value is not used or seen outside of the current
-     * AWS Elemental MediaConnect account.
-     */
-    inline Flow& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * A description of the flow. This value is not used or seen outside of the current
-     * AWS Elemental MediaConnect account.
-     */
-    inline Flow& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * A description of the flow. This value is not used or seen outside of the current
-     * AWS Elemental MediaConnect account.
-     */
-    inline Flow& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
-    /**
-     * The IP address from which video will be sent to output destinations.
-     */
-    inline const Aws::String& GetEgressIp() const{ return m_egressIp; }
-
-    /**
-     * The IP address from which video will be sent to output destinations.
-     */
+    inline const Aws::String& GetEgressIp() const { return m_egressIp; }
     inline bool EgressIpHasBeenSet() const { return m_egressIpHasBeenSet; }
+    template<typename EgressIpT = Aws::String>
+    void SetEgressIp(EgressIpT&& value) { m_egressIpHasBeenSet = true; m_egressIp = std::forward<EgressIpT>(value); }
+    template<typename EgressIpT = Aws::String>
+    Flow& WithEgressIp(EgressIpT&& value) { SetEgressIp(std::forward<EgressIpT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * The IP address from which video will be sent to output destinations.
+     * <p> The entitlements in this flow.</p>
      */
-    inline void SetEgressIp(const Aws::String& value) { m_egressIpHasBeenSet = true; m_egressIp = value; }
-
-    /**
-     * The IP address from which video will be sent to output destinations.
-     */
-    inline void SetEgressIp(Aws::String&& value) { m_egressIpHasBeenSet = true; m_egressIp = std::move(value); }
-
-    /**
-     * The IP address from which video will be sent to output destinations.
-     */
-    inline void SetEgressIp(const char* value) { m_egressIpHasBeenSet = true; m_egressIp.assign(value); }
-
-    /**
-     * The IP address from which video will be sent to output destinations.
-     */
-    inline Flow& WithEgressIp(const Aws::String& value) { SetEgressIp(value); return *this;}
-
-    /**
-     * The IP address from which video will be sent to output destinations.
-     */
-    inline Flow& WithEgressIp(Aws::String&& value) { SetEgressIp(std::move(value)); return *this;}
-
-    /**
-     * The IP address from which video will be sent to output destinations.
-     */
-    inline Flow& WithEgressIp(const char* value) { SetEgressIp(value); return *this;}
-
-
-    /**
-     * The entitlements in this flow.
-     */
-    inline const Aws::Vector<Entitlement>& GetEntitlements() const{ return m_entitlements; }
-
-    /**
-     * The entitlements in this flow.
-     */
+    inline const Aws::Vector<Entitlement>& GetEntitlements() const { return m_entitlements; }
     inline bool EntitlementsHasBeenSet() const { return m_entitlementsHasBeenSet; }
+    template<typename EntitlementsT = Aws::Vector<Entitlement>>
+    void SetEntitlements(EntitlementsT&& value) { m_entitlementsHasBeenSet = true; m_entitlements = std::forward<EntitlementsT>(value); }
+    template<typename EntitlementsT = Aws::Vector<Entitlement>>
+    Flow& WithEntitlements(EntitlementsT&& value) { SetEntitlements(std::forward<EntitlementsT>(value)); return *this;}
+    template<typename EntitlementsT = Entitlement>
+    Flow& AddEntitlements(EntitlementsT&& value) { m_entitlementsHasBeenSet = true; m_entitlements.emplace_back(std::forward<EntitlementsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * The entitlements in this flow.
+     * <p> The Amazon Resource Name (ARN) of the flow.</p>
      */
-    inline void SetEntitlements(const Aws::Vector<Entitlement>& value) { m_entitlementsHasBeenSet = true; m_entitlements = value; }
-
-    /**
-     * The entitlements in this flow.
-     */
-    inline void SetEntitlements(Aws::Vector<Entitlement>&& value) { m_entitlementsHasBeenSet = true; m_entitlements = std::move(value); }
-
-    /**
-     * The entitlements in this flow.
-     */
-    inline Flow& WithEntitlements(const Aws::Vector<Entitlement>& value) { SetEntitlements(value); return *this;}
-
-    /**
-     * The entitlements in this flow.
-     */
-    inline Flow& WithEntitlements(Aws::Vector<Entitlement>&& value) { SetEntitlements(std::move(value)); return *this;}
-
-    /**
-     * The entitlements in this flow.
-     */
-    inline Flow& AddEntitlements(const Entitlement& value) { m_entitlementsHasBeenSet = true; m_entitlements.push_back(value); return *this; }
-
-    /**
-     * The entitlements in this flow.
-     */
-    inline Flow& AddEntitlements(Entitlement&& value) { m_entitlementsHasBeenSet = true; m_entitlements.push_back(std::move(value)); return *this; }
-
-
-    /**
-     * The Amazon Resource Name (ARN) of the flow.
-     */
-    inline const Aws::String& GetFlowArn() const{ return m_flowArn; }
-
-    /**
-     * The Amazon Resource Name (ARN) of the flow.
-     */
+    inline const Aws::String& GetFlowArn() const { return m_flowArn; }
     inline bool FlowArnHasBeenSet() const { return m_flowArnHasBeenSet; }
+    template<typename FlowArnT = Aws::String>
+    void SetFlowArn(FlowArnT&& value) { m_flowArnHasBeenSet = true; m_flowArn = std::forward<FlowArnT>(value); }
+    template<typename FlowArnT = Aws::String>
+    Flow& WithFlowArn(FlowArnT&& value) { SetFlowArn(std::forward<FlowArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * The Amazon Resource Name (ARN) of the flow.
+     * <p> The media streams that are associated with the flow. After you associate a
+     * media stream with a source, you can also associate it with outputs on the
+     * flow.</p>
      */
-    inline void SetFlowArn(const Aws::String& value) { m_flowArnHasBeenSet = true; m_flowArn = value; }
-
-    /**
-     * The Amazon Resource Name (ARN) of the flow.
-     */
-    inline void SetFlowArn(Aws::String&& value) { m_flowArnHasBeenSet = true; m_flowArn = std::move(value); }
-
-    /**
-     * The Amazon Resource Name (ARN) of the flow.
-     */
-    inline void SetFlowArn(const char* value) { m_flowArnHasBeenSet = true; m_flowArn.assign(value); }
-
-    /**
-     * The Amazon Resource Name (ARN) of the flow.
-     */
-    inline Flow& WithFlowArn(const Aws::String& value) { SetFlowArn(value); return *this;}
-
-    /**
-     * The Amazon Resource Name (ARN) of the flow.
-     */
-    inline Flow& WithFlowArn(Aws::String&& value) { SetFlowArn(std::move(value)); return *this;}
-
-    /**
-     * The Amazon Resource Name (ARN) of the flow.
-     */
-    inline Flow& WithFlowArn(const char* value) { SetFlowArn(value); return *this;}
-
-
-    /**
-     * The media streams that are associated with the flow. After you associate a media
-     * stream with a source, you can also associate it with outputs on the flow.
-     */
-    inline const Aws::Vector<MediaStream>& GetMediaStreams() const{ return m_mediaStreams; }
-
-    /**
-     * The media streams that are associated with the flow. After you associate a media
-     * stream with a source, you can also associate it with outputs on the flow.
-     */
+    inline const Aws::Vector<MediaStream>& GetMediaStreams() const { return m_mediaStreams; }
     inline bool MediaStreamsHasBeenSet() const { return m_mediaStreamsHasBeenSet; }
+    template<typename MediaStreamsT = Aws::Vector<MediaStream>>
+    void SetMediaStreams(MediaStreamsT&& value) { m_mediaStreamsHasBeenSet = true; m_mediaStreams = std::forward<MediaStreamsT>(value); }
+    template<typename MediaStreamsT = Aws::Vector<MediaStream>>
+    Flow& WithMediaStreams(MediaStreamsT&& value) { SetMediaStreams(std::forward<MediaStreamsT>(value)); return *this;}
+    template<typename MediaStreamsT = MediaStream>
+    Flow& AddMediaStreams(MediaStreamsT&& value) { m_mediaStreamsHasBeenSet = true; m_mediaStreams.emplace_back(std::forward<MediaStreamsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * The media streams that are associated with the flow. After you associate a media
-     * stream with a source, you can also associate it with outputs on the flow.
+     * <p> The name of the flow.</p>
      */
-    inline void SetMediaStreams(const Aws::Vector<MediaStream>& value) { m_mediaStreamsHasBeenSet = true; m_mediaStreams = value; }
-
-    /**
-     * The media streams that are associated with the flow. After you associate a media
-     * stream with a source, you can also associate it with outputs on the flow.
-     */
-    inline void SetMediaStreams(Aws::Vector<MediaStream>&& value) { m_mediaStreamsHasBeenSet = true; m_mediaStreams = std::move(value); }
-
-    /**
-     * The media streams that are associated with the flow. After you associate a media
-     * stream with a source, you can also associate it with outputs on the flow.
-     */
-    inline Flow& WithMediaStreams(const Aws::Vector<MediaStream>& value) { SetMediaStreams(value); return *this;}
-
-    /**
-     * The media streams that are associated with the flow. After you associate a media
-     * stream with a source, you can also associate it with outputs on the flow.
-     */
-    inline Flow& WithMediaStreams(Aws::Vector<MediaStream>&& value) { SetMediaStreams(std::move(value)); return *this;}
-
-    /**
-     * The media streams that are associated with the flow. After you associate a media
-     * stream with a source, you can also associate it with outputs on the flow.
-     */
-    inline Flow& AddMediaStreams(const MediaStream& value) { m_mediaStreamsHasBeenSet = true; m_mediaStreams.push_back(value); return *this; }
-
-    /**
-     * The media streams that are associated with the flow. After you associate a media
-     * stream with a source, you can also associate it with outputs on the flow.
-     */
-    inline Flow& AddMediaStreams(MediaStream&& value) { m_mediaStreamsHasBeenSet = true; m_mediaStreams.push_back(std::move(value)); return *this; }
-
-
-    /**
-     * The name of the flow.
-     */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * The name of the flow.
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    Flow& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * The name of the flow.
+     * <p> The outputs in this flow.</p>
      */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * The name of the flow.
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * The name of the flow.
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * The name of the flow.
-     */
-    inline Flow& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * The name of the flow.
-     */
-    inline Flow& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * The name of the flow.
-     */
-    inline Flow& WithName(const char* value) { SetName(value); return *this;}
-
-
-    /**
-     * The outputs in this flow.
-     */
-    inline const Aws::Vector<Output>& GetOutputs() const{ return m_outputs; }
-
-    /**
-     * The outputs in this flow.
-     */
+    inline const Aws::Vector<Output>& GetOutputs() const { return m_outputs; }
     inline bool OutputsHasBeenSet() const { return m_outputsHasBeenSet; }
+    template<typename OutputsT = Aws::Vector<Output>>
+    void SetOutputs(OutputsT&& value) { m_outputsHasBeenSet = true; m_outputs = std::forward<OutputsT>(value); }
+    template<typename OutputsT = Aws::Vector<Output>>
+    Flow& WithOutputs(OutputsT&& value) { SetOutputs(std::forward<OutputsT>(value)); return *this;}
+    template<typename OutputsT = Output>
+    Flow& AddOutputs(OutputsT&& value) { m_outputsHasBeenSet = true; m_outputs.emplace_back(std::forward<OutputsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * The outputs in this flow.
+     * <p> The source for the flow. </p>
      */
-    inline void SetOutputs(const Aws::Vector<Output>& value) { m_outputsHasBeenSet = true; m_outputs = value; }
-
-    /**
-     * The outputs in this flow.
-     */
-    inline void SetOutputs(Aws::Vector<Output>&& value) { m_outputsHasBeenSet = true; m_outputs = std::move(value); }
-
-    /**
-     * The outputs in this flow.
-     */
-    inline Flow& WithOutputs(const Aws::Vector<Output>& value) { SetOutputs(value); return *this;}
-
-    /**
-     * The outputs in this flow.
-     */
-    inline Flow& WithOutputs(Aws::Vector<Output>&& value) { SetOutputs(std::move(value)); return *this;}
-
-    /**
-     * The outputs in this flow.
-     */
-    inline Flow& AddOutputs(const Output& value) { m_outputsHasBeenSet = true; m_outputs.push_back(value); return *this; }
-
-    /**
-     * The outputs in this flow.
-     */
-    inline Flow& AddOutputs(Output&& value) { m_outputsHasBeenSet = true; m_outputs.push_back(std::move(value)); return *this; }
-
-
-    
-    inline const Source& GetSource() const{ return m_source; }
-
-    
+    inline const Source& GetSource() const { return m_source; }
     inline bool SourceHasBeenSet() const { return m_sourceHasBeenSet; }
+    template<typename SourceT = Source>
+    void SetSource(SourceT&& value) { m_sourceHasBeenSet = true; m_source = std::forward<SourceT>(value); }
+    template<typename SourceT = Source>
+    Flow& WithSource(SourceT&& value) { SetSource(std::forward<SourceT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetSource(const Source& value) { m_sourceHasBeenSet = true; m_source = value; }
-
-    
-    inline void SetSource(Source&& value) { m_sourceHasBeenSet = true; m_source = std::move(value); }
-
-    
-    inline Flow& WithSource(const Source& value) { SetSource(value); return *this;}
-
-    
-    inline Flow& WithSource(Source&& value) { SetSource(std::move(value)); return *this;}
-
-
-    
-    inline const FailoverConfig& GetSourceFailoverConfig() const{ return m_sourceFailoverConfig; }
-
-    
+    ///@{
+    /**
+     * <p> The settings for the source failover. </p>
+     */
+    inline const FailoverConfig& GetSourceFailoverConfig() const { return m_sourceFailoverConfig; }
     inline bool SourceFailoverConfigHasBeenSet() const { return m_sourceFailoverConfigHasBeenSet; }
+    template<typename SourceFailoverConfigT = FailoverConfig>
+    void SetSourceFailoverConfig(SourceFailoverConfigT&& value) { m_sourceFailoverConfigHasBeenSet = true; m_sourceFailoverConfig = std::forward<SourceFailoverConfigT>(value); }
+    template<typename SourceFailoverConfigT = FailoverConfig>
+    Flow& WithSourceFailoverConfig(SourceFailoverConfigT&& value) { SetSourceFailoverConfig(std::forward<SourceFailoverConfigT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetSourceFailoverConfig(const FailoverConfig& value) { m_sourceFailoverConfigHasBeenSet = true; m_sourceFailoverConfig = value; }
-
-    
-    inline void SetSourceFailoverConfig(FailoverConfig&& value) { m_sourceFailoverConfigHasBeenSet = true; m_sourceFailoverConfig = std::move(value); }
-
-    
-    inline Flow& WithSourceFailoverConfig(const FailoverConfig& value) { SetSourceFailoverConfig(value); return *this;}
-
-    
-    inline Flow& WithSourceFailoverConfig(FailoverConfig&& value) { SetSourceFailoverConfig(std::move(value)); return *this;}
-
-
-    
-    inline const Aws::Vector<Source>& GetSources() const{ return m_sources; }
-
-    
+    ///@{
+    /**
+     * <p>The settings for the sources that are assigned to the flow. </p>
+     */
+    inline const Aws::Vector<Source>& GetSources() const { return m_sources; }
     inline bool SourcesHasBeenSet() const { return m_sourcesHasBeenSet; }
+    template<typename SourcesT = Aws::Vector<Source>>
+    void SetSources(SourcesT&& value) { m_sourcesHasBeenSet = true; m_sources = std::forward<SourcesT>(value); }
+    template<typename SourcesT = Aws::Vector<Source>>
+    Flow& WithSources(SourcesT&& value) { SetSources(std::forward<SourcesT>(value)); return *this;}
+    template<typename SourcesT = Source>
+    Flow& AddSources(SourcesT&& value) { m_sourcesHasBeenSet = true; m_sources.emplace_back(std::forward<SourcesT>(value)); return *this; }
+    ///@}
 
-    
-    inline void SetSources(const Aws::Vector<Source>& value) { m_sourcesHasBeenSet = true; m_sources = value; }
-
-    
-    inline void SetSources(Aws::Vector<Source>&& value) { m_sourcesHasBeenSet = true; m_sources = std::move(value); }
-
-    
-    inline Flow& WithSources(const Aws::Vector<Source>& value) { SetSources(value); return *this;}
-
-    
-    inline Flow& WithSources(Aws::Vector<Source>&& value) { SetSources(std::move(value)); return *this;}
-
-    
-    inline Flow& AddSources(const Source& value) { m_sourcesHasBeenSet = true; m_sources.push_back(value); return *this; }
-
-    
-    inline Flow& AddSources(Source&& value) { m_sourcesHasBeenSet = true; m_sources.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
-     * The current status of the flow.
+     * <p> The current status of the flow.</p>
      */
-    inline const Status& GetStatus() const{ return m_status; }
-
-    /**
-     * The current status of the flow.
-     */
+    inline Status GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(Status value) { m_statusHasBeenSet = true; m_status = value; }
+    inline Flow& WithStatus(Status value) { SetStatus(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * The current status of the flow.
+     * <p> The VPC Interfaces for this flow.</p>
      */
-    inline void SetStatus(const Status& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * The current status of the flow.
-     */
-    inline void SetStatus(Status&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * The current status of the flow.
-     */
-    inline Flow& WithStatus(const Status& value) { SetStatus(value); return *this;}
-
-    /**
-     * The current status of the flow.
-     */
-    inline Flow& WithStatus(Status&& value) { SetStatus(std::move(value)); return *this;}
-
-
-    /**
-     * The VPC Interfaces for this flow.
-     */
-    inline const Aws::Vector<VpcInterface>& GetVpcInterfaces() const{ return m_vpcInterfaces; }
-
-    /**
-     * The VPC Interfaces for this flow.
-     */
+    inline const Aws::Vector<VpcInterface>& GetVpcInterfaces() const { return m_vpcInterfaces; }
     inline bool VpcInterfacesHasBeenSet() const { return m_vpcInterfacesHasBeenSet; }
+    template<typename VpcInterfacesT = Aws::Vector<VpcInterface>>
+    void SetVpcInterfaces(VpcInterfacesT&& value) { m_vpcInterfacesHasBeenSet = true; m_vpcInterfaces = std::forward<VpcInterfacesT>(value); }
+    template<typename VpcInterfacesT = Aws::Vector<VpcInterface>>
+    Flow& WithVpcInterfaces(VpcInterfacesT&& value) { SetVpcInterfaces(std::forward<VpcInterfacesT>(value)); return *this;}
+    template<typename VpcInterfacesT = VpcInterface>
+    Flow& AddVpcInterfaces(VpcInterfacesT&& value) { m_vpcInterfacesHasBeenSet = true; m_vpcInterfaces.emplace_back(std::forward<VpcInterfacesT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * The VPC Interfaces for this flow.
+     * <p> The maintenance settings for the flow. </p>
      */
-    inline void SetVpcInterfaces(const Aws::Vector<VpcInterface>& value) { m_vpcInterfacesHasBeenSet = true; m_vpcInterfaces = value; }
-
-    /**
-     * The VPC Interfaces for this flow.
-     */
-    inline void SetVpcInterfaces(Aws::Vector<VpcInterface>&& value) { m_vpcInterfacesHasBeenSet = true; m_vpcInterfaces = std::move(value); }
-
-    /**
-     * The VPC Interfaces for this flow.
-     */
-    inline Flow& WithVpcInterfaces(const Aws::Vector<VpcInterface>& value) { SetVpcInterfaces(value); return *this;}
-
-    /**
-     * The VPC Interfaces for this flow.
-     */
-    inline Flow& WithVpcInterfaces(Aws::Vector<VpcInterface>&& value) { SetVpcInterfaces(std::move(value)); return *this;}
-
-    /**
-     * The VPC Interfaces for this flow.
-     */
-    inline Flow& AddVpcInterfaces(const VpcInterface& value) { m_vpcInterfacesHasBeenSet = true; m_vpcInterfaces.push_back(value); return *this; }
-
-    /**
-     * The VPC Interfaces for this flow.
-     */
-    inline Flow& AddVpcInterfaces(VpcInterface&& value) { m_vpcInterfacesHasBeenSet = true; m_vpcInterfaces.push_back(std::move(value)); return *this; }
-
-
-    
-    inline const Maintenance& GetMaintenance() const{ return m_maintenance; }
-
-    
+    inline const Maintenance& GetMaintenance() const { return m_maintenance; }
     inline bool MaintenanceHasBeenSet() const { return m_maintenanceHasBeenSet; }
+    template<typename MaintenanceT = Maintenance>
+    void SetMaintenance(MaintenanceT&& value) { m_maintenanceHasBeenSet = true; m_maintenance = std::forward<MaintenanceT>(value); }
+    template<typename MaintenanceT = Maintenance>
+    Flow& WithMaintenance(MaintenanceT&& value) { SetMaintenance(std::forward<MaintenanceT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetMaintenance(const Maintenance& value) { m_maintenanceHasBeenSet = true; m_maintenance = value; }
+    ///@{
+    /**
+     * <p> The settings for source monitoring. </p>
+     */
+    inline const MonitoringConfig& GetSourceMonitoringConfig() const { return m_sourceMonitoringConfig; }
+    inline bool SourceMonitoringConfigHasBeenSet() const { return m_sourceMonitoringConfigHasBeenSet; }
+    template<typename SourceMonitoringConfigT = MonitoringConfig>
+    void SetSourceMonitoringConfig(SourceMonitoringConfigT&& value) { m_sourceMonitoringConfigHasBeenSet = true; m_sourceMonitoringConfig = std::forward<SourceMonitoringConfigT>(value); }
+    template<typename SourceMonitoringConfigT = MonitoringConfig>
+    Flow& WithSourceMonitoringConfig(SourceMonitoringConfigT&& value) { SetSourceMonitoringConfig(std::forward<SourceMonitoringConfigT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetMaintenance(Maintenance&& value) { m_maintenanceHasBeenSet = true; m_maintenance = std::move(value); }
+    ///@{
+    /**
+     * <p> Determines the processing capacity and feature set of the flow. Set this
+     * optional parameter to LARGE if you want to enable NDI outputs on the flow. </p>
+     */
+    inline FlowSize GetFlowSize() const { return m_flowSize; }
+    inline bool FlowSizeHasBeenSet() const { return m_flowSizeHasBeenSet; }
+    inline void SetFlowSize(FlowSize value) { m_flowSizeHasBeenSet = true; m_flowSize = value; }
+    inline Flow& WithFlowSize(FlowSize value) { SetFlowSize(value); return *this;}
+    ///@}
 
-    
-    inline Flow& WithMaintenance(const Maintenance& value) { SetMaintenance(value); return *this;}
-
-    
-    inline Flow& WithMaintenance(Maintenance&& value) { SetMaintenance(std::move(value)); return *this;}
-
+    ///@{
+    /**
+     * <p>Specifies the configuration settings for NDI outputs. Required when the flow
+     * includes NDI outputs. </p>
+     */
+    inline const NdiConfig& GetNdiConfig() const { return m_ndiConfig; }
+    inline bool NdiConfigHasBeenSet() const { return m_ndiConfigHasBeenSet; }
+    template<typename NdiConfigT = NdiConfig>
+    void SetNdiConfig(NdiConfigT&& value) { m_ndiConfigHasBeenSet = true; m_ndiConfig = std::forward<NdiConfigT>(value); }
+    template<typename NdiConfigT = NdiConfig>
+    Flow& WithNdiConfig(NdiConfigT&& value) { SetNdiConfig(std::forward<NdiConfigT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_availabilityZone;
@@ -587,7 +301,7 @@ namespace Model
     Aws::Vector<Source> m_sources;
     bool m_sourcesHasBeenSet = false;
 
-    Status m_status;
+    Status m_status{Status::NOT_SET};
     bool m_statusHasBeenSet = false;
 
     Aws::Vector<VpcInterface> m_vpcInterfaces;
@@ -595,6 +309,15 @@ namespace Model
 
     Maintenance m_maintenance;
     bool m_maintenanceHasBeenSet = false;
+
+    MonitoringConfig m_sourceMonitoringConfig;
+    bool m_sourceMonitoringConfigHasBeenSet = false;
+
+    FlowSize m_flowSize{FlowSize::NOT_SET};
+    bool m_flowSizeHasBeenSet = false;
+
+    NdiConfig m_ndiConfig;
+    bool m_ndiConfigHasBeenSet = false;
   };
 
 } // namespace Model

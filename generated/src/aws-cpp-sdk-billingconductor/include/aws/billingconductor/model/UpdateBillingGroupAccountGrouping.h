@@ -30,39 +30,25 @@ namespace Model
   class UpdateBillingGroupAccountGrouping
   {
   public:
-    AWS_BILLINGCONDUCTOR_API UpdateBillingGroupAccountGrouping();
+    AWS_BILLINGCONDUCTOR_API UpdateBillingGroupAccountGrouping() = default;
     AWS_BILLINGCONDUCTOR_API UpdateBillingGroupAccountGrouping(Aws::Utils::Json::JsonView jsonValue);
     AWS_BILLINGCONDUCTOR_API UpdateBillingGroupAccountGrouping& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_BILLINGCONDUCTOR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specifies if this billing group will automatically associate newly added
      * Amazon Web Services accounts that join your consolidated billing family.</p>
      */
-    inline bool GetAutoAssociate() const{ return m_autoAssociate; }
-
-    /**
-     * <p>Specifies if this billing group will automatically associate newly added
-     * Amazon Web Services accounts that join your consolidated billing family.</p>
-     */
+    inline bool GetAutoAssociate() const { return m_autoAssociate; }
     inline bool AutoAssociateHasBeenSet() const { return m_autoAssociateHasBeenSet; }
-
-    /**
-     * <p>Specifies if this billing group will automatically associate newly added
-     * Amazon Web Services accounts that join your consolidated billing family.</p>
-     */
     inline void SetAutoAssociate(bool value) { m_autoAssociateHasBeenSet = true; m_autoAssociate = value; }
-
-    /**
-     * <p>Specifies if this billing group will automatically associate newly added
-     * Amazon Web Services accounts that join your consolidated billing family.</p>
-     */
     inline UpdateBillingGroupAccountGrouping& WithAutoAssociate(bool value) { SetAutoAssociate(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_autoAssociate;
+    bool m_autoAssociate{false};
     bool m_autoAssociateHasBeenSet = false;
   };
 

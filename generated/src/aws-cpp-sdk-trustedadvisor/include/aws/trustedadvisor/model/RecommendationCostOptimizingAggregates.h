@@ -29,59 +29,37 @@ namespace Model
   class RecommendationCostOptimizingAggregates
   {
   public:
-    AWS_TRUSTEDADVISOR_API RecommendationCostOptimizingAggregates();
+    AWS_TRUSTEDADVISOR_API RecommendationCostOptimizingAggregates() = default;
     AWS_TRUSTEDADVISOR_API RecommendationCostOptimizingAggregates(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRUSTEDADVISOR_API RecommendationCostOptimizingAggregates& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRUSTEDADVISOR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The estimated monthly savings</p>
      */
-    inline double GetEstimatedMonthlySavings() const{ return m_estimatedMonthlySavings; }
-
-    /**
-     * <p>The estimated monthly savings</p>
-     */
+    inline double GetEstimatedMonthlySavings() const { return m_estimatedMonthlySavings; }
     inline bool EstimatedMonthlySavingsHasBeenSet() const { return m_estimatedMonthlySavingsHasBeenSet; }
-
-    /**
-     * <p>The estimated monthly savings</p>
-     */
     inline void SetEstimatedMonthlySavings(double value) { m_estimatedMonthlySavingsHasBeenSet = true; m_estimatedMonthlySavings = value; }
-
-    /**
-     * <p>The estimated monthly savings</p>
-     */
     inline RecommendationCostOptimizingAggregates& WithEstimatedMonthlySavings(double value) { SetEstimatedMonthlySavings(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The estimated percently monthly savings</p>
      */
-    inline double GetEstimatedPercentMonthlySavings() const{ return m_estimatedPercentMonthlySavings; }
-
-    /**
-     * <p>The estimated percently monthly savings</p>
-     */
+    inline double GetEstimatedPercentMonthlySavings() const { return m_estimatedPercentMonthlySavings; }
     inline bool EstimatedPercentMonthlySavingsHasBeenSet() const { return m_estimatedPercentMonthlySavingsHasBeenSet; }
-
-    /**
-     * <p>The estimated percently monthly savings</p>
-     */
     inline void SetEstimatedPercentMonthlySavings(double value) { m_estimatedPercentMonthlySavingsHasBeenSet = true; m_estimatedPercentMonthlySavings = value; }
-
-    /**
-     * <p>The estimated percently monthly savings</p>
-     */
     inline RecommendationCostOptimizingAggregates& WithEstimatedPercentMonthlySavings(double value) { SetEstimatedPercentMonthlySavings(value); return *this;}
-
+    ///@}
   private:
 
-    double m_estimatedMonthlySavings;
+    double m_estimatedMonthlySavings{0.0};
     bool m_estimatedMonthlySavingsHasBeenSet = false;
 
-    double m_estimatedPercentMonthlySavings;
+    double m_estimatedPercentMonthlySavings{0.0};
     bool m_estimatedPercentMonthlySavingsHasBeenSet = false;
   };
 

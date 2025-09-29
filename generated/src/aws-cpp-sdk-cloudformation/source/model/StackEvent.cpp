@@ -20,51 +20,7 @@ namespace CloudFormation
 namespace Model
 {
 
-StackEvent::StackEvent() : 
-    m_stackIdHasBeenSet(false),
-    m_eventIdHasBeenSet(false),
-    m_stackNameHasBeenSet(false),
-    m_logicalResourceIdHasBeenSet(false),
-    m_physicalResourceIdHasBeenSet(false),
-    m_resourceTypeHasBeenSet(false),
-    m_timestampHasBeenSet(false),
-    m_resourceStatus(ResourceStatus::NOT_SET),
-    m_resourceStatusHasBeenSet(false),
-    m_resourceStatusReasonHasBeenSet(false),
-    m_resourcePropertiesHasBeenSet(false),
-    m_clientRequestTokenHasBeenSet(false),
-    m_hookTypeHasBeenSet(false),
-    m_hookStatus(HookStatus::NOT_SET),
-    m_hookStatusHasBeenSet(false),
-    m_hookStatusReasonHasBeenSet(false),
-    m_hookInvocationPoint(HookInvocationPoint::NOT_SET),
-    m_hookInvocationPointHasBeenSet(false),
-    m_hookFailureMode(HookFailureMode::NOT_SET),
-    m_hookFailureModeHasBeenSet(false)
-{
-}
-
-StackEvent::StackEvent(const XmlNode& xmlNode) : 
-    m_stackIdHasBeenSet(false),
-    m_eventIdHasBeenSet(false),
-    m_stackNameHasBeenSet(false),
-    m_logicalResourceIdHasBeenSet(false),
-    m_physicalResourceIdHasBeenSet(false),
-    m_resourceTypeHasBeenSet(false),
-    m_timestampHasBeenSet(false),
-    m_resourceStatus(ResourceStatus::NOT_SET),
-    m_resourceStatusHasBeenSet(false),
-    m_resourceStatusReasonHasBeenSet(false),
-    m_resourcePropertiesHasBeenSet(false),
-    m_clientRequestTokenHasBeenSet(false),
-    m_hookTypeHasBeenSet(false),
-    m_hookStatus(HookStatus::NOT_SET),
-    m_hookStatusHasBeenSet(false),
-    m_hookStatusReasonHasBeenSet(false),
-    m_hookInvocationPoint(HookInvocationPoint::NOT_SET),
-    m_hookInvocationPointHasBeenSet(false),
-    m_hookFailureMode(HookFailureMode::NOT_SET),
-    m_hookFailureModeHasBeenSet(false)
+StackEvent::StackEvent(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -120,7 +76,7 @@ StackEvent& StackEvent::operator =(const XmlNode& xmlNode)
     XmlNode resourceStatusNode = resultNode.FirstChild("ResourceStatus");
     if(!resourceStatusNode.IsNull())
     {
-      m_resourceStatus = ResourceStatusMapper::GetResourceStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(resourceStatusNode.GetText()).c_str()).c_str());
+      m_resourceStatus = ResourceStatusMapper::GetResourceStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(resourceStatusNode.GetText()).c_str()));
       m_resourceStatusHasBeenSet = true;
     }
     XmlNode resourceStatusReasonNode = resultNode.FirstChild("ResourceStatusReason");
@@ -150,7 +106,7 @@ StackEvent& StackEvent::operator =(const XmlNode& xmlNode)
     XmlNode hookStatusNode = resultNode.FirstChild("HookStatus");
     if(!hookStatusNode.IsNull())
     {
-      m_hookStatus = HookStatusMapper::GetHookStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(hookStatusNode.GetText()).c_str()).c_str());
+      m_hookStatus = HookStatusMapper::GetHookStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(hookStatusNode.GetText()).c_str()));
       m_hookStatusHasBeenSet = true;
     }
     XmlNode hookStatusReasonNode = resultNode.FirstChild("HookStatusReason");
@@ -162,14 +118,26 @@ StackEvent& StackEvent::operator =(const XmlNode& xmlNode)
     XmlNode hookInvocationPointNode = resultNode.FirstChild("HookInvocationPoint");
     if(!hookInvocationPointNode.IsNull())
     {
-      m_hookInvocationPoint = HookInvocationPointMapper::GetHookInvocationPointForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(hookInvocationPointNode.GetText()).c_str()).c_str());
+      m_hookInvocationPoint = HookInvocationPointMapper::GetHookInvocationPointForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(hookInvocationPointNode.GetText()).c_str()));
       m_hookInvocationPointHasBeenSet = true;
+    }
+    XmlNode hookInvocationIdNode = resultNode.FirstChild("HookInvocationId");
+    if(!hookInvocationIdNode.IsNull())
+    {
+      m_hookInvocationId = Aws::Utils::Xml::DecodeEscapedXmlText(hookInvocationIdNode.GetText());
+      m_hookInvocationIdHasBeenSet = true;
     }
     XmlNode hookFailureModeNode = resultNode.FirstChild("HookFailureMode");
     if(!hookFailureModeNode.IsNull())
     {
-      m_hookFailureMode = HookFailureModeMapper::GetHookFailureModeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(hookFailureModeNode.GetText()).c_str()).c_str());
+      m_hookFailureMode = HookFailureModeMapper::GetHookFailureModeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(hookFailureModeNode.GetText()).c_str()));
       m_hookFailureModeHasBeenSet = true;
+    }
+    XmlNode detailedStatusNode = resultNode.FirstChild("DetailedStatus");
+    if(!detailedStatusNode.IsNull())
+    {
+      m_detailedStatus = DetailedStatusMapper::GetDetailedStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(detailedStatusNode.GetText()).c_str()));
+      m_detailedStatusHasBeenSet = true;
     }
   }
 
@@ -215,7 +183,7 @@ void StackEvent::OutputToStream(Aws::OStream& oStream, const char* location, uns
 
   if(m_resourceStatusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ResourceStatus=" << ResourceStatusMapper::GetNameForResourceStatus(m_resourceStatus) << "&";
+      oStream << location << index << locationValue << ".ResourceStatus=" << StringUtils::URLEncode(ResourceStatusMapper::GetNameForResourceStatus(m_resourceStatus)) << "&";
   }
 
   if(m_resourceStatusReasonHasBeenSet)
@@ -240,7 +208,7 @@ void StackEvent::OutputToStream(Aws::OStream& oStream, const char* location, uns
 
   if(m_hookStatusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".HookStatus=" << HookStatusMapper::GetNameForHookStatus(m_hookStatus) << "&";
+      oStream << location << index << locationValue << ".HookStatus=" << StringUtils::URLEncode(HookStatusMapper::GetNameForHookStatus(m_hookStatus)) << "&";
   }
 
   if(m_hookStatusReasonHasBeenSet)
@@ -250,12 +218,22 @@ void StackEvent::OutputToStream(Aws::OStream& oStream, const char* location, uns
 
   if(m_hookInvocationPointHasBeenSet)
   {
-      oStream << location << index << locationValue << ".HookInvocationPoint=" << HookInvocationPointMapper::GetNameForHookInvocationPoint(m_hookInvocationPoint) << "&";
+      oStream << location << index << locationValue << ".HookInvocationPoint=" << StringUtils::URLEncode(HookInvocationPointMapper::GetNameForHookInvocationPoint(m_hookInvocationPoint)) << "&";
+  }
+
+  if(m_hookInvocationIdHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".HookInvocationId=" << StringUtils::URLEncode(m_hookInvocationId.c_str()) << "&";
   }
 
   if(m_hookFailureModeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".HookFailureMode=" << HookFailureModeMapper::GetNameForHookFailureMode(m_hookFailureMode) << "&";
+      oStream << location << index << locationValue << ".HookFailureMode=" << StringUtils::URLEncode(HookFailureModeMapper::GetNameForHookFailureMode(m_hookFailureMode)) << "&";
+  }
+
+  if(m_detailedStatusHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".DetailedStatus=" << StringUtils::URLEncode(DetailedStatusMapper::GetNameForDetailedStatus(m_detailedStatus)) << "&";
   }
 
 }
@@ -292,7 +270,7 @@ void StackEvent::OutputToStream(Aws::OStream& oStream, const char* location) con
   }
   if(m_resourceStatusHasBeenSet)
   {
-      oStream << location << ".ResourceStatus=" << ResourceStatusMapper::GetNameForResourceStatus(m_resourceStatus) << "&";
+      oStream << location << ".ResourceStatus=" << StringUtils::URLEncode(ResourceStatusMapper::GetNameForResourceStatus(m_resourceStatus)) << "&";
   }
   if(m_resourceStatusReasonHasBeenSet)
   {
@@ -312,7 +290,7 @@ void StackEvent::OutputToStream(Aws::OStream& oStream, const char* location) con
   }
   if(m_hookStatusHasBeenSet)
   {
-      oStream << location << ".HookStatus=" << HookStatusMapper::GetNameForHookStatus(m_hookStatus) << "&";
+      oStream << location << ".HookStatus=" << StringUtils::URLEncode(HookStatusMapper::GetNameForHookStatus(m_hookStatus)) << "&";
   }
   if(m_hookStatusReasonHasBeenSet)
   {
@@ -320,11 +298,19 @@ void StackEvent::OutputToStream(Aws::OStream& oStream, const char* location) con
   }
   if(m_hookInvocationPointHasBeenSet)
   {
-      oStream << location << ".HookInvocationPoint=" << HookInvocationPointMapper::GetNameForHookInvocationPoint(m_hookInvocationPoint) << "&";
+      oStream << location << ".HookInvocationPoint=" << StringUtils::URLEncode(HookInvocationPointMapper::GetNameForHookInvocationPoint(m_hookInvocationPoint)) << "&";
+  }
+  if(m_hookInvocationIdHasBeenSet)
+  {
+      oStream << location << ".HookInvocationId=" << StringUtils::URLEncode(m_hookInvocationId.c_str()) << "&";
   }
   if(m_hookFailureModeHasBeenSet)
   {
-      oStream << location << ".HookFailureMode=" << HookFailureModeMapper::GetNameForHookFailureMode(m_hookFailureMode) << "&";
+      oStream << location << ".HookFailureMode=" << StringUtils::URLEncode(HookFailureModeMapper::GetNameForHookFailureMode(m_hookFailureMode)) << "&";
+  }
+  if(m_detailedStatusHasBeenSet)
+  {
+      oStream << location << ".DetailedStatus=" << StringUtils::URLEncode(DetailedStatusMapper::GetNameForDetailedStatus(m_detailedStatus)) << "&";
   }
 }
 

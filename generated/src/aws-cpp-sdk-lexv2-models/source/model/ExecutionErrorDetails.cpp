@@ -18,15 +18,7 @@ namespace LexModelsV2
 namespace Model
 {
 
-ExecutionErrorDetails::ExecutionErrorDetails() : 
-    m_errorCodeHasBeenSet(false),
-    m_errorMessageHasBeenSet(false)
-{
-}
-
-ExecutionErrorDetails::ExecutionErrorDetails(JsonView jsonValue) : 
-    m_errorCodeHasBeenSet(false),
-    m_errorMessageHasBeenSet(false)
+ExecutionErrorDetails::ExecutionErrorDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ExecutionErrorDetails& ExecutionErrorDetails::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("errorCode"))
   {
     m_errorCode = jsonValue.GetString("errorCode");
-
     m_errorCodeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("errorMessage"))
   {
     m_errorMessage = jsonValue.GetString("errorMessage");
-
     m_errorMessageHasBeenSet = true;
   }
-
   return *this;
 }
 

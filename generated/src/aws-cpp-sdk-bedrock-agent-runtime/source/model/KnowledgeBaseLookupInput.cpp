@@ -18,15 +18,7 @@ namespace BedrockAgentRuntime
 namespace Model
 {
 
-KnowledgeBaseLookupInput::KnowledgeBaseLookupInput() : 
-    m_textHasBeenSet(false),
-    m_knowledgeBaseIdHasBeenSet(false)
-{
-}
-
-KnowledgeBaseLookupInput::KnowledgeBaseLookupInput(JsonView jsonValue) : 
-    m_textHasBeenSet(false),
-    m_knowledgeBaseIdHasBeenSet(false)
+KnowledgeBaseLookupInput::KnowledgeBaseLookupInput(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ KnowledgeBaseLookupInput& KnowledgeBaseLookupInput::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("text"))
   {
     m_text = jsonValue.GetString("text");
-
     m_textHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("knowledgeBaseId"))
   {
     m_knowledgeBaseId = jsonValue.GetString("knowledgeBaseId");
-
     m_knowledgeBaseIdHasBeenSet = true;
   }
-
   return *this;
 }
 

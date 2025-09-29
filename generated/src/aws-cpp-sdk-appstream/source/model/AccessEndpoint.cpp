@@ -18,17 +18,7 @@ namespace AppStream
 namespace Model
 {
 
-AccessEndpoint::AccessEndpoint() : 
-    m_endpointType(AccessEndpointType::NOT_SET),
-    m_endpointTypeHasBeenSet(false),
-    m_vpceIdHasBeenSet(false)
-{
-}
-
-AccessEndpoint::AccessEndpoint(JsonView jsonValue) : 
-    m_endpointType(AccessEndpointType::NOT_SET),
-    m_endpointTypeHasBeenSet(false),
-    m_vpceIdHasBeenSet(false)
+AccessEndpoint::AccessEndpoint(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ AccessEndpoint& AccessEndpoint::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("EndpointType"))
   {
     m_endpointType = AccessEndpointTypeMapper::GetAccessEndpointTypeForName(jsonValue.GetString("EndpointType"));
-
     m_endpointTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("VpceId"))
   {
     m_vpceId = jsonValue.GetString("VpceId");
-
     m_vpceIdHasBeenSet = true;
   }
-
   return *this;
 }
 

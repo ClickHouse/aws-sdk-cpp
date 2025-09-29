@@ -20,13 +20,7 @@ namespace RDS
 namespace Model
 {
 
-Outpost::Outpost() : 
-    m_arnHasBeenSet(false)
-{
-}
-
-Outpost::Outpost(const XmlNode& xmlNode) : 
-    m_arnHasBeenSet(false)
+Outpost::Outpost(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

@@ -21,7 +21,7 @@ namespace Model
   class CreateTestGridUrlRequest : public DeviceFarmRequest
   {
   public:
-    AWS_DEVICEFARM_API CreateTestGridUrlRequest();
+    AWS_DEVICEFARM_API CreateTestGridUrlRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,81 +34,34 @@ namespace Model
     AWS_DEVICEFARM_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>ARN (from <a>CreateTestGridProject</a> or <a>ListTestGridProjects</a>) to
      * associate with the short-term URL. </p>
      */
-    inline const Aws::String& GetProjectArn() const{ return m_projectArn; }
-
-    /**
-     * <p>ARN (from <a>CreateTestGridProject</a> or <a>ListTestGridProjects</a>) to
-     * associate with the short-term URL. </p>
-     */
+    inline const Aws::String& GetProjectArn() const { return m_projectArn; }
     inline bool ProjectArnHasBeenSet() const { return m_projectArnHasBeenSet; }
+    template<typename ProjectArnT = Aws::String>
+    void SetProjectArn(ProjectArnT&& value) { m_projectArnHasBeenSet = true; m_projectArn = std::forward<ProjectArnT>(value); }
+    template<typename ProjectArnT = Aws::String>
+    CreateTestGridUrlRequest& WithProjectArn(ProjectArnT&& value) { SetProjectArn(std::forward<ProjectArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>ARN (from <a>CreateTestGridProject</a> or <a>ListTestGridProjects</a>) to
-     * associate with the short-term URL. </p>
-     */
-    inline void SetProjectArn(const Aws::String& value) { m_projectArnHasBeenSet = true; m_projectArn = value; }
-
-    /**
-     * <p>ARN (from <a>CreateTestGridProject</a> or <a>ListTestGridProjects</a>) to
-     * associate with the short-term URL. </p>
-     */
-    inline void SetProjectArn(Aws::String&& value) { m_projectArnHasBeenSet = true; m_projectArn = std::move(value); }
-
-    /**
-     * <p>ARN (from <a>CreateTestGridProject</a> or <a>ListTestGridProjects</a>) to
-     * associate with the short-term URL. </p>
-     */
-    inline void SetProjectArn(const char* value) { m_projectArnHasBeenSet = true; m_projectArn.assign(value); }
-
-    /**
-     * <p>ARN (from <a>CreateTestGridProject</a> or <a>ListTestGridProjects</a>) to
-     * associate with the short-term URL. </p>
-     */
-    inline CreateTestGridUrlRequest& WithProjectArn(const Aws::String& value) { SetProjectArn(value); return *this;}
-
-    /**
-     * <p>ARN (from <a>CreateTestGridProject</a> or <a>ListTestGridProjects</a>) to
-     * associate with the short-term URL. </p>
-     */
-    inline CreateTestGridUrlRequest& WithProjectArn(Aws::String&& value) { SetProjectArn(std::move(value)); return *this;}
-
-    /**
-     * <p>ARN (from <a>CreateTestGridProject</a> or <a>ListTestGridProjects</a>) to
-     * associate with the short-term URL. </p>
-     */
-    inline CreateTestGridUrlRequest& WithProjectArn(const char* value) { SetProjectArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Lifetime, in seconds, of the URL.</p>
      */
-    inline int GetExpiresInSeconds() const{ return m_expiresInSeconds; }
-
-    /**
-     * <p>Lifetime, in seconds, of the URL.</p>
-     */
+    inline int GetExpiresInSeconds() const { return m_expiresInSeconds; }
     inline bool ExpiresInSecondsHasBeenSet() const { return m_expiresInSecondsHasBeenSet; }
-
-    /**
-     * <p>Lifetime, in seconds, of the URL.</p>
-     */
     inline void SetExpiresInSeconds(int value) { m_expiresInSecondsHasBeenSet = true; m_expiresInSeconds = value; }
-
-    /**
-     * <p>Lifetime, in seconds, of the URL.</p>
-     */
     inline CreateTestGridUrlRequest& WithExpiresInSeconds(int value) { SetExpiresInSeconds(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_projectArn;
     bool m_projectArnHasBeenSet = false;
 
-    int m_expiresInSeconds;
+    int m_expiresInSeconds{0};
     bool m_expiresInSecondsHasBeenSet = false;
   };
 

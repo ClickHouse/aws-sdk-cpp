@@ -18,13 +18,7 @@ namespace AppMesh
 namespace Model
 {
 
-TlsValidationContextAcmTrust::TlsValidationContextAcmTrust() : 
-    m_certificateAuthorityArnsHasBeenSet(false)
-{
-}
-
-TlsValidationContextAcmTrust::TlsValidationContextAcmTrust(JsonView jsonValue) : 
-    m_certificateAuthorityArnsHasBeenSet(false)
+TlsValidationContextAcmTrust::TlsValidationContextAcmTrust(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ TlsValidationContextAcmTrust& TlsValidationContextAcmTrust::operator =(JsonView 
     }
     m_certificateAuthorityArnsHasBeenSet = true;
   }
-
   return *this;
 }
 

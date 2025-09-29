@@ -32,57 +32,25 @@ namespace Model
   class LoaderIdResult
   {
   public:
-    AWS_NEPTUNEDATA_API LoaderIdResult();
+    AWS_NEPTUNEDATA_API LoaderIdResult() = default;
     AWS_NEPTUNEDATA_API LoaderIdResult(Aws::Utils::Json::JsonView jsonValue);
     AWS_NEPTUNEDATA_API LoaderIdResult& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_NEPTUNEDATA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A list of load IDs.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetLoadIds() const{ return m_loadIds; }
-
-    /**
-     * <p>A list of load IDs.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetLoadIds() const { return m_loadIds; }
     inline bool LoadIdsHasBeenSet() const { return m_loadIdsHasBeenSet; }
-
-    /**
-     * <p>A list of load IDs.</p>
-     */
-    inline void SetLoadIds(const Aws::Vector<Aws::String>& value) { m_loadIdsHasBeenSet = true; m_loadIds = value; }
-
-    /**
-     * <p>A list of load IDs.</p>
-     */
-    inline void SetLoadIds(Aws::Vector<Aws::String>&& value) { m_loadIdsHasBeenSet = true; m_loadIds = std::move(value); }
-
-    /**
-     * <p>A list of load IDs.</p>
-     */
-    inline LoaderIdResult& WithLoadIds(const Aws::Vector<Aws::String>& value) { SetLoadIds(value); return *this;}
-
-    /**
-     * <p>A list of load IDs.</p>
-     */
-    inline LoaderIdResult& WithLoadIds(Aws::Vector<Aws::String>&& value) { SetLoadIds(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of load IDs.</p>
-     */
-    inline LoaderIdResult& AddLoadIds(const Aws::String& value) { m_loadIdsHasBeenSet = true; m_loadIds.push_back(value); return *this; }
-
-    /**
-     * <p>A list of load IDs.</p>
-     */
-    inline LoaderIdResult& AddLoadIds(Aws::String&& value) { m_loadIdsHasBeenSet = true; m_loadIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of load IDs.</p>
-     */
-    inline LoaderIdResult& AddLoadIds(const char* value) { m_loadIdsHasBeenSet = true; m_loadIds.push_back(value); return *this; }
-
+    template<typename LoadIdsT = Aws::Vector<Aws::String>>
+    void SetLoadIds(LoadIdsT&& value) { m_loadIdsHasBeenSet = true; m_loadIds = std::forward<LoadIdsT>(value); }
+    template<typename LoadIdsT = Aws::Vector<Aws::String>>
+    LoaderIdResult& WithLoadIds(LoadIdsT&& value) { SetLoadIds(std::forward<LoadIdsT>(value)); return *this;}
+    template<typename LoadIdsT = Aws::String>
+    LoaderIdResult& AddLoadIds(LoadIdsT&& value) { m_loadIdsHasBeenSet = true; m_loadIds.emplace_back(std::forward<LoadIdsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_loadIds;

@@ -32,7 +32,7 @@ namespace Model
   class InstanceMonitoring
   {
   public:
-    AWS_EC2_API InstanceMonitoring();
+    AWS_EC2_API InstanceMonitoring() = default;
     AWS_EC2_API InstanceMonitoring(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API InstanceMonitoring& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,77 +40,29 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The ID of the instance.</p>
      */
-    inline const Aws::String& GetInstanceId() const{ return m_instanceId; }
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
+    inline const Aws::String& GetInstanceId() const { return m_instanceId; }
     inline bool InstanceIdHasBeenSet() const { return m_instanceIdHasBeenSet; }
+    template<typename InstanceIdT = Aws::String>
+    void SetInstanceId(InstanceIdT&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::forward<InstanceIdT>(value); }
+    template<typename InstanceIdT = Aws::String>
+    InstanceMonitoring& WithInstanceId(InstanceIdT&& value) { SetInstanceId(std::forward<InstanceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline void SetInstanceId(const Aws::String& value) { m_instanceIdHasBeenSet = true; m_instanceId = value; }
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::move(value); }
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline void SetInstanceId(const char* value) { m_instanceIdHasBeenSet = true; m_instanceId.assign(value); }
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline InstanceMonitoring& WithInstanceId(const Aws::String& value) { SetInstanceId(value); return *this;}
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline InstanceMonitoring& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline InstanceMonitoring& WithInstanceId(const char* value) { SetInstanceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The monitoring for the instance.</p>
      */
-    inline const Monitoring& GetMonitoring() const{ return m_monitoring; }
-
-    /**
-     * <p>The monitoring for the instance.</p>
-     */
+    inline const Monitoring& GetMonitoring() const { return m_monitoring; }
     inline bool MonitoringHasBeenSet() const { return m_monitoringHasBeenSet; }
-
-    /**
-     * <p>The monitoring for the instance.</p>
-     */
-    inline void SetMonitoring(const Monitoring& value) { m_monitoringHasBeenSet = true; m_monitoring = value; }
-
-    /**
-     * <p>The monitoring for the instance.</p>
-     */
-    inline void SetMonitoring(Monitoring&& value) { m_monitoringHasBeenSet = true; m_monitoring = std::move(value); }
-
-    /**
-     * <p>The monitoring for the instance.</p>
-     */
-    inline InstanceMonitoring& WithMonitoring(const Monitoring& value) { SetMonitoring(value); return *this;}
-
-    /**
-     * <p>The monitoring for the instance.</p>
-     */
-    inline InstanceMonitoring& WithMonitoring(Monitoring&& value) { SetMonitoring(std::move(value)); return *this;}
-
+    template<typename MonitoringT = Monitoring>
+    void SetMonitoring(MonitoringT&& value) { m_monitoringHasBeenSet = true; m_monitoring = std::forward<MonitoringT>(value); }
+    template<typename MonitoringT = Monitoring>
+    InstanceMonitoring& WithMonitoring(MonitoringT&& value) { SetMonitoring(std::forward<MonitoringT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_instanceId;

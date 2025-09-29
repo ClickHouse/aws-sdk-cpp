@@ -31,187 +31,70 @@ namespace Model
   class RegionalBucket
   {
   public:
-    AWS_S3CONTROL_API RegionalBucket();
+    AWS_S3CONTROL_API RegionalBucket() = default;
     AWS_S3CONTROL_API RegionalBucket(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3CONTROL_API RegionalBucket& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3CONTROL_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p/>
      */
-    inline const Aws::String& GetBucket() const{ return m_bucket; }
-
-    /**
-     * <p/>
-     */
+    inline const Aws::String& GetBucket() const { return m_bucket; }
     inline bool BucketHasBeenSet() const { return m_bucketHasBeenSet; }
+    template<typename BucketT = Aws::String>
+    void SetBucket(BucketT&& value) { m_bucketHasBeenSet = true; m_bucket = std::forward<BucketT>(value); }
+    template<typename BucketT = Aws::String>
+    RegionalBucket& WithBucket(BucketT&& value) { SetBucket(std::forward<BucketT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p/>
-     */
-    inline void SetBucket(const Aws::String& value) { m_bucketHasBeenSet = true; m_bucket = value; }
-
-    /**
-     * <p/>
-     */
-    inline void SetBucket(Aws::String&& value) { m_bucketHasBeenSet = true; m_bucket = std::move(value); }
-
-    /**
-     * <p/>
-     */
-    inline void SetBucket(const char* value) { m_bucketHasBeenSet = true; m_bucket.assign(value); }
-
-    /**
-     * <p/>
-     */
-    inline RegionalBucket& WithBucket(const Aws::String& value) { SetBucket(value); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline RegionalBucket& WithBucket(Aws::String&& value) { SetBucket(std::move(value)); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline RegionalBucket& WithBucket(const char* value) { SetBucket(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) for the regional bucket.</p>
      */
-    inline const Aws::String& GetBucketArn() const{ return m_bucketArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the regional bucket.</p>
-     */
+    inline const Aws::String& GetBucketArn() const { return m_bucketArn; }
     inline bool BucketArnHasBeenSet() const { return m_bucketArnHasBeenSet; }
+    template<typename BucketArnT = Aws::String>
+    void SetBucketArn(BucketArnT&& value) { m_bucketArnHasBeenSet = true; m_bucketArn = std::forward<BucketArnT>(value); }
+    template<typename BucketArnT = Aws::String>
+    RegionalBucket& WithBucketArn(BucketArnT&& value) { SetBucketArn(std::forward<BucketArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) for the regional bucket.</p>
-     */
-    inline void SetBucketArn(const Aws::String& value) { m_bucketArnHasBeenSet = true; m_bucketArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the regional bucket.</p>
-     */
-    inline void SetBucketArn(Aws::String&& value) { m_bucketArnHasBeenSet = true; m_bucketArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the regional bucket.</p>
-     */
-    inline void SetBucketArn(const char* value) { m_bucketArnHasBeenSet = true; m_bucketArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the regional bucket.</p>
-     */
-    inline RegionalBucket& WithBucketArn(const Aws::String& value) { SetBucketArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the regional bucket.</p>
-     */
-    inline RegionalBucket& WithBucketArn(Aws::String&& value) { SetBucketArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the regional bucket.</p>
-     */
-    inline RegionalBucket& WithBucketArn(const char* value) { SetBucketArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p/>
      */
-    inline bool GetPublicAccessBlockEnabled() const{ return m_publicAccessBlockEnabled; }
-
-    /**
-     * <p/>
-     */
+    inline bool GetPublicAccessBlockEnabled() const { return m_publicAccessBlockEnabled; }
     inline bool PublicAccessBlockEnabledHasBeenSet() const { return m_publicAccessBlockEnabledHasBeenSet; }
-
-    /**
-     * <p/>
-     */
     inline void SetPublicAccessBlockEnabled(bool value) { m_publicAccessBlockEnabledHasBeenSet = true; m_publicAccessBlockEnabled = value; }
-
-    /**
-     * <p/>
-     */
     inline RegionalBucket& WithPublicAccessBlockEnabled(bool value) { SetPublicAccessBlockEnabled(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The creation date of the regional bucket</p>
      */
-    inline const Aws::Utils::DateTime& GetCreationDate() const{ return m_creationDate; }
-
-    /**
-     * <p>The creation date of the regional bucket</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreationDate() const { return m_creationDate; }
     inline bool CreationDateHasBeenSet() const { return m_creationDateHasBeenSet; }
+    template<typename CreationDateT = Aws::Utils::DateTime>
+    void SetCreationDate(CreationDateT&& value) { m_creationDateHasBeenSet = true; m_creationDate = std::forward<CreationDateT>(value); }
+    template<typename CreationDateT = Aws::Utils::DateTime>
+    RegionalBucket& WithCreationDate(CreationDateT&& value) { SetCreationDate(std::forward<CreationDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The creation date of the regional bucket</p>
-     */
-    inline void SetCreationDate(const Aws::Utils::DateTime& value) { m_creationDateHasBeenSet = true; m_creationDate = value; }
-
-    /**
-     * <p>The creation date of the regional bucket</p>
-     */
-    inline void SetCreationDate(Aws::Utils::DateTime&& value) { m_creationDateHasBeenSet = true; m_creationDate = std::move(value); }
-
-    /**
-     * <p>The creation date of the regional bucket</p>
-     */
-    inline RegionalBucket& WithCreationDate(const Aws::Utils::DateTime& value) { SetCreationDate(value); return *this;}
-
-    /**
-     * <p>The creation date of the regional bucket</p>
-     */
-    inline RegionalBucket& WithCreationDate(Aws::Utils::DateTime&& value) { SetCreationDate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Outposts ID of the regional bucket.</p>
      */
-    inline const Aws::String& GetOutpostId() const{ return m_outpostId; }
-
-    /**
-     * <p>The Outposts ID of the regional bucket.</p>
-     */
+    inline const Aws::String& GetOutpostId() const { return m_outpostId; }
     inline bool OutpostIdHasBeenSet() const { return m_outpostIdHasBeenSet; }
-
-    /**
-     * <p>The Outposts ID of the regional bucket.</p>
-     */
-    inline void SetOutpostId(const Aws::String& value) { m_outpostIdHasBeenSet = true; m_outpostId = value; }
-
-    /**
-     * <p>The Outposts ID of the regional bucket.</p>
-     */
-    inline void SetOutpostId(Aws::String&& value) { m_outpostIdHasBeenSet = true; m_outpostId = std::move(value); }
-
-    /**
-     * <p>The Outposts ID of the regional bucket.</p>
-     */
-    inline void SetOutpostId(const char* value) { m_outpostIdHasBeenSet = true; m_outpostId.assign(value); }
-
-    /**
-     * <p>The Outposts ID of the regional bucket.</p>
-     */
-    inline RegionalBucket& WithOutpostId(const Aws::String& value) { SetOutpostId(value); return *this;}
-
-    /**
-     * <p>The Outposts ID of the regional bucket.</p>
-     */
-    inline RegionalBucket& WithOutpostId(Aws::String&& value) { SetOutpostId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Outposts ID of the regional bucket.</p>
-     */
-    inline RegionalBucket& WithOutpostId(const char* value) { SetOutpostId(value); return *this;}
-
+    template<typename OutpostIdT = Aws::String>
+    void SetOutpostId(OutpostIdT&& value) { m_outpostIdHasBeenSet = true; m_outpostId = std::forward<OutpostIdT>(value); }
+    template<typename OutpostIdT = Aws::String>
+    RegionalBucket& WithOutpostId(OutpostIdT&& value) { SetOutpostId(std::forward<OutpostIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_bucket;
@@ -220,10 +103,10 @@ namespace Model
     Aws::String m_bucketArn;
     bool m_bucketArnHasBeenSet = false;
 
-    bool m_publicAccessBlockEnabled;
+    bool m_publicAccessBlockEnabled{false};
     bool m_publicAccessBlockEnabledHasBeenSet = false;
 
-    Aws::Utils::DateTime m_creationDate;
+    Aws::Utils::DateTime m_creationDate{};
     bool m_creationDateHasBeenSet = false;
 
     Aws::String m_outpostId;

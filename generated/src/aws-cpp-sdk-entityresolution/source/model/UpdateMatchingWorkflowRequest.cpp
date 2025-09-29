@@ -12,17 +12,6 @@ using namespace Aws::EntityResolution::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateMatchingWorkflowRequest::UpdateMatchingWorkflowRequest() : 
-    m_descriptionHasBeenSet(false),
-    m_incrementalRunConfigHasBeenSet(false),
-    m_inputSourceConfigHasBeenSet(false),
-    m_outputSourceConfigHasBeenSet(false),
-    m_resolutionTechniquesHasBeenSet(false),
-    m_roleArnHasBeenSet(false),
-    m_workflowNameHasBeenSet(false)
-{
-}
-
 Aws::String UpdateMatchingWorkflowRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -30,12 +19,6 @@ Aws::String UpdateMatchingWorkflowRequest::SerializePayload() const
   if(m_descriptionHasBeenSet)
   {
    payload.WithString("description", m_description);
-
-  }
-
-  if(m_incrementalRunConfigHasBeenSet)
-  {
-   payload.WithObject("incrementalRunConfig", m_incrementalRunConfig.Jsonize());
 
   }
 
@@ -64,6 +47,12 @@ Aws::String UpdateMatchingWorkflowRequest::SerializePayload() const
   if(m_resolutionTechniquesHasBeenSet)
   {
    payload.WithObject("resolutionTechniques", m_resolutionTechniques.Jsonize());
+
+  }
+
+  if(m_incrementalRunConfigHasBeenSet)
+  {
+   payload.WithObject("incrementalRunConfig", m_incrementalRunConfig.Jsonize());
 
   }
 

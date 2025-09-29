@@ -54,49 +54,24 @@ namespace Model
   class AttributeTypesSelector
   {
   public:
-    AWS_CUSTOMERPROFILES_API AttributeTypesSelector();
+    AWS_CUSTOMERPROFILES_API AttributeTypesSelector() = default;
     AWS_CUSTOMERPROFILES_API AttributeTypesSelector(Aws::Utils::Json::JsonView jsonValue);
     AWS_CUSTOMERPROFILES_API AttributeTypesSelector& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CUSTOMERPROFILES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Configures the <code>AttributeMatchingModel</code>, you can either choose
      * <code>ONE_TO_ONE</code> or <code>MANY_TO_MANY</code>.</p>
      */
-    inline const AttributeMatchingModel& GetAttributeMatchingModel() const{ return m_attributeMatchingModel; }
-
-    /**
-     * <p>Configures the <code>AttributeMatchingModel</code>, you can either choose
-     * <code>ONE_TO_ONE</code> or <code>MANY_TO_MANY</code>.</p>
-     */
+    inline AttributeMatchingModel GetAttributeMatchingModel() const { return m_attributeMatchingModel; }
     inline bool AttributeMatchingModelHasBeenSet() const { return m_attributeMatchingModelHasBeenSet; }
+    inline void SetAttributeMatchingModel(AttributeMatchingModel value) { m_attributeMatchingModelHasBeenSet = true; m_attributeMatchingModel = value; }
+    inline AttributeTypesSelector& WithAttributeMatchingModel(AttributeMatchingModel value) { SetAttributeMatchingModel(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Configures the <code>AttributeMatchingModel</code>, you can either choose
-     * <code>ONE_TO_ONE</code> or <code>MANY_TO_MANY</code>.</p>
-     */
-    inline void SetAttributeMatchingModel(const AttributeMatchingModel& value) { m_attributeMatchingModelHasBeenSet = true; m_attributeMatchingModel = value; }
-
-    /**
-     * <p>Configures the <code>AttributeMatchingModel</code>, you can either choose
-     * <code>ONE_TO_ONE</code> or <code>MANY_TO_MANY</code>.</p>
-     */
-    inline void SetAttributeMatchingModel(AttributeMatchingModel&& value) { m_attributeMatchingModelHasBeenSet = true; m_attributeMatchingModel = std::move(value); }
-
-    /**
-     * <p>Configures the <code>AttributeMatchingModel</code>, you can either choose
-     * <code>ONE_TO_ONE</code> or <code>MANY_TO_MANY</code>.</p>
-     */
-    inline AttributeTypesSelector& WithAttributeMatchingModel(const AttributeMatchingModel& value) { SetAttributeMatchingModel(value); return *this;}
-
-    /**
-     * <p>Configures the <code>AttributeMatchingModel</code>, you can either choose
-     * <code>ONE_TO_ONE</code> or <code>MANY_TO_MANY</code>.</p>
-     */
-    inline AttributeTypesSelector& WithAttributeMatchingModel(AttributeMatchingModel&& value) { SetAttributeMatchingModel(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The <code>Address</code> type. You can choose from <code>Address</code>,
      * <code>BusinessAddress</code>, <code>MaillingAddress</code>, and
@@ -107,105 +82,17 @@ namespace Model
      * to represent the Address type and specify the <code>Address.City</code> on the
      * matching rule.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetAddress() const{ return m_address; }
-
-    /**
-     * <p>The <code>Address</code> type. You can choose from <code>Address</code>,
-     * <code>BusinessAddress</code>, <code>MaillingAddress</code>, and
-     * <code>ShippingAddress</code>.</p> <p>You only can use the Address type in the
-     * <code>MatchingRule</code>. For example, if you want to match profile based on
-     * <code>BusinessAddress.City</code> or <code>MaillingAddress.City</code>, you need
-     * to choose the <code>BusinessAddress</code> and the <code>MaillingAddress</code>
-     * to represent the Address type and specify the <code>Address.City</code> on the
-     * matching rule.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetAddress() const { return m_address; }
     inline bool AddressHasBeenSet() const { return m_addressHasBeenSet; }
+    template<typename AddressT = Aws::Vector<Aws::String>>
+    void SetAddress(AddressT&& value) { m_addressHasBeenSet = true; m_address = std::forward<AddressT>(value); }
+    template<typename AddressT = Aws::Vector<Aws::String>>
+    AttributeTypesSelector& WithAddress(AddressT&& value) { SetAddress(std::forward<AddressT>(value)); return *this;}
+    template<typename AddressT = Aws::String>
+    AttributeTypesSelector& AddAddress(AddressT&& value) { m_addressHasBeenSet = true; m_address.emplace_back(std::forward<AddressT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The <code>Address</code> type. You can choose from <code>Address</code>,
-     * <code>BusinessAddress</code>, <code>MaillingAddress</code>, and
-     * <code>ShippingAddress</code>.</p> <p>You only can use the Address type in the
-     * <code>MatchingRule</code>. For example, if you want to match profile based on
-     * <code>BusinessAddress.City</code> or <code>MaillingAddress.City</code>, you need
-     * to choose the <code>BusinessAddress</code> and the <code>MaillingAddress</code>
-     * to represent the Address type and specify the <code>Address.City</code> on the
-     * matching rule.</p>
-     */
-    inline void SetAddress(const Aws::Vector<Aws::String>& value) { m_addressHasBeenSet = true; m_address = value; }
-
-    /**
-     * <p>The <code>Address</code> type. You can choose from <code>Address</code>,
-     * <code>BusinessAddress</code>, <code>MaillingAddress</code>, and
-     * <code>ShippingAddress</code>.</p> <p>You only can use the Address type in the
-     * <code>MatchingRule</code>. For example, if you want to match profile based on
-     * <code>BusinessAddress.City</code> or <code>MaillingAddress.City</code>, you need
-     * to choose the <code>BusinessAddress</code> and the <code>MaillingAddress</code>
-     * to represent the Address type and specify the <code>Address.City</code> on the
-     * matching rule.</p>
-     */
-    inline void SetAddress(Aws::Vector<Aws::String>&& value) { m_addressHasBeenSet = true; m_address = std::move(value); }
-
-    /**
-     * <p>The <code>Address</code> type. You can choose from <code>Address</code>,
-     * <code>BusinessAddress</code>, <code>MaillingAddress</code>, and
-     * <code>ShippingAddress</code>.</p> <p>You only can use the Address type in the
-     * <code>MatchingRule</code>. For example, if you want to match profile based on
-     * <code>BusinessAddress.City</code> or <code>MaillingAddress.City</code>, you need
-     * to choose the <code>BusinessAddress</code> and the <code>MaillingAddress</code>
-     * to represent the Address type and specify the <code>Address.City</code> on the
-     * matching rule.</p>
-     */
-    inline AttributeTypesSelector& WithAddress(const Aws::Vector<Aws::String>& value) { SetAddress(value); return *this;}
-
-    /**
-     * <p>The <code>Address</code> type. You can choose from <code>Address</code>,
-     * <code>BusinessAddress</code>, <code>MaillingAddress</code>, and
-     * <code>ShippingAddress</code>.</p> <p>You only can use the Address type in the
-     * <code>MatchingRule</code>. For example, if you want to match profile based on
-     * <code>BusinessAddress.City</code> or <code>MaillingAddress.City</code>, you need
-     * to choose the <code>BusinessAddress</code> and the <code>MaillingAddress</code>
-     * to represent the Address type and specify the <code>Address.City</code> on the
-     * matching rule.</p>
-     */
-    inline AttributeTypesSelector& WithAddress(Aws::Vector<Aws::String>&& value) { SetAddress(std::move(value)); return *this;}
-
-    /**
-     * <p>The <code>Address</code> type. You can choose from <code>Address</code>,
-     * <code>BusinessAddress</code>, <code>MaillingAddress</code>, and
-     * <code>ShippingAddress</code>.</p> <p>You only can use the Address type in the
-     * <code>MatchingRule</code>. For example, if you want to match profile based on
-     * <code>BusinessAddress.City</code> or <code>MaillingAddress.City</code>, you need
-     * to choose the <code>BusinessAddress</code> and the <code>MaillingAddress</code>
-     * to represent the Address type and specify the <code>Address.City</code> on the
-     * matching rule.</p>
-     */
-    inline AttributeTypesSelector& AddAddress(const Aws::String& value) { m_addressHasBeenSet = true; m_address.push_back(value); return *this; }
-
-    /**
-     * <p>The <code>Address</code> type. You can choose from <code>Address</code>,
-     * <code>BusinessAddress</code>, <code>MaillingAddress</code>, and
-     * <code>ShippingAddress</code>.</p> <p>You only can use the Address type in the
-     * <code>MatchingRule</code>. For example, if you want to match profile based on
-     * <code>BusinessAddress.City</code> or <code>MaillingAddress.City</code>, you need
-     * to choose the <code>BusinessAddress</code> and the <code>MaillingAddress</code>
-     * to represent the Address type and specify the <code>Address.City</code> on the
-     * matching rule.</p>
-     */
-    inline AttributeTypesSelector& AddAddress(Aws::String&& value) { m_addressHasBeenSet = true; m_address.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The <code>Address</code> type. You can choose from <code>Address</code>,
-     * <code>BusinessAddress</code>, <code>MaillingAddress</code>, and
-     * <code>ShippingAddress</code>.</p> <p>You only can use the Address type in the
-     * <code>MatchingRule</code>. For example, if you want to match profile based on
-     * <code>BusinessAddress.City</code> or <code>MaillingAddress.City</code>, you need
-     * to choose the <code>BusinessAddress</code> and the <code>MaillingAddress</code>
-     * to represent the Address type and specify the <code>Address.City</code> on the
-     * matching rule.</p>
-     */
-    inline AttributeTypesSelector& AddAddress(const char* value) { m_addressHasBeenSet = true; m_address.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The <code>PhoneNumber</code> type. You can choose from
      * <code>PhoneNumber</code>, <code>HomePhoneNumber</code>, and
@@ -216,105 +103,17 @@ namespace Model
      * <code>HomePhone</code> to represent the <code>PhoneNumber</code> type and only
      * specify the <code>PhoneNumber</code> on the matching rule.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetPhoneNumber() const{ return m_phoneNumber; }
-
-    /**
-     * <p>The <code>PhoneNumber</code> type. You can choose from
-     * <code>PhoneNumber</code>, <code>HomePhoneNumber</code>, and
-     * <code>MobilePhoneNumber</code>.</p> <p>You only can use the
-     * <code>PhoneNumber</code> type in the <code>MatchingRule</code>. For example, if
-     * you want to match a profile based on <code>Phone</code> or
-     * <code>HomePhone</code>, you need to choose the <code>Phone</code> and the
-     * <code>HomePhone</code> to represent the <code>PhoneNumber</code> type and only
-     * specify the <code>PhoneNumber</code> on the matching rule.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetPhoneNumber() const { return m_phoneNumber; }
     inline bool PhoneNumberHasBeenSet() const { return m_phoneNumberHasBeenSet; }
+    template<typename PhoneNumberT = Aws::Vector<Aws::String>>
+    void SetPhoneNumber(PhoneNumberT&& value) { m_phoneNumberHasBeenSet = true; m_phoneNumber = std::forward<PhoneNumberT>(value); }
+    template<typename PhoneNumberT = Aws::Vector<Aws::String>>
+    AttributeTypesSelector& WithPhoneNumber(PhoneNumberT&& value) { SetPhoneNumber(std::forward<PhoneNumberT>(value)); return *this;}
+    template<typename PhoneNumberT = Aws::String>
+    AttributeTypesSelector& AddPhoneNumber(PhoneNumberT&& value) { m_phoneNumberHasBeenSet = true; m_phoneNumber.emplace_back(std::forward<PhoneNumberT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The <code>PhoneNumber</code> type. You can choose from
-     * <code>PhoneNumber</code>, <code>HomePhoneNumber</code>, and
-     * <code>MobilePhoneNumber</code>.</p> <p>You only can use the
-     * <code>PhoneNumber</code> type in the <code>MatchingRule</code>. For example, if
-     * you want to match a profile based on <code>Phone</code> or
-     * <code>HomePhone</code>, you need to choose the <code>Phone</code> and the
-     * <code>HomePhone</code> to represent the <code>PhoneNumber</code> type and only
-     * specify the <code>PhoneNumber</code> on the matching rule.</p>
-     */
-    inline void SetPhoneNumber(const Aws::Vector<Aws::String>& value) { m_phoneNumberHasBeenSet = true; m_phoneNumber = value; }
-
-    /**
-     * <p>The <code>PhoneNumber</code> type. You can choose from
-     * <code>PhoneNumber</code>, <code>HomePhoneNumber</code>, and
-     * <code>MobilePhoneNumber</code>.</p> <p>You only can use the
-     * <code>PhoneNumber</code> type in the <code>MatchingRule</code>. For example, if
-     * you want to match a profile based on <code>Phone</code> or
-     * <code>HomePhone</code>, you need to choose the <code>Phone</code> and the
-     * <code>HomePhone</code> to represent the <code>PhoneNumber</code> type and only
-     * specify the <code>PhoneNumber</code> on the matching rule.</p>
-     */
-    inline void SetPhoneNumber(Aws::Vector<Aws::String>&& value) { m_phoneNumberHasBeenSet = true; m_phoneNumber = std::move(value); }
-
-    /**
-     * <p>The <code>PhoneNumber</code> type. You can choose from
-     * <code>PhoneNumber</code>, <code>HomePhoneNumber</code>, and
-     * <code>MobilePhoneNumber</code>.</p> <p>You only can use the
-     * <code>PhoneNumber</code> type in the <code>MatchingRule</code>. For example, if
-     * you want to match a profile based on <code>Phone</code> or
-     * <code>HomePhone</code>, you need to choose the <code>Phone</code> and the
-     * <code>HomePhone</code> to represent the <code>PhoneNumber</code> type and only
-     * specify the <code>PhoneNumber</code> on the matching rule.</p>
-     */
-    inline AttributeTypesSelector& WithPhoneNumber(const Aws::Vector<Aws::String>& value) { SetPhoneNumber(value); return *this;}
-
-    /**
-     * <p>The <code>PhoneNumber</code> type. You can choose from
-     * <code>PhoneNumber</code>, <code>HomePhoneNumber</code>, and
-     * <code>MobilePhoneNumber</code>.</p> <p>You only can use the
-     * <code>PhoneNumber</code> type in the <code>MatchingRule</code>. For example, if
-     * you want to match a profile based on <code>Phone</code> or
-     * <code>HomePhone</code>, you need to choose the <code>Phone</code> and the
-     * <code>HomePhone</code> to represent the <code>PhoneNumber</code> type and only
-     * specify the <code>PhoneNumber</code> on the matching rule.</p>
-     */
-    inline AttributeTypesSelector& WithPhoneNumber(Aws::Vector<Aws::String>&& value) { SetPhoneNumber(std::move(value)); return *this;}
-
-    /**
-     * <p>The <code>PhoneNumber</code> type. You can choose from
-     * <code>PhoneNumber</code>, <code>HomePhoneNumber</code>, and
-     * <code>MobilePhoneNumber</code>.</p> <p>You only can use the
-     * <code>PhoneNumber</code> type in the <code>MatchingRule</code>. For example, if
-     * you want to match a profile based on <code>Phone</code> or
-     * <code>HomePhone</code>, you need to choose the <code>Phone</code> and the
-     * <code>HomePhone</code> to represent the <code>PhoneNumber</code> type and only
-     * specify the <code>PhoneNumber</code> on the matching rule.</p>
-     */
-    inline AttributeTypesSelector& AddPhoneNumber(const Aws::String& value) { m_phoneNumberHasBeenSet = true; m_phoneNumber.push_back(value); return *this; }
-
-    /**
-     * <p>The <code>PhoneNumber</code> type. You can choose from
-     * <code>PhoneNumber</code>, <code>HomePhoneNumber</code>, and
-     * <code>MobilePhoneNumber</code>.</p> <p>You only can use the
-     * <code>PhoneNumber</code> type in the <code>MatchingRule</code>. For example, if
-     * you want to match a profile based on <code>Phone</code> or
-     * <code>HomePhone</code>, you need to choose the <code>Phone</code> and the
-     * <code>HomePhone</code> to represent the <code>PhoneNumber</code> type and only
-     * specify the <code>PhoneNumber</code> on the matching rule.</p>
-     */
-    inline AttributeTypesSelector& AddPhoneNumber(Aws::String&& value) { m_phoneNumberHasBeenSet = true; m_phoneNumber.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The <code>PhoneNumber</code> type. You can choose from
-     * <code>PhoneNumber</code>, <code>HomePhoneNumber</code>, and
-     * <code>MobilePhoneNumber</code>.</p> <p>You only can use the
-     * <code>PhoneNumber</code> type in the <code>MatchingRule</code>. For example, if
-     * you want to match a profile based on <code>Phone</code> or
-     * <code>HomePhone</code>, you need to choose the <code>Phone</code> and the
-     * <code>HomePhone</code> to represent the <code>PhoneNumber</code> type and only
-     * specify the <code>PhoneNumber</code> on the matching rule.</p>
-     */
-    inline AttributeTypesSelector& AddPhoneNumber(const char* value) { m_phoneNumberHasBeenSet = true; m_phoneNumber.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The <code>Email</code> type. You can choose from <code>EmailAddress</code>,
      * <code>BusinessEmailAddress</code> and <code>PersonalEmailAddress</code>.</p>
@@ -325,107 +124,18 @@ namespace Model
      * <code>BusinessEmailAddress</code> to represent the <code>EmailAddress</code>
      * type and only specify the <code>EmailAddress</code> on the matching rule.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetEmailAddress() const{ return m_emailAddress; }
-
-    /**
-     * <p>The <code>Email</code> type. You can choose from <code>EmailAddress</code>,
-     * <code>BusinessEmailAddress</code> and <code>PersonalEmailAddress</code>.</p>
-     * <p>You only can use the <code>EmailAddress</code> type in the
-     * <code>MatchingRule</code>. For example, if you want to match profile based on
-     * <code>PersonalEmailAddress</code> or <code>BusinessEmailAddress</code>, you need
-     * to choose the <code>PersonalEmailAddress</code> and the
-     * <code>BusinessEmailAddress</code> to represent the <code>EmailAddress</code>
-     * type and only specify the <code>EmailAddress</code> on the matching rule.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetEmailAddress() const { return m_emailAddress; }
     inline bool EmailAddressHasBeenSet() const { return m_emailAddressHasBeenSet; }
-
-    /**
-     * <p>The <code>Email</code> type. You can choose from <code>EmailAddress</code>,
-     * <code>BusinessEmailAddress</code> and <code>PersonalEmailAddress</code>.</p>
-     * <p>You only can use the <code>EmailAddress</code> type in the
-     * <code>MatchingRule</code>. For example, if you want to match profile based on
-     * <code>PersonalEmailAddress</code> or <code>BusinessEmailAddress</code>, you need
-     * to choose the <code>PersonalEmailAddress</code> and the
-     * <code>BusinessEmailAddress</code> to represent the <code>EmailAddress</code>
-     * type and only specify the <code>EmailAddress</code> on the matching rule.</p>
-     */
-    inline void SetEmailAddress(const Aws::Vector<Aws::String>& value) { m_emailAddressHasBeenSet = true; m_emailAddress = value; }
-
-    /**
-     * <p>The <code>Email</code> type. You can choose from <code>EmailAddress</code>,
-     * <code>BusinessEmailAddress</code> and <code>PersonalEmailAddress</code>.</p>
-     * <p>You only can use the <code>EmailAddress</code> type in the
-     * <code>MatchingRule</code>. For example, if you want to match profile based on
-     * <code>PersonalEmailAddress</code> or <code>BusinessEmailAddress</code>, you need
-     * to choose the <code>PersonalEmailAddress</code> and the
-     * <code>BusinessEmailAddress</code> to represent the <code>EmailAddress</code>
-     * type and only specify the <code>EmailAddress</code> on the matching rule.</p>
-     */
-    inline void SetEmailAddress(Aws::Vector<Aws::String>&& value) { m_emailAddressHasBeenSet = true; m_emailAddress = std::move(value); }
-
-    /**
-     * <p>The <code>Email</code> type. You can choose from <code>EmailAddress</code>,
-     * <code>BusinessEmailAddress</code> and <code>PersonalEmailAddress</code>.</p>
-     * <p>You only can use the <code>EmailAddress</code> type in the
-     * <code>MatchingRule</code>. For example, if you want to match profile based on
-     * <code>PersonalEmailAddress</code> or <code>BusinessEmailAddress</code>, you need
-     * to choose the <code>PersonalEmailAddress</code> and the
-     * <code>BusinessEmailAddress</code> to represent the <code>EmailAddress</code>
-     * type and only specify the <code>EmailAddress</code> on the matching rule.</p>
-     */
-    inline AttributeTypesSelector& WithEmailAddress(const Aws::Vector<Aws::String>& value) { SetEmailAddress(value); return *this;}
-
-    /**
-     * <p>The <code>Email</code> type. You can choose from <code>EmailAddress</code>,
-     * <code>BusinessEmailAddress</code> and <code>PersonalEmailAddress</code>.</p>
-     * <p>You only can use the <code>EmailAddress</code> type in the
-     * <code>MatchingRule</code>. For example, if you want to match profile based on
-     * <code>PersonalEmailAddress</code> or <code>BusinessEmailAddress</code>, you need
-     * to choose the <code>PersonalEmailAddress</code> and the
-     * <code>BusinessEmailAddress</code> to represent the <code>EmailAddress</code>
-     * type and only specify the <code>EmailAddress</code> on the matching rule.</p>
-     */
-    inline AttributeTypesSelector& WithEmailAddress(Aws::Vector<Aws::String>&& value) { SetEmailAddress(std::move(value)); return *this;}
-
-    /**
-     * <p>The <code>Email</code> type. You can choose from <code>EmailAddress</code>,
-     * <code>BusinessEmailAddress</code> and <code>PersonalEmailAddress</code>.</p>
-     * <p>You only can use the <code>EmailAddress</code> type in the
-     * <code>MatchingRule</code>. For example, if you want to match profile based on
-     * <code>PersonalEmailAddress</code> or <code>BusinessEmailAddress</code>, you need
-     * to choose the <code>PersonalEmailAddress</code> and the
-     * <code>BusinessEmailAddress</code> to represent the <code>EmailAddress</code>
-     * type and only specify the <code>EmailAddress</code> on the matching rule.</p>
-     */
-    inline AttributeTypesSelector& AddEmailAddress(const Aws::String& value) { m_emailAddressHasBeenSet = true; m_emailAddress.push_back(value); return *this; }
-
-    /**
-     * <p>The <code>Email</code> type. You can choose from <code>EmailAddress</code>,
-     * <code>BusinessEmailAddress</code> and <code>PersonalEmailAddress</code>.</p>
-     * <p>You only can use the <code>EmailAddress</code> type in the
-     * <code>MatchingRule</code>. For example, if you want to match profile based on
-     * <code>PersonalEmailAddress</code> or <code>BusinessEmailAddress</code>, you need
-     * to choose the <code>PersonalEmailAddress</code> and the
-     * <code>BusinessEmailAddress</code> to represent the <code>EmailAddress</code>
-     * type and only specify the <code>EmailAddress</code> on the matching rule.</p>
-     */
-    inline AttributeTypesSelector& AddEmailAddress(Aws::String&& value) { m_emailAddressHasBeenSet = true; m_emailAddress.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The <code>Email</code> type. You can choose from <code>EmailAddress</code>,
-     * <code>BusinessEmailAddress</code> and <code>PersonalEmailAddress</code>.</p>
-     * <p>You only can use the <code>EmailAddress</code> type in the
-     * <code>MatchingRule</code>. For example, if you want to match profile based on
-     * <code>PersonalEmailAddress</code> or <code>BusinessEmailAddress</code>, you need
-     * to choose the <code>PersonalEmailAddress</code> and the
-     * <code>BusinessEmailAddress</code> to represent the <code>EmailAddress</code>
-     * type and only specify the <code>EmailAddress</code> on the matching rule.</p>
-     */
-    inline AttributeTypesSelector& AddEmailAddress(const char* value) { m_emailAddressHasBeenSet = true; m_emailAddress.push_back(value); return *this; }
-
+    template<typename EmailAddressT = Aws::Vector<Aws::String>>
+    void SetEmailAddress(EmailAddressT&& value) { m_emailAddressHasBeenSet = true; m_emailAddress = std::forward<EmailAddressT>(value); }
+    template<typename EmailAddressT = Aws::Vector<Aws::String>>
+    AttributeTypesSelector& WithEmailAddress(EmailAddressT&& value) { SetEmailAddress(std::forward<EmailAddressT>(value)); return *this;}
+    template<typename EmailAddressT = Aws::String>
+    AttributeTypesSelector& AddEmailAddress(EmailAddressT&& value) { m_emailAddressHasBeenSet = true; m_emailAddress.emplace_back(std::forward<EmailAddressT>(value)); return *this; }
+    ///@}
   private:
 
-    AttributeMatchingModel m_attributeMatchingModel;
+    AttributeMatchingModel m_attributeMatchingModel{AttributeMatchingModel::NOT_SET};
     bool m_attributeMatchingModelHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_address;

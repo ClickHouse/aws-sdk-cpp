@@ -18,17 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-NumericalAggregationFunction::NumericalAggregationFunction() : 
-    m_simpleNumericalAggregation(SimpleNumericalAggregationFunction::NOT_SET),
-    m_simpleNumericalAggregationHasBeenSet(false),
-    m_percentileAggregationHasBeenSet(false)
-{
-}
-
-NumericalAggregationFunction::NumericalAggregationFunction(JsonView jsonValue) : 
-    m_simpleNumericalAggregation(SimpleNumericalAggregationFunction::NOT_SET),
-    m_simpleNumericalAggregationHasBeenSet(false),
-    m_percentileAggregationHasBeenSet(false)
+NumericalAggregationFunction::NumericalAggregationFunction(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ NumericalAggregationFunction& NumericalAggregationFunction::operator =(JsonView 
   if(jsonValue.ValueExists("SimpleNumericalAggregation"))
   {
     m_simpleNumericalAggregation = SimpleNumericalAggregationFunctionMapper::GetSimpleNumericalAggregationFunctionForName(jsonValue.GetString("SimpleNumericalAggregation"));
-
     m_simpleNumericalAggregationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PercentileAggregation"))
   {
     m_percentileAggregation = jsonValue.GetObject("PercentileAggregation");
-
     m_percentileAggregationHasBeenSet = true;
   }
-
   return *this;
 }
 

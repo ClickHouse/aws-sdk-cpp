@@ -18,15 +18,7 @@ namespace RAM
 namespace Model
 {
 
-TagFilter::TagFilter() : 
-    m_tagKeyHasBeenSet(false),
-    m_tagValuesHasBeenSet(false)
-{
-}
-
-TagFilter::TagFilter(JsonView jsonValue) : 
-    m_tagKeyHasBeenSet(false),
-    m_tagValuesHasBeenSet(false)
+TagFilter::TagFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ TagFilter& TagFilter::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("tagKey"))
   {
     m_tagKey = jsonValue.GetString("tagKey");
-
     m_tagKeyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("tagValues"))
   {
     Aws::Utils::Array<JsonView> tagValuesJsonList = jsonValue.GetArray("tagValues");
@@ -49,7 +39,6 @@ TagFilter& TagFilter::operator =(JsonView jsonValue)
     }
     m_tagValuesHasBeenSet = true;
   }
-
   return *this;
 }
 

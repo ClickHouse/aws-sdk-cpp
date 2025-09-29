@@ -20,31 +20,7 @@ namespace Redshift
 namespace Model
 {
 
-RedshiftIdcApplication::RedshiftIdcApplication() : 
-    m_idcInstanceArnHasBeenSet(false),
-    m_redshiftIdcApplicationNameHasBeenSet(false),
-    m_redshiftIdcApplicationArnHasBeenSet(false),
-    m_identityNamespaceHasBeenSet(false),
-    m_idcDisplayNameHasBeenSet(false),
-    m_iamRoleArnHasBeenSet(false),
-    m_idcManagedApplicationArnHasBeenSet(false),
-    m_idcOnboardStatusHasBeenSet(false),
-    m_authorizedTokenIssuerListHasBeenSet(false),
-    m_serviceIntegrationsHasBeenSet(false)
-{
-}
-
-RedshiftIdcApplication::RedshiftIdcApplication(const XmlNode& xmlNode) : 
-    m_idcInstanceArnHasBeenSet(false),
-    m_redshiftIdcApplicationNameHasBeenSet(false),
-    m_redshiftIdcApplicationArnHasBeenSet(false),
-    m_identityNamespaceHasBeenSet(false),
-    m_idcDisplayNameHasBeenSet(false),
-    m_iamRoleArnHasBeenSet(false),
-    m_idcManagedApplicationArnHasBeenSet(false),
-    m_idcOnboardStatusHasBeenSet(false),
-    m_authorizedTokenIssuerListHasBeenSet(false),
-    m_serviceIntegrationsHasBeenSet(false)
+RedshiftIdcApplication::RedshiftIdcApplication(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -107,6 +83,7 @@ RedshiftIdcApplication& RedshiftIdcApplication::operator =(const XmlNode& xmlNod
     if(!authorizedTokenIssuerListNode.IsNull())
     {
       XmlNode authorizedTokenIssuerListMember = authorizedTokenIssuerListNode.FirstChild("member");
+      m_authorizedTokenIssuerListHasBeenSet = !authorizedTokenIssuerListMember.IsNull();
       while(!authorizedTokenIssuerListMember.IsNull())
       {
         m_authorizedTokenIssuerList.push_back(authorizedTokenIssuerListMember);
@@ -119,6 +96,7 @@ RedshiftIdcApplication& RedshiftIdcApplication::operator =(const XmlNode& xmlNod
     if(!serviceIntegrationsNode.IsNull())
     {
       XmlNode serviceIntegrationsMember = serviceIntegrationsNode.FirstChild("member");
+      m_serviceIntegrationsHasBeenSet = !serviceIntegrationsMember.IsNull();
       while(!serviceIntegrationsMember.IsNull())
       {
         m_serviceIntegrations.push_back(serviceIntegrationsMember);
@@ -126,6 +104,32 @@ RedshiftIdcApplication& RedshiftIdcApplication::operator =(const XmlNode& xmlNod
       }
 
       m_serviceIntegrationsHasBeenSet = true;
+    }
+    XmlNode tagsNode = resultNode.FirstChild("Tags");
+    if(!tagsNode.IsNull())
+    {
+      XmlNode tagsMember = tagsNode.FirstChild("Tag");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
+      while(!tagsMember.IsNull())
+      {
+        m_tags.push_back(tagsMember);
+        tagsMember = tagsMember.NextNode("Tag");
+      }
+
+      m_tagsHasBeenSet = true;
+    }
+    XmlNode ssoTagKeysNode = resultNode.FirstChild("SsoTagKeys");
+    if(!ssoTagKeysNode.IsNull())
+    {
+      XmlNode ssoTagKeysMember = ssoTagKeysNode.FirstChild("TagKey");
+      m_ssoTagKeysHasBeenSet = !ssoTagKeysMember.IsNull();
+      while(!ssoTagKeysMember.IsNull())
+      {
+        m_ssoTagKeys.push_back(ssoTagKeysMember.GetText());
+        ssoTagKeysMember = ssoTagKeysMember.NextNode("TagKey");
+      }
+
+      m_ssoTagKeysHasBeenSet = true;
     }
   }
 
@@ -196,6 +200,26 @@ void RedshiftIdcApplication::OutputToStream(Aws::OStream& oStream, const char* l
       }
   }
 
+  if(m_tagsHasBeenSet)
+  {
+      unsigned tagsIdx = 1;
+      for(auto& item : m_tags)
+      {
+        Aws::StringStream tagsSs;
+        tagsSs << location << index << locationValue << ".Tags.Tag." << tagsIdx++;
+        item.OutputToStream(oStream, tagsSs.str().c_str());
+      }
+  }
+
+  if(m_ssoTagKeysHasBeenSet)
+  {
+      unsigned ssoTagKeysIdx = 1;
+      for(auto& item : m_ssoTagKeys)
+      {
+        oStream << location << index << locationValue << ".SsoTagKeys.TagKey." << ssoTagKeysIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+      }
+  }
+
 }
 
 void RedshiftIdcApplication::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -238,7 +262,7 @@ void RedshiftIdcApplication::OutputToStream(Aws::OStream& oStream, const char* l
       for(auto& item : m_authorizedTokenIssuerList)
       {
         Aws::StringStream authorizedTokenIssuerListSs;
-        authorizedTokenIssuerListSs << location <<  ".AuthorizedTokenIssuerList.member." << authorizedTokenIssuerListIdx++;
+        authorizedTokenIssuerListSs << location << ".AuthorizedTokenIssuerList.member." << authorizedTokenIssuerListIdx++;
         item.OutputToStream(oStream, authorizedTokenIssuerListSs.str().c_str());
       }
   }
@@ -248,8 +272,26 @@ void RedshiftIdcApplication::OutputToStream(Aws::OStream& oStream, const char* l
       for(auto& item : m_serviceIntegrations)
       {
         Aws::StringStream serviceIntegrationsSs;
-        serviceIntegrationsSs << location <<  ".ServiceIntegrations.member." << serviceIntegrationsIdx++;
+        serviceIntegrationsSs << location << ".ServiceIntegrations.member." << serviceIntegrationsIdx++;
         item.OutputToStream(oStream, serviceIntegrationsSs.str().c_str());
+      }
+  }
+  if(m_tagsHasBeenSet)
+  {
+      unsigned tagsIdx = 1;
+      for(auto& item : m_tags)
+      {
+        Aws::StringStream tagsSs;
+        tagsSs << location << ".Tags.Tag." << tagsIdx++;
+        item.OutputToStream(oStream, tagsSs.str().c_str());
+      }
+  }
+  if(m_ssoTagKeysHasBeenSet)
+  {
+      unsigned ssoTagKeysIdx = 1;
+      for(auto& item : m_ssoTagKeys)
+      {
+        oStream << location << ".SsoTagKeys.TagKey." << ssoTagKeysIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
 }

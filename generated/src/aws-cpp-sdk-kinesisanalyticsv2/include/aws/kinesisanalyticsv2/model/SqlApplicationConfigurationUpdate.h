@@ -36,158 +36,56 @@ namespace Model
   class SqlApplicationConfigurationUpdate
   {
   public:
-    AWS_KINESISANALYTICSV2_API SqlApplicationConfigurationUpdate();
+    AWS_KINESISANALYTICSV2_API SqlApplicationConfigurationUpdate() = default;
     AWS_KINESISANALYTICSV2_API SqlApplicationConfigurationUpdate(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISANALYTICSV2_API SqlApplicationConfigurationUpdate& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISANALYTICSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The array of <a>InputUpdate</a> objects describing the new input streams used
      * by the application.</p>
      */
-    inline const Aws::Vector<InputUpdate>& GetInputUpdates() const{ return m_inputUpdates; }
-
-    /**
-     * <p>The array of <a>InputUpdate</a> objects describing the new input streams used
-     * by the application.</p>
-     */
+    inline const Aws::Vector<InputUpdate>& GetInputUpdates() const { return m_inputUpdates; }
     inline bool InputUpdatesHasBeenSet() const { return m_inputUpdatesHasBeenSet; }
+    template<typename InputUpdatesT = Aws::Vector<InputUpdate>>
+    void SetInputUpdates(InputUpdatesT&& value) { m_inputUpdatesHasBeenSet = true; m_inputUpdates = std::forward<InputUpdatesT>(value); }
+    template<typename InputUpdatesT = Aws::Vector<InputUpdate>>
+    SqlApplicationConfigurationUpdate& WithInputUpdates(InputUpdatesT&& value) { SetInputUpdates(std::forward<InputUpdatesT>(value)); return *this;}
+    template<typename InputUpdatesT = InputUpdate>
+    SqlApplicationConfigurationUpdate& AddInputUpdates(InputUpdatesT&& value) { m_inputUpdatesHasBeenSet = true; m_inputUpdates.emplace_back(std::forward<InputUpdatesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The array of <a>InputUpdate</a> objects describing the new input streams used
-     * by the application.</p>
-     */
-    inline void SetInputUpdates(const Aws::Vector<InputUpdate>& value) { m_inputUpdatesHasBeenSet = true; m_inputUpdates = value; }
-
-    /**
-     * <p>The array of <a>InputUpdate</a> objects describing the new input streams used
-     * by the application.</p>
-     */
-    inline void SetInputUpdates(Aws::Vector<InputUpdate>&& value) { m_inputUpdatesHasBeenSet = true; m_inputUpdates = std::move(value); }
-
-    /**
-     * <p>The array of <a>InputUpdate</a> objects describing the new input streams used
-     * by the application.</p>
-     */
-    inline SqlApplicationConfigurationUpdate& WithInputUpdates(const Aws::Vector<InputUpdate>& value) { SetInputUpdates(value); return *this;}
-
-    /**
-     * <p>The array of <a>InputUpdate</a> objects describing the new input streams used
-     * by the application.</p>
-     */
-    inline SqlApplicationConfigurationUpdate& WithInputUpdates(Aws::Vector<InputUpdate>&& value) { SetInputUpdates(std::move(value)); return *this;}
-
-    /**
-     * <p>The array of <a>InputUpdate</a> objects describing the new input streams used
-     * by the application.</p>
-     */
-    inline SqlApplicationConfigurationUpdate& AddInputUpdates(const InputUpdate& value) { m_inputUpdatesHasBeenSet = true; m_inputUpdates.push_back(value); return *this; }
-
-    /**
-     * <p>The array of <a>InputUpdate</a> objects describing the new input streams used
-     * by the application.</p>
-     */
-    inline SqlApplicationConfigurationUpdate& AddInputUpdates(InputUpdate&& value) { m_inputUpdatesHasBeenSet = true; m_inputUpdates.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The array of <a>OutputUpdate</a> objects describing the new destination
      * streams used by the application.</p>
      */
-    inline const Aws::Vector<OutputUpdate>& GetOutputUpdates() const{ return m_outputUpdates; }
-
-    /**
-     * <p>The array of <a>OutputUpdate</a> objects describing the new destination
-     * streams used by the application.</p>
-     */
+    inline const Aws::Vector<OutputUpdate>& GetOutputUpdates() const { return m_outputUpdates; }
     inline bool OutputUpdatesHasBeenSet() const { return m_outputUpdatesHasBeenSet; }
+    template<typename OutputUpdatesT = Aws::Vector<OutputUpdate>>
+    void SetOutputUpdates(OutputUpdatesT&& value) { m_outputUpdatesHasBeenSet = true; m_outputUpdates = std::forward<OutputUpdatesT>(value); }
+    template<typename OutputUpdatesT = Aws::Vector<OutputUpdate>>
+    SqlApplicationConfigurationUpdate& WithOutputUpdates(OutputUpdatesT&& value) { SetOutputUpdates(std::forward<OutputUpdatesT>(value)); return *this;}
+    template<typename OutputUpdatesT = OutputUpdate>
+    SqlApplicationConfigurationUpdate& AddOutputUpdates(OutputUpdatesT&& value) { m_outputUpdatesHasBeenSet = true; m_outputUpdates.emplace_back(std::forward<OutputUpdatesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The array of <a>OutputUpdate</a> objects describing the new destination
-     * streams used by the application.</p>
-     */
-    inline void SetOutputUpdates(const Aws::Vector<OutputUpdate>& value) { m_outputUpdatesHasBeenSet = true; m_outputUpdates = value; }
-
-    /**
-     * <p>The array of <a>OutputUpdate</a> objects describing the new destination
-     * streams used by the application.</p>
-     */
-    inline void SetOutputUpdates(Aws::Vector<OutputUpdate>&& value) { m_outputUpdatesHasBeenSet = true; m_outputUpdates = std::move(value); }
-
-    /**
-     * <p>The array of <a>OutputUpdate</a> objects describing the new destination
-     * streams used by the application.</p>
-     */
-    inline SqlApplicationConfigurationUpdate& WithOutputUpdates(const Aws::Vector<OutputUpdate>& value) { SetOutputUpdates(value); return *this;}
-
-    /**
-     * <p>The array of <a>OutputUpdate</a> objects describing the new destination
-     * streams used by the application.</p>
-     */
-    inline SqlApplicationConfigurationUpdate& WithOutputUpdates(Aws::Vector<OutputUpdate>&& value) { SetOutputUpdates(std::move(value)); return *this;}
-
-    /**
-     * <p>The array of <a>OutputUpdate</a> objects describing the new destination
-     * streams used by the application.</p>
-     */
-    inline SqlApplicationConfigurationUpdate& AddOutputUpdates(const OutputUpdate& value) { m_outputUpdatesHasBeenSet = true; m_outputUpdates.push_back(value); return *this; }
-
-    /**
-     * <p>The array of <a>OutputUpdate</a> objects describing the new destination
-     * streams used by the application.</p>
-     */
-    inline SqlApplicationConfigurationUpdate& AddOutputUpdates(OutputUpdate&& value) { m_outputUpdatesHasBeenSet = true; m_outputUpdates.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The array of <a>ReferenceDataSourceUpdate</a> objects describing the new
      * reference data sources used by the application.</p>
      */
-    inline const Aws::Vector<ReferenceDataSourceUpdate>& GetReferenceDataSourceUpdates() const{ return m_referenceDataSourceUpdates; }
-
-    /**
-     * <p>The array of <a>ReferenceDataSourceUpdate</a> objects describing the new
-     * reference data sources used by the application.</p>
-     */
+    inline const Aws::Vector<ReferenceDataSourceUpdate>& GetReferenceDataSourceUpdates() const { return m_referenceDataSourceUpdates; }
     inline bool ReferenceDataSourceUpdatesHasBeenSet() const { return m_referenceDataSourceUpdatesHasBeenSet; }
-
-    /**
-     * <p>The array of <a>ReferenceDataSourceUpdate</a> objects describing the new
-     * reference data sources used by the application.</p>
-     */
-    inline void SetReferenceDataSourceUpdates(const Aws::Vector<ReferenceDataSourceUpdate>& value) { m_referenceDataSourceUpdatesHasBeenSet = true; m_referenceDataSourceUpdates = value; }
-
-    /**
-     * <p>The array of <a>ReferenceDataSourceUpdate</a> objects describing the new
-     * reference data sources used by the application.</p>
-     */
-    inline void SetReferenceDataSourceUpdates(Aws::Vector<ReferenceDataSourceUpdate>&& value) { m_referenceDataSourceUpdatesHasBeenSet = true; m_referenceDataSourceUpdates = std::move(value); }
-
-    /**
-     * <p>The array of <a>ReferenceDataSourceUpdate</a> objects describing the new
-     * reference data sources used by the application.</p>
-     */
-    inline SqlApplicationConfigurationUpdate& WithReferenceDataSourceUpdates(const Aws::Vector<ReferenceDataSourceUpdate>& value) { SetReferenceDataSourceUpdates(value); return *this;}
-
-    /**
-     * <p>The array of <a>ReferenceDataSourceUpdate</a> objects describing the new
-     * reference data sources used by the application.</p>
-     */
-    inline SqlApplicationConfigurationUpdate& WithReferenceDataSourceUpdates(Aws::Vector<ReferenceDataSourceUpdate>&& value) { SetReferenceDataSourceUpdates(std::move(value)); return *this;}
-
-    /**
-     * <p>The array of <a>ReferenceDataSourceUpdate</a> objects describing the new
-     * reference data sources used by the application.</p>
-     */
-    inline SqlApplicationConfigurationUpdate& AddReferenceDataSourceUpdates(const ReferenceDataSourceUpdate& value) { m_referenceDataSourceUpdatesHasBeenSet = true; m_referenceDataSourceUpdates.push_back(value); return *this; }
-
-    /**
-     * <p>The array of <a>ReferenceDataSourceUpdate</a> objects describing the new
-     * reference data sources used by the application.</p>
-     */
-    inline SqlApplicationConfigurationUpdate& AddReferenceDataSourceUpdates(ReferenceDataSourceUpdate&& value) { m_referenceDataSourceUpdatesHasBeenSet = true; m_referenceDataSourceUpdates.push_back(std::move(value)); return *this; }
-
+    template<typename ReferenceDataSourceUpdatesT = Aws::Vector<ReferenceDataSourceUpdate>>
+    void SetReferenceDataSourceUpdates(ReferenceDataSourceUpdatesT&& value) { m_referenceDataSourceUpdatesHasBeenSet = true; m_referenceDataSourceUpdates = std::forward<ReferenceDataSourceUpdatesT>(value); }
+    template<typename ReferenceDataSourceUpdatesT = Aws::Vector<ReferenceDataSourceUpdate>>
+    SqlApplicationConfigurationUpdate& WithReferenceDataSourceUpdates(ReferenceDataSourceUpdatesT&& value) { SetReferenceDataSourceUpdates(std::forward<ReferenceDataSourceUpdatesT>(value)); return *this;}
+    template<typename ReferenceDataSourceUpdatesT = ReferenceDataSourceUpdate>
+    SqlApplicationConfigurationUpdate& AddReferenceDataSourceUpdates(ReferenceDataSourceUpdatesT&& value) { m_referenceDataSourceUpdatesHasBeenSet = true; m_referenceDataSourceUpdates.emplace_back(std::forward<ReferenceDataSourceUpdatesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<InputUpdate> m_inputUpdates;

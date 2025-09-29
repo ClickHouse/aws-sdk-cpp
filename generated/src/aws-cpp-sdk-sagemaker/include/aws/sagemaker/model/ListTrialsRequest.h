@@ -24,7 +24,7 @@ namespace Model
   class ListTrialsRequest : public SageMakerRequest
   {
   public:
-    AWS_SAGEMAKER_API ListTrialsRequest();
+    AWS_SAGEMAKER_API ListTrialsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,307 +37,100 @@ namespace Model
     AWS_SAGEMAKER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>A filter that returns only trials that are part of the specified
      * experiment.</p>
      */
-    inline const Aws::String& GetExperimentName() const{ return m_experimentName; }
-
-    /**
-     * <p>A filter that returns only trials that are part of the specified
-     * experiment.</p>
-     */
+    inline const Aws::String& GetExperimentName() const { return m_experimentName; }
     inline bool ExperimentNameHasBeenSet() const { return m_experimentNameHasBeenSet; }
+    template<typename ExperimentNameT = Aws::String>
+    void SetExperimentName(ExperimentNameT&& value) { m_experimentNameHasBeenSet = true; m_experimentName = std::forward<ExperimentNameT>(value); }
+    template<typename ExperimentNameT = Aws::String>
+    ListTrialsRequest& WithExperimentName(ExperimentNameT&& value) { SetExperimentName(std::forward<ExperimentNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A filter that returns only trials that are part of the specified
-     * experiment.</p>
-     */
-    inline void SetExperimentName(const Aws::String& value) { m_experimentNameHasBeenSet = true; m_experimentName = value; }
-
-    /**
-     * <p>A filter that returns only trials that are part of the specified
-     * experiment.</p>
-     */
-    inline void SetExperimentName(Aws::String&& value) { m_experimentNameHasBeenSet = true; m_experimentName = std::move(value); }
-
-    /**
-     * <p>A filter that returns only trials that are part of the specified
-     * experiment.</p>
-     */
-    inline void SetExperimentName(const char* value) { m_experimentNameHasBeenSet = true; m_experimentName.assign(value); }
-
-    /**
-     * <p>A filter that returns only trials that are part of the specified
-     * experiment.</p>
-     */
-    inline ListTrialsRequest& WithExperimentName(const Aws::String& value) { SetExperimentName(value); return *this;}
-
-    /**
-     * <p>A filter that returns only trials that are part of the specified
-     * experiment.</p>
-     */
-    inline ListTrialsRequest& WithExperimentName(Aws::String&& value) { SetExperimentName(std::move(value)); return *this;}
-
-    /**
-     * <p>A filter that returns only trials that are part of the specified
-     * experiment.</p>
-     */
-    inline ListTrialsRequest& WithExperimentName(const char* value) { SetExperimentName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A filter that returns only trials that are associated with the specified
      * trial component.</p>
      */
-    inline const Aws::String& GetTrialComponentName() const{ return m_trialComponentName; }
-
-    /**
-     * <p>A filter that returns only trials that are associated with the specified
-     * trial component.</p>
-     */
+    inline const Aws::String& GetTrialComponentName() const { return m_trialComponentName; }
     inline bool TrialComponentNameHasBeenSet() const { return m_trialComponentNameHasBeenSet; }
+    template<typename TrialComponentNameT = Aws::String>
+    void SetTrialComponentName(TrialComponentNameT&& value) { m_trialComponentNameHasBeenSet = true; m_trialComponentName = std::forward<TrialComponentNameT>(value); }
+    template<typename TrialComponentNameT = Aws::String>
+    ListTrialsRequest& WithTrialComponentName(TrialComponentNameT&& value) { SetTrialComponentName(std::forward<TrialComponentNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A filter that returns only trials that are associated with the specified
-     * trial component.</p>
-     */
-    inline void SetTrialComponentName(const Aws::String& value) { m_trialComponentNameHasBeenSet = true; m_trialComponentName = value; }
-
-    /**
-     * <p>A filter that returns only trials that are associated with the specified
-     * trial component.</p>
-     */
-    inline void SetTrialComponentName(Aws::String&& value) { m_trialComponentNameHasBeenSet = true; m_trialComponentName = std::move(value); }
-
-    /**
-     * <p>A filter that returns only trials that are associated with the specified
-     * trial component.</p>
-     */
-    inline void SetTrialComponentName(const char* value) { m_trialComponentNameHasBeenSet = true; m_trialComponentName.assign(value); }
-
-    /**
-     * <p>A filter that returns only trials that are associated with the specified
-     * trial component.</p>
-     */
-    inline ListTrialsRequest& WithTrialComponentName(const Aws::String& value) { SetTrialComponentName(value); return *this;}
-
-    /**
-     * <p>A filter that returns only trials that are associated with the specified
-     * trial component.</p>
-     */
-    inline ListTrialsRequest& WithTrialComponentName(Aws::String&& value) { SetTrialComponentName(std::move(value)); return *this;}
-
-    /**
-     * <p>A filter that returns only trials that are associated with the specified
-     * trial component.</p>
-     */
-    inline ListTrialsRequest& WithTrialComponentName(const char* value) { SetTrialComponentName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A filter that returns only trials created after the specified time.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedAfter() const{ return m_createdAfter; }
-
-    /**
-     * <p>A filter that returns only trials created after the specified time.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedAfter() const { return m_createdAfter; }
     inline bool CreatedAfterHasBeenSet() const { return m_createdAfterHasBeenSet; }
+    template<typename CreatedAfterT = Aws::Utils::DateTime>
+    void SetCreatedAfter(CreatedAfterT&& value) { m_createdAfterHasBeenSet = true; m_createdAfter = std::forward<CreatedAfterT>(value); }
+    template<typename CreatedAfterT = Aws::Utils::DateTime>
+    ListTrialsRequest& WithCreatedAfter(CreatedAfterT&& value) { SetCreatedAfter(std::forward<CreatedAfterT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A filter that returns only trials created after the specified time.</p>
-     */
-    inline void SetCreatedAfter(const Aws::Utils::DateTime& value) { m_createdAfterHasBeenSet = true; m_createdAfter = value; }
-
-    /**
-     * <p>A filter that returns only trials created after the specified time.</p>
-     */
-    inline void SetCreatedAfter(Aws::Utils::DateTime&& value) { m_createdAfterHasBeenSet = true; m_createdAfter = std::move(value); }
-
-    /**
-     * <p>A filter that returns only trials created after the specified time.</p>
-     */
-    inline ListTrialsRequest& WithCreatedAfter(const Aws::Utils::DateTime& value) { SetCreatedAfter(value); return *this;}
-
-    /**
-     * <p>A filter that returns only trials created after the specified time.</p>
-     */
-    inline ListTrialsRequest& WithCreatedAfter(Aws::Utils::DateTime&& value) { SetCreatedAfter(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A filter that returns only trials created before the specified time.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedBefore() const{ return m_createdBefore; }
-
-    /**
-     * <p>A filter that returns only trials created before the specified time.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedBefore() const { return m_createdBefore; }
     inline bool CreatedBeforeHasBeenSet() const { return m_createdBeforeHasBeenSet; }
+    template<typename CreatedBeforeT = Aws::Utils::DateTime>
+    void SetCreatedBefore(CreatedBeforeT&& value) { m_createdBeforeHasBeenSet = true; m_createdBefore = std::forward<CreatedBeforeT>(value); }
+    template<typename CreatedBeforeT = Aws::Utils::DateTime>
+    ListTrialsRequest& WithCreatedBefore(CreatedBeforeT&& value) { SetCreatedBefore(std::forward<CreatedBeforeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A filter that returns only trials created before the specified time.</p>
-     */
-    inline void SetCreatedBefore(const Aws::Utils::DateTime& value) { m_createdBeforeHasBeenSet = true; m_createdBefore = value; }
-
-    /**
-     * <p>A filter that returns only trials created before the specified time.</p>
-     */
-    inline void SetCreatedBefore(Aws::Utils::DateTime&& value) { m_createdBeforeHasBeenSet = true; m_createdBefore = std::move(value); }
-
-    /**
-     * <p>A filter that returns only trials created before the specified time.</p>
-     */
-    inline ListTrialsRequest& WithCreatedBefore(const Aws::Utils::DateTime& value) { SetCreatedBefore(value); return *this;}
-
-    /**
-     * <p>A filter that returns only trials created before the specified time.</p>
-     */
-    inline ListTrialsRequest& WithCreatedBefore(Aws::Utils::DateTime&& value) { SetCreatedBefore(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The property used to sort results. The default value is
      * <code>CreationTime</code>.</p>
      */
-    inline const SortTrialsBy& GetSortBy() const{ return m_sortBy; }
-
-    /**
-     * <p>The property used to sort results. The default value is
-     * <code>CreationTime</code>.</p>
-     */
+    inline SortTrialsBy GetSortBy() const { return m_sortBy; }
     inline bool SortByHasBeenSet() const { return m_sortByHasBeenSet; }
+    inline void SetSortBy(SortTrialsBy value) { m_sortByHasBeenSet = true; m_sortBy = value; }
+    inline ListTrialsRequest& WithSortBy(SortTrialsBy value) { SetSortBy(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The property used to sort results. The default value is
-     * <code>CreationTime</code>.</p>
-     */
-    inline void SetSortBy(const SortTrialsBy& value) { m_sortByHasBeenSet = true; m_sortBy = value; }
-
-    /**
-     * <p>The property used to sort results. The default value is
-     * <code>CreationTime</code>.</p>
-     */
-    inline void SetSortBy(SortTrialsBy&& value) { m_sortByHasBeenSet = true; m_sortBy = std::move(value); }
-
-    /**
-     * <p>The property used to sort results. The default value is
-     * <code>CreationTime</code>.</p>
-     */
-    inline ListTrialsRequest& WithSortBy(const SortTrialsBy& value) { SetSortBy(value); return *this;}
-
-    /**
-     * <p>The property used to sort results. The default value is
-     * <code>CreationTime</code>.</p>
-     */
-    inline ListTrialsRequest& WithSortBy(SortTrialsBy&& value) { SetSortBy(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The sort order. The default value is <code>Descending</code>.</p>
      */
-    inline const SortOrder& GetSortOrder() const{ return m_sortOrder; }
-
-    /**
-     * <p>The sort order. The default value is <code>Descending</code>.</p>
-     */
+    inline SortOrder GetSortOrder() const { return m_sortOrder; }
     inline bool SortOrderHasBeenSet() const { return m_sortOrderHasBeenSet; }
+    inline void SetSortOrder(SortOrder value) { m_sortOrderHasBeenSet = true; m_sortOrder = value; }
+    inline ListTrialsRequest& WithSortOrder(SortOrder value) { SetSortOrder(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The sort order. The default value is <code>Descending</code>.</p>
-     */
-    inline void SetSortOrder(const SortOrder& value) { m_sortOrderHasBeenSet = true; m_sortOrder = value; }
-
-    /**
-     * <p>The sort order. The default value is <code>Descending</code>.</p>
-     */
-    inline void SetSortOrder(SortOrder&& value) { m_sortOrderHasBeenSet = true; m_sortOrder = std::move(value); }
-
-    /**
-     * <p>The sort order. The default value is <code>Descending</code>.</p>
-     */
-    inline ListTrialsRequest& WithSortOrder(const SortOrder& value) { SetSortOrder(value); return *this;}
-
-    /**
-     * <p>The sort order. The default value is <code>Descending</code>.</p>
-     */
-    inline ListTrialsRequest& WithSortOrder(SortOrder&& value) { SetSortOrder(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of trials to return in the response. The default value is
      * 10.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of trials to return in the response. The default value is
-     * 10.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of trials to return in the response. The default value is
-     * 10.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of trials to return in the response. The default value is
-     * 10.</p>
-     */
     inline ListTrialsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>If the previous call to <code>ListTrials</code> didn't return the full set of
      * trials, the call returns a token for getting the next set of trials.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>If the previous call to <code>ListTrials</code> didn't return the full set of
-     * trials, the call returns a token for getting the next set of trials.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
-
-    /**
-     * <p>If the previous call to <code>ListTrials</code> didn't return the full set of
-     * trials, the call returns a token for getting the next set of trials.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>If the previous call to <code>ListTrials</code> didn't return the full set of
-     * trials, the call returns a token for getting the next set of trials.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>If the previous call to <code>ListTrials</code> didn't return the full set of
-     * trials, the call returns a token for getting the next set of trials.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>If the previous call to <code>ListTrials</code> didn't return the full set of
-     * trials, the call returns a token for getting the next set of trials.</p>
-     */
-    inline ListTrialsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>If the previous call to <code>ListTrials</code> didn't return the full set of
-     * trials, the call returns a token for getting the next set of trials.</p>
-     */
-    inline ListTrialsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>If the previous call to <code>ListTrials</code> didn't return the full set of
-     * trials, the call returns a token for getting the next set of trials.</p>
-     */
-    inline ListTrialsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListTrialsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_experimentName;
@@ -346,19 +139,19 @@ namespace Model
     Aws::String m_trialComponentName;
     bool m_trialComponentNameHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdAfter;
+    Aws::Utils::DateTime m_createdAfter{};
     bool m_createdAfterHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdBefore;
+    Aws::Utils::DateTime m_createdBefore{};
     bool m_createdBeforeHasBeenSet = false;
 
-    SortTrialsBy m_sortBy;
+    SortTrialsBy m_sortBy{SortTrialsBy::NOT_SET};
     bool m_sortByHasBeenSet = false;
 
-    SortOrder m_sortOrder;
+    SortOrder m_sortOrder{SortOrder::NOT_SET};
     bool m_sortOrderHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     Aws::String m_nextToken;

@@ -32,79 +32,37 @@ namespace Model
   class ConversationLevelResultDetail
   {
   public:
-    AWS_LEXMODELSV2_API ConversationLevelResultDetail();
+    AWS_LEXMODELSV2_API ConversationLevelResultDetail() = default;
     AWS_LEXMODELSV2_API ConversationLevelResultDetail(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API ConversationLevelResultDetail& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The success or failure of the streaming of the conversation.</p>
      */
-    inline const TestResultMatchStatus& GetEndToEndResult() const{ return m_endToEndResult; }
-
-    /**
-     * <p>The success or failure of the streaming of the conversation.</p>
-     */
+    inline TestResultMatchStatus GetEndToEndResult() const { return m_endToEndResult; }
     inline bool EndToEndResultHasBeenSet() const { return m_endToEndResultHasBeenSet; }
+    inline void SetEndToEndResult(TestResultMatchStatus value) { m_endToEndResultHasBeenSet = true; m_endToEndResult = value; }
+    inline ConversationLevelResultDetail& WithEndToEndResult(TestResultMatchStatus value) { SetEndToEndResult(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The success or failure of the streaming of the conversation.</p>
-     */
-    inline void SetEndToEndResult(const TestResultMatchStatus& value) { m_endToEndResultHasBeenSet = true; m_endToEndResult = value; }
-
-    /**
-     * <p>The success or failure of the streaming of the conversation.</p>
-     */
-    inline void SetEndToEndResult(TestResultMatchStatus&& value) { m_endToEndResultHasBeenSet = true; m_endToEndResult = std::move(value); }
-
-    /**
-     * <p>The success or failure of the streaming of the conversation.</p>
-     */
-    inline ConversationLevelResultDetail& WithEndToEndResult(const TestResultMatchStatus& value) { SetEndToEndResult(value); return *this;}
-
-    /**
-     * <p>The success or failure of the streaming of the conversation.</p>
-     */
-    inline ConversationLevelResultDetail& WithEndToEndResult(TestResultMatchStatus&& value) { SetEndToEndResult(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The speech transcription success or failure details of the conversation.</p>
      */
-    inline const TestResultMatchStatus& GetSpeechTranscriptionResult() const{ return m_speechTranscriptionResult; }
-
-    /**
-     * <p>The speech transcription success or failure details of the conversation.</p>
-     */
+    inline TestResultMatchStatus GetSpeechTranscriptionResult() const { return m_speechTranscriptionResult; }
     inline bool SpeechTranscriptionResultHasBeenSet() const { return m_speechTranscriptionResultHasBeenSet; }
-
-    /**
-     * <p>The speech transcription success or failure details of the conversation.</p>
-     */
-    inline void SetSpeechTranscriptionResult(const TestResultMatchStatus& value) { m_speechTranscriptionResultHasBeenSet = true; m_speechTranscriptionResult = value; }
-
-    /**
-     * <p>The speech transcription success or failure details of the conversation.</p>
-     */
-    inline void SetSpeechTranscriptionResult(TestResultMatchStatus&& value) { m_speechTranscriptionResultHasBeenSet = true; m_speechTranscriptionResult = std::move(value); }
-
-    /**
-     * <p>The speech transcription success or failure details of the conversation.</p>
-     */
-    inline ConversationLevelResultDetail& WithSpeechTranscriptionResult(const TestResultMatchStatus& value) { SetSpeechTranscriptionResult(value); return *this;}
-
-    /**
-     * <p>The speech transcription success or failure details of the conversation.</p>
-     */
-    inline ConversationLevelResultDetail& WithSpeechTranscriptionResult(TestResultMatchStatus&& value) { SetSpeechTranscriptionResult(std::move(value)); return *this;}
-
+    inline void SetSpeechTranscriptionResult(TestResultMatchStatus value) { m_speechTranscriptionResultHasBeenSet = true; m_speechTranscriptionResult = value; }
+    inline ConversationLevelResultDetail& WithSpeechTranscriptionResult(TestResultMatchStatus value) { SetSpeechTranscriptionResult(value); return *this;}
+    ///@}
   private:
 
-    TestResultMatchStatus m_endToEndResult;
+    TestResultMatchStatus m_endToEndResult{TestResultMatchStatus::NOT_SET};
     bool m_endToEndResultHasBeenSet = false;
 
-    TestResultMatchStatus m_speechTranscriptionResult;
+    TestResultMatchStatus m_speechTranscriptionResult{TestResultMatchStatus::NOT_SET};
     bool m_speechTranscriptionResultHasBeenSet = false;
   };
 

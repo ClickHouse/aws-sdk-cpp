@@ -35,134 +35,53 @@ namespace Model
   class DefaultHyperParameterRanges
   {
   public:
-    AWS_PERSONALIZE_API DefaultHyperParameterRanges();
+    AWS_PERSONALIZE_API DefaultHyperParameterRanges() = default;
     AWS_PERSONALIZE_API DefaultHyperParameterRanges(Aws::Utils::Json::JsonView jsonValue);
     AWS_PERSONALIZE_API DefaultHyperParameterRanges& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PERSONALIZE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The integer-valued hyperparameters and their default ranges.</p>
      */
-    inline const Aws::Vector<DefaultIntegerHyperParameterRange>& GetIntegerHyperParameterRanges() const{ return m_integerHyperParameterRanges; }
-
-    /**
-     * <p>The integer-valued hyperparameters and their default ranges.</p>
-     */
+    inline const Aws::Vector<DefaultIntegerHyperParameterRange>& GetIntegerHyperParameterRanges() const { return m_integerHyperParameterRanges; }
     inline bool IntegerHyperParameterRangesHasBeenSet() const { return m_integerHyperParameterRangesHasBeenSet; }
+    template<typename IntegerHyperParameterRangesT = Aws::Vector<DefaultIntegerHyperParameterRange>>
+    void SetIntegerHyperParameterRanges(IntegerHyperParameterRangesT&& value) { m_integerHyperParameterRangesHasBeenSet = true; m_integerHyperParameterRanges = std::forward<IntegerHyperParameterRangesT>(value); }
+    template<typename IntegerHyperParameterRangesT = Aws::Vector<DefaultIntegerHyperParameterRange>>
+    DefaultHyperParameterRanges& WithIntegerHyperParameterRanges(IntegerHyperParameterRangesT&& value) { SetIntegerHyperParameterRanges(std::forward<IntegerHyperParameterRangesT>(value)); return *this;}
+    template<typename IntegerHyperParameterRangesT = DefaultIntegerHyperParameterRange>
+    DefaultHyperParameterRanges& AddIntegerHyperParameterRanges(IntegerHyperParameterRangesT&& value) { m_integerHyperParameterRangesHasBeenSet = true; m_integerHyperParameterRanges.emplace_back(std::forward<IntegerHyperParameterRangesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The integer-valued hyperparameters and their default ranges.</p>
-     */
-    inline void SetIntegerHyperParameterRanges(const Aws::Vector<DefaultIntegerHyperParameterRange>& value) { m_integerHyperParameterRangesHasBeenSet = true; m_integerHyperParameterRanges = value; }
-
-    /**
-     * <p>The integer-valued hyperparameters and their default ranges.</p>
-     */
-    inline void SetIntegerHyperParameterRanges(Aws::Vector<DefaultIntegerHyperParameterRange>&& value) { m_integerHyperParameterRangesHasBeenSet = true; m_integerHyperParameterRanges = std::move(value); }
-
-    /**
-     * <p>The integer-valued hyperparameters and their default ranges.</p>
-     */
-    inline DefaultHyperParameterRanges& WithIntegerHyperParameterRanges(const Aws::Vector<DefaultIntegerHyperParameterRange>& value) { SetIntegerHyperParameterRanges(value); return *this;}
-
-    /**
-     * <p>The integer-valued hyperparameters and their default ranges.</p>
-     */
-    inline DefaultHyperParameterRanges& WithIntegerHyperParameterRanges(Aws::Vector<DefaultIntegerHyperParameterRange>&& value) { SetIntegerHyperParameterRanges(std::move(value)); return *this;}
-
-    /**
-     * <p>The integer-valued hyperparameters and their default ranges.</p>
-     */
-    inline DefaultHyperParameterRanges& AddIntegerHyperParameterRanges(const DefaultIntegerHyperParameterRange& value) { m_integerHyperParameterRangesHasBeenSet = true; m_integerHyperParameterRanges.push_back(value); return *this; }
-
-    /**
-     * <p>The integer-valued hyperparameters and their default ranges.</p>
-     */
-    inline DefaultHyperParameterRanges& AddIntegerHyperParameterRanges(DefaultIntegerHyperParameterRange&& value) { m_integerHyperParameterRangesHasBeenSet = true; m_integerHyperParameterRanges.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The continuous hyperparameters and their default ranges.</p>
      */
-    inline const Aws::Vector<DefaultContinuousHyperParameterRange>& GetContinuousHyperParameterRanges() const{ return m_continuousHyperParameterRanges; }
-
-    /**
-     * <p>The continuous hyperparameters and their default ranges.</p>
-     */
+    inline const Aws::Vector<DefaultContinuousHyperParameterRange>& GetContinuousHyperParameterRanges() const { return m_continuousHyperParameterRanges; }
     inline bool ContinuousHyperParameterRangesHasBeenSet() const { return m_continuousHyperParameterRangesHasBeenSet; }
+    template<typename ContinuousHyperParameterRangesT = Aws::Vector<DefaultContinuousHyperParameterRange>>
+    void SetContinuousHyperParameterRanges(ContinuousHyperParameterRangesT&& value) { m_continuousHyperParameterRangesHasBeenSet = true; m_continuousHyperParameterRanges = std::forward<ContinuousHyperParameterRangesT>(value); }
+    template<typename ContinuousHyperParameterRangesT = Aws::Vector<DefaultContinuousHyperParameterRange>>
+    DefaultHyperParameterRanges& WithContinuousHyperParameterRanges(ContinuousHyperParameterRangesT&& value) { SetContinuousHyperParameterRanges(std::forward<ContinuousHyperParameterRangesT>(value)); return *this;}
+    template<typename ContinuousHyperParameterRangesT = DefaultContinuousHyperParameterRange>
+    DefaultHyperParameterRanges& AddContinuousHyperParameterRanges(ContinuousHyperParameterRangesT&& value) { m_continuousHyperParameterRangesHasBeenSet = true; m_continuousHyperParameterRanges.emplace_back(std::forward<ContinuousHyperParameterRangesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The continuous hyperparameters and their default ranges.</p>
-     */
-    inline void SetContinuousHyperParameterRanges(const Aws::Vector<DefaultContinuousHyperParameterRange>& value) { m_continuousHyperParameterRangesHasBeenSet = true; m_continuousHyperParameterRanges = value; }
-
-    /**
-     * <p>The continuous hyperparameters and their default ranges.</p>
-     */
-    inline void SetContinuousHyperParameterRanges(Aws::Vector<DefaultContinuousHyperParameterRange>&& value) { m_continuousHyperParameterRangesHasBeenSet = true; m_continuousHyperParameterRanges = std::move(value); }
-
-    /**
-     * <p>The continuous hyperparameters and their default ranges.</p>
-     */
-    inline DefaultHyperParameterRanges& WithContinuousHyperParameterRanges(const Aws::Vector<DefaultContinuousHyperParameterRange>& value) { SetContinuousHyperParameterRanges(value); return *this;}
-
-    /**
-     * <p>The continuous hyperparameters and their default ranges.</p>
-     */
-    inline DefaultHyperParameterRanges& WithContinuousHyperParameterRanges(Aws::Vector<DefaultContinuousHyperParameterRange>&& value) { SetContinuousHyperParameterRanges(std::move(value)); return *this;}
-
-    /**
-     * <p>The continuous hyperparameters and their default ranges.</p>
-     */
-    inline DefaultHyperParameterRanges& AddContinuousHyperParameterRanges(const DefaultContinuousHyperParameterRange& value) { m_continuousHyperParameterRangesHasBeenSet = true; m_continuousHyperParameterRanges.push_back(value); return *this; }
-
-    /**
-     * <p>The continuous hyperparameters and their default ranges.</p>
-     */
-    inline DefaultHyperParameterRanges& AddContinuousHyperParameterRanges(DefaultContinuousHyperParameterRange&& value) { m_continuousHyperParameterRangesHasBeenSet = true; m_continuousHyperParameterRanges.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The categorical hyperparameters and their default ranges.</p>
      */
-    inline const Aws::Vector<DefaultCategoricalHyperParameterRange>& GetCategoricalHyperParameterRanges() const{ return m_categoricalHyperParameterRanges; }
-
-    /**
-     * <p>The categorical hyperparameters and their default ranges.</p>
-     */
+    inline const Aws::Vector<DefaultCategoricalHyperParameterRange>& GetCategoricalHyperParameterRanges() const { return m_categoricalHyperParameterRanges; }
     inline bool CategoricalHyperParameterRangesHasBeenSet() const { return m_categoricalHyperParameterRangesHasBeenSet; }
-
-    /**
-     * <p>The categorical hyperparameters and their default ranges.</p>
-     */
-    inline void SetCategoricalHyperParameterRanges(const Aws::Vector<DefaultCategoricalHyperParameterRange>& value) { m_categoricalHyperParameterRangesHasBeenSet = true; m_categoricalHyperParameterRanges = value; }
-
-    /**
-     * <p>The categorical hyperparameters and their default ranges.</p>
-     */
-    inline void SetCategoricalHyperParameterRanges(Aws::Vector<DefaultCategoricalHyperParameterRange>&& value) { m_categoricalHyperParameterRangesHasBeenSet = true; m_categoricalHyperParameterRanges = std::move(value); }
-
-    /**
-     * <p>The categorical hyperparameters and their default ranges.</p>
-     */
-    inline DefaultHyperParameterRanges& WithCategoricalHyperParameterRanges(const Aws::Vector<DefaultCategoricalHyperParameterRange>& value) { SetCategoricalHyperParameterRanges(value); return *this;}
-
-    /**
-     * <p>The categorical hyperparameters and their default ranges.</p>
-     */
-    inline DefaultHyperParameterRanges& WithCategoricalHyperParameterRanges(Aws::Vector<DefaultCategoricalHyperParameterRange>&& value) { SetCategoricalHyperParameterRanges(std::move(value)); return *this;}
-
-    /**
-     * <p>The categorical hyperparameters and their default ranges.</p>
-     */
-    inline DefaultHyperParameterRanges& AddCategoricalHyperParameterRanges(const DefaultCategoricalHyperParameterRange& value) { m_categoricalHyperParameterRangesHasBeenSet = true; m_categoricalHyperParameterRanges.push_back(value); return *this; }
-
-    /**
-     * <p>The categorical hyperparameters and their default ranges.</p>
-     */
-    inline DefaultHyperParameterRanges& AddCategoricalHyperParameterRanges(DefaultCategoricalHyperParameterRange&& value) { m_categoricalHyperParameterRangesHasBeenSet = true; m_categoricalHyperParameterRanges.push_back(std::move(value)); return *this; }
-
+    template<typename CategoricalHyperParameterRangesT = Aws::Vector<DefaultCategoricalHyperParameterRange>>
+    void SetCategoricalHyperParameterRanges(CategoricalHyperParameterRangesT&& value) { m_categoricalHyperParameterRangesHasBeenSet = true; m_categoricalHyperParameterRanges = std::forward<CategoricalHyperParameterRangesT>(value); }
+    template<typename CategoricalHyperParameterRangesT = Aws::Vector<DefaultCategoricalHyperParameterRange>>
+    DefaultHyperParameterRanges& WithCategoricalHyperParameterRanges(CategoricalHyperParameterRangesT&& value) { SetCategoricalHyperParameterRanges(std::forward<CategoricalHyperParameterRangesT>(value)); return *this;}
+    template<typename CategoricalHyperParameterRangesT = DefaultCategoricalHyperParameterRange>
+    DefaultHyperParameterRanges& AddCategoricalHyperParameterRanges(CategoricalHyperParameterRangesT&& value) { m_categoricalHyperParameterRangesHasBeenSet = true; m_categoricalHyperParameterRanges.emplace_back(std::forward<CategoricalHyperParameterRangesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<DefaultIntegerHyperParameterRange> m_integerHyperParameterRanges;

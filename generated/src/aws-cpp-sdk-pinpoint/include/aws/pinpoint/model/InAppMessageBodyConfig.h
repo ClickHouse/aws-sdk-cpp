@@ -32,127 +32,48 @@ namespace Model
   class InAppMessageBodyConfig
   {
   public:
-    AWS_PINPOINT_API InAppMessageBodyConfig();
+    AWS_PINPOINT_API InAppMessageBodyConfig() = default;
     AWS_PINPOINT_API InAppMessageBodyConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API InAppMessageBodyConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The alignment of the text. Valid values: LEFT, CENTER, RIGHT.</p>
      */
-    inline const Alignment& GetAlignment() const{ return m_alignment; }
-
-    /**
-     * <p>The alignment of the text. Valid values: LEFT, CENTER, RIGHT.</p>
-     */
+    inline Alignment GetAlignment() const { return m_alignment; }
     inline bool AlignmentHasBeenSet() const { return m_alignmentHasBeenSet; }
+    inline void SetAlignment(Alignment value) { m_alignmentHasBeenSet = true; m_alignment = value; }
+    inline InAppMessageBodyConfig& WithAlignment(Alignment value) { SetAlignment(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The alignment of the text. Valid values: LEFT, CENTER, RIGHT.</p>
-     */
-    inline void SetAlignment(const Alignment& value) { m_alignmentHasBeenSet = true; m_alignment = value; }
-
-    /**
-     * <p>The alignment of the text. Valid values: LEFT, CENTER, RIGHT.</p>
-     */
-    inline void SetAlignment(Alignment&& value) { m_alignmentHasBeenSet = true; m_alignment = std::move(value); }
-
-    /**
-     * <p>The alignment of the text. Valid values: LEFT, CENTER, RIGHT.</p>
-     */
-    inline InAppMessageBodyConfig& WithAlignment(const Alignment& value) { SetAlignment(value); return *this;}
-
-    /**
-     * <p>The alignment of the text. Valid values: LEFT, CENTER, RIGHT.</p>
-     */
-    inline InAppMessageBodyConfig& WithAlignment(Alignment&& value) { SetAlignment(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Message Body.</p>
      */
-    inline const Aws::String& GetBody() const{ return m_body; }
-
-    /**
-     * <p>Message Body.</p>
-     */
+    inline const Aws::String& GetBody() const { return m_body; }
     inline bool BodyHasBeenSet() const { return m_bodyHasBeenSet; }
+    template<typename BodyT = Aws::String>
+    void SetBody(BodyT&& value) { m_bodyHasBeenSet = true; m_body = std::forward<BodyT>(value); }
+    template<typename BodyT = Aws::String>
+    InAppMessageBodyConfig& WithBody(BodyT&& value) { SetBody(std::forward<BodyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Message Body.</p>
-     */
-    inline void SetBody(const Aws::String& value) { m_bodyHasBeenSet = true; m_body = value; }
-
-    /**
-     * <p>Message Body.</p>
-     */
-    inline void SetBody(Aws::String&& value) { m_bodyHasBeenSet = true; m_body = std::move(value); }
-
-    /**
-     * <p>Message Body.</p>
-     */
-    inline void SetBody(const char* value) { m_bodyHasBeenSet = true; m_body.assign(value); }
-
-    /**
-     * <p>Message Body.</p>
-     */
-    inline InAppMessageBodyConfig& WithBody(const Aws::String& value) { SetBody(value); return *this;}
-
-    /**
-     * <p>Message Body.</p>
-     */
-    inline InAppMessageBodyConfig& WithBody(Aws::String&& value) { SetBody(std::move(value)); return *this;}
-
-    /**
-     * <p>Message Body.</p>
-     */
-    inline InAppMessageBodyConfig& WithBody(const char* value) { SetBody(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The text color.</p>
      */
-    inline const Aws::String& GetTextColor() const{ return m_textColor; }
-
-    /**
-     * <p>The text color.</p>
-     */
+    inline const Aws::String& GetTextColor() const { return m_textColor; }
     inline bool TextColorHasBeenSet() const { return m_textColorHasBeenSet; }
-
-    /**
-     * <p>The text color.</p>
-     */
-    inline void SetTextColor(const Aws::String& value) { m_textColorHasBeenSet = true; m_textColor = value; }
-
-    /**
-     * <p>The text color.</p>
-     */
-    inline void SetTextColor(Aws::String&& value) { m_textColorHasBeenSet = true; m_textColor = std::move(value); }
-
-    /**
-     * <p>The text color.</p>
-     */
-    inline void SetTextColor(const char* value) { m_textColorHasBeenSet = true; m_textColor.assign(value); }
-
-    /**
-     * <p>The text color.</p>
-     */
-    inline InAppMessageBodyConfig& WithTextColor(const Aws::String& value) { SetTextColor(value); return *this;}
-
-    /**
-     * <p>The text color.</p>
-     */
-    inline InAppMessageBodyConfig& WithTextColor(Aws::String&& value) { SetTextColor(std::move(value)); return *this;}
-
-    /**
-     * <p>The text color.</p>
-     */
-    inline InAppMessageBodyConfig& WithTextColor(const char* value) { SetTextColor(value); return *this;}
-
+    template<typename TextColorT = Aws::String>
+    void SetTextColor(TextColorT&& value) { m_textColorHasBeenSet = true; m_textColor = std::forward<TextColorT>(value); }
+    template<typename TextColorT = Aws::String>
+    InAppMessageBodyConfig& WithTextColor(TextColorT&& value) { SetTextColor(std::forward<TextColorT>(value)); return *this;}
+    ///@}
   private:
 
-    Alignment m_alignment;
+    Alignment m_alignment{Alignment::NOT_SET};
     bool m_alignmentHasBeenSet = false;
 
     Aws::String m_body;

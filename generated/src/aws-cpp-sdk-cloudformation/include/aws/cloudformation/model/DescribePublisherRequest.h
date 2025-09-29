@@ -21,7 +21,7 @@ namespace Model
   class DescribePublisherRequest : public CloudFormationRequest
   {
   public:
-    AWS_CLOUDFORMATION_API DescribePublisherRequest();
+    AWS_CLOUDFORMATION_API DescribePublisherRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,70 +36,20 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The ID of the extension publisher.</p> <p>If you don't supply a
      * <code>PublisherId</code>, and you have registered as an extension publisher,
      * <code>DescribePublisher</code> returns information about your own publisher
      * account.</p>
      */
-    inline const Aws::String& GetPublisherId() const{ return m_publisherId; }
-
-    /**
-     * <p>The ID of the extension publisher.</p> <p>If you don't supply a
-     * <code>PublisherId</code>, and you have registered as an extension publisher,
-     * <code>DescribePublisher</code> returns information about your own publisher
-     * account.</p>
-     */
+    inline const Aws::String& GetPublisherId() const { return m_publisherId; }
     inline bool PublisherIdHasBeenSet() const { return m_publisherIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the extension publisher.</p> <p>If you don't supply a
-     * <code>PublisherId</code>, and you have registered as an extension publisher,
-     * <code>DescribePublisher</code> returns information about your own publisher
-     * account.</p>
-     */
-    inline void SetPublisherId(const Aws::String& value) { m_publisherIdHasBeenSet = true; m_publisherId = value; }
-
-    /**
-     * <p>The ID of the extension publisher.</p> <p>If you don't supply a
-     * <code>PublisherId</code>, and you have registered as an extension publisher,
-     * <code>DescribePublisher</code> returns information about your own publisher
-     * account.</p>
-     */
-    inline void SetPublisherId(Aws::String&& value) { m_publisherIdHasBeenSet = true; m_publisherId = std::move(value); }
-
-    /**
-     * <p>The ID of the extension publisher.</p> <p>If you don't supply a
-     * <code>PublisherId</code>, and you have registered as an extension publisher,
-     * <code>DescribePublisher</code> returns information about your own publisher
-     * account.</p>
-     */
-    inline void SetPublisherId(const char* value) { m_publisherIdHasBeenSet = true; m_publisherId.assign(value); }
-
-    /**
-     * <p>The ID of the extension publisher.</p> <p>If you don't supply a
-     * <code>PublisherId</code>, and you have registered as an extension publisher,
-     * <code>DescribePublisher</code> returns information about your own publisher
-     * account.</p>
-     */
-    inline DescribePublisherRequest& WithPublisherId(const Aws::String& value) { SetPublisherId(value); return *this;}
-
-    /**
-     * <p>The ID of the extension publisher.</p> <p>If you don't supply a
-     * <code>PublisherId</code>, and you have registered as an extension publisher,
-     * <code>DescribePublisher</code> returns information about your own publisher
-     * account.</p>
-     */
-    inline DescribePublisherRequest& WithPublisherId(Aws::String&& value) { SetPublisherId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the extension publisher.</p> <p>If you don't supply a
-     * <code>PublisherId</code>, and you have registered as an extension publisher,
-     * <code>DescribePublisher</code> returns information about your own publisher
-     * account.</p>
-     */
-    inline DescribePublisherRequest& WithPublisherId(const char* value) { SetPublisherId(value); return *this;}
-
+    template<typename PublisherIdT = Aws::String>
+    void SetPublisherId(PublisherIdT&& value) { m_publisherIdHasBeenSet = true; m_publisherId = std::forward<PublisherIdT>(value); }
+    template<typename PublisherIdT = Aws::String>
+    DescribePublisherRequest& WithPublisherId(PublisherIdT&& value) { SetPublisherId(std::forward<PublisherIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_publisherId;

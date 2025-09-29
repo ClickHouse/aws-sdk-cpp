@@ -18,17 +18,7 @@ namespace CodeDeploy
 namespace Model
 {
 
-TargetInstances::TargetInstances() : 
-    m_tagFiltersHasBeenSet(false),
-    m_autoScalingGroupsHasBeenSet(false),
-    m_ec2TagSetHasBeenSet(false)
-{
-}
-
-TargetInstances::TargetInstances(JsonView jsonValue) : 
-    m_tagFiltersHasBeenSet(false),
-    m_autoScalingGroupsHasBeenSet(false),
-    m_ec2TagSetHasBeenSet(false)
+TargetInstances::TargetInstances(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,7 +34,6 @@ TargetInstances& TargetInstances::operator =(JsonView jsonValue)
     }
     m_tagFiltersHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("autoScalingGroups"))
   {
     Aws::Utils::Array<JsonView> autoScalingGroupsJsonList = jsonValue.GetArray("autoScalingGroups");
@@ -54,14 +43,11 @@ TargetInstances& TargetInstances::operator =(JsonView jsonValue)
     }
     m_autoScalingGroupsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ec2TagSet"))
   {
     m_ec2TagSet = jsonValue.GetObject("ec2TagSet");
-
     m_ec2TagSetHasBeenSet = true;
   }
-
   return *this;
 }
 

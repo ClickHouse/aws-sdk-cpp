@@ -25,7 +25,7 @@ namespace Model
   class GetServiceEndpointRequest : public IoTWirelessRequest
   {
   public:
-    AWS_IOTWIRELESS_API GetServiceEndpointRequest();
+    AWS_IOTWIRELESS_API GetServiceEndpointRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,57 +38,20 @@ namespace Model
     AWS_IOTWIRELESS_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>The service type for which to get endpoint information about. Can be
      * <code>CUPS</code> for the Configuration and Update Server endpoint, or
-     * <code>LNS</code> for the LoRaWAN Network Server endpoint or <code>CLAIM</code>
-     * for the global endpoint.</p>
+     * <code>LNS</code> for the LoRaWAN Network Server endpoint.</p>
      */
-    inline const WirelessGatewayServiceType& GetServiceType() const{ return m_serviceType; }
-
-    /**
-     * <p>The service type for which to get endpoint information about. Can be
-     * <code>CUPS</code> for the Configuration and Update Server endpoint, or
-     * <code>LNS</code> for the LoRaWAN Network Server endpoint or <code>CLAIM</code>
-     * for the global endpoint.</p>
-     */
+    inline WirelessGatewayServiceType GetServiceType() const { return m_serviceType; }
     inline bool ServiceTypeHasBeenSet() const { return m_serviceTypeHasBeenSet; }
-
-    /**
-     * <p>The service type for which to get endpoint information about. Can be
-     * <code>CUPS</code> for the Configuration and Update Server endpoint, or
-     * <code>LNS</code> for the LoRaWAN Network Server endpoint or <code>CLAIM</code>
-     * for the global endpoint.</p>
-     */
-    inline void SetServiceType(const WirelessGatewayServiceType& value) { m_serviceTypeHasBeenSet = true; m_serviceType = value; }
-
-    /**
-     * <p>The service type for which to get endpoint information about. Can be
-     * <code>CUPS</code> for the Configuration and Update Server endpoint, or
-     * <code>LNS</code> for the LoRaWAN Network Server endpoint or <code>CLAIM</code>
-     * for the global endpoint.</p>
-     */
-    inline void SetServiceType(WirelessGatewayServiceType&& value) { m_serviceTypeHasBeenSet = true; m_serviceType = std::move(value); }
-
-    /**
-     * <p>The service type for which to get endpoint information about. Can be
-     * <code>CUPS</code> for the Configuration and Update Server endpoint, or
-     * <code>LNS</code> for the LoRaWAN Network Server endpoint or <code>CLAIM</code>
-     * for the global endpoint.</p>
-     */
-    inline GetServiceEndpointRequest& WithServiceType(const WirelessGatewayServiceType& value) { SetServiceType(value); return *this;}
-
-    /**
-     * <p>The service type for which to get endpoint information about. Can be
-     * <code>CUPS</code> for the Configuration and Update Server endpoint, or
-     * <code>LNS</code> for the LoRaWAN Network Server endpoint or <code>CLAIM</code>
-     * for the global endpoint.</p>
-     */
-    inline GetServiceEndpointRequest& WithServiceType(WirelessGatewayServiceType&& value) { SetServiceType(std::move(value)); return *this;}
-
+    inline void SetServiceType(WirelessGatewayServiceType value) { m_serviceTypeHasBeenSet = true; m_serviceType = value; }
+    inline GetServiceEndpointRequest& WithServiceType(WirelessGatewayServiceType value) { SetServiceType(value); return *this;}
+    ///@}
   private:
 
-    WirelessGatewayServiceType m_serviceType;
+    WirelessGatewayServiceType m_serviceType{WirelessGatewayServiceType::NOT_SET};
     bool m_serviceTypeHasBeenSet = false;
   };
 

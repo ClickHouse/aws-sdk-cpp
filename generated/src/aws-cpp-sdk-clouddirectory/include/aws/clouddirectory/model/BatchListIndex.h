@@ -36,145 +36,59 @@ namespace Model
   class BatchListIndex
   {
   public:
-    AWS_CLOUDDIRECTORY_API BatchListIndex();
+    AWS_CLOUDDIRECTORY_API BatchListIndex() = default;
     AWS_CLOUDDIRECTORY_API BatchListIndex(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDDIRECTORY_API BatchListIndex& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDDIRECTORY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specifies the ranges of indexed values that you want to query.</p>
      */
-    inline const Aws::Vector<ObjectAttributeRange>& GetRangesOnIndexedValues() const{ return m_rangesOnIndexedValues; }
-
-    /**
-     * <p>Specifies the ranges of indexed values that you want to query.</p>
-     */
+    inline const Aws::Vector<ObjectAttributeRange>& GetRangesOnIndexedValues() const { return m_rangesOnIndexedValues; }
     inline bool RangesOnIndexedValuesHasBeenSet() const { return m_rangesOnIndexedValuesHasBeenSet; }
+    template<typename RangesOnIndexedValuesT = Aws::Vector<ObjectAttributeRange>>
+    void SetRangesOnIndexedValues(RangesOnIndexedValuesT&& value) { m_rangesOnIndexedValuesHasBeenSet = true; m_rangesOnIndexedValues = std::forward<RangesOnIndexedValuesT>(value); }
+    template<typename RangesOnIndexedValuesT = Aws::Vector<ObjectAttributeRange>>
+    BatchListIndex& WithRangesOnIndexedValues(RangesOnIndexedValuesT&& value) { SetRangesOnIndexedValues(std::forward<RangesOnIndexedValuesT>(value)); return *this;}
+    template<typename RangesOnIndexedValuesT = ObjectAttributeRange>
+    BatchListIndex& AddRangesOnIndexedValues(RangesOnIndexedValuesT&& value) { m_rangesOnIndexedValuesHasBeenSet = true; m_rangesOnIndexedValues.emplace_back(std::forward<RangesOnIndexedValuesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Specifies the ranges of indexed values that you want to query.</p>
-     */
-    inline void SetRangesOnIndexedValues(const Aws::Vector<ObjectAttributeRange>& value) { m_rangesOnIndexedValuesHasBeenSet = true; m_rangesOnIndexedValues = value; }
-
-    /**
-     * <p>Specifies the ranges of indexed values that you want to query.</p>
-     */
-    inline void SetRangesOnIndexedValues(Aws::Vector<ObjectAttributeRange>&& value) { m_rangesOnIndexedValuesHasBeenSet = true; m_rangesOnIndexedValues = std::move(value); }
-
-    /**
-     * <p>Specifies the ranges of indexed values that you want to query.</p>
-     */
-    inline BatchListIndex& WithRangesOnIndexedValues(const Aws::Vector<ObjectAttributeRange>& value) { SetRangesOnIndexedValues(value); return *this;}
-
-    /**
-     * <p>Specifies the ranges of indexed values that you want to query.</p>
-     */
-    inline BatchListIndex& WithRangesOnIndexedValues(Aws::Vector<ObjectAttributeRange>&& value) { SetRangesOnIndexedValues(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the ranges of indexed values that you want to query.</p>
-     */
-    inline BatchListIndex& AddRangesOnIndexedValues(const ObjectAttributeRange& value) { m_rangesOnIndexedValuesHasBeenSet = true; m_rangesOnIndexedValues.push_back(value); return *this; }
-
-    /**
-     * <p>Specifies the ranges of indexed values that you want to query.</p>
-     */
-    inline BatchListIndex& AddRangesOnIndexedValues(ObjectAttributeRange&& value) { m_rangesOnIndexedValuesHasBeenSet = true; m_rangesOnIndexedValues.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The reference to the index to list.</p>
      */
-    inline const ObjectReference& GetIndexReference() const{ return m_indexReference; }
-
-    /**
-     * <p>The reference to the index to list.</p>
-     */
+    inline const ObjectReference& GetIndexReference() const { return m_indexReference; }
     inline bool IndexReferenceHasBeenSet() const { return m_indexReferenceHasBeenSet; }
+    template<typename IndexReferenceT = ObjectReference>
+    void SetIndexReference(IndexReferenceT&& value) { m_indexReferenceHasBeenSet = true; m_indexReference = std::forward<IndexReferenceT>(value); }
+    template<typename IndexReferenceT = ObjectReference>
+    BatchListIndex& WithIndexReference(IndexReferenceT&& value) { SetIndexReference(std::forward<IndexReferenceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The reference to the index to list.</p>
-     */
-    inline void SetIndexReference(const ObjectReference& value) { m_indexReferenceHasBeenSet = true; m_indexReference = value; }
-
-    /**
-     * <p>The reference to the index to list.</p>
-     */
-    inline void SetIndexReference(ObjectReference&& value) { m_indexReferenceHasBeenSet = true; m_indexReference = std::move(value); }
-
-    /**
-     * <p>The reference to the index to list.</p>
-     */
-    inline BatchListIndex& WithIndexReference(const ObjectReference& value) { SetIndexReference(value); return *this;}
-
-    /**
-     * <p>The reference to the index to list.</p>
-     */
-    inline BatchListIndex& WithIndexReference(ObjectReference&& value) { SetIndexReference(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of results to retrieve.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of results to retrieve.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of results to retrieve.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of results to retrieve.</p>
-     */
     inline BatchListIndex& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The pagination token.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The pagination token.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
-
-    /**
-     * <p>The pagination token.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The pagination token.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The pagination token.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The pagination token.</p>
-     */
-    inline BatchListIndex& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The pagination token.</p>
-     */
-    inline BatchListIndex& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The pagination token.</p>
-     */
-    inline BatchListIndex& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    BatchListIndex& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<ObjectAttributeRange> m_rangesOnIndexedValues;
@@ -183,7 +97,7 @@ namespace Model
     ObjectReference m_indexReference;
     bool m_indexReferenceHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     Aws::String m_nextToken;

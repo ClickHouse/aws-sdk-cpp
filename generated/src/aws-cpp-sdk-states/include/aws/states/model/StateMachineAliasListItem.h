@@ -33,105 +33,43 @@ namespace Model
   class StateMachineAliasListItem
   {
   public:
-    AWS_SFN_API StateMachineAliasListItem();
+    AWS_SFN_API StateMachineAliasListItem() = default;
     AWS_SFN_API StateMachineAliasListItem(Aws::Utils::Json::JsonView jsonValue);
     AWS_SFN_API StateMachineAliasListItem& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SFN_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) that identifies a state machine alias. The
      * alias ARN is a combination of state machine ARN and the alias name separated by
      * a colon (:). For example, <code>stateMachineARN:PROD</code>.</p>
      */
-    inline const Aws::String& GetStateMachineAliasArn() const{ return m_stateMachineAliasArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that identifies a state machine alias. The
-     * alias ARN is a combination of state machine ARN and the alias name separated by
-     * a colon (:). For example, <code>stateMachineARN:PROD</code>.</p>
-     */
+    inline const Aws::String& GetStateMachineAliasArn() const { return m_stateMachineAliasArn; }
     inline bool StateMachineAliasArnHasBeenSet() const { return m_stateMachineAliasArnHasBeenSet; }
+    template<typename StateMachineAliasArnT = Aws::String>
+    void SetStateMachineAliasArn(StateMachineAliasArnT&& value) { m_stateMachineAliasArnHasBeenSet = true; m_stateMachineAliasArn = std::forward<StateMachineAliasArnT>(value); }
+    template<typename StateMachineAliasArnT = Aws::String>
+    StateMachineAliasListItem& WithStateMachineAliasArn(StateMachineAliasArnT&& value) { SetStateMachineAliasArn(std::forward<StateMachineAliasArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) that identifies a state machine alias. The
-     * alias ARN is a combination of state machine ARN and the alias name separated by
-     * a colon (:). For example, <code>stateMachineARN:PROD</code>.</p>
-     */
-    inline void SetStateMachineAliasArn(const Aws::String& value) { m_stateMachineAliasArnHasBeenSet = true; m_stateMachineAliasArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that identifies a state machine alias. The
-     * alias ARN is a combination of state machine ARN and the alias name separated by
-     * a colon (:). For example, <code>stateMachineARN:PROD</code>.</p>
-     */
-    inline void SetStateMachineAliasArn(Aws::String&& value) { m_stateMachineAliasArnHasBeenSet = true; m_stateMachineAliasArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that identifies a state machine alias. The
-     * alias ARN is a combination of state machine ARN and the alias name separated by
-     * a colon (:). For example, <code>stateMachineARN:PROD</code>.</p>
-     */
-    inline void SetStateMachineAliasArn(const char* value) { m_stateMachineAliasArnHasBeenSet = true; m_stateMachineAliasArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that identifies a state machine alias. The
-     * alias ARN is a combination of state machine ARN and the alias name separated by
-     * a colon (:). For example, <code>stateMachineARN:PROD</code>.</p>
-     */
-    inline StateMachineAliasListItem& WithStateMachineAliasArn(const Aws::String& value) { SetStateMachineAliasArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that identifies a state machine alias. The
-     * alias ARN is a combination of state machine ARN and the alias name separated by
-     * a colon (:). For example, <code>stateMachineARN:PROD</code>.</p>
-     */
-    inline StateMachineAliasListItem& WithStateMachineAliasArn(Aws::String&& value) { SetStateMachineAliasArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that identifies a state machine alias. The
-     * alias ARN is a combination of state machine ARN and the alias name separated by
-     * a colon (:). For example, <code>stateMachineARN:PROD</code>.</p>
-     */
-    inline StateMachineAliasListItem& WithStateMachineAliasArn(const char* value) { SetStateMachineAliasArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The creation date of a state machine alias.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreationDate() const{ return m_creationDate; }
-
-    /**
-     * <p>The creation date of a state machine alias.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreationDate() const { return m_creationDate; }
     inline bool CreationDateHasBeenSet() const { return m_creationDateHasBeenSet; }
-
-    /**
-     * <p>The creation date of a state machine alias.</p>
-     */
-    inline void SetCreationDate(const Aws::Utils::DateTime& value) { m_creationDateHasBeenSet = true; m_creationDate = value; }
-
-    /**
-     * <p>The creation date of a state machine alias.</p>
-     */
-    inline void SetCreationDate(Aws::Utils::DateTime&& value) { m_creationDateHasBeenSet = true; m_creationDate = std::move(value); }
-
-    /**
-     * <p>The creation date of a state machine alias.</p>
-     */
-    inline StateMachineAliasListItem& WithCreationDate(const Aws::Utils::DateTime& value) { SetCreationDate(value); return *this;}
-
-    /**
-     * <p>The creation date of a state machine alias.</p>
-     */
-    inline StateMachineAliasListItem& WithCreationDate(Aws::Utils::DateTime&& value) { SetCreationDate(std::move(value)); return *this;}
-
+    template<typename CreationDateT = Aws::Utils::DateTime>
+    void SetCreationDate(CreationDateT&& value) { m_creationDateHasBeenSet = true; m_creationDate = std::forward<CreationDateT>(value); }
+    template<typename CreationDateT = Aws::Utils::DateTime>
+    StateMachineAliasListItem& WithCreationDate(CreationDateT&& value) { SetCreationDate(std::forward<CreationDateT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_stateMachineAliasArn;
     bool m_stateMachineAliasArnHasBeenSet = false;
 
-    Aws::Utils::DateTime m_creationDate;
+    Aws::Utils::DateTime m_creationDate{};
     bool m_creationDateHasBeenSet = false;
   };
 

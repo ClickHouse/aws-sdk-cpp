@@ -6,6 +6,7 @@
 #pragma once
 #include <aws/quicksight/QuickSight_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/quicksight/model/TopicUserExperienceVersion.h>
 #include <utility>
 
 namespace Aws
@@ -31,142 +32,58 @@ namespace Model
   class TopicSummary
   {
   public:
-    AWS_QUICKSIGHT_API TopicSummary();
+    AWS_QUICKSIGHT_API TopicSummary() = default;
     AWS_QUICKSIGHT_API TopicSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API TopicSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the topic.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the topic.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    TopicSummary& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the topic.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the topic.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the topic.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the topic.</p>
-     */
-    inline TopicSummary& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the topic.</p>
-     */
-    inline TopicSummary& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the topic.</p>
-     */
-    inline TopicSummary& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID for the topic. This ID is unique per Amazon Web Services Region for
      * each Amazon Web Services account.</p>
      */
-    inline const Aws::String& GetTopicId() const{ return m_topicId; }
-
-    /**
-     * <p>The ID for the topic. This ID is unique per Amazon Web Services Region for
-     * each Amazon Web Services account.</p>
-     */
+    inline const Aws::String& GetTopicId() const { return m_topicId; }
     inline bool TopicIdHasBeenSet() const { return m_topicIdHasBeenSet; }
+    template<typename TopicIdT = Aws::String>
+    void SetTopicId(TopicIdT&& value) { m_topicIdHasBeenSet = true; m_topicId = std::forward<TopicIdT>(value); }
+    template<typename TopicIdT = Aws::String>
+    TopicSummary& WithTopicId(TopicIdT&& value) { SetTopicId(std::forward<TopicIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID for the topic. This ID is unique per Amazon Web Services Region for
-     * each Amazon Web Services account.</p>
-     */
-    inline void SetTopicId(const Aws::String& value) { m_topicIdHasBeenSet = true; m_topicId = value; }
-
-    /**
-     * <p>The ID for the topic. This ID is unique per Amazon Web Services Region for
-     * each Amazon Web Services account.</p>
-     */
-    inline void SetTopicId(Aws::String&& value) { m_topicIdHasBeenSet = true; m_topicId = std::move(value); }
-
-    /**
-     * <p>The ID for the topic. This ID is unique per Amazon Web Services Region for
-     * each Amazon Web Services account.</p>
-     */
-    inline void SetTopicId(const char* value) { m_topicIdHasBeenSet = true; m_topicId.assign(value); }
-
-    /**
-     * <p>The ID for the topic. This ID is unique per Amazon Web Services Region for
-     * each Amazon Web Services account.</p>
-     */
-    inline TopicSummary& WithTopicId(const Aws::String& value) { SetTopicId(value); return *this;}
-
-    /**
-     * <p>The ID for the topic. This ID is unique per Amazon Web Services Region for
-     * each Amazon Web Services account.</p>
-     */
-    inline TopicSummary& WithTopicId(Aws::String&& value) { SetTopicId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID for the topic. This ID is unique per Amazon Web Services Region for
-     * each Amazon Web Services account.</p>
-     */
-    inline TopicSummary& WithTopicId(const char* value) { SetTopicId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the topic.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the topic.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    TopicSummary& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name of the topic.</p>
+     * <p>The user experience version of the topic.</p>
      */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the topic.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the topic.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the topic.</p>
-     */
-    inline TopicSummary& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the topic.</p>
-     */
-    inline TopicSummary& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the topic.</p>
-     */
-    inline TopicSummary& WithName(const char* value) { SetName(value); return *this;}
-
+    inline TopicUserExperienceVersion GetUserExperienceVersion() const { return m_userExperienceVersion; }
+    inline bool UserExperienceVersionHasBeenSet() const { return m_userExperienceVersionHasBeenSet; }
+    inline void SetUserExperienceVersion(TopicUserExperienceVersion value) { m_userExperienceVersionHasBeenSet = true; m_userExperienceVersion = value; }
+    inline TopicSummary& WithUserExperienceVersion(TopicUserExperienceVersion value) { SetUserExperienceVersion(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;
@@ -177,6 +94,9 @@ namespace Model
 
     Aws::String m_name;
     bool m_nameHasBeenSet = false;
+
+    TopicUserExperienceVersion m_userExperienceVersion{TopicUserExperienceVersion::NOT_SET};
+    bool m_userExperienceVersionHasBeenSet = false;
   };
 
 } // namespace Model

@@ -18,25 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsRedshiftClusterLoggingStatus::AwsRedshiftClusterLoggingStatus() : 
-    m_bucketNameHasBeenSet(false),
-    m_lastFailureMessageHasBeenSet(false),
-    m_lastFailureTimeHasBeenSet(false),
-    m_lastSuccessfulDeliveryTimeHasBeenSet(false),
-    m_loggingEnabled(false),
-    m_loggingEnabledHasBeenSet(false),
-    m_s3KeyPrefixHasBeenSet(false)
-{
-}
-
-AwsRedshiftClusterLoggingStatus::AwsRedshiftClusterLoggingStatus(JsonView jsonValue) : 
-    m_bucketNameHasBeenSet(false),
-    m_lastFailureMessageHasBeenSet(false),
-    m_lastFailureTimeHasBeenSet(false),
-    m_lastSuccessfulDeliveryTimeHasBeenSet(false),
-    m_loggingEnabled(false),
-    m_loggingEnabledHasBeenSet(false),
-    m_s3KeyPrefixHasBeenSet(false)
+AwsRedshiftClusterLoggingStatus::AwsRedshiftClusterLoggingStatus(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,45 +28,33 @@ AwsRedshiftClusterLoggingStatus& AwsRedshiftClusterLoggingStatus::operator =(Jso
   if(jsonValue.ValueExists("BucketName"))
   {
     m_bucketName = jsonValue.GetString("BucketName");
-
     m_bucketNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LastFailureMessage"))
   {
     m_lastFailureMessage = jsonValue.GetString("LastFailureMessage");
-
     m_lastFailureMessageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LastFailureTime"))
   {
     m_lastFailureTime = jsonValue.GetString("LastFailureTime");
-
     m_lastFailureTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LastSuccessfulDeliveryTime"))
   {
     m_lastSuccessfulDeliveryTime = jsonValue.GetString("LastSuccessfulDeliveryTime");
-
     m_lastSuccessfulDeliveryTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LoggingEnabled"))
   {
     m_loggingEnabled = jsonValue.GetBool("LoggingEnabled");
-
     m_loggingEnabledHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("S3KeyPrefix"))
   {
     m_s3KeyPrefix = jsonValue.GetString("S3KeyPrefix");
-
     m_s3KeyPrefixHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -22,7 +22,7 @@ namespace Model
   class CancelQuantumTaskRequest : public BraketRequest
   {
   public:
-    AWS_BRAKET_API CancelQuantumTaskRequest();
+    AWS_BRAKET_API CancelQuantumTaskRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,94 +33,36 @@ namespace Model
     AWS_BRAKET_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
-     * <p>The client token associated with the request.</p>
+     * <p>The ARN of the quantum task to cancel.</p>
      */
-    inline const Aws::String& GetClientToken() const{ return m_clientToken; }
-
-    /**
-     * <p>The client token associated with the request.</p>
-     */
-    inline bool ClientTokenHasBeenSet() const { return m_clientTokenHasBeenSet; }
-
-    /**
-     * <p>The client token associated with the request.</p>
-     */
-    inline void SetClientToken(const Aws::String& value) { m_clientTokenHasBeenSet = true; m_clientToken = value; }
-
-    /**
-     * <p>The client token associated with the request.</p>
-     */
-    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::move(value); }
-
-    /**
-     * <p>The client token associated with the request.</p>
-     */
-    inline void SetClientToken(const char* value) { m_clientTokenHasBeenSet = true; m_clientToken.assign(value); }
-
-    /**
-     * <p>The client token associated with the request.</p>
-     */
-    inline CancelQuantumTaskRequest& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
-
-    /**
-     * <p>The client token associated with the request.</p>
-     */
-    inline CancelQuantumTaskRequest& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The client token associated with the request.</p>
-     */
-    inline CancelQuantumTaskRequest& WithClientToken(const char* value) { SetClientToken(value); return *this;}
-
-
-    /**
-     * <p>The ARN of the task to cancel.</p>
-     */
-    inline const Aws::String& GetQuantumTaskArn() const{ return m_quantumTaskArn; }
-
-    /**
-     * <p>The ARN of the task to cancel.</p>
-     */
+    inline const Aws::String& GetQuantumTaskArn() const { return m_quantumTaskArn; }
     inline bool QuantumTaskArnHasBeenSet() const { return m_quantumTaskArnHasBeenSet; }
+    template<typename QuantumTaskArnT = Aws::String>
+    void SetQuantumTaskArn(QuantumTaskArnT&& value) { m_quantumTaskArnHasBeenSet = true; m_quantumTaskArn = std::forward<QuantumTaskArnT>(value); }
+    template<typename QuantumTaskArnT = Aws::String>
+    CancelQuantumTaskRequest& WithQuantumTaskArn(QuantumTaskArnT&& value) { SetQuantumTaskArn(std::forward<QuantumTaskArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ARN of the task to cancel.</p>
+     * <p>The client token associated with the cancellation request.</p>
      */
-    inline void SetQuantumTaskArn(const Aws::String& value) { m_quantumTaskArnHasBeenSet = true; m_quantumTaskArn = value; }
-
-    /**
-     * <p>The ARN of the task to cancel.</p>
-     */
-    inline void SetQuantumTaskArn(Aws::String&& value) { m_quantumTaskArnHasBeenSet = true; m_quantumTaskArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the task to cancel.</p>
-     */
-    inline void SetQuantumTaskArn(const char* value) { m_quantumTaskArnHasBeenSet = true; m_quantumTaskArn.assign(value); }
-
-    /**
-     * <p>The ARN of the task to cancel.</p>
-     */
-    inline CancelQuantumTaskRequest& WithQuantumTaskArn(const Aws::String& value) { SetQuantumTaskArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the task to cancel.</p>
-     */
-    inline CancelQuantumTaskRequest& WithQuantumTaskArn(Aws::String&& value) { SetQuantumTaskArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the task to cancel.</p>
-     */
-    inline CancelQuantumTaskRequest& WithQuantumTaskArn(const char* value) { SetQuantumTaskArn(value); return *this;}
-
+    inline const Aws::String& GetClientToken() const { return m_clientToken; }
+    inline bool ClientTokenHasBeenSet() const { return m_clientTokenHasBeenSet; }
+    template<typename ClientTokenT = Aws::String>
+    void SetClientToken(ClientTokenT&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::forward<ClientTokenT>(value); }
+    template<typename ClientTokenT = Aws::String>
+    CancelQuantumTaskRequest& WithClientToken(ClientTokenT&& value) { SetClientToken(std::forward<ClientTokenT>(value)); return *this;}
+    ///@}
   private:
-
-    Aws::String m_clientToken;
-    bool m_clientTokenHasBeenSet = false;
 
     Aws::String m_quantumTaskArn;
     bool m_quantumTaskArnHasBeenSet = false;
+
+    Aws::String m_clientToken{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_clientTokenHasBeenSet = true;
   };
 
 } // namespace Model

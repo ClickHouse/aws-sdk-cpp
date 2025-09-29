@@ -33,86 +33,40 @@ namespace Model
   class LookupAttribute
   {
   public:
-    AWS_CLOUDTRAIL_API LookupAttribute();
+    AWS_CLOUDTRAIL_API LookupAttribute() = default;
     AWS_CLOUDTRAIL_API LookupAttribute(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDTRAIL_API LookupAttribute& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDTRAIL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specifies an attribute on which to filter the events returned.</p>
      */
-    inline const LookupAttributeKey& GetAttributeKey() const{ return m_attributeKey; }
-
-    /**
-     * <p>Specifies an attribute on which to filter the events returned.</p>
-     */
+    inline LookupAttributeKey GetAttributeKey() const { return m_attributeKey; }
     inline bool AttributeKeyHasBeenSet() const { return m_attributeKeyHasBeenSet; }
+    inline void SetAttributeKey(LookupAttributeKey value) { m_attributeKeyHasBeenSet = true; m_attributeKey = value; }
+    inline LookupAttribute& WithAttributeKey(LookupAttributeKey value) { SetAttributeKey(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Specifies an attribute on which to filter the events returned.</p>
+     * <p>Specifies a value for the specified <code>AttributeKey</code>.</p> <p>The
+     * maximum length for the <code>AttributeValue</code> is 2000 characters. The
+     * following characters ('<code>_</code>', '<code> </code>', '<code>,</code>',
+     * '<code>\\n</code>') count as two characters towards the 2000 character
+     * limit.</p>
      */
-    inline void SetAttributeKey(const LookupAttributeKey& value) { m_attributeKeyHasBeenSet = true; m_attributeKey = value; }
-
-    /**
-     * <p>Specifies an attribute on which to filter the events returned.</p>
-     */
-    inline void SetAttributeKey(LookupAttributeKey&& value) { m_attributeKeyHasBeenSet = true; m_attributeKey = std::move(value); }
-
-    /**
-     * <p>Specifies an attribute on which to filter the events returned.</p>
-     */
-    inline LookupAttribute& WithAttributeKey(const LookupAttributeKey& value) { SetAttributeKey(value); return *this;}
-
-    /**
-     * <p>Specifies an attribute on which to filter the events returned.</p>
-     */
-    inline LookupAttribute& WithAttributeKey(LookupAttributeKey&& value) { SetAttributeKey(std::move(value)); return *this;}
-
-
-    /**
-     * <p>Specifies a value for the specified AttributeKey.</p>
-     */
-    inline const Aws::String& GetAttributeValue() const{ return m_attributeValue; }
-
-    /**
-     * <p>Specifies a value for the specified AttributeKey.</p>
-     */
+    inline const Aws::String& GetAttributeValue() const { return m_attributeValue; }
     inline bool AttributeValueHasBeenSet() const { return m_attributeValueHasBeenSet; }
-
-    /**
-     * <p>Specifies a value for the specified AttributeKey.</p>
-     */
-    inline void SetAttributeValue(const Aws::String& value) { m_attributeValueHasBeenSet = true; m_attributeValue = value; }
-
-    /**
-     * <p>Specifies a value for the specified AttributeKey.</p>
-     */
-    inline void SetAttributeValue(Aws::String&& value) { m_attributeValueHasBeenSet = true; m_attributeValue = std::move(value); }
-
-    /**
-     * <p>Specifies a value for the specified AttributeKey.</p>
-     */
-    inline void SetAttributeValue(const char* value) { m_attributeValueHasBeenSet = true; m_attributeValue.assign(value); }
-
-    /**
-     * <p>Specifies a value for the specified AttributeKey.</p>
-     */
-    inline LookupAttribute& WithAttributeValue(const Aws::String& value) { SetAttributeValue(value); return *this;}
-
-    /**
-     * <p>Specifies a value for the specified AttributeKey.</p>
-     */
-    inline LookupAttribute& WithAttributeValue(Aws::String&& value) { SetAttributeValue(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies a value for the specified AttributeKey.</p>
-     */
-    inline LookupAttribute& WithAttributeValue(const char* value) { SetAttributeValue(value); return *this;}
-
+    template<typename AttributeValueT = Aws::String>
+    void SetAttributeValue(AttributeValueT&& value) { m_attributeValueHasBeenSet = true; m_attributeValue = std::forward<AttributeValueT>(value); }
+    template<typename AttributeValueT = Aws::String>
+    LookupAttribute& WithAttributeValue(AttributeValueT&& value) { SetAttributeValue(std::forward<AttributeValueT>(value)); return *this;}
+    ///@}
   private:
 
-    LookupAttributeKey m_attributeKey;
+    LookupAttributeKey m_attributeKey{LookupAttributeKey::NOT_SET};
     bool m_attributeKeyHasBeenSet = false;
 
     Aws::String m_attributeValue;

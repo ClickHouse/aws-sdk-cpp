@@ -32,52 +32,23 @@ namespace Model
   class TextGenerationResolvedAttributes
   {
   public:
-    AWS_SAGEMAKER_API TextGenerationResolvedAttributes();
+    AWS_SAGEMAKER_API TextGenerationResolvedAttributes() = default;
     AWS_SAGEMAKER_API TextGenerationResolvedAttributes(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API TextGenerationResolvedAttributes& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the base model to fine-tune.</p>
      */
-    inline const Aws::String& GetBaseModelName() const{ return m_baseModelName; }
-
-    /**
-     * <p>The name of the base model to fine-tune.</p>
-     */
+    inline const Aws::String& GetBaseModelName() const { return m_baseModelName; }
     inline bool BaseModelNameHasBeenSet() const { return m_baseModelNameHasBeenSet; }
-
-    /**
-     * <p>The name of the base model to fine-tune.</p>
-     */
-    inline void SetBaseModelName(const Aws::String& value) { m_baseModelNameHasBeenSet = true; m_baseModelName = value; }
-
-    /**
-     * <p>The name of the base model to fine-tune.</p>
-     */
-    inline void SetBaseModelName(Aws::String&& value) { m_baseModelNameHasBeenSet = true; m_baseModelName = std::move(value); }
-
-    /**
-     * <p>The name of the base model to fine-tune.</p>
-     */
-    inline void SetBaseModelName(const char* value) { m_baseModelNameHasBeenSet = true; m_baseModelName.assign(value); }
-
-    /**
-     * <p>The name of the base model to fine-tune.</p>
-     */
-    inline TextGenerationResolvedAttributes& WithBaseModelName(const Aws::String& value) { SetBaseModelName(value); return *this;}
-
-    /**
-     * <p>The name of the base model to fine-tune.</p>
-     */
-    inline TextGenerationResolvedAttributes& WithBaseModelName(Aws::String&& value) { SetBaseModelName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the base model to fine-tune.</p>
-     */
-    inline TextGenerationResolvedAttributes& WithBaseModelName(const char* value) { SetBaseModelName(value); return *this;}
-
+    template<typename BaseModelNameT = Aws::String>
+    void SetBaseModelName(BaseModelNameT&& value) { m_baseModelNameHasBeenSet = true; m_baseModelName = std::forward<BaseModelNameT>(value); }
+    template<typename BaseModelNameT = Aws::String>
+    TextGenerationResolvedAttributes& WithBaseModelName(BaseModelNameT&& value) { SetBaseModelName(std::forward<BaseModelNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_baseModelName;

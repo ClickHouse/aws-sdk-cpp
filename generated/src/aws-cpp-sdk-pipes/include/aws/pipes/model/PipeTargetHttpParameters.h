@@ -5,8 +5,8 @@
 
 #pragma once
 #include <aws/pipes/Pipes_EXPORTS.h>
-#include <aws/core/utils/memory/stl/AWSMap.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/core/utils/memory/stl/AWSMap.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <utility>
 
@@ -34,231 +34,67 @@ namespace Model
   class PipeTargetHttpParameters
   {
   public:
-    AWS_PIPES_API PipeTargetHttpParameters();
+    AWS_PIPES_API PipeTargetHttpParameters() = default;
     AWS_PIPES_API PipeTargetHttpParameters(Aws::Utils::Json::JsonView jsonValue);
     AWS_PIPES_API PipeTargetHttpParameters& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PIPES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
-    /**
-     * <p>The headers that need to be sent as part of request invoking the API Gateway
-     * REST API or EventBridge ApiDestination.</p>
-     */
-    inline const Aws::Map<Aws::String, Aws::String>& GetHeaderParameters() const{ return m_headerParameters; }
-
-    /**
-     * <p>The headers that need to be sent as part of request invoking the API Gateway
-     * REST API or EventBridge ApiDestination.</p>
-     */
-    inline bool HeaderParametersHasBeenSet() const { return m_headerParametersHasBeenSet; }
-
-    /**
-     * <p>The headers that need to be sent as part of request invoking the API Gateway
-     * REST API or EventBridge ApiDestination.</p>
-     */
-    inline void SetHeaderParameters(const Aws::Map<Aws::String, Aws::String>& value) { m_headerParametersHasBeenSet = true; m_headerParameters = value; }
-
-    /**
-     * <p>The headers that need to be sent as part of request invoking the API Gateway
-     * REST API or EventBridge ApiDestination.</p>
-     */
-    inline void SetHeaderParameters(Aws::Map<Aws::String, Aws::String>&& value) { m_headerParametersHasBeenSet = true; m_headerParameters = std::move(value); }
-
-    /**
-     * <p>The headers that need to be sent as part of request invoking the API Gateway
-     * REST API or EventBridge ApiDestination.</p>
-     */
-    inline PipeTargetHttpParameters& WithHeaderParameters(const Aws::Map<Aws::String, Aws::String>& value) { SetHeaderParameters(value); return *this;}
-
-    /**
-     * <p>The headers that need to be sent as part of request invoking the API Gateway
-     * REST API or EventBridge ApiDestination.</p>
-     */
-    inline PipeTargetHttpParameters& WithHeaderParameters(Aws::Map<Aws::String, Aws::String>&& value) { SetHeaderParameters(std::move(value)); return *this;}
-
-    /**
-     * <p>The headers that need to be sent as part of request invoking the API Gateway
-     * REST API or EventBridge ApiDestination.</p>
-     */
-    inline PipeTargetHttpParameters& AddHeaderParameters(const Aws::String& key, const Aws::String& value) { m_headerParametersHasBeenSet = true; m_headerParameters.emplace(key, value); return *this; }
-
-    /**
-     * <p>The headers that need to be sent as part of request invoking the API Gateway
-     * REST API or EventBridge ApiDestination.</p>
-     */
-    inline PipeTargetHttpParameters& AddHeaderParameters(Aws::String&& key, const Aws::String& value) { m_headerParametersHasBeenSet = true; m_headerParameters.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The headers that need to be sent as part of request invoking the API Gateway
-     * REST API or EventBridge ApiDestination.</p>
-     */
-    inline PipeTargetHttpParameters& AddHeaderParameters(const Aws::String& key, Aws::String&& value) { m_headerParametersHasBeenSet = true; m_headerParameters.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The headers that need to be sent as part of request invoking the API Gateway
-     * REST API or EventBridge ApiDestination.</p>
-     */
-    inline PipeTargetHttpParameters& AddHeaderParameters(Aws::String&& key, Aws::String&& value) { m_headerParametersHasBeenSet = true; m_headerParameters.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The headers that need to be sent as part of request invoking the API Gateway
-     * REST API or EventBridge ApiDestination.</p>
-     */
-    inline PipeTargetHttpParameters& AddHeaderParameters(const char* key, Aws::String&& value) { m_headerParametersHasBeenSet = true; m_headerParameters.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The headers that need to be sent as part of request invoking the API Gateway
-     * REST API or EventBridge ApiDestination.</p>
-     */
-    inline PipeTargetHttpParameters& AddHeaderParameters(Aws::String&& key, const char* value) { m_headerParametersHasBeenSet = true; m_headerParameters.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The headers that need to be sent as part of request invoking the API Gateway
-     * REST API or EventBridge ApiDestination.</p>
-     */
-    inline PipeTargetHttpParameters& AddHeaderParameters(const char* key, const char* value) { m_headerParametersHasBeenSet = true; m_headerParameters.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>The path parameter values to be used to populate API Gateway REST API or
      * EventBridge ApiDestination path wildcards ("*").</p>
      */
-    inline const Aws::Vector<Aws::String>& GetPathParameterValues() const{ return m_pathParameterValues; }
-
-    /**
-     * <p>The path parameter values to be used to populate API Gateway REST API or
-     * EventBridge ApiDestination path wildcards ("*").</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetPathParameterValues() const { return m_pathParameterValues; }
     inline bool PathParameterValuesHasBeenSet() const { return m_pathParameterValuesHasBeenSet; }
+    template<typename PathParameterValuesT = Aws::Vector<Aws::String>>
+    void SetPathParameterValues(PathParameterValuesT&& value) { m_pathParameterValuesHasBeenSet = true; m_pathParameterValues = std::forward<PathParameterValuesT>(value); }
+    template<typename PathParameterValuesT = Aws::Vector<Aws::String>>
+    PipeTargetHttpParameters& WithPathParameterValues(PathParameterValuesT&& value) { SetPathParameterValues(std::forward<PathParameterValuesT>(value)); return *this;}
+    template<typename PathParameterValuesT = Aws::String>
+    PipeTargetHttpParameters& AddPathParameterValues(PathParameterValuesT&& value) { m_pathParameterValuesHasBeenSet = true; m_pathParameterValues.emplace_back(std::forward<PathParameterValuesT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The path parameter values to be used to populate API Gateway REST API or
-     * EventBridge ApiDestination path wildcards ("*").</p>
+     * <p>The headers that need to be sent as part of request invoking the API Gateway
+     * REST API or EventBridge ApiDestination.</p>
      */
-    inline void SetPathParameterValues(const Aws::Vector<Aws::String>& value) { m_pathParameterValuesHasBeenSet = true; m_pathParameterValues = value; }
+    inline const Aws::Map<Aws::String, Aws::String>& GetHeaderParameters() const { return m_headerParameters; }
+    inline bool HeaderParametersHasBeenSet() const { return m_headerParametersHasBeenSet; }
+    template<typename HeaderParametersT = Aws::Map<Aws::String, Aws::String>>
+    void SetHeaderParameters(HeaderParametersT&& value) { m_headerParametersHasBeenSet = true; m_headerParameters = std::forward<HeaderParametersT>(value); }
+    template<typename HeaderParametersT = Aws::Map<Aws::String, Aws::String>>
+    PipeTargetHttpParameters& WithHeaderParameters(HeaderParametersT&& value) { SetHeaderParameters(std::forward<HeaderParametersT>(value)); return *this;}
+    template<typename HeaderParametersKeyT = Aws::String, typename HeaderParametersValueT = Aws::String>
+    PipeTargetHttpParameters& AddHeaderParameters(HeaderParametersKeyT&& key, HeaderParametersValueT&& value) {
+      m_headerParametersHasBeenSet = true; m_headerParameters.emplace(std::forward<HeaderParametersKeyT>(key), std::forward<HeaderParametersValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>The path parameter values to be used to populate API Gateway REST API or
-     * EventBridge ApiDestination path wildcards ("*").</p>
-     */
-    inline void SetPathParameterValues(Aws::Vector<Aws::String>&& value) { m_pathParameterValuesHasBeenSet = true; m_pathParameterValues = std::move(value); }
-
-    /**
-     * <p>The path parameter values to be used to populate API Gateway REST API or
-     * EventBridge ApiDestination path wildcards ("*").</p>
-     */
-    inline PipeTargetHttpParameters& WithPathParameterValues(const Aws::Vector<Aws::String>& value) { SetPathParameterValues(value); return *this;}
-
-    /**
-     * <p>The path parameter values to be used to populate API Gateway REST API or
-     * EventBridge ApiDestination path wildcards ("*").</p>
-     */
-    inline PipeTargetHttpParameters& WithPathParameterValues(Aws::Vector<Aws::String>&& value) { SetPathParameterValues(std::move(value)); return *this;}
-
-    /**
-     * <p>The path parameter values to be used to populate API Gateway REST API or
-     * EventBridge ApiDestination path wildcards ("*").</p>
-     */
-    inline PipeTargetHttpParameters& AddPathParameterValues(const Aws::String& value) { m_pathParameterValuesHasBeenSet = true; m_pathParameterValues.push_back(value); return *this; }
-
-    /**
-     * <p>The path parameter values to be used to populate API Gateway REST API or
-     * EventBridge ApiDestination path wildcards ("*").</p>
-     */
-    inline PipeTargetHttpParameters& AddPathParameterValues(Aws::String&& value) { m_pathParameterValuesHasBeenSet = true; m_pathParameterValues.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The path parameter values to be used to populate API Gateway REST API or
-     * EventBridge ApiDestination path wildcards ("*").</p>
-     */
-    inline PipeTargetHttpParameters& AddPathParameterValues(const char* value) { m_pathParameterValuesHasBeenSet = true; m_pathParameterValues.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The query string keys/values that need to be sent as part of request invoking
      * the API Gateway REST API or EventBridge ApiDestination.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetQueryStringParameters() const{ return m_queryStringParameters; }
-
-    /**
-     * <p>The query string keys/values that need to be sent as part of request invoking
-     * the API Gateway REST API or EventBridge ApiDestination.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetQueryStringParameters() const { return m_queryStringParameters; }
     inline bool QueryStringParametersHasBeenSet() const { return m_queryStringParametersHasBeenSet; }
-
-    /**
-     * <p>The query string keys/values that need to be sent as part of request invoking
-     * the API Gateway REST API or EventBridge ApiDestination.</p>
-     */
-    inline void SetQueryStringParameters(const Aws::Map<Aws::String, Aws::String>& value) { m_queryStringParametersHasBeenSet = true; m_queryStringParameters = value; }
-
-    /**
-     * <p>The query string keys/values that need to be sent as part of request invoking
-     * the API Gateway REST API or EventBridge ApiDestination.</p>
-     */
-    inline void SetQueryStringParameters(Aws::Map<Aws::String, Aws::String>&& value) { m_queryStringParametersHasBeenSet = true; m_queryStringParameters = std::move(value); }
-
-    /**
-     * <p>The query string keys/values that need to be sent as part of request invoking
-     * the API Gateway REST API or EventBridge ApiDestination.</p>
-     */
-    inline PipeTargetHttpParameters& WithQueryStringParameters(const Aws::Map<Aws::String, Aws::String>& value) { SetQueryStringParameters(value); return *this;}
-
-    /**
-     * <p>The query string keys/values that need to be sent as part of request invoking
-     * the API Gateway REST API or EventBridge ApiDestination.</p>
-     */
-    inline PipeTargetHttpParameters& WithQueryStringParameters(Aws::Map<Aws::String, Aws::String>&& value) { SetQueryStringParameters(std::move(value)); return *this;}
-
-    /**
-     * <p>The query string keys/values that need to be sent as part of request invoking
-     * the API Gateway REST API or EventBridge ApiDestination.</p>
-     */
-    inline PipeTargetHttpParameters& AddQueryStringParameters(const Aws::String& key, const Aws::String& value) { m_queryStringParametersHasBeenSet = true; m_queryStringParameters.emplace(key, value); return *this; }
-
-    /**
-     * <p>The query string keys/values that need to be sent as part of request invoking
-     * the API Gateway REST API or EventBridge ApiDestination.</p>
-     */
-    inline PipeTargetHttpParameters& AddQueryStringParameters(Aws::String&& key, const Aws::String& value) { m_queryStringParametersHasBeenSet = true; m_queryStringParameters.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The query string keys/values that need to be sent as part of request invoking
-     * the API Gateway REST API or EventBridge ApiDestination.</p>
-     */
-    inline PipeTargetHttpParameters& AddQueryStringParameters(const Aws::String& key, Aws::String&& value) { m_queryStringParametersHasBeenSet = true; m_queryStringParameters.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The query string keys/values that need to be sent as part of request invoking
-     * the API Gateway REST API or EventBridge ApiDestination.</p>
-     */
-    inline PipeTargetHttpParameters& AddQueryStringParameters(Aws::String&& key, Aws::String&& value) { m_queryStringParametersHasBeenSet = true; m_queryStringParameters.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The query string keys/values that need to be sent as part of request invoking
-     * the API Gateway REST API or EventBridge ApiDestination.</p>
-     */
-    inline PipeTargetHttpParameters& AddQueryStringParameters(const char* key, Aws::String&& value) { m_queryStringParametersHasBeenSet = true; m_queryStringParameters.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The query string keys/values that need to be sent as part of request invoking
-     * the API Gateway REST API or EventBridge ApiDestination.</p>
-     */
-    inline PipeTargetHttpParameters& AddQueryStringParameters(Aws::String&& key, const char* value) { m_queryStringParametersHasBeenSet = true; m_queryStringParameters.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The query string keys/values that need to be sent as part of request invoking
-     * the API Gateway REST API or EventBridge ApiDestination.</p>
-     */
-    inline PipeTargetHttpParameters& AddQueryStringParameters(const char* key, const char* value) { m_queryStringParametersHasBeenSet = true; m_queryStringParameters.emplace(key, value); return *this; }
-
+    template<typename QueryStringParametersT = Aws::Map<Aws::String, Aws::String>>
+    void SetQueryStringParameters(QueryStringParametersT&& value) { m_queryStringParametersHasBeenSet = true; m_queryStringParameters = std::forward<QueryStringParametersT>(value); }
+    template<typename QueryStringParametersT = Aws::Map<Aws::String, Aws::String>>
+    PipeTargetHttpParameters& WithQueryStringParameters(QueryStringParametersT&& value) { SetQueryStringParameters(std::forward<QueryStringParametersT>(value)); return *this;}
+    template<typename QueryStringParametersKeyT = Aws::String, typename QueryStringParametersValueT = Aws::String>
+    PipeTargetHttpParameters& AddQueryStringParameters(QueryStringParametersKeyT&& key, QueryStringParametersValueT&& value) {
+      m_queryStringParametersHasBeenSet = true; m_queryStringParameters.emplace(std::forward<QueryStringParametersKeyT>(key), std::forward<QueryStringParametersValueT>(value)); return *this;
+    }
+    ///@}
   private:
-
-    Aws::Map<Aws::String, Aws::String> m_headerParameters;
-    bool m_headerParametersHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_pathParameterValues;
     bool m_pathParameterValuesHasBeenSet = false;
+
+    Aws::Map<Aws::String, Aws::String> m_headerParameters;
+    bool m_headerParametersHasBeenSet = false;
 
     Aws::Map<Aws::String, Aws::String> m_queryStringParameters;
     bool m_queryStringParametersHasBeenSet = false;

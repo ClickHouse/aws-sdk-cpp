@@ -6,6 +6,8 @@
 #pragma once
 #include <aws/pinpoint/Pinpoint_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/pinpoint/model/MessageHeader.h>
 #include <utility>
 
 namespace Aws
@@ -32,199 +34,78 @@ namespace Model
   class CampaignEmailMessage
   {
   public:
-    AWS_PINPOINT_API CampaignEmailMessage();
+    AWS_PINPOINT_API CampaignEmailMessage() = default;
     AWS_PINPOINT_API CampaignEmailMessage(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API CampaignEmailMessage& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The body of the email for recipients whose email clients don't render HTML
      * content.</p>
      */
-    inline const Aws::String& GetBody() const{ return m_body; }
-
-    /**
-     * <p>The body of the email for recipients whose email clients don't render HTML
-     * content.</p>
-     */
+    inline const Aws::String& GetBody() const { return m_body; }
     inline bool BodyHasBeenSet() const { return m_bodyHasBeenSet; }
+    template<typename BodyT = Aws::String>
+    void SetBody(BodyT&& value) { m_bodyHasBeenSet = true; m_body = std::forward<BodyT>(value); }
+    template<typename BodyT = Aws::String>
+    CampaignEmailMessage& WithBody(BodyT&& value) { SetBody(std::forward<BodyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The body of the email for recipients whose email clients don't render HTML
-     * content.</p>
-     */
-    inline void SetBody(const Aws::String& value) { m_bodyHasBeenSet = true; m_body = value; }
-
-    /**
-     * <p>The body of the email for recipients whose email clients don't render HTML
-     * content.</p>
-     */
-    inline void SetBody(Aws::String&& value) { m_bodyHasBeenSet = true; m_body = std::move(value); }
-
-    /**
-     * <p>The body of the email for recipients whose email clients don't render HTML
-     * content.</p>
-     */
-    inline void SetBody(const char* value) { m_bodyHasBeenSet = true; m_body.assign(value); }
-
-    /**
-     * <p>The body of the email for recipients whose email clients don't render HTML
-     * content.</p>
-     */
-    inline CampaignEmailMessage& WithBody(const Aws::String& value) { SetBody(value); return *this;}
-
-    /**
-     * <p>The body of the email for recipients whose email clients don't render HTML
-     * content.</p>
-     */
-    inline CampaignEmailMessage& WithBody(Aws::String&& value) { SetBody(std::move(value)); return *this;}
-
-    /**
-     * <p>The body of the email for recipients whose email clients don't render HTML
-     * content.</p>
-     */
-    inline CampaignEmailMessage& WithBody(const char* value) { SetBody(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The verified email address to send the email from. The default address is the
      * FromAddress specified for the email channel for the application.</p>
      */
-    inline const Aws::String& GetFromAddress() const{ return m_fromAddress; }
-
-    /**
-     * <p>The verified email address to send the email from. The default address is the
-     * FromAddress specified for the email channel for the application.</p>
-     */
+    inline const Aws::String& GetFromAddress() const { return m_fromAddress; }
     inline bool FromAddressHasBeenSet() const { return m_fromAddressHasBeenSet; }
+    template<typename FromAddressT = Aws::String>
+    void SetFromAddress(FromAddressT&& value) { m_fromAddressHasBeenSet = true; m_fromAddress = std::forward<FromAddressT>(value); }
+    template<typename FromAddressT = Aws::String>
+    CampaignEmailMessage& WithFromAddress(FromAddressT&& value) { SetFromAddress(std::forward<FromAddressT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The verified email address to send the email from. The default address is the
-     * FromAddress specified for the email channel for the application.</p>
+     * <p>The list of <a
+     * href="https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-campaigns-campaign-id.html#apps-application-id-campaigns-campaign-id-model-messageheader">MessageHeaders</a>
+     * for the email. You can have up to 15 MessageHeaders for each email.</p>
      */
-    inline void SetFromAddress(const Aws::String& value) { m_fromAddressHasBeenSet = true; m_fromAddress = value; }
+    inline const Aws::Vector<MessageHeader>& GetHeaders() const { return m_headers; }
+    inline bool HeadersHasBeenSet() const { return m_headersHasBeenSet; }
+    template<typename HeadersT = Aws::Vector<MessageHeader>>
+    void SetHeaders(HeadersT&& value) { m_headersHasBeenSet = true; m_headers = std::forward<HeadersT>(value); }
+    template<typename HeadersT = Aws::Vector<MessageHeader>>
+    CampaignEmailMessage& WithHeaders(HeadersT&& value) { SetHeaders(std::forward<HeadersT>(value)); return *this;}
+    template<typename HeadersT = MessageHeader>
+    CampaignEmailMessage& AddHeaders(HeadersT&& value) { m_headersHasBeenSet = true; m_headers.emplace_back(std::forward<HeadersT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The verified email address to send the email from. The default address is the
-     * FromAddress specified for the email channel for the application.</p>
-     */
-    inline void SetFromAddress(Aws::String&& value) { m_fromAddressHasBeenSet = true; m_fromAddress = std::move(value); }
-
-    /**
-     * <p>The verified email address to send the email from. The default address is the
-     * FromAddress specified for the email channel for the application.</p>
-     */
-    inline void SetFromAddress(const char* value) { m_fromAddressHasBeenSet = true; m_fromAddress.assign(value); }
-
-    /**
-     * <p>The verified email address to send the email from. The default address is the
-     * FromAddress specified for the email channel for the application.</p>
-     */
-    inline CampaignEmailMessage& WithFromAddress(const Aws::String& value) { SetFromAddress(value); return *this;}
-
-    /**
-     * <p>The verified email address to send the email from. The default address is the
-     * FromAddress specified for the email channel for the application.</p>
-     */
-    inline CampaignEmailMessage& WithFromAddress(Aws::String&& value) { SetFromAddress(std::move(value)); return *this;}
-
-    /**
-     * <p>The verified email address to send the email from. The default address is the
-     * FromAddress specified for the email channel for the application.</p>
-     */
-    inline CampaignEmailMessage& WithFromAddress(const char* value) { SetFromAddress(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The body of the email, in HTML format, for recipients whose email clients
      * render HTML content.</p>
      */
-    inline const Aws::String& GetHtmlBody() const{ return m_htmlBody; }
-
-    /**
-     * <p>The body of the email, in HTML format, for recipients whose email clients
-     * render HTML content.</p>
-     */
+    inline const Aws::String& GetHtmlBody() const { return m_htmlBody; }
     inline bool HtmlBodyHasBeenSet() const { return m_htmlBodyHasBeenSet; }
+    template<typename HtmlBodyT = Aws::String>
+    void SetHtmlBody(HtmlBodyT&& value) { m_htmlBodyHasBeenSet = true; m_htmlBody = std::forward<HtmlBodyT>(value); }
+    template<typename HtmlBodyT = Aws::String>
+    CampaignEmailMessage& WithHtmlBody(HtmlBodyT&& value) { SetHtmlBody(std::forward<HtmlBodyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The body of the email, in HTML format, for recipients whose email clients
-     * render HTML content.</p>
-     */
-    inline void SetHtmlBody(const Aws::String& value) { m_htmlBodyHasBeenSet = true; m_htmlBody = value; }
-
-    /**
-     * <p>The body of the email, in HTML format, for recipients whose email clients
-     * render HTML content.</p>
-     */
-    inline void SetHtmlBody(Aws::String&& value) { m_htmlBodyHasBeenSet = true; m_htmlBody = std::move(value); }
-
-    /**
-     * <p>The body of the email, in HTML format, for recipients whose email clients
-     * render HTML content.</p>
-     */
-    inline void SetHtmlBody(const char* value) { m_htmlBodyHasBeenSet = true; m_htmlBody.assign(value); }
-
-    /**
-     * <p>The body of the email, in HTML format, for recipients whose email clients
-     * render HTML content.</p>
-     */
-    inline CampaignEmailMessage& WithHtmlBody(const Aws::String& value) { SetHtmlBody(value); return *this;}
-
-    /**
-     * <p>The body of the email, in HTML format, for recipients whose email clients
-     * render HTML content.</p>
-     */
-    inline CampaignEmailMessage& WithHtmlBody(Aws::String&& value) { SetHtmlBody(std::move(value)); return *this;}
-
-    /**
-     * <p>The body of the email, in HTML format, for recipients whose email clients
-     * render HTML content.</p>
-     */
-    inline CampaignEmailMessage& WithHtmlBody(const char* value) { SetHtmlBody(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The subject line, or title, of the email.</p>
      */
-    inline const Aws::String& GetTitle() const{ return m_title; }
-
-    /**
-     * <p>The subject line, or title, of the email.</p>
-     */
+    inline const Aws::String& GetTitle() const { return m_title; }
     inline bool TitleHasBeenSet() const { return m_titleHasBeenSet; }
-
-    /**
-     * <p>The subject line, or title, of the email.</p>
-     */
-    inline void SetTitle(const Aws::String& value) { m_titleHasBeenSet = true; m_title = value; }
-
-    /**
-     * <p>The subject line, or title, of the email.</p>
-     */
-    inline void SetTitle(Aws::String&& value) { m_titleHasBeenSet = true; m_title = std::move(value); }
-
-    /**
-     * <p>The subject line, or title, of the email.</p>
-     */
-    inline void SetTitle(const char* value) { m_titleHasBeenSet = true; m_title.assign(value); }
-
-    /**
-     * <p>The subject line, or title, of the email.</p>
-     */
-    inline CampaignEmailMessage& WithTitle(const Aws::String& value) { SetTitle(value); return *this;}
-
-    /**
-     * <p>The subject line, or title, of the email.</p>
-     */
-    inline CampaignEmailMessage& WithTitle(Aws::String&& value) { SetTitle(std::move(value)); return *this;}
-
-    /**
-     * <p>The subject line, or title, of the email.</p>
-     */
-    inline CampaignEmailMessage& WithTitle(const char* value) { SetTitle(value); return *this;}
-
+    template<typename TitleT = Aws::String>
+    void SetTitle(TitleT&& value) { m_titleHasBeenSet = true; m_title = std::forward<TitleT>(value); }
+    template<typename TitleT = Aws::String>
+    CampaignEmailMessage& WithTitle(TitleT&& value) { SetTitle(std::forward<TitleT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_body;
@@ -232,6 +113,9 @@ namespace Model
 
     Aws::String m_fromAddress;
     bool m_fromAddressHasBeenSet = false;
+
+    Aws::Vector<MessageHeader> m_headers;
+    bool m_headersHasBeenSet = false;
 
     Aws::String m_htmlBody;
     bool m_htmlBodyHasBeenSet = false;

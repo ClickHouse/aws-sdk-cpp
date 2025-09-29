@@ -20,19 +20,7 @@ namespace EC2
 namespace Model
 {
 
-TransitGatewayRouteAttachment::TransitGatewayRouteAttachment() : 
-    m_resourceIdHasBeenSet(false),
-    m_transitGatewayAttachmentIdHasBeenSet(false),
-    m_resourceType(TransitGatewayAttachmentResourceType::NOT_SET),
-    m_resourceTypeHasBeenSet(false)
-{
-}
-
-TransitGatewayRouteAttachment::TransitGatewayRouteAttachment(const XmlNode& xmlNode) : 
-    m_resourceIdHasBeenSet(false),
-    m_transitGatewayAttachmentIdHasBeenSet(false),
-    m_resourceType(TransitGatewayAttachmentResourceType::NOT_SET),
-    m_resourceTypeHasBeenSet(false)
+TransitGatewayRouteAttachment::TransitGatewayRouteAttachment(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -58,7 +46,7 @@ TransitGatewayRouteAttachment& TransitGatewayRouteAttachment::operator =(const X
     XmlNode resourceTypeNode = resultNode.FirstChild("resourceType");
     if(!resourceTypeNode.IsNull())
     {
-      m_resourceType = TransitGatewayAttachmentResourceTypeMapper::GetTransitGatewayAttachmentResourceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(resourceTypeNode.GetText()).c_str()).c_str());
+      m_resourceType = TransitGatewayAttachmentResourceTypeMapper::GetTransitGatewayAttachmentResourceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(resourceTypeNode.GetText()).c_str()));
       m_resourceTypeHasBeenSet = true;
     }
   }
@@ -80,7 +68,7 @@ void TransitGatewayRouteAttachment::OutputToStream(Aws::OStream& oStream, const 
 
   if(m_resourceTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ResourceType=" << TransitGatewayAttachmentResourceTypeMapper::GetNameForTransitGatewayAttachmentResourceType(m_resourceType) << "&";
+      oStream << location << index << locationValue << ".ResourceType=" << StringUtils::URLEncode(TransitGatewayAttachmentResourceTypeMapper::GetNameForTransitGatewayAttachmentResourceType(m_resourceType)) << "&";
   }
 
 }
@@ -97,7 +85,7 @@ void TransitGatewayRouteAttachment::OutputToStream(Aws::OStream& oStream, const 
   }
   if(m_resourceTypeHasBeenSet)
   {
-      oStream << location << ".ResourceType=" << TransitGatewayAttachmentResourceTypeMapper::GetNameForTransitGatewayAttachmentResourceType(m_resourceType) << "&";
+      oStream << location << ".ResourceType=" << StringUtils::URLEncode(TransitGatewayAttachmentResourceTypeMapper::GetNameForTransitGatewayAttachmentResourceType(m_resourceType)) << "&";
   }
 }
 

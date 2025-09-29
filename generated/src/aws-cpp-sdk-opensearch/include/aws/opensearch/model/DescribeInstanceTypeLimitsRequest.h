@@ -30,7 +30,7 @@ namespace Model
   class DescribeInstanceTypeLimitsRequest : public OpenSearchServiceRequest
   {
   public:
-    AWS_OPENSEARCHSERVICE_API DescribeInstanceTypeLimitsRequest();
+    AWS_OPENSEARCHSERVICE_API DescribeInstanceTypeLimitsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -43,146 +43,48 @@ namespace Model
     AWS_OPENSEARCHSERVICE_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>The name of the domain. Only specify if you need the limits for an existing
      * domain.</p>
      */
-    inline const Aws::String& GetDomainName() const{ return m_domainName; }
-
-    /**
-     * <p>The name of the domain. Only specify if you need the limits for an existing
-     * domain.</p>
-     */
+    inline const Aws::String& GetDomainName() const { return m_domainName; }
     inline bool DomainNameHasBeenSet() const { return m_domainNameHasBeenSet; }
+    template<typename DomainNameT = Aws::String>
+    void SetDomainName(DomainNameT&& value) { m_domainNameHasBeenSet = true; m_domainName = std::forward<DomainNameT>(value); }
+    template<typename DomainNameT = Aws::String>
+    DescribeInstanceTypeLimitsRequest& WithDomainName(DomainNameT&& value) { SetDomainName(std::forward<DomainNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the domain. Only specify if you need the limits for an existing
-     * domain.</p>
-     */
-    inline void SetDomainName(const Aws::String& value) { m_domainNameHasBeenSet = true; m_domainName = value; }
-
-    /**
-     * <p>The name of the domain. Only specify if you need the limits for an existing
-     * domain.</p>
-     */
-    inline void SetDomainName(Aws::String&& value) { m_domainNameHasBeenSet = true; m_domainName = std::move(value); }
-
-    /**
-     * <p>The name of the domain. Only specify if you need the limits for an existing
-     * domain.</p>
-     */
-    inline void SetDomainName(const char* value) { m_domainNameHasBeenSet = true; m_domainName.assign(value); }
-
-    /**
-     * <p>The name of the domain. Only specify if you need the limits for an existing
-     * domain.</p>
-     */
-    inline DescribeInstanceTypeLimitsRequest& WithDomainName(const Aws::String& value) { SetDomainName(value); return *this;}
-
-    /**
-     * <p>The name of the domain. Only specify if you need the limits for an existing
-     * domain.</p>
-     */
-    inline DescribeInstanceTypeLimitsRequest& WithDomainName(Aws::String&& value) { SetDomainName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the domain. Only specify if you need the limits for an existing
-     * domain.</p>
-     */
-    inline DescribeInstanceTypeLimitsRequest& WithDomainName(const char* value) { SetDomainName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The OpenSearch Service instance type for which you need limit
      * information.</p>
      */
-    inline const OpenSearchPartitionInstanceType& GetInstanceType() const{ return m_instanceType; }
-
-    /**
-     * <p>The OpenSearch Service instance type for which you need limit
-     * information.</p>
-     */
+    inline OpenSearchPartitionInstanceType GetInstanceType() const { return m_instanceType; }
     inline bool InstanceTypeHasBeenSet() const { return m_instanceTypeHasBeenSet; }
+    inline void SetInstanceType(OpenSearchPartitionInstanceType value) { m_instanceTypeHasBeenSet = true; m_instanceType = value; }
+    inline DescribeInstanceTypeLimitsRequest& WithInstanceType(OpenSearchPartitionInstanceType value) { SetInstanceType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The OpenSearch Service instance type for which you need limit
-     * information.</p>
-     */
-    inline void SetInstanceType(const OpenSearchPartitionInstanceType& value) { m_instanceTypeHasBeenSet = true; m_instanceType = value; }
-
-    /**
-     * <p>The OpenSearch Service instance type for which you need limit
-     * information.</p>
-     */
-    inline void SetInstanceType(OpenSearchPartitionInstanceType&& value) { m_instanceTypeHasBeenSet = true; m_instanceType = std::move(value); }
-
-    /**
-     * <p>The OpenSearch Service instance type for which you need limit
-     * information.</p>
-     */
-    inline DescribeInstanceTypeLimitsRequest& WithInstanceType(const OpenSearchPartitionInstanceType& value) { SetInstanceType(value); return *this;}
-
-    /**
-     * <p>The OpenSearch Service instance type for which you need limit
-     * information.</p>
-     */
-    inline DescribeInstanceTypeLimitsRequest& WithInstanceType(OpenSearchPartitionInstanceType&& value) { SetInstanceType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Version of OpenSearch or Elasticsearch, in the format Elasticsearch_X.Y or
      * OpenSearch_X.Y. Defaults to the latest version of OpenSearch.</p>
      */
-    inline const Aws::String& GetEngineVersion() const{ return m_engineVersion; }
-
-    /**
-     * <p>Version of OpenSearch or Elasticsearch, in the format Elasticsearch_X.Y or
-     * OpenSearch_X.Y. Defaults to the latest version of OpenSearch.</p>
-     */
+    inline const Aws::String& GetEngineVersion() const { return m_engineVersion; }
     inline bool EngineVersionHasBeenSet() const { return m_engineVersionHasBeenSet; }
-
-    /**
-     * <p>Version of OpenSearch or Elasticsearch, in the format Elasticsearch_X.Y or
-     * OpenSearch_X.Y. Defaults to the latest version of OpenSearch.</p>
-     */
-    inline void SetEngineVersion(const Aws::String& value) { m_engineVersionHasBeenSet = true; m_engineVersion = value; }
-
-    /**
-     * <p>Version of OpenSearch or Elasticsearch, in the format Elasticsearch_X.Y or
-     * OpenSearch_X.Y. Defaults to the latest version of OpenSearch.</p>
-     */
-    inline void SetEngineVersion(Aws::String&& value) { m_engineVersionHasBeenSet = true; m_engineVersion = std::move(value); }
-
-    /**
-     * <p>Version of OpenSearch or Elasticsearch, in the format Elasticsearch_X.Y or
-     * OpenSearch_X.Y. Defaults to the latest version of OpenSearch.</p>
-     */
-    inline void SetEngineVersion(const char* value) { m_engineVersionHasBeenSet = true; m_engineVersion.assign(value); }
-
-    /**
-     * <p>Version of OpenSearch or Elasticsearch, in the format Elasticsearch_X.Y or
-     * OpenSearch_X.Y. Defaults to the latest version of OpenSearch.</p>
-     */
-    inline DescribeInstanceTypeLimitsRequest& WithEngineVersion(const Aws::String& value) { SetEngineVersion(value); return *this;}
-
-    /**
-     * <p>Version of OpenSearch or Elasticsearch, in the format Elasticsearch_X.Y or
-     * OpenSearch_X.Y. Defaults to the latest version of OpenSearch.</p>
-     */
-    inline DescribeInstanceTypeLimitsRequest& WithEngineVersion(Aws::String&& value) { SetEngineVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>Version of OpenSearch or Elasticsearch, in the format Elasticsearch_X.Y or
-     * OpenSearch_X.Y. Defaults to the latest version of OpenSearch.</p>
-     */
-    inline DescribeInstanceTypeLimitsRequest& WithEngineVersion(const char* value) { SetEngineVersion(value); return *this;}
-
+    template<typename EngineVersionT = Aws::String>
+    void SetEngineVersion(EngineVersionT&& value) { m_engineVersionHasBeenSet = true; m_engineVersion = std::forward<EngineVersionT>(value); }
+    template<typename EngineVersionT = Aws::String>
+    DescribeInstanceTypeLimitsRequest& WithEngineVersion(EngineVersionT&& value) { SetEngineVersion(std::forward<EngineVersionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_domainName;
     bool m_domainNameHasBeenSet = false;
 
-    OpenSearchPartitionInstanceType m_instanceType;
+    OpenSearchPartitionInstanceType m_instanceType{OpenSearchPartitionInstanceType::NOT_SET};
     bool m_instanceTypeHasBeenSet = false;
 
     Aws::String m_engineVersion;

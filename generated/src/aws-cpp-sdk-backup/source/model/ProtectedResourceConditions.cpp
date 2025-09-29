@@ -18,15 +18,7 @@ namespace Backup
 namespace Model
 {
 
-ProtectedResourceConditions::ProtectedResourceConditions() : 
-    m_stringEqualsHasBeenSet(false),
-    m_stringNotEqualsHasBeenSet(false)
-{
-}
-
-ProtectedResourceConditions::ProtectedResourceConditions(JsonView jsonValue) : 
-    m_stringEqualsHasBeenSet(false),
-    m_stringNotEqualsHasBeenSet(false)
+ProtectedResourceConditions::ProtectedResourceConditions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ ProtectedResourceConditions& ProtectedResourceConditions::operator =(JsonView js
     }
     m_stringEqualsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StringNotEquals"))
   {
     Aws::Utils::Array<JsonView> stringNotEqualsJsonList = jsonValue.GetArray("StringNotEquals");
@@ -52,7 +43,6 @@ ProtectedResourceConditions& ProtectedResourceConditions::operator =(JsonView js
     }
     m_stringNotEqualsHasBeenSet = true;
   }
-
   return *this;
 }
 

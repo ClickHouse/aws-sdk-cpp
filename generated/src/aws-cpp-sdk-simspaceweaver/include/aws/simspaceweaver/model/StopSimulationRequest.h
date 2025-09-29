@@ -21,7 +21,7 @@ namespace Model
   class StopSimulationRequest : public SimSpaceWeaverRequest
   {
   public:
-    AWS_SIMSPACEWEAVER_API StopSimulationRequest();
+    AWS_SIMSPACEWEAVER_API StopSimulationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_SIMSPACEWEAVER_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of the simulation.</p>
      */
-    inline const Aws::String& GetSimulation() const{ return m_simulation; }
-
-    /**
-     * <p>The name of the simulation.</p>
-     */
+    inline const Aws::String& GetSimulation() const { return m_simulation; }
     inline bool SimulationHasBeenSet() const { return m_simulationHasBeenSet; }
-
-    /**
-     * <p>The name of the simulation.</p>
-     */
-    inline void SetSimulation(const Aws::String& value) { m_simulationHasBeenSet = true; m_simulation = value; }
-
-    /**
-     * <p>The name of the simulation.</p>
-     */
-    inline void SetSimulation(Aws::String&& value) { m_simulationHasBeenSet = true; m_simulation = std::move(value); }
-
-    /**
-     * <p>The name of the simulation.</p>
-     */
-    inline void SetSimulation(const char* value) { m_simulationHasBeenSet = true; m_simulation.assign(value); }
-
-    /**
-     * <p>The name of the simulation.</p>
-     */
-    inline StopSimulationRequest& WithSimulation(const Aws::String& value) { SetSimulation(value); return *this;}
-
-    /**
-     * <p>The name of the simulation.</p>
-     */
-    inline StopSimulationRequest& WithSimulation(Aws::String&& value) { SetSimulation(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the simulation.</p>
-     */
-    inline StopSimulationRequest& WithSimulation(const char* value) { SetSimulation(value); return *this;}
-
+    template<typename SimulationT = Aws::String>
+    void SetSimulation(SimulationT&& value) { m_simulationHasBeenSet = true; m_simulation = std::forward<SimulationT>(value); }
+    template<typename SimulationT = Aws::String>
+    StopSimulationRequest& WithSimulation(SimulationT&& value) { SetSimulation(std::forward<SimulationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_simulation;

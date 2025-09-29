@@ -34,127 +34,50 @@ namespace Model
   class AnalysisError
   {
   public:
-    AWS_QUICKSIGHT_API AnalysisError();
+    AWS_QUICKSIGHT_API AnalysisError() = default;
     AWS_QUICKSIGHT_API AnalysisError(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API AnalysisError& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The type of the analysis error.</p>
      */
-    inline const AnalysisErrorType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of the analysis error.</p>
-     */
+    inline AnalysisErrorType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    inline void SetType(AnalysisErrorType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline AnalysisError& WithType(AnalysisErrorType value) { SetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of the analysis error.</p>
-     */
-    inline void SetType(const AnalysisErrorType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of the analysis error.</p>
-     */
-    inline void SetType(AnalysisErrorType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of the analysis error.</p>
-     */
-    inline AnalysisError& WithType(const AnalysisErrorType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of the analysis error.</p>
-     */
-    inline AnalysisError& WithType(AnalysisErrorType&& value) { SetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The message associated with the analysis error.</p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>The message associated with the analysis error.</p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    AnalysisError& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The message associated with the analysis error.</p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>The message associated with the analysis error.</p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>The message associated with the analysis error.</p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p>The message associated with the analysis error.</p>
-     */
-    inline AnalysisError& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>The message associated with the analysis error.</p>
-     */
-    inline AnalysisError& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The message associated with the analysis error.</p>
-     */
-    inline AnalysisError& WithMessage(const char* value) { SetMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Lists the violated entities that caused the analysis error</p>
      */
-    inline const Aws::Vector<Entity>& GetViolatedEntities() const{ return m_violatedEntities; }
-
-    /**
-     * <p>Lists the violated entities that caused the analysis error</p>
-     */
+    inline const Aws::Vector<Entity>& GetViolatedEntities() const { return m_violatedEntities; }
     inline bool ViolatedEntitiesHasBeenSet() const { return m_violatedEntitiesHasBeenSet; }
-
-    /**
-     * <p>Lists the violated entities that caused the analysis error</p>
-     */
-    inline void SetViolatedEntities(const Aws::Vector<Entity>& value) { m_violatedEntitiesHasBeenSet = true; m_violatedEntities = value; }
-
-    /**
-     * <p>Lists the violated entities that caused the analysis error</p>
-     */
-    inline void SetViolatedEntities(Aws::Vector<Entity>&& value) { m_violatedEntitiesHasBeenSet = true; m_violatedEntities = std::move(value); }
-
-    /**
-     * <p>Lists the violated entities that caused the analysis error</p>
-     */
-    inline AnalysisError& WithViolatedEntities(const Aws::Vector<Entity>& value) { SetViolatedEntities(value); return *this;}
-
-    /**
-     * <p>Lists the violated entities that caused the analysis error</p>
-     */
-    inline AnalysisError& WithViolatedEntities(Aws::Vector<Entity>&& value) { SetViolatedEntities(std::move(value)); return *this;}
-
-    /**
-     * <p>Lists the violated entities that caused the analysis error</p>
-     */
-    inline AnalysisError& AddViolatedEntities(const Entity& value) { m_violatedEntitiesHasBeenSet = true; m_violatedEntities.push_back(value); return *this; }
-
-    /**
-     * <p>Lists the violated entities that caused the analysis error</p>
-     */
-    inline AnalysisError& AddViolatedEntities(Entity&& value) { m_violatedEntitiesHasBeenSet = true; m_violatedEntities.push_back(std::move(value)); return *this; }
-
+    template<typename ViolatedEntitiesT = Aws::Vector<Entity>>
+    void SetViolatedEntities(ViolatedEntitiesT&& value) { m_violatedEntitiesHasBeenSet = true; m_violatedEntities = std::forward<ViolatedEntitiesT>(value); }
+    template<typename ViolatedEntitiesT = Aws::Vector<Entity>>
+    AnalysisError& WithViolatedEntities(ViolatedEntitiesT&& value) { SetViolatedEntities(std::forward<ViolatedEntitiesT>(value)); return *this;}
+    template<typename ViolatedEntitiesT = Entity>
+    AnalysisError& AddViolatedEntities(ViolatedEntitiesT&& value) { m_violatedEntitiesHasBeenSet = true; m_violatedEntities.emplace_back(std::forward<ViolatedEntitiesT>(value)); return *this; }
+    ///@}
   private:
 
-    AnalysisErrorType m_type;
+    AnalysisErrorType m_type{AnalysisErrorType::NOT_SET};
     bool m_typeHasBeenSet = false;
 
     Aws::String m_message;

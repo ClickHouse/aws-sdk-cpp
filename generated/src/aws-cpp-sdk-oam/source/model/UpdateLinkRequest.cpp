@@ -12,12 +12,6 @@ using namespace Aws::OAM::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateLinkRequest::UpdateLinkRequest() : 
-    m_identifierHasBeenSet(false),
-    m_resourceTypesHasBeenSet(false)
-{
-}
-
 Aws::String UpdateLinkRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -25,6 +19,18 @@ Aws::String UpdateLinkRequest::SerializePayload() const
   if(m_identifierHasBeenSet)
   {
    payload.WithString("Identifier", m_identifier);
+
+  }
+
+  if(m_includeTagsHasBeenSet)
+  {
+   payload.WithBool("IncludeTags", m_includeTags);
+
+  }
+
+  if(m_linkConfigurationHasBeenSet)
+  {
+   payload.WithObject("LinkConfiguration", m_linkConfiguration.Jsonize());
 
   }
 

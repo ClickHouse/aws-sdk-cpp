@@ -18,19 +18,7 @@ namespace ForecastService
 namespace Model
 {
 
-EvaluationParameters::EvaluationParameters() : 
-    m_numberOfBacktestWindows(0),
-    m_numberOfBacktestWindowsHasBeenSet(false),
-    m_backTestWindowOffset(0),
-    m_backTestWindowOffsetHasBeenSet(false)
-{
-}
-
-EvaluationParameters::EvaluationParameters(JsonView jsonValue) : 
-    m_numberOfBacktestWindows(0),
-    m_numberOfBacktestWindowsHasBeenSet(false),
-    m_backTestWindowOffset(0),
-    m_backTestWindowOffsetHasBeenSet(false)
+EvaluationParameters::EvaluationParameters(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ EvaluationParameters& EvaluationParameters::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("NumberOfBacktestWindows"))
   {
     m_numberOfBacktestWindows = jsonValue.GetInteger("NumberOfBacktestWindows");
-
     m_numberOfBacktestWindowsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("BackTestWindowOffset"))
   {
     m_backTestWindowOffset = jsonValue.GetInteger("BackTestWindowOffset");
-
     m_backTestWindowOffsetHasBeenSet = true;
   }
-
   return *this;
 }
 

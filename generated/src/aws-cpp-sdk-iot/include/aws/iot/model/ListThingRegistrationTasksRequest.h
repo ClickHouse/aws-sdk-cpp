@@ -26,7 +26,7 @@ namespace Model
   class ListThingRegistrationTasksRequest : public IoTRequest
   {
   public:
-    AWS_IOT_API ListThingRegistrationTasksRequest();
+    AWS_IOT_API ListThingRegistrationTasksRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,123 +39,48 @@ namespace Model
     AWS_IOT_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>To retrieve the next set of results, the <code>nextToken</code> value from a
      * previous response; otherwise <b>null</b> to receive the first set of
      * results.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>To retrieve the next set of results, the <code>nextToken</code> value from a
-     * previous response; otherwise <b>null</b> to receive the first set of
-     * results.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListThingRegistrationTasksRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>To retrieve the next set of results, the <code>nextToken</code> value from a
-     * previous response; otherwise <b>null</b> to receive the first set of
-     * results.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>To retrieve the next set of results, the <code>nextToken</code> value from a
-     * previous response; otherwise <b>null</b> to receive the first set of
-     * results.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>To retrieve the next set of results, the <code>nextToken</code> value from a
-     * previous response; otherwise <b>null</b> to receive the first set of
-     * results.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>To retrieve the next set of results, the <code>nextToken</code> value from a
-     * previous response; otherwise <b>null</b> to receive the first set of
-     * results.</p>
-     */
-    inline ListThingRegistrationTasksRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>To retrieve the next set of results, the <code>nextToken</code> value from a
-     * previous response; otherwise <b>null</b> to receive the first set of
-     * results.</p>
-     */
-    inline ListThingRegistrationTasksRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>To retrieve the next set of results, the <code>nextToken</code> value from a
-     * previous response; otherwise <b>null</b> to receive the first set of
-     * results.</p>
-     */
-    inline ListThingRegistrationTasksRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of results to return at one time.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of results to return at one time.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of results to return at one time.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of results to return at one time.</p>
-     */
     inline ListThingRegistrationTasksRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The status of the bulk thing provisioning task.</p>
      */
-    inline const Status& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the bulk thing provisioning task.</p>
-     */
+    inline Status GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p>The status of the bulk thing provisioning task.</p>
-     */
-    inline void SetStatus(const Status& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the bulk thing provisioning task.</p>
-     */
-    inline void SetStatus(Status&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the bulk thing provisioning task.</p>
-     */
-    inline ListThingRegistrationTasksRequest& WithStatus(const Status& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the bulk thing provisioning task.</p>
-     */
-    inline ListThingRegistrationTasksRequest& WithStatus(Status&& value) { SetStatus(std::move(value)); return *this;}
-
+    inline void SetStatus(Status value) { m_statusHasBeenSet = true; m_status = value; }
+    inline ListThingRegistrationTasksRequest& WithStatus(Status value) { SetStatus(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
-    Status m_status;
+    Status m_status{Status::NOT_SET};
     bool m_statusHasBeenSet = false;
   };
 

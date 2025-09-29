@@ -32,188 +32,72 @@ namespace Model
   class ProviderMarketplaceConfiguration
   {
   public:
-    AWS_ENTITYRESOLUTION_API ProviderMarketplaceConfiguration();
+    AWS_ENTITYRESOLUTION_API ProviderMarketplaceConfiguration() = default;
     AWS_ENTITYRESOLUTION_API ProviderMarketplaceConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_ENTITYRESOLUTION_API ProviderMarketplaceConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ENTITYRESOLUTION_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
-    /**
-     * <p>The asset ID on Data Exchange.</p>
-     */
-    inline const Aws::String& GetAssetId() const{ return m_assetId; }
-
-    /**
-     * <p>The asset ID on Data Exchange.</p>
-     */
-    inline bool AssetIdHasBeenSet() const { return m_assetIdHasBeenSet; }
-
-    /**
-     * <p>The asset ID on Data Exchange.</p>
-     */
-    inline void SetAssetId(const Aws::String& value) { m_assetIdHasBeenSet = true; m_assetId = value; }
-
-    /**
-     * <p>The asset ID on Data Exchange.</p>
-     */
-    inline void SetAssetId(Aws::String&& value) { m_assetIdHasBeenSet = true; m_assetId = std::move(value); }
-
-    /**
-     * <p>The asset ID on Data Exchange.</p>
-     */
-    inline void SetAssetId(const char* value) { m_assetIdHasBeenSet = true; m_assetId.assign(value); }
-
-    /**
-     * <p>The asset ID on Data Exchange.</p>
-     */
-    inline ProviderMarketplaceConfiguration& WithAssetId(const Aws::String& value) { SetAssetId(value); return *this;}
-
-    /**
-     * <p>The asset ID on Data Exchange.</p>
-     */
-    inline ProviderMarketplaceConfiguration& WithAssetId(Aws::String&& value) { SetAssetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The asset ID on Data Exchange.</p>
-     */
-    inline ProviderMarketplaceConfiguration& WithAssetId(const char* value) { SetAssetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The dataset ID on Data Exchange.</p>
      */
-    inline const Aws::String& GetDataSetId() const{ return m_dataSetId; }
-
-    /**
-     * <p>The dataset ID on Data Exchange.</p>
-     */
+    inline const Aws::String& GetDataSetId() const { return m_dataSetId; }
     inline bool DataSetIdHasBeenSet() const { return m_dataSetIdHasBeenSet; }
+    template<typename DataSetIdT = Aws::String>
+    void SetDataSetId(DataSetIdT&& value) { m_dataSetIdHasBeenSet = true; m_dataSetId = std::forward<DataSetIdT>(value); }
+    template<typename DataSetIdT = Aws::String>
+    ProviderMarketplaceConfiguration& WithDataSetId(DataSetIdT&& value) { SetDataSetId(std::forward<DataSetIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The dataset ID on Data Exchange.</p>
-     */
-    inline void SetDataSetId(const Aws::String& value) { m_dataSetIdHasBeenSet = true; m_dataSetId = value; }
-
-    /**
-     * <p>The dataset ID on Data Exchange.</p>
-     */
-    inline void SetDataSetId(Aws::String&& value) { m_dataSetIdHasBeenSet = true; m_dataSetId = std::move(value); }
-
-    /**
-     * <p>The dataset ID on Data Exchange.</p>
-     */
-    inline void SetDataSetId(const char* value) { m_dataSetIdHasBeenSet = true; m_dataSetId.assign(value); }
-
-    /**
-     * <p>The dataset ID on Data Exchange.</p>
-     */
-    inline ProviderMarketplaceConfiguration& WithDataSetId(const Aws::String& value) { SetDataSetId(value); return *this;}
-
-    /**
-     * <p>The dataset ID on Data Exchange.</p>
-     */
-    inline ProviderMarketplaceConfiguration& WithDataSetId(Aws::String&& value) { SetDataSetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The dataset ID on Data Exchange.</p>
-     */
-    inline ProviderMarketplaceConfiguration& WithDataSetId(const char* value) { SetDataSetId(value); return *this;}
-
-
-    /**
-     * <p>The listing ID on Data Exchange.</p>
-     */
-    inline const Aws::String& GetListingId() const{ return m_listingId; }
-
-    /**
-     * <p>The listing ID on Data Exchange.</p>
-     */
-    inline bool ListingIdHasBeenSet() const { return m_listingIdHasBeenSet; }
-
-    /**
-     * <p>The listing ID on Data Exchange.</p>
-     */
-    inline void SetListingId(const Aws::String& value) { m_listingIdHasBeenSet = true; m_listingId = value; }
-
-    /**
-     * <p>The listing ID on Data Exchange.</p>
-     */
-    inline void SetListingId(Aws::String&& value) { m_listingIdHasBeenSet = true; m_listingId = std::move(value); }
-
-    /**
-     * <p>The listing ID on Data Exchange.</p>
-     */
-    inline void SetListingId(const char* value) { m_listingIdHasBeenSet = true; m_listingId.assign(value); }
-
-    /**
-     * <p>The listing ID on Data Exchange.</p>
-     */
-    inline ProviderMarketplaceConfiguration& WithListingId(const Aws::String& value) { SetListingId(value); return *this;}
-
-    /**
-     * <p>The listing ID on Data Exchange.</p>
-     */
-    inline ProviderMarketplaceConfiguration& WithListingId(Aws::String&& value) { SetListingId(std::move(value)); return *this;}
-
-    /**
-     * <p>The listing ID on Data Exchange.</p>
-     */
-    inline ProviderMarketplaceConfiguration& WithListingId(const char* value) { SetListingId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The revision ID on Data Exchange.</p>
      */
-    inline const Aws::String& GetRevisionId() const{ return m_revisionId; }
-
-    /**
-     * <p>The revision ID on Data Exchange.</p>
-     */
+    inline const Aws::String& GetRevisionId() const { return m_revisionId; }
     inline bool RevisionIdHasBeenSet() const { return m_revisionIdHasBeenSet; }
+    template<typename RevisionIdT = Aws::String>
+    void SetRevisionId(RevisionIdT&& value) { m_revisionIdHasBeenSet = true; m_revisionId = std::forward<RevisionIdT>(value); }
+    template<typename RevisionIdT = Aws::String>
+    ProviderMarketplaceConfiguration& WithRevisionId(RevisionIdT&& value) { SetRevisionId(std::forward<RevisionIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The revision ID on Data Exchange.</p>
+     * <p>The asset ID on Data Exchange.</p>
      */
-    inline void SetRevisionId(const Aws::String& value) { m_revisionIdHasBeenSet = true; m_revisionId = value; }
+    inline const Aws::String& GetAssetId() const { return m_assetId; }
+    inline bool AssetIdHasBeenSet() const { return m_assetIdHasBeenSet; }
+    template<typename AssetIdT = Aws::String>
+    void SetAssetId(AssetIdT&& value) { m_assetIdHasBeenSet = true; m_assetId = std::forward<AssetIdT>(value); }
+    template<typename AssetIdT = Aws::String>
+    ProviderMarketplaceConfiguration& WithAssetId(AssetIdT&& value) { SetAssetId(std::forward<AssetIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The revision ID on Data Exchange.</p>
+     * <p>The listing ID on Data Exchange.</p>
      */
-    inline void SetRevisionId(Aws::String&& value) { m_revisionIdHasBeenSet = true; m_revisionId = std::move(value); }
-
-    /**
-     * <p>The revision ID on Data Exchange.</p>
-     */
-    inline void SetRevisionId(const char* value) { m_revisionIdHasBeenSet = true; m_revisionId.assign(value); }
-
-    /**
-     * <p>The revision ID on Data Exchange.</p>
-     */
-    inline ProviderMarketplaceConfiguration& WithRevisionId(const Aws::String& value) { SetRevisionId(value); return *this;}
-
-    /**
-     * <p>The revision ID on Data Exchange.</p>
-     */
-    inline ProviderMarketplaceConfiguration& WithRevisionId(Aws::String&& value) { SetRevisionId(std::move(value)); return *this;}
-
-    /**
-     * <p>The revision ID on Data Exchange.</p>
-     */
-    inline ProviderMarketplaceConfiguration& WithRevisionId(const char* value) { SetRevisionId(value); return *this;}
-
+    inline const Aws::String& GetListingId() const { return m_listingId; }
+    inline bool ListingIdHasBeenSet() const { return m_listingIdHasBeenSet; }
+    template<typename ListingIdT = Aws::String>
+    void SetListingId(ListingIdT&& value) { m_listingIdHasBeenSet = true; m_listingId = std::forward<ListingIdT>(value); }
+    template<typename ListingIdT = Aws::String>
+    ProviderMarketplaceConfiguration& WithListingId(ListingIdT&& value) { SetListingId(std::forward<ListingIdT>(value)); return *this;}
+    ///@}
   private:
-
-    Aws::String m_assetId;
-    bool m_assetIdHasBeenSet = false;
 
     Aws::String m_dataSetId;
     bool m_dataSetIdHasBeenSet = false;
 
-    Aws::String m_listingId;
-    bool m_listingIdHasBeenSet = false;
-
     Aws::String m_revisionId;
     bool m_revisionIdHasBeenSet = false;
+
+    Aws::String m_assetId;
+    bool m_assetIdHasBeenSet = false;
+
+    Aws::String m_listingId;
+    bool m_listingIdHasBeenSet = false;
   };
 
 } // namespace Model

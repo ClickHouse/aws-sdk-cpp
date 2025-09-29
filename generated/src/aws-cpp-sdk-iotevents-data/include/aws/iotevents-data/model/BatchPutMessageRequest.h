@@ -22,7 +22,7 @@ namespace Model
   class BatchPutMessageRequest : public IoTEventsDataRequest
   {
   public:
-    AWS_IOTEVENTSDATA_API BatchPutMessageRequest();
+    AWS_IOTEVENTSDATA_API BatchPutMessageRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,54 +33,20 @@ namespace Model
     AWS_IOTEVENTSDATA_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The list of messages to send. Each message has the following format: <code>'{
      * "messageId": "string", "inputName": "string", "payload": "string"}'</code> </p>
      */
-    inline const Aws::Vector<Message>& GetMessages() const{ return m_messages; }
-
-    /**
-     * <p>The list of messages to send. Each message has the following format: <code>'{
-     * "messageId": "string", "inputName": "string", "payload": "string"}'</code> </p>
-     */
+    inline const Aws::Vector<Message>& GetMessages() const { return m_messages; }
     inline bool MessagesHasBeenSet() const { return m_messagesHasBeenSet; }
-
-    /**
-     * <p>The list of messages to send. Each message has the following format: <code>'{
-     * "messageId": "string", "inputName": "string", "payload": "string"}'</code> </p>
-     */
-    inline void SetMessages(const Aws::Vector<Message>& value) { m_messagesHasBeenSet = true; m_messages = value; }
-
-    /**
-     * <p>The list of messages to send. Each message has the following format: <code>'{
-     * "messageId": "string", "inputName": "string", "payload": "string"}'</code> </p>
-     */
-    inline void SetMessages(Aws::Vector<Message>&& value) { m_messagesHasBeenSet = true; m_messages = std::move(value); }
-
-    /**
-     * <p>The list of messages to send. Each message has the following format: <code>'{
-     * "messageId": "string", "inputName": "string", "payload": "string"}'</code> </p>
-     */
-    inline BatchPutMessageRequest& WithMessages(const Aws::Vector<Message>& value) { SetMessages(value); return *this;}
-
-    /**
-     * <p>The list of messages to send. Each message has the following format: <code>'{
-     * "messageId": "string", "inputName": "string", "payload": "string"}'</code> </p>
-     */
-    inline BatchPutMessageRequest& WithMessages(Aws::Vector<Message>&& value) { SetMessages(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of messages to send. Each message has the following format: <code>'{
-     * "messageId": "string", "inputName": "string", "payload": "string"}'</code> </p>
-     */
-    inline BatchPutMessageRequest& AddMessages(const Message& value) { m_messagesHasBeenSet = true; m_messages.push_back(value); return *this; }
-
-    /**
-     * <p>The list of messages to send. Each message has the following format: <code>'{
-     * "messageId": "string", "inputName": "string", "payload": "string"}'</code> </p>
-     */
-    inline BatchPutMessageRequest& AddMessages(Message&& value) { m_messagesHasBeenSet = true; m_messages.push_back(std::move(value)); return *this; }
-
+    template<typename MessagesT = Aws::Vector<Message>>
+    void SetMessages(MessagesT&& value) { m_messagesHasBeenSet = true; m_messages = std::forward<MessagesT>(value); }
+    template<typename MessagesT = Aws::Vector<Message>>
+    BatchPutMessageRequest& WithMessages(MessagesT&& value) { SetMessages(std::forward<MessagesT>(value)); return *this;}
+    template<typename MessagesT = Message>
+    BatchPutMessageRequest& AddMessages(MessagesT&& value) { m_messagesHasBeenSet = true; m_messages.emplace_back(std::forward<MessagesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Message> m_messages;

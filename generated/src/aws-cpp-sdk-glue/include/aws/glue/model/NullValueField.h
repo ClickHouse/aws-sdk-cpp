@@ -33,83 +33,35 @@ namespace Model
   class NullValueField
   {
   public:
-    AWS_GLUE_API NullValueField();
+    AWS_GLUE_API NullValueField() = default;
     AWS_GLUE_API NullValueField(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API NullValueField& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The value of the null placeholder.</p>
      */
-    inline const Aws::String& GetValue() const{ return m_value; }
-
-    /**
-     * <p>The value of the null placeholder.</p>
-     */
+    inline const Aws::String& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
+    template<typename ValueT = Aws::String>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::String>
+    NullValueField& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The value of the null placeholder.</p>
-     */
-    inline void SetValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The value of the null placeholder.</p>
-     */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>The value of the null placeholder.</p>
-     */
-    inline void SetValue(const char* value) { m_valueHasBeenSet = true; m_value.assign(value); }
-
-    /**
-     * <p>The value of the null placeholder.</p>
-     */
-    inline NullValueField& WithValue(const Aws::String& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>The value of the null placeholder.</p>
-     */
-    inline NullValueField& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The value of the null placeholder.</p>
-     */
-    inline NullValueField& WithValue(const char* value) { SetValue(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The datatype of the value.</p>
      */
-    inline const Datatype& GetDatatype() const{ return m_datatype; }
-
-    /**
-     * <p>The datatype of the value.</p>
-     */
+    inline const Datatype& GetDatatype() const { return m_datatype; }
     inline bool DatatypeHasBeenSet() const { return m_datatypeHasBeenSet; }
-
-    /**
-     * <p>The datatype of the value.</p>
-     */
-    inline void SetDatatype(const Datatype& value) { m_datatypeHasBeenSet = true; m_datatype = value; }
-
-    /**
-     * <p>The datatype of the value.</p>
-     */
-    inline void SetDatatype(Datatype&& value) { m_datatypeHasBeenSet = true; m_datatype = std::move(value); }
-
-    /**
-     * <p>The datatype of the value.</p>
-     */
-    inline NullValueField& WithDatatype(const Datatype& value) { SetDatatype(value); return *this;}
-
-    /**
-     * <p>The datatype of the value.</p>
-     */
-    inline NullValueField& WithDatatype(Datatype&& value) { SetDatatype(std::move(value)); return *this;}
-
+    template<typename DatatypeT = Datatype>
+    void SetDatatype(DatatypeT&& value) { m_datatypeHasBeenSet = true; m_datatype = std::forward<DatatypeT>(value); }
+    template<typename DatatypeT = Datatype>
+    NullValueField& WithDatatype(DatatypeT&& value) { SetDatatype(std::forward<DatatypeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_value;

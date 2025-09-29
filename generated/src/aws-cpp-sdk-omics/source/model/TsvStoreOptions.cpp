@@ -18,19 +18,7 @@ namespace Omics
 namespace Model
 {
 
-TsvStoreOptions::TsvStoreOptions() : 
-    m_annotationType(AnnotationType::NOT_SET),
-    m_annotationTypeHasBeenSet(false),
-    m_formatToHeaderHasBeenSet(false),
-    m_schemaHasBeenSet(false)
-{
-}
-
-TsvStoreOptions::TsvStoreOptions(JsonView jsonValue) : 
-    m_annotationType(AnnotationType::NOT_SET),
-    m_annotationTypeHasBeenSet(false),
-    m_formatToHeaderHasBeenSet(false),
-    m_schemaHasBeenSet(false)
+TsvStoreOptions::TsvStoreOptions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,10 +28,8 @@ TsvStoreOptions& TsvStoreOptions::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("annotationType"))
   {
     m_annotationType = AnnotationTypeMapper::GetAnnotationTypeForName(jsonValue.GetString("annotationType"));
-
     m_annotationTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("formatToHeader"))
   {
     Aws::Map<Aws::String, JsonView> formatToHeaderJsonMap = jsonValue.GetObject("formatToHeader").GetAllObjects();
@@ -53,7 +39,6 @@ TsvStoreOptions& TsvStoreOptions::operator =(JsonView jsonValue)
     }
     m_formatToHeaderHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("schema"))
   {
     Aws::Utils::Array<JsonView> schemaJsonList = jsonValue.GetArray("schema");
@@ -69,7 +54,6 @@ TsvStoreOptions& TsvStoreOptions::operator =(JsonView jsonValue)
     }
     m_schemaHasBeenSet = true;
   }
-
   return *this;
 }
 

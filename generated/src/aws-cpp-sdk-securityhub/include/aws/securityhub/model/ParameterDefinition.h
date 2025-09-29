@@ -33,89 +33,36 @@ namespace Model
   class ParameterDefinition
   {
   public:
-    AWS_SECURITYHUB_API ParameterDefinition();
+    AWS_SECURITYHUB_API ParameterDefinition() = default;
     AWS_SECURITYHUB_API ParameterDefinition(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API ParameterDefinition& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> Description of a control parameter. </p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p> Description of a control parameter. </p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    ParameterDefinition& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> Description of a control parameter. </p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p> Description of a control parameter. </p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p> Description of a control parameter. </p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p> Description of a control parameter. </p>
-     */
-    inline ParameterDefinition& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p> Description of a control parameter. </p>
-     */
-    inline ParameterDefinition& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p> Description of a control parameter. </p>
-     */
-    inline ParameterDefinition& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The options for customizing a control parameter. Customization options vary
      * based on the data type of the parameter. </p>
      */
-    inline const ConfigurationOptions& GetConfigurationOptions() const{ return m_configurationOptions; }
-
-    /**
-     * <p> The options for customizing a control parameter. Customization options vary
-     * based on the data type of the parameter. </p>
-     */
+    inline const ConfigurationOptions& GetConfigurationOptions() const { return m_configurationOptions; }
     inline bool ConfigurationOptionsHasBeenSet() const { return m_configurationOptionsHasBeenSet; }
-
-    /**
-     * <p> The options for customizing a control parameter. Customization options vary
-     * based on the data type of the parameter. </p>
-     */
-    inline void SetConfigurationOptions(const ConfigurationOptions& value) { m_configurationOptionsHasBeenSet = true; m_configurationOptions = value; }
-
-    /**
-     * <p> The options for customizing a control parameter. Customization options vary
-     * based on the data type of the parameter. </p>
-     */
-    inline void SetConfigurationOptions(ConfigurationOptions&& value) { m_configurationOptionsHasBeenSet = true; m_configurationOptions = std::move(value); }
-
-    /**
-     * <p> The options for customizing a control parameter. Customization options vary
-     * based on the data type of the parameter. </p>
-     */
-    inline ParameterDefinition& WithConfigurationOptions(const ConfigurationOptions& value) { SetConfigurationOptions(value); return *this;}
-
-    /**
-     * <p> The options for customizing a control parameter. Customization options vary
-     * based on the data type of the parameter. </p>
-     */
-    inline ParameterDefinition& WithConfigurationOptions(ConfigurationOptions&& value) { SetConfigurationOptions(std::move(value)); return *this;}
-
+    template<typename ConfigurationOptionsT = ConfigurationOptions>
+    void SetConfigurationOptions(ConfigurationOptionsT&& value) { m_configurationOptionsHasBeenSet = true; m_configurationOptions = std::forward<ConfigurationOptionsT>(value); }
+    template<typename ConfigurationOptionsT = ConfigurationOptions>
+    ParameterDefinition& WithConfigurationOptions(ConfigurationOptionsT&& value) { SetConfigurationOptions(std::forward<ConfigurationOptionsT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_description;

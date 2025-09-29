@@ -33,66 +33,26 @@ namespace Model
   class ReportContext
   {
   public:
-    AWS_LICENSEMANAGER_API ReportContext();
+    AWS_LICENSEMANAGER_API ReportContext() = default;
     AWS_LICENSEMANAGER_API ReportContext(Aws::Utils::Json::JsonView jsonValue);
     AWS_LICENSEMANAGER_API ReportContext& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LICENSEMANAGER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Amazon Resource Name (ARN) of the license configuration that this generator
      * reports on.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetLicenseConfigurationArns() const{ return m_licenseConfigurationArns; }
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the license configuration that this generator
-     * reports on.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetLicenseConfigurationArns() const { return m_licenseConfigurationArns; }
     inline bool LicenseConfigurationArnsHasBeenSet() const { return m_licenseConfigurationArnsHasBeenSet; }
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the license configuration that this generator
-     * reports on.</p>
-     */
-    inline void SetLicenseConfigurationArns(const Aws::Vector<Aws::String>& value) { m_licenseConfigurationArnsHasBeenSet = true; m_licenseConfigurationArns = value; }
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the license configuration that this generator
-     * reports on.</p>
-     */
-    inline void SetLicenseConfigurationArns(Aws::Vector<Aws::String>&& value) { m_licenseConfigurationArnsHasBeenSet = true; m_licenseConfigurationArns = std::move(value); }
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the license configuration that this generator
-     * reports on.</p>
-     */
-    inline ReportContext& WithLicenseConfigurationArns(const Aws::Vector<Aws::String>& value) { SetLicenseConfigurationArns(value); return *this;}
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the license configuration that this generator
-     * reports on.</p>
-     */
-    inline ReportContext& WithLicenseConfigurationArns(Aws::Vector<Aws::String>&& value) { SetLicenseConfigurationArns(std::move(value)); return *this;}
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the license configuration that this generator
-     * reports on.</p>
-     */
-    inline ReportContext& AddLicenseConfigurationArns(const Aws::String& value) { m_licenseConfigurationArnsHasBeenSet = true; m_licenseConfigurationArns.push_back(value); return *this; }
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the license configuration that this generator
-     * reports on.</p>
-     */
-    inline ReportContext& AddLicenseConfigurationArns(Aws::String&& value) { m_licenseConfigurationArnsHasBeenSet = true; m_licenseConfigurationArns.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the license configuration that this generator
-     * reports on.</p>
-     */
-    inline ReportContext& AddLicenseConfigurationArns(const char* value) { m_licenseConfigurationArnsHasBeenSet = true; m_licenseConfigurationArns.push_back(value); return *this; }
-
+    template<typename LicenseConfigurationArnsT = Aws::Vector<Aws::String>>
+    void SetLicenseConfigurationArns(LicenseConfigurationArnsT&& value) { m_licenseConfigurationArnsHasBeenSet = true; m_licenseConfigurationArns = std::forward<LicenseConfigurationArnsT>(value); }
+    template<typename LicenseConfigurationArnsT = Aws::Vector<Aws::String>>
+    ReportContext& WithLicenseConfigurationArns(LicenseConfigurationArnsT&& value) { SetLicenseConfigurationArns(std::forward<LicenseConfigurationArnsT>(value)); return *this;}
+    template<typename LicenseConfigurationArnsT = Aws::String>
+    ReportContext& AddLicenseConfigurationArns(LicenseConfigurationArnsT&& value) { m_licenseConfigurationArnsHasBeenSet = true; m_licenseConfigurationArns.emplace_back(std::forward<LicenseConfigurationArnsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_licenseConfigurationArns;

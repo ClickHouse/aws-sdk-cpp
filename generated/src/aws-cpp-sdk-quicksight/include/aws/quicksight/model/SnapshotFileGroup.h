@@ -33,68 +33,27 @@ namespace Model
   class SnapshotFileGroup
   {
   public:
-    AWS_QUICKSIGHT_API SnapshotFileGroup();
+    AWS_QUICKSIGHT_API SnapshotFileGroup() = default;
     AWS_QUICKSIGHT_API SnapshotFileGroup(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API SnapshotFileGroup& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A list of <code>SnapshotFile</code> objects that contain the information on
      * the snapshot files that need to be generated. This structure can hold 1
      * configuration at a time.</p>
      */
-    inline const Aws::Vector<SnapshotFile>& GetFiles() const{ return m_files; }
-
-    /**
-     * <p>A list of <code>SnapshotFile</code> objects that contain the information on
-     * the snapshot files that need to be generated. This structure can hold 1
-     * configuration at a time.</p>
-     */
+    inline const Aws::Vector<SnapshotFile>& GetFiles() const { return m_files; }
     inline bool FilesHasBeenSet() const { return m_filesHasBeenSet; }
-
-    /**
-     * <p>A list of <code>SnapshotFile</code> objects that contain the information on
-     * the snapshot files that need to be generated. This structure can hold 1
-     * configuration at a time.</p>
-     */
-    inline void SetFiles(const Aws::Vector<SnapshotFile>& value) { m_filesHasBeenSet = true; m_files = value; }
-
-    /**
-     * <p>A list of <code>SnapshotFile</code> objects that contain the information on
-     * the snapshot files that need to be generated. This structure can hold 1
-     * configuration at a time.</p>
-     */
-    inline void SetFiles(Aws::Vector<SnapshotFile>&& value) { m_filesHasBeenSet = true; m_files = std::move(value); }
-
-    /**
-     * <p>A list of <code>SnapshotFile</code> objects that contain the information on
-     * the snapshot files that need to be generated. This structure can hold 1
-     * configuration at a time.</p>
-     */
-    inline SnapshotFileGroup& WithFiles(const Aws::Vector<SnapshotFile>& value) { SetFiles(value); return *this;}
-
-    /**
-     * <p>A list of <code>SnapshotFile</code> objects that contain the information on
-     * the snapshot files that need to be generated. This structure can hold 1
-     * configuration at a time.</p>
-     */
-    inline SnapshotFileGroup& WithFiles(Aws::Vector<SnapshotFile>&& value) { SetFiles(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of <code>SnapshotFile</code> objects that contain the information on
-     * the snapshot files that need to be generated. This structure can hold 1
-     * configuration at a time.</p>
-     */
-    inline SnapshotFileGroup& AddFiles(const SnapshotFile& value) { m_filesHasBeenSet = true; m_files.push_back(value); return *this; }
-
-    /**
-     * <p>A list of <code>SnapshotFile</code> objects that contain the information on
-     * the snapshot files that need to be generated. This structure can hold 1
-     * configuration at a time.</p>
-     */
-    inline SnapshotFileGroup& AddFiles(SnapshotFile&& value) { m_filesHasBeenSet = true; m_files.push_back(std::move(value)); return *this; }
-
+    template<typename FilesT = Aws::Vector<SnapshotFile>>
+    void SetFiles(FilesT&& value) { m_filesHasBeenSet = true; m_files = std::forward<FilesT>(value); }
+    template<typename FilesT = Aws::Vector<SnapshotFile>>
+    SnapshotFileGroup& WithFiles(FilesT&& value) { SetFiles(std::forward<FilesT>(value)); return *this;}
+    template<typename FilesT = SnapshotFile>
+    SnapshotFileGroup& AddFiles(FilesT&& value) { m_filesHasBeenSet = true; m_files.emplace_back(std::forward<FilesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<SnapshotFile> m_files;

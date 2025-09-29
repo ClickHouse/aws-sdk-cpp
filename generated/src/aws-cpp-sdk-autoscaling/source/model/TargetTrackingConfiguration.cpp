@@ -20,23 +20,7 @@ namespace AutoScaling
 namespace Model
 {
 
-TargetTrackingConfiguration::TargetTrackingConfiguration() : 
-    m_predefinedMetricSpecificationHasBeenSet(false),
-    m_customizedMetricSpecificationHasBeenSet(false),
-    m_targetValue(0.0),
-    m_targetValueHasBeenSet(false),
-    m_disableScaleIn(false),
-    m_disableScaleInHasBeenSet(false)
-{
-}
-
-TargetTrackingConfiguration::TargetTrackingConfiguration(const XmlNode& xmlNode) : 
-    m_predefinedMetricSpecificationHasBeenSet(false),
-    m_customizedMetricSpecificationHasBeenSet(false),
-    m_targetValue(0.0),
-    m_targetValueHasBeenSet(false),
-    m_disableScaleIn(false),
-    m_disableScaleInHasBeenSet(false)
+TargetTrackingConfiguration::TargetTrackingConfiguration(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -120,7 +104,7 @@ void TargetTrackingConfiguration::OutputToStream(Aws::OStream& oStream, const ch
   }
   if(m_targetValueHasBeenSet)
   {
-        oStream << location << ".TargetValue=" << StringUtils::URLEncode(m_targetValue) << "&";
+      oStream << location << ".TargetValue=" << StringUtils::URLEncode(m_targetValue) << "&";
   }
   if(m_disableScaleInHasBeenSet)
   {

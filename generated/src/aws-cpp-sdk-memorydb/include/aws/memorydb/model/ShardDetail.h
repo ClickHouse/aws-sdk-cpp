@@ -33,155 +33,59 @@ namespace Model
   class ShardDetail
   {
   public:
-    AWS_MEMORYDB_API ShardDetail();
+    AWS_MEMORYDB_API ShardDetail() = default;
     AWS_MEMORYDB_API ShardDetail(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEMORYDB_API ShardDetail& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEMORYDB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the shard</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the shard</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    ShardDetail& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the shard</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the shard</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the shard</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the shard</p>
-     */
-    inline ShardDetail& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the shard</p>
-     */
-    inline ShardDetail& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the shard</p>
-     */
-    inline ShardDetail& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The configuration details of the shard</p>
      */
-    inline const ShardConfiguration& GetConfiguration() const{ return m_configuration; }
-
-    /**
-     * <p>The configuration details of the shard</p>
-     */
+    inline const ShardConfiguration& GetConfiguration() const { return m_configuration; }
     inline bool ConfigurationHasBeenSet() const { return m_configurationHasBeenSet; }
+    template<typename ConfigurationT = ShardConfiguration>
+    void SetConfiguration(ConfigurationT&& value) { m_configurationHasBeenSet = true; m_configuration = std::forward<ConfigurationT>(value); }
+    template<typename ConfigurationT = ShardConfiguration>
+    ShardDetail& WithConfiguration(ConfigurationT&& value) { SetConfiguration(std::forward<ConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The configuration details of the shard</p>
-     */
-    inline void SetConfiguration(const ShardConfiguration& value) { m_configurationHasBeenSet = true; m_configuration = value; }
-
-    /**
-     * <p>The configuration details of the shard</p>
-     */
-    inline void SetConfiguration(ShardConfiguration&& value) { m_configurationHasBeenSet = true; m_configuration = std::move(value); }
-
-    /**
-     * <p>The configuration details of the shard</p>
-     */
-    inline ShardDetail& WithConfiguration(const ShardConfiguration& value) { SetConfiguration(value); return *this;}
-
-    /**
-     * <p>The configuration details of the shard</p>
-     */
-    inline ShardDetail& WithConfiguration(ShardConfiguration&& value) { SetConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The size of the shard's snapshot</p>
      */
-    inline const Aws::String& GetSize() const{ return m_size; }
-
-    /**
-     * <p>The size of the shard's snapshot</p>
-     */
+    inline const Aws::String& GetSize() const { return m_size; }
     inline bool SizeHasBeenSet() const { return m_sizeHasBeenSet; }
+    template<typename SizeT = Aws::String>
+    void SetSize(SizeT&& value) { m_sizeHasBeenSet = true; m_size = std::forward<SizeT>(value); }
+    template<typename SizeT = Aws::String>
+    ShardDetail& WithSize(SizeT&& value) { SetSize(std::forward<SizeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The size of the shard's snapshot</p>
-     */
-    inline void SetSize(const Aws::String& value) { m_sizeHasBeenSet = true; m_size = value; }
-
-    /**
-     * <p>The size of the shard's snapshot</p>
-     */
-    inline void SetSize(Aws::String&& value) { m_sizeHasBeenSet = true; m_size = std::move(value); }
-
-    /**
-     * <p>The size of the shard's snapshot</p>
-     */
-    inline void SetSize(const char* value) { m_sizeHasBeenSet = true; m_size.assign(value); }
-
-    /**
-     * <p>The size of the shard's snapshot</p>
-     */
-    inline ShardDetail& WithSize(const Aws::String& value) { SetSize(value); return *this;}
-
-    /**
-     * <p>The size of the shard's snapshot</p>
-     */
-    inline ShardDetail& WithSize(Aws::String&& value) { SetSize(std::move(value)); return *this;}
-
-    /**
-     * <p>The size of the shard's snapshot</p>
-     */
-    inline ShardDetail& WithSize(const char* value) { SetSize(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time that the shard's snapshot was created</p>
      */
-    inline const Aws::Utils::DateTime& GetSnapshotCreationTime() const{ return m_snapshotCreationTime; }
-
-    /**
-     * <p>The date and time that the shard's snapshot was created</p>
-     */
+    inline const Aws::Utils::DateTime& GetSnapshotCreationTime() const { return m_snapshotCreationTime; }
     inline bool SnapshotCreationTimeHasBeenSet() const { return m_snapshotCreationTimeHasBeenSet; }
-
-    /**
-     * <p>The date and time that the shard's snapshot was created</p>
-     */
-    inline void SetSnapshotCreationTime(const Aws::Utils::DateTime& value) { m_snapshotCreationTimeHasBeenSet = true; m_snapshotCreationTime = value; }
-
-    /**
-     * <p>The date and time that the shard's snapshot was created</p>
-     */
-    inline void SetSnapshotCreationTime(Aws::Utils::DateTime&& value) { m_snapshotCreationTimeHasBeenSet = true; m_snapshotCreationTime = std::move(value); }
-
-    /**
-     * <p>The date and time that the shard's snapshot was created</p>
-     */
-    inline ShardDetail& WithSnapshotCreationTime(const Aws::Utils::DateTime& value) { SetSnapshotCreationTime(value); return *this;}
-
-    /**
-     * <p>The date and time that the shard's snapshot was created</p>
-     */
-    inline ShardDetail& WithSnapshotCreationTime(Aws::Utils::DateTime&& value) { SetSnapshotCreationTime(std::move(value)); return *this;}
-
+    template<typename SnapshotCreationTimeT = Aws::Utils::DateTime>
+    void SetSnapshotCreationTime(SnapshotCreationTimeT&& value) { m_snapshotCreationTimeHasBeenSet = true; m_snapshotCreationTime = std::forward<SnapshotCreationTimeT>(value); }
+    template<typename SnapshotCreationTimeT = Aws::Utils::DateTime>
+    ShardDetail& WithSnapshotCreationTime(SnapshotCreationTimeT&& value) { SetSnapshotCreationTime(std::forward<SnapshotCreationTimeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;
@@ -193,7 +97,7 @@ namespace Model
     Aws::String m_size;
     bool m_sizeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_snapshotCreationTime;
+    Aws::Utils::DateTime m_snapshotCreationTime{};
     bool m_snapshotCreationTimeHasBeenSet = false;
   };
 

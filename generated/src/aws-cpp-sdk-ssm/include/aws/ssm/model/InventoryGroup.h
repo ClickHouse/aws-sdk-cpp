@@ -35,117 +35,40 @@ namespace Model
   class InventoryGroup
   {
   public:
-    AWS_SSM_API InventoryGroup();
+    AWS_SSM_API InventoryGroup() = default;
     AWS_SSM_API InventoryGroup(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSM_API InventoryGroup& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSM_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the group.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the group.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    InventoryGroup& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the group.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the group.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the group.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the group.</p>
-     */
-    inline InventoryGroup& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the group.</p>
-     */
-    inline InventoryGroup& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the group.</p>
-     */
-    inline InventoryGroup& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Filters define the criteria for the group. The <code>matchingCount</code>
      * field displays the number of resources that match the criteria. The
      * <code>notMatchingCount</code> field displays the number of resources that don't
      * match the criteria. </p>
      */
-    inline const Aws::Vector<InventoryFilter>& GetFilters() const{ return m_filters; }
-
-    /**
-     * <p>Filters define the criteria for the group. The <code>matchingCount</code>
-     * field displays the number of resources that match the criteria. The
-     * <code>notMatchingCount</code> field displays the number of resources that don't
-     * match the criteria. </p>
-     */
+    inline const Aws::Vector<InventoryFilter>& GetFilters() const { return m_filters; }
     inline bool FiltersHasBeenSet() const { return m_filtersHasBeenSet; }
-
-    /**
-     * <p>Filters define the criteria for the group. The <code>matchingCount</code>
-     * field displays the number of resources that match the criteria. The
-     * <code>notMatchingCount</code> field displays the number of resources that don't
-     * match the criteria. </p>
-     */
-    inline void SetFilters(const Aws::Vector<InventoryFilter>& value) { m_filtersHasBeenSet = true; m_filters = value; }
-
-    /**
-     * <p>Filters define the criteria for the group. The <code>matchingCount</code>
-     * field displays the number of resources that match the criteria. The
-     * <code>notMatchingCount</code> field displays the number of resources that don't
-     * match the criteria. </p>
-     */
-    inline void SetFilters(Aws::Vector<InventoryFilter>&& value) { m_filtersHasBeenSet = true; m_filters = std::move(value); }
-
-    /**
-     * <p>Filters define the criteria for the group. The <code>matchingCount</code>
-     * field displays the number of resources that match the criteria. The
-     * <code>notMatchingCount</code> field displays the number of resources that don't
-     * match the criteria. </p>
-     */
-    inline InventoryGroup& WithFilters(const Aws::Vector<InventoryFilter>& value) { SetFilters(value); return *this;}
-
-    /**
-     * <p>Filters define the criteria for the group. The <code>matchingCount</code>
-     * field displays the number of resources that match the criteria. The
-     * <code>notMatchingCount</code> field displays the number of resources that don't
-     * match the criteria. </p>
-     */
-    inline InventoryGroup& WithFilters(Aws::Vector<InventoryFilter>&& value) { SetFilters(std::move(value)); return *this;}
-
-    /**
-     * <p>Filters define the criteria for the group. The <code>matchingCount</code>
-     * field displays the number of resources that match the criteria. The
-     * <code>notMatchingCount</code> field displays the number of resources that don't
-     * match the criteria. </p>
-     */
-    inline InventoryGroup& AddFilters(const InventoryFilter& value) { m_filtersHasBeenSet = true; m_filters.push_back(value); return *this; }
-
-    /**
-     * <p>Filters define the criteria for the group. The <code>matchingCount</code>
-     * field displays the number of resources that match the criteria. The
-     * <code>notMatchingCount</code> field displays the number of resources that don't
-     * match the criteria. </p>
-     */
-    inline InventoryGroup& AddFilters(InventoryFilter&& value) { m_filtersHasBeenSet = true; m_filters.push_back(std::move(value)); return *this; }
-
+    template<typename FiltersT = Aws::Vector<InventoryFilter>>
+    void SetFilters(FiltersT&& value) { m_filtersHasBeenSet = true; m_filters = std::forward<FiltersT>(value); }
+    template<typename FiltersT = Aws::Vector<InventoryFilter>>
+    InventoryGroup& WithFilters(FiltersT&& value) { SetFilters(std::forward<FiltersT>(value)); return *this;}
+    template<typename FiltersT = InventoryFilter>
+    InventoryGroup& AddFilters(FiltersT&& value) { m_filtersHasBeenSet = true; m_filters.emplace_back(std::forward<FiltersT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_name;

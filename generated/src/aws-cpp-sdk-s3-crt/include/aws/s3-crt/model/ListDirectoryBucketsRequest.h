@@ -26,7 +26,7 @@ namespace Model
   class ListDirectoryBucketsRequest : public S3CrtRequest
   {
   public:
-    AWS_S3CRT_API ListDirectoryBucketsRequest();
+    AWS_S3CRT_API ListDirectoryBucketsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,150 +38,59 @@ namespace Model
 
     AWS_S3CRT_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
+    AWS_S3CRT_API bool HasEmbeddedError(IOStream &body, const Http::HeaderValueCollection &header) const override;
     /**
      * Helper function to collect parameters (configurable and static hardcoded) required for endpoint computation.
      */
     AWS_S3CRT_API EndpointParameters GetEndpointContextParams() const override;
 
+    ///@{
     /**
      * <p> <code>ContinuationToken</code> indicates to Amazon S3 that the list is being
-     * continued on this bucket with a token. <code>ContinuationToken</code> is
-     * obfuscated and is not a real key. You can use this
-     * <code>ContinuationToken</code> for pagination of the list results. </p>
+     * continued on buckets in this account with a token.
+     * <code>ContinuationToken</code> is obfuscated and is not a real bucket name. You
+     * can use this <code>ContinuationToken</code> for the pagination of the list
+     * results. </p>
      */
-    inline const Aws::String& GetContinuationToken() const{ return m_continuationToken; }
-
-    /**
-     * <p> <code>ContinuationToken</code> indicates to Amazon S3 that the list is being
-     * continued on this bucket with a token. <code>ContinuationToken</code> is
-     * obfuscated and is not a real key. You can use this
-     * <code>ContinuationToken</code> for pagination of the list results. </p>
-     */
+    inline const Aws::String& GetContinuationToken() const { return m_continuationToken; }
     inline bool ContinuationTokenHasBeenSet() const { return m_continuationTokenHasBeenSet; }
+    template<typename ContinuationTokenT = Aws::String>
+    void SetContinuationToken(ContinuationTokenT&& value) { m_continuationTokenHasBeenSet = true; m_continuationToken = std::forward<ContinuationTokenT>(value); }
+    template<typename ContinuationTokenT = Aws::String>
+    ListDirectoryBucketsRequest& WithContinuationToken(ContinuationTokenT&& value) { SetContinuationToken(std::forward<ContinuationTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> <code>ContinuationToken</code> indicates to Amazon S3 that the list is being
-     * continued on this bucket with a token. <code>ContinuationToken</code> is
-     * obfuscated and is not a real key. You can use this
-     * <code>ContinuationToken</code> for pagination of the list results. </p>
-     */
-    inline void SetContinuationToken(const Aws::String& value) { m_continuationTokenHasBeenSet = true; m_continuationToken = value; }
-
-    /**
-     * <p> <code>ContinuationToken</code> indicates to Amazon S3 that the list is being
-     * continued on this bucket with a token. <code>ContinuationToken</code> is
-     * obfuscated and is not a real key. You can use this
-     * <code>ContinuationToken</code> for pagination of the list results. </p>
-     */
-    inline void SetContinuationToken(Aws::String&& value) { m_continuationTokenHasBeenSet = true; m_continuationToken = std::move(value); }
-
-    /**
-     * <p> <code>ContinuationToken</code> indicates to Amazon S3 that the list is being
-     * continued on this bucket with a token. <code>ContinuationToken</code> is
-     * obfuscated and is not a real key. You can use this
-     * <code>ContinuationToken</code> for pagination of the list results. </p>
-     */
-    inline void SetContinuationToken(const char* value) { m_continuationTokenHasBeenSet = true; m_continuationToken.assign(value); }
-
-    /**
-     * <p> <code>ContinuationToken</code> indicates to Amazon S3 that the list is being
-     * continued on this bucket with a token. <code>ContinuationToken</code> is
-     * obfuscated and is not a real key. You can use this
-     * <code>ContinuationToken</code> for pagination of the list results. </p>
-     */
-    inline ListDirectoryBucketsRequest& WithContinuationToken(const Aws::String& value) { SetContinuationToken(value); return *this;}
-
-    /**
-     * <p> <code>ContinuationToken</code> indicates to Amazon S3 that the list is being
-     * continued on this bucket with a token. <code>ContinuationToken</code> is
-     * obfuscated and is not a real key. You can use this
-     * <code>ContinuationToken</code> for pagination of the list results. </p>
-     */
-    inline ListDirectoryBucketsRequest& WithContinuationToken(Aws::String&& value) { SetContinuationToken(std::move(value)); return *this;}
-
-    /**
-     * <p> <code>ContinuationToken</code> indicates to Amazon S3 that the list is being
-     * continued on this bucket with a token. <code>ContinuationToken</code> is
-     * obfuscated and is not a real key. You can use this
-     * <code>ContinuationToken</code> for pagination of the list results. </p>
-     */
-    inline ListDirectoryBucketsRequest& WithContinuationToken(const char* value) { SetContinuationToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Maximum number of buckets to be returned in response. When the number is more
      * than the count of buckets that are owned by an Amazon Web Services account,
      * return all the buckets in response.</p>
      */
-    inline int GetMaxDirectoryBuckets() const{ return m_maxDirectoryBuckets; }
-
-    /**
-     * <p>Maximum number of buckets to be returned in response. When the number is more
-     * than the count of buckets that are owned by an Amazon Web Services account,
-     * return all the buckets in response.</p>
-     */
+    inline int GetMaxDirectoryBuckets() const { return m_maxDirectoryBuckets; }
     inline bool MaxDirectoryBucketsHasBeenSet() const { return m_maxDirectoryBucketsHasBeenSet; }
-
-    /**
-     * <p>Maximum number of buckets to be returned in response. When the number is more
-     * than the count of buckets that are owned by an Amazon Web Services account,
-     * return all the buckets in response.</p>
-     */
     inline void SetMaxDirectoryBuckets(int value) { m_maxDirectoryBucketsHasBeenSet = true; m_maxDirectoryBuckets = value; }
-
-    /**
-     * <p>Maximum number of buckets to be returned in response. When the number is more
-     * than the count of buckets that are owned by an Amazon Web Services account,
-     * return all the buckets in response.</p>
-     */
     inline ListDirectoryBucketsRequest& WithMaxDirectoryBuckets(int value) { SetMaxDirectoryBuckets(value); return *this;}
+    ///@}
 
-
+    ///@{
     
-    inline const Aws::Map<Aws::String, Aws::String>& GetCustomizedAccessLogTag() const{ return m_customizedAccessLogTag; }
-
-    
+    inline const Aws::Map<Aws::String, Aws::String>& GetCustomizedAccessLogTag() const { return m_customizedAccessLogTag; }
     inline bool CustomizedAccessLogTagHasBeenSet() const { return m_customizedAccessLogTagHasBeenSet; }
-
-    
-    inline void SetCustomizedAccessLogTag(const Aws::Map<Aws::String, Aws::String>& value) { m_customizedAccessLogTagHasBeenSet = true; m_customizedAccessLogTag = value; }
-
-    
-    inline void SetCustomizedAccessLogTag(Aws::Map<Aws::String, Aws::String>&& value) { m_customizedAccessLogTagHasBeenSet = true; m_customizedAccessLogTag = std::move(value); }
-
-    
-    inline ListDirectoryBucketsRequest& WithCustomizedAccessLogTag(const Aws::Map<Aws::String, Aws::String>& value) { SetCustomizedAccessLogTag(value); return *this;}
-
-    
-    inline ListDirectoryBucketsRequest& WithCustomizedAccessLogTag(Aws::Map<Aws::String, Aws::String>&& value) { SetCustomizedAccessLogTag(std::move(value)); return *this;}
-
-    
-    inline ListDirectoryBucketsRequest& AddCustomizedAccessLogTag(const Aws::String& key, const Aws::String& value) { m_customizedAccessLogTagHasBeenSet = true; m_customizedAccessLogTag.emplace(key, value); return *this; }
-
-    
-    inline ListDirectoryBucketsRequest& AddCustomizedAccessLogTag(Aws::String&& key, const Aws::String& value) { m_customizedAccessLogTagHasBeenSet = true; m_customizedAccessLogTag.emplace(std::move(key), value); return *this; }
-
-    
-    inline ListDirectoryBucketsRequest& AddCustomizedAccessLogTag(const Aws::String& key, Aws::String&& value) { m_customizedAccessLogTagHasBeenSet = true; m_customizedAccessLogTag.emplace(key, std::move(value)); return *this; }
-
-    
-    inline ListDirectoryBucketsRequest& AddCustomizedAccessLogTag(Aws::String&& key, Aws::String&& value) { m_customizedAccessLogTagHasBeenSet = true; m_customizedAccessLogTag.emplace(std::move(key), std::move(value)); return *this; }
-
-    
-    inline ListDirectoryBucketsRequest& AddCustomizedAccessLogTag(const char* key, Aws::String&& value) { m_customizedAccessLogTagHasBeenSet = true; m_customizedAccessLogTag.emplace(key, std::move(value)); return *this; }
-
-    
-    inline ListDirectoryBucketsRequest& AddCustomizedAccessLogTag(Aws::String&& key, const char* value) { m_customizedAccessLogTagHasBeenSet = true; m_customizedAccessLogTag.emplace(std::move(key), value); return *this; }
-
-    
-    inline ListDirectoryBucketsRequest& AddCustomizedAccessLogTag(const char* key, const char* value) { m_customizedAccessLogTagHasBeenSet = true; m_customizedAccessLogTag.emplace(key, value); return *this; }
-
+    template<typename CustomizedAccessLogTagT = Aws::Map<Aws::String, Aws::String>>
+    void SetCustomizedAccessLogTag(CustomizedAccessLogTagT&& value) { m_customizedAccessLogTagHasBeenSet = true; m_customizedAccessLogTag = std::forward<CustomizedAccessLogTagT>(value); }
+    template<typename CustomizedAccessLogTagT = Aws::Map<Aws::String, Aws::String>>
+    ListDirectoryBucketsRequest& WithCustomizedAccessLogTag(CustomizedAccessLogTagT&& value) { SetCustomizedAccessLogTag(std::forward<CustomizedAccessLogTagT>(value)); return *this;}
+    template<typename CustomizedAccessLogTagKeyT = Aws::String, typename CustomizedAccessLogTagValueT = Aws::String>
+    ListDirectoryBucketsRequest& AddCustomizedAccessLogTag(CustomizedAccessLogTagKeyT&& key, CustomizedAccessLogTagValueT&& value) {
+      m_customizedAccessLogTagHasBeenSet = true; m_customizedAccessLogTag.emplace(std::forward<CustomizedAccessLogTagKeyT>(key), std::forward<CustomizedAccessLogTagValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
     Aws::String m_continuationToken;
     bool m_continuationTokenHasBeenSet = false;
 
-    int m_maxDirectoryBuckets;
+    int m_maxDirectoryBuckets{0};
     bool m_maxDirectoryBucketsHasBeenSet = false;
 
     Aws::Map<Aws::String, Aws::String> m_customizedAccessLogTag;

@@ -20,21 +20,7 @@ namespace Route53
 namespace Model
 {
 
-CollectionSummary::CollectionSummary() : 
-    m_arnHasBeenSet(false),
-    m_idHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_version(0),
-    m_versionHasBeenSet(false)
-{
-}
-
-CollectionSummary::CollectionSummary(const XmlNode& xmlNode) : 
-    m_arnHasBeenSet(false),
-    m_idHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_version(0),
-    m_versionHasBeenSet(false)
+CollectionSummary::CollectionSummary(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

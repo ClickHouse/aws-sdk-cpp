@@ -12,18 +12,6 @@ using namespace Aws::DataZone::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateGlossaryRequest::CreateGlossaryRequest() : 
-    m_clientToken(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_descriptionHasBeenSet(false),
-    m_domainIdentifierHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_owningProjectIdentifierHasBeenSet(false),
-    m_status(GlossaryStatus::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
 Aws::String CreateGlossaryRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -55,6 +43,17 @@ Aws::String CreateGlossaryRequest::SerializePayload() const
   if(m_statusHasBeenSet)
   {
    payload.WithString("status", GlossaryStatusMapper::GetNameForGlossaryStatus(m_status));
+  }
+
+  if(m_usageRestrictionsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> usageRestrictionsJsonList(m_usageRestrictions.size());
+   for(unsigned usageRestrictionsIndex = 0; usageRestrictionsIndex < usageRestrictionsJsonList.GetLength(); ++usageRestrictionsIndex)
+   {
+     usageRestrictionsJsonList[usageRestrictionsIndex].AsString(GlossaryUsageRestrictionMapper::GetNameForGlossaryUsageRestriction(m_usageRestrictions[usageRestrictionsIndex]));
+   }
+   payload.WithArray("usageRestrictions", std::move(usageRestrictionsJsonList));
+
   }
 
   return payload.View().WriteReadable();

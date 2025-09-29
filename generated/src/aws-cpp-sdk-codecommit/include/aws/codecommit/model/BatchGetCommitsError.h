@@ -32,150 +32,49 @@ namespace Model
   class BatchGetCommitsError
   {
   public:
-    AWS_CODECOMMIT_API BatchGetCommitsError();
+    AWS_CODECOMMIT_API BatchGetCommitsError() = default;
     AWS_CODECOMMIT_API BatchGetCommitsError(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODECOMMIT_API BatchGetCommitsError& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODECOMMIT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A commit ID that either could not be found or was not in a valid format.</p>
      */
-    inline const Aws::String& GetCommitId() const{ return m_commitId; }
-
-    /**
-     * <p>A commit ID that either could not be found or was not in a valid format.</p>
-     */
+    inline const Aws::String& GetCommitId() const { return m_commitId; }
     inline bool CommitIdHasBeenSet() const { return m_commitIdHasBeenSet; }
+    template<typename CommitIdT = Aws::String>
+    void SetCommitId(CommitIdT&& value) { m_commitIdHasBeenSet = true; m_commitId = std::forward<CommitIdT>(value); }
+    template<typename CommitIdT = Aws::String>
+    BatchGetCommitsError& WithCommitId(CommitIdT&& value) { SetCommitId(std::forward<CommitIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A commit ID that either could not be found or was not in a valid format.</p>
-     */
-    inline void SetCommitId(const Aws::String& value) { m_commitIdHasBeenSet = true; m_commitId = value; }
-
-    /**
-     * <p>A commit ID that either could not be found or was not in a valid format.</p>
-     */
-    inline void SetCommitId(Aws::String&& value) { m_commitIdHasBeenSet = true; m_commitId = std::move(value); }
-
-    /**
-     * <p>A commit ID that either could not be found or was not in a valid format.</p>
-     */
-    inline void SetCommitId(const char* value) { m_commitIdHasBeenSet = true; m_commitId.assign(value); }
-
-    /**
-     * <p>A commit ID that either could not be found or was not in a valid format.</p>
-     */
-    inline BatchGetCommitsError& WithCommitId(const Aws::String& value) { SetCommitId(value); return *this;}
-
-    /**
-     * <p>A commit ID that either could not be found or was not in a valid format.</p>
-     */
-    inline BatchGetCommitsError& WithCommitId(Aws::String&& value) { SetCommitId(std::move(value)); return *this;}
-
-    /**
-     * <p>A commit ID that either could not be found or was not in a valid format.</p>
-     */
-    inline BatchGetCommitsError& WithCommitId(const char* value) { SetCommitId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An error code that specifies whether the commit ID was not valid or not
      * found.</p>
      */
-    inline const Aws::String& GetErrorCode() const{ return m_errorCode; }
-
-    /**
-     * <p>An error code that specifies whether the commit ID was not valid or not
-     * found.</p>
-     */
+    inline const Aws::String& GetErrorCode() const { return m_errorCode; }
     inline bool ErrorCodeHasBeenSet() const { return m_errorCodeHasBeenSet; }
+    template<typename ErrorCodeT = Aws::String>
+    void SetErrorCode(ErrorCodeT&& value) { m_errorCodeHasBeenSet = true; m_errorCode = std::forward<ErrorCodeT>(value); }
+    template<typename ErrorCodeT = Aws::String>
+    BatchGetCommitsError& WithErrorCode(ErrorCodeT&& value) { SetErrorCode(std::forward<ErrorCodeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An error code that specifies whether the commit ID was not valid or not
-     * found.</p>
-     */
-    inline void SetErrorCode(const Aws::String& value) { m_errorCodeHasBeenSet = true; m_errorCode = value; }
-
-    /**
-     * <p>An error code that specifies whether the commit ID was not valid or not
-     * found.</p>
-     */
-    inline void SetErrorCode(Aws::String&& value) { m_errorCodeHasBeenSet = true; m_errorCode = std::move(value); }
-
-    /**
-     * <p>An error code that specifies whether the commit ID was not valid or not
-     * found.</p>
-     */
-    inline void SetErrorCode(const char* value) { m_errorCodeHasBeenSet = true; m_errorCode.assign(value); }
-
-    /**
-     * <p>An error code that specifies whether the commit ID was not valid or not
-     * found.</p>
-     */
-    inline BatchGetCommitsError& WithErrorCode(const Aws::String& value) { SetErrorCode(value); return *this;}
-
-    /**
-     * <p>An error code that specifies whether the commit ID was not valid or not
-     * found.</p>
-     */
-    inline BatchGetCommitsError& WithErrorCode(Aws::String&& value) { SetErrorCode(std::move(value)); return *this;}
-
-    /**
-     * <p>An error code that specifies whether the commit ID was not valid or not
-     * found.</p>
-     */
-    inline BatchGetCommitsError& WithErrorCode(const char* value) { SetErrorCode(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An error message that provides detail about why the commit ID either was not
      * found or was not valid.</p>
      */
-    inline const Aws::String& GetErrorMessage() const{ return m_errorMessage; }
-
-    /**
-     * <p>An error message that provides detail about why the commit ID either was not
-     * found or was not valid.</p>
-     */
+    inline const Aws::String& GetErrorMessage() const { return m_errorMessage; }
     inline bool ErrorMessageHasBeenSet() const { return m_errorMessageHasBeenSet; }
-
-    /**
-     * <p>An error message that provides detail about why the commit ID either was not
-     * found or was not valid.</p>
-     */
-    inline void SetErrorMessage(const Aws::String& value) { m_errorMessageHasBeenSet = true; m_errorMessage = value; }
-
-    /**
-     * <p>An error message that provides detail about why the commit ID either was not
-     * found or was not valid.</p>
-     */
-    inline void SetErrorMessage(Aws::String&& value) { m_errorMessageHasBeenSet = true; m_errorMessage = std::move(value); }
-
-    /**
-     * <p>An error message that provides detail about why the commit ID either was not
-     * found or was not valid.</p>
-     */
-    inline void SetErrorMessage(const char* value) { m_errorMessageHasBeenSet = true; m_errorMessage.assign(value); }
-
-    /**
-     * <p>An error message that provides detail about why the commit ID either was not
-     * found or was not valid.</p>
-     */
-    inline BatchGetCommitsError& WithErrorMessage(const Aws::String& value) { SetErrorMessage(value); return *this;}
-
-    /**
-     * <p>An error message that provides detail about why the commit ID either was not
-     * found or was not valid.</p>
-     */
-    inline BatchGetCommitsError& WithErrorMessage(Aws::String&& value) { SetErrorMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>An error message that provides detail about why the commit ID either was not
-     * found or was not valid.</p>
-     */
-    inline BatchGetCommitsError& WithErrorMessage(const char* value) { SetErrorMessage(value); return *this;}
-
+    template<typename ErrorMessageT = Aws::String>
+    void SetErrorMessage(ErrorMessageT&& value) { m_errorMessageHasBeenSet = true; m_errorMessage = std::forward<ErrorMessageT>(value); }
+    template<typename ErrorMessageT = Aws::String>
+    BatchGetCommitsError& WithErrorMessage(ErrorMessageT&& value) { SetErrorMessage(std::forward<ErrorMessageT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_commitId;

@@ -20,13 +20,7 @@ namespace AutoScaling
 namespace Model
 {
 
-PredictiveScalingCustomizedCapacityMetric::PredictiveScalingCustomizedCapacityMetric() : 
-    m_metricDataQueriesHasBeenSet(false)
-{
-}
-
-PredictiveScalingCustomizedCapacityMetric::PredictiveScalingCustomizedCapacityMetric(const XmlNode& xmlNode) : 
-    m_metricDataQueriesHasBeenSet(false)
+PredictiveScalingCustomizedCapacityMetric::PredictiveScalingCustomizedCapacityMetric(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -41,6 +35,7 @@ PredictiveScalingCustomizedCapacityMetric& PredictiveScalingCustomizedCapacityMe
     if(!metricDataQueriesNode.IsNull())
     {
       XmlNode metricDataQueriesMember = metricDataQueriesNode.FirstChild("member");
+      m_metricDataQueriesHasBeenSet = !metricDataQueriesMember.IsNull();
       while(!metricDataQueriesMember.IsNull())
       {
         m_metricDataQueries.push_back(metricDataQueriesMember);
@@ -77,7 +72,7 @@ void PredictiveScalingCustomizedCapacityMetric::OutputToStream(Aws::OStream& oSt
       for(auto& item : m_metricDataQueries)
       {
         Aws::StringStream metricDataQueriesSs;
-        metricDataQueriesSs << location <<  ".MetricDataQueries.member." << metricDataQueriesIdx++;
+        metricDataQueriesSs << location << ".MetricDataQueries.member." << metricDataQueriesIdx++;
         item.OutputToStream(oStream, metricDataQueriesSs.str().c_str());
       }
   }

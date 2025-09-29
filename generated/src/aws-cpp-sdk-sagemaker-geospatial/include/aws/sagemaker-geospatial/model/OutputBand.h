@@ -32,89 +32,39 @@ namespace Model
   class OutputBand
   {
   public:
-    AWS_SAGEMAKERGEOSPATIAL_API OutputBand();
+    AWS_SAGEMAKERGEOSPATIAL_API OutputBand() = default;
     AWS_SAGEMAKERGEOSPATIAL_API OutputBand(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKERGEOSPATIAL_API OutputBand& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKERGEOSPATIAL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the band.</p>
      */
-    inline const Aws::String& GetBandName() const{ return m_bandName; }
-
-    /**
-     * <p>The name of the band.</p>
-     */
+    inline const Aws::String& GetBandName() const { return m_bandName; }
     inline bool BandNameHasBeenSet() const { return m_bandNameHasBeenSet; }
+    template<typename BandNameT = Aws::String>
+    void SetBandName(BandNameT&& value) { m_bandNameHasBeenSet = true; m_bandName = std::forward<BandNameT>(value); }
+    template<typename BandNameT = Aws::String>
+    OutputBand& WithBandName(BandNameT&& value) { SetBandName(std::forward<BandNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the band.</p>
-     */
-    inline void SetBandName(const Aws::String& value) { m_bandNameHasBeenSet = true; m_bandName = value; }
-
-    /**
-     * <p>The name of the band.</p>
-     */
-    inline void SetBandName(Aws::String&& value) { m_bandNameHasBeenSet = true; m_bandName = std::move(value); }
-
-    /**
-     * <p>The name of the band.</p>
-     */
-    inline void SetBandName(const char* value) { m_bandNameHasBeenSet = true; m_bandName.assign(value); }
-
-    /**
-     * <p>The name of the band.</p>
-     */
-    inline OutputBand& WithBandName(const Aws::String& value) { SetBandName(value); return *this;}
-
-    /**
-     * <p>The name of the band.</p>
-     */
-    inline OutputBand& WithBandName(Aws::String&& value) { SetBandName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the band.</p>
-     */
-    inline OutputBand& WithBandName(const char* value) { SetBandName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The datatype of the output band.</p>
      */
-    inline const OutputType& GetOutputDataType() const{ return m_outputDataType; }
-
-    /**
-     * <p>The datatype of the output band.</p>
-     */
+    inline OutputType GetOutputDataType() const { return m_outputDataType; }
     inline bool OutputDataTypeHasBeenSet() const { return m_outputDataTypeHasBeenSet; }
-
-    /**
-     * <p>The datatype of the output band.</p>
-     */
-    inline void SetOutputDataType(const OutputType& value) { m_outputDataTypeHasBeenSet = true; m_outputDataType = value; }
-
-    /**
-     * <p>The datatype of the output band.</p>
-     */
-    inline void SetOutputDataType(OutputType&& value) { m_outputDataTypeHasBeenSet = true; m_outputDataType = std::move(value); }
-
-    /**
-     * <p>The datatype of the output band.</p>
-     */
-    inline OutputBand& WithOutputDataType(const OutputType& value) { SetOutputDataType(value); return *this;}
-
-    /**
-     * <p>The datatype of the output band.</p>
-     */
-    inline OutputBand& WithOutputDataType(OutputType&& value) { SetOutputDataType(std::move(value)); return *this;}
-
+    inline void SetOutputDataType(OutputType value) { m_outputDataTypeHasBeenSet = true; m_outputDataType = value; }
+    inline OutputBand& WithOutputDataType(OutputType value) { SetOutputDataType(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_bandName;
     bool m_bandNameHasBeenSet = false;
 
-    OutputType m_outputDataType;
+    OutputType m_outputDataType{OutputType::NOT_SET};
     bool m_outputDataTypeHasBeenSet = false;
   };
 

@@ -22,7 +22,7 @@ namespace Model
   class UpdateProfileRequest : public TransferRequest
   {
   public:
-    AWS_TRANSFER_API UpdateProfileRequest();
+    AWS_TRANSFER_API UpdateProfileRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,101 +35,32 @@ namespace Model
     AWS_TRANSFER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The identifier of the profile object that you are updating.</p>
      */
-    inline const Aws::String& GetProfileId() const{ return m_profileId; }
-
-    /**
-     * <p>The identifier of the profile object that you are updating.</p>
-     */
+    inline const Aws::String& GetProfileId() const { return m_profileId; }
     inline bool ProfileIdHasBeenSet() const { return m_profileIdHasBeenSet; }
+    template<typename ProfileIdT = Aws::String>
+    void SetProfileId(ProfileIdT&& value) { m_profileIdHasBeenSet = true; m_profileId = std::forward<ProfileIdT>(value); }
+    template<typename ProfileIdT = Aws::String>
+    UpdateProfileRequest& WithProfileId(ProfileIdT&& value) { SetProfileId(std::forward<ProfileIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the profile object that you are updating.</p>
-     */
-    inline void SetProfileId(const Aws::String& value) { m_profileIdHasBeenSet = true; m_profileId = value; }
-
-    /**
-     * <p>The identifier of the profile object that you are updating.</p>
-     */
-    inline void SetProfileId(Aws::String&& value) { m_profileIdHasBeenSet = true; m_profileId = std::move(value); }
-
-    /**
-     * <p>The identifier of the profile object that you are updating.</p>
-     */
-    inline void SetProfileId(const char* value) { m_profileIdHasBeenSet = true; m_profileId.assign(value); }
-
-    /**
-     * <p>The identifier of the profile object that you are updating.</p>
-     */
-    inline UpdateProfileRequest& WithProfileId(const Aws::String& value) { SetProfileId(value); return *this;}
-
-    /**
-     * <p>The identifier of the profile object that you are updating.</p>
-     */
-    inline UpdateProfileRequest& WithProfileId(Aws::String&& value) { SetProfileId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the profile object that you are updating.</p>
-     */
-    inline UpdateProfileRequest& WithProfileId(const char* value) { SetProfileId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An array of identifiers for the imported certificates. You use this
      * identifier for working with profiles and partner profiles.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetCertificateIds() const{ return m_certificateIds; }
-
-    /**
-     * <p>An array of identifiers for the imported certificates. You use this
-     * identifier for working with profiles and partner profiles.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetCertificateIds() const { return m_certificateIds; }
     inline bool CertificateIdsHasBeenSet() const { return m_certificateIdsHasBeenSet; }
-
-    /**
-     * <p>An array of identifiers for the imported certificates. You use this
-     * identifier for working with profiles and partner profiles.</p>
-     */
-    inline void SetCertificateIds(const Aws::Vector<Aws::String>& value) { m_certificateIdsHasBeenSet = true; m_certificateIds = value; }
-
-    /**
-     * <p>An array of identifiers for the imported certificates. You use this
-     * identifier for working with profiles and partner profiles.</p>
-     */
-    inline void SetCertificateIds(Aws::Vector<Aws::String>&& value) { m_certificateIdsHasBeenSet = true; m_certificateIds = std::move(value); }
-
-    /**
-     * <p>An array of identifiers for the imported certificates. You use this
-     * identifier for working with profiles and partner profiles.</p>
-     */
-    inline UpdateProfileRequest& WithCertificateIds(const Aws::Vector<Aws::String>& value) { SetCertificateIds(value); return *this;}
-
-    /**
-     * <p>An array of identifiers for the imported certificates. You use this
-     * identifier for working with profiles and partner profiles.</p>
-     */
-    inline UpdateProfileRequest& WithCertificateIds(Aws::Vector<Aws::String>&& value) { SetCertificateIds(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of identifiers for the imported certificates. You use this
-     * identifier for working with profiles and partner profiles.</p>
-     */
-    inline UpdateProfileRequest& AddCertificateIds(const Aws::String& value) { m_certificateIdsHasBeenSet = true; m_certificateIds.push_back(value); return *this; }
-
-    /**
-     * <p>An array of identifiers for the imported certificates. You use this
-     * identifier for working with profiles and partner profiles.</p>
-     */
-    inline UpdateProfileRequest& AddCertificateIds(Aws::String&& value) { m_certificateIdsHasBeenSet = true; m_certificateIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>An array of identifiers for the imported certificates. You use this
-     * identifier for working with profiles and partner profiles.</p>
-     */
-    inline UpdateProfileRequest& AddCertificateIds(const char* value) { m_certificateIdsHasBeenSet = true; m_certificateIds.push_back(value); return *this; }
-
+    template<typename CertificateIdsT = Aws::Vector<Aws::String>>
+    void SetCertificateIds(CertificateIdsT&& value) { m_certificateIdsHasBeenSet = true; m_certificateIds = std::forward<CertificateIdsT>(value); }
+    template<typename CertificateIdsT = Aws::Vector<Aws::String>>
+    UpdateProfileRequest& WithCertificateIds(CertificateIdsT&& value) { SetCertificateIds(std::forward<CertificateIdsT>(value)); return *this;}
+    template<typename CertificateIdsT = Aws::String>
+    UpdateProfileRequest& AddCertificateIds(CertificateIdsT&& value) { m_certificateIdsHasBeenSet = true; m_certificateIds.emplace_back(std::forward<CertificateIdsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_profileId;

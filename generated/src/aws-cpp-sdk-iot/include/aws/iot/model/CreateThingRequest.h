@@ -25,7 +25,7 @@ namespace Model
   class CreateThingRequest : public IoTRequest
   {
   public:
-    AWS_IOT_API CreateThingRequest();
+    AWS_IOT_API CreateThingRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,187 +36,57 @@ namespace Model
     AWS_IOT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of the thing to create.</p> <p>You can't change a thing's name after
      * you create it. To change a thing's name, you must create a new thing, give it
      * the new name, and then delete the old thing.</p>
      */
-    inline const Aws::String& GetThingName() const{ return m_thingName; }
-
-    /**
-     * <p>The name of the thing to create.</p> <p>You can't change a thing's name after
-     * you create it. To change a thing's name, you must create a new thing, give it
-     * the new name, and then delete the old thing.</p>
-     */
+    inline const Aws::String& GetThingName() const { return m_thingName; }
     inline bool ThingNameHasBeenSet() const { return m_thingNameHasBeenSet; }
+    template<typename ThingNameT = Aws::String>
+    void SetThingName(ThingNameT&& value) { m_thingNameHasBeenSet = true; m_thingName = std::forward<ThingNameT>(value); }
+    template<typename ThingNameT = Aws::String>
+    CreateThingRequest& WithThingName(ThingNameT&& value) { SetThingName(std::forward<ThingNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the thing to create.</p> <p>You can't change a thing's name after
-     * you create it. To change a thing's name, you must create a new thing, give it
-     * the new name, and then delete the old thing.</p>
-     */
-    inline void SetThingName(const Aws::String& value) { m_thingNameHasBeenSet = true; m_thingName = value; }
-
-    /**
-     * <p>The name of the thing to create.</p> <p>You can't change a thing's name after
-     * you create it. To change a thing's name, you must create a new thing, give it
-     * the new name, and then delete the old thing.</p>
-     */
-    inline void SetThingName(Aws::String&& value) { m_thingNameHasBeenSet = true; m_thingName = std::move(value); }
-
-    /**
-     * <p>The name of the thing to create.</p> <p>You can't change a thing's name after
-     * you create it. To change a thing's name, you must create a new thing, give it
-     * the new name, and then delete the old thing.</p>
-     */
-    inline void SetThingName(const char* value) { m_thingNameHasBeenSet = true; m_thingName.assign(value); }
-
-    /**
-     * <p>The name of the thing to create.</p> <p>You can't change a thing's name after
-     * you create it. To change a thing's name, you must create a new thing, give it
-     * the new name, and then delete the old thing.</p>
-     */
-    inline CreateThingRequest& WithThingName(const Aws::String& value) { SetThingName(value); return *this;}
-
-    /**
-     * <p>The name of the thing to create.</p> <p>You can't change a thing's name after
-     * you create it. To change a thing's name, you must create a new thing, give it
-     * the new name, and then delete the old thing.</p>
-     */
-    inline CreateThingRequest& WithThingName(Aws::String&& value) { SetThingName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the thing to create.</p> <p>You can't change a thing's name after
-     * you create it. To change a thing's name, you must create a new thing, give it
-     * the new name, and then delete the old thing.</p>
-     */
-    inline CreateThingRequest& WithThingName(const char* value) { SetThingName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the thing type associated with the new thing.</p>
      */
-    inline const Aws::String& GetThingTypeName() const{ return m_thingTypeName; }
-
-    /**
-     * <p>The name of the thing type associated with the new thing.</p>
-     */
+    inline const Aws::String& GetThingTypeName() const { return m_thingTypeName; }
     inline bool ThingTypeNameHasBeenSet() const { return m_thingTypeNameHasBeenSet; }
+    template<typename ThingTypeNameT = Aws::String>
+    void SetThingTypeName(ThingTypeNameT&& value) { m_thingTypeNameHasBeenSet = true; m_thingTypeName = std::forward<ThingTypeNameT>(value); }
+    template<typename ThingTypeNameT = Aws::String>
+    CreateThingRequest& WithThingTypeName(ThingTypeNameT&& value) { SetThingTypeName(std::forward<ThingTypeNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the thing type associated with the new thing.</p>
-     */
-    inline void SetThingTypeName(const Aws::String& value) { m_thingTypeNameHasBeenSet = true; m_thingTypeName = value; }
-
-    /**
-     * <p>The name of the thing type associated with the new thing.</p>
-     */
-    inline void SetThingTypeName(Aws::String&& value) { m_thingTypeNameHasBeenSet = true; m_thingTypeName = std::move(value); }
-
-    /**
-     * <p>The name of the thing type associated with the new thing.</p>
-     */
-    inline void SetThingTypeName(const char* value) { m_thingTypeNameHasBeenSet = true; m_thingTypeName.assign(value); }
-
-    /**
-     * <p>The name of the thing type associated with the new thing.</p>
-     */
-    inline CreateThingRequest& WithThingTypeName(const Aws::String& value) { SetThingTypeName(value); return *this;}
-
-    /**
-     * <p>The name of the thing type associated with the new thing.</p>
-     */
-    inline CreateThingRequest& WithThingTypeName(Aws::String&& value) { SetThingTypeName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the thing type associated with the new thing.</p>
-     */
-    inline CreateThingRequest& WithThingTypeName(const char* value) { SetThingTypeName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The attribute payload, which consists of up to three name/value pairs in a
      * JSON document. For example:</p> <p>
      * <code>{\"attributes\":{\"string1\":\"string2\"}}</code> </p>
      */
-    inline const AttributePayload& GetAttributePayload() const{ return m_attributePayload; }
-
-    /**
-     * <p>The attribute payload, which consists of up to three name/value pairs in a
-     * JSON document. For example:</p> <p>
-     * <code>{\"attributes\":{\"string1\":\"string2\"}}</code> </p>
-     */
+    inline const AttributePayload& GetAttributePayload() const { return m_attributePayload; }
     inline bool AttributePayloadHasBeenSet() const { return m_attributePayloadHasBeenSet; }
+    template<typename AttributePayloadT = AttributePayload>
+    void SetAttributePayload(AttributePayloadT&& value) { m_attributePayloadHasBeenSet = true; m_attributePayload = std::forward<AttributePayloadT>(value); }
+    template<typename AttributePayloadT = AttributePayload>
+    CreateThingRequest& WithAttributePayload(AttributePayloadT&& value) { SetAttributePayload(std::forward<AttributePayloadT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The attribute payload, which consists of up to three name/value pairs in a
-     * JSON document. For example:</p> <p>
-     * <code>{\"attributes\":{\"string1\":\"string2\"}}</code> </p>
-     */
-    inline void SetAttributePayload(const AttributePayload& value) { m_attributePayloadHasBeenSet = true; m_attributePayload = value; }
-
-    /**
-     * <p>The attribute payload, which consists of up to three name/value pairs in a
-     * JSON document. For example:</p> <p>
-     * <code>{\"attributes\":{\"string1\":\"string2\"}}</code> </p>
-     */
-    inline void SetAttributePayload(AttributePayload&& value) { m_attributePayloadHasBeenSet = true; m_attributePayload = std::move(value); }
-
-    /**
-     * <p>The attribute payload, which consists of up to three name/value pairs in a
-     * JSON document. For example:</p> <p>
-     * <code>{\"attributes\":{\"string1\":\"string2\"}}</code> </p>
-     */
-    inline CreateThingRequest& WithAttributePayload(const AttributePayload& value) { SetAttributePayload(value); return *this;}
-
-    /**
-     * <p>The attribute payload, which consists of up to three name/value pairs in a
-     * JSON document. For example:</p> <p>
-     * <code>{\"attributes\":{\"string1\":\"string2\"}}</code> </p>
-     */
-    inline CreateThingRequest& WithAttributePayload(AttributePayload&& value) { SetAttributePayload(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the billing group the thing will be added to.</p>
      */
-    inline const Aws::String& GetBillingGroupName() const{ return m_billingGroupName; }
-
-    /**
-     * <p>The name of the billing group the thing will be added to.</p>
-     */
+    inline const Aws::String& GetBillingGroupName() const { return m_billingGroupName; }
     inline bool BillingGroupNameHasBeenSet() const { return m_billingGroupNameHasBeenSet; }
-
-    /**
-     * <p>The name of the billing group the thing will be added to.</p>
-     */
-    inline void SetBillingGroupName(const Aws::String& value) { m_billingGroupNameHasBeenSet = true; m_billingGroupName = value; }
-
-    /**
-     * <p>The name of the billing group the thing will be added to.</p>
-     */
-    inline void SetBillingGroupName(Aws::String&& value) { m_billingGroupNameHasBeenSet = true; m_billingGroupName = std::move(value); }
-
-    /**
-     * <p>The name of the billing group the thing will be added to.</p>
-     */
-    inline void SetBillingGroupName(const char* value) { m_billingGroupNameHasBeenSet = true; m_billingGroupName.assign(value); }
-
-    /**
-     * <p>The name of the billing group the thing will be added to.</p>
-     */
-    inline CreateThingRequest& WithBillingGroupName(const Aws::String& value) { SetBillingGroupName(value); return *this;}
-
-    /**
-     * <p>The name of the billing group the thing will be added to.</p>
-     */
-    inline CreateThingRequest& WithBillingGroupName(Aws::String&& value) { SetBillingGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the billing group the thing will be added to.</p>
-     */
-    inline CreateThingRequest& WithBillingGroupName(const char* value) { SetBillingGroupName(value); return *this;}
-
+    template<typename BillingGroupNameT = Aws::String>
+    void SetBillingGroupName(BillingGroupNameT&& value) { m_billingGroupNameHasBeenSet = true; m_billingGroupName = std::forward<BillingGroupNameT>(value); }
+    template<typename BillingGroupNameT = Aws::String>
+    CreateThingRequest& WithBillingGroupName(BillingGroupNameT&& value) { SetBillingGroupName(std::forward<BillingGroupNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_thingName;

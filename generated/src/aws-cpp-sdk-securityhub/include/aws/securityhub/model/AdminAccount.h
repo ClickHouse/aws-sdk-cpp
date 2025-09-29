@@ -33,103 +33,41 @@ namespace Model
   class AdminAccount
   {
   public:
-    AWS_SECURITYHUB_API AdminAccount();
+    AWS_SECURITYHUB_API AdminAccount() = default;
     AWS_SECURITYHUB_API AdminAccount(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AdminAccount& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Web Services account identifier of the Security Hub administrator
      * account.</p>
      */
-    inline const Aws::String& GetAccountId() const{ return m_accountId; }
-
-    /**
-     * <p>The Amazon Web Services account identifier of the Security Hub administrator
-     * account.</p>
-     */
+    inline const Aws::String& GetAccountId() const { return m_accountId; }
     inline bool AccountIdHasBeenSet() const { return m_accountIdHasBeenSet; }
+    template<typename AccountIdT = Aws::String>
+    void SetAccountId(AccountIdT&& value) { m_accountIdHasBeenSet = true; m_accountId = std::forward<AccountIdT>(value); }
+    template<typename AccountIdT = Aws::String>
+    AdminAccount& WithAccountId(AccountIdT&& value) { SetAccountId(std::forward<AccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Web Services account identifier of the Security Hub administrator
-     * account.</p>
-     */
-    inline void SetAccountId(const Aws::String& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
-
-    /**
-     * <p>The Amazon Web Services account identifier of the Security Hub administrator
-     * account.</p>
-     */
-    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services account identifier of the Security Hub administrator
-     * account.</p>
-     */
-    inline void SetAccountId(const char* value) { m_accountIdHasBeenSet = true; m_accountId.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services account identifier of the Security Hub administrator
-     * account.</p>
-     */
-    inline AdminAccount& WithAccountId(const Aws::String& value) { SetAccountId(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account identifier of the Security Hub administrator
-     * account.</p>
-     */
-    inline AdminAccount& WithAccountId(Aws::String&& value) { SetAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account identifier of the Security Hub administrator
-     * account.</p>
-     */
-    inline AdminAccount& WithAccountId(const char* value) { SetAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The current status of the Security Hub administrator account. Indicates
      * whether the account is currently enabled as a Security Hub administrator.</p>
      */
-    inline const AdminStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The current status of the Security Hub administrator account. Indicates
-     * whether the account is currently enabled as a Security Hub administrator.</p>
-     */
+    inline AdminStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p>The current status of the Security Hub administrator account. Indicates
-     * whether the account is currently enabled as a Security Hub administrator.</p>
-     */
-    inline void SetStatus(const AdminStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The current status of the Security Hub administrator account. Indicates
-     * whether the account is currently enabled as a Security Hub administrator.</p>
-     */
-    inline void SetStatus(AdminStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The current status of the Security Hub administrator account. Indicates
-     * whether the account is currently enabled as a Security Hub administrator.</p>
-     */
-    inline AdminAccount& WithStatus(const AdminStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The current status of the Security Hub administrator account. Indicates
-     * whether the account is currently enabled as a Security Hub administrator.</p>
-     */
-    inline AdminAccount& WithStatus(AdminStatus&& value) { SetStatus(std::move(value)); return *this;}
-
+    inline void SetStatus(AdminStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline AdminAccount& WithStatus(AdminStatus value) { SetStatus(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_accountId;
     bool m_accountIdHasBeenSet = false;
 
-    AdminStatus m_status;
+    AdminStatus m_status{AdminStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
   };
 

@@ -21,7 +21,7 @@ namespace Model
   class DescribeScheduledAuditRequest : public IoTRequest
   {
   public:
-    AWS_IOT_API DescribeScheduledAuditRequest();
+    AWS_IOT_API DescribeScheduledAuditRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_IOT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of the scheduled audit whose information you want to get.</p>
      */
-    inline const Aws::String& GetScheduledAuditName() const{ return m_scheduledAuditName; }
-
-    /**
-     * <p>The name of the scheduled audit whose information you want to get.</p>
-     */
+    inline const Aws::String& GetScheduledAuditName() const { return m_scheduledAuditName; }
     inline bool ScheduledAuditNameHasBeenSet() const { return m_scheduledAuditNameHasBeenSet; }
-
-    /**
-     * <p>The name of the scheduled audit whose information you want to get.</p>
-     */
-    inline void SetScheduledAuditName(const Aws::String& value) { m_scheduledAuditNameHasBeenSet = true; m_scheduledAuditName = value; }
-
-    /**
-     * <p>The name of the scheduled audit whose information you want to get.</p>
-     */
-    inline void SetScheduledAuditName(Aws::String&& value) { m_scheduledAuditNameHasBeenSet = true; m_scheduledAuditName = std::move(value); }
-
-    /**
-     * <p>The name of the scheduled audit whose information you want to get.</p>
-     */
-    inline void SetScheduledAuditName(const char* value) { m_scheduledAuditNameHasBeenSet = true; m_scheduledAuditName.assign(value); }
-
-    /**
-     * <p>The name of the scheduled audit whose information you want to get.</p>
-     */
-    inline DescribeScheduledAuditRequest& WithScheduledAuditName(const Aws::String& value) { SetScheduledAuditName(value); return *this;}
-
-    /**
-     * <p>The name of the scheduled audit whose information you want to get.</p>
-     */
-    inline DescribeScheduledAuditRequest& WithScheduledAuditName(Aws::String&& value) { SetScheduledAuditName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the scheduled audit whose information you want to get.</p>
-     */
-    inline DescribeScheduledAuditRequest& WithScheduledAuditName(const char* value) { SetScheduledAuditName(value); return *this;}
-
+    template<typename ScheduledAuditNameT = Aws::String>
+    void SetScheduledAuditName(ScheduledAuditNameT&& value) { m_scheduledAuditNameHasBeenSet = true; m_scheduledAuditName = std::forward<ScheduledAuditNameT>(value); }
+    template<typename ScheduledAuditNameT = Aws::String>
+    DescribeScheduledAuditRequest& WithScheduledAuditName(ScheduledAuditNameT&& value) { SetScheduledAuditName(std::forward<ScheduledAuditNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_scheduledAuditName;

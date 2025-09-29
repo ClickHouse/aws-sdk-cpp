@@ -33,112 +33,45 @@ namespace Model
   class SageMakerMachineLearningModelResourceData
   {
   public:
-    AWS_GREENGRASS_API SageMakerMachineLearningModelResourceData();
+    AWS_GREENGRASS_API SageMakerMachineLearningModelResourceData() = default;
     AWS_GREENGRASS_API SageMakerMachineLearningModelResourceData(Aws::Utils::Json::JsonView jsonValue);
     AWS_GREENGRASS_API SageMakerMachineLearningModelResourceData& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GREENGRASS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * The absolute local path of the resource inside the Lambda environment.
      */
-    inline const Aws::String& GetDestinationPath() const{ return m_destinationPath; }
-
-    /**
-     * The absolute local path of the resource inside the Lambda environment.
-     */
+    inline const Aws::String& GetDestinationPath() const { return m_destinationPath; }
     inline bool DestinationPathHasBeenSet() const { return m_destinationPathHasBeenSet; }
+    template<typename DestinationPathT = Aws::String>
+    void SetDestinationPath(DestinationPathT&& value) { m_destinationPathHasBeenSet = true; m_destinationPath = std::forward<DestinationPathT>(value); }
+    template<typename DestinationPathT = Aws::String>
+    SageMakerMachineLearningModelResourceData& WithDestinationPath(DestinationPathT&& value) { SetDestinationPath(std::forward<DestinationPathT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The absolute local path of the resource inside the Lambda environment.
-     */
-    inline void SetDestinationPath(const Aws::String& value) { m_destinationPathHasBeenSet = true; m_destinationPath = value; }
-
-    /**
-     * The absolute local path of the resource inside the Lambda environment.
-     */
-    inline void SetDestinationPath(Aws::String&& value) { m_destinationPathHasBeenSet = true; m_destinationPath = std::move(value); }
-
-    /**
-     * The absolute local path of the resource inside the Lambda environment.
-     */
-    inline void SetDestinationPath(const char* value) { m_destinationPathHasBeenSet = true; m_destinationPath.assign(value); }
-
-    /**
-     * The absolute local path of the resource inside the Lambda environment.
-     */
-    inline SageMakerMachineLearningModelResourceData& WithDestinationPath(const Aws::String& value) { SetDestinationPath(value); return *this;}
-
-    /**
-     * The absolute local path of the resource inside the Lambda environment.
-     */
-    inline SageMakerMachineLearningModelResourceData& WithDestinationPath(Aws::String&& value) { SetDestinationPath(std::move(value)); return *this;}
-
-    /**
-     * The absolute local path of the resource inside the Lambda environment.
-     */
-    inline SageMakerMachineLearningModelResourceData& WithDestinationPath(const char* value) { SetDestinationPath(value); return *this;}
-
-
+    ///@{
     
-    inline const ResourceDownloadOwnerSetting& GetOwnerSetting() const{ return m_ownerSetting; }
-
-    
+    inline const ResourceDownloadOwnerSetting& GetOwnerSetting() const { return m_ownerSetting; }
     inline bool OwnerSettingHasBeenSet() const { return m_ownerSettingHasBeenSet; }
+    template<typename OwnerSettingT = ResourceDownloadOwnerSetting>
+    void SetOwnerSetting(OwnerSettingT&& value) { m_ownerSettingHasBeenSet = true; m_ownerSetting = std::forward<OwnerSettingT>(value); }
+    template<typename OwnerSettingT = ResourceDownloadOwnerSetting>
+    SageMakerMachineLearningModelResourceData& WithOwnerSetting(OwnerSettingT&& value) { SetOwnerSetting(std::forward<OwnerSettingT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetOwnerSetting(const ResourceDownloadOwnerSetting& value) { m_ownerSettingHasBeenSet = true; m_ownerSetting = value; }
-
-    
-    inline void SetOwnerSetting(ResourceDownloadOwnerSetting&& value) { m_ownerSettingHasBeenSet = true; m_ownerSetting = std::move(value); }
-
-    
-    inline SageMakerMachineLearningModelResourceData& WithOwnerSetting(const ResourceDownloadOwnerSetting& value) { SetOwnerSetting(value); return *this;}
-
-    
-    inline SageMakerMachineLearningModelResourceData& WithOwnerSetting(ResourceDownloadOwnerSetting&& value) { SetOwnerSetting(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * The ARN of the Amazon SageMaker training job that represents the source model.
      */
-    inline const Aws::String& GetSageMakerJobArn() const{ return m_sageMakerJobArn; }
-
-    /**
-     * The ARN of the Amazon SageMaker training job that represents the source model.
-     */
+    inline const Aws::String& GetSageMakerJobArn() const { return m_sageMakerJobArn; }
     inline bool SageMakerJobArnHasBeenSet() const { return m_sageMakerJobArnHasBeenSet; }
-
-    /**
-     * The ARN of the Amazon SageMaker training job that represents the source model.
-     */
-    inline void SetSageMakerJobArn(const Aws::String& value) { m_sageMakerJobArnHasBeenSet = true; m_sageMakerJobArn = value; }
-
-    /**
-     * The ARN of the Amazon SageMaker training job that represents the source model.
-     */
-    inline void SetSageMakerJobArn(Aws::String&& value) { m_sageMakerJobArnHasBeenSet = true; m_sageMakerJobArn = std::move(value); }
-
-    /**
-     * The ARN of the Amazon SageMaker training job that represents the source model.
-     */
-    inline void SetSageMakerJobArn(const char* value) { m_sageMakerJobArnHasBeenSet = true; m_sageMakerJobArn.assign(value); }
-
-    /**
-     * The ARN of the Amazon SageMaker training job that represents the source model.
-     */
-    inline SageMakerMachineLearningModelResourceData& WithSageMakerJobArn(const Aws::String& value) { SetSageMakerJobArn(value); return *this;}
-
-    /**
-     * The ARN of the Amazon SageMaker training job that represents the source model.
-     */
-    inline SageMakerMachineLearningModelResourceData& WithSageMakerJobArn(Aws::String&& value) { SetSageMakerJobArn(std::move(value)); return *this;}
-
-    /**
-     * The ARN of the Amazon SageMaker training job that represents the source model.
-     */
-    inline SageMakerMachineLearningModelResourceData& WithSageMakerJobArn(const char* value) { SetSageMakerJobArn(value); return *this;}
-
+    template<typename SageMakerJobArnT = Aws::String>
+    void SetSageMakerJobArn(SageMakerJobArnT&& value) { m_sageMakerJobArnHasBeenSet = true; m_sageMakerJobArn = std::forward<SageMakerJobArnT>(value); }
+    template<typename SageMakerJobArnT = Aws::String>
+    SageMakerMachineLearningModelResourceData& WithSageMakerJobArn(SageMakerJobArnT&& value) { SetSageMakerJobArn(std::forward<SageMakerJobArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_destinationPath;

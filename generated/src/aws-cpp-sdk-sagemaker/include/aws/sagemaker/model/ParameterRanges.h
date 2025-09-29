@@ -44,255 +44,77 @@ namespace Model
   class ParameterRanges
   {
   public:
-    AWS_SAGEMAKER_API ParameterRanges();
+    AWS_SAGEMAKER_API ParameterRanges() = default;
     AWS_SAGEMAKER_API ParameterRanges(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API ParameterRanges& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The array of <a
      * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_IntegerParameterRange.html">IntegerParameterRange</a>
      * objects that specify ranges of integer hyperparameters that a hyperparameter
      * tuning job searches.</p>
      */
-    inline const Aws::Vector<IntegerParameterRange>& GetIntegerParameterRanges() const{ return m_integerParameterRanges; }
-
-    /**
-     * <p>The array of <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_IntegerParameterRange.html">IntegerParameterRange</a>
-     * objects that specify ranges of integer hyperparameters that a hyperparameter
-     * tuning job searches.</p>
-     */
+    inline const Aws::Vector<IntegerParameterRange>& GetIntegerParameterRanges() const { return m_integerParameterRanges; }
     inline bool IntegerParameterRangesHasBeenSet() const { return m_integerParameterRangesHasBeenSet; }
+    template<typename IntegerParameterRangesT = Aws::Vector<IntegerParameterRange>>
+    void SetIntegerParameterRanges(IntegerParameterRangesT&& value) { m_integerParameterRangesHasBeenSet = true; m_integerParameterRanges = std::forward<IntegerParameterRangesT>(value); }
+    template<typename IntegerParameterRangesT = Aws::Vector<IntegerParameterRange>>
+    ParameterRanges& WithIntegerParameterRanges(IntegerParameterRangesT&& value) { SetIntegerParameterRanges(std::forward<IntegerParameterRangesT>(value)); return *this;}
+    template<typename IntegerParameterRangesT = IntegerParameterRange>
+    ParameterRanges& AddIntegerParameterRanges(IntegerParameterRangesT&& value) { m_integerParameterRangesHasBeenSet = true; m_integerParameterRanges.emplace_back(std::forward<IntegerParameterRangesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The array of <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_IntegerParameterRange.html">IntegerParameterRange</a>
-     * objects that specify ranges of integer hyperparameters that a hyperparameter
-     * tuning job searches.</p>
-     */
-    inline void SetIntegerParameterRanges(const Aws::Vector<IntegerParameterRange>& value) { m_integerParameterRangesHasBeenSet = true; m_integerParameterRanges = value; }
-
-    /**
-     * <p>The array of <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_IntegerParameterRange.html">IntegerParameterRange</a>
-     * objects that specify ranges of integer hyperparameters that a hyperparameter
-     * tuning job searches.</p>
-     */
-    inline void SetIntegerParameterRanges(Aws::Vector<IntegerParameterRange>&& value) { m_integerParameterRangesHasBeenSet = true; m_integerParameterRanges = std::move(value); }
-
-    /**
-     * <p>The array of <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_IntegerParameterRange.html">IntegerParameterRange</a>
-     * objects that specify ranges of integer hyperparameters that a hyperparameter
-     * tuning job searches.</p>
-     */
-    inline ParameterRanges& WithIntegerParameterRanges(const Aws::Vector<IntegerParameterRange>& value) { SetIntegerParameterRanges(value); return *this;}
-
-    /**
-     * <p>The array of <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_IntegerParameterRange.html">IntegerParameterRange</a>
-     * objects that specify ranges of integer hyperparameters that a hyperparameter
-     * tuning job searches.</p>
-     */
-    inline ParameterRanges& WithIntegerParameterRanges(Aws::Vector<IntegerParameterRange>&& value) { SetIntegerParameterRanges(std::move(value)); return *this;}
-
-    /**
-     * <p>The array of <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_IntegerParameterRange.html">IntegerParameterRange</a>
-     * objects that specify ranges of integer hyperparameters that a hyperparameter
-     * tuning job searches.</p>
-     */
-    inline ParameterRanges& AddIntegerParameterRanges(const IntegerParameterRange& value) { m_integerParameterRangesHasBeenSet = true; m_integerParameterRanges.push_back(value); return *this; }
-
-    /**
-     * <p>The array of <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_IntegerParameterRange.html">IntegerParameterRange</a>
-     * objects that specify ranges of integer hyperparameters that a hyperparameter
-     * tuning job searches.</p>
-     */
-    inline ParameterRanges& AddIntegerParameterRanges(IntegerParameterRange&& value) { m_integerParameterRangesHasBeenSet = true; m_integerParameterRanges.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The array of <a
      * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ContinuousParameterRange.html">ContinuousParameterRange</a>
      * objects that specify ranges of continuous hyperparameters that a hyperparameter
      * tuning job searches.</p>
      */
-    inline const Aws::Vector<ContinuousParameterRange>& GetContinuousParameterRanges() const{ return m_continuousParameterRanges; }
-
-    /**
-     * <p>The array of <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ContinuousParameterRange.html">ContinuousParameterRange</a>
-     * objects that specify ranges of continuous hyperparameters that a hyperparameter
-     * tuning job searches.</p>
-     */
+    inline const Aws::Vector<ContinuousParameterRange>& GetContinuousParameterRanges() const { return m_continuousParameterRanges; }
     inline bool ContinuousParameterRangesHasBeenSet() const { return m_continuousParameterRangesHasBeenSet; }
+    template<typename ContinuousParameterRangesT = Aws::Vector<ContinuousParameterRange>>
+    void SetContinuousParameterRanges(ContinuousParameterRangesT&& value) { m_continuousParameterRangesHasBeenSet = true; m_continuousParameterRanges = std::forward<ContinuousParameterRangesT>(value); }
+    template<typename ContinuousParameterRangesT = Aws::Vector<ContinuousParameterRange>>
+    ParameterRanges& WithContinuousParameterRanges(ContinuousParameterRangesT&& value) { SetContinuousParameterRanges(std::forward<ContinuousParameterRangesT>(value)); return *this;}
+    template<typename ContinuousParameterRangesT = ContinuousParameterRange>
+    ParameterRanges& AddContinuousParameterRanges(ContinuousParameterRangesT&& value) { m_continuousParameterRangesHasBeenSet = true; m_continuousParameterRanges.emplace_back(std::forward<ContinuousParameterRangesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The array of <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ContinuousParameterRange.html">ContinuousParameterRange</a>
-     * objects that specify ranges of continuous hyperparameters that a hyperparameter
-     * tuning job searches.</p>
-     */
-    inline void SetContinuousParameterRanges(const Aws::Vector<ContinuousParameterRange>& value) { m_continuousParameterRangesHasBeenSet = true; m_continuousParameterRanges = value; }
-
-    /**
-     * <p>The array of <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ContinuousParameterRange.html">ContinuousParameterRange</a>
-     * objects that specify ranges of continuous hyperparameters that a hyperparameter
-     * tuning job searches.</p>
-     */
-    inline void SetContinuousParameterRanges(Aws::Vector<ContinuousParameterRange>&& value) { m_continuousParameterRangesHasBeenSet = true; m_continuousParameterRanges = std::move(value); }
-
-    /**
-     * <p>The array of <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ContinuousParameterRange.html">ContinuousParameterRange</a>
-     * objects that specify ranges of continuous hyperparameters that a hyperparameter
-     * tuning job searches.</p>
-     */
-    inline ParameterRanges& WithContinuousParameterRanges(const Aws::Vector<ContinuousParameterRange>& value) { SetContinuousParameterRanges(value); return *this;}
-
-    /**
-     * <p>The array of <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ContinuousParameterRange.html">ContinuousParameterRange</a>
-     * objects that specify ranges of continuous hyperparameters that a hyperparameter
-     * tuning job searches.</p>
-     */
-    inline ParameterRanges& WithContinuousParameterRanges(Aws::Vector<ContinuousParameterRange>&& value) { SetContinuousParameterRanges(std::move(value)); return *this;}
-
-    /**
-     * <p>The array of <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ContinuousParameterRange.html">ContinuousParameterRange</a>
-     * objects that specify ranges of continuous hyperparameters that a hyperparameter
-     * tuning job searches.</p>
-     */
-    inline ParameterRanges& AddContinuousParameterRanges(const ContinuousParameterRange& value) { m_continuousParameterRangesHasBeenSet = true; m_continuousParameterRanges.push_back(value); return *this; }
-
-    /**
-     * <p>The array of <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ContinuousParameterRange.html">ContinuousParameterRange</a>
-     * objects that specify ranges of continuous hyperparameters that a hyperparameter
-     * tuning job searches.</p>
-     */
-    inline ParameterRanges& AddContinuousParameterRanges(ContinuousParameterRange&& value) { m_continuousParameterRangesHasBeenSet = true; m_continuousParameterRanges.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The array of <a
      * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CategoricalParameterRange.html">CategoricalParameterRange</a>
      * objects that specify ranges of categorical hyperparameters that a hyperparameter
      * tuning job searches.</p>
      */
-    inline const Aws::Vector<CategoricalParameterRange>& GetCategoricalParameterRanges() const{ return m_categoricalParameterRanges; }
-
-    /**
-     * <p>The array of <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CategoricalParameterRange.html">CategoricalParameterRange</a>
-     * objects that specify ranges of categorical hyperparameters that a hyperparameter
-     * tuning job searches.</p>
-     */
+    inline const Aws::Vector<CategoricalParameterRange>& GetCategoricalParameterRanges() const { return m_categoricalParameterRanges; }
     inline bool CategoricalParameterRangesHasBeenSet() const { return m_categoricalParameterRangesHasBeenSet; }
+    template<typename CategoricalParameterRangesT = Aws::Vector<CategoricalParameterRange>>
+    void SetCategoricalParameterRanges(CategoricalParameterRangesT&& value) { m_categoricalParameterRangesHasBeenSet = true; m_categoricalParameterRanges = std::forward<CategoricalParameterRangesT>(value); }
+    template<typename CategoricalParameterRangesT = Aws::Vector<CategoricalParameterRange>>
+    ParameterRanges& WithCategoricalParameterRanges(CategoricalParameterRangesT&& value) { SetCategoricalParameterRanges(std::forward<CategoricalParameterRangesT>(value)); return *this;}
+    template<typename CategoricalParameterRangesT = CategoricalParameterRange>
+    ParameterRanges& AddCategoricalParameterRanges(CategoricalParameterRangesT&& value) { m_categoricalParameterRangesHasBeenSet = true; m_categoricalParameterRanges.emplace_back(std::forward<CategoricalParameterRangesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The array of <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CategoricalParameterRange.html">CategoricalParameterRange</a>
-     * objects that specify ranges of categorical hyperparameters that a hyperparameter
-     * tuning job searches.</p>
-     */
-    inline void SetCategoricalParameterRanges(const Aws::Vector<CategoricalParameterRange>& value) { m_categoricalParameterRangesHasBeenSet = true; m_categoricalParameterRanges = value; }
-
-    /**
-     * <p>The array of <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CategoricalParameterRange.html">CategoricalParameterRange</a>
-     * objects that specify ranges of categorical hyperparameters that a hyperparameter
-     * tuning job searches.</p>
-     */
-    inline void SetCategoricalParameterRanges(Aws::Vector<CategoricalParameterRange>&& value) { m_categoricalParameterRangesHasBeenSet = true; m_categoricalParameterRanges = std::move(value); }
-
-    /**
-     * <p>The array of <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CategoricalParameterRange.html">CategoricalParameterRange</a>
-     * objects that specify ranges of categorical hyperparameters that a hyperparameter
-     * tuning job searches.</p>
-     */
-    inline ParameterRanges& WithCategoricalParameterRanges(const Aws::Vector<CategoricalParameterRange>& value) { SetCategoricalParameterRanges(value); return *this;}
-
-    /**
-     * <p>The array of <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CategoricalParameterRange.html">CategoricalParameterRange</a>
-     * objects that specify ranges of categorical hyperparameters that a hyperparameter
-     * tuning job searches.</p>
-     */
-    inline ParameterRanges& WithCategoricalParameterRanges(Aws::Vector<CategoricalParameterRange>&& value) { SetCategoricalParameterRanges(std::move(value)); return *this;}
-
-    /**
-     * <p>The array of <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CategoricalParameterRange.html">CategoricalParameterRange</a>
-     * objects that specify ranges of categorical hyperparameters that a hyperparameter
-     * tuning job searches.</p>
-     */
-    inline ParameterRanges& AddCategoricalParameterRanges(const CategoricalParameterRange& value) { m_categoricalParameterRangesHasBeenSet = true; m_categoricalParameterRanges.push_back(value); return *this; }
-
-    /**
-     * <p>The array of <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CategoricalParameterRange.html">CategoricalParameterRange</a>
-     * objects that specify ranges of categorical hyperparameters that a hyperparameter
-     * tuning job searches.</p>
-     */
-    inline ParameterRanges& AddCategoricalParameterRanges(CategoricalParameterRange&& value) { m_categoricalParameterRangesHasBeenSet = true; m_categoricalParameterRanges.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A list containing hyperparameter names and example values to be used by
      * Autotune to determine optimal ranges for your tuning job.</p>
      */
-    inline const Aws::Vector<AutoParameter>& GetAutoParameters() const{ return m_autoParameters; }
-
-    /**
-     * <p>A list containing hyperparameter names and example values to be used by
-     * Autotune to determine optimal ranges for your tuning job.</p>
-     */
+    inline const Aws::Vector<AutoParameter>& GetAutoParameters() const { return m_autoParameters; }
     inline bool AutoParametersHasBeenSet() const { return m_autoParametersHasBeenSet; }
-
-    /**
-     * <p>A list containing hyperparameter names and example values to be used by
-     * Autotune to determine optimal ranges for your tuning job.</p>
-     */
-    inline void SetAutoParameters(const Aws::Vector<AutoParameter>& value) { m_autoParametersHasBeenSet = true; m_autoParameters = value; }
-
-    /**
-     * <p>A list containing hyperparameter names and example values to be used by
-     * Autotune to determine optimal ranges for your tuning job.</p>
-     */
-    inline void SetAutoParameters(Aws::Vector<AutoParameter>&& value) { m_autoParametersHasBeenSet = true; m_autoParameters = std::move(value); }
-
-    /**
-     * <p>A list containing hyperparameter names and example values to be used by
-     * Autotune to determine optimal ranges for your tuning job.</p>
-     */
-    inline ParameterRanges& WithAutoParameters(const Aws::Vector<AutoParameter>& value) { SetAutoParameters(value); return *this;}
-
-    /**
-     * <p>A list containing hyperparameter names and example values to be used by
-     * Autotune to determine optimal ranges for your tuning job.</p>
-     */
-    inline ParameterRanges& WithAutoParameters(Aws::Vector<AutoParameter>&& value) { SetAutoParameters(std::move(value)); return *this;}
-
-    /**
-     * <p>A list containing hyperparameter names and example values to be used by
-     * Autotune to determine optimal ranges for your tuning job.</p>
-     */
-    inline ParameterRanges& AddAutoParameters(const AutoParameter& value) { m_autoParametersHasBeenSet = true; m_autoParameters.push_back(value); return *this; }
-
-    /**
-     * <p>A list containing hyperparameter names and example values to be used by
-     * Autotune to determine optimal ranges for your tuning job.</p>
-     */
-    inline ParameterRanges& AddAutoParameters(AutoParameter&& value) { m_autoParametersHasBeenSet = true; m_autoParameters.push_back(std::move(value)); return *this; }
-
+    template<typename AutoParametersT = Aws::Vector<AutoParameter>>
+    void SetAutoParameters(AutoParametersT&& value) { m_autoParametersHasBeenSet = true; m_autoParameters = std::forward<AutoParametersT>(value); }
+    template<typename AutoParametersT = Aws::Vector<AutoParameter>>
+    ParameterRanges& WithAutoParameters(AutoParametersT&& value) { SetAutoParameters(std::forward<AutoParametersT>(value)); return *this;}
+    template<typename AutoParametersT = AutoParameter>
+    ParameterRanges& AddAutoParameters(AutoParametersT&& value) { m_autoParametersHasBeenSet = true; m_autoParameters.emplace_back(std::forward<AutoParametersT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<IntegerParameterRange> m_integerParameterRanges;

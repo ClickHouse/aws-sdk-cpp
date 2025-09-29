@@ -21,7 +21,7 @@ namespace Model
   class DeleteSpaceRequest : public SageMakerRequest
   {
   public:
-    AWS_SAGEMAKER_API DeleteSpaceRequest();
+    AWS_SAGEMAKER_API DeleteSpaceRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,87 +34,29 @@ namespace Model
     AWS_SAGEMAKER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
-     * <p>The ID of the associated Domain.</p>
+     * <p>The ID of the associated domain.</p>
      */
-    inline const Aws::String& GetDomainId() const{ return m_domainId; }
-
-    /**
-     * <p>The ID of the associated Domain.</p>
-     */
+    inline const Aws::String& GetDomainId() const { return m_domainId; }
     inline bool DomainIdHasBeenSet() const { return m_domainIdHasBeenSet; }
+    template<typename DomainIdT = Aws::String>
+    void SetDomainId(DomainIdT&& value) { m_domainIdHasBeenSet = true; m_domainId = std::forward<DomainIdT>(value); }
+    template<typename DomainIdT = Aws::String>
+    DeleteSpaceRequest& WithDomainId(DomainIdT&& value) { SetDomainId(std::forward<DomainIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the associated Domain.</p>
-     */
-    inline void SetDomainId(const Aws::String& value) { m_domainIdHasBeenSet = true; m_domainId = value; }
-
-    /**
-     * <p>The ID of the associated Domain.</p>
-     */
-    inline void SetDomainId(Aws::String&& value) { m_domainIdHasBeenSet = true; m_domainId = std::move(value); }
-
-    /**
-     * <p>The ID of the associated Domain.</p>
-     */
-    inline void SetDomainId(const char* value) { m_domainIdHasBeenSet = true; m_domainId.assign(value); }
-
-    /**
-     * <p>The ID of the associated Domain.</p>
-     */
-    inline DeleteSpaceRequest& WithDomainId(const Aws::String& value) { SetDomainId(value); return *this;}
-
-    /**
-     * <p>The ID of the associated Domain.</p>
-     */
-    inline DeleteSpaceRequest& WithDomainId(Aws::String&& value) { SetDomainId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the associated Domain.</p>
-     */
-    inline DeleteSpaceRequest& WithDomainId(const char* value) { SetDomainId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the space.</p>
      */
-    inline const Aws::String& GetSpaceName() const{ return m_spaceName; }
-
-    /**
-     * <p>The name of the space.</p>
-     */
+    inline const Aws::String& GetSpaceName() const { return m_spaceName; }
     inline bool SpaceNameHasBeenSet() const { return m_spaceNameHasBeenSet; }
-
-    /**
-     * <p>The name of the space.</p>
-     */
-    inline void SetSpaceName(const Aws::String& value) { m_spaceNameHasBeenSet = true; m_spaceName = value; }
-
-    /**
-     * <p>The name of the space.</p>
-     */
-    inline void SetSpaceName(Aws::String&& value) { m_spaceNameHasBeenSet = true; m_spaceName = std::move(value); }
-
-    /**
-     * <p>The name of the space.</p>
-     */
-    inline void SetSpaceName(const char* value) { m_spaceNameHasBeenSet = true; m_spaceName.assign(value); }
-
-    /**
-     * <p>The name of the space.</p>
-     */
-    inline DeleteSpaceRequest& WithSpaceName(const Aws::String& value) { SetSpaceName(value); return *this;}
-
-    /**
-     * <p>The name of the space.</p>
-     */
-    inline DeleteSpaceRequest& WithSpaceName(Aws::String&& value) { SetSpaceName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the space.</p>
-     */
-    inline DeleteSpaceRequest& WithSpaceName(const char* value) { SetSpaceName(value); return *this;}
-
+    template<typename SpaceNameT = Aws::String>
+    void SetSpaceName(SpaceNameT&& value) { m_spaceNameHasBeenSet = true; m_spaceName = std::forward<SpaceNameT>(value); }
+    template<typename SpaceNameT = Aws::String>
+    DeleteSpaceRequest& WithSpaceName(SpaceNameT&& value) { SetSpaceName(std::forward<SpaceNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_domainId;

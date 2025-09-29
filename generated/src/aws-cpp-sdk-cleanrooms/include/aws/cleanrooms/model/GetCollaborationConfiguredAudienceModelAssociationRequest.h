@@ -21,7 +21,7 @@ namespace Model
   class GetCollaborationConfiguredAudienceModelAssociationRequest : public CleanRoomsRequest
   {
   public:
-    AWS_CLEANROOMS_API GetCollaborationConfiguredAudienceModelAssociationRequest();
+    AWS_CLEANROOMS_API GetCollaborationConfiguredAudienceModelAssociationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,103 +32,31 @@ namespace Model
     AWS_CLEANROOMS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>A unique identifier for the collaboration that the configured audience model
      * association belongs to. Accepts a collaboration ID.</p>
      */
-    inline const Aws::String& GetCollaborationIdentifier() const{ return m_collaborationIdentifier; }
-
-    /**
-     * <p>A unique identifier for the collaboration that the configured audience model
-     * association belongs to. Accepts a collaboration ID.</p>
-     */
+    inline const Aws::String& GetCollaborationIdentifier() const { return m_collaborationIdentifier; }
     inline bool CollaborationIdentifierHasBeenSet() const { return m_collaborationIdentifierHasBeenSet; }
+    template<typename CollaborationIdentifierT = Aws::String>
+    void SetCollaborationIdentifier(CollaborationIdentifierT&& value) { m_collaborationIdentifierHasBeenSet = true; m_collaborationIdentifier = std::forward<CollaborationIdentifierT>(value); }
+    template<typename CollaborationIdentifierT = Aws::String>
+    GetCollaborationConfiguredAudienceModelAssociationRequest& WithCollaborationIdentifier(CollaborationIdentifierT&& value) { SetCollaborationIdentifier(std::forward<CollaborationIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier for the collaboration that the configured audience model
-     * association belongs to. Accepts a collaboration ID.</p>
-     */
-    inline void SetCollaborationIdentifier(const Aws::String& value) { m_collaborationIdentifierHasBeenSet = true; m_collaborationIdentifier = value; }
-
-    /**
-     * <p>A unique identifier for the collaboration that the configured audience model
-     * association belongs to. Accepts a collaboration ID.</p>
-     */
-    inline void SetCollaborationIdentifier(Aws::String&& value) { m_collaborationIdentifierHasBeenSet = true; m_collaborationIdentifier = std::move(value); }
-
-    /**
-     * <p>A unique identifier for the collaboration that the configured audience model
-     * association belongs to. Accepts a collaboration ID.</p>
-     */
-    inline void SetCollaborationIdentifier(const char* value) { m_collaborationIdentifierHasBeenSet = true; m_collaborationIdentifier.assign(value); }
-
-    /**
-     * <p>A unique identifier for the collaboration that the configured audience model
-     * association belongs to. Accepts a collaboration ID.</p>
-     */
-    inline GetCollaborationConfiguredAudienceModelAssociationRequest& WithCollaborationIdentifier(const Aws::String& value) { SetCollaborationIdentifier(value); return *this;}
-
-    /**
-     * <p>A unique identifier for the collaboration that the configured audience model
-     * association belongs to. Accepts a collaboration ID.</p>
-     */
-    inline GetCollaborationConfiguredAudienceModelAssociationRequest& WithCollaborationIdentifier(Aws::String&& value) { SetCollaborationIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier for the collaboration that the configured audience model
-     * association belongs to. Accepts a collaboration ID.</p>
-     */
-    inline GetCollaborationConfiguredAudienceModelAssociationRequest& WithCollaborationIdentifier(const char* value) { SetCollaborationIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A unique identifier for the configured audience model association that you
      * want to retrieve.</p>
      */
-    inline const Aws::String& GetConfiguredAudienceModelAssociationIdentifier() const{ return m_configuredAudienceModelAssociationIdentifier; }
-
-    /**
-     * <p>A unique identifier for the configured audience model association that you
-     * want to retrieve.</p>
-     */
+    inline const Aws::String& GetConfiguredAudienceModelAssociationIdentifier() const { return m_configuredAudienceModelAssociationIdentifier; }
     inline bool ConfiguredAudienceModelAssociationIdentifierHasBeenSet() const { return m_configuredAudienceModelAssociationIdentifierHasBeenSet; }
-
-    /**
-     * <p>A unique identifier for the configured audience model association that you
-     * want to retrieve.</p>
-     */
-    inline void SetConfiguredAudienceModelAssociationIdentifier(const Aws::String& value) { m_configuredAudienceModelAssociationIdentifierHasBeenSet = true; m_configuredAudienceModelAssociationIdentifier = value; }
-
-    /**
-     * <p>A unique identifier for the configured audience model association that you
-     * want to retrieve.</p>
-     */
-    inline void SetConfiguredAudienceModelAssociationIdentifier(Aws::String&& value) { m_configuredAudienceModelAssociationIdentifierHasBeenSet = true; m_configuredAudienceModelAssociationIdentifier = std::move(value); }
-
-    /**
-     * <p>A unique identifier for the configured audience model association that you
-     * want to retrieve.</p>
-     */
-    inline void SetConfiguredAudienceModelAssociationIdentifier(const char* value) { m_configuredAudienceModelAssociationIdentifierHasBeenSet = true; m_configuredAudienceModelAssociationIdentifier.assign(value); }
-
-    /**
-     * <p>A unique identifier for the configured audience model association that you
-     * want to retrieve.</p>
-     */
-    inline GetCollaborationConfiguredAudienceModelAssociationRequest& WithConfiguredAudienceModelAssociationIdentifier(const Aws::String& value) { SetConfiguredAudienceModelAssociationIdentifier(value); return *this;}
-
-    /**
-     * <p>A unique identifier for the configured audience model association that you
-     * want to retrieve.</p>
-     */
-    inline GetCollaborationConfiguredAudienceModelAssociationRequest& WithConfiguredAudienceModelAssociationIdentifier(Aws::String&& value) { SetConfiguredAudienceModelAssociationIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier for the configured audience model association that you
-     * want to retrieve.</p>
-     */
-    inline GetCollaborationConfiguredAudienceModelAssociationRequest& WithConfiguredAudienceModelAssociationIdentifier(const char* value) { SetConfiguredAudienceModelAssociationIdentifier(value); return *this;}
-
+    template<typename ConfiguredAudienceModelAssociationIdentifierT = Aws::String>
+    void SetConfiguredAudienceModelAssociationIdentifier(ConfiguredAudienceModelAssociationIdentifierT&& value) { m_configuredAudienceModelAssociationIdentifierHasBeenSet = true; m_configuredAudienceModelAssociationIdentifier = std::forward<ConfiguredAudienceModelAssociationIdentifierT>(value); }
+    template<typename ConfiguredAudienceModelAssociationIdentifierT = Aws::String>
+    GetCollaborationConfiguredAudienceModelAssociationRequest& WithConfiguredAudienceModelAssociationIdentifier(ConfiguredAudienceModelAssociationIdentifierT&& value) { SetConfiguredAudienceModelAssociationIdentifier(std::forward<ConfiguredAudienceModelAssociationIdentifierT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_collaborationIdentifier;

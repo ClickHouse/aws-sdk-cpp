@@ -21,7 +21,7 @@ namespace Model
   class DeleteNotificationSubscriptionRequest : public WorkDocsRequest
   {
   public:
-    AWS_WORKDOCS_API DeleteNotificationSubscriptionRequest();
+    AWS_WORKDOCS_API DeleteNotificationSubscriptionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,87 +32,29 @@ namespace Model
     AWS_WORKDOCS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the subscription.</p>
      */
-    inline const Aws::String& GetSubscriptionId() const{ return m_subscriptionId; }
-
-    /**
-     * <p>The ID of the subscription.</p>
-     */
+    inline const Aws::String& GetSubscriptionId() const { return m_subscriptionId; }
     inline bool SubscriptionIdHasBeenSet() const { return m_subscriptionIdHasBeenSet; }
+    template<typename SubscriptionIdT = Aws::String>
+    void SetSubscriptionId(SubscriptionIdT&& value) { m_subscriptionIdHasBeenSet = true; m_subscriptionId = std::forward<SubscriptionIdT>(value); }
+    template<typename SubscriptionIdT = Aws::String>
+    DeleteNotificationSubscriptionRequest& WithSubscriptionId(SubscriptionIdT&& value) { SetSubscriptionId(std::forward<SubscriptionIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the subscription.</p>
-     */
-    inline void SetSubscriptionId(const Aws::String& value) { m_subscriptionIdHasBeenSet = true; m_subscriptionId = value; }
-
-    /**
-     * <p>The ID of the subscription.</p>
-     */
-    inline void SetSubscriptionId(Aws::String&& value) { m_subscriptionIdHasBeenSet = true; m_subscriptionId = std::move(value); }
-
-    /**
-     * <p>The ID of the subscription.</p>
-     */
-    inline void SetSubscriptionId(const char* value) { m_subscriptionIdHasBeenSet = true; m_subscriptionId.assign(value); }
-
-    /**
-     * <p>The ID of the subscription.</p>
-     */
-    inline DeleteNotificationSubscriptionRequest& WithSubscriptionId(const Aws::String& value) { SetSubscriptionId(value); return *this;}
-
-    /**
-     * <p>The ID of the subscription.</p>
-     */
-    inline DeleteNotificationSubscriptionRequest& WithSubscriptionId(Aws::String&& value) { SetSubscriptionId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the subscription.</p>
-     */
-    inline DeleteNotificationSubscriptionRequest& WithSubscriptionId(const char* value) { SetSubscriptionId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the organization.</p>
      */
-    inline const Aws::String& GetOrganizationId() const{ return m_organizationId; }
-
-    /**
-     * <p>The ID of the organization.</p>
-     */
+    inline const Aws::String& GetOrganizationId() const { return m_organizationId; }
     inline bool OrganizationIdHasBeenSet() const { return m_organizationIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the organization.</p>
-     */
-    inline void SetOrganizationId(const Aws::String& value) { m_organizationIdHasBeenSet = true; m_organizationId = value; }
-
-    /**
-     * <p>The ID of the organization.</p>
-     */
-    inline void SetOrganizationId(Aws::String&& value) { m_organizationIdHasBeenSet = true; m_organizationId = std::move(value); }
-
-    /**
-     * <p>The ID of the organization.</p>
-     */
-    inline void SetOrganizationId(const char* value) { m_organizationIdHasBeenSet = true; m_organizationId.assign(value); }
-
-    /**
-     * <p>The ID of the organization.</p>
-     */
-    inline DeleteNotificationSubscriptionRequest& WithOrganizationId(const Aws::String& value) { SetOrganizationId(value); return *this;}
-
-    /**
-     * <p>The ID of the organization.</p>
-     */
-    inline DeleteNotificationSubscriptionRequest& WithOrganizationId(Aws::String&& value) { SetOrganizationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the organization.</p>
-     */
-    inline DeleteNotificationSubscriptionRequest& WithOrganizationId(const char* value) { SetOrganizationId(value); return *this;}
-
+    template<typename OrganizationIdT = Aws::String>
+    void SetOrganizationId(OrganizationIdT&& value) { m_organizationIdHasBeenSet = true; m_organizationId = std::forward<OrganizationIdT>(value); }
+    template<typename OrganizationIdT = Aws::String>
+    DeleteNotificationSubscriptionRequest& WithOrganizationId(OrganizationIdT&& value) { SetOrganizationId(std::forward<OrganizationIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_subscriptionId;

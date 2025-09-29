@@ -20,21 +20,7 @@ namespace EC2
 namespace Model
 {
 
-AthenaIntegration::AthenaIntegration() : 
-    m_integrationResultS3DestinationArnHasBeenSet(false),
-    m_partitionLoadFrequency(PartitionLoadFrequency::NOT_SET),
-    m_partitionLoadFrequencyHasBeenSet(false),
-    m_partitionStartDateHasBeenSet(false),
-    m_partitionEndDateHasBeenSet(false)
-{
-}
-
-AthenaIntegration::AthenaIntegration(const XmlNode& xmlNode) : 
-    m_integrationResultS3DestinationArnHasBeenSet(false),
-    m_partitionLoadFrequency(PartitionLoadFrequency::NOT_SET),
-    m_partitionLoadFrequencyHasBeenSet(false),
-    m_partitionStartDateHasBeenSet(false),
-    m_partitionEndDateHasBeenSet(false)
+AthenaIntegration::AthenaIntegration(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -54,7 +40,7 @@ AthenaIntegration& AthenaIntegration::operator =(const XmlNode& xmlNode)
     XmlNode partitionLoadFrequencyNode = resultNode.FirstChild("PartitionLoadFrequency");
     if(!partitionLoadFrequencyNode.IsNull())
     {
-      m_partitionLoadFrequency = PartitionLoadFrequencyMapper::GetPartitionLoadFrequencyForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(partitionLoadFrequencyNode.GetText()).c_str()).c_str());
+      m_partitionLoadFrequency = PartitionLoadFrequencyMapper::GetPartitionLoadFrequencyForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(partitionLoadFrequencyNode.GetText()).c_str()));
       m_partitionLoadFrequencyHasBeenSet = true;
     }
     XmlNode partitionStartDateNode = resultNode.FirstChild("PartitionStartDate");
@@ -83,7 +69,7 @@ void AthenaIntegration::OutputToStream(Aws::OStream& oStream, const char* locati
 
   if(m_partitionLoadFrequencyHasBeenSet)
   {
-      oStream << location << index << locationValue << ".PartitionLoadFrequency=" << PartitionLoadFrequencyMapper::GetNameForPartitionLoadFrequency(m_partitionLoadFrequency) << "&";
+      oStream << location << index << locationValue << ".PartitionLoadFrequency=" << StringUtils::URLEncode(PartitionLoadFrequencyMapper::GetNameForPartitionLoadFrequency(m_partitionLoadFrequency)) << "&";
   }
 
   if(m_partitionStartDateHasBeenSet)
@@ -106,7 +92,7 @@ void AthenaIntegration::OutputToStream(Aws::OStream& oStream, const char* locati
   }
   if(m_partitionLoadFrequencyHasBeenSet)
   {
-      oStream << location << ".PartitionLoadFrequency=" << PartitionLoadFrequencyMapper::GetNameForPartitionLoadFrequency(m_partitionLoadFrequency) << "&";
+      oStream << location << ".PartitionLoadFrequency=" << StringUtils::URLEncode(PartitionLoadFrequencyMapper::GetNameForPartitionLoadFrequency(m_partitionLoadFrequency)) << "&";
   }
   if(m_partitionStartDateHasBeenSet)
   {

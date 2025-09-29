@@ -18,19 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-EnumListConfigurationOptions::EnumListConfigurationOptions() : 
-    m_defaultValueHasBeenSet(false),
-    m_maxItems(0),
-    m_maxItemsHasBeenSet(false),
-    m_allowedValuesHasBeenSet(false)
-{
-}
-
-EnumListConfigurationOptions::EnumListConfigurationOptions(JsonView jsonValue) : 
-    m_defaultValueHasBeenSet(false),
-    m_maxItems(0),
-    m_maxItemsHasBeenSet(false),
-    m_allowedValuesHasBeenSet(false)
+EnumListConfigurationOptions::EnumListConfigurationOptions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,14 +34,11 @@ EnumListConfigurationOptions& EnumListConfigurationOptions::operator =(JsonView 
     }
     m_defaultValueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MaxItems"))
   {
     m_maxItems = jsonValue.GetInteger("MaxItems");
-
     m_maxItemsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AllowedValues"))
   {
     Aws::Utils::Array<JsonView> allowedValuesJsonList = jsonValue.GetArray("AllowedValues");
@@ -63,7 +48,6 @@ EnumListConfigurationOptions& EnumListConfigurationOptions::operator =(JsonView 
     }
     m_allowedValuesHasBeenSet = true;
   }
-
   return *this;
 }
 

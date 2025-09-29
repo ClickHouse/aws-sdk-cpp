@@ -18,15 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsRdsDbClusterSnapshotDbClusterSnapshotAttribute::AwsRdsDbClusterSnapshotDbClusterSnapshotAttribute() : 
-    m_attributeNameHasBeenSet(false),
-    m_attributeValuesHasBeenSet(false)
-{
-}
-
-AwsRdsDbClusterSnapshotDbClusterSnapshotAttribute::AwsRdsDbClusterSnapshotDbClusterSnapshotAttribute(JsonView jsonValue) : 
-    m_attributeNameHasBeenSet(false),
-    m_attributeValuesHasBeenSet(false)
+AwsRdsDbClusterSnapshotDbClusterSnapshotAttribute::AwsRdsDbClusterSnapshotDbClusterSnapshotAttribute(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ AwsRdsDbClusterSnapshotDbClusterSnapshotAttribute& AwsRdsDbClusterSnapshotDbClus
   if(jsonValue.ValueExists("AttributeName"))
   {
     m_attributeName = jsonValue.GetString("AttributeName");
-
     m_attributeNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AttributeValues"))
   {
     Aws::Utils::Array<JsonView> attributeValuesJsonList = jsonValue.GetArray("AttributeValues");
@@ -49,7 +39,6 @@ AwsRdsDbClusterSnapshotDbClusterSnapshotAttribute& AwsRdsDbClusterSnapshotDbClus
     }
     m_attributeValuesHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,15 +18,7 @@ namespace WorkDocs
 namespace Model
 {
 
-GroupMetadata::GroupMetadata() : 
-    m_idHasBeenSet(false),
-    m_nameHasBeenSet(false)
-{
-}
-
-GroupMetadata::GroupMetadata(JsonView jsonValue) : 
-    m_idHasBeenSet(false),
-    m_nameHasBeenSet(false)
+GroupMetadata::GroupMetadata(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ GroupMetadata& GroupMetadata::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Id"))
   {
     m_id = jsonValue.GetString("Id");
-
     m_idHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   return *this;
 }
 

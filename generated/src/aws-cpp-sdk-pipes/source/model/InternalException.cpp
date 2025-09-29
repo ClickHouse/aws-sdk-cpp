@@ -19,17 +19,7 @@ namespace Pipes
 namespace Model
 {
 
-InternalException::InternalException() : 
-    m_messageHasBeenSet(false),
-    m_retryAfterSeconds(0),
-    m_retryAfterSecondsHasBeenSet(false)
-{
-}
-
-InternalException::InternalException(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_retryAfterSeconds(0),
-    m_retryAfterSecondsHasBeenSet(false)
+InternalException::InternalException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -39,10 +29,8 @@ InternalException& InternalException::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
   return *this;
 }
 

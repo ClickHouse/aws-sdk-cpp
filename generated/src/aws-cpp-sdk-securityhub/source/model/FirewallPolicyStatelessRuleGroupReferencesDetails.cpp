@@ -18,17 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-FirewallPolicyStatelessRuleGroupReferencesDetails::FirewallPolicyStatelessRuleGroupReferencesDetails() : 
-    m_priority(0),
-    m_priorityHasBeenSet(false),
-    m_resourceArnHasBeenSet(false)
-{
-}
-
-FirewallPolicyStatelessRuleGroupReferencesDetails::FirewallPolicyStatelessRuleGroupReferencesDetails(JsonView jsonValue) : 
-    m_priority(0),
-    m_priorityHasBeenSet(false),
-    m_resourceArnHasBeenSet(false)
+FirewallPolicyStatelessRuleGroupReferencesDetails::FirewallPolicyStatelessRuleGroupReferencesDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ FirewallPolicyStatelessRuleGroupReferencesDetails& FirewallPolicyStatelessRuleGr
   if(jsonValue.ValueExists("Priority"))
   {
     m_priority = jsonValue.GetInteger("Priority");
-
     m_priorityHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceArn"))
   {
     m_resourceArn = jsonValue.GetString("ResourceArn");
-
     m_resourceArnHasBeenSet = true;
   }
-
   return *this;
 }
 

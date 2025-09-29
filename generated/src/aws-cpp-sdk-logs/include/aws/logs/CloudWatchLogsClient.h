@@ -46,8 +46,8 @@ namespace CloudWatchLogs
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
 
       typedef CloudWatchLogsClientConfiguration ClientConfigurationType;
       typedef CloudWatchLogsEndpointProvider EndpointProviderType;
@@ -57,14 +57,14 @@ namespace CloudWatchLogs
         * is not specified, it will be initialized to default values.
         */
         CloudWatchLogsClient(const Aws::CloudWatchLogs::CloudWatchLogsClientConfiguration& clientConfiguration = Aws::CloudWatchLogs::CloudWatchLogsClientConfiguration(),
-                             std::shared_ptr<CloudWatchLogsEndpointProviderBase> endpointProvider = Aws::MakeShared<CloudWatchLogsEndpointProvider>(ALLOCATION_TAG));
+                             std::shared_ptr<CloudWatchLogsEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         CloudWatchLogsClient(const Aws::Auth::AWSCredentials& credentials,
-                             std::shared_ptr<CloudWatchLogsEndpointProviderBase> endpointProvider = Aws::MakeShared<CloudWatchLogsEndpointProvider>(ALLOCATION_TAG),
+                             std::shared_ptr<CloudWatchLogsEndpointProviderBase> endpointProvider = nullptr,
                              const Aws::CloudWatchLogs::CloudWatchLogsClientConfiguration& clientConfiguration = Aws::CloudWatchLogs::CloudWatchLogsClientConfiguration());
 
        /**
@@ -72,7 +72,7 @@ namespace CloudWatchLogs
         * the default http client factory will be used
         */
         CloudWatchLogsClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                             std::shared_ptr<CloudWatchLogsEndpointProviderBase> endpointProvider = Aws::MakeShared<CloudWatchLogsEndpointProvider>(ALLOCATION_TAG),
+                             std::shared_ptr<CloudWatchLogsEndpointProviderBase> endpointProvider = nullptr,
                              const Aws::CloudWatchLogs::CloudWatchLogsClientConfiguration& clientConfiguration = Aws::CloudWatchLogs::CloudWatchLogsClientConfiguration());
 
 
@@ -106,9 +106,9 @@ namespace CloudWatchLogs
          * <p>When you use <code>AssociateKmsKey</code>, you specify either the
          * <code>logGroupName</code> parameter or the <code>resourceIdentifier</code>
          * parameter. You can't specify both of those parameters in the same operation.</p>
-         * <ul> <li> <p>Specify the <code>logGroupName</code> parameter to cause all log
-         * events stored in the log group to be encrypted with that key. Only the log
-         * events ingested after the key is associated are encrypted with that key.</p>
+         * <ul> <li> <p>Specify the <code>logGroupName</code> parameter to cause log events
+         * ingested into that log group to be encrypted with that key. Only the log events
+         * ingested after the key is associated are encrypted with that key.</p>
          * <p>Associating a KMS key with a log group overrides any existing associations
          * between the log group and a KMS key. After a KMS key is associated with a log
          * group, all newly ingested data for the log group is encrypted using the KMS key.
@@ -134,8 +134,8 @@ namespace CloudWatchLogs
          * group query results, then all the associated stored log events or query results
          * that were encrypted with that key will be unencryptable and unusable.</p>
          *   <p>CloudWatch Logs supports only symmetric KMS keys. Do not
-         * use an associate an asymmetric KMS key with your log group or query results. For
-         * more information, see <a
+         * associate an asymmetric KMS key with your log group or query results. For more
+         * information, see <a
          * href="https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html">Using
          * Symmetric and Asymmetric Keys</a>.</p>  <p>It can take up to 5 minutes
          * for this operation to take effect.</p> <p>If you attempt to associate a KMS key
@@ -200,8 +200,8 @@ namespace CloudWatchLogs
          * as <b>Supported [V2 Permissions]</b> in the table at <a
          * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AWS-logs-and-resource-policy.html">Enabling
          * logging from Amazon Web Services services.</a> </p> <p>A delivery destination
-         * can represent a log group in CloudWatch Logs, an Amazon S3 bucket, or a delivery
-         * stream in Kinesis Data Firehose.</p> <p>To configure logs delivery between a
+         * can represent a log group in CloudWatch Logs, an Amazon S3 bucket, a delivery
+         * stream in Firehose, or X-Ray.</p> <p>To configure logs delivery between a
          * supported Amazon Web Services service and a destination, you must do the
          * following:</p> <ul> <li> <p>Create a delivery source, which is a logical object
          * that represents the resource that is actually sending the logs. For more
@@ -219,8 +219,9 @@ namespace CloudWatchLogs
          * configure a single delivery source to send logs to multiple destinations by
          * creating multiple deliveries. You can also create multiple deliveries to
          * configure multiple delivery sources to send logs to the same delivery
-         * destination.</p> <p>You can't update an existing delivery. You can only create
-         * and delete deliveries.</p><p><h3>See Also:</h3>   <a
+         * destination.</p> <p>To update an existing delivery configuration, use <a
+         * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_UpdateDeliveryConfiguration.html">UpdateDeliveryConfiguration</a>.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/CreateDelivery">AWS
          * API Reference</a></p>
          */
@@ -262,10 +263,15 @@ namespace CloudWatchLogs
          * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_CancelExportTask.html">CancelExportTask</a>.</p>
          * <p>You can export logs from multiple log groups or multiple time ranges to the
          * same S3 bucket. To separate log data for each export task, specify a prefix to
-         * be used as the Amazon S3 key prefix for all exported objects.</p> 
-         * <p>Time-based sorting on chunks of log data inside an exported file is not
-         * guaranteed. You can sort the exported log field data by using Linux
-         * utilities.</p> <p><h3>See Also:</h3>   <a
+         * be used as the Amazon S3 key prefix for all exported objects.</p>  <p>We
+         * recommend that you don't regularly export to Amazon S3 as a way to continuously
+         * archive your logs. For that use case, we instead recommend that you use
+         * subscriptions. For more information about subscriptions, see <a
+         * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Subscriptions.html">Real-time
+         * processing of log data with subscriptions</a>.</p>   <p>Time-based
+         * sorting on chunks of log data inside an exported file is not guaranteed. You can
+         * sort the exported log field data by using Linux utilities.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/CreateExportTask">AWS
          * API Reference</a></p>
          */
@@ -344,6 +350,7 @@ namespace CloudWatchLogs
          * can be between 1 and 512 characters long.</p> </li> <li> <p>Log group names
          * consist of the following characters: a-z, A-Z, 0-9, '_' (underscore), '-'
          * (hyphen), '/' (forward slash), '.' (period), and '#' (number sign)</p> </li>
+         * <li> <p>Log group names can't start with the string <code>aws/</code> </p> </li>
          * </ul> <p>When you create a log group, by default the log events in the log group
          * do not expire. To set a retention policy so that events expire and are deleted
          * after a specified time, use <a
@@ -417,9 +424,24 @@ namespace CloudWatchLogs
         }
 
         /**
-         * <p>Deletes a CloudWatch Logs account policy.</p> <p>To use this operation, you
-         * must be signed on with the <code>logs:DeleteDataProtectionPolicy</code> and
-         * <code>logs:DeleteAccountPolicy</code> permissions.</p><p><h3>See Also:</h3>   <a
+         * <p>Deletes a CloudWatch Logs account policy. This stops the account-wide policy
+         * from applying to log groups in the account. If you delete a data protection
+         * policy or subscription filter policy, any log-group level policies of those
+         * types remain in effect.</p> <p>To use this operation, you must be signed on with
+         * the correct permissions depending on the type of policy that you are
+         * deleting.</p> <ul> <li> <p>To delete a data protection policy, you must have the
+         * <code>logs:DeleteDataProtectionPolicy</code> and
+         * <code>logs:DeleteAccountPolicy</code> permissions.</p> </li> <li> <p>To delete a
+         * subscription filter policy, you must have the
+         * <code>logs:DeleteSubscriptionFilter</code> and
+         * <code>logs:DeleteAccountPolicy</code> permissions.</p> </li> <li> <p>To delete a
+         * transformer policy, you must have the <code>logs:DeleteTransformer</code> and
+         * <code>logs:DeleteAccountPolicy</code> permissions.</p> </li> <li> <p>To delete a
+         * field index policy, you must have the <code>logs:DeleteIndexPolicy</code> and
+         * <code>logs:DeleteAccountPolicy</code> permissions.</p> </li> </ul> <p>If you
+         * delete a field index policy, the indexing of the log events that happened before
+         * you deleted the policy will still be used for up to 30 days to improve
+         * CloudWatch Logs Insights queries.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DeleteAccountPolicy">AWS
          * API Reference</a></p>
          */
@@ -472,7 +494,7 @@ namespace CloudWatchLogs
         }
 
         /**
-         * <p>Deletes s <i>delivery</i>. A delivery is a connection between a logical
+         * <p>Deletes a <i>delivery</i>. A delivery is a connection between a logical
          * <i>delivery source</i> and a logical <i>delivery destination</i>. Deleting a
          * delivery only deletes the connection between the delivery source and delivery
          * destination. It does not delete the delivery destination or the delivery
@@ -620,6 +642,71 @@ namespace CloudWatchLogs
         }
 
         /**
+         * <p>Deletes a log-group level field index policy that was applied to a single log
+         * group. The indexing of the log events that happened before you delete the policy
+         * will still be used for as many as 30 days to improve CloudWatch Logs Insights
+         * queries.</p> <p>You can't use this operation to delete an account-level index
+         * policy. Instead, use <a
+         * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DeleteAccountPolicy.html">DeletAccountPolicy</a>.</p>
+         * <p>If you delete a log-group level field index policy and there is an
+         * account-level field index policy, in a few minutes the log group begins using
+         * that account-wide policy to index new incoming log events. </p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DeleteIndexPolicy">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DeleteIndexPolicyOutcome DeleteIndexPolicy(const Model::DeleteIndexPolicyRequest& request) const;
+
+        /**
+         * A Callable wrapper for DeleteIndexPolicy that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DeleteIndexPolicyRequestT = Model::DeleteIndexPolicyRequest>
+        Model::DeleteIndexPolicyOutcomeCallable DeleteIndexPolicyCallable(const DeleteIndexPolicyRequestT& request) const
+        {
+            return SubmitCallable(&CloudWatchLogsClient::DeleteIndexPolicy, request);
+        }
+
+        /**
+         * An Async wrapper for DeleteIndexPolicy that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DeleteIndexPolicyRequestT = Model::DeleteIndexPolicyRequest>
+        void DeleteIndexPolicyAsync(const DeleteIndexPolicyRequestT& request, const DeleteIndexPolicyResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&CloudWatchLogsClient::DeleteIndexPolicy, request, handler, context);
+        }
+
+        /**
+         * <p>Deletes the integration between CloudWatch Logs and OpenSearch Service. If
+         * your integration has active vended logs dashboards, you must specify
+         * <code>true</code> for the <code>force</code> parameter, otherwise the operation
+         * will fail. If you delete the integration by setting <code>force</code> to
+         * <code>true</code>, all your vended logs dashboards powered by OpenSearch Service
+         * will be deleted and the data that was on them will no longer be
+         * accessible.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DeleteIntegration">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DeleteIntegrationOutcome DeleteIntegration(const Model::DeleteIntegrationRequest& request) const;
+
+        /**
+         * A Callable wrapper for DeleteIntegration that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DeleteIntegrationRequestT = Model::DeleteIntegrationRequest>
+        Model::DeleteIntegrationOutcomeCallable DeleteIntegrationCallable(const DeleteIntegrationRequestT& request) const
+        {
+            return SubmitCallable(&CloudWatchLogsClient::DeleteIntegration, request);
+        }
+
+        /**
+         * An Async wrapper for DeleteIntegration that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DeleteIntegrationRequestT = Model::DeleteIntegrationRequest>
+        void DeleteIntegrationAsync(const DeleteIntegrationRequestT& request, const DeleteIntegrationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&CloudWatchLogsClient::DeleteIntegration, request, handler, context);
+        }
+
+        /**
          * <p>Deletes the specified CloudWatch Logs anomaly detector.</p><p><h3>See
          * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DeleteLogAnomalyDetector">AWS
@@ -758,13 +845,13 @@ namespace CloudWatchLogs
          * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DeleteResourcePolicy">AWS
          * API Reference</a></p>
          */
-        virtual Model::DeleteResourcePolicyOutcome DeleteResourcePolicy(const Model::DeleteResourcePolicyRequest& request) const;
+        virtual Model::DeleteResourcePolicyOutcome DeleteResourcePolicy(const Model::DeleteResourcePolicyRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DeleteResourcePolicy that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DeleteResourcePolicyRequestT = Model::DeleteResourcePolicyRequest>
-        Model::DeleteResourcePolicyOutcomeCallable DeleteResourcePolicyCallable(const DeleteResourcePolicyRequestT& request) const
+        Model::DeleteResourcePolicyOutcomeCallable DeleteResourcePolicyCallable(const DeleteResourcePolicyRequestT& request = {}) const
         {
             return SubmitCallable(&CloudWatchLogsClient::DeleteResourcePolicy, request);
         }
@@ -773,7 +860,7 @@ namespace CloudWatchLogs
          * An Async wrapper for DeleteResourcePolicy that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DeleteResourcePolicyRequestT = Model::DeleteResourcePolicyRequest>
-        void DeleteResourcePolicyAsync(const DeleteResourcePolicyRequestT& request, const DeleteResourcePolicyResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DeleteResourcePolicyAsync(const DeleteResourcePolicyResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DeleteResourcePolicyRequestT& request = {}) const
         {
             return SubmitAsync(&CloudWatchLogsClient::DeleteResourcePolicy, request, handler, context);
         }
@@ -831,8 +918,51 @@ namespace CloudWatchLogs
         }
 
         /**
-         * <p>Returns a list of all CloudWatch Logs account policies in the
-         * account.</p><p><h3>See Also:</h3>   <a
+         * <p>Deletes the log transformer for the specified log group. As soon as you do
+         * this, the transformation of incoming log events according to that transformer
+         * stops. If this account has an account-level transformer that applies to this log
+         * group, the log group begins using that account-level transformer when this
+         * log-group level transformer is deleted.</p> <p>After you delete a transformer,
+         * be sure to edit any metric filters or subscription filters that relied on the
+         * transformed versions of the log events.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DeleteTransformer">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DeleteTransformerOutcome DeleteTransformer(const Model::DeleteTransformerRequest& request) const;
+
+        /**
+         * A Callable wrapper for DeleteTransformer that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DeleteTransformerRequestT = Model::DeleteTransformerRequest>
+        Model::DeleteTransformerOutcomeCallable DeleteTransformerCallable(const DeleteTransformerRequestT& request) const
+        {
+            return SubmitCallable(&CloudWatchLogsClient::DeleteTransformer, request);
+        }
+
+        /**
+         * An Async wrapper for DeleteTransformer that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DeleteTransformerRequestT = Model::DeleteTransformerRequest>
+        void DeleteTransformerAsync(const DeleteTransformerRequestT& request, const DeleteTransformerResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&CloudWatchLogsClient::DeleteTransformer, request, handler, context);
+        }
+
+        /**
+         * <p>Returns a list of all CloudWatch Logs account policies in the account.</p>
+         * <p>To use this operation, you must be signed on with the correct permissions
+         * depending on the type of policy that you are retrieving information for.</p>
+         * <ul> <li> <p>To see data protection policies, you must have the
+         * <code>logs:GetDataProtectionPolicy</code> and
+         * <code>logs:DescribeAccountPolicies</code> permissions.</p> </li> <li> <p>To see
+         * subscription filter policies, you must have the
+         * <code>logs:DescribeSubscriptionFilters</code> and
+         * <code>logs:DescribeAccountPolicies</code> permissions.</p> </li> <li> <p>To see
+         * transformer policies, you must have the <code>logs:GetTransformer</code> and
+         * <code>logs:DescribeAccountPolicies</code> permissions.</p> </li> <li> <p>To see
+         * field index policies, you must have the <code>logs:DescribeIndexPolicies</code>
+         * and <code>logs:DescribeAccountPolicies</code> permissions.</p> </li>
+         * </ul><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DescribeAccountPolicies">AWS
          * API Reference</a></p>
          */
@@ -857,18 +987,57 @@ namespace CloudWatchLogs
         }
 
         /**
-         * <p>Retrieves a list of the deliveries that have been created in the
-         * account.</p><p><h3>See Also:</h3>   <a
+         * <p>Use this operation to return the valid and default values that are used when
+         * creating delivery sources, delivery destinations, and deliveries. For more
+         * information about deliveries, see <a
+         * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_CreateDelivery.html">CreateDelivery</a>.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DescribeConfigurationTemplates">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DescribeConfigurationTemplatesOutcome DescribeConfigurationTemplates(const Model::DescribeConfigurationTemplatesRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for DescribeConfigurationTemplates that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DescribeConfigurationTemplatesRequestT = Model::DescribeConfigurationTemplatesRequest>
+        Model::DescribeConfigurationTemplatesOutcomeCallable DescribeConfigurationTemplatesCallable(const DescribeConfigurationTemplatesRequestT& request = {}) const
+        {
+            return SubmitCallable(&CloudWatchLogsClient::DescribeConfigurationTemplates, request);
+        }
+
+        /**
+         * An Async wrapper for DescribeConfigurationTemplates that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DescribeConfigurationTemplatesRequestT = Model::DescribeConfigurationTemplatesRequest>
+        void DescribeConfigurationTemplatesAsync(const DescribeConfigurationTemplatesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeConfigurationTemplatesRequestT& request = {}) const
+        {
+            return SubmitAsync(&CloudWatchLogsClient::DescribeConfigurationTemplates, request, handler, context);
+        }
+
+        /**
+         * <p>Retrieves a list of the deliveries that have been created in the account.</p>
+         * <p>A <i>delivery</i> is a connection between a <a
+         * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDeliverySource.html">
+         * <i>delivery source</i> </a> and a <a
+         * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDeliveryDestination.html">
+         * <i>delivery destination</i> </a>.</p> <p>A delivery source represents an Amazon
+         * Web Services resource that sends logs to an logs delivery destination. The
+         * destination can be CloudWatch Logs, Amazon S3, Firehose or X-Ray. Only some
+         * Amazon Web Services services support being configured as a delivery source.
+         * These services are listed in <a
+         * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AWS-logs-and-resource-policy.html">Enable
+         * logging from Amazon Web Services services.</a> </p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DescribeDeliveries">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeDeliveriesOutcome DescribeDeliveries(const Model::DescribeDeliveriesRequest& request) const;
+        virtual Model::DescribeDeliveriesOutcome DescribeDeliveries(const Model::DescribeDeliveriesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeDeliveries that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeDeliveriesRequestT = Model::DescribeDeliveriesRequest>
-        Model::DescribeDeliveriesOutcomeCallable DescribeDeliveriesCallable(const DescribeDeliveriesRequestT& request) const
+        Model::DescribeDeliveriesOutcomeCallable DescribeDeliveriesCallable(const DescribeDeliveriesRequestT& request = {}) const
         {
             return SubmitCallable(&CloudWatchLogsClient::DescribeDeliveries, request);
         }
@@ -877,7 +1046,7 @@ namespace CloudWatchLogs
          * An Async wrapper for DescribeDeliveries that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeDeliveriesRequestT = Model::DescribeDeliveriesRequest>
-        void DescribeDeliveriesAsync(const DescribeDeliveriesRequestT& request, const DescribeDeliveriesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeDeliveriesAsync(const DescribeDeliveriesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeDeliveriesRequestT& request = {}) const
         {
             return SubmitAsync(&CloudWatchLogsClient::DescribeDeliveries, request, handler, context);
         }
@@ -888,13 +1057,13 @@ namespace CloudWatchLogs
          * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DescribeDeliveryDestinations">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeDeliveryDestinationsOutcome DescribeDeliveryDestinations(const Model::DescribeDeliveryDestinationsRequest& request) const;
+        virtual Model::DescribeDeliveryDestinationsOutcome DescribeDeliveryDestinations(const Model::DescribeDeliveryDestinationsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeDeliveryDestinations that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeDeliveryDestinationsRequestT = Model::DescribeDeliveryDestinationsRequest>
-        Model::DescribeDeliveryDestinationsOutcomeCallable DescribeDeliveryDestinationsCallable(const DescribeDeliveryDestinationsRequestT& request) const
+        Model::DescribeDeliveryDestinationsOutcomeCallable DescribeDeliveryDestinationsCallable(const DescribeDeliveryDestinationsRequestT& request = {}) const
         {
             return SubmitCallable(&CloudWatchLogsClient::DescribeDeliveryDestinations, request);
         }
@@ -903,7 +1072,7 @@ namespace CloudWatchLogs
          * An Async wrapper for DescribeDeliveryDestinations that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeDeliveryDestinationsRequestT = Model::DescribeDeliveryDestinationsRequest>
-        void DescribeDeliveryDestinationsAsync(const DescribeDeliveryDestinationsRequestT& request, const DescribeDeliveryDestinationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeDeliveryDestinationsAsync(const DescribeDeliveryDestinationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeDeliveryDestinationsRequestT& request = {}) const
         {
             return SubmitAsync(&CloudWatchLogsClient::DescribeDeliveryDestinations, request, handler, context);
         }
@@ -914,13 +1083,13 @@ namespace CloudWatchLogs
          * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DescribeDeliverySources">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeDeliverySourcesOutcome DescribeDeliverySources(const Model::DescribeDeliverySourcesRequest& request) const;
+        virtual Model::DescribeDeliverySourcesOutcome DescribeDeliverySources(const Model::DescribeDeliverySourcesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeDeliverySources that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeDeliverySourcesRequestT = Model::DescribeDeliverySourcesRequest>
-        Model::DescribeDeliverySourcesOutcomeCallable DescribeDeliverySourcesCallable(const DescribeDeliverySourcesRequestT& request) const
+        Model::DescribeDeliverySourcesOutcomeCallable DescribeDeliverySourcesCallable(const DescribeDeliverySourcesRequestT& request = {}) const
         {
             return SubmitCallable(&CloudWatchLogsClient::DescribeDeliverySources, request);
         }
@@ -929,7 +1098,7 @@ namespace CloudWatchLogs
          * An Async wrapper for DescribeDeliverySources that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeDeliverySourcesRequestT = Model::DescribeDeliverySourcesRequest>
-        void DescribeDeliverySourcesAsync(const DescribeDeliverySourcesRequestT& request, const DescribeDeliverySourcesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeDeliverySourcesAsync(const DescribeDeliverySourcesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeDeliverySourcesRequestT& request = {}) const
         {
             return SubmitAsync(&CloudWatchLogsClient::DescribeDeliverySources, request, handler, context);
         }
@@ -940,13 +1109,13 @@ namespace CloudWatchLogs
          * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DescribeDestinations">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeDestinationsOutcome DescribeDestinations(const Model::DescribeDestinationsRequest& request) const;
+        virtual Model::DescribeDestinationsOutcome DescribeDestinations(const Model::DescribeDestinationsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeDestinations that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeDestinationsRequestT = Model::DescribeDestinationsRequest>
-        Model::DescribeDestinationsOutcomeCallable DescribeDestinationsCallable(const DescribeDestinationsRequestT& request) const
+        Model::DescribeDestinationsOutcomeCallable DescribeDestinationsCallable(const DescribeDestinationsRequestT& request = {}) const
         {
             return SubmitCallable(&CloudWatchLogsClient::DescribeDestinations, request);
         }
@@ -955,7 +1124,7 @@ namespace CloudWatchLogs
          * An Async wrapper for DescribeDestinations that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeDestinationsRequestT = Model::DescribeDestinationsRequest>
-        void DescribeDestinationsAsync(const DescribeDestinationsRequestT& request, const DescribeDestinationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeDestinationsAsync(const DescribeDestinationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeDestinationsRequestT& request = {}) const
         {
             return SubmitAsync(&CloudWatchLogsClient::DescribeDestinations, request, handler, context);
         }
@@ -967,13 +1136,13 @@ namespace CloudWatchLogs
          * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DescribeExportTasks">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeExportTasksOutcome DescribeExportTasks(const Model::DescribeExportTasksRequest& request) const;
+        virtual Model::DescribeExportTasksOutcome DescribeExportTasks(const Model::DescribeExportTasksRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeExportTasks that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeExportTasksRequestT = Model::DescribeExportTasksRequest>
-        Model::DescribeExportTasksOutcomeCallable DescribeExportTasksCallable(const DescribeExportTasksRequestT& request) const
+        Model::DescribeExportTasksOutcomeCallable DescribeExportTasksCallable(const DescribeExportTasksRequestT& request = {}) const
         {
             return SubmitCallable(&CloudWatchLogsClient::DescribeExportTasks, request);
         }
@@ -982,16 +1151,78 @@ namespace CloudWatchLogs
          * An Async wrapper for DescribeExportTasks that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeExportTasksRequestT = Model::DescribeExportTasksRequest>
-        void DescribeExportTasksAsync(const DescribeExportTasksRequestT& request, const DescribeExportTasksResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeExportTasksAsync(const DescribeExportTasksResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeExportTasksRequestT& request = {}) const
         {
             return SubmitAsync(&CloudWatchLogsClient::DescribeExportTasks, request, handler, context);
         }
 
         /**
-         * <p>Lists the specified log groups. You can list all your log groups or filter
-         * the results by prefix. The results are ASCII-sorted by log group name.</p>
-         * <p>CloudWatch Logs doesn’t support IAM policies that control access to the
-         * <code>DescribeLogGroups</code> action by using the
+         * <p>Returns a list of custom and default field indexes which are discovered in
+         * log data. For more information about field index policies, see <a
+         * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutIndexPolicy.html">PutIndexPolicy</a>.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DescribeFieldIndexes">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DescribeFieldIndexesOutcome DescribeFieldIndexes(const Model::DescribeFieldIndexesRequest& request) const;
+
+        /**
+         * A Callable wrapper for DescribeFieldIndexes that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DescribeFieldIndexesRequestT = Model::DescribeFieldIndexesRequest>
+        Model::DescribeFieldIndexesOutcomeCallable DescribeFieldIndexesCallable(const DescribeFieldIndexesRequestT& request) const
+        {
+            return SubmitCallable(&CloudWatchLogsClient::DescribeFieldIndexes, request);
+        }
+
+        /**
+         * An Async wrapper for DescribeFieldIndexes that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DescribeFieldIndexesRequestT = Model::DescribeFieldIndexesRequest>
+        void DescribeFieldIndexesAsync(const DescribeFieldIndexesRequestT& request, const DescribeFieldIndexesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&CloudWatchLogsClient::DescribeFieldIndexes, request, handler, context);
+        }
+
+        /**
+         * <p>Returns the field index policies of the specified log group. For more
+         * information about field index policies, see <a
+         * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutIndexPolicy.html">PutIndexPolicy</a>.</p>
+         * <p>If a specified log group has a log-group level index policy, that policy is
+         * returned by this operation.</p> <p>If a specified log group doesn't have a
+         * log-group level index policy, but an account-wide index policy applies to it,
+         * that account-wide policy is returned by this operation.</p> <p>To find
+         * information about only account-level policies, use <a
+         * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeAccountPolicies.html">DescribeAccountPolicies</a>
+         * instead.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DescribeIndexPolicies">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DescribeIndexPoliciesOutcome DescribeIndexPolicies(const Model::DescribeIndexPoliciesRequest& request) const;
+
+        /**
+         * A Callable wrapper for DescribeIndexPolicies that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DescribeIndexPoliciesRequestT = Model::DescribeIndexPoliciesRequest>
+        Model::DescribeIndexPoliciesOutcomeCallable DescribeIndexPoliciesCallable(const DescribeIndexPoliciesRequestT& request) const
+        {
+            return SubmitCallable(&CloudWatchLogsClient::DescribeIndexPolicies, request);
+        }
+
+        /**
+         * An Async wrapper for DescribeIndexPolicies that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DescribeIndexPoliciesRequestT = Model::DescribeIndexPoliciesRequest>
+        void DescribeIndexPoliciesAsync(const DescribeIndexPoliciesRequestT& request, const DescribeIndexPoliciesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&CloudWatchLogsClient::DescribeIndexPolicies, request, handler, context);
+        }
+
+        /**
+         * <p>Returns information about log groups. You can return all your log groups or
+         * filter the results by prefix. The results are ASCII-sorted by log group
+         * name.</p> <p>CloudWatch Logs doesn't support IAM policies that control access to
+         * the <code>DescribeLogGroups</code> action by using the
          * <code>aws:ResourceTag/<i>key-name</i> </code> condition key. Other CloudWatch
          * Logs actions do support the use of the <code>aws:ResourceTag/<i>key-name</i>
          * </code> condition key to control access. For more information about using tags
@@ -1006,13 +1237,13 @@ namespace CloudWatchLogs
          * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DescribeLogGroups">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeLogGroupsOutcome DescribeLogGroups(const Model::DescribeLogGroupsRequest& request) const;
+        virtual Model::DescribeLogGroupsOutcome DescribeLogGroups(const Model::DescribeLogGroupsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeLogGroups that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeLogGroupsRequestT = Model::DescribeLogGroupsRequest>
-        Model::DescribeLogGroupsOutcomeCallable DescribeLogGroupsCallable(const DescribeLogGroupsRequestT& request) const
+        Model::DescribeLogGroupsOutcomeCallable DescribeLogGroupsCallable(const DescribeLogGroupsRequestT& request = {}) const
         {
             return SubmitCallable(&CloudWatchLogsClient::DescribeLogGroups, request);
         }
@@ -1021,7 +1252,7 @@ namespace CloudWatchLogs
          * An Async wrapper for DescribeLogGroups that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeLogGroupsRequestT = Model::DescribeLogGroupsRequest>
-        void DescribeLogGroupsAsync(const DescribeLogGroupsRequestT& request, const DescribeLogGroupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeLogGroupsAsync(const DescribeLogGroupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeLogGroupsRequestT& request = {}) const
         {
             return SubmitAsync(&CloudWatchLogsClient::DescribeLogGroups, request, handler, context);
         }
@@ -1032,7 +1263,7 @@ namespace CloudWatchLogs
          * are ordered.</p> <p>You can specify the log group to search by using either
          * <code>logGroupIdentifier</code> or <code>logGroupName</code>. You must include
          * one of these two parameters, but you can't include both. </p> <p>This operation
-         * has a limit of five transactions per second, after which transactions are
+         * has a limit of 25 transactions per second, after which transactions are
          * throttled.</p> <p>If you are using CloudWatch cross-account observability, you
          * can use this operation in a monitoring account and view data from the linked
          * source accounts. For more information, see <a
@@ -1041,13 +1272,13 @@ namespace CloudWatchLogs
          * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DescribeLogStreams">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeLogStreamsOutcome DescribeLogStreams(const Model::DescribeLogStreamsRequest& request) const;
+        virtual Model::DescribeLogStreamsOutcome DescribeLogStreams(const Model::DescribeLogStreamsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeLogStreams that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeLogStreamsRequestT = Model::DescribeLogStreamsRequest>
-        Model::DescribeLogStreamsOutcomeCallable DescribeLogStreamsCallable(const DescribeLogStreamsRequestT& request) const
+        Model::DescribeLogStreamsOutcomeCallable DescribeLogStreamsCallable(const DescribeLogStreamsRequestT& request = {}) const
         {
             return SubmitCallable(&CloudWatchLogsClient::DescribeLogStreams, request);
         }
@@ -1056,7 +1287,7 @@ namespace CloudWatchLogs
          * An Async wrapper for DescribeLogStreams that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeLogStreamsRequestT = Model::DescribeLogStreamsRequest>
-        void DescribeLogStreamsAsync(const DescribeLogStreamsRequestT& request, const DescribeLogStreamsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeLogStreamsAsync(const DescribeLogStreamsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeLogStreamsRequestT& request = {}) const
         {
             return SubmitAsync(&CloudWatchLogsClient::DescribeLogStreams, request, handler, context);
         }
@@ -1068,13 +1299,13 @@ namespace CloudWatchLogs
          * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DescribeMetricFilters">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeMetricFiltersOutcome DescribeMetricFilters(const Model::DescribeMetricFiltersRequest& request) const;
+        virtual Model::DescribeMetricFiltersOutcome DescribeMetricFilters(const Model::DescribeMetricFiltersRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeMetricFilters that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeMetricFiltersRequestT = Model::DescribeMetricFiltersRequest>
-        Model::DescribeMetricFiltersOutcomeCallable DescribeMetricFiltersCallable(const DescribeMetricFiltersRequestT& request) const
+        Model::DescribeMetricFiltersOutcomeCallable DescribeMetricFiltersCallable(const DescribeMetricFiltersRequestT& request = {}) const
         {
             return SubmitCallable(&CloudWatchLogsClient::DescribeMetricFilters, request);
         }
@@ -1083,7 +1314,7 @@ namespace CloudWatchLogs
          * An Async wrapper for DescribeMetricFilters that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeMetricFiltersRequestT = Model::DescribeMetricFiltersRequest>
-        void DescribeMetricFiltersAsync(const DescribeMetricFiltersRequestT& request, const DescribeMetricFiltersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeMetricFiltersAsync(const DescribeMetricFiltersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeMetricFiltersRequestT& request = {}) const
         {
             return SubmitAsync(&CloudWatchLogsClient::DescribeMetricFilters, request, handler, context);
         }
@@ -1096,13 +1327,13 @@ namespace CloudWatchLogs
          * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DescribeQueries">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeQueriesOutcome DescribeQueries(const Model::DescribeQueriesRequest& request) const;
+        virtual Model::DescribeQueriesOutcome DescribeQueries(const Model::DescribeQueriesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeQueries that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeQueriesRequestT = Model::DescribeQueriesRequest>
-        Model::DescribeQueriesOutcomeCallable DescribeQueriesCallable(const DescribeQueriesRequestT& request) const
+        Model::DescribeQueriesOutcomeCallable DescribeQueriesCallable(const DescribeQueriesRequestT& request = {}) const
         {
             return SubmitCallable(&CloudWatchLogsClient::DescribeQueries, request);
         }
@@ -1111,7 +1342,7 @@ namespace CloudWatchLogs
          * An Async wrapper for DescribeQueries that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeQueriesRequestT = Model::DescribeQueriesRequest>
-        void DescribeQueriesAsync(const DescribeQueriesRequestT& request, const DescribeQueriesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeQueriesAsync(const DescribeQueriesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeQueriesRequestT& request = {}) const
         {
             return SubmitAsync(&CloudWatchLogsClient::DescribeQueries, request, handler, context);
         }
@@ -1126,13 +1357,13 @@ namespace CloudWatchLogs
          * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DescribeQueryDefinitions">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeQueryDefinitionsOutcome DescribeQueryDefinitions(const Model::DescribeQueryDefinitionsRequest& request) const;
+        virtual Model::DescribeQueryDefinitionsOutcome DescribeQueryDefinitions(const Model::DescribeQueryDefinitionsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeQueryDefinitions that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeQueryDefinitionsRequestT = Model::DescribeQueryDefinitionsRequest>
-        Model::DescribeQueryDefinitionsOutcomeCallable DescribeQueryDefinitionsCallable(const DescribeQueryDefinitionsRequestT& request) const
+        Model::DescribeQueryDefinitionsOutcomeCallable DescribeQueryDefinitionsCallable(const DescribeQueryDefinitionsRequestT& request = {}) const
         {
             return SubmitCallable(&CloudWatchLogsClient::DescribeQueryDefinitions, request);
         }
@@ -1141,7 +1372,7 @@ namespace CloudWatchLogs
          * An Async wrapper for DescribeQueryDefinitions that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeQueryDefinitionsRequestT = Model::DescribeQueryDefinitionsRequest>
-        void DescribeQueryDefinitionsAsync(const DescribeQueryDefinitionsRequestT& request, const DescribeQueryDefinitionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeQueryDefinitionsAsync(const DescribeQueryDefinitionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeQueryDefinitionsRequestT& request = {}) const
         {
             return SubmitAsync(&CloudWatchLogsClient::DescribeQueryDefinitions, request, handler, context);
         }
@@ -1151,13 +1382,13 @@ namespace CloudWatchLogs
          * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DescribeResourcePolicies">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeResourcePoliciesOutcome DescribeResourcePolicies(const Model::DescribeResourcePoliciesRequest& request) const;
+        virtual Model::DescribeResourcePoliciesOutcome DescribeResourcePolicies(const Model::DescribeResourcePoliciesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeResourcePolicies that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeResourcePoliciesRequestT = Model::DescribeResourcePoliciesRequest>
-        Model::DescribeResourcePoliciesOutcomeCallable DescribeResourcePoliciesCallable(const DescribeResourcePoliciesRequestT& request) const
+        Model::DescribeResourcePoliciesOutcomeCallable DescribeResourcePoliciesCallable(const DescribeResourcePoliciesRequestT& request = {}) const
         {
             return SubmitCallable(&CloudWatchLogsClient::DescribeResourcePolicies, request);
         }
@@ -1166,7 +1397,7 @@ namespace CloudWatchLogs
          * An Async wrapper for DescribeResourcePolicies that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeResourcePoliciesRequestT = Model::DescribeResourcePoliciesRequest>
-        void DescribeResourcePoliciesAsync(const DescribeResourcePoliciesRequestT& request, const DescribeResourcePoliciesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeResourcePoliciesAsync(const DescribeResourcePoliciesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeResourcePoliciesRequestT& request = {}) const
         {
             return SubmitAsync(&CloudWatchLogsClient::DescribeResourcePolicies, request, handler, context);
         }
@@ -1222,13 +1453,13 @@ namespace CloudWatchLogs
          * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/DisassociateKmsKey">AWS
          * API Reference</a></p>
          */
-        virtual Model::DisassociateKmsKeyOutcome DisassociateKmsKey(const Model::DisassociateKmsKeyRequest& request) const;
+        virtual Model::DisassociateKmsKeyOutcome DisassociateKmsKey(const Model::DisassociateKmsKeyRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DisassociateKmsKey that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DisassociateKmsKeyRequestT = Model::DisassociateKmsKeyRequest>
-        Model::DisassociateKmsKeyOutcomeCallable DisassociateKmsKeyCallable(const DisassociateKmsKeyRequestT& request) const
+        Model::DisassociateKmsKeyOutcomeCallable DisassociateKmsKeyCallable(const DisassociateKmsKeyRequestT& request = {}) const
         {
             return SubmitCallable(&CloudWatchLogsClient::DisassociateKmsKey, request);
         }
@@ -1237,41 +1468,56 @@ namespace CloudWatchLogs
          * An Async wrapper for DisassociateKmsKey that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DisassociateKmsKeyRequestT = Model::DisassociateKmsKeyRequest>
-        void DisassociateKmsKeyAsync(const DisassociateKmsKeyRequestT& request, const DisassociateKmsKeyResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DisassociateKmsKeyAsync(const DisassociateKmsKeyResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DisassociateKmsKeyRequestT& request = {}) const
         {
             return SubmitAsync(&CloudWatchLogsClient::DisassociateKmsKey, request, handler, context);
         }
 
         /**
          * <p>Lists log events from the specified log group. You can list all the log
-         * events or filter the results using a filter pattern, a time range, and the name
-         * of the log stream.</p> <p>You must have the <code>logs:FilterLogEvents</code>
-         * permission to perform this operation.</p> <p>You can specify the log group to
-         * search by using either <code>logGroupIdentifier</code> or
-         * <code>logGroupName</code>. You must include one of these two parameters, but you
-         * can't include both. </p> <p>By default, this operation returns as many log
-         * events as can fit in 1 MB (up to 10,000 log events) or all the events found
-         * within the specified time range. If the results include a token, that means
-         * there are more log events available. You can get additional results by
-         * specifying the token in a subsequent call. This operation can return empty
-         * results while there are more log events available through the token.</p> <p>The
-         * returned log events are sorted by event timestamp, the timestamp when the event
-         * was ingested by CloudWatch Logs, and the ID of the <code>PutLogEvents</code>
-         * request.</p> <p>If you are using CloudWatch cross-account observability, you can
-         * use this operation in a monitoring account and view data from the linked source
-         * accounts. For more information, see <a
+         * events or filter the results using one or more of the following:</p> <ul> <li>
+         * <p>A filter pattern</p> </li> <li> <p>A time range</p> </li> <li> <p>The log
+         * stream name, or a log stream name prefix that matches multiple log streams</p>
+         * </li> </ul> <p>You must have the <code>logs:FilterLogEvents</code> permission to
+         * perform this operation.</p> <p>You can specify the log group to search by using
+         * either <code>logGroupIdentifier</code> or <code>logGroupName</code>. You must
+         * include one of these two parameters, but you can't include both. </p> <p>
+         * <code>FilterLogEvents</code> is a paginated operation. Each page returned can
+         * contain up to 1 MB of log events or up to 10,000 log events. A returned page
+         * might only be partially full, or even empty. For example, if the result of a
+         * query would return 15,000 log events, the first page isn't guaranteed to have
+         * 10,000 log events even if they all fit into 1 MB.</p> <p>Partially full or empty
+         * pages don't necessarily mean that pagination is finished. If the results include
+         * a <code>nextToken</code>, there might be more log events available. You can
+         * return these additional log events by providing the nextToken in a subsequent
+         * <code>FilterLogEvents</code> operation. If the results don't include a
+         * <code>nextToken</code>, then pagination is finished. </p> <p>Specifying the
+         * <code>limit</code> parameter only guarantees that a single page doesn't return
+         * more log events than the specified limit, but it might return fewer events than
+         * the limit. This is the expected API behavior.</p> <p>The returned log events are
+         * sorted by event timestamp, the timestamp when the event was ingested by
+         * CloudWatch Logs, and the ID of the <code>PutLogEvents</code> request.</p> <p>If
+         * you are using CloudWatch cross-account observability, you can use this operation
+         * in a monitoring account and view data from the linked source accounts. For more
+         * information, see <a
          * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Unified-Cross-Account.html">CloudWatch
-         * cross-account observability</a>.</p><p><h3>See Also:</h3>   <a
+         * cross-account observability</a>.</p>  <p>If you are using <a
+         * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatch-Logs-Transformation.html">log
+         * transformation</a>, the <code>FilterLogEvents</code> operation returns only the
+         * original versions of log events, before they were transformed. To view the
+         * transformed versions, you must use a <a
+         * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html">CloudWatch
+         * Logs query.</a> </p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/FilterLogEvents">AWS
          * API Reference</a></p>
          */
-        virtual Model::FilterLogEventsOutcome FilterLogEvents(const Model::FilterLogEventsRequest& request) const;
+        virtual Model::FilterLogEventsOutcome FilterLogEvents(const Model::FilterLogEventsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for FilterLogEvents that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename FilterLogEventsRequestT = Model::FilterLogEventsRequest>
-        Model::FilterLogEventsOutcomeCallable FilterLogEventsCallable(const FilterLogEventsRequestT& request) const
+        Model::FilterLogEventsOutcomeCallable FilterLogEventsCallable(const FilterLogEventsRequestT& request = {}) const
         {
             return SubmitCallable(&CloudWatchLogsClient::FilterLogEvents, request);
         }
@@ -1280,7 +1526,7 @@ namespace CloudWatchLogs
          * An Async wrapper for FilterLogEvents that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename FilterLogEventsRequestT = Model::FilterLogEventsRequest>
-        void FilterLogEventsAsync(const FilterLogEventsRequestT& request, const FilterLogEventsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void FilterLogEventsAsync(const FilterLogEventsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const FilterLogEventsRequestT& request = {}) const
         {
             return SubmitAsync(&CloudWatchLogsClient::FilterLogEvents, request, handler, context);
         }
@@ -1312,10 +1558,20 @@ namespace CloudWatchLogs
         }
 
         /**
-         * <p>Returns complete information about one <i>delivery</i>. A delivery is a
-         * connection between a logical <i>delivery source</i> and a logical <i>delivery
-         * destination</i> </p> <p>You need to specify the delivery <code>id</code> in this
-         * operation. You can find the IDs of the deliveries in your account with the <a
+         * <p>Returns complete information about one logical <i>delivery</i>. A delivery is
+         * a connection between a <a
+         * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDeliverySource.html">
+         * <i>delivery source</i> </a> and a <a
+         * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDeliveryDestination.html">
+         * <i>delivery destination</i> </a>.</p> <p>A delivery source represents an Amazon
+         * Web Services resource that sends logs to an logs delivery destination. The
+         * destination can be CloudWatch Logs, Amazon S3, or Firehose. Only some Amazon Web
+         * Services services support being configured as a delivery source. These services
+         * are listed in <a
+         * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AWS-logs-and-resource-policy.html">Enable
+         * logging from Amazon Web Services services.</a> </p> <p>You need to specify the
+         * delivery <code>id</code> in this operation. You can find the IDs of the
+         * deliveries in your account with the <a
          * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeDeliveries.html">DescribeDeliveries</a>
          * operation.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/GetDelivery">AWS
@@ -1423,8 +1679,34 @@ namespace CloudWatchLogs
         }
 
         /**
-         * <p>Retrieves information about the log anomaly detector that you
-         * specify.</p><p><h3>See Also:</h3>   <a
+         * <p>Returns information about one integration between CloudWatch Logs and
+         * OpenSearch Service. </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/GetIntegration">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetIntegrationOutcome GetIntegration(const Model::GetIntegrationRequest& request) const;
+
+        /**
+         * A Callable wrapper for GetIntegration that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetIntegrationRequestT = Model::GetIntegrationRequest>
+        Model::GetIntegrationOutcomeCallable GetIntegrationCallable(const GetIntegrationRequestT& request) const
+        {
+            return SubmitCallable(&CloudWatchLogsClient::GetIntegration, request);
+        }
+
+        /**
+         * An Async wrapper for GetIntegration that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetIntegrationRequestT = Model::GetIntegrationRequest>
+        void GetIntegrationAsync(const GetIntegrationRequestT& request, const GetIntegrationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&CloudWatchLogsClient::GetIntegration, request, handler, context);
+        }
+
+        /**
+         * <p>Retrieves information about the log anomaly detector that you specify. The
+         * KMS key ARN detected is valid.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/GetLogAnomalyDetector">AWS
          * API Reference</a></p>
          */
@@ -1450,18 +1732,37 @@ namespace CloudWatchLogs
 
         /**
          * <p>Lists log events from the specified log stream. You can list all of the log
-         * events or filter using a time range.</p> <p>By default, this operation returns
-         * as many log events as can fit in a response size of 1MB (up to 10,000 log
-         * events). You can get additional log events by specifying one of the tokens in a
-         * subsequent call. This operation can return empty results while there are more
-         * log events available through the token.</p> <p>If you are using CloudWatch
-         * cross-account observability, you can use this operation in a monitoring account
-         * and view data from the linked source accounts. For more information, see <a
+         * events or filter using a time range.</p> <p> <code>GetLogEvents</code> is a
+         * paginated operation. Each page returned can contain up to 1 MB of log events or
+         * up to 10,000 log events. A returned page might only be partially full, or even
+         * empty. For example, if the result of a query would return 15,000 log events, the
+         * first page isn't guaranteed to have 10,000 log events even if they all fit into
+         * 1 MB.</p> <p>Partially full or empty pages don't necessarily mean that
+         * pagination is finished. As long as the <code>nextBackwardToken</code> or
+         * <code>nextForwardToken</code> returned is NOT equal to the
+         * <code>nextToken</code> that you passed into the API call, there might be more
+         * log events available. The token that you use depends on the direction you want
+         * to move in along the log stream. The returned tokens are never null.</p> 
+         * <p>If you set <code>startFromHead</code> to <code>true</code> and you don’t
+         * include <code>endTime</code> in your request, you can end up in a situation
+         * where the pagination doesn't terminate. This can happen when the new log events
+         * are being added to the target log streams faster than they are being read. This
+         * situation is a good use case for the CloudWatch Logs <a
+         * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatchLogs_LiveTail.html">Live
+         * Tail</a> feature.</p>  <p>If you are using CloudWatch cross-account
+         * observability, you can use this operation in a monitoring account and view data
+         * from the linked source accounts. For more information, see <a
          * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Unified-Cross-Account.html">CloudWatch
          * cross-account observability</a>.</p> <p>You can specify the log group to search
          * by using either <code>logGroupIdentifier</code> or <code>logGroupName</code>.
-         * You must include one of these two parameters, but you can't include both.
-         * </p><p><h3>See Also:</h3>   <a
+         * You must include one of these two parameters, but you can't include both. </p>
+         *  <p>If you are using <a
+         * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatch-Logs-Transformation.html">log
+         * transformation</a>, the <code>GetLogEvents</code> operation returns only the
+         * original versions of log events, before they were transformed. To view the
+         * transformed versions, you must use a <a
+         * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html">CloudWatch
+         * Logs query.</a> </p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/GetLogEvents">AWS
          * API Reference</a></p>
          */
@@ -1506,13 +1807,13 @@ namespace CloudWatchLogs
          * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/GetLogGroupFields">AWS
          * API Reference</a></p>
          */
-        virtual Model::GetLogGroupFieldsOutcome GetLogGroupFields(const Model::GetLogGroupFieldsRequest& request) const;
+        virtual Model::GetLogGroupFieldsOutcome GetLogGroupFields(const Model::GetLogGroupFieldsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for GetLogGroupFields that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename GetLogGroupFieldsRequestT = Model::GetLogGroupFieldsRequest>
-        Model::GetLogGroupFieldsOutcomeCallable GetLogGroupFieldsCallable(const GetLogGroupFieldsRequestT& request) const
+        Model::GetLogGroupFieldsOutcomeCallable GetLogGroupFieldsCallable(const GetLogGroupFieldsRequestT& request = {}) const
         {
             return SubmitCallable(&CloudWatchLogsClient::GetLogGroupFields, request);
         }
@@ -1521,9 +1822,46 @@ namespace CloudWatchLogs
          * An Async wrapper for GetLogGroupFields that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename GetLogGroupFieldsRequestT = Model::GetLogGroupFieldsRequest>
-        void GetLogGroupFieldsAsync(const GetLogGroupFieldsRequestT& request, const GetLogGroupFieldsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void GetLogGroupFieldsAsync(const GetLogGroupFieldsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const GetLogGroupFieldsRequestT& request = {}) const
         {
             return SubmitAsync(&CloudWatchLogsClient::GetLogGroupFields, request, handler, context);
+        }
+
+        /**
+         * <p>Retrieves a large logging object (LLO) and streams it back. This API is used
+         * to fetch the content of large portions of log events that have been ingested
+         * through the PutOpenTelemetryLogs API. When log events contain fields that would
+         * cause the total event size to exceed 1MB, CloudWatch Logs automatically
+         * processes up to 10 fields, starting with the largest fields. Each field is
+         * truncated as needed to keep the total event size as close to 1MB as possible.
+         * The excess portions are stored as Large Log Objects (LLOs) and these fields are
+         * processed separately and LLO reference system fields (in the format
+         * <code>@ptr.$[path.to.field]</code>) are added. The path in the reference field
+         * reflects the original JSON structure where the large field was located. For
+         * example, this could be <code>@ptr.$['input']['message']</code>,
+         * <code>@ptr.$['AAA']['BBB']['CCC']['DDD']</code>, <code>@ptr.$['AAA']</code>, or
+         * any other path matching your log structure.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/GetLogObject">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetLogObjectOutcome GetLogObject(Model::GetLogObjectRequest& request) const;
+
+        /**
+         * A Callable wrapper for GetLogObject that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetLogObjectRequestT = Model::GetLogObjectRequest>
+        Model::GetLogObjectOutcomeCallable GetLogObjectCallable(GetLogObjectRequestT& request) const
+        {
+            return SubmitCallable(&CloudWatchLogsClient::GetLogObject, request);
+        }
+
+        /**
+         * An Async wrapper for GetLogObject that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetLogObjectRequestT = Model::GetLogObjectRequest>
+        void GetLogObjectAsync(GetLogObjectRequestT& request, const GetLogObjectResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&CloudWatchLogsClient::GetLogObject, request, handler, context);
         }
 
         /**
@@ -1600,19 +1938,48 @@ namespace CloudWatchLogs
         }
 
         /**
+         * <p>Returns the information about the log transformer associated with this log
+         * group.</p> <p>This operation returns data only for transformers created at the
+         * log group level. To get information for an account-level transformer, use <a
+         * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeAccountPolicies.html">DescribeAccountPolicies</a>.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/GetTransformer">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetTransformerOutcome GetTransformer(const Model::GetTransformerRequest& request) const;
+
+        /**
+         * A Callable wrapper for GetTransformer that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetTransformerRequestT = Model::GetTransformerRequest>
+        Model::GetTransformerOutcomeCallable GetTransformerCallable(const GetTransformerRequestT& request) const
+        {
+            return SubmitCallable(&CloudWatchLogsClient::GetTransformer, request);
+        }
+
+        /**
+         * An Async wrapper for GetTransformer that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetTransformerRequestT = Model::GetTransformerRequest>
+        void GetTransformerAsync(const GetTransformerRequestT& request, const GetTransformerResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&CloudWatchLogsClient::GetTransformer, request, handler, context);
+        }
+
+        /**
          * <p>Returns a list of anomalies that log anomaly detectors have found. For
          * details about the structure format of each anomaly object that is returned, see
          * the example in this section.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/ListAnomalies">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListAnomaliesOutcome ListAnomalies(const Model::ListAnomaliesRequest& request) const;
+        virtual Model::ListAnomaliesOutcome ListAnomalies(const Model::ListAnomaliesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListAnomalies that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListAnomaliesRequestT = Model::ListAnomaliesRequest>
-        Model::ListAnomaliesOutcomeCallable ListAnomaliesCallable(const ListAnomaliesRequestT& request) const
+        Model::ListAnomaliesOutcomeCallable ListAnomaliesCallable(const ListAnomaliesRequestT& request = {}) const
         {
             return SubmitCallable(&CloudWatchLogsClient::ListAnomalies, request);
         }
@@ -1621,9 +1988,36 @@ namespace CloudWatchLogs
          * An Async wrapper for ListAnomalies that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListAnomaliesRequestT = Model::ListAnomaliesRequest>
-        void ListAnomaliesAsync(const ListAnomaliesRequestT& request, const ListAnomaliesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListAnomaliesAsync(const ListAnomaliesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListAnomaliesRequestT& request = {}) const
         {
             return SubmitAsync(&CloudWatchLogsClient::ListAnomalies, request, handler, context);
+        }
+
+        /**
+         * <p>Returns a list of integrations between CloudWatch Logs and other services in
+         * this account. Currently, only one integration can be created in an account, and
+         * this integration must be with OpenSearch Service.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/ListIntegrations">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListIntegrationsOutcome ListIntegrations(const Model::ListIntegrationsRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for ListIntegrations that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListIntegrationsRequestT = Model::ListIntegrationsRequest>
+        Model::ListIntegrationsOutcomeCallable ListIntegrationsCallable(const ListIntegrationsRequestT& request = {}) const
+        {
+            return SubmitCallable(&CloudWatchLogsClient::ListIntegrations, request);
+        }
+
+        /**
+         * An Async wrapper for ListIntegrations that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListIntegrationsRequestT = Model::ListIntegrationsRequest>
+        void ListIntegrationsAsync(const ListIntegrationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListIntegrationsRequestT& request = {}) const
+        {
+            return SubmitAsync(&CloudWatchLogsClient::ListIntegrations, request, handler, context);
         }
 
         /**
@@ -1632,13 +2026,13 @@ namespace CloudWatchLogs
          * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/ListLogAnomalyDetectors">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListLogAnomalyDetectorsOutcome ListLogAnomalyDetectors(const Model::ListLogAnomalyDetectorsRequest& request) const;
+        virtual Model::ListLogAnomalyDetectorsOutcome ListLogAnomalyDetectors(const Model::ListLogAnomalyDetectorsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListLogAnomalyDetectors that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListLogAnomalyDetectorsRequestT = Model::ListLogAnomalyDetectorsRequest>
-        Model::ListLogAnomalyDetectorsOutcomeCallable ListLogAnomalyDetectorsCallable(const ListLogAnomalyDetectorsRequestT& request) const
+        Model::ListLogAnomalyDetectorsOutcomeCallable ListLogAnomalyDetectorsCallable(const ListLogAnomalyDetectorsRequestT& request = {}) const
         {
             return SubmitCallable(&CloudWatchLogsClient::ListLogAnomalyDetectors, request);
         }
@@ -1647,9 +2041,77 @@ namespace CloudWatchLogs
          * An Async wrapper for ListLogAnomalyDetectors that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListLogAnomalyDetectorsRequestT = Model::ListLogAnomalyDetectorsRequest>
-        void ListLogAnomalyDetectorsAsync(const ListLogAnomalyDetectorsRequestT& request, const ListLogAnomalyDetectorsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListLogAnomalyDetectorsAsync(const ListLogAnomalyDetectorsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListLogAnomalyDetectorsRequestT& request = {}) const
         {
             return SubmitAsync(&CloudWatchLogsClient::ListLogAnomalyDetectors, request, handler, context);
+        }
+
+        /**
+         * <p>Returns a list of log groups in the Region in your account. If you are
+         * performing this action in a monitoring account, you can choose to also return
+         * log groups from source accounts that are linked to the monitoring account. For
+         * more information about using cross-account observability to set up monitoring
+         * accounts and source accounts, see <a
+         * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Unified-Cross-Account.html">
+         * CloudWatch cross-account observability</a>.</p> <p>You can optionally filter the
+         * list by log group class and by using regular expressions in your request to
+         * match strings in the log group names.</p> <p>This operation is paginated. By
+         * default, your first use of this operation returns 50 results, and includes a
+         * token to use in a subsequent operation to return more results.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/ListLogGroups">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListLogGroupsOutcome ListLogGroups(const Model::ListLogGroupsRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for ListLogGroups that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListLogGroupsRequestT = Model::ListLogGroupsRequest>
+        Model::ListLogGroupsOutcomeCallable ListLogGroupsCallable(const ListLogGroupsRequestT& request = {}) const
+        {
+            return SubmitCallable(&CloudWatchLogsClient::ListLogGroups, request);
+        }
+
+        /**
+         * An Async wrapper for ListLogGroups that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListLogGroupsRequestT = Model::ListLogGroupsRequest>
+        void ListLogGroupsAsync(const ListLogGroupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListLogGroupsRequestT& request = {}) const
+        {
+            return SubmitAsync(&CloudWatchLogsClient::ListLogGroups, request, handler, context);
+        }
+
+        /**
+         * <p>Returns a list of the log groups that were analyzed during a single
+         * CloudWatch Logs Insights query. This can be useful for queries that use log
+         * group name prefixes or the <code>filterIndex</code> command, because the log
+         * groups are dynamically selected in these cases.</p> <p>For more information
+         * about field indexes, see <a
+         * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatchLogs-Field-Indexing.html">Create
+         * field indexes to improve query performance and reduce costs</a>.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/ListLogGroupsForQuery">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListLogGroupsForQueryOutcome ListLogGroupsForQuery(const Model::ListLogGroupsForQueryRequest& request) const;
+
+        /**
+         * A Callable wrapper for ListLogGroupsForQuery that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListLogGroupsForQueryRequestT = Model::ListLogGroupsForQueryRequest>
+        Model::ListLogGroupsForQueryOutcomeCallable ListLogGroupsForQueryCallable(const ListLogGroupsForQueryRequestT& request) const
+        {
+            return SubmitCallable(&CloudWatchLogsClient::ListLogGroupsForQuery, request);
+        }
+
+        /**
+         * An Async wrapper for ListLogGroupsForQuery that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListLogGroupsForQueryRequestT = Model::ListLogGroupsForQueryRequest>
+        void ListLogGroupsForQueryAsync(const ListLogGroupsForQueryRequestT& request, const ListLogGroupsForQueryResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&CloudWatchLogsClient::ListLogGroupsForQuery, request, handler, context);
         }
 
         /**
@@ -1679,20 +2141,36 @@ namespace CloudWatchLogs
         }
 
         /**
-         * <p>Creates an account-level data protection policy that applies to all log
-         * groups in the account. A data protection policy can help safeguard sensitive
-         * data that's ingested by your log groups by auditing and masking the sensitive
-         * log data. Each account can have only one account-level policy.</p> 
-         * <p>Sensitive data is detected and masked when it is ingested into a log group.
-         * When you set a data protection policy, log events ingested into the log groups
-         * before that time are not masked.</p>  <p>If you use
-         * <code>PutAccountPolicy</code> to create a data protection policy for your whole
-         * account, it applies to both existing log groups and all log groups that are
-         * created later in this account. The account policy is applied to existing log
-         * groups with eventual consistency. It might take up to 5 minutes before sensitive
-         * data in existing log groups begins to be masked.</p> <p>By default, when a user
-         * views a log event that includes masked data, the sensitive data is replaced by
-         * asterisks. A user who has the <code>logs:Unmask</code> permission can use a <a
+         * <p>Creates an account-level data protection policy, subscription filter policy,
+         * field index policy, transformer policy, or metric extraction policy that applies
+         * to all log groups or a subset of log groups in the account.</p> <p>To use this
+         * operation, you must be signed on with the correct permissions depending on the
+         * type of policy that you are creating.</p> <ul> <li> <p>To create a data
+         * protection policy, you must have the <code>logs:PutDataProtectionPolicy</code>
+         * and <code>logs:PutAccountPolicy</code> permissions.</p> </li> <li> <p>To create
+         * a subscription filter policy, you must have the
+         * <code>logs:PutSubscriptionFilter</code> and <code>logs:PutAccountPolicy</code>
+         * permissions.</p> </li> <li> <p>To create a transformer policy, you must have the
+         * <code>logs:PutTransformer</code> and <code>logs:PutAccountPolicy</code>
+         * permissions.</p> </li> <li> <p>To create a field index policy, you must have the
+         * <code>logs:PutIndexPolicy</code> and <code>logs:PutAccountPolicy</code>
+         * permissions.</p> </li> <li> <p>To create a metric extraction policy, you must
+         * have the <code>logs:PutMetricExtractionPolicy</code> and
+         * <code>logs:PutAccountPolicy</code> permissions.</p> </li> </ul> <p> <b>Data
+         * protection policy</b> </p> <p>A data protection policy can help safeguard
+         * sensitive data that's ingested by your log groups by auditing and masking the
+         * sensitive log data. Each account can have only one account-level data protection
+         * policy.</p>  <p>Sensitive data is detected and masked when it is
+         * ingested into a log group. When you set a data protection policy, log events
+         * ingested into the log groups before that time are not masked.</p> 
+         * <p>If you use <code>PutAccountPolicy</code> to create a data protection policy
+         * for your whole account, it applies to both existing log groups and all log
+         * groups that are created later in this account. The account-level policy is
+         * applied to existing log groups with eventual consistency. It might take up to 5
+         * minutes before sensitive data in existing log groups begins to be masked.</p>
+         * <p>By default, when a user views a log event that includes masked data, the
+         * sensitive data is replaced by asterisks. A user who has the
+         * <code>logs:Unmask</code> permission can use a <a
          * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_GetLogEvents.html">GetLogEvents</a>
          * or <a
          * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_FilterLogEvents.html">FilterLogEvents</a>
@@ -1704,16 +2182,163 @@ namespace CloudWatchLogs
          * see <a
          * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/mask-sensitive-log-data.html">Protect
          * sensitive log data with masking</a>.</p> <p>To use the
-         * <code>PutAccountPolicy</code> operation, you must be signed on with the
-         * <code>logs:PutDataProtectionPolicy</code> and <code>logs:PutAccountPolicy</code>
-         * permissions.</p> <p>The <code>PutAccountPolicy</code> operation applies to all
-         * log groups in the account. You can also use <a
+         * <code>PutAccountPolicy</code> operation for a data protection policy, you must
+         * be signed on with the <code>logs:PutDataProtectionPolicy</code> and
+         * <code>logs:PutAccountPolicy</code> permissions.</p> <p>The
+         * <code>PutAccountPolicy</code> operation applies to all log groups in the
+         * account. You can use <a
          * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDataProtectionPolicy.html">PutDataProtectionPolicy</a>
          * to create a data protection policy that applies to just one log group. If a log
          * group has its own data protection policy and the account also has an
          * account-level data protection policy, then the two policies are cumulative. Any
-         * sensitive term specified in either policy is masked.</p><p><h3>See Also:</h3>  
-         * <a
+         * sensitive term specified in either policy is masked.</p> <p> <b>Subscription
+         * filter policy</b> </p> <p>A subscription filter policy sets up a real-time feed
+         * of log events from CloudWatch Logs to other Amazon Web Services services.
+         * Account-level subscription filter policies apply to both existing log groups and
+         * log groups that are created later in this account. Supported destinations are
+         * Kinesis Data Streams, Firehose, and Lambda. When log events are sent to the
+         * receiving service, they are Base64 encoded and compressed with the GZIP
+         * format.</p> <p>The following destinations are supported for subscription
+         * filters:</p> <ul> <li> <p>An Kinesis Data Streams data stream in the same
+         * account as the subscription policy, for same-account delivery.</p> </li> <li>
+         * <p>An Firehose data stream in the same account as the subscription policy, for
+         * same-account delivery.</p> </li> <li> <p>A Lambda function in the same account
+         * as the subscription policy, for same-account delivery.</p> </li> <li> <p>A
+         * logical destination in a different account created with <a
+         * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDestination.html">PutDestination</a>,
+         * for cross-account delivery. Kinesis Data Streams and Firehose are supported as
+         * logical destinations.</p> </li> </ul> <p>Each account can have one account-level
+         * subscription filter policy per Region. If you are updating an existing filter,
+         * you must specify the correct name in <code>PolicyName</code>. To perform a
+         * <code>PutAccountPolicy</code> subscription filter operation for any destination
+         * except a Lambda function, you must also have the <code>iam:PassRole</code>
+         * permission.</p> <p> <b>Transformer policy</b> </p> <p>Creates or updates a
+         * <i>log transformer policy</i> for your account. You use log transformers to
+         * transform log events into a different format, making them easier for you to
+         * process and analyze. You can also transform logs from different sources into
+         * standardized formats that contain relevant, source-specific information. After
+         * you have created a transformer, CloudWatch Logs performs this transformation at
+         * the time of log ingestion. You can then refer to the transformed versions of the
+         * logs during operations such as querying with CloudWatch Logs Insights or
+         * creating metric filters or subscription filters.</p> <p>You can also use a
+         * transformer to copy metadata from metadata keys into the log events themselves.
+         * This metadata can include log group name, log stream name, account ID and
+         * Region.</p> <p>A transformer for a log group is a series of processors, where
+         * each processor applies one type of transformation to the log events ingested
+         * into this log group. For more information about the available processors to use
+         * in a transformer, see <a
+         * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatch-Logs-Transformation.html#CloudWatch-Logs-Transformation-Processors">
+         * Processors that you can use</a>.</p> <p>Having log events in standardized format
+         * enables visibility across your applications for your log analysis, reporting,
+         * and alarming needs. CloudWatch Logs provides transformation for common log types
+         * with out-of-the-box transformation templates for major Amazon Web Services log
+         * sources such as VPC flow logs, Lambda, and Amazon RDS. You can use pre-built
+         * transformation templates or create custom transformation policies.</p> <p>You
+         * can create transformers only for the log groups in the Standard log class.</p>
+         * <p>You can have one account-level transformer policy that applies to all log
+         * groups in the account. Or you can create as many as 20 account-level transformer
+         * policies that are each scoped to a subset of log groups with the
+         * <code>selectionCriteria</code> parameter. If you have multiple account-level
+         * transformer policies with selection criteria, no two of them can use the same or
+         * overlapping log group name prefixes. For example, if you have one policy
+         * filtered to log groups that start with <code>my-log</code>, you can't have
+         * another field index policy filtered to <code>my-logpprod</code> or
+         * <code>my-logging</code>.</p> <p>CloudWatch Logs provides default field indexes
+         * for all log groups in the Standard log class. Default field indexes are
+         * automatically available for the following fields: </p> <ul> <li> <p>
+         * <code>@aws.region</code> </p> </li> <li> <p> <code>@aws.account</code> </p>
+         * </li> <li> <p> <code>@source.log</code> </p> </li> <li> <p> <code>traceId</code>
+         * </p> </li> </ul> <p>Default field indexes are in addition to any custom field
+         * indexes you define within your policy. Default field indexes are not counted
+         * towards your field index quota. </p> <p>You can also set up a transformer at the
+         * log-group level. For more information, see <a
+         * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutTransformer.html">PutTransformer</a>.
+         * If there is both a log-group level transformer created with
+         * <code>PutTransformer</code> and an account-level transformer that could apply to
+         * the same log group, the log group uses only the log-group level transformer. It
+         * ignores the account-level transformer.</p> <p> <b>Field index policy</b> </p>
+         * <p>You can use field index policies to create indexes on fields found in log
+         * events in the log group. Creating field indexes can help lower the scan volume
+         * for CloudWatch Logs Insights queries that reference those fields, because these
+         * queries attempt to skip the processing of log events that are known to not match
+         * the indexed field. Good fields to index are fields that you often need to query
+         * for and fields or values that match only a small fraction of the total log
+         * events. Common examples of indexes include request ID, session ID, user IDs, or
+         * instance IDs. For more information, see <a
+         * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatchLogs-Field-Indexing.html">Create
+         * field indexes to improve query performance and reduce costs</a> </p> <p>To find
+         * the fields that are in your log group events, use the <a
+         * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_GetLogGroupFields.html">GetLogGroupFields</a>
+         * operation.</p> <p>For example, suppose you have created a field index for
+         * <code>requestId</code>. Then, any CloudWatch Logs Insights query on that log
+         * group that includes <code>requestId = <i>value</i> </code> or <code>requestId in
+         * [<i>value</i>, <i>value</i>, ...]</code> will attempt to process only the log
+         * events where the indexed field matches the specified value.</p> <p>Matches of
+         * log events to the names of indexed fields are case-sensitive. For example, an
+         * indexed field of <code>RequestId</code> won't match a log event containing
+         * <code>requestId</code>.</p> <p>You can have one account-level field index policy
+         * that applies to all log groups in the account. Or you can create as many as 20
+         * account-level field index policies that are each scoped to a subset of log
+         * groups with the <code>selectionCriteria</code> parameter. If you have multiple
+         * account-level index policies with selection criteria, no two of them can use the
+         * same or overlapping log group name prefixes. For example, if you have one policy
+         * filtered to log groups that start with <code>my-log</code>, you can't have
+         * another field index policy filtered to <code>my-logpprod</code> or
+         * <code>my-logging</code>.</p> <p>If you create an account-level field index
+         * policy in a monitoring account in cross-account observability, the policy is
+         * applied only to the monitoring account and not to any source accounts.</p> <p>If
+         * you want to create a field index policy for a single log group, you can use <a
+         * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutIndexPolicy.html">PutIndexPolicy</a>
+         * instead of <code>PutAccountPolicy</code>. If you do so, that log group will use
+         * only that log-group level policy, and will ignore the account-level policy that
+         * you create with <a
+         * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutAccountPolicy.html">PutAccountPolicy</a>.</p>
+         * <p> <b>Metric extraction policy</b> </p> <p>A metric extraction policy controls
+         * whether CloudWatch Metrics can be created through the Embedded Metrics Format
+         * (EMF) for log groups in your account. By default, EMF metric creation is enabled
+         * for all log groups. You can use metric extraction policies to disable EMF metric
+         * creation for your entire account or specific log groups.</p> <p>When a policy
+         * disables EMF metric creation for a log group, log events in the EMF format are
+         * still ingested, but no CloudWatch Metrics are created from them.</p> 
+         * <p>Creating a policy disables metrics for AWS features that use EMF to create
+         * metrics, such as CloudWatch Container Insights and CloudWatch Application
+         * Signals. To prevent turning off those features by accident, we recommend that
+         * you exclude the underlying log-groups through a selection-criteria such as
+         * <code>LogGroupNamePrefix NOT IN ["/aws/containerinsights",
+         * "/aws/ecs/containerinsights", "/aws/application-signals/data"]</code>.</p>
+         *  <p>Each account can have either one account-level metric extraction
+         * policy that applies to all log groups, or up to 5 policies that are each scoped
+         * to a subset of log groups with the <code>selectionCriteria</code> parameter. The
+         * selection criteria supports filtering by <code>LogGroupName</code> and
+         * <code>LogGroupNamePrefix</code> using the operators <code>IN</code> and
+         * <code>NOT IN</code>. You can specify up to 50 values in each <code>IN</code> or
+         * <code>NOT IN</code> list.</p> <p>The selection criteria can be specified in
+         * these formats:</p> <p> <code>LogGroupName IN ["log-group-1",
+         * "log-group-2"]</code> </p> <p> <code>LogGroupNamePrefix NOT IN ["/aws/prefix1",
+         * "/aws/prefix2"]</code> </p> <p>If you have multiple account-level metric
+         * extraction policies with selection criteria, no two of them can have overlapping
+         * criteria. For example, if you have one policy with selection criteria
+         * <code>LogGroupNamePrefix IN ["my-log"]</code>, you can't have another metric
+         * extraction policy with selection criteria <code>LogGroupNamePrefix IN
+         * ["/my-log-prod"]</code> or <code>LogGroupNamePrefix IN ["/my-logging"]</code>,
+         * as the set of log groups matching these prefixes would be a subset of the log
+         * groups matching the first policy's prefix, creating an overlap.</p> <p>When
+         * using <code>NOT IN</code>, only one policy with this operator is allowed per
+         * account.</p> <p>When combining policies with <code>IN</code> and <code>NOT
+         * IN</code> operators, the overlap check ensures that policies don't have
+         * conflicting effects. Two policies with <code>IN</code> and <code>NOT IN</code>
+         * operators do not overlap if and only if every value in the <code>IN
+         * </code>policy is completely contained within some value in the <code>NOT
+         * IN</code> policy. For example:</p> <ul> <li> <p>If you have a <code>NOT
+         * IN</code> policy for prefix <code>"/aws/lambda"</code>, you can create an
+         * <code>IN</code> policy for the exact log group name
+         * <code>"/aws/lambda/function1"</code> because the set of log groups matching
+         * <code>"/aws/lambda/function1"</code> is a subset of the log groups matching
+         * <code>"/aws/lambda"</code>.</p> </li> <li> <p>If you have a <code>NOT IN</code>
+         * policy for prefix <code>"/aws/lambda"</code>, you cannot create an
+         * <code>IN</code> policy for prefix <code>"/aws"</code> because the set of log
+         * groups matching <code>"/aws"</code> is not a subset of the log groups matching
+         * <code>"/aws/lambda"</code>.</p> </li> </ul><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/PutAccountPolicy">AWS
          * API Reference</a></p>
          */
@@ -1793,16 +2418,17 @@ namespace CloudWatchLogs
          * <p>Creates or updates a logical <i>delivery destination</i>. A delivery
          * destination is an Amazon Web Services resource that represents an Amazon Web
          * Services service that logs can be sent to. CloudWatch Logs, Amazon S3, and
-         * Kinesis Data Firehose are supported as logs delivery destinations.</p> <p>To
-         * configure logs delivery between a supported Amazon Web Services service and a
-         * destination, you must do the following:</p> <ul> <li> <p>Create a delivery
-         * source, which is a logical object that represents the resource that is actually
-         * sending the logs. For more information, see <a
+         * Firehose are supported as logs delivery destinations and X-Ray as the trace
+         * delivery destination.</p> <p>To configure logs delivery between a supported
+         * Amazon Web Services service and a destination, you must do the following:</p>
+         * <ul> <li> <p>Create a delivery source, which is a logical object that represents
+         * the resource that is actually sending the logs. For more information, see <a
          * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDeliverySource.html">PutDeliverySource</a>.</p>
          * </li> <li> <p>Use <code>PutDeliveryDestination</code> to create a <i>delivery
-         * destination</i>, which is a logical object that represents the actual delivery
-         * destination. </p> </li> <li> <p>If you are delivering logs cross-account, you
-         * must use <a
+         * destination</i> in the same account of the actual delivery destination. The
+         * delivery destination that you create is a logical object that represents the
+         * actual delivery destination. </p> </li> <li> <p>If you are delivering logs
+         * cross-account, you must use <a
          * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDeliveryDestinationPolicy.html">PutDeliveryDestinationPolicy</a>
          * in the destination account to assign an IAM policy to the destination. This
          * policy allows delivery to that destination. </p> </li> <li> <p>Use
@@ -1894,15 +2520,15 @@ namespace CloudWatchLogs
         /**
          * <p>Creates or updates a logical <i>delivery source</i>. A delivery source
          * represents an Amazon Web Services resource that sends logs to an logs delivery
-         * destination. The destination can be CloudWatch Logs, Amazon S3, or Kinesis Data
-         * Firehose.</p> <p>To configure logs delivery between a delivery destination and
-         * an Amazon Web Services service that is supported as a delivery source, you must
-         * do the following:</p> <ul> <li> <p>Use <code>PutDeliverySource</code> to create
-         * a delivery source, which is a logical object that represents the resource that
-         * is actually sending the logs. </p> </li> <li> <p>Use
-         * <code>PutDeliveryDestination</code> to create a <i>delivery destination</i>,
-         * which is a logical object that represents the actual delivery destination. For
-         * more information, see <a
+         * destination. The destination can be CloudWatch Logs, Amazon S3, Firehose or
+         * X-Ray for sending traces.</p> <p>To configure logs delivery between a delivery
+         * destination and an Amazon Web Services service that is supported as a delivery
+         * source, you must do the following:</p> <ul> <li> <p>Use
+         * <code>PutDeliverySource</code> to create a delivery source, which is a logical
+         * object that represents the resource that is actually sending the logs. </p>
+         * </li> <li> <p>Use <code>PutDeliveryDestination</code> to create a <i>delivery
+         * destination</i>, which is a logical object that represents the actual delivery
+         * destination. For more information, see <a
          * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDeliveryDestination.html">PutDeliveryDestination</a>.</p>
          * </li> <li> <p>If you are delivering logs cross-account, you must use <a
          * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDeliveryDestinationPolicy.html">PutDeliveryDestinationPolicy</a>
@@ -2014,6 +2640,105 @@ namespace CloudWatchLogs
         }
 
         /**
+         * <p>Creates or updates a <i>field index policy</i> for the specified log group.
+         * Only log groups in the Standard log class support field index policies. For more
+         * information about log classes, see <a
+         * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatch_Logs_Log_Classes.html">Log
+         * classes</a>.</p> <p>You can use field index policies to create <i>field
+         * indexes</i> on fields found in log events in the log group. Creating field
+         * indexes speeds up and lowers the costs for CloudWatch Logs Insights queries that
+         * reference those field indexes, because these queries attempt to skip the
+         * processing of log events that are known to not match the indexed field. Good
+         * fields to index are fields that you often need to query for and fields or values
+         * that match only a small fraction of the total log events. Common examples of
+         * indexes include request ID, session ID, userID, and instance IDs. For more
+         * information, see <a
+         * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatchLogs-Field-Indexing.html">Create
+         * field indexes to improve query performance and reduce costs</a>.</p> <p>To find
+         * the fields that are in your log group events, use the <a
+         * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_GetLogGroupFields.html">GetLogGroupFields</a>
+         * operation.</p> <p>For example, suppose you have created a field index for
+         * <code>requestId</code>. Then, any CloudWatch Logs Insights query on that log
+         * group that includes <code>requestId = <i>value</i> </code> or <code>requestId IN
+         * [<i>value</i>, <i>value</i>, ...]</code> will process fewer log events to reduce
+         * costs, and have improved performance.</p> <p>CloudWatch Logs provides default
+         * field indexes for all log groups in the Standard log class. Default field
+         * indexes are automatically available for the following fields: </p> <ul> <li> <p>
+         * <code>@aws.region</code> </p> </li> <li> <p> <code>@aws.account</code> </p>
+         * </li> <li> <p> <code>@source.log</code> </p> </li> <li> <p> <code>traceId</code>
+         * </p> </li> </ul> <p>Default field indexes are in addition to any custom field
+         * indexes you define within your policy. Default field indexes are not counted
+         * towards your field index quota. </p> <p>Each index policy has the following
+         * quotas and restrictions:</p> <ul> <li> <p>As many as 20 fields can be included
+         * in the policy.</p> </li> <li> <p>Each field name can include as many as 100
+         * characters.</p> </li> </ul> <p>Matches of log events to the names of indexed
+         * fields are case-sensitive. For example, a field index of <code>RequestId</code>
+         * won't match a log event containing <code>requestId</code>.</p> <p>Log
+         * group-level field index policies created with <code>PutIndexPolicy</code>
+         * override account-level field index policies created with <a
+         * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutAccountPolicy.html">PutAccountPolicy</a>.
+         * If you use <code>PutIndexPolicy</code> to create a field index policy for a log
+         * group, that log group uses only that policy. The log group ignores any
+         * account-wide field index policy that you might have created.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/PutIndexPolicy">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::PutIndexPolicyOutcome PutIndexPolicy(const Model::PutIndexPolicyRequest& request) const;
+
+        /**
+         * A Callable wrapper for PutIndexPolicy that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename PutIndexPolicyRequestT = Model::PutIndexPolicyRequest>
+        Model::PutIndexPolicyOutcomeCallable PutIndexPolicyCallable(const PutIndexPolicyRequestT& request) const
+        {
+            return SubmitCallable(&CloudWatchLogsClient::PutIndexPolicy, request);
+        }
+
+        /**
+         * An Async wrapper for PutIndexPolicy that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename PutIndexPolicyRequestT = Model::PutIndexPolicyRequest>
+        void PutIndexPolicyAsync(const PutIndexPolicyRequestT& request, const PutIndexPolicyResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&CloudWatchLogsClient::PutIndexPolicy, request, handler, context);
+        }
+
+        /**
+         * <p>Creates an integration between CloudWatch Logs and another service in this
+         * account. Currently, only integrations with OpenSearch Service are supported, and
+         * currently you can have only one integration in your account.</p> <p>Integrating
+         * with OpenSearch Service makes it possible for you to create curated vended logs
+         * dashboards, powered by OpenSearch Service analytics. For more information, see
+         * <a
+         * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatchLogs-OpenSearch-Dashboards.html">Vended
+         * log dashboards powered by Amazon OpenSearch Service</a>.</p> <p>You can use this
+         * operation only to create a new integration. You can't modify an existing
+         * integration.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/PutIntegration">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::PutIntegrationOutcome PutIntegration(const Model::PutIntegrationRequest& request) const;
+
+        /**
+         * A Callable wrapper for PutIntegration that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename PutIntegrationRequestT = Model::PutIntegrationRequest>
+        Model::PutIntegrationOutcomeCallable PutIntegrationCallable(const PutIntegrationRequestT& request) const
+        {
+            return SubmitCallable(&CloudWatchLogsClient::PutIntegration, request);
+        }
+
+        /**
+         * An Async wrapper for PutIntegration that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename PutIntegrationRequestT = Model::PutIntegrationRequest>
+        void PutIntegrationAsync(const PutIntegrationRequestT& request, const PutIntegrationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&CloudWatchLogsClient::PutIntegration, request, handler, context);
+        }
+
+        /**
          * <p>Uploads a batch of log events to the specified log stream.</p> 
          * <p>The sequence token is now ignored in <code>PutLogEvents</code> actions.
          * <code>PutLogEvents</code> actions are always accepted and never return
@@ -2023,24 +2748,26 @@ namespace CloudWatchLogs
          * stream. </p>  <p>The batch of events must satisfy the following
          * constraints:</p> <ul> <li> <p>The maximum batch size is 1,048,576 bytes. This
          * size is calculated as the sum of all event messages in UTF-8, plus 26 bytes for
-         * each log event.</p> </li> <li> <p>None of the log events in the batch can be
-         * more than 2 hours in the future.</p> </li> <li> <p>None of the log events in the
-         * batch can be more than 14 days in the past. Also, none of the log events can be
-         * from earlier than the retention period of the log group.</p> </li> <li> <p>The
-         * log events in the batch must be in chronological order by their timestamp. The
-         * timestamp is the time that the event occurred, expressed as the number of
-         * milliseconds after <code>Jan 1, 1970 00:00:00 UTC</code>. (In Amazon Web
-         * Services Tools for PowerShell and the Amazon Web Services SDK for .NET, the
-         * timestamp is specified in .NET format: <code>yyyy-mm-ddThh:mm:ss</code>. For
-         * example, <code>2017-09-15T13:45:30</code>.) </p> </li> <li> <p>A batch of log
-         * events in a single request cannot span more than 24 hours. Otherwise, the
-         * operation fails.</p> </li> <li> <p>Each log event can be no larger than 256
-         * KB.</p> </li> <li> <p>The maximum number of log events in a batch is 10,000.</p>
-         * </li> <li>  <p>The quota of five requests per second per log stream
-         * has been removed. Instead, <code>PutLogEvents</code> actions are throttled based
-         * on a per-second per-account quota. You can request an increase to the per-second
-         * throttling quota by using the Service Quotas service.</p>  </li>
-         * </ul> <p>If a call to <code>PutLogEvents</code> returns
+         * each log event.</p> </li> <li> <p>Events more than 2 hours in the future are
+         * rejected while processing remaining valid events.</p> </li> <li> <p>Events older
+         * than 14 days or preceding the log group's retention period are rejected while
+         * processing remaining valid events.</p> </li> <li> <p>The log events in the batch
+         * must be in chronological order by their timestamp. The timestamp is the time
+         * that the event occurred, expressed as the number of milliseconds after <code>Jan
+         * 1, 1970 00:00:00 UTC</code>. (In Amazon Web Services Tools for PowerShell and
+         * the Amazon Web Services SDK for .NET, the timestamp is specified in .NET format:
+         * <code>yyyy-mm-ddThh:mm:ss</code>. For example,
+         * <code>2017-09-15T13:45:30</code>.) </p> </li> <li> <p> A batch of log events in
+         * a single request must be in a chronological order. Otherwise, the operation
+         * fails.</p> </li> <li> <p>Each log event can be no larger than 1 MB.</p> </li>
+         * <li> <p>The maximum number of log events in a batch is 10,000.</p> </li> <li>
+         * <p>For valid events (within 14 days in the past to 2 hours in future), the time
+         * span in a single batch cannot exceed 24 hours. Otherwise, the operation
+         * fails.</p> </li> </ul>  <p>The quota of five requests per second per
+         * log stream has been removed. Instead, <code>PutLogEvents</code> actions are
+         * throttled based on a per-second per-account quota. You can request an increase
+         * to the per-second throttling quota by using the Service Quotas service.</p>
+         *  <p>If a call to <code>PutLogEvents</code> returns
          * "UnrecognizedClientException" the most likely cause is a non-valid Amazon Web
          * Services access key ID or secret key. </p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/PutLogEvents">AWS
@@ -2072,16 +2799,24 @@ namespace CloudWatchLogs
          * log events ingested through <a
          * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutLogEvents.html">PutLogEvents</a>.</p>
          * <p>The maximum number of metric filters that can be associated with a log group
-         * is 100.</p> <p>When you create a metric filter, you can also optionally assign a
-         * unit and dimensions to the metric that is created.</p>  <p>Metrics
-         * extracted from log events are charged as custom metrics. To prevent unexpected
-         * high charges, do not specify high-cardinality fields such as
-         * <code>IPAddress</code> or <code>requestID</code> as dimensions. Each different
-         * value found for a dimension is treated as a separate metric and accrues charges
-         * as a separate custom metric. </p> <p>CloudWatch Logs might disable a metric
-         * filter if it generates 1,000 different name/value pairs for your specified
-         * dimensions within one hour.</p> <p>You can also set up a billing alarm to alert
-         * you if your charges are higher than expected. For more information, see <a
+         * is 100.</p> <p>Using regular expressions in filter patterns is supported. For
+         * these filters, there is a quota of two regular expression patterns within a
+         * single filter pattern. There is also a quota of five regular expression patterns
+         * per log group. For more information about using regular expressions in filter
+         * patterns, see <a
+         * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html">
+         * Filter pattern syntax for metric filters, subscription filters, filter log
+         * events, and Live Tail</a>.</p> <p>When you create a metric filter, you can also
+         * optionally assign a unit and dimensions to the metric that is created.</p>
+         *  <p>Metrics extracted from log events are charged as custom metrics.
+         * To prevent unexpected high charges, do not specify high-cardinality fields such
+         * as <code>IPAddress</code> or <code>requestID</code> as dimensions. Each
+         * different value found for a dimension is treated as a separate metric and
+         * accrues charges as a separate custom metric. </p> <p>CloudWatch Logs might
+         * disable a metric filter if it generates 1,000 different name/value pairs for
+         * your specified dimensions within one hour.</p> <p>You can also set up a billing
+         * alarm to alert you if your charges are higher than expected. For more
+         * information, see <a
          * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/monitor_estimated_charges_with_cloudwatch.html">
          * Creating a Billing Alarm to Monitor Your Estimated Amazon Web Services
          * Charges</a>. </p> <p><h3>See Also:</h3>   <a
@@ -2153,13 +2888,13 @@ namespace CloudWatchLogs
          * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/PutResourcePolicy">AWS
          * API Reference</a></p>
          */
-        virtual Model::PutResourcePolicyOutcome PutResourcePolicy(const Model::PutResourcePolicyRequest& request) const;
+        virtual Model::PutResourcePolicyOutcome PutResourcePolicy(const Model::PutResourcePolicyRequest& request = {}) const;
 
         /**
          * A Callable wrapper for PutResourcePolicy that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename PutResourcePolicyRequestT = Model::PutResourcePolicyRequest>
-        Model::PutResourcePolicyOutcomeCallable PutResourcePolicyCallable(const PutResourcePolicyRequestT& request) const
+        Model::PutResourcePolicyOutcomeCallable PutResourcePolicyCallable(const PutResourcePolicyRequestT& request = {}) const
         {
             return SubmitCallable(&CloudWatchLogsClient::PutResourcePolicy, request);
         }
@@ -2168,7 +2903,7 @@ namespace CloudWatchLogs
          * An Async wrapper for PutResourcePolicy that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename PutResourcePolicyRequestT = Model::PutResourcePolicyRequest>
-        void PutResourcePolicyAsync(const PutResourcePolicyRequestT& request, const PutResourcePolicyResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void PutResourcePolicyAsync(const PutResourcePolicyResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const PutResourcePolicyRequestT& request = {}) const
         {
             return SubmitAsync(&CloudWatchLogsClient::PutResourcePolicy, request, handler, context);
         }
@@ -2176,12 +2911,12 @@ namespace CloudWatchLogs
         /**
          * <p>Sets the retention of the specified log group. With a retention policy, you
          * can configure the number of days for which to retain log events in the specified
-         * log group.</p>  <p>CloudWatch Logs doesn’t immediately delete log events
+         * log group.</p>  <p>CloudWatch Logs doesn't immediately delete log events
          * when they reach their retention setting. It typically takes up to 72 hours after
          * that before log events are deleted, but in rare situations might take
          * longer.</p> <p>To illustrate, imagine that you change a log group to have a
          * longer retention setting when it contains log events that are past the
-         * expiration date, but haven’t been deleted. Those log events will take up to 72
+         * expiration date, but haven't been deleted. Those log events will take up to 72
          * hours to be deleted after the new retention date is reached. To make sure that
          * log data is deleted permanently, keep a log group at its lower retention setting
          * until 72 hours after the previous retention period ends. Alternatively, wait to
@@ -2228,16 +2963,24 @@ namespace CloudWatchLogs
          * <p>A logical destination created with <a
          * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDestination.html">PutDestination</a>
          * that belongs to a different account, for cross-account delivery. We currently
-         * support Kinesis Data Streams and Kinesis Data Firehose as logical
-         * destinations.</p> </li> <li> <p>An Amazon Kinesis Data Firehose delivery stream
-         * that belongs to the same account as the subscription filter, for same-account
-         * delivery.</p> </li> <li> <p>An Lambda function that belongs to the same account
-         * as the subscription filter, for same-account delivery.</p> </li> </ul> <p>Each
-         * log group can have up to two subscription filters associated with it. If you are
-         * updating an existing filter, you must specify the correct name in
-         * <code>filterName</code>. </p> <p>To perform a <code>PutSubscriptionFilter</code>
-         * operation for any destination except a Lambda function, you must also have the
-         * <code>iam:PassRole</code> permission.</p><p><h3>See Also:</h3>   <a
+         * support Kinesis Data Streams and Firehose as logical destinations.</p> </li>
+         * <li> <p>An Amazon Kinesis Data Firehose delivery stream that belongs to the same
+         * account as the subscription filter, for same-account delivery.</p> </li> <li>
+         * <p>An Lambda function that belongs to the same account as the subscription
+         * filter, for same-account delivery.</p> </li> </ul> <p>Each log group can have up
+         * to two subscription filters associated with it. If you are updating an existing
+         * filter, you must specify the correct name in <code>filterName</code>. </p>
+         * <p>Using regular expressions in filter patterns is supported. For these filters,
+         * there is a quotas of quota of two regular expression patterns within a single
+         * filter pattern. There is also a quota of five regular expression patterns per
+         * log group. For more information about using regular expressions in filter
+         * patterns, see <a
+         * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html">
+         * Filter pattern syntax for metric filters, subscription filters, filter log
+         * events, and Live Tail</a>.</p> <p>To perform a
+         * <code>PutSubscriptionFilter</code> operation for any destination except a Lambda
+         * function, you must also have the <code>iam:PassRole</code>
+         * permission.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/PutSubscriptionFilter">AWS
          * API Reference</a></p>
          */
@@ -2259,6 +3002,60 @@ namespace CloudWatchLogs
         void PutSubscriptionFilterAsync(const PutSubscriptionFilterRequestT& request, const PutSubscriptionFilterResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&CloudWatchLogsClient::PutSubscriptionFilter, request, handler, context);
+        }
+
+        /**
+         * <p>Creates or updates a <i>log transformer</i> for a single log group. You use
+         * log transformers to transform log events into a different format, making them
+         * easier for you to process and analyze. You can also transform logs from
+         * different sources into standardized formats that contains relevant,
+         * source-specific information.</p> <p>After you have created a transformer,
+         * CloudWatch Logs performs the transformations at the time of log ingestion. You
+         * can then refer to the transformed versions of the logs during operations such as
+         * querying with CloudWatch Logs Insights or creating metric filters or
+         * subscription filers.</p> <p>You can also use a transformer to copy metadata from
+         * metadata keys into the log events themselves. This metadata can include log
+         * group name, log stream name, account ID and Region.</p> <p>A transformer for a
+         * log group is a series of processors, where each processor applies one type of
+         * transformation to the log events ingested into this log group. The processors
+         * work one after another, in the order that you list them, like a pipeline. For
+         * more information about the available processors to use in a transformer, see <a
+         * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatch-Logs-Transformation.html#CloudWatch-Logs-Transformation-Processors">
+         * Processors that you can use</a>.</p> <p>Having log events in standardized format
+         * enables visibility across your applications for your log analysis, reporting,
+         * and alarming needs. CloudWatch Logs provides transformation for common log types
+         * with out-of-the-box transformation templates for major Amazon Web Services log
+         * sources such as VPC flow logs, Lambda, and Amazon RDS. You can use pre-built
+         * transformation templates or create custom transformation policies.</p> <p>You
+         * can create transformers only for the log groups in the Standard log class.</p>
+         * <p>You can also set up a transformer at the account level. For more information,
+         * see <a
+         * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutAccountPolicy.html">PutAccountPolicy</a>.
+         * If there is both a log-group level transformer created with
+         * <code>PutTransformer</code> and an account-level transformer that could apply to
+         * the same log group, the log group uses only the log-group level transformer. It
+         * ignores the account-level transformer.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/PutTransformer">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::PutTransformerOutcome PutTransformer(const Model::PutTransformerRequest& request) const;
+
+        /**
+         * A Callable wrapper for PutTransformer that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename PutTransformerRequestT = Model::PutTransformerRequest>
+        Model::PutTransformerOutcomeCallable PutTransformerCallable(const PutTransformerRequestT& request) const
+        {
+            return SubmitCallable(&CloudWatchLogsClient::PutTransformer, request);
+        }
+
+        /**
+         * An Async wrapper for PutTransformer that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename PutTransformerRequestT = Model::PutTransformerRequest>
+        void PutTransformerAsync(const PutTransformerRequestT& request, const PutTransformerResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&CloudWatchLogsClient::PutTransformer, request, handler, context);
         }
 
         /**
@@ -2284,16 +3081,22 @@ namespace CloudWatchLogs
          * CloudWatch Logs buffers up to 10 <code>LiveTailSessionUpdate</code> events or
          * 5000 log events, after which it starts dropping the oldest events.</p> </li>
          * <li> <p>A <a
-         * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_SessionStreamingException.html">SessionStreamingException</a>
+         * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_StartLiveTailResponseStream.html#CWL-Type-StartLiveTailResponseStream-SessionStreamingException">SessionStreamingException</a>
          * object is returned if an unknown error occurs on the server side.</p> </li> <li>
          * <p>A <a
-         * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_SessionTimeoutException.html">SessionTimeoutException</a>
+         * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_StartLiveTailResponseStream.html#CWL-Type-StartLiveTailResponseStream-SessionTimeoutException">SessionTimeoutException</a>
          * object is returned when the session times out, after it has been kept open for
-         * three hours.</p> </li> </ul>  <p>You can end a session before it
-         * times out by closing the session stream or by closing the client that is
-         * receiving the stream. The session also ends if the established connection
-         * between the client and the server breaks.</p> <p><h3>See Also:</h3> 
-         * <a
+         * three hours.</p> </li> </ul>  <p>The <code>StartLiveTail</code> API routes
+         * requests to <code>streaming-logs.<i>Region</i>.amazonaws.com</code> using SDK
+         * host prefix injection. VPC endpoint support is not available for this API.</p>
+         *   <p>You can end a session before it times out by closing the
+         * session stream or by closing the client that is receiving the stream. The
+         * session also ends if the established connection between the client and the
+         * server breaks.</p>  <p>For examples of using an SDK to start a Live
+         * Tail session, see <a
+         * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/example_cloudwatch-logs_StartLiveTail_section.html">
+         * Start a Live Tail session using an Amazon Web Services SDK</a>.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/StartLiveTail">AWS
          * API Reference</a></p>
          */
@@ -2318,17 +3121,27 @@ namespace CloudWatchLogs
         }
 
         /**
-         * <p>Schedules a query of a log group using CloudWatch Logs Insights. You specify
-         * the log group and time range to query and the query string to use.</p> <p>For
-         * more information, see <a
+         * <p>Starts a query of one or more log groups using CloudWatch Logs Insights. You
+         * specify the log groups and time range to query and the query string to use.</p>
+         * <p>For more information, see <a
          * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html">CloudWatch
          * Logs Insights Query Syntax</a>.</p> <p>After you run a query using
          * <code>StartQuery</code>, the query results are stored by CloudWatch Logs. You
          * can use <a
          * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_GetQueryResults.html">GetQueryResults</a>
          * to retrieve the results of a query, using the <code>queryId</code> that
-         * <code>StartQuery</code> returns. </p> <p>If you have associated a KMS key with
-         * the query results in this account, then <a
+         * <code>StartQuery</code> returns. </p>  <p>To specify the log groups to
+         * query, a <code>StartQuery</code> operation must include one of the
+         * following:</p> <ul> <li> <p>Either exactly one of the following parameters:
+         * <code>logGroupName</code>, <code>logGroupNames</code>, or
+         * <code>logGroupIdentifiers</code> </p> </li> <li> <p>Or the
+         * <code>queryString</code> must include a <code>SOURCE</code> command to select
+         * log groups for the query. The <code>SOURCE</code> command can select log groups
+         * based on log group name prefix, account ID, and log class. </p> <p>For more
+         * information about the <code>SOURCE</code> command, see <a
+         * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax-Source.html">SOURCE</a>.</p>
+         * </li> </ul>  <p>If you have associated a KMS key with the query results
+         * in this account, then <a
          * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_StartQuery.html">StartQuery</a>
          * uses that key to encrypt the results when it stores them. If no key is
          * associated with query results, the query results are encrypted with the default
@@ -2458,6 +3271,34 @@ namespace CloudWatchLogs
         }
 
         /**
+         * <p>Use this operation to test a log transformer. You enter the transformer
+         * configuration and a set of log events to test with. The operation responds with
+         * an array that includes the original log events and the transformed
+         * versions.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/TestTransformer">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::TestTransformerOutcome TestTransformer(const Model::TestTransformerRequest& request) const;
+
+        /**
+         * A Callable wrapper for TestTransformer that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename TestTransformerRequestT = Model::TestTransformerRequest>
+        Model::TestTransformerOutcomeCallable TestTransformerCallable(const TestTransformerRequestT& request) const
+        {
+            return SubmitCallable(&CloudWatchLogsClient::TestTransformer, request);
+        }
+
+        /**
+         * An Async wrapper for TestTransformer that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename TestTransformerRequestT = Model::TestTransformerRequest>
+        void TestTransformerAsync(const TestTransformerRequestT& request, const TestTransformerResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&CloudWatchLogsClient::TestTransformer, request, handler, context);
+        }
+
+        /**
          * <p>Removes one or more tags from the specified resource.</p><p><h3>See
          * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/UntagResource">AWS
@@ -2485,9 +3326,9 @@ namespace CloudWatchLogs
 
         /**
          * <p>Use this operation to <i>suppress</i> anomaly detection for a specified
-         * anomaly or pattern. If you suppress an anomaly, CloudWatch Logs won’t report new
+         * anomaly or pattern. If you suppress an anomaly, CloudWatch Logs won't report new
          * occurrences of that anomaly and won't update that anomaly with new data. If you
-         * suppress a pattern, CloudWatch Logs won’t report any anomalies related to that
+         * suppress a pattern, CloudWatch Logs won't report any anomalies related to that
          * pattern.</p> <p>You must specify either <code>anomalyId</code> or
          * <code>patternId</code>, but you can't specify both parameters in the same
          * operation.</p> <p>If you have previously used this operation to suppress
@@ -2516,6 +3357,35 @@ namespace CloudWatchLogs
         void UpdateAnomalyAsync(const UpdateAnomalyRequestT& request, const UpdateAnomalyResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&CloudWatchLogsClient::UpdateAnomaly, request, handler, context);
+        }
+
+        /**
+         * <p>Use this operation to update the configuration of a <a
+         * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_Delivery.html">delivery</a>
+         * to change either the S3 path pattern or the format of the delivered logs. You
+         * can't use this operation to change the source or destination of the
+         * delivery.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/UpdateDeliveryConfiguration">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::UpdateDeliveryConfigurationOutcome UpdateDeliveryConfiguration(const Model::UpdateDeliveryConfigurationRequest& request) const;
+
+        /**
+         * A Callable wrapper for UpdateDeliveryConfiguration that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename UpdateDeliveryConfigurationRequestT = Model::UpdateDeliveryConfigurationRequest>
+        Model::UpdateDeliveryConfigurationOutcomeCallable UpdateDeliveryConfigurationCallable(const UpdateDeliveryConfigurationRequestT& request) const
+        {
+            return SubmitCallable(&CloudWatchLogsClient::UpdateDeliveryConfiguration, request);
+        }
+
+        /**
+         * An Async wrapper for UpdateDeliveryConfiguration that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename UpdateDeliveryConfigurationRequestT = Model::UpdateDeliveryConfigurationRequest>
+        void UpdateDeliveryConfigurationAsync(const UpdateDeliveryConfigurationRequestT& request, const UpdateDeliveryConfigurationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&CloudWatchLogsClient::UpdateDeliveryConfiguration, request, handler, context);
         }
 
         /**
@@ -2551,7 +3421,6 @@ namespace CloudWatchLogs
       void init(const CloudWatchLogsClientConfiguration& clientConfiguration);
 
       CloudWatchLogsClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<CloudWatchLogsEndpointProviderBase> m_endpointProvider;
   };
 

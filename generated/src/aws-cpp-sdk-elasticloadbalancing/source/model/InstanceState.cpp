@@ -20,19 +20,7 @@ namespace ElasticLoadBalancing
 namespace Model
 {
 
-InstanceState::InstanceState() : 
-    m_instanceIdHasBeenSet(false),
-    m_stateHasBeenSet(false),
-    m_reasonCodeHasBeenSet(false),
-    m_descriptionHasBeenSet(false)
-{
-}
-
-InstanceState::InstanceState(const XmlNode& xmlNode) : 
-    m_instanceIdHasBeenSet(false),
-    m_stateHasBeenSet(false),
-    m_reasonCodeHasBeenSet(false),
-    m_descriptionHasBeenSet(false)
+InstanceState::InstanceState(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

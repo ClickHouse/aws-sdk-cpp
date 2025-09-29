@@ -18,15 +18,7 @@ namespace CloudDirectory
 namespace Model
 {
 
-BatchLookupPolicyResponse::BatchLookupPolicyResponse() : 
-    m_policyToPathListHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
-BatchLookupPolicyResponse::BatchLookupPolicyResponse(JsonView jsonValue) : 
-    m_policyToPathListHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
+BatchLookupPolicyResponse::BatchLookupPolicyResponse(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ BatchLookupPolicyResponse& BatchLookupPolicyResponse::operator =(JsonView jsonVa
     }
     m_policyToPathListHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NextToken"))
   {
     m_nextToken = jsonValue.GetString("NextToken");
-
     m_nextTokenHasBeenSet = true;
   }
-
   return *this;
 }
 

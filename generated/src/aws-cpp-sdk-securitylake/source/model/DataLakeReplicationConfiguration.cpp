@@ -18,15 +18,7 @@ namespace SecurityLake
 namespace Model
 {
 
-DataLakeReplicationConfiguration::DataLakeReplicationConfiguration() : 
-    m_regionsHasBeenSet(false),
-    m_roleArnHasBeenSet(false)
-{
-}
-
-DataLakeReplicationConfiguration::DataLakeReplicationConfiguration(JsonView jsonValue) : 
-    m_regionsHasBeenSet(false),
-    m_roleArnHasBeenSet(false)
+DataLakeReplicationConfiguration::DataLakeReplicationConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ DataLakeReplicationConfiguration& DataLakeReplicationConfiguration::operator =(J
     }
     m_regionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("roleArn"))
   {
     m_roleArn = jsonValue.GetString("roleArn");
-
     m_roleArnHasBeenSet = true;
   }
-
   return *this;
 }
 

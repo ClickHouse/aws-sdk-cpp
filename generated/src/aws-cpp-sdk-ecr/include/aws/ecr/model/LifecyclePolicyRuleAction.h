@@ -31,45 +31,24 @@ namespace Model
   class LifecyclePolicyRuleAction
   {
   public:
-    AWS_ECR_API LifecyclePolicyRuleAction();
+    AWS_ECR_API LifecyclePolicyRuleAction() = default;
     AWS_ECR_API LifecyclePolicyRuleAction(Aws::Utils::Json::JsonView jsonValue);
     AWS_ECR_API LifecyclePolicyRuleAction& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ECR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The type of action to be taken.</p>
      */
-    inline const ImageActionType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of action to be taken.</p>
-     */
+    inline ImageActionType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
-
-    /**
-     * <p>The type of action to be taken.</p>
-     */
-    inline void SetType(const ImageActionType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of action to be taken.</p>
-     */
-    inline void SetType(ImageActionType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of action to be taken.</p>
-     */
-    inline LifecyclePolicyRuleAction& WithType(const ImageActionType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of action to be taken.</p>
-     */
-    inline LifecyclePolicyRuleAction& WithType(ImageActionType&& value) { SetType(std::move(value)); return *this;}
-
+    inline void SetType(ImageActionType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline LifecyclePolicyRuleAction& WithType(ImageActionType value) { SetType(value); return *this;}
+    ///@}
   private:
 
-    ImageActionType m_type;
+    ImageActionType m_type{ImageActionType::NOT_SET};
     bool m_typeHasBeenSet = false;
   };
 

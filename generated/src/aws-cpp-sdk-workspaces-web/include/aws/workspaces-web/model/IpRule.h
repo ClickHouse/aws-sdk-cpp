@@ -31,100 +31,42 @@ namespace Model
   class IpRule
   {
   public:
-    AWS_WORKSPACESWEB_API IpRule();
+    AWS_WORKSPACESWEB_API IpRule() = default;
     AWS_WORKSPACESWEB_API IpRule(Aws::Utils::Json::JsonView jsonValue);
     AWS_WORKSPACESWEB_API IpRule& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WORKSPACESWEB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
-    /**
-     * <p>The description of the IP rule.</p>
-     */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The description of the IP rule.</p>
-     */
-    inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
-
-    /**
-     * <p>The description of the IP rule.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The description of the IP rule.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The description of the IP rule.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The description of the IP rule.</p>
-     */
-    inline IpRule& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description of the IP rule.</p>
-     */
-    inline IpRule& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the IP rule.</p>
-     */
-    inline IpRule& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The IP range of the IP rule.</p>
      */
-    inline const Aws::String& GetIpRange() const{ return m_ipRange; }
-
-    /**
-     * <p>The IP range of the IP rule.</p>
-     */
+    inline const Aws::String& GetIpRange() const { return m_ipRange; }
     inline bool IpRangeHasBeenSet() const { return m_ipRangeHasBeenSet; }
+    template<typename IpRangeT = Aws::String>
+    void SetIpRange(IpRangeT&& value) { m_ipRangeHasBeenSet = true; m_ipRange = std::forward<IpRangeT>(value); }
+    template<typename IpRangeT = Aws::String>
+    IpRule& WithIpRange(IpRangeT&& value) { SetIpRange(std::forward<IpRangeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The IP range of the IP rule.</p>
+     * <p>The description of the IP rule.</p>
      */
-    inline void SetIpRange(const Aws::String& value) { m_ipRangeHasBeenSet = true; m_ipRange = value; }
-
-    /**
-     * <p>The IP range of the IP rule.</p>
-     */
-    inline void SetIpRange(Aws::String&& value) { m_ipRangeHasBeenSet = true; m_ipRange = std::move(value); }
-
-    /**
-     * <p>The IP range of the IP rule.</p>
-     */
-    inline void SetIpRange(const char* value) { m_ipRangeHasBeenSet = true; m_ipRange.assign(value); }
-
-    /**
-     * <p>The IP range of the IP rule.</p>
-     */
-    inline IpRule& WithIpRange(const Aws::String& value) { SetIpRange(value); return *this;}
-
-    /**
-     * <p>The IP range of the IP rule.</p>
-     */
-    inline IpRule& WithIpRange(Aws::String&& value) { SetIpRange(std::move(value)); return *this;}
-
-    /**
-     * <p>The IP range of the IP rule.</p>
-     */
-    inline IpRule& WithIpRange(const char* value) { SetIpRange(value); return *this;}
-
+    inline const Aws::String& GetDescription() const { return m_description; }
+    inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    IpRule& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
   private:
-
-    Aws::String m_description;
-    bool m_descriptionHasBeenSet = false;
 
     Aws::String m_ipRange;
     bool m_ipRangeHasBeenSet = false;
+
+    Aws::String m_description;
+    bool m_descriptionHasBeenSet = false;
   };
 
 } // namespace Model

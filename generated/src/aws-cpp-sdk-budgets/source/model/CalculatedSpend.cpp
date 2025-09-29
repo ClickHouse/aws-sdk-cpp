@@ -18,15 +18,7 @@ namespace Budgets
 namespace Model
 {
 
-CalculatedSpend::CalculatedSpend() : 
-    m_actualSpendHasBeenSet(false),
-    m_forecastedSpendHasBeenSet(false)
-{
-}
-
-CalculatedSpend::CalculatedSpend(JsonView jsonValue) : 
-    m_actualSpendHasBeenSet(false),
-    m_forecastedSpendHasBeenSet(false)
+CalculatedSpend::CalculatedSpend(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ CalculatedSpend& CalculatedSpend::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ActualSpend"))
   {
     m_actualSpend = jsonValue.GetObject("ActualSpend");
-
     m_actualSpendHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ForecastedSpend"))
   {
     m_forecastedSpend = jsonValue.GetObject("ForecastedSpend");
-
     m_forecastedSpendHasBeenSet = true;
   }
-
   return *this;
 }
 

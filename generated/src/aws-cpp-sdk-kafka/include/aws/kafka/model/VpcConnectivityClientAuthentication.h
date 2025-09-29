@@ -35,109 +35,41 @@ namespace Model
   class VpcConnectivityClientAuthentication
   {
   public:
-    AWS_KAFKA_API VpcConnectivityClientAuthentication();
+    AWS_KAFKA_API VpcConnectivityClientAuthentication() = default;
     AWS_KAFKA_API VpcConnectivityClientAuthentication(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKA_API VpcConnectivityClientAuthentication& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * 
             <p>SASL authentication type details for VPC connectivity.</p>
      
      *    
      */
-    inline const VpcConnectivitySasl& GetSasl() const{ return m_sasl; }
-
-    /**
-     * 
-            <p>SASL authentication type details for VPC connectivity.</p>
-     
-     *    
-     */
+    inline const VpcConnectivitySasl& GetSasl() const { return m_sasl; }
     inline bool SaslHasBeenSet() const { return m_saslHasBeenSet; }
+    template<typename SaslT = VpcConnectivitySasl>
+    void SetSasl(SaslT&& value) { m_saslHasBeenSet = true; m_sasl = std::forward<SaslT>(value); }
+    template<typename SaslT = VpcConnectivitySasl>
+    VpcConnectivityClientAuthentication& WithSasl(SaslT&& value) { SetSasl(std::forward<SaslT>(value)); return *this;}
+    ///@}
 
-    /**
-     * 
-            <p>SASL authentication type details for VPC connectivity.</p>
-     
-     *    
-     */
-    inline void SetSasl(const VpcConnectivitySasl& value) { m_saslHasBeenSet = true; m_sasl = value; }
-
-    /**
-     * 
-            <p>SASL authentication type details for VPC connectivity.</p>
-     
-     *    
-     */
-    inline void SetSasl(VpcConnectivitySasl&& value) { m_saslHasBeenSet = true; m_sasl = std::move(value); }
-
-    /**
-     * 
-            <p>SASL authentication type details for VPC connectivity.</p>
-     
-     *    
-     */
-    inline VpcConnectivityClientAuthentication& WithSasl(const VpcConnectivitySasl& value) { SetSasl(value); return *this;}
-
-    /**
-     * 
-            <p>SASL authentication type details for VPC connectivity.</p>
-     
-     *    
-     */
-    inline VpcConnectivityClientAuthentication& WithSasl(VpcConnectivitySasl&& value) { SetSasl(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * 
             <p>TLS authentication type details for VPC connectivity.</p>
       
      *   
      */
-    inline const VpcConnectivityTls& GetTls() const{ return m_tls; }
-
-    /**
-     * 
-            <p>TLS authentication type details for VPC connectivity.</p>
-      
-     *   
-     */
+    inline const VpcConnectivityTls& GetTls() const { return m_tls; }
     inline bool TlsHasBeenSet() const { return m_tlsHasBeenSet; }
-
-    /**
-     * 
-            <p>TLS authentication type details for VPC connectivity.</p>
-      
-     *   
-     */
-    inline void SetTls(const VpcConnectivityTls& value) { m_tlsHasBeenSet = true; m_tls = value; }
-
-    /**
-     * 
-            <p>TLS authentication type details for VPC connectivity.</p>
-      
-     *   
-     */
-    inline void SetTls(VpcConnectivityTls&& value) { m_tlsHasBeenSet = true; m_tls = std::move(value); }
-
-    /**
-     * 
-            <p>TLS authentication type details for VPC connectivity.</p>
-      
-     *   
-     */
-    inline VpcConnectivityClientAuthentication& WithTls(const VpcConnectivityTls& value) { SetTls(value); return *this;}
-
-    /**
-     * 
-            <p>TLS authentication type details for VPC connectivity.</p>
-      
-     *   
-     */
-    inline VpcConnectivityClientAuthentication& WithTls(VpcConnectivityTls&& value) { SetTls(std::move(value)); return *this;}
-
+    template<typename TlsT = VpcConnectivityTls>
+    void SetTls(TlsT&& value) { m_tlsHasBeenSet = true; m_tls = std::forward<TlsT>(value); }
+    template<typename TlsT = VpcConnectivityTls>
+    VpcConnectivityClientAuthentication& WithTls(TlsT&& value) { SetTls(std::forward<TlsT>(value)); return *this;}
+    ///@}
   private:
 
     VpcConnectivitySasl m_sasl;

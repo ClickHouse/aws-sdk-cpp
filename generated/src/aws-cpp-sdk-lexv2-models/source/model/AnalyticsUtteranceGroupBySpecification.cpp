@@ -18,15 +18,7 @@ namespace LexModelsV2
 namespace Model
 {
 
-AnalyticsUtteranceGroupBySpecification::AnalyticsUtteranceGroupBySpecification() : 
-    m_name(AnalyticsUtteranceField::NOT_SET),
-    m_nameHasBeenSet(false)
-{
-}
-
-AnalyticsUtteranceGroupBySpecification::AnalyticsUtteranceGroupBySpecification(JsonView jsonValue) : 
-    m_name(AnalyticsUtteranceField::NOT_SET),
-    m_nameHasBeenSet(false)
+AnalyticsUtteranceGroupBySpecification::AnalyticsUtteranceGroupBySpecification(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ AnalyticsUtteranceGroupBySpecification& AnalyticsUtteranceGroupBySpecification::
   if(jsonValue.ValueExists("name"))
   {
     m_name = AnalyticsUtteranceFieldMapper::GetAnalyticsUtteranceFieldForName(jsonValue.GetString("name"));
-
     m_nameHasBeenSet = true;
   }
-
   return *this;
 }
 

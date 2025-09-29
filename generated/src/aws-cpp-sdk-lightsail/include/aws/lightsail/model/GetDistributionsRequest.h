@@ -21,7 +21,7 @@ namespace Model
   class GetDistributionsRequest : public LightsailRequest
   {
   public:
-    AWS_LIGHTSAIL_API GetDistributionsRequest();
+    AWS_LIGHTSAIL_API GetDistributionsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,127 +34,34 @@ namespace Model
     AWS_LIGHTSAIL_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the distribution for which to return information.</p> <p>When
      * omitted, the response includes all of your distributions in the Amazon Web
      * Services Region where the request is made.</p>
      */
-    inline const Aws::String& GetDistributionName() const{ return m_distributionName; }
-
-    /**
-     * <p>The name of the distribution for which to return information.</p> <p>When
-     * omitted, the response includes all of your distributions in the Amazon Web
-     * Services Region where the request is made.</p>
-     */
+    inline const Aws::String& GetDistributionName() const { return m_distributionName; }
     inline bool DistributionNameHasBeenSet() const { return m_distributionNameHasBeenSet; }
+    template<typename DistributionNameT = Aws::String>
+    void SetDistributionName(DistributionNameT&& value) { m_distributionNameHasBeenSet = true; m_distributionName = std::forward<DistributionNameT>(value); }
+    template<typename DistributionNameT = Aws::String>
+    GetDistributionsRequest& WithDistributionName(DistributionNameT&& value) { SetDistributionName(std::forward<DistributionNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the distribution for which to return information.</p> <p>When
-     * omitted, the response includes all of your distributions in the Amazon Web
-     * Services Region where the request is made.</p>
-     */
-    inline void SetDistributionName(const Aws::String& value) { m_distributionNameHasBeenSet = true; m_distributionName = value; }
-
-    /**
-     * <p>The name of the distribution for which to return information.</p> <p>When
-     * omitted, the response includes all of your distributions in the Amazon Web
-     * Services Region where the request is made.</p>
-     */
-    inline void SetDistributionName(Aws::String&& value) { m_distributionNameHasBeenSet = true; m_distributionName = std::move(value); }
-
-    /**
-     * <p>The name of the distribution for which to return information.</p> <p>When
-     * omitted, the response includes all of your distributions in the Amazon Web
-     * Services Region where the request is made.</p>
-     */
-    inline void SetDistributionName(const char* value) { m_distributionNameHasBeenSet = true; m_distributionName.assign(value); }
-
-    /**
-     * <p>The name of the distribution for which to return information.</p> <p>When
-     * omitted, the response includes all of your distributions in the Amazon Web
-     * Services Region where the request is made.</p>
-     */
-    inline GetDistributionsRequest& WithDistributionName(const Aws::String& value) { SetDistributionName(value); return *this;}
-
-    /**
-     * <p>The name of the distribution for which to return information.</p> <p>When
-     * omitted, the response includes all of your distributions in the Amazon Web
-     * Services Region where the request is made.</p>
-     */
-    inline GetDistributionsRequest& WithDistributionName(Aws::String&& value) { SetDistributionName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the distribution for which to return information.</p> <p>When
-     * omitted, the response includes all of your distributions in the Amazon Web
-     * Services Region where the request is made.</p>
-     */
-    inline GetDistributionsRequest& WithDistributionName(const char* value) { SetDistributionName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The token to advance to the next page of results from your request.</p> <p>To
      * get a page token, perform an initial <code>GetDistributions</code> request. If
      * your results are paginated, the response will return a next page token that you
      * can specify as the page token in a subsequent request.</p>
      */
-    inline const Aws::String& GetPageToken() const{ return m_pageToken; }
-
-    /**
-     * <p>The token to advance to the next page of results from your request.</p> <p>To
-     * get a page token, perform an initial <code>GetDistributions</code> request. If
-     * your results are paginated, the response will return a next page token that you
-     * can specify as the page token in a subsequent request.</p>
-     */
+    inline const Aws::String& GetPageToken() const { return m_pageToken; }
     inline bool PageTokenHasBeenSet() const { return m_pageTokenHasBeenSet; }
-
-    /**
-     * <p>The token to advance to the next page of results from your request.</p> <p>To
-     * get a page token, perform an initial <code>GetDistributions</code> request. If
-     * your results are paginated, the response will return a next page token that you
-     * can specify as the page token in a subsequent request.</p>
-     */
-    inline void SetPageToken(const Aws::String& value) { m_pageTokenHasBeenSet = true; m_pageToken = value; }
-
-    /**
-     * <p>The token to advance to the next page of results from your request.</p> <p>To
-     * get a page token, perform an initial <code>GetDistributions</code> request. If
-     * your results are paginated, the response will return a next page token that you
-     * can specify as the page token in a subsequent request.</p>
-     */
-    inline void SetPageToken(Aws::String&& value) { m_pageTokenHasBeenSet = true; m_pageToken = std::move(value); }
-
-    /**
-     * <p>The token to advance to the next page of results from your request.</p> <p>To
-     * get a page token, perform an initial <code>GetDistributions</code> request. If
-     * your results are paginated, the response will return a next page token that you
-     * can specify as the page token in a subsequent request.</p>
-     */
-    inline void SetPageToken(const char* value) { m_pageTokenHasBeenSet = true; m_pageToken.assign(value); }
-
-    /**
-     * <p>The token to advance to the next page of results from your request.</p> <p>To
-     * get a page token, perform an initial <code>GetDistributions</code> request. If
-     * your results are paginated, the response will return a next page token that you
-     * can specify as the page token in a subsequent request.</p>
-     */
-    inline GetDistributionsRequest& WithPageToken(const Aws::String& value) { SetPageToken(value); return *this;}
-
-    /**
-     * <p>The token to advance to the next page of results from your request.</p> <p>To
-     * get a page token, perform an initial <code>GetDistributions</code> request. If
-     * your results are paginated, the response will return a next page token that you
-     * can specify as the page token in a subsequent request.</p>
-     */
-    inline GetDistributionsRequest& WithPageToken(Aws::String&& value) { SetPageToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The token to advance to the next page of results from your request.</p> <p>To
-     * get a page token, perform an initial <code>GetDistributions</code> request. If
-     * your results are paginated, the response will return a next page token that you
-     * can specify as the page token in a subsequent request.</p>
-     */
-    inline GetDistributionsRequest& WithPageToken(const char* value) { SetPageToken(value); return *this;}
-
+    template<typename PageTokenT = Aws::String>
+    void SetPageToken(PageTokenT&& value) { m_pageTokenHasBeenSet = true; m_pageToken = std::forward<PageTokenT>(value); }
+    template<typename PageTokenT = Aws::String>
+    GetDistributionsRequest& WithPageToken(PageTokenT&& value) { SetPageToken(std::forward<PageTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_distributionName;

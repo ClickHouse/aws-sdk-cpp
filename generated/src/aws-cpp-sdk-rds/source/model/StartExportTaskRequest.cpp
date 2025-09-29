@@ -10,17 +10,6 @@
 using namespace Aws::RDS::Model;
 using namespace Aws::Utils;
 
-StartExportTaskRequest::StartExportTaskRequest() : 
-    m_exportTaskIdentifierHasBeenSet(false),
-    m_sourceArnHasBeenSet(false),
-    m_s3BucketNameHasBeenSet(false),
-    m_iamRoleArnHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false),
-    m_s3PrefixHasBeenSet(false),
-    m_exportOnlyHasBeenSet(false)
-{
-}
-
 Aws::String StartExportTaskRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -57,12 +46,19 @@ Aws::String StartExportTaskRequest::SerializePayload() const
 
   if(m_exportOnlyHasBeenSet)
   {
-    unsigned exportOnlyCount = 1;
-    for(auto& item : m_exportOnly)
+    if (m_exportOnly.empty())
     {
-      ss << "ExportOnly.member." << exportOnlyCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      exportOnlyCount++;
+      ss << "ExportOnly=&";
+    }
+    else
+    {
+      unsigned exportOnlyCount = 1;
+      for(auto& item : m_exportOnly)
+      {
+        ss << "ExportOnly.member." << exportOnlyCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        exportOnlyCount++;
+      }
     }
   }
 

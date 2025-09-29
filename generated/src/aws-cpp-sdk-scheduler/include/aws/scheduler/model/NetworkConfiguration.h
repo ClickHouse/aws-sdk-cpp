@@ -32,54 +32,25 @@ namespace Model
   class NetworkConfiguration
   {
   public:
-    AWS_SCHEDULER_API NetworkConfiguration();
+    AWS_SCHEDULER_API NetworkConfiguration() = default;
     AWS_SCHEDULER_API NetworkConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_SCHEDULER_API NetworkConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SCHEDULER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specifies the Amazon VPC subnets and security groups for the task, and
      * whether a public IP address is to be used. This structure is relevant only for
      * ECS tasks that use the awsvpc network mode.</p>
      */
-    inline const AwsVpcConfiguration& GetAwsvpcConfiguration() const{ return m_awsvpcConfiguration; }
-
-    /**
-     * <p>Specifies the Amazon VPC subnets and security groups for the task, and
-     * whether a public IP address is to be used. This structure is relevant only for
-     * ECS tasks that use the awsvpc network mode.</p>
-     */
+    inline const AwsVpcConfiguration& GetAwsvpcConfiguration() const { return m_awsvpcConfiguration; }
     inline bool AwsvpcConfigurationHasBeenSet() const { return m_awsvpcConfigurationHasBeenSet; }
-
-    /**
-     * <p>Specifies the Amazon VPC subnets and security groups for the task, and
-     * whether a public IP address is to be used. This structure is relevant only for
-     * ECS tasks that use the awsvpc network mode.</p>
-     */
-    inline void SetAwsvpcConfiguration(const AwsVpcConfiguration& value) { m_awsvpcConfigurationHasBeenSet = true; m_awsvpcConfiguration = value; }
-
-    /**
-     * <p>Specifies the Amazon VPC subnets and security groups for the task, and
-     * whether a public IP address is to be used. This structure is relevant only for
-     * ECS tasks that use the awsvpc network mode.</p>
-     */
-    inline void SetAwsvpcConfiguration(AwsVpcConfiguration&& value) { m_awsvpcConfigurationHasBeenSet = true; m_awsvpcConfiguration = std::move(value); }
-
-    /**
-     * <p>Specifies the Amazon VPC subnets and security groups for the task, and
-     * whether a public IP address is to be used. This structure is relevant only for
-     * ECS tasks that use the awsvpc network mode.</p>
-     */
-    inline NetworkConfiguration& WithAwsvpcConfiguration(const AwsVpcConfiguration& value) { SetAwsvpcConfiguration(value); return *this;}
-
-    /**
-     * <p>Specifies the Amazon VPC subnets and security groups for the task, and
-     * whether a public IP address is to be used. This structure is relevant only for
-     * ECS tasks that use the awsvpc network mode.</p>
-     */
-    inline NetworkConfiguration& WithAwsvpcConfiguration(AwsVpcConfiguration&& value) { SetAwsvpcConfiguration(std::move(value)); return *this;}
-
+    template<typename AwsvpcConfigurationT = AwsVpcConfiguration>
+    void SetAwsvpcConfiguration(AwsvpcConfigurationT&& value) { m_awsvpcConfigurationHasBeenSet = true; m_awsvpcConfiguration = std::forward<AwsvpcConfigurationT>(value); }
+    template<typename AwsvpcConfigurationT = AwsVpcConfiguration>
+    NetworkConfiguration& WithAwsvpcConfiguration(AwsvpcConfigurationT&& value) { SetAwsvpcConfiguration(std::forward<AwsvpcConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     AwsVpcConfiguration m_awsvpcConfiguration;

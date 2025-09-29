@@ -18,13 +18,7 @@ namespace Batch
 namespace Model
 {
 
-FargatePlatformConfiguration::FargatePlatformConfiguration() : 
-    m_platformVersionHasBeenSet(false)
-{
-}
-
-FargatePlatformConfiguration::FargatePlatformConfiguration(JsonView jsonValue) : 
-    m_platformVersionHasBeenSet(false)
+FargatePlatformConfiguration::FargatePlatformConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ FargatePlatformConfiguration& FargatePlatformConfiguration::operator =(JsonView 
   if(jsonValue.ValueExists("platformVersion"))
   {
     m_platformVersion = jsonValue.GetString("platformVersion");
-
     m_platformVersionHasBeenSet = true;
   }
-
   return *this;
 }
 

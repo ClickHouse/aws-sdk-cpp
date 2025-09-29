@@ -18,13 +18,7 @@ namespace LexModelsV2
 namespace Model
 {
 
-RuntimeSettings::RuntimeSettings() : 
-    m_slotResolutionImprovementHasBeenSet(false)
-{
-}
-
-RuntimeSettings::RuntimeSettings(JsonView jsonValue) : 
-    m_slotResolutionImprovementHasBeenSet(false)
+RuntimeSettings::RuntimeSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,13 @@ RuntimeSettings& RuntimeSettings::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("slotResolutionImprovement"))
   {
     m_slotResolutionImprovement = jsonValue.GetObject("slotResolutionImprovement");
-
     m_slotResolutionImprovementHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("nluImprovement"))
+  {
+    m_nluImprovement = jsonValue.GetObject("nluImprovement");
+    m_nluImprovementHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -48,6 +45,12 @@ JsonValue RuntimeSettings::Jsonize() const
   if(m_slotResolutionImprovementHasBeenSet)
   {
    payload.WithObject("slotResolutionImprovement", m_slotResolutionImprovement.Jsonize());
+
+  }
+
+  if(m_nluImprovementHasBeenSet)
+  {
+   payload.WithObject("nluImprovement", m_nluImprovement.Jsonize());
 
   }
 

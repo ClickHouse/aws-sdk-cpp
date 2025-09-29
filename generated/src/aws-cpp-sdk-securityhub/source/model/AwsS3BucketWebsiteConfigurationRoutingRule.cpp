@@ -18,15 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsS3BucketWebsiteConfigurationRoutingRule::AwsS3BucketWebsiteConfigurationRoutingRule() : 
-    m_conditionHasBeenSet(false),
-    m_redirectHasBeenSet(false)
-{
-}
-
-AwsS3BucketWebsiteConfigurationRoutingRule::AwsS3BucketWebsiteConfigurationRoutingRule(JsonView jsonValue) : 
-    m_conditionHasBeenSet(false),
-    m_redirectHasBeenSet(false)
+AwsS3BucketWebsiteConfigurationRoutingRule::AwsS3BucketWebsiteConfigurationRoutingRule(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ AwsS3BucketWebsiteConfigurationRoutingRule& AwsS3BucketWebsiteConfigurationRouti
   if(jsonValue.ValueExists("Condition"))
   {
     m_condition = jsonValue.GetObject("Condition");
-
     m_conditionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Redirect"))
   {
     m_redirect = jsonValue.GetObject("Redirect");
-
     m_redirectHasBeenSet = true;
   }
-
   return *this;
 }
 

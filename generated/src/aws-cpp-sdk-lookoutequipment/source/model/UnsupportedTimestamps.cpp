@@ -18,15 +18,7 @@ namespace LookoutEquipment
 namespace Model
 {
 
-UnsupportedTimestamps::UnsupportedTimestamps() : 
-    m_totalNumberOfUnsupportedTimestamps(0),
-    m_totalNumberOfUnsupportedTimestampsHasBeenSet(false)
-{
-}
-
-UnsupportedTimestamps::UnsupportedTimestamps(JsonView jsonValue) : 
-    m_totalNumberOfUnsupportedTimestamps(0),
-    m_totalNumberOfUnsupportedTimestampsHasBeenSet(false)
+UnsupportedTimestamps::UnsupportedTimestamps(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ UnsupportedTimestamps& UnsupportedTimestamps::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("TotalNumberOfUnsupportedTimestamps"))
   {
     m_totalNumberOfUnsupportedTimestamps = jsonValue.GetInteger("TotalNumberOfUnsupportedTimestamps");
-
     m_totalNumberOfUnsupportedTimestampsHasBeenSet = true;
   }
-
   return *this;
 }
 

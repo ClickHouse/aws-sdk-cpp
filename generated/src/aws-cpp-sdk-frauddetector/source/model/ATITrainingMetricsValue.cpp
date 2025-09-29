@@ -18,15 +18,7 @@ namespace FraudDetector
 namespace Model
 {
 
-ATITrainingMetricsValue::ATITrainingMetricsValue() : 
-    m_metricDataPointsHasBeenSet(false),
-    m_modelPerformanceHasBeenSet(false)
-{
-}
-
-ATITrainingMetricsValue::ATITrainingMetricsValue(JsonView jsonValue) : 
-    m_metricDataPointsHasBeenSet(false),
-    m_modelPerformanceHasBeenSet(false)
+ATITrainingMetricsValue::ATITrainingMetricsValue(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ ATITrainingMetricsValue& ATITrainingMetricsValue::operator =(JsonView jsonValue)
     }
     m_metricDataPointsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("modelPerformance"))
   {
     m_modelPerformance = jsonValue.GetObject("modelPerformance");
-
     m_modelPerformanceHasBeenSet = true;
   }
-
   return *this;
 }
 

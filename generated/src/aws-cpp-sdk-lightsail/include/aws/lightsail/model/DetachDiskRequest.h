@@ -21,7 +21,7 @@ namespace Model
   class DetachDiskRequest : public LightsailRequest
   {
   public:
-    AWS_LIGHTSAIL_API DetachDiskRequest();
+    AWS_LIGHTSAIL_API DetachDiskRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,54 +34,18 @@ namespace Model
     AWS_LIGHTSAIL_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
-     * <p>The unique name of the disk you want to detach from your instance (e.g.,
-     * <code>my-disk</code>).</p>
+     * <p>The unique name of the disk you want to detach from your instance
+     * (<code>my-disk</code>).</p>
      */
-    inline const Aws::String& GetDiskName() const{ return m_diskName; }
-
-    /**
-     * <p>The unique name of the disk you want to detach from your instance (e.g.,
-     * <code>my-disk</code>).</p>
-     */
+    inline const Aws::String& GetDiskName() const { return m_diskName; }
     inline bool DiskNameHasBeenSet() const { return m_diskNameHasBeenSet; }
-
-    /**
-     * <p>The unique name of the disk you want to detach from your instance (e.g.,
-     * <code>my-disk</code>).</p>
-     */
-    inline void SetDiskName(const Aws::String& value) { m_diskNameHasBeenSet = true; m_diskName = value; }
-
-    /**
-     * <p>The unique name of the disk you want to detach from your instance (e.g.,
-     * <code>my-disk</code>).</p>
-     */
-    inline void SetDiskName(Aws::String&& value) { m_diskNameHasBeenSet = true; m_diskName = std::move(value); }
-
-    /**
-     * <p>The unique name of the disk you want to detach from your instance (e.g.,
-     * <code>my-disk</code>).</p>
-     */
-    inline void SetDiskName(const char* value) { m_diskNameHasBeenSet = true; m_diskName.assign(value); }
-
-    /**
-     * <p>The unique name of the disk you want to detach from your instance (e.g.,
-     * <code>my-disk</code>).</p>
-     */
-    inline DetachDiskRequest& WithDiskName(const Aws::String& value) { SetDiskName(value); return *this;}
-
-    /**
-     * <p>The unique name of the disk you want to detach from your instance (e.g.,
-     * <code>my-disk</code>).</p>
-     */
-    inline DetachDiskRequest& WithDiskName(Aws::String&& value) { SetDiskName(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique name of the disk you want to detach from your instance (e.g.,
-     * <code>my-disk</code>).</p>
-     */
-    inline DetachDiskRequest& WithDiskName(const char* value) { SetDiskName(value); return *this;}
-
+    template<typename DiskNameT = Aws::String>
+    void SetDiskName(DiskNameT&& value) { m_diskNameHasBeenSet = true; m_diskName = std::forward<DiskNameT>(value); }
+    template<typename DiskNameT = Aws::String>
+    DetachDiskRequest& WithDiskName(DiskNameT&& value) { SetDiskName(std::forward<DiskNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_diskName;

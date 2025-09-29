@@ -34,79 +34,36 @@ namespace Model
   class EbsVolume
   {
   public:
-    AWS_COSTOPTIMIZATIONHUB_API EbsVolume();
+    AWS_COSTOPTIMIZATIONHUB_API EbsVolume() = default;
     AWS_COSTOPTIMIZATIONHUB_API EbsVolume(Aws::Utils::Json::JsonView jsonValue);
     AWS_COSTOPTIMIZATIONHUB_API EbsVolume& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COSTOPTIMIZATIONHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Elastic Block Store volume configuration used for
      * recommendations.</p>
      */
-    inline const EbsVolumeConfiguration& GetConfiguration() const{ return m_configuration; }
-
-    /**
-     * <p>The Amazon Elastic Block Store volume configuration used for
-     * recommendations.</p>
-     */
+    inline const EbsVolumeConfiguration& GetConfiguration() const { return m_configuration; }
     inline bool ConfigurationHasBeenSet() const { return m_configurationHasBeenSet; }
+    template<typename ConfigurationT = EbsVolumeConfiguration>
+    void SetConfiguration(ConfigurationT&& value) { m_configurationHasBeenSet = true; m_configuration = std::forward<ConfigurationT>(value); }
+    template<typename ConfigurationT = EbsVolumeConfiguration>
+    EbsVolume& WithConfiguration(ConfigurationT&& value) { SetConfiguration(std::forward<ConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Elastic Block Store volume configuration used for
-     * recommendations.</p>
-     */
-    inline void SetConfiguration(const EbsVolumeConfiguration& value) { m_configurationHasBeenSet = true; m_configuration = value; }
-
-    /**
-     * <p>The Amazon Elastic Block Store volume configuration used for
-     * recommendations.</p>
-     */
-    inline void SetConfiguration(EbsVolumeConfiguration&& value) { m_configurationHasBeenSet = true; m_configuration = std::move(value); }
-
-    /**
-     * <p>The Amazon Elastic Block Store volume configuration used for
-     * recommendations.</p>
-     */
-    inline EbsVolume& WithConfiguration(const EbsVolumeConfiguration& value) { SetConfiguration(value); return *this;}
-
-    /**
-     * <p>The Amazon Elastic Block Store volume configuration used for
-     * recommendations.</p>
-     */
-    inline EbsVolume& WithConfiguration(EbsVolumeConfiguration&& value) { SetConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Cost impact of the recommendation.</p>
      */
-    inline const ResourceCostCalculation& GetCostCalculation() const{ return m_costCalculation; }
-
-    /**
-     * <p>Cost impact of the recommendation.</p>
-     */
+    inline const ResourceCostCalculation& GetCostCalculation() const { return m_costCalculation; }
     inline bool CostCalculationHasBeenSet() const { return m_costCalculationHasBeenSet; }
-
-    /**
-     * <p>Cost impact of the recommendation.</p>
-     */
-    inline void SetCostCalculation(const ResourceCostCalculation& value) { m_costCalculationHasBeenSet = true; m_costCalculation = value; }
-
-    /**
-     * <p>Cost impact of the recommendation.</p>
-     */
-    inline void SetCostCalculation(ResourceCostCalculation&& value) { m_costCalculationHasBeenSet = true; m_costCalculation = std::move(value); }
-
-    /**
-     * <p>Cost impact of the recommendation.</p>
-     */
-    inline EbsVolume& WithCostCalculation(const ResourceCostCalculation& value) { SetCostCalculation(value); return *this;}
-
-    /**
-     * <p>Cost impact of the recommendation.</p>
-     */
-    inline EbsVolume& WithCostCalculation(ResourceCostCalculation&& value) { SetCostCalculation(std::move(value)); return *this;}
-
+    template<typename CostCalculationT = ResourceCostCalculation>
+    void SetCostCalculation(CostCalculationT&& value) { m_costCalculationHasBeenSet = true; m_costCalculation = std::forward<CostCalculationT>(value); }
+    template<typename CostCalculationT = ResourceCostCalculation>
+    EbsVolume& WithCostCalculation(CostCalculationT&& value) { SetCostCalculation(std::forward<CostCalculationT>(value)); return *this;}
+    ///@}
   private:
 
     EbsVolumeConfiguration m_configuration;

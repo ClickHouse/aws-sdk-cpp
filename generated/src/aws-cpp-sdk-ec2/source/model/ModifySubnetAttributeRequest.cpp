@@ -10,23 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-ModifySubnetAttributeRequest::ModifySubnetAttributeRequest() : 
-    m_assignIpv6AddressOnCreationHasBeenSet(false),
-    m_mapPublicIpOnLaunchHasBeenSet(false),
-    m_subnetIdHasBeenSet(false),
-    m_mapCustomerOwnedIpOnLaunchHasBeenSet(false),
-    m_customerOwnedIpv4PoolHasBeenSet(false),
-    m_enableDns64HasBeenSet(false),
-    m_privateDnsHostnameTypeOnLaunch(HostnameType::NOT_SET),
-    m_privateDnsHostnameTypeOnLaunchHasBeenSet(false),
-    m_enableResourceNameDnsARecordOnLaunchHasBeenSet(false),
-    m_enableResourceNameDnsAAAARecordOnLaunchHasBeenSet(false),
-    m_enableLniAtDeviceIndex(0),
-    m_enableLniAtDeviceIndexHasBeenSet(false),
-    m_disableLniAtDeviceIndexHasBeenSet(false)
-{
-}
-
 Aws::String ModifySubnetAttributeRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -63,7 +46,7 @@ Aws::String ModifySubnetAttributeRequest::SerializePayload() const
 
   if(m_privateDnsHostnameTypeOnLaunchHasBeenSet)
   {
-    ss << "PrivateDnsHostnameTypeOnLaunch=" << HostnameTypeMapper::GetNameForHostnameType(m_privateDnsHostnameTypeOnLaunch) << "&";
+    ss << "PrivateDnsHostnameTypeOnLaunch=" << StringUtils::URLEncode(HostnameTypeMapper::GetNameForHostnameType(m_privateDnsHostnameTypeOnLaunch)) << "&";
   }
 
   if(m_enableResourceNameDnsARecordOnLaunchHasBeenSet)

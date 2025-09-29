@@ -35,278 +35,102 @@ namespace Model
   class PutGatewayResponseResult
   {
   public:
-    AWS_APIGATEWAY_API PutGatewayResponseResult();
+    AWS_APIGATEWAY_API PutGatewayResponseResult() = default;
     AWS_APIGATEWAY_API PutGatewayResponseResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_APIGATEWAY_API PutGatewayResponseResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The response type of the associated GatewayResponse.</p>
      */
-    inline const GatewayResponseType& GetResponseType() const{ return m_responseType; }
+    inline GatewayResponseType GetResponseType() const { return m_responseType; }
+    inline void SetResponseType(GatewayResponseType value) { m_responseTypeHasBeenSet = true; m_responseType = value; }
+    inline PutGatewayResponseResult& WithResponseType(GatewayResponseType value) { SetResponseType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The response type of the associated GatewayResponse.</p>
-     */
-    inline void SetResponseType(const GatewayResponseType& value) { m_responseType = value; }
-
-    /**
-     * <p>The response type of the associated GatewayResponse.</p>
-     */
-    inline void SetResponseType(GatewayResponseType&& value) { m_responseType = std::move(value); }
-
-    /**
-     * <p>The response type of the associated GatewayResponse.</p>
-     */
-    inline PutGatewayResponseResult& WithResponseType(const GatewayResponseType& value) { SetResponseType(value); return *this;}
-
-    /**
-     * <p>The response type of the associated GatewayResponse.</p>
-     */
-    inline PutGatewayResponseResult& WithResponseType(GatewayResponseType&& value) { SetResponseType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The HTTP status code for this GatewayResponse.</p>
      */
-    inline const Aws::String& GetStatusCode() const{ return m_statusCode; }
+    inline const Aws::String& GetStatusCode() const { return m_statusCode; }
+    template<typename StatusCodeT = Aws::String>
+    void SetStatusCode(StatusCodeT&& value) { m_statusCodeHasBeenSet = true; m_statusCode = std::forward<StatusCodeT>(value); }
+    template<typename StatusCodeT = Aws::String>
+    PutGatewayResponseResult& WithStatusCode(StatusCodeT&& value) { SetStatusCode(std::forward<StatusCodeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The HTTP status code for this GatewayResponse.</p>
-     */
-    inline void SetStatusCode(const Aws::String& value) { m_statusCode = value; }
-
-    /**
-     * <p>The HTTP status code for this GatewayResponse.</p>
-     */
-    inline void SetStatusCode(Aws::String&& value) { m_statusCode = std::move(value); }
-
-    /**
-     * <p>The HTTP status code for this GatewayResponse.</p>
-     */
-    inline void SetStatusCode(const char* value) { m_statusCode.assign(value); }
-
-    /**
-     * <p>The HTTP status code for this GatewayResponse.</p>
-     */
-    inline PutGatewayResponseResult& WithStatusCode(const Aws::String& value) { SetStatusCode(value); return *this;}
-
-    /**
-     * <p>The HTTP status code for this GatewayResponse.</p>
-     */
-    inline PutGatewayResponseResult& WithStatusCode(Aws::String&& value) { SetStatusCode(std::move(value)); return *this;}
-
-    /**
-     * <p>The HTTP status code for this GatewayResponse.</p>
-     */
-    inline PutGatewayResponseResult& WithStatusCode(const char* value) { SetStatusCode(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Response parameters (paths, query strings and headers) of the GatewayResponse
      * as a string-to-string map of key-value pairs.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetResponseParameters() const{ return m_responseParameters; }
+    inline const Aws::Map<Aws::String, Aws::String>& GetResponseParameters() const { return m_responseParameters; }
+    template<typename ResponseParametersT = Aws::Map<Aws::String, Aws::String>>
+    void SetResponseParameters(ResponseParametersT&& value) { m_responseParametersHasBeenSet = true; m_responseParameters = std::forward<ResponseParametersT>(value); }
+    template<typename ResponseParametersT = Aws::Map<Aws::String, Aws::String>>
+    PutGatewayResponseResult& WithResponseParameters(ResponseParametersT&& value) { SetResponseParameters(std::forward<ResponseParametersT>(value)); return *this;}
+    template<typename ResponseParametersKeyT = Aws::String, typename ResponseParametersValueT = Aws::String>
+    PutGatewayResponseResult& AddResponseParameters(ResponseParametersKeyT&& key, ResponseParametersValueT&& value) {
+      m_responseParametersHasBeenSet = true; m_responseParameters.emplace(std::forward<ResponseParametersKeyT>(key), std::forward<ResponseParametersValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>Response parameters (paths, query strings and headers) of the GatewayResponse
-     * as a string-to-string map of key-value pairs.</p>
-     */
-    inline void SetResponseParameters(const Aws::Map<Aws::String, Aws::String>& value) { m_responseParameters = value; }
-
-    /**
-     * <p>Response parameters (paths, query strings and headers) of the GatewayResponse
-     * as a string-to-string map of key-value pairs.</p>
-     */
-    inline void SetResponseParameters(Aws::Map<Aws::String, Aws::String>&& value) { m_responseParameters = std::move(value); }
-
-    /**
-     * <p>Response parameters (paths, query strings and headers) of the GatewayResponse
-     * as a string-to-string map of key-value pairs.</p>
-     */
-    inline PutGatewayResponseResult& WithResponseParameters(const Aws::Map<Aws::String, Aws::String>& value) { SetResponseParameters(value); return *this;}
-
-    /**
-     * <p>Response parameters (paths, query strings and headers) of the GatewayResponse
-     * as a string-to-string map of key-value pairs.</p>
-     */
-    inline PutGatewayResponseResult& WithResponseParameters(Aws::Map<Aws::String, Aws::String>&& value) { SetResponseParameters(std::move(value)); return *this;}
-
-    /**
-     * <p>Response parameters (paths, query strings and headers) of the GatewayResponse
-     * as a string-to-string map of key-value pairs.</p>
-     */
-    inline PutGatewayResponseResult& AddResponseParameters(const Aws::String& key, const Aws::String& value) { m_responseParameters.emplace(key, value); return *this; }
-
-    /**
-     * <p>Response parameters (paths, query strings and headers) of the GatewayResponse
-     * as a string-to-string map of key-value pairs.</p>
-     */
-    inline PutGatewayResponseResult& AddResponseParameters(Aws::String&& key, const Aws::String& value) { m_responseParameters.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Response parameters (paths, query strings and headers) of the GatewayResponse
-     * as a string-to-string map of key-value pairs.</p>
-     */
-    inline PutGatewayResponseResult& AddResponseParameters(const Aws::String& key, Aws::String&& value) { m_responseParameters.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Response parameters (paths, query strings and headers) of the GatewayResponse
-     * as a string-to-string map of key-value pairs.</p>
-     */
-    inline PutGatewayResponseResult& AddResponseParameters(Aws::String&& key, Aws::String&& value) { m_responseParameters.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>Response parameters (paths, query strings and headers) of the GatewayResponse
-     * as a string-to-string map of key-value pairs.</p>
-     */
-    inline PutGatewayResponseResult& AddResponseParameters(const char* key, Aws::String&& value) { m_responseParameters.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Response parameters (paths, query strings and headers) of the GatewayResponse
-     * as a string-to-string map of key-value pairs.</p>
-     */
-    inline PutGatewayResponseResult& AddResponseParameters(Aws::String&& key, const char* value) { m_responseParameters.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Response parameters (paths, query strings and headers) of the GatewayResponse
-     * as a string-to-string map of key-value pairs.</p>
-     */
-    inline PutGatewayResponseResult& AddResponseParameters(const char* key, const char* value) { m_responseParameters.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>Response templates of the GatewayResponse as a string-to-string map of
      * key-value pairs.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetResponseTemplates() const{ return m_responseTemplates; }
+    inline const Aws::Map<Aws::String, Aws::String>& GetResponseTemplates() const { return m_responseTemplates; }
+    template<typename ResponseTemplatesT = Aws::Map<Aws::String, Aws::String>>
+    void SetResponseTemplates(ResponseTemplatesT&& value) { m_responseTemplatesHasBeenSet = true; m_responseTemplates = std::forward<ResponseTemplatesT>(value); }
+    template<typename ResponseTemplatesT = Aws::Map<Aws::String, Aws::String>>
+    PutGatewayResponseResult& WithResponseTemplates(ResponseTemplatesT&& value) { SetResponseTemplates(std::forward<ResponseTemplatesT>(value)); return *this;}
+    template<typename ResponseTemplatesKeyT = Aws::String, typename ResponseTemplatesValueT = Aws::String>
+    PutGatewayResponseResult& AddResponseTemplates(ResponseTemplatesKeyT&& key, ResponseTemplatesValueT&& value) {
+      m_responseTemplatesHasBeenSet = true; m_responseTemplates.emplace(std::forward<ResponseTemplatesKeyT>(key), std::forward<ResponseTemplatesValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>Response templates of the GatewayResponse as a string-to-string map of
-     * key-value pairs.</p>
-     */
-    inline void SetResponseTemplates(const Aws::Map<Aws::String, Aws::String>& value) { m_responseTemplates = value; }
-
-    /**
-     * <p>Response templates of the GatewayResponse as a string-to-string map of
-     * key-value pairs.</p>
-     */
-    inline void SetResponseTemplates(Aws::Map<Aws::String, Aws::String>&& value) { m_responseTemplates = std::move(value); }
-
-    /**
-     * <p>Response templates of the GatewayResponse as a string-to-string map of
-     * key-value pairs.</p>
-     */
-    inline PutGatewayResponseResult& WithResponseTemplates(const Aws::Map<Aws::String, Aws::String>& value) { SetResponseTemplates(value); return *this;}
-
-    /**
-     * <p>Response templates of the GatewayResponse as a string-to-string map of
-     * key-value pairs.</p>
-     */
-    inline PutGatewayResponseResult& WithResponseTemplates(Aws::Map<Aws::String, Aws::String>&& value) { SetResponseTemplates(std::move(value)); return *this;}
-
-    /**
-     * <p>Response templates of the GatewayResponse as a string-to-string map of
-     * key-value pairs.</p>
-     */
-    inline PutGatewayResponseResult& AddResponseTemplates(const Aws::String& key, const Aws::String& value) { m_responseTemplates.emplace(key, value); return *this; }
-
-    /**
-     * <p>Response templates of the GatewayResponse as a string-to-string map of
-     * key-value pairs.</p>
-     */
-    inline PutGatewayResponseResult& AddResponseTemplates(Aws::String&& key, const Aws::String& value) { m_responseTemplates.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Response templates of the GatewayResponse as a string-to-string map of
-     * key-value pairs.</p>
-     */
-    inline PutGatewayResponseResult& AddResponseTemplates(const Aws::String& key, Aws::String&& value) { m_responseTemplates.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Response templates of the GatewayResponse as a string-to-string map of
-     * key-value pairs.</p>
-     */
-    inline PutGatewayResponseResult& AddResponseTemplates(Aws::String&& key, Aws::String&& value) { m_responseTemplates.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>Response templates of the GatewayResponse as a string-to-string map of
-     * key-value pairs.</p>
-     */
-    inline PutGatewayResponseResult& AddResponseTemplates(const char* key, Aws::String&& value) { m_responseTemplates.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Response templates of the GatewayResponse as a string-to-string map of
-     * key-value pairs.</p>
-     */
-    inline PutGatewayResponseResult& AddResponseTemplates(Aws::String&& key, const char* value) { m_responseTemplates.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Response templates of the GatewayResponse as a string-to-string map of
-     * key-value pairs.</p>
-     */
-    inline PutGatewayResponseResult& AddResponseTemplates(const char* key, const char* value) { m_responseTemplates.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>A Boolean flag to indicate whether this GatewayResponse is the default
      * gateway response (<code>true</code>) or not (<code>false</code>). A default
      * gateway response is one generated by API Gateway without any customization by an
      * API developer. </p>
      */
-    inline bool GetDefaultResponse() const{ return m_defaultResponse; }
-
-    /**
-     * <p>A Boolean flag to indicate whether this GatewayResponse is the default
-     * gateway response (<code>true</code>) or not (<code>false</code>). A default
-     * gateway response is one generated by API Gateway without any customization by an
-     * API developer. </p>
-     */
-    inline void SetDefaultResponse(bool value) { m_defaultResponse = value; }
-
-    /**
-     * <p>A Boolean flag to indicate whether this GatewayResponse is the default
-     * gateway response (<code>true</code>) or not (<code>false</code>). A default
-     * gateway response is one generated by API Gateway without any customization by an
-     * API developer. </p>
-     */
+    inline bool GetDefaultResponse() const { return m_defaultResponse; }
+    inline void SetDefaultResponse(bool value) { m_defaultResponseHasBeenSet = true; m_defaultResponse = value; }
     inline PutGatewayResponseResult& WithDefaultResponse(bool value) { SetDefaultResponse(value); return *this;}
+    ///@}
 
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline PutGatewayResponseResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline PutGatewayResponseResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline PutGatewayResponseResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    PutGatewayResponseResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
-    GatewayResponseType m_responseType;
+    GatewayResponseType m_responseType{GatewayResponseType::NOT_SET};
+    bool m_responseTypeHasBeenSet = false;
 
     Aws::String m_statusCode;
+    bool m_statusCodeHasBeenSet = false;
 
     Aws::Map<Aws::String, Aws::String> m_responseParameters;
+    bool m_responseParametersHasBeenSet = false;
 
     Aws::Map<Aws::String, Aws::String> m_responseTemplates;
+    bool m_responseTemplatesHasBeenSet = false;
 
-    bool m_defaultResponse;
+    bool m_defaultResponse{false};
+    bool m_defaultResponseHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

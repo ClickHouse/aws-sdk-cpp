@@ -20,17 +20,7 @@ namespace CloudFormation
 namespace Model
 {
 
-RollbackConfiguration::RollbackConfiguration() : 
-    m_rollbackTriggersHasBeenSet(false),
-    m_monitoringTimeInMinutes(0),
-    m_monitoringTimeInMinutesHasBeenSet(false)
-{
-}
-
-RollbackConfiguration::RollbackConfiguration(const XmlNode& xmlNode) : 
-    m_rollbackTriggersHasBeenSet(false),
-    m_monitoringTimeInMinutes(0),
-    m_monitoringTimeInMinutesHasBeenSet(false)
+RollbackConfiguration::RollbackConfiguration(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -45,6 +35,7 @@ RollbackConfiguration& RollbackConfiguration::operator =(const XmlNode& xmlNode)
     if(!rollbackTriggersNode.IsNull())
     {
       XmlNode rollbackTriggersMember = rollbackTriggersNode.FirstChild("member");
+      m_rollbackTriggersHasBeenSet = !rollbackTriggersMember.IsNull();
       while(!rollbackTriggersMember.IsNull())
       {
         m_rollbackTriggers.push_back(rollbackTriggersMember);
@@ -92,7 +83,7 @@ void RollbackConfiguration::OutputToStream(Aws::OStream& oStream, const char* lo
       for(auto& item : m_rollbackTriggers)
       {
         Aws::StringStream rollbackTriggersSs;
-        rollbackTriggersSs << location <<  ".RollbackTriggers.member." << rollbackTriggersIdx++;
+        rollbackTriggersSs << location << ".RollbackTriggers.member." << rollbackTriggersIdx++;
         item.OutputToStream(oStream, rollbackTriggersSs.str().c_str());
       }
   }

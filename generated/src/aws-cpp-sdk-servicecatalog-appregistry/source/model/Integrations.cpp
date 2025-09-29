@@ -18,15 +18,7 @@ namespace AppRegistry
 namespace Model
 {
 
-Integrations::Integrations() : 
-    m_resourceGroupHasBeenSet(false),
-    m_applicationTagResourceGroupHasBeenSet(false)
-{
-}
-
-Integrations::Integrations(JsonView jsonValue) : 
-    m_resourceGroupHasBeenSet(false),
-    m_applicationTagResourceGroupHasBeenSet(false)
+Integrations::Integrations(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ Integrations& Integrations::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("resourceGroup"))
   {
     m_resourceGroup = jsonValue.GetObject("resourceGroup");
-
     m_resourceGroupHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("applicationTagResourceGroup"))
   {
     m_applicationTagResourceGroup = jsonValue.GetObject("applicationTagResourceGroup");
-
     m_applicationTagResourceGroupHasBeenSet = true;
   }
-
   return *this;
 }
 

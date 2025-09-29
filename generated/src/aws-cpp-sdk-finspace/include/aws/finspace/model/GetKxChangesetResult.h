@@ -32,377 +32,159 @@ namespace Model
   class GetKxChangesetResult
   {
   public:
-    AWS_FINSPACE_API GetKxChangesetResult();
+    AWS_FINSPACE_API GetKxChangesetResult() = default;
     AWS_FINSPACE_API GetKxChangesetResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_FINSPACE_API GetKxChangesetResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>A unique identifier for the changeset.</p>
      */
-    inline const Aws::String& GetChangesetId() const{ return m_changesetId; }
+    inline const Aws::String& GetChangesetId() const { return m_changesetId; }
+    template<typename ChangesetIdT = Aws::String>
+    void SetChangesetId(ChangesetIdT&& value) { m_changesetIdHasBeenSet = true; m_changesetId = std::forward<ChangesetIdT>(value); }
+    template<typename ChangesetIdT = Aws::String>
+    GetKxChangesetResult& WithChangesetId(ChangesetIdT&& value) { SetChangesetId(std::forward<ChangesetIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier for the changeset.</p>
-     */
-    inline void SetChangesetId(const Aws::String& value) { m_changesetId = value; }
-
-    /**
-     * <p>A unique identifier for the changeset.</p>
-     */
-    inline void SetChangesetId(Aws::String&& value) { m_changesetId = std::move(value); }
-
-    /**
-     * <p>A unique identifier for the changeset.</p>
-     */
-    inline void SetChangesetId(const char* value) { m_changesetId.assign(value); }
-
-    /**
-     * <p>A unique identifier for the changeset.</p>
-     */
-    inline GetKxChangesetResult& WithChangesetId(const Aws::String& value) { SetChangesetId(value); return *this;}
-
-    /**
-     * <p>A unique identifier for the changeset.</p>
-     */
-    inline GetKxChangesetResult& WithChangesetId(Aws::String&& value) { SetChangesetId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier for the changeset.</p>
-     */
-    inline GetKxChangesetResult& WithChangesetId(const char* value) { SetChangesetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the kdb database.</p>
      */
-    inline const Aws::String& GetDatabaseName() const{ return m_databaseName; }
+    inline const Aws::String& GetDatabaseName() const { return m_databaseName; }
+    template<typename DatabaseNameT = Aws::String>
+    void SetDatabaseName(DatabaseNameT&& value) { m_databaseNameHasBeenSet = true; m_databaseName = std::forward<DatabaseNameT>(value); }
+    template<typename DatabaseNameT = Aws::String>
+    GetKxChangesetResult& WithDatabaseName(DatabaseNameT&& value) { SetDatabaseName(std::forward<DatabaseNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the kdb database.</p>
-     */
-    inline void SetDatabaseName(const Aws::String& value) { m_databaseName = value; }
-
-    /**
-     * <p>The name of the kdb database.</p>
-     */
-    inline void SetDatabaseName(Aws::String&& value) { m_databaseName = std::move(value); }
-
-    /**
-     * <p>The name of the kdb database.</p>
-     */
-    inline void SetDatabaseName(const char* value) { m_databaseName.assign(value); }
-
-    /**
-     * <p>The name of the kdb database.</p>
-     */
-    inline GetKxChangesetResult& WithDatabaseName(const Aws::String& value) { SetDatabaseName(value); return *this;}
-
-    /**
-     * <p>The name of the kdb database.</p>
-     */
-    inline GetKxChangesetResult& WithDatabaseName(Aws::String&& value) { SetDatabaseName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the kdb database.</p>
-     */
-    inline GetKxChangesetResult& WithDatabaseName(const char* value) { SetDatabaseName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A unique identifier for the kdb environment.</p>
      */
-    inline const Aws::String& GetEnvironmentId() const{ return m_environmentId; }
+    inline const Aws::String& GetEnvironmentId() const { return m_environmentId; }
+    template<typename EnvironmentIdT = Aws::String>
+    void SetEnvironmentId(EnvironmentIdT&& value) { m_environmentIdHasBeenSet = true; m_environmentId = std::forward<EnvironmentIdT>(value); }
+    template<typename EnvironmentIdT = Aws::String>
+    GetKxChangesetResult& WithEnvironmentId(EnvironmentIdT&& value) { SetEnvironmentId(std::forward<EnvironmentIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier for the kdb environment.</p>
-     */
-    inline void SetEnvironmentId(const Aws::String& value) { m_environmentId = value; }
-
-    /**
-     * <p>A unique identifier for the kdb environment.</p>
-     */
-    inline void SetEnvironmentId(Aws::String&& value) { m_environmentId = std::move(value); }
-
-    /**
-     * <p>A unique identifier for the kdb environment.</p>
-     */
-    inline void SetEnvironmentId(const char* value) { m_environmentId.assign(value); }
-
-    /**
-     * <p>A unique identifier for the kdb environment.</p>
-     */
-    inline GetKxChangesetResult& WithEnvironmentId(const Aws::String& value) { SetEnvironmentId(value); return *this;}
-
-    /**
-     * <p>A unique identifier for the kdb environment.</p>
-     */
-    inline GetKxChangesetResult& WithEnvironmentId(Aws::String&& value) { SetEnvironmentId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier for the kdb environment.</p>
-     */
-    inline GetKxChangesetResult& WithEnvironmentId(const char* value) { SetEnvironmentId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of change request objects that are run in order.</p>
      */
-    inline const Aws::Vector<ChangeRequest>& GetChangeRequests() const{ return m_changeRequests; }
+    inline const Aws::Vector<ChangeRequest>& GetChangeRequests() const { return m_changeRequests; }
+    template<typename ChangeRequestsT = Aws::Vector<ChangeRequest>>
+    void SetChangeRequests(ChangeRequestsT&& value) { m_changeRequestsHasBeenSet = true; m_changeRequests = std::forward<ChangeRequestsT>(value); }
+    template<typename ChangeRequestsT = Aws::Vector<ChangeRequest>>
+    GetKxChangesetResult& WithChangeRequests(ChangeRequestsT&& value) { SetChangeRequests(std::forward<ChangeRequestsT>(value)); return *this;}
+    template<typename ChangeRequestsT = ChangeRequest>
+    GetKxChangesetResult& AddChangeRequests(ChangeRequestsT&& value) { m_changeRequestsHasBeenSet = true; m_changeRequests.emplace_back(std::forward<ChangeRequestsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of change request objects that are run in order.</p>
-     */
-    inline void SetChangeRequests(const Aws::Vector<ChangeRequest>& value) { m_changeRequests = value; }
-
-    /**
-     * <p>A list of change request objects that are run in order.</p>
-     */
-    inline void SetChangeRequests(Aws::Vector<ChangeRequest>&& value) { m_changeRequests = std::move(value); }
-
-    /**
-     * <p>A list of change request objects that are run in order.</p>
-     */
-    inline GetKxChangesetResult& WithChangeRequests(const Aws::Vector<ChangeRequest>& value) { SetChangeRequests(value); return *this;}
-
-    /**
-     * <p>A list of change request objects that are run in order.</p>
-     */
-    inline GetKxChangesetResult& WithChangeRequests(Aws::Vector<ChangeRequest>&& value) { SetChangeRequests(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of change request objects that are run in order.</p>
-     */
-    inline GetKxChangesetResult& AddChangeRequests(const ChangeRequest& value) { m_changeRequests.push_back(value); return *this; }
-
-    /**
-     * <p>A list of change request objects that are run in order.</p>
-     */
-    inline GetKxChangesetResult& AddChangeRequests(ChangeRequest&& value) { m_changeRequests.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The timestamp at which the changeset was created in FinSpace. The value is
      * determined as epoch time in milliseconds. For example, the value for Monday,
      * November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedTimestamp() const{ return m_createdTimestamp; }
+    inline const Aws::Utils::DateTime& GetCreatedTimestamp() const { return m_createdTimestamp; }
+    template<typename CreatedTimestampT = Aws::Utils::DateTime>
+    void SetCreatedTimestamp(CreatedTimestampT&& value) { m_createdTimestampHasBeenSet = true; m_createdTimestamp = std::forward<CreatedTimestampT>(value); }
+    template<typename CreatedTimestampT = Aws::Utils::DateTime>
+    GetKxChangesetResult& WithCreatedTimestamp(CreatedTimestampT&& value) { SetCreatedTimestamp(std::forward<CreatedTimestampT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp at which the changeset was created in FinSpace. The value is
-     * determined as epoch time in milliseconds. For example, the value for Monday,
-     * November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</p>
-     */
-    inline void SetCreatedTimestamp(const Aws::Utils::DateTime& value) { m_createdTimestamp = value; }
-
-    /**
-     * <p>The timestamp at which the changeset was created in FinSpace. The value is
-     * determined as epoch time in milliseconds. For example, the value for Monday,
-     * November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</p>
-     */
-    inline void SetCreatedTimestamp(Aws::Utils::DateTime&& value) { m_createdTimestamp = std::move(value); }
-
-    /**
-     * <p>The timestamp at which the changeset was created in FinSpace. The value is
-     * determined as epoch time in milliseconds. For example, the value for Monday,
-     * November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</p>
-     */
-    inline GetKxChangesetResult& WithCreatedTimestamp(const Aws::Utils::DateTime& value) { SetCreatedTimestamp(value); return *this;}
-
-    /**
-     * <p>The timestamp at which the changeset was created in FinSpace. The value is
-     * determined as epoch time in milliseconds. For example, the value for Monday,
-     * November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</p>
-     */
-    inline GetKxChangesetResult& WithCreatedTimestamp(Aws::Utils::DateTime&& value) { SetCreatedTimestamp(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Beginning time from which the changeset is active. The value is determined as
      * epoch time in milliseconds. For example, the value for Monday, November 1, 2021
      * 12:00:00 PM UTC is specified as 1635768000000.</p>
      */
-    inline const Aws::Utils::DateTime& GetActiveFromTimestamp() const{ return m_activeFromTimestamp; }
+    inline const Aws::Utils::DateTime& GetActiveFromTimestamp() const { return m_activeFromTimestamp; }
+    template<typename ActiveFromTimestampT = Aws::Utils::DateTime>
+    void SetActiveFromTimestamp(ActiveFromTimestampT&& value) { m_activeFromTimestampHasBeenSet = true; m_activeFromTimestamp = std::forward<ActiveFromTimestampT>(value); }
+    template<typename ActiveFromTimestampT = Aws::Utils::DateTime>
+    GetKxChangesetResult& WithActiveFromTimestamp(ActiveFromTimestampT&& value) { SetActiveFromTimestamp(std::forward<ActiveFromTimestampT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Beginning time from which the changeset is active. The value is determined as
-     * epoch time in milliseconds. For example, the value for Monday, November 1, 2021
-     * 12:00:00 PM UTC is specified as 1635768000000.</p>
-     */
-    inline void SetActiveFromTimestamp(const Aws::Utils::DateTime& value) { m_activeFromTimestamp = value; }
-
-    /**
-     * <p>Beginning time from which the changeset is active. The value is determined as
-     * epoch time in milliseconds. For example, the value for Monday, November 1, 2021
-     * 12:00:00 PM UTC is specified as 1635768000000.</p>
-     */
-    inline void SetActiveFromTimestamp(Aws::Utils::DateTime&& value) { m_activeFromTimestamp = std::move(value); }
-
-    /**
-     * <p>Beginning time from which the changeset is active. The value is determined as
-     * epoch time in milliseconds. For example, the value for Monday, November 1, 2021
-     * 12:00:00 PM UTC is specified as 1635768000000.</p>
-     */
-    inline GetKxChangesetResult& WithActiveFromTimestamp(const Aws::Utils::DateTime& value) { SetActiveFromTimestamp(value); return *this;}
-
-    /**
-     * <p>Beginning time from which the changeset is active. The value is determined as
-     * epoch time in milliseconds. For example, the value for Monday, November 1, 2021
-     * 12:00:00 PM UTC is specified as 1635768000000.</p>
-     */
-    inline GetKxChangesetResult& WithActiveFromTimestamp(Aws::Utils::DateTime&& value) { SetActiveFromTimestamp(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The timestamp at which the changeset was updated in FinSpace. The value is
      * determined as epoch time in milliseconds. For example, the value for Monday,
      * November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastModifiedTimestamp() const{ return m_lastModifiedTimestamp; }
+    inline const Aws::Utils::DateTime& GetLastModifiedTimestamp() const { return m_lastModifiedTimestamp; }
+    template<typename LastModifiedTimestampT = Aws::Utils::DateTime>
+    void SetLastModifiedTimestamp(LastModifiedTimestampT&& value) { m_lastModifiedTimestampHasBeenSet = true; m_lastModifiedTimestamp = std::forward<LastModifiedTimestampT>(value); }
+    template<typename LastModifiedTimestampT = Aws::Utils::DateTime>
+    GetKxChangesetResult& WithLastModifiedTimestamp(LastModifiedTimestampT&& value) { SetLastModifiedTimestamp(std::forward<LastModifiedTimestampT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp at which the changeset was updated in FinSpace. The value is
-     * determined as epoch time in milliseconds. For example, the value for Monday,
-     * November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</p>
-     */
-    inline void SetLastModifiedTimestamp(const Aws::Utils::DateTime& value) { m_lastModifiedTimestamp = value; }
-
-    /**
-     * <p>The timestamp at which the changeset was updated in FinSpace. The value is
-     * determined as epoch time in milliseconds. For example, the value for Monday,
-     * November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</p>
-     */
-    inline void SetLastModifiedTimestamp(Aws::Utils::DateTime&& value) { m_lastModifiedTimestamp = std::move(value); }
-
-    /**
-     * <p>The timestamp at which the changeset was updated in FinSpace. The value is
-     * determined as epoch time in milliseconds. For example, the value for Monday,
-     * November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</p>
-     */
-    inline GetKxChangesetResult& WithLastModifiedTimestamp(const Aws::Utils::DateTime& value) { SetLastModifiedTimestamp(value); return *this;}
-
-    /**
-     * <p>The timestamp at which the changeset was updated in FinSpace. The value is
-     * determined as epoch time in milliseconds. For example, the value for Monday,
-     * November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</p>
-     */
-    inline GetKxChangesetResult& WithLastModifiedTimestamp(Aws::Utils::DateTime&& value) { SetLastModifiedTimestamp(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Status of the changeset creation process.</p> <ul> <li> <p>Pending –
      * Changeset creation is pending.</p> </li> <li> <p>Processing – Changeset creation
      * is running.</p> </li> <li> <p>Failed – Changeset creation has failed.</p> </li>
      * <li> <p>Complete – Changeset creation has succeeded.</p> </li> </ul>
      */
-    inline const ChangesetStatus& GetStatus() const{ return m_status; }
+    inline ChangesetStatus GetStatus() const { return m_status; }
+    inline void SetStatus(ChangesetStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline GetKxChangesetResult& WithStatus(ChangesetStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Status of the changeset creation process.</p> <ul> <li> <p>Pending –
-     * Changeset creation is pending.</p> </li> <li> <p>Processing – Changeset creation
-     * is running.</p> </li> <li> <p>Failed – Changeset creation has failed.</p> </li>
-     * <li> <p>Complete – Changeset creation has succeeded.</p> </li> </ul>
-     */
-    inline void SetStatus(const ChangesetStatus& value) { m_status = value; }
-
-    /**
-     * <p>Status of the changeset creation process.</p> <ul> <li> <p>Pending –
-     * Changeset creation is pending.</p> </li> <li> <p>Processing – Changeset creation
-     * is running.</p> </li> <li> <p>Failed – Changeset creation has failed.</p> </li>
-     * <li> <p>Complete – Changeset creation has succeeded.</p> </li> </ul>
-     */
-    inline void SetStatus(ChangesetStatus&& value) { m_status = std::move(value); }
-
-    /**
-     * <p>Status of the changeset creation process.</p> <ul> <li> <p>Pending –
-     * Changeset creation is pending.</p> </li> <li> <p>Processing – Changeset creation
-     * is running.</p> </li> <li> <p>Failed – Changeset creation has failed.</p> </li>
-     * <li> <p>Complete – Changeset creation has succeeded.</p> </li> </ul>
-     */
-    inline GetKxChangesetResult& WithStatus(const ChangesetStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>Status of the changeset creation process.</p> <ul> <li> <p>Pending –
-     * Changeset creation is pending.</p> </li> <li> <p>Processing – Changeset creation
-     * is running.</p> </li> <li> <p>Failed – Changeset creation has failed.</p> </li>
-     * <li> <p>Complete – Changeset creation has succeeded.</p> </li> </ul>
-     */
-    inline GetKxChangesetResult& WithStatus(ChangesetStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Provides details in the event of a failed flow, including the error type and
      * the related error message.</p>
      */
-    inline const ErrorInfo& GetErrorInfo() const{ return m_errorInfo; }
+    inline const ErrorInfo& GetErrorInfo() const { return m_errorInfo; }
+    template<typename ErrorInfoT = ErrorInfo>
+    void SetErrorInfo(ErrorInfoT&& value) { m_errorInfoHasBeenSet = true; m_errorInfo = std::forward<ErrorInfoT>(value); }
+    template<typename ErrorInfoT = ErrorInfo>
+    GetKxChangesetResult& WithErrorInfo(ErrorInfoT&& value) { SetErrorInfo(std::forward<ErrorInfoT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Provides details in the event of a failed flow, including the error type and
-     * the related error message.</p>
-     */
-    inline void SetErrorInfo(const ErrorInfo& value) { m_errorInfo = value; }
-
-    /**
-     * <p>Provides details in the event of a failed flow, including the error type and
-     * the related error message.</p>
-     */
-    inline void SetErrorInfo(ErrorInfo&& value) { m_errorInfo = std::move(value); }
-
-    /**
-     * <p>Provides details in the event of a failed flow, including the error type and
-     * the related error message.</p>
-     */
-    inline GetKxChangesetResult& WithErrorInfo(const ErrorInfo& value) { SetErrorInfo(value); return *this;}
-
-    /**
-     * <p>Provides details in the event of a failed flow, including the error type and
-     * the related error message.</p>
-     */
-    inline GetKxChangesetResult& WithErrorInfo(ErrorInfo&& value) { SetErrorInfo(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetKxChangesetResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetKxChangesetResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetKxChangesetResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetKxChangesetResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_changesetId;
+    bool m_changesetIdHasBeenSet = false;
 
     Aws::String m_databaseName;
+    bool m_databaseNameHasBeenSet = false;
 
     Aws::String m_environmentId;
+    bool m_environmentIdHasBeenSet = false;
 
     Aws::Vector<ChangeRequest> m_changeRequests;
+    bool m_changeRequestsHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdTimestamp;
+    Aws::Utils::DateTime m_createdTimestamp{};
+    bool m_createdTimestampHasBeenSet = false;
 
-    Aws::Utils::DateTime m_activeFromTimestamp;
+    Aws::Utils::DateTime m_activeFromTimestamp{};
+    bool m_activeFromTimestampHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastModifiedTimestamp;
+    Aws::Utils::DateTime m_lastModifiedTimestamp{};
+    bool m_lastModifiedTimestampHasBeenSet = false;
 
-    ChangesetStatus m_status;
+    ChangesetStatus m_status{ChangesetStatus::NOT_SET};
+    bool m_statusHasBeenSet = false;
 
     ErrorInfo m_errorInfo;
+    bool m_errorInfoHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -34,401 +34,131 @@ namespace Model
   class ResourceIdentifier
   {
   public:
-    AWS_IOT_API ResourceIdentifier();
+    AWS_IOT_API ResourceIdentifier() = default;
     AWS_IOT_API ResourceIdentifier(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API ResourceIdentifier& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ID of the certificate attached to the resource.</p>
      */
-    inline const Aws::String& GetDeviceCertificateId() const{ return m_deviceCertificateId; }
-
-    /**
-     * <p>The ID of the certificate attached to the resource.</p>
-     */
+    inline const Aws::String& GetDeviceCertificateId() const { return m_deviceCertificateId; }
     inline bool DeviceCertificateIdHasBeenSet() const { return m_deviceCertificateIdHasBeenSet; }
+    template<typename DeviceCertificateIdT = Aws::String>
+    void SetDeviceCertificateId(DeviceCertificateIdT&& value) { m_deviceCertificateIdHasBeenSet = true; m_deviceCertificateId = std::forward<DeviceCertificateIdT>(value); }
+    template<typename DeviceCertificateIdT = Aws::String>
+    ResourceIdentifier& WithDeviceCertificateId(DeviceCertificateIdT&& value) { SetDeviceCertificateId(std::forward<DeviceCertificateIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the certificate attached to the resource.</p>
-     */
-    inline void SetDeviceCertificateId(const Aws::String& value) { m_deviceCertificateIdHasBeenSet = true; m_deviceCertificateId = value; }
-
-    /**
-     * <p>The ID of the certificate attached to the resource.</p>
-     */
-    inline void SetDeviceCertificateId(Aws::String&& value) { m_deviceCertificateIdHasBeenSet = true; m_deviceCertificateId = std::move(value); }
-
-    /**
-     * <p>The ID of the certificate attached to the resource.</p>
-     */
-    inline void SetDeviceCertificateId(const char* value) { m_deviceCertificateIdHasBeenSet = true; m_deviceCertificateId.assign(value); }
-
-    /**
-     * <p>The ID of the certificate attached to the resource.</p>
-     */
-    inline ResourceIdentifier& WithDeviceCertificateId(const Aws::String& value) { SetDeviceCertificateId(value); return *this;}
-
-    /**
-     * <p>The ID of the certificate attached to the resource.</p>
-     */
-    inline ResourceIdentifier& WithDeviceCertificateId(Aws::String&& value) { SetDeviceCertificateId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the certificate attached to the resource.</p>
-     */
-    inline ResourceIdentifier& WithDeviceCertificateId(const char* value) { SetDeviceCertificateId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the CA certificate used to authorize the certificate.</p>
      */
-    inline const Aws::String& GetCaCertificateId() const{ return m_caCertificateId; }
-
-    /**
-     * <p>The ID of the CA certificate used to authorize the certificate.</p>
-     */
+    inline const Aws::String& GetCaCertificateId() const { return m_caCertificateId; }
     inline bool CaCertificateIdHasBeenSet() const { return m_caCertificateIdHasBeenSet; }
+    template<typename CaCertificateIdT = Aws::String>
+    void SetCaCertificateId(CaCertificateIdT&& value) { m_caCertificateIdHasBeenSet = true; m_caCertificateId = std::forward<CaCertificateIdT>(value); }
+    template<typename CaCertificateIdT = Aws::String>
+    ResourceIdentifier& WithCaCertificateId(CaCertificateIdT&& value) { SetCaCertificateId(std::forward<CaCertificateIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the CA certificate used to authorize the certificate.</p>
-     */
-    inline void SetCaCertificateId(const Aws::String& value) { m_caCertificateIdHasBeenSet = true; m_caCertificateId = value; }
-
-    /**
-     * <p>The ID of the CA certificate used to authorize the certificate.</p>
-     */
-    inline void SetCaCertificateId(Aws::String&& value) { m_caCertificateIdHasBeenSet = true; m_caCertificateId = std::move(value); }
-
-    /**
-     * <p>The ID of the CA certificate used to authorize the certificate.</p>
-     */
-    inline void SetCaCertificateId(const char* value) { m_caCertificateIdHasBeenSet = true; m_caCertificateId.assign(value); }
-
-    /**
-     * <p>The ID of the CA certificate used to authorize the certificate.</p>
-     */
-    inline ResourceIdentifier& WithCaCertificateId(const Aws::String& value) { SetCaCertificateId(value); return *this;}
-
-    /**
-     * <p>The ID of the CA certificate used to authorize the certificate.</p>
-     */
-    inline ResourceIdentifier& WithCaCertificateId(Aws::String&& value) { SetCaCertificateId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the CA certificate used to authorize the certificate.</p>
-     */
-    inline ResourceIdentifier& WithCaCertificateId(const char* value) { SetCaCertificateId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the Amazon Cognito identity pool.</p>
      */
-    inline const Aws::String& GetCognitoIdentityPoolId() const{ return m_cognitoIdentityPoolId; }
-
-    /**
-     * <p>The ID of the Amazon Cognito identity pool.</p>
-     */
+    inline const Aws::String& GetCognitoIdentityPoolId() const { return m_cognitoIdentityPoolId; }
     inline bool CognitoIdentityPoolIdHasBeenSet() const { return m_cognitoIdentityPoolIdHasBeenSet; }
+    template<typename CognitoIdentityPoolIdT = Aws::String>
+    void SetCognitoIdentityPoolId(CognitoIdentityPoolIdT&& value) { m_cognitoIdentityPoolIdHasBeenSet = true; m_cognitoIdentityPoolId = std::forward<CognitoIdentityPoolIdT>(value); }
+    template<typename CognitoIdentityPoolIdT = Aws::String>
+    ResourceIdentifier& WithCognitoIdentityPoolId(CognitoIdentityPoolIdT&& value) { SetCognitoIdentityPoolId(std::forward<CognitoIdentityPoolIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Amazon Cognito identity pool.</p>
-     */
-    inline void SetCognitoIdentityPoolId(const Aws::String& value) { m_cognitoIdentityPoolIdHasBeenSet = true; m_cognitoIdentityPoolId = value; }
-
-    /**
-     * <p>The ID of the Amazon Cognito identity pool.</p>
-     */
-    inline void SetCognitoIdentityPoolId(Aws::String&& value) { m_cognitoIdentityPoolIdHasBeenSet = true; m_cognitoIdentityPoolId = std::move(value); }
-
-    /**
-     * <p>The ID of the Amazon Cognito identity pool.</p>
-     */
-    inline void SetCognitoIdentityPoolId(const char* value) { m_cognitoIdentityPoolIdHasBeenSet = true; m_cognitoIdentityPoolId.assign(value); }
-
-    /**
-     * <p>The ID of the Amazon Cognito identity pool.</p>
-     */
-    inline ResourceIdentifier& WithCognitoIdentityPoolId(const Aws::String& value) { SetCognitoIdentityPoolId(value); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Cognito identity pool.</p>
-     */
-    inline ResourceIdentifier& WithCognitoIdentityPoolId(Aws::String&& value) { SetCognitoIdentityPoolId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Cognito identity pool.</p>
-     */
-    inline ResourceIdentifier& WithCognitoIdentityPoolId(const char* value) { SetCognitoIdentityPoolId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The client ID.</p>
      */
-    inline const Aws::String& GetClientId() const{ return m_clientId; }
-
-    /**
-     * <p>The client ID.</p>
-     */
+    inline const Aws::String& GetClientId() const { return m_clientId; }
     inline bool ClientIdHasBeenSet() const { return m_clientIdHasBeenSet; }
+    template<typename ClientIdT = Aws::String>
+    void SetClientId(ClientIdT&& value) { m_clientIdHasBeenSet = true; m_clientId = std::forward<ClientIdT>(value); }
+    template<typename ClientIdT = Aws::String>
+    ResourceIdentifier& WithClientId(ClientIdT&& value) { SetClientId(std::forward<ClientIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The client ID.</p>
-     */
-    inline void SetClientId(const Aws::String& value) { m_clientIdHasBeenSet = true; m_clientId = value; }
-
-    /**
-     * <p>The client ID.</p>
-     */
-    inline void SetClientId(Aws::String&& value) { m_clientIdHasBeenSet = true; m_clientId = std::move(value); }
-
-    /**
-     * <p>The client ID.</p>
-     */
-    inline void SetClientId(const char* value) { m_clientIdHasBeenSet = true; m_clientId.assign(value); }
-
-    /**
-     * <p>The client ID.</p>
-     */
-    inline ResourceIdentifier& WithClientId(const Aws::String& value) { SetClientId(value); return *this;}
-
-    /**
-     * <p>The client ID.</p>
-     */
-    inline ResourceIdentifier& WithClientId(Aws::String&& value) { SetClientId(std::move(value)); return *this;}
-
-    /**
-     * <p>The client ID.</p>
-     */
-    inline ResourceIdentifier& WithClientId(const char* value) { SetClientId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The version of the policy associated with the resource.</p>
      */
-    inline const PolicyVersionIdentifier& GetPolicyVersionIdentifier() const{ return m_policyVersionIdentifier; }
-
-    /**
-     * <p>The version of the policy associated with the resource.</p>
-     */
+    inline const PolicyVersionIdentifier& GetPolicyVersionIdentifier() const { return m_policyVersionIdentifier; }
     inline bool PolicyVersionIdentifierHasBeenSet() const { return m_policyVersionIdentifierHasBeenSet; }
+    template<typename PolicyVersionIdentifierT = PolicyVersionIdentifier>
+    void SetPolicyVersionIdentifier(PolicyVersionIdentifierT&& value) { m_policyVersionIdentifierHasBeenSet = true; m_policyVersionIdentifier = std::forward<PolicyVersionIdentifierT>(value); }
+    template<typename PolicyVersionIdentifierT = PolicyVersionIdentifier>
+    ResourceIdentifier& WithPolicyVersionIdentifier(PolicyVersionIdentifierT&& value) { SetPolicyVersionIdentifier(std::forward<PolicyVersionIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The version of the policy associated with the resource.</p>
-     */
-    inline void SetPolicyVersionIdentifier(const PolicyVersionIdentifier& value) { m_policyVersionIdentifierHasBeenSet = true; m_policyVersionIdentifier = value; }
-
-    /**
-     * <p>The version of the policy associated with the resource.</p>
-     */
-    inline void SetPolicyVersionIdentifier(PolicyVersionIdentifier&& value) { m_policyVersionIdentifierHasBeenSet = true; m_policyVersionIdentifier = std::move(value); }
-
-    /**
-     * <p>The version of the policy associated with the resource.</p>
-     */
-    inline ResourceIdentifier& WithPolicyVersionIdentifier(const PolicyVersionIdentifier& value) { SetPolicyVersionIdentifier(value); return *this;}
-
-    /**
-     * <p>The version of the policy associated with the resource.</p>
-     */
-    inline ResourceIdentifier& WithPolicyVersionIdentifier(PolicyVersionIdentifier&& value) { SetPolicyVersionIdentifier(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The account with which the resource is associated.</p>
      */
-    inline const Aws::String& GetAccount() const{ return m_account; }
-
-    /**
-     * <p>The account with which the resource is associated.</p>
-     */
+    inline const Aws::String& GetAccount() const { return m_account; }
     inline bool AccountHasBeenSet() const { return m_accountHasBeenSet; }
+    template<typename AccountT = Aws::String>
+    void SetAccount(AccountT&& value) { m_accountHasBeenSet = true; m_account = std::forward<AccountT>(value); }
+    template<typename AccountT = Aws::String>
+    ResourceIdentifier& WithAccount(AccountT&& value) { SetAccount(std::forward<AccountT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The account with which the resource is associated.</p>
-     */
-    inline void SetAccount(const Aws::String& value) { m_accountHasBeenSet = true; m_account = value; }
-
-    /**
-     * <p>The account with which the resource is associated.</p>
-     */
-    inline void SetAccount(Aws::String&& value) { m_accountHasBeenSet = true; m_account = std::move(value); }
-
-    /**
-     * <p>The account with which the resource is associated.</p>
-     */
-    inline void SetAccount(const char* value) { m_accountHasBeenSet = true; m_account.assign(value); }
-
-    /**
-     * <p>The account with which the resource is associated.</p>
-     */
-    inline ResourceIdentifier& WithAccount(const Aws::String& value) { SetAccount(value); return *this;}
-
-    /**
-     * <p>The account with which the resource is associated.</p>
-     */
-    inline ResourceIdentifier& WithAccount(Aws::String&& value) { SetAccount(std::move(value)); return *this;}
-
-    /**
-     * <p>The account with which the resource is associated.</p>
-     */
-    inline ResourceIdentifier& WithAccount(const char* value) { SetAccount(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the IAM role that has overly permissive actions.</p>
      */
-    inline const Aws::String& GetIamRoleArn() const{ return m_iamRoleArn; }
-
-    /**
-     * <p>The ARN of the IAM role that has overly permissive actions.</p>
-     */
+    inline const Aws::String& GetIamRoleArn() const { return m_iamRoleArn; }
     inline bool IamRoleArnHasBeenSet() const { return m_iamRoleArnHasBeenSet; }
+    template<typename IamRoleArnT = Aws::String>
+    void SetIamRoleArn(IamRoleArnT&& value) { m_iamRoleArnHasBeenSet = true; m_iamRoleArn = std::forward<IamRoleArnT>(value); }
+    template<typename IamRoleArnT = Aws::String>
+    ResourceIdentifier& WithIamRoleArn(IamRoleArnT&& value) { SetIamRoleArn(std::forward<IamRoleArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the IAM role that has overly permissive actions.</p>
-     */
-    inline void SetIamRoleArn(const Aws::String& value) { m_iamRoleArnHasBeenSet = true; m_iamRoleArn = value; }
-
-    /**
-     * <p>The ARN of the IAM role that has overly permissive actions.</p>
-     */
-    inline void SetIamRoleArn(Aws::String&& value) { m_iamRoleArnHasBeenSet = true; m_iamRoleArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the IAM role that has overly permissive actions.</p>
-     */
-    inline void SetIamRoleArn(const char* value) { m_iamRoleArnHasBeenSet = true; m_iamRoleArn.assign(value); }
-
-    /**
-     * <p>The ARN of the IAM role that has overly permissive actions.</p>
-     */
-    inline ResourceIdentifier& WithIamRoleArn(const Aws::String& value) { SetIamRoleArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the IAM role that has overly permissive actions.</p>
-     */
-    inline ResourceIdentifier& WithIamRoleArn(Aws::String&& value) { SetIamRoleArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the IAM role that has overly permissive actions.</p>
-     */
-    inline ResourceIdentifier& WithIamRoleArn(const char* value) { SetIamRoleArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the role alias that has overly permissive actions.</p>
      */
-    inline const Aws::String& GetRoleAliasArn() const{ return m_roleAliasArn; }
-
-    /**
-     * <p>The ARN of the role alias that has overly permissive actions.</p>
-     */
+    inline const Aws::String& GetRoleAliasArn() const { return m_roleAliasArn; }
     inline bool RoleAliasArnHasBeenSet() const { return m_roleAliasArnHasBeenSet; }
+    template<typename RoleAliasArnT = Aws::String>
+    void SetRoleAliasArn(RoleAliasArnT&& value) { m_roleAliasArnHasBeenSet = true; m_roleAliasArn = std::forward<RoleAliasArnT>(value); }
+    template<typename RoleAliasArnT = Aws::String>
+    ResourceIdentifier& WithRoleAliasArn(RoleAliasArnT&& value) { SetRoleAliasArn(std::forward<RoleAliasArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the role alias that has overly permissive actions.</p>
-     */
-    inline void SetRoleAliasArn(const Aws::String& value) { m_roleAliasArnHasBeenSet = true; m_roleAliasArn = value; }
-
-    /**
-     * <p>The ARN of the role alias that has overly permissive actions.</p>
-     */
-    inline void SetRoleAliasArn(Aws::String&& value) { m_roleAliasArnHasBeenSet = true; m_roleAliasArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the role alias that has overly permissive actions.</p>
-     */
-    inline void SetRoleAliasArn(const char* value) { m_roleAliasArnHasBeenSet = true; m_roleAliasArn.assign(value); }
-
-    /**
-     * <p>The ARN of the role alias that has overly permissive actions.</p>
-     */
-    inline ResourceIdentifier& WithRoleAliasArn(const Aws::String& value) { SetRoleAliasArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the role alias that has overly permissive actions.</p>
-     */
-    inline ResourceIdentifier& WithRoleAliasArn(Aws::String&& value) { SetRoleAliasArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the role alias that has overly permissive actions.</p>
-     */
-    inline ResourceIdentifier& WithRoleAliasArn(const char* value) { SetRoleAliasArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The issuer certificate identifier.</p>
      */
-    inline const IssuerCertificateIdentifier& GetIssuerCertificateIdentifier() const{ return m_issuerCertificateIdentifier; }
-
-    /**
-     * <p>The issuer certificate identifier.</p>
-     */
+    inline const IssuerCertificateIdentifier& GetIssuerCertificateIdentifier() const { return m_issuerCertificateIdentifier; }
     inline bool IssuerCertificateIdentifierHasBeenSet() const { return m_issuerCertificateIdentifierHasBeenSet; }
+    template<typename IssuerCertificateIdentifierT = IssuerCertificateIdentifier>
+    void SetIssuerCertificateIdentifier(IssuerCertificateIdentifierT&& value) { m_issuerCertificateIdentifierHasBeenSet = true; m_issuerCertificateIdentifier = std::forward<IssuerCertificateIdentifierT>(value); }
+    template<typename IssuerCertificateIdentifierT = IssuerCertificateIdentifier>
+    ResourceIdentifier& WithIssuerCertificateIdentifier(IssuerCertificateIdentifierT&& value) { SetIssuerCertificateIdentifier(std::forward<IssuerCertificateIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The issuer certificate identifier.</p>
-     */
-    inline void SetIssuerCertificateIdentifier(const IssuerCertificateIdentifier& value) { m_issuerCertificateIdentifierHasBeenSet = true; m_issuerCertificateIdentifier = value; }
-
-    /**
-     * <p>The issuer certificate identifier.</p>
-     */
-    inline void SetIssuerCertificateIdentifier(IssuerCertificateIdentifier&& value) { m_issuerCertificateIdentifierHasBeenSet = true; m_issuerCertificateIdentifier = std::move(value); }
-
-    /**
-     * <p>The issuer certificate identifier.</p>
-     */
-    inline ResourceIdentifier& WithIssuerCertificateIdentifier(const IssuerCertificateIdentifier& value) { SetIssuerCertificateIdentifier(value); return *this;}
-
-    /**
-     * <p>The issuer certificate identifier.</p>
-     */
-    inline ResourceIdentifier& WithIssuerCertificateIdentifier(IssuerCertificateIdentifier&& value) { SetIssuerCertificateIdentifier(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the identified device certificate.</p>
      */
-    inline const Aws::String& GetDeviceCertificateArn() const{ return m_deviceCertificateArn; }
-
-    /**
-     * <p>The ARN of the identified device certificate.</p>
-     */
+    inline const Aws::String& GetDeviceCertificateArn() const { return m_deviceCertificateArn; }
     inline bool DeviceCertificateArnHasBeenSet() const { return m_deviceCertificateArnHasBeenSet; }
-
-    /**
-     * <p>The ARN of the identified device certificate.</p>
-     */
-    inline void SetDeviceCertificateArn(const Aws::String& value) { m_deviceCertificateArnHasBeenSet = true; m_deviceCertificateArn = value; }
-
-    /**
-     * <p>The ARN of the identified device certificate.</p>
-     */
-    inline void SetDeviceCertificateArn(Aws::String&& value) { m_deviceCertificateArnHasBeenSet = true; m_deviceCertificateArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the identified device certificate.</p>
-     */
-    inline void SetDeviceCertificateArn(const char* value) { m_deviceCertificateArnHasBeenSet = true; m_deviceCertificateArn.assign(value); }
-
-    /**
-     * <p>The ARN of the identified device certificate.</p>
-     */
-    inline ResourceIdentifier& WithDeviceCertificateArn(const Aws::String& value) { SetDeviceCertificateArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the identified device certificate.</p>
-     */
-    inline ResourceIdentifier& WithDeviceCertificateArn(Aws::String&& value) { SetDeviceCertificateArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the identified device certificate.</p>
-     */
-    inline ResourceIdentifier& WithDeviceCertificateArn(const char* value) { SetDeviceCertificateArn(value); return *this;}
-
+    template<typename DeviceCertificateArnT = Aws::String>
+    void SetDeviceCertificateArn(DeviceCertificateArnT&& value) { m_deviceCertificateArnHasBeenSet = true; m_deviceCertificateArn = std::forward<DeviceCertificateArnT>(value); }
+    template<typename DeviceCertificateArnT = Aws::String>
+    ResourceIdentifier& WithDeviceCertificateArn(DeviceCertificateArnT&& value) { SetDeviceCertificateArn(std::forward<DeviceCertificateArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_deviceCertificateId;

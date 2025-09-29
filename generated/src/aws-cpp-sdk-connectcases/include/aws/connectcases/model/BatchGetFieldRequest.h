@@ -23,7 +23,7 @@ namespace Model
   class BatchGetFieldRequest : public ConnectCasesRequest
   {
   public:
-    AWS_CONNECTCASES_API BatchGetFieldRequest();
+    AWS_CONNECTCASES_API BatchGetFieldRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,87 +34,31 @@ namespace Model
     AWS_CONNECTCASES_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The unique identifier of the Cases domain. </p>
      */
-    inline const Aws::String& GetDomainId() const{ return m_domainId; }
-
-    /**
-     * <p>The unique identifier of the Cases domain. </p>
-     */
+    inline const Aws::String& GetDomainId() const { return m_domainId; }
     inline bool DomainIdHasBeenSet() const { return m_domainIdHasBeenSet; }
+    template<typename DomainIdT = Aws::String>
+    void SetDomainId(DomainIdT&& value) { m_domainIdHasBeenSet = true; m_domainId = std::forward<DomainIdT>(value); }
+    template<typename DomainIdT = Aws::String>
+    BatchGetFieldRequest& WithDomainId(DomainIdT&& value) { SetDomainId(std::forward<DomainIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier of the Cases domain. </p>
-     */
-    inline void SetDomainId(const Aws::String& value) { m_domainIdHasBeenSet = true; m_domainId = value; }
-
-    /**
-     * <p>The unique identifier of the Cases domain. </p>
-     */
-    inline void SetDomainId(Aws::String&& value) { m_domainIdHasBeenSet = true; m_domainId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the Cases domain. </p>
-     */
-    inline void SetDomainId(const char* value) { m_domainIdHasBeenSet = true; m_domainId.assign(value); }
-
-    /**
-     * <p>The unique identifier of the Cases domain. </p>
-     */
-    inline BatchGetFieldRequest& WithDomainId(const Aws::String& value) { SetDomainId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the Cases domain. </p>
-     */
-    inline BatchGetFieldRequest& WithDomainId(Aws::String&& value) { SetDomainId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the Cases domain. </p>
-     */
-    inline BatchGetFieldRequest& WithDomainId(const char* value) { SetDomainId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of unique field identifiers. </p>
      */
-    inline const Aws::Vector<FieldIdentifier>& GetFields() const{ return m_fields; }
-
-    /**
-     * <p>A list of unique field identifiers. </p>
-     */
+    inline const Aws::Vector<FieldIdentifier>& GetFields() const { return m_fields; }
     inline bool FieldsHasBeenSet() const { return m_fieldsHasBeenSet; }
-
-    /**
-     * <p>A list of unique field identifiers. </p>
-     */
-    inline void SetFields(const Aws::Vector<FieldIdentifier>& value) { m_fieldsHasBeenSet = true; m_fields = value; }
-
-    /**
-     * <p>A list of unique field identifiers. </p>
-     */
-    inline void SetFields(Aws::Vector<FieldIdentifier>&& value) { m_fieldsHasBeenSet = true; m_fields = std::move(value); }
-
-    /**
-     * <p>A list of unique field identifiers. </p>
-     */
-    inline BatchGetFieldRequest& WithFields(const Aws::Vector<FieldIdentifier>& value) { SetFields(value); return *this;}
-
-    /**
-     * <p>A list of unique field identifiers. </p>
-     */
-    inline BatchGetFieldRequest& WithFields(Aws::Vector<FieldIdentifier>&& value) { SetFields(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of unique field identifiers. </p>
-     */
-    inline BatchGetFieldRequest& AddFields(const FieldIdentifier& value) { m_fieldsHasBeenSet = true; m_fields.push_back(value); return *this; }
-
-    /**
-     * <p>A list of unique field identifiers. </p>
-     */
-    inline BatchGetFieldRequest& AddFields(FieldIdentifier&& value) { m_fieldsHasBeenSet = true; m_fields.push_back(std::move(value)); return *this; }
-
+    template<typename FieldsT = Aws::Vector<FieldIdentifier>>
+    void SetFields(FieldsT&& value) { m_fieldsHasBeenSet = true; m_fields = std::forward<FieldsT>(value); }
+    template<typename FieldsT = Aws::Vector<FieldIdentifier>>
+    BatchGetFieldRequest& WithFields(FieldsT&& value) { SetFields(std::forward<FieldsT>(value)); return *this;}
+    template<typename FieldsT = FieldIdentifier>
+    BatchGetFieldRequest& AddFields(FieldsT&& value) { m_fieldsHasBeenSet = true; m_fields.emplace_back(std::forward<FieldsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_domainId;

@@ -18,17 +18,7 @@ namespace OpenSearchService
 namespace Model
 {
 
-DataSourceDetails::DataSourceDetails() : 
-    m_dataSourceTypeHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false)
-{
-}
-
-DataSourceDetails::DataSourceDetails(JsonView jsonValue) : 
-    m_dataSourceTypeHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false)
+DataSourceDetails::DataSourceDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,23 @@ DataSourceDetails& DataSourceDetails::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("DataSourceType"))
   {
     m_dataSourceType = jsonValue.GetObject("DataSourceType");
-
     m_dataSourceTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Description"))
   {
     m_description = jsonValue.GetString("Description");
-
     m_descriptionHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("Status"))
+  {
+    m_status = DataSourceStatusMapper::GetDataSourceStatusForName(jsonValue.GetString("Status"));
+    m_statusHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -79,6 +68,11 @@ JsonValue DataSourceDetails::Jsonize() const
   {
    payload.WithString("Description", m_description);
 
+  }
+
+  if(m_statusHasBeenSet)
+  {
+   payload.WithString("Status", DataSourceStatusMapper::GetNameForDataSourceStatus(m_status));
   }
 
   return payload;

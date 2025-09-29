@@ -11,6 +11,7 @@
 #include <aws/verifiedpermissions/model/ServiceQuotaExceededException.h>
 #include <aws/verifiedpermissions/model/ResourceNotFoundException.h>
 #include <aws/verifiedpermissions/model/ValidationException.h>
+#include <aws/verifiedpermissions/model/TooManyTagsException.h>
 
 using namespace Aws::Client;
 using namespace Aws::Utils;
@@ -51,12 +52,20 @@ template<> AWS_VERIFIEDPERMISSIONS_API ValidationException VerifiedPermissionsEr
   return ValidationException(this->GetJsonPayload().View());
 }
 
+template<> AWS_VERIFIEDPERMISSIONS_API TooManyTagsException VerifiedPermissionsError::GetModeledError()
+{
+  assert(this->GetErrorType() == VerifiedPermissionsErrors::TOO_MANY_TAGS);
+  return TooManyTagsException(this->GetJsonPayload().View());
+}
+
 namespace VerifiedPermissionsErrorMapper
 {
 
 static const int CONFLICT_HASH = HashingUtils::HashString("ConflictException");
 static const int SERVICE_QUOTA_EXCEEDED_HASH = HashingUtils::HashString("ServiceQuotaExceededException");
 static const int INTERNAL_SERVER_HASH = HashingUtils::HashString("InternalServerException");
+static const int TOO_MANY_TAGS_HASH = HashingUtils::HashString("TooManyTagsException");
+static const int INVALID_STATE_HASH = HashingUtils::HashString("InvalidStateException");
 
 
 AWSError<CoreErrors> GetErrorForName(const char* errorName)
@@ -74,6 +83,14 @@ AWSError<CoreErrors> GetErrorForName(const char* errorName)
   else if (hashCode == INTERNAL_SERVER_HASH)
   {
     return AWSError<CoreErrors>(static_cast<CoreErrors>(VerifiedPermissionsErrors::INTERNAL_SERVER), RetryableType::RETRYABLE);
+  }
+  else if (hashCode == TOO_MANY_TAGS_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(VerifiedPermissionsErrors::TOO_MANY_TAGS), RetryableType::NOT_RETRYABLE);
+  }
+  else if (hashCode == INVALID_STATE_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(VerifiedPermissionsErrors::INVALID_STATE), RetryableType::NOT_RETRYABLE);
   }
   return AWSError<CoreErrors>(CoreErrors::UNKNOWN, false);
 }

@@ -5,10 +5,13 @@
 
 #pragma once
 #include <aws/bedrock-agent-runtime/BedrockAgentRuntime_EXPORTS.h>
+#include <aws/bedrock-agent-runtime/model/GuardrailTrace.h>
 #include <aws/bedrock-agent-runtime/model/PreProcessingTrace.h>
 #include <aws/bedrock-agent-runtime/model/OrchestrationTrace.h>
 #include <aws/bedrock-agent-runtime/model/PostProcessingTrace.h>
+#include <aws/bedrock-agent-runtime/model/RoutingClassifierTrace.h>
 #include <aws/bedrock-agent-runtime/model/FailureTrace.h>
+#include <aws/bedrock-agent-runtime/model/CustomOrchestrationTrace.h>
 #include <utility>
 
 namespace Aws
@@ -27,96 +30,115 @@ namespace Model
 {
 
   /**
-   * <p>Trace contains intermidate response for customer</p><p><h3>See Also:</h3>  
-   * <a
+   * <p>Contains one part of the agent's reasoning process and results from calling
+   * API actions and querying knowledge bases. You can use the trace to understand
+   * how the agent arrived at the response it provided the customer. For more
+   * information, see <a
+   * href="https://docs.aws.amazon.com/bedrock/latest/userguide/agents-test.html#trace-enablement">Trace
+   * enablement</a>.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/bedrock-agent-runtime-2023-07-26/Trace">AWS
    * API Reference</a></p>
    */
   class Trace
   {
   public:
-    AWS_BEDROCKAGENTRUNTIME_API Trace();
+    AWS_BEDROCKAGENTRUNTIME_API Trace() = default;
     AWS_BEDROCKAGENTRUNTIME_API Trace(Aws::Utils::Json::JsonView jsonValue);
     AWS_BEDROCKAGENTRUNTIME_API Trace& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_BEDROCKAGENTRUNTIME_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
-    
-    inline const PreProcessingTrace& GetPreProcessingTrace() const{ return m_preProcessingTrace; }
+    ///@{
+    /**
+     * <p>The trace details for a trace defined in the Guardrail filter.</p>
+     */
+    inline const GuardrailTrace& GetGuardrailTrace() const { return m_guardrailTrace; }
+    inline bool GuardrailTraceHasBeenSet() const { return m_guardrailTraceHasBeenSet; }
+    template<typename GuardrailTraceT = GuardrailTrace>
+    void SetGuardrailTrace(GuardrailTraceT&& value) { m_guardrailTraceHasBeenSet = true; m_guardrailTrace = std::forward<GuardrailTraceT>(value); }
+    template<typename GuardrailTraceT = GuardrailTrace>
+    Trace& WithGuardrailTrace(GuardrailTraceT&& value) { SetGuardrailTrace(std::forward<GuardrailTraceT>(value)); return *this;}
+    ///@}
 
-    
+    ///@{
+    /**
+     * <p>Details about the pre-processing step, in which the agent contextualizes and
+     * categorizes user inputs.</p>
+     */
+    inline const PreProcessingTrace& GetPreProcessingTrace() const { return m_preProcessingTrace; }
     inline bool PreProcessingTraceHasBeenSet() const { return m_preProcessingTraceHasBeenSet; }
+    template<typename PreProcessingTraceT = PreProcessingTrace>
+    void SetPreProcessingTrace(PreProcessingTraceT&& value) { m_preProcessingTraceHasBeenSet = true; m_preProcessingTrace = std::forward<PreProcessingTraceT>(value); }
+    template<typename PreProcessingTraceT = PreProcessingTrace>
+    Trace& WithPreProcessingTrace(PreProcessingTraceT&& value) { SetPreProcessingTrace(std::forward<PreProcessingTraceT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetPreProcessingTrace(const PreProcessingTrace& value) { m_preProcessingTraceHasBeenSet = true; m_preProcessingTrace = value; }
-
-    
-    inline void SetPreProcessingTrace(PreProcessingTrace&& value) { m_preProcessingTraceHasBeenSet = true; m_preProcessingTrace = std::move(value); }
-
-    
-    inline Trace& WithPreProcessingTrace(const PreProcessingTrace& value) { SetPreProcessingTrace(value); return *this;}
-
-    
-    inline Trace& WithPreProcessingTrace(PreProcessingTrace&& value) { SetPreProcessingTrace(std::move(value)); return *this;}
-
-
-    
-    inline const OrchestrationTrace& GetOrchestrationTrace() const{ return m_orchestrationTrace; }
-
-    
+    ///@{
+    /**
+     * <p>Details about the orchestration step, in which the agent determines the order
+     * in which actions are executed and which knowledge bases are retrieved.</p>
+     */
+    inline const OrchestrationTrace& GetOrchestrationTrace() const { return m_orchestrationTrace; }
     inline bool OrchestrationTraceHasBeenSet() const { return m_orchestrationTraceHasBeenSet; }
+    template<typename OrchestrationTraceT = OrchestrationTrace>
+    void SetOrchestrationTrace(OrchestrationTraceT&& value) { m_orchestrationTraceHasBeenSet = true; m_orchestrationTrace = std::forward<OrchestrationTraceT>(value); }
+    template<typename OrchestrationTraceT = OrchestrationTrace>
+    Trace& WithOrchestrationTrace(OrchestrationTraceT&& value) { SetOrchestrationTrace(std::forward<OrchestrationTraceT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetOrchestrationTrace(const OrchestrationTrace& value) { m_orchestrationTraceHasBeenSet = true; m_orchestrationTrace = value; }
-
-    
-    inline void SetOrchestrationTrace(OrchestrationTrace&& value) { m_orchestrationTraceHasBeenSet = true; m_orchestrationTrace = std::move(value); }
-
-    
-    inline Trace& WithOrchestrationTrace(const OrchestrationTrace& value) { SetOrchestrationTrace(value); return *this;}
-
-    
-    inline Trace& WithOrchestrationTrace(OrchestrationTrace&& value) { SetOrchestrationTrace(std::move(value)); return *this;}
-
-
-    
-    inline const PostProcessingTrace& GetPostProcessingTrace() const{ return m_postProcessingTrace; }
-
-    
+    ///@{
+    /**
+     * <p>Details about the post-processing step, in which the agent shapes the
+     * response..</p>
+     */
+    inline const PostProcessingTrace& GetPostProcessingTrace() const { return m_postProcessingTrace; }
     inline bool PostProcessingTraceHasBeenSet() const { return m_postProcessingTraceHasBeenSet; }
+    template<typename PostProcessingTraceT = PostProcessingTrace>
+    void SetPostProcessingTrace(PostProcessingTraceT&& value) { m_postProcessingTraceHasBeenSet = true; m_postProcessingTrace = std::forward<PostProcessingTraceT>(value); }
+    template<typename PostProcessingTraceT = PostProcessingTrace>
+    Trace& WithPostProcessingTrace(PostProcessingTraceT&& value) { SetPostProcessingTrace(std::forward<PostProcessingTraceT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetPostProcessingTrace(const PostProcessingTrace& value) { m_postProcessingTraceHasBeenSet = true; m_postProcessingTrace = value; }
+    ///@{
+    /**
+     * <p>A routing classifier's trace.</p>
+     */
+    inline const RoutingClassifierTrace& GetRoutingClassifierTrace() const { return m_routingClassifierTrace; }
+    inline bool RoutingClassifierTraceHasBeenSet() const { return m_routingClassifierTraceHasBeenSet; }
+    template<typename RoutingClassifierTraceT = RoutingClassifierTrace>
+    void SetRoutingClassifierTrace(RoutingClassifierTraceT&& value) { m_routingClassifierTraceHasBeenSet = true; m_routingClassifierTrace = std::forward<RoutingClassifierTraceT>(value); }
+    template<typename RoutingClassifierTraceT = RoutingClassifierTrace>
+    Trace& WithRoutingClassifierTrace(RoutingClassifierTraceT&& value) { SetRoutingClassifierTrace(std::forward<RoutingClassifierTraceT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetPostProcessingTrace(PostProcessingTrace&& value) { m_postProcessingTraceHasBeenSet = true; m_postProcessingTrace = std::move(value); }
-
-    
-    inline Trace& WithPostProcessingTrace(const PostProcessingTrace& value) { SetPostProcessingTrace(value); return *this;}
-
-    
-    inline Trace& WithPostProcessingTrace(PostProcessingTrace&& value) { SetPostProcessingTrace(std::move(value)); return *this;}
-
-
-    
-    inline const FailureTrace& GetFailureTrace() const{ return m_failureTrace; }
-
-    
+    ///@{
+    /**
+     * <p>Contains information about the failure of the interaction.</p>
+     */
+    inline const FailureTrace& GetFailureTrace() const { return m_failureTrace; }
     inline bool FailureTraceHasBeenSet() const { return m_failureTraceHasBeenSet; }
+    template<typename FailureTraceT = FailureTrace>
+    void SetFailureTrace(FailureTraceT&& value) { m_failureTraceHasBeenSet = true; m_failureTrace = std::forward<FailureTraceT>(value); }
+    template<typename FailureTraceT = FailureTrace>
+    Trace& WithFailureTrace(FailureTraceT&& value) { SetFailureTrace(std::forward<FailureTraceT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetFailureTrace(const FailureTrace& value) { m_failureTraceHasBeenSet = true; m_failureTrace = value; }
-
-    
-    inline void SetFailureTrace(FailureTrace&& value) { m_failureTraceHasBeenSet = true; m_failureTrace = std::move(value); }
-
-    
-    inline Trace& WithFailureTrace(const FailureTrace& value) { SetFailureTrace(value); return *this;}
-
-    
-    inline Trace& WithFailureTrace(FailureTrace&& value) { SetFailureTrace(std::move(value)); return *this;}
-
+    ///@{
+    /**
+     * <p> Details about the custom orchestration step in which the agent determines
+     * the order in which actions are executed. </p>
+     */
+    inline const CustomOrchestrationTrace& GetCustomOrchestrationTrace() const { return m_customOrchestrationTrace; }
+    inline bool CustomOrchestrationTraceHasBeenSet() const { return m_customOrchestrationTraceHasBeenSet; }
+    template<typename CustomOrchestrationTraceT = CustomOrchestrationTrace>
+    void SetCustomOrchestrationTrace(CustomOrchestrationTraceT&& value) { m_customOrchestrationTraceHasBeenSet = true; m_customOrchestrationTrace = std::forward<CustomOrchestrationTraceT>(value); }
+    template<typename CustomOrchestrationTraceT = CustomOrchestrationTrace>
+    Trace& WithCustomOrchestrationTrace(CustomOrchestrationTraceT&& value) { SetCustomOrchestrationTrace(std::forward<CustomOrchestrationTraceT>(value)); return *this;}
+    ///@}
   private:
+
+    GuardrailTrace m_guardrailTrace;
+    bool m_guardrailTraceHasBeenSet = false;
 
     PreProcessingTrace m_preProcessingTrace;
     bool m_preProcessingTraceHasBeenSet = false;
@@ -127,8 +149,14 @@ namespace Model
     PostProcessingTrace m_postProcessingTrace;
     bool m_postProcessingTraceHasBeenSet = false;
 
+    RoutingClassifierTrace m_routingClassifierTrace;
+    bool m_routingClassifierTraceHasBeenSet = false;
+
     FailureTrace m_failureTrace;
     bool m_failureTraceHasBeenSet = false;
+
+    CustomOrchestrationTrace m_customOrchestrationTrace;
+    bool m_customOrchestrationTraceHasBeenSet = false;
   };
 
 } // namespace Model

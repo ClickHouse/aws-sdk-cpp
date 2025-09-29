@@ -18,17 +18,7 @@ namespace BedrockAgentRuntime
 namespace Model
 {
 
-PreProcessingParsedResponse::PreProcessingParsedResponse() : 
-    m_rationaleHasBeenSet(false),
-    m_isValid(false),
-    m_isValidHasBeenSet(false)
-{
-}
-
-PreProcessingParsedResponse::PreProcessingParsedResponse(JsonView jsonValue) : 
-    m_rationaleHasBeenSet(false),
-    m_isValid(false),
-    m_isValidHasBeenSet(false)
+PreProcessingParsedResponse::PreProcessingParsedResponse(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ PreProcessingParsedResponse& PreProcessingParsedResponse::operator =(JsonView js
   if(jsonValue.ValueExists("rationale"))
   {
     m_rationale = jsonValue.GetString("rationale");
-
     m_rationaleHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("isValid"))
   {
     m_isValid = jsonValue.GetBool("isValid");
-
     m_isValidHasBeenSet = true;
   }
-
   return *this;
 }
 

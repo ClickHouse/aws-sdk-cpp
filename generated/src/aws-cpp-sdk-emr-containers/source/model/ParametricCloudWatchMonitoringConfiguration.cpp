@@ -18,15 +18,7 @@ namespace EMRContainers
 namespace Model
 {
 
-ParametricCloudWatchMonitoringConfiguration::ParametricCloudWatchMonitoringConfiguration() : 
-    m_logGroupNameHasBeenSet(false),
-    m_logStreamNamePrefixHasBeenSet(false)
-{
-}
-
-ParametricCloudWatchMonitoringConfiguration::ParametricCloudWatchMonitoringConfiguration(JsonView jsonValue) : 
-    m_logGroupNameHasBeenSet(false),
-    m_logStreamNamePrefixHasBeenSet(false)
+ParametricCloudWatchMonitoringConfiguration::ParametricCloudWatchMonitoringConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ParametricCloudWatchMonitoringConfiguration& ParametricCloudWatchMonitoringConfi
   if(jsonValue.ValueExists("logGroupName"))
   {
     m_logGroupName = jsonValue.GetString("logGroupName");
-
     m_logGroupNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("logStreamNamePrefix"))
   {
     m_logStreamNamePrefix = jsonValue.GetString("logStreamNamePrefix");
-
     m_logStreamNamePrefixHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -36,12 +36,13 @@ namespace Model
   class UploaderConfig
   {
   public:
-    AWS_KINESISVIDEO_API UploaderConfig();
+    AWS_KINESISVIDEO_API UploaderConfig() = default;
     AWS_KINESISVIDEO_API UploaderConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISVIDEO_API UploaderConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISVIDEO_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The configuration that consists of the <code>ScheduleExpression</code> and
      * the <code>DurationInMinutes</code> details that specify the scheduling to record
@@ -49,53 +50,13 @@ namespace Model
      * <code>ScheduleConfig</code> is not provided in this <code>UploaderConfig</code>,
      * then the Edge Agent will upload at regular intervals (every 1 hour).</p>
      */
-    inline const ScheduleConfig& GetScheduleConfig() const{ return m_scheduleConfig; }
-
-    /**
-     * <p>The configuration that consists of the <code>ScheduleExpression</code> and
-     * the <code>DurationInMinutes</code> details that specify the scheduling to record
-     * from a camera, or local media file, onto the Edge Agent. If the
-     * <code>ScheduleConfig</code> is not provided in this <code>UploaderConfig</code>,
-     * then the Edge Agent will upload at regular intervals (every 1 hour).</p>
-     */
+    inline const ScheduleConfig& GetScheduleConfig() const { return m_scheduleConfig; }
     inline bool ScheduleConfigHasBeenSet() const { return m_scheduleConfigHasBeenSet; }
-
-    /**
-     * <p>The configuration that consists of the <code>ScheduleExpression</code> and
-     * the <code>DurationInMinutes</code> details that specify the scheduling to record
-     * from a camera, or local media file, onto the Edge Agent. If the
-     * <code>ScheduleConfig</code> is not provided in this <code>UploaderConfig</code>,
-     * then the Edge Agent will upload at regular intervals (every 1 hour).</p>
-     */
-    inline void SetScheduleConfig(const ScheduleConfig& value) { m_scheduleConfigHasBeenSet = true; m_scheduleConfig = value; }
-
-    /**
-     * <p>The configuration that consists of the <code>ScheduleExpression</code> and
-     * the <code>DurationInMinutes</code> details that specify the scheduling to record
-     * from a camera, or local media file, onto the Edge Agent. If the
-     * <code>ScheduleConfig</code> is not provided in this <code>UploaderConfig</code>,
-     * then the Edge Agent will upload at regular intervals (every 1 hour).</p>
-     */
-    inline void SetScheduleConfig(ScheduleConfig&& value) { m_scheduleConfigHasBeenSet = true; m_scheduleConfig = std::move(value); }
-
-    /**
-     * <p>The configuration that consists of the <code>ScheduleExpression</code> and
-     * the <code>DurationInMinutes</code> details that specify the scheduling to record
-     * from a camera, or local media file, onto the Edge Agent. If the
-     * <code>ScheduleConfig</code> is not provided in this <code>UploaderConfig</code>,
-     * then the Edge Agent will upload at regular intervals (every 1 hour).</p>
-     */
-    inline UploaderConfig& WithScheduleConfig(const ScheduleConfig& value) { SetScheduleConfig(value); return *this;}
-
-    /**
-     * <p>The configuration that consists of the <code>ScheduleExpression</code> and
-     * the <code>DurationInMinutes</code> details that specify the scheduling to record
-     * from a camera, or local media file, onto the Edge Agent. If the
-     * <code>ScheduleConfig</code> is not provided in this <code>UploaderConfig</code>,
-     * then the Edge Agent will upload at regular intervals (every 1 hour).</p>
-     */
-    inline UploaderConfig& WithScheduleConfig(ScheduleConfig&& value) { SetScheduleConfig(std::move(value)); return *this;}
-
+    template<typename ScheduleConfigT = ScheduleConfig>
+    void SetScheduleConfig(ScheduleConfigT&& value) { m_scheduleConfigHasBeenSet = true; m_scheduleConfig = std::forward<ScheduleConfigT>(value); }
+    template<typename ScheduleConfigT = ScheduleConfig>
+    UploaderConfig& WithScheduleConfig(ScheduleConfigT&& value) { SetScheduleConfig(std::forward<ScheduleConfigT>(value)); return *this;}
+    ///@}
   private:
 
     ScheduleConfig m_scheduleConfig;

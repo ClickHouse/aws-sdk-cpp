@@ -35,12 +35,13 @@ namespace Model
   class DriftStatusSummary
   {
   public:
-    AWS_CONTROLTOWER_API DriftStatusSummary();
+    AWS_CONTROLTOWER_API DriftStatusSummary() = default;
     AWS_CONTROLTOWER_API DriftStatusSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONTROLTOWER_API DriftStatusSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONTROLTOWER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The drift status of the enabled control.</p> <p>Valid values:</p> <ul> <li>
      * <p> <code>DRIFTED</code>: The <code>enabledControl</code> deployed in this
@@ -53,81 +54,14 @@ namespace Model
      * </li> <li> <p> <code>UNKNOWN</code>: Amazon Web Services Control Tower is not
      * able to check the drift status for the enabled control. </p> </li> </ul>
      */
-    inline const DriftStatus& GetDriftStatus() const{ return m_driftStatus; }
-
-    /**
-     * <p> The drift status of the enabled control.</p> <p>Valid values:</p> <ul> <li>
-     * <p> <code>DRIFTED</code>: The <code>enabledControl</code> deployed in this
-     * configuration doesn’t match the configuration that Amazon Web Services Control
-     * Tower expected. </p> </li> <li> <p> <code>IN_SYNC</code>: The
-     * <code>enabledControl</code> deployed in this configuration matches the
-     * configuration that Amazon Web Services Control Tower expected.</p> </li> <li>
-     * <p> <code>NOT_CHECKING</code>: Amazon Web Services Control Tower does not check
-     * drift for this enabled control. Drift is not supported for the control type.</p>
-     * </li> <li> <p> <code>UNKNOWN</code>: Amazon Web Services Control Tower is not
-     * able to check the drift status for the enabled control. </p> </li> </ul>
-     */
+    inline DriftStatus GetDriftStatus() const { return m_driftStatus; }
     inline bool DriftStatusHasBeenSet() const { return m_driftStatusHasBeenSet; }
-
-    /**
-     * <p> The drift status of the enabled control.</p> <p>Valid values:</p> <ul> <li>
-     * <p> <code>DRIFTED</code>: The <code>enabledControl</code> deployed in this
-     * configuration doesn’t match the configuration that Amazon Web Services Control
-     * Tower expected. </p> </li> <li> <p> <code>IN_SYNC</code>: The
-     * <code>enabledControl</code> deployed in this configuration matches the
-     * configuration that Amazon Web Services Control Tower expected.</p> </li> <li>
-     * <p> <code>NOT_CHECKING</code>: Amazon Web Services Control Tower does not check
-     * drift for this enabled control. Drift is not supported for the control type.</p>
-     * </li> <li> <p> <code>UNKNOWN</code>: Amazon Web Services Control Tower is not
-     * able to check the drift status for the enabled control. </p> </li> </ul>
-     */
-    inline void SetDriftStatus(const DriftStatus& value) { m_driftStatusHasBeenSet = true; m_driftStatus = value; }
-
-    /**
-     * <p> The drift status of the enabled control.</p> <p>Valid values:</p> <ul> <li>
-     * <p> <code>DRIFTED</code>: The <code>enabledControl</code> deployed in this
-     * configuration doesn’t match the configuration that Amazon Web Services Control
-     * Tower expected. </p> </li> <li> <p> <code>IN_SYNC</code>: The
-     * <code>enabledControl</code> deployed in this configuration matches the
-     * configuration that Amazon Web Services Control Tower expected.</p> </li> <li>
-     * <p> <code>NOT_CHECKING</code>: Amazon Web Services Control Tower does not check
-     * drift for this enabled control. Drift is not supported for the control type.</p>
-     * </li> <li> <p> <code>UNKNOWN</code>: Amazon Web Services Control Tower is not
-     * able to check the drift status for the enabled control. </p> </li> </ul>
-     */
-    inline void SetDriftStatus(DriftStatus&& value) { m_driftStatusHasBeenSet = true; m_driftStatus = std::move(value); }
-
-    /**
-     * <p> The drift status of the enabled control.</p> <p>Valid values:</p> <ul> <li>
-     * <p> <code>DRIFTED</code>: The <code>enabledControl</code> deployed in this
-     * configuration doesn’t match the configuration that Amazon Web Services Control
-     * Tower expected. </p> </li> <li> <p> <code>IN_SYNC</code>: The
-     * <code>enabledControl</code> deployed in this configuration matches the
-     * configuration that Amazon Web Services Control Tower expected.</p> </li> <li>
-     * <p> <code>NOT_CHECKING</code>: Amazon Web Services Control Tower does not check
-     * drift for this enabled control. Drift is not supported for the control type.</p>
-     * </li> <li> <p> <code>UNKNOWN</code>: Amazon Web Services Control Tower is not
-     * able to check the drift status for the enabled control. </p> </li> </ul>
-     */
-    inline DriftStatusSummary& WithDriftStatus(const DriftStatus& value) { SetDriftStatus(value); return *this;}
-
-    /**
-     * <p> The drift status of the enabled control.</p> <p>Valid values:</p> <ul> <li>
-     * <p> <code>DRIFTED</code>: The <code>enabledControl</code> deployed in this
-     * configuration doesn’t match the configuration that Amazon Web Services Control
-     * Tower expected. </p> </li> <li> <p> <code>IN_SYNC</code>: The
-     * <code>enabledControl</code> deployed in this configuration matches the
-     * configuration that Amazon Web Services Control Tower expected.</p> </li> <li>
-     * <p> <code>NOT_CHECKING</code>: Amazon Web Services Control Tower does not check
-     * drift for this enabled control. Drift is not supported for the control type.</p>
-     * </li> <li> <p> <code>UNKNOWN</code>: Amazon Web Services Control Tower is not
-     * able to check the drift status for the enabled control. </p> </li> </ul>
-     */
-    inline DriftStatusSummary& WithDriftStatus(DriftStatus&& value) { SetDriftStatus(std::move(value)); return *this;}
-
+    inline void SetDriftStatus(DriftStatus value) { m_driftStatusHasBeenSet = true; m_driftStatus = value; }
+    inline DriftStatusSummary& WithDriftStatus(DriftStatus value) { SetDriftStatus(value); return *this;}
+    ///@}
   private:
 
-    DriftStatus m_driftStatus;
+    DriftStatus m_driftStatus{DriftStatus::NOT_SET};
     bool m_driftStatusHasBeenSet = false;
   };
 

@@ -34,368 +34,120 @@ namespace Model
   class StaticIp
   {
   public:
-    AWS_LIGHTSAIL_API StaticIp();
+    AWS_LIGHTSAIL_API StaticIp() = default;
     AWS_LIGHTSAIL_API StaticIp(Aws::Utils::Json::JsonView jsonValue);
     AWS_LIGHTSAIL_API StaticIp& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LIGHTSAIL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The name of the static IP (e.g., <code>StaticIP-Ohio-EXAMPLE</code>).</p>
+     * <p>The name of the static IP (<code>StaticIP-Ohio-EXAMPLE</code>).</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the static IP (e.g., <code>StaticIP-Ohio-EXAMPLE</code>).</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    StaticIp& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name of the static IP (e.g., <code>StaticIP-Ohio-EXAMPLE</code>).</p>
+     * <p>The Amazon Resource Name (ARN) of the static IP
+     * (<code>arn:aws:lightsail:us-east-2:123456789101:StaticIp/9cbb4a9e-f8e3-4dfe-b57e-12345EXAMPLE</code>).</p>
      */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the static IP (e.g., <code>StaticIP-Ohio-EXAMPLE</code>).</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the static IP (e.g., <code>StaticIP-Ohio-EXAMPLE</code>).</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the static IP (e.g., <code>StaticIP-Ohio-EXAMPLE</code>).</p>
-     */
-    inline StaticIp& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the static IP (e.g., <code>StaticIP-Ohio-EXAMPLE</code>).</p>
-     */
-    inline StaticIp& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the static IP (e.g., <code>StaticIP-Ohio-EXAMPLE</code>).</p>
-     */
-    inline StaticIp& WithName(const char* value) { SetName(value); return *this;}
-
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the static IP (e.g.,
-     * <code>arn:aws:lightsail:us-east-2:123456789101:StaticIp/9cbb4a9e-f8e3-4dfe-b57e-12345EXAMPLE</code>).</p>
-     */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the static IP (e.g.,
-     * <code>arn:aws:lightsail:us-east-2:123456789101:StaticIp/9cbb4a9e-f8e3-4dfe-b57e-12345EXAMPLE</code>).</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    StaticIp& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the static IP (e.g.,
-     * <code>arn:aws:lightsail:us-east-2:123456789101:StaticIp/9cbb4a9e-f8e3-4dfe-b57e-12345EXAMPLE</code>).</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the static IP (e.g.,
-     * <code>arn:aws:lightsail:us-east-2:123456789101:StaticIp/9cbb4a9e-f8e3-4dfe-b57e-12345EXAMPLE</code>).</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the static IP (e.g.,
-     * <code>arn:aws:lightsail:us-east-2:123456789101:StaticIp/9cbb4a9e-f8e3-4dfe-b57e-12345EXAMPLE</code>).</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the static IP (e.g.,
-     * <code>arn:aws:lightsail:us-east-2:123456789101:StaticIp/9cbb4a9e-f8e3-4dfe-b57e-12345EXAMPLE</code>).</p>
-     */
-    inline StaticIp& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the static IP (e.g.,
-     * <code>arn:aws:lightsail:us-east-2:123456789101:StaticIp/9cbb4a9e-f8e3-4dfe-b57e-12345EXAMPLE</code>).</p>
-     */
-    inline StaticIp& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the static IP (e.g.,
-     * <code>arn:aws:lightsail:us-east-2:123456789101:StaticIp/9cbb4a9e-f8e3-4dfe-b57e-12345EXAMPLE</code>).</p>
-     */
-    inline StaticIp& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The support code. Include this code in your email to support when you have
      * questions about an instance or another resource in Lightsail. This code enables
      * our support team to look up your Lightsail information more easily.</p>
      */
-    inline const Aws::String& GetSupportCode() const{ return m_supportCode; }
-
-    /**
-     * <p>The support code. Include this code in your email to support when you have
-     * questions about an instance or another resource in Lightsail. This code enables
-     * our support team to look up your Lightsail information more easily.</p>
-     */
+    inline const Aws::String& GetSupportCode() const { return m_supportCode; }
     inline bool SupportCodeHasBeenSet() const { return m_supportCodeHasBeenSet; }
+    template<typename SupportCodeT = Aws::String>
+    void SetSupportCode(SupportCodeT&& value) { m_supportCodeHasBeenSet = true; m_supportCode = std::forward<SupportCodeT>(value); }
+    template<typename SupportCodeT = Aws::String>
+    StaticIp& WithSupportCode(SupportCodeT&& value) { SetSupportCode(std::forward<SupportCodeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The support code. Include this code in your email to support when you have
-     * questions about an instance or another resource in Lightsail. This code enables
-     * our support team to look up your Lightsail information more easily.</p>
+     * <p>The timestamp when the static IP was created
+     * (<code>1479735304.222</code>).</p>
      */
-    inline void SetSupportCode(const Aws::String& value) { m_supportCodeHasBeenSet = true; m_supportCode = value; }
-
-    /**
-     * <p>The support code. Include this code in your email to support when you have
-     * questions about an instance or another resource in Lightsail. This code enables
-     * our support team to look up your Lightsail information more easily.</p>
-     */
-    inline void SetSupportCode(Aws::String&& value) { m_supportCodeHasBeenSet = true; m_supportCode = std::move(value); }
-
-    /**
-     * <p>The support code. Include this code in your email to support when you have
-     * questions about an instance or another resource in Lightsail. This code enables
-     * our support team to look up your Lightsail information more easily.</p>
-     */
-    inline void SetSupportCode(const char* value) { m_supportCodeHasBeenSet = true; m_supportCode.assign(value); }
-
-    /**
-     * <p>The support code. Include this code in your email to support when you have
-     * questions about an instance or another resource in Lightsail. This code enables
-     * our support team to look up your Lightsail information more easily.</p>
-     */
-    inline StaticIp& WithSupportCode(const Aws::String& value) { SetSupportCode(value); return *this;}
-
-    /**
-     * <p>The support code. Include this code in your email to support when you have
-     * questions about an instance or another resource in Lightsail. This code enables
-     * our support team to look up your Lightsail information more easily.</p>
-     */
-    inline StaticIp& WithSupportCode(Aws::String&& value) { SetSupportCode(std::move(value)); return *this;}
-
-    /**
-     * <p>The support code. Include this code in your email to support when you have
-     * questions about an instance or another resource in Lightsail. This code enables
-     * our support team to look up your Lightsail information more easily.</p>
-     */
-    inline StaticIp& WithSupportCode(const char* value) { SetSupportCode(value); return *this;}
-
-
-    /**
-     * <p>The timestamp when the static IP was created (e.g.,
-     * <code>1479735304.222</code>).</p>
-     */
-    inline const Aws::Utils::DateTime& GetCreatedAt() const{ return m_createdAt; }
-
-    /**
-     * <p>The timestamp when the static IP was created (e.g.,
-     * <code>1479735304.222</code>).</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedAt() const { return m_createdAt; }
     inline bool CreatedAtHasBeenSet() const { return m_createdAtHasBeenSet; }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    void SetCreatedAt(CreatedAtT&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::forward<CreatedAtT>(value); }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    StaticIp& WithCreatedAt(CreatedAtT&& value) { SetCreatedAt(std::forward<CreatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp when the static IP was created (e.g.,
-     * <code>1479735304.222</code>).</p>
-     */
-    inline void SetCreatedAt(const Aws::Utils::DateTime& value) { m_createdAtHasBeenSet = true; m_createdAt = value; }
-
-    /**
-     * <p>The timestamp when the static IP was created (e.g.,
-     * <code>1479735304.222</code>).</p>
-     */
-    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::move(value); }
-
-    /**
-     * <p>The timestamp when the static IP was created (e.g.,
-     * <code>1479735304.222</code>).</p>
-     */
-    inline StaticIp& WithCreatedAt(const Aws::Utils::DateTime& value) { SetCreatedAt(value); return *this;}
-
-    /**
-     * <p>The timestamp when the static IP was created (e.g.,
-     * <code>1479735304.222</code>).</p>
-     */
-    inline StaticIp& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The region and Availability Zone where the static IP was created.</p>
      */
-    inline const ResourceLocation& GetLocation() const{ return m_location; }
-
-    /**
-     * <p>The region and Availability Zone where the static IP was created.</p>
-     */
+    inline const ResourceLocation& GetLocation() const { return m_location; }
     inline bool LocationHasBeenSet() const { return m_locationHasBeenSet; }
+    template<typename LocationT = ResourceLocation>
+    void SetLocation(LocationT&& value) { m_locationHasBeenSet = true; m_location = std::forward<LocationT>(value); }
+    template<typename LocationT = ResourceLocation>
+    StaticIp& WithLocation(LocationT&& value) { SetLocation(std::forward<LocationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The region and Availability Zone where the static IP was created.</p>
-     */
-    inline void SetLocation(const ResourceLocation& value) { m_locationHasBeenSet = true; m_location = value; }
-
-    /**
-     * <p>The region and Availability Zone where the static IP was created.</p>
-     */
-    inline void SetLocation(ResourceLocation&& value) { m_locationHasBeenSet = true; m_location = std::move(value); }
-
-    /**
-     * <p>The region and Availability Zone where the static IP was created.</p>
-     */
-    inline StaticIp& WithLocation(const ResourceLocation& value) { SetLocation(value); return *this;}
-
-    /**
-     * <p>The region and Availability Zone where the static IP was created.</p>
-     */
-    inline StaticIp& WithLocation(ResourceLocation&& value) { SetLocation(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The resource type (usually <code>StaticIp</code>).</p>
      */
-    inline const ResourceType& GetResourceType() const{ return m_resourceType; }
-
-    /**
-     * <p>The resource type (usually <code>StaticIp</code>).</p>
-     */
+    inline ResourceType GetResourceType() const { return m_resourceType; }
     inline bool ResourceTypeHasBeenSet() const { return m_resourceTypeHasBeenSet; }
+    inline void SetResourceType(ResourceType value) { m_resourceTypeHasBeenSet = true; m_resourceType = value; }
+    inline StaticIp& WithResourceType(ResourceType value) { SetResourceType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The resource type (usually <code>StaticIp</code>).</p>
-     */
-    inline void SetResourceType(const ResourceType& value) { m_resourceTypeHasBeenSet = true; m_resourceType = value; }
-
-    /**
-     * <p>The resource type (usually <code>StaticIp</code>).</p>
-     */
-    inline void SetResourceType(ResourceType&& value) { m_resourceTypeHasBeenSet = true; m_resourceType = std::move(value); }
-
-    /**
-     * <p>The resource type (usually <code>StaticIp</code>).</p>
-     */
-    inline StaticIp& WithResourceType(const ResourceType& value) { SetResourceType(value); return *this;}
-
-    /**
-     * <p>The resource type (usually <code>StaticIp</code>).</p>
-     */
-    inline StaticIp& WithResourceType(ResourceType&& value) { SetResourceType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The static IP address.</p>
      */
-    inline const Aws::String& GetIpAddress() const{ return m_ipAddress; }
-
-    /**
-     * <p>The static IP address.</p>
-     */
+    inline const Aws::String& GetIpAddress() const { return m_ipAddress; }
     inline bool IpAddressHasBeenSet() const { return m_ipAddressHasBeenSet; }
+    template<typename IpAddressT = Aws::String>
+    void SetIpAddress(IpAddressT&& value) { m_ipAddressHasBeenSet = true; m_ipAddress = std::forward<IpAddressT>(value); }
+    template<typename IpAddressT = Aws::String>
+    StaticIp& WithIpAddress(IpAddressT&& value) { SetIpAddress(std::forward<IpAddressT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The static IP address.</p>
+     * <p>The instance where the static IP is attached
+     * (<code>Amazon_Linux-1GB-Ohio-1</code>).</p>
      */
-    inline void SetIpAddress(const Aws::String& value) { m_ipAddressHasBeenSet = true; m_ipAddress = value; }
-
-    /**
-     * <p>The static IP address.</p>
-     */
-    inline void SetIpAddress(Aws::String&& value) { m_ipAddressHasBeenSet = true; m_ipAddress = std::move(value); }
-
-    /**
-     * <p>The static IP address.</p>
-     */
-    inline void SetIpAddress(const char* value) { m_ipAddressHasBeenSet = true; m_ipAddress.assign(value); }
-
-    /**
-     * <p>The static IP address.</p>
-     */
-    inline StaticIp& WithIpAddress(const Aws::String& value) { SetIpAddress(value); return *this;}
-
-    /**
-     * <p>The static IP address.</p>
-     */
-    inline StaticIp& WithIpAddress(Aws::String&& value) { SetIpAddress(std::move(value)); return *this;}
-
-    /**
-     * <p>The static IP address.</p>
-     */
-    inline StaticIp& WithIpAddress(const char* value) { SetIpAddress(value); return *this;}
-
-
-    /**
-     * <p>The instance where the static IP is attached (e.g.,
-     * <code>Amazon_Linux-1GB-Ohio-1</code>).</p>
-     */
-    inline const Aws::String& GetAttachedTo() const{ return m_attachedTo; }
-
-    /**
-     * <p>The instance where the static IP is attached (e.g.,
-     * <code>Amazon_Linux-1GB-Ohio-1</code>).</p>
-     */
+    inline const Aws::String& GetAttachedTo() const { return m_attachedTo; }
     inline bool AttachedToHasBeenSet() const { return m_attachedToHasBeenSet; }
+    template<typename AttachedToT = Aws::String>
+    void SetAttachedTo(AttachedToT&& value) { m_attachedToHasBeenSet = true; m_attachedTo = std::forward<AttachedToT>(value); }
+    template<typename AttachedToT = Aws::String>
+    StaticIp& WithAttachedTo(AttachedToT&& value) { SetAttachedTo(std::forward<AttachedToT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The instance where the static IP is attached (e.g.,
-     * <code>Amazon_Linux-1GB-Ohio-1</code>).</p>
-     */
-    inline void SetAttachedTo(const Aws::String& value) { m_attachedToHasBeenSet = true; m_attachedTo = value; }
-
-    /**
-     * <p>The instance where the static IP is attached (e.g.,
-     * <code>Amazon_Linux-1GB-Ohio-1</code>).</p>
-     */
-    inline void SetAttachedTo(Aws::String&& value) { m_attachedToHasBeenSet = true; m_attachedTo = std::move(value); }
-
-    /**
-     * <p>The instance where the static IP is attached (e.g.,
-     * <code>Amazon_Linux-1GB-Ohio-1</code>).</p>
-     */
-    inline void SetAttachedTo(const char* value) { m_attachedToHasBeenSet = true; m_attachedTo.assign(value); }
-
-    /**
-     * <p>The instance where the static IP is attached (e.g.,
-     * <code>Amazon_Linux-1GB-Ohio-1</code>).</p>
-     */
-    inline StaticIp& WithAttachedTo(const Aws::String& value) { SetAttachedTo(value); return *this;}
-
-    /**
-     * <p>The instance where the static IP is attached (e.g.,
-     * <code>Amazon_Linux-1GB-Ohio-1</code>).</p>
-     */
-    inline StaticIp& WithAttachedTo(Aws::String&& value) { SetAttachedTo(std::move(value)); return *this;}
-
-    /**
-     * <p>The instance where the static IP is attached (e.g.,
-     * <code>Amazon_Linux-1GB-Ohio-1</code>).</p>
-     */
-    inline StaticIp& WithAttachedTo(const char* value) { SetAttachedTo(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A Boolean value indicating whether the static IP is attached.</p>
      */
-    inline bool GetIsAttached() const{ return m_isAttached; }
-
-    /**
-     * <p>A Boolean value indicating whether the static IP is attached.</p>
-     */
+    inline bool GetIsAttached() const { return m_isAttached; }
     inline bool IsAttachedHasBeenSet() const { return m_isAttachedHasBeenSet; }
-
-    /**
-     * <p>A Boolean value indicating whether the static IP is attached.</p>
-     */
     inline void SetIsAttached(bool value) { m_isAttachedHasBeenSet = true; m_isAttached = value; }
-
-    /**
-     * <p>A Boolean value indicating whether the static IP is attached.</p>
-     */
     inline StaticIp& WithIsAttached(bool value) { SetIsAttached(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_name;
@@ -407,13 +159,13 @@ namespace Model
     Aws::String m_supportCode;
     bool m_supportCodeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdAt;
+    Aws::Utils::DateTime m_createdAt{};
     bool m_createdAtHasBeenSet = false;
 
     ResourceLocation m_location;
     bool m_locationHasBeenSet = false;
 
-    ResourceType m_resourceType;
+    ResourceType m_resourceType{ResourceType::NOT_SET};
     bool m_resourceTypeHasBeenSet = false;
 
     Aws::String m_ipAddress;
@@ -422,7 +174,7 @@ namespace Model
     Aws::String m_attachedTo;
     bool m_attachedToHasBeenSet = false;
 
-    bool m_isAttached;
+    bool m_isAttached{false};
     bool m_isAttachedHasBeenSet = false;
   };
 

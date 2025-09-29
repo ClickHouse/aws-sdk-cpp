@@ -12,22 +12,6 @@ using namespace Aws::BedrockAgent::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateAgentActionGroupRequest::CreateAgentActionGroupRequest() : 
-    m_agentIdHasBeenSet(false),
-    m_agentVersionHasBeenSet(false),
-    m_actionGroupNameHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_descriptionHasBeenSet(false),
-    m_parentActionGroupSignature(ActionGroupSignature::NOT_SET),
-    m_parentActionGroupSignatureHasBeenSet(false),
-    m_actionGroupExecutorHasBeenSet(false),
-    m_apiSchemaHasBeenSet(false),
-    m_actionGroupState(ActionGroupState::NOT_SET),
-    m_actionGroupStateHasBeenSet(false)
-{
-}
-
 Aws::String CreateAgentActionGroupRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -55,6 +39,17 @@ Aws::String CreateAgentActionGroupRequest::SerializePayload() const
    payload.WithString("parentActionGroupSignature", ActionGroupSignatureMapper::GetNameForActionGroupSignature(m_parentActionGroupSignature));
   }
 
+  if(m_parentActionGroupSignatureParamsHasBeenSet)
+  {
+   JsonValue parentActionGroupSignatureParamsJsonMap;
+   for(auto& parentActionGroupSignatureParamsItem : m_parentActionGroupSignatureParams)
+   {
+     parentActionGroupSignatureParamsJsonMap.WithString(parentActionGroupSignatureParamsItem.first, parentActionGroupSignatureParamsItem.second);
+   }
+   payload.WithObject("parentActionGroupSignatureParams", std::move(parentActionGroupSignatureParamsJsonMap));
+
+  }
+
   if(m_actionGroupExecutorHasBeenSet)
   {
    payload.WithObject("actionGroupExecutor", m_actionGroupExecutor.Jsonize());
@@ -70,6 +65,12 @@ Aws::String CreateAgentActionGroupRequest::SerializePayload() const
   if(m_actionGroupStateHasBeenSet)
   {
    payload.WithString("actionGroupState", ActionGroupStateMapper::GetNameForActionGroupState(m_actionGroupState));
+  }
+
+  if(m_functionSchemaHasBeenSet)
+  {
+   payload.WithObject("functionSchema", m_functionSchema.Jsonize());
+
   }
 
   return payload.View().WriteReadable();

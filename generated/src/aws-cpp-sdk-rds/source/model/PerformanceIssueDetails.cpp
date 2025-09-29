@@ -20,19 +20,7 @@ namespace RDS
 namespace Model
 {
 
-PerformanceIssueDetails::PerformanceIssueDetails() : 
-    m_startTimeHasBeenSet(false),
-    m_endTimeHasBeenSet(false),
-    m_metricsHasBeenSet(false),
-    m_analysisHasBeenSet(false)
-{
-}
-
-PerformanceIssueDetails::PerformanceIssueDetails(const XmlNode& xmlNode) : 
-    m_startTimeHasBeenSet(false),
-    m_endTimeHasBeenSet(false),
-    m_metricsHasBeenSet(false),
-    m_analysisHasBeenSet(false)
+PerformanceIssueDetails::PerformanceIssueDetails(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -59,6 +47,7 @@ PerformanceIssueDetails& PerformanceIssueDetails::operator =(const XmlNode& xmlN
     if(!metricsNode.IsNull())
     {
       XmlNode metricsMember = metricsNode.FirstChild("member");
+      m_metricsHasBeenSet = !metricsMember.IsNull();
       while(!metricsMember.IsNull())
       {
         m_metrics.push_back(metricsMember);
@@ -124,7 +113,7 @@ void PerformanceIssueDetails::OutputToStream(Aws::OStream& oStream, const char* 
       for(auto& item : m_metrics)
       {
         Aws::StringStream metricsSs;
-        metricsSs << location <<  ".Metrics.member." << metricsIdx++;
+        metricsSs << location << ".Metrics.member." << metricsIdx++;
         item.OutputToStream(oStream, metricsSs.str().c_str());
       }
   }

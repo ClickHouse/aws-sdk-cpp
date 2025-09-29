@@ -31,52 +31,23 @@ namespace Model
   class OS
   {
   public:
-    AWS_DRS_API OS();
+    AWS_DRS_API OS() = default;
     AWS_DRS_API OS(Aws::Utils::Json::JsonView jsonValue);
     AWS_DRS_API OS& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DRS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The long name of the Operating System.</p>
      */
-    inline const Aws::String& GetFullString() const{ return m_fullString; }
-
-    /**
-     * <p>The long name of the Operating System.</p>
-     */
+    inline const Aws::String& GetFullString() const { return m_fullString; }
     inline bool FullStringHasBeenSet() const { return m_fullStringHasBeenSet; }
-
-    /**
-     * <p>The long name of the Operating System.</p>
-     */
-    inline void SetFullString(const Aws::String& value) { m_fullStringHasBeenSet = true; m_fullString = value; }
-
-    /**
-     * <p>The long name of the Operating System.</p>
-     */
-    inline void SetFullString(Aws::String&& value) { m_fullStringHasBeenSet = true; m_fullString = std::move(value); }
-
-    /**
-     * <p>The long name of the Operating System.</p>
-     */
-    inline void SetFullString(const char* value) { m_fullStringHasBeenSet = true; m_fullString.assign(value); }
-
-    /**
-     * <p>The long name of the Operating System.</p>
-     */
-    inline OS& WithFullString(const Aws::String& value) { SetFullString(value); return *this;}
-
-    /**
-     * <p>The long name of the Operating System.</p>
-     */
-    inline OS& WithFullString(Aws::String&& value) { SetFullString(std::move(value)); return *this;}
-
-    /**
-     * <p>The long name of the Operating System.</p>
-     */
-    inline OS& WithFullString(const char* value) { SetFullString(value); return *this;}
-
+    template<typename FullStringT = Aws::String>
+    void SetFullString(FullStringT&& value) { m_fullStringHasBeenSet = true; m_fullString = std::forward<FullStringT>(value); }
+    template<typename FullStringT = Aws::String>
+    OS& WithFullString(FullStringT&& value) { SetFullString(std::forward<FullStringT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_fullString;

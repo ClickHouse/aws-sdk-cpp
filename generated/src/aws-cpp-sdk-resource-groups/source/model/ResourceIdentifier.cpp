@@ -18,15 +18,7 @@ namespace ResourceGroups
 namespace Model
 {
 
-ResourceIdentifier::ResourceIdentifier() : 
-    m_resourceArnHasBeenSet(false),
-    m_resourceTypeHasBeenSet(false)
-{
-}
-
-ResourceIdentifier::ResourceIdentifier(JsonView jsonValue) : 
-    m_resourceArnHasBeenSet(false),
-    m_resourceTypeHasBeenSet(false)
+ResourceIdentifier::ResourceIdentifier(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ResourceIdentifier& ResourceIdentifier::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ResourceArn"))
   {
     m_resourceArn = jsonValue.GetString("ResourceArn");
-
     m_resourceArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceType"))
   {
     m_resourceType = jsonValue.GetString("ResourceType");
-
     m_resourceTypeHasBeenSet = true;
   }
-
   return *this;
 }
 

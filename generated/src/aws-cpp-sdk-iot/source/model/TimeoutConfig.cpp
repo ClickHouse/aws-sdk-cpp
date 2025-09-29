@@ -18,15 +18,7 @@ namespace IoT
 namespace Model
 {
 
-TimeoutConfig::TimeoutConfig() : 
-    m_inProgressTimeoutInMinutes(0),
-    m_inProgressTimeoutInMinutesHasBeenSet(false)
-{
-}
-
-TimeoutConfig::TimeoutConfig(JsonView jsonValue) : 
-    m_inProgressTimeoutInMinutes(0),
-    m_inProgressTimeoutInMinutesHasBeenSet(false)
+TimeoutConfig::TimeoutConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ TimeoutConfig& TimeoutConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("inProgressTimeoutInMinutes"))
   {
     m_inProgressTimeoutInMinutes = jsonValue.GetInt64("inProgressTimeoutInMinutes");
-
     m_inProgressTimeoutInMinutesHasBeenSet = true;
   }
-
   return *this;
 }
 

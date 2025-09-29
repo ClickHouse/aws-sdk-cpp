@@ -18,15 +18,7 @@ namespace OpenSearchService
 namespace Model
 {
 
-SoftwareUpdateOptions::SoftwareUpdateOptions() : 
-    m_autoSoftwareUpdateEnabled(false),
-    m_autoSoftwareUpdateEnabledHasBeenSet(false)
-{
-}
-
-SoftwareUpdateOptions::SoftwareUpdateOptions(JsonView jsonValue) : 
-    m_autoSoftwareUpdateEnabled(false),
-    m_autoSoftwareUpdateEnabledHasBeenSet(false)
+SoftwareUpdateOptions::SoftwareUpdateOptions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ SoftwareUpdateOptions& SoftwareUpdateOptions::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("AutoSoftwareUpdateEnabled"))
   {
     m_autoSoftwareUpdateEnabled = jsonValue.GetBool("AutoSoftwareUpdateEnabled");
-
     m_autoSoftwareUpdateEnabledHasBeenSet = true;
   }
-
   return *this;
 }
 

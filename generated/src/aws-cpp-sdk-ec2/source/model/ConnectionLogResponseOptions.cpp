@@ -20,19 +20,7 @@ namespace EC2
 namespace Model
 {
 
-ConnectionLogResponseOptions::ConnectionLogResponseOptions() : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false),
-    m_cloudwatchLogGroupHasBeenSet(false),
-    m_cloudwatchLogStreamHasBeenSet(false)
-{
-}
-
-ConnectionLogResponseOptions::ConnectionLogResponseOptions(const XmlNode& xmlNode) : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false),
-    m_cloudwatchLogGroupHasBeenSet(false),
-    m_cloudwatchLogStreamHasBeenSet(false)
+ConnectionLogResponseOptions::ConnectionLogResponseOptions(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

@@ -18,17 +18,7 @@ namespace PrometheusService
 namespace Model
 {
 
-RuleGroupsNamespaceStatus::RuleGroupsNamespaceStatus() : 
-    m_statusCode(RuleGroupsNamespaceStatusCode::NOT_SET),
-    m_statusCodeHasBeenSet(false),
-    m_statusReasonHasBeenSet(false)
-{
-}
-
-RuleGroupsNamespaceStatus::RuleGroupsNamespaceStatus(JsonView jsonValue) : 
-    m_statusCode(RuleGroupsNamespaceStatusCode::NOT_SET),
-    m_statusCodeHasBeenSet(false),
-    m_statusReasonHasBeenSet(false)
+RuleGroupsNamespaceStatus::RuleGroupsNamespaceStatus(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ RuleGroupsNamespaceStatus& RuleGroupsNamespaceStatus::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("statusCode"))
   {
     m_statusCode = RuleGroupsNamespaceStatusCodeMapper::GetRuleGroupsNamespaceStatusCodeForName(jsonValue.GetString("statusCode"));
-
     m_statusCodeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("statusReason"))
   {
     m_statusReason = jsonValue.GetString("statusReason");
-
     m_statusReasonHasBeenSet = true;
   }
-
   return *this;
 }
 

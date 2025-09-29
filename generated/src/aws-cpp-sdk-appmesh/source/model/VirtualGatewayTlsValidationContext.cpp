@@ -18,15 +18,7 @@ namespace AppMesh
 namespace Model
 {
 
-VirtualGatewayTlsValidationContext::VirtualGatewayTlsValidationContext() : 
-    m_subjectAlternativeNamesHasBeenSet(false),
-    m_trustHasBeenSet(false)
-{
-}
-
-VirtualGatewayTlsValidationContext::VirtualGatewayTlsValidationContext(JsonView jsonValue) : 
-    m_subjectAlternativeNamesHasBeenSet(false),
-    m_trustHasBeenSet(false)
+VirtualGatewayTlsValidationContext::VirtualGatewayTlsValidationContext(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ VirtualGatewayTlsValidationContext& VirtualGatewayTlsValidationContext::operator
   if(jsonValue.ValueExists("subjectAlternativeNames"))
   {
     m_subjectAlternativeNames = jsonValue.GetObject("subjectAlternativeNames");
-
     m_subjectAlternativeNamesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("trust"))
   {
     m_trust = jsonValue.GetObject("trust");
-
     m_trustHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -36,243 +36,106 @@ namespace Model
   class RDFGraphSummary
   {
   public:
-    AWS_NEPTUNEDATA_API RDFGraphSummary();
+    AWS_NEPTUNEDATA_API RDFGraphSummary() = default;
     AWS_NEPTUNEDATA_API RDFGraphSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_NEPTUNEDATA_API RDFGraphSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_NEPTUNEDATA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The number of distinct subjects in the graph.</p>
      */
-    inline long long GetNumDistinctSubjects() const{ return m_numDistinctSubjects; }
-
-    /**
-     * <p>The number of distinct subjects in the graph.</p>
-     */
+    inline long long GetNumDistinctSubjects() const { return m_numDistinctSubjects; }
     inline bool NumDistinctSubjectsHasBeenSet() const { return m_numDistinctSubjectsHasBeenSet; }
-
-    /**
-     * <p>The number of distinct subjects in the graph.</p>
-     */
     inline void SetNumDistinctSubjects(long long value) { m_numDistinctSubjectsHasBeenSet = true; m_numDistinctSubjects = value; }
-
-    /**
-     * <p>The number of distinct subjects in the graph.</p>
-     */
     inline RDFGraphSummary& WithNumDistinctSubjects(long long value) { SetNumDistinctSubjects(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The number of distinct predicates in the graph.</p>
      */
-    inline long long GetNumDistinctPredicates() const{ return m_numDistinctPredicates; }
-
-    /**
-     * <p>The number of distinct predicates in the graph.</p>
-     */
+    inline long long GetNumDistinctPredicates() const { return m_numDistinctPredicates; }
     inline bool NumDistinctPredicatesHasBeenSet() const { return m_numDistinctPredicatesHasBeenSet; }
-
-    /**
-     * <p>The number of distinct predicates in the graph.</p>
-     */
     inline void SetNumDistinctPredicates(long long value) { m_numDistinctPredicatesHasBeenSet = true; m_numDistinctPredicates = value; }
-
-    /**
-     * <p>The number of distinct predicates in the graph.</p>
-     */
     inline RDFGraphSummary& WithNumDistinctPredicates(long long value) { SetNumDistinctPredicates(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The number of quads in the graph.</p>
      */
-    inline long long GetNumQuads() const{ return m_numQuads; }
-
-    /**
-     * <p>The number of quads in the graph.</p>
-     */
+    inline long long GetNumQuads() const { return m_numQuads; }
     inline bool NumQuadsHasBeenSet() const { return m_numQuadsHasBeenSet; }
-
-    /**
-     * <p>The number of quads in the graph.</p>
-     */
     inline void SetNumQuads(long long value) { m_numQuadsHasBeenSet = true; m_numQuads = value; }
-
-    /**
-     * <p>The number of quads in the graph.</p>
-     */
     inline RDFGraphSummary& WithNumQuads(long long value) { SetNumQuads(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The number of classes in the graph.</p>
      */
-    inline long long GetNumClasses() const{ return m_numClasses; }
-
-    /**
-     * <p>The number of classes in the graph.</p>
-     */
+    inline long long GetNumClasses() const { return m_numClasses; }
     inline bool NumClassesHasBeenSet() const { return m_numClassesHasBeenSet; }
-
-    /**
-     * <p>The number of classes in the graph.</p>
-     */
     inline void SetNumClasses(long long value) { m_numClassesHasBeenSet = true; m_numClasses = value; }
-
-    /**
-     * <p>The number of classes in the graph.</p>
-     */
     inline RDFGraphSummary& WithNumClasses(long long value) { SetNumClasses(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>A list of the classes in the graph.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetClasses() const{ return m_classes; }
-
-    /**
-     * <p>A list of the classes in the graph.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetClasses() const { return m_classes; }
     inline bool ClassesHasBeenSet() const { return m_classesHasBeenSet; }
+    template<typename ClassesT = Aws::Vector<Aws::String>>
+    void SetClasses(ClassesT&& value) { m_classesHasBeenSet = true; m_classes = std::forward<ClassesT>(value); }
+    template<typename ClassesT = Aws::Vector<Aws::String>>
+    RDFGraphSummary& WithClasses(ClassesT&& value) { SetClasses(std::forward<ClassesT>(value)); return *this;}
+    template<typename ClassesT = Aws::String>
+    RDFGraphSummary& AddClasses(ClassesT&& value) { m_classesHasBeenSet = true; m_classes.emplace_back(std::forward<ClassesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of the classes in the graph.</p>
-     */
-    inline void SetClasses(const Aws::Vector<Aws::String>& value) { m_classesHasBeenSet = true; m_classes = value; }
-
-    /**
-     * <p>A list of the classes in the graph.</p>
-     */
-    inline void SetClasses(Aws::Vector<Aws::String>&& value) { m_classesHasBeenSet = true; m_classes = std::move(value); }
-
-    /**
-     * <p>A list of the classes in the graph.</p>
-     */
-    inline RDFGraphSummary& WithClasses(const Aws::Vector<Aws::String>& value) { SetClasses(value); return *this;}
-
-    /**
-     * <p>A list of the classes in the graph.</p>
-     */
-    inline RDFGraphSummary& WithClasses(Aws::Vector<Aws::String>&& value) { SetClasses(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of the classes in the graph.</p>
-     */
-    inline RDFGraphSummary& AddClasses(const Aws::String& value) { m_classesHasBeenSet = true; m_classes.push_back(value); return *this; }
-
-    /**
-     * <p>A list of the classes in the graph.</p>
-     */
-    inline RDFGraphSummary& AddClasses(Aws::String&& value) { m_classesHasBeenSet = true; m_classes.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of the classes in the graph.</p>
-     */
-    inline RDFGraphSummary& AddClasses(const char* value) { m_classesHasBeenSet = true; m_classes.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>"A list of predicates in the graph, along with the predicate counts.</p>
      */
-    inline const Aws::Vector<Aws::Map<Aws::String, long long>>& GetPredicates() const{ return m_predicates; }
-
-    /**
-     * <p>"A list of predicates in the graph, along with the predicate counts.</p>
-     */
+    inline const Aws::Vector<Aws::Map<Aws::String, long long>>& GetPredicates() const { return m_predicates; }
     inline bool PredicatesHasBeenSet() const { return m_predicatesHasBeenSet; }
+    template<typename PredicatesT = Aws::Vector<Aws::Map<Aws::String, long long>>>
+    void SetPredicates(PredicatesT&& value) { m_predicatesHasBeenSet = true; m_predicates = std::forward<PredicatesT>(value); }
+    template<typename PredicatesT = Aws::Vector<Aws::Map<Aws::String, long long>>>
+    RDFGraphSummary& WithPredicates(PredicatesT&& value) { SetPredicates(std::forward<PredicatesT>(value)); return *this;}
+    template<typename PredicatesT = Aws::Map<Aws::String, long long>>
+    RDFGraphSummary& AddPredicates(PredicatesT&& value) { m_predicatesHasBeenSet = true; m_predicates.emplace_back(std::forward<PredicatesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>"A list of predicates in the graph, along with the predicate counts.</p>
-     */
-    inline void SetPredicates(const Aws::Vector<Aws::Map<Aws::String, long long>>& value) { m_predicatesHasBeenSet = true; m_predicates = value; }
-
-    /**
-     * <p>"A list of predicates in the graph, along with the predicate counts.</p>
-     */
-    inline void SetPredicates(Aws::Vector<Aws::Map<Aws::String, long long>>&& value) { m_predicatesHasBeenSet = true; m_predicates = std::move(value); }
-
-    /**
-     * <p>"A list of predicates in the graph, along with the predicate counts.</p>
-     */
-    inline RDFGraphSummary& WithPredicates(const Aws::Vector<Aws::Map<Aws::String, long long>>& value) { SetPredicates(value); return *this;}
-
-    /**
-     * <p>"A list of predicates in the graph, along with the predicate counts.</p>
-     */
-    inline RDFGraphSummary& WithPredicates(Aws::Vector<Aws::Map<Aws::String, long long>>&& value) { SetPredicates(std::move(value)); return *this;}
-
-    /**
-     * <p>"A list of predicates in the graph, along with the predicate counts.</p>
-     */
-    inline RDFGraphSummary& AddPredicates(const Aws::Map<Aws::String, long long>& value) { m_predicatesHasBeenSet = true; m_predicates.push_back(value); return *this; }
-
-    /**
-     * <p>"A list of predicates in the graph, along with the predicate counts.</p>
-     */
-    inline RDFGraphSummary& AddPredicates(Aws::Map<Aws::String, long long>&& value) { m_predicatesHasBeenSet = true; m_predicates.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>This field is only present when the request mode is <code>DETAILED</code>. It
      * contains a list of subject structures.</p>
      */
-    inline const Aws::Vector<SubjectStructure>& GetSubjectStructures() const{ return m_subjectStructures; }
-
-    /**
-     * <p>This field is only present when the request mode is <code>DETAILED</code>. It
-     * contains a list of subject structures.</p>
-     */
+    inline const Aws::Vector<SubjectStructure>& GetSubjectStructures() const { return m_subjectStructures; }
     inline bool SubjectStructuresHasBeenSet() const { return m_subjectStructuresHasBeenSet; }
-
-    /**
-     * <p>This field is only present when the request mode is <code>DETAILED</code>. It
-     * contains a list of subject structures.</p>
-     */
-    inline void SetSubjectStructures(const Aws::Vector<SubjectStructure>& value) { m_subjectStructuresHasBeenSet = true; m_subjectStructures = value; }
-
-    /**
-     * <p>This field is only present when the request mode is <code>DETAILED</code>. It
-     * contains a list of subject structures.</p>
-     */
-    inline void SetSubjectStructures(Aws::Vector<SubjectStructure>&& value) { m_subjectStructuresHasBeenSet = true; m_subjectStructures = std::move(value); }
-
-    /**
-     * <p>This field is only present when the request mode is <code>DETAILED</code>. It
-     * contains a list of subject structures.</p>
-     */
-    inline RDFGraphSummary& WithSubjectStructures(const Aws::Vector<SubjectStructure>& value) { SetSubjectStructures(value); return *this;}
-
-    /**
-     * <p>This field is only present when the request mode is <code>DETAILED</code>. It
-     * contains a list of subject structures.</p>
-     */
-    inline RDFGraphSummary& WithSubjectStructures(Aws::Vector<SubjectStructure>&& value) { SetSubjectStructures(std::move(value)); return *this;}
-
-    /**
-     * <p>This field is only present when the request mode is <code>DETAILED</code>. It
-     * contains a list of subject structures.</p>
-     */
-    inline RDFGraphSummary& AddSubjectStructures(const SubjectStructure& value) { m_subjectStructuresHasBeenSet = true; m_subjectStructures.push_back(value); return *this; }
-
-    /**
-     * <p>This field is only present when the request mode is <code>DETAILED</code>. It
-     * contains a list of subject structures.</p>
-     */
-    inline RDFGraphSummary& AddSubjectStructures(SubjectStructure&& value) { m_subjectStructuresHasBeenSet = true; m_subjectStructures.push_back(std::move(value)); return *this; }
-
+    template<typename SubjectStructuresT = Aws::Vector<SubjectStructure>>
+    void SetSubjectStructures(SubjectStructuresT&& value) { m_subjectStructuresHasBeenSet = true; m_subjectStructures = std::forward<SubjectStructuresT>(value); }
+    template<typename SubjectStructuresT = Aws::Vector<SubjectStructure>>
+    RDFGraphSummary& WithSubjectStructures(SubjectStructuresT&& value) { SetSubjectStructures(std::forward<SubjectStructuresT>(value)); return *this;}
+    template<typename SubjectStructuresT = SubjectStructure>
+    RDFGraphSummary& AddSubjectStructures(SubjectStructuresT&& value) { m_subjectStructuresHasBeenSet = true; m_subjectStructures.emplace_back(std::forward<SubjectStructuresT>(value)); return *this; }
+    ///@}
   private:
 
-    long long m_numDistinctSubjects;
+    long long m_numDistinctSubjects{0};
     bool m_numDistinctSubjectsHasBeenSet = false;
 
-    long long m_numDistinctPredicates;
+    long long m_numDistinctPredicates{0};
     bool m_numDistinctPredicatesHasBeenSet = false;
 
-    long long m_numQuads;
+    long long m_numQuads{0};
     bool m_numQuadsHasBeenSet = false;
 
-    long long m_numClasses;
+    long long m_numClasses{0};
     bool m_numClassesHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_classes;

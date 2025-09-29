@@ -10,19 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-CreateInstanceConnectEndpointRequest::CreateInstanceConnectEndpointRequest() : 
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_subnetIdHasBeenSet(false),
-    m_securityGroupIdsHasBeenSet(false),
-    m_preserveClientIp(false),
-    m_preserveClientIpHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_tagSpecificationsHasBeenSet(false)
-{
-}
-
 Aws::String CreateInstanceConnectEndpointRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -66,6 +53,11 @@ Aws::String CreateInstanceConnectEndpointRequest::SerializePayload() const
       item.OutputToStream(ss, "TagSpecification.", tagSpecificationsCount, "");
       tagSpecificationsCount++;
     }
+  }
+
+  if(m_ipAddressTypeHasBeenSet)
+  {
+    ss << "IpAddressType=" << StringUtils::URLEncode(IpAddressTypeMapper::GetNameForIpAddressType(m_ipAddressType)) << "&";
   }
 
   ss << "Version=2016-11-15";

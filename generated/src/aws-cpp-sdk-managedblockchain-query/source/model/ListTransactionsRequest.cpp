@@ -12,19 +12,6 @@ using namespace Aws::ManagedBlockchainQuery::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ListTransactionsRequest::ListTransactionsRequest() : 
-    m_addressHasBeenSet(false),
-    m_network(QueryNetwork::NOT_SET),
-    m_networkHasBeenSet(false),
-    m_fromBlockchainInstantHasBeenSet(false),
-    m_toBlockchainInstantHasBeenSet(false),
-    m_sortHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false)
-{
-}
-
 Aws::String ListTransactionsRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -67,6 +54,12 @@ Aws::String ListTransactionsRequest::SerializePayload() const
   if(m_maxResultsHasBeenSet)
   {
    payload.WithInteger("maxResults", m_maxResults);
+
+  }
+
+  if(m_confirmationStatusFilterHasBeenSet)
+  {
+   payload.WithObject("confirmationStatusFilter", m_confirmationStatusFilter.Jsonize());
 
   }
 

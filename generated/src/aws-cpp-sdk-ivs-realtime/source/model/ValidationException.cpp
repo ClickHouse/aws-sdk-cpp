@@ -5,6 +5,7 @@
 
 #include <aws/ivs-realtime/model/ValidationException.h>
 #include <aws/core/utils/json/JsonSerializer.h>
+#include <aws/core/utils/memory/stl/AWSStringStream.h>
 
 #include <utility>
 
@@ -18,13 +19,7 @@ namespace ivsrealtime
 namespace Model
 {
 
-ValidationException::ValidationException() : 
-    m_exceptionMessageHasBeenSet(false)
-{
-}
-
-ValidationException::ValidationException(JsonView jsonValue) : 
-    m_exceptionMessageHasBeenSet(false)
+ValidationException::ValidationException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +29,8 @@ ValidationException& ValidationException::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("exceptionMessage"))
   {
     m_exceptionMessage = jsonValue.GetString("exceptionMessage");
-
     m_exceptionMessageHasBeenSet = true;
   }
-
   return *this;
 }
 

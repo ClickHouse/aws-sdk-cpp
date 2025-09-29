@@ -18,23 +18,7 @@ namespace IoTSiteWise
 namespace Model
 {
 
-GatewaySummary::GatewaySummary() : 
-    m_gatewayIdHasBeenSet(false),
-    m_gatewayNameHasBeenSet(false),
-    m_gatewayPlatformHasBeenSet(false),
-    m_gatewayCapabilitySummariesHasBeenSet(false),
-    m_creationDateHasBeenSet(false),
-    m_lastUpdateDateHasBeenSet(false)
-{
-}
-
-GatewaySummary::GatewaySummary(JsonView jsonValue) : 
-    m_gatewayIdHasBeenSet(false),
-    m_gatewayNameHasBeenSet(false),
-    m_gatewayPlatformHasBeenSet(false),
-    m_gatewayCapabilitySummariesHasBeenSet(false),
-    m_creationDateHasBeenSet(false),
-    m_lastUpdateDateHasBeenSet(false)
+GatewaySummary::GatewaySummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,24 +28,23 @@ GatewaySummary& GatewaySummary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("gatewayId"))
   {
     m_gatewayId = jsonValue.GetString("gatewayId");
-
     m_gatewayIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("gatewayName"))
   {
     m_gatewayName = jsonValue.GetString("gatewayName");
-
     m_gatewayNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("gatewayPlatform"))
   {
     m_gatewayPlatform = jsonValue.GetObject("gatewayPlatform");
-
     m_gatewayPlatformHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("gatewayVersion"))
+  {
+    m_gatewayVersion = jsonValue.GetString("gatewayVersion");
+    m_gatewayVersionHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("gatewayCapabilitySummaries"))
   {
     Aws::Utils::Array<JsonView> gatewayCapabilitySummariesJsonList = jsonValue.GetArray("gatewayCapabilitySummaries");
@@ -71,21 +54,16 @@ GatewaySummary& GatewaySummary::operator =(JsonView jsonValue)
     }
     m_gatewayCapabilitySummariesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("creationDate"))
   {
     m_creationDate = jsonValue.GetDouble("creationDate");
-
     m_creationDateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("lastUpdateDate"))
   {
     m_lastUpdateDate = jsonValue.GetDouble("lastUpdateDate");
-
     m_lastUpdateDateHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -108,6 +86,12 @@ JsonValue GatewaySummary::Jsonize() const
   if(m_gatewayPlatformHasBeenSet)
   {
    payload.WithObject("gatewayPlatform", m_gatewayPlatform.Jsonize());
+
+  }
+
+  if(m_gatewayVersionHasBeenSet)
+  {
+   payload.WithString("gatewayVersion", m_gatewayVersion);
 
   }
 

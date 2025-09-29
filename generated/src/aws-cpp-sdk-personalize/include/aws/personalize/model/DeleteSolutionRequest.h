@@ -21,7 +21,7 @@ namespace Model
   class DeleteSolutionRequest : public PersonalizeRequest
   {
   public:
-    AWS_PERSONALIZE_API DeleteSolutionRequest();
+    AWS_PERSONALIZE_API DeleteSolutionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_PERSONALIZE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ARN of the solution to delete.</p>
      */
-    inline const Aws::String& GetSolutionArn() const{ return m_solutionArn; }
-
-    /**
-     * <p>The ARN of the solution to delete.</p>
-     */
+    inline const Aws::String& GetSolutionArn() const { return m_solutionArn; }
     inline bool SolutionArnHasBeenSet() const { return m_solutionArnHasBeenSet; }
-
-    /**
-     * <p>The ARN of the solution to delete.</p>
-     */
-    inline void SetSolutionArn(const Aws::String& value) { m_solutionArnHasBeenSet = true; m_solutionArn = value; }
-
-    /**
-     * <p>The ARN of the solution to delete.</p>
-     */
-    inline void SetSolutionArn(Aws::String&& value) { m_solutionArnHasBeenSet = true; m_solutionArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the solution to delete.</p>
-     */
-    inline void SetSolutionArn(const char* value) { m_solutionArnHasBeenSet = true; m_solutionArn.assign(value); }
-
-    /**
-     * <p>The ARN of the solution to delete.</p>
-     */
-    inline DeleteSolutionRequest& WithSolutionArn(const Aws::String& value) { SetSolutionArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the solution to delete.</p>
-     */
-    inline DeleteSolutionRequest& WithSolutionArn(Aws::String&& value) { SetSolutionArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the solution to delete.</p>
-     */
-    inline DeleteSolutionRequest& WithSolutionArn(const char* value) { SetSolutionArn(value); return *this;}
-
+    template<typename SolutionArnT = Aws::String>
+    void SetSolutionArn(SolutionArnT&& value) { m_solutionArnHasBeenSet = true; m_solutionArn = std::forward<SolutionArnT>(value); }
+    template<typename SolutionArnT = Aws::String>
+    DeleteSolutionRequest& WithSolutionArn(SolutionArnT&& value) { SetSolutionArn(std::forward<SolutionArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_solutionArn;

@@ -20,25 +20,7 @@ namespace CloudWatch
 namespace Model
 {
 
-MetricDataResult::MetricDataResult() : 
-    m_idHasBeenSet(false),
-    m_labelHasBeenSet(false),
-    m_timestampsHasBeenSet(false),
-    m_valuesHasBeenSet(false),
-    m_statusCode(StatusCode::NOT_SET),
-    m_statusCodeHasBeenSet(false),
-    m_messagesHasBeenSet(false)
-{
-}
-
-MetricDataResult::MetricDataResult(const XmlNode& xmlNode) : 
-    m_idHasBeenSet(false),
-    m_labelHasBeenSet(false),
-    m_timestampsHasBeenSet(false),
-    m_valuesHasBeenSet(false),
-    m_statusCode(StatusCode::NOT_SET),
-    m_statusCodeHasBeenSet(false),
-    m_messagesHasBeenSet(false)
+MetricDataResult::MetricDataResult(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -65,6 +47,7 @@ MetricDataResult& MetricDataResult::operator =(const XmlNode& xmlNode)
     if(!timestampsNode.IsNull())
     {
       XmlNode timestampsMember = timestampsNode.FirstChild("member");
+      m_timestampsHasBeenSet = !timestampsMember.IsNull();
       while(!timestampsMember.IsNull())
       {
         m_timestamps.push_back(DateTime(StringUtils::Trim(timestampsMember.GetText().c_str()).c_str(), Aws::Utils::DateFormat::ISO_8601));
@@ -77,9 +60,10 @@ MetricDataResult& MetricDataResult::operator =(const XmlNode& xmlNode)
     if(!valuesNode.IsNull())
     {
       XmlNode valuesMember = valuesNode.FirstChild("member");
+      m_valuesHasBeenSet = !valuesMember.IsNull();
       while(!valuesMember.IsNull())
       {
-         m_values.push_back(StringUtils::ConvertToDouble(StringUtils::Trim(valuesMember.GetText().c_str()).c_str()));
+        m_values.push_back(StringUtils::ConvertToDouble(StringUtils::Trim(valuesMember.GetText().c_str()).c_str()));
         valuesMember = valuesMember.NextNode("member");
       }
 
@@ -88,13 +72,14 @@ MetricDataResult& MetricDataResult::operator =(const XmlNode& xmlNode)
     XmlNode statusCodeNode = resultNode.FirstChild("StatusCode");
     if(!statusCodeNode.IsNull())
     {
-      m_statusCode = StatusCodeMapper::GetStatusCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusCodeNode.GetText()).c_str()).c_str());
+      m_statusCode = StatusCodeMapper::GetStatusCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusCodeNode.GetText()).c_str()));
       m_statusCodeHasBeenSet = true;
     }
     XmlNode messagesNode = resultNode.FirstChild("Messages");
     if(!messagesNode.IsNull())
     {
       XmlNode messagesMember = messagesNode.FirstChild("member");
+      m_messagesHasBeenSet = !messagesMember.IsNull();
       while(!messagesMember.IsNull())
       {
         m_messages.push_back(messagesMember);
@@ -140,7 +125,7 @@ void MetricDataResult::OutputToStream(Aws::OStream& oStream, const char* locatio
 
   if(m_statusCodeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".StatusCode=" << StatusCodeMapper::GetNameForStatusCode(m_statusCode) << "&";
+      oStream << location << index << locationValue << ".StatusCode=" << StringUtils::URLEncode(StatusCodeMapper::GetNameForStatusCode(m_statusCode)) << "&";
   }
 
   if(m_messagesHasBeenSet)
@@ -179,12 +164,12 @@ void MetricDataResult::OutputToStream(Aws::OStream& oStream, const char* locatio
       unsigned valuesIdx = 1;
       for(auto& item : m_values)
       {
-          oStream << location << ".Values.member." << valuesIdx++ << "=" << StringUtils::URLEncode(item) << "&";
+        oStream << location << ".Values.member." << valuesIdx++ << "=" << StringUtils::URLEncode(item) << "&";
       }
   }
   if(m_statusCodeHasBeenSet)
   {
-      oStream << location << ".StatusCode=" << StatusCodeMapper::GetNameForStatusCode(m_statusCode) << "&";
+      oStream << location << ".StatusCode=" << StringUtils::URLEncode(StatusCodeMapper::GetNameForStatusCode(m_statusCode)) << "&";
   }
   if(m_messagesHasBeenSet)
   {
@@ -192,7 +177,7 @@ void MetricDataResult::OutputToStream(Aws::OStream& oStream, const char* locatio
       for(auto& item : m_messages)
       {
         Aws::StringStream messagesSs;
-        messagesSs << location <<  ".Messages.member." << messagesIdx++;
+        messagesSs << location << ".Messages.member." << messagesIdx++;
         item.OutputToStream(oStream, messagesSs.str().c_str());
       }
   }

@@ -32,149 +32,75 @@ namespace Model
   class AutoScaling
   {
   public:
-    AWS_KAFKACONNECT_API AutoScaling();
+    AWS_KAFKACONNECT_API AutoScaling() = default;
     AWS_KAFKACONNECT_API AutoScaling(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKACONNECT_API AutoScaling& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKACONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The maximum number of workers allocated to the connector.</p>
      */
-    inline int GetMaxWorkerCount() const{ return m_maxWorkerCount; }
-
-    /**
-     * <p>The maximum number of workers allocated to the connector.</p>
-     */
+    inline int GetMaxWorkerCount() const { return m_maxWorkerCount; }
     inline bool MaxWorkerCountHasBeenSet() const { return m_maxWorkerCountHasBeenSet; }
-
-    /**
-     * <p>The maximum number of workers allocated to the connector.</p>
-     */
     inline void SetMaxWorkerCount(int value) { m_maxWorkerCountHasBeenSet = true; m_maxWorkerCount = value; }
-
-    /**
-     * <p>The maximum number of workers allocated to the connector.</p>
-     */
     inline AutoScaling& WithMaxWorkerCount(int value) { SetMaxWorkerCount(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The number of microcontroller units (MCUs) allocated to each connector
      * worker. The valid values are 1,2,4,8.</p>
      */
-    inline int GetMcuCount() const{ return m_mcuCount; }
-
-    /**
-     * <p>The number of microcontroller units (MCUs) allocated to each connector
-     * worker. The valid values are 1,2,4,8.</p>
-     */
+    inline int GetMcuCount() const { return m_mcuCount; }
     inline bool McuCountHasBeenSet() const { return m_mcuCountHasBeenSet; }
-
-    /**
-     * <p>The number of microcontroller units (MCUs) allocated to each connector
-     * worker. The valid values are 1,2,4,8.</p>
-     */
     inline void SetMcuCount(int value) { m_mcuCountHasBeenSet = true; m_mcuCount = value; }
-
-    /**
-     * <p>The number of microcontroller units (MCUs) allocated to each connector
-     * worker. The valid values are 1,2,4,8.</p>
-     */
     inline AutoScaling& WithMcuCount(int value) { SetMcuCount(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The minimum number of workers allocated to the connector.</p>
      */
-    inline int GetMinWorkerCount() const{ return m_minWorkerCount; }
-
-    /**
-     * <p>The minimum number of workers allocated to the connector.</p>
-     */
+    inline int GetMinWorkerCount() const { return m_minWorkerCount; }
     inline bool MinWorkerCountHasBeenSet() const { return m_minWorkerCountHasBeenSet; }
-
-    /**
-     * <p>The minimum number of workers allocated to the connector.</p>
-     */
     inline void SetMinWorkerCount(int value) { m_minWorkerCountHasBeenSet = true; m_minWorkerCount = value; }
-
-    /**
-     * <p>The minimum number of workers allocated to the connector.</p>
-     */
     inline AutoScaling& WithMinWorkerCount(int value) { SetMinWorkerCount(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The sacle-in policy for the connector.</p>
      */
-    inline const ScaleInPolicy& GetScaleInPolicy() const{ return m_scaleInPolicy; }
-
-    /**
-     * <p>The sacle-in policy for the connector.</p>
-     */
+    inline const ScaleInPolicy& GetScaleInPolicy() const { return m_scaleInPolicy; }
     inline bool ScaleInPolicyHasBeenSet() const { return m_scaleInPolicyHasBeenSet; }
+    template<typename ScaleInPolicyT = ScaleInPolicy>
+    void SetScaleInPolicy(ScaleInPolicyT&& value) { m_scaleInPolicyHasBeenSet = true; m_scaleInPolicy = std::forward<ScaleInPolicyT>(value); }
+    template<typename ScaleInPolicyT = ScaleInPolicy>
+    AutoScaling& WithScaleInPolicy(ScaleInPolicyT&& value) { SetScaleInPolicy(std::forward<ScaleInPolicyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The sacle-in policy for the connector.</p>
-     */
-    inline void SetScaleInPolicy(const ScaleInPolicy& value) { m_scaleInPolicyHasBeenSet = true; m_scaleInPolicy = value; }
-
-    /**
-     * <p>The sacle-in policy for the connector.</p>
-     */
-    inline void SetScaleInPolicy(ScaleInPolicy&& value) { m_scaleInPolicyHasBeenSet = true; m_scaleInPolicy = std::move(value); }
-
-    /**
-     * <p>The sacle-in policy for the connector.</p>
-     */
-    inline AutoScaling& WithScaleInPolicy(const ScaleInPolicy& value) { SetScaleInPolicy(value); return *this;}
-
-    /**
-     * <p>The sacle-in policy for the connector.</p>
-     */
-    inline AutoScaling& WithScaleInPolicy(ScaleInPolicy&& value) { SetScaleInPolicy(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The sacle-out policy for the connector.</p>
      */
-    inline const ScaleOutPolicy& GetScaleOutPolicy() const{ return m_scaleOutPolicy; }
-
-    /**
-     * <p>The sacle-out policy for the connector.</p>
-     */
+    inline const ScaleOutPolicy& GetScaleOutPolicy() const { return m_scaleOutPolicy; }
     inline bool ScaleOutPolicyHasBeenSet() const { return m_scaleOutPolicyHasBeenSet; }
-
-    /**
-     * <p>The sacle-out policy for the connector.</p>
-     */
-    inline void SetScaleOutPolicy(const ScaleOutPolicy& value) { m_scaleOutPolicyHasBeenSet = true; m_scaleOutPolicy = value; }
-
-    /**
-     * <p>The sacle-out policy for the connector.</p>
-     */
-    inline void SetScaleOutPolicy(ScaleOutPolicy&& value) { m_scaleOutPolicyHasBeenSet = true; m_scaleOutPolicy = std::move(value); }
-
-    /**
-     * <p>The sacle-out policy for the connector.</p>
-     */
-    inline AutoScaling& WithScaleOutPolicy(const ScaleOutPolicy& value) { SetScaleOutPolicy(value); return *this;}
-
-    /**
-     * <p>The sacle-out policy for the connector.</p>
-     */
-    inline AutoScaling& WithScaleOutPolicy(ScaleOutPolicy&& value) { SetScaleOutPolicy(std::move(value)); return *this;}
-
+    template<typename ScaleOutPolicyT = ScaleOutPolicy>
+    void SetScaleOutPolicy(ScaleOutPolicyT&& value) { m_scaleOutPolicyHasBeenSet = true; m_scaleOutPolicy = std::forward<ScaleOutPolicyT>(value); }
+    template<typename ScaleOutPolicyT = ScaleOutPolicy>
+    AutoScaling& WithScaleOutPolicy(ScaleOutPolicyT&& value) { SetScaleOutPolicy(std::forward<ScaleOutPolicyT>(value)); return *this;}
+    ///@}
   private:
 
-    int m_maxWorkerCount;
+    int m_maxWorkerCount{0};
     bool m_maxWorkerCountHasBeenSet = false;
 
-    int m_mcuCount;
+    int m_mcuCount{0};
     bool m_mcuCountHasBeenSet = false;
 
-    int m_minWorkerCount;
+    int m_minWorkerCount{0};
     bool m_minWorkerCountHasBeenSet = false;
 
     ScaleInPolicy m_scaleInPolicy;

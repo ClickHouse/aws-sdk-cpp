@@ -33,52 +33,25 @@ namespace Model
   class CustomActionSetParametersOperation
   {
   public:
-    AWS_QUICKSIGHT_API CustomActionSetParametersOperation();
+    AWS_QUICKSIGHT_API CustomActionSetParametersOperation() = default;
     AWS_QUICKSIGHT_API CustomActionSetParametersOperation(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API CustomActionSetParametersOperation& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The parameter that determines the value configuration.</p>
      */
-    inline const Aws::Vector<SetParameterValueConfiguration>& GetParameterValueConfigurations() const{ return m_parameterValueConfigurations; }
-
-    /**
-     * <p>The parameter that determines the value configuration.</p>
-     */
+    inline const Aws::Vector<SetParameterValueConfiguration>& GetParameterValueConfigurations() const { return m_parameterValueConfigurations; }
     inline bool ParameterValueConfigurationsHasBeenSet() const { return m_parameterValueConfigurationsHasBeenSet; }
-
-    /**
-     * <p>The parameter that determines the value configuration.</p>
-     */
-    inline void SetParameterValueConfigurations(const Aws::Vector<SetParameterValueConfiguration>& value) { m_parameterValueConfigurationsHasBeenSet = true; m_parameterValueConfigurations = value; }
-
-    /**
-     * <p>The parameter that determines the value configuration.</p>
-     */
-    inline void SetParameterValueConfigurations(Aws::Vector<SetParameterValueConfiguration>&& value) { m_parameterValueConfigurationsHasBeenSet = true; m_parameterValueConfigurations = std::move(value); }
-
-    /**
-     * <p>The parameter that determines the value configuration.</p>
-     */
-    inline CustomActionSetParametersOperation& WithParameterValueConfigurations(const Aws::Vector<SetParameterValueConfiguration>& value) { SetParameterValueConfigurations(value); return *this;}
-
-    /**
-     * <p>The parameter that determines the value configuration.</p>
-     */
-    inline CustomActionSetParametersOperation& WithParameterValueConfigurations(Aws::Vector<SetParameterValueConfiguration>&& value) { SetParameterValueConfigurations(std::move(value)); return *this;}
-
-    /**
-     * <p>The parameter that determines the value configuration.</p>
-     */
-    inline CustomActionSetParametersOperation& AddParameterValueConfigurations(const SetParameterValueConfiguration& value) { m_parameterValueConfigurationsHasBeenSet = true; m_parameterValueConfigurations.push_back(value); return *this; }
-
-    /**
-     * <p>The parameter that determines the value configuration.</p>
-     */
-    inline CustomActionSetParametersOperation& AddParameterValueConfigurations(SetParameterValueConfiguration&& value) { m_parameterValueConfigurationsHasBeenSet = true; m_parameterValueConfigurations.push_back(std::move(value)); return *this; }
-
+    template<typename ParameterValueConfigurationsT = Aws::Vector<SetParameterValueConfiguration>>
+    void SetParameterValueConfigurations(ParameterValueConfigurationsT&& value) { m_parameterValueConfigurationsHasBeenSet = true; m_parameterValueConfigurations = std::forward<ParameterValueConfigurationsT>(value); }
+    template<typename ParameterValueConfigurationsT = Aws::Vector<SetParameterValueConfiguration>>
+    CustomActionSetParametersOperation& WithParameterValueConfigurations(ParameterValueConfigurationsT&& value) { SetParameterValueConfigurations(std::forward<ParameterValueConfigurationsT>(value)); return *this;}
+    template<typename ParameterValueConfigurationsT = SetParameterValueConfiguration>
+    CustomActionSetParametersOperation& AddParameterValueConfigurations(ParameterValueConfigurationsT&& value) { m_parameterValueConfigurationsHasBeenSet = true; m_parameterValueConfigurations.emplace_back(std::forward<ParameterValueConfigurationsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<SetParameterValueConfiguration> m_parameterValueConfigurations;

@@ -18,15 +18,7 @@ namespace WAFV2
 namespace Model
 {
 
-IPSetReferenceStatement::IPSetReferenceStatement() : 
-    m_aRNHasBeenSet(false),
-    m_iPSetForwardedIPConfigHasBeenSet(false)
-{
-}
-
-IPSetReferenceStatement::IPSetReferenceStatement(JsonView jsonValue) : 
-    m_aRNHasBeenSet(false),
-    m_iPSetForwardedIPConfigHasBeenSet(false)
+IPSetReferenceStatement::IPSetReferenceStatement(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ IPSetReferenceStatement& IPSetReferenceStatement::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ARN"))
   {
     m_aRN = jsonValue.GetString("ARN");
-
     m_aRNHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("IPSetForwardedIPConfig"))
   {
     m_iPSetForwardedIPConfig = jsonValue.GetObject("IPSetForwardedIPConfig");
-
     m_iPSetForwardedIPConfigHasBeenSet = true;
   }
-
   return *this;
 }
 

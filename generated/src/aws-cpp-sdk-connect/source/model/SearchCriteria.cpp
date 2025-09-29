@@ -18,31 +18,18 @@ namespace Connect
 namespace Model
 {
 
-SearchCriteria::SearchCriteria() : 
-    m_agentIdsHasBeenSet(false),
-    m_agentHierarchyGroupsHasBeenSet(false),
-    m_channelsHasBeenSet(false),
-    m_contactAnalysisHasBeenSet(false),
-    m_initiationMethodsHasBeenSet(false),
-    m_queueIdsHasBeenSet(false),
-    m_searchableContactAttributesHasBeenSet(false)
-{
-}
-
-SearchCriteria::SearchCriteria(JsonView jsonValue) : 
-    m_agentIdsHasBeenSet(false),
-    m_agentHierarchyGroupsHasBeenSet(false),
-    m_channelsHasBeenSet(false),
-    m_contactAnalysisHasBeenSet(false),
-    m_initiationMethodsHasBeenSet(false),
-    m_queueIdsHasBeenSet(false),
-    m_searchableContactAttributesHasBeenSet(false)
+SearchCriteria::SearchCriteria(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 SearchCriteria& SearchCriteria::operator =(JsonView jsonValue)
 {
+  if(jsonValue.ValueExists("Name"))
+  {
+    m_name = jsonValue.GetObject("Name");
+    m_nameHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("AgentIds"))
   {
     Aws::Utils::Array<JsonView> agentIdsJsonList = jsonValue.GetArray("AgentIds");
@@ -52,14 +39,11 @@ SearchCriteria& SearchCriteria::operator =(JsonView jsonValue)
     }
     m_agentIdsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AgentHierarchyGroups"))
   {
     m_agentHierarchyGroups = jsonValue.GetObject("AgentHierarchyGroups");
-
     m_agentHierarchyGroupsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Channels"))
   {
     Aws::Utils::Array<JsonView> channelsJsonList = jsonValue.GetArray("Channels");
@@ -69,14 +53,11 @@ SearchCriteria& SearchCriteria::operator =(JsonView jsonValue)
     }
     m_channelsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ContactAnalysis"))
   {
     m_contactAnalysis = jsonValue.GetObject("ContactAnalysis");
-
     m_contactAnalysisHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("InitiationMethods"))
   {
     Aws::Utils::Array<JsonView> initiationMethodsJsonList = jsonValue.GetArray("InitiationMethods");
@@ -86,7 +67,6 @@ SearchCriteria& SearchCriteria::operator =(JsonView jsonValue)
     }
     m_initiationMethodsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("QueueIds"))
   {
     Aws::Utils::Array<JsonView> queueIdsJsonList = jsonValue.GetArray("QueueIds");
@@ -96,20 +76,38 @@ SearchCriteria& SearchCriteria::operator =(JsonView jsonValue)
     }
     m_queueIdsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("RoutingCriteria"))
+  {
+    m_routingCriteria = jsonValue.GetObject("RoutingCriteria");
+    m_routingCriteriaHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("AdditionalTimeRange"))
+  {
+    m_additionalTimeRange = jsonValue.GetObject("AdditionalTimeRange");
+    m_additionalTimeRangeHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("SearchableContactAttributes"))
   {
     m_searchableContactAttributes = jsonValue.GetObject("SearchableContactAttributes");
-
     m_searchableContactAttributesHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("SearchableSegmentAttributes"))
+  {
+    m_searchableSegmentAttributes = jsonValue.GetObject("SearchableSegmentAttributes");
+    m_searchableSegmentAttributesHasBeenSet = true;
+  }
   return *this;
 }
 
 JsonValue SearchCriteria::Jsonize() const
 {
   JsonValue payload;
+
+  if(m_nameHasBeenSet)
+  {
+   payload.WithObject("Name", m_name.Jsonize());
+
+  }
 
   if(m_agentIdsHasBeenSet)
   {
@@ -167,9 +165,27 @@ JsonValue SearchCriteria::Jsonize() const
 
   }
 
+  if(m_routingCriteriaHasBeenSet)
+  {
+   payload.WithObject("RoutingCriteria", m_routingCriteria.Jsonize());
+
+  }
+
+  if(m_additionalTimeRangeHasBeenSet)
+  {
+   payload.WithObject("AdditionalTimeRange", m_additionalTimeRange.Jsonize());
+
+  }
+
   if(m_searchableContactAttributesHasBeenSet)
   {
    payload.WithObject("SearchableContactAttributes", m_searchableContactAttributes.Jsonize());
+
+  }
+
+  if(m_searchableSegmentAttributesHasBeenSet)
+  {
+   payload.WithObject("SearchableSegmentAttributes", m_searchableSegmentAttributes.Jsonize());
 
   }
 

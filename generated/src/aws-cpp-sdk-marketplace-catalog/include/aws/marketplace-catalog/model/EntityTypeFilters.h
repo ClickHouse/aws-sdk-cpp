@@ -11,6 +11,7 @@
 #include <aws/marketplace-catalog/model/OfferFilters.h>
 #include <aws/marketplace-catalog/model/ContainerProductFilters.h>
 #include <aws/marketplace-catalog/model/ResaleAuthorizationFilters.h>
+#include <aws/marketplace-catalog/model/MachineLearningProductFilters.h>
 #include <utility>
 
 namespace Aws
@@ -37,197 +38,93 @@ namespace Model
   class EntityTypeFilters
   {
   public:
-    AWS_MARKETPLACECATALOG_API EntityTypeFilters();
+    AWS_MARKETPLACECATALOG_API EntityTypeFilters() = default;
     AWS_MARKETPLACECATALOG_API EntityTypeFilters(Aws::Utils::Json::JsonView jsonValue);
     AWS_MARKETPLACECATALOG_API EntityTypeFilters& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MARKETPLACECATALOG_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A filter for data products.</p>
      */
-    inline const DataProductFilters& GetDataProductFilters() const{ return m_dataProductFilters; }
-
-    /**
-     * <p>A filter for data products.</p>
-     */
+    inline const DataProductFilters& GetDataProductFilters() const { return m_dataProductFilters; }
     inline bool DataProductFiltersHasBeenSet() const { return m_dataProductFiltersHasBeenSet; }
+    template<typename DataProductFiltersT = DataProductFilters>
+    void SetDataProductFilters(DataProductFiltersT&& value) { m_dataProductFiltersHasBeenSet = true; m_dataProductFilters = std::forward<DataProductFiltersT>(value); }
+    template<typename DataProductFiltersT = DataProductFilters>
+    EntityTypeFilters& WithDataProductFilters(DataProductFiltersT&& value) { SetDataProductFilters(std::forward<DataProductFiltersT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A filter for data products.</p>
-     */
-    inline void SetDataProductFilters(const DataProductFilters& value) { m_dataProductFiltersHasBeenSet = true; m_dataProductFilters = value; }
-
-    /**
-     * <p>A filter for data products.</p>
-     */
-    inline void SetDataProductFilters(DataProductFilters&& value) { m_dataProductFiltersHasBeenSet = true; m_dataProductFilters = std::move(value); }
-
-    /**
-     * <p>A filter for data products.</p>
-     */
-    inline EntityTypeFilters& WithDataProductFilters(const DataProductFilters& value) { SetDataProductFilters(value); return *this;}
-
-    /**
-     * <p>A filter for data products.</p>
-     */
-    inline EntityTypeFilters& WithDataProductFilters(DataProductFilters&& value) { SetDataProductFilters(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A filter for SaaS products.</p>
      */
-    inline const SaaSProductFilters& GetSaaSProductFilters() const{ return m_saaSProductFilters; }
-
-    /**
-     * <p>A filter for SaaS products.</p>
-     */
+    inline const SaaSProductFilters& GetSaaSProductFilters() const { return m_saaSProductFilters; }
     inline bool SaaSProductFiltersHasBeenSet() const { return m_saaSProductFiltersHasBeenSet; }
+    template<typename SaaSProductFiltersT = SaaSProductFilters>
+    void SetSaaSProductFilters(SaaSProductFiltersT&& value) { m_saaSProductFiltersHasBeenSet = true; m_saaSProductFilters = std::forward<SaaSProductFiltersT>(value); }
+    template<typename SaaSProductFiltersT = SaaSProductFilters>
+    EntityTypeFilters& WithSaaSProductFilters(SaaSProductFiltersT&& value) { SetSaaSProductFilters(std::forward<SaaSProductFiltersT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A filter for SaaS products.</p>
-     */
-    inline void SetSaaSProductFilters(const SaaSProductFilters& value) { m_saaSProductFiltersHasBeenSet = true; m_saaSProductFilters = value; }
-
-    /**
-     * <p>A filter for SaaS products.</p>
-     */
-    inline void SetSaaSProductFilters(SaaSProductFilters&& value) { m_saaSProductFiltersHasBeenSet = true; m_saaSProductFilters = std::move(value); }
-
-    /**
-     * <p>A filter for SaaS products.</p>
-     */
-    inline EntityTypeFilters& WithSaaSProductFilters(const SaaSProductFilters& value) { SetSaaSProductFilters(value); return *this;}
-
-    /**
-     * <p>A filter for SaaS products.</p>
-     */
-    inline EntityTypeFilters& WithSaaSProductFilters(SaaSProductFilters&& value) { SetSaaSProductFilters(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A filter for AMI products.</p>
      */
-    inline const AmiProductFilters& GetAmiProductFilters() const{ return m_amiProductFilters; }
-
-    /**
-     * <p>A filter for AMI products.</p>
-     */
+    inline const AmiProductFilters& GetAmiProductFilters() const { return m_amiProductFilters; }
     inline bool AmiProductFiltersHasBeenSet() const { return m_amiProductFiltersHasBeenSet; }
+    template<typename AmiProductFiltersT = AmiProductFilters>
+    void SetAmiProductFilters(AmiProductFiltersT&& value) { m_amiProductFiltersHasBeenSet = true; m_amiProductFilters = std::forward<AmiProductFiltersT>(value); }
+    template<typename AmiProductFiltersT = AmiProductFilters>
+    EntityTypeFilters& WithAmiProductFilters(AmiProductFiltersT&& value) { SetAmiProductFilters(std::forward<AmiProductFiltersT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A filter for AMI products.</p>
-     */
-    inline void SetAmiProductFilters(const AmiProductFilters& value) { m_amiProductFiltersHasBeenSet = true; m_amiProductFilters = value; }
-
-    /**
-     * <p>A filter for AMI products.</p>
-     */
-    inline void SetAmiProductFilters(AmiProductFilters&& value) { m_amiProductFiltersHasBeenSet = true; m_amiProductFilters = std::move(value); }
-
-    /**
-     * <p>A filter for AMI products.</p>
-     */
-    inline EntityTypeFilters& WithAmiProductFilters(const AmiProductFilters& value) { SetAmiProductFilters(value); return *this;}
-
-    /**
-     * <p>A filter for AMI products.</p>
-     */
-    inline EntityTypeFilters& WithAmiProductFilters(AmiProductFilters&& value) { SetAmiProductFilters(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A filter for offers.</p>
      */
-    inline const OfferFilters& GetOfferFilters() const{ return m_offerFilters; }
-
-    /**
-     * <p>A filter for offers.</p>
-     */
+    inline const OfferFilters& GetOfferFilters() const { return m_offerFilters; }
     inline bool OfferFiltersHasBeenSet() const { return m_offerFiltersHasBeenSet; }
+    template<typename OfferFiltersT = OfferFilters>
+    void SetOfferFilters(OfferFiltersT&& value) { m_offerFiltersHasBeenSet = true; m_offerFilters = std::forward<OfferFiltersT>(value); }
+    template<typename OfferFiltersT = OfferFilters>
+    EntityTypeFilters& WithOfferFilters(OfferFiltersT&& value) { SetOfferFilters(std::forward<OfferFiltersT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A filter for offers.</p>
-     */
-    inline void SetOfferFilters(const OfferFilters& value) { m_offerFiltersHasBeenSet = true; m_offerFilters = value; }
-
-    /**
-     * <p>A filter for offers.</p>
-     */
-    inline void SetOfferFilters(OfferFilters&& value) { m_offerFiltersHasBeenSet = true; m_offerFilters = std::move(value); }
-
-    /**
-     * <p>A filter for offers.</p>
-     */
-    inline EntityTypeFilters& WithOfferFilters(const OfferFilters& value) { SetOfferFilters(value); return *this;}
-
-    /**
-     * <p>A filter for offers.</p>
-     */
-    inline EntityTypeFilters& WithOfferFilters(OfferFilters&& value) { SetOfferFilters(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A filter for container products.</p>
      */
-    inline const ContainerProductFilters& GetContainerProductFilters() const{ return m_containerProductFilters; }
-
-    /**
-     * <p>A filter for container products.</p>
-     */
+    inline const ContainerProductFilters& GetContainerProductFilters() const { return m_containerProductFilters; }
     inline bool ContainerProductFiltersHasBeenSet() const { return m_containerProductFiltersHasBeenSet; }
+    template<typename ContainerProductFiltersT = ContainerProductFilters>
+    void SetContainerProductFilters(ContainerProductFiltersT&& value) { m_containerProductFiltersHasBeenSet = true; m_containerProductFilters = std::forward<ContainerProductFiltersT>(value); }
+    template<typename ContainerProductFiltersT = ContainerProductFilters>
+    EntityTypeFilters& WithContainerProductFilters(ContainerProductFiltersT&& value) { SetContainerProductFilters(std::forward<ContainerProductFiltersT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A filter for container products.</p>
-     */
-    inline void SetContainerProductFilters(const ContainerProductFilters& value) { m_containerProductFiltersHasBeenSet = true; m_containerProductFilters = value; }
-
-    /**
-     * <p>A filter for container products.</p>
-     */
-    inline void SetContainerProductFilters(ContainerProductFilters&& value) { m_containerProductFiltersHasBeenSet = true; m_containerProductFilters = std::move(value); }
-
-    /**
-     * <p>A filter for container products.</p>
-     */
-    inline EntityTypeFilters& WithContainerProductFilters(const ContainerProductFilters& value) { SetContainerProductFilters(value); return *this;}
-
-    /**
-     * <p>A filter for container products.</p>
-     */
-    inline EntityTypeFilters& WithContainerProductFilters(ContainerProductFilters&& value) { SetContainerProductFilters(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A filter for Resale Authorizations.</p>
      */
-    inline const ResaleAuthorizationFilters& GetResaleAuthorizationFilters() const{ return m_resaleAuthorizationFilters; }
-
-    /**
-     * <p>A filter for Resale Authorizations.</p>
-     */
+    inline const ResaleAuthorizationFilters& GetResaleAuthorizationFilters() const { return m_resaleAuthorizationFilters; }
     inline bool ResaleAuthorizationFiltersHasBeenSet() const { return m_resaleAuthorizationFiltersHasBeenSet; }
+    template<typename ResaleAuthorizationFiltersT = ResaleAuthorizationFilters>
+    void SetResaleAuthorizationFilters(ResaleAuthorizationFiltersT&& value) { m_resaleAuthorizationFiltersHasBeenSet = true; m_resaleAuthorizationFilters = std::forward<ResaleAuthorizationFiltersT>(value); }
+    template<typename ResaleAuthorizationFiltersT = ResaleAuthorizationFilters>
+    EntityTypeFilters& WithResaleAuthorizationFilters(ResaleAuthorizationFiltersT&& value) { SetResaleAuthorizationFilters(std::forward<ResaleAuthorizationFiltersT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A filter for Resale Authorizations.</p>
-     */
-    inline void SetResaleAuthorizationFilters(const ResaleAuthorizationFilters& value) { m_resaleAuthorizationFiltersHasBeenSet = true; m_resaleAuthorizationFilters = value; }
-
-    /**
-     * <p>A filter for Resale Authorizations.</p>
-     */
-    inline void SetResaleAuthorizationFilters(ResaleAuthorizationFilters&& value) { m_resaleAuthorizationFiltersHasBeenSet = true; m_resaleAuthorizationFilters = std::move(value); }
-
-    /**
-     * <p>A filter for Resale Authorizations.</p>
-     */
-    inline EntityTypeFilters& WithResaleAuthorizationFilters(const ResaleAuthorizationFilters& value) { SetResaleAuthorizationFilters(value); return *this;}
-
-    /**
-     * <p>A filter for Resale Authorizations.</p>
-     */
-    inline EntityTypeFilters& WithResaleAuthorizationFilters(ResaleAuthorizationFilters&& value) { SetResaleAuthorizationFilters(std::move(value)); return *this;}
-
+    ///@{
+    
+    inline const MachineLearningProductFilters& GetMachineLearningProductFilters() const { return m_machineLearningProductFilters; }
+    inline bool MachineLearningProductFiltersHasBeenSet() const { return m_machineLearningProductFiltersHasBeenSet; }
+    template<typename MachineLearningProductFiltersT = MachineLearningProductFilters>
+    void SetMachineLearningProductFilters(MachineLearningProductFiltersT&& value) { m_machineLearningProductFiltersHasBeenSet = true; m_machineLearningProductFilters = std::forward<MachineLearningProductFiltersT>(value); }
+    template<typename MachineLearningProductFiltersT = MachineLearningProductFilters>
+    EntityTypeFilters& WithMachineLearningProductFilters(MachineLearningProductFiltersT&& value) { SetMachineLearningProductFilters(std::forward<MachineLearningProductFiltersT>(value)); return *this;}
+    ///@}
   private:
 
     DataProductFilters m_dataProductFilters;
@@ -247,6 +144,9 @@ namespace Model
 
     ResaleAuthorizationFilters m_resaleAuthorizationFilters;
     bool m_resaleAuthorizationFiltersHasBeenSet = false;
+
+    MachineLearningProductFilters m_machineLearningProductFilters;
+    bool m_machineLearningProductFiltersHasBeenSet = false;
   };
 
 } // namespace Model

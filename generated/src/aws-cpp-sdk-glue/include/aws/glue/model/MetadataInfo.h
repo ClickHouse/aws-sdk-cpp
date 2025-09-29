@@ -34,134 +34,49 @@ namespace Model
   class MetadataInfo
   {
   public:
-    AWS_GLUE_API MetadataInfo();
+    AWS_GLUE_API MetadataInfo() = default;
     AWS_GLUE_API MetadataInfo(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API MetadataInfo& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The metadata key’s corresponding value.</p>
      */
-    inline const Aws::String& GetMetadataValue() const{ return m_metadataValue; }
-
-    /**
-     * <p>The metadata key’s corresponding value.</p>
-     */
+    inline const Aws::String& GetMetadataValue() const { return m_metadataValue; }
     inline bool MetadataValueHasBeenSet() const { return m_metadataValueHasBeenSet; }
+    template<typename MetadataValueT = Aws::String>
+    void SetMetadataValue(MetadataValueT&& value) { m_metadataValueHasBeenSet = true; m_metadataValue = std::forward<MetadataValueT>(value); }
+    template<typename MetadataValueT = Aws::String>
+    MetadataInfo& WithMetadataValue(MetadataValueT&& value) { SetMetadataValue(std::forward<MetadataValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The metadata key’s corresponding value.</p>
-     */
-    inline void SetMetadataValue(const Aws::String& value) { m_metadataValueHasBeenSet = true; m_metadataValue = value; }
-
-    /**
-     * <p>The metadata key’s corresponding value.</p>
-     */
-    inline void SetMetadataValue(Aws::String&& value) { m_metadataValueHasBeenSet = true; m_metadataValue = std::move(value); }
-
-    /**
-     * <p>The metadata key’s corresponding value.</p>
-     */
-    inline void SetMetadataValue(const char* value) { m_metadataValueHasBeenSet = true; m_metadataValue.assign(value); }
-
-    /**
-     * <p>The metadata key’s corresponding value.</p>
-     */
-    inline MetadataInfo& WithMetadataValue(const Aws::String& value) { SetMetadataValue(value); return *this;}
-
-    /**
-     * <p>The metadata key’s corresponding value.</p>
-     */
-    inline MetadataInfo& WithMetadataValue(Aws::String&& value) { SetMetadataValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The metadata key’s corresponding value.</p>
-     */
-    inline MetadataInfo& WithMetadataValue(const char* value) { SetMetadataValue(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The time at which the entry was created.</p>
      */
-    inline const Aws::String& GetCreatedTime() const{ return m_createdTime; }
-
-    /**
-     * <p>The time at which the entry was created.</p>
-     */
+    inline const Aws::String& GetCreatedTime() const { return m_createdTime; }
     inline bool CreatedTimeHasBeenSet() const { return m_createdTimeHasBeenSet; }
+    template<typename CreatedTimeT = Aws::String>
+    void SetCreatedTime(CreatedTimeT&& value) { m_createdTimeHasBeenSet = true; m_createdTime = std::forward<CreatedTimeT>(value); }
+    template<typename CreatedTimeT = Aws::String>
+    MetadataInfo& WithCreatedTime(CreatedTimeT&& value) { SetCreatedTime(std::forward<CreatedTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time at which the entry was created.</p>
-     */
-    inline void SetCreatedTime(const Aws::String& value) { m_createdTimeHasBeenSet = true; m_createdTime = value; }
-
-    /**
-     * <p>The time at which the entry was created.</p>
-     */
-    inline void SetCreatedTime(Aws::String&& value) { m_createdTimeHasBeenSet = true; m_createdTime = std::move(value); }
-
-    /**
-     * <p>The time at which the entry was created.</p>
-     */
-    inline void SetCreatedTime(const char* value) { m_createdTimeHasBeenSet = true; m_createdTime.assign(value); }
-
-    /**
-     * <p>The time at which the entry was created.</p>
-     */
-    inline MetadataInfo& WithCreatedTime(const Aws::String& value) { SetCreatedTime(value); return *this;}
-
-    /**
-     * <p>The time at which the entry was created.</p>
-     */
-    inline MetadataInfo& WithCreatedTime(Aws::String&& value) { SetCreatedTime(std::move(value)); return *this;}
-
-    /**
-     * <p>The time at which the entry was created.</p>
-     */
-    inline MetadataInfo& WithCreatedTime(const char* value) { SetCreatedTime(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Other metadata belonging to the same metadata key.</p>
      */
-    inline const Aws::Vector<OtherMetadataValueListItem>& GetOtherMetadataValueList() const{ return m_otherMetadataValueList; }
-
-    /**
-     * <p>Other metadata belonging to the same metadata key.</p>
-     */
+    inline const Aws::Vector<OtherMetadataValueListItem>& GetOtherMetadataValueList() const { return m_otherMetadataValueList; }
     inline bool OtherMetadataValueListHasBeenSet() const { return m_otherMetadataValueListHasBeenSet; }
-
-    /**
-     * <p>Other metadata belonging to the same metadata key.</p>
-     */
-    inline void SetOtherMetadataValueList(const Aws::Vector<OtherMetadataValueListItem>& value) { m_otherMetadataValueListHasBeenSet = true; m_otherMetadataValueList = value; }
-
-    /**
-     * <p>Other metadata belonging to the same metadata key.</p>
-     */
-    inline void SetOtherMetadataValueList(Aws::Vector<OtherMetadataValueListItem>&& value) { m_otherMetadataValueListHasBeenSet = true; m_otherMetadataValueList = std::move(value); }
-
-    /**
-     * <p>Other metadata belonging to the same metadata key.</p>
-     */
-    inline MetadataInfo& WithOtherMetadataValueList(const Aws::Vector<OtherMetadataValueListItem>& value) { SetOtherMetadataValueList(value); return *this;}
-
-    /**
-     * <p>Other metadata belonging to the same metadata key.</p>
-     */
-    inline MetadataInfo& WithOtherMetadataValueList(Aws::Vector<OtherMetadataValueListItem>&& value) { SetOtherMetadataValueList(std::move(value)); return *this;}
-
-    /**
-     * <p>Other metadata belonging to the same metadata key.</p>
-     */
-    inline MetadataInfo& AddOtherMetadataValueList(const OtherMetadataValueListItem& value) { m_otherMetadataValueListHasBeenSet = true; m_otherMetadataValueList.push_back(value); return *this; }
-
-    /**
-     * <p>Other metadata belonging to the same metadata key.</p>
-     */
-    inline MetadataInfo& AddOtherMetadataValueList(OtherMetadataValueListItem&& value) { m_otherMetadataValueListHasBeenSet = true; m_otherMetadataValueList.push_back(std::move(value)); return *this; }
-
+    template<typename OtherMetadataValueListT = Aws::Vector<OtherMetadataValueListItem>>
+    void SetOtherMetadataValueList(OtherMetadataValueListT&& value) { m_otherMetadataValueListHasBeenSet = true; m_otherMetadataValueList = std::forward<OtherMetadataValueListT>(value); }
+    template<typename OtherMetadataValueListT = Aws::Vector<OtherMetadataValueListItem>>
+    MetadataInfo& WithOtherMetadataValueList(OtherMetadataValueListT&& value) { SetOtherMetadataValueList(std::forward<OtherMetadataValueListT>(value)); return *this;}
+    template<typename OtherMetadataValueListT = OtherMetadataValueListItem>
+    MetadataInfo& AddOtherMetadataValueList(OtherMetadataValueListT&& value) { m_otherMetadataValueListHasBeenSet = true; m_otherMetadataValueList.emplace_back(std::forward<OtherMetadataValueListT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_metadataValue;

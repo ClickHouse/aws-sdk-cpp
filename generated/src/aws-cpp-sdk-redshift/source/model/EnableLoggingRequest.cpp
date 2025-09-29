@@ -10,16 +10,6 @@
 using namespace Aws::Redshift::Model;
 using namespace Aws::Utils;
 
-EnableLoggingRequest::EnableLoggingRequest() : 
-    m_clusterIdentifierHasBeenSet(false),
-    m_bucketNameHasBeenSet(false),
-    m_s3KeyPrefixHasBeenSet(false),
-    m_logDestinationType(LogDestinationType::NOT_SET),
-    m_logDestinationTypeHasBeenSet(false),
-    m_logExportsHasBeenSet(false)
-{
-}
-
 Aws::String EnableLoggingRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -41,17 +31,24 @@ Aws::String EnableLoggingRequest::SerializePayload() const
 
   if(m_logDestinationTypeHasBeenSet)
   {
-    ss << "LogDestinationType=" << LogDestinationTypeMapper::GetNameForLogDestinationType(m_logDestinationType) << "&";
+    ss << "LogDestinationType=" << StringUtils::URLEncode(LogDestinationTypeMapper::GetNameForLogDestinationType(m_logDestinationType)) << "&";
   }
 
   if(m_logExportsHasBeenSet)
   {
-    unsigned logExportsCount = 1;
-    for(auto& item : m_logExports)
+    if (m_logExports.empty())
     {
-      ss << "LogExports.member." << logExportsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      logExportsCount++;
+      ss << "LogExports=&";
+    }
+    else
+    {
+      unsigned logExportsCount = 1;
+      for(auto& item : m_logExports)
+      {
+        ss << "LogExports.member." << logExportsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        logExportsCount++;
+      }
     }
   }
 

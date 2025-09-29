@@ -21,7 +21,7 @@ namespace Model
   class DescribeLocationAzureBlobRequest : public DataSyncRequest
   {
   public:
-    AWS_DATASYNC_API DescribeLocationAzureBlobRequest();
+    AWS_DATASYNC_API DescribeLocationAzureBlobRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,54 +34,18 @@ namespace Model
     AWS_DATASYNC_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>Specifies the Amazon Resource Name (ARN) of your Azure Blob Storage transfer
      * location.</p>
      */
-    inline const Aws::String& GetLocationArn() const{ return m_locationArn; }
-
-    /**
-     * <p>Specifies the Amazon Resource Name (ARN) of your Azure Blob Storage transfer
-     * location.</p>
-     */
+    inline const Aws::String& GetLocationArn() const { return m_locationArn; }
     inline bool LocationArnHasBeenSet() const { return m_locationArnHasBeenSet; }
-
-    /**
-     * <p>Specifies the Amazon Resource Name (ARN) of your Azure Blob Storage transfer
-     * location.</p>
-     */
-    inline void SetLocationArn(const Aws::String& value) { m_locationArnHasBeenSet = true; m_locationArn = value; }
-
-    /**
-     * <p>Specifies the Amazon Resource Name (ARN) of your Azure Blob Storage transfer
-     * location.</p>
-     */
-    inline void SetLocationArn(Aws::String&& value) { m_locationArnHasBeenSet = true; m_locationArn = std::move(value); }
-
-    /**
-     * <p>Specifies the Amazon Resource Name (ARN) of your Azure Blob Storage transfer
-     * location.</p>
-     */
-    inline void SetLocationArn(const char* value) { m_locationArnHasBeenSet = true; m_locationArn.assign(value); }
-
-    /**
-     * <p>Specifies the Amazon Resource Name (ARN) of your Azure Blob Storage transfer
-     * location.</p>
-     */
-    inline DescribeLocationAzureBlobRequest& WithLocationArn(const Aws::String& value) { SetLocationArn(value); return *this;}
-
-    /**
-     * <p>Specifies the Amazon Resource Name (ARN) of your Azure Blob Storage transfer
-     * location.</p>
-     */
-    inline DescribeLocationAzureBlobRequest& WithLocationArn(Aws::String&& value) { SetLocationArn(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the Amazon Resource Name (ARN) of your Azure Blob Storage transfer
-     * location.</p>
-     */
-    inline DescribeLocationAzureBlobRequest& WithLocationArn(const char* value) { SetLocationArn(value); return *this;}
-
+    template<typename LocationArnT = Aws::String>
+    void SetLocationArn(LocationArnT&& value) { m_locationArnHasBeenSet = true; m_locationArn = std::forward<LocationArnT>(value); }
+    template<typename LocationArnT = Aws::String>
+    DescribeLocationAzureBlobRequest& WithLocationArn(LocationArnT&& value) { SetLocationArn(std::forward<LocationArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_locationArn;

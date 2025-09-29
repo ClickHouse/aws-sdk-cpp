@@ -26,7 +26,7 @@ namespace Model
   class DeleteTimeSeriesRequest : public IoTSiteWiseRequest
   {
   public:
-    AWS_IOTSITEWISE_API DeleteTimeSeriesRequest();
+    AWS_IOTSITEWISE_API DeleteTimeSeriesRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,47 +39,19 @@ namespace Model
     AWS_IOTSITEWISE_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>The alias that identifies the time series.</p>
      */
-    inline const Aws::String& GetAlias() const{ return m_alias; }
-
-    /**
-     * <p>The alias that identifies the time series.</p>
-     */
+    inline const Aws::String& GetAlias() const { return m_alias; }
     inline bool AliasHasBeenSet() const { return m_aliasHasBeenSet; }
+    template<typename AliasT = Aws::String>
+    void SetAlias(AliasT&& value) { m_aliasHasBeenSet = true; m_alias = std::forward<AliasT>(value); }
+    template<typename AliasT = Aws::String>
+    DeleteTimeSeriesRequest& WithAlias(AliasT&& value) { SetAlias(std::forward<AliasT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The alias that identifies the time series.</p>
-     */
-    inline void SetAlias(const Aws::String& value) { m_aliasHasBeenSet = true; m_alias = value; }
-
-    /**
-     * <p>The alias that identifies the time series.</p>
-     */
-    inline void SetAlias(Aws::String&& value) { m_aliasHasBeenSet = true; m_alias = std::move(value); }
-
-    /**
-     * <p>The alias that identifies the time series.</p>
-     */
-    inline void SetAlias(const char* value) { m_aliasHasBeenSet = true; m_alias.assign(value); }
-
-    /**
-     * <p>The alias that identifies the time series.</p>
-     */
-    inline DeleteTimeSeriesRequest& WithAlias(const Aws::String& value) { SetAlias(value); return *this;}
-
-    /**
-     * <p>The alias that identifies the time series.</p>
-     */
-    inline DeleteTimeSeriesRequest& WithAlias(Aws::String&& value) { SetAlias(std::move(value)); return *this;}
-
-    /**
-     * <p>The alias that identifies the time series.</p>
-     */
-    inline DeleteTimeSeriesRequest& WithAlias(const char* value) { SetAlias(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the asset in which the asset property was created. This can be
      * either the actual ID in UUID format, or else <code>externalId:</code> followed
@@ -87,72 +59,15 @@ namespace Model
      * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/object-ids.html#external-id-references">Referencing
      * objects with external IDs</a> in the <i>IoT SiteWise User Guide</i>.</p>
      */
-    inline const Aws::String& GetAssetId() const{ return m_assetId; }
-
-    /**
-     * <p>The ID of the asset in which the asset property was created. This can be
-     * either the actual ID in UUID format, or else <code>externalId:</code> followed
-     * by the external ID, if it has one. For more information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/object-ids.html#external-id-references">Referencing
-     * objects with external IDs</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
+    inline const Aws::String& GetAssetId() const { return m_assetId; }
     inline bool AssetIdHasBeenSet() const { return m_assetIdHasBeenSet; }
+    template<typename AssetIdT = Aws::String>
+    void SetAssetId(AssetIdT&& value) { m_assetIdHasBeenSet = true; m_assetId = std::forward<AssetIdT>(value); }
+    template<typename AssetIdT = Aws::String>
+    DeleteTimeSeriesRequest& WithAssetId(AssetIdT&& value) { SetAssetId(std::forward<AssetIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the asset in which the asset property was created. This can be
-     * either the actual ID in UUID format, or else <code>externalId:</code> followed
-     * by the external ID, if it has one. For more information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/object-ids.html#external-id-references">Referencing
-     * objects with external IDs</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline void SetAssetId(const Aws::String& value) { m_assetIdHasBeenSet = true; m_assetId = value; }
-
-    /**
-     * <p>The ID of the asset in which the asset property was created. This can be
-     * either the actual ID in UUID format, or else <code>externalId:</code> followed
-     * by the external ID, if it has one. For more information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/object-ids.html#external-id-references">Referencing
-     * objects with external IDs</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline void SetAssetId(Aws::String&& value) { m_assetIdHasBeenSet = true; m_assetId = std::move(value); }
-
-    /**
-     * <p>The ID of the asset in which the asset property was created. This can be
-     * either the actual ID in UUID format, or else <code>externalId:</code> followed
-     * by the external ID, if it has one. For more information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/object-ids.html#external-id-references">Referencing
-     * objects with external IDs</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline void SetAssetId(const char* value) { m_assetIdHasBeenSet = true; m_assetId.assign(value); }
-
-    /**
-     * <p>The ID of the asset in which the asset property was created. This can be
-     * either the actual ID in UUID format, or else <code>externalId:</code> followed
-     * by the external ID, if it has one. For more information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/object-ids.html#external-id-references">Referencing
-     * objects with external IDs</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline DeleteTimeSeriesRequest& WithAssetId(const Aws::String& value) { SetAssetId(value); return *this;}
-
-    /**
-     * <p>The ID of the asset in which the asset property was created. This can be
-     * either the actual ID in UUID format, or else <code>externalId:</code> followed
-     * by the external ID, if it has one. For more information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/object-ids.html#external-id-references">Referencing
-     * objects with external IDs</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline DeleteTimeSeriesRequest& WithAssetId(Aws::String&& value) { SetAssetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the asset in which the asset property was created. This can be
-     * either the actual ID in UUID format, or else <code>externalId:</code> followed
-     * by the external ID, if it has one. For more information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/object-ids.html#external-id-references">Referencing
-     * objects with external IDs</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline DeleteTimeSeriesRequest& WithAssetId(const char* value) { SetAssetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the asset property. This can be either the actual ID in UUID
      * format, or else <code>externalId:</code> followed by the external ID, if it has
@@ -160,128 +75,27 @@ namespace Model
      * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/object-ids.html#external-id-references">Referencing
      * objects with external IDs</a> in the <i>IoT SiteWise User Guide</i>.</p>
      */
-    inline const Aws::String& GetPropertyId() const{ return m_propertyId; }
-
-    /**
-     * <p>The ID of the asset property. This can be either the actual ID in UUID
-     * format, or else <code>externalId:</code> followed by the external ID, if it has
-     * one. For more information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/object-ids.html#external-id-references">Referencing
-     * objects with external IDs</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
+    inline const Aws::String& GetPropertyId() const { return m_propertyId; }
     inline bool PropertyIdHasBeenSet() const { return m_propertyIdHasBeenSet; }
+    template<typename PropertyIdT = Aws::String>
+    void SetPropertyId(PropertyIdT&& value) { m_propertyIdHasBeenSet = true; m_propertyId = std::forward<PropertyIdT>(value); }
+    template<typename PropertyIdT = Aws::String>
+    DeleteTimeSeriesRequest& WithPropertyId(PropertyIdT&& value) { SetPropertyId(std::forward<PropertyIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the asset property. This can be either the actual ID in UUID
-     * format, or else <code>externalId:</code> followed by the external ID, if it has
-     * one. For more information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/object-ids.html#external-id-references">Referencing
-     * objects with external IDs</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline void SetPropertyId(const Aws::String& value) { m_propertyIdHasBeenSet = true; m_propertyId = value; }
-
-    /**
-     * <p>The ID of the asset property. This can be either the actual ID in UUID
-     * format, or else <code>externalId:</code> followed by the external ID, if it has
-     * one. For more information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/object-ids.html#external-id-references">Referencing
-     * objects with external IDs</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline void SetPropertyId(Aws::String&& value) { m_propertyIdHasBeenSet = true; m_propertyId = std::move(value); }
-
-    /**
-     * <p>The ID of the asset property. This can be either the actual ID in UUID
-     * format, or else <code>externalId:</code> followed by the external ID, if it has
-     * one. For more information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/object-ids.html#external-id-references">Referencing
-     * objects with external IDs</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline void SetPropertyId(const char* value) { m_propertyIdHasBeenSet = true; m_propertyId.assign(value); }
-
-    /**
-     * <p>The ID of the asset property. This can be either the actual ID in UUID
-     * format, or else <code>externalId:</code> followed by the external ID, if it has
-     * one. For more information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/object-ids.html#external-id-references">Referencing
-     * objects with external IDs</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline DeleteTimeSeriesRequest& WithPropertyId(const Aws::String& value) { SetPropertyId(value); return *this;}
-
-    /**
-     * <p>The ID of the asset property. This can be either the actual ID in UUID
-     * format, or else <code>externalId:</code> followed by the external ID, if it has
-     * one. For more information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/object-ids.html#external-id-references">Referencing
-     * objects with external IDs</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline DeleteTimeSeriesRequest& WithPropertyId(Aws::String&& value) { SetPropertyId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the asset property. This can be either the actual ID in UUID
-     * format, or else <code>externalId:</code> followed by the external ID, if it has
-     * one. For more information, see <a
-     * href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/object-ids.html#external-id-references">Referencing
-     * objects with external IDs</a> in the <i>IoT SiteWise User Guide</i>.</p>
-     */
-    inline DeleteTimeSeriesRequest& WithPropertyId(const char* value) { SetPropertyId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A unique case-sensitive identifier that you can provide to ensure the
      * idempotency of the request. Don't reuse this client token if a new idempotent
      * request is required.</p>
      */
-    inline const Aws::String& GetClientToken() const{ return m_clientToken; }
-
-    /**
-     * <p>A unique case-sensitive identifier that you can provide to ensure the
-     * idempotency of the request. Don't reuse this client token if a new idempotent
-     * request is required.</p>
-     */
+    inline const Aws::String& GetClientToken() const { return m_clientToken; }
     inline bool ClientTokenHasBeenSet() const { return m_clientTokenHasBeenSet; }
-
-    /**
-     * <p>A unique case-sensitive identifier that you can provide to ensure the
-     * idempotency of the request. Don't reuse this client token if a new idempotent
-     * request is required.</p>
-     */
-    inline void SetClientToken(const Aws::String& value) { m_clientTokenHasBeenSet = true; m_clientToken = value; }
-
-    /**
-     * <p>A unique case-sensitive identifier that you can provide to ensure the
-     * idempotency of the request. Don't reuse this client token if a new idempotent
-     * request is required.</p>
-     */
-    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::move(value); }
-
-    /**
-     * <p>A unique case-sensitive identifier that you can provide to ensure the
-     * idempotency of the request. Don't reuse this client token if a new idempotent
-     * request is required.</p>
-     */
-    inline void SetClientToken(const char* value) { m_clientTokenHasBeenSet = true; m_clientToken.assign(value); }
-
-    /**
-     * <p>A unique case-sensitive identifier that you can provide to ensure the
-     * idempotency of the request. Don't reuse this client token if a new idempotent
-     * request is required.</p>
-     */
-    inline DeleteTimeSeriesRequest& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
-
-    /**
-     * <p>A unique case-sensitive identifier that you can provide to ensure the
-     * idempotency of the request. Don't reuse this client token if a new idempotent
-     * request is required.</p>
-     */
-    inline DeleteTimeSeriesRequest& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique case-sensitive identifier that you can provide to ensure the
-     * idempotency of the request. Don't reuse this client token if a new idempotent
-     * request is required.</p>
-     */
-    inline DeleteTimeSeriesRequest& WithClientToken(const char* value) { SetClientToken(value); return *this;}
-
+    template<typename ClientTokenT = Aws::String>
+    void SetClientToken(ClientTokenT&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::forward<ClientTokenT>(value); }
+    template<typename ClientTokenT = Aws::String>
+    DeleteTimeSeriesRequest& WithClientToken(ClientTokenT&& value) { SetClientToken(std::forward<ClientTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_alias;
@@ -293,8 +107,8 @@ namespace Model
     Aws::String m_propertyId;
     bool m_propertyIdHasBeenSet = false;
 
-    Aws::String m_clientToken;
-    bool m_clientTokenHasBeenSet = false;
+    Aws::String m_clientToken{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_clientTokenHasBeenSet = true;
   };
 
 } // namespace Model

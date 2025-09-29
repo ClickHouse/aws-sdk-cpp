@@ -6,6 +6,8 @@
 #pragma once
 #include <aws/synthetics/Synthetics_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/synthetics/model/Dependency.h>
 #include <utility>
 
 namespace Aws
@@ -32,101 +34,52 @@ namespace Model
   class CanaryCodeOutput
   {
   public:
-    AWS_SYNTHETICS_API CanaryCodeOutput();
+    AWS_SYNTHETICS_API CanaryCodeOutput() = default;
     AWS_SYNTHETICS_API CanaryCodeOutput(Aws::Utils::Json::JsonView jsonValue);
     AWS_SYNTHETICS_API CanaryCodeOutput& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SYNTHETICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ARN of the Lambda layer where Synthetics stores the canary script
      * code.</p>
      */
-    inline const Aws::String& GetSourceLocationArn() const{ return m_sourceLocationArn; }
-
-    /**
-     * <p>The ARN of the Lambda layer where Synthetics stores the canary script
-     * code.</p>
-     */
+    inline const Aws::String& GetSourceLocationArn() const { return m_sourceLocationArn; }
     inline bool SourceLocationArnHasBeenSet() const { return m_sourceLocationArnHasBeenSet; }
+    template<typename SourceLocationArnT = Aws::String>
+    void SetSourceLocationArn(SourceLocationArnT&& value) { m_sourceLocationArnHasBeenSet = true; m_sourceLocationArn = std::forward<SourceLocationArnT>(value); }
+    template<typename SourceLocationArnT = Aws::String>
+    CanaryCodeOutput& WithSourceLocationArn(SourceLocationArnT&& value) { SetSourceLocationArn(std::forward<SourceLocationArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the Lambda layer where Synthetics stores the canary script
-     * code.</p>
-     */
-    inline void SetSourceLocationArn(const Aws::String& value) { m_sourceLocationArnHasBeenSet = true; m_sourceLocationArn = value; }
-
-    /**
-     * <p>The ARN of the Lambda layer where Synthetics stores the canary script
-     * code.</p>
-     */
-    inline void SetSourceLocationArn(Aws::String&& value) { m_sourceLocationArnHasBeenSet = true; m_sourceLocationArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the Lambda layer where Synthetics stores the canary script
-     * code.</p>
-     */
-    inline void SetSourceLocationArn(const char* value) { m_sourceLocationArnHasBeenSet = true; m_sourceLocationArn.assign(value); }
-
-    /**
-     * <p>The ARN of the Lambda layer where Synthetics stores the canary script
-     * code.</p>
-     */
-    inline CanaryCodeOutput& WithSourceLocationArn(const Aws::String& value) { SetSourceLocationArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the Lambda layer where Synthetics stores the canary script
-     * code.</p>
-     */
-    inline CanaryCodeOutput& WithSourceLocationArn(Aws::String&& value) { SetSourceLocationArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the Lambda layer where Synthetics stores the canary script
-     * code.</p>
-     */
-    inline CanaryCodeOutput& WithSourceLocationArn(const char* value) { SetSourceLocationArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The entry point to use for the source code when running the canary.</p>
      */
-    inline const Aws::String& GetHandler() const{ return m_handler; }
-
-    /**
-     * <p>The entry point to use for the source code when running the canary.</p>
-     */
+    inline const Aws::String& GetHandler() const { return m_handler; }
     inline bool HandlerHasBeenSet() const { return m_handlerHasBeenSet; }
+    template<typename HandlerT = Aws::String>
+    void SetHandler(HandlerT&& value) { m_handlerHasBeenSet = true; m_handler = std::forward<HandlerT>(value); }
+    template<typename HandlerT = Aws::String>
+    CanaryCodeOutput& WithHandler(HandlerT&& value) { SetHandler(std::forward<HandlerT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The entry point to use for the source code when running the canary.</p>
+     * <p>A list of dependencies that are used for running this canary. The
+     * dependencies are specified as a key-value pair, where the key is the type of
+     * dependency and the value is the dependency reference.</p>
      */
-    inline void SetHandler(const Aws::String& value) { m_handlerHasBeenSet = true; m_handler = value; }
-
-    /**
-     * <p>The entry point to use for the source code when running the canary.</p>
-     */
-    inline void SetHandler(Aws::String&& value) { m_handlerHasBeenSet = true; m_handler = std::move(value); }
-
-    /**
-     * <p>The entry point to use for the source code when running the canary.</p>
-     */
-    inline void SetHandler(const char* value) { m_handlerHasBeenSet = true; m_handler.assign(value); }
-
-    /**
-     * <p>The entry point to use for the source code when running the canary.</p>
-     */
-    inline CanaryCodeOutput& WithHandler(const Aws::String& value) { SetHandler(value); return *this;}
-
-    /**
-     * <p>The entry point to use for the source code when running the canary.</p>
-     */
-    inline CanaryCodeOutput& WithHandler(Aws::String&& value) { SetHandler(std::move(value)); return *this;}
-
-    /**
-     * <p>The entry point to use for the source code when running the canary.</p>
-     */
-    inline CanaryCodeOutput& WithHandler(const char* value) { SetHandler(value); return *this;}
-
+    inline const Aws::Vector<Dependency>& GetDependencies() const { return m_dependencies; }
+    inline bool DependenciesHasBeenSet() const { return m_dependenciesHasBeenSet; }
+    template<typename DependenciesT = Aws::Vector<Dependency>>
+    void SetDependencies(DependenciesT&& value) { m_dependenciesHasBeenSet = true; m_dependencies = std::forward<DependenciesT>(value); }
+    template<typename DependenciesT = Aws::Vector<Dependency>>
+    CanaryCodeOutput& WithDependencies(DependenciesT&& value) { SetDependencies(std::forward<DependenciesT>(value)); return *this;}
+    template<typename DependenciesT = Dependency>
+    CanaryCodeOutput& AddDependencies(DependenciesT&& value) { m_dependenciesHasBeenSet = true; m_dependencies.emplace_back(std::forward<DependenciesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_sourceLocationArn;
@@ -134,6 +87,9 @@ namespace Model
 
     Aws::String m_handler;
     bool m_handlerHasBeenSet = false;
+
+    Aws::Vector<Dependency> m_dependencies;
+    bool m_dependenciesHasBeenSet = false;
   };
 
 } // namespace Model

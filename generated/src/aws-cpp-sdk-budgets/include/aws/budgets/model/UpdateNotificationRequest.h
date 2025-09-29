@@ -25,7 +25,7 @@ namespace Model
   class UpdateNotificationRequest : public BudgetsRequest
   {
   public:
-    AWS_BUDGETS_API UpdateNotificationRequest();
+    AWS_BUDGETS_API UpdateNotificationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,157 +38,54 @@ namespace Model
     AWS_BUDGETS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The <code>accountId</code> that is associated with the budget whose
      * notification you want to update.</p>
      */
-    inline const Aws::String& GetAccountId() const{ return m_accountId; }
-
-    /**
-     * <p>The <code>accountId</code> that is associated with the budget whose
-     * notification you want to update.</p>
-     */
+    inline const Aws::String& GetAccountId() const { return m_accountId; }
     inline bool AccountIdHasBeenSet() const { return m_accountIdHasBeenSet; }
+    template<typename AccountIdT = Aws::String>
+    void SetAccountId(AccountIdT&& value) { m_accountIdHasBeenSet = true; m_accountId = std::forward<AccountIdT>(value); }
+    template<typename AccountIdT = Aws::String>
+    UpdateNotificationRequest& WithAccountId(AccountIdT&& value) { SetAccountId(std::forward<AccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The <code>accountId</code> that is associated with the budget whose
-     * notification you want to update.</p>
-     */
-    inline void SetAccountId(const Aws::String& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
-
-    /**
-     * <p>The <code>accountId</code> that is associated with the budget whose
-     * notification you want to update.</p>
-     */
-    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = std::move(value); }
-
-    /**
-     * <p>The <code>accountId</code> that is associated with the budget whose
-     * notification you want to update.</p>
-     */
-    inline void SetAccountId(const char* value) { m_accountIdHasBeenSet = true; m_accountId.assign(value); }
-
-    /**
-     * <p>The <code>accountId</code> that is associated with the budget whose
-     * notification you want to update.</p>
-     */
-    inline UpdateNotificationRequest& WithAccountId(const Aws::String& value) { SetAccountId(value); return *this;}
-
-    /**
-     * <p>The <code>accountId</code> that is associated with the budget whose
-     * notification you want to update.</p>
-     */
-    inline UpdateNotificationRequest& WithAccountId(Aws::String&& value) { SetAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The <code>accountId</code> that is associated with the budget whose
-     * notification you want to update.</p>
-     */
-    inline UpdateNotificationRequest& WithAccountId(const char* value) { SetAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the budget whose notification you want to update.</p>
      */
-    inline const Aws::String& GetBudgetName() const{ return m_budgetName; }
-
-    /**
-     * <p>The name of the budget whose notification you want to update.</p>
-     */
+    inline const Aws::String& GetBudgetName() const { return m_budgetName; }
     inline bool BudgetNameHasBeenSet() const { return m_budgetNameHasBeenSet; }
+    template<typename BudgetNameT = Aws::String>
+    void SetBudgetName(BudgetNameT&& value) { m_budgetNameHasBeenSet = true; m_budgetName = std::forward<BudgetNameT>(value); }
+    template<typename BudgetNameT = Aws::String>
+    UpdateNotificationRequest& WithBudgetName(BudgetNameT&& value) { SetBudgetName(std::forward<BudgetNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the budget whose notification you want to update.</p>
-     */
-    inline void SetBudgetName(const Aws::String& value) { m_budgetNameHasBeenSet = true; m_budgetName = value; }
-
-    /**
-     * <p>The name of the budget whose notification you want to update.</p>
-     */
-    inline void SetBudgetName(Aws::String&& value) { m_budgetNameHasBeenSet = true; m_budgetName = std::move(value); }
-
-    /**
-     * <p>The name of the budget whose notification you want to update.</p>
-     */
-    inline void SetBudgetName(const char* value) { m_budgetNameHasBeenSet = true; m_budgetName.assign(value); }
-
-    /**
-     * <p>The name of the budget whose notification you want to update.</p>
-     */
-    inline UpdateNotificationRequest& WithBudgetName(const Aws::String& value) { SetBudgetName(value); return *this;}
-
-    /**
-     * <p>The name of the budget whose notification you want to update.</p>
-     */
-    inline UpdateNotificationRequest& WithBudgetName(Aws::String&& value) { SetBudgetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the budget whose notification you want to update.</p>
-     */
-    inline UpdateNotificationRequest& WithBudgetName(const char* value) { SetBudgetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The previous notification that is associated with a budget.</p>
      */
-    inline const Notification& GetOldNotification() const{ return m_oldNotification; }
-
-    /**
-     * <p>The previous notification that is associated with a budget.</p>
-     */
+    inline const Notification& GetOldNotification() const { return m_oldNotification; }
     inline bool OldNotificationHasBeenSet() const { return m_oldNotificationHasBeenSet; }
+    template<typename OldNotificationT = Notification>
+    void SetOldNotification(OldNotificationT&& value) { m_oldNotificationHasBeenSet = true; m_oldNotification = std::forward<OldNotificationT>(value); }
+    template<typename OldNotificationT = Notification>
+    UpdateNotificationRequest& WithOldNotification(OldNotificationT&& value) { SetOldNotification(std::forward<OldNotificationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The previous notification that is associated with a budget.</p>
-     */
-    inline void SetOldNotification(const Notification& value) { m_oldNotificationHasBeenSet = true; m_oldNotification = value; }
-
-    /**
-     * <p>The previous notification that is associated with a budget.</p>
-     */
-    inline void SetOldNotification(Notification&& value) { m_oldNotificationHasBeenSet = true; m_oldNotification = std::move(value); }
-
-    /**
-     * <p>The previous notification that is associated with a budget.</p>
-     */
-    inline UpdateNotificationRequest& WithOldNotification(const Notification& value) { SetOldNotification(value); return *this;}
-
-    /**
-     * <p>The previous notification that is associated with a budget.</p>
-     */
-    inline UpdateNotificationRequest& WithOldNotification(Notification&& value) { SetOldNotification(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The updated notification to be associated with a budget.</p>
      */
-    inline const Notification& GetNewNotification() const{ return m_newNotification; }
-
-    /**
-     * <p>The updated notification to be associated with a budget.</p>
-     */
+    inline const Notification& GetNewNotification() const { return m_newNotification; }
     inline bool NewNotificationHasBeenSet() const { return m_newNotificationHasBeenSet; }
-
-    /**
-     * <p>The updated notification to be associated with a budget.</p>
-     */
-    inline void SetNewNotification(const Notification& value) { m_newNotificationHasBeenSet = true; m_newNotification = value; }
-
-    /**
-     * <p>The updated notification to be associated with a budget.</p>
-     */
-    inline void SetNewNotification(Notification&& value) { m_newNotificationHasBeenSet = true; m_newNotification = std::move(value); }
-
-    /**
-     * <p>The updated notification to be associated with a budget.</p>
-     */
-    inline UpdateNotificationRequest& WithNewNotification(const Notification& value) { SetNewNotification(value); return *this;}
-
-    /**
-     * <p>The updated notification to be associated with a budget.</p>
-     */
-    inline UpdateNotificationRequest& WithNewNotification(Notification&& value) { SetNewNotification(std::move(value)); return *this;}
-
+    template<typename NewNotificationT = Notification>
+    void SetNewNotification(NewNotificationT&& value) { m_newNotificationHasBeenSet = true; m_newNotification = std::forward<NewNotificationT>(value); }
+    template<typename NewNotificationT = Notification>
+    UpdateNotificationRequest& WithNewNotification(NewNotificationT&& value) { SetNewNotification(std::forward<NewNotificationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_accountId;

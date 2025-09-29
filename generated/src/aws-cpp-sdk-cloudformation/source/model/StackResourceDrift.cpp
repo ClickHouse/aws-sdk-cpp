@@ -20,35 +20,7 @@ namespace CloudFormation
 namespace Model
 {
 
-StackResourceDrift::StackResourceDrift() : 
-    m_stackIdHasBeenSet(false),
-    m_logicalResourceIdHasBeenSet(false),
-    m_physicalResourceIdHasBeenSet(false),
-    m_physicalResourceIdContextHasBeenSet(false),
-    m_resourceTypeHasBeenSet(false),
-    m_expectedPropertiesHasBeenSet(false),
-    m_actualPropertiesHasBeenSet(false),
-    m_propertyDifferencesHasBeenSet(false),
-    m_stackResourceDriftStatus(StackResourceDriftStatus::NOT_SET),
-    m_stackResourceDriftStatusHasBeenSet(false),
-    m_timestampHasBeenSet(false),
-    m_moduleInfoHasBeenSet(false)
-{
-}
-
-StackResourceDrift::StackResourceDrift(const XmlNode& xmlNode) : 
-    m_stackIdHasBeenSet(false),
-    m_logicalResourceIdHasBeenSet(false),
-    m_physicalResourceIdHasBeenSet(false),
-    m_physicalResourceIdContextHasBeenSet(false),
-    m_resourceTypeHasBeenSet(false),
-    m_expectedPropertiesHasBeenSet(false),
-    m_actualPropertiesHasBeenSet(false),
-    m_propertyDifferencesHasBeenSet(false),
-    m_stackResourceDriftStatus(StackResourceDriftStatus::NOT_SET),
-    m_stackResourceDriftStatusHasBeenSet(false),
-    m_timestampHasBeenSet(false),
-    m_moduleInfoHasBeenSet(false)
+StackResourceDrift::StackResourceDrift(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -81,6 +53,7 @@ StackResourceDrift& StackResourceDrift::operator =(const XmlNode& xmlNode)
     if(!physicalResourceIdContextNode.IsNull())
     {
       XmlNode physicalResourceIdContextMember = physicalResourceIdContextNode.FirstChild("member");
+      m_physicalResourceIdContextHasBeenSet = !physicalResourceIdContextMember.IsNull();
       while(!physicalResourceIdContextMember.IsNull())
       {
         m_physicalResourceIdContext.push_back(physicalResourceIdContextMember);
@@ -111,6 +84,7 @@ StackResourceDrift& StackResourceDrift::operator =(const XmlNode& xmlNode)
     if(!propertyDifferencesNode.IsNull())
     {
       XmlNode propertyDifferencesMember = propertyDifferencesNode.FirstChild("member");
+      m_propertyDifferencesHasBeenSet = !propertyDifferencesMember.IsNull();
       while(!propertyDifferencesMember.IsNull())
       {
         m_propertyDifferences.push_back(propertyDifferencesMember);
@@ -122,7 +96,7 @@ StackResourceDrift& StackResourceDrift::operator =(const XmlNode& xmlNode)
     XmlNode stackResourceDriftStatusNode = resultNode.FirstChild("StackResourceDriftStatus");
     if(!stackResourceDriftStatusNode.IsNull())
     {
-      m_stackResourceDriftStatus = StackResourceDriftStatusMapper::GetStackResourceDriftStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stackResourceDriftStatusNode.GetText()).c_str()).c_str());
+      m_stackResourceDriftStatus = StackResourceDriftStatusMapper::GetStackResourceDriftStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stackResourceDriftStatusNode.GetText()).c_str()));
       m_stackResourceDriftStatusHasBeenSet = true;
     }
     XmlNode timestampNode = resultNode.FirstChild("Timestamp");
@@ -136,6 +110,12 @@ StackResourceDrift& StackResourceDrift::operator =(const XmlNode& xmlNode)
     {
       m_moduleInfo = moduleInfoNode;
       m_moduleInfoHasBeenSet = true;
+    }
+    XmlNode driftStatusReasonNode = resultNode.FirstChild("DriftStatusReason");
+    if(!driftStatusReasonNode.IsNull())
+    {
+      m_driftStatusReason = Aws::Utils::Xml::DecodeEscapedXmlText(driftStatusReasonNode.GetText());
+      m_driftStatusReasonHasBeenSet = true;
     }
   }
 
@@ -198,7 +178,7 @@ void StackResourceDrift::OutputToStream(Aws::OStream& oStream, const char* locat
 
   if(m_stackResourceDriftStatusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".StackResourceDriftStatus=" << StackResourceDriftStatusMapper::GetNameForStackResourceDriftStatus(m_stackResourceDriftStatus) << "&";
+      oStream << location << index << locationValue << ".StackResourceDriftStatus=" << StringUtils::URLEncode(StackResourceDriftStatusMapper::GetNameForStackResourceDriftStatus(m_stackResourceDriftStatus)) << "&";
   }
 
   if(m_timestampHasBeenSet)
@@ -211,6 +191,11 @@ void StackResourceDrift::OutputToStream(Aws::OStream& oStream, const char* locat
       Aws::StringStream moduleInfoLocationAndMemberSs;
       moduleInfoLocationAndMemberSs << location << index << locationValue << ".ModuleInfo";
       m_moduleInfo.OutputToStream(oStream, moduleInfoLocationAndMemberSs.str().c_str());
+  }
+
+  if(m_driftStatusReasonHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".DriftStatusReason=" << StringUtils::URLEncode(m_driftStatusReason.c_str()) << "&";
   }
 
 }
@@ -235,7 +220,7 @@ void StackResourceDrift::OutputToStream(Aws::OStream& oStream, const char* locat
       for(auto& item : m_physicalResourceIdContext)
       {
         Aws::StringStream physicalResourceIdContextSs;
-        physicalResourceIdContextSs << location <<  ".PhysicalResourceIdContext.member." << physicalResourceIdContextIdx++;
+        physicalResourceIdContextSs << location << ".PhysicalResourceIdContext.member." << physicalResourceIdContextIdx++;
         item.OutputToStream(oStream, physicalResourceIdContextSs.str().c_str());
       }
   }
@@ -257,13 +242,13 @@ void StackResourceDrift::OutputToStream(Aws::OStream& oStream, const char* locat
       for(auto& item : m_propertyDifferences)
       {
         Aws::StringStream propertyDifferencesSs;
-        propertyDifferencesSs << location <<  ".PropertyDifferences.member." << propertyDifferencesIdx++;
+        propertyDifferencesSs << location << ".PropertyDifferences.member." << propertyDifferencesIdx++;
         item.OutputToStream(oStream, propertyDifferencesSs.str().c_str());
       }
   }
   if(m_stackResourceDriftStatusHasBeenSet)
   {
-      oStream << location << ".StackResourceDriftStatus=" << StackResourceDriftStatusMapper::GetNameForStackResourceDriftStatus(m_stackResourceDriftStatus) << "&";
+      oStream << location << ".StackResourceDriftStatus=" << StringUtils::URLEncode(StackResourceDriftStatusMapper::GetNameForStackResourceDriftStatus(m_stackResourceDriftStatus)) << "&";
   }
   if(m_timestampHasBeenSet)
   {
@@ -274,6 +259,10 @@ void StackResourceDrift::OutputToStream(Aws::OStream& oStream, const char* locat
       Aws::String moduleInfoLocationAndMember(location);
       moduleInfoLocationAndMember += ".ModuleInfo";
       m_moduleInfo.OutputToStream(oStream, moduleInfoLocationAndMember.c_str());
+  }
+  if(m_driftStatusReasonHasBeenSet)
+  {
+      oStream << location << ".DriftStatusReason=" << StringUtils::URLEncode(m_driftStatusReason.c_str()) << "&";
   }
 }
 

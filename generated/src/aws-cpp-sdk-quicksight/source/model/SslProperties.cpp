@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-SslProperties::SslProperties() : 
-    m_disableSsl(false),
-    m_disableSslHasBeenSet(false)
-{
-}
-
-SslProperties::SslProperties(JsonView jsonValue) : 
-    m_disableSsl(false),
-    m_disableSslHasBeenSet(false)
+SslProperties::SslProperties(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ SslProperties& SslProperties::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("DisableSsl"))
   {
     m_disableSsl = jsonValue.GetBool("DisableSsl");
-
     m_disableSslHasBeenSet = true;
   }
-
   return *this;
 }
 

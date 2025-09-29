@@ -18,17 +18,7 @@ namespace IoTEventsData
 namespace Model
 {
 
-SnoozeActionConfiguration::SnoozeActionConfiguration() : 
-    m_snoozeDuration(0),
-    m_snoozeDurationHasBeenSet(false),
-    m_noteHasBeenSet(false)
-{
-}
-
-SnoozeActionConfiguration::SnoozeActionConfiguration(JsonView jsonValue) : 
-    m_snoozeDuration(0),
-    m_snoozeDurationHasBeenSet(false),
-    m_noteHasBeenSet(false)
+SnoozeActionConfiguration::SnoozeActionConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ SnoozeActionConfiguration& SnoozeActionConfiguration::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("snoozeDuration"))
   {
     m_snoozeDuration = jsonValue.GetInteger("snoozeDuration");
-
     m_snoozeDurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("note"))
   {
     m_note = jsonValue.GetString("note");
-
     m_noteHasBeenSet = true;
   }
-
   return *this;
 }
 

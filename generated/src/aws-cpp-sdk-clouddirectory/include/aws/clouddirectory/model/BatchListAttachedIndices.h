@@ -34,104 +34,45 @@ namespace Model
   class BatchListAttachedIndices
   {
   public:
-    AWS_CLOUDDIRECTORY_API BatchListAttachedIndices();
+    AWS_CLOUDDIRECTORY_API BatchListAttachedIndices() = default;
     AWS_CLOUDDIRECTORY_API BatchListAttachedIndices(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDDIRECTORY_API BatchListAttachedIndices& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDDIRECTORY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A reference to the object that has indices attached.</p>
      */
-    inline const ObjectReference& GetTargetReference() const{ return m_targetReference; }
-
-    /**
-     * <p>A reference to the object that has indices attached.</p>
-     */
+    inline const ObjectReference& GetTargetReference() const { return m_targetReference; }
     inline bool TargetReferenceHasBeenSet() const { return m_targetReferenceHasBeenSet; }
+    template<typename TargetReferenceT = ObjectReference>
+    void SetTargetReference(TargetReferenceT&& value) { m_targetReferenceHasBeenSet = true; m_targetReference = std::forward<TargetReferenceT>(value); }
+    template<typename TargetReferenceT = ObjectReference>
+    BatchListAttachedIndices& WithTargetReference(TargetReferenceT&& value) { SetTargetReference(std::forward<TargetReferenceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A reference to the object that has indices attached.</p>
-     */
-    inline void SetTargetReference(const ObjectReference& value) { m_targetReferenceHasBeenSet = true; m_targetReference = value; }
-
-    /**
-     * <p>A reference to the object that has indices attached.</p>
-     */
-    inline void SetTargetReference(ObjectReference&& value) { m_targetReferenceHasBeenSet = true; m_targetReference = std::move(value); }
-
-    /**
-     * <p>A reference to the object that has indices attached.</p>
-     */
-    inline BatchListAttachedIndices& WithTargetReference(const ObjectReference& value) { SetTargetReference(value); return *this;}
-
-    /**
-     * <p>A reference to the object that has indices attached.</p>
-     */
-    inline BatchListAttachedIndices& WithTargetReference(ObjectReference&& value) { SetTargetReference(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The pagination token.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The pagination token.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    BatchListAttachedIndices& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The pagination token.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The pagination token.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The pagination token.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The pagination token.</p>
-     */
-    inline BatchListAttachedIndices& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The pagination token.</p>
-     */
-    inline BatchListAttachedIndices& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The pagination token.</p>
-     */
-    inline BatchListAttachedIndices& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of results to retrieve.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of results to retrieve.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of results to retrieve.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of results to retrieve.</p>
-     */
     inline BatchListAttachedIndices& WithMaxResults(int value) { SetMaxResults(value); return *this;}
-
+    ///@}
   private:
 
     ObjectReference m_targetReference;
@@ -140,7 +81,7 @@ namespace Model
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
   };
 

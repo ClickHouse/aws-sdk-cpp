@@ -32,76 +32,36 @@ namespace Model
   class IdentityCenterConfiguration
   {
   public:
-    AWS_ATHENA_API IdentityCenterConfiguration();
+    AWS_ATHENA_API IdentityCenterConfiguration() = default;
     AWS_ATHENA_API IdentityCenterConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_ATHENA_API IdentityCenterConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ATHENA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specifies whether the workgroup is IAM Identity Center supported.</p>
      */
-    inline bool GetEnableIdentityCenter() const{ return m_enableIdentityCenter; }
-
-    /**
-     * <p>Specifies whether the workgroup is IAM Identity Center supported.</p>
-     */
+    inline bool GetEnableIdentityCenter() const { return m_enableIdentityCenter; }
     inline bool EnableIdentityCenterHasBeenSet() const { return m_enableIdentityCenterHasBeenSet; }
-
-    /**
-     * <p>Specifies whether the workgroup is IAM Identity Center supported.</p>
-     */
     inline void SetEnableIdentityCenter(bool value) { m_enableIdentityCenterHasBeenSet = true; m_enableIdentityCenter = value; }
-
-    /**
-     * <p>Specifies whether the workgroup is IAM Identity Center supported.</p>
-     */
     inline IdentityCenterConfiguration& WithEnableIdentityCenter(bool value) { SetEnableIdentityCenter(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The IAM Identity Center instance ARN that the workgroup associates to.</p>
      */
-    inline const Aws::String& GetIdentityCenterInstanceArn() const{ return m_identityCenterInstanceArn; }
-
-    /**
-     * <p>The IAM Identity Center instance ARN that the workgroup associates to.</p>
-     */
+    inline const Aws::String& GetIdentityCenterInstanceArn() const { return m_identityCenterInstanceArn; }
     inline bool IdentityCenterInstanceArnHasBeenSet() const { return m_identityCenterInstanceArnHasBeenSet; }
-
-    /**
-     * <p>The IAM Identity Center instance ARN that the workgroup associates to.</p>
-     */
-    inline void SetIdentityCenterInstanceArn(const Aws::String& value) { m_identityCenterInstanceArnHasBeenSet = true; m_identityCenterInstanceArn = value; }
-
-    /**
-     * <p>The IAM Identity Center instance ARN that the workgroup associates to.</p>
-     */
-    inline void SetIdentityCenterInstanceArn(Aws::String&& value) { m_identityCenterInstanceArnHasBeenSet = true; m_identityCenterInstanceArn = std::move(value); }
-
-    /**
-     * <p>The IAM Identity Center instance ARN that the workgroup associates to.</p>
-     */
-    inline void SetIdentityCenterInstanceArn(const char* value) { m_identityCenterInstanceArnHasBeenSet = true; m_identityCenterInstanceArn.assign(value); }
-
-    /**
-     * <p>The IAM Identity Center instance ARN that the workgroup associates to.</p>
-     */
-    inline IdentityCenterConfiguration& WithIdentityCenterInstanceArn(const Aws::String& value) { SetIdentityCenterInstanceArn(value); return *this;}
-
-    /**
-     * <p>The IAM Identity Center instance ARN that the workgroup associates to.</p>
-     */
-    inline IdentityCenterConfiguration& WithIdentityCenterInstanceArn(Aws::String&& value) { SetIdentityCenterInstanceArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The IAM Identity Center instance ARN that the workgroup associates to.</p>
-     */
-    inline IdentityCenterConfiguration& WithIdentityCenterInstanceArn(const char* value) { SetIdentityCenterInstanceArn(value); return *this;}
-
+    template<typename IdentityCenterInstanceArnT = Aws::String>
+    void SetIdentityCenterInstanceArn(IdentityCenterInstanceArnT&& value) { m_identityCenterInstanceArnHasBeenSet = true; m_identityCenterInstanceArn = std::forward<IdentityCenterInstanceArnT>(value); }
+    template<typename IdentityCenterInstanceArnT = Aws::String>
+    IdentityCenterConfiguration& WithIdentityCenterInstanceArn(IdentityCenterInstanceArnT&& value) { SetIdentityCenterInstanceArn(std::forward<IdentityCenterInstanceArnT>(value)); return *this;}
+    ///@}
   private:
 
-    bool m_enableIdentityCenter;
+    bool m_enableIdentityCenter{false};
     bool m_enableIdentityCenterHasBeenSet = false;
 
     Aws::String m_identityCenterInstanceArn;

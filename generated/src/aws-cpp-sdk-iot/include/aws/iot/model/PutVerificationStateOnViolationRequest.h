@@ -22,7 +22,7 @@ namespace Model
   class PutVerificationStateOnViolationRequest : public IoTRequest
   {
   public:
-    AWS_IOT_API PutVerificationStateOnViolationRequest();
+    AWS_IOT_API PutVerificationStateOnViolationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,132 +33,46 @@ namespace Model
     AWS_IOT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The violation ID.</p>
      */
-    inline const Aws::String& GetViolationId() const{ return m_violationId; }
-
-    /**
-     * <p>The violation ID.</p>
-     */
+    inline const Aws::String& GetViolationId() const { return m_violationId; }
     inline bool ViolationIdHasBeenSet() const { return m_violationIdHasBeenSet; }
+    template<typename ViolationIdT = Aws::String>
+    void SetViolationId(ViolationIdT&& value) { m_violationIdHasBeenSet = true; m_violationId = std::forward<ViolationIdT>(value); }
+    template<typename ViolationIdT = Aws::String>
+    PutVerificationStateOnViolationRequest& WithViolationId(ViolationIdT&& value) { SetViolationId(std::forward<ViolationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The violation ID.</p>
-     */
-    inline void SetViolationId(const Aws::String& value) { m_violationIdHasBeenSet = true; m_violationId = value; }
-
-    /**
-     * <p>The violation ID.</p>
-     */
-    inline void SetViolationId(Aws::String&& value) { m_violationIdHasBeenSet = true; m_violationId = std::move(value); }
-
-    /**
-     * <p>The violation ID.</p>
-     */
-    inline void SetViolationId(const char* value) { m_violationIdHasBeenSet = true; m_violationId.assign(value); }
-
-    /**
-     * <p>The violation ID.</p>
-     */
-    inline PutVerificationStateOnViolationRequest& WithViolationId(const Aws::String& value) { SetViolationId(value); return *this;}
-
-    /**
-     * <p>The violation ID.</p>
-     */
-    inline PutVerificationStateOnViolationRequest& WithViolationId(Aws::String&& value) { SetViolationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The violation ID.</p>
-     */
-    inline PutVerificationStateOnViolationRequest& WithViolationId(const char* value) { SetViolationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The verification state of the violation.</p>
      */
-    inline const VerificationState& GetVerificationState() const{ return m_verificationState; }
-
-    /**
-     * <p>The verification state of the violation.</p>
-     */
+    inline VerificationState GetVerificationState() const { return m_verificationState; }
     inline bool VerificationStateHasBeenSet() const { return m_verificationStateHasBeenSet; }
+    inline void SetVerificationState(VerificationState value) { m_verificationStateHasBeenSet = true; m_verificationState = value; }
+    inline PutVerificationStateOnViolationRequest& WithVerificationState(VerificationState value) { SetVerificationState(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The verification state of the violation.</p>
-     */
-    inline void SetVerificationState(const VerificationState& value) { m_verificationStateHasBeenSet = true; m_verificationState = value; }
-
-    /**
-     * <p>The verification state of the violation.</p>
-     */
-    inline void SetVerificationState(VerificationState&& value) { m_verificationStateHasBeenSet = true; m_verificationState = std::move(value); }
-
-    /**
-     * <p>The verification state of the violation.</p>
-     */
-    inline PutVerificationStateOnViolationRequest& WithVerificationState(const VerificationState& value) { SetVerificationState(value); return *this;}
-
-    /**
-     * <p>The verification state of the violation.</p>
-     */
-    inline PutVerificationStateOnViolationRequest& WithVerificationState(VerificationState&& value) { SetVerificationState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The description of the verification state of the violation (detect
      * alarm).</p>
      */
-    inline const Aws::String& GetVerificationStateDescription() const{ return m_verificationStateDescription; }
-
-    /**
-     * <p>The description of the verification state of the violation (detect
-     * alarm).</p>
-     */
+    inline const Aws::String& GetVerificationStateDescription() const { return m_verificationStateDescription; }
     inline bool VerificationStateDescriptionHasBeenSet() const { return m_verificationStateDescriptionHasBeenSet; }
-
-    /**
-     * <p>The description of the verification state of the violation (detect
-     * alarm).</p>
-     */
-    inline void SetVerificationStateDescription(const Aws::String& value) { m_verificationStateDescriptionHasBeenSet = true; m_verificationStateDescription = value; }
-
-    /**
-     * <p>The description of the verification state of the violation (detect
-     * alarm).</p>
-     */
-    inline void SetVerificationStateDescription(Aws::String&& value) { m_verificationStateDescriptionHasBeenSet = true; m_verificationStateDescription = std::move(value); }
-
-    /**
-     * <p>The description of the verification state of the violation (detect
-     * alarm).</p>
-     */
-    inline void SetVerificationStateDescription(const char* value) { m_verificationStateDescriptionHasBeenSet = true; m_verificationStateDescription.assign(value); }
-
-    /**
-     * <p>The description of the verification state of the violation (detect
-     * alarm).</p>
-     */
-    inline PutVerificationStateOnViolationRequest& WithVerificationStateDescription(const Aws::String& value) { SetVerificationStateDescription(value); return *this;}
-
-    /**
-     * <p>The description of the verification state of the violation (detect
-     * alarm).</p>
-     */
-    inline PutVerificationStateOnViolationRequest& WithVerificationStateDescription(Aws::String&& value) { SetVerificationStateDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the verification state of the violation (detect
-     * alarm).</p>
-     */
-    inline PutVerificationStateOnViolationRequest& WithVerificationStateDescription(const char* value) { SetVerificationStateDescription(value); return *this;}
-
+    template<typename VerificationStateDescriptionT = Aws::String>
+    void SetVerificationStateDescription(VerificationStateDescriptionT&& value) { m_verificationStateDescriptionHasBeenSet = true; m_verificationStateDescription = std::forward<VerificationStateDescriptionT>(value); }
+    template<typename VerificationStateDescriptionT = Aws::String>
+    PutVerificationStateOnViolationRequest& WithVerificationStateDescription(VerificationStateDescriptionT&& value) { SetVerificationStateDescription(std::forward<VerificationStateDescriptionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_violationId;
     bool m_violationIdHasBeenSet = false;
 
-    VerificationState m_verificationState;
+    VerificationState m_verificationState{VerificationState::NOT_SET};
     bool m_verificationStateHasBeenSet = false;
 
     Aws::String m_verificationStateDescription;

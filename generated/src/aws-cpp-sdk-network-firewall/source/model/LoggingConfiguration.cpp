@@ -18,13 +18,7 @@ namespace NetworkFirewall
 namespace Model
 {
 
-LoggingConfiguration::LoggingConfiguration() : 
-    m_logDestinationConfigsHasBeenSet(false)
-{
-}
-
-LoggingConfiguration::LoggingConfiguration(JsonView jsonValue) : 
-    m_logDestinationConfigsHasBeenSet(false)
+LoggingConfiguration::LoggingConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ LoggingConfiguration& LoggingConfiguration::operator =(JsonView jsonValue)
     }
     m_logDestinationConfigsHasBeenSet = true;
   }
-
   return *this;
 }
 

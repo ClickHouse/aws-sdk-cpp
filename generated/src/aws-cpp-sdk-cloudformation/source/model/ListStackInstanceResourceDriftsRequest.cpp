@@ -10,20 +10,6 @@
 using namespace Aws::CloudFormation::Model;
 using namespace Aws::Utils;
 
-ListStackInstanceResourceDriftsRequest::ListStackInstanceResourceDriftsRequest() : 
-    m_stackSetNameHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_stackInstanceResourceDriftStatusesHasBeenSet(false),
-    m_stackInstanceAccountHasBeenSet(false),
-    m_stackInstanceRegionHasBeenSet(false),
-    m_operationIdHasBeenSet(false),
-    m_callAs(CallAs::NOT_SET),
-    m_callAsHasBeenSet(false)
-{
-}
-
 Aws::String ListStackInstanceResourceDriftsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -45,12 +31,19 @@ Aws::String ListStackInstanceResourceDriftsRequest::SerializePayload() const
 
   if(m_stackInstanceResourceDriftStatusesHasBeenSet)
   {
-    unsigned stackInstanceResourceDriftStatusesCount = 1;
-    for(auto& item : m_stackInstanceResourceDriftStatuses)
+    if (m_stackInstanceResourceDriftStatuses.empty())
     {
-      ss << "StackInstanceResourceDriftStatuses.member." << stackInstanceResourceDriftStatusesCount << "="
-          << StringUtils::URLEncode(StackResourceDriftStatusMapper::GetNameForStackResourceDriftStatus(item).c_str()) << "&";
-      stackInstanceResourceDriftStatusesCount++;
+      ss << "StackInstanceResourceDriftStatuses=&";
+    }
+    else
+    {
+      unsigned stackInstanceResourceDriftStatusesCount = 1;
+      for(auto& item : m_stackInstanceResourceDriftStatuses)
+      {
+        ss << "StackInstanceResourceDriftStatuses.member." << stackInstanceResourceDriftStatusesCount << "="
+            << StringUtils::URLEncode(StackResourceDriftStatusMapper::GetNameForStackResourceDriftStatus(item)) << "&";
+        stackInstanceResourceDriftStatusesCount++;
+      }
     }
   }
 
@@ -71,7 +64,7 @@ Aws::String ListStackInstanceResourceDriftsRequest::SerializePayload() const
 
   if(m_callAsHasBeenSet)
   {
-    ss << "CallAs=" << CallAsMapper::GetNameForCallAs(m_callAs) << "&";
+    ss << "CallAs=" << StringUtils::URLEncode(CallAsMapper::GetNameForCallAs(m_callAs)) << "&";
   }
 
   ss << "Version=2010-05-15";

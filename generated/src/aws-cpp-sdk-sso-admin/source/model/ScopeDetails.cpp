@@ -18,21 +18,18 @@ namespace SSOAdmin
 namespace Model
 {
 
-ScopeDetails::ScopeDetails() : 
-    m_authorizedTargetsHasBeenSet(false),
-    m_scopeHasBeenSet(false)
-{
-}
-
-ScopeDetails::ScopeDetails(JsonView jsonValue) : 
-    m_authorizedTargetsHasBeenSet(false),
-    m_scopeHasBeenSet(false)
+ScopeDetails::ScopeDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 ScopeDetails& ScopeDetails::operator =(JsonView jsonValue)
 {
+  if(jsonValue.ValueExists("Scope"))
+  {
+    m_scope = jsonValue.GetString("Scope");
+    m_scopeHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("AuthorizedTargets"))
   {
     Aws::Utils::Array<JsonView> authorizedTargetsJsonList = jsonValue.GetArray("AuthorizedTargets");
@@ -42,20 +39,18 @@ ScopeDetails& ScopeDetails::operator =(JsonView jsonValue)
     }
     m_authorizedTargetsHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("Scope"))
-  {
-    m_scope = jsonValue.GetString("Scope");
-
-    m_scopeHasBeenSet = true;
-  }
-
   return *this;
 }
 
 JsonValue ScopeDetails::Jsonize() const
 {
   JsonValue payload;
+
+  if(m_scopeHasBeenSet)
+  {
+   payload.WithString("Scope", m_scope);
+
+  }
 
   if(m_authorizedTargetsHasBeenSet)
   {
@@ -65,12 +60,6 @@ JsonValue ScopeDetails::Jsonize() const
      authorizedTargetsJsonList[authorizedTargetsIndex].AsString(m_authorizedTargets[authorizedTargetsIndex]);
    }
    payload.WithArray("AuthorizedTargets", std::move(authorizedTargetsJsonList));
-
-  }
-
-  if(m_scopeHasBeenSet)
-  {
-   payload.WithString("Scope", m_scope);
 
   }
 

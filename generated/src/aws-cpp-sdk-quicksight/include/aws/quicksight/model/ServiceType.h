@@ -16,7 +16,9 @@ namespace Model
   enum class ServiceType
   {
     NOT_SET,
-    REDSHIFT
+    REDSHIFT,
+    QBUSINESS,
+    ATHENA
   };
 
 namespace ServiceTypeMapper

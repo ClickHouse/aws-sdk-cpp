@@ -20,23 +20,7 @@ namespace S3Control
 namespace Model
 {
 
-AccountLevel::AccountLevel() : 
-    m_activityMetricsHasBeenSet(false),
-    m_bucketLevelHasBeenSet(false),
-    m_advancedCostOptimizationMetricsHasBeenSet(false),
-    m_advancedDataProtectionMetricsHasBeenSet(false),
-    m_detailedStatusCodesMetricsHasBeenSet(false),
-    m_storageLensGroupLevelHasBeenSet(false)
-{
-}
-
-AccountLevel::AccountLevel(const XmlNode& xmlNode) : 
-    m_activityMetricsHasBeenSet(false),
-    m_bucketLevelHasBeenSet(false),
-    m_advancedCostOptimizationMetricsHasBeenSet(false),
-    m_advancedDataProtectionMetricsHasBeenSet(false),
-    m_detailedStatusCodesMetricsHasBeenSet(false),
-    m_storageLensGroupLevelHasBeenSet(false)
+AccountLevel::AccountLevel(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

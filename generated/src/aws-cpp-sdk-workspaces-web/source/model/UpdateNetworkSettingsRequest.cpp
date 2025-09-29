@@ -12,34 +12,13 @@ using namespace Aws::WorkSpacesWeb::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateNetworkSettingsRequest::UpdateNetworkSettingsRequest() : 
-    m_clientToken(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_networkSettingsArnHasBeenSet(false),
-    m_securityGroupIdsHasBeenSet(false),
-    m_subnetIdsHasBeenSet(false),
-    m_vpcIdHasBeenSet(false)
-{
-}
-
 Aws::String UpdateNetworkSettingsRequest::SerializePayload() const
 {
   JsonValue payload;
 
-  if(m_clientTokenHasBeenSet)
+  if(m_vpcIdHasBeenSet)
   {
-   payload.WithString("clientToken", m_clientToken);
-
-  }
-
-  if(m_securityGroupIdsHasBeenSet)
-  {
-   Aws::Utils::Array<JsonValue> securityGroupIdsJsonList(m_securityGroupIds.size());
-   for(unsigned securityGroupIdsIndex = 0; securityGroupIdsIndex < securityGroupIdsJsonList.GetLength(); ++securityGroupIdsIndex)
-   {
-     securityGroupIdsJsonList[securityGroupIdsIndex].AsString(m_securityGroupIds[securityGroupIdsIndex]);
-   }
-   payload.WithArray("securityGroupIds", std::move(securityGroupIdsJsonList));
+   payload.WithString("vpcId", m_vpcId);
 
   }
 
@@ -54,9 +33,20 @@ Aws::String UpdateNetworkSettingsRequest::SerializePayload() const
 
   }
 
-  if(m_vpcIdHasBeenSet)
+  if(m_securityGroupIdsHasBeenSet)
   {
-   payload.WithString("vpcId", m_vpcId);
+   Aws::Utils::Array<JsonValue> securityGroupIdsJsonList(m_securityGroupIds.size());
+   for(unsigned securityGroupIdsIndex = 0; securityGroupIdsIndex < securityGroupIdsJsonList.GetLength(); ++securityGroupIdsIndex)
+   {
+     securityGroupIdsJsonList[securityGroupIdsIndex].AsString(m_securityGroupIds[securityGroupIdsIndex]);
+   }
+   payload.WithArray("securityGroupIds", std::move(securityGroupIdsJsonList));
+
+  }
+
+  if(m_clientTokenHasBeenSet)
+  {
+   payload.WithString("clientToken", m_clientToken);
 
   }
 

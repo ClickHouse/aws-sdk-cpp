@@ -37,584 +37,193 @@ namespace Model
   class EvaluationForm
   {
   public:
-    AWS_CONNECT_API EvaluationForm();
+    AWS_CONNECT_API EvaluationForm() = default;
     AWS_CONNECT_API EvaluationForm(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API EvaluationForm& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The unique identifier for the evaluation form.</p>
      */
-    inline const Aws::String& GetEvaluationFormId() const{ return m_evaluationFormId; }
-
-    /**
-     * <p>The unique identifier for the evaluation form.</p>
-     */
+    inline const Aws::String& GetEvaluationFormId() const { return m_evaluationFormId; }
     inline bool EvaluationFormIdHasBeenSet() const { return m_evaluationFormIdHasBeenSet; }
+    template<typename EvaluationFormIdT = Aws::String>
+    void SetEvaluationFormId(EvaluationFormIdT&& value) { m_evaluationFormIdHasBeenSet = true; m_evaluationFormId = std::forward<EvaluationFormIdT>(value); }
+    template<typename EvaluationFormIdT = Aws::String>
+    EvaluationForm& WithEvaluationFormId(EvaluationFormIdT&& value) { SetEvaluationFormId(std::forward<EvaluationFormIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier for the evaluation form.</p>
-     */
-    inline void SetEvaluationFormId(const Aws::String& value) { m_evaluationFormIdHasBeenSet = true; m_evaluationFormId = value; }
-
-    /**
-     * <p>The unique identifier for the evaluation form.</p>
-     */
-    inline void SetEvaluationFormId(Aws::String&& value) { m_evaluationFormIdHasBeenSet = true; m_evaluationFormId = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the evaluation form.</p>
-     */
-    inline void SetEvaluationFormId(const char* value) { m_evaluationFormIdHasBeenSet = true; m_evaluationFormId.assign(value); }
-
-    /**
-     * <p>The unique identifier for the evaluation form.</p>
-     */
-    inline EvaluationForm& WithEvaluationFormId(const Aws::String& value) { SetEvaluationFormId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the evaluation form.</p>
-     */
-    inline EvaluationForm& WithEvaluationFormId(Aws::String&& value) { SetEvaluationFormId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the evaluation form.</p>
-     */
-    inline EvaluationForm& WithEvaluationFormId(const char* value) { SetEvaluationFormId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A version of the evaluation form.</p>
      */
-    inline int GetEvaluationFormVersion() const{ return m_evaluationFormVersion; }
-
-    /**
-     * <p>A version of the evaluation form.</p>
-     */
+    inline int GetEvaluationFormVersion() const { return m_evaluationFormVersion; }
     inline bool EvaluationFormVersionHasBeenSet() const { return m_evaluationFormVersionHasBeenSet; }
-
-    /**
-     * <p>A version of the evaluation form.</p>
-     */
     inline void SetEvaluationFormVersion(int value) { m_evaluationFormVersionHasBeenSet = true; m_evaluationFormVersion = value; }
-
-    /**
-     * <p>A version of the evaluation form.</p>
-     */
     inline EvaluationForm& WithEvaluationFormVersion(int value) { SetEvaluationFormVersion(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The flag indicating whether the evaluation form is locked for changes.</p>
      */
-    inline bool GetLocked() const{ return m_locked; }
-
-    /**
-     * <p>The flag indicating whether the evaluation form is locked for changes.</p>
-     */
+    inline bool GetLocked() const { return m_locked; }
     inline bool LockedHasBeenSet() const { return m_lockedHasBeenSet; }
-
-    /**
-     * <p>The flag indicating whether the evaluation form is locked for changes.</p>
-     */
     inline void SetLocked(bool value) { m_lockedHasBeenSet = true; m_locked = value; }
-
-    /**
-     * <p>The flag indicating whether the evaluation form is locked for changes.</p>
-     */
     inline EvaluationForm& WithLocked(bool value) { SetLocked(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) for the evaluation form resource.</p>
      */
-    inline const Aws::String& GetEvaluationFormArn() const{ return m_evaluationFormArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the evaluation form resource.</p>
-     */
+    inline const Aws::String& GetEvaluationFormArn() const { return m_evaluationFormArn; }
     inline bool EvaluationFormArnHasBeenSet() const { return m_evaluationFormArnHasBeenSet; }
+    template<typename EvaluationFormArnT = Aws::String>
+    void SetEvaluationFormArn(EvaluationFormArnT&& value) { m_evaluationFormArnHasBeenSet = true; m_evaluationFormArn = std::forward<EvaluationFormArnT>(value); }
+    template<typename EvaluationFormArnT = Aws::String>
+    EvaluationForm& WithEvaluationFormArn(EvaluationFormArnT&& value) { SetEvaluationFormArn(std::forward<EvaluationFormArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) for the evaluation form resource.</p>
-     */
-    inline void SetEvaluationFormArn(const Aws::String& value) { m_evaluationFormArnHasBeenSet = true; m_evaluationFormArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the evaluation form resource.</p>
-     */
-    inline void SetEvaluationFormArn(Aws::String&& value) { m_evaluationFormArnHasBeenSet = true; m_evaluationFormArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the evaluation form resource.</p>
-     */
-    inline void SetEvaluationFormArn(const char* value) { m_evaluationFormArnHasBeenSet = true; m_evaluationFormArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the evaluation form resource.</p>
-     */
-    inline EvaluationForm& WithEvaluationFormArn(const Aws::String& value) { SetEvaluationFormArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the evaluation form resource.</p>
-     */
-    inline EvaluationForm& WithEvaluationFormArn(Aws::String&& value) { SetEvaluationFormArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the evaluation form resource.</p>
-     */
-    inline EvaluationForm& WithEvaluationFormArn(const char* value) { SetEvaluationFormArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A title of the evaluation form.</p>
      */
-    inline const Aws::String& GetTitle() const{ return m_title; }
-
-    /**
-     * <p>A title of the evaluation form.</p>
-     */
+    inline const Aws::String& GetTitle() const { return m_title; }
     inline bool TitleHasBeenSet() const { return m_titleHasBeenSet; }
+    template<typename TitleT = Aws::String>
+    void SetTitle(TitleT&& value) { m_titleHasBeenSet = true; m_title = std::forward<TitleT>(value); }
+    template<typename TitleT = Aws::String>
+    EvaluationForm& WithTitle(TitleT&& value) { SetTitle(std::forward<TitleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A title of the evaluation form.</p>
-     */
-    inline void SetTitle(const Aws::String& value) { m_titleHasBeenSet = true; m_title = value; }
-
-    /**
-     * <p>A title of the evaluation form.</p>
-     */
-    inline void SetTitle(Aws::String&& value) { m_titleHasBeenSet = true; m_title = std::move(value); }
-
-    /**
-     * <p>A title of the evaluation form.</p>
-     */
-    inline void SetTitle(const char* value) { m_titleHasBeenSet = true; m_title.assign(value); }
-
-    /**
-     * <p>A title of the evaluation form.</p>
-     */
-    inline EvaluationForm& WithTitle(const Aws::String& value) { SetTitle(value); return *this;}
-
-    /**
-     * <p>A title of the evaluation form.</p>
-     */
-    inline EvaluationForm& WithTitle(Aws::String&& value) { SetTitle(std::move(value)); return *this;}
-
-    /**
-     * <p>A title of the evaluation form.</p>
-     */
-    inline EvaluationForm& WithTitle(const char* value) { SetTitle(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The description of the evaluation form.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The description of the evaluation form.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    EvaluationForm& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description of the evaluation form.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The description of the evaluation form.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The description of the evaluation form.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The description of the evaluation form.</p>
-     */
-    inline EvaluationForm& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description of the evaluation form.</p>
-     */
-    inline EvaluationForm& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the evaluation form.</p>
-     */
-    inline EvaluationForm& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the evaluation form.</p>
      */
-    inline const EvaluationFormVersionStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the evaluation form.</p>
-     */
+    inline EvaluationFormVersionStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(EvaluationFormVersionStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline EvaluationForm& WithStatus(EvaluationFormVersionStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the evaluation form.</p>
-     */
-    inline void SetStatus(const EvaluationFormVersionStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the evaluation form.</p>
-     */
-    inline void SetStatus(EvaluationFormVersionStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the evaluation form.</p>
-     */
-    inline EvaluationForm& WithStatus(const EvaluationFormVersionStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the evaluation form.</p>
-     */
-    inline EvaluationForm& WithStatus(EvaluationFormVersionStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Items that are part of the evaluation form. The total number of sections and
      * questions must not exceed 100 each. Questions must be contained in a
      * section.</p>
      */
-    inline const Aws::Vector<EvaluationFormItem>& GetItems() const{ return m_items; }
-
-    /**
-     * <p>Items that are part of the evaluation form. The total number of sections and
-     * questions must not exceed 100 each. Questions must be contained in a
-     * section.</p>
-     */
+    inline const Aws::Vector<EvaluationFormItem>& GetItems() const { return m_items; }
     inline bool ItemsHasBeenSet() const { return m_itemsHasBeenSet; }
+    template<typename ItemsT = Aws::Vector<EvaluationFormItem>>
+    void SetItems(ItemsT&& value) { m_itemsHasBeenSet = true; m_items = std::forward<ItemsT>(value); }
+    template<typename ItemsT = Aws::Vector<EvaluationFormItem>>
+    EvaluationForm& WithItems(ItemsT&& value) { SetItems(std::forward<ItemsT>(value)); return *this;}
+    template<typename ItemsT = EvaluationFormItem>
+    EvaluationForm& AddItems(ItemsT&& value) { m_itemsHasBeenSet = true; m_items.emplace_back(std::forward<ItemsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Items that are part of the evaluation form. The total number of sections and
-     * questions must not exceed 100 each. Questions must be contained in a
-     * section.</p>
-     */
-    inline void SetItems(const Aws::Vector<EvaluationFormItem>& value) { m_itemsHasBeenSet = true; m_items = value; }
-
-    /**
-     * <p>Items that are part of the evaluation form. The total number of sections and
-     * questions must not exceed 100 each. Questions must be contained in a
-     * section.</p>
-     */
-    inline void SetItems(Aws::Vector<EvaluationFormItem>&& value) { m_itemsHasBeenSet = true; m_items = std::move(value); }
-
-    /**
-     * <p>Items that are part of the evaluation form. The total number of sections and
-     * questions must not exceed 100 each. Questions must be contained in a
-     * section.</p>
-     */
-    inline EvaluationForm& WithItems(const Aws::Vector<EvaluationFormItem>& value) { SetItems(value); return *this;}
-
-    /**
-     * <p>Items that are part of the evaluation form. The total number of sections and
-     * questions must not exceed 100 each. Questions must be contained in a
-     * section.</p>
-     */
-    inline EvaluationForm& WithItems(Aws::Vector<EvaluationFormItem>&& value) { SetItems(std::move(value)); return *this;}
-
-    /**
-     * <p>Items that are part of the evaluation form. The total number of sections and
-     * questions must not exceed 100 each. Questions must be contained in a
-     * section.</p>
-     */
-    inline EvaluationForm& AddItems(const EvaluationFormItem& value) { m_itemsHasBeenSet = true; m_items.push_back(value); return *this; }
-
-    /**
-     * <p>Items that are part of the evaluation form. The total number of sections and
-     * questions must not exceed 100 each. Questions must be contained in a
-     * section.</p>
-     */
-    inline EvaluationForm& AddItems(EvaluationFormItem&& value) { m_itemsHasBeenSet = true; m_items.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A scoring strategy of the evaluation form.</p>
      */
-    inline const EvaluationFormScoringStrategy& GetScoringStrategy() const{ return m_scoringStrategy; }
-
-    /**
-     * <p>A scoring strategy of the evaluation form.</p>
-     */
+    inline const EvaluationFormScoringStrategy& GetScoringStrategy() const { return m_scoringStrategy; }
     inline bool ScoringStrategyHasBeenSet() const { return m_scoringStrategyHasBeenSet; }
+    template<typename ScoringStrategyT = EvaluationFormScoringStrategy>
+    void SetScoringStrategy(ScoringStrategyT&& value) { m_scoringStrategyHasBeenSet = true; m_scoringStrategy = std::forward<ScoringStrategyT>(value); }
+    template<typename ScoringStrategyT = EvaluationFormScoringStrategy>
+    EvaluationForm& WithScoringStrategy(ScoringStrategyT&& value) { SetScoringStrategy(std::forward<ScoringStrategyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A scoring strategy of the evaluation form.</p>
-     */
-    inline void SetScoringStrategy(const EvaluationFormScoringStrategy& value) { m_scoringStrategyHasBeenSet = true; m_scoringStrategy = value; }
-
-    /**
-     * <p>A scoring strategy of the evaluation form.</p>
-     */
-    inline void SetScoringStrategy(EvaluationFormScoringStrategy&& value) { m_scoringStrategyHasBeenSet = true; m_scoringStrategy = std::move(value); }
-
-    /**
-     * <p>A scoring strategy of the evaluation form.</p>
-     */
-    inline EvaluationForm& WithScoringStrategy(const EvaluationFormScoringStrategy& value) { SetScoringStrategy(value); return *this;}
-
-    /**
-     * <p>A scoring strategy of the evaluation form.</p>
-     */
-    inline EvaluationForm& WithScoringStrategy(EvaluationFormScoringStrategy&& value) { SetScoringStrategy(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The timestamp for when the evaluation form was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedTime() const{ return m_createdTime; }
-
-    /**
-     * <p>The timestamp for when the evaluation form was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedTime() const { return m_createdTime; }
     inline bool CreatedTimeHasBeenSet() const { return m_createdTimeHasBeenSet; }
+    template<typename CreatedTimeT = Aws::Utils::DateTime>
+    void SetCreatedTime(CreatedTimeT&& value) { m_createdTimeHasBeenSet = true; m_createdTime = std::forward<CreatedTimeT>(value); }
+    template<typename CreatedTimeT = Aws::Utils::DateTime>
+    EvaluationForm& WithCreatedTime(CreatedTimeT&& value) { SetCreatedTime(std::forward<CreatedTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp for when the evaluation form was created.</p>
-     */
-    inline void SetCreatedTime(const Aws::Utils::DateTime& value) { m_createdTimeHasBeenSet = true; m_createdTime = value; }
-
-    /**
-     * <p>The timestamp for when the evaluation form was created.</p>
-     */
-    inline void SetCreatedTime(Aws::Utils::DateTime&& value) { m_createdTimeHasBeenSet = true; m_createdTime = std::move(value); }
-
-    /**
-     * <p>The timestamp for when the evaluation form was created.</p>
-     */
-    inline EvaluationForm& WithCreatedTime(const Aws::Utils::DateTime& value) { SetCreatedTime(value); return *this;}
-
-    /**
-     * <p>The timestamp for when the evaluation form was created.</p>
-     */
-    inline EvaluationForm& WithCreatedTime(Aws::Utils::DateTime&& value) { SetCreatedTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the user who created the evaluation
      * form.</p>
      */
-    inline const Aws::String& GetCreatedBy() const{ return m_createdBy; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the user who created the evaluation
-     * form.</p>
-     */
+    inline const Aws::String& GetCreatedBy() const { return m_createdBy; }
     inline bool CreatedByHasBeenSet() const { return m_createdByHasBeenSet; }
+    template<typename CreatedByT = Aws::String>
+    void SetCreatedBy(CreatedByT&& value) { m_createdByHasBeenSet = true; m_createdBy = std::forward<CreatedByT>(value); }
+    template<typename CreatedByT = Aws::String>
+    EvaluationForm& WithCreatedBy(CreatedByT&& value) { SetCreatedBy(std::forward<CreatedByT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the user who created the evaluation
-     * form.</p>
-     */
-    inline void SetCreatedBy(const Aws::String& value) { m_createdByHasBeenSet = true; m_createdBy = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the user who created the evaluation
-     * form.</p>
-     */
-    inline void SetCreatedBy(Aws::String&& value) { m_createdByHasBeenSet = true; m_createdBy = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the user who created the evaluation
-     * form.</p>
-     */
-    inline void SetCreatedBy(const char* value) { m_createdByHasBeenSet = true; m_createdBy.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the user who created the evaluation
-     * form.</p>
-     */
-    inline EvaluationForm& WithCreatedBy(const Aws::String& value) { SetCreatedBy(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the user who created the evaluation
-     * form.</p>
-     */
-    inline EvaluationForm& WithCreatedBy(Aws::String&& value) { SetCreatedBy(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the user who created the evaluation
-     * form.</p>
-     */
-    inline EvaluationForm& WithCreatedBy(const char* value) { SetCreatedBy(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The timestamp for when the evaluation form was last updated.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastModifiedTime() const{ return m_lastModifiedTime; }
-
-    /**
-     * <p>The timestamp for when the evaluation form was last updated.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastModifiedTime() const { return m_lastModifiedTime; }
     inline bool LastModifiedTimeHasBeenSet() const { return m_lastModifiedTimeHasBeenSet; }
+    template<typename LastModifiedTimeT = Aws::Utils::DateTime>
+    void SetLastModifiedTime(LastModifiedTimeT&& value) { m_lastModifiedTimeHasBeenSet = true; m_lastModifiedTime = std::forward<LastModifiedTimeT>(value); }
+    template<typename LastModifiedTimeT = Aws::Utils::DateTime>
+    EvaluationForm& WithLastModifiedTime(LastModifiedTimeT&& value) { SetLastModifiedTime(std::forward<LastModifiedTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp for when the evaluation form was last updated.</p>
-     */
-    inline void SetLastModifiedTime(const Aws::Utils::DateTime& value) { m_lastModifiedTimeHasBeenSet = true; m_lastModifiedTime = value; }
-
-    /**
-     * <p>The timestamp for when the evaluation form was last updated.</p>
-     */
-    inline void SetLastModifiedTime(Aws::Utils::DateTime&& value) { m_lastModifiedTimeHasBeenSet = true; m_lastModifiedTime = std::move(value); }
-
-    /**
-     * <p>The timestamp for when the evaluation form was last updated.</p>
-     */
-    inline EvaluationForm& WithLastModifiedTime(const Aws::Utils::DateTime& value) { SetLastModifiedTime(value); return *this;}
-
-    /**
-     * <p>The timestamp for when the evaluation form was last updated.</p>
-     */
-    inline EvaluationForm& WithLastModifiedTime(Aws::Utils::DateTime&& value) { SetLastModifiedTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the user who last updated the evaluation
      * form.</p>
      */
-    inline const Aws::String& GetLastModifiedBy() const{ return m_lastModifiedBy; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the user who last updated the evaluation
-     * form.</p>
-     */
+    inline const Aws::String& GetLastModifiedBy() const { return m_lastModifiedBy; }
     inline bool LastModifiedByHasBeenSet() const { return m_lastModifiedByHasBeenSet; }
+    template<typename LastModifiedByT = Aws::String>
+    void SetLastModifiedBy(LastModifiedByT&& value) { m_lastModifiedByHasBeenSet = true; m_lastModifiedBy = std::forward<LastModifiedByT>(value); }
+    template<typename LastModifiedByT = Aws::String>
+    EvaluationForm& WithLastModifiedBy(LastModifiedByT&& value) { SetLastModifiedBy(std::forward<LastModifiedByT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the user who last updated the evaluation
-     * form.</p>
-     */
-    inline void SetLastModifiedBy(const Aws::String& value) { m_lastModifiedByHasBeenSet = true; m_lastModifiedBy = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the user who last updated the evaluation
-     * form.</p>
-     */
-    inline void SetLastModifiedBy(Aws::String&& value) { m_lastModifiedByHasBeenSet = true; m_lastModifiedBy = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the user who last updated the evaluation
-     * form.</p>
-     */
-    inline void SetLastModifiedBy(const char* value) { m_lastModifiedByHasBeenSet = true; m_lastModifiedBy.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the user who last updated the evaluation
-     * form.</p>
-     */
-    inline EvaluationForm& WithLastModifiedBy(const Aws::String& value) { SetLastModifiedBy(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the user who last updated the evaluation
-     * form.</p>
-     */
-    inline EvaluationForm& WithLastModifiedBy(Aws::String&& value) { SetLastModifiedBy(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the user who last updated the evaluation
-     * form.</p>
-     */
-    inline EvaluationForm& WithLastModifiedBy(const char* value) { SetLastModifiedBy(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The tags used to organize, track, or control access for this resource. For
      * example, { "Tags": {"key1":"value1", "key2":"value2"} }.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "Tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "Tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "Tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "Tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline EvaluationForm& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "Tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline EvaluationForm& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "Tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline EvaluationForm& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "Tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline EvaluationForm& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "Tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline EvaluationForm& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "Tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline EvaluationForm& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "Tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline EvaluationForm& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "Tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline EvaluationForm& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "Tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline EvaluationForm& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    EvaluationForm& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    EvaluationForm& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
     Aws::String m_evaluationFormId;
     bool m_evaluationFormIdHasBeenSet = false;
 
-    int m_evaluationFormVersion;
+    int m_evaluationFormVersion{0};
     bool m_evaluationFormVersionHasBeenSet = false;
 
-    bool m_locked;
+    bool m_locked{false};
     bool m_lockedHasBeenSet = false;
 
     Aws::String m_evaluationFormArn;
@@ -626,7 +235,7 @@ namespace Model
     Aws::String m_description;
     bool m_descriptionHasBeenSet = false;
 
-    EvaluationFormVersionStatus m_status;
+    EvaluationFormVersionStatus m_status{EvaluationFormVersionStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
     Aws::Vector<EvaluationFormItem> m_items;
@@ -635,13 +244,13 @@ namespace Model
     EvaluationFormScoringStrategy m_scoringStrategy;
     bool m_scoringStrategyHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdTime;
+    Aws::Utils::DateTime m_createdTime{};
     bool m_createdTimeHasBeenSet = false;
 
     Aws::String m_createdBy;
     bool m_createdByHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastModifiedTime;
+    Aws::Utils::DateTime m_lastModifiedTime{};
     bool m_lastModifiedTimeHasBeenSet = false;
 
     Aws::String m_lastModifiedBy;

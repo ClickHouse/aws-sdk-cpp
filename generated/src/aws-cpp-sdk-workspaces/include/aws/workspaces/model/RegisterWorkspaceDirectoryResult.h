@@ -6,6 +6,7 @@
 #pragma once
 #include <aws/workspaces/WorkSpaces_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/workspaces/model/WorkspaceDirectoryState.h>
 #include <utility>
 
 namespace Aws
@@ -27,35 +28,49 @@ namespace Model
   class RegisterWorkspaceDirectoryResult
   {
   public:
-    AWS_WORKSPACES_API RegisterWorkspaceDirectoryResult();
+    AWS_WORKSPACES_API RegisterWorkspaceDirectoryResult() = default;
     AWS_WORKSPACES_API RegisterWorkspaceDirectoryResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_WORKSPACES_API RegisterWorkspaceDirectoryResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
-    
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
+    ///@{
+    /**
+     * <p>The identifier of the directory.</p>
+     */
+    inline const Aws::String& GetDirectoryId() const { return m_directoryId; }
+    template<typename DirectoryIdT = Aws::String>
+    void SetDirectoryId(DirectoryIdT&& value) { m_directoryIdHasBeenSet = true; m_directoryId = std::forward<DirectoryIdT>(value); }
+    template<typename DirectoryIdT = Aws::String>
+    RegisterWorkspaceDirectoryResult& WithDirectoryId(DirectoryIdT&& value) { SetDirectoryId(std::forward<DirectoryIdT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
+    ///@{
+    /**
+     * <p>The registration status of the WorkSpace directory.</p>
+     */
+    inline WorkspaceDirectoryState GetState() const { return m_state; }
+    inline void SetState(WorkspaceDirectoryState value) { m_stateHasBeenSet = true; m_state = value; }
+    inline RegisterWorkspaceDirectoryResult& WithState(WorkspaceDirectoryState value) { SetState(value); return *this;}
+    ///@}
 
+    ///@{
     
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline RegisterWorkspaceDirectoryResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline RegisterWorkspaceDirectoryResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline RegisterWorkspaceDirectoryResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    RegisterWorkspaceDirectoryResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
+    Aws::String m_directoryId;
+    bool m_directoryIdHasBeenSet = false;
+
+    WorkspaceDirectoryState m_state{WorkspaceDirectoryState::NOT_SET};
+    bool m_stateHasBeenSet = false;
+
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

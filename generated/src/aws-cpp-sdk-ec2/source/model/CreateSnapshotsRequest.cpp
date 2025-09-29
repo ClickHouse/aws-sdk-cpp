@@ -10,18 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-CreateSnapshotsRequest::CreateSnapshotsRequest() : 
-    m_descriptionHasBeenSet(false),
-    m_instanceSpecificationHasBeenSet(false),
-    m_outpostArnHasBeenSet(false),
-    m_tagSpecificationsHasBeenSet(false),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_copyTagsFromSource(CopyTagsFromSource::NOT_SET),
-    m_copyTagsFromSourceHasBeenSet(false)
-{
-}
-
 Aws::String CreateSnapshotsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -58,7 +46,12 @@ Aws::String CreateSnapshotsRequest::SerializePayload() const
 
   if(m_copyTagsFromSourceHasBeenSet)
   {
-    ss << "CopyTagsFromSource=" << CopyTagsFromSourceMapper::GetNameForCopyTagsFromSource(m_copyTagsFromSource) << "&";
+    ss << "CopyTagsFromSource=" << StringUtils::URLEncode(CopyTagsFromSourceMapper::GetNameForCopyTagsFromSource(m_copyTagsFromSource)) << "&";
+  }
+
+  if(m_locationHasBeenSet)
+  {
+    ss << "Location=" << StringUtils::URLEncode(SnapshotLocationEnumMapper::GetNameForSnapshotLocationEnum(m_location)) << "&";
   }
 
   ss << "Version=2016-11-15";

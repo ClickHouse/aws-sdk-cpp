@@ -18,28 +18,13 @@ namespace LicenseManagerUserSubscriptions
 namespace Model
 {
 
-Settings::Settings() : 
-    m_securityGroupIdHasBeenSet(false),
-    m_subnetsHasBeenSet(false)
-{
-}
-
-Settings::Settings(JsonView jsonValue) : 
-    m_securityGroupIdHasBeenSet(false),
-    m_subnetsHasBeenSet(false)
+Settings::Settings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 Settings& Settings::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("SecurityGroupId"))
-  {
-    m_securityGroupId = jsonValue.GetString("SecurityGroupId");
-
-    m_securityGroupIdHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("Subnets"))
   {
     Aws::Utils::Array<JsonView> subnetsJsonList = jsonValue.GetArray("Subnets");
@@ -49,19 +34,17 @@ Settings& Settings::operator =(JsonView jsonValue)
     }
     m_subnetsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("SecurityGroupId"))
+  {
+    m_securityGroupId = jsonValue.GetString("SecurityGroupId");
+    m_securityGroupIdHasBeenSet = true;
+  }
   return *this;
 }
 
 JsonValue Settings::Jsonize() const
 {
   JsonValue payload;
-
-  if(m_securityGroupIdHasBeenSet)
-  {
-   payload.WithString("SecurityGroupId", m_securityGroupId);
-
-  }
 
   if(m_subnetsHasBeenSet)
   {
@@ -71,6 +54,12 @@ JsonValue Settings::Jsonize() const
      subnetsJsonList[subnetsIndex].AsString(m_subnets[subnetsIndex]);
    }
    payload.WithArray("Subnets", std::move(subnetsJsonList));
+
+  }
+
+  if(m_securityGroupIdHasBeenSet)
+  {
+   payload.WithString("SecurityGroupId", m_securityGroupId);
 
   }
 

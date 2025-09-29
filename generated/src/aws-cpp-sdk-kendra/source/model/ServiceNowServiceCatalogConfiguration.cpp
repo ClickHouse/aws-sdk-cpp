@@ -18,25 +18,7 @@ namespace kendra
 namespace Model
 {
 
-ServiceNowServiceCatalogConfiguration::ServiceNowServiceCatalogConfiguration() : 
-    m_crawlAttachments(false),
-    m_crawlAttachmentsHasBeenSet(false),
-    m_includeAttachmentFilePatternsHasBeenSet(false),
-    m_excludeAttachmentFilePatternsHasBeenSet(false),
-    m_documentDataFieldNameHasBeenSet(false),
-    m_documentTitleFieldNameHasBeenSet(false),
-    m_fieldMappingsHasBeenSet(false)
-{
-}
-
-ServiceNowServiceCatalogConfiguration::ServiceNowServiceCatalogConfiguration(JsonView jsonValue) : 
-    m_crawlAttachments(false),
-    m_crawlAttachmentsHasBeenSet(false),
-    m_includeAttachmentFilePatternsHasBeenSet(false),
-    m_excludeAttachmentFilePatternsHasBeenSet(false),
-    m_documentDataFieldNameHasBeenSet(false),
-    m_documentTitleFieldNameHasBeenSet(false),
-    m_fieldMappingsHasBeenSet(false)
+ServiceNowServiceCatalogConfiguration::ServiceNowServiceCatalogConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,10 +28,8 @@ ServiceNowServiceCatalogConfiguration& ServiceNowServiceCatalogConfiguration::op
   if(jsonValue.ValueExists("CrawlAttachments"))
   {
     m_crawlAttachments = jsonValue.GetBool("CrawlAttachments");
-
     m_crawlAttachmentsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("IncludeAttachmentFilePatterns"))
   {
     Aws::Utils::Array<JsonView> includeAttachmentFilePatternsJsonList = jsonValue.GetArray("IncludeAttachmentFilePatterns");
@@ -59,7 +39,6 @@ ServiceNowServiceCatalogConfiguration& ServiceNowServiceCatalogConfiguration::op
     }
     m_includeAttachmentFilePatternsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ExcludeAttachmentFilePatterns"))
   {
     Aws::Utils::Array<JsonView> excludeAttachmentFilePatternsJsonList = jsonValue.GetArray("ExcludeAttachmentFilePatterns");
@@ -69,21 +48,16 @@ ServiceNowServiceCatalogConfiguration& ServiceNowServiceCatalogConfiguration::op
     }
     m_excludeAttachmentFilePatternsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DocumentDataFieldName"))
   {
     m_documentDataFieldName = jsonValue.GetString("DocumentDataFieldName");
-
     m_documentDataFieldNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DocumentTitleFieldName"))
   {
     m_documentTitleFieldName = jsonValue.GetString("DocumentTitleFieldName");
-
     m_documentTitleFieldNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FieldMappings"))
   {
     Aws::Utils::Array<JsonView> fieldMappingsJsonList = jsonValue.GetArray("FieldMappings");
@@ -93,7 +67,6 @@ ServiceNowServiceCatalogConfiguration& ServiceNowServiceCatalogConfiguration::op
     }
     m_fieldMappingsHasBeenSet = true;
   }
-
   return *this;
 }
 

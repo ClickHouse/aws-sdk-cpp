@@ -10,23 +10,25 @@
 using namespace Aws::IAM::Model;
 using namespace Aws::Utils;
 
-GetContextKeysForCustomPolicyRequest::GetContextKeysForCustomPolicyRequest() : 
-    m_policyInputListHasBeenSet(false)
-{
-}
-
 Aws::String GetContextKeysForCustomPolicyRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=GetContextKeysForCustomPolicy&";
   if(m_policyInputListHasBeenSet)
   {
-    unsigned policyInputListCount = 1;
-    for(auto& item : m_policyInputList)
+    if (m_policyInputList.empty())
     {
-      ss << "PolicyInputList.member." << policyInputListCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      policyInputListCount++;
+      ss << "PolicyInputList=&";
+    }
+    else
+    {
+      unsigned policyInputListCount = 1;
+      for(auto& item : m_policyInputList)
+      {
+        ss << "PolicyInputList.member." << policyInputListCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        policyInputListCount++;
+      }
     }
   }
 

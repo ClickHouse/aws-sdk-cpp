@@ -12,18 +12,6 @@ using namespace Aws::IoTSiteWise::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateAssetRequest::CreateAssetRequest() : 
-    m_assetNameHasBeenSet(false),
-    m_assetModelIdHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_tagsHasBeenSet(false),
-    m_assetDescriptionHasBeenSet(false),
-    m_assetIdHasBeenSet(false),
-    m_assetExternalIdHasBeenSet(false)
-{
-}
-
 Aws::String CreateAssetRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -37,6 +25,18 @@ Aws::String CreateAssetRequest::SerializePayload() const
   if(m_assetModelIdHasBeenSet)
   {
    payload.WithString("assetModelId", m_assetModelId);
+
+  }
+
+  if(m_assetIdHasBeenSet)
+  {
+   payload.WithString("assetId", m_assetId);
+
+  }
+
+  if(m_assetExternalIdHasBeenSet)
+  {
+   payload.WithString("assetExternalId", m_assetExternalId);
 
   }
 
@@ -60,18 +60,6 @@ Aws::String CreateAssetRequest::SerializePayload() const
   if(m_assetDescriptionHasBeenSet)
   {
    payload.WithString("assetDescription", m_assetDescription);
-
-  }
-
-  if(m_assetIdHasBeenSet)
-  {
-   payload.WithString("assetId", m_assetId);
-
-  }
-
-  if(m_assetExternalIdHasBeenSet)
-  {
-   payload.WithString("assetExternalId", m_assetExternalId);
 
   }
 

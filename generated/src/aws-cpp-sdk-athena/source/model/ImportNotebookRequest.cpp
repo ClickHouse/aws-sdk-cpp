@@ -12,16 +12,6 @@ using namespace Aws::Athena::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ImportNotebookRequest::ImportNotebookRequest() : 
-    m_workGroupHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_payloadHasBeenSet(false),
-    m_type(NotebookType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_clientRequestTokenHasBeenSet(false)
-{
-}
-
 Aws::String ImportNotebookRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -47,6 +37,12 @@ Aws::String ImportNotebookRequest::SerializePayload() const
   if(m_typeHasBeenSet)
   {
    payload.WithString("Type", NotebookTypeMapper::GetNameForNotebookType(m_type));
+  }
+
+  if(m_notebookS3LocationUriHasBeenSet)
+  {
+   payload.WithString("NotebookS3LocationUri", m_notebookS3LocationUri);
+
   }
 
   if(m_clientRequestTokenHasBeenSet)

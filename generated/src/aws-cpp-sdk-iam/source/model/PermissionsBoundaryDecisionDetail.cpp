@@ -20,15 +20,7 @@ namespace IAM
 namespace Model
 {
 
-PermissionsBoundaryDecisionDetail::PermissionsBoundaryDecisionDetail() : 
-    m_allowedByPermissionsBoundary(false),
-    m_allowedByPermissionsBoundaryHasBeenSet(false)
-{
-}
-
-PermissionsBoundaryDecisionDetail::PermissionsBoundaryDecisionDetail(const XmlNode& xmlNode) : 
-    m_allowedByPermissionsBoundary(false),
-    m_allowedByPermissionsBoundaryHasBeenSet(false)
+PermissionsBoundaryDecisionDetail::PermissionsBoundaryDecisionDetail(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

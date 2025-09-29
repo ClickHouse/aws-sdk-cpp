@@ -22,7 +22,7 @@ namespace Model
   class PutAccountConfigurationRequest : public ACMRequest
   {
   public:
-    AWS_ACM_API PutAccountConfigurationRequest();
+    AWS_ACM_API PutAccountConfigurationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,37 +35,19 @@ namespace Model
     AWS_ACM_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>Specifies expiration events associated with an account.</p>
      */
-    inline const ExpiryEventsConfiguration& GetExpiryEvents() const{ return m_expiryEvents; }
-
-    /**
-     * <p>Specifies expiration events associated with an account.</p>
-     */
+    inline const ExpiryEventsConfiguration& GetExpiryEvents() const { return m_expiryEvents; }
     inline bool ExpiryEventsHasBeenSet() const { return m_expiryEventsHasBeenSet; }
+    template<typename ExpiryEventsT = ExpiryEventsConfiguration>
+    void SetExpiryEvents(ExpiryEventsT&& value) { m_expiryEventsHasBeenSet = true; m_expiryEvents = std::forward<ExpiryEventsT>(value); }
+    template<typename ExpiryEventsT = ExpiryEventsConfiguration>
+    PutAccountConfigurationRequest& WithExpiryEvents(ExpiryEventsT&& value) { SetExpiryEvents(std::forward<ExpiryEventsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies expiration events associated with an account.</p>
-     */
-    inline void SetExpiryEvents(const ExpiryEventsConfiguration& value) { m_expiryEventsHasBeenSet = true; m_expiryEvents = value; }
-
-    /**
-     * <p>Specifies expiration events associated with an account.</p>
-     */
-    inline void SetExpiryEvents(ExpiryEventsConfiguration&& value) { m_expiryEventsHasBeenSet = true; m_expiryEvents = std::move(value); }
-
-    /**
-     * <p>Specifies expiration events associated with an account.</p>
-     */
-    inline PutAccountConfigurationRequest& WithExpiryEvents(const ExpiryEventsConfiguration& value) { SetExpiryEvents(value); return *this;}
-
-    /**
-     * <p>Specifies expiration events associated with an account.</p>
-     */
-    inline PutAccountConfigurationRequest& WithExpiryEvents(ExpiryEventsConfiguration&& value) { SetExpiryEvents(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Customer-chosen string used to distinguish between calls to
      * <code>PutAccountConfiguration</code>. Idempotency tokens time out after one
@@ -74,78 +56,13 @@ namespace Model
      * the original result. If you change the idempotency token for each call, ACM
      * treats each call as a new request.</p>
      */
-    inline const Aws::String& GetIdempotencyToken() const{ return m_idempotencyToken; }
-
-    /**
-     * <p>Customer-chosen string used to distinguish between calls to
-     * <code>PutAccountConfiguration</code>. Idempotency tokens time out after one
-     * hour. If you call <code>PutAccountConfiguration</code> multiple times with the
-     * same unexpired idempotency token, ACM treats it as the same request and returns
-     * the original result. If you change the idempotency token for each call, ACM
-     * treats each call as a new request.</p>
-     */
+    inline const Aws::String& GetIdempotencyToken() const { return m_idempotencyToken; }
     inline bool IdempotencyTokenHasBeenSet() const { return m_idempotencyTokenHasBeenSet; }
-
-    /**
-     * <p>Customer-chosen string used to distinguish between calls to
-     * <code>PutAccountConfiguration</code>. Idempotency tokens time out after one
-     * hour. If you call <code>PutAccountConfiguration</code> multiple times with the
-     * same unexpired idempotency token, ACM treats it as the same request and returns
-     * the original result. If you change the idempotency token for each call, ACM
-     * treats each call as a new request.</p>
-     */
-    inline void SetIdempotencyToken(const Aws::String& value) { m_idempotencyTokenHasBeenSet = true; m_idempotencyToken = value; }
-
-    /**
-     * <p>Customer-chosen string used to distinguish between calls to
-     * <code>PutAccountConfiguration</code>. Idempotency tokens time out after one
-     * hour. If you call <code>PutAccountConfiguration</code> multiple times with the
-     * same unexpired idempotency token, ACM treats it as the same request and returns
-     * the original result. If you change the idempotency token for each call, ACM
-     * treats each call as a new request.</p>
-     */
-    inline void SetIdempotencyToken(Aws::String&& value) { m_idempotencyTokenHasBeenSet = true; m_idempotencyToken = std::move(value); }
-
-    /**
-     * <p>Customer-chosen string used to distinguish between calls to
-     * <code>PutAccountConfiguration</code>. Idempotency tokens time out after one
-     * hour. If you call <code>PutAccountConfiguration</code> multiple times with the
-     * same unexpired idempotency token, ACM treats it as the same request and returns
-     * the original result. If you change the idempotency token for each call, ACM
-     * treats each call as a new request.</p>
-     */
-    inline void SetIdempotencyToken(const char* value) { m_idempotencyTokenHasBeenSet = true; m_idempotencyToken.assign(value); }
-
-    /**
-     * <p>Customer-chosen string used to distinguish between calls to
-     * <code>PutAccountConfiguration</code>. Idempotency tokens time out after one
-     * hour. If you call <code>PutAccountConfiguration</code> multiple times with the
-     * same unexpired idempotency token, ACM treats it as the same request and returns
-     * the original result. If you change the idempotency token for each call, ACM
-     * treats each call as a new request.</p>
-     */
-    inline PutAccountConfigurationRequest& WithIdempotencyToken(const Aws::String& value) { SetIdempotencyToken(value); return *this;}
-
-    /**
-     * <p>Customer-chosen string used to distinguish between calls to
-     * <code>PutAccountConfiguration</code>. Idempotency tokens time out after one
-     * hour. If you call <code>PutAccountConfiguration</code> multiple times with the
-     * same unexpired idempotency token, ACM treats it as the same request and returns
-     * the original result. If you change the idempotency token for each call, ACM
-     * treats each call as a new request.</p>
-     */
-    inline PutAccountConfigurationRequest& WithIdempotencyToken(Aws::String&& value) { SetIdempotencyToken(std::move(value)); return *this;}
-
-    /**
-     * <p>Customer-chosen string used to distinguish between calls to
-     * <code>PutAccountConfiguration</code>. Idempotency tokens time out after one
-     * hour. If you call <code>PutAccountConfiguration</code> multiple times with the
-     * same unexpired idempotency token, ACM treats it as the same request and returns
-     * the original result. If you change the idempotency token for each call, ACM
-     * treats each call as a new request.</p>
-     */
-    inline PutAccountConfigurationRequest& WithIdempotencyToken(const char* value) { SetIdempotencyToken(value); return *this;}
-
+    template<typename IdempotencyTokenT = Aws::String>
+    void SetIdempotencyToken(IdempotencyTokenT&& value) { m_idempotencyTokenHasBeenSet = true; m_idempotencyToken = std::forward<IdempotencyTokenT>(value); }
+    template<typename IdempotencyTokenT = Aws::String>
+    PutAccountConfigurationRequest& WithIdempotencyToken(IdempotencyTokenT&& value) { SetIdempotencyToken(std::forward<IdempotencyTokenT>(value)); return *this;}
+    ///@}
   private:
 
     ExpiryEventsConfiguration m_expiryEvents;

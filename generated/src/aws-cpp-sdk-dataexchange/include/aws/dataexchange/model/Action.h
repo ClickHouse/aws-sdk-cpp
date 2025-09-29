@@ -31,42 +31,23 @@ namespace Model
   class Action
   {
   public:
-    AWS_DATAEXCHANGE_API Action();
+    AWS_DATAEXCHANGE_API Action() = default;
     AWS_DATAEXCHANGE_API Action(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAEXCHANGE_API Action& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAEXCHANGE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Details for the export revision to Amazon S3 action.</p>
      */
-    inline const AutoExportRevisionToS3RequestDetails& GetExportRevisionToS3() const{ return m_exportRevisionToS3; }
-
-    /**
-     * <p>Details for the export revision to Amazon S3 action.</p>
-     */
+    inline const AutoExportRevisionToS3RequestDetails& GetExportRevisionToS3() const { return m_exportRevisionToS3; }
     inline bool ExportRevisionToS3HasBeenSet() const { return m_exportRevisionToS3HasBeenSet; }
-
-    /**
-     * <p>Details for the export revision to Amazon S3 action.</p>
-     */
-    inline void SetExportRevisionToS3(const AutoExportRevisionToS3RequestDetails& value) { m_exportRevisionToS3HasBeenSet = true; m_exportRevisionToS3 = value; }
-
-    /**
-     * <p>Details for the export revision to Amazon S3 action.</p>
-     */
-    inline void SetExportRevisionToS3(AutoExportRevisionToS3RequestDetails&& value) { m_exportRevisionToS3HasBeenSet = true; m_exportRevisionToS3 = std::move(value); }
-
-    /**
-     * <p>Details for the export revision to Amazon S3 action.</p>
-     */
-    inline Action& WithExportRevisionToS3(const AutoExportRevisionToS3RequestDetails& value) { SetExportRevisionToS3(value); return *this;}
-
-    /**
-     * <p>Details for the export revision to Amazon S3 action.</p>
-     */
-    inline Action& WithExportRevisionToS3(AutoExportRevisionToS3RequestDetails&& value) { SetExportRevisionToS3(std::move(value)); return *this;}
-
+    template<typename ExportRevisionToS3T = AutoExportRevisionToS3RequestDetails>
+    void SetExportRevisionToS3(ExportRevisionToS3T&& value) { m_exportRevisionToS3HasBeenSet = true; m_exportRevisionToS3 = std::forward<ExportRevisionToS3T>(value); }
+    template<typename ExportRevisionToS3T = AutoExportRevisionToS3RequestDetails>
+    Action& WithExportRevisionToS3(ExportRevisionToS3T&& value) { SetExportRevisionToS3(std::forward<ExportRevisionToS3T>(value)); return *this;}
+    ///@}
   private:
 
     AutoExportRevisionToS3RequestDetails m_exportRevisionToS3;

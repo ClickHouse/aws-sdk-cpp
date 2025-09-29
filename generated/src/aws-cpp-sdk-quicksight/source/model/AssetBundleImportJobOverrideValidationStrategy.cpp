@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-AssetBundleImportJobOverrideValidationStrategy::AssetBundleImportJobOverrideValidationStrategy() : 
-    m_strictModeForAllResources(false),
-    m_strictModeForAllResourcesHasBeenSet(false)
-{
-}
-
-AssetBundleImportJobOverrideValidationStrategy::AssetBundleImportJobOverrideValidationStrategy(JsonView jsonValue) : 
-    m_strictModeForAllResources(false),
-    m_strictModeForAllResourcesHasBeenSet(false)
+AssetBundleImportJobOverrideValidationStrategy::AssetBundleImportJobOverrideValidationStrategy(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ AssetBundleImportJobOverrideValidationStrategy& AssetBundleImportJobOverrideVali
   if(jsonValue.ValueExists("StrictModeForAllResources"))
   {
     m_strictModeForAllResources = jsonValue.GetBool("StrictModeForAllResources");
-
     m_strictModeForAllResourcesHasBeenSet = true;
   }
-
   return *this;
 }
 

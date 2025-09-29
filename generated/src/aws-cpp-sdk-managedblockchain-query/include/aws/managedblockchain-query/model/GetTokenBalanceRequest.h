@@ -23,7 +23,7 @@ namespace Model
   class GetTokenBalanceRequest : public ManagedBlockchainQueryRequest
   {
   public:
-    AWS_MANAGEDBLOCKCHAINQUERY_API GetTokenBalanceRequest();
+    AWS_MANAGEDBLOCKCHAINQUERY_API GetTokenBalanceRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,116 +34,44 @@ namespace Model
     AWS_MANAGEDBLOCKCHAINQUERY_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The container for the identifier for the token, including the unique token ID
      * and its blockchain network.</p>
      */
-    inline const TokenIdentifier& GetTokenIdentifier() const{ return m_tokenIdentifier; }
-
-    /**
-     * <p>The container for the identifier for the token, including the unique token ID
-     * and its blockchain network.</p>
-     */
+    inline const TokenIdentifier& GetTokenIdentifier() const { return m_tokenIdentifier; }
     inline bool TokenIdentifierHasBeenSet() const { return m_tokenIdentifierHasBeenSet; }
+    template<typename TokenIdentifierT = TokenIdentifier>
+    void SetTokenIdentifier(TokenIdentifierT&& value) { m_tokenIdentifierHasBeenSet = true; m_tokenIdentifier = std::forward<TokenIdentifierT>(value); }
+    template<typename TokenIdentifierT = TokenIdentifier>
+    GetTokenBalanceRequest& WithTokenIdentifier(TokenIdentifierT&& value) { SetTokenIdentifier(std::forward<TokenIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The container for the identifier for the token, including the unique token ID
-     * and its blockchain network.</p>
-     */
-    inline void SetTokenIdentifier(const TokenIdentifier& value) { m_tokenIdentifierHasBeenSet = true; m_tokenIdentifier = value; }
-
-    /**
-     * <p>The container for the identifier for the token, including the unique token ID
-     * and its blockchain network.</p>
-     */
-    inline void SetTokenIdentifier(TokenIdentifier&& value) { m_tokenIdentifierHasBeenSet = true; m_tokenIdentifier = std::move(value); }
-
-    /**
-     * <p>The container for the identifier for the token, including the unique token ID
-     * and its blockchain network.</p>
-     */
-    inline GetTokenBalanceRequest& WithTokenIdentifier(const TokenIdentifier& value) { SetTokenIdentifier(value); return *this;}
-
-    /**
-     * <p>The container for the identifier for the token, including the unique token ID
-     * and its blockchain network.</p>
-     */
-    inline GetTokenBalanceRequest& WithTokenIdentifier(TokenIdentifier&& value) { SetTokenIdentifier(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The container for the identifier for the owner.</p>
      */
-    inline const OwnerIdentifier& GetOwnerIdentifier() const{ return m_ownerIdentifier; }
-
-    /**
-     * <p>The container for the identifier for the owner.</p>
-     */
+    inline const OwnerIdentifier& GetOwnerIdentifier() const { return m_ownerIdentifier; }
     inline bool OwnerIdentifierHasBeenSet() const { return m_ownerIdentifierHasBeenSet; }
+    template<typename OwnerIdentifierT = OwnerIdentifier>
+    void SetOwnerIdentifier(OwnerIdentifierT&& value) { m_ownerIdentifierHasBeenSet = true; m_ownerIdentifier = std::forward<OwnerIdentifierT>(value); }
+    template<typename OwnerIdentifierT = OwnerIdentifier>
+    GetTokenBalanceRequest& WithOwnerIdentifier(OwnerIdentifierT&& value) { SetOwnerIdentifier(std::forward<OwnerIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The container for the identifier for the owner.</p>
-     */
-    inline void SetOwnerIdentifier(const OwnerIdentifier& value) { m_ownerIdentifierHasBeenSet = true; m_ownerIdentifier = value; }
-
-    /**
-     * <p>The container for the identifier for the owner.</p>
-     */
-    inline void SetOwnerIdentifier(OwnerIdentifier&& value) { m_ownerIdentifierHasBeenSet = true; m_ownerIdentifier = std::move(value); }
-
-    /**
-     * <p>The container for the identifier for the owner.</p>
-     */
-    inline GetTokenBalanceRequest& WithOwnerIdentifier(const OwnerIdentifier& value) { SetOwnerIdentifier(value); return *this;}
-
-    /**
-     * <p>The container for the identifier for the owner.</p>
-     */
-    inline GetTokenBalanceRequest& WithOwnerIdentifier(OwnerIdentifier&& value) { SetOwnerIdentifier(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The time for when the TokenBalance is requested or the current time if a time
      * is not provided in the request.</p>  <p>This time will only be recorded up
      * to the second.</p> 
      */
-    inline const BlockchainInstant& GetAtBlockchainInstant() const{ return m_atBlockchainInstant; }
-
-    /**
-     * <p>The time for when the TokenBalance is requested or the current time if a time
-     * is not provided in the request.</p>  <p>This time will only be recorded up
-     * to the second.</p> 
-     */
+    inline const BlockchainInstant& GetAtBlockchainInstant() const { return m_atBlockchainInstant; }
     inline bool AtBlockchainInstantHasBeenSet() const { return m_atBlockchainInstantHasBeenSet; }
-
-    /**
-     * <p>The time for when the TokenBalance is requested or the current time if a time
-     * is not provided in the request.</p>  <p>This time will only be recorded up
-     * to the second.</p> 
-     */
-    inline void SetAtBlockchainInstant(const BlockchainInstant& value) { m_atBlockchainInstantHasBeenSet = true; m_atBlockchainInstant = value; }
-
-    /**
-     * <p>The time for when the TokenBalance is requested or the current time if a time
-     * is not provided in the request.</p>  <p>This time will only be recorded up
-     * to the second.</p> 
-     */
-    inline void SetAtBlockchainInstant(BlockchainInstant&& value) { m_atBlockchainInstantHasBeenSet = true; m_atBlockchainInstant = std::move(value); }
-
-    /**
-     * <p>The time for when the TokenBalance is requested or the current time if a time
-     * is not provided in the request.</p>  <p>This time will only be recorded up
-     * to the second.</p> 
-     */
-    inline GetTokenBalanceRequest& WithAtBlockchainInstant(const BlockchainInstant& value) { SetAtBlockchainInstant(value); return *this;}
-
-    /**
-     * <p>The time for when the TokenBalance is requested or the current time if a time
-     * is not provided in the request.</p>  <p>This time will only be recorded up
-     * to the second.</p> 
-     */
-    inline GetTokenBalanceRequest& WithAtBlockchainInstant(BlockchainInstant&& value) { SetAtBlockchainInstant(std::move(value)); return *this;}
-
+    template<typename AtBlockchainInstantT = BlockchainInstant>
+    void SetAtBlockchainInstant(AtBlockchainInstantT&& value) { m_atBlockchainInstantHasBeenSet = true; m_atBlockchainInstant = std::forward<AtBlockchainInstantT>(value); }
+    template<typename AtBlockchainInstantT = BlockchainInstant>
+    GetTokenBalanceRequest& WithAtBlockchainInstant(AtBlockchainInstantT&& value) { SetAtBlockchainInstant(std::forward<AtBlockchainInstantT>(value)); return *this;}
+    ///@}
   private:
 
     TokenIdentifier m_tokenIdentifier;

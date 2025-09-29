@@ -32,142 +32,48 @@ namespace Model
   class NotificationsConfiguration
   {
   public:
-    AWS_CHIMESDKMEETINGS_API NotificationsConfiguration();
+    AWS_CHIMESDKMEETINGS_API NotificationsConfiguration() = default;
     AWS_CHIMESDKMEETINGS_API NotificationsConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMEETINGS_API NotificationsConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMEETINGS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ARN of the Amazon Web Services Lambda function in the notifications
      * configuration.</p>
      */
-    inline const Aws::String& GetLambdaFunctionArn() const{ return m_lambdaFunctionArn; }
-
-    /**
-     * <p>The ARN of the Amazon Web Services Lambda function in the notifications
-     * configuration.</p>
-     */
+    inline const Aws::String& GetLambdaFunctionArn() const { return m_lambdaFunctionArn; }
     inline bool LambdaFunctionArnHasBeenSet() const { return m_lambdaFunctionArnHasBeenSet; }
+    template<typename LambdaFunctionArnT = Aws::String>
+    void SetLambdaFunctionArn(LambdaFunctionArnT&& value) { m_lambdaFunctionArnHasBeenSet = true; m_lambdaFunctionArn = std::forward<LambdaFunctionArnT>(value); }
+    template<typename LambdaFunctionArnT = Aws::String>
+    NotificationsConfiguration& WithLambdaFunctionArn(LambdaFunctionArnT&& value) { SetLambdaFunctionArn(std::forward<LambdaFunctionArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the Amazon Web Services Lambda function in the notifications
-     * configuration.</p>
-     */
-    inline void SetLambdaFunctionArn(const Aws::String& value) { m_lambdaFunctionArnHasBeenSet = true; m_lambdaFunctionArn = value; }
-
-    /**
-     * <p>The ARN of the Amazon Web Services Lambda function in the notifications
-     * configuration.</p>
-     */
-    inline void SetLambdaFunctionArn(Aws::String&& value) { m_lambdaFunctionArnHasBeenSet = true; m_lambdaFunctionArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the Amazon Web Services Lambda function in the notifications
-     * configuration.</p>
-     */
-    inline void SetLambdaFunctionArn(const char* value) { m_lambdaFunctionArnHasBeenSet = true; m_lambdaFunctionArn.assign(value); }
-
-    /**
-     * <p>The ARN of the Amazon Web Services Lambda function in the notifications
-     * configuration.</p>
-     */
-    inline NotificationsConfiguration& WithLambdaFunctionArn(const Aws::String& value) { SetLambdaFunctionArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the Amazon Web Services Lambda function in the notifications
-     * configuration.</p>
-     */
-    inline NotificationsConfiguration& WithLambdaFunctionArn(Aws::String&& value) { SetLambdaFunctionArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the Amazon Web Services Lambda function in the notifications
-     * configuration.</p>
-     */
-    inline NotificationsConfiguration& WithLambdaFunctionArn(const char* value) { SetLambdaFunctionArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the SNS topic.</p>
      */
-    inline const Aws::String& GetSnsTopicArn() const{ return m_snsTopicArn; }
-
-    /**
-     * <p>The ARN of the SNS topic.</p>
-     */
+    inline const Aws::String& GetSnsTopicArn() const { return m_snsTopicArn; }
     inline bool SnsTopicArnHasBeenSet() const { return m_snsTopicArnHasBeenSet; }
+    template<typename SnsTopicArnT = Aws::String>
+    void SetSnsTopicArn(SnsTopicArnT&& value) { m_snsTopicArnHasBeenSet = true; m_snsTopicArn = std::forward<SnsTopicArnT>(value); }
+    template<typename SnsTopicArnT = Aws::String>
+    NotificationsConfiguration& WithSnsTopicArn(SnsTopicArnT&& value) { SetSnsTopicArn(std::forward<SnsTopicArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the SNS topic.</p>
-     */
-    inline void SetSnsTopicArn(const Aws::String& value) { m_snsTopicArnHasBeenSet = true; m_snsTopicArn = value; }
-
-    /**
-     * <p>The ARN of the SNS topic.</p>
-     */
-    inline void SetSnsTopicArn(Aws::String&& value) { m_snsTopicArnHasBeenSet = true; m_snsTopicArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the SNS topic.</p>
-     */
-    inline void SetSnsTopicArn(const char* value) { m_snsTopicArnHasBeenSet = true; m_snsTopicArn.assign(value); }
-
-    /**
-     * <p>The ARN of the SNS topic.</p>
-     */
-    inline NotificationsConfiguration& WithSnsTopicArn(const Aws::String& value) { SetSnsTopicArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the SNS topic.</p>
-     */
-    inline NotificationsConfiguration& WithSnsTopicArn(Aws::String&& value) { SetSnsTopicArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the SNS topic.</p>
-     */
-    inline NotificationsConfiguration& WithSnsTopicArn(const char* value) { SetSnsTopicArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the SQS queue.</p>
      */
-    inline const Aws::String& GetSqsQueueArn() const{ return m_sqsQueueArn; }
-
-    /**
-     * <p>The ARN of the SQS queue.</p>
-     */
+    inline const Aws::String& GetSqsQueueArn() const { return m_sqsQueueArn; }
     inline bool SqsQueueArnHasBeenSet() const { return m_sqsQueueArnHasBeenSet; }
-
-    /**
-     * <p>The ARN of the SQS queue.</p>
-     */
-    inline void SetSqsQueueArn(const Aws::String& value) { m_sqsQueueArnHasBeenSet = true; m_sqsQueueArn = value; }
-
-    /**
-     * <p>The ARN of the SQS queue.</p>
-     */
-    inline void SetSqsQueueArn(Aws::String&& value) { m_sqsQueueArnHasBeenSet = true; m_sqsQueueArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the SQS queue.</p>
-     */
-    inline void SetSqsQueueArn(const char* value) { m_sqsQueueArnHasBeenSet = true; m_sqsQueueArn.assign(value); }
-
-    /**
-     * <p>The ARN of the SQS queue.</p>
-     */
-    inline NotificationsConfiguration& WithSqsQueueArn(const Aws::String& value) { SetSqsQueueArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the SQS queue.</p>
-     */
-    inline NotificationsConfiguration& WithSqsQueueArn(Aws::String&& value) { SetSqsQueueArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the SQS queue.</p>
-     */
-    inline NotificationsConfiguration& WithSqsQueueArn(const char* value) { SetSqsQueueArn(value); return *this;}
-
+    template<typename SqsQueueArnT = Aws::String>
+    void SetSqsQueueArn(SqsQueueArnT&& value) { m_sqsQueueArnHasBeenSet = true; m_sqsQueueArn = std::forward<SqsQueueArnT>(value); }
+    template<typename SqsQueueArnT = Aws::String>
+    NotificationsConfiguration& WithSqsQueueArn(SqsQueueArnT&& value) { SetSqsQueueArn(std::forward<SqsQueueArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_lambdaFunctionArn;

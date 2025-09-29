@@ -22,7 +22,7 @@ namespace Model
   class UpdateAssociationStatusRequest : public SSMRequest
   {
   public:
-    AWS_SSM_API UpdateAssociationStatusRequest();
+    AWS_SSM_API UpdateAssociationStatusRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,118 +35,41 @@ namespace Model
     AWS_SSM_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the SSM document.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the SSM document.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    UpdateAssociationStatusRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the SSM document.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the SSM document.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the SSM document.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the SSM document.</p>
-     */
-    inline UpdateAssociationStatusRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the SSM document.</p>
-     */
-    inline UpdateAssociationStatusRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the SSM document.</p>
-     */
-    inline UpdateAssociationStatusRequest& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The managed node ID.</p>
      */
-    inline const Aws::String& GetInstanceId() const{ return m_instanceId; }
-
-    /**
-     * <p>The managed node ID.</p>
-     */
+    inline const Aws::String& GetInstanceId() const { return m_instanceId; }
     inline bool InstanceIdHasBeenSet() const { return m_instanceIdHasBeenSet; }
+    template<typename InstanceIdT = Aws::String>
+    void SetInstanceId(InstanceIdT&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::forward<InstanceIdT>(value); }
+    template<typename InstanceIdT = Aws::String>
+    UpdateAssociationStatusRequest& WithInstanceId(InstanceIdT&& value) { SetInstanceId(std::forward<InstanceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The managed node ID.</p>
-     */
-    inline void SetInstanceId(const Aws::String& value) { m_instanceIdHasBeenSet = true; m_instanceId = value; }
-
-    /**
-     * <p>The managed node ID.</p>
-     */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::move(value); }
-
-    /**
-     * <p>The managed node ID.</p>
-     */
-    inline void SetInstanceId(const char* value) { m_instanceIdHasBeenSet = true; m_instanceId.assign(value); }
-
-    /**
-     * <p>The managed node ID.</p>
-     */
-    inline UpdateAssociationStatusRequest& WithInstanceId(const Aws::String& value) { SetInstanceId(value); return *this;}
-
-    /**
-     * <p>The managed node ID.</p>
-     */
-    inline UpdateAssociationStatusRequest& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The managed node ID.</p>
-     */
-    inline UpdateAssociationStatusRequest& WithInstanceId(const char* value) { SetInstanceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The association status.</p>
      */
-    inline const AssociationStatus& GetAssociationStatus() const{ return m_associationStatus; }
-
-    /**
-     * <p>The association status.</p>
-     */
+    inline const AssociationStatus& GetAssociationStatus() const { return m_associationStatus; }
     inline bool AssociationStatusHasBeenSet() const { return m_associationStatusHasBeenSet; }
-
-    /**
-     * <p>The association status.</p>
-     */
-    inline void SetAssociationStatus(const AssociationStatus& value) { m_associationStatusHasBeenSet = true; m_associationStatus = value; }
-
-    /**
-     * <p>The association status.</p>
-     */
-    inline void SetAssociationStatus(AssociationStatus&& value) { m_associationStatusHasBeenSet = true; m_associationStatus = std::move(value); }
-
-    /**
-     * <p>The association status.</p>
-     */
-    inline UpdateAssociationStatusRequest& WithAssociationStatus(const AssociationStatus& value) { SetAssociationStatus(value); return *this;}
-
-    /**
-     * <p>The association status.</p>
-     */
-    inline UpdateAssociationStatusRequest& WithAssociationStatus(AssociationStatus&& value) { SetAssociationStatus(std::move(value)); return *this;}
-
+    template<typename AssociationStatusT = AssociationStatus>
+    void SetAssociationStatus(AssociationStatusT&& value) { m_associationStatusHasBeenSet = true; m_associationStatus = std::forward<AssociationStatusT>(value); }
+    template<typename AssociationStatusT = AssociationStatus>
+    UpdateAssociationStatusRequest& WithAssociationStatus(AssociationStatusT&& value) { SetAssociationStatus(std::forward<AssociationStatusT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;

@@ -7,6 +7,7 @@
 #include <aws/datazone/DataZone_EXPORTS.h>
 #include <aws/datazone/model/GlueRunConfigurationInput.h>
 #include <aws/datazone/model/RedshiftRunConfigurationInput.h>
+#include <aws/datazone/model/SageMakerRunConfigurationInput.h>
 #include <utility>
 
 namespace Aws
@@ -32,73 +33,47 @@ namespace Model
   class DataSourceConfigurationInput
   {
   public:
-    AWS_DATAZONE_API DataSourceConfigurationInput();
+    AWS_DATAZONE_API DataSourceConfigurationInput() = default;
     AWS_DATAZONE_API DataSourceConfigurationInput(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAZONE_API DataSourceConfigurationInput& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAZONE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The configuration of the Amazon Web Services Glue data source.</p>
      */
-    inline const GlueRunConfigurationInput& GetGlueRunConfiguration() const{ return m_glueRunConfiguration; }
-
-    /**
-     * <p>The configuration of the Amazon Web Services Glue data source.</p>
-     */
+    inline const GlueRunConfigurationInput& GetGlueRunConfiguration() const { return m_glueRunConfiguration; }
     inline bool GlueRunConfigurationHasBeenSet() const { return m_glueRunConfigurationHasBeenSet; }
+    template<typename GlueRunConfigurationT = GlueRunConfigurationInput>
+    void SetGlueRunConfiguration(GlueRunConfigurationT&& value) { m_glueRunConfigurationHasBeenSet = true; m_glueRunConfiguration = std::forward<GlueRunConfigurationT>(value); }
+    template<typename GlueRunConfigurationT = GlueRunConfigurationInput>
+    DataSourceConfigurationInput& WithGlueRunConfiguration(GlueRunConfigurationT&& value) { SetGlueRunConfiguration(std::forward<GlueRunConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The configuration of the Amazon Web Services Glue data source.</p>
-     */
-    inline void SetGlueRunConfiguration(const GlueRunConfigurationInput& value) { m_glueRunConfigurationHasBeenSet = true; m_glueRunConfiguration = value; }
-
-    /**
-     * <p>The configuration of the Amazon Web Services Glue data source.</p>
-     */
-    inline void SetGlueRunConfiguration(GlueRunConfigurationInput&& value) { m_glueRunConfigurationHasBeenSet = true; m_glueRunConfiguration = std::move(value); }
-
-    /**
-     * <p>The configuration of the Amazon Web Services Glue data source.</p>
-     */
-    inline DataSourceConfigurationInput& WithGlueRunConfiguration(const GlueRunConfigurationInput& value) { SetGlueRunConfiguration(value); return *this;}
-
-    /**
-     * <p>The configuration of the Amazon Web Services Glue data source.</p>
-     */
-    inline DataSourceConfigurationInput& WithGlueRunConfiguration(GlueRunConfigurationInput&& value) { SetGlueRunConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The configuration of the Amazon Redshift data source.</p>
      */
-    inline const RedshiftRunConfigurationInput& GetRedshiftRunConfiguration() const{ return m_redshiftRunConfiguration; }
-
-    /**
-     * <p>The configuration of the Amazon Redshift data source.</p>
-     */
+    inline const RedshiftRunConfigurationInput& GetRedshiftRunConfiguration() const { return m_redshiftRunConfiguration; }
     inline bool RedshiftRunConfigurationHasBeenSet() const { return m_redshiftRunConfigurationHasBeenSet; }
+    template<typename RedshiftRunConfigurationT = RedshiftRunConfigurationInput>
+    void SetRedshiftRunConfiguration(RedshiftRunConfigurationT&& value) { m_redshiftRunConfigurationHasBeenSet = true; m_redshiftRunConfiguration = std::forward<RedshiftRunConfigurationT>(value); }
+    template<typename RedshiftRunConfigurationT = RedshiftRunConfigurationInput>
+    DataSourceConfigurationInput& WithRedshiftRunConfiguration(RedshiftRunConfigurationT&& value) { SetRedshiftRunConfiguration(std::forward<RedshiftRunConfigurationT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The configuration of the Amazon Redshift data source.</p>
+     * <p>The Amazon SageMaker run configuration.</p>
      */
-    inline void SetRedshiftRunConfiguration(const RedshiftRunConfigurationInput& value) { m_redshiftRunConfigurationHasBeenSet = true; m_redshiftRunConfiguration = value; }
-
-    /**
-     * <p>The configuration of the Amazon Redshift data source.</p>
-     */
-    inline void SetRedshiftRunConfiguration(RedshiftRunConfigurationInput&& value) { m_redshiftRunConfigurationHasBeenSet = true; m_redshiftRunConfiguration = std::move(value); }
-
-    /**
-     * <p>The configuration of the Amazon Redshift data source.</p>
-     */
-    inline DataSourceConfigurationInput& WithRedshiftRunConfiguration(const RedshiftRunConfigurationInput& value) { SetRedshiftRunConfiguration(value); return *this;}
-
-    /**
-     * <p>The configuration of the Amazon Redshift data source.</p>
-     */
-    inline DataSourceConfigurationInput& WithRedshiftRunConfiguration(RedshiftRunConfigurationInput&& value) { SetRedshiftRunConfiguration(std::move(value)); return *this;}
-
+    inline const SageMakerRunConfigurationInput& GetSageMakerRunConfiguration() const { return m_sageMakerRunConfiguration; }
+    inline bool SageMakerRunConfigurationHasBeenSet() const { return m_sageMakerRunConfigurationHasBeenSet; }
+    template<typename SageMakerRunConfigurationT = SageMakerRunConfigurationInput>
+    void SetSageMakerRunConfiguration(SageMakerRunConfigurationT&& value) { m_sageMakerRunConfigurationHasBeenSet = true; m_sageMakerRunConfiguration = std::forward<SageMakerRunConfigurationT>(value); }
+    template<typename SageMakerRunConfigurationT = SageMakerRunConfigurationInput>
+    DataSourceConfigurationInput& WithSageMakerRunConfiguration(SageMakerRunConfigurationT&& value) { SetSageMakerRunConfiguration(std::forward<SageMakerRunConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     GlueRunConfigurationInput m_glueRunConfiguration;
@@ -106,6 +81,9 @@ namespace Model
 
     RedshiftRunConfigurationInput m_redshiftRunConfiguration;
     bool m_redshiftRunConfigurationHasBeenSet = false;
+
+    SageMakerRunConfigurationInput m_sageMakerRunConfiguration;
+    bool m_sageMakerRunConfigurationHasBeenSet = false;
   };
 
 } // namespace Model

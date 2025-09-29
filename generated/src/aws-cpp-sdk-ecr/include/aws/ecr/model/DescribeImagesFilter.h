@@ -32,57 +32,26 @@ namespace Model
   class DescribeImagesFilter
   {
   public:
-    AWS_ECR_API DescribeImagesFilter();
+    AWS_ECR_API DescribeImagesFilter() = default;
     AWS_ECR_API DescribeImagesFilter(Aws::Utils::Json::JsonView jsonValue);
     AWS_ECR_API DescribeImagesFilter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ECR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The tag status with which to filter your <a>DescribeImages</a> results. You
      * can filter results based on whether they are <code>TAGGED</code> or
      * <code>UNTAGGED</code>.</p>
      */
-    inline const TagStatus& GetTagStatus() const{ return m_tagStatus; }
-
-    /**
-     * <p>The tag status with which to filter your <a>DescribeImages</a> results. You
-     * can filter results based on whether they are <code>TAGGED</code> or
-     * <code>UNTAGGED</code>.</p>
-     */
+    inline TagStatus GetTagStatus() const { return m_tagStatus; }
     inline bool TagStatusHasBeenSet() const { return m_tagStatusHasBeenSet; }
-
-    /**
-     * <p>The tag status with which to filter your <a>DescribeImages</a> results. You
-     * can filter results based on whether they are <code>TAGGED</code> or
-     * <code>UNTAGGED</code>.</p>
-     */
-    inline void SetTagStatus(const TagStatus& value) { m_tagStatusHasBeenSet = true; m_tagStatus = value; }
-
-    /**
-     * <p>The tag status with which to filter your <a>DescribeImages</a> results. You
-     * can filter results based on whether they are <code>TAGGED</code> or
-     * <code>UNTAGGED</code>.</p>
-     */
-    inline void SetTagStatus(TagStatus&& value) { m_tagStatusHasBeenSet = true; m_tagStatus = std::move(value); }
-
-    /**
-     * <p>The tag status with which to filter your <a>DescribeImages</a> results. You
-     * can filter results based on whether they are <code>TAGGED</code> or
-     * <code>UNTAGGED</code>.</p>
-     */
-    inline DescribeImagesFilter& WithTagStatus(const TagStatus& value) { SetTagStatus(value); return *this;}
-
-    /**
-     * <p>The tag status with which to filter your <a>DescribeImages</a> results. You
-     * can filter results based on whether they are <code>TAGGED</code> or
-     * <code>UNTAGGED</code>.</p>
-     */
-    inline DescribeImagesFilter& WithTagStatus(TagStatus&& value) { SetTagStatus(std::move(value)); return *this;}
-
+    inline void SetTagStatus(TagStatus value) { m_tagStatusHasBeenSet = true; m_tagStatus = value; }
+    inline DescribeImagesFilter& WithTagStatus(TagStatus value) { SetTagStatus(value); return *this;}
+    ///@}
   private:
 
-    TagStatus m_tagStatus;
+    TagStatus m_tagStatus{TagStatus::NOT_SET};
     bool m_tagStatusHasBeenSet = false;
   };
 

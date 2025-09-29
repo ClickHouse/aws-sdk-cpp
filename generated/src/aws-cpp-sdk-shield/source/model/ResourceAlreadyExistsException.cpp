@@ -18,15 +18,7 @@ namespace Shield
 namespace Model
 {
 
-ResourceAlreadyExistsException::ResourceAlreadyExistsException() : 
-    m_messageHasBeenSet(false),
-    m_resourceTypeHasBeenSet(false)
-{
-}
-
-ResourceAlreadyExistsException::ResourceAlreadyExistsException(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_resourceTypeHasBeenSet(false)
+ResourceAlreadyExistsException::ResourceAlreadyExistsException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ResourceAlreadyExistsException& ResourceAlreadyExistsException::operator =(JsonV
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("resourceType"))
   {
     m_resourceType = jsonValue.GetString("resourceType");
-
     m_resourceTypeHasBeenSet = true;
   }
-
   return *this;
 }
 

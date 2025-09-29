@@ -18,17 +18,7 @@ namespace ServiceCatalog
 namespace Model
 {
 
-OrganizationNode::OrganizationNode() : 
-    m_type(OrganizationNodeType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_valueHasBeenSet(false)
-{
-}
-
-OrganizationNode::OrganizationNode(JsonView jsonValue) : 
-    m_type(OrganizationNodeType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_valueHasBeenSet(false)
+OrganizationNode::OrganizationNode(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ OrganizationNode& OrganizationNode::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Type"))
   {
     m_type = OrganizationNodeTypeMapper::GetOrganizationNodeTypeForName(jsonValue.GetString("Type"));
-
     m_typeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Value"))
   {
     m_value = jsonValue.GetString("Value");
-
     m_valueHasBeenSet = true;
   }
-
   return *this;
 }
 

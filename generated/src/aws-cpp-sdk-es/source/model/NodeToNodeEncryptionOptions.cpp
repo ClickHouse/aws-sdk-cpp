@@ -18,15 +18,7 @@ namespace ElasticsearchService
 namespace Model
 {
 
-NodeToNodeEncryptionOptions::NodeToNodeEncryptionOptions() : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false)
-{
-}
-
-NodeToNodeEncryptionOptions::NodeToNodeEncryptionOptions(JsonView jsonValue) : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false)
+NodeToNodeEncryptionOptions::NodeToNodeEncryptionOptions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ NodeToNodeEncryptionOptions& NodeToNodeEncryptionOptions::operator =(JsonView js
   if(jsonValue.ValueExists("Enabled"))
   {
     m_enabled = jsonValue.GetBool("Enabled");
-
     m_enabledHasBeenSet = true;
   }
-
   return *this;
 }
 

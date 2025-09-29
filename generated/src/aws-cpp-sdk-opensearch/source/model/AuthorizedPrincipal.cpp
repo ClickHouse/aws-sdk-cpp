@@ -18,17 +18,7 @@ namespace OpenSearchService
 namespace Model
 {
 
-AuthorizedPrincipal::AuthorizedPrincipal() : 
-    m_principalType(PrincipalType::NOT_SET),
-    m_principalTypeHasBeenSet(false),
-    m_principalHasBeenSet(false)
-{
-}
-
-AuthorizedPrincipal::AuthorizedPrincipal(JsonView jsonValue) : 
-    m_principalType(PrincipalType::NOT_SET),
-    m_principalTypeHasBeenSet(false),
-    m_principalHasBeenSet(false)
+AuthorizedPrincipal::AuthorizedPrincipal(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ AuthorizedPrincipal& AuthorizedPrincipal::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("PrincipalType"))
   {
     m_principalType = PrincipalTypeMapper::GetPrincipalTypeForName(jsonValue.GetString("PrincipalType"));
-
     m_principalTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Principal"))
   {
     m_principal = jsonValue.GetString("Principal");
-
     m_principalHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,15 +18,7 @@ namespace ChimeSDKVoice
 namespace Model
 {
 
-TerminationHealth::TerminationHealth() : 
-    m_timestampHasBeenSet(false),
-    m_sourceHasBeenSet(false)
-{
-}
-
-TerminationHealth::TerminationHealth(JsonView jsonValue) : 
-    m_timestampHasBeenSet(false),
-    m_sourceHasBeenSet(false)
+TerminationHealth::TerminationHealth(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ TerminationHealth& TerminationHealth::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Timestamp"))
   {
     m_timestamp = jsonValue.GetString("Timestamp");
-
     m_timestampHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Source"))
   {
     m_source = jsonValue.GetString("Source");
-
     m_sourceHasBeenSet = true;
   }
-
   return *this;
 }
 

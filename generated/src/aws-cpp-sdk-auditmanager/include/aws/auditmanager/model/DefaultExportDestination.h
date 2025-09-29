@@ -33,86 +33,36 @@ namespace Model
   class DefaultExportDestination
   {
   public:
-    AWS_AUDITMANAGER_API DefaultExportDestination();
+    AWS_AUDITMANAGER_API DefaultExportDestination() = default;
     AWS_AUDITMANAGER_API DefaultExportDestination(Aws::Utils::Json::JsonView jsonValue);
     AWS_AUDITMANAGER_API DefaultExportDestination& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_AUDITMANAGER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The destination type, such as Amazon S3.</p>
      */
-    inline const ExportDestinationType& GetDestinationType() const{ return m_destinationType; }
-
-    /**
-     * <p>The destination type, such as Amazon S3.</p>
-     */
+    inline ExportDestinationType GetDestinationType() const { return m_destinationType; }
     inline bool DestinationTypeHasBeenSet() const { return m_destinationTypeHasBeenSet; }
+    inline void SetDestinationType(ExportDestinationType value) { m_destinationTypeHasBeenSet = true; m_destinationType = value; }
+    inline DefaultExportDestination& WithDestinationType(ExportDestinationType value) { SetDestinationType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The destination type, such as Amazon S3.</p>
-     */
-    inline void SetDestinationType(const ExportDestinationType& value) { m_destinationTypeHasBeenSet = true; m_destinationType = value; }
-
-    /**
-     * <p>The destination type, such as Amazon S3.</p>
-     */
-    inline void SetDestinationType(ExportDestinationType&& value) { m_destinationTypeHasBeenSet = true; m_destinationType = std::move(value); }
-
-    /**
-     * <p>The destination type, such as Amazon S3.</p>
-     */
-    inline DefaultExportDestination& WithDestinationType(const ExportDestinationType& value) { SetDestinationType(value); return *this;}
-
-    /**
-     * <p>The destination type, such as Amazon S3.</p>
-     */
-    inline DefaultExportDestination& WithDestinationType(ExportDestinationType&& value) { SetDestinationType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The destination bucket where Audit Manager stores exported files.</p>
      */
-    inline const Aws::String& GetDestination() const{ return m_destination; }
-
-    /**
-     * <p>The destination bucket where Audit Manager stores exported files.</p>
-     */
+    inline const Aws::String& GetDestination() const { return m_destination; }
     inline bool DestinationHasBeenSet() const { return m_destinationHasBeenSet; }
-
-    /**
-     * <p>The destination bucket where Audit Manager stores exported files.</p>
-     */
-    inline void SetDestination(const Aws::String& value) { m_destinationHasBeenSet = true; m_destination = value; }
-
-    /**
-     * <p>The destination bucket where Audit Manager stores exported files.</p>
-     */
-    inline void SetDestination(Aws::String&& value) { m_destinationHasBeenSet = true; m_destination = std::move(value); }
-
-    /**
-     * <p>The destination bucket where Audit Manager stores exported files.</p>
-     */
-    inline void SetDestination(const char* value) { m_destinationHasBeenSet = true; m_destination.assign(value); }
-
-    /**
-     * <p>The destination bucket where Audit Manager stores exported files.</p>
-     */
-    inline DefaultExportDestination& WithDestination(const Aws::String& value) { SetDestination(value); return *this;}
-
-    /**
-     * <p>The destination bucket where Audit Manager stores exported files.</p>
-     */
-    inline DefaultExportDestination& WithDestination(Aws::String&& value) { SetDestination(std::move(value)); return *this;}
-
-    /**
-     * <p>The destination bucket where Audit Manager stores exported files.</p>
-     */
-    inline DefaultExportDestination& WithDestination(const char* value) { SetDestination(value); return *this;}
-
+    template<typename DestinationT = Aws::String>
+    void SetDestination(DestinationT&& value) { m_destinationHasBeenSet = true; m_destination = std::forward<DestinationT>(value); }
+    template<typename DestinationT = Aws::String>
+    DefaultExportDestination& WithDestination(DestinationT&& value) { SetDestination(std::forward<DestinationT>(value)); return *this;}
+    ///@}
   private:
 
-    ExportDestinationType m_destinationType;
+    ExportDestinationType m_destinationType{ExportDestinationType::NOT_SET};
     bool m_destinationTypeHasBeenSet = false;
 
     Aws::String m_destination;

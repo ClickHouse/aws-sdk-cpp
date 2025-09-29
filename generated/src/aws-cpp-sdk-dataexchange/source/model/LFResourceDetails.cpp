@@ -18,15 +18,7 @@ namespace DataExchange
 namespace Model
 {
 
-LFResourceDetails::LFResourceDetails() : 
-    m_databaseHasBeenSet(false),
-    m_tableHasBeenSet(false)
-{
-}
-
-LFResourceDetails::LFResourceDetails(JsonView jsonValue) : 
-    m_databaseHasBeenSet(false),
-    m_tableHasBeenSet(false)
+LFResourceDetails::LFResourceDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ LFResourceDetails& LFResourceDetails::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Database"))
   {
     m_database = jsonValue.GetObject("Database");
-
     m_databaseHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Table"))
   {
     m_table = jsonValue.GetObject("Table");
-
     m_tableHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -12,13 +12,6 @@ using namespace Aws::DynamoDB::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-TransactGetItemsRequest::TransactGetItemsRequest() : 
-    m_transactItemsHasBeenSet(false),
-    m_returnConsumedCapacity(ReturnConsumedCapacity::NOT_SET),
-    m_returnConsumedCapacityHasBeenSet(false)
-{
-}
-
 Aws::String TransactGetItemsRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -51,5 +44,24 @@ Aws::Http::HeaderValueCollection TransactGetItemsRequest::GetRequestSpecificHead
 }
 
 
+
+TransactGetItemsRequest::EndpointParameters TransactGetItemsRequest::GetEndpointContextParams() const
+{
+    EndpointParameters parameters;
+    //operation context params go here
+    parameters.emplace_back(Aws::String{"ResourceArnList"}, this->GetOperationContextParams(), Aws::Endpoint::EndpointParameter::ParameterOrigin::OPERATION_CONTEXT);
+    return parameters;
+}
+//Accessor for dynamic context endpoint params
+Aws::Vector<Aws::String> TransactGetItemsRequest::GetOperationContextParams() const{
+  Aws::Vector<Aws::String> result;
+  auto& TransactItemsElems = (*this).GetTransactItems();
+  for (auto& TransactItemsElem : TransactItemsElems)
+  {
+  	auto& GetElems = TransactItemsElem.GetGet().GetTableName();
+  	result.emplace_back(GetElems);
+  }
+  return result;
+}
 
 

@@ -20,35 +20,7 @@ namespace ElastiCache
 namespace Model
 {
 
-PendingModifiedValues::PendingModifiedValues() : 
-    m_numCacheNodes(0),
-    m_numCacheNodesHasBeenSet(false),
-    m_cacheNodeIdsToRemoveHasBeenSet(false),
-    m_engineVersionHasBeenSet(false),
-    m_cacheNodeTypeHasBeenSet(false),
-    m_authTokenStatus(AuthTokenUpdateStatus::NOT_SET),
-    m_authTokenStatusHasBeenSet(false),
-    m_logDeliveryConfigurationsHasBeenSet(false),
-    m_transitEncryptionEnabled(false),
-    m_transitEncryptionEnabledHasBeenSet(false),
-    m_transitEncryptionMode(TransitEncryptionMode::NOT_SET),
-    m_transitEncryptionModeHasBeenSet(false)
-{
-}
-
-PendingModifiedValues::PendingModifiedValues(const XmlNode& xmlNode) : 
-    m_numCacheNodes(0),
-    m_numCacheNodesHasBeenSet(false),
-    m_cacheNodeIdsToRemoveHasBeenSet(false),
-    m_engineVersionHasBeenSet(false),
-    m_cacheNodeTypeHasBeenSet(false),
-    m_authTokenStatus(AuthTokenUpdateStatus::NOT_SET),
-    m_authTokenStatusHasBeenSet(false),
-    m_logDeliveryConfigurationsHasBeenSet(false),
-    m_transitEncryptionEnabled(false),
-    m_transitEncryptionEnabledHasBeenSet(false),
-    m_transitEncryptionMode(TransitEncryptionMode::NOT_SET),
-    m_transitEncryptionModeHasBeenSet(false)
+PendingModifiedValues::PendingModifiedValues(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -69,6 +41,7 @@ PendingModifiedValues& PendingModifiedValues::operator =(const XmlNode& xmlNode)
     if(!cacheNodeIdsToRemoveNode.IsNull())
     {
       XmlNode cacheNodeIdsToRemoveMember = cacheNodeIdsToRemoveNode.FirstChild("CacheNodeId");
+      m_cacheNodeIdsToRemoveHasBeenSet = !cacheNodeIdsToRemoveMember.IsNull();
       while(!cacheNodeIdsToRemoveMember.IsNull())
       {
         m_cacheNodeIdsToRemove.push_back(cacheNodeIdsToRemoveMember.GetText());
@@ -92,13 +65,14 @@ PendingModifiedValues& PendingModifiedValues::operator =(const XmlNode& xmlNode)
     XmlNode authTokenStatusNode = resultNode.FirstChild("AuthTokenStatus");
     if(!authTokenStatusNode.IsNull())
     {
-      m_authTokenStatus = AuthTokenUpdateStatusMapper::GetAuthTokenUpdateStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(authTokenStatusNode.GetText()).c_str()).c_str());
+      m_authTokenStatus = AuthTokenUpdateStatusMapper::GetAuthTokenUpdateStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(authTokenStatusNode.GetText()).c_str()));
       m_authTokenStatusHasBeenSet = true;
     }
     XmlNode logDeliveryConfigurationsNode = resultNode.FirstChild("LogDeliveryConfigurations");
     if(!logDeliveryConfigurationsNode.IsNull())
     {
       XmlNode logDeliveryConfigurationsMember = logDeliveryConfigurationsNode.FirstChild("member");
+      m_logDeliveryConfigurationsHasBeenSet = !logDeliveryConfigurationsMember.IsNull();
       while(!logDeliveryConfigurationsMember.IsNull())
       {
         m_logDeliveryConfigurations.push_back(logDeliveryConfigurationsMember);
@@ -116,8 +90,14 @@ PendingModifiedValues& PendingModifiedValues::operator =(const XmlNode& xmlNode)
     XmlNode transitEncryptionModeNode = resultNode.FirstChild("TransitEncryptionMode");
     if(!transitEncryptionModeNode.IsNull())
     {
-      m_transitEncryptionMode = TransitEncryptionModeMapper::GetTransitEncryptionModeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(transitEncryptionModeNode.GetText()).c_str()).c_str());
+      m_transitEncryptionMode = TransitEncryptionModeMapper::GetTransitEncryptionModeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(transitEncryptionModeNode.GetText()).c_str()));
       m_transitEncryptionModeHasBeenSet = true;
+    }
+    XmlNode scaleConfigNode = resultNode.FirstChild("ScaleConfig");
+    if(!scaleConfigNode.IsNull())
+    {
+      m_scaleConfig = scaleConfigNode;
+      m_scaleConfigHasBeenSet = true;
     }
   }
 
@@ -136,7 +116,7 @@ void PendingModifiedValues::OutputToStream(Aws::OStream& oStream, const char* lo
       unsigned cacheNodeIdsToRemoveIdx = 1;
       for(auto& item : m_cacheNodeIdsToRemove)
       {
-        oStream << location << index << locationValue << ".CacheNodeId." << cacheNodeIdsToRemoveIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << index << locationValue << ".CacheNodeIdsToRemove.CacheNodeId." << cacheNodeIdsToRemoveIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
 
@@ -152,7 +132,7 @@ void PendingModifiedValues::OutputToStream(Aws::OStream& oStream, const char* lo
 
   if(m_authTokenStatusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".AuthTokenStatus=" << AuthTokenUpdateStatusMapper::GetNameForAuthTokenUpdateStatus(m_authTokenStatus) << "&";
+      oStream << location << index << locationValue << ".AuthTokenStatus=" << StringUtils::URLEncode(AuthTokenUpdateStatusMapper::GetNameForAuthTokenUpdateStatus(m_authTokenStatus)) << "&";
   }
 
   if(m_logDeliveryConfigurationsHasBeenSet)
@@ -173,7 +153,14 @@ void PendingModifiedValues::OutputToStream(Aws::OStream& oStream, const char* lo
 
   if(m_transitEncryptionModeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".TransitEncryptionMode=" << TransitEncryptionModeMapper::GetNameForTransitEncryptionMode(m_transitEncryptionMode) << "&";
+      oStream << location << index << locationValue << ".TransitEncryptionMode=" << StringUtils::URLEncode(TransitEncryptionModeMapper::GetNameForTransitEncryptionMode(m_transitEncryptionMode)) << "&";
+  }
+
+  if(m_scaleConfigHasBeenSet)
+  {
+      Aws::StringStream scaleConfigLocationAndMemberSs;
+      scaleConfigLocationAndMemberSs << location << index << locationValue << ".ScaleConfig";
+      m_scaleConfig.OutputToStream(oStream, scaleConfigLocationAndMemberSs.str().c_str());
   }
 
 }
@@ -189,7 +176,7 @@ void PendingModifiedValues::OutputToStream(Aws::OStream& oStream, const char* lo
       unsigned cacheNodeIdsToRemoveIdx = 1;
       for(auto& item : m_cacheNodeIdsToRemove)
       {
-        oStream << location << ".CacheNodeId." << cacheNodeIdsToRemoveIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".CacheNodeIdsToRemove.CacheNodeId." << cacheNodeIdsToRemoveIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_engineVersionHasBeenSet)
@@ -202,7 +189,7 @@ void PendingModifiedValues::OutputToStream(Aws::OStream& oStream, const char* lo
   }
   if(m_authTokenStatusHasBeenSet)
   {
-      oStream << location << ".AuthTokenStatus=" << AuthTokenUpdateStatusMapper::GetNameForAuthTokenUpdateStatus(m_authTokenStatus) << "&";
+      oStream << location << ".AuthTokenStatus=" << StringUtils::URLEncode(AuthTokenUpdateStatusMapper::GetNameForAuthTokenUpdateStatus(m_authTokenStatus)) << "&";
   }
   if(m_logDeliveryConfigurationsHasBeenSet)
   {
@@ -210,7 +197,7 @@ void PendingModifiedValues::OutputToStream(Aws::OStream& oStream, const char* lo
       for(auto& item : m_logDeliveryConfigurations)
       {
         Aws::StringStream logDeliveryConfigurationsSs;
-        logDeliveryConfigurationsSs << location <<  ".LogDeliveryConfigurations.member." << logDeliveryConfigurationsIdx++;
+        logDeliveryConfigurationsSs << location << ".LogDeliveryConfigurations.member." << logDeliveryConfigurationsIdx++;
         item.OutputToStream(oStream, logDeliveryConfigurationsSs.str().c_str());
       }
   }
@@ -220,7 +207,13 @@ void PendingModifiedValues::OutputToStream(Aws::OStream& oStream, const char* lo
   }
   if(m_transitEncryptionModeHasBeenSet)
   {
-      oStream << location << ".TransitEncryptionMode=" << TransitEncryptionModeMapper::GetNameForTransitEncryptionMode(m_transitEncryptionMode) << "&";
+      oStream << location << ".TransitEncryptionMode=" << StringUtils::URLEncode(TransitEncryptionModeMapper::GetNameForTransitEncryptionMode(m_transitEncryptionMode)) << "&";
+  }
+  if(m_scaleConfigHasBeenSet)
+  {
+      Aws::String scaleConfigLocationAndMember(location);
+      scaleConfigLocationAndMember += ".ScaleConfig";
+      m_scaleConfig.OutputToStream(oStream, scaleConfigLocationAndMember.c_str());
   }
 }
 

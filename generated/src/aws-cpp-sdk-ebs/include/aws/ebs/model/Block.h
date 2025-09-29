@@ -32,76 +32,36 @@ namespace Model
   class Block
   {
   public:
-    AWS_EBS_API Block();
+    AWS_EBS_API Block() = default;
     AWS_EBS_API Block(Aws::Utils::Json::JsonView jsonValue);
     AWS_EBS_API Block& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_EBS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The block index.</p>
      */
-    inline int GetBlockIndex() const{ return m_blockIndex; }
-
-    /**
-     * <p>The block index.</p>
-     */
+    inline int GetBlockIndex() const { return m_blockIndex; }
     inline bool BlockIndexHasBeenSet() const { return m_blockIndexHasBeenSet; }
-
-    /**
-     * <p>The block index.</p>
-     */
     inline void SetBlockIndex(int value) { m_blockIndexHasBeenSet = true; m_blockIndex = value; }
-
-    /**
-     * <p>The block index.</p>
-     */
     inline Block& WithBlockIndex(int value) { SetBlockIndex(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The block token for the block index.</p>
      */
-    inline const Aws::String& GetBlockToken() const{ return m_blockToken; }
-
-    /**
-     * <p>The block token for the block index.</p>
-     */
+    inline const Aws::String& GetBlockToken() const { return m_blockToken; }
     inline bool BlockTokenHasBeenSet() const { return m_blockTokenHasBeenSet; }
-
-    /**
-     * <p>The block token for the block index.</p>
-     */
-    inline void SetBlockToken(const Aws::String& value) { m_blockTokenHasBeenSet = true; m_blockToken = value; }
-
-    /**
-     * <p>The block token for the block index.</p>
-     */
-    inline void SetBlockToken(Aws::String&& value) { m_blockTokenHasBeenSet = true; m_blockToken = std::move(value); }
-
-    /**
-     * <p>The block token for the block index.</p>
-     */
-    inline void SetBlockToken(const char* value) { m_blockTokenHasBeenSet = true; m_blockToken.assign(value); }
-
-    /**
-     * <p>The block token for the block index.</p>
-     */
-    inline Block& WithBlockToken(const Aws::String& value) { SetBlockToken(value); return *this;}
-
-    /**
-     * <p>The block token for the block index.</p>
-     */
-    inline Block& WithBlockToken(Aws::String&& value) { SetBlockToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The block token for the block index.</p>
-     */
-    inline Block& WithBlockToken(const char* value) { SetBlockToken(value); return *this;}
-
+    template<typename BlockTokenT = Aws::String>
+    void SetBlockToken(BlockTokenT&& value) { m_blockTokenHasBeenSet = true; m_blockToken = std::forward<BlockTokenT>(value); }
+    template<typename BlockTokenT = Aws::String>
+    Block& WithBlockToken(BlockTokenT&& value) { SetBlockToken(std::forward<BlockTokenT>(value)); return *this;}
+    ///@}
   private:
 
-    int m_blockIndex;
+    int m_blockIndex{0};
     bool m_blockIndexHasBeenSet = false;
 
     Aws::String m_blockToken;

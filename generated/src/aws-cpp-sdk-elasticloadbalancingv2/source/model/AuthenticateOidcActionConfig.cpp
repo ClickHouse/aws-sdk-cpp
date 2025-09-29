@@ -20,41 +20,7 @@ namespace ElasticLoadBalancingv2
 namespace Model
 {
 
-AuthenticateOidcActionConfig::AuthenticateOidcActionConfig() : 
-    m_issuerHasBeenSet(false),
-    m_authorizationEndpointHasBeenSet(false),
-    m_tokenEndpointHasBeenSet(false),
-    m_userInfoEndpointHasBeenSet(false),
-    m_clientIdHasBeenSet(false),
-    m_clientSecretHasBeenSet(false),
-    m_sessionCookieNameHasBeenSet(false),
-    m_scopeHasBeenSet(false),
-    m_sessionTimeout(0),
-    m_sessionTimeoutHasBeenSet(false),
-    m_authenticationRequestExtraParamsHasBeenSet(false),
-    m_onUnauthenticatedRequest(AuthenticateOidcActionConditionalBehaviorEnum::NOT_SET),
-    m_onUnauthenticatedRequestHasBeenSet(false),
-    m_useExistingClientSecret(false),
-    m_useExistingClientSecretHasBeenSet(false)
-{
-}
-
-AuthenticateOidcActionConfig::AuthenticateOidcActionConfig(const XmlNode& xmlNode) : 
-    m_issuerHasBeenSet(false),
-    m_authorizationEndpointHasBeenSet(false),
-    m_tokenEndpointHasBeenSet(false),
-    m_userInfoEndpointHasBeenSet(false),
-    m_clientIdHasBeenSet(false),
-    m_clientSecretHasBeenSet(false),
-    m_sessionCookieNameHasBeenSet(false),
-    m_scopeHasBeenSet(false),
-    m_sessionTimeout(0),
-    m_sessionTimeoutHasBeenSet(false),
-    m_authenticationRequestExtraParamsHasBeenSet(false),
-    m_onUnauthenticatedRequest(AuthenticateOidcActionConditionalBehaviorEnum::NOT_SET),
-    m_onUnauthenticatedRequestHasBeenSet(false),
-    m_useExistingClientSecret(false),
-    m_useExistingClientSecretHasBeenSet(false)
+AuthenticateOidcActionConfig::AuthenticateOidcActionConfig(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -124,6 +90,7 @@ AuthenticateOidcActionConfig& AuthenticateOidcActionConfig::operator =(const Xml
     if(!authenticationRequestExtraParamsNode.IsNull())
     {
       XmlNode authenticationRequestExtraParamsEntry = authenticationRequestExtraParamsNode.FirstChild("entry");
+      m_authenticationRequestExtraParamsHasBeenSet = !authenticationRequestExtraParamsEntry.IsNull();
       while(!authenticationRequestExtraParamsEntry.IsNull())
       {
         XmlNode keyNode = authenticationRequestExtraParamsEntry.FirstChild("key");
@@ -138,7 +105,7 @@ AuthenticateOidcActionConfig& AuthenticateOidcActionConfig::operator =(const Xml
     XmlNode onUnauthenticatedRequestNode = resultNode.FirstChild("OnUnauthenticatedRequest");
     if(!onUnauthenticatedRequestNode.IsNull())
     {
-      m_onUnauthenticatedRequest = AuthenticateOidcActionConditionalBehaviorEnumMapper::GetAuthenticateOidcActionConditionalBehaviorEnumForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(onUnauthenticatedRequestNode.GetText()).c_str()).c_str());
+      m_onUnauthenticatedRequest = AuthenticateOidcActionConditionalBehaviorEnumMapper::GetAuthenticateOidcActionConditionalBehaviorEnumForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(onUnauthenticatedRequestNode.GetText()).c_str()));
       m_onUnauthenticatedRequestHasBeenSet = true;
     }
     XmlNode useExistingClientSecretNode = resultNode.FirstChild("UseExistingClientSecret");
@@ -214,7 +181,7 @@ void AuthenticateOidcActionConfig::OutputToStream(Aws::OStream& oStream, const c
 
   if(m_onUnauthenticatedRequestHasBeenSet)
   {
-      oStream << location << index << locationValue << ".OnUnauthenticatedRequest=" << AuthenticateOidcActionConditionalBehaviorEnumMapper::GetNameForAuthenticateOidcActionConditionalBehaviorEnum(m_onUnauthenticatedRequest) << "&";
+      oStream << location << index << locationValue << ".OnUnauthenticatedRequest=" << StringUtils::URLEncode(AuthenticateOidcActionConditionalBehaviorEnumMapper::GetNameForAuthenticateOidcActionConditionalBehaviorEnum(m_onUnauthenticatedRequest)) << "&";
   }
 
   if(m_useExistingClientSecretHasBeenSet)
@@ -267,17 +234,16 @@ void AuthenticateOidcActionConfig::OutputToStream(Aws::OStream& oStream, const c
       unsigned authenticationRequestExtraParamsIdx = 1;
       for(auto& item : m_authenticationRequestExtraParams)
       {
-        oStream << location << ".AuthenticationRequestExtraParams.entry."  << authenticationRequestExtraParamsIdx << ".key="
+        oStream << location << ".AuthenticationRequestExtraParams.entry." << authenticationRequestExtraParamsIdx << ".key="
             << StringUtils::URLEncode(item.first.c_str()) << "&";
-        oStream << location <<  ".AuthenticationRequestExtraParams.entry." << authenticationRequestExtraParamsIdx << ".value="
+        oStream << location << ".AuthenticationRequestExtraParams.entry." << authenticationRequestExtraParamsIdx << ".value="
             << StringUtils::URLEncode(item.second.c_str()) << "&";
         authenticationRequestExtraParamsIdx++;
       }
-
   }
   if(m_onUnauthenticatedRequestHasBeenSet)
   {
-      oStream << location << ".OnUnauthenticatedRequest=" << AuthenticateOidcActionConditionalBehaviorEnumMapper::GetNameForAuthenticateOidcActionConditionalBehaviorEnum(m_onUnauthenticatedRequest) << "&";
+      oStream << location << ".OnUnauthenticatedRequest=" << StringUtils::URLEncode(AuthenticateOidcActionConditionalBehaviorEnumMapper::GetNameForAuthenticateOidcActionConditionalBehaviorEnum(m_onUnauthenticatedRequest)) << "&";
   }
   if(m_useExistingClientSecretHasBeenSet)
   {

@@ -18,15 +18,7 @@ namespace AmplifyUIBuilder
 namespace Model
 {
 
-FormInputValuePropertyBindingProperties::FormInputValuePropertyBindingProperties() : 
-    m_propertyHasBeenSet(false),
-    m_fieldHasBeenSet(false)
-{
-}
-
-FormInputValuePropertyBindingProperties::FormInputValuePropertyBindingProperties(JsonView jsonValue) : 
-    m_propertyHasBeenSet(false),
-    m_fieldHasBeenSet(false)
+FormInputValuePropertyBindingProperties::FormInputValuePropertyBindingProperties(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ FormInputValuePropertyBindingProperties& FormInputValuePropertyBindingProperties
   if(jsonValue.ValueExists("property"))
   {
     m_property = jsonValue.GetString("property");
-
     m_propertyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("field"))
   {
     m_field = jsonValue.GetString("field");
-
     m_fieldHasBeenSet = true;
   }
-
   return *this;
 }
 

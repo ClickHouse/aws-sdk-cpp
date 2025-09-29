@@ -32,57 +32,26 @@ namespace Model
   class EdgeDeploymentConfig
   {
   public:
-    AWS_SAGEMAKER_API EdgeDeploymentConfig();
+    AWS_SAGEMAKER_API EdgeDeploymentConfig() = default;
     AWS_SAGEMAKER_API EdgeDeploymentConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API EdgeDeploymentConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Toggle that determines whether to rollback to previous configuration if the
      * current deployment fails. By default this is turned on. You may turn this off if
      * you want to investigate the errors yourself.</p>
      */
-    inline const FailureHandlingPolicy& GetFailureHandlingPolicy() const{ return m_failureHandlingPolicy; }
-
-    /**
-     * <p>Toggle that determines whether to rollback to previous configuration if the
-     * current deployment fails. By default this is turned on. You may turn this off if
-     * you want to investigate the errors yourself.</p>
-     */
+    inline FailureHandlingPolicy GetFailureHandlingPolicy() const { return m_failureHandlingPolicy; }
     inline bool FailureHandlingPolicyHasBeenSet() const { return m_failureHandlingPolicyHasBeenSet; }
-
-    /**
-     * <p>Toggle that determines whether to rollback to previous configuration if the
-     * current deployment fails. By default this is turned on. You may turn this off if
-     * you want to investigate the errors yourself.</p>
-     */
-    inline void SetFailureHandlingPolicy(const FailureHandlingPolicy& value) { m_failureHandlingPolicyHasBeenSet = true; m_failureHandlingPolicy = value; }
-
-    /**
-     * <p>Toggle that determines whether to rollback to previous configuration if the
-     * current deployment fails. By default this is turned on. You may turn this off if
-     * you want to investigate the errors yourself.</p>
-     */
-    inline void SetFailureHandlingPolicy(FailureHandlingPolicy&& value) { m_failureHandlingPolicyHasBeenSet = true; m_failureHandlingPolicy = std::move(value); }
-
-    /**
-     * <p>Toggle that determines whether to rollback to previous configuration if the
-     * current deployment fails. By default this is turned on. You may turn this off if
-     * you want to investigate the errors yourself.</p>
-     */
-    inline EdgeDeploymentConfig& WithFailureHandlingPolicy(const FailureHandlingPolicy& value) { SetFailureHandlingPolicy(value); return *this;}
-
-    /**
-     * <p>Toggle that determines whether to rollback to previous configuration if the
-     * current deployment fails. By default this is turned on. You may turn this off if
-     * you want to investigate the errors yourself.</p>
-     */
-    inline EdgeDeploymentConfig& WithFailureHandlingPolicy(FailureHandlingPolicy&& value) { SetFailureHandlingPolicy(std::move(value)); return *this;}
-
+    inline void SetFailureHandlingPolicy(FailureHandlingPolicy value) { m_failureHandlingPolicyHasBeenSet = true; m_failureHandlingPolicy = value; }
+    inline EdgeDeploymentConfig& WithFailureHandlingPolicy(FailureHandlingPolicy value) { SetFailureHandlingPolicy(value); return *this;}
+    ///@}
   private:
 
-    FailureHandlingPolicy m_failureHandlingPolicy;
+    FailureHandlingPolicy m_failureHandlingPolicy{FailureHandlingPolicy::NOT_SET};
     bool m_failureHandlingPolicyHasBeenSet = false;
   };
 

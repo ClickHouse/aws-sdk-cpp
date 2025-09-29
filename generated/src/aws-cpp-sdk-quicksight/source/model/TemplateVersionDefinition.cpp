@@ -18,27 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-TemplateVersionDefinition::TemplateVersionDefinition() : 
-    m_dataSetConfigurationsHasBeenSet(false),
-    m_sheetsHasBeenSet(false),
-    m_calculatedFieldsHasBeenSet(false),
-    m_parameterDeclarationsHasBeenSet(false),
-    m_filterGroupsHasBeenSet(false),
-    m_columnConfigurationsHasBeenSet(false),
-    m_analysisDefaultsHasBeenSet(false),
-    m_optionsHasBeenSet(false)
-{
-}
-
-TemplateVersionDefinition::TemplateVersionDefinition(JsonView jsonValue) : 
-    m_dataSetConfigurationsHasBeenSet(false),
-    m_sheetsHasBeenSet(false),
-    m_calculatedFieldsHasBeenSet(false),
-    m_parameterDeclarationsHasBeenSet(false),
-    m_filterGroupsHasBeenSet(false),
-    m_columnConfigurationsHasBeenSet(false),
-    m_analysisDefaultsHasBeenSet(false),
-    m_optionsHasBeenSet(false)
+TemplateVersionDefinition::TemplateVersionDefinition(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -54,7 +34,6 @@ TemplateVersionDefinition& TemplateVersionDefinition::operator =(JsonView jsonVa
     }
     m_dataSetConfigurationsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Sheets"))
   {
     Aws::Utils::Array<JsonView> sheetsJsonList = jsonValue.GetArray("Sheets");
@@ -64,7 +43,6 @@ TemplateVersionDefinition& TemplateVersionDefinition::operator =(JsonView jsonVa
     }
     m_sheetsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CalculatedFields"))
   {
     Aws::Utils::Array<JsonView> calculatedFieldsJsonList = jsonValue.GetArray("CalculatedFields");
@@ -74,7 +52,6 @@ TemplateVersionDefinition& TemplateVersionDefinition::operator =(JsonView jsonVa
     }
     m_calculatedFieldsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ParameterDeclarations"))
   {
     Aws::Utils::Array<JsonView> parameterDeclarationsJsonList = jsonValue.GetArray("ParameterDeclarations");
@@ -84,7 +61,6 @@ TemplateVersionDefinition& TemplateVersionDefinition::operator =(JsonView jsonVa
     }
     m_parameterDeclarationsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FilterGroups"))
   {
     Aws::Utils::Array<JsonView> filterGroupsJsonList = jsonValue.GetArray("FilterGroups");
@@ -94,7 +70,6 @@ TemplateVersionDefinition& TemplateVersionDefinition::operator =(JsonView jsonVa
     }
     m_filterGroupsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ColumnConfigurations"))
   {
     Aws::Utils::Array<JsonView> columnConfigurationsJsonList = jsonValue.GetArray("ColumnConfigurations");
@@ -104,21 +79,30 @@ TemplateVersionDefinition& TemplateVersionDefinition::operator =(JsonView jsonVa
     }
     m_columnConfigurationsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AnalysisDefaults"))
   {
     m_analysisDefaults = jsonValue.GetObject("AnalysisDefaults");
-
     m_analysisDefaultsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Options"))
   {
     m_options = jsonValue.GetObject("Options");
-
     m_optionsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("QueryExecutionOptions"))
+  {
+    m_queryExecutionOptions = jsonValue.GetObject("QueryExecutionOptions");
+    m_queryExecutionOptionsHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("StaticFiles"))
+  {
+    Aws::Utils::Array<JsonView> staticFilesJsonList = jsonValue.GetArray("StaticFiles");
+    for(unsigned staticFilesIndex = 0; staticFilesIndex < staticFilesJsonList.GetLength(); ++staticFilesIndex)
+    {
+      m_staticFiles.push_back(staticFilesJsonList[staticFilesIndex].AsObject());
+    }
+    m_staticFilesHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -201,6 +185,23 @@ JsonValue TemplateVersionDefinition::Jsonize() const
   if(m_optionsHasBeenSet)
   {
    payload.WithObject("Options", m_options.Jsonize());
+
+  }
+
+  if(m_queryExecutionOptionsHasBeenSet)
+  {
+   payload.WithObject("QueryExecutionOptions", m_queryExecutionOptions.Jsonize());
+
+  }
+
+  if(m_staticFilesHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> staticFilesJsonList(m_staticFiles.size());
+   for(unsigned staticFilesIndex = 0; staticFilesIndex < staticFilesJsonList.GetLength(); ++staticFilesIndex)
+   {
+     staticFilesJsonList[staticFilesIndex].AsObject(m_staticFiles[staticFilesIndex].Jsonize());
+   }
+   payload.WithArray("StaticFiles", std::move(staticFilesJsonList));
 
   }
 

@@ -32,7 +32,7 @@ namespace Model
   class DestinationOptionsRequest
   {
   public:
-    AWS_EC2_API DestinationOptionsRequest();
+    AWS_EC2_API DestinationOptionsRequest() = default;
     AWS_EC2_API DestinationOptionsRequest(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API DestinationOptionsRequest& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,95 +40,46 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The format for the flow log. The default is <code>plain-text</code>.</p>
      */
-    inline const DestinationFileFormat& GetFileFormat() const{ return m_fileFormat; }
-
-    /**
-     * <p>The format for the flow log. The default is <code>plain-text</code>.</p>
-     */
+    inline DestinationFileFormat GetFileFormat() const { return m_fileFormat; }
     inline bool FileFormatHasBeenSet() const { return m_fileFormatHasBeenSet; }
+    inline void SetFileFormat(DestinationFileFormat value) { m_fileFormatHasBeenSet = true; m_fileFormat = value; }
+    inline DestinationOptionsRequest& WithFileFormat(DestinationFileFormat value) { SetFileFormat(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The format for the flow log. The default is <code>plain-text</code>.</p>
-     */
-    inline void SetFileFormat(const DestinationFileFormat& value) { m_fileFormatHasBeenSet = true; m_fileFormat = value; }
-
-    /**
-     * <p>The format for the flow log. The default is <code>plain-text</code>.</p>
-     */
-    inline void SetFileFormat(DestinationFileFormat&& value) { m_fileFormatHasBeenSet = true; m_fileFormat = std::move(value); }
-
-    /**
-     * <p>The format for the flow log. The default is <code>plain-text</code>.</p>
-     */
-    inline DestinationOptionsRequest& WithFileFormat(const DestinationFileFormat& value) { SetFileFormat(value); return *this;}
-
-    /**
-     * <p>The format for the flow log. The default is <code>plain-text</code>.</p>
-     */
-    inline DestinationOptionsRequest& WithFileFormat(DestinationFileFormat&& value) { SetFileFormat(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Indicates whether to use Hive-compatible prefixes for flow logs stored in
      * Amazon S3. The default is <code>false</code>.</p>
      */
-    inline bool GetHiveCompatiblePartitions() const{ return m_hiveCompatiblePartitions; }
-
-    /**
-     * <p>Indicates whether to use Hive-compatible prefixes for flow logs stored in
-     * Amazon S3. The default is <code>false</code>.</p>
-     */
+    inline bool GetHiveCompatiblePartitions() const { return m_hiveCompatiblePartitions; }
     inline bool HiveCompatiblePartitionsHasBeenSet() const { return m_hiveCompatiblePartitionsHasBeenSet; }
-
-    /**
-     * <p>Indicates whether to use Hive-compatible prefixes for flow logs stored in
-     * Amazon S3. The default is <code>false</code>.</p>
-     */
     inline void SetHiveCompatiblePartitions(bool value) { m_hiveCompatiblePartitionsHasBeenSet = true; m_hiveCompatiblePartitions = value; }
-
-    /**
-     * <p>Indicates whether to use Hive-compatible prefixes for flow logs stored in
-     * Amazon S3. The default is <code>false</code>.</p>
-     */
     inline DestinationOptionsRequest& WithHiveCompatiblePartitions(bool value) { SetHiveCompatiblePartitions(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Indicates whether to partition the flow log per hour. This reduces the cost
      * and response time for queries. The default is <code>false</code>.</p>
      */
-    inline bool GetPerHourPartition() const{ return m_perHourPartition; }
-
-    /**
-     * <p>Indicates whether to partition the flow log per hour. This reduces the cost
-     * and response time for queries. The default is <code>false</code>.</p>
-     */
+    inline bool GetPerHourPartition() const { return m_perHourPartition; }
     inline bool PerHourPartitionHasBeenSet() const { return m_perHourPartitionHasBeenSet; }
-
-    /**
-     * <p>Indicates whether to partition the flow log per hour. This reduces the cost
-     * and response time for queries. The default is <code>false</code>.</p>
-     */
     inline void SetPerHourPartition(bool value) { m_perHourPartitionHasBeenSet = true; m_perHourPartition = value; }
-
-    /**
-     * <p>Indicates whether to partition the flow log per hour. This reduces the cost
-     * and response time for queries. The default is <code>false</code>.</p>
-     */
     inline DestinationOptionsRequest& WithPerHourPartition(bool value) { SetPerHourPartition(value); return *this;}
-
+    ///@}
   private:
 
-    DestinationFileFormat m_fileFormat;
+    DestinationFileFormat m_fileFormat{DestinationFileFormat::NOT_SET};
     bool m_fileFormatHasBeenSet = false;
 
-    bool m_hiveCompatiblePartitions;
+    bool m_hiveCompatiblePartitions{false};
     bool m_hiveCompatiblePartitionsHasBeenSet = false;
 
-    bool m_perHourPartition;
+    bool m_perHourPartition{false};
     bool m_perHourPartitionHasBeenSet = false;
   };
 

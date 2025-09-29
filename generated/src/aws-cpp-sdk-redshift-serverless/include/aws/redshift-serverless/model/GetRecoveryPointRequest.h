@@ -21,7 +21,7 @@ namespace Model
   class GetRecoveryPointRequest : public RedshiftServerlessRequest
   {
   public:
-    AWS_REDSHIFTSERVERLESS_API GetRecoveryPointRequest();
+    AWS_REDSHIFTSERVERLESS_API GetRecoveryPointRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_REDSHIFTSERVERLESS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The unique identifier of the recovery point to return information for.</p>
      */
-    inline const Aws::String& GetRecoveryPointId() const{ return m_recoveryPointId; }
-
-    /**
-     * <p>The unique identifier of the recovery point to return information for.</p>
-     */
+    inline const Aws::String& GetRecoveryPointId() const { return m_recoveryPointId; }
     inline bool RecoveryPointIdHasBeenSet() const { return m_recoveryPointIdHasBeenSet; }
-
-    /**
-     * <p>The unique identifier of the recovery point to return information for.</p>
-     */
-    inline void SetRecoveryPointId(const Aws::String& value) { m_recoveryPointIdHasBeenSet = true; m_recoveryPointId = value; }
-
-    /**
-     * <p>The unique identifier of the recovery point to return information for.</p>
-     */
-    inline void SetRecoveryPointId(Aws::String&& value) { m_recoveryPointIdHasBeenSet = true; m_recoveryPointId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the recovery point to return information for.</p>
-     */
-    inline void SetRecoveryPointId(const char* value) { m_recoveryPointIdHasBeenSet = true; m_recoveryPointId.assign(value); }
-
-    /**
-     * <p>The unique identifier of the recovery point to return information for.</p>
-     */
-    inline GetRecoveryPointRequest& WithRecoveryPointId(const Aws::String& value) { SetRecoveryPointId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the recovery point to return information for.</p>
-     */
-    inline GetRecoveryPointRequest& WithRecoveryPointId(Aws::String&& value) { SetRecoveryPointId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the recovery point to return information for.</p>
-     */
-    inline GetRecoveryPointRequest& WithRecoveryPointId(const char* value) { SetRecoveryPointId(value); return *this;}
-
+    template<typename RecoveryPointIdT = Aws::String>
+    void SetRecoveryPointId(RecoveryPointIdT&& value) { m_recoveryPointIdHasBeenSet = true; m_recoveryPointId = std::forward<RecoveryPointIdT>(value); }
+    template<typename RecoveryPointIdT = Aws::String>
+    GetRecoveryPointRequest& WithRecoveryPointId(RecoveryPointIdT&& value) { SetRecoveryPointId(std::forward<RecoveryPointIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_recoveryPointId;

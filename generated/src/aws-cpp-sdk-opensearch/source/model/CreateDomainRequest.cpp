@@ -12,30 +12,6 @@ using namespace Aws::OpenSearchService::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateDomainRequest::CreateDomainRequest() : 
-    m_domainNameHasBeenSet(false),
-    m_engineVersionHasBeenSet(false),
-    m_clusterConfigHasBeenSet(false),
-    m_eBSOptionsHasBeenSet(false),
-    m_accessPoliciesHasBeenSet(false),
-    m_iPAddressType(IPAddressType::NOT_SET),
-    m_iPAddressTypeHasBeenSet(false),
-    m_snapshotOptionsHasBeenSet(false),
-    m_vPCOptionsHasBeenSet(false),
-    m_cognitoOptionsHasBeenSet(false),
-    m_encryptionAtRestOptionsHasBeenSet(false),
-    m_nodeToNodeEncryptionOptionsHasBeenSet(false),
-    m_advancedOptionsHasBeenSet(false),
-    m_logPublishingOptionsHasBeenSet(false),
-    m_domainEndpointOptionsHasBeenSet(false),
-    m_advancedSecurityOptionsHasBeenSet(false),
-    m_tagListHasBeenSet(false),
-    m_autoTuneOptionsHasBeenSet(false),
-    m_offPeakWindowOptionsHasBeenSet(false),
-    m_softwareUpdateOptionsHasBeenSet(false)
-{
-}
-
 Aws::String CreateDomainRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -139,6 +115,12 @@ Aws::String CreateDomainRequest::SerializePayload() const
 
   }
 
+  if(m_identityCenterOptionsHasBeenSet)
+  {
+   payload.WithObject("IdentityCenterOptions", m_identityCenterOptions.Jsonize());
+
+  }
+
   if(m_tagListHasBeenSet)
   {
    Aws::Utils::Array<JsonValue> tagListJsonList(m_tagList.size());
@@ -165,6 +147,12 @@ Aws::String CreateDomainRequest::SerializePayload() const
   if(m_softwareUpdateOptionsHasBeenSet)
   {
    payload.WithObject("SoftwareUpdateOptions", m_softwareUpdateOptions.Jsonize());
+
+  }
+
+  if(m_aIMLOptionsHasBeenSet)
+  {
+   payload.WithObject("AIMLOptions", m_aIMLOptions.Jsonize());
 
   }
 

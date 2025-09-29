@@ -21,7 +21,7 @@ namespace Model
   class GetPullRequestRequest : public CodeCommitRequest
   {
   public:
-    AWS_CODECOMMIT_API GetPullRequestRequest();
+    AWS_CODECOMMIT_API GetPullRequestRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,54 +34,18 @@ namespace Model
     AWS_CODECOMMIT_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The system-generated ID of the pull request. To get this ID, use
      * <a>ListPullRequests</a>.</p>
      */
-    inline const Aws::String& GetPullRequestId() const{ return m_pullRequestId; }
-
-    /**
-     * <p>The system-generated ID of the pull request. To get this ID, use
-     * <a>ListPullRequests</a>.</p>
-     */
+    inline const Aws::String& GetPullRequestId() const { return m_pullRequestId; }
     inline bool PullRequestIdHasBeenSet() const { return m_pullRequestIdHasBeenSet; }
-
-    /**
-     * <p>The system-generated ID of the pull request. To get this ID, use
-     * <a>ListPullRequests</a>.</p>
-     */
-    inline void SetPullRequestId(const Aws::String& value) { m_pullRequestIdHasBeenSet = true; m_pullRequestId = value; }
-
-    /**
-     * <p>The system-generated ID of the pull request. To get this ID, use
-     * <a>ListPullRequests</a>.</p>
-     */
-    inline void SetPullRequestId(Aws::String&& value) { m_pullRequestIdHasBeenSet = true; m_pullRequestId = std::move(value); }
-
-    /**
-     * <p>The system-generated ID of the pull request. To get this ID, use
-     * <a>ListPullRequests</a>.</p>
-     */
-    inline void SetPullRequestId(const char* value) { m_pullRequestIdHasBeenSet = true; m_pullRequestId.assign(value); }
-
-    /**
-     * <p>The system-generated ID of the pull request. To get this ID, use
-     * <a>ListPullRequests</a>.</p>
-     */
-    inline GetPullRequestRequest& WithPullRequestId(const Aws::String& value) { SetPullRequestId(value); return *this;}
-
-    /**
-     * <p>The system-generated ID of the pull request. To get this ID, use
-     * <a>ListPullRequests</a>.</p>
-     */
-    inline GetPullRequestRequest& WithPullRequestId(Aws::String&& value) { SetPullRequestId(std::move(value)); return *this;}
-
-    /**
-     * <p>The system-generated ID of the pull request. To get this ID, use
-     * <a>ListPullRequests</a>.</p>
-     */
-    inline GetPullRequestRequest& WithPullRequestId(const char* value) { SetPullRequestId(value); return *this;}
-
+    template<typename PullRequestIdT = Aws::String>
+    void SetPullRequestId(PullRequestIdT&& value) { m_pullRequestIdHasBeenSet = true; m_pullRequestId = std::forward<PullRequestIdT>(value); }
+    template<typename PullRequestIdT = Aws::String>
+    GetPullRequestRequest& WithPullRequestId(PullRequestIdT&& value) { SetPullRequestId(std::forward<PullRequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_pullRequestId;

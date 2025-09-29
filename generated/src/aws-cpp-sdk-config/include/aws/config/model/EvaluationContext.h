@@ -34,52 +34,23 @@ namespace Model
   class EvaluationContext
   {
   public:
-    AWS_CONFIGSERVICE_API EvaluationContext();
+    AWS_CONFIGSERVICE_API EvaluationContext() = default;
     AWS_CONFIGSERVICE_API EvaluationContext(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONFIGSERVICE_API EvaluationContext& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONFIGSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A unique EvaluationContextIdentifier ID for an EvaluationContext.</p>
      */
-    inline const Aws::String& GetEvaluationContextIdentifier() const{ return m_evaluationContextIdentifier; }
-
-    /**
-     * <p>A unique EvaluationContextIdentifier ID for an EvaluationContext.</p>
-     */
+    inline const Aws::String& GetEvaluationContextIdentifier() const { return m_evaluationContextIdentifier; }
     inline bool EvaluationContextIdentifierHasBeenSet() const { return m_evaluationContextIdentifierHasBeenSet; }
-
-    /**
-     * <p>A unique EvaluationContextIdentifier ID for an EvaluationContext.</p>
-     */
-    inline void SetEvaluationContextIdentifier(const Aws::String& value) { m_evaluationContextIdentifierHasBeenSet = true; m_evaluationContextIdentifier = value; }
-
-    /**
-     * <p>A unique EvaluationContextIdentifier ID for an EvaluationContext.</p>
-     */
-    inline void SetEvaluationContextIdentifier(Aws::String&& value) { m_evaluationContextIdentifierHasBeenSet = true; m_evaluationContextIdentifier = std::move(value); }
-
-    /**
-     * <p>A unique EvaluationContextIdentifier ID for an EvaluationContext.</p>
-     */
-    inline void SetEvaluationContextIdentifier(const char* value) { m_evaluationContextIdentifierHasBeenSet = true; m_evaluationContextIdentifier.assign(value); }
-
-    /**
-     * <p>A unique EvaluationContextIdentifier ID for an EvaluationContext.</p>
-     */
-    inline EvaluationContext& WithEvaluationContextIdentifier(const Aws::String& value) { SetEvaluationContextIdentifier(value); return *this;}
-
-    /**
-     * <p>A unique EvaluationContextIdentifier ID for an EvaluationContext.</p>
-     */
-    inline EvaluationContext& WithEvaluationContextIdentifier(Aws::String&& value) { SetEvaluationContextIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique EvaluationContextIdentifier ID for an EvaluationContext.</p>
-     */
-    inline EvaluationContext& WithEvaluationContextIdentifier(const char* value) { SetEvaluationContextIdentifier(value); return *this;}
-
+    template<typename EvaluationContextIdentifierT = Aws::String>
+    void SetEvaluationContextIdentifier(EvaluationContextIdentifierT&& value) { m_evaluationContextIdentifierHasBeenSet = true; m_evaluationContextIdentifier = std::forward<EvaluationContextIdentifierT>(value); }
+    template<typename EvaluationContextIdentifierT = Aws::String>
+    EvaluationContext& WithEvaluationContextIdentifier(EvaluationContextIdentifierT&& value) { SetEvaluationContextIdentifier(std::forward<EvaluationContextIdentifierT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_evaluationContextIdentifier;

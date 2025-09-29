@@ -9,6 +9,7 @@
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/ec2/model/IpamTier.h>
+#include <aws/ec2/model/IpamMeteredAccount.h>
 #include <aws/ec2/model/AddIpamOperatingRegion.h>
 #include <aws/ec2/model/RemoveIpamOperatingRegion.h>
 #include <utility>
@@ -25,7 +26,7 @@ namespace Model
   class ModifyIpamRequest : public EC2Request
   {
   public:
-    AWS_EC2_API ModifyIpamRequest();
+    AWS_EC2_API ModifyIpamRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -40,121 +41,44 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>A check for whether you have the required permissions for the action without
      * actually making the request and provides an error response. If you have the
      * required permissions, the error response is <code>DryRunOperation</code>.
      * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
      */
-    inline bool GetDryRun() const{ return m_dryRun; }
-
-    /**
-     * <p>A check for whether you have the required permissions for the action without
-     * actually making the request and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
+    inline bool GetDryRun() const { return m_dryRun; }
     inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
-
-    /**
-     * <p>A check for whether you have the required permissions for the action without
-     * actually making the request and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
-
-    /**
-     * <p>A check for whether you have the required permissions for the action without
-     * actually making the request and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline ModifyIpamRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The ID of the IPAM you want to modify.</p>
      */
-    inline const Aws::String& GetIpamId() const{ return m_ipamId; }
-
-    /**
-     * <p>The ID of the IPAM you want to modify.</p>
-     */
+    inline const Aws::String& GetIpamId() const { return m_ipamId; }
     inline bool IpamIdHasBeenSet() const { return m_ipamIdHasBeenSet; }
+    template<typename IpamIdT = Aws::String>
+    void SetIpamId(IpamIdT&& value) { m_ipamIdHasBeenSet = true; m_ipamId = std::forward<IpamIdT>(value); }
+    template<typename IpamIdT = Aws::String>
+    ModifyIpamRequest& WithIpamId(IpamIdT&& value) { SetIpamId(std::forward<IpamIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the IPAM you want to modify.</p>
-     */
-    inline void SetIpamId(const Aws::String& value) { m_ipamIdHasBeenSet = true; m_ipamId = value; }
-
-    /**
-     * <p>The ID of the IPAM you want to modify.</p>
-     */
-    inline void SetIpamId(Aws::String&& value) { m_ipamIdHasBeenSet = true; m_ipamId = std::move(value); }
-
-    /**
-     * <p>The ID of the IPAM you want to modify.</p>
-     */
-    inline void SetIpamId(const char* value) { m_ipamIdHasBeenSet = true; m_ipamId.assign(value); }
-
-    /**
-     * <p>The ID of the IPAM you want to modify.</p>
-     */
-    inline ModifyIpamRequest& WithIpamId(const Aws::String& value) { SetIpamId(value); return *this;}
-
-    /**
-     * <p>The ID of the IPAM you want to modify.</p>
-     */
-    inline ModifyIpamRequest& WithIpamId(Aws::String&& value) { SetIpamId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the IPAM you want to modify.</p>
-     */
-    inline ModifyIpamRequest& WithIpamId(const char* value) { SetIpamId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The description of the IPAM you want to modify.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The description of the IPAM you want to modify.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    ModifyIpamRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description of the IPAM you want to modify.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The description of the IPAM you want to modify.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The description of the IPAM you want to modify.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The description of the IPAM you want to modify.</p>
-     */
-    inline ModifyIpamRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description of the IPAM you want to modify.</p>
-     */
-    inline ModifyIpamRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the IPAM you want to modify.</p>
-     */
-    inline ModifyIpamRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Choose the operating Regions for the IPAM. Operating Regions are Amazon Web
      * Services Regions where the IPAM is allowed to manage IP address CIDRs. IPAM only
@@ -163,171 +87,74 @@ namespace Model
      * <a href="https://docs.aws.amazon.com/vpc/latest/ipam/create-ipam.html">Create an
      * IPAM</a> in the <i>Amazon VPC IPAM User Guide</i>.</p>
      */
-    inline const Aws::Vector<AddIpamOperatingRegion>& GetAddOperatingRegions() const{ return m_addOperatingRegions; }
-
-    /**
-     * <p>Choose the operating Regions for the IPAM. Operating Regions are Amazon Web
-     * Services Regions where the IPAM is allowed to manage IP address CIDRs. IPAM only
-     * discovers and monitors resources in the Amazon Web Services Regions you select
-     * as operating Regions.</p> <p>For more information about operating Regions, see
-     * <a href="https://docs.aws.amazon.com/vpc/latest/ipam/create-ipam.html">Create an
-     * IPAM</a> in the <i>Amazon VPC IPAM User Guide</i>.</p>
-     */
+    inline const Aws::Vector<AddIpamOperatingRegion>& GetAddOperatingRegions() const { return m_addOperatingRegions; }
     inline bool AddOperatingRegionsHasBeenSet() const { return m_addOperatingRegionsHasBeenSet; }
+    template<typename AddOperatingRegionsT = Aws::Vector<AddIpamOperatingRegion>>
+    void SetAddOperatingRegions(AddOperatingRegionsT&& value) { m_addOperatingRegionsHasBeenSet = true; m_addOperatingRegions = std::forward<AddOperatingRegionsT>(value); }
+    template<typename AddOperatingRegionsT = Aws::Vector<AddIpamOperatingRegion>>
+    ModifyIpamRequest& WithAddOperatingRegions(AddOperatingRegionsT&& value) { SetAddOperatingRegions(std::forward<AddOperatingRegionsT>(value)); return *this;}
+    template<typename AddOperatingRegionsT = AddIpamOperatingRegion>
+    ModifyIpamRequest& AddAddOperatingRegions(AddOperatingRegionsT&& value) { m_addOperatingRegionsHasBeenSet = true; m_addOperatingRegions.emplace_back(std::forward<AddOperatingRegionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Choose the operating Regions for the IPAM. Operating Regions are Amazon Web
-     * Services Regions where the IPAM is allowed to manage IP address CIDRs. IPAM only
-     * discovers and monitors resources in the Amazon Web Services Regions you select
-     * as operating Regions.</p> <p>For more information about operating Regions, see
-     * <a href="https://docs.aws.amazon.com/vpc/latest/ipam/create-ipam.html">Create an
-     * IPAM</a> in the <i>Amazon VPC IPAM User Guide</i>.</p>
-     */
-    inline void SetAddOperatingRegions(const Aws::Vector<AddIpamOperatingRegion>& value) { m_addOperatingRegionsHasBeenSet = true; m_addOperatingRegions = value; }
-
-    /**
-     * <p>Choose the operating Regions for the IPAM. Operating Regions are Amazon Web
-     * Services Regions where the IPAM is allowed to manage IP address CIDRs. IPAM only
-     * discovers and monitors resources in the Amazon Web Services Regions you select
-     * as operating Regions.</p> <p>For more information about operating Regions, see
-     * <a href="https://docs.aws.amazon.com/vpc/latest/ipam/create-ipam.html">Create an
-     * IPAM</a> in the <i>Amazon VPC IPAM User Guide</i>.</p>
-     */
-    inline void SetAddOperatingRegions(Aws::Vector<AddIpamOperatingRegion>&& value) { m_addOperatingRegionsHasBeenSet = true; m_addOperatingRegions = std::move(value); }
-
-    /**
-     * <p>Choose the operating Regions for the IPAM. Operating Regions are Amazon Web
-     * Services Regions where the IPAM is allowed to manage IP address CIDRs. IPAM only
-     * discovers and monitors resources in the Amazon Web Services Regions you select
-     * as operating Regions.</p> <p>For more information about operating Regions, see
-     * <a href="https://docs.aws.amazon.com/vpc/latest/ipam/create-ipam.html">Create an
-     * IPAM</a> in the <i>Amazon VPC IPAM User Guide</i>.</p>
-     */
-    inline ModifyIpamRequest& WithAddOperatingRegions(const Aws::Vector<AddIpamOperatingRegion>& value) { SetAddOperatingRegions(value); return *this;}
-
-    /**
-     * <p>Choose the operating Regions for the IPAM. Operating Regions are Amazon Web
-     * Services Regions where the IPAM is allowed to manage IP address CIDRs. IPAM only
-     * discovers and monitors resources in the Amazon Web Services Regions you select
-     * as operating Regions.</p> <p>For more information about operating Regions, see
-     * <a href="https://docs.aws.amazon.com/vpc/latest/ipam/create-ipam.html">Create an
-     * IPAM</a> in the <i>Amazon VPC IPAM User Guide</i>.</p>
-     */
-    inline ModifyIpamRequest& WithAddOperatingRegions(Aws::Vector<AddIpamOperatingRegion>&& value) { SetAddOperatingRegions(std::move(value)); return *this;}
-
-    /**
-     * <p>Choose the operating Regions for the IPAM. Operating Regions are Amazon Web
-     * Services Regions where the IPAM is allowed to manage IP address CIDRs. IPAM only
-     * discovers and monitors resources in the Amazon Web Services Regions you select
-     * as operating Regions.</p> <p>For more information about operating Regions, see
-     * <a href="https://docs.aws.amazon.com/vpc/latest/ipam/create-ipam.html">Create an
-     * IPAM</a> in the <i>Amazon VPC IPAM User Guide</i>.</p>
-     */
-    inline ModifyIpamRequest& AddAddOperatingRegions(const AddIpamOperatingRegion& value) { m_addOperatingRegionsHasBeenSet = true; m_addOperatingRegions.push_back(value); return *this; }
-
-    /**
-     * <p>Choose the operating Regions for the IPAM. Operating Regions are Amazon Web
-     * Services Regions where the IPAM is allowed to manage IP address CIDRs. IPAM only
-     * discovers and monitors resources in the Amazon Web Services Regions you select
-     * as operating Regions.</p> <p>For more information about operating Regions, see
-     * <a href="https://docs.aws.amazon.com/vpc/latest/ipam/create-ipam.html">Create an
-     * IPAM</a> in the <i>Amazon VPC IPAM User Guide</i>.</p>
-     */
-    inline ModifyIpamRequest& AddAddOperatingRegions(AddIpamOperatingRegion&& value) { m_addOperatingRegionsHasBeenSet = true; m_addOperatingRegions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The operating Regions to remove.</p>
      */
-    inline const Aws::Vector<RemoveIpamOperatingRegion>& GetRemoveOperatingRegions() const{ return m_removeOperatingRegions; }
-
-    /**
-     * <p>The operating Regions to remove.</p>
-     */
+    inline const Aws::Vector<RemoveIpamOperatingRegion>& GetRemoveOperatingRegions() const { return m_removeOperatingRegions; }
     inline bool RemoveOperatingRegionsHasBeenSet() const { return m_removeOperatingRegionsHasBeenSet; }
+    template<typename RemoveOperatingRegionsT = Aws::Vector<RemoveIpamOperatingRegion>>
+    void SetRemoveOperatingRegions(RemoveOperatingRegionsT&& value) { m_removeOperatingRegionsHasBeenSet = true; m_removeOperatingRegions = std::forward<RemoveOperatingRegionsT>(value); }
+    template<typename RemoveOperatingRegionsT = Aws::Vector<RemoveIpamOperatingRegion>>
+    ModifyIpamRequest& WithRemoveOperatingRegions(RemoveOperatingRegionsT&& value) { SetRemoveOperatingRegions(std::forward<RemoveOperatingRegionsT>(value)); return *this;}
+    template<typename RemoveOperatingRegionsT = RemoveIpamOperatingRegion>
+    ModifyIpamRequest& AddRemoveOperatingRegions(RemoveOperatingRegionsT&& value) { m_removeOperatingRegionsHasBeenSet = true; m_removeOperatingRegions.emplace_back(std::forward<RemoveOperatingRegionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The operating Regions to remove.</p>
-     */
-    inline void SetRemoveOperatingRegions(const Aws::Vector<RemoveIpamOperatingRegion>& value) { m_removeOperatingRegionsHasBeenSet = true; m_removeOperatingRegions = value; }
-
-    /**
-     * <p>The operating Regions to remove.</p>
-     */
-    inline void SetRemoveOperatingRegions(Aws::Vector<RemoveIpamOperatingRegion>&& value) { m_removeOperatingRegionsHasBeenSet = true; m_removeOperatingRegions = std::move(value); }
-
-    /**
-     * <p>The operating Regions to remove.</p>
-     */
-    inline ModifyIpamRequest& WithRemoveOperatingRegions(const Aws::Vector<RemoveIpamOperatingRegion>& value) { SetRemoveOperatingRegions(value); return *this;}
-
-    /**
-     * <p>The operating Regions to remove.</p>
-     */
-    inline ModifyIpamRequest& WithRemoveOperatingRegions(Aws::Vector<RemoveIpamOperatingRegion>&& value) { SetRemoveOperatingRegions(std::move(value)); return *this;}
-
-    /**
-     * <p>The operating Regions to remove.</p>
-     */
-    inline ModifyIpamRequest& AddRemoveOperatingRegions(const RemoveIpamOperatingRegion& value) { m_removeOperatingRegionsHasBeenSet = true; m_removeOperatingRegions.push_back(value); return *this; }
-
-    /**
-     * <p>The operating Regions to remove.</p>
-     */
-    inline ModifyIpamRequest& AddRemoveOperatingRegions(RemoveIpamOperatingRegion&& value) { m_removeOperatingRegionsHasBeenSet = true; m_removeOperatingRegions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>IPAM is offered in a Free Tier and an Advanced Tier. For more information
      * about the features available in each tier and the costs associated with the
      * tiers, see <a href="http://aws.amazon.com/vpc/pricing/">Amazon VPC pricing &gt;
      * IPAM tab</a>.</p>
      */
-    inline const IpamTier& GetTier() const{ return m_tier; }
-
-    /**
-     * <p>IPAM is offered in a Free Tier and an Advanced Tier. For more information
-     * about the features available in each tier and the costs associated with the
-     * tiers, see <a href="http://aws.amazon.com/vpc/pricing/">Amazon VPC pricing &gt;
-     * IPAM tab</a>.</p>
-     */
+    inline IpamTier GetTier() const { return m_tier; }
     inline bool TierHasBeenSet() const { return m_tierHasBeenSet; }
+    inline void SetTier(IpamTier value) { m_tierHasBeenSet = true; m_tier = value; }
+    inline ModifyIpamRequest& WithTier(IpamTier value) { SetTier(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>IPAM is offered in a Free Tier and an Advanced Tier. For more information
-     * about the features available in each tier and the costs associated with the
-     * tiers, see <a href="http://aws.amazon.com/vpc/pricing/">Amazon VPC pricing &gt;
-     * IPAM tab</a>.</p>
+     * <p>Enable this option to use your own GUA ranges as private IPv6 addresses. This
+     * option is disabled by default.</p>
      */
-    inline void SetTier(const IpamTier& value) { m_tierHasBeenSet = true; m_tier = value; }
+    inline bool GetEnablePrivateGua() const { return m_enablePrivateGua; }
+    inline bool EnablePrivateGuaHasBeenSet() const { return m_enablePrivateGuaHasBeenSet; }
+    inline void SetEnablePrivateGua(bool value) { m_enablePrivateGuaHasBeenSet = true; m_enablePrivateGua = value; }
+    inline ModifyIpamRequest& WithEnablePrivateGua(bool value) { SetEnablePrivateGua(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>IPAM is offered in a Free Tier and an Advanced Tier. For more information
-     * about the features available in each tier and the costs associated with the
-     * tiers, see <a href="http://aws.amazon.com/vpc/pricing/">Amazon VPC pricing &gt;
-     * IPAM tab</a>.</p>
+     * <p>A metered account is an Amazon Web Services account that is charged for
+     * active IP addresses managed in IPAM. For more information, see <a
+     * href="https://docs.aws.amazon.com/vpc/latest/ipam/ipam-enable-cost-distro.html">Enable
+     * cost distribution</a> in the <i>Amazon VPC IPAM User Guide</i>.</p> <p>Possible
+     * values:</p> <ul> <li> <p> <code>ipam-owner</code> (default): The Amazon Web
+     * Services account which owns the IPAM is charged for all active IP addresses
+     * managed in IPAM.</p> </li> <li> <p> <code>resource-owner</code>: The Amazon Web
+     * Services account that owns the IP address is charged for the active IP
+     * address.</p> </li> </ul>
      */
-    inline void SetTier(IpamTier&& value) { m_tierHasBeenSet = true; m_tier = std::move(value); }
-
-    /**
-     * <p>IPAM is offered in a Free Tier and an Advanced Tier. For more information
-     * about the features available in each tier and the costs associated with the
-     * tiers, see <a href="http://aws.amazon.com/vpc/pricing/">Amazon VPC pricing &gt;
-     * IPAM tab</a>.</p>
-     */
-    inline ModifyIpamRequest& WithTier(const IpamTier& value) { SetTier(value); return *this;}
-
-    /**
-     * <p>IPAM is offered in a Free Tier and an Advanced Tier. For more information
-     * about the features available in each tier and the costs associated with the
-     * tiers, see <a href="http://aws.amazon.com/vpc/pricing/">Amazon VPC pricing &gt;
-     * IPAM tab</a>.</p>
-     */
-    inline ModifyIpamRequest& WithTier(IpamTier&& value) { SetTier(std::move(value)); return *this;}
-
+    inline IpamMeteredAccount GetMeteredAccount() const { return m_meteredAccount; }
+    inline bool MeteredAccountHasBeenSet() const { return m_meteredAccountHasBeenSet; }
+    inline void SetMeteredAccount(IpamMeteredAccount value) { m_meteredAccountHasBeenSet = true; m_meteredAccount = value; }
+    inline ModifyIpamRequest& WithMeteredAccount(IpamMeteredAccount value) { SetMeteredAccount(value); return *this;}
+    ///@}
   private:
 
-    bool m_dryRun;
+    bool m_dryRun{false};
     bool m_dryRunHasBeenSet = false;
 
     Aws::String m_ipamId;
@@ -342,8 +169,14 @@ namespace Model
     Aws::Vector<RemoveIpamOperatingRegion> m_removeOperatingRegions;
     bool m_removeOperatingRegionsHasBeenSet = false;
 
-    IpamTier m_tier;
+    IpamTier m_tier{IpamTier::NOT_SET};
     bool m_tierHasBeenSet = false;
+
+    bool m_enablePrivateGua{false};
+    bool m_enablePrivateGuaHasBeenSet = false;
+
+    IpamMeteredAccount m_meteredAccount{IpamMeteredAccount::NOT_SET};
+    bool m_meteredAccountHasBeenSet = false;
   };
 
 } // namespace Model

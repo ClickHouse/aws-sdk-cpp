@@ -18,13 +18,7 @@ namespace Connect
 namespace Model
 {
 
-RealTimeContactAnalysisTimeData::RealTimeContactAnalysisTimeData() : 
-    m_absoluteTimeHasBeenSet(false)
-{
-}
-
-RealTimeContactAnalysisTimeData::RealTimeContactAnalysisTimeData(JsonView jsonValue) : 
-    m_absoluteTimeHasBeenSet(false)
+RealTimeContactAnalysisTimeData::RealTimeContactAnalysisTimeData(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ RealTimeContactAnalysisTimeData& RealTimeContactAnalysisTimeData::operator =(Jso
   if(jsonValue.ValueExists("AbsoluteTime"))
   {
     m_absoluteTime = jsonValue.GetString("AbsoluteTime");
-
     m_absoluteTimeHasBeenSet = true;
   }
-
   return *this;
 }
 

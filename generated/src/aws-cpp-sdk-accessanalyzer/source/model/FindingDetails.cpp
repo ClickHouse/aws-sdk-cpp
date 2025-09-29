@@ -18,68 +18,55 @@ namespace AccessAnalyzer
 namespace Model
 {
 
-FindingDetails::FindingDetails() : 
-    m_externalAccessDetailsHasBeenSet(false),
-    m_unusedPermissionDetailsHasBeenSet(false),
-    m_unusedIamUserAccessKeyDetailsHasBeenSet(false),
-    m_unusedIamRoleDetailsHasBeenSet(false),
-    m_unusedIamUserPasswordDetailsHasBeenSet(false)
-{
-}
-
-FindingDetails::FindingDetails(JsonView jsonValue) : 
-    m_externalAccessDetailsHasBeenSet(false),
-    m_unusedPermissionDetailsHasBeenSet(false),
-    m_unusedIamUserAccessKeyDetailsHasBeenSet(false),
-    m_unusedIamRoleDetailsHasBeenSet(false),
-    m_unusedIamUserPasswordDetailsHasBeenSet(false)
+FindingDetails::FindingDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 FindingDetails& FindingDetails::operator =(JsonView jsonValue)
 {
+  if(jsonValue.ValueExists("internalAccessDetails"))
+  {
+    m_internalAccessDetails = jsonValue.GetObject("internalAccessDetails");
+    m_internalAccessDetailsHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("externalAccessDetails"))
   {
     m_externalAccessDetails = jsonValue.GetObject("externalAccessDetails");
-
     m_externalAccessDetailsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("unusedPermissionDetails"))
   {
     m_unusedPermissionDetails = jsonValue.GetObject("unusedPermissionDetails");
-
     m_unusedPermissionDetailsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("unusedIamUserAccessKeyDetails"))
   {
     m_unusedIamUserAccessKeyDetails = jsonValue.GetObject("unusedIamUserAccessKeyDetails");
-
     m_unusedIamUserAccessKeyDetailsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("unusedIamRoleDetails"))
   {
     m_unusedIamRoleDetails = jsonValue.GetObject("unusedIamRoleDetails");
-
     m_unusedIamRoleDetailsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("unusedIamUserPasswordDetails"))
   {
     m_unusedIamUserPasswordDetails = jsonValue.GetObject("unusedIamUserPasswordDetails");
-
     m_unusedIamUserPasswordDetailsHasBeenSet = true;
   }
-
   return *this;
 }
 
 JsonValue FindingDetails::Jsonize() const
 {
   JsonValue payload;
+
+  if(m_internalAccessDetailsHasBeenSet)
+  {
+   payload.WithObject("internalAccessDetails", m_internalAccessDetails.Jsonize());
+
+  }
 
   if(m_externalAccessDetailsHasBeenSet)
   {

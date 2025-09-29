@@ -21,7 +21,7 @@ namespace Model
   class CreateGlobalClusterRequest : public NeptuneRequest
   {
   public:
-    AWS_NEPTUNE_API CreateGlobalClusterRequest();
+    AWS_NEPTUNE_API CreateGlobalClusterRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,239 +36,77 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The cluster identifier of the new global database cluster.</p>
      */
-    inline const Aws::String& GetGlobalClusterIdentifier() const{ return m_globalClusterIdentifier; }
-
-    /**
-     * <p>The cluster identifier of the new global database cluster.</p>
-     */
+    inline const Aws::String& GetGlobalClusterIdentifier() const { return m_globalClusterIdentifier; }
     inline bool GlobalClusterIdentifierHasBeenSet() const { return m_globalClusterIdentifierHasBeenSet; }
+    template<typename GlobalClusterIdentifierT = Aws::String>
+    void SetGlobalClusterIdentifier(GlobalClusterIdentifierT&& value) { m_globalClusterIdentifierHasBeenSet = true; m_globalClusterIdentifier = std::forward<GlobalClusterIdentifierT>(value); }
+    template<typename GlobalClusterIdentifierT = Aws::String>
+    CreateGlobalClusterRequest& WithGlobalClusterIdentifier(GlobalClusterIdentifierT&& value) { SetGlobalClusterIdentifier(std::forward<GlobalClusterIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The cluster identifier of the new global database cluster.</p>
-     */
-    inline void SetGlobalClusterIdentifier(const Aws::String& value) { m_globalClusterIdentifierHasBeenSet = true; m_globalClusterIdentifier = value; }
-
-    /**
-     * <p>The cluster identifier of the new global database cluster.</p>
-     */
-    inline void SetGlobalClusterIdentifier(Aws::String&& value) { m_globalClusterIdentifierHasBeenSet = true; m_globalClusterIdentifier = std::move(value); }
-
-    /**
-     * <p>The cluster identifier of the new global database cluster.</p>
-     */
-    inline void SetGlobalClusterIdentifier(const char* value) { m_globalClusterIdentifierHasBeenSet = true; m_globalClusterIdentifier.assign(value); }
-
-    /**
-     * <p>The cluster identifier of the new global database cluster.</p>
-     */
-    inline CreateGlobalClusterRequest& WithGlobalClusterIdentifier(const Aws::String& value) { SetGlobalClusterIdentifier(value); return *this;}
-
-    /**
-     * <p>The cluster identifier of the new global database cluster.</p>
-     */
-    inline CreateGlobalClusterRequest& WithGlobalClusterIdentifier(Aws::String&& value) { SetGlobalClusterIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The cluster identifier of the new global database cluster.</p>
-     */
-    inline CreateGlobalClusterRequest& WithGlobalClusterIdentifier(const char* value) { SetGlobalClusterIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>(<i>Optional</i>) The Amazon Resource Name (ARN) of an existing Neptune DB
      * cluster to use as the primary cluster of the new global database.</p>
      */
-    inline const Aws::String& GetSourceDBClusterIdentifier() const{ return m_sourceDBClusterIdentifier; }
-
-    /**
-     * <p>(<i>Optional</i>) The Amazon Resource Name (ARN) of an existing Neptune DB
-     * cluster to use as the primary cluster of the new global database.</p>
-     */
+    inline const Aws::String& GetSourceDBClusterIdentifier() const { return m_sourceDBClusterIdentifier; }
     inline bool SourceDBClusterIdentifierHasBeenSet() const { return m_sourceDBClusterIdentifierHasBeenSet; }
+    template<typename SourceDBClusterIdentifierT = Aws::String>
+    void SetSourceDBClusterIdentifier(SourceDBClusterIdentifierT&& value) { m_sourceDBClusterIdentifierHasBeenSet = true; m_sourceDBClusterIdentifier = std::forward<SourceDBClusterIdentifierT>(value); }
+    template<typename SourceDBClusterIdentifierT = Aws::String>
+    CreateGlobalClusterRequest& WithSourceDBClusterIdentifier(SourceDBClusterIdentifierT&& value) { SetSourceDBClusterIdentifier(std::forward<SourceDBClusterIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>(<i>Optional</i>) The Amazon Resource Name (ARN) of an existing Neptune DB
-     * cluster to use as the primary cluster of the new global database.</p>
-     */
-    inline void SetSourceDBClusterIdentifier(const Aws::String& value) { m_sourceDBClusterIdentifierHasBeenSet = true; m_sourceDBClusterIdentifier = value; }
-
-    /**
-     * <p>(<i>Optional</i>) The Amazon Resource Name (ARN) of an existing Neptune DB
-     * cluster to use as the primary cluster of the new global database.</p>
-     */
-    inline void SetSourceDBClusterIdentifier(Aws::String&& value) { m_sourceDBClusterIdentifierHasBeenSet = true; m_sourceDBClusterIdentifier = std::move(value); }
-
-    /**
-     * <p>(<i>Optional</i>) The Amazon Resource Name (ARN) of an existing Neptune DB
-     * cluster to use as the primary cluster of the new global database.</p>
-     */
-    inline void SetSourceDBClusterIdentifier(const char* value) { m_sourceDBClusterIdentifierHasBeenSet = true; m_sourceDBClusterIdentifier.assign(value); }
-
-    /**
-     * <p>(<i>Optional</i>) The Amazon Resource Name (ARN) of an existing Neptune DB
-     * cluster to use as the primary cluster of the new global database.</p>
-     */
-    inline CreateGlobalClusterRequest& WithSourceDBClusterIdentifier(const Aws::String& value) { SetSourceDBClusterIdentifier(value); return *this;}
-
-    /**
-     * <p>(<i>Optional</i>) The Amazon Resource Name (ARN) of an existing Neptune DB
-     * cluster to use as the primary cluster of the new global database.</p>
-     */
-    inline CreateGlobalClusterRequest& WithSourceDBClusterIdentifier(Aws::String&& value) { SetSourceDBClusterIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>(<i>Optional</i>) The Amazon Resource Name (ARN) of an existing Neptune DB
-     * cluster to use as the primary cluster of the new global database.</p>
-     */
-    inline CreateGlobalClusterRequest& WithSourceDBClusterIdentifier(const char* value) { SetSourceDBClusterIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the database engine to be used in the global database.</p>
      * <p>Valid values: <code>neptune</code> </p>
      */
-    inline const Aws::String& GetEngine() const{ return m_engine; }
-
-    /**
-     * <p>The name of the database engine to be used in the global database.</p>
-     * <p>Valid values: <code>neptune</code> </p>
-     */
+    inline const Aws::String& GetEngine() const { return m_engine; }
     inline bool EngineHasBeenSet() const { return m_engineHasBeenSet; }
+    template<typename EngineT = Aws::String>
+    void SetEngine(EngineT&& value) { m_engineHasBeenSet = true; m_engine = std::forward<EngineT>(value); }
+    template<typename EngineT = Aws::String>
+    CreateGlobalClusterRequest& WithEngine(EngineT&& value) { SetEngine(std::forward<EngineT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the database engine to be used in the global database.</p>
-     * <p>Valid values: <code>neptune</code> </p>
-     */
-    inline void SetEngine(const Aws::String& value) { m_engineHasBeenSet = true; m_engine = value; }
-
-    /**
-     * <p>The name of the database engine to be used in the global database.</p>
-     * <p>Valid values: <code>neptune</code> </p>
-     */
-    inline void SetEngine(Aws::String&& value) { m_engineHasBeenSet = true; m_engine = std::move(value); }
-
-    /**
-     * <p>The name of the database engine to be used in the global database.</p>
-     * <p>Valid values: <code>neptune</code> </p>
-     */
-    inline void SetEngine(const char* value) { m_engineHasBeenSet = true; m_engine.assign(value); }
-
-    /**
-     * <p>The name of the database engine to be used in the global database.</p>
-     * <p>Valid values: <code>neptune</code> </p>
-     */
-    inline CreateGlobalClusterRequest& WithEngine(const Aws::String& value) { SetEngine(value); return *this;}
-
-    /**
-     * <p>The name of the database engine to be used in the global database.</p>
-     * <p>Valid values: <code>neptune</code> </p>
-     */
-    inline CreateGlobalClusterRequest& WithEngine(Aws::String&& value) { SetEngine(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the database engine to be used in the global database.</p>
-     * <p>Valid values: <code>neptune</code> </p>
-     */
-    inline CreateGlobalClusterRequest& WithEngine(const char* value) { SetEngine(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Neptune engine version to be used by the global database.</p> <p>Valid
      * values: <code>1.2.0.0</code> or above.</p>
      */
-    inline const Aws::String& GetEngineVersion() const{ return m_engineVersion; }
-
-    /**
-     * <p>The Neptune engine version to be used by the global database.</p> <p>Valid
-     * values: <code>1.2.0.0</code> or above.</p>
-     */
+    inline const Aws::String& GetEngineVersion() const { return m_engineVersion; }
     inline bool EngineVersionHasBeenSet() const { return m_engineVersionHasBeenSet; }
+    template<typename EngineVersionT = Aws::String>
+    void SetEngineVersion(EngineVersionT&& value) { m_engineVersionHasBeenSet = true; m_engineVersion = std::forward<EngineVersionT>(value); }
+    template<typename EngineVersionT = Aws::String>
+    CreateGlobalClusterRequest& WithEngineVersion(EngineVersionT&& value) { SetEngineVersion(std::forward<EngineVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Neptune engine version to be used by the global database.</p> <p>Valid
-     * values: <code>1.2.0.0</code> or above.</p>
-     */
-    inline void SetEngineVersion(const Aws::String& value) { m_engineVersionHasBeenSet = true; m_engineVersion = value; }
-
-    /**
-     * <p>The Neptune engine version to be used by the global database.</p> <p>Valid
-     * values: <code>1.2.0.0</code> or above.</p>
-     */
-    inline void SetEngineVersion(Aws::String&& value) { m_engineVersionHasBeenSet = true; m_engineVersion = std::move(value); }
-
-    /**
-     * <p>The Neptune engine version to be used by the global database.</p> <p>Valid
-     * values: <code>1.2.0.0</code> or above.</p>
-     */
-    inline void SetEngineVersion(const char* value) { m_engineVersionHasBeenSet = true; m_engineVersion.assign(value); }
-
-    /**
-     * <p>The Neptune engine version to be used by the global database.</p> <p>Valid
-     * values: <code>1.2.0.0</code> or above.</p>
-     */
-    inline CreateGlobalClusterRequest& WithEngineVersion(const Aws::String& value) { SetEngineVersion(value); return *this;}
-
-    /**
-     * <p>The Neptune engine version to be used by the global database.</p> <p>Valid
-     * values: <code>1.2.0.0</code> or above.</p>
-     */
-    inline CreateGlobalClusterRequest& WithEngineVersion(Aws::String&& value) { SetEngineVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The Neptune engine version to be used by the global database.</p> <p>Valid
-     * values: <code>1.2.0.0</code> or above.</p>
-     */
-    inline CreateGlobalClusterRequest& WithEngineVersion(const char* value) { SetEngineVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The deletion protection setting for the new global database. The global
      * database can't be deleted when deletion protection is enabled.</p>
      */
-    inline bool GetDeletionProtection() const{ return m_deletionProtection; }
-
-    /**
-     * <p>The deletion protection setting for the new global database. The global
-     * database can't be deleted when deletion protection is enabled.</p>
-     */
+    inline bool GetDeletionProtection() const { return m_deletionProtection; }
     inline bool DeletionProtectionHasBeenSet() const { return m_deletionProtectionHasBeenSet; }
-
-    /**
-     * <p>The deletion protection setting for the new global database. The global
-     * database can't be deleted when deletion protection is enabled.</p>
-     */
     inline void SetDeletionProtection(bool value) { m_deletionProtectionHasBeenSet = true; m_deletionProtection = value; }
-
-    /**
-     * <p>The deletion protection setting for the new global database. The global
-     * database can't be deleted when deletion protection is enabled.</p>
-     */
     inline CreateGlobalClusterRequest& WithDeletionProtection(bool value) { SetDeletionProtection(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The storage encryption setting for the new global database cluster.</p>
      */
-    inline bool GetStorageEncrypted() const{ return m_storageEncrypted; }
-
-    /**
-     * <p>The storage encryption setting for the new global database cluster.</p>
-     */
+    inline bool GetStorageEncrypted() const { return m_storageEncrypted; }
     inline bool StorageEncryptedHasBeenSet() const { return m_storageEncryptedHasBeenSet; }
-
-    /**
-     * <p>The storage encryption setting for the new global database cluster.</p>
-     */
     inline void SetStorageEncrypted(bool value) { m_storageEncryptedHasBeenSet = true; m_storageEncrypted = value; }
-
-    /**
-     * <p>The storage encryption setting for the new global database cluster.</p>
-     */
     inline CreateGlobalClusterRequest& WithStorageEncrypted(bool value) { SetStorageEncrypted(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_globalClusterIdentifier;
@@ -283,10 +121,10 @@ namespace Model
     Aws::String m_engineVersion;
     bool m_engineVersionHasBeenSet = false;
 
-    bool m_deletionProtection;
+    bool m_deletionProtection{false};
     bool m_deletionProtectionHasBeenSet = false;
 
-    bool m_storageEncrypted;
+    bool m_storageEncrypted{false};
     bool m_storageEncryptedHasBeenSet = false;
   };
 

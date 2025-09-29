@@ -27,7 +27,7 @@ namespace Model
   class DeleteReceiptFilterRequest : public SESRequest
   {
   public:
-    AWS_SES_API DeleteReceiptFilterRequest();
+    AWS_SES_API DeleteReceiptFilterRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -42,46 +42,17 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The name of the IP address filter to delete.</p>
      */
-    inline const Aws::String& GetFilterName() const{ return m_filterName; }
-
-    /**
-     * <p>The name of the IP address filter to delete.</p>
-     */
+    inline const Aws::String& GetFilterName() const { return m_filterName; }
     inline bool FilterNameHasBeenSet() const { return m_filterNameHasBeenSet; }
-
-    /**
-     * <p>The name of the IP address filter to delete.</p>
-     */
-    inline void SetFilterName(const Aws::String& value) { m_filterNameHasBeenSet = true; m_filterName = value; }
-
-    /**
-     * <p>The name of the IP address filter to delete.</p>
-     */
-    inline void SetFilterName(Aws::String&& value) { m_filterNameHasBeenSet = true; m_filterName = std::move(value); }
-
-    /**
-     * <p>The name of the IP address filter to delete.</p>
-     */
-    inline void SetFilterName(const char* value) { m_filterNameHasBeenSet = true; m_filterName.assign(value); }
-
-    /**
-     * <p>The name of the IP address filter to delete.</p>
-     */
-    inline DeleteReceiptFilterRequest& WithFilterName(const Aws::String& value) { SetFilterName(value); return *this;}
-
-    /**
-     * <p>The name of the IP address filter to delete.</p>
-     */
-    inline DeleteReceiptFilterRequest& WithFilterName(Aws::String&& value) { SetFilterName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the IP address filter to delete.</p>
-     */
-    inline DeleteReceiptFilterRequest& WithFilterName(const char* value) { SetFilterName(value); return *this;}
-
+    template<typename FilterNameT = Aws::String>
+    void SetFilterName(FilterNameT&& value) { m_filterNameHasBeenSet = true; m_filterName = std::forward<FilterNameT>(value); }
+    template<typename FilterNameT = Aws::String>
+    DeleteReceiptFilterRequest& WithFilterName(FilterNameT&& value) { SetFilterName(std::forward<FilterNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_filterName;

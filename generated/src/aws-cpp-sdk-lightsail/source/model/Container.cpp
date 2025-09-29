@@ -18,19 +18,7 @@ namespace Lightsail
 namespace Model
 {
 
-Container::Container() : 
-    m_imageHasBeenSet(false),
-    m_commandHasBeenSet(false),
-    m_environmentHasBeenSet(false),
-    m_portsHasBeenSet(false)
-{
-}
-
-Container::Container(JsonView jsonValue) : 
-    m_imageHasBeenSet(false),
-    m_commandHasBeenSet(false),
-    m_environmentHasBeenSet(false),
-    m_portsHasBeenSet(false)
+Container::Container(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,10 +28,8 @@ Container& Container::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("image"))
   {
     m_image = jsonValue.GetString("image");
-
     m_imageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("command"))
   {
     Aws::Utils::Array<JsonView> commandJsonList = jsonValue.GetArray("command");
@@ -53,7 +39,6 @@ Container& Container::operator =(JsonView jsonValue)
     }
     m_commandHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("environment"))
   {
     Aws::Map<Aws::String, JsonView> environmentJsonMap = jsonValue.GetObject("environment").GetAllObjects();
@@ -63,7 +48,6 @@ Container& Container::operator =(JsonView jsonValue)
     }
     m_environmentHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ports"))
   {
     Aws::Map<Aws::String, JsonView> portsJsonMap = jsonValue.GetObject("ports").GetAllObjects();
@@ -73,7 +57,6 @@ Container& Container::operator =(JsonView jsonValue)
     }
     m_portsHasBeenSet = true;
   }
-
   return *this;
 }
 

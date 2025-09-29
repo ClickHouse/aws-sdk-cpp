@@ -12,18 +12,6 @@ using namespace Aws::ConnectCases::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateTemplateRequest::UpdateTemplateRequest() : 
-    m_descriptionHasBeenSet(false),
-    m_domainIdHasBeenSet(false),
-    m_layoutConfigurationHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_requiredFieldsHasBeenSet(false),
-    m_status(TemplateStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_templateIdHasBeenSet(false)
-{
-}
-
 Aws::String UpdateTemplateRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -54,6 +42,17 @@ Aws::String UpdateTemplateRequest::SerializePayload() const
      requiredFieldsJsonList[requiredFieldsIndex].AsObject(m_requiredFields[requiredFieldsIndex].Jsonize());
    }
    payload.WithArray("requiredFields", std::move(requiredFieldsJsonList));
+
+  }
+
+  if(m_rulesHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> rulesJsonList(m_rules.size());
+   for(unsigned rulesIndex = 0; rulesIndex < rulesJsonList.GetLength(); ++rulesIndex)
+   {
+     rulesJsonList[rulesIndex].AsObject(m_rules[rulesIndex].Jsonize());
+   }
+   payload.WithArray("rules", std::move(rulesJsonList));
 
   }
 

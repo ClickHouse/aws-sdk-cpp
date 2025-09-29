@@ -18,19 +18,7 @@ namespace Amplify
 namespace Model
 {
 
-ProductionBranch::ProductionBranch() : 
-    m_lastDeployTimeHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_thumbnailUrlHasBeenSet(false),
-    m_branchNameHasBeenSet(false)
-{
-}
-
-ProductionBranch::ProductionBranch(JsonView jsonValue) : 
-    m_lastDeployTimeHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_thumbnailUrlHasBeenSet(false),
-    m_branchNameHasBeenSet(false)
+ProductionBranch::ProductionBranch(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,31 +28,23 @@ ProductionBranch& ProductionBranch::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("lastDeployTime"))
   {
     m_lastDeployTime = jsonValue.GetDouble("lastDeployTime");
-
     m_lastDeployTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("status"))
   {
     m_status = jsonValue.GetString("status");
-
     m_statusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("thumbnailUrl"))
   {
     m_thumbnailUrl = jsonValue.GetString("thumbnailUrl");
-
     m_thumbnailUrlHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("branchName"))
   {
     m_branchName = jsonValue.GetString("branchName");
-
     m_branchNameHasBeenSet = true;
   }
-
   return *this;
 }
 

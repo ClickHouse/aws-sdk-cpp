@@ -10,33 +10,6 @@
 using namespace Aws::CloudFormation::Model;
 using namespace Aws::Utils;
 
-UpdateStackSetRequest::UpdateStackSetRequest() : 
-    m_stackSetNameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_templateBodyHasBeenSet(false),
-    m_templateURLHasBeenSet(false),
-    m_usePreviousTemplate(false),
-    m_usePreviousTemplateHasBeenSet(false),
-    m_parametersHasBeenSet(false),
-    m_capabilitiesHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_operationPreferencesHasBeenSet(false),
-    m_administrationRoleARNHasBeenSet(false),
-    m_executionRoleNameHasBeenSet(false),
-    m_deploymentTargetsHasBeenSet(false),
-    m_permissionModel(PermissionModels::NOT_SET),
-    m_permissionModelHasBeenSet(false),
-    m_autoDeploymentHasBeenSet(false),
-    m_operationId(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_operationIdHasBeenSet(true),
-    m_accountsHasBeenSet(false),
-    m_regionsHasBeenSet(false),
-    m_callAs(CallAs::NOT_SET),
-    m_callAsHasBeenSet(false),
-    m_managedExecutionHasBeenSet(false)
-{
-}
-
 Aws::String UpdateStackSetRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -68,32 +41,53 @@ Aws::String UpdateStackSetRequest::SerializePayload() const
 
   if(m_parametersHasBeenSet)
   {
-    unsigned parametersCount = 1;
-    for(auto& item : m_parameters)
+    if (m_parameters.empty())
     {
-      item.OutputToStream(ss, "Parameters.member.", parametersCount, "");
-      parametersCount++;
+      ss << "Parameters=&";
+    }
+    else
+    {
+      unsigned parametersCount = 1;
+      for(auto& item : m_parameters)
+      {
+        item.OutputToStream(ss, "Parameters.member.", parametersCount, "");
+        parametersCount++;
+      }
     }
   }
 
   if(m_capabilitiesHasBeenSet)
   {
-    unsigned capabilitiesCount = 1;
-    for(auto& item : m_capabilities)
+    if (m_capabilities.empty())
     {
-      ss << "Capabilities.member." << capabilitiesCount << "="
-          << StringUtils::URLEncode(CapabilityMapper::GetNameForCapability(item).c_str()) << "&";
-      capabilitiesCount++;
+      ss << "Capabilities=&";
+    }
+    else
+    {
+      unsigned capabilitiesCount = 1;
+      for(auto& item : m_capabilities)
+      {
+        ss << "Capabilities.member." << capabilitiesCount << "="
+            << StringUtils::URLEncode(CapabilityMapper::GetNameForCapability(item)) << "&";
+        capabilitiesCount++;
+      }
     }
   }
 
   if(m_tagsHasBeenSet)
   {
-    unsigned tagsCount = 1;
-    for(auto& item : m_tags)
+    if (m_tags.empty())
     {
-      item.OutputToStream(ss, "Tags.member.", tagsCount, "");
-      tagsCount++;
+      ss << "Tags=&";
+    }
+    else
+    {
+      unsigned tagsCount = 1;
+      for(auto& item : m_tags)
+      {
+        item.OutputToStream(ss, "Tags.member.", tagsCount, "");
+        tagsCount++;
+      }
     }
   }
 
@@ -119,7 +113,7 @@ Aws::String UpdateStackSetRequest::SerializePayload() const
 
   if(m_permissionModelHasBeenSet)
   {
-    ss << "PermissionModel=" << PermissionModelsMapper::GetNameForPermissionModels(m_permissionModel) << "&";
+    ss << "PermissionModel=" << StringUtils::URLEncode(PermissionModelsMapper::GetNameForPermissionModels(m_permissionModel)) << "&";
   }
 
   if(m_autoDeploymentHasBeenSet)
@@ -134,29 +128,43 @@ Aws::String UpdateStackSetRequest::SerializePayload() const
 
   if(m_accountsHasBeenSet)
   {
-    unsigned accountsCount = 1;
-    for(auto& item : m_accounts)
+    if (m_accounts.empty())
     {
-      ss << "Accounts.member." << accountsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      accountsCount++;
+      ss << "Accounts=&";
+    }
+    else
+    {
+      unsigned accountsCount = 1;
+      for(auto& item : m_accounts)
+      {
+        ss << "Accounts.member." << accountsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        accountsCount++;
+      }
     }
   }
 
   if(m_regionsHasBeenSet)
   {
-    unsigned regionsCount = 1;
-    for(auto& item : m_regions)
+    if (m_regions.empty())
     {
-      ss << "Regions.member." << regionsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      regionsCount++;
+      ss << "Regions=&";
+    }
+    else
+    {
+      unsigned regionsCount = 1;
+      for(auto& item : m_regions)
+      {
+        ss << "Regions.member." << regionsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        regionsCount++;
+      }
     }
   }
 
   if(m_callAsHasBeenSet)
   {
-    ss << "CallAs=" << CallAsMapper::GetNameForCallAs(m_callAs) << "&";
+    ss << "CallAs=" << StringUtils::URLEncode(CallAsMapper::GetNameForCallAs(m_callAs)) << "&";
   }
 
   if(m_managedExecutionHasBeenSet)

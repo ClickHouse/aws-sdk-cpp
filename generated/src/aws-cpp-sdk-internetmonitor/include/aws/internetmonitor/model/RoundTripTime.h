@@ -31,83 +31,50 @@ namespace Model
   class RoundTripTime
   {
   public:
-    AWS_INTERNETMONITOR_API RoundTripTime();
+    AWS_INTERNETMONITOR_API RoundTripTime() = default;
     AWS_INTERNETMONITOR_API RoundTripTime(Aws::Utils::Json::JsonView jsonValue);
     AWS_INTERNETMONITOR_API RoundTripTime& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_INTERNETMONITOR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>RTT at the 50th percentile (p50).</p>
      */
-    inline double GetP50() const{ return m_p50; }
-
-    /**
-     * <p>RTT at the 50th percentile (p50).</p>
-     */
+    inline double GetP50() const { return m_p50; }
     inline bool P50HasBeenSet() const { return m_p50HasBeenSet; }
-
-    /**
-     * <p>RTT at the 50th percentile (p50).</p>
-     */
     inline void SetP50(double value) { m_p50HasBeenSet = true; m_p50 = value; }
-
-    /**
-     * <p>RTT at the 50th percentile (p50).</p>
-     */
     inline RoundTripTime& WithP50(double value) { SetP50(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>RTT at the 90th percentile (p90). </p>
      */
-    inline double GetP90() const{ return m_p90; }
-
-    /**
-     * <p>RTT at the 90th percentile (p90). </p>
-     */
+    inline double GetP90() const { return m_p90; }
     inline bool P90HasBeenSet() const { return m_p90HasBeenSet; }
-
-    /**
-     * <p>RTT at the 90th percentile (p90). </p>
-     */
     inline void SetP90(double value) { m_p90HasBeenSet = true; m_p90 = value; }
-
-    /**
-     * <p>RTT at the 90th percentile (p90). </p>
-     */
     inline RoundTripTime& WithP90(double value) { SetP90(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>RTT at the 95th percentile (p95). </p>
      */
-    inline double GetP95() const{ return m_p95; }
-
-    /**
-     * <p>RTT at the 95th percentile (p95). </p>
-     */
+    inline double GetP95() const { return m_p95; }
     inline bool P95HasBeenSet() const { return m_p95HasBeenSet; }
-
-    /**
-     * <p>RTT at the 95th percentile (p95). </p>
-     */
     inline void SetP95(double value) { m_p95HasBeenSet = true; m_p95 = value; }
-
-    /**
-     * <p>RTT at the 95th percentile (p95). </p>
-     */
     inline RoundTripTime& WithP95(double value) { SetP95(value); return *this;}
-
+    ///@}
   private:
 
-    double m_p50;
+    double m_p50{0.0};
     bool m_p50HasBeenSet = false;
 
-    double m_p90;
+    double m_p90{0.0};
     bool m_p90HasBeenSet = false;
 
-    double m_p95;
+    double m_p95{0.0};
     bool m_p95HasBeenSet = false;
   };
 

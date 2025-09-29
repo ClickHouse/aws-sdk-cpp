@@ -29,59 +29,37 @@ namespace Model
   class ImportTaskSummaryServers
   {
   public:
-    AWS_MGN_API ImportTaskSummaryServers();
+    AWS_MGN_API ImportTaskSummaryServers() = default;
     AWS_MGN_API ImportTaskSummaryServers(Aws::Utils::Json::JsonView jsonValue);
     AWS_MGN_API ImportTaskSummaryServers& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MGN_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Import task summary servers created count.</p>
      */
-    inline long long GetCreatedCount() const{ return m_createdCount; }
-
-    /**
-     * <p>Import task summary servers created count.</p>
-     */
+    inline long long GetCreatedCount() const { return m_createdCount; }
     inline bool CreatedCountHasBeenSet() const { return m_createdCountHasBeenSet; }
-
-    /**
-     * <p>Import task summary servers created count.</p>
-     */
     inline void SetCreatedCount(long long value) { m_createdCountHasBeenSet = true; m_createdCount = value; }
-
-    /**
-     * <p>Import task summary servers created count.</p>
-     */
     inline ImportTaskSummaryServers& WithCreatedCount(long long value) { SetCreatedCount(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Import task summary servers modified count.</p>
      */
-    inline long long GetModifiedCount() const{ return m_modifiedCount; }
-
-    /**
-     * <p>Import task summary servers modified count.</p>
-     */
+    inline long long GetModifiedCount() const { return m_modifiedCount; }
     inline bool ModifiedCountHasBeenSet() const { return m_modifiedCountHasBeenSet; }
-
-    /**
-     * <p>Import task summary servers modified count.</p>
-     */
     inline void SetModifiedCount(long long value) { m_modifiedCountHasBeenSet = true; m_modifiedCount = value; }
-
-    /**
-     * <p>Import task summary servers modified count.</p>
-     */
     inline ImportTaskSummaryServers& WithModifiedCount(long long value) { SetModifiedCount(value); return *this;}
-
+    ///@}
   private:
 
-    long long m_createdCount;
+    long long m_createdCount{0};
     bool m_createdCountHasBeenSet = false;
 
-    long long m_modifiedCount;
+    long long m_modifiedCount{0};
     bool m_modifiedCountHasBeenSet = false;
   };
 

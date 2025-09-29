@@ -37,283 +37,113 @@ namespace Model
   class DescribeInputSecurityGroupResult
   {
   public:
-    AWS_MEDIALIVE_API DescribeInputSecurityGroupResult();
+    AWS_MEDIALIVE_API DescribeInputSecurityGroupResult() = default;
     AWS_MEDIALIVE_API DescribeInputSecurityGroupResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_MEDIALIVE_API DescribeInputSecurityGroupResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * Unique ARN of Input Security Group
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
+    inline const Aws::String& GetArn() const { return m_arn; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    DescribeInputSecurityGroupResult& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * Unique ARN of Input Security Group
-     */
-    inline void SetArn(const Aws::String& value) { m_arn = value; }
-
-    /**
-     * Unique ARN of Input Security Group
-     */
-    inline void SetArn(Aws::String&& value) { m_arn = std::move(value); }
-
-    /**
-     * Unique ARN of Input Security Group
-     */
-    inline void SetArn(const char* value) { m_arn.assign(value); }
-
-    /**
-     * Unique ARN of Input Security Group
-     */
-    inline DescribeInputSecurityGroupResult& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * Unique ARN of Input Security Group
-     */
-    inline DescribeInputSecurityGroupResult& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * Unique ARN of Input Security Group
-     */
-    inline DescribeInputSecurityGroupResult& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * The Id of the Input Security Group
      */
-    inline const Aws::String& GetId() const{ return m_id; }
+    inline const Aws::String& GetId() const { return m_id; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    DescribeInputSecurityGroupResult& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The Id of the Input Security Group
-     */
-    inline void SetId(const Aws::String& value) { m_id = value; }
-
-    /**
-     * The Id of the Input Security Group
-     */
-    inline void SetId(Aws::String&& value) { m_id = std::move(value); }
-
-    /**
-     * The Id of the Input Security Group
-     */
-    inline void SetId(const char* value) { m_id.assign(value); }
-
-    /**
-     * The Id of the Input Security Group
-     */
-    inline DescribeInputSecurityGroupResult& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * The Id of the Input Security Group
-     */
-    inline DescribeInputSecurityGroupResult& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * The Id of the Input Security Group
-     */
-    inline DescribeInputSecurityGroupResult& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * The list of inputs currently using this Input Security Group.
      */
-    inline const Aws::Vector<Aws::String>& GetInputs() const{ return m_inputs; }
+    inline const Aws::Vector<Aws::String>& GetInputs() const { return m_inputs; }
+    template<typename InputsT = Aws::Vector<Aws::String>>
+    void SetInputs(InputsT&& value) { m_inputsHasBeenSet = true; m_inputs = std::forward<InputsT>(value); }
+    template<typename InputsT = Aws::Vector<Aws::String>>
+    DescribeInputSecurityGroupResult& WithInputs(InputsT&& value) { SetInputs(std::forward<InputsT>(value)); return *this;}
+    template<typename InputsT = Aws::String>
+    DescribeInputSecurityGroupResult& AddInputs(InputsT&& value) { m_inputsHasBeenSet = true; m_inputs.emplace_back(std::forward<InputsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * The list of inputs currently using this Input Security Group.
-     */
-    inline void SetInputs(const Aws::Vector<Aws::String>& value) { m_inputs = value; }
-
-    /**
-     * The list of inputs currently using this Input Security Group.
-     */
-    inline void SetInputs(Aws::Vector<Aws::String>&& value) { m_inputs = std::move(value); }
-
-    /**
-     * The list of inputs currently using this Input Security Group.
-     */
-    inline DescribeInputSecurityGroupResult& WithInputs(const Aws::Vector<Aws::String>& value) { SetInputs(value); return *this;}
-
-    /**
-     * The list of inputs currently using this Input Security Group.
-     */
-    inline DescribeInputSecurityGroupResult& WithInputs(Aws::Vector<Aws::String>&& value) { SetInputs(std::move(value)); return *this;}
-
-    /**
-     * The list of inputs currently using this Input Security Group.
-     */
-    inline DescribeInputSecurityGroupResult& AddInputs(const Aws::String& value) { m_inputs.push_back(value); return *this; }
-
-    /**
-     * The list of inputs currently using this Input Security Group.
-     */
-    inline DescribeInputSecurityGroupResult& AddInputs(Aws::String&& value) { m_inputs.push_back(std::move(value)); return *this; }
-
-    /**
-     * The list of inputs currently using this Input Security Group.
-     */
-    inline DescribeInputSecurityGroupResult& AddInputs(const char* value) { m_inputs.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * The current state of the Input Security Group.
      */
-    inline const InputSecurityGroupState& GetState() const{ return m_state; }
+    inline InputSecurityGroupState GetState() const { return m_state; }
+    inline void SetState(InputSecurityGroupState value) { m_stateHasBeenSet = true; m_state = value; }
+    inline DescribeInputSecurityGroupResult& WithState(InputSecurityGroupState value) { SetState(value); return *this;}
+    ///@}
 
-    /**
-     * The current state of the Input Security Group.
-     */
-    inline void SetState(const InputSecurityGroupState& value) { m_state = value; }
-
-    /**
-     * The current state of the Input Security Group.
-     */
-    inline void SetState(InputSecurityGroupState&& value) { m_state = std::move(value); }
-
-    /**
-     * The current state of the Input Security Group.
-     */
-    inline DescribeInputSecurityGroupResult& WithState(const InputSecurityGroupState& value) { SetState(value); return *this;}
-
-    /**
-     * The current state of the Input Security Group.
-     */
-    inline DescribeInputSecurityGroupResult& WithState(InputSecurityGroupState&& value) { SetState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * A collection of key-value pairs.
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    DescribeInputSecurityGroupResult& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    DescribeInputSecurityGroupResult& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * A collection of key-value pairs.
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tags = value; }
-
-    /**
-     * A collection of key-value pairs.
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tags = std::move(value); }
-
-    /**
-     * A collection of key-value pairs.
-     */
-    inline DescribeInputSecurityGroupResult& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * A collection of key-value pairs.
-     */
-    inline DescribeInputSecurityGroupResult& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * A collection of key-value pairs.
-     */
-    inline DescribeInputSecurityGroupResult& AddTags(const Aws::String& key, const Aws::String& value) { m_tags.emplace(key, value); return *this; }
-
-    /**
-     * A collection of key-value pairs.
-     */
-    inline DescribeInputSecurityGroupResult& AddTags(Aws::String&& key, const Aws::String& value) { m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * A collection of key-value pairs.
-     */
-    inline DescribeInputSecurityGroupResult& AddTags(const Aws::String& key, Aws::String&& value) { m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * A collection of key-value pairs.
-     */
-    inline DescribeInputSecurityGroupResult& AddTags(Aws::String&& key, Aws::String&& value) { m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * A collection of key-value pairs.
-     */
-    inline DescribeInputSecurityGroupResult& AddTags(const char* key, Aws::String&& value) { m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * A collection of key-value pairs.
-     */
-    inline DescribeInputSecurityGroupResult& AddTags(Aws::String&& key, const char* value) { m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * A collection of key-value pairs.
-     */
-    inline DescribeInputSecurityGroupResult& AddTags(const char* key, const char* value) { m_tags.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * Whitelist rules and their sync status
      */
-    inline const Aws::Vector<InputWhitelistRule>& GetWhitelistRules() const{ return m_whitelistRules; }
+    inline const Aws::Vector<InputWhitelistRule>& GetWhitelistRules() const { return m_whitelistRules; }
+    template<typename WhitelistRulesT = Aws::Vector<InputWhitelistRule>>
+    void SetWhitelistRules(WhitelistRulesT&& value) { m_whitelistRulesHasBeenSet = true; m_whitelistRules = std::forward<WhitelistRulesT>(value); }
+    template<typename WhitelistRulesT = Aws::Vector<InputWhitelistRule>>
+    DescribeInputSecurityGroupResult& WithWhitelistRules(WhitelistRulesT&& value) { SetWhitelistRules(std::forward<WhitelistRulesT>(value)); return *this;}
+    template<typename WhitelistRulesT = InputWhitelistRule>
+    DescribeInputSecurityGroupResult& AddWhitelistRules(WhitelistRulesT&& value) { m_whitelistRulesHasBeenSet = true; m_whitelistRules.emplace_back(std::forward<WhitelistRulesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * Whitelist rules and their sync status
-     */
-    inline void SetWhitelistRules(const Aws::Vector<InputWhitelistRule>& value) { m_whitelistRules = value; }
-
-    /**
-     * Whitelist rules and their sync status
-     */
-    inline void SetWhitelistRules(Aws::Vector<InputWhitelistRule>&& value) { m_whitelistRules = std::move(value); }
-
-    /**
-     * Whitelist rules and their sync status
-     */
-    inline DescribeInputSecurityGroupResult& WithWhitelistRules(const Aws::Vector<InputWhitelistRule>& value) { SetWhitelistRules(value); return *this;}
-
-    /**
-     * Whitelist rules and their sync status
-     */
-    inline DescribeInputSecurityGroupResult& WithWhitelistRules(Aws::Vector<InputWhitelistRule>&& value) { SetWhitelistRules(std::move(value)); return *this;}
-
-    /**
-     * Whitelist rules and their sync status
-     */
-    inline DescribeInputSecurityGroupResult& AddWhitelistRules(const InputWhitelistRule& value) { m_whitelistRules.push_back(value); return *this; }
-
-    /**
-     * Whitelist rules and their sync status
-     */
-    inline DescribeInputSecurityGroupResult& AddWhitelistRules(InputWhitelistRule&& value) { m_whitelistRules.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeInputSecurityGroupResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeInputSecurityGroupResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeInputSecurityGroupResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeInputSecurityGroupResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;
+    bool m_arnHasBeenSet = false;
 
     Aws::String m_id;
+    bool m_idHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_inputs;
+    bool m_inputsHasBeenSet = false;
 
-    InputSecurityGroupState m_state;
+    InputSecurityGroupState m_state{InputSecurityGroupState::NOT_SET};
+    bool m_stateHasBeenSet = false;
 
     Aws::Map<Aws::String, Aws::String> m_tags;
+    bool m_tagsHasBeenSet = false;
 
     Aws::Vector<InputWhitelistRule> m_whitelistRules;
+    bool m_whitelistRulesHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

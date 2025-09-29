@@ -18,19 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-DateRange::DateRange() : 
-    m_value(0),
-    m_valueHasBeenSet(false),
-    m_unit(DateRangeUnit::NOT_SET),
-    m_unitHasBeenSet(false)
-{
-}
-
-DateRange::DateRange(JsonView jsonValue) : 
-    m_value(0),
-    m_valueHasBeenSet(false),
-    m_unit(DateRangeUnit::NOT_SET),
-    m_unitHasBeenSet(false)
+DateRange::DateRange(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ DateRange& DateRange::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Value"))
   {
     m_value = jsonValue.GetInteger("Value");
-
     m_valueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Unit"))
   {
     m_unit = DateRangeUnitMapper::GetDateRangeUnitForName(jsonValue.GetString("Unit"));
-
     m_unitHasBeenSet = true;
   }
-
   return *this;
 }
 

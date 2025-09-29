@@ -33,91 +33,38 @@ namespace Model
   class DescribeActivationsFilter
   {
   public:
-    AWS_SSM_API DescribeActivationsFilter();
+    AWS_SSM_API DescribeActivationsFilter() = default;
     AWS_SSM_API DescribeActivationsFilter(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSM_API DescribeActivationsFilter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSM_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the filter.</p>
      */
-    inline const DescribeActivationsFilterKeys& GetFilterKey() const{ return m_filterKey; }
-
-    /**
-     * <p>The name of the filter.</p>
-     */
+    inline DescribeActivationsFilterKeys GetFilterKey() const { return m_filterKey; }
     inline bool FilterKeyHasBeenSet() const { return m_filterKeyHasBeenSet; }
+    inline void SetFilterKey(DescribeActivationsFilterKeys value) { m_filterKeyHasBeenSet = true; m_filterKey = value; }
+    inline DescribeActivationsFilter& WithFilterKey(DescribeActivationsFilterKeys value) { SetFilterKey(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the filter.</p>
-     */
-    inline void SetFilterKey(const DescribeActivationsFilterKeys& value) { m_filterKeyHasBeenSet = true; m_filterKey = value; }
-
-    /**
-     * <p>The name of the filter.</p>
-     */
-    inline void SetFilterKey(DescribeActivationsFilterKeys&& value) { m_filterKeyHasBeenSet = true; m_filterKey = std::move(value); }
-
-    /**
-     * <p>The name of the filter.</p>
-     */
-    inline DescribeActivationsFilter& WithFilterKey(const DescribeActivationsFilterKeys& value) { SetFilterKey(value); return *this;}
-
-    /**
-     * <p>The name of the filter.</p>
-     */
-    inline DescribeActivationsFilter& WithFilterKey(DescribeActivationsFilterKeys&& value) { SetFilterKey(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The filter values.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetFilterValues() const{ return m_filterValues; }
-
-    /**
-     * <p>The filter values.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetFilterValues() const { return m_filterValues; }
     inline bool FilterValuesHasBeenSet() const { return m_filterValuesHasBeenSet; }
-
-    /**
-     * <p>The filter values.</p>
-     */
-    inline void SetFilterValues(const Aws::Vector<Aws::String>& value) { m_filterValuesHasBeenSet = true; m_filterValues = value; }
-
-    /**
-     * <p>The filter values.</p>
-     */
-    inline void SetFilterValues(Aws::Vector<Aws::String>&& value) { m_filterValuesHasBeenSet = true; m_filterValues = std::move(value); }
-
-    /**
-     * <p>The filter values.</p>
-     */
-    inline DescribeActivationsFilter& WithFilterValues(const Aws::Vector<Aws::String>& value) { SetFilterValues(value); return *this;}
-
-    /**
-     * <p>The filter values.</p>
-     */
-    inline DescribeActivationsFilter& WithFilterValues(Aws::Vector<Aws::String>&& value) { SetFilterValues(std::move(value)); return *this;}
-
-    /**
-     * <p>The filter values.</p>
-     */
-    inline DescribeActivationsFilter& AddFilterValues(const Aws::String& value) { m_filterValuesHasBeenSet = true; m_filterValues.push_back(value); return *this; }
-
-    /**
-     * <p>The filter values.</p>
-     */
-    inline DescribeActivationsFilter& AddFilterValues(Aws::String&& value) { m_filterValuesHasBeenSet = true; m_filterValues.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The filter values.</p>
-     */
-    inline DescribeActivationsFilter& AddFilterValues(const char* value) { m_filterValuesHasBeenSet = true; m_filterValues.push_back(value); return *this; }
-
+    template<typename FilterValuesT = Aws::Vector<Aws::String>>
+    void SetFilterValues(FilterValuesT&& value) { m_filterValuesHasBeenSet = true; m_filterValues = std::forward<FilterValuesT>(value); }
+    template<typename FilterValuesT = Aws::Vector<Aws::String>>
+    DescribeActivationsFilter& WithFilterValues(FilterValuesT&& value) { SetFilterValues(std::forward<FilterValuesT>(value)); return *this;}
+    template<typename FilterValuesT = Aws::String>
+    DescribeActivationsFilter& AddFilterValues(FilterValuesT&& value) { m_filterValuesHasBeenSet = true; m_filterValues.emplace_back(std::forward<FilterValuesT>(value)); return *this; }
+    ///@}
   private:
 
-    DescribeActivationsFilterKeys m_filterKey;
+    DescribeActivationsFilterKeys m_filterKey{DescribeActivationsFilterKeys::NOT_SET};
     bool m_filterKeyHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_filterValues;

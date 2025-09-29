@@ -18,19 +18,7 @@ namespace CognitoIdentityProvider
 namespace Model
 {
 
-RecoveryOptionType::RecoveryOptionType() : 
-    m_priority(0),
-    m_priorityHasBeenSet(false),
-    m_name(RecoveryOptionNameType::NOT_SET),
-    m_nameHasBeenSet(false)
-{
-}
-
-RecoveryOptionType::RecoveryOptionType(JsonView jsonValue) : 
-    m_priority(0),
-    m_priorityHasBeenSet(false),
-    m_name(RecoveryOptionNameType::NOT_SET),
-    m_nameHasBeenSet(false)
+RecoveryOptionType::RecoveryOptionType(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ RecoveryOptionType& RecoveryOptionType::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Priority"))
   {
     m_priority = jsonValue.GetInteger("Priority");
-
     m_priorityHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Name"))
   {
     m_name = RecoveryOptionNameTypeMapper::GetRecoveryOptionNameTypeForName(jsonValue.GetString("Name"));
-
     m_nameHasBeenSet = true;
   }
-
   return *this;
 }
 

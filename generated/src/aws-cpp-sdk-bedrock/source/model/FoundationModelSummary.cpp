@@ -18,33 +18,7 @@ namespace Bedrock
 namespace Model
 {
 
-FoundationModelSummary::FoundationModelSummary() : 
-    m_modelArnHasBeenSet(false),
-    m_modelIdHasBeenSet(false),
-    m_modelNameHasBeenSet(false),
-    m_providerNameHasBeenSet(false),
-    m_inputModalitiesHasBeenSet(false),
-    m_outputModalitiesHasBeenSet(false),
-    m_responseStreamingSupported(false),
-    m_responseStreamingSupportedHasBeenSet(false),
-    m_customizationsSupportedHasBeenSet(false),
-    m_inferenceTypesSupportedHasBeenSet(false),
-    m_modelLifecycleHasBeenSet(false)
-{
-}
-
-FoundationModelSummary::FoundationModelSummary(JsonView jsonValue) : 
-    m_modelArnHasBeenSet(false),
-    m_modelIdHasBeenSet(false),
-    m_modelNameHasBeenSet(false),
-    m_providerNameHasBeenSet(false),
-    m_inputModalitiesHasBeenSet(false),
-    m_outputModalitiesHasBeenSet(false),
-    m_responseStreamingSupported(false),
-    m_responseStreamingSupportedHasBeenSet(false),
-    m_customizationsSupportedHasBeenSet(false),
-    m_inferenceTypesSupportedHasBeenSet(false),
-    m_modelLifecycleHasBeenSet(false)
+FoundationModelSummary::FoundationModelSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -54,31 +28,23 @@ FoundationModelSummary& FoundationModelSummary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("modelArn"))
   {
     m_modelArn = jsonValue.GetString("modelArn");
-
     m_modelArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("modelId"))
   {
     m_modelId = jsonValue.GetString("modelId");
-
     m_modelIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("modelName"))
   {
     m_modelName = jsonValue.GetString("modelName");
-
     m_modelNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("providerName"))
   {
     m_providerName = jsonValue.GetString("providerName");
-
     m_providerNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("inputModalities"))
   {
     Aws::Utils::Array<JsonView> inputModalitiesJsonList = jsonValue.GetArray("inputModalities");
@@ -88,7 +54,6 @@ FoundationModelSummary& FoundationModelSummary::operator =(JsonView jsonValue)
     }
     m_inputModalitiesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("outputModalities"))
   {
     Aws::Utils::Array<JsonView> outputModalitiesJsonList = jsonValue.GetArray("outputModalities");
@@ -98,14 +63,11 @@ FoundationModelSummary& FoundationModelSummary::operator =(JsonView jsonValue)
     }
     m_outputModalitiesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("responseStreamingSupported"))
   {
     m_responseStreamingSupported = jsonValue.GetBool("responseStreamingSupported");
-
     m_responseStreamingSupportedHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("customizationsSupported"))
   {
     Aws::Utils::Array<JsonView> customizationsSupportedJsonList = jsonValue.GetArray("customizationsSupported");
@@ -115,7 +77,6 @@ FoundationModelSummary& FoundationModelSummary::operator =(JsonView jsonValue)
     }
     m_customizationsSupportedHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("inferenceTypesSupported"))
   {
     Aws::Utils::Array<JsonView> inferenceTypesSupportedJsonList = jsonValue.GetArray("inferenceTypesSupported");
@@ -125,14 +86,11 @@ FoundationModelSummary& FoundationModelSummary::operator =(JsonView jsonValue)
     }
     m_inferenceTypesSupportedHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("modelLifecycle"))
   {
     m_modelLifecycle = jsonValue.GetObject("modelLifecycle");
-
     m_modelLifecycleHasBeenSet = true;
   }
-
   return *this;
 }
 

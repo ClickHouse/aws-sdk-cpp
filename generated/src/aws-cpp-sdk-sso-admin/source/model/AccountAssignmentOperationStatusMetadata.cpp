@@ -18,46 +18,28 @@ namespace SSOAdmin
 namespace Model
 {
 
-AccountAssignmentOperationStatusMetadata::AccountAssignmentOperationStatusMetadata() : 
-    m_createdDateHasBeenSet(false),
-    m_requestIdHasBeenSet(false),
-    m_status(StatusValues::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
-AccountAssignmentOperationStatusMetadata::AccountAssignmentOperationStatusMetadata(JsonView jsonValue) : 
-    m_createdDateHasBeenSet(false),
-    m_requestIdHasBeenSet(false),
-    m_status(StatusValues::NOT_SET),
-    m_statusHasBeenSet(false)
+AccountAssignmentOperationStatusMetadata::AccountAssignmentOperationStatusMetadata(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 AccountAssignmentOperationStatusMetadata& AccountAssignmentOperationStatusMetadata::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("CreatedDate"))
-  {
-    m_createdDate = jsonValue.GetDouble("CreatedDate");
-
-    m_createdDateHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("RequestId"))
-  {
-    m_requestId = jsonValue.GetString("RequestId");
-
-    m_requestIdHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("Status"))
   {
     m_status = StatusValuesMapper::GetStatusValuesForName(jsonValue.GetString("Status"));
-
     m_statusHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("RequestId"))
+  {
+    m_requestId = jsonValue.GetString("RequestId");
+    m_requestIdHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("CreatedDate"))
+  {
+    m_createdDate = jsonValue.GetDouble("CreatedDate");
+    m_createdDateHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -65,9 +47,9 @@ JsonValue AccountAssignmentOperationStatusMetadata::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_createdDateHasBeenSet)
+  if(m_statusHasBeenSet)
   {
-   payload.WithDouble("CreatedDate", m_createdDate.SecondsWithMSPrecision());
+   payload.WithString("Status", StatusValuesMapper::GetNameForStatusValues(m_status));
   }
 
   if(m_requestIdHasBeenSet)
@@ -76,9 +58,9 @@ JsonValue AccountAssignmentOperationStatusMetadata::Jsonize() const
 
   }
 
-  if(m_statusHasBeenSet)
+  if(m_createdDateHasBeenSet)
   {
-   payload.WithString("Status", StatusValuesMapper::GetNameForStatusValues(m_status));
+   payload.WithDouble("CreatedDate", m_createdDate.SecondsWithMSPrecision());
   }
 
   return payload;

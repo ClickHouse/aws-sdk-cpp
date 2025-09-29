@@ -18,17 +18,7 @@ namespace Synthetics
 namespace Model
 {
 
-VpcConfigOutput::VpcConfigOutput() : 
-    m_vpcIdHasBeenSet(false),
-    m_subnetIdsHasBeenSet(false),
-    m_securityGroupIdsHasBeenSet(false)
-{
-}
-
-VpcConfigOutput::VpcConfigOutput(JsonView jsonValue) : 
-    m_vpcIdHasBeenSet(false),
-    m_subnetIdsHasBeenSet(false),
-    m_securityGroupIdsHasBeenSet(false)
+VpcConfigOutput::VpcConfigOutput(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ VpcConfigOutput& VpcConfigOutput::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("VpcId"))
   {
     m_vpcId = jsonValue.GetString("VpcId");
-
     m_vpcIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SubnetIds"))
   {
     Aws::Utils::Array<JsonView> subnetIdsJsonList = jsonValue.GetArray("SubnetIds");
@@ -51,7 +39,6 @@ VpcConfigOutput& VpcConfigOutput::operator =(JsonView jsonValue)
     }
     m_subnetIdsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SecurityGroupIds"))
   {
     Aws::Utils::Array<JsonView> securityGroupIdsJsonList = jsonValue.GetArray("SecurityGroupIds");
@@ -61,7 +48,11 @@ VpcConfigOutput& VpcConfigOutput::operator =(JsonView jsonValue)
     }
     m_securityGroupIdsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("Ipv6AllowedForDualStack"))
+  {
+    m_ipv6AllowedForDualStack = jsonValue.GetBool("Ipv6AllowedForDualStack");
+    m_ipv6AllowedForDualStackHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -94,6 +85,12 @@ JsonValue VpcConfigOutput::Jsonize() const
      securityGroupIdsJsonList[securityGroupIdsIndex].AsString(m_securityGroupIds[securityGroupIdsIndex]);
    }
    payload.WithArray("SecurityGroupIds", std::move(securityGroupIdsJsonList));
+
+  }
+
+  if(m_ipv6AllowedForDualStackHasBeenSet)
+  {
+   payload.WithBool("Ipv6AllowedForDualStack", m_ipv6AllowedForDualStack);
 
   }
 

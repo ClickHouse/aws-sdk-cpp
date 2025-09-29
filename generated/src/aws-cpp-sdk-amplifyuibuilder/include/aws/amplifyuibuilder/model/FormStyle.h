@@ -32,104 +32,47 @@ namespace Model
   class FormStyle
   {
   public:
-    AWS_AMPLIFYUIBUILDER_API FormStyle();
+    AWS_AMPLIFYUIBUILDER_API FormStyle() = default;
     AWS_AMPLIFYUIBUILDER_API FormStyle(Aws::Utils::Json::JsonView jsonValue);
     AWS_AMPLIFYUIBUILDER_API FormStyle& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_AMPLIFYUIBUILDER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The spacing for the horizontal gap.</p>
      */
-    inline const FormStyleConfig& GetHorizontalGap() const{ return m_horizontalGap; }
-
-    /**
-     * <p>The spacing for the horizontal gap.</p>
-     */
+    inline const FormStyleConfig& GetHorizontalGap() const { return m_horizontalGap; }
     inline bool HorizontalGapHasBeenSet() const { return m_horizontalGapHasBeenSet; }
+    template<typename HorizontalGapT = FormStyleConfig>
+    void SetHorizontalGap(HorizontalGapT&& value) { m_horizontalGapHasBeenSet = true; m_horizontalGap = std::forward<HorizontalGapT>(value); }
+    template<typename HorizontalGapT = FormStyleConfig>
+    FormStyle& WithHorizontalGap(HorizontalGapT&& value) { SetHorizontalGap(std::forward<HorizontalGapT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The spacing for the horizontal gap.</p>
-     */
-    inline void SetHorizontalGap(const FormStyleConfig& value) { m_horizontalGapHasBeenSet = true; m_horizontalGap = value; }
-
-    /**
-     * <p>The spacing for the horizontal gap.</p>
-     */
-    inline void SetHorizontalGap(FormStyleConfig&& value) { m_horizontalGapHasBeenSet = true; m_horizontalGap = std::move(value); }
-
-    /**
-     * <p>The spacing for the horizontal gap.</p>
-     */
-    inline FormStyle& WithHorizontalGap(const FormStyleConfig& value) { SetHorizontalGap(value); return *this;}
-
-    /**
-     * <p>The spacing for the horizontal gap.</p>
-     */
-    inline FormStyle& WithHorizontalGap(FormStyleConfig&& value) { SetHorizontalGap(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The spacing for the vertical gap.</p>
      */
-    inline const FormStyleConfig& GetVerticalGap() const{ return m_verticalGap; }
-
-    /**
-     * <p>The spacing for the vertical gap.</p>
-     */
+    inline const FormStyleConfig& GetVerticalGap() const { return m_verticalGap; }
     inline bool VerticalGapHasBeenSet() const { return m_verticalGapHasBeenSet; }
+    template<typename VerticalGapT = FormStyleConfig>
+    void SetVerticalGap(VerticalGapT&& value) { m_verticalGapHasBeenSet = true; m_verticalGap = std::forward<VerticalGapT>(value); }
+    template<typename VerticalGapT = FormStyleConfig>
+    FormStyle& WithVerticalGap(VerticalGapT&& value) { SetVerticalGap(std::forward<VerticalGapT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The spacing for the vertical gap.</p>
-     */
-    inline void SetVerticalGap(const FormStyleConfig& value) { m_verticalGapHasBeenSet = true; m_verticalGap = value; }
-
-    /**
-     * <p>The spacing for the vertical gap.</p>
-     */
-    inline void SetVerticalGap(FormStyleConfig&& value) { m_verticalGapHasBeenSet = true; m_verticalGap = std::move(value); }
-
-    /**
-     * <p>The spacing for the vertical gap.</p>
-     */
-    inline FormStyle& WithVerticalGap(const FormStyleConfig& value) { SetVerticalGap(value); return *this;}
-
-    /**
-     * <p>The spacing for the vertical gap.</p>
-     */
-    inline FormStyle& WithVerticalGap(FormStyleConfig&& value) { SetVerticalGap(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The size of the outer padding for the form.</p>
      */
-    inline const FormStyleConfig& GetOuterPadding() const{ return m_outerPadding; }
-
-    /**
-     * <p>The size of the outer padding for the form.</p>
-     */
+    inline const FormStyleConfig& GetOuterPadding() const { return m_outerPadding; }
     inline bool OuterPaddingHasBeenSet() const { return m_outerPaddingHasBeenSet; }
-
-    /**
-     * <p>The size of the outer padding for the form.</p>
-     */
-    inline void SetOuterPadding(const FormStyleConfig& value) { m_outerPaddingHasBeenSet = true; m_outerPadding = value; }
-
-    /**
-     * <p>The size of the outer padding for the form.</p>
-     */
-    inline void SetOuterPadding(FormStyleConfig&& value) { m_outerPaddingHasBeenSet = true; m_outerPadding = std::move(value); }
-
-    /**
-     * <p>The size of the outer padding for the form.</p>
-     */
-    inline FormStyle& WithOuterPadding(const FormStyleConfig& value) { SetOuterPadding(value); return *this;}
-
-    /**
-     * <p>The size of the outer padding for the form.</p>
-     */
-    inline FormStyle& WithOuterPadding(FormStyleConfig&& value) { SetOuterPadding(std::move(value)); return *this;}
-
+    template<typename OuterPaddingT = FormStyleConfig>
+    void SetOuterPadding(OuterPaddingT&& value) { m_outerPaddingHasBeenSet = true; m_outerPadding = std::forward<OuterPaddingT>(value); }
+    template<typename OuterPaddingT = FormStyleConfig>
+    FormStyle& WithOuterPadding(OuterPaddingT&& value) { SetOuterPadding(std::forward<OuterPaddingT>(value)); return *this;}
+    ///@}
   private:
 
     FormStyleConfig m_horizontalGap;

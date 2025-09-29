@@ -20,17 +20,7 @@ namespace CloudFormation
 namespace Model
 {
 
-Export::Export() : 
-    m_exportingStackIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_valueHasBeenSet(false)
-{
-}
-
-Export::Export(const XmlNode& xmlNode) : 
-    m_exportingStackIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_valueHasBeenSet(false)
+Export::Export(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

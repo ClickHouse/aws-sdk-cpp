@@ -31,11 +31,12 @@ namespace Model
   class GetEventPredictionResult
   {
   public:
-    AWS_FRAUDDETECTOR_API GetEventPredictionResult();
+    AWS_FRAUDDETECTOR_API GetEventPredictionResult() = default;
     AWS_FRAUDDETECTOR_API GetEventPredictionResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_FRAUDDETECTOR_API GetEventPredictionResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The model scores. Amazon Fraud Detector generates model scores between 0 and
      * 1000, where 0 is low fraud risk and 1000 is high fraud risk. Model scores are
@@ -43,165 +44,62 @@ namespace Model
      * corresponds to an estimated 10% false positive rate whereas a score of 900
      * corresponds to an estimated 2% false positive rate.</p>
      */
-    inline const Aws::Vector<ModelScores>& GetModelScores() const{ return m_modelScores; }
+    inline const Aws::Vector<ModelScores>& GetModelScores() const { return m_modelScores; }
+    template<typename ModelScoresT = Aws::Vector<ModelScores>>
+    void SetModelScores(ModelScoresT&& value) { m_modelScoresHasBeenSet = true; m_modelScores = std::forward<ModelScoresT>(value); }
+    template<typename ModelScoresT = Aws::Vector<ModelScores>>
+    GetEventPredictionResult& WithModelScores(ModelScoresT&& value) { SetModelScores(std::forward<ModelScoresT>(value)); return *this;}
+    template<typename ModelScoresT = ModelScores>
+    GetEventPredictionResult& AddModelScores(ModelScoresT&& value) { m_modelScoresHasBeenSet = true; m_modelScores.emplace_back(std::forward<ModelScoresT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The model scores. Amazon Fraud Detector generates model scores between 0 and
-     * 1000, where 0 is low fraud risk and 1000 is high fraud risk. Model scores are
-     * directly related to the false positive rate (FPR). For example, a score of 600
-     * corresponds to an estimated 10% false positive rate whereas a score of 900
-     * corresponds to an estimated 2% false positive rate.</p>
-     */
-    inline void SetModelScores(const Aws::Vector<ModelScores>& value) { m_modelScores = value; }
-
-    /**
-     * <p>The model scores. Amazon Fraud Detector generates model scores between 0 and
-     * 1000, where 0 is low fraud risk and 1000 is high fraud risk. Model scores are
-     * directly related to the false positive rate (FPR). For example, a score of 600
-     * corresponds to an estimated 10% false positive rate whereas a score of 900
-     * corresponds to an estimated 2% false positive rate.</p>
-     */
-    inline void SetModelScores(Aws::Vector<ModelScores>&& value) { m_modelScores = std::move(value); }
-
-    /**
-     * <p>The model scores. Amazon Fraud Detector generates model scores between 0 and
-     * 1000, where 0 is low fraud risk and 1000 is high fraud risk. Model scores are
-     * directly related to the false positive rate (FPR). For example, a score of 600
-     * corresponds to an estimated 10% false positive rate whereas a score of 900
-     * corresponds to an estimated 2% false positive rate.</p>
-     */
-    inline GetEventPredictionResult& WithModelScores(const Aws::Vector<ModelScores>& value) { SetModelScores(value); return *this;}
-
-    /**
-     * <p>The model scores. Amazon Fraud Detector generates model scores between 0 and
-     * 1000, where 0 is low fraud risk and 1000 is high fraud risk. Model scores are
-     * directly related to the false positive rate (FPR). For example, a score of 600
-     * corresponds to an estimated 10% false positive rate whereas a score of 900
-     * corresponds to an estimated 2% false positive rate.</p>
-     */
-    inline GetEventPredictionResult& WithModelScores(Aws::Vector<ModelScores>&& value) { SetModelScores(std::move(value)); return *this;}
-
-    /**
-     * <p>The model scores. Amazon Fraud Detector generates model scores between 0 and
-     * 1000, where 0 is low fraud risk and 1000 is high fraud risk. Model scores are
-     * directly related to the false positive rate (FPR). For example, a score of 600
-     * corresponds to an estimated 10% false positive rate whereas a score of 900
-     * corresponds to an estimated 2% false positive rate.</p>
-     */
-    inline GetEventPredictionResult& AddModelScores(const ModelScores& value) { m_modelScores.push_back(value); return *this; }
-
-    /**
-     * <p>The model scores. Amazon Fraud Detector generates model scores between 0 and
-     * 1000, where 0 is low fraud risk and 1000 is high fraud risk. Model scores are
-     * directly related to the false positive rate (FPR). For example, a score of 600
-     * corresponds to an estimated 10% false positive rate whereas a score of 900
-     * corresponds to an estimated 2% false positive rate.</p>
-     */
-    inline GetEventPredictionResult& AddModelScores(ModelScores&& value) { m_modelScores.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The results from the rules.</p>
      */
-    inline const Aws::Vector<RuleResult>& GetRuleResults() const{ return m_ruleResults; }
+    inline const Aws::Vector<RuleResult>& GetRuleResults() const { return m_ruleResults; }
+    template<typename RuleResultsT = Aws::Vector<RuleResult>>
+    void SetRuleResults(RuleResultsT&& value) { m_ruleResultsHasBeenSet = true; m_ruleResults = std::forward<RuleResultsT>(value); }
+    template<typename RuleResultsT = Aws::Vector<RuleResult>>
+    GetEventPredictionResult& WithRuleResults(RuleResultsT&& value) { SetRuleResults(std::forward<RuleResultsT>(value)); return *this;}
+    template<typename RuleResultsT = RuleResult>
+    GetEventPredictionResult& AddRuleResults(RuleResultsT&& value) { m_ruleResultsHasBeenSet = true; m_ruleResults.emplace_back(std::forward<RuleResultsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The results from the rules.</p>
-     */
-    inline void SetRuleResults(const Aws::Vector<RuleResult>& value) { m_ruleResults = value; }
-
-    /**
-     * <p>The results from the rules.</p>
-     */
-    inline void SetRuleResults(Aws::Vector<RuleResult>&& value) { m_ruleResults = std::move(value); }
-
-    /**
-     * <p>The results from the rules.</p>
-     */
-    inline GetEventPredictionResult& WithRuleResults(const Aws::Vector<RuleResult>& value) { SetRuleResults(value); return *this;}
-
-    /**
-     * <p>The results from the rules.</p>
-     */
-    inline GetEventPredictionResult& WithRuleResults(Aws::Vector<RuleResult>&& value) { SetRuleResults(std::move(value)); return *this;}
-
-    /**
-     * <p>The results from the rules.</p>
-     */
-    inline GetEventPredictionResult& AddRuleResults(const RuleResult& value) { m_ruleResults.push_back(value); return *this; }
-
-    /**
-     * <p>The results from the rules.</p>
-     */
-    inline GetEventPredictionResult& AddRuleResults(RuleResult&& value) { m_ruleResults.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The model scores for Amazon SageMaker models.</p>
      */
-    inline const Aws::Vector<ExternalModelOutputs>& GetExternalModelOutputs() const{ return m_externalModelOutputs; }
+    inline const Aws::Vector<ExternalModelOutputs>& GetExternalModelOutputs() const { return m_externalModelOutputs; }
+    template<typename ExternalModelOutputsT = Aws::Vector<ExternalModelOutputs>>
+    void SetExternalModelOutputs(ExternalModelOutputsT&& value) { m_externalModelOutputsHasBeenSet = true; m_externalModelOutputs = std::forward<ExternalModelOutputsT>(value); }
+    template<typename ExternalModelOutputsT = Aws::Vector<ExternalModelOutputs>>
+    GetEventPredictionResult& WithExternalModelOutputs(ExternalModelOutputsT&& value) { SetExternalModelOutputs(std::forward<ExternalModelOutputsT>(value)); return *this;}
+    template<typename ExternalModelOutputsT = ExternalModelOutputs>
+    GetEventPredictionResult& AddExternalModelOutputs(ExternalModelOutputsT&& value) { m_externalModelOutputsHasBeenSet = true; m_externalModelOutputs.emplace_back(std::forward<ExternalModelOutputsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The model scores for Amazon SageMaker models.</p>
-     */
-    inline void SetExternalModelOutputs(const Aws::Vector<ExternalModelOutputs>& value) { m_externalModelOutputs = value; }
-
-    /**
-     * <p>The model scores for Amazon SageMaker models.</p>
-     */
-    inline void SetExternalModelOutputs(Aws::Vector<ExternalModelOutputs>&& value) { m_externalModelOutputs = std::move(value); }
-
-    /**
-     * <p>The model scores for Amazon SageMaker models.</p>
-     */
-    inline GetEventPredictionResult& WithExternalModelOutputs(const Aws::Vector<ExternalModelOutputs>& value) { SetExternalModelOutputs(value); return *this;}
-
-    /**
-     * <p>The model scores for Amazon SageMaker models.</p>
-     */
-    inline GetEventPredictionResult& WithExternalModelOutputs(Aws::Vector<ExternalModelOutputs>&& value) { SetExternalModelOutputs(std::move(value)); return *this;}
-
-    /**
-     * <p>The model scores for Amazon SageMaker models.</p>
-     */
-    inline GetEventPredictionResult& AddExternalModelOutputs(const ExternalModelOutputs& value) { m_externalModelOutputs.push_back(value); return *this; }
-
-    /**
-     * <p>The model scores for Amazon SageMaker models.</p>
-     */
-    inline GetEventPredictionResult& AddExternalModelOutputs(ExternalModelOutputs&& value) { m_externalModelOutputs.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetEventPredictionResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetEventPredictionResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetEventPredictionResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetEventPredictionResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<ModelScores> m_modelScores;
+    bool m_modelScoresHasBeenSet = false;
 
     Aws::Vector<RuleResult> m_ruleResults;
+    bool m_ruleResultsHasBeenSet = false;
 
     Aws::Vector<ExternalModelOutputs> m_externalModelOutputs;
+    bool m_externalModelOutputsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

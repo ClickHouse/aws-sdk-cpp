@@ -28,63 +28,37 @@ namespace Model
   class StartProductSubscriptionResult
   {
   public:
-    AWS_LICENSEMANAGERUSERSUBSCRIPTIONS_API StartProductSubscriptionResult();
+    AWS_LICENSEMANAGERUSERSUBSCRIPTIONS_API StartProductSubscriptionResult() = default;
     AWS_LICENSEMANAGERUSERSUBSCRIPTIONS_API StartProductSubscriptionResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_LICENSEMANAGERUSERSUBSCRIPTIONS_API StartProductSubscriptionResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Metadata that describes the start product subscription operation.</p>
      */
-    inline const ProductUserSummary& GetProductUserSummary() const{ return m_productUserSummary; }
+    inline const ProductUserSummary& GetProductUserSummary() const { return m_productUserSummary; }
+    template<typename ProductUserSummaryT = ProductUserSummary>
+    void SetProductUserSummary(ProductUserSummaryT&& value) { m_productUserSummaryHasBeenSet = true; m_productUserSummary = std::forward<ProductUserSummaryT>(value); }
+    template<typename ProductUserSummaryT = ProductUserSummary>
+    StartProductSubscriptionResult& WithProductUserSummary(ProductUserSummaryT&& value) { SetProductUserSummary(std::forward<ProductUserSummaryT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Metadata that describes the start product subscription operation.</p>
-     */
-    inline void SetProductUserSummary(const ProductUserSummary& value) { m_productUserSummary = value; }
-
-    /**
-     * <p>Metadata that describes the start product subscription operation.</p>
-     */
-    inline void SetProductUserSummary(ProductUserSummary&& value) { m_productUserSummary = std::move(value); }
-
-    /**
-     * <p>Metadata that describes the start product subscription operation.</p>
-     */
-    inline StartProductSubscriptionResult& WithProductUserSummary(const ProductUserSummary& value) { SetProductUserSummary(value); return *this;}
-
-    /**
-     * <p>Metadata that describes the start product subscription operation.</p>
-     */
-    inline StartProductSubscriptionResult& WithProductUserSummary(ProductUserSummary&& value) { SetProductUserSummary(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline StartProductSubscriptionResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline StartProductSubscriptionResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline StartProductSubscriptionResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    StartProductSubscriptionResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     ProductUserSummary m_productUserSummary;
+    bool m_productUserSummaryHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -36,176 +36,67 @@ namespace Model
   class WorkflowStepAutomationConfiguration
   {
   public:
-    AWS_MIGRATIONHUBORCHESTRATOR_API WorkflowStepAutomationConfiguration();
+    AWS_MIGRATIONHUBORCHESTRATOR_API WorkflowStepAutomationConfiguration() = default;
     AWS_MIGRATIONHUBORCHESTRATOR_API WorkflowStepAutomationConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_MIGRATIONHUBORCHESTRATOR_API WorkflowStepAutomationConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MIGRATIONHUBORCHESTRATOR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon S3 bucket where the script is located.</p>
      */
-    inline const Aws::String& GetScriptLocationS3Bucket() const{ return m_scriptLocationS3Bucket; }
-
-    /**
-     * <p>The Amazon S3 bucket where the script is located.</p>
-     */
+    inline const Aws::String& GetScriptLocationS3Bucket() const { return m_scriptLocationS3Bucket; }
     inline bool ScriptLocationS3BucketHasBeenSet() const { return m_scriptLocationS3BucketHasBeenSet; }
+    template<typename ScriptLocationS3BucketT = Aws::String>
+    void SetScriptLocationS3Bucket(ScriptLocationS3BucketT&& value) { m_scriptLocationS3BucketHasBeenSet = true; m_scriptLocationS3Bucket = std::forward<ScriptLocationS3BucketT>(value); }
+    template<typename ScriptLocationS3BucketT = Aws::String>
+    WorkflowStepAutomationConfiguration& WithScriptLocationS3Bucket(ScriptLocationS3BucketT&& value) { SetScriptLocationS3Bucket(std::forward<ScriptLocationS3BucketT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon S3 bucket where the script is located.</p>
-     */
-    inline void SetScriptLocationS3Bucket(const Aws::String& value) { m_scriptLocationS3BucketHasBeenSet = true; m_scriptLocationS3Bucket = value; }
-
-    /**
-     * <p>The Amazon S3 bucket where the script is located.</p>
-     */
-    inline void SetScriptLocationS3Bucket(Aws::String&& value) { m_scriptLocationS3BucketHasBeenSet = true; m_scriptLocationS3Bucket = std::move(value); }
-
-    /**
-     * <p>The Amazon S3 bucket where the script is located.</p>
-     */
-    inline void SetScriptLocationS3Bucket(const char* value) { m_scriptLocationS3BucketHasBeenSet = true; m_scriptLocationS3Bucket.assign(value); }
-
-    /**
-     * <p>The Amazon S3 bucket where the script is located.</p>
-     */
-    inline WorkflowStepAutomationConfiguration& WithScriptLocationS3Bucket(const Aws::String& value) { SetScriptLocationS3Bucket(value); return *this;}
-
-    /**
-     * <p>The Amazon S3 bucket where the script is located.</p>
-     */
-    inline WorkflowStepAutomationConfiguration& WithScriptLocationS3Bucket(Aws::String&& value) { SetScriptLocationS3Bucket(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon S3 bucket where the script is located.</p>
-     */
-    inline WorkflowStepAutomationConfiguration& WithScriptLocationS3Bucket(const char* value) { SetScriptLocationS3Bucket(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon S3 key for the script location.</p>
      */
-    inline const PlatformScriptKey& GetScriptLocationS3Key() const{ return m_scriptLocationS3Key; }
-
-    /**
-     * <p>The Amazon S3 key for the script location.</p>
-     */
+    inline const PlatformScriptKey& GetScriptLocationS3Key() const { return m_scriptLocationS3Key; }
     inline bool ScriptLocationS3KeyHasBeenSet() const { return m_scriptLocationS3KeyHasBeenSet; }
+    template<typename ScriptLocationS3KeyT = PlatformScriptKey>
+    void SetScriptLocationS3Key(ScriptLocationS3KeyT&& value) { m_scriptLocationS3KeyHasBeenSet = true; m_scriptLocationS3Key = std::forward<ScriptLocationS3KeyT>(value); }
+    template<typename ScriptLocationS3KeyT = PlatformScriptKey>
+    WorkflowStepAutomationConfiguration& WithScriptLocationS3Key(ScriptLocationS3KeyT&& value) { SetScriptLocationS3Key(std::forward<ScriptLocationS3KeyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon S3 key for the script location.</p>
-     */
-    inline void SetScriptLocationS3Key(const PlatformScriptKey& value) { m_scriptLocationS3KeyHasBeenSet = true; m_scriptLocationS3Key = value; }
-
-    /**
-     * <p>The Amazon S3 key for the script location.</p>
-     */
-    inline void SetScriptLocationS3Key(PlatformScriptKey&& value) { m_scriptLocationS3KeyHasBeenSet = true; m_scriptLocationS3Key = std::move(value); }
-
-    /**
-     * <p>The Amazon S3 key for the script location.</p>
-     */
-    inline WorkflowStepAutomationConfiguration& WithScriptLocationS3Key(const PlatformScriptKey& value) { SetScriptLocationS3Key(value); return *this;}
-
-    /**
-     * <p>The Amazon S3 key for the script location.</p>
-     */
-    inline WorkflowStepAutomationConfiguration& WithScriptLocationS3Key(PlatformScriptKey&& value) { SetScriptLocationS3Key(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The command required to run the script.</p>
      */
-    inline const PlatformCommand& GetCommand() const{ return m_command; }
-
-    /**
-     * <p>The command required to run the script.</p>
-     */
+    inline const PlatformCommand& GetCommand() const { return m_command; }
     inline bool CommandHasBeenSet() const { return m_commandHasBeenSet; }
+    template<typename CommandT = PlatformCommand>
+    void SetCommand(CommandT&& value) { m_commandHasBeenSet = true; m_command = std::forward<CommandT>(value); }
+    template<typename CommandT = PlatformCommand>
+    WorkflowStepAutomationConfiguration& WithCommand(CommandT&& value) { SetCommand(std::forward<CommandT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The command required to run the script.</p>
-     */
-    inline void SetCommand(const PlatformCommand& value) { m_commandHasBeenSet = true; m_command = value; }
-
-    /**
-     * <p>The command required to run the script.</p>
-     */
-    inline void SetCommand(PlatformCommand&& value) { m_commandHasBeenSet = true; m_command = std::move(value); }
-
-    /**
-     * <p>The command required to run the script.</p>
-     */
-    inline WorkflowStepAutomationConfiguration& WithCommand(const PlatformCommand& value) { SetCommand(value); return *this;}
-
-    /**
-     * <p>The command required to run the script.</p>
-     */
-    inline WorkflowStepAutomationConfiguration& WithCommand(PlatformCommand&& value) { SetCommand(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The source or target environment.</p>
      */
-    inline const RunEnvironment& GetRunEnvironment() const{ return m_runEnvironment; }
-
-    /**
-     * <p>The source or target environment.</p>
-     */
+    inline RunEnvironment GetRunEnvironment() const { return m_runEnvironment; }
     inline bool RunEnvironmentHasBeenSet() const { return m_runEnvironmentHasBeenSet; }
+    inline void SetRunEnvironment(RunEnvironment value) { m_runEnvironmentHasBeenSet = true; m_runEnvironment = value; }
+    inline WorkflowStepAutomationConfiguration& WithRunEnvironment(RunEnvironment value) { SetRunEnvironment(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The source or target environment.</p>
-     */
-    inline void SetRunEnvironment(const RunEnvironment& value) { m_runEnvironmentHasBeenSet = true; m_runEnvironment = value; }
-
-    /**
-     * <p>The source or target environment.</p>
-     */
-    inline void SetRunEnvironment(RunEnvironment&& value) { m_runEnvironmentHasBeenSet = true; m_runEnvironment = std::move(value); }
-
-    /**
-     * <p>The source or target environment.</p>
-     */
-    inline WorkflowStepAutomationConfiguration& WithRunEnvironment(const RunEnvironment& value) { SetRunEnvironment(value); return *this;}
-
-    /**
-     * <p>The source or target environment.</p>
-     */
-    inline WorkflowStepAutomationConfiguration& WithRunEnvironment(RunEnvironment&& value) { SetRunEnvironment(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The servers on which to run the script.</p>
      */
-    inline const TargetType& GetTargetType() const{ return m_targetType; }
-
-    /**
-     * <p>The servers on which to run the script.</p>
-     */
+    inline TargetType GetTargetType() const { return m_targetType; }
     inline bool TargetTypeHasBeenSet() const { return m_targetTypeHasBeenSet; }
-
-    /**
-     * <p>The servers on which to run the script.</p>
-     */
-    inline void SetTargetType(const TargetType& value) { m_targetTypeHasBeenSet = true; m_targetType = value; }
-
-    /**
-     * <p>The servers on which to run the script.</p>
-     */
-    inline void SetTargetType(TargetType&& value) { m_targetTypeHasBeenSet = true; m_targetType = std::move(value); }
-
-    /**
-     * <p>The servers on which to run the script.</p>
-     */
-    inline WorkflowStepAutomationConfiguration& WithTargetType(const TargetType& value) { SetTargetType(value); return *this;}
-
-    /**
-     * <p>The servers on which to run the script.</p>
-     */
-    inline WorkflowStepAutomationConfiguration& WithTargetType(TargetType&& value) { SetTargetType(std::move(value)); return *this;}
-
+    inline void SetTargetType(TargetType value) { m_targetTypeHasBeenSet = true; m_targetType = value; }
+    inline WorkflowStepAutomationConfiguration& WithTargetType(TargetType value) { SetTargetType(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_scriptLocationS3Bucket;
@@ -217,10 +108,10 @@ namespace Model
     PlatformCommand m_command;
     bool m_commandHasBeenSet = false;
 
-    RunEnvironment m_runEnvironment;
+    RunEnvironment m_runEnvironment{RunEnvironment::NOT_SET};
     bool m_runEnvironmentHasBeenSet = false;
 
-    TargetType m_targetType;
+    TargetType m_targetType{TargetType::NOT_SET};
     bool m_targetTypeHasBeenSet = false;
   };
 

@@ -18,15 +18,7 @@ namespace Detective
 namespace Model
 {
 
-Account::Account() : 
-    m_accountIdHasBeenSet(false),
-    m_emailAddressHasBeenSet(false)
-{
-}
-
-Account::Account(JsonView jsonValue) : 
-    m_accountIdHasBeenSet(false),
-    m_emailAddressHasBeenSet(false)
+Account::Account(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ Account& Account::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("AccountId"))
   {
     m_accountId = jsonValue.GetString("AccountId");
-
     m_accountIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("EmailAddress"))
   {
     m_emailAddress = jsonValue.GetString("EmailAddress");
-
     m_emailAddressHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -35,388 +35,118 @@ namespace Model
   class BatchPrediction
   {
   public:
-    AWS_MACHINELEARNING_API BatchPrediction();
+    AWS_MACHINELEARNING_API BatchPrediction() = default;
     AWS_MACHINELEARNING_API BatchPrediction(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACHINELEARNING_API BatchPrediction& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACHINELEARNING_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ID assigned to the <code>BatchPrediction</code> at creation. This value
      * should be identical to the value of the <code>BatchPredictionID</code> in the
      * request. </p>
      */
-    inline const Aws::String& GetBatchPredictionId() const{ return m_batchPredictionId; }
-
-    /**
-     * <p>The ID assigned to the <code>BatchPrediction</code> at creation. This value
-     * should be identical to the value of the <code>BatchPredictionID</code> in the
-     * request. </p>
-     */
+    inline const Aws::String& GetBatchPredictionId() const { return m_batchPredictionId; }
     inline bool BatchPredictionIdHasBeenSet() const { return m_batchPredictionIdHasBeenSet; }
+    template<typename BatchPredictionIdT = Aws::String>
+    void SetBatchPredictionId(BatchPredictionIdT&& value) { m_batchPredictionIdHasBeenSet = true; m_batchPredictionId = std::forward<BatchPredictionIdT>(value); }
+    template<typename BatchPredictionIdT = Aws::String>
+    BatchPrediction& WithBatchPredictionId(BatchPredictionIdT&& value) { SetBatchPredictionId(std::forward<BatchPredictionIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID assigned to the <code>BatchPrediction</code> at creation. This value
-     * should be identical to the value of the <code>BatchPredictionID</code> in the
-     * request. </p>
-     */
-    inline void SetBatchPredictionId(const Aws::String& value) { m_batchPredictionIdHasBeenSet = true; m_batchPredictionId = value; }
-
-    /**
-     * <p>The ID assigned to the <code>BatchPrediction</code> at creation. This value
-     * should be identical to the value of the <code>BatchPredictionID</code> in the
-     * request. </p>
-     */
-    inline void SetBatchPredictionId(Aws::String&& value) { m_batchPredictionIdHasBeenSet = true; m_batchPredictionId = std::move(value); }
-
-    /**
-     * <p>The ID assigned to the <code>BatchPrediction</code> at creation. This value
-     * should be identical to the value of the <code>BatchPredictionID</code> in the
-     * request. </p>
-     */
-    inline void SetBatchPredictionId(const char* value) { m_batchPredictionIdHasBeenSet = true; m_batchPredictionId.assign(value); }
-
-    /**
-     * <p>The ID assigned to the <code>BatchPrediction</code> at creation. This value
-     * should be identical to the value of the <code>BatchPredictionID</code> in the
-     * request. </p>
-     */
-    inline BatchPrediction& WithBatchPredictionId(const Aws::String& value) { SetBatchPredictionId(value); return *this;}
-
-    /**
-     * <p>The ID assigned to the <code>BatchPrediction</code> at creation. This value
-     * should be identical to the value of the <code>BatchPredictionID</code> in the
-     * request. </p>
-     */
-    inline BatchPrediction& WithBatchPredictionId(Aws::String&& value) { SetBatchPredictionId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID assigned to the <code>BatchPrediction</code> at creation. This value
-     * should be identical to the value of the <code>BatchPredictionID</code> in the
-     * request. </p>
-     */
-    inline BatchPrediction& WithBatchPredictionId(const char* value) { SetBatchPredictionId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the <code>MLModel</code> that generated predictions for the
      * <code>BatchPrediction</code> request.</p>
      */
-    inline const Aws::String& GetMLModelId() const{ return m_mLModelId; }
-
-    /**
-     * <p>The ID of the <code>MLModel</code> that generated predictions for the
-     * <code>BatchPrediction</code> request.</p>
-     */
+    inline const Aws::String& GetMLModelId() const { return m_mLModelId; }
     inline bool MLModelIdHasBeenSet() const { return m_mLModelIdHasBeenSet; }
+    template<typename MLModelIdT = Aws::String>
+    void SetMLModelId(MLModelIdT&& value) { m_mLModelIdHasBeenSet = true; m_mLModelId = std::forward<MLModelIdT>(value); }
+    template<typename MLModelIdT = Aws::String>
+    BatchPrediction& WithMLModelId(MLModelIdT&& value) { SetMLModelId(std::forward<MLModelIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the <code>MLModel</code> that generated predictions for the
-     * <code>BatchPrediction</code> request.</p>
-     */
-    inline void SetMLModelId(const Aws::String& value) { m_mLModelIdHasBeenSet = true; m_mLModelId = value; }
-
-    /**
-     * <p>The ID of the <code>MLModel</code> that generated predictions for the
-     * <code>BatchPrediction</code> request.</p>
-     */
-    inline void SetMLModelId(Aws::String&& value) { m_mLModelIdHasBeenSet = true; m_mLModelId = std::move(value); }
-
-    /**
-     * <p>The ID of the <code>MLModel</code> that generated predictions for the
-     * <code>BatchPrediction</code> request.</p>
-     */
-    inline void SetMLModelId(const char* value) { m_mLModelIdHasBeenSet = true; m_mLModelId.assign(value); }
-
-    /**
-     * <p>The ID of the <code>MLModel</code> that generated predictions for the
-     * <code>BatchPrediction</code> request.</p>
-     */
-    inline BatchPrediction& WithMLModelId(const Aws::String& value) { SetMLModelId(value); return *this;}
-
-    /**
-     * <p>The ID of the <code>MLModel</code> that generated predictions for the
-     * <code>BatchPrediction</code> request.</p>
-     */
-    inline BatchPrediction& WithMLModelId(Aws::String&& value) { SetMLModelId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the <code>MLModel</code> that generated predictions for the
-     * <code>BatchPrediction</code> request.</p>
-     */
-    inline BatchPrediction& WithMLModelId(const char* value) { SetMLModelId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the <code>DataSource</code> that points to the group of
      * observations to predict.</p>
      */
-    inline const Aws::String& GetBatchPredictionDataSourceId() const{ return m_batchPredictionDataSourceId; }
-
-    /**
-     * <p>The ID of the <code>DataSource</code> that points to the group of
-     * observations to predict.</p>
-     */
+    inline const Aws::String& GetBatchPredictionDataSourceId() const { return m_batchPredictionDataSourceId; }
     inline bool BatchPredictionDataSourceIdHasBeenSet() const { return m_batchPredictionDataSourceIdHasBeenSet; }
+    template<typename BatchPredictionDataSourceIdT = Aws::String>
+    void SetBatchPredictionDataSourceId(BatchPredictionDataSourceIdT&& value) { m_batchPredictionDataSourceIdHasBeenSet = true; m_batchPredictionDataSourceId = std::forward<BatchPredictionDataSourceIdT>(value); }
+    template<typename BatchPredictionDataSourceIdT = Aws::String>
+    BatchPrediction& WithBatchPredictionDataSourceId(BatchPredictionDataSourceIdT&& value) { SetBatchPredictionDataSourceId(std::forward<BatchPredictionDataSourceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the <code>DataSource</code> that points to the group of
-     * observations to predict.</p>
-     */
-    inline void SetBatchPredictionDataSourceId(const Aws::String& value) { m_batchPredictionDataSourceIdHasBeenSet = true; m_batchPredictionDataSourceId = value; }
-
-    /**
-     * <p>The ID of the <code>DataSource</code> that points to the group of
-     * observations to predict.</p>
-     */
-    inline void SetBatchPredictionDataSourceId(Aws::String&& value) { m_batchPredictionDataSourceIdHasBeenSet = true; m_batchPredictionDataSourceId = std::move(value); }
-
-    /**
-     * <p>The ID of the <code>DataSource</code> that points to the group of
-     * observations to predict.</p>
-     */
-    inline void SetBatchPredictionDataSourceId(const char* value) { m_batchPredictionDataSourceIdHasBeenSet = true; m_batchPredictionDataSourceId.assign(value); }
-
-    /**
-     * <p>The ID of the <code>DataSource</code> that points to the group of
-     * observations to predict.</p>
-     */
-    inline BatchPrediction& WithBatchPredictionDataSourceId(const Aws::String& value) { SetBatchPredictionDataSourceId(value); return *this;}
-
-    /**
-     * <p>The ID of the <code>DataSource</code> that points to the group of
-     * observations to predict.</p>
-     */
-    inline BatchPrediction& WithBatchPredictionDataSourceId(Aws::String&& value) { SetBatchPredictionDataSourceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the <code>DataSource</code> that points to the group of
-     * observations to predict.</p>
-     */
-    inline BatchPrediction& WithBatchPredictionDataSourceId(const char* value) { SetBatchPredictionDataSourceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The location of the data file or directory in Amazon Simple Storage Service
      * (Amazon S3).</p>
      */
-    inline const Aws::String& GetInputDataLocationS3() const{ return m_inputDataLocationS3; }
-
-    /**
-     * <p>The location of the data file or directory in Amazon Simple Storage Service
-     * (Amazon S3).</p>
-     */
+    inline const Aws::String& GetInputDataLocationS3() const { return m_inputDataLocationS3; }
     inline bool InputDataLocationS3HasBeenSet() const { return m_inputDataLocationS3HasBeenSet; }
+    template<typename InputDataLocationS3T = Aws::String>
+    void SetInputDataLocationS3(InputDataLocationS3T&& value) { m_inputDataLocationS3HasBeenSet = true; m_inputDataLocationS3 = std::forward<InputDataLocationS3T>(value); }
+    template<typename InputDataLocationS3T = Aws::String>
+    BatchPrediction& WithInputDataLocationS3(InputDataLocationS3T&& value) { SetInputDataLocationS3(std::forward<InputDataLocationS3T>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The location of the data file or directory in Amazon Simple Storage Service
-     * (Amazon S3).</p>
-     */
-    inline void SetInputDataLocationS3(const Aws::String& value) { m_inputDataLocationS3HasBeenSet = true; m_inputDataLocationS3 = value; }
-
-    /**
-     * <p>The location of the data file or directory in Amazon Simple Storage Service
-     * (Amazon S3).</p>
-     */
-    inline void SetInputDataLocationS3(Aws::String&& value) { m_inputDataLocationS3HasBeenSet = true; m_inputDataLocationS3 = std::move(value); }
-
-    /**
-     * <p>The location of the data file or directory in Amazon Simple Storage Service
-     * (Amazon S3).</p>
-     */
-    inline void SetInputDataLocationS3(const char* value) { m_inputDataLocationS3HasBeenSet = true; m_inputDataLocationS3.assign(value); }
-
-    /**
-     * <p>The location of the data file or directory in Amazon Simple Storage Service
-     * (Amazon S3).</p>
-     */
-    inline BatchPrediction& WithInputDataLocationS3(const Aws::String& value) { SetInputDataLocationS3(value); return *this;}
-
-    /**
-     * <p>The location of the data file or directory in Amazon Simple Storage Service
-     * (Amazon S3).</p>
-     */
-    inline BatchPrediction& WithInputDataLocationS3(Aws::String&& value) { SetInputDataLocationS3(std::move(value)); return *this;}
-
-    /**
-     * <p>The location of the data file or directory in Amazon Simple Storage Service
-     * (Amazon S3).</p>
-     */
-    inline BatchPrediction& WithInputDataLocationS3(const char* value) { SetInputDataLocationS3(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The AWS user account that invoked the <code>BatchPrediction</code>. The
      * account type can be either an AWS root account or an AWS Identity and Access
      * Management (IAM) user account.</p>
      */
-    inline const Aws::String& GetCreatedByIamUser() const{ return m_createdByIamUser; }
-
-    /**
-     * <p>The AWS user account that invoked the <code>BatchPrediction</code>. The
-     * account type can be either an AWS root account or an AWS Identity and Access
-     * Management (IAM) user account.</p>
-     */
+    inline const Aws::String& GetCreatedByIamUser() const { return m_createdByIamUser; }
     inline bool CreatedByIamUserHasBeenSet() const { return m_createdByIamUserHasBeenSet; }
+    template<typename CreatedByIamUserT = Aws::String>
+    void SetCreatedByIamUser(CreatedByIamUserT&& value) { m_createdByIamUserHasBeenSet = true; m_createdByIamUser = std::forward<CreatedByIamUserT>(value); }
+    template<typename CreatedByIamUserT = Aws::String>
+    BatchPrediction& WithCreatedByIamUser(CreatedByIamUserT&& value) { SetCreatedByIamUser(std::forward<CreatedByIamUserT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The AWS user account that invoked the <code>BatchPrediction</code>. The
-     * account type can be either an AWS root account or an AWS Identity and Access
-     * Management (IAM) user account.</p>
-     */
-    inline void SetCreatedByIamUser(const Aws::String& value) { m_createdByIamUserHasBeenSet = true; m_createdByIamUser = value; }
-
-    /**
-     * <p>The AWS user account that invoked the <code>BatchPrediction</code>. The
-     * account type can be either an AWS root account or an AWS Identity and Access
-     * Management (IAM) user account.</p>
-     */
-    inline void SetCreatedByIamUser(Aws::String&& value) { m_createdByIamUserHasBeenSet = true; m_createdByIamUser = std::move(value); }
-
-    /**
-     * <p>The AWS user account that invoked the <code>BatchPrediction</code>. The
-     * account type can be either an AWS root account or an AWS Identity and Access
-     * Management (IAM) user account.</p>
-     */
-    inline void SetCreatedByIamUser(const char* value) { m_createdByIamUserHasBeenSet = true; m_createdByIamUser.assign(value); }
-
-    /**
-     * <p>The AWS user account that invoked the <code>BatchPrediction</code>. The
-     * account type can be either an AWS root account or an AWS Identity and Access
-     * Management (IAM) user account.</p>
-     */
-    inline BatchPrediction& WithCreatedByIamUser(const Aws::String& value) { SetCreatedByIamUser(value); return *this;}
-
-    /**
-     * <p>The AWS user account that invoked the <code>BatchPrediction</code>. The
-     * account type can be either an AWS root account or an AWS Identity and Access
-     * Management (IAM) user account.</p>
-     */
-    inline BatchPrediction& WithCreatedByIamUser(Aws::String&& value) { SetCreatedByIamUser(std::move(value)); return *this;}
-
-    /**
-     * <p>The AWS user account that invoked the <code>BatchPrediction</code>. The
-     * account type can be either an AWS root account or an AWS Identity and Access
-     * Management (IAM) user account.</p>
-     */
-    inline BatchPrediction& WithCreatedByIamUser(const char* value) { SetCreatedByIamUser(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The time that the <code>BatchPrediction</code> was created. The time is
      * expressed in epoch time.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedAt() const{ return m_createdAt; }
-
-    /**
-     * <p>The time that the <code>BatchPrediction</code> was created. The time is
-     * expressed in epoch time.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedAt() const { return m_createdAt; }
     inline bool CreatedAtHasBeenSet() const { return m_createdAtHasBeenSet; }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    void SetCreatedAt(CreatedAtT&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::forward<CreatedAtT>(value); }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    BatchPrediction& WithCreatedAt(CreatedAtT&& value) { SetCreatedAt(std::forward<CreatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time that the <code>BatchPrediction</code> was created. The time is
-     * expressed in epoch time.</p>
-     */
-    inline void SetCreatedAt(const Aws::Utils::DateTime& value) { m_createdAtHasBeenSet = true; m_createdAt = value; }
-
-    /**
-     * <p>The time that the <code>BatchPrediction</code> was created. The time is
-     * expressed in epoch time.</p>
-     */
-    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::move(value); }
-
-    /**
-     * <p>The time that the <code>BatchPrediction</code> was created. The time is
-     * expressed in epoch time.</p>
-     */
-    inline BatchPrediction& WithCreatedAt(const Aws::Utils::DateTime& value) { SetCreatedAt(value); return *this;}
-
-    /**
-     * <p>The time that the <code>BatchPrediction</code> was created. The time is
-     * expressed in epoch time.</p>
-     */
-    inline BatchPrediction& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The time of the most recent edit to the <code>BatchPrediction</code>. The
      * time is expressed in epoch time.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastUpdatedAt() const{ return m_lastUpdatedAt; }
-
-    /**
-     * <p>The time of the most recent edit to the <code>BatchPrediction</code>. The
-     * time is expressed in epoch time.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastUpdatedAt() const { return m_lastUpdatedAt; }
     inline bool LastUpdatedAtHasBeenSet() const { return m_lastUpdatedAtHasBeenSet; }
+    template<typename LastUpdatedAtT = Aws::Utils::DateTime>
+    void SetLastUpdatedAt(LastUpdatedAtT&& value) { m_lastUpdatedAtHasBeenSet = true; m_lastUpdatedAt = std::forward<LastUpdatedAtT>(value); }
+    template<typename LastUpdatedAtT = Aws::Utils::DateTime>
+    BatchPrediction& WithLastUpdatedAt(LastUpdatedAtT&& value) { SetLastUpdatedAt(std::forward<LastUpdatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time of the most recent edit to the <code>BatchPrediction</code>. The
-     * time is expressed in epoch time.</p>
-     */
-    inline void SetLastUpdatedAt(const Aws::Utils::DateTime& value) { m_lastUpdatedAtHasBeenSet = true; m_lastUpdatedAt = value; }
-
-    /**
-     * <p>The time of the most recent edit to the <code>BatchPrediction</code>. The
-     * time is expressed in epoch time.</p>
-     */
-    inline void SetLastUpdatedAt(Aws::Utils::DateTime&& value) { m_lastUpdatedAtHasBeenSet = true; m_lastUpdatedAt = std::move(value); }
-
-    /**
-     * <p>The time of the most recent edit to the <code>BatchPrediction</code>. The
-     * time is expressed in epoch time.</p>
-     */
-    inline BatchPrediction& WithLastUpdatedAt(const Aws::Utils::DateTime& value) { SetLastUpdatedAt(value); return *this;}
-
-    /**
-     * <p>The time of the most recent edit to the <code>BatchPrediction</code>. The
-     * time is expressed in epoch time.</p>
-     */
-    inline BatchPrediction& WithLastUpdatedAt(Aws::Utils::DateTime&& value) { SetLastUpdatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A user-supplied name or description of the <code>BatchPrediction</code>.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>A user-supplied name or description of the <code>BatchPrediction</code>.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    BatchPrediction& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A user-supplied name or description of the <code>BatchPrediction</code>.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>A user-supplied name or description of the <code>BatchPrediction</code>.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>A user-supplied name or description of the <code>BatchPrediction</code>.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>A user-supplied name or description of the <code>BatchPrediction</code>.</p>
-     */
-    inline BatchPrediction& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>A user-supplied name or description of the <code>BatchPrediction</code>.</p>
-     */
-    inline BatchPrediction& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>A user-supplied name or description of the <code>BatchPrediction</code>.</p>
-     */
-    inline BatchPrediction& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the <code>BatchPrediction</code>. This element can have one of
      * the following values:</p> <ul> <li> <p> <code>PENDING</code> - Amazon Machine
@@ -429,261 +159,82 @@ namespace Model
      * <code>BatchPrediction</code> is marked as deleted. It is not usable.</p> </li>
      * </ul>
      */
-    inline const EntityStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the <code>BatchPrediction</code>. This element can have one of
-     * the following values:</p> <ul> <li> <p> <code>PENDING</code> - Amazon Machine
-     * Learning (Amazon ML) submitted a request to generate predictions for a batch of
-     * observations.</p> </li> <li> <p> <code>INPROGRESS</code> - The process is
-     * underway.</p> </li> <li> <p> <code>FAILED</code> - The request to perform a
-     * batch prediction did not run to completion. It is not usable.</p> </li> <li> <p>
-     * <code>COMPLETED</code> - The batch prediction process completed
-     * successfully.</p> </li> <li> <p> <code>DELETED</code> - The
-     * <code>BatchPrediction</code> is marked as deleted. It is not usable.</p> </li>
-     * </ul>
-     */
+    inline EntityStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(EntityStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline BatchPrediction& WithStatus(EntityStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the <code>BatchPrediction</code>. This element can have one of
-     * the following values:</p> <ul> <li> <p> <code>PENDING</code> - Amazon Machine
-     * Learning (Amazon ML) submitted a request to generate predictions for a batch of
-     * observations.</p> </li> <li> <p> <code>INPROGRESS</code> - The process is
-     * underway.</p> </li> <li> <p> <code>FAILED</code> - The request to perform a
-     * batch prediction did not run to completion. It is not usable.</p> </li> <li> <p>
-     * <code>COMPLETED</code> - The batch prediction process completed
-     * successfully.</p> </li> <li> <p> <code>DELETED</code> - The
-     * <code>BatchPrediction</code> is marked as deleted. It is not usable.</p> </li>
-     * </ul>
-     */
-    inline void SetStatus(const EntityStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the <code>BatchPrediction</code>. This element can have one of
-     * the following values:</p> <ul> <li> <p> <code>PENDING</code> - Amazon Machine
-     * Learning (Amazon ML) submitted a request to generate predictions for a batch of
-     * observations.</p> </li> <li> <p> <code>INPROGRESS</code> - The process is
-     * underway.</p> </li> <li> <p> <code>FAILED</code> - The request to perform a
-     * batch prediction did not run to completion. It is not usable.</p> </li> <li> <p>
-     * <code>COMPLETED</code> - The batch prediction process completed
-     * successfully.</p> </li> <li> <p> <code>DELETED</code> - The
-     * <code>BatchPrediction</code> is marked as deleted. It is not usable.</p> </li>
-     * </ul>
-     */
-    inline void SetStatus(EntityStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the <code>BatchPrediction</code>. This element can have one of
-     * the following values:</p> <ul> <li> <p> <code>PENDING</code> - Amazon Machine
-     * Learning (Amazon ML) submitted a request to generate predictions for a batch of
-     * observations.</p> </li> <li> <p> <code>INPROGRESS</code> - The process is
-     * underway.</p> </li> <li> <p> <code>FAILED</code> - The request to perform a
-     * batch prediction did not run to completion. It is not usable.</p> </li> <li> <p>
-     * <code>COMPLETED</code> - The batch prediction process completed
-     * successfully.</p> </li> <li> <p> <code>DELETED</code> - The
-     * <code>BatchPrediction</code> is marked as deleted. It is not usable.</p> </li>
-     * </ul>
-     */
-    inline BatchPrediction& WithStatus(const EntityStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the <code>BatchPrediction</code>. This element can have one of
-     * the following values:</p> <ul> <li> <p> <code>PENDING</code> - Amazon Machine
-     * Learning (Amazon ML) submitted a request to generate predictions for a batch of
-     * observations.</p> </li> <li> <p> <code>INPROGRESS</code> - The process is
-     * underway.</p> </li> <li> <p> <code>FAILED</code> - The request to perform a
-     * batch prediction did not run to completion. It is not usable.</p> </li> <li> <p>
-     * <code>COMPLETED</code> - The batch prediction process completed
-     * successfully.</p> </li> <li> <p> <code>DELETED</code> - The
-     * <code>BatchPrediction</code> is marked as deleted. It is not usable.</p> </li>
-     * </ul>
-     */
-    inline BatchPrediction& WithStatus(EntityStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The location of an Amazon S3 bucket or directory to receive the operation
      * results. The following substrings are not allowed in the <code>s3 key</code>
      * portion of the <code>outputURI</code> field: ':', '//', '/./', '/../'.</p>
      */
-    inline const Aws::String& GetOutputUri() const{ return m_outputUri; }
-
-    /**
-     * <p>The location of an Amazon S3 bucket or directory to receive the operation
-     * results. The following substrings are not allowed in the <code>s3 key</code>
-     * portion of the <code>outputURI</code> field: ':', '//', '/./', '/../'.</p>
-     */
+    inline const Aws::String& GetOutputUri() const { return m_outputUri; }
     inline bool OutputUriHasBeenSet() const { return m_outputUriHasBeenSet; }
+    template<typename OutputUriT = Aws::String>
+    void SetOutputUri(OutputUriT&& value) { m_outputUriHasBeenSet = true; m_outputUri = std::forward<OutputUriT>(value); }
+    template<typename OutputUriT = Aws::String>
+    BatchPrediction& WithOutputUri(OutputUriT&& value) { SetOutputUri(std::forward<OutputUriT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The location of an Amazon S3 bucket or directory to receive the operation
-     * results. The following substrings are not allowed in the <code>s3 key</code>
-     * portion of the <code>outputURI</code> field: ':', '//', '/./', '/../'.</p>
-     */
-    inline void SetOutputUri(const Aws::String& value) { m_outputUriHasBeenSet = true; m_outputUri = value; }
-
-    /**
-     * <p>The location of an Amazon S3 bucket or directory to receive the operation
-     * results. The following substrings are not allowed in the <code>s3 key</code>
-     * portion of the <code>outputURI</code> field: ':', '//', '/./', '/../'.</p>
-     */
-    inline void SetOutputUri(Aws::String&& value) { m_outputUriHasBeenSet = true; m_outputUri = std::move(value); }
-
-    /**
-     * <p>The location of an Amazon S3 bucket or directory to receive the operation
-     * results. The following substrings are not allowed in the <code>s3 key</code>
-     * portion of the <code>outputURI</code> field: ':', '//', '/./', '/../'.</p>
-     */
-    inline void SetOutputUri(const char* value) { m_outputUriHasBeenSet = true; m_outputUri.assign(value); }
-
-    /**
-     * <p>The location of an Amazon S3 bucket or directory to receive the operation
-     * results. The following substrings are not allowed in the <code>s3 key</code>
-     * portion of the <code>outputURI</code> field: ':', '//', '/./', '/../'.</p>
-     */
-    inline BatchPrediction& WithOutputUri(const Aws::String& value) { SetOutputUri(value); return *this;}
-
-    /**
-     * <p>The location of an Amazon S3 bucket or directory to receive the operation
-     * results. The following substrings are not allowed in the <code>s3 key</code>
-     * portion of the <code>outputURI</code> field: ':', '//', '/./', '/../'.</p>
-     */
-    inline BatchPrediction& WithOutputUri(Aws::String&& value) { SetOutputUri(std::move(value)); return *this;}
-
-    /**
-     * <p>The location of an Amazon S3 bucket or directory to receive the operation
-     * results. The following substrings are not allowed in the <code>s3 key</code>
-     * portion of the <code>outputURI</code> field: ':', '//', '/./', '/../'.</p>
-     */
-    inline BatchPrediction& WithOutputUri(const char* value) { SetOutputUri(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A description of the most recent details about processing the batch
      * prediction request.</p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>A description of the most recent details about processing the batch
-     * prediction request.</p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    BatchPrediction& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A description of the most recent details about processing the batch
-     * prediction request.</p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>A description of the most recent details about processing the batch
-     * prediction request.</p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>A description of the most recent details about processing the batch
-     * prediction request.</p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p>A description of the most recent details about processing the batch
-     * prediction request.</p>
-     */
-    inline BatchPrediction& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>A description of the most recent details about processing the batch
-     * prediction request.</p>
-     */
-    inline BatchPrediction& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>A description of the most recent details about processing the batch
-     * prediction request.</p>
-     */
-    inline BatchPrediction& WithMessage(const char* value) { SetMessage(value); return *this;}
-
-
+    ///@{
     
-    inline long long GetComputeTime() const{ return m_computeTime; }
-
-    
+    inline long long GetComputeTime() const { return m_computeTime; }
     inline bool ComputeTimeHasBeenSet() const { return m_computeTimeHasBeenSet; }
-
-    
     inline void SetComputeTime(long long value) { m_computeTimeHasBeenSet = true; m_computeTime = value; }
-
-    
     inline BatchPrediction& WithComputeTime(long long value) { SetComputeTime(value); return *this;}
+    ///@}
 
-
+    ///@{
     
-    inline const Aws::Utils::DateTime& GetFinishedAt() const{ return m_finishedAt; }
-
-    
+    inline const Aws::Utils::DateTime& GetFinishedAt() const { return m_finishedAt; }
     inline bool FinishedAtHasBeenSet() const { return m_finishedAtHasBeenSet; }
+    template<typename FinishedAtT = Aws::Utils::DateTime>
+    void SetFinishedAt(FinishedAtT&& value) { m_finishedAtHasBeenSet = true; m_finishedAt = std::forward<FinishedAtT>(value); }
+    template<typename FinishedAtT = Aws::Utils::DateTime>
+    BatchPrediction& WithFinishedAt(FinishedAtT&& value) { SetFinishedAt(std::forward<FinishedAtT>(value)); return *this;}
+    ///@}
 
+    ///@{
     
-    inline void SetFinishedAt(const Aws::Utils::DateTime& value) { m_finishedAtHasBeenSet = true; m_finishedAt = value; }
-
-    
-    inline void SetFinishedAt(Aws::Utils::DateTime&& value) { m_finishedAtHasBeenSet = true; m_finishedAt = std::move(value); }
-
-    
-    inline BatchPrediction& WithFinishedAt(const Aws::Utils::DateTime& value) { SetFinishedAt(value); return *this;}
-
-    
-    inline BatchPrediction& WithFinishedAt(Aws::Utils::DateTime&& value) { SetFinishedAt(std::move(value)); return *this;}
-
-
-    
-    inline const Aws::Utils::DateTime& GetStartedAt() const{ return m_startedAt; }
-
-    
+    inline const Aws::Utils::DateTime& GetStartedAt() const { return m_startedAt; }
     inline bool StartedAtHasBeenSet() const { return m_startedAtHasBeenSet; }
+    template<typename StartedAtT = Aws::Utils::DateTime>
+    void SetStartedAt(StartedAtT&& value) { m_startedAtHasBeenSet = true; m_startedAt = std::forward<StartedAtT>(value); }
+    template<typename StartedAtT = Aws::Utils::DateTime>
+    BatchPrediction& WithStartedAt(StartedAtT&& value) { SetStartedAt(std::forward<StartedAtT>(value)); return *this;}
+    ///@}
 
+    ///@{
     
-    inline void SetStartedAt(const Aws::Utils::DateTime& value) { m_startedAtHasBeenSet = true; m_startedAt = value; }
-
-    
-    inline void SetStartedAt(Aws::Utils::DateTime&& value) { m_startedAtHasBeenSet = true; m_startedAt = std::move(value); }
-
-    
-    inline BatchPrediction& WithStartedAt(const Aws::Utils::DateTime& value) { SetStartedAt(value); return *this;}
-
-    
-    inline BatchPrediction& WithStartedAt(Aws::Utils::DateTime&& value) { SetStartedAt(std::move(value)); return *this;}
-
-
-    
-    inline long long GetTotalRecordCount() const{ return m_totalRecordCount; }
-
-    
+    inline long long GetTotalRecordCount() const { return m_totalRecordCount; }
     inline bool TotalRecordCountHasBeenSet() const { return m_totalRecordCountHasBeenSet; }
-
-    
     inline void SetTotalRecordCount(long long value) { m_totalRecordCountHasBeenSet = true; m_totalRecordCount = value; }
-
-    
     inline BatchPrediction& WithTotalRecordCount(long long value) { SetTotalRecordCount(value); return *this;}
+    ///@}
 
-
+    ///@{
     
-    inline long long GetInvalidRecordCount() const{ return m_invalidRecordCount; }
-
-    
+    inline long long GetInvalidRecordCount() const { return m_invalidRecordCount; }
     inline bool InvalidRecordCountHasBeenSet() const { return m_invalidRecordCountHasBeenSet; }
-
-    
     inline void SetInvalidRecordCount(long long value) { m_invalidRecordCountHasBeenSet = true; m_invalidRecordCount = value; }
-
-    
     inline BatchPrediction& WithInvalidRecordCount(long long value) { SetInvalidRecordCount(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_batchPredictionId;
@@ -701,16 +252,16 @@ namespace Model
     Aws::String m_createdByIamUser;
     bool m_createdByIamUserHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdAt;
+    Aws::Utils::DateTime m_createdAt{};
     bool m_createdAtHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastUpdatedAt;
+    Aws::Utils::DateTime m_lastUpdatedAt{};
     bool m_lastUpdatedAtHasBeenSet = false;
 
     Aws::String m_name;
     bool m_nameHasBeenSet = false;
 
-    EntityStatus m_status;
+    EntityStatus m_status{EntityStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
     Aws::String m_outputUri;
@@ -719,19 +270,19 @@ namespace Model
     Aws::String m_message;
     bool m_messageHasBeenSet = false;
 
-    long long m_computeTime;
+    long long m_computeTime{0};
     bool m_computeTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_finishedAt;
+    Aws::Utils::DateTime m_finishedAt{};
     bool m_finishedAtHasBeenSet = false;
 
-    Aws::Utils::DateTime m_startedAt;
+    Aws::Utils::DateTime m_startedAt{};
     bool m_startedAtHasBeenSet = false;
 
-    long long m_totalRecordCount;
+    long long m_totalRecordCount{0};
     bool m_totalRecordCountHasBeenSet = false;
 
-    long long m_invalidRecordCount;
+    long long m_invalidRecordCount{0};
     bool m_invalidRecordCountHasBeenSet = false;
   };
 

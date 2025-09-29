@@ -32,42 +32,23 @@ namespace Model
   class ChannelMembershipPreferences
   {
   public:
-    AWS_CHIMESDKMESSAGING_API ChannelMembershipPreferences();
+    AWS_CHIMESDKMESSAGING_API ChannelMembershipPreferences() = default;
     AWS_CHIMESDKMESSAGING_API ChannelMembershipPreferences(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMESSAGING_API ChannelMembershipPreferences& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMESSAGING_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The push notification configuration of a message.</p>
      */
-    inline const PushNotificationPreferences& GetPushNotifications() const{ return m_pushNotifications; }
-
-    /**
-     * <p>The push notification configuration of a message.</p>
-     */
+    inline const PushNotificationPreferences& GetPushNotifications() const { return m_pushNotifications; }
     inline bool PushNotificationsHasBeenSet() const { return m_pushNotificationsHasBeenSet; }
-
-    /**
-     * <p>The push notification configuration of a message.</p>
-     */
-    inline void SetPushNotifications(const PushNotificationPreferences& value) { m_pushNotificationsHasBeenSet = true; m_pushNotifications = value; }
-
-    /**
-     * <p>The push notification configuration of a message.</p>
-     */
-    inline void SetPushNotifications(PushNotificationPreferences&& value) { m_pushNotificationsHasBeenSet = true; m_pushNotifications = std::move(value); }
-
-    /**
-     * <p>The push notification configuration of a message.</p>
-     */
-    inline ChannelMembershipPreferences& WithPushNotifications(const PushNotificationPreferences& value) { SetPushNotifications(value); return *this;}
-
-    /**
-     * <p>The push notification configuration of a message.</p>
-     */
-    inline ChannelMembershipPreferences& WithPushNotifications(PushNotificationPreferences&& value) { SetPushNotifications(std::move(value)); return *this;}
-
+    template<typename PushNotificationsT = PushNotificationPreferences>
+    void SetPushNotifications(PushNotificationsT&& value) { m_pushNotificationsHasBeenSet = true; m_pushNotifications = std::forward<PushNotificationsT>(value); }
+    template<typename PushNotificationsT = PushNotificationPreferences>
+    ChannelMembershipPreferences& WithPushNotifications(PushNotificationsT&& value) { SetPushNotifications(std::forward<PushNotificationsT>(value)); return *this;}
+    ///@}
   private:
 
     PushNotificationPreferences m_pushNotifications;

@@ -18,17 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-SecurityControlsConfiguration::SecurityControlsConfiguration() : 
-    m_enabledSecurityControlIdentifiersHasBeenSet(false),
-    m_disabledSecurityControlIdentifiersHasBeenSet(false),
-    m_securityControlCustomParametersHasBeenSet(false)
-{
-}
-
-SecurityControlsConfiguration::SecurityControlsConfiguration(JsonView jsonValue) : 
-    m_enabledSecurityControlIdentifiersHasBeenSet(false),
-    m_disabledSecurityControlIdentifiersHasBeenSet(false),
-    m_securityControlCustomParametersHasBeenSet(false)
+SecurityControlsConfiguration::SecurityControlsConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,7 +34,6 @@ SecurityControlsConfiguration& SecurityControlsConfiguration::operator =(JsonVie
     }
     m_enabledSecurityControlIdentifiersHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DisabledSecurityControlIdentifiers"))
   {
     Aws::Utils::Array<JsonView> disabledSecurityControlIdentifiersJsonList = jsonValue.GetArray("DisabledSecurityControlIdentifiers");
@@ -54,7 +43,6 @@ SecurityControlsConfiguration& SecurityControlsConfiguration::operator =(JsonVie
     }
     m_disabledSecurityControlIdentifiersHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SecurityControlCustomParameters"))
   {
     Aws::Utils::Array<JsonView> securityControlCustomParametersJsonList = jsonValue.GetArray("SecurityControlCustomParameters");
@@ -64,7 +52,6 @@ SecurityControlsConfiguration& SecurityControlsConfiguration::operator =(JsonVie
     }
     m_securityControlCustomParametersHasBeenSet = true;
   }
-
   return *this;
 }
 

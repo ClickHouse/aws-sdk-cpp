@@ -18,13 +18,7 @@ namespace AppMesh
 namespace Model
 {
 
-VirtualGatewayListenerTlsAcmCertificate::VirtualGatewayListenerTlsAcmCertificate() : 
-    m_certificateArnHasBeenSet(false)
-{
-}
-
-VirtualGatewayListenerTlsAcmCertificate::VirtualGatewayListenerTlsAcmCertificate(JsonView jsonValue) : 
-    m_certificateArnHasBeenSet(false)
+VirtualGatewayListenerTlsAcmCertificate::VirtualGatewayListenerTlsAcmCertificate(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ VirtualGatewayListenerTlsAcmCertificate& VirtualGatewayListenerTlsAcmCertificate
   if(jsonValue.ValueExists("certificateArn"))
   {
     m_certificateArn = jsonValue.GetString("certificateArn");
-
     m_certificateArnHasBeenSet = true;
   }
-
   return *this;
 }
 

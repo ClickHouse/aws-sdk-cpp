@@ -32,36 +32,21 @@ namespace Model
   class ResourceDataSyncAlreadyExistsException
   {
   public:
-    AWS_SSM_API ResourceDataSyncAlreadyExistsException();
+    AWS_SSM_API ResourceDataSyncAlreadyExistsException() = default;
     AWS_SSM_API ResourceDataSyncAlreadyExistsException(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSM_API ResourceDataSyncAlreadyExistsException& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSM_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     
-    inline const Aws::String& GetSyncName() const{ return m_syncName; }
-
-    
+    inline const Aws::String& GetSyncName() const { return m_syncName; }
     inline bool SyncNameHasBeenSet() const { return m_syncNameHasBeenSet; }
-
-    
-    inline void SetSyncName(const Aws::String& value) { m_syncNameHasBeenSet = true; m_syncName = value; }
-
-    
-    inline void SetSyncName(Aws::String&& value) { m_syncNameHasBeenSet = true; m_syncName = std::move(value); }
-
-    
-    inline void SetSyncName(const char* value) { m_syncNameHasBeenSet = true; m_syncName.assign(value); }
-
-    
-    inline ResourceDataSyncAlreadyExistsException& WithSyncName(const Aws::String& value) { SetSyncName(value); return *this;}
-
-    
-    inline ResourceDataSyncAlreadyExistsException& WithSyncName(Aws::String&& value) { SetSyncName(std::move(value)); return *this;}
-
-    
-    inline ResourceDataSyncAlreadyExistsException& WithSyncName(const char* value) { SetSyncName(value); return *this;}
-
+    template<typename SyncNameT = Aws::String>
+    void SetSyncName(SyncNameT&& value) { m_syncNameHasBeenSet = true; m_syncName = std::forward<SyncNameT>(value); }
+    template<typename SyncNameT = Aws::String>
+    ResourceDataSyncAlreadyExistsException& WithSyncName(SyncNameT&& value) { SetSyncName(std::forward<SyncNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_syncName;

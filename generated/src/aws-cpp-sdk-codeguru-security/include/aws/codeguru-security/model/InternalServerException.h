@@ -32,93 +32,35 @@ namespace Model
   class InternalServerException
   {
   public:
-    AWS_CODEGURUSECURITY_API InternalServerException();
+    AWS_CODEGURUSECURITY_API InternalServerException() = default;
     AWS_CODEGURUSECURITY_API InternalServerException(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEGURUSECURITY_API InternalServerException& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEGURUSECURITY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The internal error encountered by the server.</p>
      */
-    inline const Aws::String& GetError() const{ return m_error; }
-
-    /**
-     * <p>The internal error encountered by the server.</p>
-     */
+    inline const Aws::String& GetError() const { return m_error; }
     inline bool ErrorHasBeenSet() const { return m_errorHasBeenSet; }
+    template<typename ErrorT = Aws::String>
+    void SetError(ErrorT&& value) { m_errorHasBeenSet = true; m_error = std::forward<ErrorT>(value); }
+    template<typename ErrorT = Aws::String>
+    InternalServerException& WithError(ErrorT&& value) { SetError(std::forward<ErrorT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The internal error encountered by the server.</p>
-     */
-    inline void SetError(const Aws::String& value) { m_errorHasBeenSet = true; m_error = value; }
-
-    /**
-     * <p>The internal error encountered by the server.</p>
-     */
-    inline void SetError(Aws::String&& value) { m_errorHasBeenSet = true; m_error = std::move(value); }
-
-    /**
-     * <p>The internal error encountered by the server.</p>
-     */
-    inline void SetError(const char* value) { m_errorHasBeenSet = true; m_error.assign(value); }
-
-    /**
-     * <p>The internal error encountered by the server.</p>
-     */
-    inline InternalServerException& WithError(const Aws::String& value) { SetError(value); return *this;}
-
-    /**
-     * <p>The internal error encountered by the server.</p>
-     */
-    inline InternalServerException& WithError(Aws::String&& value) { SetError(std::move(value)); return *this;}
-
-    /**
-     * <p>The internal error encountered by the server.</p>
-     */
-    inline InternalServerException& WithError(const char* value) { SetError(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Description of the error.</p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>Description of the error.</p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
-
-    /**
-     * <p>Description of the error.</p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>Description of the error.</p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>Description of the error.</p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p>Description of the error.</p>
-     */
-    inline InternalServerException& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>Description of the error.</p>
-     */
-    inline InternalServerException& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>Description of the error.</p>
-     */
-    inline InternalServerException& WithMessage(const char* value) { SetMessage(value); return *this;}
-
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    InternalServerException& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_error;

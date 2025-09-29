@@ -22,7 +22,7 @@ namespace Model
   class GetTemplateSyncConfigRequest : public ProtonRequest
   {
   public:
-    AWS_PROTON_API GetTemplateSyncConfigRequest();
+    AWS_PROTON_API GetTemplateSyncConfigRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,83 +35,33 @@ namespace Model
     AWS_PROTON_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The template name.</p>
      */
-    inline const Aws::String& GetTemplateName() const{ return m_templateName; }
-
-    /**
-     * <p>The template name.</p>
-     */
+    inline const Aws::String& GetTemplateName() const { return m_templateName; }
     inline bool TemplateNameHasBeenSet() const { return m_templateNameHasBeenSet; }
+    template<typename TemplateNameT = Aws::String>
+    void SetTemplateName(TemplateNameT&& value) { m_templateNameHasBeenSet = true; m_templateName = std::forward<TemplateNameT>(value); }
+    template<typename TemplateNameT = Aws::String>
+    GetTemplateSyncConfigRequest& WithTemplateName(TemplateNameT&& value) { SetTemplateName(std::forward<TemplateNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The template name.</p>
-     */
-    inline void SetTemplateName(const Aws::String& value) { m_templateNameHasBeenSet = true; m_templateName = value; }
-
-    /**
-     * <p>The template name.</p>
-     */
-    inline void SetTemplateName(Aws::String&& value) { m_templateNameHasBeenSet = true; m_templateName = std::move(value); }
-
-    /**
-     * <p>The template name.</p>
-     */
-    inline void SetTemplateName(const char* value) { m_templateNameHasBeenSet = true; m_templateName.assign(value); }
-
-    /**
-     * <p>The template name.</p>
-     */
-    inline GetTemplateSyncConfigRequest& WithTemplateName(const Aws::String& value) { SetTemplateName(value); return *this;}
-
-    /**
-     * <p>The template name.</p>
-     */
-    inline GetTemplateSyncConfigRequest& WithTemplateName(Aws::String&& value) { SetTemplateName(std::move(value)); return *this;}
-
-    /**
-     * <p>The template name.</p>
-     */
-    inline GetTemplateSyncConfigRequest& WithTemplateName(const char* value) { SetTemplateName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The template type.</p>
      */
-    inline const TemplateType& GetTemplateType() const{ return m_templateType; }
-
-    /**
-     * <p>The template type.</p>
-     */
+    inline TemplateType GetTemplateType() const { return m_templateType; }
     inline bool TemplateTypeHasBeenSet() const { return m_templateTypeHasBeenSet; }
-
-    /**
-     * <p>The template type.</p>
-     */
-    inline void SetTemplateType(const TemplateType& value) { m_templateTypeHasBeenSet = true; m_templateType = value; }
-
-    /**
-     * <p>The template type.</p>
-     */
-    inline void SetTemplateType(TemplateType&& value) { m_templateTypeHasBeenSet = true; m_templateType = std::move(value); }
-
-    /**
-     * <p>The template type.</p>
-     */
-    inline GetTemplateSyncConfigRequest& WithTemplateType(const TemplateType& value) { SetTemplateType(value); return *this;}
-
-    /**
-     * <p>The template type.</p>
-     */
-    inline GetTemplateSyncConfigRequest& WithTemplateType(TemplateType&& value) { SetTemplateType(std::move(value)); return *this;}
-
+    inline void SetTemplateType(TemplateType value) { m_templateTypeHasBeenSet = true; m_templateType = value; }
+    inline GetTemplateSyncConfigRequest& WithTemplateType(TemplateType value) { SetTemplateType(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_templateName;
     bool m_templateNameHasBeenSet = false;
 
-    TemplateType m_templateType;
+    TemplateType m_templateType{TemplateType::NOT_SET};
     bool m_templateTypeHasBeenSet = false;
   };
 

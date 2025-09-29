@@ -30,71 +30,40 @@ namespace Model
   class NodeDetails
   {
   public:
-    AWS_BATCH_API NodeDetails();
+    AWS_BATCH_API NodeDetails() = default;
     AWS_BATCH_API NodeDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_BATCH_API NodeDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_BATCH_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The node index for the node. Node index numbering starts at zero. This index
      * is also available on the node with the <code>AWS_BATCH_JOB_NODE_INDEX</code>
      * environment variable.</p>
      */
-    inline int GetNodeIndex() const{ return m_nodeIndex; }
-
-    /**
-     * <p>The node index for the node. Node index numbering starts at zero. This index
-     * is also available on the node with the <code>AWS_BATCH_JOB_NODE_INDEX</code>
-     * environment variable.</p>
-     */
+    inline int GetNodeIndex() const { return m_nodeIndex; }
     inline bool NodeIndexHasBeenSet() const { return m_nodeIndexHasBeenSet; }
-
-    /**
-     * <p>The node index for the node. Node index numbering starts at zero. This index
-     * is also available on the node with the <code>AWS_BATCH_JOB_NODE_INDEX</code>
-     * environment variable.</p>
-     */
     inline void SetNodeIndex(int value) { m_nodeIndexHasBeenSet = true; m_nodeIndex = value; }
-
-    /**
-     * <p>The node index for the node. Node index numbering starts at zero. This index
-     * is also available on the node with the <code>AWS_BATCH_JOB_NODE_INDEX</code>
-     * environment variable.</p>
-     */
     inline NodeDetails& WithNodeIndex(int value) { SetNodeIndex(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Specifies whether the current node is the main node for a multi-node parallel
      * job.</p>
      */
-    inline bool GetIsMainNode() const{ return m_isMainNode; }
-
-    /**
-     * <p>Specifies whether the current node is the main node for a multi-node parallel
-     * job.</p>
-     */
+    inline bool GetIsMainNode() const { return m_isMainNode; }
     inline bool IsMainNodeHasBeenSet() const { return m_isMainNodeHasBeenSet; }
-
-    /**
-     * <p>Specifies whether the current node is the main node for a multi-node parallel
-     * job.</p>
-     */
     inline void SetIsMainNode(bool value) { m_isMainNodeHasBeenSet = true; m_isMainNode = value; }
-
-    /**
-     * <p>Specifies whether the current node is the main node for a multi-node parallel
-     * job.</p>
-     */
     inline NodeDetails& WithIsMainNode(bool value) { SetIsMainNode(value); return *this;}
-
+    ///@}
   private:
 
-    int m_nodeIndex;
+    int m_nodeIndex{0};
     bool m_nodeIndexHasBeenSet = false;
 
-    bool m_isMainNode;
+    bool m_isMainNode{false};
     bool m_isMainNodeHasBeenSet = false;
   };
 

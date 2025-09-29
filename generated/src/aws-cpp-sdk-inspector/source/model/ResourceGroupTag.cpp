@@ -18,15 +18,7 @@ namespace Inspector
 namespace Model
 {
 
-ResourceGroupTag::ResourceGroupTag() : 
-    m_keyHasBeenSet(false),
-    m_valueHasBeenSet(false)
-{
-}
-
-ResourceGroupTag::ResourceGroupTag(JsonView jsonValue) : 
-    m_keyHasBeenSet(false),
-    m_valueHasBeenSet(false)
+ResourceGroupTag::ResourceGroupTag(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ResourceGroupTag& ResourceGroupTag::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("key"))
   {
     m_key = jsonValue.GetString("key");
-
     m_keyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("value"))
   {
     m_value = jsonValue.GetString("value");
-
     m_valueHasBeenSet = true;
   }
-
   return *this;
 }
 

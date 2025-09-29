@@ -21,7 +21,7 @@ namespace Model
   class DeleteInstanceRequest : public SSOAdminRequest
   {
   public:
-    AWS_SSOADMIN_API DeleteInstanceRequest();
+    AWS_SSOADMIN_API DeleteInstanceRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,54 +34,18 @@ namespace Model
     AWS_SSOADMIN_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ARN of the instance of IAM Identity Center under which the operation will
      * run.</p>
      */
-    inline const Aws::String& GetInstanceArn() const{ return m_instanceArn; }
-
-    /**
-     * <p>The ARN of the instance of IAM Identity Center under which the operation will
-     * run.</p>
-     */
+    inline const Aws::String& GetInstanceArn() const { return m_instanceArn; }
     inline bool InstanceArnHasBeenSet() const { return m_instanceArnHasBeenSet; }
-
-    /**
-     * <p>The ARN of the instance of IAM Identity Center under which the operation will
-     * run.</p>
-     */
-    inline void SetInstanceArn(const Aws::String& value) { m_instanceArnHasBeenSet = true; m_instanceArn = value; }
-
-    /**
-     * <p>The ARN of the instance of IAM Identity Center under which the operation will
-     * run.</p>
-     */
-    inline void SetInstanceArn(Aws::String&& value) { m_instanceArnHasBeenSet = true; m_instanceArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the instance of IAM Identity Center under which the operation will
-     * run.</p>
-     */
-    inline void SetInstanceArn(const char* value) { m_instanceArnHasBeenSet = true; m_instanceArn.assign(value); }
-
-    /**
-     * <p>The ARN of the instance of IAM Identity Center under which the operation will
-     * run.</p>
-     */
-    inline DeleteInstanceRequest& WithInstanceArn(const Aws::String& value) { SetInstanceArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the instance of IAM Identity Center under which the operation will
-     * run.</p>
-     */
-    inline DeleteInstanceRequest& WithInstanceArn(Aws::String&& value) { SetInstanceArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the instance of IAM Identity Center under which the operation will
-     * run.</p>
-     */
-    inline DeleteInstanceRequest& WithInstanceArn(const char* value) { SetInstanceArn(value); return *this;}
-
+    template<typename InstanceArnT = Aws::String>
+    void SetInstanceArn(InstanceArnT&& value) { m_instanceArnHasBeenSet = true; m_instanceArn = std::forward<InstanceArnT>(value); }
+    template<typename InstanceArnT = Aws::String>
+    DeleteInstanceRequest& WithInstanceArn(InstanceArnT&& value) { SetInstanceArn(std::forward<InstanceArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_instanceArn;

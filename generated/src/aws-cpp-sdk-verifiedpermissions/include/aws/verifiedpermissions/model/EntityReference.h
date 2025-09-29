@@ -36,80 +36,39 @@ namespace Model
   class EntityReference
   {
   public:
-    AWS_VERIFIEDPERMISSIONS_API EntityReference();
+    AWS_VERIFIEDPERMISSIONS_API EntityReference() = default;
     AWS_VERIFIEDPERMISSIONS_API EntityReference(Aws::Utils::Json::JsonView jsonValue);
     AWS_VERIFIEDPERMISSIONS_API EntityReference& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_VERIFIEDPERMISSIONS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Used to indicate that a principal or resource is not specified. This can be
      * used to search for policies that are not associated with a specific principal or
      * resource.</p>
      */
-    inline bool GetUnspecified() const{ return m_unspecified; }
-
-    /**
-     * <p>Used to indicate that a principal or resource is not specified. This can be
-     * used to search for policies that are not associated with a specific principal or
-     * resource.</p>
-     */
+    inline bool GetUnspecified() const { return m_unspecified; }
     inline bool UnspecifiedHasBeenSet() const { return m_unspecifiedHasBeenSet; }
-
-    /**
-     * <p>Used to indicate that a principal or resource is not specified. This can be
-     * used to search for policies that are not associated with a specific principal or
-     * resource.</p>
-     */
     inline void SetUnspecified(bool value) { m_unspecifiedHasBeenSet = true; m_unspecified = value; }
-
-    /**
-     * <p>Used to indicate that a principal or resource is not specified. This can be
-     * used to search for policies that are not associated with a specific principal or
-     * resource.</p>
-     */
     inline EntityReference& WithUnspecified(bool value) { SetUnspecified(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The identifier of the entity. It can consist of either an EntityType and
      * EntityId, a principal, or a resource.</p>
      */
-    inline const EntityIdentifier& GetIdentifier() const{ return m_identifier; }
-
-    /**
-     * <p>The identifier of the entity. It can consist of either an EntityType and
-     * EntityId, a principal, or a resource.</p>
-     */
+    inline const EntityIdentifier& GetIdentifier() const { return m_identifier; }
     inline bool IdentifierHasBeenSet() const { return m_identifierHasBeenSet; }
-
-    /**
-     * <p>The identifier of the entity. It can consist of either an EntityType and
-     * EntityId, a principal, or a resource.</p>
-     */
-    inline void SetIdentifier(const EntityIdentifier& value) { m_identifierHasBeenSet = true; m_identifier = value; }
-
-    /**
-     * <p>The identifier of the entity. It can consist of either an EntityType and
-     * EntityId, a principal, or a resource.</p>
-     */
-    inline void SetIdentifier(EntityIdentifier&& value) { m_identifierHasBeenSet = true; m_identifier = std::move(value); }
-
-    /**
-     * <p>The identifier of the entity. It can consist of either an EntityType and
-     * EntityId, a principal, or a resource.</p>
-     */
-    inline EntityReference& WithIdentifier(const EntityIdentifier& value) { SetIdentifier(value); return *this;}
-
-    /**
-     * <p>The identifier of the entity. It can consist of either an EntityType and
-     * EntityId, a principal, or a resource.</p>
-     */
-    inline EntityReference& WithIdentifier(EntityIdentifier&& value) { SetIdentifier(std::move(value)); return *this;}
-
+    template<typename IdentifierT = EntityIdentifier>
+    void SetIdentifier(IdentifierT&& value) { m_identifierHasBeenSet = true; m_identifier = std::forward<IdentifierT>(value); }
+    template<typename IdentifierT = EntityIdentifier>
+    EntityReference& WithIdentifier(IdentifierT&& value) { SetIdentifier(std::forward<IdentifierT>(value)); return *this;}
+    ///@}
   private:
 
-    bool m_unspecified;
+    bool m_unspecified{false};
     bool m_unspecifiedHasBeenSet = false;
 
     EntityIdentifier m_identifier;

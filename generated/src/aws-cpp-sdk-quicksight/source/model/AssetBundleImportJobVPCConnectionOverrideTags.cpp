@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-AssetBundleImportJobVPCConnectionOverrideTags::AssetBundleImportJobVPCConnectionOverrideTags() : 
-    m_vPCConnectionIdsHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-AssetBundleImportJobVPCConnectionOverrideTags::AssetBundleImportJobVPCConnectionOverrideTags(JsonView jsonValue) : 
-    m_vPCConnectionIdsHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+AssetBundleImportJobVPCConnectionOverrideTags::AssetBundleImportJobVPCConnectionOverrideTags(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ AssetBundleImportJobVPCConnectionOverrideTags& AssetBundleImportJobVPCConnection
     }
     m_vPCConnectionIdsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Tags"))
   {
     Aws::Utils::Array<JsonView> tagsJsonList = jsonValue.GetArray("Tags");
@@ -52,7 +43,6 @@ AssetBundleImportJobVPCConnectionOverrideTags& AssetBundleImportJobVPCConnection
     }
     m_tagsHasBeenSet = true;
   }
-
   return *this;
 }
 

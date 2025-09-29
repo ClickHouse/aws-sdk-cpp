@@ -35,132 +35,58 @@ namespace Model
   class ListUserImportJobsResult
   {
   public:
-    AWS_COGNITOIDENTITYPROVIDER_API ListUserImportJobsResult();
+    AWS_COGNITOIDENTITYPROVIDER_API ListUserImportJobsResult() = default;
     AWS_COGNITOIDENTITYPROVIDER_API ListUserImportJobsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_COGNITOIDENTITYPROVIDER_API ListUserImportJobsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
-     * <p>The user import jobs.</p>
+     * <p>An array of user import jobs from the requested user pool. For each, the
+     * response includes logging destination, status, and the Amazon S3 pre-signed URL
+     * for CSV upload.</p>
      */
-    inline const Aws::Vector<UserImportJobType>& GetUserImportJobs() const{ return m_userImportJobs; }
+    inline const Aws::Vector<UserImportJobType>& GetUserImportJobs() const { return m_userImportJobs; }
+    template<typename UserImportJobsT = Aws::Vector<UserImportJobType>>
+    void SetUserImportJobs(UserImportJobsT&& value) { m_userImportJobsHasBeenSet = true; m_userImportJobs = std::forward<UserImportJobsT>(value); }
+    template<typename UserImportJobsT = Aws::Vector<UserImportJobType>>
+    ListUserImportJobsResult& WithUserImportJobs(UserImportJobsT&& value) { SetUserImportJobs(std::forward<UserImportJobsT>(value)); return *this;}
+    template<typename UserImportJobsT = UserImportJobType>
+    ListUserImportJobsResult& AddUserImportJobs(UserImportJobsT&& value) { m_userImportJobsHasBeenSet = true; m_userImportJobs.emplace_back(std::forward<UserImportJobsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The user import jobs.</p>
-     */
-    inline void SetUserImportJobs(const Aws::Vector<UserImportJobType>& value) { m_userImportJobs = value; }
-
-    /**
-     * <p>The user import jobs.</p>
-     */
-    inline void SetUserImportJobs(Aws::Vector<UserImportJobType>&& value) { m_userImportJobs = std::move(value); }
-
-    /**
-     * <p>The user import jobs.</p>
-     */
-    inline ListUserImportJobsResult& WithUserImportJobs(const Aws::Vector<UserImportJobType>& value) { SetUserImportJobs(value); return *this;}
-
-    /**
-     * <p>The user import jobs.</p>
-     */
-    inline ListUserImportJobsResult& WithUserImportJobs(Aws::Vector<UserImportJobType>&& value) { SetUserImportJobs(std::move(value)); return *this;}
-
-    /**
-     * <p>The user import jobs.</p>
-     */
-    inline ListUserImportJobsResult& AddUserImportJobs(const UserImportJobType& value) { m_userImportJobs.push_back(value); return *this; }
-
-    /**
-     * <p>The user import jobs.</p>
-     */
-    inline ListUserImportJobsResult& AddUserImportJobs(UserImportJobType&& value) { m_userImportJobs.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The identifier that Amazon Cognito returned with the previous request to this
      * operation. When you include a pagination token in your request, Amazon Cognito
      * returns the next set of items in the list. By use of this token, you can
      * paginate through the full list of items.</p>
      */
-    inline const Aws::String& GetPaginationToken() const{ return m_paginationToken; }
+    inline const Aws::String& GetPaginationToken() const { return m_paginationToken; }
+    template<typename PaginationTokenT = Aws::String>
+    void SetPaginationToken(PaginationTokenT&& value) { m_paginationTokenHasBeenSet = true; m_paginationToken = std::forward<PaginationTokenT>(value); }
+    template<typename PaginationTokenT = Aws::String>
+    ListUserImportJobsResult& WithPaginationToken(PaginationTokenT&& value) { SetPaginationToken(std::forward<PaginationTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier that Amazon Cognito returned with the previous request to this
-     * operation. When you include a pagination token in your request, Amazon Cognito
-     * returns the next set of items in the list. By use of this token, you can
-     * paginate through the full list of items.</p>
-     */
-    inline void SetPaginationToken(const Aws::String& value) { m_paginationToken = value; }
-
-    /**
-     * <p>The identifier that Amazon Cognito returned with the previous request to this
-     * operation. When you include a pagination token in your request, Amazon Cognito
-     * returns the next set of items in the list. By use of this token, you can
-     * paginate through the full list of items.</p>
-     */
-    inline void SetPaginationToken(Aws::String&& value) { m_paginationToken = std::move(value); }
-
-    /**
-     * <p>The identifier that Amazon Cognito returned with the previous request to this
-     * operation. When you include a pagination token in your request, Amazon Cognito
-     * returns the next set of items in the list. By use of this token, you can
-     * paginate through the full list of items.</p>
-     */
-    inline void SetPaginationToken(const char* value) { m_paginationToken.assign(value); }
-
-    /**
-     * <p>The identifier that Amazon Cognito returned with the previous request to this
-     * operation. When you include a pagination token in your request, Amazon Cognito
-     * returns the next set of items in the list. By use of this token, you can
-     * paginate through the full list of items.</p>
-     */
-    inline ListUserImportJobsResult& WithPaginationToken(const Aws::String& value) { SetPaginationToken(value); return *this;}
-
-    /**
-     * <p>The identifier that Amazon Cognito returned with the previous request to this
-     * operation. When you include a pagination token in your request, Amazon Cognito
-     * returns the next set of items in the list. By use of this token, you can
-     * paginate through the full list of items.</p>
-     */
-    inline ListUserImportJobsResult& WithPaginationToken(Aws::String&& value) { SetPaginationToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier that Amazon Cognito returned with the previous request to this
-     * operation. When you include a pagination token in your request, Amazon Cognito
-     * returns the next set of items in the list. By use of this token, you can
-     * paginate through the full list of items.</p>
-     */
-    inline ListUserImportJobsResult& WithPaginationToken(const char* value) { SetPaginationToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListUserImportJobsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListUserImportJobsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListUserImportJobsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListUserImportJobsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<UserImportJobType> m_userImportJobs;
+    bool m_userImportJobsHasBeenSet = false;
 
     Aws::String m_paginationToken;
+    bool m_paginationTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -24,7 +24,7 @@ namespace Model
   class ListSecretsRequest : public SecretsManagerRequest
   {
   public:
-    AWS_SECRETSMANAGER_API ListSecretsRequest();
+    AWS_SECRETSMANAGER_API ListSecretsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,198 +37,73 @@ namespace Model
     AWS_SECRETSMANAGER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>Specifies whether to include secrets scheduled for deletion. By default,
      * secrets scheduled for deletion aren't included.</p>
      */
-    inline bool GetIncludePlannedDeletion() const{ return m_includePlannedDeletion; }
-
-    /**
-     * <p>Specifies whether to include secrets scheduled for deletion. By default,
-     * secrets scheduled for deletion aren't included.</p>
-     */
+    inline bool GetIncludePlannedDeletion() const { return m_includePlannedDeletion; }
     inline bool IncludePlannedDeletionHasBeenSet() const { return m_includePlannedDeletionHasBeenSet; }
-
-    /**
-     * <p>Specifies whether to include secrets scheduled for deletion. By default,
-     * secrets scheduled for deletion aren't included.</p>
-     */
     inline void SetIncludePlannedDeletion(bool value) { m_includePlannedDeletionHasBeenSet = true; m_includePlannedDeletion = value; }
-
-    /**
-     * <p>Specifies whether to include secrets scheduled for deletion. By default,
-     * secrets scheduled for deletion aren't included.</p>
-     */
     inline ListSecretsRequest& WithIncludePlannedDeletion(bool value) { SetIncludePlannedDeletion(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The number of results to include in the response.</p> <p>If there are more
      * results available, in the response, Secrets Manager includes
      * <code>NextToken</code>. To get the next results, call <code>ListSecrets</code>
      * again with the value from <code>NextToken</code>.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The number of results to include in the response.</p> <p>If there are more
-     * results available, in the response, Secrets Manager includes
-     * <code>NextToken</code>. To get the next results, call <code>ListSecrets</code>
-     * again with the value from <code>NextToken</code>.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The number of results to include in the response.</p> <p>If there are more
-     * results available, in the response, Secrets Manager includes
-     * <code>NextToken</code>. To get the next results, call <code>ListSecrets</code>
-     * again with the value from <code>NextToken</code>.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The number of results to include in the response.</p> <p>If there are more
-     * results available, in the response, Secrets Manager includes
-     * <code>NextToken</code>. To get the next results, call <code>ListSecrets</code>
-     * again with the value from <code>NextToken</code>.</p>
-     */
     inline ListSecretsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>A token that indicates where the output should continue from, if a previous
      * call did not show all results. To get the next results, call
      * <code>ListSecrets</code> again with this value.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>A token that indicates where the output should continue from, if a previous
-     * call did not show all results. To get the next results, call
-     * <code>ListSecrets</code> again with this value.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListSecretsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A token that indicates where the output should continue from, if a previous
-     * call did not show all results. To get the next results, call
-     * <code>ListSecrets</code> again with this value.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>A token that indicates where the output should continue from, if a previous
-     * call did not show all results. To get the next results, call
-     * <code>ListSecrets</code> again with this value.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>A token that indicates where the output should continue from, if a previous
-     * call did not show all results. To get the next results, call
-     * <code>ListSecrets</code> again with this value.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>A token that indicates where the output should continue from, if a previous
-     * call did not show all results. To get the next results, call
-     * <code>ListSecrets</code> again with this value.</p>
-     */
-    inline ListSecretsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>A token that indicates where the output should continue from, if a previous
-     * call did not show all results. To get the next results, call
-     * <code>ListSecrets</code> again with this value.</p>
-     */
-    inline ListSecretsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A token that indicates where the output should continue from, if a previous
-     * call did not show all results. To get the next results, call
-     * <code>ListSecrets</code> again with this value.</p>
-     */
-    inline ListSecretsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The filters to apply to the list of secrets.</p>
      */
-    inline const Aws::Vector<Filter>& GetFilters() const{ return m_filters; }
-
-    /**
-     * <p>The filters to apply to the list of secrets.</p>
-     */
+    inline const Aws::Vector<Filter>& GetFilters() const { return m_filters; }
     inline bool FiltersHasBeenSet() const { return m_filtersHasBeenSet; }
+    template<typename FiltersT = Aws::Vector<Filter>>
+    void SetFilters(FiltersT&& value) { m_filtersHasBeenSet = true; m_filters = std::forward<FiltersT>(value); }
+    template<typename FiltersT = Aws::Vector<Filter>>
+    ListSecretsRequest& WithFilters(FiltersT&& value) { SetFilters(std::forward<FiltersT>(value)); return *this;}
+    template<typename FiltersT = Filter>
+    ListSecretsRequest& AddFilters(FiltersT&& value) { m_filtersHasBeenSet = true; m_filters.emplace_back(std::forward<FiltersT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The filters to apply to the list of secrets.</p>
-     */
-    inline void SetFilters(const Aws::Vector<Filter>& value) { m_filtersHasBeenSet = true; m_filters = value; }
-
-    /**
-     * <p>The filters to apply to the list of secrets.</p>
-     */
-    inline void SetFilters(Aws::Vector<Filter>&& value) { m_filtersHasBeenSet = true; m_filters = std::move(value); }
-
-    /**
-     * <p>The filters to apply to the list of secrets.</p>
-     */
-    inline ListSecretsRequest& WithFilters(const Aws::Vector<Filter>& value) { SetFilters(value); return *this;}
-
-    /**
-     * <p>The filters to apply to the list of secrets.</p>
-     */
-    inline ListSecretsRequest& WithFilters(Aws::Vector<Filter>&& value) { SetFilters(std::move(value)); return *this;}
-
-    /**
-     * <p>The filters to apply to the list of secrets.</p>
-     */
-    inline ListSecretsRequest& AddFilters(const Filter& value) { m_filtersHasBeenSet = true; m_filters.push_back(value); return *this; }
-
-    /**
-     * <p>The filters to apply to the list of secrets.</p>
-     */
-    inline ListSecretsRequest& AddFilters(Filter&& value) { m_filtersHasBeenSet = true; m_filters.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Secrets are listed by <code>CreatedDate</code>. </p>
      */
-    inline const SortOrderType& GetSortOrder() const{ return m_sortOrder; }
-
-    /**
-     * <p>Secrets are listed by <code>CreatedDate</code>. </p>
-     */
+    inline SortOrderType GetSortOrder() const { return m_sortOrder; }
     inline bool SortOrderHasBeenSet() const { return m_sortOrderHasBeenSet; }
-
-    /**
-     * <p>Secrets are listed by <code>CreatedDate</code>. </p>
-     */
-    inline void SetSortOrder(const SortOrderType& value) { m_sortOrderHasBeenSet = true; m_sortOrder = value; }
-
-    /**
-     * <p>Secrets are listed by <code>CreatedDate</code>. </p>
-     */
-    inline void SetSortOrder(SortOrderType&& value) { m_sortOrderHasBeenSet = true; m_sortOrder = std::move(value); }
-
-    /**
-     * <p>Secrets are listed by <code>CreatedDate</code>. </p>
-     */
-    inline ListSecretsRequest& WithSortOrder(const SortOrderType& value) { SetSortOrder(value); return *this;}
-
-    /**
-     * <p>Secrets are listed by <code>CreatedDate</code>. </p>
-     */
-    inline ListSecretsRequest& WithSortOrder(SortOrderType&& value) { SetSortOrder(std::move(value)); return *this;}
-
+    inline void SetSortOrder(SortOrderType value) { m_sortOrderHasBeenSet = true; m_sortOrder = value; }
+    inline ListSecretsRequest& WithSortOrder(SortOrderType value) { SetSortOrder(value); return *this;}
+    ///@}
   private:
 
-    bool m_includePlannedDeletion;
+    bool m_includePlannedDeletion{false};
     bool m_includePlannedDeletionHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     Aws::String m_nextToken;
@@ -237,7 +112,7 @@ namespace Model
     Aws::Vector<Filter> m_filters;
     bool m_filtersHasBeenSet = false;
 
-    SortOrderType m_sortOrder;
+    SortOrderType m_sortOrder{SortOrderType::NOT_SET};
     bool m_sortOrderHasBeenSet = false;
   };
 

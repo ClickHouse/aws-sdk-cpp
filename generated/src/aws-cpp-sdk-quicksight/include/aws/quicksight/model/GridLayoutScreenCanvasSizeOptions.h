@@ -33,124 +33,42 @@ namespace Model
   class GridLayoutScreenCanvasSizeOptions
   {
   public:
-    AWS_QUICKSIGHT_API GridLayoutScreenCanvasSizeOptions();
+    AWS_QUICKSIGHT_API GridLayoutScreenCanvasSizeOptions() = default;
     AWS_QUICKSIGHT_API GridLayoutScreenCanvasSizeOptions(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API GridLayoutScreenCanvasSizeOptions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>This value determines the layout behavior when the viewport is resized.</p>
      * <ul> <li> <p> <code>FIXED</code>: A fixed width will be used when optimizing the
-     * layout. In the Amazon QuickSight console, this option is called
+     * layout. In the QuickSight console, this option is called
      * <code>Classic</code>.</p> </li> <li> <p> <code>RESPONSIVE</code>: The width of
-     * the canvas will be responsive and optimized to the view port. In the Amazon
-     * QuickSight console, this option is called <code>Tiled</code>.</p> </li> </ul>
+     * the canvas will be responsive and optimized to the view port. In the QuickSight
+     * console, this option is called <code>Tiled</code>.</p> </li> </ul>
      */
-    inline const ResizeOption& GetResizeOption() const{ return m_resizeOption; }
-
-    /**
-     * <p>This value determines the layout behavior when the viewport is resized.</p>
-     * <ul> <li> <p> <code>FIXED</code>: A fixed width will be used when optimizing the
-     * layout. In the Amazon QuickSight console, this option is called
-     * <code>Classic</code>.</p> </li> <li> <p> <code>RESPONSIVE</code>: The width of
-     * the canvas will be responsive and optimized to the view port. In the Amazon
-     * QuickSight console, this option is called <code>Tiled</code>.</p> </li> </ul>
-     */
+    inline ResizeOption GetResizeOption() const { return m_resizeOption; }
     inline bool ResizeOptionHasBeenSet() const { return m_resizeOptionHasBeenSet; }
+    inline void SetResizeOption(ResizeOption value) { m_resizeOptionHasBeenSet = true; m_resizeOption = value; }
+    inline GridLayoutScreenCanvasSizeOptions& WithResizeOption(ResizeOption value) { SetResizeOption(value); return *this;}
+    ///@}
 
-    /**
-     * <p>This value determines the layout behavior when the viewport is resized.</p>
-     * <ul> <li> <p> <code>FIXED</code>: A fixed width will be used when optimizing the
-     * layout. In the Amazon QuickSight console, this option is called
-     * <code>Classic</code>.</p> </li> <li> <p> <code>RESPONSIVE</code>: The width of
-     * the canvas will be responsive and optimized to the view port. In the Amazon
-     * QuickSight console, this option is called <code>Tiled</code>.</p> </li> </ul>
-     */
-    inline void SetResizeOption(const ResizeOption& value) { m_resizeOptionHasBeenSet = true; m_resizeOption = value; }
-
-    /**
-     * <p>This value determines the layout behavior when the viewport is resized.</p>
-     * <ul> <li> <p> <code>FIXED</code>: A fixed width will be used when optimizing the
-     * layout. In the Amazon QuickSight console, this option is called
-     * <code>Classic</code>.</p> </li> <li> <p> <code>RESPONSIVE</code>: The width of
-     * the canvas will be responsive and optimized to the view port. In the Amazon
-     * QuickSight console, this option is called <code>Tiled</code>.</p> </li> </ul>
-     */
-    inline void SetResizeOption(ResizeOption&& value) { m_resizeOptionHasBeenSet = true; m_resizeOption = std::move(value); }
-
-    /**
-     * <p>This value determines the layout behavior when the viewport is resized.</p>
-     * <ul> <li> <p> <code>FIXED</code>: A fixed width will be used when optimizing the
-     * layout. In the Amazon QuickSight console, this option is called
-     * <code>Classic</code>.</p> </li> <li> <p> <code>RESPONSIVE</code>: The width of
-     * the canvas will be responsive and optimized to the view port. In the Amazon
-     * QuickSight console, this option is called <code>Tiled</code>.</p> </li> </ul>
-     */
-    inline GridLayoutScreenCanvasSizeOptions& WithResizeOption(const ResizeOption& value) { SetResizeOption(value); return *this;}
-
-    /**
-     * <p>This value determines the layout behavior when the viewport is resized.</p>
-     * <ul> <li> <p> <code>FIXED</code>: A fixed width will be used when optimizing the
-     * layout. In the Amazon QuickSight console, this option is called
-     * <code>Classic</code>.</p> </li> <li> <p> <code>RESPONSIVE</code>: The width of
-     * the canvas will be responsive and optimized to the view port. In the Amazon
-     * QuickSight console, this option is called <code>Tiled</code>.</p> </li> </ul>
-     */
-    inline GridLayoutScreenCanvasSizeOptions& WithResizeOption(ResizeOption&& value) { SetResizeOption(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The width that the view port will be optimized for when the layout
      * renders.</p>
      */
-    inline const Aws::String& GetOptimizedViewPortWidth() const{ return m_optimizedViewPortWidth; }
-
-    /**
-     * <p>The width that the view port will be optimized for when the layout
-     * renders.</p>
-     */
+    inline const Aws::String& GetOptimizedViewPortWidth() const { return m_optimizedViewPortWidth; }
     inline bool OptimizedViewPortWidthHasBeenSet() const { return m_optimizedViewPortWidthHasBeenSet; }
-
-    /**
-     * <p>The width that the view port will be optimized for when the layout
-     * renders.</p>
-     */
-    inline void SetOptimizedViewPortWidth(const Aws::String& value) { m_optimizedViewPortWidthHasBeenSet = true; m_optimizedViewPortWidth = value; }
-
-    /**
-     * <p>The width that the view port will be optimized for when the layout
-     * renders.</p>
-     */
-    inline void SetOptimizedViewPortWidth(Aws::String&& value) { m_optimizedViewPortWidthHasBeenSet = true; m_optimizedViewPortWidth = std::move(value); }
-
-    /**
-     * <p>The width that the view port will be optimized for when the layout
-     * renders.</p>
-     */
-    inline void SetOptimizedViewPortWidth(const char* value) { m_optimizedViewPortWidthHasBeenSet = true; m_optimizedViewPortWidth.assign(value); }
-
-    /**
-     * <p>The width that the view port will be optimized for when the layout
-     * renders.</p>
-     */
-    inline GridLayoutScreenCanvasSizeOptions& WithOptimizedViewPortWidth(const Aws::String& value) { SetOptimizedViewPortWidth(value); return *this;}
-
-    /**
-     * <p>The width that the view port will be optimized for when the layout
-     * renders.</p>
-     */
-    inline GridLayoutScreenCanvasSizeOptions& WithOptimizedViewPortWidth(Aws::String&& value) { SetOptimizedViewPortWidth(std::move(value)); return *this;}
-
-    /**
-     * <p>The width that the view port will be optimized for when the layout
-     * renders.</p>
-     */
-    inline GridLayoutScreenCanvasSizeOptions& WithOptimizedViewPortWidth(const char* value) { SetOptimizedViewPortWidth(value); return *this;}
-
+    template<typename OptimizedViewPortWidthT = Aws::String>
+    void SetOptimizedViewPortWidth(OptimizedViewPortWidthT&& value) { m_optimizedViewPortWidthHasBeenSet = true; m_optimizedViewPortWidth = std::forward<OptimizedViewPortWidthT>(value); }
+    template<typename OptimizedViewPortWidthT = Aws::String>
+    GridLayoutScreenCanvasSizeOptions& WithOptimizedViewPortWidth(OptimizedViewPortWidthT&& value) { SetOptimizedViewPortWidth(std::forward<OptimizedViewPortWidthT>(value)); return *this;}
+    ///@}
   private:
 
-    ResizeOption m_resizeOption;
+    ResizeOption m_resizeOption{ResizeOption::NOT_SET};
     bool m_resizeOptionHasBeenSet = false;
 
     Aws::String m_optimizedViewPortWidth;

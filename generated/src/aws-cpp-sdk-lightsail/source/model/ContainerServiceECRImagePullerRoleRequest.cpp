@@ -18,15 +18,7 @@ namespace Lightsail
 namespace Model
 {
 
-ContainerServiceECRImagePullerRoleRequest::ContainerServiceECRImagePullerRoleRequest() : 
-    m_isActive(false),
-    m_isActiveHasBeenSet(false)
-{
-}
-
-ContainerServiceECRImagePullerRoleRequest::ContainerServiceECRImagePullerRoleRequest(JsonView jsonValue) : 
-    m_isActive(false),
-    m_isActiveHasBeenSet(false)
+ContainerServiceECRImagePullerRoleRequest::ContainerServiceECRImagePullerRoleRequest(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ContainerServiceECRImagePullerRoleRequest& ContainerServiceECRImagePullerRoleReq
   if(jsonValue.ValueExists("isActive"))
   {
     m_isActive = jsonValue.GetBool("isActive");
-
     m_isActiveHasBeenSet = true;
   }
-
   return *this;
 }
 

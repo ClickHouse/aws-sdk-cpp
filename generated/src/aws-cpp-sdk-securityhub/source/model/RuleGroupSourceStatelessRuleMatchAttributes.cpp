@@ -18,23 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-RuleGroupSourceStatelessRuleMatchAttributes::RuleGroupSourceStatelessRuleMatchAttributes() : 
-    m_destinationPortsHasBeenSet(false),
-    m_destinationsHasBeenSet(false),
-    m_protocolsHasBeenSet(false),
-    m_sourcePortsHasBeenSet(false),
-    m_sourcesHasBeenSet(false),
-    m_tcpFlagsHasBeenSet(false)
-{
-}
-
-RuleGroupSourceStatelessRuleMatchAttributes::RuleGroupSourceStatelessRuleMatchAttributes(JsonView jsonValue) : 
-    m_destinationPortsHasBeenSet(false),
-    m_destinationsHasBeenSet(false),
-    m_protocolsHasBeenSet(false),
-    m_sourcePortsHasBeenSet(false),
-    m_sourcesHasBeenSet(false),
-    m_tcpFlagsHasBeenSet(false)
+RuleGroupSourceStatelessRuleMatchAttributes::RuleGroupSourceStatelessRuleMatchAttributes(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -50,7 +34,6 @@ RuleGroupSourceStatelessRuleMatchAttributes& RuleGroupSourceStatelessRuleMatchAt
     }
     m_destinationPortsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Destinations"))
   {
     Aws::Utils::Array<JsonView> destinationsJsonList = jsonValue.GetArray("Destinations");
@@ -60,7 +43,6 @@ RuleGroupSourceStatelessRuleMatchAttributes& RuleGroupSourceStatelessRuleMatchAt
     }
     m_destinationsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Protocols"))
   {
     Aws::Utils::Array<JsonView> protocolsJsonList = jsonValue.GetArray("Protocols");
@@ -70,7 +52,6 @@ RuleGroupSourceStatelessRuleMatchAttributes& RuleGroupSourceStatelessRuleMatchAt
     }
     m_protocolsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SourcePorts"))
   {
     Aws::Utils::Array<JsonView> sourcePortsJsonList = jsonValue.GetArray("SourcePorts");
@@ -80,7 +61,6 @@ RuleGroupSourceStatelessRuleMatchAttributes& RuleGroupSourceStatelessRuleMatchAt
     }
     m_sourcePortsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Sources"))
   {
     Aws::Utils::Array<JsonView> sourcesJsonList = jsonValue.GetArray("Sources");
@@ -90,7 +70,6 @@ RuleGroupSourceStatelessRuleMatchAttributes& RuleGroupSourceStatelessRuleMatchAt
     }
     m_sourcesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TcpFlags"))
   {
     Aws::Utils::Array<JsonView> tcpFlagsJsonList = jsonValue.GetArray("TcpFlags");
@@ -100,7 +79,6 @@ RuleGroupSourceStatelessRuleMatchAttributes& RuleGroupSourceStatelessRuleMatchAt
     }
     m_tcpFlagsHasBeenSet = true;
   }
-
   return *this;
 }
 

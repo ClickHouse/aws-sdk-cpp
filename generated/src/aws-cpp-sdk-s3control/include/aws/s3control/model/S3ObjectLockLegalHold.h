@@ -31,52 +31,26 @@ namespace Model
   class S3ObjectLockLegalHold
   {
   public:
-    AWS_S3CONTROL_API S3ObjectLockLegalHold();
+    AWS_S3CONTROL_API S3ObjectLockLegalHold() = default;
     AWS_S3CONTROL_API S3ObjectLockLegalHold(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3CONTROL_API S3ObjectLockLegalHold& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3CONTROL_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>The Object Lock legal hold status to be applied to all objects in the Batch
      * Operations job.</p>
      */
-    inline const S3ObjectLockLegalHoldStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The Object Lock legal hold status to be applied to all objects in the Batch
-     * Operations job.</p>
-     */
+    inline S3ObjectLockLegalHoldStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p>The Object Lock legal hold status to be applied to all objects in the Batch
-     * Operations job.</p>
-     */
-    inline void SetStatus(const S3ObjectLockLegalHoldStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The Object Lock legal hold status to be applied to all objects in the Batch
-     * Operations job.</p>
-     */
-    inline void SetStatus(S3ObjectLockLegalHoldStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The Object Lock legal hold status to be applied to all objects in the Batch
-     * Operations job.</p>
-     */
-    inline S3ObjectLockLegalHold& WithStatus(const S3ObjectLockLegalHoldStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The Object Lock legal hold status to be applied to all objects in the Batch
-     * Operations job.</p>
-     */
-    inline S3ObjectLockLegalHold& WithStatus(S3ObjectLockLegalHoldStatus&& value) { SetStatus(std::move(value)); return *this;}
-
+    inline void SetStatus(S3ObjectLockLegalHoldStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline S3ObjectLockLegalHold& WithStatus(S3ObjectLockLegalHoldStatus value) { SetStatus(value); return *this;}
+    ///@}
   private:
 
-    S3ObjectLockLegalHoldStatus m_status;
+    S3ObjectLockLegalHoldStatus m_status{S3ObjectLockLegalHoldStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
   };
 

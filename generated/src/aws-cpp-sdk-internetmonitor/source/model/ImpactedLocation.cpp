@@ -18,47 +18,7 @@ namespace InternetMonitor
 namespace Model
 {
 
-ImpactedLocation::ImpactedLocation() : 
-    m_aSNameHasBeenSet(false),
-    m_aSNumber(0),
-    m_aSNumberHasBeenSet(false),
-    m_countryHasBeenSet(false),
-    m_subdivisionHasBeenSet(false),
-    m_metroHasBeenSet(false),
-    m_cityHasBeenSet(false),
-    m_latitude(0.0),
-    m_latitudeHasBeenSet(false),
-    m_longitude(0.0),
-    m_longitudeHasBeenSet(false),
-    m_countryCodeHasBeenSet(false),
-    m_subdivisionCodeHasBeenSet(false),
-    m_serviceLocationHasBeenSet(false),
-    m_status(HealthEventStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_causedByHasBeenSet(false),
-    m_internetHealthHasBeenSet(false)
-{
-}
-
-ImpactedLocation::ImpactedLocation(JsonView jsonValue) : 
-    m_aSNameHasBeenSet(false),
-    m_aSNumber(0),
-    m_aSNumberHasBeenSet(false),
-    m_countryHasBeenSet(false),
-    m_subdivisionHasBeenSet(false),
-    m_metroHasBeenSet(false),
-    m_cityHasBeenSet(false),
-    m_latitude(0.0),
-    m_latitudeHasBeenSet(false),
-    m_longitude(0.0),
-    m_longitudeHasBeenSet(false),
-    m_countryCodeHasBeenSet(false),
-    m_subdivisionCodeHasBeenSet(false),
-    m_serviceLocationHasBeenSet(false),
-    m_status(HealthEventStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_causedByHasBeenSet(false),
-    m_internetHealthHasBeenSet(false)
+ImpactedLocation::ImpactedLocation(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -68,101 +28,82 @@ ImpactedLocation& ImpactedLocation::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ASName"))
   {
     m_aSName = jsonValue.GetString("ASName");
-
     m_aSNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ASNumber"))
   {
     m_aSNumber = jsonValue.GetInt64("ASNumber");
-
     m_aSNumberHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Country"))
   {
     m_country = jsonValue.GetString("Country");
-
     m_countryHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Subdivision"))
   {
     m_subdivision = jsonValue.GetString("Subdivision");
-
     m_subdivisionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Metro"))
   {
     m_metro = jsonValue.GetString("Metro");
-
     m_metroHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("City"))
   {
     m_city = jsonValue.GetString("City");
-
     m_cityHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Latitude"))
   {
     m_latitude = jsonValue.GetDouble("Latitude");
-
     m_latitudeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Longitude"))
   {
     m_longitude = jsonValue.GetDouble("Longitude");
-
     m_longitudeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CountryCode"))
   {
     m_countryCode = jsonValue.GetString("CountryCode");
-
     m_countryCodeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SubdivisionCode"))
   {
     m_subdivisionCode = jsonValue.GetString("SubdivisionCode");
-
     m_subdivisionCodeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ServiceLocation"))
   {
     m_serviceLocation = jsonValue.GetString("ServiceLocation");
-
     m_serviceLocationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Status"))
   {
     m_status = HealthEventStatusMapper::GetHealthEventStatusForName(jsonValue.GetString("Status"));
-
     m_statusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CausedBy"))
   {
     m_causedBy = jsonValue.GetObject("CausedBy");
-
     m_causedByHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("InternetHealth"))
   {
     m_internetHealth = jsonValue.GetObject("InternetHealth");
-
     m_internetHealthHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("Ipv4Prefixes"))
+  {
+    Aws::Utils::Array<JsonView> ipv4PrefixesJsonList = jsonValue.GetArray("Ipv4Prefixes");
+    for(unsigned ipv4PrefixesIndex = 0; ipv4PrefixesIndex < ipv4PrefixesJsonList.GetLength(); ++ipv4PrefixesIndex)
+    {
+      m_ipv4Prefixes.push_back(ipv4PrefixesJsonList[ipv4PrefixesIndex].AsString());
+    }
+    m_ipv4PrefixesHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -250,6 +191,17 @@ JsonValue ImpactedLocation::Jsonize() const
   if(m_internetHealthHasBeenSet)
   {
    payload.WithObject("InternetHealth", m_internetHealth.Jsonize());
+
+  }
+
+  if(m_ipv4PrefixesHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> ipv4PrefixesJsonList(m_ipv4Prefixes.size());
+   for(unsigned ipv4PrefixesIndex = 0; ipv4PrefixesIndex < ipv4PrefixesJsonList.GetLength(); ++ipv4PrefixesIndex)
+   {
+     ipv4PrefixesJsonList[ipv4PrefixesIndex].AsString(m_ipv4Prefixes[ipv4PrefixesIndex]);
+   }
+   payload.WithArray("Ipv4Prefixes", std::move(ipv4PrefixesJsonList));
 
   }
 

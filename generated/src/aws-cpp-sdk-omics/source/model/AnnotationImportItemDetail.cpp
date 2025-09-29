@@ -18,17 +18,7 @@ namespace Omics
 namespace Model
 {
 
-AnnotationImportItemDetail::AnnotationImportItemDetail() : 
-    m_sourceHasBeenSet(false),
-    m_jobStatus(JobStatus::NOT_SET),
-    m_jobStatusHasBeenSet(false)
-{
-}
-
-AnnotationImportItemDetail::AnnotationImportItemDetail(JsonView jsonValue) : 
-    m_sourceHasBeenSet(false),
-    m_jobStatus(JobStatus::NOT_SET),
-    m_jobStatusHasBeenSet(false)
+AnnotationImportItemDetail::AnnotationImportItemDetail(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ AnnotationImportItemDetail& AnnotationImportItemDetail::operator =(JsonView json
   if(jsonValue.ValueExists("source"))
   {
     m_source = jsonValue.GetString("source");
-
     m_sourceHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("jobStatus"))
   {
     m_jobStatus = JobStatusMapper::GetJobStatusForName(jsonValue.GetString("jobStatus"));
-
     m_jobStatusHasBeenSet = true;
   }
-
   return *this;
 }
 

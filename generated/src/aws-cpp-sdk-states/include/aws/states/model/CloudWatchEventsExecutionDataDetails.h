@@ -30,39 +30,25 @@ namespace Model
   class CloudWatchEventsExecutionDataDetails
   {
   public:
-    AWS_SFN_API CloudWatchEventsExecutionDataDetails();
+    AWS_SFN_API CloudWatchEventsExecutionDataDetails() = default;
     AWS_SFN_API CloudWatchEventsExecutionDataDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SFN_API CloudWatchEventsExecutionDataDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SFN_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Indicates whether input or output was included in the response. Always
      * <code>true</code> for API calls. </p>
      */
-    inline bool GetIncluded() const{ return m_included; }
-
-    /**
-     * <p>Indicates whether input or output was included in the response. Always
-     * <code>true</code> for API calls. </p>
-     */
+    inline bool GetIncluded() const { return m_included; }
     inline bool IncludedHasBeenSet() const { return m_includedHasBeenSet; }
-
-    /**
-     * <p>Indicates whether input or output was included in the response. Always
-     * <code>true</code> for API calls. </p>
-     */
     inline void SetIncluded(bool value) { m_includedHasBeenSet = true; m_included = value; }
-
-    /**
-     * <p>Indicates whether input or output was included in the response. Always
-     * <code>true</code> for API calls. </p>
-     */
     inline CloudWatchEventsExecutionDataDetails& WithIncluded(bool value) { SetIncluded(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_included;
+    bool m_included{false};
     bool m_includedHasBeenSet = false;
   };
 

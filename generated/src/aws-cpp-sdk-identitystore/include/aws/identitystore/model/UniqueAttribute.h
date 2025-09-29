@@ -33,97 +33,37 @@ namespace Model
   class UniqueAttribute
   {
   public:
-    AWS_IDENTITYSTORE_API UniqueAttribute();
+    AWS_IDENTITYSTORE_API UniqueAttribute() = default;
     AWS_IDENTITYSTORE_API UniqueAttribute(Aws::Utils::Json::JsonView jsonValue);
     AWS_IDENTITYSTORE_API UniqueAttribute& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IDENTITYSTORE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A string representation of the path to a given attribute or sub-attribute.
      * Supports JMESPath.</p>
      */
-    inline const Aws::String& GetAttributePath() const{ return m_attributePath; }
-
-    /**
-     * <p>A string representation of the path to a given attribute or sub-attribute.
-     * Supports JMESPath.</p>
-     */
+    inline const Aws::String& GetAttributePath() const { return m_attributePath; }
     inline bool AttributePathHasBeenSet() const { return m_attributePathHasBeenSet; }
+    template<typename AttributePathT = Aws::String>
+    void SetAttributePath(AttributePathT&& value) { m_attributePathHasBeenSet = true; m_attributePath = std::forward<AttributePathT>(value); }
+    template<typename AttributePathT = Aws::String>
+    UniqueAttribute& WithAttributePath(AttributePathT&& value) { SetAttributePath(std::forward<AttributePathT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A string representation of the path to a given attribute or sub-attribute.
-     * Supports JMESPath.</p>
-     */
-    inline void SetAttributePath(const Aws::String& value) { m_attributePathHasBeenSet = true; m_attributePath = value; }
-
-    /**
-     * <p>A string representation of the path to a given attribute or sub-attribute.
-     * Supports JMESPath.</p>
-     */
-    inline void SetAttributePath(Aws::String&& value) { m_attributePathHasBeenSet = true; m_attributePath = std::move(value); }
-
-    /**
-     * <p>A string representation of the path to a given attribute or sub-attribute.
-     * Supports JMESPath.</p>
-     */
-    inline void SetAttributePath(const char* value) { m_attributePathHasBeenSet = true; m_attributePath.assign(value); }
-
-    /**
-     * <p>A string representation of the path to a given attribute or sub-attribute.
-     * Supports JMESPath.</p>
-     */
-    inline UniqueAttribute& WithAttributePath(const Aws::String& value) { SetAttributePath(value); return *this;}
-
-    /**
-     * <p>A string representation of the path to a given attribute or sub-attribute.
-     * Supports JMESPath.</p>
-     */
-    inline UniqueAttribute& WithAttributePath(Aws::String&& value) { SetAttributePath(std::move(value)); return *this;}
-
-    /**
-     * <p>A string representation of the path to a given attribute or sub-attribute.
-     * Supports JMESPath.</p>
-     */
-    inline UniqueAttribute& WithAttributePath(const char* value) { SetAttributePath(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The value of the attribute. This is a <code>Document</code> type. This type
      * is not supported by Java V1, Go V1, and older versions of the CLI.</p>
      */
-    inline Aws::Utils::DocumentView GetAttributeValue() const{ return m_attributeValue; }
-
-    /**
-     * <p>The value of the attribute. This is a <code>Document</code> type. This type
-     * is not supported by Java V1, Go V1, and older versions of the CLI.</p>
-     */
+    inline Aws::Utils::DocumentView GetAttributeValue() const { return m_attributeValue; }
     inline bool AttributeValueHasBeenSet() const { return m_attributeValueHasBeenSet; }
-
-    /**
-     * <p>The value of the attribute. This is a <code>Document</code> type. This type
-     * is not supported by Java V1, Go V1, and older versions of the CLI.</p>
-     */
-    inline void SetAttributeValue(const Aws::Utils::Document& value) { m_attributeValueHasBeenSet = true; m_attributeValue = value; }
-
-    /**
-     * <p>The value of the attribute. This is a <code>Document</code> type. This type
-     * is not supported by Java V1, Go V1, and older versions of the CLI.</p>
-     */
-    inline void SetAttributeValue(Aws::Utils::Document&& value) { m_attributeValueHasBeenSet = true; m_attributeValue = std::move(value); }
-
-    /**
-     * <p>The value of the attribute. This is a <code>Document</code> type. This type
-     * is not supported by Java V1, Go V1, and older versions of the CLI.</p>
-     */
-    inline UniqueAttribute& WithAttributeValue(const Aws::Utils::Document& value) { SetAttributeValue(value); return *this;}
-
-    /**
-     * <p>The value of the attribute. This is a <code>Document</code> type. This type
-     * is not supported by Java V1, Go V1, and older versions of the CLI.</p>
-     */
-    inline UniqueAttribute& WithAttributeValue(Aws::Utils::Document&& value) { SetAttributeValue(std::move(value)); return *this;}
-
+    template<typename AttributeValueT = Aws::Utils::Document>
+    void SetAttributeValue(AttributeValueT&& value) { m_attributeValueHasBeenSet = true; m_attributeValue = std::forward<AttributeValueT>(value); }
+    template<typename AttributeValueT = Aws::Utils::Document>
+    UniqueAttribute& WithAttributeValue(AttributeValueT&& value) { SetAttributeValue(std::forward<AttributeValueT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_attributePath;

@@ -6,6 +6,7 @@
 #pragma once
 #include <aws/qconnect/QConnect_EXPORTS.h>
 #include <aws/qconnect/model/AppIntegrationsConfiguration.h>
+#include <aws/qconnect/model/ManagedSourceConfiguration.h>
 #include <utility>
 
 namespace Aws
@@ -32,52 +33,43 @@ namespace Model
   class SourceConfiguration
   {
   public:
-    AWS_QCONNECT_API SourceConfiguration();
+    AWS_QCONNECT_API SourceConfiguration() = default;
     AWS_QCONNECT_API SourceConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_QCONNECT_API SourceConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QCONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Configuration information for Amazon AppIntegrations to automatically ingest
      * content.</p>
      */
-    inline const AppIntegrationsConfiguration& GetAppIntegrations() const{ return m_appIntegrations; }
-
-    /**
-     * <p>Configuration information for Amazon AppIntegrations to automatically ingest
-     * content.</p>
-     */
+    inline const AppIntegrationsConfiguration& GetAppIntegrations() const { return m_appIntegrations; }
     inline bool AppIntegrationsHasBeenSet() const { return m_appIntegrationsHasBeenSet; }
+    template<typename AppIntegrationsT = AppIntegrationsConfiguration>
+    void SetAppIntegrations(AppIntegrationsT&& value) { m_appIntegrationsHasBeenSet = true; m_appIntegrations = std::forward<AppIntegrationsT>(value); }
+    template<typename AppIntegrationsT = AppIntegrationsConfiguration>
+    SourceConfiguration& WithAppIntegrations(AppIntegrationsT&& value) { SetAppIntegrations(std::forward<AppIntegrationsT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Configuration information for Amazon AppIntegrations to automatically ingest
-     * content.</p>
+     * <p>Source configuration for managed resources.</p>
      */
-    inline void SetAppIntegrations(const AppIntegrationsConfiguration& value) { m_appIntegrationsHasBeenSet = true; m_appIntegrations = value; }
-
-    /**
-     * <p>Configuration information for Amazon AppIntegrations to automatically ingest
-     * content.</p>
-     */
-    inline void SetAppIntegrations(AppIntegrationsConfiguration&& value) { m_appIntegrationsHasBeenSet = true; m_appIntegrations = std::move(value); }
-
-    /**
-     * <p>Configuration information for Amazon AppIntegrations to automatically ingest
-     * content.</p>
-     */
-    inline SourceConfiguration& WithAppIntegrations(const AppIntegrationsConfiguration& value) { SetAppIntegrations(value); return *this;}
-
-    /**
-     * <p>Configuration information for Amazon AppIntegrations to automatically ingest
-     * content.</p>
-     */
-    inline SourceConfiguration& WithAppIntegrations(AppIntegrationsConfiguration&& value) { SetAppIntegrations(std::move(value)); return *this;}
-
+    inline const ManagedSourceConfiguration& GetManagedSourceConfiguration() const { return m_managedSourceConfiguration; }
+    inline bool ManagedSourceConfigurationHasBeenSet() const { return m_managedSourceConfigurationHasBeenSet; }
+    template<typename ManagedSourceConfigurationT = ManagedSourceConfiguration>
+    void SetManagedSourceConfiguration(ManagedSourceConfigurationT&& value) { m_managedSourceConfigurationHasBeenSet = true; m_managedSourceConfiguration = std::forward<ManagedSourceConfigurationT>(value); }
+    template<typename ManagedSourceConfigurationT = ManagedSourceConfiguration>
+    SourceConfiguration& WithManagedSourceConfiguration(ManagedSourceConfigurationT&& value) { SetManagedSourceConfiguration(std::forward<ManagedSourceConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     AppIntegrationsConfiguration m_appIntegrations;
     bool m_appIntegrationsHasBeenSet = false;
+
+    ManagedSourceConfiguration m_managedSourceConfiguration;
+    bool m_managedSourceConfigurationHasBeenSet = false;
   };
 
 } // namespace Model

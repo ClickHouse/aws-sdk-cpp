@@ -20,13 +20,7 @@ namespace Redshift
 namespace Model
 {
 
-AttributeValueTarget::AttributeValueTarget() : 
-    m_attributeValueHasBeenSet(false)
-{
-}
-
-AttributeValueTarget::AttributeValueTarget(const XmlNode& xmlNode) : 
-    m_attributeValueHasBeenSet(false)
+AttributeValueTarget::AttributeValueTarget(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

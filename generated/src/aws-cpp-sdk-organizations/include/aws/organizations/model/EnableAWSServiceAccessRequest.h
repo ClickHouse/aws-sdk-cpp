@@ -21,7 +21,7 @@ namespace Model
   class EnableAWSServiceAccessRequest : public OrganizationsRequest
   {
   public:
-    AWS_ORGANIZATIONS_API EnableAWSServiceAccessRequest();
+    AWS_ORGANIZATIONS_API EnableAWSServiceAccessRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,62 +34,19 @@ namespace Model
     AWS_ORGANIZATIONS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The service principal name of the Amazon Web Services service for which you
      * want to enable integration with your organization. This is typically in the form
      * of a URL, such as <code> <i>service-abbreviation</i>.amazonaws.com</code>.</p>
      */
-    inline const Aws::String& GetServicePrincipal() const{ return m_servicePrincipal; }
-
-    /**
-     * <p>The service principal name of the Amazon Web Services service for which you
-     * want to enable integration with your organization. This is typically in the form
-     * of a URL, such as <code> <i>service-abbreviation</i>.amazonaws.com</code>.</p>
-     */
+    inline const Aws::String& GetServicePrincipal() const { return m_servicePrincipal; }
     inline bool ServicePrincipalHasBeenSet() const { return m_servicePrincipalHasBeenSet; }
-
-    /**
-     * <p>The service principal name of the Amazon Web Services service for which you
-     * want to enable integration with your organization. This is typically in the form
-     * of a URL, such as <code> <i>service-abbreviation</i>.amazonaws.com</code>.</p>
-     */
-    inline void SetServicePrincipal(const Aws::String& value) { m_servicePrincipalHasBeenSet = true; m_servicePrincipal = value; }
-
-    /**
-     * <p>The service principal name of the Amazon Web Services service for which you
-     * want to enable integration with your organization. This is typically in the form
-     * of a URL, such as <code> <i>service-abbreviation</i>.amazonaws.com</code>.</p>
-     */
-    inline void SetServicePrincipal(Aws::String&& value) { m_servicePrincipalHasBeenSet = true; m_servicePrincipal = std::move(value); }
-
-    /**
-     * <p>The service principal name of the Amazon Web Services service for which you
-     * want to enable integration with your organization. This is typically in the form
-     * of a URL, such as <code> <i>service-abbreviation</i>.amazonaws.com</code>.</p>
-     */
-    inline void SetServicePrincipal(const char* value) { m_servicePrincipalHasBeenSet = true; m_servicePrincipal.assign(value); }
-
-    /**
-     * <p>The service principal name of the Amazon Web Services service for which you
-     * want to enable integration with your organization. This is typically in the form
-     * of a URL, such as <code> <i>service-abbreviation</i>.amazonaws.com</code>.</p>
-     */
-    inline EnableAWSServiceAccessRequest& WithServicePrincipal(const Aws::String& value) { SetServicePrincipal(value); return *this;}
-
-    /**
-     * <p>The service principal name of the Amazon Web Services service for which you
-     * want to enable integration with your organization. This is typically in the form
-     * of a URL, such as <code> <i>service-abbreviation</i>.amazonaws.com</code>.</p>
-     */
-    inline EnableAWSServiceAccessRequest& WithServicePrincipal(Aws::String&& value) { SetServicePrincipal(std::move(value)); return *this;}
-
-    /**
-     * <p>The service principal name of the Amazon Web Services service for which you
-     * want to enable integration with your organization. This is typically in the form
-     * of a URL, such as <code> <i>service-abbreviation</i>.amazonaws.com</code>.</p>
-     */
-    inline EnableAWSServiceAccessRequest& WithServicePrincipal(const char* value) { SetServicePrincipal(value); return *this;}
-
+    template<typename ServicePrincipalT = Aws::String>
+    void SetServicePrincipal(ServicePrincipalT&& value) { m_servicePrincipalHasBeenSet = true; m_servicePrincipal = std::forward<ServicePrincipalT>(value); }
+    template<typename ServicePrincipalT = Aws::String>
+    EnableAWSServiceAccessRequest& WithServicePrincipal(ServicePrincipalT&& value) { SetServicePrincipal(std::forward<ServicePrincipalT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_servicePrincipal;

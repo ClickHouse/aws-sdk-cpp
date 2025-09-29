@@ -32,54 +32,25 @@ namespace Model
   class SlotNotAvailableException
   {
   public:
-    AWS_OPENSEARCHSERVICE_API SlotNotAvailableException();
+    AWS_OPENSEARCHSERVICE_API SlotNotAvailableException() = default;
     AWS_OPENSEARCHSERVICE_API SlotNotAvailableException(Aws::Utils::Json::JsonView jsonValue);
     AWS_OPENSEARCHSERVICE_API SlotNotAvailableException& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_OPENSEARCHSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Alternate time slots during which OpenSearch Service has available capacity
      * to schedule a domain action.</p>
      */
-    inline const Aws::Vector<long long>& GetSlotSuggestions() const{ return m_slotSuggestions; }
-
-    /**
-     * <p>Alternate time slots during which OpenSearch Service has available capacity
-     * to schedule a domain action.</p>
-     */
+    inline const Aws::Vector<long long>& GetSlotSuggestions() const { return m_slotSuggestions; }
     inline bool SlotSuggestionsHasBeenSet() const { return m_slotSuggestionsHasBeenSet; }
-
-    /**
-     * <p>Alternate time slots during which OpenSearch Service has available capacity
-     * to schedule a domain action.</p>
-     */
-    inline void SetSlotSuggestions(const Aws::Vector<long long>& value) { m_slotSuggestionsHasBeenSet = true; m_slotSuggestions = value; }
-
-    /**
-     * <p>Alternate time slots during which OpenSearch Service has available capacity
-     * to schedule a domain action.</p>
-     */
-    inline void SetSlotSuggestions(Aws::Vector<long long>&& value) { m_slotSuggestionsHasBeenSet = true; m_slotSuggestions = std::move(value); }
-
-    /**
-     * <p>Alternate time slots during which OpenSearch Service has available capacity
-     * to schedule a domain action.</p>
-     */
-    inline SlotNotAvailableException& WithSlotSuggestions(const Aws::Vector<long long>& value) { SetSlotSuggestions(value); return *this;}
-
-    /**
-     * <p>Alternate time slots during which OpenSearch Service has available capacity
-     * to schedule a domain action.</p>
-     */
-    inline SlotNotAvailableException& WithSlotSuggestions(Aws::Vector<long long>&& value) { SetSlotSuggestions(std::move(value)); return *this;}
-
-    /**
-     * <p>Alternate time slots during which OpenSearch Service has available capacity
-     * to schedule a domain action.</p>
-     */
+    template<typename SlotSuggestionsT = Aws::Vector<long long>>
+    void SetSlotSuggestions(SlotSuggestionsT&& value) { m_slotSuggestionsHasBeenSet = true; m_slotSuggestions = std::forward<SlotSuggestionsT>(value); }
+    template<typename SlotSuggestionsT = Aws::Vector<long long>>
+    SlotNotAvailableException& WithSlotSuggestions(SlotSuggestionsT&& value) { SetSlotSuggestions(std::forward<SlotSuggestionsT>(value)); return *this;}
     inline SlotNotAvailableException& AddSlotSuggestions(long long value) { m_slotSuggestionsHasBeenSet = true; m_slotSuggestions.push_back(value); return *this; }
-
+    ///@}
   private:
 
     Aws::Vector<long long> m_slotSuggestions;

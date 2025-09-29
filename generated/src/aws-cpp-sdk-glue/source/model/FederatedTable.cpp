@@ -18,17 +18,7 @@ namespace Glue
 namespace Model
 {
 
-FederatedTable::FederatedTable() : 
-    m_identifierHasBeenSet(false),
-    m_databaseIdentifierHasBeenSet(false),
-    m_connectionNameHasBeenSet(false)
-{
-}
-
-FederatedTable::FederatedTable(JsonView jsonValue) : 
-    m_identifierHasBeenSet(false),
-    m_databaseIdentifierHasBeenSet(false),
-    m_connectionNameHasBeenSet(false)
+FederatedTable::FederatedTable(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,23 @@ FederatedTable& FederatedTable::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Identifier"))
   {
     m_identifier = jsonValue.GetString("Identifier");
-
     m_identifierHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DatabaseIdentifier"))
   {
     m_databaseIdentifier = jsonValue.GetString("DatabaseIdentifier");
-
     m_databaseIdentifierHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ConnectionName"))
   {
     m_connectionName = jsonValue.GetString("ConnectionName");
-
     m_connectionNameHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("ConnectionType"))
+  {
+    m_connectionType = jsonValue.GetString("ConnectionType");
+    m_connectionTypeHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -78,6 +67,12 @@ JsonValue FederatedTable::Jsonize() const
   if(m_connectionNameHasBeenSet)
   {
    payload.WithString("ConnectionName", m_connectionName);
+
+  }
+
+  if(m_connectionTypeHasBeenSet)
+  {
+   payload.WithString("ConnectionType", m_connectionType);
 
   }
 

@@ -20,39 +20,7 @@ namespace EC2
 namespace Model
 {
 
-IpamAddressHistoryRecord::IpamAddressHistoryRecord() : 
-    m_resourceOwnerIdHasBeenSet(false),
-    m_resourceRegionHasBeenSet(false),
-    m_resourceType(IpamAddressHistoryResourceType::NOT_SET),
-    m_resourceTypeHasBeenSet(false),
-    m_resourceIdHasBeenSet(false),
-    m_resourceCidrHasBeenSet(false),
-    m_resourceNameHasBeenSet(false),
-    m_resourceComplianceStatus(IpamComplianceStatus::NOT_SET),
-    m_resourceComplianceStatusHasBeenSet(false),
-    m_resourceOverlapStatus(IpamOverlapStatus::NOT_SET),
-    m_resourceOverlapStatusHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_sampledStartTimeHasBeenSet(false),
-    m_sampledEndTimeHasBeenSet(false)
-{
-}
-
-IpamAddressHistoryRecord::IpamAddressHistoryRecord(const XmlNode& xmlNode) : 
-    m_resourceOwnerIdHasBeenSet(false),
-    m_resourceRegionHasBeenSet(false),
-    m_resourceType(IpamAddressHistoryResourceType::NOT_SET),
-    m_resourceTypeHasBeenSet(false),
-    m_resourceIdHasBeenSet(false),
-    m_resourceCidrHasBeenSet(false),
-    m_resourceNameHasBeenSet(false),
-    m_resourceComplianceStatus(IpamComplianceStatus::NOT_SET),
-    m_resourceComplianceStatusHasBeenSet(false),
-    m_resourceOverlapStatus(IpamOverlapStatus::NOT_SET),
-    m_resourceOverlapStatusHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_sampledStartTimeHasBeenSet(false),
-    m_sampledEndTimeHasBeenSet(false)
+IpamAddressHistoryRecord::IpamAddressHistoryRecord(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -78,7 +46,7 @@ IpamAddressHistoryRecord& IpamAddressHistoryRecord::operator =(const XmlNode& xm
     XmlNode resourceTypeNode = resultNode.FirstChild("resourceType");
     if(!resourceTypeNode.IsNull())
     {
-      m_resourceType = IpamAddressHistoryResourceTypeMapper::GetIpamAddressHistoryResourceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(resourceTypeNode.GetText()).c_str()).c_str());
+      m_resourceType = IpamAddressHistoryResourceTypeMapper::GetIpamAddressHistoryResourceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(resourceTypeNode.GetText()).c_str()));
       m_resourceTypeHasBeenSet = true;
     }
     XmlNode resourceIdNode = resultNode.FirstChild("resourceId");
@@ -102,13 +70,13 @@ IpamAddressHistoryRecord& IpamAddressHistoryRecord::operator =(const XmlNode& xm
     XmlNode resourceComplianceStatusNode = resultNode.FirstChild("resourceComplianceStatus");
     if(!resourceComplianceStatusNode.IsNull())
     {
-      m_resourceComplianceStatus = IpamComplianceStatusMapper::GetIpamComplianceStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(resourceComplianceStatusNode.GetText()).c_str()).c_str());
+      m_resourceComplianceStatus = IpamComplianceStatusMapper::GetIpamComplianceStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(resourceComplianceStatusNode.GetText()).c_str()));
       m_resourceComplianceStatusHasBeenSet = true;
     }
     XmlNode resourceOverlapStatusNode = resultNode.FirstChild("resourceOverlapStatus");
     if(!resourceOverlapStatusNode.IsNull())
     {
-      m_resourceOverlapStatus = IpamOverlapStatusMapper::GetIpamOverlapStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(resourceOverlapStatusNode.GetText()).c_str()).c_str());
+      m_resourceOverlapStatus = IpamOverlapStatusMapper::GetIpamOverlapStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(resourceOverlapStatusNode.GetText()).c_str()));
       m_resourceOverlapStatusHasBeenSet = true;
     }
     XmlNode vpcIdNode = resultNode.FirstChild("vpcId");
@@ -148,7 +116,7 @@ void IpamAddressHistoryRecord::OutputToStream(Aws::OStream& oStream, const char*
 
   if(m_resourceTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ResourceType=" << IpamAddressHistoryResourceTypeMapper::GetNameForIpamAddressHistoryResourceType(m_resourceType) << "&";
+      oStream << location << index << locationValue << ".ResourceType=" << StringUtils::URLEncode(IpamAddressHistoryResourceTypeMapper::GetNameForIpamAddressHistoryResourceType(m_resourceType)) << "&";
   }
 
   if(m_resourceIdHasBeenSet)
@@ -168,12 +136,12 @@ void IpamAddressHistoryRecord::OutputToStream(Aws::OStream& oStream, const char*
 
   if(m_resourceComplianceStatusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ResourceComplianceStatus=" << IpamComplianceStatusMapper::GetNameForIpamComplianceStatus(m_resourceComplianceStatus) << "&";
+      oStream << location << index << locationValue << ".ResourceComplianceStatus=" << StringUtils::URLEncode(IpamComplianceStatusMapper::GetNameForIpamComplianceStatus(m_resourceComplianceStatus)) << "&";
   }
 
   if(m_resourceOverlapStatusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ResourceOverlapStatus=" << IpamOverlapStatusMapper::GetNameForIpamOverlapStatus(m_resourceOverlapStatus) << "&";
+      oStream << location << index << locationValue << ".ResourceOverlapStatus=" << StringUtils::URLEncode(IpamOverlapStatusMapper::GetNameForIpamOverlapStatus(m_resourceOverlapStatus)) << "&";
   }
 
   if(m_vpcIdHasBeenSet)
@@ -205,7 +173,7 @@ void IpamAddressHistoryRecord::OutputToStream(Aws::OStream& oStream, const char*
   }
   if(m_resourceTypeHasBeenSet)
   {
-      oStream << location << ".ResourceType=" << IpamAddressHistoryResourceTypeMapper::GetNameForIpamAddressHistoryResourceType(m_resourceType) << "&";
+      oStream << location << ".ResourceType=" << StringUtils::URLEncode(IpamAddressHistoryResourceTypeMapper::GetNameForIpamAddressHistoryResourceType(m_resourceType)) << "&";
   }
   if(m_resourceIdHasBeenSet)
   {
@@ -221,11 +189,11 @@ void IpamAddressHistoryRecord::OutputToStream(Aws::OStream& oStream, const char*
   }
   if(m_resourceComplianceStatusHasBeenSet)
   {
-      oStream << location << ".ResourceComplianceStatus=" << IpamComplianceStatusMapper::GetNameForIpamComplianceStatus(m_resourceComplianceStatus) << "&";
+      oStream << location << ".ResourceComplianceStatus=" << StringUtils::URLEncode(IpamComplianceStatusMapper::GetNameForIpamComplianceStatus(m_resourceComplianceStatus)) << "&";
   }
   if(m_resourceOverlapStatusHasBeenSet)
   {
-      oStream << location << ".ResourceOverlapStatus=" << IpamOverlapStatusMapper::GetNameForIpamOverlapStatus(m_resourceOverlapStatus) << "&";
+      oStream << location << ".ResourceOverlapStatus=" << StringUtils::URLEncode(IpamOverlapStatusMapper::GetNameForIpamOverlapStatus(m_resourceOverlapStatus)) << "&";
   }
   if(m_vpcIdHasBeenSet)
   {

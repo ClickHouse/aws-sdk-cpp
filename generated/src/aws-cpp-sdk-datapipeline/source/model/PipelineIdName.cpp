@@ -18,15 +18,7 @@ namespace DataPipeline
 namespace Model
 {
 
-PipelineIdName::PipelineIdName() : 
-    m_idHasBeenSet(false),
-    m_nameHasBeenSet(false)
-{
-}
-
-PipelineIdName::PipelineIdName(JsonView jsonValue) : 
-    m_idHasBeenSet(false),
-    m_nameHasBeenSet(false)
+PipelineIdName::PipelineIdName(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ PipelineIdName& PipelineIdName::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("id"))
   {
     m_id = jsonValue.GetString("id");
-
     m_idHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   return *this;
 }
 

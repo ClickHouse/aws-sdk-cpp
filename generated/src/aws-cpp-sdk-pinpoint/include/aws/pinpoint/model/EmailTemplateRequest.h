@@ -6,7 +6,9 @@
 #pragma once
 #include <aws/pinpoint/Pinpoint_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSMap.h>
+#include <aws/pinpoint/model/MessageHeader.h>
 #include <utility>
 
 namespace Aws
@@ -33,12 +35,13 @@ namespace Model
   class EmailTemplateRequest
   {
   public:
-    AWS_PINPOINT_API EmailTemplateRequest();
+    AWS_PINPOINT_API EmailTemplateRequest() = default;
     AWS_PINPOINT_API EmailTemplateRequest(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API EmailTemplateRequest& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A JSON object that specifies the default values to use for message variables
      * in the message template. This object is a set of key-value pairs. Each key
@@ -47,144 +50,30 @@ namespace Model
      * template, you can override these defaults with message-specific and
      * address-specific variables and values.</p>
      */
-    inline const Aws::String& GetDefaultSubstitutions() const{ return m_defaultSubstitutions; }
-
-    /**
-     * <p>A JSON object that specifies the default values to use for message variables
-     * in the message template. This object is a set of key-value pairs. Each key
-     * defines a message variable in the template. The corresponding value defines the
-     * default value for that variable. When you create a message that's based on the
-     * template, you can override these defaults with message-specific and
-     * address-specific variables and values.</p>
-     */
+    inline const Aws::String& GetDefaultSubstitutions() const { return m_defaultSubstitutions; }
     inline bool DefaultSubstitutionsHasBeenSet() const { return m_defaultSubstitutionsHasBeenSet; }
+    template<typename DefaultSubstitutionsT = Aws::String>
+    void SetDefaultSubstitutions(DefaultSubstitutionsT&& value) { m_defaultSubstitutionsHasBeenSet = true; m_defaultSubstitutions = std::forward<DefaultSubstitutionsT>(value); }
+    template<typename DefaultSubstitutionsT = Aws::String>
+    EmailTemplateRequest& WithDefaultSubstitutions(DefaultSubstitutionsT&& value) { SetDefaultSubstitutions(std::forward<DefaultSubstitutionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A JSON object that specifies the default values to use for message variables
-     * in the message template. This object is a set of key-value pairs. Each key
-     * defines a message variable in the template. The corresponding value defines the
-     * default value for that variable. When you create a message that's based on the
-     * template, you can override these defaults with message-specific and
-     * address-specific variables and values.</p>
-     */
-    inline void SetDefaultSubstitutions(const Aws::String& value) { m_defaultSubstitutionsHasBeenSet = true; m_defaultSubstitutions = value; }
-
-    /**
-     * <p>A JSON object that specifies the default values to use for message variables
-     * in the message template. This object is a set of key-value pairs. Each key
-     * defines a message variable in the template. The corresponding value defines the
-     * default value for that variable. When you create a message that's based on the
-     * template, you can override these defaults with message-specific and
-     * address-specific variables and values.</p>
-     */
-    inline void SetDefaultSubstitutions(Aws::String&& value) { m_defaultSubstitutionsHasBeenSet = true; m_defaultSubstitutions = std::move(value); }
-
-    /**
-     * <p>A JSON object that specifies the default values to use for message variables
-     * in the message template. This object is a set of key-value pairs. Each key
-     * defines a message variable in the template. The corresponding value defines the
-     * default value for that variable. When you create a message that's based on the
-     * template, you can override these defaults with message-specific and
-     * address-specific variables and values.</p>
-     */
-    inline void SetDefaultSubstitutions(const char* value) { m_defaultSubstitutionsHasBeenSet = true; m_defaultSubstitutions.assign(value); }
-
-    /**
-     * <p>A JSON object that specifies the default values to use for message variables
-     * in the message template. This object is a set of key-value pairs. Each key
-     * defines a message variable in the template. The corresponding value defines the
-     * default value for that variable. When you create a message that's based on the
-     * template, you can override these defaults with message-specific and
-     * address-specific variables and values.</p>
-     */
-    inline EmailTemplateRequest& WithDefaultSubstitutions(const Aws::String& value) { SetDefaultSubstitutions(value); return *this;}
-
-    /**
-     * <p>A JSON object that specifies the default values to use for message variables
-     * in the message template. This object is a set of key-value pairs. Each key
-     * defines a message variable in the template. The corresponding value defines the
-     * default value for that variable. When you create a message that's based on the
-     * template, you can override these defaults with message-specific and
-     * address-specific variables and values.</p>
-     */
-    inline EmailTemplateRequest& WithDefaultSubstitutions(Aws::String&& value) { SetDefaultSubstitutions(std::move(value)); return *this;}
-
-    /**
-     * <p>A JSON object that specifies the default values to use for message variables
-     * in the message template. This object is a set of key-value pairs. Each key
-     * defines a message variable in the template. The corresponding value defines the
-     * default value for that variable. When you create a message that's based on the
-     * template, you can override these defaults with message-specific and
-     * address-specific variables and values.</p>
-     */
-    inline EmailTemplateRequest& WithDefaultSubstitutions(const char* value) { SetDefaultSubstitutions(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The message body, in HTML format, to use in email messages that are based on
      * the message template. We recommend using HTML format for email clients that
      * render HTML content. You can include links, formatted text, and more in an HTML
      * message.</p>
      */
-    inline const Aws::String& GetHtmlPart() const{ return m_htmlPart; }
-
-    /**
-     * <p>The message body, in HTML format, to use in email messages that are based on
-     * the message template. We recommend using HTML format for email clients that
-     * render HTML content. You can include links, formatted text, and more in an HTML
-     * message.</p>
-     */
+    inline const Aws::String& GetHtmlPart() const { return m_htmlPart; }
     inline bool HtmlPartHasBeenSet() const { return m_htmlPartHasBeenSet; }
+    template<typename HtmlPartT = Aws::String>
+    void SetHtmlPart(HtmlPartT&& value) { m_htmlPartHasBeenSet = true; m_htmlPart = std::forward<HtmlPartT>(value); }
+    template<typename HtmlPartT = Aws::String>
+    EmailTemplateRequest& WithHtmlPart(HtmlPartT&& value) { SetHtmlPart(std::forward<HtmlPartT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The message body, in HTML format, to use in email messages that are based on
-     * the message template. We recommend using HTML format for email clients that
-     * render HTML content. You can include links, formatted text, and more in an HTML
-     * message.</p>
-     */
-    inline void SetHtmlPart(const Aws::String& value) { m_htmlPartHasBeenSet = true; m_htmlPart = value; }
-
-    /**
-     * <p>The message body, in HTML format, to use in email messages that are based on
-     * the message template. We recommend using HTML format for email clients that
-     * render HTML content. You can include links, formatted text, and more in an HTML
-     * message.</p>
-     */
-    inline void SetHtmlPart(Aws::String&& value) { m_htmlPartHasBeenSet = true; m_htmlPart = std::move(value); }
-
-    /**
-     * <p>The message body, in HTML format, to use in email messages that are based on
-     * the message template. We recommend using HTML format for email clients that
-     * render HTML content. You can include links, formatted text, and more in an HTML
-     * message.</p>
-     */
-    inline void SetHtmlPart(const char* value) { m_htmlPartHasBeenSet = true; m_htmlPart.assign(value); }
-
-    /**
-     * <p>The message body, in HTML format, to use in email messages that are based on
-     * the message template. We recommend using HTML format for email clients that
-     * render HTML content. You can include links, formatted text, and more in an HTML
-     * message.</p>
-     */
-    inline EmailTemplateRequest& WithHtmlPart(const Aws::String& value) { SetHtmlPart(value); return *this;}
-
-    /**
-     * <p>The message body, in HTML format, to use in email messages that are based on
-     * the message template. We recommend using HTML format for email clients that
-     * render HTML content. You can include links, formatted text, and more in an HTML
-     * message.</p>
-     */
-    inline EmailTemplateRequest& WithHtmlPart(Aws::String&& value) { SetHtmlPart(std::move(value)); return *this;}
-
-    /**
-     * <p>The message body, in HTML format, to use in email messages that are based on
-     * the message template. We recommend using HTML format for email clients that
-     * render HTML content. You can include links, formatted text, and more in an HTML
-     * message.</p>
-     */
-    inline EmailTemplateRequest& WithHtmlPart(const char* value) { SetHtmlPart(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique identifier for the recommender model to use for the message
      * template. Amazon Pinpoint uses this value to determine how to retrieve and
@@ -192,121 +81,44 @@ namespace Model
      * template, if the template contains message variables for recommendation
      * data.</p>
      */
-    inline const Aws::String& GetRecommenderId() const{ return m_recommenderId; }
-
-    /**
-     * <p>The unique identifier for the recommender model to use for the message
-     * template. Amazon Pinpoint uses this value to determine how to retrieve and
-     * process data from a recommender model when it sends messages that use the
-     * template, if the template contains message variables for recommendation
-     * data.</p>
-     */
+    inline const Aws::String& GetRecommenderId() const { return m_recommenderId; }
     inline bool RecommenderIdHasBeenSet() const { return m_recommenderIdHasBeenSet; }
+    template<typename RecommenderIdT = Aws::String>
+    void SetRecommenderId(RecommenderIdT&& value) { m_recommenderIdHasBeenSet = true; m_recommenderId = std::forward<RecommenderIdT>(value); }
+    template<typename RecommenderIdT = Aws::String>
+    EmailTemplateRequest& WithRecommenderId(RecommenderIdT&& value) { SetRecommenderId(std::forward<RecommenderIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier for the recommender model to use for the message
-     * template. Amazon Pinpoint uses this value to determine how to retrieve and
-     * process data from a recommender model when it sends messages that use the
-     * template, if the template contains message variables for recommendation
-     * data.</p>
-     */
-    inline void SetRecommenderId(const Aws::String& value) { m_recommenderIdHasBeenSet = true; m_recommenderId = value; }
-
-    /**
-     * <p>The unique identifier for the recommender model to use for the message
-     * template. Amazon Pinpoint uses this value to determine how to retrieve and
-     * process data from a recommender model when it sends messages that use the
-     * template, if the template contains message variables for recommendation
-     * data.</p>
-     */
-    inline void SetRecommenderId(Aws::String&& value) { m_recommenderIdHasBeenSet = true; m_recommenderId = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the recommender model to use for the message
-     * template. Amazon Pinpoint uses this value to determine how to retrieve and
-     * process data from a recommender model when it sends messages that use the
-     * template, if the template contains message variables for recommendation
-     * data.</p>
-     */
-    inline void SetRecommenderId(const char* value) { m_recommenderIdHasBeenSet = true; m_recommenderId.assign(value); }
-
-    /**
-     * <p>The unique identifier for the recommender model to use for the message
-     * template. Amazon Pinpoint uses this value to determine how to retrieve and
-     * process data from a recommender model when it sends messages that use the
-     * template, if the template contains message variables for recommendation
-     * data.</p>
-     */
-    inline EmailTemplateRequest& WithRecommenderId(const Aws::String& value) { SetRecommenderId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the recommender model to use for the message
-     * template. Amazon Pinpoint uses this value to determine how to retrieve and
-     * process data from a recommender model when it sends messages that use the
-     * template, if the template contains message variables for recommendation
-     * data.</p>
-     */
-    inline EmailTemplateRequest& WithRecommenderId(Aws::String&& value) { SetRecommenderId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the recommender model to use for the message
-     * template. Amazon Pinpoint uses this value to determine how to retrieve and
-     * process data from a recommender model when it sends messages that use the
-     * template, if the template contains message variables for recommendation
-     * data.</p>
-     */
-    inline EmailTemplateRequest& WithRecommenderId(const char* value) { SetRecommenderId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The subject line, or title, to use in email messages that are based on the
      * message template.</p>
      */
-    inline const Aws::String& GetSubject() const{ return m_subject; }
-
-    /**
-     * <p>The subject line, or title, to use in email messages that are based on the
-     * message template.</p>
-     */
+    inline const Aws::String& GetSubject() const { return m_subject; }
     inline bool SubjectHasBeenSet() const { return m_subjectHasBeenSet; }
+    template<typename SubjectT = Aws::String>
+    void SetSubject(SubjectT&& value) { m_subjectHasBeenSet = true; m_subject = std::forward<SubjectT>(value); }
+    template<typename SubjectT = Aws::String>
+    EmailTemplateRequest& WithSubject(SubjectT&& value) { SetSubject(std::forward<SubjectT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The subject line, or title, to use in email messages that are based on the
-     * message template.</p>
+     * <p>The list of <a
+     * href="https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-email.html#templates-template-name-email-model-messageheader">MessageHeaders</a>
+     * for the email. You can have up to 15 Headers.</p>
      */
-    inline void SetSubject(const Aws::String& value) { m_subjectHasBeenSet = true; m_subject = value; }
+    inline const Aws::Vector<MessageHeader>& GetHeaders() const { return m_headers; }
+    inline bool HeadersHasBeenSet() const { return m_headersHasBeenSet; }
+    template<typename HeadersT = Aws::Vector<MessageHeader>>
+    void SetHeaders(HeadersT&& value) { m_headersHasBeenSet = true; m_headers = std::forward<HeadersT>(value); }
+    template<typename HeadersT = Aws::Vector<MessageHeader>>
+    EmailTemplateRequest& WithHeaders(HeadersT&& value) { SetHeaders(std::forward<HeadersT>(value)); return *this;}
+    template<typename HeadersT = MessageHeader>
+    EmailTemplateRequest& AddHeaders(HeadersT&& value) { m_headersHasBeenSet = true; m_headers.emplace_back(std::forward<HeadersT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The subject line, or title, to use in email messages that are based on the
-     * message template.</p>
-     */
-    inline void SetSubject(Aws::String&& value) { m_subjectHasBeenSet = true; m_subject = std::move(value); }
-
-    /**
-     * <p>The subject line, or title, to use in email messages that are based on the
-     * message template.</p>
-     */
-    inline void SetSubject(const char* value) { m_subjectHasBeenSet = true; m_subject.assign(value); }
-
-    /**
-     * <p>The subject line, or title, to use in email messages that are based on the
-     * message template.</p>
-     */
-    inline EmailTemplateRequest& WithSubject(const Aws::String& value) { SetSubject(value); return *this;}
-
-    /**
-     * <p>The subject line, or title, to use in email messages that are based on the
-     * message template.</p>
-     */
-    inline EmailTemplateRequest& WithSubject(Aws::String&& value) { SetSubject(std::move(value)); return *this;}
-
-    /**
-     * <p>The subject line, or title, to use in email messages that are based on the
-     * message template.</p>
-     */
-    inline EmailTemplateRequest& WithSubject(const char* value) { SetSubject(value); return *this;}
-
-
+    ///@{
     /**
      * <p>As of <b>22-05-2023</b> tags has been deprecated for update operations.
      * After this date any value in tags is not processed and an error code is not
@@ -320,294 +132,44 @@ namespace Model
      * key-value pairs that defines the tags to associate with the message template.
      * Each tag consists of a required tag key and an associated tag value.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>As of <b>22-05-2023</b> tags has been deprecated for update operations.
-     * After this date any value in tags is not processed and an error code is not
-     * returned. To manage tags we recommend using either <a
-     * href="https://docs.aws.amazon.com/pinpoint/latest/apireference/tags-resource-arn.html">Tags</a>
-     * in the <i>API Reference for Amazon Pinpoint</i>, <a
-     * href="https://docs.aws.amazon.com/cli/latest/reference/resourcegroupstaggingapi/index.html">resourcegroupstaggingapi</a>
-     * commands in the <i>AWS Command Line Interface Documentation</i> or <a
-     * href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/resourcegroupstaggingapi/package-summary.html">resourcegroupstaggingapi</a>
-     * in the <i>AWS SDK</i>.</p> <p>(Deprecated) A string-to-string map of
-     * key-value pairs that defines the tags to associate with the message template.
-     * Each tag consists of a required tag key and an associated tag value.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    EmailTemplateRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    EmailTemplateRequest& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>As of <b>22-05-2023</b> tags has been deprecated for update operations.
-     * After this date any value in tags is not processed and an error code is not
-     * returned. To manage tags we recommend using either <a
-     * href="https://docs.aws.amazon.com/pinpoint/latest/apireference/tags-resource-arn.html">Tags</a>
-     * in the <i>API Reference for Amazon Pinpoint</i>, <a
-     * href="https://docs.aws.amazon.com/cli/latest/reference/resourcegroupstaggingapi/index.html">resourcegroupstaggingapi</a>
-     * commands in the <i>AWS Command Line Interface Documentation</i> or <a
-     * href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/resourcegroupstaggingapi/package-summary.html">resourcegroupstaggingapi</a>
-     * in the <i>AWS SDK</i>.</p> <p>(Deprecated) A string-to-string map of
-     * key-value pairs that defines the tags to associate with the message template.
-     * Each tag consists of a required tag key and an associated tag value.</p>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>As of <b>22-05-2023</b> tags has been deprecated for update operations.
-     * After this date any value in tags is not processed and an error code is not
-     * returned. To manage tags we recommend using either <a
-     * href="https://docs.aws.amazon.com/pinpoint/latest/apireference/tags-resource-arn.html">Tags</a>
-     * in the <i>API Reference for Amazon Pinpoint</i>, <a
-     * href="https://docs.aws.amazon.com/cli/latest/reference/resourcegroupstaggingapi/index.html">resourcegroupstaggingapi</a>
-     * commands in the <i>AWS Command Line Interface Documentation</i> or <a
-     * href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/resourcegroupstaggingapi/package-summary.html">resourcegroupstaggingapi</a>
-     * in the <i>AWS SDK</i>.</p> <p>(Deprecated) A string-to-string map of
-     * key-value pairs that defines the tags to associate with the message template.
-     * Each tag consists of a required tag key and an associated tag value.</p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>As of <b>22-05-2023</b> tags has been deprecated for update operations.
-     * After this date any value in tags is not processed and an error code is not
-     * returned. To manage tags we recommend using either <a
-     * href="https://docs.aws.amazon.com/pinpoint/latest/apireference/tags-resource-arn.html">Tags</a>
-     * in the <i>API Reference for Amazon Pinpoint</i>, <a
-     * href="https://docs.aws.amazon.com/cli/latest/reference/resourcegroupstaggingapi/index.html">resourcegroupstaggingapi</a>
-     * commands in the <i>AWS Command Line Interface Documentation</i> or <a
-     * href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/resourcegroupstaggingapi/package-summary.html">resourcegroupstaggingapi</a>
-     * in the <i>AWS SDK</i>.</p> <p>(Deprecated) A string-to-string map of
-     * key-value pairs that defines the tags to associate with the message template.
-     * Each tag consists of a required tag key and an associated tag value.</p>
-     */
-    inline EmailTemplateRequest& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>As of <b>22-05-2023</b> tags has been deprecated for update operations.
-     * After this date any value in tags is not processed and an error code is not
-     * returned. To manage tags we recommend using either <a
-     * href="https://docs.aws.amazon.com/pinpoint/latest/apireference/tags-resource-arn.html">Tags</a>
-     * in the <i>API Reference for Amazon Pinpoint</i>, <a
-     * href="https://docs.aws.amazon.com/cli/latest/reference/resourcegroupstaggingapi/index.html">resourcegroupstaggingapi</a>
-     * commands in the <i>AWS Command Line Interface Documentation</i> or <a
-     * href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/resourcegroupstaggingapi/package-summary.html">resourcegroupstaggingapi</a>
-     * in the <i>AWS SDK</i>.</p> <p>(Deprecated) A string-to-string map of
-     * key-value pairs that defines the tags to associate with the message template.
-     * Each tag consists of a required tag key and an associated tag value.</p>
-     */
-    inline EmailTemplateRequest& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>As of <b>22-05-2023</b> tags has been deprecated for update operations.
-     * After this date any value in tags is not processed and an error code is not
-     * returned. To manage tags we recommend using either <a
-     * href="https://docs.aws.amazon.com/pinpoint/latest/apireference/tags-resource-arn.html">Tags</a>
-     * in the <i>API Reference for Amazon Pinpoint</i>, <a
-     * href="https://docs.aws.amazon.com/cli/latest/reference/resourcegroupstaggingapi/index.html">resourcegroupstaggingapi</a>
-     * commands in the <i>AWS Command Line Interface Documentation</i> or <a
-     * href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/resourcegroupstaggingapi/package-summary.html">resourcegroupstaggingapi</a>
-     * in the <i>AWS SDK</i>.</p> <p>(Deprecated) A string-to-string map of
-     * key-value pairs that defines the tags to associate with the message template.
-     * Each tag consists of a required tag key and an associated tag value.</p>
-     */
-    inline EmailTemplateRequest& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>As of <b>22-05-2023</b> tags has been deprecated for update operations.
-     * After this date any value in tags is not processed and an error code is not
-     * returned. To manage tags we recommend using either <a
-     * href="https://docs.aws.amazon.com/pinpoint/latest/apireference/tags-resource-arn.html">Tags</a>
-     * in the <i>API Reference for Amazon Pinpoint</i>, <a
-     * href="https://docs.aws.amazon.com/cli/latest/reference/resourcegroupstaggingapi/index.html">resourcegroupstaggingapi</a>
-     * commands in the <i>AWS Command Line Interface Documentation</i> or <a
-     * href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/resourcegroupstaggingapi/package-summary.html">resourcegroupstaggingapi</a>
-     * in the <i>AWS SDK</i>.</p> <p>(Deprecated) A string-to-string map of
-     * key-value pairs that defines the tags to associate with the message template.
-     * Each tag consists of a required tag key and an associated tag value.</p>
-     */
-    inline EmailTemplateRequest& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>As of <b>22-05-2023</b> tags has been deprecated for update operations.
-     * After this date any value in tags is not processed and an error code is not
-     * returned. To manage tags we recommend using either <a
-     * href="https://docs.aws.amazon.com/pinpoint/latest/apireference/tags-resource-arn.html">Tags</a>
-     * in the <i>API Reference for Amazon Pinpoint</i>, <a
-     * href="https://docs.aws.amazon.com/cli/latest/reference/resourcegroupstaggingapi/index.html">resourcegroupstaggingapi</a>
-     * commands in the <i>AWS Command Line Interface Documentation</i> or <a
-     * href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/resourcegroupstaggingapi/package-summary.html">resourcegroupstaggingapi</a>
-     * in the <i>AWS SDK</i>.</p> <p>(Deprecated) A string-to-string map of
-     * key-value pairs that defines the tags to associate with the message template.
-     * Each tag consists of a required tag key and an associated tag value.</p>
-     */
-    inline EmailTemplateRequest& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>As of <b>22-05-2023</b> tags has been deprecated for update operations.
-     * After this date any value in tags is not processed and an error code is not
-     * returned. To manage tags we recommend using either <a
-     * href="https://docs.aws.amazon.com/pinpoint/latest/apireference/tags-resource-arn.html">Tags</a>
-     * in the <i>API Reference for Amazon Pinpoint</i>, <a
-     * href="https://docs.aws.amazon.com/cli/latest/reference/resourcegroupstaggingapi/index.html">resourcegroupstaggingapi</a>
-     * commands in the <i>AWS Command Line Interface Documentation</i> or <a
-     * href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/resourcegroupstaggingapi/package-summary.html">resourcegroupstaggingapi</a>
-     * in the <i>AWS SDK</i>.</p> <p>(Deprecated) A string-to-string map of
-     * key-value pairs that defines the tags to associate with the message template.
-     * Each tag consists of a required tag key and an associated tag value.</p>
-     */
-    inline EmailTemplateRequest& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>As of <b>22-05-2023</b> tags has been deprecated for update operations.
-     * After this date any value in tags is not processed and an error code is not
-     * returned. To manage tags we recommend using either <a
-     * href="https://docs.aws.amazon.com/pinpoint/latest/apireference/tags-resource-arn.html">Tags</a>
-     * in the <i>API Reference for Amazon Pinpoint</i>, <a
-     * href="https://docs.aws.amazon.com/cli/latest/reference/resourcegroupstaggingapi/index.html">resourcegroupstaggingapi</a>
-     * commands in the <i>AWS Command Line Interface Documentation</i> or <a
-     * href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/resourcegroupstaggingapi/package-summary.html">resourcegroupstaggingapi</a>
-     * in the <i>AWS SDK</i>.</p> <p>(Deprecated) A string-to-string map of
-     * key-value pairs that defines the tags to associate with the message template.
-     * Each tag consists of a required tag key and an associated tag value.</p>
-     */
-    inline EmailTemplateRequest& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>As of <b>22-05-2023</b> tags has been deprecated for update operations.
-     * After this date any value in tags is not processed and an error code is not
-     * returned. To manage tags we recommend using either <a
-     * href="https://docs.aws.amazon.com/pinpoint/latest/apireference/tags-resource-arn.html">Tags</a>
-     * in the <i>API Reference for Amazon Pinpoint</i>, <a
-     * href="https://docs.aws.amazon.com/cli/latest/reference/resourcegroupstaggingapi/index.html">resourcegroupstaggingapi</a>
-     * commands in the <i>AWS Command Line Interface Documentation</i> or <a
-     * href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/resourcegroupstaggingapi/package-summary.html">resourcegroupstaggingapi</a>
-     * in the <i>AWS SDK</i>.</p> <p>(Deprecated) A string-to-string map of
-     * key-value pairs that defines the tags to associate with the message template.
-     * Each tag consists of a required tag key and an associated tag value.</p>
-     */
-    inline EmailTemplateRequest& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>As of <b>22-05-2023</b> tags has been deprecated for update operations.
-     * After this date any value in tags is not processed and an error code is not
-     * returned. To manage tags we recommend using either <a
-     * href="https://docs.aws.amazon.com/pinpoint/latest/apireference/tags-resource-arn.html">Tags</a>
-     * in the <i>API Reference for Amazon Pinpoint</i>, <a
-     * href="https://docs.aws.amazon.com/cli/latest/reference/resourcegroupstaggingapi/index.html">resourcegroupstaggingapi</a>
-     * commands in the <i>AWS Command Line Interface Documentation</i> or <a
-     * href="https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/resourcegroupstaggingapi/package-summary.html">resourcegroupstaggingapi</a>
-     * in the <i>AWS SDK</i>.</p> <p>(Deprecated) A string-to-string map of
-     * key-value pairs that defines the tags to associate with the message template.
-     * Each tag consists of a required tag key and an associated tag value.</p>
-     */
-    inline EmailTemplateRequest& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>A custom description of the message template.</p>
      */
-    inline const Aws::String& GetTemplateDescription() const{ return m_templateDescription; }
-
-    /**
-     * <p>A custom description of the message template.</p>
-     */
+    inline const Aws::String& GetTemplateDescription() const { return m_templateDescription; }
     inline bool TemplateDescriptionHasBeenSet() const { return m_templateDescriptionHasBeenSet; }
+    template<typename TemplateDescriptionT = Aws::String>
+    void SetTemplateDescription(TemplateDescriptionT&& value) { m_templateDescriptionHasBeenSet = true; m_templateDescription = std::forward<TemplateDescriptionT>(value); }
+    template<typename TemplateDescriptionT = Aws::String>
+    EmailTemplateRequest& WithTemplateDescription(TemplateDescriptionT&& value) { SetTemplateDescription(std::forward<TemplateDescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A custom description of the message template.</p>
-     */
-    inline void SetTemplateDescription(const Aws::String& value) { m_templateDescriptionHasBeenSet = true; m_templateDescription = value; }
-
-    /**
-     * <p>A custom description of the message template.</p>
-     */
-    inline void SetTemplateDescription(Aws::String&& value) { m_templateDescriptionHasBeenSet = true; m_templateDescription = std::move(value); }
-
-    /**
-     * <p>A custom description of the message template.</p>
-     */
-    inline void SetTemplateDescription(const char* value) { m_templateDescriptionHasBeenSet = true; m_templateDescription.assign(value); }
-
-    /**
-     * <p>A custom description of the message template.</p>
-     */
-    inline EmailTemplateRequest& WithTemplateDescription(const Aws::String& value) { SetTemplateDescription(value); return *this;}
-
-    /**
-     * <p>A custom description of the message template.</p>
-     */
-    inline EmailTemplateRequest& WithTemplateDescription(Aws::String&& value) { SetTemplateDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A custom description of the message template.</p>
-     */
-    inline EmailTemplateRequest& WithTemplateDescription(const char* value) { SetTemplateDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The message body, in plain text format, to use in email messages that are
      * based on the message template. We recommend using plain text format for email
      * clients that don't render HTML content and clients that are connected to
      * high-latency networks, such as mobile devices.</p>
      */
-    inline const Aws::String& GetTextPart() const{ return m_textPart; }
-
-    /**
-     * <p>The message body, in plain text format, to use in email messages that are
-     * based on the message template. We recommend using plain text format for email
-     * clients that don't render HTML content and clients that are connected to
-     * high-latency networks, such as mobile devices.</p>
-     */
+    inline const Aws::String& GetTextPart() const { return m_textPart; }
     inline bool TextPartHasBeenSet() const { return m_textPartHasBeenSet; }
-
-    /**
-     * <p>The message body, in plain text format, to use in email messages that are
-     * based on the message template. We recommend using plain text format for email
-     * clients that don't render HTML content and clients that are connected to
-     * high-latency networks, such as mobile devices.</p>
-     */
-    inline void SetTextPart(const Aws::String& value) { m_textPartHasBeenSet = true; m_textPart = value; }
-
-    /**
-     * <p>The message body, in plain text format, to use in email messages that are
-     * based on the message template. We recommend using plain text format for email
-     * clients that don't render HTML content and clients that are connected to
-     * high-latency networks, such as mobile devices.</p>
-     */
-    inline void SetTextPart(Aws::String&& value) { m_textPartHasBeenSet = true; m_textPart = std::move(value); }
-
-    /**
-     * <p>The message body, in plain text format, to use in email messages that are
-     * based on the message template. We recommend using plain text format for email
-     * clients that don't render HTML content and clients that are connected to
-     * high-latency networks, such as mobile devices.</p>
-     */
-    inline void SetTextPart(const char* value) { m_textPartHasBeenSet = true; m_textPart.assign(value); }
-
-    /**
-     * <p>The message body, in plain text format, to use in email messages that are
-     * based on the message template. We recommend using plain text format for email
-     * clients that don't render HTML content and clients that are connected to
-     * high-latency networks, such as mobile devices.</p>
-     */
-    inline EmailTemplateRequest& WithTextPart(const Aws::String& value) { SetTextPart(value); return *this;}
-
-    /**
-     * <p>The message body, in plain text format, to use in email messages that are
-     * based on the message template. We recommend using plain text format for email
-     * clients that don't render HTML content and clients that are connected to
-     * high-latency networks, such as mobile devices.</p>
-     */
-    inline EmailTemplateRequest& WithTextPart(Aws::String&& value) { SetTextPart(std::move(value)); return *this;}
-
-    /**
-     * <p>The message body, in plain text format, to use in email messages that are
-     * based on the message template. We recommend using plain text format for email
-     * clients that don't render HTML content and clients that are connected to
-     * high-latency networks, such as mobile devices.</p>
-     */
-    inline EmailTemplateRequest& WithTextPart(const char* value) { SetTextPart(value); return *this;}
-
+    template<typename TextPartT = Aws::String>
+    void SetTextPart(TextPartT&& value) { m_textPartHasBeenSet = true; m_textPart = std::forward<TextPartT>(value); }
+    template<typename TextPartT = Aws::String>
+    EmailTemplateRequest& WithTextPart(TextPartT&& value) { SetTextPart(std::forward<TextPartT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_defaultSubstitutions;
@@ -621,6 +183,9 @@ namespace Model
 
     Aws::String m_subject;
     bool m_subjectHasBeenSet = false;
+
+    Aws::Vector<MessageHeader> m_headers;
+    bool m_headersHasBeenSet = false;
 
     Aws::Map<Aws::String, Aws::String> m_tags;
     bool m_tagsHasBeenSet = false;

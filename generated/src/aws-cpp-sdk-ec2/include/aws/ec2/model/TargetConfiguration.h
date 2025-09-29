@@ -32,7 +32,7 @@ namespace Model
   class TargetConfiguration
   {
   public:
-    AWS_EC2_API TargetConfiguration();
+    AWS_EC2_API TargetConfiguration() = default;
     AWS_EC2_API TargetConfiguration(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API TargetConfiguration& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,74 +40,31 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The number of instances the Convertible Reserved Instance offering can be
      * applied to. This parameter is reserved and cannot be specified in a request</p>
      */
-    inline int GetInstanceCount() const{ return m_instanceCount; }
-
-    /**
-     * <p>The number of instances the Convertible Reserved Instance offering can be
-     * applied to. This parameter is reserved and cannot be specified in a request</p>
-     */
+    inline int GetInstanceCount() const { return m_instanceCount; }
     inline bool InstanceCountHasBeenSet() const { return m_instanceCountHasBeenSet; }
-
-    /**
-     * <p>The number of instances the Convertible Reserved Instance offering can be
-     * applied to. This parameter is reserved and cannot be specified in a request</p>
-     */
     inline void SetInstanceCount(int value) { m_instanceCountHasBeenSet = true; m_instanceCount = value; }
-
-    /**
-     * <p>The number of instances the Convertible Reserved Instance offering can be
-     * applied to. This parameter is reserved and cannot be specified in a request</p>
-     */
     inline TargetConfiguration& WithInstanceCount(int value) { SetInstanceCount(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The ID of the Convertible Reserved Instance offering.</p>
      */
-    inline const Aws::String& GetOfferingId() const{ return m_offeringId; }
-
-    /**
-     * <p>The ID of the Convertible Reserved Instance offering.</p>
-     */
+    inline const Aws::String& GetOfferingId() const { return m_offeringId; }
     inline bool OfferingIdHasBeenSet() const { return m_offeringIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the Convertible Reserved Instance offering.</p>
-     */
-    inline void SetOfferingId(const Aws::String& value) { m_offeringIdHasBeenSet = true; m_offeringId = value; }
-
-    /**
-     * <p>The ID of the Convertible Reserved Instance offering.</p>
-     */
-    inline void SetOfferingId(Aws::String&& value) { m_offeringIdHasBeenSet = true; m_offeringId = std::move(value); }
-
-    /**
-     * <p>The ID of the Convertible Reserved Instance offering.</p>
-     */
-    inline void SetOfferingId(const char* value) { m_offeringIdHasBeenSet = true; m_offeringId.assign(value); }
-
-    /**
-     * <p>The ID of the Convertible Reserved Instance offering.</p>
-     */
-    inline TargetConfiguration& WithOfferingId(const Aws::String& value) { SetOfferingId(value); return *this;}
-
-    /**
-     * <p>The ID of the Convertible Reserved Instance offering.</p>
-     */
-    inline TargetConfiguration& WithOfferingId(Aws::String&& value) { SetOfferingId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Convertible Reserved Instance offering.</p>
-     */
-    inline TargetConfiguration& WithOfferingId(const char* value) { SetOfferingId(value); return *this;}
-
+    template<typename OfferingIdT = Aws::String>
+    void SetOfferingId(OfferingIdT&& value) { m_offeringIdHasBeenSet = true; m_offeringId = std::forward<OfferingIdT>(value); }
+    template<typename OfferingIdT = Aws::String>
+    TargetConfiguration& WithOfferingId(OfferingIdT&& value) { SetOfferingId(std::forward<OfferingIdT>(value)); return *this;}
+    ///@}
   private:
 
-    int m_instanceCount;
+    int m_instanceCount{0};
     bool m_instanceCountHasBeenSet = false;
 
     Aws::String m_offeringId;

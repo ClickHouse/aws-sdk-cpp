@@ -34,123 +34,50 @@ namespace Model
   class BatchStatementRequest
   {
   public:
-    AWS_DYNAMODB_API BatchStatementRequest();
+    AWS_DYNAMODB_API BatchStatementRequest() = default;
     AWS_DYNAMODB_API BatchStatementRequest(Aws::Utils::Json::JsonView jsonValue);
     AWS_DYNAMODB_API BatchStatementRequest& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DYNAMODB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> A valid PartiQL statement. </p>
      */
-    inline const Aws::String& GetStatement() const{ return m_statement; }
-
-    /**
-     * <p> A valid PartiQL statement. </p>
-     */
+    inline const Aws::String& GetStatement() const { return m_statement; }
     inline bool StatementHasBeenSet() const { return m_statementHasBeenSet; }
+    template<typename StatementT = Aws::String>
+    void SetStatement(StatementT&& value) { m_statementHasBeenSet = true; m_statement = std::forward<StatementT>(value); }
+    template<typename StatementT = Aws::String>
+    BatchStatementRequest& WithStatement(StatementT&& value) { SetStatement(std::forward<StatementT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> A valid PartiQL statement. </p>
-     */
-    inline void SetStatement(const Aws::String& value) { m_statementHasBeenSet = true; m_statement = value; }
-
-    /**
-     * <p> A valid PartiQL statement. </p>
-     */
-    inline void SetStatement(Aws::String&& value) { m_statementHasBeenSet = true; m_statement = std::move(value); }
-
-    /**
-     * <p> A valid PartiQL statement. </p>
-     */
-    inline void SetStatement(const char* value) { m_statementHasBeenSet = true; m_statement.assign(value); }
-
-    /**
-     * <p> A valid PartiQL statement. </p>
-     */
-    inline BatchStatementRequest& WithStatement(const Aws::String& value) { SetStatement(value); return *this;}
-
-    /**
-     * <p> A valid PartiQL statement. </p>
-     */
-    inline BatchStatementRequest& WithStatement(Aws::String&& value) { SetStatement(std::move(value)); return *this;}
-
-    /**
-     * <p> A valid PartiQL statement. </p>
-     */
-    inline BatchStatementRequest& WithStatement(const char* value) { SetStatement(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The parameters associated with a PartiQL statement in the batch request.
      * </p>
      */
-    inline const Aws::Vector<AttributeValue>& GetParameters() const{ return m_parameters; }
-
-    /**
-     * <p> The parameters associated with a PartiQL statement in the batch request.
-     * </p>
-     */
+    inline const Aws::Vector<AttributeValue>& GetParameters() const { return m_parameters; }
     inline bool ParametersHasBeenSet() const { return m_parametersHasBeenSet; }
+    template<typename ParametersT = Aws::Vector<AttributeValue>>
+    void SetParameters(ParametersT&& value) { m_parametersHasBeenSet = true; m_parameters = std::forward<ParametersT>(value); }
+    template<typename ParametersT = Aws::Vector<AttributeValue>>
+    BatchStatementRequest& WithParameters(ParametersT&& value) { SetParameters(std::forward<ParametersT>(value)); return *this;}
+    template<typename ParametersT = AttributeValue>
+    BatchStatementRequest& AddParameters(ParametersT&& value) { m_parametersHasBeenSet = true; m_parameters.emplace_back(std::forward<ParametersT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p> The parameters associated with a PartiQL statement in the batch request.
-     * </p>
-     */
-    inline void SetParameters(const Aws::Vector<AttributeValue>& value) { m_parametersHasBeenSet = true; m_parameters = value; }
-
-    /**
-     * <p> The parameters associated with a PartiQL statement in the batch request.
-     * </p>
-     */
-    inline void SetParameters(Aws::Vector<AttributeValue>&& value) { m_parametersHasBeenSet = true; m_parameters = std::move(value); }
-
-    /**
-     * <p> The parameters associated with a PartiQL statement in the batch request.
-     * </p>
-     */
-    inline BatchStatementRequest& WithParameters(const Aws::Vector<AttributeValue>& value) { SetParameters(value); return *this;}
-
-    /**
-     * <p> The parameters associated with a PartiQL statement in the batch request.
-     * </p>
-     */
-    inline BatchStatementRequest& WithParameters(Aws::Vector<AttributeValue>&& value) { SetParameters(std::move(value)); return *this;}
-
-    /**
-     * <p> The parameters associated with a PartiQL statement in the batch request.
-     * </p>
-     */
-    inline BatchStatementRequest& AddParameters(const AttributeValue& value) { m_parametersHasBeenSet = true; m_parameters.push_back(value); return *this; }
-
-    /**
-     * <p> The parameters associated with a PartiQL statement in the batch request.
-     * </p>
-     */
-    inline BatchStatementRequest& AddParameters(AttributeValue&& value) { m_parametersHasBeenSet = true; m_parameters.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p> The read consistency of the PartiQL batch request. </p>
      */
-    inline bool GetConsistentRead() const{ return m_consistentRead; }
-
-    /**
-     * <p> The read consistency of the PartiQL batch request. </p>
-     */
+    inline bool GetConsistentRead() const { return m_consistentRead; }
     inline bool ConsistentReadHasBeenSet() const { return m_consistentReadHasBeenSet; }
-
-    /**
-     * <p> The read consistency of the PartiQL batch request. </p>
-     */
     inline void SetConsistentRead(bool value) { m_consistentReadHasBeenSet = true; m_consistentRead = value; }
-
-    /**
-     * <p> The read consistency of the PartiQL batch request. </p>
-     */
     inline BatchStatementRequest& WithConsistentRead(bool value) { SetConsistentRead(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>An optional parameter that returns the item attributes for a PartiQL batch
      * request operation that failed a condition check.</p> <p>There is no additional
@@ -158,53 +85,11 @@ namespace Model
      * processing overhead of receiving a larger response. No read capacity units are
      * consumed.</p>
      */
-    inline const ReturnValuesOnConditionCheckFailure& GetReturnValuesOnConditionCheckFailure() const{ return m_returnValuesOnConditionCheckFailure; }
-
-    /**
-     * <p>An optional parameter that returns the item attributes for a PartiQL batch
-     * request operation that failed a condition check.</p> <p>There is no additional
-     * cost associated with requesting a return value aside from the small network and
-     * processing overhead of receiving a larger response. No read capacity units are
-     * consumed.</p>
-     */
+    inline ReturnValuesOnConditionCheckFailure GetReturnValuesOnConditionCheckFailure() const { return m_returnValuesOnConditionCheckFailure; }
     inline bool ReturnValuesOnConditionCheckFailureHasBeenSet() const { return m_returnValuesOnConditionCheckFailureHasBeenSet; }
-
-    /**
-     * <p>An optional parameter that returns the item attributes for a PartiQL batch
-     * request operation that failed a condition check.</p> <p>There is no additional
-     * cost associated with requesting a return value aside from the small network and
-     * processing overhead of receiving a larger response. No read capacity units are
-     * consumed.</p>
-     */
-    inline void SetReturnValuesOnConditionCheckFailure(const ReturnValuesOnConditionCheckFailure& value) { m_returnValuesOnConditionCheckFailureHasBeenSet = true; m_returnValuesOnConditionCheckFailure = value; }
-
-    /**
-     * <p>An optional parameter that returns the item attributes for a PartiQL batch
-     * request operation that failed a condition check.</p> <p>There is no additional
-     * cost associated with requesting a return value aside from the small network and
-     * processing overhead of receiving a larger response. No read capacity units are
-     * consumed.</p>
-     */
-    inline void SetReturnValuesOnConditionCheckFailure(ReturnValuesOnConditionCheckFailure&& value) { m_returnValuesOnConditionCheckFailureHasBeenSet = true; m_returnValuesOnConditionCheckFailure = std::move(value); }
-
-    /**
-     * <p>An optional parameter that returns the item attributes for a PartiQL batch
-     * request operation that failed a condition check.</p> <p>There is no additional
-     * cost associated with requesting a return value aside from the small network and
-     * processing overhead of receiving a larger response. No read capacity units are
-     * consumed.</p>
-     */
-    inline BatchStatementRequest& WithReturnValuesOnConditionCheckFailure(const ReturnValuesOnConditionCheckFailure& value) { SetReturnValuesOnConditionCheckFailure(value); return *this;}
-
-    /**
-     * <p>An optional parameter that returns the item attributes for a PartiQL batch
-     * request operation that failed a condition check.</p> <p>There is no additional
-     * cost associated with requesting a return value aside from the small network and
-     * processing overhead of receiving a larger response. No read capacity units are
-     * consumed.</p>
-     */
-    inline BatchStatementRequest& WithReturnValuesOnConditionCheckFailure(ReturnValuesOnConditionCheckFailure&& value) { SetReturnValuesOnConditionCheckFailure(std::move(value)); return *this;}
-
+    inline void SetReturnValuesOnConditionCheckFailure(ReturnValuesOnConditionCheckFailure value) { m_returnValuesOnConditionCheckFailureHasBeenSet = true; m_returnValuesOnConditionCheckFailure = value; }
+    inline BatchStatementRequest& WithReturnValuesOnConditionCheckFailure(ReturnValuesOnConditionCheckFailure value) { SetReturnValuesOnConditionCheckFailure(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_statement;
@@ -213,10 +98,10 @@ namespace Model
     Aws::Vector<AttributeValue> m_parameters;
     bool m_parametersHasBeenSet = false;
 
-    bool m_consistentRead;
+    bool m_consistentRead{false};
     bool m_consistentReadHasBeenSet = false;
 
-    ReturnValuesOnConditionCheckFailure m_returnValuesOnConditionCheckFailure;
+    ReturnValuesOnConditionCheckFailure m_returnValuesOnConditionCheckFailure{ReturnValuesOnConditionCheckFailure::NOT_SET};
     bool m_returnValuesOnConditionCheckFailureHasBeenSet = false;
   };
 

@@ -20,27 +20,7 @@ namespace EC2
 namespace Model
 {
 
-NetworkAcl::NetworkAcl() : 
-    m_associationsHasBeenSet(false),
-    m_entriesHasBeenSet(false),
-    m_isDefault(false),
-    m_isDefaultHasBeenSet(false),
-    m_networkAclIdHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_ownerIdHasBeenSet(false)
-{
-}
-
-NetworkAcl::NetworkAcl(const XmlNode& xmlNode) : 
-    m_associationsHasBeenSet(false),
-    m_entriesHasBeenSet(false),
-    m_isDefault(false),
-    m_isDefaultHasBeenSet(false),
-    m_networkAclIdHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_ownerIdHasBeenSet(false)
+NetworkAcl::NetworkAcl(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -55,6 +35,7 @@ NetworkAcl& NetworkAcl::operator =(const XmlNode& xmlNode)
     if(!associationsNode.IsNull())
     {
       XmlNode associationsMember = associationsNode.FirstChild("item");
+      m_associationsHasBeenSet = !associationsMember.IsNull();
       while(!associationsMember.IsNull())
       {
         m_associations.push_back(associationsMember);
@@ -67,6 +48,7 @@ NetworkAcl& NetworkAcl::operator =(const XmlNode& xmlNode)
     if(!entriesNode.IsNull())
     {
       XmlNode entriesMember = entriesNode.FirstChild("item");
+      m_entriesHasBeenSet = !entriesMember.IsNull();
       while(!entriesMember.IsNull())
       {
         m_entries.push_back(entriesMember);
@@ -91,6 +73,7 @@ NetworkAcl& NetworkAcl::operator =(const XmlNode& xmlNode)
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -181,7 +164,7 @@ void NetworkAcl::OutputToStream(Aws::OStream& oStream, const char* location) con
       for(auto& item : m_associations)
       {
         Aws::StringStream associationsSs;
-        associationsSs << location <<  ".AssociationSet." << associationsIdx++;
+        associationsSs << location << ".AssociationSet." << associationsIdx++;
         item.OutputToStream(oStream, associationsSs.str().c_str());
       }
   }
@@ -191,7 +174,7 @@ void NetworkAcl::OutputToStream(Aws::OStream& oStream, const char* location) con
       for(auto& item : m_entries)
       {
         Aws::StringStream entriesSs;
-        entriesSs << location <<  ".EntrySet." << entriesIdx++;
+        entriesSs << location << ".EntrySet." << entriesIdx++;
         item.OutputToStream(oStream, entriesSs.str().c_str());
       }
   }
@@ -209,7 +192,7 @@ void NetworkAcl::OutputToStream(Aws::OStream& oStream, const char* location) con
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }

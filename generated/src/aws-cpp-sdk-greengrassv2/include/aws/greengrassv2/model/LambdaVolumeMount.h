@@ -35,155 +35,57 @@ namespace Model
   class LambdaVolumeMount
   {
   public:
-    AWS_GREENGRASSV2_API LambdaVolumeMount();
+    AWS_GREENGRASSV2_API LambdaVolumeMount() = default;
     AWS_GREENGRASSV2_API LambdaVolumeMount(Aws::Utils::Json::JsonView jsonValue);
     AWS_GREENGRASSV2_API LambdaVolumeMount& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GREENGRASSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The path to the physical volume in the file system.</p>
      */
-    inline const Aws::String& GetSourcePath() const{ return m_sourcePath; }
-
-    /**
-     * <p>The path to the physical volume in the file system.</p>
-     */
+    inline const Aws::String& GetSourcePath() const { return m_sourcePath; }
     inline bool SourcePathHasBeenSet() const { return m_sourcePathHasBeenSet; }
+    template<typename SourcePathT = Aws::String>
+    void SetSourcePath(SourcePathT&& value) { m_sourcePathHasBeenSet = true; m_sourcePath = std::forward<SourcePathT>(value); }
+    template<typename SourcePathT = Aws::String>
+    LambdaVolumeMount& WithSourcePath(SourcePathT&& value) { SetSourcePath(std::forward<SourcePathT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The path to the physical volume in the file system.</p>
-     */
-    inline void SetSourcePath(const Aws::String& value) { m_sourcePathHasBeenSet = true; m_sourcePath = value; }
-
-    /**
-     * <p>The path to the physical volume in the file system.</p>
-     */
-    inline void SetSourcePath(Aws::String&& value) { m_sourcePathHasBeenSet = true; m_sourcePath = std::move(value); }
-
-    /**
-     * <p>The path to the physical volume in the file system.</p>
-     */
-    inline void SetSourcePath(const char* value) { m_sourcePathHasBeenSet = true; m_sourcePath.assign(value); }
-
-    /**
-     * <p>The path to the physical volume in the file system.</p>
-     */
-    inline LambdaVolumeMount& WithSourcePath(const Aws::String& value) { SetSourcePath(value); return *this;}
-
-    /**
-     * <p>The path to the physical volume in the file system.</p>
-     */
-    inline LambdaVolumeMount& WithSourcePath(Aws::String&& value) { SetSourcePath(std::move(value)); return *this;}
-
-    /**
-     * <p>The path to the physical volume in the file system.</p>
-     */
-    inline LambdaVolumeMount& WithSourcePath(const char* value) { SetSourcePath(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The path to the logical volume in the file system.</p>
      */
-    inline const Aws::String& GetDestinationPath() const{ return m_destinationPath; }
-
-    /**
-     * <p>The path to the logical volume in the file system.</p>
-     */
+    inline const Aws::String& GetDestinationPath() const { return m_destinationPath; }
     inline bool DestinationPathHasBeenSet() const { return m_destinationPathHasBeenSet; }
+    template<typename DestinationPathT = Aws::String>
+    void SetDestinationPath(DestinationPathT&& value) { m_destinationPathHasBeenSet = true; m_destinationPath = std::forward<DestinationPathT>(value); }
+    template<typename DestinationPathT = Aws::String>
+    LambdaVolumeMount& WithDestinationPath(DestinationPathT&& value) { SetDestinationPath(std::forward<DestinationPathT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The path to the logical volume in the file system.</p>
-     */
-    inline void SetDestinationPath(const Aws::String& value) { m_destinationPathHasBeenSet = true; m_destinationPath = value; }
-
-    /**
-     * <p>The path to the logical volume in the file system.</p>
-     */
-    inline void SetDestinationPath(Aws::String&& value) { m_destinationPathHasBeenSet = true; m_destinationPath = std::move(value); }
-
-    /**
-     * <p>The path to the logical volume in the file system.</p>
-     */
-    inline void SetDestinationPath(const char* value) { m_destinationPathHasBeenSet = true; m_destinationPath.assign(value); }
-
-    /**
-     * <p>The path to the logical volume in the file system.</p>
-     */
-    inline LambdaVolumeMount& WithDestinationPath(const Aws::String& value) { SetDestinationPath(value); return *this;}
-
-    /**
-     * <p>The path to the logical volume in the file system.</p>
-     */
-    inline LambdaVolumeMount& WithDestinationPath(Aws::String&& value) { SetDestinationPath(std::move(value)); return *this;}
-
-    /**
-     * <p>The path to the logical volume in the file system.</p>
-     */
-    inline LambdaVolumeMount& WithDestinationPath(const char* value) { SetDestinationPath(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The permission to access the volume: read/only (<code>ro</code>) or
      * read/write (<code>rw</code>).</p> <p>Default: <code>ro</code> </p>
      */
-    inline const LambdaFilesystemPermission& GetPermission() const{ return m_permission; }
-
-    /**
-     * <p>The permission to access the volume: read/only (<code>ro</code>) or
-     * read/write (<code>rw</code>).</p> <p>Default: <code>ro</code> </p>
-     */
+    inline LambdaFilesystemPermission GetPermission() const { return m_permission; }
     inline bool PermissionHasBeenSet() const { return m_permissionHasBeenSet; }
+    inline void SetPermission(LambdaFilesystemPermission value) { m_permissionHasBeenSet = true; m_permission = value; }
+    inline LambdaVolumeMount& WithPermission(LambdaFilesystemPermission value) { SetPermission(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The permission to access the volume: read/only (<code>ro</code>) or
-     * read/write (<code>rw</code>).</p> <p>Default: <code>ro</code> </p>
-     */
-    inline void SetPermission(const LambdaFilesystemPermission& value) { m_permissionHasBeenSet = true; m_permission = value; }
-
-    /**
-     * <p>The permission to access the volume: read/only (<code>ro</code>) or
-     * read/write (<code>rw</code>).</p> <p>Default: <code>ro</code> </p>
-     */
-    inline void SetPermission(LambdaFilesystemPermission&& value) { m_permissionHasBeenSet = true; m_permission = std::move(value); }
-
-    /**
-     * <p>The permission to access the volume: read/only (<code>ro</code>) or
-     * read/write (<code>rw</code>).</p> <p>Default: <code>ro</code> </p>
-     */
-    inline LambdaVolumeMount& WithPermission(const LambdaFilesystemPermission& value) { SetPermission(value); return *this;}
-
-    /**
-     * <p>The permission to access the volume: read/only (<code>ro</code>) or
-     * read/write (<code>rw</code>).</p> <p>Default: <code>ro</code> </p>
-     */
-    inline LambdaVolumeMount& WithPermission(LambdaFilesystemPermission&& value) { SetPermission(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Whether or not to add the IoT Greengrass user group as an owner of the
      * volume.</p> <p>Default: <code>false</code> </p>
      */
-    inline bool GetAddGroupOwner() const{ return m_addGroupOwner; }
-
-    /**
-     * <p>Whether or not to add the IoT Greengrass user group as an owner of the
-     * volume.</p> <p>Default: <code>false</code> </p>
-     */
+    inline bool GetAddGroupOwner() const { return m_addGroupOwner; }
     inline bool AddGroupOwnerHasBeenSet() const { return m_addGroupOwnerHasBeenSet; }
-
-    /**
-     * <p>Whether or not to add the IoT Greengrass user group as an owner of the
-     * volume.</p> <p>Default: <code>false</code> </p>
-     */
     inline void SetAddGroupOwner(bool value) { m_addGroupOwnerHasBeenSet = true; m_addGroupOwner = value; }
-
-    /**
-     * <p>Whether or not to add the IoT Greengrass user group as an owner of the
-     * volume.</p> <p>Default: <code>false</code> </p>
-     */
     inline LambdaVolumeMount& WithAddGroupOwner(bool value) { SetAddGroupOwner(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_sourcePath;
@@ -192,10 +94,10 @@ namespace Model
     Aws::String m_destinationPath;
     bool m_destinationPathHasBeenSet = false;
 
-    LambdaFilesystemPermission m_permission;
+    LambdaFilesystemPermission m_permission{LambdaFilesystemPermission::NOT_SET};
     bool m_permissionHasBeenSet = false;
 
-    bool m_addGroupOwner;
+    bool m_addGroupOwner{false};
     bool m_addGroupOwnerHasBeenSet = false;
   };
 

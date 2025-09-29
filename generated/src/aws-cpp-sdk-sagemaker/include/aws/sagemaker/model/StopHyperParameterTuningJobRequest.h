@@ -21,7 +21,7 @@ namespace Model
   class StopHyperParameterTuningJobRequest : public SageMakerRequest
   {
   public:
-    AWS_SAGEMAKER_API StopHyperParameterTuningJobRequest();
+    AWS_SAGEMAKER_API StopHyperParameterTuningJobRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_SAGEMAKER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the tuning job to stop.</p>
      */
-    inline const Aws::String& GetHyperParameterTuningJobName() const{ return m_hyperParameterTuningJobName; }
-
-    /**
-     * <p>The name of the tuning job to stop.</p>
-     */
+    inline const Aws::String& GetHyperParameterTuningJobName() const { return m_hyperParameterTuningJobName; }
     inline bool HyperParameterTuningJobNameHasBeenSet() const { return m_hyperParameterTuningJobNameHasBeenSet; }
-
-    /**
-     * <p>The name of the tuning job to stop.</p>
-     */
-    inline void SetHyperParameterTuningJobName(const Aws::String& value) { m_hyperParameterTuningJobNameHasBeenSet = true; m_hyperParameterTuningJobName = value; }
-
-    /**
-     * <p>The name of the tuning job to stop.</p>
-     */
-    inline void SetHyperParameterTuningJobName(Aws::String&& value) { m_hyperParameterTuningJobNameHasBeenSet = true; m_hyperParameterTuningJobName = std::move(value); }
-
-    /**
-     * <p>The name of the tuning job to stop.</p>
-     */
-    inline void SetHyperParameterTuningJobName(const char* value) { m_hyperParameterTuningJobNameHasBeenSet = true; m_hyperParameterTuningJobName.assign(value); }
-
-    /**
-     * <p>The name of the tuning job to stop.</p>
-     */
-    inline StopHyperParameterTuningJobRequest& WithHyperParameterTuningJobName(const Aws::String& value) { SetHyperParameterTuningJobName(value); return *this;}
-
-    /**
-     * <p>The name of the tuning job to stop.</p>
-     */
-    inline StopHyperParameterTuningJobRequest& WithHyperParameterTuningJobName(Aws::String&& value) { SetHyperParameterTuningJobName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the tuning job to stop.</p>
-     */
-    inline StopHyperParameterTuningJobRequest& WithHyperParameterTuningJobName(const char* value) { SetHyperParameterTuningJobName(value); return *this;}
-
+    template<typename HyperParameterTuningJobNameT = Aws::String>
+    void SetHyperParameterTuningJobName(HyperParameterTuningJobNameT&& value) { m_hyperParameterTuningJobNameHasBeenSet = true; m_hyperParameterTuningJobName = std::forward<HyperParameterTuningJobNameT>(value); }
+    template<typename HyperParameterTuningJobNameT = Aws::String>
+    StopHyperParameterTuningJobRequest& WithHyperParameterTuningJobName(HyperParameterTuningJobNameT&& value) { SetHyperParameterTuningJobName(std::forward<HyperParameterTuningJobNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_hyperParameterTuningJobName;

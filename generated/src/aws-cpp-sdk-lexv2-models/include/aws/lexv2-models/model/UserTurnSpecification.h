@@ -33,73 +33,35 @@ namespace Model
   class UserTurnSpecification
   {
   public:
-    AWS_LEXMODELSV2_API UserTurnSpecification();
+    AWS_LEXMODELSV2_API UserTurnSpecification() = default;
     AWS_LEXMODELSV2_API UserTurnSpecification(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API UserTurnSpecification& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Contains information about the user messages in the turn in the input.</p>
      */
-    inline const UserTurnInputSpecification& GetInput() const{ return m_input; }
-
-    /**
-     * <p>Contains information about the user messages in the turn in the input.</p>
-     */
+    inline const UserTurnInputSpecification& GetInput() const { return m_input; }
     inline bool InputHasBeenSet() const { return m_inputHasBeenSet; }
+    template<typename InputT = UserTurnInputSpecification>
+    void SetInput(InputT&& value) { m_inputHasBeenSet = true; m_input = std::forward<InputT>(value); }
+    template<typename InputT = UserTurnInputSpecification>
+    UserTurnSpecification& WithInput(InputT&& value) { SetInput(std::forward<InputT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Contains information about the user messages in the turn in the input.</p>
-     */
-    inline void SetInput(const UserTurnInputSpecification& value) { m_inputHasBeenSet = true; m_input = value; }
-
-    /**
-     * <p>Contains information about the user messages in the turn in the input.</p>
-     */
-    inline void SetInput(UserTurnInputSpecification&& value) { m_inputHasBeenSet = true; m_input = std::move(value); }
-
-    /**
-     * <p>Contains information about the user messages in the turn in the input.</p>
-     */
-    inline UserTurnSpecification& WithInput(const UserTurnInputSpecification& value) { SetInput(value); return *this;}
-
-    /**
-     * <p>Contains information about the user messages in the turn in the input.</p>
-     */
-    inline UserTurnSpecification& WithInput(UserTurnInputSpecification&& value) { SetInput(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Contains results about the expected output for the user turn.</p>
      */
-    inline const UserTurnOutputSpecification& GetExpected() const{ return m_expected; }
-
-    /**
-     * <p>Contains results about the expected output for the user turn.</p>
-     */
+    inline const UserTurnOutputSpecification& GetExpected() const { return m_expected; }
     inline bool ExpectedHasBeenSet() const { return m_expectedHasBeenSet; }
-
-    /**
-     * <p>Contains results about the expected output for the user turn.</p>
-     */
-    inline void SetExpected(const UserTurnOutputSpecification& value) { m_expectedHasBeenSet = true; m_expected = value; }
-
-    /**
-     * <p>Contains results about the expected output for the user turn.</p>
-     */
-    inline void SetExpected(UserTurnOutputSpecification&& value) { m_expectedHasBeenSet = true; m_expected = std::move(value); }
-
-    /**
-     * <p>Contains results about the expected output for the user turn.</p>
-     */
-    inline UserTurnSpecification& WithExpected(const UserTurnOutputSpecification& value) { SetExpected(value); return *this;}
-
-    /**
-     * <p>Contains results about the expected output for the user turn.</p>
-     */
-    inline UserTurnSpecification& WithExpected(UserTurnOutputSpecification&& value) { SetExpected(std::move(value)); return *this;}
-
+    template<typename ExpectedT = UserTurnOutputSpecification>
+    void SetExpected(ExpectedT&& value) { m_expectedHasBeenSet = true; m_expected = std::forward<ExpectedT>(value); }
+    template<typename ExpectedT = UserTurnOutputSpecification>
+    UserTurnSpecification& WithExpected(ExpectedT&& value) { SetExpected(std::forward<ExpectedT>(value)); return *this;}
+    ///@}
   private:
 
     UserTurnInputSpecification m_input;

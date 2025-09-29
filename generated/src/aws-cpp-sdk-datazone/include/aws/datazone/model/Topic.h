@@ -33,108 +33,49 @@ namespace Model
   class Topic
   {
   public:
-    AWS_DATAZONE_API Topic();
+    AWS_DATAZONE_API Topic() = default;
     AWS_DATAZONE_API Topic(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAZONE_API Topic& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAZONE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     
-    inline const NotificationResource& GetResource() const{ return m_resource; }
-
-    
+    inline const NotificationResource& GetResource() const { return m_resource; }
     inline bool ResourceHasBeenSet() const { return m_resourceHasBeenSet; }
+    template<typename ResourceT = NotificationResource>
+    void SetResource(ResourceT&& value) { m_resourceHasBeenSet = true; m_resource = std::forward<ResourceT>(value); }
+    template<typename ResourceT = NotificationResource>
+    Topic& WithResource(ResourceT&& value) { SetResource(std::forward<ResourceT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetResource(const NotificationResource& value) { m_resourceHasBeenSet = true; m_resource = value; }
-
-    
-    inline void SetResource(NotificationResource&& value) { m_resourceHasBeenSet = true; m_resource = std::move(value); }
-
-    
-    inline Topic& WithResource(const NotificationResource& value) { SetResource(value); return *this;}
-
-    
-    inline Topic& WithResource(NotificationResource&& value) { SetResource(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The role of the resource mentioned in a notification.</p>
      */
-    inline const NotificationRole& GetRole() const{ return m_role; }
-
-    /**
-     * <p>The role of the resource mentioned in a notification.</p>
-     */
+    inline NotificationRole GetRole() const { return m_role; }
     inline bool RoleHasBeenSet() const { return m_roleHasBeenSet; }
+    inline void SetRole(NotificationRole value) { m_roleHasBeenSet = true; m_role = value; }
+    inline Topic& WithRole(NotificationRole value) { SetRole(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The role of the resource mentioned in a notification.</p>
-     */
-    inline void SetRole(const NotificationRole& value) { m_roleHasBeenSet = true; m_role = value; }
-
-    /**
-     * <p>The role of the resource mentioned in a notification.</p>
-     */
-    inline void SetRole(NotificationRole&& value) { m_roleHasBeenSet = true; m_role = std::move(value); }
-
-    /**
-     * <p>The role of the resource mentioned in a notification.</p>
-     */
-    inline Topic& WithRole(const NotificationRole& value) { SetRole(value); return *this;}
-
-    /**
-     * <p>The role of the resource mentioned in a notification.</p>
-     */
-    inline Topic& WithRole(NotificationRole&& value) { SetRole(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The subject of the resource mentioned in a notification.</p>
      */
-    inline const Aws::String& GetSubject() const{ return m_subject; }
-
-    /**
-     * <p>The subject of the resource mentioned in a notification.</p>
-     */
+    inline const Aws::String& GetSubject() const { return m_subject; }
     inline bool SubjectHasBeenSet() const { return m_subjectHasBeenSet; }
-
-    /**
-     * <p>The subject of the resource mentioned in a notification.</p>
-     */
-    inline void SetSubject(const Aws::String& value) { m_subjectHasBeenSet = true; m_subject = value; }
-
-    /**
-     * <p>The subject of the resource mentioned in a notification.</p>
-     */
-    inline void SetSubject(Aws::String&& value) { m_subjectHasBeenSet = true; m_subject = std::move(value); }
-
-    /**
-     * <p>The subject of the resource mentioned in a notification.</p>
-     */
-    inline void SetSubject(const char* value) { m_subjectHasBeenSet = true; m_subject.assign(value); }
-
-    /**
-     * <p>The subject of the resource mentioned in a notification.</p>
-     */
-    inline Topic& WithSubject(const Aws::String& value) { SetSubject(value); return *this;}
-
-    /**
-     * <p>The subject of the resource mentioned in a notification.</p>
-     */
-    inline Topic& WithSubject(Aws::String&& value) { SetSubject(std::move(value)); return *this;}
-
-    /**
-     * <p>The subject of the resource mentioned in a notification.</p>
-     */
-    inline Topic& WithSubject(const char* value) { SetSubject(value); return *this;}
-
+    template<typename SubjectT = Aws::String>
+    void SetSubject(SubjectT&& value) { m_subjectHasBeenSet = true; m_subject = std::forward<SubjectT>(value); }
+    template<typename SubjectT = Aws::String>
+    Topic& WithSubject(SubjectT&& value) { SetSubject(std::forward<SubjectT>(value)); return *this;}
+    ///@}
   private:
 
     NotificationResource m_resource;
     bool m_resourceHasBeenSet = false;
 
-    NotificationRole m_role;
+    NotificationRole m_role{NotificationRole::NOT_SET};
     bool m_roleHasBeenSet = false;
 
     Aws::String m_subject;

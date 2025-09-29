@@ -35,268 +35,95 @@ namespace Model
   class SoftwareSet
   {
   public:
-    AWS_WORKSPACESTHINCLIENT_API SoftwareSet();
+    AWS_WORKSPACESTHINCLIENT_API SoftwareSet() = default;
     AWS_WORKSPACESTHINCLIENT_API SoftwareSet(Aws::Utils::Json::JsonView jsonValue);
     AWS_WORKSPACESTHINCLIENT_API SoftwareSet& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WORKSPACESTHINCLIENT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ID of the software set.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The ID of the software set.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    SoftwareSet& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the software set.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The ID of the software set.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The ID of the software set.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The ID of the software set.</p>
-     */
-    inline SoftwareSet& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The ID of the software set.</p>
-     */
-    inline SoftwareSet& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the software set.</p>
-     */
-    inline SoftwareSet& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The version of the software set.</p>
      */
-    inline const Aws::String& GetVersion() const{ return m_version; }
-
-    /**
-     * <p>The version of the software set.</p>
-     */
+    inline const Aws::String& GetVersion() const { return m_version; }
     inline bool VersionHasBeenSet() const { return m_versionHasBeenSet; }
+    template<typename VersionT = Aws::String>
+    void SetVersion(VersionT&& value) { m_versionHasBeenSet = true; m_version = std::forward<VersionT>(value); }
+    template<typename VersionT = Aws::String>
+    SoftwareSet& WithVersion(VersionT&& value) { SetVersion(std::forward<VersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The version of the software set.</p>
-     */
-    inline void SetVersion(const Aws::String& value) { m_versionHasBeenSet = true; m_version = value; }
-
-    /**
-     * <p>The version of the software set.</p>
-     */
-    inline void SetVersion(Aws::String&& value) { m_versionHasBeenSet = true; m_version = std::move(value); }
-
-    /**
-     * <p>The version of the software set.</p>
-     */
-    inline void SetVersion(const char* value) { m_versionHasBeenSet = true; m_version.assign(value); }
-
-    /**
-     * <p>The version of the software set.</p>
-     */
-    inline SoftwareSet& WithVersion(const Aws::String& value) { SetVersion(value); return *this;}
-
-    /**
-     * <p>The version of the software set.</p>
-     */
-    inline SoftwareSet& WithVersion(Aws::String&& value) { SetVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The version of the software set.</p>
-     */
-    inline SoftwareSet& WithVersion(const char* value) { SetVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The timestamp of when the software set was released.</p>
      */
-    inline const Aws::Utils::DateTime& GetReleasedAt() const{ return m_releasedAt; }
-
-    /**
-     * <p>The timestamp of when the software set was released.</p>
-     */
+    inline const Aws::Utils::DateTime& GetReleasedAt() const { return m_releasedAt; }
     inline bool ReleasedAtHasBeenSet() const { return m_releasedAtHasBeenSet; }
+    template<typename ReleasedAtT = Aws::Utils::DateTime>
+    void SetReleasedAt(ReleasedAtT&& value) { m_releasedAtHasBeenSet = true; m_releasedAt = std::forward<ReleasedAtT>(value); }
+    template<typename ReleasedAtT = Aws::Utils::DateTime>
+    SoftwareSet& WithReleasedAt(ReleasedAtT&& value) { SetReleasedAt(std::forward<ReleasedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp of when the software set was released.</p>
-     */
-    inline void SetReleasedAt(const Aws::Utils::DateTime& value) { m_releasedAtHasBeenSet = true; m_releasedAt = value; }
-
-    /**
-     * <p>The timestamp of when the software set was released.</p>
-     */
-    inline void SetReleasedAt(Aws::Utils::DateTime&& value) { m_releasedAtHasBeenSet = true; m_releasedAt = std::move(value); }
-
-    /**
-     * <p>The timestamp of when the software set was released.</p>
-     */
-    inline SoftwareSet& WithReleasedAt(const Aws::Utils::DateTime& value) { SetReleasedAt(value); return *this;}
-
-    /**
-     * <p>The timestamp of when the software set was released.</p>
-     */
-    inline SoftwareSet& WithReleasedAt(Aws::Utils::DateTime&& value) { SetReleasedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The timestamp of the end of support for the software set.</p>
      */
-    inline const Aws::Utils::DateTime& GetSupportedUntil() const{ return m_supportedUntil; }
-
-    /**
-     * <p>The timestamp of the end of support for the software set.</p>
-     */
+    inline const Aws::Utils::DateTime& GetSupportedUntil() const { return m_supportedUntil; }
     inline bool SupportedUntilHasBeenSet() const { return m_supportedUntilHasBeenSet; }
+    template<typename SupportedUntilT = Aws::Utils::DateTime>
+    void SetSupportedUntil(SupportedUntilT&& value) { m_supportedUntilHasBeenSet = true; m_supportedUntil = std::forward<SupportedUntilT>(value); }
+    template<typename SupportedUntilT = Aws::Utils::DateTime>
+    SoftwareSet& WithSupportedUntil(SupportedUntilT&& value) { SetSupportedUntil(std::forward<SupportedUntilT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp of the end of support for the software set.</p>
-     */
-    inline void SetSupportedUntil(const Aws::Utils::DateTime& value) { m_supportedUntilHasBeenSet = true; m_supportedUntil = value; }
-
-    /**
-     * <p>The timestamp of the end of support for the software set.</p>
-     */
-    inline void SetSupportedUntil(Aws::Utils::DateTime&& value) { m_supportedUntilHasBeenSet = true; m_supportedUntil = std::move(value); }
-
-    /**
-     * <p>The timestamp of the end of support for the software set.</p>
-     */
-    inline SoftwareSet& WithSupportedUntil(const Aws::Utils::DateTime& value) { SetSupportedUntil(value); return *this;}
-
-    /**
-     * <p>The timestamp of the end of support for the software set.</p>
-     */
-    inline SoftwareSet& WithSupportedUntil(Aws::Utils::DateTime&& value) { SetSupportedUntil(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>An option to define if the software set has been validated.</p>
      */
-    inline const SoftwareSetValidationStatus& GetValidationStatus() const{ return m_validationStatus; }
-
-    /**
-     * <p>An option to define if the software set has been validated.</p>
-     */
+    inline SoftwareSetValidationStatus GetValidationStatus() const { return m_validationStatus; }
     inline bool ValidationStatusHasBeenSet() const { return m_validationStatusHasBeenSet; }
+    inline void SetValidationStatus(SoftwareSetValidationStatus value) { m_validationStatusHasBeenSet = true; m_validationStatus = value; }
+    inline SoftwareSet& WithValidationStatus(SoftwareSetValidationStatus value) { SetValidationStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>An option to define if the software set has been validated.</p>
-     */
-    inline void SetValidationStatus(const SoftwareSetValidationStatus& value) { m_validationStatusHasBeenSet = true; m_validationStatus = value; }
-
-    /**
-     * <p>An option to define if the software set has been validated.</p>
-     */
-    inline void SetValidationStatus(SoftwareSetValidationStatus&& value) { m_validationStatusHasBeenSet = true; m_validationStatus = std::move(value); }
-
-    /**
-     * <p>An option to define if the software set has been validated.</p>
-     */
-    inline SoftwareSet& WithValidationStatus(const SoftwareSetValidationStatus& value) { SetValidationStatus(value); return *this;}
-
-    /**
-     * <p>An option to define if the software set has been validated.</p>
-     */
-    inline SoftwareSet& WithValidationStatus(SoftwareSetValidationStatus&& value) { SetValidationStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of the software components in the software set.</p>
      */
-    inline const Aws::Vector<Software>& GetSoftware() const{ return m_software; }
-
-    /**
-     * <p>A list of the software components in the software set.</p>
-     */
+    inline const Aws::Vector<Software>& GetSoftware() const { return m_software; }
     inline bool SoftwareHasBeenSet() const { return m_softwareHasBeenSet; }
+    template<typename SoftwareT = Aws::Vector<Software>>
+    void SetSoftware(SoftwareT&& value) { m_softwareHasBeenSet = true; m_software = std::forward<SoftwareT>(value); }
+    template<typename SoftwareT = Aws::Vector<Software>>
+    SoftwareSet& WithSoftware(SoftwareT&& value) { SetSoftware(std::forward<SoftwareT>(value)); return *this;}
+    template<typename SoftwareT = Software>
+    SoftwareSet& AddSoftware(SoftwareT&& value) { m_softwareHasBeenSet = true; m_software.emplace_back(std::forward<SoftwareT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of the software components in the software set.</p>
-     */
-    inline void SetSoftware(const Aws::Vector<Software>& value) { m_softwareHasBeenSet = true; m_software = value; }
-
-    /**
-     * <p>A list of the software components in the software set.</p>
-     */
-    inline void SetSoftware(Aws::Vector<Software>&& value) { m_softwareHasBeenSet = true; m_software = std::move(value); }
-
-    /**
-     * <p>A list of the software components in the software set.</p>
-     */
-    inline SoftwareSet& WithSoftware(const Aws::Vector<Software>& value) { SetSoftware(value); return *this;}
-
-    /**
-     * <p>A list of the software components in the software set.</p>
-     */
-    inline SoftwareSet& WithSoftware(Aws::Vector<Software>&& value) { SetSoftware(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of the software components in the software set.</p>
-     */
-    inline SoftwareSet& AddSoftware(const Software& value) { m_softwareHasBeenSet = true; m_software.push_back(value); return *this; }
-
-    /**
-     * <p>A list of the software components in the software set.</p>
-     */
-    inline SoftwareSet& AddSoftware(Software&& value) { m_softwareHasBeenSet = true; m_software.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the software set.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the software set.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the software set.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the software set.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the software set.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the software set.</p>
-     */
-    inline SoftwareSet& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the software set.</p>
-     */
-    inline SoftwareSet& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the software set.</p>
-     */
-    inline SoftwareSet& WithArn(const char* value) { SetArn(value); return *this;}
-
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    SoftwareSet& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_id;
@@ -305,13 +132,13 @@ namespace Model
     Aws::String m_version;
     bool m_versionHasBeenSet = false;
 
-    Aws::Utils::DateTime m_releasedAt;
+    Aws::Utils::DateTime m_releasedAt{};
     bool m_releasedAtHasBeenSet = false;
 
-    Aws::Utils::DateTime m_supportedUntil;
+    Aws::Utils::DateTime m_supportedUntil{};
     bool m_supportedUntilHasBeenSet = false;
 
-    SoftwareSetValidationStatus m_validationStatus;
+    SoftwareSetValidationStatus m_validationStatus{SoftwareSetValidationStatus::NOT_SET};
     bool m_validationStatusHasBeenSet = false;
 
     Aws::Vector<Software> m_software;

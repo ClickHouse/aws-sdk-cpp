@@ -21,7 +21,7 @@ namespace Model
   class CancelPipelineReprocessingRequest : public IoTAnalyticsRequest
   {
   public:
-    AWS_IOTANALYTICS_API CancelPipelineReprocessingRequest();
+    AWS_IOTANALYTICS_API CancelPipelineReprocessingRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,95 +32,30 @@ namespace Model
     AWS_IOTANALYTICS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of pipeline for which data reprocessing is canceled.</p>
      */
-    inline const Aws::String& GetPipelineName() const{ return m_pipelineName; }
-
-    /**
-     * <p>The name of pipeline for which data reprocessing is canceled.</p>
-     */
+    inline const Aws::String& GetPipelineName() const { return m_pipelineName; }
     inline bool PipelineNameHasBeenSet() const { return m_pipelineNameHasBeenSet; }
+    template<typename PipelineNameT = Aws::String>
+    void SetPipelineName(PipelineNameT&& value) { m_pipelineNameHasBeenSet = true; m_pipelineName = std::forward<PipelineNameT>(value); }
+    template<typename PipelineNameT = Aws::String>
+    CancelPipelineReprocessingRequest& WithPipelineName(PipelineNameT&& value) { SetPipelineName(std::forward<PipelineNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of pipeline for which data reprocessing is canceled.</p>
-     */
-    inline void SetPipelineName(const Aws::String& value) { m_pipelineNameHasBeenSet = true; m_pipelineName = value; }
-
-    /**
-     * <p>The name of pipeline for which data reprocessing is canceled.</p>
-     */
-    inline void SetPipelineName(Aws::String&& value) { m_pipelineNameHasBeenSet = true; m_pipelineName = std::move(value); }
-
-    /**
-     * <p>The name of pipeline for which data reprocessing is canceled.</p>
-     */
-    inline void SetPipelineName(const char* value) { m_pipelineNameHasBeenSet = true; m_pipelineName.assign(value); }
-
-    /**
-     * <p>The name of pipeline for which data reprocessing is canceled.</p>
-     */
-    inline CancelPipelineReprocessingRequest& WithPipelineName(const Aws::String& value) { SetPipelineName(value); return *this;}
-
-    /**
-     * <p>The name of pipeline for which data reprocessing is canceled.</p>
-     */
-    inline CancelPipelineReprocessingRequest& WithPipelineName(Aws::String&& value) { SetPipelineName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of pipeline for which data reprocessing is canceled.</p>
-     */
-    inline CancelPipelineReprocessingRequest& WithPipelineName(const char* value) { SetPipelineName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the reprocessing task (returned by
      * <code>StartPipelineReprocessing</code>).</p>
      */
-    inline const Aws::String& GetReprocessingId() const{ return m_reprocessingId; }
-
-    /**
-     * <p>The ID of the reprocessing task (returned by
-     * <code>StartPipelineReprocessing</code>).</p>
-     */
+    inline const Aws::String& GetReprocessingId() const { return m_reprocessingId; }
     inline bool ReprocessingIdHasBeenSet() const { return m_reprocessingIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the reprocessing task (returned by
-     * <code>StartPipelineReprocessing</code>).</p>
-     */
-    inline void SetReprocessingId(const Aws::String& value) { m_reprocessingIdHasBeenSet = true; m_reprocessingId = value; }
-
-    /**
-     * <p>The ID of the reprocessing task (returned by
-     * <code>StartPipelineReprocessing</code>).</p>
-     */
-    inline void SetReprocessingId(Aws::String&& value) { m_reprocessingIdHasBeenSet = true; m_reprocessingId = std::move(value); }
-
-    /**
-     * <p>The ID of the reprocessing task (returned by
-     * <code>StartPipelineReprocessing</code>).</p>
-     */
-    inline void SetReprocessingId(const char* value) { m_reprocessingIdHasBeenSet = true; m_reprocessingId.assign(value); }
-
-    /**
-     * <p>The ID of the reprocessing task (returned by
-     * <code>StartPipelineReprocessing</code>).</p>
-     */
-    inline CancelPipelineReprocessingRequest& WithReprocessingId(const Aws::String& value) { SetReprocessingId(value); return *this;}
-
-    /**
-     * <p>The ID of the reprocessing task (returned by
-     * <code>StartPipelineReprocessing</code>).</p>
-     */
-    inline CancelPipelineReprocessingRequest& WithReprocessingId(Aws::String&& value) { SetReprocessingId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the reprocessing task (returned by
-     * <code>StartPipelineReprocessing</code>).</p>
-     */
-    inline CancelPipelineReprocessingRequest& WithReprocessingId(const char* value) { SetReprocessingId(value); return *this;}
-
+    template<typename ReprocessingIdT = Aws::String>
+    void SetReprocessingId(ReprocessingIdT&& value) { m_reprocessingIdHasBeenSet = true; m_reprocessingId = std::forward<ReprocessingIdT>(value); }
+    template<typename ReprocessingIdT = Aws::String>
+    CancelPipelineReprocessingRequest& WithReprocessingId(ReprocessingIdT&& value) { SetReprocessingId(std::forward<ReprocessingIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_pipelineName;

@@ -24,84 +24,46 @@ namespace Model
 {
 
   /**
-   * <p>The Key Value Store associations.</p><p><h3>See Also:</h3>   <a
+   * <p>The key value store associations.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2020-05-31/KeyValueStoreAssociations">AWS
    * API Reference</a></p>
    */
   class KeyValueStoreAssociations
   {
   public:
-    AWS_CLOUDFRONT_API KeyValueStoreAssociations();
+    AWS_CLOUDFRONT_API KeyValueStoreAssociations() = default;
     AWS_CLOUDFRONT_API KeyValueStoreAssociations(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_CLOUDFRONT_API KeyValueStoreAssociations& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_CLOUDFRONT_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
-     * <p>The quantity of Key Value Store associations.</p>
+     * <p>The quantity of key value store associations.</p>
      */
-    inline int GetQuantity() const{ return m_quantity; }
-
-    /**
-     * <p>The quantity of Key Value Store associations.</p>
-     */
+    inline int GetQuantity() const { return m_quantity; }
     inline bool QuantityHasBeenSet() const { return m_quantityHasBeenSet; }
-
-    /**
-     * <p>The quantity of Key Value Store associations.</p>
-     */
     inline void SetQuantity(int value) { m_quantityHasBeenSet = true; m_quantity = value; }
-
-    /**
-     * <p>The quantity of Key Value Store associations.</p>
-     */
     inline KeyValueStoreAssociations& WithQuantity(int value) { SetQuantity(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
-     * <p>The items of the Key Value Store association.</p>
+     * <p>The items of the key value store association.</p>
      */
-    inline const Aws::Vector<KeyValueStoreAssociation>& GetItems() const{ return m_items; }
-
-    /**
-     * <p>The items of the Key Value Store association.</p>
-     */
+    inline const Aws::Vector<KeyValueStoreAssociation>& GetItems() const { return m_items; }
     inline bool ItemsHasBeenSet() const { return m_itemsHasBeenSet; }
-
-    /**
-     * <p>The items of the Key Value Store association.</p>
-     */
-    inline void SetItems(const Aws::Vector<KeyValueStoreAssociation>& value) { m_itemsHasBeenSet = true; m_items = value; }
-
-    /**
-     * <p>The items of the Key Value Store association.</p>
-     */
-    inline void SetItems(Aws::Vector<KeyValueStoreAssociation>&& value) { m_itemsHasBeenSet = true; m_items = std::move(value); }
-
-    /**
-     * <p>The items of the Key Value Store association.</p>
-     */
-    inline KeyValueStoreAssociations& WithItems(const Aws::Vector<KeyValueStoreAssociation>& value) { SetItems(value); return *this;}
-
-    /**
-     * <p>The items of the Key Value Store association.</p>
-     */
-    inline KeyValueStoreAssociations& WithItems(Aws::Vector<KeyValueStoreAssociation>&& value) { SetItems(std::move(value)); return *this;}
-
-    /**
-     * <p>The items of the Key Value Store association.</p>
-     */
-    inline KeyValueStoreAssociations& AddItems(const KeyValueStoreAssociation& value) { m_itemsHasBeenSet = true; m_items.push_back(value); return *this; }
-
-    /**
-     * <p>The items of the Key Value Store association.</p>
-     */
-    inline KeyValueStoreAssociations& AddItems(KeyValueStoreAssociation&& value) { m_itemsHasBeenSet = true; m_items.push_back(std::move(value)); return *this; }
-
+    template<typename ItemsT = Aws::Vector<KeyValueStoreAssociation>>
+    void SetItems(ItemsT&& value) { m_itemsHasBeenSet = true; m_items = std::forward<ItemsT>(value); }
+    template<typename ItemsT = Aws::Vector<KeyValueStoreAssociation>>
+    KeyValueStoreAssociations& WithItems(ItemsT&& value) { SetItems(std::forward<ItemsT>(value)); return *this;}
+    template<typename ItemsT = KeyValueStoreAssociation>
+    KeyValueStoreAssociations& AddItems(ItemsT&& value) { m_itemsHasBeenSet = true; m_items.emplace_back(std::forward<ItemsT>(value)); return *this; }
+    ///@}
   private:
 
-    int m_quantity;
+    int m_quantity{0};
     bool m_quantityHasBeenSet = false;
 
     Aws::Vector<KeyValueStoreAssociation> m_items;

@@ -18,21 +18,7 @@ namespace Inspector2
 namespace Model
 {
 
-RepositoryAggregation::RepositoryAggregation() : 
-    m_repositoriesHasBeenSet(false),
-    m_sortBy(RepositorySortBy::NOT_SET),
-    m_sortByHasBeenSet(false),
-    m_sortOrder(SortOrder::NOT_SET),
-    m_sortOrderHasBeenSet(false)
-{
-}
-
-RepositoryAggregation::RepositoryAggregation(JsonView jsonValue) : 
-    m_repositoriesHasBeenSet(false),
-    m_sortBy(RepositorySortBy::NOT_SET),
-    m_sortByHasBeenSet(false),
-    m_sortOrder(SortOrder::NOT_SET),
-    m_sortOrderHasBeenSet(false)
+RepositoryAggregation::RepositoryAggregation(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -48,21 +34,16 @@ RepositoryAggregation& RepositoryAggregation::operator =(JsonView jsonValue)
     }
     m_repositoriesHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("sortBy"))
-  {
-    m_sortBy = RepositorySortByMapper::GetRepositorySortByForName(jsonValue.GetString("sortBy"));
-
-    m_sortByHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("sortOrder"))
   {
     m_sortOrder = SortOrderMapper::GetSortOrderForName(jsonValue.GetString("sortOrder"));
-
     m_sortOrderHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("sortBy"))
+  {
+    m_sortBy = RepositorySortByMapper::GetRepositorySortByForName(jsonValue.GetString("sortBy"));
+    m_sortByHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -81,14 +62,14 @@ JsonValue RepositoryAggregation::Jsonize() const
 
   }
 
-  if(m_sortByHasBeenSet)
-  {
-   payload.WithString("sortBy", RepositorySortByMapper::GetNameForRepositorySortBy(m_sortBy));
-  }
-
   if(m_sortOrderHasBeenSet)
   {
    payload.WithString("sortOrder", SortOrderMapper::GetNameForSortOrder(m_sortOrder));
+  }
+
+  if(m_sortByHasBeenSet)
+  {
+   payload.WithString("sortBy", RepositorySortByMapper::GetNameForRepositorySortBy(m_sortBy));
   }
 
   return payload;

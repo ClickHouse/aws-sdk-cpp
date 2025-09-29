@@ -18,15 +18,7 @@ namespace Comprehend
 namespace Model
 {
 
-TargetedSentimentEntity::TargetedSentimentEntity() : 
-    m_descriptiveMentionIndexHasBeenSet(false),
-    m_mentionsHasBeenSet(false)
-{
-}
-
-TargetedSentimentEntity::TargetedSentimentEntity(JsonView jsonValue) : 
-    m_descriptiveMentionIndexHasBeenSet(false),
-    m_mentionsHasBeenSet(false)
+TargetedSentimentEntity::TargetedSentimentEntity(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ TargetedSentimentEntity& TargetedSentimentEntity::operator =(JsonView jsonValue)
     }
     m_descriptiveMentionIndexHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Mentions"))
   {
     Aws::Utils::Array<JsonView> mentionsJsonList = jsonValue.GetArray("Mentions");
@@ -52,7 +43,6 @@ TargetedSentimentEntity& TargetedSentimentEntity::operator =(JsonView jsonValue)
     }
     m_mentionsHasBeenSet = true;
   }
-
   return *this;
 }
 

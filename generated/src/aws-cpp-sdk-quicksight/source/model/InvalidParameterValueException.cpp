@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-InvalidParameterValueException::InvalidParameterValueException() : 
-    m_messageHasBeenSet(false),
-    m_requestIdHasBeenSet(false)
-{
-}
-
-InvalidParameterValueException::InvalidParameterValueException(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_requestIdHasBeenSet(false)
+InvalidParameterValueException::InvalidParameterValueException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ InvalidParameterValueException& InvalidParameterValueException::operator =(JsonV
   if(jsonValue.ValueExists("Message"))
   {
     m_message = jsonValue.GetString("Message");
-
     m_messageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RequestId"))
   {
     m_requestId = jsonValue.GetString("RequestId");
-
     m_requestIdHasBeenSet = true;
   }
-
   return *this;
 }
 

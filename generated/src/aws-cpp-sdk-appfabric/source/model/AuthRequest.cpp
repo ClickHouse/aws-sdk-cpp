@@ -18,15 +18,7 @@ namespace AppFabric
 namespace Model
 {
 
-AuthRequest::AuthRequest() : 
-    m_redirectUriHasBeenSet(false),
-    m_codeHasBeenSet(false)
-{
-}
-
-AuthRequest::AuthRequest(JsonView jsonValue) : 
-    m_redirectUriHasBeenSet(false),
-    m_codeHasBeenSet(false)
+AuthRequest::AuthRequest(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ AuthRequest& AuthRequest::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("redirectUri"))
   {
     m_redirectUri = jsonValue.GetString("redirectUri");
-
     m_redirectUriHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("code"))
   {
     m_code = jsonValue.GetString("code");
-
     m_codeHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,13 +18,7 @@ namespace CleanRooms
 namespace Model
 {
 
-DifferentialPrivacyPrivacyImpact::DifferentialPrivacyPrivacyImpact() : 
-    m_aggregationsHasBeenSet(false)
-{
-}
-
-DifferentialPrivacyPrivacyImpact::DifferentialPrivacyPrivacyImpact(JsonView jsonValue) : 
-    m_aggregationsHasBeenSet(false)
+DifferentialPrivacyPrivacyImpact::DifferentialPrivacyPrivacyImpact(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ DifferentialPrivacyPrivacyImpact& DifferentialPrivacyPrivacyImpact::operator =(J
     }
     m_aggregationsHasBeenSet = true;
   }
-
   return *this;
 }
 

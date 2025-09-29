@@ -21,7 +21,7 @@ namespace Model
   class DeleteRestoreTestingPlanRequest : public BackupRequest
   {
   public:
-    AWS_BACKUP_API DeleteRestoreTestingPlanRequest();
+    AWS_BACKUP_API DeleteRestoreTestingPlanRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_BACKUP_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>Required unique name of the restore testing plan you wish to delete.</p>
      */
-    inline const Aws::String& GetRestoreTestingPlanName() const{ return m_restoreTestingPlanName; }
-
-    /**
-     * <p>Required unique name of the restore testing plan you wish to delete.</p>
-     */
+    inline const Aws::String& GetRestoreTestingPlanName() const { return m_restoreTestingPlanName; }
     inline bool RestoreTestingPlanNameHasBeenSet() const { return m_restoreTestingPlanNameHasBeenSet; }
-
-    /**
-     * <p>Required unique name of the restore testing plan you wish to delete.</p>
-     */
-    inline void SetRestoreTestingPlanName(const Aws::String& value) { m_restoreTestingPlanNameHasBeenSet = true; m_restoreTestingPlanName = value; }
-
-    /**
-     * <p>Required unique name of the restore testing plan you wish to delete.</p>
-     */
-    inline void SetRestoreTestingPlanName(Aws::String&& value) { m_restoreTestingPlanNameHasBeenSet = true; m_restoreTestingPlanName = std::move(value); }
-
-    /**
-     * <p>Required unique name of the restore testing plan you wish to delete.</p>
-     */
-    inline void SetRestoreTestingPlanName(const char* value) { m_restoreTestingPlanNameHasBeenSet = true; m_restoreTestingPlanName.assign(value); }
-
-    /**
-     * <p>Required unique name of the restore testing plan you wish to delete.</p>
-     */
-    inline DeleteRestoreTestingPlanRequest& WithRestoreTestingPlanName(const Aws::String& value) { SetRestoreTestingPlanName(value); return *this;}
-
-    /**
-     * <p>Required unique name of the restore testing plan you wish to delete.</p>
-     */
-    inline DeleteRestoreTestingPlanRequest& WithRestoreTestingPlanName(Aws::String&& value) { SetRestoreTestingPlanName(std::move(value)); return *this;}
-
-    /**
-     * <p>Required unique name of the restore testing plan you wish to delete.</p>
-     */
-    inline DeleteRestoreTestingPlanRequest& WithRestoreTestingPlanName(const char* value) { SetRestoreTestingPlanName(value); return *this;}
-
+    template<typename RestoreTestingPlanNameT = Aws::String>
+    void SetRestoreTestingPlanName(RestoreTestingPlanNameT&& value) { m_restoreTestingPlanNameHasBeenSet = true; m_restoreTestingPlanName = std::forward<RestoreTestingPlanNameT>(value); }
+    template<typename RestoreTestingPlanNameT = Aws::String>
+    DeleteRestoreTestingPlanRequest& WithRestoreTestingPlanName(RestoreTestingPlanNameT&& value) { SetRestoreTestingPlanName(std::forward<RestoreTestingPlanNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_restoreTestingPlanName;

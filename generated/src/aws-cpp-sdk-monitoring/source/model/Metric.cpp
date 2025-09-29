@@ -20,17 +20,7 @@ namespace CloudWatch
 namespace Model
 {
 
-Metric::Metric() : 
-    m_namespaceHasBeenSet(false),
-    m_metricNameHasBeenSet(false),
-    m_dimensionsHasBeenSet(false)
-{
-}
-
-Metric::Metric(const XmlNode& xmlNode) : 
-    m_namespaceHasBeenSet(false),
-    m_metricNameHasBeenSet(false),
-    m_dimensionsHasBeenSet(false)
+Metric::Metric(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -57,6 +47,7 @@ Metric& Metric::operator =(const XmlNode& xmlNode)
     if(!dimensionsNode.IsNull())
     {
       XmlNode dimensionsMember = dimensionsNode.FirstChild("member");
+      m_dimensionsHasBeenSet = !dimensionsMember.IsNull();
       while(!dimensionsMember.IsNull())
       {
         m_dimensions.push_back(dimensionsMember);
@@ -111,7 +102,7 @@ void Metric::OutputToStream(Aws::OStream& oStream, const char* location) const
       for(auto& item : m_dimensions)
       {
         Aws::StringStream dimensionsSs;
-        dimensionsSs << location <<  ".Dimensions.member." << dimensionsIdx++;
+        dimensionsSs << location << ".Dimensions.member." << dimensionsIdx++;
         item.OutputToStream(oStream, dimensionsSs.str().c_str());
       }
   }

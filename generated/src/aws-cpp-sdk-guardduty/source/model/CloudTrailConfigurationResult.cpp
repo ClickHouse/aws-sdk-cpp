@@ -18,15 +18,7 @@ namespace GuardDuty
 namespace Model
 {
 
-CloudTrailConfigurationResult::CloudTrailConfigurationResult() : 
-    m_status(DataSourceStatus::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
-CloudTrailConfigurationResult::CloudTrailConfigurationResult(JsonView jsonValue) : 
-    m_status(DataSourceStatus::NOT_SET),
-    m_statusHasBeenSet(false)
+CloudTrailConfigurationResult::CloudTrailConfigurationResult(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ CloudTrailConfigurationResult& CloudTrailConfigurationResult::operator =(JsonVie
   if(jsonValue.ValueExists("status"))
   {
     m_status = DataSourceStatusMapper::GetDataSourceStatusForName(jsonValue.GetString("status"));
-
     m_statusHasBeenSet = true;
   }
-
   return *this;
 }
 

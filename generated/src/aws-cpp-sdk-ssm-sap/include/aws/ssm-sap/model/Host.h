@@ -32,247 +32,81 @@ namespace Model
   class Host
   {
   public:
-    AWS_SSMSAP_API Host();
+    AWS_SSMSAP_API Host() = default;
     AWS_SSMSAP_API Host(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSMSAP_API Host& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSMSAP_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the Dedicated Host.</p>
      */
-    inline const Aws::String& GetHostName() const{ return m_hostName; }
-
-    /**
-     * <p>The name of the Dedicated Host.</p>
-     */
+    inline const Aws::String& GetHostName() const { return m_hostName; }
     inline bool HostNameHasBeenSet() const { return m_hostNameHasBeenSet; }
+    template<typename HostNameT = Aws::String>
+    void SetHostName(HostNameT&& value) { m_hostNameHasBeenSet = true; m_hostName = std::forward<HostNameT>(value); }
+    template<typename HostNameT = Aws::String>
+    Host& WithHostName(HostNameT&& value) { SetHostName(std::forward<HostNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the Dedicated Host.</p>
-     */
-    inline void SetHostName(const Aws::String& value) { m_hostNameHasBeenSet = true; m_hostName = value; }
-
-    /**
-     * <p>The name of the Dedicated Host.</p>
-     */
-    inline void SetHostName(Aws::String&& value) { m_hostNameHasBeenSet = true; m_hostName = std::move(value); }
-
-    /**
-     * <p>The name of the Dedicated Host.</p>
-     */
-    inline void SetHostName(const char* value) { m_hostNameHasBeenSet = true; m_hostName.assign(value); }
-
-    /**
-     * <p>The name of the Dedicated Host.</p>
-     */
-    inline Host& WithHostName(const Aws::String& value) { SetHostName(value); return *this;}
-
-    /**
-     * <p>The name of the Dedicated Host.</p>
-     */
-    inline Host& WithHostName(Aws::String&& value) { SetHostName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Dedicated Host.</p>
-     */
-    inline Host& WithHostName(const char* value) { SetHostName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The IP address of the Dedicated Host. </p>
      */
-    inline const Aws::String& GetHostIp() const{ return m_hostIp; }
-
-    /**
-     * <p>The IP address of the Dedicated Host. </p>
-     */
+    inline const Aws::String& GetHostIp() const { return m_hostIp; }
     inline bool HostIpHasBeenSet() const { return m_hostIpHasBeenSet; }
+    template<typename HostIpT = Aws::String>
+    void SetHostIp(HostIpT&& value) { m_hostIpHasBeenSet = true; m_hostIp = std::forward<HostIpT>(value); }
+    template<typename HostIpT = Aws::String>
+    Host& WithHostIp(HostIpT&& value) { SetHostIp(std::forward<HostIpT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The IP address of the Dedicated Host. </p>
-     */
-    inline void SetHostIp(const Aws::String& value) { m_hostIpHasBeenSet = true; m_hostIp = value; }
-
-    /**
-     * <p>The IP address of the Dedicated Host. </p>
-     */
-    inline void SetHostIp(Aws::String&& value) { m_hostIpHasBeenSet = true; m_hostIp = std::move(value); }
-
-    /**
-     * <p>The IP address of the Dedicated Host. </p>
-     */
-    inline void SetHostIp(const char* value) { m_hostIpHasBeenSet = true; m_hostIp.assign(value); }
-
-    /**
-     * <p>The IP address of the Dedicated Host. </p>
-     */
-    inline Host& WithHostIp(const Aws::String& value) { SetHostIp(value); return *this;}
-
-    /**
-     * <p>The IP address of the Dedicated Host. </p>
-     */
-    inline Host& WithHostIp(Aws::String&& value) { SetHostIp(std::move(value)); return *this;}
-
-    /**
-     * <p>The IP address of the Dedicated Host. </p>
-     */
-    inline Host& WithHostIp(const char* value) { SetHostIp(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of Amazon EC2 instance.</p>
      */
-    inline const Aws::String& GetEC2InstanceId() const{ return m_eC2InstanceId; }
-
-    /**
-     * <p>The ID of Amazon EC2 instance.</p>
-     */
+    inline const Aws::String& GetEC2InstanceId() const { return m_eC2InstanceId; }
     inline bool EC2InstanceIdHasBeenSet() const { return m_eC2InstanceIdHasBeenSet; }
+    template<typename EC2InstanceIdT = Aws::String>
+    void SetEC2InstanceId(EC2InstanceIdT&& value) { m_eC2InstanceIdHasBeenSet = true; m_eC2InstanceId = std::forward<EC2InstanceIdT>(value); }
+    template<typename EC2InstanceIdT = Aws::String>
+    Host& WithEC2InstanceId(EC2InstanceIdT&& value) { SetEC2InstanceId(std::forward<EC2InstanceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of Amazon EC2 instance.</p>
-     */
-    inline void SetEC2InstanceId(const Aws::String& value) { m_eC2InstanceIdHasBeenSet = true; m_eC2InstanceId = value; }
-
-    /**
-     * <p>The ID of Amazon EC2 instance.</p>
-     */
-    inline void SetEC2InstanceId(Aws::String&& value) { m_eC2InstanceIdHasBeenSet = true; m_eC2InstanceId = std::move(value); }
-
-    /**
-     * <p>The ID of Amazon EC2 instance.</p>
-     */
-    inline void SetEC2InstanceId(const char* value) { m_eC2InstanceIdHasBeenSet = true; m_eC2InstanceId.assign(value); }
-
-    /**
-     * <p>The ID of Amazon EC2 instance.</p>
-     */
-    inline Host& WithEC2InstanceId(const Aws::String& value) { SetEC2InstanceId(value); return *this;}
-
-    /**
-     * <p>The ID of Amazon EC2 instance.</p>
-     */
-    inline Host& WithEC2InstanceId(Aws::String&& value) { SetEC2InstanceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of Amazon EC2 instance.</p>
-     */
-    inline Host& WithEC2InstanceId(const char* value) { SetEC2InstanceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The instance ID of the instance on the Dedicated Host.</p>
      */
-    inline const Aws::String& GetInstanceId() const{ return m_instanceId; }
-
-    /**
-     * <p>The instance ID of the instance on the Dedicated Host.</p>
-     */
+    inline const Aws::String& GetInstanceId() const { return m_instanceId; }
     inline bool InstanceIdHasBeenSet() const { return m_instanceIdHasBeenSet; }
+    template<typename InstanceIdT = Aws::String>
+    void SetInstanceId(InstanceIdT&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::forward<InstanceIdT>(value); }
+    template<typename InstanceIdT = Aws::String>
+    Host& WithInstanceId(InstanceIdT&& value) { SetInstanceId(std::forward<InstanceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The instance ID of the instance on the Dedicated Host.</p>
-     */
-    inline void SetInstanceId(const Aws::String& value) { m_instanceIdHasBeenSet = true; m_instanceId = value; }
-
-    /**
-     * <p>The instance ID of the instance on the Dedicated Host.</p>
-     */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::move(value); }
-
-    /**
-     * <p>The instance ID of the instance on the Dedicated Host.</p>
-     */
-    inline void SetInstanceId(const char* value) { m_instanceIdHasBeenSet = true; m_instanceId.assign(value); }
-
-    /**
-     * <p>The instance ID of the instance on the Dedicated Host.</p>
-     */
-    inline Host& WithInstanceId(const Aws::String& value) { SetInstanceId(value); return *this;}
-
-    /**
-     * <p>The instance ID of the instance on the Dedicated Host.</p>
-     */
-    inline Host& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The instance ID of the instance on the Dedicated Host.</p>
-     */
-    inline Host& WithInstanceId(const char* value) { SetInstanceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The role of the Dedicated Host.</p>
      */
-    inline const HostRole& GetHostRole() const{ return m_hostRole; }
-
-    /**
-     * <p>The role of the Dedicated Host.</p>
-     */
+    inline HostRole GetHostRole() const { return m_hostRole; }
     inline bool HostRoleHasBeenSet() const { return m_hostRoleHasBeenSet; }
+    inline void SetHostRole(HostRole value) { m_hostRoleHasBeenSet = true; m_hostRole = value; }
+    inline Host& WithHostRole(HostRole value) { SetHostRole(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The role of the Dedicated Host.</p>
-     */
-    inline void SetHostRole(const HostRole& value) { m_hostRoleHasBeenSet = true; m_hostRole = value; }
-
-    /**
-     * <p>The role of the Dedicated Host.</p>
-     */
-    inline void SetHostRole(HostRole&& value) { m_hostRoleHasBeenSet = true; m_hostRole = std::move(value); }
-
-    /**
-     * <p>The role of the Dedicated Host.</p>
-     */
-    inline Host& WithHostRole(const HostRole& value) { SetHostRole(value); return *this;}
-
-    /**
-     * <p>The role of the Dedicated Host.</p>
-     */
-    inline Host& WithHostRole(HostRole&& value) { SetHostRole(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The version of the operating system.</p>
      */
-    inline const Aws::String& GetOsVersion() const{ return m_osVersion; }
-
-    /**
-     * <p>The version of the operating system.</p>
-     */
+    inline const Aws::String& GetOsVersion() const { return m_osVersion; }
     inline bool OsVersionHasBeenSet() const { return m_osVersionHasBeenSet; }
-
-    /**
-     * <p>The version of the operating system.</p>
-     */
-    inline void SetOsVersion(const Aws::String& value) { m_osVersionHasBeenSet = true; m_osVersion = value; }
-
-    /**
-     * <p>The version of the operating system.</p>
-     */
-    inline void SetOsVersion(Aws::String&& value) { m_osVersionHasBeenSet = true; m_osVersion = std::move(value); }
-
-    /**
-     * <p>The version of the operating system.</p>
-     */
-    inline void SetOsVersion(const char* value) { m_osVersionHasBeenSet = true; m_osVersion.assign(value); }
-
-    /**
-     * <p>The version of the operating system.</p>
-     */
-    inline Host& WithOsVersion(const Aws::String& value) { SetOsVersion(value); return *this;}
-
-    /**
-     * <p>The version of the operating system.</p>
-     */
-    inline Host& WithOsVersion(Aws::String&& value) { SetOsVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The version of the operating system.</p>
-     */
-    inline Host& WithOsVersion(const char* value) { SetOsVersion(value); return *this;}
-
+    template<typename OsVersionT = Aws::String>
+    void SetOsVersion(OsVersionT&& value) { m_osVersionHasBeenSet = true; m_osVersion = std::forward<OsVersionT>(value); }
+    template<typename OsVersionT = Aws::String>
+    Host& WithOsVersion(OsVersionT&& value) { SetOsVersion(std::forward<OsVersionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_hostName;
@@ -287,7 +121,7 @@ namespace Model
     Aws::String m_instanceId;
     bool m_instanceIdHasBeenSet = false;
 
-    HostRole m_hostRole;
+    HostRole m_hostRole{HostRole::NOT_SET};
     bool m_hostRoleHasBeenSet = false;
 
     Aws::String m_osVersion;

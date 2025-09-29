@@ -12,15 +12,6 @@ using namespace Aws::BedrockAgent::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-StartIngestionJobRequest::StartIngestionJobRequest() : 
-    m_knowledgeBaseIdHasBeenSet(false),
-    m_dataSourceIdHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_descriptionHasBeenSet(false)
-{
-}
-
 Aws::String StartIngestionJobRequest::SerializePayload() const
 {
   JsonValue payload;

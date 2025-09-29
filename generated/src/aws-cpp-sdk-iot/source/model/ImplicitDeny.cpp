@@ -18,13 +18,7 @@ namespace IoT
 namespace Model
 {
 
-ImplicitDeny::ImplicitDeny() : 
-    m_policiesHasBeenSet(false)
-{
-}
-
-ImplicitDeny::ImplicitDeny(JsonView jsonValue) : 
-    m_policiesHasBeenSet(false)
+ImplicitDeny::ImplicitDeny(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ ImplicitDeny& ImplicitDeny::operator =(JsonView jsonValue)
     }
     m_policiesHasBeenSet = true;
   }
-
   return *this;
 }
 

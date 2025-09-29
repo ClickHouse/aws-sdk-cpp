@@ -18,15 +18,7 @@ namespace LookoutEquipment
 namespace Model
 {
 
-SensorsWithShortDateRange::SensorsWithShortDateRange() : 
-    m_affectedSensorCount(0),
-    m_affectedSensorCountHasBeenSet(false)
-{
-}
-
-SensorsWithShortDateRange::SensorsWithShortDateRange(JsonView jsonValue) : 
-    m_affectedSensorCount(0),
-    m_affectedSensorCountHasBeenSet(false)
+SensorsWithShortDateRange::SensorsWithShortDateRange(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ SensorsWithShortDateRange& SensorsWithShortDateRange::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("AffectedSensorCount"))
   {
     m_affectedSensorCount = jsonValue.GetInteger("AffectedSensorCount");
-
     m_affectedSensorCountHasBeenSet = true;
   }
-
   return *this;
 }
 

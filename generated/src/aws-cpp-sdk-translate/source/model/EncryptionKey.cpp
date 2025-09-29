@@ -18,17 +18,7 @@ namespace Translate
 namespace Model
 {
 
-EncryptionKey::EncryptionKey() : 
-    m_type(EncryptionKeyType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_idHasBeenSet(false)
-{
-}
-
-EncryptionKey::EncryptionKey(JsonView jsonValue) : 
-    m_type(EncryptionKeyType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_idHasBeenSet(false)
+EncryptionKey::EncryptionKey(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ EncryptionKey& EncryptionKey::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Type"))
   {
     m_type = EncryptionKeyTypeMapper::GetEncryptionKeyTypeForName(jsonValue.GetString("Type"));
-
     m_typeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Id"))
   {
     m_id = jsonValue.GetString("Id");
-
     m_idHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -20,19 +20,7 @@ namespace EC2
 namespace Model
 {
 
-InternetGateway::InternetGateway() : 
-    m_attachmentsHasBeenSet(false),
-    m_internetGatewayIdHasBeenSet(false),
-    m_ownerIdHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-InternetGateway::InternetGateway(const XmlNode& xmlNode) : 
-    m_attachmentsHasBeenSet(false),
-    m_internetGatewayIdHasBeenSet(false),
-    m_ownerIdHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+InternetGateway::InternetGateway(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -47,6 +35,7 @@ InternetGateway& InternetGateway::operator =(const XmlNode& xmlNode)
     if(!attachmentsNode.IsNull())
     {
       XmlNode attachmentsMember = attachmentsNode.FirstChild("item");
+      m_attachmentsHasBeenSet = !attachmentsMember.IsNull();
       while(!attachmentsMember.IsNull())
       {
         m_attachments.push_back(attachmentsMember);
@@ -71,6 +60,7 @@ InternetGateway& InternetGateway::operator =(const XmlNode& xmlNode)
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -128,7 +118,7 @@ void InternetGateway::OutputToStream(Aws::OStream& oStream, const char* location
       for(auto& item : m_attachments)
       {
         Aws::StringStream attachmentsSs;
-        attachmentsSs << location <<  ".AttachmentSet." << attachmentsIdx++;
+        attachmentsSs << location << ".AttachmentSet." << attachmentsIdx++;
         item.OutputToStream(oStream, attachmentsSs.str().c_str());
       }
   }
@@ -146,7 +136,7 @@ void InternetGateway::OutputToStream(Aws::OStream& oStream, const char* location
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }

@@ -22,7 +22,7 @@ namespace Model
   class PutDataLakeSettingsRequest : public LakeFormationRequest
   {
   public:
-    AWS_LAKEFORMATION_API PutDataLakeSettingsRequest();
+    AWS_LAKEFORMATION_API PutDataLakeSettingsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,107 +33,33 @@ namespace Model
     AWS_LAKEFORMATION_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The identifier for the Data Catalog. By default, the account ID. The Data
      * Catalog is the persistent metadata store. It contains database definitions,
      * table definitions, and other control information to manage your Lake Formation
      * environment. </p>
      */
-    inline const Aws::String& GetCatalogId() const{ return m_catalogId; }
-
-    /**
-     * <p>The identifier for the Data Catalog. By default, the account ID. The Data
-     * Catalog is the persistent metadata store. It contains database definitions,
-     * table definitions, and other control information to manage your Lake Formation
-     * environment. </p>
-     */
+    inline const Aws::String& GetCatalogId() const { return m_catalogId; }
     inline bool CatalogIdHasBeenSet() const { return m_catalogIdHasBeenSet; }
+    template<typename CatalogIdT = Aws::String>
+    void SetCatalogId(CatalogIdT&& value) { m_catalogIdHasBeenSet = true; m_catalogId = std::forward<CatalogIdT>(value); }
+    template<typename CatalogIdT = Aws::String>
+    PutDataLakeSettingsRequest& WithCatalogId(CatalogIdT&& value) { SetCatalogId(std::forward<CatalogIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier for the Data Catalog. By default, the account ID. The Data
-     * Catalog is the persistent metadata store. It contains database definitions,
-     * table definitions, and other control information to manage your Lake Formation
-     * environment. </p>
-     */
-    inline void SetCatalogId(const Aws::String& value) { m_catalogIdHasBeenSet = true; m_catalogId = value; }
-
-    /**
-     * <p>The identifier for the Data Catalog. By default, the account ID. The Data
-     * Catalog is the persistent metadata store. It contains database definitions,
-     * table definitions, and other control information to manage your Lake Formation
-     * environment. </p>
-     */
-    inline void SetCatalogId(Aws::String&& value) { m_catalogIdHasBeenSet = true; m_catalogId = std::move(value); }
-
-    /**
-     * <p>The identifier for the Data Catalog. By default, the account ID. The Data
-     * Catalog is the persistent metadata store. It contains database definitions,
-     * table definitions, and other control information to manage your Lake Formation
-     * environment. </p>
-     */
-    inline void SetCatalogId(const char* value) { m_catalogIdHasBeenSet = true; m_catalogId.assign(value); }
-
-    /**
-     * <p>The identifier for the Data Catalog. By default, the account ID. The Data
-     * Catalog is the persistent metadata store. It contains database definitions,
-     * table definitions, and other control information to manage your Lake Formation
-     * environment. </p>
-     */
-    inline PutDataLakeSettingsRequest& WithCatalogId(const Aws::String& value) { SetCatalogId(value); return *this;}
-
-    /**
-     * <p>The identifier for the Data Catalog. By default, the account ID. The Data
-     * Catalog is the persistent metadata store. It contains database definitions,
-     * table definitions, and other control information to manage your Lake Formation
-     * environment. </p>
-     */
-    inline PutDataLakeSettingsRequest& WithCatalogId(Aws::String&& value) { SetCatalogId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier for the Data Catalog. By default, the account ID. The Data
-     * Catalog is the persistent metadata store. It contains database definitions,
-     * table definitions, and other control information to manage your Lake Formation
-     * environment. </p>
-     */
-    inline PutDataLakeSettingsRequest& WithCatalogId(const char* value) { SetCatalogId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A structure representing a list of Lake Formation principals designated as
      * data lake administrators.</p>
      */
-    inline const DataLakeSettings& GetDataLakeSettings() const{ return m_dataLakeSettings; }
-
-    /**
-     * <p>A structure representing a list of Lake Formation principals designated as
-     * data lake administrators.</p>
-     */
+    inline const DataLakeSettings& GetDataLakeSettings() const { return m_dataLakeSettings; }
     inline bool DataLakeSettingsHasBeenSet() const { return m_dataLakeSettingsHasBeenSet; }
-
-    /**
-     * <p>A structure representing a list of Lake Formation principals designated as
-     * data lake administrators.</p>
-     */
-    inline void SetDataLakeSettings(const DataLakeSettings& value) { m_dataLakeSettingsHasBeenSet = true; m_dataLakeSettings = value; }
-
-    /**
-     * <p>A structure representing a list of Lake Formation principals designated as
-     * data lake administrators.</p>
-     */
-    inline void SetDataLakeSettings(DataLakeSettings&& value) { m_dataLakeSettingsHasBeenSet = true; m_dataLakeSettings = std::move(value); }
-
-    /**
-     * <p>A structure representing a list of Lake Formation principals designated as
-     * data lake administrators.</p>
-     */
-    inline PutDataLakeSettingsRequest& WithDataLakeSettings(const DataLakeSettings& value) { SetDataLakeSettings(value); return *this;}
-
-    /**
-     * <p>A structure representing a list of Lake Formation principals designated as
-     * data lake administrators.</p>
-     */
-    inline PutDataLakeSettingsRequest& WithDataLakeSettings(DataLakeSettings&& value) { SetDataLakeSettings(std::move(value)); return *this;}
-
+    template<typename DataLakeSettingsT = DataLakeSettings>
+    void SetDataLakeSettings(DataLakeSettingsT&& value) { m_dataLakeSettingsHasBeenSet = true; m_dataLakeSettings = std::forward<DataLakeSettingsT>(value); }
+    template<typename DataLakeSettingsT = DataLakeSettings>
+    PutDataLakeSettingsRequest& WithDataLakeSettings(DataLakeSettingsT&& value) { SetDataLakeSettings(std::forward<DataLakeSettingsT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_catalogId;

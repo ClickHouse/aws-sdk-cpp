@@ -18,13 +18,7 @@ namespace Pipes
 namespace Model
 {
 
-FirehoseLogDestination::FirehoseLogDestination() : 
-    m_deliveryStreamArnHasBeenSet(false)
-{
-}
-
-FirehoseLogDestination::FirehoseLogDestination(JsonView jsonValue) : 
-    m_deliveryStreamArnHasBeenSet(false)
+FirehoseLogDestination::FirehoseLogDestination(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ FirehoseLogDestination& FirehoseLogDestination::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("DeliveryStreamArn"))
   {
     m_deliveryStreamArn = jsonValue.GetString("DeliveryStreamArn");
-
     m_deliveryStreamArnHasBeenSet = true;
   }
-
   return *this;
 }
 

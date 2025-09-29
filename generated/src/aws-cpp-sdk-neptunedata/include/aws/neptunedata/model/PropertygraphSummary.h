@@ -38,475 +38,191 @@ namespace Model
   class PropertygraphSummary
   {
   public:
-    AWS_NEPTUNEDATA_API PropertygraphSummary();
+    AWS_NEPTUNEDATA_API PropertygraphSummary() = default;
     AWS_NEPTUNEDATA_API PropertygraphSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_NEPTUNEDATA_API PropertygraphSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_NEPTUNEDATA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The number of nodes in the graph.</p>
      */
-    inline long long GetNumNodes() const{ return m_numNodes; }
-
-    /**
-     * <p>The number of nodes in the graph.</p>
-     */
+    inline long long GetNumNodes() const { return m_numNodes; }
     inline bool NumNodesHasBeenSet() const { return m_numNodesHasBeenSet; }
-
-    /**
-     * <p>The number of nodes in the graph.</p>
-     */
     inline void SetNumNodes(long long value) { m_numNodesHasBeenSet = true; m_numNodes = value; }
-
-    /**
-     * <p>The number of nodes in the graph.</p>
-     */
     inline PropertygraphSummary& WithNumNodes(long long value) { SetNumNodes(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The number of edges in the graph.</p>
      */
-    inline long long GetNumEdges() const{ return m_numEdges; }
-
-    /**
-     * <p>The number of edges in the graph.</p>
-     */
+    inline long long GetNumEdges() const { return m_numEdges; }
     inline bool NumEdgesHasBeenSet() const { return m_numEdgesHasBeenSet; }
-
-    /**
-     * <p>The number of edges in the graph.</p>
-     */
     inline void SetNumEdges(long long value) { m_numEdgesHasBeenSet = true; m_numEdges = value; }
-
-    /**
-     * <p>The number of edges in the graph.</p>
-     */
     inline PropertygraphSummary& WithNumEdges(long long value) { SetNumEdges(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The number of distinct node labels in the graph.</p>
      */
-    inline long long GetNumNodeLabels() const{ return m_numNodeLabels; }
-
-    /**
-     * <p>The number of distinct node labels in the graph.</p>
-     */
+    inline long long GetNumNodeLabels() const { return m_numNodeLabels; }
     inline bool NumNodeLabelsHasBeenSet() const { return m_numNodeLabelsHasBeenSet; }
-
-    /**
-     * <p>The number of distinct node labels in the graph.</p>
-     */
     inline void SetNumNodeLabels(long long value) { m_numNodeLabelsHasBeenSet = true; m_numNodeLabels = value; }
-
-    /**
-     * <p>The number of distinct node labels in the graph.</p>
-     */
     inline PropertygraphSummary& WithNumNodeLabels(long long value) { SetNumNodeLabels(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The number of distinct edge labels in the graph.</p>
      */
-    inline long long GetNumEdgeLabels() const{ return m_numEdgeLabels; }
-
-    /**
-     * <p>The number of distinct edge labels in the graph.</p>
-     */
+    inline long long GetNumEdgeLabels() const { return m_numEdgeLabels; }
     inline bool NumEdgeLabelsHasBeenSet() const { return m_numEdgeLabelsHasBeenSet; }
-
-    /**
-     * <p>The number of distinct edge labels in the graph.</p>
-     */
     inline void SetNumEdgeLabels(long long value) { m_numEdgeLabelsHasBeenSet = true; m_numEdgeLabels = value; }
-
-    /**
-     * <p>The number of distinct edge labels in the graph.</p>
-     */
     inline PropertygraphSummary& WithNumEdgeLabels(long long value) { SetNumEdgeLabels(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>A list of the distinct node labels in the graph.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetNodeLabels() const{ return m_nodeLabels; }
-
-    /**
-     * <p>A list of the distinct node labels in the graph.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetNodeLabels() const { return m_nodeLabels; }
     inline bool NodeLabelsHasBeenSet() const { return m_nodeLabelsHasBeenSet; }
+    template<typename NodeLabelsT = Aws::Vector<Aws::String>>
+    void SetNodeLabels(NodeLabelsT&& value) { m_nodeLabelsHasBeenSet = true; m_nodeLabels = std::forward<NodeLabelsT>(value); }
+    template<typename NodeLabelsT = Aws::Vector<Aws::String>>
+    PropertygraphSummary& WithNodeLabels(NodeLabelsT&& value) { SetNodeLabels(std::forward<NodeLabelsT>(value)); return *this;}
+    template<typename NodeLabelsT = Aws::String>
+    PropertygraphSummary& AddNodeLabels(NodeLabelsT&& value) { m_nodeLabelsHasBeenSet = true; m_nodeLabels.emplace_back(std::forward<NodeLabelsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of the distinct node labels in the graph.</p>
-     */
-    inline void SetNodeLabels(const Aws::Vector<Aws::String>& value) { m_nodeLabelsHasBeenSet = true; m_nodeLabels = value; }
-
-    /**
-     * <p>A list of the distinct node labels in the graph.</p>
-     */
-    inline void SetNodeLabels(Aws::Vector<Aws::String>&& value) { m_nodeLabelsHasBeenSet = true; m_nodeLabels = std::move(value); }
-
-    /**
-     * <p>A list of the distinct node labels in the graph.</p>
-     */
-    inline PropertygraphSummary& WithNodeLabels(const Aws::Vector<Aws::String>& value) { SetNodeLabels(value); return *this;}
-
-    /**
-     * <p>A list of the distinct node labels in the graph.</p>
-     */
-    inline PropertygraphSummary& WithNodeLabels(Aws::Vector<Aws::String>&& value) { SetNodeLabels(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of the distinct node labels in the graph.</p>
-     */
-    inline PropertygraphSummary& AddNodeLabels(const Aws::String& value) { m_nodeLabelsHasBeenSet = true; m_nodeLabels.push_back(value); return *this; }
-
-    /**
-     * <p>A list of the distinct node labels in the graph.</p>
-     */
-    inline PropertygraphSummary& AddNodeLabels(Aws::String&& value) { m_nodeLabelsHasBeenSet = true; m_nodeLabels.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of the distinct node labels in the graph.</p>
-     */
-    inline PropertygraphSummary& AddNodeLabels(const char* value) { m_nodeLabelsHasBeenSet = true; m_nodeLabels.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of the distinct edge labels in the graph.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetEdgeLabels() const{ return m_edgeLabels; }
-
-    /**
-     * <p>A list of the distinct edge labels in the graph.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetEdgeLabels() const { return m_edgeLabels; }
     inline bool EdgeLabelsHasBeenSet() const { return m_edgeLabelsHasBeenSet; }
+    template<typename EdgeLabelsT = Aws::Vector<Aws::String>>
+    void SetEdgeLabels(EdgeLabelsT&& value) { m_edgeLabelsHasBeenSet = true; m_edgeLabels = std::forward<EdgeLabelsT>(value); }
+    template<typename EdgeLabelsT = Aws::Vector<Aws::String>>
+    PropertygraphSummary& WithEdgeLabels(EdgeLabelsT&& value) { SetEdgeLabels(std::forward<EdgeLabelsT>(value)); return *this;}
+    template<typename EdgeLabelsT = Aws::String>
+    PropertygraphSummary& AddEdgeLabels(EdgeLabelsT&& value) { m_edgeLabelsHasBeenSet = true; m_edgeLabels.emplace_back(std::forward<EdgeLabelsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of the distinct edge labels in the graph.</p>
-     */
-    inline void SetEdgeLabels(const Aws::Vector<Aws::String>& value) { m_edgeLabelsHasBeenSet = true; m_edgeLabels = value; }
-
-    /**
-     * <p>A list of the distinct edge labels in the graph.</p>
-     */
-    inline void SetEdgeLabels(Aws::Vector<Aws::String>&& value) { m_edgeLabelsHasBeenSet = true; m_edgeLabels = std::move(value); }
-
-    /**
-     * <p>A list of the distinct edge labels in the graph.</p>
-     */
-    inline PropertygraphSummary& WithEdgeLabels(const Aws::Vector<Aws::String>& value) { SetEdgeLabels(value); return *this;}
-
-    /**
-     * <p>A list of the distinct edge labels in the graph.</p>
-     */
-    inline PropertygraphSummary& WithEdgeLabels(Aws::Vector<Aws::String>&& value) { SetEdgeLabels(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of the distinct edge labels in the graph.</p>
-     */
-    inline PropertygraphSummary& AddEdgeLabels(const Aws::String& value) { m_edgeLabelsHasBeenSet = true; m_edgeLabels.push_back(value); return *this; }
-
-    /**
-     * <p>A list of the distinct edge labels in the graph.</p>
-     */
-    inline PropertygraphSummary& AddEdgeLabels(Aws::String&& value) { m_edgeLabelsHasBeenSet = true; m_edgeLabels.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of the distinct edge labels in the graph.</p>
-     */
-    inline PropertygraphSummary& AddEdgeLabels(const char* value) { m_edgeLabelsHasBeenSet = true; m_edgeLabels.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of the distinct node properties in the graph, along with the count of
      * nodes where each property is used.</p>
      */
-    inline long long GetNumNodeProperties() const{ return m_numNodeProperties; }
-
-    /**
-     * <p>A list of the distinct node properties in the graph, along with the count of
-     * nodes where each property is used.</p>
-     */
+    inline long long GetNumNodeProperties() const { return m_numNodeProperties; }
     inline bool NumNodePropertiesHasBeenSet() const { return m_numNodePropertiesHasBeenSet; }
-
-    /**
-     * <p>A list of the distinct node properties in the graph, along with the count of
-     * nodes where each property is used.</p>
-     */
     inline void SetNumNodeProperties(long long value) { m_numNodePropertiesHasBeenSet = true; m_numNodeProperties = value; }
-
-    /**
-     * <p>A list of the distinct node properties in the graph, along with the count of
-     * nodes where each property is used.</p>
-     */
     inline PropertygraphSummary& WithNumNodeProperties(long long value) { SetNumNodeProperties(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The number of distinct edge properties in the graph.</p>
      */
-    inline long long GetNumEdgeProperties() const{ return m_numEdgeProperties; }
-
-    /**
-     * <p>The number of distinct edge properties in the graph.</p>
-     */
+    inline long long GetNumEdgeProperties() const { return m_numEdgeProperties; }
     inline bool NumEdgePropertiesHasBeenSet() const { return m_numEdgePropertiesHasBeenSet; }
-
-    /**
-     * <p>The number of distinct edge properties in the graph.</p>
-     */
     inline void SetNumEdgeProperties(long long value) { m_numEdgePropertiesHasBeenSet = true; m_numEdgeProperties = value; }
-
-    /**
-     * <p>The number of distinct edge properties in the graph.</p>
-     */
     inline PropertygraphSummary& WithNumEdgeProperties(long long value) { SetNumEdgeProperties(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The number of distinct node properties in the graph.</p>
      */
-    inline const Aws::Vector<Aws::Map<Aws::String, long long>>& GetNodeProperties() const{ return m_nodeProperties; }
-
-    /**
-     * <p>The number of distinct node properties in the graph.</p>
-     */
+    inline const Aws::Vector<Aws::Map<Aws::String, long long>>& GetNodeProperties() const { return m_nodeProperties; }
     inline bool NodePropertiesHasBeenSet() const { return m_nodePropertiesHasBeenSet; }
+    template<typename NodePropertiesT = Aws::Vector<Aws::Map<Aws::String, long long>>>
+    void SetNodeProperties(NodePropertiesT&& value) { m_nodePropertiesHasBeenSet = true; m_nodeProperties = std::forward<NodePropertiesT>(value); }
+    template<typename NodePropertiesT = Aws::Vector<Aws::Map<Aws::String, long long>>>
+    PropertygraphSummary& WithNodeProperties(NodePropertiesT&& value) { SetNodeProperties(std::forward<NodePropertiesT>(value)); return *this;}
+    template<typename NodePropertiesT = Aws::Map<Aws::String, long long>>
+    PropertygraphSummary& AddNodeProperties(NodePropertiesT&& value) { m_nodePropertiesHasBeenSet = true; m_nodeProperties.emplace_back(std::forward<NodePropertiesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The number of distinct node properties in the graph.</p>
-     */
-    inline void SetNodeProperties(const Aws::Vector<Aws::Map<Aws::String, long long>>& value) { m_nodePropertiesHasBeenSet = true; m_nodeProperties = value; }
-
-    /**
-     * <p>The number of distinct node properties in the graph.</p>
-     */
-    inline void SetNodeProperties(Aws::Vector<Aws::Map<Aws::String, long long>>&& value) { m_nodePropertiesHasBeenSet = true; m_nodeProperties = std::move(value); }
-
-    /**
-     * <p>The number of distinct node properties in the graph.</p>
-     */
-    inline PropertygraphSummary& WithNodeProperties(const Aws::Vector<Aws::Map<Aws::String, long long>>& value) { SetNodeProperties(value); return *this;}
-
-    /**
-     * <p>The number of distinct node properties in the graph.</p>
-     */
-    inline PropertygraphSummary& WithNodeProperties(Aws::Vector<Aws::Map<Aws::String, long long>>&& value) { SetNodeProperties(std::move(value)); return *this;}
-
-    /**
-     * <p>The number of distinct node properties in the graph.</p>
-     */
-    inline PropertygraphSummary& AddNodeProperties(const Aws::Map<Aws::String, long long>& value) { m_nodePropertiesHasBeenSet = true; m_nodeProperties.push_back(value); return *this; }
-
-    /**
-     * <p>The number of distinct node properties in the graph.</p>
-     */
-    inline PropertygraphSummary& AddNodeProperties(Aws::Map<Aws::String, long long>&& value) { m_nodePropertiesHasBeenSet = true; m_nodeProperties.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of the distinct edge properties in the graph, along with the count of
      * edges where each property is used.</p>
      */
-    inline const Aws::Vector<Aws::Map<Aws::String, long long>>& GetEdgeProperties() const{ return m_edgeProperties; }
-
-    /**
-     * <p>A list of the distinct edge properties in the graph, along with the count of
-     * edges where each property is used.</p>
-     */
+    inline const Aws::Vector<Aws::Map<Aws::String, long long>>& GetEdgeProperties() const { return m_edgeProperties; }
     inline bool EdgePropertiesHasBeenSet() const { return m_edgePropertiesHasBeenSet; }
+    template<typename EdgePropertiesT = Aws::Vector<Aws::Map<Aws::String, long long>>>
+    void SetEdgeProperties(EdgePropertiesT&& value) { m_edgePropertiesHasBeenSet = true; m_edgeProperties = std::forward<EdgePropertiesT>(value); }
+    template<typename EdgePropertiesT = Aws::Vector<Aws::Map<Aws::String, long long>>>
+    PropertygraphSummary& WithEdgeProperties(EdgePropertiesT&& value) { SetEdgeProperties(std::forward<EdgePropertiesT>(value)); return *this;}
+    template<typename EdgePropertiesT = Aws::Map<Aws::String, long long>>
+    PropertygraphSummary& AddEdgeProperties(EdgePropertiesT&& value) { m_edgePropertiesHasBeenSet = true; m_edgeProperties.emplace_back(std::forward<EdgePropertiesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of the distinct edge properties in the graph, along with the count of
-     * edges where each property is used.</p>
-     */
-    inline void SetEdgeProperties(const Aws::Vector<Aws::Map<Aws::String, long long>>& value) { m_edgePropertiesHasBeenSet = true; m_edgeProperties = value; }
-
-    /**
-     * <p>A list of the distinct edge properties in the graph, along with the count of
-     * edges where each property is used.</p>
-     */
-    inline void SetEdgeProperties(Aws::Vector<Aws::Map<Aws::String, long long>>&& value) { m_edgePropertiesHasBeenSet = true; m_edgeProperties = std::move(value); }
-
-    /**
-     * <p>A list of the distinct edge properties in the graph, along with the count of
-     * edges where each property is used.</p>
-     */
-    inline PropertygraphSummary& WithEdgeProperties(const Aws::Vector<Aws::Map<Aws::String, long long>>& value) { SetEdgeProperties(value); return *this;}
-
-    /**
-     * <p>A list of the distinct edge properties in the graph, along with the count of
-     * edges where each property is used.</p>
-     */
-    inline PropertygraphSummary& WithEdgeProperties(Aws::Vector<Aws::Map<Aws::String, long long>>&& value) { SetEdgeProperties(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of the distinct edge properties in the graph, along with the count of
-     * edges where each property is used.</p>
-     */
-    inline PropertygraphSummary& AddEdgeProperties(const Aws::Map<Aws::String, long long>& value) { m_edgePropertiesHasBeenSet = true; m_edgeProperties.push_back(value); return *this; }
-
-    /**
-     * <p>A list of the distinct edge properties in the graph, along with the count of
-     * edges where each property is used.</p>
-     */
-    inline PropertygraphSummary& AddEdgeProperties(Aws::Map<Aws::String, long long>&& value) { m_edgePropertiesHasBeenSet = true; m_edgeProperties.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The total number of usages of all node properties.</p>
      */
-    inline long long GetTotalNodePropertyValues() const{ return m_totalNodePropertyValues; }
-
-    /**
-     * <p>The total number of usages of all node properties.</p>
-     */
+    inline long long GetTotalNodePropertyValues() const { return m_totalNodePropertyValues; }
     inline bool TotalNodePropertyValuesHasBeenSet() const { return m_totalNodePropertyValuesHasBeenSet; }
-
-    /**
-     * <p>The total number of usages of all node properties.</p>
-     */
     inline void SetTotalNodePropertyValues(long long value) { m_totalNodePropertyValuesHasBeenSet = true; m_totalNodePropertyValues = value; }
-
-    /**
-     * <p>The total number of usages of all node properties.</p>
-     */
     inline PropertygraphSummary& WithTotalNodePropertyValues(long long value) { SetTotalNodePropertyValues(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The total number of usages of all edge properties.</p>
      */
-    inline long long GetTotalEdgePropertyValues() const{ return m_totalEdgePropertyValues; }
-
-    /**
-     * <p>The total number of usages of all edge properties.</p>
-     */
+    inline long long GetTotalEdgePropertyValues() const { return m_totalEdgePropertyValues; }
     inline bool TotalEdgePropertyValuesHasBeenSet() const { return m_totalEdgePropertyValuesHasBeenSet; }
-
-    /**
-     * <p>The total number of usages of all edge properties.</p>
-     */
     inline void SetTotalEdgePropertyValues(long long value) { m_totalEdgePropertyValuesHasBeenSet = true; m_totalEdgePropertyValues = value; }
-
-    /**
-     * <p>The total number of usages of all edge properties.</p>
-     */
     inline PropertygraphSummary& WithTotalEdgePropertyValues(long long value) { SetTotalEdgePropertyValues(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>This field is only present when the requested mode is <code>DETAILED</code>.
      * It contains a list of node structures.</p>
      */
-    inline const Aws::Vector<NodeStructure>& GetNodeStructures() const{ return m_nodeStructures; }
-
-    /**
-     * <p>This field is only present when the requested mode is <code>DETAILED</code>.
-     * It contains a list of node structures.</p>
-     */
+    inline const Aws::Vector<NodeStructure>& GetNodeStructures() const { return m_nodeStructures; }
     inline bool NodeStructuresHasBeenSet() const { return m_nodeStructuresHasBeenSet; }
+    template<typename NodeStructuresT = Aws::Vector<NodeStructure>>
+    void SetNodeStructures(NodeStructuresT&& value) { m_nodeStructuresHasBeenSet = true; m_nodeStructures = std::forward<NodeStructuresT>(value); }
+    template<typename NodeStructuresT = Aws::Vector<NodeStructure>>
+    PropertygraphSummary& WithNodeStructures(NodeStructuresT&& value) { SetNodeStructures(std::forward<NodeStructuresT>(value)); return *this;}
+    template<typename NodeStructuresT = NodeStructure>
+    PropertygraphSummary& AddNodeStructures(NodeStructuresT&& value) { m_nodeStructuresHasBeenSet = true; m_nodeStructures.emplace_back(std::forward<NodeStructuresT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>This field is only present when the requested mode is <code>DETAILED</code>.
-     * It contains a list of node structures.</p>
-     */
-    inline void SetNodeStructures(const Aws::Vector<NodeStructure>& value) { m_nodeStructuresHasBeenSet = true; m_nodeStructures = value; }
-
-    /**
-     * <p>This field is only present when the requested mode is <code>DETAILED</code>.
-     * It contains a list of node structures.</p>
-     */
-    inline void SetNodeStructures(Aws::Vector<NodeStructure>&& value) { m_nodeStructuresHasBeenSet = true; m_nodeStructures = std::move(value); }
-
-    /**
-     * <p>This field is only present when the requested mode is <code>DETAILED</code>.
-     * It contains a list of node structures.</p>
-     */
-    inline PropertygraphSummary& WithNodeStructures(const Aws::Vector<NodeStructure>& value) { SetNodeStructures(value); return *this;}
-
-    /**
-     * <p>This field is only present when the requested mode is <code>DETAILED</code>.
-     * It contains a list of node structures.</p>
-     */
-    inline PropertygraphSummary& WithNodeStructures(Aws::Vector<NodeStructure>&& value) { SetNodeStructures(std::move(value)); return *this;}
-
-    /**
-     * <p>This field is only present when the requested mode is <code>DETAILED</code>.
-     * It contains a list of node structures.</p>
-     */
-    inline PropertygraphSummary& AddNodeStructures(const NodeStructure& value) { m_nodeStructuresHasBeenSet = true; m_nodeStructures.push_back(value); return *this; }
-
-    /**
-     * <p>This field is only present when the requested mode is <code>DETAILED</code>.
-     * It contains a list of node structures.</p>
-     */
-    inline PropertygraphSummary& AddNodeStructures(NodeStructure&& value) { m_nodeStructuresHasBeenSet = true; m_nodeStructures.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>This field is only present when the requested mode is <code>DETAILED</code>.
      * It contains a list of edge structures.</p>
      */
-    inline const Aws::Vector<EdgeStructure>& GetEdgeStructures() const{ return m_edgeStructures; }
-
-    /**
-     * <p>This field is only present when the requested mode is <code>DETAILED</code>.
-     * It contains a list of edge structures.</p>
-     */
+    inline const Aws::Vector<EdgeStructure>& GetEdgeStructures() const { return m_edgeStructures; }
     inline bool EdgeStructuresHasBeenSet() const { return m_edgeStructuresHasBeenSet; }
-
-    /**
-     * <p>This field is only present when the requested mode is <code>DETAILED</code>.
-     * It contains a list of edge structures.</p>
-     */
-    inline void SetEdgeStructures(const Aws::Vector<EdgeStructure>& value) { m_edgeStructuresHasBeenSet = true; m_edgeStructures = value; }
-
-    /**
-     * <p>This field is only present when the requested mode is <code>DETAILED</code>.
-     * It contains a list of edge structures.</p>
-     */
-    inline void SetEdgeStructures(Aws::Vector<EdgeStructure>&& value) { m_edgeStructuresHasBeenSet = true; m_edgeStructures = std::move(value); }
-
-    /**
-     * <p>This field is only present when the requested mode is <code>DETAILED</code>.
-     * It contains a list of edge structures.</p>
-     */
-    inline PropertygraphSummary& WithEdgeStructures(const Aws::Vector<EdgeStructure>& value) { SetEdgeStructures(value); return *this;}
-
-    /**
-     * <p>This field is only present when the requested mode is <code>DETAILED</code>.
-     * It contains a list of edge structures.</p>
-     */
-    inline PropertygraphSummary& WithEdgeStructures(Aws::Vector<EdgeStructure>&& value) { SetEdgeStructures(std::move(value)); return *this;}
-
-    /**
-     * <p>This field is only present when the requested mode is <code>DETAILED</code>.
-     * It contains a list of edge structures.</p>
-     */
-    inline PropertygraphSummary& AddEdgeStructures(const EdgeStructure& value) { m_edgeStructuresHasBeenSet = true; m_edgeStructures.push_back(value); return *this; }
-
-    /**
-     * <p>This field is only present when the requested mode is <code>DETAILED</code>.
-     * It contains a list of edge structures.</p>
-     */
-    inline PropertygraphSummary& AddEdgeStructures(EdgeStructure&& value) { m_edgeStructuresHasBeenSet = true; m_edgeStructures.push_back(std::move(value)); return *this; }
-
+    template<typename EdgeStructuresT = Aws::Vector<EdgeStructure>>
+    void SetEdgeStructures(EdgeStructuresT&& value) { m_edgeStructuresHasBeenSet = true; m_edgeStructures = std::forward<EdgeStructuresT>(value); }
+    template<typename EdgeStructuresT = Aws::Vector<EdgeStructure>>
+    PropertygraphSummary& WithEdgeStructures(EdgeStructuresT&& value) { SetEdgeStructures(std::forward<EdgeStructuresT>(value)); return *this;}
+    template<typename EdgeStructuresT = EdgeStructure>
+    PropertygraphSummary& AddEdgeStructures(EdgeStructuresT&& value) { m_edgeStructuresHasBeenSet = true; m_edgeStructures.emplace_back(std::forward<EdgeStructuresT>(value)); return *this; }
+    ///@}
   private:
 
-    long long m_numNodes;
+    long long m_numNodes{0};
     bool m_numNodesHasBeenSet = false;
 
-    long long m_numEdges;
+    long long m_numEdges{0};
     bool m_numEdgesHasBeenSet = false;
 
-    long long m_numNodeLabels;
+    long long m_numNodeLabels{0};
     bool m_numNodeLabelsHasBeenSet = false;
 
-    long long m_numEdgeLabels;
+    long long m_numEdgeLabels{0};
     bool m_numEdgeLabelsHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_nodeLabels;
@@ -515,10 +231,10 @@ namespace Model
     Aws::Vector<Aws::String> m_edgeLabels;
     bool m_edgeLabelsHasBeenSet = false;
 
-    long long m_numNodeProperties;
+    long long m_numNodeProperties{0};
     bool m_numNodePropertiesHasBeenSet = false;
 
-    long long m_numEdgeProperties;
+    long long m_numEdgeProperties{0};
     bool m_numEdgePropertiesHasBeenSet = false;
 
     Aws::Vector<Aws::Map<Aws::String, long long>> m_nodeProperties;
@@ -527,10 +243,10 @@ namespace Model
     Aws::Vector<Aws::Map<Aws::String, long long>> m_edgeProperties;
     bool m_edgePropertiesHasBeenSet = false;
 
-    long long m_totalNodePropertyValues;
+    long long m_totalNodePropertyValues{0};
     bool m_totalNodePropertyValuesHasBeenSet = false;
 
-    long long m_totalEdgePropertyValues;
+    long long m_totalEdgePropertyValues{0};
     bool m_totalEdgePropertyValuesHasBeenSet = false;
 
     Aws::Vector<NodeStructure> m_nodeStructures;

@@ -21,7 +21,7 @@ namespace Model
   class DeletePipelineRequest : public IoTAnalyticsRequest
   {
   public:
-    AWS_IOTANALYTICS_API DeletePipelineRequest();
+    AWS_IOTANALYTICS_API DeletePipelineRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_IOTANALYTICS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of the pipeline to delete.</p>
      */
-    inline const Aws::String& GetPipelineName() const{ return m_pipelineName; }
-
-    /**
-     * <p>The name of the pipeline to delete.</p>
-     */
+    inline const Aws::String& GetPipelineName() const { return m_pipelineName; }
     inline bool PipelineNameHasBeenSet() const { return m_pipelineNameHasBeenSet; }
-
-    /**
-     * <p>The name of the pipeline to delete.</p>
-     */
-    inline void SetPipelineName(const Aws::String& value) { m_pipelineNameHasBeenSet = true; m_pipelineName = value; }
-
-    /**
-     * <p>The name of the pipeline to delete.</p>
-     */
-    inline void SetPipelineName(Aws::String&& value) { m_pipelineNameHasBeenSet = true; m_pipelineName = std::move(value); }
-
-    /**
-     * <p>The name of the pipeline to delete.</p>
-     */
-    inline void SetPipelineName(const char* value) { m_pipelineNameHasBeenSet = true; m_pipelineName.assign(value); }
-
-    /**
-     * <p>The name of the pipeline to delete.</p>
-     */
-    inline DeletePipelineRequest& WithPipelineName(const Aws::String& value) { SetPipelineName(value); return *this;}
-
-    /**
-     * <p>The name of the pipeline to delete.</p>
-     */
-    inline DeletePipelineRequest& WithPipelineName(Aws::String&& value) { SetPipelineName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the pipeline to delete.</p>
-     */
-    inline DeletePipelineRequest& WithPipelineName(const char* value) { SetPipelineName(value); return *this;}
-
+    template<typename PipelineNameT = Aws::String>
+    void SetPipelineName(PipelineNameT&& value) { m_pipelineNameHasBeenSet = true; m_pipelineName = std::forward<PipelineNameT>(value); }
+    template<typename PipelineNameT = Aws::String>
+    DeletePipelineRequest& WithPipelineName(PipelineNameT&& value) { SetPipelineName(std::forward<PipelineNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_pipelineName;

@@ -18,13 +18,7 @@ namespace BedrockAgentRuntime
 namespace Model
 {
 
-KnowledgeBaseLookupOutput::KnowledgeBaseLookupOutput() : 
-    m_retrievedReferencesHasBeenSet(false)
-{
-}
-
-KnowledgeBaseLookupOutput::KnowledgeBaseLookupOutput(JsonView jsonValue) : 
-    m_retrievedReferencesHasBeenSet(false)
+KnowledgeBaseLookupOutput::KnowledgeBaseLookupOutput(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,11 @@ KnowledgeBaseLookupOutput& KnowledgeBaseLookupOutput::operator =(JsonView jsonVa
     }
     m_retrievedReferencesHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("metadata"))
+  {
+    m_metadata = jsonValue.GetObject("metadata");
+    m_metadataHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -56,6 +54,12 @@ JsonValue KnowledgeBaseLookupOutput::Jsonize() const
      retrievedReferencesJsonList[retrievedReferencesIndex].AsObject(m_retrievedReferences[retrievedReferencesIndex].Jsonize());
    }
    payload.WithArray("retrievedReferences", std::move(retrievedReferencesJsonList));
+
+  }
+
+  if(m_metadataHasBeenSet)
+  {
+   payload.WithObject("metadata", m_metadata.Jsonize());
 
   }
 

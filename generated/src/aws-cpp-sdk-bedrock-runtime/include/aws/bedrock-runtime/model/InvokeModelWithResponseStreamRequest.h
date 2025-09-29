@@ -10,6 +10,8 @@
 #include <aws/core/utils/event/EventStreamDecoder.h>
 #include <aws/core/utils/Array.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/bedrock-runtime/model/Trace.h>
+#include <aws/bedrock-runtime/model/PerformanceConfigLatency.h>
 #include <utility>
 
 namespace Aws
@@ -24,7 +26,7 @@ namespace Model
   class InvokeModelWithResponseStreamRequest : public StreamingBedrockRuntimeRequest
   {
   public:
-    AWS_BEDROCKRUNTIME_API InvokeModelWithResponseStreamRequest();
+    AWS_BEDROCKRUNTIME_API InvokeModelWithResponseStreamRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,6 +34,7 @@ namespace Model
     // so we can not get operation's name from response.
     inline virtual const char* GetServiceRequestName() const override { return "InvokeModelWithResponseStream"; }
 
+    inline virtual bool HasEventStreamResponse() const override { return true; }
     AWS_BEDROCKRUNTIME_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
     /**
@@ -42,7 +45,7 @@ namespace Model
     /**
      * Underlying Event Stream Handler which is used to define callback functions.
      */
-    inline const InvokeModelWithResponseStreamHandler& GetEventStreamHandler() const { return m_handler; }
+    inline InvokeModelWithResponseStreamHandler& GetEventStreamHandler() { return m_handler; }
 
     /**
      * Underlying Event Stream Handler which is used to define callback functions.
@@ -55,95 +58,107 @@ namespace Model
     inline InvokeModelWithResponseStreamRequest& WithEventStreamHandler(const InvokeModelWithResponseStreamHandler& value) { SetEventStreamHandler(value); return *this; }
 
 
+    ///@{
     /**
      * <p>The desired MIME type of the inference body in the response. The default
      * value is <code>application/json</code>.</p>
      */
-    inline const Aws::String& GetAccept() const{ return m_accept; }
-
-    /**
-     * <p>The desired MIME type of the inference body in the response. The default
-     * value is <code>application/json</code>.</p>
-     */
+    inline const Aws::String& GetAccept() const { return m_accept; }
     inline bool AcceptHasBeenSet() const { return m_acceptHasBeenSet; }
+    template<typename AcceptT = Aws::String>
+    void SetAccept(AcceptT&& value) { m_acceptHasBeenSet = true; m_accept = std::forward<AcceptT>(value); }
+    template<typename AcceptT = Aws::String>
+    InvokeModelWithResponseStreamRequest& WithAccept(AcceptT&& value) { SetAccept(std::forward<AcceptT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The desired MIME type of the inference body in the response. The default
-     * value is <code>application/json</code>.</p>
+     * <p>The unique identifier of the model to invoke to run inference.</p> <p>The
+     * <code>modelId</code> to provide depends on the type of model or throughput that
+     * you use:</p> <ul> <li> <p>If you use a base model, specify the model ID or its
+     * ARN. For a list of model IDs for base models, see <a
+     * href="https://docs.aws.amazon.com/bedrock/latest/userguide/model-ids.html#model-ids-arns">Amazon
+     * Bedrock base model IDs (on-demand throughput)</a> in the Amazon Bedrock User
+     * Guide.</p> </li> <li> <p>If you use an inference profile, specify the inference
+     * profile ID or its ARN. For a list of inference profile IDs, see <a
+     * href="https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference-support.html">Supported
+     * Regions and models for cross-region inference</a> in the Amazon Bedrock User
+     * Guide.</p> </li> <li> <p>If you use a provisioned model, specify the ARN of the
+     * Provisioned Throughput. For more information, see <a
+     * href="https://docs.aws.amazon.com/bedrock/latest/userguide/prov-thru-use.html">Run
+     * inference using a Provisioned Throughput</a> in the Amazon Bedrock User
+     * Guide.</p> </li> <li> <p>If you use a custom model, specify the ARN of the
+     * custom model deployment (for on-demand inference) or the ARN of your provisioned
+     * model (for Provisioned Throughput). For more information, see <a
+     * href="https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-use.html">Use
+     * a custom model in Amazon Bedrock</a> in the Amazon Bedrock User Guide.</p> </li>
+     * <li> <p>If you use an <a
+     * href="https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-import-model.html">imported
+     * model</a>, specify the ARN of the imported model. You can get the model ARN from
+     * a successful call to <a
+     * href="https://docs.aws.amazon.com/bedrock/latest/APIReference/API_CreateModelImportJob.html">CreateModelImportJob</a>
+     * or from the Imported models page in the Amazon Bedrock console.</p> </li> </ul>
      */
-    inline void SetAccept(const Aws::String& value) { m_acceptHasBeenSet = true; m_accept = value; }
-
-    /**
-     * <p>The desired MIME type of the inference body in the response. The default
-     * value is <code>application/json</code>.</p>
-     */
-    inline void SetAccept(Aws::String&& value) { m_acceptHasBeenSet = true; m_accept = std::move(value); }
-
-    /**
-     * <p>The desired MIME type of the inference body in the response. The default
-     * value is <code>application/json</code>.</p>
-     */
-    inline void SetAccept(const char* value) { m_acceptHasBeenSet = true; m_accept.assign(value); }
-
-    /**
-     * <p>The desired MIME type of the inference body in the response. The default
-     * value is <code>application/json</code>.</p>
-     */
-    inline InvokeModelWithResponseStreamRequest& WithAccept(const Aws::String& value) { SetAccept(value); return *this;}
-
-    /**
-     * <p>The desired MIME type of the inference body in the response. The default
-     * value is <code>application/json</code>.</p>
-     */
-    inline InvokeModelWithResponseStreamRequest& WithAccept(Aws::String&& value) { SetAccept(std::move(value)); return *this;}
-
-    /**
-     * <p>The desired MIME type of the inference body in the response. The default
-     * value is <code>application/json</code>.</p>
-     */
-    inline InvokeModelWithResponseStreamRequest& WithAccept(const char* value) { SetAccept(value); return *this;}
-
-
-    /**
-     * <p>Id of the model to invoke using the streaming request.</p>
-     */
-    inline const Aws::String& GetModelId() const{ return m_modelId; }
-
-    /**
-     * <p>Id of the model to invoke using the streaming request.</p>
-     */
+    inline const Aws::String& GetModelId() const { return m_modelId; }
     inline bool ModelIdHasBeenSet() const { return m_modelIdHasBeenSet; }
+    template<typename ModelIdT = Aws::String>
+    void SetModelId(ModelIdT&& value) { m_modelIdHasBeenSet = true; m_modelId = std::forward<ModelIdT>(value); }
+    template<typename ModelIdT = Aws::String>
+    InvokeModelWithResponseStreamRequest& WithModelId(ModelIdT&& value) { SetModelId(std::forward<ModelIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Id of the model to invoke using the streaming request.</p>
+     * <p>Specifies whether to enable or disable the Bedrock trace. If enabled, you can
+     * see the full Bedrock trace.</p>
      */
-    inline void SetModelId(const Aws::String& value) { m_modelIdHasBeenSet = true; m_modelId = value; }
+    inline Trace GetTrace() const { return m_trace; }
+    inline bool TraceHasBeenSet() const { return m_traceHasBeenSet; }
+    inline void SetTrace(Trace value) { m_traceHasBeenSet = true; m_trace = value; }
+    inline InvokeModelWithResponseStreamRequest& WithTrace(Trace value) { SetTrace(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Id of the model to invoke using the streaming request.</p>
+     * <p>The unique identifier of the guardrail that you want to use. If you don't
+     * provide a value, no guardrail is applied to the invocation.</p> <p>An error is
+     * thrown in the following situations.</p> <ul> <li> <p>You don't provide a
+     * guardrail identifier but you specify the
+     * <code>amazon-bedrock-guardrailConfig</code> field in the request body.</p> </li>
+     * <li> <p>You enable the guardrail but the <code>contentType</code> isn't
+     * <code>application/json</code>.</p> </li> <li> <p>You provide a guardrail
+     * identifier, but <code>guardrailVersion</code> isn't specified.</p> </li> </ul>
      */
-    inline void SetModelId(Aws::String&& value) { m_modelIdHasBeenSet = true; m_modelId = std::move(value); }
+    inline const Aws::String& GetGuardrailIdentifier() const { return m_guardrailIdentifier; }
+    inline bool GuardrailIdentifierHasBeenSet() const { return m_guardrailIdentifierHasBeenSet; }
+    template<typename GuardrailIdentifierT = Aws::String>
+    void SetGuardrailIdentifier(GuardrailIdentifierT&& value) { m_guardrailIdentifierHasBeenSet = true; m_guardrailIdentifier = std::forward<GuardrailIdentifierT>(value); }
+    template<typename GuardrailIdentifierT = Aws::String>
+    InvokeModelWithResponseStreamRequest& WithGuardrailIdentifier(GuardrailIdentifierT&& value) { SetGuardrailIdentifier(std::forward<GuardrailIdentifierT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Id of the model to invoke using the streaming request.</p>
+     * <p>The version number for the guardrail. The value can also be
+     * <code>DRAFT</code>.</p>
      */
-    inline void SetModelId(const char* value) { m_modelIdHasBeenSet = true; m_modelId.assign(value); }
+    inline const Aws::String& GetGuardrailVersion() const { return m_guardrailVersion; }
+    inline bool GuardrailVersionHasBeenSet() const { return m_guardrailVersionHasBeenSet; }
+    template<typename GuardrailVersionT = Aws::String>
+    void SetGuardrailVersion(GuardrailVersionT&& value) { m_guardrailVersionHasBeenSet = true; m_guardrailVersion = std::forward<GuardrailVersionT>(value); }
+    template<typename GuardrailVersionT = Aws::String>
+    InvokeModelWithResponseStreamRequest& WithGuardrailVersion(GuardrailVersionT&& value) { SetGuardrailVersion(std::forward<GuardrailVersionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Id of the model to invoke using the streaming request.</p>
+     * <p>Model performance settings for the request.</p>
      */
-    inline InvokeModelWithResponseStreamRequest& WithModelId(const Aws::String& value) { SetModelId(value); return *this;}
-
-    /**
-     * <p>Id of the model to invoke using the streaming request.</p>
-     */
-    inline InvokeModelWithResponseStreamRequest& WithModelId(Aws::String&& value) { SetModelId(std::move(value)); return *this;}
-
-    /**
-     * <p>Id of the model to invoke using the streaming request.</p>
-     */
-    inline InvokeModelWithResponseStreamRequest& WithModelId(const char* value) { SetModelId(value); return *this;}
-
+    inline PerformanceConfigLatency GetPerformanceConfigLatency() const { return m_performanceConfigLatency; }
+    inline bool PerformanceConfigLatencyHasBeenSet() const { return m_performanceConfigLatencyHasBeenSet; }
+    inline void SetPerformanceConfigLatency(PerformanceConfigLatency value) { m_performanceConfigLatencyHasBeenSet = true; m_performanceConfigLatency = value; }
+    inline InvokeModelWithResponseStreamRequest& WithPerformanceConfigLatency(PerformanceConfigLatency value) { SetPerformanceConfigLatency(value); return *this;}
+    ///@}
   private:
 
 
@@ -152,8 +167,20 @@ namespace Model
 
     Aws::String m_modelId;
     bool m_modelIdHasBeenSet = false;
+
+    Trace m_trace{Trace::NOT_SET};
+    bool m_traceHasBeenSet = false;
+
+    Aws::String m_guardrailIdentifier;
+    bool m_guardrailIdentifierHasBeenSet = false;
+
+    Aws::String m_guardrailVersion;
+    bool m_guardrailVersionHasBeenSet = false;
+
+    PerformanceConfigLatency m_performanceConfigLatency{PerformanceConfigLatency::NOT_SET};
+    bool m_performanceConfigLatencyHasBeenSet = false;
     InvokeModelWithResponseStreamHandler m_handler;
-    Aws::Utils::Event::EventStreamDecoder m_decoder;
+    Aws::Utils::Event::EventStreamDecoder m_decoder{Utils::Event::EventStreamDecoder(&m_handler)};
 
   };
 

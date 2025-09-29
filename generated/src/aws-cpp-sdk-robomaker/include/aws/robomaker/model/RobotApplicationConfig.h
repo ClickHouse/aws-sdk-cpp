@@ -36,206 +36,75 @@ namespace Model
   class RobotApplicationConfig
   {
   public:
-    AWS_ROBOMAKER_API RobotApplicationConfig();
+    AWS_ROBOMAKER_API RobotApplicationConfig() = default;
     AWS_ROBOMAKER_API RobotApplicationConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_ROBOMAKER_API RobotApplicationConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ROBOMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The application information for the robot application.</p>
      */
-    inline const Aws::String& GetApplication() const{ return m_application; }
-
-    /**
-     * <p>The application information for the robot application.</p>
-     */
+    inline const Aws::String& GetApplication() const { return m_application; }
     inline bool ApplicationHasBeenSet() const { return m_applicationHasBeenSet; }
+    template<typename ApplicationT = Aws::String>
+    void SetApplication(ApplicationT&& value) { m_applicationHasBeenSet = true; m_application = std::forward<ApplicationT>(value); }
+    template<typename ApplicationT = Aws::String>
+    RobotApplicationConfig& WithApplication(ApplicationT&& value) { SetApplication(std::forward<ApplicationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The application information for the robot application.</p>
-     */
-    inline void SetApplication(const Aws::String& value) { m_applicationHasBeenSet = true; m_application = value; }
-
-    /**
-     * <p>The application information for the robot application.</p>
-     */
-    inline void SetApplication(Aws::String&& value) { m_applicationHasBeenSet = true; m_application = std::move(value); }
-
-    /**
-     * <p>The application information for the robot application.</p>
-     */
-    inline void SetApplication(const char* value) { m_applicationHasBeenSet = true; m_application.assign(value); }
-
-    /**
-     * <p>The application information for the robot application.</p>
-     */
-    inline RobotApplicationConfig& WithApplication(const Aws::String& value) { SetApplication(value); return *this;}
-
-    /**
-     * <p>The application information for the robot application.</p>
-     */
-    inline RobotApplicationConfig& WithApplication(Aws::String&& value) { SetApplication(std::move(value)); return *this;}
-
-    /**
-     * <p>The application information for the robot application.</p>
-     */
-    inline RobotApplicationConfig& WithApplication(const char* value) { SetApplication(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The version of the robot application.</p>
      */
-    inline const Aws::String& GetApplicationVersion() const{ return m_applicationVersion; }
-
-    /**
-     * <p>The version of the robot application.</p>
-     */
+    inline const Aws::String& GetApplicationVersion() const { return m_applicationVersion; }
     inline bool ApplicationVersionHasBeenSet() const { return m_applicationVersionHasBeenSet; }
+    template<typename ApplicationVersionT = Aws::String>
+    void SetApplicationVersion(ApplicationVersionT&& value) { m_applicationVersionHasBeenSet = true; m_applicationVersion = std::forward<ApplicationVersionT>(value); }
+    template<typename ApplicationVersionT = Aws::String>
+    RobotApplicationConfig& WithApplicationVersion(ApplicationVersionT&& value) { SetApplicationVersion(std::forward<ApplicationVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The version of the robot application.</p>
-     */
-    inline void SetApplicationVersion(const Aws::String& value) { m_applicationVersionHasBeenSet = true; m_applicationVersion = value; }
-
-    /**
-     * <p>The version of the robot application.</p>
-     */
-    inline void SetApplicationVersion(Aws::String&& value) { m_applicationVersionHasBeenSet = true; m_applicationVersion = std::move(value); }
-
-    /**
-     * <p>The version of the robot application.</p>
-     */
-    inline void SetApplicationVersion(const char* value) { m_applicationVersionHasBeenSet = true; m_applicationVersion.assign(value); }
-
-    /**
-     * <p>The version of the robot application.</p>
-     */
-    inline RobotApplicationConfig& WithApplicationVersion(const Aws::String& value) { SetApplicationVersion(value); return *this;}
-
-    /**
-     * <p>The version of the robot application.</p>
-     */
-    inline RobotApplicationConfig& WithApplicationVersion(Aws::String&& value) { SetApplicationVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The version of the robot application.</p>
-     */
-    inline RobotApplicationConfig& WithApplicationVersion(const char* value) { SetApplicationVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The launch configuration for the robot application.</p>
      */
-    inline const LaunchConfig& GetLaunchConfig() const{ return m_launchConfig; }
-
-    /**
-     * <p>The launch configuration for the robot application.</p>
-     */
+    inline const LaunchConfig& GetLaunchConfig() const { return m_launchConfig; }
     inline bool LaunchConfigHasBeenSet() const { return m_launchConfigHasBeenSet; }
+    template<typename LaunchConfigT = LaunchConfig>
+    void SetLaunchConfig(LaunchConfigT&& value) { m_launchConfigHasBeenSet = true; m_launchConfig = std::forward<LaunchConfigT>(value); }
+    template<typename LaunchConfigT = LaunchConfig>
+    RobotApplicationConfig& WithLaunchConfig(LaunchConfigT&& value) { SetLaunchConfig(std::forward<LaunchConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The launch configuration for the robot application.</p>
-     */
-    inline void SetLaunchConfig(const LaunchConfig& value) { m_launchConfigHasBeenSet = true; m_launchConfig = value; }
-
-    /**
-     * <p>The launch configuration for the robot application.</p>
-     */
-    inline void SetLaunchConfig(LaunchConfig&& value) { m_launchConfigHasBeenSet = true; m_launchConfig = std::move(value); }
-
-    /**
-     * <p>The launch configuration for the robot application.</p>
-     */
-    inline RobotApplicationConfig& WithLaunchConfig(const LaunchConfig& value) { SetLaunchConfig(value); return *this;}
-
-    /**
-     * <p>The launch configuration for the robot application.</p>
-     */
-    inline RobotApplicationConfig& WithLaunchConfig(LaunchConfig&& value) { SetLaunchConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The upload configurations for the robot application.</p>
      */
-    inline const Aws::Vector<UploadConfiguration>& GetUploadConfigurations() const{ return m_uploadConfigurations; }
-
-    /**
-     * <p>The upload configurations for the robot application.</p>
-     */
+    inline const Aws::Vector<UploadConfiguration>& GetUploadConfigurations() const { return m_uploadConfigurations; }
     inline bool UploadConfigurationsHasBeenSet() const { return m_uploadConfigurationsHasBeenSet; }
+    template<typename UploadConfigurationsT = Aws::Vector<UploadConfiguration>>
+    void SetUploadConfigurations(UploadConfigurationsT&& value) { m_uploadConfigurationsHasBeenSet = true; m_uploadConfigurations = std::forward<UploadConfigurationsT>(value); }
+    template<typename UploadConfigurationsT = Aws::Vector<UploadConfiguration>>
+    RobotApplicationConfig& WithUploadConfigurations(UploadConfigurationsT&& value) { SetUploadConfigurations(std::forward<UploadConfigurationsT>(value)); return *this;}
+    template<typename UploadConfigurationsT = UploadConfiguration>
+    RobotApplicationConfig& AddUploadConfigurations(UploadConfigurationsT&& value) { m_uploadConfigurationsHasBeenSet = true; m_uploadConfigurations.emplace_back(std::forward<UploadConfigurationsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The upload configurations for the robot application.</p>
-     */
-    inline void SetUploadConfigurations(const Aws::Vector<UploadConfiguration>& value) { m_uploadConfigurationsHasBeenSet = true; m_uploadConfigurations = value; }
-
-    /**
-     * <p>The upload configurations for the robot application.</p>
-     */
-    inline void SetUploadConfigurations(Aws::Vector<UploadConfiguration>&& value) { m_uploadConfigurationsHasBeenSet = true; m_uploadConfigurations = std::move(value); }
-
-    /**
-     * <p>The upload configurations for the robot application.</p>
-     */
-    inline RobotApplicationConfig& WithUploadConfigurations(const Aws::Vector<UploadConfiguration>& value) { SetUploadConfigurations(value); return *this;}
-
-    /**
-     * <p>The upload configurations for the robot application.</p>
-     */
-    inline RobotApplicationConfig& WithUploadConfigurations(Aws::Vector<UploadConfiguration>&& value) { SetUploadConfigurations(std::move(value)); return *this;}
-
-    /**
-     * <p>The upload configurations for the robot application.</p>
-     */
-    inline RobotApplicationConfig& AddUploadConfigurations(const UploadConfiguration& value) { m_uploadConfigurationsHasBeenSet = true; m_uploadConfigurations.push_back(value); return *this; }
-
-    /**
-     * <p>The upload configurations for the robot application.</p>
-     */
-    inline RobotApplicationConfig& AddUploadConfigurations(UploadConfiguration&& value) { m_uploadConfigurationsHasBeenSet = true; m_uploadConfigurations.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Information about tools configured for the robot application.</p>
      */
-    inline const Aws::Vector<Tool>& GetTools() const{ return m_tools; }
-
-    /**
-     * <p>Information about tools configured for the robot application.</p>
-     */
+    inline const Aws::Vector<Tool>& GetTools() const { return m_tools; }
     inline bool ToolsHasBeenSet() const { return m_toolsHasBeenSet; }
-
-    /**
-     * <p>Information about tools configured for the robot application.</p>
-     */
-    inline void SetTools(const Aws::Vector<Tool>& value) { m_toolsHasBeenSet = true; m_tools = value; }
-
-    /**
-     * <p>Information about tools configured for the robot application.</p>
-     */
-    inline void SetTools(Aws::Vector<Tool>&& value) { m_toolsHasBeenSet = true; m_tools = std::move(value); }
-
-    /**
-     * <p>Information about tools configured for the robot application.</p>
-     */
-    inline RobotApplicationConfig& WithTools(const Aws::Vector<Tool>& value) { SetTools(value); return *this;}
-
-    /**
-     * <p>Information about tools configured for the robot application.</p>
-     */
-    inline RobotApplicationConfig& WithTools(Aws::Vector<Tool>&& value) { SetTools(std::move(value)); return *this;}
-
-    /**
-     * <p>Information about tools configured for the robot application.</p>
-     */
-    inline RobotApplicationConfig& AddTools(const Tool& value) { m_toolsHasBeenSet = true; m_tools.push_back(value); return *this; }
-
-    /**
-     * <p>Information about tools configured for the robot application.</p>
-     */
-    inline RobotApplicationConfig& AddTools(Tool&& value) { m_toolsHasBeenSet = true; m_tools.push_back(std::move(value)); return *this; }
-
+    template<typename ToolsT = Aws::Vector<Tool>>
+    void SetTools(ToolsT&& value) { m_toolsHasBeenSet = true; m_tools = std::forward<ToolsT>(value); }
+    template<typename ToolsT = Aws::Vector<Tool>>
+    RobotApplicationConfig& WithTools(ToolsT&& value) { SetTools(std::forward<ToolsT>(value)); return *this;}
+    template<typename ToolsT = Tool>
+    RobotApplicationConfig& AddTools(ToolsT&& value) { m_toolsHasBeenSet = true; m_tools.emplace_back(std::forward<ToolsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_application;

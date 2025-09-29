@@ -18,15 +18,7 @@ namespace WAFV2
 namespace Model
 {
 
-Body::Body() : 
-    m_oversizeHandling(OversizeHandling::NOT_SET),
-    m_oversizeHandlingHasBeenSet(false)
-{
-}
-
-Body::Body(JsonView jsonValue) : 
-    m_oversizeHandling(OversizeHandling::NOT_SET),
-    m_oversizeHandlingHasBeenSet(false)
+Body::Body(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ Body& Body::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("OversizeHandling"))
   {
     m_oversizeHandling = OversizeHandlingMapper::GetOversizeHandlingForName(jsonValue.GetString("OversizeHandling"));
-
     m_oversizeHandlingHasBeenSet = true;
   }
-
   return *this;
 }
 

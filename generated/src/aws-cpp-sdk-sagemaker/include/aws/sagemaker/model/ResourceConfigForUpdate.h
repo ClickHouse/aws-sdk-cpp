@@ -31,39 +31,25 @@ namespace Model
   class ResourceConfigForUpdate
   {
   public:
-    AWS_SAGEMAKER_API ResourceConfigForUpdate();
+    AWS_SAGEMAKER_API ResourceConfigForUpdate() = default;
     AWS_SAGEMAKER_API ResourceConfigForUpdate(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API ResourceConfigForUpdate& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The <code>KeepAlivePeriodInSeconds</code> value specified in the
      * <code>ResourceConfig</code> to update.</p>
      */
-    inline int GetKeepAlivePeriodInSeconds() const{ return m_keepAlivePeriodInSeconds; }
-
-    /**
-     * <p>The <code>KeepAlivePeriodInSeconds</code> value specified in the
-     * <code>ResourceConfig</code> to update.</p>
-     */
+    inline int GetKeepAlivePeriodInSeconds() const { return m_keepAlivePeriodInSeconds; }
     inline bool KeepAlivePeriodInSecondsHasBeenSet() const { return m_keepAlivePeriodInSecondsHasBeenSet; }
-
-    /**
-     * <p>The <code>KeepAlivePeriodInSeconds</code> value specified in the
-     * <code>ResourceConfig</code> to update.</p>
-     */
     inline void SetKeepAlivePeriodInSeconds(int value) { m_keepAlivePeriodInSecondsHasBeenSet = true; m_keepAlivePeriodInSeconds = value; }
-
-    /**
-     * <p>The <code>KeepAlivePeriodInSeconds</code> value specified in the
-     * <code>ResourceConfig</code> to update.</p>
-     */
     inline ResourceConfigForUpdate& WithKeepAlivePeriodInSeconds(int value) { SetKeepAlivePeriodInSeconds(value); return *this;}
-
+    ///@}
   private:
 
-    int m_keepAlivePeriodInSeconds;
+    int m_keepAlivePeriodInSeconds{0};
     bool m_keepAlivePeriodInSecondsHasBeenSet = false;
   };
 

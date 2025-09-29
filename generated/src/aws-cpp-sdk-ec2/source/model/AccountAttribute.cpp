@@ -20,15 +20,7 @@ namespace EC2
 namespace Model
 {
 
-AccountAttribute::AccountAttribute() : 
-    m_attributeNameHasBeenSet(false),
-    m_attributeValuesHasBeenSet(false)
-{
-}
-
-AccountAttribute::AccountAttribute(const XmlNode& xmlNode) : 
-    m_attributeNameHasBeenSet(false),
-    m_attributeValuesHasBeenSet(false)
+AccountAttribute::AccountAttribute(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -49,6 +41,7 @@ AccountAttribute& AccountAttribute::operator =(const XmlNode& xmlNode)
     if(!attributeValuesNode.IsNull())
     {
       XmlNode attributeValuesMember = attributeValuesNode.FirstChild("item");
+      m_attributeValuesHasBeenSet = !attributeValuesMember.IsNull();
       while(!attributeValuesMember.IsNull())
       {
         m_attributeValues.push_back(attributeValuesMember);
@@ -94,7 +87,7 @@ void AccountAttribute::OutputToStream(Aws::OStream& oStream, const char* locatio
       for(auto& item : m_attributeValues)
       {
         Aws::StringStream attributeValuesSs;
-        attributeValuesSs << location <<  ".AttributeValueSet." << attributeValuesIdx++;
+        attributeValuesSs << location << ".AttributeValueSet." << attributeValuesIdx++;
         item.OutputToStream(oStream, attributeValuesSs.str().c_str());
       }
   }

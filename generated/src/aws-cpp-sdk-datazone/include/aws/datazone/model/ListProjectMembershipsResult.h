@@ -29,47 +29,25 @@ namespace Model
   class ListProjectMembershipsResult
   {
   public:
-    AWS_DATAZONE_API ListProjectMembershipsResult();
+    AWS_DATAZONE_API ListProjectMembershipsResult() = default;
     AWS_DATAZONE_API ListProjectMembershipsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_DATAZONE_API ListProjectMembershipsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The members of the project.</p>
      */
-    inline const Aws::Vector<ProjectMember>& GetMembers() const{ return m_members; }
+    inline const Aws::Vector<ProjectMember>& GetMembers() const { return m_members; }
+    template<typename MembersT = Aws::Vector<ProjectMember>>
+    void SetMembers(MembersT&& value) { m_membersHasBeenSet = true; m_members = std::forward<MembersT>(value); }
+    template<typename MembersT = Aws::Vector<ProjectMember>>
+    ListProjectMembershipsResult& WithMembers(MembersT&& value) { SetMembers(std::forward<MembersT>(value)); return *this;}
+    template<typename MembersT = ProjectMember>
+    ListProjectMembershipsResult& AddMembers(MembersT&& value) { m_membersHasBeenSet = true; m_members.emplace_back(std::forward<MembersT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The members of the project.</p>
-     */
-    inline void SetMembers(const Aws::Vector<ProjectMember>& value) { m_members = value; }
-
-    /**
-     * <p>The members of the project.</p>
-     */
-    inline void SetMembers(Aws::Vector<ProjectMember>&& value) { m_members = std::move(value); }
-
-    /**
-     * <p>The members of the project.</p>
-     */
-    inline ListProjectMembershipsResult& WithMembers(const Aws::Vector<ProjectMember>& value) { SetMembers(value); return *this;}
-
-    /**
-     * <p>The members of the project.</p>
-     */
-    inline ListProjectMembershipsResult& WithMembers(Aws::Vector<ProjectMember>&& value) { SetMembers(std::move(value)); return *this;}
-
-    /**
-     * <p>The members of the project.</p>
-     */
-    inline ListProjectMembershipsResult& AddMembers(const ProjectMember& value) { m_members.push_back(value); return *this; }
-
-    /**
-     * <p>The members of the project.</p>
-     */
-    inline ListProjectMembershipsResult& AddMembers(ProjectMember&& value) { m_members.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>When the number of memberships is greater than the default value for the
      * <code>MaxResults</code> parameter, or if you explicitly specify a value for
@@ -78,97 +56,31 @@ namespace Model
      * specify this <code>NextToken</code> value in a subsequent call to
      * <code>ListProjectMemberships</code> to list the next set of memberships.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListProjectMembershipsResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>When the number of memberships is greater than the default value for the
-     * <code>MaxResults</code> parameter, or if you explicitly specify a value for
-     * <code>MaxResults</code> that is less than the number of memberships, the
-     * response includes a pagination token named <code>NextToken</code>. You can
-     * specify this <code>NextToken</code> value in a subsequent call to
-     * <code>ListProjectMemberships</code> to list the next set of memberships.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>When the number of memberships is greater than the default value for the
-     * <code>MaxResults</code> parameter, or if you explicitly specify a value for
-     * <code>MaxResults</code> that is less than the number of memberships, the
-     * response includes a pagination token named <code>NextToken</code>. You can
-     * specify this <code>NextToken</code> value in a subsequent call to
-     * <code>ListProjectMemberships</code> to list the next set of memberships.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>When the number of memberships is greater than the default value for the
-     * <code>MaxResults</code> parameter, or if you explicitly specify a value for
-     * <code>MaxResults</code> that is less than the number of memberships, the
-     * response includes a pagination token named <code>NextToken</code>. You can
-     * specify this <code>NextToken</code> value in a subsequent call to
-     * <code>ListProjectMemberships</code> to list the next set of memberships.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>When the number of memberships is greater than the default value for the
-     * <code>MaxResults</code> parameter, or if you explicitly specify a value for
-     * <code>MaxResults</code> that is less than the number of memberships, the
-     * response includes a pagination token named <code>NextToken</code>. You can
-     * specify this <code>NextToken</code> value in a subsequent call to
-     * <code>ListProjectMemberships</code> to list the next set of memberships.</p>
-     */
-    inline ListProjectMembershipsResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>When the number of memberships is greater than the default value for the
-     * <code>MaxResults</code> parameter, or if you explicitly specify a value for
-     * <code>MaxResults</code> that is less than the number of memberships, the
-     * response includes a pagination token named <code>NextToken</code>. You can
-     * specify this <code>NextToken</code> value in a subsequent call to
-     * <code>ListProjectMemberships</code> to list the next set of memberships.</p>
-     */
-    inline ListProjectMembershipsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>When the number of memberships is greater than the default value for the
-     * <code>MaxResults</code> parameter, or if you explicitly specify a value for
-     * <code>MaxResults</code> that is less than the number of memberships, the
-     * response includes a pagination token named <code>NextToken</code>. You can
-     * specify this <code>NextToken</code> value in a subsequent call to
-     * <code>ListProjectMemberships</code> to list the next set of memberships.</p>
-     */
-    inline ListProjectMembershipsResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListProjectMembershipsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListProjectMembershipsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListProjectMembershipsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListProjectMembershipsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<ProjectMember> m_members;
+    bool m_membersHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

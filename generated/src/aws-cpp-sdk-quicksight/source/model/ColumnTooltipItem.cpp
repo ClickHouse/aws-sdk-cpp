@@ -18,21 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-ColumnTooltipItem::ColumnTooltipItem() : 
-    m_columnHasBeenSet(false),
-    m_labelHasBeenSet(false),
-    m_visibility(Visibility::NOT_SET),
-    m_visibilityHasBeenSet(false),
-    m_aggregationHasBeenSet(false)
-{
-}
-
-ColumnTooltipItem::ColumnTooltipItem(JsonView jsonValue) : 
-    m_columnHasBeenSet(false),
-    m_labelHasBeenSet(false),
-    m_visibility(Visibility::NOT_SET),
-    m_visibilityHasBeenSet(false),
-    m_aggregationHasBeenSet(false)
+ColumnTooltipItem::ColumnTooltipItem(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,31 +28,28 @@ ColumnTooltipItem& ColumnTooltipItem::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Column"))
   {
     m_column = jsonValue.GetObject("Column");
-
     m_columnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Label"))
   {
     m_label = jsonValue.GetString("Label");
-
     m_labelHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Visibility"))
   {
     m_visibility = VisibilityMapper::GetVisibilityForName(jsonValue.GetString("Visibility"));
-
     m_visibilityHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Aggregation"))
   {
     m_aggregation = jsonValue.GetObject("Aggregation");
-
     m_aggregationHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("TooltipTarget"))
+  {
+    m_tooltipTarget = TooltipTargetMapper::GetTooltipTargetForName(jsonValue.GetString("TooltipTarget"));
+    m_tooltipTargetHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -95,6 +78,11 @@ JsonValue ColumnTooltipItem::Jsonize() const
   {
    payload.WithObject("Aggregation", m_aggregation.Jsonize());
 
+  }
+
+  if(m_tooltipTargetHasBeenSet)
+  {
+   payload.WithString("TooltipTarget", TooltipTargetMapper::GetNameForTooltipTarget(m_tooltipTarget));
   }
 
   return payload;

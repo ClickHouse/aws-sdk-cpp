@@ -25,7 +25,7 @@ namespace Model
   class GetIdentityPoolRolesRequest : public CognitoIdentityRequest
   {
   public:
-    AWS_COGNITOIDENTITY_API GetIdentityPoolRolesRequest();
+    AWS_COGNITOIDENTITY_API GetIdentityPoolRolesRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,46 +38,17 @@ namespace Model
     AWS_COGNITOIDENTITY_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>An identity pool ID in the format REGION:GUID.</p>
      */
-    inline const Aws::String& GetIdentityPoolId() const{ return m_identityPoolId; }
-
-    /**
-     * <p>An identity pool ID in the format REGION:GUID.</p>
-     */
+    inline const Aws::String& GetIdentityPoolId() const { return m_identityPoolId; }
     inline bool IdentityPoolIdHasBeenSet() const { return m_identityPoolIdHasBeenSet; }
-
-    /**
-     * <p>An identity pool ID in the format REGION:GUID.</p>
-     */
-    inline void SetIdentityPoolId(const Aws::String& value) { m_identityPoolIdHasBeenSet = true; m_identityPoolId = value; }
-
-    /**
-     * <p>An identity pool ID in the format REGION:GUID.</p>
-     */
-    inline void SetIdentityPoolId(Aws::String&& value) { m_identityPoolIdHasBeenSet = true; m_identityPoolId = std::move(value); }
-
-    /**
-     * <p>An identity pool ID in the format REGION:GUID.</p>
-     */
-    inline void SetIdentityPoolId(const char* value) { m_identityPoolIdHasBeenSet = true; m_identityPoolId.assign(value); }
-
-    /**
-     * <p>An identity pool ID in the format REGION:GUID.</p>
-     */
-    inline GetIdentityPoolRolesRequest& WithIdentityPoolId(const Aws::String& value) { SetIdentityPoolId(value); return *this;}
-
-    /**
-     * <p>An identity pool ID in the format REGION:GUID.</p>
-     */
-    inline GetIdentityPoolRolesRequest& WithIdentityPoolId(Aws::String&& value) { SetIdentityPoolId(std::move(value)); return *this;}
-
-    /**
-     * <p>An identity pool ID in the format REGION:GUID.</p>
-     */
-    inline GetIdentityPoolRolesRequest& WithIdentityPoolId(const char* value) { SetIdentityPoolId(value); return *this;}
-
+    template<typename IdentityPoolIdT = Aws::String>
+    void SetIdentityPoolId(IdentityPoolIdT&& value) { m_identityPoolIdHasBeenSet = true; m_identityPoolId = std::forward<IdentityPoolIdT>(value); }
+    template<typename IdentityPoolIdT = Aws::String>
+    GetIdentityPoolRolesRequest& WithIdentityPoolId(IdentityPoolIdT&& value) { SetIdentityPoolId(std::forward<IdentityPoolIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_identityPoolId;

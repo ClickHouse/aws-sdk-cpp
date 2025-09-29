@@ -18,19 +18,7 @@ namespace KinesisAnalyticsV2
 namespace Model
 {
 
-ReferenceDataSourceUpdate::ReferenceDataSourceUpdate() : 
-    m_referenceIdHasBeenSet(false),
-    m_tableNameUpdateHasBeenSet(false),
-    m_s3ReferenceDataSourceUpdateHasBeenSet(false),
-    m_referenceSchemaUpdateHasBeenSet(false)
-{
-}
-
-ReferenceDataSourceUpdate::ReferenceDataSourceUpdate(JsonView jsonValue) : 
-    m_referenceIdHasBeenSet(false),
-    m_tableNameUpdateHasBeenSet(false),
-    m_s3ReferenceDataSourceUpdateHasBeenSet(false),
-    m_referenceSchemaUpdateHasBeenSet(false)
+ReferenceDataSourceUpdate::ReferenceDataSourceUpdate(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,31 +28,23 @@ ReferenceDataSourceUpdate& ReferenceDataSourceUpdate::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("ReferenceId"))
   {
     m_referenceId = jsonValue.GetString("ReferenceId");
-
     m_referenceIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TableNameUpdate"))
   {
     m_tableNameUpdate = jsonValue.GetString("TableNameUpdate");
-
     m_tableNameUpdateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("S3ReferenceDataSourceUpdate"))
   {
     m_s3ReferenceDataSourceUpdate = jsonValue.GetObject("S3ReferenceDataSourceUpdate");
-
     m_s3ReferenceDataSourceUpdateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ReferenceSchemaUpdate"))
   {
     m_referenceSchemaUpdate = jsonValue.GetObject("ReferenceSchemaUpdate");
-
     m_referenceSchemaUpdateHasBeenSet = true;
   }
-
   return *this;
 }
 

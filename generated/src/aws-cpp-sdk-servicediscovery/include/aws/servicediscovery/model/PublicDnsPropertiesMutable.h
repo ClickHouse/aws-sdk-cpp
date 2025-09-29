@@ -31,48 +31,24 @@ namespace Model
   class PublicDnsPropertiesMutable
   {
   public:
-    AWS_SERVICEDISCOVERY_API PublicDnsPropertiesMutable();
+    AWS_SERVICEDISCOVERY_API PublicDnsPropertiesMutable() = default;
     AWS_SERVICEDISCOVERY_API PublicDnsPropertiesMutable(Aws::Utils::Json::JsonView jsonValue);
     AWS_SERVICEDISCOVERY_API PublicDnsPropertiesMutable& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SERVICEDISCOVERY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Start of Authority (SOA) record for the hosted zone for the public DNS
      * namespace.</p>
      */
-    inline const SOA& GetSOA() const{ return m_sOA; }
-
-    /**
-     * <p>Start of Authority (SOA) record for the hosted zone for the public DNS
-     * namespace.</p>
-     */
+    inline const SOA& GetSOA() const { return m_sOA; }
     inline bool SOAHasBeenSet() const { return m_sOAHasBeenSet; }
-
-    /**
-     * <p>Start of Authority (SOA) record for the hosted zone for the public DNS
-     * namespace.</p>
-     */
-    inline void SetSOA(const SOA& value) { m_sOAHasBeenSet = true; m_sOA = value; }
-
-    /**
-     * <p>Start of Authority (SOA) record for the hosted zone for the public DNS
-     * namespace.</p>
-     */
-    inline void SetSOA(SOA&& value) { m_sOAHasBeenSet = true; m_sOA = std::move(value); }
-
-    /**
-     * <p>Start of Authority (SOA) record for the hosted zone for the public DNS
-     * namespace.</p>
-     */
-    inline PublicDnsPropertiesMutable& WithSOA(const SOA& value) { SetSOA(value); return *this;}
-
-    /**
-     * <p>Start of Authority (SOA) record for the hosted zone for the public DNS
-     * namespace.</p>
-     */
-    inline PublicDnsPropertiesMutable& WithSOA(SOA&& value) { SetSOA(std::move(value)); return *this;}
-
+    template<typename SOAT = SOA>
+    void SetSOA(SOAT&& value) { m_sOAHasBeenSet = true; m_sOA = std::forward<SOAT>(value); }
+    template<typename SOAT = SOA>
+    PublicDnsPropertiesMutable& WithSOA(SOAT&& value) { SetSOA(std::forward<SOAT>(value)); return *this;}
+    ///@}
   private:
 
     SOA m_sOA;

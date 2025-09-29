@@ -12,14 +12,6 @@ using namespace Aws::IoTWireless::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateLogLevelsByResourceTypesRequest::UpdateLogLevelsByResourceTypesRequest() : 
-    m_defaultLogLevel(LogLevel::NOT_SET),
-    m_defaultLogLevelHasBeenSet(false),
-    m_wirelessDeviceLogOptionsHasBeenSet(false),
-    m_wirelessGatewayLogOptionsHasBeenSet(false)
-{
-}
-
 Aws::String UpdateLogLevelsByResourceTypesRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -27,6 +19,17 @@ Aws::String UpdateLogLevelsByResourceTypesRequest::SerializePayload() const
   if(m_defaultLogLevelHasBeenSet)
   {
    payload.WithString("DefaultLogLevel", LogLevelMapper::GetNameForLogLevel(m_defaultLogLevel));
+  }
+
+  if(m_fuotaTaskLogOptionsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> fuotaTaskLogOptionsJsonList(m_fuotaTaskLogOptions.size());
+   for(unsigned fuotaTaskLogOptionsIndex = 0; fuotaTaskLogOptionsIndex < fuotaTaskLogOptionsJsonList.GetLength(); ++fuotaTaskLogOptionsIndex)
+   {
+     fuotaTaskLogOptionsJsonList[fuotaTaskLogOptionsIndex].AsObject(m_fuotaTaskLogOptions[fuotaTaskLogOptionsIndex].Jsonize());
+   }
+   payload.WithArray("FuotaTaskLogOptions", std::move(fuotaTaskLogOptionsJsonList));
+
   }
 
   if(m_wirelessDeviceLogOptionsHasBeenSet)

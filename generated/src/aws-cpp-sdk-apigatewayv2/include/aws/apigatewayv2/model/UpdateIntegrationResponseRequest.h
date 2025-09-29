@@ -26,7 +26,7 @@ namespace Model
   class UpdateIntegrationResponseRequest : public ApiGatewayV2Request
   {
   public:
-    AWS_APIGATEWAYV2_API UpdateIntegrationResponseRequest();
+    AWS_APIGATEWAYV2_API UpdateIntegrationResponseRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,47 +37,19 @@ namespace Model
     AWS_APIGATEWAYV2_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The API identifier.</p>
      */
-    inline const Aws::String& GetApiId() const{ return m_apiId; }
-
-    /**
-     * <p>The API identifier.</p>
-     */
+    inline const Aws::String& GetApiId() const { return m_apiId; }
     inline bool ApiIdHasBeenSet() const { return m_apiIdHasBeenSet; }
+    template<typename ApiIdT = Aws::String>
+    void SetApiId(ApiIdT&& value) { m_apiIdHasBeenSet = true; m_apiId = std::forward<ApiIdT>(value); }
+    template<typename ApiIdT = Aws::String>
+    UpdateIntegrationResponseRequest& WithApiId(ApiIdT&& value) { SetApiId(std::forward<ApiIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The API identifier.</p>
-     */
-    inline void SetApiId(const Aws::String& value) { m_apiIdHasBeenSet = true; m_apiId = value; }
-
-    /**
-     * <p>The API identifier.</p>
-     */
-    inline void SetApiId(Aws::String&& value) { m_apiIdHasBeenSet = true; m_apiId = std::move(value); }
-
-    /**
-     * <p>The API identifier.</p>
-     */
-    inline void SetApiId(const char* value) { m_apiIdHasBeenSet = true; m_apiId.assign(value); }
-
-    /**
-     * <p>The API identifier.</p>
-     */
-    inline UpdateIntegrationResponseRequest& WithApiId(const Aws::String& value) { SetApiId(value); return *this;}
-
-    /**
-     * <p>The API identifier.</p>
-     */
-    inline UpdateIntegrationResponseRequest& WithApiId(Aws::String&& value) { SetApiId(std::move(value)); return *this;}
-
-    /**
-     * <p>The API identifier.</p>
-     */
-    inline UpdateIntegrationResponseRequest& WithApiId(const char* value) { SetApiId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Supported only for WebSocket APIs. Specifies how to handle response payload
      * content type conversions. Supported values are CONVERT_TO_BINARY and
@@ -88,192 +60,49 @@ namespace Model
      * response payload will be passed through from the integration response to the
      * route response or method response without modification.</p>
      */
-    inline const ContentHandlingStrategy& GetContentHandlingStrategy() const{ return m_contentHandlingStrategy; }
-
-    /**
-     * <p>Supported only for WebSocket APIs. Specifies how to handle response payload
-     * content type conversions. Supported values are CONVERT_TO_BINARY and
-     * CONVERT_TO_TEXT, with the following behaviors:</p> <p>CONVERT_TO_BINARY:
-     * Converts a response payload from a Base64-encoded string to the corresponding
-     * binary blob.</p> <p>CONVERT_TO_TEXT: Converts a response payload from a binary
-     * blob to a Base64-encoded string.</p> <p>If this property is not defined, the
-     * response payload will be passed through from the integration response to the
-     * route response or method response without modification.</p>
-     */
+    inline ContentHandlingStrategy GetContentHandlingStrategy() const { return m_contentHandlingStrategy; }
     inline bool ContentHandlingStrategyHasBeenSet() const { return m_contentHandlingStrategyHasBeenSet; }
+    inline void SetContentHandlingStrategy(ContentHandlingStrategy value) { m_contentHandlingStrategyHasBeenSet = true; m_contentHandlingStrategy = value; }
+    inline UpdateIntegrationResponseRequest& WithContentHandlingStrategy(ContentHandlingStrategy value) { SetContentHandlingStrategy(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Supported only for WebSocket APIs. Specifies how to handle response payload
-     * content type conversions. Supported values are CONVERT_TO_BINARY and
-     * CONVERT_TO_TEXT, with the following behaviors:</p> <p>CONVERT_TO_BINARY:
-     * Converts a response payload from a Base64-encoded string to the corresponding
-     * binary blob.</p> <p>CONVERT_TO_TEXT: Converts a response payload from a binary
-     * blob to a Base64-encoded string.</p> <p>If this property is not defined, the
-     * response payload will be passed through from the integration response to the
-     * route response or method response without modification.</p>
-     */
-    inline void SetContentHandlingStrategy(const ContentHandlingStrategy& value) { m_contentHandlingStrategyHasBeenSet = true; m_contentHandlingStrategy = value; }
-
-    /**
-     * <p>Supported only for WebSocket APIs. Specifies how to handle response payload
-     * content type conversions. Supported values are CONVERT_TO_BINARY and
-     * CONVERT_TO_TEXT, with the following behaviors:</p> <p>CONVERT_TO_BINARY:
-     * Converts a response payload from a Base64-encoded string to the corresponding
-     * binary blob.</p> <p>CONVERT_TO_TEXT: Converts a response payload from a binary
-     * blob to a Base64-encoded string.</p> <p>If this property is not defined, the
-     * response payload will be passed through from the integration response to the
-     * route response or method response without modification.</p>
-     */
-    inline void SetContentHandlingStrategy(ContentHandlingStrategy&& value) { m_contentHandlingStrategyHasBeenSet = true; m_contentHandlingStrategy = std::move(value); }
-
-    /**
-     * <p>Supported only for WebSocket APIs. Specifies how to handle response payload
-     * content type conversions. Supported values are CONVERT_TO_BINARY and
-     * CONVERT_TO_TEXT, with the following behaviors:</p> <p>CONVERT_TO_BINARY:
-     * Converts a response payload from a Base64-encoded string to the corresponding
-     * binary blob.</p> <p>CONVERT_TO_TEXT: Converts a response payload from a binary
-     * blob to a Base64-encoded string.</p> <p>If this property is not defined, the
-     * response payload will be passed through from the integration response to the
-     * route response or method response without modification.</p>
-     */
-    inline UpdateIntegrationResponseRequest& WithContentHandlingStrategy(const ContentHandlingStrategy& value) { SetContentHandlingStrategy(value); return *this;}
-
-    /**
-     * <p>Supported only for WebSocket APIs. Specifies how to handle response payload
-     * content type conversions. Supported values are CONVERT_TO_BINARY and
-     * CONVERT_TO_TEXT, with the following behaviors:</p> <p>CONVERT_TO_BINARY:
-     * Converts a response payload from a Base64-encoded string to the corresponding
-     * binary blob.</p> <p>CONVERT_TO_TEXT: Converts a response payload from a binary
-     * blob to a Base64-encoded string.</p> <p>If this property is not defined, the
-     * response payload will be passed through from the integration response to the
-     * route response or method response without modification.</p>
-     */
-    inline UpdateIntegrationResponseRequest& WithContentHandlingStrategy(ContentHandlingStrategy&& value) { SetContentHandlingStrategy(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The integration ID.</p>
      */
-    inline const Aws::String& GetIntegrationId() const{ return m_integrationId; }
-
-    /**
-     * <p>The integration ID.</p>
-     */
+    inline const Aws::String& GetIntegrationId() const { return m_integrationId; }
     inline bool IntegrationIdHasBeenSet() const { return m_integrationIdHasBeenSet; }
+    template<typename IntegrationIdT = Aws::String>
+    void SetIntegrationId(IntegrationIdT&& value) { m_integrationIdHasBeenSet = true; m_integrationId = std::forward<IntegrationIdT>(value); }
+    template<typename IntegrationIdT = Aws::String>
+    UpdateIntegrationResponseRequest& WithIntegrationId(IntegrationIdT&& value) { SetIntegrationId(std::forward<IntegrationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The integration ID.</p>
-     */
-    inline void SetIntegrationId(const Aws::String& value) { m_integrationIdHasBeenSet = true; m_integrationId = value; }
-
-    /**
-     * <p>The integration ID.</p>
-     */
-    inline void SetIntegrationId(Aws::String&& value) { m_integrationIdHasBeenSet = true; m_integrationId = std::move(value); }
-
-    /**
-     * <p>The integration ID.</p>
-     */
-    inline void SetIntegrationId(const char* value) { m_integrationIdHasBeenSet = true; m_integrationId.assign(value); }
-
-    /**
-     * <p>The integration ID.</p>
-     */
-    inline UpdateIntegrationResponseRequest& WithIntegrationId(const Aws::String& value) { SetIntegrationId(value); return *this;}
-
-    /**
-     * <p>The integration ID.</p>
-     */
-    inline UpdateIntegrationResponseRequest& WithIntegrationId(Aws::String&& value) { SetIntegrationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The integration ID.</p>
-     */
-    inline UpdateIntegrationResponseRequest& WithIntegrationId(const char* value) { SetIntegrationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The integration response ID.</p>
      */
-    inline const Aws::String& GetIntegrationResponseId() const{ return m_integrationResponseId; }
-
-    /**
-     * <p>The integration response ID.</p>
-     */
+    inline const Aws::String& GetIntegrationResponseId() const { return m_integrationResponseId; }
     inline bool IntegrationResponseIdHasBeenSet() const { return m_integrationResponseIdHasBeenSet; }
+    template<typename IntegrationResponseIdT = Aws::String>
+    void SetIntegrationResponseId(IntegrationResponseIdT&& value) { m_integrationResponseIdHasBeenSet = true; m_integrationResponseId = std::forward<IntegrationResponseIdT>(value); }
+    template<typename IntegrationResponseIdT = Aws::String>
+    UpdateIntegrationResponseRequest& WithIntegrationResponseId(IntegrationResponseIdT&& value) { SetIntegrationResponseId(std::forward<IntegrationResponseIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The integration response ID.</p>
-     */
-    inline void SetIntegrationResponseId(const Aws::String& value) { m_integrationResponseIdHasBeenSet = true; m_integrationResponseId = value; }
-
-    /**
-     * <p>The integration response ID.</p>
-     */
-    inline void SetIntegrationResponseId(Aws::String&& value) { m_integrationResponseIdHasBeenSet = true; m_integrationResponseId = std::move(value); }
-
-    /**
-     * <p>The integration response ID.</p>
-     */
-    inline void SetIntegrationResponseId(const char* value) { m_integrationResponseIdHasBeenSet = true; m_integrationResponseId.assign(value); }
-
-    /**
-     * <p>The integration response ID.</p>
-     */
-    inline UpdateIntegrationResponseRequest& WithIntegrationResponseId(const Aws::String& value) { SetIntegrationResponseId(value); return *this;}
-
-    /**
-     * <p>The integration response ID.</p>
-     */
-    inline UpdateIntegrationResponseRequest& WithIntegrationResponseId(Aws::String&& value) { SetIntegrationResponseId(std::move(value)); return *this;}
-
-    /**
-     * <p>The integration response ID.</p>
-     */
-    inline UpdateIntegrationResponseRequest& WithIntegrationResponseId(const char* value) { SetIntegrationResponseId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The integration response key.</p>
      */
-    inline const Aws::String& GetIntegrationResponseKey() const{ return m_integrationResponseKey; }
-
-    /**
-     * <p>The integration response key.</p>
-     */
+    inline const Aws::String& GetIntegrationResponseKey() const { return m_integrationResponseKey; }
     inline bool IntegrationResponseKeyHasBeenSet() const { return m_integrationResponseKeyHasBeenSet; }
+    template<typename IntegrationResponseKeyT = Aws::String>
+    void SetIntegrationResponseKey(IntegrationResponseKeyT&& value) { m_integrationResponseKeyHasBeenSet = true; m_integrationResponseKey = std::forward<IntegrationResponseKeyT>(value); }
+    template<typename IntegrationResponseKeyT = Aws::String>
+    UpdateIntegrationResponseRequest& WithIntegrationResponseKey(IntegrationResponseKeyT&& value) { SetIntegrationResponseKey(std::forward<IntegrationResponseKeyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The integration response key.</p>
-     */
-    inline void SetIntegrationResponseKey(const Aws::String& value) { m_integrationResponseKeyHasBeenSet = true; m_integrationResponseKey = value; }
-
-    /**
-     * <p>The integration response key.</p>
-     */
-    inline void SetIntegrationResponseKey(Aws::String&& value) { m_integrationResponseKeyHasBeenSet = true; m_integrationResponseKey = std::move(value); }
-
-    /**
-     * <p>The integration response key.</p>
-     */
-    inline void SetIntegrationResponseKey(const char* value) { m_integrationResponseKeyHasBeenSet = true; m_integrationResponseKey.assign(value); }
-
-    /**
-     * <p>The integration response key.</p>
-     */
-    inline UpdateIntegrationResponseRequest& WithIntegrationResponseKey(const Aws::String& value) { SetIntegrationResponseKey(value); return *this;}
-
-    /**
-     * <p>The integration response key.</p>
-     */
-    inline UpdateIntegrationResponseRequest& WithIntegrationResponseKey(Aws::String&& value) { SetIntegrationResponseKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The integration response key.</p>
-     */
-    inline UpdateIntegrationResponseRequest& WithIntegrationResponseKey(const char* value) { SetIntegrationResponseKey(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A key-value map specifying response parameters that are passed to the method
      * response from the backend. The key is a method response header parameter name
@@ -296,443 +125,54 @@ namespace Model
                 is a valid JSON
      * expression without the $ prefix.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetResponseParameters() const{ return m_responseParameters; }
-
-    /**
-     * <p>A key-value map specifying response parameters that are passed to the method
-     * response from the backend. The key is a method response header parameter name
-     * and the mapped value is an integration response header value, a static value
-     * enclosed within a pair of single quotes, or a JSON expression from the
-     * integration response body. The mapping key must match the pattern of
-     * method.response.header.<replaceable>{name}</replaceable>
-               , where
-     * name is a valid and unique header name. The mapped non-static value must match
-     * the pattern of integration.response.header.<replaceable>{name}</replaceable>
-   
-     * or integration.response.body.<replaceable>{JSON-expression}</replaceable>
-      
-     * , where 
-                  <replaceable>{name}</replaceable>
-                is
-     * a valid and unique response header name and 
-                 
-     * <replaceable>{JSON-expression}</replaceable>
-                is a valid JSON
-     * expression without the $ prefix.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetResponseParameters() const { return m_responseParameters; }
     inline bool ResponseParametersHasBeenSet() const { return m_responseParametersHasBeenSet; }
+    template<typename ResponseParametersT = Aws::Map<Aws::String, Aws::String>>
+    void SetResponseParameters(ResponseParametersT&& value) { m_responseParametersHasBeenSet = true; m_responseParameters = std::forward<ResponseParametersT>(value); }
+    template<typename ResponseParametersT = Aws::Map<Aws::String, Aws::String>>
+    UpdateIntegrationResponseRequest& WithResponseParameters(ResponseParametersT&& value) { SetResponseParameters(std::forward<ResponseParametersT>(value)); return *this;}
+    template<typename ResponseParametersKeyT = Aws::String, typename ResponseParametersValueT = Aws::String>
+    UpdateIntegrationResponseRequest& AddResponseParameters(ResponseParametersKeyT&& key, ResponseParametersValueT&& value) {
+      m_responseParametersHasBeenSet = true; m_responseParameters.emplace(std::forward<ResponseParametersKeyT>(key), std::forward<ResponseParametersValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>A key-value map specifying response parameters that are passed to the method
-     * response from the backend. The key is a method response header parameter name
-     * and the mapped value is an integration response header value, a static value
-     * enclosed within a pair of single quotes, or a JSON expression from the
-     * integration response body. The mapping key must match the pattern of
-     * method.response.header.<replaceable>{name}</replaceable>
-               , where
-     * name is a valid and unique header name. The mapped non-static value must match
-     * the pattern of integration.response.header.<replaceable>{name}</replaceable>
-   
-     * or integration.response.body.<replaceable>{JSON-expression}</replaceable>
-      
-     * , where 
-                  <replaceable>{name}</replaceable>
-                is
-     * a valid and unique response header name and 
-                 
-     * <replaceable>{JSON-expression}</replaceable>
-                is a valid JSON
-     * expression without the $ prefix.</p>
-     */
-    inline void SetResponseParameters(const Aws::Map<Aws::String, Aws::String>& value) { m_responseParametersHasBeenSet = true; m_responseParameters = value; }
-
-    /**
-     * <p>A key-value map specifying response parameters that are passed to the method
-     * response from the backend. The key is a method response header parameter name
-     * and the mapped value is an integration response header value, a static value
-     * enclosed within a pair of single quotes, or a JSON expression from the
-     * integration response body. The mapping key must match the pattern of
-     * method.response.header.<replaceable>{name}</replaceable>
-               , where
-     * name is a valid and unique header name. The mapped non-static value must match
-     * the pattern of integration.response.header.<replaceable>{name}</replaceable>
-   
-     * or integration.response.body.<replaceable>{JSON-expression}</replaceable>
-      
-     * , where 
-                  <replaceable>{name}</replaceable>
-                is
-     * a valid and unique response header name and 
-                 
-     * <replaceable>{JSON-expression}</replaceable>
-                is a valid JSON
-     * expression without the $ prefix.</p>
-     */
-    inline void SetResponseParameters(Aws::Map<Aws::String, Aws::String>&& value) { m_responseParametersHasBeenSet = true; m_responseParameters = std::move(value); }
-
-    /**
-     * <p>A key-value map specifying response parameters that are passed to the method
-     * response from the backend. The key is a method response header parameter name
-     * and the mapped value is an integration response header value, a static value
-     * enclosed within a pair of single quotes, or a JSON expression from the
-     * integration response body. The mapping key must match the pattern of
-     * method.response.header.<replaceable>{name}</replaceable>
-               , where
-     * name is a valid and unique header name. The mapped non-static value must match
-     * the pattern of integration.response.header.<replaceable>{name}</replaceable>
-   
-     * or integration.response.body.<replaceable>{JSON-expression}</replaceable>
-      
-     * , where 
-                  <replaceable>{name}</replaceable>
-                is
-     * a valid and unique response header name and 
-                 
-     * <replaceable>{JSON-expression}</replaceable>
-                is a valid JSON
-     * expression without the $ prefix.</p>
-     */
-    inline UpdateIntegrationResponseRequest& WithResponseParameters(const Aws::Map<Aws::String, Aws::String>& value) { SetResponseParameters(value); return *this;}
-
-    /**
-     * <p>A key-value map specifying response parameters that are passed to the method
-     * response from the backend. The key is a method response header parameter name
-     * and the mapped value is an integration response header value, a static value
-     * enclosed within a pair of single quotes, or a JSON expression from the
-     * integration response body. The mapping key must match the pattern of
-     * method.response.header.<replaceable>{name}</replaceable>
-               , where
-     * name is a valid and unique header name. The mapped non-static value must match
-     * the pattern of integration.response.header.<replaceable>{name}</replaceable>
-   
-     * or integration.response.body.<replaceable>{JSON-expression}</replaceable>
-      
-     * , where 
-                  <replaceable>{name}</replaceable>
-                is
-     * a valid and unique response header name and 
-                 
-     * <replaceable>{JSON-expression}</replaceable>
-                is a valid JSON
-     * expression without the $ prefix.</p>
-     */
-    inline UpdateIntegrationResponseRequest& WithResponseParameters(Aws::Map<Aws::String, Aws::String>&& value) { SetResponseParameters(std::move(value)); return *this;}
-
-    /**
-     * <p>A key-value map specifying response parameters that are passed to the method
-     * response from the backend. The key is a method response header parameter name
-     * and the mapped value is an integration response header value, a static value
-     * enclosed within a pair of single quotes, or a JSON expression from the
-     * integration response body. The mapping key must match the pattern of
-     * method.response.header.<replaceable>{name}</replaceable>
-               , where
-     * name is a valid and unique header name. The mapped non-static value must match
-     * the pattern of integration.response.header.<replaceable>{name}</replaceable>
-   
-     * or integration.response.body.<replaceable>{JSON-expression}</replaceable>
-      
-     * , where 
-                  <replaceable>{name}</replaceable>
-                is
-     * a valid and unique response header name and 
-                 
-     * <replaceable>{JSON-expression}</replaceable>
-                is a valid JSON
-     * expression without the $ prefix.</p>
-     */
-    inline UpdateIntegrationResponseRequest& AddResponseParameters(const Aws::String& key, const Aws::String& value) { m_responseParametersHasBeenSet = true; m_responseParameters.emplace(key, value); return *this; }
-
-    /**
-     * <p>A key-value map specifying response parameters that are passed to the method
-     * response from the backend. The key is a method response header parameter name
-     * and the mapped value is an integration response header value, a static value
-     * enclosed within a pair of single quotes, or a JSON expression from the
-     * integration response body. The mapping key must match the pattern of
-     * method.response.header.<replaceable>{name}</replaceable>
-               , where
-     * name is a valid and unique header name. The mapped non-static value must match
-     * the pattern of integration.response.header.<replaceable>{name}</replaceable>
-   
-     * or integration.response.body.<replaceable>{JSON-expression}</replaceable>
-      
-     * , where 
-                  <replaceable>{name}</replaceable>
-                is
-     * a valid and unique response header name and 
-                 
-     * <replaceable>{JSON-expression}</replaceable>
-                is a valid JSON
-     * expression without the $ prefix.</p>
-     */
-    inline UpdateIntegrationResponseRequest& AddResponseParameters(Aws::String&& key, const Aws::String& value) { m_responseParametersHasBeenSet = true; m_responseParameters.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A key-value map specifying response parameters that are passed to the method
-     * response from the backend. The key is a method response header parameter name
-     * and the mapped value is an integration response header value, a static value
-     * enclosed within a pair of single quotes, or a JSON expression from the
-     * integration response body. The mapping key must match the pattern of
-     * method.response.header.<replaceable>{name}</replaceable>
-               , where
-     * name is a valid and unique header name. The mapped non-static value must match
-     * the pattern of integration.response.header.<replaceable>{name}</replaceable>
-   
-     * or integration.response.body.<replaceable>{JSON-expression}</replaceable>
-      
-     * , where 
-                  <replaceable>{name}</replaceable>
-                is
-     * a valid and unique response header name and 
-                 
-     * <replaceable>{JSON-expression}</replaceable>
-                is a valid JSON
-     * expression without the $ prefix.</p>
-     */
-    inline UpdateIntegrationResponseRequest& AddResponseParameters(const Aws::String& key, Aws::String&& value) { m_responseParametersHasBeenSet = true; m_responseParameters.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A key-value map specifying response parameters that are passed to the method
-     * response from the backend. The key is a method response header parameter name
-     * and the mapped value is an integration response header value, a static value
-     * enclosed within a pair of single quotes, or a JSON expression from the
-     * integration response body. The mapping key must match the pattern of
-     * method.response.header.<replaceable>{name}</replaceable>
-               , where
-     * name is a valid and unique header name. The mapped non-static value must match
-     * the pattern of integration.response.header.<replaceable>{name}</replaceable>
-   
-     * or integration.response.body.<replaceable>{JSON-expression}</replaceable>
-      
-     * , where 
-                  <replaceable>{name}</replaceable>
-                is
-     * a valid and unique response header name and 
-                 
-     * <replaceable>{JSON-expression}</replaceable>
-                is a valid JSON
-     * expression without the $ prefix.</p>
-     */
-    inline UpdateIntegrationResponseRequest& AddResponseParameters(Aws::String&& key, Aws::String&& value) { m_responseParametersHasBeenSet = true; m_responseParameters.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>A key-value map specifying response parameters that are passed to the method
-     * response from the backend. The key is a method response header parameter name
-     * and the mapped value is an integration response header value, a static value
-     * enclosed within a pair of single quotes, or a JSON expression from the
-     * integration response body. The mapping key must match the pattern of
-     * method.response.header.<replaceable>{name}</replaceable>
-               , where
-     * name is a valid and unique header name. The mapped non-static value must match
-     * the pattern of integration.response.header.<replaceable>{name}</replaceable>
-   
-     * or integration.response.body.<replaceable>{JSON-expression}</replaceable>
-      
-     * , where 
-                  <replaceable>{name}</replaceable>
-                is
-     * a valid and unique response header name and 
-                 
-     * <replaceable>{JSON-expression}</replaceable>
-                is a valid JSON
-     * expression without the $ prefix.</p>
-     */
-    inline UpdateIntegrationResponseRequest& AddResponseParameters(const char* key, Aws::String&& value) { m_responseParametersHasBeenSet = true; m_responseParameters.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A key-value map specifying response parameters that are passed to the method
-     * response from the backend. The key is a method response header parameter name
-     * and the mapped value is an integration response header value, a static value
-     * enclosed within a pair of single quotes, or a JSON expression from the
-     * integration response body. The mapping key must match the pattern of
-     * method.response.header.<replaceable>{name}</replaceable>
-               , where
-     * name is a valid and unique header name. The mapped non-static value must match
-     * the pattern of integration.response.header.<replaceable>{name}</replaceable>
-   
-     * or integration.response.body.<replaceable>{JSON-expression}</replaceable>
-      
-     * , where 
-                  <replaceable>{name}</replaceable>
-                is
-     * a valid and unique response header name and 
-                 
-     * <replaceable>{JSON-expression}</replaceable>
-                is a valid JSON
-     * expression without the $ prefix.</p>
-     */
-    inline UpdateIntegrationResponseRequest& AddResponseParameters(Aws::String&& key, const char* value) { m_responseParametersHasBeenSet = true; m_responseParameters.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A key-value map specifying response parameters that are passed to the method
-     * response from the backend. The key is a method response header parameter name
-     * and the mapped value is an integration response header value, a static value
-     * enclosed within a pair of single quotes, or a JSON expression from the
-     * integration response body. The mapping key must match the pattern of
-     * method.response.header.<replaceable>{name}</replaceable>
-               , where
-     * name is a valid and unique header name. The mapped non-static value must match
-     * the pattern of integration.response.header.<replaceable>{name}</replaceable>
-   
-     * or integration.response.body.<replaceable>{JSON-expression}</replaceable>
-      
-     * , where 
-                  <replaceable>{name}</replaceable>
-                is
-     * a valid and unique response header name and 
-                 
-     * <replaceable>{JSON-expression}</replaceable>
-                is a valid JSON
-     * expression without the $ prefix.</p>
-     */
-    inline UpdateIntegrationResponseRequest& AddResponseParameters(const char* key, const char* value) { m_responseParametersHasBeenSet = true; m_responseParameters.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>The collection of response templates for the integration response as a
      * string-to-string map of key-value pairs. Response templates are represented as a
      * key/value map, with a content-type as the key and a template as the value.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetResponseTemplates() const{ return m_responseTemplates; }
-
-    /**
-     * <p>The collection of response templates for the integration response as a
-     * string-to-string map of key-value pairs. Response templates are represented as a
-     * key/value map, with a content-type as the key and a template as the value.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetResponseTemplates() const { return m_responseTemplates; }
     inline bool ResponseTemplatesHasBeenSet() const { return m_responseTemplatesHasBeenSet; }
+    template<typename ResponseTemplatesT = Aws::Map<Aws::String, Aws::String>>
+    void SetResponseTemplates(ResponseTemplatesT&& value) { m_responseTemplatesHasBeenSet = true; m_responseTemplates = std::forward<ResponseTemplatesT>(value); }
+    template<typename ResponseTemplatesT = Aws::Map<Aws::String, Aws::String>>
+    UpdateIntegrationResponseRequest& WithResponseTemplates(ResponseTemplatesT&& value) { SetResponseTemplates(std::forward<ResponseTemplatesT>(value)); return *this;}
+    template<typename ResponseTemplatesKeyT = Aws::String, typename ResponseTemplatesValueT = Aws::String>
+    UpdateIntegrationResponseRequest& AddResponseTemplates(ResponseTemplatesKeyT&& key, ResponseTemplatesValueT&& value) {
+      m_responseTemplatesHasBeenSet = true; m_responseTemplates.emplace(std::forward<ResponseTemplatesKeyT>(key), std::forward<ResponseTemplatesValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>The collection of response templates for the integration response as a
-     * string-to-string map of key-value pairs. Response templates are represented as a
-     * key/value map, with a content-type as the key and a template as the value.</p>
-     */
-    inline void SetResponseTemplates(const Aws::Map<Aws::String, Aws::String>& value) { m_responseTemplatesHasBeenSet = true; m_responseTemplates = value; }
-
-    /**
-     * <p>The collection of response templates for the integration response as a
-     * string-to-string map of key-value pairs. Response templates are represented as a
-     * key/value map, with a content-type as the key and a template as the value.</p>
-     */
-    inline void SetResponseTemplates(Aws::Map<Aws::String, Aws::String>&& value) { m_responseTemplatesHasBeenSet = true; m_responseTemplates = std::move(value); }
-
-    /**
-     * <p>The collection of response templates for the integration response as a
-     * string-to-string map of key-value pairs. Response templates are represented as a
-     * key/value map, with a content-type as the key and a template as the value.</p>
-     */
-    inline UpdateIntegrationResponseRequest& WithResponseTemplates(const Aws::Map<Aws::String, Aws::String>& value) { SetResponseTemplates(value); return *this;}
-
-    /**
-     * <p>The collection of response templates for the integration response as a
-     * string-to-string map of key-value pairs. Response templates are represented as a
-     * key/value map, with a content-type as the key and a template as the value.</p>
-     */
-    inline UpdateIntegrationResponseRequest& WithResponseTemplates(Aws::Map<Aws::String, Aws::String>&& value) { SetResponseTemplates(std::move(value)); return *this;}
-
-    /**
-     * <p>The collection of response templates for the integration response as a
-     * string-to-string map of key-value pairs. Response templates are represented as a
-     * key/value map, with a content-type as the key and a template as the value.</p>
-     */
-    inline UpdateIntegrationResponseRequest& AddResponseTemplates(const Aws::String& key, const Aws::String& value) { m_responseTemplatesHasBeenSet = true; m_responseTemplates.emplace(key, value); return *this; }
-
-    /**
-     * <p>The collection of response templates for the integration response as a
-     * string-to-string map of key-value pairs. Response templates are represented as a
-     * key/value map, with a content-type as the key and a template as the value.</p>
-     */
-    inline UpdateIntegrationResponseRequest& AddResponseTemplates(Aws::String&& key, const Aws::String& value) { m_responseTemplatesHasBeenSet = true; m_responseTemplates.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The collection of response templates for the integration response as a
-     * string-to-string map of key-value pairs. Response templates are represented as a
-     * key/value map, with a content-type as the key and a template as the value.</p>
-     */
-    inline UpdateIntegrationResponseRequest& AddResponseTemplates(const Aws::String& key, Aws::String&& value) { m_responseTemplatesHasBeenSet = true; m_responseTemplates.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The collection of response templates for the integration response as a
-     * string-to-string map of key-value pairs. Response templates are represented as a
-     * key/value map, with a content-type as the key and a template as the value.</p>
-     */
-    inline UpdateIntegrationResponseRequest& AddResponseTemplates(Aws::String&& key, Aws::String&& value) { m_responseTemplatesHasBeenSet = true; m_responseTemplates.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The collection of response templates for the integration response as a
-     * string-to-string map of key-value pairs. Response templates are represented as a
-     * key/value map, with a content-type as the key and a template as the value.</p>
-     */
-    inline UpdateIntegrationResponseRequest& AddResponseTemplates(const char* key, Aws::String&& value) { m_responseTemplatesHasBeenSet = true; m_responseTemplates.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The collection of response templates for the integration response as a
-     * string-to-string map of key-value pairs. Response templates are represented as a
-     * key/value map, with a content-type as the key and a template as the value.</p>
-     */
-    inline UpdateIntegrationResponseRequest& AddResponseTemplates(Aws::String&& key, const char* value) { m_responseTemplatesHasBeenSet = true; m_responseTemplates.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The collection of response templates for the integration response as a
-     * string-to-string map of key-value pairs. Response templates are represented as a
-     * key/value map, with a content-type as the key and a template as the value.</p>
-     */
-    inline UpdateIntegrationResponseRequest& AddResponseTemplates(const char* key, const char* value) { m_responseTemplatesHasBeenSet = true; m_responseTemplates.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>The template selection expression for the integration response. Supported
      * only for WebSocket APIs.</p>
      */
-    inline const Aws::String& GetTemplateSelectionExpression() const{ return m_templateSelectionExpression; }
-
-    /**
-     * <p>The template selection expression for the integration response. Supported
-     * only for WebSocket APIs.</p>
-     */
+    inline const Aws::String& GetTemplateSelectionExpression() const { return m_templateSelectionExpression; }
     inline bool TemplateSelectionExpressionHasBeenSet() const { return m_templateSelectionExpressionHasBeenSet; }
-
-    /**
-     * <p>The template selection expression for the integration response. Supported
-     * only for WebSocket APIs.</p>
-     */
-    inline void SetTemplateSelectionExpression(const Aws::String& value) { m_templateSelectionExpressionHasBeenSet = true; m_templateSelectionExpression = value; }
-
-    /**
-     * <p>The template selection expression for the integration response. Supported
-     * only for WebSocket APIs.</p>
-     */
-    inline void SetTemplateSelectionExpression(Aws::String&& value) { m_templateSelectionExpressionHasBeenSet = true; m_templateSelectionExpression = std::move(value); }
-
-    /**
-     * <p>The template selection expression for the integration response. Supported
-     * only for WebSocket APIs.</p>
-     */
-    inline void SetTemplateSelectionExpression(const char* value) { m_templateSelectionExpressionHasBeenSet = true; m_templateSelectionExpression.assign(value); }
-
-    /**
-     * <p>The template selection expression for the integration response. Supported
-     * only for WebSocket APIs.</p>
-     */
-    inline UpdateIntegrationResponseRequest& WithTemplateSelectionExpression(const Aws::String& value) { SetTemplateSelectionExpression(value); return *this;}
-
-    /**
-     * <p>The template selection expression for the integration response. Supported
-     * only for WebSocket APIs.</p>
-     */
-    inline UpdateIntegrationResponseRequest& WithTemplateSelectionExpression(Aws::String&& value) { SetTemplateSelectionExpression(std::move(value)); return *this;}
-
-    /**
-     * <p>The template selection expression for the integration response. Supported
-     * only for WebSocket APIs.</p>
-     */
-    inline UpdateIntegrationResponseRequest& WithTemplateSelectionExpression(const char* value) { SetTemplateSelectionExpression(value); return *this;}
-
+    template<typename TemplateSelectionExpressionT = Aws::String>
+    void SetTemplateSelectionExpression(TemplateSelectionExpressionT&& value) { m_templateSelectionExpressionHasBeenSet = true; m_templateSelectionExpression = std::forward<TemplateSelectionExpressionT>(value); }
+    template<typename TemplateSelectionExpressionT = Aws::String>
+    UpdateIntegrationResponseRequest& WithTemplateSelectionExpression(TemplateSelectionExpressionT&& value) { SetTemplateSelectionExpression(std::forward<TemplateSelectionExpressionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_apiId;
     bool m_apiIdHasBeenSet = false;
 
-    ContentHandlingStrategy m_contentHandlingStrategy;
+    ContentHandlingStrategy m_contentHandlingStrategy{ContentHandlingStrategy::NOT_SET};
     bool m_contentHandlingStrategyHasBeenSet = false;
 
     Aws::String m_integrationId;

@@ -20,23 +20,7 @@ namespace IAM
 namespace Model
 {
 
-EntityInfo::EntityInfo() : 
-    m_arnHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_type(PolicyOwnerEntityType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_idHasBeenSet(false),
-    m_pathHasBeenSet(false)
-{
-}
-
-EntityInfo::EntityInfo(const XmlNode& xmlNode) : 
-    m_arnHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_type(PolicyOwnerEntityType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_idHasBeenSet(false),
-    m_pathHasBeenSet(false)
+EntityInfo::EntityInfo(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -62,7 +46,7 @@ EntityInfo& EntityInfo::operator =(const XmlNode& xmlNode)
     XmlNode typeNode = resultNode.FirstChild("Type");
     if(!typeNode.IsNull())
     {
-      m_type = PolicyOwnerEntityTypeMapper::GetPolicyOwnerEntityTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(typeNode.GetText()).c_str()).c_str());
+      m_type = PolicyOwnerEntityTypeMapper::GetPolicyOwnerEntityTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(typeNode.GetText()).c_str()));
       m_typeHasBeenSet = true;
     }
     XmlNode idNode = resultNode.FirstChild("Id");
@@ -96,7 +80,7 @@ void EntityInfo::OutputToStream(Aws::OStream& oStream, const char* location, uns
 
   if(m_typeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Type=" << PolicyOwnerEntityTypeMapper::GetNameForPolicyOwnerEntityType(m_type) << "&";
+      oStream << location << index << locationValue << ".Type=" << StringUtils::URLEncode(PolicyOwnerEntityTypeMapper::GetNameForPolicyOwnerEntityType(m_type)) << "&";
   }
 
   if(m_idHasBeenSet)
@@ -123,7 +107,7 @@ void EntityInfo::OutputToStream(Aws::OStream& oStream, const char* location) con
   }
   if(m_typeHasBeenSet)
   {
-      oStream << location << ".Type=" << PolicyOwnerEntityTypeMapper::GetNameForPolicyOwnerEntityType(m_type) << "&";
+      oStream << location << ".Type=" << StringUtils::URLEncode(PolicyOwnerEntityTypeMapper::GetNameForPolicyOwnerEntityType(m_type)) << "&";
   }
   if(m_idHasBeenSet)
   {

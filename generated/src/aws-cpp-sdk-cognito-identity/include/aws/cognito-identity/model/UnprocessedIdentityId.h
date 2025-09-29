@@ -33,89 +33,39 @@ namespace Model
   class UnprocessedIdentityId
   {
   public:
-    AWS_COGNITOIDENTITY_API UnprocessedIdentityId();
+    AWS_COGNITOIDENTITY_API UnprocessedIdentityId() = default;
     AWS_COGNITOIDENTITY_API UnprocessedIdentityId(Aws::Utils::Json::JsonView jsonValue);
     AWS_COGNITOIDENTITY_API UnprocessedIdentityId& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COGNITOIDENTITY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A unique identifier in the format REGION:GUID.</p>
      */
-    inline const Aws::String& GetIdentityId() const{ return m_identityId; }
-
-    /**
-     * <p>A unique identifier in the format REGION:GUID.</p>
-     */
+    inline const Aws::String& GetIdentityId() const { return m_identityId; }
     inline bool IdentityIdHasBeenSet() const { return m_identityIdHasBeenSet; }
+    template<typename IdentityIdT = Aws::String>
+    void SetIdentityId(IdentityIdT&& value) { m_identityIdHasBeenSet = true; m_identityId = std::forward<IdentityIdT>(value); }
+    template<typename IdentityIdT = Aws::String>
+    UnprocessedIdentityId& WithIdentityId(IdentityIdT&& value) { SetIdentityId(std::forward<IdentityIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier in the format REGION:GUID.</p>
-     */
-    inline void SetIdentityId(const Aws::String& value) { m_identityIdHasBeenSet = true; m_identityId = value; }
-
-    /**
-     * <p>A unique identifier in the format REGION:GUID.</p>
-     */
-    inline void SetIdentityId(Aws::String&& value) { m_identityIdHasBeenSet = true; m_identityId = std::move(value); }
-
-    /**
-     * <p>A unique identifier in the format REGION:GUID.</p>
-     */
-    inline void SetIdentityId(const char* value) { m_identityIdHasBeenSet = true; m_identityId.assign(value); }
-
-    /**
-     * <p>A unique identifier in the format REGION:GUID.</p>
-     */
-    inline UnprocessedIdentityId& WithIdentityId(const Aws::String& value) { SetIdentityId(value); return *this;}
-
-    /**
-     * <p>A unique identifier in the format REGION:GUID.</p>
-     */
-    inline UnprocessedIdentityId& WithIdentityId(Aws::String&& value) { SetIdentityId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier in the format REGION:GUID.</p>
-     */
-    inline UnprocessedIdentityId& WithIdentityId(const char* value) { SetIdentityId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The error code indicating the type of error that occurred.</p>
      */
-    inline const ErrorCode& GetErrorCode() const{ return m_errorCode; }
-
-    /**
-     * <p>The error code indicating the type of error that occurred.</p>
-     */
+    inline ErrorCode GetErrorCode() const { return m_errorCode; }
     inline bool ErrorCodeHasBeenSet() const { return m_errorCodeHasBeenSet; }
-
-    /**
-     * <p>The error code indicating the type of error that occurred.</p>
-     */
-    inline void SetErrorCode(const ErrorCode& value) { m_errorCodeHasBeenSet = true; m_errorCode = value; }
-
-    /**
-     * <p>The error code indicating the type of error that occurred.</p>
-     */
-    inline void SetErrorCode(ErrorCode&& value) { m_errorCodeHasBeenSet = true; m_errorCode = std::move(value); }
-
-    /**
-     * <p>The error code indicating the type of error that occurred.</p>
-     */
-    inline UnprocessedIdentityId& WithErrorCode(const ErrorCode& value) { SetErrorCode(value); return *this;}
-
-    /**
-     * <p>The error code indicating the type of error that occurred.</p>
-     */
-    inline UnprocessedIdentityId& WithErrorCode(ErrorCode&& value) { SetErrorCode(std::move(value)); return *this;}
-
+    inline void SetErrorCode(ErrorCode value) { m_errorCodeHasBeenSet = true; m_errorCode = value; }
+    inline UnprocessedIdentityId& WithErrorCode(ErrorCode value) { SetErrorCode(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_identityId;
     bool m_identityIdHasBeenSet = false;
 
-    ErrorCode m_errorCode;
+    ErrorCode m_errorCode{ErrorCode::NOT_SET};
     bool m_errorCodeHasBeenSet = false;
   };
 

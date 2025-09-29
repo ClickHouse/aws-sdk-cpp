@@ -31,45 +31,24 @@ namespace Model
   class ExportToCSVOption
   {
   public:
-    AWS_QUICKSIGHT_API ExportToCSVOption();
+    AWS_QUICKSIGHT_API ExportToCSVOption() = default;
     AWS_QUICKSIGHT_API ExportToCSVOption(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API ExportToCSVOption& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Availability status.</p>
      */
-    inline const DashboardBehavior& GetAvailabilityStatus() const{ return m_availabilityStatus; }
-
-    /**
-     * <p>Availability status.</p>
-     */
+    inline DashboardBehavior GetAvailabilityStatus() const { return m_availabilityStatus; }
     inline bool AvailabilityStatusHasBeenSet() const { return m_availabilityStatusHasBeenSet; }
-
-    /**
-     * <p>Availability status.</p>
-     */
-    inline void SetAvailabilityStatus(const DashboardBehavior& value) { m_availabilityStatusHasBeenSet = true; m_availabilityStatus = value; }
-
-    /**
-     * <p>Availability status.</p>
-     */
-    inline void SetAvailabilityStatus(DashboardBehavior&& value) { m_availabilityStatusHasBeenSet = true; m_availabilityStatus = std::move(value); }
-
-    /**
-     * <p>Availability status.</p>
-     */
-    inline ExportToCSVOption& WithAvailabilityStatus(const DashboardBehavior& value) { SetAvailabilityStatus(value); return *this;}
-
-    /**
-     * <p>Availability status.</p>
-     */
-    inline ExportToCSVOption& WithAvailabilityStatus(DashboardBehavior&& value) { SetAvailabilityStatus(std::move(value)); return *this;}
-
+    inline void SetAvailabilityStatus(DashboardBehavior value) { m_availabilityStatusHasBeenSet = true; m_availabilityStatus = value; }
+    inline ExportToCSVOption& WithAvailabilityStatus(DashboardBehavior value) { SetAvailabilityStatus(value); return *this;}
+    ///@}
   private:
 
-    DashboardBehavior m_availabilityStatus;
+    DashboardBehavior m_availabilityStatus{DashboardBehavior::NOT_SET};
     bool m_availabilityStatusHasBeenSet = false;
   };
 

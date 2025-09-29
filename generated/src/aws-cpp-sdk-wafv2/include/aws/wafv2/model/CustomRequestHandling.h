@@ -39,12 +39,13 @@ namespace Model
   class CustomRequestHandling
   {
   public:
-    AWS_WAFV2_API CustomRequestHandling();
+    AWS_WAFV2_API CustomRequestHandling() = default;
     AWS_WAFV2_API CustomRequestHandling(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFV2_API CustomRequestHandling& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The HTTP headers to insert into the request. Duplicate header names are not
      * allowed. </p> <p>For information about the limits on count and size for custom
@@ -52,71 +53,15 @@ namespace Model
      * href="https://docs.aws.amazon.com/waf/latest/developerguide/limits.html">WAF
      * quotas</a> in the <i>WAF Developer Guide</i>. </p>
      */
-    inline const Aws::Vector<CustomHTTPHeader>& GetInsertHeaders() const{ return m_insertHeaders; }
-
-    /**
-     * <p>The HTTP headers to insert into the request. Duplicate header names are not
-     * allowed. </p> <p>For information about the limits on count and size for custom
-     * request and response settings, see <a
-     * href="https://docs.aws.amazon.com/waf/latest/developerguide/limits.html">WAF
-     * quotas</a> in the <i>WAF Developer Guide</i>. </p>
-     */
+    inline const Aws::Vector<CustomHTTPHeader>& GetInsertHeaders() const { return m_insertHeaders; }
     inline bool InsertHeadersHasBeenSet() const { return m_insertHeadersHasBeenSet; }
-
-    /**
-     * <p>The HTTP headers to insert into the request. Duplicate header names are not
-     * allowed. </p> <p>For information about the limits on count and size for custom
-     * request and response settings, see <a
-     * href="https://docs.aws.amazon.com/waf/latest/developerguide/limits.html">WAF
-     * quotas</a> in the <i>WAF Developer Guide</i>. </p>
-     */
-    inline void SetInsertHeaders(const Aws::Vector<CustomHTTPHeader>& value) { m_insertHeadersHasBeenSet = true; m_insertHeaders = value; }
-
-    /**
-     * <p>The HTTP headers to insert into the request. Duplicate header names are not
-     * allowed. </p> <p>For information about the limits on count and size for custom
-     * request and response settings, see <a
-     * href="https://docs.aws.amazon.com/waf/latest/developerguide/limits.html">WAF
-     * quotas</a> in the <i>WAF Developer Guide</i>. </p>
-     */
-    inline void SetInsertHeaders(Aws::Vector<CustomHTTPHeader>&& value) { m_insertHeadersHasBeenSet = true; m_insertHeaders = std::move(value); }
-
-    /**
-     * <p>The HTTP headers to insert into the request. Duplicate header names are not
-     * allowed. </p> <p>For information about the limits on count and size for custom
-     * request and response settings, see <a
-     * href="https://docs.aws.amazon.com/waf/latest/developerguide/limits.html">WAF
-     * quotas</a> in the <i>WAF Developer Guide</i>. </p>
-     */
-    inline CustomRequestHandling& WithInsertHeaders(const Aws::Vector<CustomHTTPHeader>& value) { SetInsertHeaders(value); return *this;}
-
-    /**
-     * <p>The HTTP headers to insert into the request. Duplicate header names are not
-     * allowed. </p> <p>For information about the limits on count and size for custom
-     * request and response settings, see <a
-     * href="https://docs.aws.amazon.com/waf/latest/developerguide/limits.html">WAF
-     * quotas</a> in the <i>WAF Developer Guide</i>. </p>
-     */
-    inline CustomRequestHandling& WithInsertHeaders(Aws::Vector<CustomHTTPHeader>&& value) { SetInsertHeaders(std::move(value)); return *this;}
-
-    /**
-     * <p>The HTTP headers to insert into the request. Duplicate header names are not
-     * allowed. </p> <p>For information about the limits on count and size for custom
-     * request and response settings, see <a
-     * href="https://docs.aws.amazon.com/waf/latest/developerguide/limits.html">WAF
-     * quotas</a> in the <i>WAF Developer Guide</i>. </p>
-     */
-    inline CustomRequestHandling& AddInsertHeaders(const CustomHTTPHeader& value) { m_insertHeadersHasBeenSet = true; m_insertHeaders.push_back(value); return *this; }
-
-    /**
-     * <p>The HTTP headers to insert into the request. Duplicate header names are not
-     * allowed. </p> <p>For information about the limits on count and size for custom
-     * request and response settings, see <a
-     * href="https://docs.aws.amazon.com/waf/latest/developerguide/limits.html">WAF
-     * quotas</a> in the <i>WAF Developer Guide</i>. </p>
-     */
-    inline CustomRequestHandling& AddInsertHeaders(CustomHTTPHeader&& value) { m_insertHeadersHasBeenSet = true; m_insertHeaders.push_back(std::move(value)); return *this; }
-
+    template<typename InsertHeadersT = Aws::Vector<CustomHTTPHeader>>
+    void SetInsertHeaders(InsertHeadersT&& value) { m_insertHeadersHasBeenSet = true; m_insertHeaders = std::forward<InsertHeadersT>(value); }
+    template<typename InsertHeadersT = Aws::Vector<CustomHTTPHeader>>
+    CustomRequestHandling& WithInsertHeaders(InsertHeadersT&& value) { SetInsertHeaders(std::forward<InsertHeadersT>(value)); return *this;}
+    template<typename InsertHeadersT = CustomHTTPHeader>
+    CustomRequestHandling& AddInsertHeaders(InsertHeadersT&& value) { m_insertHeadersHasBeenSet = true; m_insertHeaders.emplace_back(std::forward<InsertHeadersT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<CustomHTTPHeader> m_insertHeaders;

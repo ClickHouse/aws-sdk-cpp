@@ -29,151 +29,81 @@ namespace Model
   class NumberFilter
   {
   public:
-    AWS_SECURITYHUB_API NumberFilter();
+    AWS_SECURITYHUB_API NumberFilter() = default;
     AWS_SECURITYHUB_API NumberFilter(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API NumberFilter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The greater-than-equal condition to be applied to a single field when
      * querying for findings. </p>
      */
-    inline double GetGte() const{ return m_gte; }
-
-    /**
-     * <p>The greater-than-equal condition to be applied to a single field when
-     * querying for findings. </p>
-     */
+    inline double GetGte() const { return m_gte; }
     inline bool GteHasBeenSet() const { return m_gteHasBeenSet; }
-
-    /**
-     * <p>The greater-than-equal condition to be applied to a single field when
-     * querying for findings. </p>
-     */
     inline void SetGte(double value) { m_gteHasBeenSet = true; m_gte = value; }
-
-    /**
-     * <p>The greater-than-equal condition to be applied to a single field when
-     * querying for findings. </p>
-     */
     inline NumberFilter& WithGte(double value) { SetGte(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The less-than-equal condition to be applied to a single field when querying
      * for findings. </p>
      */
-    inline double GetLte() const{ return m_lte; }
-
-    /**
-     * <p>The less-than-equal condition to be applied to a single field when querying
-     * for findings. </p>
-     */
+    inline double GetLte() const { return m_lte; }
     inline bool LteHasBeenSet() const { return m_lteHasBeenSet; }
-
-    /**
-     * <p>The less-than-equal condition to be applied to a single field when querying
-     * for findings. </p>
-     */
     inline void SetLte(double value) { m_lteHasBeenSet = true; m_lte = value; }
-
-    /**
-     * <p>The less-than-equal condition to be applied to a single field when querying
-     * for findings. </p>
-     */
     inline NumberFilter& WithLte(double value) { SetLte(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The equal-to condition to be applied to a single field when querying for
      * findings.</p>
      */
-    inline double GetEq() const{ return m_eq; }
-
-    /**
-     * <p>The equal-to condition to be applied to a single field when querying for
-     * findings.</p>
-     */
+    inline double GetEq() const { return m_eq; }
     inline bool EqHasBeenSet() const { return m_eqHasBeenSet; }
-
-    /**
-     * <p>The equal-to condition to be applied to a single field when querying for
-     * findings.</p>
-     */
     inline void SetEq(double value) { m_eqHasBeenSet = true; m_eq = value; }
-
-    /**
-     * <p>The equal-to condition to be applied to a single field when querying for
-     * findings.</p>
-     */
     inline NumberFilter& WithEq(double value) { SetEq(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p> The greater-than condition to be applied to a single field when querying for
      * findings. </p>
      */
-    inline double GetGt() const{ return m_gt; }
-
-    /**
-     * <p> The greater-than condition to be applied to a single field when querying for
-     * findings. </p>
-     */
+    inline double GetGt() const { return m_gt; }
     inline bool GtHasBeenSet() const { return m_gtHasBeenSet; }
-
-    /**
-     * <p> The greater-than condition to be applied to a single field when querying for
-     * findings. </p>
-     */
     inline void SetGt(double value) { m_gtHasBeenSet = true; m_gt = value; }
-
-    /**
-     * <p> The greater-than condition to be applied to a single field when querying for
-     * findings. </p>
-     */
     inline NumberFilter& WithGt(double value) { SetGt(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p> The less-than condition to be applied to a single field when querying for
      * findings. </p>
      */
-    inline double GetLt() const{ return m_lt; }
-
-    /**
-     * <p> The less-than condition to be applied to a single field when querying for
-     * findings. </p>
-     */
+    inline double GetLt() const { return m_lt; }
     inline bool LtHasBeenSet() const { return m_ltHasBeenSet; }
-
-    /**
-     * <p> The less-than condition to be applied to a single field when querying for
-     * findings. </p>
-     */
     inline void SetLt(double value) { m_ltHasBeenSet = true; m_lt = value; }
-
-    /**
-     * <p> The less-than condition to be applied to a single field when querying for
-     * findings. </p>
-     */
     inline NumberFilter& WithLt(double value) { SetLt(value); return *this;}
-
+    ///@}
   private:
 
-    double m_gte;
+    double m_gte{0.0};
     bool m_gteHasBeenSet = false;
 
-    double m_lte;
+    double m_lte{0.0};
     bool m_lteHasBeenSet = false;
 
-    double m_eq;
+    double m_eq{0.0};
     bool m_eqHasBeenSet = false;
 
-    double m_gt;
+    double m_gt{0.0};
     bool m_gtHasBeenSet = false;
 
-    double m_lt;
+    double m_lt{0.0};
     bool m_ltHasBeenSet = false;
   };
 

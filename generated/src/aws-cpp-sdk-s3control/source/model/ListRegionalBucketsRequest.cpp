@@ -6,6 +6,7 @@
 #include <aws/s3control/model/ListRegionalBucketsRequest.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/core/utils/UnreferencedParam.h>
 #include <aws/core/http/URI.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
 
@@ -16,14 +17,6 @@ using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-ListRegionalBucketsRequest::ListRegionalBucketsRequest() : 
-    m_accountIdHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_outpostIdHasBeenSet(false)
-{
-}
 
 Aws::String ListRegionalBucketsRequest::SerializePayload() const
 {

@@ -28,7 +28,7 @@ namespace Model
   class DeleteThingShadowRequest : public IoTDataPlaneRequest
   {
   public:
-    AWS_IOTDATAPLANE_API DeleteThingShadowRequest();
+    AWS_IOTDATAPLANE_API DeleteThingShadowRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -41,87 +41,29 @@ namespace Model
     AWS_IOTDATAPLANE_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>The name of the thing.</p>
      */
-    inline const Aws::String& GetThingName() const{ return m_thingName; }
-
-    /**
-     * <p>The name of the thing.</p>
-     */
+    inline const Aws::String& GetThingName() const { return m_thingName; }
     inline bool ThingNameHasBeenSet() const { return m_thingNameHasBeenSet; }
+    template<typename ThingNameT = Aws::String>
+    void SetThingName(ThingNameT&& value) { m_thingNameHasBeenSet = true; m_thingName = std::forward<ThingNameT>(value); }
+    template<typename ThingNameT = Aws::String>
+    DeleteThingShadowRequest& WithThingName(ThingNameT&& value) { SetThingName(std::forward<ThingNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the thing.</p>
-     */
-    inline void SetThingName(const Aws::String& value) { m_thingNameHasBeenSet = true; m_thingName = value; }
-
-    /**
-     * <p>The name of the thing.</p>
-     */
-    inline void SetThingName(Aws::String&& value) { m_thingNameHasBeenSet = true; m_thingName = std::move(value); }
-
-    /**
-     * <p>The name of the thing.</p>
-     */
-    inline void SetThingName(const char* value) { m_thingNameHasBeenSet = true; m_thingName.assign(value); }
-
-    /**
-     * <p>The name of the thing.</p>
-     */
-    inline DeleteThingShadowRequest& WithThingName(const Aws::String& value) { SetThingName(value); return *this;}
-
-    /**
-     * <p>The name of the thing.</p>
-     */
-    inline DeleteThingShadowRequest& WithThingName(Aws::String&& value) { SetThingName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the thing.</p>
-     */
-    inline DeleteThingShadowRequest& WithThingName(const char* value) { SetThingName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the shadow.</p>
      */
-    inline const Aws::String& GetShadowName() const{ return m_shadowName; }
-
-    /**
-     * <p>The name of the shadow.</p>
-     */
+    inline const Aws::String& GetShadowName() const { return m_shadowName; }
     inline bool ShadowNameHasBeenSet() const { return m_shadowNameHasBeenSet; }
-
-    /**
-     * <p>The name of the shadow.</p>
-     */
-    inline void SetShadowName(const Aws::String& value) { m_shadowNameHasBeenSet = true; m_shadowName = value; }
-
-    /**
-     * <p>The name of the shadow.</p>
-     */
-    inline void SetShadowName(Aws::String&& value) { m_shadowNameHasBeenSet = true; m_shadowName = std::move(value); }
-
-    /**
-     * <p>The name of the shadow.</p>
-     */
-    inline void SetShadowName(const char* value) { m_shadowNameHasBeenSet = true; m_shadowName.assign(value); }
-
-    /**
-     * <p>The name of the shadow.</p>
-     */
-    inline DeleteThingShadowRequest& WithShadowName(const Aws::String& value) { SetShadowName(value); return *this;}
-
-    /**
-     * <p>The name of the shadow.</p>
-     */
-    inline DeleteThingShadowRequest& WithShadowName(Aws::String&& value) { SetShadowName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the shadow.</p>
-     */
-    inline DeleteThingShadowRequest& WithShadowName(const char* value) { SetShadowName(value); return *this;}
-
+    template<typename ShadowNameT = Aws::String>
+    void SetShadowName(ShadowNameT&& value) { m_shadowNameHasBeenSet = true; m_shadowName = std::forward<ShadowNameT>(value); }
+    template<typename ShadowNameT = Aws::String>
+    DeleteThingShadowRequest& WithShadowName(ShadowNameT&& value) { SetShadowName(std::forward<ShadowNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_thingName;

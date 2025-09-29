@@ -26,7 +26,7 @@ namespace Model
   class CreateImportJobRequest : public SESV2Request
   {
   public:
-    AWS_SESV2_API CreateImportJobRequest();
+    AWS_SESV2_API CreateImportJobRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,67 +37,29 @@ namespace Model
     AWS_SESV2_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The destination for the import job.</p>
      */
-    inline const ImportDestination& GetImportDestination() const{ return m_importDestination; }
-
-    /**
-     * <p>The destination for the import job.</p>
-     */
+    inline const ImportDestination& GetImportDestination() const { return m_importDestination; }
     inline bool ImportDestinationHasBeenSet() const { return m_importDestinationHasBeenSet; }
+    template<typename ImportDestinationT = ImportDestination>
+    void SetImportDestination(ImportDestinationT&& value) { m_importDestinationHasBeenSet = true; m_importDestination = std::forward<ImportDestinationT>(value); }
+    template<typename ImportDestinationT = ImportDestination>
+    CreateImportJobRequest& WithImportDestination(ImportDestinationT&& value) { SetImportDestination(std::forward<ImportDestinationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The destination for the import job.</p>
-     */
-    inline void SetImportDestination(const ImportDestination& value) { m_importDestinationHasBeenSet = true; m_importDestination = value; }
-
-    /**
-     * <p>The destination for the import job.</p>
-     */
-    inline void SetImportDestination(ImportDestination&& value) { m_importDestinationHasBeenSet = true; m_importDestination = std::move(value); }
-
-    /**
-     * <p>The destination for the import job.</p>
-     */
-    inline CreateImportJobRequest& WithImportDestination(const ImportDestination& value) { SetImportDestination(value); return *this;}
-
-    /**
-     * <p>The destination for the import job.</p>
-     */
-    inline CreateImportJobRequest& WithImportDestination(ImportDestination&& value) { SetImportDestination(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The data source for the import job.</p>
      */
-    inline const ImportDataSource& GetImportDataSource() const{ return m_importDataSource; }
-
-    /**
-     * <p>The data source for the import job.</p>
-     */
+    inline const ImportDataSource& GetImportDataSource() const { return m_importDataSource; }
     inline bool ImportDataSourceHasBeenSet() const { return m_importDataSourceHasBeenSet; }
-
-    /**
-     * <p>The data source for the import job.</p>
-     */
-    inline void SetImportDataSource(const ImportDataSource& value) { m_importDataSourceHasBeenSet = true; m_importDataSource = value; }
-
-    /**
-     * <p>The data source for the import job.</p>
-     */
-    inline void SetImportDataSource(ImportDataSource&& value) { m_importDataSourceHasBeenSet = true; m_importDataSource = std::move(value); }
-
-    /**
-     * <p>The data source for the import job.</p>
-     */
-    inline CreateImportJobRequest& WithImportDataSource(const ImportDataSource& value) { SetImportDataSource(value); return *this;}
-
-    /**
-     * <p>The data source for the import job.</p>
-     */
-    inline CreateImportJobRequest& WithImportDataSource(ImportDataSource&& value) { SetImportDataSource(std::move(value)); return *this;}
-
+    template<typename ImportDataSourceT = ImportDataSource>
+    void SetImportDataSource(ImportDataSourceT&& value) { m_importDataSourceHasBeenSet = true; m_importDataSource = std::forward<ImportDataSourceT>(value); }
+    template<typename ImportDataSourceT = ImportDataSource>
+    CreateImportJobRequest& WithImportDataSource(ImportDataSourceT&& value) { SetImportDataSource(std::forward<ImportDataSourceT>(value)); return *this;}
+    ///@}
   private:
 
     ImportDestination m_importDestination;

@@ -18,21 +18,7 @@ namespace LexModelsV2
 namespace Model
 {
 
-IntentFilter::IntentFilter() : 
-    m_name(IntentFilterName::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_valuesHasBeenSet(false),
-    m_operator(IntentFilterOperator::NOT_SET),
-    m_operatorHasBeenSet(false)
-{
-}
-
-IntentFilter::IntentFilter(JsonView jsonValue) : 
-    m_name(IntentFilterName::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_valuesHasBeenSet(false),
-    m_operator(IntentFilterOperator::NOT_SET),
-    m_operatorHasBeenSet(false)
+IntentFilter::IntentFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,10 +28,8 @@ IntentFilter& IntentFilter::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("name"))
   {
     m_name = IntentFilterNameMapper::GetIntentFilterNameForName(jsonValue.GetString("name"));
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("values"))
   {
     Aws::Utils::Array<JsonView> valuesJsonList = jsonValue.GetArray("values");
@@ -55,14 +39,11 @@ IntentFilter& IntentFilter::operator =(JsonView jsonValue)
     }
     m_valuesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("operator"))
   {
     m_operator = IntentFilterOperatorMapper::GetIntentFilterOperatorForName(jsonValue.GetString("operator"));
-
     m_operatorHasBeenSet = true;
   }
-
   return *this;
 }
 

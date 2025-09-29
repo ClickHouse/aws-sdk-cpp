@@ -21,7 +21,7 @@ namespace Model
   class UpdateSubscriptionRequestRequest : public DataZoneRequest
   {
   public:
-    AWS_DATAZONE_API UpdateSubscriptionRequestRequest();
+    AWS_DATAZONE_API UpdateSubscriptionRequestRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,136 +32,42 @@ namespace Model
     AWS_DATAZONE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The identifier of the Amazon DataZone domain in which a subscription request
      * is to be updated.</p>
      */
-    inline const Aws::String& GetDomainIdentifier() const{ return m_domainIdentifier; }
-
-    /**
-     * <p>The identifier of the Amazon DataZone domain in which a subscription request
-     * is to be updated.</p>
-     */
+    inline const Aws::String& GetDomainIdentifier() const { return m_domainIdentifier; }
     inline bool DomainIdentifierHasBeenSet() const { return m_domainIdentifierHasBeenSet; }
+    template<typename DomainIdentifierT = Aws::String>
+    void SetDomainIdentifier(DomainIdentifierT&& value) { m_domainIdentifierHasBeenSet = true; m_domainIdentifier = std::forward<DomainIdentifierT>(value); }
+    template<typename DomainIdentifierT = Aws::String>
+    UpdateSubscriptionRequestRequest& WithDomainIdentifier(DomainIdentifierT&& value) { SetDomainIdentifier(std::forward<DomainIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the Amazon DataZone domain in which a subscription request
-     * is to be updated.</p>
-     */
-    inline void SetDomainIdentifier(const Aws::String& value) { m_domainIdentifierHasBeenSet = true; m_domainIdentifier = value; }
-
-    /**
-     * <p>The identifier of the Amazon DataZone domain in which a subscription request
-     * is to be updated.</p>
-     */
-    inline void SetDomainIdentifier(Aws::String&& value) { m_domainIdentifierHasBeenSet = true; m_domainIdentifier = std::move(value); }
-
-    /**
-     * <p>The identifier of the Amazon DataZone domain in which a subscription request
-     * is to be updated.</p>
-     */
-    inline void SetDomainIdentifier(const char* value) { m_domainIdentifierHasBeenSet = true; m_domainIdentifier.assign(value); }
-
-    /**
-     * <p>The identifier of the Amazon DataZone domain in which a subscription request
-     * is to be updated.</p>
-     */
-    inline UpdateSubscriptionRequestRequest& WithDomainIdentifier(const Aws::String& value) { SetDomainIdentifier(value); return *this;}
-
-    /**
-     * <p>The identifier of the Amazon DataZone domain in which a subscription request
-     * is to be updated.</p>
-     */
-    inline UpdateSubscriptionRequestRequest& WithDomainIdentifier(Aws::String&& value) { SetDomainIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the Amazon DataZone domain in which a subscription request
-     * is to be updated.</p>
-     */
-    inline UpdateSubscriptionRequestRequest& WithDomainIdentifier(const char* value) { SetDomainIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the subscription request that is to be updated.</p>
      */
-    inline const Aws::String& GetIdentifier() const{ return m_identifier; }
-
-    /**
-     * <p>The identifier of the subscription request that is to be updated.</p>
-     */
+    inline const Aws::String& GetIdentifier() const { return m_identifier; }
     inline bool IdentifierHasBeenSet() const { return m_identifierHasBeenSet; }
+    template<typename IdentifierT = Aws::String>
+    void SetIdentifier(IdentifierT&& value) { m_identifierHasBeenSet = true; m_identifier = std::forward<IdentifierT>(value); }
+    template<typename IdentifierT = Aws::String>
+    UpdateSubscriptionRequestRequest& WithIdentifier(IdentifierT&& value) { SetIdentifier(std::forward<IdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the subscription request that is to be updated.</p>
-     */
-    inline void SetIdentifier(const Aws::String& value) { m_identifierHasBeenSet = true; m_identifier = value; }
-
-    /**
-     * <p>The identifier of the subscription request that is to be updated.</p>
-     */
-    inline void SetIdentifier(Aws::String&& value) { m_identifierHasBeenSet = true; m_identifier = std::move(value); }
-
-    /**
-     * <p>The identifier of the subscription request that is to be updated.</p>
-     */
-    inline void SetIdentifier(const char* value) { m_identifierHasBeenSet = true; m_identifier.assign(value); }
-
-    /**
-     * <p>The identifier of the subscription request that is to be updated.</p>
-     */
-    inline UpdateSubscriptionRequestRequest& WithIdentifier(const Aws::String& value) { SetIdentifier(value); return *this;}
-
-    /**
-     * <p>The identifier of the subscription request that is to be updated.</p>
-     */
-    inline UpdateSubscriptionRequestRequest& WithIdentifier(Aws::String&& value) { SetIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the subscription request that is to be updated.</p>
-     */
-    inline UpdateSubscriptionRequestRequest& WithIdentifier(const char* value) { SetIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The reason for the <code>UpdateSubscriptionRequest</code> action.</p>
      */
-    inline const Aws::String& GetRequestReason() const{ return m_requestReason; }
-
-    /**
-     * <p>The reason for the <code>UpdateSubscriptionRequest</code> action.</p>
-     */
+    inline const Aws::String& GetRequestReason() const { return m_requestReason; }
     inline bool RequestReasonHasBeenSet() const { return m_requestReasonHasBeenSet; }
-
-    /**
-     * <p>The reason for the <code>UpdateSubscriptionRequest</code> action.</p>
-     */
-    inline void SetRequestReason(const Aws::String& value) { m_requestReasonHasBeenSet = true; m_requestReason = value; }
-
-    /**
-     * <p>The reason for the <code>UpdateSubscriptionRequest</code> action.</p>
-     */
-    inline void SetRequestReason(Aws::String&& value) { m_requestReasonHasBeenSet = true; m_requestReason = std::move(value); }
-
-    /**
-     * <p>The reason for the <code>UpdateSubscriptionRequest</code> action.</p>
-     */
-    inline void SetRequestReason(const char* value) { m_requestReasonHasBeenSet = true; m_requestReason.assign(value); }
-
-    /**
-     * <p>The reason for the <code>UpdateSubscriptionRequest</code> action.</p>
-     */
-    inline UpdateSubscriptionRequestRequest& WithRequestReason(const Aws::String& value) { SetRequestReason(value); return *this;}
-
-    /**
-     * <p>The reason for the <code>UpdateSubscriptionRequest</code> action.</p>
-     */
-    inline UpdateSubscriptionRequestRequest& WithRequestReason(Aws::String&& value) { SetRequestReason(std::move(value)); return *this;}
-
-    /**
-     * <p>The reason for the <code>UpdateSubscriptionRequest</code> action.</p>
-     */
-    inline UpdateSubscriptionRequestRequest& WithRequestReason(const char* value) { SetRequestReason(value); return *this;}
-
+    template<typename RequestReasonT = Aws::String>
+    void SetRequestReason(RequestReasonT&& value) { m_requestReasonHasBeenSet = true; m_requestReason = std::forward<RequestReasonT>(value); }
+    template<typename RequestReasonT = Aws::String>
+    UpdateSubscriptionRequestRequest& WithRequestReason(RequestReasonT&& value) { SetRequestReason(std::forward<RequestReasonT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_domainIdentifier;

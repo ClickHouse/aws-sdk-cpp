@@ -21,7 +21,7 @@ namespace Model
   class DescribeFlowSourceMetadataRequest : public MediaConnectRequest
   {
   public:
-    AWS_MEDIACONNECT_API DescribeFlowSourceMetadataRequest();
+    AWS_MEDIACONNECT_API DescribeFlowSourceMetadataRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_MEDIACONNECT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
-     * The Amazon Resource Name (ARN) of the flow.
+     * <p> The Amazon Resource Name (ARN) of the flow.</p>
      */
-    inline const Aws::String& GetFlowArn() const{ return m_flowArn; }
-
-    /**
-     * The Amazon Resource Name (ARN) of the flow.
-     */
+    inline const Aws::String& GetFlowArn() const { return m_flowArn; }
     inline bool FlowArnHasBeenSet() const { return m_flowArnHasBeenSet; }
-
-    /**
-     * The Amazon Resource Name (ARN) of the flow.
-     */
-    inline void SetFlowArn(const Aws::String& value) { m_flowArnHasBeenSet = true; m_flowArn = value; }
-
-    /**
-     * The Amazon Resource Name (ARN) of the flow.
-     */
-    inline void SetFlowArn(Aws::String&& value) { m_flowArnHasBeenSet = true; m_flowArn = std::move(value); }
-
-    /**
-     * The Amazon Resource Name (ARN) of the flow.
-     */
-    inline void SetFlowArn(const char* value) { m_flowArnHasBeenSet = true; m_flowArn.assign(value); }
-
-    /**
-     * The Amazon Resource Name (ARN) of the flow.
-     */
-    inline DescribeFlowSourceMetadataRequest& WithFlowArn(const Aws::String& value) { SetFlowArn(value); return *this;}
-
-    /**
-     * The Amazon Resource Name (ARN) of the flow.
-     */
-    inline DescribeFlowSourceMetadataRequest& WithFlowArn(Aws::String&& value) { SetFlowArn(std::move(value)); return *this;}
-
-    /**
-     * The Amazon Resource Name (ARN) of the flow.
-     */
-    inline DescribeFlowSourceMetadataRequest& WithFlowArn(const char* value) { SetFlowArn(value); return *this;}
-
+    template<typename FlowArnT = Aws::String>
+    void SetFlowArn(FlowArnT&& value) { m_flowArnHasBeenSet = true; m_flowArn = std::forward<FlowArnT>(value); }
+    template<typename FlowArnT = Aws::String>
+    DescribeFlowSourceMetadataRequest& WithFlowArn(FlowArnT&& value) { SetFlowArn(std::forward<FlowArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_flowArn;

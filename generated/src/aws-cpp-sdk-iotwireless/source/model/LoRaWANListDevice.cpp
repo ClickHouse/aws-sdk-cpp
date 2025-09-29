@@ -18,13 +18,7 @@ namespace IoTWireless
 namespace Model
 {
 
-LoRaWANListDevice::LoRaWANListDevice() : 
-    m_devEuiHasBeenSet(false)
-{
-}
-
-LoRaWANListDevice::LoRaWANListDevice(JsonView jsonValue) : 
-    m_devEuiHasBeenSet(false)
+LoRaWANListDevice::LoRaWANListDevice(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ LoRaWANListDevice& LoRaWANListDevice::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("DevEui"))
   {
     m_devEui = jsonValue.GetString("DevEui");
-
     m_devEuiHasBeenSet = true;
   }
-
   return *this;
 }
 

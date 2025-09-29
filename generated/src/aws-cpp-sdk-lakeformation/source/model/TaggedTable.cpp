@@ -18,19 +18,7 @@ namespace LakeFormation
 namespace Model
 {
 
-TaggedTable::TaggedTable() : 
-    m_tableHasBeenSet(false),
-    m_lFTagOnDatabaseHasBeenSet(false),
-    m_lFTagsOnTableHasBeenSet(false),
-    m_lFTagsOnColumnsHasBeenSet(false)
-{
-}
-
-TaggedTable::TaggedTable(JsonView jsonValue) : 
-    m_tableHasBeenSet(false),
-    m_lFTagOnDatabaseHasBeenSet(false),
-    m_lFTagsOnTableHasBeenSet(false),
-    m_lFTagsOnColumnsHasBeenSet(false)
+TaggedTable::TaggedTable(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,10 +28,8 @@ TaggedTable& TaggedTable::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Table"))
   {
     m_table = jsonValue.GetObject("Table");
-
     m_tableHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LFTagOnDatabase"))
   {
     Aws::Utils::Array<JsonView> lFTagOnDatabaseJsonList = jsonValue.GetArray("LFTagOnDatabase");
@@ -53,7 +39,6 @@ TaggedTable& TaggedTable::operator =(JsonView jsonValue)
     }
     m_lFTagOnDatabaseHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LFTagsOnTable"))
   {
     Aws::Utils::Array<JsonView> lFTagsOnTableJsonList = jsonValue.GetArray("LFTagsOnTable");
@@ -63,7 +48,6 @@ TaggedTable& TaggedTable::operator =(JsonView jsonValue)
     }
     m_lFTagsOnTableHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LFTagsOnColumns"))
   {
     Aws::Utils::Array<JsonView> lFTagsOnColumnsJsonList = jsonValue.GetArray("LFTagsOnColumns");
@@ -73,7 +57,6 @@ TaggedTable& TaggedTable::operator =(JsonView jsonValue)
     }
     m_lFTagsOnColumnsHasBeenSet = true;
   }
-
   return *this;
 }
 

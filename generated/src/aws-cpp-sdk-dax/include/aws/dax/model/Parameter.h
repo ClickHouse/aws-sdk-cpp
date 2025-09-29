@@ -37,423 +37,137 @@ namespace Model
   class Parameter
   {
   public:
-    AWS_DAX_API Parameter();
+    AWS_DAX_API Parameter() = default;
     AWS_DAX_API Parameter(Aws::Utils::Json::JsonView jsonValue);
     AWS_DAX_API Parameter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DAX_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the parameter.</p>
      */
-    inline const Aws::String& GetParameterName() const{ return m_parameterName; }
-
-    /**
-     * <p>The name of the parameter.</p>
-     */
+    inline const Aws::String& GetParameterName() const { return m_parameterName; }
     inline bool ParameterNameHasBeenSet() const { return m_parameterNameHasBeenSet; }
+    template<typename ParameterNameT = Aws::String>
+    void SetParameterName(ParameterNameT&& value) { m_parameterNameHasBeenSet = true; m_parameterName = std::forward<ParameterNameT>(value); }
+    template<typename ParameterNameT = Aws::String>
+    Parameter& WithParameterName(ParameterNameT&& value) { SetParameterName(std::forward<ParameterNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the parameter.</p>
-     */
-    inline void SetParameterName(const Aws::String& value) { m_parameterNameHasBeenSet = true; m_parameterName = value; }
-
-    /**
-     * <p>The name of the parameter.</p>
-     */
-    inline void SetParameterName(Aws::String&& value) { m_parameterNameHasBeenSet = true; m_parameterName = std::move(value); }
-
-    /**
-     * <p>The name of the parameter.</p>
-     */
-    inline void SetParameterName(const char* value) { m_parameterNameHasBeenSet = true; m_parameterName.assign(value); }
-
-    /**
-     * <p>The name of the parameter.</p>
-     */
-    inline Parameter& WithParameterName(const Aws::String& value) { SetParameterName(value); return *this;}
-
-    /**
-     * <p>The name of the parameter.</p>
-     */
-    inline Parameter& WithParameterName(Aws::String&& value) { SetParameterName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the parameter.</p>
-     */
-    inline Parameter& WithParameterName(const char* value) { SetParameterName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Determines whether the parameter can be applied to any nodes, or only nodes
      * of a particular type.</p>
      */
-    inline const ParameterType& GetParameterType() const{ return m_parameterType; }
-
-    /**
-     * <p>Determines whether the parameter can be applied to any nodes, or only nodes
-     * of a particular type.</p>
-     */
+    inline ParameterType GetParameterType() const { return m_parameterType; }
     inline bool ParameterTypeHasBeenSet() const { return m_parameterTypeHasBeenSet; }
+    inline void SetParameterType(ParameterType value) { m_parameterTypeHasBeenSet = true; m_parameterType = value; }
+    inline Parameter& WithParameterType(ParameterType value) { SetParameterType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Determines whether the parameter can be applied to any nodes, or only nodes
-     * of a particular type.</p>
-     */
-    inline void SetParameterType(const ParameterType& value) { m_parameterTypeHasBeenSet = true; m_parameterType = value; }
-
-    /**
-     * <p>Determines whether the parameter can be applied to any nodes, or only nodes
-     * of a particular type.</p>
-     */
-    inline void SetParameterType(ParameterType&& value) { m_parameterTypeHasBeenSet = true; m_parameterType = std::move(value); }
-
-    /**
-     * <p>Determines whether the parameter can be applied to any nodes, or only nodes
-     * of a particular type.</p>
-     */
-    inline Parameter& WithParameterType(const ParameterType& value) { SetParameterType(value); return *this;}
-
-    /**
-     * <p>Determines whether the parameter can be applied to any nodes, or only nodes
-     * of a particular type.</p>
-     */
-    inline Parameter& WithParameterType(ParameterType&& value) { SetParameterType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The value for the parameter.</p>
      */
-    inline const Aws::String& GetParameterValue() const{ return m_parameterValue; }
-
-    /**
-     * <p>The value for the parameter.</p>
-     */
+    inline const Aws::String& GetParameterValue() const { return m_parameterValue; }
     inline bool ParameterValueHasBeenSet() const { return m_parameterValueHasBeenSet; }
+    template<typename ParameterValueT = Aws::String>
+    void SetParameterValue(ParameterValueT&& value) { m_parameterValueHasBeenSet = true; m_parameterValue = std::forward<ParameterValueT>(value); }
+    template<typename ParameterValueT = Aws::String>
+    Parameter& WithParameterValue(ParameterValueT&& value) { SetParameterValue(std::forward<ParameterValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The value for the parameter.</p>
-     */
-    inline void SetParameterValue(const Aws::String& value) { m_parameterValueHasBeenSet = true; m_parameterValue = value; }
-
-    /**
-     * <p>The value for the parameter.</p>
-     */
-    inline void SetParameterValue(Aws::String&& value) { m_parameterValueHasBeenSet = true; m_parameterValue = std::move(value); }
-
-    /**
-     * <p>The value for the parameter.</p>
-     */
-    inline void SetParameterValue(const char* value) { m_parameterValueHasBeenSet = true; m_parameterValue.assign(value); }
-
-    /**
-     * <p>The value for the parameter.</p>
-     */
-    inline Parameter& WithParameterValue(const Aws::String& value) { SetParameterValue(value); return *this;}
-
-    /**
-     * <p>The value for the parameter.</p>
-     */
-    inline Parameter& WithParameterValue(Aws::String&& value) { SetParameterValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The value for the parameter.</p>
-     */
-    inline Parameter& WithParameterValue(const char* value) { SetParameterValue(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of node types, and specific parameter values for each node.</p>
      */
-    inline const Aws::Vector<NodeTypeSpecificValue>& GetNodeTypeSpecificValues() const{ return m_nodeTypeSpecificValues; }
-
-    /**
-     * <p>A list of node types, and specific parameter values for each node.</p>
-     */
+    inline const Aws::Vector<NodeTypeSpecificValue>& GetNodeTypeSpecificValues() const { return m_nodeTypeSpecificValues; }
     inline bool NodeTypeSpecificValuesHasBeenSet() const { return m_nodeTypeSpecificValuesHasBeenSet; }
+    template<typename NodeTypeSpecificValuesT = Aws::Vector<NodeTypeSpecificValue>>
+    void SetNodeTypeSpecificValues(NodeTypeSpecificValuesT&& value) { m_nodeTypeSpecificValuesHasBeenSet = true; m_nodeTypeSpecificValues = std::forward<NodeTypeSpecificValuesT>(value); }
+    template<typename NodeTypeSpecificValuesT = Aws::Vector<NodeTypeSpecificValue>>
+    Parameter& WithNodeTypeSpecificValues(NodeTypeSpecificValuesT&& value) { SetNodeTypeSpecificValues(std::forward<NodeTypeSpecificValuesT>(value)); return *this;}
+    template<typename NodeTypeSpecificValuesT = NodeTypeSpecificValue>
+    Parameter& AddNodeTypeSpecificValues(NodeTypeSpecificValuesT&& value) { m_nodeTypeSpecificValuesHasBeenSet = true; m_nodeTypeSpecificValues.emplace_back(std::forward<NodeTypeSpecificValuesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of node types, and specific parameter values for each node.</p>
-     */
-    inline void SetNodeTypeSpecificValues(const Aws::Vector<NodeTypeSpecificValue>& value) { m_nodeTypeSpecificValuesHasBeenSet = true; m_nodeTypeSpecificValues = value; }
-
-    /**
-     * <p>A list of node types, and specific parameter values for each node.</p>
-     */
-    inline void SetNodeTypeSpecificValues(Aws::Vector<NodeTypeSpecificValue>&& value) { m_nodeTypeSpecificValuesHasBeenSet = true; m_nodeTypeSpecificValues = std::move(value); }
-
-    /**
-     * <p>A list of node types, and specific parameter values for each node.</p>
-     */
-    inline Parameter& WithNodeTypeSpecificValues(const Aws::Vector<NodeTypeSpecificValue>& value) { SetNodeTypeSpecificValues(value); return *this;}
-
-    /**
-     * <p>A list of node types, and specific parameter values for each node.</p>
-     */
-    inline Parameter& WithNodeTypeSpecificValues(Aws::Vector<NodeTypeSpecificValue>&& value) { SetNodeTypeSpecificValues(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of node types, and specific parameter values for each node.</p>
-     */
-    inline Parameter& AddNodeTypeSpecificValues(const NodeTypeSpecificValue& value) { m_nodeTypeSpecificValuesHasBeenSet = true; m_nodeTypeSpecificValues.push_back(value); return *this; }
-
-    /**
-     * <p>A list of node types, and specific parameter values for each node.</p>
-     */
-    inline Parameter& AddNodeTypeSpecificValues(NodeTypeSpecificValue&& value) { m_nodeTypeSpecificValuesHasBeenSet = true; m_nodeTypeSpecificValues.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A description of the parameter</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>A description of the parameter</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    Parameter& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A description of the parameter</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>A description of the parameter</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>A description of the parameter</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>A description of the parameter</p>
-     */
-    inline Parameter& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A description of the parameter</p>
-     */
-    inline Parameter& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A description of the parameter</p>
-     */
-    inline Parameter& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>How the parameter is defined. For example, <code>system</code> denotes a
      * system-defined parameter.</p>
      */
-    inline const Aws::String& GetSource() const{ return m_source; }
-
-    /**
-     * <p>How the parameter is defined. For example, <code>system</code> denotes a
-     * system-defined parameter.</p>
-     */
+    inline const Aws::String& GetSource() const { return m_source; }
     inline bool SourceHasBeenSet() const { return m_sourceHasBeenSet; }
+    template<typename SourceT = Aws::String>
+    void SetSource(SourceT&& value) { m_sourceHasBeenSet = true; m_source = std::forward<SourceT>(value); }
+    template<typename SourceT = Aws::String>
+    Parameter& WithSource(SourceT&& value) { SetSource(std::forward<SourceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>How the parameter is defined. For example, <code>system</code> denotes a
-     * system-defined parameter.</p>
-     */
-    inline void SetSource(const Aws::String& value) { m_sourceHasBeenSet = true; m_source = value; }
-
-    /**
-     * <p>How the parameter is defined. For example, <code>system</code> denotes a
-     * system-defined parameter.</p>
-     */
-    inline void SetSource(Aws::String&& value) { m_sourceHasBeenSet = true; m_source = std::move(value); }
-
-    /**
-     * <p>How the parameter is defined. For example, <code>system</code> denotes a
-     * system-defined parameter.</p>
-     */
-    inline void SetSource(const char* value) { m_sourceHasBeenSet = true; m_source.assign(value); }
-
-    /**
-     * <p>How the parameter is defined. For example, <code>system</code> denotes a
-     * system-defined parameter.</p>
-     */
-    inline Parameter& WithSource(const Aws::String& value) { SetSource(value); return *this;}
-
-    /**
-     * <p>How the parameter is defined. For example, <code>system</code> denotes a
-     * system-defined parameter.</p>
-     */
-    inline Parameter& WithSource(Aws::String&& value) { SetSource(std::move(value)); return *this;}
-
-    /**
-     * <p>How the parameter is defined. For example, <code>system</code> denotes a
-     * system-defined parameter.</p>
-     */
-    inline Parameter& WithSource(const char* value) { SetSource(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The data type of the parameter. For example, <code>integer</code>:</p>
      */
-    inline const Aws::String& GetDataType() const{ return m_dataType; }
-
-    /**
-     * <p>The data type of the parameter. For example, <code>integer</code>:</p>
-     */
+    inline const Aws::String& GetDataType() const { return m_dataType; }
     inline bool DataTypeHasBeenSet() const { return m_dataTypeHasBeenSet; }
+    template<typename DataTypeT = Aws::String>
+    void SetDataType(DataTypeT&& value) { m_dataTypeHasBeenSet = true; m_dataType = std::forward<DataTypeT>(value); }
+    template<typename DataTypeT = Aws::String>
+    Parameter& WithDataType(DataTypeT&& value) { SetDataType(std::forward<DataTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The data type of the parameter. For example, <code>integer</code>:</p>
-     */
-    inline void SetDataType(const Aws::String& value) { m_dataTypeHasBeenSet = true; m_dataType = value; }
-
-    /**
-     * <p>The data type of the parameter. For example, <code>integer</code>:</p>
-     */
-    inline void SetDataType(Aws::String&& value) { m_dataTypeHasBeenSet = true; m_dataType = std::move(value); }
-
-    /**
-     * <p>The data type of the parameter. For example, <code>integer</code>:</p>
-     */
-    inline void SetDataType(const char* value) { m_dataTypeHasBeenSet = true; m_dataType.assign(value); }
-
-    /**
-     * <p>The data type of the parameter. For example, <code>integer</code>:</p>
-     */
-    inline Parameter& WithDataType(const Aws::String& value) { SetDataType(value); return *this;}
-
-    /**
-     * <p>The data type of the parameter. For example, <code>integer</code>:</p>
-     */
-    inline Parameter& WithDataType(Aws::String&& value) { SetDataType(std::move(value)); return *this;}
-
-    /**
-     * <p>The data type of the parameter. For example, <code>integer</code>:</p>
-     */
-    inline Parameter& WithDataType(const char* value) { SetDataType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A range of values within which the parameter can be set.</p>
      */
-    inline const Aws::String& GetAllowedValues() const{ return m_allowedValues; }
-
-    /**
-     * <p>A range of values within which the parameter can be set.</p>
-     */
+    inline const Aws::String& GetAllowedValues() const { return m_allowedValues; }
     inline bool AllowedValuesHasBeenSet() const { return m_allowedValuesHasBeenSet; }
+    template<typename AllowedValuesT = Aws::String>
+    void SetAllowedValues(AllowedValuesT&& value) { m_allowedValuesHasBeenSet = true; m_allowedValues = std::forward<AllowedValuesT>(value); }
+    template<typename AllowedValuesT = Aws::String>
+    Parameter& WithAllowedValues(AllowedValuesT&& value) { SetAllowedValues(std::forward<AllowedValuesT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A range of values within which the parameter can be set.</p>
-     */
-    inline void SetAllowedValues(const Aws::String& value) { m_allowedValuesHasBeenSet = true; m_allowedValues = value; }
-
-    /**
-     * <p>A range of values within which the parameter can be set.</p>
-     */
-    inline void SetAllowedValues(Aws::String&& value) { m_allowedValuesHasBeenSet = true; m_allowedValues = std::move(value); }
-
-    /**
-     * <p>A range of values within which the parameter can be set.</p>
-     */
-    inline void SetAllowedValues(const char* value) { m_allowedValuesHasBeenSet = true; m_allowedValues.assign(value); }
-
-    /**
-     * <p>A range of values within which the parameter can be set.</p>
-     */
-    inline Parameter& WithAllowedValues(const Aws::String& value) { SetAllowedValues(value); return *this;}
-
-    /**
-     * <p>A range of values within which the parameter can be set.</p>
-     */
-    inline Parameter& WithAllowedValues(Aws::String&& value) { SetAllowedValues(std::move(value)); return *this;}
-
-    /**
-     * <p>A range of values within which the parameter can be set.</p>
-     */
-    inline Parameter& WithAllowedValues(const char* value) { SetAllowedValues(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Whether the customer is allowed to modify the parameter.</p>
      */
-    inline const IsModifiable& GetIsModifiable() const{ return m_isModifiable; }
-
-    /**
-     * <p>Whether the customer is allowed to modify the parameter.</p>
-     */
+    inline IsModifiable GetIsModifiable() const { return m_isModifiable; }
     inline bool IsModifiableHasBeenSet() const { return m_isModifiableHasBeenSet; }
+    inline void SetIsModifiable(IsModifiable value) { m_isModifiableHasBeenSet = true; m_isModifiable = value; }
+    inline Parameter& WithIsModifiable(IsModifiable value) { SetIsModifiable(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Whether the customer is allowed to modify the parameter.</p>
-     */
-    inline void SetIsModifiable(const IsModifiable& value) { m_isModifiableHasBeenSet = true; m_isModifiable = value; }
-
-    /**
-     * <p>Whether the customer is allowed to modify the parameter.</p>
-     */
-    inline void SetIsModifiable(IsModifiable&& value) { m_isModifiableHasBeenSet = true; m_isModifiable = std::move(value); }
-
-    /**
-     * <p>Whether the customer is allowed to modify the parameter.</p>
-     */
-    inline Parameter& WithIsModifiable(const IsModifiable& value) { SetIsModifiable(value); return *this;}
-
-    /**
-     * <p>Whether the customer is allowed to modify the parameter.</p>
-     */
-    inline Parameter& WithIsModifiable(IsModifiable&& value) { SetIsModifiable(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The conditions under which changes to this parameter can be applied. For
      * example, <code>requires-reboot</code> indicates that a new value for this
      * parameter will only take effect if a node is rebooted.</p>
      */
-    inline const ChangeType& GetChangeType() const{ return m_changeType; }
-
-    /**
-     * <p>The conditions under which changes to this parameter can be applied. For
-     * example, <code>requires-reboot</code> indicates that a new value for this
-     * parameter will only take effect if a node is rebooted.</p>
-     */
+    inline ChangeType GetChangeType() const { return m_changeType; }
     inline bool ChangeTypeHasBeenSet() const { return m_changeTypeHasBeenSet; }
-
-    /**
-     * <p>The conditions under which changes to this parameter can be applied. For
-     * example, <code>requires-reboot</code> indicates that a new value for this
-     * parameter will only take effect if a node is rebooted.</p>
-     */
-    inline void SetChangeType(const ChangeType& value) { m_changeTypeHasBeenSet = true; m_changeType = value; }
-
-    /**
-     * <p>The conditions under which changes to this parameter can be applied. For
-     * example, <code>requires-reboot</code> indicates that a new value for this
-     * parameter will only take effect if a node is rebooted.</p>
-     */
-    inline void SetChangeType(ChangeType&& value) { m_changeTypeHasBeenSet = true; m_changeType = std::move(value); }
-
-    /**
-     * <p>The conditions under which changes to this parameter can be applied. For
-     * example, <code>requires-reboot</code> indicates that a new value for this
-     * parameter will only take effect if a node is rebooted.</p>
-     */
-    inline Parameter& WithChangeType(const ChangeType& value) { SetChangeType(value); return *this;}
-
-    /**
-     * <p>The conditions under which changes to this parameter can be applied. For
-     * example, <code>requires-reboot</code> indicates that a new value for this
-     * parameter will only take effect if a node is rebooted.</p>
-     */
-    inline Parameter& WithChangeType(ChangeType&& value) { SetChangeType(std::move(value)); return *this;}
-
+    inline void SetChangeType(ChangeType value) { m_changeTypeHasBeenSet = true; m_changeType = value; }
+    inline Parameter& WithChangeType(ChangeType value) { SetChangeType(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_parameterName;
     bool m_parameterNameHasBeenSet = false;
 
-    ParameterType m_parameterType;
+    ParameterType m_parameterType{ParameterType::NOT_SET};
     bool m_parameterTypeHasBeenSet = false;
 
     Aws::String m_parameterValue;
@@ -474,10 +188,10 @@ namespace Model
     Aws::String m_allowedValues;
     bool m_allowedValuesHasBeenSet = false;
 
-    IsModifiable m_isModifiable;
+    IsModifiable m_isModifiable{IsModifiable::NOT_SET};
     bool m_isModifiableHasBeenSet = false;
 
-    ChangeType m_changeType;
+    ChangeType m_changeType{ChangeType::NOT_SET};
     bool m_changeTypeHasBeenSet = false;
   };
 

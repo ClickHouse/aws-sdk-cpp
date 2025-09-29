@@ -23,7 +23,7 @@ namespace Model
   class CompleteMultipartReadSetUploadRequest : public OmicsRequest
   {
   public:
-    AWS_OMICS_API CompleteMultipartReadSetUploadRequest();
+    AWS_OMICS_API CompleteMultipartReadSetUploadRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,128 +34,43 @@ namespace Model
     AWS_OMICS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
-     * <p> The sequence store ID for the store involved in the multipart upload. </p>
+     * <p>The sequence store ID for the store involved in the multipart upload.</p>
      */
-    inline const Aws::String& GetSequenceStoreId() const{ return m_sequenceStoreId; }
-
-    /**
-     * <p> The sequence store ID for the store involved in the multipart upload. </p>
-     */
+    inline const Aws::String& GetSequenceStoreId() const { return m_sequenceStoreId; }
     inline bool SequenceStoreIdHasBeenSet() const { return m_sequenceStoreIdHasBeenSet; }
+    template<typename SequenceStoreIdT = Aws::String>
+    void SetSequenceStoreId(SequenceStoreIdT&& value) { m_sequenceStoreIdHasBeenSet = true; m_sequenceStoreId = std::forward<SequenceStoreIdT>(value); }
+    template<typename SequenceStoreIdT = Aws::String>
+    CompleteMultipartReadSetUploadRequest& WithSequenceStoreId(SequenceStoreIdT&& value) { SetSequenceStoreId(std::forward<SequenceStoreIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p> The sequence store ID for the store involved in the multipart upload. </p>
+     * <p>The ID for the multipart upload.</p>
      */
-    inline void SetSequenceStoreId(const Aws::String& value) { m_sequenceStoreIdHasBeenSet = true; m_sequenceStoreId = value; }
-
-    /**
-     * <p> The sequence store ID for the store involved in the multipart upload. </p>
-     */
-    inline void SetSequenceStoreId(Aws::String&& value) { m_sequenceStoreIdHasBeenSet = true; m_sequenceStoreId = std::move(value); }
-
-    /**
-     * <p> The sequence store ID for the store involved in the multipart upload. </p>
-     */
-    inline void SetSequenceStoreId(const char* value) { m_sequenceStoreIdHasBeenSet = true; m_sequenceStoreId.assign(value); }
-
-    /**
-     * <p> The sequence store ID for the store involved in the multipart upload. </p>
-     */
-    inline CompleteMultipartReadSetUploadRequest& WithSequenceStoreId(const Aws::String& value) { SetSequenceStoreId(value); return *this;}
-
-    /**
-     * <p> The sequence store ID for the store involved in the multipart upload. </p>
-     */
-    inline CompleteMultipartReadSetUploadRequest& WithSequenceStoreId(Aws::String&& value) { SetSequenceStoreId(std::move(value)); return *this;}
-
-    /**
-     * <p> The sequence store ID for the store involved in the multipart upload. </p>
-     */
-    inline CompleteMultipartReadSetUploadRequest& WithSequenceStoreId(const char* value) { SetSequenceStoreId(value); return *this;}
-
-
-    /**
-     * <p> The ID for the multipart upload. </p>
-     */
-    inline const Aws::String& GetUploadId() const{ return m_uploadId; }
-
-    /**
-     * <p> The ID for the multipart upload. </p>
-     */
+    inline const Aws::String& GetUploadId() const { return m_uploadId; }
     inline bool UploadIdHasBeenSet() const { return m_uploadIdHasBeenSet; }
+    template<typename UploadIdT = Aws::String>
+    void SetUploadId(UploadIdT&& value) { m_uploadIdHasBeenSet = true; m_uploadId = std::forward<UploadIdT>(value); }
+    template<typename UploadIdT = Aws::String>
+    CompleteMultipartReadSetUploadRequest& WithUploadId(UploadIdT&& value) { SetUploadId(std::forward<UploadIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p> The ID for the multipart upload. </p>
+     * <p>The individual uploads or parts of a multipart upload.</p>
      */
-    inline void SetUploadId(const Aws::String& value) { m_uploadIdHasBeenSet = true; m_uploadId = value; }
-
-    /**
-     * <p> The ID for the multipart upload. </p>
-     */
-    inline void SetUploadId(Aws::String&& value) { m_uploadIdHasBeenSet = true; m_uploadId = std::move(value); }
-
-    /**
-     * <p> The ID for the multipart upload. </p>
-     */
-    inline void SetUploadId(const char* value) { m_uploadIdHasBeenSet = true; m_uploadId.assign(value); }
-
-    /**
-     * <p> The ID for the multipart upload. </p>
-     */
-    inline CompleteMultipartReadSetUploadRequest& WithUploadId(const Aws::String& value) { SetUploadId(value); return *this;}
-
-    /**
-     * <p> The ID for the multipart upload. </p>
-     */
-    inline CompleteMultipartReadSetUploadRequest& WithUploadId(Aws::String&& value) { SetUploadId(std::move(value)); return *this;}
-
-    /**
-     * <p> The ID for the multipart upload. </p>
-     */
-    inline CompleteMultipartReadSetUploadRequest& WithUploadId(const char* value) { SetUploadId(value); return *this;}
-
-
-    /**
-     * <p> The individual uploads or parts of a multipart upload. </p>
-     */
-    inline const Aws::Vector<CompleteReadSetUploadPartListItem>& GetParts() const{ return m_parts; }
-
-    /**
-     * <p> The individual uploads or parts of a multipart upload. </p>
-     */
+    inline const Aws::Vector<CompleteReadSetUploadPartListItem>& GetParts() const { return m_parts; }
     inline bool PartsHasBeenSet() const { return m_partsHasBeenSet; }
-
-    /**
-     * <p> The individual uploads or parts of a multipart upload. </p>
-     */
-    inline void SetParts(const Aws::Vector<CompleteReadSetUploadPartListItem>& value) { m_partsHasBeenSet = true; m_parts = value; }
-
-    /**
-     * <p> The individual uploads or parts of a multipart upload. </p>
-     */
-    inline void SetParts(Aws::Vector<CompleteReadSetUploadPartListItem>&& value) { m_partsHasBeenSet = true; m_parts = std::move(value); }
-
-    /**
-     * <p> The individual uploads or parts of a multipart upload. </p>
-     */
-    inline CompleteMultipartReadSetUploadRequest& WithParts(const Aws::Vector<CompleteReadSetUploadPartListItem>& value) { SetParts(value); return *this;}
-
-    /**
-     * <p> The individual uploads or parts of a multipart upload. </p>
-     */
-    inline CompleteMultipartReadSetUploadRequest& WithParts(Aws::Vector<CompleteReadSetUploadPartListItem>&& value) { SetParts(std::move(value)); return *this;}
-
-    /**
-     * <p> The individual uploads or parts of a multipart upload. </p>
-     */
-    inline CompleteMultipartReadSetUploadRequest& AddParts(const CompleteReadSetUploadPartListItem& value) { m_partsHasBeenSet = true; m_parts.push_back(value); return *this; }
-
-    /**
-     * <p> The individual uploads or parts of a multipart upload. </p>
-     */
-    inline CompleteMultipartReadSetUploadRequest& AddParts(CompleteReadSetUploadPartListItem&& value) { m_partsHasBeenSet = true; m_parts.push_back(std::move(value)); return *this; }
-
+    template<typename PartsT = Aws::Vector<CompleteReadSetUploadPartListItem>>
+    void SetParts(PartsT&& value) { m_partsHasBeenSet = true; m_parts = std::forward<PartsT>(value); }
+    template<typename PartsT = Aws::Vector<CompleteReadSetUploadPartListItem>>
+    CompleteMultipartReadSetUploadRequest& WithParts(PartsT&& value) { SetParts(std::forward<PartsT>(value)); return *this;}
+    template<typename PartsT = CompleteReadSetUploadPartListItem>
+    CompleteMultipartReadSetUploadRequest& AddParts(PartsT&& value) { m_partsHasBeenSet = true; m_parts.emplace_back(std::forward<PartsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_sequenceStoreId;

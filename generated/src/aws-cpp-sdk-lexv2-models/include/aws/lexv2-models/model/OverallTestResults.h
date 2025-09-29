@@ -32,52 +32,25 @@ namespace Model
   class OverallTestResults
   {
   public:
-    AWS_LEXMODELSV2_API OverallTestResults();
+    AWS_LEXMODELSV2_API OverallTestResults() = default;
     AWS_LEXMODELSV2_API OverallTestResults(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API OverallTestResults& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A list of the overall test results.</p>
      */
-    inline const Aws::Vector<OverallTestResultItem>& GetItems() const{ return m_items; }
-
-    /**
-     * <p>A list of the overall test results.</p>
-     */
+    inline const Aws::Vector<OverallTestResultItem>& GetItems() const { return m_items; }
     inline bool ItemsHasBeenSet() const { return m_itemsHasBeenSet; }
-
-    /**
-     * <p>A list of the overall test results.</p>
-     */
-    inline void SetItems(const Aws::Vector<OverallTestResultItem>& value) { m_itemsHasBeenSet = true; m_items = value; }
-
-    /**
-     * <p>A list of the overall test results.</p>
-     */
-    inline void SetItems(Aws::Vector<OverallTestResultItem>&& value) { m_itemsHasBeenSet = true; m_items = std::move(value); }
-
-    /**
-     * <p>A list of the overall test results.</p>
-     */
-    inline OverallTestResults& WithItems(const Aws::Vector<OverallTestResultItem>& value) { SetItems(value); return *this;}
-
-    /**
-     * <p>A list of the overall test results.</p>
-     */
-    inline OverallTestResults& WithItems(Aws::Vector<OverallTestResultItem>&& value) { SetItems(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of the overall test results.</p>
-     */
-    inline OverallTestResults& AddItems(const OverallTestResultItem& value) { m_itemsHasBeenSet = true; m_items.push_back(value); return *this; }
-
-    /**
-     * <p>A list of the overall test results.</p>
-     */
-    inline OverallTestResults& AddItems(OverallTestResultItem&& value) { m_itemsHasBeenSet = true; m_items.push_back(std::move(value)); return *this; }
-
+    template<typename ItemsT = Aws::Vector<OverallTestResultItem>>
+    void SetItems(ItemsT&& value) { m_itemsHasBeenSet = true; m_items = std::forward<ItemsT>(value); }
+    template<typename ItemsT = Aws::Vector<OverallTestResultItem>>
+    OverallTestResults& WithItems(ItemsT&& value) { SetItems(std::forward<ItemsT>(value)); return *this;}
+    template<typename ItemsT = OverallTestResultItem>
+    OverallTestResults& AddItems(ItemsT&& value) { m_itemsHasBeenSet = true; m_items.emplace_back(std::forward<ItemsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<OverallTestResultItem> m_items;

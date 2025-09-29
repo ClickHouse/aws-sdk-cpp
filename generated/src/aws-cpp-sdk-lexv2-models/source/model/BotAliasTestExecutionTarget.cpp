@@ -18,17 +18,7 @@ namespace LexModelsV2
 namespace Model
 {
 
-BotAliasTestExecutionTarget::BotAliasTestExecutionTarget() : 
-    m_botIdHasBeenSet(false),
-    m_botAliasIdHasBeenSet(false),
-    m_localeIdHasBeenSet(false)
-{
-}
-
-BotAliasTestExecutionTarget::BotAliasTestExecutionTarget(JsonView jsonValue) : 
-    m_botIdHasBeenSet(false),
-    m_botAliasIdHasBeenSet(false),
-    m_localeIdHasBeenSet(false)
+BotAliasTestExecutionTarget::BotAliasTestExecutionTarget(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ BotAliasTestExecutionTarget& BotAliasTestExecutionTarget::operator =(JsonView js
   if(jsonValue.ValueExists("botId"))
   {
     m_botId = jsonValue.GetString("botId");
-
     m_botIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("botAliasId"))
   {
     m_botAliasId = jsonValue.GetString("botAliasId");
-
     m_botAliasIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("localeId"))
   {
     m_localeId = jsonValue.GetString("localeId");
-
     m_localeIdHasBeenSet = true;
   }
-
   return *this;
 }
 

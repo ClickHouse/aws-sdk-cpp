@@ -34,97 +34,39 @@ namespace Model
   class FirewallManagerStatement
   {
   public:
-    AWS_WAFV2_API FirewallManagerStatement();
+    AWS_WAFV2_API FirewallManagerStatement() = default;
     AWS_WAFV2_API FirewallManagerStatement(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFV2_API FirewallManagerStatement& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A statement used by Firewall Manager to run the rules that are defined in a
      * managed rule group. This is managed by Firewall Manager for an Firewall Manager
      * WAF policy.</p>
      */
-    inline const ManagedRuleGroupStatement& GetManagedRuleGroupStatement() const{ return m_managedRuleGroupStatement; }
-
-    /**
-     * <p>A statement used by Firewall Manager to run the rules that are defined in a
-     * managed rule group. This is managed by Firewall Manager for an Firewall Manager
-     * WAF policy.</p>
-     */
+    inline const ManagedRuleGroupStatement& GetManagedRuleGroupStatement() const { return m_managedRuleGroupStatement; }
     inline bool ManagedRuleGroupStatementHasBeenSet() const { return m_managedRuleGroupStatementHasBeenSet; }
+    template<typename ManagedRuleGroupStatementT = ManagedRuleGroupStatement>
+    void SetManagedRuleGroupStatement(ManagedRuleGroupStatementT&& value) { m_managedRuleGroupStatementHasBeenSet = true; m_managedRuleGroupStatement = std::forward<ManagedRuleGroupStatementT>(value); }
+    template<typename ManagedRuleGroupStatementT = ManagedRuleGroupStatement>
+    FirewallManagerStatement& WithManagedRuleGroupStatement(ManagedRuleGroupStatementT&& value) { SetManagedRuleGroupStatement(std::forward<ManagedRuleGroupStatementT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A statement used by Firewall Manager to run the rules that are defined in a
-     * managed rule group. This is managed by Firewall Manager for an Firewall Manager
-     * WAF policy.</p>
-     */
-    inline void SetManagedRuleGroupStatement(const ManagedRuleGroupStatement& value) { m_managedRuleGroupStatementHasBeenSet = true; m_managedRuleGroupStatement = value; }
-
-    /**
-     * <p>A statement used by Firewall Manager to run the rules that are defined in a
-     * managed rule group. This is managed by Firewall Manager for an Firewall Manager
-     * WAF policy.</p>
-     */
-    inline void SetManagedRuleGroupStatement(ManagedRuleGroupStatement&& value) { m_managedRuleGroupStatementHasBeenSet = true; m_managedRuleGroupStatement = std::move(value); }
-
-    /**
-     * <p>A statement used by Firewall Manager to run the rules that are defined in a
-     * managed rule group. This is managed by Firewall Manager for an Firewall Manager
-     * WAF policy.</p>
-     */
-    inline FirewallManagerStatement& WithManagedRuleGroupStatement(const ManagedRuleGroupStatement& value) { SetManagedRuleGroupStatement(value); return *this;}
-
-    /**
-     * <p>A statement used by Firewall Manager to run the rules that are defined in a
-     * managed rule group. This is managed by Firewall Manager for an Firewall Manager
-     * WAF policy.</p>
-     */
-    inline FirewallManagerStatement& WithManagedRuleGroupStatement(ManagedRuleGroupStatement&& value) { SetManagedRuleGroupStatement(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A statement used by Firewall Manager to run the rules that are defined in a
      * rule group. This is managed by Firewall Manager for an Firewall Manager WAF
      * policy.</p>
      */
-    inline const RuleGroupReferenceStatement& GetRuleGroupReferenceStatement() const{ return m_ruleGroupReferenceStatement; }
-
-    /**
-     * <p>A statement used by Firewall Manager to run the rules that are defined in a
-     * rule group. This is managed by Firewall Manager for an Firewall Manager WAF
-     * policy.</p>
-     */
+    inline const RuleGroupReferenceStatement& GetRuleGroupReferenceStatement() const { return m_ruleGroupReferenceStatement; }
     inline bool RuleGroupReferenceStatementHasBeenSet() const { return m_ruleGroupReferenceStatementHasBeenSet; }
-
-    /**
-     * <p>A statement used by Firewall Manager to run the rules that are defined in a
-     * rule group. This is managed by Firewall Manager for an Firewall Manager WAF
-     * policy.</p>
-     */
-    inline void SetRuleGroupReferenceStatement(const RuleGroupReferenceStatement& value) { m_ruleGroupReferenceStatementHasBeenSet = true; m_ruleGroupReferenceStatement = value; }
-
-    /**
-     * <p>A statement used by Firewall Manager to run the rules that are defined in a
-     * rule group. This is managed by Firewall Manager for an Firewall Manager WAF
-     * policy.</p>
-     */
-    inline void SetRuleGroupReferenceStatement(RuleGroupReferenceStatement&& value) { m_ruleGroupReferenceStatementHasBeenSet = true; m_ruleGroupReferenceStatement = std::move(value); }
-
-    /**
-     * <p>A statement used by Firewall Manager to run the rules that are defined in a
-     * rule group. This is managed by Firewall Manager for an Firewall Manager WAF
-     * policy.</p>
-     */
-    inline FirewallManagerStatement& WithRuleGroupReferenceStatement(const RuleGroupReferenceStatement& value) { SetRuleGroupReferenceStatement(value); return *this;}
-
-    /**
-     * <p>A statement used by Firewall Manager to run the rules that are defined in a
-     * rule group. This is managed by Firewall Manager for an Firewall Manager WAF
-     * policy.</p>
-     */
-    inline FirewallManagerStatement& WithRuleGroupReferenceStatement(RuleGroupReferenceStatement&& value) { SetRuleGroupReferenceStatement(std::move(value)); return *this;}
-
+    template<typename RuleGroupReferenceStatementT = RuleGroupReferenceStatement>
+    void SetRuleGroupReferenceStatement(RuleGroupReferenceStatementT&& value) { m_ruleGroupReferenceStatementHasBeenSet = true; m_ruleGroupReferenceStatement = std::forward<RuleGroupReferenceStatementT>(value); }
+    template<typename RuleGroupReferenceStatementT = RuleGroupReferenceStatement>
+    FirewallManagerStatement& WithRuleGroupReferenceStatement(RuleGroupReferenceStatementT&& value) { SetRuleGroupReferenceStatement(std::forward<RuleGroupReferenceStatementT>(value)); return *this;}
+    ///@}
   private:
 
     ManagedRuleGroupStatement m_managedRuleGroupStatement;

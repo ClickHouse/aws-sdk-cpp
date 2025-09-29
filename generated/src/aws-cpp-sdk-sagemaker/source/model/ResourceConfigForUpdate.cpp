@@ -18,15 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-ResourceConfigForUpdate::ResourceConfigForUpdate() : 
-    m_keepAlivePeriodInSeconds(0),
-    m_keepAlivePeriodInSecondsHasBeenSet(false)
-{
-}
-
-ResourceConfigForUpdate::ResourceConfigForUpdate(JsonView jsonValue) : 
-    m_keepAlivePeriodInSeconds(0),
-    m_keepAlivePeriodInSecondsHasBeenSet(false)
+ResourceConfigForUpdate::ResourceConfigForUpdate(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ResourceConfigForUpdate& ResourceConfigForUpdate::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("KeepAlivePeriodInSeconds"))
   {
     m_keepAlivePeriodInSeconds = jsonValue.GetInteger("KeepAlivePeriodInSeconds");
-
     m_keepAlivePeriodInSecondsHasBeenSet = true;
   }
-
   return *this;
 }
 

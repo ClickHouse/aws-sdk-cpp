@@ -21,7 +21,7 @@ namespace Model
   class ListResourcesForTagOptionRequest : public ServiceCatalogRequest
   {
   public:
-    AWS_SERVICECATALOG_API ListResourcesForTagOptionRequest();
+    AWS_SERVICECATALOG_API ListResourcesForTagOptionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,165 +34,53 @@ namespace Model
     AWS_SERVICECATALOG_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The TagOption identifier.</p>
      */
-    inline const Aws::String& GetTagOptionId() const{ return m_tagOptionId; }
-
-    /**
-     * <p>The TagOption identifier.</p>
-     */
+    inline const Aws::String& GetTagOptionId() const { return m_tagOptionId; }
     inline bool TagOptionIdHasBeenSet() const { return m_tagOptionIdHasBeenSet; }
+    template<typename TagOptionIdT = Aws::String>
+    void SetTagOptionId(TagOptionIdT&& value) { m_tagOptionIdHasBeenSet = true; m_tagOptionId = std::forward<TagOptionIdT>(value); }
+    template<typename TagOptionIdT = Aws::String>
+    ListResourcesForTagOptionRequest& WithTagOptionId(TagOptionIdT&& value) { SetTagOptionId(std::forward<TagOptionIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The TagOption identifier.</p>
-     */
-    inline void SetTagOptionId(const Aws::String& value) { m_tagOptionIdHasBeenSet = true; m_tagOptionId = value; }
-
-    /**
-     * <p>The TagOption identifier.</p>
-     */
-    inline void SetTagOptionId(Aws::String&& value) { m_tagOptionIdHasBeenSet = true; m_tagOptionId = std::move(value); }
-
-    /**
-     * <p>The TagOption identifier.</p>
-     */
-    inline void SetTagOptionId(const char* value) { m_tagOptionIdHasBeenSet = true; m_tagOptionId.assign(value); }
-
-    /**
-     * <p>The TagOption identifier.</p>
-     */
-    inline ListResourcesForTagOptionRequest& WithTagOptionId(const Aws::String& value) { SetTagOptionId(value); return *this;}
-
-    /**
-     * <p>The TagOption identifier.</p>
-     */
-    inline ListResourcesForTagOptionRequest& WithTagOptionId(Aws::String&& value) { SetTagOptionId(std::move(value)); return *this;}
-
-    /**
-     * <p>The TagOption identifier.</p>
-     */
-    inline ListResourcesForTagOptionRequest& WithTagOptionId(const char* value) { SetTagOptionId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The resource type.</p> <ul> <li> <p> <code>Portfolio</code> </p> </li> <li>
      * <p> <code>Product</code> </p> </li> </ul>
      */
-    inline const Aws::String& GetResourceType() const{ return m_resourceType; }
-
-    /**
-     * <p>The resource type.</p> <ul> <li> <p> <code>Portfolio</code> </p> </li> <li>
-     * <p> <code>Product</code> </p> </li> </ul>
-     */
+    inline const Aws::String& GetResourceType() const { return m_resourceType; }
     inline bool ResourceTypeHasBeenSet() const { return m_resourceTypeHasBeenSet; }
+    template<typename ResourceTypeT = Aws::String>
+    void SetResourceType(ResourceTypeT&& value) { m_resourceTypeHasBeenSet = true; m_resourceType = std::forward<ResourceTypeT>(value); }
+    template<typename ResourceTypeT = Aws::String>
+    ListResourcesForTagOptionRequest& WithResourceType(ResourceTypeT&& value) { SetResourceType(std::forward<ResourceTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The resource type.</p> <ul> <li> <p> <code>Portfolio</code> </p> </li> <li>
-     * <p> <code>Product</code> </p> </li> </ul>
-     */
-    inline void SetResourceType(const Aws::String& value) { m_resourceTypeHasBeenSet = true; m_resourceType = value; }
-
-    /**
-     * <p>The resource type.</p> <ul> <li> <p> <code>Portfolio</code> </p> </li> <li>
-     * <p> <code>Product</code> </p> </li> </ul>
-     */
-    inline void SetResourceType(Aws::String&& value) { m_resourceTypeHasBeenSet = true; m_resourceType = std::move(value); }
-
-    /**
-     * <p>The resource type.</p> <ul> <li> <p> <code>Portfolio</code> </p> </li> <li>
-     * <p> <code>Product</code> </p> </li> </ul>
-     */
-    inline void SetResourceType(const char* value) { m_resourceTypeHasBeenSet = true; m_resourceType.assign(value); }
-
-    /**
-     * <p>The resource type.</p> <ul> <li> <p> <code>Portfolio</code> </p> </li> <li>
-     * <p> <code>Product</code> </p> </li> </ul>
-     */
-    inline ListResourcesForTagOptionRequest& WithResourceType(const Aws::String& value) { SetResourceType(value); return *this;}
-
-    /**
-     * <p>The resource type.</p> <ul> <li> <p> <code>Portfolio</code> </p> </li> <li>
-     * <p> <code>Product</code> </p> </li> </ul>
-     */
-    inline ListResourcesForTagOptionRequest& WithResourceType(Aws::String&& value) { SetResourceType(std::move(value)); return *this;}
-
-    /**
-     * <p>The resource type.</p> <ul> <li> <p> <code>Portfolio</code> </p> </li> <li>
-     * <p> <code>Product</code> </p> </li> </ul>
-     */
-    inline ListResourcesForTagOptionRequest& WithResourceType(const char* value) { SetResourceType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of items to return with this call.</p>
      */
-    inline int GetPageSize() const{ return m_pageSize; }
-
-    /**
-     * <p>The maximum number of items to return with this call.</p>
-     */
+    inline int GetPageSize() const { return m_pageSize; }
     inline bool PageSizeHasBeenSet() const { return m_pageSizeHasBeenSet; }
-
-    /**
-     * <p>The maximum number of items to return with this call.</p>
-     */
     inline void SetPageSize(int value) { m_pageSizeHasBeenSet = true; m_pageSize = value; }
-
-    /**
-     * <p>The maximum number of items to return with this call.</p>
-     */
     inline ListResourcesForTagOptionRequest& WithPageSize(int value) { SetPageSize(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The page token for the next set of results. To retrieve the first set of
      * results, use null.</p>
      */
-    inline const Aws::String& GetPageToken() const{ return m_pageToken; }
-
-    /**
-     * <p>The page token for the next set of results. To retrieve the first set of
-     * results, use null.</p>
-     */
+    inline const Aws::String& GetPageToken() const { return m_pageToken; }
     inline bool PageTokenHasBeenSet() const { return m_pageTokenHasBeenSet; }
-
-    /**
-     * <p>The page token for the next set of results. To retrieve the first set of
-     * results, use null.</p>
-     */
-    inline void SetPageToken(const Aws::String& value) { m_pageTokenHasBeenSet = true; m_pageToken = value; }
-
-    /**
-     * <p>The page token for the next set of results. To retrieve the first set of
-     * results, use null.</p>
-     */
-    inline void SetPageToken(Aws::String&& value) { m_pageTokenHasBeenSet = true; m_pageToken = std::move(value); }
-
-    /**
-     * <p>The page token for the next set of results. To retrieve the first set of
-     * results, use null.</p>
-     */
-    inline void SetPageToken(const char* value) { m_pageTokenHasBeenSet = true; m_pageToken.assign(value); }
-
-    /**
-     * <p>The page token for the next set of results. To retrieve the first set of
-     * results, use null.</p>
-     */
-    inline ListResourcesForTagOptionRequest& WithPageToken(const Aws::String& value) { SetPageToken(value); return *this;}
-
-    /**
-     * <p>The page token for the next set of results. To retrieve the first set of
-     * results, use null.</p>
-     */
-    inline ListResourcesForTagOptionRequest& WithPageToken(Aws::String&& value) { SetPageToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The page token for the next set of results. To retrieve the first set of
-     * results, use null.</p>
-     */
-    inline ListResourcesForTagOptionRequest& WithPageToken(const char* value) { SetPageToken(value); return *this;}
-
+    template<typename PageTokenT = Aws::String>
+    void SetPageToken(PageTokenT&& value) { m_pageTokenHasBeenSet = true; m_pageToken = std::forward<PageTokenT>(value); }
+    template<typename PageTokenT = Aws::String>
+    ListResourcesForTagOptionRequest& WithPageToken(PageTokenT&& value) { SetPageToken(std::forward<PageTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_tagOptionId;
@@ -201,7 +89,7 @@ namespace Model
     Aws::String m_resourceType;
     bool m_resourceTypeHasBeenSet = false;
 
-    int m_pageSize;
+    int m_pageSize{0};
     bool m_pageSizeHasBeenSet = false;
 
     Aws::String m_pageToken;

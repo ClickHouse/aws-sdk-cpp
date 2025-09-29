@@ -18,15 +18,7 @@ namespace DevOpsGuru
 namespace Model
 {
 
-OpsCenterIntegration::OpsCenterIntegration() : 
-    m_optInStatus(OptInStatus::NOT_SET),
-    m_optInStatusHasBeenSet(false)
-{
-}
-
-OpsCenterIntegration::OpsCenterIntegration(JsonView jsonValue) : 
-    m_optInStatus(OptInStatus::NOT_SET),
-    m_optInStatusHasBeenSet(false)
+OpsCenterIntegration::OpsCenterIntegration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ OpsCenterIntegration& OpsCenterIntegration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("OptInStatus"))
   {
     m_optInStatus = OptInStatusMapper::GetOptInStatusForName(jsonValue.GetString("OptInStatus"));
-
     m_optInStatusHasBeenSet = true;
   }
-
   return *this;
 }
 

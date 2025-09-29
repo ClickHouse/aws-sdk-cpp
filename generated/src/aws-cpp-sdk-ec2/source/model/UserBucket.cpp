@@ -20,15 +20,7 @@ namespace EC2
 namespace Model
 {
 
-UserBucket::UserBucket() : 
-    m_s3BucketHasBeenSet(false),
-    m_s3KeyHasBeenSet(false)
-{
-}
-
-UserBucket::UserBucket(const XmlNode& xmlNode) : 
-    m_s3BucketHasBeenSet(false),
-    m_s3KeyHasBeenSet(false)
+UserBucket::UserBucket(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

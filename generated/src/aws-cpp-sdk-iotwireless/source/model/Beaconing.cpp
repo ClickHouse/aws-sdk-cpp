@@ -18,17 +18,7 @@ namespace IoTWireless
 namespace Model
 {
 
-Beaconing::Beaconing() : 
-    m_dataRate(0),
-    m_dataRateHasBeenSet(false),
-    m_frequenciesHasBeenSet(false)
-{
-}
-
-Beaconing::Beaconing(JsonView jsonValue) : 
-    m_dataRate(0),
-    m_dataRateHasBeenSet(false),
-    m_frequenciesHasBeenSet(false)
+Beaconing::Beaconing(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ Beaconing& Beaconing::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("DataRate"))
   {
     m_dataRate = jsonValue.GetInteger("DataRate");
-
     m_dataRateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Frequencies"))
   {
     Aws::Utils::Array<JsonView> frequenciesJsonList = jsonValue.GetArray("Frequencies");
@@ -51,7 +39,6 @@ Beaconing& Beaconing::operator =(JsonView jsonValue)
     }
     m_frequenciesHasBeenSet = true;
   }
-
   return *this;
 }
 

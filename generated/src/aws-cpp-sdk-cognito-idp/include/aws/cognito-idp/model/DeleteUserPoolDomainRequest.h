@@ -21,7 +21,7 @@ namespace Model
   class DeleteUserPoolDomainRequest : public CognitoIdentityProviderRequest
   {
   public:
-    AWS_COGNITOIDENTITYPROVIDER_API DeleteUserPoolDomainRequest();
+    AWS_COGNITOIDENTITYPROVIDER_API DeleteUserPoolDomainRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,103 +34,32 @@ namespace Model
     AWS_COGNITOIDENTITYPROVIDER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
-     * <p>The domain string. For custom domains, this is the fully-qualified domain
-     * name, such as <code>auth.example.com</code>. For Amazon Cognito prefix domains,
-     * this is the prefix alone, such as <code>auth</code>.</p>
+     * <p>The domain that you want to delete. For custom domains, this is the
+     * fully-qualified domain name like <code>auth.example.com</code>. For Amazon
+     * Cognito prefix domains, this is the prefix alone, like
+     * <code>myprefix</code>.</p>
      */
-    inline const Aws::String& GetDomain() const{ return m_domain; }
-
-    /**
-     * <p>The domain string. For custom domains, this is the fully-qualified domain
-     * name, such as <code>auth.example.com</code>. For Amazon Cognito prefix domains,
-     * this is the prefix alone, such as <code>auth</code>.</p>
-     */
+    inline const Aws::String& GetDomain() const { return m_domain; }
     inline bool DomainHasBeenSet() const { return m_domainHasBeenSet; }
+    template<typename DomainT = Aws::String>
+    void SetDomain(DomainT&& value) { m_domainHasBeenSet = true; m_domain = std::forward<DomainT>(value); }
+    template<typename DomainT = Aws::String>
+    DeleteUserPoolDomainRequest& WithDomain(DomainT&& value) { SetDomain(std::forward<DomainT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The domain string. For custom domains, this is the fully-qualified domain
-     * name, such as <code>auth.example.com</code>. For Amazon Cognito prefix domains,
-     * this is the prefix alone, such as <code>auth</code>.</p>
+     * <p>The ID of the user pool where you want to delete the domain.</p>
      */
-    inline void SetDomain(const Aws::String& value) { m_domainHasBeenSet = true; m_domain = value; }
-
-    /**
-     * <p>The domain string. For custom domains, this is the fully-qualified domain
-     * name, such as <code>auth.example.com</code>. For Amazon Cognito prefix domains,
-     * this is the prefix alone, such as <code>auth</code>.</p>
-     */
-    inline void SetDomain(Aws::String&& value) { m_domainHasBeenSet = true; m_domain = std::move(value); }
-
-    /**
-     * <p>The domain string. For custom domains, this is the fully-qualified domain
-     * name, such as <code>auth.example.com</code>. For Amazon Cognito prefix domains,
-     * this is the prefix alone, such as <code>auth</code>.</p>
-     */
-    inline void SetDomain(const char* value) { m_domainHasBeenSet = true; m_domain.assign(value); }
-
-    /**
-     * <p>The domain string. For custom domains, this is the fully-qualified domain
-     * name, such as <code>auth.example.com</code>. For Amazon Cognito prefix domains,
-     * this is the prefix alone, such as <code>auth</code>.</p>
-     */
-    inline DeleteUserPoolDomainRequest& WithDomain(const Aws::String& value) { SetDomain(value); return *this;}
-
-    /**
-     * <p>The domain string. For custom domains, this is the fully-qualified domain
-     * name, such as <code>auth.example.com</code>. For Amazon Cognito prefix domains,
-     * this is the prefix alone, such as <code>auth</code>.</p>
-     */
-    inline DeleteUserPoolDomainRequest& WithDomain(Aws::String&& value) { SetDomain(std::move(value)); return *this;}
-
-    /**
-     * <p>The domain string. For custom domains, this is the fully-qualified domain
-     * name, such as <code>auth.example.com</code>. For Amazon Cognito prefix domains,
-     * this is the prefix alone, such as <code>auth</code>.</p>
-     */
-    inline DeleteUserPoolDomainRequest& WithDomain(const char* value) { SetDomain(value); return *this;}
-
-
-    /**
-     * <p>The user pool ID.</p>
-     */
-    inline const Aws::String& GetUserPoolId() const{ return m_userPoolId; }
-
-    /**
-     * <p>The user pool ID.</p>
-     */
+    inline const Aws::String& GetUserPoolId() const { return m_userPoolId; }
     inline bool UserPoolIdHasBeenSet() const { return m_userPoolIdHasBeenSet; }
-
-    /**
-     * <p>The user pool ID.</p>
-     */
-    inline void SetUserPoolId(const Aws::String& value) { m_userPoolIdHasBeenSet = true; m_userPoolId = value; }
-
-    /**
-     * <p>The user pool ID.</p>
-     */
-    inline void SetUserPoolId(Aws::String&& value) { m_userPoolIdHasBeenSet = true; m_userPoolId = std::move(value); }
-
-    /**
-     * <p>The user pool ID.</p>
-     */
-    inline void SetUserPoolId(const char* value) { m_userPoolIdHasBeenSet = true; m_userPoolId.assign(value); }
-
-    /**
-     * <p>The user pool ID.</p>
-     */
-    inline DeleteUserPoolDomainRequest& WithUserPoolId(const Aws::String& value) { SetUserPoolId(value); return *this;}
-
-    /**
-     * <p>The user pool ID.</p>
-     */
-    inline DeleteUserPoolDomainRequest& WithUserPoolId(Aws::String&& value) { SetUserPoolId(std::move(value)); return *this;}
-
-    /**
-     * <p>The user pool ID.</p>
-     */
-    inline DeleteUserPoolDomainRequest& WithUserPoolId(const char* value) { SetUserPoolId(value); return *this;}
-
+    template<typename UserPoolIdT = Aws::String>
+    void SetUserPoolId(UserPoolIdT&& value) { m_userPoolIdHasBeenSet = true; m_userPoolId = std::forward<UserPoolIdT>(value); }
+    template<typename UserPoolIdT = Aws::String>
+    DeleteUserPoolDomainRequest& WithUserPoolId(UserPoolIdT&& value) { SetUserPoolId(std::forward<UserPoolIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_domain;

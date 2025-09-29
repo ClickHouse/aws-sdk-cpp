@@ -34,227 +34,81 @@ namespace Model
   class MaintenanceWindowExecution
   {
   public:
-    AWS_SSM_API MaintenanceWindowExecution();
+    AWS_SSM_API MaintenanceWindowExecution() = default;
     AWS_SSM_API MaintenanceWindowExecution(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSM_API MaintenanceWindowExecution& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSM_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ID of the maintenance window.</p>
      */
-    inline const Aws::String& GetWindowId() const{ return m_windowId; }
-
-    /**
-     * <p>The ID of the maintenance window.</p>
-     */
+    inline const Aws::String& GetWindowId() const { return m_windowId; }
     inline bool WindowIdHasBeenSet() const { return m_windowIdHasBeenSet; }
+    template<typename WindowIdT = Aws::String>
+    void SetWindowId(WindowIdT&& value) { m_windowIdHasBeenSet = true; m_windowId = std::forward<WindowIdT>(value); }
+    template<typename WindowIdT = Aws::String>
+    MaintenanceWindowExecution& WithWindowId(WindowIdT&& value) { SetWindowId(std::forward<WindowIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the maintenance window.</p>
-     */
-    inline void SetWindowId(const Aws::String& value) { m_windowIdHasBeenSet = true; m_windowId = value; }
-
-    /**
-     * <p>The ID of the maintenance window.</p>
-     */
-    inline void SetWindowId(Aws::String&& value) { m_windowIdHasBeenSet = true; m_windowId = std::move(value); }
-
-    /**
-     * <p>The ID of the maintenance window.</p>
-     */
-    inline void SetWindowId(const char* value) { m_windowIdHasBeenSet = true; m_windowId.assign(value); }
-
-    /**
-     * <p>The ID of the maintenance window.</p>
-     */
-    inline MaintenanceWindowExecution& WithWindowId(const Aws::String& value) { SetWindowId(value); return *this;}
-
-    /**
-     * <p>The ID of the maintenance window.</p>
-     */
-    inline MaintenanceWindowExecution& WithWindowId(Aws::String&& value) { SetWindowId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the maintenance window.</p>
-     */
-    inline MaintenanceWindowExecution& WithWindowId(const char* value) { SetWindowId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the maintenance window execution.</p>
      */
-    inline const Aws::String& GetWindowExecutionId() const{ return m_windowExecutionId; }
-
-    /**
-     * <p>The ID of the maintenance window execution.</p>
-     */
+    inline const Aws::String& GetWindowExecutionId() const { return m_windowExecutionId; }
     inline bool WindowExecutionIdHasBeenSet() const { return m_windowExecutionIdHasBeenSet; }
+    template<typename WindowExecutionIdT = Aws::String>
+    void SetWindowExecutionId(WindowExecutionIdT&& value) { m_windowExecutionIdHasBeenSet = true; m_windowExecutionId = std::forward<WindowExecutionIdT>(value); }
+    template<typename WindowExecutionIdT = Aws::String>
+    MaintenanceWindowExecution& WithWindowExecutionId(WindowExecutionIdT&& value) { SetWindowExecutionId(std::forward<WindowExecutionIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the maintenance window execution.</p>
-     */
-    inline void SetWindowExecutionId(const Aws::String& value) { m_windowExecutionIdHasBeenSet = true; m_windowExecutionId = value; }
-
-    /**
-     * <p>The ID of the maintenance window execution.</p>
-     */
-    inline void SetWindowExecutionId(Aws::String&& value) { m_windowExecutionIdHasBeenSet = true; m_windowExecutionId = std::move(value); }
-
-    /**
-     * <p>The ID of the maintenance window execution.</p>
-     */
-    inline void SetWindowExecutionId(const char* value) { m_windowExecutionIdHasBeenSet = true; m_windowExecutionId.assign(value); }
-
-    /**
-     * <p>The ID of the maintenance window execution.</p>
-     */
-    inline MaintenanceWindowExecution& WithWindowExecutionId(const Aws::String& value) { SetWindowExecutionId(value); return *this;}
-
-    /**
-     * <p>The ID of the maintenance window execution.</p>
-     */
-    inline MaintenanceWindowExecution& WithWindowExecutionId(Aws::String&& value) { SetWindowExecutionId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the maintenance window execution.</p>
-     */
-    inline MaintenanceWindowExecution& WithWindowExecutionId(const char* value) { SetWindowExecutionId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the execution.</p>
      */
-    inline const MaintenanceWindowExecutionStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the execution.</p>
-     */
+    inline MaintenanceWindowExecutionStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(MaintenanceWindowExecutionStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline MaintenanceWindowExecution& WithStatus(MaintenanceWindowExecutionStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the execution.</p>
-     */
-    inline void SetStatus(const MaintenanceWindowExecutionStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the execution.</p>
-     */
-    inline void SetStatus(MaintenanceWindowExecutionStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the execution.</p>
-     */
-    inline MaintenanceWindowExecution& WithStatus(const MaintenanceWindowExecutionStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the execution.</p>
-     */
-    inline MaintenanceWindowExecution& WithStatus(MaintenanceWindowExecutionStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The details explaining the status. Not available for all status values.</p>
      */
-    inline const Aws::String& GetStatusDetails() const{ return m_statusDetails; }
-
-    /**
-     * <p>The details explaining the status. Not available for all status values.</p>
-     */
+    inline const Aws::String& GetStatusDetails() const { return m_statusDetails; }
     inline bool StatusDetailsHasBeenSet() const { return m_statusDetailsHasBeenSet; }
+    template<typename StatusDetailsT = Aws::String>
+    void SetStatusDetails(StatusDetailsT&& value) { m_statusDetailsHasBeenSet = true; m_statusDetails = std::forward<StatusDetailsT>(value); }
+    template<typename StatusDetailsT = Aws::String>
+    MaintenanceWindowExecution& WithStatusDetails(StatusDetailsT&& value) { SetStatusDetails(std::forward<StatusDetailsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The details explaining the status. Not available for all status values.</p>
-     */
-    inline void SetStatusDetails(const Aws::String& value) { m_statusDetailsHasBeenSet = true; m_statusDetails = value; }
-
-    /**
-     * <p>The details explaining the status. Not available for all status values.</p>
-     */
-    inline void SetStatusDetails(Aws::String&& value) { m_statusDetailsHasBeenSet = true; m_statusDetails = std::move(value); }
-
-    /**
-     * <p>The details explaining the status. Not available for all status values.</p>
-     */
-    inline void SetStatusDetails(const char* value) { m_statusDetailsHasBeenSet = true; m_statusDetails.assign(value); }
-
-    /**
-     * <p>The details explaining the status. Not available for all status values.</p>
-     */
-    inline MaintenanceWindowExecution& WithStatusDetails(const Aws::String& value) { SetStatusDetails(value); return *this;}
-
-    /**
-     * <p>The details explaining the status. Not available for all status values.</p>
-     */
-    inline MaintenanceWindowExecution& WithStatusDetails(Aws::String&& value) { SetStatusDetails(std::move(value)); return *this;}
-
-    /**
-     * <p>The details explaining the status. Not available for all status values.</p>
-     */
-    inline MaintenanceWindowExecution& WithStatusDetails(const char* value) { SetStatusDetails(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The time the execution started.</p>
      */
-    inline const Aws::Utils::DateTime& GetStartTime() const{ return m_startTime; }
-
-    /**
-     * <p>The time the execution started.</p>
-     */
+    inline const Aws::Utils::DateTime& GetStartTime() const { return m_startTime; }
     inline bool StartTimeHasBeenSet() const { return m_startTimeHasBeenSet; }
+    template<typename StartTimeT = Aws::Utils::DateTime>
+    void SetStartTime(StartTimeT&& value) { m_startTimeHasBeenSet = true; m_startTime = std::forward<StartTimeT>(value); }
+    template<typename StartTimeT = Aws::Utils::DateTime>
+    MaintenanceWindowExecution& WithStartTime(StartTimeT&& value) { SetStartTime(std::forward<StartTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time the execution started.</p>
-     */
-    inline void SetStartTime(const Aws::Utils::DateTime& value) { m_startTimeHasBeenSet = true; m_startTime = value; }
-
-    /**
-     * <p>The time the execution started.</p>
-     */
-    inline void SetStartTime(Aws::Utils::DateTime&& value) { m_startTimeHasBeenSet = true; m_startTime = std::move(value); }
-
-    /**
-     * <p>The time the execution started.</p>
-     */
-    inline MaintenanceWindowExecution& WithStartTime(const Aws::Utils::DateTime& value) { SetStartTime(value); return *this;}
-
-    /**
-     * <p>The time the execution started.</p>
-     */
-    inline MaintenanceWindowExecution& WithStartTime(Aws::Utils::DateTime&& value) { SetStartTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The time the execution finished.</p>
      */
-    inline const Aws::Utils::DateTime& GetEndTime() const{ return m_endTime; }
-
-    /**
-     * <p>The time the execution finished.</p>
-     */
+    inline const Aws::Utils::DateTime& GetEndTime() const { return m_endTime; }
     inline bool EndTimeHasBeenSet() const { return m_endTimeHasBeenSet; }
-
-    /**
-     * <p>The time the execution finished.</p>
-     */
-    inline void SetEndTime(const Aws::Utils::DateTime& value) { m_endTimeHasBeenSet = true; m_endTime = value; }
-
-    /**
-     * <p>The time the execution finished.</p>
-     */
-    inline void SetEndTime(Aws::Utils::DateTime&& value) { m_endTimeHasBeenSet = true; m_endTime = std::move(value); }
-
-    /**
-     * <p>The time the execution finished.</p>
-     */
-    inline MaintenanceWindowExecution& WithEndTime(const Aws::Utils::DateTime& value) { SetEndTime(value); return *this;}
-
-    /**
-     * <p>The time the execution finished.</p>
-     */
-    inline MaintenanceWindowExecution& WithEndTime(Aws::Utils::DateTime&& value) { SetEndTime(std::move(value)); return *this;}
-
+    template<typename EndTimeT = Aws::Utils::DateTime>
+    void SetEndTime(EndTimeT&& value) { m_endTimeHasBeenSet = true; m_endTime = std::forward<EndTimeT>(value); }
+    template<typename EndTimeT = Aws::Utils::DateTime>
+    MaintenanceWindowExecution& WithEndTime(EndTimeT&& value) { SetEndTime(std::forward<EndTimeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_windowId;
@@ -263,16 +117,16 @@ namespace Model
     Aws::String m_windowExecutionId;
     bool m_windowExecutionIdHasBeenSet = false;
 
-    MaintenanceWindowExecutionStatus m_status;
+    MaintenanceWindowExecutionStatus m_status{MaintenanceWindowExecutionStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
     Aws::String m_statusDetails;
     bool m_statusDetailsHasBeenSet = false;
 
-    Aws::Utils::DateTime m_startTime;
+    Aws::Utils::DateTime m_startTime{};
     bool m_startTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_endTime;
+    Aws::Utils::DateTime m_endTime{};
     bool m_endTimeHasBeenSet = false;
   };
 

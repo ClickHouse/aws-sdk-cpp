@@ -21,7 +21,7 @@ namespace Model
   class GetSolFunctionPackageRequest : public TnbRequest
   {
   public:
-    AWS_TNB_API GetSolFunctionPackageRequest();
+    AWS_TNB_API GetSolFunctionPackageRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_TNB_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>ID of the function package.</p>
      */
-    inline const Aws::String& GetVnfPkgId() const{ return m_vnfPkgId; }
-
-    /**
-     * <p>ID of the function package.</p>
-     */
+    inline const Aws::String& GetVnfPkgId() const { return m_vnfPkgId; }
     inline bool VnfPkgIdHasBeenSet() const { return m_vnfPkgIdHasBeenSet; }
-
-    /**
-     * <p>ID of the function package.</p>
-     */
-    inline void SetVnfPkgId(const Aws::String& value) { m_vnfPkgIdHasBeenSet = true; m_vnfPkgId = value; }
-
-    /**
-     * <p>ID of the function package.</p>
-     */
-    inline void SetVnfPkgId(Aws::String&& value) { m_vnfPkgIdHasBeenSet = true; m_vnfPkgId = std::move(value); }
-
-    /**
-     * <p>ID of the function package.</p>
-     */
-    inline void SetVnfPkgId(const char* value) { m_vnfPkgIdHasBeenSet = true; m_vnfPkgId.assign(value); }
-
-    /**
-     * <p>ID of the function package.</p>
-     */
-    inline GetSolFunctionPackageRequest& WithVnfPkgId(const Aws::String& value) { SetVnfPkgId(value); return *this;}
-
-    /**
-     * <p>ID of the function package.</p>
-     */
-    inline GetSolFunctionPackageRequest& WithVnfPkgId(Aws::String&& value) { SetVnfPkgId(std::move(value)); return *this;}
-
-    /**
-     * <p>ID of the function package.</p>
-     */
-    inline GetSolFunctionPackageRequest& WithVnfPkgId(const char* value) { SetVnfPkgId(value); return *this;}
-
+    template<typename VnfPkgIdT = Aws::String>
+    void SetVnfPkgId(VnfPkgIdT&& value) { m_vnfPkgIdHasBeenSet = true; m_vnfPkgId = std::forward<VnfPkgIdT>(value); }
+    template<typename VnfPkgIdT = Aws::String>
+    GetSolFunctionPackageRequest& WithVnfPkgId(VnfPkgIdT&& value) { SetVnfPkgId(std::forward<VnfPkgIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_vnfPkgId;

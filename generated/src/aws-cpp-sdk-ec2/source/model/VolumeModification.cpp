@@ -20,67 +20,7 @@ namespace EC2
 namespace Model
 {
 
-VolumeModification::VolumeModification() : 
-    m_volumeIdHasBeenSet(false),
-    m_modificationState(VolumeModificationState::NOT_SET),
-    m_modificationStateHasBeenSet(false),
-    m_statusMessageHasBeenSet(false),
-    m_targetSize(0),
-    m_targetSizeHasBeenSet(false),
-    m_targetIops(0),
-    m_targetIopsHasBeenSet(false),
-    m_targetVolumeType(VolumeType::NOT_SET),
-    m_targetVolumeTypeHasBeenSet(false),
-    m_targetThroughput(0),
-    m_targetThroughputHasBeenSet(false),
-    m_targetMultiAttachEnabled(false),
-    m_targetMultiAttachEnabledHasBeenSet(false),
-    m_originalSize(0),
-    m_originalSizeHasBeenSet(false),
-    m_originalIops(0),
-    m_originalIopsHasBeenSet(false),
-    m_originalVolumeType(VolumeType::NOT_SET),
-    m_originalVolumeTypeHasBeenSet(false),
-    m_originalThroughput(0),
-    m_originalThroughputHasBeenSet(false),
-    m_originalMultiAttachEnabled(false),
-    m_originalMultiAttachEnabledHasBeenSet(false),
-    m_progress(0),
-    m_progressHasBeenSet(false),
-    m_startTimeHasBeenSet(false),
-    m_endTimeHasBeenSet(false)
-{
-}
-
-VolumeModification::VolumeModification(const XmlNode& xmlNode) : 
-    m_volumeIdHasBeenSet(false),
-    m_modificationState(VolumeModificationState::NOT_SET),
-    m_modificationStateHasBeenSet(false),
-    m_statusMessageHasBeenSet(false),
-    m_targetSize(0),
-    m_targetSizeHasBeenSet(false),
-    m_targetIops(0),
-    m_targetIopsHasBeenSet(false),
-    m_targetVolumeType(VolumeType::NOT_SET),
-    m_targetVolumeTypeHasBeenSet(false),
-    m_targetThroughput(0),
-    m_targetThroughputHasBeenSet(false),
-    m_targetMultiAttachEnabled(false),
-    m_targetMultiAttachEnabledHasBeenSet(false),
-    m_originalSize(0),
-    m_originalSizeHasBeenSet(false),
-    m_originalIops(0),
-    m_originalIopsHasBeenSet(false),
-    m_originalVolumeType(VolumeType::NOT_SET),
-    m_originalVolumeTypeHasBeenSet(false),
-    m_originalThroughput(0),
-    m_originalThroughputHasBeenSet(false),
-    m_originalMultiAttachEnabled(false),
-    m_originalMultiAttachEnabledHasBeenSet(false),
-    m_progress(0),
-    m_progressHasBeenSet(false),
-    m_startTimeHasBeenSet(false),
-    m_endTimeHasBeenSet(false)
+VolumeModification::VolumeModification(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -100,7 +40,7 @@ VolumeModification& VolumeModification::operator =(const XmlNode& xmlNode)
     XmlNode modificationStateNode = resultNode.FirstChild("modificationState");
     if(!modificationStateNode.IsNull())
     {
-      m_modificationState = VolumeModificationStateMapper::GetVolumeModificationStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(modificationStateNode.GetText()).c_str()).c_str());
+      m_modificationState = VolumeModificationStateMapper::GetVolumeModificationStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(modificationStateNode.GetText()).c_str()));
       m_modificationStateHasBeenSet = true;
     }
     XmlNode statusMessageNode = resultNode.FirstChild("statusMessage");
@@ -124,7 +64,7 @@ VolumeModification& VolumeModification::operator =(const XmlNode& xmlNode)
     XmlNode targetVolumeTypeNode = resultNode.FirstChild("targetVolumeType");
     if(!targetVolumeTypeNode.IsNull())
     {
-      m_targetVolumeType = VolumeTypeMapper::GetVolumeTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(targetVolumeTypeNode.GetText()).c_str()).c_str());
+      m_targetVolumeType = VolumeTypeMapper::GetVolumeTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(targetVolumeTypeNode.GetText()).c_str()));
       m_targetVolumeTypeHasBeenSet = true;
     }
     XmlNode targetThroughputNode = resultNode.FirstChild("targetThroughput");
@@ -154,7 +94,7 @@ VolumeModification& VolumeModification::operator =(const XmlNode& xmlNode)
     XmlNode originalVolumeTypeNode = resultNode.FirstChild("originalVolumeType");
     if(!originalVolumeTypeNode.IsNull())
     {
-      m_originalVolumeType = VolumeTypeMapper::GetVolumeTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(originalVolumeTypeNode.GetText()).c_str()).c_str());
+      m_originalVolumeType = VolumeTypeMapper::GetVolumeTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(originalVolumeTypeNode.GetText()).c_str()));
       m_originalVolumeTypeHasBeenSet = true;
     }
     XmlNode originalThroughputNode = resultNode.FirstChild("originalThroughput");
@@ -201,7 +141,7 @@ void VolumeModification::OutputToStream(Aws::OStream& oStream, const char* locat
 
   if(m_modificationStateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ModificationState=" << VolumeModificationStateMapper::GetNameForVolumeModificationState(m_modificationState) << "&";
+      oStream << location << index << locationValue << ".ModificationState=" << StringUtils::URLEncode(VolumeModificationStateMapper::GetNameForVolumeModificationState(m_modificationState)) << "&";
   }
 
   if(m_statusMessageHasBeenSet)
@@ -221,7 +161,7 @@ void VolumeModification::OutputToStream(Aws::OStream& oStream, const char* locat
 
   if(m_targetVolumeTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".TargetVolumeType=" << VolumeTypeMapper::GetNameForVolumeType(m_targetVolumeType) << "&";
+      oStream << location << index << locationValue << ".TargetVolumeType=" << StringUtils::URLEncode(VolumeTypeMapper::GetNameForVolumeType(m_targetVolumeType)) << "&";
   }
 
   if(m_targetThroughputHasBeenSet)
@@ -246,7 +186,7 @@ void VolumeModification::OutputToStream(Aws::OStream& oStream, const char* locat
 
   if(m_originalVolumeTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".OriginalVolumeType=" << VolumeTypeMapper::GetNameForVolumeType(m_originalVolumeType) << "&";
+      oStream << location << index << locationValue << ".OriginalVolumeType=" << StringUtils::URLEncode(VolumeTypeMapper::GetNameForVolumeType(m_originalVolumeType)) << "&";
   }
 
   if(m_originalThroughputHasBeenSet)
@@ -284,7 +224,7 @@ void VolumeModification::OutputToStream(Aws::OStream& oStream, const char* locat
   }
   if(m_modificationStateHasBeenSet)
   {
-      oStream << location << ".ModificationState=" << VolumeModificationStateMapper::GetNameForVolumeModificationState(m_modificationState) << "&";
+      oStream << location << ".ModificationState=" << StringUtils::URLEncode(VolumeModificationStateMapper::GetNameForVolumeModificationState(m_modificationState)) << "&";
   }
   if(m_statusMessageHasBeenSet)
   {
@@ -300,7 +240,7 @@ void VolumeModification::OutputToStream(Aws::OStream& oStream, const char* locat
   }
   if(m_targetVolumeTypeHasBeenSet)
   {
-      oStream << location << ".TargetVolumeType=" << VolumeTypeMapper::GetNameForVolumeType(m_targetVolumeType) << "&";
+      oStream << location << ".TargetVolumeType=" << StringUtils::URLEncode(VolumeTypeMapper::GetNameForVolumeType(m_targetVolumeType)) << "&";
   }
   if(m_targetThroughputHasBeenSet)
   {
@@ -320,7 +260,7 @@ void VolumeModification::OutputToStream(Aws::OStream& oStream, const char* locat
   }
   if(m_originalVolumeTypeHasBeenSet)
   {
-      oStream << location << ".OriginalVolumeType=" << VolumeTypeMapper::GetNameForVolumeType(m_originalVolumeType) << "&";
+      oStream << location << ".OriginalVolumeType=" << StringUtils::URLEncode(VolumeTypeMapper::GetNameForVolumeType(m_originalVolumeType)) << "&";
   }
   if(m_originalThroughputHasBeenSet)
   {

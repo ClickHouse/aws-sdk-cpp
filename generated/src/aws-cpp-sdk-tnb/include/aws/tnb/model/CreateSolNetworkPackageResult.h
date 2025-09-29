@@ -31,292 +31,109 @@ namespace Model
   class CreateSolNetworkPackageResult
   {
   public:
-    AWS_TNB_API CreateSolNetworkPackageResult();
+    AWS_TNB_API CreateSolNetworkPackageResult() = default;
     AWS_TNB_API CreateSolNetworkPackageResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_TNB_API CreateSolNetworkPackageResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Network package ARN.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
+    inline const Aws::String& GetArn() const { return m_arn; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    CreateSolNetworkPackageResult& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Network package ARN.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arn = value; }
-
-    /**
-     * <p>Network package ARN.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arn = std::move(value); }
-
-    /**
-     * <p>Network package ARN.</p>
-     */
-    inline void SetArn(const char* value) { m_arn.assign(value); }
-
-    /**
-     * <p>Network package ARN.</p>
-     */
-    inline CreateSolNetworkPackageResult& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>Network package ARN.</p>
-     */
-    inline CreateSolNetworkPackageResult& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>Network package ARN.</p>
-     */
-    inline CreateSolNetworkPackageResult& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>ID of the network package.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
+    inline const Aws::String& GetId() const { return m_id; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    CreateSolNetworkPackageResult& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>ID of the network package.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_id = value; }
-
-    /**
-     * <p>ID of the network package.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_id = std::move(value); }
-
-    /**
-     * <p>ID of the network package.</p>
-     */
-    inline void SetId(const char* value) { m_id.assign(value); }
-
-    /**
-     * <p>ID of the network package.</p>
-     */
-    inline CreateSolNetworkPackageResult& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>ID of the network package.</p>
-     */
-    inline CreateSolNetworkPackageResult& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>ID of the network package.</p>
-     */
-    inline CreateSolNetworkPackageResult& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Onboarding state of the network service descriptor in the network
      * package.</p>
      */
-    inline const NsdOnboardingState& GetNsdOnboardingState() const{ return m_nsdOnboardingState; }
+    inline NsdOnboardingState GetNsdOnboardingState() const { return m_nsdOnboardingState; }
+    inline void SetNsdOnboardingState(NsdOnboardingState value) { m_nsdOnboardingStateHasBeenSet = true; m_nsdOnboardingState = value; }
+    inline CreateSolNetworkPackageResult& WithNsdOnboardingState(NsdOnboardingState value) { SetNsdOnboardingState(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Onboarding state of the network service descriptor in the network
-     * package.</p>
-     */
-    inline void SetNsdOnboardingState(const NsdOnboardingState& value) { m_nsdOnboardingState = value; }
-
-    /**
-     * <p>Onboarding state of the network service descriptor in the network
-     * package.</p>
-     */
-    inline void SetNsdOnboardingState(NsdOnboardingState&& value) { m_nsdOnboardingState = std::move(value); }
-
-    /**
-     * <p>Onboarding state of the network service descriptor in the network
-     * package.</p>
-     */
-    inline CreateSolNetworkPackageResult& WithNsdOnboardingState(const NsdOnboardingState& value) { SetNsdOnboardingState(value); return *this;}
-
-    /**
-     * <p>Onboarding state of the network service descriptor in the network
-     * package.</p>
-     */
-    inline CreateSolNetworkPackageResult& WithNsdOnboardingState(NsdOnboardingState&& value) { SetNsdOnboardingState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Operational state of the network service descriptor in the network
      * package.</p>
      */
-    inline const NsdOperationalState& GetNsdOperationalState() const{ return m_nsdOperationalState; }
+    inline NsdOperationalState GetNsdOperationalState() const { return m_nsdOperationalState; }
+    inline void SetNsdOperationalState(NsdOperationalState value) { m_nsdOperationalStateHasBeenSet = true; m_nsdOperationalState = value; }
+    inline CreateSolNetworkPackageResult& WithNsdOperationalState(NsdOperationalState value) { SetNsdOperationalState(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Operational state of the network service descriptor in the network
-     * package.</p>
-     */
-    inline void SetNsdOperationalState(const NsdOperationalState& value) { m_nsdOperationalState = value; }
-
-    /**
-     * <p>Operational state of the network service descriptor in the network
-     * package.</p>
-     */
-    inline void SetNsdOperationalState(NsdOperationalState&& value) { m_nsdOperationalState = std::move(value); }
-
-    /**
-     * <p>Operational state of the network service descriptor in the network
-     * package.</p>
-     */
-    inline CreateSolNetworkPackageResult& WithNsdOperationalState(const NsdOperationalState& value) { SetNsdOperationalState(value); return *this;}
-
-    /**
-     * <p>Operational state of the network service descriptor in the network
-     * package.</p>
-     */
-    inline CreateSolNetworkPackageResult& WithNsdOperationalState(NsdOperationalState&& value) { SetNsdOperationalState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Usage state of the network service descriptor in the network package.</p>
      */
-    inline const NsdUsageState& GetNsdUsageState() const{ return m_nsdUsageState; }
+    inline NsdUsageState GetNsdUsageState() const { return m_nsdUsageState; }
+    inline void SetNsdUsageState(NsdUsageState value) { m_nsdUsageStateHasBeenSet = true; m_nsdUsageState = value; }
+    inline CreateSolNetworkPackageResult& WithNsdUsageState(NsdUsageState value) { SetNsdUsageState(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Usage state of the network service descriptor in the network package.</p>
-     */
-    inline void SetNsdUsageState(const NsdUsageState& value) { m_nsdUsageState = value; }
-
-    /**
-     * <p>Usage state of the network service descriptor in the network package.</p>
-     */
-    inline void SetNsdUsageState(NsdUsageState&& value) { m_nsdUsageState = std::move(value); }
-
-    /**
-     * <p>Usage state of the network service descriptor in the network package.</p>
-     */
-    inline CreateSolNetworkPackageResult& WithNsdUsageState(const NsdUsageState& value) { SetNsdUsageState(value); return *this;}
-
-    /**
-     * <p>Usage state of the network service descriptor in the network package.</p>
-     */
-    inline CreateSolNetworkPackageResult& WithNsdUsageState(NsdUsageState&& value) { SetNsdUsageState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A tag is a label that you assign to an Amazon Web Services resource. Each tag
      * consists of a key and an optional value. You can use tags to search and filter
      * your resources or track your Amazon Web Services costs.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    CreateSolNetworkPackageResult& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    CreateSolNetworkPackageResult& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>A tag is a label that you assign to an Amazon Web Services resource. Each tag
-     * consists of a key and an optional value. You can use tags to search and filter
-     * your resources or track your Amazon Web Services costs.</p>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tags = value; }
-
-    /**
-     * <p>A tag is a label that you assign to an Amazon Web Services resource. Each tag
-     * consists of a key and an optional value. You can use tags to search and filter
-     * your resources or track your Amazon Web Services costs.</p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tags = std::move(value); }
-
-    /**
-     * <p>A tag is a label that you assign to an Amazon Web Services resource. Each tag
-     * consists of a key and an optional value. You can use tags to search and filter
-     * your resources or track your Amazon Web Services costs.</p>
-     */
-    inline CreateSolNetworkPackageResult& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>A tag is a label that you assign to an Amazon Web Services resource. Each tag
-     * consists of a key and an optional value. You can use tags to search and filter
-     * your resources or track your Amazon Web Services costs.</p>
-     */
-    inline CreateSolNetworkPackageResult& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>A tag is a label that you assign to an Amazon Web Services resource. Each tag
-     * consists of a key and an optional value. You can use tags to search and filter
-     * your resources or track your Amazon Web Services costs.</p>
-     */
-    inline CreateSolNetworkPackageResult& AddTags(const Aws::String& key, const Aws::String& value) { m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>A tag is a label that you assign to an Amazon Web Services resource. Each tag
-     * consists of a key and an optional value. You can use tags to search and filter
-     * your resources or track your Amazon Web Services costs.</p>
-     */
-    inline CreateSolNetworkPackageResult& AddTags(Aws::String&& key, const Aws::String& value) { m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A tag is a label that you assign to an Amazon Web Services resource. Each tag
-     * consists of a key and an optional value. You can use tags to search and filter
-     * your resources or track your Amazon Web Services costs.</p>
-     */
-    inline CreateSolNetworkPackageResult& AddTags(const Aws::String& key, Aws::String&& value) { m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A tag is a label that you assign to an Amazon Web Services resource. Each tag
-     * consists of a key and an optional value. You can use tags to search and filter
-     * your resources or track your Amazon Web Services costs.</p>
-     */
-    inline CreateSolNetworkPackageResult& AddTags(Aws::String&& key, Aws::String&& value) { m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>A tag is a label that you assign to an Amazon Web Services resource. Each tag
-     * consists of a key and an optional value. You can use tags to search and filter
-     * your resources or track your Amazon Web Services costs.</p>
-     */
-    inline CreateSolNetworkPackageResult& AddTags(const char* key, Aws::String&& value) { m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A tag is a label that you assign to an Amazon Web Services resource. Each tag
-     * consists of a key and an optional value. You can use tags to search and filter
-     * your resources or track your Amazon Web Services costs.</p>
-     */
-    inline CreateSolNetworkPackageResult& AddTags(Aws::String&& key, const char* value) { m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A tag is a label that you assign to an Amazon Web Services resource. Each tag
-     * consists of a key and an optional value. You can use tags to search and filter
-     * your resources or track your Amazon Web Services costs.</p>
-     */
-    inline CreateSolNetworkPackageResult& AddTags(const char* key, const char* value) { m_tags.emplace(key, value); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline CreateSolNetworkPackageResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline CreateSolNetworkPackageResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline CreateSolNetworkPackageResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    CreateSolNetworkPackageResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;
+    bool m_arnHasBeenSet = false;
 
     Aws::String m_id;
+    bool m_idHasBeenSet = false;
 
-    NsdOnboardingState m_nsdOnboardingState;
+    NsdOnboardingState m_nsdOnboardingState{NsdOnboardingState::NOT_SET};
+    bool m_nsdOnboardingStateHasBeenSet = false;
 
-    NsdOperationalState m_nsdOperationalState;
+    NsdOperationalState m_nsdOperationalState{NsdOperationalState::NOT_SET};
+    bool m_nsdOperationalStateHasBeenSet = false;
 
-    NsdUsageState m_nsdUsageState;
+    NsdUsageState m_nsdUsageState{NsdUsageState::NOT_SET};
+    bool m_nsdUsageStateHasBeenSet = false;
 
     Aws::Map<Aws::String, Aws::String> m_tags;
+    bool m_tagsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

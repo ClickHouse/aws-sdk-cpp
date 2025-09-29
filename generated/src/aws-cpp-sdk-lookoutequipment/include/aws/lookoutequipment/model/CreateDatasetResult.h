@@ -28,139 +28,63 @@ namespace Model
   class CreateDatasetResult
   {
   public:
-    AWS_LOOKOUTEQUIPMENT_API CreateDatasetResult();
+    AWS_LOOKOUTEQUIPMENT_API CreateDatasetResult() = default;
     AWS_LOOKOUTEQUIPMENT_API CreateDatasetResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_LOOKOUTEQUIPMENT_API CreateDatasetResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The name of the dataset being created. </p>
      */
-    inline const Aws::String& GetDatasetName() const{ return m_datasetName; }
+    inline const Aws::String& GetDatasetName() const { return m_datasetName; }
+    template<typename DatasetNameT = Aws::String>
+    void SetDatasetName(DatasetNameT&& value) { m_datasetNameHasBeenSet = true; m_datasetName = std::forward<DatasetNameT>(value); }
+    template<typename DatasetNameT = Aws::String>
+    CreateDatasetResult& WithDatasetName(DatasetNameT&& value) { SetDatasetName(std::forward<DatasetNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the dataset being created. </p>
-     */
-    inline void SetDatasetName(const Aws::String& value) { m_datasetName = value; }
-
-    /**
-     * <p>The name of the dataset being created. </p>
-     */
-    inline void SetDatasetName(Aws::String&& value) { m_datasetName = std::move(value); }
-
-    /**
-     * <p>The name of the dataset being created. </p>
-     */
-    inline void SetDatasetName(const char* value) { m_datasetName.assign(value); }
-
-    /**
-     * <p>The name of the dataset being created. </p>
-     */
-    inline CreateDatasetResult& WithDatasetName(const Aws::String& value) { SetDatasetName(value); return *this;}
-
-    /**
-     * <p>The name of the dataset being created. </p>
-     */
-    inline CreateDatasetResult& WithDatasetName(Aws::String&& value) { SetDatasetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the dataset being created. </p>
-     */
-    inline CreateDatasetResult& WithDatasetName(const char* value) { SetDatasetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The Amazon Resource Name (ARN) of the dataset being created. </p>
      */
-    inline const Aws::String& GetDatasetArn() const{ return m_datasetArn; }
+    inline const Aws::String& GetDatasetArn() const { return m_datasetArn; }
+    template<typename DatasetArnT = Aws::String>
+    void SetDatasetArn(DatasetArnT&& value) { m_datasetArnHasBeenSet = true; m_datasetArn = std::forward<DatasetArnT>(value); }
+    template<typename DatasetArnT = Aws::String>
+    CreateDatasetResult& WithDatasetArn(DatasetArnT&& value) { SetDatasetArn(std::forward<DatasetArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The Amazon Resource Name (ARN) of the dataset being created. </p>
-     */
-    inline void SetDatasetArn(const Aws::String& value) { m_datasetArn = value; }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the dataset being created. </p>
-     */
-    inline void SetDatasetArn(Aws::String&& value) { m_datasetArn = std::move(value); }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the dataset being created. </p>
-     */
-    inline void SetDatasetArn(const char* value) { m_datasetArn.assign(value); }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the dataset being created. </p>
-     */
-    inline CreateDatasetResult& WithDatasetArn(const Aws::String& value) { SetDatasetArn(value); return *this;}
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the dataset being created. </p>
-     */
-    inline CreateDatasetResult& WithDatasetArn(Aws::String&& value) { SetDatasetArn(std::move(value)); return *this;}
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the dataset being created. </p>
-     */
-    inline CreateDatasetResult& WithDatasetArn(const char* value) { SetDatasetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Indicates the status of the <code>CreateDataset</code> operation. </p>
      */
-    inline const DatasetStatus& GetStatus() const{ return m_status; }
+    inline DatasetStatus GetStatus() const { return m_status; }
+    inline void SetStatus(DatasetStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline CreateDatasetResult& WithStatus(DatasetStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Indicates the status of the <code>CreateDataset</code> operation. </p>
-     */
-    inline void SetStatus(const DatasetStatus& value) { m_status = value; }
-
-    /**
-     * <p>Indicates the status of the <code>CreateDataset</code> operation. </p>
-     */
-    inline void SetStatus(DatasetStatus&& value) { m_status = std::move(value); }
-
-    /**
-     * <p>Indicates the status of the <code>CreateDataset</code> operation. </p>
-     */
-    inline CreateDatasetResult& WithStatus(const DatasetStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>Indicates the status of the <code>CreateDataset</code> operation. </p>
-     */
-    inline CreateDatasetResult& WithStatus(DatasetStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline CreateDatasetResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline CreateDatasetResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline CreateDatasetResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    CreateDatasetResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_datasetName;
+    bool m_datasetNameHasBeenSet = false;
 
     Aws::String m_datasetArn;
+    bool m_datasetArnHasBeenSet = false;
 
-    DatasetStatus m_status;
+    DatasetStatus m_status{DatasetStatus::NOT_SET};
+    bool m_statusHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

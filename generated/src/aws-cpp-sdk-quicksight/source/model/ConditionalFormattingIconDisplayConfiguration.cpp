@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-ConditionalFormattingIconDisplayConfiguration::ConditionalFormattingIconDisplayConfiguration() : 
-    m_iconDisplayOption(ConditionalFormattingIconDisplayOption::NOT_SET),
-    m_iconDisplayOptionHasBeenSet(false)
-{
-}
-
-ConditionalFormattingIconDisplayConfiguration::ConditionalFormattingIconDisplayConfiguration(JsonView jsonValue) : 
-    m_iconDisplayOption(ConditionalFormattingIconDisplayOption::NOT_SET),
-    m_iconDisplayOptionHasBeenSet(false)
+ConditionalFormattingIconDisplayConfiguration::ConditionalFormattingIconDisplayConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ConditionalFormattingIconDisplayConfiguration& ConditionalFormattingIconDisplayC
   if(jsonValue.ValueExists("IconDisplayOption"))
   {
     m_iconDisplayOption = ConditionalFormattingIconDisplayOptionMapper::GetConditionalFormattingIconDisplayOptionForName(jsonValue.GetString("IconDisplayOption"));
-
     m_iconDisplayOptionHasBeenSet = true;
   }
-
   return *this;
 }
 

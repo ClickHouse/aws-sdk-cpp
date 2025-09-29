@@ -31,207 +31,95 @@ namespace Model
   class TranslateDocumentResult
   {
   public:
-    AWS_TRANSLATE_API TranslateDocumentResult();
+    AWS_TRANSLATE_API TranslateDocumentResult() = default;
     AWS_TRANSLATE_API TranslateDocumentResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_TRANSLATE_API TranslateDocumentResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The document containing the translated content. The document format matches
      * the source document format.</p>
      */
-    inline const TranslatedDocument& GetTranslatedDocument() const{ return m_translatedDocument; }
+    inline const TranslatedDocument& GetTranslatedDocument() const { return m_translatedDocument; }
+    template<typename TranslatedDocumentT = TranslatedDocument>
+    void SetTranslatedDocument(TranslatedDocumentT&& value) { m_translatedDocumentHasBeenSet = true; m_translatedDocument = std::forward<TranslatedDocumentT>(value); }
+    template<typename TranslatedDocumentT = TranslatedDocument>
+    TranslateDocumentResult& WithTranslatedDocument(TranslatedDocumentT&& value) { SetTranslatedDocument(std::forward<TranslatedDocumentT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The document containing the translated content. The document format matches
-     * the source document format.</p>
-     */
-    inline void SetTranslatedDocument(const TranslatedDocument& value) { m_translatedDocument = value; }
-
-    /**
-     * <p>The document containing the translated content. The document format matches
-     * the source document format.</p>
-     */
-    inline void SetTranslatedDocument(TranslatedDocument&& value) { m_translatedDocument = std::move(value); }
-
-    /**
-     * <p>The document containing the translated content. The document format matches
-     * the source document format.</p>
-     */
-    inline TranslateDocumentResult& WithTranslatedDocument(const TranslatedDocument& value) { SetTranslatedDocument(value); return *this;}
-
-    /**
-     * <p>The document containing the translated content. The document format matches
-     * the source document format.</p>
-     */
-    inline TranslateDocumentResult& WithTranslatedDocument(TranslatedDocument&& value) { SetTranslatedDocument(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The language code of the source document.</p>
      */
-    inline const Aws::String& GetSourceLanguageCode() const{ return m_sourceLanguageCode; }
+    inline const Aws::String& GetSourceLanguageCode() const { return m_sourceLanguageCode; }
+    template<typename SourceLanguageCodeT = Aws::String>
+    void SetSourceLanguageCode(SourceLanguageCodeT&& value) { m_sourceLanguageCodeHasBeenSet = true; m_sourceLanguageCode = std::forward<SourceLanguageCodeT>(value); }
+    template<typename SourceLanguageCodeT = Aws::String>
+    TranslateDocumentResult& WithSourceLanguageCode(SourceLanguageCodeT&& value) { SetSourceLanguageCode(std::forward<SourceLanguageCodeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The language code of the source document.</p>
-     */
-    inline void SetSourceLanguageCode(const Aws::String& value) { m_sourceLanguageCode = value; }
-
-    /**
-     * <p>The language code of the source document.</p>
-     */
-    inline void SetSourceLanguageCode(Aws::String&& value) { m_sourceLanguageCode = std::move(value); }
-
-    /**
-     * <p>The language code of the source document.</p>
-     */
-    inline void SetSourceLanguageCode(const char* value) { m_sourceLanguageCode.assign(value); }
-
-    /**
-     * <p>The language code of the source document.</p>
-     */
-    inline TranslateDocumentResult& WithSourceLanguageCode(const Aws::String& value) { SetSourceLanguageCode(value); return *this;}
-
-    /**
-     * <p>The language code of the source document.</p>
-     */
-    inline TranslateDocumentResult& WithSourceLanguageCode(Aws::String&& value) { SetSourceLanguageCode(std::move(value)); return *this;}
-
-    /**
-     * <p>The language code of the source document.</p>
-     */
-    inline TranslateDocumentResult& WithSourceLanguageCode(const char* value) { SetSourceLanguageCode(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The language code of the translated document. </p>
      */
-    inline const Aws::String& GetTargetLanguageCode() const{ return m_targetLanguageCode; }
+    inline const Aws::String& GetTargetLanguageCode() const { return m_targetLanguageCode; }
+    template<typename TargetLanguageCodeT = Aws::String>
+    void SetTargetLanguageCode(TargetLanguageCodeT&& value) { m_targetLanguageCodeHasBeenSet = true; m_targetLanguageCode = std::forward<TargetLanguageCodeT>(value); }
+    template<typename TargetLanguageCodeT = Aws::String>
+    TranslateDocumentResult& WithTargetLanguageCode(TargetLanguageCodeT&& value) { SetTargetLanguageCode(std::forward<TargetLanguageCodeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The language code of the translated document. </p>
-     */
-    inline void SetTargetLanguageCode(const Aws::String& value) { m_targetLanguageCode = value; }
-
-    /**
-     * <p>The language code of the translated document. </p>
-     */
-    inline void SetTargetLanguageCode(Aws::String&& value) { m_targetLanguageCode = std::move(value); }
-
-    /**
-     * <p>The language code of the translated document. </p>
-     */
-    inline void SetTargetLanguageCode(const char* value) { m_targetLanguageCode.assign(value); }
-
-    /**
-     * <p>The language code of the translated document. </p>
-     */
-    inline TranslateDocumentResult& WithTargetLanguageCode(const Aws::String& value) { SetTargetLanguageCode(value); return *this;}
-
-    /**
-     * <p>The language code of the translated document. </p>
-     */
-    inline TranslateDocumentResult& WithTargetLanguageCode(Aws::String&& value) { SetTargetLanguageCode(std::move(value)); return *this;}
-
-    /**
-     * <p>The language code of the translated document. </p>
-     */
-    inline TranslateDocumentResult& WithTargetLanguageCode(const char* value) { SetTargetLanguageCode(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The names of the custom terminologies applied to the input text by Amazon
      * Translate to produce the translated text document.</p>
      */
-    inline const Aws::Vector<AppliedTerminology>& GetAppliedTerminologies() const{ return m_appliedTerminologies; }
+    inline const Aws::Vector<AppliedTerminology>& GetAppliedTerminologies() const { return m_appliedTerminologies; }
+    template<typename AppliedTerminologiesT = Aws::Vector<AppliedTerminology>>
+    void SetAppliedTerminologies(AppliedTerminologiesT&& value) { m_appliedTerminologiesHasBeenSet = true; m_appliedTerminologies = std::forward<AppliedTerminologiesT>(value); }
+    template<typename AppliedTerminologiesT = Aws::Vector<AppliedTerminology>>
+    TranslateDocumentResult& WithAppliedTerminologies(AppliedTerminologiesT&& value) { SetAppliedTerminologies(std::forward<AppliedTerminologiesT>(value)); return *this;}
+    template<typename AppliedTerminologiesT = AppliedTerminology>
+    TranslateDocumentResult& AddAppliedTerminologies(AppliedTerminologiesT&& value) { m_appliedTerminologiesHasBeenSet = true; m_appliedTerminologies.emplace_back(std::forward<AppliedTerminologiesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The names of the custom terminologies applied to the input text by Amazon
-     * Translate to produce the translated text document.</p>
-     */
-    inline void SetAppliedTerminologies(const Aws::Vector<AppliedTerminology>& value) { m_appliedTerminologies = value; }
-
-    /**
-     * <p>The names of the custom terminologies applied to the input text by Amazon
-     * Translate to produce the translated text document.</p>
-     */
-    inline void SetAppliedTerminologies(Aws::Vector<AppliedTerminology>&& value) { m_appliedTerminologies = std::move(value); }
-
-    /**
-     * <p>The names of the custom terminologies applied to the input text by Amazon
-     * Translate to produce the translated text document.</p>
-     */
-    inline TranslateDocumentResult& WithAppliedTerminologies(const Aws::Vector<AppliedTerminology>& value) { SetAppliedTerminologies(value); return *this;}
-
-    /**
-     * <p>The names of the custom terminologies applied to the input text by Amazon
-     * Translate to produce the translated text document.</p>
-     */
-    inline TranslateDocumentResult& WithAppliedTerminologies(Aws::Vector<AppliedTerminology>&& value) { SetAppliedTerminologies(std::move(value)); return *this;}
-
-    /**
-     * <p>The names of the custom terminologies applied to the input text by Amazon
-     * Translate to produce the translated text document.</p>
-     */
-    inline TranslateDocumentResult& AddAppliedTerminologies(const AppliedTerminology& value) { m_appliedTerminologies.push_back(value); return *this; }
-
-    /**
-     * <p>The names of the custom terminologies applied to the input text by Amazon
-     * Translate to produce the translated text document.</p>
-     */
-    inline TranslateDocumentResult& AddAppliedTerminologies(AppliedTerminology&& value) { m_appliedTerminologies.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const TranslationSettings& GetAppliedSettings() const{ return m_appliedSettings; }
+    inline const TranslationSettings& GetAppliedSettings() const { return m_appliedSettings; }
+    template<typename AppliedSettingsT = TranslationSettings>
+    void SetAppliedSettings(AppliedSettingsT&& value) { m_appliedSettingsHasBeenSet = true; m_appliedSettings = std::forward<AppliedSettingsT>(value); }
+    template<typename AppliedSettingsT = TranslationSettings>
+    TranslateDocumentResult& WithAppliedSettings(AppliedSettingsT&& value) { SetAppliedSettings(std::forward<AppliedSettingsT>(value)); return *this;}
+    ///@}
 
+    ///@{
     
-    inline void SetAppliedSettings(const TranslationSettings& value) { m_appliedSettings = value; }
-
-    
-    inline void SetAppliedSettings(TranslationSettings&& value) { m_appliedSettings = std::move(value); }
-
-    
-    inline TranslateDocumentResult& WithAppliedSettings(const TranslationSettings& value) { SetAppliedSettings(value); return *this;}
-
-    
-    inline TranslateDocumentResult& WithAppliedSettings(TranslationSettings&& value) { SetAppliedSettings(std::move(value)); return *this;}
-
-
-    
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline TranslateDocumentResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline TranslateDocumentResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline TranslateDocumentResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    TranslateDocumentResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     TranslatedDocument m_translatedDocument;
+    bool m_translatedDocumentHasBeenSet = false;
 
     Aws::String m_sourceLanguageCode;
+    bool m_sourceLanguageCodeHasBeenSet = false;
 
     Aws::String m_targetLanguageCode;
+    bool m_targetLanguageCodeHasBeenSet = false;
 
     Aws::Vector<AppliedTerminology> m_appliedTerminologies;
+    bool m_appliedTerminologiesHasBeenSet = false;
 
     TranslationSettings m_appliedSettings;
+    bool m_appliedSettingsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

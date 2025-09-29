@@ -18,15 +18,7 @@ namespace CodeCatalyst
 namespace Model
 {
 
-EventPayload::EventPayload() : 
-    m_contentTypeHasBeenSet(false),
-    m_dataHasBeenSet(false)
-{
-}
-
-EventPayload::EventPayload(JsonView jsonValue) : 
-    m_contentTypeHasBeenSet(false),
-    m_dataHasBeenSet(false)
+EventPayload::EventPayload(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ EventPayload& EventPayload::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("contentType"))
   {
     m_contentType = jsonValue.GetString("contentType");
-
     m_contentTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("data"))
   {
     m_data = jsonValue.GetString("data");
-
     m_dataHasBeenSet = true;
   }
-
   return *this;
 }
 

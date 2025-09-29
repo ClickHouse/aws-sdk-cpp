@@ -32,83 +32,40 @@ namespace Model
   class Bucket
   {
   public:
-    AWS_IOT_API Bucket();
+    AWS_IOT_API Bucket() = default;
     AWS_IOT_API Bucket(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API Bucket& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The value counted for the particular bucket.</p>
      */
-    inline const Aws::String& GetKeyValue() const{ return m_keyValue; }
-
-    /**
-     * <p>The value counted for the particular bucket.</p>
-     */
+    inline const Aws::String& GetKeyValue() const { return m_keyValue; }
     inline bool KeyValueHasBeenSet() const { return m_keyValueHasBeenSet; }
+    template<typename KeyValueT = Aws::String>
+    void SetKeyValue(KeyValueT&& value) { m_keyValueHasBeenSet = true; m_keyValue = std::forward<KeyValueT>(value); }
+    template<typename KeyValueT = Aws::String>
+    Bucket& WithKeyValue(KeyValueT&& value) { SetKeyValue(std::forward<KeyValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The value counted for the particular bucket.</p>
-     */
-    inline void SetKeyValue(const Aws::String& value) { m_keyValueHasBeenSet = true; m_keyValue = value; }
-
-    /**
-     * <p>The value counted for the particular bucket.</p>
-     */
-    inline void SetKeyValue(Aws::String&& value) { m_keyValueHasBeenSet = true; m_keyValue = std::move(value); }
-
-    /**
-     * <p>The value counted for the particular bucket.</p>
-     */
-    inline void SetKeyValue(const char* value) { m_keyValueHasBeenSet = true; m_keyValue.assign(value); }
-
-    /**
-     * <p>The value counted for the particular bucket.</p>
-     */
-    inline Bucket& WithKeyValue(const Aws::String& value) { SetKeyValue(value); return *this;}
-
-    /**
-     * <p>The value counted for the particular bucket.</p>
-     */
-    inline Bucket& WithKeyValue(Aws::String&& value) { SetKeyValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The value counted for the particular bucket.</p>
-     */
-    inline Bucket& WithKeyValue(const char* value) { SetKeyValue(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The number of documents that have the value counted for the particular
      * bucket.</p>
      */
-    inline int GetCount() const{ return m_count; }
-
-    /**
-     * <p>The number of documents that have the value counted for the particular
-     * bucket.</p>
-     */
+    inline int GetCount() const { return m_count; }
     inline bool CountHasBeenSet() const { return m_countHasBeenSet; }
-
-    /**
-     * <p>The number of documents that have the value counted for the particular
-     * bucket.</p>
-     */
     inline void SetCount(int value) { m_countHasBeenSet = true; m_count = value; }
-
-    /**
-     * <p>The number of documents that have the value counted for the particular
-     * bucket.</p>
-     */
     inline Bucket& WithCount(int value) { SetCount(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_keyValue;
     bool m_keyValueHasBeenSet = false;
 
-    int m_count;
+    int m_count{0};
     bool m_countHasBeenSet = false;
   };
 

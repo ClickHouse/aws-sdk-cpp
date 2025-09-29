@@ -38,117 +38,38 @@ namespace Model
   class InstanceIdentity
   {
   public:
-    AWS_DATAPIPELINE_API InstanceIdentity();
+    AWS_DATAPIPELINE_API InstanceIdentity() = default;
     AWS_DATAPIPELINE_API InstanceIdentity(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAPIPELINE_API InstanceIdentity& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAPIPELINE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A description of an EC2 instance that is generated when the instance is
      * launched and exposed to the instance via the instance metadata service in the
      * form of a JSON representation of an object.</p>
      */
-    inline const Aws::String& GetDocument() const{ return m_document; }
-
-    /**
-     * <p>A description of an EC2 instance that is generated when the instance is
-     * launched and exposed to the instance via the instance metadata service in the
-     * form of a JSON representation of an object.</p>
-     */
+    inline const Aws::String& GetDocument() const { return m_document; }
     inline bool DocumentHasBeenSet() const { return m_documentHasBeenSet; }
+    template<typename DocumentT = Aws::String>
+    void SetDocument(DocumentT&& value) { m_documentHasBeenSet = true; m_document = std::forward<DocumentT>(value); }
+    template<typename DocumentT = Aws::String>
+    InstanceIdentity& WithDocument(DocumentT&& value) { SetDocument(std::forward<DocumentT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A description of an EC2 instance that is generated when the instance is
-     * launched and exposed to the instance via the instance metadata service in the
-     * form of a JSON representation of an object.</p>
-     */
-    inline void SetDocument(const Aws::String& value) { m_documentHasBeenSet = true; m_document = value; }
-
-    /**
-     * <p>A description of an EC2 instance that is generated when the instance is
-     * launched and exposed to the instance via the instance metadata service in the
-     * form of a JSON representation of an object.</p>
-     */
-    inline void SetDocument(Aws::String&& value) { m_documentHasBeenSet = true; m_document = std::move(value); }
-
-    /**
-     * <p>A description of an EC2 instance that is generated when the instance is
-     * launched and exposed to the instance via the instance metadata service in the
-     * form of a JSON representation of an object.</p>
-     */
-    inline void SetDocument(const char* value) { m_documentHasBeenSet = true; m_document.assign(value); }
-
-    /**
-     * <p>A description of an EC2 instance that is generated when the instance is
-     * launched and exposed to the instance via the instance metadata service in the
-     * form of a JSON representation of an object.</p>
-     */
-    inline InstanceIdentity& WithDocument(const Aws::String& value) { SetDocument(value); return *this;}
-
-    /**
-     * <p>A description of an EC2 instance that is generated when the instance is
-     * launched and exposed to the instance via the instance metadata service in the
-     * form of a JSON representation of an object.</p>
-     */
-    inline InstanceIdentity& WithDocument(Aws::String&& value) { SetDocument(std::move(value)); return *this;}
-
-    /**
-     * <p>A description of an EC2 instance that is generated when the instance is
-     * launched and exposed to the instance via the instance metadata service in the
-     * form of a JSON representation of an object.</p>
-     */
-    inline InstanceIdentity& WithDocument(const char* value) { SetDocument(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A signature which can be used to verify the accuracy and authenticity of the
      * information provided in the instance identity document.</p>
      */
-    inline const Aws::String& GetSignature() const{ return m_signature; }
-
-    /**
-     * <p>A signature which can be used to verify the accuracy and authenticity of the
-     * information provided in the instance identity document.</p>
-     */
+    inline const Aws::String& GetSignature() const { return m_signature; }
     inline bool SignatureHasBeenSet() const { return m_signatureHasBeenSet; }
-
-    /**
-     * <p>A signature which can be used to verify the accuracy and authenticity of the
-     * information provided in the instance identity document.</p>
-     */
-    inline void SetSignature(const Aws::String& value) { m_signatureHasBeenSet = true; m_signature = value; }
-
-    /**
-     * <p>A signature which can be used to verify the accuracy and authenticity of the
-     * information provided in the instance identity document.</p>
-     */
-    inline void SetSignature(Aws::String&& value) { m_signatureHasBeenSet = true; m_signature = std::move(value); }
-
-    /**
-     * <p>A signature which can be used to verify the accuracy and authenticity of the
-     * information provided in the instance identity document.</p>
-     */
-    inline void SetSignature(const char* value) { m_signatureHasBeenSet = true; m_signature.assign(value); }
-
-    /**
-     * <p>A signature which can be used to verify the accuracy and authenticity of the
-     * information provided in the instance identity document.</p>
-     */
-    inline InstanceIdentity& WithSignature(const Aws::String& value) { SetSignature(value); return *this;}
-
-    /**
-     * <p>A signature which can be used to verify the accuracy and authenticity of the
-     * information provided in the instance identity document.</p>
-     */
-    inline InstanceIdentity& WithSignature(Aws::String&& value) { SetSignature(std::move(value)); return *this;}
-
-    /**
-     * <p>A signature which can be used to verify the accuracy and authenticity of the
-     * information provided in the instance identity document.</p>
-     */
-    inline InstanceIdentity& WithSignature(const char* value) { SetSignature(value); return *this;}
-
+    template<typename SignatureT = Aws::String>
+    void SetSignature(SignatureT&& value) { m_signatureHasBeenSet = true; m_signature = std::forward<SignatureT>(value); }
+    template<typename SignatureT = Aws::String>
+    InstanceIdentity& WithSignature(SignatureT&& value) { SetSignature(std::forward<SignatureT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_document;

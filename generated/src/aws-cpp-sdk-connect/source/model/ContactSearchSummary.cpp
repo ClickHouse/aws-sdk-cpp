@@ -18,37 +18,7 @@ namespace Connect
 namespace Model
 {
 
-ContactSearchSummary::ContactSearchSummary() : 
-    m_arnHasBeenSet(false),
-    m_idHasBeenSet(false),
-    m_initialContactIdHasBeenSet(false),
-    m_previousContactIdHasBeenSet(false),
-    m_initiationMethod(ContactInitiationMethod::NOT_SET),
-    m_initiationMethodHasBeenSet(false),
-    m_channel(Channel::NOT_SET),
-    m_channelHasBeenSet(false),
-    m_queueInfoHasBeenSet(false),
-    m_agentInfoHasBeenSet(false),
-    m_initiationTimestampHasBeenSet(false),
-    m_disconnectTimestampHasBeenSet(false),
-    m_scheduledTimestampHasBeenSet(false)
-{
-}
-
-ContactSearchSummary::ContactSearchSummary(JsonView jsonValue) : 
-    m_arnHasBeenSet(false),
-    m_idHasBeenSet(false),
-    m_initialContactIdHasBeenSet(false),
-    m_previousContactIdHasBeenSet(false),
-    m_initiationMethod(ContactInitiationMethod::NOT_SET),
-    m_initiationMethodHasBeenSet(false),
-    m_channel(Channel::NOT_SET),
-    m_channelHasBeenSet(false),
-    m_queueInfoHasBeenSet(false),
-    m_agentInfoHasBeenSet(false),
-    m_initiationTimestampHasBeenSet(false),
-    m_disconnectTimestampHasBeenSet(false),
-    m_scheduledTimestampHasBeenSet(false)
+ContactSearchSummary::ContactSearchSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -58,80 +28,77 @@ ContactSearchSummary& ContactSearchSummary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Arn"))
   {
     m_arn = jsonValue.GetString("Arn");
-
     m_arnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Id"))
   {
     m_id = jsonValue.GetString("Id");
-
     m_idHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("InitialContactId"))
   {
     m_initialContactId = jsonValue.GetString("InitialContactId");
-
     m_initialContactIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PreviousContactId"))
   {
     m_previousContactId = jsonValue.GetString("PreviousContactId");
-
     m_previousContactIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("InitiationMethod"))
   {
     m_initiationMethod = ContactInitiationMethodMapper::GetContactInitiationMethodForName(jsonValue.GetString("InitiationMethod"));
-
     m_initiationMethodHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Channel"))
   {
     m_channel = ChannelMapper::GetChannelForName(jsonValue.GetString("Channel"));
-
     m_channelHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("QueueInfo"))
   {
     m_queueInfo = jsonValue.GetObject("QueueInfo");
-
     m_queueInfoHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AgentInfo"))
   {
     m_agentInfo = jsonValue.GetObject("AgentInfo");
-
     m_agentInfoHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("InitiationTimestamp"))
   {
     m_initiationTimestamp = jsonValue.GetDouble("InitiationTimestamp");
-
     m_initiationTimestampHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DisconnectTimestamp"))
   {
     m_disconnectTimestamp = jsonValue.GetDouble("DisconnectTimestamp");
-
     m_disconnectTimestampHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ScheduledTimestamp"))
   {
     m_scheduledTimestamp = jsonValue.GetDouble("ScheduledTimestamp");
-
     m_scheduledTimestampHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("SegmentAttributes"))
+  {
+    Aws::Map<Aws::String, JsonView> segmentAttributesJsonMap = jsonValue.GetObject("SegmentAttributes").GetAllObjects();
+    for(auto& segmentAttributesItem : segmentAttributesJsonMap)
+    {
+      m_segmentAttributes[segmentAttributesItem.first] = segmentAttributesItem.second.AsObject();
+    }
+    m_segmentAttributesHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("Name"))
+  {
+    m_name = jsonValue.GetString("Name");
+    m_nameHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("RoutingCriteria"))
+  {
+    m_routingCriteria = jsonValue.GetObject("RoutingCriteria");
+    m_routingCriteriaHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -198,6 +165,29 @@ JsonValue ContactSearchSummary::Jsonize() const
   if(m_scheduledTimestampHasBeenSet)
   {
    payload.WithDouble("ScheduledTimestamp", m_scheduledTimestamp.SecondsWithMSPrecision());
+  }
+
+  if(m_segmentAttributesHasBeenSet)
+  {
+   JsonValue segmentAttributesJsonMap;
+   for(auto& segmentAttributesItem : m_segmentAttributes)
+   {
+     segmentAttributesJsonMap.WithObject(segmentAttributesItem.first, segmentAttributesItem.second.Jsonize());
+   }
+   payload.WithObject("SegmentAttributes", std::move(segmentAttributesJsonMap));
+
+  }
+
+  if(m_nameHasBeenSet)
+  {
+   payload.WithString("Name", m_name);
+
+  }
+
+  if(m_routingCriteriaHasBeenSet)
+  {
+   payload.WithObject("RoutingCriteria", m_routingCriteria.Jsonize());
+
   }
 
   return payload;

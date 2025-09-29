@@ -24,58 +24,33 @@ namespace Model
 {
 
   /**
-   * <p>Specifies the serializer that you want Kinesis Data Firehose to use to
-   * convert the format of your data before it writes it to Amazon S3. This parameter
-   * is required if <code>Enabled</code> is set to true.</p><p><h3>See Also:</h3>  
-   * <a
+   * <p>Specifies the serializer that you want Firehose to use to convert the format
+   * of your data before it writes it to Amazon S3. This parameter is required if
+   * <code>Enabled</code> is set to true.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/firehose-2015-08-04/OutputFormatConfiguration">AWS
    * API Reference</a></p>
    */
   class OutputFormatConfiguration
   {
   public:
-    AWS_FIREHOSE_API OutputFormatConfiguration();
+    AWS_FIREHOSE_API OutputFormatConfiguration() = default;
     AWS_FIREHOSE_API OutputFormatConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_FIREHOSE_API OutputFormatConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FIREHOSE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specifies which serializer to use. You can choose either the ORC SerDe or the
      * Parquet SerDe. If both are non-null, the server rejects the request.</p>
      */
-    inline const Serializer& GetSerializer() const{ return m_serializer; }
-
-    /**
-     * <p>Specifies which serializer to use. You can choose either the ORC SerDe or the
-     * Parquet SerDe. If both are non-null, the server rejects the request.</p>
-     */
+    inline const Serializer& GetSerializer() const { return m_serializer; }
     inline bool SerializerHasBeenSet() const { return m_serializerHasBeenSet; }
-
-    /**
-     * <p>Specifies which serializer to use. You can choose either the ORC SerDe or the
-     * Parquet SerDe. If both are non-null, the server rejects the request.</p>
-     */
-    inline void SetSerializer(const Serializer& value) { m_serializerHasBeenSet = true; m_serializer = value; }
-
-    /**
-     * <p>Specifies which serializer to use. You can choose either the ORC SerDe or the
-     * Parquet SerDe. If both are non-null, the server rejects the request.</p>
-     */
-    inline void SetSerializer(Serializer&& value) { m_serializerHasBeenSet = true; m_serializer = std::move(value); }
-
-    /**
-     * <p>Specifies which serializer to use. You can choose either the ORC SerDe or the
-     * Parquet SerDe. If both are non-null, the server rejects the request.</p>
-     */
-    inline OutputFormatConfiguration& WithSerializer(const Serializer& value) { SetSerializer(value); return *this;}
-
-    /**
-     * <p>Specifies which serializer to use. You can choose either the ORC SerDe or the
-     * Parquet SerDe. If both are non-null, the server rejects the request.</p>
-     */
-    inline OutputFormatConfiguration& WithSerializer(Serializer&& value) { SetSerializer(std::move(value)); return *this;}
-
+    template<typename SerializerT = Serializer>
+    void SetSerializer(SerializerT&& value) { m_serializerHasBeenSet = true; m_serializer = std::forward<SerializerT>(value); }
+    template<typename SerializerT = Serializer>
+    OutputFormatConfiguration& WithSerializer(SerializerT&& value) { SetSerializer(std::forward<SerializerT>(value)); return *this;}
+    ///@}
   private:
 
     Serializer m_serializer;

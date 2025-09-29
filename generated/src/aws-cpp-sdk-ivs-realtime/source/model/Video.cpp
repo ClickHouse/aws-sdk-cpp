@@ -18,61 +18,33 @@ namespace ivsrealtime
 namespace Model
 {
 
-Video::Video() : 
-    m_bitrate(0),
-    m_bitrateHasBeenSet(false),
-    m_framerate(0.0),
-    m_framerateHasBeenSet(false),
-    m_height(0),
-    m_heightHasBeenSet(false),
-    m_width(0),
-    m_widthHasBeenSet(false)
-{
-}
-
-Video::Video(JsonView jsonValue) : 
-    m_bitrate(0),
-    m_bitrateHasBeenSet(false),
-    m_framerate(0.0),
-    m_framerateHasBeenSet(false),
-    m_height(0),
-    m_heightHasBeenSet(false),
-    m_width(0),
-    m_widthHasBeenSet(false)
+Video::Video(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 Video& Video::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("bitrate"))
-  {
-    m_bitrate = jsonValue.GetInteger("bitrate");
-
-    m_bitrateHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("framerate"))
-  {
-    m_framerate = jsonValue.GetDouble("framerate");
-
-    m_framerateHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("height"))
-  {
-    m_height = jsonValue.GetInteger("height");
-
-    m_heightHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("width"))
   {
     m_width = jsonValue.GetInteger("width");
-
     m_widthHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("height"))
+  {
+    m_height = jsonValue.GetInteger("height");
+    m_heightHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("framerate"))
+  {
+    m_framerate = jsonValue.GetDouble("framerate");
+    m_framerateHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("bitrate"))
+  {
+    m_bitrate = jsonValue.GetInteger("bitrate");
+    m_bitrateHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -80,15 +52,9 @@ JsonValue Video::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_bitrateHasBeenSet)
+  if(m_widthHasBeenSet)
   {
-   payload.WithInteger("bitrate", m_bitrate);
-
-  }
-
-  if(m_framerateHasBeenSet)
-  {
-   payload.WithDouble("framerate", m_framerate);
+   payload.WithInteger("width", m_width);
 
   }
 
@@ -98,9 +64,15 @@ JsonValue Video::Jsonize() const
 
   }
 
-  if(m_widthHasBeenSet)
+  if(m_framerateHasBeenSet)
   {
-   payload.WithInteger("width", m_width);
+   payload.WithDouble("framerate", m_framerate);
+
+  }
+
+  if(m_bitrateHasBeenSet)
+  {
+   payload.WithInteger("bitrate", m_bitrate);
 
   }
 

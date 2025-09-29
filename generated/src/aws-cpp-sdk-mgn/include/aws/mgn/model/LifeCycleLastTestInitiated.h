@@ -31,93 +31,35 @@ namespace Model
   class LifeCycleLastTestInitiated
   {
   public:
-    AWS_MGN_API LifeCycleLastTestInitiated();
+    AWS_MGN_API LifeCycleLastTestInitiated() = default;
     AWS_MGN_API LifeCycleLastTestInitiated(Aws::Utils::Json::JsonView jsonValue);
     AWS_MGN_API LifeCycleLastTestInitiated& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MGN_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Lifecycle last Test initiated API call date and time.</p>
      */
-    inline const Aws::String& GetApiCallDateTime() const{ return m_apiCallDateTime; }
-
-    /**
-     * <p>Lifecycle last Test initiated API call date and time.</p>
-     */
+    inline const Aws::String& GetApiCallDateTime() const { return m_apiCallDateTime; }
     inline bool ApiCallDateTimeHasBeenSet() const { return m_apiCallDateTimeHasBeenSet; }
+    template<typename ApiCallDateTimeT = Aws::String>
+    void SetApiCallDateTime(ApiCallDateTimeT&& value) { m_apiCallDateTimeHasBeenSet = true; m_apiCallDateTime = std::forward<ApiCallDateTimeT>(value); }
+    template<typename ApiCallDateTimeT = Aws::String>
+    LifeCycleLastTestInitiated& WithApiCallDateTime(ApiCallDateTimeT&& value) { SetApiCallDateTime(std::forward<ApiCallDateTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Lifecycle last Test initiated API call date and time.</p>
-     */
-    inline void SetApiCallDateTime(const Aws::String& value) { m_apiCallDateTimeHasBeenSet = true; m_apiCallDateTime = value; }
-
-    /**
-     * <p>Lifecycle last Test initiated API call date and time.</p>
-     */
-    inline void SetApiCallDateTime(Aws::String&& value) { m_apiCallDateTimeHasBeenSet = true; m_apiCallDateTime = std::move(value); }
-
-    /**
-     * <p>Lifecycle last Test initiated API call date and time.</p>
-     */
-    inline void SetApiCallDateTime(const char* value) { m_apiCallDateTimeHasBeenSet = true; m_apiCallDateTime.assign(value); }
-
-    /**
-     * <p>Lifecycle last Test initiated API call date and time.</p>
-     */
-    inline LifeCycleLastTestInitiated& WithApiCallDateTime(const Aws::String& value) { SetApiCallDateTime(value); return *this;}
-
-    /**
-     * <p>Lifecycle last Test initiated API call date and time.</p>
-     */
-    inline LifeCycleLastTestInitiated& WithApiCallDateTime(Aws::String&& value) { SetApiCallDateTime(std::move(value)); return *this;}
-
-    /**
-     * <p>Lifecycle last Test initiated API call date and time.</p>
-     */
-    inline LifeCycleLastTestInitiated& WithApiCallDateTime(const char* value) { SetApiCallDateTime(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Lifecycle last Test initiated Job ID.</p>
      */
-    inline const Aws::String& GetJobID() const{ return m_jobID; }
-
-    /**
-     * <p>Lifecycle last Test initiated Job ID.</p>
-     */
+    inline const Aws::String& GetJobID() const { return m_jobID; }
     inline bool JobIDHasBeenSet() const { return m_jobIDHasBeenSet; }
-
-    /**
-     * <p>Lifecycle last Test initiated Job ID.</p>
-     */
-    inline void SetJobID(const Aws::String& value) { m_jobIDHasBeenSet = true; m_jobID = value; }
-
-    /**
-     * <p>Lifecycle last Test initiated Job ID.</p>
-     */
-    inline void SetJobID(Aws::String&& value) { m_jobIDHasBeenSet = true; m_jobID = std::move(value); }
-
-    /**
-     * <p>Lifecycle last Test initiated Job ID.</p>
-     */
-    inline void SetJobID(const char* value) { m_jobIDHasBeenSet = true; m_jobID.assign(value); }
-
-    /**
-     * <p>Lifecycle last Test initiated Job ID.</p>
-     */
-    inline LifeCycleLastTestInitiated& WithJobID(const Aws::String& value) { SetJobID(value); return *this;}
-
-    /**
-     * <p>Lifecycle last Test initiated Job ID.</p>
-     */
-    inline LifeCycleLastTestInitiated& WithJobID(Aws::String&& value) { SetJobID(std::move(value)); return *this;}
-
-    /**
-     * <p>Lifecycle last Test initiated Job ID.</p>
-     */
-    inline LifeCycleLastTestInitiated& WithJobID(const char* value) { SetJobID(value); return *this;}
-
+    template<typename JobIDT = Aws::String>
+    void SetJobID(JobIDT&& value) { m_jobIDHasBeenSet = true; m_jobID = std::forward<JobIDT>(value); }
+    template<typename JobIDT = Aws::String>
+    LifeCycleLastTestInitiated& WithJobID(JobIDT&& value) { SetJobID(std::forward<JobIDT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_apiCallDateTime;

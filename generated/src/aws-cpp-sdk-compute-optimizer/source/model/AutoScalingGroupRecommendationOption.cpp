@@ -18,33 +18,7 @@ namespace ComputeOptimizer
 namespace Model
 {
 
-AutoScalingGroupRecommendationOption::AutoScalingGroupRecommendationOption() : 
-    m_configurationHasBeenSet(false),
-    m_projectedUtilizationMetricsHasBeenSet(false),
-    m_performanceRisk(0.0),
-    m_performanceRiskHasBeenSet(false),
-    m_rank(0),
-    m_rankHasBeenSet(false),
-    m_savingsOpportunityHasBeenSet(false),
-    m_migrationEffort(MigrationEffort::NOT_SET),
-    m_migrationEffortHasBeenSet(false),
-    m_instanceGpuInfoHasBeenSet(false),
-    m_savingsOpportunityAfterDiscountsHasBeenSet(false)
-{
-}
-
-AutoScalingGroupRecommendationOption::AutoScalingGroupRecommendationOption(JsonView jsonValue) : 
-    m_configurationHasBeenSet(false),
-    m_projectedUtilizationMetricsHasBeenSet(false),
-    m_performanceRisk(0.0),
-    m_performanceRiskHasBeenSet(false),
-    m_rank(0),
-    m_rankHasBeenSet(false),
-    m_savingsOpportunityHasBeenSet(false),
-    m_migrationEffort(MigrationEffort::NOT_SET),
-    m_migrationEffortHasBeenSet(false),
-    m_instanceGpuInfoHasBeenSet(false),
-    m_savingsOpportunityAfterDiscountsHasBeenSet(false)
+AutoScalingGroupRecommendationOption::AutoScalingGroupRecommendationOption(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -54,10 +28,13 @@ AutoScalingGroupRecommendationOption& AutoScalingGroupRecommendationOption::oper
   if(jsonValue.ValueExists("configuration"))
   {
     m_configuration = jsonValue.GetObject("configuration");
-
     m_configurationHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("instanceGpuInfo"))
+  {
+    m_instanceGpuInfo = jsonValue.GetObject("instanceGpuInfo");
+    m_instanceGpuInfoHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("projectedUtilizationMetrics"))
   {
     Aws::Utils::Array<JsonView> projectedUtilizationMetricsJsonList = jsonValue.GetArray("projectedUtilizationMetrics");
@@ -67,49 +44,31 @@ AutoScalingGroupRecommendationOption& AutoScalingGroupRecommendationOption::oper
     }
     m_projectedUtilizationMetricsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("performanceRisk"))
   {
     m_performanceRisk = jsonValue.GetDouble("performanceRisk");
-
     m_performanceRiskHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("rank"))
   {
     m_rank = jsonValue.GetInteger("rank");
-
     m_rankHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("savingsOpportunity"))
   {
     m_savingsOpportunity = jsonValue.GetObject("savingsOpportunity");
-
     m_savingsOpportunityHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("migrationEffort"))
-  {
-    m_migrationEffort = MigrationEffortMapper::GetMigrationEffortForName(jsonValue.GetString("migrationEffort"));
-
-    m_migrationEffortHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("instanceGpuInfo"))
-  {
-    m_instanceGpuInfo = jsonValue.GetObject("instanceGpuInfo");
-
-    m_instanceGpuInfoHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("savingsOpportunityAfterDiscounts"))
   {
     m_savingsOpportunityAfterDiscounts = jsonValue.GetObject("savingsOpportunityAfterDiscounts");
-
     m_savingsOpportunityAfterDiscountsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("migrationEffort"))
+  {
+    m_migrationEffort = MigrationEffortMapper::GetMigrationEffortForName(jsonValue.GetString("migrationEffort"));
+    m_migrationEffortHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -120,6 +79,12 @@ JsonValue AutoScalingGroupRecommendationOption::Jsonize() const
   if(m_configurationHasBeenSet)
   {
    payload.WithObject("configuration", m_configuration.Jsonize());
+
+  }
+
+  if(m_instanceGpuInfoHasBeenSet)
+  {
+   payload.WithObject("instanceGpuInfo", m_instanceGpuInfo.Jsonize());
 
   }
 
@@ -152,21 +117,15 @@ JsonValue AutoScalingGroupRecommendationOption::Jsonize() const
 
   }
 
-  if(m_migrationEffortHasBeenSet)
-  {
-   payload.WithString("migrationEffort", MigrationEffortMapper::GetNameForMigrationEffort(m_migrationEffort));
-  }
-
-  if(m_instanceGpuInfoHasBeenSet)
-  {
-   payload.WithObject("instanceGpuInfo", m_instanceGpuInfo.Jsonize());
-
-  }
-
   if(m_savingsOpportunityAfterDiscountsHasBeenSet)
   {
    payload.WithObject("savingsOpportunityAfterDiscounts", m_savingsOpportunityAfterDiscounts.Jsonize());
 
+  }
+
+  if(m_migrationEffortHasBeenSet)
+  {
+   payload.WithString("migrationEffort", MigrationEffortMapper::GetNameForMigrationEffort(m_migrationEffort));
   }
 
   return payload;

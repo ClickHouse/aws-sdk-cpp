@@ -31,79 +31,39 @@ namespace Model
   class WiFiAccessPoint
   {
   public:
-    AWS_IOTWIRELESS_API WiFiAccessPoint();
+    AWS_IOTWIRELESS_API WiFiAccessPoint() = default;
     AWS_IOTWIRELESS_API WiFiAccessPoint(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTWIRELESS_API WiFiAccessPoint& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTWIRELESS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Wi-Fi MAC Address.</p>
      */
-    inline const Aws::String& GetMacAddress() const{ return m_macAddress; }
-
-    /**
-     * <p>Wi-Fi MAC Address.</p>
-     */
+    inline const Aws::String& GetMacAddress() const { return m_macAddress; }
     inline bool MacAddressHasBeenSet() const { return m_macAddressHasBeenSet; }
+    template<typename MacAddressT = Aws::String>
+    void SetMacAddress(MacAddressT&& value) { m_macAddressHasBeenSet = true; m_macAddress = std::forward<MacAddressT>(value); }
+    template<typename MacAddressT = Aws::String>
+    WiFiAccessPoint& WithMacAddress(MacAddressT&& value) { SetMacAddress(std::forward<MacAddressT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Wi-Fi MAC Address.</p>
-     */
-    inline void SetMacAddress(const Aws::String& value) { m_macAddressHasBeenSet = true; m_macAddress = value; }
-
-    /**
-     * <p>Wi-Fi MAC Address.</p>
-     */
-    inline void SetMacAddress(Aws::String&& value) { m_macAddressHasBeenSet = true; m_macAddress = std::move(value); }
-
-    /**
-     * <p>Wi-Fi MAC Address.</p>
-     */
-    inline void SetMacAddress(const char* value) { m_macAddressHasBeenSet = true; m_macAddress.assign(value); }
-
-    /**
-     * <p>Wi-Fi MAC Address.</p>
-     */
-    inline WiFiAccessPoint& WithMacAddress(const Aws::String& value) { SetMacAddress(value); return *this;}
-
-    /**
-     * <p>Wi-Fi MAC Address.</p>
-     */
-    inline WiFiAccessPoint& WithMacAddress(Aws::String&& value) { SetMacAddress(std::move(value)); return *this;}
-
-    /**
-     * <p>Wi-Fi MAC Address.</p>
-     */
-    inline WiFiAccessPoint& WithMacAddress(const char* value) { SetMacAddress(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Received signal strength (dBm) of the WLAN measurement data.</p>
      */
-    inline int GetRss() const{ return m_rss; }
-
-    /**
-     * <p>Received signal strength (dBm) of the WLAN measurement data.</p>
-     */
+    inline int GetRss() const { return m_rss; }
     inline bool RssHasBeenSet() const { return m_rssHasBeenSet; }
-
-    /**
-     * <p>Received signal strength (dBm) of the WLAN measurement data.</p>
-     */
     inline void SetRss(int value) { m_rssHasBeenSet = true; m_rss = value; }
-
-    /**
-     * <p>Received signal strength (dBm) of the WLAN measurement data.</p>
-     */
     inline WiFiAccessPoint& WithRss(int value) { SetRss(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_macAddress;
     bool m_macAddressHasBeenSet = false;
 
-    int m_rss;
+    int m_rss{0};
     bool m_rssHasBeenSet = false;
   };
 

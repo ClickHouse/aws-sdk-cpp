@@ -18,17 +18,7 @@ namespace DeviceFarm
 namespace Model
 {
 
-DeviceSelectionConfiguration::DeviceSelectionConfiguration() : 
-    m_filtersHasBeenSet(false),
-    m_maxDevices(0),
-    m_maxDevicesHasBeenSet(false)
-{
-}
-
-DeviceSelectionConfiguration::DeviceSelectionConfiguration(JsonView jsonValue) : 
-    m_filtersHasBeenSet(false),
-    m_maxDevices(0),
-    m_maxDevicesHasBeenSet(false)
+DeviceSelectionConfiguration::DeviceSelectionConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,14 +34,11 @@ DeviceSelectionConfiguration& DeviceSelectionConfiguration::operator =(JsonView 
     }
     m_filtersHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("maxDevices"))
   {
     m_maxDevices = jsonValue.GetInteger("maxDevices");
-
     m_maxDevicesHasBeenSet = true;
   }
-
   return *this;
 }
 

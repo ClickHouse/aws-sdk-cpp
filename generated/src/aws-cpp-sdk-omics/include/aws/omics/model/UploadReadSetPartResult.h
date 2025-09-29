@@ -27,80 +27,38 @@ namespace Model
   class UploadReadSetPartResult
   {
   public:
-    AWS_OMICS_API UploadReadSetPartResult();
+    AWS_OMICS_API UploadReadSetPartResult() = default;
     AWS_OMICS_API UploadReadSetPartResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_OMICS_API UploadReadSetPartResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
-     * <p> An identifier used to confirm that parts are being added to the intended
-     * upload. </p>
+     * <p>An identifier used to confirm that parts are being added to the intended
+     * upload.</p>
      */
-    inline const Aws::String& GetChecksum() const{ return m_checksum; }
+    inline const Aws::String& GetChecksum() const { return m_checksum; }
+    template<typename ChecksumT = Aws::String>
+    void SetChecksum(ChecksumT&& value) { m_checksumHasBeenSet = true; m_checksum = std::forward<ChecksumT>(value); }
+    template<typename ChecksumT = Aws::String>
+    UploadReadSetPartResult& WithChecksum(ChecksumT&& value) { SetChecksum(std::forward<ChecksumT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> An identifier used to confirm that parts are being added to the intended
-     * upload. </p>
-     */
-    inline void SetChecksum(const Aws::String& value) { m_checksum = value; }
-
-    /**
-     * <p> An identifier used to confirm that parts are being added to the intended
-     * upload. </p>
-     */
-    inline void SetChecksum(Aws::String&& value) { m_checksum = std::move(value); }
-
-    /**
-     * <p> An identifier used to confirm that parts are being added to the intended
-     * upload. </p>
-     */
-    inline void SetChecksum(const char* value) { m_checksum.assign(value); }
-
-    /**
-     * <p> An identifier used to confirm that parts are being added to the intended
-     * upload. </p>
-     */
-    inline UploadReadSetPartResult& WithChecksum(const Aws::String& value) { SetChecksum(value); return *this;}
-
-    /**
-     * <p> An identifier used to confirm that parts are being added to the intended
-     * upload. </p>
-     */
-    inline UploadReadSetPartResult& WithChecksum(Aws::String&& value) { SetChecksum(std::move(value)); return *this;}
-
-    /**
-     * <p> An identifier used to confirm that parts are being added to the intended
-     * upload. </p>
-     */
-    inline UploadReadSetPartResult& WithChecksum(const char* value) { SetChecksum(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline UploadReadSetPartResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline UploadReadSetPartResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline UploadReadSetPartResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    UploadReadSetPartResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_checksum;
+    bool m_checksumHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

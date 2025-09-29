@@ -32,93 +32,35 @@ namespace Model
   class MetadataKeyValuePair
   {
   public:
-    AWS_GLUE_API MetadataKeyValuePair();
+    AWS_GLUE_API MetadataKeyValuePair() = default;
     AWS_GLUE_API MetadataKeyValuePair(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API MetadataKeyValuePair& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A metadata key.</p>
      */
-    inline const Aws::String& GetMetadataKey() const{ return m_metadataKey; }
-
-    /**
-     * <p>A metadata key.</p>
-     */
+    inline const Aws::String& GetMetadataKey() const { return m_metadataKey; }
     inline bool MetadataKeyHasBeenSet() const { return m_metadataKeyHasBeenSet; }
+    template<typename MetadataKeyT = Aws::String>
+    void SetMetadataKey(MetadataKeyT&& value) { m_metadataKeyHasBeenSet = true; m_metadataKey = std::forward<MetadataKeyT>(value); }
+    template<typename MetadataKeyT = Aws::String>
+    MetadataKeyValuePair& WithMetadataKey(MetadataKeyT&& value) { SetMetadataKey(std::forward<MetadataKeyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A metadata key.</p>
-     */
-    inline void SetMetadataKey(const Aws::String& value) { m_metadataKeyHasBeenSet = true; m_metadataKey = value; }
-
-    /**
-     * <p>A metadata key.</p>
-     */
-    inline void SetMetadataKey(Aws::String&& value) { m_metadataKeyHasBeenSet = true; m_metadataKey = std::move(value); }
-
-    /**
-     * <p>A metadata key.</p>
-     */
-    inline void SetMetadataKey(const char* value) { m_metadataKeyHasBeenSet = true; m_metadataKey.assign(value); }
-
-    /**
-     * <p>A metadata key.</p>
-     */
-    inline MetadataKeyValuePair& WithMetadataKey(const Aws::String& value) { SetMetadataKey(value); return *this;}
-
-    /**
-     * <p>A metadata key.</p>
-     */
-    inline MetadataKeyValuePair& WithMetadataKey(Aws::String&& value) { SetMetadataKey(std::move(value)); return *this;}
-
-    /**
-     * <p>A metadata key.</p>
-     */
-    inline MetadataKeyValuePair& WithMetadataKey(const char* value) { SetMetadataKey(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A metadata key’s corresponding value.</p>
      */
-    inline const Aws::String& GetMetadataValue() const{ return m_metadataValue; }
-
-    /**
-     * <p>A metadata key’s corresponding value.</p>
-     */
+    inline const Aws::String& GetMetadataValue() const { return m_metadataValue; }
     inline bool MetadataValueHasBeenSet() const { return m_metadataValueHasBeenSet; }
-
-    /**
-     * <p>A metadata key’s corresponding value.</p>
-     */
-    inline void SetMetadataValue(const Aws::String& value) { m_metadataValueHasBeenSet = true; m_metadataValue = value; }
-
-    /**
-     * <p>A metadata key’s corresponding value.</p>
-     */
-    inline void SetMetadataValue(Aws::String&& value) { m_metadataValueHasBeenSet = true; m_metadataValue = std::move(value); }
-
-    /**
-     * <p>A metadata key’s corresponding value.</p>
-     */
-    inline void SetMetadataValue(const char* value) { m_metadataValueHasBeenSet = true; m_metadataValue.assign(value); }
-
-    /**
-     * <p>A metadata key’s corresponding value.</p>
-     */
-    inline MetadataKeyValuePair& WithMetadataValue(const Aws::String& value) { SetMetadataValue(value); return *this;}
-
-    /**
-     * <p>A metadata key’s corresponding value.</p>
-     */
-    inline MetadataKeyValuePair& WithMetadataValue(Aws::String&& value) { SetMetadataValue(std::move(value)); return *this;}
-
-    /**
-     * <p>A metadata key’s corresponding value.</p>
-     */
-    inline MetadataKeyValuePair& WithMetadataValue(const char* value) { SetMetadataValue(value); return *this;}
-
+    template<typename MetadataValueT = Aws::String>
+    void SetMetadataValue(MetadataValueT&& value) { m_metadataValueHasBeenSet = true; m_metadataValue = std::forward<MetadataValueT>(value); }
+    template<typename MetadataValueT = Aws::String>
+    MetadataKeyValuePair& WithMetadataValue(MetadataValueT&& value) { SetMetadataValue(std::forward<MetadataValueT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_metadataKey;

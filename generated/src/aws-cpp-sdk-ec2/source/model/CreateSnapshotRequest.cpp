@@ -10,16 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-CreateSnapshotRequest::CreateSnapshotRequest() : 
-    m_descriptionHasBeenSet(false),
-    m_outpostArnHasBeenSet(false),
-    m_volumeIdHasBeenSet(false),
-    m_tagSpecificationsHasBeenSet(false),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false)
-{
-}
-
 Aws::String CreateSnapshotRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -47,6 +37,11 @@ Aws::String CreateSnapshotRequest::SerializePayload() const
       item.OutputToStream(ss, "TagSpecification.", tagSpecificationsCount, "");
       tagSpecificationsCount++;
     }
+  }
+
+  if(m_locationHasBeenSet)
+  {
+    ss << "Location=" << StringUtils::URLEncode(SnapshotLocationEnumMapper::GetNameForSnapshotLocationEnum(m_location)) << "&";
   }
 
   if(m_dryRunHasBeenSet)

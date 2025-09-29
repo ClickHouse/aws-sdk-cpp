@@ -19,13 +19,7 @@ namespace SQS
 namespace Model
 {
 
-ResponseMetadata::ResponseMetadata() : 
-    m_requestIdHasBeenSet(false)
-{
-}
-
-ResponseMetadata::ResponseMetadata(JsonView jsonValue) : 
-    m_requestIdHasBeenSet(false)
+ResponseMetadata::ResponseMetadata(JsonView jsonValue)
 {
   *this = jsonValue;
 }

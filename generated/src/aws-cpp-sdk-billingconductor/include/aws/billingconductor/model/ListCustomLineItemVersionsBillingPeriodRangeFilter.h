@@ -32,109 +32,37 @@ namespace Model
   class ListCustomLineItemVersionsBillingPeriodRangeFilter
   {
   public:
-    AWS_BILLINGCONDUCTOR_API ListCustomLineItemVersionsBillingPeriodRangeFilter();
+    AWS_BILLINGCONDUCTOR_API ListCustomLineItemVersionsBillingPeriodRangeFilter() = default;
     AWS_BILLINGCONDUCTOR_API ListCustomLineItemVersionsBillingPeriodRangeFilter(Aws::Utils::Json::JsonView jsonValue);
     AWS_BILLINGCONDUCTOR_API ListCustomLineItemVersionsBillingPeriodRangeFilter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_BILLINGCONDUCTOR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The inclusive start billing period that defines a billing period range where
      * a custom line item version is applied.</p>
      */
-    inline const Aws::String& GetStartBillingPeriod() const{ return m_startBillingPeriod; }
-
-    /**
-     * <p>The inclusive start billing period that defines a billing period range where
-     * a custom line item version is applied.</p>
-     */
+    inline const Aws::String& GetStartBillingPeriod() const { return m_startBillingPeriod; }
     inline bool StartBillingPeriodHasBeenSet() const { return m_startBillingPeriodHasBeenSet; }
+    template<typename StartBillingPeriodT = Aws::String>
+    void SetStartBillingPeriod(StartBillingPeriodT&& value) { m_startBillingPeriodHasBeenSet = true; m_startBillingPeriod = std::forward<StartBillingPeriodT>(value); }
+    template<typename StartBillingPeriodT = Aws::String>
+    ListCustomLineItemVersionsBillingPeriodRangeFilter& WithStartBillingPeriod(StartBillingPeriodT&& value) { SetStartBillingPeriod(std::forward<StartBillingPeriodT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The inclusive start billing period that defines a billing period range where
-     * a custom line item version is applied.</p>
-     */
-    inline void SetStartBillingPeriod(const Aws::String& value) { m_startBillingPeriodHasBeenSet = true; m_startBillingPeriod = value; }
-
-    /**
-     * <p>The inclusive start billing period that defines a billing period range where
-     * a custom line item version is applied.</p>
-     */
-    inline void SetStartBillingPeriod(Aws::String&& value) { m_startBillingPeriodHasBeenSet = true; m_startBillingPeriod = std::move(value); }
-
-    /**
-     * <p>The inclusive start billing period that defines a billing period range where
-     * a custom line item version is applied.</p>
-     */
-    inline void SetStartBillingPeriod(const char* value) { m_startBillingPeriodHasBeenSet = true; m_startBillingPeriod.assign(value); }
-
-    /**
-     * <p>The inclusive start billing period that defines a billing period range where
-     * a custom line item version is applied.</p>
-     */
-    inline ListCustomLineItemVersionsBillingPeriodRangeFilter& WithStartBillingPeriod(const Aws::String& value) { SetStartBillingPeriod(value); return *this;}
-
-    /**
-     * <p>The inclusive start billing period that defines a billing period range where
-     * a custom line item version is applied.</p>
-     */
-    inline ListCustomLineItemVersionsBillingPeriodRangeFilter& WithStartBillingPeriod(Aws::String&& value) { SetStartBillingPeriod(std::move(value)); return *this;}
-
-    /**
-     * <p>The inclusive start billing period that defines a billing period range where
-     * a custom line item version is applied.</p>
-     */
-    inline ListCustomLineItemVersionsBillingPeriodRangeFilter& WithStartBillingPeriod(const char* value) { SetStartBillingPeriod(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The exclusive end billing period that defines a billing period range where a
      * custom line item version is applied.</p>
      */
-    inline const Aws::String& GetEndBillingPeriod() const{ return m_endBillingPeriod; }
-
-    /**
-     * <p>The exclusive end billing period that defines a billing period range where a
-     * custom line item version is applied.</p>
-     */
+    inline const Aws::String& GetEndBillingPeriod() const { return m_endBillingPeriod; }
     inline bool EndBillingPeriodHasBeenSet() const { return m_endBillingPeriodHasBeenSet; }
-
-    /**
-     * <p>The exclusive end billing period that defines a billing period range where a
-     * custom line item version is applied.</p>
-     */
-    inline void SetEndBillingPeriod(const Aws::String& value) { m_endBillingPeriodHasBeenSet = true; m_endBillingPeriod = value; }
-
-    /**
-     * <p>The exclusive end billing period that defines a billing period range where a
-     * custom line item version is applied.</p>
-     */
-    inline void SetEndBillingPeriod(Aws::String&& value) { m_endBillingPeriodHasBeenSet = true; m_endBillingPeriod = std::move(value); }
-
-    /**
-     * <p>The exclusive end billing period that defines a billing period range where a
-     * custom line item version is applied.</p>
-     */
-    inline void SetEndBillingPeriod(const char* value) { m_endBillingPeriodHasBeenSet = true; m_endBillingPeriod.assign(value); }
-
-    /**
-     * <p>The exclusive end billing period that defines a billing period range where a
-     * custom line item version is applied.</p>
-     */
-    inline ListCustomLineItemVersionsBillingPeriodRangeFilter& WithEndBillingPeriod(const Aws::String& value) { SetEndBillingPeriod(value); return *this;}
-
-    /**
-     * <p>The exclusive end billing period that defines a billing period range where a
-     * custom line item version is applied.</p>
-     */
-    inline ListCustomLineItemVersionsBillingPeriodRangeFilter& WithEndBillingPeriod(Aws::String&& value) { SetEndBillingPeriod(std::move(value)); return *this;}
-
-    /**
-     * <p>The exclusive end billing period that defines a billing period range where a
-     * custom line item version is applied.</p>
-     */
-    inline ListCustomLineItemVersionsBillingPeriodRangeFilter& WithEndBillingPeriod(const char* value) { SetEndBillingPeriod(value); return *this;}
-
+    template<typename EndBillingPeriodT = Aws::String>
+    void SetEndBillingPeriod(EndBillingPeriodT&& value) { m_endBillingPeriodHasBeenSet = true; m_endBillingPeriod = std::forward<EndBillingPeriodT>(value); }
+    template<typename EndBillingPeriodT = Aws::String>
+    ListCustomLineItemVersionsBillingPeriodRangeFilter& WithEndBillingPeriod(EndBillingPeriodT&& value) { SetEndBillingPeriod(std::forward<EndBillingPeriodT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_startBillingPeriod;

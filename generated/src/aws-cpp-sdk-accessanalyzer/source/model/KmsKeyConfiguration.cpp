@@ -18,15 +18,7 @@ namespace AccessAnalyzer
 namespace Model
 {
 
-KmsKeyConfiguration::KmsKeyConfiguration() : 
-    m_keyPoliciesHasBeenSet(false),
-    m_grantsHasBeenSet(false)
-{
-}
-
-KmsKeyConfiguration::KmsKeyConfiguration(JsonView jsonValue) : 
-    m_keyPoliciesHasBeenSet(false),
-    m_grantsHasBeenSet(false)
+KmsKeyConfiguration::KmsKeyConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ KmsKeyConfiguration& KmsKeyConfiguration::operator =(JsonView jsonValue)
     }
     m_keyPoliciesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("grants"))
   {
     Aws::Utils::Array<JsonView> grantsJsonList = jsonValue.GetArray("grants");
@@ -52,7 +43,6 @@ KmsKeyConfiguration& KmsKeyConfiguration::operator =(JsonView jsonValue)
     }
     m_grantsHasBeenSet = true;
   }
-
   return *this;
 }
 

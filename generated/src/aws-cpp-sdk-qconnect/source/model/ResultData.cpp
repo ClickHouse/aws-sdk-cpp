@@ -18,66 +18,38 @@ namespace QConnect
 namespace Model
 {
 
-ResultData::ResultData() : 
-    m_dataHasBeenSet(false),
-    m_documentHasBeenSet(false),
-    m_relevanceScore(0.0),
-    m_relevanceScoreHasBeenSet(false),
-    m_resultIdHasBeenSet(false),
-    m_type(QueryResultType::NOT_SET),
-    m_typeHasBeenSet(false)
-{
-}
-
-ResultData::ResultData(JsonView jsonValue) : 
-    m_dataHasBeenSet(false),
-    m_documentHasBeenSet(false),
-    m_relevanceScore(0.0),
-    m_relevanceScoreHasBeenSet(false),
-    m_resultIdHasBeenSet(false),
-    m_type(QueryResultType::NOT_SET),
-    m_typeHasBeenSet(false)
+ResultData::ResultData(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 ResultData& ResultData::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("data"))
-  {
-    m_data = jsonValue.GetObject("data");
-
-    m_dataHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("document"))
-  {
-    m_document = jsonValue.GetObject("document");
-
-    m_documentHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("relevanceScore"))
-  {
-    m_relevanceScore = jsonValue.GetDouble("relevanceScore");
-
-    m_relevanceScoreHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("resultId"))
   {
     m_resultId = jsonValue.GetString("resultId");
-
     m_resultIdHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("document"))
+  {
+    m_document = jsonValue.GetObject("document");
+    m_documentHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("relevanceScore"))
+  {
+    m_relevanceScore = jsonValue.GetDouble("relevanceScore");
+    m_relevanceScoreHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("data"))
+  {
+    m_data = jsonValue.GetObject("data");
+    m_dataHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("type"))
   {
     m_type = QueryResultTypeMapper::GetQueryResultTypeForName(jsonValue.GetString("type"));
-
     m_typeHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -85,9 +57,9 @@ JsonValue ResultData::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_dataHasBeenSet)
+  if(m_resultIdHasBeenSet)
   {
-   payload.WithObject("data", m_data.Jsonize());
+   payload.WithString("resultId", m_resultId);
 
   }
 
@@ -103,9 +75,9 @@ JsonValue ResultData::Jsonize() const
 
   }
 
-  if(m_resultIdHasBeenSet)
+  if(m_dataHasBeenSet)
   {
-   payload.WithString("resultId", m_resultId);
+   payload.WithObject("data", m_data.Jsonize());
 
   }
 

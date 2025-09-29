@@ -35,356 +35,126 @@ namespace Model
   class AnomalyDetector
   {
   public:
-    AWS_CLOUDWATCHLOGS_API AnomalyDetector();
+    AWS_CLOUDWATCHLOGS_API AnomalyDetector() = default;
     AWS_CLOUDWATCHLOGS_API AnomalyDetector(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDWATCHLOGS_API AnomalyDetector& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDWATCHLOGS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ARN of the anomaly detector.</p>
      */
-    inline const Aws::String& GetAnomalyDetectorArn() const{ return m_anomalyDetectorArn; }
-
-    /**
-     * <p>The ARN of the anomaly detector.</p>
-     */
+    inline const Aws::String& GetAnomalyDetectorArn() const { return m_anomalyDetectorArn; }
     inline bool AnomalyDetectorArnHasBeenSet() const { return m_anomalyDetectorArnHasBeenSet; }
+    template<typename AnomalyDetectorArnT = Aws::String>
+    void SetAnomalyDetectorArn(AnomalyDetectorArnT&& value) { m_anomalyDetectorArnHasBeenSet = true; m_anomalyDetectorArn = std::forward<AnomalyDetectorArnT>(value); }
+    template<typename AnomalyDetectorArnT = Aws::String>
+    AnomalyDetector& WithAnomalyDetectorArn(AnomalyDetectorArnT&& value) { SetAnomalyDetectorArn(std::forward<AnomalyDetectorArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the anomaly detector.</p>
-     */
-    inline void SetAnomalyDetectorArn(const Aws::String& value) { m_anomalyDetectorArnHasBeenSet = true; m_anomalyDetectorArn = value; }
-
-    /**
-     * <p>The ARN of the anomaly detector.</p>
-     */
-    inline void SetAnomalyDetectorArn(Aws::String&& value) { m_anomalyDetectorArnHasBeenSet = true; m_anomalyDetectorArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the anomaly detector.</p>
-     */
-    inline void SetAnomalyDetectorArn(const char* value) { m_anomalyDetectorArnHasBeenSet = true; m_anomalyDetectorArn.assign(value); }
-
-    /**
-     * <p>The ARN of the anomaly detector.</p>
-     */
-    inline AnomalyDetector& WithAnomalyDetectorArn(const Aws::String& value) { SetAnomalyDetectorArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the anomaly detector.</p>
-     */
-    inline AnomalyDetector& WithAnomalyDetectorArn(Aws::String&& value) { SetAnomalyDetectorArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the anomaly detector.</p>
-     */
-    inline AnomalyDetector& WithAnomalyDetectorArn(const char* value) { SetAnomalyDetectorArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the anomaly detector.</p>
      */
-    inline const Aws::String& GetDetectorName() const{ return m_detectorName; }
-
-    /**
-     * <p>The name of the anomaly detector.</p>
-     */
+    inline const Aws::String& GetDetectorName() const { return m_detectorName; }
     inline bool DetectorNameHasBeenSet() const { return m_detectorNameHasBeenSet; }
+    template<typename DetectorNameT = Aws::String>
+    void SetDetectorName(DetectorNameT&& value) { m_detectorNameHasBeenSet = true; m_detectorName = std::forward<DetectorNameT>(value); }
+    template<typename DetectorNameT = Aws::String>
+    AnomalyDetector& WithDetectorName(DetectorNameT&& value) { SetDetectorName(std::forward<DetectorNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the anomaly detector.</p>
-     */
-    inline void SetDetectorName(const Aws::String& value) { m_detectorNameHasBeenSet = true; m_detectorName = value; }
-
-    /**
-     * <p>The name of the anomaly detector.</p>
-     */
-    inline void SetDetectorName(Aws::String&& value) { m_detectorNameHasBeenSet = true; m_detectorName = std::move(value); }
-
-    /**
-     * <p>The name of the anomaly detector.</p>
-     */
-    inline void SetDetectorName(const char* value) { m_detectorNameHasBeenSet = true; m_detectorName.assign(value); }
-
-    /**
-     * <p>The name of the anomaly detector.</p>
-     */
-    inline AnomalyDetector& WithDetectorName(const Aws::String& value) { SetDetectorName(value); return *this;}
-
-    /**
-     * <p>The name of the anomaly detector.</p>
-     */
-    inline AnomalyDetector& WithDetectorName(Aws::String&& value) { SetDetectorName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the anomaly detector.</p>
-     */
-    inline AnomalyDetector& WithDetectorName(const char* value) { SetDetectorName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of the ARNs of the log groups that this anomaly detector watches.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetLogGroupArnList() const{ return m_logGroupArnList; }
-
-    /**
-     * <p>A list of the ARNs of the log groups that this anomaly detector watches.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetLogGroupArnList() const { return m_logGroupArnList; }
     inline bool LogGroupArnListHasBeenSet() const { return m_logGroupArnListHasBeenSet; }
+    template<typename LogGroupArnListT = Aws::Vector<Aws::String>>
+    void SetLogGroupArnList(LogGroupArnListT&& value) { m_logGroupArnListHasBeenSet = true; m_logGroupArnList = std::forward<LogGroupArnListT>(value); }
+    template<typename LogGroupArnListT = Aws::Vector<Aws::String>>
+    AnomalyDetector& WithLogGroupArnList(LogGroupArnListT&& value) { SetLogGroupArnList(std::forward<LogGroupArnListT>(value)); return *this;}
+    template<typename LogGroupArnListT = Aws::String>
+    AnomalyDetector& AddLogGroupArnList(LogGroupArnListT&& value) { m_logGroupArnListHasBeenSet = true; m_logGroupArnList.emplace_back(std::forward<LogGroupArnListT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of the ARNs of the log groups that this anomaly detector watches.</p>
-     */
-    inline void SetLogGroupArnList(const Aws::Vector<Aws::String>& value) { m_logGroupArnListHasBeenSet = true; m_logGroupArnList = value; }
-
-    /**
-     * <p>A list of the ARNs of the log groups that this anomaly detector watches.</p>
-     */
-    inline void SetLogGroupArnList(Aws::Vector<Aws::String>&& value) { m_logGroupArnListHasBeenSet = true; m_logGroupArnList = std::move(value); }
-
-    /**
-     * <p>A list of the ARNs of the log groups that this anomaly detector watches.</p>
-     */
-    inline AnomalyDetector& WithLogGroupArnList(const Aws::Vector<Aws::String>& value) { SetLogGroupArnList(value); return *this;}
-
-    /**
-     * <p>A list of the ARNs of the log groups that this anomaly detector watches.</p>
-     */
-    inline AnomalyDetector& WithLogGroupArnList(Aws::Vector<Aws::String>&& value) { SetLogGroupArnList(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of the ARNs of the log groups that this anomaly detector watches.</p>
-     */
-    inline AnomalyDetector& AddLogGroupArnList(const Aws::String& value) { m_logGroupArnListHasBeenSet = true; m_logGroupArnList.push_back(value); return *this; }
-
-    /**
-     * <p>A list of the ARNs of the log groups that this anomaly detector watches.</p>
-     */
-    inline AnomalyDetector& AddLogGroupArnList(Aws::String&& value) { m_logGroupArnListHasBeenSet = true; m_logGroupArnList.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of the ARNs of the log groups that this anomaly detector watches.</p>
-     */
-    inline AnomalyDetector& AddLogGroupArnList(const char* value) { m_logGroupArnListHasBeenSet = true; m_logGroupArnList.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>Specifies how often the anomaly detector runs and look for anomalies.</p>
      */
-    inline const EvaluationFrequency& GetEvaluationFrequency() const{ return m_evaluationFrequency; }
-
-    /**
-     * <p>Specifies how often the anomaly detector runs and look for anomalies.</p>
-     */
+    inline EvaluationFrequency GetEvaluationFrequency() const { return m_evaluationFrequency; }
     inline bool EvaluationFrequencyHasBeenSet() const { return m_evaluationFrequencyHasBeenSet; }
+    inline void SetEvaluationFrequency(EvaluationFrequency value) { m_evaluationFrequencyHasBeenSet = true; m_evaluationFrequency = value; }
+    inline AnomalyDetector& WithEvaluationFrequency(EvaluationFrequency value) { SetEvaluationFrequency(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies how often the anomaly detector runs and look for anomalies.</p>
-     */
-    inline void SetEvaluationFrequency(const EvaluationFrequency& value) { m_evaluationFrequencyHasBeenSet = true; m_evaluationFrequency = value; }
-
-    /**
-     * <p>Specifies how often the anomaly detector runs and look for anomalies.</p>
-     */
-    inline void SetEvaluationFrequency(EvaluationFrequency&& value) { m_evaluationFrequencyHasBeenSet = true; m_evaluationFrequency = std::move(value); }
-
-    /**
-     * <p>Specifies how often the anomaly detector runs and look for anomalies.</p>
-     */
-    inline AnomalyDetector& WithEvaluationFrequency(const EvaluationFrequency& value) { SetEvaluationFrequency(value); return *this;}
-
-    /**
-     * <p>Specifies how often the anomaly detector runs and look for anomalies.</p>
-     */
-    inline AnomalyDetector& WithEvaluationFrequency(EvaluationFrequency&& value) { SetEvaluationFrequency(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetFilterPattern() const{ return m_filterPattern; }
-
-    
+    inline const Aws::String& GetFilterPattern() const { return m_filterPattern; }
     inline bool FilterPatternHasBeenSet() const { return m_filterPatternHasBeenSet; }
+    template<typename FilterPatternT = Aws::String>
+    void SetFilterPattern(FilterPatternT&& value) { m_filterPatternHasBeenSet = true; m_filterPattern = std::forward<FilterPatternT>(value); }
+    template<typename FilterPatternT = Aws::String>
+    AnomalyDetector& WithFilterPattern(FilterPatternT&& value) { SetFilterPattern(std::forward<FilterPatternT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetFilterPattern(const Aws::String& value) { m_filterPatternHasBeenSet = true; m_filterPattern = value; }
-
-    
-    inline void SetFilterPattern(Aws::String&& value) { m_filterPatternHasBeenSet = true; m_filterPattern = std::move(value); }
-
-    
-    inline void SetFilterPattern(const char* value) { m_filterPatternHasBeenSet = true; m_filterPattern.assign(value); }
-
-    
-    inline AnomalyDetector& WithFilterPattern(const Aws::String& value) { SetFilterPattern(value); return *this;}
-
-    
-    inline AnomalyDetector& WithFilterPattern(Aws::String&& value) { SetFilterPattern(std::move(value)); return *this;}
-
-    
-    inline AnomalyDetector& WithFilterPattern(const char* value) { SetFilterPattern(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the current status of the anomaly detector. To pause an anomaly
      * detector, use the <code>enabled</code> parameter in the <a
      * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_UpdateLogAnomalyDetector.html">UpdateLogAnomalyDetector</a>
      * operation.</p>
      */
-    inline const AnomalyDetectorStatus& GetAnomalyDetectorStatus() const{ return m_anomalyDetectorStatus; }
-
-    /**
-     * <p>Specifies the current status of the anomaly detector. To pause an anomaly
-     * detector, use the <code>enabled</code> parameter in the <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_UpdateLogAnomalyDetector.html">UpdateLogAnomalyDetector</a>
-     * operation.</p>
-     */
+    inline AnomalyDetectorStatus GetAnomalyDetectorStatus() const { return m_anomalyDetectorStatus; }
     inline bool AnomalyDetectorStatusHasBeenSet() const { return m_anomalyDetectorStatusHasBeenSet; }
+    inline void SetAnomalyDetectorStatus(AnomalyDetectorStatus value) { m_anomalyDetectorStatusHasBeenSet = true; m_anomalyDetectorStatus = value; }
+    inline AnomalyDetector& WithAnomalyDetectorStatus(AnomalyDetectorStatus value) { SetAnomalyDetectorStatus(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Specifies the current status of the anomaly detector. To pause an anomaly
-     * detector, use the <code>enabled</code> parameter in the <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_UpdateLogAnomalyDetector.html">UpdateLogAnomalyDetector</a>
-     * operation.</p>
+     * <p>The ARN of the KMS key assigned to this anomaly detector, if any.</p>
      */
-    inline void SetAnomalyDetectorStatus(const AnomalyDetectorStatus& value) { m_anomalyDetectorStatusHasBeenSet = true; m_anomalyDetectorStatus = value; }
-
-    /**
-     * <p>Specifies the current status of the anomaly detector. To pause an anomaly
-     * detector, use the <code>enabled</code> parameter in the <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_UpdateLogAnomalyDetector.html">UpdateLogAnomalyDetector</a>
-     * operation.</p>
-     */
-    inline void SetAnomalyDetectorStatus(AnomalyDetectorStatus&& value) { m_anomalyDetectorStatusHasBeenSet = true; m_anomalyDetectorStatus = std::move(value); }
-
-    /**
-     * <p>Specifies the current status of the anomaly detector. To pause an anomaly
-     * detector, use the <code>enabled</code> parameter in the <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_UpdateLogAnomalyDetector.html">UpdateLogAnomalyDetector</a>
-     * operation.</p>
-     */
-    inline AnomalyDetector& WithAnomalyDetectorStatus(const AnomalyDetectorStatus& value) { SetAnomalyDetectorStatus(value); return *this;}
-
-    /**
-     * <p>Specifies the current status of the anomaly detector. To pause an anomaly
-     * detector, use the <code>enabled</code> parameter in the <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_UpdateLogAnomalyDetector.html">UpdateLogAnomalyDetector</a>
-     * operation.</p>
-     */
-    inline AnomalyDetector& WithAnomalyDetectorStatus(AnomalyDetectorStatus&& value) { SetAnomalyDetectorStatus(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The ID of the KMS key assigned to this anomaly detector, if any.</p>
-     */
-    inline const Aws::String& GetKmsKeyId() const{ return m_kmsKeyId; }
-
-    /**
-     * <p>The ID of the KMS key assigned to this anomaly detector, if any.</p>
-     */
+    inline const Aws::String& GetKmsKeyId() const { return m_kmsKeyId; }
     inline bool KmsKeyIdHasBeenSet() const { return m_kmsKeyIdHasBeenSet; }
+    template<typename KmsKeyIdT = Aws::String>
+    void SetKmsKeyId(KmsKeyIdT&& value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId = std::forward<KmsKeyIdT>(value); }
+    template<typename KmsKeyIdT = Aws::String>
+    AnomalyDetector& WithKmsKeyId(KmsKeyIdT&& value) { SetKmsKeyId(std::forward<KmsKeyIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the KMS key assigned to this anomaly detector, if any.</p>
-     */
-    inline void SetKmsKeyId(const Aws::String& value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId = value; }
-
-    /**
-     * <p>The ID of the KMS key assigned to this anomaly detector, if any.</p>
-     */
-    inline void SetKmsKeyId(Aws::String&& value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId = std::move(value); }
-
-    /**
-     * <p>The ID of the KMS key assigned to this anomaly detector, if any.</p>
-     */
-    inline void SetKmsKeyId(const char* value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId.assign(value); }
-
-    /**
-     * <p>The ID of the KMS key assigned to this anomaly detector, if any.</p>
-     */
-    inline AnomalyDetector& WithKmsKeyId(const Aws::String& value) { SetKmsKeyId(value); return *this;}
-
-    /**
-     * <p>The ID of the KMS key assigned to this anomaly detector, if any.</p>
-     */
-    inline AnomalyDetector& WithKmsKeyId(Aws::String&& value) { SetKmsKeyId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the KMS key assigned to this anomaly detector, if any.</p>
-     */
-    inline AnomalyDetector& WithKmsKeyId(const char* value) { SetKmsKeyId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time when this anomaly detector was created.</p>
      */
-    inline long long GetCreationTimeStamp() const{ return m_creationTimeStamp; }
-
-    /**
-     * <p>The date and time when this anomaly detector was created.</p>
-     */
+    inline long long GetCreationTimeStamp() const { return m_creationTimeStamp; }
     inline bool CreationTimeStampHasBeenSet() const { return m_creationTimeStampHasBeenSet; }
-
-    /**
-     * <p>The date and time when this anomaly detector was created.</p>
-     */
     inline void SetCreationTimeStamp(long long value) { m_creationTimeStampHasBeenSet = true; m_creationTimeStamp = value; }
-
-    /**
-     * <p>The date and time when this anomaly detector was created.</p>
-     */
     inline AnomalyDetector& WithCreationTimeStamp(long long value) { SetCreationTimeStamp(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The date and time when this anomaly detector was most recently modified.</p>
      */
-    inline long long GetLastModifiedTimeStamp() const{ return m_lastModifiedTimeStamp; }
-
-    /**
-     * <p>The date and time when this anomaly detector was most recently modified.</p>
-     */
+    inline long long GetLastModifiedTimeStamp() const { return m_lastModifiedTimeStamp; }
     inline bool LastModifiedTimeStampHasBeenSet() const { return m_lastModifiedTimeStampHasBeenSet; }
-
-    /**
-     * <p>The date and time when this anomaly detector was most recently modified.</p>
-     */
     inline void SetLastModifiedTimeStamp(long long value) { m_lastModifiedTimeStampHasBeenSet = true; m_lastModifiedTimeStamp = value; }
-
-    /**
-     * <p>The date and time when this anomaly detector was most recently modified.</p>
-     */
     inline AnomalyDetector& WithLastModifiedTimeStamp(long long value) { SetLastModifiedTimeStamp(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The number of days used as the life cycle of anomalies. After this time,
      * anomalies are automatically baselined and the anomaly detector model will treat
      * new occurrences of similar event as normal. </p>
      */
-    inline long long GetAnomalyVisibilityTime() const{ return m_anomalyVisibilityTime; }
-
-    /**
-     * <p>The number of days used as the life cycle of anomalies. After this time,
-     * anomalies are automatically baselined and the anomaly detector model will treat
-     * new occurrences of similar event as normal. </p>
-     */
+    inline long long GetAnomalyVisibilityTime() const { return m_anomalyVisibilityTime; }
     inline bool AnomalyVisibilityTimeHasBeenSet() const { return m_anomalyVisibilityTimeHasBeenSet; }
-
-    /**
-     * <p>The number of days used as the life cycle of anomalies. After this time,
-     * anomalies are automatically baselined and the anomaly detector model will treat
-     * new occurrences of similar event as normal. </p>
-     */
     inline void SetAnomalyVisibilityTime(long long value) { m_anomalyVisibilityTimeHasBeenSet = true; m_anomalyVisibilityTime = value; }
-
-    /**
-     * <p>The number of days used as the life cycle of anomalies. After this time,
-     * anomalies are automatically baselined and the anomaly detector model will treat
-     * new occurrences of similar event as normal. </p>
-     */
     inline AnomalyDetector& WithAnomalyVisibilityTime(long long value) { SetAnomalyVisibilityTime(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_anomalyDetectorArn;
@@ -396,25 +166,25 @@ namespace Model
     Aws::Vector<Aws::String> m_logGroupArnList;
     bool m_logGroupArnListHasBeenSet = false;
 
-    EvaluationFrequency m_evaluationFrequency;
+    EvaluationFrequency m_evaluationFrequency{EvaluationFrequency::NOT_SET};
     bool m_evaluationFrequencyHasBeenSet = false;
 
     Aws::String m_filterPattern;
     bool m_filterPatternHasBeenSet = false;
 
-    AnomalyDetectorStatus m_anomalyDetectorStatus;
+    AnomalyDetectorStatus m_anomalyDetectorStatus{AnomalyDetectorStatus::NOT_SET};
     bool m_anomalyDetectorStatusHasBeenSet = false;
 
     Aws::String m_kmsKeyId;
     bool m_kmsKeyIdHasBeenSet = false;
 
-    long long m_creationTimeStamp;
+    long long m_creationTimeStamp{0};
     bool m_creationTimeStampHasBeenSet = false;
 
-    long long m_lastModifiedTimeStamp;
+    long long m_lastModifiedTimeStamp{0};
     bool m_lastModifiedTimeStampHasBeenSet = false;
 
-    long long m_anomalyVisibilityTime;
+    long long m_anomalyVisibilityTime{0};
     bool m_anomalyVisibilityTimeHasBeenSet = false;
   };
 

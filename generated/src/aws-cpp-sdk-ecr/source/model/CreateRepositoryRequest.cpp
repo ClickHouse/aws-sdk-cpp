@@ -12,17 +12,6 @@ using namespace Aws::ECR::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateRepositoryRequest::CreateRepositoryRequest() : 
-    m_registryIdHasBeenSet(false),
-    m_repositoryNameHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_imageTagMutability(ImageTagMutability::NOT_SET),
-    m_imageTagMutabilityHasBeenSet(false),
-    m_imageScanningConfigurationHasBeenSet(false),
-    m_encryptionConfigurationHasBeenSet(false)
-{
-}
-
 Aws::String CreateRepositoryRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -53,6 +42,17 @@ Aws::String CreateRepositoryRequest::SerializePayload() const
   if(m_imageTagMutabilityHasBeenSet)
   {
    payload.WithString("imageTagMutability", ImageTagMutabilityMapper::GetNameForImageTagMutability(m_imageTagMutability));
+  }
+
+  if(m_imageTagMutabilityExclusionFiltersHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> imageTagMutabilityExclusionFiltersJsonList(m_imageTagMutabilityExclusionFilters.size());
+   for(unsigned imageTagMutabilityExclusionFiltersIndex = 0; imageTagMutabilityExclusionFiltersIndex < imageTagMutabilityExclusionFiltersJsonList.GetLength(); ++imageTagMutabilityExclusionFiltersIndex)
+   {
+     imageTagMutabilityExclusionFiltersJsonList[imageTagMutabilityExclusionFiltersIndex].AsObject(m_imageTagMutabilityExclusionFilters[imageTagMutabilityExclusionFiltersIndex].Jsonize());
+   }
+   payload.WithArray("imageTagMutabilityExclusionFilters", std::move(imageTagMutabilityExclusionFiltersJsonList));
+
   }
 
   if(m_imageScanningConfigurationHasBeenSet)

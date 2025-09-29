@@ -18,15 +18,7 @@ namespace ResourceGroups
 namespace Model
 {
 
-ResourceStatus::ResourceStatus() : 
-    m_name(ResourceStatusValue::NOT_SET),
-    m_nameHasBeenSet(false)
-{
-}
-
-ResourceStatus::ResourceStatus(JsonView jsonValue) : 
-    m_name(ResourceStatusValue::NOT_SET),
-    m_nameHasBeenSet(false)
+ResourceStatus::ResourceStatus(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ResourceStatus& ResourceStatus::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = ResourceStatusValueMapper::GetResourceStatusValueForName(jsonValue.GetString("Name"));
-
     m_nameHasBeenSet = true;
   }
-
   return *this;
 }
 

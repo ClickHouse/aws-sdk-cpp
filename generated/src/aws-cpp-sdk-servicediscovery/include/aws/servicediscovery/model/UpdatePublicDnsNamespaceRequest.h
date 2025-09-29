@@ -23,7 +23,7 @@ namespace Model
   class UpdatePublicDnsNamespaceRequest : public ServiceDiscoveryRequest
   {
   public:
-    AWS_SERVICEDISCOVERY_API UpdatePublicDnsNamespaceRequest();
+    AWS_SERVICEDISCOVERY_API UpdatePublicDnsNamespaceRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,149 +36,51 @@ namespace Model
     AWS_SERVICEDISCOVERY_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
-     * <p>The ID of the namespace being updated.</p>
+     * <p>The ID or Amazon Resource Name (ARN) of the namespace being updated.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The ID of the namespace being updated.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    UpdatePublicDnsNamespaceRequest& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the namespace being updated.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The ID of the namespace being updated.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The ID of the namespace being updated.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The ID of the namespace being updated.</p>
-     */
-    inline UpdatePublicDnsNamespaceRequest& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The ID of the namespace being updated.</p>
-     */
-    inline UpdatePublicDnsNamespaceRequest& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the namespace being updated.</p>
-     */
-    inline UpdatePublicDnsNamespaceRequest& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A unique string that identifies the request and that allows failed
      * <code>UpdatePublicDnsNamespace</code> requests to be retried without the risk of
      * running the operation twice. <code>UpdaterRequestId</code> can be any unique
      * string (for example, a date/timestamp).</p>
      */
-    inline const Aws::String& GetUpdaterRequestId() const{ return m_updaterRequestId; }
-
-    /**
-     * <p>A unique string that identifies the request and that allows failed
-     * <code>UpdatePublicDnsNamespace</code> requests to be retried without the risk of
-     * running the operation twice. <code>UpdaterRequestId</code> can be any unique
-     * string (for example, a date/timestamp).</p>
-     */
+    inline const Aws::String& GetUpdaterRequestId() const { return m_updaterRequestId; }
     inline bool UpdaterRequestIdHasBeenSet() const { return m_updaterRequestIdHasBeenSet; }
+    template<typename UpdaterRequestIdT = Aws::String>
+    void SetUpdaterRequestId(UpdaterRequestIdT&& value) { m_updaterRequestIdHasBeenSet = true; m_updaterRequestId = std::forward<UpdaterRequestIdT>(value); }
+    template<typename UpdaterRequestIdT = Aws::String>
+    UpdatePublicDnsNamespaceRequest& WithUpdaterRequestId(UpdaterRequestIdT&& value) { SetUpdaterRequestId(std::forward<UpdaterRequestIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique string that identifies the request and that allows failed
-     * <code>UpdatePublicDnsNamespace</code> requests to be retried without the risk of
-     * running the operation twice. <code>UpdaterRequestId</code> can be any unique
-     * string (for example, a date/timestamp).</p>
-     */
-    inline void SetUpdaterRequestId(const Aws::String& value) { m_updaterRequestIdHasBeenSet = true; m_updaterRequestId = value; }
-
-    /**
-     * <p>A unique string that identifies the request and that allows failed
-     * <code>UpdatePublicDnsNamespace</code> requests to be retried without the risk of
-     * running the operation twice. <code>UpdaterRequestId</code> can be any unique
-     * string (for example, a date/timestamp).</p>
-     */
-    inline void SetUpdaterRequestId(Aws::String&& value) { m_updaterRequestIdHasBeenSet = true; m_updaterRequestId = std::move(value); }
-
-    /**
-     * <p>A unique string that identifies the request and that allows failed
-     * <code>UpdatePublicDnsNamespace</code> requests to be retried without the risk of
-     * running the operation twice. <code>UpdaterRequestId</code> can be any unique
-     * string (for example, a date/timestamp).</p>
-     */
-    inline void SetUpdaterRequestId(const char* value) { m_updaterRequestIdHasBeenSet = true; m_updaterRequestId.assign(value); }
-
-    /**
-     * <p>A unique string that identifies the request and that allows failed
-     * <code>UpdatePublicDnsNamespace</code> requests to be retried without the risk of
-     * running the operation twice. <code>UpdaterRequestId</code> can be any unique
-     * string (for example, a date/timestamp).</p>
-     */
-    inline UpdatePublicDnsNamespaceRequest& WithUpdaterRequestId(const Aws::String& value) { SetUpdaterRequestId(value); return *this;}
-
-    /**
-     * <p>A unique string that identifies the request and that allows failed
-     * <code>UpdatePublicDnsNamespace</code> requests to be retried without the risk of
-     * running the operation twice. <code>UpdaterRequestId</code> can be any unique
-     * string (for example, a date/timestamp).</p>
-     */
-    inline UpdatePublicDnsNamespaceRequest& WithUpdaterRequestId(Aws::String&& value) { SetUpdaterRequestId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique string that identifies the request and that allows failed
-     * <code>UpdatePublicDnsNamespace</code> requests to be retried without the risk of
-     * running the operation twice. <code>UpdaterRequestId</code> can be any unique
-     * string (for example, a date/timestamp).</p>
-     */
-    inline UpdatePublicDnsNamespaceRequest& WithUpdaterRequestId(const char* value) { SetUpdaterRequestId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Updated properties for the public DNS namespace.</p>
      */
-    inline const PublicDnsNamespaceChange& GetNamespace() const{ return m_namespace; }
-
-    /**
-     * <p>Updated properties for the public DNS namespace.</p>
-     */
+    inline const PublicDnsNamespaceChange& GetNamespace() const { return m_namespace; }
     inline bool NamespaceHasBeenSet() const { return m_namespaceHasBeenSet; }
-
-    /**
-     * <p>Updated properties for the public DNS namespace.</p>
-     */
-    inline void SetNamespace(const PublicDnsNamespaceChange& value) { m_namespaceHasBeenSet = true; m_namespace = value; }
-
-    /**
-     * <p>Updated properties for the public DNS namespace.</p>
-     */
-    inline void SetNamespace(PublicDnsNamespaceChange&& value) { m_namespaceHasBeenSet = true; m_namespace = std::move(value); }
-
-    /**
-     * <p>Updated properties for the public DNS namespace.</p>
-     */
-    inline UpdatePublicDnsNamespaceRequest& WithNamespace(const PublicDnsNamespaceChange& value) { SetNamespace(value); return *this;}
-
-    /**
-     * <p>Updated properties for the public DNS namespace.</p>
-     */
-    inline UpdatePublicDnsNamespaceRequest& WithNamespace(PublicDnsNamespaceChange&& value) { SetNamespace(std::move(value)); return *this;}
-
+    template<typename NamespaceT = PublicDnsNamespaceChange>
+    void SetNamespace(NamespaceT&& value) { m_namespaceHasBeenSet = true; m_namespace = std::forward<NamespaceT>(value); }
+    template<typename NamespaceT = PublicDnsNamespaceChange>
+    UpdatePublicDnsNamespaceRequest& WithNamespace(NamespaceT&& value) { SetNamespace(std::forward<NamespaceT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_id;
     bool m_idHasBeenSet = false;
 
-    Aws::String m_updaterRequestId;
-    bool m_updaterRequestIdHasBeenSet = false;
+    Aws::String m_updaterRequestId{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_updaterRequestIdHasBeenSet = true;
 
     PublicDnsNamespaceChange m_namespace;
     bool m_namespaceHasBeenSet = false;

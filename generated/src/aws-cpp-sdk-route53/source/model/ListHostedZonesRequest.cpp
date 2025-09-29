@@ -6,6 +6,7 @@
 #include <aws/route53/model/ListHostedZonesRequest.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/core/utils/UnreferencedParam.h>
 #include <aws/core/http/URI.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
 
@@ -16,14 +17,6 @@ using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-ListHostedZonesRequest::ListHostedZonesRequest() : 
-    m_markerHasBeenSet(false),
-    m_maxItemsHasBeenSet(false),
-    m_delegationSetIdHasBeenSet(false),
-    m_hostedZoneType(HostedZoneType::NOT_SET),
-    m_hostedZoneTypeHasBeenSet(false)
-{
-}
 
 Aws::String ListHostedZonesRequest::SerializePayload() const
 {

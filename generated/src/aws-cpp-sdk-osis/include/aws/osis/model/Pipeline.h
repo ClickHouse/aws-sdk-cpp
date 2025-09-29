@@ -15,6 +15,7 @@
 #include <aws/osis/model/EncryptionAtRestOptions.h>
 #include <aws/osis/model/VpcEndpoint.h>
 #include <aws/osis/model/ServiceVpcEndpoint.h>
+#include <aws/osis/model/PipelineDestination.h>
 #include <aws/osis/model/Tag.h>
 #include <utility>
 
@@ -42,546 +43,241 @@ namespace Model
   class Pipeline
   {
   public:
-    AWS_OSIS_API Pipeline();
+    AWS_OSIS_API Pipeline() = default;
     AWS_OSIS_API Pipeline(Aws::Utils::Json::JsonView jsonValue);
     AWS_OSIS_API Pipeline& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_OSIS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the pipeline.</p>
      */
-    inline const Aws::String& GetPipelineName() const{ return m_pipelineName; }
-
-    /**
-     * <p>The name of the pipeline.</p>
-     */
+    inline const Aws::String& GetPipelineName() const { return m_pipelineName; }
     inline bool PipelineNameHasBeenSet() const { return m_pipelineNameHasBeenSet; }
+    template<typename PipelineNameT = Aws::String>
+    void SetPipelineName(PipelineNameT&& value) { m_pipelineNameHasBeenSet = true; m_pipelineName = std::forward<PipelineNameT>(value); }
+    template<typename PipelineNameT = Aws::String>
+    Pipeline& WithPipelineName(PipelineNameT&& value) { SetPipelineName(std::forward<PipelineNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the pipeline.</p>
-     */
-    inline void SetPipelineName(const Aws::String& value) { m_pipelineNameHasBeenSet = true; m_pipelineName = value; }
-
-    /**
-     * <p>The name of the pipeline.</p>
-     */
-    inline void SetPipelineName(Aws::String&& value) { m_pipelineNameHasBeenSet = true; m_pipelineName = std::move(value); }
-
-    /**
-     * <p>The name of the pipeline.</p>
-     */
-    inline void SetPipelineName(const char* value) { m_pipelineNameHasBeenSet = true; m_pipelineName.assign(value); }
-
-    /**
-     * <p>The name of the pipeline.</p>
-     */
-    inline Pipeline& WithPipelineName(const Aws::String& value) { SetPipelineName(value); return *this;}
-
-    /**
-     * <p>The name of the pipeline.</p>
-     */
-    inline Pipeline& WithPipelineName(Aws::String&& value) { SetPipelineName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the pipeline.</p>
-     */
-    inline Pipeline& WithPipelineName(const char* value) { SetPipelineName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the pipeline.</p>
      */
-    inline const Aws::String& GetPipelineArn() const{ return m_pipelineArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the pipeline.</p>
-     */
+    inline const Aws::String& GetPipelineArn() const { return m_pipelineArn; }
     inline bool PipelineArnHasBeenSet() const { return m_pipelineArnHasBeenSet; }
+    template<typename PipelineArnT = Aws::String>
+    void SetPipelineArn(PipelineArnT&& value) { m_pipelineArnHasBeenSet = true; m_pipelineArn = std::forward<PipelineArnT>(value); }
+    template<typename PipelineArnT = Aws::String>
+    Pipeline& WithPipelineArn(PipelineArnT&& value) { SetPipelineArn(std::forward<PipelineArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the pipeline.</p>
-     */
-    inline void SetPipelineArn(const Aws::String& value) { m_pipelineArnHasBeenSet = true; m_pipelineArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the pipeline.</p>
-     */
-    inline void SetPipelineArn(Aws::String&& value) { m_pipelineArnHasBeenSet = true; m_pipelineArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the pipeline.</p>
-     */
-    inline void SetPipelineArn(const char* value) { m_pipelineArnHasBeenSet = true; m_pipelineArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the pipeline.</p>
-     */
-    inline Pipeline& WithPipelineArn(const Aws::String& value) { SetPipelineArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the pipeline.</p>
-     */
-    inline Pipeline& WithPipelineArn(Aws::String&& value) { SetPipelineArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the pipeline.</p>
-     */
-    inline Pipeline& WithPipelineArn(const char* value) { SetPipelineArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The minimum pipeline capacity, in Ingestion Compute Units (ICUs).</p>
      */
-    inline int GetMinUnits() const{ return m_minUnits; }
-
-    /**
-     * <p>The minimum pipeline capacity, in Ingestion Compute Units (ICUs).</p>
-     */
+    inline int GetMinUnits() const { return m_minUnits; }
     inline bool MinUnitsHasBeenSet() const { return m_minUnitsHasBeenSet; }
-
-    /**
-     * <p>The minimum pipeline capacity, in Ingestion Compute Units (ICUs).</p>
-     */
     inline void SetMinUnits(int value) { m_minUnitsHasBeenSet = true; m_minUnits = value; }
-
-    /**
-     * <p>The minimum pipeline capacity, in Ingestion Compute Units (ICUs).</p>
-     */
     inline Pipeline& WithMinUnits(int value) { SetMinUnits(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The maximum pipeline capacity, in Ingestion Compute Units (ICUs).</p>
      */
-    inline int GetMaxUnits() const{ return m_maxUnits; }
-
-    /**
-     * <p>The maximum pipeline capacity, in Ingestion Compute Units (ICUs).</p>
-     */
+    inline int GetMaxUnits() const { return m_maxUnits; }
     inline bool MaxUnitsHasBeenSet() const { return m_maxUnitsHasBeenSet; }
-
-    /**
-     * <p>The maximum pipeline capacity, in Ingestion Compute Units (ICUs).</p>
-     */
     inline void SetMaxUnits(int value) { m_maxUnitsHasBeenSet = true; m_maxUnits = value; }
-
-    /**
-     * <p>The maximum pipeline capacity, in Ingestion Compute Units (ICUs).</p>
-     */
     inline Pipeline& WithMaxUnits(int value) { SetMaxUnits(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The current status of the pipeline.</p>
      */
-    inline const PipelineStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The current status of the pipeline.</p>
-     */
+    inline PipelineStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(PipelineStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline Pipeline& WithStatus(PipelineStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The current status of the pipeline.</p>
-     */
-    inline void SetStatus(const PipelineStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The current status of the pipeline.</p>
-     */
-    inline void SetStatus(PipelineStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The current status of the pipeline.</p>
-     */
-    inline Pipeline& WithStatus(const PipelineStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The current status of the pipeline.</p>
-     */
-    inline Pipeline& WithStatus(PipelineStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The reason for the current status of the pipeline.</p>
      */
-    inline const PipelineStatusReason& GetStatusReason() const{ return m_statusReason; }
-
-    /**
-     * <p>The reason for the current status of the pipeline.</p>
-     */
+    inline const PipelineStatusReason& GetStatusReason() const { return m_statusReason; }
     inline bool StatusReasonHasBeenSet() const { return m_statusReasonHasBeenSet; }
+    template<typename StatusReasonT = PipelineStatusReason>
+    void SetStatusReason(StatusReasonT&& value) { m_statusReasonHasBeenSet = true; m_statusReason = std::forward<StatusReasonT>(value); }
+    template<typename StatusReasonT = PipelineStatusReason>
+    Pipeline& WithStatusReason(StatusReasonT&& value) { SetStatusReason(std::forward<StatusReasonT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The reason for the current status of the pipeline.</p>
-     */
-    inline void SetStatusReason(const PipelineStatusReason& value) { m_statusReasonHasBeenSet = true; m_statusReason = value; }
-
-    /**
-     * <p>The reason for the current status of the pipeline.</p>
-     */
-    inline void SetStatusReason(PipelineStatusReason&& value) { m_statusReasonHasBeenSet = true; m_statusReason = std::move(value); }
-
-    /**
-     * <p>The reason for the current status of the pipeline.</p>
-     */
-    inline Pipeline& WithStatusReason(const PipelineStatusReason& value) { SetStatusReason(value); return *this;}
-
-    /**
-     * <p>The reason for the current status of the pipeline.</p>
-     */
-    inline Pipeline& WithStatusReason(PipelineStatusReason&& value) { SetStatusReason(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Data Prepper pipeline configuration in YAML format.</p>
      */
-    inline const Aws::String& GetPipelineConfigurationBody() const{ return m_pipelineConfigurationBody; }
-
-    /**
-     * <p>The Data Prepper pipeline configuration in YAML format.</p>
-     */
+    inline const Aws::String& GetPipelineConfigurationBody() const { return m_pipelineConfigurationBody; }
     inline bool PipelineConfigurationBodyHasBeenSet() const { return m_pipelineConfigurationBodyHasBeenSet; }
+    template<typename PipelineConfigurationBodyT = Aws::String>
+    void SetPipelineConfigurationBody(PipelineConfigurationBodyT&& value) { m_pipelineConfigurationBodyHasBeenSet = true; m_pipelineConfigurationBody = std::forward<PipelineConfigurationBodyT>(value); }
+    template<typename PipelineConfigurationBodyT = Aws::String>
+    Pipeline& WithPipelineConfigurationBody(PipelineConfigurationBodyT&& value) { SetPipelineConfigurationBody(std::forward<PipelineConfigurationBodyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Data Prepper pipeline configuration in YAML format.</p>
-     */
-    inline void SetPipelineConfigurationBody(const Aws::String& value) { m_pipelineConfigurationBodyHasBeenSet = true; m_pipelineConfigurationBody = value; }
-
-    /**
-     * <p>The Data Prepper pipeline configuration in YAML format.</p>
-     */
-    inline void SetPipelineConfigurationBody(Aws::String&& value) { m_pipelineConfigurationBodyHasBeenSet = true; m_pipelineConfigurationBody = std::move(value); }
-
-    /**
-     * <p>The Data Prepper pipeline configuration in YAML format.</p>
-     */
-    inline void SetPipelineConfigurationBody(const char* value) { m_pipelineConfigurationBodyHasBeenSet = true; m_pipelineConfigurationBody.assign(value); }
-
-    /**
-     * <p>The Data Prepper pipeline configuration in YAML format.</p>
-     */
-    inline Pipeline& WithPipelineConfigurationBody(const Aws::String& value) { SetPipelineConfigurationBody(value); return *this;}
-
-    /**
-     * <p>The Data Prepper pipeline configuration in YAML format.</p>
-     */
-    inline Pipeline& WithPipelineConfigurationBody(Aws::String&& value) { SetPipelineConfigurationBody(std::move(value)); return *this;}
-
-    /**
-     * <p>The Data Prepper pipeline configuration in YAML format.</p>
-     */
-    inline Pipeline& WithPipelineConfigurationBody(const char* value) { SetPipelineConfigurationBody(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time when the pipeline was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedAt() const{ return m_createdAt; }
-
-    /**
-     * <p>The date and time when the pipeline was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedAt() const { return m_createdAt; }
     inline bool CreatedAtHasBeenSet() const { return m_createdAtHasBeenSet; }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    void SetCreatedAt(CreatedAtT&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::forward<CreatedAtT>(value); }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    Pipeline& WithCreatedAt(CreatedAtT&& value) { SetCreatedAt(std::forward<CreatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time when the pipeline was created.</p>
-     */
-    inline void SetCreatedAt(const Aws::Utils::DateTime& value) { m_createdAtHasBeenSet = true; m_createdAt = value; }
-
-    /**
-     * <p>The date and time when the pipeline was created.</p>
-     */
-    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::move(value); }
-
-    /**
-     * <p>The date and time when the pipeline was created.</p>
-     */
-    inline Pipeline& WithCreatedAt(const Aws::Utils::DateTime& value) { SetCreatedAt(value); return *this;}
-
-    /**
-     * <p>The date and time when the pipeline was created.</p>
-     */
-    inline Pipeline& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time when the pipeline was last updated.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastUpdatedAt() const{ return m_lastUpdatedAt; }
-
-    /**
-     * <p>The date and time when the pipeline was last updated.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastUpdatedAt() const { return m_lastUpdatedAt; }
     inline bool LastUpdatedAtHasBeenSet() const { return m_lastUpdatedAtHasBeenSet; }
+    template<typename LastUpdatedAtT = Aws::Utils::DateTime>
+    void SetLastUpdatedAt(LastUpdatedAtT&& value) { m_lastUpdatedAtHasBeenSet = true; m_lastUpdatedAt = std::forward<LastUpdatedAtT>(value); }
+    template<typename LastUpdatedAtT = Aws::Utils::DateTime>
+    Pipeline& WithLastUpdatedAt(LastUpdatedAtT&& value) { SetLastUpdatedAt(std::forward<LastUpdatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time when the pipeline was last updated.</p>
-     */
-    inline void SetLastUpdatedAt(const Aws::Utils::DateTime& value) { m_lastUpdatedAtHasBeenSet = true; m_lastUpdatedAt = value; }
-
-    /**
-     * <p>The date and time when the pipeline was last updated.</p>
-     */
-    inline void SetLastUpdatedAt(Aws::Utils::DateTime&& value) { m_lastUpdatedAtHasBeenSet = true; m_lastUpdatedAt = std::move(value); }
-
-    /**
-     * <p>The date and time when the pipeline was last updated.</p>
-     */
-    inline Pipeline& WithLastUpdatedAt(const Aws::Utils::DateTime& value) { SetLastUpdatedAt(value); return *this;}
-
-    /**
-     * <p>The date and time when the pipeline was last updated.</p>
-     */
-    inline Pipeline& WithLastUpdatedAt(Aws::Utils::DateTime&& value) { SetLastUpdatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The ingestion endpoints for the pipeline, which you can send data to.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetIngestEndpointUrls() const{ return m_ingestEndpointUrls; }
-
-    /**
-     * <p>The ingestion endpoints for the pipeline, which you can send data to.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetIngestEndpointUrls() const { return m_ingestEndpointUrls; }
     inline bool IngestEndpointUrlsHasBeenSet() const { return m_ingestEndpointUrlsHasBeenSet; }
+    template<typename IngestEndpointUrlsT = Aws::Vector<Aws::String>>
+    void SetIngestEndpointUrls(IngestEndpointUrlsT&& value) { m_ingestEndpointUrlsHasBeenSet = true; m_ingestEndpointUrls = std::forward<IngestEndpointUrlsT>(value); }
+    template<typename IngestEndpointUrlsT = Aws::Vector<Aws::String>>
+    Pipeline& WithIngestEndpointUrls(IngestEndpointUrlsT&& value) { SetIngestEndpointUrls(std::forward<IngestEndpointUrlsT>(value)); return *this;}
+    template<typename IngestEndpointUrlsT = Aws::String>
+    Pipeline& AddIngestEndpointUrls(IngestEndpointUrlsT&& value) { m_ingestEndpointUrlsHasBeenSet = true; m_ingestEndpointUrls.emplace_back(std::forward<IngestEndpointUrlsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The ingestion endpoints for the pipeline, which you can send data to.</p>
-     */
-    inline void SetIngestEndpointUrls(const Aws::Vector<Aws::String>& value) { m_ingestEndpointUrlsHasBeenSet = true; m_ingestEndpointUrls = value; }
-
-    /**
-     * <p>The ingestion endpoints for the pipeline, which you can send data to.</p>
-     */
-    inline void SetIngestEndpointUrls(Aws::Vector<Aws::String>&& value) { m_ingestEndpointUrlsHasBeenSet = true; m_ingestEndpointUrls = std::move(value); }
-
-    /**
-     * <p>The ingestion endpoints for the pipeline, which you can send data to.</p>
-     */
-    inline Pipeline& WithIngestEndpointUrls(const Aws::Vector<Aws::String>& value) { SetIngestEndpointUrls(value); return *this;}
-
-    /**
-     * <p>The ingestion endpoints for the pipeline, which you can send data to.</p>
-     */
-    inline Pipeline& WithIngestEndpointUrls(Aws::Vector<Aws::String>&& value) { SetIngestEndpointUrls(std::move(value)); return *this;}
-
-    /**
-     * <p>The ingestion endpoints for the pipeline, which you can send data to.</p>
-     */
-    inline Pipeline& AddIngestEndpointUrls(const Aws::String& value) { m_ingestEndpointUrlsHasBeenSet = true; m_ingestEndpointUrls.push_back(value); return *this; }
-
-    /**
-     * <p>The ingestion endpoints for the pipeline, which you can send data to.</p>
-     */
-    inline Pipeline& AddIngestEndpointUrls(Aws::String&& value) { m_ingestEndpointUrlsHasBeenSet = true; m_ingestEndpointUrls.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The ingestion endpoints for the pipeline, which you can send data to.</p>
-     */
-    inline Pipeline& AddIngestEndpointUrls(const char* value) { m_ingestEndpointUrlsHasBeenSet = true; m_ingestEndpointUrls.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>Key-value pairs that represent log publishing settings.</p>
      */
-    inline const LogPublishingOptions& GetLogPublishingOptions() const{ return m_logPublishingOptions; }
-
-    /**
-     * <p>Key-value pairs that represent log publishing settings.</p>
-     */
+    inline const LogPublishingOptions& GetLogPublishingOptions() const { return m_logPublishingOptions; }
     inline bool LogPublishingOptionsHasBeenSet() const { return m_logPublishingOptionsHasBeenSet; }
+    template<typename LogPublishingOptionsT = LogPublishingOptions>
+    void SetLogPublishingOptions(LogPublishingOptionsT&& value) { m_logPublishingOptionsHasBeenSet = true; m_logPublishingOptions = std::forward<LogPublishingOptionsT>(value); }
+    template<typename LogPublishingOptionsT = LogPublishingOptions>
+    Pipeline& WithLogPublishingOptions(LogPublishingOptionsT&& value) { SetLogPublishingOptions(std::forward<LogPublishingOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Key-value pairs that represent log publishing settings.</p>
-     */
-    inline void SetLogPublishingOptions(const LogPublishingOptions& value) { m_logPublishingOptionsHasBeenSet = true; m_logPublishingOptions = value; }
-
-    /**
-     * <p>Key-value pairs that represent log publishing settings.</p>
-     */
-    inline void SetLogPublishingOptions(LogPublishingOptions&& value) { m_logPublishingOptionsHasBeenSet = true; m_logPublishingOptions = std::move(value); }
-
-    /**
-     * <p>Key-value pairs that represent log publishing settings.</p>
-     */
-    inline Pipeline& WithLogPublishingOptions(const LogPublishingOptions& value) { SetLogPublishingOptions(value); return *this;}
-
-    /**
-     * <p>Key-value pairs that represent log publishing settings.</p>
-     */
-    inline Pipeline& WithLogPublishingOptions(LogPublishingOptions&& value) { SetLogPublishingOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The VPC interface endpoints that have access to the pipeline.</p>
      */
-    inline const Aws::Vector<VpcEndpoint>& GetVpcEndpoints() const{ return m_vpcEndpoints; }
-
-    /**
-     * <p>The VPC interface endpoints that have access to the pipeline.</p>
-     */
+    inline const Aws::Vector<VpcEndpoint>& GetVpcEndpoints() const { return m_vpcEndpoints; }
     inline bool VpcEndpointsHasBeenSet() const { return m_vpcEndpointsHasBeenSet; }
+    template<typename VpcEndpointsT = Aws::Vector<VpcEndpoint>>
+    void SetVpcEndpoints(VpcEndpointsT&& value) { m_vpcEndpointsHasBeenSet = true; m_vpcEndpoints = std::forward<VpcEndpointsT>(value); }
+    template<typename VpcEndpointsT = Aws::Vector<VpcEndpoint>>
+    Pipeline& WithVpcEndpoints(VpcEndpointsT&& value) { SetVpcEndpoints(std::forward<VpcEndpointsT>(value)); return *this;}
+    template<typename VpcEndpointsT = VpcEndpoint>
+    Pipeline& AddVpcEndpoints(VpcEndpointsT&& value) { m_vpcEndpointsHasBeenSet = true; m_vpcEndpoints.emplace_back(std::forward<VpcEndpointsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The VPC interface endpoints that have access to the pipeline.</p>
-     */
-    inline void SetVpcEndpoints(const Aws::Vector<VpcEndpoint>& value) { m_vpcEndpointsHasBeenSet = true; m_vpcEndpoints = value; }
-
-    /**
-     * <p>The VPC interface endpoints that have access to the pipeline.</p>
-     */
-    inline void SetVpcEndpoints(Aws::Vector<VpcEndpoint>&& value) { m_vpcEndpointsHasBeenSet = true; m_vpcEndpoints = std::move(value); }
-
-    /**
-     * <p>The VPC interface endpoints that have access to the pipeline.</p>
-     */
-    inline Pipeline& WithVpcEndpoints(const Aws::Vector<VpcEndpoint>& value) { SetVpcEndpoints(value); return *this;}
-
-    /**
-     * <p>The VPC interface endpoints that have access to the pipeline.</p>
-     */
-    inline Pipeline& WithVpcEndpoints(Aws::Vector<VpcEndpoint>&& value) { SetVpcEndpoints(std::move(value)); return *this;}
-
-    /**
-     * <p>The VPC interface endpoints that have access to the pipeline.</p>
-     */
-    inline Pipeline& AddVpcEndpoints(const VpcEndpoint& value) { m_vpcEndpointsHasBeenSet = true; m_vpcEndpoints.push_back(value); return *this; }
-
-    /**
-     * <p>The VPC interface endpoints that have access to the pipeline.</p>
-     */
-    inline Pipeline& AddVpcEndpoints(VpcEndpoint&& value) { m_vpcEndpointsHasBeenSet = true; m_vpcEndpoints.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const BufferOptions& GetBufferOptions() const{ return m_bufferOptions; }
-
-    
+    inline const BufferOptions& GetBufferOptions() const { return m_bufferOptions; }
     inline bool BufferOptionsHasBeenSet() const { return m_bufferOptionsHasBeenSet; }
+    template<typename BufferOptionsT = BufferOptions>
+    void SetBufferOptions(BufferOptionsT&& value) { m_bufferOptionsHasBeenSet = true; m_bufferOptions = std::forward<BufferOptionsT>(value); }
+    template<typename BufferOptionsT = BufferOptions>
+    Pipeline& WithBufferOptions(BufferOptionsT&& value) { SetBufferOptions(std::forward<BufferOptionsT>(value)); return *this;}
+    ///@}
 
+    ///@{
     
-    inline void SetBufferOptions(const BufferOptions& value) { m_bufferOptionsHasBeenSet = true; m_bufferOptions = value; }
-
-    
-    inline void SetBufferOptions(BufferOptions&& value) { m_bufferOptionsHasBeenSet = true; m_bufferOptions = std::move(value); }
-
-    
-    inline Pipeline& WithBufferOptions(const BufferOptions& value) { SetBufferOptions(value); return *this;}
-
-    
-    inline Pipeline& WithBufferOptions(BufferOptions&& value) { SetBufferOptions(std::move(value)); return *this;}
-
-
-    
-    inline const EncryptionAtRestOptions& GetEncryptionAtRestOptions() const{ return m_encryptionAtRestOptions; }
-
-    
+    inline const EncryptionAtRestOptions& GetEncryptionAtRestOptions() const { return m_encryptionAtRestOptions; }
     inline bool EncryptionAtRestOptionsHasBeenSet() const { return m_encryptionAtRestOptionsHasBeenSet; }
+    template<typename EncryptionAtRestOptionsT = EncryptionAtRestOptions>
+    void SetEncryptionAtRestOptions(EncryptionAtRestOptionsT&& value) { m_encryptionAtRestOptionsHasBeenSet = true; m_encryptionAtRestOptions = std::forward<EncryptionAtRestOptionsT>(value); }
+    template<typename EncryptionAtRestOptionsT = EncryptionAtRestOptions>
+    Pipeline& WithEncryptionAtRestOptions(EncryptionAtRestOptionsT&& value) { SetEncryptionAtRestOptions(std::forward<EncryptionAtRestOptionsT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetEncryptionAtRestOptions(const EncryptionAtRestOptions& value) { m_encryptionAtRestOptionsHasBeenSet = true; m_encryptionAtRestOptions = value; }
-
-    
-    inline void SetEncryptionAtRestOptions(EncryptionAtRestOptions&& value) { m_encryptionAtRestOptionsHasBeenSet = true; m_encryptionAtRestOptions = std::move(value); }
-
-    
-    inline Pipeline& WithEncryptionAtRestOptions(const EncryptionAtRestOptions& value) { SetEncryptionAtRestOptions(value); return *this;}
-
-    
-    inline Pipeline& WithEncryptionAtRestOptions(EncryptionAtRestOptions&& value) { SetEncryptionAtRestOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
-     * <p>A list of VPC endpoints that OpenSearch Ingestion has created to other AWS
-     * services.</p>
+     * <p>The VPC endpoint service name for the pipeline.</p>
      */
-    inline const Aws::Vector<ServiceVpcEndpoint>& GetServiceVpcEndpoints() const{ return m_serviceVpcEndpoints; }
+    inline const Aws::String& GetVpcEndpointService() const { return m_vpcEndpointService; }
+    inline bool VpcEndpointServiceHasBeenSet() const { return m_vpcEndpointServiceHasBeenSet; }
+    template<typename VpcEndpointServiceT = Aws::String>
+    void SetVpcEndpointService(VpcEndpointServiceT&& value) { m_vpcEndpointServiceHasBeenSet = true; m_vpcEndpointService = std::forward<VpcEndpointServiceT>(value); }
+    template<typename VpcEndpointServiceT = Aws::String>
+    Pipeline& WithVpcEndpointService(VpcEndpointServiceT&& value) { SetVpcEndpointService(std::forward<VpcEndpointServiceT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A list of VPC endpoints that OpenSearch Ingestion has created to other AWS
-     * services.</p>
+     * <p>A list of VPC endpoints that OpenSearch Ingestion has created to other Amazon
+     * Web Services services.</p>
      */
+    inline const Aws::Vector<ServiceVpcEndpoint>& GetServiceVpcEndpoints() const { return m_serviceVpcEndpoints; }
     inline bool ServiceVpcEndpointsHasBeenSet() const { return m_serviceVpcEndpointsHasBeenSet; }
+    template<typename ServiceVpcEndpointsT = Aws::Vector<ServiceVpcEndpoint>>
+    void SetServiceVpcEndpoints(ServiceVpcEndpointsT&& value) { m_serviceVpcEndpointsHasBeenSet = true; m_serviceVpcEndpoints = std::forward<ServiceVpcEndpointsT>(value); }
+    template<typename ServiceVpcEndpointsT = Aws::Vector<ServiceVpcEndpoint>>
+    Pipeline& WithServiceVpcEndpoints(ServiceVpcEndpointsT&& value) { SetServiceVpcEndpoints(std::forward<ServiceVpcEndpointsT>(value)); return *this;}
+    template<typename ServiceVpcEndpointsT = ServiceVpcEndpoint>
+    Pipeline& AddServiceVpcEndpoints(ServiceVpcEndpointsT&& value) { m_serviceVpcEndpointsHasBeenSet = true; m_serviceVpcEndpoints.emplace_back(std::forward<ServiceVpcEndpointsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>A list of VPC endpoints that OpenSearch Ingestion has created to other AWS
-     * services.</p>
+     * <p>Destinations to which the pipeline writes data.</p>
      */
-    inline void SetServiceVpcEndpoints(const Aws::Vector<ServiceVpcEndpoint>& value) { m_serviceVpcEndpointsHasBeenSet = true; m_serviceVpcEndpoints = value; }
+    inline const Aws::Vector<PipelineDestination>& GetDestinations() const { return m_destinations; }
+    inline bool DestinationsHasBeenSet() const { return m_destinationsHasBeenSet; }
+    template<typename DestinationsT = Aws::Vector<PipelineDestination>>
+    void SetDestinations(DestinationsT&& value) { m_destinationsHasBeenSet = true; m_destinations = std::forward<DestinationsT>(value); }
+    template<typename DestinationsT = Aws::Vector<PipelineDestination>>
+    Pipeline& WithDestinations(DestinationsT&& value) { SetDestinations(std::forward<DestinationsT>(value)); return *this;}
+    template<typename DestinationsT = PipelineDestination>
+    Pipeline& AddDestinations(DestinationsT&& value) { m_destinationsHasBeenSet = true; m_destinations.emplace_back(std::forward<DestinationsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of VPC endpoints that OpenSearch Ingestion has created to other AWS
-     * services.</p>
-     */
-    inline void SetServiceVpcEndpoints(Aws::Vector<ServiceVpcEndpoint>&& value) { m_serviceVpcEndpointsHasBeenSet = true; m_serviceVpcEndpoints = std::move(value); }
-
-    /**
-     * <p>A list of VPC endpoints that OpenSearch Ingestion has created to other AWS
-     * services.</p>
-     */
-    inline Pipeline& WithServiceVpcEndpoints(const Aws::Vector<ServiceVpcEndpoint>& value) { SetServiceVpcEndpoints(value); return *this;}
-
-    /**
-     * <p>A list of VPC endpoints that OpenSearch Ingestion has created to other AWS
-     * services.</p>
-     */
-    inline Pipeline& WithServiceVpcEndpoints(Aws::Vector<ServiceVpcEndpoint>&& value) { SetServiceVpcEndpoints(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of VPC endpoints that OpenSearch Ingestion has created to other AWS
-     * services.</p>
-     */
-    inline Pipeline& AddServiceVpcEndpoints(const ServiceVpcEndpoint& value) { m_serviceVpcEndpointsHasBeenSet = true; m_serviceVpcEndpoints.push_back(value); return *this; }
-
-    /**
-     * <p>A list of VPC endpoints that OpenSearch Ingestion has created to other AWS
-     * services.</p>
-     */
-    inline Pipeline& AddServiceVpcEndpoints(ServiceVpcEndpoint&& value) { m_serviceVpcEndpointsHasBeenSet = true; m_serviceVpcEndpoints.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of tags associated with the given pipeline.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>A list of tags associated with the given pipeline.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    Pipeline& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    Pipeline& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>A list of tags associated with the given pipeline.</p>
+     * <p>The Amazon Resource Name (ARN) of the IAM role that the pipeline uses to
+     * access AWS resources.</p>
      */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>A list of tags associated with the given pipeline.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>A list of tags associated with the given pipeline.</p>
-     */
-    inline Pipeline& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>A list of tags associated with the given pipeline.</p>
-     */
-    inline Pipeline& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of tags associated with the given pipeline.</p>
-     */
-    inline Pipeline& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>A list of tags associated with the given pipeline.</p>
-     */
-    inline Pipeline& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    inline const Aws::String& GetPipelineRoleArn() const { return m_pipelineRoleArn; }
+    inline bool PipelineRoleArnHasBeenSet() const { return m_pipelineRoleArnHasBeenSet; }
+    template<typename PipelineRoleArnT = Aws::String>
+    void SetPipelineRoleArn(PipelineRoleArnT&& value) { m_pipelineRoleArnHasBeenSet = true; m_pipelineRoleArn = std::forward<PipelineRoleArnT>(value); }
+    template<typename PipelineRoleArnT = Aws::String>
+    Pipeline& WithPipelineRoleArn(PipelineRoleArnT&& value) { SetPipelineRoleArn(std::forward<PipelineRoleArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_pipelineName;
@@ -590,13 +286,13 @@ namespace Model
     Aws::String m_pipelineArn;
     bool m_pipelineArnHasBeenSet = false;
 
-    int m_minUnits;
+    int m_minUnits{0};
     bool m_minUnitsHasBeenSet = false;
 
-    int m_maxUnits;
+    int m_maxUnits{0};
     bool m_maxUnitsHasBeenSet = false;
 
-    PipelineStatus m_status;
+    PipelineStatus m_status{PipelineStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
     PipelineStatusReason m_statusReason;
@@ -605,10 +301,10 @@ namespace Model
     Aws::String m_pipelineConfigurationBody;
     bool m_pipelineConfigurationBodyHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdAt;
+    Aws::Utils::DateTime m_createdAt{};
     bool m_createdAtHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastUpdatedAt;
+    Aws::Utils::DateTime m_lastUpdatedAt{};
     bool m_lastUpdatedAtHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_ingestEndpointUrls;
@@ -626,11 +322,20 @@ namespace Model
     EncryptionAtRestOptions m_encryptionAtRestOptions;
     bool m_encryptionAtRestOptionsHasBeenSet = false;
 
+    Aws::String m_vpcEndpointService;
+    bool m_vpcEndpointServiceHasBeenSet = false;
+
     Aws::Vector<ServiceVpcEndpoint> m_serviceVpcEndpoints;
     bool m_serviceVpcEndpointsHasBeenSet = false;
 
+    Aws::Vector<PipelineDestination> m_destinations;
+    bool m_destinationsHasBeenSet = false;
+
     Aws::Vector<Tag> m_tags;
     bool m_tagsHasBeenSet = false;
+
+    Aws::String m_pipelineRoleArn;
+    bool m_pipelineRoleArnHasBeenSet = false;
   };
 
 } // namespace Model

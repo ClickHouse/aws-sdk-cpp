@@ -18,21 +18,7 @@ namespace EKS
 namespace Model
 {
 
-PodIdentityAssociationSummary::PodIdentityAssociationSummary() : 
-    m_clusterNameHasBeenSet(false),
-    m_namespaceHasBeenSet(false),
-    m_serviceAccountHasBeenSet(false),
-    m_associationArnHasBeenSet(false),
-    m_associationIdHasBeenSet(false)
-{
-}
-
-PodIdentityAssociationSummary::PodIdentityAssociationSummary(JsonView jsonValue) : 
-    m_clusterNameHasBeenSet(false),
-    m_namespaceHasBeenSet(false),
-    m_serviceAccountHasBeenSet(false),
-    m_associationArnHasBeenSet(false),
-    m_associationIdHasBeenSet(false)
+PodIdentityAssociationSummary::PodIdentityAssociationSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,38 +28,33 @@ PodIdentityAssociationSummary& PodIdentityAssociationSummary::operator =(JsonVie
   if(jsonValue.ValueExists("clusterName"))
   {
     m_clusterName = jsonValue.GetString("clusterName");
-
     m_clusterNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("namespace"))
   {
     m_namespace = jsonValue.GetString("namespace");
-
     m_namespaceHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("serviceAccount"))
   {
     m_serviceAccount = jsonValue.GetString("serviceAccount");
-
     m_serviceAccountHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("associationArn"))
   {
     m_associationArn = jsonValue.GetString("associationArn");
-
     m_associationArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("associationId"))
   {
     m_associationId = jsonValue.GetString("associationId");
-
     m_associationIdHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("ownerArn"))
+  {
+    m_ownerArn = jsonValue.GetString("ownerArn");
+    m_ownerArnHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -108,6 +89,12 @@ JsonValue PodIdentityAssociationSummary::Jsonize() const
   if(m_associationIdHasBeenSet)
   {
    payload.WithString("associationId", m_associationId);
+
+  }
+
+  if(m_ownerArnHasBeenSet)
+  {
+   payload.WithString("ownerArn", m_ownerArn);
 
   }
 

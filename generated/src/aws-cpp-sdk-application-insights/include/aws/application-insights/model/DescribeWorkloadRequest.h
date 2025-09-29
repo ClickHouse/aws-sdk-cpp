@@ -21,7 +21,7 @@ namespace Model
   class DescribeWorkloadRequest : public ApplicationInsightsRequest
   {
   public:
-    AWS_APPLICATIONINSIGHTS_API DescribeWorkloadRequest();
+    AWS_APPLICATIONINSIGHTS_API DescribeWorkloadRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,169 +34,53 @@ namespace Model
     AWS_APPLICATIONINSIGHTS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the resource group.</p>
      */
-    inline const Aws::String& GetResourceGroupName() const{ return m_resourceGroupName; }
-
-    /**
-     * <p>The name of the resource group.</p>
-     */
+    inline const Aws::String& GetResourceGroupName() const { return m_resourceGroupName; }
     inline bool ResourceGroupNameHasBeenSet() const { return m_resourceGroupNameHasBeenSet; }
+    template<typename ResourceGroupNameT = Aws::String>
+    void SetResourceGroupName(ResourceGroupNameT&& value) { m_resourceGroupNameHasBeenSet = true; m_resourceGroupName = std::forward<ResourceGroupNameT>(value); }
+    template<typename ResourceGroupNameT = Aws::String>
+    DescribeWorkloadRequest& WithResourceGroupName(ResourceGroupNameT&& value) { SetResourceGroupName(std::forward<ResourceGroupNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the resource group.</p>
-     */
-    inline void SetResourceGroupName(const Aws::String& value) { m_resourceGroupNameHasBeenSet = true; m_resourceGroupName = value; }
-
-    /**
-     * <p>The name of the resource group.</p>
-     */
-    inline void SetResourceGroupName(Aws::String&& value) { m_resourceGroupNameHasBeenSet = true; m_resourceGroupName = std::move(value); }
-
-    /**
-     * <p>The name of the resource group.</p>
-     */
-    inline void SetResourceGroupName(const char* value) { m_resourceGroupNameHasBeenSet = true; m_resourceGroupName.assign(value); }
-
-    /**
-     * <p>The name of the resource group.</p>
-     */
-    inline DescribeWorkloadRequest& WithResourceGroupName(const Aws::String& value) { SetResourceGroupName(value); return *this;}
-
-    /**
-     * <p>The name of the resource group.</p>
-     */
-    inline DescribeWorkloadRequest& WithResourceGroupName(Aws::String&& value) { SetResourceGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the resource group.</p>
-     */
-    inline DescribeWorkloadRequest& WithResourceGroupName(const char* value) { SetResourceGroupName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the component.</p>
      */
-    inline const Aws::String& GetComponentName() const{ return m_componentName; }
-
-    /**
-     * <p>The name of the component.</p>
-     */
+    inline const Aws::String& GetComponentName() const { return m_componentName; }
     inline bool ComponentNameHasBeenSet() const { return m_componentNameHasBeenSet; }
+    template<typename ComponentNameT = Aws::String>
+    void SetComponentName(ComponentNameT&& value) { m_componentNameHasBeenSet = true; m_componentName = std::forward<ComponentNameT>(value); }
+    template<typename ComponentNameT = Aws::String>
+    DescribeWorkloadRequest& WithComponentName(ComponentNameT&& value) { SetComponentName(std::forward<ComponentNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the component.</p>
-     */
-    inline void SetComponentName(const Aws::String& value) { m_componentNameHasBeenSet = true; m_componentName = value; }
-
-    /**
-     * <p>The name of the component.</p>
-     */
-    inline void SetComponentName(Aws::String&& value) { m_componentNameHasBeenSet = true; m_componentName = std::move(value); }
-
-    /**
-     * <p>The name of the component.</p>
-     */
-    inline void SetComponentName(const char* value) { m_componentNameHasBeenSet = true; m_componentName.assign(value); }
-
-    /**
-     * <p>The name of the component.</p>
-     */
-    inline DescribeWorkloadRequest& WithComponentName(const Aws::String& value) { SetComponentName(value); return *this;}
-
-    /**
-     * <p>The name of the component.</p>
-     */
-    inline DescribeWorkloadRequest& WithComponentName(Aws::String&& value) { SetComponentName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the component.</p>
-     */
-    inline DescribeWorkloadRequest& WithComponentName(const char* value) { SetComponentName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the workload.</p>
      */
-    inline const Aws::String& GetWorkloadId() const{ return m_workloadId; }
-
-    /**
-     * <p>The ID of the workload.</p>
-     */
+    inline const Aws::String& GetWorkloadId() const { return m_workloadId; }
     inline bool WorkloadIdHasBeenSet() const { return m_workloadIdHasBeenSet; }
+    template<typename WorkloadIdT = Aws::String>
+    void SetWorkloadId(WorkloadIdT&& value) { m_workloadIdHasBeenSet = true; m_workloadId = std::forward<WorkloadIdT>(value); }
+    template<typename WorkloadIdT = Aws::String>
+    DescribeWorkloadRequest& WithWorkloadId(WorkloadIdT&& value) { SetWorkloadId(std::forward<WorkloadIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ID of the workload.</p>
+     * <p>The Amazon Web Services account ID for the workload owner.</p>
      */
-    inline void SetWorkloadId(const Aws::String& value) { m_workloadIdHasBeenSet = true; m_workloadId = value; }
-
-    /**
-     * <p>The ID of the workload.</p>
-     */
-    inline void SetWorkloadId(Aws::String&& value) { m_workloadIdHasBeenSet = true; m_workloadId = std::move(value); }
-
-    /**
-     * <p>The ID of the workload.</p>
-     */
-    inline void SetWorkloadId(const char* value) { m_workloadIdHasBeenSet = true; m_workloadId.assign(value); }
-
-    /**
-     * <p>The ID of the workload.</p>
-     */
-    inline DescribeWorkloadRequest& WithWorkloadId(const Aws::String& value) { SetWorkloadId(value); return *this;}
-
-    /**
-     * <p>The ID of the workload.</p>
-     */
-    inline DescribeWorkloadRequest& WithWorkloadId(Aws::String&& value) { SetWorkloadId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the workload.</p>
-     */
-    inline DescribeWorkloadRequest& WithWorkloadId(const char* value) { SetWorkloadId(value); return *this;}
-
-
-    /**
-     * <p>The AWS account ID for the workload owner.</p>
-     */
-    inline const Aws::String& GetAccountId() const{ return m_accountId; }
-
-    /**
-     * <p>The AWS account ID for the workload owner.</p>
-     */
+    inline const Aws::String& GetAccountId() const { return m_accountId; }
     inline bool AccountIdHasBeenSet() const { return m_accountIdHasBeenSet; }
-
-    /**
-     * <p>The AWS account ID for the workload owner.</p>
-     */
-    inline void SetAccountId(const Aws::String& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
-
-    /**
-     * <p>The AWS account ID for the workload owner.</p>
-     */
-    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = std::move(value); }
-
-    /**
-     * <p>The AWS account ID for the workload owner.</p>
-     */
-    inline void SetAccountId(const char* value) { m_accountIdHasBeenSet = true; m_accountId.assign(value); }
-
-    /**
-     * <p>The AWS account ID for the workload owner.</p>
-     */
-    inline DescribeWorkloadRequest& WithAccountId(const Aws::String& value) { SetAccountId(value); return *this;}
-
-    /**
-     * <p>The AWS account ID for the workload owner.</p>
-     */
-    inline DescribeWorkloadRequest& WithAccountId(Aws::String&& value) { SetAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The AWS account ID for the workload owner.</p>
-     */
-    inline DescribeWorkloadRequest& WithAccountId(const char* value) { SetAccountId(value); return *this;}
-
+    template<typename AccountIdT = Aws::String>
+    void SetAccountId(AccountIdT&& value) { m_accountIdHasBeenSet = true; m_accountId = std::forward<AccountIdT>(value); }
+    template<typename AccountIdT = Aws::String>
+    DescribeWorkloadRequest& WithAccountId(AccountIdT&& value) { SetAccountId(std::forward<AccountIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_resourceGroupName;

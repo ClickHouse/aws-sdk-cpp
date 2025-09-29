@@ -22,7 +22,7 @@ namespace Model
   class DescribeTagsRequest : public MachineLearningRequest
   {
   public:
-    AWS_MACHINELEARNING_API DescribeTagsRequest();
+    AWS_MACHINELEARNING_API DescribeTagsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,83 +35,33 @@ namespace Model
     AWS_MACHINELEARNING_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the ML object. For example, <code>exampleModelId</code>. </p>
      */
-    inline const Aws::String& GetResourceId() const{ return m_resourceId; }
-
-    /**
-     * <p>The ID of the ML object. For example, <code>exampleModelId</code>. </p>
-     */
+    inline const Aws::String& GetResourceId() const { return m_resourceId; }
     inline bool ResourceIdHasBeenSet() const { return m_resourceIdHasBeenSet; }
+    template<typename ResourceIdT = Aws::String>
+    void SetResourceId(ResourceIdT&& value) { m_resourceIdHasBeenSet = true; m_resourceId = std::forward<ResourceIdT>(value); }
+    template<typename ResourceIdT = Aws::String>
+    DescribeTagsRequest& WithResourceId(ResourceIdT&& value) { SetResourceId(std::forward<ResourceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the ML object. For example, <code>exampleModelId</code>. </p>
-     */
-    inline void SetResourceId(const Aws::String& value) { m_resourceIdHasBeenSet = true; m_resourceId = value; }
-
-    /**
-     * <p>The ID of the ML object. For example, <code>exampleModelId</code>. </p>
-     */
-    inline void SetResourceId(Aws::String&& value) { m_resourceIdHasBeenSet = true; m_resourceId = std::move(value); }
-
-    /**
-     * <p>The ID of the ML object. For example, <code>exampleModelId</code>. </p>
-     */
-    inline void SetResourceId(const char* value) { m_resourceIdHasBeenSet = true; m_resourceId.assign(value); }
-
-    /**
-     * <p>The ID of the ML object. For example, <code>exampleModelId</code>. </p>
-     */
-    inline DescribeTagsRequest& WithResourceId(const Aws::String& value) { SetResourceId(value); return *this;}
-
-    /**
-     * <p>The ID of the ML object. For example, <code>exampleModelId</code>. </p>
-     */
-    inline DescribeTagsRequest& WithResourceId(Aws::String&& value) { SetResourceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the ML object. For example, <code>exampleModelId</code>. </p>
-     */
-    inline DescribeTagsRequest& WithResourceId(const char* value) { SetResourceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of the ML object.</p>
      */
-    inline const TaggableResourceType& GetResourceType() const{ return m_resourceType; }
-
-    /**
-     * <p>The type of the ML object.</p>
-     */
+    inline TaggableResourceType GetResourceType() const { return m_resourceType; }
     inline bool ResourceTypeHasBeenSet() const { return m_resourceTypeHasBeenSet; }
-
-    /**
-     * <p>The type of the ML object.</p>
-     */
-    inline void SetResourceType(const TaggableResourceType& value) { m_resourceTypeHasBeenSet = true; m_resourceType = value; }
-
-    /**
-     * <p>The type of the ML object.</p>
-     */
-    inline void SetResourceType(TaggableResourceType&& value) { m_resourceTypeHasBeenSet = true; m_resourceType = std::move(value); }
-
-    /**
-     * <p>The type of the ML object.</p>
-     */
-    inline DescribeTagsRequest& WithResourceType(const TaggableResourceType& value) { SetResourceType(value); return *this;}
-
-    /**
-     * <p>The type of the ML object.</p>
-     */
-    inline DescribeTagsRequest& WithResourceType(TaggableResourceType&& value) { SetResourceType(std::move(value)); return *this;}
-
+    inline void SetResourceType(TaggableResourceType value) { m_resourceTypeHasBeenSet = true; m_resourceType = value; }
+    inline DescribeTagsRequest& WithResourceType(TaggableResourceType value) { SetResourceType(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_resourceId;
     bool m_resourceIdHasBeenSet = false;
 
-    TaggableResourceType m_resourceType;
+    TaggableResourceType m_resourceType{TaggableResourceType::NOT_SET};
     bool m_resourceTypeHasBeenSet = false;
   };
 

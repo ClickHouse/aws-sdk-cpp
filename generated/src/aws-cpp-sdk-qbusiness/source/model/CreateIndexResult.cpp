@@ -17,10 +17,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-CreateIndexResult::CreateIndexResult()
-{
-}
-
 CreateIndexResult::CreateIndexResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
@@ -29,24 +25,23 @@ CreateIndexResult::CreateIndexResult(const Aws::AmazonWebServiceResult<JsonValue
 CreateIndexResult& CreateIndexResult::operator =(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   JsonView jsonValue = result.GetPayload().View();
-  if(jsonValue.ValueExists("indexArn"))
-  {
-    m_indexArn = jsonValue.GetString("indexArn");
-
-  }
-
   if(jsonValue.ValueExists("indexId"))
   {
     m_indexId = jsonValue.GetString("indexId");
-
+    m_indexIdHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("indexArn"))
+  {
+    m_indexArn = jsonValue.GetString("indexArn");
+    m_indexArnHasBeenSet = true;
+  }
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

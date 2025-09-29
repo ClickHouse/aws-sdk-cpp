@@ -31,93 +31,35 @@ namespace Model
   class RegistrationMetadataItem
   {
   public:
-    AWS_SSM_API RegistrationMetadataItem();
+    AWS_SSM_API RegistrationMetadataItem() = default;
     AWS_SSM_API RegistrationMetadataItem(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSM_API RegistrationMetadataItem& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSM_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Reserved for internal use.</p>
      */
-    inline const Aws::String& GetKey() const{ return m_key; }
-
-    /**
-     * <p>Reserved for internal use.</p>
-     */
+    inline const Aws::String& GetKey() const { return m_key; }
     inline bool KeyHasBeenSet() const { return m_keyHasBeenSet; }
+    template<typename KeyT = Aws::String>
+    void SetKey(KeyT&& value) { m_keyHasBeenSet = true; m_key = std::forward<KeyT>(value); }
+    template<typename KeyT = Aws::String>
+    RegistrationMetadataItem& WithKey(KeyT&& value) { SetKey(std::forward<KeyT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
      * <p>Reserved for internal use.</p>
      */
-    inline void SetKey(const Aws::String& value) { m_keyHasBeenSet = true; m_key = value; }
-
-    /**
-     * <p>Reserved for internal use.</p>
-     */
-    inline void SetKey(Aws::String&& value) { m_keyHasBeenSet = true; m_key = std::move(value); }
-
-    /**
-     * <p>Reserved for internal use.</p>
-     */
-    inline void SetKey(const char* value) { m_keyHasBeenSet = true; m_key.assign(value); }
-
-    /**
-     * <p>Reserved for internal use.</p>
-     */
-    inline RegistrationMetadataItem& WithKey(const Aws::String& value) { SetKey(value); return *this;}
-
-    /**
-     * <p>Reserved for internal use.</p>
-     */
-    inline RegistrationMetadataItem& WithKey(Aws::String&& value) { SetKey(std::move(value)); return *this;}
-
-    /**
-     * <p>Reserved for internal use.</p>
-     */
-    inline RegistrationMetadataItem& WithKey(const char* value) { SetKey(value); return *this;}
-
-
-    /**
-     * <p>Reserved for internal use.</p>
-     */
-    inline const Aws::String& GetValue() const{ return m_value; }
-
-    /**
-     * <p>Reserved for internal use.</p>
-     */
+    inline const Aws::String& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>Reserved for internal use.</p>
-     */
-    inline void SetValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>Reserved for internal use.</p>
-     */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>Reserved for internal use.</p>
-     */
-    inline void SetValue(const char* value) { m_valueHasBeenSet = true; m_value.assign(value); }
-
-    /**
-     * <p>Reserved for internal use.</p>
-     */
-    inline RegistrationMetadataItem& WithValue(const Aws::String& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>Reserved for internal use.</p>
-     */
-    inline RegistrationMetadataItem& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
-
-    /**
-     * <p>Reserved for internal use.</p>
-     */
-    inline RegistrationMetadataItem& WithValue(const char* value) { SetValue(value); return *this;}
-
+    template<typename ValueT = Aws::String>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::String>
+    RegistrationMetadataItem& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_key;

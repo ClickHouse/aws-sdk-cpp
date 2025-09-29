@@ -33,42 +33,24 @@ namespace Model
   class MatchingResource
   {
   public:
-    AWS_MACIE2_API MatchingResource();
+    AWS_MACIE2_API MatchingResource() = default;
     AWS_MACIE2_API MatchingResource(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API MatchingResource& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The details of an S3 bucket that Amazon Macie monitors and analyzes.</p>
+     * <p>The details of an S3 bucket that Amazon Macie monitors and analyzes for your
+     * account.</p>
      */
-    inline const MatchingBucket& GetMatchingBucket() const{ return m_matchingBucket; }
-
-    /**
-     * <p>The details of an S3 bucket that Amazon Macie monitors and analyzes.</p>
-     */
+    inline const MatchingBucket& GetMatchingBucket() const { return m_matchingBucket; }
     inline bool MatchingBucketHasBeenSet() const { return m_matchingBucketHasBeenSet; }
-
-    /**
-     * <p>The details of an S3 bucket that Amazon Macie monitors and analyzes.</p>
-     */
-    inline void SetMatchingBucket(const MatchingBucket& value) { m_matchingBucketHasBeenSet = true; m_matchingBucket = value; }
-
-    /**
-     * <p>The details of an S3 bucket that Amazon Macie monitors and analyzes.</p>
-     */
-    inline void SetMatchingBucket(MatchingBucket&& value) { m_matchingBucketHasBeenSet = true; m_matchingBucket = std::move(value); }
-
-    /**
-     * <p>The details of an S3 bucket that Amazon Macie monitors and analyzes.</p>
-     */
-    inline MatchingResource& WithMatchingBucket(const MatchingBucket& value) { SetMatchingBucket(value); return *this;}
-
-    /**
-     * <p>The details of an S3 bucket that Amazon Macie monitors and analyzes.</p>
-     */
-    inline MatchingResource& WithMatchingBucket(MatchingBucket&& value) { SetMatchingBucket(std::move(value)); return *this;}
-
+    template<typename MatchingBucketT = MatchingBucket>
+    void SetMatchingBucket(MatchingBucketT&& value) { m_matchingBucketHasBeenSet = true; m_matchingBucket = std::forward<MatchingBucketT>(value); }
+    template<typename MatchingBucketT = MatchingBucket>
+    MatchingResource& WithMatchingBucket(MatchingBucketT&& value) { SetMatchingBucket(std::forward<MatchingBucketT>(value)); return *this;}
+    ///@}
   private:
 
     MatchingBucket m_matchingBucket;

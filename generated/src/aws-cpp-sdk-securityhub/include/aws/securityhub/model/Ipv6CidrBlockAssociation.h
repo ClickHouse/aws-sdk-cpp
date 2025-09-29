@@ -31,94 +31,37 @@ namespace Model
   class Ipv6CidrBlockAssociation
   {
   public:
-    AWS_SECURITYHUB_API Ipv6CidrBlockAssociation();
+    AWS_SECURITYHUB_API Ipv6CidrBlockAssociation() = default;
     AWS_SECURITYHUB_API Ipv6CidrBlockAssociation(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Ipv6CidrBlockAssociation& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The association ID for the IPv6 CIDR block.</p>
      */
-    inline const Aws::String& GetAssociationId() const{ return m_associationId; }
-
-    /**
-     * <p>The association ID for the IPv6 CIDR block.</p>
-     */
+    inline const Aws::String& GetAssociationId() const { return m_associationId; }
     inline bool AssociationIdHasBeenSet() const { return m_associationIdHasBeenSet; }
+    template<typename AssociationIdT = Aws::String>
+    void SetAssociationId(AssociationIdT&& value) { m_associationIdHasBeenSet = true; m_associationId = std::forward<AssociationIdT>(value); }
+    template<typename AssociationIdT = Aws::String>
+    Ipv6CidrBlockAssociation& WithAssociationId(AssociationIdT&& value) { SetAssociationId(std::forward<AssociationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The association ID for the IPv6 CIDR block.</p>
-     */
-    inline void SetAssociationId(const Aws::String& value) { m_associationIdHasBeenSet = true; m_associationId = value; }
-
-    /**
-     * <p>The association ID for the IPv6 CIDR block.</p>
-     */
-    inline void SetAssociationId(Aws::String&& value) { m_associationIdHasBeenSet = true; m_associationId = std::move(value); }
-
-    /**
-     * <p>The association ID for the IPv6 CIDR block.</p>
-     */
-    inline void SetAssociationId(const char* value) { m_associationIdHasBeenSet = true; m_associationId.assign(value); }
-
-    /**
-     * <p>The association ID for the IPv6 CIDR block.</p>
-     */
-    inline Ipv6CidrBlockAssociation& WithAssociationId(const Aws::String& value) { SetAssociationId(value); return *this;}
-
-    /**
-     * <p>The association ID for the IPv6 CIDR block.</p>
-     */
-    inline Ipv6CidrBlockAssociation& WithAssociationId(Aws::String&& value) { SetAssociationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The association ID for the IPv6 CIDR block.</p>
-     */
-    inline Ipv6CidrBlockAssociation& WithAssociationId(const char* value) { SetAssociationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The IPv6 CIDR block.</p>
      */
-    inline const Aws::String& GetIpv6CidrBlock() const{ return m_ipv6CidrBlock; }
-
-    /**
-     * <p>The IPv6 CIDR block.</p>
-     */
+    inline const Aws::String& GetIpv6CidrBlock() const { return m_ipv6CidrBlock; }
     inline bool Ipv6CidrBlockHasBeenSet() const { return m_ipv6CidrBlockHasBeenSet; }
+    template<typename Ipv6CidrBlockT = Aws::String>
+    void SetIpv6CidrBlock(Ipv6CidrBlockT&& value) { m_ipv6CidrBlockHasBeenSet = true; m_ipv6CidrBlock = std::forward<Ipv6CidrBlockT>(value); }
+    template<typename Ipv6CidrBlockT = Aws::String>
+    Ipv6CidrBlockAssociation& WithIpv6CidrBlock(Ipv6CidrBlockT&& value) { SetIpv6CidrBlock(std::forward<Ipv6CidrBlockT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The IPv6 CIDR block.</p>
-     */
-    inline void SetIpv6CidrBlock(const Aws::String& value) { m_ipv6CidrBlockHasBeenSet = true; m_ipv6CidrBlock = value; }
-
-    /**
-     * <p>The IPv6 CIDR block.</p>
-     */
-    inline void SetIpv6CidrBlock(Aws::String&& value) { m_ipv6CidrBlockHasBeenSet = true; m_ipv6CidrBlock = std::move(value); }
-
-    /**
-     * <p>The IPv6 CIDR block.</p>
-     */
-    inline void SetIpv6CidrBlock(const char* value) { m_ipv6CidrBlockHasBeenSet = true; m_ipv6CidrBlock.assign(value); }
-
-    /**
-     * <p>The IPv6 CIDR block.</p>
-     */
-    inline Ipv6CidrBlockAssociation& WithIpv6CidrBlock(const Aws::String& value) { SetIpv6CidrBlock(value); return *this;}
-
-    /**
-     * <p>The IPv6 CIDR block.</p>
-     */
-    inline Ipv6CidrBlockAssociation& WithIpv6CidrBlock(Aws::String&& value) { SetIpv6CidrBlock(std::move(value)); return *this;}
-
-    /**
-     * <p>The IPv6 CIDR block.</p>
-     */
-    inline Ipv6CidrBlockAssociation& WithIpv6CidrBlock(const char* value) { SetIpv6CidrBlock(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about the state of the CIDR block. Valid values are as
      * follows:</p> <ul> <li> <p> <code>associating</code> </p> </li> <li> <p>
@@ -126,71 +69,13 @@ namespace Model
      * </li> <li> <p> <code>disassociated</code> </p> </li> <li> <p>
      * <code>failed</code> </p> </li> <li> <p> <code>failing</code> </p> </li> </ul>
      */
-    inline const Aws::String& GetCidrBlockState() const{ return m_cidrBlockState; }
-
-    /**
-     * <p>Information about the state of the CIDR block. Valid values are as
-     * follows:</p> <ul> <li> <p> <code>associating</code> </p> </li> <li> <p>
-     * <code>associated</code> </p> </li> <li> <p> <code>disassociating</code> </p>
-     * </li> <li> <p> <code>disassociated</code> </p> </li> <li> <p>
-     * <code>failed</code> </p> </li> <li> <p> <code>failing</code> </p> </li> </ul>
-     */
+    inline const Aws::String& GetCidrBlockState() const { return m_cidrBlockState; }
     inline bool CidrBlockStateHasBeenSet() const { return m_cidrBlockStateHasBeenSet; }
-
-    /**
-     * <p>Information about the state of the CIDR block. Valid values are as
-     * follows:</p> <ul> <li> <p> <code>associating</code> </p> </li> <li> <p>
-     * <code>associated</code> </p> </li> <li> <p> <code>disassociating</code> </p>
-     * </li> <li> <p> <code>disassociated</code> </p> </li> <li> <p>
-     * <code>failed</code> </p> </li> <li> <p> <code>failing</code> </p> </li> </ul>
-     */
-    inline void SetCidrBlockState(const Aws::String& value) { m_cidrBlockStateHasBeenSet = true; m_cidrBlockState = value; }
-
-    /**
-     * <p>Information about the state of the CIDR block. Valid values are as
-     * follows:</p> <ul> <li> <p> <code>associating</code> </p> </li> <li> <p>
-     * <code>associated</code> </p> </li> <li> <p> <code>disassociating</code> </p>
-     * </li> <li> <p> <code>disassociated</code> </p> </li> <li> <p>
-     * <code>failed</code> </p> </li> <li> <p> <code>failing</code> </p> </li> </ul>
-     */
-    inline void SetCidrBlockState(Aws::String&& value) { m_cidrBlockStateHasBeenSet = true; m_cidrBlockState = std::move(value); }
-
-    /**
-     * <p>Information about the state of the CIDR block. Valid values are as
-     * follows:</p> <ul> <li> <p> <code>associating</code> </p> </li> <li> <p>
-     * <code>associated</code> </p> </li> <li> <p> <code>disassociating</code> </p>
-     * </li> <li> <p> <code>disassociated</code> </p> </li> <li> <p>
-     * <code>failed</code> </p> </li> <li> <p> <code>failing</code> </p> </li> </ul>
-     */
-    inline void SetCidrBlockState(const char* value) { m_cidrBlockStateHasBeenSet = true; m_cidrBlockState.assign(value); }
-
-    /**
-     * <p>Information about the state of the CIDR block. Valid values are as
-     * follows:</p> <ul> <li> <p> <code>associating</code> </p> </li> <li> <p>
-     * <code>associated</code> </p> </li> <li> <p> <code>disassociating</code> </p>
-     * </li> <li> <p> <code>disassociated</code> </p> </li> <li> <p>
-     * <code>failed</code> </p> </li> <li> <p> <code>failing</code> </p> </li> </ul>
-     */
-    inline Ipv6CidrBlockAssociation& WithCidrBlockState(const Aws::String& value) { SetCidrBlockState(value); return *this;}
-
-    /**
-     * <p>Information about the state of the CIDR block. Valid values are as
-     * follows:</p> <ul> <li> <p> <code>associating</code> </p> </li> <li> <p>
-     * <code>associated</code> </p> </li> <li> <p> <code>disassociating</code> </p>
-     * </li> <li> <p> <code>disassociated</code> </p> </li> <li> <p>
-     * <code>failed</code> </p> </li> <li> <p> <code>failing</code> </p> </li> </ul>
-     */
-    inline Ipv6CidrBlockAssociation& WithCidrBlockState(Aws::String&& value) { SetCidrBlockState(std::move(value)); return *this;}
-
-    /**
-     * <p>Information about the state of the CIDR block. Valid values are as
-     * follows:</p> <ul> <li> <p> <code>associating</code> </p> </li> <li> <p>
-     * <code>associated</code> </p> </li> <li> <p> <code>disassociating</code> </p>
-     * </li> <li> <p> <code>disassociated</code> </p> </li> <li> <p>
-     * <code>failed</code> </p> </li> <li> <p> <code>failing</code> </p> </li> </ul>
-     */
-    inline Ipv6CidrBlockAssociation& WithCidrBlockState(const char* value) { SetCidrBlockState(value); return *this;}
-
+    template<typename CidrBlockStateT = Aws::String>
+    void SetCidrBlockState(CidrBlockStateT&& value) { m_cidrBlockStateHasBeenSet = true; m_cidrBlockState = std::forward<CidrBlockStateT>(value); }
+    template<typename CidrBlockStateT = Aws::String>
+    Ipv6CidrBlockAssociation& WithCidrBlockState(CidrBlockStateT&& value) { SetCidrBlockState(std::forward<CidrBlockStateT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_associationId;

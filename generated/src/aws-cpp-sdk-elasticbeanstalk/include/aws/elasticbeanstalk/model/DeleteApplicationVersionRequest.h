@@ -24,7 +24,7 @@ namespace Model
   class DeleteApplicationVersionRequest : public ElasticBeanstalkRequest
   {
   public:
-    AWS_ELASTICBEANSTALK_API DeleteApplicationVersionRequest();
+    AWS_ELASTICBEANSTALK_API DeleteApplicationVersionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,116 +39,41 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The name of the application to which the version belongs.</p>
      */
-    inline const Aws::String& GetApplicationName() const{ return m_applicationName; }
-
-    /**
-     * <p>The name of the application to which the version belongs.</p>
-     */
+    inline const Aws::String& GetApplicationName() const { return m_applicationName; }
     inline bool ApplicationNameHasBeenSet() const { return m_applicationNameHasBeenSet; }
+    template<typename ApplicationNameT = Aws::String>
+    void SetApplicationName(ApplicationNameT&& value) { m_applicationNameHasBeenSet = true; m_applicationName = std::forward<ApplicationNameT>(value); }
+    template<typename ApplicationNameT = Aws::String>
+    DeleteApplicationVersionRequest& WithApplicationName(ApplicationNameT&& value) { SetApplicationName(std::forward<ApplicationNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the application to which the version belongs.</p>
-     */
-    inline void SetApplicationName(const Aws::String& value) { m_applicationNameHasBeenSet = true; m_applicationName = value; }
-
-    /**
-     * <p>The name of the application to which the version belongs.</p>
-     */
-    inline void SetApplicationName(Aws::String&& value) { m_applicationNameHasBeenSet = true; m_applicationName = std::move(value); }
-
-    /**
-     * <p>The name of the application to which the version belongs.</p>
-     */
-    inline void SetApplicationName(const char* value) { m_applicationNameHasBeenSet = true; m_applicationName.assign(value); }
-
-    /**
-     * <p>The name of the application to which the version belongs.</p>
-     */
-    inline DeleteApplicationVersionRequest& WithApplicationName(const Aws::String& value) { SetApplicationName(value); return *this;}
-
-    /**
-     * <p>The name of the application to which the version belongs.</p>
-     */
-    inline DeleteApplicationVersionRequest& WithApplicationName(Aws::String&& value) { SetApplicationName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the application to which the version belongs.</p>
-     */
-    inline DeleteApplicationVersionRequest& WithApplicationName(const char* value) { SetApplicationName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The label of the version to delete.</p>
      */
-    inline const Aws::String& GetVersionLabel() const{ return m_versionLabel; }
-
-    /**
-     * <p>The label of the version to delete.</p>
-     */
+    inline const Aws::String& GetVersionLabel() const { return m_versionLabel; }
     inline bool VersionLabelHasBeenSet() const { return m_versionLabelHasBeenSet; }
+    template<typename VersionLabelT = Aws::String>
+    void SetVersionLabel(VersionLabelT&& value) { m_versionLabelHasBeenSet = true; m_versionLabel = std::forward<VersionLabelT>(value); }
+    template<typename VersionLabelT = Aws::String>
+    DeleteApplicationVersionRequest& WithVersionLabel(VersionLabelT&& value) { SetVersionLabel(std::forward<VersionLabelT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The label of the version to delete.</p>
-     */
-    inline void SetVersionLabel(const Aws::String& value) { m_versionLabelHasBeenSet = true; m_versionLabel = value; }
-
-    /**
-     * <p>The label of the version to delete.</p>
-     */
-    inline void SetVersionLabel(Aws::String&& value) { m_versionLabelHasBeenSet = true; m_versionLabel = std::move(value); }
-
-    /**
-     * <p>The label of the version to delete.</p>
-     */
-    inline void SetVersionLabel(const char* value) { m_versionLabelHasBeenSet = true; m_versionLabel.assign(value); }
-
-    /**
-     * <p>The label of the version to delete.</p>
-     */
-    inline DeleteApplicationVersionRequest& WithVersionLabel(const Aws::String& value) { SetVersionLabel(value); return *this;}
-
-    /**
-     * <p>The label of the version to delete.</p>
-     */
-    inline DeleteApplicationVersionRequest& WithVersionLabel(Aws::String&& value) { SetVersionLabel(std::move(value)); return *this;}
-
-    /**
-     * <p>The label of the version to delete.</p>
-     */
-    inline DeleteApplicationVersionRequest& WithVersionLabel(const char* value) { SetVersionLabel(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Set to <code>true</code> to delete the source bundle from your storage
      * bucket. Otherwise, the application version is deleted only from Elastic
      * Beanstalk and the source bundle remains in Amazon S3.</p>
      */
-    inline bool GetDeleteSourceBundle() const{ return m_deleteSourceBundle; }
-
-    /**
-     * <p>Set to <code>true</code> to delete the source bundle from your storage
-     * bucket. Otherwise, the application version is deleted only from Elastic
-     * Beanstalk and the source bundle remains in Amazon S3.</p>
-     */
+    inline bool GetDeleteSourceBundle() const { return m_deleteSourceBundle; }
     inline bool DeleteSourceBundleHasBeenSet() const { return m_deleteSourceBundleHasBeenSet; }
-
-    /**
-     * <p>Set to <code>true</code> to delete the source bundle from your storage
-     * bucket. Otherwise, the application version is deleted only from Elastic
-     * Beanstalk and the source bundle remains in Amazon S3.</p>
-     */
     inline void SetDeleteSourceBundle(bool value) { m_deleteSourceBundleHasBeenSet = true; m_deleteSourceBundle = value; }
-
-    /**
-     * <p>Set to <code>true</code> to delete the source bundle from your storage
-     * bucket. Otherwise, the application version is deleted only from Elastic
-     * Beanstalk and the source bundle remains in Amazon S3.</p>
-     */
     inline DeleteApplicationVersionRequest& WithDeleteSourceBundle(bool value) { SetDeleteSourceBundle(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_applicationName;
@@ -157,7 +82,7 @@ namespace Model
     Aws::String m_versionLabel;
     bool m_versionLabelHasBeenSet = false;
 
-    bool m_deleteSourceBundle;
+    bool m_deleteSourceBundle{false};
     bool m_deleteSourceBundleHasBeenSet = false;
   };
 

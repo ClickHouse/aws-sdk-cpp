@@ -8,6 +8,7 @@
 #include <aws/quicksight/model/SankeyDiagramFieldWells.h>
 #include <aws/quicksight/model/SankeyDiagramSortConfiguration.h>
 #include <aws/quicksight/model/DataLabelOptions.h>
+#include <aws/quicksight/model/VisualInteractionOptions.h>
 #include <utility>
 
 namespace Aws
@@ -33,104 +34,59 @@ namespace Model
   class SankeyDiagramChartConfiguration
   {
   public:
-    AWS_QUICKSIGHT_API SankeyDiagramChartConfiguration();
+    AWS_QUICKSIGHT_API SankeyDiagramChartConfiguration() = default;
     AWS_QUICKSIGHT_API SankeyDiagramChartConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API SankeyDiagramChartConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The field well configuration of a sankey diagram.</p>
      */
-    inline const SankeyDiagramFieldWells& GetFieldWells() const{ return m_fieldWells; }
-
-    /**
-     * <p>The field well configuration of a sankey diagram.</p>
-     */
+    inline const SankeyDiagramFieldWells& GetFieldWells() const { return m_fieldWells; }
     inline bool FieldWellsHasBeenSet() const { return m_fieldWellsHasBeenSet; }
+    template<typename FieldWellsT = SankeyDiagramFieldWells>
+    void SetFieldWells(FieldWellsT&& value) { m_fieldWellsHasBeenSet = true; m_fieldWells = std::forward<FieldWellsT>(value); }
+    template<typename FieldWellsT = SankeyDiagramFieldWells>
+    SankeyDiagramChartConfiguration& WithFieldWells(FieldWellsT&& value) { SetFieldWells(std::forward<FieldWellsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The field well configuration of a sankey diagram.</p>
-     */
-    inline void SetFieldWells(const SankeyDiagramFieldWells& value) { m_fieldWellsHasBeenSet = true; m_fieldWells = value; }
-
-    /**
-     * <p>The field well configuration of a sankey diagram.</p>
-     */
-    inline void SetFieldWells(SankeyDiagramFieldWells&& value) { m_fieldWellsHasBeenSet = true; m_fieldWells = std::move(value); }
-
-    /**
-     * <p>The field well configuration of a sankey diagram.</p>
-     */
-    inline SankeyDiagramChartConfiguration& WithFieldWells(const SankeyDiagramFieldWells& value) { SetFieldWells(value); return *this;}
-
-    /**
-     * <p>The field well configuration of a sankey diagram.</p>
-     */
-    inline SankeyDiagramChartConfiguration& WithFieldWells(SankeyDiagramFieldWells&& value) { SetFieldWells(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The sort configuration of a sankey diagram.</p>
      */
-    inline const SankeyDiagramSortConfiguration& GetSortConfiguration() const{ return m_sortConfiguration; }
-
-    /**
-     * <p>The sort configuration of a sankey diagram.</p>
-     */
+    inline const SankeyDiagramSortConfiguration& GetSortConfiguration() const { return m_sortConfiguration; }
     inline bool SortConfigurationHasBeenSet() const { return m_sortConfigurationHasBeenSet; }
+    template<typename SortConfigurationT = SankeyDiagramSortConfiguration>
+    void SetSortConfiguration(SortConfigurationT&& value) { m_sortConfigurationHasBeenSet = true; m_sortConfiguration = std::forward<SortConfigurationT>(value); }
+    template<typename SortConfigurationT = SankeyDiagramSortConfiguration>
+    SankeyDiagramChartConfiguration& WithSortConfiguration(SortConfigurationT&& value) { SetSortConfiguration(std::forward<SortConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The sort configuration of a sankey diagram.</p>
-     */
-    inline void SetSortConfiguration(const SankeyDiagramSortConfiguration& value) { m_sortConfigurationHasBeenSet = true; m_sortConfiguration = value; }
-
-    /**
-     * <p>The sort configuration of a sankey diagram.</p>
-     */
-    inline void SetSortConfiguration(SankeyDiagramSortConfiguration&& value) { m_sortConfigurationHasBeenSet = true; m_sortConfiguration = std::move(value); }
-
-    /**
-     * <p>The sort configuration of a sankey diagram.</p>
-     */
-    inline SankeyDiagramChartConfiguration& WithSortConfiguration(const SankeyDiagramSortConfiguration& value) { SetSortConfiguration(value); return *this;}
-
-    /**
-     * <p>The sort configuration of a sankey diagram.</p>
-     */
-    inline SankeyDiagramChartConfiguration& WithSortConfiguration(SankeyDiagramSortConfiguration&& value) { SetSortConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The data label configuration of a sankey diagram.</p>
      */
-    inline const DataLabelOptions& GetDataLabels() const{ return m_dataLabels; }
-
-    /**
-     * <p>The data label configuration of a sankey diagram.</p>
-     */
+    inline const DataLabelOptions& GetDataLabels() const { return m_dataLabels; }
     inline bool DataLabelsHasBeenSet() const { return m_dataLabelsHasBeenSet; }
+    template<typename DataLabelsT = DataLabelOptions>
+    void SetDataLabels(DataLabelsT&& value) { m_dataLabelsHasBeenSet = true; m_dataLabels = std::forward<DataLabelsT>(value); }
+    template<typename DataLabelsT = DataLabelOptions>
+    SankeyDiagramChartConfiguration& WithDataLabels(DataLabelsT&& value) { SetDataLabels(std::forward<DataLabelsT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The data label configuration of a sankey diagram.</p>
+     * <p>The general visual interactions setup for a visual.</p>
      */
-    inline void SetDataLabels(const DataLabelOptions& value) { m_dataLabelsHasBeenSet = true; m_dataLabels = value; }
-
-    /**
-     * <p>The data label configuration of a sankey diagram.</p>
-     */
-    inline void SetDataLabels(DataLabelOptions&& value) { m_dataLabelsHasBeenSet = true; m_dataLabels = std::move(value); }
-
-    /**
-     * <p>The data label configuration of a sankey diagram.</p>
-     */
-    inline SankeyDiagramChartConfiguration& WithDataLabels(const DataLabelOptions& value) { SetDataLabels(value); return *this;}
-
-    /**
-     * <p>The data label configuration of a sankey diagram.</p>
-     */
-    inline SankeyDiagramChartConfiguration& WithDataLabels(DataLabelOptions&& value) { SetDataLabels(std::move(value)); return *this;}
-
+    inline const VisualInteractionOptions& GetInteractions() const { return m_interactions; }
+    inline bool InteractionsHasBeenSet() const { return m_interactionsHasBeenSet; }
+    template<typename InteractionsT = VisualInteractionOptions>
+    void SetInteractions(InteractionsT&& value) { m_interactionsHasBeenSet = true; m_interactions = std::forward<InteractionsT>(value); }
+    template<typename InteractionsT = VisualInteractionOptions>
+    SankeyDiagramChartConfiguration& WithInteractions(InteractionsT&& value) { SetInteractions(std::forward<InteractionsT>(value)); return *this;}
+    ///@}
   private:
 
     SankeyDiagramFieldWells m_fieldWells;
@@ -141,6 +97,9 @@ namespace Model
 
     DataLabelOptions m_dataLabels;
     bool m_dataLabelsHasBeenSet = false;
+
+    VisualInteractionOptions m_interactions;
+    bool m_interactionsHasBeenSet = false;
   };
 
 } // namespace Model

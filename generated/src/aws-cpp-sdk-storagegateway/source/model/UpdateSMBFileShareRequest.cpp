@@ -12,38 +12,6 @@ using namespace Aws::StorageGateway::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateSMBFileShareRequest::UpdateSMBFileShareRequest() : 
-    m_fileShareARNHasBeenSet(false),
-    m_kMSEncrypted(false),
-    m_kMSEncryptedHasBeenSet(false),
-    m_kMSKeyHasBeenSet(false),
-    m_defaultStorageClassHasBeenSet(false),
-    m_objectACL(ObjectACL::NOT_SET),
-    m_objectACLHasBeenSet(false),
-    m_readOnly(false),
-    m_readOnlyHasBeenSet(false),
-    m_guessMIMETypeEnabled(false),
-    m_guessMIMETypeEnabledHasBeenSet(false),
-    m_requesterPays(false),
-    m_requesterPaysHasBeenSet(false),
-    m_sMBACLEnabled(false),
-    m_sMBACLEnabledHasBeenSet(false),
-    m_accessBasedEnumeration(false),
-    m_accessBasedEnumerationHasBeenSet(false),
-    m_adminUserListHasBeenSet(false),
-    m_validUserListHasBeenSet(false),
-    m_invalidUserListHasBeenSet(false),
-    m_auditDestinationARNHasBeenSet(false),
-    m_caseSensitivity(CaseSensitivity::NOT_SET),
-    m_caseSensitivityHasBeenSet(false),
-    m_fileShareNameHasBeenSet(false),
-    m_cacheAttributesHasBeenSet(false),
-    m_notificationPolicyHasBeenSet(false),
-    m_oplocksEnabled(false),
-    m_oplocksEnabledHasBeenSet(false)
-{
-}
-
 Aws::String UpdateSMBFileShareRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -54,10 +22,9 @@ Aws::String UpdateSMBFileShareRequest::SerializePayload() const
 
   }
 
-  if(m_kMSEncryptedHasBeenSet)
+  if(m_encryptionTypeHasBeenSet)
   {
-   payload.WithBool("KMSEncrypted", m_kMSEncrypted);
-
+   payload.WithString("EncryptionType", EncryptionTypeMapper::GetNameForEncryptionType(m_encryptionType));
   }
 
   if(m_kMSKeyHasBeenSet)

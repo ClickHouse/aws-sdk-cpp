@@ -21,14 +21,11 @@ namespace Model
 {
 
   /**
-   * <p>Delete Agent Version Request</p><p><h3>See Also:</h3>   <a
-   * href="http://docs.aws.amazon.com/goto/WebAPI/bedrock-agent-2023-06-05/DeleteAgentVersionRequest">AWS
-   * API Reference</a></p>
    */
   class DeleteAgentVersionRequest : public BedrockAgentRequest
   {
   public:
-    AWS_BEDROCKAGENT_API DeleteAgentVersionRequest();
+    AWS_BEDROCKAGENT_API DeleteAgentVersionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -41,92 +38,41 @@ namespace Model
     AWS_BEDROCKAGENT_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
-     * <p>Id generated at the server side when an Agent is created</p>
+     * <p>The unique identifier of the agent that the version belongs to.</p>
      */
-    inline const Aws::String& GetAgentId() const{ return m_agentId; }
-
-    /**
-     * <p>Id generated at the server side when an Agent is created</p>
-     */
+    inline const Aws::String& GetAgentId() const { return m_agentId; }
     inline bool AgentIdHasBeenSet() const { return m_agentIdHasBeenSet; }
+    template<typename AgentIdT = Aws::String>
+    void SetAgentId(AgentIdT&& value) { m_agentIdHasBeenSet = true; m_agentId = std::forward<AgentIdT>(value); }
+    template<typename AgentIdT = Aws::String>
+    DeleteAgentVersionRequest& WithAgentId(AgentIdT&& value) { SetAgentId(std::forward<AgentIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Id generated at the server side when an Agent is created</p>
+     * <p>The version of the agent to delete.</p>
      */
-    inline void SetAgentId(const Aws::String& value) { m_agentIdHasBeenSet = true; m_agentId = value; }
-
-    /**
-     * <p>Id generated at the server side when an Agent is created</p>
-     */
-    inline void SetAgentId(Aws::String&& value) { m_agentIdHasBeenSet = true; m_agentId = std::move(value); }
-
-    /**
-     * <p>Id generated at the server side when an Agent is created</p>
-     */
-    inline void SetAgentId(const char* value) { m_agentIdHasBeenSet = true; m_agentId.assign(value); }
-
-    /**
-     * <p>Id generated at the server side when an Agent is created</p>
-     */
-    inline DeleteAgentVersionRequest& WithAgentId(const Aws::String& value) { SetAgentId(value); return *this;}
-
-    /**
-     * <p>Id generated at the server side when an Agent is created</p>
-     */
-    inline DeleteAgentVersionRequest& WithAgentId(Aws::String&& value) { SetAgentId(std::move(value)); return *this;}
-
-    /**
-     * <p>Id generated at the server side when an Agent is created</p>
-     */
-    inline DeleteAgentVersionRequest& WithAgentId(const char* value) { SetAgentId(value); return *this;}
-
-
-    
-    inline const Aws::String& GetAgentVersion() const{ return m_agentVersion; }
-
-    
+    inline const Aws::String& GetAgentVersion() const { return m_agentVersion; }
     inline bool AgentVersionHasBeenSet() const { return m_agentVersionHasBeenSet; }
+    template<typename AgentVersionT = Aws::String>
+    void SetAgentVersion(AgentVersionT&& value) { m_agentVersionHasBeenSet = true; m_agentVersion = std::forward<AgentVersionT>(value); }
+    template<typename AgentVersionT = Aws::String>
+    DeleteAgentVersionRequest& WithAgentVersion(AgentVersionT&& value) { SetAgentVersion(std::forward<AgentVersionT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetAgentVersion(const Aws::String& value) { m_agentVersionHasBeenSet = true; m_agentVersion = value; }
-
-    
-    inline void SetAgentVersion(Aws::String&& value) { m_agentVersionHasBeenSet = true; m_agentVersion = std::move(value); }
-
-    
-    inline void SetAgentVersion(const char* value) { m_agentVersionHasBeenSet = true; m_agentVersion.assign(value); }
-
-    
-    inline DeleteAgentVersionRequest& WithAgentVersion(const Aws::String& value) { SetAgentVersion(value); return *this;}
-
-    
-    inline DeleteAgentVersionRequest& WithAgentVersion(Aws::String&& value) { SetAgentVersion(std::move(value)); return *this;}
-
-    
-    inline DeleteAgentVersionRequest& WithAgentVersion(const char* value) { SetAgentVersion(value); return *this;}
-
-
+    ///@{
     /**
-     * <p>Skips checking if resource is in use when set to true. Defaults to false</p>
+     * <p>By default, this value is <code>false</code> and deletion is stopped if the
+     * resource is in use. If you set it to <code>true</code>, the resource will be
+     * deleted even if the resource is in use.</p>
      */
-    inline bool GetSkipResourceInUseCheck() const{ return m_skipResourceInUseCheck; }
-
-    /**
-     * <p>Skips checking if resource is in use when set to true. Defaults to false</p>
-     */
+    inline bool GetSkipResourceInUseCheck() const { return m_skipResourceInUseCheck; }
     inline bool SkipResourceInUseCheckHasBeenSet() const { return m_skipResourceInUseCheckHasBeenSet; }
-
-    /**
-     * <p>Skips checking if resource is in use when set to true. Defaults to false</p>
-     */
     inline void SetSkipResourceInUseCheck(bool value) { m_skipResourceInUseCheckHasBeenSet = true; m_skipResourceInUseCheck = value; }
-
-    /**
-     * <p>Skips checking if resource is in use when set to true. Defaults to false</p>
-     */
     inline DeleteAgentVersionRequest& WithSkipResourceInUseCheck(bool value) { SetSkipResourceInUseCheck(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_agentId;
@@ -135,7 +81,7 @@ namespace Model
     Aws::String m_agentVersion;
     bool m_agentVersionHasBeenSet = false;
 
-    bool m_skipResourceInUseCheck;
+    bool m_skipResourceInUseCheck{false};
     bool m_skipResourceInUseCheckHasBeenSet = false;
   };
 

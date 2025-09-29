@@ -20,15 +20,7 @@ namespace CloudFront
 namespace Model
 {
 
-RealtimeMetricsSubscriptionConfig::RealtimeMetricsSubscriptionConfig() : 
-    m_realtimeMetricsSubscriptionStatus(RealtimeMetricsSubscriptionStatus::NOT_SET),
-    m_realtimeMetricsSubscriptionStatusHasBeenSet(false)
-{
-}
-
-RealtimeMetricsSubscriptionConfig::RealtimeMetricsSubscriptionConfig(const XmlNode& xmlNode) : 
-    m_realtimeMetricsSubscriptionStatus(RealtimeMetricsSubscriptionStatus::NOT_SET),
-    m_realtimeMetricsSubscriptionStatusHasBeenSet(false)
+RealtimeMetricsSubscriptionConfig::RealtimeMetricsSubscriptionConfig(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -42,7 +34,7 @@ RealtimeMetricsSubscriptionConfig& RealtimeMetricsSubscriptionConfig::operator =
     XmlNode realtimeMetricsSubscriptionStatusNode = resultNode.FirstChild("RealtimeMetricsSubscriptionStatus");
     if(!realtimeMetricsSubscriptionStatusNode.IsNull())
     {
-      m_realtimeMetricsSubscriptionStatus = RealtimeMetricsSubscriptionStatusMapper::GetRealtimeMetricsSubscriptionStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(realtimeMetricsSubscriptionStatusNode.GetText()).c_str()).c_str());
+      m_realtimeMetricsSubscriptionStatus = RealtimeMetricsSubscriptionStatusMapper::GetRealtimeMetricsSubscriptionStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(realtimeMetricsSubscriptionStatusNode.GetText()).c_str()));
       m_realtimeMetricsSubscriptionStatusHasBeenSet = true;
     }
   }

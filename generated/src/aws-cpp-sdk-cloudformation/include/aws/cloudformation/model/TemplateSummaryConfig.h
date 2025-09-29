@@ -30,7 +30,7 @@ namespace Model
   class TemplateSummaryConfig
   {
   public:
-    AWS_CLOUDFORMATION_API TemplateSummaryConfig();
+    AWS_CLOUDFORMATION_API TemplateSummaryConfig() = default;
     AWS_CLOUDFORMATION_API TemplateSummaryConfig(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_CLOUDFORMATION_API TemplateSummaryConfig& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -38,37 +38,20 @@ namespace Model
     AWS_CLOUDFORMATION_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>If set to <code>True</code>, any unrecognized resource types generate
      * warnings and not an error. Any unrecognized resource types are returned in the
      * <code>Warnings</code> output parameter.</p>
      */
-    inline bool GetTreatUnrecognizedResourceTypesAsWarnings() const{ return m_treatUnrecognizedResourceTypesAsWarnings; }
-
-    /**
-     * <p>If set to <code>True</code>, any unrecognized resource types generate
-     * warnings and not an error. Any unrecognized resource types are returned in the
-     * <code>Warnings</code> output parameter.</p>
-     */
+    inline bool GetTreatUnrecognizedResourceTypesAsWarnings() const { return m_treatUnrecognizedResourceTypesAsWarnings; }
     inline bool TreatUnrecognizedResourceTypesAsWarningsHasBeenSet() const { return m_treatUnrecognizedResourceTypesAsWarningsHasBeenSet; }
-
-    /**
-     * <p>If set to <code>True</code>, any unrecognized resource types generate
-     * warnings and not an error. Any unrecognized resource types are returned in the
-     * <code>Warnings</code> output parameter.</p>
-     */
     inline void SetTreatUnrecognizedResourceTypesAsWarnings(bool value) { m_treatUnrecognizedResourceTypesAsWarningsHasBeenSet = true; m_treatUnrecognizedResourceTypesAsWarnings = value; }
-
-    /**
-     * <p>If set to <code>True</code>, any unrecognized resource types generate
-     * warnings and not an error. Any unrecognized resource types are returned in the
-     * <code>Warnings</code> output parameter.</p>
-     */
     inline TemplateSummaryConfig& WithTreatUnrecognizedResourceTypesAsWarnings(bool value) { SetTreatUnrecognizedResourceTypesAsWarnings(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_treatUnrecognizedResourceTypesAsWarnings;
+    bool m_treatUnrecognizedResourceTypesAsWarnings{false};
     bool m_treatUnrecognizedResourceTypesAsWarningsHasBeenSet = false;
   };
 

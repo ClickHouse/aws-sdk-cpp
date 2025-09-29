@@ -33,83 +33,35 @@ namespace Model
   class EnabledControlParameterSummary
   {
   public:
-    AWS_CONTROLTOWER_API EnabledControlParameterSummary();
+    AWS_CONTROLTOWER_API EnabledControlParameterSummary() = default;
     AWS_CONTROLTOWER_API EnabledControlParameterSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONTROLTOWER_API EnabledControlParameterSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONTROLTOWER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The key of a key/value pair.</p>
      */
-    inline const Aws::String& GetKey() const{ return m_key; }
-
-    /**
-     * <p>The key of a key/value pair.</p>
-     */
+    inline const Aws::String& GetKey() const { return m_key; }
     inline bool KeyHasBeenSet() const { return m_keyHasBeenSet; }
+    template<typename KeyT = Aws::String>
+    void SetKey(KeyT&& value) { m_keyHasBeenSet = true; m_key = std::forward<KeyT>(value); }
+    template<typename KeyT = Aws::String>
+    EnabledControlParameterSummary& WithKey(KeyT&& value) { SetKey(std::forward<KeyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The key of a key/value pair.</p>
-     */
-    inline void SetKey(const Aws::String& value) { m_keyHasBeenSet = true; m_key = value; }
-
-    /**
-     * <p>The key of a key/value pair.</p>
-     */
-    inline void SetKey(Aws::String&& value) { m_keyHasBeenSet = true; m_key = std::move(value); }
-
-    /**
-     * <p>The key of a key/value pair.</p>
-     */
-    inline void SetKey(const char* value) { m_keyHasBeenSet = true; m_key.assign(value); }
-
-    /**
-     * <p>The key of a key/value pair.</p>
-     */
-    inline EnabledControlParameterSummary& WithKey(const Aws::String& value) { SetKey(value); return *this;}
-
-    /**
-     * <p>The key of a key/value pair.</p>
-     */
-    inline EnabledControlParameterSummary& WithKey(Aws::String&& value) { SetKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The key of a key/value pair.</p>
-     */
-    inline EnabledControlParameterSummary& WithKey(const char* value) { SetKey(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The value of a key/value pair.</p>
      */
-    inline Aws::Utils::DocumentView GetValue() const{ return m_value; }
-
-    /**
-     * <p>The value of a key/value pair.</p>
-     */
+    inline Aws::Utils::DocumentView GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>The value of a key/value pair.</p>
-     */
-    inline void SetValue(const Aws::Utils::Document& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The value of a key/value pair.</p>
-     */
-    inline void SetValue(Aws::Utils::Document&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>The value of a key/value pair.</p>
-     */
-    inline EnabledControlParameterSummary& WithValue(const Aws::Utils::Document& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>The value of a key/value pair.</p>
-     */
-    inline EnabledControlParameterSummary& WithValue(Aws::Utils::Document&& value) { SetValue(std::move(value)); return *this;}
-
+    template<typename ValueT = Aws::Utils::Document>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::Utils::Document>
+    EnabledControlParameterSummary& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_key;

@@ -27,198 +27,70 @@ namespace Model
   class TranslatePinDataResult
   {
   public:
-    AWS_PAYMENTCRYPTOGRAPHYDATA_API TranslatePinDataResult();
+    AWS_PAYMENTCRYPTOGRAPHYDATA_API TranslatePinDataResult() = default;
     AWS_PAYMENTCRYPTOGRAPHYDATA_API TranslatePinDataResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_PAYMENTCRYPTOGRAPHYDATA_API TranslatePinDataResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
+    /**
+     * <p>The outgoing encrypted PIN block data after translation.</p>
+     */
+    inline const Aws::String& GetPinBlock() const { return m_pinBlock; }
+    template<typename PinBlockT = Aws::String>
+    void SetPinBlock(PinBlockT&& value) { m_pinBlockHasBeenSet = true; m_pinBlock = std::forward<PinBlockT>(value); }
+    template<typename PinBlockT = Aws::String>
+    TranslatePinDataResult& WithPinBlock(PinBlockT&& value) { SetPinBlock(std::forward<PinBlockT>(value)); return *this;}
+    ///@}
+
+    ///@{
     /**
      * <p>The <code>keyARN</code> of the encryption key that Amazon Web Services
      * Payment Cryptography uses to encrypt outgoing PIN block data after
      * translation.</p>
      */
-    inline const Aws::String& GetKeyArn() const{ return m_keyArn; }
+    inline const Aws::String& GetKeyArn() const { return m_keyArn; }
+    template<typename KeyArnT = Aws::String>
+    void SetKeyArn(KeyArnT&& value) { m_keyArnHasBeenSet = true; m_keyArn = std::forward<KeyArnT>(value); }
+    template<typename KeyArnT = Aws::String>
+    TranslatePinDataResult& WithKeyArn(KeyArnT&& value) { SetKeyArn(std::forward<KeyArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The <code>keyARN</code> of the encryption key that Amazon Web Services
-     * Payment Cryptography uses to encrypt outgoing PIN block data after
-     * translation.</p>
-     */
-    inline void SetKeyArn(const Aws::String& value) { m_keyArn = value; }
-
-    /**
-     * <p>The <code>keyARN</code> of the encryption key that Amazon Web Services
-     * Payment Cryptography uses to encrypt outgoing PIN block data after
-     * translation.</p>
-     */
-    inline void SetKeyArn(Aws::String&& value) { m_keyArn = std::move(value); }
-
-    /**
-     * <p>The <code>keyARN</code> of the encryption key that Amazon Web Services
-     * Payment Cryptography uses to encrypt outgoing PIN block data after
-     * translation.</p>
-     */
-    inline void SetKeyArn(const char* value) { m_keyArn.assign(value); }
-
-    /**
-     * <p>The <code>keyARN</code> of the encryption key that Amazon Web Services
-     * Payment Cryptography uses to encrypt outgoing PIN block data after
-     * translation.</p>
-     */
-    inline TranslatePinDataResult& WithKeyArn(const Aws::String& value) { SetKeyArn(value); return *this;}
-
-    /**
-     * <p>The <code>keyARN</code> of the encryption key that Amazon Web Services
-     * Payment Cryptography uses to encrypt outgoing PIN block data after
-     * translation.</p>
-     */
-    inline TranslatePinDataResult& WithKeyArn(Aws::String&& value) { SetKeyArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The <code>keyARN</code> of the encryption key that Amazon Web Services
-     * Payment Cryptography uses to encrypt outgoing PIN block data after
-     * translation.</p>
-     */
-    inline TranslatePinDataResult& WithKeyArn(const char* value) { SetKeyArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The key check value (KCV) of the encryption key. The KCV is used to check if
      * all parties holding a given key have the same key or to detect that a key has
-     * changed. Amazon Web Services Payment Cryptography calculates the KCV by using
-     * standard algorithms, typically by encrypting 8 or 16 bytes or "00" or "01" and
-     * then truncating the result to the first 3 bytes, or 6 hex digits, of the
-     * resulting cryptogram.</p>
+     * changed.</p> <p>Amazon Web Services Payment Cryptography computes the KCV
+     * according to the CMAC specification.</p>
      */
-    inline const Aws::String& GetKeyCheckValue() const{ return m_keyCheckValue; }
+    inline const Aws::String& GetKeyCheckValue() const { return m_keyCheckValue; }
+    template<typename KeyCheckValueT = Aws::String>
+    void SetKeyCheckValue(KeyCheckValueT&& value) { m_keyCheckValueHasBeenSet = true; m_keyCheckValue = std::forward<KeyCheckValueT>(value); }
+    template<typename KeyCheckValueT = Aws::String>
+    TranslatePinDataResult& WithKeyCheckValue(KeyCheckValueT&& value) { SetKeyCheckValue(std::forward<KeyCheckValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The key check value (KCV) of the encryption key. The KCV is used to check if
-     * all parties holding a given key have the same key or to detect that a key has
-     * changed. Amazon Web Services Payment Cryptography calculates the KCV by using
-     * standard algorithms, typically by encrypting 8 or 16 bytes or "00" or "01" and
-     * then truncating the result to the first 3 bytes, or 6 hex digits, of the
-     * resulting cryptogram.</p>
-     */
-    inline void SetKeyCheckValue(const Aws::String& value) { m_keyCheckValue = value; }
-
-    /**
-     * <p>The key check value (KCV) of the encryption key. The KCV is used to check if
-     * all parties holding a given key have the same key or to detect that a key has
-     * changed. Amazon Web Services Payment Cryptography calculates the KCV by using
-     * standard algorithms, typically by encrypting 8 or 16 bytes or "00" or "01" and
-     * then truncating the result to the first 3 bytes, or 6 hex digits, of the
-     * resulting cryptogram.</p>
-     */
-    inline void SetKeyCheckValue(Aws::String&& value) { m_keyCheckValue = std::move(value); }
-
-    /**
-     * <p>The key check value (KCV) of the encryption key. The KCV is used to check if
-     * all parties holding a given key have the same key or to detect that a key has
-     * changed. Amazon Web Services Payment Cryptography calculates the KCV by using
-     * standard algorithms, typically by encrypting 8 or 16 bytes or "00" or "01" and
-     * then truncating the result to the first 3 bytes, or 6 hex digits, of the
-     * resulting cryptogram.</p>
-     */
-    inline void SetKeyCheckValue(const char* value) { m_keyCheckValue.assign(value); }
-
-    /**
-     * <p>The key check value (KCV) of the encryption key. The KCV is used to check if
-     * all parties holding a given key have the same key or to detect that a key has
-     * changed. Amazon Web Services Payment Cryptography calculates the KCV by using
-     * standard algorithms, typically by encrypting 8 or 16 bytes or "00" or "01" and
-     * then truncating the result to the first 3 bytes, or 6 hex digits, of the
-     * resulting cryptogram.</p>
-     */
-    inline TranslatePinDataResult& WithKeyCheckValue(const Aws::String& value) { SetKeyCheckValue(value); return *this;}
-
-    /**
-     * <p>The key check value (KCV) of the encryption key. The KCV is used to check if
-     * all parties holding a given key have the same key or to detect that a key has
-     * changed. Amazon Web Services Payment Cryptography calculates the KCV by using
-     * standard algorithms, typically by encrypting 8 or 16 bytes or "00" or "01" and
-     * then truncating the result to the first 3 bytes, or 6 hex digits, of the
-     * resulting cryptogram.</p>
-     */
-    inline TranslatePinDataResult& WithKeyCheckValue(Aws::String&& value) { SetKeyCheckValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The key check value (KCV) of the encryption key. The KCV is used to check if
-     * all parties holding a given key have the same key or to detect that a key has
-     * changed. Amazon Web Services Payment Cryptography calculates the KCV by using
-     * standard algorithms, typically by encrypting 8 or 16 bytes or "00" or "01" and
-     * then truncating the result to the first 3 bytes, or 6 hex digits, of the
-     * resulting cryptogram.</p>
-     */
-    inline TranslatePinDataResult& WithKeyCheckValue(const char* value) { SetKeyCheckValue(value); return *this;}
-
-
-    /**
-     * <p>The ougoing encrypted PIN block data after tranlation.</p>
-     */
-    inline const Aws::String& GetPinBlock() const{ return m_pinBlock; }
-
-    /**
-     * <p>The ougoing encrypted PIN block data after tranlation.</p>
-     */
-    inline void SetPinBlock(const Aws::String& value) { m_pinBlock = value; }
-
-    /**
-     * <p>The ougoing encrypted PIN block data after tranlation.</p>
-     */
-    inline void SetPinBlock(Aws::String&& value) { m_pinBlock = std::move(value); }
-
-    /**
-     * <p>The ougoing encrypted PIN block data after tranlation.</p>
-     */
-    inline void SetPinBlock(const char* value) { m_pinBlock.assign(value); }
-
-    /**
-     * <p>The ougoing encrypted PIN block data after tranlation.</p>
-     */
-    inline TranslatePinDataResult& WithPinBlock(const Aws::String& value) { SetPinBlock(value); return *this;}
-
-    /**
-     * <p>The ougoing encrypted PIN block data after tranlation.</p>
-     */
-    inline TranslatePinDataResult& WithPinBlock(Aws::String&& value) { SetPinBlock(std::move(value)); return *this;}
-
-    /**
-     * <p>The ougoing encrypted PIN block data after tranlation.</p>
-     */
-    inline TranslatePinDataResult& WithPinBlock(const char* value) { SetPinBlock(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline TranslatePinDataResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline TranslatePinDataResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline TranslatePinDataResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    TranslatePinDataResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
+    Aws::String m_pinBlock;
+    bool m_pinBlockHasBeenSet = false;
+
     Aws::String m_keyArn;
+    bool m_keyArnHasBeenSet = false;
 
     Aws::String m_keyCheckValue;
-
-    Aws::String m_pinBlock;
+    bool m_keyCheckValueHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

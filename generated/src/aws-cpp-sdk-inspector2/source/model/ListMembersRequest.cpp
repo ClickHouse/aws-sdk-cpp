@@ -12,18 +12,15 @@ using namespace Aws::Inspector2::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ListMembersRequest::ListMembersRequest() : 
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_onlyAssociated(false),
-    m_onlyAssociatedHasBeenSet(false)
-{
-}
-
 Aws::String ListMembersRequest::SerializePayload() const
 {
   JsonValue payload;
+
+  if(m_onlyAssociatedHasBeenSet)
+  {
+   payload.WithBool("onlyAssociated", m_onlyAssociated);
+
+  }
 
   if(m_maxResultsHasBeenSet)
   {
@@ -34,12 +31,6 @@ Aws::String ListMembersRequest::SerializePayload() const
   if(m_nextTokenHasBeenSet)
   {
    payload.WithString("nextToken", m_nextToken);
-
-  }
-
-  if(m_onlyAssociatedHasBeenSet)
-  {
-   payload.WithBool("onlyAssociated", m_onlyAssociated);
 
   }
 

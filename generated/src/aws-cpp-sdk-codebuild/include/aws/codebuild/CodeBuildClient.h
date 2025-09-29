@@ -32,8 +32,8 @@ namespace CodeBuild
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
 
       typedef CodeBuildClientConfiguration ClientConfigurationType;
       typedef CodeBuildEndpointProvider EndpointProviderType;
@@ -43,14 +43,14 @@ namespace CodeBuild
         * is not specified, it will be initialized to default values.
         */
         CodeBuildClient(const Aws::CodeBuild::CodeBuildClientConfiguration& clientConfiguration = Aws::CodeBuild::CodeBuildClientConfiguration(),
-                        std::shared_ptr<CodeBuildEndpointProviderBase> endpointProvider = Aws::MakeShared<CodeBuildEndpointProvider>(ALLOCATION_TAG));
+                        std::shared_ptr<CodeBuildEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         CodeBuildClient(const Aws::Auth::AWSCredentials& credentials,
-                        std::shared_ptr<CodeBuildEndpointProviderBase> endpointProvider = Aws::MakeShared<CodeBuildEndpointProvider>(ALLOCATION_TAG),
+                        std::shared_ptr<CodeBuildEndpointProviderBase> endpointProvider = nullptr,
                         const Aws::CodeBuild::CodeBuildClientConfiguration& clientConfiguration = Aws::CodeBuild::CodeBuildClientConfiguration());
 
        /**
@@ -58,7 +58,7 @@ namespace CodeBuild
         * the default http client factory will be used
         */
         CodeBuildClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                        std::shared_ptr<CodeBuildEndpointProviderBase> endpointProvider = Aws::MakeShared<CodeBuildEndpointProvider>(ALLOCATION_TAG),
+                        std::shared_ptr<CodeBuildEndpointProviderBase> endpointProvider = nullptr,
                         const Aws::CodeBuild::CodeBuildClientConfiguration& clientConfiguration = Aws::CodeBuild::CodeBuildClientConfiguration());
 
 
@@ -163,6 +163,57 @@ namespace CodeBuild
         }
 
         /**
+         * <p>Gets information about the command executions.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/BatchGetCommandExecutions">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::BatchGetCommandExecutionsOutcome BatchGetCommandExecutions(const Model::BatchGetCommandExecutionsRequest& request) const;
+
+        /**
+         * A Callable wrapper for BatchGetCommandExecutions that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename BatchGetCommandExecutionsRequestT = Model::BatchGetCommandExecutionsRequest>
+        Model::BatchGetCommandExecutionsOutcomeCallable BatchGetCommandExecutionsCallable(const BatchGetCommandExecutionsRequestT& request) const
+        {
+            return SubmitCallable(&CodeBuildClient::BatchGetCommandExecutions, request);
+        }
+
+        /**
+         * An Async wrapper for BatchGetCommandExecutions that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename BatchGetCommandExecutionsRequestT = Model::BatchGetCommandExecutionsRequest>
+        void BatchGetCommandExecutionsAsync(const BatchGetCommandExecutionsRequestT& request, const BatchGetCommandExecutionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&CodeBuildClient::BatchGetCommandExecutions, request, handler, context);
+        }
+
+        /**
+         * <p>Gets information about one or more compute fleets.</p><p><h3>See Also:</h3>  
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/BatchGetFleets">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::BatchGetFleetsOutcome BatchGetFleets(const Model::BatchGetFleetsRequest& request) const;
+
+        /**
+         * A Callable wrapper for BatchGetFleets that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename BatchGetFleetsRequestT = Model::BatchGetFleetsRequest>
+        Model::BatchGetFleetsOutcomeCallable BatchGetFleetsCallable(const BatchGetFleetsRequestT& request) const
+        {
+            return SubmitCallable(&CodeBuildClient::BatchGetFleets, request);
+        }
+
+        /**
+         * An Async wrapper for BatchGetFleets that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename BatchGetFleetsRequestT = Model::BatchGetFleetsRequest>
+        void BatchGetFleetsAsync(const BatchGetFleetsRequestT& request, const BatchGetFleetsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&CodeBuildClient::BatchGetFleets, request, handler, context);
+        }
+
+        /**
          * <p>Gets information about one or more build projects.</p><p><h3>See Also:</h3>  
          * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/BatchGetProjects">AWS
@@ -236,6 +287,56 @@ namespace CodeBuild
         void BatchGetReportsAsync(const BatchGetReportsRequestT& request, const BatchGetReportsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&CodeBuildClient::BatchGetReports, request, handler, context);
+        }
+
+        /**
+         * <p>Gets information about the sandbox status.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/BatchGetSandboxes">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::BatchGetSandboxesOutcome BatchGetSandboxes(const Model::BatchGetSandboxesRequest& request) const;
+
+        /**
+         * A Callable wrapper for BatchGetSandboxes that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename BatchGetSandboxesRequestT = Model::BatchGetSandboxesRequest>
+        Model::BatchGetSandboxesOutcomeCallable BatchGetSandboxesCallable(const BatchGetSandboxesRequestT& request) const
+        {
+            return SubmitCallable(&CodeBuildClient::BatchGetSandboxes, request);
+        }
+
+        /**
+         * An Async wrapper for BatchGetSandboxes that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename BatchGetSandboxesRequestT = Model::BatchGetSandboxesRequest>
+        void BatchGetSandboxesAsync(const BatchGetSandboxesRequestT& request, const BatchGetSandboxesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&CodeBuildClient::BatchGetSandboxes, request, handler, context);
+        }
+
+        /**
+         * <p>Creates a compute fleet.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/CreateFleet">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::CreateFleetOutcome CreateFleet(const Model::CreateFleetRequest& request) const;
+
+        /**
+         * A Callable wrapper for CreateFleet that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename CreateFleetRequestT = Model::CreateFleetRequest>
+        Model::CreateFleetOutcomeCallable CreateFleetCallable(const CreateFleetRequestT& request) const
+        {
+            return SubmitCallable(&CodeBuildClient::CreateFleet, request);
+        }
+
+        /**
+         * An Async wrapper for CreateFleet that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename CreateFleetRequestT = Model::CreateFleetRequest>
+        void CreateFleetAsync(const CreateFleetRequestT& request, const CreateFleetResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&CodeBuildClient::CreateFleet, request, handler, context);
         }
 
         /**
@@ -348,6 +449,32 @@ namespace CodeBuild
         void DeleteBuildBatchAsync(const DeleteBuildBatchRequestT& request, const DeleteBuildBatchResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&CodeBuildClient::DeleteBuildBatch, request, handler, context);
+        }
+
+        /**
+         * <p>Deletes a compute fleet. When you delete a compute fleet, its builds are not
+         * deleted.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/DeleteFleet">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DeleteFleetOutcome DeleteFleet(const Model::DeleteFleetRequest& request) const;
+
+        /**
+         * A Callable wrapper for DeleteFleet that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DeleteFleetRequestT = Model::DeleteFleetRequest>
+        Model::DeleteFleetOutcomeCallable DeleteFleetCallable(const DeleteFleetRequestT& request) const
+        {
+            return SubmitCallable(&CodeBuildClient::DeleteFleet, request);
+        }
+
+        /**
+         * An Async wrapper for DeleteFleet that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DeleteFleetRequestT = Model::DeleteFleetRequest>
+        void DeleteFleetAsync(const DeleteFleetRequestT& request, const DeleteFleetResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&CodeBuildClient::DeleteFleet, request, handler, context);
         }
 
         /**
@@ -612,8 +739,8 @@ namespace CodeBuild
 
         /**
          * <p> Imports the source repository credentials for an CodeBuild project that has
-         * its source code stored in a GitHub, GitHub Enterprise, or Bitbucket repository.
-         * </p><p><h3>See Also:</h3>   <a
+         * its source code stored in a GitHub, GitHub Enterprise, GitLab, GitLab Self
+         * Managed, or Bitbucket repository. </p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/ImportSourceCredentials">AWS
          * API Reference</a></p>
          */
@@ -668,13 +795,13 @@ namespace CodeBuild
          * href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/ListBuildBatches">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListBuildBatchesOutcome ListBuildBatches(const Model::ListBuildBatchesRequest& request) const;
+        virtual Model::ListBuildBatchesOutcome ListBuildBatches(const Model::ListBuildBatchesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListBuildBatches that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListBuildBatchesRequestT = Model::ListBuildBatchesRequest>
-        Model::ListBuildBatchesOutcomeCallable ListBuildBatchesCallable(const ListBuildBatchesRequestT& request) const
+        Model::ListBuildBatchesOutcomeCallable ListBuildBatchesCallable(const ListBuildBatchesRequestT& request = {}) const
         {
             return SubmitCallable(&CodeBuildClient::ListBuildBatches, request);
         }
@@ -683,7 +810,7 @@ namespace CodeBuild
          * An Async wrapper for ListBuildBatches that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListBuildBatchesRequestT = Model::ListBuildBatchesRequest>
-        void ListBuildBatchesAsync(const ListBuildBatchesRequestT& request, const ListBuildBatchesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListBuildBatchesAsync(const ListBuildBatchesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListBuildBatchesRequestT& request = {}) const
         {
             return SubmitAsync(&CodeBuildClient::ListBuildBatches, request, handler, context);
         }
@@ -694,13 +821,13 @@ namespace CodeBuild
          * href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/ListBuildBatchesForProject">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListBuildBatchesForProjectOutcome ListBuildBatchesForProject(const Model::ListBuildBatchesForProjectRequest& request) const;
+        virtual Model::ListBuildBatchesForProjectOutcome ListBuildBatchesForProject(const Model::ListBuildBatchesForProjectRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListBuildBatchesForProject that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListBuildBatchesForProjectRequestT = Model::ListBuildBatchesForProjectRequest>
-        Model::ListBuildBatchesForProjectOutcomeCallable ListBuildBatchesForProjectCallable(const ListBuildBatchesForProjectRequestT& request) const
+        Model::ListBuildBatchesForProjectOutcomeCallable ListBuildBatchesForProjectCallable(const ListBuildBatchesForProjectRequestT& request = {}) const
         {
             return SubmitCallable(&CodeBuildClient::ListBuildBatchesForProject, request);
         }
@@ -709,7 +836,7 @@ namespace CodeBuild
          * An Async wrapper for ListBuildBatchesForProject that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListBuildBatchesForProjectRequestT = Model::ListBuildBatchesForProjectRequest>
-        void ListBuildBatchesForProjectAsync(const ListBuildBatchesForProjectRequestT& request, const ListBuildBatchesForProjectResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListBuildBatchesForProjectAsync(const ListBuildBatchesForProjectResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListBuildBatchesForProjectRequestT& request = {}) const
         {
             return SubmitAsync(&CodeBuildClient::ListBuildBatchesForProject, request, handler, context);
         }
@@ -720,13 +847,13 @@ namespace CodeBuild
          * href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/ListBuilds">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListBuildsOutcome ListBuilds(const Model::ListBuildsRequest& request) const;
+        virtual Model::ListBuildsOutcome ListBuilds(const Model::ListBuildsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListBuilds that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListBuildsRequestT = Model::ListBuildsRequest>
-        Model::ListBuildsOutcomeCallable ListBuildsCallable(const ListBuildsRequestT& request) const
+        Model::ListBuildsOutcomeCallable ListBuildsCallable(const ListBuildsRequestT& request = {}) const
         {
             return SubmitCallable(&CodeBuildClient::ListBuilds, request);
         }
@@ -735,7 +862,7 @@ namespace CodeBuild
          * An Async wrapper for ListBuilds that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListBuildsRequestT = Model::ListBuildsRequest>
-        void ListBuildsAsync(const ListBuildsRequestT& request, const ListBuildsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListBuildsAsync(const ListBuildsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListBuildsRequestT& request = {}) const
         {
             return SubmitAsync(&CodeBuildClient::ListBuilds, request, handler, context);
         }
@@ -767,18 +894,44 @@ namespace CodeBuild
         }
 
         /**
+         * <p>Gets a list of command executions for a sandbox.</p><p><h3>See Also:</h3>  
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/ListCommandExecutionsForSandbox">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListCommandExecutionsForSandboxOutcome ListCommandExecutionsForSandbox(const Model::ListCommandExecutionsForSandboxRequest& request) const;
+
+        /**
+         * A Callable wrapper for ListCommandExecutionsForSandbox that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListCommandExecutionsForSandboxRequestT = Model::ListCommandExecutionsForSandboxRequest>
+        Model::ListCommandExecutionsForSandboxOutcomeCallable ListCommandExecutionsForSandboxCallable(const ListCommandExecutionsForSandboxRequestT& request) const
+        {
+            return SubmitCallable(&CodeBuildClient::ListCommandExecutionsForSandbox, request);
+        }
+
+        /**
+         * An Async wrapper for ListCommandExecutionsForSandbox that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListCommandExecutionsForSandboxRequestT = Model::ListCommandExecutionsForSandboxRequest>
+        void ListCommandExecutionsForSandboxAsync(const ListCommandExecutionsForSandboxRequestT& request, const ListCommandExecutionsForSandboxResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&CodeBuildClient::ListCommandExecutionsForSandbox, request, handler, context);
+        }
+
+        /**
          * <p>Gets information about Docker images that are managed by
          * CodeBuild.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/ListCuratedEnvironmentImages">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListCuratedEnvironmentImagesOutcome ListCuratedEnvironmentImages(const Model::ListCuratedEnvironmentImagesRequest& request) const;
+        virtual Model::ListCuratedEnvironmentImagesOutcome ListCuratedEnvironmentImages(const Model::ListCuratedEnvironmentImagesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListCuratedEnvironmentImages that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListCuratedEnvironmentImagesRequestT = Model::ListCuratedEnvironmentImagesRequest>
-        Model::ListCuratedEnvironmentImagesOutcomeCallable ListCuratedEnvironmentImagesCallable(const ListCuratedEnvironmentImagesRequestT& request) const
+        Model::ListCuratedEnvironmentImagesOutcomeCallable ListCuratedEnvironmentImagesCallable(const ListCuratedEnvironmentImagesRequestT& request = {}) const
         {
             return SubmitCallable(&CodeBuildClient::ListCuratedEnvironmentImages, request);
         }
@@ -787,9 +940,35 @@ namespace CodeBuild
          * An Async wrapper for ListCuratedEnvironmentImages that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListCuratedEnvironmentImagesRequestT = Model::ListCuratedEnvironmentImagesRequest>
-        void ListCuratedEnvironmentImagesAsync(const ListCuratedEnvironmentImagesRequestT& request, const ListCuratedEnvironmentImagesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListCuratedEnvironmentImagesAsync(const ListCuratedEnvironmentImagesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListCuratedEnvironmentImagesRequestT& request = {}) const
         {
             return SubmitAsync(&CodeBuildClient::ListCuratedEnvironmentImages, request, handler, context);
+        }
+
+        /**
+         * <p>Gets a list of compute fleet names with each compute fleet name representing
+         * a single compute fleet.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/ListFleets">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListFleetsOutcome ListFleets(const Model::ListFleetsRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for ListFleets that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListFleetsRequestT = Model::ListFleetsRequest>
+        Model::ListFleetsOutcomeCallable ListFleetsCallable(const ListFleetsRequestT& request = {}) const
+        {
+            return SubmitCallable(&CodeBuildClient::ListFleets, request);
+        }
+
+        /**
+         * An Async wrapper for ListFleets that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListFleetsRequestT = Model::ListFleetsRequest>
+        void ListFleetsAsync(const ListFleetsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListFleetsRequestT& request = {}) const
+        {
+            return SubmitAsync(&CodeBuildClient::ListFleets, request, handler, context);
         }
 
         /**
@@ -798,13 +977,13 @@ namespace CodeBuild
          * href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/ListProjects">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListProjectsOutcome ListProjects(const Model::ListProjectsRequest& request) const;
+        virtual Model::ListProjectsOutcome ListProjects(const Model::ListProjectsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListProjects that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListProjectsRequestT = Model::ListProjectsRequest>
-        Model::ListProjectsOutcomeCallable ListProjectsCallable(const ListProjectsRequestT& request) const
+        Model::ListProjectsOutcomeCallable ListProjectsCallable(const ListProjectsRequestT& request = {}) const
         {
             return SubmitCallable(&CodeBuildClient::ListProjects, request);
         }
@@ -813,7 +992,7 @@ namespace CodeBuild
          * An Async wrapper for ListProjects that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListProjectsRequestT = Model::ListProjectsRequest>
-        void ListProjectsAsync(const ListProjectsRequestT& request, const ListProjectsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListProjectsAsync(const ListProjectsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListProjectsRequestT& request = {}) const
         {
             return SubmitAsync(&CodeBuildClient::ListProjects, request, handler, context);
         }
@@ -824,13 +1003,13 @@ namespace CodeBuild
          * href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/ListReportGroups">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListReportGroupsOutcome ListReportGroups(const Model::ListReportGroupsRequest& request) const;
+        virtual Model::ListReportGroupsOutcome ListReportGroups(const Model::ListReportGroupsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListReportGroups that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListReportGroupsRequestT = Model::ListReportGroupsRequest>
-        Model::ListReportGroupsOutcomeCallable ListReportGroupsCallable(const ListReportGroupsRequestT& request) const
+        Model::ListReportGroupsOutcomeCallable ListReportGroupsCallable(const ListReportGroupsRequestT& request = {}) const
         {
             return SubmitCallable(&CodeBuildClient::ListReportGroups, request);
         }
@@ -839,7 +1018,7 @@ namespace CodeBuild
          * An Async wrapper for ListReportGroups that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListReportGroupsRequestT = Model::ListReportGroupsRequest>
-        void ListReportGroupsAsync(const ListReportGroupsRequestT& request, const ListReportGroupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListReportGroupsAsync(const ListReportGroupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListReportGroupsRequestT& request = {}) const
         {
             return SubmitAsync(&CodeBuildClient::ListReportGroups, request, handler, context);
         }
@@ -850,13 +1029,13 @@ namespace CodeBuild
          * href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/ListReports">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListReportsOutcome ListReports(const Model::ListReportsRequest& request) const;
+        virtual Model::ListReportsOutcome ListReports(const Model::ListReportsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListReports that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListReportsRequestT = Model::ListReportsRequest>
-        Model::ListReportsOutcomeCallable ListReportsCallable(const ListReportsRequestT& request) const
+        Model::ListReportsOutcomeCallable ListReportsCallable(const ListReportsRequestT& request = {}) const
         {
             return SubmitCallable(&CodeBuildClient::ListReports, request);
         }
@@ -865,7 +1044,7 @@ namespace CodeBuild
          * An Async wrapper for ListReports that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListReportsRequestT = Model::ListReportsRequest>
-        void ListReportsAsync(const ListReportsRequestT& request, const ListReportsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListReportsAsync(const ListReportsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListReportsRequestT& request = {}) const
         {
             return SubmitAsync(&CodeBuildClient::ListReports, request, handler, context);
         }
@@ -897,18 +1076,68 @@ namespace CodeBuild
         }
 
         /**
+         * <p>Gets a list of sandboxes.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/ListSandboxes">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListSandboxesOutcome ListSandboxes(const Model::ListSandboxesRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for ListSandboxes that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListSandboxesRequestT = Model::ListSandboxesRequest>
+        Model::ListSandboxesOutcomeCallable ListSandboxesCallable(const ListSandboxesRequestT& request = {}) const
+        {
+            return SubmitCallable(&CodeBuildClient::ListSandboxes, request);
+        }
+
+        /**
+         * An Async wrapper for ListSandboxes that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListSandboxesRequestT = Model::ListSandboxesRequest>
+        void ListSandboxesAsync(const ListSandboxesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListSandboxesRequestT& request = {}) const
+        {
+            return SubmitAsync(&CodeBuildClient::ListSandboxes, request, handler, context);
+        }
+
+        /**
+         * <p>Gets a list of sandboxes for a given project.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/ListSandboxesForProject">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListSandboxesForProjectOutcome ListSandboxesForProject(const Model::ListSandboxesForProjectRequest& request) const;
+
+        /**
+         * A Callable wrapper for ListSandboxesForProject that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListSandboxesForProjectRequestT = Model::ListSandboxesForProjectRequest>
+        Model::ListSandboxesForProjectOutcomeCallable ListSandboxesForProjectCallable(const ListSandboxesForProjectRequestT& request) const
+        {
+            return SubmitCallable(&CodeBuildClient::ListSandboxesForProject, request);
+        }
+
+        /**
+         * An Async wrapper for ListSandboxesForProject that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListSandboxesForProjectRequestT = Model::ListSandboxesForProjectRequest>
+        void ListSandboxesForProjectAsync(const ListSandboxesForProjectRequestT& request, const ListSandboxesForProjectResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&CodeBuildClient::ListSandboxesForProject, request, handler, context);
+        }
+
+        /**
          * <p> Gets a list of projects that are shared with other Amazon Web Services
          * accounts or users. </p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/ListSharedProjects">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListSharedProjectsOutcome ListSharedProjects(const Model::ListSharedProjectsRequest& request) const;
+        virtual Model::ListSharedProjectsOutcome ListSharedProjects(const Model::ListSharedProjectsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListSharedProjects that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListSharedProjectsRequestT = Model::ListSharedProjectsRequest>
-        Model::ListSharedProjectsOutcomeCallable ListSharedProjectsCallable(const ListSharedProjectsRequestT& request) const
+        Model::ListSharedProjectsOutcomeCallable ListSharedProjectsCallable(const ListSharedProjectsRequestT& request = {}) const
         {
             return SubmitCallable(&CodeBuildClient::ListSharedProjects, request);
         }
@@ -917,7 +1146,7 @@ namespace CodeBuild
          * An Async wrapper for ListSharedProjects that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListSharedProjectsRequestT = Model::ListSharedProjectsRequest>
-        void ListSharedProjectsAsync(const ListSharedProjectsRequestT& request, const ListSharedProjectsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListSharedProjectsAsync(const ListSharedProjectsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListSharedProjectsRequestT& request = {}) const
         {
             return SubmitAsync(&CodeBuildClient::ListSharedProjects, request, handler, context);
         }
@@ -928,13 +1157,13 @@ namespace CodeBuild
          * href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/ListSharedReportGroups">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListSharedReportGroupsOutcome ListSharedReportGroups(const Model::ListSharedReportGroupsRequest& request) const;
+        virtual Model::ListSharedReportGroupsOutcome ListSharedReportGroups(const Model::ListSharedReportGroupsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListSharedReportGroups that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListSharedReportGroupsRequestT = Model::ListSharedReportGroupsRequest>
-        Model::ListSharedReportGroupsOutcomeCallable ListSharedReportGroupsCallable(const ListSharedReportGroupsRequestT& request) const
+        Model::ListSharedReportGroupsOutcomeCallable ListSharedReportGroupsCallable(const ListSharedReportGroupsRequestT& request = {}) const
         {
             return SubmitCallable(&CodeBuildClient::ListSharedReportGroups, request);
         }
@@ -943,7 +1172,7 @@ namespace CodeBuild
          * An Async wrapper for ListSharedReportGroups that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListSharedReportGroupsRequestT = Model::ListSharedReportGroupsRequest>
-        void ListSharedReportGroupsAsync(const ListSharedReportGroupsRequestT& request, const ListSharedReportGroupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListSharedReportGroupsAsync(const ListSharedReportGroupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListSharedReportGroupsRequestT& request = {}) const
         {
             return SubmitAsync(&CodeBuildClient::ListSharedReportGroups, request, handler, context);
         }
@@ -954,13 +1183,13 @@ namespace CodeBuild
          * href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/ListSourceCredentials">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListSourceCredentialsOutcome ListSourceCredentials(const Model::ListSourceCredentialsRequest& request) const;
+        virtual Model::ListSourceCredentialsOutcome ListSourceCredentials(const Model::ListSourceCredentialsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListSourceCredentials that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListSourceCredentialsRequestT = Model::ListSourceCredentialsRequest>
-        Model::ListSourceCredentialsOutcomeCallable ListSourceCredentialsCallable(const ListSourceCredentialsRequestT& request) const
+        Model::ListSourceCredentialsOutcomeCallable ListSourceCredentialsCallable(const ListSourceCredentialsRequestT& request = {}) const
         {
             return SubmitCallable(&CodeBuildClient::ListSourceCredentials, request);
         }
@@ -969,7 +1198,7 @@ namespace CodeBuild
          * An Async wrapper for ListSourceCredentials that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListSourceCredentialsRequestT = Model::ListSourceCredentialsRequest>
-        void ListSourceCredentialsAsync(const ListSourceCredentialsRequestT& request, const ListSourceCredentialsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListSourceCredentialsAsync(const ListSourceCredentialsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListSourceCredentialsRequestT& request = {}) const
         {
             return SubmitAsync(&CodeBuildClient::ListSourceCredentials, request, handler, context);
         }
@@ -1005,13 +1234,13 @@ namespace CodeBuild
          * href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/RetryBuild">AWS
          * API Reference</a></p>
          */
-        virtual Model::RetryBuildOutcome RetryBuild(const Model::RetryBuildRequest& request) const;
+        virtual Model::RetryBuildOutcome RetryBuild(const Model::RetryBuildRequest& request = {}) const;
 
         /**
          * A Callable wrapper for RetryBuild that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename RetryBuildRequestT = Model::RetryBuildRequest>
-        Model::RetryBuildOutcomeCallable RetryBuildCallable(const RetryBuildRequestT& request) const
+        Model::RetryBuildOutcomeCallable RetryBuildCallable(const RetryBuildRequestT& request = {}) const
         {
             return SubmitCallable(&CodeBuildClient::RetryBuild, request);
         }
@@ -1020,7 +1249,7 @@ namespace CodeBuild
          * An Async wrapper for RetryBuild that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename RetryBuildRequestT = Model::RetryBuildRequest>
-        void RetryBuildAsync(const RetryBuildRequestT& request, const RetryBuildResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void RetryBuildAsync(const RetryBuildResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const RetryBuildRequestT& request = {}) const
         {
             return SubmitAsync(&CodeBuildClient::RetryBuild, request, handler, context);
         }
@@ -1031,13 +1260,13 @@ namespace CodeBuild
          * href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/RetryBuildBatch">AWS
          * API Reference</a></p>
          */
-        virtual Model::RetryBuildBatchOutcome RetryBuildBatch(const Model::RetryBuildBatchRequest& request) const;
+        virtual Model::RetryBuildBatchOutcome RetryBuildBatch(const Model::RetryBuildBatchRequest& request = {}) const;
 
         /**
          * A Callable wrapper for RetryBuildBatch that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename RetryBuildBatchRequestT = Model::RetryBuildBatchRequest>
-        Model::RetryBuildBatchOutcomeCallable RetryBuildBatchCallable(const RetryBuildBatchRequestT& request) const
+        Model::RetryBuildBatchOutcomeCallable RetryBuildBatchCallable(const RetryBuildBatchRequestT& request = {}) const
         {
             return SubmitCallable(&CodeBuildClient::RetryBuildBatch, request);
         }
@@ -1046,13 +1275,19 @@ namespace CodeBuild
          * An Async wrapper for RetryBuildBatch that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename RetryBuildBatchRequestT = Model::RetryBuildBatchRequest>
-        void RetryBuildBatchAsync(const RetryBuildBatchRequestT& request, const RetryBuildBatchResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void RetryBuildBatchAsync(const RetryBuildBatchResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const RetryBuildBatchRequestT& request = {}) const
         {
             return SubmitAsync(&CodeBuildClient::RetryBuildBatch, request, handler, context);
         }
 
         /**
-         * <p>Starts running a build.</p><p><h3>See Also:</h3>   <a
+         * <p>Starts running a build with the settings defined in the project. These
+         * setting include: how to run a build, where to get the source code, which build
+         * environment to use, which build commands to run, and where to store the build
+         * output.</p> <p>You can also start a build run by overriding some of the build
+         * settings in the project. The overrides only apply for that specific start build
+         * request. The settings in the project are unaltered.</p><p><h3>See Also:</h3>  
+         * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/StartBuild">AWS
          * API Reference</a></p>
          */
@@ -1099,6 +1334,81 @@ namespace CodeBuild
         void StartBuildBatchAsync(const StartBuildBatchRequestT& request, const StartBuildBatchResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&CodeBuildClient::StartBuildBatch, request, handler, context);
+        }
+
+        /**
+         * <p>Starts a command execution.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/StartCommandExecution">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::StartCommandExecutionOutcome StartCommandExecution(const Model::StartCommandExecutionRequest& request) const;
+
+        /**
+         * A Callable wrapper for StartCommandExecution that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename StartCommandExecutionRequestT = Model::StartCommandExecutionRequest>
+        Model::StartCommandExecutionOutcomeCallable StartCommandExecutionCallable(const StartCommandExecutionRequestT& request) const
+        {
+            return SubmitCallable(&CodeBuildClient::StartCommandExecution, request);
+        }
+
+        /**
+         * An Async wrapper for StartCommandExecution that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename StartCommandExecutionRequestT = Model::StartCommandExecutionRequest>
+        void StartCommandExecutionAsync(const StartCommandExecutionRequestT& request, const StartCommandExecutionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&CodeBuildClient::StartCommandExecution, request, handler, context);
+        }
+
+        /**
+         * <p>Starts a sandbox.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/StartSandbox">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::StartSandboxOutcome StartSandbox(const Model::StartSandboxRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for StartSandbox that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename StartSandboxRequestT = Model::StartSandboxRequest>
+        Model::StartSandboxOutcomeCallable StartSandboxCallable(const StartSandboxRequestT& request = {}) const
+        {
+            return SubmitCallable(&CodeBuildClient::StartSandbox, request);
+        }
+
+        /**
+         * An Async wrapper for StartSandbox that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename StartSandboxRequestT = Model::StartSandboxRequest>
+        void StartSandboxAsync(const StartSandboxResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const StartSandboxRequestT& request = {}) const
+        {
+            return SubmitAsync(&CodeBuildClient::StartSandbox, request, handler, context);
+        }
+
+        /**
+         * <p>Starts a sandbox connection.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/StartSandboxConnection">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::StartSandboxConnectionOutcome StartSandboxConnection(const Model::StartSandboxConnectionRequest& request) const;
+
+        /**
+         * A Callable wrapper for StartSandboxConnection that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename StartSandboxConnectionRequestT = Model::StartSandboxConnectionRequest>
+        Model::StartSandboxConnectionOutcomeCallable StartSandboxConnectionCallable(const StartSandboxConnectionRequestT& request) const
+        {
+            return SubmitCallable(&CodeBuildClient::StartSandboxConnection, request);
+        }
+
+        /**
+         * An Async wrapper for StartSandboxConnection that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename StartSandboxConnectionRequestT = Model::StartSandboxConnectionRequest>
+        void StartSandboxConnectionAsync(const StartSandboxConnectionRequestT& request, const StartSandboxConnectionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&CodeBuildClient::StartSandboxConnection, request, handler, context);
         }
 
         /**
@@ -1149,6 +1459,56 @@ namespace CodeBuild
         void StopBuildBatchAsync(const StopBuildBatchRequestT& request, const StopBuildBatchResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&CodeBuildClient::StopBuildBatch, request, handler, context);
+        }
+
+        /**
+         * <p>Stops a sandbox.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/StopSandbox">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::StopSandboxOutcome StopSandbox(const Model::StopSandboxRequest& request) const;
+
+        /**
+         * A Callable wrapper for StopSandbox that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename StopSandboxRequestT = Model::StopSandboxRequest>
+        Model::StopSandboxOutcomeCallable StopSandboxCallable(const StopSandboxRequestT& request) const
+        {
+            return SubmitCallable(&CodeBuildClient::StopSandbox, request);
+        }
+
+        /**
+         * An Async wrapper for StopSandbox that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename StopSandboxRequestT = Model::StopSandboxRequest>
+        void StopSandboxAsync(const StopSandboxRequestT& request, const StopSandboxResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&CodeBuildClient::StopSandbox, request, handler, context);
+        }
+
+        /**
+         * <p>Updates a compute fleet.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/UpdateFleet">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::UpdateFleetOutcome UpdateFleet(const Model::UpdateFleetRequest& request) const;
+
+        /**
+         * A Callable wrapper for UpdateFleet that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename UpdateFleetRequestT = Model::UpdateFleetRequest>
+        Model::UpdateFleetOutcomeCallable UpdateFleetCallable(const UpdateFleetRequestT& request) const
+        {
+            return SubmitCallable(&CodeBuildClient::UpdateFleet, request);
+        }
+
+        /**
+         * An Async wrapper for UpdateFleet that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename UpdateFleetRequestT = Model::UpdateFleetRequest>
+        void UpdateFleetAsync(const UpdateFleetRequestT& request, const UpdateFleetResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&CodeBuildClient::UpdateFleet, request, handler, context);
         }
 
         /**
@@ -1285,7 +1645,6 @@ namespace CodeBuild
       void init(const CodeBuildClientConfiguration& clientConfiguration);
 
       CodeBuildClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<CodeBuildEndpointProviderBase> m_endpointProvider;
   };
 

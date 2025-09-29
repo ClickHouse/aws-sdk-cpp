@@ -15,13 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-ListOrganizationAdminAccountsRequest::ListOrganizationAdminAccountsRequest() : 
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
 Aws::String ListOrganizationAdminAccountsRequest::SerializePayload() const
 {
   return {};
@@ -41,6 +34,13 @@ void ListOrganizationAdminAccountsRequest::AddQueryStringParameters(URI& uri) co
     {
       ss << m_nextToken;
       uri.AddQueryStringParameter("NextToken", ss.str());
+      ss.str("");
+    }
+
+    if(m_featureHasBeenSet)
+    {
+      ss << SecurityHubFeatureMapper::GetNameForSecurityHubFeature(m_feature);
+      uri.AddQueryStringParameter("Feature", ss.str());
       ss.str("");
     }
 

@@ -18,17 +18,7 @@ namespace ChimeSDKMeetings
 namespace Model
 {
 
-NotificationsConfiguration::NotificationsConfiguration() : 
-    m_lambdaFunctionArnHasBeenSet(false),
-    m_snsTopicArnHasBeenSet(false),
-    m_sqsQueueArnHasBeenSet(false)
-{
-}
-
-NotificationsConfiguration::NotificationsConfiguration(JsonView jsonValue) : 
-    m_lambdaFunctionArnHasBeenSet(false),
-    m_snsTopicArnHasBeenSet(false),
-    m_sqsQueueArnHasBeenSet(false)
+NotificationsConfiguration::NotificationsConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ NotificationsConfiguration& NotificationsConfiguration::operator =(JsonView json
   if(jsonValue.ValueExists("LambdaFunctionArn"))
   {
     m_lambdaFunctionArn = jsonValue.GetString("LambdaFunctionArn");
-
     m_lambdaFunctionArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SnsTopicArn"))
   {
     m_snsTopicArn = jsonValue.GetString("SnsTopicArn");
-
     m_snsTopicArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SqsQueueArn"))
   {
     m_sqsQueueArn = jsonValue.GetString("SqsQueueArn");
-
     m_sqsQueueArnHasBeenSet = true;
   }
-
   return *this;
 }
 

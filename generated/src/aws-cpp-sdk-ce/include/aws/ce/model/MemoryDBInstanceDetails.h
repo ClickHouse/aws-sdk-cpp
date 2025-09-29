@@ -32,180 +32,68 @@ namespace Model
   class MemoryDBInstanceDetails
   {
   public:
-    AWS_COSTEXPLORER_API MemoryDBInstanceDetails();
+    AWS_COSTEXPLORER_API MemoryDBInstanceDetails() = default;
     AWS_COSTEXPLORER_API MemoryDBInstanceDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_COSTEXPLORER_API MemoryDBInstanceDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COSTEXPLORER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The instance family of the recommended reservation.</p>
      */
-    inline const Aws::String& GetFamily() const{ return m_family; }
-
-    /**
-     * <p>The instance family of the recommended reservation.</p>
-     */
+    inline const Aws::String& GetFamily() const { return m_family; }
     inline bool FamilyHasBeenSet() const { return m_familyHasBeenSet; }
+    template<typename FamilyT = Aws::String>
+    void SetFamily(FamilyT&& value) { m_familyHasBeenSet = true; m_family = std::forward<FamilyT>(value); }
+    template<typename FamilyT = Aws::String>
+    MemoryDBInstanceDetails& WithFamily(FamilyT&& value) { SetFamily(std::forward<FamilyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The instance family of the recommended reservation.</p>
-     */
-    inline void SetFamily(const Aws::String& value) { m_familyHasBeenSet = true; m_family = value; }
-
-    /**
-     * <p>The instance family of the recommended reservation.</p>
-     */
-    inline void SetFamily(Aws::String&& value) { m_familyHasBeenSet = true; m_family = std::move(value); }
-
-    /**
-     * <p>The instance family of the recommended reservation.</p>
-     */
-    inline void SetFamily(const char* value) { m_familyHasBeenSet = true; m_family.assign(value); }
-
-    /**
-     * <p>The instance family of the recommended reservation.</p>
-     */
-    inline MemoryDBInstanceDetails& WithFamily(const Aws::String& value) { SetFamily(value); return *this;}
-
-    /**
-     * <p>The instance family of the recommended reservation.</p>
-     */
-    inline MemoryDBInstanceDetails& WithFamily(Aws::String&& value) { SetFamily(std::move(value)); return *this;}
-
-    /**
-     * <p>The instance family of the recommended reservation.</p>
-     */
-    inline MemoryDBInstanceDetails& WithFamily(const char* value) { SetFamily(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The node type of the recommended reservation.</p>
      */
-    inline const Aws::String& GetNodeType() const{ return m_nodeType; }
-
-    /**
-     * <p>The node type of the recommended reservation.</p>
-     */
+    inline const Aws::String& GetNodeType() const { return m_nodeType; }
     inline bool NodeTypeHasBeenSet() const { return m_nodeTypeHasBeenSet; }
+    template<typename NodeTypeT = Aws::String>
+    void SetNodeType(NodeTypeT&& value) { m_nodeTypeHasBeenSet = true; m_nodeType = std::forward<NodeTypeT>(value); }
+    template<typename NodeTypeT = Aws::String>
+    MemoryDBInstanceDetails& WithNodeType(NodeTypeT&& value) { SetNodeType(std::forward<NodeTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The node type of the recommended reservation.</p>
-     */
-    inline void SetNodeType(const Aws::String& value) { m_nodeTypeHasBeenSet = true; m_nodeType = value; }
-
-    /**
-     * <p>The node type of the recommended reservation.</p>
-     */
-    inline void SetNodeType(Aws::String&& value) { m_nodeTypeHasBeenSet = true; m_nodeType = std::move(value); }
-
-    /**
-     * <p>The node type of the recommended reservation.</p>
-     */
-    inline void SetNodeType(const char* value) { m_nodeTypeHasBeenSet = true; m_nodeType.assign(value); }
-
-    /**
-     * <p>The node type of the recommended reservation.</p>
-     */
-    inline MemoryDBInstanceDetails& WithNodeType(const Aws::String& value) { SetNodeType(value); return *this;}
-
-    /**
-     * <p>The node type of the recommended reservation.</p>
-     */
-    inline MemoryDBInstanceDetails& WithNodeType(Aws::String&& value) { SetNodeType(std::move(value)); return *this;}
-
-    /**
-     * <p>The node type of the recommended reservation.</p>
-     */
-    inline MemoryDBInstanceDetails& WithNodeType(const char* value) { SetNodeType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Web Services Region of the recommended reservation.</p>
      */
-    inline const Aws::String& GetRegion() const{ return m_region; }
-
-    /**
-     * <p>The Amazon Web Services Region of the recommended reservation.</p>
-     */
+    inline const Aws::String& GetRegion() const { return m_region; }
     inline bool RegionHasBeenSet() const { return m_regionHasBeenSet; }
+    template<typename RegionT = Aws::String>
+    void SetRegion(RegionT&& value) { m_regionHasBeenSet = true; m_region = std::forward<RegionT>(value); }
+    template<typename RegionT = Aws::String>
+    MemoryDBInstanceDetails& WithRegion(RegionT&& value) { SetRegion(std::forward<RegionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Web Services Region of the recommended reservation.</p>
-     */
-    inline void SetRegion(const Aws::String& value) { m_regionHasBeenSet = true; m_region = value; }
-
-    /**
-     * <p>The Amazon Web Services Region of the recommended reservation.</p>
-     */
-    inline void SetRegion(Aws::String&& value) { m_regionHasBeenSet = true; m_region = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services Region of the recommended reservation.</p>
-     */
-    inline void SetRegion(const char* value) { m_regionHasBeenSet = true; m_region.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services Region of the recommended reservation.</p>
-     */
-    inline MemoryDBInstanceDetails& WithRegion(const Aws::String& value) { SetRegion(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services Region of the recommended reservation.</p>
-     */
-    inline MemoryDBInstanceDetails& WithRegion(Aws::String&& value) { SetRegion(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services Region of the recommended reservation.</p>
-     */
-    inline MemoryDBInstanceDetails& WithRegion(const char* value) { SetRegion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Determines whether the recommendation is for a current generation
      * instance.</p>
      */
-    inline bool GetCurrentGeneration() const{ return m_currentGeneration; }
-
-    /**
-     * <p>Determines whether the recommendation is for a current generation
-     * instance.</p>
-     */
+    inline bool GetCurrentGeneration() const { return m_currentGeneration; }
     inline bool CurrentGenerationHasBeenSet() const { return m_currentGenerationHasBeenSet; }
-
-    /**
-     * <p>Determines whether the recommendation is for a current generation
-     * instance.</p>
-     */
     inline void SetCurrentGeneration(bool value) { m_currentGenerationHasBeenSet = true; m_currentGeneration = value; }
-
-    /**
-     * <p>Determines whether the recommendation is for a current generation
-     * instance.</p>
-     */
     inline MemoryDBInstanceDetails& WithCurrentGeneration(bool value) { SetCurrentGeneration(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Determines whether the recommended reservation is size flexible.</p>
      */
-    inline bool GetSizeFlexEligible() const{ return m_sizeFlexEligible; }
-
-    /**
-     * <p>Determines whether the recommended reservation is size flexible.</p>
-     */
+    inline bool GetSizeFlexEligible() const { return m_sizeFlexEligible; }
     inline bool SizeFlexEligibleHasBeenSet() const { return m_sizeFlexEligibleHasBeenSet; }
-
-    /**
-     * <p>Determines whether the recommended reservation is size flexible.</p>
-     */
     inline void SetSizeFlexEligible(bool value) { m_sizeFlexEligibleHasBeenSet = true; m_sizeFlexEligible = value; }
-
-    /**
-     * <p>Determines whether the recommended reservation is size flexible.</p>
-     */
     inline MemoryDBInstanceDetails& WithSizeFlexEligible(bool value) { SetSizeFlexEligible(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_family;
@@ -217,10 +105,10 @@ namespace Model
     Aws::String m_region;
     bool m_regionHasBeenSet = false;
 
-    bool m_currentGeneration;
+    bool m_currentGeneration{false};
     bool m_currentGenerationHasBeenSet = false;
 
-    bool m_sizeFlexEligible;
+    bool m_sizeFlexEligible{false};
     bool m_sizeFlexEligibleHasBeenSet = false;
   };
 

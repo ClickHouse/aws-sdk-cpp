@@ -36,232 +36,75 @@ namespace Model
   class RegexPatternSet
   {
   public:
-    AWS_WAFV2_API RegexPatternSet();
+    AWS_WAFV2_API RegexPatternSet() = default;
     AWS_WAFV2_API RegexPatternSet(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFV2_API RegexPatternSet& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the set. You cannot change the name after you create the set.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the set. You cannot change the name after you create the set.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    RegexPatternSet& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the set. You cannot change the name after you create the set.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the set. You cannot change the name after you create the set.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the set. You cannot change the name after you create the set.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the set. You cannot change the name after you create the set.</p>
-     */
-    inline RegexPatternSet& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the set. You cannot change the name after you create the set.</p>
-     */
-    inline RegexPatternSet& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the set. You cannot change the name after you create the set.</p>
-     */
-    inline RegexPatternSet& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A unique identifier for the set. This ID is returned in the responses to
      * create and list commands. You provide it to operations like update and
      * delete.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>A unique identifier for the set. This ID is returned in the responses to
-     * create and list commands. You provide it to operations like update and
-     * delete.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    RegexPatternSet& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier for the set. This ID is returned in the responses to
-     * create and list commands. You provide it to operations like update and
-     * delete.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>A unique identifier for the set. This ID is returned in the responses to
-     * create and list commands. You provide it to operations like update and
-     * delete.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>A unique identifier for the set. This ID is returned in the responses to
-     * create and list commands. You provide it to operations like update and
-     * delete.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>A unique identifier for the set. This ID is returned in the responses to
-     * create and list commands. You provide it to operations like update and
-     * delete.</p>
-     */
-    inline RegexPatternSet& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>A unique identifier for the set. This ID is returned in the responses to
-     * create and list commands. You provide it to operations like update and
-     * delete.</p>
-     */
-    inline RegexPatternSet& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier for the set. This ID is returned in the responses to
-     * create and list commands. You provide it to operations like update and
-     * delete.</p>
-     */
-    inline RegexPatternSet& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the entity.</p>
      */
-    inline const Aws::String& GetARN() const{ return m_aRN; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the entity.</p>
-     */
+    inline const Aws::String& GetARN() const { return m_aRN; }
     inline bool ARNHasBeenSet() const { return m_aRNHasBeenSet; }
+    template<typename ARNT = Aws::String>
+    void SetARN(ARNT&& value) { m_aRNHasBeenSet = true; m_aRN = std::forward<ARNT>(value); }
+    template<typename ARNT = Aws::String>
+    RegexPatternSet& WithARN(ARNT&& value) { SetARN(std::forward<ARNT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the entity.</p>
-     */
-    inline void SetARN(const Aws::String& value) { m_aRNHasBeenSet = true; m_aRN = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the entity.</p>
-     */
-    inline void SetARN(Aws::String&& value) { m_aRNHasBeenSet = true; m_aRN = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the entity.</p>
-     */
-    inline void SetARN(const char* value) { m_aRNHasBeenSet = true; m_aRN.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the entity.</p>
-     */
-    inline RegexPatternSet& WithARN(const Aws::String& value) { SetARN(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the entity.</p>
-     */
-    inline RegexPatternSet& WithARN(Aws::String&& value) { SetARN(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the entity.</p>
-     */
-    inline RegexPatternSet& WithARN(const char* value) { SetARN(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A description of the set that helps with identification. </p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>A description of the set that helps with identification. </p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    RegexPatternSet& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A description of the set that helps with identification. </p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>A description of the set that helps with identification. </p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>A description of the set that helps with identification. </p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>A description of the set that helps with identification. </p>
-     */
-    inline RegexPatternSet& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A description of the set that helps with identification. </p>
-     */
-    inline RegexPatternSet& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A description of the set that helps with identification. </p>
-     */
-    inline RegexPatternSet& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The regular expression patterns in the set.</p>
      */
-    inline const Aws::Vector<Regex>& GetRegularExpressionList() const{ return m_regularExpressionList; }
-
-    /**
-     * <p>The regular expression patterns in the set.</p>
-     */
+    inline const Aws::Vector<Regex>& GetRegularExpressionList() const { return m_regularExpressionList; }
     inline bool RegularExpressionListHasBeenSet() const { return m_regularExpressionListHasBeenSet; }
-
-    /**
-     * <p>The regular expression patterns in the set.</p>
-     */
-    inline void SetRegularExpressionList(const Aws::Vector<Regex>& value) { m_regularExpressionListHasBeenSet = true; m_regularExpressionList = value; }
-
-    /**
-     * <p>The regular expression patterns in the set.</p>
-     */
-    inline void SetRegularExpressionList(Aws::Vector<Regex>&& value) { m_regularExpressionListHasBeenSet = true; m_regularExpressionList = std::move(value); }
-
-    /**
-     * <p>The regular expression patterns in the set.</p>
-     */
-    inline RegexPatternSet& WithRegularExpressionList(const Aws::Vector<Regex>& value) { SetRegularExpressionList(value); return *this;}
-
-    /**
-     * <p>The regular expression patterns in the set.</p>
-     */
-    inline RegexPatternSet& WithRegularExpressionList(Aws::Vector<Regex>&& value) { SetRegularExpressionList(std::move(value)); return *this;}
-
-    /**
-     * <p>The regular expression patterns in the set.</p>
-     */
-    inline RegexPatternSet& AddRegularExpressionList(const Regex& value) { m_regularExpressionListHasBeenSet = true; m_regularExpressionList.push_back(value); return *this; }
-
-    /**
-     * <p>The regular expression patterns in the set.</p>
-     */
-    inline RegexPatternSet& AddRegularExpressionList(Regex&& value) { m_regularExpressionListHasBeenSet = true; m_regularExpressionList.push_back(std::move(value)); return *this; }
-
+    template<typename RegularExpressionListT = Aws::Vector<Regex>>
+    void SetRegularExpressionList(RegularExpressionListT&& value) { m_regularExpressionListHasBeenSet = true; m_regularExpressionList = std::forward<RegularExpressionListT>(value); }
+    template<typename RegularExpressionListT = Aws::Vector<Regex>>
+    RegexPatternSet& WithRegularExpressionList(RegularExpressionListT&& value) { SetRegularExpressionList(std::forward<RegularExpressionListT>(value)); return *this;}
+    template<typename RegularExpressionListT = Regex>
+    RegexPatternSet& AddRegularExpressionList(RegularExpressionListT&& value) { m_regularExpressionListHasBeenSet = true; m_regularExpressionList.emplace_back(std::forward<RegularExpressionListT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_name;

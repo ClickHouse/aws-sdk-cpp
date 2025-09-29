@@ -29,11 +29,12 @@ namespace Model
   class GetParametersForImportResult
   {
   public:
-    AWS_KMS_API GetParametersForImportResult();
+    AWS_KMS_API GetParametersForImportResult() = default;
     AWS_KMS_API GetParametersForImportResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_KMS_API GetParametersForImportResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (<a
      * href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key
@@ -41,198 +42,75 @@ namespace Model
      * This is the same KMS key specified in the <code>GetParametersForImport</code>
      * request.</p>
      */
-    inline const Aws::String& GetKeyId() const{ return m_keyId; }
+    inline const Aws::String& GetKeyId() const { return m_keyId; }
+    template<typename KeyIdT = Aws::String>
+    void SetKeyId(KeyIdT&& value) { m_keyIdHasBeenSet = true; m_keyId = std::forward<KeyIdT>(value); }
+    template<typename KeyIdT = Aws::String>
+    GetParametersForImportResult& WithKeyId(KeyIdT&& value) { SetKeyId(std::forward<KeyIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (<a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key
-     * ARN</a>) of the KMS key to use in a subsequent <a>ImportKeyMaterial</a> request.
-     * This is the same KMS key specified in the <code>GetParametersForImport</code>
-     * request.</p>
-     */
-    inline void SetKeyId(const Aws::String& value) { m_keyId = value; }
-
-    /**
-     * <p>The Amazon Resource Name (<a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key
-     * ARN</a>) of the KMS key to use in a subsequent <a>ImportKeyMaterial</a> request.
-     * This is the same KMS key specified in the <code>GetParametersForImport</code>
-     * request.</p>
-     */
-    inline void SetKeyId(Aws::String&& value) { m_keyId = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (<a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key
-     * ARN</a>) of the KMS key to use in a subsequent <a>ImportKeyMaterial</a> request.
-     * This is the same KMS key specified in the <code>GetParametersForImport</code>
-     * request.</p>
-     */
-    inline void SetKeyId(const char* value) { m_keyId.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (<a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key
-     * ARN</a>) of the KMS key to use in a subsequent <a>ImportKeyMaterial</a> request.
-     * This is the same KMS key specified in the <code>GetParametersForImport</code>
-     * request.</p>
-     */
-    inline GetParametersForImportResult& WithKeyId(const Aws::String& value) { SetKeyId(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (<a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key
-     * ARN</a>) of the KMS key to use in a subsequent <a>ImportKeyMaterial</a> request.
-     * This is the same KMS key specified in the <code>GetParametersForImport</code>
-     * request.</p>
-     */
-    inline GetParametersForImportResult& WithKeyId(Aws::String&& value) { SetKeyId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (<a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key
-     * ARN</a>) of the KMS key to use in a subsequent <a>ImportKeyMaterial</a> request.
-     * This is the same KMS key specified in the <code>GetParametersForImport</code>
-     * request.</p>
-     */
-    inline GetParametersForImportResult& WithKeyId(const char* value) { SetKeyId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The import token to send in a subsequent <a>ImportKeyMaterial</a>
      * request.</p>
      */
-    inline const Aws::Utils::ByteBuffer& GetImportToken() const{ return m_importToken; }
+    inline const Aws::Utils::ByteBuffer& GetImportToken() const { return m_importToken; }
+    template<typename ImportTokenT = Aws::Utils::ByteBuffer>
+    void SetImportToken(ImportTokenT&& value) { m_importTokenHasBeenSet = true; m_importToken = std::forward<ImportTokenT>(value); }
+    template<typename ImportTokenT = Aws::Utils::ByteBuffer>
+    GetParametersForImportResult& WithImportToken(ImportTokenT&& value) { SetImportToken(std::forward<ImportTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The import token to send in a subsequent <a>ImportKeyMaterial</a>
-     * request.</p>
-     */
-    inline void SetImportToken(const Aws::Utils::ByteBuffer& value) { m_importToken = value; }
-
-    /**
-     * <p>The import token to send in a subsequent <a>ImportKeyMaterial</a>
-     * request.</p>
-     */
-    inline void SetImportToken(Aws::Utils::ByteBuffer&& value) { m_importToken = std::move(value); }
-
-    /**
-     * <p>The import token to send in a subsequent <a>ImportKeyMaterial</a>
-     * request.</p>
-     */
-    inline GetParametersForImportResult& WithImportToken(const Aws::Utils::ByteBuffer& value) { SetImportToken(value); return *this;}
-
-    /**
-     * <p>The import token to send in a subsequent <a>ImportKeyMaterial</a>
-     * request.</p>
-     */
-    inline GetParametersForImportResult& WithImportToken(Aws::Utils::ByteBuffer&& value) { SetImportToken(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The public key to use to encrypt the key material before importing it with
      * <a>ImportKeyMaterial</a>.</p>
      */
-    inline const Aws::Utils::CryptoBuffer& GetPublicKey() const{ return m_publicKey; }
+    inline const Aws::Utils::CryptoBuffer& GetPublicKey() const { return m_publicKey; }
+    template<typename PublicKeyT = Aws::Utils::CryptoBuffer>
+    void SetPublicKey(PublicKeyT&& value) { m_publicKeyHasBeenSet = true; m_publicKey = std::forward<PublicKeyT>(value); }
+    template<typename PublicKeyT = Aws::Utils::CryptoBuffer>
+    GetParametersForImportResult& WithPublicKey(PublicKeyT&& value) { SetPublicKey(std::forward<PublicKeyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The public key to use to encrypt the key material before importing it with
-     * <a>ImportKeyMaterial</a>.</p>
-     */
-    inline void SetPublicKey(const Aws::Utils::CryptoBuffer& value) { m_publicKey = value; }
-
-    /**
-     * <p>The public key to use to encrypt the key material before importing it with
-     * <a>ImportKeyMaterial</a>.</p>
-     */
-    inline void SetPublicKey(Aws::Utils::CryptoBuffer&& value) { m_publicKey = std::move(value); }
-
-    /**
-     * <p>The public key to use to encrypt the key material before importing it with
-     * <a>ImportKeyMaterial</a>.</p>
-     */
-    inline GetParametersForImportResult& WithPublicKey(const Aws::Utils::CryptoBuffer& value) { SetPublicKey(value); return *this;}
-
-    /**
-     * <p>The public key to use to encrypt the key material before importing it with
-     * <a>ImportKeyMaterial</a>.</p>
-     */
-    inline GetParametersForImportResult& WithPublicKey(Aws::Utils::CryptoBuffer&& value) { SetPublicKey(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The time at which the import token and public key are no longer valid. After
      * this time, you cannot use them to make an <a>ImportKeyMaterial</a> request and
      * you must send another <code>GetParametersForImport</code> request to get new
      * ones.</p>
      */
-    inline const Aws::Utils::DateTime& GetParametersValidTo() const{ return m_parametersValidTo; }
+    inline const Aws::Utils::DateTime& GetParametersValidTo() const { return m_parametersValidTo; }
+    template<typename ParametersValidToT = Aws::Utils::DateTime>
+    void SetParametersValidTo(ParametersValidToT&& value) { m_parametersValidToHasBeenSet = true; m_parametersValidTo = std::forward<ParametersValidToT>(value); }
+    template<typename ParametersValidToT = Aws::Utils::DateTime>
+    GetParametersForImportResult& WithParametersValidTo(ParametersValidToT&& value) { SetParametersValidTo(std::forward<ParametersValidToT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time at which the import token and public key are no longer valid. After
-     * this time, you cannot use them to make an <a>ImportKeyMaterial</a> request and
-     * you must send another <code>GetParametersForImport</code> request to get new
-     * ones.</p>
-     */
-    inline void SetParametersValidTo(const Aws::Utils::DateTime& value) { m_parametersValidTo = value; }
-
-    /**
-     * <p>The time at which the import token and public key are no longer valid. After
-     * this time, you cannot use them to make an <a>ImportKeyMaterial</a> request and
-     * you must send another <code>GetParametersForImport</code> request to get new
-     * ones.</p>
-     */
-    inline void SetParametersValidTo(Aws::Utils::DateTime&& value) { m_parametersValidTo = std::move(value); }
-
-    /**
-     * <p>The time at which the import token and public key are no longer valid. After
-     * this time, you cannot use them to make an <a>ImportKeyMaterial</a> request and
-     * you must send another <code>GetParametersForImport</code> request to get new
-     * ones.</p>
-     */
-    inline GetParametersForImportResult& WithParametersValidTo(const Aws::Utils::DateTime& value) { SetParametersValidTo(value); return *this;}
-
-    /**
-     * <p>The time at which the import token and public key are no longer valid. After
-     * this time, you cannot use them to make an <a>ImportKeyMaterial</a> request and
-     * you must send another <code>GetParametersForImport</code> request to get new
-     * ones.</p>
-     */
-    inline GetParametersForImportResult& WithParametersValidTo(Aws::Utils::DateTime&& value) { SetParametersValidTo(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetParametersForImportResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetParametersForImportResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetParametersForImportResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetParametersForImportResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_keyId;
+    bool m_keyIdHasBeenSet = false;
 
-    Aws::Utils::ByteBuffer m_importToken;
+    Aws::Utils::ByteBuffer m_importToken{};
+    bool m_importTokenHasBeenSet = false;
 
-    Aws::Utils::CryptoBuffer m_publicKey;
+    Aws::Utils::CryptoBuffer m_publicKey{};
+    bool m_publicKeyHasBeenSet = false;
 
-    Aws::Utils::DateTime m_parametersValidTo;
+    Aws::Utils::DateTime m_parametersValidTo{};
+    bool m_parametersValidToHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

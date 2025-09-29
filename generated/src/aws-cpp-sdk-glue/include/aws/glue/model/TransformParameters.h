@@ -33,94 +33,39 @@ namespace Model
   class TransformParameters
   {
   public:
-    AWS_GLUE_API TransformParameters();
+    AWS_GLUE_API TransformParameters() = default;
     AWS_GLUE_API TransformParameters(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API TransformParameters& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The type of machine learning transform.</p> <p>For information about the
      * types of machine learning transforms, see <a
      * href="https://docs.aws.amazon.com/glue/latest/dg/add-job-machine-learning-transform.html">Creating
      * Machine Learning Transforms</a>.</p>
      */
-    inline const TransformType& GetTransformType() const{ return m_transformType; }
-
-    /**
-     * <p>The type of machine learning transform.</p> <p>For information about the
-     * types of machine learning transforms, see <a
-     * href="https://docs.aws.amazon.com/glue/latest/dg/add-job-machine-learning-transform.html">Creating
-     * Machine Learning Transforms</a>.</p>
-     */
+    inline TransformType GetTransformType() const { return m_transformType; }
     inline bool TransformTypeHasBeenSet() const { return m_transformTypeHasBeenSet; }
+    inline void SetTransformType(TransformType value) { m_transformTypeHasBeenSet = true; m_transformType = value; }
+    inline TransformParameters& WithTransformType(TransformType value) { SetTransformType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of machine learning transform.</p> <p>For information about the
-     * types of machine learning transforms, see <a
-     * href="https://docs.aws.amazon.com/glue/latest/dg/add-job-machine-learning-transform.html">Creating
-     * Machine Learning Transforms</a>.</p>
-     */
-    inline void SetTransformType(const TransformType& value) { m_transformTypeHasBeenSet = true; m_transformType = value; }
-
-    /**
-     * <p>The type of machine learning transform.</p> <p>For information about the
-     * types of machine learning transforms, see <a
-     * href="https://docs.aws.amazon.com/glue/latest/dg/add-job-machine-learning-transform.html">Creating
-     * Machine Learning Transforms</a>.</p>
-     */
-    inline void SetTransformType(TransformType&& value) { m_transformTypeHasBeenSet = true; m_transformType = std::move(value); }
-
-    /**
-     * <p>The type of machine learning transform.</p> <p>For information about the
-     * types of machine learning transforms, see <a
-     * href="https://docs.aws.amazon.com/glue/latest/dg/add-job-machine-learning-transform.html">Creating
-     * Machine Learning Transforms</a>.</p>
-     */
-    inline TransformParameters& WithTransformType(const TransformType& value) { SetTransformType(value); return *this;}
-
-    /**
-     * <p>The type of machine learning transform.</p> <p>For information about the
-     * types of machine learning transforms, see <a
-     * href="https://docs.aws.amazon.com/glue/latest/dg/add-job-machine-learning-transform.html">Creating
-     * Machine Learning Transforms</a>.</p>
-     */
-    inline TransformParameters& WithTransformType(TransformType&& value) { SetTransformType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The parameters for the find matches algorithm.</p>
      */
-    inline const FindMatchesParameters& GetFindMatchesParameters() const{ return m_findMatchesParameters; }
-
-    /**
-     * <p>The parameters for the find matches algorithm.</p>
-     */
+    inline const FindMatchesParameters& GetFindMatchesParameters() const { return m_findMatchesParameters; }
     inline bool FindMatchesParametersHasBeenSet() const { return m_findMatchesParametersHasBeenSet; }
-
-    /**
-     * <p>The parameters for the find matches algorithm.</p>
-     */
-    inline void SetFindMatchesParameters(const FindMatchesParameters& value) { m_findMatchesParametersHasBeenSet = true; m_findMatchesParameters = value; }
-
-    /**
-     * <p>The parameters for the find matches algorithm.</p>
-     */
-    inline void SetFindMatchesParameters(FindMatchesParameters&& value) { m_findMatchesParametersHasBeenSet = true; m_findMatchesParameters = std::move(value); }
-
-    /**
-     * <p>The parameters for the find matches algorithm.</p>
-     */
-    inline TransformParameters& WithFindMatchesParameters(const FindMatchesParameters& value) { SetFindMatchesParameters(value); return *this;}
-
-    /**
-     * <p>The parameters for the find matches algorithm.</p>
-     */
-    inline TransformParameters& WithFindMatchesParameters(FindMatchesParameters&& value) { SetFindMatchesParameters(std::move(value)); return *this;}
-
+    template<typename FindMatchesParametersT = FindMatchesParameters>
+    void SetFindMatchesParameters(FindMatchesParametersT&& value) { m_findMatchesParametersHasBeenSet = true; m_findMatchesParameters = std::forward<FindMatchesParametersT>(value); }
+    template<typename FindMatchesParametersT = FindMatchesParameters>
+    TransformParameters& WithFindMatchesParameters(FindMatchesParametersT&& value) { SetFindMatchesParameters(std::forward<FindMatchesParametersT>(value)); return *this;}
+    ///@}
   private:
 
-    TransformType m_transformType;
+    TransformType m_transformType{TransformType::NOT_SET};
     bool m_transformTypeHasBeenSet = false;
 
     FindMatchesParameters m_findMatchesParameters;

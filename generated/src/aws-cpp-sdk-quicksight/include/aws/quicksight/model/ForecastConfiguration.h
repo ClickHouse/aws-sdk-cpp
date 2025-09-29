@@ -33,73 +33,35 @@ namespace Model
   class ForecastConfiguration
   {
   public:
-    AWS_QUICKSIGHT_API ForecastConfiguration();
+    AWS_QUICKSIGHT_API ForecastConfiguration() = default;
     AWS_QUICKSIGHT_API ForecastConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API ForecastConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The forecast properties setup of a forecast in the line chart.</p>
      */
-    inline const TimeBasedForecastProperties& GetForecastProperties() const{ return m_forecastProperties; }
-
-    /**
-     * <p>The forecast properties setup of a forecast in the line chart.</p>
-     */
+    inline const TimeBasedForecastProperties& GetForecastProperties() const { return m_forecastProperties; }
     inline bool ForecastPropertiesHasBeenSet() const { return m_forecastPropertiesHasBeenSet; }
+    template<typename ForecastPropertiesT = TimeBasedForecastProperties>
+    void SetForecastProperties(ForecastPropertiesT&& value) { m_forecastPropertiesHasBeenSet = true; m_forecastProperties = std::forward<ForecastPropertiesT>(value); }
+    template<typename ForecastPropertiesT = TimeBasedForecastProperties>
+    ForecastConfiguration& WithForecastProperties(ForecastPropertiesT&& value) { SetForecastProperties(std::forward<ForecastPropertiesT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The forecast properties setup of a forecast in the line chart.</p>
-     */
-    inline void SetForecastProperties(const TimeBasedForecastProperties& value) { m_forecastPropertiesHasBeenSet = true; m_forecastProperties = value; }
-
-    /**
-     * <p>The forecast properties setup of a forecast in the line chart.</p>
-     */
-    inline void SetForecastProperties(TimeBasedForecastProperties&& value) { m_forecastPropertiesHasBeenSet = true; m_forecastProperties = std::move(value); }
-
-    /**
-     * <p>The forecast properties setup of a forecast in the line chart.</p>
-     */
-    inline ForecastConfiguration& WithForecastProperties(const TimeBasedForecastProperties& value) { SetForecastProperties(value); return *this;}
-
-    /**
-     * <p>The forecast properties setup of a forecast in the line chart.</p>
-     */
-    inline ForecastConfiguration& WithForecastProperties(TimeBasedForecastProperties&& value) { SetForecastProperties(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The forecast scenario of a forecast in the line chart.</p>
      */
-    inline const ForecastScenario& GetScenario() const{ return m_scenario; }
-
-    /**
-     * <p>The forecast scenario of a forecast in the line chart.</p>
-     */
+    inline const ForecastScenario& GetScenario() const { return m_scenario; }
     inline bool ScenarioHasBeenSet() const { return m_scenarioHasBeenSet; }
-
-    /**
-     * <p>The forecast scenario of a forecast in the line chart.</p>
-     */
-    inline void SetScenario(const ForecastScenario& value) { m_scenarioHasBeenSet = true; m_scenario = value; }
-
-    /**
-     * <p>The forecast scenario of a forecast in the line chart.</p>
-     */
-    inline void SetScenario(ForecastScenario&& value) { m_scenarioHasBeenSet = true; m_scenario = std::move(value); }
-
-    /**
-     * <p>The forecast scenario of a forecast in the line chart.</p>
-     */
-    inline ForecastConfiguration& WithScenario(const ForecastScenario& value) { SetScenario(value); return *this;}
-
-    /**
-     * <p>The forecast scenario of a forecast in the line chart.</p>
-     */
-    inline ForecastConfiguration& WithScenario(ForecastScenario&& value) { SetScenario(std::move(value)); return *this;}
-
+    template<typename ScenarioT = ForecastScenario>
+    void SetScenario(ScenarioT&& value) { m_scenarioHasBeenSet = true; m_scenario = std::forward<ScenarioT>(value); }
+    template<typename ScenarioT = ForecastScenario>
+    ForecastConfiguration& WithScenario(ScenarioT&& value) { SetScenario(std::forward<ScenarioT>(value)); return *this;}
+    ///@}
   private:
 
     TimeBasedForecastProperties m_forecastProperties;

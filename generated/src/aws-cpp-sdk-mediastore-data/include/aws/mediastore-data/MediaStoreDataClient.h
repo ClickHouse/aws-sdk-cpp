@@ -24,8 +24,8 @@ namespace MediaStoreData
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
 
       typedef MediaStoreDataClientConfiguration ClientConfigurationType;
       typedef MediaStoreDataEndpointProvider EndpointProviderType;
@@ -35,14 +35,14 @@ namespace MediaStoreData
         * is not specified, it will be initialized to default values.
         */
         MediaStoreDataClient(const Aws::MediaStoreData::MediaStoreDataClientConfiguration& clientConfiguration = Aws::MediaStoreData::MediaStoreDataClientConfiguration(),
-                             std::shared_ptr<MediaStoreDataEndpointProviderBase> endpointProvider = Aws::MakeShared<MediaStoreDataEndpointProvider>(ALLOCATION_TAG));
+                             std::shared_ptr<MediaStoreDataEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         MediaStoreDataClient(const Aws::Auth::AWSCredentials& credentials,
-                             std::shared_ptr<MediaStoreDataEndpointProviderBase> endpointProvider = Aws::MakeShared<MediaStoreDataEndpointProvider>(ALLOCATION_TAG),
+                             std::shared_ptr<MediaStoreDataEndpointProviderBase> endpointProvider = nullptr,
                              const Aws::MediaStoreData::MediaStoreDataClientConfiguration& clientConfiguration = Aws::MediaStoreData::MediaStoreDataClientConfiguration());
 
        /**
@@ -50,7 +50,7 @@ namespace MediaStoreData
         * the default http client factory will be used
         */
         MediaStoreDataClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                             std::shared_ptr<MediaStoreDataEndpointProviderBase> endpointProvider = Aws::MakeShared<MediaStoreDataEndpointProvider>(ALLOCATION_TAG),
+                             std::shared_ptr<MediaStoreDataEndpointProviderBase> endpointProvider = nullptr,
                              const Aws::MediaStoreData::MediaStoreDataClientConfiguration& clientConfiguration = Aws::MediaStoreData::MediaStoreDataClientConfiguration());
 
 
@@ -163,13 +163,13 @@ namespace MediaStoreData
          * href="http://docs.aws.amazon.com/goto/WebAPI/mediastore-data-2017-09-01/ListItems">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListItemsOutcome ListItems(const Model::ListItemsRequest& request) const;
+        virtual Model::ListItemsOutcome ListItems(const Model::ListItemsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListItems that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListItemsRequestT = Model::ListItemsRequest>
-        Model::ListItemsOutcomeCallable ListItemsCallable(const ListItemsRequestT& request) const
+        Model::ListItemsOutcomeCallable ListItemsCallable(const ListItemsRequestT& request = {}) const
         {
             return SubmitCallable(&MediaStoreDataClient::ListItems, request);
         }
@@ -178,7 +178,7 @@ namespace MediaStoreData
          * An Async wrapper for ListItems that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListItemsRequestT = Model::ListItemsRequest>
-        void ListItemsAsync(const ListItemsRequestT& request, const ListItemsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListItemsAsync(const ListItemsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListItemsRequestT& request = {}) const
         {
             return SubmitAsync(&MediaStoreDataClient::ListItems, request, handler, context);
         }
@@ -218,7 +218,6 @@ namespace MediaStoreData
       void init(const MediaStoreDataClientConfiguration& clientConfiguration);
 
       MediaStoreDataClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<MediaStoreDataEndpointProviderBase> m_endpointProvider;
   };
 

@@ -18,15 +18,7 @@ namespace MainframeModernization
 namespace Model
 {
 
-Definition::Definition() : 
-    m_contentHasBeenSet(false),
-    m_s3LocationHasBeenSet(false)
-{
-}
-
-Definition::Definition(JsonView jsonValue) : 
-    m_contentHasBeenSet(false),
-    m_s3LocationHasBeenSet(false)
+Definition::Definition(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ Definition& Definition::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("content"))
   {
     m_content = jsonValue.GetString("content");
-
     m_contentHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("s3Location"))
   {
     m_s3Location = jsonValue.GetString("s3Location");
-
     m_s3LocationHasBeenSet = true;
   }
-
   return *this;
 }
 

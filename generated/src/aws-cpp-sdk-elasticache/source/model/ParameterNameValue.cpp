@@ -20,15 +20,7 @@ namespace ElastiCache
 namespace Model
 {
 
-ParameterNameValue::ParameterNameValue() : 
-    m_parameterNameHasBeenSet(false),
-    m_parameterValueHasBeenSet(false)
-{
-}
-
-ParameterNameValue::ParameterNameValue(const XmlNode& xmlNode) : 
-    m_parameterNameHasBeenSet(false),
-    m_parameterValueHasBeenSet(false)
+ParameterNameValue::ParameterNameValue(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

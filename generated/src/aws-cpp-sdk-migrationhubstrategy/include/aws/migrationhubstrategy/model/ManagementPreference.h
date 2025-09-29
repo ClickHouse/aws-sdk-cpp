@@ -34,104 +34,47 @@ namespace Model
   class ManagementPreference
   {
   public:
-    AWS_MIGRATIONHUBSTRATEGYRECOMMENDATIONS_API ManagementPreference();
+    AWS_MIGRATIONHUBSTRATEGYRECOMMENDATIONS_API ManagementPreference() = default;
     AWS_MIGRATIONHUBSTRATEGYRECOMMENDATIONS_API ManagementPreference(Aws::Utils::Json::JsonView jsonValue);
     AWS_MIGRATIONHUBSTRATEGYRECOMMENDATIONS_API ManagementPreference& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MIGRATIONHUBSTRATEGYRECOMMENDATIONS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> Indicates interest in solutions that are managed by AWS. </p>
      */
-    inline const AwsManagedResources& GetAwsManagedResources() const{ return m_awsManagedResources; }
-
-    /**
-     * <p> Indicates interest in solutions that are managed by AWS. </p>
-     */
+    inline const AwsManagedResources& GetAwsManagedResources() const { return m_awsManagedResources; }
     inline bool AwsManagedResourcesHasBeenSet() const { return m_awsManagedResourcesHasBeenSet; }
+    template<typename AwsManagedResourcesT = AwsManagedResources>
+    void SetAwsManagedResources(AwsManagedResourcesT&& value) { m_awsManagedResourcesHasBeenSet = true; m_awsManagedResources = std::forward<AwsManagedResourcesT>(value); }
+    template<typename AwsManagedResourcesT = AwsManagedResources>
+    ManagementPreference& WithAwsManagedResources(AwsManagedResourcesT&& value) { SetAwsManagedResources(std::forward<AwsManagedResourcesT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> Indicates interest in solutions that are managed by AWS. </p>
-     */
-    inline void SetAwsManagedResources(const AwsManagedResources& value) { m_awsManagedResourcesHasBeenSet = true; m_awsManagedResources = value; }
-
-    /**
-     * <p> Indicates interest in solutions that are managed by AWS. </p>
-     */
-    inline void SetAwsManagedResources(AwsManagedResources&& value) { m_awsManagedResourcesHasBeenSet = true; m_awsManagedResources = std::move(value); }
-
-    /**
-     * <p> Indicates interest in solutions that are managed by AWS. </p>
-     */
-    inline ManagementPreference& WithAwsManagedResources(const AwsManagedResources& value) { SetAwsManagedResources(value); return *this;}
-
-    /**
-     * <p> Indicates interest in solutions that are managed by AWS. </p>
-     */
-    inline ManagementPreference& WithAwsManagedResources(AwsManagedResources&& value) { SetAwsManagedResources(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> No specific preference. </p>
      */
-    inline const NoManagementPreference& GetNoPreference() const{ return m_noPreference; }
-
-    /**
-     * <p> No specific preference. </p>
-     */
+    inline const NoManagementPreference& GetNoPreference() const { return m_noPreference; }
     inline bool NoPreferenceHasBeenSet() const { return m_noPreferenceHasBeenSet; }
+    template<typename NoPreferenceT = NoManagementPreference>
+    void SetNoPreference(NoPreferenceT&& value) { m_noPreferenceHasBeenSet = true; m_noPreference = std::forward<NoPreferenceT>(value); }
+    template<typename NoPreferenceT = NoManagementPreference>
+    ManagementPreference& WithNoPreference(NoPreferenceT&& value) { SetNoPreference(std::forward<NoPreferenceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> No specific preference. </p>
-     */
-    inline void SetNoPreference(const NoManagementPreference& value) { m_noPreferenceHasBeenSet = true; m_noPreference = value; }
-
-    /**
-     * <p> No specific preference. </p>
-     */
-    inline void SetNoPreference(NoManagementPreference&& value) { m_noPreferenceHasBeenSet = true; m_noPreference = std::move(value); }
-
-    /**
-     * <p> No specific preference. </p>
-     */
-    inline ManagementPreference& WithNoPreference(const NoManagementPreference& value) { SetNoPreference(value); return *this;}
-
-    /**
-     * <p> No specific preference. </p>
-     */
-    inline ManagementPreference& WithNoPreference(NoManagementPreference&& value) { SetNoPreference(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> Indicates interest in managing your own resources on AWS. </p>
      */
-    inline const SelfManageResources& GetSelfManageResources() const{ return m_selfManageResources; }
-
-    /**
-     * <p> Indicates interest in managing your own resources on AWS. </p>
-     */
+    inline const SelfManageResources& GetSelfManageResources() const { return m_selfManageResources; }
     inline bool SelfManageResourcesHasBeenSet() const { return m_selfManageResourcesHasBeenSet; }
-
-    /**
-     * <p> Indicates interest in managing your own resources on AWS. </p>
-     */
-    inline void SetSelfManageResources(const SelfManageResources& value) { m_selfManageResourcesHasBeenSet = true; m_selfManageResources = value; }
-
-    /**
-     * <p> Indicates interest in managing your own resources on AWS. </p>
-     */
-    inline void SetSelfManageResources(SelfManageResources&& value) { m_selfManageResourcesHasBeenSet = true; m_selfManageResources = std::move(value); }
-
-    /**
-     * <p> Indicates interest in managing your own resources on AWS. </p>
-     */
-    inline ManagementPreference& WithSelfManageResources(const SelfManageResources& value) { SetSelfManageResources(value); return *this;}
-
-    /**
-     * <p> Indicates interest in managing your own resources on AWS. </p>
-     */
-    inline ManagementPreference& WithSelfManageResources(SelfManageResources&& value) { SetSelfManageResources(std::move(value)); return *this;}
-
+    template<typename SelfManageResourcesT = SelfManageResources>
+    void SetSelfManageResources(SelfManageResourcesT&& value) { m_selfManageResourcesHasBeenSet = true; m_selfManageResources = std::forward<SelfManageResourcesT>(value); }
+    template<typename SelfManageResourcesT = SelfManageResources>
+    ManagementPreference& WithSelfManageResources(SelfManageResourcesT&& value) { SetSelfManageResources(std::forward<SelfManageResourcesT>(value)); return *this;}
+    ///@}
   private:
 
     AwsManagedResources m_awsManagedResources;

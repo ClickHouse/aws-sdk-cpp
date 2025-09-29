@@ -18,15 +18,7 @@ namespace AppMesh
 namespace Model
 {
 
-VirtualNodeHttp2ConnectionPool::VirtualNodeHttp2ConnectionPool() : 
-    m_maxRequests(0),
-    m_maxRequestsHasBeenSet(false)
-{
-}
-
-VirtualNodeHttp2ConnectionPool::VirtualNodeHttp2ConnectionPool(JsonView jsonValue) : 
-    m_maxRequests(0),
-    m_maxRequestsHasBeenSet(false)
+VirtualNodeHttp2ConnectionPool::VirtualNodeHttp2ConnectionPool(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ VirtualNodeHttp2ConnectionPool& VirtualNodeHttp2ConnectionPool::operator =(JsonV
   if(jsonValue.ValueExists("maxRequests"))
   {
     m_maxRequests = jsonValue.GetInteger("maxRequests");
-
     m_maxRequestsHasBeenSet = true;
   }
-
   return *this;
 }
 

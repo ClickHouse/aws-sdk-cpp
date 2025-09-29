@@ -20,19 +20,7 @@ namespace CloudSearch
 namespace Model
 {
 
-DomainEndpointOptions::DomainEndpointOptions() : 
-    m_enforceHTTPS(false),
-    m_enforceHTTPSHasBeenSet(false),
-    m_tLSSecurityPolicy(TLSSecurityPolicy::NOT_SET),
-    m_tLSSecurityPolicyHasBeenSet(false)
-{
-}
-
-DomainEndpointOptions::DomainEndpointOptions(const XmlNode& xmlNode) : 
-    m_enforceHTTPS(false),
-    m_enforceHTTPSHasBeenSet(false),
-    m_tLSSecurityPolicy(TLSSecurityPolicy::NOT_SET),
-    m_tLSSecurityPolicyHasBeenSet(false)
+DomainEndpointOptions::DomainEndpointOptions(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -52,7 +40,7 @@ DomainEndpointOptions& DomainEndpointOptions::operator =(const XmlNode& xmlNode)
     XmlNode tLSSecurityPolicyNode = resultNode.FirstChild("TLSSecurityPolicy");
     if(!tLSSecurityPolicyNode.IsNull())
     {
-      m_tLSSecurityPolicy = TLSSecurityPolicyMapper::GetTLSSecurityPolicyForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(tLSSecurityPolicyNode.GetText()).c_str()).c_str());
+      m_tLSSecurityPolicy = TLSSecurityPolicyMapper::GetTLSSecurityPolicyForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(tLSSecurityPolicyNode.GetText()).c_str()));
       m_tLSSecurityPolicyHasBeenSet = true;
     }
   }
@@ -69,7 +57,7 @@ void DomainEndpointOptions::OutputToStream(Aws::OStream& oStream, const char* lo
 
   if(m_tLSSecurityPolicyHasBeenSet)
   {
-      oStream << location << index << locationValue << ".TLSSecurityPolicy=" << TLSSecurityPolicyMapper::GetNameForTLSSecurityPolicy(m_tLSSecurityPolicy) << "&";
+      oStream << location << index << locationValue << ".TLSSecurityPolicy=" << StringUtils::URLEncode(TLSSecurityPolicyMapper::GetNameForTLSSecurityPolicy(m_tLSSecurityPolicy)) << "&";
   }
 
 }
@@ -82,7 +70,7 @@ void DomainEndpointOptions::OutputToStream(Aws::OStream& oStream, const char* lo
   }
   if(m_tLSSecurityPolicyHasBeenSet)
   {
-      oStream << location << ".TLSSecurityPolicy=" << TLSSecurityPolicyMapper::GetNameForTLSSecurityPolicy(m_tLSSecurityPolicy) << "&";
+      oStream << location << ".TLSSecurityPolicy=" << StringUtils::URLEncode(TLSSecurityPolicyMapper::GetNameForTLSSecurityPolicy(m_tLSSecurityPolicy)) << "&";
   }
 }
 

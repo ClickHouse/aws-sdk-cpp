@@ -30,95 +30,53 @@ namespace Model
   class NodePropertiesSummary
   {
   public:
-    AWS_BATCH_API NodePropertiesSummary();
+    AWS_BATCH_API NodePropertiesSummary() = default;
     AWS_BATCH_API NodePropertiesSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_BATCH_API NodePropertiesSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_BATCH_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specifies whether the current node is the main node for a multi-node parallel
      * job.</p>
      */
-    inline bool GetIsMainNode() const{ return m_isMainNode; }
-
-    /**
-     * <p>Specifies whether the current node is the main node for a multi-node parallel
-     * job.</p>
-     */
+    inline bool GetIsMainNode() const { return m_isMainNode; }
     inline bool IsMainNodeHasBeenSet() const { return m_isMainNodeHasBeenSet; }
-
-    /**
-     * <p>Specifies whether the current node is the main node for a multi-node parallel
-     * job.</p>
-     */
     inline void SetIsMainNode(bool value) { m_isMainNodeHasBeenSet = true; m_isMainNode = value; }
-
-    /**
-     * <p>Specifies whether the current node is the main node for a multi-node parallel
-     * job.</p>
-     */
     inline NodePropertiesSummary& WithIsMainNode(bool value) { SetIsMainNode(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The number of nodes that are associated with a multi-node parallel job.</p>
      */
-    inline int GetNumNodes() const{ return m_numNodes; }
-
-    /**
-     * <p>The number of nodes that are associated with a multi-node parallel job.</p>
-     */
+    inline int GetNumNodes() const { return m_numNodes; }
     inline bool NumNodesHasBeenSet() const { return m_numNodesHasBeenSet; }
-
-    /**
-     * <p>The number of nodes that are associated with a multi-node parallel job.</p>
-     */
     inline void SetNumNodes(int value) { m_numNodesHasBeenSet = true; m_numNodes = value; }
-
-    /**
-     * <p>The number of nodes that are associated with a multi-node parallel job.</p>
-     */
     inline NodePropertiesSummary& WithNumNodes(int value) { SetNumNodes(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The node index for the node. Node index numbering begins at zero. This index
      * is also available on the node with the <code>AWS_BATCH_JOB_NODE_INDEX</code>
      * environment variable.</p>
      */
-    inline int GetNodeIndex() const{ return m_nodeIndex; }
-
-    /**
-     * <p>The node index for the node. Node index numbering begins at zero. This index
-     * is also available on the node with the <code>AWS_BATCH_JOB_NODE_INDEX</code>
-     * environment variable.</p>
-     */
+    inline int GetNodeIndex() const { return m_nodeIndex; }
     inline bool NodeIndexHasBeenSet() const { return m_nodeIndexHasBeenSet; }
-
-    /**
-     * <p>The node index for the node. Node index numbering begins at zero. This index
-     * is also available on the node with the <code>AWS_BATCH_JOB_NODE_INDEX</code>
-     * environment variable.</p>
-     */
     inline void SetNodeIndex(int value) { m_nodeIndexHasBeenSet = true; m_nodeIndex = value; }
-
-    /**
-     * <p>The node index for the node. Node index numbering begins at zero. This index
-     * is also available on the node with the <code>AWS_BATCH_JOB_NODE_INDEX</code>
-     * environment variable.</p>
-     */
     inline NodePropertiesSummary& WithNodeIndex(int value) { SetNodeIndex(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_isMainNode;
+    bool m_isMainNode{false};
     bool m_isMainNodeHasBeenSet = false;
 
-    int m_numNodes;
+    int m_numNodes{0};
     bool m_numNodesHasBeenSet = false;
 
-    int m_nodeIndex;
+    int m_nodeIndex{0};
     bool m_nodeIndexHasBeenSet = false;
   };
 

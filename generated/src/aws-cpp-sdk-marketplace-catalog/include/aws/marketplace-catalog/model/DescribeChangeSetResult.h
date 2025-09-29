@@ -6,6 +6,7 @@
 #pragma once
 #include <aws/marketplace-catalog/MarketplaceCatalog_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/marketplace-catalog/model/Intent.h>
 #include <aws/marketplace-catalog/model/ChangeStatus.h>
 #include <aws/marketplace-catalog/model/FailureCode.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
@@ -31,259 +32,92 @@ namespace Model
   class DescribeChangeSetResult
   {
   public:
-    AWS_MARKETPLACECATALOG_API DescribeChangeSetResult();
+    AWS_MARKETPLACECATALOG_API DescribeChangeSetResult() = default;
     AWS_MARKETPLACECATALOG_API DescribeChangeSetResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_MARKETPLACECATALOG_API DescribeChangeSetResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Required. The unique identifier for the change set referenced in this
      * request.</p>
      */
-    inline const Aws::String& GetChangeSetId() const{ return m_changeSetId; }
+    inline const Aws::String& GetChangeSetId() const { return m_changeSetId; }
+    template<typename ChangeSetIdT = Aws::String>
+    void SetChangeSetId(ChangeSetIdT&& value) { m_changeSetIdHasBeenSet = true; m_changeSetId = std::forward<ChangeSetIdT>(value); }
+    template<typename ChangeSetIdT = Aws::String>
+    DescribeChangeSetResult& WithChangeSetId(ChangeSetIdT&& value) { SetChangeSetId(std::forward<ChangeSetIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Required. The unique identifier for the change set referenced in this
-     * request.</p>
-     */
-    inline void SetChangeSetId(const Aws::String& value) { m_changeSetId = value; }
-
-    /**
-     * <p>Required. The unique identifier for the change set referenced in this
-     * request.</p>
-     */
-    inline void SetChangeSetId(Aws::String&& value) { m_changeSetId = std::move(value); }
-
-    /**
-     * <p>Required. The unique identifier for the change set referenced in this
-     * request.</p>
-     */
-    inline void SetChangeSetId(const char* value) { m_changeSetId.assign(value); }
-
-    /**
-     * <p>Required. The unique identifier for the change set referenced in this
-     * request.</p>
-     */
-    inline DescribeChangeSetResult& WithChangeSetId(const Aws::String& value) { SetChangeSetId(value); return *this;}
-
-    /**
-     * <p>Required. The unique identifier for the change set referenced in this
-     * request.</p>
-     */
-    inline DescribeChangeSetResult& WithChangeSetId(Aws::String&& value) { SetChangeSetId(std::move(value)); return *this;}
-
-    /**
-     * <p>Required. The unique identifier for the change set referenced in this
-     * request.</p>
-     */
-    inline DescribeChangeSetResult& WithChangeSetId(const char* value) { SetChangeSetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN associated with the unique identifier for the change set referenced
      * in this request.</p>
      */
-    inline const Aws::String& GetChangeSetArn() const{ return m_changeSetArn; }
+    inline const Aws::String& GetChangeSetArn() const { return m_changeSetArn; }
+    template<typename ChangeSetArnT = Aws::String>
+    void SetChangeSetArn(ChangeSetArnT&& value) { m_changeSetArnHasBeenSet = true; m_changeSetArn = std::forward<ChangeSetArnT>(value); }
+    template<typename ChangeSetArnT = Aws::String>
+    DescribeChangeSetResult& WithChangeSetArn(ChangeSetArnT&& value) { SetChangeSetArn(std::forward<ChangeSetArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN associated with the unique identifier for the change set referenced
-     * in this request.</p>
-     */
-    inline void SetChangeSetArn(const Aws::String& value) { m_changeSetArn = value; }
-
-    /**
-     * <p>The ARN associated with the unique identifier for the change set referenced
-     * in this request.</p>
-     */
-    inline void SetChangeSetArn(Aws::String&& value) { m_changeSetArn = std::move(value); }
-
-    /**
-     * <p>The ARN associated with the unique identifier for the change set referenced
-     * in this request.</p>
-     */
-    inline void SetChangeSetArn(const char* value) { m_changeSetArn.assign(value); }
-
-    /**
-     * <p>The ARN associated with the unique identifier for the change set referenced
-     * in this request.</p>
-     */
-    inline DescribeChangeSetResult& WithChangeSetArn(const Aws::String& value) { SetChangeSetArn(value); return *this;}
-
-    /**
-     * <p>The ARN associated with the unique identifier for the change set referenced
-     * in this request.</p>
-     */
-    inline DescribeChangeSetResult& WithChangeSetArn(Aws::String&& value) { SetChangeSetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN associated with the unique identifier for the change set referenced
-     * in this request.</p>
-     */
-    inline DescribeChangeSetResult& WithChangeSetArn(const char* value) { SetChangeSetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The optional name provided in the <code>StartChangeSet</code> request. If you
      * do not provide a name, one is set by default.</p>
      */
-    inline const Aws::String& GetChangeSetName() const{ return m_changeSetName; }
+    inline const Aws::String& GetChangeSetName() const { return m_changeSetName; }
+    template<typename ChangeSetNameT = Aws::String>
+    void SetChangeSetName(ChangeSetNameT&& value) { m_changeSetNameHasBeenSet = true; m_changeSetName = std::forward<ChangeSetNameT>(value); }
+    template<typename ChangeSetNameT = Aws::String>
+    DescribeChangeSetResult& WithChangeSetName(ChangeSetNameT&& value) { SetChangeSetName(std::forward<ChangeSetNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The optional name provided in the <code>StartChangeSet</code> request. If you
-     * do not provide a name, one is set by default.</p>
+     * <p>The optional intent provided in the <code>StartChangeSet</code> request. If
+     * you do not provide an intent, <code>APPLY</code> is set by default.</p>
      */
-    inline void SetChangeSetName(const Aws::String& value) { m_changeSetName = value; }
+    inline Intent GetIntent() const { return m_intent; }
+    inline void SetIntent(Intent value) { m_intentHasBeenSet = true; m_intent = value; }
+    inline DescribeChangeSetResult& WithIntent(Intent value) { SetIntent(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The optional name provided in the <code>StartChangeSet</code> request. If you
-     * do not provide a name, one is set by default.</p>
-     */
-    inline void SetChangeSetName(Aws::String&& value) { m_changeSetName = std::move(value); }
-
-    /**
-     * <p>The optional name provided in the <code>StartChangeSet</code> request. If you
-     * do not provide a name, one is set by default.</p>
-     */
-    inline void SetChangeSetName(const char* value) { m_changeSetName.assign(value); }
-
-    /**
-     * <p>The optional name provided in the <code>StartChangeSet</code> request. If you
-     * do not provide a name, one is set by default.</p>
-     */
-    inline DescribeChangeSetResult& WithChangeSetName(const Aws::String& value) { SetChangeSetName(value); return *this;}
-
-    /**
-     * <p>The optional name provided in the <code>StartChangeSet</code> request. If you
-     * do not provide a name, one is set by default.</p>
-     */
-    inline DescribeChangeSetResult& WithChangeSetName(Aws::String&& value) { SetChangeSetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The optional name provided in the <code>StartChangeSet</code> request. If you
-     * do not provide a name, one is set by default.</p>
-     */
-    inline DescribeChangeSetResult& WithChangeSetName(const char* value) { SetChangeSetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time, in ISO 8601 format (2018-02-27T13:45:22Z), the request
      * started. </p>
      */
-    inline const Aws::String& GetStartTime() const{ return m_startTime; }
+    inline const Aws::String& GetStartTime() const { return m_startTime; }
+    template<typename StartTimeT = Aws::String>
+    void SetStartTime(StartTimeT&& value) { m_startTimeHasBeenSet = true; m_startTime = std::forward<StartTimeT>(value); }
+    template<typename StartTimeT = Aws::String>
+    DescribeChangeSetResult& WithStartTime(StartTimeT&& value) { SetStartTime(std::forward<StartTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time, in ISO 8601 format (2018-02-27T13:45:22Z), the request
-     * started. </p>
-     */
-    inline void SetStartTime(const Aws::String& value) { m_startTime = value; }
-
-    /**
-     * <p>The date and time, in ISO 8601 format (2018-02-27T13:45:22Z), the request
-     * started. </p>
-     */
-    inline void SetStartTime(Aws::String&& value) { m_startTime = std::move(value); }
-
-    /**
-     * <p>The date and time, in ISO 8601 format (2018-02-27T13:45:22Z), the request
-     * started. </p>
-     */
-    inline void SetStartTime(const char* value) { m_startTime.assign(value); }
-
-    /**
-     * <p>The date and time, in ISO 8601 format (2018-02-27T13:45:22Z), the request
-     * started. </p>
-     */
-    inline DescribeChangeSetResult& WithStartTime(const Aws::String& value) { SetStartTime(value); return *this;}
-
-    /**
-     * <p>The date and time, in ISO 8601 format (2018-02-27T13:45:22Z), the request
-     * started. </p>
-     */
-    inline DescribeChangeSetResult& WithStartTime(Aws::String&& value) { SetStartTime(std::move(value)); return *this;}
-
-    /**
-     * <p>The date and time, in ISO 8601 format (2018-02-27T13:45:22Z), the request
-     * started. </p>
-     */
-    inline DescribeChangeSetResult& WithStartTime(const char* value) { SetStartTime(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time, in ISO 8601 format (2018-02-27T13:45:22Z), the request
      * transitioned to a terminal state. The change cannot transition to a different
      * state. Null if the request is not in a terminal state. </p>
      */
-    inline const Aws::String& GetEndTime() const{ return m_endTime; }
+    inline const Aws::String& GetEndTime() const { return m_endTime; }
+    template<typename EndTimeT = Aws::String>
+    void SetEndTime(EndTimeT&& value) { m_endTimeHasBeenSet = true; m_endTime = std::forward<EndTimeT>(value); }
+    template<typename EndTimeT = Aws::String>
+    DescribeChangeSetResult& WithEndTime(EndTimeT&& value) { SetEndTime(std::forward<EndTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time, in ISO 8601 format (2018-02-27T13:45:22Z), the request
-     * transitioned to a terminal state. The change cannot transition to a different
-     * state. Null if the request is not in a terminal state. </p>
-     */
-    inline void SetEndTime(const Aws::String& value) { m_endTime = value; }
-
-    /**
-     * <p>The date and time, in ISO 8601 format (2018-02-27T13:45:22Z), the request
-     * transitioned to a terminal state. The change cannot transition to a different
-     * state. Null if the request is not in a terminal state. </p>
-     */
-    inline void SetEndTime(Aws::String&& value) { m_endTime = std::move(value); }
-
-    /**
-     * <p>The date and time, in ISO 8601 format (2018-02-27T13:45:22Z), the request
-     * transitioned to a terminal state. The change cannot transition to a different
-     * state. Null if the request is not in a terminal state. </p>
-     */
-    inline void SetEndTime(const char* value) { m_endTime.assign(value); }
-
-    /**
-     * <p>The date and time, in ISO 8601 format (2018-02-27T13:45:22Z), the request
-     * transitioned to a terminal state. The change cannot transition to a different
-     * state. Null if the request is not in a terminal state. </p>
-     */
-    inline DescribeChangeSetResult& WithEndTime(const Aws::String& value) { SetEndTime(value); return *this;}
-
-    /**
-     * <p>The date and time, in ISO 8601 format (2018-02-27T13:45:22Z), the request
-     * transitioned to a terminal state. The change cannot transition to a different
-     * state. Null if the request is not in a terminal state. </p>
-     */
-    inline DescribeChangeSetResult& WithEndTime(Aws::String&& value) { SetEndTime(std::move(value)); return *this;}
-
-    /**
-     * <p>The date and time, in ISO 8601 format (2018-02-27T13:45:22Z), the request
-     * transitioned to a terminal state. The change cannot transition to a different
-     * state. Null if the request is not in a terminal state. </p>
-     */
-    inline DescribeChangeSetResult& WithEndTime(const char* value) { SetEndTime(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the change request.</p>
      */
-    inline const ChangeStatus& GetStatus() const{ return m_status; }
+    inline ChangeStatus GetStatus() const { return m_status; }
+    inline void SetStatus(ChangeStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline DescribeChangeSetResult& WithStatus(ChangeStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the change request.</p>
-     */
-    inline void SetStatus(const ChangeStatus& value) { m_status = value; }
-
-    /**
-     * <p>The status of the change request.</p>
-     */
-    inline void SetStatus(ChangeStatus&& value) { m_status = std::move(value); }
-
-    /**
-     * <p>The status of the change request.</p>
-     */
-    inline DescribeChangeSetResult& WithStatus(const ChangeStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the change request.</p>
-     */
-    inline DescribeChangeSetResult& WithStatus(ChangeStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Returned if the change set is in <code>FAILED</code> status. Can be either
      * <code>CLIENT_ERROR</code>, which means that there are issues with the request
@@ -291,166 +125,78 @@ namespace Model
      * means that there is a problem in the system, and you should retry your
      * request.</p>
      */
-    inline const FailureCode& GetFailureCode() const{ return m_failureCode; }
+    inline FailureCode GetFailureCode() const { return m_failureCode; }
+    inline void SetFailureCode(FailureCode value) { m_failureCodeHasBeenSet = true; m_failureCode = value; }
+    inline DescribeChangeSetResult& WithFailureCode(FailureCode value) { SetFailureCode(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Returned if the change set is in <code>FAILED</code> status. Can be either
-     * <code>CLIENT_ERROR</code>, which means that there are issues with the request
-     * (see the <code>ErrorDetailList</code>), or <code>SERVER_FAULT</code>, which
-     * means that there is a problem in the system, and you should retry your
-     * request.</p>
-     */
-    inline void SetFailureCode(const FailureCode& value) { m_failureCode = value; }
-
-    /**
-     * <p>Returned if the change set is in <code>FAILED</code> status. Can be either
-     * <code>CLIENT_ERROR</code>, which means that there are issues with the request
-     * (see the <code>ErrorDetailList</code>), or <code>SERVER_FAULT</code>, which
-     * means that there is a problem in the system, and you should retry your
-     * request.</p>
-     */
-    inline void SetFailureCode(FailureCode&& value) { m_failureCode = std::move(value); }
-
-    /**
-     * <p>Returned if the change set is in <code>FAILED</code> status. Can be either
-     * <code>CLIENT_ERROR</code>, which means that there are issues with the request
-     * (see the <code>ErrorDetailList</code>), or <code>SERVER_FAULT</code>, which
-     * means that there is a problem in the system, and you should retry your
-     * request.</p>
-     */
-    inline DescribeChangeSetResult& WithFailureCode(const FailureCode& value) { SetFailureCode(value); return *this;}
-
-    /**
-     * <p>Returned if the change set is in <code>FAILED</code> status. Can be either
-     * <code>CLIENT_ERROR</code>, which means that there are issues with the request
-     * (see the <code>ErrorDetailList</code>), or <code>SERVER_FAULT</code>, which
-     * means that there is a problem in the system, and you should retry your
-     * request.</p>
-     */
-    inline DescribeChangeSetResult& WithFailureCode(FailureCode&& value) { SetFailureCode(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Returned if there is a failure on the change set, but that failure is not
      * related to any of the changes in the request.</p>
      */
-    inline const Aws::String& GetFailureDescription() const{ return m_failureDescription; }
+    inline const Aws::String& GetFailureDescription() const { return m_failureDescription; }
+    template<typename FailureDescriptionT = Aws::String>
+    void SetFailureDescription(FailureDescriptionT&& value) { m_failureDescriptionHasBeenSet = true; m_failureDescription = std::forward<FailureDescriptionT>(value); }
+    template<typename FailureDescriptionT = Aws::String>
+    DescribeChangeSetResult& WithFailureDescription(FailureDescriptionT&& value) { SetFailureDescription(std::forward<FailureDescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Returned if there is a failure on the change set, but that failure is not
-     * related to any of the changes in the request.</p>
-     */
-    inline void SetFailureDescription(const Aws::String& value) { m_failureDescription = value; }
-
-    /**
-     * <p>Returned if there is a failure on the change set, but that failure is not
-     * related to any of the changes in the request.</p>
-     */
-    inline void SetFailureDescription(Aws::String&& value) { m_failureDescription = std::move(value); }
-
-    /**
-     * <p>Returned if there is a failure on the change set, but that failure is not
-     * related to any of the changes in the request.</p>
-     */
-    inline void SetFailureDescription(const char* value) { m_failureDescription.assign(value); }
-
-    /**
-     * <p>Returned if there is a failure on the change set, but that failure is not
-     * related to any of the changes in the request.</p>
-     */
-    inline DescribeChangeSetResult& WithFailureDescription(const Aws::String& value) { SetFailureDescription(value); return *this;}
-
-    /**
-     * <p>Returned if there is a failure on the change set, but that failure is not
-     * related to any of the changes in the request.</p>
-     */
-    inline DescribeChangeSetResult& WithFailureDescription(Aws::String&& value) { SetFailureDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>Returned if there is a failure on the change set, but that failure is not
-     * related to any of the changes in the request.</p>
-     */
-    inline DescribeChangeSetResult& WithFailureDescription(const char* value) { SetFailureDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An array of <code>ChangeSummary</code> objects.</p>
      */
-    inline const Aws::Vector<ChangeSummary>& GetChangeSet() const{ return m_changeSet; }
+    inline const Aws::Vector<ChangeSummary>& GetChangeSet() const { return m_changeSet; }
+    template<typename ChangeSetT = Aws::Vector<ChangeSummary>>
+    void SetChangeSet(ChangeSetT&& value) { m_changeSetHasBeenSet = true; m_changeSet = std::forward<ChangeSetT>(value); }
+    template<typename ChangeSetT = Aws::Vector<ChangeSummary>>
+    DescribeChangeSetResult& WithChangeSet(ChangeSetT&& value) { SetChangeSet(std::forward<ChangeSetT>(value)); return *this;}
+    template<typename ChangeSetT = ChangeSummary>
+    DescribeChangeSetResult& AddChangeSet(ChangeSetT&& value) { m_changeSetHasBeenSet = true; m_changeSet.emplace_back(std::forward<ChangeSetT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of <code>ChangeSummary</code> objects.</p>
-     */
-    inline void SetChangeSet(const Aws::Vector<ChangeSummary>& value) { m_changeSet = value; }
-
-    /**
-     * <p>An array of <code>ChangeSummary</code> objects.</p>
-     */
-    inline void SetChangeSet(Aws::Vector<ChangeSummary>&& value) { m_changeSet = std::move(value); }
-
-    /**
-     * <p>An array of <code>ChangeSummary</code> objects.</p>
-     */
-    inline DescribeChangeSetResult& WithChangeSet(const Aws::Vector<ChangeSummary>& value) { SetChangeSet(value); return *this;}
-
-    /**
-     * <p>An array of <code>ChangeSummary</code> objects.</p>
-     */
-    inline DescribeChangeSetResult& WithChangeSet(Aws::Vector<ChangeSummary>&& value) { SetChangeSet(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of <code>ChangeSummary</code> objects.</p>
-     */
-    inline DescribeChangeSetResult& AddChangeSet(const ChangeSummary& value) { m_changeSet.push_back(value); return *this; }
-
-    /**
-     * <p>An array of <code>ChangeSummary</code> objects.</p>
-     */
-    inline DescribeChangeSetResult& AddChangeSet(ChangeSummary&& value) { m_changeSet.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeChangeSetResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeChangeSetResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeChangeSetResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeChangeSetResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_changeSetId;
+    bool m_changeSetIdHasBeenSet = false;
 
     Aws::String m_changeSetArn;
+    bool m_changeSetArnHasBeenSet = false;
 
     Aws::String m_changeSetName;
+    bool m_changeSetNameHasBeenSet = false;
+
+    Intent m_intent{Intent::NOT_SET};
+    bool m_intentHasBeenSet = false;
 
     Aws::String m_startTime;
+    bool m_startTimeHasBeenSet = false;
 
     Aws::String m_endTime;
+    bool m_endTimeHasBeenSet = false;
 
-    ChangeStatus m_status;
+    ChangeStatus m_status{ChangeStatus::NOT_SET};
+    bool m_statusHasBeenSet = false;
 
-    FailureCode m_failureCode;
+    FailureCode m_failureCode{FailureCode::NOT_SET};
+    bool m_failureCodeHasBeenSet = false;
 
     Aws::String m_failureDescription;
+    bool m_failureDescriptionHasBeenSet = false;
 
     Aws::Vector<ChangeSummary> m_changeSet;
+    bool m_changeSetHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

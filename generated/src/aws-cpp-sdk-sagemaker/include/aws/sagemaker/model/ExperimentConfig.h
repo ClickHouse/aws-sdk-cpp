@@ -38,191 +38,61 @@ namespace Model
   class ExperimentConfig
   {
   public:
-    AWS_SAGEMAKER_API ExperimentConfig();
+    AWS_SAGEMAKER_API ExperimentConfig() = default;
     AWS_SAGEMAKER_API ExperimentConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API ExperimentConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of an existing experiment to associate with the trial component.</p>
      */
-    inline const Aws::String& GetExperimentName() const{ return m_experimentName; }
-
-    /**
-     * <p>The name of an existing experiment to associate with the trial component.</p>
-     */
+    inline const Aws::String& GetExperimentName() const { return m_experimentName; }
     inline bool ExperimentNameHasBeenSet() const { return m_experimentNameHasBeenSet; }
+    template<typename ExperimentNameT = Aws::String>
+    void SetExperimentName(ExperimentNameT&& value) { m_experimentNameHasBeenSet = true; m_experimentName = std::forward<ExperimentNameT>(value); }
+    template<typename ExperimentNameT = Aws::String>
+    ExperimentConfig& WithExperimentName(ExperimentNameT&& value) { SetExperimentName(std::forward<ExperimentNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of an existing experiment to associate with the trial component.</p>
-     */
-    inline void SetExperimentName(const Aws::String& value) { m_experimentNameHasBeenSet = true; m_experimentName = value; }
-
-    /**
-     * <p>The name of an existing experiment to associate with the trial component.</p>
-     */
-    inline void SetExperimentName(Aws::String&& value) { m_experimentNameHasBeenSet = true; m_experimentName = std::move(value); }
-
-    /**
-     * <p>The name of an existing experiment to associate with the trial component.</p>
-     */
-    inline void SetExperimentName(const char* value) { m_experimentNameHasBeenSet = true; m_experimentName.assign(value); }
-
-    /**
-     * <p>The name of an existing experiment to associate with the trial component.</p>
-     */
-    inline ExperimentConfig& WithExperimentName(const Aws::String& value) { SetExperimentName(value); return *this;}
-
-    /**
-     * <p>The name of an existing experiment to associate with the trial component.</p>
-     */
-    inline ExperimentConfig& WithExperimentName(Aws::String&& value) { SetExperimentName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of an existing experiment to associate with the trial component.</p>
-     */
-    inline ExperimentConfig& WithExperimentName(const char* value) { SetExperimentName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of an existing trial to associate the trial component with. If not
      * specified, a new trial is created.</p>
      */
-    inline const Aws::String& GetTrialName() const{ return m_trialName; }
-
-    /**
-     * <p>The name of an existing trial to associate the trial component with. If not
-     * specified, a new trial is created.</p>
-     */
+    inline const Aws::String& GetTrialName() const { return m_trialName; }
     inline bool TrialNameHasBeenSet() const { return m_trialNameHasBeenSet; }
+    template<typename TrialNameT = Aws::String>
+    void SetTrialName(TrialNameT&& value) { m_trialNameHasBeenSet = true; m_trialName = std::forward<TrialNameT>(value); }
+    template<typename TrialNameT = Aws::String>
+    ExperimentConfig& WithTrialName(TrialNameT&& value) { SetTrialName(std::forward<TrialNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of an existing trial to associate the trial component with. If not
-     * specified, a new trial is created.</p>
-     */
-    inline void SetTrialName(const Aws::String& value) { m_trialNameHasBeenSet = true; m_trialName = value; }
-
-    /**
-     * <p>The name of an existing trial to associate the trial component with. If not
-     * specified, a new trial is created.</p>
-     */
-    inline void SetTrialName(Aws::String&& value) { m_trialNameHasBeenSet = true; m_trialName = std::move(value); }
-
-    /**
-     * <p>The name of an existing trial to associate the trial component with. If not
-     * specified, a new trial is created.</p>
-     */
-    inline void SetTrialName(const char* value) { m_trialNameHasBeenSet = true; m_trialName.assign(value); }
-
-    /**
-     * <p>The name of an existing trial to associate the trial component with. If not
-     * specified, a new trial is created.</p>
-     */
-    inline ExperimentConfig& WithTrialName(const Aws::String& value) { SetTrialName(value); return *this;}
-
-    /**
-     * <p>The name of an existing trial to associate the trial component with. If not
-     * specified, a new trial is created.</p>
-     */
-    inline ExperimentConfig& WithTrialName(Aws::String&& value) { SetTrialName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of an existing trial to associate the trial component with. If not
-     * specified, a new trial is created.</p>
-     */
-    inline ExperimentConfig& WithTrialName(const char* value) { SetTrialName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The display name for the trial component. If this key isn't specified, the
      * display name is the trial component name.</p>
      */
-    inline const Aws::String& GetTrialComponentDisplayName() const{ return m_trialComponentDisplayName; }
-
-    /**
-     * <p>The display name for the trial component. If this key isn't specified, the
-     * display name is the trial component name.</p>
-     */
+    inline const Aws::String& GetTrialComponentDisplayName() const { return m_trialComponentDisplayName; }
     inline bool TrialComponentDisplayNameHasBeenSet() const { return m_trialComponentDisplayNameHasBeenSet; }
+    template<typename TrialComponentDisplayNameT = Aws::String>
+    void SetTrialComponentDisplayName(TrialComponentDisplayNameT&& value) { m_trialComponentDisplayNameHasBeenSet = true; m_trialComponentDisplayName = std::forward<TrialComponentDisplayNameT>(value); }
+    template<typename TrialComponentDisplayNameT = Aws::String>
+    ExperimentConfig& WithTrialComponentDisplayName(TrialComponentDisplayNameT&& value) { SetTrialComponentDisplayName(std::forward<TrialComponentDisplayNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The display name for the trial component. If this key isn't specified, the
-     * display name is the trial component name.</p>
-     */
-    inline void SetTrialComponentDisplayName(const Aws::String& value) { m_trialComponentDisplayNameHasBeenSet = true; m_trialComponentDisplayName = value; }
-
-    /**
-     * <p>The display name for the trial component. If this key isn't specified, the
-     * display name is the trial component name.</p>
-     */
-    inline void SetTrialComponentDisplayName(Aws::String&& value) { m_trialComponentDisplayNameHasBeenSet = true; m_trialComponentDisplayName = std::move(value); }
-
-    /**
-     * <p>The display name for the trial component. If this key isn't specified, the
-     * display name is the trial component name.</p>
-     */
-    inline void SetTrialComponentDisplayName(const char* value) { m_trialComponentDisplayNameHasBeenSet = true; m_trialComponentDisplayName.assign(value); }
-
-    /**
-     * <p>The display name for the trial component. If this key isn't specified, the
-     * display name is the trial component name.</p>
-     */
-    inline ExperimentConfig& WithTrialComponentDisplayName(const Aws::String& value) { SetTrialComponentDisplayName(value); return *this;}
-
-    /**
-     * <p>The display name for the trial component. If this key isn't specified, the
-     * display name is the trial component name.</p>
-     */
-    inline ExperimentConfig& WithTrialComponentDisplayName(Aws::String&& value) { SetTrialComponentDisplayName(std::move(value)); return *this;}
-
-    /**
-     * <p>The display name for the trial component. If this key isn't specified, the
-     * display name is the trial component name.</p>
-     */
-    inline ExperimentConfig& WithTrialComponentDisplayName(const char* value) { SetTrialComponentDisplayName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the experiment run to associate with the trial component.</p>
      */
-    inline const Aws::String& GetRunName() const{ return m_runName; }
-
-    /**
-     * <p>The name of the experiment run to associate with the trial component.</p>
-     */
+    inline const Aws::String& GetRunName() const { return m_runName; }
     inline bool RunNameHasBeenSet() const { return m_runNameHasBeenSet; }
-
-    /**
-     * <p>The name of the experiment run to associate with the trial component.</p>
-     */
-    inline void SetRunName(const Aws::String& value) { m_runNameHasBeenSet = true; m_runName = value; }
-
-    /**
-     * <p>The name of the experiment run to associate with the trial component.</p>
-     */
-    inline void SetRunName(Aws::String&& value) { m_runNameHasBeenSet = true; m_runName = std::move(value); }
-
-    /**
-     * <p>The name of the experiment run to associate with the trial component.</p>
-     */
-    inline void SetRunName(const char* value) { m_runNameHasBeenSet = true; m_runName.assign(value); }
-
-    /**
-     * <p>The name of the experiment run to associate with the trial component.</p>
-     */
-    inline ExperimentConfig& WithRunName(const Aws::String& value) { SetRunName(value); return *this;}
-
-    /**
-     * <p>The name of the experiment run to associate with the trial component.</p>
-     */
-    inline ExperimentConfig& WithRunName(Aws::String&& value) { SetRunName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the experiment run to associate with the trial component.</p>
-     */
-    inline ExperimentConfig& WithRunName(const char* value) { SetRunName(value); return *this;}
-
+    template<typename RunNameT = Aws::String>
+    void SetRunName(RunNameT&& value) { m_runNameHasBeenSet = true; m_runName = std::forward<RunNameT>(value); }
+    template<typename RunNameT = Aws::String>
+    ExperimentConfig& WithRunName(RunNameT&& value) { SetRunName(std::forward<RunNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_experimentName;

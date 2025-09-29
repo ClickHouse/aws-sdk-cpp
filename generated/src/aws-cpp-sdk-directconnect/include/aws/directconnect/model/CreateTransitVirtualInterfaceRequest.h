@@ -22,7 +22,7 @@ namespace Model
   class CreateTransitVirtualInterfaceRequest : public DirectConnectRequest
   {
   public:
-    AWS_DIRECTCONNECT_API CreateTransitVirtualInterfaceRequest();
+    AWS_DIRECTCONNECT_API CreateTransitVirtualInterfaceRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,77 +35,29 @@ namespace Model
     AWS_DIRECTCONNECT_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the connection.</p>
      */
-    inline const Aws::String& GetConnectionId() const{ return m_connectionId; }
-
-    /**
-     * <p>The ID of the connection.</p>
-     */
+    inline const Aws::String& GetConnectionId() const { return m_connectionId; }
     inline bool ConnectionIdHasBeenSet() const { return m_connectionIdHasBeenSet; }
+    template<typename ConnectionIdT = Aws::String>
+    void SetConnectionId(ConnectionIdT&& value) { m_connectionIdHasBeenSet = true; m_connectionId = std::forward<ConnectionIdT>(value); }
+    template<typename ConnectionIdT = Aws::String>
+    CreateTransitVirtualInterfaceRequest& WithConnectionId(ConnectionIdT&& value) { SetConnectionId(std::forward<ConnectionIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the connection.</p>
-     */
-    inline void SetConnectionId(const Aws::String& value) { m_connectionIdHasBeenSet = true; m_connectionId = value; }
-
-    /**
-     * <p>The ID of the connection.</p>
-     */
-    inline void SetConnectionId(Aws::String&& value) { m_connectionIdHasBeenSet = true; m_connectionId = std::move(value); }
-
-    /**
-     * <p>The ID of the connection.</p>
-     */
-    inline void SetConnectionId(const char* value) { m_connectionIdHasBeenSet = true; m_connectionId.assign(value); }
-
-    /**
-     * <p>The ID of the connection.</p>
-     */
-    inline CreateTransitVirtualInterfaceRequest& WithConnectionId(const Aws::String& value) { SetConnectionId(value); return *this;}
-
-    /**
-     * <p>The ID of the connection.</p>
-     */
-    inline CreateTransitVirtualInterfaceRequest& WithConnectionId(Aws::String&& value) { SetConnectionId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the connection.</p>
-     */
-    inline CreateTransitVirtualInterfaceRequest& WithConnectionId(const char* value) { SetConnectionId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about the transit virtual interface.</p>
      */
-    inline const NewTransitVirtualInterface& GetNewTransitVirtualInterface() const{ return m_newTransitVirtualInterface; }
-
-    /**
-     * <p>Information about the transit virtual interface.</p>
-     */
+    inline const NewTransitVirtualInterface& GetNewTransitVirtualInterface() const { return m_newTransitVirtualInterface; }
     inline bool NewTransitVirtualInterfaceHasBeenSet() const { return m_newTransitVirtualInterfaceHasBeenSet; }
-
-    /**
-     * <p>Information about the transit virtual interface.</p>
-     */
-    inline void SetNewTransitVirtualInterface(const NewTransitVirtualInterface& value) { m_newTransitVirtualInterfaceHasBeenSet = true; m_newTransitVirtualInterface = value; }
-
-    /**
-     * <p>Information about the transit virtual interface.</p>
-     */
-    inline void SetNewTransitVirtualInterface(NewTransitVirtualInterface&& value) { m_newTransitVirtualInterfaceHasBeenSet = true; m_newTransitVirtualInterface = std::move(value); }
-
-    /**
-     * <p>Information about the transit virtual interface.</p>
-     */
-    inline CreateTransitVirtualInterfaceRequest& WithNewTransitVirtualInterface(const NewTransitVirtualInterface& value) { SetNewTransitVirtualInterface(value); return *this;}
-
-    /**
-     * <p>Information about the transit virtual interface.</p>
-     */
-    inline CreateTransitVirtualInterfaceRequest& WithNewTransitVirtualInterface(NewTransitVirtualInterface&& value) { SetNewTransitVirtualInterface(std::move(value)); return *this;}
-
+    template<typename NewTransitVirtualInterfaceT = NewTransitVirtualInterface>
+    void SetNewTransitVirtualInterface(NewTransitVirtualInterfaceT&& value) { m_newTransitVirtualInterfaceHasBeenSet = true; m_newTransitVirtualInterface = std::forward<NewTransitVirtualInterfaceT>(value); }
+    template<typename NewTransitVirtualInterfaceT = NewTransitVirtualInterface>
+    CreateTransitVirtualInterfaceRequest& WithNewTransitVirtualInterface(NewTransitVirtualInterfaceT&& value) { SetNewTransitVirtualInterface(std::forward<NewTransitVirtualInterfaceT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_connectionId;

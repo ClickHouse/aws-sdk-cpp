@@ -17,10 +17,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-CreateApplicationResult::CreateApplicationResult()
-{
-}
-
 CreateApplicationResult::CreateApplicationResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
@@ -29,24 +25,23 @@ CreateApplicationResult::CreateApplicationResult(const Aws::AmazonWebServiceResu
 CreateApplicationResult& CreateApplicationResult::operator =(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   JsonView jsonValue = result.GetPayload().View();
-  if(jsonValue.ValueExists("applicationArn"))
-  {
-    m_applicationArn = jsonValue.GetString("applicationArn");
-
-  }
-
   if(jsonValue.ValueExists("applicationId"))
   {
     m_applicationId = jsonValue.GetString("applicationId");
-
+    m_applicationIdHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("applicationArn"))
+  {
+    m_applicationArn = jsonValue.GetString("applicationArn");
+    m_applicationArnHasBeenSet = true;
+  }
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

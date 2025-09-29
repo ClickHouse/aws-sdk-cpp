@@ -32,101 +32,36 @@ namespace Model
   class BuildNotDeleted
   {
   public:
-    AWS_CODEBUILD_API BuildNotDeleted();
+    AWS_CODEBUILD_API BuildNotDeleted() = default;
     AWS_CODEBUILD_API BuildNotDeleted(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEBUILD_API BuildNotDeleted& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEBUILD_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ID of the build that could not be successfully deleted.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The ID of the build that could not be successfully deleted.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    BuildNotDeleted& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the build that could not be successfully deleted.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The ID of the build that could not be successfully deleted.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The ID of the build that could not be successfully deleted.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The ID of the build that could not be successfully deleted.</p>
-     */
-    inline BuildNotDeleted& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The ID of the build that could not be successfully deleted.</p>
-     */
-    inline BuildNotDeleted& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the build that could not be successfully deleted.</p>
-     */
-    inline BuildNotDeleted& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Additional information about the build that could not be successfully
      * deleted.</p>
      */
-    inline const Aws::String& GetStatusCode() const{ return m_statusCode; }
-
-    /**
-     * <p>Additional information about the build that could not be successfully
-     * deleted.</p>
-     */
+    inline const Aws::String& GetStatusCode() const { return m_statusCode; }
     inline bool StatusCodeHasBeenSet() const { return m_statusCodeHasBeenSet; }
-
-    /**
-     * <p>Additional information about the build that could not be successfully
-     * deleted.</p>
-     */
-    inline void SetStatusCode(const Aws::String& value) { m_statusCodeHasBeenSet = true; m_statusCode = value; }
-
-    /**
-     * <p>Additional information about the build that could not be successfully
-     * deleted.</p>
-     */
-    inline void SetStatusCode(Aws::String&& value) { m_statusCodeHasBeenSet = true; m_statusCode = std::move(value); }
-
-    /**
-     * <p>Additional information about the build that could not be successfully
-     * deleted.</p>
-     */
-    inline void SetStatusCode(const char* value) { m_statusCodeHasBeenSet = true; m_statusCode.assign(value); }
-
-    /**
-     * <p>Additional information about the build that could not be successfully
-     * deleted.</p>
-     */
-    inline BuildNotDeleted& WithStatusCode(const Aws::String& value) { SetStatusCode(value); return *this;}
-
-    /**
-     * <p>Additional information about the build that could not be successfully
-     * deleted.</p>
-     */
-    inline BuildNotDeleted& WithStatusCode(Aws::String&& value) { SetStatusCode(std::move(value)); return *this;}
-
-    /**
-     * <p>Additional information about the build that could not be successfully
-     * deleted.</p>
-     */
-    inline BuildNotDeleted& WithStatusCode(const char* value) { SetStatusCode(value); return *this;}
-
+    template<typename StatusCodeT = Aws::String>
+    void SetStatusCode(StatusCodeT&& value) { m_statusCodeHasBeenSet = true; m_statusCode = std::forward<StatusCodeT>(value); }
+    template<typename StatusCodeT = Aws::String>
+    BuildNotDeleted& WithStatusCode(StatusCodeT&& value) { SetStatusCode(std::forward<StatusCodeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_id;

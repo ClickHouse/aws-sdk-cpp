@@ -37,69 +37,27 @@ namespace Model
   class Organization
   {
   public:
-    AWS_ORGANIZATIONS_API Organization();
+    AWS_ORGANIZATIONS_API Organization() = default;
     AWS_ORGANIZATIONS_API Organization(Aws::Utils::Json::JsonView jsonValue);
     AWS_ORGANIZATIONS_API Organization& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ORGANIZATIONS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The unique identifier (ID) of an organization.</p> <p>The <a
      * href="http://wikipedia.org/wiki/regex">regex pattern</a> for an organization ID
      * string requires "o-" followed by from 10 to 32 lowercase letters or digits.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The unique identifier (ID) of an organization.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for an organization ID
-     * string requires "o-" followed by from 10 to 32 lowercase letters or digits.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    Organization& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier (ID) of an organization.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for an organization ID
-     * string requires "o-" followed by from 10 to 32 lowercase letters or digits.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The unique identifier (ID) of an organization.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for an organization ID
-     * string requires "o-" followed by from 10 to 32 lowercase letters or digits.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The unique identifier (ID) of an organization.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for an organization ID
-     * string requires "o-" followed by from 10 to 32 lowercase letters or digits.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The unique identifier (ID) of an organization.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for an organization ID
-     * string requires "o-" followed by from 10 to 32 lowercase letters or digits.</p>
-     */
-    inline Organization& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The unique identifier (ID) of an organization.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for an organization ID
-     * string requires "o-" followed by from 10 to 32 lowercase letters or digits.</p>
-     */
-    inline Organization& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier (ID) of an organization.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for an organization ID
-     * string requires "o-" followed by from 10 to 32 lowercase letters or digits.</p>
-     */
-    inline Organization& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of an organization.</p> <p>For more
      * information about ARNs in Organizations, see <a
@@ -107,72 +65,15 @@ namespace Model
      * Formats Supported by Organizations</a> in the <i>Amazon Web Services Service
      * Authorization Reference</i>.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an organization.</p> <p>For more
-     * information about ARNs in Organizations, see <a
-     * href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsorganizations.html#awsorganizations-resources-for-iam-policies">ARN
-     * Formats Supported by Organizations</a> in the <i>Amazon Web Services Service
-     * Authorization Reference</i>.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    Organization& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of an organization.</p> <p>For more
-     * information about ARNs in Organizations, see <a
-     * href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsorganizations.html#awsorganizations-resources-for-iam-policies">ARN
-     * Formats Supported by Organizations</a> in the <i>Amazon Web Services Service
-     * Authorization Reference</i>.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an organization.</p> <p>For more
-     * information about ARNs in Organizations, see <a
-     * href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsorganizations.html#awsorganizations-resources-for-iam-policies">ARN
-     * Formats Supported by Organizations</a> in the <i>Amazon Web Services Service
-     * Authorization Reference</i>.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an organization.</p> <p>For more
-     * information about ARNs in Organizations, see <a
-     * href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsorganizations.html#awsorganizations-resources-for-iam-policies">ARN
-     * Formats Supported by Organizations</a> in the <i>Amazon Web Services Service
-     * Authorization Reference</i>.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an organization.</p> <p>For more
-     * information about ARNs in Organizations, see <a
-     * href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsorganizations.html#awsorganizations-resources-for-iam-policies">ARN
-     * Formats Supported by Organizations</a> in the <i>Amazon Web Services Service
-     * Authorization Reference</i>.</p>
-     */
-    inline Organization& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an organization.</p> <p>For more
-     * information about ARNs in Organizations, see <a
-     * href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsorganizations.html#awsorganizations-resources-for-iam-policies">ARN
-     * Formats Supported by Organizations</a> in the <i>Amazon Web Services Service
-     * Authorization Reference</i>.</p>
-     */
-    inline Organization& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an organization.</p> <p>For more
-     * information about ARNs in Organizations, see <a
-     * href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsorganizations.html#awsorganizations-resources-for-iam-policies">ARN
-     * Formats Supported by Organizations</a> in the <i>Amazon Web Services Service
-     * Authorization Reference</i>.</p>
-     */
-    inline Organization& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the functionality that currently is available to the organization.
      * If set to "ALL", then all features are enabled and policies can be applied to
@@ -182,64 +83,13 @@ namespace Model
      * all features in your organization</a> in the <i>Organizations User
      * Guide</i>.</p>
      */
-    inline const OrganizationFeatureSet& GetFeatureSet() const{ return m_featureSet; }
-
-    /**
-     * <p>Specifies the functionality that currently is available to the organization.
-     * If set to "ALL", then all features are enabled and policies can be applied to
-     * accounts in the organization. If set to "CONSOLIDATED_BILLING", then only
-     * consolidated billing functionality is available. For more information, see <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html">Enabling
-     * all features in your organization</a> in the <i>Organizations User
-     * Guide</i>.</p>
-     */
+    inline OrganizationFeatureSet GetFeatureSet() const { return m_featureSet; }
     inline bool FeatureSetHasBeenSet() const { return m_featureSetHasBeenSet; }
+    inline void SetFeatureSet(OrganizationFeatureSet value) { m_featureSetHasBeenSet = true; m_featureSet = value; }
+    inline Organization& WithFeatureSet(OrganizationFeatureSet value) { SetFeatureSet(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the functionality that currently is available to the organization.
-     * If set to "ALL", then all features are enabled and policies can be applied to
-     * accounts in the organization. If set to "CONSOLIDATED_BILLING", then only
-     * consolidated billing functionality is available. For more information, see <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html">Enabling
-     * all features in your organization</a> in the <i>Organizations User
-     * Guide</i>.</p>
-     */
-    inline void SetFeatureSet(const OrganizationFeatureSet& value) { m_featureSetHasBeenSet = true; m_featureSet = value; }
-
-    /**
-     * <p>Specifies the functionality that currently is available to the organization.
-     * If set to "ALL", then all features are enabled and policies can be applied to
-     * accounts in the organization. If set to "CONSOLIDATED_BILLING", then only
-     * consolidated billing functionality is available. For more information, see <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html">Enabling
-     * all features in your organization</a> in the <i>Organizations User
-     * Guide</i>.</p>
-     */
-    inline void SetFeatureSet(OrganizationFeatureSet&& value) { m_featureSetHasBeenSet = true; m_featureSet = std::move(value); }
-
-    /**
-     * <p>Specifies the functionality that currently is available to the organization.
-     * If set to "ALL", then all features are enabled and policies can be applied to
-     * accounts in the organization. If set to "CONSOLIDATED_BILLING", then only
-     * consolidated billing functionality is available. For more information, see <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html">Enabling
-     * all features in your organization</a> in the <i>Organizations User
-     * Guide</i>.</p>
-     */
-    inline Organization& WithFeatureSet(const OrganizationFeatureSet& value) { SetFeatureSet(value); return *this;}
-
-    /**
-     * <p>Specifies the functionality that currently is available to the organization.
-     * If set to "ALL", then all features are enabled and policies can be applied to
-     * accounts in the organization. If set to "CONSOLIDATED_BILLING", then only
-     * consolidated billing functionality is available. For more information, see <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html">Enabling
-     * all features in your organization</a> in the <i>Organizations User
-     * Guide</i>.</p>
-     */
-    inline Organization& WithFeatureSet(OrganizationFeatureSet&& value) { SetFeatureSet(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the account that is designated as the
      * management account for the organization.</p> <p>For more information about ARNs
@@ -248,249 +98,57 @@ namespace Model
      * Formats Supported by Organizations</a> in the <i>Amazon Web Services Service
      * Authorization Reference</i>.</p>
      */
-    inline const Aws::String& GetMasterAccountArn() const{ return m_masterAccountArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the account that is designated as the
-     * management account for the organization.</p> <p>For more information about ARNs
-     * in Organizations, see <a
-     * href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsorganizations.html#awsorganizations-resources-for-iam-policies">ARN
-     * Formats Supported by Organizations</a> in the <i>Amazon Web Services Service
-     * Authorization Reference</i>.</p>
-     */
+    inline const Aws::String& GetMasterAccountArn() const { return m_masterAccountArn; }
     inline bool MasterAccountArnHasBeenSet() const { return m_masterAccountArnHasBeenSet; }
+    template<typename MasterAccountArnT = Aws::String>
+    void SetMasterAccountArn(MasterAccountArnT&& value) { m_masterAccountArnHasBeenSet = true; m_masterAccountArn = std::forward<MasterAccountArnT>(value); }
+    template<typename MasterAccountArnT = Aws::String>
+    Organization& WithMasterAccountArn(MasterAccountArnT&& value) { SetMasterAccountArn(std::forward<MasterAccountArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the account that is designated as the
-     * management account for the organization.</p> <p>For more information about ARNs
-     * in Organizations, see <a
-     * href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsorganizations.html#awsorganizations-resources-for-iam-policies">ARN
-     * Formats Supported by Organizations</a> in the <i>Amazon Web Services Service
-     * Authorization Reference</i>.</p>
-     */
-    inline void SetMasterAccountArn(const Aws::String& value) { m_masterAccountArnHasBeenSet = true; m_masterAccountArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the account that is designated as the
-     * management account for the organization.</p> <p>For more information about ARNs
-     * in Organizations, see <a
-     * href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsorganizations.html#awsorganizations-resources-for-iam-policies">ARN
-     * Formats Supported by Organizations</a> in the <i>Amazon Web Services Service
-     * Authorization Reference</i>.</p>
-     */
-    inline void SetMasterAccountArn(Aws::String&& value) { m_masterAccountArnHasBeenSet = true; m_masterAccountArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the account that is designated as the
-     * management account for the organization.</p> <p>For more information about ARNs
-     * in Organizations, see <a
-     * href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsorganizations.html#awsorganizations-resources-for-iam-policies">ARN
-     * Formats Supported by Organizations</a> in the <i>Amazon Web Services Service
-     * Authorization Reference</i>.</p>
-     */
-    inline void SetMasterAccountArn(const char* value) { m_masterAccountArnHasBeenSet = true; m_masterAccountArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the account that is designated as the
-     * management account for the organization.</p> <p>For more information about ARNs
-     * in Organizations, see <a
-     * href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsorganizations.html#awsorganizations-resources-for-iam-policies">ARN
-     * Formats Supported by Organizations</a> in the <i>Amazon Web Services Service
-     * Authorization Reference</i>.</p>
-     */
-    inline Organization& WithMasterAccountArn(const Aws::String& value) { SetMasterAccountArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the account that is designated as the
-     * management account for the organization.</p> <p>For more information about ARNs
-     * in Organizations, see <a
-     * href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsorganizations.html#awsorganizations-resources-for-iam-policies">ARN
-     * Formats Supported by Organizations</a> in the <i>Amazon Web Services Service
-     * Authorization Reference</i>.</p>
-     */
-    inline Organization& WithMasterAccountArn(Aws::String&& value) { SetMasterAccountArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the account that is designated as the
-     * management account for the organization.</p> <p>For more information about ARNs
-     * in Organizations, see <a
-     * href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsorganizations.html#awsorganizations-resources-for-iam-policies">ARN
-     * Formats Supported by Organizations</a> in the <i>Amazon Web Services Service
-     * Authorization Reference</i>.</p>
-     */
-    inline Organization& WithMasterAccountArn(const char* value) { SetMasterAccountArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique identifier (ID) of the management account of an organization.</p>
      * <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an
      * account ID string requires exactly 12 digits.</p>
      */
-    inline const Aws::String& GetMasterAccountId() const{ return m_masterAccountId; }
-
-    /**
-     * <p>The unique identifier (ID) of the management account of an organization.</p>
-     * <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an
-     * account ID string requires exactly 12 digits.</p>
-     */
+    inline const Aws::String& GetMasterAccountId() const { return m_masterAccountId; }
     inline bool MasterAccountIdHasBeenSet() const { return m_masterAccountIdHasBeenSet; }
+    template<typename MasterAccountIdT = Aws::String>
+    void SetMasterAccountId(MasterAccountIdT&& value) { m_masterAccountIdHasBeenSet = true; m_masterAccountId = std::forward<MasterAccountIdT>(value); }
+    template<typename MasterAccountIdT = Aws::String>
+    Organization& WithMasterAccountId(MasterAccountIdT&& value) { SetMasterAccountId(std::forward<MasterAccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier (ID) of the management account of an organization.</p>
-     * <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an
-     * account ID string requires exactly 12 digits.</p>
-     */
-    inline void SetMasterAccountId(const Aws::String& value) { m_masterAccountIdHasBeenSet = true; m_masterAccountId = value; }
-
-    /**
-     * <p>The unique identifier (ID) of the management account of an organization.</p>
-     * <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an
-     * account ID string requires exactly 12 digits.</p>
-     */
-    inline void SetMasterAccountId(Aws::String&& value) { m_masterAccountIdHasBeenSet = true; m_masterAccountId = std::move(value); }
-
-    /**
-     * <p>The unique identifier (ID) of the management account of an organization.</p>
-     * <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an
-     * account ID string requires exactly 12 digits.</p>
-     */
-    inline void SetMasterAccountId(const char* value) { m_masterAccountIdHasBeenSet = true; m_masterAccountId.assign(value); }
-
-    /**
-     * <p>The unique identifier (ID) of the management account of an organization.</p>
-     * <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an
-     * account ID string requires exactly 12 digits.</p>
-     */
-    inline Organization& WithMasterAccountId(const Aws::String& value) { SetMasterAccountId(value); return *this;}
-
-    /**
-     * <p>The unique identifier (ID) of the management account of an organization.</p>
-     * <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an
-     * account ID string requires exactly 12 digits.</p>
-     */
-    inline Organization& WithMasterAccountId(Aws::String&& value) { SetMasterAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier (ID) of the management account of an organization.</p>
-     * <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an
-     * account ID string requires exactly 12 digits.</p>
-     */
-    inline Organization& WithMasterAccountId(const char* value) { SetMasterAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The email address that is associated with the Amazon Web Services account
      * that is designated as the management account for the organization.</p>
      */
-    inline const Aws::String& GetMasterAccountEmail() const{ return m_masterAccountEmail; }
-
-    /**
-     * <p>The email address that is associated with the Amazon Web Services account
-     * that is designated as the management account for the organization.</p>
-     */
+    inline const Aws::String& GetMasterAccountEmail() const { return m_masterAccountEmail; }
     inline bool MasterAccountEmailHasBeenSet() const { return m_masterAccountEmailHasBeenSet; }
+    template<typename MasterAccountEmailT = Aws::String>
+    void SetMasterAccountEmail(MasterAccountEmailT&& value) { m_masterAccountEmailHasBeenSet = true; m_masterAccountEmail = std::forward<MasterAccountEmailT>(value); }
+    template<typename MasterAccountEmailT = Aws::String>
+    Organization& WithMasterAccountEmail(MasterAccountEmailT&& value) { SetMasterAccountEmail(std::forward<MasterAccountEmailT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The email address that is associated with the Amazon Web Services account
-     * that is designated as the management account for the organization.</p>
-     */
-    inline void SetMasterAccountEmail(const Aws::String& value) { m_masterAccountEmailHasBeenSet = true; m_masterAccountEmail = value; }
-
-    /**
-     * <p>The email address that is associated with the Amazon Web Services account
-     * that is designated as the management account for the organization.</p>
-     */
-    inline void SetMasterAccountEmail(Aws::String&& value) { m_masterAccountEmailHasBeenSet = true; m_masterAccountEmail = std::move(value); }
-
-    /**
-     * <p>The email address that is associated with the Amazon Web Services account
-     * that is designated as the management account for the organization.</p>
-     */
-    inline void SetMasterAccountEmail(const char* value) { m_masterAccountEmailHasBeenSet = true; m_masterAccountEmail.assign(value); }
-
-    /**
-     * <p>The email address that is associated with the Amazon Web Services account
-     * that is designated as the management account for the organization.</p>
-     */
-    inline Organization& WithMasterAccountEmail(const Aws::String& value) { SetMasterAccountEmail(value); return *this;}
-
-    /**
-     * <p>The email address that is associated with the Amazon Web Services account
-     * that is designated as the management account for the organization.</p>
-     */
-    inline Organization& WithMasterAccountEmail(Aws::String&& value) { SetMasterAccountEmail(std::move(value)); return *this;}
-
-    /**
-     * <p>The email address that is associated with the Amazon Web Services account
-     * that is designated as the management account for the organization.</p>
-     */
-    inline Organization& WithMasterAccountEmail(const char* value) { SetMasterAccountEmail(value); return *this;}
-
-
+    ///@{
     /**
      *  <p>Do not use. This field is deprecated and doesn't provide complete
      * information about the policies in your organization.</p>  <p>To
      * determine the policies that are enabled and available for use in your
      * organization, use the <a>ListRoots</a> operation instead.</p>
      */
-    inline const Aws::Vector<PolicyTypeSummary>& GetAvailablePolicyTypes() const{ return m_availablePolicyTypes; }
-
-    /**
-     *  <p>Do not use. This field is deprecated and doesn't provide complete
-     * information about the policies in your organization.</p>  <p>To
-     * determine the policies that are enabled and available for use in your
-     * organization, use the <a>ListRoots</a> operation instead.</p>
-     */
+    inline const Aws::Vector<PolicyTypeSummary>& GetAvailablePolicyTypes() const { return m_availablePolicyTypes; }
     inline bool AvailablePolicyTypesHasBeenSet() const { return m_availablePolicyTypesHasBeenSet; }
-
-    /**
-     *  <p>Do not use. This field is deprecated and doesn't provide complete
-     * information about the policies in your organization.</p>  <p>To
-     * determine the policies that are enabled and available for use in your
-     * organization, use the <a>ListRoots</a> operation instead.</p>
-     */
-    inline void SetAvailablePolicyTypes(const Aws::Vector<PolicyTypeSummary>& value) { m_availablePolicyTypesHasBeenSet = true; m_availablePolicyTypes = value; }
-
-    /**
-     *  <p>Do not use. This field is deprecated and doesn't provide complete
-     * information about the policies in your organization.</p>  <p>To
-     * determine the policies that are enabled and available for use in your
-     * organization, use the <a>ListRoots</a> operation instead.</p>
-     */
-    inline void SetAvailablePolicyTypes(Aws::Vector<PolicyTypeSummary>&& value) { m_availablePolicyTypesHasBeenSet = true; m_availablePolicyTypes = std::move(value); }
-
-    /**
-     *  <p>Do not use. This field is deprecated and doesn't provide complete
-     * information about the policies in your organization.</p>  <p>To
-     * determine the policies that are enabled and available for use in your
-     * organization, use the <a>ListRoots</a> operation instead.</p>
-     */
-    inline Organization& WithAvailablePolicyTypes(const Aws::Vector<PolicyTypeSummary>& value) { SetAvailablePolicyTypes(value); return *this;}
-
-    /**
-     *  <p>Do not use. This field is deprecated and doesn't provide complete
-     * information about the policies in your organization.</p>  <p>To
-     * determine the policies that are enabled and available for use in your
-     * organization, use the <a>ListRoots</a> operation instead.</p>
-     */
-    inline Organization& WithAvailablePolicyTypes(Aws::Vector<PolicyTypeSummary>&& value) { SetAvailablePolicyTypes(std::move(value)); return *this;}
-
-    /**
-     *  <p>Do not use. This field is deprecated and doesn't provide complete
-     * information about the policies in your organization.</p>  <p>To
-     * determine the policies that are enabled and available for use in your
-     * organization, use the <a>ListRoots</a> operation instead.</p>
-     */
-    inline Organization& AddAvailablePolicyTypes(const PolicyTypeSummary& value) { m_availablePolicyTypesHasBeenSet = true; m_availablePolicyTypes.push_back(value); return *this; }
-
-    /**
-     *  <p>Do not use. This field is deprecated and doesn't provide complete
-     * information about the policies in your organization.</p>  <p>To
-     * determine the policies that are enabled and available for use in your
-     * organization, use the <a>ListRoots</a> operation instead.</p>
-     */
-    inline Organization& AddAvailablePolicyTypes(PolicyTypeSummary&& value) { m_availablePolicyTypesHasBeenSet = true; m_availablePolicyTypes.push_back(std::move(value)); return *this; }
-
+    template<typename AvailablePolicyTypesT = Aws::Vector<PolicyTypeSummary>>
+    void SetAvailablePolicyTypes(AvailablePolicyTypesT&& value) { m_availablePolicyTypesHasBeenSet = true; m_availablePolicyTypes = std::forward<AvailablePolicyTypesT>(value); }
+    template<typename AvailablePolicyTypesT = Aws::Vector<PolicyTypeSummary>>
+    Organization& WithAvailablePolicyTypes(AvailablePolicyTypesT&& value) { SetAvailablePolicyTypes(std::forward<AvailablePolicyTypesT>(value)); return *this;}
+    template<typename AvailablePolicyTypesT = PolicyTypeSummary>
+    Organization& AddAvailablePolicyTypes(AvailablePolicyTypesT&& value) { m_availablePolicyTypesHasBeenSet = true; m_availablePolicyTypes.emplace_back(std::forward<AvailablePolicyTypesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_id;
@@ -499,7 +157,7 @@ namespace Model
     Aws::String m_arn;
     bool m_arnHasBeenSet = false;
 
-    OrganizationFeatureSet m_featureSet;
+    OrganizationFeatureSet m_featureSet{OrganizationFeatureSet::NOT_SET};
     bool m_featureSetHasBeenSet = false;
 
     Aws::String m_masterAccountArn;

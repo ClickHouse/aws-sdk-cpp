@@ -11,6 +11,7 @@
 #include <aws/quicksight/model/PivotTableTotalOptions.h>
 #include <aws/quicksight/model/PivotTableFieldOptions.h>
 #include <aws/quicksight/model/PivotTablePaginatedReportOptions.h>
+#include <aws/quicksight/model/VisualInteractionOptions.h>
 #include <utility>
 
 namespace Aws
@@ -37,197 +38,95 @@ namespace Model
   class PivotTableConfiguration
   {
   public:
-    AWS_QUICKSIGHT_API PivotTableConfiguration();
+    AWS_QUICKSIGHT_API PivotTableConfiguration() = default;
     AWS_QUICKSIGHT_API PivotTableConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API PivotTableConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The field wells of the visual.</p>
      */
-    inline const PivotTableFieldWells& GetFieldWells() const{ return m_fieldWells; }
-
-    /**
-     * <p>The field wells of the visual.</p>
-     */
+    inline const PivotTableFieldWells& GetFieldWells() const { return m_fieldWells; }
     inline bool FieldWellsHasBeenSet() const { return m_fieldWellsHasBeenSet; }
+    template<typename FieldWellsT = PivotTableFieldWells>
+    void SetFieldWells(FieldWellsT&& value) { m_fieldWellsHasBeenSet = true; m_fieldWells = std::forward<FieldWellsT>(value); }
+    template<typename FieldWellsT = PivotTableFieldWells>
+    PivotTableConfiguration& WithFieldWells(FieldWellsT&& value) { SetFieldWells(std::forward<FieldWellsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The field wells of the visual.</p>
-     */
-    inline void SetFieldWells(const PivotTableFieldWells& value) { m_fieldWellsHasBeenSet = true; m_fieldWells = value; }
-
-    /**
-     * <p>The field wells of the visual.</p>
-     */
-    inline void SetFieldWells(PivotTableFieldWells&& value) { m_fieldWellsHasBeenSet = true; m_fieldWells = std::move(value); }
-
-    /**
-     * <p>The field wells of the visual.</p>
-     */
-    inline PivotTableConfiguration& WithFieldWells(const PivotTableFieldWells& value) { SetFieldWells(value); return *this;}
-
-    /**
-     * <p>The field wells of the visual.</p>
-     */
-    inline PivotTableConfiguration& WithFieldWells(PivotTableFieldWells&& value) { SetFieldWells(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The sort configuration for a <code>PivotTableVisual</code>.</p>
      */
-    inline const PivotTableSortConfiguration& GetSortConfiguration() const{ return m_sortConfiguration; }
-
-    /**
-     * <p>The sort configuration for a <code>PivotTableVisual</code>.</p>
-     */
+    inline const PivotTableSortConfiguration& GetSortConfiguration() const { return m_sortConfiguration; }
     inline bool SortConfigurationHasBeenSet() const { return m_sortConfigurationHasBeenSet; }
+    template<typename SortConfigurationT = PivotTableSortConfiguration>
+    void SetSortConfiguration(SortConfigurationT&& value) { m_sortConfigurationHasBeenSet = true; m_sortConfiguration = std::forward<SortConfigurationT>(value); }
+    template<typename SortConfigurationT = PivotTableSortConfiguration>
+    PivotTableConfiguration& WithSortConfiguration(SortConfigurationT&& value) { SetSortConfiguration(std::forward<SortConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The sort configuration for a <code>PivotTableVisual</code>.</p>
-     */
-    inline void SetSortConfiguration(const PivotTableSortConfiguration& value) { m_sortConfigurationHasBeenSet = true; m_sortConfiguration = value; }
-
-    /**
-     * <p>The sort configuration for a <code>PivotTableVisual</code>.</p>
-     */
-    inline void SetSortConfiguration(PivotTableSortConfiguration&& value) { m_sortConfigurationHasBeenSet = true; m_sortConfiguration = std::move(value); }
-
-    /**
-     * <p>The sort configuration for a <code>PivotTableVisual</code>.</p>
-     */
-    inline PivotTableConfiguration& WithSortConfiguration(const PivotTableSortConfiguration& value) { SetSortConfiguration(value); return *this;}
-
-    /**
-     * <p>The sort configuration for a <code>PivotTableVisual</code>.</p>
-     */
-    inline PivotTableConfiguration& WithSortConfiguration(PivotTableSortConfiguration&& value) { SetSortConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The table options for a pivot table visual.</p>
      */
-    inline const PivotTableOptions& GetTableOptions() const{ return m_tableOptions; }
-
-    /**
-     * <p>The table options for a pivot table visual.</p>
-     */
+    inline const PivotTableOptions& GetTableOptions() const { return m_tableOptions; }
     inline bool TableOptionsHasBeenSet() const { return m_tableOptionsHasBeenSet; }
+    template<typename TableOptionsT = PivotTableOptions>
+    void SetTableOptions(TableOptionsT&& value) { m_tableOptionsHasBeenSet = true; m_tableOptions = std::forward<TableOptionsT>(value); }
+    template<typename TableOptionsT = PivotTableOptions>
+    PivotTableConfiguration& WithTableOptions(TableOptionsT&& value) { SetTableOptions(std::forward<TableOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The table options for a pivot table visual.</p>
-     */
-    inline void SetTableOptions(const PivotTableOptions& value) { m_tableOptionsHasBeenSet = true; m_tableOptions = value; }
-
-    /**
-     * <p>The table options for a pivot table visual.</p>
-     */
-    inline void SetTableOptions(PivotTableOptions&& value) { m_tableOptionsHasBeenSet = true; m_tableOptions = std::move(value); }
-
-    /**
-     * <p>The table options for a pivot table visual.</p>
-     */
-    inline PivotTableConfiguration& WithTableOptions(const PivotTableOptions& value) { SetTableOptions(value); return *this;}
-
-    /**
-     * <p>The table options for a pivot table visual.</p>
-     */
-    inline PivotTableConfiguration& WithTableOptions(PivotTableOptions&& value) { SetTableOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The total options for a pivot table visual.</p>
      */
-    inline const PivotTableTotalOptions& GetTotalOptions() const{ return m_totalOptions; }
-
-    /**
-     * <p>The total options for a pivot table visual.</p>
-     */
+    inline const PivotTableTotalOptions& GetTotalOptions() const { return m_totalOptions; }
     inline bool TotalOptionsHasBeenSet() const { return m_totalOptionsHasBeenSet; }
+    template<typename TotalOptionsT = PivotTableTotalOptions>
+    void SetTotalOptions(TotalOptionsT&& value) { m_totalOptionsHasBeenSet = true; m_totalOptions = std::forward<TotalOptionsT>(value); }
+    template<typename TotalOptionsT = PivotTableTotalOptions>
+    PivotTableConfiguration& WithTotalOptions(TotalOptionsT&& value) { SetTotalOptions(std::forward<TotalOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The total options for a pivot table visual.</p>
-     */
-    inline void SetTotalOptions(const PivotTableTotalOptions& value) { m_totalOptionsHasBeenSet = true; m_totalOptions = value; }
-
-    /**
-     * <p>The total options for a pivot table visual.</p>
-     */
-    inline void SetTotalOptions(PivotTableTotalOptions&& value) { m_totalOptionsHasBeenSet = true; m_totalOptions = std::move(value); }
-
-    /**
-     * <p>The total options for a pivot table visual.</p>
-     */
-    inline PivotTableConfiguration& WithTotalOptions(const PivotTableTotalOptions& value) { SetTotalOptions(value); return *this;}
-
-    /**
-     * <p>The total options for a pivot table visual.</p>
-     */
-    inline PivotTableConfiguration& WithTotalOptions(PivotTableTotalOptions&& value) { SetTotalOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The field options for a pivot table visual.</p>
      */
-    inline const PivotTableFieldOptions& GetFieldOptions() const{ return m_fieldOptions; }
-
-    /**
-     * <p>The field options for a pivot table visual.</p>
-     */
+    inline const PivotTableFieldOptions& GetFieldOptions() const { return m_fieldOptions; }
     inline bool FieldOptionsHasBeenSet() const { return m_fieldOptionsHasBeenSet; }
+    template<typename FieldOptionsT = PivotTableFieldOptions>
+    void SetFieldOptions(FieldOptionsT&& value) { m_fieldOptionsHasBeenSet = true; m_fieldOptions = std::forward<FieldOptionsT>(value); }
+    template<typename FieldOptionsT = PivotTableFieldOptions>
+    PivotTableConfiguration& WithFieldOptions(FieldOptionsT&& value) { SetFieldOptions(std::forward<FieldOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The field options for a pivot table visual.</p>
-     */
-    inline void SetFieldOptions(const PivotTableFieldOptions& value) { m_fieldOptionsHasBeenSet = true; m_fieldOptions = value; }
-
-    /**
-     * <p>The field options for a pivot table visual.</p>
-     */
-    inline void SetFieldOptions(PivotTableFieldOptions&& value) { m_fieldOptionsHasBeenSet = true; m_fieldOptions = std::move(value); }
-
-    /**
-     * <p>The field options for a pivot table visual.</p>
-     */
-    inline PivotTableConfiguration& WithFieldOptions(const PivotTableFieldOptions& value) { SetFieldOptions(value); return *this;}
-
-    /**
-     * <p>The field options for a pivot table visual.</p>
-     */
-    inline PivotTableConfiguration& WithFieldOptions(PivotTableFieldOptions&& value) { SetFieldOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The paginated report options for a pivot table visual.</p>
      */
-    inline const PivotTablePaginatedReportOptions& GetPaginatedReportOptions() const{ return m_paginatedReportOptions; }
-
-    /**
-     * <p>The paginated report options for a pivot table visual.</p>
-     */
+    inline const PivotTablePaginatedReportOptions& GetPaginatedReportOptions() const { return m_paginatedReportOptions; }
     inline bool PaginatedReportOptionsHasBeenSet() const { return m_paginatedReportOptionsHasBeenSet; }
+    template<typename PaginatedReportOptionsT = PivotTablePaginatedReportOptions>
+    void SetPaginatedReportOptions(PaginatedReportOptionsT&& value) { m_paginatedReportOptionsHasBeenSet = true; m_paginatedReportOptions = std::forward<PaginatedReportOptionsT>(value); }
+    template<typename PaginatedReportOptionsT = PivotTablePaginatedReportOptions>
+    PivotTableConfiguration& WithPaginatedReportOptions(PaginatedReportOptionsT&& value) { SetPaginatedReportOptions(std::forward<PaginatedReportOptionsT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The paginated report options for a pivot table visual.</p>
+     * <p>The general visual interactions setup for a visual.</p>
      */
-    inline void SetPaginatedReportOptions(const PivotTablePaginatedReportOptions& value) { m_paginatedReportOptionsHasBeenSet = true; m_paginatedReportOptions = value; }
-
-    /**
-     * <p>The paginated report options for a pivot table visual.</p>
-     */
-    inline void SetPaginatedReportOptions(PivotTablePaginatedReportOptions&& value) { m_paginatedReportOptionsHasBeenSet = true; m_paginatedReportOptions = std::move(value); }
-
-    /**
-     * <p>The paginated report options for a pivot table visual.</p>
-     */
-    inline PivotTableConfiguration& WithPaginatedReportOptions(const PivotTablePaginatedReportOptions& value) { SetPaginatedReportOptions(value); return *this;}
-
-    /**
-     * <p>The paginated report options for a pivot table visual.</p>
-     */
-    inline PivotTableConfiguration& WithPaginatedReportOptions(PivotTablePaginatedReportOptions&& value) { SetPaginatedReportOptions(std::move(value)); return *this;}
-
+    inline const VisualInteractionOptions& GetInteractions() const { return m_interactions; }
+    inline bool InteractionsHasBeenSet() const { return m_interactionsHasBeenSet; }
+    template<typename InteractionsT = VisualInteractionOptions>
+    void SetInteractions(InteractionsT&& value) { m_interactionsHasBeenSet = true; m_interactions = std::forward<InteractionsT>(value); }
+    template<typename InteractionsT = VisualInteractionOptions>
+    PivotTableConfiguration& WithInteractions(InteractionsT&& value) { SetInteractions(std::forward<InteractionsT>(value)); return *this;}
+    ///@}
   private:
 
     PivotTableFieldWells m_fieldWells;
@@ -247,6 +146,9 @@ namespace Model
 
     PivotTablePaginatedReportOptions m_paginatedReportOptions;
     bool m_paginatedReportOptionsHasBeenSet = false;
+
+    VisualInteractionOptions m_interactions;
+    bool m_interactionsHasBeenSet = false;
   };
 
 } // namespace Model

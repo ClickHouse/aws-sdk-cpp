@@ -47,8 +47,8 @@ namespace Budgets
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
 
       typedef BudgetsClientConfiguration ClientConfigurationType;
       typedef BudgetsEndpointProvider EndpointProviderType;
@@ -58,14 +58,14 @@ namespace Budgets
         * is not specified, it will be initialized to default values.
         */
         BudgetsClient(const Aws::Budgets::BudgetsClientConfiguration& clientConfiguration = Aws::Budgets::BudgetsClientConfiguration(),
-                      std::shared_ptr<BudgetsEndpointProviderBase> endpointProvider = Aws::MakeShared<BudgetsEndpointProvider>(ALLOCATION_TAG));
+                      std::shared_ptr<BudgetsEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         BudgetsClient(const Aws::Auth::AWSCredentials& credentials,
-                      std::shared_ptr<BudgetsEndpointProviderBase> endpointProvider = Aws::MakeShared<BudgetsEndpointProvider>(ALLOCATION_TAG),
+                      std::shared_ptr<BudgetsEndpointProviderBase> endpointProvider = nullptr,
                       const Aws::Budgets::BudgetsClientConfiguration& clientConfiguration = Aws::Budgets::BudgetsClientConfiguration());
 
        /**
@@ -73,7 +73,7 @@ namespace Budgets
         * the default http client factory will be used
         */
         BudgetsClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                      std::shared_ptr<BudgetsEndpointProviderBase> endpointProvider = Aws::MakeShared<BudgetsEndpointProvider>(ALLOCATION_TAG),
+                      std::shared_ptr<BudgetsEndpointProviderBase> endpointProvider = nullptr,
                       const Aws::Budgets::BudgetsClientConfiguration& clientConfiguration = Aws::Budgets::BudgetsClientConfiguration());
 
 
@@ -105,11 +105,18 @@ namespace Budgets
          * <p>Creates a budget and, if included, notifications and subscribers. </p>
          *  <p>Only one of <code>BudgetLimit</code> or
          * <code>PlannedBudgetLimits</code> can be present in the syntax at one time. Use
-         * the syntax that matches your case. The Request Syntax section shows the
+         * the syntax that matches your use case. The Request Syntax section shows the
          * <code>BudgetLimit</code> syntax. For <code>PlannedBudgetLimits</code>, see the
          * <a
          * href="https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_CreateBudget.html#API_CreateBudget_Examples">Examples</a>
-         * section. </p> <p><h3>See Also:</h3>   <a
+         * section.</p> <p>Similarly, only one set of filter and metric selections can be
+         * present in the syntax at one time. Either <code>FilterExpression</code> and
+         * <code>Metrics</code> or <code>CostFilters</code> and <code>CostTypes</code>, not
+         * both or a different combination. We recommend using
+         * <code>FilterExpression</code> and <code>Metrics</code> as they provide more
+         * flexible and powerful filtering capabilities. The Request Syntax section shows
+         * the <code>FilterExpression</code>/<code>Metrics</code> syntax.</p>
+         * <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/budgets-2016-10-20/CreateBudget">AWS
          * API Reference</a></p>
          */
@@ -321,7 +328,7 @@ namespace Budgets
          * <code>BudgetLimit</code> syntax. For <code>PlannedBudgetLimits</code>, see the
          * <a
          * href="https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_DescribeBudget.html#API_DescribeBudget_Examples">Examples</a>
-         * section. </p> <p><h3>See Also:</h3>   <a
+         * section.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/budgets-2016-10-20/DescribeBudget">AWS
          * API Reference</a></p>
          */
@@ -505,7 +512,7 @@ namespace Budgets
          * Request Syntax section shows the <code>BudgetLimit</code> syntax. For
          * <code>PlannedBudgetLimits</code>, see the <a
          * href="https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_DescribeBudgets.html#API_DescribeBudgets_Examples">Examples</a>
-         * section. </p> <p><h3>See Also:</h3>   <a
+         * section.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/budgets-2016-10-20/DescribeBudgets">AWS
          * API Reference</a></p>
          */
@@ -607,6 +614,84 @@ namespace Budgets
         }
 
         /**
+         * <p>Lists tags associated with a budget or budget action resource.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/budgets-2016-10-20/ListTagsForResource">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListTagsForResourceOutcome ListTagsForResource(const Model::ListTagsForResourceRequest& request) const;
+
+        /**
+         * A Callable wrapper for ListTagsForResource that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListTagsForResourceRequestT = Model::ListTagsForResourceRequest>
+        Model::ListTagsForResourceOutcomeCallable ListTagsForResourceCallable(const ListTagsForResourceRequestT& request) const
+        {
+            return SubmitCallable(&BudgetsClient::ListTagsForResource, request);
+        }
+
+        /**
+         * An Async wrapper for ListTagsForResource that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListTagsForResourceRequestT = Model::ListTagsForResourceRequest>
+        void ListTagsForResourceAsync(const ListTagsForResourceRequestT& request, const ListTagsForResourceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&BudgetsClient::ListTagsForResource, request, handler, context);
+        }
+
+        /**
+         * <p>Creates tags for a budget or budget action resource.</p><p><h3>See Also:</h3>
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/budgets-2016-10-20/TagResource">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::TagResourceOutcome TagResource(const Model::TagResourceRequest& request) const;
+
+        /**
+         * A Callable wrapper for TagResource that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename TagResourceRequestT = Model::TagResourceRequest>
+        Model::TagResourceOutcomeCallable TagResourceCallable(const TagResourceRequestT& request) const
+        {
+            return SubmitCallable(&BudgetsClient::TagResource, request);
+        }
+
+        /**
+         * An Async wrapper for TagResource that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename TagResourceRequestT = Model::TagResourceRequest>
+        void TagResourceAsync(const TagResourceRequestT& request, const TagResourceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&BudgetsClient::TagResource, request, handler, context);
+        }
+
+        /**
+         * <p>Deletes tags associated with a budget or budget action
+         * resource.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/budgets-2016-10-20/UntagResource">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::UntagResourceOutcome UntagResource(const Model::UntagResourceRequest& request) const;
+
+        /**
+         * A Callable wrapper for UntagResource that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename UntagResourceRequestT = Model::UntagResourceRequest>
+        Model::UntagResourceOutcomeCallable UntagResourceCallable(const UntagResourceRequestT& request) const
+        {
+            return SubmitCallable(&BudgetsClient::UntagResource, request);
+        }
+
+        /**
+         * An Async wrapper for UntagResource that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename UntagResourceRequestT = Model::UntagResourceRequest>
+        void UntagResourceAsync(const UntagResourceRequestT& request, const UntagResourceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&BudgetsClient::UntagResource, request, handler, context);
+        }
+
+        /**
          * <p>Updates a budget. You can change every part of a budget except for the
          * <code>budgetName</code> and the <code>calculatedSpend</code>. When you modify a
          * budget, the <code>calculatedSpend</code> drops to zero until Amazon Web Services
@@ -616,7 +701,14 @@ namespace Budgets
          * Syntax section shows the <code>BudgetLimit</code> syntax. For
          * <code>PlannedBudgetLimits</code>, see the <a
          * href="https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_UpdateBudget.html#API_UpdateBudget_Examples">Examples</a>
-         * section. </p> <p><h3>See Also:</h3>   <a
+         * section.</p> <p>Similarly, only one set of filter and metric selections can be
+         * present in the syntax at one time. Either <code>FilterExpression</code> and
+         * <code>Metrics</code> or <code>CostFilters</code> and <code>CostTypes</code>, not
+         * both or a different combination. We recommend using
+         * <code>FilterExpression</code> and <code>Metrics</code> as they provide more
+         * flexible and powerful filtering capabilities. The Request Syntax section shows
+         * the <code>FilterExpression</code>/<code>Metrics</code> syntax.</p>
+         * <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/budgets-2016-10-20/UpdateBudget">AWS
          * API Reference</a></p>
          */
@@ -723,7 +815,6 @@ namespace Budgets
       void init(const BudgetsClientConfiguration& clientConfiguration);
 
       BudgetsClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<BudgetsEndpointProviderBase> m_endpointProvider;
   };
 

@@ -6,6 +6,7 @@
 #pragma once
 #include <aws/macie2/Macie2_EXPORTS.h>
 #include <aws/macie2/Macie2Request.h>
+#include <aws/macie2/model/AutoEnableMode.h>
 #include <aws/macie2/model/AutomatedDiscoveryStatus.h>
 #include <utility>
 
@@ -21,7 +22,7 @@ namespace Model
   class UpdateAutomatedDiscoveryConfigurationRequest : public Macie2Request
   {
   public:
-    AWS_MACIE2_API UpdateAutomatedDiscoveryConfigurationRequest();
+    AWS_MACIE2_API UpdateAutomatedDiscoveryConfigurationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,93 +33,44 @@ namespace Model
     AWS_MACIE2_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
-     * <p>The new status of automated sensitive data discovery for the account. Valid
-     * values are: ENABLED, start or resume automated sensitive data discovery
-     * activities for the account; and, DISABLED, stop performing automated sensitive
-     * data discovery activities for the account.</p> <p>When you enable automated
-     * sensitive data discovery for the first time, Amazon Macie uses default
-     * configuration settings to determine which data sources to analyze and which
-     * managed data identifiers to use. To change these settings, use the
-     * UpdateClassificationScope and UpdateSensitivityInspectionTemplate operations,
-     * respectively. If you change the settings and subsequently disable the
-     * configuration, Amazon Macie retains your changes.</p>
+     * <p>Specifies whether to automatically enable automated sensitive data discovery
+     * for accounts in the organization. Valid values are: ALL (default), enable it for
+     * all existing accounts and new member accounts; NEW, enable it only for new
+     * member accounts; and, NONE, don't enable it for any accounts.</p> <p>If you
+     * specify NEW or NONE, automated sensitive data discovery continues to be enabled
+     * for any existing accounts that it's currently enabled for. To enable or disable
+     * it for individual member accounts, specify NEW or NONE, and then enable or
+     * disable it for each account by using the BatchUpdateAutomatedDiscoveryAccounts
+     * operation.</p>
      */
-    inline const AutomatedDiscoveryStatus& GetStatus() const{ return m_status; }
+    inline AutoEnableMode GetAutoEnableOrganizationMembers() const { return m_autoEnableOrganizationMembers; }
+    inline bool AutoEnableOrganizationMembersHasBeenSet() const { return m_autoEnableOrganizationMembersHasBeenSet; }
+    inline void SetAutoEnableOrganizationMembers(AutoEnableMode value) { m_autoEnableOrganizationMembersHasBeenSet = true; m_autoEnableOrganizationMembers = value; }
+    inline UpdateAutomatedDiscoveryConfigurationRequest& WithAutoEnableOrganizationMembers(AutoEnableMode value) { SetAutoEnableOrganizationMembers(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The new status of automated sensitive data discovery for the account. Valid
-     * values are: ENABLED, start or resume automated sensitive data discovery
-     * activities for the account; and, DISABLED, stop performing automated sensitive
-     * data discovery activities for the account.</p> <p>When you enable automated
-     * sensitive data discovery for the first time, Amazon Macie uses default
-     * configuration settings to determine which data sources to analyze and which
-     * managed data identifiers to use. To change these settings, use the
-     * UpdateClassificationScope and UpdateSensitivityInspectionTemplate operations,
-     * respectively. If you change the settings and subsequently disable the
-     * configuration, Amazon Macie retains your changes.</p>
+     * <p>The new status of automated sensitive data discovery for the organization or
+     * account. Valid values are: ENABLED, start or resume all automated sensitive data
+     * discovery activities; and, DISABLED, stop performing all automated sensitive
+     * data discovery activities.</p> <p>If you specify DISABLED for an administrator
+     * account, you also disable automated sensitive data discovery for all member
+     * accounts in the organization.</p>
      */
+    inline AutomatedDiscoveryStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p>The new status of automated sensitive data discovery for the account. Valid
-     * values are: ENABLED, start or resume automated sensitive data discovery
-     * activities for the account; and, DISABLED, stop performing automated sensitive
-     * data discovery activities for the account.</p> <p>When you enable automated
-     * sensitive data discovery for the first time, Amazon Macie uses default
-     * configuration settings to determine which data sources to analyze and which
-     * managed data identifiers to use. To change these settings, use the
-     * UpdateClassificationScope and UpdateSensitivityInspectionTemplate operations,
-     * respectively. If you change the settings and subsequently disable the
-     * configuration, Amazon Macie retains your changes.</p>
-     */
-    inline void SetStatus(const AutomatedDiscoveryStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The new status of automated sensitive data discovery for the account. Valid
-     * values are: ENABLED, start or resume automated sensitive data discovery
-     * activities for the account; and, DISABLED, stop performing automated sensitive
-     * data discovery activities for the account.</p> <p>When you enable automated
-     * sensitive data discovery for the first time, Amazon Macie uses default
-     * configuration settings to determine which data sources to analyze and which
-     * managed data identifiers to use. To change these settings, use the
-     * UpdateClassificationScope and UpdateSensitivityInspectionTemplate operations,
-     * respectively. If you change the settings and subsequently disable the
-     * configuration, Amazon Macie retains your changes.</p>
-     */
-    inline void SetStatus(AutomatedDiscoveryStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The new status of automated sensitive data discovery for the account. Valid
-     * values are: ENABLED, start or resume automated sensitive data discovery
-     * activities for the account; and, DISABLED, stop performing automated sensitive
-     * data discovery activities for the account.</p> <p>When you enable automated
-     * sensitive data discovery for the first time, Amazon Macie uses default
-     * configuration settings to determine which data sources to analyze and which
-     * managed data identifiers to use. To change these settings, use the
-     * UpdateClassificationScope and UpdateSensitivityInspectionTemplate operations,
-     * respectively. If you change the settings and subsequently disable the
-     * configuration, Amazon Macie retains your changes.</p>
-     */
-    inline UpdateAutomatedDiscoveryConfigurationRequest& WithStatus(const AutomatedDiscoveryStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The new status of automated sensitive data discovery for the account. Valid
-     * values are: ENABLED, start or resume automated sensitive data discovery
-     * activities for the account; and, DISABLED, stop performing automated sensitive
-     * data discovery activities for the account.</p> <p>When you enable automated
-     * sensitive data discovery for the first time, Amazon Macie uses default
-     * configuration settings to determine which data sources to analyze and which
-     * managed data identifiers to use. To change these settings, use the
-     * UpdateClassificationScope and UpdateSensitivityInspectionTemplate operations,
-     * respectively. If you change the settings and subsequently disable the
-     * configuration, Amazon Macie retains your changes.</p>
-     */
-    inline UpdateAutomatedDiscoveryConfigurationRequest& WithStatus(AutomatedDiscoveryStatus&& value) { SetStatus(std::move(value)); return *this;}
-
+    inline void SetStatus(AutomatedDiscoveryStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline UpdateAutomatedDiscoveryConfigurationRequest& WithStatus(AutomatedDiscoveryStatus value) { SetStatus(value); return *this;}
+    ///@}
   private:
 
-    AutomatedDiscoveryStatus m_status;
+    AutoEnableMode m_autoEnableOrganizationMembers{AutoEnableMode::NOT_SET};
+    bool m_autoEnableOrganizationMembersHasBeenSet = false;
+
+    AutomatedDiscoveryStatus m_status{AutomatedDiscoveryStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
   };
 

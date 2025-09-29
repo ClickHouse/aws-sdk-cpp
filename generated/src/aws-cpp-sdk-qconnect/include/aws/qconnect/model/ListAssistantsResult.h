@@ -29,118 +29,54 @@ namespace Model
   class ListAssistantsResult
   {
   public:
-    AWS_QCONNECT_API ListAssistantsResult();
+    AWS_QCONNECT_API ListAssistantsResult() = default;
     AWS_QCONNECT_API ListAssistantsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_QCONNECT_API ListAssistantsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Information about the assistants.</p>
      */
-    inline const Aws::Vector<AssistantSummary>& GetAssistantSummaries() const{ return m_assistantSummaries; }
+    inline const Aws::Vector<AssistantSummary>& GetAssistantSummaries() const { return m_assistantSummaries; }
+    template<typename AssistantSummariesT = Aws::Vector<AssistantSummary>>
+    void SetAssistantSummaries(AssistantSummariesT&& value) { m_assistantSummariesHasBeenSet = true; m_assistantSummaries = std::forward<AssistantSummariesT>(value); }
+    template<typename AssistantSummariesT = Aws::Vector<AssistantSummary>>
+    ListAssistantsResult& WithAssistantSummaries(AssistantSummariesT&& value) { SetAssistantSummaries(std::forward<AssistantSummariesT>(value)); return *this;}
+    template<typename AssistantSummariesT = AssistantSummary>
+    ListAssistantsResult& AddAssistantSummaries(AssistantSummariesT&& value) { m_assistantSummariesHasBeenSet = true; m_assistantSummaries.emplace_back(std::forward<AssistantSummariesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Information about the assistants.</p>
-     */
-    inline void SetAssistantSummaries(const Aws::Vector<AssistantSummary>& value) { m_assistantSummaries = value; }
-
-    /**
-     * <p>Information about the assistants.</p>
-     */
-    inline void SetAssistantSummaries(Aws::Vector<AssistantSummary>&& value) { m_assistantSummaries = std::move(value); }
-
-    /**
-     * <p>Information about the assistants.</p>
-     */
-    inline ListAssistantsResult& WithAssistantSummaries(const Aws::Vector<AssistantSummary>& value) { SetAssistantSummaries(value); return *this;}
-
-    /**
-     * <p>Information about the assistants.</p>
-     */
-    inline ListAssistantsResult& WithAssistantSummaries(Aws::Vector<AssistantSummary>&& value) { SetAssistantSummaries(std::move(value)); return *this;}
-
-    /**
-     * <p>Information about the assistants.</p>
-     */
-    inline ListAssistantsResult& AddAssistantSummaries(const AssistantSummary& value) { m_assistantSummaries.push_back(value); return *this; }
-
-    /**
-     * <p>Information about the assistants.</p>
-     */
-    inline ListAssistantsResult& AddAssistantSummaries(AssistantSummary&& value) { m_assistantSummaries.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>If there are additional results, this is the token for the next set of
      * results.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListAssistantsResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If there are additional results, this is the token for the next set of
-     * results.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>If there are additional results, this is the token for the next set of
-     * results.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>If there are additional results, this is the token for the next set of
-     * results.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>If there are additional results, this is the token for the next set of
-     * results.</p>
-     */
-    inline ListAssistantsResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>If there are additional results, this is the token for the next set of
-     * results.</p>
-     */
-    inline ListAssistantsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>If there are additional results, this is the token for the next set of
-     * results.</p>
-     */
-    inline ListAssistantsResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListAssistantsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListAssistantsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListAssistantsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListAssistantsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<AssistantSummary> m_assistantSummaries;
+    bool m_assistantSummariesHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

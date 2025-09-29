@@ -32,75 +32,41 @@ namespace Model
   class ScalingConstraints
   {
   public:
-    AWS_EMR_API ScalingConstraints();
+    AWS_EMR_API ScalingConstraints() = default;
     AWS_EMR_API ScalingConstraints(Aws::Utils::Json::JsonView jsonValue);
     AWS_EMR_API ScalingConstraints& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_EMR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The lower boundary of Amazon EC2 instances in an instance group below which
      * scaling activities are not allowed to shrink. Scale-in activities will not
      * terminate instances below this boundary.</p>
      */
-    inline int GetMinCapacity() const{ return m_minCapacity; }
-
-    /**
-     * <p>The lower boundary of Amazon EC2 instances in an instance group below which
-     * scaling activities are not allowed to shrink. Scale-in activities will not
-     * terminate instances below this boundary.</p>
-     */
+    inline int GetMinCapacity() const { return m_minCapacity; }
     inline bool MinCapacityHasBeenSet() const { return m_minCapacityHasBeenSet; }
-
-    /**
-     * <p>The lower boundary of Amazon EC2 instances in an instance group below which
-     * scaling activities are not allowed to shrink. Scale-in activities will not
-     * terminate instances below this boundary.</p>
-     */
     inline void SetMinCapacity(int value) { m_minCapacityHasBeenSet = true; m_minCapacity = value; }
-
-    /**
-     * <p>The lower boundary of Amazon EC2 instances in an instance group below which
-     * scaling activities are not allowed to shrink. Scale-in activities will not
-     * terminate instances below this boundary.</p>
-     */
     inline ScalingConstraints& WithMinCapacity(int value) { SetMinCapacity(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The upper boundary of Amazon EC2 instances in an instance group beyond which
      * scaling activities are not allowed to grow. Scale-out activities will not add
      * instances beyond this boundary.</p>
      */
-    inline int GetMaxCapacity() const{ return m_maxCapacity; }
-
-    /**
-     * <p>The upper boundary of Amazon EC2 instances in an instance group beyond which
-     * scaling activities are not allowed to grow. Scale-out activities will not add
-     * instances beyond this boundary.</p>
-     */
+    inline int GetMaxCapacity() const { return m_maxCapacity; }
     inline bool MaxCapacityHasBeenSet() const { return m_maxCapacityHasBeenSet; }
-
-    /**
-     * <p>The upper boundary of Amazon EC2 instances in an instance group beyond which
-     * scaling activities are not allowed to grow. Scale-out activities will not add
-     * instances beyond this boundary.</p>
-     */
     inline void SetMaxCapacity(int value) { m_maxCapacityHasBeenSet = true; m_maxCapacity = value; }
-
-    /**
-     * <p>The upper boundary of Amazon EC2 instances in an instance group beyond which
-     * scaling activities are not allowed to grow. Scale-out activities will not add
-     * instances beyond this boundary.</p>
-     */
     inline ScalingConstraints& WithMaxCapacity(int value) { SetMaxCapacity(value); return *this;}
-
+    ///@}
   private:
 
-    int m_minCapacity;
+    int m_minCapacity{0};
     bool m_minCapacityHasBeenSet = false;
 
-    int m_maxCapacity;
+    int m_maxCapacity{0};
     bool m_maxCapacityHasBeenSet = false;
   };
 

@@ -35,61 +35,26 @@ namespace Model
   class EntityPersonaConfiguration
   {
   public:
-    AWS_KENDRA_API EntityPersonaConfiguration();
+    AWS_KENDRA_API EntityPersonaConfiguration() = default;
     AWS_KENDRA_API EntityPersonaConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_KENDRA_API EntityPersonaConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KENDRA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The identifier of a user or group in your IAM Identity Center identity
      * source. For example, a user ID could be an email.</p>
      */
-    inline const Aws::String& GetEntityId() const{ return m_entityId; }
-
-    /**
-     * <p>The identifier of a user or group in your IAM Identity Center identity
-     * source. For example, a user ID could be an email.</p>
-     */
+    inline const Aws::String& GetEntityId() const { return m_entityId; }
     inline bool EntityIdHasBeenSet() const { return m_entityIdHasBeenSet; }
+    template<typename EntityIdT = Aws::String>
+    void SetEntityId(EntityIdT&& value) { m_entityIdHasBeenSet = true; m_entityId = std::forward<EntityIdT>(value); }
+    template<typename EntityIdT = Aws::String>
+    EntityPersonaConfiguration& WithEntityId(EntityIdT&& value) { SetEntityId(std::forward<EntityIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of a user or group in your IAM Identity Center identity
-     * source. For example, a user ID could be an email.</p>
-     */
-    inline void SetEntityId(const Aws::String& value) { m_entityIdHasBeenSet = true; m_entityId = value; }
-
-    /**
-     * <p>The identifier of a user or group in your IAM Identity Center identity
-     * source. For example, a user ID could be an email.</p>
-     */
-    inline void SetEntityId(Aws::String&& value) { m_entityIdHasBeenSet = true; m_entityId = std::move(value); }
-
-    /**
-     * <p>The identifier of a user or group in your IAM Identity Center identity
-     * source. For example, a user ID could be an email.</p>
-     */
-    inline void SetEntityId(const char* value) { m_entityIdHasBeenSet = true; m_entityId.assign(value); }
-
-    /**
-     * <p>The identifier of a user or group in your IAM Identity Center identity
-     * source. For example, a user ID could be an email.</p>
-     */
-    inline EntityPersonaConfiguration& WithEntityId(const Aws::String& value) { SetEntityId(value); return *this;}
-
-    /**
-     * <p>The identifier of a user or group in your IAM Identity Center identity
-     * source. For example, a user ID could be an email.</p>
-     */
-    inline EntityPersonaConfiguration& WithEntityId(Aws::String&& value) { SetEntityId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of a user or group in your IAM Identity Center identity
-     * source. For example, a user ID could be an email.</p>
-     */
-    inline EntityPersonaConfiguration& WithEntityId(const char* value) { SetEntityId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The persona that defines the specific permissions of the user or group in
      * your IAM Identity Center identity source. The available personas or access roles
@@ -98,64 +63,17 @@ namespace Model
      * href="https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html#access-search-experience">Providing
      * access to your search page</a>.</p>
      */
-    inline const Persona& GetPersona() const{ return m_persona; }
-
-    /**
-     * <p>The persona that defines the specific permissions of the user or group in
-     * your IAM Identity Center identity source. The available personas or access roles
-     * are <code>Owner</code> and <code>Viewer</code>. For more information on these
-     * personas, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html#access-search-experience">Providing
-     * access to your search page</a>.</p>
-     */
+    inline Persona GetPersona() const { return m_persona; }
     inline bool PersonaHasBeenSet() const { return m_personaHasBeenSet; }
-
-    /**
-     * <p>The persona that defines the specific permissions of the user or group in
-     * your IAM Identity Center identity source. The available personas or access roles
-     * are <code>Owner</code> and <code>Viewer</code>. For more information on these
-     * personas, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html#access-search-experience">Providing
-     * access to your search page</a>.</p>
-     */
-    inline void SetPersona(const Persona& value) { m_personaHasBeenSet = true; m_persona = value; }
-
-    /**
-     * <p>The persona that defines the specific permissions of the user or group in
-     * your IAM Identity Center identity source. The available personas or access roles
-     * are <code>Owner</code> and <code>Viewer</code>. For more information on these
-     * personas, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html#access-search-experience">Providing
-     * access to your search page</a>.</p>
-     */
-    inline void SetPersona(Persona&& value) { m_personaHasBeenSet = true; m_persona = std::move(value); }
-
-    /**
-     * <p>The persona that defines the specific permissions of the user or group in
-     * your IAM Identity Center identity source. The available personas or access roles
-     * are <code>Owner</code> and <code>Viewer</code>. For more information on these
-     * personas, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html#access-search-experience">Providing
-     * access to your search page</a>.</p>
-     */
-    inline EntityPersonaConfiguration& WithPersona(const Persona& value) { SetPersona(value); return *this;}
-
-    /**
-     * <p>The persona that defines the specific permissions of the user or group in
-     * your IAM Identity Center identity source. The available personas or access roles
-     * are <code>Owner</code> and <code>Viewer</code>. For more information on these
-     * personas, see <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html#access-search-experience">Providing
-     * access to your search page</a>.</p>
-     */
-    inline EntityPersonaConfiguration& WithPersona(Persona&& value) { SetPersona(std::move(value)); return *this;}
-
+    inline void SetPersona(Persona value) { m_personaHasBeenSet = true; m_persona = value; }
+    inline EntityPersonaConfiguration& WithPersona(Persona value) { SetPersona(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_entityId;
     bool m_entityIdHasBeenSet = false;
 
-    Persona m_persona;
+    Persona m_persona{Persona::NOT_SET};
     bool m_personaHasBeenSet = false;
   };
 

@@ -17,14 +17,11 @@ namespace Model
 {
 
   /**
-   * <p>Disassociate Agent Knowledge Base Request</p><p><h3>See Also:</h3>   <a
-   * href="http://docs.aws.amazon.com/goto/WebAPI/bedrock-agent-2023-06-05/DisassociateAgentKnowledgeBaseRequest">AWS
-   * API Reference</a></p>
    */
   class DisassociateAgentKnowledgeBaseRequest : public BedrockAgentRequest
   {
   public:
-    AWS_BEDROCKAGENT_API DisassociateAgentKnowledgeBaseRequest();
+    AWS_BEDROCKAGENT_API DisassociateAgentKnowledgeBaseRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,136 +32,42 @@ namespace Model
     AWS_BEDROCKAGENT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
-     * <p>Id generated at the server side when an Agent is created</p>
+     * <p>The unique identifier of the agent from which to disassociate the knowledge
+     * base.</p>
      */
-    inline const Aws::String& GetAgentId() const{ return m_agentId; }
-
-    /**
-     * <p>Id generated at the server side when an Agent is created</p>
-     */
+    inline const Aws::String& GetAgentId() const { return m_agentId; }
     inline bool AgentIdHasBeenSet() const { return m_agentIdHasBeenSet; }
+    template<typename AgentIdT = Aws::String>
+    void SetAgentId(AgentIdT&& value) { m_agentIdHasBeenSet = true; m_agentId = std::forward<AgentIdT>(value); }
+    template<typename AgentIdT = Aws::String>
+    DisassociateAgentKnowledgeBaseRequest& WithAgentId(AgentIdT&& value) { SetAgentId(std::forward<AgentIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Id generated at the server side when an Agent is created</p>
+     * <p>The version of the agent from which to disassociate the knowledge base.</p>
      */
-    inline void SetAgentId(const Aws::String& value) { m_agentIdHasBeenSet = true; m_agentId = value; }
-
-    /**
-     * <p>Id generated at the server side when an Agent is created</p>
-     */
-    inline void SetAgentId(Aws::String&& value) { m_agentIdHasBeenSet = true; m_agentId = std::move(value); }
-
-    /**
-     * <p>Id generated at the server side when an Agent is created</p>
-     */
-    inline void SetAgentId(const char* value) { m_agentIdHasBeenSet = true; m_agentId.assign(value); }
-
-    /**
-     * <p>Id generated at the server side when an Agent is created</p>
-     */
-    inline DisassociateAgentKnowledgeBaseRequest& WithAgentId(const Aws::String& value) { SetAgentId(value); return *this;}
-
-    /**
-     * <p>Id generated at the server side when an Agent is created</p>
-     */
-    inline DisassociateAgentKnowledgeBaseRequest& WithAgentId(Aws::String&& value) { SetAgentId(std::move(value)); return *this;}
-
-    /**
-     * <p>Id generated at the server side when an Agent is created</p>
-     */
-    inline DisassociateAgentKnowledgeBaseRequest& WithAgentId(const char* value) { SetAgentId(value); return *this;}
-
-
-    /**
-     * <p>Draft Version of the Agent.</p>
-     */
-    inline const Aws::String& GetAgentVersion() const{ return m_agentVersion; }
-
-    /**
-     * <p>Draft Version of the Agent.</p>
-     */
+    inline const Aws::String& GetAgentVersion() const { return m_agentVersion; }
     inline bool AgentVersionHasBeenSet() const { return m_agentVersionHasBeenSet; }
+    template<typename AgentVersionT = Aws::String>
+    void SetAgentVersion(AgentVersionT&& value) { m_agentVersionHasBeenSet = true; m_agentVersion = std::forward<AgentVersionT>(value); }
+    template<typename AgentVersionT = Aws::String>
+    DisassociateAgentKnowledgeBaseRequest& WithAgentVersion(AgentVersionT&& value) { SetAgentVersion(std::forward<AgentVersionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Draft Version of the Agent.</p>
+     * <p>The unique identifier of the knowledge base to disassociate.</p>
      */
-    inline void SetAgentVersion(const Aws::String& value) { m_agentVersionHasBeenSet = true; m_agentVersion = value; }
-
-    /**
-     * <p>Draft Version of the Agent.</p>
-     */
-    inline void SetAgentVersion(Aws::String&& value) { m_agentVersionHasBeenSet = true; m_agentVersion = std::move(value); }
-
-    /**
-     * <p>Draft Version of the Agent.</p>
-     */
-    inline void SetAgentVersion(const char* value) { m_agentVersionHasBeenSet = true; m_agentVersion.assign(value); }
-
-    /**
-     * <p>Draft Version of the Agent.</p>
-     */
-    inline DisassociateAgentKnowledgeBaseRequest& WithAgentVersion(const Aws::String& value) { SetAgentVersion(value); return *this;}
-
-    /**
-     * <p>Draft Version of the Agent.</p>
-     */
-    inline DisassociateAgentKnowledgeBaseRequest& WithAgentVersion(Aws::String&& value) { SetAgentVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>Draft Version of the Agent.</p>
-     */
-    inline DisassociateAgentKnowledgeBaseRequest& WithAgentVersion(const char* value) { SetAgentVersion(value); return *this;}
-
-
-    /**
-     * <p>Id generated at the server side when a Knowledge Base is associated to an
-     * Agent</p>
-     */
-    inline const Aws::String& GetKnowledgeBaseId() const{ return m_knowledgeBaseId; }
-
-    /**
-     * <p>Id generated at the server side when a Knowledge Base is associated to an
-     * Agent</p>
-     */
+    inline const Aws::String& GetKnowledgeBaseId() const { return m_knowledgeBaseId; }
     inline bool KnowledgeBaseIdHasBeenSet() const { return m_knowledgeBaseIdHasBeenSet; }
-
-    /**
-     * <p>Id generated at the server side when a Knowledge Base is associated to an
-     * Agent</p>
-     */
-    inline void SetKnowledgeBaseId(const Aws::String& value) { m_knowledgeBaseIdHasBeenSet = true; m_knowledgeBaseId = value; }
-
-    /**
-     * <p>Id generated at the server side when a Knowledge Base is associated to an
-     * Agent</p>
-     */
-    inline void SetKnowledgeBaseId(Aws::String&& value) { m_knowledgeBaseIdHasBeenSet = true; m_knowledgeBaseId = std::move(value); }
-
-    /**
-     * <p>Id generated at the server side when a Knowledge Base is associated to an
-     * Agent</p>
-     */
-    inline void SetKnowledgeBaseId(const char* value) { m_knowledgeBaseIdHasBeenSet = true; m_knowledgeBaseId.assign(value); }
-
-    /**
-     * <p>Id generated at the server side when a Knowledge Base is associated to an
-     * Agent</p>
-     */
-    inline DisassociateAgentKnowledgeBaseRequest& WithKnowledgeBaseId(const Aws::String& value) { SetKnowledgeBaseId(value); return *this;}
-
-    /**
-     * <p>Id generated at the server side when a Knowledge Base is associated to an
-     * Agent</p>
-     */
-    inline DisassociateAgentKnowledgeBaseRequest& WithKnowledgeBaseId(Aws::String&& value) { SetKnowledgeBaseId(std::move(value)); return *this;}
-
-    /**
-     * <p>Id generated at the server side when a Knowledge Base is associated to an
-     * Agent</p>
-     */
-    inline DisassociateAgentKnowledgeBaseRequest& WithKnowledgeBaseId(const char* value) { SetKnowledgeBaseId(value); return *this;}
-
+    template<typename KnowledgeBaseIdT = Aws::String>
+    void SetKnowledgeBaseId(KnowledgeBaseIdT&& value) { m_knowledgeBaseIdHasBeenSet = true; m_knowledgeBaseId = std::forward<KnowledgeBaseIdT>(value); }
+    template<typename KnowledgeBaseIdT = Aws::String>
+    DisassociateAgentKnowledgeBaseRequest& WithKnowledgeBaseId(KnowledgeBaseIdT&& value) { SetKnowledgeBaseId(std::forward<KnowledgeBaseIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_agentId;

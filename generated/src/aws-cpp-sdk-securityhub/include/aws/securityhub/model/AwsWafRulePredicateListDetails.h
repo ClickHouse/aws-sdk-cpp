@@ -36,61 +36,26 @@ namespace Model
   class AwsWafRulePredicateListDetails
   {
   public:
-    AWS_SECURITYHUB_API AwsWafRulePredicateListDetails();
+    AWS_SECURITYHUB_API AwsWafRulePredicateListDetails() = default;
     AWS_SECURITYHUB_API AwsWafRulePredicateListDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsWafRulePredicateListDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A unique identifier for a predicate in a rule, such as
      * <code>ByteMatchSetId</code> or <code>IPSetId</code>. </p>
      */
-    inline const Aws::String& GetDataId() const{ return m_dataId; }
-
-    /**
-     * <p>A unique identifier for a predicate in a rule, such as
-     * <code>ByteMatchSetId</code> or <code>IPSetId</code>. </p>
-     */
+    inline const Aws::String& GetDataId() const { return m_dataId; }
     inline bool DataIdHasBeenSet() const { return m_dataIdHasBeenSet; }
+    template<typename DataIdT = Aws::String>
+    void SetDataId(DataIdT&& value) { m_dataIdHasBeenSet = true; m_dataId = std::forward<DataIdT>(value); }
+    template<typename DataIdT = Aws::String>
+    AwsWafRulePredicateListDetails& WithDataId(DataIdT&& value) { SetDataId(std::forward<DataIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier for a predicate in a rule, such as
-     * <code>ByteMatchSetId</code> or <code>IPSetId</code>. </p>
-     */
-    inline void SetDataId(const Aws::String& value) { m_dataIdHasBeenSet = true; m_dataId = value; }
-
-    /**
-     * <p>A unique identifier for a predicate in a rule, such as
-     * <code>ByteMatchSetId</code> or <code>IPSetId</code>. </p>
-     */
-    inline void SetDataId(Aws::String&& value) { m_dataIdHasBeenSet = true; m_dataId = std::move(value); }
-
-    /**
-     * <p>A unique identifier for a predicate in a rule, such as
-     * <code>ByteMatchSetId</code> or <code>IPSetId</code>. </p>
-     */
-    inline void SetDataId(const char* value) { m_dataIdHasBeenSet = true; m_dataId.assign(value); }
-
-    /**
-     * <p>A unique identifier for a predicate in a rule, such as
-     * <code>ByteMatchSetId</code> or <code>IPSetId</code>. </p>
-     */
-    inline AwsWafRulePredicateListDetails& WithDataId(const Aws::String& value) { SetDataId(value); return *this;}
-
-    /**
-     * <p>A unique identifier for a predicate in a rule, such as
-     * <code>ByteMatchSetId</code> or <code>IPSetId</code>. </p>
-     */
-    inline AwsWafRulePredicateListDetails& WithDataId(Aws::String&& value) { SetDataId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier for a predicate in a rule, such as
-     * <code>ByteMatchSetId</code> or <code>IPSetId</code>. </p>
-     */
-    inline AwsWafRulePredicateListDetails& WithDataId(const char* value) { SetDataId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies if you want WAF to allow, block, or count requests based on the
      * settings in the <code>ByteMatchSet</code>, <code>IPSet</code>,
@@ -98,90 +63,30 @@ namespace Model
      * <code>RegexMatchSet</code>, <code>GeoMatchSet</code>, or
      * <code>SizeConstraintSet</code>. </p>
      */
-    inline bool GetNegated() const{ return m_negated; }
-
-    /**
-     * <p>Specifies if you want WAF to allow, block, or count requests based on the
-     * settings in the <code>ByteMatchSet</code>, <code>IPSet</code>,
-     * <code>SqlInjectionMatchSet</code>, <code>XssMatchSet</code>,
-     * <code>RegexMatchSet</code>, <code>GeoMatchSet</code>, or
-     * <code>SizeConstraintSet</code>. </p>
-     */
+    inline bool GetNegated() const { return m_negated; }
     inline bool NegatedHasBeenSet() const { return m_negatedHasBeenSet; }
-
-    /**
-     * <p>Specifies if you want WAF to allow, block, or count requests based on the
-     * settings in the <code>ByteMatchSet</code>, <code>IPSet</code>,
-     * <code>SqlInjectionMatchSet</code>, <code>XssMatchSet</code>,
-     * <code>RegexMatchSet</code>, <code>GeoMatchSet</code>, or
-     * <code>SizeConstraintSet</code>. </p>
-     */
     inline void SetNegated(bool value) { m_negatedHasBeenSet = true; m_negated = value; }
-
-    /**
-     * <p>Specifies if you want WAF to allow, block, or count requests based on the
-     * settings in the <code>ByteMatchSet</code>, <code>IPSet</code>,
-     * <code>SqlInjectionMatchSet</code>, <code>XssMatchSet</code>,
-     * <code>RegexMatchSet</code>, <code>GeoMatchSet</code>, or
-     * <code>SizeConstraintSet</code>. </p>
-     */
     inline AwsWafRulePredicateListDetails& WithNegated(bool value) { SetNegated(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The type of predicate in a rule, such as <code>ByteMatch</code> or
      * <code>IPSet</code>. </p>
      */
-    inline const Aws::String& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of predicate in a rule, such as <code>ByteMatch</code> or
-     * <code>IPSet</code>. </p>
-     */
+    inline const Aws::String& GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
-
-    /**
-     * <p>The type of predicate in a rule, such as <code>ByteMatch</code> or
-     * <code>IPSet</code>. </p>
-     */
-    inline void SetType(const Aws::String& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of predicate in a rule, such as <code>ByteMatch</code> or
-     * <code>IPSet</code>. </p>
-     */
-    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of predicate in a rule, such as <code>ByteMatch</code> or
-     * <code>IPSet</code>. </p>
-     */
-    inline void SetType(const char* value) { m_typeHasBeenSet = true; m_type.assign(value); }
-
-    /**
-     * <p>The type of predicate in a rule, such as <code>ByteMatch</code> or
-     * <code>IPSet</code>. </p>
-     */
-    inline AwsWafRulePredicateListDetails& WithType(const Aws::String& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of predicate in a rule, such as <code>ByteMatch</code> or
-     * <code>IPSet</code>. </p>
-     */
-    inline AwsWafRulePredicateListDetails& WithType(Aws::String&& value) { SetType(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of predicate in a rule, such as <code>ByteMatch</code> or
-     * <code>IPSet</code>. </p>
-     */
-    inline AwsWafRulePredicateListDetails& WithType(const char* value) { SetType(value); return *this;}
-
+    template<typename TypeT = Aws::String>
+    void SetType(TypeT&& value) { m_typeHasBeenSet = true; m_type = std::forward<TypeT>(value); }
+    template<typename TypeT = Aws::String>
+    AwsWafRulePredicateListDetails& WithType(TypeT&& value) { SetType(std::forward<TypeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_dataId;
     bool m_dataIdHasBeenSet = false;
 
-    bool m_negated;
+    bool m_negated{false};
     bool m_negatedHasBeenSet = false;
 
     Aws::String m_type;

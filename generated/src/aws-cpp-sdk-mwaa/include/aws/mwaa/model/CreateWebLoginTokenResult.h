@@ -27,111 +27,82 @@ namespace Model
   class CreateWebLoginTokenResult
   {
   public:
-    AWS_MWAA_API CreateWebLoginTokenResult();
+    AWS_MWAA_API CreateWebLoginTokenResult() = default;
     AWS_MWAA_API CreateWebLoginTokenResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_MWAA_API CreateWebLoginTokenResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
-    /**
-     * <p>The Airflow web server hostname for the environment.</p>
-     */
-    inline const Aws::String& GetWebServerHostname() const{ return m_webServerHostname; }
-
-    /**
-     * <p>The Airflow web server hostname for the environment.</p>
-     */
-    inline void SetWebServerHostname(const Aws::String& value) { m_webServerHostname = value; }
-
-    /**
-     * <p>The Airflow web server hostname for the environment.</p>
-     */
-    inline void SetWebServerHostname(Aws::String&& value) { m_webServerHostname = std::move(value); }
-
-    /**
-     * <p>The Airflow web server hostname for the environment.</p>
-     */
-    inline void SetWebServerHostname(const char* value) { m_webServerHostname.assign(value); }
-
-    /**
-     * <p>The Airflow web server hostname for the environment.</p>
-     */
-    inline CreateWebLoginTokenResult& WithWebServerHostname(const Aws::String& value) { SetWebServerHostname(value); return *this;}
-
-    /**
-     * <p>The Airflow web server hostname for the environment.</p>
-     */
-    inline CreateWebLoginTokenResult& WithWebServerHostname(Aws::String&& value) { SetWebServerHostname(std::move(value)); return *this;}
-
-    /**
-     * <p>The Airflow web server hostname for the environment.</p>
-     */
-    inline CreateWebLoginTokenResult& WithWebServerHostname(const char* value) { SetWebServerHostname(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An Airflow web server login token.</p>
      */
-    inline const Aws::String& GetWebToken() const{ return m_webToken; }
+    inline const Aws::String& GetWebToken() const { return m_webToken; }
+    template<typename WebTokenT = Aws::String>
+    void SetWebToken(WebTokenT&& value) { m_webTokenHasBeenSet = true; m_webToken = std::forward<WebTokenT>(value); }
+    template<typename WebTokenT = Aws::String>
+    CreateWebLoginTokenResult& WithWebToken(WebTokenT&& value) { SetWebToken(std::forward<WebTokenT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>An Airflow web server login token.</p>
+     * <p>The Airflow web server hostname for the environment.</p>
      */
-    inline void SetWebToken(const Aws::String& value) { m_webToken = value; }
+    inline const Aws::String& GetWebServerHostname() const { return m_webServerHostname; }
+    template<typename WebServerHostnameT = Aws::String>
+    void SetWebServerHostname(WebServerHostnameT&& value) { m_webServerHostnameHasBeenSet = true; m_webServerHostname = std::forward<WebServerHostnameT>(value); }
+    template<typename WebServerHostnameT = Aws::String>
+    CreateWebLoginTokenResult& WithWebServerHostname(WebServerHostnameT&& value) { SetWebServerHostname(std::forward<WebServerHostnameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>An Airflow web server login token.</p>
+     * <p>The name of the IAM identity creating the web login token. This might be an
+     * IAM user, or an assumed or federated identity. For example,
+     * <code>assumed-role/Admin/your-name</code>.</p>
      */
-    inline void SetWebToken(Aws::String&& value) { m_webToken = std::move(value); }
+    inline const Aws::String& GetIamIdentity() const { return m_iamIdentity; }
+    template<typename IamIdentityT = Aws::String>
+    void SetIamIdentity(IamIdentityT&& value) { m_iamIdentityHasBeenSet = true; m_iamIdentity = std::forward<IamIdentityT>(value); }
+    template<typename IamIdentityT = Aws::String>
+    CreateWebLoginTokenResult& WithIamIdentity(IamIdentityT&& value) { SetIamIdentity(std::forward<IamIdentityT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>An Airflow web server login token.</p>
+     * <p>The user name of the Apache Airflow identity creating the web login
+     * token.</p>
      */
-    inline void SetWebToken(const char* value) { m_webToken.assign(value); }
+    inline const Aws::String& GetAirflowIdentity() const { return m_airflowIdentity; }
+    template<typename AirflowIdentityT = Aws::String>
+    void SetAirflowIdentity(AirflowIdentityT&& value) { m_airflowIdentityHasBeenSet = true; m_airflowIdentity = std::forward<AirflowIdentityT>(value); }
+    template<typename AirflowIdentityT = Aws::String>
+    CreateWebLoginTokenResult& WithAirflowIdentity(AirflowIdentityT&& value) { SetAirflowIdentity(std::forward<AirflowIdentityT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An Airflow web server login token.</p>
-     */
-    inline CreateWebLoginTokenResult& WithWebToken(const Aws::String& value) { SetWebToken(value); return *this;}
-
-    /**
-     * <p>An Airflow web server login token.</p>
-     */
-    inline CreateWebLoginTokenResult& WithWebToken(Aws::String&& value) { SetWebToken(std::move(value)); return *this;}
-
-    /**
-     * <p>An Airflow web server login token.</p>
-     */
-    inline CreateWebLoginTokenResult& WithWebToken(const char* value) { SetWebToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline CreateWebLoginTokenResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline CreateWebLoginTokenResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline CreateWebLoginTokenResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    CreateWebLoginTokenResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::String m_webServerHostname;
-
     Aws::String m_webToken;
+    bool m_webTokenHasBeenSet = false;
+
+    Aws::String m_webServerHostname;
+    bool m_webServerHostnameHasBeenSet = false;
+
+    Aws::String m_iamIdentity;
+    bool m_iamIdentityHasBeenSet = false;
+
+    Aws::String m_airflowIdentity;
+    bool m_airflowIdentityHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

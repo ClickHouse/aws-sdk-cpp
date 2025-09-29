@@ -31,99 +31,43 @@ namespace Model
   class DataRetrievalRule
   {
   public:
-    AWS_GLACIER_API DataRetrievalRule();
+    AWS_GLACIER_API DataRetrievalRule() = default;
     AWS_GLACIER_API DataRetrievalRule(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLACIER_API DataRetrievalRule& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLACIER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The type of data retrieval policy to set.</p> <p>Valid values:
      * BytesPerHour|FreeTier|None</p>
      */
-    inline const Aws::String& GetStrategy() const{ return m_strategy; }
-
-    /**
-     * <p>The type of data retrieval policy to set.</p> <p>Valid values:
-     * BytesPerHour|FreeTier|None</p>
-     */
+    inline const Aws::String& GetStrategy() const { return m_strategy; }
     inline bool StrategyHasBeenSet() const { return m_strategyHasBeenSet; }
+    template<typename StrategyT = Aws::String>
+    void SetStrategy(StrategyT&& value) { m_strategyHasBeenSet = true; m_strategy = std::forward<StrategyT>(value); }
+    template<typename StrategyT = Aws::String>
+    DataRetrievalRule& WithStrategy(StrategyT&& value) { SetStrategy(std::forward<StrategyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of data retrieval policy to set.</p> <p>Valid values:
-     * BytesPerHour|FreeTier|None</p>
-     */
-    inline void SetStrategy(const Aws::String& value) { m_strategyHasBeenSet = true; m_strategy = value; }
-
-    /**
-     * <p>The type of data retrieval policy to set.</p> <p>Valid values:
-     * BytesPerHour|FreeTier|None</p>
-     */
-    inline void SetStrategy(Aws::String&& value) { m_strategyHasBeenSet = true; m_strategy = std::move(value); }
-
-    /**
-     * <p>The type of data retrieval policy to set.</p> <p>Valid values:
-     * BytesPerHour|FreeTier|None</p>
-     */
-    inline void SetStrategy(const char* value) { m_strategyHasBeenSet = true; m_strategy.assign(value); }
-
-    /**
-     * <p>The type of data retrieval policy to set.</p> <p>Valid values:
-     * BytesPerHour|FreeTier|None</p>
-     */
-    inline DataRetrievalRule& WithStrategy(const Aws::String& value) { SetStrategy(value); return *this;}
-
-    /**
-     * <p>The type of data retrieval policy to set.</p> <p>Valid values:
-     * BytesPerHour|FreeTier|None</p>
-     */
-    inline DataRetrievalRule& WithStrategy(Aws::String&& value) { SetStrategy(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of data retrieval policy to set.</p> <p>Valid values:
-     * BytesPerHour|FreeTier|None</p>
-     */
-    inline DataRetrievalRule& WithStrategy(const char* value) { SetStrategy(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of bytes that can be retrieved in an hour.</p> <p>This
      * field is required only if the value of the Strategy field is
      * <code>BytesPerHour</code>. Your PUT operation will be rejected if the Strategy
      * field is not set to <code>BytesPerHour</code> and you set this field.</p>
      */
-    inline long long GetBytesPerHour() const{ return m_bytesPerHour; }
-
-    /**
-     * <p>The maximum number of bytes that can be retrieved in an hour.</p> <p>This
-     * field is required only if the value of the Strategy field is
-     * <code>BytesPerHour</code>. Your PUT operation will be rejected if the Strategy
-     * field is not set to <code>BytesPerHour</code> and you set this field.</p>
-     */
+    inline long long GetBytesPerHour() const { return m_bytesPerHour; }
     inline bool BytesPerHourHasBeenSet() const { return m_bytesPerHourHasBeenSet; }
-
-    /**
-     * <p>The maximum number of bytes that can be retrieved in an hour.</p> <p>This
-     * field is required only if the value of the Strategy field is
-     * <code>BytesPerHour</code>. Your PUT operation will be rejected if the Strategy
-     * field is not set to <code>BytesPerHour</code> and you set this field.</p>
-     */
     inline void SetBytesPerHour(long long value) { m_bytesPerHourHasBeenSet = true; m_bytesPerHour = value; }
-
-    /**
-     * <p>The maximum number of bytes that can be retrieved in an hour.</p> <p>This
-     * field is required only if the value of the Strategy field is
-     * <code>BytesPerHour</code>. Your PUT operation will be rejected if the Strategy
-     * field is not set to <code>BytesPerHour</code> and you set this field.</p>
-     */
     inline DataRetrievalRule& WithBytesPerHour(long long value) { SetBytesPerHour(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_strategy;
     bool m_strategyHasBeenSet = false;
 
-    long long m_bytesPerHour;
+    long long m_bytesPerHour{0};
     bool m_bytesPerHourHasBeenSet = false;
   };
 

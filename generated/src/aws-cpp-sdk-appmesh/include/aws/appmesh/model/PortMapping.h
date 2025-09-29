@@ -31,69 +31,37 @@ namespace Model
   class PortMapping
   {
   public:
-    AWS_APPMESH_API PortMapping();
+    AWS_APPMESH_API PortMapping() = default;
     AWS_APPMESH_API PortMapping(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPMESH_API PortMapping& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPMESH_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The port used for the port mapping.</p>
      */
-    inline int GetPort() const{ return m_port; }
-
-    /**
-     * <p>The port used for the port mapping.</p>
-     */
+    inline int GetPort() const { return m_port; }
     inline bool PortHasBeenSet() const { return m_portHasBeenSet; }
-
-    /**
-     * <p>The port used for the port mapping.</p>
-     */
     inline void SetPort(int value) { m_portHasBeenSet = true; m_port = value; }
-
-    /**
-     * <p>The port used for the port mapping.</p>
-     */
     inline PortMapping& WithPort(int value) { SetPort(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The protocol used for the port mapping. Specify one protocol.</p>
      */
-    inline const PortProtocol& GetProtocol() const{ return m_protocol; }
-
-    /**
-     * <p>The protocol used for the port mapping. Specify one protocol.</p>
-     */
+    inline PortProtocol GetProtocol() const { return m_protocol; }
     inline bool ProtocolHasBeenSet() const { return m_protocolHasBeenSet; }
-
-    /**
-     * <p>The protocol used for the port mapping. Specify one protocol.</p>
-     */
-    inline void SetProtocol(const PortProtocol& value) { m_protocolHasBeenSet = true; m_protocol = value; }
-
-    /**
-     * <p>The protocol used for the port mapping. Specify one protocol.</p>
-     */
-    inline void SetProtocol(PortProtocol&& value) { m_protocolHasBeenSet = true; m_protocol = std::move(value); }
-
-    /**
-     * <p>The protocol used for the port mapping. Specify one protocol.</p>
-     */
-    inline PortMapping& WithProtocol(const PortProtocol& value) { SetProtocol(value); return *this;}
-
-    /**
-     * <p>The protocol used for the port mapping. Specify one protocol.</p>
-     */
-    inline PortMapping& WithProtocol(PortProtocol&& value) { SetProtocol(std::move(value)); return *this;}
-
+    inline void SetProtocol(PortProtocol value) { m_protocolHasBeenSet = true; m_protocol = value; }
+    inline PortMapping& WithProtocol(PortProtocol value) { SetProtocol(value); return *this;}
+    ///@}
   private:
 
-    int m_port;
+    int m_port{0};
     bool m_portHasBeenSet = false;
 
-    PortProtocol m_protocol;
+    PortProtocol m_protocol{PortProtocol::NOT_SET};
     bool m_protocolHasBeenSet = false;
   };
 

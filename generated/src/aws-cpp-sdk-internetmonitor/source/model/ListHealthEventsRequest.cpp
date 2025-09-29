@@ -15,18 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-ListHealthEventsRequest::ListHealthEventsRequest() : 
-    m_monitorNameHasBeenSet(false),
-    m_startTimeHasBeenSet(false),
-    m_endTimeHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_eventStatus(HealthEventStatus::NOT_SET),
-    m_eventStatusHasBeenSet(false)
-{
-}
-
 Aws::String ListHealthEventsRequest::SerializePayload() const
 {
   return {};
@@ -67,6 +55,13 @@ void ListHealthEventsRequest::AddQueryStringParameters(URI& uri) const
     {
       ss << HealthEventStatusMapper::GetNameForHealthEventStatus(m_eventStatus);
       uri.AddQueryStringParameter("EventStatus", ss.str());
+      ss.str("");
+    }
+
+    if(m_linkedAccountIdHasBeenSet)
+    {
+      ss << m_linkedAccountId;
+      uri.AddQueryStringParameter("LinkedAccountId", ss.str());
       ss.str("");
     }
 

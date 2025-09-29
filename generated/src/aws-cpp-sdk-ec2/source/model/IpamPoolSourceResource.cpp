@@ -20,21 +20,7 @@ namespace EC2
 namespace Model
 {
 
-IpamPoolSourceResource::IpamPoolSourceResource() : 
-    m_resourceIdHasBeenSet(false),
-    m_resourceType(IpamPoolSourceResourceType::NOT_SET),
-    m_resourceTypeHasBeenSet(false),
-    m_resourceRegionHasBeenSet(false),
-    m_resourceOwnerHasBeenSet(false)
-{
-}
-
-IpamPoolSourceResource::IpamPoolSourceResource(const XmlNode& xmlNode) : 
-    m_resourceIdHasBeenSet(false),
-    m_resourceType(IpamPoolSourceResourceType::NOT_SET),
-    m_resourceTypeHasBeenSet(false),
-    m_resourceRegionHasBeenSet(false),
-    m_resourceOwnerHasBeenSet(false)
+IpamPoolSourceResource::IpamPoolSourceResource(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -54,7 +40,7 @@ IpamPoolSourceResource& IpamPoolSourceResource::operator =(const XmlNode& xmlNod
     XmlNode resourceTypeNode = resultNode.FirstChild("resourceType");
     if(!resourceTypeNode.IsNull())
     {
-      m_resourceType = IpamPoolSourceResourceTypeMapper::GetIpamPoolSourceResourceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(resourceTypeNode.GetText()).c_str()).c_str());
+      m_resourceType = IpamPoolSourceResourceTypeMapper::GetIpamPoolSourceResourceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(resourceTypeNode.GetText()).c_str()));
       m_resourceTypeHasBeenSet = true;
     }
     XmlNode resourceRegionNode = resultNode.FirstChild("resourceRegion");
@@ -83,7 +69,7 @@ void IpamPoolSourceResource::OutputToStream(Aws::OStream& oStream, const char* l
 
   if(m_resourceTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ResourceType=" << IpamPoolSourceResourceTypeMapper::GetNameForIpamPoolSourceResourceType(m_resourceType) << "&";
+      oStream << location << index << locationValue << ".ResourceType=" << StringUtils::URLEncode(IpamPoolSourceResourceTypeMapper::GetNameForIpamPoolSourceResourceType(m_resourceType)) << "&";
   }
 
   if(m_resourceRegionHasBeenSet)
@@ -106,7 +92,7 @@ void IpamPoolSourceResource::OutputToStream(Aws::OStream& oStream, const char* l
   }
   if(m_resourceTypeHasBeenSet)
   {
-      oStream << location << ".ResourceType=" << IpamPoolSourceResourceTypeMapper::GetNameForIpamPoolSourceResourceType(m_resourceType) << "&";
+      oStream << location << ".ResourceType=" << StringUtils::URLEncode(IpamPoolSourceResourceTypeMapper::GetNameForIpamPoolSourceResourceType(m_resourceType)) << "&";
   }
   if(m_resourceRegionHasBeenSet)
   {

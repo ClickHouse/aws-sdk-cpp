@@ -18,35 +18,23 @@ namespace Inspector2
 namespace Model
 {
 
-DateFilter::DateFilter() : 
-    m_endInclusiveHasBeenSet(false),
-    m_startInclusiveHasBeenSet(false)
-{
-}
-
-DateFilter::DateFilter(JsonView jsonValue) : 
-    m_endInclusiveHasBeenSet(false),
-    m_startInclusiveHasBeenSet(false)
+DateFilter::DateFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 DateFilter& DateFilter::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("endInclusive"))
-  {
-    m_endInclusive = jsonValue.GetDouble("endInclusive");
-
-    m_endInclusiveHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("startInclusive"))
   {
     m_startInclusive = jsonValue.GetDouble("startInclusive");
-
     m_startInclusiveHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("endInclusive"))
+  {
+    m_endInclusive = jsonValue.GetDouble("endInclusive");
+    m_endInclusiveHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -54,14 +42,14 @@ JsonValue DateFilter::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_endInclusiveHasBeenSet)
-  {
-   payload.WithDouble("endInclusive", m_endInclusive.SecondsWithMSPrecision());
-  }
-
   if(m_startInclusiveHasBeenSet)
   {
    payload.WithDouble("startInclusive", m_startInclusive.SecondsWithMSPrecision());
+  }
+
+  if(m_endInclusiveHasBeenSet)
+  {
+   payload.WithDouble("endInclusive", m_endInclusive.SecondsWithMSPrecision());
   }
 
   return payload;

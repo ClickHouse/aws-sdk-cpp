@@ -32,138 +32,47 @@ namespace Model
   class TopicRefreshDetails
   {
   public:
-    AWS_QUICKSIGHT_API TopicRefreshDetails();
+    AWS_QUICKSIGHT_API TopicRefreshDetails() = default;
     AWS_QUICKSIGHT_API TopicRefreshDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API TopicRefreshDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the topic refresh.</p>
      */
-    inline const Aws::String& GetRefreshArn() const{ return m_refreshArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the topic refresh.</p>
-     */
+    inline const Aws::String& GetRefreshArn() const { return m_refreshArn; }
     inline bool RefreshArnHasBeenSet() const { return m_refreshArnHasBeenSet; }
+    template<typename RefreshArnT = Aws::String>
+    void SetRefreshArn(RefreshArnT&& value) { m_refreshArnHasBeenSet = true; m_refreshArn = std::forward<RefreshArnT>(value); }
+    template<typename RefreshArnT = Aws::String>
+    TopicRefreshDetails& WithRefreshArn(RefreshArnT&& value) { SetRefreshArn(std::forward<RefreshArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the topic refresh.</p>
-     */
-    inline void SetRefreshArn(const Aws::String& value) { m_refreshArnHasBeenSet = true; m_refreshArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the topic refresh.</p>
-     */
-    inline void SetRefreshArn(Aws::String&& value) { m_refreshArnHasBeenSet = true; m_refreshArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the topic refresh.</p>
-     */
-    inline void SetRefreshArn(const char* value) { m_refreshArnHasBeenSet = true; m_refreshArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the topic refresh.</p>
-     */
-    inline TopicRefreshDetails& WithRefreshArn(const Aws::String& value) { SetRefreshArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the topic refresh.</p>
-     */
-    inline TopicRefreshDetails& WithRefreshArn(Aws::String&& value) { SetRefreshArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the topic refresh.</p>
-     */
-    inline TopicRefreshDetails& WithRefreshArn(const char* value) { SetRefreshArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the refresh, which occurs as a result of topic creation or topic
      * update.</p>
      */
-    inline const Aws::String& GetRefreshId() const{ return m_refreshId; }
-
-    /**
-     * <p>The ID of the refresh, which occurs as a result of topic creation or topic
-     * update.</p>
-     */
+    inline const Aws::String& GetRefreshId() const { return m_refreshId; }
     inline bool RefreshIdHasBeenSet() const { return m_refreshIdHasBeenSet; }
+    template<typename RefreshIdT = Aws::String>
+    void SetRefreshId(RefreshIdT&& value) { m_refreshIdHasBeenSet = true; m_refreshId = std::forward<RefreshIdT>(value); }
+    template<typename RefreshIdT = Aws::String>
+    TopicRefreshDetails& WithRefreshId(RefreshIdT&& value) { SetRefreshId(std::forward<RefreshIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the refresh, which occurs as a result of topic creation or topic
-     * update.</p>
-     */
-    inline void SetRefreshId(const Aws::String& value) { m_refreshIdHasBeenSet = true; m_refreshId = value; }
-
-    /**
-     * <p>The ID of the refresh, which occurs as a result of topic creation or topic
-     * update.</p>
-     */
-    inline void SetRefreshId(Aws::String&& value) { m_refreshIdHasBeenSet = true; m_refreshId = std::move(value); }
-
-    /**
-     * <p>The ID of the refresh, which occurs as a result of topic creation or topic
-     * update.</p>
-     */
-    inline void SetRefreshId(const char* value) { m_refreshIdHasBeenSet = true; m_refreshId.assign(value); }
-
-    /**
-     * <p>The ID of the refresh, which occurs as a result of topic creation or topic
-     * update.</p>
-     */
-    inline TopicRefreshDetails& WithRefreshId(const Aws::String& value) { SetRefreshId(value); return *this;}
-
-    /**
-     * <p>The ID of the refresh, which occurs as a result of topic creation or topic
-     * update.</p>
-     */
-    inline TopicRefreshDetails& WithRefreshId(Aws::String&& value) { SetRefreshId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the refresh, which occurs as a result of topic creation or topic
-     * update.</p>
-     */
-    inline TopicRefreshDetails& WithRefreshId(const char* value) { SetRefreshId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the refresh job that indicates whether the job is still
      * running, completed successfully, or failed.</p>
      */
-    inline const TopicRefreshStatus& GetRefreshStatus() const{ return m_refreshStatus; }
-
-    /**
-     * <p>The status of the refresh job that indicates whether the job is still
-     * running, completed successfully, or failed.</p>
-     */
+    inline TopicRefreshStatus GetRefreshStatus() const { return m_refreshStatus; }
     inline bool RefreshStatusHasBeenSet() const { return m_refreshStatusHasBeenSet; }
-
-    /**
-     * <p>The status of the refresh job that indicates whether the job is still
-     * running, completed successfully, or failed.</p>
-     */
-    inline void SetRefreshStatus(const TopicRefreshStatus& value) { m_refreshStatusHasBeenSet = true; m_refreshStatus = value; }
-
-    /**
-     * <p>The status of the refresh job that indicates whether the job is still
-     * running, completed successfully, or failed.</p>
-     */
-    inline void SetRefreshStatus(TopicRefreshStatus&& value) { m_refreshStatusHasBeenSet = true; m_refreshStatus = std::move(value); }
-
-    /**
-     * <p>The status of the refresh job that indicates whether the job is still
-     * running, completed successfully, or failed.</p>
-     */
-    inline TopicRefreshDetails& WithRefreshStatus(const TopicRefreshStatus& value) { SetRefreshStatus(value); return *this;}
-
-    /**
-     * <p>The status of the refresh job that indicates whether the job is still
-     * running, completed successfully, or failed.</p>
-     */
-    inline TopicRefreshDetails& WithRefreshStatus(TopicRefreshStatus&& value) { SetRefreshStatus(std::move(value)); return *this;}
-
+    inline void SetRefreshStatus(TopicRefreshStatus value) { m_refreshStatusHasBeenSet = true; m_refreshStatus = value; }
+    inline TopicRefreshDetails& WithRefreshStatus(TopicRefreshStatus value) { SetRefreshStatus(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_refreshArn;
@@ -172,7 +81,7 @@ namespace Model
     Aws::String m_refreshId;
     bool m_refreshIdHasBeenSet = false;
 
-    TopicRefreshStatus m_refreshStatus;
+    TopicRefreshStatus m_refreshStatus{TopicRefreshStatus::NOT_SET};
     bool m_refreshStatusHasBeenSet = false;
   };
 

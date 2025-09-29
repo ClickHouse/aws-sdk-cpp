@@ -16,21 +16,22 @@ namespace Aws
 namespace SSOAdmin
 {
   /**
-   * <p>IAM Identity Center (successor to Single Sign-On) helps you securely create,
-   * or connect, your workforce identities and manage their access centrally across
-   * Amazon Web Services accounts and applications. IAM Identity Center is the
-   * recommended approach for workforce authentication and authorization in Amazon
-   * Web Services, for organizations of any size and type.</p>  <p>IAM Identity
-   * Center uses the <code>sso</code> and <code>identitystore</code> API
-   * namespaces.</p>  <p>This reference guide provides information on single
-   * sign-on operations which could be used for access management of Amazon Web
-   * Services accounts. For information about IAM Identity Center features, see the
-   * <a
+   * <p>IAM Identity Center is the Amazon Web Services solution for connecting your
+   * workforce users to Amazon Web Services managed applications and other Amazon Web
+   * Services resources. You can connect your existing identity provider and
+   * synchronize users and groups from your directory, or create and manage your
+   * users directly in IAM Identity Center. You can then use IAM Identity Center for
+   * either or both of the following:</p> <ul> <li> <p>User access to
+   * applications</p> </li> <li> <p>User access to Amazon Web Services accounts</p>
+   * </li> </ul> <p>This guide provides information about single sign-on operations
+   * that you can use for access to applications and Amazon Web Services accounts.
+   * For information about IAM Identity Center features, see the <a
    * href="https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html">IAM
-   * Identity Center User Guide</a>.</p> <p>Many operations in the IAM Identity
-   * Center APIs rely on identifiers for users and groups, known as principals. For
-   * more information about how to work with principals and principal IDs in IAM
-   * Identity Center, see the <a
+   * Identity Center User Guide</a>.</p>  <p>IAM Identity Center uses the
+   * <code>sso</code> and <code>identitystore</code> API namespaces.</p> 
+   * <p>Many API operations for IAM Identity Center rely on identifiers for users and
+   * groups, known as principals. For more information about how to work with
+   * principals and principal IDs in IAM Identity Center, see the <a
    * href="https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/welcome.html">Identity
    * Store API Reference</a>.</p>  <p>Amazon Web Services provides SDKs that
    * consist of libraries and sample code for various programming languages and
@@ -45,8 +46,8 @@ namespace SSOAdmin
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
 
       typedef SSOAdminClientConfiguration ClientConfigurationType;
       typedef SSOAdminEndpointProvider EndpointProviderType;
@@ -56,14 +57,14 @@ namespace SSOAdmin
         * is not specified, it will be initialized to default values.
         */
         SSOAdminClient(const Aws::SSOAdmin::SSOAdminClientConfiguration& clientConfiguration = Aws::SSOAdmin::SSOAdminClientConfiguration(),
-                       std::shared_ptr<SSOAdminEndpointProviderBase> endpointProvider = Aws::MakeShared<SSOAdminEndpointProvider>(ALLOCATION_TAG));
+                       std::shared_ptr<SSOAdminEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         SSOAdminClient(const Aws::Auth::AWSCredentials& credentials,
-                       std::shared_ptr<SSOAdminEndpointProviderBase> endpointProvider = Aws::MakeShared<SSOAdminEndpointProvider>(ALLOCATION_TAG),
+                       std::shared_ptr<SSOAdminEndpointProviderBase> endpointProvider = nullptr,
                        const Aws::SSOAdmin::SSOAdminClientConfiguration& clientConfiguration = Aws::SSOAdmin::SSOAdminClientConfiguration());
 
        /**
@@ -71,7 +72,7 @@ namespace SSOAdmin
         * the default http client factory will be used
         */
         SSOAdminClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                       std::shared_ptr<SSOAdminEndpointProviderBase> endpointProvider = Aws::MakeShared<SSOAdminEndpointProvider>(ALLOCATION_TAG),
+                       std::shared_ptr<SSOAdminEndpointProviderBase> endpointProvider = nullptr,
                        const Aws::SSOAdmin::SSOAdminClientConfiguration& clientConfiguration = Aws::SSOAdmin::SSOAdminClientConfiguration());
 
 
@@ -193,8 +194,17 @@ namespace SSOAdmin
         }
 
         /**
-         * <p>Creates an application in IAM Identity Center for the given application
-         * provider.</p><p><h3>See Also:</h3>   <a
+         * <p>Creates an OAuth 2.0 customer managed application in IAM Identity Center for
+         * the given application provider.</p>  <p>This API does not support creating
+         * SAML 2.0 customer managed applications or Amazon Web Services managed
+         * applications. To learn how to create an Amazon Web Services managed application,
+         * see the application user guide. You can create a SAML 2.0 customer managed
+         * application in the Amazon Web Services Management Console only. See <a
+         * href="https://docs.aws.amazon.com/singlesignon/latest/userguide/customermanagedapps-saml2-setup.html">Setting
+         * up customer managed SAML 2.0 applications</a>. For more information on these
+         * application types, see <a
+         * href="https://docs.aws.amazon.com/singlesignon/latest/userguide/awsapps.html">Amazon
+         * Web Services managed applications</a>.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/sso-admin-2020-07-20/CreateApplication">AWS
          * API Reference</a></p>
          */
@@ -255,13 +265,13 @@ namespace SSOAdmin
          * href="http://docs.aws.amazon.com/goto/WebAPI/sso-admin-2020-07-20/CreateInstance">AWS
          * API Reference</a></p>
          */
-        virtual Model::CreateInstanceOutcome CreateInstance(const Model::CreateInstanceRequest& request) const;
+        virtual Model::CreateInstanceOutcome CreateInstance(const Model::CreateInstanceRequest& request = {}) const;
 
         /**
          * A Callable wrapper for CreateInstance that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename CreateInstanceRequestT = Model::CreateInstanceRequest>
-        Model::CreateInstanceOutcomeCallable CreateInstanceCallable(const CreateInstanceRequestT& request) const
+        Model::CreateInstanceOutcomeCallable CreateInstanceCallable(const CreateInstanceRequestT& request = {}) const
         {
             return SubmitCallable(&SSOAdminClient::CreateInstance, request);
         }
@@ -270,7 +280,7 @@ namespace SSOAdmin
          * An Async wrapper for CreateInstance that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename CreateInstanceRequestT = Model::CreateInstanceRequest>
-        void CreateInstanceAsync(const CreateInstanceRequestT& request, const CreateInstanceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void CreateInstanceAsync(const CreateInstanceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const CreateInstanceRequestT& request = {}) const
         {
             return SubmitAsync(&SSOAdminClient::CreateInstance, request, handler, context);
         }
@@ -1124,6 +1134,36 @@ namespace SSOAdmin
         }
 
         /**
+         * <p>Retrieves the session configuration for an application in IAM Identity
+         * Center.</p> <p>The session configuration determines how users can access an
+         * application. This includes whether user background sessions are enabled. User
+         * background sessions allow users to start a job on a supported Amazon Web
+         * Services managed application without having to remain signed in to an active
+         * session while the job runs.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sso-admin-2020-07-20/GetApplicationSessionConfiguration">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetApplicationSessionConfigurationOutcome GetApplicationSessionConfiguration(const Model::GetApplicationSessionConfigurationRequest& request) const;
+
+        /**
+         * A Callable wrapper for GetApplicationSessionConfiguration that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetApplicationSessionConfigurationRequestT = Model::GetApplicationSessionConfigurationRequest>
+        Model::GetApplicationSessionConfigurationOutcomeCallable GetApplicationSessionConfigurationCallable(const GetApplicationSessionConfigurationRequestT& request) const
+        {
+            return SubmitCallable(&SSOAdminClient::GetApplicationSessionConfiguration, request);
+        }
+
+        /**
+         * An Async wrapper for GetApplicationSessionConfiguration that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetApplicationSessionConfigurationRequestT = Model::GetApplicationSessionConfigurationRequest>
+        void GetApplicationSessionConfigurationAsync(const GetApplicationSessionConfigurationRequestT& request, const GetApplicationSessionConfigurationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&SSOAdminClient::GetApplicationSessionConfiguration, request, handler, context);
+        }
+
+        /**
          * <p>Obtains the inline policy assigned to the permission set.</p><p><h3>See
          * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/sso-admin-2020-07-20/GetInlinePolicyForPermissionSet">AWS
@@ -1257,7 +1297,10 @@ namespace SSOAdmin
 
         /**
          * <p>Retrieves a list of the IAM Identity Center associated Amazon Web Services
-         * accounts that the principal has access to.</p><p><h3>See Also:</h3>   <a
+         * accounts that the principal has access to. This action must be called from the
+         * management account containing your organization instance of IAM Identity Center.
+         * This action is not valid for account instances of IAM Identity
+         * Center.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/sso-admin-2020-07-20/ListAccountAssignmentsForPrincipal">AWS
          * API Reference</a></p>
          */
@@ -1360,8 +1403,12 @@ namespace SSOAdmin
         }
 
         /**
-         * <p>Lists the applications to which a specified principal is
-         * assigned.</p><p><h3>See Also:</h3>   <a
+         * <p>Lists the applications to which a specified principal is assigned. You must
+         * provide a filter when calling this action from a member account against your
+         * organization instance of IAM Identity Center. A filter is not required when
+         * called from the management account against an organization instance of IAM
+         * Identity Center, or from a member account against an account instance of IAM
+         * Identity Center in the same account.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/sso-admin-2020-07-20/ListApplicationAssignmentsForPrincipal">AWS
          * API Reference</a></p>
          */
@@ -1442,13 +1489,13 @@ namespace SSOAdmin
          * href="http://docs.aws.amazon.com/goto/WebAPI/sso-admin-2020-07-20/ListApplicationProviders">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListApplicationProvidersOutcome ListApplicationProviders(const Model::ListApplicationProvidersRequest& request) const;
+        virtual Model::ListApplicationProvidersOutcome ListApplicationProviders(const Model::ListApplicationProvidersRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListApplicationProviders that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListApplicationProvidersRequestT = Model::ListApplicationProvidersRequest>
-        Model::ListApplicationProvidersOutcomeCallable ListApplicationProvidersCallable(const ListApplicationProvidersRequestT& request) const
+        Model::ListApplicationProvidersOutcomeCallable ListApplicationProvidersCallable(const ListApplicationProvidersRequestT& request = {}) const
         {
             return SubmitCallable(&SSOAdminClient::ListApplicationProviders, request);
         }
@@ -1457,17 +1504,18 @@ namespace SSOAdmin
          * An Async wrapper for ListApplicationProviders that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListApplicationProvidersRequestT = Model::ListApplicationProvidersRequest>
-        void ListApplicationProvidersAsync(const ListApplicationProvidersRequestT& request, const ListApplicationProvidersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListApplicationProvidersAsync(const ListApplicationProvidersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListApplicationProvidersRequestT& request = {}) const
         {
             return SubmitAsync(&SSOAdminClient::ListApplicationProviders, request, handler, context);
         }
 
         /**
          * <p>Lists all applications associated with the instance of IAM Identity Center.
-         * When listing applications for an instance in the management account, member
-         * accounts must use the <code>applicationAccount</code> parameter to filter the
-         * list to only applications created from that account.</p><p><h3>See Also:</h3>  
-         * <a
+         * When listing applications for an organization instance in the management
+         * account, member accounts must use the <code>applicationAccount</code> parameter
+         * to filter the list to only applications created from that account. When listing
+         * applications for an account instance in the same member account, a filter is not
+         * required.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/sso-admin-2020-07-20/ListApplications">AWS
          * API Reference</a></p>
          */
@@ -1524,13 +1572,13 @@ namespace SSOAdmin
          * href="http://docs.aws.amazon.com/goto/WebAPI/sso-admin-2020-07-20/ListInstances">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListInstancesOutcome ListInstances(const Model::ListInstancesRequest& request) const;
+        virtual Model::ListInstancesOutcome ListInstances(const Model::ListInstancesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListInstances that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListInstancesRequestT = Model::ListInstancesRequest>
-        Model::ListInstancesOutcomeCallable ListInstancesCallable(const ListInstancesRequestT& request) const
+        Model::ListInstancesOutcomeCallable ListInstancesCallable(const ListInstancesRequestT& request = {}) const
         {
             return SubmitCallable(&SSOAdminClient::ListInstances, request);
         }
@@ -1539,7 +1587,7 @@ namespace SSOAdmin
          * An Async wrapper for ListInstances that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListInstancesRequestT = Model::ListInstancesRequest>
-        void ListInstancesAsync(const ListInstancesRequestT& request, const ListInstancesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListInstancesAsync(const ListInstancesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListInstancesRequestT& request = {}) const
         {
             return SubmitAsync(&SSOAdminClient::ListInstances, request, handler, context);
         }
@@ -1813,7 +1861,43 @@ namespace SSOAdmin
         }
 
         /**
-         * <p>Adds a grant to an application.</p><p><h3>See Also:</h3>   <a
+         * <p>Creates a configuration for an application to use grants. Conceptually grants
+         * are authorization to request actions related to tokens. This configuration will
+         * be used when parties are requesting and receiving tokens during the trusted
+         * identity propagation process. For more information on the IAM Identity Center
+         * supported grant workflows, see <a
+         * href="https://docs.aws.amazon.com/singlesignon/latest/userguide/customermanagedapps-saml2-oauth2.html">SAML
+         * 2.0 and OAuth 2.0</a>.</p> <p>A grant is created between your applications and
+         * Identity Center instance which enables an application to use specified
+         * mechanisms to obtain tokens. These tokens are used by your applications to gain
+         * access to Amazon Web Services resources on behalf of users. The following
+         * elements are within these exchanges:</p> <ul> <li> <p> <b>Requester</b> - The
+         * application requesting access to Amazon Web Services resources.</p> </li> <li>
+         * <p> <b>Subject</b> - Typically the user that is requesting access to Amazon Web
+         * Services resources.</p> </li> <li> <p> <b>Grant</b> - Conceptually, a grant is
+         * authorization to access Amazon Web Services resources. These grants authorize
+         * token generation for authenticating access to the requester and for the request
+         * to make requests on behalf of the subjects. There are four types of grants:</p>
+         * <ul> <li> <p> <b>AuthorizationCode</b> - Allows an application to request
+         * authorization through a series of user-agent redirects.</p> </li> <li> <p>
+         * <b>JWT bearer </b> - Authorizes an application to exchange a JSON Web Token that
+         * came from an external identity provider. To learn more, see <a
+         * href="https://datatracker.ietf.org/doc/html/rfc6749">RFC 6479</a>.</p> </li>
+         * <li> <p> <b>Refresh token</b> - Enables application to request new access tokens
+         * to replace expiring or expired access tokens.</p> </li> <li> <p> <b>Exchange
+         * token</b> - A grant that requests tokens from the authorization server by
+         * providing a ‘subject’ token with access scope authorizing trusted identity
+         * propagation to this application. To learn more, see <a
+         * href="https://datatracker.ietf.org/doc/html/rfc8693">RFC 8693</a>.</p> </li>
+         * </ul> </li> <li> <p> <b>Authorization server</b> - IAM Identity Center requests
+         * tokens.</p> </li> </ul> <p>User credentials are never shared directly within
+         * these exchanges. Instead, applications use grants to request access tokens from
+         * IAM Identity Center. For more information, see <a
+         * href="https://datatracker.ietf.org/doc/html/rfc6749">RFC 6479</a>.</p> <p
+         * class="title"> <b>Use cases</b> </p> <ul> <li> <p>Connecting to custom
+         * applications.</p> </li> <li> <p>Configuring an Amazon Web Services service to
+         * make calls to another Amazon Web Services services using JWT tokens.</p> </li>
+         * </ul><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/sso-admin-2020-07-20/PutApplicationGrant">AWS
          * API Reference</a></p>
          */
@@ -1835,6 +1919,36 @@ namespace SSOAdmin
         void PutApplicationGrantAsync(const PutApplicationGrantRequestT& request, const PutApplicationGrantResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&SSOAdminClient::PutApplicationGrant, request, handler, context);
+        }
+
+        /**
+         * <p>Updates the session configuration for an application in IAM Identity
+         * Center.</p> <p>The session configuration determines how users can access an
+         * application. This includes whether user background sessions are enabled. User
+         * background sessions allow users to start a job on a supported Amazon Web
+         * Services managed application without having to remain signed in to an active
+         * session while the job runs.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sso-admin-2020-07-20/PutApplicationSessionConfiguration">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::PutApplicationSessionConfigurationOutcome PutApplicationSessionConfiguration(const Model::PutApplicationSessionConfigurationRequest& request) const;
+
+        /**
+         * A Callable wrapper for PutApplicationSessionConfiguration that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename PutApplicationSessionConfigurationRequestT = Model::PutApplicationSessionConfigurationRequest>
+        Model::PutApplicationSessionConfigurationOutcomeCallable PutApplicationSessionConfigurationCallable(const PutApplicationSessionConfigurationRequestT& request) const
+        {
+            return SubmitCallable(&SSOAdminClient::PutApplicationSessionConfiguration, request);
+        }
+
+        /**
+         * An Async wrapper for PutApplicationSessionConfiguration that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename PutApplicationSessionConfigurationRequestT = Model::PutApplicationSessionConfigurationRequest>
+        void PutApplicationSessionConfigurationAsync(const PutApplicationSessionConfigurationRequestT& request, const PutApplicationSessionConfigurationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&SSOAdminClient::PutApplicationSessionConfiguration, request, handler, context);
         }
 
         /**
@@ -2093,7 +2207,6 @@ namespace SSOAdmin
       void init(const SSOAdminClientConfiguration& clientConfiguration);
 
       SSOAdminClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<SSOAdminEndpointProviderBase> m_endpointProvider;
   };
 

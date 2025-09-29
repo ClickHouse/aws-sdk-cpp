@@ -18,31 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-WaterfallChartConfiguration::WaterfallChartConfiguration() : 
-    m_fieldWellsHasBeenSet(false),
-    m_sortConfigurationHasBeenSet(false),
-    m_waterfallChartOptionsHasBeenSet(false),
-    m_categoryAxisLabelOptionsHasBeenSet(false),
-    m_categoryAxisDisplayOptionsHasBeenSet(false),
-    m_primaryYAxisLabelOptionsHasBeenSet(false),
-    m_primaryYAxisDisplayOptionsHasBeenSet(false),
-    m_legendHasBeenSet(false),
-    m_dataLabelsHasBeenSet(false),
-    m_visualPaletteHasBeenSet(false)
-{
-}
-
-WaterfallChartConfiguration::WaterfallChartConfiguration(JsonView jsonValue) : 
-    m_fieldWellsHasBeenSet(false),
-    m_sortConfigurationHasBeenSet(false),
-    m_waterfallChartOptionsHasBeenSet(false),
-    m_categoryAxisLabelOptionsHasBeenSet(false),
-    m_categoryAxisDisplayOptionsHasBeenSet(false),
-    m_primaryYAxisLabelOptionsHasBeenSet(false),
-    m_primaryYAxisDisplayOptionsHasBeenSet(false),
-    m_legendHasBeenSet(false),
-    m_dataLabelsHasBeenSet(false),
-    m_visualPaletteHasBeenSet(false)
+WaterfallChartConfiguration::WaterfallChartConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -52,73 +28,63 @@ WaterfallChartConfiguration& WaterfallChartConfiguration::operator =(JsonView js
   if(jsonValue.ValueExists("FieldWells"))
   {
     m_fieldWells = jsonValue.GetObject("FieldWells");
-
     m_fieldWellsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SortConfiguration"))
   {
     m_sortConfiguration = jsonValue.GetObject("SortConfiguration");
-
     m_sortConfigurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("WaterfallChartOptions"))
   {
     m_waterfallChartOptions = jsonValue.GetObject("WaterfallChartOptions");
-
     m_waterfallChartOptionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CategoryAxisLabelOptions"))
   {
     m_categoryAxisLabelOptions = jsonValue.GetObject("CategoryAxisLabelOptions");
-
     m_categoryAxisLabelOptionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CategoryAxisDisplayOptions"))
   {
     m_categoryAxisDisplayOptions = jsonValue.GetObject("CategoryAxisDisplayOptions");
-
     m_categoryAxisDisplayOptionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PrimaryYAxisLabelOptions"))
   {
     m_primaryYAxisLabelOptions = jsonValue.GetObject("PrimaryYAxisLabelOptions");
-
     m_primaryYAxisLabelOptionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PrimaryYAxisDisplayOptions"))
   {
     m_primaryYAxisDisplayOptions = jsonValue.GetObject("PrimaryYAxisDisplayOptions");
-
     m_primaryYAxisDisplayOptionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Legend"))
   {
     m_legend = jsonValue.GetObject("Legend");
-
     m_legendHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DataLabels"))
   {
     m_dataLabels = jsonValue.GetObject("DataLabels");
-
     m_dataLabelsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("VisualPalette"))
   {
     m_visualPalette = jsonValue.GetObject("VisualPalette");
-
     m_visualPaletteHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("ColorConfiguration"))
+  {
+    m_colorConfiguration = jsonValue.GetObject("ColorConfiguration");
+    m_colorConfigurationHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("Interactions"))
+  {
+    m_interactions = jsonValue.GetObject("Interactions");
+    m_interactionsHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -183,6 +149,18 @@ JsonValue WaterfallChartConfiguration::Jsonize() const
   if(m_visualPaletteHasBeenSet)
   {
    payload.WithObject("VisualPalette", m_visualPalette.Jsonize());
+
+  }
+
+  if(m_colorConfigurationHasBeenSet)
+  {
+   payload.WithObject("ColorConfiguration", m_colorConfiguration.Jsonize());
+
+  }
+
+  if(m_interactionsHasBeenSet)
+  {
+   payload.WithObject("Interactions", m_interactions.Jsonize());
 
   }
 

@@ -22,7 +22,7 @@ namespace Model
   class DeleteInsightRulesRequest : public CloudWatchRequest
   {
   public:
-    AWS_CLOUDWATCH_API DeleteInsightRulesRequest();
+    AWS_CLOUDWATCH_API DeleteInsightRulesRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,69 +37,21 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>An array of the rule names to delete. If you need to find out the names of
      * your rules, use <a
      * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeInsightRules.html">DescribeInsightRules</a>.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetRuleNames() const{ return m_ruleNames; }
-
-    /**
-     * <p>An array of the rule names to delete. If you need to find out the names of
-     * your rules, use <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeInsightRules.html">DescribeInsightRules</a>.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetRuleNames() const { return m_ruleNames; }
     inline bool RuleNamesHasBeenSet() const { return m_ruleNamesHasBeenSet; }
-
-    /**
-     * <p>An array of the rule names to delete. If you need to find out the names of
-     * your rules, use <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeInsightRules.html">DescribeInsightRules</a>.</p>
-     */
-    inline void SetRuleNames(const Aws::Vector<Aws::String>& value) { m_ruleNamesHasBeenSet = true; m_ruleNames = value; }
-
-    /**
-     * <p>An array of the rule names to delete. If you need to find out the names of
-     * your rules, use <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeInsightRules.html">DescribeInsightRules</a>.</p>
-     */
-    inline void SetRuleNames(Aws::Vector<Aws::String>&& value) { m_ruleNamesHasBeenSet = true; m_ruleNames = std::move(value); }
-
-    /**
-     * <p>An array of the rule names to delete. If you need to find out the names of
-     * your rules, use <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeInsightRules.html">DescribeInsightRules</a>.</p>
-     */
-    inline DeleteInsightRulesRequest& WithRuleNames(const Aws::Vector<Aws::String>& value) { SetRuleNames(value); return *this;}
-
-    /**
-     * <p>An array of the rule names to delete. If you need to find out the names of
-     * your rules, use <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeInsightRules.html">DescribeInsightRules</a>.</p>
-     */
-    inline DeleteInsightRulesRequest& WithRuleNames(Aws::Vector<Aws::String>&& value) { SetRuleNames(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of the rule names to delete. If you need to find out the names of
-     * your rules, use <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeInsightRules.html">DescribeInsightRules</a>.</p>
-     */
-    inline DeleteInsightRulesRequest& AddRuleNames(const Aws::String& value) { m_ruleNamesHasBeenSet = true; m_ruleNames.push_back(value); return *this; }
-
-    /**
-     * <p>An array of the rule names to delete. If you need to find out the names of
-     * your rules, use <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeInsightRules.html">DescribeInsightRules</a>.</p>
-     */
-    inline DeleteInsightRulesRequest& AddRuleNames(Aws::String&& value) { m_ruleNamesHasBeenSet = true; m_ruleNames.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>An array of the rule names to delete. If you need to find out the names of
-     * your rules, use <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeInsightRules.html">DescribeInsightRules</a>.</p>
-     */
-    inline DeleteInsightRulesRequest& AddRuleNames(const char* value) { m_ruleNamesHasBeenSet = true; m_ruleNames.push_back(value); return *this; }
-
+    template<typename RuleNamesT = Aws::Vector<Aws::String>>
+    void SetRuleNames(RuleNamesT&& value) { m_ruleNamesHasBeenSet = true; m_ruleNames = std::forward<RuleNamesT>(value); }
+    template<typename RuleNamesT = Aws::Vector<Aws::String>>
+    DeleteInsightRulesRequest& WithRuleNames(RuleNamesT&& value) { SetRuleNames(std::forward<RuleNamesT>(value)); return *this;}
+    template<typename RuleNamesT = Aws::String>
+    DeleteInsightRulesRequest& AddRuleNames(RuleNamesT&& value) { m_ruleNamesHasBeenSet = true; m_ruleNames.emplace_back(std::forward<RuleNamesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_ruleNames;

@@ -21,7 +21,7 @@ namespace Model
   class GetKeyspaceRequest : public KeyspacesRequest
   {
   public:
-    AWS_KEYSPACES_API GetKeyspaceRequest();
+    AWS_KEYSPACES_API GetKeyspaceRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_KEYSPACES_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the keyspace.</p>
      */
-    inline const Aws::String& GetKeyspaceName() const{ return m_keyspaceName; }
-
-    /**
-     * <p>The name of the keyspace.</p>
-     */
+    inline const Aws::String& GetKeyspaceName() const { return m_keyspaceName; }
     inline bool KeyspaceNameHasBeenSet() const { return m_keyspaceNameHasBeenSet; }
-
-    /**
-     * <p>The name of the keyspace.</p>
-     */
-    inline void SetKeyspaceName(const Aws::String& value) { m_keyspaceNameHasBeenSet = true; m_keyspaceName = value; }
-
-    /**
-     * <p>The name of the keyspace.</p>
-     */
-    inline void SetKeyspaceName(Aws::String&& value) { m_keyspaceNameHasBeenSet = true; m_keyspaceName = std::move(value); }
-
-    /**
-     * <p>The name of the keyspace.</p>
-     */
-    inline void SetKeyspaceName(const char* value) { m_keyspaceNameHasBeenSet = true; m_keyspaceName.assign(value); }
-
-    /**
-     * <p>The name of the keyspace.</p>
-     */
-    inline GetKeyspaceRequest& WithKeyspaceName(const Aws::String& value) { SetKeyspaceName(value); return *this;}
-
-    /**
-     * <p>The name of the keyspace.</p>
-     */
-    inline GetKeyspaceRequest& WithKeyspaceName(Aws::String&& value) { SetKeyspaceName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the keyspace.</p>
-     */
-    inline GetKeyspaceRequest& WithKeyspaceName(const char* value) { SetKeyspaceName(value); return *this;}
-
+    template<typename KeyspaceNameT = Aws::String>
+    void SetKeyspaceName(KeyspaceNameT&& value) { m_keyspaceNameHasBeenSet = true; m_keyspaceName = std::forward<KeyspaceNameT>(value); }
+    template<typename KeyspaceNameT = Aws::String>
+    GetKeyspaceRequest& WithKeyspaceName(KeyspaceNameT&& value) { SetKeyspaceName(std::forward<KeyspaceNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_keyspaceName;

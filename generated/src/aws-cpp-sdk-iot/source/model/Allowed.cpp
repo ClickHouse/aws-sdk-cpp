@@ -18,13 +18,7 @@ namespace IoT
 namespace Model
 {
 
-Allowed::Allowed() : 
-    m_policiesHasBeenSet(false)
-{
-}
-
-Allowed::Allowed(JsonView jsonValue) : 
-    m_policiesHasBeenSet(false)
+Allowed::Allowed(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ Allowed& Allowed::operator =(JsonView jsonValue)
     }
     m_policiesHasBeenSet = true;
   }
-
   return *this;
 }
 

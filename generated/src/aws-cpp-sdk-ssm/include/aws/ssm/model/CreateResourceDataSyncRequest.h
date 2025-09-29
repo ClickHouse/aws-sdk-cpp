@@ -23,7 +23,7 @@ namespace Model
   class CreateResourceDataSyncRequest : public SSMRequest
   {
   public:
-    AWS_SSM_API CreateResourceDataSyncRequest();
+    AWS_SSM_API CreateResourceDataSyncRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,84 +36,32 @@ namespace Model
     AWS_SSM_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>A name for the configuration.</p>
      */
-    inline const Aws::String& GetSyncName() const{ return m_syncName; }
-
-    /**
-     * <p>A name for the configuration.</p>
-     */
+    inline const Aws::String& GetSyncName() const { return m_syncName; }
     inline bool SyncNameHasBeenSet() const { return m_syncNameHasBeenSet; }
+    template<typename SyncNameT = Aws::String>
+    void SetSyncName(SyncNameT&& value) { m_syncNameHasBeenSet = true; m_syncName = std::forward<SyncNameT>(value); }
+    template<typename SyncNameT = Aws::String>
+    CreateResourceDataSyncRequest& WithSyncName(SyncNameT&& value) { SetSyncName(std::forward<SyncNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A name for the configuration.</p>
-     */
-    inline void SetSyncName(const Aws::String& value) { m_syncNameHasBeenSet = true; m_syncName = value; }
-
-    /**
-     * <p>A name for the configuration.</p>
-     */
-    inline void SetSyncName(Aws::String&& value) { m_syncNameHasBeenSet = true; m_syncName = std::move(value); }
-
-    /**
-     * <p>A name for the configuration.</p>
-     */
-    inline void SetSyncName(const char* value) { m_syncNameHasBeenSet = true; m_syncName.assign(value); }
-
-    /**
-     * <p>A name for the configuration.</p>
-     */
-    inline CreateResourceDataSyncRequest& WithSyncName(const Aws::String& value) { SetSyncName(value); return *this;}
-
-    /**
-     * <p>A name for the configuration.</p>
-     */
-    inline CreateResourceDataSyncRequest& WithSyncName(Aws::String&& value) { SetSyncName(std::move(value)); return *this;}
-
-    /**
-     * <p>A name for the configuration.</p>
-     */
-    inline CreateResourceDataSyncRequest& WithSyncName(const char* value) { SetSyncName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Amazon S3 configuration details for the sync. This parameter is required if
      * the <code>SyncType</code> value is SyncToDestination.</p>
      */
-    inline const ResourceDataSyncS3Destination& GetS3Destination() const{ return m_s3Destination; }
-
-    /**
-     * <p>Amazon S3 configuration details for the sync. This parameter is required if
-     * the <code>SyncType</code> value is SyncToDestination.</p>
-     */
+    inline const ResourceDataSyncS3Destination& GetS3Destination() const { return m_s3Destination; }
     inline bool S3DestinationHasBeenSet() const { return m_s3DestinationHasBeenSet; }
+    template<typename S3DestinationT = ResourceDataSyncS3Destination>
+    void SetS3Destination(S3DestinationT&& value) { m_s3DestinationHasBeenSet = true; m_s3Destination = std::forward<S3DestinationT>(value); }
+    template<typename S3DestinationT = ResourceDataSyncS3Destination>
+    CreateResourceDataSyncRequest& WithS3Destination(S3DestinationT&& value) { SetS3Destination(std::forward<S3DestinationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Amazon S3 configuration details for the sync. This parameter is required if
-     * the <code>SyncType</code> value is SyncToDestination.</p>
-     */
-    inline void SetS3Destination(const ResourceDataSyncS3Destination& value) { m_s3DestinationHasBeenSet = true; m_s3Destination = value; }
-
-    /**
-     * <p>Amazon S3 configuration details for the sync. This parameter is required if
-     * the <code>SyncType</code> value is SyncToDestination.</p>
-     */
-    inline void SetS3Destination(ResourceDataSyncS3Destination&& value) { m_s3DestinationHasBeenSet = true; m_s3Destination = std::move(value); }
-
-    /**
-     * <p>Amazon S3 configuration details for the sync. This parameter is required if
-     * the <code>SyncType</code> value is SyncToDestination.</p>
-     */
-    inline CreateResourceDataSyncRequest& WithS3Destination(const ResourceDataSyncS3Destination& value) { SetS3Destination(value); return *this;}
-
-    /**
-     * <p>Amazon S3 configuration details for the sync. This parameter is required if
-     * the <code>SyncType</code> value is SyncToDestination.</p>
-     */
-    inline CreateResourceDataSyncRequest& WithS3Destination(ResourceDataSyncS3Destination&& value) { SetS3Destination(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Specify <code>SyncToDestination</code> to create a resource data sync that
      * synchronizes data to an S3 bucket for Inventory. If you specify
@@ -125,136 +73,26 @@ namespace Model
      * for <code>SyncSource</code>. The default value is
      * <code>SyncToDestination</code>.</p>
      */
-    inline const Aws::String& GetSyncType() const{ return m_syncType; }
-
-    /**
-     * <p>Specify <code>SyncToDestination</code> to create a resource data sync that
-     * synchronizes data to an S3 bucket for Inventory. If you specify
-     * <code>SyncToDestination</code>, you must provide a value for
-     * <code>S3Destination</code>. Specify <code>SyncFromSource</code> to synchronize
-     * data from a single account and multiple Regions, or multiple Amazon Web Services
-     * accounts and Amazon Web Services Regions, as listed in Organizations for
-     * Explorer. If you specify <code>SyncFromSource</code>, you must provide a value
-     * for <code>SyncSource</code>. The default value is
-     * <code>SyncToDestination</code>.</p>
-     */
+    inline const Aws::String& GetSyncType() const { return m_syncType; }
     inline bool SyncTypeHasBeenSet() const { return m_syncTypeHasBeenSet; }
+    template<typename SyncTypeT = Aws::String>
+    void SetSyncType(SyncTypeT&& value) { m_syncTypeHasBeenSet = true; m_syncType = std::forward<SyncTypeT>(value); }
+    template<typename SyncTypeT = Aws::String>
+    CreateResourceDataSyncRequest& WithSyncType(SyncTypeT&& value) { SetSyncType(std::forward<SyncTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specify <code>SyncToDestination</code> to create a resource data sync that
-     * synchronizes data to an S3 bucket for Inventory. If you specify
-     * <code>SyncToDestination</code>, you must provide a value for
-     * <code>S3Destination</code>. Specify <code>SyncFromSource</code> to synchronize
-     * data from a single account and multiple Regions, or multiple Amazon Web Services
-     * accounts and Amazon Web Services Regions, as listed in Organizations for
-     * Explorer. If you specify <code>SyncFromSource</code>, you must provide a value
-     * for <code>SyncSource</code>. The default value is
-     * <code>SyncToDestination</code>.</p>
-     */
-    inline void SetSyncType(const Aws::String& value) { m_syncTypeHasBeenSet = true; m_syncType = value; }
-
-    /**
-     * <p>Specify <code>SyncToDestination</code> to create a resource data sync that
-     * synchronizes data to an S3 bucket for Inventory. If you specify
-     * <code>SyncToDestination</code>, you must provide a value for
-     * <code>S3Destination</code>. Specify <code>SyncFromSource</code> to synchronize
-     * data from a single account and multiple Regions, or multiple Amazon Web Services
-     * accounts and Amazon Web Services Regions, as listed in Organizations for
-     * Explorer. If you specify <code>SyncFromSource</code>, you must provide a value
-     * for <code>SyncSource</code>. The default value is
-     * <code>SyncToDestination</code>.</p>
-     */
-    inline void SetSyncType(Aws::String&& value) { m_syncTypeHasBeenSet = true; m_syncType = std::move(value); }
-
-    /**
-     * <p>Specify <code>SyncToDestination</code> to create a resource data sync that
-     * synchronizes data to an S3 bucket for Inventory. If you specify
-     * <code>SyncToDestination</code>, you must provide a value for
-     * <code>S3Destination</code>. Specify <code>SyncFromSource</code> to synchronize
-     * data from a single account and multiple Regions, or multiple Amazon Web Services
-     * accounts and Amazon Web Services Regions, as listed in Organizations for
-     * Explorer. If you specify <code>SyncFromSource</code>, you must provide a value
-     * for <code>SyncSource</code>. The default value is
-     * <code>SyncToDestination</code>.</p>
-     */
-    inline void SetSyncType(const char* value) { m_syncTypeHasBeenSet = true; m_syncType.assign(value); }
-
-    /**
-     * <p>Specify <code>SyncToDestination</code> to create a resource data sync that
-     * synchronizes data to an S3 bucket for Inventory. If you specify
-     * <code>SyncToDestination</code>, you must provide a value for
-     * <code>S3Destination</code>. Specify <code>SyncFromSource</code> to synchronize
-     * data from a single account and multiple Regions, or multiple Amazon Web Services
-     * accounts and Amazon Web Services Regions, as listed in Organizations for
-     * Explorer. If you specify <code>SyncFromSource</code>, you must provide a value
-     * for <code>SyncSource</code>. The default value is
-     * <code>SyncToDestination</code>.</p>
-     */
-    inline CreateResourceDataSyncRequest& WithSyncType(const Aws::String& value) { SetSyncType(value); return *this;}
-
-    /**
-     * <p>Specify <code>SyncToDestination</code> to create a resource data sync that
-     * synchronizes data to an S3 bucket for Inventory. If you specify
-     * <code>SyncToDestination</code>, you must provide a value for
-     * <code>S3Destination</code>. Specify <code>SyncFromSource</code> to synchronize
-     * data from a single account and multiple Regions, or multiple Amazon Web Services
-     * accounts and Amazon Web Services Regions, as listed in Organizations for
-     * Explorer. If you specify <code>SyncFromSource</code>, you must provide a value
-     * for <code>SyncSource</code>. The default value is
-     * <code>SyncToDestination</code>.</p>
-     */
-    inline CreateResourceDataSyncRequest& WithSyncType(Aws::String&& value) { SetSyncType(std::move(value)); return *this;}
-
-    /**
-     * <p>Specify <code>SyncToDestination</code> to create a resource data sync that
-     * synchronizes data to an S3 bucket for Inventory. If you specify
-     * <code>SyncToDestination</code>, you must provide a value for
-     * <code>S3Destination</code>. Specify <code>SyncFromSource</code> to synchronize
-     * data from a single account and multiple Regions, or multiple Amazon Web Services
-     * accounts and Amazon Web Services Regions, as listed in Organizations for
-     * Explorer. If you specify <code>SyncFromSource</code>, you must provide a value
-     * for <code>SyncSource</code>. The default value is
-     * <code>SyncToDestination</code>.</p>
-     */
-    inline CreateResourceDataSyncRequest& WithSyncType(const char* value) { SetSyncType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specify information about the data sources to synchronize. This parameter is
      * required if the <code>SyncType</code> value is SyncFromSource.</p>
      */
-    inline const ResourceDataSyncSource& GetSyncSource() const{ return m_syncSource; }
-
-    /**
-     * <p>Specify information about the data sources to synchronize. This parameter is
-     * required if the <code>SyncType</code> value is SyncFromSource.</p>
-     */
+    inline const ResourceDataSyncSource& GetSyncSource() const { return m_syncSource; }
     inline bool SyncSourceHasBeenSet() const { return m_syncSourceHasBeenSet; }
-
-    /**
-     * <p>Specify information about the data sources to synchronize. This parameter is
-     * required if the <code>SyncType</code> value is SyncFromSource.</p>
-     */
-    inline void SetSyncSource(const ResourceDataSyncSource& value) { m_syncSourceHasBeenSet = true; m_syncSource = value; }
-
-    /**
-     * <p>Specify information about the data sources to synchronize. This parameter is
-     * required if the <code>SyncType</code> value is SyncFromSource.</p>
-     */
-    inline void SetSyncSource(ResourceDataSyncSource&& value) { m_syncSourceHasBeenSet = true; m_syncSource = std::move(value); }
-
-    /**
-     * <p>Specify information about the data sources to synchronize. This parameter is
-     * required if the <code>SyncType</code> value is SyncFromSource.</p>
-     */
-    inline CreateResourceDataSyncRequest& WithSyncSource(const ResourceDataSyncSource& value) { SetSyncSource(value); return *this;}
-
-    /**
-     * <p>Specify information about the data sources to synchronize. This parameter is
-     * required if the <code>SyncType</code> value is SyncFromSource.</p>
-     */
-    inline CreateResourceDataSyncRequest& WithSyncSource(ResourceDataSyncSource&& value) { SetSyncSource(std::move(value)); return *this;}
-
+    template<typename SyncSourceT = ResourceDataSyncSource>
+    void SetSyncSource(SyncSourceT&& value) { m_syncSourceHasBeenSet = true; m_syncSource = std::forward<SyncSourceT>(value); }
+    template<typename SyncSourceT = ResourceDataSyncSource>
+    CreateResourceDataSyncRequest& WithSyncSource(SyncSourceT&& value) { SetSyncSource(std::forward<SyncSourceT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_syncName;

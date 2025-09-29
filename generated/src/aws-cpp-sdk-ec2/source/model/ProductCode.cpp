@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-ProductCode::ProductCode() : 
-    m_productCodeIdHasBeenSet(false),
-    m_productCodeType(ProductCodeValues::NOT_SET),
-    m_productCodeTypeHasBeenSet(false)
-{
-}
-
-ProductCode::ProductCode(const XmlNode& xmlNode) : 
-    m_productCodeIdHasBeenSet(false),
-    m_productCodeType(ProductCodeValues::NOT_SET),
-    m_productCodeTypeHasBeenSet(false)
+ProductCode::ProductCode(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -50,7 +40,7 @@ ProductCode& ProductCode::operator =(const XmlNode& xmlNode)
     XmlNode productCodeTypeNode = resultNode.FirstChild("type");
     if(!productCodeTypeNode.IsNull())
     {
-      m_productCodeType = ProductCodeValuesMapper::GetProductCodeValuesForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(productCodeTypeNode.GetText()).c_str()).c_str());
+      m_productCodeType = ProductCodeValuesMapper::GetProductCodeValuesForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(productCodeTypeNode.GetText()).c_str()));
       m_productCodeTypeHasBeenSet = true;
     }
   }
@@ -67,7 +57,7 @@ void ProductCode::OutputToStream(Aws::OStream& oStream, const char* location, un
 
   if(m_productCodeTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ProductCodeType=" << ProductCodeValuesMapper::GetNameForProductCodeValues(m_productCodeType) << "&";
+      oStream << location << index << locationValue << ".ProductCodeType=" << StringUtils::URLEncode(ProductCodeValuesMapper::GetNameForProductCodeValues(m_productCodeType)) << "&";
   }
 
 }
@@ -80,7 +70,7 @@ void ProductCode::OutputToStream(Aws::OStream& oStream, const char* location) co
   }
   if(m_productCodeTypeHasBeenSet)
   {
-      oStream << location << ".ProductCodeType=" << ProductCodeValuesMapper::GetNameForProductCodeValues(m_productCodeType) << "&";
+      oStream << location << ".ProductCodeType=" << StringUtils::URLEncode(ProductCodeValuesMapper::GetNameForProductCodeValues(m_productCodeType)) << "&";
   }
 }
 

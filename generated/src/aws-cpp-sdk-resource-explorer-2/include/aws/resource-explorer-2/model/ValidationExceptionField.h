@@ -32,93 +32,35 @@ namespace Model
   class ValidationExceptionField
   {
   public:
-    AWS_RESOURCEEXPLORER2_API ValidationExceptionField();
+    AWS_RESOURCEEXPLORER2_API ValidationExceptionField() = default;
     AWS_RESOURCEEXPLORER2_API ValidationExceptionField(Aws::Utils::Json::JsonView jsonValue);
     AWS_RESOURCEEXPLORER2_API ValidationExceptionField& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_RESOURCEEXPLORER2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the request field that had a validation error.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the request field that had a validation error.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    ValidationExceptionField& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the request field that had a validation error.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the request field that had a validation error.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the request field that had a validation error.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the request field that had a validation error.</p>
-     */
-    inline ValidationExceptionField& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the request field that had a validation error.</p>
-     */
-    inline ValidationExceptionField& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the request field that had a validation error.</p>
-     */
-    inline ValidationExceptionField& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The validation error caused by the request field.</p>
      */
-    inline const Aws::String& GetValidationIssue() const{ return m_validationIssue; }
-
-    /**
-     * <p>The validation error caused by the request field.</p>
-     */
+    inline const Aws::String& GetValidationIssue() const { return m_validationIssue; }
     inline bool ValidationIssueHasBeenSet() const { return m_validationIssueHasBeenSet; }
-
-    /**
-     * <p>The validation error caused by the request field.</p>
-     */
-    inline void SetValidationIssue(const Aws::String& value) { m_validationIssueHasBeenSet = true; m_validationIssue = value; }
-
-    /**
-     * <p>The validation error caused by the request field.</p>
-     */
-    inline void SetValidationIssue(Aws::String&& value) { m_validationIssueHasBeenSet = true; m_validationIssue = std::move(value); }
-
-    /**
-     * <p>The validation error caused by the request field.</p>
-     */
-    inline void SetValidationIssue(const char* value) { m_validationIssueHasBeenSet = true; m_validationIssue.assign(value); }
-
-    /**
-     * <p>The validation error caused by the request field.</p>
-     */
-    inline ValidationExceptionField& WithValidationIssue(const Aws::String& value) { SetValidationIssue(value); return *this;}
-
-    /**
-     * <p>The validation error caused by the request field.</p>
-     */
-    inline ValidationExceptionField& WithValidationIssue(Aws::String&& value) { SetValidationIssue(std::move(value)); return *this;}
-
-    /**
-     * <p>The validation error caused by the request field.</p>
-     */
-    inline ValidationExceptionField& WithValidationIssue(const char* value) { SetValidationIssue(value); return *this;}
-
+    template<typename ValidationIssueT = Aws::String>
+    void SetValidationIssue(ValidationIssueT&& value) { m_validationIssueHasBeenSet = true; m_validationIssue = std::forward<ValidationIssueT>(value); }
+    template<typename ValidationIssueT = Aws::String>
+    ValidationExceptionField& WithValidationIssue(ValidationIssueT&& value) { SetValidationIssue(std::forward<ValidationIssueT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;

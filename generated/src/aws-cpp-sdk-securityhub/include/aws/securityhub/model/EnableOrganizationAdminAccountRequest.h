@@ -7,6 +7,7 @@
 #include <aws/securityhub/SecurityHub_EXPORTS.h>
 #include <aws/securityhub/SecurityHubRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/securityhub/model/SecurityHubFeature.h>
 #include <utility>
 
 namespace Aws
@@ -21,7 +22,7 @@ namespace Model
   class EnableOrganizationAdminAccountRequest : public SecurityHubRequest
   {
   public:
-    AWS_SECURITYHUB_API EnableOrganizationAdminAccountRequest();
+    AWS_SECURITYHUB_API EnableOrganizationAdminAccountRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,58 +33,36 @@ namespace Model
     AWS_SECURITYHUB_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Web Services account identifier of the account to designate as the
      * Security Hub administrator account.</p>
      */
-    inline const Aws::String& GetAdminAccountId() const{ return m_adminAccountId; }
-
-    /**
-     * <p>The Amazon Web Services account identifier of the account to designate as the
-     * Security Hub administrator account.</p>
-     */
+    inline const Aws::String& GetAdminAccountId() const { return m_adminAccountId; }
     inline bool AdminAccountIdHasBeenSet() const { return m_adminAccountIdHasBeenSet; }
+    template<typename AdminAccountIdT = Aws::String>
+    void SetAdminAccountId(AdminAccountIdT&& value) { m_adminAccountIdHasBeenSet = true; m_adminAccountId = std::forward<AdminAccountIdT>(value); }
+    template<typename AdminAccountIdT = Aws::String>
+    EnableOrganizationAdminAccountRequest& WithAdminAccountId(AdminAccountIdT&& value) { SetAdminAccountId(std::forward<AdminAccountIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Amazon Web Services account identifier of the account to designate as the
-     * Security Hub administrator account.</p>
+     * <p>The feature for which the delegated admin account is enabled. Defaults to
+     * Security Hub if not specified.</p>
      */
-    inline void SetAdminAccountId(const Aws::String& value) { m_adminAccountIdHasBeenSet = true; m_adminAccountId = value; }
-
-    /**
-     * <p>The Amazon Web Services account identifier of the account to designate as the
-     * Security Hub administrator account.</p>
-     */
-    inline void SetAdminAccountId(Aws::String&& value) { m_adminAccountIdHasBeenSet = true; m_adminAccountId = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services account identifier of the account to designate as the
-     * Security Hub administrator account.</p>
-     */
-    inline void SetAdminAccountId(const char* value) { m_adminAccountIdHasBeenSet = true; m_adminAccountId.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services account identifier of the account to designate as the
-     * Security Hub administrator account.</p>
-     */
-    inline EnableOrganizationAdminAccountRequest& WithAdminAccountId(const Aws::String& value) { SetAdminAccountId(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account identifier of the account to designate as the
-     * Security Hub administrator account.</p>
-     */
-    inline EnableOrganizationAdminAccountRequest& WithAdminAccountId(Aws::String&& value) { SetAdminAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account identifier of the account to designate as the
-     * Security Hub administrator account.</p>
-     */
-    inline EnableOrganizationAdminAccountRequest& WithAdminAccountId(const char* value) { SetAdminAccountId(value); return *this;}
-
+    inline SecurityHubFeature GetFeature() const { return m_feature; }
+    inline bool FeatureHasBeenSet() const { return m_featureHasBeenSet; }
+    inline void SetFeature(SecurityHubFeature value) { m_featureHasBeenSet = true; m_feature = value; }
+    inline EnableOrganizationAdminAccountRequest& WithFeature(SecurityHubFeature value) { SetFeature(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_adminAccountId;
     bool m_adminAccountIdHasBeenSet = false;
+
+    SecurityHubFeature m_feature{SecurityHubFeature::NOT_SET};
+    bool m_featureHasBeenSet = false;
   };
 
 } // namespace Model

@@ -27,7 +27,7 @@ namespace Model
   class CreateDatastoreRequest : public IoTAnalyticsRequest
   {
   public:
-    AWS_IOTANALYTICS_API CreateDatastoreRequest();
+    AWS_IOTANALYTICS_API CreateDatastoreRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,47 +38,19 @@ namespace Model
     AWS_IOTANALYTICS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of the data store.</p>
      */
-    inline const Aws::String& GetDatastoreName() const{ return m_datastoreName; }
-
-    /**
-     * <p>The name of the data store.</p>
-     */
+    inline const Aws::String& GetDatastoreName() const { return m_datastoreName; }
     inline bool DatastoreNameHasBeenSet() const { return m_datastoreNameHasBeenSet; }
+    template<typename DatastoreNameT = Aws::String>
+    void SetDatastoreName(DatastoreNameT&& value) { m_datastoreNameHasBeenSet = true; m_datastoreName = std::forward<DatastoreNameT>(value); }
+    template<typename DatastoreNameT = Aws::String>
+    CreateDatastoreRequest& WithDatastoreName(DatastoreNameT&& value) { SetDatastoreName(std::forward<DatastoreNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the data store.</p>
-     */
-    inline void SetDatastoreName(const Aws::String& value) { m_datastoreNameHasBeenSet = true; m_datastoreName = value; }
-
-    /**
-     * <p>The name of the data store.</p>
-     */
-    inline void SetDatastoreName(Aws::String&& value) { m_datastoreNameHasBeenSet = true; m_datastoreName = std::move(value); }
-
-    /**
-     * <p>The name of the data store.</p>
-     */
-    inline void SetDatastoreName(const char* value) { m_datastoreNameHasBeenSet = true; m_datastoreName.assign(value); }
-
-    /**
-     * <p>The name of the data store.</p>
-     */
-    inline CreateDatastoreRequest& WithDatastoreName(const Aws::String& value) { SetDatastoreName(value); return *this;}
-
-    /**
-     * <p>The name of the data store.</p>
-     */
-    inline CreateDatastoreRequest& WithDatastoreName(Aws::String&& value) { SetDatastoreName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the data store.</p>
-     */
-    inline CreateDatastoreRequest& WithDatastoreName(const char* value) { SetDatastoreName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Where data in a data store is stored.. You can choose
      * <code>serviceManagedS3</code> storage, <code>customerManagedS3</code> storage,
@@ -86,217 +58,68 @@ namespace Model
      * <code>serviceManagedS3</code>. You can't change the choice of Amazon S3 storage
      * after your data store is created. </p>
      */
-    inline const DatastoreStorage& GetDatastoreStorage() const{ return m_datastoreStorage; }
-
-    /**
-     * <p>Where data in a data store is stored.. You can choose
-     * <code>serviceManagedS3</code> storage, <code>customerManagedS3</code> storage,
-     * or <code>iotSiteWiseMultiLayerStorage</code> storage. The default is
-     * <code>serviceManagedS3</code>. You can't change the choice of Amazon S3 storage
-     * after your data store is created. </p>
-     */
+    inline const DatastoreStorage& GetDatastoreStorage() const { return m_datastoreStorage; }
     inline bool DatastoreStorageHasBeenSet() const { return m_datastoreStorageHasBeenSet; }
+    template<typename DatastoreStorageT = DatastoreStorage>
+    void SetDatastoreStorage(DatastoreStorageT&& value) { m_datastoreStorageHasBeenSet = true; m_datastoreStorage = std::forward<DatastoreStorageT>(value); }
+    template<typename DatastoreStorageT = DatastoreStorage>
+    CreateDatastoreRequest& WithDatastoreStorage(DatastoreStorageT&& value) { SetDatastoreStorage(std::forward<DatastoreStorageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Where data in a data store is stored.. You can choose
-     * <code>serviceManagedS3</code> storage, <code>customerManagedS3</code> storage,
-     * or <code>iotSiteWiseMultiLayerStorage</code> storage. The default is
-     * <code>serviceManagedS3</code>. You can't change the choice of Amazon S3 storage
-     * after your data store is created. </p>
-     */
-    inline void SetDatastoreStorage(const DatastoreStorage& value) { m_datastoreStorageHasBeenSet = true; m_datastoreStorage = value; }
-
-    /**
-     * <p>Where data in a data store is stored.. You can choose
-     * <code>serviceManagedS3</code> storage, <code>customerManagedS3</code> storage,
-     * or <code>iotSiteWiseMultiLayerStorage</code> storage. The default is
-     * <code>serviceManagedS3</code>. You can't change the choice of Amazon S3 storage
-     * after your data store is created. </p>
-     */
-    inline void SetDatastoreStorage(DatastoreStorage&& value) { m_datastoreStorageHasBeenSet = true; m_datastoreStorage = std::move(value); }
-
-    /**
-     * <p>Where data in a data store is stored.. You can choose
-     * <code>serviceManagedS3</code> storage, <code>customerManagedS3</code> storage,
-     * or <code>iotSiteWiseMultiLayerStorage</code> storage. The default is
-     * <code>serviceManagedS3</code>. You can't change the choice of Amazon S3 storage
-     * after your data store is created. </p>
-     */
-    inline CreateDatastoreRequest& WithDatastoreStorage(const DatastoreStorage& value) { SetDatastoreStorage(value); return *this;}
-
-    /**
-     * <p>Where data in a data store is stored.. You can choose
-     * <code>serviceManagedS3</code> storage, <code>customerManagedS3</code> storage,
-     * or <code>iotSiteWiseMultiLayerStorage</code> storage. The default is
-     * <code>serviceManagedS3</code>. You can't change the choice of Amazon S3 storage
-     * after your data store is created. </p>
-     */
-    inline CreateDatastoreRequest& WithDatastoreStorage(DatastoreStorage&& value) { SetDatastoreStorage(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>How long, in days, message data is kept for the data store. When
      * <code>customerManagedS3</code> storage is selected, this parameter is
      * ignored.</p>
      */
-    inline const RetentionPeriod& GetRetentionPeriod() const{ return m_retentionPeriod; }
-
-    /**
-     * <p>How long, in days, message data is kept for the data store. When
-     * <code>customerManagedS3</code> storage is selected, this parameter is
-     * ignored.</p>
-     */
+    inline const RetentionPeriod& GetRetentionPeriod() const { return m_retentionPeriod; }
     inline bool RetentionPeriodHasBeenSet() const { return m_retentionPeriodHasBeenSet; }
+    template<typename RetentionPeriodT = RetentionPeriod>
+    void SetRetentionPeriod(RetentionPeriodT&& value) { m_retentionPeriodHasBeenSet = true; m_retentionPeriod = std::forward<RetentionPeriodT>(value); }
+    template<typename RetentionPeriodT = RetentionPeriod>
+    CreateDatastoreRequest& WithRetentionPeriod(RetentionPeriodT&& value) { SetRetentionPeriod(std::forward<RetentionPeriodT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>How long, in days, message data is kept for the data store. When
-     * <code>customerManagedS3</code> storage is selected, this parameter is
-     * ignored.</p>
-     */
-    inline void SetRetentionPeriod(const RetentionPeriod& value) { m_retentionPeriodHasBeenSet = true; m_retentionPeriod = value; }
-
-    /**
-     * <p>How long, in days, message data is kept for the data store. When
-     * <code>customerManagedS3</code> storage is selected, this parameter is
-     * ignored.</p>
-     */
-    inline void SetRetentionPeriod(RetentionPeriod&& value) { m_retentionPeriodHasBeenSet = true; m_retentionPeriod = std::move(value); }
-
-    /**
-     * <p>How long, in days, message data is kept for the data store. When
-     * <code>customerManagedS3</code> storage is selected, this parameter is
-     * ignored.</p>
-     */
-    inline CreateDatastoreRequest& WithRetentionPeriod(const RetentionPeriod& value) { SetRetentionPeriod(value); return *this;}
-
-    /**
-     * <p>How long, in days, message data is kept for the data store. When
-     * <code>customerManagedS3</code> storage is selected, this parameter is
-     * ignored.</p>
-     */
-    inline CreateDatastoreRequest& WithRetentionPeriod(RetentionPeriod&& value) { SetRetentionPeriod(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Metadata which can be used to manage the data store.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>Metadata which can be used to manage the data store.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    CreateDatastoreRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    CreateDatastoreRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Metadata which can be used to manage the data store.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>Metadata which can be used to manage the data store.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>Metadata which can be used to manage the data store.</p>
-     */
-    inline CreateDatastoreRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>Metadata which can be used to manage the data store.</p>
-     */
-    inline CreateDatastoreRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>Metadata which can be used to manage the data store.</p>
-     */
-    inline CreateDatastoreRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>Metadata which can be used to manage the data store.</p>
-     */
-    inline CreateDatastoreRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Contains the configuration information of file formats. IoT Analytics data
      * stores support JSON and <a href="https://parquet.apache.org/">Parquet</a>.</p>
      * <p>The default file format is JSON. You can specify only one format.</p> <p>You
      * can't change the file format after you create the data store.</p>
      */
-    inline const FileFormatConfiguration& GetFileFormatConfiguration() const{ return m_fileFormatConfiguration; }
-
-    /**
-     * <p>Contains the configuration information of file formats. IoT Analytics data
-     * stores support JSON and <a href="https://parquet.apache.org/">Parquet</a>.</p>
-     * <p>The default file format is JSON. You can specify only one format.</p> <p>You
-     * can't change the file format after you create the data store.</p>
-     */
+    inline const FileFormatConfiguration& GetFileFormatConfiguration() const { return m_fileFormatConfiguration; }
     inline bool FileFormatConfigurationHasBeenSet() const { return m_fileFormatConfigurationHasBeenSet; }
+    template<typename FileFormatConfigurationT = FileFormatConfiguration>
+    void SetFileFormatConfiguration(FileFormatConfigurationT&& value) { m_fileFormatConfigurationHasBeenSet = true; m_fileFormatConfiguration = std::forward<FileFormatConfigurationT>(value); }
+    template<typename FileFormatConfigurationT = FileFormatConfiguration>
+    CreateDatastoreRequest& WithFileFormatConfiguration(FileFormatConfigurationT&& value) { SetFileFormatConfiguration(std::forward<FileFormatConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Contains the configuration information of file formats. IoT Analytics data
-     * stores support JSON and <a href="https://parquet.apache.org/">Parquet</a>.</p>
-     * <p>The default file format is JSON. You can specify only one format.</p> <p>You
-     * can't change the file format after you create the data store.</p>
-     */
-    inline void SetFileFormatConfiguration(const FileFormatConfiguration& value) { m_fileFormatConfigurationHasBeenSet = true; m_fileFormatConfiguration = value; }
-
-    /**
-     * <p>Contains the configuration information of file formats. IoT Analytics data
-     * stores support JSON and <a href="https://parquet.apache.org/">Parquet</a>.</p>
-     * <p>The default file format is JSON. You can specify only one format.</p> <p>You
-     * can't change the file format after you create the data store.</p>
-     */
-    inline void SetFileFormatConfiguration(FileFormatConfiguration&& value) { m_fileFormatConfigurationHasBeenSet = true; m_fileFormatConfiguration = std::move(value); }
-
-    /**
-     * <p>Contains the configuration information of file formats. IoT Analytics data
-     * stores support JSON and <a href="https://parquet.apache.org/">Parquet</a>.</p>
-     * <p>The default file format is JSON. You can specify only one format.</p> <p>You
-     * can't change the file format after you create the data store.</p>
-     */
-    inline CreateDatastoreRequest& WithFileFormatConfiguration(const FileFormatConfiguration& value) { SetFileFormatConfiguration(value); return *this;}
-
-    /**
-     * <p>Contains the configuration information of file formats. IoT Analytics data
-     * stores support JSON and <a href="https://parquet.apache.org/">Parquet</a>.</p>
-     * <p>The default file format is JSON. You can specify only one format.</p> <p>You
-     * can't change the file format after you create the data store.</p>
-     */
-    inline CreateDatastoreRequest& WithFileFormatConfiguration(FileFormatConfiguration&& value) { SetFileFormatConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> Contains information about the partition dimensions in a data store. </p>
      */
-    inline const DatastorePartitions& GetDatastorePartitions() const{ return m_datastorePartitions; }
-
-    /**
-     * <p> Contains information about the partition dimensions in a data store. </p>
-     */
+    inline const DatastorePartitions& GetDatastorePartitions() const { return m_datastorePartitions; }
     inline bool DatastorePartitionsHasBeenSet() const { return m_datastorePartitionsHasBeenSet; }
-
-    /**
-     * <p> Contains information about the partition dimensions in a data store. </p>
-     */
-    inline void SetDatastorePartitions(const DatastorePartitions& value) { m_datastorePartitionsHasBeenSet = true; m_datastorePartitions = value; }
-
-    /**
-     * <p> Contains information about the partition dimensions in a data store. </p>
-     */
-    inline void SetDatastorePartitions(DatastorePartitions&& value) { m_datastorePartitionsHasBeenSet = true; m_datastorePartitions = std::move(value); }
-
-    /**
-     * <p> Contains information about the partition dimensions in a data store. </p>
-     */
-    inline CreateDatastoreRequest& WithDatastorePartitions(const DatastorePartitions& value) { SetDatastorePartitions(value); return *this;}
-
-    /**
-     * <p> Contains information about the partition dimensions in a data store. </p>
-     */
-    inline CreateDatastoreRequest& WithDatastorePartitions(DatastorePartitions&& value) { SetDatastorePartitions(std::move(value)); return *this;}
-
+    template<typename DatastorePartitionsT = DatastorePartitions>
+    void SetDatastorePartitions(DatastorePartitionsT&& value) { m_datastorePartitionsHasBeenSet = true; m_datastorePartitions = std::forward<DatastorePartitionsT>(value); }
+    template<typename DatastorePartitionsT = DatastorePartitions>
+    CreateDatastoreRequest& WithDatastorePartitions(DatastorePartitionsT&& value) { SetDatastorePartitions(std::forward<DatastorePartitionsT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_datastoreName;

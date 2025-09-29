@@ -20,17 +20,7 @@ namespace CloudFormation
 namespace Model
 {
 
-ResourceIdentifierSummary::ResourceIdentifierSummary() : 
-    m_resourceTypeHasBeenSet(false),
-    m_logicalResourceIdsHasBeenSet(false),
-    m_resourceIdentifiersHasBeenSet(false)
-{
-}
-
-ResourceIdentifierSummary::ResourceIdentifierSummary(const XmlNode& xmlNode) : 
-    m_resourceTypeHasBeenSet(false),
-    m_logicalResourceIdsHasBeenSet(false),
-    m_resourceIdentifiersHasBeenSet(false)
+ResourceIdentifierSummary::ResourceIdentifierSummary(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -51,6 +41,7 @@ ResourceIdentifierSummary& ResourceIdentifierSummary::operator =(const XmlNode& 
     if(!logicalResourceIdsNode.IsNull())
     {
       XmlNode logicalResourceIdsMember = logicalResourceIdsNode.FirstChild("member");
+      m_logicalResourceIdsHasBeenSet = !logicalResourceIdsMember.IsNull();
       while(!logicalResourceIdsMember.IsNull())
       {
         m_logicalResourceIds.push_back(logicalResourceIdsMember.GetText());
@@ -63,6 +54,7 @@ ResourceIdentifierSummary& ResourceIdentifierSummary::operator =(const XmlNode& 
     if(!resourceIdentifiersNode.IsNull())
     {
       XmlNode resourceIdentifiersMember = resourceIdentifiersNode.FirstChild("member");
+      m_resourceIdentifiersHasBeenSet = !resourceIdentifiersMember.IsNull();
       while(!resourceIdentifiersMember.IsNull())
       {
         m_resourceIdentifiers.push_back(resourceIdentifiersMember.GetText());

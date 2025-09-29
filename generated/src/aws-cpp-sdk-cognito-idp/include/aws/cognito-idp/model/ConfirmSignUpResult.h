@@ -33,35 +33,39 @@ namespace Model
   class ConfirmSignUpResult
   {
   public:
-    AWS_COGNITOIDENTITYPROVIDER_API ConfirmSignUpResult();
+    AWS_COGNITOIDENTITYPROVIDER_API ConfirmSignUpResult() = default;
     AWS_COGNITOIDENTITYPROVIDER_API ConfirmSignUpResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_COGNITOIDENTITYPROVIDER_API ConfirmSignUpResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
-    
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
+    ///@{
+    /**
+     * <p>A session identifier that you can use to immediately sign in the confirmed
+     * user. You can automatically sign users in with the one-time password that they
+     * provided in a successful <code>ConfirmSignUp</code> request.</p>
+     */
+    inline const Aws::String& GetSession() const { return m_session; }
+    template<typename SessionT = Aws::String>
+    void SetSession(SessionT&& value) { m_sessionHasBeenSet = true; m_session = std::forward<SessionT>(value); }
+    template<typename SessionT = Aws::String>
+    ConfirmSignUpResult& WithSession(SessionT&& value) { SetSession(std::forward<SessionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ConfirmSignUpResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ConfirmSignUpResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ConfirmSignUpResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ConfirmSignUpResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
+    Aws::String m_session;
+    bool m_sessionHasBeenSet = false;
+
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

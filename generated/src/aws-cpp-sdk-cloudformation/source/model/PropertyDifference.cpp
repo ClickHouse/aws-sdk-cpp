@@ -20,21 +20,7 @@ namespace CloudFormation
 namespace Model
 {
 
-PropertyDifference::PropertyDifference() : 
-    m_propertyPathHasBeenSet(false),
-    m_expectedValueHasBeenSet(false),
-    m_actualValueHasBeenSet(false),
-    m_differenceType(DifferenceType::NOT_SET),
-    m_differenceTypeHasBeenSet(false)
-{
-}
-
-PropertyDifference::PropertyDifference(const XmlNode& xmlNode) : 
-    m_propertyPathHasBeenSet(false),
-    m_expectedValueHasBeenSet(false),
-    m_actualValueHasBeenSet(false),
-    m_differenceType(DifferenceType::NOT_SET),
-    m_differenceTypeHasBeenSet(false)
+PropertyDifference::PropertyDifference(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -66,7 +52,7 @@ PropertyDifference& PropertyDifference::operator =(const XmlNode& xmlNode)
     XmlNode differenceTypeNode = resultNode.FirstChild("DifferenceType");
     if(!differenceTypeNode.IsNull())
     {
-      m_differenceType = DifferenceTypeMapper::GetDifferenceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(differenceTypeNode.GetText()).c_str()).c_str());
+      m_differenceType = DifferenceTypeMapper::GetDifferenceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(differenceTypeNode.GetText()).c_str()));
       m_differenceTypeHasBeenSet = true;
     }
   }
@@ -93,7 +79,7 @@ void PropertyDifference::OutputToStream(Aws::OStream& oStream, const char* locat
 
   if(m_differenceTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".DifferenceType=" << DifferenceTypeMapper::GetNameForDifferenceType(m_differenceType) << "&";
+      oStream << location << index << locationValue << ".DifferenceType=" << StringUtils::URLEncode(DifferenceTypeMapper::GetNameForDifferenceType(m_differenceType)) << "&";
   }
 
 }
@@ -114,7 +100,7 @@ void PropertyDifference::OutputToStream(Aws::OStream& oStream, const char* locat
   }
   if(m_differenceTypeHasBeenSet)
   {
-      oStream << location << ".DifferenceType=" << DifferenceTypeMapper::GetNameForDifferenceType(m_differenceType) << "&";
+      oStream << location << ".DifferenceType=" << StringUtils::URLEncode(DifferenceTypeMapper::GetNameForDifferenceType(m_differenceType)) << "&";
   }
 }
 

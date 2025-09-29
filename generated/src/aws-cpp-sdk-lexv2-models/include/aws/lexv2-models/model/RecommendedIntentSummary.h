@@ -32,126 +32,47 @@ namespace Model
   class RecommendedIntentSummary
   {
   public:
-    AWS_LEXMODELSV2_API RecommendedIntentSummary();
+    AWS_LEXMODELSV2_API RecommendedIntentSummary() = default;
     AWS_LEXMODELSV2_API RecommendedIntentSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API RecommendedIntentSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The unique identifier of a recommended intent associated with the bot
      * recommendation.</p>
      */
-    inline const Aws::String& GetIntentId() const{ return m_intentId; }
-
-    /**
-     * <p>The unique identifier of a recommended intent associated with the bot
-     * recommendation.</p>
-     */
+    inline const Aws::String& GetIntentId() const { return m_intentId; }
     inline bool IntentIdHasBeenSet() const { return m_intentIdHasBeenSet; }
+    template<typename IntentIdT = Aws::String>
+    void SetIntentId(IntentIdT&& value) { m_intentIdHasBeenSet = true; m_intentId = std::forward<IntentIdT>(value); }
+    template<typename IntentIdT = Aws::String>
+    RecommendedIntentSummary& WithIntentId(IntentIdT&& value) { SetIntentId(std::forward<IntentIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier of a recommended intent associated with the bot
-     * recommendation.</p>
-     */
-    inline void SetIntentId(const Aws::String& value) { m_intentIdHasBeenSet = true; m_intentId = value; }
-
-    /**
-     * <p>The unique identifier of a recommended intent associated with the bot
-     * recommendation.</p>
-     */
-    inline void SetIntentId(Aws::String&& value) { m_intentIdHasBeenSet = true; m_intentId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of a recommended intent associated with the bot
-     * recommendation.</p>
-     */
-    inline void SetIntentId(const char* value) { m_intentIdHasBeenSet = true; m_intentId.assign(value); }
-
-    /**
-     * <p>The unique identifier of a recommended intent associated with the bot
-     * recommendation.</p>
-     */
-    inline RecommendedIntentSummary& WithIntentId(const Aws::String& value) { SetIntentId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of a recommended intent associated with the bot
-     * recommendation.</p>
-     */
-    inline RecommendedIntentSummary& WithIntentId(Aws::String&& value) { SetIntentId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of a recommended intent associated with the bot
-     * recommendation.</p>
-     */
-    inline RecommendedIntentSummary& WithIntentId(const char* value) { SetIntentId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of a recommended intent associated with the bot recommendation.</p>
      */
-    inline const Aws::String& GetIntentName() const{ return m_intentName; }
-
-    /**
-     * <p>The name of a recommended intent associated with the bot recommendation.</p>
-     */
+    inline const Aws::String& GetIntentName() const { return m_intentName; }
     inline bool IntentNameHasBeenSet() const { return m_intentNameHasBeenSet; }
+    template<typename IntentNameT = Aws::String>
+    void SetIntentName(IntentNameT&& value) { m_intentNameHasBeenSet = true; m_intentName = std::forward<IntentNameT>(value); }
+    template<typename IntentNameT = Aws::String>
+    RecommendedIntentSummary& WithIntentName(IntentNameT&& value) { SetIntentName(std::forward<IntentNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of a recommended intent associated with the bot recommendation.</p>
-     */
-    inline void SetIntentName(const Aws::String& value) { m_intentNameHasBeenSet = true; m_intentName = value; }
-
-    /**
-     * <p>The name of a recommended intent associated with the bot recommendation.</p>
-     */
-    inline void SetIntentName(Aws::String&& value) { m_intentNameHasBeenSet = true; m_intentName = std::move(value); }
-
-    /**
-     * <p>The name of a recommended intent associated with the bot recommendation.</p>
-     */
-    inline void SetIntentName(const char* value) { m_intentNameHasBeenSet = true; m_intentName.assign(value); }
-
-    /**
-     * <p>The name of a recommended intent associated with the bot recommendation.</p>
-     */
-    inline RecommendedIntentSummary& WithIntentName(const Aws::String& value) { SetIntentName(value); return *this;}
-
-    /**
-     * <p>The name of a recommended intent associated with the bot recommendation.</p>
-     */
-    inline RecommendedIntentSummary& WithIntentName(Aws::String&& value) { SetIntentName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of a recommended intent associated with the bot recommendation.</p>
-     */
-    inline RecommendedIntentSummary& WithIntentName(const char* value) { SetIntentName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The count of sample utterances of a recommended intent that is associated
      * with a bot recommendation.</p>
      */
-    inline int GetSampleUtterancesCount() const{ return m_sampleUtterancesCount; }
-
-    /**
-     * <p>The count of sample utterances of a recommended intent that is associated
-     * with a bot recommendation.</p>
-     */
+    inline int GetSampleUtterancesCount() const { return m_sampleUtterancesCount; }
     inline bool SampleUtterancesCountHasBeenSet() const { return m_sampleUtterancesCountHasBeenSet; }
-
-    /**
-     * <p>The count of sample utterances of a recommended intent that is associated
-     * with a bot recommendation.</p>
-     */
     inline void SetSampleUtterancesCount(int value) { m_sampleUtterancesCountHasBeenSet = true; m_sampleUtterancesCount = value; }
-
-    /**
-     * <p>The count of sample utterances of a recommended intent that is associated
-     * with a bot recommendation.</p>
-     */
     inline RecommendedIntentSummary& WithSampleUtterancesCount(int value) { SetSampleUtterancesCount(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_intentId;
@@ -160,7 +81,7 @@ namespace Model
     Aws::String m_intentName;
     bool m_intentNameHasBeenSet = false;
 
-    int m_sampleUtterancesCount;
+    int m_sampleUtterancesCount{0};
     bool m_sampleUtterancesCountHasBeenSet = false;
   };
 

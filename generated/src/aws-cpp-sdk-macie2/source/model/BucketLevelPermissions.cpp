@@ -18,17 +18,7 @@ namespace Macie2
 namespace Model
 {
 
-BucketLevelPermissions::BucketLevelPermissions() : 
-    m_accessControlListHasBeenSet(false),
-    m_blockPublicAccessHasBeenSet(false),
-    m_bucketPolicyHasBeenSet(false)
-{
-}
-
-BucketLevelPermissions::BucketLevelPermissions(JsonView jsonValue) : 
-    m_accessControlListHasBeenSet(false),
-    m_blockPublicAccessHasBeenSet(false),
-    m_bucketPolicyHasBeenSet(false)
+BucketLevelPermissions::BucketLevelPermissions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ BucketLevelPermissions& BucketLevelPermissions::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("accessControlList"))
   {
     m_accessControlList = jsonValue.GetObject("accessControlList");
-
     m_accessControlListHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("blockPublicAccess"))
   {
     m_blockPublicAccess = jsonValue.GetObject("blockPublicAccess");
-
     m_blockPublicAccessHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("bucketPolicy"))
   {
     m_bucketPolicy = jsonValue.GetObject("bucketPolicy");
-
     m_bucketPolicyHasBeenSet = true;
   }
-
   return *this;
 }
 

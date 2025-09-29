@@ -35,63 +35,37 @@ namespace Model
   class DeleteElasticsearchDomainResult
   {
   public:
-    AWS_ELASTICSEARCHSERVICE_API DeleteElasticsearchDomainResult();
+    AWS_ELASTICSEARCHSERVICE_API DeleteElasticsearchDomainResult() = default;
     AWS_ELASTICSEARCHSERVICE_API DeleteElasticsearchDomainResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_ELASTICSEARCHSERVICE_API DeleteElasticsearchDomainResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The status of the Elasticsearch domain being deleted.</p>
      */
-    inline const ElasticsearchDomainStatus& GetDomainStatus() const{ return m_domainStatus; }
+    inline const ElasticsearchDomainStatus& GetDomainStatus() const { return m_domainStatus; }
+    template<typename DomainStatusT = ElasticsearchDomainStatus>
+    void SetDomainStatus(DomainStatusT&& value) { m_domainStatusHasBeenSet = true; m_domainStatus = std::forward<DomainStatusT>(value); }
+    template<typename DomainStatusT = ElasticsearchDomainStatus>
+    DeleteElasticsearchDomainResult& WithDomainStatus(DomainStatusT&& value) { SetDomainStatus(std::forward<DomainStatusT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the Elasticsearch domain being deleted.</p>
-     */
-    inline void SetDomainStatus(const ElasticsearchDomainStatus& value) { m_domainStatus = value; }
-
-    /**
-     * <p>The status of the Elasticsearch domain being deleted.</p>
-     */
-    inline void SetDomainStatus(ElasticsearchDomainStatus&& value) { m_domainStatus = std::move(value); }
-
-    /**
-     * <p>The status of the Elasticsearch domain being deleted.</p>
-     */
-    inline DeleteElasticsearchDomainResult& WithDomainStatus(const ElasticsearchDomainStatus& value) { SetDomainStatus(value); return *this;}
-
-    /**
-     * <p>The status of the Elasticsearch domain being deleted.</p>
-     */
-    inline DeleteElasticsearchDomainResult& WithDomainStatus(ElasticsearchDomainStatus&& value) { SetDomainStatus(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DeleteElasticsearchDomainResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DeleteElasticsearchDomainResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DeleteElasticsearchDomainResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DeleteElasticsearchDomainResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     ElasticsearchDomainStatus m_domainStatus;
+    bool m_domainStatusHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

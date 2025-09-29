@@ -21,7 +21,7 @@ namespace Model
   class DeletePartnerRequest : public RedshiftRequest
   {
   public:
-    AWS_REDSHIFT_API DeletePartnerRequest();
+    AWS_REDSHIFT_API DeletePartnerRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,177 +36,54 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The Amazon Web Services account ID that owns the cluster.</p>
      */
-    inline const Aws::String& GetAccountId() const{ return m_accountId; }
-
-    /**
-     * <p>The Amazon Web Services account ID that owns the cluster.</p>
-     */
+    inline const Aws::String& GetAccountId() const { return m_accountId; }
     inline bool AccountIdHasBeenSet() const { return m_accountIdHasBeenSet; }
+    template<typename AccountIdT = Aws::String>
+    void SetAccountId(AccountIdT&& value) { m_accountIdHasBeenSet = true; m_accountId = std::forward<AccountIdT>(value); }
+    template<typename AccountIdT = Aws::String>
+    DeletePartnerRequest& WithAccountId(AccountIdT&& value) { SetAccountId(std::forward<AccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Web Services account ID that owns the cluster.</p>
-     */
-    inline void SetAccountId(const Aws::String& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
-
-    /**
-     * <p>The Amazon Web Services account ID that owns the cluster.</p>
-     */
-    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID that owns the cluster.</p>
-     */
-    inline void SetAccountId(const char* value) { m_accountIdHasBeenSet = true; m_accountId.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID that owns the cluster.</p>
-     */
-    inline DeletePartnerRequest& WithAccountId(const Aws::String& value) { SetAccountId(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID that owns the cluster.</p>
-     */
-    inline DeletePartnerRequest& WithAccountId(Aws::String&& value) { SetAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID that owns the cluster.</p>
-     */
-    inline DeletePartnerRequest& WithAccountId(const char* value) { SetAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The cluster identifier of the cluster that receives data from the
      * partner.</p>
      */
-    inline const Aws::String& GetClusterIdentifier() const{ return m_clusterIdentifier; }
-
-    /**
-     * <p>The cluster identifier of the cluster that receives data from the
-     * partner.</p>
-     */
+    inline const Aws::String& GetClusterIdentifier() const { return m_clusterIdentifier; }
     inline bool ClusterIdentifierHasBeenSet() const { return m_clusterIdentifierHasBeenSet; }
+    template<typename ClusterIdentifierT = Aws::String>
+    void SetClusterIdentifier(ClusterIdentifierT&& value) { m_clusterIdentifierHasBeenSet = true; m_clusterIdentifier = std::forward<ClusterIdentifierT>(value); }
+    template<typename ClusterIdentifierT = Aws::String>
+    DeletePartnerRequest& WithClusterIdentifier(ClusterIdentifierT&& value) { SetClusterIdentifier(std::forward<ClusterIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The cluster identifier of the cluster that receives data from the
-     * partner.</p>
-     */
-    inline void SetClusterIdentifier(const Aws::String& value) { m_clusterIdentifierHasBeenSet = true; m_clusterIdentifier = value; }
-
-    /**
-     * <p>The cluster identifier of the cluster that receives data from the
-     * partner.</p>
-     */
-    inline void SetClusterIdentifier(Aws::String&& value) { m_clusterIdentifierHasBeenSet = true; m_clusterIdentifier = std::move(value); }
-
-    /**
-     * <p>The cluster identifier of the cluster that receives data from the
-     * partner.</p>
-     */
-    inline void SetClusterIdentifier(const char* value) { m_clusterIdentifierHasBeenSet = true; m_clusterIdentifier.assign(value); }
-
-    /**
-     * <p>The cluster identifier of the cluster that receives data from the
-     * partner.</p>
-     */
-    inline DeletePartnerRequest& WithClusterIdentifier(const Aws::String& value) { SetClusterIdentifier(value); return *this;}
-
-    /**
-     * <p>The cluster identifier of the cluster that receives data from the
-     * partner.</p>
-     */
-    inline DeletePartnerRequest& WithClusterIdentifier(Aws::String&& value) { SetClusterIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The cluster identifier of the cluster that receives data from the
-     * partner.</p>
-     */
-    inline DeletePartnerRequest& WithClusterIdentifier(const char* value) { SetClusterIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the database that receives data from the partner.</p>
      */
-    inline const Aws::String& GetDatabaseName() const{ return m_databaseName; }
-
-    /**
-     * <p>The name of the database that receives data from the partner.</p>
-     */
+    inline const Aws::String& GetDatabaseName() const { return m_databaseName; }
     inline bool DatabaseNameHasBeenSet() const { return m_databaseNameHasBeenSet; }
+    template<typename DatabaseNameT = Aws::String>
+    void SetDatabaseName(DatabaseNameT&& value) { m_databaseNameHasBeenSet = true; m_databaseName = std::forward<DatabaseNameT>(value); }
+    template<typename DatabaseNameT = Aws::String>
+    DeletePartnerRequest& WithDatabaseName(DatabaseNameT&& value) { SetDatabaseName(std::forward<DatabaseNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the database that receives data from the partner.</p>
-     */
-    inline void SetDatabaseName(const Aws::String& value) { m_databaseNameHasBeenSet = true; m_databaseName = value; }
-
-    /**
-     * <p>The name of the database that receives data from the partner.</p>
-     */
-    inline void SetDatabaseName(Aws::String&& value) { m_databaseNameHasBeenSet = true; m_databaseName = std::move(value); }
-
-    /**
-     * <p>The name of the database that receives data from the partner.</p>
-     */
-    inline void SetDatabaseName(const char* value) { m_databaseNameHasBeenSet = true; m_databaseName.assign(value); }
-
-    /**
-     * <p>The name of the database that receives data from the partner.</p>
-     */
-    inline DeletePartnerRequest& WithDatabaseName(const Aws::String& value) { SetDatabaseName(value); return *this;}
-
-    /**
-     * <p>The name of the database that receives data from the partner.</p>
-     */
-    inline DeletePartnerRequest& WithDatabaseName(Aws::String&& value) { SetDatabaseName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the database that receives data from the partner.</p>
-     */
-    inline DeletePartnerRequest& WithDatabaseName(const char* value) { SetDatabaseName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the partner that is authorized to send data.</p>
      */
-    inline const Aws::String& GetPartnerName() const{ return m_partnerName; }
-
-    /**
-     * <p>The name of the partner that is authorized to send data.</p>
-     */
+    inline const Aws::String& GetPartnerName() const { return m_partnerName; }
     inline bool PartnerNameHasBeenSet() const { return m_partnerNameHasBeenSet; }
-
-    /**
-     * <p>The name of the partner that is authorized to send data.</p>
-     */
-    inline void SetPartnerName(const Aws::String& value) { m_partnerNameHasBeenSet = true; m_partnerName = value; }
-
-    /**
-     * <p>The name of the partner that is authorized to send data.</p>
-     */
-    inline void SetPartnerName(Aws::String&& value) { m_partnerNameHasBeenSet = true; m_partnerName = std::move(value); }
-
-    /**
-     * <p>The name of the partner that is authorized to send data.</p>
-     */
-    inline void SetPartnerName(const char* value) { m_partnerNameHasBeenSet = true; m_partnerName.assign(value); }
-
-    /**
-     * <p>The name of the partner that is authorized to send data.</p>
-     */
-    inline DeletePartnerRequest& WithPartnerName(const Aws::String& value) { SetPartnerName(value); return *this;}
-
-    /**
-     * <p>The name of the partner that is authorized to send data.</p>
-     */
-    inline DeletePartnerRequest& WithPartnerName(Aws::String&& value) { SetPartnerName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the partner that is authorized to send data.</p>
-     */
-    inline DeletePartnerRequest& WithPartnerName(const char* value) { SetPartnerName(value); return *this;}
-
+    template<typename PartnerNameT = Aws::String>
+    void SetPartnerName(PartnerNameT&& value) { m_partnerNameHasBeenSet = true; m_partnerName = std::forward<PartnerNameT>(value); }
+    template<typename PartnerNameT = Aws::String>
+    DeletePartnerRequest& WithPartnerName(PartnerNameT&& value) { SetPartnerName(std::forward<PartnerNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_accountId;

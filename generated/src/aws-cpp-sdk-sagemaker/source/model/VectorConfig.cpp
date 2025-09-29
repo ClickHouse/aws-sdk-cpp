@@ -18,15 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-VectorConfig::VectorConfig() : 
-    m_dimension(0),
-    m_dimensionHasBeenSet(false)
-{
-}
-
-VectorConfig::VectorConfig(JsonView jsonValue) : 
-    m_dimension(0),
-    m_dimensionHasBeenSet(false)
+VectorConfig::VectorConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ VectorConfig& VectorConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Dimension"))
   {
     m_dimension = jsonValue.GetInteger("Dimension");
-
     m_dimensionHasBeenSet = true;
   }
-
   return *this;
 }
 

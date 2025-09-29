@@ -18,19 +18,7 @@ namespace DynamoDB
 namespace Model
 {
 
-TableAutoScalingDescription::TableAutoScalingDescription() : 
-    m_tableNameHasBeenSet(false),
-    m_tableStatus(TableStatus::NOT_SET),
-    m_tableStatusHasBeenSet(false),
-    m_replicasHasBeenSet(false)
-{
-}
-
-TableAutoScalingDescription::TableAutoScalingDescription(JsonView jsonValue) : 
-    m_tableNameHasBeenSet(false),
-    m_tableStatus(TableStatus::NOT_SET),
-    m_tableStatusHasBeenSet(false),
-    m_replicasHasBeenSet(false)
+TableAutoScalingDescription::TableAutoScalingDescription(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ TableAutoScalingDescription& TableAutoScalingDescription::operator =(JsonView js
   if(jsonValue.ValueExists("TableName"))
   {
     m_tableName = jsonValue.GetString("TableName");
-
     m_tableNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TableStatus"))
   {
     m_tableStatus = TableStatusMapper::GetTableStatusForName(jsonValue.GetString("TableStatus"));
-
     m_tableStatusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Replicas"))
   {
     Aws::Utils::Array<JsonView> replicasJsonList = jsonValue.GetArray("Replicas");
@@ -60,7 +44,6 @@ TableAutoScalingDescription& TableAutoScalingDescription::operator =(JsonView js
     }
     m_replicasHasBeenSet = true;
   }
-
   return *this;
 }
 

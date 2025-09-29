@@ -32,92 +32,37 @@ namespace Model
   class DefinitionDocument
   {
   public:
-    AWS_IOTTHINGSGRAPH_API DefinitionDocument();
+    AWS_IOTTHINGSGRAPH_API DefinitionDocument() = default;
     AWS_IOTTHINGSGRAPH_API DefinitionDocument(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTTHINGSGRAPH_API DefinitionDocument& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTTHINGSGRAPH_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The language used to define the entity. <code>GRAPHQL</code> is the only
      * valid value.</p>
      */
-    inline const DefinitionLanguage& GetLanguage() const{ return m_language; }
-
-    /**
-     * <p>The language used to define the entity. <code>GRAPHQL</code> is the only
-     * valid value.</p>
-     */
+    inline DefinitionLanguage GetLanguage() const { return m_language; }
     inline bool LanguageHasBeenSet() const { return m_languageHasBeenSet; }
+    inline void SetLanguage(DefinitionLanguage value) { m_languageHasBeenSet = true; m_language = value; }
+    inline DefinitionDocument& WithLanguage(DefinitionLanguage value) { SetLanguage(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The language used to define the entity. <code>GRAPHQL</code> is the only
-     * valid value.</p>
-     */
-    inline void SetLanguage(const DefinitionLanguage& value) { m_languageHasBeenSet = true; m_language = value; }
-
-    /**
-     * <p>The language used to define the entity. <code>GRAPHQL</code> is the only
-     * valid value.</p>
-     */
-    inline void SetLanguage(DefinitionLanguage&& value) { m_languageHasBeenSet = true; m_language = std::move(value); }
-
-    /**
-     * <p>The language used to define the entity. <code>GRAPHQL</code> is the only
-     * valid value.</p>
-     */
-    inline DefinitionDocument& WithLanguage(const DefinitionLanguage& value) { SetLanguage(value); return *this;}
-
-    /**
-     * <p>The language used to define the entity. <code>GRAPHQL</code> is the only
-     * valid value.</p>
-     */
-    inline DefinitionDocument& WithLanguage(DefinitionLanguage&& value) { SetLanguage(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The GraphQL text that defines the entity.</p>
      */
-    inline const Aws::String& GetText() const{ return m_text; }
-
-    /**
-     * <p>The GraphQL text that defines the entity.</p>
-     */
+    inline const Aws::String& GetText() const { return m_text; }
     inline bool TextHasBeenSet() const { return m_textHasBeenSet; }
-
-    /**
-     * <p>The GraphQL text that defines the entity.</p>
-     */
-    inline void SetText(const Aws::String& value) { m_textHasBeenSet = true; m_text = value; }
-
-    /**
-     * <p>The GraphQL text that defines the entity.</p>
-     */
-    inline void SetText(Aws::String&& value) { m_textHasBeenSet = true; m_text = std::move(value); }
-
-    /**
-     * <p>The GraphQL text that defines the entity.</p>
-     */
-    inline void SetText(const char* value) { m_textHasBeenSet = true; m_text.assign(value); }
-
-    /**
-     * <p>The GraphQL text that defines the entity.</p>
-     */
-    inline DefinitionDocument& WithText(const Aws::String& value) { SetText(value); return *this;}
-
-    /**
-     * <p>The GraphQL text that defines the entity.</p>
-     */
-    inline DefinitionDocument& WithText(Aws::String&& value) { SetText(std::move(value)); return *this;}
-
-    /**
-     * <p>The GraphQL text that defines the entity.</p>
-     */
-    inline DefinitionDocument& WithText(const char* value) { SetText(value); return *this;}
-
+    template<typename TextT = Aws::String>
+    void SetText(TextT&& value) { m_textHasBeenSet = true; m_text = std::forward<TextT>(value); }
+    template<typename TextT = Aws::String>
+    DefinitionDocument& WithText(TextT&& value) { SetText(std::forward<TextT>(value)); return *this;}
+    ///@}
   private:
 
-    DefinitionLanguage m_language;
+    DefinitionLanguage m_language{DefinitionLanguage::NOT_SET};
     bool m_languageHasBeenSet = false;
 
     Aws::String m_text;

@@ -20,27 +20,7 @@ namespace EC2
 namespace Model
 {
 
-CreateFleetInstance::CreateFleetInstance() : 
-    m_launchTemplateAndOverridesHasBeenSet(false),
-    m_lifecycle(InstanceLifecycle::NOT_SET),
-    m_lifecycleHasBeenSet(false),
-    m_instanceIdsHasBeenSet(false),
-    m_instanceType(InstanceType::NOT_SET),
-    m_instanceTypeHasBeenSet(false),
-    m_platform(PlatformValues::NOT_SET),
-    m_platformHasBeenSet(false)
-{
-}
-
-CreateFleetInstance::CreateFleetInstance(const XmlNode& xmlNode) : 
-    m_launchTemplateAndOverridesHasBeenSet(false),
-    m_lifecycle(InstanceLifecycle::NOT_SET),
-    m_lifecycleHasBeenSet(false),
-    m_instanceIdsHasBeenSet(false),
-    m_instanceType(InstanceType::NOT_SET),
-    m_instanceTypeHasBeenSet(false),
-    m_platform(PlatformValues::NOT_SET),
-    m_platformHasBeenSet(false)
+CreateFleetInstance::CreateFleetInstance(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -60,13 +40,14 @@ CreateFleetInstance& CreateFleetInstance::operator =(const XmlNode& xmlNode)
     XmlNode lifecycleNode = resultNode.FirstChild("lifecycle");
     if(!lifecycleNode.IsNull())
     {
-      m_lifecycle = InstanceLifecycleMapper::GetInstanceLifecycleForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(lifecycleNode.GetText()).c_str()).c_str());
+      m_lifecycle = InstanceLifecycleMapper::GetInstanceLifecycleForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(lifecycleNode.GetText()).c_str()));
       m_lifecycleHasBeenSet = true;
     }
     XmlNode instanceIdsNode = resultNode.FirstChild("instanceIds");
     if(!instanceIdsNode.IsNull())
     {
       XmlNode instanceIdsMember = instanceIdsNode.FirstChild("item");
+      m_instanceIdsHasBeenSet = !instanceIdsMember.IsNull();
       while(!instanceIdsMember.IsNull())
       {
         m_instanceIds.push_back(instanceIdsMember.GetText());
@@ -78,13 +59,13 @@ CreateFleetInstance& CreateFleetInstance::operator =(const XmlNode& xmlNode)
     XmlNode instanceTypeNode = resultNode.FirstChild("instanceType");
     if(!instanceTypeNode.IsNull())
     {
-      m_instanceType = InstanceTypeMapper::GetInstanceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(instanceTypeNode.GetText()).c_str()).c_str());
+      m_instanceType = InstanceTypeMapper::GetInstanceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(instanceTypeNode.GetText()).c_str()));
       m_instanceTypeHasBeenSet = true;
     }
     XmlNode platformNode = resultNode.FirstChild("platform");
     if(!platformNode.IsNull())
     {
-      m_platform = PlatformValuesMapper::GetPlatformValuesForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(platformNode.GetText()).c_str()).c_str());
+      m_platform = PlatformValuesMapper::GetPlatformValuesForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(platformNode.GetText()).c_str()));
       m_platformHasBeenSet = true;
     }
   }
@@ -103,7 +84,7 @@ void CreateFleetInstance::OutputToStream(Aws::OStream& oStream, const char* loca
 
   if(m_lifecycleHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Lifecycle=" << InstanceLifecycleMapper::GetNameForInstanceLifecycle(m_lifecycle) << "&";
+      oStream << location << index << locationValue << ".Lifecycle=" << StringUtils::URLEncode(InstanceLifecycleMapper::GetNameForInstanceLifecycle(m_lifecycle)) << "&";
   }
 
   if(m_instanceIdsHasBeenSet)
@@ -117,12 +98,12 @@ void CreateFleetInstance::OutputToStream(Aws::OStream& oStream, const char* loca
 
   if(m_instanceTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".InstanceType=" << InstanceTypeMapper::GetNameForInstanceType(m_instanceType) << "&";
+      oStream << location << index << locationValue << ".InstanceType=" << StringUtils::URLEncode(InstanceTypeMapper::GetNameForInstanceType(m_instanceType)) << "&";
   }
 
   if(m_platformHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Platform=" << PlatformValuesMapper::GetNameForPlatformValues(m_platform) << "&";
+      oStream << location << index << locationValue << ".Platform=" << StringUtils::URLEncode(PlatformValuesMapper::GetNameForPlatformValues(m_platform)) << "&";
   }
 
 }
@@ -137,7 +118,7 @@ void CreateFleetInstance::OutputToStream(Aws::OStream& oStream, const char* loca
   }
   if(m_lifecycleHasBeenSet)
   {
-      oStream << location << ".Lifecycle=" << InstanceLifecycleMapper::GetNameForInstanceLifecycle(m_lifecycle) << "&";
+      oStream << location << ".Lifecycle=" << StringUtils::URLEncode(InstanceLifecycleMapper::GetNameForInstanceLifecycle(m_lifecycle)) << "&";
   }
   if(m_instanceIdsHasBeenSet)
   {
@@ -149,11 +130,11 @@ void CreateFleetInstance::OutputToStream(Aws::OStream& oStream, const char* loca
   }
   if(m_instanceTypeHasBeenSet)
   {
-      oStream << location << ".InstanceType=" << InstanceTypeMapper::GetNameForInstanceType(m_instanceType) << "&";
+      oStream << location << ".InstanceType=" << StringUtils::URLEncode(InstanceTypeMapper::GetNameForInstanceType(m_instanceType)) << "&";
   }
   if(m_platformHasBeenSet)
   {
-      oStream << location << ".Platform=" << PlatformValuesMapper::GetNameForPlatformValues(m_platform) << "&";
+      oStream << location << ".Platform=" << StringUtils::URLEncode(PlatformValuesMapper::GetNameForPlatformValues(m_platform)) << "&";
   }
 }
 

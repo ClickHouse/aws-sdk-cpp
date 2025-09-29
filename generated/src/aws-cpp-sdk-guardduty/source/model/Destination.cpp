@@ -18,21 +18,7 @@ namespace GuardDuty
 namespace Model
 {
 
-Destination::Destination() : 
-    m_destinationIdHasBeenSet(false),
-    m_destinationType(DestinationType::NOT_SET),
-    m_destinationTypeHasBeenSet(false),
-    m_status(PublishingStatus::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
-Destination::Destination(JsonView jsonValue) : 
-    m_destinationIdHasBeenSet(false),
-    m_destinationType(DestinationType::NOT_SET),
-    m_destinationTypeHasBeenSet(false),
-    m_status(PublishingStatus::NOT_SET),
-    m_statusHasBeenSet(false)
+Destination::Destination(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,24 +28,18 @@ Destination& Destination::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("destinationId"))
   {
     m_destinationId = jsonValue.GetString("destinationId");
-
     m_destinationIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("destinationType"))
   {
     m_destinationType = DestinationTypeMapper::GetDestinationTypeForName(jsonValue.GetString("destinationType"));
-
     m_destinationTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("status"))
   {
     m_status = PublishingStatusMapper::GetPublishingStatusForName(jsonValue.GetString("status"));
-
     m_statusHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -20,25 +20,7 @@ namespace SNS
 namespace Model
 {
 
-PublishBatchRequestEntry::PublishBatchRequestEntry() : 
-    m_idHasBeenSet(false),
-    m_messageHasBeenSet(false),
-    m_subjectHasBeenSet(false),
-    m_messageStructureHasBeenSet(false),
-    m_messageAttributesHasBeenSet(false),
-    m_messageDeduplicationIdHasBeenSet(false),
-    m_messageGroupIdHasBeenSet(false)
-{
-}
-
-PublishBatchRequestEntry::PublishBatchRequestEntry(const XmlNode& xmlNode) : 
-    m_idHasBeenSet(false),
-    m_messageHasBeenSet(false),
-    m_subjectHasBeenSet(false),
-    m_messageStructureHasBeenSet(false),
-    m_messageAttributesHasBeenSet(false),
-    m_messageDeduplicationIdHasBeenSet(false),
-    m_messageGroupIdHasBeenSet(false)
+PublishBatchRequestEntry::PublishBatchRequestEntry(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -78,6 +60,7 @@ PublishBatchRequestEntry& PublishBatchRequestEntry::operator =(const XmlNode& xm
     if(!messageAttributesNode.IsNull())
     {
       XmlNode messageAttributesEntry = messageAttributesNode.FirstChild("entry");
+      m_messageAttributesHasBeenSet = !messageAttributesEntry.IsNull();
       while(!messageAttributesEntry.IsNull())
       {
         XmlNode keyNode = messageAttributesEntry.FirstChild("key");
@@ -177,14 +160,13 @@ void PublishBatchRequestEntry::OutputToStream(Aws::OStream& oStream, const char*
       unsigned messageAttributesIdx = 1;
       for(auto& item : m_messageAttributes)
       {
-        oStream << location << ".MessageAttributes.entry."  << messageAttributesIdx << ".Name="
+        oStream << location << ".MessageAttributes.entry." << messageAttributesIdx << ".Name="
             << StringUtils::URLEncode(item.first.c_str()) << "&";
         Aws::StringStream messageAttributesSs;
         messageAttributesSs << location << ".MessageAttributes.entry." << messageAttributesIdx << ".Value";
         item.second.OutputToStream(oStream, messageAttributesSs.str().c_str());
         messageAttributesIdx++;
       }
-
   }
   if(m_messageDeduplicationIdHasBeenSet)
   {

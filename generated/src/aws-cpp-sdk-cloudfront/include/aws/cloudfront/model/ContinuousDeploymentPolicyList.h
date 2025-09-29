@@ -33,169 +33,71 @@ namespace Model
   class ContinuousDeploymentPolicyList
   {
   public:
-    AWS_CLOUDFRONT_API ContinuousDeploymentPolicyList();
+    AWS_CLOUDFRONT_API ContinuousDeploymentPolicyList() = default;
     AWS_CLOUDFRONT_API ContinuousDeploymentPolicyList(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_CLOUDFRONT_API ContinuousDeploymentPolicyList& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_CLOUDFRONT_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>Indicates the next page of continuous deployment policies. To get the next
      * page of the list, use this value in the <code>Marker</code> field of your
      * request.</p>
      */
-    inline const Aws::String& GetNextMarker() const{ return m_nextMarker; }
-
-    /**
-     * <p>Indicates the next page of continuous deployment policies. To get the next
-     * page of the list, use this value in the <code>Marker</code> field of your
-     * request.</p>
-     */
+    inline const Aws::String& GetNextMarker() const { return m_nextMarker; }
     inline bool NextMarkerHasBeenSet() const { return m_nextMarkerHasBeenSet; }
+    template<typename NextMarkerT = Aws::String>
+    void SetNextMarker(NextMarkerT&& value) { m_nextMarkerHasBeenSet = true; m_nextMarker = std::forward<NextMarkerT>(value); }
+    template<typename NextMarkerT = Aws::String>
+    ContinuousDeploymentPolicyList& WithNextMarker(NextMarkerT&& value) { SetNextMarker(std::forward<NextMarkerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Indicates the next page of continuous deployment policies. To get the next
-     * page of the list, use this value in the <code>Marker</code> field of your
-     * request.</p>
-     */
-    inline void SetNextMarker(const Aws::String& value) { m_nextMarkerHasBeenSet = true; m_nextMarker = value; }
-
-    /**
-     * <p>Indicates the next page of continuous deployment policies. To get the next
-     * page of the list, use this value in the <code>Marker</code> field of your
-     * request.</p>
-     */
-    inline void SetNextMarker(Aws::String&& value) { m_nextMarkerHasBeenSet = true; m_nextMarker = std::move(value); }
-
-    /**
-     * <p>Indicates the next page of continuous deployment policies. To get the next
-     * page of the list, use this value in the <code>Marker</code> field of your
-     * request.</p>
-     */
-    inline void SetNextMarker(const char* value) { m_nextMarkerHasBeenSet = true; m_nextMarker.assign(value); }
-
-    /**
-     * <p>Indicates the next page of continuous deployment policies. To get the next
-     * page of the list, use this value in the <code>Marker</code> field of your
-     * request.</p>
-     */
-    inline ContinuousDeploymentPolicyList& WithNextMarker(const Aws::String& value) { SetNextMarker(value); return *this;}
-
-    /**
-     * <p>Indicates the next page of continuous deployment policies. To get the next
-     * page of the list, use this value in the <code>Marker</code> field of your
-     * request.</p>
-     */
-    inline ContinuousDeploymentPolicyList& WithNextMarker(Aws::String&& value) { SetNextMarker(std::move(value)); return *this;}
-
-    /**
-     * <p>Indicates the next page of continuous deployment policies. To get the next
-     * page of the list, use this value in the <code>Marker</code> field of your
-     * request.</p>
-     */
-    inline ContinuousDeploymentPolicyList& WithNextMarker(const char* value) { SetNextMarker(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of continuous deployment policies that were specified in
      * your request.</p>
      */
-    inline int GetMaxItems() const{ return m_maxItems; }
-
-    /**
-     * <p>The maximum number of continuous deployment policies that were specified in
-     * your request.</p>
-     */
+    inline int GetMaxItems() const { return m_maxItems; }
     inline bool MaxItemsHasBeenSet() const { return m_maxItemsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of continuous deployment policies that were specified in
-     * your request.</p>
-     */
     inline void SetMaxItems(int value) { m_maxItemsHasBeenSet = true; m_maxItems = value; }
-
-    /**
-     * <p>The maximum number of continuous deployment policies that were specified in
-     * your request.</p>
-     */
     inline ContinuousDeploymentPolicyList& WithMaxItems(int value) { SetMaxItems(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The total number of continuous deployment policies in your Amazon Web
      * Services account, regardless of the <code>MaxItems</code> value.</p>
      */
-    inline int GetQuantity() const{ return m_quantity; }
-
-    /**
-     * <p>The total number of continuous deployment policies in your Amazon Web
-     * Services account, regardless of the <code>MaxItems</code> value.</p>
-     */
+    inline int GetQuantity() const { return m_quantity; }
     inline bool QuantityHasBeenSet() const { return m_quantityHasBeenSet; }
-
-    /**
-     * <p>The total number of continuous deployment policies in your Amazon Web
-     * Services account, regardless of the <code>MaxItems</code> value.</p>
-     */
     inline void SetQuantity(int value) { m_quantityHasBeenSet = true; m_quantity = value; }
-
-    /**
-     * <p>The total number of continuous deployment policies in your Amazon Web
-     * Services account, regardless of the <code>MaxItems</code> value.</p>
-     */
     inline ContinuousDeploymentPolicyList& WithQuantity(int value) { SetQuantity(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>A list of continuous deployment policy items.</p>
      */
-    inline const Aws::Vector<ContinuousDeploymentPolicySummary>& GetItems() const{ return m_items; }
-
-    /**
-     * <p>A list of continuous deployment policy items.</p>
-     */
+    inline const Aws::Vector<ContinuousDeploymentPolicySummary>& GetItems() const { return m_items; }
     inline bool ItemsHasBeenSet() const { return m_itemsHasBeenSet; }
-
-    /**
-     * <p>A list of continuous deployment policy items.</p>
-     */
-    inline void SetItems(const Aws::Vector<ContinuousDeploymentPolicySummary>& value) { m_itemsHasBeenSet = true; m_items = value; }
-
-    /**
-     * <p>A list of continuous deployment policy items.</p>
-     */
-    inline void SetItems(Aws::Vector<ContinuousDeploymentPolicySummary>&& value) { m_itemsHasBeenSet = true; m_items = std::move(value); }
-
-    /**
-     * <p>A list of continuous deployment policy items.</p>
-     */
-    inline ContinuousDeploymentPolicyList& WithItems(const Aws::Vector<ContinuousDeploymentPolicySummary>& value) { SetItems(value); return *this;}
-
-    /**
-     * <p>A list of continuous deployment policy items.</p>
-     */
-    inline ContinuousDeploymentPolicyList& WithItems(Aws::Vector<ContinuousDeploymentPolicySummary>&& value) { SetItems(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of continuous deployment policy items.</p>
-     */
-    inline ContinuousDeploymentPolicyList& AddItems(const ContinuousDeploymentPolicySummary& value) { m_itemsHasBeenSet = true; m_items.push_back(value); return *this; }
-
-    /**
-     * <p>A list of continuous deployment policy items.</p>
-     */
-    inline ContinuousDeploymentPolicyList& AddItems(ContinuousDeploymentPolicySummary&& value) { m_itemsHasBeenSet = true; m_items.push_back(std::move(value)); return *this; }
-
+    template<typename ItemsT = Aws::Vector<ContinuousDeploymentPolicySummary>>
+    void SetItems(ItemsT&& value) { m_itemsHasBeenSet = true; m_items = std::forward<ItemsT>(value); }
+    template<typename ItemsT = Aws::Vector<ContinuousDeploymentPolicySummary>>
+    ContinuousDeploymentPolicyList& WithItems(ItemsT&& value) { SetItems(std::forward<ItemsT>(value)); return *this;}
+    template<typename ItemsT = ContinuousDeploymentPolicySummary>
+    ContinuousDeploymentPolicyList& AddItems(ItemsT&& value) { m_itemsHasBeenSet = true; m_items.emplace_back(std::forward<ItemsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_nextMarker;
     bool m_nextMarkerHasBeenSet = false;
 
-    int m_maxItems;
+    int m_maxItems{0};
     bool m_maxItemsHasBeenSet = false;
 
-    int m_quantity;
+    int m_quantity{0};
     bool m_quantityHasBeenSet = false;
 
     Aws::Vector<ContinuousDeploymentPolicySummary> m_items;

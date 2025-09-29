@@ -32,142 +32,48 @@ namespace Model
   class FilterActivity
   {
   public:
-    AWS_IOTANALYTICS_API FilterActivity();
+    AWS_IOTANALYTICS_API FilterActivity() = default;
     AWS_IOTANALYTICS_API FilterActivity(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTANALYTICS_API FilterActivity& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTANALYTICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the filter activity.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the filter activity.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    FilterActivity& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the filter activity.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the filter activity.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the filter activity.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the filter activity.</p>
-     */
-    inline FilterActivity& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the filter activity.</p>
-     */
-    inline FilterActivity& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the filter activity.</p>
-     */
-    inline FilterActivity& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An expression that looks like a SQL WHERE clause that must return a Boolean
      * value. Messages that satisfy the condition are passed to the next activity. </p>
      */
-    inline const Aws::String& GetFilter() const{ return m_filter; }
-
-    /**
-     * <p>An expression that looks like a SQL WHERE clause that must return a Boolean
-     * value. Messages that satisfy the condition are passed to the next activity. </p>
-     */
+    inline const Aws::String& GetFilter() const { return m_filter; }
     inline bool FilterHasBeenSet() const { return m_filterHasBeenSet; }
+    template<typename FilterT = Aws::String>
+    void SetFilter(FilterT&& value) { m_filterHasBeenSet = true; m_filter = std::forward<FilterT>(value); }
+    template<typename FilterT = Aws::String>
+    FilterActivity& WithFilter(FilterT&& value) { SetFilter(std::forward<FilterT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An expression that looks like a SQL WHERE clause that must return a Boolean
-     * value. Messages that satisfy the condition are passed to the next activity. </p>
-     */
-    inline void SetFilter(const Aws::String& value) { m_filterHasBeenSet = true; m_filter = value; }
-
-    /**
-     * <p>An expression that looks like a SQL WHERE clause that must return a Boolean
-     * value. Messages that satisfy the condition are passed to the next activity. </p>
-     */
-    inline void SetFilter(Aws::String&& value) { m_filterHasBeenSet = true; m_filter = std::move(value); }
-
-    /**
-     * <p>An expression that looks like a SQL WHERE clause that must return a Boolean
-     * value. Messages that satisfy the condition are passed to the next activity. </p>
-     */
-    inline void SetFilter(const char* value) { m_filterHasBeenSet = true; m_filter.assign(value); }
-
-    /**
-     * <p>An expression that looks like a SQL WHERE clause that must return a Boolean
-     * value. Messages that satisfy the condition are passed to the next activity. </p>
-     */
-    inline FilterActivity& WithFilter(const Aws::String& value) { SetFilter(value); return *this;}
-
-    /**
-     * <p>An expression that looks like a SQL WHERE clause that must return a Boolean
-     * value. Messages that satisfy the condition are passed to the next activity. </p>
-     */
-    inline FilterActivity& WithFilter(Aws::String&& value) { SetFilter(std::move(value)); return *this;}
-
-    /**
-     * <p>An expression that looks like a SQL WHERE clause that must return a Boolean
-     * value. Messages that satisfy the condition are passed to the next activity. </p>
-     */
-    inline FilterActivity& WithFilter(const char* value) { SetFilter(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The next activity in the pipeline.</p>
      */
-    inline const Aws::String& GetNext() const{ return m_next; }
-
-    /**
-     * <p>The next activity in the pipeline.</p>
-     */
+    inline const Aws::String& GetNext() const { return m_next; }
     inline bool NextHasBeenSet() const { return m_nextHasBeenSet; }
-
-    /**
-     * <p>The next activity in the pipeline.</p>
-     */
-    inline void SetNext(const Aws::String& value) { m_nextHasBeenSet = true; m_next = value; }
-
-    /**
-     * <p>The next activity in the pipeline.</p>
-     */
-    inline void SetNext(Aws::String&& value) { m_nextHasBeenSet = true; m_next = std::move(value); }
-
-    /**
-     * <p>The next activity in the pipeline.</p>
-     */
-    inline void SetNext(const char* value) { m_nextHasBeenSet = true; m_next.assign(value); }
-
-    /**
-     * <p>The next activity in the pipeline.</p>
-     */
-    inline FilterActivity& WithNext(const Aws::String& value) { SetNext(value); return *this;}
-
-    /**
-     * <p>The next activity in the pipeline.</p>
-     */
-    inline FilterActivity& WithNext(Aws::String&& value) { SetNext(std::move(value)); return *this;}
-
-    /**
-     * <p>The next activity in the pipeline.</p>
-     */
-    inline FilterActivity& WithNext(const char* value) { SetNext(value); return *this;}
-
+    template<typename NextT = Aws::String>
+    void SetNext(NextT&& value) { m_nextHasBeenSet = true; m_next = std::forward<NextT>(value); }
+    template<typename NextT = Aws::String>
+    FilterActivity& WithNext(NextT&& value) { SetNext(std::forward<NextT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;

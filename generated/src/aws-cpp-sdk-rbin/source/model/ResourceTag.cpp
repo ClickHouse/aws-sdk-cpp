@@ -18,15 +18,7 @@ namespace RecycleBin
 namespace Model
 {
 
-ResourceTag::ResourceTag() : 
-    m_resourceTagKeyHasBeenSet(false),
-    m_resourceTagValueHasBeenSet(false)
-{
-}
-
-ResourceTag::ResourceTag(JsonView jsonValue) : 
-    m_resourceTagKeyHasBeenSet(false),
-    m_resourceTagValueHasBeenSet(false)
+ResourceTag::ResourceTag(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ResourceTag& ResourceTag::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ResourceTagKey"))
   {
     m_resourceTagKey = jsonValue.GetString("ResourceTagKey");
-
     m_resourceTagKeyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceTagValue"))
   {
     m_resourceTagValue = jsonValue.GetString("ResourceTagValue");
-
     m_resourceTagValueHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -31,120 +31,51 @@ namespace Model
   class PrestoParameters
   {
   public:
-    AWS_QUICKSIGHT_API PrestoParameters();
+    AWS_QUICKSIGHT_API PrestoParameters() = default;
     AWS_QUICKSIGHT_API PrestoParameters(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API PrestoParameters& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Host.</p>
      */
-    inline const Aws::String& GetHost() const{ return m_host; }
-
-    /**
-     * <p>Host.</p>
-     */
+    inline const Aws::String& GetHost() const { return m_host; }
     inline bool HostHasBeenSet() const { return m_hostHasBeenSet; }
+    template<typename HostT = Aws::String>
+    void SetHost(HostT&& value) { m_hostHasBeenSet = true; m_host = std::forward<HostT>(value); }
+    template<typename HostT = Aws::String>
+    PrestoParameters& WithHost(HostT&& value) { SetHost(std::forward<HostT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Host.</p>
-     */
-    inline void SetHost(const Aws::String& value) { m_hostHasBeenSet = true; m_host = value; }
-
-    /**
-     * <p>Host.</p>
-     */
-    inline void SetHost(Aws::String&& value) { m_hostHasBeenSet = true; m_host = std::move(value); }
-
-    /**
-     * <p>Host.</p>
-     */
-    inline void SetHost(const char* value) { m_hostHasBeenSet = true; m_host.assign(value); }
-
-    /**
-     * <p>Host.</p>
-     */
-    inline PrestoParameters& WithHost(const Aws::String& value) { SetHost(value); return *this;}
-
-    /**
-     * <p>Host.</p>
-     */
-    inline PrestoParameters& WithHost(Aws::String&& value) { SetHost(std::move(value)); return *this;}
-
-    /**
-     * <p>Host.</p>
-     */
-    inline PrestoParameters& WithHost(const char* value) { SetHost(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Port.</p>
      */
-    inline int GetPort() const{ return m_port; }
-
-    /**
-     * <p>Port.</p>
-     */
+    inline int GetPort() const { return m_port; }
     inline bool PortHasBeenSet() const { return m_portHasBeenSet; }
-
-    /**
-     * <p>Port.</p>
-     */
     inline void SetPort(int value) { m_portHasBeenSet = true; m_port = value; }
-
-    /**
-     * <p>Port.</p>
-     */
     inline PrestoParameters& WithPort(int value) { SetPort(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Catalog.</p>
      */
-    inline const Aws::String& GetCatalog() const{ return m_catalog; }
-
-    /**
-     * <p>Catalog.</p>
-     */
+    inline const Aws::String& GetCatalog() const { return m_catalog; }
     inline bool CatalogHasBeenSet() const { return m_catalogHasBeenSet; }
-
-    /**
-     * <p>Catalog.</p>
-     */
-    inline void SetCatalog(const Aws::String& value) { m_catalogHasBeenSet = true; m_catalog = value; }
-
-    /**
-     * <p>Catalog.</p>
-     */
-    inline void SetCatalog(Aws::String&& value) { m_catalogHasBeenSet = true; m_catalog = std::move(value); }
-
-    /**
-     * <p>Catalog.</p>
-     */
-    inline void SetCatalog(const char* value) { m_catalogHasBeenSet = true; m_catalog.assign(value); }
-
-    /**
-     * <p>Catalog.</p>
-     */
-    inline PrestoParameters& WithCatalog(const Aws::String& value) { SetCatalog(value); return *this;}
-
-    /**
-     * <p>Catalog.</p>
-     */
-    inline PrestoParameters& WithCatalog(Aws::String&& value) { SetCatalog(std::move(value)); return *this;}
-
-    /**
-     * <p>Catalog.</p>
-     */
-    inline PrestoParameters& WithCatalog(const char* value) { SetCatalog(value); return *this;}
-
+    template<typename CatalogT = Aws::String>
+    void SetCatalog(CatalogT&& value) { m_catalogHasBeenSet = true; m_catalog = std::forward<CatalogT>(value); }
+    template<typename CatalogT = Aws::String>
+    PrestoParameters& WithCatalog(CatalogT&& value) { SetCatalog(std::forward<CatalogT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_host;
     bool m_hostHasBeenSet = false;
 
-    int m_port;
+    int m_port{0};
     bool m_portHasBeenSet = false;
 
     Aws::String m_catalog;

@@ -18,15 +18,7 @@ namespace BedrockAgentRuntime
 namespace Model
 {
 
-FailureTrace::FailureTrace() : 
-    m_traceIdHasBeenSet(false),
-    m_failureReasonHasBeenSet(false)
-{
-}
-
-FailureTrace::FailureTrace(JsonView jsonValue) : 
-    m_traceIdHasBeenSet(false),
-    m_failureReasonHasBeenSet(false)
+FailureTrace::FailureTrace(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,23 @@ FailureTrace& FailureTrace::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("traceId"))
   {
     m_traceId = jsonValue.GetString("traceId");
-
     m_traceIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("failureReason"))
   {
     m_failureReason = jsonValue.GetString("failureReason");
-
     m_failureReasonHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("failureCode"))
+  {
+    m_failureCode = jsonValue.GetInteger("failureCode");
+    m_failureCodeHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("metadata"))
+  {
+    m_metadata = jsonValue.GetObject("metadata");
+    m_metadataHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -63,6 +61,18 @@ JsonValue FailureTrace::Jsonize() const
   if(m_failureReasonHasBeenSet)
   {
    payload.WithString("failureReason", m_failureReason);
+
+  }
+
+  if(m_failureCodeHasBeenSet)
+  {
+   payload.WithInteger("failureCode", m_failureCode);
+
+  }
+
+  if(m_metadataHasBeenSet)
+  {
+   payload.WithObject("metadata", m_metadata.Jsonize());
 
   }
 

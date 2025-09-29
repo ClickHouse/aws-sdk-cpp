@@ -28,68 +28,37 @@ namespace Model
   class DescribeFHIRImportJobResult
   {
   public:
-    AWS_HEALTHLAKE_API DescribeFHIRImportJobResult();
+    AWS_HEALTHLAKE_API DescribeFHIRImportJobResult() = default;
     AWS_HEALTHLAKE_API DescribeFHIRImportJobResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_HEALTHLAKE_API DescribeFHIRImportJobResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
-     * <p>The properties of the Import job request, including the ID, ARN, name, and
-     * the status of the job.</p>
+     * <p>The import job properties.</p>
      */
-    inline const ImportJobProperties& GetImportJobProperties() const{ return m_importJobProperties; }
+    inline const ImportJobProperties& GetImportJobProperties() const { return m_importJobProperties; }
+    template<typename ImportJobPropertiesT = ImportJobProperties>
+    void SetImportJobProperties(ImportJobPropertiesT&& value) { m_importJobPropertiesHasBeenSet = true; m_importJobProperties = std::forward<ImportJobPropertiesT>(value); }
+    template<typename ImportJobPropertiesT = ImportJobProperties>
+    DescribeFHIRImportJobResult& WithImportJobProperties(ImportJobPropertiesT&& value) { SetImportJobProperties(std::forward<ImportJobPropertiesT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The properties of the Import job request, including the ID, ARN, name, and
-     * the status of the job.</p>
-     */
-    inline void SetImportJobProperties(const ImportJobProperties& value) { m_importJobProperties = value; }
-
-    /**
-     * <p>The properties of the Import job request, including the ID, ARN, name, and
-     * the status of the job.</p>
-     */
-    inline void SetImportJobProperties(ImportJobProperties&& value) { m_importJobProperties = std::move(value); }
-
-    /**
-     * <p>The properties of the Import job request, including the ID, ARN, name, and
-     * the status of the job.</p>
-     */
-    inline DescribeFHIRImportJobResult& WithImportJobProperties(const ImportJobProperties& value) { SetImportJobProperties(value); return *this;}
-
-    /**
-     * <p>The properties of the Import job request, including the ID, ARN, name, and
-     * the status of the job.</p>
-     */
-    inline DescribeFHIRImportJobResult& WithImportJobProperties(ImportJobProperties&& value) { SetImportJobProperties(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeFHIRImportJobResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeFHIRImportJobResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeFHIRImportJobResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeFHIRImportJobResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     ImportJobProperties m_importJobProperties;
+    bool m_importJobPropertiesHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

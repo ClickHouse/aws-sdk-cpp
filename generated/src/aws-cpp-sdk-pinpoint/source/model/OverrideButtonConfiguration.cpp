@@ -18,17 +18,7 @@ namespace Pinpoint
 namespace Model
 {
 
-OverrideButtonConfiguration::OverrideButtonConfiguration() : 
-    m_buttonAction(ButtonAction::NOT_SET),
-    m_buttonActionHasBeenSet(false),
-    m_linkHasBeenSet(false)
-{
-}
-
-OverrideButtonConfiguration::OverrideButtonConfiguration(JsonView jsonValue) : 
-    m_buttonAction(ButtonAction::NOT_SET),
-    m_buttonActionHasBeenSet(false),
-    m_linkHasBeenSet(false)
+OverrideButtonConfiguration::OverrideButtonConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ OverrideButtonConfiguration& OverrideButtonConfiguration::operator =(JsonView js
   if(jsonValue.ValueExists("ButtonAction"))
   {
     m_buttonAction = ButtonActionMapper::GetButtonActionForName(jsonValue.GetString("ButtonAction"));
-
     m_buttonActionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Link"))
   {
     m_link = jsonValue.GetString("Link");
-
     m_linkHasBeenSet = true;
   }
-
   return *this;
 }
 

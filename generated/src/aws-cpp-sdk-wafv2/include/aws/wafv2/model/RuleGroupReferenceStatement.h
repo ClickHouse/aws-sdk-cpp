@@ -41,206 +41,65 @@ namespace Model
   class RuleGroupReferenceStatement
   {
   public:
-    AWS_WAFV2_API RuleGroupReferenceStatement();
+    AWS_WAFV2_API RuleGroupReferenceStatement() = default;
     AWS_WAFV2_API RuleGroupReferenceStatement(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFV2_API RuleGroupReferenceStatement& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the entity.</p>
      */
-    inline const Aws::String& GetARN() const{ return m_aRN; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the entity.</p>
-     */
+    inline const Aws::String& GetARN() const { return m_aRN; }
     inline bool ARNHasBeenSet() const { return m_aRNHasBeenSet; }
+    template<typename ARNT = Aws::String>
+    void SetARN(ARNT&& value) { m_aRNHasBeenSet = true; m_aRN = std::forward<ARNT>(value); }
+    template<typename ARNT = Aws::String>
+    RuleGroupReferenceStatement& WithARN(ARNT&& value) { SetARN(std::forward<ARNT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the entity.</p>
-     */
-    inline void SetARN(const Aws::String& value) { m_aRNHasBeenSet = true; m_aRN = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the entity.</p>
-     */
-    inline void SetARN(Aws::String&& value) { m_aRNHasBeenSet = true; m_aRN = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the entity.</p>
-     */
-    inline void SetARN(const char* value) { m_aRNHasBeenSet = true; m_aRN.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the entity.</p>
-     */
-    inline RuleGroupReferenceStatement& WithARN(const Aws::String& value) { SetARN(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the entity.</p>
-     */
-    inline RuleGroupReferenceStatement& WithARN(Aws::String&& value) { SetARN(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the entity.</p>
-     */
-    inline RuleGroupReferenceStatement& WithARN(const char* value) { SetARN(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Rules in the referenced rule group whose actions are set to
      * <code>Count</code>. </p>  <p>Instead of this option, use
      * <code>RuleActionOverrides</code>. It accepts any valid action setting, including
      * <code>Count</code>.</p> 
      */
-    inline const Aws::Vector<ExcludedRule>& GetExcludedRules() const{ return m_excludedRules; }
-
-    /**
-     * <p>Rules in the referenced rule group whose actions are set to
-     * <code>Count</code>. </p>  <p>Instead of this option, use
-     * <code>RuleActionOverrides</code>. It accepts any valid action setting, including
-     * <code>Count</code>.</p> 
-     */
+    inline const Aws::Vector<ExcludedRule>& GetExcludedRules() const { return m_excludedRules; }
     inline bool ExcludedRulesHasBeenSet() const { return m_excludedRulesHasBeenSet; }
+    template<typename ExcludedRulesT = Aws::Vector<ExcludedRule>>
+    void SetExcludedRules(ExcludedRulesT&& value) { m_excludedRulesHasBeenSet = true; m_excludedRules = std::forward<ExcludedRulesT>(value); }
+    template<typename ExcludedRulesT = Aws::Vector<ExcludedRule>>
+    RuleGroupReferenceStatement& WithExcludedRules(ExcludedRulesT&& value) { SetExcludedRules(std::forward<ExcludedRulesT>(value)); return *this;}
+    template<typename ExcludedRulesT = ExcludedRule>
+    RuleGroupReferenceStatement& AddExcludedRules(ExcludedRulesT&& value) { m_excludedRulesHasBeenSet = true; m_excludedRules.emplace_back(std::forward<ExcludedRulesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Rules in the referenced rule group whose actions are set to
-     * <code>Count</code>. </p>  <p>Instead of this option, use
-     * <code>RuleActionOverrides</code>. It accepts any valid action setting, including
-     * <code>Count</code>.</p> 
-     */
-    inline void SetExcludedRules(const Aws::Vector<ExcludedRule>& value) { m_excludedRulesHasBeenSet = true; m_excludedRules = value; }
-
-    /**
-     * <p>Rules in the referenced rule group whose actions are set to
-     * <code>Count</code>. </p>  <p>Instead of this option, use
-     * <code>RuleActionOverrides</code>. It accepts any valid action setting, including
-     * <code>Count</code>.</p> 
-     */
-    inline void SetExcludedRules(Aws::Vector<ExcludedRule>&& value) { m_excludedRulesHasBeenSet = true; m_excludedRules = std::move(value); }
-
-    /**
-     * <p>Rules in the referenced rule group whose actions are set to
-     * <code>Count</code>. </p>  <p>Instead of this option, use
-     * <code>RuleActionOverrides</code>. It accepts any valid action setting, including
-     * <code>Count</code>.</p> 
-     */
-    inline RuleGroupReferenceStatement& WithExcludedRules(const Aws::Vector<ExcludedRule>& value) { SetExcludedRules(value); return *this;}
-
-    /**
-     * <p>Rules in the referenced rule group whose actions are set to
-     * <code>Count</code>. </p>  <p>Instead of this option, use
-     * <code>RuleActionOverrides</code>. It accepts any valid action setting, including
-     * <code>Count</code>.</p> 
-     */
-    inline RuleGroupReferenceStatement& WithExcludedRules(Aws::Vector<ExcludedRule>&& value) { SetExcludedRules(std::move(value)); return *this;}
-
-    /**
-     * <p>Rules in the referenced rule group whose actions are set to
-     * <code>Count</code>. </p>  <p>Instead of this option, use
-     * <code>RuleActionOverrides</code>. It accepts any valid action setting, including
-     * <code>Count</code>.</p> 
-     */
-    inline RuleGroupReferenceStatement& AddExcludedRules(const ExcludedRule& value) { m_excludedRulesHasBeenSet = true; m_excludedRules.push_back(value); return *this; }
-
-    /**
-     * <p>Rules in the referenced rule group whose actions are set to
-     * <code>Count</code>. </p>  <p>Instead of this option, use
-     * <code>RuleActionOverrides</code>. It accepts any valid action setting, including
-     * <code>Count</code>.</p> 
-     */
-    inline RuleGroupReferenceStatement& AddExcludedRules(ExcludedRule&& value) { m_excludedRulesHasBeenSet = true; m_excludedRules.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Action settings to use in the place of the rule actions that are configured
      * inside the rule group. You specify one override for each rule whose action you
-     * want to change. </p> <p>You can use overrides for testing, for example you can
-     * override all of rule actions to <code>Count</code> and then monitor the
+     * want to change. </p>  <p>Verify the rule names in your overrides
+     * carefully. With managed rule groups, WAF silently ignores any override that uses
+     * an invalid rule name. With customer-owned rule groups, invalid rule names in
+     * your overrides will cause web ACL updates to fail. An invalid rule name is any
+     * name that doesn't exactly match the case-sensitive name of an existing rule in
+     * the rule group.</p>  <p>You can use overrides for testing, for example
+     * you can override all of rule actions to <code>Count</code> and then monitor the
      * resulting count metrics to understand how the rule group would handle your web
      * traffic. You can also permanently override some or all actions, to modify how
      * the rule group manages your web traffic.</p>
      */
-    inline const Aws::Vector<RuleActionOverride>& GetRuleActionOverrides() const{ return m_ruleActionOverrides; }
-
-    /**
-     * <p>Action settings to use in the place of the rule actions that are configured
-     * inside the rule group. You specify one override for each rule whose action you
-     * want to change. </p> <p>You can use overrides for testing, for example you can
-     * override all of rule actions to <code>Count</code> and then monitor the
-     * resulting count metrics to understand how the rule group would handle your web
-     * traffic. You can also permanently override some or all actions, to modify how
-     * the rule group manages your web traffic.</p>
-     */
+    inline const Aws::Vector<RuleActionOverride>& GetRuleActionOverrides() const { return m_ruleActionOverrides; }
     inline bool RuleActionOverridesHasBeenSet() const { return m_ruleActionOverridesHasBeenSet; }
-
-    /**
-     * <p>Action settings to use in the place of the rule actions that are configured
-     * inside the rule group. You specify one override for each rule whose action you
-     * want to change. </p> <p>You can use overrides for testing, for example you can
-     * override all of rule actions to <code>Count</code> and then monitor the
-     * resulting count metrics to understand how the rule group would handle your web
-     * traffic. You can also permanently override some or all actions, to modify how
-     * the rule group manages your web traffic.</p>
-     */
-    inline void SetRuleActionOverrides(const Aws::Vector<RuleActionOverride>& value) { m_ruleActionOverridesHasBeenSet = true; m_ruleActionOverrides = value; }
-
-    /**
-     * <p>Action settings to use in the place of the rule actions that are configured
-     * inside the rule group. You specify one override for each rule whose action you
-     * want to change. </p> <p>You can use overrides for testing, for example you can
-     * override all of rule actions to <code>Count</code> and then monitor the
-     * resulting count metrics to understand how the rule group would handle your web
-     * traffic. You can also permanently override some or all actions, to modify how
-     * the rule group manages your web traffic.</p>
-     */
-    inline void SetRuleActionOverrides(Aws::Vector<RuleActionOverride>&& value) { m_ruleActionOverridesHasBeenSet = true; m_ruleActionOverrides = std::move(value); }
-
-    /**
-     * <p>Action settings to use in the place of the rule actions that are configured
-     * inside the rule group. You specify one override for each rule whose action you
-     * want to change. </p> <p>You can use overrides for testing, for example you can
-     * override all of rule actions to <code>Count</code> and then monitor the
-     * resulting count metrics to understand how the rule group would handle your web
-     * traffic. You can also permanently override some or all actions, to modify how
-     * the rule group manages your web traffic.</p>
-     */
-    inline RuleGroupReferenceStatement& WithRuleActionOverrides(const Aws::Vector<RuleActionOverride>& value) { SetRuleActionOverrides(value); return *this;}
-
-    /**
-     * <p>Action settings to use in the place of the rule actions that are configured
-     * inside the rule group. You specify one override for each rule whose action you
-     * want to change. </p> <p>You can use overrides for testing, for example you can
-     * override all of rule actions to <code>Count</code> and then monitor the
-     * resulting count metrics to understand how the rule group would handle your web
-     * traffic. You can also permanently override some or all actions, to modify how
-     * the rule group manages your web traffic.</p>
-     */
-    inline RuleGroupReferenceStatement& WithRuleActionOverrides(Aws::Vector<RuleActionOverride>&& value) { SetRuleActionOverrides(std::move(value)); return *this;}
-
-    /**
-     * <p>Action settings to use in the place of the rule actions that are configured
-     * inside the rule group. You specify one override for each rule whose action you
-     * want to change. </p> <p>You can use overrides for testing, for example you can
-     * override all of rule actions to <code>Count</code> and then monitor the
-     * resulting count metrics to understand how the rule group would handle your web
-     * traffic. You can also permanently override some or all actions, to modify how
-     * the rule group manages your web traffic.</p>
-     */
-    inline RuleGroupReferenceStatement& AddRuleActionOverrides(const RuleActionOverride& value) { m_ruleActionOverridesHasBeenSet = true; m_ruleActionOverrides.push_back(value); return *this; }
-
-    /**
-     * <p>Action settings to use in the place of the rule actions that are configured
-     * inside the rule group. You specify one override for each rule whose action you
-     * want to change. </p> <p>You can use overrides for testing, for example you can
-     * override all of rule actions to <code>Count</code> and then monitor the
-     * resulting count metrics to understand how the rule group would handle your web
-     * traffic. You can also permanently override some or all actions, to modify how
-     * the rule group manages your web traffic.</p>
-     */
-    inline RuleGroupReferenceStatement& AddRuleActionOverrides(RuleActionOverride&& value) { m_ruleActionOverridesHasBeenSet = true; m_ruleActionOverrides.push_back(std::move(value)); return *this; }
-
+    template<typename RuleActionOverridesT = Aws::Vector<RuleActionOverride>>
+    void SetRuleActionOverrides(RuleActionOverridesT&& value) { m_ruleActionOverridesHasBeenSet = true; m_ruleActionOverrides = std::forward<RuleActionOverridesT>(value); }
+    template<typename RuleActionOverridesT = Aws::Vector<RuleActionOverride>>
+    RuleGroupReferenceStatement& WithRuleActionOverrides(RuleActionOverridesT&& value) { SetRuleActionOverrides(std::forward<RuleActionOverridesT>(value)); return *this;}
+    template<typename RuleActionOverridesT = RuleActionOverride>
+    RuleGroupReferenceStatement& AddRuleActionOverrides(RuleActionOverridesT&& value) { m_ruleActionOverridesHasBeenSet = true; m_ruleActionOverrides.emplace_back(std::forward<RuleActionOverridesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_aRN;

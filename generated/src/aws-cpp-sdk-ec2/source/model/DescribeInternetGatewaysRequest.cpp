@@ -10,29 +10,18 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-DescribeInternetGatewaysRequest::DescribeInternetGatewaysRequest() : 
-    m_filtersHasBeenSet(false),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_internetGatewayIdsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false)
-{
-}
-
 Aws::String DescribeInternetGatewaysRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=DescribeInternetGateways&";
-  if(m_filtersHasBeenSet)
+  if(m_nextTokenHasBeenSet)
   {
-    unsigned filtersCount = 1;
-    for(auto& item : m_filters)
-    {
-      item.OutputToStream(ss, "Filter.", filtersCount, "");
-      filtersCount++;
-    }
+    ss << "NextToken=" << StringUtils::URLEncode(m_nextToken.c_str()) << "&";
+  }
+
+  if(m_maxResultsHasBeenSet)
+  {
+    ss << "MaxResults=" << m_maxResults << "&";
   }
 
   if(m_dryRunHasBeenSet)
@@ -51,14 +40,14 @@ Aws::String DescribeInternetGatewaysRequest::SerializePayload() const
     }
   }
 
-  if(m_nextTokenHasBeenSet)
+  if(m_filtersHasBeenSet)
   {
-    ss << "NextToken=" << StringUtils::URLEncode(m_nextToken.c_str()) << "&";
-  }
-
-  if(m_maxResultsHasBeenSet)
-  {
-    ss << "MaxResults=" << m_maxResults << "&";
+    unsigned filtersCount = 1;
+    for(auto& item : m_filters)
+    {
+      item.OutputToStream(ss, "Filter.", filtersCount, "");
+      filtersCount++;
+    }
   }
 
   ss << "Version=2016-11-15";

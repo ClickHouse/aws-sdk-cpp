@@ -18,13 +18,7 @@ namespace Detective
 namespace Model
 {
 
-TimestampForCollection::TimestampForCollection() : 
-    m_timestampHasBeenSet(false)
-{
-}
-
-TimestampForCollection::TimestampForCollection(JsonView jsonValue) : 
-    m_timestampHasBeenSet(false)
+TimestampForCollection::TimestampForCollection(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ TimestampForCollection& TimestampForCollection::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Timestamp"))
   {
     m_timestamp = jsonValue.GetString("Timestamp");
-
     m_timestampHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,17 +18,7 @@ namespace Glue
 namespace Model
 {
 
-Location::Location() : 
-    m_jdbcHasBeenSet(false),
-    m_s3HasBeenSet(false),
-    m_dynamoDBHasBeenSet(false)
-{
-}
-
-Location::Location(JsonView jsonValue) : 
-    m_jdbcHasBeenSet(false),
-    m_s3HasBeenSet(false),
-    m_dynamoDBHasBeenSet(false)
+Location::Location(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,7 +34,6 @@ Location& Location::operator =(JsonView jsonValue)
     }
     m_jdbcHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("S3"))
   {
     Aws::Utils::Array<JsonView> s3JsonList = jsonValue.GetArray("S3");
@@ -54,7 +43,6 @@ Location& Location::operator =(JsonView jsonValue)
     }
     m_s3HasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DynamoDB"))
   {
     Aws::Utils::Array<JsonView> dynamoDBJsonList = jsonValue.GetArray("DynamoDB");
@@ -64,7 +52,6 @@ Location& Location::operator =(JsonView jsonValue)
     }
     m_dynamoDBHasBeenSet = true;
   }
-
   return *this;
 }
 

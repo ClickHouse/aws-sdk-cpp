@@ -18,17 +18,7 @@ namespace FSx
 namespace Model
 {
 
-SnaplockRetentionPeriod::SnaplockRetentionPeriod() : 
-    m_defaultRetentionHasBeenSet(false),
-    m_minimumRetentionHasBeenSet(false),
-    m_maximumRetentionHasBeenSet(false)
-{
-}
-
-SnaplockRetentionPeriod::SnaplockRetentionPeriod(JsonView jsonValue) : 
-    m_defaultRetentionHasBeenSet(false),
-    m_minimumRetentionHasBeenSet(false),
-    m_maximumRetentionHasBeenSet(false)
+SnaplockRetentionPeriod::SnaplockRetentionPeriod(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ SnaplockRetentionPeriod& SnaplockRetentionPeriod::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("DefaultRetention"))
   {
     m_defaultRetention = jsonValue.GetObject("DefaultRetention");
-
     m_defaultRetentionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MinimumRetention"))
   {
     m_minimumRetention = jsonValue.GetObject("MinimumRetention");
-
     m_minimumRetentionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MaximumRetention"))
   {
     m_maximumRetention = jsonValue.GetObject("MaximumRetention");
-
     m_maximumRetentionHasBeenSet = true;
   }
-
   return *this;
 }
 

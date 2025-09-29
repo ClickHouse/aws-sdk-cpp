@@ -32,83 +32,35 @@ namespace Model
   class PendingMaintenance
   {
   public:
-    AWS_MAINFRAMEMODERNIZATION_API PendingMaintenance();
+    AWS_MAINFRAMEMODERNIZATION_API PendingMaintenance() = default;
     AWS_MAINFRAMEMODERNIZATION_API PendingMaintenance(Aws::Utils::Json::JsonView jsonValue);
     AWS_MAINFRAMEMODERNIZATION_API PendingMaintenance& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MAINFRAMEMODERNIZATION_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The specific runtime engine that the maintenance schedule applies to.</p>
      */
-    inline const Aws::String& GetEngineVersion() const{ return m_engineVersion; }
-
-    /**
-     * <p>The specific runtime engine that the maintenance schedule applies to.</p>
-     */
+    inline const Aws::String& GetEngineVersion() const { return m_engineVersion; }
     inline bool EngineVersionHasBeenSet() const { return m_engineVersionHasBeenSet; }
+    template<typename EngineVersionT = Aws::String>
+    void SetEngineVersion(EngineVersionT&& value) { m_engineVersionHasBeenSet = true; m_engineVersion = std::forward<EngineVersionT>(value); }
+    template<typename EngineVersionT = Aws::String>
+    PendingMaintenance& WithEngineVersion(EngineVersionT&& value) { SetEngineVersion(std::forward<EngineVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The specific runtime engine that the maintenance schedule applies to.</p>
-     */
-    inline void SetEngineVersion(const Aws::String& value) { m_engineVersionHasBeenSet = true; m_engineVersion = value; }
-
-    /**
-     * <p>The specific runtime engine that the maintenance schedule applies to.</p>
-     */
-    inline void SetEngineVersion(Aws::String&& value) { m_engineVersionHasBeenSet = true; m_engineVersion = std::move(value); }
-
-    /**
-     * <p>The specific runtime engine that the maintenance schedule applies to.</p>
-     */
-    inline void SetEngineVersion(const char* value) { m_engineVersionHasBeenSet = true; m_engineVersion.assign(value); }
-
-    /**
-     * <p>The specific runtime engine that the maintenance schedule applies to.</p>
-     */
-    inline PendingMaintenance& WithEngineVersion(const Aws::String& value) { SetEngineVersion(value); return *this;}
-
-    /**
-     * <p>The specific runtime engine that the maintenance schedule applies to.</p>
-     */
-    inline PendingMaintenance& WithEngineVersion(Aws::String&& value) { SetEngineVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The specific runtime engine that the maintenance schedule applies to.</p>
-     */
-    inline PendingMaintenance& WithEngineVersion(const char* value) { SetEngineVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maintenance schedule for the runtime engine version.</p>
      */
-    inline const MaintenanceSchedule& GetSchedule() const{ return m_schedule; }
-
-    /**
-     * <p>The maintenance schedule for the runtime engine version.</p>
-     */
+    inline const MaintenanceSchedule& GetSchedule() const { return m_schedule; }
     inline bool ScheduleHasBeenSet() const { return m_scheduleHasBeenSet; }
-
-    /**
-     * <p>The maintenance schedule for the runtime engine version.</p>
-     */
-    inline void SetSchedule(const MaintenanceSchedule& value) { m_scheduleHasBeenSet = true; m_schedule = value; }
-
-    /**
-     * <p>The maintenance schedule for the runtime engine version.</p>
-     */
-    inline void SetSchedule(MaintenanceSchedule&& value) { m_scheduleHasBeenSet = true; m_schedule = std::move(value); }
-
-    /**
-     * <p>The maintenance schedule for the runtime engine version.</p>
-     */
-    inline PendingMaintenance& WithSchedule(const MaintenanceSchedule& value) { SetSchedule(value); return *this;}
-
-    /**
-     * <p>The maintenance schedule for the runtime engine version.</p>
-     */
-    inline PendingMaintenance& WithSchedule(MaintenanceSchedule&& value) { SetSchedule(std::move(value)); return *this;}
-
+    template<typename ScheduleT = MaintenanceSchedule>
+    void SetSchedule(ScheduleT&& value) { m_scheduleHasBeenSet = true; m_schedule = std::forward<ScheduleT>(value); }
+    template<typename ScheduleT = MaintenanceSchedule>
+    PendingMaintenance& WithSchedule(ScheduleT&& value) { SetSchedule(std::forward<ScheduleT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_engineVersion;

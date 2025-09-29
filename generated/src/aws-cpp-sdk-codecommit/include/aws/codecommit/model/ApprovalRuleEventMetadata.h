@@ -32,134 +32,47 @@ namespace Model
   class ApprovalRuleEventMetadata
   {
   public:
-    AWS_CODECOMMIT_API ApprovalRuleEventMetadata();
+    AWS_CODECOMMIT_API ApprovalRuleEventMetadata() = default;
     AWS_CODECOMMIT_API ApprovalRuleEventMetadata(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODECOMMIT_API ApprovalRuleEventMetadata& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODECOMMIT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the approval rule.</p>
      */
-    inline const Aws::String& GetApprovalRuleName() const{ return m_approvalRuleName; }
-
-    /**
-     * <p>The name of the approval rule.</p>
-     */
+    inline const Aws::String& GetApprovalRuleName() const { return m_approvalRuleName; }
     inline bool ApprovalRuleNameHasBeenSet() const { return m_approvalRuleNameHasBeenSet; }
+    template<typename ApprovalRuleNameT = Aws::String>
+    void SetApprovalRuleName(ApprovalRuleNameT&& value) { m_approvalRuleNameHasBeenSet = true; m_approvalRuleName = std::forward<ApprovalRuleNameT>(value); }
+    template<typename ApprovalRuleNameT = Aws::String>
+    ApprovalRuleEventMetadata& WithApprovalRuleName(ApprovalRuleNameT&& value) { SetApprovalRuleName(std::forward<ApprovalRuleNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the approval rule.</p>
-     */
-    inline void SetApprovalRuleName(const Aws::String& value) { m_approvalRuleNameHasBeenSet = true; m_approvalRuleName = value; }
-
-    /**
-     * <p>The name of the approval rule.</p>
-     */
-    inline void SetApprovalRuleName(Aws::String&& value) { m_approvalRuleNameHasBeenSet = true; m_approvalRuleName = std::move(value); }
-
-    /**
-     * <p>The name of the approval rule.</p>
-     */
-    inline void SetApprovalRuleName(const char* value) { m_approvalRuleNameHasBeenSet = true; m_approvalRuleName.assign(value); }
-
-    /**
-     * <p>The name of the approval rule.</p>
-     */
-    inline ApprovalRuleEventMetadata& WithApprovalRuleName(const Aws::String& value) { SetApprovalRuleName(value); return *this;}
-
-    /**
-     * <p>The name of the approval rule.</p>
-     */
-    inline ApprovalRuleEventMetadata& WithApprovalRuleName(Aws::String&& value) { SetApprovalRuleName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the approval rule.</p>
-     */
-    inline ApprovalRuleEventMetadata& WithApprovalRuleName(const char* value) { SetApprovalRuleName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The system-generated ID of the approval rule.</p>
      */
-    inline const Aws::String& GetApprovalRuleId() const{ return m_approvalRuleId; }
-
-    /**
-     * <p>The system-generated ID of the approval rule.</p>
-     */
+    inline const Aws::String& GetApprovalRuleId() const { return m_approvalRuleId; }
     inline bool ApprovalRuleIdHasBeenSet() const { return m_approvalRuleIdHasBeenSet; }
+    template<typename ApprovalRuleIdT = Aws::String>
+    void SetApprovalRuleId(ApprovalRuleIdT&& value) { m_approvalRuleIdHasBeenSet = true; m_approvalRuleId = std::forward<ApprovalRuleIdT>(value); }
+    template<typename ApprovalRuleIdT = Aws::String>
+    ApprovalRuleEventMetadata& WithApprovalRuleId(ApprovalRuleIdT&& value) { SetApprovalRuleId(std::forward<ApprovalRuleIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The system-generated ID of the approval rule.</p>
-     */
-    inline void SetApprovalRuleId(const Aws::String& value) { m_approvalRuleIdHasBeenSet = true; m_approvalRuleId = value; }
-
-    /**
-     * <p>The system-generated ID of the approval rule.</p>
-     */
-    inline void SetApprovalRuleId(Aws::String&& value) { m_approvalRuleIdHasBeenSet = true; m_approvalRuleId = std::move(value); }
-
-    /**
-     * <p>The system-generated ID of the approval rule.</p>
-     */
-    inline void SetApprovalRuleId(const char* value) { m_approvalRuleIdHasBeenSet = true; m_approvalRuleId.assign(value); }
-
-    /**
-     * <p>The system-generated ID of the approval rule.</p>
-     */
-    inline ApprovalRuleEventMetadata& WithApprovalRuleId(const Aws::String& value) { SetApprovalRuleId(value); return *this;}
-
-    /**
-     * <p>The system-generated ID of the approval rule.</p>
-     */
-    inline ApprovalRuleEventMetadata& WithApprovalRuleId(Aws::String&& value) { SetApprovalRuleId(std::move(value)); return *this;}
-
-    /**
-     * <p>The system-generated ID of the approval rule.</p>
-     */
-    inline ApprovalRuleEventMetadata& WithApprovalRuleId(const char* value) { SetApprovalRuleId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The content of the approval rule.</p>
      */
-    inline const Aws::String& GetApprovalRuleContent() const{ return m_approvalRuleContent; }
-
-    /**
-     * <p>The content of the approval rule.</p>
-     */
+    inline const Aws::String& GetApprovalRuleContent() const { return m_approvalRuleContent; }
     inline bool ApprovalRuleContentHasBeenSet() const { return m_approvalRuleContentHasBeenSet; }
-
-    /**
-     * <p>The content of the approval rule.</p>
-     */
-    inline void SetApprovalRuleContent(const Aws::String& value) { m_approvalRuleContentHasBeenSet = true; m_approvalRuleContent = value; }
-
-    /**
-     * <p>The content of the approval rule.</p>
-     */
-    inline void SetApprovalRuleContent(Aws::String&& value) { m_approvalRuleContentHasBeenSet = true; m_approvalRuleContent = std::move(value); }
-
-    /**
-     * <p>The content of the approval rule.</p>
-     */
-    inline void SetApprovalRuleContent(const char* value) { m_approvalRuleContentHasBeenSet = true; m_approvalRuleContent.assign(value); }
-
-    /**
-     * <p>The content of the approval rule.</p>
-     */
-    inline ApprovalRuleEventMetadata& WithApprovalRuleContent(const Aws::String& value) { SetApprovalRuleContent(value); return *this;}
-
-    /**
-     * <p>The content of the approval rule.</p>
-     */
-    inline ApprovalRuleEventMetadata& WithApprovalRuleContent(Aws::String&& value) { SetApprovalRuleContent(std::move(value)); return *this;}
-
-    /**
-     * <p>The content of the approval rule.</p>
-     */
-    inline ApprovalRuleEventMetadata& WithApprovalRuleContent(const char* value) { SetApprovalRuleContent(value); return *this;}
-
+    template<typename ApprovalRuleContentT = Aws::String>
+    void SetApprovalRuleContent(ApprovalRuleContentT&& value) { m_approvalRuleContentHasBeenSet = true; m_approvalRuleContent = std::forward<ApprovalRuleContentT>(value); }
+    template<typename ApprovalRuleContentT = Aws::String>
+    ApprovalRuleEventMetadata& WithApprovalRuleContent(ApprovalRuleContentT&& value) { SetApprovalRuleContent(std::forward<ApprovalRuleContentT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_approvalRuleName;

@@ -18,17 +18,7 @@ namespace VoiceID
 namespace Model
 {
 
-FraudDetectionConfiguration::FraudDetectionConfiguration() : 
-    m_riskThreshold(0),
-    m_riskThresholdHasBeenSet(false),
-    m_watchlistIdHasBeenSet(false)
-{
-}
-
-FraudDetectionConfiguration::FraudDetectionConfiguration(JsonView jsonValue) : 
-    m_riskThreshold(0),
-    m_riskThresholdHasBeenSet(false),
-    m_watchlistIdHasBeenSet(false)
+FraudDetectionConfiguration::FraudDetectionConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ FraudDetectionConfiguration& FraudDetectionConfiguration::operator =(JsonView js
   if(jsonValue.ValueExists("RiskThreshold"))
   {
     m_riskThreshold = jsonValue.GetInteger("RiskThreshold");
-
     m_riskThresholdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("WatchlistId"))
   {
     m_watchlistId = jsonValue.GetString("WatchlistId");
-
     m_watchlistIdHasBeenSet = true;
   }
-
   return *this;
 }
 

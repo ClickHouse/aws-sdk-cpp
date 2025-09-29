@@ -36,134 +36,53 @@ namespace Model
   class UpdateInstruction
   {
   public:
-    AWS_MANAGEDGRAFANA_API UpdateInstruction();
+    AWS_MANAGEDGRAFANA_API UpdateInstruction() = default;
     AWS_MANAGEDGRAFANA_API UpdateInstruction(Aws::Utils::Json::JsonView jsonValue);
     AWS_MANAGEDGRAFANA_API UpdateInstruction& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MANAGEDGRAFANA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specifies whether this update is to add or revoke role permissions.</p>
      */
-    inline const UpdateAction& GetAction() const{ return m_action; }
-
-    /**
-     * <p>Specifies whether this update is to add or revoke role permissions.</p>
-     */
+    inline UpdateAction GetAction() const { return m_action; }
     inline bool ActionHasBeenSet() const { return m_actionHasBeenSet; }
+    inline void SetAction(UpdateAction value) { m_actionHasBeenSet = true; m_action = value; }
+    inline UpdateInstruction& WithAction(UpdateAction value) { SetAction(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies whether this update is to add or revoke role permissions.</p>
-     */
-    inline void SetAction(const UpdateAction& value) { m_actionHasBeenSet = true; m_action = value; }
-
-    /**
-     * <p>Specifies whether this update is to add or revoke role permissions.</p>
-     */
-    inline void SetAction(UpdateAction&& value) { m_actionHasBeenSet = true; m_action = std::move(value); }
-
-    /**
-     * <p>Specifies whether this update is to add or revoke role permissions.</p>
-     */
-    inline UpdateInstruction& WithAction(const UpdateAction& value) { SetAction(value); return *this;}
-
-    /**
-     * <p>Specifies whether this update is to add or revoke role permissions.</p>
-     */
-    inline UpdateInstruction& WithAction(UpdateAction&& value) { SetAction(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The role to add or revoke for the user or the group specified in
      * <code>users</code>.</p>
      */
-    inline const Role& GetRole() const{ return m_role; }
-
-    /**
-     * <p>The role to add or revoke for the user or the group specified in
-     * <code>users</code>.</p>
-     */
+    inline Role GetRole() const { return m_role; }
     inline bool RoleHasBeenSet() const { return m_roleHasBeenSet; }
+    inline void SetRole(Role value) { m_roleHasBeenSet = true; m_role = value; }
+    inline UpdateInstruction& WithRole(Role value) { SetRole(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The role to add or revoke for the user or the group specified in
-     * <code>users</code>.</p>
-     */
-    inline void SetRole(const Role& value) { m_roleHasBeenSet = true; m_role = value; }
-
-    /**
-     * <p>The role to add or revoke for the user or the group specified in
-     * <code>users</code>.</p>
-     */
-    inline void SetRole(Role&& value) { m_roleHasBeenSet = true; m_role = std::move(value); }
-
-    /**
-     * <p>The role to add or revoke for the user or the group specified in
-     * <code>users</code>.</p>
-     */
-    inline UpdateInstruction& WithRole(const Role& value) { SetRole(value); return *this;}
-
-    /**
-     * <p>The role to add or revoke for the user or the group specified in
-     * <code>users</code>.</p>
-     */
-    inline UpdateInstruction& WithRole(Role&& value) { SetRole(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A structure that specifies the user or group to add or revoke the role
      * for.</p>
      */
-    inline const Aws::Vector<User>& GetUsers() const{ return m_users; }
-
-    /**
-     * <p>A structure that specifies the user or group to add or revoke the role
-     * for.</p>
-     */
+    inline const Aws::Vector<User>& GetUsers() const { return m_users; }
     inline bool UsersHasBeenSet() const { return m_usersHasBeenSet; }
-
-    /**
-     * <p>A structure that specifies the user or group to add or revoke the role
-     * for.</p>
-     */
-    inline void SetUsers(const Aws::Vector<User>& value) { m_usersHasBeenSet = true; m_users = value; }
-
-    /**
-     * <p>A structure that specifies the user or group to add or revoke the role
-     * for.</p>
-     */
-    inline void SetUsers(Aws::Vector<User>&& value) { m_usersHasBeenSet = true; m_users = std::move(value); }
-
-    /**
-     * <p>A structure that specifies the user or group to add or revoke the role
-     * for.</p>
-     */
-    inline UpdateInstruction& WithUsers(const Aws::Vector<User>& value) { SetUsers(value); return *this;}
-
-    /**
-     * <p>A structure that specifies the user or group to add or revoke the role
-     * for.</p>
-     */
-    inline UpdateInstruction& WithUsers(Aws::Vector<User>&& value) { SetUsers(std::move(value)); return *this;}
-
-    /**
-     * <p>A structure that specifies the user or group to add or revoke the role
-     * for.</p>
-     */
-    inline UpdateInstruction& AddUsers(const User& value) { m_usersHasBeenSet = true; m_users.push_back(value); return *this; }
-
-    /**
-     * <p>A structure that specifies the user or group to add or revoke the role
-     * for.</p>
-     */
-    inline UpdateInstruction& AddUsers(User&& value) { m_usersHasBeenSet = true; m_users.push_back(std::move(value)); return *this; }
-
+    template<typename UsersT = Aws::Vector<User>>
+    void SetUsers(UsersT&& value) { m_usersHasBeenSet = true; m_users = std::forward<UsersT>(value); }
+    template<typename UsersT = Aws::Vector<User>>
+    UpdateInstruction& WithUsers(UsersT&& value) { SetUsers(std::forward<UsersT>(value)); return *this;}
+    template<typename UsersT = User>
+    UpdateInstruction& AddUsers(UsersT&& value) { m_usersHasBeenSet = true; m_users.emplace_back(std::forward<UsersT>(value)); return *this; }
+    ///@}
   private:
 
-    UpdateAction m_action;
+    UpdateAction m_action{UpdateAction::NOT_SET};
     bool m_actionHasBeenSet = false;
 
-    Role m_role;
+    Role m_role{Role::NOT_SET};
     bool m_roleHasBeenSet = false;
 
     Aws::Vector<User> m_users;

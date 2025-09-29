@@ -18,13 +18,7 @@ namespace EntityResolution
 namespace Model
 {
 
-ProviderEndpointConfiguration::ProviderEndpointConfiguration() : 
-    m_marketplaceConfigurationHasBeenSet(false)
-{
-}
-
-ProviderEndpointConfiguration::ProviderEndpointConfiguration(JsonView jsonValue) : 
-    m_marketplaceConfigurationHasBeenSet(false)
+ProviderEndpointConfiguration::ProviderEndpointConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ ProviderEndpointConfiguration& ProviderEndpointConfiguration::operator =(JsonVie
   if(jsonValue.ValueExists("marketplaceConfiguration"))
   {
     m_marketplaceConfiguration = jsonValue.GetObject("marketplaceConfiguration");
-
     m_marketplaceConfigurationHasBeenSet = true;
   }
-
   return *this;
 }
 

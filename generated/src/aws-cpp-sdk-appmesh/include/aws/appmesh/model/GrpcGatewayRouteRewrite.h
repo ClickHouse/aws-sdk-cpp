@@ -32,42 +32,23 @@ namespace Model
   class GrpcGatewayRouteRewrite
   {
   public:
-    AWS_APPMESH_API GrpcGatewayRouteRewrite();
+    AWS_APPMESH_API GrpcGatewayRouteRewrite() = default;
     AWS_APPMESH_API GrpcGatewayRouteRewrite(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPMESH_API GrpcGatewayRouteRewrite& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPMESH_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The host name of the gateway route to rewrite.</p>
      */
-    inline const GatewayRouteHostnameRewrite& GetHostname() const{ return m_hostname; }
-
-    /**
-     * <p>The host name of the gateway route to rewrite.</p>
-     */
+    inline const GatewayRouteHostnameRewrite& GetHostname() const { return m_hostname; }
     inline bool HostnameHasBeenSet() const { return m_hostnameHasBeenSet; }
-
-    /**
-     * <p>The host name of the gateway route to rewrite.</p>
-     */
-    inline void SetHostname(const GatewayRouteHostnameRewrite& value) { m_hostnameHasBeenSet = true; m_hostname = value; }
-
-    /**
-     * <p>The host name of the gateway route to rewrite.</p>
-     */
-    inline void SetHostname(GatewayRouteHostnameRewrite&& value) { m_hostnameHasBeenSet = true; m_hostname = std::move(value); }
-
-    /**
-     * <p>The host name of the gateway route to rewrite.</p>
-     */
-    inline GrpcGatewayRouteRewrite& WithHostname(const GatewayRouteHostnameRewrite& value) { SetHostname(value); return *this;}
-
-    /**
-     * <p>The host name of the gateway route to rewrite.</p>
-     */
-    inline GrpcGatewayRouteRewrite& WithHostname(GatewayRouteHostnameRewrite&& value) { SetHostname(std::move(value)); return *this;}
-
+    template<typename HostnameT = GatewayRouteHostnameRewrite>
+    void SetHostname(HostnameT&& value) { m_hostnameHasBeenSet = true; m_hostname = std::forward<HostnameT>(value); }
+    template<typename HostnameT = GatewayRouteHostnameRewrite>
+    GrpcGatewayRouteRewrite& WithHostname(HostnameT&& value) { SetHostname(std::forward<HostnameT>(value)); return *this;}
+    ///@}
   private:
 
     GatewayRouteHostnameRewrite m_hostname;

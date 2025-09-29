@@ -21,7 +21,7 @@ namespace Model
   class GetSchemaAsJsonRequest : public CloudDirectoryRequest
   {
   public:
-    AWS_CLOUDDIRECTORY_API GetSchemaAsJsonRequest();
+    AWS_CLOUDDIRECTORY_API GetSchemaAsJsonRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_CLOUDDIRECTORY_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ARN of the schema to retrieve.</p>
      */
-    inline const Aws::String& GetSchemaArn() const{ return m_schemaArn; }
-
-    /**
-     * <p>The ARN of the schema to retrieve.</p>
-     */
+    inline const Aws::String& GetSchemaArn() const { return m_schemaArn; }
     inline bool SchemaArnHasBeenSet() const { return m_schemaArnHasBeenSet; }
-
-    /**
-     * <p>The ARN of the schema to retrieve.</p>
-     */
-    inline void SetSchemaArn(const Aws::String& value) { m_schemaArnHasBeenSet = true; m_schemaArn = value; }
-
-    /**
-     * <p>The ARN of the schema to retrieve.</p>
-     */
-    inline void SetSchemaArn(Aws::String&& value) { m_schemaArnHasBeenSet = true; m_schemaArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the schema to retrieve.</p>
-     */
-    inline void SetSchemaArn(const char* value) { m_schemaArnHasBeenSet = true; m_schemaArn.assign(value); }
-
-    /**
-     * <p>The ARN of the schema to retrieve.</p>
-     */
-    inline GetSchemaAsJsonRequest& WithSchemaArn(const Aws::String& value) { SetSchemaArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the schema to retrieve.</p>
-     */
-    inline GetSchemaAsJsonRequest& WithSchemaArn(Aws::String&& value) { SetSchemaArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the schema to retrieve.</p>
-     */
-    inline GetSchemaAsJsonRequest& WithSchemaArn(const char* value) { SetSchemaArn(value); return *this;}
-
+    template<typename SchemaArnT = Aws::String>
+    void SetSchemaArn(SchemaArnT&& value) { m_schemaArnHasBeenSet = true; m_schemaArn = std::forward<SchemaArnT>(value); }
+    template<typename SchemaArnT = Aws::String>
+    GetSchemaAsJsonRequest& WithSchemaArn(SchemaArnT&& value) { SetSchemaArn(std::forward<SchemaArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_schemaArn;

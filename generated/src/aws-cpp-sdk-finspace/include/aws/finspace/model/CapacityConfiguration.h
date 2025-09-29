@@ -33,12 +33,13 @@ namespace Model
   class CapacityConfiguration
   {
   public:
-    AWS_FINSPACE_API CapacityConfiguration();
+    AWS_FINSPACE_API CapacityConfiguration() = default;
     AWS_FINSPACE_API CapacityConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_FINSPACE_API CapacityConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FINSPACE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The type that determines the hardware of the host computer used for your
      * cluster instance. Each node type offers different memory and storage
@@ -56,168 +57,29 @@ namespace Model
      * memory and 64 vCPUs.</p> </li> <li> <p> <code>kx.s.32xlarge</code> – The node
      * type with a configuration of 864 GiB memory and 128 vCPUs.</p> </li> </ul>
      */
-    inline const Aws::String& GetNodeType() const{ return m_nodeType; }
-
-    /**
-     * <p>The type that determines the hardware of the host computer used for your
-     * cluster instance. Each node type offers different memory and storage
-     * capabilities. Choose a node type based on the requirements of the application or
-     * software that you plan to run on your instance.</p> <p>You can only specify one
-     * of the following values:</p> <ul> <li> <p> <code>kx.s.large</code> – The node
-     * type with a configuration of 12 GiB memory and 2 vCPUs.</p> </li> <li> <p>
-     * <code>kx.s.xlarge</code> – The node type with a configuration of 27 GiB memory
-     * and 4 vCPUs.</p> </li> <li> <p> <code>kx.s.2xlarge</code> – The node type with a
-     * configuration of 54 GiB memory and 8 vCPUs.</p> </li> <li> <p>
-     * <code>kx.s.4xlarge</code> – The node type with a configuration of 108 GiB memory
-     * and 16 vCPUs.</p> </li> <li> <p> <code>kx.s.8xlarge</code> – The node type with
-     * a configuration of 216 GiB memory and 32 vCPUs.</p> </li> <li> <p>
-     * <code>kx.s.16xlarge</code> – The node type with a configuration of 432 GiB
-     * memory and 64 vCPUs.</p> </li> <li> <p> <code>kx.s.32xlarge</code> – The node
-     * type with a configuration of 864 GiB memory and 128 vCPUs.</p> </li> </ul>
-     */
+    inline const Aws::String& GetNodeType() const { return m_nodeType; }
     inline bool NodeTypeHasBeenSet() const { return m_nodeTypeHasBeenSet; }
+    template<typename NodeTypeT = Aws::String>
+    void SetNodeType(NodeTypeT&& value) { m_nodeTypeHasBeenSet = true; m_nodeType = std::forward<NodeTypeT>(value); }
+    template<typename NodeTypeT = Aws::String>
+    CapacityConfiguration& WithNodeType(NodeTypeT&& value) { SetNodeType(std::forward<NodeTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The type that determines the hardware of the host computer used for your
-     * cluster instance. Each node type offers different memory and storage
-     * capabilities. Choose a node type based on the requirements of the application or
-     * software that you plan to run on your instance.</p> <p>You can only specify one
-     * of the following values:</p> <ul> <li> <p> <code>kx.s.large</code> – The node
-     * type with a configuration of 12 GiB memory and 2 vCPUs.</p> </li> <li> <p>
-     * <code>kx.s.xlarge</code> – The node type with a configuration of 27 GiB memory
-     * and 4 vCPUs.</p> </li> <li> <p> <code>kx.s.2xlarge</code> – The node type with a
-     * configuration of 54 GiB memory and 8 vCPUs.</p> </li> <li> <p>
-     * <code>kx.s.4xlarge</code> – The node type with a configuration of 108 GiB memory
-     * and 16 vCPUs.</p> </li> <li> <p> <code>kx.s.8xlarge</code> – The node type with
-     * a configuration of 216 GiB memory and 32 vCPUs.</p> </li> <li> <p>
-     * <code>kx.s.16xlarge</code> – The node type with a configuration of 432 GiB
-     * memory and 64 vCPUs.</p> </li> <li> <p> <code>kx.s.32xlarge</code> – The node
-     * type with a configuration of 864 GiB memory and 128 vCPUs.</p> </li> </ul>
-     */
-    inline void SetNodeType(const Aws::String& value) { m_nodeTypeHasBeenSet = true; m_nodeType = value; }
-
-    /**
-     * <p>The type that determines the hardware of the host computer used for your
-     * cluster instance. Each node type offers different memory and storage
-     * capabilities. Choose a node type based on the requirements of the application or
-     * software that you plan to run on your instance.</p> <p>You can only specify one
-     * of the following values:</p> <ul> <li> <p> <code>kx.s.large</code> – The node
-     * type with a configuration of 12 GiB memory and 2 vCPUs.</p> </li> <li> <p>
-     * <code>kx.s.xlarge</code> – The node type with a configuration of 27 GiB memory
-     * and 4 vCPUs.</p> </li> <li> <p> <code>kx.s.2xlarge</code> – The node type with a
-     * configuration of 54 GiB memory and 8 vCPUs.</p> </li> <li> <p>
-     * <code>kx.s.4xlarge</code> – The node type with a configuration of 108 GiB memory
-     * and 16 vCPUs.</p> </li> <li> <p> <code>kx.s.8xlarge</code> – The node type with
-     * a configuration of 216 GiB memory and 32 vCPUs.</p> </li> <li> <p>
-     * <code>kx.s.16xlarge</code> – The node type with a configuration of 432 GiB
-     * memory and 64 vCPUs.</p> </li> <li> <p> <code>kx.s.32xlarge</code> – The node
-     * type with a configuration of 864 GiB memory and 128 vCPUs.</p> </li> </ul>
-     */
-    inline void SetNodeType(Aws::String&& value) { m_nodeTypeHasBeenSet = true; m_nodeType = std::move(value); }
-
-    /**
-     * <p>The type that determines the hardware of the host computer used for your
-     * cluster instance. Each node type offers different memory and storage
-     * capabilities. Choose a node type based on the requirements of the application or
-     * software that you plan to run on your instance.</p> <p>You can only specify one
-     * of the following values:</p> <ul> <li> <p> <code>kx.s.large</code> – The node
-     * type with a configuration of 12 GiB memory and 2 vCPUs.</p> </li> <li> <p>
-     * <code>kx.s.xlarge</code> – The node type with a configuration of 27 GiB memory
-     * and 4 vCPUs.</p> </li> <li> <p> <code>kx.s.2xlarge</code> – The node type with a
-     * configuration of 54 GiB memory and 8 vCPUs.</p> </li> <li> <p>
-     * <code>kx.s.4xlarge</code> – The node type with a configuration of 108 GiB memory
-     * and 16 vCPUs.</p> </li> <li> <p> <code>kx.s.8xlarge</code> – The node type with
-     * a configuration of 216 GiB memory and 32 vCPUs.</p> </li> <li> <p>
-     * <code>kx.s.16xlarge</code> – The node type with a configuration of 432 GiB
-     * memory and 64 vCPUs.</p> </li> <li> <p> <code>kx.s.32xlarge</code> – The node
-     * type with a configuration of 864 GiB memory and 128 vCPUs.</p> </li> </ul>
-     */
-    inline void SetNodeType(const char* value) { m_nodeTypeHasBeenSet = true; m_nodeType.assign(value); }
-
-    /**
-     * <p>The type that determines the hardware of the host computer used for your
-     * cluster instance. Each node type offers different memory and storage
-     * capabilities. Choose a node type based on the requirements of the application or
-     * software that you plan to run on your instance.</p> <p>You can only specify one
-     * of the following values:</p> <ul> <li> <p> <code>kx.s.large</code> – The node
-     * type with a configuration of 12 GiB memory and 2 vCPUs.</p> </li> <li> <p>
-     * <code>kx.s.xlarge</code> – The node type with a configuration of 27 GiB memory
-     * and 4 vCPUs.</p> </li> <li> <p> <code>kx.s.2xlarge</code> – The node type with a
-     * configuration of 54 GiB memory and 8 vCPUs.</p> </li> <li> <p>
-     * <code>kx.s.4xlarge</code> – The node type with a configuration of 108 GiB memory
-     * and 16 vCPUs.</p> </li> <li> <p> <code>kx.s.8xlarge</code> – The node type with
-     * a configuration of 216 GiB memory and 32 vCPUs.</p> </li> <li> <p>
-     * <code>kx.s.16xlarge</code> – The node type with a configuration of 432 GiB
-     * memory and 64 vCPUs.</p> </li> <li> <p> <code>kx.s.32xlarge</code> – The node
-     * type with a configuration of 864 GiB memory and 128 vCPUs.</p> </li> </ul>
-     */
-    inline CapacityConfiguration& WithNodeType(const Aws::String& value) { SetNodeType(value); return *this;}
-
-    /**
-     * <p>The type that determines the hardware of the host computer used for your
-     * cluster instance. Each node type offers different memory and storage
-     * capabilities. Choose a node type based on the requirements of the application or
-     * software that you plan to run on your instance.</p> <p>You can only specify one
-     * of the following values:</p> <ul> <li> <p> <code>kx.s.large</code> – The node
-     * type with a configuration of 12 GiB memory and 2 vCPUs.</p> </li> <li> <p>
-     * <code>kx.s.xlarge</code> – The node type with a configuration of 27 GiB memory
-     * and 4 vCPUs.</p> </li> <li> <p> <code>kx.s.2xlarge</code> – The node type with a
-     * configuration of 54 GiB memory and 8 vCPUs.</p> </li> <li> <p>
-     * <code>kx.s.4xlarge</code> – The node type with a configuration of 108 GiB memory
-     * and 16 vCPUs.</p> </li> <li> <p> <code>kx.s.8xlarge</code> – The node type with
-     * a configuration of 216 GiB memory and 32 vCPUs.</p> </li> <li> <p>
-     * <code>kx.s.16xlarge</code> – The node type with a configuration of 432 GiB
-     * memory and 64 vCPUs.</p> </li> <li> <p> <code>kx.s.32xlarge</code> – The node
-     * type with a configuration of 864 GiB memory and 128 vCPUs.</p> </li> </ul>
-     */
-    inline CapacityConfiguration& WithNodeType(Aws::String&& value) { SetNodeType(std::move(value)); return *this;}
-
-    /**
-     * <p>The type that determines the hardware of the host computer used for your
-     * cluster instance. Each node type offers different memory and storage
-     * capabilities. Choose a node type based on the requirements of the application or
-     * software that you plan to run on your instance.</p> <p>You can only specify one
-     * of the following values:</p> <ul> <li> <p> <code>kx.s.large</code> – The node
-     * type with a configuration of 12 GiB memory and 2 vCPUs.</p> </li> <li> <p>
-     * <code>kx.s.xlarge</code> – The node type with a configuration of 27 GiB memory
-     * and 4 vCPUs.</p> </li> <li> <p> <code>kx.s.2xlarge</code> – The node type with a
-     * configuration of 54 GiB memory and 8 vCPUs.</p> </li> <li> <p>
-     * <code>kx.s.4xlarge</code> – The node type with a configuration of 108 GiB memory
-     * and 16 vCPUs.</p> </li> <li> <p> <code>kx.s.8xlarge</code> – The node type with
-     * a configuration of 216 GiB memory and 32 vCPUs.</p> </li> <li> <p>
-     * <code>kx.s.16xlarge</code> – The node type with a configuration of 432 GiB
-     * memory and 64 vCPUs.</p> </li> <li> <p> <code>kx.s.32xlarge</code> – The node
-     * type with a configuration of 864 GiB memory and 128 vCPUs.</p> </li> </ul>
-     */
-    inline CapacityConfiguration& WithNodeType(const char* value) { SetNodeType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The number of instances running in a cluster.</p>
      */
-    inline int GetNodeCount() const{ return m_nodeCount; }
-
-    /**
-     * <p>The number of instances running in a cluster.</p>
-     */
+    inline int GetNodeCount() const { return m_nodeCount; }
     inline bool NodeCountHasBeenSet() const { return m_nodeCountHasBeenSet; }
-
-    /**
-     * <p>The number of instances running in a cluster.</p>
-     */
     inline void SetNodeCount(int value) { m_nodeCountHasBeenSet = true; m_nodeCount = value; }
-
-    /**
-     * <p>The number of instances running in a cluster.</p>
-     */
     inline CapacityConfiguration& WithNodeCount(int value) { SetNodeCount(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_nodeType;
     bool m_nodeTypeHasBeenSet = false;
 
-    int m_nodeCount;
+    int m_nodeCount{0};
     bool m_nodeCountHasBeenSet = false;
   };
 

@@ -33,7 +33,7 @@ namespace Model
   class AssociationStatus
   {
   public:
-    AWS_EC2_API AssociationStatus();
+    AWS_EC2_API AssociationStatus() = default;
     AWS_EC2_API AssociationStatus(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API AssociationStatus& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -41,88 +41,31 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The state of the target network association.</p>
      */
-    inline const AssociationStatusCode& GetCode() const{ return m_code; }
-
-    /**
-     * <p>The state of the target network association.</p>
-     */
+    inline AssociationStatusCode GetCode() const { return m_code; }
     inline bool CodeHasBeenSet() const { return m_codeHasBeenSet; }
+    inline void SetCode(AssociationStatusCode value) { m_codeHasBeenSet = true; m_code = value; }
+    inline AssociationStatus& WithCode(AssociationStatusCode value) { SetCode(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The state of the target network association.</p>
-     */
-    inline void SetCode(const AssociationStatusCode& value) { m_codeHasBeenSet = true; m_code = value; }
-
-    /**
-     * <p>The state of the target network association.</p>
-     */
-    inline void SetCode(AssociationStatusCode&& value) { m_codeHasBeenSet = true; m_code = std::move(value); }
-
-    /**
-     * <p>The state of the target network association.</p>
-     */
-    inline AssociationStatus& WithCode(const AssociationStatusCode& value) { SetCode(value); return *this;}
-
-    /**
-     * <p>The state of the target network association.</p>
-     */
-    inline AssociationStatus& WithCode(AssociationStatusCode&& value) { SetCode(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A message about the status of the target network association, if
      * applicable.</p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>A message about the status of the target network association, if
-     * applicable.</p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
-
-    /**
-     * <p>A message about the status of the target network association, if
-     * applicable.</p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>A message about the status of the target network association, if
-     * applicable.</p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>A message about the status of the target network association, if
-     * applicable.</p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p>A message about the status of the target network association, if
-     * applicable.</p>
-     */
-    inline AssociationStatus& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>A message about the status of the target network association, if
-     * applicable.</p>
-     */
-    inline AssociationStatus& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>A message about the status of the target network association, if
-     * applicable.</p>
-     */
-    inline AssociationStatus& WithMessage(const char* value) { SetMessage(value); return *this;}
-
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    AssociationStatus& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
   private:
 
-    AssociationStatusCode m_code;
+    AssociationStatusCode m_code{AssociationStatusCode::NOT_SET};
     bool m_codeHasBeenSet = false;
 
     Aws::String m_message;

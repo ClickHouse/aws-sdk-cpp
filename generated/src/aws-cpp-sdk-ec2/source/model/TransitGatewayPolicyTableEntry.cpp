@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-TransitGatewayPolicyTableEntry::TransitGatewayPolicyTableEntry() : 
-    m_policyRuleNumberHasBeenSet(false),
-    m_policyRuleHasBeenSet(false),
-    m_targetRouteTableIdHasBeenSet(false)
-{
-}
-
-TransitGatewayPolicyTableEntry::TransitGatewayPolicyTableEntry(const XmlNode& xmlNode) : 
-    m_policyRuleNumberHasBeenSet(false),
-    m_policyRuleHasBeenSet(false),
-    m_targetRouteTableIdHasBeenSet(false)
+TransitGatewayPolicyTableEntry::TransitGatewayPolicyTableEntry(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

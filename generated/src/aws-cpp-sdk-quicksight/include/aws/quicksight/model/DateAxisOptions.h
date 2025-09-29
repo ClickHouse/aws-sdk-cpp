@@ -32,45 +32,24 @@ namespace Model
   class DateAxisOptions
   {
   public:
-    AWS_QUICKSIGHT_API DateAxisOptions();
+    AWS_QUICKSIGHT_API DateAxisOptions() = default;
     AWS_QUICKSIGHT_API DateAxisOptions(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API DateAxisOptions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Determines whether or not missing dates are displayed.</p>
      */
-    inline const Visibility& GetMissingDateVisibility() const{ return m_missingDateVisibility; }
-
-    /**
-     * <p>Determines whether or not missing dates are displayed.</p>
-     */
+    inline Visibility GetMissingDateVisibility() const { return m_missingDateVisibility; }
     inline bool MissingDateVisibilityHasBeenSet() const { return m_missingDateVisibilityHasBeenSet; }
-
-    /**
-     * <p>Determines whether or not missing dates are displayed.</p>
-     */
-    inline void SetMissingDateVisibility(const Visibility& value) { m_missingDateVisibilityHasBeenSet = true; m_missingDateVisibility = value; }
-
-    /**
-     * <p>Determines whether or not missing dates are displayed.</p>
-     */
-    inline void SetMissingDateVisibility(Visibility&& value) { m_missingDateVisibilityHasBeenSet = true; m_missingDateVisibility = std::move(value); }
-
-    /**
-     * <p>Determines whether or not missing dates are displayed.</p>
-     */
-    inline DateAxisOptions& WithMissingDateVisibility(const Visibility& value) { SetMissingDateVisibility(value); return *this;}
-
-    /**
-     * <p>Determines whether or not missing dates are displayed.</p>
-     */
-    inline DateAxisOptions& WithMissingDateVisibility(Visibility&& value) { SetMissingDateVisibility(std::move(value)); return *this;}
-
+    inline void SetMissingDateVisibility(Visibility value) { m_missingDateVisibilityHasBeenSet = true; m_missingDateVisibility = value; }
+    inline DateAxisOptions& WithMissingDateVisibility(Visibility value) { SetMissingDateVisibility(value); return *this;}
+    ///@}
   private:
 
-    Visibility m_missingDateVisibility;
+    Visibility m_missingDateVisibility{Visibility::NOT_SET};
     bool m_missingDateVisibilityHasBeenSet = false;
   };
 

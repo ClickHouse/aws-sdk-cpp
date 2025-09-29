@@ -18,15 +18,7 @@ namespace DataExchange
 namespace Model
 {
 
-AutoExportRevisionToS3RequestDetails::AutoExportRevisionToS3RequestDetails() : 
-    m_encryptionHasBeenSet(false),
-    m_revisionDestinationHasBeenSet(false)
-{
-}
-
-AutoExportRevisionToS3RequestDetails::AutoExportRevisionToS3RequestDetails(JsonView jsonValue) : 
-    m_encryptionHasBeenSet(false),
-    m_revisionDestinationHasBeenSet(false)
+AutoExportRevisionToS3RequestDetails::AutoExportRevisionToS3RequestDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ AutoExportRevisionToS3RequestDetails& AutoExportRevisionToS3RequestDetails::oper
   if(jsonValue.ValueExists("Encryption"))
   {
     m_encryption = jsonValue.GetObject("Encryption");
-
     m_encryptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RevisionDestination"))
   {
     m_revisionDestination = jsonValue.GetObject("RevisionDestination");
-
     m_revisionDestinationHasBeenSet = true;
   }
-
   return *this;
 }
 

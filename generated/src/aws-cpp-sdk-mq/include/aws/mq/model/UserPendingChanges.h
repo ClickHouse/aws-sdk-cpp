@@ -34,136 +34,56 @@ namespace Model
   class UserPendingChanges
   {
   public:
-    AWS_MQ_API UserPendingChanges();
+    AWS_MQ_API UserPendingChanges() = default;
     AWS_MQ_API UserPendingChanges(Aws::Utils::Json::JsonView jsonValue);
     AWS_MQ_API UserPendingChanges& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MQ_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Enables access to the the ActiveMQ Web Console for the ActiveMQ user.</p>
      */
-    inline bool GetConsoleAccess() const{ return m_consoleAccess; }
-
-    /**
-     * <p>Enables access to the the ActiveMQ Web Console for the ActiveMQ user.</p>
-     */
+    inline bool GetConsoleAccess() const { return m_consoleAccess; }
     inline bool ConsoleAccessHasBeenSet() const { return m_consoleAccessHasBeenSet; }
-
-    /**
-     * <p>Enables access to the the ActiveMQ Web Console for the ActiveMQ user.</p>
-     */
     inline void SetConsoleAccess(bool value) { m_consoleAccessHasBeenSet = true; m_consoleAccess = value; }
-
-    /**
-     * <p>Enables access to the the ActiveMQ Web Console for the ActiveMQ user.</p>
-     */
     inline UserPendingChanges& WithConsoleAccess(bool value) { SetConsoleAccess(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The list of groups (20 maximum) to which the ActiveMQ user belongs. This
      * value can contain only alphanumeric characters, dashes, periods, underscores,
      * and tildes (- . _ ~). This value must be 2-100 characters long.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetGroups() const{ return m_groups; }
-
-    /**
-     * <p>The list of groups (20 maximum) to which the ActiveMQ user belongs. This
-     * value can contain only alphanumeric characters, dashes, periods, underscores,
-     * and tildes (- . _ ~). This value must be 2-100 characters long.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetGroups() const { return m_groups; }
     inline bool GroupsHasBeenSet() const { return m_groupsHasBeenSet; }
+    template<typename GroupsT = Aws::Vector<Aws::String>>
+    void SetGroups(GroupsT&& value) { m_groupsHasBeenSet = true; m_groups = std::forward<GroupsT>(value); }
+    template<typename GroupsT = Aws::Vector<Aws::String>>
+    UserPendingChanges& WithGroups(GroupsT&& value) { SetGroups(std::forward<GroupsT>(value)); return *this;}
+    template<typename GroupsT = Aws::String>
+    UserPendingChanges& AddGroups(GroupsT&& value) { m_groupsHasBeenSet = true; m_groups.emplace_back(std::forward<GroupsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The list of groups (20 maximum) to which the ActiveMQ user belongs. This
-     * value can contain only alphanumeric characters, dashes, periods, underscores,
-     * and tildes (- . _ ~). This value must be 2-100 characters long.</p>
-     */
-    inline void SetGroups(const Aws::Vector<Aws::String>& value) { m_groupsHasBeenSet = true; m_groups = value; }
-
-    /**
-     * <p>The list of groups (20 maximum) to which the ActiveMQ user belongs. This
-     * value can contain only alphanumeric characters, dashes, periods, underscores,
-     * and tildes (- . _ ~). This value must be 2-100 characters long.</p>
-     */
-    inline void SetGroups(Aws::Vector<Aws::String>&& value) { m_groupsHasBeenSet = true; m_groups = std::move(value); }
-
-    /**
-     * <p>The list of groups (20 maximum) to which the ActiveMQ user belongs. This
-     * value can contain only alphanumeric characters, dashes, periods, underscores,
-     * and tildes (- . _ ~). This value must be 2-100 characters long.</p>
-     */
-    inline UserPendingChanges& WithGroups(const Aws::Vector<Aws::String>& value) { SetGroups(value); return *this;}
-
-    /**
-     * <p>The list of groups (20 maximum) to which the ActiveMQ user belongs. This
-     * value can contain only alphanumeric characters, dashes, periods, underscores,
-     * and tildes (- . _ ~). This value must be 2-100 characters long.</p>
-     */
-    inline UserPendingChanges& WithGroups(Aws::Vector<Aws::String>&& value) { SetGroups(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of groups (20 maximum) to which the ActiveMQ user belongs. This
-     * value can contain only alphanumeric characters, dashes, periods, underscores,
-     * and tildes (- . _ ~). This value must be 2-100 characters long.</p>
-     */
-    inline UserPendingChanges& AddGroups(const Aws::String& value) { m_groupsHasBeenSet = true; m_groups.push_back(value); return *this; }
-
-    /**
-     * <p>The list of groups (20 maximum) to which the ActiveMQ user belongs. This
-     * value can contain only alphanumeric characters, dashes, periods, underscores,
-     * and tildes (- . _ ~). This value must be 2-100 characters long.</p>
-     */
-    inline UserPendingChanges& AddGroups(Aws::String&& value) { m_groupsHasBeenSet = true; m_groups.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The list of groups (20 maximum) to which the ActiveMQ user belongs. This
-     * value can contain only alphanumeric characters, dashes, periods, underscores,
-     * and tildes (- . _ ~). This value must be 2-100 characters long.</p>
-     */
-    inline UserPendingChanges& AddGroups(const char* value) { m_groupsHasBeenSet = true; m_groups.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>Required. The type of change pending for the ActiveMQ user.</p>
      */
-    inline const ChangeType& GetPendingChange() const{ return m_pendingChange; }
-
-    /**
-     * <p>Required. The type of change pending for the ActiveMQ user.</p>
-     */
+    inline ChangeType GetPendingChange() const { return m_pendingChange; }
     inline bool PendingChangeHasBeenSet() const { return m_pendingChangeHasBeenSet; }
-
-    /**
-     * <p>Required. The type of change pending for the ActiveMQ user.</p>
-     */
-    inline void SetPendingChange(const ChangeType& value) { m_pendingChangeHasBeenSet = true; m_pendingChange = value; }
-
-    /**
-     * <p>Required. The type of change pending for the ActiveMQ user.</p>
-     */
-    inline void SetPendingChange(ChangeType&& value) { m_pendingChangeHasBeenSet = true; m_pendingChange = std::move(value); }
-
-    /**
-     * <p>Required. The type of change pending for the ActiveMQ user.</p>
-     */
-    inline UserPendingChanges& WithPendingChange(const ChangeType& value) { SetPendingChange(value); return *this;}
-
-    /**
-     * <p>Required. The type of change pending for the ActiveMQ user.</p>
-     */
-    inline UserPendingChanges& WithPendingChange(ChangeType&& value) { SetPendingChange(std::move(value)); return *this;}
-
+    inline void SetPendingChange(ChangeType value) { m_pendingChangeHasBeenSet = true; m_pendingChange = value; }
+    inline UserPendingChanges& WithPendingChange(ChangeType value) { SetPendingChange(value); return *this;}
+    ///@}
   private:
 
-    bool m_consoleAccess;
+    bool m_consoleAccess{false};
     bool m_consoleAccessHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_groups;
     bool m_groupsHasBeenSet = false;
 
-    ChangeType m_pendingChange;
+    ChangeType m_pendingChange{ChangeType::NOT_SET};
     bool m_pendingChangeHasBeenSet = false;
   };
 

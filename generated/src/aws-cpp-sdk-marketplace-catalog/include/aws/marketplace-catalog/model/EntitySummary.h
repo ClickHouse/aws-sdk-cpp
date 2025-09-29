@@ -12,6 +12,7 @@
 #include <aws/marketplace-catalog/model/SaaSProductSummary.h>
 #include <aws/marketplace-catalog/model/OfferSummary.h>
 #include <aws/marketplace-catalog/model/ResaleAuthorizationSummary.h>
+#include <aws/marketplace-catalog/model/MachineLearningProductSummary.h>
 #include <utility>
 
 namespace Aws
@@ -39,233 +40,75 @@ namespace Model
   class EntitySummary
   {
   public:
-    AWS_MARKETPLACECATALOG_API EntitySummary();
+    AWS_MARKETPLACECATALOG_API EntitySummary() = default;
     AWS_MARKETPLACECATALOG_API EntitySummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_MARKETPLACECATALOG_API EntitySummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MARKETPLACECATALOG_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name for the entity. This value is not unique. It is defined by the
      * seller.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name for the entity. This value is not unique. It is defined by the
-     * seller.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    EntitySummary& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name for the entity. This value is not unique. It is defined by the
-     * seller.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name for the entity. This value is not unique. It is defined by the
-     * seller.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name for the entity. This value is not unique. It is defined by the
-     * seller.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name for the entity. This value is not unique. It is defined by the
-     * seller.</p>
-     */
-    inline EntitySummary& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name for the entity. This value is not unique. It is defined by the
-     * seller.</p>
-     */
-    inline EntitySummary& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name for the entity. This value is not unique. It is defined by the
-     * seller.</p>
-     */
-    inline EntitySummary& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of the entity.</p>
      */
-    inline const Aws::String& GetEntityType() const{ return m_entityType; }
-
-    /**
-     * <p>The type of the entity.</p>
-     */
+    inline const Aws::String& GetEntityType() const { return m_entityType; }
     inline bool EntityTypeHasBeenSet() const { return m_entityTypeHasBeenSet; }
+    template<typename EntityTypeT = Aws::String>
+    void SetEntityType(EntityTypeT&& value) { m_entityTypeHasBeenSet = true; m_entityType = std::forward<EntityTypeT>(value); }
+    template<typename EntityTypeT = Aws::String>
+    EntitySummary& WithEntityType(EntityTypeT&& value) { SetEntityType(std::forward<EntityTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of the entity.</p>
-     */
-    inline void SetEntityType(const Aws::String& value) { m_entityTypeHasBeenSet = true; m_entityType = value; }
-
-    /**
-     * <p>The type of the entity.</p>
-     */
-    inline void SetEntityType(Aws::String&& value) { m_entityTypeHasBeenSet = true; m_entityType = std::move(value); }
-
-    /**
-     * <p>The type of the entity.</p>
-     */
-    inline void SetEntityType(const char* value) { m_entityTypeHasBeenSet = true; m_entityType.assign(value); }
-
-    /**
-     * <p>The type of the entity.</p>
-     */
-    inline EntitySummary& WithEntityType(const Aws::String& value) { SetEntityType(value); return *this;}
-
-    /**
-     * <p>The type of the entity.</p>
-     */
-    inline EntitySummary& WithEntityType(Aws::String&& value) { SetEntityType(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of the entity.</p>
-     */
-    inline EntitySummary& WithEntityType(const char* value) { SetEntityType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique identifier for the entity.</p>
      */
-    inline const Aws::String& GetEntityId() const{ return m_entityId; }
-
-    /**
-     * <p>The unique identifier for the entity.</p>
-     */
+    inline const Aws::String& GetEntityId() const { return m_entityId; }
     inline bool EntityIdHasBeenSet() const { return m_entityIdHasBeenSet; }
+    template<typename EntityIdT = Aws::String>
+    void SetEntityId(EntityIdT&& value) { m_entityIdHasBeenSet = true; m_entityId = std::forward<EntityIdT>(value); }
+    template<typename EntityIdT = Aws::String>
+    EntitySummary& WithEntityId(EntityIdT&& value) { SetEntityId(std::forward<EntityIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier for the entity.</p>
-     */
-    inline void SetEntityId(const Aws::String& value) { m_entityIdHasBeenSet = true; m_entityId = value; }
-
-    /**
-     * <p>The unique identifier for the entity.</p>
-     */
-    inline void SetEntityId(Aws::String&& value) { m_entityIdHasBeenSet = true; m_entityId = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the entity.</p>
-     */
-    inline void SetEntityId(const char* value) { m_entityIdHasBeenSet = true; m_entityId.assign(value); }
-
-    /**
-     * <p>The unique identifier for the entity.</p>
-     */
-    inline EntitySummary& WithEntityId(const Aws::String& value) { SetEntityId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the entity.</p>
-     */
-    inline EntitySummary& WithEntityId(Aws::String&& value) { SetEntityId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the entity.</p>
-     */
-    inline EntitySummary& WithEntityId(const char* value) { SetEntityId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN associated with the unique identifier for the entity.</p>
      */
-    inline const Aws::String& GetEntityArn() const{ return m_entityArn; }
-
-    /**
-     * <p>The ARN associated with the unique identifier for the entity.</p>
-     */
+    inline const Aws::String& GetEntityArn() const { return m_entityArn; }
     inline bool EntityArnHasBeenSet() const { return m_entityArnHasBeenSet; }
+    template<typename EntityArnT = Aws::String>
+    void SetEntityArn(EntityArnT&& value) { m_entityArnHasBeenSet = true; m_entityArn = std::forward<EntityArnT>(value); }
+    template<typename EntityArnT = Aws::String>
+    EntitySummary& WithEntityArn(EntityArnT&& value) { SetEntityArn(std::forward<EntityArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN associated with the unique identifier for the entity.</p>
-     */
-    inline void SetEntityArn(const Aws::String& value) { m_entityArnHasBeenSet = true; m_entityArn = value; }
-
-    /**
-     * <p>The ARN associated with the unique identifier for the entity.</p>
-     */
-    inline void SetEntityArn(Aws::String&& value) { m_entityArnHasBeenSet = true; m_entityArn = std::move(value); }
-
-    /**
-     * <p>The ARN associated with the unique identifier for the entity.</p>
-     */
-    inline void SetEntityArn(const char* value) { m_entityArnHasBeenSet = true; m_entityArn.assign(value); }
-
-    /**
-     * <p>The ARN associated with the unique identifier for the entity.</p>
-     */
-    inline EntitySummary& WithEntityArn(const Aws::String& value) { SetEntityArn(value); return *this;}
-
-    /**
-     * <p>The ARN associated with the unique identifier for the entity.</p>
-     */
-    inline EntitySummary& WithEntityArn(Aws::String&& value) { SetEntityArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN associated with the unique identifier for the entity.</p>
-     */
-    inline EntitySummary& WithEntityArn(const char* value) { SetEntityArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The last time the entity was published, using ISO 8601 format
      * (2018-02-27T13:45:22Z).</p>
      */
-    inline const Aws::String& GetLastModifiedDate() const{ return m_lastModifiedDate; }
-
-    /**
-     * <p>The last time the entity was published, using ISO 8601 format
-     * (2018-02-27T13:45:22Z).</p>
-     */
+    inline const Aws::String& GetLastModifiedDate() const { return m_lastModifiedDate; }
     inline bool LastModifiedDateHasBeenSet() const { return m_lastModifiedDateHasBeenSet; }
+    template<typename LastModifiedDateT = Aws::String>
+    void SetLastModifiedDate(LastModifiedDateT&& value) { m_lastModifiedDateHasBeenSet = true; m_lastModifiedDate = std::forward<LastModifiedDateT>(value); }
+    template<typename LastModifiedDateT = Aws::String>
+    EntitySummary& WithLastModifiedDate(LastModifiedDateT&& value) { SetLastModifiedDate(std::forward<LastModifiedDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The last time the entity was published, using ISO 8601 format
-     * (2018-02-27T13:45:22Z).</p>
-     */
-    inline void SetLastModifiedDate(const Aws::String& value) { m_lastModifiedDateHasBeenSet = true; m_lastModifiedDate = value; }
-
-    /**
-     * <p>The last time the entity was published, using ISO 8601 format
-     * (2018-02-27T13:45:22Z).</p>
-     */
-    inline void SetLastModifiedDate(Aws::String&& value) { m_lastModifiedDateHasBeenSet = true; m_lastModifiedDate = std::move(value); }
-
-    /**
-     * <p>The last time the entity was published, using ISO 8601 format
-     * (2018-02-27T13:45:22Z).</p>
-     */
-    inline void SetLastModifiedDate(const char* value) { m_lastModifiedDateHasBeenSet = true; m_lastModifiedDate.assign(value); }
-
-    /**
-     * <p>The last time the entity was published, using ISO 8601 format
-     * (2018-02-27T13:45:22Z).</p>
-     */
-    inline EntitySummary& WithLastModifiedDate(const Aws::String& value) { SetLastModifiedDate(value); return *this;}
-
-    /**
-     * <p>The last time the entity was published, using ISO 8601 format
-     * (2018-02-27T13:45:22Z).</p>
-     */
-    inline EntitySummary& WithLastModifiedDate(Aws::String&& value) { SetLastModifiedDate(std::move(value)); return *this;}
-
-    /**
-     * <p>The last time the entity was published, using ISO 8601 format
-     * (2018-02-27T13:45:22Z).</p>
-     */
-    inline EntitySummary& WithLastModifiedDate(const char* value) { SetLastModifiedDate(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The visibility status of the entity to buyers. This value can be
      * <code>Public</code> (everyone can view the entity), <code>Limited</code> (the
@@ -273,263 +116,96 @@ namespace Model
      * entity was published and then unpublished and only existing buyers can view it).
      * </p>
      */
-    inline const Aws::String& GetVisibility() const{ return m_visibility; }
-
-    /**
-     * <p>The visibility status of the entity to buyers. This value can be
-     * <code>Public</code> (everyone can view the entity), <code>Limited</code> (the
-     * entity is visible to limited accounts only), or <code>Restricted</code> (the
-     * entity was published and then unpublished and only existing buyers can view it).
-     * </p>
-     */
+    inline const Aws::String& GetVisibility() const { return m_visibility; }
     inline bool VisibilityHasBeenSet() const { return m_visibilityHasBeenSet; }
+    template<typename VisibilityT = Aws::String>
+    void SetVisibility(VisibilityT&& value) { m_visibilityHasBeenSet = true; m_visibility = std::forward<VisibilityT>(value); }
+    template<typename VisibilityT = Aws::String>
+    EntitySummary& WithVisibility(VisibilityT&& value) { SetVisibility(std::forward<VisibilityT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The visibility status of the entity to buyers. This value can be
-     * <code>Public</code> (everyone can view the entity), <code>Limited</code> (the
-     * entity is visible to limited accounts only), or <code>Restricted</code> (the
-     * entity was published and then unpublished and only existing buyers can view it).
-     * </p>
-     */
-    inline void SetVisibility(const Aws::String& value) { m_visibilityHasBeenSet = true; m_visibility = value; }
-
-    /**
-     * <p>The visibility status of the entity to buyers. This value can be
-     * <code>Public</code> (everyone can view the entity), <code>Limited</code> (the
-     * entity is visible to limited accounts only), or <code>Restricted</code> (the
-     * entity was published and then unpublished and only existing buyers can view it).
-     * </p>
-     */
-    inline void SetVisibility(Aws::String&& value) { m_visibilityHasBeenSet = true; m_visibility = std::move(value); }
-
-    /**
-     * <p>The visibility status of the entity to buyers. This value can be
-     * <code>Public</code> (everyone can view the entity), <code>Limited</code> (the
-     * entity is visible to limited accounts only), or <code>Restricted</code> (the
-     * entity was published and then unpublished and only existing buyers can view it).
-     * </p>
-     */
-    inline void SetVisibility(const char* value) { m_visibilityHasBeenSet = true; m_visibility.assign(value); }
-
-    /**
-     * <p>The visibility status of the entity to buyers. This value can be
-     * <code>Public</code> (everyone can view the entity), <code>Limited</code> (the
-     * entity is visible to limited accounts only), or <code>Restricted</code> (the
-     * entity was published and then unpublished and only existing buyers can view it).
-     * </p>
-     */
-    inline EntitySummary& WithVisibility(const Aws::String& value) { SetVisibility(value); return *this;}
-
-    /**
-     * <p>The visibility status of the entity to buyers. This value can be
-     * <code>Public</code> (everyone can view the entity), <code>Limited</code> (the
-     * entity is visible to limited accounts only), or <code>Restricted</code> (the
-     * entity was published and then unpublished and only existing buyers can view it).
-     * </p>
-     */
-    inline EntitySummary& WithVisibility(Aws::String&& value) { SetVisibility(std::move(value)); return *this;}
-
-    /**
-     * <p>The visibility status of the entity to buyers. This value can be
-     * <code>Public</code> (everyone can view the entity), <code>Limited</code> (the
-     * entity is visible to limited accounts only), or <code>Restricted</code> (the
-     * entity was published and then unpublished and only existing buyers can view it).
-     * </p>
-     */
-    inline EntitySummary& WithVisibility(const char* value) { SetVisibility(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An object that contains summary information about the AMI product.</p>
      */
-    inline const AmiProductSummary& GetAmiProductSummary() const{ return m_amiProductSummary; }
-
-    /**
-     * <p>An object that contains summary information about the AMI product.</p>
-     */
+    inline const AmiProductSummary& GetAmiProductSummary() const { return m_amiProductSummary; }
     inline bool AmiProductSummaryHasBeenSet() const { return m_amiProductSummaryHasBeenSet; }
+    template<typename AmiProductSummaryT = AmiProductSummary>
+    void SetAmiProductSummary(AmiProductSummaryT&& value) { m_amiProductSummaryHasBeenSet = true; m_amiProductSummary = std::forward<AmiProductSummaryT>(value); }
+    template<typename AmiProductSummaryT = AmiProductSummary>
+    EntitySummary& WithAmiProductSummary(AmiProductSummaryT&& value) { SetAmiProductSummary(std::forward<AmiProductSummaryT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An object that contains summary information about the AMI product.</p>
-     */
-    inline void SetAmiProductSummary(const AmiProductSummary& value) { m_amiProductSummaryHasBeenSet = true; m_amiProductSummary = value; }
-
-    /**
-     * <p>An object that contains summary information about the AMI product.</p>
-     */
-    inline void SetAmiProductSummary(AmiProductSummary&& value) { m_amiProductSummaryHasBeenSet = true; m_amiProductSummary = std::move(value); }
-
-    /**
-     * <p>An object that contains summary information about the AMI product.</p>
-     */
-    inline EntitySummary& WithAmiProductSummary(const AmiProductSummary& value) { SetAmiProductSummary(value); return *this;}
-
-    /**
-     * <p>An object that contains summary information about the AMI product.</p>
-     */
-    inline EntitySummary& WithAmiProductSummary(AmiProductSummary&& value) { SetAmiProductSummary(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>An object that contains summary information about the container product.</p>
      */
-    inline const ContainerProductSummary& GetContainerProductSummary() const{ return m_containerProductSummary; }
-
-    /**
-     * <p>An object that contains summary information about the container product.</p>
-     */
+    inline const ContainerProductSummary& GetContainerProductSummary() const { return m_containerProductSummary; }
     inline bool ContainerProductSummaryHasBeenSet() const { return m_containerProductSummaryHasBeenSet; }
+    template<typename ContainerProductSummaryT = ContainerProductSummary>
+    void SetContainerProductSummary(ContainerProductSummaryT&& value) { m_containerProductSummaryHasBeenSet = true; m_containerProductSummary = std::forward<ContainerProductSummaryT>(value); }
+    template<typename ContainerProductSummaryT = ContainerProductSummary>
+    EntitySummary& WithContainerProductSummary(ContainerProductSummaryT&& value) { SetContainerProductSummary(std::forward<ContainerProductSummaryT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An object that contains summary information about the container product.</p>
-     */
-    inline void SetContainerProductSummary(const ContainerProductSummary& value) { m_containerProductSummaryHasBeenSet = true; m_containerProductSummary = value; }
-
-    /**
-     * <p>An object that contains summary information about the container product.</p>
-     */
-    inline void SetContainerProductSummary(ContainerProductSummary&& value) { m_containerProductSummaryHasBeenSet = true; m_containerProductSummary = std::move(value); }
-
-    /**
-     * <p>An object that contains summary information about the container product.</p>
-     */
-    inline EntitySummary& WithContainerProductSummary(const ContainerProductSummary& value) { SetContainerProductSummary(value); return *this;}
-
-    /**
-     * <p>An object that contains summary information about the container product.</p>
-     */
-    inline EntitySummary& WithContainerProductSummary(ContainerProductSummary&& value) { SetContainerProductSummary(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>An object that contains summary information about the data product.</p>
      */
-    inline const DataProductSummary& GetDataProductSummary() const{ return m_dataProductSummary; }
-
-    /**
-     * <p>An object that contains summary information about the data product.</p>
-     */
+    inline const DataProductSummary& GetDataProductSummary() const { return m_dataProductSummary; }
     inline bool DataProductSummaryHasBeenSet() const { return m_dataProductSummaryHasBeenSet; }
+    template<typename DataProductSummaryT = DataProductSummary>
+    void SetDataProductSummary(DataProductSummaryT&& value) { m_dataProductSummaryHasBeenSet = true; m_dataProductSummary = std::forward<DataProductSummaryT>(value); }
+    template<typename DataProductSummaryT = DataProductSummary>
+    EntitySummary& WithDataProductSummary(DataProductSummaryT&& value) { SetDataProductSummary(std::forward<DataProductSummaryT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An object that contains summary information about the data product.</p>
-     */
-    inline void SetDataProductSummary(const DataProductSummary& value) { m_dataProductSummaryHasBeenSet = true; m_dataProductSummary = value; }
-
-    /**
-     * <p>An object that contains summary information about the data product.</p>
-     */
-    inline void SetDataProductSummary(DataProductSummary&& value) { m_dataProductSummaryHasBeenSet = true; m_dataProductSummary = std::move(value); }
-
-    /**
-     * <p>An object that contains summary information about the data product.</p>
-     */
-    inline EntitySummary& WithDataProductSummary(const DataProductSummary& value) { SetDataProductSummary(value); return *this;}
-
-    /**
-     * <p>An object that contains summary information about the data product.</p>
-     */
-    inline EntitySummary& WithDataProductSummary(DataProductSummary&& value) { SetDataProductSummary(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>An object that contains summary information about the SaaS product.</p>
      */
-    inline const SaaSProductSummary& GetSaaSProductSummary() const{ return m_saaSProductSummary; }
-
-    /**
-     * <p>An object that contains summary information about the SaaS product.</p>
-     */
+    inline const SaaSProductSummary& GetSaaSProductSummary() const { return m_saaSProductSummary; }
     inline bool SaaSProductSummaryHasBeenSet() const { return m_saaSProductSummaryHasBeenSet; }
+    template<typename SaaSProductSummaryT = SaaSProductSummary>
+    void SetSaaSProductSummary(SaaSProductSummaryT&& value) { m_saaSProductSummaryHasBeenSet = true; m_saaSProductSummary = std::forward<SaaSProductSummaryT>(value); }
+    template<typename SaaSProductSummaryT = SaaSProductSummary>
+    EntitySummary& WithSaaSProductSummary(SaaSProductSummaryT&& value) { SetSaaSProductSummary(std::forward<SaaSProductSummaryT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An object that contains summary information about the SaaS product.</p>
-     */
-    inline void SetSaaSProductSummary(const SaaSProductSummary& value) { m_saaSProductSummaryHasBeenSet = true; m_saaSProductSummary = value; }
-
-    /**
-     * <p>An object that contains summary information about the SaaS product.</p>
-     */
-    inline void SetSaaSProductSummary(SaaSProductSummary&& value) { m_saaSProductSummaryHasBeenSet = true; m_saaSProductSummary = std::move(value); }
-
-    /**
-     * <p>An object that contains summary information about the SaaS product.</p>
-     */
-    inline EntitySummary& WithSaaSProductSummary(const SaaSProductSummary& value) { SetSaaSProductSummary(value); return *this;}
-
-    /**
-     * <p>An object that contains summary information about the SaaS product.</p>
-     */
-    inline EntitySummary& WithSaaSProductSummary(SaaSProductSummary&& value) { SetSaaSProductSummary(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>An object that contains summary information about the offer.</p>
      */
-    inline const OfferSummary& GetOfferSummary() const{ return m_offerSummary; }
-
-    /**
-     * <p>An object that contains summary information about the offer.</p>
-     */
+    inline const OfferSummary& GetOfferSummary() const { return m_offerSummary; }
     inline bool OfferSummaryHasBeenSet() const { return m_offerSummaryHasBeenSet; }
+    template<typename OfferSummaryT = OfferSummary>
+    void SetOfferSummary(OfferSummaryT&& value) { m_offerSummaryHasBeenSet = true; m_offerSummary = std::forward<OfferSummaryT>(value); }
+    template<typename OfferSummaryT = OfferSummary>
+    EntitySummary& WithOfferSummary(OfferSummaryT&& value) { SetOfferSummary(std::forward<OfferSummaryT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An object that contains summary information about the offer.</p>
-     */
-    inline void SetOfferSummary(const OfferSummary& value) { m_offerSummaryHasBeenSet = true; m_offerSummary = value; }
-
-    /**
-     * <p>An object that contains summary information about the offer.</p>
-     */
-    inline void SetOfferSummary(OfferSummary&& value) { m_offerSummaryHasBeenSet = true; m_offerSummary = std::move(value); }
-
-    /**
-     * <p>An object that contains summary information about the offer.</p>
-     */
-    inline EntitySummary& WithOfferSummary(const OfferSummary& value) { SetOfferSummary(value); return *this;}
-
-    /**
-     * <p>An object that contains summary information about the offer.</p>
-     */
-    inline EntitySummary& WithOfferSummary(OfferSummary&& value) { SetOfferSummary(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>An object that contains summary information about the Resale
      * Authorization.</p>
      */
-    inline const ResaleAuthorizationSummary& GetResaleAuthorizationSummary() const{ return m_resaleAuthorizationSummary; }
-
-    /**
-     * <p>An object that contains summary information about the Resale
-     * Authorization.</p>
-     */
+    inline const ResaleAuthorizationSummary& GetResaleAuthorizationSummary() const { return m_resaleAuthorizationSummary; }
     inline bool ResaleAuthorizationSummaryHasBeenSet() const { return m_resaleAuthorizationSummaryHasBeenSet; }
+    template<typename ResaleAuthorizationSummaryT = ResaleAuthorizationSummary>
+    void SetResaleAuthorizationSummary(ResaleAuthorizationSummaryT&& value) { m_resaleAuthorizationSummaryHasBeenSet = true; m_resaleAuthorizationSummary = std::forward<ResaleAuthorizationSummaryT>(value); }
+    template<typename ResaleAuthorizationSummaryT = ResaleAuthorizationSummary>
+    EntitySummary& WithResaleAuthorizationSummary(ResaleAuthorizationSummaryT&& value) { SetResaleAuthorizationSummary(std::forward<ResaleAuthorizationSummaryT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An object that contains summary information about the Resale
-     * Authorization.</p>
-     */
-    inline void SetResaleAuthorizationSummary(const ResaleAuthorizationSummary& value) { m_resaleAuthorizationSummaryHasBeenSet = true; m_resaleAuthorizationSummary = value; }
-
-    /**
-     * <p>An object that contains summary information about the Resale
-     * Authorization.</p>
-     */
-    inline void SetResaleAuthorizationSummary(ResaleAuthorizationSummary&& value) { m_resaleAuthorizationSummaryHasBeenSet = true; m_resaleAuthorizationSummary = std::move(value); }
-
-    /**
-     * <p>An object that contains summary information about the Resale
-     * Authorization.</p>
-     */
-    inline EntitySummary& WithResaleAuthorizationSummary(const ResaleAuthorizationSummary& value) { SetResaleAuthorizationSummary(value); return *this;}
-
-    /**
-     * <p>An object that contains summary information about the Resale
-     * Authorization.</p>
-     */
-    inline EntitySummary& WithResaleAuthorizationSummary(ResaleAuthorizationSummary&& value) { SetResaleAuthorizationSummary(std::move(value)); return *this;}
-
+    ///@{
+    
+    inline const MachineLearningProductSummary& GetMachineLearningProductSummary() const { return m_machineLearningProductSummary; }
+    inline bool MachineLearningProductSummaryHasBeenSet() const { return m_machineLearningProductSummaryHasBeenSet; }
+    template<typename MachineLearningProductSummaryT = MachineLearningProductSummary>
+    void SetMachineLearningProductSummary(MachineLearningProductSummaryT&& value) { m_machineLearningProductSummaryHasBeenSet = true; m_machineLearningProductSummary = std::forward<MachineLearningProductSummaryT>(value); }
+    template<typename MachineLearningProductSummaryT = MachineLearningProductSummary>
+    EntitySummary& WithMachineLearningProductSummary(MachineLearningProductSummaryT&& value) { SetMachineLearningProductSummary(std::forward<MachineLearningProductSummaryT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;
@@ -567,6 +243,9 @@ namespace Model
 
     ResaleAuthorizationSummary m_resaleAuthorizationSummary;
     bool m_resaleAuthorizationSummaryHasBeenSet = false;
+
+    MachineLearningProductSummary m_machineLearningProductSummary;
+    bool m_machineLearningProductSummaryHasBeenSet = false;
   };
 
 } // namespace Model

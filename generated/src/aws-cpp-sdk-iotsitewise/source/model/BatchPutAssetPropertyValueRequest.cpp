@@ -12,14 +12,15 @@ using namespace Aws::IoTSiteWise::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-BatchPutAssetPropertyValueRequest::BatchPutAssetPropertyValueRequest() : 
-    m_entriesHasBeenSet(false)
-{
-}
-
 Aws::String BatchPutAssetPropertyValueRequest::SerializePayload() const
 {
   JsonValue payload;
+
+  if(m_enablePartialEntryProcessingHasBeenSet)
+  {
+   payload.WithBool("enablePartialEntryProcessing", m_enablePartialEntryProcessing);
+
+  }
 
   if(m_entriesHasBeenSet)
   {

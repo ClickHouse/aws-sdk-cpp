@@ -20,33 +20,7 @@ namespace ElasticBeanstalk
 namespace Model
 {
 
-ApplicationVersionDescription::ApplicationVersionDescription() : 
-    m_applicationVersionArnHasBeenSet(false),
-    m_applicationNameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_versionLabelHasBeenSet(false),
-    m_sourceBuildInformationHasBeenSet(false),
-    m_buildArnHasBeenSet(false),
-    m_sourceBundleHasBeenSet(false),
-    m_dateCreatedHasBeenSet(false),
-    m_dateUpdatedHasBeenSet(false),
-    m_status(ApplicationVersionStatus::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
-ApplicationVersionDescription::ApplicationVersionDescription(const XmlNode& xmlNode) : 
-    m_applicationVersionArnHasBeenSet(false),
-    m_applicationNameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_versionLabelHasBeenSet(false),
-    m_sourceBuildInformationHasBeenSet(false),
-    m_buildArnHasBeenSet(false),
-    m_sourceBundleHasBeenSet(false),
-    m_dateCreatedHasBeenSet(false),
-    m_dateUpdatedHasBeenSet(false),
-    m_status(ApplicationVersionStatus::NOT_SET),
-    m_statusHasBeenSet(false)
+ApplicationVersionDescription::ApplicationVersionDescription(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -114,7 +88,7 @@ ApplicationVersionDescription& ApplicationVersionDescription::operator =(const X
     XmlNode statusNode = resultNode.FirstChild("Status");
     if(!statusNode.IsNull())
     {
-      m_status = ApplicationVersionStatusMapper::GetApplicationVersionStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()).c_str());
+      m_status = ApplicationVersionStatusMapper::GetApplicationVersionStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()));
       m_statusHasBeenSet = true;
     }
   }
@@ -175,7 +149,7 @@ void ApplicationVersionDescription::OutputToStream(Aws::OStream& oStream, const 
 
   if(m_statusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Status=" << ApplicationVersionStatusMapper::GetNameForApplicationVersionStatus(m_status) << "&";
+      oStream << location << index << locationValue << ".Status=" << StringUtils::URLEncode(ApplicationVersionStatusMapper::GetNameForApplicationVersionStatus(m_status)) << "&";
   }
 
 }
@@ -224,7 +198,7 @@ void ApplicationVersionDescription::OutputToStream(Aws::OStream& oStream, const 
   }
   if(m_statusHasBeenSet)
   {
-      oStream << location << ".Status=" << ApplicationVersionStatusMapper::GetNameForApplicationVersionStatus(m_status) << "&";
+      oStream << location << ".Status=" << StringUtils::URLEncode(ApplicationVersionStatusMapper::GetNameForApplicationVersionStatus(m_status)) << "&";
   }
 }
 

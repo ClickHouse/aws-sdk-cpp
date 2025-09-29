@@ -18,17 +18,7 @@ namespace WAF
 namespace Model
 {
 
-XssMatchSet::XssMatchSet() : 
-    m_xssMatchSetIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_xssMatchTuplesHasBeenSet(false)
-{
-}
-
-XssMatchSet::XssMatchSet(JsonView jsonValue) : 
-    m_xssMatchSetIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_xssMatchTuplesHasBeenSet(false)
+XssMatchSet::XssMatchSet(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ XssMatchSet& XssMatchSet::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("XssMatchSetId"))
   {
     m_xssMatchSetId = jsonValue.GetString("XssMatchSetId");
-
     m_xssMatchSetIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("XssMatchTuples"))
   {
     Aws::Utils::Array<JsonView> xssMatchTuplesJsonList = jsonValue.GetArray("XssMatchTuples");
@@ -58,7 +44,6 @@ XssMatchSet& XssMatchSet::operator =(JsonView jsonValue)
     }
     m_xssMatchTuplesHasBeenSet = true;
   }
-
   return *this;
 }
 

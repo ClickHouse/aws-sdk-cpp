@@ -18,17 +18,7 @@ namespace SnowDeviceManagement
 namespace Model
 {
 
-ResourceSummary::ResourceSummary() : 
-    m_arnHasBeenSet(false),
-    m_idHasBeenSet(false),
-    m_resourceTypeHasBeenSet(false)
-{
-}
-
-ResourceSummary::ResourceSummary(JsonView jsonValue) : 
-    m_arnHasBeenSet(false),
-    m_idHasBeenSet(false),
-    m_resourceTypeHasBeenSet(false)
+ResourceSummary::ResourceSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ ResourceSummary& ResourceSummary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("arn"))
   {
     m_arn = jsonValue.GetString("arn");
-
     m_arnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("id"))
   {
     m_id = jsonValue.GetString("id");
-
     m_idHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("resourceType"))
   {
     m_resourceType = jsonValue.GetString("resourceType");
-
     m_resourceTypeHasBeenSet = true;
   }
-
   return *this;
 }
 

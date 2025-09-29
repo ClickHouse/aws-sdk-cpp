@@ -12,13 +12,6 @@ using namespace Aws::Connect::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-AssociateRoutingProfileQueuesRequest::AssociateRoutingProfileQueuesRequest() : 
-    m_instanceIdHasBeenSet(false),
-    m_routingProfileIdHasBeenSet(false),
-    m_queueConfigsHasBeenSet(false)
-{
-}
-
 Aws::String AssociateRoutingProfileQueuesRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -31,6 +24,17 @@ Aws::String AssociateRoutingProfileQueuesRequest::SerializePayload() const
      queueConfigsJsonList[queueConfigsIndex].AsObject(m_queueConfigs[queueConfigsIndex].Jsonize());
    }
    payload.WithArray("QueueConfigs", std::move(queueConfigsJsonList));
+
+  }
+
+  if(m_manualAssignmentQueueConfigsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> manualAssignmentQueueConfigsJsonList(m_manualAssignmentQueueConfigs.size());
+   for(unsigned manualAssignmentQueueConfigsIndex = 0; manualAssignmentQueueConfigsIndex < manualAssignmentQueueConfigsJsonList.GetLength(); ++manualAssignmentQueueConfigsIndex)
+   {
+     manualAssignmentQueueConfigsJsonList[manualAssignmentQueueConfigsIndex].AsObject(m_manualAssignmentQueueConfigs[manualAssignmentQueueConfigsIndex].Jsonize());
+   }
+   payload.WithArray("ManualAssignmentQueueConfigs", std::move(manualAssignmentQueueConfigsJsonList));
 
   }
 

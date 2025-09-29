@@ -18,15 +18,7 @@ namespace Amplify
 namespace Model
 {
 
-Job::Job() : 
-    m_summaryHasBeenSet(false),
-    m_stepsHasBeenSet(false)
-{
-}
-
-Job::Job(JsonView jsonValue) : 
-    m_summaryHasBeenSet(false),
-    m_stepsHasBeenSet(false)
+Job::Job(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ Job& Job::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("summary"))
   {
     m_summary = jsonValue.GetObject("summary");
-
     m_summaryHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("steps"))
   {
     Aws::Utils::Array<JsonView> stepsJsonList = jsonValue.GetArray("steps");
@@ -49,7 +39,6 @@ Job& Job::operator =(JsonView jsonValue)
     }
     m_stepsHasBeenSet = true;
   }
-
   return *this;
 }
 

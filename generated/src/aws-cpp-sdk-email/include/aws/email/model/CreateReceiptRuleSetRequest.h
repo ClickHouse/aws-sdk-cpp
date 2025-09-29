@@ -27,7 +27,7 @@ namespace Model
   class CreateReceiptRuleSetRequest : public SESRequest
   {
   public:
-    AWS_SES_API CreateReceiptRuleSetRequest();
+    AWS_SES_API CreateReceiptRuleSetRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -42,6 +42,7 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The name of the rule set to create. The name must meet the following
      * requirements:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers
@@ -49,71 +50,13 @@ namespace Model
      * letter or number.</p> </li> <li> <p>Contain 64 characters or fewer.</p> </li>
      * </ul>
      */
-    inline const Aws::String& GetRuleSetName() const{ return m_ruleSetName; }
-
-    /**
-     * <p>The name of the rule set to create. The name must meet the following
-     * requirements:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers
-     * (0-9), underscores (_), or dashes (-).</p> </li> <li> <p>Start and end with a
-     * letter or number.</p> </li> <li> <p>Contain 64 characters or fewer.</p> </li>
-     * </ul>
-     */
+    inline const Aws::String& GetRuleSetName() const { return m_ruleSetName; }
     inline bool RuleSetNameHasBeenSet() const { return m_ruleSetNameHasBeenSet; }
-
-    /**
-     * <p>The name of the rule set to create. The name must meet the following
-     * requirements:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers
-     * (0-9), underscores (_), or dashes (-).</p> </li> <li> <p>Start and end with a
-     * letter or number.</p> </li> <li> <p>Contain 64 characters or fewer.</p> </li>
-     * </ul>
-     */
-    inline void SetRuleSetName(const Aws::String& value) { m_ruleSetNameHasBeenSet = true; m_ruleSetName = value; }
-
-    /**
-     * <p>The name of the rule set to create. The name must meet the following
-     * requirements:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers
-     * (0-9), underscores (_), or dashes (-).</p> </li> <li> <p>Start and end with a
-     * letter or number.</p> </li> <li> <p>Contain 64 characters or fewer.</p> </li>
-     * </ul>
-     */
-    inline void SetRuleSetName(Aws::String&& value) { m_ruleSetNameHasBeenSet = true; m_ruleSetName = std::move(value); }
-
-    /**
-     * <p>The name of the rule set to create. The name must meet the following
-     * requirements:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers
-     * (0-9), underscores (_), or dashes (-).</p> </li> <li> <p>Start and end with a
-     * letter or number.</p> </li> <li> <p>Contain 64 characters or fewer.</p> </li>
-     * </ul>
-     */
-    inline void SetRuleSetName(const char* value) { m_ruleSetNameHasBeenSet = true; m_ruleSetName.assign(value); }
-
-    /**
-     * <p>The name of the rule set to create. The name must meet the following
-     * requirements:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers
-     * (0-9), underscores (_), or dashes (-).</p> </li> <li> <p>Start and end with a
-     * letter or number.</p> </li> <li> <p>Contain 64 characters or fewer.</p> </li>
-     * </ul>
-     */
-    inline CreateReceiptRuleSetRequest& WithRuleSetName(const Aws::String& value) { SetRuleSetName(value); return *this;}
-
-    /**
-     * <p>The name of the rule set to create. The name must meet the following
-     * requirements:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers
-     * (0-9), underscores (_), or dashes (-).</p> </li> <li> <p>Start and end with a
-     * letter or number.</p> </li> <li> <p>Contain 64 characters or fewer.</p> </li>
-     * </ul>
-     */
-    inline CreateReceiptRuleSetRequest& WithRuleSetName(Aws::String&& value) { SetRuleSetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the rule set to create. The name must meet the following
-     * requirements:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers
-     * (0-9), underscores (_), or dashes (-).</p> </li> <li> <p>Start and end with a
-     * letter or number.</p> </li> <li> <p>Contain 64 characters or fewer.</p> </li>
-     * </ul>
-     */
-    inline CreateReceiptRuleSetRequest& WithRuleSetName(const char* value) { SetRuleSetName(value); return *this;}
-
+    template<typename RuleSetNameT = Aws::String>
+    void SetRuleSetName(RuleSetNameT&& value) { m_ruleSetNameHasBeenSet = true; m_ruleSetName = std::forward<RuleSetNameT>(value); }
+    template<typename RuleSetNameT = Aws::String>
+    CreateReceiptRuleSetRequest& WithRuleSetName(RuleSetNameT&& value) { SetRuleSetName(std::forward<RuleSetNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_ruleSetName;

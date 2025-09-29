@@ -18,17 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-DataColorPalette::DataColorPalette() : 
-    m_colorsHasBeenSet(false),
-    m_minMaxGradientHasBeenSet(false),
-    m_emptyFillColorHasBeenSet(false)
-{
-}
-
-DataColorPalette::DataColorPalette(JsonView jsonValue) : 
-    m_colorsHasBeenSet(false),
-    m_minMaxGradientHasBeenSet(false),
-    m_emptyFillColorHasBeenSet(false)
+DataColorPalette::DataColorPalette(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,7 +34,6 @@ DataColorPalette& DataColorPalette::operator =(JsonView jsonValue)
     }
     m_colorsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MinMaxGradient"))
   {
     Aws::Utils::Array<JsonView> minMaxGradientJsonList = jsonValue.GetArray("MinMaxGradient");
@@ -54,14 +43,11 @@ DataColorPalette& DataColorPalette::operator =(JsonView jsonValue)
     }
     m_minMaxGradientHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("EmptyFillColor"))
   {
     m_emptyFillColor = jsonValue.GetString("EmptyFillColor");
-
     m_emptyFillColorHasBeenSet = true;
   }
-
   return *this;
 }
 

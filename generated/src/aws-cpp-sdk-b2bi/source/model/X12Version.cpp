@@ -22,7 +22,10 @@ namespace Aws
 
         static const int VERSION_4010_HASH = HashingUtils::HashString("VERSION_4010");
         static const int VERSION_4030_HASH = HashingUtils::HashString("VERSION_4030");
+        static const int VERSION_4050_HASH = HashingUtils::HashString("VERSION_4050");
+        static const int VERSION_4060_HASH = HashingUtils::HashString("VERSION_4060");
         static const int VERSION_5010_HASH = HashingUtils::HashString("VERSION_5010");
+        static const int VERSION_5010_HIPAA_HASH = HashingUtils::HashString("VERSION_5010_HIPAA");
 
 
         X12Version GetX12VersionForName(const Aws::String& name)
@@ -36,9 +39,21 @@ namespace Aws
           {
             return X12Version::VERSION_4030;
           }
+          else if (hashCode == VERSION_4050_HASH)
+          {
+            return X12Version::VERSION_4050;
+          }
+          else if (hashCode == VERSION_4060_HASH)
+          {
+            return X12Version::VERSION_4060;
+          }
           else if (hashCode == VERSION_5010_HASH)
           {
             return X12Version::VERSION_5010;
+          }
+          else if (hashCode == VERSION_5010_HIPAA_HASH)
+          {
+            return X12Version::VERSION_5010_HIPAA;
           }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
@@ -60,8 +75,14 @@ namespace Aws
             return "VERSION_4010";
           case X12Version::VERSION_4030:
             return "VERSION_4030";
+          case X12Version::VERSION_4050:
+            return "VERSION_4050";
+          case X12Version::VERSION_4060:
+            return "VERSION_4060";
           case X12Version::VERSION_5010:
             return "VERSION_5010";
+          case X12Version::VERSION_5010_HIPAA:
+            return "VERSION_5010_HIPAA";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

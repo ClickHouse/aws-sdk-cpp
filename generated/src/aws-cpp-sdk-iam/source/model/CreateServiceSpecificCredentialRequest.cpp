@@ -10,12 +10,6 @@
 using namespace Aws::IAM::Model;
 using namespace Aws::Utils;
 
-CreateServiceSpecificCredentialRequest::CreateServiceSpecificCredentialRequest() : 
-    m_userNameHasBeenSet(false),
-    m_serviceNameHasBeenSet(false)
-{
-}
-
 Aws::String CreateServiceSpecificCredentialRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -28,6 +22,11 @@ Aws::String CreateServiceSpecificCredentialRequest::SerializePayload() const
   if(m_serviceNameHasBeenSet)
   {
     ss << "ServiceName=" << StringUtils::URLEncode(m_serviceName.c_str()) << "&";
+  }
+
+  if(m_credentialAgeDaysHasBeenSet)
+  {
+    ss << "CredentialAgeDays=" << m_credentialAgeDays << "&";
   }
 
   ss << "Version=2010-05-08";

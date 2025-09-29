@@ -20,31 +20,7 @@ namespace EC2
 namespace Model
 {
 
-TransitGatewayRouteTable::TransitGatewayRouteTable() : 
-    m_transitGatewayRouteTableIdHasBeenSet(false),
-    m_transitGatewayIdHasBeenSet(false),
-    m_state(TransitGatewayRouteTableState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_defaultAssociationRouteTable(false),
-    m_defaultAssociationRouteTableHasBeenSet(false),
-    m_defaultPropagationRouteTable(false),
-    m_defaultPropagationRouteTableHasBeenSet(false),
-    m_creationTimeHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-TransitGatewayRouteTable::TransitGatewayRouteTable(const XmlNode& xmlNode) : 
-    m_transitGatewayRouteTableIdHasBeenSet(false),
-    m_transitGatewayIdHasBeenSet(false),
-    m_state(TransitGatewayRouteTableState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_defaultAssociationRouteTable(false),
-    m_defaultAssociationRouteTableHasBeenSet(false),
-    m_defaultPropagationRouteTable(false),
-    m_defaultPropagationRouteTableHasBeenSet(false),
-    m_creationTimeHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+TransitGatewayRouteTable::TransitGatewayRouteTable(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -70,7 +46,7 @@ TransitGatewayRouteTable& TransitGatewayRouteTable::operator =(const XmlNode& xm
     XmlNode stateNode = resultNode.FirstChild("state");
     if(!stateNode.IsNull())
     {
-      m_state = TransitGatewayRouteTableStateMapper::GetTransitGatewayRouteTableStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()).c_str());
+      m_state = TransitGatewayRouteTableStateMapper::GetTransitGatewayRouteTableStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()));
       m_stateHasBeenSet = true;
     }
     XmlNode defaultAssociationRouteTableNode = resultNode.FirstChild("defaultAssociationRouteTable");
@@ -95,6 +71,7 @@ TransitGatewayRouteTable& TransitGatewayRouteTable::operator =(const XmlNode& xm
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -122,7 +99,7 @@ void TransitGatewayRouteTable::OutputToStream(Aws::OStream& oStream, const char*
 
   if(m_stateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".State=" << TransitGatewayRouteTableStateMapper::GetNameForTransitGatewayRouteTableState(m_state) << "&";
+      oStream << location << index << locationValue << ".State=" << StringUtils::URLEncode(TransitGatewayRouteTableStateMapper::GetNameForTransitGatewayRouteTableState(m_state)) << "&";
   }
 
   if(m_defaultAssociationRouteTableHasBeenSet)
@@ -165,7 +142,7 @@ void TransitGatewayRouteTable::OutputToStream(Aws::OStream& oStream, const char*
   }
   if(m_stateHasBeenSet)
   {
-      oStream << location << ".State=" << TransitGatewayRouteTableStateMapper::GetNameForTransitGatewayRouteTableState(m_state) << "&";
+      oStream << location << ".State=" << StringUtils::URLEncode(TransitGatewayRouteTableStateMapper::GetNameForTransitGatewayRouteTableState(m_state)) << "&";
   }
   if(m_defaultAssociationRouteTableHasBeenSet)
   {
@@ -185,7 +162,7 @@ void TransitGatewayRouteTable::OutputToStream(Aws::OStream& oStream, const char*
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }

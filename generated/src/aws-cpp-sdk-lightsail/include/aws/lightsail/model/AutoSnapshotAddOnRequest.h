@@ -54,12 +54,13 @@ namespace Model
   class AutoSnapshotAddOnRequest
   {
   public:
-    AWS_LIGHTSAIL_API AutoSnapshotAddOnRequest();
+    AWS_LIGHTSAIL_API AutoSnapshotAddOnRequest() = default;
     AWS_LIGHTSAIL_API AutoSnapshotAddOnRequest(Aws::Utils::Json::JsonView jsonValue);
     AWS_LIGHTSAIL_API AutoSnapshotAddOnRequest& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LIGHTSAIL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The daily time when an automatic snapshot will be created.</p>
      * <p>Constraints:</p> <ul> <li> <p>Must be in <code>HH:00</code> format, and in an
@@ -67,71 +68,13 @@ namespace Model
      * (UTC).</p> </li> <li> <p>The snapshot will be automatically created between the
      * time specified and up to 45 minutes after.</p> </li> </ul>
      */
-    inline const Aws::String& GetSnapshotTimeOfDay() const{ return m_snapshotTimeOfDay; }
-
-    /**
-     * <p>The daily time when an automatic snapshot will be created.</p>
-     * <p>Constraints:</p> <ul> <li> <p>Must be in <code>HH:00</code> format, and in an
-     * hourly increment.</p> </li> <li> <p>Specified in Coordinated Universal Time
-     * (UTC).</p> </li> <li> <p>The snapshot will be automatically created between the
-     * time specified and up to 45 minutes after.</p> </li> </ul>
-     */
+    inline const Aws::String& GetSnapshotTimeOfDay() const { return m_snapshotTimeOfDay; }
     inline bool SnapshotTimeOfDayHasBeenSet() const { return m_snapshotTimeOfDayHasBeenSet; }
-
-    /**
-     * <p>The daily time when an automatic snapshot will be created.</p>
-     * <p>Constraints:</p> <ul> <li> <p>Must be in <code>HH:00</code> format, and in an
-     * hourly increment.</p> </li> <li> <p>Specified in Coordinated Universal Time
-     * (UTC).</p> </li> <li> <p>The snapshot will be automatically created between the
-     * time specified and up to 45 minutes after.</p> </li> </ul>
-     */
-    inline void SetSnapshotTimeOfDay(const Aws::String& value) { m_snapshotTimeOfDayHasBeenSet = true; m_snapshotTimeOfDay = value; }
-
-    /**
-     * <p>The daily time when an automatic snapshot will be created.</p>
-     * <p>Constraints:</p> <ul> <li> <p>Must be in <code>HH:00</code> format, and in an
-     * hourly increment.</p> </li> <li> <p>Specified in Coordinated Universal Time
-     * (UTC).</p> </li> <li> <p>The snapshot will be automatically created between the
-     * time specified and up to 45 minutes after.</p> </li> </ul>
-     */
-    inline void SetSnapshotTimeOfDay(Aws::String&& value) { m_snapshotTimeOfDayHasBeenSet = true; m_snapshotTimeOfDay = std::move(value); }
-
-    /**
-     * <p>The daily time when an automatic snapshot will be created.</p>
-     * <p>Constraints:</p> <ul> <li> <p>Must be in <code>HH:00</code> format, and in an
-     * hourly increment.</p> </li> <li> <p>Specified in Coordinated Universal Time
-     * (UTC).</p> </li> <li> <p>The snapshot will be automatically created between the
-     * time specified and up to 45 minutes after.</p> </li> </ul>
-     */
-    inline void SetSnapshotTimeOfDay(const char* value) { m_snapshotTimeOfDayHasBeenSet = true; m_snapshotTimeOfDay.assign(value); }
-
-    /**
-     * <p>The daily time when an automatic snapshot will be created.</p>
-     * <p>Constraints:</p> <ul> <li> <p>Must be in <code>HH:00</code> format, and in an
-     * hourly increment.</p> </li> <li> <p>Specified in Coordinated Universal Time
-     * (UTC).</p> </li> <li> <p>The snapshot will be automatically created between the
-     * time specified and up to 45 minutes after.</p> </li> </ul>
-     */
-    inline AutoSnapshotAddOnRequest& WithSnapshotTimeOfDay(const Aws::String& value) { SetSnapshotTimeOfDay(value); return *this;}
-
-    /**
-     * <p>The daily time when an automatic snapshot will be created.</p>
-     * <p>Constraints:</p> <ul> <li> <p>Must be in <code>HH:00</code> format, and in an
-     * hourly increment.</p> </li> <li> <p>Specified in Coordinated Universal Time
-     * (UTC).</p> </li> <li> <p>The snapshot will be automatically created between the
-     * time specified and up to 45 minutes after.</p> </li> </ul>
-     */
-    inline AutoSnapshotAddOnRequest& WithSnapshotTimeOfDay(Aws::String&& value) { SetSnapshotTimeOfDay(std::move(value)); return *this;}
-
-    /**
-     * <p>The daily time when an automatic snapshot will be created.</p>
-     * <p>Constraints:</p> <ul> <li> <p>Must be in <code>HH:00</code> format, and in an
-     * hourly increment.</p> </li> <li> <p>Specified in Coordinated Universal Time
-     * (UTC).</p> </li> <li> <p>The snapshot will be automatically created between the
-     * time specified and up to 45 minutes after.</p> </li> </ul>
-     */
-    inline AutoSnapshotAddOnRequest& WithSnapshotTimeOfDay(const char* value) { SetSnapshotTimeOfDay(value); return *this;}
-
+    template<typename SnapshotTimeOfDayT = Aws::String>
+    void SetSnapshotTimeOfDay(SnapshotTimeOfDayT&& value) { m_snapshotTimeOfDayHasBeenSet = true; m_snapshotTimeOfDay = std::forward<SnapshotTimeOfDayT>(value); }
+    template<typename SnapshotTimeOfDayT = Aws::String>
+    AutoSnapshotAddOnRequest& WithSnapshotTimeOfDay(SnapshotTimeOfDayT&& value) { SetSnapshotTimeOfDay(std::forward<SnapshotTimeOfDayT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_snapshotTimeOfDay;

@@ -21,7 +21,7 @@ namespace Model
   class ListTagsForResourceRequest : public TranscribeServiceRequest
   {
   public:
-    AWS_TRANSCRIBESERVICE_API ListTagsForResourceRequest();
+    AWS_TRANSCRIBESERVICE_API ListTagsForResourceRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,6 +34,7 @@ namespace Model
     AWS_TRANSCRIBESERVICE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>Returns a list of all tags associated with the specified Amazon Resource Name
      * (ARN). ARNs have the format
@@ -45,99 +46,13 @@ namespace Model
      * <code>vocabulary</code>, <code>medical-vocabulary</code>,
      * <code>vocabulary-filter</code>, and <code>language-model</code>.</p>
      */
-    inline const Aws::String& GetResourceArn() const{ return m_resourceArn; }
-
-    /**
-     * <p>Returns a list of all tags associated with the specified Amazon Resource Name
-     * (ARN). ARNs have the format
-     * <code>arn:partition:service:region:account-id:resource-type/resource-id</code>.</p>
-     * <p>For example,
-     * <code>arn:aws:transcribe:us-west-2:111122223333:transcription-job/transcription-job-name</code>.</p>
-     * <p>Valid values for <code>resource-type</code> are:
-     * <code>transcription-job</code>, <code>medical-transcription-job</code>,
-     * <code>vocabulary</code>, <code>medical-vocabulary</code>,
-     * <code>vocabulary-filter</code>, and <code>language-model</code>.</p>
-     */
+    inline const Aws::String& GetResourceArn() const { return m_resourceArn; }
     inline bool ResourceArnHasBeenSet() const { return m_resourceArnHasBeenSet; }
-
-    /**
-     * <p>Returns a list of all tags associated with the specified Amazon Resource Name
-     * (ARN). ARNs have the format
-     * <code>arn:partition:service:region:account-id:resource-type/resource-id</code>.</p>
-     * <p>For example,
-     * <code>arn:aws:transcribe:us-west-2:111122223333:transcription-job/transcription-job-name</code>.</p>
-     * <p>Valid values for <code>resource-type</code> are:
-     * <code>transcription-job</code>, <code>medical-transcription-job</code>,
-     * <code>vocabulary</code>, <code>medical-vocabulary</code>,
-     * <code>vocabulary-filter</code>, and <code>language-model</code>.</p>
-     */
-    inline void SetResourceArn(const Aws::String& value) { m_resourceArnHasBeenSet = true; m_resourceArn = value; }
-
-    /**
-     * <p>Returns a list of all tags associated with the specified Amazon Resource Name
-     * (ARN). ARNs have the format
-     * <code>arn:partition:service:region:account-id:resource-type/resource-id</code>.</p>
-     * <p>For example,
-     * <code>arn:aws:transcribe:us-west-2:111122223333:transcription-job/transcription-job-name</code>.</p>
-     * <p>Valid values for <code>resource-type</code> are:
-     * <code>transcription-job</code>, <code>medical-transcription-job</code>,
-     * <code>vocabulary</code>, <code>medical-vocabulary</code>,
-     * <code>vocabulary-filter</code>, and <code>language-model</code>.</p>
-     */
-    inline void SetResourceArn(Aws::String&& value) { m_resourceArnHasBeenSet = true; m_resourceArn = std::move(value); }
-
-    /**
-     * <p>Returns a list of all tags associated with the specified Amazon Resource Name
-     * (ARN). ARNs have the format
-     * <code>arn:partition:service:region:account-id:resource-type/resource-id</code>.</p>
-     * <p>For example,
-     * <code>arn:aws:transcribe:us-west-2:111122223333:transcription-job/transcription-job-name</code>.</p>
-     * <p>Valid values for <code>resource-type</code> are:
-     * <code>transcription-job</code>, <code>medical-transcription-job</code>,
-     * <code>vocabulary</code>, <code>medical-vocabulary</code>,
-     * <code>vocabulary-filter</code>, and <code>language-model</code>.</p>
-     */
-    inline void SetResourceArn(const char* value) { m_resourceArnHasBeenSet = true; m_resourceArn.assign(value); }
-
-    /**
-     * <p>Returns a list of all tags associated with the specified Amazon Resource Name
-     * (ARN). ARNs have the format
-     * <code>arn:partition:service:region:account-id:resource-type/resource-id</code>.</p>
-     * <p>For example,
-     * <code>arn:aws:transcribe:us-west-2:111122223333:transcription-job/transcription-job-name</code>.</p>
-     * <p>Valid values for <code>resource-type</code> are:
-     * <code>transcription-job</code>, <code>medical-transcription-job</code>,
-     * <code>vocabulary</code>, <code>medical-vocabulary</code>,
-     * <code>vocabulary-filter</code>, and <code>language-model</code>.</p>
-     */
-    inline ListTagsForResourceRequest& WithResourceArn(const Aws::String& value) { SetResourceArn(value); return *this;}
-
-    /**
-     * <p>Returns a list of all tags associated with the specified Amazon Resource Name
-     * (ARN). ARNs have the format
-     * <code>arn:partition:service:region:account-id:resource-type/resource-id</code>.</p>
-     * <p>For example,
-     * <code>arn:aws:transcribe:us-west-2:111122223333:transcription-job/transcription-job-name</code>.</p>
-     * <p>Valid values for <code>resource-type</code> are:
-     * <code>transcription-job</code>, <code>medical-transcription-job</code>,
-     * <code>vocabulary</code>, <code>medical-vocabulary</code>,
-     * <code>vocabulary-filter</code>, and <code>language-model</code>.</p>
-     */
-    inline ListTagsForResourceRequest& WithResourceArn(Aws::String&& value) { SetResourceArn(std::move(value)); return *this;}
-
-    /**
-     * <p>Returns a list of all tags associated with the specified Amazon Resource Name
-     * (ARN). ARNs have the format
-     * <code>arn:partition:service:region:account-id:resource-type/resource-id</code>.</p>
-     * <p>For example,
-     * <code>arn:aws:transcribe:us-west-2:111122223333:transcription-job/transcription-job-name</code>.</p>
-     * <p>Valid values for <code>resource-type</code> are:
-     * <code>transcription-job</code>, <code>medical-transcription-job</code>,
-     * <code>vocabulary</code>, <code>medical-vocabulary</code>,
-     * <code>vocabulary-filter</code>, and <code>language-model</code>.</p>
-     */
-    inline ListTagsForResourceRequest& WithResourceArn(const char* value) { SetResourceArn(value); return *this;}
-
+    template<typename ResourceArnT = Aws::String>
+    void SetResourceArn(ResourceArnT&& value) { m_resourceArnHasBeenSet = true; m_resourceArn = std::forward<ResourceArnT>(value); }
+    template<typename ResourceArnT = Aws::String>
+    ListTagsForResourceRequest& WithResourceArn(ResourceArnT&& value) { SetResourceArn(std::forward<ResourceArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_resourceArn;

@@ -13,25 +13,6 @@ using namespace Aws::Omics::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateWorkflowRequest::CreateWorkflowRequest() : 
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_engine(WorkflowEngine::NOT_SET),
-    m_engineHasBeenSet(false),
-    m_definitionZipHasBeenSet(false),
-    m_definitionUriHasBeenSet(false),
-    m_mainHasBeenSet(false),
-    m_parameterTemplateHasBeenSet(false),
-    m_storageCapacity(0),
-    m_storageCapacityHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_requestId(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_requestIdHasBeenSet(true),
-    m_accelerators(Accelerators::NOT_SET),
-    m_acceleratorsHasBeenSet(false)
-{
-}
-
 Aws::String CreateWorkflowRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -107,6 +88,59 @@ Aws::String CreateWorkflowRequest::SerializePayload() const
   if(m_acceleratorsHasBeenSet)
   {
    payload.WithString("accelerators", AcceleratorsMapper::GetNameForAccelerators(m_accelerators));
+  }
+
+  if(m_storageTypeHasBeenSet)
+  {
+   payload.WithString("storageType", StorageTypeMapper::GetNameForStorageType(m_storageType));
+  }
+
+  if(m_containerRegistryMapHasBeenSet)
+  {
+   payload.WithObject("containerRegistryMap", m_containerRegistryMap.Jsonize());
+
+  }
+
+  if(m_containerRegistryMapUriHasBeenSet)
+  {
+   payload.WithString("containerRegistryMapUri", m_containerRegistryMapUri);
+
+  }
+
+  if(m_readmeMarkdownHasBeenSet)
+  {
+   payload.WithString("readmeMarkdown", m_readmeMarkdown);
+
+  }
+
+  if(m_parameterTemplatePathHasBeenSet)
+  {
+   payload.WithString("parameterTemplatePath", m_parameterTemplatePath);
+
+  }
+
+  if(m_readmePathHasBeenSet)
+  {
+   payload.WithString("readmePath", m_readmePath);
+
+  }
+
+  if(m_definitionRepositoryHasBeenSet)
+  {
+   payload.WithObject("definitionRepository", m_definitionRepository.Jsonize());
+
+  }
+
+  if(m_workflowBucketOwnerIdHasBeenSet)
+  {
+   payload.WithString("workflowBucketOwnerId", m_workflowBucketOwnerId);
+
+  }
+
+  if(m_readmeUriHasBeenSet)
+  {
+   payload.WithString("readmeUri", m_readmeUri);
+
   }
 
   return payload.View().WriteReadable();

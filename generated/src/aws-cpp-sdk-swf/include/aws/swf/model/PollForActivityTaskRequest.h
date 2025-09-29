@@ -22,7 +22,7 @@ namespace Model
   class PollForActivityTaskRequest : public SWFRequest
   {
   public:
-    AWS_SWF_API PollForActivityTaskRequest();
+    AWS_SWF_API PollForActivityTaskRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,47 +35,19 @@ namespace Model
     AWS_SWF_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the domain that contains the task lists being polled.</p>
      */
-    inline const Aws::String& GetDomain() const{ return m_domain; }
-
-    /**
-     * <p>The name of the domain that contains the task lists being polled.</p>
-     */
+    inline const Aws::String& GetDomain() const { return m_domain; }
     inline bool DomainHasBeenSet() const { return m_domainHasBeenSet; }
+    template<typename DomainT = Aws::String>
+    void SetDomain(DomainT&& value) { m_domainHasBeenSet = true; m_domain = std::forward<DomainT>(value); }
+    template<typename DomainT = Aws::String>
+    PollForActivityTaskRequest& WithDomain(DomainT&& value) { SetDomain(std::forward<DomainT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the domain that contains the task lists being polled.</p>
-     */
-    inline void SetDomain(const Aws::String& value) { m_domainHasBeenSet = true; m_domain = value; }
-
-    /**
-     * <p>The name of the domain that contains the task lists being polled.</p>
-     */
-    inline void SetDomain(Aws::String&& value) { m_domainHasBeenSet = true; m_domain = std::move(value); }
-
-    /**
-     * <p>The name of the domain that contains the task lists being polled.</p>
-     */
-    inline void SetDomain(const char* value) { m_domainHasBeenSet = true; m_domain.assign(value); }
-
-    /**
-     * <p>The name of the domain that contains the task lists being polled.</p>
-     */
-    inline PollForActivityTaskRequest& WithDomain(const Aws::String& value) { SetDomain(value); return *this;}
-
-    /**
-     * <p>The name of the domain that contains the task lists being polled.</p>
-     */
-    inline PollForActivityTaskRequest& WithDomain(Aws::String&& value) { SetDomain(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the domain that contains the task lists being polled.</p>
-     */
-    inline PollForActivityTaskRequest& WithDomain(const char* value) { SetDomain(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the task list to poll for activity tasks.</p> <p>The specified
      * string must not start or end with whitespace. It must not contain a
@@ -84,123 +56,28 @@ namespace Model
      * <code>\u007f-\u009f</code>). Also, it must <i>not</i> be the literal string
      * <code>arn</code>.</p>
      */
-    inline const TaskList& GetTaskList() const{ return m_taskList; }
-
-    /**
-     * <p>Specifies the task list to poll for activity tasks.</p> <p>The specified
-     * string must not start or end with whitespace. It must not contain a
-     * <code>:</code> (colon), <code>/</code> (slash), <code>|</code> (vertical bar),
-     * or any control characters (<code>\u0000-\u001f</code> |
-     * <code>\u007f-\u009f</code>). Also, it must <i>not</i> be the literal string
-     * <code>arn</code>.</p>
-     */
+    inline const TaskList& GetTaskList() const { return m_taskList; }
     inline bool TaskListHasBeenSet() const { return m_taskListHasBeenSet; }
+    template<typename TaskListT = TaskList>
+    void SetTaskList(TaskListT&& value) { m_taskListHasBeenSet = true; m_taskList = std::forward<TaskListT>(value); }
+    template<typename TaskListT = TaskList>
+    PollForActivityTaskRequest& WithTaskList(TaskListT&& value) { SetTaskList(std::forward<TaskListT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the task list to poll for activity tasks.</p> <p>The specified
-     * string must not start or end with whitespace. It must not contain a
-     * <code>:</code> (colon), <code>/</code> (slash), <code>|</code> (vertical bar),
-     * or any control characters (<code>\u0000-\u001f</code> |
-     * <code>\u007f-\u009f</code>). Also, it must <i>not</i> be the literal string
-     * <code>arn</code>.</p>
-     */
-    inline void SetTaskList(const TaskList& value) { m_taskListHasBeenSet = true; m_taskList = value; }
-
-    /**
-     * <p>Specifies the task list to poll for activity tasks.</p> <p>The specified
-     * string must not start or end with whitespace. It must not contain a
-     * <code>:</code> (colon), <code>/</code> (slash), <code>|</code> (vertical bar),
-     * or any control characters (<code>\u0000-\u001f</code> |
-     * <code>\u007f-\u009f</code>). Also, it must <i>not</i> be the literal string
-     * <code>arn</code>.</p>
-     */
-    inline void SetTaskList(TaskList&& value) { m_taskListHasBeenSet = true; m_taskList = std::move(value); }
-
-    /**
-     * <p>Specifies the task list to poll for activity tasks.</p> <p>The specified
-     * string must not start or end with whitespace. It must not contain a
-     * <code>:</code> (colon), <code>/</code> (slash), <code>|</code> (vertical bar),
-     * or any control characters (<code>\u0000-\u001f</code> |
-     * <code>\u007f-\u009f</code>). Also, it must <i>not</i> be the literal string
-     * <code>arn</code>.</p>
-     */
-    inline PollForActivityTaskRequest& WithTaskList(const TaskList& value) { SetTaskList(value); return *this;}
-
-    /**
-     * <p>Specifies the task list to poll for activity tasks.</p> <p>The specified
-     * string must not start or end with whitespace. It must not contain a
-     * <code>:</code> (colon), <code>/</code> (slash), <code>|</code> (vertical bar),
-     * or any control characters (<code>\u0000-\u001f</code> |
-     * <code>\u007f-\u009f</code>). Also, it must <i>not</i> be the literal string
-     * <code>arn</code>.</p>
-     */
-    inline PollForActivityTaskRequest& WithTaskList(TaskList&& value) { SetTaskList(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Identity of the worker making the request, recorded in the
      * <code>ActivityTaskStarted</code> event in the workflow history. This enables
      * diagnostic tracing when problems arise. The form of this identity is user
      * defined.</p>
      */
-    inline const Aws::String& GetIdentity() const{ return m_identity; }
-
-    /**
-     * <p>Identity of the worker making the request, recorded in the
-     * <code>ActivityTaskStarted</code> event in the workflow history. This enables
-     * diagnostic tracing when problems arise. The form of this identity is user
-     * defined.</p>
-     */
+    inline const Aws::String& GetIdentity() const { return m_identity; }
     inline bool IdentityHasBeenSet() const { return m_identityHasBeenSet; }
-
-    /**
-     * <p>Identity of the worker making the request, recorded in the
-     * <code>ActivityTaskStarted</code> event in the workflow history. This enables
-     * diagnostic tracing when problems arise. The form of this identity is user
-     * defined.</p>
-     */
-    inline void SetIdentity(const Aws::String& value) { m_identityHasBeenSet = true; m_identity = value; }
-
-    /**
-     * <p>Identity of the worker making the request, recorded in the
-     * <code>ActivityTaskStarted</code> event in the workflow history. This enables
-     * diagnostic tracing when problems arise. The form of this identity is user
-     * defined.</p>
-     */
-    inline void SetIdentity(Aws::String&& value) { m_identityHasBeenSet = true; m_identity = std::move(value); }
-
-    /**
-     * <p>Identity of the worker making the request, recorded in the
-     * <code>ActivityTaskStarted</code> event in the workflow history. This enables
-     * diagnostic tracing when problems arise. The form of this identity is user
-     * defined.</p>
-     */
-    inline void SetIdentity(const char* value) { m_identityHasBeenSet = true; m_identity.assign(value); }
-
-    /**
-     * <p>Identity of the worker making the request, recorded in the
-     * <code>ActivityTaskStarted</code> event in the workflow history. This enables
-     * diagnostic tracing when problems arise. The form of this identity is user
-     * defined.</p>
-     */
-    inline PollForActivityTaskRequest& WithIdentity(const Aws::String& value) { SetIdentity(value); return *this;}
-
-    /**
-     * <p>Identity of the worker making the request, recorded in the
-     * <code>ActivityTaskStarted</code> event in the workflow history. This enables
-     * diagnostic tracing when problems arise. The form of this identity is user
-     * defined.</p>
-     */
-    inline PollForActivityTaskRequest& WithIdentity(Aws::String&& value) { SetIdentity(std::move(value)); return *this;}
-
-    /**
-     * <p>Identity of the worker making the request, recorded in the
-     * <code>ActivityTaskStarted</code> event in the workflow history. This enables
-     * diagnostic tracing when problems arise. The form of this identity is user
-     * defined.</p>
-     */
-    inline PollForActivityTaskRequest& WithIdentity(const char* value) { SetIdentity(value); return *this;}
-
+    template<typename IdentityT = Aws::String>
+    void SetIdentity(IdentityT&& value) { m_identityHasBeenSet = true; m_identity = std::forward<IdentityT>(value); }
+    template<typename IdentityT = Aws::String>
+    PollForActivityTaskRequest& WithIdentity(IdentityT&& value) { SetIdentity(std::forward<IdentityT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_domain;

@@ -18,17 +18,7 @@ namespace IoTTwinMaker
 namespace Model
 {
 
-CompositeComponentTypeResponse::CompositeComponentTypeResponse() : 
-    m_componentTypeIdHasBeenSet(false),
-    m_isInherited(false),
-    m_isInheritedHasBeenSet(false)
-{
-}
-
-CompositeComponentTypeResponse::CompositeComponentTypeResponse(JsonView jsonValue) : 
-    m_componentTypeIdHasBeenSet(false),
-    m_isInherited(false),
-    m_isInheritedHasBeenSet(false)
+CompositeComponentTypeResponse::CompositeComponentTypeResponse(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ CompositeComponentTypeResponse& CompositeComponentTypeResponse::operator =(JsonV
   if(jsonValue.ValueExists("componentTypeId"))
   {
     m_componentTypeId = jsonValue.GetString("componentTypeId");
-
     m_componentTypeIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("isInherited"))
   {
     m_isInherited = jsonValue.GetBool("isInherited");
-
     m_isInheritedHasBeenSet = true;
   }
-
   return *this;
 }
 

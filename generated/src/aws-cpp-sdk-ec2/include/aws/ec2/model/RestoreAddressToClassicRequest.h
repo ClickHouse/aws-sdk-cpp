@@ -21,7 +21,7 @@ namespace Model
   class RestoreAddressToClassicRequest : public EC2Request
   {
   public:
-    AWS_EC2_API RestoreAddressToClassicRequest();
+    AWS_EC2_API RestoreAddressToClassicRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,82 +36,33 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
      * required permissions, the error response is <code>DryRunOperation</code>.
      * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
      */
-    inline bool GetDryRun() const{ return m_dryRun; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
+    inline bool GetDryRun() const { return m_dryRun; }
     inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline RestoreAddressToClassicRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The Elastic IP address.</p>
      */
-    inline const Aws::String& GetPublicIp() const{ return m_publicIp; }
-
-    /**
-     * <p>The Elastic IP address.</p>
-     */
+    inline const Aws::String& GetPublicIp() const { return m_publicIp; }
     inline bool PublicIpHasBeenSet() const { return m_publicIpHasBeenSet; }
-
-    /**
-     * <p>The Elastic IP address.</p>
-     */
-    inline void SetPublicIp(const Aws::String& value) { m_publicIpHasBeenSet = true; m_publicIp = value; }
-
-    /**
-     * <p>The Elastic IP address.</p>
-     */
-    inline void SetPublicIp(Aws::String&& value) { m_publicIpHasBeenSet = true; m_publicIp = std::move(value); }
-
-    /**
-     * <p>The Elastic IP address.</p>
-     */
-    inline void SetPublicIp(const char* value) { m_publicIpHasBeenSet = true; m_publicIp.assign(value); }
-
-    /**
-     * <p>The Elastic IP address.</p>
-     */
-    inline RestoreAddressToClassicRequest& WithPublicIp(const Aws::String& value) { SetPublicIp(value); return *this;}
-
-    /**
-     * <p>The Elastic IP address.</p>
-     */
-    inline RestoreAddressToClassicRequest& WithPublicIp(Aws::String&& value) { SetPublicIp(std::move(value)); return *this;}
-
-    /**
-     * <p>The Elastic IP address.</p>
-     */
-    inline RestoreAddressToClassicRequest& WithPublicIp(const char* value) { SetPublicIp(value); return *this;}
-
+    template<typename PublicIpT = Aws::String>
+    void SetPublicIp(PublicIpT&& value) { m_publicIpHasBeenSet = true; m_publicIp = std::forward<PublicIpT>(value); }
+    template<typename PublicIpT = Aws::String>
+    RestoreAddressToClassicRequest& WithPublicIp(PublicIpT&& value) { SetPublicIp(std::forward<PublicIpT>(value)); return *this;}
+    ///@}
   private:
 
-    bool m_dryRun;
+    bool m_dryRun{false};
     bool m_dryRunHasBeenSet = false;
 
     Aws::String m_publicIp;

@@ -29,16 +29,21 @@ static const int INVALID_ACTION_DECLARATION_HASH = HashingUtils::HashString("Inv
 static const int REQUEST_FAILED_HASH = HashingUtils::HashString("RequestFailedException");
 static const int CONCURRENT_MODIFICATION_HASH = HashingUtils::HashString("ConcurrentModificationException");
 static const int PIPELINE_NAME_IN_USE_HASH = HashingUtils::HashString("PipelineNameInUseException");
+static const int CONCURRENT_PIPELINE_EXECUTIONS_LIMIT_EXCEEDED_HASH = HashingUtils::HashString("ConcurrentPipelineExecutionsLimitExceededException");
 static const int APPROVAL_ALREADY_COMPLETED_HASH = HashingUtils::HashString("ApprovalAlreadyCompletedException");
 static const int INVALID_NEXT_TOKEN_HASH = HashingUtils::HashString("InvalidNextTokenException");
 static const int INVALID_STRUCTURE_HASH = HashingUtils::HashString("InvalidStructureException");
 static const int PIPELINE_VERSION_NOT_FOUND_HASH = HashingUtils::HashString("PipelineVersionNotFoundException");
+static const int CONDITION_NOT_OVERRIDABLE_HASH = HashingUtils::HashString("ConditionNotOverridableException");
 static const int INVALID_WEBHOOK_FILTER_PATTERN_HASH = HashingUtils::HashString("InvalidWebhookFilterPatternException");
 static const int PIPELINE_NOT_FOUND_HASH = HashingUtils::HashString("PipelineNotFoundException");
 static const int OUTPUT_VARIABLES_SIZE_EXCEEDED_HASH = HashingUtils::HashString("OutputVariablesSizeExceededException");
+static const int UNABLE_TO_ROLLBACK_STAGE_HASH = HashingUtils::HashString("UnableToRollbackStageException");
 static const int ACTION_TYPE_NOT_FOUND_HASH = HashingUtils::HashString("ActionTypeNotFoundException");
 static const int INVALID_TAGS_HASH = HashingUtils::HashString("InvalidTagsException");
 static const int INVALID_APPROVAL_TOKEN_HASH = HashingUtils::HashString("InvalidApprovalTokenException");
+static const int PIPELINE_EXECUTION_OUTDATED_HASH = HashingUtils::HashString("PipelineExecutionOutdatedException");
+static const int ACTION_EXECUTION_NOT_FOUND_HASH = HashingUtils::HashString("ActionExecutionNotFoundException");
 static const int JOB_NOT_FOUND_HASH = HashingUtils::HashString("JobNotFoundException");
 static const int INVALID_JOB_HASH = HashingUtils::HashString("InvalidJobException");
 static const int INVALID_ARN_HASH = HashingUtils::HashString("InvalidArnException");
@@ -102,6 +107,10 @@ AWSError<CoreErrors> GetErrorForName(const char* errorName)
   {
     return AWSError<CoreErrors>(static_cast<CoreErrors>(CodePipelineErrors::PIPELINE_NAME_IN_USE), RetryableType::NOT_RETRYABLE);
   }
+  else if (hashCode == CONCURRENT_PIPELINE_EXECUTIONS_LIMIT_EXCEEDED_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(CodePipelineErrors::CONCURRENT_PIPELINE_EXECUTIONS_LIMIT_EXCEEDED), RetryableType::NOT_RETRYABLE);
+  }
   else if (hashCode == APPROVAL_ALREADY_COMPLETED_HASH)
   {
     return AWSError<CoreErrors>(static_cast<CoreErrors>(CodePipelineErrors::APPROVAL_ALREADY_COMPLETED), RetryableType::NOT_RETRYABLE);
@@ -118,6 +127,10 @@ AWSError<CoreErrors> GetErrorForName(const char* errorName)
   {
     return AWSError<CoreErrors>(static_cast<CoreErrors>(CodePipelineErrors::PIPELINE_VERSION_NOT_FOUND), RetryableType::NOT_RETRYABLE);
   }
+  else if (hashCode == CONDITION_NOT_OVERRIDABLE_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(CodePipelineErrors::CONDITION_NOT_OVERRIDABLE), RetryableType::NOT_RETRYABLE);
+  }
   else if (hashCode == INVALID_WEBHOOK_FILTER_PATTERN_HASH)
   {
     return AWSError<CoreErrors>(static_cast<CoreErrors>(CodePipelineErrors::INVALID_WEBHOOK_FILTER_PATTERN), RetryableType::NOT_RETRYABLE);
@@ -130,6 +143,10 @@ AWSError<CoreErrors> GetErrorForName(const char* errorName)
   {
     return AWSError<CoreErrors>(static_cast<CoreErrors>(CodePipelineErrors::OUTPUT_VARIABLES_SIZE_EXCEEDED), RetryableType::NOT_RETRYABLE);
   }
+  else if (hashCode == UNABLE_TO_ROLLBACK_STAGE_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(CodePipelineErrors::UNABLE_TO_ROLLBACK_STAGE), RetryableType::NOT_RETRYABLE);
+  }
   else if (hashCode == ACTION_TYPE_NOT_FOUND_HASH)
   {
     return AWSError<CoreErrors>(static_cast<CoreErrors>(CodePipelineErrors::ACTION_TYPE_NOT_FOUND), RetryableType::NOT_RETRYABLE);
@@ -141,6 +158,14 @@ AWSError<CoreErrors> GetErrorForName(const char* errorName)
   else if (hashCode == INVALID_APPROVAL_TOKEN_HASH)
   {
     return AWSError<CoreErrors>(static_cast<CoreErrors>(CodePipelineErrors::INVALID_APPROVAL_TOKEN), RetryableType::NOT_RETRYABLE);
+  }
+  else if (hashCode == PIPELINE_EXECUTION_OUTDATED_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(CodePipelineErrors::PIPELINE_EXECUTION_OUTDATED), RetryableType::NOT_RETRYABLE);
+  }
+  else if (hashCode == ACTION_EXECUTION_NOT_FOUND_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(CodePipelineErrors::ACTION_EXECUTION_NOT_FOUND), RetryableType::NOT_RETRYABLE);
   }
   else if (hashCode == JOB_NOT_FOUND_HASH)
   {

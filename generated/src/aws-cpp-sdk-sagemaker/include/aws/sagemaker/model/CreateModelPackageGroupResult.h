@@ -27,73 +27,37 @@ namespace Model
   class CreateModelPackageGroupResult
   {
   public:
-    AWS_SAGEMAKER_API CreateModelPackageGroupResult();
+    AWS_SAGEMAKER_API CreateModelPackageGroupResult() = default;
     AWS_SAGEMAKER_API CreateModelPackageGroupResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_SAGEMAKER_API CreateModelPackageGroupResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the model group.</p>
      */
-    inline const Aws::String& GetModelPackageGroupArn() const{ return m_modelPackageGroupArn; }
+    inline const Aws::String& GetModelPackageGroupArn() const { return m_modelPackageGroupArn; }
+    template<typename ModelPackageGroupArnT = Aws::String>
+    void SetModelPackageGroupArn(ModelPackageGroupArnT&& value) { m_modelPackageGroupArnHasBeenSet = true; m_modelPackageGroupArn = std::forward<ModelPackageGroupArnT>(value); }
+    template<typename ModelPackageGroupArnT = Aws::String>
+    CreateModelPackageGroupResult& WithModelPackageGroupArn(ModelPackageGroupArnT&& value) { SetModelPackageGroupArn(std::forward<ModelPackageGroupArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the model group.</p>
-     */
-    inline void SetModelPackageGroupArn(const Aws::String& value) { m_modelPackageGroupArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the model group.</p>
-     */
-    inline void SetModelPackageGroupArn(Aws::String&& value) { m_modelPackageGroupArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the model group.</p>
-     */
-    inline void SetModelPackageGroupArn(const char* value) { m_modelPackageGroupArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the model group.</p>
-     */
-    inline CreateModelPackageGroupResult& WithModelPackageGroupArn(const Aws::String& value) { SetModelPackageGroupArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the model group.</p>
-     */
-    inline CreateModelPackageGroupResult& WithModelPackageGroupArn(Aws::String&& value) { SetModelPackageGroupArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the model group.</p>
-     */
-    inline CreateModelPackageGroupResult& WithModelPackageGroupArn(const char* value) { SetModelPackageGroupArn(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline CreateModelPackageGroupResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline CreateModelPackageGroupResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline CreateModelPackageGroupResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    CreateModelPackageGroupResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_modelPackageGroupArn;
+    bool m_modelPackageGroupArnHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -18,15 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateOverridesListDetails::AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateOverridesListDetails() : 
-    m_instanceTypeHasBeenSet(false),
-    m_weightedCapacityHasBeenSet(false)
-{
-}
-
-AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateOverridesListDetails::AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateOverridesListDetails(JsonView jsonValue) : 
-    m_instanceTypeHasBeenSet(false),
-    m_weightedCapacityHasBeenSet(false)
+AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateOverridesListDetails::AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateOverridesListDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateOverridesListDet
   if(jsonValue.ValueExists("InstanceType"))
   {
     m_instanceType = jsonValue.GetString("InstanceType");
-
     m_instanceTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("WeightedCapacity"))
   {
     m_weightedCapacity = jsonValue.GetString("WeightedCapacity");
-
     m_weightedCapacityHasBeenSet = true;
   }
-
   return *this;
 }
 

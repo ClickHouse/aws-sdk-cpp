@@ -65,7 +65,7 @@ namespace Model
   class PredictiveScalingMetricSpecification
   {
   public:
-    AWS_AUTOSCALING_API PredictiveScalingMetricSpecification();
+    AWS_AUTOSCALING_API PredictiveScalingMetricSpecification() = default;
     AWS_AUTOSCALING_API PredictiveScalingMetricSpecification(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_AUTOSCALING_API PredictiveScalingMetricSpecification& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -73,6 +73,7 @@ namespace Model
     AWS_AUTOSCALING_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>Specifies the target utilization.</p>  <p>Some metrics are based on a
      * count instead of a percentage, such as the request count for an Application Load
@@ -81,233 +82,87 @@ namespace Model
      * average request or message count per instance during any one-minute interval.
      * </p> 
      */
-    inline double GetTargetValue() const{ return m_targetValue; }
-
-    /**
-     * <p>Specifies the target utilization.</p>  <p>Some metrics are based on a
-     * count instead of a percentage, such as the request count for an Application Load
-     * Balancer or the number of messages in an SQS queue. If the scaling policy
-     * specifies one of these metrics, specify the target utilization as the optimal
-     * average request or message count per instance during any one-minute interval.
-     * </p> 
-     */
+    inline double GetTargetValue() const { return m_targetValue; }
     inline bool TargetValueHasBeenSet() const { return m_targetValueHasBeenSet; }
-
-    /**
-     * <p>Specifies the target utilization.</p>  <p>Some metrics are based on a
-     * count instead of a percentage, such as the request count for an Application Load
-     * Balancer or the number of messages in an SQS queue. If the scaling policy
-     * specifies one of these metrics, specify the target utilization as the optimal
-     * average request or message count per instance during any one-minute interval.
-     * </p> 
-     */
     inline void SetTargetValue(double value) { m_targetValueHasBeenSet = true; m_targetValue = value; }
-
-    /**
-     * <p>Specifies the target utilization.</p>  <p>Some metrics are based on a
-     * count instead of a percentage, such as the request count for an Application Load
-     * Balancer or the number of messages in an SQS queue. If the scaling policy
-     * specifies one of these metrics, specify the target utilization as the optimal
-     * average request or message count per instance during any one-minute interval.
-     * </p> 
-     */
     inline PredictiveScalingMetricSpecification& WithTargetValue(double value) { SetTargetValue(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The predefined metric pair specification from which Amazon EC2 Auto Scaling
      * determines the appropriate scaling metric and load metric to use.</p>
      */
-    inline const PredictiveScalingPredefinedMetricPair& GetPredefinedMetricPairSpecification() const{ return m_predefinedMetricPairSpecification; }
-
-    /**
-     * <p>The predefined metric pair specification from which Amazon EC2 Auto Scaling
-     * determines the appropriate scaling metric and load metric to use.</p>
-     */
+    inline const PredictiveScalingPredefinedMetricPair& GetPredefinedMetricPairSpecification() const { return m_predefinedMetricPairSpecification; }
     inline bool PredefinedMetricPairSpecificationHasBeenSet() const { return m_predefinedMetricPairSpecificationHasBeenSet; }
+    template<typename PredefinedMetricPairSpecificationT = PredictiveScalingPredefinedMetricPair>
+    void SetPredefinedMetricPairSpecification(PredefinedMetricPairSpecificationT&& value) { m_predefinedMetricPairSpecificationHasBeenSet = true; m_predefinedMetricPairSpecification = std::forward<PredefinedMetricPairSpecificationT>(value); }
+    template<typename PredefinedMetricPairSpecificationT = PredictiveScalingPredefinedMetricPair>
+    PredictiveScalingMetricSpecification& WithPredefinedMetricPairSpecification(PredefinedMetricPairSpecificationT&& value) { SetPredefinedMetricPairSpecification(std::forward<PredefinedMetricPairSpecificationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The predefined metric pair specification from which Amazon EC2 Auto Scaling
-     * determines the appropriate scaling metric and load metric to use.</p>
-     */
-    inline void SetPredefinedMetricPairSpecification(const PredictiveScalingPredefinedMetricPair& value) { m_predefinedMetricPairSpecificationHasBeenSet = true; m_predefinedMetricPairSpecification = value; }
-
-    /**
-     * <p>The predefined metric pair specification from which Amazon EC2 Auto Scaling
-     * determines the appropriate scaling metric and load metric to use.</p>
-     */
-    inline void SetPredefinedMetricPairSpecification(PredictiveScalingPredefinedMetricPair&& value) { m_predefinedMetricPairSpecificationHasBeenSet = true; m_predefinedMetricPairSpecification = std::move(value); }
-
-    /**
-     * <p>The predefined metric pair specification from which Amazon EC2 Auto Scaling
-     * determines the appropriate scaling metric and load metric to use.</p>
-     */
-    inline PredictiveScalingMetricSpecification& WithPredefinedMetricPairSpecification(const PredictiveScalingPredefinedMetricPair& value) { SetPredefinedMetricPairSpecification(value); return *this;}
-
-    /**
-     * <p>The predefined metric pair specification from which Amazon EC2 Auto Scaling
-     * determines the appropriate scaling metric and load metric to use.</p>
-     */
-    inline PredictiveScalingMetricSpecification& WithPredefinedMetricPairSpecification(PredictiveScalingPredefinedMetricPair&& value) { SetPredefinedMetricPairSpecification(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The predefined scaling metric specification.</p>
      */
-    inline const PredictiveScalingPredefinedScalingMetric& GetPredefinedScalingMetricSpecification() const{ return m_predefinedScalingMetricSpecification; }
-
-    /**
-     * <p>The predefined scaling metric specification.</p>
-     */
+    inline const PredictiveScalingPredefinedScalingMetric& GetPredefinedScalingMetricSpecification() const { return m_predefinedScalingMetricSpecification; }
     inline bool PredefinedScalingMetricSpecificationHasBeenSet() const { return m_predefinedScalingMetricSpecificationHasBeenSet; }
+    template<typename PredefinedScalingMetricSpecificationT = PredictiveScalingPredefinedScalingMetric>
+    void SetPredefinedScalingMetricSpecification(PredefinedScalingMetricSpecificationT&& value) { m_predefinedScalingMetricSpecificationHasBeenSet = true; m_predefinedScalingMetricSpecification = std::forward<PredefinedScalingMetricSpecificationT>(value); }
+    template<typename PredefinedScalingMetricSpecificationT = PredictiveScalingPredefinedScalingMetric>
+    PredictiveScalingMetricSpecification& WithPredefinedScalingMetricSpecification(PredefinedScalingMetricSpecificationT&& value) { SetPredefinedScalingMetricSpecification(std::forward<PredefinedScalingMetricSpecificationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The predefined scaling metric specification.</p>
-     */
-    inline void SetPredefinedScalingMetricSpecification(const PredictiveScalingPredefinedScalingMetric& value) { m_predefinedScalingMetricSpecificationHasBeenSet = true; m_predefinedScalingMetricSpecification = value; }
-
-    /**
-     * <p>The predefined scaling metric specification.</p>
-     */
-    inline void SetPredefinedScalingMetricSpecification(PredictiveScalingPredefinedScalingMetric&& value) { m_predefinedScalingMetricSpecificationHasBeenSet = true; m_predefinedScalingMetricSpecification = std::move(value); }
-
-    /**
-     * <p>The predefined scaling metric specification.</p>
-     */
-    inline PredictiveScalingMetricSpecification& WithPredefinedScalingMetricSpecification(const PredictiveScalingPredefinedScalingMetric& value) { SetPredefinedScalingMetricSpecification(value); return *this;}
-
-    /**
-     * <p>The predefined scaling metric specification.</p>
-     */
-    inline PredictiveScalingMetricSpecification& WithPredefinedScalingMetricSpecification(PredictiveScalingPredefinedScalingMetric&& value) { SetPredefinedScalingMetricSpecification(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The predefined load metric specification.</p>
      */
-    inline const PredictiveScalingPredefinedLoadMetric& GetPredefinedLoadMetricSpecification() const{ return m_predefinedLoadMetricSpecification; }
-
-    /**
-     * <p>The predefined load metric specification.</p>
-     */
+    inline const PredictiveScalingPredefinedLoadMetric& GetPredefinedLoadMetricSpecification() const { return m_predefinedLoadMetricSpecification; }
     inline bool PredefinedLoadMetricSpecificationHasBeenSet() const { return m_predefinedLoadMetricSpecificationHasBeenSet; }
+    template<typename PredefinedLoadMetricSpecificationT = PredictiveScalingPredefinedLoadMetric>
+    void SetPredefinedLoadMetricSpecification(PredefinedLoadMetricSpecificationT&& value) { m_predefinedLoadMetricSpecificationHasBeenSet = true; m_predefinedLoadMetricSpecification = std::forward<PredefinedLoadMetricSpecificationT>(value); }
+    template<typename PredefinedLoadMetricSpecificationT = PredictiveScalingPredefinedLoadMetric>
+    PredictiveScalingMetricSpecification& WithPredefinedLoadMetricSpecification(PredefinedLoadMetricSpecificationT&& value) { SetPredefinedLoadMetricSpecification(std::forward<PredefinedLoadMetricSpecificationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The predefined load metric specification.</p>
-     */
-    inline void SetPredefinedLoadMetricSpecification(const PredictiveScalingPredefinedLoadMetric& value) { m_predefinedLoadMetricSpecificationHasBeenSet = true; m_predefinedLoadMetricSpecification = value; }
-
-    /**
-     * <p>The predefined load metric specification.</p>
-     */
-    inline void SetPredefinedLoadMetricSpecification(PredictiveScalingPredefinedLoadMetric&& value) { m_predefinedLoadMetricSpecificationHasBeenSet = true; m_predefinedLoadMetricSpecification = std::move(value); }
-
-    /**
-     * <p>The predefined load metric specification.</p>
-     */
-    inline PredictiveScalingMetricSpecification& WithPredefinedLoadMetricSpecification(const PredictiveScalingPredefinedLoadMetric& value) { SetPredefinedLoadMetricSpecification(value); return *this;}
-
-    /**
-     * <p>The predefined load metric specification.</p>
-     */
-    inline PredictiveScalingMetricSpecification& WithPredefinedLoadMetricSpecification(PredictiveScalingPredefinedLoadMetric&& value) { SetPredefinedLoadMetricSpecification(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The customized scaling metric specification.</p>
      */
-    inline const PredictiveScalingCustomizedScalingMetric& GetCustomizedScalingMetricSpecification() const{ return m_customizedScalingMetricSpecification; }
-
-    /**
-     * <p>The customized scaling metric specification.</p>
-     */
+    inline const PredictiveScalingCustomizedScalingMetric& GetCustomizedScalingMetricSpecification() const { return m_customizedScalingMetricSpecification; }
     inline bool CustomizedScalingMetricSpecificationHasBeenSet() const { return m_customizedScalingMetricSpecificationHasBeenSet; }
+    template<typename CustomizedScalingMetricSpecificationT = PredictiveScalingCustomizedScalingMetric>
+    void SetCustomizedScalingMetricSpecification(CustomizedScalingMetricSpecificationT&& value) { m_customizedScalingMetricSpecificationHasBeenSet = true; m_customizedScalingMetricSpecification = std::forward<CustomizedScalingMetricSpecificationT>(value); }
+    template<typename CustomizedScalingMetricSpecificationT = PredictiveScalingCustomizedScalingMetric>
+    PredictiveScalingMetricSpecification& WithCustomizedScalingMetricSpecification(CustomizedScalingMetricSpecificationT&& value) { SetCustomizedScalingMetricSpecification(std::forward<CustomizedScalingMetricSpecificationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The customized scaling metric specification.</p>
-     */
-    inline void SetCustomizedScalingMetricSpecification(const PredictiveScalingCustomizedScalingMetric& value) { m_customizedScalingMetricSpecificationHasBeenSet = true; m_customizedScalingMetricSpecification = value; }
-
-    /**
-     * <p>The customized scaling metric specification.</p>
-     */
-    inline void SetCustomizedScalingMetricSpecification(PredictiveScalingCustomizedScalingMetric&& value) { m_customizedScalingMetricSpecificationHasBeenSet = true; m_customizedScalingMetricSpecification = std::move(value); }
-
-    /**
-     * <p>The customized scaling metric specification.</p>
-     */
-    inline PredictiveScalingMetricSpecification& WithCustomizedScalingMetricSpecification(const PredictiveScalingCustomizedScalingMetric& value) { SetCustomizedScalingMetricSpecification(value); return *this;}
-
-    /**
-     * <p>The customized scaling metric specification.</p>
-     */
-    inline PredictiveScalingMetricSpecification& WithCustomizedScalingMetricSpecification(PredictiveScalingCustomizedScalingMetric&& value) { SetCustomizedScalingMetricSpecification(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The customized load metric specification.</p>
      */
-    inline const PredictiveScalingCustomizedLoadMetric& GetCustomizedLoadMetricSpecification() const{ return m_customizedLoadMetricSpecification; }
-
-    /**
-     * <p>The customized load metric specification.</p>
-     */
+    inline const PredictiveScalingCustomizedLoadMetric& GetCustomizedLoadMetricSpecification() const { return m_customizedLoadMetricSpecification; }
     inline bool CustomizedLoadMetricSpecificationHasBeenSet() const { return m_customizedLoadMetricSpecificationHasBeenSet; }
+    template<typename CustomizedLoadMetricSpecificationT = PredictiveScalingCustomizedLoadMetric>
+    void SetCustomizedLoadMetricSpecification(CustomizedLoadMetricSpecificationT&& value) { m_customizedLoadMetricSpecificationHasBeenSet = true; m_customizedLoadMetricSpecification = std::forward<CustomizedLoadMetricSpecificationT>(value); }
+    template<typename CustomizedLoadMetricSpecificationT = PredictiveScalingCustomizedLoadMetric>
+    PredictiveScalingMetricSpecification& WithCustomizedLoadMetricSpecification(CustomizedLoadMetricSpecificationT&& value) { SetCustomizedLoadMetricSpecification(std::forward<CustomizedLoadMetricSpecificationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The customized load metric specification.</p>
-     */
-    inline void SetCustomizedLoadMetricSpecification(const PredictiveScalingCustomizedLoadMetric& value) { m_customizedLoadMetricSpecificationHasBeenSet = true; m_customizedLoadMetricSpecification = value; }
-
-    /**
-     * <p>The customized load metric specification.</p>
-     */
-    inline void SetCustomizedLoadMetricSpecification(PredictiveScalingCustomizedLoadMetric&& value) { m_customizedLoadMetricSpecificationHasBeenSet = true; m_customizedLoadMetricSpecification = std::move(value); }
-
-    /**
-     * <p>The customized load metric specification.</p>
-     */
-    inline PredictiveScalingMetricSpecification& WithCustomizedLoadMetricSpecification(const PredictiveScalingCustomizedLoadMetric& value) { SetCustomizedLoadMetricSpecification(value); return *this;}
-
-    /**
-     * <p>The customized load metric specification.</p>
-     */
-    inline PredictiveScalingMetricSpecification& WithCustomizedLoadMetricSpecification(PredictiveScalingCustomizedLoadMetric&& value) { SetCustomizedLoadMetricSpecification(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The customized capacity metric specification.</p>
      */
-    inline const PredictiveScalingCustomizedCapacityMetric& GetCustomizedCapacityMetricSpecification() const{ return m_customizedCapacityMetricSpecification; }
-
-    /**
-     * <p>The customized capacity metric specification.</p>
-     */
+    inline const PredictiveScalingCustomizedCapacityMetric& GetCustomizedCapacityMetricSpecification() const { return m_customizedCapacityMetricSpecification; }
     inline bool CustomizedCapacityMetricSpecificationHasBeenSet() const { return m_customizedCapacityMetricSpecificationHasBeenSet; }
-
-    /**
-     * <p>The customized capacity metric specification.</p>
-     */
-    inline void SetCustomizedCapacityMetricSpecification(const PredictiveScalingCustomizedCapacityMetric& value) { m_customizedCapacityMetricSpecificationHasBeenSet = true; m_customizedCapacityMetricSpecification = value; }
-
-    /**
-     * <p>The customized capacity metric specification.</p>
-     */
-    inline void SetCustomizedCapacityMetricSpecification(PredictiveScalingCustomizedCapacityMetric&& value) { m_customizedCapacityMetricSpecificationHasBeenSet = true; m_customizedCapacityMetricSpecification = std::move(value); }
-
-    /**
-     * <p>The customized capacity metric specification.</p>
-     */
-    inline PredictiveScalingMetricSpecification& WithCustomizedCapacityMetricSpecification(const PredictiveScalingCustomizedCapacityMetric& value) { SetCustomizedCapacityMetricSpecification(value); return *this;}
-
-    /**
-     * <p>The customized capacity metric specification.</p>
-     */
-    inline PredictiveScalingMetricSpecification& WithCustomizedCapacityMetricSpecification(PredictiveScalingCustomizedCapacityMetric&& value) { SetCustomizedCapacityMetricSpecification(std::move(value)); return *this;}
-
+    template<typename CustomizedCapacityMetricSpecificationT = PredictiveScalingCustomizedCapacityMetric>
+    void SetCustomizedCapacityMetricSpecification(CustomizedCapacityMetricSpecificationT&& value) { m_customizedCapacityMetricSpecificationHasBeenSet = true; m_customizedCapacityMetricSpecification = std::forward<CustomizedCapacityMetricSpecificationT>(value); }
+    template<typename CustomizedCapacityMetricSpecificationT = PredictiveScalingCustomizedCapacityMetric>
+    PredictiveScalingMetricSpecification& WithCustomizedCapacityMetricSpecification(CustomizedCapacityMetricSpecificationT&& value) { SetCustomizedCapacityMetricSpecification(std::forward<CustomizedCapacityMetricSpecificationT>(value)); return *this;}
+    ///@}
   private:
 
-    double m_targetValue;
+    double m_targetValue{0.0};
     bool m_targetValueHasBeenSet = false;
 
     PredictiveScalingPredefinedMetricPair m_predefinedMetricPairSpecification;

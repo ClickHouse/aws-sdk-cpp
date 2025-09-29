@@ -35,145 +35,59 @@ namespace Model
   class RasterDataCollectionQueryInput
   {
   public:
-    AWS_SAGEMAKERGEOSPATIAL_API RasterDataCollectionQueryInput();
+    AWS_SAGEMAKERGEOSPATIAL_API RasterDataCollectionQueryInput() = default;
     AWS_SAGEMAKERGEOSPATIAL_API RasterDataCollectionQueryInput(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKERGEOSPATIAL_API RasterDataCollectionQueryInput& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKERGEOSPATIAL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The area of interest being queried for the raster data collection.</p>
      */
-    inline const AreaOfInterest& GetAreaOfInterest() const{ return m_areaOfInterest; }
-
-    /**
-     * <p>The area of interest being queried for the raster data collection.</p>
-     */
+    inline const AreaOfInterest& GetAreaOfInterest() const { return m_areaOfInterest; }
     inline bool AreaOfInterestHasBeenSet() const { return m_areaOfInterestHasBeenSet; }
+    template<typename AreaOfInterestT = AreaOfInterest>
+    void SetAreaOfInterest(AreaOfInterestT&& value) { m_areaOfInterestHasBeenSet = true; m_areaOfInterest = std::forward<AreaOfInterestT>(value); }
+    template<typename AreaOfInterestT = AreaOfInterest>
+    RasterDataCollectionQueryInput& WithAreaOfInterest(AreaOfInterestT&& value) { SetAreaOfInterest(std::forward<AreaOfInterestT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The area of interest being queried for the raster data collection.</p>
-     */
-    inline void SetAreaOfInterest(const AreaOfInterest& value) { m_areaOfInterestHasBeenSet = true; m_areaOfInterest = value; }
-
-    /**
-     * <p>The area of interest being queried for the raster data collection.</p>
-     */
-    inline void SetAreaOfInterest(AreaOfInterest&& value) { m_areaOfInterestHasBeenSet = true; m_areaOfInterest = std::move(value); }
-
-    /**
-     * <p>The area of interest being queried for the raster data collection.</p>
-     */
-    inline RasterDataCollectionQueryInput& WithAreaOfInterest(const AreaOfInterest& value) { SetAreaOfInterest(value); return *this;}
-
-    /**
-     * <p>The area of interest being queried for the raster data collection.</p>
-     */
-    inline RasterDataCollectionQueryInput& WithAreaOfInterest(AreaOfInterest&& value) { SetAreaOfInterest(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The list of Property filters used in the Raster Data Collection Query.</p>
      */
-    inline const PropertyFilters& GetPropertyFilters() const{ return m_propertyFilters; }
-
-    /**
-     * <p>The list of Property filters used in the Raster Data Collection Query.</p>
-     */
+    inline const PropertyFilters& GetPropertyFilters() const { return m_propertyFilters; }
     inline bool PropertyFiltersHasBeenSet() const { return m_propertyFiltersHasBeenSet; }
+    template<typename PropertyFiltersT = PropertyFilters>
+    void SetPropertyFilters(PropertyFiltersT&& value) { m_propertyFiltersHasBeenSet = true; m_propertyFilters = std::forward<PropertyFiltersT>(value); }
+    template<typename PropertyFiltersT = PropertyFilters>
+    RasterDataCollectionQueryInput& WithPropertyFilters(PropertyFiltersT&& value) { SetPropertyFilters(std::forward<PropertyFiltersT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The list of Property filters used in the Raster Data Collection Query.</p>
-     */
-    inline void SetPropertyFilters(const PropertyFilters& value) { m_propertyFiltersHasBeenSet = true; m_propertyFilters = value; }
-
-    /**
-     * <p>The list of Property filters used in the Raster Data Collection Query.</p>
-     */
-    inline void SetPropertyFilters(PropertyFilters&& value) { m_propertyFiltersHasBeenSet = true; m_propertyFilters = std::move(value); }
-
-    /**
-     * <p>The list of Property filters used in the Raster Data Collection Query.</p>
-     */
-    inline RasterDataCollectionQueryInput& WithPropertyFilters(const PropertyFilters& value) { SetPropertyFilters(value); return *this;}
-
-    /**
-     * <p>The list of Property filters used in the Raster Data Collection Query.</p>
-     */
-    inline RasterDataCollectionQueryInput& WithPropertyFilters(PropertyFilters&& value) { SetPropertyFilters(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the raster data collection.</p>
      */
-    inline const Aws::String& GetRasterDataCollectionArn() const{ return m_rasterDataCollectionArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the raster data collection.</p>
-     */
+    inline const Aws::String& GetRasterDataCollectionArn() const { return m_rasterDataCollectionArn; }
     inline bool RasterDataCollectionArnHasBeenSet() const { return m_rasterDataCollectionArnHasBeenSet; }
+    template<typename RasterDataCollectionArnT = Aws::String>
+    void SetRasterDataCollectionArn(RasterDataCollectionArnT&& value) { m_rasterDataCollectionArnHasBeenSet = true; m_rasterDataCollectionArn = std::forward<RasterDataCollectionArnT>(value); }
+    template<typename RasterDataCollectionArnT = Aws::String>
+    RasterDataCollectionQueryInput& WithRasterDataCollectionArn(RasterDataCollectionArnT&& value) { SetRasterDataCollectionArn(std::forward<RasterDataCollectionArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the raster data collection.</p>
-     */
-    inline void SetRasterDataCollectionArn(const Aws::String& value) { m_rasterDataCollectionArnHasBeenSet = true; m_rasterDataCollectionArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the raster data collection.</p>
-     */
-    inline void SetRasterDataCollectionArn(Aws::String&& value) { m_rasterDataCollectionArnHasBeenSet = true; m_rasterDataCollectionArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the raster data collection.</p>
-     */
-    inline void SetRasterDataCollectionArn(const char* value) { m_rasterDataCollectionArnHasBeenSet = true; m_rasterDataCollectionArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the raster data collection.</p>
-     */
-    inline RasterDataCollectionQueryInput& WithRasterDataCollectionArn(const Aws::String& value) { SetRasterDataCollectionArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the raster data collection.</p>
-     */
-    inline RasterDataCollectionQueryInput& WithRasterDataCollectionArn(Aws::String&& value) { SetRasterDataCollectionArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the raster data collection.</p>
-     */
-    inline RasterDataCollectionQueryInput& WithRasterDataCollectionArn(const char* value) { SetRasterDataCollectionArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The TimeRange Filter used in the RasterDataCollection Query.</p>
      */
-    inline const TimeRangeFilterInput& GetTimeRangeFilter() const{ return m_timeRangeFilter; }
-
-    /**
-     * <p>The TimeRange Filter used in the RasterDataCollection Query.</p>
-     */
+    inline const TimeRangeFilterInput& GetTimeRangeFilter() const { return m_timeRangeFilter; }
     inline bool TimeRangeFilterHasBeenSet() const { return m_timeRangeFilterHasBeenSet; }
-
-    /**
-     * <p>The TimeRange Filter used in the RasterDataCollection Query.</p>
-     */
-    inline void SetTimeRangeFilter(const TimeRangeFilterInput& value) { m_timeRangeFilterHasBeenSet = true; m_timeRangeFilter = value; }
-
-    /**
-     * <p>The TimeRange Filter used in the RasterDataCollection Query.</p>
-     */
-    inline void SetTimeRangeFilter(TimeRangeFilterInput&& value) { m_timeRangeFilterHasBeenSet = true; m_timeRangeFilter = std::move(value); }
-
-    /**
-     * <p>The TimeRange Filter used in the RasterDataCollection Query.</p>
-     */
-    inline RasterDataCollectionQueryInput& WithTimeRangeFilter(const TimeRangeFilterInput& value) { SetTimeRangeFilter(value); return *this;}
-
-    /**
-     * <p>The TimeRange Filter used in the RasterDataCollection Query.</p>
-     */
-    inline RasterDataCollectionQueryInput& WithTimeRangeFilter(TimeRangeFilterInput&& value) { SetTimeRangeFilter(std::move(value)); return *this;}
-
+    template<typename TimeRangeFilterT = TimeRangeFilterInput>
+    void SetTimeRangeFilter(TimeRangeFilterT&& value) { m_timeRangeFilterHasBeenSet = true; m_timeRangeFilter = std::forward<TimeRangeFilterT>(value); }
+    template<typename TimeRangeFilterT = TimeRangeFilterInput>
+    RasterDataCollectionQueryInput& WithTimeRangeFilter(TimeRangeFilterT&& value) { SetTimeRangeFilter(std::forward<TimeRangeFilterT>(value)); return *this;}
+    ///@}
   private:
 
     AreaOfInterest m_areaOfInterest;

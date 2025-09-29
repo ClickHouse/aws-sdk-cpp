@@ -33,86 +33,36 @@ namespace Model
   class Checksum
   {
   public:
-    AWS_SAGEMAKEREDGEMANAGER_API Checksum();
+    AWS_SAGEMAKEREDGEMANAGER_API Checksum() = default;
     AWS_SAGEMAKEREDGEMANAGER_API Checksum(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKEREDGEMANAGER_API Checksum& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKEREDGEMANAGER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The type of the checksum.</p>
      */
-    inline const ChecksumType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of the checksum.</p>
-     */
+    inline ChecksumType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    inline void SetType(ChecksumType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline Checksum& WithType(ChecksumType value) { SetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of the checksum.</p>
-     */
-    inline void SetType(const ChecksumType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of the checksum.</p>
-     */
-    inline void SetType(ChecksumType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of the checksum.</p>
-     */
-    inline Checksum& WithType(const ChecksumType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of the checksum.</p>
-     */
-    inline Checksum& WithType(ChecksumType&& value) { SetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The checksum of the model.</p>
      */
-    inline const Aws::String& GetSum() const{ return m_sum; }
-
-    /**
-     * <p>The checksum of the model.</p>
-     */
+    inline const Aws::String& GetSum() const { return m_sum; }
     inline bool SumHasBeenSet() const { return m_sumHasBeenSet; }
-
-    /**
-     * <p>The checksum of the model.</p>
-     */
-    inline void SetSum(const Aws::String& value) { m_sumHasBeenSet = true; m_sum = value; }
-
-    /**
-     * <p>The checksum of the model.</p>
-     */
-    inline void SetSum(Aws::String&& value) { m_sumHasBeenSet = true; m_sum = std::move(value); }
-
-    /**
-     * <p>The checksum of the model.</p>
-     */
-    inline void SetSum(const char* value) { m_sumHasBeenSet = true; m_sum.assign(value); }
-
-    /**
-     * <p>The checksum of the model.</p>
-     */
-    inline Checksum& WithSum(const Aws::String& value) { SetSum(value); return *this;}
-
-    /**
-     * <p>The checksum of the model.</p>
-     */
-    inline Checksum& WithSum(Aws::String&& value) { SetSum(std::move(value)); return *this;}
-
-    /**
-     * <p>The checksum of the model.</p>
-     */
-    inline Checksum& WithSum(const char* value) { SetSum(value); return *this;}
-
+    template<typename SumT = Aws::String>
+    void SetSum(SumT&& value) { m_sumHasBeenSet = true; m_sum = std::forward<SumT>(value); }
+    template<typename SumT = Aws::String>
+    Checksum& WithSum(SumT&& value) { SetSum(std::forward<SumT>(value)); return *this;}
+    ///@}
   private:
 
-    ChecksumType m_type;
+    ChecksumType m_type{ChecksumType::NOT_SET};
     bool m_typeHasBeenSet = false;
 
     Aws::String m_sum;

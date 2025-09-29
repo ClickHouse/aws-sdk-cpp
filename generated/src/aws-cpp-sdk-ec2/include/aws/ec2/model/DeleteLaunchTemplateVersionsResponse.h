@@ -30,112 +30,56 @@ namespace Model
   class DeleteLaunchTemplateVersionsResponse
   {
   public:
-    AWS_EC2_API DeleteLaunchTemplateVersionsResponse();
+    AWS_EC2_API DeleteLaunchTemplateVersionsResponse() = default;
     AWS_EC2_API DeleteLaunchTemplateVersionsResponse(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_EC2_API DeleteLaunchTemplateVersionsResponse& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * <p>Information about the launch template versions that were successfully
      * deleted.</p>
      */
-    inline const Aws::Vector<DeleteLaunchTemplateVersionsResponseSuccessItem>& GetSuccessfullyDeletedLaunchTemplateVersions() const{ return m_successfullyDeletedLaunchTemplateVersions; }
+    inline const Aws::Vector<DeleteLaunchTemplateVersionsResponseSuccessItem>& GetSuccessfullyDeletedLaunchTemplateVersions() const { return m_successfullyDeletedLaunchTemplateVersions; }
+    template<typename SuccessfullyDeletedLaunchTemplateVersionsT = Aws::Vector<DeleteLaunchTemplateVersionsResponseSuccessItem>>
+    void SetSuccessfullyDeletedLaunchTemplateVersions(SuccessfullyDeletedLaunchTemplateVersionsT&& value) { m_successfullyDeletedLaunchTemplateVersionsHasBeenSet = true; m_successfullyDeletedLaunchTemplateVersions = std::forward<SuccessfullyDeletedLaunchTemplateVersionsT>(value); }
+    template<typename SuccessfullyDeletedLaunchTemplateVersionsT = Aws::Vector<DeleteLaunchTemplateVersionsResponseSuccessItem>>
+    DeleteLaunchTemplateVersionsResponse& WithSuccessfullyDeletedLaunchTemplateVersions(SuccessfullyDeletedLaunchTemplateVersionsT&& value) { SetSuccessfullyDeletedLaunchTemplateVersions(std::forward<SuccessfullyDeletedLaunchTemplateVersionsT>(value)); return *this;}
+    template<typename SuccessfullyDeletedLaunchTemplateVersionsT = DeleteLaunchTemplateVersionsResponseSuccessItem>
+    DeleteLaunchTemplateVersionsResponse& AddSuccessfullyDeletedLaunchTemplateVersions(SuccessfullyDeletedLaunchTemplateVersionsT&& value) { m_successfullyDeletedLaunchTemplateVersionsHasBeenSet = true; m_successfullyDeletedLaunchTemplateVersions.emplace_back(std::forward<SuccessfullyDeletedLaunchTemplateVersionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Information about the launch template versions that were successfully
-     * deleted.</p>
-     */
-    inline void SetSuccessfullyDeletedLaunchTemplateVersions(const Aws::Vector<DeleteLaunchTemplateVersionsResponseSuccessItem>& value) { m_successfullyDeletedLaunchTemplateVersions = value; }
-
-    /**
-     * <p>Information about the launch template versions that were successfully
-     * deleted.</p>
-     */
-    inline void SetSuccessfullyDeletedLaunchTemplateVersions(Aws::Vector<DeleteLaunchTemplateVersionsResponseSuccessItem>&& value) { m_successfullyDeletedLaunchTemplateVersions = std::move(value); }
-
-    /**
-     * <p>Information about the launch template versions that were successfully
-     * deleted.</p>
-     */
-    inline DeleteLaunchTemplateVersionsResponse& WithSuccessfullyDeletedLaunchTemplateVersions(const Aws::Vector<DeleteLaunchTemplateVersionsResponseSuccessItem>& value) { SetSuccessfullyDeletedLaunchTemplateVersions(value); return *this;}
-
-    /**
-     * <p>Information about the launch template versions that were successfully
-     * deleted.</p>
-     */
-    inline DeleteLaunchTemplateVersionsResponse& WithSuccessfullyDeletedLaunchTemplateVersions(Aws::Vector<DeleteLaunchTemplateVersionsResponseSuccessItem>&& value) { SetSuccessfullyDeletedLaunchTemplateVersions(std::move(value)); return *this;}
-
-    /**
-     * <p>Information about the launch template versions that were successfully
-     * deleted.</p>
-     */
-    inline DeleteLaunchTemplateVersionsResponse& AddSuccessfullyDeletedLaunchTemplateVersions(const DeleteLaunchTemplateVersionsResponseSuccessItem& value) { m_successfullyDeletedLaunchTemplateVersions.push_back(value); return *this; }
-
-    /**
-     * <p>Information about the launch template versions that were successfully
-     * deleted.</p>
-     */
-    inline DeleteLaunchTemplateVersionsResponse& AddSuccessfullyDeletedLaunchTemplateVersions(DeleteLaunchTemplateVersionsResponseSuccessItem&& value) { m_successfullyDeletedLaunchTemplateVersions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Information about the launch template versions that could not be deleted.</p>
      */
-    inline const Aws::Vector<DeleteLaunchTemplateVersionsResponseErrorItem>& GetUnsuccessfullyDeletedLaunchTemplateVersions() const{ return m_unsuccessfullyDeletedLaunchTemplateVersions; }
+    inline const Aws::Vector<DeleteLaunchTemplateVersionsResponseErrorItem>& GetUnsuccessfullyDeletedLaunchTemplateVersions() const { return m_unsuccessfullyDeletedLaunchTemplateVersions; }
+    template<typename UnsuccessfullyDeletedLaunchTemplateVersionsT = Aws::Vector<DeleteLaunchTemplateVersionsResponseErrorItem>>
+    void SetUnsuccessfullyDeletedLaunchTemplateVersions(UnsuccessfullyDeletedLaunchTemplateVersionsT&& value) { m_unsuccessfullyDeletedLaunchTemplateVersionsHasBeenSet = true; m_unsuccessfullyDeletedLaunchTemplateVersions = std::forward<UnsuccessfullyDeletedLaunchTemplateVersionsT>(value); }
+    template<typename UnsuccessfullyDeletedLaunchTemplateVersionsT = Aws::Vector<DeleteLaunchTemplateVersionsResponseErrorItem>>
+    DeleteLaunchTemplateVersionsResponse& WithUnsuccessfullyDeletedLaunchTemplateVersions(UnsuccessfullyDeletedLaunchTemplateVersionsT&& value) { SetUnsuccessfullyDeletedLaunchTemplateVersions(std::forward<UnsuccessfullyDeletedLaunchTemplateVersionsT>(value)); return *this;}
+    template<typename UnsuccessfullyDeletedLaunchTemplateVersionsT = DeleteLaunchTemplateVersionsResponseErrorItem>
+    DeleteLaunchTemplateVersionsResponse& AddUnsuccessfullyDeletedLaunchTemplateVersions(UnsuccessfullyDeletedLaunchTemplateVersionsT&& value) { m_unsuccessfullyDeletedLaunchTemplateVersionsHasBeenSet = true; m_unsuccessfullyDeletedLaunchTemplateVersions.emplace_back(std::forward<UnsuccessfullyDeletedLaunchTemplateVersionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Information about the launch template versions that could not be deleted.</p>
-     */
-    inline void SetUnsuccessfullyDeletedLaunchTemplateVersions(const Aws::Vector<DeleteLaunchTemplateVersionsResponseErrorItem>& value) { m_unsuccessfullyDeletedLaunchTemplateVersions = value; }
-
-    /**
-     * <p>Information about the launch template versions that could not be deleted.</p>
-     */
-    inline void SetUnsuccessfullyDeletedLaunchTemplateVersions(Aws::Vector<DeleteLaunchTemplateVersionsResponseErrorItem>&& value) { m_unsuccessfullyDeletedLaunchTemplateVersions = std::move(value); }
-
-    /**
-     * <p>Information about the launch template versions that could not be deleted.</p>
-     */
-    inline DeleteLaunchTemplateVersionsResponse& WithUnsuccessfullyDeletedLaunchTemplateVersions(const Aws::Vector<DeleteLaunchTemplateVersionsResponseErrorItem>& value) { SetUnsuccessfullyDeletedLaunchTemplateVersions(value); return *this;}
-
-    /**
-     * <p>Information about the launch template versions that could not be deleted.</p>
-     */
-    inline DeleteLaunchTemplateVersionsResponse& WithUnsuccessfullyDeletedLaunchTemplateVersions(Aws::Vector<DeleteLaunchTemplateVersionsResponseErrorItem>&& value) { SetUnsuccessfullyDeletedLaunchTemplateVersions(std::move(value)); return *this;}
-
-    /**
-     * <p>Information about the launch template versions that could not be deleted.</p>
-     */
-    inline DeleteLaunchTemplateVersionsResponse& AddUnsuccessfullyDeletedLaunchTemplateVersions(const DeleteLaunchTemplateVersionsResponseErrorItem& value) { m_unsuccessfullyDeletedLaunchTemplateVersions.push_back(value); return *this; }
-
-    /**
-     * <p>Information about the launch template versions that could not be deleted.</p>
-     */
-    inline DeleteLaunchTemplateVersionsResponse& AddUnsuccessfullyDeletedLaunchTemplateVersions(DeleteLaunchTemplateVersionsResponseErrorItem&& value) { m_unsuccessfullyDeletedLaunchTemplateVersions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
-
-    
-    inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
-
-    
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
-
-    
-    inline DeleteLaunchTemplateVersionsResponse& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
-
-    
-    inline DeleteLaunchTemplateVersionsResponse& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
-
+    inline const ResponseMetadata& GetResponseMetadata() const { return m_responseMetadata; }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    void SetResponseMetadata(ResponseMetadataT&& value) { m_responseMetadataHasBeenSet = true; m_responseMetadata = std::forward<ResponseMetadataT>(value); }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    DeleteLaunchTemplateVersionsResponse& WithResponseMetadata(ResponseMetadataT&& value) { SetResponseMetadata(std::forward<ResponseMetadataT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<DeleteLaunchTemplateVersionsResponseSuccessItem> m_successfullyDeletedLaunchTemplateVersions;
+    bool m_successfullyDeletedLaunchTemplateVersionsHasBeenSet = false;
 
     Aws::Vector<DeleteLaunchTemplateVersionsResponseErrorItem> m_unsuccessfullyDeletedLaunchTemplateVersions;
+    bool m_unsuccessfullyDeletedLaunchTemplateVersionsHasBeenSet = false;
 
     ResponseMetadata m_responseMetadata;
+    bool m_responseMetadataHasBeenSet = false;
   };
 
 } // namespace Model

@@ -27,7 +27,7 @@ namespace Model
   class DescribeNetworkInterfacePermissionsRequest : public EC2Request
   {
   public:
-    AWS_EC2_API DescribeNetworkInterfacePermissionsRequest();
+    AWS_EC2_API DescribeNetworkInterfacePermissionsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -42,52 +42,21 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The network interface permission IDs.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetNetworkInterfacePermissionIds() const{ return m_networkInterfacePermissionIds; }
-
-    /**
-     * <p>The network interface permission IDs.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetNetworkInterfacePermissionIds() const { return m_networkInterfacePermissionIds; }
     inline bool NetworkInterfacePermissionIdsHasBeenSet() const { return m_networkInterfacePermissionIdsHasBeenSet; }
+    template<typename NetworkInterfacePermissionIdsT = Aws::Vector<Aws::String>>
+    void SetNetworkInterfacePermissionIds(NetworkInterfacePermissionIdsT&& value) { m_networkInterfacePermissionIdsHasBeenSet = true; m_networkInterfacePermissionIds = std::forward<NetworkInterfacePermissionIdsT>(value); }
+    template<typename NetworkInterfacePermissionIdsT = Aws::Vector<Aws::String>>
+    DescribeNetworkInterfacePermissionsRequest& WithNetworkInterfacePermissionIds(NetworkInterfacePermissionIdsT&& value) { SetNetworkInterfacePermissionIds(std::forward<NetworkInterfacePermissionIdsT>(value)); return *this;}
+    template<typename NetworkInterfacePermissionIdsT = Aws::String>
+    DescribeNetworkInterfacePermissionsRequest& AddNetworkInterfacePermissionIds(NetworkInterfacePermissionIdsT&& value) { m_networkInterfacePermissionIdsHasBeenSet = true; m_networkInterfacePermissionIds.emplace_back(std::forward<NetworkInterfacePermissionIdsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The network interface permission IDs.</p>
-     */
-    inline void SetNetworkInterfacePermissionIds(const Aws::Vector<Aws::String>& value) { m_networkInterfacePermissionIdsHasBeenSet = true; m_networkInterfacePermissionIds = value; }
-
-    /**
-     * <p>The network interface permission IDs.</p>
-     */
-    inline void SetNetworkInterfacePermissionIds(Aws::Vector<Aws::String>&& value) { m_networkInterfacePermissionIdsHasBeenSet = true; m_networkInterfacePermissionIds = std::move(value); }
-
-    /**
-     * <p>The network interface permission IDs.</p>
-     */
-    inline DescribeNetworkInterfacePermissionsRequest& WithNetworkInterfacePermissionIds(const Aws::Vector<Aws::String>& value) { SetNetworkInterfacePermissionIds(value); return *this;}
-
-    /**
-     * <p>The network interface permission IDs.</p>
-     */
-    inline DescribeNetworkInterfacePermissionsRequest& WithNetworkInterfacePermissionIds(Aws::Vector<Aws::String>&& value) { SetNetworkInterfacePermissionIds(std::move(value)); return *this;}
-
-    /**
-     * <p>The network interface permission IDs.</p>
-     */
-    inline DescribeNetworkInterfacePermissionsRequest& AddNetworkInterfacePermissionIds(const Aws::String& value) { m_networkInterfacePermissionIdsHasBeenSet = true; m_networkInterfacePermissionIds.push_back(value); return *this; }
-
-    /**
-     * <p>The network interface permission IDs.</p>
-     */
-    inline DescribeNetworkInterfacePermissionsRequest& AddNetworkInterfacePermissionIds(Aws::String&& value) { m_networkInterfacePermissionIdsHasBeenSet = true; m_networkInterfacePermissionIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The network interface permission IDs.</p>
-     */
-    inline DescribeNetworkInterfacePermissionsRequest& AddNetworkInterfacePermissionIds(const char* value) { m_networkInterfacePermissionIdsHasBeenSet = true; m_networkInterfacePermissionIds.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>One or more filters.</p> <ul> <li> <p>
      * <code>network-interface-permission.network-interface-permission-id</code> - The
@@ -96,168 +65,35 @@ namespace Model
      * network interface.</p> </li> <li> <p>
      * <code>network-interface-permission.aws-account-id</code> - The Amazon Web
      * Services account ID.</p> </li> <li> <p>
-     * <code>network-interface-permission.aws-service</code> - The Amazon Web
-     * Service.</p> </li> <li> <p> <code>network-interface-permission.permission</code>
+     * <code>network-interface-permission.aws-service</code> - The Amazon Web Services
+     * service.</p> </li> <li> <p> <code>network-interface-permission.permission</code>
      * - The type of permission (<code>INSTANCE-ATTACH</code> |
      * <code>EIP-ASSOCIATE</code>).</p> </li> </ul>
      */
-    inline const Aws::Vector<Filter>& GetFilters() const{ return m_filters; }
-
-    /**
-     * <p>One or more filters.</p> <ul> <li> <p>
-     * <code>network-interface-permission.network-interface-permission-id</code> - The
-     * ID of the permission.</p> </li> <li> <p>
-     * <code>network-interface-permission.network-interface-id</code> - The ID of the
-     * network interface.</p> </li> <li> <p>
-     * <code>network-interface-permission.aws-account-id</code> - The Amazon Web
-     * Services account ID.</p> </li> <li> <p>
-     * <code>network-interface-permission.aws-service</code> - The Amazon Web
-     * Service.</p> </li> <li> <p> <code>network-interface-permission.permission</code>
-     * - The type of permission (<code>INSTANCE-ATTACH</code> |
-     * <code>EIP-ASSOCIATE</code>).</p> </li> </ul>
-     */
+    inline const Aws::Vector<Filter>& GetFilters() const { return m_filters; }
     inline bool FiltersHasBeenSet() const { return m_filtersHasBeenSet; }
+    template<typename FiltersT = Aws::Vector<Filter>>
+    void SetFilters(FiltersT&& value) { m_filtersHasBeenSet = true; m_filters = std::forward<FiltersT>(value); }
+    template<typename FiltersT = Aws::Vector<Filter>>
+    DescribeNetworkInterfacePermissionsRequest& WithFilters(FiltersT&& value) { SetFilters(std::forward<FiltersT>(value)); return *this;}
+    template<typename FiltersT = Filter>
+    DescribeNetworkInterfacePermissionsRequest& AddFilters(FiltersT&& value) { m_filtersHasBeenSet = true; m_filters.emplace_back(std::forward<FiltersT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>One or more filters.</p> <ul> <li> <p>
-     * <code>network-interface-permission.network-interface-permission-id</code> - The
-     * ID of the permission.</p> </li> <li> <p>
-     * <code>network-interface-permission.network-interface-id</code> - The ID of the
-     * network interface.</p> </li> <li> <p>
-     * <code>network-interface-permission.aws-account-id</code> - The Amazon Web
-     * Services account ID.</p> </li> <li> <p>
-     * <code>network-interface-permission.aws-service</code> - The Amazon Web
-     * Service.</p> </li> <li> <p> <code>network-interface-permission.permission</code>
-     * - The type of permission (<code>INSTANCE-ATTACH</code> |
-     * <code>EIP-ASSOCIATE</code>).</p> </li> </ul>
-     */
-    inline void SetFilters(const Aws::Vector<Filter>& value) { m_filtersHasBeenSet = true; m_filters = value; }
-
-    /**
-     * <p>One or more filters.</p> <ul> <li> <p>
-     * <code>network-interface-permission.network-interface-permission-id</code> - The
-     * ID of the permission.</p> </li> <li> <p>
-     * <code>network-interface-permission.network-interface-id</code> - The ID of the
-     * network interface.</p> </li> <li> <p>
-     * <code>network-interface-permission.aws-account-id</code> - The Amazon Web
-     * Services account ID.</p> </li> <li> <p>
-     * <code>network-interface-permission.aws-service</code> - The Amazon Web
-     * Service.</p> </li> <li> <p> <code>network-interface-permission.permission</code>
-     * - The type of permission (<code>INSTANCE-ATTACH</code> |
-     * <code>EIP-ASSOCIATE</code>).</p> </li> </ul>
-     */
-    inline void SetFilters(Aws::Vector<Filter>&& value) { m_filtersHasBeenSet = true; m_filters = std::move(value); }
-
-    /**
-     * <p>One or more filters.</p> <ul> <li> <p>
-     * <code>network-interface-permission.network-interface-permission-id</code> - The
-     * ID of the permission.</p> </li> <li> <p>
-     * <code>network-interface-permission.network-interface-id</code> - The ID of the
-     * network interface.</p> </li> <li> <p>
-     * <code>network-interface-permission.aws-account-id</code> - The Amazon Web
-     * Services account ID.</p> </li> <li> <p>
-     * <code>network-interface-permission.aws-service</code> - The Amazon Web
-     * Service.</p> </li> <li> <p> <code>network-interface-permission.permission</code>
-     * - The type of permission (<code>INSTANCE-ATTACH</code> |
-     * <code>EIP-ASSOCIATE</code>).</p> </li> </ul>
-     */
-    inline DescribeNetworkInterfacePermissionsRequest& WithFilters(const Aws::Vector<Filter>& value) { SetFilters(value); return *this;}
-
-    /**
-     * <p>One or more filters.</p> <ul> <li> <p>
-     * <code>network-interface-permission.network-interface-permission-id</code> - The
-     * ID of the permission.</p> </li> <li> <p>
-     * <code>network-interface-permission.network-interface-id</code> - The ID of the
-     * network interface.</p> </li> <li> <p>
-     * <code>network-interface-permission.aws-account-id</code> - The Amazon Web
-     * Services account ID.</p> </li> <li> <p>
-     * <code>network-interface-permission.aws-service</code> - The Amazon Web
-     * Service.</p> </li> <li> <p> <code>network-interface-permission.permission</code>
-     * - The type of permission (<code>INSTANCE-ATTACH</code> |
-     * <code>EIP-ASSOCIATE</code>).</p> </li> </ul>
-     */
-    inline DescribeNetworkInterfacePermissionsRequest& WithFilters(Aws::Vector<Filter>&& value) { SetFilters(std::move(value)); return *this;}
-
-    /**
-     * <p>One or more filters.</p> <ul> <li> <p>
-     * <code>network-interface-permission.network-interface-permission-id</code> - The
-     * ID of the permission.</p> </li> <li> <p>
-     * <code>network-interface-permission.network-interface-id</code> - The ID of the
-     * network interface.</p> </li> <li> <p>
-     * <code>network-interface-permission.aws-account-id</code> - The Amazon Web
-     * Services account ID.</p> </li> <li> <p>
-     * <code>network-interface-permission.aws-service</code> - The Amazon Web
-     * Service.</p> </li> <li> <p> <code>network-interface-permission.permission</code>
-     * - The type of permission (<code>INSTANCE-ATTACH</code> |
-     * <code>EIP-ASSOCIATE</code>).</p> </li> </ul>
-     */
-    inline DescribeNetworkInterfacePermissionsRequest& AddFilters(const Filter& value) { m_filtersHasBeenSet = true; m_filters.push_back(value); return *this; }
-
-    /**
-     * <p>One or more filters.</p> <ul> <li> <p>
-     * <code>network-interface-permission.network-interface-permission-id</code> - The
-     * ID of the permission.</p> </li> <li> <p>
-     * <code>network-interface-permission.network-interface-id</code> - The ID of the
-     * network interface.</p> </li> <li> <p>
-     * <code>network-interface-permission.aws-account-id</code> - The Amazon Web
-     * Services account ID.</p> </li> <li> <p>
-     * <code>network-interface-permission.aws-service</code> - The Amazon Web
-     * Service.</p> </li> <li> <p> <code>network-interface-permission.permission</code>
-     * - The type of permission (<code>INSTANCE-ATTACH</code> |
-     * <code>EIP-ASSOCIATE</code>).</p> </li> </ul>
-     */
-    inline DescribeNetworkInterfacePermissionsRequest& AddFilters(Filter&& value) { m_filtersHasBeenSet = true; m_filters.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The token returned from a previous paginated request. Pagination continues
      * from the end of the items returned by the previous request.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The token returned from a previous paginated request. Pagination continues
-     * from the end of the items returned by the previous request.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    DescribeNetworkInterfacePermissionsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The token returned from a previous paginated request. Pagination continues
-     * from the end of the items returned by the previous request.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The token returned from a previous paginated request. Pagination continues
-     * from the end of the items returned by the previous request.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The token returned from a previous paginated request. Pagination continues
-     * from the end of the items returned by the previous request.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The token returned from a previous paginated request. Pagination continues
-     * from the end of the items returned by the previous request.</p>
-     */
-    inline DescribeNetworkInterfacePermissionsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The token returned from a previous paginated request. Pagination continues
-     * from the end of the items returned by the previous request.</p>
-     */
-    inline DescribeNetworkInterfacePermissionsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The token returned from a previous paginated request. Pagination continues
-     * from the end of the items returned by the previous request.</p>
-     */
-    inline DescribeNetworkInterfacePermissionsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of items to return for this request. To get the next page
      * of items, make another request with the token returned in the output. If this
@@ -265,35 +101,11 @@ namespace Model
      * information, see <a
      * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination">Pagination</a>.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of items to return for this request. To get the next page
-     * of items, make another request with the token returned in the output. If this
-     * parameter is not specified, up to 50 results are returned by default. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination">Pagination</a>.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of items to return for this request. To get the next page
-     * of items, make another request with the token returned in the output. If this
-     * parameter is not specified, up to 50 results are returned by default. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination">Pagination</a>.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of items to return for this request. To get the next page
-     * of items, make another request with the token returned in the output. If this
-     * parameter is not specified, up to 50 results are returned by default. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination">Pagination</a>.</p>
-     */
     inline DescribeNetworkInterfacePermissionsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
-
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_networkInterfacePermissionIds;
@@ -305,7 +117,7 @@ namespace Model
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
   };
 

@@ -18,13 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsEventsEndpointRoutingConfigFailoverConfigSecondaryDetails::AwsEventsEndpointRoutingConfigFailoverConfigSecondaryDetails() : 
-    m_routeHasBeenSet(false)
-{
-}
-
-AwsEventsEndpointRoutingConfigFailoverConfigSecondaryDetails::AwsEventsEndpointRoutingConfigFailoverConfigSecondaryDetails(JsonView jsonValue) : 
-    m_routeHasBeenSet(false)
+AwsEventsEndpointRoutingConfigFailoverConfigSecondaryDetails::AwsEventsEndpointRoutingConfigFailoverConfigSecondaryDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ AwsEventsEndpointRoutingConfigFailoverConfigSecondaryDetails& AwsEventsEndpointR
   if(jsonValue.ValueExists("Route"))
   {
     m_route = jsonValue.GetString("Route");
-
     m_routeHasBeenSet = true;
   }
-
   return *this;
 }
 

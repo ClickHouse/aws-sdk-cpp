@@ -18,15 +18,7 @@ namespace LookoutMetrics
 namespace Model
 {
 
-AnomalyDetectorDataQualityMetric::AnomalyDetectorDataQualityMetric() : 
-    m_startTimestampHasBeenSet(false),
-    m_metricSetDataQualityMetricListHasBeenSet(false)
-{
-}
-
-AnomalyDetectorDataQualityMetric::AnomalyDetectorDataQualityMetric(JsonView jsonValue) : 
-    m_startTimestampHasBeenSet(false),
-    m_metricSetDataQualityMetricListHasBeenSet(false)
+AnomalyDetectorDataQualityMetric::AnomalyDetectorDataQualityMetric(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ AnomalyDetectorDataQualityMetric& AnomalyDetectorDataQualityMetric::operator =(J
   if(jsonValue.ValueExists("StartTimestamp"))
   {
     m_startTimestamp = jsonValue.GetDouble("StartTimestamp");
-
     m_startTimestampHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MetricSetDataQualityMetricList"))
   {
     Aws::Utils::Array<JsonView> metricSetDataQualityMetricListJsonList = jsonValue.GetArray("MetricSetDataQualityMetricList");
@@ -49,7 +39,6 @@ AnomalyDetectorDataQualityMetric& AnomalyDetectorDataQualityMetric::operator =(J
     }
     m_metricSetDataQualityMetricListHasBeenSet = true;
   }
-
   return *this;
 }
 

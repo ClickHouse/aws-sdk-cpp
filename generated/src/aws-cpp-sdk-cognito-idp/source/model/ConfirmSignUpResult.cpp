@@ -17,10 +17,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-ConfirmSignUpResult::ConfirmSignUpResult()
-{
-}
-
 ConfirmSignUpResult::ConfirmSignUpResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
@@ -28,13 +24,19 @@ ConfirmSignUpResult::ConfirmSignUpResult(const Aws::AmazonWebServiceResult<JsonV
 
 ConfirmSignUpResult& ConfirmSignUpResult::operator =(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
-  AWS_UNREFERENCED_PARAM(result);
+  JsonView jsonValue = result.GetPayload().View();
+  if(jsonValue.ValueExists("Session"))
+  {
+    m_session = jsonValue.GetString("Session");
+    m_sessionHasBeenSet = true;
+  }
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

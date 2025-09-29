@@ -18,13 +18,7 @@ namespace Omics
 namespace Model
 {
 
-AnnotationImportItemSource::AnnotationImportItemSource() : 
-    m_sourceHasBeenSet(false)
-{
-}
-
-AnnotationImportItemSource::AnnotationImportItemSource(JsonView jsonValue) : 
-    m_sourceHasBeenSet(false)
+AnnotationImportItemSource::AnnotationImportItemSource(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ AnnotationImportItemSource& AnnotationImportItemSource::operator =(JsonView json
   if(jsonValue.ValueExists("source"))
   {
     m_source = jsonValue.GetString("source");
-
     m_sourceHasBeenSet = true;
   }
-
   return *this;
 }
 

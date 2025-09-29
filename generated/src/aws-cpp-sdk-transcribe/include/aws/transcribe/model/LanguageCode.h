@@ -69,6 +69,7 @@ namespace Model
     cs_CZ,
     cy_WL,
     el_GR,
+    et_EE,
     et_ET,
     eu_ES,
     fi_FI,
@@ -118,6 +119,7 @@ namespace Model
     uk_UA,
     uz_UZ,
     wo_SN,
+    zh_HK,
     zu_ZA
   };
 

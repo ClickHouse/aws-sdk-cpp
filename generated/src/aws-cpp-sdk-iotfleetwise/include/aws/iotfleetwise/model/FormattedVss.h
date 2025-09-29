@@ -35,52 +35,23 @@ namespace Model
   class FormattedVss
   {
   public:
-    AWS_IOTFLEETWISE_API FormattedVss();
+    AWS_IOTFLEETWISE_API FormattedVss() = default;
     AWS_IOTFLEETWISE_API FormattedVss(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTFLEETWISE_API FormattedVss& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTFLEETWISE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Provides the VSS in JSON format.</p>
      */
-    inline const Aws::String& GetVssJson() const{ return m_vssJson; }
-
-    /**
-     * <p>Provides the VSS in JSON format.</p>
-     */
+    inline const Aws::String& GetVssJson() const { return m_vssJson; }
     inline bool VssJsonHasBeenSet() const { return m_vssJsonHasBeenSet; }
-
-    /**
-     * <p>Provides the VSS in JSON format.</p>
-     */
-    inline void SetVssJson(const Aws::String& value) { m_vssJsonHasBeenSet = true; m_vssJson = value; }
-
-    /**
-     * <p>Provides the VSS in JSON format.</p>
-     */
-    inline void SetVssJson(Aws::String&& value) { m_vssJsonHasBeenSet = true; m_vssJson = std::move(value); }
-
-    /**
-     * <p>Provides the VSS in JSON format.</p>
-     */
-    inline void SetVssJson(const char* value) { m_vssJsonHasBeenSet = true; m_vssJson.assign(value); }
-
-    /**
-     * <p>Provides the VSS in JSON format.</p>
-     */
-    inline FormattedVss& WithVssJson(const Aws::String& value) { SetVssJson(value); return *this;}
-
-    /**
-     * <p>Provides the VSS in JSON format.</p>
-     */
-    inline FormattedVss& WithVssJson(Aws::String&& value) { SetVssJson(std::move(value)); return *this;}
-
-    /**
-     * <p>Provides the VSS in JSON format.</p>
-     */
-    inline FormattedVss& WithVssJson(const char* value) { SetVssJson(value); return *this;}
-
+    template<typename VssJsonT = Aws::String>
+    void SetVssJson(VssJsonT&& value) { m_vssJsonHasBeenSet = true; m_vssJson = std::forward<VssJsonT>(value); }
+    template<typename VssJsonT = Aws::String>
+    FormattedVss& WithVssJson(VssJsonT&& value) { SetVssJson(std::forward<VssJsonT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_vssJson;

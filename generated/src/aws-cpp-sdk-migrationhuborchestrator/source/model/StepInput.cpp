@@ -18,21 +18,7 @@ namespace MigrationHubOrchestrator
 namespace Model
 {
 
-StepInput::StepInput() : 
-    m_integerValue(0),
-    m_integerValueHasBeenSet(false),
-    m_stringValueHasBeenSet(false),
-    m_listOfStringsValueHasBeenSet(false),
-    m_mapOfStringValueHasBeenSet(false)
-{
-}
-
-StepInput::StepInput(JsonView jsonValue) : 
-    m_integerValue(0),
-    m_integerValueHasBeenSet(false),
-    m_stringValueHasBeenSet(false),
-    m_listOfStringsValueHasBeenSet(false),
-    m_mapOfStringValueHasBeenSet(false)
+StepInput::StepInput(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,17 +28,13 @@ StepInput& StepInput::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("integerValue"))
   {
     m_integerValue = jsonValue.GetInteger("integerValue");
-
     m_integerValueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("stringValue"))
   {
     m_stringValue = jsonValue.GetString("stringValue");
-
     m_stringValueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("listOfStringsValue"))
   {
     Aws::Utils::Array<JsonView> listOfStringsValueJsonList = jsonValue.GetArray("listOfStringsValue");
@@ -62,7 +44,6 @@ StepInput& StepInput::operator =(JsonView jsonValue)
     }
     m_listOfStringsValueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("mapOfStringValue"))
   {
     Aws::Map<Aws::String, JsonView> mapOfStringValueJsonMap = jsonValue.GetObject("mapOfStringValue").GetAllObjects();
@@ -72,7 +53,6 @@ StepInput& StepInput::operator =(JsonView jsonValue)
     }
     m_mapOfStringValueHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -57,190 +57,84 @@ namespace Model
   class Expression
   {
   public:
-    AWS_FREETIER_API Expression();
+    AWS_FREETIER_API Expression() = default;
     AWS_FREETIER_API Expression(Aws::Utils::Json::JsonView jsonValue);
     AWS_FREETIER_API Expression& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FREETIER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
-    /**
-     * <p>Return results that match all <code>Expressions</code> that you specified in
-     * the array.</p>
-     */
-    inline const Aws::Vector<Expression>& GetAnd() const{ return m_and; }
-
-    /**
-     * <p>Return results that match all <code>Expressions</code> that you specified in
-     * the array.</p>
-     */
-    inline bool AndHasBeenSet() const { return m_andHasBeenSet; }
-
-    /**
-     * <p>Return results that match all <code>Expressions</code> that you specified in
-     * the array.</p>
-     */
-    inline void SetAnd(const Aws::Vector<Expression>& value) { m_andHasBeenSet = true; m_and = value; }
-
-    /**
-     * <p>Return results that match all <code>Expressions</code> that you specified in
-     * the array.</p>
-     */
-    inline void SetAnd(Aws::Vector<Expression>&& value) { m_andHasBeenSet = true; m_and = std::move(value); }
-
-    /**
-     * <p>Return results that match all <code>Expressions</code> that you specified in
-     * the array.</p>
-     */
-    inline Expression& WithAnd(const Aws::Vector<Expression>& value) { SetAnd(value); return *this;}
-
-    /**
-     * <p>Return results that match all <code>Expressions</code> that you specified in
-     * the array.</p>
-     */
-    inline Expression& WithAnd(Aws::Vector<Expression>&& value) { SetAnd(std::move(value)); return *this;}
-
-    /**
-     * <p>Return results that match all <code>Expressions</code> that you specified in
-     * the array.</p>
-     */
-    inline Expression& AddAnd(const Expression& value) { m_andHasBeenSet = true; m_and.push_back(value); return *this; }
-
-    /**
-     * <p>Return results that match all <code>Expressions</code> that you specified in
-     * the array.</p>
-     */
-    inline Expression& AddAnd(Expression&& value) { m_andHasBeenSet = true; m_and.push_back(std::move(value)); return *this; }
-
-
-    /**
-     * <p>The specific dimension, values, and match type to filter objects with.</p>
-     */
-    inline const DimensionValues& GetDimensions() const{ return m_dimensions; }
-
-    /**
-     * <p>The specific dimension, values, and match type to filter objects with.</p>
-     */
-    inline bool DimensionsHasBeenSet() const { return m_dimensionsHasBeenSet; }
-
-    /**
-     * <p>The specific dimension, values, and match type to filter objects with.</p>
-     */
-    inline void SetDimensions(const DimensionValues& value) { m_dimensionsHasBeenSet = true; m_dimensions = value; }
-
-    /**
-     * <p>The specific dimension, values, and match type to filter objects with.</p>
-     */
-    inline void SetDimensions(DimensionValues&& value) { m_dimensionsHasBeenSet = true; m_dimensions = std::move(value); }
-
-    /**
-     * <p>The specific dimension, values, and match type to filter objects with.</p>
-     */
-    inline Expression& WithDimensions(const DimensionValues& value) { SetDimensions(value); return *this;}
-
-    /**
-     * <p>The specific dimension, values, and match type to filter objects with.</p>
-     */
-    inline Expression& WithDimensions(DimensionValues&& value) { SetDimensions(std::move(value)); return *this;}
-
-
-    /**
-     * <p>Return results that don’t match the <code>Expression</code> that you
-     * specified.</p>
-     */
-    AWS_FREETIER_API const Expression& GetNot() const;
-
-    /**
-     * <p>Return results that don’t match the <code>Expression</code> that you
-     * specified.</p>
-     */
-    AWS_FREETIER_API bool NotHasBeenSet() const;
-
-    /**
-     * <p>Return results that don’t match the <code>Expression</code> that you
-     * specified.</p>
-     */
-    AWS_FREETIER_API void SetNot(const Expression& value);
-
-    /**
-     * <p>Return results that don’t match the <code>Expression</code> that you
-     * specified.</p>
-     */
-    AWS_FREETIER_API void SetNot(Expression&& value);
-
-    /**
-     * <p>Return results that don’t match the <code>Expression</code> that you
-     * specified.</p>
-     */
-    AWS_FREETIER_API Expression& WithNot(const Expression& value);
-
-    /**
-     * <p>Return results that don’t match the <code>Expression</code> that you
-     * specified.</p>
-     */
-    AWS_FREETIER_API Expression& WithNot(Expression&& value);
-
-
+    ///@{
     /**
      * <p>Return results that match any of the <code>Expressions</code> that you
      * specified. in the array.</p>
      */
-    inline const Aws::Vector<Expression>& GetOr() const{ return m_or; }
-
-    /**
-     * <p>Return results that match any of the <code>Expressions</code> that you
-     * specified. in the array.</p>
-     */
+    inline const Aws::Vector<Expression>& GetOr() const { return m_or; }
     inline bool OrHasBeenSet() const { return m_orHasBeenSet; }
+    template<typename OrT = Aws::Vector<Expression>>
+    void SetOr(OrT&& value) { m_orHasBeenSet = true; m_or = std::forward<OrT>(value); }
+    template<typename OrT = Aws::Vector<Expression>>
+    Expression& WithOr(OrT&& value) { SetOr(std::forward<OrT>(value)); return *this;}
+    template<typename OrT = Expression>
+    Expression& AddOr(OrT&& value) { m_orHasBeenSet = true; m_or.emplace_back(std::forward<OrT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>Return results that match any of the <code>Expressions</code> that you
-     * specified. in the array.</p>
+     * <p>Return results that match all <code>Expressions</code> that you specified in
+     * the array.</p>
      */
-    inline void SetOr(const Aws::Vector<Expression>& value) { m_orHasBeenSet = true; m_or = value; }
+    inline const Aws::Vector<Expression>& GetAnd() const { return m_and; }
+    inline bool AndHasBeenSet() const { return m_andHasBeenSet; }
+    template<typename AndT = Aws::Vector<Expression>>
+    void SetAnd(AndT&& value) { m_andHasBeenSet = true; m_and = std::forward<AndT>(value); }
+    template<typename AndT = Aws::Vector<Expression>>
+    Expression& WithAnd(AndT&& value) { SetAnd(std::forward<AndT>(value)); return *this;}
+    template<typename AndT = Expression>
+    Expression& AddAnd(AndT&& value) { m_andHasBeenSet = true; m_and.emplace_back(std::forward<AndT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>Return results that match any of the <code>Expressions</code> that you
-     * specified. in the array.</p>
+     * <p>Return results that don’t match the <code>Expression</code> that you
+     * specified.</p>
      */
-    inline void SetOr(Aws::Vector<Expression>&& value) { m_orHasBeenSet = true; m_or = std::move(value); }
+    inline const Expression& GetNot() const{
+      return *m_not;
+    }
+    inline bool NotHasBeenSet() const { return m_notHasBeenSet; }
+    template<typename NotT = Expression>
+    void SetNot(NotT&& value) {
+      m_notHasBeenSet = true; 
+      m_not = Aws::MakeShared<Expression>("Expression", std::forward<NotT>(value));
+    }
+    template<typename NotT = Expression>
+    Expression& WithNot(NotT&& value) { SetNot(std::forward<NotT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Return results that match any of the <code>Expressions</code> that you
-     * specified. in the array.</p>
+     * <p>The specific dimension, values, and match type to filter objects with.</p>
      */
-    inline Expression& WithOr(const Aws::Vector<Expression>& value) { SetOr(value); return *this;}
-
-    /**
-     * <p>Return results that match any of the <code>Expressions</code> that you
-     * specified. in the array.</p>
-     */
-    inline Expression& WithOr(Aws::Vector<Expression>&& value) { SetOr(std::move(value)); return *this;}
-
-    /**
-     * <p>Return results that match any of the <code>Expressions</code> that you
-     * specified. in the array.</p>
-     */
-    inline Expression& AddOr(const Expression& value) { m_orHasBeenSet = true; m_or.push_back(value); return *this; }
-
-    /**
-     * <p>Return results that match any of the <code>Expressions</code> that you
-     * specified. in the array.</p>
-     */
-    inline Expression& AddOr(Expression&& value) { m_orHasBeenSet = true; m_or.push_back(std::move(value)); return *this; }
-
+    inline const DimensionValues& GetDimensions() const { return m_dimensions; }
+    inline bool DimensionsHasBeenSet() const { return m_dimensionsHasBeenSet; }
+    template<typename DimensionsT = DimensionValues>
+    void SetDimensions(DimensionsT&& value) { m_dimensionsHasBeenSet = true; m_dimensions = std::forward<DimensionsT>(value); }
+    template<typename DimensionsT = DimensionValues>
+    Expression& WithDimensions(DimensionsT&& value) { SetDimensions(std::forward<DimensionsT>(value)); return *this;}
+    ///@}
   private:
+
+    Aws::Vector<Expression> m_or;
+    bool m_orHasBeenSet = false;
 
     Aws::Vector<Expression> m_and;
     bool m_andHasBeenSet = false;
 
-    DimensionValues m_dimensions;
-    bool m_dimensionsHasBeenSet = false;
-
     std::shared_ptr<Expression> m_not;
     bool m_notHasBeenSet = false;
 
-    Aws::Vector<Expression> m_or;
-    bool m_orHasBeenSet = false;
+    DimensionValues m_dimensions;
+    bool m_dimensionsHasBeenSet = false;
   };
 
 } // namespace Model

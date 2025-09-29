@@ -32,83 +32,40 @@ namespace Model
   class ChannelTargetInfo
   {
   public:
-    AWS_SSMCONTACTS_API ChannelTargetInfo();
+    AWS_SSMCONTACTS_API ChannelTargetInfo() = default;
     AWS_SSMCONTACTS_API ChannelTargetInfo(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSMCONTACTS_API ChannelTargetInfo& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSMCONTACTS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the contact channel.</p>
      */
-    inline const Aws::String& GetContactChannelId() const{ return m_contactChannelId; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the contact channel.</p>
-     */
+    inline const Aws::String& GetContactChannelId() const { return m_contactChannelId; }
     inline bool ContactChannelIdHasBeenSet() const { return m_contactChannelIdHasBeenSet; }
+    template<typename ContactChannelIdT = Aws::String>
+    void SetContactChannelId(ContactChannelIdT&& value) { m_contactChannelIdHasBeenSet = true; m_contactChannelId = std::forward<ContactChannelIdT>(value); }
+    template<typename ContactChannelIdT = Aws::String>
+    ChannelTargetInfo& WithContactChannelId(ContactChannelIdT&& value) { SetContactChannelId(std::forward<ContactChannelIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Amazon Resource Name (ARN) of the contact channel.</p>
+     * <p>The number of minutes to wait before retrying to send engagement if the
+     * engagement initially failed.</p>
      */
-    inline void SetContactChannelId(const Aws::String& value) { m_contactChannelIdHasBeenSet = true; m_contactChannelId = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the contact channel.</p>
-     */
-    inline void SetContactChannelId(Aws::String&& value) { m_contactChannelIdHasBeenSet = true; m_contactChannelId = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the contact channel.</p>
-     */
-    inline void SetContactChannelId(const char* value) { m_contactChannelIdHasBeenSet = true; m_contactChannelId.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the contact channel.</p>
-     */
-    inline ChannelTargetInfo& WithContactChannelId(const Aws::String& value) { SetContactChannelId(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the contact channel.</p>
-     */
-    inline ChannelTargetInfo& WithContactChannelId(Aws::String&& value) { SetContactChannelId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the contact channel.</p>
-     */
-    inline ChannelTargetInfo& WithContactChannelId(const char* value) { SetContactChannelId(value); return *this;}
-
-
-    /**
-     * <p>The number of minutes to wait to retry sending engagement in the case the
-     * engagement initially fails.</p>
-     */
-    inline int GetRetryIntervalInMinutes() const{ return m_retryIntervalInMinutes; }
-
-    /**
-     * <p>The number of minutes to wait to retry sending engagement in the case the
-     * engagement initially fails.</p>
-     */
+    inline int GetRetryIntervalInMinutes() const { return m_retryIntervalInMinutes; }
     inline bool RetryIntervalInMinutesHasBeenSet() const { return m_retryIntervalInMinutesHasBeenSet; }
-
-    /**
-     * <p>The number of minutes to wait to retry sending engagement in the case the
-     * engagement initially fails.</p>
-     */
     inline void SetRetryIntervalInMinutes(int value) { m_retryIntervalInMinutesHasBeenSet = true; m_retryIntervalInMinutes = value; }
-
-    /**
-     * <p>The number of minutes to wait to retry sending engagement in the case the
-     * engagement initially fails.</p>
-     */
     inline ChannelTargetInfo& WithRetryIntervalInMinutes(int value) { SetRetryIntervalInMinutes(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_contactChannelId;
     bool m_contactChannelIdHasBeenSet = false;
 
-    int m_retryIntervalInMinutes;
+    int m_retryIntervalInMinutes{0};
     bool m_retryIntervalInMinutesHasBeenSet = false;
   };
 

@@ -41,288 +41,110 @@ namespace Model
   class SimulationJobRequest
   {
   public:
-    AWS_ROBOMAKER_API SimulationJobRequest();
+    AWS_ROBOMAKER_API SimulationJobRequest() = default;
     AWS_ROBOMAKER_API SimulationJobRequest(Aws::Utils::Json::JsonView jsonValue);
     AWS_ROBOMAKER_API SimulationJobRequest& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ROBOMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     
-    inline const OutputLocation& GetOutputLocation() const{ return m_outputLocation; }
-
-    
+    inline const OutputLocation& GetOutputLocation() const { return m_outputLocation; }
     inline bool OutputLocationHasBeenSet() const { return m_outputLocationHasBeenSet; }
+    template<typename OutputLocationT = OutputLocation>
+    void SetOutputLocation(OutputLocationT&& value) { m_outputLocationHasBeenSet = true; m_outputLocation = std::forward<OutputLocationT>(value); }
+    template<typename OutputLocationT = OutputLocation>
+    SimulationJobRequest& WithOutputLocation(OutputLocationT&& value) { SetOutputLocation(std::forward<OutputLocationT>(value)); return *this;}
+    ///@}
 
+    ///@{
     
-    inline void SetOutputLocation(const OutputLocation& value) { m_outputLocationHasBeenSet = true; m_outputLocation = value; }
-
-    
-    inline void SetOutputLocation(OutputLocation&& value) { m_outputLocationHasBeenSet = true; m_outputLocation = std::move(value); }
-
-    
-    inline SimulationJobRequest& WithOutputLocation(const OutputLocation& value) { SetOutputLocation(value); return *this;}
-
-    
-    inline SimulationJobRequest& WithOutputLocation(OutputLocation&& value) { SetOutputLocation(std::move(value)); return *this;}
-
-
-    
-    inline const LoggingConfig& GetLoggingConfig() const{ return m_loggingConfig; }
-
-    
+    inline const LoggingConfig& GetLoggingConfig() const { return m_loggingConfig; }
     inline bool LoggingConfigHasBeenSet() const { return m_loggingConfigHasBeenSet; }
+    template<typename LoggingConfigT = LoggingConfig>
+    void SetLoggingConfig(LoggingConfigT&& value) { m_loggingConfigHasBeenSet = true; m_loggingConfig = std::forward<LoggingConfigT>(value); }
+    template<typename LoggingConfigT = LoggingConfig>
+    SimulationJobRequest& WithLoggingConfig(LoggingConfigT&& value) { SetLoggingConfig(std::forward<LoggingConfigT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetLoggingConfig(const LoggingConfig& value) { m_loggingConfigHasBeenSet = true; m_loggingConfig = value; }
-
-    
-    inline void SetLoggingConfig(LoggingConfig&& value) { m_loggingConfigHasBeenSet = true; m_loggingConfig = std::move(value); }
-
-    
-    inline SimulationJobRequest& WithLoggingConfig(const LoggingConfig& value) { SetLoggingConfig(value); return *this;}
-
-    
-    inline SimulationJobRequest& WithLoggingConfig(LoggingConfig&& value) { SetLoggingConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum simulation job duration in seconds. The value must be 8 days
      * (691,200 seconds) or less.</p>
      */
-    inline long long GetMaxJobDurationInSeconds() const{ return m_maxJobDurationInSeconds; }
-
-    /**
-     * <p>The maximum simulation job duration in seconds. The value must be 8 days
-     * (691,200 seconds) or less.</p>
-     */
+    inline long long GetMaxJobDurationInSeconds() const { return m_maxJobDurationInSeconds; }
     inline bool MaxJobDurationInSecondsHasBeenSet() const { return m_maxJobDurationInSecondsHasBeenSet; }
-
-    /**
-     * <p>The maximum simulation job duration in seconds. The value must be 8 days
-     * (691,200 seconds) or less.</p>
-     */
     inline void SetMaxJobDurationInSeconds(long long value) { m_maxJobDurationInSecondsHasBeenSet = true; m_maxJobDurationInSeconds = value; }
-
-    /**
-     * <p>The maximum simulation job duration in seconds. The value must be 8 days
-     * (691,200 seconds) or less.</p>
-     */
     inline SimulationJobRequest& WithMaxJobDurationInSeconds(long long value) { SetMaxJobDurationInSeconds(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The IAM role name that allows the simulation instance to call the AWS APIs
      * that are specified in its associated policies on your behalf. This is how
      * credentials are passed in to your simulation job. </p>
      */
-    inline const Aws::String& GetIamRole() const{ return m_iamRole; }
-
-    /**
-     * <p>The IAM role name that allows the simulation instance to call the AWS APIs
-     * that are specified in its associated policies on your behalf. This is how
-     * credentials are passed in to your simulation job. </p>
-     */
+    inline const Aws::String& GetIamRole() const { return m_iamRole; }
     inline bool IamRoleHasBeenSet() const { return m_iamRoleHasBeenSet; }
+    template<typename IamRoleT = Aws::String>
+    void SetIamRole(IamRoleT&& value) { m_iamRoleHasBeenSet = true; m_iamRole = std::forward<IamRoleT>(value); }
+    template<typename IamRoleT = Aws::String>
+    SimulationJobRequest& WithIamRole(IamRoleT&& value) { SetIamRole(std::forward<IamRoleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The IAM role name that allows the simulation instance to call the AWS APIs
-     * that are specified in its associated policies on your behalf. This is how
-     * credentials are passed in to your simulation job. </p>
-     */
-    inline void SetIamRole(const Aws::String& value) { m_iamRoleHasBeenSet = true; m_iamRole = value; }
-
-    /**
-     * <p>The IAM role name that allows the simulation instance to call the AWS APIs
-     * that are specified in its associated policies on your behalf. This is how
-     * credentials are passed in to your simulation job. </p>
-     */
-    inline void SetIamRole(Aws::String&& value) { m_iamRoleHasBeenSet = true; m_iamRole = std::move(value); }
-
-    /**
-     * <p>The IAM role name that allows the simulation instance to call the AWS APIs
-     * that are specified in its associated policies on your behalf. This is how
-     * credentials are passed in to your simulation job. </p>
-     */
-    inline void SetIamRole(const char* value) { m_iamRoleHasBeenSet = true; m_iamRole.assign(value); }
-
-    /**
-     * <p>The IAM role name that allows the simulation instance to call the AWS APIs
-     * that are specified in its associated policies on your behalf. This is how
-     * credentials are passed in to your simulation job. </p>
-     */
-    inline SimulationJobRequest& WithIamRole(const Aws::String& value) { SetIamRole(value); return *this;}
-
-    /**
-     * <p>The IAM role name that allows the simulation instance to call the AWS APIs
-     * that are specified in its associated policies on your behalf. This is how
-     * credentials are passed in to your simulation job. </p>
-     */
-    inline SimulationJobRequest& WithIamRole(Aws::String&& value) { SetIamRole(std::move(value)); return *this;}
-
-    /**
-     * <p>The IAM role name that allows the simulation instance to call the AWS APIs
-     * that are specified in its associated policies on your behalf. This is how
-     * credentials are passed in to your simulation job. </p>
-     */
-    inline SimulationJobRequest& WithIamRole(const char* value) { SetIamRole(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The failure behavior the simulation job.</p> <dl> <dt>Continue</dt> <dd>
      * <p>Leaves the host running for its maximum timeout duration after a
      * <code>4XX</code> error code.</p> </dd> <dt>Fail</dt> <dd> <p>Stop the simulation
      * job and terminate the instance.</p> </dd> </dl>
      */
-    inline const FailureBehavior& GetFailureBehavior() const{ return m_failureBehavior; }
-
-    /**
-     * <p>The failure behavior the simulation job.</p> <dl> <dt>Continue</dt> <dd>
-     * <p>Leaves the host running for its maximum timeout duration after a
-     * <code>4XX</code> error code.</p> </dd> <dt>Fail</dt> <dd> <p>Stop the simulation
-     * job and terminate the instance.</p> </dd> </dl>
-     */
+    inline FailureBehavior GetFailureBehavior() const { return m_failureBehavior; }
     inline bool FailureBehaviorHasBeenSet() const { return m_failureBehaviorHasBeenSet; }
+    inline void SetFailureBehavior(FailureBehavior value) { m_failureBehaviorHasBeenSet = true; m_failureBehavior = value; }
+    inline SimulationJobRequest& WithFailureBehavior(FailureBehavior value) { SetFailureBehavior(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The failure behavior the simulation job.</p> <dl> <dt>Continue</dt> <dd>
-     * <p>Leaves the host running for its maximum timeout duration after a
-     * <code>4XX</code> error code.</p> </dd> <dt>Fail</dt> <dd> <p>Stop the simulation
-     * job and terminate the instance.</p> </dd> </dl>
-     */
-    inline void SetFailureBehavior(const FailureBehavior& value) { m_failureBehaviorHasBeenSet = true; m_failureBehavior = value; }
-
-    /**
-     * <p>The failure behavior the simulation job.</p> <dl> <dt>Continue</dt> <dd>
-     * <p>Leaves the host running for its maximum timeout duration after a
-     * <code>4XX</code> error code.</p> </dd> <dt>Fail</dt> <dd> <p>Stop the simulation
-     * job and terminate the instance.</p> </dd> </dl>
-     */
-    inline void SetFailureBehavior(FailureBehavior&& value) { m_failureBehaviorHasBeenSet = true; m_failureBehavior = std::move(value); }
-
-    /**
-     * <p>The failure behavior the simulation job.</p> <dl> <dt>Continue</dt> <dd>
-     * <p>Leaves the host running for its maximum timeout duration after a
-     * <code>4XX</code> error code.</p> </dd> <dt>Fail</dt> <dd> <p>Stop the simulation
-     * job and terminate the instance.</p> </dd> </dl>
-     */
-    inline SimulationJobRequest& WithFailureBehavior(const FailureBehavior& value) { SetFailureBehavior(value); return *this;}
-
-    /**
-     * <p>The failure behavior the simulation job.</p> <dl> <dt>Continue</dt> <dd>
-     * <p>Leaves the host running for its maximum timeout duration after a
-     * <code>4XX</code> error code.</p> </dd> <dt>Fail</dt> <dd> <p>Stop the simulation
-     * job and terminate the instance.</p> </dd> </dl>
-     */
-    inline SimulationJobRequest& WithFailureBehavior(FailureBehavior&& value) { SetFailureBehavior(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A Boolean indicating whether to use default applications in the simulation
      * job. Default applications include Gazebo, rqt, rviz and terminal access. </p>
      */
-    inline bool GetUseDefaultApplications() const{ return m_useDefaultApplications; }
-
-    /**
-     * <p>A Boolean indicating whether to use default applications in the simulation
-     * job. Default applications include Gazebo, rqt, rviz and terminal access. </p>
-     */
+    inline bool GetUseDefaultApplications() const { return m_useDefaultApplications; }
     inline bool UseDefaultApplicationsHasBeenSet() const { return m_useDefaultApplicationsHasBeenSet; }
-
-    /**
-     * <p>A Boolean indicating whether to use default applications in the simulation
-     * job. Default applications include Gazebo, rqt, rviz and terminal access. </p>
-     */
     inline void SetUseDefaultApplications(bool value) { m_useDefaultApplicationsHasBeenSet = true; m_useDefaultApplications = value; }
-
-    /**
-     * <p>A Boolean indicating whether to use default applications in the simulation
-     * job. Default applications include Gazebo, rqt, rviz and terminal access. </p>
-     */
     inline SimulationJobRequest& WithUseDefaultApplications(bool value) { SetUseDefaultApplications(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The robot applications to use in the simulation job.</p>
      */
-    inline const Aws::Vector<RobotApplicationConfig>& GetRobotApplications() const{ return m_robotApplications; }
-
-    /**
-     * <p>The robot applications to use in the simulation job.</p>
-     */
+    inline const Aws::Vector<RobotApplicationConfig>& GetRobotApplications() const { return m_robotApplications; }
     inline bool RobotApplicationsHasBeenSet() const { return m_robotApplicationsHasBeenSet; }
+    template<typename RobotApplicationsT = Aws::Vector<RobotApplicationConfig>>
+    void SetRobotApplications(RobotApplicationsT&& value) { m_robotApplicationsHasBeenSet = true; m_robotApplications = std::forward<RobotApplicationsT>(value); }
+    template<typename RobotApplicationsT = Aws::Vector<RobotApplicationConfig>>
+    SimulationJobRequest& WithRobotApplications(RobotApplicationsT&& value) { SetRobotApplications(std::forward<RobotApplicationsT>(value)); return *this;}
+    template<typename RobotApplicationsT = RobotApplicationConfig>
+    SimulationJobRequest& AddRobotApplications(RobotApplicationsT&& value) { m_robotApplicationsHasBeenSet = true; m_robotApplications.emplace_back(std::forward<RobotApplicationsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The robot applications to use in the simulation job.</p>
-     */
-    inline void SetRobotApplications(const Aws::Vector<RobotApplicationConfig>& value) { m_robotApplicationsHasBeenSet = true; m_robotApplications = value; }
-
-    /**
-     * <p>The robot applications to use in the simulation job.</p>
-     */
-    inline void SetRobotApplications(Aws::Vector<RobotApplicationConfig>&& value) { m_robotApplicationsHasBeenSet = true; m_robotApplications = std::move(value); }
-
-    /**
-     * <p>The robot applications to use in the simulation job.</p>
-     */
-    inline SimulationJobRequest& WithRobotApplications(const Aws::Vector<RobotApplicationConfig>& value) { SetRobotApplications(value); return *this;}
-
-    /**
-     * <p>The robot applications to use in the simulation job.</p>
-     */
-    inline SimulationJobRequest& WithRobotApplications(Aws::Vector<RobotApplicationConfig>&& value) { SetRobotApplications(std::move(value)); return *this;}
-
-    /**
-     * <p>The robot applications to use in the simulation job.</p>
-     */
-    inline SimulationJobRequest& AddRobotApplications(const RobotApplicationConfig& value) { m_robotApplicationsHasBeenSet = true; m_robotApplications.push_back(value); return *this; }
-
-    /**
-     * <p>The robot applications to use in the simulation job.</p>
-     */
-    inline SimulationJobRequest& AddRobotApplications(RobotApplicationConfig&& value) { m_robotApplicationsHasBeenSet = true; m_robotApplications.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The simulation applications to use in the simulation job.</p>
      */
-    inline const Aws::Vector<SimulationApplicationConfig>& GetSimulationApplications() const{ return m_simulationApplications; }
-
-    /**
-     * <p>The simulation applications to use in the simulation job.</p>
-     */
+    inline const Aws::Vector<SimulationApplicationConfig>& GetSimulationApplications() const { return m_simulationApplications; }
     inline bool SimulationApplicationsHasBeenSet() const { return m_simulationApplicationsHasBeenSet; }
+    template<typename SimulationApplicationsT = Aws::Vector<SimulationApplicationConfig>>
+    void SetSimulationApplications(SimulationApplicationsT&& value) { m_simulationApplicationsHasBeenSet = true; m_simulationApplications = std::forward<SimulationApplicationsT>(value); }
+    template<typename SimulationApplicationsT = Aws::Vector<SimulationApplicationConfig>>
+    SimulationJobRequest& WithSimulationApplications(SimulationApplicationsT&& value) { SetSimulationApplications(std::forward<SimulationApplicationsT>(value)); return *this;}
+    template<typename SimulationApplicationsT = SimulationApplicationConfig>
+    SimulationJobRequest& AddSimulationApplications(SimulationApplicationsT&& value) { m_simulationApplicationsHasBeenSet = true; m_simulationApplications.emplace_back(std::forward<SimulationApplicationsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The simulation applications to use in the simulation job.</p>
-     */
-    inline void SetSimulationApplications(const Aws::Vector<SimulationApplicationConfig>& value) { m_simulationApplicationsHasBeenSet = true; m_simulationApplications = value; }
-
-    /**
-     * <p>The simulation applications to use in the simulation job.</p>
-     */
-    inline void SetSimulationApplications(Aws::Vector<SimulationApplicationConfig>&& value) { m_simulationApplicationsHasBeenSet = true; m_simulationApplications = std::move(value); }
-
-    /**
-     * <p>The simulation applications to use in the simulation job.</p>
-     */
-    inline SimulationJobRequest& WithSimulationApplications(const Aws::Vector<SimulationApplicationConfig>& value) { SetSimulationApplications(value); return *this;}
-
-    /**
-     * <p>The simulation applications to use in the simulation job.</p>
-     */
-    inline SimulationJobRequest& WithSimulationApplications(Aws::Vector<SimulationApplicationConfig>&& value) { SetSimulationApplications(std::move(value)); return *this;}
-
-    /**
-     * <p>The simulation applications to use in the simulation job.</p>
-     */
-    inline SimulationJobRequest& AddSimulationApplications(const SimulationApplicationConfig& value) { m_simulationApplicationsHasBeenSet = true; m_simulationApplications.push_back(value); return *this; }
-
-    /**
-     * <p>The simulation applications to use in the simulation job.</p>
-     */
-    inline SimulationJobRequest& AddSimulationApplications(SimulationApplicationConfig&& value) { m_simulationApplicationsHasBeenSet = true; m_simulationApplications.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Specify data sources to mount read-only files from S3 into your simulation.
      * These files are available under
@@ -330,200 +152,54 @@ namespace Model
      * is a limit of 100 files and a combined size of 25GB for all
      * <code>DataSourceConfig</code> objects. </p> 
      */
-    inline const Aws::Vector<DataSourceConfig>& GetDataSources() const{ return m_dataSources; }
-
-    /**
-     * <p>Specify data sources to mount read-only files from S3 into your simulation.
-     * These files are available under
-     * <code>/opt/robomaker/datasources/data_source_name</code>. </p>  <p>There
-     * is a limit of 100 files and a combined size of 25GB for all
-     * <code>DataSourceConfig</code> objects. </p> 
-     */
+    inline const Aws::Vector<DataSourceConfig>& GetDataSources() const { return m_dataSources; }
     inline bool DataSourcesHasBeenSet() const { return m_dataSourcesHasBeenSet; }
+    template<typename DataSourcesT = Aws::Vector<DataSourceConfig>>
+    void SetDataSources(DataSourcesT&& value) { m_dataSourcesHasBeenSet = true; m_dataSources = std::forward<DataSourcesT>(value); }
+    template<typename DataSourcesT = Aws::Vector<DataSourceConfig>>
+    SimulationJobRequest& WithDataSources(DataSourcesT&& value) { SetDataSources(std::forward<DataSourcesT>(value)); return *this;}
+    template<typename DataSourcesT = DataSourceConfig>
+    SimulationJobRequest& AddDataSources(DataSourcesT&& value) { m_dataSourcesHasBeenSet = true; m_dataSources.emplace_back(std::forward<DataSourcesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Specify data sources to mount read-only files from S3 into your simulation.
-     * These files are available under
-     * <code>/opt/robomaker/datasources/data_source_name</code>. </p>  <p>There
-     * is a limit of 100 files and a combined size of 25GB for all
-     * <code>DataSourceConfig</code> objects. </p> 
-     */
-    inline void SetDataSources(const Aws::Vector<DataSourceConfig>& value) { m_dataSourcesHasBeenSet = true; m_dataSources = value; }
-
-    /**
-     * <p>Specify data sources to mount read-only files from S3 into your simulation.
-     * These files are available under
-     * <code>/opt/robomaker/datasources/data_source_name</code>. </p>  <p>There
-     * is a limit of 100 files and a combined size of 25GB for all
-     * <code>DataSourceConfig</code> objects. </p> 
-     */
-    inline void SetDataSources(Aws::Vector<DataSourceConfig>&& value) { m_dataSourcesHasBeenSet = true; m_dataSources = std::move(value); }
-
-    /**
-     * <p>Specify data sources to mount read-only files from S3 into your simulation.
-     * These files are available under
-     * <code>/opt/robomaker/datasources/data_source_name</code>. </p>  <p>There
-     * is a limit of 100 files and a combined size of 25GB for all
-     * <code>DataSourceConfig</code> objects. </p> 
-     */
-    inline SimulationJobRequest& WithDataSources(const Aws::Vector<DataSourceConfig>& value) { SetDataSources(value); return *this;}
-
-    /**
-     * <p>Specify data sources to mount read-only files from S3 into your simulation.
-     * These files are available under
-     * <code>/opt/robomaker/datasources/data_source_name</code>. </p>  <p>There
-     * is a limit of 100 files and a combined size of 25GB for all
-     * <code>DataSourceConfig</code> objects. </p> 
-     */
-    inline SimulationJobRequest& WithDataSources(Aws::Vector<DataSourceConfig>&& value) { SetDataSources(std::move(value)); return *this;}
-
-    /**
-     * <p>Specify data sources to mount read-only files from S3 into your simulation.
-     * These files are available under
-     * <code>/opt/robomaker/datasources/data_source_name</code>. </p>  <p>There
-     * is a limit of 100 files and a combined size of 25GB for all
-     * <code>DataSourceConfig</code> objects. </p> 
-     */
-    inline SimulationJobRequest& AddDataSources(const DataSourceConfig& value) { m_dataSourcesHasBeenSet = true; m_dataSources.push_back(value); return *this; }
-
-    /**
-     * <p>Specify data sources to mount read-only files from S3 into your simulation.
-     * These files are available under
-     * <code>/opt/robomaker/datasources/data_source_name</code>. </p>  <p>There
-     * is a limit of 100 files and a combined size of 25GB for all
-     * <code>DataSourceConfig</code> objects. </p> 
-     */
-    inline SimulationJobRequest& AddDataSources(DataSourceConfig&& value) { m_dataSourcesHasBeenSet = true; m_dataSources.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const VPCConfig& GetVpcConfig() const{ return m_vpcConfig; }
-
-    
+    inline const VPCConfig& GetVpcConfig() const { return m_vpcConfig; }
     inline bool VpcConfigHasBeenSet() const { return m_vpcConfigHasBeenSet; }
+    template<typename VpcConfigT = VPCConfig>
+    void SetVpcConfig(VpcConfigT&& value) { m_vpcConfigHasBeenSet = true; m_vpcConfig = std::forward<VpcConfigT>(value); }
+    template<typename VpcConfigT = VPCConfig>
+    SimulationJobRequest& WithVpcConfig(VpcConfigT&& value) { SetVpcConfig(std::forward<VpcConfigT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetVpcConfig(const VPCConfig& value) { m_vpcConfigHasBeenSet = true; m_vpcConfig = value; }
-
-    
-    inline void SetVpcConfig(VPCConfig&& value) { m_vpcConfigHasBeenSet = true; m_vpcConfig = std::move(value); }
-
-    
-    inline SimulationJobRequest& WithVpcConfig(const VPCConfig& value) { SetVpcConfig(value); return *this;}
-
-    
-    inline SimulationJobRequest& WithVpcConfig(VPCConfig&& value) { SetVpcConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Compute information for the simulation job</p>
      */
-    inline const Compute& GetCompute() const{ return m_compute; }
-
-    /**
-     * <p>Compute information for the simulation job</p>
-     */
+    inline const Compute& GetCompute() const { return m_compute; }
     inline bool ComputeHasBeenSet() const { return m_computeHasBeenSet; }
+    template<typename ComputeT = Compute>
+    void SetCompute(ComputeT&& value) { m_computeHasBeenSet = true; m_compute = std::forward<ComputeT>(value); }
+    template<typename ComputeT = Compute>
+    SimulationJobRequest& WithCompute(ComputeT&& value) { SetCompute(std::forward<ComputeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Compute information for the simulation job</p>
-     */
-    inline void SetCompute(const Compute& value) { m_computeHasBeenSet = true; m_compute = value; }
-
-    /**
-     * <p>Compute information for the simulation job</p>
-     */
-    inline void SetCompute(Compute&& value) { m_computeHasBeenSet = true; m_compute = std::move(value); }
-
-    /**
-     * <p>Compute information for the simulation job</p>
-     */
-    inline SimulationJobRequest& WithCompute(const Compute& value) { SetCompute(value); return *this;}
-
-    /**
-     * <p>Compute information for the simulation job</p>
-     */
-    inline SimulationJobRequest& WithCompute(Compute&& value) { SetCompute(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A map that contains tag keys and tag values that are attached to the
      * simulation job request.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>A map that contains tag keys and tag values that are attached to the
-     * simulation job request.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>A map that contains tag keys and tag values that are attached to the
-     * simulation job request.</p>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>A map that contains tag keys and tag values that are attached to the
-     * simulation job request.</p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>A map that contains tag keys and tag values that are attached to the
-     * simulation job request.</p>
-     */
-    inline SimulationJobRequest& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>A map that contains tag keys and tag values that are attached to the
-     * simulation job request.</p>
-     */
-    inline SimulationJobRequest& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>A map that contains tag keys and tag values that are attached to the
-     * simulation job request.</p>
-     */
-    inline SimulationJobRequest& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>A map that contains tag keys and tag values that are attached to the
-     * simulation job request.</p>
-     */
-    inline SimulationJobRequest& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A map that contains tag keys and tag values that are attached to the
-     * simulation job request.</p>
-     */
-    inline SimulationJobRequest& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A map that contains tag keys and tag values that are attached to the
-     * simulation job request.</p>
-     */
-    inline SimulationJobRequest& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>A map that contains tag keys and tag values that are attached to the
-     * simulation job request.</p>
-     */
-    inline SimulationJobRequest& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A map that contains tag keys and tag values that are attached to the
-     * simulation job request.</p>
-     */
-    inline SimulationJobRequest& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A map that contains tag keys and tag values that are attached to the
-     * simulation job request.</p>
-     */
-    inline SimulationJobRequest& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    SimulationJobRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    SimulationJobRequest& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
     OutputLocation m_outputLocation;
@@ -532,16 +208,16 @@ namespace Model
     LoggingConfig m_loggingConfig;
     bool m_loggingConfigHasBeenSet = false;
 
-    long long m_maxJobDurationInSeconds;
+    long long m_maxJobDurationInSeconds{0};
     bool m_maxJobDurationInSecondsHasBeenSet = false;
 
     Aws::String m_iamRole;
     bool m_iamRoleHasBeenSet = false;
 
-    FailureBehavior m_failureBehavior;
+    FailureBehavior m_failureBehavior{FailureBehavior::NOT_SET};
     bool m_failureBehaviorHasBeenSet = false;
 
-    bool m_useDefaultApplications;
+    bool m_useDefaultApplications{false};
     bool m_useDefaultApplicationsHasBeenSet = false;
 
     Aws::Vector<RobotApplicationConfig> m_robotApplications;

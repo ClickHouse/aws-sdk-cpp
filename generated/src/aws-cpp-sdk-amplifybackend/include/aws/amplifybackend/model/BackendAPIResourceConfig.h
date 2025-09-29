@@ -35,259 +35,88 @@ namespace Model
   class BackendAPIResourceConfig
   {
   public:
-    AWS_AMPLIFYBACKEND_API BackendAPIResourceConfig();
+    AWS_AMPLIFYBACKEND_API BackendAPIResourceConfig() = default;
     AWS_AMPLIFYBACKEND_API BackendAPIResourceConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_AMPLIFYBACKEND_API BackendAPIResourceConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_AMPLIFYBACKEND_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Additional authentication methods used to interact with your data models.</p>
      */
-    inline const Aws::Vector<BackendAPIAuthType>& GetAdditionalAuthTypes() const{ return m_additionalAuthTypes; }
-
-    /**
-     * <p>Additional authentication methods used to interact with your data models.</p>
-     */
+    inline const Aws::Vector<BackendAPIAuthType>& GetAdditionalAuthTypes() const { return m_additionalAuthTypes; }
     inline bool AdditionalAuthTypesHasBeenSet() const { return m_additionalAuthTypesHasBeenSet; }
+    template<typename AdditionalAuthTypesT = Aws::Vector<BackendAPIAuthType>>
+    void SetAdditionalAuthTypes(AdditionalAuthTypesT&& value) { m_additionalAuthTypesHasBeenSet = true; m_additionalAuthTypes = std::forward<AdditionalAuthTypesT>(value); }
+    template<typename AdditionalAuthTypesT = Aws::Vector<BackendAPIAuthType>>
+    BackendAPIResourceConfig& WithAdditionalAuthTypes(AdditionalAuthTypesT&& value) { SetAdditionalAuthTypes(std::forward<AdditionalAuthTypesT>(value)); return *this;}
+    template<typename AdditionalAuthTypesT = BackendAPIAuthType>
+    BackendAPIResourceConfig& AddAdditionalAuthTypes(AdditionalAuthTypesT&& value) { m_additionalAuthTypesHasBeenSet = true; m_additionalAuthTypes.emplace_back(std::forward<AdditionalAuthTypesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Additional authentication methods used to interact with your data models.</p>
-     */
-    inline void SetAdditionalAuthTypes(const Aws::Vector<BackendAPIAuthType>& value) { m_additionalAuthTypesHasBeenSet = true; m_additionalAuthTypes = value; }
-
-    /**
-     * <p>Additional authentication methods used to interact with your data models.</p>
-     */
-    inline void SetAdditionalAuthTypes(Aws::Vector<BackendAPIAuthType>&& value) { m_additionalAuthTypesHasBeenSet = true; m_additionalAuthTypes = std::move(value); }
-
-    /**
-     * <p>Additional authentication methods used to interact with your data models.</p>
-     */
-    inline BackendAPIResourceConfig& WithAdditionalAuthTypes(const Aws::Vector<BackendAPIAuthType>& value) { SetAdditionalAuthTypes(value); return *this;}
-
-    /**
-     * <p>Additional authentication methods used to interact with your data models.</p>
-     */
-    inline BackendAPIResourceConfig& WithAdditionalAuthTypes(Aws::Vector<BackendAPIAuthType>&& value) { SetAdditionalAuthTypes(std::move(value)); return *this;}
-
-    /**
-     * <p>Additional authentication methods used to interact with your data models.</p>
-     */
-    inline BackendAPIResourceConfig& AddAdditionalAuthTypes(const BackendAPIAuthType& value) { m_additionalAuthTypesHasBeenSet = true; m_additionalAuthTypes.push_back(value); return *this; }
-
-    /**
-     * <p>Additional authentication methods used to interact with your data models.</p>
-     */
-    inline BackendAPIResourceConfig& AddAdditionalAuthTypes(BackendAPIAuthType&& value) { m_additionalAuthTypesHasBeenSet = true; m_additionalAuthTypes.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The API name used to interact with the data model, configured as a part of
      * your Amplify project.</p>
      */
-    inline const Aws::String& GetApiName() const{ return m_apiName; }
-
-    /**
-     * <p>The API name used to interact with the data model, configured as a part of
-     * your Amplify project.</p>
-     */
+    inline const Aws::String& GetApiName() const { return m_apiName; }
     inline bool ApiNameHasBeenSet() const { return m_apiNameHasBeenSet; }
+    template<typename ApiNameT = Aws::String>
+    void SetApiName(ApiNameT&& value) { m_apiNameHasBeenSet = true; m_apiName = std::forward<ApiNameT>(value); }
+    template<typename ApiNameT = Aws::String>
+    BackendAPIResourceConfig& WithApiName(ApiNameT&& value) { SetApiName(std::forward<ApiNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The API name used to interact with the data model, configured as a part of
-     * your Amplify project.</p>
-     */
-    inline void SetApiName(const Aws::String& value) { m_apiNameHasBeenSet = true; m_apiName = value; }
-
-    /**
-     * <p>The API name used to interact with the data model, configured as a part of
-     * your Amplify project.</p>
-     */
-    inline void SetApiName(Aws::String&& value) { m_apiNameHasBeenSet = true; m_apiName = std::move(value); }
-
-    /**
-     * <p>The API name used to interact with the data model, configured as a part of
-     * your Amplify project.</p>
-     */
-    inline void SetApiName(const char* value) { m_apiNameHasBeenSet = true; m_apiName.assign(value); }
-
-    /**
-     * <p>The API name used to interact with the data model, configured as a part of
-     * your Amplify project.</p>
-     */
-    inline BackendAPIResourceConfig& WithApiName(const Aws::String& value) { SetApiName(value); return *this;}
-
-    /**
-     * <p>The API name used to interact with the data model, configured as a part of
-     * your Amplify project.</p>
-     */
-    inline BackendAPIResourceConfig& WithApiName(Aws::String&& value) { SetApiName(std::move(value)); return *this;}
-
-    /**
-     * <p>The API name used to interact with the data model, configured as a part of
-     * your Amplify project.</p>
-     */
-    inline BackendAPIResourceConfig& WithApiName(const char* value) { SetApiName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The conflict resolution strategy for your data stored in the data models.</p>
      */
-    inline const BackendAPIConflictResolution& GetConflictResolution() const{ return m_conflictResolution; }
-
-    /**
-     * <p>The conflict resolution strategy for your data stored in the data models.</p>
-     */
+    inline const BackendAPIConflictResolution& GetConflictResolution() const { return m_conflictResolution; }
     inline bool ConflictResolutionHasBeenSet() const { return m_conflictResolutionHasBeenSet; }
+    template<typename ConflictResolutionT = BackendAPIConflictResolution>
+    void SetConflictResolution(ConflictResolutionT&& value) { m_conflictResolutionHasBeenSet = true; m_conflictResolution = std::forward<ConflictResolutionT>(value); }
+    template<typename ConflictResolutionT = BackendAPIConflictResolution>
+    BackendAPIResourceConfig& WithConflictResolution(ConflictResolutionT&& value) { SetConflictResolution(std::forward<ConflictResolutionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The conflict resolution strategy for your data stored in the data models.</p>
-     */
-    inline void SetConflictResolution(const BackendAPIConflictResolution& value) { m_conflictResolutionHasBeenSet = true; m_conflictResolution = value; }
-
-    /**
-     * <p>The conflict resolution strategy for your data stored in the data models.</p>
-     */
-    inline void SetConflictResolution(BackendAPIConflictResolution&& value) { m_conflictResolutionHasBeenSet = true; m_conflictResolution = std::move(value); }
-
-    /**
-     * <p>The conflict resolution strategy for your data stored in the data models.</p>
-     */
-    inline BackendAPIResourceConfig& WithConflictResolution(const BackendAPIConflictResolution& value) { SetConflictResolution(value); return *this;}
-
-    /**
-     * <p>The conflict resolution strategy for your data stored in the data models.</p>
-     */
-    inline BackendAPIResourceConfig& WithConflictResolution(BackendAPIConflictResolution&& value) { SetConflictResolution(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The default authentication type for interacting with the configured data
      * models in your Amplify project.</p>
      */
-    inline const BackendAPIAuthType& GetDefaultAuthType() const{ return m_defaultAuthType; }
-
-    /**
-     * <p>The default authentication type for interacting with the configured data
-     * models in your Amplify project.</p>
-     */
+    inline const BackendAPIAuthType& GetDefaultAuthType() const { return m_defaultAuthType; }
     inline bool DefaultAuthTypeHasBeenSet() const { return m_defaultAuthTypeHasBeenSet; }
+    template<typename DefaultAuthTypeT = BackendAPIAuthType>
+    void SetDefaultAuthType(DefaultAuthTypeT&& value) { m_defaultAuthTypeHasBeenSet = true; m_defaultAuthType = std::forward<DefaultAuthTypeT>(value); }
+    template<typename DefaultAuthTypeT = BackendAPIAuthType>
+    BackendAPIResourceConfig& WithDefaultAuthType(DefaultAuthTypeT&& value) { SetDefaultAuthType(std::forward<DefaultAuthTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The default authentication type for interacting with the configured data
-     * models in your Amplify project.</p>
-     */
-    inline void SetDefaultAuthType(const BackendAPIAuthType& value) { m_defaultAuthTypeHasBeenSet = true; m_defaultAuthType = value; }
-
-    /**
-     * <p>The default authentication type for interacting with the configured data
-     * models in your Amplify project.</p>
-     */
-    inline void SetDefaultAuthType(BackendAPIAuthType&& value) { m_defaultAuthTypeHasBeenSet = true; m_defaultAuthType = std::move(value); }
-
-    /**
-     * <p>The default authentication type for interacting with the configured data
-     * models in your Amplify project.</p>
-     */
-    inline BackendAPIResourceConfig& WithDefaultAuthType(const BackendAPIAuthType& value) { SetDefaultAuthType(value); return *this;}
-
-    /**
-     * <p>The default authentication type for interacting with the configured data
-     * models in your Amplify project.</p>
-     */
-    inline BackendAPIResourceConfig& WithDefaultAuthType(BackendAPIAuthType&& value) { SetDefaultAuthType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The service used to provision and interact with the data model.</p>
      */
-    inline const Aws::String& GetService() const{ return m_service; }
-
-    /**
-     * <p>The service used to provision and interact with the data model.</p>
-     */
+    inline const Aws::String& GetService() const { return m_service; }
     inline bool ServiceHasBeenSet() const { return m_serviceHasBeenSet; }
+    template<typename ServiceT = Aws::String>
+    void SetService(ServiceT&& value) { m_serviceHasBeenSet = true; m_service = std::forward<ServiceT>(value); }
+    template<typename ServiceT = Aws::String>
+    BackendAPIResourceConfig& WithService(ServiceT&& value) { SetService(std::forward<ServiceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The service used to provision and interact with the data model.</p>
-     */
-    inline void SetService(const Aws::String& value) { m_serviceHasBeenSet = true; m_service = value; }
-
-    /**
-     * <p>The service used to provision and interact with the data model.</p>
-     */
-    inline void SetService(Aws::String&& value) { m_serviceHasBeenSet = true; m_service = std::move(value); }
-
-    /**
-     * <p>The service used to provision and interact with the data model.</p>
-     */
-    inline void SetService(const char* value) { m_serviceHasBeenSet = true; m_service.assign(value); }
-
-    /**
-     * <p>The service used to provision and interact with the data model.</p>
-     */
-    inline BackendAPIResourceConfig& WithService(const Aws::String& value) { SetService(value); return *this;}
-
-    /**
-     * <p>The service used to provision and interact with the data model.</p>
-     */
-    inline BackendAPIResourceConfig& WithService(Aws::String&& value) { SetService(std::move(value)); return *this;}
-
-    /**
-     * <p>The service used to provision and interact with the data model.</p>
-     */
-    inline BackendAPIResourceConfig& WithService(const char* value) { SetService(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The definition of the data model in the annotated transform of the GraphQL
      * schema.</p>
      */
-    inline const Aws::String& GetTransformSchema() const{ return m_transformSchema; }
-
-    /**
-     * <p>The definition of the data model in the annotated transform of the GraphQL
-     * schema.</p>
-     */
+    inline const Aws::String& GetTransformSchema() const { return m_transformSchema; }
     inline bool TransformSchemaHasBeenSet() const { return m_transformSchemaHasBeenSet; }
-
-    /**
-     * <p>The definition of the data model in the annotated transform of the GraphQL
-     * schema.</p>
-     */
-    inline void SetTransformSchema(const Aws::String& value) { m_transformSchemaHasBeenSet = true; m_transformSchema = value; }
-
-    /**
-     * <p>The definition of the data model in the annotated transform of the GraphQL
-     * schema.</p>
-     */
-    inline void SetTransformSchema(Aws::String&& value) { m_transformSchemaHasBeenSet = true; m_transformSchema = std::move(value); }
-
-    /**
-     * <p>The definition of the data model in the annotated transform of the GraphQL
-     * schema.</p>
-     */
-    inline void SetTransformSchema(const char* value) { m_transformSchemaHasBeenSet = true; m_transformSchema.assign(value); }
-
-    /**
-     * <p>The definition of the data model in the annotated transform of the GraphQL
-     * schema.</p>
-     */
-    inline BackendAPIResourceConfig& WithTransformSchema(const Aws::String& value) { SetTransformSchema(value); return *this;}
-
-    /**
-     * <p>The definition of the data model in the annotated transform of the GraphQL
-     * schema.</p>
-     */
-    inline BackendAPIResourceConfig& WithTransformSchema(Aws::String&& value) { SetTransformSchema(std::move(value)); return *this;}
-
-    /**
-     * <p>The definition of the data model in the annotated transform of the GraphQL
-     * schema.</p>
-     */
-    inline BackendAPIResourceConfig& WithTransformSchema(const char* value) { SetTransformSchema(value); return *this;}
-
+    template<typename TransformSchemaT = Aws::String>
+    void SetTransformSchema(TransformSchemaT&& value) { m_transformSchemaHasBeenSet = true; m_transformSchema = std::forward<TransformSchemaT>(value); }
+    template<typename TransformSchemaT = Aws::String>
+    BackendAPIResourceConfig& WithTransformSchema(TransformSchemaT&& value) { SetTransformSchema(std::forward<TransformSchemaT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<BackendAPIAuthType> m_additionalAuthTypes;

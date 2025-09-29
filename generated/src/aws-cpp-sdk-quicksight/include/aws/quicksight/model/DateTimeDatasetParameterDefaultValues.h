@@ -32,52 +32,25 @@ namespace Model
   class DateTimeDatasetParameterDefaultValues
   {
   public:
-    AWS_QUICKSIGHT_API DateTimeDatasetParameterDefaultValues();
+    AWS_QUICKSIGHT_API DateTimeDatasetParameterDefaultValues() = default;
     AWS_QUICKSIGHT_API DateTimeDatasetParameterDefaultValues(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API DateTimeDatasetParameterDefaultValues& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A list of static default values for a given date time parameter.</p>
      */
-    inline const Aws::Vector<Aws::Utils::DateTime>& GetStaticValues() const{ return m_staticValues; }
-
-    /**
-     * <p>A list of static default values for a given date time parameter.</p>
-     */
+    inline const Aws::Vector<Aws::Utils::DateTime>& GetStaticValues() const { return m_staticValues; }
     inline bool StaticValuesHasBeenSet() const { return m_staticValuesHasBeenSet; }
-
-    /**
-     * <p>A list of static default values for a given date time parameter.</p>
-     */
-    inline void SetStaticValues(const Aws::Vector<Aws::Utils::DateTime>& value) { m_staticValuesHasBeenSet = true; m_staticValues = value; }
-
-    /**
-     * <p>A list of static default values for a given date time parameter.</p>
-     */
-    inline void SetStaticValues(Aws::Vector<Aws::Utils::DateTime>&& value) { m_staticValuesHasBeenSet = true; m_staticValues = std::move(value); }
-
-    /**
-     * <p>A list of static default values for a given date time parameter.</p>
-     */
-    inline DateTimeDatasetParameterDefaultValues& WithStaticValues(const Aws::Vector<Aws::Utils::DateTime>& value) { SetStaticValues(value); return *this;}
-
-    /**
-     * <p>A list of static default values for a given date time parameter.</p>
-     */
-    inline DateTimeDatasetParameterDefaultValues& WithStaticValues(Aws::Vector<Aws::Utils::DateTime>&& value) { SetStaticValues(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of static default values for a given date time parameter.</p>
-     */
-    inline DateTimeDatasetParameterDefaultValues& AddStaticValues(const Aws::Utils::DateTime& value) { m_staticValuesHasBeenSet = true; m_staticValues.push_back(value); return *this; }
-
-    /**
-     * <p>A list of static default values for a given date time parameter.</p>
-     */
-    inline DateTimeDatasetParameterDefaultValues& AddStaticValues(Aws::Utils::DateTime&& value) { m_staticValuesHasBeenSet = true; m_staticValues.push_back(std::move(value)); return *this; }
-
+    template<typename StaticValuesT = Aws::Vector<Aws::Utils::DateTime>>
+    void SetStaticValues(StaticValuesT&& value) { m_staticValuesHasBeenSet = true; m_staticValues = std::forward<StaticValuesT>(value); }
+    template<typename StaticValuesT = Aws::Vector<Aws::Utils::DateTime>>
+    DateTimeDatasetParameterDefaultValues& WithStaticValues(StaticValuesT&& value) { SetStaticValues(std::forward<StaticValuesT>(value)); return *this;}
+    template<typename StaticValuesT = Aws::Utils::DateTime>
+    DateTimeDatasetParameterDefaultValues& AddStaticValues(StaticValuesT&& value) { m_staticValuesHasBeenSet = true; m_staticValues.emplace_back(std::forward<StaticValuesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Aws::Utils::DateTime> m_staticValues;

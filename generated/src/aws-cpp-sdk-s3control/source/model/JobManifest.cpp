@@ -20,15 +20,7 @@ namespace S3Control
 namespace Model
 {
 
-JobManifest::JobManifest() : 
-    m_specHasBeenSet(false),
-    m_locationHasBeenSet(false)
-{
-}
-
-JobManifest::JobManifest(const XmlNode& xmlNode) : 
-    m_specHasBeenSet(false),
-    m_locationHasBeenSet(false)
+JobManifest::JobManifest(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

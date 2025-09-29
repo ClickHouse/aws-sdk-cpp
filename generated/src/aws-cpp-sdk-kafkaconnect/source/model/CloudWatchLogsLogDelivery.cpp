@@ -18,17 +18,7 @@ namespace KafkaConnect
 namespace Model
 {
 
-CloudWatchLogsLogDelivery::CloudWatchLogsLogDelivery() : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false),
-    m_logGroupHasBeenSet(false)
-{
-}
-
-CloudWatchLogsLogDelivery::CloudWatchLogsLogDelivery(JsonView jsonValue) : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false),
-    m_logGroupHasBeenSet(false)
+CloudWatchLogsLogDelivery::CloudWatchLogsLogDelivery(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ CloudWatchLogsLogDelivery& CloudWatchLogsLogDelivery::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("enabled"))
   {
     m_enabled = jsonValue.GetBool("enabled");
-
     m_enabledHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("logGroup"))
   {
     m_logGroup = jsonValue.GetString("logGroup");
-
     m_logGroupHasBeenSet = true;
   }
-
   return *this;
 }
 

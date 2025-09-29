@@ -32,68 +32,25 @@ namespace Model
   class ChatStreamingConfiguration
   {
   public:
-    AWS_CONNECT_API ChatStreamingConfiguration();
+    AWS_CONNECT_API ChatStreamingConfiguration() = default;
     AWS_CONNECT_API ChatStreamingConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API ChatStreamingConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the standard Amazon SNS topic. The Amazon
      * Resource Name (ARN) of the streaming endpoint that is used to publish real-time
      * message streaming for chat conversations.</p>
      */
-    inline const Aws::String& GetStreamingEndpointArn() const{ return m_streamingEndpointArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the standard Amazon SNS topic. The Amazon
-     * Resource Name (ARN) of the streaming endpoint that is used to publish real-time
-     * message streaming for chat conversations.</p>
-     */
+    inline const Aws::String& GetStreamingEndpointArn() const { return m_streamingEndpointArn; }
     inline bool StreamingEndpointArnHasBeenSet() const { return m_streamingEndpointArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the standard Amazon SNS topic. The Amazon
-     * Resource Name (ARN) of the streaming endpoint that is used to publish real-time
-     * message streaming for chat conversations.</p>
-     */
-    inline void SetStreamingEndpointArn(const Aws::String& value) { m_streamingEndpointArnHasBeenSet = true; m_streamingEndpointArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the standard Amazon SNS topic. The Amazon
-     * Resource Name (ARN) of the streaming endpoint that is used to publish real-time
-     * message streaming for chat conversations.</p>
-     */
-    inline void SetStreamingEndpointArn(Aws::String&& value) { m_streamingEndpointArnHasBeenSet = true; m_streamingEndpointArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the standard Amazon SNS topic. The Amazon
-     * Resource Name (ARN) of the streaming endpoint that is used to publish real-time
-     * message streaming for chat conversations.</p>
-     */
-    inline void SetStreamingEndpointArn(const char* value) { m_streamingEndpointArnHasBeenSet = true; m_streamingEndpointArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the standard Amazon SNS topic. The Amazon
-     * Resource Name (ARN) of the streaming endpoint that is used to publish real-time
-     * message streaming for chat conversations.</p>
-     */
-    inline ChatStreamingConfiguration& WithStreamingEndpointArn(const Aws::String& value) { SetStreamingEndpointArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the standard Amazon SNS topic. The Amazon
-     * Resource Name (ARN) of the streaming endpoint that is used to publish real-time
-     * message streaming for chat conversations.</p>
-     */
-    inline ChatStreamingConfiguration& WithStreamingEndpointArn(Aws::String&& value) { SetStreamingEndpointArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the standard Amazon SNS topic. The Amazon
-     * Resource Name (ARN) of the streaming endpoint that is used to publish real-time
-     * message streaming for chat conversations.</p>
-     */
-    inline ChatStreamingConfiguration& WithStreamingEndpointArn(const char* value) { SetStreamingEndpointArn(value); return *this;}
-
+    template<typename StreamingEndpointArnT = Aws::String>
+    void SetStreamingEndpointArn(StreamingEndpointArnT&& value) { m_streamingEndpointArnHasBeenSet = true; m_streamingEndpointArn = std::forward<StreamingEndpointArnT>(value); }
+    template<typename StreamingEndpointArnT = Aws::String>
+    ChatStreamingConfiguration& WithStreamingEndpointArn(StreamingEndpointArnT&& value) { SetStreamingEndpointArn(std::forward<StreamingEndpointArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_streamingEndpointArn;

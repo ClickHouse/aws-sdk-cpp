@@ -24,7 +24,7 @@ namespace Model
   class DeleteDBParameterGroupRequest : public RDSRequest
   {
   public:
-    AWS_RDS_API DeleteDBParameterGroupRequest();
+    AWS_RDS_API DeleteDBParameterGroupRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,70 +39,20 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The name of the DB parameter group.</p> <p>Constraints:</p> <ul> <li> <p>Must
      * be the name of an existing DB parameter group</p> </li> <li> <p>You can't delete
      * a default DB parameter group</p> </li> <li> <p>Can't be associated with any DB
      * instances</p> </li> </ul>
      */
-    inline const Aws::String& GetDBParameterGroupName() const{ return m_dBParameterGroupName; }
-
-    /**
-     * <p>The name of the DB parameter group.</p> <p>Constraints:</p> <ul> <li> <p>Must
-     * be the name of an existing DB parameter group</p> </li> <li> <p>You can't delete
-     * a default DB parameter group</p> </li> <li> <p>Can't be associated with any DB
-     * instances</p> </li> </ul>
-     */
+    inline const Aws::String& GetDBParameterGroupName() const { return m_dBParameterGroupName; }
     inline bool DBParameterGroupNameHasBeenSet() const { return m_dBParameterGroupNameHasBeenSet; }
-
-    /**
-     * <p>The name of the DB parameter group.</p> <p>Constraints:</p> <ul> <li> <p>Must
-     * be the name of an existing DB parameter group</p> </li> <li> <p>You can't delete
-     * a default DB parameter group</p> </li> <li> <p>Can't be associated with any DB
-     * instances</p> </li> </ul>
-     */
-    inline void SetDBParameterGroupName(const Aws::String& value) { m_dBParameterGroupNameHasBeenSet = true; m_dBParameterGroupName = value; }
-
-    /**
-     * <p>The name of the DB parameter group.</p> <p>Constraints:</p> <ul> <li> <p>Must
-     * be the name of an existing DB parameter group</p> </li> <li> <p>You can't delete
-     * a default DB parameter group</p> </li> <li> <p>Can't be associated with any DB
-     * instances</p> </li> </ul>
-     */
-    inline void SetDBParameterGroupName(Aws::String&& value) { m_dBParameterGroupNameHasBeenSet = true; m_dBParameterGroupName = std::move(value); }
-
-    /**
-     * <p>The name of the DB parameter group.</p> <p>Constraints:</p> <ul> <li> <p>Must
-     * be the name of an existing DB parameter group</p> </li> <li> <p>You can't delete
-     * a default DB parameter group</p> </li> <li> <p>Can't be associated with any DB
-     * instances</p> </li> </ul>
-     */
-    inline void SetDBParameterGroupName(const char* value) { m_dBParameterGroupNameHasBeenSet = true; m_dBParameterGroupName.assign(value); }
-
-    /**
-     * <p>The name of the DB parameter group.</p> <p>Constraints:</p> <ul> <li> <p>Must
-     * be the name of an existing DB parameter group</p> </li> <li> <p>You can't delete
-     * a default DB parameter group</p> </li> <li> <p>Can't be associated with any DB
-     * instances</p> </li> </ul>
-     */
-    inline DeleteDBParameterGroupRequest& WithDBParameterGroupName(const Aws::String& value) { SetDBParameterGroupName(value); return *this;}
-
-    /**
-     * <p>The name of the DB parameter group.</p> <p>Constraints:</p> <ul> <li> <p>Must
-     * be the name of an existing DB parameter group</p> </li> <li> <p>You can't delete
-     * a default DB parameter group</p> </li> <li> <p>Can't be associated with any DB
-     * instances</p> </li> </ul>
-     */
-    inline DeleteDBParameterGroupRequest& WithDBParameterGroupName(Aws::String&& value) { SetDBParameterGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the DB parameter group.</p> <p>Constraints:</p> <ul> <li> <p>Must
-     * be the name of an existing DB parameter group</p> </li> <li> <p>You can't delete
-     * a default DB parameter group</p> </li> <li> <p>Can't be associated with any DB
-     * instances</p> </li> </ul>
-     */
-    inline DeleteDBParameterGroupRequest& WithDBParameterGroupName(const char* value) { SetDBParameterGroupName(value); return *this;}
-
+    template<typename DBParameterGroupNameT = Aws::String>
+    void SetDBParameterGroupName(DBParameterGroupNameT&& value) { m_dBParameterGroupNameHasBeenSet = true; m_dBParameterGroupName = std::forward<DBParameterGroupNameT>(value); }
+    template<typename DBParameterGroupNameT = Aws::String>
+    DeleteDBParameterGroupRequest& WithDBParameterGroupName(DBParameterGroupNameT&& value) { SetDBParameterGroupName(std::forward<DBParameterGroupNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_dBParameterGroupName;

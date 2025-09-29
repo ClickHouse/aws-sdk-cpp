@@ -18,16 +18,11 @@ namespace Model
 {
 
   /**
-   * The tags to add to the resource. A tag is an array of key-value pairs. Tag keys
-   * can have a maximum character length of 128 characters, and tag values can have a
-   * maximum length of 256 characters.<p><h3>See Also:</h3>   <a
-   * href="http://docs.aws.amazon.com/goto/WebAPI/mediaconnect-2018-11-14/TagResourceRequest">AWS
-   * API Reference</a></p>
    */
   class TagResourceRequest : public MediaConnectRequest
   {
   public:
-    AWS_MEDIACONNECT_API TagResourceRequest();
+    AWS_MEDIACONNECT_API TagResourceRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,133 +33,36 @@ namespace Model
     AWS_MEDIACONNECT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
-     * The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect
-     * resource to which to add tags.
+     * <p> The Amazon Resource Name (ARN) that identifies the MediaConnect resource to
+     * which to add tags.</p>
      */
-    inline const Aws::String& GetResourceArn() const{ return m_resourceArn; }
-
-    /**
-     * The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect
-     * resource to which to add tags.
-     */
+    inline const Aws::String& GetResourceArn() const { return m_resourceArn; }
     inline bool ResourceArnHasBeenSet() const { return m_resourceArnHasBeenSet; }
+    template<typename ResourceArnT = Aws::String>
+    void SetResourceArn(ResourceArnT&& value) { m_resourceArnHasBeenSet = true; m_resourceArn = std::forward<ResourceArnT>(value); }
+    template<typename ResourceArnT = Aws::String>
+    TagResourceRequest& WithResourceArn(ResourceArnT&& value) { SetResourceArn(std::forward<ResourceArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect
-     * resource to which to add tags.
+     * <p> A map from tag keys to values. Tag keys can have a maximum character length
+     * of 128 characters, and tag values can have a maximum length of 256
+     * characters.</p>
      */
-    inline void SetResourceArn(const Aws::String& value) { m_resourceArnHasBeenSet = true; m_resourceArn = value; }
-
-    /**
-     * The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect
-     * resource to which to add tags.
-     */
-    inline void SetResourceArn(Aws::String&& value) { m_resourceArnHasBeenSet = true; m_resourceArn = std::move(value); }
-
-    /**
-     * The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect
-     * resource to which to add tags.
-     */
-    inline void SetResourceArn(const char* value) { m_resourceArnHasBeenSet = true; m_resourceArn.assign(value); }
-
-    /**
-     * The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect
-     * resource to which to add tags.
-     */
-    inline TagResourceRequest& WithResourceArn(const Aws::String& value) { SetResourceArn(value); return *this;}
-
-    /**
-     * The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect
-     * resource to which to add tags.
-     */
-    inline TagResourceRequest& WithResourceArn(Aws::String&& value) { SetResourceArn(std::move(value)); return *this;}
-
-    /**
-     * The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect
-     * resource to which to add tags.
-     */
-    inline TagResourceRequest& WithResourceArn(const char* value) { SetResourceArn(value); return *this;}
-
-
-    /**
-     * A map from tag keys to values. Tag keys can have a maximum character length of
-     * 128 characters, and tag values can have a maximum length of 256 characters.
-     */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * A map from tag keys to values. Tag keys can have a maximum character length of
-     * 128 characters, and tag values can have a maximum length of 256 characters.
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * A map from tag keys to values. Tag keys can have a maximum character length of
-     * 128 characters, and tag values can have a maximum length of 256 characters.
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * A map from tag keys to values. Tag keys can have a maximum character length of
-     * 128 characters, and tag values can have a maximum length of 256 characters.
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * A map from tag keys to values. Tag keys can have a maximum character length of
-     * 128 characters, and tag values can have a maximum length of 256 characters.
-     */
-    inline TagResourceRequest& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * A map from tag keys to values. Tag keys can have a maximum character length of
-     * 128 characters, and tag values can have a maximum length of 256 characters.
-     */
-    inline TagResourceRequest& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * A map from tag keys to values. Tag keys can have a maximum character length of
-     * 128 characters, and tag values can have a maximum length of 256 characters.
-     */
-    inline TagResourceRequest& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-    /**
-     * A map from tag keys to values. Tag keys can have a maximum character length of
-     * 128 characters, and tag values can have a maximum length of 256 characters.
-     */
-    inline TagResourceRequest& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * A map from tag keys to values. Tag keys can have a maximum character length of
-     * 128 characters, and tag values can have a maximum length of 256 characters.
-     */
-    inline TagResourceRequest& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * A map from tag keys to values. Tag keys can have a maximum character length of
-     * 128 characters, and tag values can have a maximum length of 256 characters.
-     */
-    inline TagResourceRequest& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * A map from tag keys to values. Tag keys can have a maximum character length of
-     * 128 characters, and tag values can have a maximum length of 256 characters.
-     */
-    inline TagResourceRequest& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * A map from tag keys to values. Tag keys can have a maximum character length of
-     * 128 characters, and tag values can have a maximum length of 256 characters.
-     */
-    inline TagResourceRequest& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * A map from tag keys to values. Tag keys can have a maximum character length of
-     * 128 characters, and tag values can have a maximum length of 256 characters.
-     */
-    inline TagResourceRequest& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    TagResourceRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    TagResourceRequest& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
     Aws::String m_resourceArn;

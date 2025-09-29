@@ -18,35 +18,7 @@ namespace OSIS
 namespace Model
 {
 
-PipelineSummary::PipelineSummary() : 
-    m_status(PipelineStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_statusReasonHasBeenSet(false),
-    m_pipelineNameHasBeenSet(false),
-    m_pipelineArnHasBeenSet(false),
-    m_minUnits(0),
-    m_minUnitsHasBeenSet(false),
-    m_maxUnits(0),
-    m_maxUnitsHasBeenSet(false),
-    m_createdAtHasBeenSet(false),
-    m_lastUpdatedAtHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-PipelineSummary::PipelineSummary(JsonView jsonValue) : 
-    m_status(PipelineStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_statusReasonHasBeenSet(false),
-    m_pipelineNameHasBeenSet(false),
-    m_pipelineArnHasBeenSet(false),
-    m_minUnits(0),
-    m_minUnitsHasBeenSet(false),
-    m_maxUnits(0),
-    m_maxUnitsHasBeenSet(false),
-    m_createdAtHasBeenSet(false),
-    m_lastUpdatedAtHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+PipelineSummary::PipelineSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -56,59 +28,52 @@ PipelineSummary& PipelineSummary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Status"))
   {
     m_status = PipelineStatusMapper::GetPipelineStatusForName(jsonValue.GetString("Status"));
-
     m_statusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StatusReason"))
   {
     m_statusReason = jsonValue.GetObject("StatusReason");
-
     m_statusReasonHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PipelineName"))
   {
     m_pipelineName = jsonValue.GetString("PipelineName");
-
     m_pipelineNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PipelineArn"))
   {
     m_pipelineArn = jsonValue.GetString("PipelineArn");
-
     m_pipelineArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MinUnits"))
   {
     m_minUnits = jsonValue.GetInteger("MinUnits");
-
     m_minUnitsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MaxUnits"))
   {
     m_maxUnits = jsonValue.GetInteger("MaxUnits");
-
     m_maxUnitsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CreatedAt"))
   {
     m_createdAt = jsonValue.GetDouble("CreatedAt");
-
     m_createdAtHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LastUpdatedAt"))
   {
     m_lastUpdatedAt = jsonValue.GetDouble("LastUpdatedAt");
-
     m_lastUpdatedAtHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("Destinations"))
+  {
+    Aws::Utils::Array<JsonView> destinationsJsonList = jsonValue.GetArray("Destinations");
+    for(unsigned destinationsIndex = 0; destinationsIndex < destinationsJsonList.GetLength(); ++destinationsIndex)
+    {
+      m_destinations.push_back(destinationsJsonList[destinationsIndex].AsObject());
+    }
+    m_destinationsHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("Tags"))
   {
     Aws::Utils::Array<JsonView> tagsJsonList = jsonValue.GetArray("Tags");
@@ -118,7 +83,6 @@ PipelineSummary& PipelineSummary::operator =(JsonView jsonValue)
     }
     m_tagsHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -169,6 +133,17 @@ JsonValue PipelineSummary::Jsonize() const
   if(m_lastUpdatedAtHasBeenSet)
   {
    payload.WithDouble("LastUpdatedAt", m_lastUpdatedAt.SecondsWithMSPrecision());
+  }
+
+  if(m_destinationsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> destinationsJsonList(m_destinations.size());
+   for(unsigned destinationsIndex = 0; destinationsIndex < destinationsJsonList.GetLength(); ++destinationsIndex)
+   {
+     destinationsJsonList[destinationsIndex].AsObject(m_destinations[destinationsIndex].Jsonize());
+   }
+   payload.WithArray("Destinations", std::move(destinationsJsonList));
+
   }
 
   if(m_tagsHasBeenSet)

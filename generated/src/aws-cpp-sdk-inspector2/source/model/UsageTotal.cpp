@@ -18,15 +18,7 @@ namespace Inspector2
 namespace Model
 {
 
-UsageTotal::UsageTotal() : 
-    m_accountIdHasBeenSet(false),
-    m_usageHasBeenSet(false)
-{
-}
-
-UsageTotal::UsageTotal(JsonView jsonValue) : 
-    m_accountIdHasBeenSet(false),
-    m_usageHasBeenSet(false)
+UsageTotal::UsageTotal(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ UsageTotal& UsageTotal::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("accountId"))
   {
     m_accountId = jsonValue.GetString("accountId");
-
     m_accountIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("usage"))
   {
     Aws::Utils::Array<JsonView> usageJsonList = jsonValue.GetArray("usage");
@@ -49,7 +39,6 @@ UsageTotal& UsageTotal::operator =(JsonView jsonValue)
     }
     m_usageHasBeenSet = true;
   }
-
   return *this;
 }
 

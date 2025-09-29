@@ -34,57 +34,26 @@ namespace Model
   class StreamModeDetails
   {
   public:
-    AWS_KINESIS_API StreamModeDetails();
+    AWS_KINESIS_API StreamModeDetails() = default;
     AWS_KINESIS_API StreamModeDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESIS_API StreamModeDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESIS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> Specifies the capacity mode to which you want to set your data stream.
      * Currently, in Kinesis Data Streams, you can choose between an <b>on-demand</b>
      * capacity mode and a <b>provisioned</b> capacity mode for your data streams. </p>
      */
-    inline const StreamMode& GetStreamMode() const{ return m_streamMode; }
-
-    /**
-     * <p> Specifies the capacity mode to which you want to set your data stream.
-     * Currently, in Kinesis Data Streams, you can choose between an <b>on-demand</b>
-     * capacity mode and a <b>provisioned</b> capacity mode for your data streams. </p>
-     */
+    inline StreamMode GetStreamMode() const { return m_streamMode; }
     inline bool StreamModeHasBeenSet() const { return m_streamModeHasBeenSet; }
-
-    /**
-     * <p> Specifies the capacity mode to which you want to set your data stream.
-     * Currently, in Kinesis Data Streams, you can choose between an <b>on-demand</b>
-     * capacity mode and a <b>provisioned</b> capacity mode for your data streams. </p>
-     */
-    inline void SetStreamMode(const StreamMode& value) { m_streamModeHasBeenSet = true; m_streamMode = value; }
-
-    /**
-     * <p> Specifies the capacity mode to which you want to set your data stream.
-     * Currently, in Kinesis Data Streams, you can choose between an <b>on-demand</b>
-     * capacity mode and a <b>provisioned</b> capacity mode for your data streams. </p>
-     */
-    inline void SetStreamMode(StreamMode&& value) { m_streamModeHasBeenSet = true; m_streamMode = std::move(value); }
-
-    /**
-     * <p> Specifies the capacity mode to which you want to set your data stream.
-     * Currently, in Kinesis Data Streams, you can choose between an <b>on-demand</b>
-     * capacity mode and a <b>provisioned</b> capacity mode for your data streams. </p>
-     */
-    inline StreamModeDetails& WithStreamMode(const StreamMode& value) { SetStreamMode(value); return *this;}
-
-    /**
-     * <p> Specifies the capacity mode to which you want to set your data stream.
-     * Currently, in Kinesis Data Streams, you can choose between an <b>on-demand</b>
-     * capacity mode and a <b>provisioned</b> capacity mode for your data streams. </p>
-     */
-    inline StreamModeDetails& WithStreamMode(StreamMode&& value) { SetStreamMode(std::move(value)); return *this;}
-
+    inline void SetStreamMode(StreamMode value) { m_streamModeHasBeenSet = true; m_streamMode = value; }
+    inline StreamModeDetails& WithStreamMode(StreamMode value) { SetStreamMode(value); return *this;}
+    ///@}
   private:
 
-    StreamMode m_streamMode;
+    StreamMode m_streamMode{StreamMode::NOT_SET};
     bool m_streamModeHasBeenSet = false;
   };
 

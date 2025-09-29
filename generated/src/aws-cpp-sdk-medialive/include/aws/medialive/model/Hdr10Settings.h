@@ -29,45 +29,26 @@ namespace Model
   class Hdr10Settings
   {
   public:
-    AWS_MEDIALIVE_API Hdr10Settings();
+    AWS_MEDIALIVE_API Hdr10Settings() = default;
     AWS_MEDIALIVE_API Hdr10Settings(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API Hdr10Settings& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * Maximum Content Light Level
 An integer metadata value defining the maximum light
      * level, in nits,
 of any single pixel within an encoded HDR video stream or file.
      */
-    inline int GetMaxCll() const{ return m_maxCll; }
-
-    /**
-     * Maximum Content Light Level
-An integer metadata value defining the maximum light
-     * level, in nits,
-of any single pixel within an encoded HDR video stream or file.
-     */
+    inline int GetMaxCll() const { return m_maxCll; }
     inline bool MaxCllHasBeenSet() const { return m_maxCllHasBeenSet; }
-
-    /**
-     * Maximum Content Light Level
-An integer metadata value defining the maximum light
-     * level, in nits,
-of any single pixel within an encoded HDR video stream or file.
-     */
     inline void SetMaxCll(int value) { m_maxCllHasBeenSet = true; m_maxCll = value; }
-
-    /**
-     * Maximum Content Light Level
-An integer metadata value defining the maximum light
-     * level, in nits,
-of any single pixel within an encoded HDR video stream or file.
-     */
     inline Hdr10Settings& WithMaxCll(int value) { SetMaxCll(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * Maximum Frame Average Light Level
 An integer metadata value defining the maximum
@@ -75,41 +56,17 @@ An integer metadata value defining the maximum
 for any single frame within an encoded HDR video
      * stream or file.
      */
-    inline int GetMaxFall() const{ return m_maxFall; }
-
-    /**
-     * Maximum Frame Average Light Level
-An integer metadata value defining the maximum
-     * average light level, in nits,
-for any single frame within an encoded HDR video
-     * stream or file.
-     */
+    inline int GetMaxFall() const { return m_maxFall; }
     inline bool MaxFallHasBeenSet() const { return m_maxFallHasBeenSet; }
-
-    /**
-     * Maximum Frame Average Light Level
-An integer metadata value defining the maximum
-     * average light level, in nits,
-for any single frame within an encoded HDR video
-     * stream or file.
-     */
     inline void SetMaxFall(int value) { m_maxFallHasBeenSet = true; m_maxFall = value; }
-
-    /**
-     * Maximum Frame Average Light Level
-An integer metadata value defining the maximum
-     * average light level, in nits,
-for any single frame within an encoded HDR video
-     * stream or file.
-     */
     inline Hdr10Settings& WithMaxFall(int value) { SetMaxFall(value); return *this;}
-
+    ///@}
   private:
 
-    int m_maxCll;
+    int m_maxCll{0};
     bool m_maxCllHasBeenSet = false;
 
-    int m_maxFall;
+    int m_maxFall{0};
     bool m_maxFallHasBeenSet = false;
   };
 

@@ -24,7 +24,7 @@ namespace Model
   class ModifyRuleRequest : public ElasticLoadBalancingv2Request
   {
   public:
-    AWS_ELASTICLOADBALANCINGV2_API ModifyRuleRequest();
+    AWS_ELASTICLOADBALANCINGV2_API ModifyRuleRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,128 +39,45 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the rule.</p>
      */
-    inline const Aws::String& GetRuleArn() const{ return m_ruleArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the rule.</p>
-     */
+    inline const Aws::String& GetRuleArn() const { return m_ruleArn; }
     inline bool RuleArnHasBeenSet() const { return m_ruleArnHasBeenSet; }
+    template<typename RuleArnT = Aws::String>
+    void SetRuleArn(RuleArnT&& value) { m_ruleArnHasBeenSet = true; m_ruleArn = std::forward<RuleArnT>(value); }
+    template<typename RuleArnT = Aws::String>
+    ModifyRuleRequest& WithRuleArn(RuleArnT&& value) { SetRuleArn(std::forward<RuleArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the rule.</p>
-     */
-    inline void SetRuleArn(const Aws::String& value) { m_ruleArnHasBeenSet = true; m_ruleArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the rule.</p>
-     */
-    inline void SetRuleArn(Aws::String&& value) { m_ruleArnHasBeenSet = true; m_ruleArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the rule.</p>
-     */
-    inline void SetRuleArn(const char* value) { m_ruleArnHasBeenSet = true; m_ruleArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the rule.</p>
-     */
-    inline ModifyRuleRequest& WithRuleArn(const Aws::String& value) { SetRuleArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the rule.</p>
-     */
-    inline ModifyRuleRequest& WithRuleArn(Aws::String&& value) { SetRuleArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the rule.</p>
-     */
-    inline ModifyRuleRequest& WithRuleArn(const char* value) { SetRuleArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The conditions.</p>
      */
-    inline const Aws::Vector<RuleCondition>& GetConditions() const{ return m_conditions; }
-
-    /**
-     * <p>The conditions.</p>
-     */
+    inline const Aws::Vector<RuleCondition>& GetConditions() const { return m_conditions; }
     inline bool ConditionsHasBeenSet() const { return m_conditionsHasBeenSet; }
+    template<typename ConditionsT = Aws::Vector<RuleCondition>>
+    void SetConditions(ConditionsT&& value) { m_conditionsHasBeenSet = true; m_conditions = std::forward<ConditionsT>(value); }
+    template<typename ConditionsT = Aws::Vector<RuleCondition>>
+    ModifyRuleRequest& WithConditions(ConditionsT&& value) { SetConditions(std::forward<ConditionsT>(value)); return *this;}
+    template<typename ConditionsT = RuleCondition>
+    ModifyRuleRequest& AddConditions(ConditionsT&& value) { m_conditionsHasBeenSet = true; m_conditions.emplace_back(std::forward<ConditionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The conditions.</p>
-     */
-    inline void SetConditions(const Aws::Vector<RuleCondition>& value) { m_conditionsHasBeenSet = true; m_conditions = value; }
-
-    /**
-     * <p>The conditions.</p>
-     */
-    inline void SetConditions(Aws::Vector<RuleCondition>&& value) { m_conditionsHasBeenSet = true; m_conditions = std::move(value); }
-
-    /**
-     * <p>The conditions.</p>
-     */
-    inline ModifyRuleRequest& WithConditions(const Aws::Vector<RuleCondition>& value) { SetConditions(value); return *this;}
-
-    /**
-     * <p>The conditions.</p>
-     */
-    inline ModifyRuleRequest& WithConditions(Aws::Vector<RuleCondition>&& value) { SetConditions(std::move(value)); return *this;}
-
-    /**
-     * <p>The conditions.</p>
-     */
-    inline ModifyRuleRequest& AddConditions(const RuleCondition& value) { m_conditionsHasBeenSet = true; m_conditions.push_back(value); return *this; }
-
-    /**
-     * <p>The conditions.</p>
-     */
-    inline ModifyRuleRequest& AddConditions(RuleCondition&& value) { m_conditionsHasBeenSet = true; m_conditions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The actions.</p>
      */
-    inline const Aws::Vector<Action>& GetActions() const{ return m_actions; }
-
-    /**
-     * <p>The actions.</p>
-     */
+    inline const Aws::Vector<Action>& GetActions() const { return m_actions; }
     inline bool ActionsHasBeenSet() const { return m_actionsHasBeenSet; }
-
-    /**
-     * <p>The actions.</p>
-     */
-    inline void SetActions(const Aws::Vector<Action>& value) { m_actionsHasBeenSet = true; m_actions = value; }
-
-    /**
-     * <p>The actions.</p>
-     */
-    inline void SetActions(Aws::Vector<Action>&& value) { m_actionsHasBeenSet = true; m_actions = std::move(value); }
-
-    /**
-     * <p>The actions.</p>
-     */
-    inline ModifyRuleRequest& WithActions(const Aws::Vector<Action>& value) { SetActions(value); return *this;}
-
-    /**
-     * <p>The actions.</p>
-     */
-    inline ModifyRuleRequest& WithActions(Aws::Vector<Action>&& value) { SetActions(std::move(value)); return *this;}
-
-    /**
-     * <p>The actions.</p>
-     */
-    inline ModifyRuleRequest& AddActions(const Action& value) { m_actionsHasBeenSet = true; m_actions.push_back(value); return *this; }
-
-    /**
-     * <p>The actions.</p>
-     */
-    inline ModifyRuleRequest& AddActions(Action&& value) { m_actionsHasBeenSet = true; m_actions.push_back(std::move(value)); return *this; }
-
+    template<typename ActionsT = Aws::Vector<Action>>
+    void SetActions(ActionsT&& value) { m_actionsHasBeenSet = true; m_actions = std::forward<ActionsT>(value); }
+    template<typename ActionsT = Aws::Vector<Action>>
+    ModifyRuleRequest& WithActions(ActionsT&& value) { SetActions(std::forward<ActionsT>(value)); return *this;}
+    template<typename ActionsT = Action>
+    ModifyRuleRequest& AddActions(ActionsT&& value) { m_actionsHasBeenSet = true; m_actions.emplace_back(std::forward<ActionsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_ruleArn;

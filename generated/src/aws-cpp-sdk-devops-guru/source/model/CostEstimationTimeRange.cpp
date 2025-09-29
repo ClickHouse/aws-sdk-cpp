@@ -18,15 +18,7 @@ namespace DevOpsGuru
 namespace Model
 {
 
-CostEstimationTimeRange::CostEstimationTimeRange() : 
-    m_startTimeHasBeenSet(false),
-    m_endTimeHasBeenSet(false)
-{
-}
-
-CostEstimationTimeRange::CostEstimationTimeRange(JsonView jsonValue) : 
-    m_startTimeHasBeenSet(false),
-    m_endTimeHasBeenSet(false)
+CostEstimationTimeRange::CostEstimationTimeRange(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ CostEstimationTimeRange& CostEstimationTimeRange::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("StartTime"))
   {
     m_startTime = jsonValue.GetDouble("StartTime");
-
     m_startTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("EndTime"))
   {
     m_endTime = jsonValue.GetDouble("EndTime");
-
     m_endTimeHasBeenSet = true;
   }
-
   return *this;
 }
 

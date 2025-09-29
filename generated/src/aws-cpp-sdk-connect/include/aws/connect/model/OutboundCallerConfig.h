@@ -32,134 +32,47 @@ namespace Model
   class OutboundCallerConfig
   {
   public:
-    AWS_CONNECT_API OutboundCallerConfig();
+    AWS_CONNECT_API OutboundCallerConfig() = default;
     AWS_CONNECT_API OutboundCallerConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API OutboundCallerConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The caller ID name.</p>
      */
-    inline const Aws::String& GetOutboundCallerIdName() const{ return m_outboundCallerIdName; }
-
-    /**
-     * <p>The caller ID name.</p>
-     */
+    inline const Aws::String& GetOutboundCallerIdName() const { return m_outboundCallerIdName; }
     inline bool OutboundCallerIdNameHasBeenSet() const { return m_outboundCallerIdNameHasBeenSet; }
+    template<typename OutboundCallerIdNameT = Aws::String>
+    void SetOutboundCallerIdName(OutboundCallerIdNameT&& value) { m_outboundCallerIdNameHasBeenSet = true; m_outboundCallerIdName = std::forward<OutboundCallerIdNameT>(value); }
+    template<typename OutboundCallerIdNameT = Aws::String>
+    OutboundCallerConfig& WithOutboundCallerIdName(OutboundCallerIdNameT&& value) { SetOutboundCallerIdName(std::forward<OutboundCallerIdNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The caller ID name.</p>
-     */
-    inline void SetOutboundCallerIdName(const Aws::String& value) { m_outboundCallerIdNameHasBeenSet = true; m_outboundCallerIdName = value; }
-
-    /**
-     * <p>The caller ID name.</p>
-     */
-    inline void SetOutboundCallerIdName(Aws::String&& value) { m_outboundCallerIdNameHasBeenSet = true; m_outboundCallerIdName = std::move(value); }
-
-    /**
-     * <p>The caller ID name.</p>
-     */
-    inline void SetOutboundCallerIdName(const char* value) { m_outboundCallerIdNameHasBeenSet = true; m_outboundCallerIdName.assign(value); }
-
-    /**
-     * <p>The caller ID name.</p>
-     */
-    inline OutboundCallerConfig& WithOutboundCallerIdName(const Aws::String& value) { SetOutboundCallerIdName(value); return *this;}
-
-    /**
-     * <p>The caller ID name.</p>
-     */
-    inline OutboundCallerConfig& WithOutboundCallerIdName(Aws::String&& value) { SetOutboundCallerIdName(std::move(value)); return *this;}
-
-    /**
-     * <p>The caller ID name.</p>
-     */
-    inline OutboundCallerConfig& WithOutboundCallerIdName(const char* value) { SetOutboundCallerIdName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The caller ID number.</p>
      */
-    inline const Aws::String& GetOutboundCallerIdNumberId() const{ return m_outboundCallerIdNumberId; }
-
-    /**
-     * <p>The caller ID number.</p>
-     */
+    inline const Aws::String& GetOutboundCallerIdNumberId() const { return m_outboundCallerIdNumberId; }
     inline bool OutboundCallerIdNumberIdHasBeenSet() const { return m_outboundCallerIdNumberIdHasBeenSet; }
+    template<typename OutboundCallerIdNumberIdT = Aws::String>
+    void SetOutboundCallerIdNumberId(OutboundCallerIdNumberIdT&& value) { m_outboundCallerIdNumberIdHasBeenSet = true; m_outboundCallerIdNumberId = std::forward<OutboundCallerIdNumberIdT>(value); }
+    template<typename OutboundCallerIdNumberIdT = Aws::String>
+    OutboundCallerConfig& WithOutboundCallerIdNumberId(OutboundCallerIdNumberIdT&& value) { SetOutboundCallerIdNumberId(std::forward<OutboundCallerIdNumberIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The caller ID number.</p>
-     */
-    inline void SetOutboundCallerIdNumberId(const Aws::String& value) { m_outboundCallerIdNumberIdHasBeenSet = true; m_outboundCallerIdNumberId = value; }
-
-    /**
-     * <p>The caller ID number.</p>
-     */
-    inline void SetOutboundCallerIdNumberId(Aws::String&& value) { m_outboundCallerIdNumberIdHasBeenSet = true; m_outboundCallerIdNumberId = std::move(value); }
-
-    /**
-     * <p>The caller ID number.</p>
-     */
-    inline void SetOutboundCallerIdNumberId(const char* value) { m_outboundCallerIdNumberIdHasBeenSet = true; m_outboundCallerIdNumberId.assign(value); }
-
-    /**
-     * <p>The caller ID number.</p>
-     */
-    inline OutboundCallerConfig& WithOutboundCallerIdNumberId(const Aws::String& value) { SetOutboundCallerIdNumberId(value); return *this;}
-
-    /**
-     * <p>The caller ID number.</p>
-     */
-    inline OutboundCallerConfig& WithOutboundCallerIdNumberId(Aws::String&& value) { SetOutboundCallerIdNumberId(std::move(value)); return *this;}
-
-    /**
-     * <p>The caller ID number.</p>
-     */
-    inline OutboundCallerConfig& WithOutboundCallerIdNumberId(const char* value) { SetOutboundCallerIdNumberId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The outbound whisper flow to be used during an outbound call.</p>
      */
-    inline const Aws::String& GetOutboundFlowId() const{ return m_outboundFlowId; }
-
-    /**
-     * <p>The outbound whisper flow to be used during an outbound call.</p>
-     */
+    inline const Aws::String& GetOutboundFlowId() const { return m_outboundFlowId; }
     inline bool OutboundFlowIdHasBeenSet() const { return m_outboundFlowIdHasBeenSet; }
-
-    /**
-     * <p>The outbound whisper flow to be used during an outbound call.</p>
-     */
-    inline void SetOutboundFlowId(const Aws::String& value) { m_outboundFlowIdHasBeenSet = true; m_outboundFlowId = value; }
-
-    /**
-     * <p>The outbound whisper flow to be used during an outbound call.</p>
-     */
-    inline void SetOutboundFlowId(Aws::String&& value) { m_outboundFlowIdHasBeenSet = true; m_outboundFlowId = std::move(value); }
-
-    /**
-     * <p>The outbound whisper flow to be used during an outbound call.</p>
-     */
-    inline void SetOutboundFlowId(const char* value) { m_outboundFlowIdHasBeenSet = true; m_outboundFlowId.assign(value); }
-
-    /**
-     * <p>The outbound whisper flow to be used during an outbound call.</p>
-     */
-    inline OutboundCallerConfig& WithOutboundFlowId(const Aws::String& value) { SetOutboundFlowId(value); return *this;}
-
-    /**
-     * <p>The outbound whisper flow to be used during an outbound call.</p>
-     */
-    inline OutboundCallerConfig& WithOutboundFlowId(Aws::String&& value) { SetOutboundFlowId(std::move(value)); return *this;}
-
-    /**
-     * <p>The outbound whisper flow to be used during an outbound call.</p>
-     */
-    inline OutboundCallerConfig& WithOutboundFlowId(const char* value) { SetOutboundFlowId(value); return *this;}
-
+    template<typename OutboundFlowIdT = Aws::String>
+    void SetOutboundFlowId(OutboundFlowIdT&& value) { m_outboundFlowIdHasBeenSet = true; m_outboundFlowId = std::forward<OutboundFlowIdT>(value); }
+    template<typename OutboundFlowIdT = Aws::String>
+    OutboundCallerConfig& WithOutboundFlowId(OutboundFlowIdT&& value) { SetOutboundFlowId(std::forward<OutboundFlowIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_outboundCallerIdName;

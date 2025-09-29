@@ -32,52 +32,23 @@ namespace Model
   class ConnectionOAuthClientResponseParameters
   {
   public:
-    AWS_CLOUDWATCHEVENTS_API ConnectionOAuthClientResponseParameters();
+    AWS_CLOUDWATCHEVENTS_API ConnectionOAuthClientResponseParameters() = default;
     AWS_CLOUDWATCHEVENTS_API ConnectionOAuthClientResponseParameters(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDWATCHEVENTS_API ConnectionOAuthClientResponseParameters& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDWATCHEVENTS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The client ID associated with the response to the connection request.</p>
      */
-    inline const Aws::String& GetClientID() const{ return m_clientID; }
-
-    /**
-     * <p>The client ID associated with the response to the connection request.</p>
-     */
+    inline const Aws::String& GetClientID() const { return m_clientID; }
     inline bool ClientIDHasBeenSet() const { return m_clientIDHasBeenSet; }
-
-    /**
-     * <p>The client ID associated with the response to the connection request.</p>
-     */
-    inline void SetClientID(const Aws::String& value) { m_clientIDHasBeenSet = true; m_clientID = value; }
-
-    /**
-     * <p>The client ID associated with the response to the connection request.</p>
-     */
-    inline void SetClientID(Aws::String&& value) { m_clientIDHasBeenSet = true; m_clientID = std::move(value); }
-
-    /**
-     * <p>The client ID associated with the response to the connection request.</p>
-     */
-    inline void SetClientID(const char* value) { m_clientIDHasBeenSet = true; m_clientID.assign(value); }
-
-    /**
-     * <p>The client ID associated with the response to the connection request.</p>
-     */
-    inline ConnectionOAuthClientResponseParameters& WithClientID(const Aws::String& value) { SetClientID(value); return *this;}
-
-    /**
-     * <p>The client ID associated with the response to the connection request.</p>
-     */
-    inline ConnectionOAuthClientResponseParameters& WithClientID(Aws::String&& value) { SetClientID(std::move(value)); return *this;}
-
-    /**
-     * <p>The client ID associated with the response to the connection request.</p>
-     */
-    inline ConnectionOAuthClientResponseParameters& WithClientID(const char* value) { SetClientID(value); return *this;}
-
+    template<typename ClientIDT = Aws::String>
+    void SetClientID(ClientIDT&& value) { m_clientIDHasBeenSet = true; m_clientID = std::forward<ClientIDT>(value); }
+    template<typename ClientIDT = Aws::String>
+    ConnectionOAuthClientResponseParameters& WithClientID(ClientIDT&& value) { SetClientID(std::forward<ClientIDT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_clientID;

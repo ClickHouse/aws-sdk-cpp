@@ -18,15 +18,7 @@ namespace FinSpaceData
 namespace Model
 {
 
-PermissionGroupParams::PermissionGroupParams() : 
-    m_permissionGroupIdHasBeenSet(false),
-    m_datasetPermissionsHasBeenSet(false)
-{
-}
-
-PermissionGroupParams::PermissionGroupParams(JsonView jsonValue) : 
-    m_permissionGroupIdHasBeenSet(false),
-    m_datasetPermissionsHasBeenSet(false)
+PermissionGroupParams::PermissionGroupParams(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ PermissionGroupParams& PermissionGroupParams::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("permissionGroupId"))
   {
     m_permissionGroupId = jsonValue.GetString("permissionGroupId");
-
     m_permissionGroupIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("datasetPermissions"))
   {
     Aws::Utils::Array<JsonView> datasetPermissionsJsonList = jsonValue.GetArray("datasetPermissions");
@@ -49,7 +39,6 @@ PermissionGroupParams& PermissionGroupParams::operator =(JsonView jsonValue)
     }
     m_datasetPermissionsHasBeenSet = true;
   }
-
   return *this;
 }
 

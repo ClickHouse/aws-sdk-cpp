@@ -18,17 +18,7 @@ namespace AppStream
 namespace Model
 {
 
-ApplicationSettings::ApplicationSettings() : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false),
-    m_settingsGroupHasBeenSet(false)
-{
-}
-
-ApplicationSettings::ApplicationSettings(JsonView jsonValue) : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false),
-    m_settingsGroupHasBeenSet(false)
+ApplicationSettings::ApplicationSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ApplicationSettings& ApplicationSettings::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Enabled"))
   {
     m_enabled = jsonValue.GetBool("Enabled");
-
     m_enabledHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SettingsGroup"))
   {
     m_settingsGroup = jsonValue.GetString("SettingsGroup");
-
     m_settingsGroupHasBeenSet = true;
   }
-
   return *this;
 }
 

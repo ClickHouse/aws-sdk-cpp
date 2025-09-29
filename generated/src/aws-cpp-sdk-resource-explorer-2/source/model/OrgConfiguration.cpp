@@ -18,17 +18,7 @@ namespace ResourceExplorer2
 namespace Model
 {
 
-OrgConfiguration::OrgConfiguration() : 
-    m_aWSServiceAccessStatus(AWSServiceAccessStatus::NOT_SET),
-    m_aWSServiceAccessStatusHasBeenSet(false),
-    m_serviceLinkedRoleHasBeenSet(false)
-{
-}
-
-OrgConfiguration::OrgConfiguration(JsonView jsonValue) : 
-    m_aWSServiceAccessStatus(AWSServiceAccessStatus::NOT_SET),
-    m_aWSServiceAccessStatusHasBeenSet(false),
-    m_serviceLinkedRoleHasBeenSet(false)
+OrgConfiguration::OrgConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ OrgConfiguration& OrgConfiguration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("AWSServiceAccessStatus"))
   {
     m_aWSServiceAccessStatus = AWSServiceAccessStatusMapper::GetAWSServiceAccessStatusForName(jsonValue.GetString("AWSServiceAccessStatus"));
-
     m_aWSServiceAccessStatusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ServiceLinkedRole"))
   {
     m_serviceLinkedRole = jsonValue.GetString("ServiceLinkedRole");
-
     m_serviceLinkedRoleHasBeenSet = true;
   }
-
   return *this;
 }
 

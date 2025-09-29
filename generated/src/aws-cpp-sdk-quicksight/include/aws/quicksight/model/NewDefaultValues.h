@@ -34,170 +34,65 @@ namespace Model
   class NewDefaultValues
   {
   public:
-    AWS_QUICKSIGHT_API NewDefaultValues();
+    AWS_QUICKSIGHT_API NewDefaultValues() = default;
     AWS_QUICKSIGHT_API NewDefaultValues(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API NewDefaultValues& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A list of static default values for a given string parameter.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetStringStaticValues() const{ return m_stringStaticValues; }
-
-    /**
-     * <p>A list of static default values for a given string parameter.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetStringStaticValues() const { return m_stringStaticValues; }
     inline bool StringStaticValuesHasBeenSet() const { return m_stringStaticValuesHasBeenSet; }
+    template<typename StringStaticValuesT = Aws::Vector<Aws::String>>
+    void SetStringStaticValues(StringStaticValuesT&& value) { m_stringStaticValuesHasBeenSet = true; m_stringStaticValues = std::forward<StringStaticValuesT>(value); }
+    template<typename StringStaticValuesT = Aws::Vector<Aws::String>>
+    NewDefaultValues& WithStringStaticValues(StringStaticValuesT&& value) { SetStringStaticValues(std::forward<StringStaticValuesT>(value)); return *this;}
+    template<typename StringStaticValuesT = Aws::String>
+    NewDefaultValues& AddStringStaticValues(StringStaticValuesT&& value) { m_stringStaticValuesHasBeenSet = true; m_stringStaticValues.emplace_back(std::forward<StringStaticValuesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of static default values for a given string parameter.</p>
-     */
-    inline void SetStringStaticValues(const Aws::Vector<Aws::String>& value) { m_stringStaticValuesHasBeenSet = true; m_stringStaticValues = value; }
-
-    /**
-     * <p>A list of static default values for a given string parameter.</p>
-     */
-    inline void SetStringStaticValues(Aws::Vector<Aws::String>&& value) { m_stringStaticValuesHasBeenSet = true; m_stringStaticValues = std::move(value); }
-
-    /**
-     * <p>A list of static default values for a given string parameter.</p>
-     */
-    inline NewDefaultValues& WithStringStaticValues(const Aws::Vector<Aws::String>& value) { SetStringStaticValues(value); return *this;}
-
-    /**
-     * <p>A list of static default values for a given string parameter.</p>
-     */
-    inline NewDefaultValues& WithStringStaticValues(Aws::Vector<Aws::String>&& value) { SetStringStaticValues(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of static default values for a given string parameter.</p>
-     */
-    inline NewDefaultValues& AddStringStaticValues(const Aws::String& value) { m_stringStaticValuesHasBeenSet = true; m_stringStaticValues.push_back(value); return *this; }
-
-    /**
-     * <p>A list of static default values for a given string parameter.</p>
-     */
-    inline NewDefaultValues& AddStringStaticValues(Aws::String&& value) { m_stringStaticValuesHasBeenSet = true; m_stringStaticValues.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of static default values for a given string parameter.</p>
-     */
-    inline NewDefaultValues& AddStringStaticValues(const char* value) { m_stringStaticValuesHasBeenSet = true; m_stringStaticValues.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of static default values for a given decimal parameter.</p>
      */
-    inline const Aws::Vector<double>& GetDecimalStaticValues() const{ return m_decimalStaticValues; }
-
-    /**
-     * <p>A list of static default values for a given decimal parameter.</p>
-     */
+    inline const Aws::Vector<double>& GetDecimalStaticValues() const { return m_decimalStaticValues; }
     inline bool DecimalStaticValuesHasBeenSet() const { return m_decimalStaticValuesHasBeenSet; }
-
-    /**
-     * <p>A list of static default values for a given decimal parameter.</p>
-     */
-    inline void SetDecimalStaticValues(const Aws::Vector<double>& value) { m_decimalStaticValuesHasBeenSet = true; m_decimalStaticValues = value; }
-
-    /**
-     * <p>A list of static default values for a given decimal parameter.</p>
-     */
-    inline void SetDecimalStaticValues(Aws::Vector<double>&& value) { m_decimalStaticValuesHasBeenSet = true; m_decimalStaticValues = std::move(value); }
-
-    /**
-     * <p>A list of static default values for a given decimal parameter.</p>
-     */
-    inline NewDefaultValues& WithDecimalStaticValues(const Aws::Vector<double>& value) { SetDecimalStaticValues(value); return *this;}
-
-    /**
-     * <p>A list of static default values for a given decimal parameter.</p>
-     */
-    inline NewDefaultValues& WithDecimalStaticValues(Aws::Vector<double>&& value) { SetDecimalStaticValues(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of static default values for a given decimal parameter.</p>
-     */
+    template<typename DecimalStaticValuesT = Aws::Vector<double>>
+    void SetDecimalStaticValues(DecimalStaticValuesT&& value) { m_decimalStaticValuesHasBeenSet = true; m_decimalStaticValues = std::forward<DecimalStaticValuesT>(value); }
+    template<typename DecimalStaticValuesT = Aws::Vector<double>>
+    NewDefaultValues& WithDecimalStaticValues(DecimalStaticValuesT&& value) { SetDecimalStaticValues(std::forward<DecimalStaticValuesT>(value)); return *this;}
     inline NewDefaultValues& AddDecimalStaticValues(double value) { m_decimalStaticValuesHasBeenSet = true; m_decimalStaticValues.push_back(value); return *this; }
+    ///@}
 
-
+    ///@{
     /**
      * <p>A list of static default values for a given date time parameter.</p>
      */
-    inline const Aws::Vector<Aws::Utils::DateTime>& GetDateTimeStaticValues() const{ return m_dateTimeStaticValues; }
-
-    /**
-     * <p>A list of static default values for a given date time parameter.</p>
-     */
+    inline const Aws::Vector<Aws::Utils::DateTime>& GetDateTimeStaticValues() const { return m_dateTimeStaticValues; }
     inline bool DateTimeStaticValuesHasBeenSet() const { return m_dateTimeStaticValuesHasBeenSet; }
+    template<typename DateTimeStaticValuesT = Aws::Vector<Aws::Utils::DateTime>>
+    void SetDateTimeStaticValues(DateTimeStaticValuesT&& value) { m_dateTimeStaticValuesHasBeenSet = true; m_dateTimeStaticValues = std::forward<DateTimeStaticValuesT>(value); }
+    template<typename DateTimeStaticValuesT = Aws::Vector<Aws::Utils::DateTime>>
+    NewDefaultValues& WithDateTimeStaticValues(DateTimeStaticValuesT&& value) { SetDateTimeStaticValues(std::forward<DateTimeStaticValuesT>(value)); return *this;}
+    template<typename DateTimeStaticValuesT = Aws::Utils::DateTime>
+    NewDefaultValues& AddDateTimeStaticValues(DateTimeStaticValuesT&& value) { m_dateTimeStaticValuesHasBeenSet = true; m_dateTimeStaticValues.emplace_back(std::forward<DateTimeStaticValuesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of static default values for a given date time parameter.</p>
-     */
-    inline void SetDateTimeStaticValues(const Aws::Vector<Aws::Utils::DateTime>& value) { m_dateTimeStaticValuesHasBeenSet = true; m_dateTimeStaticValues = value; }
-
-    /**
-     * <p>A list of static default values for a given date time parameter.</p>
-     */
-    inline void SetDateTimeStaticValues(Aws::Vector<Aws::Utils::DateTime>&& value) { m_dateTimeStaticValuesHasBeenSet = true; m_dateTimeStaticValues = std::move(value); }
-
-    /**
-     * <p>A list of static default values for a given date time parameter.</p>
-     */
-    inline NewDefaultValues& WithDateTimeStaticValues(const Aws::Vector<Aws::Utils::DateTime>& value) { SetDateTimeStaticValues(value); return *this;}
-
-    /**
-     * <p>A list of static default values for a given date time parameter.</p>
-     */
-    inline NewDefaultValues& WithDateTimeStaticValues(Aws::Vector<Aws::Utils::DateTime>&& value) { SetDateTimeStaticValues(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of static default values for a given date time parameter.</p>
-     */
-    inline NewDefaultValues& AddDateTimeStaticValues(const Aws::Utils::DateTime& value) { m_dateTimeStaticValuesHasBeenSet = true; m_dateTimeStaticValues.push_back(value); return *this; }
-
-    /**
-     * <p>A list of static default values for a given date time parameter.</p>
-     */
-    inline NewDefaultValues& AddDateTimeStaticValues(Aws::Utils::DateTime&& value) { m_dateTimeStaticValuesHasBeenSet = true; m_dateTimeStaticValues.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of static default values for a given integer parameter.</p>
      */
-    inline const Aws::Vector<long long>& GetIntegerStaticValues() const{ return m_integerStaticValues; }
-
-    /**
-     * <p>A list of static default values for a given integer parameter.</p>
-     */
+    inline const Aws::Vector<long long>& GetIntegerStaticValues() const { return m_integerStaticValues; }
     inline bool IntegerStaticValuesHasBeenSet() const { return m_integerStaticValuesHasBeenSet; }
-
-    /**
-     * <p>A list of static default values for a given integer parameter.</p>
-     */
-    inline void SetIntegerStaticValues(const Aws::Vector<long long>& value) { m_integerStaticValuesHasBeenSet = true; m_integerStaticValues = value; }
-
-    /**
-     * <p>A list of static default values for a given integer parameter.</p>
-     */
-    inline void SetIntegerStaticValues(Aws::Vector<long long>&& value) { m_integerStaticValuesHasBeenSet = true; m_integerStaticValues = std::move(value); }
-
-    /**
-     * <p>A list of static default values for a given integer parameter.</p>
-     */
-    inline NewDefaultValues& WithIntegerStaticValues(const Aws::Vector<long long>& value) { SetIntegerStaticValues(value); return *this;}
-
-    /**
-     * <p>A list of static default values for a given integer parameter.</p>
-     */
-    inline NewDefaultValues& WithIntegerStaticValues(Aws::Vector<long long>&& value) { SetIntegerStaticValues(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of static default values for a given integer parameter.</p>
-     */
+    template<typename IntegerStaticValuesT = Aws::Vector<long long>>
+    void SetIntegerStaticValues(IntegerStaticValuesT&& value) { m_integerStaticValuesHasBeenSet = true; m_integerStaticValues = std::forward<IntegerStaticValuesT>(value); }
+    template<typename IntegerStaticValuesT = Aws::Vector<long long>>
+    NewDefaultValues& WithIntegerStaticValues(IntegerStaticValuesT&& value) { SetIntegerStaticValues(std::forward<IntegerStaticValuesT>(value)); return *this;}
     inline NewDefaultValues& AddIntegerStaticValues(long long value) { m_integerStaticValuesHasBeenSet = true; m_integerStaticValues.push_back(value); return *this; }
-
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_stringStaticValues;

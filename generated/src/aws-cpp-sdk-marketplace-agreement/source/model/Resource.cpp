@@ -18,15 +18,7 @@ namespace AgreementService
 namespace Model
 {
 
-Resource::Resource() : 
-    m_idHasBeenSet(false),
-    m_typeHasBeenSet(false)
-{
-}
-
-Resource::Resource(JsonView jsonValue) : 
-    m_idHasBeenSet(false),
-    m_typeHasBeenSet(false)
+Resource::Resource(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ Resource& Resource::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("id"))
   {
     m_id = jsonValue.GetString("id");
-
     m_idHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("type"))
   {
     m_type = jsonValue.GetString("type");
-
     m_typeHasBeenSet = true;
   }
-
   return *this;
 }
 

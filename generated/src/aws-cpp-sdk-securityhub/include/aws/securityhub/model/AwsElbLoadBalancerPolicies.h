@@ -35,155 +35,55 @@ namespace Model
   class AwsElbLoadBalancerPolicies
   {
   public:
-    AWS_SECURITYHUB_API AwsElbLoadBalancerPolicies();
+    AWS_SECURITYHUB_API AwsElbLoadBalancerPolicies() = default;
     AWS_SECURITYHUB_API AwsElbLoadBalancerPolicies(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsElbLoadBalancerPolicies& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The stickiness policies that are created using
      * <code>CreateAppCookieStickinessPolicy</code>.</p>
      */
-    inline const Aws::Vector<AwsElbAppCookieStickinessPolicy>& GetAppCookieStickinessPolicies() const{ return m_appCookieStickinessPolicies; }
-
-    /**
-     * <p>The stickiness policies that are created using
-     * <code>CreateAppCookieStickinessPolicy</code>.</p>
-     */
+    inline const Aws::Vector<AwsElbAppCookieStickinessPolicy>& GetAppCookieStickinessPolicies() const { return m_appCookieStickinessPolicies; }
     inline bool AppCookieStickinessPoliciesHasBeenSet() const { return m_appCookieStickinessPoliciesHasBeenSet; }
+    template<typename AppCookieStickinessPoliciesT = Aws::Vector<AwsElbAppCookieStickinessPolicy>>
+    void SetAppCookieStickinessPolicies(AppCookieStickinessPoliciesT&& value) { m_appCookieStickinessPoliciesHasBeenSet = true; m_appCookieStickinessPolicies = std::forward<AppCookieStickinessPoliciesT>(value); }
+    template<typename AppCookieStickinessPoliciesT = Aws::Vector<AwsElbAppCookieStickinessPolicy>>
+    AwsElbLoadBalancerPolicies& WithAppCookieStickinessPolicies(AppCookieStickinessPoliciesT&& value) { SetAppCookieStickinessPolicies(std::forward<AppCookieStickinessPoliciesT>(value)); return *this;}
+    template<typename AppCookieStickinessPoliciesT = AwsElbAppCookieStickinessPolicy>
+    AwsElbLoadBalancerPolicies& AddAppCookieStickinessPolicies(AppCookieStickinessPoliciesT&& value) { m_appCookieStickinessPoliciesHasBeenSet = true; m_appCookieStickinessPolicies.emplace_back(std::forward<AppCookieStickinessPoliciesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The stickiness policies that are created using
-     * <code>CreateAppCookieStickinessPolicy</code>.</p>
-     */
-    inline void SetAppCookieStickinessPolicies(const Aws::Vector<AwsElbAppCookieStickinessPolicy>& value) { m_appCookieStickinessPoliciesHasBeenSet = true; m_appCookieStickinessPolicies = value; }
-
-    /**
-     * <p>The stickiness policies that are created using
-     * <code>CreateAppCookieStickinessPolicy</code>.</p>
-     */
-    inline void SetAppCookieStickinessPolicies(Aws::Vector<AwsElbAppCookieStickinessPolicy>&& value) { m_appCookieStickinessPoliciesHasBeenSet = true; m_appCookieStickinessPolicies = std::move(value); }
-
-    /**
-     * <p>The stickiness policies that are created using
-     * <code>CreateAppCookieStickinessPolicy</code>.</p>
-     */
-    inline AwsElbLoadBalancerPolicies& WithAppCookieStickinessPolicies(const Aws::Vector<AwsElbAppCookieStickinessPolicy>& value) { SetAppCookieStickinessPolicies(value); return *this;}
-
-    /**
-     * <p>The stickiness policies that are created using
-     * <code>CreateAppCookieStickinessPolicy</code>.</p>
-     */
-    inline AwsElbLoadBalancerPolicies& WithAppCookieStickinessPolicies(Aws::Vector<AwsElbAppCookieStickinessPolicy>&& value) { SetAppCookieStickinessPolicies(std::move(value)); return *this;}
-
-    /**
-     * <p>The stickiness policies that are created using
-     * <code>CreateAppCookieStickinessPolicy</code>.</p>
-     */
-    inline AwsElbLoadBalancerPolicies& AddAppCookieStickinessPolicies(const AwsElbAppCookieStickinessPolicy& value) { m_appCookieStickinessPoliciesHasBeenSet = true; m_appCookieStickinessPolicies.push_back(value); return *this; }
-
-    /**
-     * <p>The stickiness policies that are created using
-     * <code>CreateAppCookieStickinessPolicy</code>.</p>
-     */
-    inline AwsElbLoadBalancerPolicies& AddAppCookieStickinessPolicies(AwsElbAppCookieStickinessPolicy&& value) { m_appCookieStickinessPoliciesHasBeenSet = true; m_appCookieStickinessPolicies.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The stickiness policies that are created using
      * <code>CreateLBCookieStickinessPolicy</code>.</p>
      */
-    inline const Aws::Vector<AwsElbLbCookieStickinessPolicy>& GetLbCookieStickinessPolicies() const{ return m_lbCookieStickinessPolicies; }
-
-    /**
-     * <p>The stickiness policies that are created using
-     * <code>CreateLBCookieStickinessPolicy</code>.</p>
-     */
+    inline const Aws::Vector<AwsElbLbCookieStickinessPolicy>& GetLbCookieStickinessPolicies() const { return m_lbCookieStickinessPolicies; }
     inline bool LbCookieStickinessPoliciesHasBeenSet() const { return m_lbCookieStickinessPoliciesHasBeenSet; }
+    template<typename LbCookieStickinessPoliciesT = Aws::Vector<AwsElbLbCookieStickinessPolicy>>
+    void SetLbCookieStickinessPolicies(LbCookieStickinessPoliciesT&& value) { m_lbCookieStickinessPoliciesHasBeenSet = true; m_lbCookieStickinessPolicies = std::forward<LbCookieStickinessPoliciesT>(value); }
+    template<typename LbCookieStickinessPoliciesT = Aws::Vector<AwsElbLbCookieStickinessPolicy>>
+    AwsElbLoadBalancerPolicies& WithLbCookieStickinessPolicies(LbCookieStickinessPoliciesT&& value) { SetLbCookieStickinessPolicies(std::forward<LbCookieStickinessPoliciesT>(value)); return *this;}
+    template<typename LbCookieStickinessPoliciesT = AwsElbLbCookieStickinessPolicy>
+    AwsElbLoadBalancerPolicies& AddLbCookieStickinessPolicies(LbCookieStickinessPoliciesT&& value) { m_lbCookieStickinessPoliciesHasBeenSet = true; m_lbCookieStickinessPolicies.emplace_back(std::forward<LbCookieStickinessPoliciesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The stickiness policies that are created using
-     * <code>CreateLBCookieStickinessPolicy</code>.</p>
-     */
-    inline void SetLbCookieStickinessPolicies(const Aws::Vector<AwsElbLbCookieStickinessPolicy>& value) { m_lbCookieStickinessPoliciesHasBeenSet = true; m_lbCookieStickinessPolicies = value; }
-
-    /**
-     * <p>The stickiness policies that are created using
-     * <code>CreateLBCookieStickinessPolicy</code>.</p>
-     */
-    inline void SetLbCookieStickinessPolicies(Aws::Vector<AwsElbLbCookieStickinessPolicy>&& value) { m_lbCookieStickinessPoliciesHasBeenSet = true; m_lbCookieStickinessPolicies = std::move(value); }
-
-    /**
-     * <p>The stickiness policies that are created using
-     * <code>CreateLBCookieStickinessPolicy</code>.</p>
-     */
-    inline AwsElbLoadBalancerPolicies& WithLbCookieStickinessPolicies(const Aws::Vector<AwsElbLbCookieStickinessPolicy>& value) { SetLbCookieStickinessPolicies(value); return *this;}
-
-    /**
-     * <p>The stickiness policies that are created using
-     * <code>CreateLBCookieStickinessPolicy</code>.</p>
-     */
-    inline AwsElbLoadBalancerPolicies& WithLbCookieStickinessPolicies(Aws::Vector<AwsElbLbCookieStickinessPolicy>&& value) { SetLbCookieStickinessPolicies(std::move(value)); return *this;}
-
-    /**
-     * <p>The stickiness policies that are created using
-     * <code>CreateLBCookieStickinessPolicy</code>.</p>
-     */
-    inline AwsElbLoadBalancerPolicies& AddLbCookieStickinessPolicies(const AwsElbLbCookieStickinessPolicy& value) { m_lbCookieStickinessPoliciesHasBeenSet = true; m_lbCookieStickinessPolicies.push_back(value); return *this; }
-
-    /**
-     * <p>The stickiness policies that are created using
-     * <code>CreateLBCookieStickinessPolicy</code>.</p>
-     */
-    inline AwsElbLoadBalancerPolicies& AddLbCookieStickinessPolicies(AwsElbLbCookieStickinessPolicy&& value) { m_lbCookieStickinessPoliciesHasBeenSet = true; m_lbCookieStickinessPolicies.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The policies other than the stickiness policies.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetOtherPolicies() const{ return m_otherPolicies; }
-
-    /**
-     * <p>The policies other than the stickiness policies.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetOtherPolicies() const { return m_otherPolicies; }
     inline bool OtherPoliciesHasBeenSet() const { return m_otherPoliciesHasBeenSet; }
-
-    /**
-     * <p>The policies other than the stickiness policies.</p>
-     */
-    inline void SetOtherPolicies(const Aws::Vector<Aws::String>& value) { m_otherPoliciesHasBeenSet = true; m_otherPolicies = value; }
-
-    /**
-     * <p>The policies other than the stickiness policies.</p>
-     */
-    inline void SetOtherPolicies(Aws::Vector<Aws::String>&& value) { m_otherPoliciesHasBeenSet = true; m_otherPolicies = std::move(value); }
-
-    /**
-     * <p>The policies other than the stickiness policies.</p>
-     */
-    inline AwsElbLoadBalancerPolicies& WithOtherPolicies(const Aws::Vector<Aws::String>& value) { SetOtherPolicies(value); return *this;}
-
-    /**
-     * <p>The policies other than the stickiness policies.</p>
-     */
-    inline AwsElbLoadBalancerPolicies& WithOtherPolicies(Aws::Vector<Aws::String>&& value) { SetOtherPolicies(std::move(value)); return *this;}
-
-    /**
-     * <p>The policies other than the stickiness policies.</p>
-     */
-    inline AwsElbLoadBalancerPolicies& AddOtherPolicies(const Aws::String& value) { m_otherPoliciesHasBeenSet = true; m_otherPolicies.push_back(value); return *this; }
-
-    /**
-     * <p>The policies other than the stickiness policies.</p>
-     */
-    inline AwsElbLoadBalancerPolicies& AddOtherPolicies(Aws::String&& value) { m_otherPoliciesHasBeenSet = true; m_otherPolicies.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The policies other than the stickiness policies.</p>
-     */
-    inline AwsElbLoadBalancerPolicies& AddOtherPolicies(const char* value) { m_otherPoliciesHasBeenSet = true; m_otherPolicies.push_back(value); return *this; }
-
+    template<typename OtherPoliciesT = Aws::Vector<Aws::String>>
+    void SetOtherPolicies(OtherPoliciesT&& value) { m_otherPoliciesHasBeenSet = true; m_otherPolicies = std::forward<OtherPoliciesT>(value); }
+    template<typename OtherPoliciesT = Aws::Vector<Aws::String>>
+    AwsElbLoadBalancerPolicies& WithOtherPolicies(OtherPoliciesT&& value) { SetOtherPolicies(std::forward<OtherPoliciesT>(value)); return *this;}
+    template<typename OtherPoliciesT = Aws::String>
+    AwsElbLoadBalancerPolicies& AddOtherPolicies(OtherPoliciesT&& value) { m_otherPoliciesHasBeenSet = true; m_otherPolicies.emplace_back(std::forward<OtherPoliciesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<AwsElbAppCookieStickinessPolicy> m_appCookieStickinessPolicies;

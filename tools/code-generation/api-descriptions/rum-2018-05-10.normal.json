@@ -5,11 +5,13 @@
     "endpointPrefix":"rum",
     "jsonVersion":"1.1",
     "protocol":"rest-json",
+    "protocols":["rest-json"],
     "serviceFullName":"CloudWatch RUM",
     "serviceId":"RUM",
     "signatureVersion":"v4",
     "signingName":"rum",
-    "uid":"rum-2018-05-10"
+    "uid":"rum-2018-05-10",
+    "auth":["aws.auth#sigv4"]
   },
   "operations":{
     "BatchCreateRumMetricDefinitions":{
@@ -30,7 +32,7 @@
         {"shape":"ThrottlingException"},
         {"shape":"AccessDeniedException"}
       ],
-      "documentation":"<p>Specifies the extended metrics and custom metrics that you want a CloudWatch RUM app monitor to send to a destination. Valid destinations include CloudWatch and Evidently.</p> <p>By default, RUM app monitors send some metrics to CloudWatch. These default metrics are listed in <a href=\"https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-metrics.html\">CloudWatch metrics that you can collect with CloudWatch RUM</a>.</p> <p>In addition to these default metrics, you can choose to send extended metrics or custom metrics or both.</p> <ul> <li> <p>Extended metrics enable you to send metrics with additional dimensions not included in the default metrics. You can also send extended metrics to Evidently as well as CloudWatch. The valid dimension names for the additional dimensions for extended metrics are <code>BrowserName</code>, <code>CountryCode</code>, <code>DeviceType</code>, <code>FileType</code>, <code>OSName</code>, and <code>PageId</code>. For more information, see <a href=\"https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-vended-metrics.html\"> Extended metrics that you can send to CloudWatch and CloudWatch Evidently</a>.</p> </li> <li> <p>Custom metrics are metrics that you define. You can send custom metrics to CloudWatch or to CloudWatch Evidently or to both. With custom metrics, you can use any metric name and namespace, and to derive the metrics you can use any custom events, built-in events, custom attributes, or default attributes. </p> <p>You can't send custom metrics to the <code>AWS/RUM</code> namespace. You must send custom metrics to a custom namespace that you define. The namespace that you use can't start with <code>AWS/</code>. CloudWatch RUM prepends <code>RUM/CustomMetrics/</code> to the custom namespace that you define, so the final namespace for your metrics in CloudWatch is <code>RUM/CustomMetrics/<i>your-custom-namespace</i> </code>.</p> </li> </ul> <p>The maximum number of metric definitions that you can specify in one <code>BatchCreateRumMetricDefinitions</code> operation is 200.</p> <p>The maximum number of metric definitions that one destination can contain is 2000.</p> <p>Extended metrics sent to CloudWatch and RUM custom metrics are charged as CloudWatch custom metrics. Each combination of additional dimension name and dimension value counts as a custom metric. For more information, see <a href=\"https://aws.amazon.com/cloudwatch/pricing/\">Amazon CloudWatch Pricing</a>.</p> <p>You must have already created a destination for the metrics before you send them. For more information, see <a href=\"https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/API_PutRumMetricsDestination.html\">PutRumMetricsDestination</a>.</p> <p>If some metric definitions specified in a <code>BatchCreateRumMetricDefinitions</code> operations are not valid, those metric definitions fail and return errors, but all valid metric definitions in the same operation still succeed.</p>",
+      "documentation":"<p>Specifies the extended metrics and custom metrics that you want a CloudWatch RUM app monitor to send to a destination. Valid destinations include CloudWatch and Evidently.</p> <p>By default, RUM app monitors send some metrics to CloudWatch. These default metrics are listed in <a href=\"https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-metrics.html\">CloudWatch metrics that you can collect with CloudWatch RUM</a>.</p> <p>In addition to these default metrics, you can choose to send extended metrics, custom metrics, or both.</p> <ul> <li> <p>Extended metrics let you send metrics with additional dimensions that aren't included in the default metrics. You can also send extended metrics to both Evidently and CloudWatch. The valid dimension names for the additional dimensions for extended metrics are <code>BrowserName</code>, <code>CountryCode</code>, <code>DeviceType</code>, <code>FileType</code>, <code>OSName</code>, and <code>PageId</code>. For more information, see <a href=\"https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-vended-metrics.html\"> Extended metrics that you can send to CloudWatch and CloudWatch Evidently</a>.</p> </li> <li> <p>Custom metrics are metrics that you define. You can send custom metrics to CloudWatch. CloudWatch Evidently, or both. With custom metrics, you can use any metric name and namespace. To derive the metrics, you can use any custom events, built-in events, custom attributes, or default attributes. </p> <p>You can't send custom metrics to the <code>AWS/RUM</code> namespace. You must send custom metrics to a custom namespace that you define. The namespace that you use can't start with <code>AWS/</code>. CloudWatch RUM prepends <code>RUM/CustomMetrics/</code> to the custom namespace that you define, so the final namespace for your metrics in CloudWatch is <code>RUM/CustomMetrics/<i>your-custom-namespace</i> </code>.</p> </li> </ul> <p>The maximum number of metric definitions that you can specify in one <code>BatchCreateRumMetricDefinitions</code> operation is 200.</p> <p>The maximum number of metric definitions that one destination can contain is 2000.</p> <p>Extended metrics sent to CloudWatch and RUM custom metrics are charged as CloudWatch custom metrics. Each combination of additional dimension name and dimension value counts as a custom metric. For more information, see <a href=\"https://aws.amazon.com/cloudwatch/pricing/\">Amazon CloudWatch Pricing</a>.</p> <p>You must have already created a destination for the metrics before you send them. For more information, see <a href=\"https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/API_PutRumMetricsDestination.html\">PutRumMetricsDestination</a>.</p> <p>If some metric definitions specified in a <code>BatchCreateRumMetricDefinitions</code> operations are not valid, those metric definitions fail and return errors, but all valid metric definitions in the same operation still succeed.</p>",
       "idempotent":true
     },
     "BatchDeleteRumMetricDefinitions":{
@@ -111,6 +113,28 @@
       "documentation":"<p>Deletes an existing app monitor. This immediately stops the collection of data.</p>",
       "idempotent":true
     },
+    "DeleteResourcePolicy":{
+      "name":"DeleteResourcePolicy",
+      "http":{
+        "method":"DELETE",
+        "requestUri":"/appmonitor/{Name}/policy",
+        "responseCode":200
+      },
+      "input":{"shape":"DeleteResourcePolicyRequest"},
+      "output":{"shape":"DeleteResourcePolicyResponse"},
+      "errors":[
+        {"shape":"InvalidPolicyRevisionIdException"},
+        {"shape":"ConflictException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"InternalServerException"},
+        {"shape":"PolicyNotFoundException"},
+        {"shape":"ValidationException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"AccessDeniedException"}
+      ],
+      "documentation":"<p>Removes the association of a resource-based policy from an app monitor.</p>",
+      "idempotent":true
+    },
     "DeleteRumMetricsDestination":{
       "name":"DeleteRumMetricsDestination",
       "http":{
@@ -167,6 +191,26 @@
       ],
       "documentation":"<p>Retrieves the raw performance events that RUM has collected from your web application, so that you can do your own processing or analysis of this data.</p>"
     },
+    "GetResourcePolicy":{
+      "name":"GetResourcePolicy",
+      "http":{
+        "method":"GET",
+        "requestUri":"/appmonitor/{Name}/policy",
+        "responseCode":200
+      },
+      "input":{"shape":"GetResourcePolicyRequest"},
+      "output":{"shape":"GetResourcePolicyResponse"},
+      "errors":[
+        {"shape":"ConflictException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"InternalServerException"},
+        {"shape":"PolicyNotFoundException"},
+        {"shape":"ValidationException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"AccessDeniedException"}
+      ],
+      "documentation":"<p>Use this operation to retrieve information about a resource-based policy that is attached to an app monitor.</p>"
+    },
     "ListAppMonitors":{
       "name":"ListAppMonitors",
       "http":{
@@ -216,6 +260,29 @@
         {"shape":"ValidationException"}
       ],
       "documentation":"<p>Displays the tags associated with a CloudWatch RUM resource.</p>"
+    },
+    "PutResourcePolicy":{
+      "name":"PutResourcePolicy",
+      "http":{
+        "method":"PUT",
+        "requestUri":"/appmonitor/{Name}/policy",
+        "responseCode":200
+      },
+      "input":{"shape":"PutResourcePolicyRequest"},
+      "output":{"shape":"PutResourcePolicyResponse"},
+      "errors":[
+        {"shape":"PolicySizeLimitExceededException"},
+        {"shape":"InvalidPolicyRevisionIdException"},
+        {"shape":"ConflictException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"InternalServerException"},
+        {"shape":"ValidationException"},
+        {"shape":"MalformedPolicyDocumentException"},
+        {"shape":"ThrottlingException"},
+        {"shape":"AccessDeniedException"}
+      ],
+      "documentation":"<p>Use this operation to assign a resource-based policy to a CloudWatch RUM app monitor to control access to it. Each app monitor can have one resource-based policy. The maximum size of the policy is 4 KB. To learn more about using resource policies with RUM, see <a href=\"https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-resource-policies.html\">Using resource-based policies with CloudWatch RUM</a>.</p>",
+      "idempotent":true
     },
     "PutRumEvents":{
       "name":"PutRumEvents",
@@ -345,6 +412,11 @@
       },
       "exception":true
     },
+    "Alias":{
+      "type":"string",
+      "max":255,
+      "min":1
+    },
     "AppMonitor":{
       "type":"structure",
       "members":{
@@ -364,9 +436,17 @@
           "shape":"DataStorage",
           "documentation":"<p>A structure that contains information about whether this app monitor stores a copy of the telemetry data that RUM collects using CloudWatch Logs.</p>"
         },
+        "DeobfuscationConfiguration":{
+          "shape":"DeobfuscationConfiguration",
+          "documentation":"<p> A structure that contains the configuration for how an app monitor can deobfuscate stack traces. </p>"
+        },
         "Domain":{
           "shape":"AppMonitorDomain",
           "documentation":"<p>The top-level internet domain name for which your application has administrative authority.</p>"
+        },
+        "DomainList":{
+          "shape":"AppMonitorDomainList",
+          "documentation":"<p> List the domain names for which your application has administrative authority. </p>"
         },
         "Id":{
           "shape":"AppMonitorId",
@@ -412,7 +492,7 @@
         },
         "GuestRoleArn":{
           "shape":"Arn",
-          "documentation":"<p>The ARN of the guest IAM role that is attached to the Amazon Cognito identity pool that is used to authorize the sending of data to RUM.</p>"
+          "documentation":"<p>The ARN of the guest IAM role that is attached to the Amazon Cognito identity pool that is used to authorize the sending of data to RUM.</p> <note> <p>It is possible that an app monitor does not have a value for <code>GuestRoleArn</code>. For example, this can happen when you use the console to create an app monitor and you allow CloudWatch RUM to create a new identity pool for Authorization. In this case, <code>GuestRoleArn</code> is not present in the <a href=\"https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/API_GetAppMonitor.html\">GetAppMonitor</a> response because it is not stored by the service.</p> <p>If this issue affects you, you can take one of the following steps:</p> <ul> <li> <p>Use the Cloud Development Kit (CDK) to create an identity pool and the associated IAM role, and use that for your app monitor.</p> </li> <li> <p>Make a separate <a href=\"https://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_GetIdentityPoolRoles.html\">GetIdentityPoolRoles</a> call to Amazon Cognito to retrieve the <code>GuestRoleArn</code>.</p> </li> </ul> </note>"
         },
         "IdentityPoolId":{
           "shape":"IdentityPoolId",
@@ -455,7 +535,13 @@
       "type":"string",
       "max":253,
       "min":1,
-      "pattern":"^(localhost)|^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$|^(?![-.])([A-Za-z0-9-\\.\\-]{0,63})((?![-])([a-zA-Z0-9]{1}|^[a-zA-Z0-9]{0,1}))\\.(?![-])[A-Za-z-0-9]{1,63}((?![-])([a-zA-Z0-9]{1}|^[a-zA-Z0-9]{0,1}))|^(\\*\\.)(?![-.])([A-Za-z0-9-\\.\\-]{0,63})((?![-])([a-zA-Z0-9]{1}|^[a-zA-Z0-9]{0,1}))\\.(?![-])[A-Za-z-0-9]{1,63}((?![-])([a-zA-Z0-9]{1}|^[a-zA-Z0-9]{0,1}))"
+      "pattern":"^(localhost)$|^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$|(?=^[a-zA-Z0-9\\.\\*-]{4,253}$)(?!.*\\.-)(?!.*-\\.)(?!.*\\.\\.)(?!.*[^\\.]{64,})^(\\*\\.)?(?![-\\.\\*])[^\\*]{1,}\\.(\\*|(?!.*--)(?=.*[a-zA-Z])[^\\*]{1,}[^\\*-])$"
+    },
+    "AppMonitorDomainList":{
+      "type":"list",
+      "member":{"shape":"AppMonitorDomain"},
+      "max":5,
+      "min":1
     },
     "AppMonitorId":{
       "type":"string",
@@ -546,7 +632,7 @@
         },
         "Destination":{
           "shape":"MetricDestination",
-          "documentation":"<p>The destination to send the metrics to. Valid values are <code>CloudWatch</code> and <code>Evidently</code>. If you specify <code>Evidently</code>, you must also specify the ARN of the CloudWatchEvidently experiment that will receive the metrics and an IAM role that has permission to write to the experiment.</p>"
+          "documentation":"<p>The destination to send the metrics to. Valid values are <code>CloudWatch</code> and <code>Evidently</code>. If you specify <code>Evidently</code>, you must also specify the Amazon Resource Name (ARN) of the CloudWatchEvidently experiment that will receive the metrics and an IAM role that has permission to write to the experiment.</p>"
         },
         "DestinationArn":{
           "shape":"DestinationArn",
@@ -729,14 +815,11 @@
     },
     "CreateAppMonitorRequest":{
       "type":"structure",
-      "required":[
-        "Domain",
-        "Name"
-      ],
+      "required":["Name"],
       "members":{
         "AppMonitorConfiguration":{
           "shape":"AppMonitorConfiguration",
-          "documentation":"<p>A structure that contains much of the configuration data for the app monitor. If you are using Amazon Cognito for authorization, you must include this structure in your request, and it must include the ID of the Amazon Cognito identity pool to use for authorization. If you don't include <code>AppMonitorConfiguration</code>, you must set up your own authorization method. For more information, see <a href=\"https://docs.aws.amazon.com/monitoring/CloudWatch-RUM-get-started-authorization.html\">Authorize your application to send data to Amazon Web Services</a>.</p> <p>If you omit this argument, the sample rate used for RUM is set to 10% of the user sessions.</p>"
+          "documentation":"<p>A structure that contains much of the configuration data for the app monitor. If you are using Amazon Cognito for authorization, you must include this structure in your request, and it must include the ID of the Amazon Cognito identity pool to use for authorization. If you don't include <code>AppMonitorConfiguration</code>, you must set up your own authorization method. For more information, see <a href=\"https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-get-started-authorization.html\">Authorize your application to send data to Amazon Web Services</a>.</p> <p>If you omit this argument, the sample rate used for RUM is set to 10% of the user sessions.</p>"
         },
         "CustomEvents":{
           "shape":"CustomEvents",
@@ -746,9 +829,17 @@
           "shape":"Boolean",
           "documentation":"<p>Data collected by RUM is kept by RUM for 30 days and then deleted. This parameter specifies whether RUM sends a copy of this telemetry data to Amazon CloudWatch Logs in your account. This enables you to keep the telemetry data for more than 30 days, but it does incur Amazon CloudWatch Logs charges.</p> <p>If you omit this parameter, the default is <code>false</code>.</p>"
         },
+        "DeobfuscationConfiguration":{
+          "shape":"DeobfuscationConfiguration",
+          "documentation":"<p> A structure that contains the configuration for how an app monitor can deobfuscate stack traces. </p>"
+        },
         "Domain":{
           "shape":"AppMonitorDomain",
           "documentation":"<p>The top-level internet domain name for which your application has administrative authority.</p>"
+        },
+        "DomainList":{
+          "shape":"AppMonitorDomainList",
+          "documentation":"<p> List the domain names for which your application has administrative authority. The <code>CreateAppMonitor</code> requires either the domain or the domain list. </p>"
         },
         "Name":{
           "shape":"AppMonitorName",
@@ -827,6 +918,33 @@
       "members":{
       }
     },
+    "DeleteResourcePolicyRequest":{
+      "type":"structure",
+      "required":["Name"],
+      "members":{
+        "Name":{
+          "shape":"AppMonitorName",
+          "documentation":"<p>The app monitor that you want to remove the resource policy from.</p>",
+          "location":"uri",
+          "locationName":"Name"
+        },
+        "PolicyRevisionId":{
+          "shape":"PolicyRevisionId",
+          "documentation":"<p>Specifies a specific policy revision to delete. Provide a <code>PolicyRevisionId</code> to ensure an atomic delete operation. If the revision ID that you provide doesn't match the latest policy revision ID, the request will be rejected with an <code>InvalidPolicyRevisionIdException</code> error.</p>",
+          "location":"querystring",
+          "locationName":"policyRevisionId"
+        }
+      }
+    },
+    "DeleteResourcePolicyResponse":{
+      "type":"structure",
+      "members":{
+        "PolicyRevisionId":{
+          "shape":"PolicyRevisionId",
+          "documentation":"<p>The revision ID of the policy that was removed, if it had one.</p>"
+        }
+      }
+    },
     "DeleteRumMetricsDestinationRequest":{
       "type":"structure",
       "required":[
@@ -858,6 +976,29 @@
       "type":"structure",
       "members":{
       }
+    },
+    "DeobfuscationConfiguration":{
+      "type":"structure",
+      "members":{
+        "JavaScriptSourceMaps":{
+          "shape":"JavaScriptSourceMaps",
+          "documentation":"<p> A structure that contains the configuration for how an app monitor can unminify JavaScript error stack traces using source maps. </p>"
+        }
+      },
+      "documentation":"<p> A structure that contains the configuration for how an app monitor can deobfuscate stack traces. </p>"
+    },
+    "DeobfuscationS3Uri":{
+      "type":"string",
+      "max":1024,
+      "min":1,
+      "pattern":"^s3://[a-z0-9][-.a-z0-9]{1,61}(?:/[-!_*'().a-z0-9A-Z]+(?:/[-!_*'().a-z0-9A-Z]+)*)?/?$"
+    },
+    "DeobfuscationStatus":{
+      "type":"string",
+      "enum":[
+        "ENABLED",
+        "DISABLED"
+      ]
     },
     "DestinationArn":{
       "type":"string",
@@ -964,6 +1105,31 @@
         }
       }
     },
+    "GetResourcePolicyRequest":{
+      "type":"structure",
+      "required":["Name"],
+      "members":{
+        "Name":{
+          "shape":"AppMonitorName",
+          "documentation":"<p>The name of the app monitor that is associated with the resource-based policy that you want to view.</p>",
+          "location":"uri",
+          "locationName":"Name"
+        }
+      }
+    },
+    "GetResourcePolicyResponse":{
+      "type":"structure",
+      "members":{
+        "PolicyDocument":{
+          "shape":"String",
+          "documentation":"<p>The JSON policy document that you requested.</p>"
+        },
+        "PolicyRevisionId":{
+          "shape":"PolicyRevisionId",
+          "documentation":"<p>The revision ID information for this version of the policy document that you requested.</p>"
+        }
+      }
+    },
     "ISOTimestampString":{
       "type":"string",
       "max":19,
@@ -1000,6 +1166,34 @@
       "exception":true,
       "fault":true,
       "retryable":{"throttling":false}
+    },
+    "InvalidPolicyRevisionIdException":{
+      "type":"structure",
+      "required":["message"],
+      "members":{
+        "message":{"shape":"String"}
+      },
+      "documentation":"<p>The policy revision ID that you provided doeesn't match the latest policy revision ID.</p>",
+      "error":{
+        "httpStatusCode":400,
+        "senderFault":true
+      },
+      "exception":true
+    },
+    "JavaScriptSourceMaps":{
+      "type":"structure",
+      "required":["Status"],
+      "members":{
+        "S3Uri":{
+          "shape":"DeobfuscationS3Uri",
+          "documentation":"<p> The S3Uri of the bucket or folder that stores the source map files. It is required if status is ENABLED. </p>"
+        },
+        "Status":{
+          "shape":"DeobfuscationStatus",
+          "documentation":"<p> Specifies whether JavaScript error stack traces should be unminified for this app monitor. The default is for JavaScript error stack trace unminification to be <code>DISABLED</code>. </p>"
+        }
+      },
+      "documentation":"<p> A structure that contains the configuration for how an app monitor can unminify JavaScript error stack traces using source maps. </p>"
     },
     "JsonValue":{"type":"string"},
     "ListAppMonitorsRequest":{
@@ -1098,6 +1292,19 @@
         }
       }
     },
+    "MalformedPolicyDocumentException":{
+      "type":"structure",
+      "required":["message"],
+      "members":{
+        "message":{"shape":"String"}
+      },
+      "documentation":"<p>The policy document that you specified is not formatted correctly.</p>",
+      "error":{
+        "httpStatusCode":400,
+        "senderFault":true
+      },
+      "exception":true
+    },
     "MaxQueryResults":{
       "type":"integer",
       "max":100,
@@ -1166,7 +1373,7 @@
         },
         "EventPattern":{
           "shape":"EventPattern",
-          "documentation":"<p>The pattern that defines the metric, specified as a JSON object. RUM checks events that happen in a user's session against the pattern, and events that match the pattern are sent to the metric destination.</p> <p>When you define extended metrics, the metric definition is not valid if <code>EventPattern</code> is omitted.</p> <p>Example event patterns:</p> <ul> <li> <p> <code>'{ \"event_type\": [\"com.amazon.rum.js_error_event\"], \"metadata\": { \"browserName\": [ \"Chrome\", \"Safari\" ], } }'</code> </p> </li> <li> <p> <code>'{ \"event_type\": [\"com.amazon.rum.performance_navigation_event\"], \"metadata\": { \"browserName\": [ \"Chrome\", \"Firefox\" ] }, \"event_details\": { \"duration\": [{ \"numeric\": [ \"&lt;\", 2000 ] }] } }'</code> </p> </li> <li> <p> <code>'{ \"event_type\": [\"com.amazon.rum.performance_navigation_event\"], \"metadata\": { \"browserName\": [ \"Chrome\", \"Safari\" ], \"countryCode\": [ \"US\" ] }, \"event_details\": { \"duration\": [{ \"numeric\": [ \"&gt;=\", 2000, \"&lt;\", 8000 ] }] } }'</code> </p> </li> </ul> <p>If the metrics destination' is <code>CloudWatch</code> and the event also matches a value in <code>DimensionKeys</code>, then the metric is published with the specified dimensions. </p>"
+          "documentation":"<p>The pattern that defines the metric, specified as a JSON object. RUM checks events that happen in a user's session against the pattern, and events that match the pattern are sent to the metric destination.</p> <p>When you define extended metrics, the metric definition is not valid if <code>EventPattern</code> is omitted.</p> <p>Example event patterns:</p> <ul> <li> <p> <code>'{ \"event_type\": [\"com.amazon.rum.js_error_event\"], \"metadata\": { \"browserName\": [ \"Chrome\", \"Safari\" ], } }'</code> </p> </li> <li> <p> <code>'{ \"event_type\": [\"com.amazon.rum.performance_navigation_event\"], \"metadata\": { \"browserName\": [ \"Chrome\", \"Firefox\" ] }, \"event_details\": { \"duration\": [{ \"numeric\": [ \"&lt;\", 2000 ] }] } }'</code> </p> </li> <li> <p> <code>'{ \"event_type\": [\"com.amazon.rum.performance_navigation_event\"], \"metadata\": { \"browserName\": [ \"Chrome\", \"Safari\" ], \"countryCode\": [ \"US\" ] }, \"event_details\": { \"duration\": [{ \"numeric\": [ \"&gt;=\", 2000, \"&lt;\", 8000 ] }] } }'</code> </p> </li> </ul> <p>If the metrics destination is <code>CloudWatch</code> and the event also matches a value in <code>DimensionKeys</code>, then the metric is published with the specified dimensions. </p>"
         },
         "Name":{
           "shape":"MetricName",
@@ -1182,10 +1389,10 @@
         },
         "ValueKey":{
           "shape":"ValueKey",
-          "documentation":"<p>The field within the event object that the metric value is sourced from.</p> <p>If you omit this field, a hardcoded value of 1 is pushed as the metric value. This is useful if you just want to count the number of events that the filter catches. </p> <p>If this metric is sent to CloudWatch Evidently, this field will be passed to Evidently raw and Evidently will handle data extraction from the event.</p>"
+          "documentation":"<p>The field within the event object that the metric value is sourced from.</p> <p>If you omit this field, a hardcoded value of 1 is pushed as the metric value. This is useful if you want to count the number of events that the filter catches. </p> <p>If this metric is sent to CloudWatch Evidently, this field will be passed to Evidently raw. Evidently will handle data extraction from the event.</p>"
         }
       },
-      "documentation":"<p>Use this structure to define one extended metric or custom metric that RUM will send to CloudWatch or CloudWatch Evidently. For more information, see <a href=\"https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-vended-metrics.html\"> Additional metrics that you can send to CloudWatch and CloudWatch Evidently</a>.</p> <p>This structure is validated differently for extended metrics and custom metrics. For extended metrics that are sent to the <code>AWS/RUM</code> namespace, the following validations apply:</p> <ul> <li> <p>The <code>Namespace</code> parameter must be omitted or set to <code>AWS/RUM</code>.</p> </li> <li> <p>Only certain combinations of values for <code>Name</code>, <code>ValueKey</code>, and <code>EventPattern</code> are valid. In addition to what is displayed in the list below, the <code>EventPattern</code> can also include information used by the <code>DimensionKeys</code> field.</p> <ul> <li> <p>If <code>Name</code> is <code>PerformanceNavigationDuration</code>, then <code>ValueKey</code>must be <code>event_details.duration</code> and the <code>EventPattern</code> must include <code>{\"event_type\":[\"com.amazon.rum.performance_navigation_event\"]}</code> </p> </li> <li> <p>If <code>Name</code> is <code>PerformanceResourceDuration</code>, then <code>ValueKey</code>must be <code>event_details.duration</code> and the <code>EventPattern</code> must include <code>{\"event_type\":[\"com.amazon.rum.performance_resource_event\"]}</code> </p> </li> <li> <p>If <code>Name</code> is <code>NavigationSatisfiedTransaction</code>, then <code>ValueKey</code>must be null and the <code>EventPattern</code> must include <code>{ \"event_type\": [\"com.amazon.rum.performance_navigation_event\"], \"event_details\": { \"duration\": [{ \"numeric\": [\"&gt;\",2000] }] } }</code> </p> </li> <li> <p>If <code>Name</code> is <code>NavigationToleratedTransaction</code>, then <code>ValueKey</code>must be null and the <code>EventPattern</code> must include <code>{ \"event_type\": [\"com.amazon.rum.performance_navigation_event\"], \"event_details\": { \"duration\": [{ \"numeric\": [\"&gt;=\",2000,\"&lt;\"8000] }] } }</code> </p> </li> <li> <p>If <code>Name</code> is <code>NavigationFrustratedTransaction</code>, then <code>ValueKey</code>must be null and the <code>EventPattern</code> must include <code>{ \"event_type\": [\"com.amazon.rum.performance_navigation_event\"], \"event_details\": { \"duration\": [{ \"numeric\": [\"&gt;=\",8000] }] } }</code> </p> </li> <li> <p>If <code>Name</code> is <code>WebVitalsCumulativeLayoutShift</code>, then <code>ValueKey</code>must be <code>event_details.value</code> and the <code>EventPattern</code> must include <code>{\"event_type\":[\"com.amazon.rum.cumulative_layout_shift_event\"]}</code> </p> </li> <li> <p>If <code>Name</code> is <code>WebVitalsFirstInputDelay</code>, then <code>ValueKey</code>must be <code>event_details.value</code> and the <code>EventPattern</code> must include <code>{\"event_type\":[\"com.amazon.rum.first_input_delay_event\"]}</code> </p> </li> <li> <p>If <code>Name</code> is <code>WebVitalsLargestContentfulPaint</code>, then <code>ValueKey</code>must be <code>event_details.value</code> and the <code>EventPattern</code> must include <code>{\"event_type\":[\"com.amazon.rum.largest_contentful_paint_event\"]}</code> </p> </li> <li> <p>If <code>Name</code> is <code>JsErrorCount</code>, then <code>ValueKey</code>must be null and the <code>EventPattern</code> must include <code>{\"event_type\":[\"com.amazon.rum.js_error_event\"]}</code> </p> </li> <li> <p>If <code>Name</code> is <code>HttpErrorCount</code>, then <code>ValueKey</code>must be null and the <code>EventPattern</code> must include <code>{\"event_type\":[\"com.amazon.rum.http_event\"]}</code> </p> </li> <li> <p>If <code>Name</code> is <code>SessionCount</code>, then <code>ValueKey</code>must be null and the <code>EventPattern</code> must include <code>{\"event_type\":[\"com.amazon.rum.session_start_event\"]}</code> </p> </li> </ul> </li> </ul> <p>For custom metrics, the following validation rules apply:</p> <ul> <li> <p>The namespace can't be omitted and can't be <code>AWS/RUM</code>. You can use the <code>AWS/RUM</code> namespace only for extended metrics.</p> </li> <li> <p>All dimensions listed in the <code>DimensionKeys</code> field must be present in the value of <code>EventPattern</code>.</p> </li> <li> <p>The values that you specify for <code>ValueKey</code>, <code>EventPattern</code>, and <code>DimensionKeys</code> must be fields in RUM events, so all first-level keys in these fields must be one of the keys in the list later in this section.</p> </li> <li> <p>If you set a value for <code>EventPattern</code>, it must be a JSON object.</p> </li> <li> <p>For every non-empty <code>event_details</code>, there must be a non-empty <code>event_type</code>.</p> </li> <li> <p>If <code>EventPattern</code> contains an <code>event_details</code> field, it must also contain an <code>event_type</code>. For every built-in <code>event_type</code> that you use, you must use a value for <code>event_details</code> that corresponds to that <code>event_type</code>. For information about event details that correspond to event types, see <a href=\"https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-datacollected.html#CloudWatch-RUM-datacollected-eventDetails\"> RUM event details</a>.</p> </li> <li> <p>In <code>EventPattern</code>, any JSON array must contain only one value.</p> </li> </ul> <p>Valid key values for first-level keys in the <code>ValueKey</code>, <code>EventPattern</code>, and <code>DimensionKeys</code> fields:</p> <ul> <li> <p> <code>account_id</code> </p> </li> <li> <p> <code>application_Id</code> </p> </li> <li> <p> <code>application_version</code> </p> </li> <li> <p> <code>application_name</code> </p> </li> <li> <p> <code>batch_id</code> </p> </li> <li> <p> <code>event_details</code> </p> </li> <li> <p> <code>event_id</code> </p> </li> <li> <p> <code>event_interaction</code> </p> </li> <li> <p> <code>event_timestamp</code> </p> </li> <li> <p> <code>event_type</code> </p> </li> <li> <p> <code>event_version</code> </p> </li> <li> <p> <code>log_stream</code> </p> </li> <li> <p> <code>metadata</code> </p> </li> <li> <p> <code>sessionId</code> </p> </li> <li> <p> <code>user_details</code> </p> </li> <li> <p> <code>userId</code> </p> </li> </ul>"
+      "documentation":"<p>Use this structure to define one extended metric or custom metric that RUM will send to CloudWatch or CloudWatch Evidently. For more information, see <a href=\"https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-custom-and-extended-metrics.html\"> Custom metrics and extended metrics that you can send to CloudWatch and CloudWatch Evidently</a>.</p> <p>This structure is validated differently for extended metrics and custom metrics. For extended metrics that are sent to the <code>AWS/RUM</code> namespace, the following validations apply:</p> <ul> <li> <p>The <code>Namespace</code> parameter must be omitted or set to <code>AWS/RUM</code>.</p> </li> <li> <p>Only certain combinations of values for <code>Name</code>, <code>ValueKey</code>, and <code>EventPattern</code> are valid. In addition to what is displayed in the following list, the <code>EventPattern</code> can also include information used by the <code>DimensionKeys</code> field.</p> <ul> <li> <p>If <code>Name</code> is <code>PerformanceNavigationDuration</code>, then <code>ValueKey</code>must be <code>event_details.duration</code> and the <code>EventPattern</code> must include <code>{\"event_type\":[\"com.amazon.rum.performance_navigation_event\"]}</code> </p> </li> <li> <p>If <code>Name</code> is <code>PerformanceResourceDuration</code>, then <code>ValueKey</code>must be <code>event_details.duration</code> and the <code>EventPattern</code> must include <code>{\"event_type\":[\"com.amazon.rum.performance_resource_event\"]}</code> </p> </li> <li> <p>If <code>Name</code> is <code>NavigationSatisfiedTransaction</code>, then <code>ValueKey</code>must be null and the <code>EventPattern</code> must include <code>{ \"event_type\": [\"com.amazon.rum.performance_navigation_event\"], \"event_details\": { \"duration\": [{ \"numeric\": [\"&gt;\",2000] }] } }</code> </p> </li> <li> <p>If <code>Name</code> is <code>NavigationToleratedTransaction</code>, then <code>ValueKey</code>must be null and the <code>EventPattern</code> must include <code>{ \"event_type\": [\"com.amazon.rum.performance_navigation_event\"], \"event_details\": { \"duration\": [{ \"numeric\": [\"&gt;=\",2000,\"&lt;\"8000] }] } }</code> </p> </li> <li> <p>If <code>Name</code> is <code>NavigationFrustratedTransaction</code>, then <code>ValueKey</code>must be null and the <code>EventPattern</code> must include <code>{ \"event_type\": [\"com.amazon.rum.performance_navigation_event\"], \"event_details\": { \"duration\": [{ \"numeric\": [\"&gt;=\",8000] }] } }</code> </p> </li> <li> <p>If <code>Name</code> is <code>WebVitalsCumulativeLayoutShift</code>, then <code>ValueKey</code>must be <code>event_details.value</code> and the <code>EventPattern</code> must include <code>{\"event_type\":[\"com.amazon.rum.cumulative_layout_shift_event\"]}</code> </p> </li> <li> <p>If <code>Name</code> is <code>WebVitalsFirstInputDelay</code>, then <code>ValueKey</code>must be <code>event_details.value</code> and the <code>EventPattern</code> must include <code>{\"event_type\":[\"com.amazon.rum.first_input_delay_event\"]}</code> </p> </li> <li> <p>If <code>Name</code> is <code>WebVitalsLargestContentfulPaint</code>, then <code>ValueKey</code>must be <code>event_details.value</code> and the <code>EventPattern</code> must include <code>{\"event_type\":[\"com.amazon.rum.largest_contentful_paint_event\"]}</code> </p> </li> <li> <p>If <code>Name</code> is <code>JsErrorCount</code>, then <code>ValueKey</code>must be null and the <code>EventPattern</code> must include <code>{\"event_type\":[\"com.amazon.rum.js_error_event\"]}</code> </p> </li> <li> <p>If <code>Name</code> is <code>HttpErrorCount</code>, then <code>ValueKey</code>must be null and the <code>EventPattern</code> must include <code>{\"event_type\":[\"com.amazon.rum.http_event\"]}</code> </p> </li> <li> <p>If <code>Name</code> is <code>SessionCount</code>, then <code>ValueKey</code>must be null and the <code>EventPattern</code> must include <code>{\"event_type\":[\"com.amazon.rum.session_start_event\"]}</code> </p> </li> <li> <p>If <code>Name</code> is <code>PageViewCount</code>, then <code>ValueKey</code>must be null and the <code>EventPattern</code> must include <code>{\"event_type\":[\"com.amazon.rum.page_view_event\"]}</code> </p> </li> <li> <p>If <code>Name</code> is <code>Http4xxCount</code>, then <code>ValueKey</code>must be null and the <code>EventPattern</code> must include <code>{\"event_type\": [\"com.amazon.rum.http_event\"],\"event_details\":{\"response\":{\"status\":[{\"numeric\":[\"&gt;=\",400,\"&lt;\",500]}]}}} }</code> </p> </li> <li> <p>If <code>Name</code> is <code>Http5xxCount</code>, then <code>ValueKey</code>must be null and the <code>EventPattern</code> must include <code>{\"event_type\": [\"com.amazon.rum.http_event\"],\"event_details\":{\"response\":{\"status\":[{\"numeric\":[\"&gt;=\",500,\"&lt;=\",599]}]}}} }</code> </p> </li> </ul> </li> </ul> <p>For custom metrics, the following validation rules apply:</p> <ul> <li> <p>The namespace can't be omitted and can't be <code>AWS/RUM</code>. You can use the <code>AWS/RUM</code> namespace only for extended metrics.</p> </li> <li> <p>All dimensions listed in the <code>DimensionKeys</code> field must be present in the value of <code>EventPattern</code>.</p> </li> <li> <p>The values that you specify for <code>ValueKey</code>, <code>EventPattern</code>, and <code>DimensionKeys</code> must be fields in RUM events, so all first-level keys in these fields must be one of the keys in the list later in this section.</p> </li> <li> <p>If you set a value for <code>EventPattern</code>, it must be a JSON object.</p> </li> <li> <p>For every non-empty <code>event_details</code>, there must be a non-empty <code>event_type</code>.</p> </li> <li> <p>If <code>EventPattern</code> contains an <code>event_details</code> field, it must also contain an <code>event_type</code>. For every built-in <code>event_type</code> that you use, you must use a value for <code>event_details</code> that corresponds to that <code>event_type</code>. For information about event details that correspond to event types, see <a href=\"https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-datacollected.html#CloudWatch-RUM-datacollected-eventDetails\"> RUM event details</a>.</p> </li> <li> <p>In <code>EventPattern</code>, any JSON array must contain only one value.</p> </li> </ul> <p>Valid key values for first-level keys in the <code>ValueKey</code>, <code>EventPattern</code>, and <code>DimensionKeys</code> fields:</p> <ul> <li> <p> <code>account_id</code> </p> </li> <li> <p> <code>application_Id</code> </p> </li> <li> <p> <code>application_version</code> </p> </li> <li> <p> <code>application_name</code> </p> </li> <li> <p> <code>batch_id</code> </p> </li> <li> <p> <code>event_details</code> </p> </li> <li> <p> <code>event_id</code> </p> </li> <li> <p> <code>event_interaction</code> </p> </li> <li> <p> <code>event_timestamp</code> </p> </li> <li> <p> <code>event_type</code> </p> </li> <li> <p> <code>event_version</code> </p> </li> <li> <p> <code>log_stream</code> </p> </li> <li> <p> <code>metadata</code> </p> </li> <li> <p> <code>sessionId</code> </p> </li> <li> <p> <code>user_details</code> </p> </li> <li> <p> <code>userId</code> </p> </li> </ul>"
     },
     "MetricDefinitions":{
       "type":"list",
@@ -1241,6 +1448,73 @@
       "max":50,
       "min":0
     },
+    "PolicyNotFoundException":{
+      "type":"structure",
+      "required":["message"],
+      "members":{
+        "message":{"shape":"String"}
+      },
+      "documentation":"<p>The resource-based policy doesn't exist on this app monitor.</p>",
+      "error":{
+        "httpStatusCode":404,
+        "senderFault":true
+      },
+      "exception":true
+    },
+    "PolicyRevisionId":{
+      "type":"string",
+      "max":255,
+      "min":1
+    },
+    "PolicySizeLimitExceededException":{
+      "type":"structure",
+      "required":["message"],
+      "members":{
+        "message":{"shape":"String"}
+      },
+      "documentation":"<p>The policy document is too large. The limit is 4 KB.</p>",
+      "error":{
+        "httpStatusCode":400,
+        "senderFault":true
+      },
+      "exception":true
+    },
+    "PutResourcePolicyRequest":{
+      "type":"structure",
+      "required":[
+        "Name",
+        "PolicyDocument"
+      ],
+      "members":{
+        "Name":{
+          "shape":"AppMonitorName",
+          "documentation":"<p>The name of the app monitor that you want to apply this resource-based policy to. To find the names of your app monitors, you can use the <a href=\"https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/API_ListAppMonitors.html\">ListAppMonitors</a> operation.</p>",
+          "location":"uri",
+          "locationName":"Name"
+        },
+        "PolicyDocument":{
+          "shape":"String",
+          "documentation":"<p>The JSON to use as the resource policy. The document can be up to 4 KB in size. For more information about the contents and syntax for this policy, see <a href=\"https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-resource-policies.html\">Using resource-based policies with CloudWatch RUM</a>.</p>"
+        },
+        "PolicyRevisionId":{
+          "shape":"PolicyRevisionId",
+          "documentation":"<p>A string value that you can use to conditionally update your policy. You can provide the revision ID of your existing policy to make mutating requests against that policy.</p> <p>When you assign a policy revision ID, then later requests about that policy will be rejected with an <code>InvalidPolicyRevisionIdException</code> error if they don't provide the correct current revision ID.</p>"
+        }
+      }
+    },
+    "PutResourcePolicyResponse":{
+      "type":"structure",
+      "members":{
+        "PolicyDocument":{
+          "shape":"String",
+          "documentation":"<p>The JSON policy document that you specified.</p>"
+        },
+        "PolicyRevisionId":{
+          "shape":"PolicyRevisionId",
+          "documentation":"<p>The policy revision ID information that you specified.</p>"
+        }
+      }
+    },
     "PutRumEventsRequest":{
       "type":"structure",
       "required":[
@@ -1251,6 +1525,10 @@
         "UserDetails"
       ],
       "members":{
+        "Alias":{
+          "shape":"Alias",
+          "documentation":"<p>If the app monitor uses a resource-based policy that requires <code>PutRumEvents</code> requests to specify a certain alias, specify that alias here. This alias will be compared to the <code>rum:alias</code> context key in the resource-based policy. For more information, see <a href=\"https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-resource-policies.html\">Using resource-based policies with CloudWatch RUM</a>.</p>"
+        },
         "AppMonitorDetails":{
           "shape":"AppMonitorDetails",
           "documentation":"<p>A structure that contains information about the app monitor that collected this telemetry information.</p>"
@@ -1315,7 +1593,7 @@
         },
         "IamRoleArn":{
           "shape":"IamRoleArn",
-          "documentation":"<p>This parameter is required if <code>Destination</code> is <code>Evidently</code>. If <code>Destination</code> is <code>CloudWatch</code>, do not use this parameter.</p> <p>This parameter specifies the ARN of an IAM role that RUM will assume to write to the Evidently experiment that you are sending metrics to. This role must have permission to write to that experiment.</p>"
+          "documentation":"<p>This parameter is required if <code>Destination</code> is <code>Evidently</code>. If <code>Destination</code> is <code>CloudWatch</code>, don't use this parameter.</p> <p>This parameter specifies the ARN of an IAM role that RUM will assume to write to the Evidently experiment that you are sending metrics to. This role must have permission to write to that experiment.</p> <p>If you specify this parameter, you must be signed on to a role that has <a href=\"https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_passrole.html\">PassRole</a> permissions attached to it, to allow the role to be passed. The <a href=\"https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/auth-and-access-control-cw.html#managed-policies-cloudwatch-RUM\"> CloudWatchAmazonCloudWatchRUMFullAccess</a> policy doesn't include <code>PassRole</code> permissions.</p>"
         }
       }
     },
@@ -1584,7 +1862,7 @@
       "members":{
         "AppMonitorConfiguration":{
           "shape":"AppMonitorConfiguration",
-          "documentation":"<p>A structure that contains much of the configuration data for the app monitor. If you are using Amazon Cognito for authorization, you must include this structure in your request, and it must include the ID of the Amazon Cognito identity pool to use for authorization. If you don't include <code>AppMonitorConfiguration</code>, you must set up your own authorization method. For more information, see <a href=\"https://docs.aws.amazon.com/monitoring/CloudWatch-RUM-get-started-authorization.html\">Authorize your application to send data to Amazon Web Services</a>.</p>"
+          "documentation":"<p>A structure that contains much of the configuration data for the app monitor. If you are using Amazon Cognito for authorization, you must include this structure in your request, and it must include the ID of the Amazon Cognito identity pool to use for authorization. If you don't include <code>AppMonitorConfiguration</code>, you must set up your own authorization method. For more information, see <a href=\"https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-get-started-authorization.html\">Authorize your application to send data to Amazon Web Services</a>.</p>"
         },
         "CustomEvents":{
           "shape":"CustomEvents",
@@ -1594,9 +1872,17 @@
           "shape":"Boolean",
           "documentation":"<p>Data collected by RUM is kept by RUM for 30 days and then deleted. This parameter specifies whether RUM sends a copy of this telemetry data to Amazon CloudWatch Logs in your account. This enables you to keep the telemetry data for more than 30 days, but it does incur Amazon CloudWatch Logs charges.</p>"
         },
+        "DeobfuscationConfiguration":{
+          "shape":"DeobfuscationConfiguration",
+          "documentation":"<p> A structure that contains the configuration for how an app monitor can deobfuscate stack traces. </p>"
+        },
         "Domain":{
           "shape":"AppMonitorDomain",
           "documentation":"<p>The top-level internet domain name for which your application has administrative authority.</p>"
+        },
+        "DomainList":{
+          "shape":"AppMonitorDomainList",
+          "documentation":"<p> List the domain names for which your application has administrative authority. The <code>UpdateAppMonitor</code> allows either the domain or the domain list. </p>"
         },
         "Name":{
           "shape":"AppMonitorName",

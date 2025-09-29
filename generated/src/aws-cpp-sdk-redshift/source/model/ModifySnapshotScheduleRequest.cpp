@@ -10,12 +10,6 @@
 using namespace Aws::Redshift::Model;
 using namespace Aws::Utils;
 
-ModifySnapshotScheduleRequest::ModifySnapshotScheduleRequest() : 
-    m_scheduleIdentifierHasBeenSet(false),
-    m_scheduleDefinitionsHasBeenSet(false)
-{
-}
-
 Aws::String ModifySnapshotScheduleRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -27,12 +21,19 @@ Aws::String ModifySnapshotScheduleRequest::SerializePayload() const
 
   if(m_scheduleDefinitionsHasBeenSet)
   {
-    unsigned scheduleDefinitionsCount = 1;
-    for(auto& item : m_scheduleDefinitions)
+    if (m_scheduleDefinitions.empty())
     {
-      ss << "ScheduleDefinitions.member." << scheduleDefinitionsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      scheduleDefinitionsCount++;
+      ss << "ScheduleDefinitions=&";
+    }
+    else
+    {
+      unsigned scheduleDefinitionsCount = 1;
+      for(auto& item : m_scheduleDefinitions)
+      {
+        ss << "ScheduleDefinitions.ScheduleDefinition." << scheduleDefinitionsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        scheduleDefinitionsCount++;
+      }
     }
   }
 

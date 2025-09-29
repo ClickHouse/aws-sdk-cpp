@@ -12,11 +12,6 @@ using namespace Aws::SFN::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DescribeStateMachineForExecutionRequest::DescribeStateMachineForExecutionRequest() : 
-    m_executionArnHasBeenSet(false)
-{
-}
-
 Aws::String DescribeStateMachineForExecutionRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -25,6 +20,11 @@ Aws::String DescribeStateMachineForExecutionRequest::SerializePayload() const
   {
    payload.WithString("executionArn", m_executionArn);
 
+  }
+
+  if(m_includedDataHasBeenSet)
+  {
+   payload.WithString("includedData", IncludedDataMapper::GetNameForIncludedData(m_includedData));
   }
 
   return payload.View().WriteReadable();

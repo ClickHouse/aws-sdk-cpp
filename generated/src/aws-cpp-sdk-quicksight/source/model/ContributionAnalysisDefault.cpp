@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-ContributionAnalysisDefault::ContributionAnalysisDefault() : 
-    m_measureFieldIdHasBeenSet(false),
-    m_contributorDimensionsHasBeenSet(false)
-{
-}
-
-ContributionAnalysisDefault::ContributionAnalysisDefault(JsonView jsonValue) : 
-    m_measureFieldIdHasBeenSet(false),
-    m_contributorDimensionsHasBeenSet(false)
+ContributionAnalysisDefault::ContributionAnalysisDefault(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ContributionAnalysisDefault& ContributionAnalysisDefault::operator =(JsonView js
   if(jsonValue.ValueExists("MeasureFieldId"))
   {
     m_measureFieldId = jsonValue.GetString("MeasureFieldId");
-
     m_measureFieldIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ContributorDimensions"))
   {
     Aws::Utils::Array<JsonView> contributorDimensionsJsonList = jsonValue.GetArray("ContributorDimensions");
@@ -49,7 +39,6 @@ ContributionAnalysisDefault& ContributionAnalysisDefault::operator =(JsonView js
     }
     m_contributorDimensionsHasBeenSet = true;
   }
-
   return *this;
 }
 

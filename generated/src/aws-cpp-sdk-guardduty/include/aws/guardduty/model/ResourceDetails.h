@@ -32,52 +32,23 @@ namespace Model
   class ResourceDetails
   {
   public:
-    AWS_GUARDDUTY_API ResourceDetails();
+    AWS_GUARDDUTY_API ResourceDetails() = default;
     AWS_GUARDDUTY_API ResourceDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_GUARDDUTY_API ResourceDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GUARDDUTY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>InstanceArn that was scanned in the scan entry.</p>
+     * <p>Instance ARN that was scanned in the scan entry.</p>
      */
-    inline const Aws::String& GetInstanceArn() const{ return m_instanceArn; }
-
-    /**
-     * <p>InstanceArn that was scanned in the scan entry.</p>
-     */
+    inline const Aws::String& GetInstanceArn() const { return m_instanceArn; }
     inline bool InstanceArnHasBeenSet() const { return m_instanceArnHasBeenSet; }
-
-    /**
-     * <p>InstanceArn that was scanned in the scan entry.</p>
-     */
-    inline void SetInstanceArn(const Aws::String& value) { m_instanceArnHasBeenSet = true; m_instanceArn = value; }
-
-    /**
-     * <p>InstanceArn that was scanned in the scan entry.</p>
-     */
-    inline void SetInstanceArn(Aws::String&& value) { m_instanceArnHasBeenSet = true; m_instanceArn = std::move(value); }
-
-    /**
-     * <p>InstanceArn that was scanned in the scan entry.</p>
-     */
-    inline void SetInstanceArn(const char* value) { m_instanceArnHasBeenSet = true; m_instanceArn.assign(value); }
-
-    /**
-     * <p>InstanceArn that was scanned in the scan entry.</p>
-     */
-    inline ResourceDetails& WithInstanceArn(const Aws::String& value) { SetInstanceArn(value); return *this;}
-
-    /**
-     * <p>InstanceArn that was scanned in the scan entry.</p>
-     */
-    inline ResourceDetails& WithInstanceArn(Aws::String&& value) { SetInstanceArn(std::move(value)); return *this;}
-
-    /**
-     * <p>InstanceArn that was scanned in the scan entry.</p>
-     */
-    inline ResourceDetails& WithInstanceArn(const char* value) { SetInstanceArn(value); return *this;}
-
+    template<typename InstanceArnT = Aws::String>
+    void SetInstanceArn(InstanceArnT&& value) { m_instanceArnHasBeenSet = true; m_instanceArn = std::forward<InstanceArnT>(value); }
+    template<typename InstanceArnT = Aws::String>
+    ResourceDetails& WithInstanceArn(InstanceArnT&& value) { SetInstanceArn(std::forward<InstanceArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_instanceArn;

@@ -35,134 +35,51 @@ namespace Model
   class DecoderManifestValidationException
   {
   public:
-    AWS_IOTFLEETWISE_API DecoderManifestValidationException();
+    AWS_IOTFLEETWISE_API DecoderManifestValidationException() = default;
     AWS_IOTFLEETWISE_API DecoderManifestValidationException(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTFLEETWISE_API DecoderManifestValidationException& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTFLEETWISE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The request couldn't be completed because of invalid signals in the
      * request.</p>
      */
-    inline const Aws::Vector<InvalidSignalDecoder>& GetInvalidSignals() const{ return m_invalidSignals; }
-
-    /**
-     * <p>The request couldn't be completed because of invalid signals in the
-     * request.</p>
-     */
+    inline const Aws::Vector<InvalidSignalDecoder>& GetInvalidSignals() const { return m_invalidSignals; }
     inline bool InvalidSignalsHasBeenSet() const { return m_invalidSignalsHasBeenSet; }
+    template<typename InvalidSignalsT = Aws::Vector<InvalidSignalDecoder>>
+    void SetInvalidSignals(InvalidSignalsT&& value) { m_invalidSignalsHasBeenSet = true; m_invalidSignals = std::forward<InvalidSignalsT>(value); }
+    template<typename InvalidSignalsT = Aws::Vector<InvalidSignalDecoder>>
+    DecoderManifestValidationException& WithInvalidSignals(InvalidSignalsT&& value) { SetInvalidSignals(std::forward<InvalidSignalsT>(value)); return *this;}
+    template<typename InvalidSignalsT = InvalidSignalDecoder>
+    DecoderManifestValidationException& AddInvalidSignals(InvalidSignalsT&& value) { m_invalidSignalsHasBeenSet = true; m_invalidSignals.emplace_back(std::forward<InvalidSignalsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The request couldn't be completed because of invalid signals in the
-     * request.</p>
-     */
-    inline void SetInvalidSignals(const Aws::Vector<InvalidSignalDecoder>& value) { m_invalidSignalsHasBeenSet = true; m_invalidSignals = value; }
-
-    /**
-     * <p>The request couldn't be completed because of invalid signals in the
-     * request.</p>
-     */
-    inline void SetInvalidSignals(Aws::Vector<InvalidSignalDecoder>&& value) { m_invalidSignalsHasBeenSet = true; m_invalidSignals = std::move(value); }
-
-    /**
-     * <p>The request couldn't be completed because of invalid signals in the
-     * request.</p>
-     */
-    inline DecoderManifestValidationException& WithInvalidSignals(const Aws::Vector<InvalidSignalDecoder>& value) { SetInvalidSignals(value); return *this;}
-
-    /**
-     * <p>The request couldn't be completed because of invalid signals in the
-     * request.</p>
-     */
-    inline DecoderManifestValidationException& WithInvalidSignals(Aws::Vector<InvalidSignalDecoder>&& value) { SetInvalidSignals(std::move(value)); return *this;}
-
-    /**
-     * <p>The request couldn't be completed because of invalid signals in the
-     * request.</p>
-     */
-    inline DecoderManifestValidationException& AddInvalidSignals(const InvalidSignalDecoder& value) { m_invalidSignalsHasBeenSet = true; m_invalidSignals.push_back(value); return *this; }
-
-    /**
-     * <p>The request couldn't be completed because of invalid signals in the
-     * request.</p>
-     */
-    inline DecoderManifestValidationException& AddInvalidSignals(InvalidSignalDecoder&& value) { m_invalidSignalsHasBeenSet = true; m_invalidSignals.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The request couldn't be completed because of invalid network interfaces in
      * the request.</p>
      */
-    inline const Aws::Vector<InvalidNetworkInterface>& GetInvalidNetworkInterfaces() const{ return m_invalidNetworkInterfaces; }
-
-    /**
-     * <p>The request couldn't be completed because of invalid network interfaces in
-     * the request.</p>
-     */
+    inline const Aws::Vector<InvalidNetworkInterface>& GetInvalidNetworkInterfaces() const { return m_invalidNetworkInterfaces; }
     inline bool InvalidNetworkInterfacesHasBeenSet() const { return m_invalidNetworkInterfacesHasBeenSet; }
+    template<typename InvalidNetworkInterfacesT = Aws::Vector<InvalidNetworkInterface>>
+    void SetInvalidNetworkInterfaces(InvalidNetworkInterfacesT&& value) { m_invalidNetworkInterfacesHasBeenSet = true; m_invalidNetworkInterfaces = std::forward<InvalidNetworkInterfacesT>(value); }
+    template<typename InvalidNetworkInterfacesT = Aws::Vector<InvalidNetworkInterface>>
+    DecoderManifestValidationException& WithInvalidNetworkInterfaces(InvalidNetworkInterfacesT&& value) { SetInvalidNetworkInterfaces(std::forward<InvalidNetworkInterfacesT>(value)); return *this;}
+    template<typename InvalidNetworkInterfacesT = InvalidNetworkInterface>
+    DecoderManifestValidationException& AddInvalidNetworkInterfaces(InvalidNetworkInterfacesT&& value) { m_invalidNetworkInterfacesHasBeenSet = true; m_invalidNetworkInterfaces.emplace_back(std::forward<InvalidNetworkInterfacesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The request couldn't be completed because of invalid network interfaces in
-     * the request.</p>
-     */
-    inline void SetInvalidNetworkInterfaces(const Aws::Vector<InvalidNetworkInterface>& value) { m_invalidNetworkInterfacesHasBeenSet = true; m_invalidNetworkInterfaces = value; }
-
-    /**
-     * <p>The request couldn't be completed because of invalid network interfaces in
-     * the request.</p>
-     */
-    inline void SetInvalidNetworkInterfaces(Aws::Vector<InvalidNetworkInterface>&& value) { m_invalidNetworkInterfacesHasBeenSet = true; m_invalidNetworkInterfaces = std::move(value); }
-
-    /**
-     * <p>The request couldn't be completed because of invalid network interfaces in
-     * the request.</p>
-     */
-    inline DecoderManifestValidationException& WithInvalidNetworkInterfaces(const Aws::Vector<InvalidNetworkInterface>& value) { SetInvalidNetworkInterfaces(value); return *this;}
-
-    /**
-     * <p>The request couldn't be completed because of invalid network interfaces in
-     * the request.</p>
-     */
-    inline DecoderManifestValidationException& WithInvalidNetworkInterfaces(Aws::Vector<InvalidNetworkInterface>&& value) { SetInvalidNetworkInterfaces(std::move(value)); return *this;}
-
-    /**
-     * <p>The request couldn't be completed because of invalid network interfaces in
-     * the request.</p>
-     */
-    inline DecoderManifestValidationException& AddInvalidNetworkInterfaces(const InvalidNetworkInterface& value) { m_invalidNetworkInterfacesHasBeenSet = true; m_invalidNetworkInterfaces.push_back(value); return *this; }
-
-    /**
-     * <p>The request couldn't be completed because of invalid network interfaces in
-     * the request.</p>
-     */
-    inline DecoderManifestValidationException& AddInvalidNetworkInterfaces(InvalidNetworkInterface&& value) { m_invalidNetworkInterfacesHasBeenSet = true; m_invalidNetworkInterfaces.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
-
-    
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    
-    inline DecoderManifestValidationException& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    
-    inline DecoderManifestValidationException& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    
-    inline DecoderManifestValidationException& WithMessage(const char* value) { SetMessage(value); return *this;}
-
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    DecoderManifestValidationException& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<InvalidSignalDecoder> m_invalidSignals;

@@ -34,68 +34,25 @@ namespace Model
   class IAMRoleIdentity
   {
   public:
-    AWS_IOTSITEWISE_API IAMRoleIdentity();
+    AWS_IOTSITEWISE_API IAMRoleIdentity() = default;
     AWS_IOTSITEWISE_API IAMRoleIdentity(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTSITEWISE_API IAMRoleIdentity& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTSITEWISE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ARN of the IAM role. For more information, see <a
      * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html">IAM
      * ARNs</a> in the <i>IAM User Guide</i>.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The ARN of the IAM role. For more information, see <a
-     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html">IAM
-     * ARNs</a> in the <i>IAM User Guide</i>.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
-
-    /**
-     * <p>The ARN of the IAM role. For more information, see <a
-     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html">IAM
-     * ARNs</a> in the <i>IAM User Guide</i>.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The ARN of the IAM role. For more information, see <a
-     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html">IAM
-     * ARNs</a> in the <i>IAM User Guide</i>.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The ARN of the IAM role. For more information, see <a
-     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html">IAM
-     * ARNs</a> in the <i>IAM User Guide</i>.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The ARN of the IAM role. For more information, see <a
-     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html">IAM
-     * ARNs</a> in the <i>IAM User Guide</i>.</p>
-     */
-    inline IAMRoleIdentity& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the IAM role. For more information, see <a
-     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html">IAM
-     * ARNs</a> in the <i>IAM User Guide</i>.</p>
-     */
-    inline IAMRoleIdentity& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the IAM role. For more information, see <a
-     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html">IAM
-     * ARNs</a> in the <i>IAM User Guide</i>.</p>
-     */
-    inline IAMRoleIdentity& WithArn(const char* value) { SetArn(value); return *this;}
-
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    IAMRoleIdentity& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;

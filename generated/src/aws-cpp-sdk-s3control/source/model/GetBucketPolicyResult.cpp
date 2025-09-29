@@ -16,10 +16,6 @@ using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 using namespace Aws;
 
-GetBucketPolicyResult::GetBucketPolicyResult()
-{
-}
-
 GetBucketPolicyResult::GetBucketPolicyResult(const Aws::AmazonWebServiceResult<XmlDocument>& result)
 {
   *this = result;
@@ -36,14 +32,23 @@ GetBucketPolicyResult& GetBucketPolicyResult::operator =(const Aws::AmazonWebSer
     if(!policyNode.IsNull())
     {
       m_policy = Aws::Utils::Xml::DecodeEscapedXmlText(policyNode.GetText());
+      m_policyHasBeenSet = true;
     }
   }
 
   const auto& headers = result.GetHeaderValueCollection();
-  const auto& requestIdIter = headers.find("x-amzn-requestid");
+  const auto& requestIdIter = headers.find("x-amz-request-id");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
+  }
+
+  const auto& hostIdIter = headers.find("x-amz-id-2");
+  if(hostIdIter != headers.end())
+  {
+    m_hostId = hostIdIter->second;
+    m_hostIdHasBeenSet = true;
   }
 
   return *this;

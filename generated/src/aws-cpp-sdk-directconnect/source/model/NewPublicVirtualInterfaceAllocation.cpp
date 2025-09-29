@@ -18,35 +18,7 @@ namespace DirectConnect
 namespace Model
 {
 
-NewPublicVirtualInterfaceAllocation::NewPublicVirtualInterfaceAllocation() : 
-    m_virtualInterfaceNameHasBeenSet(false),
-    m_vlan(0),
-    m_vlanHasBeenSet(false),
-    m_asn(0),
-    m_asnHasBeenSet(false),
-    m_authKeyHasBeenSet(false),
-    m_amazonAddressHasBeenSet(false),
-    m_customerAddressHasBeenSet(false),
-    m_addressFamily(AddressFamily::NOT_SET),
-    m_addressFamilyHasBeenSet(false),
-    m_routeFilterPrefixesHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-NewPublicVirtualInterfaceAllocation::NewPublicVirtualInterfaceAllocation(JsonView jsonValue) : 
-    m_virtualInterfaceNameHasBeenSet(false),
-    m_vlan(0),
-    m_vlanHasBeenSet(false),
-    m_asn(0),
-    m_asnHasBeenSet(false),
-    m_authKeyHasBeenSet(false),
-    m_amazonAddressHasBeenSet(false),
-    m_customerAddressHasBeenSet(false),
-    m_addressFamily(AddressFamily::NOT_SET),
-    m_addressFamilyHasBeenSet(false),
-    m_routeFilterPrefixesHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+NewPublicVirtualInterfaceAllocation::NewPublicVirtualInterfaceAllocation(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -56,52 +28,43 @@ NewPublicVirtualInterfaceAllocation& NewPublicVirtualInterfaceAllocation::operat
   if(jsonValue.ValueExists("virtualInterfaceName"))
   {
     m_virtualInterfaceName = jsonValue.GetString("virtualInterfaceName");
-
     m_virtualInterfaceNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("vlan"))
   {
     m_vlan = jsonValue.GetInteger("vlan");
-
     m_vlanHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("asn"))
   {
     m_asn = jsonValue.GetInteger("asn");
-
     m_asnHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("asnLong"))
+  {
+    m_asnLong = jsonValue.GetInt64("asnLong");
+    m_asnLongHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("authKey"))
   {
     m_authKey = jsonValue.GetString("authKey");
-
     m_authKeyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("amazonAddress"))
   {
     m_amazonAddress = jsonValue.GetString("amazonAddress");
-
     m_amazonAddressHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("customerAddress"))
   {
     m_customerAddress = jsonValue.GetString("customerAddress");
-
     m_customerAddressHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("addressFamily"))
   {
     m_addressFamily = AddressFamilyMapper::GetAddressFamilyForName(jsonValue.GetString("addressFamily"));
-
     m_addressFamilyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("routeFilterPrefixes"))
   {
     Aws::Utils::Array<JsonView> routeFilterPrefixesJsonList = jsonValue.GetArray("routeFilterPrefixes");
@@ -111,7 +74,6 @@ NewPublicVirtualInterfaceAllocation& NewPublicVirtualInterfaceAllocation::operat
     }
     m_routeFilterPrefixesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("tags"))
   {
     Aws::Utils::Array<JsonView> tagsJsonList = jsonValue.GetArray("tags");
@@ -121,7 +83,6 @@ NewPublicVirtualInterfaceAllocation& NewPublicVirtualInterfaceAllocation::operat
     }
     m_tagsHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -144,6 +105,12 @@ JsonValue NewPublicVirtualInterfaceAllocation::Jsonize() const
   if(m_asnHasBeenSet)
   {
    payload.WithInteger("asn", m_asn);
+
+  }
+
+  if(m_asnLongHasBeenSet)
+  {
+   payload.WithInt64("asnLong", m_asnLong);
 
   }
 

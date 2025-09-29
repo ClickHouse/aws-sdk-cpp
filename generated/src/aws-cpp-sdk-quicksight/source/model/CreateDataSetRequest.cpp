@@ -12,27 +12,6 @@ using namespace Aws::QuickSight::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateDataSetRequest::CreateDataSetRequest() : 
-    m_awsAccountIdHasBeenSet(false),
-    m_dataSetIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_physicalTableMapHasBeenSet(false),
-    m_logicalTableMapHasBeenSet(false),
-    m_importMode(DataSetImportMode::NOT_SET),
-    m_importModeHasBeenSet(false),
-    m_columnGroupsHasBeenSet(false),
-    m_fieldFoldersHasBeenSet(false),
-    m_permissionsHasBeenSet(false),
-    m_rowLevelPermissionDataSetHasBeenSet(false),
-    m_rowLevelPermissionTagConfigurationHasBeenSet(false),
-    m_columnLevelPermissionRulesHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_dataSetUsageConfigurationHasBeenSet(false),
-    m_datasetParametersHasBeenSet(false),
-    m_folderArnsHasBeenSet(false)
-{
-}
-
 Aws::String CreateDataSetRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -169,6 +148,17 @@ Aws::String CreateDataSetRequest::SerializePayload() const
    }
    payload.WithArray("FolderArns", std::move(folderArnsJsonList));
 
+  }
+
+  if(m_performanceConfigurationHasBeenSet)
+  {
+   payload.WithObject("PerformanceConfiguration", m_performanceConfiguration.Jsonize());
+
+  }
+
+  if(m_useAsHasBeenSet)
+  {
+   payload.WithString("UseAs", DataSetUseAsMapper::GetNameForDataSetUseAs(m_useAs));
   }
 
   return payload.View().WriteReadable();

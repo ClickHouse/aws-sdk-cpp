@@ -19,15 +19,7 @@ namespace ConnectCampaigns
 namespace Model
 {
 
-InvalidStateException::InvalidStateException() : 
-    m_messageHasBeenSet(false),
-    m_xAmzErrorTypeHasBeenSet(false)
-{
-}
-
-InvalidStateException::InvalidStateException(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_xAmzErrorTypeHasBeenSet(false)
+InvalidStateException::InvalidStateException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -37,10 +29,8 @@ InvalidStateException& InvalidStateException::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
   return *this;
 }
 

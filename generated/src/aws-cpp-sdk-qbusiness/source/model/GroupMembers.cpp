@@ -18,15 +18,7 @@ namespace QBusiness
 namespace Model
 {
 
-GroupMembers::GroupMembers() : 
-    m_memberGroupsHasBeenSet(false),
-    m_memberUsersHasBeenSet(false)
-{
-}
-
-GroupMembers::GroupMembers(JsonView jsonValue) : 
-    m_memberGroupsHasBeenSet(false),
-    m_memberUsersHasBeenSet(false)
+GroupMembers::GroupMembers(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ GroupMembers& GroupMembers::operator =(JsonView jsonValue)
     }
     m_memberGroupsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("memberUsers"))
   {
     Aws::Utils::Array<JsonView> memberUsersJsonList = jsonValue.GetArray("memberUsers");
@@ -52,7 +43,11 @@ GroupMembers& GroupMembers::operator =(JsonView jsonValue)
     }
     m_memberUsersHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("s3PathForGroupMembers"))
+  {
+    m_s3PathForGroupMembers = jsonValue.GetObject("s3PathForGroupMembers");
+    m_s3PathForGroupMembersHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -79,6 +74,12 @@ JsonValue GroupMembers::Jsonize() const
      memberUsersJsonList[memberUsersIndex].AsObject(m_memberUsers[memberUsersIndex].Jsonize());
    }
    payload.WithArray("memberUsers", std::move(memberUsersJsonList));
+
+  }
+
+  if(m_s3PathForGroupMembersHasBeenSet)
+  {
+   payload.WithObject("s3PathForGroupMembers", m_s3PathForGroupMembers.Jsonize());
 
   }
 

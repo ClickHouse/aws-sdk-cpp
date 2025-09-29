@@ -18,48 +18,28 @@ namespace CostOptimizationHub
 namespace Model
 {
 
-RecommendationSummary::RecommendationSummary() : 
-    m_estimatedMonthlySavings(0.0),
-    m_estimatedMonthlySavingsHasBeenSet(false),
-    m_groupHasBeenSet(false),
-    m_recommendationCount(0),
-    m_recommendationCountHasBeenSet(false)
-{
-}
-
-RecommendationSummary::RecommendationSummary(JsonView jsonValue) : 
-    m_estimatedMonthlySavings(0.0),
-    m_estimatedMonthlySavingsHasBeenSet(false),
-    m_groupHasBeenSet(false),
-    m_recommendationCount(0),
-    m_recommendationCountHasBeenSet(false)
+RecommendationSummary::RecommendationSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 RecommendationSummary& RecommendationSummary::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("estimatedMonthlySavings"))
-  {
-    m_estimatedMonthlySavings = jsonValue.GetDouble("estimatedMonthlySavings");
-
-    m_estimatedMonthlySavingsHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("group"))
   {
     m_group = jsonValue.GetString("group");
-
     m_groupHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("estimatedMonthlySavings"))
+  {
+    m_estimatedMonthlySavings = jsonValue.GetDouble("estimatedMonthlySavings");
+    m_estimatedMonthlySavingsHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("recommendationCount"))
   {
     m_recommendationCount = jsonValue.GetInteger("recommendationCount");
-
     m_recommendationCountHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -67,15 +47,15 @@ JsonValue RecommendationSummary::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_estimatedMonthlySavingsHasBeenSet)
-  {
-   payload.WithDouble("estimatedMonthlySavings", m_estimatedMonthlySavings);
-
-  }
-
   if(m_groupHasBeenSet)
   {
    payload.WithString("group", m_group);
+
+  }
+
+  if(m_estimatedMonthlySavingsHasBeenSet)
+  {
+   payload.WithDouble("estimatedMonthlySavings", m_estimatedMonthlySavings);
 
   }
 

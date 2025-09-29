@@ -33,79 +33,39 @@ namespace Model
   class PortalOptions
   {
   public:
-    AWS_SSOADMIN_API PortalOptions();
+    AWS_SSOADMIN_API PortalOptions() = default;
     AWS_SSOADMIN_API PortalOptions(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSOADMIN_API PortalOptions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSOADMIN_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A structure that describes the sign-in options for the access portal.</p>
      */
-    inline const SignInOptions& GetSignInOptions() const{ return m_signInOptions; }
-
-    /**
-     * <p>A structure that describes the sign-in options for the access portal.</p>
-     */
+    inline const SignInOptions& GetSignInOptions() const { return m_signInOptions; }
     inline bool SignInOptionsHasBeenSet() const { return m_signInOptionsHasBeenSet; }
+    template<typename SignInOptionsT = SignInOptions>
+    void SetSignInOptions(SignInOptionsT&& value) { m_signInOptionsHasBeenSet = true; m_signInOptions = std::forward<SignInOptionsT>(value); }
+    template<typename SignInOptionsT = SignInOptions>
+    PortalOptions& WithSignInOptions(SignInOptionsT&& value) { SetSignInOptions(std::forward<SignInOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A structure that describes the sign-in options for the access portal.</p>
-     */
-    inline void SetSignInOptions(const SignInOptions& value) { m_signInOptionsHasBeenSet = true; m_signInOptions = value; }
-
-    /**
-     * <p>A structure that describes the sign-in options for the access portal.</p>
-     */
-    inline void SetSignInOptions(SignInOptions&& value) { m_signInOptionsHasBeenSet = true; m_signInOptions = std::move(value); }
-
-    /**
-     * <p>A structure that describes the sign-in options for the access portal.</p>
-     */
-    inline PortalOptions& WithSignInOptions(const SignInOptions& value) { SetSignInOptions(value); return *this;}
-
-    /**
-     * <p>A structure that describes the sign-in options for the access portal.</p>
-     */
-    inline PortalOptions& WithSignInOptions(SignInOptions&& value) { SetSignInOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Indicates whether this application is visible in the access portal.</p>
      */
-    inline const ApplicationVisibility& GetVisibility() const{ return m_visibility; }
-
-    /**
-     * <p>Indicates whether this application is visible in the access portal.</p>
-     */
+    inline ApplicationVisibility GetVisibility() const { return m_visibility; }
     inline bool VisibilityHasBeenSet() const { return m_visibilityHasBeenSet; }
-
-    /**
-     * <p>Indicates whether this application is visible in the access portal.</p>
-     */
-    inline void SetVisibility(const ApplicationVisibility& value) { m_visibilityHasBeenSet = true; m_visibility = value; }
-
-    /**
-     * <p>Indicates whether this application is visible in the access portal.</p>
-     */
-    inline void SetVisibility(ApplicationVisibility&& value) { m_visibilityHasBeenSet = true; m_visibility = std::move(value); }
-
-    /**
-     * <p>Indicates whether this application is visible in the access portal.</p>
-     */
-    inline PortalOptions& WithVisibility(const ApplicationVisibility& value) { SetVisibility(value); return *this;}
-
-    /**
-     * <p>Indicates whether this application is visible in the access portal.</p>
-     */
-    inline PortalOptions& WithVisibility(ApplicationVisibility&& value) { SetVisibility(std::move(value)); return *this;}
-
+    inline void SetVisibility(ApplicationVisibility value) { m_visibilityHasBeenSet = true; m_visibility = value; }
+    inline PortalOptions& WithVisibility(ApplicationVisibility value) { SetVisibility(value); return *this;}
+    ///@}
   private:
 
     SignInOptions m_signInOptions;
     bool m_signInOptionsHasBeenSet = false;
 
-    ApplicationVisibility m_visibility;
+    ApplicationVisibility m_visibility{ApplicationVisibility::NOT_SET};
     bool m_visibilityHasBeenSet = false;
   };
 

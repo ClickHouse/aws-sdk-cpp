@@ -32,42 +32,23 @@ namespace Model
   class SankeyDiagramFieldWells
   {
   public:
-    AWS_QUICKSIGHT_API SankeyDiagramFieldWells();
+    AWS_QUICKSIGHT_API SankeyDiagramFieldWells() = default;
     AWS_QUICKSIGHT_API SankeyDiagramFieldWells(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API SankeyDiagramFieldWells& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The field well configuration of a sankey diagram.</p>
      */
-    inline const SankeyDiagramAggregatedFieldWells& GetSankeyDiagramAggregatedFieldWells() const{ return m_sankeyDiagramAggregatedFieldWells; }
-
-    /**
-     * <p>The field well configuration of a sankey diagram.</p>
-     */
+    inline const SankeyDiagramAggregatedFieldWells& GetSankeyDiagramAggregatedFieldWells() const { return m_sankeyDiagramAggregatedFieldWells; }
     inline bool SankeyDiagramAggregatedFieldWellsHasBeenSet() const { return m_sankeyDiagramAggregatedFieldWellsHasBeenSet; }
-
-    /**
-     * <p>The field well configuration of a sankey diagram.</p>
-     */
-    inline void SetSankeyDiagramAggregatedFieldWells(const SankeyDiagramAggregatedFieldWells& value) { m_sankeyDiagramAggregatedFieldWellsHasBeenSet = true; m_sankeyDiagramAggregatedFieldWells = value; }
-
-    /**
-     * <p>The field well configuration of a sankey diagram.</p>
-     */
-    inline void SetSankeyDiagramAggregatedFieldWells(SankeyDiagramAggregatedFieldWells&& value) { m_sankeyDiagramAggregatedFieldWellsHasBeenSet = true; m_sankeyDiagramAggregatedFieldWells = std::move(value); }
-
-    /**
-     * <p>The field well configuration of a sankey diagram.</p>
-     */
-    inline SankeyDiagramFieldWells& WithSankeyDiagramAggregatedFieldWells(const SankeyDiagramAggregatedFieldWells& value) { SetSankeyDiagramAggregatedFieldWells(value); return *this;}
-
-    /**
-     * <p>The field well configuration of a sankey diagram.</p>
-     */
-    inline SankeyDiagramFieldWells& WithSankeyDiagramAggregatedFieldWells(SankeyDiagramAggregatedFieldWells&& value) { SetSankeyDiagramAggregatedFieldWells(std::move(value)); return *this;}
-
+    template<typename SankeyDiagramAggregatedFieldWellsT = SankeyDiagramAggregatedFieldWells>
+    void SetSankeyDiagramAggregatedFieldWells(SankeyDiagramAggregatedFieldWellsT&& value) { m_sankeyDiagramAggregatedFieldWellsHasBeenSet = true; m_sankeyDiagramAggregatedFieldWells = std::forward<SankeyDiagramAggregatedFieldWellsT>(value); }
+    template<typename SankeyDiagramAggregatedFieldWellsT = SankeyDiagramAggregatedFieldWells>
+    SankeyDiagramFieldWells& WithSankeyDiagramAggregatedFieldWells(SankeyDiagramAggregatedFieldWellsT&& value) { SetSankeyDiagramAggregatedFieldWells(std::forward<SankeyDiagramAggregatedFieldWellsT>(value)); return *this;}
+    ///@}
   private:
 
     SankeyDiagramAggregatedFieldWells m_sankeyDiagramAggregatedFieldWells;

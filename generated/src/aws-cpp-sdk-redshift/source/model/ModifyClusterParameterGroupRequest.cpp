@@ -10,12 +10,6 @@
 using namespace Aws::Redshift::Model;
 using namespace Aws::Utils;
 
-ModifyClusterParameterGroupRequest::ModifyClusterParameterGroupRequest() : 
-    m_parameterGroupNameHasBeenSet(false),
-    m_parametersHasBeenSet(false)
-{
-}
-
 Aws::String ModifyClusterParameterGroupRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -27,11 +21,18 @@ Aws::String ModifyClusterParameterGroupRequest::SerializePayload() const
 
   if(m_parametersHasBeenSet)
   {
-    unsigned parametersCount = 1;
-    for(auto& item : m_parameters)
+    if (m_parameters.empty())
     {
-      item.OutputToStream(ss, "Parameters.member.", parametersCount, "");
-      parametersCount++;
+      ss << "Parameters=&";
+    }
+    else
+    {
+      unsigned parametersCount = 1;
+      for(auto& item : m_parameters)
+      {
+        item.OutputToStream(ss, "Parameters.Parameter.", parametersCount, "");
+        parametersCount++;
+      }
     }
   }
 

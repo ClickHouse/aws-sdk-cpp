@@ -20,15 +20,7 @@ namespace EC2
 namespace Model
 {
 
-UnsuccessfulItemError::UnsuccessfulItemError() : 
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-UnsuccessfulItemError::UnsuccessfulItemError(const XmlNode& xmlNode) : 
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
+UnsuccessfulItemError::UnsuccessfulItemError(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

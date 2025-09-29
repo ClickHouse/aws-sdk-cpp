@@ -17,10 +17,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-ListSchemaMappingsResult::ListSchemaMappingsResult()
-{
-}
-
 ListSchemaMappingsResult::ListSchemaMappingsResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
@@ -29,12 +25,6 @@ ListSchemaMappingsResult::ListSchemaMappingsResult(const Aws::AmazonWebServiceRe
 ListSchemaMappingsResult& ListSchemaMappingsResult::operator =(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   JsonView jsonValue = result.GetPayload().View();
-  if(jsonValue.ValueExists("nextToken"))
-  {
-    m_nextToken = jsonValue.GetString("nextToken");
-
-  }
-
   if(jsonValue.ValueExists("schemaList"))
   {
     Aws::Utils::Array<JsonView> schemaListJsonList = jsonValue.GetArray("schemaList");
@@ -42,14 +32,20 @@ ListSchemaMappingsResult& ListSchemaMappingsResult::operator =(const Aws::Amazon
     {
       m_schemaList.push_back(schemaListJsonList[schemaListIndex].AsObject());
     }
+    m_schemaListHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("nextToken"))
+  {
+    m_nextToken = jsonValue.GetString("nextToken");
+    m_nextTokenHasBeenSet = true;
+  }
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

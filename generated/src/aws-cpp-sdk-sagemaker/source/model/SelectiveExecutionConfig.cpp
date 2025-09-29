@@ -18,15 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-SelectiveExecutionConfig::SelectiveExecutionConfig() : 
-    m_sourcePipelineExecutionArnHasBeenSet(false),
-    m_selectedStepsHasBeenSet(false)
-{
-}
-
-SelectiveExecutionConfig::SelectiveExecutionConfig(JsonView jsonValue) : 
-    m_sourcePipelineExecutionArnHasBeenSet(false),
-    m_selectedStepsHasBeenSet(false)
+SelectiveExecutionConfig::SelectiveExecutionConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ SelectiveExecutionConfig& SelectiveExecutionConfig::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("SourcePipelineExecutionArn"))
   {
     m_sourcePipelineExecutionArn = jsonValue.GetString("SourcePipelineExecutionArn");
-
     m_sourcePipelineExecutionArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SelectedSteps"))
   {
     Aws::Utils::Array<JsonView> selectedStepsJsonList = jsonValue.GetArray("SelectedSteps");
@@ -49,7 +39,6 @@ SelectiveExecutionConfig& SelectiveExecutionConfig::operator =(JsonView jsonValu
     }
     m_selectedStepsHasBeenSet = true;
   }
-
   return *this;
 }
 

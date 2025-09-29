@@ -20,15 +20,7 @@ namespace S3
 namespace Model
 {
 
-AccessControlTranslation::AccessControlTranslation() : 
-    m_owner(OwnerOverride::NOT_SET),
-    m_ownerHasBeenSet(false)
-{
-}
-
-AccessControlTranslation::AccessControlTranslation(const XmlNode& xmlNode) : 
-    m_owner(OwnerOverride::NOT_SET),
-    m_ownerHasBeenSet(false)
+AccessControlTranslation::AccessControlTranslation(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -42,7 +34,7 @@ AccessControlTranslation& AccessControlTranslation::operator =(const XmlNode& xm
     XmlNode ownerNode = resultNode.FirstChild("Owner");
     if(!ownerNode.IsNull())
     {
-      m_owner = OwnerOverrideMapper::GetOwnerOverrideForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(ownerNode.GetText()).c_str()).c_str());
+      m_owner = OwnerOverrideMapper::GetOwnerOverrideForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(ownerNode.GetText()).c_str()));
       m_ownerHasBeenSet = true;
     }
   }

@@ -21,7 +21,7 @@ namespace Model
   class DeleteLoggerDefinitionRequest : public GreengrassRequest
   {
   public:
-    AWS_GREENGRASS_API DeleteLoggerDefinitionRequest();
+    AWS_GREENGRASS_API DeleteLoggerDefinitionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_GREENGRASS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * The ID of the logger definition.
      */
-    inline const Aws::String& GetLoggerDefinitionId() const{ return m_loggerDefinitionId; }
-
-    /**
-     * The ID of the logger definition.
-     */
+    inline const Aws::String& GetLoggerDefinitionId() const { return m_loggerDefinitionId; }
     inline bool LoggerDefinitionIdHasBeenSet() const { return m_loggerDefinitionIdHasBeenSet; }
-
-    /**
-     * The ID of the logger definition.
-     */
-    inline void SetLoggerDefinitionId(const Aws::String& value) { m_loggerDefinitionIdHasBeenSet = true; m_loggerDefinitionId = value; }
-
-    /**
-     * The ID of the logger definition.
-     */
-    inline void SetLoggerDefinitionId(Aws::String&& value) { m_loggerDefinitionIdHasBeenSet = true; m_loggerDefinitionId = std::move(value); }
-
-    /**
-     * The ID of the logger definition.
-     */
-    inline void SetLoggerDefinitionId(const char* value) { m_loggerDefinitionIdHasBeenSet = true; m_loggerDefinitionId.assign(value); }
-
-    /**
-     * The ID of the logger definition.
-     */
-    inline DeleteLoggerDefinitionRequest& WithLoggerDefinitionId(const Aws::String& value) { SetLoggerDefinitionId(value); return *this;}
-
-    /**
-     * The ID of the logger definition.
-     */
-    inline DeleteLoggerDefinitionRequest& WithLoggerDefinitionId(Aws::String&& value) { SetLoggerDefinitionId(std::move(value)); return *this;}
-
-    /**
-     * The ID of the logger definition.
-     */
-    inline DeleteLoggerDefinitionRequest& WithLoggerDefinitionId(const char* value) { SetLoggerDefinitionId(value); return *this;}
-
+    template<typename LoggerDefinitionIdT = Aws::String>
+    void SetLoggerDefinitionId(LoggerDefinitionIdT&& value) { m_loggerDefinitionIdHasBeenSet = true; m_loggerDefinitionId = std::forward<LoggerDefinitionIdT>(value); }
+    template<typename LoggerDefinitionIdT = Aws::String>
+    DeleteLoggerDefinitionRequest& WithLoggerDefinitionId(LoggerDefinitionIdT&& value) { SetLoggerDefinitionId(std::forward<LoggerDefinitionIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_loggerDefinitionId;

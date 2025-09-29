@@ -20,27 +20,7 @@ namespace ElasticBeanstalk
 namespace Model
 {
 
-ApplicationDescription::ApplicationDescription() : 
-    m_applicationArnHasBeenSet(false),
-    m_applicationNameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_dateCreatedHasBeenSet(false),
-    m_dateUpdatedHasBeenSet(false),
-    m_versionsHasBeenSet(false),
-    m_configurationTemplatesHasBeenSet(false),
-    m_resourceLifecycleConfigHasBeenSet(false)
-{
-}
-
-ApplicationDescription::ApplicationDescription(const XmlNode& xmlNode) : 
-    m_applicationArnHasBeenSet(false),
-    m_applicationNameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_dateCreatedHasBeenSet(false),
-    m_dateUpdatedHasBeenSet(false),
-    m_versionsHasBeenSet(false),
-    m_configurationTemplatesHasBeenSet(false),
-    m_resourceLifecycleConfigHasBeenSet(false)
+ApplicationDescription::ApplicationDescription(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -85,6 +65,7 @@ ApplicationDescription& ApplicationDescription::operator =(const XmlNode& xmlNod
     if(!versionsNode.IsNull())
     {
       XmlNode versionsMember = versionsNode.FirstChild("member");
+      m_versionsHasBeenSet = !versionsMember.IsNull();
       while(!versionsMember.IsNull())
       {
         m_versions.push_back(versionsMember.GetText());
@@ -97,6 +78,7 @@ ApplicationDescription& ApplicationDescription::operator =(const XmlNode& xmlNod
     if(!configurationTemplatesNode.IsNull())
     {
       XmlNode configurationTemplatesMember = configurationTemplatesNode.FirstChild("member");
+      m_configurationTemplatesHasBeenSet = !configurationTemplatesMember.IsNull();
       while(!configurationTemplatesMember.IsNull())
       {
         m_configurationTemplates.push_back(configurationTemplatesMember.GetText());

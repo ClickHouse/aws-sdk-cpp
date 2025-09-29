@@ -18,17 +18,7 @@ namespace finspace
 namespace Model
 {
 
-Volume::Volume() : 
-    m_volumeNameHasBeenSet(false),
-    m_volumeType(VolumeType::NOT_SET),
-    m_volumeTypeHasBeenSet(false)
-{
-}
-
-Volume::Volume(JsonView jsonValue) : 
-    m_volumeNameHasBeenSet(false),
-    m_volumeType(VolumeType::NOT_SET),
-    m_volumeTypeHasBeenSet(false)
+Volume::Volume(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ Volume& Volume::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("volumeName"))
   {
     m_volumeName = jsonValue.GetString("volumeName");
-
     m_volumeNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("volumeType"))
   {
     m_volumeType = VolumeTypeMapper::GetVolumeTypeForName(jsonValue.GetString("volumeType"));
-
     m_volumeTypeHasBeenSet = true;
   }
-
   return *this;
 }
 

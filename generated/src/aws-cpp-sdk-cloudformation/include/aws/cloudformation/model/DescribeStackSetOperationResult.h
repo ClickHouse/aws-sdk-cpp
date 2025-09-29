@@ -28,57 +28,37 @@ namespace Model
   class DescribeStackSetOperationResult
   {
   public:
-    AWS_CLOUDFORMATION_API DescribeStackSetOperationResult();
+    AWS_CLOUDFORMATION_API DescribeStackSetOperationResult() = default;
     AWS_CLOUDFORMATION_API DescribeStackSetOperationResult(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_CLOUDFORMATION_API DescribeStackSetOperationResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
-     * <p>The specified stack set operation.</p>
+     * <p>The specified StackSet operation.</p>
      */
-    inline const StackSetOperation& GetStackSetOperation() const{ return m_stackSetOperation; }
+    inline const StackSetOperation& GetStackSetOperation() const { return m_stackSetOperation; }
+    template<typename StackSetOperationT = StackSetOperation>
+    void SetStackSetOperation(StackSetOperationT&& value) { m_stackSetOperationHasBeenSet = true; m_stackSetOperation = std::forward<StackSetOperationT>(value); }
+    template<typename StackSetOperationT = StackSetOperation>
+    DescribeStackSetOperationResult& WithStackSetOperation(StackSetOperationT&& value) { SetStackSetOperation(std::forward<StackSetOperationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The specified stack set operation.</p>
-     */
-    inline void SetStackSetOperation(const StackSetOperation& value) { m_stackSetOperation = value; }
-
-    /**
-     * <p>The specified stack set operation.</p>
-     */
-    inline void SetStackSetOperation(StackSetOperation&& value) { m_stackSetOperation = std::move(value); }
-
-    /**
-     * <p>The specified stack set operation.</p>
-     */
-    inline DescribeStackSetOperationResult& WithStackSetOperation(const StackSetOperation& value) { SetStackSetOperation(value); return *this;}
-
-    /**
-     * <p>The specified stack set operation.</p>
-     */
-    inline DescribeStackSetOperationResult& WithStackSetOperation(StackSetOperation&& value) { SetStackSetOperation(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
-
-    
-    inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
-
-    
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
-
-    
-    inline DescribeStackSetOperationResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
-
-    
-    inline DescribeStackSetOperationResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
-
+    inline const ResponseMetadata& GetResponseMetadata() const { return m_responseMetadata; }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    void SetResponseMetadata(ResponseMetadataT&& value) { m_responseMetadataHasBeenSet = true; m_responseMetadata = std::forward<ResponseMetadataT>(value); }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    DescribeStackSetOperationResult& WithResponseMetadata(ResponseMetadataT&& value) { SetResponseMetadata(std::forward<ResponseMetadataT>(value)); return *this;}
+    ///@}
   private:
 
     StackSetOperation m_stackSetOperation;
+    bool m_stackSetOperationHasBeenSet = false;
 
     ResponseMetadata m_responseMetadata;
+    bool m_responseMetadataHasBeenSet = false;
   };
 
 } // namespace Model

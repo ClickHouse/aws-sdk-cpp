@@ -29,125 +29,55 @@ namespace Model
   class DescribeConnectorProfilesResult
   {
   public:
-    AWS_APPFLOW_API DescribeConnectorProfilesResult();
+    AWS_APPFLOW_API DescribeConnectorProfilesResult() = default;
     AWS_APPFLOW_API DescribeConnectorProfilesResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_APPFLOW_API DescribeConnectorProfilesResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p> Returns information about the connector profiles associated with the flow.
      * </p>
      */
-    inline const Aws::Vector<ConnectorProfile>& GetConnectorProfileDetails() const{ return m_connectorProfileDetails; }
+    inline const Aws::Vector<ConnectorProfile>& GetConnectorProfileDetails() const { return m_connectorProfileDetails; }
+    template<typename ConnectorProfileDetailsT = Aws::Vector<ConnectorProfile>>
+    void SetConnectorProfileDetails(ConnectorProfileDetailsT&& value) { m_connectorProfileDetailsHasBeenSet = true; m_connectorProfileDetails = std::forward<ConnectorProfileDetailsT>(value); }
+    template<typename ConnectorProfileDetailsT = Aws::Vector<ConnectorProfile>>
+    DescribeConnectorProfilesResult& WithConnectorProfileDetails(ConnectorProfileDetailsT&& value) { SetConnectorProfileDetails(std::forward<ConnectorProfileDetailsT>(value)); return *this;}
+    template<typename ConnectorProfileDetailsT = ConnectorProfile>
+    DescribeConnectorProfilesResult& AddConnectorProfileDetails(ConnectorProfileDetailsT&& value) { m_connectorProfileDetailsHasBeenSet = true; m_connectorProfileDetails.emplace_back(std::forward<ConnectorProfileDetailsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p> Returns information about the connector profiles associated with the flow.
-     * </p>
-     */
-    inline void SetConnectorProfileDetails(const Aws::Vector<ConnectorProfile>& value) { m_connectorProfileDetails = value; }
-
-    /**
-     * <p> Returns information about the connector profiles associated with the flow.
-     * </p>
-     */
-    inline void SetConnectorProfileDetails(Aws::Vector<ConnectorProfile>&& value) { m_connectorProfileDetails = std::move(value); }
-
-    /**
-     * <p> Returns information about the connector profiles associated with the flow.
-     * </p>
-     */
-    inline DescribeConnectorProfilesResult& WithConnectorProfileDetails(const Aws::Vector<ConnectorProfile>& value) { SetConnectorProfileDetails(value); return *this;}
-
-    /**
-     * <p> Returns information about the connector profiles associated with the flow.
-     * </p>
-     */
-    inline DescribeConnectorProfilesResult& WithConnectorProfileDetails(Aws::Vector<ConnectorProfile>&& value) { SetConnectorProfileDetails(std::move(value)); return *this;}
-
-    /**
-     * <p> Returns information about the connector profiles associated with the flow.
-     * </p>
-     */
-    inline DescribeConnectorProfilesResult& AddConnectorProfileDetails(const ConnectorProfile& value) { m_connectorProfileDetails.push_back(value); return *this; }
-
-    /**
-     * <p> Returns information about the connector profiles associated with the flow.
-     * </p>
-     */
-    inline DescribeConnectorProfilesResult& AddConnectorProfileDetails(ConnectorProfile&& value) { m_connectorProfileDetails.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p> The pagination token for the next page of data. If
      * <code>nextToken=null</code>, this means that all records have been fetched. </p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    DescribeConnectorProfilesResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The pagination token for the next page of data. If
-     * <code>nextToken=null</code>, this means that all records have been fetched. </p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p> The pagination token for the next page of data. If
-     * <code>nextToken=null</code>, this means that all records have been fetched. </p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p> The pagination token for the next page of data. If
-     * <code>nextToken=null</code>, this means that all records have been fetched. </p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p> The pagination token for the next page of data. If
-     * <code>nextToken=null</code>, this means that all records have been fetched. </p>
-     */
-    inline DescribeConnectorProfilesResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p> The pagination token for the next page of data. If
-     * <code>nextToken=null</code>, this means that all records have been fetched. </p>
-     */
-    inline DescribeConnectorProfilesResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p> The pagination token for the next page of data. If
-     * <code>nextToken=null</code>, this means that all records have been fetched. </p>
-     */
-    inline DescribeConnectorProfilesResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeConnectorProfilesResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeConnectorProfilesResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeConnectorProfilesResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeConnectorProfilesResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<ConnectorProfile> m_connectorProfileDetails;
+    bool m_connectorProfileDetailsHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -25,7 +25,7 @@ namespace Model
   class UpdateEventConfigurationByResourceTypesRequest : public IoTWirelessRequest
   {
   public:
-    AWS_IOTWIRELESS_API UpdateEventConfigurationByResourceTypesRequest();
+    AWS_IOTWIRELESS_API UpdateEventConfigurationByResourceTypesRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,190 +36,70 @@ namespace Model
     AWS_IOTWIRELESS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>Device registration state resource type event configuration object for
      * enabling and disabling wireless gateway topic.</p>
      */
-    inline const DeviceRegistrationStateResourceTypeEventConfiguration& GetDeviceRegistrationState() const{ return m_deviceRegistrationState; }
-
-    /**
-     * <p>Device registration state resource type event configuration object for
-     * enabling and disabling wireless gateway topic.</p>
-     */
+    inline const DeviceRegistrationStateResourceTypeEventConfiguration& GetDeviceRegistrationState() const { return m_deviceRegistrationState; }
     inline bool DeviceRegistrationStateHasBeenSet() const { return m_deviceRegistrationStateHasBeenSet; }
+    template<typename DeviceRegistrationStateT = DeviceRegistrationStateResourceTypeEventConfiguration>
+    void SetDeviceRegistrationState(DeviceRegistrationStateT&& value) { m_deviceRegistrationStateHasBeenSet = true; m_deviceRegistrationState = std::forward<DeviceRegistrationStateT>(value); }
+    template<typename DeviceRegistrationStateT = DeviceRegistrationStateResourceTypeEventConfiguration>
+    UpdateEventConfigurationByResourceTypesRequest& WithDeviceRegistrationState(DeviceRegistrationStateT&& value) { SetDeviceRegistrationState(std::forward<DeviceRegistrationStateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Device registration state resource type event configuration object for
-     * enabling and disabling wireless gateway topic.</p>
-     */
-    inline void SetDeviceRegistrationState(const DeviceRegistrationStateResourceTypeEventConfiguration& value) { m_deviceRegistrationStateHasBeenSet = true; m_deviceRegistrationState = value; }
-
-    /**
-     * <p>Device registration state resource type event configuration object for
-     * enabling and disabling wireless gateway topic.</p>
-     */
-    inline void SetDeviceRegistrationState(DeviceRegistrationStateResourceTypeEventConfiguration&& value) { m_deviceRegistrationStateHasBeenSet = true; m_deviceRegistrationState = std::move(value); }
-
-    /**
-     * <p>Device registration state resource type event configuration object for
-     * enabling and disabling wireless gateway topic.</p>
-     */
-    inline UpdateEventConfigurationByResourceTypesRequest& WithDeviceRegistrationState(const DeviceRegistrationStateResourceTypeEventConfiguration& value) { SetDeviceRegistrationState(value); return *this;}
-
-    /**
-     * <p>Device registration state resource type event configuration object for
-     * enabling and disabling wireless gateway topic.</p>
-     */
-    inline UpdateEventConfigurationByResourceTypesRequest& WithDeviceRegistrationState(DeviceRegistrationStateResourceTypeEventConfiguration&& value) { SetDeviceRegistrationState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Proximity resource type event configuration object for enabling and disabling
      * wireless gateway topic.</p>
      */
-    inline const ProximityResourceTypeEventConfiguration& GetProximity() const{ return m_proximity; }
-
-    /**
-     * <p>Proximity resource type event configuration object for enabling and disabling
-     * wireless gateway topic.</p>
-     */
+    inline const ProximityResourceTypeEventConfiguration& GetProximity() const { return m_proximity; }
     inline bool ProximityHasBeenSet() const { return m_proximityHasBeenSet; }
+    template<typename ProximityT = ProximityResourceTypeEventConfiguration>
+    void SetProximity(ProximityT&& value) { m_proximityHasBeenSet = true; m_proximity = std::forward<ProximityT>(value); }
+    template<typename ProximityT = ProximityResourceTypeEventConfiguration>
+    UpdateEventConfigurationByResourceTypesRequest& WithProximity(ProximityT&& value) { SetProximity(std::forward<ProximityT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Proximity resource type event configuration object for enabling and disabling
-     * wireless gateway topic.</p>
-     */
-    inline void SetProximity(const ProximityResourceTypeEventConfiguration& value) { m_proximityHasBeenSet = true; m_proximity = value; }
-
-    /**
-     * <p>Proximity resource type event configuration object for enabling and disabling
-     * wireless gateway topic.</p>
-     */
-    inline void SetProximity(ProximityResourceTypeEventConfiguration&& value) { m_proximityHasBeenSet = true; m_proximity = std::move(value); }
-
-    /**
-     * <p>Proximity resource type event configuration object for enabling and disabling
-     * wireless gateway topic.</p>
-     */
-    inline UpdateEventConfigurationByResourceTypesRequest& WithProximity(const ProximityResourceTypeEventConfiguration& value) { SetProximity(value); return *this;}
-
-    /**
-     * <p>Proximity resource type event configuration object for enabling and disabling
-     * wireless gateway topic.</p>
-     */
-    inline UpdateEventConfigurationByResourceTypesRequest& WithProximity(ProximityResourceTypeEventConfiguration&& value) { SetProximity(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Join resource type event configuration object for enabling and disabling
      * wireless device topic.</p>
      */
-    inline const JoinResourceTypeEventConfiguration& GetJoin() const{ return m_join; }
-
-    /**
-     * <p>Join resource type event configuration object for enabling and disabling
-     * wireless device topic.</p>
-     */
+    inline const JoinResourceTypeEventConfiguration& GetJoin() const { return m_join; }
     inline bool JoinHasBeenSet() const { return m_joinHasBeenSet; }
+    template<typename JoinT = JoinResourceTypeEventConfiguration>
+    void SetJoin(JoinT&& value) { m_joinHasBeenSet = true; m_join = std::forward<JoinT>(value); }
+    template<typename JoinT = JoinResourceTypeEventConfiguration>
+    UpdateEventConfigurationByResourceTypesRequest& WithJoin(JoinT&& value) { SetJoin(std::forward<JoinT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Join resource type event configuration object for enabling and disabling
-     * wireless device topic.</p>
-     */
-    inline void SetJoin(const JoinResourceTypeEventConfiguration& value) { m_joinHasBeenSet = true; m_join = value; }
-
-    /**
-     * <p>Join resource type event configuration object for enabling and disabling
-     * wireless device topic.</p>
-     */
-    inline void SetJoin(JoinResourceTypeEventConfiguration&& value) { m_joinHasBeenSet = true; m_join = std::move(value); }
-
-    /**
-     * <p>Join resource type event configuration object for enabling and disabling
-     * wireless device topic.</p>
-     */
-    inline UpdateEventConfigurationByResourceTypesRequest& WithJoin(const JoinResourceTypeEventConfiguration& value) { SetJoin(value); return *this;}
-
-    /**
-     * <p>Join resource type event configuration object for enabling and disabling
-     * wireless device topic.</p>
-     */
-    inline UpdateEventConfigurationByResourceTypesRequest& WithJoin(JoinResourceTypeEventConfiguration&& value) { SetJoin(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Connection status resource type event configuration object for enabling and
      * disabling wireless gateway topic.</p>
      */
-    inline const ConnectionStatusResourceTypeEventConfiguration& GetConnectionStatus() const{ return m_connectionStatus; }
-
-    /**
-     * <p>Connection status resource type event configuration object for enabling and
-     * disabling wireless gateway topic.</p>
-     */
+    inline const ConnectionStatusResourceTypeEventConfiguration& GetConnectionStatus() const { return m_connectionStatus; }
     inline bool ConnectionStatusHasBeenSet() const { return m_connectionStatusHasBeenSet; }
+    template<typename ConnectionStatusT = ConnectionStatusResourceTypeEventConfiguration>
+    void SetConnectionStatus(ConnectionStatusT&& value) { m_connectionStatusHasBeenSet = true; m_connectionStatus = std::forward<ConnectionStatusT>(value); }
+    template<typename ConnectionStatusT = ConnectionStatusResourceTypeEventConfiguration>
+    UpdateEventConfigurationByResourceTypesRequest& WithConnectionStatus(ConnectionStatusT&& value) { SetConnectionStatus(std::forward<ConnectionStatusT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Connection status resource type event configuration object for enabling and
-     * disabling wireless gateway topic.</p>
-     */
-    inline void SetConnectionStatus(const ConnectionStatusResourceTypeEventConfiguration& value) { m_connectionStatusHasBeenSet = true; m_connectionStatus = value; }
-
-    /**
-     * <p>Connection status resource type event configuration object for enabling and
-     * disabling wireless gateway topic.</p>
-     */
-    inline void SetConnectionStatus(ConnectionStatusResourceTypeEventConfiguration&& value) { m_connectionStatusHasBeenSet = true; m_connectionStatus = std::move(value); }
-
-    /**
-     * <p>Connection status resource type event configuration object for enabling and
-     * disabling wireless gateway topic.</p>
-     */
-    inline UpdateEventConfigurationByResourceTypesRequest& WithConnectionStatus(const ConnectionStatusResourceTypeEventConfiguration& value) { SetConnectionStatus(value); return *this;}
-
-    /**
-     * <p>Connection status resource type event configuration object for enabling and
-     * disabling wireless gateway topic.</p>
-     */
-    inline UpdateEventConfigurationByResourceTypesRequest& WithConnectionStatus(ConnectionStatusResourceTypeEventConfiguration&& value) { SetConnectionStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Message delivery status resource type event configuration object for enabling
      * and disabling wireless device topic.</p>
      */
-    inline const MessageDeliveryStatusResourceTypeEventConfiguration& GetMessageDeliveryStatus() const{ return m_messageDeliveryStatus; }
-
-    /**
-     * <p>Message delivery status resource type event configuration object for enabling
-     * and disabling wireless device topic.</p>
-     */
+    inline const MessageDeliveryStatusResourceTypeEventConfiguration& GetMessageDeliveryStatus() const { return m_messageDeliveryStatus; }
     inline bool MessageDeliveryStatusHasBeenSet() const { return m_messageDeliveryStatusHasBeenSet; }
-
-    /**
-     * <p>Message delivery status resource type event configuration object for enabling
-     * and disabling wireless device topic.</p>
-     */
-    inline void SetMessageDeliveryStatus(const MessageDeliveryStatusResourceTypeEventConfiguration& value) { m_messageDeliveryStatusHasBeenSet = true; m_messageDeliveryStatus = value; }
-
-    /**
-     * <p>Message delivery status resource type event configuration object for enabling
-     * and disabling wireless device topic.</p>
-     */
-    inline void SetMessageDeliveryStatus(MessageDeliveryStatusResourceTypeEventConfiguration&& value) { m_messageDeliveryStatusHasBeenSet = true; m_messageDeliveryStatus = std::move(value); }
-
-    /**
-     * <p>Message delivery status resource type event configuration object for enabling
-     * and disabling wireless device topic.</p>
-     */
-    inline UpdateEventConfigurationByResourceTypesRequest& WithMessageDeliveryStatus(const MessageDeliveryStatusResourceTypeEventConfiguration& value) { SetMessageDeliveryStatus(value); return *this;}
-
-    /**
-     * <p>Message delivery status resource type event configuration object for enabling
-     * and disabling wireless device topic.</p>
-     */
-    inline UpdateEventConfigurationByResourceTypesRequest& WithMessageDeliveryStatus(MessageDeliveryStatusResourceTypeEventConfiguration&& value) { SetMessageDeliveryStatus(std::move(value)); return *this;}
-
+    template<typename MessageDeliveryStatusT = MessageDeliveryStatusResourceTypeEventConfiguration>
+    void SetMessageDeliveryStatus(MessageDeliveryStatusT&& value) { m_messageDeliveryStatusHasBeenSet = true; m_messageDeliveryStatus = std::forward<MessageDeliveryStatusT>(value); }
+    template<typename MessageDeliveryStatusT = MessageDeliveryStatusResourceTypeEventConfiguration>
+    UpdateEventConfigurationByResourceTypesRequest& WithMessageDeliveryStatus(MessageDeliveryStatusT&& value) { SetMessageDeliveryStatus(std::forward<MessageDeliveryStatusT>(value)); return *this;}
+    ///@}
   private:
 
     DeviceRegistrationStateResourceTypeEventConfiguration m_deviceRegistrationState;

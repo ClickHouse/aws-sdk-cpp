@@ -33,73 +33,35 @@ namespace Model
   class IotSiteWiseSourceConfigurationFilter
   {
   public:
-    AWS_IOTTWINMAKER_API IotSiteWiseSourceConfigurationFilter();
+    AWS_IOTTWINMAKER_API IotSiteWiseSourceConfigurationFilter() = default;
     AWS_IOTTWINMAKER_API IotSiteWiseSourceConfigurationFilter(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTTWINMAKER_API IotSiteWiseSourceConfigurationFilter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTTWINMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Filter by asset model.</p>
      */
-    inline const FilterByAssetModel& GetFilterByAssetModel() const{ return m_filterByAssetModel; }
-
-    /**
-     * <p>Filter by asset model.</p>
-     */
+    inline const FilterByAssetModel& GetFilterByAssetModel() const { return m_filterByAssetModel; }
     inline bool FilterByAssetModelHasBeenSet() const { return m_filterByAssetModelHasBeenSet; }
+    template<typename FilterByAssetModelT = FilterByAssetModel>
+    void SetFilterByAssetModel(FilterByAssetModelT&& value) { m_filterByAssetModelHasBeenSet = true; m_filterByAssetModel = std::forward<FilterByAssetModelT>(value); }
+    template<typename FilterByAssetModelT = FilterByAssetModel>
+    IotSiteWiseSourceConfigurationFilter& WithFilterByAssetModel(FilterByAssetModelT&& value) { SetFilterByAssetModel(std::forward<FilterByAssetModelT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Filter by asset model.</p>
-     */
-    inline void SetFilterByAssetModel(const FilterByAssetModel& value) { m_filterByAssetModelHasBeenSet = true; m_filterByAssetModel = value; }
-
-    /**
-     * <p>Filter by asset model.</p>
-     */
-    inline void SetFilterByAssetModel(FilterByAssetModel&& value) { m_filterByAssetModelHasBeenSet = true; m_filterByAssetModel = std::move(value); }
-
-    /**
-     * <p>Filter by asset model.</p>
-     */
-    inline IotSiteWiseSourceConfigurationFilter& WithFilterByAssetModel(const FilterByAssetModel& value) { SetFilterByAssetModel(value); return *this;}
-
-    /**
-     * <p>Filter by asset model.</p>
-     */
-    inline IotSiteWiseSourceConfigurationFilter& WithFilterByAssetModel(FilterByAssetModel&& value) { SetFilterByAssetModel(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Filter by asset.</p>
      */
-    inline const FilterByAsset& GetFilterByAsset() const{ return m_filterByAsset; }
-
-    /**
-     * <p>Filter by asset.</p>
-     */
+    inline const FilterByAsset& GetFilterByAsset() const { return m_filterByAsset; }
     inline bool FilterByAssetHasBeenSet() const { return m_filterByAssetHasBeenSet; }
-
-    /**
-     * <p>Filter by asset.</p>
-     */
-    inline void SetFilterByAsset(const FilterByAsset& value) { m_filterByAssetHasBeenSet = true; m_filterByAsset = value; }
-
-    /**
-     * <p>Filter by asset.</p>
-     */
-    inline void SetFilterByAsset(FilterByAsset&& value) { m_filterByAssetHasBeenSet = true; m_filterByAsset = std::move(value); }
-
-    /**
-     * <p>Filter by asset.</p>
-     */
-    inline IotSiteWiseSourceConfigurationFilter& WithFilterByAsset(const FilterByAsset& value) { SetFilterByAsset(value); return *this;}
-
-    /**
-     * <p>Filter by asset.</p>
-     */
-    inline IotSiteWiseSourceConfigurationFilter& WithFilterByAsset(FilterByAsset&& value) { SetFilterByAsset(std::move(value)); return *this;}
-
+    template<typename FilterByAssetT = FilterByAsset>
+    void SetFilterByAsset(FilterByAssetT&& value) { m_filterByAssetHasBeenSet = true; m_filterByAsset = std::forward<FilterByAssetT>(value); }
+    template<typename FilterByAssetT = FilterByAsset>
+    IotSiteWiseSourceConfigurationFilter& WithFilterByAsset(FilterByAssetT&& value) { SetFilterByAsset(std::forward<FilterByAssetT>(value)); return *this;}
+    ///@}
   private:
 
     FilterByAssetModel m_filterByAssetModel;

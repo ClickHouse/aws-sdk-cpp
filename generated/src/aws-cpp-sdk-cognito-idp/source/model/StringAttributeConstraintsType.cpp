@@ -18,15 +18,7 @@ namespace CognitoIdentityProvider
 namespace Model
 {
 
-StringAttributeConstraintsType::StringAttributeConstraintsType() : 
-    m_minLengthHasBeenSet(false),
-    m_maxLengthHasBeenSet(false)
-{
-}
-
-StringAttributeConstraintsType::StringAttributeConstraintsType(JsonView jsonValue) : 
-    m_minLengthHasBeenSet(false),
-    m_maxLengthHasBeenSet(false)
+StringAttributeConstraintsType::StringAttributeConstraintsType(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ StringAttributeConstraintsType& StringAttributeConstraintsType::operator =(JsonV
   if(jsonValue.ValueExists("MinLength"))
   {
     m_minLength = jsonValue.GetString("MinLength");
-
     m_minLengthHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MaxLength"))
   {
     m_maxLength = jsonValue.GetString("MaxLength");
-
     m_maxLengthHasBeenSet = true;
   }
-
   return *this;
 }
 

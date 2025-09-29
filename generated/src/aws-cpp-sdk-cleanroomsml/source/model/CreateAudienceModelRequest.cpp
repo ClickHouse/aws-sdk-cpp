@@ -12,36 +12,35 @@ using namespace Aws::CleanRoomsML::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateAudienceModelRequest::CreateAudienceModelRequest() : 
-    m_descriptionHasBeenSet(false),
-    m_kmsKeyArnHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_trainingDataEndTimeHasBeenSet(false),
-    m_trainingDataStartTimeHasBeenSet(false),
-    m_trainingDatasetArnHasBeenSet(false)
-{
-}
-
 Aws::String CreateAudienceModelRequest::SerializePayload() const
 {
   JsonValue payload;
 
-  if(m_descriptionHasBeenSet)
+  if(m_trainingDataStartTimeHasBeenSet)
   {
-   payload.WithString("description", m_description);
+   payload.WithString("trainingDataStartTime", m_trainingDataStartTime.ToGmtString(Aws::Utils::DateFormat::ISO_8601));
+  }
+
+  if(m_trainingDataEndTimeHasBeenSet)
+  {
+   payload.WithString("trainingDataEndTime", m_trainingDataEndTime.ToGmtString(Aws::Utils::DateFormat::ISO_8601));
+  }
+
+  if(m_nameHasBeenSet)
+  {
+   payload.WithString("name", m_name);
+
+  }
+
+  if(m_trainingDatasetArnHasBeenSet)
+  {
+   payload.WithString("trainingDatasetArn", m_trainingDatasetArn);
 
   }
 
   if(m_kmsKeyArnHasBeenSet)
   {
    payload.WithString("kmsKeyArn", m_kmsKeyArn);
-
-  }
-
-  if(m_nameHasBeenSet)
-  {
-   payload.WithString("name", m_name);
 
   }
 
@@ -56,19 +55,9 @@ Aws::String CreateAudienceModelRequest::SerializePayload() const
 
   }
 
-  if(m_trainingDataEndTimeHasBeenSet)
+  if(m_descriptionHasBeenSet)
   {
-   payload.WithString("trainingDataEndTime", m_trainingDataEndTime.ToGmtString(Aws::Utils::DateFormat::ISO_8601));
-  }
-
-  if(m_trainingDataStartTimeHasBeenSet)
-  {
-   payload.WithString("trainingDataStartTime", m_trainingDataStartTime.ToGmtString(Aws::Utils::DateFormat::ISO_8601));
-  }
-
-  if(m_trainingDatasetArnHasBeenSet)
-  {
-   payload.WithString("trainingDatasetArn", m_trainingDatasetArn);
+   payload.WithString("description", m_description);
 
   }
 

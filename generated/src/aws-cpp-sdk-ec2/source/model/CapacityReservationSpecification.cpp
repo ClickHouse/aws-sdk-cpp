@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-CapacityReservationSpecification::CapacityReservationSpecification() : 
-    m_capacityReservationPreference(CapacityReservationPreference::NOT_SET),
-    m_capacityReservationPreferenceHasBeenSet(false),
-    m_capacityReservationTargetHasBeenSet(false)
-{
-}
-
-CapacityReservationSpecification::CapacityReservationSpecification(const XmlNode& xmlNode) : 
-    m_capacityReservationPreference(CapacityReservationPreference::NOT_SET),
-    m_capacityReservationPreferenceHasBeenSet(false),
-    m_capacityReservationTargetHasBeenSet(false)
+CapacityReservationSpecification::CapacityReservationSpecification(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -44,7 +34,7 @@ CapacityReservationSpecification& CapacityReservationSpecification::operator =(c
     XmlNode capacityReservationPreferenceNode = resultNode.FirstChild("CapacityReservationPreference");
     if(!capacityReservationPreferenceNode.IsNull())
     {
-      m_capacityReservationPreference = CapacityReservationPreferenceMapper::GetCapacityReservationPreferenceForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(capacityReservationPreferenceNode.GetText()).c_str()).c_str());
+      m_capacityReservationPreference = CapacityReservationPreferenceMapper::GetCapacityReservationPreferenceForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(capacityReservationPreferenceNode.GetText()).c_str()));
       m_capacityReservationPreferenceHasBeenSet = true;
     }
     XmlNode capacityReservationTargetNode = resultNode.FirstChild("CapacityReservationTarget");
@@ -62,7 +52,7 @@ void CapacityReservationSpecification::OutputToStream(Aws::OStream& oStream, con
 {
   if(m_capacityReservationPreferenceHasBeenSet)
   {
-      oStream << location << index << locationValue << ".CapacityReservationPreference=" << CapacityReservationPreferenceMapper::GetNameForCapacityReservationPreference(m_capacityReservationPreference) << "&";
+      oStream << location << index << locationValue << ".CapacityReservationPreference=" << StringUtils::URLEncode(CapacityReservationPreferenceMapper::GetNameForCapacityReservationPreference(m_capacityReservationPreference)) << "&";
   }
 
   if(m_capacityReservationTargetHasBeenSet)
@@ -78,7 +68,7 @@ void CapacityReservationSpecification::OutputToStream(Aws::OStream& oStream, con
 {
   if(m_capacityReservationPreferenceHasBeenSet)
   {
-      oStream << location << ".CapacityReservationPreference=" << CapacityReservationPreferenceMapper::GetNameForCapacityReservationPreference(m_capacityReservationPreference) << "&";
+      oStream << location << ".CapacityReservationPreference=" << StringUtils::URLEncode(CapacityReservationPreferenceMapper::GetNameForCapacityReservationPreference(m_capacityReservationPreference)) << "&";
   }
   if(m_capacityReservationTargetHasBeenSet)
   {

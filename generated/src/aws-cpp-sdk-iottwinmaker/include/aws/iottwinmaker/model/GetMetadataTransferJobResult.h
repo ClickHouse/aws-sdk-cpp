@@ -33,403 +33,179 @@ namespace Model
   class GetMetadataTransferJobResult
   {
   public:
-    AWS_IOTTWINMAKER_API GetMetadataTransferJobResult();
+    AWS_IOTTWINMAKER_API GetMetadataTransferJobResult() = default;
     AWS_IOTTWINMAKER_API GetMetadataTransferJobResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_IOTTWINMAKER_API GetMetadataTransferJobResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The metadata transfer job Id.</p>
      */
-    inline const Aws::String& GetMetadataTransferJobId() const{ return m_metadataTransferJobId; }
+    inline const Aws::String& GetMetadataTransferJobId() const { return m_metadataTransferJobId; }
+    template<typename MetadataTransferJobIdT = Aws::String>
+    void SetMetadataTransferJobId(MetadataTransferJobIdT&& value) { m_metadataTransferJobIdHasBeenSet = true; m_metadataTransferJobId = std::forward<MetadataTransferJobIdT>(value); }
+    template<typename MetadataTransferJobIdT = Aws::String>
+    GetMetadataTransferJobResult& WithMetadataTransferJobId(MetadataTransferJobIdT&& value) { SetMetadataTransferJobId(std::forward<MetadataTransferJobIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The metadata transfer job Id.</p>
-     */
-    inline void SetMetadataTransferJobId(const Aws::String& value) { m_metadataTransferJobId = value; }
-
-    /**
-     * <p>The metadata transfer job Id.</p>
-     */
-    inline void SetMetadataTransferJobId(Aws::String&& value) { m_metadataTransferJobId = std::move(value); }
-
-    /**
-     * <p>The metadata transfer job Id.</p>
-     */
-    inline void SetMetadataTransferJobId(const char* value) { m_metadataTransferJobId.assign(value); }
-
-    /**
-     * <p>The metadata transfer job Id.</p>
-     */
-    inline GetMetadataTransferJobResult& WithMetadataTransferJobId(const Aws::String& value) { SetMetadataTransferJobId(value); return *this;}
-
-    /**
-     * <p>The metadata transfer job Id.</p>
-     */
-    inline GetMetadataTransferJobResult& WithMetadataTransferJobId(Aws::String&& value) { SetMetadataTransferJobId(std::move(value)); return *this;}
-
-    /**
-     * <p>The metadata transfer job Id.</p>
-     */
-    inline GetMetadataTransferJobResult& WithMetadataTransferJobId(const char* value) { SetMetadataTransferJobId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The metadata transfer job ARN.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
+    inline const Aws::String& GetArn() const { return m_arn; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    GetMetadataTransferJobResult& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The metadata transfer job ARN.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arn = value; }
-
-    /**
-     * <p>The metadata transfer job ARN.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arn = std::move(value); }
-
-    /**
-     * <p>The metadata transfer job ARN.</p>
-     */
-    inline void SetArn(const char* value) { m_arn.assign(value); }
-
-    /**
-     * <p>The metadata transfer job ARN.</p>
-     */
-    inline GetMetadataTransferJobResult& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The metadata transfer job ARN.</p>
-     */
-    inline GetMetadataTransferJobResult& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The metadata transfer job ARN.</p>
-     */
-    inline GetMetadataTransferJobResult& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The metadata transfer job description.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
+    inline const Aws::String& GetDescription() const { return m_description; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    GetMetadataTransferJobResult& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The metadata transfer job description.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_description = value; }
-
-    /**
-     * <p>The metadata transfer job description.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_description = std::move(value); }
-
-    /**
-     * <p>The metadata transfer job description.</p>
-     */
-    inline void SetDescription(const char* value) { m_description.assign(value); }
-
-    /**
-     * <p>The metadata transfer job description.</p>
-     */
-    inline GetMetadataTransferJobResult& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The metadata transfer job description.</p>
-     */
-    inline GetMetadataTransferJobResult& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The metadata transfer job description.</p>
-     */
-    inline GetMetadataTransferJobResult& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The metadata transfer job's sources.</p>
      */
-    inline const Aws::Vector<SourceConfiguration>& GetSources() const{ return m_sources; }
+    inline const Aws::Vector<SourceConfiguration>& GetSources() const { return m_sources; }
+    template<typename SourcesT = Aws::Vector<SourceConfiguration>>
+    void SetSources(SourcesT&& value) { m_sourcesHasBeenSet = true; m_sources = std::forward<SourcesT>(value); }
+    template<typename SourcesT = Aws::Vector<SourceConfiguration>>
+    GetMetadataTransferJobResult& WithSources(SourcesT&& value) { SetSources(std::forward<SourcesT>(value)); return *this;}
+    template<typename SourcesT = SourceConfiguration>
+    GetMetadataTransferJobResult& AddSources(SourcesT&& value) { m_sourcesHasBeenSet = true; m_sources.emplace_back(std::forward<SourcesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The metadata transfer job's sources.</p>
-     */
-    inline void SetSources(const Aws::Vector<SourceConfiguration>& value) { m_sources = value; }
-
-    /**
-     * <p>The metadata transfer job's sources.</p>
-     */
-    inline void SetSources(Aws::Vector<SourceConfiguration>&& value) { m_sources = std::move(value); }
-
-    /**
-     * <p>The metadata transfer job's sources.</p>
-     */
-    inline GetMetadataTransferJobResult& WithSources(const Aws::Vector<SourceConfiguration>& value) { SetSources(value); return *this;}
-
-    /**
-     * <p>The metadata transfer job's sources.</p>
-     */
-    inline GetMetadataTransferJobResult& WithSources(Aws::Vector<SourceConfiguration>&& value) { SetSources(std::move(value)); return *this;}
-
-    /**
-     * <p>The metadata transfer job's sources.</p>
-     */
-    inline GetMetadataTransferJobResult& AddSources(const SourceConfiguration& value) { m_sources.push_back(value); return *this; }
-
-    /**
-     * <p>The metadata transfer job's sources.</p>
-     */
-    inline GetMetadataTransferJobResult& AddSources(SourceConfiguration&& value) { m_sources.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The metadata transfer job's destination.</p>
      */
-    inline const DestinationConfiguration& GetDestination() const{ return m_destination; }
+    inline const DestinationConfiguration& GetDestination() const { return m_destination; }
+    template<typename DestinationT = DestinationConfiguration>
+    void SetDestination(DestinationT&& value) { m_destinationHasBeenSet = true; m_destination = std::forward<DestinationT>(value); }
+    template<typename DestinationT = DestinationConfiguration>
+    GetMetadataTransferJobResult& WithDestination(DestinationT&& value) { SetDestination(std::forward<DestinationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The metadata transfer job's destination.</p>
-     */
-    inline void SetDestination(const DestinationConfiguration& value) { m_destination = value; }
-
-    /**
-     * <p>The metadata transfer job's destination.</p>
-     */
-    inline void SetDestination(DestinationConfiguration&& value) { m_destination = std::move(value); }
-
-    /**
-     * <p>The metadata transfer job's destination.</p>
-     */
-    inline GetMetadataTransferJobResult& WithDestination(const DestinationConfiguration& value) { SetDestination(value); return *this;}
-
-    /**
-     * <p>The metadata transfer job's destination.</p>
-     */
-    inline GetMetadataTransferJobResult& WithDestination(DestinationConfiguration&& value) { SetDestination(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The metadata transfer job's role.</p>
      */
-    inline const Aws::String& GetMetadataTransferJobRole() const{ return m_metadataTransferJobRole; }
+    inline const Aws::String& GetMetadataTransferJobRole() const { return m_metadataTransferJobRole; }
+    template<typename MetadataTransferJobRoleT = Aws::String>
+    void SetMetadataTransferJobRole(MetadataTransferJobRoleT&& value) { m_metadataTransferJobRoleHasBeenSet = true; m_metadataTransferJobRole = std::forward<MetadataTransferJobRoleT>(value); }
+    template<typename MetadataTransferJobRoleT = Aws::String>
+    GetMetadataTransferJobResult& WithMetadataTransferJobRole(MetadataTransferJobRoleT&& value) { SetMetadataTransferJobRole(std::forward<MetadataTransferJobRoleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The metadata transfer job's role.</p>
-     */
-    inline void SetMetadataTransferJobRole(const Aws::String& value) { m_metadataTransferJobRole = value; }
-
-    /**
-     * <p>The metadata transfer job's role.</p>
-     */
-    inline void SetMetadataTransferJobRole(Aws::String&& value) { m_metadataTransferJobRole = std::move(value); }
-
-    /**
-     * <p>The metadata transfer job's role.</p>
-     */
-    inline void SetMetadataTransferJobRole(const char* value) { m_metadataTransferJobRole.assign(value); }
-
-    /**
-     * <p>The metadata transfer job's role.</p>
-     */
-    inline GetMetadataTransferJobResult& WithMetadataTransferJobRole(const Aws::String& value) { SetMetadataTransferJobRole(value); return *this;}
-
-    /**
-     * <p>The metadata transfer job's role.</p>
-     */
-    inline GetMetadataTransferJobResult& WithMetadataTransferJobRole(Aws::String&& value) { SetMetadataTransferJobRole(std::move(value)); return *this;}
-
-    /**
-     * <p>The metadata transfer job's role.</p>
-     */
-    inline GetMetadataTransferJobResult& WithMetadataTransferJobRole(const char* value) { SetMetadataTransferJobRole(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The metadata transfer job's report URL.</p>
      */
-    inline const Aws::String& GetReportUrl() const{ return m_reportUrl; }
+    inline const Aws::String& GetReportUrl() const { return m_reportUrl; }
+    template<typename ReportUrlT = Aws::String>
+    void SetReportUrl(ReportUrlT&& value) { m_reportUrlHasBeenSet = true; m_reportUrl = std::forward<ReportUrlT>(value); }
+    template<typename ReportUrlT = Aws::String>
+    GetMetadataTransferJobResult& WithReportUrl(ReportUrlT&& value) { SetReportUrl(std::forward<ReportUrlT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The metadata transfer job's report URL.</p>
-     */
-    inline void SetReportUrl(const Aws::String& value) { m_reportUrl = value; }
-
-    /**
-     * <p>The metadata transfer job's report URL.</p>
-     */
-    inline void SetReportUrl(Aws::String&& value) { m_reportUrl = std::move(value); }
-
-    /**
-     * <p>The metadata transfer job's report URL.</p>
-     */
-    inline void SetReportUrl(const char* value) { m_reportUrl.assign(value); }
-
-    /**
-     * <p>The metadata transfer job's report URL.</p>
-     */
-    inline GetMetadataTransferJobResult& WithReportUrl(const Aws::String& value) { SetReportUrl(value); return *this;}
-
-    /**
-     * <p>The metadata transfer job's report URL.</p>
-     */
-    inline GetMetadataTransferJobResult& WithReportUrl(Aws::String&& value) { SetReportUrl(std::move(value)); return *this;}
-
-    /**
-     * <p>The metadata transfer job's report URL.</p>
-     */
-    inline GetMetadataTransferJobResult& WithReportUrl(const char* value) { SetReportUrl(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The metadata transfer job's creation DateTime property.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreationDateTime() const{ return m_creationDateTime; }
+    inline const Aws::Utils::DateTime& GetCreationDateTime() const { return m_creationDateTime; }
+    template<typename CreationDateTimeT = Aws::Utils::DateTime>
+    void SetCreationDateTime(CreationDateTimeT&& value) { m_creationDateTimeHasBeenSet = true; m_creationDateTime = std::forward<CreationDateTimeT>(value); }
+    template<typename CreationDateTimeT = Aws::Utils::DateTime>
+    GetMetadataTransferJobResult& WithCreationDateTime(CreationDateTimeT&& value) { SetCreationDateTime(std::forward<CreationDateTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The metadata transfer job's creation DateTime property.</p>
-     */
-    inline void SetCreationDateTime(const Aws::Utils::DateTime& value) { m_creationDateTime = value; }
-
-    /**
-     * <p>The metadata transfer job's creation DateTime property.</p>
-     */
-    inline void SetCreationDateTime(Aws::Utils::DateTime&& value) { m_creationDateTime = std::move(value); }
-
-    /**
-     * <p>The metadata transfer job's creation DateTime property.</p>
-     */
-    inline GetMetadataTransferJobResult& WithCreationDateTime(const Aws::Utils::DateTime& value) { SetCreationDateTime(value); return *this;}
-
-    /**
-     * <p>The metadata transfer job's creation DateTime property.</p>
-     */
-    inline GetMetadataTransferJobResult& WithCreationDateTime(Aws::Utils::DateTime&& value) { SetCreationDateTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The metadata transfer job's update DateTime property.</p>
      */
-    inline const Aws::Utils::DateTime& GetUpdateDateTime() const{ return m_updateDateTime; }
+    inline const Aws::Utils::DateTime& GetUpdateDateTime() const { return m_updateDateTime; }
+    template<typename UpdateDateTimeT = Aws::Utils::DateTime>
+    void SetUpdateDateTime(UpdateDateTimeT&& value) { m_updateDateTimeHasBeenSet = true; m_updateDateTime = std::forward<UpdateDateTimeT>(value); }
+    template<typename UpdateDateTimeT = Aws::Utils::DateTime>
+    GetMetadataTransferJobResult& WithUpdateDateTime(UpdateDateTimeT&& value) { SetUpdateDateTime(std::forward<UpdateDateTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The metadata transfer job's update DateTime property.</p>
-     */
-    inline void SetUpdateDateTime(const Aws::Utils::DateTime& value) { m_updateDateTime = value; }
-
-    /**
-     * <p>The metadata transfer job's update DateTime property.</p>
-     */
-    inline void SetUpdateDateTime(Aws::Utils::DateTime&& value) { m_updateDateTime = std::move(value); }
-
-    /**
-     * <p>The metadata transfer job's update DateTime property.</p>
-     */
-    inline GetMetadataTransferJobResult& WithUpdateDateTime(const Aws::Utils::DateTime& value) { SetUpdateDateTime(value); return *this;}
-
-    /**
-     * <p>The metadata transfer job's update DateTime property.</p>
-     */
-    inline GetMetadataTransferJobResult& WithUpdateDateTime(Aws::Utils::DateTime&& value) { SetUpdateDateTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The metadata transfer job's status.</p>
      */
-    inline const MetadataTransferJobStatus& GetStatus() const{ return m_status; }
+    inline const MetadataTransferJobStatus& GetStatus() const { return m_status; }
+    template<typename StatusT = MetadataTransferJobStatus>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = MetadataTransferJobStatus>
+    GetMetadataTransferJobResult& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The metadata transfer job's status.</p>
-     */
-    inline void SetStatus(const MetadataTransferJobStatus& value) { m_status = value; }
-
-    /**
-     * <p>The metadata transfer job's status.</p>
-     */
-    inline void SetStatus(MetadataTransferJobStatus&& value) { m_status = std::move(value); }
-
-    /**
-     * <p>The metadata transfer job's status.</p>
-     */
-    inline GetMetadataTransferJobResult& WithStatus(const MetadataTransferJobStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The metadata transfer job's status.</p>
-     */
-    inline GetMetadataTransferJobResult& WithStatus(MetadataTransferJobStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The metadata transfer job's progress.</p>
      */
-    inline const MetadataTransferJobProgress& GetProgress() const{ return m_progress; }
+    inline const MetadataTransferJobProgress& GetProgress() const { return m_progress; }
+    template<typename ProgressT = MetadataTransferJobProgress>
+    void SetProgress(ProgressT&& value) { m_progressHasBeenSet = true; m_progress = std::forward<ProgressT>(value); }
+    template<typename ProgressT = MetadataTransferJobProgress>
+    GetMetadataTransferJobResult& WithProgress(ProgressT&& value) { SetProgress(std::forward<ProgressT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The metadata transfer job's progress.</p>
-     */
-    inline void SetProgress(const MetadataTransferJobProgress& value) { m_progress = value; }
-
-    /**
-     * <p>The metadata transfer job's progress.</p>
-     */
-    inline void SetProgress(MetadataTransferJobProgress&& value) { m_progress = std::move(value); }
-
-    /**
-     * <p>The metadata transfer job's progress.</p>
-     */
-    inline GetMetadataTransferJobResult& WithProgress(const MetadataTransferJobProgress& value) { SetProgress(value); return *this;}
-
-    /**
-     * <p>The metadata transfer job's progress.</p>
-     */
-    inline GetMetadataTransferJobResult& WithProgress(MetadataTransferJobProgress&& value) { SetProgress(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetMetadataTransferJobResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetMetadataTransferJobResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetMetadataTransferJobResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetMetadataTransferJobResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_metadataTransferJobId;
+    bool m_metadataTransferJobIdHasBeenSet = false;
 
     Aws::String m_arn;
+    bool m_arnHasBeenSet = false;
 
     Aws::String m_description;
+    bool m_descriptionHasBeenSet = false;
 
     Aws::Vector<SourceConfiguration> m_sources;
+    bool m_sourcesHasBeenSet = false;
 
     DestinationConfiguration m_destination;
+    bool m_destinationHasBeenSet = false;
 
     Aws::String m_metadataTransferJobRole;
+    bool m_metadataTransferJobRoleHasBeenSet = false;
 
     Aws::String m_reportUrl;
+    bool m_reportUrlHasBeenSet = false;
 
-    Aws::Utils::DateTime m_creationDateTime;
+    Aws::Utils::DateTime m_creationDateTime{};
+    bool m_creationDateTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_updateDateTime;
+    Aws::Utils::DateTime m_updateDateTime{};
+    bool m_updateDateTimeHasBeenSet = false;
 
     MetadataTransferJobStatus m_status;
+    bool m_statusHasBeenSet = false;
 
     MetadataTransferJobProgress m_progress;
+    bool m_progressHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

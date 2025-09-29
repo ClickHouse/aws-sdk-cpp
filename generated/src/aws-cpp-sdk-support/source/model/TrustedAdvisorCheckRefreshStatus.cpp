@@ -18,19 +18,7 @@ namespace Support
 namespace Model
 {
 
-TrustedAdvisorCheckRefreshStatus::TrustedAdvisorCheckRefreshStatus() : 
-    m_checkIdHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_millisUntilNextRefreshable(0),
-    m_millisUntilNextRefreshableHasBeenSet(false)
-{
-}
-
-TrustedAdvisorCheckRefreshStatus::TrustedAdvisorCheckRefreshStatus(JsonView jsonValue) : 
-    m_checkIdHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_millisUntilNextRefreshable(0),
-    m_millisUntilNextRefreshableHasBeenSet(false)
+TrustedAdvisorCheckRefreshStatus::TrustedAdvisorCheckRefreshStatus(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ TrustedAdvisorCheckRefreshStatus& TrustedAdvisorCheckRefreshStatus::operator =(J
   if(jsonValue.ValueExists("checkId"))
   {
     m_checkId = jsonValue.GetString("checkId");
-
     m_checkIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("status"))
   {
     m_status = jsonValue.GetString("status");
-
     m_statusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("millisUntilNextRefreshable"))
   {
     m_millisUntilNextRefreshable = jsonValue.GetInt64("millisUntilNextRefreshable");
-
     m_millisUntilNextRefreshableHasBeenSet = true;
   }
-
   return *this;
 }
 

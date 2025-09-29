@@ -34,177 +34,71 @@ namespace Model
   class DescribeMountTargetsResult
   {
   public:
-    AWS_EFS_API DescribeMountTargetsResult();
+    AWS_EFS_API DescribeMountTargetsResult() = default;
     AWS_EFS_API DescribeMountTargetsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_EFS_API DescribeMountTargetsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>If the request included the <code>Marker</code>, the response returns that
      * value in this field.</p>
      */
-    inline const Aws::String& GetMarker() const{ return m_marker; }
+    inline const Aws::String& GetMarker() const { return m_marker; }
+    template<typename MarkerT = Aws::String>
+    void SetMarker(MarkerT&& value) { m_markerHasBeenSet = true; m_marker = std::forward<MarkerT>(value); }
+    template<typename MarkerT = Aws::String>
+    DescribeMountTargetsResult& WithMarker(MarkerT&& value) { SetMarker(std::forward<MarkerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If the request included the <code>Marker</code>, the response returns that
-     * value in this field.</p>
-     */
-    inline void SetMarker(const Aws::String& value) { m_marker = value; }
-
-    /**
-     * <p>If the request included the <code>Marker</code>, the response returns that
-     * value in this field.</p>
-     */
-    inline void SetMarker(Aws::String&& value) { m_marker = std::move(value); }
-
-    /**
-     * <p>If the request included the <code>Marker</code>, the response returns that
-     * value in this field.</p>
-     */
-    inline void SetMarker(const char* value) { m_marker.assign(value); }
-
-    /**
-     * <p>If the request included the <code>Marker</code>, the response returns that
-     * value in this field.</p>
-     */
-    inline DescribeMountTargetsResult& WithMarker(const Aws::String& value) { SetMarker(value); return *this;}
-
-    /**
-     * <p>If the request included the <code>Marker</code>, the response returns that
-     * value in this field.</p>
-     */
-    inline DescribeMountTargetsResult& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
-
-    /**
-     * <p>If the request included the <code>Marker</code>, the response returns that
-     * value in this field.</p>
-     */
-    inline DescribeMountTargetsResult& WithMarker(const char* value) { SetMarker(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Returns the file system's mount targets as an array of
      * <code>MountTargetDescription</code> objects.</p>
      */
-    inline const Aws::Vector<MountTargetDescription>& GetMountTargets() const{ return m_mountTargets; }
+    inline const Aws::Vector<MountTargetDescription>& GetMountTargets() const { return m_mountTargets; }
+    template<typename MountTargetsT = Aws::Vector<MountTargetDescription>>
+    void SetMountTargets(MountTargetsT&& value) { m_mountTargetsHasBeenSet = true; m_mountTargets = std::forward<MountTargetsT>(value); }
+    template<typename MountTargetsT = Aws::Vector<MountTargetDescription>>
+    DescribeMountTargetsResult& WithMountTargets(MountTargetsT&& value) { SetMountTargets(std::forward<MountTargetsT>(value)); return *this;}
+    template<typename MountTargetsT = MountTargetDescription>
+    DescribeMountTargetsResult& AddMountTargets(MountTargetsT&& value) { m_mountTargetsHasBeenSet = true; m_mountTargets.emplace_back(std::forward<MountTargetsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Returns the file system's mount targets as an array of
-     * <code>MountTargetDescription</code> objects.</p>
-     */
-    inline void SetMountTargets(const Aws::Vector<MountTargetDescription>& value) { m_mountTargets = value; }
-
-    /**
-     * <p>Returns the file system's mount targets as an array of
-     * <code>MountTargetDescription</code> objects.</p>
-     */
-    inline void SetMountTargets(Aws::Vector<MountTargetDescription>&& value) { m_mountTargets = std::move(value); }
-
-    /**
-     * <p>Returns the file system's mount targets as an array of
-     * <code>MountTargetDescription</code> objects.</p>
-     */
-    inline DescribeMountTargetsResult& WithMountTargets(const Aws::Vector<MountTargetDescription>& value) { SetMountTargets(value); return *this;}
-
-    /**
-     * <p>Returns the file system's mount targets as an array of
-     * <code>MountTargetDescription</code> objects.</p>
-     */
-    inline DescribeMountTargetsResult& WithMountTargets(Aws::Vector<MountTargetDescription>&& value) { SetMountTargets(std::move(value)); return *this;}
-
-    /**
-     * <p>Returns the file system's mount targets as an array of
-     * <code>MountTargetDescription</code> objects.</p>
-     */
-    inline DescribeMountTargetsResult& AddMountTargets(const MountTargetDescription& value) { m_mountTargets.push_back(value); return *this; }
-
-    /**
-     * <p>Returns the file system's mount targets as an array of
-     * <code>MountTargetDescription</code> objects.</p>
-     */
-    inline DescribeMountTargetsResult& AddMountTargets(MountTargetDescription&& value) { m_mountTargets.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>If a value is present, there are more mount targets to return. In a
      * subsequent request, you can provide <code>Marker</code> in your request with
      * this value to retrieve the next set of mount targets.</p>
      */
-    inline const Aws::String& GetNextMarker() const{ return m_nextMarker; }
+    inline const Aws::String& GetNextMarker() const { return m_nextMarker; }
+    template<typename NextMarkerT = Aws::String>
+    void SetNextMarker(NextMarkerT&& value) { m_nextMarkerHasBeenSet = true; m_nextMarker = std::forward<NextMarkerT>(value); }
+    template<typename NextMarkerT = Aws::String>
+    DescribeMountTargetsResult& WithNextMarker(NextMarkerT&& value) { SetNextMarker(std::forward<NextMarkerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If a value is present, there are more mount targets to return. In a
-     * subsequent request, you can provide <code>Marker</code> in your request with
-     * this value to retrieve the next set of mount targets.</p>
-     */
-    inline void SetNextMarker(const Aws::String& value) { m_nextMarker = value; }
-
-    /**
-     * <p>If a value is present, there are more mount targets to return. In a
-     * subsequent request, you can provide <code>Marker</code> in your request with
-     * this value to retrieve the next set of mount targets.</p>
-     */
-    inline void SetNextMarker(Aws::String&& value) { m_nextMarker = std::move(value); }
-
-    /**
-     * <p>If a value is present, there are more mount targets to return. In a
-     * subsequent request, you can provide <code>Marker</code> in your request with
-     * this value to retrieve the next set of mount targets.</p>
-     */
-    inline void SetNextMarker(const char* value) { m_nextMarker.assign(value); }
-
-    /**
-     * <p>If a value is present, there are more mount targets to return. In a
-     * subsequent request, you can provide <code>Marker</code> in your request with
-     * this value to retrieve the next set of mount targets.</p>
-     */
-    inline DescribeMountTargetsResult& WithNextMarker(const Aws::String& value) { SetNextMarker(value); return *this;}
-
-    /**
-     * <p>If a value is present, there are more mount targets to return. In a
-     * subsequent request, you can provide <code>Marker</code> in your request with
-     * this value to retrieve the next set of mount targets.</p>
-     */
-    inline DescribeMountTargetsResult& WithNextMarker(Aws::String&& value) { SetNextMarker(std::move(value)); return *this;}
-
-    /**
-     * <p>If a value is present, there are more mount targets to return. In a
-     * subsequent request, you can provide <code>Marker</code> in your request with
-     * this value to retrieve the next set of mount targets.</p>
-     */
-    inline DescribeMountTargetsResult& WithNextMarker(const char* value) { SetNextMarker(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeMountTargetsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeMountTargetsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeMountTargetsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeMountTargetsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_marker;
+    bool m_markerHasBeenSet = false;
 
     Aws::Vector<MountTargetDescription> m_mountTargets;
+    bool m_mountTargetsHasBeenSet = false;
 
     Aws::String m_nextMarker;
+    bool m_nextMarkerHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -34,170 +34,61 @@ namespace Model
   class LambdaFunctionConfiguration
   {
   public:
-    AWS_S3CRT_API LambdaFunctionConfiguration();
+    AWS_S3CRT_API LambdaFunctionConfiguration() = default;
     AWS_S3CRT_API LambdaFunctionConfiguration(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3CRT_API LambdaFunctionConfiguration& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3CRT_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    LambdaFunctionConfiguration& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    
-    inline LambdaFunctionConfiguration& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    
-    inline LambdaFunctionConfiguration& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    
-    inline LambdaFunctionConfiguration& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the Lambda function that Amazon S3 invokes
      * when the specified event type occurs.</p>
      */
-    inline const Aws::String& GetLambdaFunctionArn() const{ return m_lambdaFunctionArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Lambda function that Amazon S3 invokes
-     * when the specified event type occurs.</p>
-     */
+    inline const Aws::String& GetLambdaFunctionArn() const { return m_lambdaFunctionArn; }
     inline bool LambdaFunctionArnHasBeenSet() const { return m_lambdaFunctionArnHasBeenSet; }
+    template<typename LambdaFunctionArnT = Aws::String>
+    void SetLambdaFunctionArn(LambdaFunctionArnT&& value) { m_lambdaFunctionArnHasBeenSet = true; m_lambdaFunctionArn = std::forward<LambdaFunctionArnT>(value); }
+    template<typename LambdaFunctionArnT = Aws::String>
+    LambdaFunctionConfiguration& WithLambdaFunctionArn(LambdaFunctionArnT&& value) { SetLambdaFunctionArn(std::forward<LambdaFunctionArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Lambda function that Amazon S3 invokes
-     * when the specified event type occurs.</p>
-     */
-    inline void SetLambdaFunctionArn(const Aws::String& value) { m_lambdaFunctionArnHasBeenSet = true; m_lambdaFunctionArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Lambda function that Amazon S3 invokes
-     * when the specified event type occurs.</p>
-     */
-    inline void SetLambdaFunctionArn(Aws::String&& value) { m_lambdaFunctionArnHasBeenSet = true; m_lambdaFunctionArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Lambda function that Amazon S3 invokes
-     * when the specified event type occurs.</p>
-     */
-    inline void SetLambdaFunctionArn(const char* value) { m_lambdaFunctionArnHasBeenSet = true; m_lambdaFunctionArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Lambda function that Amazon S3 invokes
-     * when the specified event type occurs.</p>
-     */
-    inline LambdaFunctionConfiguration& WithLambdaFunctionArn(const Aws::String& value) { SetLambdaFunctionArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Lambda function that Amazon S3 invokes
-     * when the specified event type occurs.</p>
-     */
-    inline LambdaFunctionConfiguration& WithLambdaFunctionArn(Aws::String&& value) { SetLambdaFunctionArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Lambda function that Amazon S3 invokes
-     * when the specified event type occurs.</p>
-     */
-    inline LambdaFunctionConfiguration& WithLambdaFunctionArn(const char* value) { SetLambdaFunctionArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon S3 bucket event for which to invoke the Lambda function. For more
      * information, see <a
      * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html">Supported
      * Event Types</a> in the <i>Amazon S3 User Guide</i>.</p>
      */
-    inline const Aws::Vector<Event>& GetEvents() const{ return m_events; }
-
-    /**
-     * <p>The Amazon S3 bucket event for which to invoke the Lambda function. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html">Supported
-     * Event Types</a> in the <i>Amazon S3 User Guide</i>.</p>
-     */
+    inline const Aws::Vector<Event>& GetEvents() const { return m_events; }
     inline bool EventsHasBeenSet() const { return m_eventsHasBeenSet; }
+    template<typename EventsT = Aws::Vector<Event>>
+    void SetEvents(EventsT&& value) { m_eventsHasBeenSet = true; m_events = std::forward<EventsT>(value); }
+    template<typename EventsT = Aws::Vector<Event>>
+    LambdaFunctionConfiguration& WithEvents(EventsT&& value) { SetEvents(std::forward<EventsT>(value)); return *this;}
+    inline LambdaFunctionConfiguration& AddEvents(Event value) { m_eventsHasBeenSet = true; m_events.push_back(value); return *this; }
+    ///@}
 
-    /**
-     * <p>The Amazon S3 bucket event for which to invoke the Lambda function. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html">Supported
-     * Event Types</a> in the <i>Amazon S3 User Guide</i>.</p>
-     */
-    inline void SetEvents(const Aws::Vector<Event>& value) { m_eventsHasBeenSet = true; m_events = value; }
-
-    /**
-     * <p>The Amazon S3 bucket event for which to invoke the Lambda function. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html">Supported
-     * Event Types</a> in the <i>Amazon S3 User Guide</i>.</p>
-     */
-    inline void SetEvents(Aws::Vector<Event>&& value) { m_eventsHasBeenSet = true; m_events = std::move(value); }
-
-    /**
-     * <p>The Amazon S3 bucket event for which to invoke the Lambda function. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html">Supported
-     * Event Types</a> in the <i>Amazon S3 User Guide</i>.</p>
-     */
-    inline LambdaFunctionConfiguration& WithEvents(const Aws::Vector<Event>& value) { SetEvents(value); return *this;}
-
-    /**
-     * <p>The Amazon S3 bucket event for which to invoke the Lambda function. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html">Supported
-     * Event Types</a> in the <i>Amazon S3 User Guide</i>.</p>
-     */
-    inline LambdaFunctionConfiguration& WithEvents(Aws::Vector<Event>&& value) { SetEvents(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon S3 bucket event for which to invoke the Lambda function. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html">Supported
-     * Event Types</a> in the <i>Amazon S3 User Guide</i>.</p>
-     */
-    inline LambdaFunctionConfiguration& AddEvents(const Event& value) { m_eventsHasBeenSet = true; m_events.push_back(value); return *this; }
-
-    /**
-     * <p>The Amazon S3 bucket event for which to invoke the Lambda function. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html">Supported
-     * Event Types</a> in the <i>Amazon S3 User Guide</i>.</p>
-     */
-    inline LambdaFunctionConfiguration& AddEvents(Event&& value) { m_eventsHasBeenSet = true; m_events.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const NotificationConfigurationFilter& GetFilter() const{ return m_filter; }
-
-    
+    inline const NotificationConfigurationFilter& GetFilter() const { return m_filter; }
     inline bool FilterHasBeenSet() const { return m_filterHasBeenSet; }
-
-    
-    inline void SetFilter(const NotificationConfigurationFilter& value) { m_filterHasBeenSet = true; m_filter = value; }
-
-    
-    inline void SetFilter(NotificationConfigurationFilter&& value) { m_filterHasBeenSet = true; m_filter = std::move(value); }
-
-    
-    inline LambdaFunctionConfiguration& WithFilter(const NotificationConfigurationFilter& value) { SetFilter(value); return *this;}
-
-    
-    inline LambdaFunctionConfiguration& WithFilter(NotificationConfigurationFilter&& value) { SetFilter(std::move(value)); return *this;}
-
+    template<typename FilterT = NotificationConfigurationFilter>
+    void SetFilter(FilterT&& value) { m_filterHasBeenSet = true; m_filter = std::forward<FilterT>(value); }
+    template<typename FilterT = NotificationConfigurationFilter>
+    LambdaFunctionConfiguration& WithFilter(FilterT&& value) { SetFilter(std::forward<FilterT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_id;

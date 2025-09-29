@@ -32,7 +32,7 @@ namespace Model
   class AnalysisAclRule
   {
   public:
-    AWS_EC2_API AnalysisAclRule();
+    AWS_EC2_API AnalysisAclRule() = default;
     AWS_EC2_API AnalysisAclRule(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API AnalysisAclRule& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,207 +40,79 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The IPv4 address range, in CIDR notation.</p>
      */
-    inline const Aws::String& GetCidr() const{ return m_cidr; }
-
-    /**
-     * <p>The IPv4 address range, in CIDR notation.</p>
-     */
+    inline const Aws::String& GetCidr() const { return m_cidr; }
     inline bool CidrHasBeenSet() const { return m_cidrHasBeenSet; }
+    template<typename CidrT = Aws::String>
+    void SetCidr(CidrT&& value) { m_cidrHasBeenSet = true; m_cidr = std::forward<CidrT>(value); }
+    template<typename CidrT = Aws::String>
+    AnalysisAclRule& WithCidr(CidrT&& value) { SetCidr(std::forward<CidrT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The IPv4 address range, in CIDR notation.</p>
-     */
-    inline void SetCidr(const Aws::String& value) { m_cidrHasBeenSet = true; m_cidr = value; }
-
-    /**
-     * <p>The IPv4 address range, in CIDR notation.</p>
-     */
-    inline void SetCidr(Aws::String&& value) { m_cidrHasBeenSet = true; m_cidr = std::move(value); }
-
-    /**
-     * <p>The IPv4 address range, in CIDR notation.</p>
-     */
-    inline void SetCidr(const char* value) { m_cidrHasBeenSet = true; m_cidr.assign(value); }
-
-    /**
-     * <p>The IPv4 address range, in CIDR notation.</p>
-     */
-    inline AnalysisAclRule& WithCidr(const Aws::String& value) { SetCidr(value); return *this;}
-
-    /**
-     * <p>The IPv4 address range, in CIDR notation.</p>
-     */
-    inline AnalysisAclRule& WithCidr(Aws::String&& value) { SetCidr(std::move(value)); return *this;}
-
-    /**
-     * <p>The IPv4 address range, in CIDR notation.</p>
-     */
-    inline AnalysisAclRule& WithCidr(const char* value) { SetCidr(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Indicates whether the rule is an outbound rule.</p>
      */
-    inline bool GetEgress() const{ return m_egress; }
-
-    /**
-     * <p>Indicates whether the rule is an outbound rule.</p>
-     */
+    inline bool GetEgress() const { return m_egress; }
     inline bool EgressHasBeenSet() const { return m_egressHasBeenSet; }
-
-    /**
-     * <p>Indicates whether the rule is an outbound rule.</p>
-     */
     inline void SetEgress(bool value) { m_egressHasBeenSet = true; m_egress = value; }
-
-    /**
-     * <p>Indicates whether the rule is an outbound rule.</p>
-     */
     inline AnalysisAclRule& WithEgress(bool value) { SetEgress(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The range of ports.</p>
      */
-    inline const PortRange& GetPortRange() const{ return m_portRange; }
-
-    /**
-     * <p>The range of ports.</p>
-     */
+    inline const PortRange& GetPortRange() const { return m_portRange; }
     inline bool PortRangeHasBeenSet() const { return m_portRangeHasBeenSet; }
+    template<typename PortRangeT = PortRange>
+    void SetPortRange(PortRangeT&& value) { m_portRangeHasBeenSet = true; m_portRange = std::forward<PortRangeT>(value); }
+    template<typename PortRangeT = PortRange>
+    AnalysisAclRule& WithPortRange(PortRangeT&& value) { SetPortRange(std::forward<PortRangeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The range of ports.</p>
-     */
-    inline void SetPortRange(const PortRange& value) { m_portRangeHasBeenSet = true; m_portRange = value; }
-
-    /**
-     * <p>The range of ports.</p>
-     */
-    inline void SetPortRange(PortRange&& value) { m_portRangeHasBeenSet = true; m_portRange = std::move(value); }
-
-    /**
-     * <p>The range of ports.</p>
-     */
-    inline AnalysisAclRule& WithPortRange(const PortRange& value) { SetPortRange(value); return *this;}
-
-    /**
-     * <p>The range of ports.</p>
-     */
-    inline AnalysisAclRule& WithPortRange(PortRange&& value) { SetPortRange(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The protocol.</p>
      */
-    inline const Aws::String& GetProtocol() const{ return m_protocol; }
-
-    /**
-     * <p>The protocol.</p>
-     */
+    inline const Aws::String& GetProtocol() const { return m_protocol; }
     inline bool ProtocolHasBeenSet() const { return m_protocolHasBeenSet; }
+    template<typename ProtocolT = Aws::String>
+    void SetProtocol(ProtocolT&& value) { m_protocolHasBeenSet = true; m_protocol = std::forward<ProtocolT>(value); }
+    template<typename ProtocolT = Aws::String>
+    AnalysisAclRule& WithProtocol(ProtocolT&& value) { SetProtocol(std::forward<ProtocolT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The protocol.</p>
-     */
-    inline void SetProtocol(const Aws::String& value) { m_protocolHasBeenSet = true; m_protocol = value; }
-
-    /**
-     * <p>The protocol.</p>
-     */
-    inline void SetProtocol(Aws::String&& value) { m_protocolHasBeenSet = true; m_protocol = std::move(value); }
-
-    /**
-     * <p>The protocol.</p>
-     */
-    inline void SetProtocol(const char* value) { m_protocolHasBeenSet = true; m_protocol.assign(value); }
-
-    /**
-     * <p>The protocol.</p>
-     */
-    inline AnalysisAclRule& WithProtocol(const Aws::String& value) { SetProtocol(value); return *this;}
-
-    /**
-     * <p>The protocol.</p>
-     */
-    inline AnalysisAclRule& WithProtocol(Aws::String&& value) { SetProtocol(std::move(value)); return *this;}
-
-    /**
-     * <p>The protocol.</p>
-     */
-    inline AnalysisAclRule& WithProtocol(const char* value) { SetProtocol(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Indicates whether to allow or deny traffic that matches the rule.</p>
      */
-    inline const Aws::String& GetRuleAction() const{ return m_ruleAction; }
-
-    /**
-     * <p>Indicates whether to allow or deny traffic that matches the rule.</p>
-     */
+    inline const Aws::String& GetRuleAction() const { return m_ruleAction; }
     inline bool RuleActionHasBeenSet() const { return m_ruleActionHasBeenSet; }
+    template<typename RuleActionT = Aws::String>
+    void SetRuleAction(RuleActionT&& value) { m_ruleActionHasBeenSet = true; m_ruleAction = std::forward<RuleActionT>(value); }
+    template<typename RuleActionT = Aws::String>
+    AnalysisAclRule& WithRuleAction(RuleActionT&& value) { SetRuleAction(std::forward<RuleActionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Indicates whether to allow or deny traffic that matches the rule.</p>
-     */
-    inline void SetRuleAction(const Aws::String& value) { m_ruleActionHasBeenSet = true; m_ruleAction = value; }
-
-    /**
-     * <p>Indicates whether to allow or deny traffic that matches the rule.</p>
-     */
-    inline void SetRuleAction(Aws::String&& value) { m_ruleActionHasBeenSet = true; m_ruleAction = std::move(value); }
-
-    /**
-     * <p>Indicates whether to allow or deny traffic that matches the rule.</p>
-     */
-    inline void SetRuleAction(const char* value) { m_ruleActionHasBeenSet = true; m_ruleAction.assign(value); }
-
-    /**
-     * <p>Indicates whether to allow or deny traffic that matches the rule.</p>
-     */
-    inline AnalysisAclRule& WithRuleAction(const Aws::String& value) { SetRuleAction(value); return *this;}
-
-    /**
-     * <p>Indicates whether to allow or deny traffic that matches the rule.</p>
-     */
-    inline AnalysisAclRule& WithRuleAction(Aws::String&& value) { SetRuleAction(std::move(value)); return *this;}
-
-    /**
-     * <p>Indicates whether to allow or deny traffic that matches the rule.</p>
-     */
-    inline AnalysisAclRule& WithRuleAction(const char* value) { SetRuleAction(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The rule number.</p>
      */
-    inline int GetRuleNumber() const{ return m_ruleNumber; }
-
-    /**
-     * <p>The rule number.</p>
-     */
+    inline int GetRuleNumber() const { return m_ruleNumber; }
     inline bool RuleNumberHasBeenSet() const { return m_ruleNumberHasBeenSet; }
-
-    /**
-     * <p>The rule number.</p>
-     */
     inline void SetRuleNumber(int value) { m_ruleNumberHasBeenSet = true; m_ruleNumber = value; }
-
-    /**
-     * <p>The rule number.</p>
-     */
     inline AnalysisAclRule& WithRuleNumber(int value) { SetRuleNumber(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_cidr;
     bool m_cidrHasBeenSet = false;
 
-    bool m_egress;
+    bool m_egress{false};
     bool m_egressHasBeenSet = false;
 
     PortRange m_portRange;
@@ -252,7 +124,7 @@ namespace Model
     Aws::String m_ruleAction;
     bool m_ruleActionHasBeenSet = false;
 
-    int m_ruleNumber;
+    int m_ruleNumber{0};
     bool m_ruleNumberHasBeenSet = false;
   };
 

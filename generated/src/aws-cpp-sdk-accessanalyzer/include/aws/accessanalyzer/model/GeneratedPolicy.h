@@ -31,76 +31,26 @@ namespace Model
   class GeneratedPolicy
   {
   public:
-    AWS_ACCESSANALYZER_API GeneratedPolicy();
+    AWS_ACCESSANALYZER_API GeneratedPolicy() = default;
     AWS_ACCESSANALYZER_API GeneratedPolicy(Aws::Utils::Json::JsonView jsonValue);
     AWS_ACCESSANALYZER_API GeneratedPolicy& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ACCESSANALYZER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The text to use as the content for the new policy. The policy is created
      * using the <a
      * href="https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreatePolicy.html">CreatePolicy</a>
      * action.</p>
      */
-    inline const Aws::String& GetPolicy() const{ return m_policy; }
-
-    /**
-     * <p>The text to use as the content for the new policy. The policy is created
-     * using the <a
-     * href="https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreatePolicy.html">CreatePolicy</a>
-     * action.</p>
-     */
+    inline const Aws::String& GetPolicy() const { return m_policy; }
     inline bool PolicyHasBeenSet() const { return m_policyHasBeenSet; }
-
-    /**
-     * <p>The text to use as the content for the new policy. The policy is created
-     * using the <a
-     * href="https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreatePolicy.html">CreatePolicy</a>
-     * action.</p>
-     */
-    inline void SetPolicy(const Aws::String& value) { m_policyHasBeenSet = true; m_policy = value; }
-
-    /**
-     * <p>The text to use as the content for the new policy. The policy is created
-     * using the <a
-     * href="https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreatePolicy.html">CreatePolicy</a>
-     * action.</p>
-     */
-    inline void SetPolicy(Aws::String&& value) { m_policyHasBeenSet = true; m_policy = std::move(value); }
-
-    /**
-     * <p>The text to use as the content for the new policy. The policy is created
-     * using the <a
-     * href="https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreatePolicy.html">CreatePolicy</a>
-     * action.</p>
-     */
-    inline void SetPolicy(const char* value) { m_policyHasBeenSet = true; m_policy.assign(value); }
-
-    /**
-     * <p>The text to use as the content for the new policy. The policy is created
-     * using the <a
-     * href="https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreatePolicy.html">CreatePolicy</a>
-     * action.</p>
-     */
-    inline GeneratedPolicy& WithPolicy(const Aws::String& value) { SetPolicy(value); return *this;}
-
-    /**
-     * <p>The text to use as the content for the new policy. The policy is created
-     * using the <a
-     * href="https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreatePolicy.html">CreatePolicy</a>
-     * action.</p>
-     */
-    inline GeneratedPolicy& WithPolicy(Aws::String&& value) { SetPolicy(std::move(value)); return *this;}
-
-    /**
-     * <p>The text to use as the content for the new policy. The policy is created
-     * using the <a
-     * href="https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreatePolicy.html">CreatePolicy</a>
-     * action.</p>
-     */
-    inline GeneratedPolicy& WithPolicy(const char* value) { SetPolicy(value); return *this;}
-
+    template<typename PolicyT = Aws::String>
+    void SetPolicy(PolicyT&& value) { m_policyHasBeenSet = true; m_policy = std::forward<PolicyT>(value); }
+    template<typename PolicyT = Aws::String>
+    GeneratedPolicy& WithPolicy(PolicyT&& value) { SetPolicy(std::forward<PolicyT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_policy;

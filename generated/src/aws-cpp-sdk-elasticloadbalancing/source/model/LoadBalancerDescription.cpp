@@ -20,43 +20,7 @@ namespace ElasticLoadBalancing
 namespace Model
 {
 
-LoadBalancerDescription::LoadBalancerDescription() : 
-    m_loadBalancerNameHasBeenSet(false),
-    m_dNSNameHasBeenSet(false),
-    m_canonicalHostedZoneNameHasBeenSet(false),
-    m_canonicalHostedZoneNameIDHasBeenSet(false),
-    m_listenerDescriptionsHasBeenSet(false),
-    m_policiesHasBeenSet(false),
-    m_backendServerDescriptionsHasBeenSet(false),
-    m_availabilityZonesHasBeenSet(false),
-    m_subnetsHasBeenSet(false),
-    m_vPCIdHasBeenSet(false),
-    m_instancesHasBeenSet(false),
-    m_healthCheckHasBeenSet(false),
-    m_sourceSecurityGroupHasBeenSet(false),
-    m_securityGroupsHasBeenSet(false),
-    m_createdTimeHasBeenSet(false),
-    m_schemeHasBeenSet(false)
-{
-}
-
-LoadBalancerDescription::LoadBalancerDescription(const XmlNode& xmlNode) : 
-    m_loadBalancerNameHasBeenSet(false),
-    m_dNSNameHasBeenSet(false),
-    m_canonicalHostedZoneNameHasBeenSet(false),
-    m_canonicalHostedZoneNameIDHasBeenSet(false),
-    m_listenerDescriptionsHasBeenSet(false),
-    m_policiesHasBeenSet(false),
-    m_backendServerDescriptionsHasBeenSet(false),
-    m_availabilityZonesHasBeenSet(false),
-    m_subnetsHasBeenSet(false),
-    m_vPCIdHasBeenSet(false),
-    m_instancesHasBeenSet(false),
-    m_healthCheckHasBeenSet(false),
-    m_sourceSecurityGroupHasBeenSet(false),
-    m_securityGroupsHasBeenSet(false),
-    m_createdTimeHasBeenSet(false),
-    m_schemeHasBeenSet(false)
+LoadBalancerDescription::LoadBalancerDescription(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -95,6 +59,7 @@ LoadBalancerDescription& LoadBalancerDescription::operator =(const XmlNode& xmlN
     if(!listenerDescriptionsNode.IsNull())
     {
       XmlNode listenerDescriptionsMember = listenerDescriptionsNode.FirstChild("member");
+      m_listenerDescriptionsHasBeenSet = !listenerDescriptionsMember.IsNull();
       while(!listenerDescriptionsMember.IsNull())
       {
         m_listenerDescriptions.push_back(listenerDescriptionsMember);
@@ -113,6 +78,7 @@ LoadBalancerDescription& LoadBalancerDescription::operator =(const XmlNode& xmlN
     if(!backendServerDescriptionsNode.IsNull())
     {
       XmlNode backendServerDescriptionsMember = backendServerDescriptionsNode.FirstChild("member");
+      m_backendServerDescriptionsHasBeenSet = !backendServerDescriptionsMember.IsNull();
       while(!backendServerDescriptionsMember.IsNull())
       {
         m_backendServerDescriptions.push_back(backendServerDescriptionsMember);
@@ -125,6 +91,7 @@ LoadBalancerDescription& LoadBalancerDescription::operator =(const XmlNode& xmlN
     if(!availabilityZonesNode.IsNull())
     {
       XmlNode availabilityZonesMember = availabilityZonesNode.FirstChild("member");
+      m_availabilityZonesHasBeenSet = !availabilityZonesMember.IsNull();
       while(!availabilityZonesMember.IsNull())
       {
         m_availabilityZones.push_back(availabilityZonesMember.GetText());
@@ -137,6 +104,7 @@ LoadBalancerDescription& LoadBalancerDescription::operator =(const XmlNode& xmlN
     if(!subnetsNode.IsNull())
     {
       XmlNode subnetsMember = subnetsNode.FirstChild("member");
+      m_subnetsHasBeenSet = !subnetsMember.IsNull();
       while(!subnetsMember.IsNull())
       {
         m_subnets.push_back(subnetsMember.GetText());
@@ -155,6 +123,7 @@ LoadBalancerDescription& LoadBalancerDescription::operator =(const XmlNode& xmlN
     if(!instancesNode.IsNull())
     {
       XmlNode instancesMember = instancesNode.FirstChild("member");
+      m_instancesHasBeenSet = !instancesMember.IsNull();
       while(!instancesMember.IsNull())
       {
         m_instances.push_back(instancesMember);
@@ -179,6 +148,7 @@ LoadBalancerDescription& LoadBalancerDescription::operator =(const XmlNode& xmlN
     if(!securityGroupsNode.IsNull())
     {
       XmlNode securityGroupsMember = securityGroupsNode.FirstChild("member");
+      m_securityGroupsHasBeenSet = !securityGroupsMember.IsNull();
       while(!securityGroupsMember.IsNull())
       {
         m_securityGroups.push_back(securityGroupsMember.GetText());
@@ -348,7 +318,7 @@ void LoadBalancerDescription::OutputToStream(Aws::OStream& oStream, const char* 
       for(auto& item : m_listenerDescriptions)
       {
         Aws::StringStream listenerDescriptionsSs;
-        listenerDescriptionsSs << location <<  ".ListenerDescriptions.member." << listenerDescriptionsIdx++;
+        listenerDescriptionsSs << location << ".ListenerDescriptions.member." << listenerDescriptionsIdx++;
         item.OutputToStream(oStream, listenerDescriptionsSs.str().c_str());
       }
   }
@@ -364,7 +334,7 @@ void LoadBalancerDescription::OutputToStream(Aws::OStream& oStream, const char* 
       for(auto& item : m_backendServerDescriptions)
       {
         Aws::StringStream backendServerDescriptionsSs;
-        backendServerDescriptionsSs << location <<  ".BackendServerDescriptions.member." << backendServerDescriptionsIdx++;
+        backendServerDescriptionsSs << location << ".BackendServerDescriptions.member." << backendServerDescriptionsIdx++;
         item.OutputToStream(oStream, backendServerDescriptionsSs.str().c_str());
       }
   }
@@ -394,7 +364,7 @@ void LoadBalancerDescription::OutputToStream(Aws::OStream& oStream, const char* 
       for(auto& item : m_instances)
       {
         Aws::StringStream instancesSs;
-        instancesSs << location <<  ".Instances.member." << instancesIdx++;
+        instancesSs << location << ".Instances.member." << instancesIdx++;
         item.OutputToStream(oStream, instancesSs.str().c_str());
       }
   }

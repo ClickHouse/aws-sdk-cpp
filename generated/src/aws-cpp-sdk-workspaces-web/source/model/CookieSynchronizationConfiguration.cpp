@@ -18,15 +18,7 @@ namespace WorkSpacesWeb
 namespace Model
 {
 
-CookieSynchronizationConfiguration::CookieSynchronizationConfiguration() : 
-    m_allowlistHasBeenSet(false),
-    m_blocklistHasBeenSet(false)
-{
-}
-
-CookieSynchronizationConfiguration::CookieSynchronizationConfiguration(JsonView jsonValue) : 
-    m_allowlistHasBeenSet(false),
-    m_blocklistHasBeenSet(false)
+CookieSynchronizationConfiguration::CookieSynchronizationConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ CookieSynchronizationConfiguration& CookieSynchronizationConfiguration::operator
     }
     m_allowlistHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("blocklist"))
   {
     Aws::Utils::Array<JsonView> blocklistJsonList = jsonValue.GetArray("blocklist");
@@ -52,7 +43,6 @@ CookieSynchronizationConfiguration& CookieSynchronizationConfiguration::operator
     }
     m_blocklistHasBeenSet = true;
   }
-
   return *this;
 }
 

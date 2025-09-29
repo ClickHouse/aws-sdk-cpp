@@ -18,15 +18,7 @@ namespace AppConfig
 namespace Model
 {
 
-Monitor::Monitor() : 
-    m_alarmArnHasBeenSet(false),
-    m_alarmRoleArnHasBeenSet(false)
-{
-}
-
-Monitor::Monitor(JsonView jsonValue) : 
-    m_alarmArnHasBeenSet(false),
-    m_alarmRoleArnHasBeenSet(false)
+Monitor::Monitor(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ Monitor& Monitor::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("AlarmArn"))
   {
     m_alarmArn = jsonValue.GetString("AlarmArn");
-
     m_alarmArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AlarmRoleArn"))
   {
     m_alarmRoleArn = jsonValue.GetString("AlarmRoleArn");
-
     m_alarmRoleArnHasBeenSet = true;
   }
-
   return *this;
 }
 

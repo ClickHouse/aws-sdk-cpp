@@ -15,13 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-GetDomainNamesRequest::GetDomainNamesRequest() : 
-    m_positionHasBeenSet(false),
-    m_limit(0),
-    m_limitHasBeenSet(false)
-{
-}
-
 Aws::String GetDomainNamesRequest::SerializePayload() const
 {
   return {};
@@ -41,6 +34,13 @@ void GetDomainNamesRequest::AddQueryStringParameters(URI& uri) const
     {
       ss << m_limit;
       uri.AddQueryStringParameter("limit", ss.str());
+      ss.str("");
+    }
+
+    if(m_resourceOwnerHasBeenSet)
+    {
+      ss << ResourceOwnerMapper::GetNameForResourceOwner(m_resourceOwner);
+      uri.AddQueryStringParameter("resourceOwner", ss.str());
       ss.str("");
     }
 

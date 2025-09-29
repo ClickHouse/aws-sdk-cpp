@@ -28,63 +28,37 @@ namespace Model
   class GetLandingZoneOperationResult
   {
   public:
-    AWS_CONTROLTOWER_API GetLandingZoneOperationResult();
+    AWS_CONTROLTOWER_API GetLandingZoneOperationResult() = default;
     AWS_CONTROLTOWER_API GetLandingZoneOperationResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_CONTROLTOWER_API GetLandingZoneOperationResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Details about a landing zone operation.</p>
      */
-    inline const LandingZoneOperationDetail& GetOperationDetails() const{ return m_operationDetails; }
+    inline const LandingZoneOperationDetail& GetOperationDetails() const { return m_operationDetails; }
+    template<typename OperationDetailsT = LandingZoneOperationDetail>
+    void SetOperationDetails(OperationDetailsT&& value) { m_operationDetailsHasBeenSet = true; m_operationDetails = std::forward<OperationDetailsT>(value); }
+    template<typename OperationDetailsT = LandingZoneOperationDetail>
+    GetLandingZoneOperationResult& WithOperationDetails(OperationDetailsT&& value) { SetOperationDetails(std::forward<OperationDetailsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Details about a landing zone operation.</p>
-     */
-    inline void SetOperationDetails(const LandingZoneOperationDetail& value) { m_operationDetails = value; }
-
-    /**
-     * <p>Details about a landing zone operation.</p>
-     */
-    inline void SetOperationDetails(LandingZoneOperationDetail&& value) { m_operationDetails = std::move(value); }
-
-    /**
-     * <p>Details about a landing zone operation.</p>
-     */
-    inline GetLandingZoneOperationResult& WithOperationDetails(const LandingZoneOperationDetail& value) { SetOperationDetails(value); return *this;}
-
-    /**
-     * <p>Details about a landing zone operation.</p>
-     */
-    inline GetLandingZoneOperationResult& WithOperationDetails(LandingZoneOperationDetail&& value) { SetOperationDetails(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetLandingZoneOperationResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetLandingZoneOperationResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetLandingZoneOperationResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetLandingZoneOperationResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     LandingZoneOperationDetail m_operationDetails;
+    bool m_operationDetailsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

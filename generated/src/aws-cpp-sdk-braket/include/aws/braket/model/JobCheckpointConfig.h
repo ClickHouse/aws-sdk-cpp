@@ -24,7 +24,7 @@ namespace Model
 {
 
   /**
-   * <p>Contains information about the output locations for job checkpoint
+   * <p>Contains information about the output locations for hybrid job checkpoint
    * data.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/braket-2019-09-01/JobCheckpointConfig">AWS
    * API Reference</a></p>
@@ -32,109 +32,37 @@ namespace Model
   class JobCheckpointConfig
   {
   public:
-    AWS_BRAKET_API JobCheckpointConfig();
+    AWS_BRAKET_API JobCheckpointConfig() = default;
     AWS_BRAKET_API JobCheckpointConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_BRAKET_API JobCheckpointConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_BRAKET_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>(Optional) The local directory where checkpoints are written. The default
+     * <p>(Optional) The local directory where checkpoint data is stored. The default
      * directory is <code>/opt/braket/checkpoints/</code>.</p>
      */
-    inline const Aws::String& GetLocalPath() const{ return m_localPath; }
-
-    /**
-     * <p>(Optional) The local directory where checkpoints are written. The default
-     * directory is <code>/opt/braket/checkpoints/</code>.</p>
-     */
+    inline const Aws::String& GetLocalPath() const { return m_localPath; }
     inline bool LocalPathHasBeenSet() const { return m_localPathHasBeenSet; }
+    template<typename LocalPathT = Aws::String>
+    void SetLocalPath(LocalPathT&& value) { m_localPathHasBeenSet = true; m_localPath = std::forward<LocalPathT>(value); }
+    template<typename LocalPathT = Aws::String>
+    JobCheckpointConfig& WithLocalPath(LocalPathT&& value) { SetLocalPath(std::forward<LocalPathT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>(Optional) The local directory where checkpoints are written. The default
-     * directory is <code>/opt/braket/checkpoints/</code>.</p>
+     * <p>Identifies the S3 path where you want Amazon Braket to store checkpoint data.
+     * For example, <code>s3://bucket-name/key-name-prefix</code>.</p>
      */
-    inline void SetLocalPath(const Aws::String& value) { m_localPathHasBeenSet = true; m_localPath = value; }
-
-    /**
-     * <p>(Optional) The local directory where checkpoints are written. The default
-     * directory is <code>/opt/braket/checkpoints/</code>.</p>
-     */
-    inline void SetLocalPath(Aws::String&& value) { m_localPathHasBeenSet = true; m_localPath = std::move(value); }
-
-    /**
-     * <p>(Optional) The local directory where checkpoints are written. The default
-     * directory is <code>/opt/braket/checkpoints/</code>.</p>
-     */
-    inline void SetLocalPath(const char* value) { m_localPathHasBeenSet = true; m_localPath.assign(value); }
-
-    /**
-     * <p>(Optional) The local directory where checkpoints are written. The default
-     * directory is <code>/opt/braket/checkpoints/</code>.</p>
-     */
-    inline JobCheckpointConfig& WithLocalPath(const Aws::String& value) { SetLocalPath(value); return *this;}
-
-    /**
-     * <p>(Optional) The local directory where checkpoints are written. The default
-     * directory is <code>/opt/braket/checkpoints/</code>.</p>
-     */
-    inline JobCheckpointConfig& WithLocalPath(Aws::String&& value) { SetLocalPath(std::move(value)); return *this;}
-
-    /**
-     * <p>(Optional) The local directory where checkpoints are written. The default
-     * directory is <code>/opt/braket/checkpoints/</code>.</p>
-     */
-    inline JobCheckpointConfig& WithLocalPath(const char* value) { SetLocalPath(value); return *this;}
-
-
-    /**
-     * <p>Identifies the S3 path where you want Amazon Braket to store checkpoints. For
-     * example, <code>s3://bucket-name/key-name-prefix</code>.</p>
-     */
-    inline const Aws::String& GetS3Uri() const{ return m_s3Uri; }
-
-    /**
-     * <p>Identifies the S3 path where you want Amazon Braket to store checkpoints. For
-     * example, <code>s3://bucket-name/key-name-prefix</code>.</p>
-     */
+    inline const Aws::String& GetS3Uri() const { return m_s3Uri; }
     inline bool S3UriHasBeenSet() const { return m_s3UriHasBeenSet; }
-
-    /**
-     * <p>Identifies the S3 path where you want Amazon Braket to store checkpoints. For
-     * example, <code>s3://bucket-name/key-name-prefix</code>.</p>
-     */
-    inline void SetS3Uri(const Aws::String& value) { m_s3UriHasBeenSet = true; m_s3Uri = value; }
-
-    /**
-     * <p>Identifies the S3 path where you want Amazon Braket to store checkpoints. For
-     * example, <code>s3://bucket-name/key-name-prefix</code>.</p>
-     */
-    inline void SetS3Uri(Aws::String&& value) { m_s3UriHasBeenSet = true; m_s3Uri = std::move(value); }
-
-    /**
-     * <p>Identifies the S3 path where you want Amazon Braket to store checkpoints. For
-     * example, <code>s3://bucket-name/key-name-prefix</code>.</p>
-     */
-    inline void SetS3Uri(const char* value) { m_s3UriHasBeenSet = true; m_s3Uri.assign(value); }
-
-    /**
-     * <p>Identifies the S3 path where you want Amazon Braket to store checkpoints. For
-     * example, <code>s3://bucket-name/key-name-prefix</code>.</p>
-     */
-    inline JobCheckpointConfig& WithS3Uri(const Aws::String& value) { SetS3Uri(value); return *this;}
-
-    /**
-     * <p>Identifies the S3 path where you want Amazon Braket to store checkpoints. For
-     * example, <code>s3://bucket-name/key-name-prefix</code>.</p>
-     */
-    inline JobCheckpointConfig& WithS3Uri(Aws::String&& value) { SetS3Uri(std::move(value)); return *this;}
-
-    /**
-     * <p>Identifies the S3 path where you want Amazon Braket to store checkpoints. For
-     * example, <code>s3://bucket-name/key-name-prefix</code>.</p>
-     */
-    inline JobCheckpointConfig& WithS3Uri(const char* value) { SetS3Uri(value); return *this;}
-
+    template<typename S3UriT = Aws::String>
+    void SetS3Uri(S3UriT&& value) { m_s3UriHasBeenSet = true; m_s3Uri = std::forward<S3UriT>(value); }
+    template<typename S3UriT = Aws::String>
+    JobCheckpointConfig& WithS3Uri(S3UriT&& value) { SetS3Uri(std::forward<S3UriT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_localPath;

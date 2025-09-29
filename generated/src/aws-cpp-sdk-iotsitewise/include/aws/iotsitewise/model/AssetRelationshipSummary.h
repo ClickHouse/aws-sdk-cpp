@@ -33,49 +33,26 @@ namespace Model
   class AssetRelationshipSummary
   {
   public:
-    AWS_IOTSITEWISE_API AssetRelationshipSummary();
+    AWS_IOTSITEWISE_API AssetRelationshipSummary() = default;
     AWS_IOTSITEWISE_API AssetRelationshipSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTSITEWISE_API AssetRelationshipSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTSITEWISE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The assets that are related through an asset hierarchy.</p> <p>This object is
      * present if the <code>relationshipType</code> is <code>HIERARCHY</code>.</p>
      */
-    inline const AssetHierarchyInfo& GetHierarchyInfo() const{ return m_hierarchyInfo; }
-
-    /**
-     * <p>The assets that are related through an asset hierarchy.</p> <p>This object is
-     * present if the <code>relationshipType</code> is <code>HIERARCHY</code>.</p>
-     */
+    inline const AssetHierarchyInfo& GetHierarchyInfo() const { return m_hierarchyInfo; }
     inline bool HierarchyInfoHasBeenSet() const { return m_hierarchyInfoHasBeenSet; }
+    template<typename HierarchyInfoT = AssetHierarchyInfo>
+    void SetHierarchyInfo(HierarchyInfoT&& value) { m_hierarchyInfoHasBeenSet = true; m_hierarchyInfo = std::forward<HierarchyInfoT>(value); }
+    template<typename HierarchyInfoT = AssetHierarchyInfo>
+    AssetRelationshipSummary& WithHierarchyInfo(HierarchyInfoT&& value) { SetHierarchyInfo(std::forward<HierarchyInfoT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The assets that are related through an asset hierarchy.</p> <p>This object is
-     * present if the <code>relationshipType</code> is <code>HIERARCHY</code>.</p>
-     */
-    inline void SetHierarchyInfo(const AssetHierarchyInfo& value) { m_hierarchyInfoHasBeenSet = true; m_hierarchyInfo = value; }
-
-    /**
-     * <p>The assets that are related through an asset hierarchy.</p> <p>This object is
-     * present if the <code>relationshipType</code> is <code>HIERARCHY</code>.</p>
-     */
-    inline void SetHierarchyInfo(AssetHierarchyInfo&& value) { m_hierarchyInfoHasBeenSet = true; m_hierarchyInfo = std::move(value); }
-
-    /**
-     * <p>The assets that are related through an asset hierarchy.</p> <p>This object is
-     * present if the <code>relationshipType</code> is <code>HIERARCHY</code>.</p>
-     */
-    inline AssetRelationshipSummary& WithHierarchyInfo(const AssetHierarchyInfo& value) { SetHierarchyInfo(value); return *this;}
-
-    /**
-     * <p>The assets that are related through an asset hierarchy.</p> <p>This object is
-     * present if the <code>relationshipType</code> is <code>HIERARCHY</code>.</p>
-     */
-    inline AssetRelationshipSummary& WithHierarchyInfo(AssetHierarchyInfo&& value) { SetHierarchyInfo(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The relationship type of the assets in this relationship. This value is one
      * of the following:</p> <ul> <li> <p> <code>HIERARCHY</code> – The assets are
@@ -83,59 +60,17 @@ namespace Model
      * asset relationship includes the <code>hierarchyInfo</code> object.</p> </li>
      * </ul>
      */
-    inline const AssetRelationshipType& GetRelationshipType() const{ return m_relationshipType; }
-
-    /**
-     * <p>The relationship type of the assets in this relationship. This value is one
-     * of the following:</p> <ul> <li> <p> <code>HIERARCHY</code> – The assets are
-     * related through an asset hierarchy. If you specify this relationship type, this
-     * asset relationship includes the <code>hierarchyInfo</code> object.</p> </li>
-     * </ul>
-     */
+    inline AssetRelationshipType GetRelationshipType() const { return m_relationshipType; }
     inline bool RelationshipTypeHasBeenSet() const { return m_relationshipTypeHasBeenSet; }
-
-    /**
-     * <p>The relationship type of the assets in this relationship. This value is one
-     * of the following:</p> <ul> <li> <p> <code>HIERARCHY</code> – The assets are
-     * related through an asset hierarchy. If you specify this relationship type, this
-     * asset relationship includes the <code>hierarchyInfo</code> object.</p> </li>
-     * </ul>
-     */
-    inline void SetRelationshipType(const AssetRelationshipType& value) { m_relationshipTypeHasBeenSet = true; m_relationshipType = value; }
-
-    /**
-     * <p>The relationship type of the assets in this relationship. This value is one
-     * of the following:</p> <ul> <li> <p> <code>HIERARCHY</code> – The assets are
-     * related through an asset hierarchy. If you specify this relationship type, this
-     * asset relationship includes the <code>hierarchyInfo</code> object.</p> </li>
-     * </ul>
-     */
-    inline void SetRelationshipType(AssetRelationshipType&& value) { m_relationshipTypeHasBeenSet = true; m_relationshipType = std::move(value); }
-
-    /**
-     * <p>The relationship type of the assets in this relationship. This value is one
-     * of the following:</p> <ul> <li> <p> <code>HIERARCHY</code> – The assets are
-     * related through an asset hierarchy. If you specify this relationship type, this
-     * asset relationship includes the <code>hierarchyInfo</code> object.</p> </li>
-     * </ul>
-     */
-    inline AssetRelationshipSummary& WithRelationshipType(const AssetRelationshipType& value) { SetRelationshipType(value); return *this;}
-
-    /**
-     * <p>The relationship type of the assets in this relationship. This value is one
-     * of the following:</p> <ul> <li> <p> <code>HIERARCHY</code> – The assets are
-     * related through an asset hierarchy. If you specify this relationship type, this
-     * asset relationship includes the <code>hierarchyInfo</code> object.</p> </li>
-     * </ul>
-     */
-    inline AssetRelationshipSummary& WithRelationshipType(AssetRelationshipType&& value) { SetRelationshipType(std::move(value)); return *this;}
-
+    inline void SetRelationshipType(AssetRelationshipType value) { m_relationshipTypeHasBeenSet = true; m_relationshipType = value; }
+    inline AssetRelationshipSummary& WithRelationshipType(AssetRelationshipType value) { SetRelationshipType(value); return *this;}
+    ///@}
   private:
 
     AssetHierarchyInfo m_hierarchyInfo;
     bool m_hierarchyInfoHasBeenSet = false;
 
-    AssetRelationshipType m_relationshipType;
+    AssetRelationshipType m_relationshipType{AssetRelationshipType::NOT_SET};
     bool m_relationshipTypeHasBeenSet = false;
   };
 

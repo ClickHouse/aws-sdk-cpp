@@ -12,19 +12,6 @@ using namespace Aws::Connect::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateQueueRequest::CreateQueueRequest() : 
-    m_instanceIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_outboundCallerConfigHasBeenSet(false),
-    m_hoursOfOperationIdHasBeenSet(false),
-    m_maxContacts(0),
-    m_maxContactsHasBeenSet(false),
-    m_quickConnectIdsHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateQueueRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -44,6 +31,12 @@ Aws::String CreateQueueRequest::SerializePayload() const
   if(m_outboundCallerConfigHasBeenSet)
   {
    payload.WithObject("OutboundCallerConfig", m_outboundCallerConfig.Jsonize());
+
+  }
+
+  if(m_outboundEmailConfigHasBeenSet)
+  {
+   payload.WithObject("OutboundEmailConfig", m_outboundEmailConfig.Jsonize());
 
   }
 

@@ -30,35 +30,24 @@ namespace Model
   class KinesisVideoStreamConfigurationUpdate
   {
   public:
-    AWS_CHIMESDKMEDIAPIPELINES_API KinesisVideoStreamConfigurationUpdate();
+    AWS_CHIMESDKMEDIAPIPELINES_API KinesisVideoStreamConfigurationUpdate() = default;
     AWS_CHIMESDKMEDIAPIPELINES_API KinesisVideoStreamConfigurationUpdate(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMEDIAPIPELINES_API KinesisVideoStreamConfigurationUpdate& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMEDIAPIPELINES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The updated time that data is retained.</p>
      */
-    inline int GetDataRetentionInHours() const{ return m_dataRetentionInHours; }
-
-    /**
-     * <p>The updated time that data is retained.</p>
-     */
+    inline int GetDataRetentionInHours() const { return m_dataRetentionInHours; }
     inline bool DataRetentionInHoursHasBeenSet() const { return m_dataRetentionInHoursHasBeenSet; }
-
-    /**
-     * <p>The updated time that data is retained.</p>
-     */
     inline void SetDataRetentionInHours(int value) { m_dataRetentionInHoursHasBeenSet = true; m_dataRetentionInHours = value; }
-
-    /**
-     * <p>The updated time that data is retained.</p>
-     */
     inline KinesisVideoStreamConfigurationUpdate& WithDataRetentionInHours(int value) { SetDataRetentionInHours(value); return *this;}
-
+    ///@}
   private:
 
-    int m_dataRetentionInHours;
+    int m_dataRetentionInHours{0};
     bool m_dataRetentionInHoursHasBeenSet = false;
   };
 

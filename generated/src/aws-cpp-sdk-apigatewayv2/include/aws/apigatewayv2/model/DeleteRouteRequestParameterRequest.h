@@ -21,7 +21,7 @@ namespace Model
   class DeleteRouteRequestParameterRequest : public ApiGatewayV2Request
   {
   public:
-    AWS_APIGATEWAYV2_API DeleteRouteRequestParameterRequest();
+    AWS_APIGATEWAYV2_API DeleteRouteRequestParameterRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,128 +32,41 @@ namespace Model
     AWS_APIGATEWAYV2_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The API identifier.</p>
      */
-    inline const Aws::String& GetApiId() const{ return m_apiId; }
-
-    /**
-     * <p>The API identifier.</p>
-     */
+    inline const Aws::String& GetApiId() const { return m_apiId; }
     inline bool ApiIdHasBeenSet() const { return m_apiIdHasBeenSet; }
+    template<typename ApiIdT = Aws::String>
+    void SetApiId(ApiIdT&& value) { m_apiIdHasBeenSet = true; m_apiId = std::forward<ApiIdT>(value); }
+    template<typename ApiIdT = Aws::String>
+    DeleteRouteRequestParameterRequest& WithApiId(ApiIdT&& value) { SetApiId(std::forward<ApiIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The API identifier.</p>
-     */
-    inline void SetApiId(const Aws::String& value) { m_apiIdHasBeenSet = true; m_apiId = value; }
-
-    /**
-     * <p>The API identifier.</p>
-     */
-    inline void SetApiId(Aws::String&& value) { m_apiIdHasBeenSet = true; m_apiId = std::move(value); }
-
-    /**
-     * <p>The API identifier.</p>
-     */
-    inline void SetApiId(const char* value) { m_apiIdHasBeenSet = true; m_apiId.assign(value); }
-
-    /**
-     * <p>The API identifier.</p>
-     */
-    inline DeleteRouteRequestParameterRequest& WithApiId(const Aws::String& value) { SetApiId(value); return *this;}
-
-    /**
-     * <p>The API identifier.</p>
-     */
-    inline DeleteRouteRequestParameterRequest& WithApiId(Aws::String&& value) { SetApiId(std::move(value)); return *this;}
-
-    /**
-     * <p>The API identifier.</p>
-     */
-    inline DeleteRouteRequestParameterRequest& WithApiId(const char* value) { SetApiId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The route request parameter key.</p>
      */
-    inline const Aws::String& GetRequestParameterKey() const{ return m_requestParameterKey; }
-
-    /**
-     * <p>The route request parameter key.</p>
-     */
+    inline const Aws::String& GetRequestParameterKey() const { return m_requestParameterKey; }
     inline bool RequestParameterKeyHasBeenSet() const { return m_requestParameterKeyHasBeenSet; }
+    template<typename RequestParameterKeyT = Aws::String>
+    void SetRequestParameterKey(RequestParameterKeyT&& value) { m_requestParameterKeyHasBeenSet = true; m_requestParameterKey = std::forward<RequestParameterKeyT>(value); }
+    template<typename RequestParameterKeyT = Aws::String>
+    DeleteRouteRequestParameterRequest& WithRequestParameterKey(RequestParameterKeyT&& value) { SetRequestParameterKey(std::forward<RequestParameterKeyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The route request parameter key.</p>
-     */
-    inline void SetRequestParameterKey(const Aws::String& value) { m_requestParameterKeyHasBeenSet = true; m_requestParameterKey = value; }
-
-    /**
-     * <p>The route request parameter key.</p>
-     */
-    inline void SetRequestParameterKey(Aws::String&& value) { m_requestParameterKeyHasBeenSet = true; m_requestParameterKey = std::move(value); }
-
-    /**
-     * <p>The route request parameter key.</p>
-     */
-    inline void SetRequestParameterKey(const char* value) { m_requestParameterKeyHasBeenSet = true; m_requestParameterKey.assign(value); }
-
-    /**
-     * <p>The route request parameter key.</p>
-     */
-    inline DeleteRouteRequestParameterRequest& WithRequestParameterKey(const Aws::String& value) { SetRequestParameterKey(value); return *this;}
-
-    /**
-     * <p>The route request parameter key.</p>
-     */
-    inline DeleteRouteRequestParameterRequest& WithRequestParameterKey(Aws::String&& value) { SetRequestParameterKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The route request parameter key.</p>
-     */
-    inline DeleteRouteRequestParameterRequest& WithRequestParameterKey(const char* value) { SetRequestParameterKey(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The route ID.</p>
      */
-    inline const Aws::String& GetRouteId() const{ return m_routeId; }
-
-    /**
-     * <p>The route ID.</p>
-     */
+    inline const Aws::String& GetRouteId() const { return m_routeId; }
     inline bool RouteIdHasBeenSet() const { return m_routeIdHasBeenSet; }
-
-    /**
-     * <p>The route ID.</p>
-     */
-    inline void SetRouteId(const Aws::String& value) { m_routeIdHasBeenSet = true; m_routeId = value; }
-
-    /**
-     * <p>The route ID.</p>
-     */
-    inline void SetRouteId(Aws::String&& value) { m_routeIdHasBeenSet = true; m_routeId = std::move(value); }
-
-    /**
-     * <p>The route ID.</p>
-     */
-    inline void SetRouteId(const char* value) { m_routeIdHasBeenSet = true; m_routeId.assign(value); }
-
-    /**
-     * <p>The route ID.</p>
-     */
-    inline DeleteRouteRequestParameterRequest& WithRouteId(const Aws::String& value) { SetRouteId(value); return *this;}
-
-    /**
-     * <p>The route ID.</p>
-     */
-    inline DeleteRouteRequestParameterRequest& WithRouteId(Aws::String&& value) { SetRouteId(std::move(value)); return *this;}
-
-    /**
-     * <p>The route ID.</p>
-     */
-    inline DeleteRouteRequestParameterRequest& WithRouteId(const char* value) { SetRouteId(value); return *this;}
-
+    template<typename RouteIdT = Aws::String>
+    void SetRouteId(RouteIdT&& value) { m_routeIdHasBeenSet = true; m_routeId = std::forward<RouteIdT>(value); }
+    template<typename RouteIdT = Aws::String>
+    DeleteRouteRequestParameterRequest& WithRouteId(RouteIdT&& value) { SetRouteId(std::forward<RouteIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_apiId;

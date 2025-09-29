@@ -34,7 +34,7 @@ namespace Model
   class ClusterPendingModifiedValues
   {
   public:
-    AWS_NEPTUNE_API ClusterPendingModifiedValues();
+    AWS_NEPTUNE_API ClusterPendingModifiedValues() = default;
     AWS_NEPTUNE_API ClusterPendingModifiedValues(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_NEPTUNE_API ClusterPendingModifiedValues& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -42,269 +42,107 @@ namespace Model
     AWS_NEPTUNE_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>This <code>PendingCloudwatchLogsExports</code> structure specifies pending
      * changes to which CloudWatch logs are enabled and which are disabled.</p>
      */
-    inline const PendingCloudwatchLogsExports& GetPendingCloudwatchLogsExports() const{ return m_pendingCloudwatchLogsExports; }
-
-    /**
-     * <p>This <code>PendingCloudwatchLogsExports</code> structure specifies pending
-     * changes to which CloudWatch logs are enabled and which are disabled.</p>
-     */
+    inline const PendingCloudwatchLogsExports& GetPendingCloudwatchLogsExports() const { return m_pendingCloudwatchLogsExports; }
     inline bool PendingCloudwatchLogsExportsHasBeenSet() const { return m_pendingCloudwatchLogsExportsHasBeenSet; }
+    template<typename PendingCloudwatchLogsExportsT = PendingCloudwatchLogsExports>
+    void SetPendingCloudwatchLogsExports(PendingCloudwatchLogsExportsT&& value) { m_pendingCloudwatchLogsExportsHasBeenSet = true; m_pendingCloudwatchLogsExports = std::forward<PendingCloudwatchLogsExportsT>(value); }
+    template<typename PendingCloudwatchLogsExportsT = PendingCloudwatchLogsExports>
+    ClusterPendingModifiedValues& WithPendingCloudwatchLogsExports(PendingCloudwatchLogsExportsT&& value) { SetPendingCloudwatchLogsExports(std::forward<PendingCloudwatchLogsExportsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>This <code>PendingCloudwatchLogsExports</code> structure specifies pending
-     * changes to which CloudWatch logs are enabled and which are disabled.</p>
-     */
-    inline void SetPendingCloudwatchLogsExports(const PendingCloudwatchLogsExports& value) { m_pendingCloudwatchLogsExportsHasBeenSet = true; m_pendingCloudwatchLogsExports = value; }
-
-    /**
-     * <p>This <code>PendingCloudwatchLogsExports</code> structure specifies pending
-     * changes to which CloudWatch logs are enabled and which are disabled.</p>
-     */
-    inline void SetPendingCloudwatchLogsExports(PendingCloudwatchLogsExports&& value) { m_pendingCloudwatchLogsExportsHasBeenSet = true; m_pendingCloudwatchLogsExports = std::move(value); }
-
-    /**
-     * <p>This <code>PendingCloudwatchLogsExports</code> structure specifies pending
-     * changes to which CloudWatch logs are enabled and which are disabled.</p>
-     */
-    inline ClusterPendingModifiedValues& WithPendingCloudwatchLogsExports(const PendingCloudwatchLogsExports& value) { SetPendingCloudwatchLogsExports(value); return *this;}
-
-    /**
-     * <p>This <code>PendingCloudwatchLogsExports</code> structure specifies pending
-     * changes to which CloudWatch logs are enabled and which are disabled.</p>
-     */
-    inline ClusterPendingModifiedValues& WithPendingCloudwatchLogsExports(PendingCloudwatchLogsExports&& value) { SetPendingCloudwatchLogsExports(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The DBClusterIdentifier value for the DB cluster.</p>
      */
-    inline const Aws::String& GetDBClusterIdentifier() const{ return m_dBClusterIdentifier; }
-
-    /**
-     * <p>The DBClusterIdentifier value for the DB cluster.</p>
-     */
+    inline const Aws::String& GetDBClusterIdentifier() const { return m_dBClusterIdentifier; }
     inline bool DBClusterIdentifierHasBeenSet() const { return m_dBClusterIdentifierHasBeenSet; }
+    template<typename DBClusterIdentifierT = Aws::String>
+    void SetDBClusterIdentifier(DBClusterIdentifierT&& value) { m_dBClusterIdentifierHasBeenSet = true; m_dBClusterIdentifier = std::forward<DBClusterIdentifierT>(value); }
+    template<typename DBClusterIdentifierT = Aws::String>
+    ClusterPendingModifiedValues& WithDBClusterIdentifier(DBClusterIdentifierT&& value) { SetDBClusterIdentifier(std::forward<DBClusterIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The DBClusterIdentifier value for the DB cluster.</p>
-     */
-    inline void SetDBClusterIdentifier(const Aws::String& value) { m_dBClusterIdentifierHasBeenSet = true; m_dBClusterIdentifier = value; }
-
-    /**
-     * <p>The DBClusterIdentifier value for the DB cluster.</p>
-     */
-    inline void SetDBClusterIdentifier(Aws::String&& value) { m_dBClusterIdentifierHasBeenSet = true; m_dBClusterIdentifier = std::move(value); }
-
-    /**
-     * <p>The DBClusterIdentifier value for the DB cluster.</p>
-     */
-    inline void SetDBClusterIdentifier(const char* value) { m_dBClusterIdentifierHasBeenSet = true; m_dBClusterIdentifier.assign(value); }
-
-    /**
-     * <p>The DBClusterIdentifier value for the DB cluster.</p>
-     */
-    inline ClusterPendingModifiedValues& WithDBClusterIdentifier(const Aws::String& value) { SetDBClusterIdentifier(value); return *this;}
-
-    /**
-     * <p>The DBClusterIdentifier value for the DB cluster.</p>
-     */
-    inline ClusterPendingModifiedValues& WithDBClusterIdentifier(Aws::String&& value) { SetDBClusterIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The DBClusterIdentifier value for the DB cluster.</p>
-     */
-    inline ClusterPendingModifiedValues& WithDBClusterIdentifier(const char* value) { SetDBClusterIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A value that indicates whether mapping of Amazon Web Services Identity and
      * Access Management (IAM) accounts to database accounts is enabled.</p>
      */
-    inline bool GetIAMDatabaseAuthenticationEnabled() const{ return m_iAMDatabaseAuthenticationEnabled; }
-
-    /**
-     * <p>A value that indicates whether mapping of Amazon Web Services Identity and
-     * Access Management (IAM) accounts to database accounts is enabled.</p>
-     */
+    inline bool GetIAMDatabaseAuthenticationEnabled() const { return m_iAMDatabaseAuthenticationEnabled; }
     inline bool IAMDatabaseAuthenticationEnabledHasBeenSet() const { return m_iAMDatabaseAuthenticationEnabledHasBeenSet; }
-
-    /**
-     * <p>A value that indicates whether mapping of Amazon Web Services Identity and
-     * Access Management (IAM) accounts to database accounts is enabled.</p>
-     */
     inline void SetIAMDatabaseAuthenticationEnabled(bool value) { m_iAMDatabaseAuthenticationEnabledHasBeenSet = true; m_iAMDatabaseAuthenticationEnabled = value; }
-
-    /**
-     * <p>A value that indicates whether mapping of Amazon Web Services Identity and
-     * Access Management (IAM) accounts to database accounts is enabled.</p>
-     */
     inline ClusterPendingModifiedValues& WithIAMDatabaseAuthenticationEnabled(bool value) { SetIAMDatabaseAuthenticationEnabled(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The database engine version.</p>
      */
-    inline const Aws::String& GetEngineVersion() const{ return m_engineVersion; }
-
-    /**
-     * <p>The database engine version.</p>
-     */
+    inline const Aws::String& GetEngineVersion() const { return m_engineVersion; }
     inline bool EngineVersionHasBeenSet() const { return m_engineVersionHasBeenSet; }
+    template<typename EngineVersionT = Aws::String>
+    void SetEngineVersion(EngineVersionT&& value) { m_engineVersionHasBeenSet = true; m_engineVersion = std::forward<EngineVersionT>(value); }
+    template<typename EngineVersionT = Aws::String>
+    ClusterPendingModifiedValues& WithEngineVersion(EngineVersionT&& value) { SetEngineVersion(std::forward<EngineVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The database engine version.</p>
-     */
-    inline void SetEngineVersion(const Aws::String& value) { m_engineVersionHasBeenSet = true; m_engineVersion = value; }
-
-    /**
-     * <p>The database engine version.</p>
-     */
-    inline void SetEngineVersion(Aws::String&& value) { m_engineVersionHasBeenSet = true; m_engineVersion = std::move(value); }
-
-    /**
-     * <p>The database engine version.</p>
-     */
-    inline void SetEngineVersion(const char* value) { m_engineVersionHasBeenSet = true; m_engineVersion.assign(value); }
-
-    /**
-     * <p>The database engine version.</p>
-     */
-    inline ClusterPendingModifiedValues& WithEngineVersion(const Aws::String& value) { SetEngineVersion(value); return *this;}
-
-    /**
-     * <p>The database engine version.</p>
-     */
-    inline ClusterPendingModifiedValues& WithEngineVersion(Aws::String&& value) { SetEngineVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The database engine version.</p>
-     */
-    inline ClusterPendingModifiedValues& WithEngineVersion(const char* value) { SetEngineVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The number of days for which automatic DB snapshots are retained.</p>
      */
-    inline int GetBackupRetentionPeriod() const{ return m_backupRetentionPeriod; }
-
-    /**
-     * <p>The number of days for which automatic DB snapshots are retained.</p>
-     */
+    inline int GetBackupRetentionPeriod() const { return m_backupRetentionPeriod; }
     inline bool BackupRetentionPeriodHasBeenSet() const { return m_backupRetentionPeriodHasBeenSet; }
-
-    /**
-     * <p>The number of days for which automatic DB snapshots are retained.</p>
-     */
     inline void SetBackupRetentionPeriod(int value) { m_backupRetentionPeriodHasBeenSet = true; m_backupRetentionPeriod = value; }
-
-    /**
-     * <p>The number of days for which automatic DB snapshots are retained.</p>
-     */
     inline ClusterPendingModifiedValues& WithBackupRetentionPeriod(int value) { SetBackupRetentionPeriod(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
-     * <p>The storage type for the DB cluster.</p>
+     * <p>The pending change in storage type for the DB cluster.   Valid Values:</p>
+     * <ul> <li> <p> <b> <code>standard</code> </b>   –   ( <i>the default</i> )
+     * Configures cost-effective database storage for applications with moderate to
+     * small I/O usage.</p> </li> <li> <p> <b> <code>iopt1</code> </b>   –   Enables <a
+     * href="https://docs.aws.amazon.com/neptune/latest/userguide/storage-types.html#provisioned-iops-storage">I/O-Optimized
+     * storage</a> that's designed to meet the needs of I/O-intensive graph workloads
+     * that require predictable pricing with low I/O latency and consistent I/O
+     * throughput.</p> <p>Neptune I/O-Optimized storage is only available starting with
+     * engine release 1.3.0.0.</p> </li> </ul>
      */
-    inline const Aws::String& GetStorageType() const{ return m_storageType; }
-
-    /**
-     * <p>The storage type for the DB cluster.</p>
-     */
+    inline const Aws::String& GetStorageType() const { return m_storageType; }
     inline bool StorageTypeHasBeenSet() const { return m_storageTypeHasBeenSet; }
+    template<typename StorageTypeT = Aws::String>
+    void SetStorageType(StorageTypeT&& value) { m_storageTypeHasBeenSet = true; m_storageType = std::forward<StorageTypeT>(value); }
+    template<typename StorageTypeT = Aws::String>
+    ClusterPendingModifiedValues& WithStorageType(StorageTypeT&& value) { SetStorageType(std::forward<StorageTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The storage type for the DB cluster.</p>
-     */
-    inline void SetStorageType(const Aws::String& value) { m_storageTypeHasBeenSet = true; m_storageType = value; }
-
-    /**
-     * <p>The storage type for the DB cluster.</p>
-     */
-    inline void SetStorageType(Aws::String&& value) { m_storageTypeHasBeenSet = true; m_storageType = std::move(value); }
-
-    /**
-     * <p>The storage type for the DB cluster.</p>
-     */
-    inline void SetStorageType(const char* value) { m_storageTypeHasBeenSet = true; m_storageType.assign(value); }
-
-    /**
-     * <p>The storage type for the DB cluster.</p>
-     */
-    inline ClusterPendingModifiedValues& WithStorageType(const Aws::String& value) { SetStorageType(value); return *this;}
-
-    /**
-     * <p>The storage type for the DB cluster.</p>
-     */
-    inline ClusterPendingModifiedValues& WithStorageType(Aws::String&& value) { SetStorageType(std::move(value)); return *this;}
-
-    /**
-     * <p>The storage type for the DB cluster.</p>
-     */
-    inline ClusterPendingModifiedValues& WithStorageType(const char* value) { SetStorageType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The allocated storage size in gibibytes (GiB) for database engines. For
      * Neptune, <code>AllocatedStorage</code> always returns 1, because Neptune DB
      * cluster storage size isn't fixed, but instead automatically adjusts as
      * needed.</p>
      */
-    inline int GetAllocatedStorage() const{ return m_allocatedStorage; }
-
-    /**
-     * <p>The allocated storage size in gibibytes (GiB) for database engines. For
-     * Neptune, <code>AllocatedStorage</code> always returns 1, because Neptune DB
-     * cluster storage size isn't fixed, but instead automatically adjusts as
-     * needed.</p>
-     */
+    inline int GetAllocatedStorage() const { return m_allocatedStorage; }
     inline bool AllocatedStorageHasBeenSet() const { return m_allocatedStorageHasBeenSet; }
-
-    /**
-     * <p>The allocated storage size in gibibytes (GiB) for database engines. For
-     * Neptune, <code>AllocatedStorage</code> always returns 1, because Neptune DB
-     * cluster storage size isn't fixed, but instead automatically adjusts as
-     * needed.</p>
-     */
     inline void SetAllocatedStorage(int value) { m_allocatedStorageHasBeenSet = true; m_allocatedStorage = value; }
-
-    /**
-     * <p>The allocated storage size in gibibytes (GiB) for database engines. For
-     * Neptune, <code>AllocatedStorage</code> always returns 1, because Neptune DB
-     * cluster storage size isn't fixed, but instead automatically adjusts as
-     * needed.</p>
-     */
     inline ClusterPendingModifiedValues& WithAllocatedStorage(int value) { SetAllocatedStorage(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The Provisioned IOPS (I/O operations per second) value. This setting is only
-     * for non-Aurora Multi-AZ DB clusters.</p>
+     * for Multi-AZ DB clusters.</p>
      */
-    inline int GetIops() const{ return m_iops; }
-
-    /**
-     * <p>The Provisioned IOPS (I/O operations per second) value. This setting is only
-     * for non-Aurora Multi-AZ DB clusters.</p>
-     */
+    inline int GetIops() const { return m_iops; }
     inline bool IopsHasBeenSet() const { return m_iopsHasBeenSet; }
-
-    /**
-     * <p>The Provisioned IOPS (I/O operations per second) value. This setting is only
-     * for non-Aurora Multi-AZ DB clusters.</p>
-     */
     inline void SetIops(int value) { m_iopsHasBeenSet = true; m_iops = value; }
-
-    /**
-     * <p>The Provisioned IOPS (I/O operations per second) value. This setting is only
-     * for non-Aurora Multi-AZ DB clusters.</p>
-     */
     inline ClusterPendingModifiedValues& WithIops(int value) { SetIops(value); return *this;}
-
+    ///@}
   private:
 
     PendingCloudwatchLogsExports m_pendingCloudwatchLogsExports;
@@ -313,22 +151,22 @@ namespace Model
     Aws::String m_dBClusterIdentifier;
     bool m_dBClusterIdentifierHasBeenSet = false;
 
-    bool m_iAMDatabaseAuthenticationEnabled;
+    bool m_iAMDatabaseAuthenticationEnabled{false};
     bool m_iAMDatabaseAuthenticationEnabledHasBeenSet = false;
 
     Aws::String m_engineVersion;
     bool m_engineVersionHasBeenSet = false;
 
-    int m_backupRetentionPeriod;
+    int m_backupRetentionPeriod{0};
     bool m_backupRetentionPeriodHasBeenSet = false;
 
     Aws::String m_storageType;
     bool m_storageTypeHasBeenSet = false;
 
-    int m_allocatedStorage;
+    int m_allocatedStorage{0};
     bool m_allocatedStorageHasBeenSet = false;
 
-    int m_iops;
+    int m_iops{0};
     bool m_iopsHasBeenSet = false;
   };
 

@@ -18,17 +18,7 @@ namespace ECS
 namespace Model
 {
 
-ServiceConnectClientAlias::ServiceConnectClientAlias() : 
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_dnsNameHasBeenSet(false)
-{
-}
-
-ServiceConnectClientAlias::ServiceConnectClientAlias(JsonView jsonValue) : 
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_dnsNameHasBeenSet(false)
+ServiceConnectClientAlias::ServiceConnectClientAlias(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,18 @@ ServiceConnectClientAlias& ServiceConnectClientAlias::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("port"))
   {
     m_port = jsonValue.GetInteger("port");
-
     m_portHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("dnsName"))
   {
     m_dnsName = jsonValue.GetString("dnsName");
-
     m_dnsNameHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("testTrafficRules"))
+  {
+    m_testTrafficRules = jsonValue.GetObject("testTrafficRules");
+    m_testTrafficRulesHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -65,6 +56,12 @@ JsonValue ServiceConnectClientAlias::Jsonize() const
   if(m_dnsNameHasBeenSet)
   {
    payload.WithString("dnsName", m_dnsName);
+
+  }
+
+  if(m_testTrafficRulesHasBeenSet)
+  {
+   payload.WithObject("testTrafficRules", m_testTrafficRules.Jsonize());
 
   }
 

@@ -20,39 +20,7 @@ namespace EC2
 namespace Model
 {
 
-SpotOptionsRequest::SpotOptionsRequest() : 
-    m_allocationStrategy(SpotAllocationStrategy::NOT_SET),
-    m_allocationStrategyHasBeenSet(false),
-    m_maintenanceStrategiesHasBeenSet(false),
-    m_instanceInterruptionBehavior(SpotInstanceInterruptionBehavior::NOT_SET),
-    m_instanceInterruptionBehaviorHasBeenSet(false),
-    m_instancePoolsToUseCount(0),
-    m_instancePoolsToUseCountHasBeenSet(false),
-    m_singleInstanceType(false),
-    m_singleInstanceTypeHasBeenSet(false),
-    m_singleAvailabilityZone(false),
-    m_singleAvailabilityZoneHasBeenSet(false),
-    m_minTargetCapacity(0),
-    m_minTargetCapacityHasBeenSet(false),
-    m_maxTotalPriceHasBeenSet(false)
-{
-}
-
-SpotOptionsRequest::SpotOptionsRequest(const XmlNode& xmlNode) : 
-    m_allocationStrategy(SpotAllocationStrategy::NOT_SET),
-    m_allocationStrategyHasBeenSet(false),
-    m_maintenanceStrategiesHasBeenSet(false),
-    m_instanceInterruptionBehavior(SpotInstanceInterruptionBehavior::NOT_SET),
-    m_instanceInterruptionBehaviorHasBeenSet(false),
-    m_instancePoolsToUseCount(0),
-    m_instancePoolsToUseCountHasBeenSet(false),
-    m_singleInstanceType(false),
-    m_singleInstanceTypeHasBeenSet(false),
-    m_singleAvailabilityZone(false),
-    m_singleAvailabilityZoneHasBeenSet(false),
-    m_minTargetCapacity(0),
-    m_minTargetCapacityHasBeenSet(false),
-    m_maxTotalPriceHasBeenSet(false)
+SpotOptionsRequest::SpotOptionsRequest(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -66,7 +34,7 @@ SpotOptionsRequest& SpotOptionsRequest::operator =(const XmlNode& xmlNode)
     XmlNode allocationStrategyNode = resultNode.FirstChild("AllocationStrategy");
     if(!allocationStrategyNode.IsNull())
     {
-      m_allocationStrategy = SpotAllocationStrategyMapper::GetSpotAllocationStrategyForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(allocationStrategyNode.GetText()).c_str()).c_str());
+      m_allocationStrategy = SpotAllocationStrategyMapper::GetSpotAllocationStrategyForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(allocationStrategyNode.GetText()).c_str()));
       m_allocationStrategyHasBeenSet = true;
     }
     XmlNode maintenanceStrategiesNode = resultNode.FirstChild("MaintenanceStrategies");
@@ -78,7 +46,7 @@ SpotOptionsRequest& SpotOptionsRequest::operator =(const XmlNode& xmlNode)
     XmlNode instanceInterruptionBehaviorNode = resultNode.FirstChild("InstanceInterruptionBehavior");
     if(!instanceInterruptionBehaviorNode.IsNull())
     {
-      m_instanceInterruptionBehavior = SpotInstanceInterruptionBehaviorMapper::GetSpotInstanceInterruptionBehaviorForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(instanceInterruptionBehaviorNode.GetText()).c_str()).c_str());
+      m_instanceInterruptionBehavior = SpotInstanceInterruptionBehaviorMapper::GetSpotInstanceInterruptionBehaviorForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(instanceInterruptionBehaviorNode.GetText()).c_str()));
       m_instanceInterruptionBehaviorHasBeenSet = true;
     }
     XmlNode instancePoolsToUseCountNode = resultNode.FirstChild("InstancePoolsToUseCount");
@@ -120,7 +88,7 @@ void SpotOptionsRequest::OutputToStream(Aws::OStream& oStream, const char* locat
 {
   if(m_allocationStrategyHasBeenSet)
   {
-      oStream << location << index << locationValue << ".AllocationStrategy=" << SpotAllocationStrategyMapper::GetNameForSpotAllocationStrategy(m_allocationStrategy) << "&";
+      oStream << location << index << locationValue << ".AllocationStrategy=" << StringUtils::URLEncode(SpotAllocationStrategyMapper::GetNameForSpotAllocationStrategy(m_allocationStrategy)) << "&";
   }
 
   if(m_maintenanceStrategiesHasBeenSet)
@@ -132,7 +100,7 @@ void SpotOptionsRequest::OutputToStream(Aws::OStream& oStream, const char* locat
 
   if(m_instanceInterruptionBehaviorHasBeenSet)
   {
-      oStream << location << index << locationValue << ".InstanceInterruptionBehavior=" << SpotInstanceInterruptionBehaviorMapper::GetNameForSpotInstanceInterruptionBehavior(m_instanceInterruptionBehavior) << "&";
+      oStream << location << index << locationValue << ".InstanceInterruptionBehavior=" << StringUtils::URLEncode(SpotInstanceInterruptionBehaviorMapper::GetNameForSpotInstanceInterruptionBehavior(m_instanceInterruptionBehavior)) << "&";
   }
 
   if(m_instancePoolsToUseCountHasBeenSet)
@@ -166,7 +134,7 @@ void SpotOptionsRequest::OutputToStream(Aws::OStream& oStream, const char* locat
 {
   if(m_allocationStrategyHasBeenSet)
   {
-      oStream << location << ".AllocationStrategy=" << SpotAllocationStrategyMapper::GetNameForSpotAllocationStrategy(m_allocationStrategy) << "&";
+      oStream << location << ".AllocationStrategy=" << StringUtils::URLEncode(SpotAllocationStrategyMapper::GetNameForSpotAllocationStrategy(m_allocationStrategy)) << "&";
   }
   if(m_maintenanceStrategiesHasBeenSet)
   {
@@ -176,7 +144,7 @@ void SpotOptionsRequest::OutputToStream(Aws::OStream& oStream, const char* locat
   }
   if(m_instanceInterruptionBehaviorHasBeenSet)
   {
-      oStream << location << ".InstanceInterruptionBehavior=" << SpotInstanceInterruptionBehaviorMapper::GetNameForSpotInstanceInterruptionBehavior(m_instanceInterruptionBehavior) << "&";
+      oStream << location << ".InstanceInterruptionBehavior=" << StringUtils::URLEncode(SpotInstanceInterruptionBehaviorMapper::GetNameForSpotInstanceInterruptionBehavior(m_instanceInterruptionBehavior)) << "&";
   }
   if(m_instancePoolsToUseCountHasBeenSet)
   {

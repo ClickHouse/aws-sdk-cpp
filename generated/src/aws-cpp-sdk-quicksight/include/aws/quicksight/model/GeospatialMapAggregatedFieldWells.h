@@ -34,150 +34,55 @@ namespace Model
   class GeospatialMapAggregatedFieldWells
   {
   public:
-    AWS_QUICKSIGHT_API GeospatialMapAggregatedFieldWells();
+    AWS_QUICKSIGHT_API GeospatialMapAggregatedFieldWells() = default;
     AWS_QUICKSIGHT_API GeospatialMapAggregatedFieldWells(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API GeospatialMapAggregatedFieldWells& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The geospatial field wells of a geospatial map. Values are grouped by
      * geospatial fields.</p>
      */
-    inline const Aws::Vector<DimensionField>& GetGeospatial() const{ return m_geospatial; }
-
-    /**
-     * <p>The geospatial field wells of a geospatial map. Values are grouped by
-     * geospatial fields.</p>
-     */
+    inline const Aws::Vector<DimensionField>& GetGeospatial() const { return m_geospatial; }
     inline bool GeospatialHasBeenSet() const { return m_geospatialHasBeenSet; }
+    template<typename GeospatialT = Aws::Vector<DimensionField>>
+    void SetGeospatial(GeospatialT&& value) { m_geospatialHasBeenSet = true; m_geospatial = std::forward<GeospatialT>(value); }
+    template<typename GeospatialT = Aws::Vector<DimensionField>>
+    GeospatialMapAggregatedFieldWells& WithGeospatial(GeospatialT&& value) { SetGeospatial(std::forward<GeospatialT>(value)); return *this;}
+    template<typename GeospatialT = DimensionField>
+    GeospatialMapAggregatedFieldWells& AddGeospatial(GeospatialT&& value) { m_geospatialHasBeenSet = true; m_geospatial.emplace_back(std::forward<GeospatialT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The geospatial field wells of a geospatial map. Values are grouped by
-     * geospatial fields.</p>
-     */
-    inline void SetGeospatial(const Aws::Vector<DimensionField>& value) { m_geospatialHasBeenSet = true; m_geospatial = value; }
-
-    /**
-     * <p>The geospatial field wells of a geospatial map. Values are grouped by
-     * geospatial fields.</p>
-     */
-    inline void SetGeospatial(Aws::Vector<DimensionField>&& value) { m_geospatialHasBeenSet = true; m_geospatial = std::move(value); }
-
-    /**
-     * <p>The geospatial field wells of a geospatial map. Values are grouped by
-     * geospatial fields.</p>
-     */
-    inline GeospatialMapAggregatedFieldWells& WithGeospatial(const Aws::Vector<DimensionField>& value) { SetGeospatial(value); return *this;}
-
-    /**
-     * <p>The geospatial field wells of a geospatial map. Values are grouped by
-     * geospatial fields.</p>
-     */
-    inline GeospatialMapAggregatedFieldWells& WithGeospatial(Aws::Vector<DimensionField>&& value) { SetGeospatial(std::move(value)); return *this;}
-
-    /**
-     * <p>The geospatial field wells of a geospatial map. Values are grouped by
-     * geospatial fields.</p>
-     */
-    inline GeospatialMapAggregatedFieldWells& AddGeospatial(const DimensionField& value) { m_geospatialHasBeenSet = true; m_geospatial.push_back(value); return *this; }
-
-    /**
-     * <p>The geospatial field wells of a geospatial map. Values are grouped by
-     * geospatial fields.</p>
-     */
-    inline GeospatialMapAggregatedFieldWells& AddGeospatial(DimensionField&& value) { m_geospatialHasBeenSet = true; m_geospatial.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The size field wells of a geospatial map. Values are aggregated based on
      * geospatial fields.</p>
      */
-    inline const Aws::Vector<MeasureField>& GetValues() const{ return m_values; }
-
-    /**
-     * <p>The size field wells of a geospatial map. Values are aggregated based on
-     * geospatial fields.</p>
-     */
+    inline const Aws::Vector<MeasureField>& GetValues() const { return m_values; }
     inline bool ValuesHasBeenSet() const { return m_valuesHasBeenSet; }
+    template<typename ValuesT = Aws::Vector<MeasureField>>
+    void SetValues(ValuesT&& value) { m_valuesHasBeenSet = true; m_values = std::forward<ValuesT>(value); }
+    template<typename ValuesT = Aws::Vector<MeasureField>>
+    GeospatialMapAggregatedFieldWells& WithValues(ValuesT&& value) { SetValues(std::forward<ValuesT>(value)); return *this;}
+    template<typename ValuesT = MeasureField>
+    GeospatialMapAggregatedFieldWells& AddValues(ValuesT&& value) { m_valuesHasBeenSet = true; m_values.emplace_back(std::forward<ValuesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The size field wells of a geospatial map. Values are aggregated based on
-     * geospatial fields.</p>
-     */
-    inline void SetValues(const Aws::Vector<MeasureField>& value) { m_valuesHasBeenSet = true; m_values = value; }
-
-    /**
-     * <p>The size field wells of a geospatial map. Values are aggregated based on
-     * geospatial fields.</p>
-     */
-    inline void SetValues(Aws::Vector<MeasureField>&& value) { m_valuesHasBeenSet = true; m_values = std::move(value); }
-
-    /**
-     * <p>The size field wells of a geospatial map. Values are aggregated based on
-     * geospatial fields.</p>
-     */
-    inline GeospatialMapAggregatedFieldWells& WithValues(const Aws::Vector<MeasureField>& value) { SetValues(value); return *this;}
-
-    /**
-     * <p>The size field wells of a geospatial map. Values are aggregated based on
-     * geospatial fields.</p>
-     */
-    inline GeospatialMapAggregatedFieldWells& WithValues(Aws::Vector<MeasureField>&& value) { SetValues(std::move(value)); return *this;}
-
-    /**
-     * <p>The size field wells of a geospatial map. Values are aggregated based on
-     * geospatial fields.</p>
-     */
-    inline GeospatialMapAggregatedFieldWells& AddValues(const MeasureField& value) { m_valuesHasBeenSet = true; m_values.push_back(value); return *this; }
-
-    /**
-     * <p>The size field wells of a geospatial map. Values are aggregated based on
-     * geospatial fields.</p>
-     */
-    inline GeospatialMapAggregatedFieldWells& AddValues(MeasureField&& value) { m_valuesHasBeenSet = true; m_values.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The color field wells of a geospatial map.</p>
      */
-    inline const Aws::Vector<DimensionField>& GetColors() const{ return m_colors; }
-
-    /**
-     * <p>The color field wells of a geospatial map.</p>
-     */
+    inline const Aws::Vector<DimensionField>& GetColors() const { return m_colors; }
     inline bool ColorsHasBeenSet() const { return m_colorsHasBeenSet; }
-
-    /**
-     * <p>The color field wells of a geospatial map.</p>
-     */
-    inline void SetColors(const Aws::Vector<DimensionField>& value) { m_colorsHasBeenSet = true; m_colors = value; }
-
-    /**
-     * <p>The color field wells of a geospatial map.</p>
-     */
-    inline void SetColors(Aws::Vector<DimensionField>&& value) { m_colorsHasBeenSet = true; m_colors = std::move(value); }
-
-    /**
-     * <p>The color field wells of a geospatial map.</p>
-     */
-    inline GeospatialMapAggregatedFieldWells& WithColors(const Aws::Vector<DimensionField>& value) { SetColors(value); return *this;}
-
-    /**
-     * <p>The color field wells of a geospatial map.</p>
-     */
-    inline GeospatialMapAggregatedFieldWells& WithColors(Aws::Vector<DimensionField>&& value) { SetColors(std::move(value)); return *this;}
-
-    /**
-     * <p>The color field wells of a geospatial map.</p>
-     */
-    inline GeospatialMapAggregatedFieldWells& AddColors(const DimensionField& value) { m_colorsHasBeenSet = true; m_colors.push_back(value); return *this; }
-
-    /**
-     * <p>The color field wells of a geospatial map.</p>
-     */
-    inline GeospatialMapAggregatedFieldWells& AddColors(DimensionField&& value) { m_colorsHasBeenSet = true; m_colors.push_back(std::move(value)); return *this; }
-
+    template<typename ColorsT = Aws::Vector<DimensionField>>
+    void SetColors(ColorsT&& value) { m_colorsHasBeenSet = true; m_colors = std::forward<ColorsT>(value); }
+    template<typename ColorsT = Aws::Vector<DimensionField>>
+    GeospatialMapAggregatedFieldWells& WithColors(ColorsT&& value) { SetColors(std::forward<ColorsT>(value)); return *this;}
+    template<typename ColorsT = DimensionField>
+    GeospatialMapAggregatedFieldWells& AddColors(ColorsT&& value) { m_colorsHasBeenSet = true; m_colors.emplace_back(std::forward<ColorsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<DimensionField> m_geospatial;

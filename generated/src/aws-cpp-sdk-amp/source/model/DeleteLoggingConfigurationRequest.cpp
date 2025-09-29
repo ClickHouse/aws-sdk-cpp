@@ -15,13 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-DeleteLoggingConfigurationRequest::DeleteLoggingConfigurationRequest() : 
-    m_workspaceIdHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_clientTokenHasBeenSet(true)
-{
-}
-
 Aws::String DeleteLoggingConfigurationRequest::SerializePayload() const
 {
   return {};

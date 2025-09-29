@@ -32,12 +32,13 @@ namespace Model
   class EntityTypesListItem
   {
   public:
-    AWS_COMPREHEND_API EntityTypesListItem();
+    AWS_COMPREHEND_API EntityTypesListItem() = default;
     AWS_COMPREHEND_API EntityTypesListItem(Aws::Utils::Json::JsonView jsonValue);
     AWS_COMPREHEND_API EntityTypesListItem& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COMPREHEND_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An entity type within a labeled training dataset that Amazon Comprehend uses
      * to train a custom entity recognizer.</p> <p>Entity types must not contain the
@@ -45,71 +46,13 @@ namespace Model
      * (carriage return), \\r (escaped carriage return), \t (tab), \\t (escaped tab),
      * and , (comma).</p>
      */
-    inline const Aws::String& GetType() const{ return m_type; }
-
-    /**
-     * <p>An entity type within a labeled training dataset that Amazon Comprehend uses
-     * to train a custom entity recognizer.</p> <p>Entity types must not contain the
-     * following invalid characters: \n (line break), \\n (escaped line break, \r
-     * (carriage return), \\r (escaped carriage return), \t (tab), \\t (escaped tab),
-     * and , (comma).</p>
-     */
+    inline const Aws::String& GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
-
-    /**
-     * <p>An entity type within a labeled training dataset that Amazon Comprehend uses
-     * to train a custom entity recognizer.</p> <p>Entity types must not contain the
-     * following invalid characters: \n (line break), \\n (escaped line break, \r
-     * (carriage return), \\r (escaped carriage return), \t (tab), \\t (escaped tab),
-     * and , (comma).</p>
-     */
-    inline void SetType(const Aws::String& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>An entity type within a labeled training dataset that Amazon Comprehend uses
-     * to train a custom entity recognizer.</p> <p>Entity types must not contain the
-     * following invalid characters: \n (line break), \\n (escaped line break, \r
-     * (carriage return), \\r (escaped carriage return), \t (tab), \\t (escaped tab),
-     * and , (comma).</p>
-     */
-    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>An entity type within a labeled training dataset that Amazon Comprehend uses
-     * to train a custom entity recognizer.</p> <p>Entity types must not contain the
-     * following invalid characters: \n (line break), \\n (escaped line break, \r
-     * (carriage return), \\r (escaped carriage return), \t (tab), \\t (escaped tab),
-     * and , (comma).</p>
-     */
-    inline void SetType(const char* value) { m_typeHasBeenSet = true; m_type.assign(value); }
-
-    /**
-     * <p>An entity type within a labeled training dataset that Amazon Comprehend uses
-     * to train a custom entity recognizer.</p> <p>Entity types must not contain the
-     * following invalid characters: \n (line break), \\n (escaped line break, \r
-     * (carriage return), \\r (escaped carriage return), \t (tab), \\t (escaped tab),
-     * and , (comma).</p>
-     */
-    inline EntityTypesListItem& WithType(const Aws::String& value) { SetType(value); return *this;}
-
-    /**
-     * <p>An entity type within a labeled training dataset that Amazon Comprehend uses
-     * to train a custom entity recognizer.</p> <p>Entity types must not contain the
-     * following invalid characters: \n (line break), \\n (escaped line break, \r
-     * (carriage return), \\r (escaped carriage return), \t (tab), \\t (escaped tab),
-     * and , (comma).</p>
-     */
-    inline EntityTypesListItem& WithType(Aws::String&& value) { SetType(std::move(value)); return *this;}
-
-    /**
-     * <p>An entity type within a labeled training dataset that Amazon Comprehend uses
-     * to train a custom entity recognizer.</p> <p>Entity types must not contain the
-     * following invalid characters: \n (line break), \\n (escaped line break, \r
-     * (carriage return), \\r (escaped carriage return), \t (tab), \\t (escaped tab),
-     * and , (comma).</p>
-     */
-    inline EntityTypesListItem& WithType(const char* value) { SetType(value); return *this;}
-
+    template<typename TypeT = Aws::String>
+    void SetType(TypeT&& value) { m_typeHasBeenSet = true; m_type = std::forward<TypeT>(value); }
+    template<typename TypeT = Aws::String>
+    EntityTypesListItem& WithType(TypeT&& value) { SetType(std::forward<TypeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_type;

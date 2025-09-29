@@ -18,15 +18,7 @@ namespace FMS
 namespace Model
 {
 
-AwsEc2NetworkInterfaceViolation::AwsEc2NetworkInterfaceViolation() : 
-    m_violationTargetHasBeenSet(false),
-    m_violatingSecurityGroupsHasBeenSet(false)
-{
-}
-
-AwsEc2NetworkInterfaceViolation::AwsEc2NetworkInterfaceViolation(JsonView jsonValue) : 
-    m_violationTargetHasBeenSet(false),
-    m_violatingSecurityGroupsHasBeenSet(false)
+AwsEc2NetworkInterfaceViolation::AwsEc2NetworkInterfaceViolation(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ AwsEc2NetworkInterfaceViolation& AwsEc2NetworkInterfaceViolation::operator =(Jso
   if(jsonValue.ValueExists("ViolationTarget"))
   {
     m_violationTarget = jsonValue.GetString("ViolationTarget");
-
     m_violationTargetHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ViolatingSecurityGroups"))
   {
     Aws::Utils::Array<JsonView> violatingSecurityGroupsJsonList = jsonValue.GetArray("ViolatingSecurityGroups");
@@ -49,7 +39,6 @@ AwsEc2NetworkInterfaceViolation& AwsEc2NetworkInterfaceViolation::operator =(Jso
     }
     m_violatingSecurityGroupsHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -37,279 +37,107 @@ namespace Model
   class ReactStartCodegenJobData
   {
   public:
-    AWS_AMPLIFYUIBUILDER_API ReactStartCodegenJobData();
+    AWS_AMPLIFYUIBUILDER_API ReactStartCodegenJobData() = default;
     AWS_AMPLIFYUIBUILDER_API ReactStartCodegenJobData(Aws::Utils::Json::JsonView jsonValue);
     AWS_AMPLIFYUIBUILDER_API ReactStartCodegenJobData& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_AMPLIFYUIBUILDER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The JavaScript module type.</p>
      */
-    inline const JSModule& GetModule() const{ return m_module; }
-
-    /**
-     * <p>The JavaScript module type.</p>
-     */
+    inline JSModule GetModule() const { return m_module; }
     inline bool ModuleHasBeenSet() const { return m_moduleHasBeenSet; }
+    inline void SetModule(JSModule value) { m_moduleHasBeenSet = true; m_module = value; }
+    inline ReactStartCodegenJobData& WithModule(JSModule value) { SetModule(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The JavaScript module type.</p>
-     */
-    inline void SetModule(const JSModule& value) { m_moduleHasBeenSet = true; m_module = value; }
-
-    /**
-     * <p>The JavaScript module type.</p>
-     */
-    inline void SetModule(JSModule&& value) { m_moduleHasBeenSet = true; m_module = std::move(value); }
-
-    /**
-     * <p>The JavaScript module type.</p>
-     */
-    inline ReactStartCodegenJobData& WithModule(const JSModule& value) { SetModule(value); return *this;}
-
-    /**
-     * <p>The JavaScript module type.</p>
-     */
-    inline ReactStartCodegenJobData& WithModule(JSModule&& value) { SetModule(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The ECMAScript specification to use.</p>
      */
-    inline const JSTarget& GetTarget() const{ return m_target; }
-
-    /**
-     * <p>The ECMAScript specification to use.</p>
-     */
+    inline JSTarget GetTarget() const { return m_target; }
     inline bool TargetHasBeenSet() const { return m_targetHasBeenSet; }
+    inline void SetTarget(JSTarget value) { m_targetHasBeenSet = true; m_target = value; }
+    inline ReactStartCodegenJobData& WithTarget(JSTarget value) { SetTarget(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The ECMAScript specification to use.</p>
-     */
-    inline void SetTarget(const JSTarget& value) { m_targetHasBeenSet = true; m_target = value; }
-
-    /**
-     * <p>The ECMAScript specification to use.</p>
-     */
-    inline void SetTarget(JSTarget&& value) { m_targetHasBeenSet = true; m_target = std::move(value); }
-
-    /**
-     * <p>The ECMAScript specification to use.</p>
-     */
-    inline ReactStartCodegenJobData& WithTarget(const JSTarget& value) { SetTarget(value); return *this;}
-
-    /**
-     * <p>The ECMAScript specification to use.</p>
-     */
-    inline ReactStartCodegenJobData& WithTarget(JSTarget&& value) { SetTarget(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The file type to use for a JavaScript project.</p>
      */
-    inline const JSScript& GetScript() const{ return m_script; }
-
-    /**
-     * <p>The file type to use for a JavaScript project.</p>
-     */
+    inline JSScript GetScript() const { return m_script; }
     inline bool ScriptHasBeenSet() const { return m_scriptHasBeenSet; }
+    inline void SetScript(JSScript value) { m_scriptHasBeenSet = true; m_script = value; }
+    inline ReactStartCodegenJobData& WithScript(JSScript value) { SetScript(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The file type to use for a JavaScript project.</p>
-     */
-    inline void SetScript(const JSScript& value) { m_scriptHasBeenSet = true; m_script = value; }
-
-    /**
-     * <p>The file type to use for a JavaScript project.</p>
-     */
-    inline void SetScript(JSScript&& value) { m_scriptHasBeenSet = true; m_script = std::move(value); }
-
-    /**
-     * <p>The file type to use for a JavaScript project.</p>
-     */
-    inline ReactStartCodegenJobData& WithScript(const JSScript& value) { SetScript(value); return *this;}
-
-    /**
-     * <p>The file type to use for a JavaScript project.</p>
-     */
-    inline ReactStartCodegenJobData& WithScript(JSScript&& value) { SetScript(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies whether the code generation job should render type declaration
      * files.</p>
      */
-    inline bool GetRenderTypeDeclarations() const{ return m_renderTypeDeclarations; }
-
-    /**
-     * <p>Specifies whether the code generation job should render type declaration
-     * files.</p>
-     */
+    inline bool GetRenderTypeDeclarations() const { return m_renderTypeDeclarations; }
     inline bool RenderTypeDeclarationsHasBeenSet() const { return m_renderTypeDeclarationsHasBeenSet; }
-
-    /**
-     * <p>Specifies whether the code generation job should render type declaration
-     * files.</p>
-     */
     inline void SetRenderTypeDeclarations(bool value) { m_renderTypeDeclarationsHasBeenSet = true; m_renderTypeDeclarations = value; }
-
-    /**
-     * <p>Specifies whether the code generation job should render type declaration
-     * files.</p>
-     */
     inline ReactStartCodegenJobData& WithRenderTypeDeclarations(bool value) { SetRenderTypeDeclarations(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Specifies whether the code generation job should render inline source
      * maps.</p>
      */
-    inline bool GetInlineSourceMap() const{ return m_inlineSourceMap; }
-
-    /**
-     * <p>Specifies whether the code generation job should render inline source
-     * maps.</p>
-     */
+    inline bool GetInlineSourceMap() const { return m_inlineSourceMap; }
     inline bool InlineSourceMapHasBeenSet() const { return m_inlineSourceMapHasBeenSet; }
-
-    /**
-     * <p>Specifies whether the code generation job should render inline source
-     * maps.</p>
-     */
     inline void SetInlineSourceMap(bool value) { m_inlineSourceMapHasBeenSet = true; m_inlineSourceMap = value; }
-
-    /**
-     * <p>Specifies whether the code generation job should render inline source
-     * maps.</p>
-     */
     inline ReactStartCodegenJobData& WithInlineSourceMap(bool value) { SetInlineSourceMap(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The API configuration for the code generation job.</p>
      */
-    inline const ApiConfiguration& GetApiConfiguration() const{ return m_apiConfiguration; }
-
-    /**
-     * <p>The API configuration for the code generation job.</p>
-     */
+    inline const ApiConfiguration& GetApiConfiguration() const { return m_apiConfiguration; }
     inline bool ApiConfigurationHasBeenSet() const { return m_apiConfigurationHasBeenSet; }
+    template<typename ApiConfigurationT = ApiConfiguration>
+    void SetApiConfiguration(ApiConfigurationT&& value) { m_apiConfigurationHasBeenSet = true; m_apiConfiguration = std::forward<ApiConfigurationT>(value); }
+    template<typename ApiConfigurationT = ApiConfiguration>
+    ReactStartCodegenJobData& WithApiConfiguration(ApiConfigurationT&& value) { SetApiConfiguration(std::forward<ApiConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The API configuration for the code generation job.</p>
-     */
-    inline void SetApiConfiguration(const ApiConfiguration& value) { m_apiConfigurationHasBeenSet = true; m_apiConfiguration = value; }
-
-    /**
-     * <p>The API configuration for the code generation job.</p>
-     */
-    inline void SetApiConfiguration(ApiConfiguration&& value) { m_apiConfigurationHasBeenSet = true; m_apiConfiguration = std::move(value); }
-
-    /**
-     * <p>The API configuration for the code generation job.</p>
-     */
-    inline ReactStartCodegenJobData& WithApiConfiguration(const ApiConfiguration& value) { SetApiConfiguration(value); return *this;}
-
-    /**
-     * <p>The API configuration for the code generation job.</p>
-     */
-    inline ReactStartCodegenJobData& WithApiConfiguration(ApiConfiguration&& value) { SetApiConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Lists the dependency packages that may be required for the project code to
      * run.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetDependencies() const{ return m_dependencies; }
-
-    /**
-     * <p>Lists the dependency packages that may be required for the project code to
-     * run.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetDependencies() const { return m_dependencies; }
     inline bool DependenciesHasBeenSet() const { return m_dependenciesHasBeenSet; }
-
-    /**
-     * <p>Lists the dependency packages that may be required for the project code to
-     * run.</p>
-     */
-    inline void SetDependencies(const Aws::Map<Aws::String, Aws::String>& value) { m_dependenciesHasBeenSet = true; m_dependencies = value; }
-
-    /**
-     * <p>Lists the dependency packages that may be required for the project code to
-     * run.</p>
-     */
-    inline void SetDependencies(Aws::Map<Aws::String, Aws::String>&& value) { m_dependenciesHasBeenSet = true; m_dependencies = std::move(value); }
-
-    /**
-     * <p>Lists the dependency packages that may be required for the project code to
-     * run.</p>
-     */
-    inline ReactStartCodegenJobData& WithDependencies(const Aws::Map<Aws::String, Aws::String>& value) { SetDependencies(value); return *this;}
-
-    /**
-     * <p>Lists the dependency packages that may be required for the project code to
-     * run.</p>
-     */
-    inline ReactStartCodegenJobData& WithDependencies(Aws::Map<Aws::String, Aws::String>&& value) { SetDependencies(std::move(value)); return *this;}
-
-    /**
-     * <p>Lists the dependency packages that may be required for the project code to
-     * run.</p>
-     */
-    inline ReactStartCodegenJobData& AddDependencies(const Aws::String& key, const Aws::String& value) { m_dependenciesHasBeenSet = true; m_dependencies.emplace(key, value); return *this; }
-
-    /**
-     * <p>Lists the dependency packages that may be required for the project code to
-     * run.</p>
-     */
-    inline ReactStartCodegenJobData& AddDependencies(Aws::String&& key, const Aws::String& value) { m_dependenciesHasBeenSet = true; m_dependencies.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Lists the dependency packages that may be required for the project code to
-     * run.</p>
-     */
-    inline ReactStartCodegenJobData& AddDependencies(const Aws::String& key, Aws::String&& value) { m_dependenciesHasBeenSet = true; m_dependencies.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Lists the dependency packages that may be required for the project code to
-     * run.</p>
-     */
-    inline ReactStartCodegenJobData& AddDependencies(Aws::String&& key, Aws::String&& value) { m_dependenciesHasBeenSet = true; m_dependencies.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>Lists the dependency packages that may be required for the project code to
-     * run.</p>
-     */
-    inline ReactStartCodegenJobData& AddDependencies(const char* key, Aws::String&& value) { m_dependenciesHasBeenSet = true; m_dependencies.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Lists the dependency packages that may be required for the project code to
-     * run.</p>
-     */
-    inline ReactStartCodegenJobData& AddDependencies(Aws::String&& key, const char* value) { m_dependenciesHasBeenSet = true; m_dependencies.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Lists the dependency packages that may be required for the project code to
-     * run.</p>
-     */
-    inline ReactStartCodegenJobData& AddDependencies(const char* key, const char* value) { m_dependenciesHasBeenSet = true; m_dependencies.emplace(key, value); return *this; }
-
+    template<typename DependenciesT = Aws::Map<Aws::String, Aws::String>>
+    void SetDependencies(DependenciesT&& value) { m_dependenciesHasBeenSet = true; m_dependencies = std::forward<DependenciesT>(value); }
+    template<typename DependenciesT = Aws::Map<Aws::String, Aws::String>>
+    ReactStartCodegenJobData& WithDependencies(DependenciesT&& value) { SetDependencies(std::forward<DependenciesT>(value)); return *this;}
+    template<typename DependenciesKeyT = Aws::String, typename DependenciesValueT = Aws::String>
+    ReactStartCodegenJobData& AddDependencies(DependenciesKeyT&& key, DependenciesValueT&& value) {
+      m_dependenciesHasBeenSet = true; m_dependencies.emplace(std::forward<DependenciesKeyT>(key), std::forward<DependenciesValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
-    JSModule m_module;
+    JSModule m_module{JSModule::NOT_SET};
     bool m_moduleHasBeenSet = false;
 
-    JSTarget m_target;
+    JSTarget m_target{JSTarget::NOT_SET};
     bool m_targetHasBeenSet = false;
 
-    JSScript m_script;
+    JSScript m_script{JSScript::NOT_SET};
     bool m_scriptHasBeenSet = false;
 
-    bool m_renderTypeDeclarations;
+    bool m_renderTypeDeclarations{false};
     bool m_renderTypeDeclarationsHasBeenSet = false;
 
-    bool m_inlineSourceMap;
+    bool m_inlineSourceMap{false};
     bool m_inlineSourceMapHasBeenSet = false;
 
     ApiConfiguration m_apiConfiguration;

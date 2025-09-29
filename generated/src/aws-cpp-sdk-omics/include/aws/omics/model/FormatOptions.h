@@ -32,73 +32,35 @@ namespace Model
   class FormatOptions
   {
   public:
-    AWS_OMICS_API FormatOptions();
+    AWS_OMICS_API FormatOptions() = default;
     AWS_OMICS_API FormatOptions(Aws::Utils::Json::JsonView jsonValue);
     AWS_OMICS_API FormatOptions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_OMICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Options for a TSV file.</p>
      */
-    inline const TsvOptions& GetTsvOptions() const{ return m_tsvOptions; }
-
-    /**
-     * <p>Options for a TSV file.</p>
-     */
+    inline const TsvOptions& GetTsvOptions() const { return m_tsvOptions; }
     inline bool TsvOptionsHasBeenSet() const { return m_tsvOptionsHasBeenSet; }
+    template<typename TsvOptionsT = TsvOptions>
+    void SetTsvOptions(TsvOptionsT&& value) { m_tsvOptionsHasBeenSet = true; m_tsvOptions = std::forward<TsvOptionsT>(value); }
+    template<typename TsvOptionsT = TsvOptions>
+    FormatOptions& WithTsvOptions(TsvOptionsT&& value) { SetTsvOptions(std::forward<TsvOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Options for a TSV file.</p>
-     */
-    inline void SetTsvOptions(const TsvOptions& value) { m_tsvOptionsHasBeenSet = true; m_tsvOptions = value; }
-
-    /**
-     * <p>Options for a TSV file.</p>
-     */
-    inline void SetTsvOptions(TsvOptions&& value) { m_tsvOptionsHasBeenSet = true; m_tsvOptions = std::move(value); }
-
-    /**
-     * <p>Options for a TSV file.</p>
-     */
-    inline FormatOptions& WithTsvOptions(const TsvOptions& value) { SetTsvOptions(value); return *this;}
-
-    /**
-     * <p>Options for a TSV file.</p>
-     */
-    inline FormatOptions& WithTsvOptions(TsvOptions&& value) { SetTsvOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Options for a VCF file.</p>
      */
-    inline const VcfOptions& GetVcfOptions() const{ return m_vcfOptions; }
-
-    /**
-     * <p>Options for a VCF file.</p>
-     */
+    inline const VcfOptions& GetVcfOptions() const { return m_vcfOptions; }
     inline bool VcfOptionsHasBeenSet() const { return m_vcfOptionsHasBeenSet; }
-
-    /**
-     * <p>Options for a VCF file.</p>
-     */
-    inline void SetVcfOptions(const VcfOptions& value) { m_vcfOptionsHasBeenSet = true; m_vcfOptions = value; }
-
-    /**
-     * <p>Options for a VCF file.</p>
-     */
-    inline void SetVcfOptions(VcfOptions&& value) { m_vcfOptionsHasBeenSet = true; m_vcfOptions = std::move(value); }
-
-    /**
-     * <p>Options for a VCF file.</p>
-     */
-    inline FormatOptions& WithVcfOptions(const VcfOptions& value) { SetVcfOptions(value); return *this;}
-
-    /**
-     * <p>Options for a VCF file.</p>
-     */
-    inline FormatOptions& WithVcfOptions(VcfOptions&& value) { SetVcfOptions(std::move(value)); return *this;}
-
+    template<typename VcfOptionsT = VcfOptions>
+    void SetVcfOptions(VcfOptionsT&& value) { m_vcfOptionsHasBeenSet = true; m_vcfOptions = std::forward<VcfOptionsT>(value); }
+    template<typename VcfOptionsT = VcfOptions>
+    FormatOptions& WithVcfOptions(VcfOptionsT&& value) { SetVcfOptions(std::forward<VcfOptionsT>(value)); return *this;}
+    ///@}
   private:
 
     TsvOptions m_tsvOptions;

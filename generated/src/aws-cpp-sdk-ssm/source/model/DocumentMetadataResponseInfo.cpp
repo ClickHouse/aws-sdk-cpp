@@ -18,13 +18,7 @@ namespace SSM
 namespace Model
 {
 
-DocumentMetadataResponseInfo::DocumentMetadataResponseInfo() : 
-    m_reviewerResponseHasBeenSet(false)
-{
-}
-
-DocumentMetadataResponseInfo::DocumentMetadataResponseInfo(JsonView jsonValue) : 
-    m_reviewerResponseHasBeenSet(false)
+DocumentMetadataResponseInfo::DocumentMetadataResponseInfo(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ DocumentMetadataResponseInfo& DocumentMetadataResponseInfo::operator =(JsonView 
     }
     m_reviewerResponseHasBeenSet = true;
   }
-
   return *this;
 }
 

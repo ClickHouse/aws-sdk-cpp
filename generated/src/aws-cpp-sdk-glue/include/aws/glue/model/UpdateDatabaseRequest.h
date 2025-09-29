@@ -22,7 +22,7 @@ namespace Model
   class UpdateDatabaseRequest : public GlueRequest
   {
   public:
-    AWS_GLUE_API UpdateDatabaseRequest();
+    AWS_GLUE_API UpdateDatabaseRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,140 +35,44 @@ namespace Model
     AWS_GLUE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the Data Catalog in which the metadata database resides. If none is
      * provided, the Amazon Web Services account ID is used by default.</p>
      */
-    inline const Aws::String& GetCatalogId() const{ return m_catalogId; }
-
-    /**
-     * <p>The ID of the Data Catalog in which the metadata database resides. If none is
-     * provided, the Amazon Web Services account ID is used by default.</p>
-     */
+    inline const Aws::String& GetCatalogId() const { return m_catalogId; }
     inline bool CatalogIdHasBeenSet() const { return m_catalogIdHasBeenSet; }
+    template<typename CatalogIdT = Aws::String>
+    void SetCatalogId(CatalogIdT&& value) { m_catalogIdHasBeenSet = true; m_catalogId = std::forward<CatalogIdT>(value); }
+    template<typename CatalogIdT = Aws::String>
+    UpdateDatabaseRequest& WithCatalogId(CatalogIdT&& value) { SetCatalogId(std::forward<CatalogIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Data Catalog in which the metadata database resides. If none is
-     * provided, the Amazon Web Services account ID is used by default.</p>
-     */
-    inline void SetCatalogId(const Aws::String& value) { m_catalogIdHasBeenSet = true; m_catalogId = value; }
-
-    /**
-     * <p>The ID of the Data Catalog in which the metadata database resides. If none is
-     * provided, the Amazon Web Services account ID is used by default.</p>
-     */
-    inline void SetCatalogId(Aws::String&& value) { m_catalogIdHasBeenSet = true; m_catalogId = std::move(value); }
-
-    /**
-     * <p>The ID of the Data Catalog in which the metadata database resides. If none is
-     * provided, the Amazon Web Services account ID is used by default.</p>
-     */
-    inline void SetCatalogId(const char* value) { m_catalogIdHasBeenSet = true; m_catalogId.assign(value); }
-
-    /**
-     * <p>The ID of the Data Catalog in which the metadata database resides. If none is
-     * provided, the Amazon Web Services account ID is used by default.</p>
-     */
-    inline UpdateDatabaseRequest& WithCatalogId(const Aws::String& value) { SetCatalogId(value); return *this;}
-
-    /**
-     * <p>The ID of the Data Catalog in which the metadata database resides. If none is
-     * provided, the Amazon Web Services account ID is used by default.</p>
-     */
-    inline UpdateDatabaseRequest& WithCatalogId(Aws::String&& value) { SetCatalogId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Data Catalog in which the metadata database resides. If none is
-     * provided, the Amazon Web Services account ID is used by default.</p>
-     */
-    inline UpdateDatabaseRequest& WithCatalogId(const char* value) { SetCatalogId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the database to update in the catalog. For Hive compatibility,
      * this is folded to lowercase.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the database to update in the catalog. For Hive compatibility,
-     * this is folded to lowercase.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    UpdateDatabaseRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the database to update in the catalog. For Hive compatibility,
-     * this is folded to lowercase.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the database to update in the catalog. For Hive compatibility,
-     * this is folded to lowercase.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the database to update in the catalog. For Hive compatibility,
-     * this is folded to lowercase.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the database to update in the catalog. For Hive compatibility,
-     * this is folded to lowercase.</p>
-     */
-    inline UpdateDatabaseRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the database to update in the catalog. For Hive compatibility,
-     * this is folded to lowercase.</p>
-     */
-    inline UpdateDatabaseRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the database to update in the catalog. For Hive compatibility,
-     * this is folded to lowercase.</p>
-     */
-    inline UpdateDatabaseRequest& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A <code>DatabaseInput</code> object specifying the new definition of the
      * metadata database in the catalog.</p>
      */
-    inline const DatabaseInput& GetDatabaseInput() const{ return m_databaseInput; }
-
-    /**
-     * <p>A <code>DatabaseInput</code> object specifying the new definition of the
-     * metadata database in the catalog.</p>
-     */
+    inline const DatabaseInput& GetDatabaseInput() const { return m_databaseInput; }
     inline bool DatabaseInputHasBeenSet() const { return m_databaseInputHasBeenSet; }
-
-    /**
-     * <p>A <code>DatabaseInput</code> object specifying the new definition of the
-     * metadata database in the catalog.</p>
-     */
-    inline void SetDatabaseInput(const DatabaseInput& value) { m_databaseInputHasBeenSet = true; m_databaseInput = value; }
-
-    /**
-     * <p>A <code>DatabaseInput</code> object specifying the new definition of the
-     * metadata database in the catalog.</p>
-     */
-    inline void SetDatabaseInput(DatabaseInput&& value) { m_databaseInputHasBeenSet = true; m_databaseInput = std::move(value); }
-
-    /**
-     * <p>A <code>DatabaseInput</code> object specifying the new definition of the
-     * metadata database in the catalog.</p>
-     */
-    inline UpdateDatabaseRequest& WithDatabaseInput(const DatabaseInput& value) { SetDatabaseInput(value); return *this;}
-
-    /**
-     * <p>A <code>DatabaseInput</code> object specifying the new definition of the
-     * metadata database in the catalog.</p>
-     */
-    inline UpdateDatabaseRequest& WithDatabaseInput(DatabaseInput&& value) { SetDatabaseInput(std::move(value)); return *this;}
-
+    template<typename DatabaseInputT = DatabaseInput>
+    void SetDatabaseInput(DatabaseInputT&& value) { m_databaseInputHasBeenSet = true; m_databaseInput = std::forward<DatabaseInputT>(value); }
+    template<typename DatabaseInputT = DatabaseInput>
+    UpdateDatabaseRequest& WithDatabaseInput(DatabaseInputT&& value) { SetDatabaseInput(std::forward<DatabaseInputT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_catalogId;

@@ -32,51 +32,25 @@ namespace Model
   class TableCellImageSizingConfiguration
   {
   public:
-    AWS_QUICKSIGHT_API TableCellImageSizingConfiguration();
+    AWS_QUICKSIGHT_API TableCellImageSizingConfiguration() = default;
     AWS_QUICKSIGHT_API TableCellImageSizingConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API TableCellImageSizingConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The cell scaling configuration of the sizing options for the table image
      * configuration.</p>
      */
-    inline const TableCellImageScalingConfiguration& GetTableCellImageScalingConfiguration() const{ return m_tableCellImageScalingConfiguration; }
-
-    /**
-     * <p>The cell scaling configuration of the sizing options for the table image
-     * configuration.</p>
-     */
+    inline TableCellImageScalingConfiguration GetTableCellImageScalingConfiguration() const { return m_tableCellImageScalingConfiguration; }
     inline bool TableCellImageScalingConfigurationHasBeenSet() const { return m_tableCellImageScalingConfigurationHasBeenSet; }
-
-    /**
-     * <p>The cell scaling configuration of the sizing options for the table image
-     * configuration.</p>
-     */
-    inline void SetTableCellImageScalingConfiguration(const TableCellImageScalingConfiguration& value) { m_tableCellImageScalingConfigurationHasBeenSet = true; m_tableCellImageScalingConfiguration = value; }
-
-    /**
-     * <p>The cell scaling configuration of the sizing options for the table image
-     * configuration.</p>
-     */
-    inline void SetTableCellImageScalingConfiguration(TableCellImageScalingConfiguration&& value) { m_tableCellImageScalingConfigurationHasBeenSet = true; m_tableCellImageScalingConfiguration = std::move(value); }
-
-    /**
-     * <p>The cell scaling configuration of the sizing options for the table image
-     * configuration.</p>
-     */
-    inline TableCellImageSizingConfiguration& WithTableCellImageScalingConfiguration(const TableCellImageScalingConfiguration& value) { SetTableCellImageScalingConfiguration(value); return *this;}
-
-    /**
-     * <p>The cell scaling configuration of the sizing options for the table image
-     * configuration.</p>
-     */
-    inline TableCellImageSizingConfiguration& WithTableCellImageScalingConfiguration(TableCellImageScalingConfiguration&& value) { SetTableCellImageScalingConfiguration(std::move(value)); return *this;}
-
+    inline void SetTableCellImageScalingConfiguration(TableCellImageScalingConfiguration value) { m_tableCellImageScalingConfigurationHasBeenSet = true; m_tableCellImageScalingConfiguration = value; }
+    inline TableCellImageSizingConfiguration& WithTableCellImageScalingConfiguration(TableCellImageScalingConfiguration value) { SetTableCellImageScalingConfiguration(value); return *this;}
+    ///@}
   private:
 
-    TableCellImageScalingConfiguration m_tableCellImageScalingConfiguration;
+    TableCellImageScalingConfiguration m_tableCellImageScalingConfiguration{TableCellImageScalingConfiguration::NOT_SET};
     bool m_tableCellImageScalingConfigurationHasBeenSet = false;
   };
 

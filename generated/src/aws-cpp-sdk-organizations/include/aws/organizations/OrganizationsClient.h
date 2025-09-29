@@ -10,11 +10,6 @@
 #include <aws/core/client/AWSClientAsyncCRTP.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 #include <aws/organizations/OrganizationsServiceClientModel.h>
-#include <aws/organizations/model/LeaveOrganizationRequest.h>
-#include <aws/organizations/model/DescribeResourcePolicyRequest.h>
-#include <aws/organizations/model/DeleteResourcePolicyRequest.h>
-#include <aws/organizations/model/DescribeOrganizationRequest.h>
-#include <aws/organizations/model/DeleteOrganizationRequest.h>
 
 namespace Aws
 {
@@ -72,8 +67,8 @@ namespace Organizations
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
 
       typedef OrganizationsClientConfiguration ClientConfigurationType;
       typedef OrganizationsEndpointProvider EndpointProviderType;
@@ -83,14 +78,14 @@ namespace Organizations
         * is not specified, it will be initialized to default values.
         */
         OrganizationsClient(const Aws::Organizations::OrganizationsClientConfiguration& clientConfiguration = Aws::Organizations::OrganizationsClientConfiguration(),
-                            std::shared_ptr<OrganizationsEndpointProviderBase> endpointProvider = Aws::MakeShared<OrganizationsEndpointProvider>(ALLOCATION_TAG));
+                            std::shared_ptr<OrganizationsEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         OrganizationsClient(const Aws::Auth::AWSCredentials& credentials,
-                            std::shared_ptr<OrganizationsEndpointProviderBase> endpointProvider = Aws::MakeShared<OrganizationsEndpointProvider>(ALLOCATION_TAG),
+                            std::shared_ptr<OrganizationsEndpointProviderBase> endpointProvider = nullptr,
                             const Aws::Organizations::OrganizationsClientConfiguration& clientConfiguration = Aws::Organizations::OrganizationsClientConfiguration());
 
        /**
@@ -98,7 +93,7 @@ namespace Organizations
         * the default http client factory will be used
         */
         OrganizationsClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                            std::shared_ptr<OrganizationsEndpointProviderBase> endpointProvider = Aws::MakeShared<OrganizationsEndpointProvider>(ALLOCATION_TAG),
+                            std::shared_ptr<OrganizationsEndpointProviderBase> endpointProvider = nullptr,
                             const Aws::Organizations::OrganizationsClientConfiguration& clientConfiguration = Aws::Organizations::OrganizationsClientConfiguration());
 
 
@@ -180,16 +175,24 @@ namespace Organizations
          * account. How the policy affects accounts depends on the type of policy. Refer to
          * the <i>Organizations User Guide</i> for information about each policy type:</p>
          * <ul> <li> <p> <a
-         * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html">AISERVICES_OPT_OUT_POLICY</a>
+         * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html">SERVICE_CONTROL_POLICY</a>
+         * </p> </li> <li> <p> <a
+         * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_rcps.html">RESOURCE_CONTROL_POLICY</a>
+         * </p> </li> <li> <p> <a
+         * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative.html">DECLARATIVE_POLICY_EC2</a>
          * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html">BACKUP_POLICY</a>
          * </p> </li> <li> <p> <a
-         * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html">SERVICE_CONTROL_POLICY</a>
-         * </p> </li> <li> <p> <a
          * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html">TAG_POLICY</a>
+         * </p> </li> <li> <p> <a
+         * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_chatbot.html">CHATBOT_POLICY</a>
+         * </p> </li> <li> <p> <a
+         * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html">AISERVICES_OPT_OUT_POLICY</a>
+         * </p> </li> <li> <p> <a
+         * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_security_hub.html">SECURITYHUB_POLICY</a>
          * </p> </li> </ul> <p>This operation can be called only from the organization's
-         * management account or by a member account that is a delegated administrator for
-         * an Amazon Web Services service.</p><p><h3>See Also:</h3>   <a
+         * management account or by a member account that is a delegated
+         * administrator.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/AttachPolicy">AWS
          * API Reference</a></p>
          */
@@ -265,17 +268,18 @@ namespace Organizations
          * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_security_incident-response.html#orgs_cloudtrail-integration">Logging
          * and monitoring in Organizations</a> in the <i>Organizations User Guide</i>.</p>
          * </li> </ul>  <ul> <li> <p>You can close only 10% of member accounts,
-         * between 10 and 200, within a rolling 30 day period. This quota is not bound by a
-         * calendar month, but starts when you close an account. After you reach this
-         * limit, you can close additional accounts. For more information, see <a
+         * between 10 and 1000, within a rolling 30 day period. This quota is not bound by
+         * a calendar month, but starts when you close an account. After you reach this
+         * limit, you can't close additional accounts. For more information, see <a
          * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_close.html">Closing
-         * a member account in your organization</a> in the <i>Organizations User
-         * Guide</i>. </p> </li> <li> <p>To reinstate a closed account, contact Amazon Web
-         * Services Support within the 90-day grace period while the account is in
-         * SUSPENDED status. </p> </li> <li> <p>If the Amazon Web Services account you
-         * attempt to close is linked to an Amazon Web Services GovCloud (US) account, the
-         * <code>CloseAccount</code> request will close both accounts. To learn important
-         * pre-closure details, see <a
+         * a member account in your organization</a> and <a
+         * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html">Quotas
+         * for Organizations</a> in the <i>Organizations User Guide</i>. </p> </li> <li>
+         * <p>To reinstate a closed account, contact Amazon Web Services Support within the
+         * 90-day grace period while the account is in SUSPENDED status. </p> </li> <li>
+         * <p>If the Amazon Web Services account you attempt to close is linked to an
+         * Amazon Web Services GovCloud (US) account, the <code>CloseAccount</code> request
+         * will close both accounts. To learn important pre-closure details, see <a
          * href="https://docs.aws.amazon.com/govcloud-us/latest/UserGuide/Closing-govcloud-account.html">
          * Closing an Amazon Web Services GovCloud (US) account</a> in the <i> Amazon Web
          * Services GovCloud User Guide</i>.</p> </li> </ul> <p><h3>See Also:</h3>  
@@ -339,10 +343,9 @@ namespace Organizations
          * Guide</i>.</p>  <ul> <li> <p>When you create an account in an
          * organization using the Organizations console, API, or CLI commands, the
          * information required for the account to operate as a standalone account, such as
-         * a payment method and signing the end user license agreement (EULA) is <i>not</i>
-         * automatically collected. If you must remove an account from your organization
-         * later, you can do so only after you provide the missing information. For more
-         * information, see <a
+         * a payment method is <i>not</i> automatically collected. If you must remove an
+         * account from your organization later, you can do so only after you provide the
+         * missing information. For more information, see <a
          * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_account-before-remove.html">Considerations
          * before removing an account from an organization</a> in the <i>Organizations User
          * Guide</i>.</p> </li> <li> <p>If you get an exception that indicates that you
@@ -352,11 +355,11 @@ namespace Organizations
          * operation failed because your organization is still initializing, wait one hour
          * and then try again. If the error persists, contact <a
          * href="https://console.aws.amazon.com/support/home#/">Amazon Web Services
-         * Support</a>.</p> </li> <li> <p>Using <code>CreateAccount</code> to create
-         * multiple temporary accounts isn't recommended. You can only close an account
-         * from the Billing and Cost Management console, and you must be signed in as the
-         * root user. For information on the requirements and process for closing an
-         * account, see <a
+         * Support</a>.</p> </li> <li> <p>It isn't recommended to use
+         * <code>CreateAccount</code> to create multiple temporary accounts, and using the
+         * <code>CreateAccount</code> API to close accounts is subject to a 30-day usage
+         * quota. For information on the requirements and process for closing an account,
+         * see <a
          * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_close.html">Closing
          * a member account in your organization</a> in the <i>Organizations User
          * Guide</i>.</p> </li> </ul>   <p>When you create a member
@@ -533,13 +536,13 @@ namespace Organizations
          * href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/CreateOrganization">AWS
          * API Reference</a></p>
          */
-        virtual Model::CreateOrganizationOutcome CreateOrganization(const Model::CreateOrganizationRequest& request) const;
+        virtual Model::CreateOrganizationOutcome CreateOrganization(const Model::CreateOrganizationRequest& request = {}) const;
 
         /**
          * A Callable wrapper for CreateOrganization that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename CreateOrganizationRequestT = Model::CreateOrganizationRequest>
-        Model::CreateOrganizationOutcomeCallable CreateOrganizationCallable(const CreateOrganizationRequestT& request) const
+        Model::CreateOrganizationOutcomeCallable CreateOrganizationCallable(const CreateOrganizationRequestT& request = {}) const
         {
             return SubmitCallable(&OrganizationsClient::CreateOrganization, request);
         }
@@ -548,7 +551,7 @@ namespace Organizations
          * An Async wrapper for CreateOrganization that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename CreateOrganizationRequestT = Model::CreateOrganizationRequest>
-        void CreateOrganizationAsync(const CreateOrganizationRequestT& request, const CreateOrganizationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void CreateOrganizationAsync(const CreateOrganizationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const CreateOrganizationRequestT& request = {}) const
         {
             return SubmitAsync(&OrganizationsClient::CreateOrganization, request, handler, context);
         }
@@ -597,8 +600,8 @@ namespace Organizations
          * Organizations policies</a>.</p> <p>If the request includes tags, then the
          * requester must have the <code>organizations:TagResource</code> permission.</p>
          * <p>This operation can be called only from the organization's management account
-         * or by a member account that is a delegated administrator for an Amazon Web
-         * Services service.</p><p><h3>See Also:</h3>   <a
+         * or by a member account that is a delegated administrator.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/CreatePolicy">AWS
          * API Reference</a></p>
          */
@@ -714,7 +717,7 @@ namespace Organizations
          * operation, you must first detach the policy from all organizational units (OUs),
          * roots, and accounts.</p> <p>This operation can be called only from the
          * organization's management account or by a member account that is a delegated
-         * administrator for an Amazon Web Services service.</p><p><h3>See Also:</h3>   <a
+         * administrator.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/DeletePolicy">AWS
          * API Reference</a></p>
          */
@@ -739,8 +742,8 @@ namespace Organizations
         }
 
         /**
-         * <p>Deletes the resource policy from your organization.</p> <p>You can only call
-         * this operation from the organization's management account.</p><p><h3>See
+         * <p>Deletes the resource policy from your organization.</p> <p>This operation can
+         * be called only from the organization's management account.</p><p><h3>See
          * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/DeleteResourcePolicy">AWS
          * API Reference</a></p>
@@ -805,8 +808,8 @@ namespace Organizations
         /**
          * <p>Retrieves Organizations-related information about the specified account.</p>
          * <p>This operation can be called only from the organization's management account
-         * or by a member account that is a delegated administrator for an Amazon Web
-         * Services service.</p><p><h3>See Also:</h3>   <a
+         * or by a member account that is a delegated administrator.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/DescribeAccount">AWS
          * API Reference</a></p>
          */
@@ -833,8 +836,8 @@ namespace Organizations
         /**
          * <p>Retrieves the current status of an asynchronous request to create an
          * account.</p> <p>This operation can be called only from the organization's
-         * management account or by a member account that is a delegated administrator for
-         * an Amazon Web Services service.</p><p><h3>See Also:</h3>   <a
+         * management account or by a member account that is a delegated
+         * administrator.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/DescribeCreateAccountStatus">AWS
          * API Reference</a></p>
          */
@@ -862,8 +865,9 @@ namespace Organizations
          * <p>Returns the contents of the effective policy for specified policy type and
          * account. The effective policy is the aggregation of any policies of the
          * specified type that the account inherits, plus any policy of that type that is
-         * directly attached to the account.</p> <p>This operation applies only to policy
-         * types <i>other</i> than service control policies (SCPs).</p> <p>For more
+         * directly attached to the account.</p> <p>This operation applies only to
+         * management policies. It does not apply to authorization policies: service
+         * control policies (SCPs) and resource control policies (RCPs).</p> <p>For more
          * information about policy inheritance, see <a
          * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_inheritance_mgmt.html">Understanding
          * management policy inheritance</a> in the <i>Organizations User Guide</i>.</p>
@@ -956,8 +960,7 @@ namespace Organizations
         /**
          * <p>Retrieves information about an organizational unit (OU).</p> <p>This
          * operation can be called only from the organization's management account or by a
-         * member account that is a delegated administrator for an Amazon Web Services
-         * service.</p><p><h3>See Also:</h3>   <a
+         * member account that is a delegated administrator.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/DescribeOrganizationalUnit">AWS
          * API Reference</a></p>
          */
@@ -984,8 +987,7 @@ namespace Organizations
         /**
          * <p>Retrieves information about a policy.</p> <p>This operation can be called
          * only from the organization's management account or by a member account that is a
-         * delegated administrator for an Amazon Web Services service.</p><p><h3>See
-         * Also:</h3>   <a
+         * delegated administrator.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/DescribePolicy">AWS
          * API Reference</a></p>
          */
@@ -1012,8 +1014,7 @@ namespace Organizations
         /**
          * <p>Retrieves information about a resource policy.</p> <p>This operation can be
          * called only from the organization's management account or by a member account
-         * that is a delegated administrator for an Amazon Web Services
-         * service.</p><p><h3>See Also:</h3>   <a
+         * that is a delegated administrator.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/DescribeResourcePolicy">AWS
          * API Reference</a></p>
          */
@@ -1055,8 +1056,8 @@ namespace Organizations
          * using the authorization strategy of a "<a
          * href="https://docs.aws.amazon.com/organizations/latest/userguide/SCP_strategies.html#orgs_policies_denylist">deny
          * list</a>".</p> <p>This operation can be called only from the organization's
-         * management account or by a member account that is a delegated administrator for
-         * an Amazon Web Services service.</p><p><h3>See Also:</h3>   <a
+         * management account or by a member account that is a delegated
+         * administrator.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/DetachPolicy">AWS
          * API Reference</a></p>
          */
@@ -1164,9 +1165,8 @@ namespace Organizations
          * that you first use <a>ListRoots</a> to see the status of policy types for a
          * specified root, and then use this operation.</p> <p>This operation can be called
          * only from the organization's management account or by a member account that is a
-         * delegated administrator for an Amazon Web Services service.</p> <p> To view the
-         * status of available policy types in the organization, use
-         * <a>DescribeOrganization</a>.</p><p><h3>See Also:</h3>   <a
+         * delegated administrator.</p> <p> To view the status of available policy types in
+         * the organization, use <a>ListRoots</a>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/DisablePolicyType">AWS
          * API Reference</a></p>
          */
@@ -1191,26 +1191,26 @@ namespace Organizations
         }
 
         /**
-         * <p>Enables the integration of an Amazon Web Services service (the service that
-         * is specified by <code>ServicePrincipal</code>) with Organizations. When you
-         * enable integration, you allow the specified service to create a <a
+         * <p>Provides an Amazon Web Services service (the service that is specified by
+         * <code>ServicePrincipal</code>) with permissions to view the structure of an
+         * organization, create a <a
          * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html">service-linked
-         * role</a> in all the accounts in your organization. This allows the service to
-         * perform operations on your behalf in your organization and its accounts.</p>
-         *  <p>We recommend that you enable integration between Organizations
-         * and the specified Amazon Web Services service by using the console or commands
-         * that are provided by the specified service. Doing so ensures that the service is
-         * aware that it can create the resources that are required for the integration.
-         * How the service creates those resources in the organization's accounts depends
-         * on that service. For more information, see the documentation for the other
-         * Amazon Web Services service.</p>  <p>For more information about
-         * enabling services to integrate with Organizations, see <a
+         * role</a> in all the accounts in the organization, and allow the service to
+         * perform operations on behalf of the organization and its accounts. Establishing
+         * these permissions can be a first step in enabling the integration of an Amazon
+         * Web Services service with Organizations.</p>  <p>We recommend that
+         * you enable integration between Organizations and the specified Amazon Web
+         * Services service by using the console or commands that are provided by the
+         * specified service. Doing so ensures that the service is aware that it can create
+         * the resources that are required for the integration. How the service creates
+         * those resources in the organization's accounts depends on that service. For more
+         * information, see the documentation for the other Amazon Web Services
+         * service.</p>  <p>For more information about enabling services to
+         * integrate with Organizations, see <a
          * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html">Using
          * Organizations with other Amazon Web Services services</a> in the
-         * <i>Organizations User Guide</i>.</p> <p>You can only call this operation from
-         * the organization's management account and only if the organization has <a
-         * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html">enabled
-         * all features</a>.</p><p><h3>See Also:</h3>   <a
+         * <i>Organizations User Guide</i>.</p> <p>This operation can be called only from
+         * the organization's management account.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/EnableAWSServiceAccess">AWS
          * API Reference</a></p>
          */
@@ -1263,13 +1263,13 @@ namespace Organizations
          * href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/EnableAllFeatures">AWS
          * API Reference</a></p>
          */
-        virtual Model::EnableAllFeaturesOutcome EnableAllFeatures(const Model::EnableAllFeaturesRequest& request) const;
+        virtual Model::EnableAllFeaturesOutcome EnableAllFeatures(const Model::EnableAllFeaturesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for EnableAllFeatures that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename EnableAllFeaturesRequestT = Model::EnableAllFeaturesRequest>
-        Model::EnableAllFeaturesOutcomeCallable EnableAllFeaturesCallable(const EnableAllFeaturesRequestT& request) const
+        Model::EnableAllFeaturesOutcomeCallable EnableAllFeaturesCallable(const EnableAllFeaturesRequestT& request = {}) const
         {
             return SubmitCallable(&OrganizationsClient::EnableAllFeatures, request);
         }
@@ -1278,7 +1278,7 @@ namespace Organizations
          * An Async wrapper for EnableAllFeatures that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename EnableAllFeaturesRequestT = Model::EnableAllFeaturesRequest>
-        void EnableAllFeaturesAsync(const EnableAllFeaturesRequestT& request, const EnableAllFeaturesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void EnableAllFeaturesAsync(const EnableAllFeaturesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const EnableAllFeaturesRequestT& request = {}) const
         {
             return SubmitAsync(&OrganizationsClient::EnableAllFeatures, request, handler, context);
         }
@@ -1292,10 +1292,9 @@ namespace Organizations
          * <a>ListRoots</a> to see the status of policy types for a specified root, and
          * then use this operation.</p> <p>This operation can be called only from the
          * organization's management account or by a member account that is a delegated
-         * administrator for an Amazon Web Services service.</p> <p>You can enable a policy
-         * type in a root only if that policy type is available in the organization. To
-         * view the status of available policy types in the organization, use
-         * <a>DescribeOrganization</a>.</p><p><h3>See Also:</h3>   <a
+         * administrator.</p> <p>You can enable a policy type in a root only if that policy
+         * type is available in the organization. To view the status of available policy
+         * types in the organization, use <a>ListRoots</a>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/EnablePolicyType">AWS
          * API Reference</a></p>
          */
@@ -1323,23 +1322,15 @@ namespace Organizations
          * <p>Sends an invitation to another account to join your organization as a member
          * account. Organizations sends email on your behalf to the email address that is
          * associated with the other account's owner. The invitation is implemented as a
-         * <a>Handshake</a> whose details are in the response.</p>  <ul> <li>
-         * <p>You can invite Amazon Web Services accounts only from the same seller as the
-         * management account. For example, if your organization's management account was
-         * created by Amazon Internet Services Pvt. Ltd (AISPL), an Amazon Web Services
-         * seller in India, you can invite only other AISPL accounts to your organization.
-         * You can't combine accounts from AISPL and Amazon Web Services or from any other
-         * Amazon Web Services seller. For more information, see <a
-         * href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/useconsolidatedbilling-India.html">Consolidated
-         * billing in India</a>.</p> </li> <li> <p>If you receive an exception that
-         * indicates that you exceeded your account limits for the organization or that the
-         * operation failed because your organization is still initializing, wait one hour
-         * and then try again. If the error persists after an hour, contact <a
-         * href="https://console.aws.amazon.com/support/home#/">Amazon Web Services
-         * Support</a>.</p> </li> </ul>  <p>If the request includes tags, then
-         * the requester must have the <code>organizations:TagResource</code>
-         * permission.</p> <p>This operation can be called only from the organization's
-         * management account.</p><p><h3>See Also:</h3>   <a
+         * <a>Handshake</a> whose details are in the response.</p>  <p>If you
+         * receive an exception that indicates that you exceeded your account limits for
+         * the organization or that the operation failed because your organization is still
+         * initializing, wait one hour and then try again. If the error persists after an
+         * hour, contact <a href="https://console.aws.amazon.com/support/home#/">Amazon Web
+         * Services Support</a>.</p>  <p>If the request includes tags, then the
+         * requester must have the <code>organizations:TagResource</code> permission.</p>
+         * <p>This operation can be called only from the organization's management
+         * account.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/InviteAccountToOrganization">AWS
          * API Reference</a></p>
          */
@@ -1391,21 +1382,16 @@ namespace Organizations
          * delegated administrator account for any Amazon Web Services service enabled for
          * your organization. If the account is a delegated administrator, you must first
          * change the delegated administrator account to another account that is remaining
-         * in the organization.</p> </li> <li> <p>You can leave an organization only after
-         * you enable IAM user access to billing in your account. For more information, see
-         * <a
-         * href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html#ControllingAccessWebsite-Activate">About
-         * IAM access to the Billing and Cost Management console</a> in the <i>Amazon Web
-         * Services Billing and Cost Management User Guide</i>.</p> </li> <li> <p>After the
-         * account leaves the organization, all tags that were attached to the account
-         * object in the organization are deleted. Amazon Web Services accounts outside of
-         * an organization do not support tags.</p> </li> <li> <p>A newly created account
-         * has a waiting period before it can be removed from its organization. If you get
-         * an error that indicates that a wait period is required, then try again in a few
-         * days.</p> </li> <li> <p>If you are using an organization principal to call
-         * <code>LeaveOrganization</code> across multiple accounts, you can only do this up
-         * to 5 accounts per second in a single organization.</p> </li> </ul>
-         * <p><h3>See Also:</h3>   <a
+         * in the organization.</p> </li> <li> <p>After the account leaves the
+         * organization, all tags that were attached to the account object in the
+         * organization are deleted. Amazon Web Services accounts outside of an
+         * organization do not support tags.</p> </li> <li> <p>A newly created account has
+         * a waiting period before it can be removed from its organization. You must wait
+         * until at least seven days after the account was created. Invited accounts aren't
+         * subject to this waiting period.</p> </li> <li> <p>If you are using an
+         * organization principal to call <code>LeaveOrganization</code> across multiple
+         * accounts, you can only do this up to 5 accounts per second in a single
+         * organization.</p> </li> </ul> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/LeaveOrganization">AWS
          * API Reference</a></p>
          */
@@ -1440,17 +1426,17 @@ namespace Organizations
          * Organizations with other Amazon Web Services services</a> in the
          * <i>Organizations User Guide</i>.</p> <p>This operation can be called only from
          * the organization's management account or by a member account that is a delegated
-         * administrator for an Amazon Web Services service.</p><p><h3>See Also:</h3>   <a
+         * administrator.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/ListAWSServiceAccessForOrganization">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListAWSServiceAccessForOrganizationOutcome ListAWSServiceAccessForOrganization(const Model::ListAWSServiceAccessForOrganizationRequest& request) const;
+        virtual Model::ListAWSServiceAccessForOrganizationOutcome ListAWSServiceAccessForOrganization(const Model::ListAWSServiceAccessForOrganizationRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListAWSServiceAccessForOrganization that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListAWSServiceAccessForOrganizationRequestT = Model::ListAWSServiceAccessForOrganizationRequest>
-        Model::ListAWSServiceAccessForOrganizationOutcomeCallable ListAWSServiceAccessForOrganizationCallable(const ListAWSServiceAccessForOrganizationRequestT& request) const
+        Model::ListAWSServiceAccessForOrganizationOutcomeCallable ListAWSServiceAccessForOrganizationCallable(const ListAWSServiceAccessForOrganizationRequestT& request = {}) const
         {
             return SubmitCallable(&OrganizationsClient::ListAWSServiceAccessForOrganization, request);
         }
@@ -1459,7 +1445,7 @@ namespace Organizations
          * An Async wrapper for ListAWSServiceAccessForOrganization that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListAWSServiceAccessForOrganizationRequestT = Model::ListAWSServiceAccessForOrganizationRequest>
-        void ListAWSServiceAccessForOrganizationAsync(const ListAWSServiceAccessForOrganizationRequestT& request, const ListAWSServiceAccessForOrganizationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListAWSServiceAccessForOrganizationAsync(const ListAWSServiceAccessForOrganizationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListAWSServiceAccessForOrganizationRequestT& request = {}) const
         {
             return SubmitAsync(&OrganizationsClient::ListAWSServiceAccessForOrganization, request, handler, context);
         }
@@ -1474,18 +1460,17 @@ namespace Organizations
          * <code>NextToken</code> response parameter value is <code>null</code> <i>only</i>
          * when there are no more results to display.</p>  <p>This operation can be
          * called only from the organization's management account or by a member account
-         * that is a delegated administrator for an Amazon Web Services
-         * service.</p><p><h3>See Also:</h3>   <a
+         * that is a delegated administrator.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/ListAccounts">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListAccountsOutcome ListAccounts(const Model::ListAccountsRequest& request) const;
+        virtual Model::ListAccountsOutcome ListAccounts(const Model::ListAccountsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListAccounts that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListAccountsRequestT = Model::ListAccountsRequest>
-        Model::ListAccountsOutcomeCallable ListAccountsCallable(const ListAccountsRequestT& request) const
+        Model::ListAccountsOutcomeCallable ListAccountsCallable(const ListAccountsRequestT& request = {}) const
         {
             return SubmitCallable(&OrganizationsClient::ListAccounts, request);
         }
@@ -1494,7 +1479,7 @@ namespace Organizations
          * An Async wrapper for ListAccounts that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListAccountsRequestT = Model::ListAccountsRequest>
-        void ListAccountsAsync(const ListAccountsRequestT& request, const ListAccountsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListAccountsAsync(const ListAccountsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListAccountsRequestT& request = {}) const
         {
             return SubmitAsync(&OrganizationsClient::ListAccounts, request, handler, context);
         }
@@ -1511,8 +1496,8 @@ namespace Organizations
          * more results available. The <code>NextToken</code> response parameter value is
          * <code>null</code> <i>only</i> when there are no more results to display.</p>
          *  <p>This operation can be called only from the organization's management
-         * account or by a member account that is a delegated administrator for an Amazon
-         * Web Services service.</p><p><h3>See Also:</h3>   <a
+         * account or by a member account that is a delegated administrator.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/ListAccountsForParent">AWS
          * API Reference</a></p>
          */
@@ -1537,6 +1522,38 @@ namespace Organizations
         }
 
         /**
+         * <p>Lists all the accounts in an organization that have invalid effective
+         * policies. An <i>invalid effective policy</i> is an <a
+         * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_effective.html">effective
+         * policy</a> that fails validation checks, resulting in the effective policy not
+         * being fully enforced on all the intended accounts within an organization.</p>
+         * <p>This operation can be called only from the organization's management account
+         * or by a member account that is a delegated administrator.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/ListAccountsWithInvalidEffectivePolicy">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListAccountsWithInvalidEffectivePolicyOutcome ListAccountsWithInvalidEffectivePolicy(const Model::ListAccountsWithInvalidEffectivePolicyRequest& request) const;
+
+        /**
+         * A Callable wrapper for ListAccountsWithInvalidEffectivePolicy that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListAccountsWithInvalidEffectivePolicyRequestT = Model::ListAccountsWithInvalidEffectivePolicyRequest>
+        Model::ListAccountsWithInvalidEffectivePolicyOutcomeCallable ListAccountsWithInvalidEffectivePolicyCallable(const ListAccountsWithInvalidEffectivePolicyRequestT& request) const
+        {
+            return SubmitCallable(&OrganizationsClient::ListAccountsWithInvalidEffectivePolicy, request);
+        }
+
+        /**
+         * An Async wrapper for ListAccountsWithInvalidEffectivePolicy that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListAccountsWithInvalidEffectivePolicyRequestT = Model::ListAccountsWithInvalidEffectivePolicyRequest>
+        void ListAccountsWithInvalidEffectivePolicyAsync(const ListAccountsWithInvalidEffectivePolicyRequestT& request, const ListAccountsWithInvalidEffectivePolicyResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&OrganizationsClient::ListAccountsWithInvalidEffectivePolicy, request, handler, context);
+        }
+
+        /**
          * <p>Lists all of the organizational units (OUs) or accounts that are contained in
          * the specified parent OU or root. This operation, along with <a>ListParents</a>
          * enables you to traverse the tree structure that makes up this root.</p> 
@@ -1546,8 +1563,8 @@ namespace Organizations
          * more results available. The <code>NextToken</code> response parameter value is
          * <code>null</code> <i>only</i> when there are no more results to display.</p>
          *  <p>This operation can be called only from the organization's management
-         * account or by a member account that is a delegated administrator for an Amazon
-         * Web Services service.</p><p><h3>See Also:</h3>   <a
+         * account or by a member account that is a delegated administrator.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/ListChildren">AWS
          * API Reference</a></p>
          */
@@ -1580,18 +1597,17 @@ namespace Organizations
          * <code>NextToken</code> response parameter value is <code>null</code> <i>only</i>
          * when there are no more results to display.</p>  <p>This operation can be
          * called only from the organization's management account or by a member account
-         * that is a delegated administrator for an Amazon Web Services
-         * service.</p><p><h3>See Also:</h3>   <a
+         * that is a delegated administrator.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/ListCreateAccountStatus">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListCreateAccountStatusOutcome ListCreateAccountStatus(const Model::ListCreateAccountStatusRequest& request) const;
+        virtual Model::ListCreateAccountStatusOutcome ListCreateAccountStatus(const Model::ListCreateAccountStatusRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListCreateAccountStatus that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListCreateAccountStatusRequestT = Model::ListCreateAccountStatusRequest>
-        Model::ListCreateAccountStatusOutcomeCallable ListCreateAccountStatusCallable(const ListCreateAccountStatusRequestT& request) const
+        Model::ListCreateAccountStatusOutcomeCallable ListCreateAccountStatusCallable(const ListCreateAccountStatusRequestT& request = {}) const
         {
             return SubmitCallable(&OrganizationsClient::ListCreateAccountStatus, request);
         }
@@ -1600,7 +1616,7 @@ namespace Organizations
          * An Async wrapper for ListCreateAccountStatus that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListCreateAccountStatusRequestT = Model::ListCreateAccountStatusRequest>
-        void ListCreateAccountStatusAsync(const ListCreateAccountStatusRequestT& request, const ListCreateAccountStatusResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListCreateAccountStatusAsync(const ListCreateAccountStatusResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListCreateAccountStatusRequestT& request = {}) const
         {
             return SubmitAsync(&OrganizationsClient::ListCreateAccountStatus, request, handler, context);
         }
@@ -1609,18 +1625,17 @@ namespace Organizations
          * <p>Lists the Amazon Web Services accounts that are designated as delegated
          * administrators in this organization.</p> <p>This operation can be called only
          * from the organization's management account or by a member account that is a
-         * delegated administrator for an Amazon Web Services service.</p><p><h3>See
-         * Also:</h3>   <a
+         * delegated administrator.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/ListDelegatedAdministrators">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListDelegatedAdministratorsOutcome ListDelegatedAdministrators(const Model::ListDelegatedAdministratorsRequest& request) const;
+        virtual Model::ListDelegatedAdministratorsOutcome ListDelegatedAdministrators(const Model::ListDelegatedAdministratorsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListDelegatedAdministrators that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListDelegatedAdministratorsRequestT = Model::ListDelegatedAdministratorsRequest>
-        Model::ListDelegatedAdministratorsOutcomeCallable ListDelegatedAdministratorsCallable(const ListDelegatedAdministratorsRequestT& request) const
+        Model::ListDelegatedAdministratorsOutcomeCallable ListDelegatedAdministratorsCallable(const ListDelegatedAdministratorsRequestT& request = {}) const
         {
             return SubmitCallable(&OrganizationsClient::ListDelegatedAdministrators, request);
         }
@@ -1629,7 +1644,7 @@ namespace Organizations
          * An Async wrapper for ListDelegatedAdministrators that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListDelegatedAdministratorsRequestT = Model::ListDelegatedAdministratorsRequest>
-        void ListDelegatedAdministratorsAsync(const ListDelegatedAdministratorsRequestT& request, const ListDelegatedAdministratorsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListDelegatedAdministratorsAsync(const ListDelegatedAdministratorsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListDelegatedAdministratorsRequestT& request = {}) const
         {
             return SubmitAsync(&OrganizationsClient::ListDelegatedAdministrators, request, handler, context);
         }
@@ -1638,7 +1653,7 @@ namespace Organizations
          * <p>List the Amazon Web Services services for which the specified account is a
          * delegated administrator.</p> <p>This operation can be called only from the
          * organization's management account or by a member account that is a delegated
-         * administrator for an Amazon Web Services service.</p><p><h3>See Also:</h3>   <a
+         * administrator.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/ListDelegatedServicesForAccount">AWS
          * API Reference</a></p>
          */
@@ -1663,6 +1678,35 @@ namespace Organizations
         }
 
         /**
+         * <p>Lists all the validation errors on an <a
+         * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_effective.html">effective
+         * policy</a> for a specified account and policy type.</p> <p>This operation can be
+         * called only from the organization's management account or by a member account
+         * that is a delegated administrator.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/ListEffectivePolicyValidationErrors">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListEffectivePolicyValidationErrorsOutcome ListEffectivePolicyValidationErrors(const Model::ListEffectivePolicyValidationErrorsRequest& request) const;
+
+        /**
+         * A Callable wrapper for ListEffectivePolicyValidationErrors that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListEffectivePolicyValidationErrorsRequestT = Model::ListEffectivePolicyValidationErrorsRequest>
+        Model::ListEffectivePolicyValidationErrorsOutcomeCallable ListEffectivePolicyValidationErrorsCallable(const ListEffectivePolicyValidationErrorsRequestT& request) const
+        {
+            return SubmitCallable(&OrganizationsClient::ListEffectivePolicyValidationErrors, request);
+        }
+
+        /**
+         * An Async wrapper for ListEffectivePolicyValidationErrors that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListEffectivePolicyValidationErrorsRequestT = Model::ListEffectivePolicyValidationErrorsRequest>
+        void ListEffectivePolicyValidationErrorsAsync(const ListEffectivePolicyValidationErrorsRequestT& request, const ListEffectivePolicyValidationErrorsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&OrganizationsClient::ListEffectivePolicyValidationErrors, request, handler, context);
+        }
+
+        /**
          * <p>Lists the current handshakes that are associated with the account of the
          * requesting user.</p> <p>Handshakes that are <code>ACCEPTED</code>,
          * <code>DECLINED</code>, <code>CANCELED</code>, or <code>EXPIRED</code> appear in
@@ -1677,13 +1721,13 @@ namespace Organizations
          * href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/ListHandshakesForAccount">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListHandshakesForAccountOutcome ListHandshakesForAccount(const Model::ListHandshakesForAccountRequest& request) const;
+        virtual Model::ListHandshakesForAccountOutcome ListHandshakesForAccount(const Model::ListHandshakesForAccountRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListHandshakesForAccount that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListHandshakesForAccountRequestT = Model::ListHandshakesForAccountRequest>
-        Model::ListHandshakesForAccountOutcomeCallable ListHandshakesForAccountCallable(const ListHandshakesForAccountRequestT& request) const
+        Model::ListHandshakesForAccountOutcomeCallable ListHandshakesForAccountCallable(const ListHandshakesForAccountRequestT& request = {}) const
         {
             return SubmitCallable(&OrganizationsClient::ListHandshakesForAccount, request);
         }
@@ -1692,7 +1736,7 @@ namespace Organizations
          * An Async wrapper for ListHandshakesForAccount that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListHandshakesForAccountRequestT = Model::ListHandshakesForAccountRequest>
-        void ListHandshakesForAccountAsync(const ListHandshakesForAccountRequestT& request, const ListHandshakesForAccountResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListHandshakesForAccountAsync(const ListHandshakesForAccountResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListHandshakesForAccountRequestT& request = {}) const
         {
             return SubmitAsync(&OrganizationsClient::ListHandshakesForAccount, request, handler, context);
         }
@@ -1712,17 +1756,17 @@ namespace Organizations
          * parameter value is <code>null</code> <i>only</i> when there are no more results
          * to display.</p>  <p>This operation can be called only from the
          * organization's management account or by a member account that is a delegated
-         * administrator for an Amazon Web Services service.</p><p><h3>See Also:</h3>   <a
+         * administrator.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/ListHandshakesForOrganization">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListHandshakesForOrganizationOutcome ListHandshakesForOrganization(const Model::ListHandshakesForOrganizationRequest& request) const;
+        virtual Model::ListHandshakesForOrganizationOutcome ListHandshakesForOrganization(const Model::ListHandshakesForOrganizationRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListHandshakesForOrganization that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListHandshakesForOrganizationRequestT = Model::ListHandshakesForOrganizationRequest>
-        Model::ListHandshakesForOrganizationOutcomeCallable ListHandshakesForOrganizationCallable(const ListHandshakesForOrganizationRequestT& request) const
+        Model::ListHandshakesForOrganizationOutcomeCallable ListHandshakesForOrganizationCallable(const ListHandshakesForOrganizationRequestT& request = {}) const
         {
             return SubmitCallable(&OrganizationsClient::ListHandshakesForOrganization, request);
         }
@@ -1731,7 +1775,7 @@ namespace Organizations
          * An Async wrapper for ListHandshakesForOrganization that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListHandshakesForOrganizationRequestT = Model::ListHandshakesForOrganizationRequest>
-        void ListHandshakesForOrganizationAsync(const ListHandshakesForOrganizationRequestT& request, const ListHandshakesForOrganizationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListHandshakesForOrganizationAsync(const ListHandshakesForOrganizationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListHandshakesForOrganizationRequestT& request = {}) const
         {
             return SubmitAsync(&OrganizationsClient::ListHandshakesForOrganization, request, handler, context);
         }
@@ -1744,8 +1788,8 @@ namespace Organizations
          * more results available. The <code>NextToken</code> response parameter value is
          * <code>null</code> <i>only</i> when there are no more results to display.</p>
          *  <p>This operation can be called only from the organization's management
-         * account or by a member account that is a delegated administrator for an Amazon
-         * Web Services service.</p><p><h3>See Also:</h3>   <a
+         * account or by a member account that is a delegated administrator.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/ListOrganizationalUnitsForParent">AWS
          * API Reference</a></p>
          */
@@ -1780,9 +1824,8 @@ namespace Organizations
          * parameter value is <code>null</code> <i>only</i> when there are no more results
          * to display.</p>  <p>This operation can be called only from the
          * organization's management account or by a member account that is a delegated
-         * administrator for an Amazon Web Services service.</p>  <p>In the current
-         * release, a child can have only a single parent.</p> <p><h3>See Also:</h3>
-         * <a
+         * administrator.</p>  <p>In the current release, a child can have only a
+         * single parent.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/ListParents">AWS
          * API Reference</a></p>
          */
@@ -1814,8 +1857,8 @@ namespace Organizations
          * more results available. The <code>NextToken</code> response parameter value is
          * <code>null</code> <i>only</i> when there are no more results to display.</p>
          *  <p>This operation can be called only from the organization's management
-         * account or by a member account that is a delegated administrator for an Amazon
-         * Web Services service.</p><p><h3>See Also:</h3>   <a
+         * account or by a member account that is a delegated administrator.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/ListPolicies">AWS
          * API Reference</a></p>
          */
@@ -1849,8 +1892,7 @@ namespace Organizations
          * <code>NextToken</code> response parameter value is <code>null</code> <i>only</i>
          * when there are no more results to display.</p>  <p>This operation can be
          * called only from the organization's management account or by a member account
-         * that is a delegated administrator for an Amazon Web Services
-         * service.</p><p><h3>See Also:</h3>   <a
+         * that is a delegated administrator.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/ListPoliciesForTarget">AWS
          * API Reference</a></p>
          */
@@ -1882,23 +1924,23 @@ namespace Organizations
          * more results available. The <code>NextToken</code> response parameter value is
          * <code>null</code> <i>only</i> when there are no more results to display.</p>
          *  <p>This operation can be called only from the organization's management
-         * account or by a member account that is a delegated administrator for an Amazon
-         * Web Services service.</p>  <p>Policy types can be enabled and disabled in
-         * roots. This is distinct from whether they're available in the organization. When
-         * you enable all features, you make policy types available for use in that
-         * organization. Individual policy types can then be enabled and disabled in a
-         * root. To see the availability of a policy type in an organization, use
-         * <a>DescribeOrganization</a>.</p> <p><h3>See Also:</h3>   <a
+         * account or by a member account that is a delegated administrator.</p> 
+         * <p>Policy types can be enabled and disabled in roots. This is distinct from
+         * whether they're available in the organization. When you enable all features, you
+         * make policy types available for use in that organization. Individual policy
+         * types can then be enabled and disabled in a root. To see the availability of a
+         * policy type in an organization, use <a>DescribeOrganization</a>.</p>
+         * <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/ListRoots">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListRootsOutcome ListRoots(const Model::ListRootsRequest& request) const;
+        virtual Model::ListRootsOutcome ListRoots(const Model::ListRootsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListRoots that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListRootsRequestT = Model::ListRootsRequest>
-        Model::ListRootsOutcomeCallable ListRootsCallable(const ListRootsRequestT& request) const
+        Model::ListRootsOutcomeCallable ListRootsCallable(const ListRootsRequestT& request = {}) const
         {
             return SubmitCallable(&OrganizationsClient::ListRoots, request);
         }
@@ -1907,7 +1949,7 @@ namespace Organizations
          * An Async wrapper for ListRoots that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListRootsRequestT = Model::ListRootsRequest>
-        void ListRootsAsync(const ListRootsRequestT& request, const ListRootsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListRootsAsync(const ListRootsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListRootsRequestT& request = {}) const
         {
             return SubmitAsync(&OrganizationsClient::ListRoots, request, handler, context);
         }
@@ -1918,8 +1960,8 @@ namespace Organizations
          * Services account</p> </li> <li> <p>Organization root</p> </li> <li>
          * <p>Organizational unit (OU)</p> </li> <li> <p>Policy (any type)</p> </li> </ul>
          * <p>This operation can be called only from the organization's management account
-         * or by a member account that is a delegated administrator for an Amazon Web
-         * Services service.</p><p><h3>See Also:</h3>   <a
+         * or by a member account that is a delegated administrator.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/ListTagsForResource">AWS
          * API Reference</a></p>
          */
@@ -1952,8 +1994,7 @@ namespace Organizations
          * <code>NextToken</code> response parameter value is <code>null</code> <i>only</i>
          * when there are no more results to display.</p>  <p>This operation can be
          * called only from the organization's management account or by a member account
-         * that is a delegated administrator for an Amazon Web Services
-         * service.</p><p><h3>See Also:</h3>   <a
+         * that is a delegated administrator.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/ListTargetsForPolicy">AWS
          * API Reference</a></p>
          */
@@ -2006,8 +2047,8 @@ namespace Organizations
         }
 
         /**
-         * <p>Creates or updates a resource policy.</p> <p>You can only call this operation
-         * from the organization's management account.</p><p><h3>See Also:</h3>   <a
+         * <p>Creates or updates a resource policy.</p> <p>This operation can be called
+         * only from the organization's management account..</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/PutResourcePolicy">AWS
          * API Reference</a></p>
          */
@@ -2120,8 +2161,8 @@ namespace Organizations
          * Web Services account</p> </li> <li> <p>Organization root</p> </li> <li>
          * <p>Organizational unit (OU)</p> </li> <li> <p>Policy (any type)</p> </li> </ul>
          * <p>This operation can be called only from the organization's management account
-         * or by a member account that is a delegated administrator for an Amazon Web
-         * Services service.</p><p><h3>See Also:</h3>   <a
+         * or by a member account that is a delegated administrator.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/TagResource">AWS
          * API Reference</a></p>
          */
@@ -2151,8 +2192,8 @@ namespace Organizations
          * <li> <p>Amazon Web Services account</p> </li> <li> <p>Organization root</p>
          * </li> <li> <p>Organizational unit (OU)</p> </li> <li> <p>Policy (any type)</p>
          * </li> </ul> <p>This operation can be called only from the organization's
-         * management account or by a member account that is a delegated administrator for
-         * an Amazon Web Services service.</p><p><h3>See Also:</h3>   <a
+         * management account or by a member account that is a delegated
+         * administrator.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/UntagResource">AWS
          * API Reference</a></p>
          */
@@ -2208,8 +2249,8 @@ namespace Organizations
          * <p>Updates an existing policy with a new name, description, or content. If you
          * don't supply any parameter, that value remains unchanged. You can't change a
          * policy's type.</p> <p>This operation can be called only from the organization's
-         * management account or by a member account that is a delegated administrator for
-         * an Amazon Web Services service.</p><p><h3>See Also:</h3>   <a
+         * management account or by a member account that is a delegated
+         * administrator.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/UpdatePolicy">AWS
          * API Reference</a></p>
          */
@@ -2241,7 +2282,6 @@ namespace Organizations
       void init(const OrganizationsClientConfiguration& clientConfiguration);
 
       OrganizationsClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<OrganizationsEndpointProviderBase> m_endpointProvider;
   };
 

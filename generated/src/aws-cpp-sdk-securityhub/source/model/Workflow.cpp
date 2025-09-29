@@ -18,15 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-Workflow::Workflow() : 
-    m_status(WorkflowStatus::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
-Workflow::Workflow(JsonView jsonValue) : 
-    m_status(WorkflowStatus::NOT_SET),
-    m_statusHasBeenSet(false)
+Workflow::Workflow(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ Workflow& Workflow::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Status"))
   {
     m_status = WorkflowStatusMapper::GetWorkflowStatusForName(jsonValue.GetString("Status"));
-
     m_statusHasBeenSet = true;
   }
-
   return *this;
 }
 

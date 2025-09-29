@@ -18,13 +18,7 @@ namespace MediaLive
 namespace Model
 {
 
-BatchScheduleActionDeleteRequest::BatchScheduleActionDeleteRequest() : 
-    m_actionNamesHasBeenSet(false)
-{
-}
-
-BatchScheduleActionDeleteRequest::BatchScheduleActionDeleteRequest(JsonView jsonValue) : 
-    m_actionNamesHasBeenSet(false)
+BatchScheduleActionDeleteRequest::BatchScheduleActionDeleteRequest(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ BatchScheduleActionDeleteRequest& BatchScheduleActionDeleteRequest::operator =(J
     }
     m_actionNamesHasBeenSet = true;
   }
-
   return *this;
 }
 

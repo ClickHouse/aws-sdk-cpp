@@ -10,27 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-CreateSubnetRequest::CreateSubnetRequest() : 
-    m_tagSpecificationsHasBeenSet(false),
-    m_availabilityZoneHasBeenSet(false),
-    m_availabilityZoneIdHasBeenSet(false),
-    m_cidrBlockHasBeenSet(false),
-    m_ipv6CidrBlockHasBeenSet(false),
-    m_outpostArnHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_ipv6Native(false),
-    m_ipv6NativeHasBeenSet(false),
-    m_ipv4IpamPoolIdHasBeenSet(false),
-    m_ipv4NetmaskLength(0),
-    m_ipv4NetmaskLengthHasBeenSet(false),
-    m_ipv6IpamPoolIdHasBeenSet(false),
-    m_ipv6NetmaskLength(0),
-    m_ipv6NetmaskLengthHasBeenSet(false)
-{
-}
-
 Aws::String CreateSubnetRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -75,11 +54,6 @@ Aws::String CreateSubnetRequest::SerializePayload() const
     ss << "VpcId=" << StringUtils::URLEncode(m_vpcId.c_str()) << "&";
   }
 
-  if(m_dryRunHasBeenSet)
-  {
-    ss << "DryRun=" << std::boolalpha << m_dryRun << "&";
-  }
-
   if(m_ipv6NativeHasBeenSet)
   {
     ss << "Ipv6Native=" << std::boolalpha << m_ipv6Native << "&";
@@ -103,6 +77,11 @@ Aws::String CreateSubnetRequest::SerializePayload() const
   if(m_ipv6NetmaskLengthHasBeenSet)
   {
     ss << "Ipv6NetmaskLength=" << m_ipv6NetmaskLength << "&";
+  }
+
+  if(m_dryRunHasBeenSet)
+  {
+    ss << "DryRun=" << std::boolalpha << m_dryRun << "&";
   }
 
   ss << "Version=2016-11-15";

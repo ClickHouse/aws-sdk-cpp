@@ -33,83 +33,35 @@ namespace Model
   class TaskTemplateDefaultFieldValue
   {
   public:
-    AWS_CONNECT_API TaskTemplateDefaultFieldValue();
+    AWS_CONNECT_API TaskTemplateDefaultFieldValue() = default;
     AWS_CONNECT_API TaskTemplateDefaultFieldValue(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API TaskTemplateDefaultFieldValue& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Identifier of a field. </p>
      */
-    inline const TaskTemplateFieldIdentifier& GetId() const{ return m_id; }
-
-    /**
-     * <p>Identifier of a field. </p>
-     */
+    inline const TaskTemplateFieldIdentifier& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = TaskTemplateFieldIdentifier>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = TaskTemplateFieldIdentifier>
+    TaskTemplateDefaultFieldValue& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Identifier of a field. </p>
-     */
-    inline void SetId(const TaskTemplateFieldIdentifier& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>Identifier of a field. </p>
-     */
-    inline void SetId(TaskTemplateFieldIdentifier&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>Identifier of a field. </p>
-     */
-    inline TaskTemplateDefaultFieldValue& WithId(const TaskTemplateFieldIdentifier& value) { SetId(value); return *this;}
-
-    /**
-     * <p>Identifier of a field. </p>
-     */
-    inline TaskTemplateDefaultFieldValue& WithId(TaskTemplateFieldIdentifier&& value) { SetId(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Default value for the field.</p>
      */
-    inline const Aws::String& GetDefaultValue() const{ return m_defaultValue; }
-
-    /**
-     * <p>Default value for the field.</p>
-     */
+    inline const Aws::String& GetDefaultValue() const { return m_defaultValue; }
     inline bool DefaultValueHasBeenSet() const { return m_defaultValueHasBeenSet; }
-
-    /**
-     * <p>Default value for the field.</p>
-     */
-    inline void SetDefaultValue(const Aws::String& value) { m_defaultValueHasBeenSet = true; m_defaultValue = value; }
-
-    /**
-     * <p>Default value for the field.</p>
-     */
-    inline void SetDefaultValue(Aws::String&& value) { m_defaultValueHasBeenSet = true; m_defaultValue = std::move(value); }
-
-    /**
-     * <p>Default value for the field.</p>
-     */
-    inline void SetDefaultValue(const char* value) { m_defaultValueHasBeenSet = true; m_defaultValue.assign(value); }
-
-    /**
-     * <p>Default value for the field.</p>
-     */
-    inline TaskTemplateDefaultFieldValue& WithDefaultValue(const Aws::String& value) { SetDefaultValue(value); return *this;}
-
-    /**
-     * <p>Default value for the field.</p>
-     */
-    inline TaskTemplateDefaultFieldValue& WithDefaultValue(Aws::String&& value) { SetDefaultValue(std::move(value)); return *this;}
-
-    /**
-     * <p>Default value for the field.</p>
-     */
-    inline TaskTemplateDefaultFieldValue& WithDefaultValue(const char* value) { SetDefaultValue(value); return *this;}
-
+    template<typename DefaultValueT = Aws::String>
+    void SetDefaultValue(DefaultValueT&& value) { m_defaultValueHasBeenSet = true; m_defaultValue = std::forward<DefaultValueT>(value); }
+    template<typename DefaultValueT = Aws::String>
+    TaskTemplateDefaultFieldValue& WithDefaultValue(DefaultValueT&& value) { SetDefaultValue(std::forward<DefaultValueT>(value)); return *this;}
+    ///@}
   private:
 
     TaskTemplateFieldIdentifier m_id;

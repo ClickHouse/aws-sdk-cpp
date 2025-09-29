@@ -31,230 +31,78 @@ namespace Model
    * Resource Name (ARN) or at least one resource tag. You cannot specify both ARNs
    * and tags.</p> <p>For more information, see <a
    * href="https://docs.aws.amazon.com/fis/latest/userguide/targets.html">Targets</a>
-   * in the <i>Fault Injection Simulator User Guide</i>.</p><p><h3>See Also:</h3>  
-   * <a
+   * in the <i>Fault Injection Service User Guide</i>.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/fis-2020-12-01/CreateExperimentTemplateTargetInput">AWS
    * API Reference</a></p>
    */
   class CreateExperimentTemplateTargetInput
   {
   public:
-    AWS_FIS_API CreateExperimentTemplateTargetInput();
+    AWS_FIS_API CreateExperimentTemplateTargetInput() = default;
     AWS_FIS_API CreateExperimentTemplateTargetInput(Aws::Utils::Json::JsonView jsonValue);
     AWS_FIS_API CreateExperimentTemplateTargetInput& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FIS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The resource type. The resource type must be supported for the specified
      * action.</p>
      */
-    inline const Aws::String& GetResourceType() const{ return m_resourceType; }
-
-    /**
-     * <p>The resource type. The resource type must be supported for the specified
-     * action.</p>
-     */
+    inline const Aws::String& GetResourceType() const { return m_resourceType; }
     inline bool ResourceTypeHasBeenSet() const { return m_resourceTypeHasBeenSet; }
+    template<typename ResourceTypeT = Aws::String>
+    void SetResourceType(ResourceTypeT&& value) { m_resourceTypeHasBeenSet = true; m_resourceType = std::forward<ResourceTypeT>(value); }
+    template<typename ResourceTypeT = Aws::String>
+    CreateExperimentTemplateTargetInput& WithResourceType(ResourceTypeT&& value) { SetResourceType(std::forward<ResourceTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The resource type. The resource type must be supported for the specified
-     * action.</p>
-     */
-    inline void SetResourceType(const Aws::String& value) { m_resourceTypeHasBeenSet = true; m_resourceType = value; }
-
-    /**
-     * <p>The resource type. The resource type must be supported for the specified
-     * action.</p>
-     */
-    inline void SetResourceType(Aws::String&& value) { m_resourceTypeHasBeenSet = true; m_resourceType = std::move(value); }
-
-    /**
-     * <p>The resource type. The resource type must be supported for the specified
-     * action.</p>
-     */
-    inline void SetResourceType(const char* value) { m_resourceTypeHasBeenSet = true; m_resourceType.assign(value); }
-
-    /**
-     * <p>The resource type. The resource type must be supported for the specified
-     * action.</p>
-     */
-    inline CreateExperimentTemplateTargetInput& WithResourceType(const Aws::String& value) { SetResourceType(value); return *this;}
-
-    /**
-     * <p>The resource type. The resource type must be supported for the specified
-     * action.</p>
-     */
-    inline CreateExperimentTemplateTargetInput& WithResourceType(Aws::String&& value) { SetResourceType(std::move(value)); return *this;}
-
-    /**
-     * <p>The resource type. The resource type must be supported for the specified
-     * action.</p>
-     */
-    inline CreateExperimentTemplateTargetInput& WithResourceType(const char* value) { SetResourceType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Names (ARNs) of the resources.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetResourceArns() const{ return m_resourceArns; }
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the resources.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetResourceArns() const { return m_resourceArns; }
     inline bool ResourceArnsHasBeenSet() const { return m_resourceArnsHasBeenSet; }
+    template<typename ResourceArnsT = Aws::Vector<Aws::String>>
+    void SetResourceArns(ResourceArnsT&& value) { m_resourceArnsHasBeenSet = true; m_resourceArns = std::forward<ResourceArnsT>(value); }
+    template<typename ResourceArnsT = Aws::Vector<Aws::String>>
+    CreateExperimentTemplateTargetInput& WithResourceArns(ResourceArnsT&& value) { SetResourceArns(std::forward<ResourceArnsT>(value)); return *this;}
+    template<typename ResourceArnsT = Aws::String>
+    CreateExperimentTemplateTargetInput& AddResourceArns(ResourceArnsT&& value) { m_resourceArnsHasBeenSet = true; m_resourceArns.emplace_back(std::forward<ResourceArnsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the resources.</p>
-     */
-    inline void SetResourceArns(const Aws::Vector<Aws::String>& value) { m_resourceArnsHasBeenSet = true; m_resourceArns = value; }
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the resources.</p>
-     */
-    inline void SetResourceArns(Aws::Vector<Aws::String>&& value) { m_resourceArnsHasBeenSet = true; m_resourceArns = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the resources.</p>
-     */
-    inline CreateExperimentTemplateTargetInput& WithResourceArns(const Aws::Vector<Aws::String>& value) { SetResourceArns(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the resources.</p>
-     */
-    inline CreateExperimentTemplateTargetInput& WithResourceArns(Aws::Vector<Aws::String>&& value) { SetResourceArns(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the resources.</p>
-     */
-    inline CreateExperimentTemplateTargetInput& AddResourceArns(const Aws::String& value) { m_resourceArnsHasBeenSet = true; m_resourceArns.push_back(value); return *this; }
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the resources.</p>
-     */
-    inline CreateExperimentTemplateTargetInput& AddResourceArns(Aws::String&& value) { m_resourceArnsHasBeenSet = true; m_resourceArns.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) of the resources.</p>
-     */
-    inline CreateExperimentTemplateTargetInput& AddResourceArns(const char* value) { m_resourceArnsHasBeenSet = true; m_resourceArns.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The tags for the target resources.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetResourceTags() const{ return m_resourceTags; }
-
-    /**
-     * <p>The tags for the target resources.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetResourceTags() const { return m_resourceTags; }
     inline bool ResourceTagsHasBeenSet() const { return m_resourceTagsHasBeenSet; }
+    template<typename ResourceTagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetResourceTags(ResourceTagsT&& value) { m_resourceTagsHasBeenSet = true; m_resourceTags = std::forward<ResourceTagsT>(value); }
+    template<typename ResourceTagsT = Aws::Map<Aws::String, Aws::String>>
+    CreateExperimentTemplateTargetInput& WithResourceTags(ResourceTagsT&& value) { SetResourceTags(std::forward<ResourceTagsT>(value)); return *this;}
+    template<typename ResourceTagsKeyT = Aws::String, typename ResourceTagsValueT = Aws::String>
+    CreateExperimentTemplateTargetInput& AddResourceTags(ResourceTagsKeyT&& key, ResourceTagsValueT&& value) {
+      m_resourceTagsHasBeenSet = true; m_resourceTags.emplace(std::forward<ResourceTagsKeyT>(key), std::forward<ResourceTagsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>The tags for the target resources.</p>
-     */
-    inline void SetResourceTags(const Aws::Map<Aws::String, Aws::String>& value) { m_resourceTagsHasBeenSet = true; m_resourceTags = value; }
-
-    /**
-     * <p>The tags for the target resources.</p>
-     */
-    inline void SetResourceTags(Aws::Map<Aws::String, Aws::String>&& value) { m_resourceTagsHasBeenSet = true; m_resourceTags = std::move(value); }
-
-    /**
-     * <p>The tags for the target resources.</p>
-     */
-    inline CreateExperimentTemplateTargetInput& WithResourceTags(const Aws::Map<Aws::String, Aws::String>& value) { SetResourceTags(value); return *this;}
-
-    /**
-     * <p>The tags for the target resources.</p>
-     */
-    inline CreateExperimentTemplateTargetInput& WithResourceTags(Aws::Map<Aws::String, Aws::String>&& value) { SetResourceTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags for the target resources.</p>
-     */
-    inline CreateExperimentTemplateTargetInput& AddResourceTags(const Aws::String& key, const Aws::String& value) { m_resourceTagsHasBeenSet = true; m_resourceTags.emplace(key, value); return *this; }
-
-    /**
-     * <p>The tags for the target resources.</p>
-     */
-    inline CreateExperimentTemplateTargetInput& AddResourceTags(Aws::String&& key, const Aws::String& value) { m_resourceTagsHasBeenSet = true; m_resourceTags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags for the target resources.</p>
-     */
-    inline CreateExperimentTemplateTargetInput& AddResourceTags(const Aws::String& key, Aws::String&& value) { m_resourceTagsHasBeenSet = true; m_resourceTags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags for the target resources.</p>
-     */
-    inline CreateExperimentTemplateTargetInput& AddResourceTags(Aws::String&& key, Aws::String&& value) { m_resourceTagsHasBeenSet = true; m_resourceTags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The tags for the target resources.</p>
-     */
-    inline CreateExperimentTemplateTargetInput& AddResourceTags(const char* key, Aws::String&& value) { m_resourceTagsHasBeenSet = true; m_resourceTags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags for the target resources.</p>
-     */
-    inline CreateExperimentTemplateTargetInput& AddResourceTags(Aws::String&& key, const char* value) { m_resourceTagsHasBeenSet = true; m_resourceTags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags for the target resources.</p>
-     */
-    inline CreateExperimentTemplateTargetInput& AddResourceTags(const char* key, const char* value) { m_resourceTagsHasBeenSet = true; m_resourceTags.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>The filters to apply to identify target resources using specific
      * attributes.</p>
      */
-    inline const Aws::Vector<ExperimentTemplateTargetInputFilter>& GetFilters() const{ return m_filters; }
-
-    /**
-     * <p>The filters to apply to identify target resources using specific
-     * attributes.</p>
-     */
+    inline const Aws::Vector<ExperimentTemplateTargetInputFilter>& GetFilters() const { return m_filters; }
     inline bool FiltersHasBeenSet() const { return m_filtersHasBeenSet; }
+    template<typename FiltersT = Aws::Vector<ExperimentTemplateTargetInputFilter>>
+    void SetFilters(FiltersT&& value) { m_filtersHasBeenSet = true; m_filters = std::forward<FiltersT>(value); }
+    template<typename FiltersT = Aws::Vector<ExperimentTemplateTargetInputFilter>>
+    CreateExperimentTemplateTargetInput& WithFilters(FiltersT&& value) { SetFilters(std::forward<FiltersT>(value)); return *this;}
+    template<typename FiltersT = ExperimentTemplateTargetInputFilter>
+    CreateExperimentTemplateTargetInput& AddFilters(FiltersT&& value) { m_filtersHasBeenSet = true; m_filters.emplace_back(std::forward<FiltersT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The filters to apply to identify target resources using specific
-     * attributes.</p>
-     */
-    inline void SetFilters(const Aws::Vector<ExperimentTemplateTargetInputFilter>& value) { m_filtersHasBeenSet = true; m_filters = value; }
-
-    /**
-     * <p>The filters to apply to identify target resources using specific
-     * attributes.</p>
-     */
-    inline void SetFilters(Aws::Vector<ExperimentTemplateTargetInputFilter>&& value) { m_filtersHasBeenSet = true; m_filters = std::move(value); }
-
-    /**
-     * <p>The filters to apply to identify target resources using specific
-     * attributes.</p>
-     */
-    inline CreateExperimentTemplateTargetInput& WithFilters(const Aws::Vector<ExperimentTemplateTargetInputFilter>& value) { SetFilters(value); return *this;}
-
-    /**
-     * <p>The filters to apply to identify target resources using specific
-     * attributes.</p>
-     */
-    inline CreateExperimentTemplateTargetInput& WithFilters(Aws::Vector<ExperimentTemplateTargetInputFilter>&& value) { SetFilters(std::move(value)); return *this;}
-
-    /**
-     * <p>The filters to apply to identify target resources using specific
-     * attributes.</p>
-     */
-    inline CreateExperimentTemplateTargetInput& AddFilters(const ExperimentTemplateTargetInputFilter& value) { m_filtersHasBeenSet = true; m_filters.push_back(value); return *this; }
-
-    /**
-     * <p>The filters to apply to identify target resources using specific
-     * attributes.</p>
-     */
-    inline CreateExperimentTemplateTargetInput& AddFilters(ExperimentTemplateTargetInputFilter&& value) { m_filtersHasBeenSet = true; m_filters.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Scopes the identified resources to a specific count of the resources at
      * random, or a percentage of the resources. All identified resources are included
@@ -266,165 +114,29 @@ namespace Model
      * targets at random. For example, PERCENT(25) selects 25% of the targets.</p>
      * </li> </ul>
      */
-    inline const Aws::String& GetSelectionMode() const{ return m_selectionMode; }
-
-    /**
-     * <p>Scopes the identified resources to a specific count of the resources at
-     * random, or a percentage of the resources. All identified resources are included
-     * in the target.</p> <ul> <li> <p>ALL - Run the action on all identified targets.
-     * This is the default.</p> </li> <li> <p>COUNT(n) - Run the action on the
-     * specified number of targets, chosen from the identified targets at random. For
-     * example, COUNT(1) selects one of the targets.</p> </li> <li> <p>PERCENT(n) - Run
-     * the action on the specified percentage of targets, chosen from the identified
-     * targets at random. For example, PERCENT(25) selects 25% of the targets.</p>
-     * </li> </ul>
-     */
+    inline const Aws::String& GetSelectionMode() const { return m_selectionMode; }
     inline bool SelectionModeHasBeenSet() const { return m_selectionModeHasBeenSet; }
+    template<typename SelectionModeT = Aws::String>
+    void SetSelectionMode(SelectionModeT&& value) { m_selectionModeHasBeenSet = true; m_selectionMode = std::forward<SelectionModeT>(value); }
+    template<typename SelectionModeT = Aws::String>
+    CreateExperimentTemplateTargetInput& WithSelectionMode(SelectionModeT&& value) { SetSelectionMode(std::forward<SelectionModeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Scopes the identified resources to a specific count of the resources at
-     * random, or a percentage of the resources. All identified resources are included
-     * in the target.</p> <ul> <li> <p>ALL - Run the action on all identified targets.
-     * This is the default.</p> </li> <li> <p>COUNT(n) - Run the action on the
-     * specified number of targets, chosen from the identified targets at random. For
-     * example, COUNT(1) selects one of the targets.</p> </li> <li> <p>PERCENT(n) - Run
-     * the action on the specified percentage of targets, chosen from the identified
-     * targets at random. For example, PERCENT(25) selects 25% of the targets.</p>
-     * </li> </ul>
-     */
-    inline void SetSelectionMode(const Aws::String& value) { m_selectionModeHasBeenSet = true; m_selectionMode = value; }
-
-    /**
-     * <p>Scopes the identified resources to a specific count of the resources at
-     * random, or a percentage of the resources. All identified resources are included
-     * in the target.</p> <ul> <li> <p>ALL - Run the action on all identified targets.
-     * This is the default.</p> </li> <li> <p>COUNT(n) - Run the action on the
-     * specified number of targets, chosen from the identified targets at random. For
-     * example, COUNT(1) selects one of the targets.</p> </li> <li> <p>PERCENT(n) - Run
-     * the action on the specified percentage of targets, chosen from the identified
-     * targets at random. For example, PERCENT(25) selects 25% of the targets.</p>
-     * </li> </ul>
-     */
-    inline void SetSelectionMode(Aws::String&& value) { m_selectionModeHasBeenSet = true; m_selectionMode = std::move(value); }
-
-    /**
-     * <p>Scopes the identified resources to a specific count of the resources at
-     * random, or a percentage of the resources. All identified resources are included
-     * in the target.</p> <ul> <li> <p>ALL - Run the action on all identified targets.
-     * This is the default.</p> </li> <li> <p>COUNT(n) - Run the action on the
-     * specified number of targets, chosen from the identified targets at random. For
-     * example, COUNT(1) selects one of the targets.</p> </li> <li> <p>PERCENT(n) - Run
-     * the action on the specified percentage of targets, chosen from the identified
-     * targets at random. For example, PERCENT(25) selects 25% of the targets.</p>
-     * </li> </ul>
-     */
-    inline void SetSelectionMode(const char* value) { m_selectionModeHasBeenSet = true; m_selectionMode.assign(value); }
-
-    /**
-     * <p>Scopes the identified resources to a specific count of the resources at
-     * random, or a percentage of the resources. All identified resources are included
-     * in the target.</p> <ul> <li> <p>ALL - Run the action on all identified targets.
-     * This is the default.</p> </li> <li> <p>COUNT(n) - Run the action on the
-     * specified number of targets, chosen from the identified targets at random. For
-     * example, COUNT(1) selects one of the targets.</p> </li> <li> <p>PERCENT(n) - Run
-     * the action on the specified percentage of targets, chosen from the identified
-     * targets at random. For example, PERCENT(25) selects 25% of the targets.</p>
-     * </li> </ul>
-     */
-    inline CreateExperimentTemplateTargetInput& WithSelectionMode(const Aws::String& value) { SetSelectionMode(value); return *this;}
-
-    /**
-     * <p>Scopes the identified resources to a specific count of the resources at
-     * random, or a percentage of the resources. All identified resources are included
-     * in the target.</p> <ul> <li> <p>ALL - Run the action on all identified targets.
-     * This is the default.</p> </li> <li> <p>COUNT(n) - Run the action on the
-     * specified number of targets, chosen from the identified targets at random. For
-     * example, COUNT(1) selects one of the targets.</p> </li> <li> <p>PERCENT(n) - Run
-     * the action on the specified percentage of targets, chosen from the identified
-     * targets at random. For example, PERCENT(25) selects 25% of the targets.</p>
-     * </li> </ul>
-     */
-    inline CreateExperimentTemplateTargetInput& WithSelectionMode(Aws::String&& value) { SetSelectionMode(std::move(value)); return *this;}
-
-    /**
-     * <p>Scopes the identified resources to a specific count of the resources at
-     * random, or a percentage of the resources. All identified resources are included
-     * in the target.</p> <ul> <li> <p>ALL - Run the action on all identified targets.
-     * This is the default.</p> </li> <li> <p>COUNT(n) - Run the action on the
-     * specified number of targets, chosen from the identified targets at random. For
-     * example, COUNT(1) selects one of the targets.</p> </li> <li> <p>PERCENT(n) - Run
-     * the action on the specified percentage of targets, chosen from the identified
-     * targets at random. For example, PERCENT(25) selects 25% of the targets.</p>
-     * </li> </ul>
-     */
-    inline CreateExperimentTemplateTargetInput& WithSelectionMode(const char* value) { SetSelectionMode(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The resource type parameters.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetParameters() const{ return m_parameters; }
-
-    /**
-     * <p>The resource type parameters.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetParameters() const { return m_parameters; }
     inline bool ParametersHasBeenSet() const { return m_parametersHasBeenSet; }
-
-    /**
-     * <p>The resource type parameters.</p>
-     */
-    inline void SetParameters(const Aws::Map<Aws::String, Aws::String>& value) { m_parametersHasBeenSet = true; m_parameters = value; }
-
-    /**
-     * <p>The resource type parameters.</p>
-     */
-    inline void SetParameters(Aws::Map<Aws::String, Aws::String>&& value) { m_parametersHasBeenSet = true; m_parameters = std::move(value); }
-
-    /**
-     * <p>The resource type parameters.</p>
-     */
-    inline CreateExperimentTemplateTargetInput& WithParameters(const Aws::Map<Aws::String, Aws::String>& value) { SetParameters(value); return *this;}
-
-    /**
-     * <p>The resource type parameters.</p>
-     */
-    inline CreateExperimentTemplateTargetInput& WithParameters(Aws::Map<Aws::String, Aws::String>&& value) { SetParameters(std::move(value)); return *this;}
-
-    /**
-     * <p>The resource type parameters.</p>
-     */
-    inline CreateExperimentTemplateTargetInput& AddParameters(const Aws::String& key, const Aws::String& value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, value); return *this; }
-
-    /**
-     * <p>The resource type parameters.</p>
-     */
-    inline CreateExperimentTemplateTargetInput& AddParameters(Aws::String&& key, const Aws::String& value) { m_parametersHasBeenSet = true; m_parameters.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The resource type parameters.</p>
-     */
-    inline CreateExperimentTemplateTargetInput& AddParameters(const Aws::String& key, Aws::String&& value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The resource type parameters.</p>
-     */
-    inline CreateExperimentTemplateTargetInput& AddParameters(Aws::String&& key, Aws::String&& value) { m_parametersHasBeenSet = true; m_parameters.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The resource type parameters.</p>
-     */
-    inline CreateExperimentTemplateTargetInput& AddParameters(const char* key, Aws::String&& value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The resource type parameters.</p>
-     */
-    inline CreateExperimentTemplateTargetInput& AddParameters(Aws::String&& key, const char* value) { m_parametersHasBeenSet = true; m_parameters.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The resource type parameters.</p>
-     */
-    inline CreateExperimentTemplateTargetInput& AddParameters(const char* key, const char* value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, value); return *this; }
-
+    template<typename ParametersT = Aws::Map<Aws::String, Aws::String>>
+    void SetParameters(ParametersT&& value) { m_parametersHasBeenSet = true; m_parameters = std::forward<ParametersT>(value); }
+    template<typename ParametersT = Aws::Map<Aws::String, Aws::String>>
+    CreateExperimentTemplateTargetInput& WithParameters(ParametersT&& value) { SetParameters(std::forward<ParametersT>(value)); return *this;}
+    template<typename ParametersKeyT = Aws::String, typename ParametersValueT = Aws::String>
+    CreateExperimentTemplateTargetInput& AddParameters(ParametersKeyT&& key, ParametersValueT&& value) {
+      m_parametersHasBeenSet = true; m_parameters.emplace(std::forward<ParametersKeyT>(key), std::forward<ParametersValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
     Aws::String m_resourceType;

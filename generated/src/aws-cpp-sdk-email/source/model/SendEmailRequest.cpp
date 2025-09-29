@@ -10,19 +10,6 @@
 using namespace Aws::SES::Model;
 using namespace Aws::Utils;
 
-SendEmailRequest::SendEmailRequest() : 
-    m_sourceHasBeenSet(false),
-    m_destinationHasBeenSet(false),
-    m_messageHasBeenSet(false),
-    m_replyToAddressesHasBeenSet(false),
-    m_returnPathHasBeenSet(false),
-    m_sourceArnHasBeenSet(false),
-    m_returnPathArnHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_configurationSetNameHasBeenSet(false)
-{
-}
-
 Aws::String SendEmailRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -44,12 +31,19 @@ Aws::String SendEmailRequest::SerializePayload() const
 
   if(m_replyToAddressesHasBeenSet)
   {
-    unsigned replyToAddressesCount = 1;
-    for(auto& item : m_replyToAddresses)
+    if (m_replyToAddresses.empty())
     {
-      ss << "ReplyToAddresses.member." << replyToAddressesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      replyToAddressesCount++;
+      ss << "ReplyToAddresses=&";
+    }
+    else
+    {
+      unsigned replyToAddressesCount = 1;
+      for(auto& item : m_replyToAddresses)
+      {
+        ss << "ReplyToAddresses.member." << replyToAddressesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        replyToAddressesCount++;
+      }
     }
   }
 
@@ -70,11 +64,18 @@ Aws::String SendEmailRequest::SerializePayload() const
 
   if(m_tagsHasBeenSet)
   {
-    unsigned tagsCount = 1;
-    for(auto& item : m_tags)
+    if (m_tags.empty())
     {
-      item.OutputToStream(ss, "Tags.member.", tagsCount, "");
-      tagsCount++;
+      ss << "Tags=&";
+    }
+    else
+    {
+      unsigned tagsCount = 1;
+      for(auto& item : m_tags)
+      {
+        item.OutputToStream(ss, "Tags.member.", tagsCount, "");
+        tagsCount++;
+      }
     }
   }
 

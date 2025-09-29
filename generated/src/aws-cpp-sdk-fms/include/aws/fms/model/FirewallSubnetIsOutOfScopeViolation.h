@@ -32,240 +32,74 @@ namespace Model
   class FirewallSubnetIsOutOfScopeViolation
   {
   public:
-    AWS_FMS_API FirewallSubnetIsOutOfScopeViolation();
+    AWS_FMS_API FirewallSubnetIsOutOfScopeViolation() = default;
     AWS_FMS_API FirewallSubnetIsOutOfScopeViolation(Aws::Utils::Json::JsonView jsonValue);
     AWS_FMS_API FirewallSubnetIsOutOfScopeViolation& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FMS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ID of the firewall subnet that violates the policy scope.</p>
      */
-    inline const Aws::String& GetFirewallSubnetId() const{ return m_firewallSubnetId; }
-
-    /**
-     * <p>The ID of the firewall subnet that violates the policy scope.</p>
-     */
+    inline const Aws::String& GetFirewallSubnetId() const { return m_firewallSubnetId; }
     inline bool FirewallSubnetIdHasBeenSet() const { return m_firewallSubnetIdHasBeenSet; }
+    template<typename FirewallSubnetIdT = Aws::String>
+    void SetFirewallSubnetId(FirewallSubnetIdT&& value) { m_firewallSubnetIdHasBeenSet = true; m_firewallSubnetId = std::forward<FirewallSubnetIdT>(value); }
+    template<typename FirewallSubnetIdT = Aws::String>
+    FirewallSubnetIsOutOfScopeViolation& WithFirewallSubnetId(FirewallSubnetIdT&& value) { SetFirewallSubnetId(std::forward<FirewallSubnetIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the firewall subnet that violates the policy scope.</p>
-     */
-    inline void SetFirewallSubnetId(const Aws::String& value) { m_firewallSubnetIdHasBeenSet = true; m_firewallSubnetId = value; }
-
-    /**
-     * <p>The ID of the firewall subnet that violates the policy scope.</p>
-     */
-    inline void SetFirewallSubnetId(Aws::String&& value) { m_firewallSubnetIdHasBeenSet = true; m_firewallSubnetId = std::move(value); }
-
-    /**
-     * <p>The ID of the firewall subnet that violates the policy scope.</p>
-     */
-    inline void SetFirewallSubnetId(const char* value) { m_firewallSubnetIdHasBeenSet = true; m_firewallSubnetId.assign(value); }
-
-    /**
-     * <p>The ID of the firewall subnet that violates the policy scope.</p>
-     */
-    inline FirewallSubnetIsOutOfScopeViolation& WithFirewallSubnetId(const Aws::String& value) { SetFirewallSubnetId(value); return *this;}
-
-    /**
-     * <p>The ID of the firewall subnet that violates the policy scope.</p>
-     */
-    inline FirewallSubnetIsOutOfScopeViolation& WithFirewallSubnetId(Aws::String&& value) { SetFirewallSubnetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the firewall subnet that violates the policy scope.</p>
-     */
-    inline FirewallSubnetIsOutOfScopeViolation& WithFirewallSubnetId(const char* value) { SetFirewallSubnetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The VPC ID of the firewall subnet that violates the policy scope.</p>
      */
-    inline const Aws::String& GetVpcId() const{ return m_vpcId; }
-
-    /**
-     * <p>The VPC ID of the firewall subnet that violates the policy scope.</p>
-     */
+    inline const Aws::String& GetVpcId() const { return m_vpcId; }
     inline bool VpcIdHasBeenSet() const { return m_vpcIdHasBeenSet; }
+    template<typename VpcIdT = Aws::String>
+    void SetVpcId(VpcIdT&& value) { m_vpcIdHasBeenSet = true; m_vpcId = std::forward<VpcIdT>(value); }
+    template<typename VpcIdT = Aws::String>
+    FirewallSubnetIsOutOfScopeViolation& WithVpcId(VpcIdT&& value) { SetVpcId(std::forward<VpcIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The VPC ID of the firewall subnet that violates the policy scope.</p>
-     */
-    inline void SetVpcId(const Aws::String& value) { m_vpcIdHasBeenSet = true; m_vpcId = value; }
-
-    /**
-     * <p>The VPC ID of the firewall subnet that violates the policy scope.</p>
-     */
-    inline void SetVpcId(Aws::String&& value) { m_vpcIdHasBeenSet = true; m_vpcId = std::move(value); }
-
-    /**
-     * <p>The VPC ID of the firewall subnet that violates the policy scope.</p>
-     */
-    inline void SetVpcId(const char* value) { m_vpcIdHasBeenSet = true; m_vpcId.assign(value); }
-
-    /**
-     * <p>The VPC ID of the firewall subnet that violates the policy scope.</p>
-     */
-    inline FirewallSubnetIsOutOfScopeViolation& WithVpcId(const Aws::String& value) { SetVpcId(value); return *this;}
-
-    /**
-     * <p>The VPC ID of the firewall subnet that violates the policy scope.</p>
-     */
-    inline FirewallSubnetIsOutOfScopeViolation& WithVpcId(Aws::String&& value) { SetVpcId(std::move(value)); return *this;}
-
-    /**
-     * <p>The VPC ID of the firewall subnet that violates the policy scope.</p>
-     */
-    inline FirewallSubnetIsOutOfScopeViolation& WithVpcId(const char* value) { SetVpcId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Availability Zone of the firewall subnet that violates the policy
      * scope.</p>
      */
-    inline const Aws::String& GetSubnetAvailabilityZone() const{ return m_subnetAvailabilityZone; }
-
-    /**
-     * <p>The Availability Zone of the firewall subnet that violates the policy
-     * scope.</p>
-     */
+    inline const Aws::String& GetSubnetAvailabilityZone() const { return m_subnetAvailabilityZone; }
     inline bool SubnetAvailabilityZoneHasBeenSet() const { return m_subnetAvailabilityZoneHasBeenSet; }
+    template<typename SubnetAvailabilityZoneT = Aws::String>
+    void SetSubnetAvailabilityZone(SubnetAvailabilityZoneT&& value) { m_subnetAvailabilityZoneHasBeenSet = true; m_subnetAvailabilityZone = std::forward<SubnetAvailabilityZoneT>(value); }
+    template<typename SubnetAvailabilityZoneT = Aws::String>
+    FirewallSubnetIsOutOfScopeViolation& WithSubnetAvailabilityZone(SubnetAvailabilityZoneT&& value) { SetSubnetAvailabilityZone(std::forward<SubnetAvailabilityZoneT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Availability Zone of the firewall subnet that violates the policy
-     * scope.</p>
-     */
-    inline void SetSubnetAvailabilityZone(const Aws::String& value) { m_subnetAvailabilityZoneHasBeenSet = true; m_subnetAvailabilityZone = value; }
-
-    /**
-     * <p>The Availability Zone of the firewall subnet that violates the policy
-     * scope.</p>
-     */
-    inline void SetSubnetAvailabilityZone(Aws::String&& value) { m_subnetAvailabilityZoneHasBeenSet = true; m_subnetAvailabilityZone = std::move(value); }
-
-    /**
-     * <p>The Availability Zone of the firewall subnet that violates the policy
-     * scope.</p>
-     */
-    inline void SetSubnetAvailabilityZone(const char* value) { m_subnetAvailabilityZoneHasBeenSet = true; m_subnetAvailabilityZone.assign(value); }
-
-    /**
-     * <p>The Availability Zone of the firewall subnet that violates the policy
-     * scope.</p>
-     */
-    inline FirewallSubnetIsOutOfScopeViolation& WithSubnetAvailabilityZone(const Aws::String& value) { SetSubnetAvailabilityZone(value); return *this;}
-
-    /**
-     * <p>The Availability Zone of the firewall subnet that violates the policy
-     * scope.</p>
-     */
-    inline FirewallSubnetIsOutOfScopeViolation& WithSubnetAvailabilityZone(Aws::String&& value) { SetSubnetAvailabilityZone(std::move(value)); return *this;}
-
-    /**
-     * <p>The Availability Zone of the firewall subnet that violates the policy
-     * scope.</p>
-     */
-    inline FirewallSubnetIsOutOfScopeViolation& WithSubnetAvailabilityZone(const char* value) { SetSubnetAvailabilityZone(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Availability Zone ID of the firewall subnet that violates the policy
      * scope.</p>
      */
-    inline const Aws::String& GetSubnetAvailabilityZoneId() const{ return m_subnetAvailabilityZoneId; }
-
-    /**
-     * <p>The Availability Zone ID of the firewall subnet that violates the policy
-     * scope.</p>
-     */
+    inline const Aws::String& GetSubnetAvailabilityZoneId() const { return m_subnetAvailabilityZoneId; }
     inline bool SubnetAvailabilityZoneIdHasBeenSet() const { return m_subnetAvailabilityZoneIdHasBeenSet; }
+    template<typename SubnetAvailabilityZoneIdT = Aws::String>
+    void SetSubnetAvailabilityZoneId(SubnetAvailabilityZoneIdT&& value) { m_subnetAvailabilityZoneIdHasBeenSet = true; m_subnetAvailabilityZoneId = std::forward<SubnetAvailabilityZoneIdT>(value); }
+    template<typename SubnetAvailabilityZoneIdT = Aws::String>
+    FirewallSubnetIsOutOfScopeViolation& WithSubnetAvailabilityZoneId(SubnetAvailabilityZoneIdT&& value) { SetSubnetAvailabilityZoneId(std::forward<SubnetAvailabilityZoneIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Availability Zone ID of the firewall subnet that violates the policy
-     * scope.</p>
-     */
-    inline void SetSubnetAvailabilityZoneId(const Aws::String& value) { m_subnetAvailabilityZoneIdHasBeenSet = true; m_subnetAvailabilityZoneId = value; }
-
-    /**
-     * <p>The Availability Zone ID of the firewall subnet that violates the policy
-     * scope.</p>
-     */
-    inline void SetSubnetAvailabilityZoneId(Aws::String&& value) { m_subnetAvailabilityZoneIdHasBeenSet = true; m_subnetAvailabilityZoneId = std::move(value); }
-
-    /**
-     * <p>The Availability Zone ID of the firewall subnet that violates the policy
-     * scope.</p>
-     */
-    inline void SetSubnetAvailabilityZoneId(const char* value) { m_subnetAvailabilityZoneIdHasBeenSet = true; m_subnetAvailabilityZoneId.assign(value); }
-
-    /**
-     * <p>The Availability Zone ID of the firewall subnet that violates the policy
-     * scope.</p>
-     */
-    inline FirewallSubnetIsOutOfScopeViolation& WithSubnetAvailabilityZoneId(const Aws::String& value) { SetSubnetAvailabilityZoneId(value); return *this;}
-
-    /**
-     * <p>The Availability Zone ID of the firewall subnet that violates the policy
-     * scope.</p>
-     */
-    inline FirewallSubnetIsOutOfScopeViolation& WithSubnetAvailabilityZoneId(Aws::String&& value) { SetSubnetAvailabilityZoneId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Availability Zone ID of the firewall subnet that violates the policy
-     * scope.</p>
-     */
-    inline FirewallSubnetIsOutOfScopeViolation& WithSubnetAvailabilityZoneId(const char* value) { SetSubnetAvailabilityZoneId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The VPC endpoint ID of the firewall subnet that violates the policy
      * scope.</p>
      */
-    inline const Aws::String& GetVpcEndpointId() const{ return m_vpcEndpointId; }
-
-    /**
-     * <p>The VPC endpoint ID of the firewall subnet that violates the policy
-     * scope.</p>
-     */
+    inline const Aws::String& GetVpcEndpointId() const { return m_vpcEndpointId; }
     inline bool VpcEndpointIdHasBeenSet() const { return m_vpcEndpointIdHasBeenSet; }
-
-    /**
-     * <p>The VPC endpoint ID of the firewall subnet that violates the policy
-     * scope.</p>
-     */
-    inline void SetVpcEndpointId(const Aws::String& value) { m_vpcEndpointIdHasBeenSet = true; m_vpcEndpointId = value; }
-
-    /**
-     * <p>The VPC endpoint ID of the firewall subnet that violates the policy
-     * scope.</p>
-     */
-    inline void SetVpcEndpointId(Aws::String&& value) { m_vpcEndpointIdHasBeenSet = true; m_vpcEndpointId = std::move(value); }
-
-    /**
-     * <p>The VPC endpoint ID of the firewall subnet that violates the policy
-     * scope.</p>
-     */
-    inline void SetVpcEndpointId(const char* value) { m_vpcEndpointIdHasBeenSet = true; m_vpcEndpointId.assign(value); }
-
-    /**
-     * <p>The VPC endpoint ID of the firewall subnet that violates the policy
-     * scope.</p>
-     */
-    inline FirewallSubnetIsOutOfScopeViolation& WithVpcEndpointId(const Aws::String& value) { SetVpcEndpointId(value); return *this;}
-
-    /**
-     * <p>The VPC endpoint ID of the firewall subnet that violates the policy
-     * scope.</p>
-     */
-    inline FirewallSubnetIsOutOfScopeViolation& WithVpcEndpointId(Aws::String&& value) { SetVpcEndpointId(std::move(value)); return *this;}
-
-    /**
-     * <p>The VPC endpoint ID of the firewall subnet that violates the policy
-     * scope.</p>
-     */
-    inline FirewallSubnetIsOutOfScopeViolation& WithVpcEndpointId(const char* value) { SetVpcEndpointId(value); return *this;}
-
+    template<typename VpcEndpointIdT = Aws::String>
+    void SetVpcEndpointId(VpcEndpointIdT&& value) { m_vpcEndpointIdHasBeenSet = true; m_vpcEndpointId = std::forward<VpcEndpointIdT>(value); }
+    template<typename VpcEndpointIdT = Aws::String>
+    FirewallSubnetIsOutOfScopeViolation& WithVpcEndpointId(VpcEndpointIdT&& value) { SetVpcEndpointId(std::forward<VpcEndpointIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_firewallSubnetId;

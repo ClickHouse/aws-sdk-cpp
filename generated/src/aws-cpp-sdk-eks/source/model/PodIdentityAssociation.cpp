@@ -18,29 +18,7 @@ namespace EKS
 namespace Model
 {
 
-PodIdentityAssociation::PodIdentityAssociation() : 
-    m_clusterNameHasBeenSet(false),
-    m_namespaceHasBeenSet(false),
-    m_serviceAccountHasBeenSet(false),
-    m_roleArnHasBeenSet(false),
-    m_associationArnHasBeenSet(false),
-    m_associationIdHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_createdAtHasBeenSet(false),
-    m_modifiedAtHasBeenSet(false)
-{
-}
-
-PodIdentityAssociation::PodIdentityAssociation(JsonView jsonValue) : 
-    m_clusterNameHasBeenSet(false),
-    m_namespaceHasBeenSet(false),
-    m_serviceAccountHasBeenSet(false),
-    m_roleArnHasBeenSet(false),
-    m_associationArnHasBeenSet(false),
-    m_associationIdHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_createdAtHasBeenSet(false),
-    m_modifiedAtHasBeenSet(false)
+PodIdentityAssociation::PodIdentityAssociation(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -50,45 +28,33 @@ PodIdentityAssociation& PodIdentityAssociation::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("clusterName"))
   {
     m_clusterName = jsonValue.GetString("clusterName");
-
     m_clusterNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("namespace"))
   {
     m_namespace = jsonValue.GetString("namespace");
-
     m_namespaceHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("serviceAccount"))
   {
     m_serviceAccount = jsonValue.GetString("serviceAccount");
-
     m_serviceAccountHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("roleArn"))
   {
     m_roleArn = jsonValue.GetString("roleArn");
-
     m_roleArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("associationArn"))
   {
     m_associationArn = jsonValue.GetString("associationArn");
-
     m_associationArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("associationId"))
   {
     m_associationId = jsonValue.GetString("associationId");
-
     m_associationIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("tags"))
   {
     Aws::Map<Aws::String, JsonView> tagsJsonMap = jsonValue.GetObject("tags").GetAllObjects();
@@ -98,21 +64,36 @@ PodIdentityAssociation& PodIdentityAssociation::operator =(JsonView jsonValue)
     }
     m_tagsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("createdAt"))
   {
     m_createdAt = jsonValue.GetDouble("createdAt");
-
     m_createdAtHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("modifiedAt"))
   {
     m_modifiedAt = jsonValue.GetDouble("modifiedAt");
-
     m_modifiedAtHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("ownerArn"))
+  {
+    m_ownerArn = jsonValue.GetString("ownerArn");
+    m_ownerArnHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("disableSessionTags"))
+  {
+    m_disableSessionTags = jsonValue.GetBool("disableSessionTags");
+    m_disableSessionTagsHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("targetRoleArn"))
+  {
+    m_targetRoleArn = jsonValue.GetString("targetRoleArn");
+    m_targetRoleArnHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("externalId"))
+  {
+    m_externalId = jsonValue.GetString("externalId");
+    m_externalIdHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -175,6 +156,30 @@ JsonValue PodIdentityAssociation::Jsonize() const
   if(m_modifiedAtHasBeenSet)
   {
    payload.WithDouble("modifiedAt", m_modifiedAt.SecondsWithMSPrecision());
+  }
+
+  if(m_ownerArnHasBeenSet)
+  {
+   payload.WithString("ownerArn", m_ownerArn);
+
+  }
+
+  if(m_disableSessionTagsHasBeenSet)
+  {
+   payload.WithBool("disableSessionTags", m_disableSessionTags);
+
+  }
+
+  if(m_targetRoleArnHasBeenSet)
+  {
+   payload.WithString("targetRoleArn", m_targetRoleArn);
+
+  }
+
+  if(m_externalIdHasBeenSet)
+  {
+   payload.WithString("externalId", m_externalId);
+
   }
 
   return payload;

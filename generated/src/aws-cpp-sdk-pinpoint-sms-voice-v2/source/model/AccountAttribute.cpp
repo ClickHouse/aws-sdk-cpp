@@ -18,17 +18,7 @@ namespace PinpointSMSVoiceV2
 namespace Model
 {
 
-AccountAttribute::AccountAttribute() : 
-    m_name(AccountAttributeName::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_valueHasBeenSet(false)
-{
-}
-
-AccountAttribute::AccountAttribute(JsonView jsonValue) : 
-    m_name(AccountAttributeName::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_valueHasBeenSet(false)
+AccountAttribute::AccountAttribute(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ AccountAttribute& AccountAttribute::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = AccountAttributeNameMapper::GetAccountAttributeNameForName(jsonValue.GetString("Name"));
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Value"))
   {
     m_value = jsonValue.GetString("Value");
-
     m_valueHasBeenSet = true;
   }
-
   return *this;
 }
 

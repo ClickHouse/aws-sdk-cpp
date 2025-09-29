@@ -18,19 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-AxisDisplayMinMaxRange::AxisDisplayMinMaxRange() : 
-    m_minimum(0.0),
-    m_minimumHasBeenSet(false),
-    m_maximum(0.0),
-    m_maximumHasBeenSet(false)
-{
-}
-
-AxisDisplayMinMaxRange::AxisDisplayMinMaxRange(JsonView jsonValue) : 
-    m_minimum(0.0),
-    m_minimumHasBeenSet(false),
-    m_maximum(0.0),
-    m_maximumHasBeenSet(false)
+AxisDisplayMinMaxRange::AxisDisplayMinMaxRange(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ AxisDisplayMinMaxRange& AxisDisplayMinMaxRange::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Minimum"))
   {
     m_minimum = jsonValue.GetDouble("Minimum");
-
     m_minimumHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Maximum"))
   {
     m_maximum = jsonValue.GetDouble("Maximum");
-
     m_maximumHasBeenSet = true;
   }
-
   return *this;
 }
 

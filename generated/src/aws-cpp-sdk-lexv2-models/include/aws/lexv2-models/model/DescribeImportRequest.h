@@ -21,7 +21,7 @@ namespace Model
   class DescribeImportRequest : public LexModelsV2Request
   {
   public:
-    AWS_LEXMODELSV2_API DescribeImportRequest();
+    AWS_LEXMODELSV2_API DescribeImportRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_LEXMODELSV2_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The unique identifier of the import to describe.</p>
      */
-    inline const Aws::String& GetImportId() const{ return m_importId; }
-
-    /**
-     * <p>The unique identifier of the import to describe.</p>
-     */
+    inline const Aws::String& GetImportId() const { return m_importId; }
     inline bool ImportIdHasBeenSet() const { return m_importIdHasBeenSet; }
-
-    /**
-     * <p>The unique identifier of the import to describe.</p>
-     */
-    inline void SetImportId(const Aws::String& value) { m_importIdHasBeenSet = true; m_importId = value; }
-
-    /**
-     * <p>The unique identifier of the import to describe.</p>
-     */
-    inline void SetImportId(Aws::String&& value) { m_importIdHasBeenSet = true; m_importId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the import to describe.</p>
-     */
-    inline void SetImportId(const char* value) { m_importIdHasBeenSet = true; m_importId.assign(value); }
-
-    /**
-     * <p>The unique identifier of the import to describe.</p>
-     */
-    inline DescribeImportRequest& WithImportId(const Aws::String& value) { SetImportId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the import to describe.</p>
-     */
-    inline DescribeImportRequest& WithImportId(Aws::String&& value) { SetImportId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the import to describe.</p>
-     */
-    inline DescribeImportRequest& WithImportId(const char* value) { SetImportId(value); return *this;}
-
+    template<typename ImportIdT = Aws::String>
+    void SetImportId(ImportIdT&& value) { m_importIdHasBeenSet = true; m_importId = std::forward<ImportIdT>(value); }
+    template<typename ImportIdT = Aws::String>
+    DescribeImportRequest& WithImportId(ImportIdT&& value) { SetImportId(std::forward<ImportIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_importId;

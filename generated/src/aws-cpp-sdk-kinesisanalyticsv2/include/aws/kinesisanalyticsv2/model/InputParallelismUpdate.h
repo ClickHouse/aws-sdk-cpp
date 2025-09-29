@@ -30,39 +30,25 @@ namespace Model
   class InputParallelismUpdate
   {
   public:
-    AWS_KINESISANALYTICSV2_API InputParallelismUpdate();
+    AWS_KINESISANALYTICSV2_API InputParallelismUpdate() = default;
     AWS_KINESISANALYTICSV2_API InputParallelismUpdate(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISANALYTICSV2_API InputParallelismUpdate& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISANALYTICSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The number of in-application streams to create for the specified streaming
      * source.</p>
      */
-    inline int GetCountUpdate() const{ return m_countUpdate; }
-
-    /**
-     * <p>The number of in-application streams to create for the specified streaming
-     * source.</p>
-     */
+    inline int GetCountUpdate() const { return m_countUpdate; }
     inline bool CountUpdateHasBeenSet() const { return m_countUpdateHasBeenSet; }
-
-    /**
-     * <p>The number of in-application streams to create for the specified streaming
-     * source.</p>
-     */
     inline void SetCountUpdate(int value) { m_countUpdateHasBeenSet = true; m_countUpdate = value; }
-
-    /**
-     * <p>The number of in-application streams to create for the specified streaming
-     * source.</p>
-     */
     inline InputParallelismUpdate& WithCountUpdate(int value) { SetCountUpdate(value); return *this;}
-
+    ///@}
   private:
 
-    int m_countUpdate;
+    int m_countUpdate{0};
     bool m_countUpdateHasBeenSet = false;
   };
 

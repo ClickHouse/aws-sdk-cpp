@@ -18,35 +18,38 @@ namespace QBusiness
 namespace Model
 {
 
-ActionReviewPayloadField::ActionReviewPayloadField() : 
-    m_allowedValuesHasBeenSet(false),
-    m_displayNameHasBeenSet(false),
-    m_displayOrder(0),
-    m_displayOrderHasBeenSet(false),
-    m_required(false),
-    m_requiredHasBeenSet(false),
-    m_type(ActionPayloadFieldType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_valueHasBeenSet(false)
-{
-}
-
-ActionReviewPayloadField::ActionReviewPayloadField(JsonView jsonValue) : 
-    m_allowedValuesHasBeenSet(false),
-    m_displayNameHasBeenSet(false),
-    m_displayOrder(0),
-    m_displayOrderHasBeenSet(false),
-    m_required(false),
-    m_requiredHasBeenSet(false),
-    m_type(ActionPayloadFieldType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_valueHasBeenSet(false)
+ActionReviewPayloadField::ActionReviewPayloadField(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 ActionReviewPayloadField& ActionReviewPayloadField::operator =(JsonView jsonValue)
 {
+  if(jsonValue.ValueExists("displayName"))
+  {
+    m_displayName = jsonValue.GetString("displayName");
+    m_displayNameHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("displayOrder"))
+  {
+    m_displayOrder = jsonValue.GetInteger("displayOrder");
+    m_displayOrderHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("displayDescription"))
+  {
+    m_displayDescription = jsonValue.GetString("displayDescription");
+    m_displayDescriptionHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("type"))
+  {
+    m_type = ActionPayloadFieldTypeMapper::GetActionPayloadFieldTypeForName(jsonValue.GetString("type"));
+    m_typeHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("value"))
+  {
+    m_value = jsonValue.GetObject("value");
+    m_valueHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("allowedValues"))
   {
     Aws::Utils::Array<JsonView> allowedValuesJsonList = jsonValue.GetArray("allowedValues");
@@ -56,59 +59,27 @@ ActionReviewPayloadField& ActionReviewPayloadField::operator =(JsonView jsonValu
     }
     m_allowedValuesHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("displayName"))
+  if(jsonValue.ValueExists("allowedFormat"))
   {
-    m_displayName = jsonValue.GetString("displayName");
-
-    m_displayNameHasBeenSet = true;
+    m_allowedFormat = jsonValue.GetString("allowedFormat");
+    m_allowedFormatHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("displayOrder"))
+  if(jsonValue.ValueExists("arrayItemJsonSchema"))
   {
-    m_displayOrder = jsonValue.GetInteger("displayOrder");
-
-    m_displayOrderHasBeenSet = true;
+    m_arrayItemJsonSchema = jsonValue.GetObject("arrayItemJsonSchema");
+    m_arrayItemJsonSchemaHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("required"))
   {
     m_required = jsonValue.GetBool("required");
-
     m_requiredHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("type"))
-  {
-    m_type = ActionPayloadFieldTypeMapper::GetActionPayloadFieldTypeForName(jsonValue.GetString("type"));
-
-    m_typeHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("value"))
-  {
-    m_value = jsonValue.GetObject("value");
-
-    m_valueHasBeenSet = true;
-  }
-
   return *this;
 }
 
 JsonValue ActionReviewPayloadField::Jsonize() const
 {
   JsonValue payload;
-
-  if(m_allowedValuesHasBeenSet)
-  {
-   Aws::Utils::Array<JsonValue> allowedValuesJsonList(m_allowedValues.size());
-   for(unsigned allowedValuesIndex = 0; allowedValuesIndex < allowedValuesJsonList.GetLength(); ++allowedValuesIndex)
-   {
-     allowedValuesJsonList[allowedValuesIndex].AsObject(m_allowedValues[allowedValuesIndex].Jsonize());
-   }
-   payload.WithArray("allowedValues", std::move(allowedValuesJsonList));
-
-  }
 
   if(m_displayNameHasBeenSet)
   {
@@ -122,9 +93,9 @@ JsonValue ActionReviewPayloadField::Jsonize() const
 
   }
 
-  if(m_requiredHasBeenSet)
+  if(m_displayDescriptionHasBeenSet)
   {
-   payload.WithBool("required", m_required);
+   payload.WithString("displayDescription", m_displayDescription);
 
   }
 
@@ -139,6 +110,37 @@ JsonValue ActionReviewPayloadField::Jsonize() const
     {
        payload.WithObject("value", JsonValue(m_value.View()));
     }
+  }
+
+  if(m_allowedValuesHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> allowedValuesJsonList(m_allowedValues.size());
+   for(unsigned allowedValuesIndex = 0; allowedValuesIndex < allowedValuesJsonList.GetLength(); ++allowedValuesIndex)
+   {
+     allowedValuesJsonList[allowedValuesIndex].AsObject(m_allowedValues[allowedValuesIndex].Jsonize());
+   }
+   payload.WithArray("allowedValues", std::move(allowedValuesJsonList));
+
+  }
+
+  if(m_allowedFormatHasBeenSet)
+  {
+   payload.WithString("allowedFormat", m_allowedFormat);
+
+  }
+
+  if(m_arrayItemJsonSchemaHasBeenSet)
+  {
+    if(!m_arrayItemJsonSchema.View().IsNull())
+    {
+       payload.WithObject("arrayItemJsonSchema", JsonValue(m_arrayItemJsonSchema.View()));
+    }
+  }
+
+  if(m_requiredHasBeenSet)
+  {
+   payload.WithBool("required", m_required);
+
   }
 
   return payload;

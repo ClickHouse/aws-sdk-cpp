@@ -10,22 +10,6 @@
 using namespace Aws::ElastiCache::Model;
 using namespace Aws::Utils;
 
-DescribeUpdateActionsRequest::DescribeUpdateActionsRequest() : 
-    m_serviceUpdateNameHasBeenSet(false),
-    m_replicationGroupIdsHasBeenSet(false),
-    m_cacheClusterIdsHasBeenSet(false),
-    m_engineHasBeenSet(false),
-    m_serviceUpdateStatusHasBeenSet(false),
-    m_serviceUpdateTimeRangeHasBeenSet(false),
-    m_updateActionStatusHasBeenSet(false),
-    m_showNodeLevelUpdateStatus(false),
-    m_showNodeLevelUpdateStatusHasBeenSet(false),
-    m_maxRecords(0),
-    m_maxRecordsHasBeenSet(false),
-    m_markerHasBeenSet(false)
-{
-}
-
 Aws::String DescribeUpdateActionsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -37,23 +21,37 @@ Aws::String DescribeUpdateActionsRequest::SerializePayload() const
 
   if(m_replicationGroupIdsHasBeenSet)
   {
-    unsigned replicationGroupIdsCount = 1;
-    for(auto& item : m_replicationGroupIds)
+    if (m_replicationGroupIds.empty())
     {
-      ss << "ReplicationGroupIds.member." << replicationGroupIdsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      replicationGroupIdsCount++;
+      ss << "ReplicationGroupIds=&";
+    }
+    else
+    {
+      unsigned replicationGroupIdsCount = 1;
+      for(auto& item : m_replicationGroupIds)
+      {
+        ss << "ReplicationGroupIds.member." << replicationGroupIdsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        replicationGroupIdsCount++;
+      }
     }
   }
 
   if(m_cacheClusterIdsHasBeenSet)
   {
-    unsigned cacheClusterIdsCount = 1;
-    for(auto& item : m_cacheClusterIds)
+    if (m_cacheClusterIds.empty())
     {
-      ss << "CacheClusterIds.member." << cacheClusterIdsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      cacheClusterIdsCount++;
+      ss << "CacheClusterIds=&";
+    }
+    else
+    {
+      unsigned cacheClusterIdsCount = 1;
+      for(auto& item : m_cacheClusterIds)
+      {
+        ss << "CacheClusterIds.member." << cacheClusterIdsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        cacheClusterIdsCount++;
+      }
     }
   }
 
@@ -64,12 +62,19 @@ Aws::String DescribeUpdateActionsRequest::SerializePayload() const
 
   if(m_serviceUpdateStatusHasBeenSet)
   {
-    unsigned serviceUpdateStatusCount = 1;
-    for(auto& item : m_serviceUpdateStatus)
+    if (m_serviceUpdateStatus.empty())
     {
-      ss << "ServiceUpdateStatus.member." << serviceUpdateStatusCount << "="
-          << StringUtils::URLEncode(ServiceUpdateStatusMapper::GetNameForServiceUpdateStatus(item).c_str()) << "&";
-      serviceUpdateStatusCount++;
+      ss << "ServiceUpdateStatus=&";
+    }
+    else
+    {
+      unsigned serviceUpdateStatusCount = 1;
+      for(auto& item : m_serviceUpdateStatus)
+      {
+        ss << "ServiceUpdateStatus.member." << serviceUpdateStatusCount << "="
+            << StringUtils::URLEncode(ServiceUpdateStatusMapper::GetNameForServiceUpdateStatus(item)) << "&";
+        serviceUpdateStatusCount++;
+      }
     }
   }
 
@@ -80,12 +85,19 @@ Aws::String DescribeUpdateActionsRequest::SerializePayload() const
 
   if(m_updateActionStatusHasBeenSet)
   {
-    unsigned updateActionStatusCount = 1;
-    for(auto& item : m_updateActionStatus)
+    if (m_updateActionStatus.empty())
     {
-      ss << "UpdateActionStatus.member." << updateActionStatusCount << "="
-          << StringUtils::URLEncode(UpdateActionStatusMapper::GetNameForUpdateActionStatus(item).c_str()) << "&";
-      updateActionStatusCount++;
+      ss << "UpdateActionStatus=&";
+    }
+    else
+    {
+      unsigned updateActionStatusCount = 1;
+      for(auto& item : m_updateActionStatus)
+      {
+        ss << "UpdateActionStatus.member." << updateActionStatusCount << "="
+            << StringUtils::URLEncode(UpdateActionStatusMapper::GetNameForUpdateActionStatus(item)) << "&";
+        updateActionStatusCount++;
+      }
     }
   }
 

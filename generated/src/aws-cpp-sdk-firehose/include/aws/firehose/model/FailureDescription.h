@@ -35,86 +35,36 @@ namespace Model
   class FailureDescription
   {
   public:
-    AWS_FIREHOSE_API FailureDescription();
+    AWS_FIREHOSE_API FailureDescription() = default;
     AWS_FIREHOSE_API FailureDescription(Aws::Utils::Json::JsonView jsonValue);
     AWS_FIREHOSE_API FailureDescription& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FIREHOSE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The type of error that caused the failure.</p>
      */
-    inline const DeliveryStreamFailureType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of error that caused the failure.</p>
-     */
+    inline DeliveryStreamFailureType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    inline void SetType(DeliveryStreamFailureType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline FailureDescription& WithType(DeliveryStreamFailureType value) { SetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of error that caused the failure.</p>
-     */
-    inline void SetType(const DeliveryStreamFailureType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of error that caused the failure.</p>
-     */
-    inline void SetType(DeliveryStreamFailureType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of error that caused the failure.</p>
-     */
-    inline FailureDescription& WithType(const DeliveryStreamFailureType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of error that caused the failure.</p>
-     */
-    inline FailureDescription& WithType(DeliveryStreamFailureType&& value) { SetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A message providing details about the error that caused the failure.</p>
      */
-    inline const Aws::String& GetDetails() const{ return m_details; }
-
-    /**
-     * <p>A message providing details about the error that caused the failure.</p>
-     */
+    inline const Aws::String& GetDetails() const { return m_details; }
     inline bool DetailsHasBeenSet() const { return m_detailsHasBeenSet; }
-
-    /**
-     * <p>A message providing details about the error that caused the failure.</p>
-     */
-    inline void SetDetails(const Aws::String& value) { m_detailsHasBeenSet = true; m_details = value; }
-
-    /**
-     * <p>A message providing details about the error that caused the failure.</p>
-     */
-    inline void SetDetails(Aws::String&& value) { m_detailsHasBeenSet = true; m_details = std::move(value); }
-
-    /**
-     * <p>A message providing details about the error that caused the failure.</p>
-     */
-    inline void SetDetails(const char* value) { m_detailsHasBeenSet = true; m_details.assign(value); }
-
-    /**
-     * <p>A message providing details about the error that caused the failure.</p>
-     */
-    inline FailureDescription& WithDetails(const Aws::String& value) { SetDetails(value); return *this;}
-
-    /**
-     * <p>A message providing details about the error that caused the failure.</p>
-     */
-    inline FailureDescription& WithDetails(Aws::String&& value) { SetDetails(std::move(value)); return *this;}
-
-    /**
-     * <p>A message providing details about the error that caused the failure.</p>
-     */
-    inline FailureDescription& WithDetails(const char* value) { SetDetails(value); return *this;}
-
+    template<typename DetailsT = Aws::String>
+    void SetDetails(DetailsT&& value) { m_detailsHasBeenSet = true; m_details = std::forward<DetailsT>(value); }
+    template<typename DetailsT = Aws::String>
+    FailureDescription& WithDetails(DetailsT&& value) { SetDetails(std::forward<DetailsT>(value)); return *this;}
+    ///@}
   private:
 
-    DeliveryStreamFailureType m_type;
+    DeliveryStreamFailureType m_type{DeliveryStreamFailureType::NOT_SET};
     bool m_typeHasBeenSet = false;
 
     Aws::String m_details;

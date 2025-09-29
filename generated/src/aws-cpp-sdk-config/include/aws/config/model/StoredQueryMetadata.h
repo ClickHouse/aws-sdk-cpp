@@ -31,183 +31,60 @@ namespace Model
   class StoredQueryMetadata
   {
   public:
-    AWS_CONFIGSERVICE_API StoredQueryMetadata();
+    AWS_CONFIGSERVICE_API StoredQueryMetadata() = default;
     AWS_CONFIGSERVICE_API StoredQueryMetadata(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONFIGSERVICE_API StoredQueryMetadata& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONFIGSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ID of the query. </p>
      */
-    inline const Aws::String& GetQueryId() const{ return m_queryId; }
-
-    /**
-     * <p>The ID of the query. </p>
-     */
+    inline const Aws::String& GetQueryId() const { return m_queryId; }
     inline bool QueryIdHasBeenSet() const { return m_queryIdHasBeenSet; }
+    template<typename QueryIdT = Aws::String>
+    void SetQueryId(QueryIdT&& value) { m_queryIdHasBeenSet = true; m_queryId = std::forward<QueryIdT>(value); }
+    template<typename QueryIdT = Aws::String>
+    StoredQueryMetadata& WithQueryId(QueryIdT&& value) { SetQueryId(std::forward<QueryIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the query. </p>
-     */
-    inline void SetQueryId(const Aws::String& value) { m_queryIdHasBeenSet = true; m_queryId = value; }
-
-    /**
-     * <p>The ID of the query. </p>
-     */
-    inline void SetQueryId(Aws::String&& value) { m_queryIdHasBeenSet = true; m_queryId = std::move(value); }
-
-    /**
-     * <p>The ID of the query. </p>
-     */
-    inline void SetQueryId(const char* value) { m_queryIdHasBeenSet = true; m_queryId.assign(value); }
-
-    /**
-     * <p>The ID of the query. </p>
-     */
-    inline StoredQueryMetadata& WithQueryId(const Aws::String& value) { SetQueryId(value); return *this;}
-
-    /**
-     * <p>The ID of the query. </p>
-     */
-    inline StoredQueryMetadata& WithQueryId(Aws::String&& value) { SetQueryId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the query. </p>
-     */
-    inline StoredQueryMetadata& WithQueryId(const char* value) { SetQueryId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Amazon Resource Name (ARN) of the query. For example,
      * arn:partition:service:region:account-id:resource-type/resource-name/resource-id.</p>
      */
-    inline const Aws::String& GetQueryArn() const{ return m_queryArn; }
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the query. For example,
-     * arn:partition:service:region:account-id:resource-type/resource-name/resource-id.</p>
-     */
+    inline const Aws::String& GetQueryArn() const { return m_queryArn; }
     inline bool QueryArnHasBeenSet() const { return m_queryArnHasBeenSet; }
+    template<typename QueryArnT = Aws::String>
+    void SetQueryArn(QueryArnT&& value) { m_queryArnHasBeenSet = true; m_queryArn = std::forward<QueryArnT>(value); }
+    template<typename QueryArnT = Aws::String>
+    StoredQueryMetadata& WithQueryArn(QueryArnT&& value) { SetQueryArn(std::forward<QueryArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Amazon Resource Name (ARN) of the query. For example,
-     * arn:partition:service:region:account-id:resource-type/resource-name/resource-id.</p>
-     */
-    inline void SetQueryArn(const Aws::String& value) { m_queryArnHasBeenSet = true; m_queryArn = value; }
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the query. For example,
-     * arn:partition:service:region:account-id:resource-type/resource-name/resource-id.</p>
-     */
-    inline void SetQueryArn(Aws::String&& value) { m_queryArnHasBeenSet = true; m_queryArn = std::move(value); }
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the query. For example,
-     * arn:partition:service:region:account-id:resource-type/resource-name/resource-id.</p>
-     */
-    inline void SetQueryArn(const char* value) { m_queryArnHasBeenSet = true; m_queryArn.assign(value); }
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the query. For example,
-     * arn:partition:service:region:account-id:resource-type/resource-name/resource-id.</p>
-     */
-    inline StoredQueryMetadata& WithQueryArn(const Aws::String& value) { SetQueryArn(value); return *this;}
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the query. For example,
-     * arn:partition:service:region:account-id:resource-type/resource-name/resource-id.</p>
-     */
-    inline StoredQueryMetadata& WithQueryArn(Aws::String&& value) { SetQueryArn(std::move(value)); return *this;}
-
-    /**
-     * <p>Amazon Resource Name (ARN) of the query. For example,
-     * arn:partition:service:region:account-id:resource-type/resource-name/resource-id.</p>
-     */
-    inline StoredQueryMetadata& WithQueryArn(const char* value) { SetQueryArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the query.</p>
      */
-    inline const Aws::String& GetQueryName() const{ return m_queryName; }
-
-    /**
-     * <p>The name of the query.</p>
-     */
+    inline const Aws::String& GetQueryName() const { return m_queryName; }
     inline bool QueryNameHasBeenSet() const { return m_queryNameHasBeenSet; }
+    template<typename QueryNameT = Aws::String>
+    void SetQueryName(QueryNameT&& value) { m_queryNameHasBeenSet = true; m_queryName = std::forward<QueryNameT>(value); }
+    template<typename QueryNameT = Aws::String>
+    StoredQueryMetadata& WithQueryName(QueryNameT&& value) { SetQueryName(std::forward<QueryNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the query.</p>
-     */
-    inline void SetQueryName(const Aws::String& value) { m_queryNameHasBeenSet = true; m_queryName = value; }
-
-    /**
-     * <p>The name of the query.</p>
-     */
-    inline void SetQueryName(Aws::String&& value) { m_queryNameHasBeenSet = true; m_queryName = std::move(value); }
-
-    /**
-     * <p>The name of the query.</p>
-     */
-    inline void SetQueryName(const char* value) { m_queryNameHasBeenSet = true; m_queryName.assign(value); }
-
-    /**
-     * <p>The name of the query.</p>
-     */
-    inline StoredQueryMetadata& WithQueryName(const Aws::String& value) { SetQueryName(value); return *this;}
-
-    /**
-     * <p>The name of the query.</p>
-     */
-    inline StoredQueryMetadata& WithQueryName(Aws::String&& value) { SetQueryName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the query.</p>
-     */
-    inline StoredQueryMetadata& WithQueryName(const char* value) { SetQueryName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A unique description for the query.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>A unique description for the query.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
-
-    /**
-     * <p>A unique description for the query.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>A unique description for the query.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>A unique description for the query.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>A unique description for the query.</p>
-     */
-    inline StoredQueryMetadata& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A unique description for the query.</p>
-     */
-    inline StoredQueryMetadata& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique description for the query.</p>
-     */
-    inline StoredQueryMetadata& WithDescription(const char* value) { SetDescription(value); return *this;}
-
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    StoredQueryMetadata& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_queryId;

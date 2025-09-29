@@ -28,44 +28,27 @@ namespace Model
   class PolicyStatus
   {
   public:
-    AWS_S3CRT_API PolicyStatus();
+    AWS_S3CRT_API PolicyStatus() = default;
     AWS_S3CRT_API PolicyStatus(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3CRT_API PolicyStatus& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3CRT_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>The policy status for this bucket. <code>TRUE</code> indicates that this
      * bucket is public. <code>FALSE</code> indicates that the bucket is not
      * public.</p>
      */
-    inline bool GetIsPublic() const{ return m_isPublic; }
-
-    /**
-     * <p>The policy status for this bucket. <code>TRUE</code> indicates that this
-     * bucket is public. <code>FALSE</code> indicates that the bucket is not
-     * public.</p>
-     */
+    inline bool GetIsPublic() const { return m_isPublic; }
     inline bool IsPublicHasBeenSet() const { return m_isPublicHasBeenSet; }
-
-    /**
-     * <p>The policy status for this bucket. <code>TRUE</code> indicates that this
-     * bucket is public. <code>FALSE</code> indicates that the bucket is not
-     * public.</p>
-     */
     inline void SetIsPublic(bool value) { m_isPublicHasBeenSet = true; m_isPublic = value; }
-
-    /**
-     * <p>The policy status for this bucket. <code>TRUE</code> indicates that this
-     * bucket is public. <code>FALSE</code> indicates that the bucket is not
-     * public.</p>
-     */
     inline PolicyStatus& WithIsPublic(bool value) { SetIsPublic(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_isPublic;
+    bool m_isPublic{false};
     bool m_isPublicHasBeenSet = false;
   };
 

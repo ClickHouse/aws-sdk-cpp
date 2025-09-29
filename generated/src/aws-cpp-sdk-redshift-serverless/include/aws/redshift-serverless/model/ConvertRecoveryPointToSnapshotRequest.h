@@ -23,7 +23,7 @@ namespace Model
   class ConvertRecoveryPointToSnapshotRequest : public RedshiftServerlessRequest
   {
   public:
-    AWS_REDSHIFTSERVERLESS_API ConvertRecoveryPointToSnapshotRequest();
+    AWS_REDSHIFTSERVERLESS_API ConvertRecoveryPointToSnapshotRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,171 +36,61 @@ namespace Model
     AWS_REDSHIFTSERVERLESS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The unique identifier of the recovery point.</p>
      */
-    inline const Aws::String& GetRecoveryPointId() const{ return m_recoveryPointId; }
-
-    /**
-     * <p>The unique identifier of the recovery point.</p>
-     */
+    inline const Aws::String& GetRecoveryPointId() const { return m_recoveryPointId; }
     inline bool RecoveryPointIdHasBeenSet() const { return m_recoveryPointIdHasBeenSet; }
+    template<typename RecoveryPointIdT = Aws::String>
+    void SetRecoveryPointId(RecoveryPointIdT&& value) { m_recoveryPointIdHasBeenSet = true; m_recoveryPointId = std::forward<RecoveryPointIdT>(value); }
+    template<typename RecoveryPointIdT = Aws::String>
+    ConvertRecoveryPointToSnapshotRequest& WithRecoveryPointId(RecoveryPointIdT&& value) { SetRecoveryPointId(std::forward<RecoveryPointIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier of the recovery point.</p>
-     */
-    inline void SetRecoveryPointId(const Aws::String& value) { m_recoveryPointIdHasBeenSet = true; m_recoveryPointId = value; }
-
-    /**
-     * <p>The unique identifier of the recovery point.</p>
-     */
-    inline void SetRecoveryPointId(Aws::String&& value) { m_recoveryPointIdHasBeenSet = true; m_recoveryPointId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the recovery point.</p>
-     */
-    inline void SetRecoveryPointId(const char* value) { m_recoveryPointIdHasBeenSet = true; m_recoveryPointId.assign(value); }
-
-    /**
-     * <p>The unique identifier of the recovery point.</p>
-     */
-    inline ConvertRecoveryPointToSnapshotRequest& WithRecoveryPointId(const Aws::String& value) { SetRecoveryPointId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the recovery point.</p>
-     */
-    inline ConvertRecoveryPointToSnapshotRequest& WithRecoveryPointId(Aws::String&& value) { SetRecoveryPointId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the recovery point.</p>
-     */
-    inline ConvertRecoveryPointToSnapshotRequest& WithRecoveryPointId(const char* value) { SetRecoveryPointId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>How long to retain the snapshot.</p>
      */
-    inline int GetRetentionPeriod() const{ return m_retentionPeriod; }
-
-    /**
-     * <p>How long to retain the snapshot.</p>
-     */
+    inline int GetRetentionPeriod() const { return m_retentionPeriod; }
     inline bool RetentionPeriodHasBeenSet() const { return m_retentionPeriodHasBeenSet; }
-
-    /**
-     * <p>How long to retain the snapshot.</p>
-     */
     inline void SetRetentionPeriod(int value) { m_retentionPeriodHasBeenSet = true; m_retentionPeriod = value; }
-
-    /**
-     * <p>How long to retain the snapshot.</p>
-     */
     inline ConvertRecoveryPointToSnapshotRequest& WithRetentionPeriod(int value) { SetRetentionPeriod(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The name of the snapshot.</p>
      */
-    inline const Aws::String& GetSnapshotName() const{ return m_snapshotName; }
-
-    /**
-     * <p>The name of the snapshot.</p>
-     */
+    inline const Aws::String& GetSnapshotName() const { return m_snapshotName; }
     inline bool SnapshotNameHasBeenSet() const { return m_snapshotNameHasBeenSet; }
+    template<typename SnapshotNameT = Aws::String>
+    void SetSnapshotName(SnapshotNameT&& value) { m_snapshotNameHasBeenSet = true; m_snapshotName = std::forward<SnapshotNameT>(value); }
+    template<typename SnapshotNameT = Aws::String>
+    ConvertRecoveryPointToSnapshotRequest& WithSnapshotName(SnapshotNameT&& value) { SetSnapshotName(std::forward<SnapshotNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the snapshot.</p>
-     */
-    inline void SetSnapshotName(const Aws::String& value) { m_snapshotNameHasBeenSet = true; m_snapshotName = value; }
-
-    /**
-     * <p>The name of the snapshot.</p>
-     */
-    inline void SetSnapshotName(Aws::String&& value) { m_snapshotNameHasBeenSet = true; m_snapshotName = std::move(value); }
-
-    /**
-     * <p>The name of the snapshot.</p>
-     */
-    inline void SetSnapshotName(const char* value) { m_snapshotNameHasBeenSet = true; m_snapshotName.assign(value); }
-
-    /**
-     * <p>The name of the snapshot.</p>
-     */
-    inline ConvertRecoveryPointToSnapshotRequest& WithSnapshotName(const Aws::String& value) { SetSnapshotName(value); return *this;}
-
-    /**
-     * <p>The name of the snapshot.</p>
-     */
-    inline ConvertRecoveryPointToSnapshotRequest& WithSnapshotName(Aws::String&& value) { SetSnapshotName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the snapshot.</p>
-     */
-    inline ConvertRecoveryPointToSnapshotRequest& WithSnapshotName(const char* value) { SetSnapshotName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An array of <a
      * href="https://docs.aws.amazon.com/redshift-serverless/latest/APIReference/API_Tag.html">Tag
      * objects</a> to associate with the created snapshot.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>An array of <a
-     * href="https://docs.aws.amazon.com/redshift-serverless/latest/APIReference/API_Tag.html">Tag
-     * objects</a> to associate with the created snapshot.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>An array of <a
-     * href="https://docs.aws.amazon.com/redshift-serverless/latest/APIReference/API_Tag.html">Tag
-     * objects</a> to associate with the created snapshot.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>An array of <a
-     * href="https://docs.aws.amazon.com/redshift-serverless/latest/APIReference/API_Tag.html">Tag
-     * objects</a> to associate with the created snapshot.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>An array of <a
-     * href="https://docs.aws.amazon.com/redshift-serverless/latest/APIReference/API_Tag.html">Tag
-     * objects</a> to associate with the created snapshot.</p>
-     */
-    inline ConvertRecoveryPointToSnapshotRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>An array of <a
-     * href="https://docs.aws.amazon.com/redshift-serverless/latest/APIReference/API_Tag.html">Tag
-     * objects</a> to associate with the created snapshot.</p>
-     */
-    inline ConvertRecoveryPointToSnapshotRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of <a
-     * href="https://docs.aws.amazon.com/redshift-serverless/latest/APIReference/API_Tag.html">Tag
-     * objects</a> to associate with the created snapshot.</p>
-     */
-    inline ConvertRecoveryPointToSnapshotRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>An array of <a
-     * href="https://docs.aws.amazon.com/redshift-serverless/latest/APIReference/API_Tag.html">Tag
-     * objects</a> to associate with the created snapshot.</p>
-     */
-    inline ConvertRecoveryPointToSnapshotRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    ConvertRecoveryPointToSnapshotRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    ConvertRecoveryPointToSnapshotRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_recoveryPointId;
     bool m_recoveryPointIdHasBeenSet = false;
 
-    int m_retentionPeriod;
+    int m_retentionPeriod{0};
     bool m_retentionPeriodHasBeenSet = false;
 
     Aws::String m_snapshotName;

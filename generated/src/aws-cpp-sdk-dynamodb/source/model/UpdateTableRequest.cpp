@@ -12,23 +12,6 @@ using namespace Aws::DynamoDB::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateTableRequest::UpdateTableRequest() : 
-    m_attributeDefinitionsHasBeenSet(false),
-    m_tableNameHasBeenSet(false),
-    m_billingMode(BillingMode::NOT_SET),
-    m_billingModeHasBeenSet(false),
-    m_provisionedThroughputHasBeenSet(false),
-    m_globalSecondaryIndexUpdatesHasBeenSet(false),
-    m_streamSpecificationHasBeenSet(false),
-    m_sSESpecificationHasBeenSet(false),
-    m_replicaUpdatesHasBeenSet(false),
-    m_tableClass(TableClass::NOT_SET),
-    m_tableClassHasBeenSet(false),
-    m_deletionProtectionEnabled(false),
-    m_deletionProtectionEnabledHasBeenSet(false)
-{
-}
-
 Aws::String UpdateTableRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -106,6 +89,34 @@ Aws::String UpdateTableRequest::SerializePayload() const
 
   }
 
+  if(m_multiRegionConsistencyHasBeenSet)
+  {
+   payload.WithString("MultiRegionConsistency", MultiRegionConsistencyMapper::GetNameForMultiRegionConsistency(m_multiRegionConsistency));
+  }
+
+  if(m_globalTableWitnessUpdatesHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> globalTableWitnessUpdatesJsonList(m_globalTableWitnessUpdates.size());
+   for(unsigned globalTableWitnessUpdatesIndex = 0; globalTableWitnessUpdatesIndex < globalTableWitnessUpdatesJsonList.GetLength(); ++globalTableWitnessUpdatesIndex)
+   {
+     globalTableWitnessUpdatesJsonList[globalTableWitnessUpdatesIndex].AsObject(m_globalTableWitnessUpdates[globalTableWitnessUpdatesIndex].Jsonize());
+   }
+   payload.WithArray("GlobalTableWitnessUpdates", std::move(globalTableWitnessUpdatesJsonList));
+
+  }
+
+  if(m_onDemandThroughputHasBeenSet)
+  {
+   payload.WithObject("OnDemandThroughput", m_onDemandThroughput.Jsonize());
+
+  }
+
+  if(m_warmThroughputHasBeenSet)
+  {
+   payload.WithObject("WarmThroughput", m_warmThroughput.Jsonize());
+
+  }
+
   return payload.View().WriteReadable();
 }
 
@@ -118,5 +129,15 @@ Aws::Http::HeaderValueCollection UpdateTableRequest::GetRequestSpecificHeaders()
 }
 
 
+
+UpdateTableRequest::EndpointParameters UpdateTableRequest::GetEndpointContextParams() const
+{
+    EndpointParameters parameters;
+    // Operation context parameters
+    if (TableNameHasBeenSet()) {
+        parameters.emplace_back(Aws::String("ResourceArn"), this->GetTableName(), Aws::Endpoint::EndpointParameter::ParameterOrigin::OPERATION_CONTEXT);
+    }
+    return parameters;
+}
 
 

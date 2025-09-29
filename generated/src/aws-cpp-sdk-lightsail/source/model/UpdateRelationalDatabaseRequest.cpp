@@ -12,25 +12,6 @@ using namespace Aws::Lightsail::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateRelationalDatabaseRequest::UpdateRelationalDatabaseRequest() : 
-    m_relationalDatabaseNameHasBeenSet(false),
-    m_masterUserPasswordHasBeenSet(false),
-    m_rotateMasterUserPassword(false),
-    m_rotateMasterUserPasswordHasBeenSet(false),
-    m_preferredBackupWindowHasBeenSet(false),
-    m_preferredMaintenanceWindowHasBeenSet(false),
-    m_enableBackupRetention(false),
-    m_enableBackupRetentionHasBeenSet(false),
-    m_disableBackupRetention(false),
-    m_disableBackupRetentionHasBeenSet(false),
-    m_publiclyAccessible(false),
-    m_publiclyAccessibleHasBeenSet(false),
-    m_applyImmediately(false),
-    m_applyImmediatelyHasBeenSet(false),
-    m_caCertificateIdentifierHasBeenSet(false)
-{
-}
-
 Aws::String UpdateRelationalDatabaseRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -92,6 +73,12 @@ Aws::String UpdateRelationalDatabaseRequest::SerializePayload() const
   if(m_caCertificateIdentifierHasBeenSet)
   {
    payload.WithString("caCertificateIdentifier", m_caCertificateIdentifier);
+
+  }
+
+  if(m_relationalDatabaseBlueprintIdHasBeenSet)
+  {
+   payload.WithString("relationalDatabaseBlueprintId", m_relationalDatabaseBlueprintId);
 
   }
 

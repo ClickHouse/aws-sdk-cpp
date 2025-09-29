@@ -26,6 +26,7 @@ namespace Aws
         static const int DESTINATION_COUNTRY_BLOCKED_HASH = HashingUtils::HashString("DESTINATION_COUNTRY_BLOCKED");
         static const int FIELD_VALIDATION_FAILED_HASH = HashingUtils::HashString("FIELD_VALIDATION_FAILED");
         static const int ATTACHMENT_TYPE_NOT_SUPPORTED_HASH = HashingUtils::HashString("ATTACHMENT_TYPE_NOT_SUPPORTED");
+        static const int INTERNATIONAL_SENDING_NOT_SUPPORTED_HASH = HashingUtils::HashString("INTERNATIONAL_SENDING_NOT_SUPPORTED");
         static const int INVALID_ARN_HASH = HashingUtils::HashString("INVALID_ARN");
         static const int INVALID_FILTER_VALUES_HASH = HashingUtils::HashString("INVALID_FILTER_VALUES");
         static const int INVALID_IDENTITY_FOR_DESTINATION_COUNTRY_HASH = HashingUtils::HashString("INVALID_IDENTITY_FOR_DESTINATION_COUNTRY");
@@ -34,6 +35,7 @@ namespace Aws
         static const int INVALID_REQUEST_HASH = HashingUtils::HashString("INVALID_REQUEST");
         static const int INVALID_REGISTRATION_ASSOCIATION_HASH = HashingUtils::HashString("INVALID_REGISTRATION_ASSOCIATION");
         static const int MAXIMUM_SIZE_EXCEEDED_HASH = HashingUtils::HashString("MAXIMUM_SIZE_EXCEEDED");
+        static const int MEDIA_TYPE_NOT_SUPPORTED_HASH = HashingUtils::HashString("MEDIA_TYPE_NOT_SUPPORTED");
         static const int MISSING_PARAMETER_HASH = HashingUtils::HashString("MISSING_PARAMETER");
         static const int PARAMETERS_CANNOT_BE_USED_TOGETHER_HASH = HashingUtils::HashString("PARAMETERS_CANNOT_BE_USED_TOGETHER");
         static const int PHONE_NUMBER_CANNOT_BE_OPTED_IN_HASH = HashingUtils::HashString("PHONE_NUMBER_CANNOT_BE_OPTED_IN");
@@ -57,6 +59,7 @@ namespace Aws
         static const int REGISTRATION_FIELD_CANNOT_BE_DELETED_HASH = HashingUtils::HashString("REGISTRATION_FIELD_CANNOT_BE_DELETED");
         static const int VERIFICATION_CODE_MISMATCH_HASH = HashingUtils::HashString("VERIFICATION_CODE_MISMATCH");
         static const int VOICE_CAPABILITY_NOT_AVAILABLE_HASH = HashingUtils::HashString("VOICE_CAPABILITY_NOT_AVAILABLE");
+        static const int UNSPECIFIED_PARAMETER_NOT_SUPPORTED_HASH = HashingUtils::HashString("UNSPECIFIED_PARAMETER_NOT_SUPPORTED");
         static const int OTHER_HASH = HashingUtils::HashString("OTHER");
 
 
@@ -86,6 +89,10 @@ namespace Aws
           else if (hashCode == ATTACHMENT_TYPE_NOT_SUPPORTED_HASH)
           {
             return ValidationExceptionReason::ATTACHMENT_TYPE_NOT_SUPPORTED;
+          }
+          else if (hashCode == INTERNATIONAL_SENDING_NOT_SUPPORTED_HASH)
+          {
+            return ValidationExceptionReason::INTERNATIONAL_SENDING_NOT_SUPPORTED;
           }
           else if (hashCode == INVALID_ARN_HASH)
           {
@@ -118,6 +125,10 @@ namespace Aws
           else if (hashCode == MAXIMUM_SIZE_EXCEEDED_HASH)
           {
             return ValidationExceptionReason::MAXIMUM_SIZE_EXCEEDED;
+          }
+          else if (hashCode == MEDIA_TYPE_NOT_SUPPORTED_HASH)
+          {
+            return ValidationExceptionReason::MEDIA_TYPE_NOT_SUPPORTED;
           }
           else if (hashCode == MISSING_PARAMETER_HASH)
           {
@@ -211,6 +222,10 @@ namespace Aws
           {
             return ValidationExceptionReason::VOICE_CAPABILITY_NOT_AVAILABLE;
           }
+          else if (hashCode == UNSPECIFIED_PARAMETER_NOT_SUPPORTED_HASH)
+          {
+            return ValidationExceptionReason::UNSPECIFIED_PARAMETER_NOT_SUPPORTED;
+          }
           else if (hashCode == OTHER_HASH)
           {
             return ValidationExceptionReason::OTHER;
@@ -243,6 +258,8 @@ namespace Aws
             return "FIELD_VALIDATION_FAILED";
           case ValidationExceptionReason::ATTACHMENT_TYPE_NOT_SUPPORTED:
             return "ATTACHMENT_TYPE_NOT_SUPPORTED";
+          case ValidationExceptionReason::INTERNATIONAL_SENDING_NOT_SUPPORTED:
+            return "INTERNATIONAL_SENDING_NOT_SUPPORTED";
           case ValidationExceptionReason::INVALID_ARN:
             return "INVALID_ARN";
           case ValidationExceptionReason::INVALID_FILTER_VALUES:
@@ -259,6 +276,8 @@ namespace Aws
             return "INVALID_REGISTRATION_ASSOCIATION";
           case ValidationExceptionReason::MAXIMUM_SIZE_EXCEEDED:
             return "MAXIMUM_SIZE_EXCEEDED";
+          case ValidationExceptionReason::MEDIA_TYPE_NOT_SUPPORTED:
+            return "MEDIA_TYPE_NOT_SUPPORTED";
           case ValidationExceptionReason::MISSING_PARAMETER:
             return "MISSING_PARAMETER";
           case ValidationExceptionReason::PARAMETERS_CANNOT_BE_USED_TOGETHER:
@@ -305,6 +324,8 @@ namespace Aws
             return "VERIFICATION_CODE_MISMATCH";
           case ValidationExceptionReason::VOICE_CAPABILITY_NOT_AVAILABLE:
             return "VOICE_CAPABILITY_NOT_AVAILABLE";
+          case ValidationExceptionReason::UNSPECIFIED_PARAMETER_NOT_SUPPORTED:
+            return "UNSPECIFIED_PARAMETER_NOT_SUPPORTED";
           case ValidationExceptionReason::OTHER:
             return "OTHER";
           default:

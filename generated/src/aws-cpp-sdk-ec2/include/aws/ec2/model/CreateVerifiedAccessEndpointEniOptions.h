@@ -8,6 +8,8 @@
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/ec2/model/VerifiedAccessEndpointProtocol.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/ec2/model/CreateVerifiedAccessEndpointPortRange.h>
 #include <utility>
 
 namespace Aws
@@ -34,7 +36,7 @@ namespace Model
   class CreateVerifiedAccessEndpointEniOptions
   {
   public:
-    AWS_EC2_API CreateVerifiedAccessEndpointEniOptions();
+    AWS_EC2_API CreateVerifiedAccessEndpointEniOptions() = default;
     AWS_EC2_API CreateVerifiedAccessEndpointEniOptions(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API CreateVerifiedAccessEndpointEniOptions& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -42,108 +44,64 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The ID of the network interface.</p>
      */
-    inline const Aws::String& GetNetworkInterfaceId() const{ return m_networkInterfaceId; }
-
-    /**
-     * <p>The ID of the network interface.</p>
-     */
+    inline const Aws::String& GetNetworkInterfaceId() const { return m_networkInterfaceId; }
     inline bool NetworkInterfaceIdHasBeenSet() const { return m_networkInterfaceIdHasBeenSet; }
+    template<typename NetworkInterfaceIdT = Aws::String>
+    void SetNetworkInterfaceId(NetworkInterfaceIdT&& value) { m_networkInterfaceIdHasBeenSet = true; m_networkInterfaceId = std::forward<NetworkInterfaceIdT>(value); }
+    template<typename NetworkInterfaceIdT = Aws::String>
+    CreateVerifiedAccessEndpointEniOptions& WithNetworkInterfaceId(NetworkInterfaceIdT&& value) { SetNetworkInterfaceId(std::forward<NetworkInterfaceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the network interface.</p>
-     */
-    inline void SetNetworkInterfaceId(const Aws::String& value) { m_networkInterfaceIdHasBeenSet = true; m_networkInterfaceId = value; }
-
-    /**
-     * <p>The ID of the network interface.</p>
-     */
-    inline void SetNetworkInterfaceId(Aws::String&& value) { m_networkInterfaceIdHasBeenSet = true; m_networkInterfaceId = std::move(value); }
-
-    /**
-     * <p>The ID of the network interface.</p>
-     */
-    inline void SetNetworkInterfaceId(const char* value) { m_networkInterfaceIdHasBeenSet = true; m_networkInterfaceId.assign(value); }
-
-    /**
-     * <p>The ID of the network interface.</p>
-     */
-    inline CreateVerifiedAccessEndpointEniOptions& WithNetworkInterfaceId(const Aws::String& value) { SetNetworkInterfaceId(value); return *this;}
-
-    /**
-     * <p>The ID of the network interface.</p>
-     */
-    inline CreateVerifiedAccessEndpointEniOptions& WithNetworkInterfaceId(Aws::String&& value) { SetNetworkInterfaceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the network interface.</p>
-     */
-    inline CreateVerifiedAccessEndpointEniOptions& WithNetworkInterfaceId(const char* value) { SetNetworkInterfaceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The IP protocol.</p>
      */
-    inline const VerifiedAccessEndpointProtocol& GetProtocol() const{ return m_protocol; }
-
-    /**
-     * <p>The IP protocol.</p>
-     */
+    inline VerifiedAccessEndpointProtocol GetProtocol() const { return m_protocol; }
     inline bool ProtocolHasBeenSet() const { return m_protocolHasBeenSet; }
+    inline void SetProtocol(VerifiedAccessEndpointProtocol value) { m_protocolHasBeenSet = true; m_protocol = value; }
+    inline CreateVerifiedAccessEndpointEniOptions& WithProtocol(VerifiedAccessEndpointProtocol value) { SetProtocol(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The IP protocol.</p>
-     */
-    inline void SetProtocol(const VerifiedAccessEndpointProtocol& value) { m_protocolHasBeenSet = true; m_protocol = value; }
-
-    /**
-     * <p>The IP protocol.</p>
-     */
-    inline void SetProtocol(VerifiedAccessEndpointProtocol&& value) { m_protocolHasBeenSet = true; m_protocol = std::move(value); }
-
-    /**
-     * <p>The IP protocol.</p>
-     */
-    inline CreateVerifiedAccessEndpointEniOptions& WithProtocol(const VerifiedAccessEndpointProtocol& value) { SetProtocol(value); return *this;}
-
-    /**
-     * <p>The IP protocol.</p>
-     */
-    inline CreateVerifiedAccessEndpointEniOptions& WithProtocol(VerifiedAccessEndpointProtocol&& value) { SetProtocol(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The IP port number.</p>
      */
-    inline int GetPort() const{ return m_port; }
-
-    /**
-     * <p>The IP port number.</p>
-     */
+    inline int GetPort() const { return m_port; }
     inline bool PortHasBeenSet() const { return m_portHasBeenSet; }
-
-    /**
-     * <p>The IP port number.</p>
-     */
     inline void SetPort(int value) { m_portHasBeenSet = true; m_port = value; }
-
-    /**
-     * <p>The IP port number.</p>
-     */
     inline CreateVerifiedAccessEndpointEniOptions& WithPort(int value) { SetPort(value); return *this;}
+    ///@}
 
+    ///@{
+    /**
+     * <p>The port ranges.</p>
+     */
+    inline const Aws::Vector<CreateVerifiedAccessEndpointPortRange>& GetPortRanges() const { return m_portRanges; }
+    inline bool PortRangesHasBeenSet() const { return m_portRangesHasBeenSet; }
+    template<typename PortRangesT = Aws::Vector<CreateVerifiedAccessEndpointPortRange>>
+    void SetPortRanges(PortRangesT&& value) { m_portRangesHasBeenSet = true; m_portRanges = std::forward<PortRangesT>(value); }
+    template<typename PortRangesT = Aws::Vector<CreateVerifiedAccessEndpointPortRange>>
+    CreateVerifiedAccessEndpointEniOptions& WithPortRanges(PortRangesT&& value) { SetPortRanges(std::forward<PortRangesT>(value)); return *this;}
+    template<typename PortRangesT = CreateVerifiedAccessEndpointPortRange>
+    CreateVerifiedAccessEndpointEniOptions& AddPortRanges(PortRangesT&& value) { m_portRangesHasBeenSet = true; m_portRanges.emplace_back(std::forward<PortRangesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_networkInterfaceId;
     bool m_networkInterfaceIdHasBeenSet = false;
 
-    VerifiedAccessEndpointProtocol m_protocol;
+    VerifiedAccessEndpointProtocol m_protocol{VerifiedAccessEndpointProtocol::NOT_SET};
     bool m_protocolHasBeenSet = false;
 
-    int m_port;
+    int m_port{0};
     bool m_portHasBeenSet = false;
+
+    Aws::Vector<CreateVerifiedAccessEndpointPortRange> m_portRanges;
+    bool m_portRangesHasBeenSet = false;
   };
 
 } // namespace Model

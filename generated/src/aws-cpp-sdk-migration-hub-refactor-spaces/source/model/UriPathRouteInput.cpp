@@ -18,27 +18,7 @@ namespace MigrationHubRefactorSpaces
 namespace Model
 {
 
-UriPathRouteInput::UriPathRouteInput() : 
-    m_activationState(RouteActivationState::NOT_SET),
-    m_activationStateHasBeenSet(false),
-    m_appendSourcePath(false),
-    m_appendSourcePathHasBeenSet(false),
-    m_includeChildPaths(false),
-    m_includeChildPathsHasBeenSet(false),
-    m_methodsHasBeenSet(false),
-    m_sourcePathHasBeenSet(false)
-{
-}
-
-UriPathRouteInput::UriPathRouteInput(JsonView jsonValue) : 
-    m_activationState(RouteActivationState::NOT_SET),
-    m_activationStateHasBeenSet(false),
-    m_appendSourcePath(false),
-    m_appendSourcePathHasBeenSet(false),
-    m_includeChildPaths(false),
-    m_includeChildPathsHasBeenSet(false),
-    m_methodsHasBeenSet(false),
-    m_sourcePathHasBeenSet(false)
+UriPathRouteInput::UriPathRouteInput(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -48,24 +28,18 @@ UriPathRouteInput& UriPathRouteInput::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ActivationState"))
   {
     m_activationState = RouteActivationStateMapper::GetRouteActivationStateForName(jsonValue.GetString("ActivationState"));
-
     m_activationStateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AppendSourcePath"))
   {
     m_appendSourcePath = jsonValue.GetBool("AppendSourcePath");
-
     m_appendSourcePathHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("IncludeChildPaths"))
   {
     m_includeChildPaths = jsonValue.GetBool("IncludeChildPaths");
-
     m_includeChildPathsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Methods"))
   {
     Aws::Utils::Array<JsonView> methodsJsonList = jsonValue.GetArray("Methods");
@@ -75,14 +49,11 @@ UriPathRouteInput& UriPathRouteInput::operator =(JsonView jsonValue)
     }
     m_methodsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SourcePath"))
   {
     m_sourcePath = jsonValue.GetString("SourcePath");
-
     m_sourcePathHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -37,60 +37,24 @@ namespace Model
   class PinpointDestination
   {
   public:
-    AWS_SESV2_API PinpointDestination();
+    AWS_SESV2_API PinpointDestination() = default;
     AWS_SESV2_API PinpointDestination(Aws::Utils::Json::JsonView jsonValue);
     AWS_SESV2_API PinpointDestination& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SESV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the Amazon Pinpoint project to send email
      * events to.</p>
      */
-    inline const Aws::String& GetApplicationArn() const{ return m_applicationArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon Pinpoint project to send email
-     * events to.</p>
-     */
+    inline const Aws::String& GetApplicationArn() const { return m_applicationArn; }
     inline bool ApplicationArnHasBeenSet() const { return m_applicationArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon Pinpoint project to send email
-     * events to.</p>
-     */
-    inline void SetApplicationArn(const Aws::String& value) { m_applicationArnHasBeenSet = true; m_applicationArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon Pinpoint project to send email
-     * events to.</p>
-     */
-    inline void SetApplicationArn(Aws::String&& value) { m_applicationArnHasBeenSet = true; m_applicationArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon Pinpoint project to send email
-     * events to.</p>
-     */
-    inline void SetApplicationArn(const char* value) { m_applicationArnHasBeenSet = true; m_applicationArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon Pinpoint project to send email
-     * events to.</p>
-     */
-    inline PinpointDestination& WithApplicationArn(const Aws::String& value) { SetApplicationArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon Pinpoint project to send email
-     * events to.</p>
-     */
-    inline PinpointDestination& WithApplicationArn(Aws::String&& value) { SetApplicationArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon Pinpoint project to send email
-     * events to.</p>
-     */
-    inline PinpointDestination& WithApplicationArn(const char* value) { SetApplicationArn(value); return *this;}
-
+    template<typename ApplicationArnT = Aws::String>
+    void SetApplicationArn(ApplicationArnT&& value) { m_applicationArnHasBeenSet = true; m_applicationArn = std::forward<ApplicationArnT>(value); }
+    template<typename ApplicationArnT = Aws::String>
+    PinpointDestination& WithApplicationArn(ApplicationArnT&& value) { SetApplicationArn(std::forward<ApplicationArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_applicationArn;

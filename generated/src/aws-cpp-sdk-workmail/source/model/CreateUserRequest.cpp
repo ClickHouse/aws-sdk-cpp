@@ -12,20 +12,6 @@ using namespace Aws::WorkMail::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateUserRequest::CreateUserRequest() : 
-    m_organizationIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_displayNameHasBeenSet(false),
-    m_passwordHasBeenSet(false),
-    m_role(UserRole::NOT_SET),
-    m_roleHasBeenSet(false),
-    m_firstNameHasBeenSet(false),
-    m_lastNameHasBeenSet(false),
-    m_hiddenFromGlobalAddressList(false),
-    m_hiddenFromGlobalAddressListHasBeenSet(false)
-{
-}
-
 Aws::String CreateUserRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -74,6 +60,12 @@ Aws::String CreateUserRequest::SerializePayload() const
   if(m_hiddenFromGlobalAddressListHasBeenSet)
   {
    payload.WithBool("HiddenFromGlobalAddressList", m_hiddenFromGlobalAddressList);
+
+  }
+
+  if(m_identityProviderUserIdHasBeenSet)
+  {
+   payload.WithString("IdentityProviderUserId", m_identityProviderUserId);
 
   }
 

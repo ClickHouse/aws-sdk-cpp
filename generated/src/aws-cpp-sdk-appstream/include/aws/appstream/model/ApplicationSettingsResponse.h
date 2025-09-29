@@ -32,153 +32,53 @@ namespace Model
   class ApplicationSettingsResponse
   {
   public:
-    AWS_APPSTREAM_API ApplicationSettingsResponse();
+    AWS_APPSTREAM_API ApplicationSettingsResponse() = default;
     AWS_APPSTREAM_API ApplicationSettingsResponse(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPSTREAM_API ApplicationSettingsResponse& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPSTREAM_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specifies whether persistent application settings are enabled for users
      * during their streaming sessions.</p>
      */
-    inline bool GetEnabled() const{ return m_enabled; }
-
-    /**
-     * <p>Specifies whether persistent application settings are enabled for users
-     * during their streaming sessions.</p>
-     */
+    inline bool GetEnabled() const { return m_enabled; }
     inline bool EnabledHasBeenSet() const { return m_enabledHasBeenSet; }
-
-    /**
-     * <p>Specifies whether persistent application settings are enabled for users
-     * during their streaming sessions.</p>
-     */
     inline void SetEnabled(bool value) { m_enabledHasBeenSet = true; m_enabled = value; }
-
-    /**
-     * <p>Specifies whether persistent application settings are enabled for users
-     * during their streaming sessions.</p>
-     */
     inline ApplicationSettingsResponse& WithEnabled(bool value) { SetEnabled(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The path prefix for the S3 bucket where users’ persistent application
      * settings are stored.</p>
      */
-    inline const Aws::String& GetSettingsGroup() const{ return m_settingsGroup; }
-
-    /**
-     * <p>The path prefix for the S3 bucket where users’ persistent application
-     * settings are stored.</p>
-     */
+    inline const Aws::String& GetSettingsGroup() const { return m_settingsGroup; }
     inline bool SettingsGroupHasBeenSet() const { return m_settingsGroupHasBeenSet; }
+    template<typename SettingsGroupT = Aws::String>
+    void SetSettingsGroup(SettingsGroupT&& value) { m_settingsGroupHasBeenSet = true; m_settingsGroup = std::forward<SettingsGroupT>(value); }
+    template<typename SettingsGroupT = Aws::String>
+    ApplicationSettingsResponse& WithSettingsGroup(SettingsGroupT&& value) { SetSettingsGroup(std::forward<SettingsGroupT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The path prefix for the S3 bucket where users’ persistent application
-     * settings are stored.</p>
-     */
-    inline void SetSettingsGroup(const Aws::String& value) { m_settingsGroupHasBeenSet = true; m_settingsGroup = value; }
-
-    /**
-     * <p>The path prefix for the S3 bucket where users’ persistent application
-     * settings are stored.</p>
-     */
-    inline void SetSettingsGroup(Aws::String&& value) { m_settingsGroupHasBeenSet = true; m_settingsGroup = std::move(value); }
-
-    /**
-     * <p>The path prefix for the S3 bucket where users’ persistent application
-     * settings are stored.</p>
-     */
-    inline void SetSettingsGroup(const char* value) { m_settingsGroupHasBeenSet = true; m_settingsGroup.assign(value); }
-
-    /**
-     * <p>The path prefix for the S3 bucket where users’ persistent application
-     * settings are stored.</p>
-     */
-    inline ApplicationSettingsResponse& WithSettingsGroup(const Aws::String& value) { SetSettingsGroup(value); return *this;}
-
-    /**
-     * <p>The path prefix for the S3 bucket where users’ persistent application
-     * settings are stored.</p>
-     */
-    inline ApplicationSettingsResponse& WithSettingsGroup(Aws::String&& value) { SetSettingsGroup(std::move(value)); return *this;}
-
-    /**
-     * <p>The path prefix for the S3 bucket where users’ persistent application
-     * settings are stored.</p>
-     */
-    inline ApplicationSettingsResponse& WithSettingsGroup(const char* value) { SetSettingsGroup(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The S3 bucket where users’ persistent application settings are stored. When
      * persistent application settings are enabled for the first time for an account in
      * an AWS Region, an S3 bucket is created. The bucket is unique to the AWS account
      * and the Region. </p>
      */
-    inline const Aws::String& GetS3BucketName() const{ return m_s3BucketName; }
-
-    /**
-     * <p>The S3 bucket where users’ persistent application settings are stored. When
-     * persistent application settings are enabled for the first time for an account in
-     * an AWS Region, an S3 bucket is created. The bucket is unique to the AWS account
-     * and the Region. </p>
-     */
+    inline const Aws::String& GetS3BucketName() const { return m_s3BucketName; }
     inline bool S3BucketNameHasBeenSet() const { return m_s3BucketNameHasBeenSet; }
-
-    /**
-     * <p>The S3 bucket where users’ persistent application settings are stored. When
-     * persistent application settings are enabled for the first time for an account in
-     * an AWS Region, an S3 bucket is created. The bucket is unique to the AWS account
-     * and the Region. </p>
-     */
-    inline void SetS3BucketName(const Aws::String& value) { m_s3BucketNameHasBeenSet = true; m_s3BucketName = value; }
-
-    /**
-     * <p>The S3 bucket where users’ persistent application settings are stored. When
-     * persistent application settings are enabled for the first time for an account in
-     * an AWS Region, an S3 bucket is created. The bucket is unique to the AWS account
-     * and the Region. </p>
-     */
-    inline void SetS3BucketName(Aws::String&& value) { m_s3BucketNameHasBeenSet = true; m_s3BucketName = std::move(value); }
-
-    /**
-     * <p>The S3 bucket where users’ persistent application settings are stored. When
-     * persistent application settings are enabled for the first time for an account in
-     * an AWS Region, an S3 bucket is created. The bucket is unique to the AWS account
-     * and the Region. </p>
-     */
-    inline void SetS3BucketName(const char* value) { m_s3BucketNameHasBeenSet = true; m_s3BucketName.assign(value); }
-
-    /**
-     * <p>The S3 bucket where users’ persistent application settings are stored. When
-     * persistent application settings are enabled for the first time for an account in
-     * an AWS Region, an S3 bucket is created. The bucket is unique to the AWS account
-     * and the Region. </p>
-     */
-    inline ApplicationSettingsResponse& WithS3BucketName(const Aws::String& value) { SetS3BucketName(value); return *this;}
-
-    /**
-     * <p>The S3 bucket where users’ persistent application settings are stored. When
-     * persistent application settings are enabled for the first time for an account in
-     * an AWS Region, an S3 bucket is created. The bucket is unique to the AWS account
-     * and the Region. </p>
-     */
-    inline ApplicationSettingsResponse& WithS3BucketName(Aws::String&& value) { SetS3BucketName(std::move(value)); return *this;}
-
-    /**
-     * <p>The S3 bucket where users’ persistent application settings are stored. When
-     * persistent application settings are enabled for the first time for an account in
-     * an AWS Region, an S3 bucket is created. The bucket is unique to the AWS account
-     * and the Region. </p>
-     */
-    inline ApplicationSettingsResponse& WithS3BucketName(const char* value) { SetS3BucketName(value); return *this;}
-
+    template<typename S3BucketNameT = Aws::String>
+    void SetS3BucketName(S3BucketNameT&& value) { m_s3BucketNameHasBeenSet = true; m_s3BucketName = std::forward<S3BucketNameT>(value); }
+    template<typename S3BucketNameT = Aws::String>
+    ApplicationSettingsResponse& WithS3BucketName(S3BucketNameT&& value) { SetS3BucketName(std::forward<S3BucketNameT>(value)); return *this;}
+    ///@}
   private:
 
-    bool m_enabled;
+    bool m_enabled{false};
     bool m_enabledHasBeenSet = false;
 
     Aws::String m_settingsGroup;

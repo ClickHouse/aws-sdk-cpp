@@ -10,19 +10,6 @@
 using namespace Aws::ElastiCache::Model;
 using namespace Aws::Utils;
 
-CreateUserRequest::CreateUserRequest() : 
-    m_userIdHasBeenSet(false),
-    m_userNameHasBeenSet(false),
-    m_engineHasBeenSet(false),
-    m_passwordsHasBeenSet(false),
-    m_accessStringHasBeenSet(false),
-    m_noPasswordRequired(false),
-    m_noPasswordRequiredHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_authenticationModeHasBeenSet(false)
-{
-}
-
 Aws::String CreateUserRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -44,12 +31,19 @@ Aws::String CreateUserRequest::SerializePayload() const
 
   if(m_passwordsHasBeenSet)
   {
-    unsigned passwordsCount = 1;
-    for(auto& item : m_passwords)
+    if (m_passwords.empty())
     {
-      ss << "Passwords.member." << passwordsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      passwordsCount++;
+      ss << "Passwords=&";
+    }
+    else
+    {
+      unsigned passwordsCount = 1;
+      for(auto& item : m_passwords)
+      {
+        ss << "Passwords.member." << passwordsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        passwordsCount++;
+      }
     }
   }
 
@@ -65,11 +59,18 @@ Aws::String CreateUserRequest::SerializePayload() const
 
   if(m_tagsHasBeenSet)
   {
-    unsigned tagsCount = 1;
-    for(auto& item : m_tags)
+    if (m_tags.empty())
     {
-      item.OutputToStream(ss, "Tags.member.", tagsCount, "");
-      tagsCount++;
+      ss << "Tags=&";
+    }
+    else
+    {
+      unsigned tagsCount = 1;
+      for(auto& item : m_tags)
+      {
+        item.OutputToStream(ss, "Tags.Tag.", tagsCount, "");
+        tagsCount++;
+      }
     }
   }
 

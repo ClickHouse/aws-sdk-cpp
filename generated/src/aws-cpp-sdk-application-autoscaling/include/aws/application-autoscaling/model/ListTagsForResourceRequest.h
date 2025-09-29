@@ -21,7 +21,7 @@ namespace Model
   class ListTagsForResourceRequest : public ApplicationAutoScalingRequest
   {
   public:
-    AWS_APPLICATIONAUTOSCALING_API ListTagsForResourceRequest();
+    AWS_APPLICATIONAUTOSCALING_API ListTagsForResourceRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,70 +34,20 @@ namespace Model
     AWS_APPLICATIONAUTOSCALING_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>Specify the ARN of the scalable target.</p> <p>For example:
      * <code>arn:aws:application-autoscaling:us-east-1:123456789012:scalable-target/1234abcd56ab78cd901ef1234567890ab123</code>
      * </p> <p>To get the ARN for a scalable target, use
      * <a>DescribeScalableTargets</a>.</p>
      */
-    inline const Aws::String& GetResourceARN() const{ return m_resourceARN; }
-
-    /**
-     * <p>Specify the ARN of the scalable target.</p> <p>For example:
-     * <code>arn:aws:application-autoscaling:us-east-1:123456789012:scalable-target/1234abcd56ab78cd901ef1234567890ab123</code>
-     * </p> <p>To get the ARN for a scalable target, use
-     * <a>DescribeScalableTargets</a>.</p>
-     */
+    inline const Aws::String& GetResourceARN() const { return m_resourceARN; }
     inline bool ResourceARNHasBeenSet() const { return m_resourceARNHasBeenSet; }
-
-    /**
-     * <p>Specify the ARN of the scalable target.</p> <p>For example:
-     * <code>arn:aws:application-autoscaling:us-east-1:123456789012:scalable-target/1234abcd56ab78cd901ef1234567890ab123</code>
-     * </p> <p>To get the ARN for a scalable target, use
-     * <a>DescribeScalableTargets</a>.</p>
-     */
-    inline void SetResourceARN(const Aws::String& value) { m_resourceARNHasBeenSet = true; m_resourceARN = value; }
-
-    /**
-     * <p>Specify the ARN of the scalable target.</p> <p>For example:
-     * <code>arn:aws:application-autoscaling:us-east-1:123456789012:scalable-target/1234abcd56ab78cd901ef1234567890ab123</code>
-     * </p> <p>To get the ARN for a scalable target, use
-     * <a>DescribeScalableTargets</a>.</p>
-     */
-    inline void SetResourceARN(Aws::String&& value) { m_resourceARNHasBeenSet = true; m_resourceARN = std::move(value); }
-
-    /**
-     * <p>Specify the ARN of the scalable target.</p> <p>For example:
-     * <code>arn:aws:application-autoscaling:us-east-1:123456789012:scalable-target/1234abcd56ab78cd901ef1234567890ab123</code>
-     * </p> <p>To get the ARN for a scalable target, use
-     * <a>DescribeScalableTargets</a>.</p>
-     */
-    inline void SetResourceARN(const char* value) { m_resourceARNHasBeenSet = true; m_resourceARN.assign(value); }
-
-    /**
-     * <p>Specify the ARN of the scalable target.</p> <p>For example:
-     * <code>arn:aws:application-autoscaling:us-east-1:123456789012:scalable-target/1234abcd56ab78cd901ef1234567890ab123</code>
-     * </p> <p>To get the ARN for a scalable target, use
-     * <a>DescribeScalableTargets</a>.</p>
-     */
-    inline ListTagsForResourceRequest& WithResourceARN(const Aws::String& value) { SetResourceARN(value); return *this;}
-
-    /**
-     * <p>Specify the ARN of the scalable target.</p> <p>For example:
-     * <code>arn:aws:application-autoscaling:us-east-1:123456789012:scalable-target/1234abcd56ab78cd901ef1234567890ab123</code>
-     * </p> <p>To get the ARN for a scalable target, use
-     * <a>DescribeScalableTargets</a>.</p>
-     */
-    inline ListTagsForResourceRequest& WithResourceARN(Aws::String&& value) { SetResourceARN(std::move(value)); return *this;}
-
-    /**
-     * <p>Specify the ARN of the scalable target.</p> <p>For example:
-     * <code>arn:aws:application-autoscaling:us-east-1:123456789012:scalable-target/1234abcd56ab78cd901ef1234567890ab123</code>
-     * </p> <p>To get the ARN for a scalable target, use
-     * <a>DescribeScalableTargets</a>.</p>
-     */
-    inline ListTagsForResourceRequest& WithResourceARN(const char* value) { SetResourceARN(value); return *this;}
-
+    template<typename ResourceARNT = Aws::String>
+    void SetResourceARN(ResourceARNT&& value) { m_resourceARNHasBeenSet = true; m_resourceARN = std::forward<ResourceARNT>(value); }
+    template<typename ResourceARNT = Aws::String>
+    ListTagsForResourceRequest& WithResourceARN(ResourceARNT&& value) { SetResourceARN(std::forward<ResourceARNT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_resourceARN;

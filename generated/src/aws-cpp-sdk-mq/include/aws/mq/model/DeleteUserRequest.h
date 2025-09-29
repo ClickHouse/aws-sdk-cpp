@@ -21,7 +21,7 @@ namespace Model
   class DeleteUserRequest : public MQRequest
   {
   public:
-    AWS_MQ_API DeleteUserRequest();
+    AWS_MQ_API DeleteUserRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,103 +32,31 @@ namespace Model
     AWS_MQ_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The unique ID that Amazon MQ generates for the broker.</p>
      */
-    inline const Aws::String& GetBrokerId() const{ return m_brokerId; }
-
-    /**
-     * <p>The unique ID that Amazon MQ generates for the broker.</p>
-     */
+    inline const Aws::String& GetBrokerId() const { return m_brokerId; }
     inline bool BrokerIdHasBeenSet() const { return m_brokerIdHasBeenSet; }
+    template<typename BrokerIdT = Aws::String>
+    void SetBrokerId(BrokerIdT&& value) { m_brokerIdHasBeenSet = true; m_brokerId = std::forward<BrokerIdT>(value); }
+    template<typename BrokerIdT = Aws::String>
+    DeleteUserRequest& WithBrokerId(BrokerIdT&& value) { SetBrokerId(std::forward<BrokerIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique ID that Amazon MQ generates for the broker.</p>
-     */
-    inline void SetBrokerId(const Aws::String& value) { m_brokerIdHasBeenSet = true; m_brokerId = value; }
-
-    /**
-     * <p>The unique ID that Amazon MQ generates for the broker.</p>
-     */
-    inline void SetBrokerId(Aws::String&& value) { m_brokerIdHasBeenSet = true; m_brokerId = std::move(value); }
-
-    /**
-     * <p>The unique ID that Amazon MQ generates for the broker.</p>
-     */
-    inline void SetBrokerId(const char* value) { m_brokerIdHasBeenSet = true; m_brokerId.assign(value); }
-
-    /**
-     * <p>The unique ID that Amazon MQ generates for the broker.</p>
-     */
-    inline DeleteUserRequest& WithBrokerId(const Aws::String& value) { SetBrokerId(value); return *this;}
-
-    /**
-     * <p>The unique ID that Amazon MQ generates for the broker.</p>
-     */
-    inline DeleteUserRequest& WithBrokerId(Aws::String&& value) { SetBrokerId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique ID that Amazon MQ generates for the broker.</p>
-     */
-    inline DeleteUserRequest& WithBrokerId(const char* value) { SetBrokerId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The username of the ActiveMQ user. This value can contain only alphanumeric
      * characters, dashes, periods, underscores, and tildes (- . _ ~). This value must
      * be 2-100 characters long.</p>
      */
-    inline const Aws::String& GetUsername() const{ return m_username; }
-
-    /**
-     * <p>The username of the ActiveMQ user. This value can contain only alphanumeric
-     * characters, dashes, periods, underscores, and tildes (- . _ ~). This value must
-     * be 2-100 characters long.</p>
-     */
+    inline const Aws::String& GetUsername() const { return m_username; }
     inline bool UsernameHasBeenSet() const { return m_usernameHasBeenSet; }
-
-    /**
-     * <p>The username of the ActiveMQ user. This value can contain only alphanumeric
-     * characters, dashes, periods, underscores, and tildes (- . _ ~). This value must
-     * be 2-100 characters long.</p>
-     */
-    inline void SetUsername(const Aws::String& value) { m_usernameHasBeenSet = true; m_username = value; }
-
-    /**
-     * <p>The username of the ActiveMQ user. This value can contain only alphanumeric
-     * characters, dashes, periods, underscores, and tildes (- . _ ~). This value must
-     * be 2-100 characters long.</p>
-     */
-    inline void SetUsername(Aws::String&& value) { m_usernameHasBeenSet = true; m_username = std::move(value); }
-
-    /**
-     * <p>The username of the ActiveMQ user. This value can contain only alphanumeric
-     * characters, dashes, periods, underscores, and tildes (- . _ ~). This value must
-     * be 2-100 characters long.</p>
-     */
-    inline void SetUsername(const char* value) { m_usernameHasBeenSet = true; m_username.assign(value); }
-
-    /**
-     * <p>The username of the ActiveMQ user. This value can contain only alphanumeric
-     * characters, dashes, periods, underscores, and tildes (- . _ ~). This value must
-     * be 2-100 characters long.</p>
-     */
-    inline DeleteUserRequest& WithUsername(const Aws::String& value) { SetUsername(value); return *this;}
-
-    /**
-     * <p>The username of the ActiveMQ user. This value can contain only alphanumeric
-     * characters, dashes, periods, underscores, and tildes (- . _ ~). This value must
-     * be 2-100 characters long.</p>
-     */
-    inline DeleteUserRequest& WithUsername(Aws::String&& value) { SetUsername(std::move(value)); return *this;}
-
-    /**
-     * <p>The username of the ActiveMQ user. This value can contain only alphanumeric
-     * characters, dashes, periods, underscores, and tildes (- . _ ~). This value must
-     * be 2-100 characters long.</p>
-     */
-    inline DeleteUserRequest& WithUsername(const char* value) { SetUsername(value); return *this;}
-
+    template<typename UsernameT = Aws::String>
+    void SetUsername(UsernameT&& value) { m_usernameHasBeenSet = true; m_username = std::forward<UsernameT>(value); }
+    template<typename UsernameT = Aws::String>
+    DeleteUserRequest& WithUsername(UsernameT&& value) { SetUsername(std::forward<UsernameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_brokerId;

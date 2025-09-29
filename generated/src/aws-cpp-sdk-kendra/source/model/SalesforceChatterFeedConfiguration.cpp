@@ -18,19 +18,7 @@ namespace kendra
 namespace Model
 {
 
-SalesforceChatterFeedConfiguration::SalesforceChatterFeedConfiguration() : 
-    m_documentDataFieldNameHasBeenSet(false),
-    m_documentTitleFieldNameHasBeenSet(false),
-    m_fieldMappingsHasBeenSet(false),
-    m_includeFilterTypesHasBeenSet(false)
-{
-}
-
-SalesforceChatterFeedConfiguration::SalesforceChatterFeedConfiguration(JsonView jsonValue) : 
-    m_documentDataFieldNameHasBeenSet(false),
-    m_documentTitleFieldNameHasBeenSet(false),
-    m_fieldMappingsHasBeenSet(false),
-    m_includeFilterTypesHasBeenSet(false)
+SalesforceChatterFeedConfiguration::SalesforceChatterFeedConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ SalesforceChatterFeedConfiguration& SalesforceChatterFeedConfiguration::operator
   if(jsonValue.ValueExists("DocumentDataFieldName"))
   {
     m_documentDataFieldName = jsonValue.GetString("DocumentDataFieldName");
-
     m_documentDataFieldNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DocumentTitleFieldName"))
   {
     m_documentTitleFieldName = jsonValue.GetString("DocumentTitleFieldName");
-
     m_documentTitleFieldNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FieldMappings"))
   {
     Aws::Utils::Array<JsonView> fieldMappingsJsonList = jsonValue.GetArray("FieldMappings");
@@ -60,7 +44,6 @@ SalesforceChatterFeedConfiguration& SalesforceChatterFeedConfiguration::operator
     }
     m_fieldMappingsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("IncludeFilterTypes"))
   {
     Aws::Utils::Array<JsonView> includeFilterTypesJsonList = jsonValue.GetArray("IncludeFilterTypes");
@@ -70,7 +53,6 @@ SalesforceChatterFeedConfiguration& SalesforceChatterFeedConfiguration::operator
     }
     m_includeFilterTypesHasBeenSet = true;
   }
-
   return *this;
 }
 

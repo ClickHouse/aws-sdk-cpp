@@ -21,7 +21,7 @@ namespace Model
   class UpdatePullRequestDescriptionRequest : public CodeCommitRequest
   {
   public:
-    AWS_CODECOMMIT_API UpdatePullRequestDescriptionRequest();
+    AWS_CODECOMMIT_API UpdatePullRequestDescriptionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,103 +34,31 @@ namespace Model
     AWS_CODECOMMIT_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The system-generated ID of the pull request. To get this ID, use
      * <a>ListPullRequests</a>.</p>
      */
-    inline const Aws::String& GetPullRequestId() const{ return m_pullRequestId; }
-
-    /**
-     * <p>The system-generated ID of the pull request. To get this ID, use
-     * <a>ListPullRequests</a>.</p>
-     */
+    inline const Aws::String& GetPullRequestId() const { return m_pullRequestId; }
     inline bool PullRequestIdHasBeenSet() const { return m_pullRequestIdHasBeenSet; }
+    template<typename PullRequestIdT = Aws::String>
+    void SetPullRequestId(PullRequestIdT&& value) { m_pullRequestIdHasBeenSet = true; m_pullRequestId = std::forward<PullRequestIdT>(value); }
+    template<typename PullRequestIdT = Aws::String>
+    UpdatePullRequestDescriptionRequest& WithPullRequestId(PullRequestIdT&& value) { SetPullRequestId(std::forward<PullRequestIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The system-generated ID of the pull request. To get this ID, use
-     * <a>ListPullRequests</a>.</p>
-     */
-    inline void SetPullRequestId(const Aws::String& value) { m_pullRequestIdHasBeenSet = true; m_pullRequestId = value; }
-
-    /**
-     * <p>The system-generated ID of the pull request. To get this ID, use
-     * <a>ListPullRequests</a>.</p>
-     */
-    inline void SetPullRequestId(Aws::String&& value) { m_pullRequestIdHasBeenSet = true; m_pullRequestId = std::move(value); }
-
-    /**
-     * <p>The system-generated ID of the pull request. To get this ID, use
-     * <a>ListPullRequests</a>.</p>
-     */
-    inline void SetPullRequestId(const char* value) { m_pullRequestIdHasBeenSet = true; m_pullRequestId.assign(value); }
-
-    /**
-     * <p>The system-generated ID of the pull request. To get this ID, use
-     * <a>ListPullRequests</a>.</p>
-     */
-    inline UpdatePullRequestDescriptionRequest& WithPullRequestId(const Aws::String& value) { SetPullRequestId(value); return *this;}
-
-    /**
-     * <p>The system-generated ID of the pull request. To get this ID, use
-     * <a>ListPullRequests</a>.</p>
-     */
-    inline UpdatePullRequestDescriptionRequest& WithPullRequestId(Aws::String&& value) { SetPullRequestId(std::move(value)); return *this;}
-
-    /**
-     * <p>The system-generated ID of the pull request. To get this ID, use
-     * <a>ListPullRequests</a>.</p>
-     */
-    inline UpdatePullRequestDescriptionRequest& WithPullRequestId(const char* value) { SetPullRequestId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The updated content of the description for the pull request. This content
      * replaces the existing description.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The updated content of the description for the pull request. This content
-     * replaces the existing description.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
-
-    /**
-     * <p>The updated content of the description for the pull request. This content
-     * replaces the existing description.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The updated content of the description for the pull request. This content
-     * replaces the existing description.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The updated content of the description for the pull request. This content
-     * replaces the existing description.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The updated content of the description for the pull request. This content
-     * replaces the existing description.</p>
-     */
-    inline UpdatePullRequestDescriptionRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The updated content of the description for the pull request. This content
-     * replaces the existing description.</p>
-     */
-    inline UpdatePullRequestDescriptionRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The updated content of the description for the pull request. This content
-     * replaces the existing description.</p>
-     */
-    inline UpdatePullRequestDescriptionRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    UpdatePullRequestDescriptionRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_pullRequestId;

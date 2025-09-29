@@ -18,15 +18,7 @@ namespace HealthLake
 namespace Model
 {
 
-PreloadDataConfig::PreloadDataConfig() : 
-    m_preloadDataType(PreloadDataType::NOT_SET),
-    m_preloadDataTypeHasBeenSet(false)
-{
-}
-
-PreloadDataConfig::PreloadDataConfig(JsonView jsonValue) : 
-    m_preloadDataType(PreloadDataType::NOT_SET),
-    m_preloadDataTypeHasBeenSet(false)
+PreloadDataConfig::PreloadDataConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ PreloadDataConfig& PreloadDataConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("PreloadDataType"))
   {
     m_preloadDataType = PreloadDataTypeMapper::GetPreloadDataTypeForName(jsonValue.GetString("PreloadDataType"));
-
     m_preloadDataTypeHasBeenSet = true;
   }
-
   return *this;
 }
 

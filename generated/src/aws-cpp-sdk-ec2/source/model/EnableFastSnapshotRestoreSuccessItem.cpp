@@ -20,35 +20,7 @@ namespace EC2
 namespace Model
 {
 
-EnableFastSnapshotRestoreSuccessItem::EnableFastSnapshotRestoreSuccessItem() : 
-    m_snapshotIdHasBeenSet(false),
-    m_availabilityZoneHasBeenSet(false),
-    m_state(FastSnapshotRestoreStateCode::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_stateTransitionReasonHasBeenSet(false),
-    m_ownerIdHasBeenSet(false),
-    m_ownerAliasHasBeenSet(false),
-    m_enablingTimeHasBeenSet(false),
-    m_optimizingTimeHasBeenSet(false),
-    m_enabledTimeHasBeenSet(false),
-    m_disablingTimeHasBeenSet(false),
-    m_disabledTimeHasBeenSet(false)
-{
-}
-
-EnableFastSnapshotRestoreSuccessItem::EnableFastSnapshotRestoreSuccessItem(const XmlNode& xmlNode) : 
-    m_snapshotIdHasBeenSet(false),
-    m_availabilityZoneHasBeenSet(false),
-    m_state(FastSnapshotRestoreStateCode::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_stateTransitionReasonHasBeenSet(false),
-    m_ownerIdHasBeenSet(false),
-    m_ownerAliasHasBeenSet(false),
-    m_enablingTimeHasBeenSet(false),
-    m_optimizingTimeHasBeenSet(false),
-    m_enabledTimeHasBeenSet(false),
-    m_disablingTimeHasBeenSet(false),
-    m_disabledTimeHasBeenSet(false)
+EnableFastSnapshotRestoreSuccessItem::EnableFastSnapshotRestoreSuccessItem(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -74,7 +46,7 @@ EnableFastSnapshotRestoreSuccessItem& EnableFastSnapshotRestoreSuccessItem::oper
     XmlNode stateNode = resultNode.FirstChild("state");
     if(!stateNode.IsNull())
     {
-      m_state = FastSnapshotRestoreStateCodeMapper::GetFastSnapshotRestoreStateCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()).c_str());
+      m_state = FastSnapshotRestoreStateCodeMapper::GetFastSnapshotRestoreStateCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()));
       m_stateHasBeenSet = true;
     }
     XmlNode stateTransitionReasonNode = resultNode.FirstChild("stateTransitionReason");
@@ -144,7 +116,7 @@ void EnableFastSnapshotRestoreSuccessItem::OutputToStream(Aws::OStream& oStream,
 
   if(m_stateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".State=" << FastSnapshotRestoreStateCodeMapper::GetNameForFastSnapshotRestoreStateCode(m_state) << "&";
+      oStream << location << index << locationValue << ".State=" << StringUtils::URLEncode(FastSnapshotRestoreStateCodeMapper::GetNameForFastSnapshotRestoreStateCode(m_state)) << "&";
   }
 
   if(m_stateTransitionReasonHasBeenSet)
@@ -201,7 +173,7 @@ void EnableFastSnapshotRestoreSuccessItem::OutputToStream(Aws::OStream& oStream,
   }
   if(m_stateHasBeenSet)
   {
-      oStream << location << ".State=" << FastSnapshotRestoreStateCodeMapper::GetNameForFastSnapshotRestoreStateCode(m_state) << "&";
+      oStream << location << ".State=" << StringUtils::URLEncode(FastSnapshotRestoreStateCodeMapper::GetNameForFastSnapshotRestoreStateCode(m_state)) << "&";
   }
   if(m_stateTransitionReasonHasBeenSet)
   {

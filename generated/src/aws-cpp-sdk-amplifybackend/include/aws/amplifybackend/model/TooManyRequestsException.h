@@ -32,93 +32,35 @@ namespace Model
   class TooManyRequestsException
   {
   public:
-    AWS_AMPLIFYBACKEND_API TooManyRequestsException();
+    AWS_AMPLIFYBACKEND_API TooManyRequestsException() = default;
     AWS_AMPLIFYBACKEND_API TooManyRequestsException(Aws::Utils::Json::JsonView jsonValue);
     AWS_AMPLIFYBACKEND_API TooManyRequestsException& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_AMPLIFYBACKEND_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The type of limit that was exceeded.</p>
      */
-    inline const Aws::String& GetLimitType() const{ return m_limitType; }
-
-    /**
-     * <p>The type of limit that was exceeded.</p>
-     */
+    inline const Aws::String& GetLimitType() const { return m_limitType; }
     inline bool LimitTypeHasBeenSet() const { return m_limitTypeHasBeenSet; }
+    template<typename LimitTypeT = Aws::String>
+    void SetLimitType(LimitTypeT&& value) { m_limitTypeHasBeenSet = true; m_limitType = std::forward<LimitTypeT>(value); }
+    template<typename LimitTypeT = Aws::String>
+    TooManyRequestsException& WithLimitType(LimitTypeT&& value) { SetLimitType(std::forward<LimitTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of limit that was exceeded.</p>
-     */
-    inline void SetLimitType(const Aws::String& value) { m_limitTypeHasBeenSet = true; m_limitType = value; }
-
-    /**
-     * <p>The type of limit that was exceeded.</p>
-     */
-    inline void SetLimitType(Aws::String&& value) { m_limitTypeHasBeenSet = true; m_limitType = std::move(value); }
-
-    /**
-     * <p>The type of limit that was exceeded.</p>
-     */
-    inline void SetLimitType(const char* value) { m_limitTypeHasBeenSet = true; m_limitType.assign(value); }
-
-    /**
-     * <p>The type of limit that was exceeded.</p>
-     */
-    inline TooManyRequestsException& WithLimitType(const Aws::String& value) { SetLimitType(value); return *this;}
-
-    /**
-     * <p>The type of limit that was exceeded.</p>
-     */
-    inline TooManyRequestsException& WithLimitType(Aws::String&& value) { SetLimitType(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of limit that was exceeded.</p>
-     */
-    inline TooManyRequestsException& WithLimitType(const char* value) { SetLimitType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An error message to inform that the request has failed.</p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>An error message to inform that the request has failed.</p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
-
-    /**
-     * <p>An error message to inform that the request has failed.</p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>An error message to inform that the request has failed.</p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>An error message to inform that the request has failed.</p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p>An error message to inform that the request has failed.</p>
-     */
-    inline TooManyRequestsException& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>An error message to inform that the request has failed.</p>
-     */
-    inline TooManyRequestsException& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>An error message to inform that the request has failed.</p>
-     */
-    inline TooManyRequestsException& WithMessage(const char* value) { SetMessage(value); return *this;}
-
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    TooManyRequestsException& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_limitType;

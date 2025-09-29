@@ -32,134 +32,47 @@ namespace Model
   class UpdateCostAllocationTagsStatusError
   {
   public:
-    AWS_COSTEXPLORER_API UpdateCostAllocationTagsStatusError();
+    AWS_COSTEXPLORER_API UpdateCostAllocationTagsStatusError() = default;
     AWS_COSTEXPLORER_API UpdateCostAllocationTagsStatusError(Aws::Utils::Json::JsonView jsonValue);
     AWS_COSTEXPLORER_API UpdateCostAllocationTagsStatusError& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COSTEXPLORER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The key for the cost allocation tag. </p>
      */
-    inline const Aws::String& GetTagKey() const{ return m_tagKey; }
-
-    /**
-     * <p>The key for the cost allocation tag. </p>
-     */
+    inline const Aws::String& GetTagKey() const { return m_tagKey; }
     inline bool TagKeyHasBeenSet() const { return m_tagKeyHasBeenSet; }
+    template<typename TagKeyT = Aws::String>
+    void SetTagKey(TagKeyT&& value) { m_tagKeyHasBeenSet = true; m_tagKey = std::forward<TagKeyT>(value); }
+    template<typename TagKeyT = Aws::String>
+    UpdateCostAllocationTagsStatusError& WithTagKey(TagKeyT&& value) { SetTagKey(std::forward<TagKeyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The key for the cost allocation tag. </p>
-     */
-    inline void SetTagKey(const Aws::String& value) { m_tagKeyHasBeenSet = true; m_tagKey = value; }
-
-    /**
-     * <p>The key for the cost allocation tag. </p>
-     */
-    inline void SetTagKey(Aws::String&& value) { m_tagKeyHasBeenSet = true; m_tagKey = std::move(value); }
-
-    /**
-     * <p>The key for the cost allocation tag. </p>
-     */
-    inline void SetTagKey(const char* value) { m_tagKeyHasBeenSet = true; m_tagKey.assign(value); }
-
-    /**
-     * <p>The key for the cost allocation tag. </p>
-     */
-    inline UpdateCostAllocationTagsStatusError& WithTagKey(const Aws::String& value) { SetTagKey(value); return *this;}
-
-    /**
-     * <p>The key for the cost allocation tag. </p>
-     */
-    inline UpdateCostAllocationTagsStatusError& WithTagKey(Aws::String&& value) { SetTagKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The key for the cost allocation tag. </p>
-     */
-    inline UpdateCostAllocationTagsStatusError& WithTagKey(const char* value) { SetTagKey(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An error code representing why the action failed on this entry. </p>
      */
-    inline const Aws::String& GetCode() const{ return m_code; }
-
-    /**
-     * <p>An error code representing why the action failed on this entry. </p>
-     */
+    inline const Aws::String& GetCode() const { return m_code; }
     inline bool CodeHasBeenSet() const { return m_codeHasBeenSet; }
+    template<typename CodeT = Aws::String>
+    void SetCode(CodeT&& value) { m_codeHasBeenSet = true; m_code = std::forward<CodeT>(value); }
+    template<typename CodeT = Aws::String>
+    UpdateCostAllocationTagsStatusError& WithCode(CodeT&& value) { SetCode(std::forward<CodeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An error code representing why the action failed on this entry. </p>
-     */
-    inline void SetCode(const Aws::String& value) { m_codeHasBeenSet = true; m_code = value; }
-
-    /**
-     * <p>An error code representing why the action failed on this entry. </p>
-     */
-    inline void SetCode(Aws::String&& value) { m_codeHasBeenSet = true; m_code = std::move(value); }
-
-    /**
-     * <p>An error code representing why the action failed on this entry. </p>
-     */
-    inline void SetCode(const char* value) { m_codeHasBeenSet = true; m_code.assign(value); }
-
-    /**
-     * <p>An error code representing why the action failed on this entry. </p>
-     */
-    inline UpdateCostAllocationTagsStatusError& WithCode(const Aws::String& value) { SetCode(value); return *this;}
-
-    /**
-     * <p>An error code representing why the action failed on this entry. </p>
-     */
-    inline UpdateCostAllocationTagsStatusError& WithCode(Aws::String&& value) { SetCode(std::move(value)); return *this;}
-
-    /**
-     * <p>An error code representing why the action failed on this entry. </p>
-     */
-    inline UpdateCostAllocationTagsStatusError& WithCode(const char* value) { SetCode(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A message explaining why the action failed on this entry. </p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>A message explaining why the action failed on this entry. </p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
-
-    /**
-     * <p>A message explaining why the action failed on this entry. </p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>A message explaining why the action failed on this entry. </p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>A message explaining why the action failed on this entry. </p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p>A message explaining why the action failed on this entry. </p>
-     */
-    inline UpdateCostAllocationTagsStatusError& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>A message explaining why the action failed on this entry. </p>
-     */
-    inline UpdateCostAllocationTagsStatusError& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>A message explaining why the action failed on this entry. </p>
-     */
-    inline UpdateCostAllocationTagsStatusError& WithMessage(const char* value) { SetMessage(value); return *this;}
-
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    UpdateCostAllocationTagsStatusError& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_tagKey;

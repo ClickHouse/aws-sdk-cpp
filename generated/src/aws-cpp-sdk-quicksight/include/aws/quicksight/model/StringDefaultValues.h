@@ -34,94 +34,38 @@ namespace Model
   class StringDefaultValues
   {
   public:
-    AWS_QUICKSIGHT_API StringDefaultValues();
+    AWS_QUICKSIGHT_API StringDefaultValues() = default;
     AWS_QUICKSIGHT_API StringDefaultValues(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API StringDefaultValues& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The dynamic value of the <code>StringDefaultValues</code>. Different defaults
      * displayed according to users, groups, and values mapping.</p>
      */
-    inline const DynamicDefaultValue& GetDynamicValue() const{ return m_dynamicValue; }
-
-    /**
-     * <p>The dynamic value of the <code>StringDefaultValues</code>. Different defaults
-     * displayed according to users, groups, and values mapping.</p>
-     */
+    inline const DynamicDefaultValue& GetDynamicValue() const { return m_dynamicValue; }
     inline bool DynamicValueHasBeenSet() const { return m_dynamicValueHasBeenSet; }
+    template<typename DynamicValueT = DynamicDefaultValue>
+    void SetDynamicValue(DynamicValueT&& value) { m_dynamicValueHasBeenSet = true; m_dynamicValue = std::forward<DynamicValueT>(value); }
+    template<typename DynamicValueT = DynamicDefaultValue>
+    StringDefaultValues& WithDynamicValue(DynamicValueT&& value) { SetDynamicValue(std::forward<DynamicValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The dynamic value of the <code>StringDefaultValues</code>. Different defaults
-     * displayed according to users, groups, and values mapping.</p>
-     */
-    inline void SetDynamicValue(const DynamicDefaultValue& value) { m_dynamicValueHasBeenSet = true; m_dynamicValue = value; }
-
-    /**
-     * <p>The dynamic value of the <code>StringDefaultValues</code>. Different defaults
-     * displayed according to users, groups, and values mapping.</p>
-     */
-    inline void SetDynamicValue(DynamicDefaultValue&& value) { m_dynamicValueHasBeenSet = true; m_dynamicValue = std::move(value); }
-
-    /**
-     * <p>The dynamic value of the <code>StringDefaultValues</code>. Different defaults
-     * displayed according to users, groups, and values mapping.</p>
-     */
-    inline StringDefaultValues& WithDynamicValue(const DynamicDefaultValue& value) { SetDynamicValue(value); return *this;}
-
-    /**
-     * <p>The dynamic value of the <code>StringDefaultValues</code>. Different defaults
-     * displayed according to users, groups, and values mapping.</p>
-     */
-    inline StringDefaultValues& WithDynamicValue(DynamicDefaultValue&& value) { SetDynamicValue(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The static values of the <code>DecimalDefaultValues</code>.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetStaticValues() const{ return m_staticValues; }
-
-    /**
-     * <p>The static values of the <code>DecimalDefaultValues</code>.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetStaticValues() const { return m_staticValues; }
     inline bool StaticValuesHasBeenSet() const { return m_staticValuesHasBeenSet; }
-
-    /**
-     * <p>The static values of the <code>DecimalDefaultValues</code>.</p>
-     */
-    inline void SetStaticValues(const Aws::Vector<Aws::String>& value) { m_staticValuesHasBeenSet = true; m_staticValues = value; }
-
-    /**
-     * <p>The static values of the <code>DecimalDefaultValues</code>.</p>
-     */
-    inline void SetStaticValues(Aws::Vector<Aws::String>&& value) { m_staticValuesHasBeenSet = true; m_staticValues = std::move(value); }
-
-    /**
-     * <p>The static values of the <code>DecimalDefaultValues</code>.</p>
-     */
-    inline StringDefaultValues& WithStaticValues(const Aws::Vector<Aws::String>& value) { SetStaticValues(value); return *this;}
-
-    /**
-     * <p>The static values of the <code>DecimalDefaultValues</code>.</p>
-     */
-    inline StringDefaultValues& WithStaticValues(Aws::Vector<Aws::String>&& value) { SetStaticValues(std::move(value)); return *this;}
-
-    /**
-     * <p>The static values of the <code>DecimalDefaultValues</code>.</p>
-     */
-    inline StringDefaultValues& AddStaticValues(const Aws::String& value) { m_staticValuesHasBeenSet = true; m_staticValues.push_back(value); return *this; }
-
-    /**
-     * <p>The static values of the <code>DecimalDefaultValues</code>.</p>
-     */
-    inline StringDefaultValues& AddStaticValues(Aws::String&& value) { m_staticValuesHasBeenSet = true; m_staticValues.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The static values of the <code>DecimalDefaultValues</code>.</p>
-     */
-    inline StringDefaultValues& AddStaticValues(const char* value) { m_staticValuesHasBeenSet = true; m_staticValues.push_back(value); return *this; }
-
+    template<typename StaticValuesT = Aws::Vector<Aws::String>>
+    void SetStaticValues(StaticValuesT&& value) { m_staticValuesHasBeenSet = true; m_staticValues = std::forward<StaticValuesT>(value); }
+    template<typename StaticValuesT = Aws::Vector<Aws::String>>
+    StringDefaultValues& WithStaticValues(StaticValuesT&& value) { SetStaticValues(std::forward<StaticValuesT>(value)); return *this;}
+    template<typename StaticValuesT = Aws::String>
+    StringDefaultValues& AddStaticValues(StaticValuesT&& value) { m_staticValuesHasBeenSet = true; m_staticValues.emplace_back(std::forward<StaticValuesT>(value)); return *this; }
+    ///@}
   private:
 
     DynamicDefaultValue m_dynamicValue;

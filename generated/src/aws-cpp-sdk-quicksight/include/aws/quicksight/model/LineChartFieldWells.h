@@ -31,42 +31,23 @@ namespace Model
   class LineChartFieldWells
   {
   public:
-    AWS_QUICKSIGHT_API LineChartFieldWells();
+    AWS_QUICKSIGHT_API LineChartFieldWells() = default;
     AWS_QUICKSIGHT_API LineChartFieldWells(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API LineChartFieldWells& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The field well configuration of a line chart.</p>
      */
-    inline const LineChartAggregatedFieldWells& GetLineChartAggregatedFieldWells() const{ return m_lineChartAggregatedFieldWells; }
-
-    /**
-     * <p>The field well configuration of a line chart.</p>
-     */
+    inline const LineChartAggregatedFieldWells& GetLineChartAggregatedFieldWells() const { return m_lineChartAggregatedFieldWells; }
     inline bool LineChartAggregatedFieldWellsHasBeenSet() const { return m_lineChartAggregatedFieldWellsHasBeenSet; }
-
-    /**
-     * <p>The field well configuration of a line chart.</p>
-     */
-    inline void SetLineChartAggregatedFieldWells(const LineChartAggregatedFieldWells& value) { m_lineChartAggregatedFieldWellsHasBeenSet = true; m_lineChartAggregatedFieldWells = value; }
-
-    /**
-     * <p>The field well configuration of a line chart.</p>
-     */
-    inline void SetLineChartAggregatedFieldWells(LineChartAggregatedFieldWells&& value) { m_lineChartAggregatedFieldWellsHasBeenSet = true; m_lineChartAggregatedFieldWells = std::move(value); }
-
-    /**
-     * <p>The field well configuration of a line chart.</p>
-     */
-    inline LineChartFieldWells& WithLineChartAggregatedFieldWells(const LineChartAggregatedFieldWells& value) { SetLineChartAggregatedFieldWells(value); return *this;}
-
-    /**
-     * <p>The field well configuration of a line chart.</p>
-     */
-    inline LineChartFieldWells& WithLineChartAggregatedFieldWells(LineChartAggregatedFieldWells&& value) { SetLineChartAggregatedFieldWells(std::move(value)); return *this;}
-
+    template<typename LineChartAggregatedFieldWellsT = LineChartAggregatedFieldWells>
+    void SetLineChartAggregatedFieldWells(LineChartAggregatedFieldWellsT&& value) { m_lineChartAggregatedFieldWellsHasBeenSet = true; m_lineChartAggregatedFieldWells = std::forward<LineChartAggregatedFieldWellsT>(value); }
+    template<typename LineChartAggregatedFieldWellsT = LineChartAggregatedFieldWells>
+    LineChartFieldWells& WithLineChartAggregatedFieldWells(LineChartAggregatedFieldWellsT&& value) { SetLineChartAggregatedFieldWells(std::forward<LineChartAggregatedFieldWellsT>(value)); return *this;}
+    ///@}
   private:
 
     LineChartAggregatedFieldWells m_lineChartAggregatedFieldWells;

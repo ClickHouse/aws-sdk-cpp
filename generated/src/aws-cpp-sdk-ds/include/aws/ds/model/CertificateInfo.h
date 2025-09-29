@@ -35,198 +35,69 @@ namespace Model
   class CertificateInfo
   {
   public:
-    AWS_DIRECTORYSERVICE_API CertificateInfo();
+    AWS_DIRECTORYSERVICE_API CertificateInfo() = default;
     AWS_DIRECTORYSERVICE_API CertificateInfo(Aws::Utils::Json::JsonView jsonValue);
     AWS_DIRECTORYSERVICE_API CertificateInfo& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DIRECTORYSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The identifier of the certificate.</p>
      */
-    inline const Aws::String& GetCertificateId() const{ return m_certificateId; }
-
-    /**
-     * <p>The identifier of the certificate.</p>
-     */
+    inline const Aws::String& GetCertificateId() const { return m_certificateId; }
     inline bool CertificateIdHasBeenSet() const { return m_certificateIdHasBeenSet; }
+    template<typename CertificateIdT = Aws::String>
+    void SetCertificateId(CertificateIdT&& value) { m_certificateIdHasBeenSet = true; m_certificateId = std::forward<CertificateIdT>(value); }
+    template<typename CertificateIdT = Aws::String>
+    CertificateInfo& WithCertificateId(CertificateIdT&& value) { SetCertificateId(std::forward<CertificateIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the certificate.</p>
-     */
-    inline void SetCertificateId(const Aws::String& value) { m_certificateIdHasBeenSet = true; m_certificateId = value; }
-
-    /**
-     * <p>The identifier of the certificate.</p>
-     */
-    inline void SetCertificateId(Aws::String&& value) { m_certificateIdHasBeenSet = true; m_certificateId = std::move(value); }
-
-    /**
-     * <p>The identifier of the certificate.</p>
-     */
-    inline void SetCertificateId(const char* value) { m_certificateIdHasBeenSet = true; m_certificateId.assign(value); }
-
-    /**
-     * <p>The identifier of the certificate.</p>
-     */
-    inline CertificateInfo& WithCertificateId(const Aws::String& value) { SetCertificateId(value); return *this;}
-
-    /**
-     * <p>The identifier of the certificate.</p>
-     */
-    inline CertificateInfo& WithCertificateId(Aws::String&& value) { SetCertificateId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the certificate.</p>
-     */
-    inline CertificateInfo& WithCertificateId(const char* value) { SetCertificateId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The common name for the certificate.</p>
      */
-    inline const Aws::String& GetCommonName() const{ return m_commonName; }
-
-    /**
-     * <p>The common name for the certificate.</p>
-     */
+    inline const Aws::String& GetCommonName() const { return m_commonName; }
     inline bool CommonNameHasBeenSet() const { return m_commonNameHasBeenSet; }
+    template<typename CommonNameT = Aws::String>
+    void SetCommonName(CommonNameT&& value) { m_commonNameHasBeenSet = true; m_commonName = std::forward<CommonNameT>(value); }
+    template<typename CommonNameT = Aws::String>
+    CertificateInfo& WithCommonName(CommonNameT&& value) { SetCommonName(std::forward<CommonNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The common name for the certificate.</p>
-     */
-    inline void SetCommonName(const Aws::String& value) { m_commonNameHasBeenSet = true; m_commonName = value; }
-
-    /**
-     * <p>The common name for the certificate.</p>
-     */
-    inline void SetCommonName(Aws::String&& value) { m_commonNameHasBeenSet = true; m_commonName = std::move(value); }
-
-    /**
-     * <p>The common name for the certificate.</p>
-     */
-    inline void SetCommonName(const char* value) { m_commonNameHasBeenSet = true; m_commonName.assign(value); }
-
-    /**
-     * <p>The common name for the certificate.</p>
-     */
-    inline CertificateInfo& WithCommonName(const Aws::String& value) { SetCommonName(value); return *this;}
-
-    /**
-     * <p>The common name for the certificate.</p>
-     */
-    inline CertificateInfo& WithCommonName(Aws::String&& value) { SetCommonName(std::move(value)); return *this;}
-
-    /**
-     * <p>The common name for the certificate.</p>
-     */
-    inline CertificateInfo& WithCommonName(const char* value) { SetCommonName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The state of the certificate.</p>
      */
-    inline const CertificateState& GetState() const{ return m_state; }
-
-    /**
-     * <p>The state of the certificate.</p>
-     */
+    inline CertificateState GetState() const { return m_state; }
     inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
+    inline void SetState(CertificateState value) { m_stateHasBeenSet = true; m_state = value; }
+    inline CertificateInfo& WithState(CertificateState value) { SetState(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The state of the certificate.</p>
-     */
-    inline void SetState(const CertificateState& value) { m_stateHasBeenSet = true; m_state = value; }
-
-    /**
-     * <p>The state of the certificate.</p>
-     */
-    inline void SetState(CertificateState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
-
-    /**
-     * <p>The state of the certificate.</p>
-     */
-    inline CertificateInfo& WithState(const CertificateState& value) { SetState(value); return *this;}
-
-    /**
-     * <p>The state of the certificate.</p>
-     */
-    inline CertificateInfo& WithState(CertificateState&& value) { SetState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time when the certificate will expire.</p>
      */
-    inline const Aws::Utils::DateTime& GetExpiryDateTime() const{ return m_expiryDateTime; }
-
-    /**
-     * <p>The date and time when the certificate will expire.</p>
-     */
+    inline const Aws::Utils::DateTime& GetExpiryDateTime() const { return m_expiryDateTime; }
     inline bool ExpiryDateTimeHasBeenSet() const { return m_expiryDateTimeHasBeenSet; }
+    template<typename ExpiryDateTimeT = Aws::Utils::DateTime>
+    void SetExpiryDateTime(ExpiryDateTimeT&& value) { m_expiryDateTimeHasBeenSet = true; m_expiryDateTime = std::forward<ExpiryDateTimeT>(value); }
+    template<typename ExpiryDateTimeT = Aws::Utils::DateTime>
+    CertificateInfo& WithExpiryDateTime(ExpiryDateTimeT&& value) { SetExpiryDateTime(std::forward<ExpiryDateTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time when the certificate will expire.</p>
-     */
-    inline void SetExpiryDateTime(const Aws::Utils::DateTime& value) { m_expiryDateTimeHasBeenSet = true; m_expiryDateTime = value; }
-
-    /**
-     * <p>The date and time when the certificate will expire.</p>
-     */
-    inline void SetExpiryDateTime(Aws::Utils::DateTime&& value) { m_expiryDateTimeHasBeenSet = true; m_expiryDateTime = std::move(value); }
-
-    /**
-     * <p>The date and time when the certificate will expire.</p>
-     */
-    inline CertificateInfo& WithExpiryDateTime(const Aws::Utils::DateTime& value) { SetExpiryDateTime(value); return *this;}
-
-    /**
-     * <p>The date and time when the certificate will expire.</p>
-     */
-    inline CertificateInfo& WithExpiryDateTime(Aws::Utils::DateTime&& value) { SetExpiryDateTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The function that the registered certificate performs. Valid values include
      * <code>ClientLDAPS</code> or <code>ClientCertAuth</code>. The default value is
      * <code>ClientLDAPS</code>.</p>
      */
-    inline const CertificateType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The function that the registered certificate performs. Valid values include
-     * <code>ClientLDAPS</code> or <code>ClientCertAuth</code>. The default value is
-     * <code>ClientLDAPS</code>.</p>
-     */
+    inline CertificateType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
-
-    /**
-     * <p>The function that the registered certificate performs. Valid values include
-     * <code>ClientLDAPS</code> or <code>ClientCertAuth</code>. The default value is
-     * <code>ClientLDAPS</code>.</p>
-     */
-    inline void SetType(const CertificateType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The function that the registered certificate performs. Valid values include
-     * <code>ClientLDAPS</code> or <code>ClientCertAuth</code>. The default value is
-     * <code>ClientLDAPS</code>.</p>
-     */
-    inline void SetType(CertificateType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The function that the registered certificate performs. Valid values include
-     * <code>ClientLDAPS</code> or <code>ClientCertAuth</code>. The default value is
-     * <code>ClientLDAPS</code>.</p>
-     */
-    inline CertificateInfo& WithType(const CertificateType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The function that the registered certificate performs. Valid values include
-     * <code>ClientLDAPS</code> or <code>ClientCertAuth</code>. The default value is
-     * <code>ClientLDAPS</code>.</p>
-     */
-    inline CertificateInfo& WithType(CertificateType&& value) { SetType(std::move(value)); return *this;}
-
+    inline void SetType(CertificateType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline CertificateInfo& WithType(CertificateType value) { SetType(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_certificateId;
@@ -235,13 +106,13 @@ namespace Model
     Aws::String m_commonName;
     bool m_commonNameHasBeenSet = false;
 
-    CertificateState m_state;
+    CertificateState m_state{CertificateState::NOT_SET};
     bool m_stateHasBeenSet = false;
 
-    Aws::Utils::DateTime m_expiryDateTime;
+    Aws::Utils::DateTime m_expiryDateTime{};
     bool m_expiryDateTimeHasBeenSet = false;
 
-    CertificateType m_type;
+    CertificateType m_type{CertificateType::NOT_SET};
     bool m_typeHasBeenSet = false;
   };
 

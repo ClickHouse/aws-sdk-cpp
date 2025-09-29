@@ -28,106 +28,50 @@ namespace Model
   class DeleteSnapshotResult
   {
   public:
-    AWS_FSX_API DeleteSnapshotResult();
+    AWS_FSX_API DeleteSnapshotResult() = default;
     AWS_FSX_API DeleteSnapshotResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_FSX_API DeleteSnapshotResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The ID of the deleted snapshot.</p>
      */
-    inline const Aws::String& GetSnapshotId() const{ return m_snapshotId; }
+    inline const Aws::String& GetSnapshotId() const { return m_snapshotId; }
+    template<typename SnapshotIdT = Aws::String>
+    void SetSnapshotId(SnapshotIdT&& value) { m_snapshotIdHasBeenSet = true; m_snapshotId = std::forward<SnapshotIdT>(value); }
+    template<typename SnapshotIdT = Aws::String>
+    DeleteSnapshotResult& WithSnapshotId(SnapshotIdT&& value) { SetSnapshotId(std::forward<SnapshotIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the deleted snapshot.</p>
-     */
-    inline void SetSnapshotId(const Aws::String& value) { m_snapshotId = value; }
-
-    /**
-     * <p>The ID of the deleted snapshot.</p>
-     */
-    inline void SetSnapshotId(Aws::String&& value) { m_snapshotId = std::move(value); }
-
-    /**
-     * <p>The ID of the deleted snapshot.</p>
-     */
-    inline void SetSnapshotId(const char* value) { m_snapshotId.assign(value); }
-
-    /**
-     * <p>The ID of the deleted snapshot.</p>
-     */
-    inline DeleteSnapshotResult& WithSnapshotId(const Aws::String& value) { SetSnapshotId(value); return *this;}
-
-    /**
-     * <p>The ID of the deleted snapshot.</p>
-     */
-    inline DeleteSnapshotResult& WithSnapshotId(Aws::String&& value) { SetSnapshotId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the deleted snapshot.</p>
-     */
-    inline DeleteSnapshotResult& WithSnapshotId(const char* value) { SetSnapshotId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The lifecycle status of the snapshot. If the <code>DeleteSnapshot</code>
      * operation is successful, this status is <code>DELETING</code>.</p>
      */
-    inline const SnapshotLifecycle& GetLifecycle() const{ return m_lifecycle; }
+    inline SnapshotLifecycle GetLifecycle() const { return m_lifecycle; }
+    inline void SetLifecycle(SnapshotLifecycle value) { m_lifecycleHasBeenSet = true; m_lifecycle = value; }
+    inline DeleteSnapshotResult& WithLifecycle(SnapshotLifecycle value) { SetLifecycle(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The lifecycle status of the snapshot. If the <code>DeleteSnapshot</code>
-     * operation is successful, this status is <code>DELETING</code>.</p>
-     */
-    inline void SetLifecycle(const SnapshotLifecycle& value) { m_lifecycle = value; }
-
-    /**
-     * <p>The lifecycle status of the snapshot. If the <code>DeleteSnapshot</code>
-     * operation is successful, this status is <code>DELETING</code>.</p>
-     */
-    inline void SetLifecycle(SnapshotLifecycle&& value) { m_lifecycle = std::move(value); }
-
-    /**
-     * <p>The lifecycle status of the snapshot. If the <code>DeleteSnapshot</code>
-     * operation is successful, this status is <code>DELETING</code>.</p>
-     */
-    inline DeleteSnapshotResult& WithLifecycle(const SnapshotLifecycle& value) { SetLifecycle(value); return *this;}
-
-    /**
-     * <p>The lifecycle status of the snapshot. If the <code>DeleteSnapshot</code>
-     * operation is successful, this status is <code>DELETING</code>.</p>
-     */
-    inline DeleteSnapshotResult& WithLifecycle(SnapshotLifecycle&& value) { SetLifecycle(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DeleteSnapshotResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DeleteSnapshotResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DeleteSnapshotResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DeleteSnapshotResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_snapshotId;
+    bool m_snapshotIdHasBeenSet = false;
 
-    SnapshotLifecycle m_lifecycle;
+    SnapshotLifecycle m_lifecycle{SnapshotLifecycle::NOT_SET};
+    bool m_lifecycleHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

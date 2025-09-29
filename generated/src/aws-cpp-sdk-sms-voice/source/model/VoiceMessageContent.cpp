@@ -18,17 +18,7 @@ namespace PinpointSMSVoice
 namespace Model
 {
 
-VoiceMessageContent::VoiceMessageContent() : 
-    m_callInstructionsMessageHasBeenSet(false),
-    m_plainTextMessageHasBeenSet(false),
-    m_sSMLMessageHasBeenSet(false)
-{
-}
-
-VoiceMessageContent::VoiceMessageContent(JsonView jsonValue) : 
-    m_callInstructionsMessageHasBeenSet(false),
-    m_plainTextMessageHasBeenSet(false),
-    m_sSMLMessageHasBeenSet(false)
+VoiceMessageContent::VoiceMessageContent(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ VoiceMessageContent& VoiceMessageContent::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("CallInstructionsMessage"))
   {
     m_callInstructionsMessage = jsonValue.GetObject("CallInstructionsMessage");
-
     m_callInstructionsMessageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PlainTextMessage"))
   {
     m_plainTextMessage = jsonValue.GetObject("PlainTextMessage");
-
     m_plainTextMessageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SSMLMessage"))
   {
     m_sSMLMessage = jsonValue.GetObject("SSMLMessage");
-
     m_sSMLMessageHasBeenSet = true;
   }
-
   return *this;
 }
 

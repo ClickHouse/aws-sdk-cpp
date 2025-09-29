@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-SheetElementRenderingRule::SheetElementRenderingRule() : 
-    m_expressionHasBeenSet(false),
-    m_configurationOverridesHasBeenSet(false)
-{
-}
-
-SheetElementRenderingRule::SheetElementRenderingRule(JsonView jsonValue) : 
-    m_expressionHasBeenSet(false),
-    m_configurationOverridesHasBeenSet(false)
+SheetElementRenderingRule::SheetElementRenderingRule(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ SheetElementRenderingRule& SheetElementRenderingRule::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("Expression"))
   {
     m_expression = jsonValue.GetString("Expression");
-
     m_expressionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ConfigurationOverrides"))
   {
     m_configurationOverrides = jsonValue.GetObject("ConfigurationOverrides");
-
     m_configurationOverridesHasBeenSet = true;
   }
-
   return *this;
 }
 

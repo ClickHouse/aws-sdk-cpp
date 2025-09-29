@@ -36,298 +36,90 @@ namespace Model
   class PodIdentityAssociation
   {
   public:
-    AWS_EKS_API PodIdentityAssociation();
+    AWS_EKS_API PodIdentityAssociation() = default;
     AWS_EKS_API PodIdentityAssociation(Aws::Utils::Json::JsonView jsonValue);
     AWS_EKS_API PodIdentityAssociation& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_EKS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the cluster that the association is in.</p>
      */
-    inline const Aws::String& GetClusterName() const{ return m_clusterName; }
-
-    /**
-     * <p>The name of the cluster that the association is in.</p>
-     */
+    inline const Aws::String& GetClusterName() const { return m_clusterName; }
     inline bool ClusterNameHasBeenSet() const { return m_clusterNameHasBeenSet; }
+    template<typename ClusterNameT = Aws::String>
+    void SetClusterName(ClusterNameT&& value) { m_clusterNameHasBeenSet = true; m_clusterName = std::forward<ClusterNameT>(value); }
+    template<typename ClusterNameT = Aws::String>
+    PodIdentityAssociation& WithClusterName(ClusterNameT&& value) { SetClusterName(std::forward<ClusterNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the cluster that the association is in.</p>
-     */
-    inline void SetClusterName(const Aws::String& value) { m_clusterNameHasBeenSet = true; m_clusterName = value; }
-
-    /**
-     * <p>The name of the cluster that the association is in.</p>
-     */
-    inline void SetClusterName(Aws::String&& value) { m_clusterNameHasBeenSet = true; m_clusterName = std::move(value); }
-
-    /**
-     * <p>The name of the cluster that the association is in.</p>
-     */
-    inline void SetClusterName(const char* value) { m_clusterNameHasBeenSet = true; m_clusterName.assign(value); }
-
-    /**
-     * <p>The name of the cluster that the association is in.</p>
-     */
-    inline PodIdentityAssociation& WithClusterName(const Aws::String& value) { SetClusterName(value); return *this;}
-
-    /**
-     * <p>The name of the cluster that the association is in.</p>
-     */
-    inline PodIdentityAssociation& WithClusterName(Aws::String&& value) { SetClusterName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the cluster that the association is in.</p>
-     */
-    inline PodIdentityAssociation& WithClusterName(const char* value) { SetClusterName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the Kubernetes namespace inside the cluster to create the
-     * association in. The service account and the pods that use the service account
+     * association in. The service account and the Pods that use the service account
      * must be in this namespace.</p>
      */
-    inline const Aws::String& GetNamespace() const{ return m_namespace; }
-
-    /**
-     * <p>The name of the Kubernetes namespace inside the cluster to create the
-     * association in. The service account and the pods that use the service account
-     * must be in this namespace.</p>
-     */
+    inline const Aws::String& GetNamespace() const { return m_namespace; }
     inline bool NamespaceHasBeenSet() const { return m_namespaceHasBeenSet; }
+    template<typename NamespaceT = Aws::String>
+    void SetNamespace(NamespaceT&& value) { m_namespaceHasBeenSet = true; m_namespace = std::forward<NamespaceT>(value); }
+    template<typename NamespaceT = Aws::String>
+    PodIdentityAssociation& WithNamespace(NamespaceT&& value) { SetNamespace(std::forward<NamespaceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the Kubernetes namespace inside the cluster to create the
-     * association in. The service account and the pods that use the service account
-     * must be in this namespace.</p>
-     */
-    inline void SetNamespace(const Aws::String& value) { m_namespaceHasBeenSet = true; m_namespace = value; }
-
-    /**
-     * <p>The name of the Kubernetes namespace inside the cluster to create the
-     * association in. The service account and the pods that use the service account
-     * must be in this namespace.</p>
-     */
-    inline void SetNamespace(Aws::String&& value) { m_namespaceHasBeenSet = true; m_namespace = std::move(value); }
-
-    /**
-     * <p>The name of the Kubernetes namespace inside the cluster to create the
-     * association in. The service account and the pods that use the service account
-     * must be in this namespace.</p>
-     */
-    inline void SetNamespace(const char* value) { m_namespaceHasBeenSet = true; m_namespace.assign(value); }
-
-    /**
-     * <p>The name of the Kubernetes namespace inside the cluster to create the
-     * association in. The service account and the pods that use the service account
-     * must be in this namespace.</p>
-     */
-    inline PodIdentityAssociation& WithNamespace(const Aws::String& value) { SetNamespace(value); return *this;}
-
-    /**
-     * <p>The name of the Kubernetes namespace inside the cluster to create the
-     * association in. The service account and the pods that use the service account
-     * must be in this namespace.</p>
-     */
-    inline PodIdentityAssociation& WithNamespace(Aws::String&& value) { SetNamespace(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Kubernetes namespace inside the cluster to create the
-     * association in. The service account and the pods that use the service account
-     * must be in this namespace.</p>
-     */
-    inline PodIdentityAssociation& WithNamespace(const char* value) { SetNamespace(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the Kubernetes service account inside the cluster to associate
      * the IAM credentials with.</p>
      */
-    inline const Aws::String& GetServiceAccount() const{ return m_serviceAccount; }
-
-    /**
-     * <p>The name of the Kubernetes service account inside the cluster to associate
-     * the IAM credentials with.</p>
-     */
+    inline const Aws::String& GetServiceAccount() const { return m_serviceAccount; }
     inline bool ServiceAccountHasBeenSet() const { return m_serviceAccountHasBeenSet; }
+    template<typename ServiceAccountT = Aws::String>
+    void SetServiceAccount(ServiceAccountT&& value) { m_serviceAccountHasBeenSet = true; m_serviceAccount = std::forward<ServiceAccountT>(value); }
+    template<typename ServiceAccountT = Aws::String>
+    PodIdentityAssociation& WithServiceAccount(ServiceAccountT&& value) { SetServiceAccount(std::forward<ServiceAccountT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the Kubernetes service account inside the cluster to associate
-     * the IAM credentials with.</p>
-     */
-    inline void SetServiceAccount(const Aws::String& value) { m_serviceAccountHasBeenSet = true; m_serviceAccount = value; }
-
-    /**
-     * <p>The name of the Kubernetes service account inside the cluster to associate
-     * the IAM credentials with.</p>
-     */
-    inline void SetServiceAccount(Aws::String&& value) { m_serviceAccountHasBeenSet = true; m_serviceAccount = std::move(value); }
-
-    /**
-     * <p>The name of the Kubernetes service account inside the cluster to associate
-     * the IAM credentials with.</p>
-     */
-    inline void SetServiceAccount(const char* value) { m_serviceAccountHasBeenSet = true; m_serviceAccount.assign(value); }
-
-    /**
-     * <p>The name of the Kubernetes service account inside the cluster to associate
-     * the IAM credentials with.</p>
-     */
-    inline PodIdentityAssociation& WithServiceAccount(const Aws::String& value) { SetServiceAccount(value); return *this;}
-
-    /**
-     * <p>The name of the Kubernetes service account inside the cluster to associate
-     * the IAM credentials with.</p>
-     */
-    inline PodIdentityAssociation& WithServiceAccount(Aws::String&& value) { SetServiceAccount(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Kubernetes service account inside the cluster to associate
-     * the IAM credentials with.</p>
-     */
-    inline PodIdentityAssociation& WithServiceAccount(const char* value) { SetServiceAccount(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the IAM role to associate with the service
      * account. The EKS Pod Identity agent manages credentials to assume this role for
-     * applications in the containers in the pods that use this service account.</p>
+     * applications in the containers in the Pods that use this service account.</p>
      */
-    inline const Aws::String& GetRoleArn() const{ return m_roleArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role to associate with the service
-     * account. The EKS Pod Identity agent manages credentials to assume this role for
-     * applications in the containers in the pods that use this service account.</p>
-     */
+    inline const Aws::String& GetRoleArn() const { return m_roleArn; }
     inline bool RoleArnHasBeenSet() const { return m_roleArnHasBeenSet; }
+    template<typename RoleArnT = Aws::String>
+    void SetRoleArn(RoleArnT&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::forward<RoleArnT>(value); }
+    template<typename RoleArnT = Aws::String>
+    PodIdentityAssociation& WithRoleArn(RoleArnT&& value) { SetRoleArn(std::forward<RoleArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role to associate with the service
-     * account. The EKS Pod Identity agent manages credentials to assume this role for
-     * applications in the containers in the pods that use this service account.</p>
-     */
-    inline void SetRoleArn(const Aws::String& value) { m_roleArnHasBeenSet = true; m_roleArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role to associate with the service
-     * account. The EKS Pod Identity agent manages credentials to assume this role for
-     * applications in the containers in the pods that use this service account.</p>
-     */
-    inline void SetRoleArn(Aws::String&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role to associate with the service
-     * account. The EKS Pod Identity agent manages credentials to assume this role for
-     * applications in the containers in the pods that use this service account.</p>
-     */
-    inline void SetRoleArn(const char* value) { m_roleArnHasBeenSet = true; m_roleArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role to associate with the service
-     * account. The EKS Pod Identity agent manages credentials to assume this role for
-     * applications in the containers in the pods that use this service account.</p>
-     */
-    inline PodIdentityAssociation& WithRoleArn(const Aws::String& value) { SetRoleArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role to associate with the service
-     * account. The EKS Pod Identity agent manages credentials to assume this role for
-     * applications in the containers in the pods that use this service account.</p>
-     */
-    inline PodIdentityAssociation& WithRoleArn(Aws::String&& value) { SetRoleArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role to associate with the service
-     * account. The EKS Pod Identity agent manages credentials to assume this role for
-     * applications in the containers in the pods that use this service account.</p>
-     */
-    inline PodIdentityAssociation& WithRoleArn(const char* value) { SetRoleArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the association.</p>
      */
-    inline const Aws::String& GetAssociationArn() const{ return m_associationArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the association.</p>
-     */
+    inline const Aws::String& GetAssociationArn() const { return m_associationArn; }
     inline bool AssociationArnHasBeenSet() const { return m_associationArnHasBeenSet; }
+    template<typename AssociationArnT = Aws::String>
+    void SetAssociationArn(AssociationArnT&& value) { m_associationArnHasBeenSet = true; m_associationArn = std::forward<AssociationArnT>(value); }
+    template<typename AssociationArnT = Aws::String>
+    PodIdentityAssociation& WithAssociationArn(AssociationArnT&& value) { SetAssociationArn(std::forward<AssociationArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the association.</p>
-     */
-    inline void SetAssociationArn(const Aws::String& value) { m_associationArnHasBeenSet = true; m_associationArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the association.</p>
-     */
-    inline void SetAssociationArn(Aws::String&& value) { m_associationArnHasBeenSet = true; m_associationArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the association.</p>
-     */
-    inline void SetAssociationArn(const char* value) { m_associationArnHasBeenSet = true; m_associationArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the association.</p>
-     */
-    inline PodIdentityAssociation& WithAssociationArn(const Aws::String& value) { SetAssociationArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the association.</p>
-     */
-    inline PodIdentityAssociation& WithAssociationArn(Aws::String&& value) { SetAssociationArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the association.</p>
-     */
-    inline PodIdentityAssociation& WithAssociationArn(const char* value) { SetAssociationArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the association.</p>
      */
-    inline const Aws::String& GetAssociationId() const{ return m_associationId; }
-
-    /**
-     * <p>The ID of the association.</p>
-     */
+    inline const Aws::String& GetAssociationId() const { return m_associationId; }
     inline bool AssociationIdHasBeenSet() const { return m_associationIdHasBeenSet; }
+    template<typename AssociationIdT = Aws::String>
+    void SetAssociationId(AssociationIdT&& value) { m_associationIdHasBeenSet = true; m_associationId = std::forward<AssociationIdT>(value); }
+    template<typename AssociationIdT = Aws::String>
+    PodIdentityAssociation& WithAssociationId(AssociationIdT&& value) { SetAssociationId(std::forward<AssociationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the association.</p>
-     */
-    inline void SetAssociationId(const Aws::String& value) { m_associationIdHasBeenSet = true; m_associationId = value; }
-
-    /**
-     * <p>The ID of the association.</p>
-     */
-    inline void SetAssociationId(Aws::String&& value) { m_associationIdHasBeenSet = true; m_associationId = std::move(value); }
-
-    /**
-     * <p>The ID of the association.</p>
-     */
-    inline void SetAssociationId(const char* value) { m_associationIdHasBeenSet = true; m_associationId.assign(value); }
-
-    /**
-     * <p>The ID of the association.</p>
-     */
-    inline PodIdentityAssociation& WithAssociationId(const Aws::String& value) { SetAssociationId(value); return *this;}
-
-    /**
-     * <p>The ID of the association.</p>
-     */
-    inline PodIdentityAssociation& WithAssociationId(Aws::String&& value) { SetAssociationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the association.</p>
-     */
-    inline PodIdentityAssociation& WithAssociationId(const char* value) { SetAssociationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Metadata that assists with categorization and organization. Each tag consists
      * of a key and an optional value. You define both. Tags don't propagate to any
@@ -347,322 +139,109 @@ namespace Model
      * values with this prefix. Tags with this prefix do not count against your tags
      * per resource limit.</p> </li> </ul>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>Metadata that assists with categorization and organization. Each tag consists
-     * of a key and an optional value. You define both. Tags don't propagate to any
-     * other cluster or Amazon Web Services resources.</p> <p>The following basic
-     * restrictions apply to tags:</p> <ul> <li> <p>Maximum number of tags per resource
-     * – 50</p> </li> <li> <p>For each resource, each tag key must be unique, and each
-     * tag key can have only one value.</p> </li> <li> <p>Maximum key length – 128
-     * Unicode characters in UTF-8</p> </li> <li> <p>Maximum value length – 256 Unicode
-     * characters in UTF-8</p> </li> <li> <p>If your tagging schema is used across
-     * multiple services and resources, remember that other services may have
-     * restrictions on allowed characters. Generally allowed characters are: letters,
-     * numbers, and spaces representable in UTF-8, and the following characters: + - =
-     * . _ : / @.</p> </li> <li> <p>Tag keys and values are case-sensitive.</p> </li>
-     * <li> <p>Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or
-     * lowercase combination of such as a prefix for either keys or values as it is
-     * reserved for Amazon Web Services use. You cannot edit or delete tag keys or
-     * values with this prefix. Tags with this prefix do not count against your tags
-     * per resource limit.</p> </li> </ul>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    PodIdentityAssociation& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    PodIdentityAssociation& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>Metadata that assists with categorization and organization. Each tag consists
-     * of a key and an optional value. You define both. Tags don't propagate to any
-     * other cluster or Amazon Web Services resources.</p> <p>The following basic
-     * restrictions apply to tags:</p> <ul> <li> <p>Maximum number of tags per resource
-     * – 50</p> </li> <li> <p>For each resource, each tag key must be unique, and each
-     * tag key can have only one value.</p> </li> <li> <p>Maximum key length – 128
-     * Unicode characters in UTF-8</p> </li> <li> <p>Maximum value length – 256 Unicode
-     * characters in UTF-8</p> </li> <li> <p>If your tagging schema is used across
-     * multiple services and resources, remember that other services may have
-     * restrictions on allowed characters. Generally allowed characters are: letters,
-     * numbers, and spaces representable in UTF-8, and the following characters: + - =
-     * . _ : / @.</p> </li> <li> <p>Tag keys and values are case-sensitive.</p> </li>
-     * <li> <p>Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or
-     * lowercase combination of such as a prefix for either keys or values as it is
-     * reserved for Amazon Web Services use. You cannot edit or delete tag keys or
-     * values with this prefix. Tags with this prefix do not count against your tags
-     * per resource limit.</p> </li> </ul>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>Metadata that assists with categorization and organization. Each tag consists
-     * of a key and an optional value. You define both. Tags don't propagate to any
-     * other cluster or Amazon Web Services resources.</p> <p>The following basic
-     * restrictions apply to tags:</p> <ul> <li> <p>Maximum number of tags per resource
-     * – 50</p> </li> <li> <p>For each resource, each tag key must be unique, and each
-     * tag key can have only one value.</p> </li> <li> <p>Maximum key length – 128
-     * Unicode characters in UTF-8</p> </li> <li> <p>Maximum value length – 256 Unicode
-     * characters in UTF-8</p> </li> <li> <p>If your tagging schema is used across
-     * multiple services and resources, remember that other services may have
-     * restrictions on allowed characters. Generally allowed characters are: letters,
-     * numbers, and spaces representable in UTF-8, and the following characters: + - =
-     * . _ : / @.</p> </li> <li> <p>Tag keys and values are case-sensitive.</p> </li>
-     * <li> <p>Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or
-     * lowercase combination of such as a prefix for either keys or values as it is
-     * reserved for Amazon Web Services use. You cannot edit or delete tag keys or
-     * values with this prefix. Tags with this prefix do not count against your tags
-     * per resource limit.</p> </li> </ul>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>Metadata that assists with categorization and organization. Each tag consists
-     * of a key and an optional value. You define both. Tags don't propagate to any
-     * other cluster or Amazon Web Services resources.</p> <p>The following basic
-     * restrictions apply to tags:</p> <ul> <li> <p>Maximum number of tags per resource
-     * – 50</p> </li> <li> <p>For each resource, each tag key must be unique, and each
-     * tag key can have only one value.</p> </li> <li> <p>Maximum key length – 128
-     * Unicode characters in UTF-8</p> </li> <li> <p>Maximum value length – 256 Unicode
-     * characters in UTF-8</p> </li> <li> <p>If your tagging schema is used across
-     * multiple services and resources, remember that other services may have
-     * restrictions on allowed characters. Generally allowed characters are: letters,
-     * numbers, and spaces representable in UTF-8, and the following characters: + - =
-     * . _ : / @.</p> </li> <li> <p>Tag keys and values are case-sensitive.</p> </li>
-     * <li> <p>Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or
-     * lowercase combination of such as a prefix for either keys or values as it is
-     * reserved for Amazon Web Services use. You cannot edit or delete tag keys or
-     * values with this prefix. Tags with this prefix do not count against your tags
-     * per resource limit.</p> </li> </ul>
-     */
-    inline PodIdentityAssociation& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>Metadata that assists with categorization and organization. Each tag consists
-     * of a key and an optional value. You define both. Tags don't propagate to any
-     * other cluster or Amazon Web Services resources.</p> <p>The following basic
-     * restrictions apply to tags:</p> <ul> <li> <p>Maximum number of tags per resource
-     * – 50</p> </li> <li> <p>For each resource, each tag key must be unique, and each
-     * tag key can have only one value.</p> </li> <li> <p>Maximum key length – 128
-     * Unicode characters in UTF-8</p> </li> <li> <p>Maximum value length – 256 Unicode
-     * characters in UTF-8</p> </li> <li> <p>If your tagging schema is used across
-     * multiple services and resources, remember that other services may have
-     * restrictions on allowed characters. Generally allowed characters are: letters,
-     * numbers, and spaces representable in UTF-8, and the following characters: + - =
-     * . _ : / @.</p> </li> <li> <p>Tag keys and values are case-sensitive.</p> </li>
-     * <li> <p>Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or
-     * lowercase combination of such as a prefix for either keys or values as it is
-     * reserved for Amazon Web Services use. You cannot edit or delete tag keys or
-     * values with this prefix. Tags with this prefix do not count against your tags
-     * per resource limit.</p> </li> </ul>
-     */
-    inline PodIdentityAssociation& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>Metadata that assists with categorization and organization. Each tag consists
-     * of a key and an optional value. You define both. Tags don't propagate to any
-     * other cluster or Amazon Web Services resources.</p> <p>The following basic
-     * restrictions apply to tags:</p> <ul> <li> <p>Maximum number of tags per resource
-     * – 50</p> </li> <li> <p>For each resource, each tag key must be unique, and each
-     * tag key can have only one value.</p> </li> <li> <p>Maximum key length – 128
-     * Unicode characters in UTF-8</p> </li> <li> <p>Maximum value length – 256 Unicode
-     * characters in UTF-8</p> </li> <li> <p>If your tagging schema is used across
-     * multiple services and resources, remember that other services may have
-     * restrictions on allowed characters. Generally allowed characters are: letters,
-     * numbers, and spaces representable in UTF-8, and the following characters: + - =
-     * . _ : / @.</p> </li> <li> <p>Tag keys and values are case-sensitive.</p> </li>
-     * <li> <p>Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or
-     * lowercase combination of such as a prefix for either keys or values as it is
-     * reserved for Amazon Web Services use. You cannot edit or delete tag keys or
-     * values with this prefix. Tags with this prefix do not count against your tags
-     * per resource limit.</p> </li> </ul>
-     */
-    inline PodIdentityAssociation& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>Metadata that assists with categorization and organization. Each tag consists
-     * of a key and an optional value. You define both. Tags don't propagate to any
-     * other cluster or Amazon Web Services resources.</p> <p>The following basic
-     * restrictions apply to tags:</p> <ul> <li> <p>Maximum number of tags per resource
-     * – 50</p> </li> <li> <p>For each resource, each tag key must be unique, and each
-     * tag key can have only one value.</p> </li> <li> <p>Maximum key length – 128
-     * Unicode characters in UTF-8</p> </li> <li> <p>Maximum value length – 256 Unicode
-     * characters in UTF-8</p> </li> <li> <p>If your tagging schema is used across
-     * multiple services and resources, remember that other services may have
-     * restrictions on allowed characters. Generally allowed characters are: letters,
-     * numbers, and spaces representable in UTF-8, and the following characters: + - =
-     * . _ : / @.</p> </li> <li> <p>Tag keys and values are case-sensitive.</p> </li>
-     * <li> <p>Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or
-     * lowercase combination of such as a prefix for either keys or values as it is
-     * reserved for Amazon Web Services use. You cannot edit or delete tag keys or
-     * values with this prefix. Tags with this prefix do not count against your tags
-     * per resource limit.</p> </li> </ul>
-     */
-    inline PodIdentityAssociation& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Metadata that assists with categorization and organization. Each tag consists
-     * of a key and an optional value. You define both. Tags don't propagate to any
-     * other cluster or Amazon Web Services resources.</p> <p>The following basic
-     * restrictions apply to tags:</p> <ul> <li> <p>Maximum number of tags per resource
-     * – 50</p> </li> <li> <p>For each resource, each tag key must be unique, and each
-     * tag key can have only one value.</p> </li> <li> <p>Maximum key length – 128
-     * Unicode characters in UTF-8</p> </li> <li> <p>Maximum value length – 256 Unicode
-     * characters in UTF-8</p> </li> <li> <p>If your tagging schema is used across
-     * multiple services and resources, remember that other services may have
-     * restrictions on allowed characters. Generally allowed characters are: letters,
-     * numbers, and spaces representable in UTF-8, and the following characters: + - =
-     * . _ : / @.</p> </li> <li> <p>Tag keys and values are case-sensitive.</p> </li>
-     * <li> <p>Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or
-     * lowercase combination of such as a prefix for either keys or values as it is
-     * reserved for Amazon Web Services use. You cannot edit or delete tag keys or
-     * values with this prefix. Tags with this prefix do not count against your tags
-     * per resource limit.</p> </li> </ul>
-     */
-    inline PodIdentityAssociation& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Metadata that assists with categorization and organization. Each tag consists
-     * of a key and an optional value. You define both. Tags don't propagate to any
-     * other cluster or Amazon Web Services resources.</p> <p>The following basic
-     * restrictions apply to tags:</p> <ul> <li> <p>Maximum number of tags per resource
-     * – 50</p> </li> <li> <p>For each resource, each tag key must be unique, and each
-     * tag key can have only one value.</p> </li> <li> <p>Maximum key length – 128
-     * Unicode characters in UTF-8</p> </li> <li> <p>Maximum value length – 256 Unicode
-     * characters in UTF-8</p> </li> <li> <p>If your tagging schema is used across
-     * multiple services and resources, remember that other services may have
-     * restrictions on allowed characters. Generally allowed characters are: letters,
-     * numbers, and spaces representable in UTF-8, and the following characters: + - =
-     * . _ : / @.</p> </li> <li> <p>Tag keys and values are case-sensitive.</p> </li>
-     * <li> <p>Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or
-     * lowercase combination of such as a prefix for either keys or values as it is
-     * reserved for Amazon Web Services use. You cannot edit or delete tag keys or
-     * values with this prefix. Tags with this prefix do not count against your tags
-     * per resource limit.</p> </li> </ul>
-     */
-    inline PodIdentityAssociation& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>Metadata that assists with categorization and organization. Each tag consists
-     * of a key and an optional value. You define both. Tags don't propagate to any
-     * other cluster or Amazon Web Services resources.</p> <p>The following basic
-     * restrictions apply to tags:</p> <ul> <li> <p>Maximum number of tags per resource
-     * – 50</p> </li> <li> <p>For each resource, each tag key must be unique, and each
-     * tag key can have only one value.</p> </li> <li> <p>Maximum key length – 128
-     * Unicode characters in UTF-8</p> </li> <li> <p>Maximum value length – 256 Unicode
-     * characters in UTF-8</p> </li> <li> <p>If your tagging schema is used across
-     * multiple services and resources, remember that other services may have
-     * restrictions on allowed characters. Generally allowed characters are: letters,
-     * numbers, and spaces representable in UTF-8, and the following characters: + - =
-     * . _ : / @.</p> </li> <li> <p>Tag keys and values are case-sensitive.</p> </li>
-     * <li> <p>Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or
-     * lowercase combination of such as a prefix for either keys or values as it is
-     * reserved for Amazon Web Services use. You cannot edit or delete tag keys or
-     * values with this prefix. Tags with this prefix do not count against your tags
-     * per resource limit.</p> </li> </ul>
-     */
-    inline PodIdentityAssociation& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Metadata that assists with categorization and organization. Each tag consists
-     * of a key and an optional value. You define both. Tags don't propagate to any
-     * other cluster or Amazon Web Services resources.</p> <p>The following basic
-     * restrictions apply to tags:</p> <ul> <li> <p>Maximum number of tags per resource
-     * – 50</p> </li> <li> <p>For each resource, each tag key must be unique, and each
-     * tag key can have only one value.</p> </li> <li> <p>Maximum key length – 128
-     * Unicode characters in UTF-8</p> </li> <li> <p>Maximum value length – 256 Unicode
-     * characters in UTF-8</p> </li> <li> <p>If your tagging schema is used across
-     * multiple services and resources, remember that other services may have
-     * restrictions on allowed characters. Generally allowed characters are: letters,
-     * numbers, and spaces representable in UTF-8, and the following characters: + - =
-     * . _ : / @.</p> </li> <li> <p>Tag keys and values are case-sensitive.</p> </li>
-     * <li> <p>Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or
-     * lowercase combination of such as a prefix for either keys or values as it is
-     * reserved for Amazon Web Services use. You cannot edit or delete tag keys or
-     * values with this prefix. Tags with this prefix do not count against your tags
-     * per resource limit.</p> </li> </ul>
-     */
-    inline PodIdentityAssociation& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Metadata that assists with categorization and organization. Each tag consists
-     * of a key and an optional value. You define both. Tags don't propagate to any
-     * other cluster or Amazon Web Services resources.</p> <p>The following basic
-     * restrictions apply to tags:</p> <ul> <li> <p>Maximum number of tags per resource
-     * – 50</p> </li> <li> <p>For each resource, each tag key must be unique, and each
-     * tag key can have only one value.</p> </li> <li> <p>Maximum key length – 128
-     * Unicode characters in UTF-8</p> </li> <li> <p>Maximum value length – 256 Unicode
-     * characters in UTF-8</p> </li> <li> <p>If your tagging schema is used across
-     * multiple services and resources, remember that other services may have
-     * restrictions on allowed characters. Generally allowed characters are: letters,
-     * numbers, and spaces representable in UTF-8, and the following characters: + - =
-     * . _ : / @.</p> </li> <li> <p>Tag keys and values are case-sensitive.</p> </li>
-     * <li> <p>Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or
-     * lowercase combination of such as a prefix for either keys or values as it is
-     * reserved for Amazon Web Services use. You cannot edit or delete tag keys or
-     * values with this prefix. Tags with this prefix do not count against your tags
-     * per resource limit.</p> </li> </ul>
-     */
-    inline PodIdentityAssociation& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>The timestamp that the association was created at.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedAt() const{ return m_createdAt; }
-
-    /**
-     * <p>The timestamp that the association was created at.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedAt() const { return m_createdAt; }
     inline bool CreatedAtHasBeenSet() const { return m_createdAtHasBeenSet; }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    void SetCreatedAt(CreatedAtT&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::forward<CreatedAtT>(value); }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    PodIdentityAssociation& WithCreatedAt(CreatedAtT&& value) { SetCreatedAt(std::forward<CreatedAtT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The timestamp that the association was created at.</p>
+     * <p>The most recent timestamp that the association was modified at.</p>
      */
-    inline void SetCreatedAt(const Aws::Utils::DateTime& value) { m_createdAtHasBeenSet = true; m_createdAt = value; }
-
-    /**
-     * <p>The timestamp that the association was created at.</p>
-     */
-    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::move(value); }
-
-    /**
-     * <p>The timestamp that the association was created at.</p>
-     */
-    inline PodIdentityAssociation& WithCreatedAt(const Aws::Utils::DateTime& value) { SetCreatedAt(value); return *this;}
-
-    /**
-     * <p>The timestamp that the association was created at.</p>
-     */
-    inline PodIdentityAssociation& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The most recent timestamp that the association was modified at</p>
-     */
-    inline const Aws::Utils::DateTime& GetModifiedAt() const{ return m_modifiedAt; }
-
-    /**
-     * <p>The most recent timestamp that the association was modified at</p>
-     */
+    inline const Aws::Utils::DateTime& GetModifiedAt() const { return m_modifiedAt; }
     inline bool ModifiedAtHasBeenSet() const { return m_modifiedAtHasBeenSet; }
+    template<typename ModifiedAtT = Aws::Utils::DateTime>
+    void SetModifiedAt(ModifiedAtT&& value) { m_modifiedAtHasBeenSet = true; m_modifiedAt = std::forward<ModifiedAtT>(value); }
+    template<typename ModifiedAtT = Aws::Utils::DateTime>
+    PodIdentityAssociation& WithModifiedAt(ModifiedAtT&& value) { SetModifiedAt(std::forward<ModifiedAtT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The most recent timestamp that the association was modified at</p>
+     * <p>If defined, the EKS Pod Identity association is owned by an Amazon EKS
+     * add-on.</p>
      */
-    inline void SetModifiedAt(const Aws::Utils::DateTime& value) { m_modifiedAtHasBeenSet = true; m_modifiedAt = value; }
+    inline const Aws::String& GetOwnerArn() const { return m_ownerArn; }
+    inline bool OwnerArnHasBeenSet() const { return m_ownerArnHasBeenSet; }
+    template<typename OwnerArnT = Aws::String>
+    void SetOwnerArn(OwnerArnT&& value) { m_ownerArnHasBeenSet = true; m_ownerArn = std::forward<OwnerArnT>(value); }
+    template<typename OwnerArnT = Aws::String>
+    PodIdentityAssociation& WithOwnerArn(OwnerArnT&& value) { SetOwnerArn(std::forward<OwnerArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The most recent timestamp that the association was modified at</p>
+     * <p>The state of the automatic sessions tags. The value of <i>true</i> disables
+     * these tags.</p> <p>EKS Pod Identity adds a pre-defined set of session tags when
+     * it assumes the role. You can use these tags to author a single role that can
+     * work across resources by allowing access to Amazon Web Services resources based
+     * on matching tags. By default, EKS Pod Identity attaches six tags, including tags
+     * for cluster name, namespace, and service account name. For the list of tags
+     * added by EKS Pod Identity, see <a
+     * href="https://docs.aws.amazon.com/eks/latest/userguide/pod-id-abac.html#pod-id-abac-tags">List
+     * of session tags added by EKS Pod Identity</a> in the <i>Amazon EKS User
+     * Guide</i>.</p>
      */
-    inline void SetModifiedAt(Aws::Utils::DateTime&& value) { m_modifiedAtHasBeenSet = true; m_modifiedAt = std::move(value); }
+    inline bool GetDisableSessionTags() const { return m_disableSessionTags; }
+    inline bool DisableSessionTagsHasBeenSet() const { return m_disableSessionTagsHasBeenSet; }
+    inline void SetDisableSessionTags(bool value) { m_disableSessionTagsHasBeenSet = true; m_disableSessionTags = value; }
+    inline PodIdentityAssociation& WithDisableSessionTags(bool value) { SetDisableSessionTags(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The most recent timestamp that the association was modified at</p>
+     * <p>The Amazon Resource Name (ARN) of the target IAM role to associate with the
+     * service account. This role is assumed by using the EKS Pod Identity association
+     * role, then the credentials for this role are injected into the Pod.</p>
      */
-    inline PodIdentityAssociation& WithModifiedAt(const Aws::Utils::DateTime& value) { SetModifiedAt(value); return *this;}
+    inline const Aws::String& GetTargetRoleArn() const { return m_targetRoleArn; }
+    inline bool TargetRoleArnHasBeenSet() const { return m_targetRoleArnHasBeenSet; }
+    template<typename TargetRoleArnT = Aws::String>
+    void SetTargetRoleArn(TargetRoleArnT&& value) { m_targetRoleArnHasBeenSet = true; m_targetRoleArn = std::forward<TargetRoleArnT>(value); }
+    template<typename TargetRoleArnT = Aws::String>
+    PodIdentityAssociation& WithTargetRoleArn(TargetRoleArnT&& value) { SetTargetRoleArn(std::forward<TargetRoleArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The most recent timestamp that the association was modified at</p>
+     * <p>The unique identifier for this EKS Pod Identity association for a target IAM
+     * role. You put this value in the trust policy of the target role, in a
+     * <code>Condition</code> to match the <code>sts.ExternalId</code>. This ensures
+     * that the target role can only be assumed by this association. This prevents the
+     * <i>confused deputy problem</i>. For more information about the confused deputy
+     * problem, see <a
+     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/confused-deputy.html">The
+     * confused deputy problem</a> in the <i>IAM User Guide</i>.</p> <p>If you want to
+     * use the same target role with multiple associations or other roles, use
+     * independent statements in the trust policy to allow <code>sts:AssumeRole</code>
+     * access from each role.</p>
      */
-    inline PodIdentityAssociation& WithModifiedAt(Aws::Utils::DateTime&& value) { SetModifiedAt(std::move(value)); return *this;}
-
+    inline const Aws::String& GetExternalId() const { return m_externalId; }
+    inline bool ExternalIdHasBeenSet() const { return m_externalIdHasBeenSet; }
+    template<typename ExternalIdT = Aws::String>
+    void SetExternalId(ExternalIdT&& value) { m_externalIdHasBeenSet = true; m_externalId = std::forward<ExternalIdT>(value); }
+    template<typename ExternalIdT = Aws::String>
+    PodIdentityAssociation& WithExternalId(ExternalIdT&& value) { SetExternalId(std::forward<ExternalIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_clusterName;
@@ -686,11 +265,23 @@ namespace Model
     Aws::Map<Aws::String, Aws::String> m_tags;
     bool m_tagsHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdAt;
+    Aws::Utils::DateTime m_createdAt{};
     bool m_createdAtHasBeenSet = false;
 
-    Aws::Utils::DateTime m_modifiedAt;
+    Aws::Utils::DateTime m_modifiedAt{};
     bool m_modifiedAtHasBeenSet = false;
+
+    Aws::String m_ownerArn;
+    bool m_ownerArnHasBeenSet = false;
+
+    bool m_disableSessionTags{false};
+    bool m_disableSessionTagsHasBeenSet = false;
+
+    Aws::String m_targetRoleArn;
+    bool m_targetRoleArnHasBeenSet = false;
+
+    Aws::String m_externalId;
+    bool m_externalIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -34,122 +34,54 @@ namespace Model
   class CreateSqlInjectionMatchSetResult
   {
   public:
-    AWS_WAFREGIONAL_API CreateSqlInjectionMatchSetResult();
+    AWS_WAFREGIONAL_API CreateSqlInjectionMatchSetResult() = default;
     AWS_WAFREGIONAL_API CreateSqlInjectionMatchSetResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_WAFREGIONAL_API CreateSqlInjectionMatchSetResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>A <a>SqlInjectionMatchSet</a>.</p>
      */
-    inline const SqlInjectionMatchSet& GetSqlInjectionMatchSet() const{ return m_sqlInjectionMatchSet; }
+    inline const SqlInjectionMatchSet& GetSqlInjectionMatchSet() const { return m_sqlInjectionMatchSet; }
+    template<typename SqlInjectionMatchSetT = SqlInjectionMatchSet>
+    void SetSqlInjectionMatchSet(SqlInjectionMatchSetT&& value) { m_sqlInjectionMatchSetHasBeenSet = true; m_sqlInjectionMatchSet = std::forward<SqlInjectionMatchSetT>(value); }
+    template<typename SqlInjectionMatchSetT = SqlInjectionMatchSet>
+    CreateSqlInjectionMatchSetResult& WithSqlInjectionMatchSet(SqlInjectionMatchSetT&& value) { SetSqlInjectionMatchSet(std::forward<SqlInjectionMatchSetT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A <a>SqlInjectionMatchSet</a>.</p>
-     */
-    inline void SetSqlInjectionMatchSet(const SqlInjectionMatchSet& value) { m_sqlInjectionMatchSet = value; }
-
-    /**
-     * <p>A <a>SqlInjectionMatchSet</a>.</p>
-     */
-    inline void SetSqlInjectionMatchSet(SqlInjectionMatchSet&& value) { m_sqlInjectionMatchSet = std::move(value); }
-
-    /**
-     * <p>A <a>SqlInjectionMatchSet</a>.</p>
-     */
-    inline CreateSqlInjectionMatchSetResult& WithSqlInjectionMatchSet(const SqlInjectionMatchSet& value) { SetSqlInjectionMatchSet(value); return *this;}
-
-    /**
-     * <p>A <a>SqlInjectionMatchSet</a>.</p>
-     */
-    inline CreateSqlInjectionMatchSetResult& WithSqlInjectionMatchSet(SqlInjectionMatchSet&& value) { SetSqlInjectionMatchSet(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The <code>ChangeToken</code> that you used to submit the
      * <code>CreateSqlInjectionMatchSet</code> request. You can also use this value to
      * query the status of the request. For more information, see
      * <a>GetChangeTokenStatus</a>.</p>
      */
-    inline const Aws::String& GetChangeToken() const{ return m_changeToken; }
+    inline const Aws::String& GetChangeToken() const { return m_changeToken; }
+    template<typename ChangeTokenT = Aws::String>
+    void SetChangeToken(ChangeTokenT&& value) { m_changeTokenHasBeenSet = true; m_changeToken = std::forward<ChangeTokenT>(value); }
+    template<typename ChangeTokenT = Aws::String>
+    CreateSqlInjectionMatchSetResult& WithChangeToken(ChangeTokenT&& value) { SetChangeToken(std::forward<ChangeTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The <code>ChangeToken</code> that you used to submit the
-     * <code>CreateSqlInjectionMatchSet</code> request. You can also use this value to
-     * query the status of the request. For more information, see
-     * <a>GetChangeTokenStatus</a>.</p>
-     */
-    inline void SetChangeToken(const Aws::String& value) { m_changeToken = value; }
-
-    /**
-     * <p>The <code>ChangeToken</code> that you used to submit the
-     * <code>CreateSqlInjectionMatchSet</code> request. You can also use this value to
-     * query the status of the request. For more information, see
-     * <a>GetChangeTokenStatus</a>.</p>
-     */
-    inline void SetChangeToken(Aws::String&& value) { m_changeToken = std::move(value); }
-
-    /**
-     * <p>The <code>ChangeToken</code> that you used to submit the
-     * <code>CreateSqlInjectionMatchSet</code> request. You can also use this value to
-     * query the status of the request. For more information, see
-     * <a>GetChangeTokenStatus</a>.</p>
-     */
-    inline void SetChangeToken(const char* value) { m_changeToken.assign(value); }
-
-    /**
-     * <p>The <code>ChangeToken</code> that you used to submit the
-     * <code>CreateSqlInjectionMatchSet</code> request. You can also use this value to
-     * query the status of the request. For more information, see
-     * <a>GetChangeTokenStatus</a>.</p>
-     */
-    inline CreateSqlInjectionMatchSetResult& WithChangeToken(const Aws::String& value) { SetChangeToken(value); return *this;}
-
-    /**
-     * <p>The <code>ChangeToken</code> that you used to submit the
-     * <code>CreateSqlInjectionMatchSet</code> request. You can also use this value to
-     * query the status of the request. For more information, see
-     * <a>GetChangeTokenStatus</a>.</p>
-     */
-    inline CreateSqlInjectionMatchSetResult& WithChangeToken(Aws::String&& value) { SetChangeToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The <code>ChangeToken</code> that you used to submit the
-     * <code>CreateSqlInjectionMatchSet</code> request. You can also use this value to
-     * query the status of the request. For more information, see
-     * <a>GetChangeTokenStatus</a>.</p>
-     */
-    inline CreateSqlInjectionMatchSetResult& WithChangeToken(const char* value) { SetChangeToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline CreateSqlInjectionMatchSetResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline CreateSqlInjectionMatchSetResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline CreateSqlInjectionMatchSetResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    CreateSqlInjectionMatchSetResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     SqlInjectionMatchSet m_sqlInjectionMatchSet;
+    bool m_sqlInjectionMatchSetHasBeenSet = false;
 
     Aws::String m_changeToken;
+    bool m_changeTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

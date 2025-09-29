@@ -29,95 +29,51 @@ namespace Model
   class DisassociateClientVpnTargetNetworkResponse
   {
   public:
-    AWS_EC2_API DisassociateClientVpnTargetNetworkResponse();
+    AWS_EC2_API DisassociateClientVpnTargetNetworkResponse() = default;
     AWS_EC2_API DisassociateClientVpnTargetNetworkResponse(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_EC2_API DisassociateClientVpnTargetNetworkResponse& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * <p>The ID of the target network association.</p>
      */
-    inline const Aws::String& GetAssociationId() const{ return m_associationId; }
+    inline const Aws::String& GetAssociationId() const { return m_associationId; }
+    template<typename AssociationIdT = Aws::String>
+    void SetAssociationId(AssociationIdT&& value) { m_associationIdHasBeenSet = true; m_associationId = std::forward<AssociationIdT>(value); }
+    template<typename AssociationIdT = Aws::String>
+    DisassociateClientVpnTargetNetworkResponse& WithAssociationId(AssociationIdT&& value) { SetAssociationId(std::forward<AssociationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the target network association.</p>
-     */
-    inline void SetAssociationId(const Aws::String& value) { m_associationId = value; }
-
-    /**
-     * <p>The ID of the target network association.</p>
-     */
-    inline void SetAssociationId(Aws::String&& value) { m_associationId = std::move(value); }
-
-    /**
-     * <p>The ID of the target network association.</p>
-     */
-    inline void SetAssociationId(const char* value) { m_associationId.assign(value); }
-
-    /**
-     * <p>The ID of the target network association.</p>
-     */
-    inline DisassociateClientVpnTargetNetworkResponse& WithAssociationId(const Aws::String& value) { SetAssociationId(value); return *this;}
-
-    /**
-     * <p>The ID of the target network association.</p>
-     */
-    inline DisassociateClientVpnTargetNetworkResponse& WithAssociationId(Aws::String&& value) { SetAssociationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the target network association.</p>
-     */
-    inline DisassociateClientVpnTargetNetworkResponse& WithAssociationId(const char* value) { SetAssociationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The current state of the target network association.</p>
      */
-    inline const AssociationStatus& GetStatus() const{ return m_status; }
+    inline const AssociationStatus& GetStatus() const { return m_status; }
+    template<typename StatusT = AssociationStatus>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = AssociationStatus>
+    DisassociateClientVpnTargetNetworkResponse& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The current state of the target network association.</p>
-     */
-    inline void SetStatus(const AssociationStatus& value) { m_status = value; }
-
-    /**
-     * <p>The current state of the target network association.</p>
-     */
-    inline void SetStatus(AssociationStatus&& value) { m_status = std::move(value); }
-
-    /**
-     * <p>The current state of the target network association.</p>
-     */
-    inline DisassociateClientVpnTargetNetworkResponse& WithStatus(const AssociationStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The current state of the target network association.</p>
-     */
-    inline DisassociateClientVpnTargetNetworkResponse& WithStatus(AssociationStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
-
-    
-    inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
-
-    
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
-
-    
-    inline DisassociateClientVpnTargetNetworkResponse& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
-
-    
-    inline DisassociateClientVpnTargetNetworkResponse& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
-
+    inline const ResponseMetadata& GetResponseMetadata() const { return m_responseMetadata; }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    void SetResponseMetadata(ResponseMetadataT&& value) { m_responseMetadataHasBeenSet = true; m_responseMetadata = std::forward<ResponseMetadataT>(value); }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    DisassociateClientVpnTargetNetworkResponse& WithResponseMetadata(ResponseMetadataT&& value) { SetResponseMetadata(std::forward<ResponseMetadataT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_associationId;
+    bool m_associationIdHasBeenSet = false;
 
     AssociationStatus m_status;
+    bool m_statusHasBeenSet = false;
 
     ResponseMetadata m_responseMetadata;
+    bool m_responseMetadataHasBeenSet = false;
   };
 
 } // namespace Model

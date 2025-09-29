@@ -12,14 +12,6 @@ using namespace Aws::SSOAdmin::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-PutApplicationAuthenticationMethodRequest::PutApplicationAuthenticationMethodRequest() : 
-    m_applicationArnHasBeenSet(false),
-    m_authenticationMethodHasBeenSet(false),
-    m_authenticationMethodType(AuthenticationMethodType::NOT_SET),
-    m_authenticationMethodTypeHasBeenSet(false)
-{
-}
-
 Aws::String PutApplicationAuthenticationMethodRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -30,15 +22,15 @@ Aws::String PutApplicationAuthenticationMethodRequest::SerializePayload() const
 
   }
 
+  if(m_authenticationMethodTypeHasBeenSet)
+  {
+   payload.WithString("AuthenticationMethodType", AuthenticationMethodTypeMapper::GetNameForAuthenticationMethodType(m_authenticationMethodType));
+  }
+
   if(m_authenticationMethodHasBeenSet)
   {
    payload.WithObject("AuthenticationMethod", m_authenticationMethod.Jsonize());
 
-  }
-
-  if(m_authenticationMethodTypeHasBeenSet)
-  {
-   payload.WithString("AuthenticationMethodType", AuthenticationMethodTypeMapper::GetNameForAuthenticationMethodType(m_authenticationMethodType));
   }
 
   return payload.View().WriteReadable();

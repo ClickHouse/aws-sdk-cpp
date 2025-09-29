@@ -6,6 +6,7 @@
 #include <aws/route53/model/ListHostedZonesByVPCRequest.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/core/utils/UnreferencedParam.h>
 #include <aws/core/http/URI.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
 
@@ -16,14 +17,6 @@ using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-ListHostedZonesByVPCRequest::ListHostedZonesByVPCRequest() : 
-    m_vPCIdHasBeenSet(false),
-    m_vPCRegion(VPCRegion::NOT_SET),
-    m_vPCRegionHasBeenSet(false),
-    m_maxItemsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
 
 Aws::String ListHostedZonesByVPCRequest::SerializePayload() const
 {

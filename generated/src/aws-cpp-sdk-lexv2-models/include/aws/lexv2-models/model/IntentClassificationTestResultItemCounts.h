@@ -33,133 +33,56 @@ namespace Model
   class IntentClassificationTestResultItemCounts
   {
   public:
-    AWS_LEXMODELSV2_API IntentClassificationTestResultItemCounts();
+    AWS_LEXMODELSV2_API IntentClassificationTestResultItemCounts() = default;
     AWS_LEXMODELSV2_API IntentClassificationTestResultItemCounts(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API IntentClassificationTestResultItemCounts& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The total number of results in the intent classification test.</p>
      */
-    inline int GetTotalResultCount() const{ return m_totalResultCount; }
-
-    /**
-     * <p>The total number of results in the intent classification test.</p>
-     */
+    inline int GetTotalResultCount() const { return m_totalResultCount; }
     inline bool TotalResultCountHasBeenSet() const { return m_totalResultCountHasBeenSet; }
-
-    /**
-     * <p>The total number of results in the intent classification test.</p>
-     */
     inline void SetTotalResultCount(int value) { m_totalResultCountHasBeenSet = true; m_totalResultCount = value; }
-
-    /**
-     * <p>The total number of results in the intent classification test.</p>
-     */
     inline IntentClassificationTestResultItemCounts& WithTotalResultCount(int value) { SetTotalResultCount(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The number of matched, mismatched, and execution error results for speech
      * transcription for the intent.</p>
      */
-    inline const Aws::Map<TestResultMatchStatus, int>& GetSpeechTranscriptionResultCounts() const{ return m_speechTranscriptionResultCounts; }
-
-    /**
-     * <p>The number of matched, mismatched, and execution error results for speech
-     * transcription for the intent.</p>
-     */
+    inline const Aws::Map<TestResultMatchStatus, int>& GetSpeechTranscriptionResultCounts() const { return m_speechTranscriptionResultCounts; }
     inline bool SpeechTranscriptionResultCountsHasBeenSet() const { return m_speechTranscriptionResultCountsHasBeenSet; }
+    template<typename SpeechTranscriptionResultCountsT = Aws::Map<TestResultMatchStatus, int>>
+    void SetSpeechTranscriptionResultCounts(SpeechTranscriptionResultCountsT&& value) { m_speechTranscriptionResultCountsHasBeenSet = true; m_speechTranscriptionResultCounts = std::forward<SpeechTranscriptionResultCountsT>(value); }
+    template<typename SpeechTranscriptionResultCountsT = Aws::Map<TestResultMatchStatus, int>>
+    IntentClassificationTestResultItemCounts& WithSpeechTranscriptionResultCounts(SpeechTranscriptionResultCountsT&& value) { SetSpeechTranscriptionResultCounts(std::forward<SpeechTranscriptionResultCountsT>(value)); return *this;}
+    inline IntentClassificationTestResultItemCounts& AddSpeechTranscriptionResultCounts(TestResultMatchStatus key, int value) {
+      m_speechTranscriptionResultCountsHasBeenSet = true; m_speechTranscriptionResultCounts.emplace(key, value); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>The number of matched, mismatched, and execution error results for speech
-     * transcription for the intent.</p>
-     */
-    inline void SetSpeechTranscriptionResultCounts(const Aws::Map<TestResultMatchStatus, int>& value) { m_speechTranscriptionResultCountsHasBeenSet = true; m_speechTranscriptionResultCounts = value; }
-
-    /**
-     * <p>The number of matched, mismatched, and execution error results for speech
-     * transcription for the intent.</p>
-     */
-    inline void SetSpeechTranscriptionResultCounts(Aws::Map<TestResultMatchStatus, int>&& value) { m_speechTranscriptionResultCountsHasBeenSet = true; m_speechTranscriptionResultCounts = std::move(value); }
-
-    /**
-     * <p>The number of matched, mismatched, and execution error results for speech
-     * transcription for the intent.</p>
-     */
-    inline IntentClassificationTestResultItemCounts& WithSpeechTranscriptionResultCounts(const Aws::Map<TestResultMatchStatus, int>& value) { SetSpeechTranscriptionResultCounts(value); return *this;}
-
-    /**
-     * <p>The number of matched, mismatched, and execution error results for speech
-     * transcription for the intent.</p>
-     */
-    inline IntentClassificationTestResultItemCounts& WithSpeechTranscriptionResultCounts(Aws::Map<TestResultMatchStatus, int>&& value) { SetSpeechTranscriptionResultCounts(std::move(value)); return *this;}
-
-    /**
-     * <p>The number of matched, mismatched, and execution error results for speech
-     * transcription for the intent.</p>
-     */
-    inline IntentClassificationTestResultItemCounts& AddSpeechTranscriptionResultCounts(const TestResultMatchStatus& key, int value) { m_speechTranscriptionResultCountsHasBeenSet = true; m_speechTranscriptionResultCounts.emplace(key, value); return *this; }
-
-    /**
-     * <p>The number of matched, mismatched, and execution error results for speech
-     * transcription for the intent.</p>
-     */
-    inline IntentClassificationTestResultItemCounts& AddSpeechTranscriptionResultCounts(TestResultMatchStatus&& key, int value) { m_speechTranscriptionResultCountsHasBeenSet = true; m_speechTranscriptionResultCounts.emplace(std::move(key), value); return *this; }
-
-
+    ///@{
     /**
      * <p>The number of matched and mismatched results for intent recognition for the
      * intent.</p>
      */
-    inline const Aws::Map<TestResultMatchStatus, int>& GetIntentMatchResultCounts() const{ return m_intentMatchResultCounts; }
-
-    /**
-     * <p>The number of matched and mismatched results for intent recognition for the
-     * intent.</p>
-     */
+    inline const Aws::Map<TestResultMatchStatus, int>& GetIntentMatchResultCounts() const { return m_intentMatchResultCounts; }
     inline bool IntentMatchResultCountsHasBeenSet() const { return m_intentMatchResultCountsHasBeenSet; }
-
-    /**
-     * <p>The number of matched and mismatched results for intent recognition for the
-     * intent.</p>
-     */
-    inline void SetIntentMatchResultCounts(const Aws::Map<TestResultMatchStatus, int>& value) { m_intentMatchResultCountsHasBeenSet = true; m_intentMatchResultCounts = value; }
-
-    /**
-     * <p>The number of matched and mismatched results for intent recognition for the
-     * intent.</p>
-     */
-    inline void SetIntentMatchResultCounts(Aws::Map<TestResultMatchStatus, int>&& value) { m_intentMatchResultCountsHasBeenSet = true; m_intentMatchResultCounts = std::move(value); }
-
-    /**
-     * <p>The number of matched and mismatched results for intent recognition for the
-     * intent.</p>
-     */
-    inline IntentClassificationTestResultItemCounts& WithIntentMatchResultCounts(const Aws::Map<TestResultMatchStatus, int>& value) { SetIntentMatchResultCounts(value); return *this;}
-
-    /**
-     * <p>The number of matched and mismatched results for intent recognition for the
-     * intent.</p>
-     */
-    inline IntentClassificationTestResultItemCounts& WithIntentMatchResultCounts(Aws::Map<TestResultMatchStatus, int>&& value) { SetIntentMatchResultCounts(std::move(value)); return *this;}
-
-    /**
-     * <p>The number of matched and mismatched results for intent recognition for the
-     * intent.</p>
-     */
-    inline IntentClassificationTestResultItemCounts& AddIntentMatchResultCounts(const TestResultMatchStatus& key, int value) { m_intentMatchResultCountsHasBeenSet = true; m_intentMatchResultCounts.emplace(key, value); return *this; }
-
-    /**
-     * <p>The number of matched and mismatched results for intent recognition for the
-     * intent.</p>
-     */
-    inline IntentClassificationTestResultItemCounts& AddIntentMatchResultCounts(TestResultMatchStatus&& key, int value) { m_intentMatchResultCountsHasBeenSet = true; m_intentMatchResultCounts.emplace(std::move(key), value); return *this; }
-
+    template<typename IntentMatchResultCountsT = Aws::Map<TestResultMatchStatus, int>>
+    void SetIntentMatchResultCounts(IntentMatchResultCountsT&& value) { m_intentMatchResultCountsHasBeenSet = true; m_intentMatchResultCounts = std::forward<IntentMatchResultCountsT>(value); }
+    template<typename IntentMatchResultCountsT = Aws::Map<TestResultMatchStatus, int>>
+    IntentClassificationTestResultItemCounts& WithIntentMatchResultCounts(IntentMatchResultCountsT&& value) { SetIntentMatchResultCounts(std::forward<IntentMatchResultCountsT>(value)); return *this;}
+    inline IntentClassificationTestResultItemCounts& AddIntentMatchResultCounts(TestResultMatchStatus key, int value) {
+      m_intentMatchResultCountsHasBeenSet = true; m_intentMatchResultCounts.emplace(key, value); return *this;
+    }
+    ///@}
   private:
 
-    int m_totalResultCount;
+    int m_totalResultCount{0};
     bool m_totalResultCountHasBeenSet = false;
 
     Aws::Map<TestResultMatchStatus, int> m_speechTranscriptionResultCounts;

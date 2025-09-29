@@ -12,19 +12,15 @@ using namespace Aws::SSOAdmin::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ListAccountAssignmentsRequest::ListAccountAssignmentsRequest() : 
-    m_accountIdHasBeenSet(false),
-    m_instanceArnHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_permissionSetArnHasBeenSet(false)
-{
-}
-
 Aws::String ListAccountAssignmentsRequest::SerializePayload() const
 {
   JsonValue payload;
+
+  if(m_instanceArnHasBeenSet)
+  {
+   payload.WithString("InstanceArn", m_instanceArn);
+
+  }
 
   if(m_accountIdHasBeenSet)
   {
@@ -32,9 +28,9 @@ Aws::String ListAccountAssignmentsRequest::SerializePayload() const
 
   }
 
-  if(m_instanceArnHasBeenSet)
+  if(m_permissionSetArnHasBeenSet)
   {
-   payload.WithString("InstanceArn", m_instanceArn);
+   payload.WithString("PermissionSetArn", m_permissionSetArn);
 
   }
 
@@ -47,12 +43,6 @@ Aws::String ListAccountAssignmentsRequest::SerializePayload() const
   if(m_nextTokenHasBeenSet)
   {
    payload.WithString("NextToken", m_nextToken);
-
-  }
-
-  if(m_permissionSetArnHasBeenSet)
-  {
-   payload.WithString("PermissionSetArn", m_permissionSetArn);
 
   }
 

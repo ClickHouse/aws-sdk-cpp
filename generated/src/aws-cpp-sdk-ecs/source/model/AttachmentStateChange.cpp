@@ -18,15 +18,7 @@ namespace ECS
 namespace Model
 {
 
-AttachmentStateChange::AttachmentStateChange() : 
-    m_attachmentArnHasBeenSet(false),
-    m_statusHasBeenSet(false)
-{
-}
-
-AttachmentStateChange::AttachmentStateChange(JsonView jsonValue) : 
-    m_attachmentArnHasBeenSet(false),
-    m_statusHasBeenSet(false)
+AttachmentStateChange::AttachmentStateChange(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ AttachmentStateChange& AttachmentStateChange::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("attachmentArn"))
   {
     m_attachmentArn = jsonValue.GetString("attachmentArn");
-
     m_attachmentArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("status"))
   {
     m_status = jsonValue.GetString("status");
-
     m_statusHasBeenSet = true;
   }
-
   return *this;
 }
 

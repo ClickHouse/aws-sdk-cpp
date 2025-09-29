@@ -18,15 +18,7 @@ namespace EFS
 namespace Model
 {
 
-RootDirectory::RootDirectory() : 
-    m_pathHasBeenSet(false),
-    m_creationInfoHasBeenSet(false)
-{
-}
-
-RootDirectory::RootDirectory(JsonView jsonValue) : 
-    m_pathHasBeenSet(false),
-    m_creationInfoHasBeenSet(false)
+RootDirectory::RootDirectory(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ RootDirectory& RootDirectory::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Path"))
   {
     m_path = jsonValue.GetString("Path");
-
     m_pathHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CreationInfo"))
   {
     m_creationInfo = jsonValue.GetObject("CreationInfo");
-
     m_creationInfoHasBeenSet = true;
   }
-
   return *this;
 }
 

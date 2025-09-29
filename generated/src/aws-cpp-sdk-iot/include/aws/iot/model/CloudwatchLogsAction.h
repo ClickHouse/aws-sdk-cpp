@@ -32,122 +32,47 @@ namespace Model
   class CloudwatchLogsAction
   {
   public:
-    AWS_IOT_API CloudwatchLogsAction();
+    AWS_IOT_API CloudwatchLogsAction() = default;
     AWS_IOT_API CloudwatchLogsAction(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API CloudwatchLogsAction& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The IAM role that allows access to the CloudWatch log.</p>
      */
-    inline const Aws::String& GetRoleArn() const{ return m_roleArn; }
-
-    /**
-     * <p>The IAM role that allows access to the CloudWatch log.</p>
-     */
+    inline const Aws::String& GetRoleArn() const { return m_roleArn; }
     inline bool RoleArnHasBeenSet() const { return m_roleArnHasBeenSet; }
+    template<typename RoleArnT = Aws::String>
+    void SetRoleArn(RoleArnT&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::forward<RoleArnT>(value); }
+    template<typename RoleArnT = Aws::String>
+    CloudwatchLogsAction& WithRoleArn(RoleArnT&& value) { SetRoleArn(std::forward<RoleArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The IAM role that allows access to the CloudWatch log.</p>
-     */
-    inline void SetRoleArn(const Aws::String& value) { m_roleArnHasBeenSet = true; m_roleArn = value; }
-
-    /**
-     * <p>The IAM role that allows access to the CloudWatch log.</p>
-     */
-    inline void SetRoleArn(Aws::String&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::move(value); }
-
-    /**
-     * <p>The IAM role that allows access to the CloudWatch log.</p>
-     */
-    inline void SetRoleArn(const char* value) { m_roleArnHasBeenSet = true; m_roleArn.assign(value); }
-
-    /**
-     * <p>The IAM role that allows access to the CloudWatch log.</p>
-     */
-    inline CloudwatchLogsAction& WithRoleArn(const Aws::String& value) { SetRoleArn(value); return *this;}
-
-    /**
-     * <p>The IAM role that allows access to the CloudWatch log.</p>
-     */
-    inline CloudwatchLogsAction& WithRoleArn(Aws::String&& value) { SetRoleArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The IAM role that allows access to the CloudWatch log.</p>
-     */
-    inline CloudwatchLogsAction& WithRoleArn(const char* value) { SetRoleArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The CloudWatch log group to which the action sends data.</p>
      */
-    inline const Aws::String& GetLogGroupName() const{ return m_logGroupName; }
-
-    /**
-     * <p>The CloudWatch log group to which the action sends data.</p>
-     */
+    inline const Aws::String& GetLogGroupName() const { return m_logGroupName; }
     inline bool LogGroupNameHasBeenSet() const { return m_logGroupNameHasBeenSet; }
+    template<typename LogGroupNameT = Aws::String>
+    void SetLogGroupName(LogGroupNameT&& value) { m_logGroupNameHasBeenSet = true; m_logGroupName = std::forward<LogGroupNameT>(value); }
+    template<typename LogGroupNameT = Aws::String>
+    CloudwatchLogsAction& WithLogGroupName(LogGroupNameT&& value) { SetLogGroupName(std::forward<LogGroupNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The CloudWatch log group to which the action sends data.</p>
-     */
-    inline void SetLogGroupName(const Aws::String& value) { m_logGroupNameHasBeenSet = true; m_logGroupName = value; }
-
-    /**
-     * <p>The CloudWatch log group to which the action sends data.</p>
-     */
-    inline void SetLogGroupName(Aws::String&& value) { m_logGroupNameHasBeenSet = true; m_logGroupName = std::move(value); }
-
-    /**
-     * <p>The CloudWatch log group to which the action sends data.</p>
-     */
-    inline void SetLogGroupName(const char* value) { m_logGroupNameHasBeenSet = true; m_logGroupName.assign(value); }
-
-    /**
-     * <p>The CloudWatch log group to which the action sends data.</p>
-     */
-    inline CloudwatchLogsAction& WithLogGroupName(const Aws::String& value) { SetLogGroupName(value); return *this;}
-
-    /**
-     * <p>The CloudWatch log group to which the action sends data.</p>
-     */
-    inline CloudwatchLogsAction& WithLogGroupName(Aws::String&& value) { SetLogGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The CloudWatch log group to which the action sends data.</p>
-     */
-    inline CloudwatchLogsAction& WithLogGroupName(const char* value) { SetLogGroupName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Indicates whether batches of log records will be extracted and uploaded into
      * CloudWatch. Values include <code>true</code> or <code>false</code>
      * <i>(default)</i>.</p>
      */
-    inline bool GetBatchMode() const{ return m_batchMode; }
-
-    /**
-     * <p>Indicates whether batches of log records will be extracted and uploaded into
-     * CloudWatch. Values include <code>true</code> or <code>false</code>
-     * <i>(default)</i>.</p>
-     */
+    inline bool GetBatchMode() const { return m_batchMode; }
     inline bool BatchModeHasBeenSet() const { return m_batchModeHasBeenSet; }
-
-    /**
-     * <p>Indicates whether batches of log records will be extracted and uploaded into
-     * CloudWatch. Values include <code>true</code> or <code>false</code>
-     * <i>(default)</i>.</p>
-     */
     inline void SetBatchMode(bool value) { m_batchModeHasBeenSet = true; m_batchMode = value; }
-
-    /**
-     * <p>Indicates whether batches of log records will be extracted and uploaded into
-     * CloudWatch. Values include <code>true</code> or <code>false</code>
-     * <i>(default)</i>.</p>
-     */
     inline CloudwatchLogsAction& WithBatchMode(bool value) { SetBatchMode(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_roleArn;
@@ -156,7 +81,7 @@ namespace Model
     Aws::String m_logGroupName;
     bool m_logGroupNameHasBeenSet = false;
 
-    bool m_batchMode;
+    bool m_batchMode{false};
     bool m_batchModeHasBeenSet = false;
   };
 

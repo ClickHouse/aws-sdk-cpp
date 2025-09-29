@@ -18,15 +18,7 @@ namespace Kafka
 namespace Model
 {
 
-ConnectivityInfo::ConnectivityInfo() : 
-    m_publicAccessHasBeenSet(false),
-    m_vpcConnectivityHasBeenSet(false)
-{
-}
-
-ConnectivityInfo::ConnectivityInfo(JsonView jsonValue) : 
-    m_publicAccessHasBeenSet(false),
-    m_vpcConnectivityHasBeenSet(false)
+ConnectivityInfo::ConnectivityInfo(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ConnectivityInfo& ConnectivityInfo::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("publicAccess"))
   {
     m_publicAccess = jsonValue.GetObject("publicAccess");
-
     m_publicAccessHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("vpcConnectivity"))
   {
     m_vpcConnectivity = jsonValue.GetObject("vpcConnectivity");
-
     m_vpcConnectivityHasBeenSet = true;
   }
-
   return *this;
 }
 

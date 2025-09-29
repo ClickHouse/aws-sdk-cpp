@@ -28,7 +28,7 @@ namespace Model
   class UpdateReceiptRuleRequest : public SESRequest
   {
   public:
-    AWS_SES_API UpdateReceiptRuleRequest();
+    AWS_SES_API UpdateReceiptRuleRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -43,77 +43,29 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The name of the receipt rule set that the receipt rule belongs to.</p>
      */
-    inline const Aws::String& GetRuleSetName() const{ return m_ruleSetName; }
-
-    /**
-     * <p>The name of the receipt rule set that the receipt rule belongs to.</p>
-     */
+    inline const Aws::String& GetRuleSetName() const { return m_ruleSetName; }
     inline bool RuleSetNameHasBeenSet() const { return m_ruleSetNameHasBeenSet; }
+    template<typename RuleSetNameT = Aws::String>
+    void SetRuleSetName(RuleSetNameT&& value) { m_ruleSetNameHasBeenSet = true; m_ruleSetName = std::forward<RuleSetNameT>(value); }
+    template<typename RuleSetNameT = Aws::String>
+    UpdateReceiptRuleRequest& WithRuleSetName(RuleSetNameT&& value) { SetRuleSetName(std::forward<RuleSetNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the receipt rule set that the receipt rule belongs to.</p>
-     */
-    inline void SetRuleSetName(const Aws::String& value) { m_ruleSetNameHasBeenSet = true; m_ruleSetName = value; }
-
-    /**
-     * <p>The name of the receipt rule set that the receipt rule belongs to.</p>
-     */
-    inline void SetRuleSetName(Aws::String&& value) { m_ruleSetNameHasBeenSet = true; m_ruleSetName = std::move(value); }
-
-    /**
-     * <p>The name of the receipt rule set that the receipt rule belongs to.</p>
-     */
-    inline void SetRuleSetName(const char* value) { m_ruleSetNameHasBeenSet = true; m_ruleSetName.assign(value); }
-
-    /**
-     * <p>The name of the receipt rule set that the receipt rule belongs to.</p>
-     */
-    inline UpdateReceiptRuleRequest& WithRuleSetName(const Aws::String& value) { SetRuleSetName(value); return *this;}
-
-    /**
-     * <p>The name of the receipt rule set that the receipt rule belongs to.</p>
-     */
-    inline UpdateReceiptRuleRequest& WithRuleSetName(Aws::String&& value) { SetRuleSetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the receipt rule set that the receipt rule belongs to.</p>
-     */
-    inline UpdateReceiptRuleRequest& WithRuleSetName(const char* value) { SetRuleSetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A data structure that contains the updated receipt rule information.</p>
      */
-    inline const ReceiptRule& GetRule() const{ return m_rule; }
-
-    /**
-     * <p>A data structure that contains the updated receipt rule information.</p>
-     */
+    inline const ReceiptRule& GetRule() const { return m_rule; }
     inline bool RuleHasBeenSet() const { return m_ruleHasBeenSet; }
-
-    /**
-     * <p>A data structure that contains the updated receipt rule information.</p>
-     */
-    inline void SetRule(const ReceiptRule& value) { m_ruleHasBeenSet = true; m_rule = value; }
-
-    /**
-     * <p>A data structure that contains the updated receipt rule information.</p>
-     */
-    inline void SetRule(ReceiptRule&& value) { m_ruleHasBeenSet = true; m_rule = std::move(value); }
-
-    /**
-     * <p>A data structure that contains the updated receipt rule information.</p>
-     */
-    inline UpdateReceiptRuleRequest& WithRule(const ReceiptRule& value) { SetRule(value); return *this;}
-
-    /**
-     * <p>A data structure that contains the updated receipt rule information.</p>
-     */
-    inline UpdateReceiptRuleRequest& WithRule(ReceiptRule&& value) { SetRule(std::move(value)); return *this;}
-
+    template<typename RuleT = ReceiptRule>
+    void SetRule(RuleT&& value) { m_ruleHasBeenSet = true; m_rule = std::forward<RuleT>(value); }
+    template<typename RuleT = ReceiptRule>
+    UpdateReceiptRuleRequest& WithRule(RuleT&& value) { SetRule(std::forward<RuleT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_ruleSetName;

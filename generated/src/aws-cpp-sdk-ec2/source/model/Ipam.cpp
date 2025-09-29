@@ -20,51 +20,7 @@ namespace EC2
 namespace Model
 {
 
-Ipam::Ipam() : 
-    m_ownerIdHasBeenSet(false),
-    m_ipamIdHasBeenSet(false),
-    m_ipamArnHasBeenSet(false),
-    m_ipamRegionHasBeenSet(false),
-    m_publicDefaultScopeIdHasBeenSet(false),
-    m_privateDefaultScopeIdHasBeenSet(false),
-    m_scopeCount(0),
-    m_scopeCountHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_operatingRegionsHasBeenSet(false),
-    m_state(IpamState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_defaultResourceDiscoveryIdHasBeenSet(false),
-    m_defaultResourceDiscoveryAssociationIdHasBeenSet(false),
-    m_resourceDiscoveryAssociationCount(0),
-    m_resourceDiscoveryAssociationCountHasBeenSet(false),
-    m_stateMessageHasBeenSet(false),
-    m_tier(IpamTier::NOT_SET),
-    m_tierHasBeenSet(false)
-{
-}
-
-Ipam::Ipam(const XmlNode& xmlNode) : 
-    m_ownerIdHasBeenSet(false),
-    m_ipamIdHasBeenSet(false),
-    m_ipamArnHasBeenSet(false),
-    m_ipamRegionHasBeenSet(false),
-    m_publicDefaultScopeIdHasBeenSet(false),
-    m_privateDefaultScopeIdHasBeenSet(false),
-    m_scopeCount(0),
-    m_scopeCountHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_operatingRegionsHasBeenSet(false),
-    m_state(IpamState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_defaultResourceDiscoveryIdHasBeenSet(false),
-    m_defaultResourceDiscoveryAssociationIdHasBeenSet(false),
-    m_resourceDiscoveryAssociationCount(0),
-    m_resourceDiscoveryAssociationCountHasBeenSet(false),
-    m_stateMessageHasBeenSet(false),
-    m_tier(IpamTier::NOT_SET),
-    m_tierHasBeenSet(false)
+Ipam::Ipam(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -127,6 +83,7 @@ Ipam& Ipam::operator =(const XmlNode& xmlNode)
     if(!operatingRegionsNode.IsNull())
     {
       XmlNode operatingRegionsMember = operatingRegionsNode.FirstChild("item");
+      m_operatingRegionsHasBeenSet = !operatingRegionsMember.IsNull();
       while(!operatingRegionsMember.IsNull())
       {
         m_operatingRegions.push_back(operatingRegionsMember);
@@ -138,13 +95,14 @@ Ipam& Ipam::operator =(const XmlNode& xmlNode)
     XmlNode stateNode = resultNode.FirstChild("state");
     if(!stateNode.IsNull())
     {
-      m_state = IpamStateMapper::GetIpamStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()).c_str());
+      m_state = IpamStateMapper::GetIpamStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()));
       m_stateHasBeenSet = true;
     }
     XmlNode tagsNode = resultNode.FirstChild("tagSet");
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -180,8 +138,20 @@ Ipam& Ipam::operator =(const XmlNode& xmlNode)
     XmlNode tierNode = resultNode.FirstChild("tier");
     if(!tierNode.IsNull())
     {
-      m_tier = IpamTierMapper::GetIpamTierForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(tierNode.GetText()).c_str()).c_str());
+      m_tier = IpamTierMapper::GetIpamTierForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(tierNode.GetText()).c_str()));
       m_tierHasBeenSet = true;
+    }
+    XmlNode enablePrivateGuaNode = resultNode.FirstChild("enablePrivateGua");
+    if(!enablePrivateGuaNode.IsNull())
+    {
+      m_enablePrivateGua = StringUtils::ConvertToBool(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(enablePrivateGuaNode.GetText()).c_str()).c_str());
+      m_enablePrivateGuaHasBeenSet = true;
+    }
+    XmlNode meteredAccountNode = resultNode.FirstChild("meteredAccount");
+    if(!meteredAccountNode.IsNull())
+    {
+      m_meteredAccount = IpamMeteredAccountMapper::GetIpamMeteredAccountForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(meteredAccountNode.GetText()).c_str()));
+      m_meteredAccountHasBeenSet = true;
     }
   }
 
@@ -243,7 +213,7 @@ void Ipam::OutputToStream(Aws::OStream& oStream, const char* location, unsigned 
 
   if(m_stateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".State=" << IpamStateMapper::GetNameForIpamState(m_state) << "&";
+      oStream << location << index << locationValue << ".State=" << StringUtils::URLEncode(IpamStateMapper::GetNameForIpamState(m_state)) << "&";
   }
 
   if(m_tagsHasBeenSet)
@@ -279,7 +249,17 @@ void Ipam::OutputToStream(Aws::OStream& oStream, const char* location, unsigned 
 
   if(m_tierHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Tier=" << IpamTierMapper::GetNameForIpamTier(m_tier) << "&";
+      oStream << location << index << locationValue << ".Tier=" << StringUtils::URLEncode(IpamTierMapper::GetNameForIpamTier(m_tier)) << "&";
+  }
+
+  if(m_enablePrivateGuaHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".EnablePrivateGua=" << std::boolalpha << m_enablePrivateGua << "&";
+  }
+
+  if(m_meteredAccountHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".MeteredAccount=" << StringUtils::URLEncode(IpamMeteredAccountMapper::GetNameForIpamMeteredAccount(m_meteredAccount)) << "&";
   }
 
 }
@@ -324,13 +304,13 @@ void Ipam::OutputToStream(Aws::OStream& oStream, const char* location) const
       for(auto& item : m_operatingRegions)
       {
         Aws::StringStream operatingRegionsSs;
-        operatingRegionsSs << location <<  ".OperatingRegionSet." << operatingRegionsIdx++;
+        operatingRegionsSs << location << ".OperatingRegionSet." << operatingRegionsIdx++;
         item.OutputToStream(oStream, operatingRegionsSs.str().c_str());
       }
   }
   if(m_stateHasBeenSet)
   {
-      oStream << location << ".State=" << IpamStateMapper::GetNameForIpamState(m_state) << "&";
+      oStream << location << ".State=" << StringUtils::URLEncode(IpamStateMapper::GetNameForIpamState(m_state)) << "&";
   }
   if(m_tagsHasBeenSet)
   {
@@ -338,7 +318,7 @@ void Ipam::OutputToStream(Aws::OStream& oStream, const char* location) const
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
@@ -360,7 +340,15 @@ void Ipam::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_tierHasBeenSet)
   {
-      oStream << location << ".Tier=" << IpamTierMapper::GetNameForIpamTier(m_tier) << "&";
+      oStream << location << ".Tier=" << StringUtils::URLEncode(IpamTierMapper::GetNameForIpamTier(m_tier)) << "&";
+  }
+  if(m_enablePrivateGuaHasBeenSet)
+  {
+      oStream << location << ".EnablePrivateGua=" << std::boolalpha << m_enablePrivateGua << "&";
+  }
+  if(m_meteredAccountHasBeenSet)
+  {
+      oStream << location << ".MeteredAccount=" << StringUtils::URLEncode(IpamMeteredAccountMapper::GetNameForIpamMeteredAccount(m_meteredAccount)) << "&";
   }
 }
 

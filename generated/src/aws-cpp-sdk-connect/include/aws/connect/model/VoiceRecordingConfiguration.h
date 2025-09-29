@@ -6,6 +6,7 @@
 #pragma once
 #include <aws/connect/Connect_EXPORTS.h>
 #include <aws/connect/model/VoiceRecordingTrack.h>
+#include <aws/connect/model/IvrRecordingTrack.h>
 #include <utility>
 
 namespace Aws
@@ -32,46 +33,39 @@ namespace Model
   class VoiceRecordingConfiguration
   {
   public:
-    AWS_CONNECT_API VoiceRecordingConfiguration();
+    AWS_CONNECT_API VoiceRecordingConfiguration() = default;
     AWS_CONNECT_API VoiceRecordingConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API VoiceRecordingConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Identifies which track is being recorded.</p>
      */
-    inline const VoiceRecordingTrack& GetVoiceRecordingTrack() const{ return m_voiceRecordingTrack; }
-
-    /**
-     * <p>Identifies which track is being recorded.</p>
-     */
+    inline VoiceRecordingTrack GetVoiceRecordingTrack() const { return m_voiceRecordingTrack; }
     inline bool VoiceRecordingTrackHasBeenSet() const { return m_voiceRecordingTrackHasBeenSet; }
+    inline void SetVoiceRecordingTrack(VoiceRecordingTrack value) { m_voiceRecordingTrackHasBeenSet = true; m_voiceRecordingTrack = value; }
+    inline VoiceRecordingConfiguration& WithVoiceRecordingTrack(VoiceRecordingTrack value) { SetVoiceRecordingTrack(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Identifies which track is being recorded.</p>
+     * <p>Identifies which IVR track is being recorded.</p> <p>One and only one of the
+     * track configurations should be presented in the request.</p>
      */
-    inline void SetVoiceRecordingTrack(const VoiceRecordingTrack& value) { m_voiceRecordingTrackHasBeenSet = true; m_voiceRecordingTrack = value; }
-
-    /**
-     * <p>Identifies which track is being recorded.</p>
-     */
-    inline void SetVoiceRecordingTrack(VoiceRecordingTrack&& value) { m_voiceRecordingTrackHasBeenSet = true; m_voiceRecordingTrack = std::move(value); }
-
-    /**
-     * <p>Identifies which track is being recorded.</p>
-     */
-    inline VoiceRecordingConfiguration& WithVoiceRecordingTrack(const VoiceRecordingTrack& value) { SetVoiceRecordingTrack(value); return *this;}
-
-    /**
-     * <p>Identifies which track is being recorded.</p>
-     */
-    inline VoiceRecordingConfiguration& WithVoiceRecordingTrack(VoiceRecordingTrack&& value) { SetVoiceRecordingTrack(std::move(value)); return *this;}
-
+    inline IvrRecordingTrack GetIvrRecordingTrack() const { return m_ivrRecordingTrack; }
+    inline bool IvrRecordingTrackHasBeenSet() const { return m_ivrRecordingTrackHasBeenSet; }
+    inline void SetIvrRecordingTrack(IvrRecordingTrack value) { m_ivrRecordingTrackHasBeenSet = true; m_ivrRecordingTrack = value; }
+    inline VoiceRecordingConfiguration& WithIvrRecordingTrack(IvrRecordingTrack value) { SetIvrRecordingTrack(value); return *this;}
+    ///@}
   private:
 
-    VoiceRecordingTrack m_voiceRecordingTrack;
+    VoiceRecordingTrack m_voiceRecordingTrack{VoiceRecordingTrack::NOT_SET};
     bool m_voiceRecordingTrackHasBeenSet = false;
+
+    IvrRecordingTrack m_ivrRecordingTrack{IvrRecordingTrack::NOT_SET};
+    bool m_ivrRecordingTrackHasBeenSet = false;
   };
 
 } // namespace Model

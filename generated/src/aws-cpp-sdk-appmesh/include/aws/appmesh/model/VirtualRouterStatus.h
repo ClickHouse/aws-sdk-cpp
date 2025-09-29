@@ -32,45 +32,24 @@ namespace Model
   class VirtualRouterStatus
   {
   public:
-    AWS_APPMESH_API VirtualRouterStatus();
+    AWS_APPMESH_API VirtualRouterStatus() = default;
     AWS_APPMESH_API VirtualRouterStatus(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPMESH_API VirtualRouterStatus& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPMESH_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The current status of the virtual router.</p>
      */
-    inline const VirtualRouterStatusCode& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The current status of the virtual router.</p>
-     */
+    inline VirtualRouterStatusCode GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p>The current status of the virtual router.</p>
-     */
-    inline void SetStatus(const VirtualRouterStatusCode& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The current status of the virtual router.</p>
-     */
-    inline void SetStatus(VirtualRouterStatusCode&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The current status of the virtual router.</p>
-     */
-    inline VirtualRouterStatus& WithStatus(const VirtualRouterStatusCode& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The current status of the virtual router.</p>
-     */
-    inline VirtualRouterStatus& WithStatus(VirtualRouterStatusCode&& value) { SetStatus(std::move(value)); return *this;}
-
+    inline void SetStatus(VirtualRouterStatusCode value) { m_statusHasBeenSet = true; m_status = value; }
+    inline VirtualRouterStatus& WithStatus(VirtualRouterStatusCode value) { SetStatus(value); return *this;}
+    ///@}
   private:
 
-    VirtualRouterStatusCode m_status;
+    VirtualRouterStatusCode m_status{VirtualRouterStatusCode::NOT_SET};
     bool m_statusHasBeenSet = false;
   };
 

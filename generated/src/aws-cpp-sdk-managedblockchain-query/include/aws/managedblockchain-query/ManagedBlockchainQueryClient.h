@@ -30,8 +30,8 @@ namespace ManagedBlockchainQuery
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
 
       typedef ManagedBlockchainQueryClientConfiguration ClientConfigurationType;
       typedef ManagedBlockchainQueryEndpointProvider EndpointProviderType;
@@ -41,14 +41,14 @@ namespace ManagedBlockchainQuery
         * is not specified, it will be initialized to default values.
         */
         ManagedBlockchainQueryClient(const Aws::ManagedBlockchainQuery::ManagedBlockchainQueryClientConfiguration& clientConfiguration = Aws::ManagedBlockchainQuery::ManagedBlockchainQueryClientConfiguration(),
-                                     std::shared_ptr<ManagedBlockchainQueryEndpointProviderBase> endpointProvider = Aws::MakeShared<ManagedBlockchainQueryEndpointProvider>(ALLOCATION_TAG));
+                                     std::shared_ptr<ManagedBlockchainQueryEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         ManagedBlockchainQueryClient(const Aws::Auth::AWSCredentials& credentials,
-                                     std::shared_ptr<ManagedBlockchainQueryEndpointProviderBase> endpointProvider = Aws::MakeShared<ManagedBlockchainQueryEndpointProvider>(ALLOCATION_TAG),
+                                     std::shared_ptr<ManagedBlockchainQueryEndpointProviderBase> endpointProvider = nullptr,
                                      const Aws::ManagedBlockchainQuery::ManagedBlockchainQueryClientConfiguration& clientConfiguration = Aws::ManagedBlockchainQuery::ManagedBlockchainQueryClientConfiguration());
 
        /**
@@ -56,7 +56,7 @@ namespace ManagedBlockchainQuery
         * the default http client factory will be used
         */
         ManagedBlockchainQueryClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                                     std::shared_ptr<ManagedBlockchainQueryEndpointProviderBase> endpointProvider = Aws::MakeShared<ManagedBlockchainQueryEndpointProvider>(ALLOCATION_TAG),
+                                     std::shared_ptr<ManagedBlockchainQueryEndpointProviderBase> endpointProvider = nullptr,
                                      const Aws::ManagedBlockchainQuery::ManagedBlockchainQueryClientConfiguration& clientConfiguration = Aws::ManagedBlockchainQuery::ManagedBlockchainQueryClientConfiguration());
 
 
@@ -87,18 +87,18 @@ namespace ManagedBlockchainQuery
         /**
          * <p>Gets the token balance for a batch of tokens by using the
          * <code>BatchGetTokenBalance</code> action for every token in the request.</p>
-         *  <p>Only the native tokens BTC,ETH, and the ERC-20, ERC-721, and ERC 1155
-         * token standards are supported.</p> <p><h3>See Also:</h3>   <a
+         *  <p>Only the native tokens BTC and ETH, and the ERC-20, ERC-721, and ERC
+         * 1155 token standards are supported.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/managedblockchain-query-2023-05-04/BatchGetTokenBalance">AWS
          * API Reference</a></p>
          */
-        virtual Model::BatchGetTokenBalanceOutcome BatchGetTokenBalance(const Model::BatchGetTokenBalanceRequest& request) const;
+        virtual Model::BatchGetTokenBalanceOutcome BatchGetTokenBalance(const Model::BatchGetTokenBalanceRequest& request = {}) const;
 
         /**
          * A Callable wrapper for BatchGetTokenBalance that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename BatchGetTokenBalanceRequestT = Model::BatchGetTokenBalanceRequest>
-        Model::BatchGetTokenBalanceOutcomeCallable BatchGetTokenBalanceCallable(const BatchGetTokenBalanceRequestT& request) const
+        Model::BatchGetTokenBalanceOutcomeCallable BatchGetTokenBalanceCallable(const BatchGetTokenBalanceRequestT& request = {}) const
         {
             return SubmitCallable(&ManagedBlockchainQueryClient::BatchGetTokenBalance, request);
         }
@@ -107,7 +107,7 @@ namespace ManagedBlockchainQuery
          * An Async wrapper for BatchGetTokenBalance that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename BatchGetTokenBalanceRequestT = Model::BatchGetTokenBalanceRequest>
-        void BatchGetTokenBalanceAsync(const BatchGetTokenBalanceRequestT& request, const BatchGetTokenBalanceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void BatchGetTokenBalanceAsync(const BatchGetTokenBalanceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const BatchGetTokenBalanceRequestT& request = {}) const
         {
             return SubmitAsync(&ManagedBlockchainQueryClient::BatchGetTokenBalance, request, handler, context);
         }
@@ -145,7 +145,7 @@ namespace ManagedBlockchainQuery
         /**
          * <p>Gets the balance of a specific token, including native tokens, for a given
          * address (wallet or contract) on the blockchain.</p>  <p>Only the native
-         * tokens BTC,ETH, and the ERC-20, ERC-721, and ERC 1155 token standards are
+         * tokens BTC and ETH, and the ERC-20, ERC-721, and ERC 1155 token standards are
          * supported.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/managedblockchain-query-2023-05-04/GetTokenBalance">AWS
          * API Reference</a></p>
@@ -171,7 +171,11 @@ namespace ManagedBlockchainQuery
         }
 
         /**
-         * <p>Get the details of a transaction.</p><p><h3>See Also:</h3>   <a
+         * <p>Gets the details of a transaction.</p>  <p>This action will return
+         * transaction details for all transactions that are <i>confirmed</i> on the
+         * blockchain, even if they have not reached <a
+         * href="https://docs.aws.amazon.com/managed-blockchain/latest/ambq-dg/key-concepts.html#finality">finality</a>.
+         * </p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/managedblockchain-query-2023-05-04/GetTransaction">AWS
          * API Reference</a></p>
          */
@@ -223,6 +227,33 @@ namespace ManagedBlockchainQuery
         }
 
         /**
+         * <p>Lists all the transaction events for an address on the blockchain.</p> 
+         * <p>This operation is only supported on the Bitcoin networks.</p>
+         * <p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/managedblockchain-query-2023-05-04/ListFilteredTransactionEvents">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListFilteredTransactionEventsOutcome ListFilteredTransactionEvents(const Model::ListFilteredTransactionEventsRequest& request) const;
+
+        /**
+         * A Callable wrapper for ListFilteredTransactionEvents that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListFilteredTransactionEventsRequestT = Model::ListFilteredTransactionEventsRequest>
+        Model::ListFilteredTransactionEventsOutcomeCallable ListFilteredTransactionEventsCallable(const ListFilteredTransactionEventsRequestT& request) const
+        {
+            return SubmitCallable(&ManagedBlockchainQueryClient::ListFilteredTransactionEvents, request);
+        }
+
+        /**
+         * An Async wrapper for ListFilteredTransactionEvents that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListFilteredTransactionEventsRequestT = Model::ListFilteredTransactionEventsRequest>
+        void ListFilteredTransactionEventsAsync(const ListFilteredTransactionEventsRequestT& request, const ListFilteredTransactionEventsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&ManagedBlockchainQueryClient::ListFilteredTransactionEvents, request, handler, context);
+        }
+
+        /**
          * <p>This action returns the following for a given blockchain network:</p> <ul>
          * <li> <p>Lists all token balances owned by an address (either a contract address
          * or a wallet address).</p> </li> <li> <p>Lists all token balances for all tokens
@@ -254,8 +285,11 @@ namespace ManagedBlockchainQuery
         }
 
         /**
-         * <p>An array of <code>TransactionEvent</code> objects. Each object contains
-         * details about the transaction event.</p><p><h3>See Also:</h3>   <a
+         * <p>Lists all the transaction events for a transaction </p>  <p>This action
+         * will return transaction details for all transactions that are <i>confirmed</i>
+         * on the blockchain, even if they have not reached <a
+         * href="https://docs.aws.amazon.com/managed-blockchain/latest/ambq-dg/key-concepts.html#finality">finality</a>.
+         * </p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/managedblockchain-query-2023-05-04/ListTransactionEvents">AWS
          * API Reference</a></p>
          */
@@ -280,8 +314,8 @@ namespace ManagedBlockchainQuery
         }
 
         /**
-         * <p>Lists all of the transactions on a given wallet address or to a specific
-         * contract.</p><p><h3>See Also:</h3>   <a
+         * <p>Lists all the transaction events for a transaction.</p><p><h3>See Also:</h3> 
+         * <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/managedblockchain-query-2023-05-04/ListTransactions">AWS
          * API Reference</a></p>
          */
@@ -313,7 +347,6 @@ namespace ManagedBlockchainQuery
       void init(const ManagedBlockchainQueryClientConfiguration& clientConfiguration);
 
       ManagedBlockchainQueryClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<ManagedBlockchainQueryEndpointProviderBase> m_endpointProvider;
   };
 

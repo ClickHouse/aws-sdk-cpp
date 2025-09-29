@@ -18,15 +18,7 @@ namespace DataSync
 namespace Model
 {
 
-InternalException::InternalException() : 
-    m_messageHasBeenSet(false),
-    m_errorCodeHasBeenSet(false)
-{
-}
-
-InternalException::InternalException(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_errorCodeHasBeenSet(false)
+InternalException::InternalException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ InternalException& InternalException::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("errorCode"))
   {
     m_errorCode = jsonValue.GetString("errorCode");
-
     m_errorCodeHasBeenSet = true;
   }
-
   return *this;
 }
 

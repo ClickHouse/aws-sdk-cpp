@@ -18,15 +18,7 @@ namespace CloudSearchDomain
 namespace Model
 {
 
-DocumentServiceException::DocumentServiceException() : 
-    m_statusHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-DocumentServiceException::DocumentServiceException(JsonView jsonValue) : 
-    m_statusHasBeenSet(false),
-    m_messageHasBeenSet(false)
+DocumentServiceException::DocumentServiceException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ DocumentServiceException& DocumentServiceException::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("status"))
   {
     m_status = jsonValue.GetString("status");
-
     m_statusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
   return *this;
 }
 

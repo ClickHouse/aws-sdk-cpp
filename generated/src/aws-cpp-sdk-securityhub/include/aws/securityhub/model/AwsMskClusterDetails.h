@@ -32,42 +32,23 @@ namespace Model
   class AwsMskClusterDetails
   {
   public:
-    AWS_SECURITYHUB_API AwsMskClusterDetails();
+    AWS_SECURITYHUB_API AwsMskClusterDetails() = default;
     AWS_SECURITYHUB_API AwsMskClusterDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsMskClusterDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> Provides information about a cluster.</p>
      */
-    inline const AwsMskClusterClusterInfoDetails& GetClusterInfo() const{ return m_clusterInfo; }
-
-    /**
-     * <p> Provides information about a cluster.</p>
-     */
+    inline const AwsMskClusterClusterInfoDetails& GetClusterInfo() const { return m_clusterInfo; }
     inline bool ClusterInfoHasBeenSet() const { return m_clusterInfoHasBeenSet; }
-
-    /**
-     * <p> Provides information about a cluster.</p>
-     */
-    inline void SetClusterInfo(const AwsMskClusterClusterInfoDetails& value) { m_clusterInfoHasBeenSet = true; m_clusterInfo = value; }
-
-    /**
-     * <p> Provides information about a cluster.</p>
-     */
-    inline void SetClusterInfo(AwsMskClusterClusterInfoDetails&& value) { m_clusterInfoHasBeenSet = true; m_clusterInfo = std::move(value); }
-
-    /**
-     * <p> Provides information about a cluster.</p>
-     */
-    inline AwsMskClusterDetails& WithClusterInfo(const AwsMskClusterClusterInfoDetails& value) { SetClusterInfo(value); return *this;}
-
-    /**
-     * <p> Provides information about a cluster.</p>
-     */
-    inline AwsMskClusterDetails& WithClusterInfo(AwsMskClusterClusterInfoDetails&& value) { SetClusterInfo(std::move(value)); return *this;}
-
+    template<typename ClusterInfoT = AwsMskClusterClusterInfoDetails>
+    void SetClusterInfo(ClusterInfoT&& value) { m_clusterInfoHasBeenSet = true; m_clusterInfo = std::forward<ClusterInfoT>(value); }
+    template<typename ClusterInfoT = AwsMskClusterClusterInfoDetails>
+    AwsMskClusterDetails& WithClusterInfo(ClusterInfoT&& value) { SetClusterInfo(std::forward<ClusterInfoT>(value)); return *this;}
+    ///@}
   private:
 
     AwsMskClusterClusterInfoDetails m_clusterInfo;

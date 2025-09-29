@@ -34,7 +34,7 @@ namespace Model
   class LocalGatewayRoute
   {
   public:
-    AWS_EC2_API LocalGatewayRoute();
+    AWS_EC2_API LocalGatewayRoute() = default;
     AWS_EC2_API LocalGatewayRoute(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API LocalGatewayRoute& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -42,444 +42,134 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The CIDR block used for destination matches.</p>
      */
-    inline const Aws::String& GetDestinationCidrBlock() const{ return m_destinationCidrBlock; }
-
-    /**
-     * <p>The CIDR block used for destination matches.</p>
-     */
+    inline const Aws::String& GetDestinationCidrBlock() const { return m_destinationCidrBlock; }
     inline bool DestinationCidrBlockHasBeenSet() const { return m_destinationCidrBlockHasBeenSet; }
+    template<typename DestinationCidrBlockT = Aws::String>
+    void SetDestinationCidrBlock(DestinationCidrBlockT&& value) { m_destinationCidrBlockHasBeenSet = true; m_destinationCidrBlock = std::forward<DestinationCidrBlockT>(value); }
+    template<typename DestinationCidrBlockT = Aws::String>
+    LocalGatewayRoute& WithDestinationCidrBlock(DestinationCidrBlockT&& value) { SetDestinationCidrBlock(std::forward<DestinationCidrBlockT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The CIDR block used for destination matches.</p>
-     */
-    inline void SetDestinationCidrBlock(const Aws::String& value) { m_destinationCidrBlockHasBeenSet = true; m_destinationCidrBlock = value; }
-
-    /**
-     * <p>The CIDR block used for destination matches.</p>
-     */
-    inline void SetDestinationCidrBlock(Aws::String&& value) { m_destinationCidrBlockHasBeenSet = true; m_destinationCidrBlock = std::move(value); }
-
-    /**
-     * <p>The CIDR block used for destination matches.</p>
-     */
-    inline void SetDestinationCidrBlock(const char* value) { m_destinationCidrBlockHasBeenSet = true; m_destinationCidrBlock.assign(value); }
-
-    /**
-     * <p>The CIDR block used for destination matches.</p>
-     */
-    inline LocalGatewayRoute& WithDestinationCidrBlock(const Aws::String& value) { SetDestinationCidrBlock(value); return *this;}
-
-    /**
-     * <p>The CIDR block used for destination matches.</p>
-     */
-    inline LocalGatewayRoute& WithDestinationCidrBlock(Aws::String&& value) { SetDestinationCidrBlock(std::move(value)); return *this;}
-
-    /**
-     * <p>The CIDR block used for destination matches.</p>
-     */
-    inline LocalGatewayRoute& WithDestinationCidrBlock(const char* value) { SetDestinationCidrBlock(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the virtual interface group.</p>
      */
-    inline const Aws::String& GetLocalGatewayVirtualInterfaceGroupId() const{ return m_localGatewayVirtualInterfaceGroupId; }
-
-    /**
-     * <p>The ID of the virtual interface group.</p>
-     */
+    inline const Aws::String& GetLocalGatewayVirtualInterfaceGroupId() const { return m_localGatewayVirtualInterfaceGroupId; }
     inline bool LocalGatewayVirtualInterfaceGroupIdHasBeenSet() const { return m_localGatewayVirtualInterfaceGroupIdHasBeenSet; }
+    template<typename LocalGatewayVirtualInterfaceGroupIdT = Aws::String>
+    void SetLocalGatewayVirtualInterfaceGroupId(LocalGatewayVirtualInterfaceGroupIdT&& value) { m_localGatewayVirtualInterfaceGroupIdHasBeenSet = true; m_localGatewayVirtualInterfaceGroupId = std::forward<LocalGatewayVirtualInterfaceGroupIdT>(value); }
+    template<typename LocalGatewayVirtualInterfaceGroupIdT = Aws::String>
+    LocalGatewayRoute& WithLocalGatewayVirtualInterfaceGroupId(LocalGatewayVirtualInterfaceGroupIdT&& value) { SetLocalGatewayVirtualInterfaceGroupId(std::forward<LocalGatewayVirtualInterfaceGroupIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the virtual interface group.</p>
-     */
-    inline void SetLocalGatewayVirtualInterfaceGroupId(const Aws::String& value) { m_localGatewayVirtualInterfaceGroupIdHasBeenSet = true; m_localGatewayVirtualInterfaceGroupId = value; }
-
-    /**
-     * <p>The ID of the virtual interface group.</p>
-     */
-    inline void SetLocalGatewayVirtualInterfaceGroupId(Aws::String&& value) { m_localGatewayVirtualInterfaceGroupIdHasBeenSet = true; m_localGatewayVirtualInterfaceGroupId = std::move(value); }
-
-    /**
-     * <p>The ID of the virtual interface group.</p>
-     */
-    inline void SetLocalGatewayVirtualInterfaceGroupId(const char* value) { m_localGatewayVirtualInterfaceGroupIdHasBeenSet = true; m_localGatewayVirtualInterfaceGroupId.assign(value); }
-
-    /**
-     * <p>The ID of the virtual interface group.</p>
-     */
-    inline LocalGatewayRoute& WithLocalGatewayVirtualInterfaceGroupId(const Aws::String& value) { SetLocalGatewayVirtualInterfaceGroupId(value); return *this;}
-
-    /**
-     * <p>The ID of the virtual interface group.</p>
-     */
-    inline LocalGatewayRoute& WithLocalGatewayVirtualInterfaceGroupId(Aws::String&& value) { SetLocalGatewayVirtualInterfaceGroupId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the virtual interface group.</p>
-     */
-    inline LocalGatewayRoute& WithLocalGatewayVirtualInterfaceGroupId(const char* value) { SetLocalGatewayVirtualInterfaceGroupId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The route type.</p>
      */
-    inline const LocalGatewayRouteType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The route type.</p>
-     */
+    inline LocalGatewayRouteType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    inline void SetType(LocalGatewayRouteType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline LocalGatewayRoute& WithType(LocalGatewayRouteType value) { SetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The route type.</p>
-     */
-    inline void SetType(const LocalGatewayRouteType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The route type.</p>
-     */
-    inline void SetType(LocalGatewayRouteType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The route type.</p>
-     */
-    inline LocalGatewayRoute& WithType(const LocalGatewayRouteType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The route type.</p>
-     */
-    inline LocalGatewayRoute& WithType(LocalGatewayRouteType&& value) { SetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The state of the route.</p>
      */
-    inline const LocalGatewayRouteState& GetState() const{ return m_state; }
-
-    /**
-     * <p>The state of the route.</p>
-     */
+    inline LocalGatewayRouteState GetState() const { return m_state; }
     inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
+    inline void SetState(LocalGatewayRouteState value) { m_stateHasBeenSet = true; m_state = value; }
+    inline LocalGatewayRoute& WithState(LocalGatewayRouteState value) { SetState(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The state of the route.</p>
-     */
-    inline void SetState(const LocalGatewayRouteState& value) { m_stateHasBeenSet = true; m_state = value; }
-
-    /**
-     * <p>The state of the route.</p>
-     */
-    inline void SetState(LocalGatewayRouteState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
-
-    /**
-     * <p>The state of the route.</p>
-     */
-    inline LocalGatewayRoute& WithState(const LocalGatewayRouteState& value) { SetState(value); return *this;}
-
-    /**
-     * <p>The state of the route.</p>
-     */
-    inline LocalGatewayRoute& WithState(LocalGatewayRouteState&& value) { SetState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the local gateway route table.</p>
      */
-    inline const Aws::String& GetLocalGatewayRouteTableId() const{ return m_localGatewayRouteTableId; }
-
-    /**
-     * <p>The ID of the local gateway route table.</p>
-     */
+    inline const Aws::String& GetLocalGatewayRouteTableId() const { return m_localGatewayRouteTableId; }
     inline bool LocalGatewayRouteTableIdHasBeenSet() const { return m_localGatewayRouteTableIdHasBeenSet; }
+    template<typename LocalGatewayRouteTableIdT = Aws::String>
+    void SetLocalGatewayRouteTableId(LocalGatewayRouteTableIdT&& value) { m_localGatewayRouteTableIdHasBeenSet = true; m_localGatewayRouteTableId = std::forward<LocalGatewayRouteTableIdT>(value); }
+    template<typename LocalGatewayRouteTableIdT = Aws::String>
+    LocalGatewayRoute& WithLocalGatewayRouteTableId(LocalGatewayRouteTableIdT&& value) { SetLocalGatewayRouteTableId(std::forward<LocalGatewayRouteTableIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the local gateway route table.</p>
-     */
-    inline void SetLocalGatewayRouteTableId(const Aws::String& value) { m_localGatewayRouteTableIdHasBeenSet = true; m_localGatewayRouteTableId = value; }
-
-    /**
-     * <p>The ID of the local gateway route table.</p>
-     */
-    inline void SetLocalGatewayRouteTableId(Aws::String&& value) { m_localGatewayRouteTableIdHasBeenSet = true; m_localGatewayRouteTableId = std::move(value); }
-
-    /**
-     * <p>The ID of the local gateway route table.</p>
-     */
-    inline void SetLocalGatewayRouteTableId(const char* value) { m_localGatewayRouteTableIdHasBeenSet = true; m_localGatewayRouteTableId.assign(value); }
-
-    /**
-     * <p>The ID of the local gateway route table.</p>
-     */
-    inline LocalGatewayRoute& WithLocalGatewayRouteTableId(const Aws::String& value) { SetLocalGatewayRouteTableId(value); return *this;}
-
-    /**
-     * <p>The ID of the local gateway route table.</p>
-     */
-    inline LocalGatewayRoute& WithLocalGatewayRouteTableId(Aws::String&& value) { SetLocalGatewayRouteTableId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the local gateway route table.</p>
-     */
-    inline LocalGatewayRoute& WithLocalGatewayRouteTableId(const char* value) { SetLocalGatewayRouteTableId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the local gateway route table.</p>
      */
-    inline const Aws::String& GetLocalGatewayRouteTableArn() const{ return m_localGatewayRouteTableArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the local gateway route table.</p>
-     */
+    inline const Aws::String& GetLocalGatewayRouteTableArn() const { return m_localGatewayRouteTableArn; }
     inline bool LocalGatewayRouteTableArnHasBeenSet() const { return m_localGatewayRouteTableArnHasBeenSet; }
+    template<typename LocalGatewayRouteTableArnT = Aws::String>
+    void SetLocalGatewayRouteTableArn(LocalGatewayRouteTableArnT&& value) { m_localGatewayRouteTableArnHasBeenSet = true; m_localGatewayRouteTableArn = std::forward<LocalGatewayRouteTableArnT>(value); }
+    template<typename LocalGatewayRouteTableArnT = Aws::String>
+    LocalGatewayRoute& WithLocalGatewayRouteTableArn(LocalGatewayRouteTableArnT&& value) { SetLocalGatewayRouteTableArn(std::forward<LocalGatewayRouteTableArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the local gateway route table.</p>
-     */
-    inline void SetLocalGatewayRouteTableArn(const Aws::String& value) { m_localGatewayRouteTableArnHasBeenSet = true; m_localGatewayRouteTableArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the local gateway route table.</p>
-     */
-    inline void SetLocalGatewayRouteTableArn(Aws::String&& value) { m_localGatewayRouteTableArnHasBeenSet = true; m_localGatewayRouteTableArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the local gateway route table.</p>
-     */
-    inline void SetLocalGatewayRouteTableArn(const char* value) { m_localGatewayRouteTableArnHasBeenSet = true; m_localGatewayRouteTableArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the local gateway route table.</p>
-     */
-    inline LocalGatewayRoute& WithLocalGatewayRouteTableArn(const Aws::String& value) { SetLocalGatewayRouteTableArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the local gateway route table.</p>
-     */
-    inline LocalGatewayRoute& WithLocalGatewayRouteTableArn(Aws::String&& value) { SetLocalGatewayRouteTableArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the local gateway route table.</p>
-     */
-    inline LocalGatewayRoute& WithLocalGatewayRouteTableArn(const char* value) { SetLocalGatewayRouteTableArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the Amazon Web Services account that owns the local gateway
      * route.</p>
      */
-    inline const Aws::String& GetOwnerId() const{ return m_ownerId; }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that owns the local gateway
-     * route.</p>
-     */
+    inline const Aws::String& GetOwnerId() const { return m_ownerId; }
     inline bool OwnerIdHasBeenSet() const { return m_ownerIdHasBeenSet; }
+    template<typename OwnerIdT = Aws::String>
+    void SetOwnerId(OwnerIdT&& value) { m_ownerIdHasBeenSet = true; m_ownerId = std::forward<OwnerIdT>(value); }
+    template<typename OwnerIdT = Aws::String>
+    LocalGatewayRoute& WithOwnerId(OwnerIdT&& value) { SetOwnerId(std::forward<OwnerIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Amazon Web Services account that owns the local gateway
-     * route.</p>
-     */
-    inline void SetOwnerId(const Aws::String& value) { m_ownerIdHasBeenSet = true; m_ownerId = value; }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that owns the local gateway
-     * route.</p>
-     */
-    inline void SetOwnerId(Aws::String&& value) { m_ownerIdHasBeenSet = true; m_ownerId = std::move(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that owns the local gateway
-     * route.</p>
-     */
-    inline void SetOwnerId(const char* value) { m_ownerIdHasBeenSet = true; m_ownerId.assign(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that owns the local gateway
-     * route.</p>
-     */
-    inline LocalGatewayRoute& WithOwnerId(const Aws::String& value) { SetOwnerId(value); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services account that owns the local gateway
-     * route.</p>
-     */
-    inline LocalGatewayRoute& WithOwnerId(Aws::String&& value) { SetOwnerId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services account that owns the local gateway
-     * route.</p>
-     */
-    inline LocalGatewayRoute& WithOwnerId(const char* value) { SetOwnerId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the subnet.</p>
      */
-    inline const Aws::String& GetSubnetId() const{ return m_subnetId; }
-
-    /**
-     * <p>The ID of the subnet.</p>
-     */
+    inline const Aws::String& GetSubnetId() const { return m_subnetId; }
     inline bool SubnetIdHasBeenSet() const { return m_subnetIdHasBeenSet; }
+    template<typename SubnetIdT = Aws::String>
+    void SetSubnetId(SubnetIdT&& value) { m_subnetIdHasBeenSet = true; m_subnetId = std::forward<SubnetIdT>(value); }
+    template<typename SubnetIdT = Aws::String>
+    LocalGatewayRoute& WithSubnetId(SubnetIdT&& value) { SetSubnetId(std::forward<SubnetIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the subnet.</p>
-     */
-    inline void SetSubnetId(const Aws::String& value) { m_subnetIdHasBeenSet = true; m_subnetId = value; }
-
-    /**
-     * <p>The ID of the subnet.</p>
-     */
-    inline void SetSubnetId(Aws::String&& value) { m_subnetIdHasBeenSet = true; m_subnetId = std::move(value); }
-
-    /**
-     * <p>The ID of the subnet.</p>
-     */
-    inline void SetSubnetId(const char* value) { m_subnetIdHasBeenSet = true; m_subnetId.assign(value); }
-
-    /**
-     * <p>The ID of the subnet.</p>
-     */
-    inline LocalGatewayRoute& WithSubnetId(const Aws::String& value) { SetSubnetId(value); return *this;}
-
-    /**
-     * <p>The ID of the subnet.</p>
-     */
-    inline LocalGatewayRoute& WithSubnetId(Aws::String&& value) { SetSubnetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the subnet.</p>
-     */
-    inline LocalGatewayRoute& WithSubnetId(const char* value) { SetSubnetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the customer-owned address pool.</p>
      */
-    inline const Aws::String& GetCoipPoolId() const{ return m_coipPoolId; }
-
-    /**
-     * <p>The ID of the customer-owned address pool.</p>
-     */
+    inline const Aws::String& GetCoipPoolId() const { return m_coipPoolId; }
     inline bool CoipPoolIdHasBeenSet() const { return m_coipPoolIdHasBeenSet; }
+    template<typename CoipPoolIdT = Aws::String>
+    void SetCoipPoolId(CoipPoolIdT&& value) { m_coipPoolIdHasBeenSet = true; m_coipPoolId = std::forward<CoipPoolIdT>(value); }
+    template<typename CoipPoolIdT = Aws::String>
+    LocalGatewayRoute& WithCoipPoolId(CoipPoolIdT&& value) { SetCoipPoolId(std::forward<CoipPoolIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the customer-owned address pool.</p>
-     */
-    inline void SetCoipPoolId(const Aws::String& value) { m_coipPoolIdHasBeenSet = true; m_coipPoolId = value; }
-
-    /**
-     * <p>The ID of the customer-owned address pool.</p>
-     */
-    inline void SetCoipPoolId(Aws::String&& value) { m_coipPoolIdHasBeenSet = true; m_coipPoolId = std::move(value); }
-
-    /**
-     * <p>The ID of the customer-owned address pool.</p>
-     */
-    inline void SetCoipPoolId(const char* value) { m_coipPoolIdHasBeenSet = true; m_coipPoolId.assign(value); }
-
-    /**
-     * <p>The ID of the customer-owned address pool.</p>
-     */
-    inline LocalGatewayRoute& WithCoipPoolId(const Aws::String& value) { SetCoipPoolId(value); return *this;}
-
-    /**
-     * <p>The ID of the customer-owned address pool.</p>
-     */
-    inline LocalGatewayRoute& WithCoipPoolId(Aws::String&& value) { SetCoipPoolId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the customer-owned address pool.</p>
-     */
-    inline LocalGatewayRoute& WithCoipPoolId(const char* value) { SetCoipPoolId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the network interface.</p>
      */
-    inline const Aws::String& GetNetworkInterfaceId() const{ return m_networkInterfaceId; }
-
-    /**
-     * <p>The ID of the network interface.</p>
-     */
+    inline const Aws::String& GetNetworkInterfaceId() const { return m_networkInterfaceId; }
     inline bool NetworkInterfaceIdHasBeenSet() const { return m_networkInterfaceIdHasBeenSet; }
+    template<typename NetworkInterfaceIdT = Aws::String>
+    void SetNetworkInterfaceId(NetworkInterfaceIdT&& value) { m_networkInterfaceIdHasBeenSet = true; m_networkInterfaceId = std::forward<NetworkInterfaceIdT>(value); }
+    template<typename NetworkInterfaceIdT = Aws::String>
+    LocalGatewayRoute& WithNetworkInterfaceId(NetworkInterfaceIdT&& value) { SetNetworkInterfaceId(std::forward<NetworkInterfaceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the network interface.</p>
-     */
-    inline void SetNetworkInterfaceId(const Aws::String& value) { m_networkInterfaceIdHasBeenSet = true; m_networkInterfaceId = value; }
-
-    /**
-     * <p>The ID of the network interface.</p>
-     */
-    inline void SetNetworkInterfaceId(Aws::String&& value) { m_networkInterfaceIdHasBeenSet = true; m_networkInterfaceId = std::move(value); }
-
-    /**
-     * <p>The ID of the network interface.</p>
-     */
-    inline void SetNetworkInterfaceId(const char* value) { m_networkInterfaceIdHasBeenSet = true; m_networkInterfaceId.assign(value); }
-
-    /**
-     * <p>The ID of the network interface.</p>
-     */
-    inline LocalGatewayRoute& WithNetworkInterfaceId(const Aws::String& value) { SetNetworkInterfaceId(value); return *this;}
-
-    /**
-     * <p>The ID of the network interface.</p>
-     */
-    inline LocalGatewayRoute& WithNetworkInterfaceId(Aws::String&& value) { SetNetworkInterfaceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the network interface.</p>
-     */
-    inline LocalGatewayRoute& WithNetworkInterfaceId(const char* value) { SetNetworkInterfaceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The ID of the prefix list. </p>
      */
-    inline const Aws::String& GetDestinationPrefixListId() const{ return m_destinationPrefixListId; }
-
-    /**
-     * <p> The ID of the prefix list. </p>
-     */
+    inline const Aws::String& GetDestinationPrefixListId() const { return m_destinationPrefixListId; }
     inline bool DestinationPrefixListIdHasBeenSet() const { return m_destinationPrefixListIdHasBeenSet; }
-
-    /**
-     * <p> The ID of the prefix list. </p>
-     */
-    inline void SetDestinationPrefixListId(const Aws::String& value) { m_destinationPrefixListIdHasBeenSet = true; m_destinationPrefixListId = value; }
-
-    /**
-     * <p> The ID of the prefix list. </p>
-     */
-    inline void SetDestinationPrefixListId(Aws::String&& value) { m_destinationPrefixListIdHasBeenSet = true; m_destinationPrefixListId = std::move(value); }
-
-    /**
-     * <p> The ID of the prefix list. </p>
-     */
-    inline void SetDestinationPrefixListId(const char* value) { m_destinationPrefixListIdHasBeenSet = true; m_destinationPrefixListId.assign(value); }
-
-    /**
-     * <p> The ID of the prefix list. </p>
-     */
-    inline LocalGatewayRoute& WithDestinationPrefixListId(const Aws::String& value) { SetDestinationPrefixListId(value); return *this;}
-
-    /**
-     * <p> The ID of the prefix list. </p>
-     */
-    inline LocalGatewayRoute& WithDestinationPrefixListId(Aws::String&& value) { SetDestinationPrefixListId(std::move(value)); return *this;}
-
-    /**
-     * <p> The ID of the prefix list. </p>
-     */
-    inline LocalGatewayRoute& WithDestinationPrefixListId(const char* value) { SetDestinationPrefixListId(value); return *this;}
-
+    template<typename DestinationPrefixListIdT = Aws::String>
+    void SetDestinationPrefixListId(DestinationPrefixListIdT&& value) { m_destinationPrefixListIdHasBeenSet = true; m_destinationPrefixListId = std::forward<DestinationPrefixListIdT>(value); }
+    template<typename DestinationPrefixListIdT = Aws::String>
+    LocalGatewayRoute& WithDestinationPrefixListId(DestinationPrefixListIdT&& value) { SetDestinationPrefixListId(std::forward<DestinationPrefixListIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_destinationCidrBlock;
@@ -488,10 +178,10 @@ namespace Model
     Aws::String m_localGatewayVirtualInterfaceGroupId;
     bool m_localGatewayVirtualInterfaceGroupIdHasBeenSet = false;
 
-    LocalGatewayRouteType m_type;
+    LocalGatewayRouteType m_type{LocalGatewayRouteType::NOT_SET};
     bool m_typeHasBeenSet = false;
 
-    LocalGatewayRouteState m_state;
+    LocalGatewayRouteState m_state{LocalGatewayRouteState::NOT_SET};
     bool m_stateHasBeenSet = false;
 
     Aws::String m_localGatewayRouteTableId;

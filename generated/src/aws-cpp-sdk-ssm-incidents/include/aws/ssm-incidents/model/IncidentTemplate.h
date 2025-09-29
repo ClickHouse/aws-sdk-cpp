@@ -35,12 +35,13 @@ namespace Model
   class IncidentTemplate
   {
   public:
-    AWS_SSMINCIDENTS_API IncidentTemplate();
+    AWS_SSMINCIDENTS_API IncidentTemplate() = default;
     AWS_SSMINCIDENTS_API IncidentTemplate(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSMINCIDENTS_API IncidentTemplate& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSMINCIDENTS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The string Incident Manager uses to prevent the same root cause from creating
      * multiple incidents in the same account.</p> <p>A deduplication string is a term
@@ -54,114 +55,15 @@ namespace Model
      * deduplication string to prevent duplication for these resource types.</p>
      * 
      */
-    inline const Aws::String& GetDedupeString() const{ return m_dedupeString; }
-
-    /**
-     * <p>The string Incident Manager uses to prevent the same root cause from creating
-     * multiple incidents in the same account.</p> <p>A deduplication string is a term
-     * or phrase the system uses to check for duplicate incidents. If you specify a
-     * deduplication string, Incident Manager searches for open incidents that contain
-     * the same string in the <code>dedupeString</code> field when it creates the
-     * incident. If a duplicate is detected, Incident Manager deduplicates the newer
-     * incident into the existing incident.</p>  <p>By default, Incident Manager
-     * automatically deduplicates multiple incidents created by the same Amazon
-     * CloudWatch alarm or Amazon EventBridge event. You don't have to enter your own
-     * deduplication string to prevent duplication for these resource types.</p>
-     * 
-     */
+    inline const Aws::String& GetDedupeString() const { return m_dedupeString; }
     inline bool DedupeStringHasBeenSet() const { return m_dedupeStringHasBeenSet; }
+    template<typename DedupeStringT = Aws::String>
+    void SetDedupeString(DedupeStringT&& value) { m_dedupeStringHasBeenSet = true; m_dedupeString = std::forward<DedupeStringT>(value); }
+    template<typename DedupeStringT = Aws::String>
+    IncidentTemplate& WithDedupeString(DedupeStringT&& value) { SetDedupeString(std::forward<DedupeStringT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The string Incident Manager uses to prevent the same root cause from creating
-     * multiple incidents in the same account.</p> <p>A deduplication string is a term
-     * or phrase the system uses to check for duplicate incidents. If you specify a
-     * deduplication string, Incident Manager searches for open incidents that contain
-     * the same string in the <code>dedupeString</code> field when it creates the
-     * incident. If a duplicate is detected, Incident Manager deduplicates the newer
-     * incident into the existing incident.</p>  <p>By default, Incident Manager
-     * automatically deduplicates multiple incidents created by the same Amazon
-     * CloudWatch alarm or Amazon EventBridge event. You don't have to enter your own
-     * deduplication string to prevent duplication for these resource types.</p>
-     * 
-     */
-    inline void SetDedupeString(const Aws::String& value) { m_dedupeStringHasBeenSet = true; m_dedupeString = value; }
-
-    /**
-     * <p>The string Incident Manager uses to prevent the same root cause from creating
-     * multiple incidents in the same account.</p> <p>A deduplication string is a term
-     * or phrase the system uses to check for duplicate incidents. If you specify a
-     * deduplication string, Incident Manager searches for open incidents that contain
-     * the same string in the <code>dedupeString</code> field when it creates the
-     * incident. If a duplicate is detected, Incident Manager deduplicates the newer
-     * incident into the existing incident.</p>  <p>By default, Incident Manager
-     * automatically deduplicates multiple incidents created by the same Amazon
-     * CloudWatch alarm or Amazon EventBridge event. You don't have to enter your own
-     * deduplication string to prevent duplication for these resource types.</p>
-     * 
-     */
-    inline void SetDedupeString(Aws::String&& value) { m_dedupeStringHasBeenSet = true; m_dedupeString = std::move(value); }
-
-    /**
-     * <p>The string Incident Manager uses to prevent the same root cause from creating
-     * multiple incidents in the same account.</p> <p>A deduplication string is a term
-     * or phrase the system uses to check for duplicate incidents. If you specify a
-     * deduplication string, Incident Manager searches for open incidents that contain
-     * the same string in the <code>dedupeString</code> field when it creates the
-     * incident. If a duplicate is detected, Incident Manager deduplicates the newer
-     * incident into the existing incident.</p>  <p>By default, Incident Manager
-     * automatically deduplicates multiple incidents created by the same Amazon
-     * CloudWatch alarm or Amazon EventBridge event. You don't have to enter your own
-     * deduplication string to prevent duplication for these resource types.</p>
-     * 
-     */
-    inline void SetDedupeString(const char* value) { m_dedupeStringHasBeenSet = true; m_dedupeString.assign(value); }
-
-    /**
-     * <p>The string Incident Manager uses to prevent the same root cause from creating
-     * multiple incidents in the same account.</p> <p>A deduplication string is a term
-     * or phrase the system uses to check for duplicate incidents. If you specify a
-     * deduplication string, Incident Manager searches for open incidents that contain
-     * the same string in the <code>dedupeString</code> field when it creates the
-     * incident. If a duplicate is detected, Incident Manager deduplicates the newer
-     * incident into the existing incident.</p>  <p>By default, Incident Manager
-     * automatically deduplicates multiple incidents created by the same Amazon
-     * CloudWatch alarm or Amazon EventBridge event. You don't have to enter your own
-     * deduplication string to prevent duplication for these resource types.</p>
-     * 
-     */
-    inline IncidentTemplate& WithDedupeString(const Aws::String& value) { SetDedupeString(value); return *this;}
-
-    /**
-     * <p>The string Incident Manager uses to prevent the same root cause from creating
-     * multiple incidents in the same account.</p> <p>A deduplication string is a term
-     * or phrase the system uses to check for duplicate incidents. If you specify a
-     * deduplication string, Incident Manager searches for open incidents that contain
-     * the same string in the <code>dedupeString</code> field when it creates the
-     * incident. If a duplicate is detected, Incident Manager deduplicates the newer
-     * incident into the existing incident.</p>  <p>By default, Incident Manager
-     * automatically deduplicates multiple incidents created by the same Amazon
-     * CloudWatch alarm or Amazon EventBridge event. You don't have to enter your own
-     * deduplication string to prevent duplication for these resource types.</p>
-     * 
-     */
-    inline IncidentTemplate& WithDedupeString(Aws::String&& value) { SetDedupeString(std::move(value)); return *this;}
-
-    /**
-     * <p>The string Incident Manager uses to prevent the same root cause from creating
-     * multiple incidents in the same account.</p> <p>A deduplication string is a term
-     * or phrase the system uses to check for duplicate incidents. If you specify a
-     * deduplication string, Incident Manager searches for open incidents that contain
-     * the same string in the <code>dedupeString</code> field when it creates the
-     * incident. If a duplicate is detected, Incident Manager deduplicates the newer
-     * incident into the existing incident.</p>  <p>By default, Incident Manager
-     * automatically deduplicates multiple incidents created by the same Amazon
-     * CloudWatch alarm or Amazon EventBridge event. You don't have to enter your own
-     * deduplication string to prevent duplication for these resource types.</p>
-     * 
-     */
-    inline IncidentTemplate& WithDedupeString(const char* value) { SetDedupeString(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The impact of the incident on your customers and applications.</p> <p
      * class="title"> <b>Supported impact codes</b> </p> <ul> <li> <p> <code>1</code> -
@@ -169,272 +71,75 @@ namespace Model
      * <code>3</code> - Medium</p> </li> <li> <p> <code>4</code> - Low</p> </li> <li>
      * <p> <code>5</code> - No Impact</p> </li> </ul>
      */
-    inline int GetImpact() const{ return m_impact; }
-
-    /**
-     * <p>The impact of the incident on your customers and applications.</p> <p
-     * class="title"> <b>Supported impact codes</b> </p> <ul> <li> <p> <code>1</code> -
-     * Critical</p> </li> <li> <p> <code>2</code> - High</p> </li> <li> <p>
-     * <code>3</code> - Medium</p> </li> <li> <p> <code>4</code> - Low</p> </li> <li>
-     * <p> <code>5</code> - No Impact</p> </li> </ul>
-     */
+    inline int GetImpact() const { return m_impact; }
     inline bool ImpactHasBeenSet() const { return m_impactHasBeenSet; }
-
-    /**
-     * <p>The impact of the incident on your customers and applications.</p> <p
-     * class="title"> <b>Supported impact codes</b> </p> <ul> <li> <p> <code>1</code> -
-     * Critical</p> </li> <li> <p> <code>2</code> - High</p> </li> <li> <p>
-     * <code>3</code> - Medium</p> </li> <li> <p> <code>4</code> - Low</p> </li> <li>
-     * <p> <code>5</code> - No Impact</p> </li> </ul>
-     */
     inline void SetImpact(int value) { m_impactHasBeenSet = true; m_impact = value; }
-
-    /**
-     * <p>The impact of the incident on your customers and applications.</p> <p
-     * class="title"> <b>Supported impact codes</b> </p> <ul> <li> <p> <code>1</code> -
-     * Critical</p> </li> <li> <p> <code>2</code> - High</p> </li> <li> <p>
-     * <code>3</code> - Medium</p> </li> <li> <p> <code>4</code> - Low</p> </li> <li>
-     * <p> <code>5</code> - No Impact</p> </li> </ul>
-     */
     inline IncidentTemplate& WithImpact(int value) { SetImpact(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Tags to assign to the template. When the <code>StartIncident</code> API
      * action is called, Incident Manager assigns the tags specified in the template to
      * the incident.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetIncidentTags() const{ return m_incidentTags; }
-
-    /**
-     * <p>Tags to assign to the template. When the <code>StartIncident</code> API
-     * action is called, Incident Manager assigns the tags specified in the template to
-     * the incident.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetIncidentTags() const { return m_incidentTags; }
     inline bool IncidentTagsHasBeenSet() const { return m_incidentTagsHasBeenSet; }
+    template<typename IncidentTagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetIncidentTags(IncidentTagsT&& value) { m_incidentTagsHasBeenSet = true; m_incidentTags = std::forward<IncidentTagsT>(value); }
+    template<typename IncidentTagsT = Aws::Map<Aws::String, Aws::String>>
+    IncidentTemplate& WithIncidentTags(IncidentTagsT&& value) { SetIncidentTags(std::forward<IncidentTagsT>(value)); return *this;}
+    template<typename IncidentTagsKeyT = Aws::String, typename IncidentTagsValueT = Aws::String>
+    IncidentTemplate& AddIncidentTags(IncidentTagsKeyT&& key, IncidentTagsValueT&& value) {
+      m_incidentTagsHasBeenSet = true; m_incidentTags.emplace(std::forward<IncidentTagsKeyT>(key), std::forward<IncidentTagsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>Tags to assign to the template. When the <code>StartIncident</code> API
-     * action is called, Incident Manager assigns the tags specified in the template to
-     * the incident.</p>
-     */
-    inline void SetIncidentTags(const Aws::Map<Aws::String, Aws::String>& value) { m_incidentTagsHasBeenSet = true; m_incidentTags = value; }
-
-    /**
-     * <p>Tags to assign to the template. When the <code>StartIncident</code> API
-     * action is called, Incident Manager assigns the tags specified in the template to
-     * the incident.</p>
-     */
-    inline void SetIncidentTags(Aws::Map<Aws::String, Aws::String>&& value) { m_incidentTagsHasBeenSet = true; m_incidentTags = std::move(value); }
-
-    /**
-     * <p>Tags to assign to the template. When the <code>StartIncident</code> API
-     * action is called, Incident Manager assigns the tags specified in the template to
-     * the incident.</p>
-     */
-    inline IncidentTemplate& WithIncidentTags(const Aws::Map<Aws::String, Aws::String>& value) { SetIncidentTags(value); return *this;}
-
-    /**
-     * <p>Tags to assign to the template. When the <code>StartIncident</code> API
-     * action is called, Incident Manager assigns the tags specified in the template to
-     * the incident.</p>
-     */
-    inline IncidentTemplate& WithIncidentTags(Aws::Map<Aws::String, Aws::String>&& value) { SetIncidentTags(std::move(value)); return *this;}
-
-    /**
-     * <p>Tags to assign to the template. When the <code>StartIncident</code> API
-     * action is called, Incident Manager assigns the tags specified in the template to
-     * the incident.</p>
-     */
-    inline IncidentTemplate& AddIncidentTags(const Aws::String& key, const Aws::String& value) { m_incidentTagsHasBeenSet = true; m_incidentTags.emplace(key, value); return *this; }
-
-    /**
-     * <p>Tags to assign to the template. When the <code>StartIncident</code> API
-     * action is called, Incident Manager assigns the tags specified in the template to
-     * the incident.</p>
-     */
-    inline IncidentTemplate& AddIncidentTags(Aws::String&& key, const Aws::String& value) { m_incidentTagsHasBeenSet = true; m_incidentTags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Tags to assign to the template. When the <code>StartIncident</code> API
-     * action is called, Incident Manager assigns the tags specified in the template to
-     * the incident.</p>
-     */
-    inline IncidentTemplate& AddIncidentTags(const Aws::String& key, Aws::String&& value) { m_incidentTagsHasBeenSet = true; m_incidentTags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Tags to assign to the template. When the <code>StartIncident</code> API
-     * action is called, Incident Manager assigns the tags specified in the template to
-     * the incident.</p>
-     */
-    inline IncidentTemplate& AddIncidentTags(Aws::String&& key, Aws::String&& value) { m_incidentTagsHasBeenSet = true; m_incidentTags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>Tags to assign to the template. When the <code>StartIncident</code> API
-     * action is called, Incident Manager assigns the tags specified in the template to
-     * the incident.</p>
-     */
-    inline IncidentTemplate& AddIncidentTags(const char* key, Aws::String&& value) { m_incidentTagsHasBeenSet = true; m_incidentTags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Tags to assign to the template. When the <code>StartIncident</code> API
-     * action is called, Incident Manager assigns the tags specified in the template to
-     * the incident.</p>
-     */
-    inline IncidentTemplate& AddIncidentTags(Aws::String&& key, const char* value) { m_incidentTagsHasBeenSet = true; m_incidentTags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Tags to assign to the template. When the <code>StartIncident</code> API
-     * action is called, Incident Manager assigns the tags specified in the template to
-     * the incident.</p>
-     */
-    inline IncidentTemplate& AddIncidentTags(const char* key, const char* value) { m_incidentTagsHasBeenSet = true; m_incidentTags.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>The Amazon SNS targets that are notified when updates are made to an
      * incident.</p>
      */
-    inline const Aws::Vector<NotificationTargetItem>& GetNotificationTargets() const{ return m_notificationTargets; }
-
-    /**
-     * <p>The Amazon SNS targets that are notified when updates are made to an
-     * incident.</p>
-     */
+    inline const Aws::Vector<NotificationTargetItem>& GetNotificationTargets() const { return m_notificationTargets; }
     inline bool NotificationTargetsHasBeenSet() const { return m_notificationTargetsHasBeenSet; }
+    template<typename NotificationTargetsT = Aws::Vector<NotificationTargetItem>>
+    void SetNotificationTargets(NotificationTargetsT&& value) { m_notificationTargetsHasBeenSet = true; m_notificationTargets = std::forward<NotificationTargetsT>(value); }
+    template<typename NotificationTargetsT = Aws::Vector<NotificationTargetItem>>
+    IncidentTemplate& WithNotificationTargets(NotificationTargetsT&& value) { SetNotificationTargets(std::forward<NotificationTargetsT>(value)); return *this;}
+    template<typename NotificationTargetsT = NotificationTargetItem>
+    IncidentTemplate& AddNotificationTargets(NotificationTargetsT&& value) { m_notificationTargetsHasBeenSet = true; m_notificationTargets.emplace_back(std::forward<NotificationTargetsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The Amazon SNS targets that are notified when updates are made to an
-     * incident.</p>
-     */
-    inline void SetNotificationTargets(const Aws::Vector<NotificationTargetItem>& value) { m_notificationTargetsHasBeenSet = true; m_notificationTargets = value; }
-
-    /**
-     * <p>The Amazon SNS targets that are notified when updates are made to an
-     * incident.</p>
-     */
-    inline void SetNotificationTargets(Aws::Vector<NotificationTargetItem>&& value) { m_notificationTargetsHasBeenSet = true; m_notificationTargets = std::move(value); }
-
-    /**
-     * <p>The Amazon SNS targets that are notified when updates are made to an
-     * incident.</p>
-     */
-    inline IncidentTemplate& WithNotificationTargets(const Aws::Vector<NotificationTargetItem>& value) { SetNotificationTargets(value); return *this;}
-
-    /**
-     * <p>The Amazon SNS targets that are notified when updates are made to an
-     * incident.</p>
-     */
-    inline IncidentTemplate& WithNotificationTargets(Aws::Vector<NotificationTargetItem>&& value) { SetNotificationTargets(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon SNS targets that are notified when updates are made to an
-     * incident.</p>
-     */
-    inline IncidentTemplate& AddNotificationTargets(const NotificationTargetItem& value) { m_notificationTargetsHasBeenSet = true; m_notificationTargets.push_back(value); return *this; }
-
-    /**
-     * <p>The Amazon SNS targets that are notified when updates are made to an
-     * incident.</p>
-     */
-    inline IncidentTemplate& AddNotificationTargets(NotificationTargetItem&& value) { m_notificationTargetsHasBeenSet = true; m_notificationTargets.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The summary of the incident. The summary is a brief synopsis of what
      * occurred, what's currently happening, and context.</p>
      */
-    inline const Aws::String& GetSummary() const{ return m_summary; }
-
-    /**
-     * <p>The summary of the incident. The summary is a brief synopsis of what
-     * occurred, what's currently happening, and context.</p>
-     */
+    inline const Aws::String& GetSummary() const { return m_summary; }
     inline bool SummaryHasBeenSet() const { return m_summaryHasBeenSet; }
+    template<typename SummaryT = Aws::String>
+    void SetSummary(SummaryT&& value) { m_summaryHasBeenSet = true; m_summary = std::forward<SummaryT>(value); }
+    template<typename SummaryT = Aws::String>
+    IncidentTemplate& WithSummary(SummaryT&& value) { SetSummary(std::forward<SummaryT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The summary of the incident. The summary is a brief synopsis of what
-     * occurred, what's currently happening, and context.</p>
-     */
-    inline void SetSummary(const Aws::String& value) { m_summaryHasBeenSet = true; m_summary = value; }
-
-    /**
-     * <p>The summary of the incident. The summary is a brief synopsis of what
-     * occurred, what's currently happening, and context.</p>
-     */
-    inline void SetSummary(Aws::String&& value) { m_summaryHasBeenSet = true; m_summary = std::move(value); }
-
-    /**
-     * <p>The summary of the incident. The summary is a brief synopsis of what
-     * occurred, what's currently happening, and context.</p>
-     */
-    inline void SetSummary(const char* value) { m_summaryHasBeenSet = true; m_summary.assign(value); }
-
-    /**
-     * <p>The summary of the incident. The summary is a brief synopsis of what
-     * occurred, what's currently happening, and context.</p>
-     */
-    inline IncidentTemplate& WithSummary(const Aws::String& value) { SetSummary(value); return *this;}
-
-    /**
-     * <p>The summary of the incident. The summary is a brief synopsis of what
-     * occurred, what's currently happening, and context.</p>
-     */
-    inline IncidentTemplate& WithSummary(Aws::String&& value) { SetSummary(std::move(value)); return *this;}
-
-    /**
-     * <p>The summary of the incident. The summary is a brief synopsis of what
-     * occurred, what's currently happening, and context.</p>
-     */
-    inline IncidentTemplate& WithSummary(const char* value) { SetSummary(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The title of the incident. </p>
      */
-    inline const Aws::String& GetTitle() const{ return m_title; }
-
-    /**
-     * <p>The title of the incident. </p>
-     */
+    inline const Aws::String& GetTitle() const { return m_title; }
     inline bool TitleHasBeenSet() const { return m_titleHasBeenSet; }
-
-    /**
-     * <p>The title of the incident. </p>
-     */
-    inline void SetTitle(const Aws::String& value) { m_titleHasBeenSet = true; m_title = value; }
-
-    /**
-     * <p>The title of the incident. </p>
-     */
-    inline void SetTitle(Aws::String&& value) { m_titleHasBeenSet = true; m_title = std::move(value); }
-
-    /**
-     * <p>The title of the incident. </p>
-     */
-    inline void SetTitle(const char* value) { m_titleHasBeenSet = true; m_title.assign(value); }
-
-    /**
-     * <p>The title of the incident. </p>
-     */
-    inline IncidentTemplate& WithTitle(const Aws::String& value) { SetTitle(value); return *this;}
-
-    /**
-     * <p>The title of the incident. </p>
-     */
-    inline IncidentTemplate& WithTitle(Aws::String&& value) { SetTitle(std::move(value)); return *this;}
-
-    /**
-     * <p>The title of the incident. </p>
-     */
-    inline IncidentTemplate& WithTitle(const char* value) { SetTitle(value); return *this;}
-
+    template<typename TitleT = Aws::String>
+    void SetTitle(TitleT&& value) { m_titleHasBeenSet = true; m_title = std::forward<TitleT>(value); }
+    template<typename TitleT = Aws::String>
+    IncidentTemplate& WithTitle(TitleT&& value) { SetTitle(std::forward<TitleT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_dedupeString;
     bool m_dedupeStringHasBeenSet = false;
 
-    int m_impact;
+    int m_impact{0};
     bool m_impactHasBeenSet = false;
 
     Aws::Map<Aws::String, Aws::String> m_incidentTags;

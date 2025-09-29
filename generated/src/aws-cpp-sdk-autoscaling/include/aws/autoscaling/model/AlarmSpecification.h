@@ -33,7 +33,7 @@ namespace Model
   class AlarmSpecification
   {
   public:
-    AWS_AUTOSCALING_API AlarmSpecification();
+    AWS_AUTOSCALING_API AlarmSpecification() = default;
     AWS_AUTOSCALING_API AlarmSpecification(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_AUTOSCALING_API AlarmSpecification& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -41,60 +41,20 @@ namespace Model
     AWS_AUTOSCALING_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The names of one or more CloudWatch alarms to monitor for the instance
      * refresh. You can specify up to 10 alarms.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetAlarms() const{ return m_alarms; }
-
-    /**
-     * <p>The names of one or more CloudWatch alarms to monitor for the instance
-     * refresh. You can specify up to 10 alarms.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetAlarms() const { return m_alarms; }
     inline bool AlarmsHasBeenSet() const { return m_alarmsHasBeenSet; }
-
-    /**
-     * <p>The names of one or more CloudWatch alarms to monitor for the instance
-     * refresh. You can specify up to 10 alarms.</p>
-     */
-    inline void SetAlarms(const Aws::Vector<Aws::String>& value) { m_alarmsHasBeenSet = true; m_alarms = value; }
-
-    /**
-     * <p>The names of one or more CloudWatch alarms to monitor for the instance
-     * refresh. You can specify up to 10 alarms.</p>
-     */
-    inline void SetAlarms(Aws::Vector<Aws::String>&& value) { m_alarmsHasBeenSet = true; m_alarms = std::move(value); }
-
-    /**
-     * <p>The names of one or more CloudWatch alarms to monitor for the instance
-     * refresh. You can specify up to 10 alarms.</p>
-     */
-    inline AlarmSpecification& WithAlarms(const Aws::Vector<Aws::String>& value) { SetAlarms(value); return *this;}
-
-    /**
-     * <p>The names of one or more CloudWatch alarms to monitor for the instance
-     * refresh. You can specify up to 10 alarms.</p>
-     */
-    inline AlarmSpecification& WithAlarms(Aws::Vector<Aws::String>&& value) { SetAlarms(std::move(value)); return *this;}
-
-    /**
-     * <p>The names of one or more CloudWatch alarms to monitor for the instance
-     * refresh. You can specify up to 10 alarms.</p>
-     */
-    inline AlarmSpecification& AddAlarms(const Aws::String& value) { m_alarmsHasBeenSet = true; m_alarms.push_back(value); return *this; }
-
-    /**
-     * <p>The names of one or more CloudWatch alarms to monitor for the instance
-     * refresh. You can specify up to 10 alarms.</p>
-     */
-    inline AlarmSpecification& AddAlarms(Aws::String&& value) { m_alarmsHasBeenSet = true; m_alarms.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The names of one or more CloudWatch alarms to monitor for the instance
-     * refresh. You can specify up to 10 alarms.</p>
-     */
-    inline AlarmSpecification& AddAlarms(const char* value) { m_alarmsHasBeenSet = true; m_alarms.push_back(value); return *this; }
-
+    template<typename AlarmsT = Aws::Vector<Aws::String>>
+    void SetAlarms(AlarmsT&& value) { m_alarmsHasBeenSet = true; m_alarms = std::forward<AlarmsT>(value); }
+    template<typename AlarmsT = Aws::Vector<Aws::String>>
+    AlarmSpecification& WithAlarms(AlarmsT&& value) { SetAlarms(std::forward<AlarmsT>(value)); return *this;}
+    template<typename AlarmsT = Aws::String>
+    AlarmSpecification& AddAlarms(AlarmsT&& value) { m_alarmsHasBeenSet = true; m_alarms.emplace_back(std::forward<AlarmsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_alarms;

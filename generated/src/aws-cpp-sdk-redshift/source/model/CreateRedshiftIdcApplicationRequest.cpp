@@ -10,17 +10,6 @@
 using namespace Aws::Redshift::Model;
 using namespace Aws::Utils;
 
-CreateRedshiftIdcApplicationRequest::CreateRedshiftIdcApplicationRequest() : 
-    m_idcInstanceArnHasBeenSet(false),
-    m_redshiftIdcApplicationNameHasBeenSet(false),
-    m_identityNamespaceHasBeenSet(false),
-    m_idcDisplayNameHasBeenSet(false),
-    m_iamRoleArnHasBeenSet(false),
-    m_authorizedTokenIssuerListHasBeenSet(false),
-    m_serviceIntegrationsHasBeenSet(false)
-{
-}
-
 Aws::String CreateRedshiftIdcApplicationRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -52,21 +41,70 @@ Aws::String CreateRedshiftIdcApplicationRequest::SerializePayload() const
 
   if(m_authorizedTokenIssuerListHasBeenSet)
   {
-    unsigned authorizedTokenIssuerListCount = 1;
-    for(auto& item : m_authorizedTokenIssuerList)
+    if (m_authorizedTokenIssuerList.empty())
     {
-      item.OutputToStream(ss, "AuthorizedTokenIssuerList.member.", authorizedTokenIssuerListCount, "");
-      authorizedTokenIssuerListCount++;
+      ss << "AuthorizedTokenIssuerList=&";
+    }
+    else
+    {
+      unsigned authorizedTokenIssuerListCount = 1;
+      for(auto& item : m_authorizedTokenIssuerList)
+      {
+        item.OutputToStream(ss, "AuthorizedTokenIssuerList.member.", authorizedTokenIssuerListCount, "");
+        authorizedTokenIssuerListCount++;
+      }
     }
   }
 
   if(m_serviceIntegrationsHasBeenSet)
   {
-    unsigned serviceIntegrationsCount = 1;
-    for(auto& item : m_serviceIntegrations)
+    if (m_serviceIntegrations.empty())
     {
-      item.OutputToStream(ss, "ServiceIntegrations.member.", serviceIntegrationsCount, "");
-      serviceIntegrationsCount++;
+      ss << "ServiceIntegrations=&";
+    }
+    else
+    {
+      unsigned serviceIntegrationsCount = 1;
+      for(auto& item : m_serviceIntegrations)
+      {
+        item.OutputToStream(ss, "ServiceIntegrations.member.", serviceIntegrationsCount, "");
+        serviceIntegrationsCount++;
+      }
+    }
+  }
+
+  if(m_tagsHasBeenSet)
+  {
+    if (m_tags.empty())
+    {
+      ss << "Tags=&";
+    }
+    else
+    {
+      unsigned tagsCount = 1;
+      for(auto& item : m_tags)
+      {
+        item.OutputToStream(ss, "Tags.Tag.", tagsCount, "");
+        tagsCount++;
+      }
+    }
+  }
+
+  if(m_ssoTagKeysHasBeenSet)
+  {
+    if (m_ssoTagKeys.empty())
+    {
+      ss << "SsoTagKeys=&";
+    }
+    else
+    {
+      unsigned ssoTagKeysCount = 1;
+      for(auto& item : m_ssoTagKeys)
+      {
+        ss << "SsoTagKeys.TagKey." << ssoTagKeysCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        ssoTagKeysCount++;
+      }
     }
   }
 

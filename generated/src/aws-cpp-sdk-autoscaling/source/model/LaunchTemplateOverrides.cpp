@@ -20,19 +20,7 @@ namespace AutoScaling
 namespace Model
 {
 
-LaunchTemplateOverrides::LaunchTemplateOverrides() : 
-    m_instanceTypeHasBeenSet(false),
-    m_weightedCapacityHasBeenSet(false),
-    m_launchTemplateSpecificationHasBeenSet(false),
-    m_instanceRequirementsHasBeenSet(false)
-{
-}
-
-LaunchTemplateOverrides::LaunchTemplateOverrides(const XmlNode& xmlNode) : 
-    m_instanceTypeHasBeenSet(false),
-    m_weightedCapacityHasBeenSet(false),
-    m_launchTemplateSpecificationHasBeenSet(false),
-    m_instanceRequirementsHasBeenSet(false)
+LaunchTemplateOverrides::LaunchTemplateOverrides(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

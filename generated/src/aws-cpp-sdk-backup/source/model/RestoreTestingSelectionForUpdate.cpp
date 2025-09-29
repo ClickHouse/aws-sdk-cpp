@@ -18,23 +18,7 @@ namespace Backup
 namespace Model
 {
 
-RestoreTestingSelectionForUpdate::RestoreTestingSelectionForUpdate() : 
-    m_iamRoleArnHasBeenSet(false),
-    m_protectedResourceArnsHasBeenSet(false),
-    m_protectedResourceConditionsHasBeenSet(false),
-    m_restoreMetadataOverridesHasBeenSet(false),
-    m_validationWindowHours(0),
-    m_validationWindowHoursHasBeenSet(false)
-{
-}
-
-RestoreTestingSelectionForUpdate::RestoreTestingSelectionForUpdate(JsonView jsonValue) : 
-    m_iamRoleArnHasBeenSet(false),
-    m_protectedResourceArnsHasBeenSet(false),
-    m_protectedResourceConditionsHasBeenSet(false),
-    m_restoreMetadataOverridesHasBeenSet(false),
-    m_validationWindowHours(0),
-    m_validationWindowHoursHasBeenSet(false)
+RestoreTestingSelectionForUpdate::RestoreTestingSelectionForUpdate(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,10 +28,8 @@ RestoreTestingSelectionForUpdate& RestoreTestingSelectionForUpdate::operator =(J
   if(jsonValue.ValueExists("IamRoleArn"))
   {
     m_iamRoleArn = jsonValue.GetString("IamRoleArn");
-
     m_iamRoleArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ProtectedResourceArns"))
   {
     Aws::Utils::Array<JsonView> protectedResourceArnsJsonList = jsonValue.GetArray("ProtectedResourceArns");
@@ -57,14 +39,11 @@ RestoreTestingSelectionForUpdate& RestoreTestingSelectionForUpdate::operator =(J
     }
     m_protectedResourceArnsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ProtectedResourceConditions"))
   {
     m_protectedResourceConditions = jsonValue.GetObject("ProtectedResourceConditions");
-
     m_protectedResourceConditionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RestoreMetadataOverrides"))
   {
     Aws::Map<Aws::String, JsonView> restoreMetadataOverridesJsonMap = jsonValue.GetObject("RestoreMetadataOverrides").GetAllObjects();
@@ -74,14 +53,11 @@ RestoreTestingSelectionForUpdate& RestoreTestingSelectionForUpdate::operator =(J
     }
     m_restoreMetadataOverridesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ValidationWindowHours"))
   {
     m_validationWindowHours = jsonValue.GetInteger("ValidationWindowHours");
-
     m_validationWindowHoursHasBeenSet = true;
   }
-
   return *this;
 }
 

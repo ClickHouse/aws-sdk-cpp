@@ -20,15 +20,7 @@ namespace EC2
 namespace Model
 {
 
-InferenceDeviceMemoryInfo::InferenceDeviceMemoryInfo() : 
-    m_sizeInMiB(0),
-    m_sizeInMiBHasBeenSet(false)
-{
-}
-
-InferenceDeviceMemoryInfo::InferenceDeviceMemoryInfo(const XmlNode& xmlNode) : 
-    m_sizeInMiB(0),
-    m_sizeInMiBHasBeenSet(false)
+InferenceDeviceMemoryInfo::InferenceDeviceMemoryInfo(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

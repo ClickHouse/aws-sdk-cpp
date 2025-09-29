@@ -18,15 +18,7 @@ namespace LexModelsV2
 namespace Model
 {
 
-UtteranceInputSpecification::UtteranceInputSpecification() : 
-    m_textInputHasBeenSet(false),
-    m_audioInputHasBeenSet(false)
-{
-}
-
-UtteranceInputSpecification::UtteranceInputSpecification(JsonView jsonValue) : 
-    m_textInputHasBeenSet(false),
-    m_audioInputHasBeenSet(false)
+UtteranceInputSpecification::UtteranceInputSpecification(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ UtteranceInputSpecification& UtteranceInputSpecification::operator =(JsonView js
   if(jsonValue.ValueExists("textInput"))
   {
     m_textInput = jsonValue.GetString("textInput");
-
     m_textInputHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("audioInput"))
   {
     m_audioInput = jsonValue.GetObject("audioInput");
-
     m_audioInputHasBeenSet = true;
   }
-
   return *this;
 }
 

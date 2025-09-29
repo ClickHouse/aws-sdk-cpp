@@ -25,7 +25,7 @@ namespace Model
   class RollbackTransactionRequest : public RDSDataServiceRequest
   {
   public:
-    AWS_RDSDATASERVICE_API RollbackTransactionRequest();
+    AWS_RDSDATASERVICE_API RollbackTransactionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,128 +36,41 @@ namespace Model
     AWS_RDSDATASERVICE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the Aurora Serverless DB cluster.</p>
      */
-    inline const Aws::String& GetResourceArn() const{ return m_resourceArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Aurora Serverless DB cluster.</p>
-     */
+    inline const Aws::String& GetResourceArn() const { return m_resourceArn; }
     inline bool ResourceArnHasBeenSet() const { return m_resourceArnHasBeenSet; }
+    template<typename ResourceArnT = Aws::String>
+    void SetResourceArn(ResourceArnT&& value) { m_resourceArnHasBeenSet = true; m_resourceArn = std::forward<ResourceArnT>(value); }
+    template<typename ResourceArnT = Aws::String>
+    RollbackTransactionRequest& WithResourceArn(ResourceArnT&& value) { SetResourceArn(std::forward<ResourceArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Aurora Serverless DB cluster.</p>
-     */
-    inline void SetResourceArn(const Aws::String& value) { m_resourceArnHasBeenSet = true; m_resourceArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Aurora Serverless DB cluster.</p>
-     */
-    inline void SetResourceArn(Aws::String&& value) { m_resourceArnHasBeenSet = true; m_resourceArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Aurora Serverless DB cluster.</p>
-     */
-    inline void SetResourceArn(const char* value) { m_resourceArnHasBeenSet = true; m_resourceArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Aurora Serverless DB cluster.</p>
-     */
-    inline RollbackTransactionRequest& WithResourceArn(const Aws::String& value) { SetResourceArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Aurora Serverless DB cluster.</p>
-     */
-    inline RollbackTransactionRequest& WithResourceArn(Aws::String&& value) { SetResourceArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Aurora Serverless DB cluster.</p>
-     */
-    inline RollbackTransactionRequest& WithResourceArn(const char* value) { SetResourceArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name or ARN of the secret that enables access to the DB cluster.</p>
      */
-    inline const Aws::String& GetSecretArn() const{ return m_secretArn; }
-
-    /**
-     * <p>The name or ARN of the secret that enables access to the DB cluster.</p>
-     */
+    inline const Aws::String& GetSecretArn() const { return m_secretArn; }
     inline bool SecretArnHasBeenSet() const { return m_secretArnHasBeenSet; }
+    template<typename SecretArnT = Aws::String>
+    void SetSecretArn(SecretArnT&& value) { m_secretArnHasBeenSet = true; m_secretArn = std::forward<SecretArnT>(value); }
+    template<typename SecretArnT = Aws::String>
+    RollbackTransactionRequest& WithSecretArn(SecretArnT&& value) { SetSecretArn(std::forward<SecretArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name or ARN of the secret that enables access to the DB cluster.</p>
-     */
-    inline void SetSecretArn(const Aws::String& value) { m_secretArnHasBeenSet = true; m_secretArn = value; }
-
-    /**
-     * <p>The name or ARN of the secret that enables access to the DB cluster.</p>
-     */
-    inline void SetSecretArn(Aws::String&& value) { m_secretArnHasBeenSet = true; m_secretArn = std::move(value); }
-
-    /**
-     * <p>The name or ARN of the secret that enables access to the DB cluster.</p>
-     */
-    inline void SetSecretArn(const char* value) { m_secretArnHasBeenSet = true; m_secretArn.assign(value); }
-
-    /**
-     * <p>The name or ARN of the secret that enables access to the DB cluster.</p>
-     */
-    inline RollbackTransactionRequest& WithSecretArn(const Aws::String& value) { SetSecretArn(value); return *this;}
-
-    /**
-     * <p>The name or ARN of the secret that enables access to the DB cluster.</p>
-     */
-    inline RollbackTransactionRequest& WithSecretArn(Aws::String&& value) { SetSecretArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The name or ARN of the secret that enables access to the DB cluster.</p>
-     */
-    inline RollbackTransactionRequest& WithSecretArn(const char* value) { SetSecretArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the transaction to roll back.</p>
      */
-    inline const Aws::String& GetTransactionId() const{ return m_transactionId; }
-
-    /**
-     * <p>The identifier of the transaction to roll back.</p>
-     */
+    inline const Aws::String& GetTransactionId() const { return m_transactionId; }
     inline bool TransactionIdHasBeenSet() const { return m_transactionIdHasBeenSet; }
-
-    /**
-     * <p>The identifier of the transaction to roll back.</p>
-     */
-    inline void SetTransactionId(const Aws::String& value) { m_transactionIdHasBeenSet = true; m_transactionId = value; }
-
-    /**
-     * <p>The identifier of the transaction to roll back.</p>
-     */
-    inline void SetTransactionId(Aws::String&& value) { m_transactionIdHasBeenSet = true; m_transactionId = std::move(value); }
-
-    /**
-     * <p>The identifier of the transaction to roll back.</p>
-     */
-    inline void SetTransactionId(const char* value) { m_transactionIdHasBeenSet = true; m_transactionId.assign(value); }
-
-    /**
-     * <p>The identifier of the transaction to roll back.</p>
-     */
-    inline RollbackTransactionRequest& WithTransactionId(const Aws::String& value) { SetTransactionId(value); return *this;}
-
-    /**
-     * <p>The identifier of the transaction to roll back.</p>
-     */
-    inline RollbackTransactionRequest& WithTransactionId(Aws::String&& value) { SetTransactionId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the transaction to roll back.</p>
-     */
-    inline RollbackTransactionRequest& WithTransactionId(const char* value) { SetTransactionId(value); return *this;}
-
+    template<typename TransactionIdT = Aws::String>
+    void SetTransactionId(TransactionIdT&& value) { m_transactionIdHasBeenSet = true; m_transactionId = std::forward<TransactionIdT>(value); }
+    template<typename TransactionIdT = Aws::String>
+    RollbackTransactionRequest& WithTransactionId(TransactionIdT&& value) { SetTransactionId(std::forward<TransactionIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_resourceArn;

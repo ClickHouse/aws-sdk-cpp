@@ -18,19 +18,7 @@ namespace DynamoDB
 namespace Model
 {
 
-CreateGlobalSecondaryIndexAction::CreateGlobalSecondaryIndexAction() : 
-    m_indexNameHasBeenSet(false),
-    m_keySchemaHasBeenSet(false),
-    m_projectionHasBeenSet(false),
-    m_provisionedThroughputHasBeenSet(false)
-{
-}
-
-CreateGlobalSecondaryIndexAction::CreateGlobalSecondaryIndexAction(JsonView jsonValue) : 
-    m_indexNameHasBeenSet(false),
-    m_keySchemaHasBeenSet(false),
-    m_projectionHasBeenSet(false),
-    m_provisionedThroughputHasBeenSet(false)
+CreateGlobalSecondaryIndexAction::CreateGlobalSecondaryIndexAction(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,10 +28,8 @@ CreateGlobalSecondaryIndexAction& CreateGlobalSecondaryIndexAction::operator =(J
   if(jsonValue.ValueExists("IndexName"))
   {
     m_indexName = jsonValue.GetString("IndexName");
-
     m_indexNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("KeySchema"))
   {
     Aws::Utils::Array<JsonView> keySchemaJsonList = jsonValue.GetArray("KeySchema");
@@ -53,21 +39,26 @@ CreateGlobalSecondaryIndexAction& CreateGlobalSecondaryIndexAction::operator =(J
     }
     m_keySchemaHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Projection"))
   {
     m_projection = jsonValue.GetObject("Projection");
-
     m_projectionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ProvisionedThroughput"))
   {
     m_provisionedThroughput = jsonValue.GetObject("ProvisionedThroughput");
-
     m_provisionedThroughputHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("OnDemandThroughput"))
+  {
+    m_onDemandThroughput = jsonValue.GetObject("OnDemandThroughput");
+    m_onDemandThroughputHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("WarmThroughput"))
+  {
+    m_warmThroughput = jsonValue.GetObject("WarmThroughput");
+    m_warmThroughputHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -101,6 +92,18 @@ JsonValue CreateGlobalSecondaryIndexAction::Jsonize() const
   if(m_provisionedThroughputHasBeenSet)
   {
    payload.WithObject("ProvisionedThroughput", m_provisionedThroughput.Jsonize());
+
+  }
+
+  if(m_onDemandThroughputHasBeenSet)
+  {
+   payload.WithObject("OnDemandThroughput", m_onDemandThroughput.Jsonize());
+
+  }
+
+  if(m_warmThroughputHasBeenSet)
+  {
+   payload.WithObject("WarmThroughput", m_warmThroughput.Jsonize());
 
   }
 

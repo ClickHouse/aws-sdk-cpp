@@ -21,7 +21,7 @@ namespace Model
   class DeleteCollaborationRequest : public CleanRoomsRequest
   {
   public:
-    AWS_CLEANROOMS_API DeleteCollaborationRequest();
+    AWS_CLEANROOMS_API DeleteCollaborationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_CLEANROOMS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The identifier for the collaboration.</p>
      */
-    inline const Aws::String& GetCollaborationIdentifier() const{ return m_collaborationIdentifier; }
-
-    /**
-     * <p>The identifier for the collaboration.</p>
-     */
+    inline const Aws::String& GetCollaborationIdentifier() const { return m_collaborationIdentifier; }
     inline bool CollaborationIdentifierHasBeenSet() const { return m_collaborationIdentifierHasBeenSet; }
-
-    /**
-     * <p>The identifier for the collaboration.</p>
-     */
-    inline void SetCollaborationIdentifier(const Aws::String& value) { m_collaborationIdentifierHasBeenSet = true; m_collaborationIdentifier = value; }
-
-    /**
-     * <p>The identifier for the collaboration.</p>
-     */
-    inline void SetCollaborationIdentifier(Aws::String&& value) { m_collaborationIdentifierHasBeenSet = true; m_collaborationIdentifier = std::move(value); }
-
-    /**
-     * <p>The identifier for the collaboration.</p>
-     */
-    inline void SetCollaborationIdentifier(const char* value) { m_collaborationIdentifierHasBeenSet = true; m_collaborationIdentifier.assign(value); }
-
-    /**
-     * <p>The identifier for the collaboration.</p>
-     */
-    inline DeleteCollaborationRequest& WithCollaborationIdentifier(const Aws::String& value) { SetCollaborationIdentifier(value); return *this;}
-
-    /**
-     * <p>The identifier for the collaboration.</p>
-     */
-    inline DeleteCollaborationRequest& WithCollaborationIdentifier(Aws::String&& value) { SetCollaborationIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier for the collaboration.</p>
-     */
-    inline DeleteCollaborationRequest& WithCollaborationIdentifier(const char* value) { SetCollaborationIdentifier(value); return *this;}
-
+    template<typename CollaborationIdentifierT = Aws::String>
+    void SetCollaborationIdentifier(CollaborationIdentifierT&& value) { m_collaborationIdentifierHasBeenSet = true; m_collaborationIdentifier = std::forward<CollaborationIdentifierT>(value); }
+    template<typename CollaborationIdentifierT = Aws::String>
+    DeleteCollaborationRequest& WithCollaborationIdentifier(CollaborationIdentifierT&& value) { SetCollaborationIdentifier(std::forward<CollaborationIdentifierT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_collaborationIdentifier;

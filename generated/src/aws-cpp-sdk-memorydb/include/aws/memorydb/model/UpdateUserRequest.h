@@ -22,7 +22,7 @@ namespace Model
   class UpdateUserRequest : public MemoryDBRequest
   {
   public:
-    AWS_MEMORYDB_API UpdateUserRequest();
+    AWS_MEMORYDB_API UpdateUserRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,124 +35,42 @@ namespace Model
     AWS_MEMORYDB_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the user</p>
      */
-    inline const Aws::String& GetUserName() const{ return m_userName; }
-
-    /**
-     * <p>The name of the user</p>
-     */
+    inline const Aws::String& GetUserName() const { return m_userName; }
     inline bool UserNameHasBeenSet() const { return m_userNameHasBeenSet; }
+    template<typename UserNameT = Aws::String>
+    void SetUserName(UserNameT&& value) { m_userNameHasBeenSet = true; m_userName = std::forward<UserNameT>(value); }
+    template<typename UserNameT = Aws::String>
+    UpdateUserRequest& WithUserName(UserNameT&& value) { SetUserName(std::forward<UserNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the user</p>
-     */
-    inline void SetUserName(const Aws::String& value) { m_userNameHasBeenSet = true; m_userName = value; }
-
-    /**
-     * <p>The name of the user</p>
-     */
-    inline void SetUserName(Aws::String&& value) { m_userNameHasBeenSet = true; m_userName = std::move(value); }
-
-    /**
-     * <p>The name of the user</p>
-     */
-    inline void SetUserName(const char* value) { m_userNameHasBeenSet = true; m_userName.assign(value); }
-
-    /**
-     * <p>The name of the user</p>
-     */
-    inline UpdateUserRequest& WithUserName(const Aws::String& value) { SetUserName(value); return *this;}
-
-    /**
-     * <p>The name of the user</p>
-     */
-    inline UpdateUserRequest& WithUserName(Aws::String&& value) { SetUserName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the user</p>
-     */
-    inline UpdateUserRequest& WithUserName(const char* value) { SetUserName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Denotes the user's authentication properties, such as whether it requires a
      * password to authenticate.</p>
      */
-    inline const AuthenticationMode& GetAuthenticationMode() const{ return m_authenticationMode; }
-
-    /**
-     * <p>Denotes the user's authentication properties, such as whether it requires a
-     * password to authenticate.</p>
-     */
+    inline const AuthenticationMode& GetAuthenticationMode() const { return m_authenticationMode; }
     inline bool AuthenticationModeHasBeenSet() const { return m_authenticationModeHasBeenSet; }
+    template<typename AuthenticationModeT = AuthenticationMode>
+    void SetAuthenticationMode(AuthenticationModeT&& value) { m_authenticationModeHasBeenSet = true; m_authenticationMode = std::forward<AuthenticationModeT>(value); }
+    template<typename AuthenticationModeT = AuthenticationMode>
+    UpdateUserRequest& WithAuthenticationMode(AuthenticationModeT&& value) { SetAuthenticationMode(std::forward<AuthenticationModeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Denotes the user's authentication properties, such as whether it requires a
-     * password to authenticate.</p>
-     */
-    inline void SetAuthenticationMode(const AuthenticationMode& value) { m_authenticationModeHasBeenSet = true; m_authenticationMode = value; }
-
-    /**
-     * <p>Denotes the user's authentication properties, such as whether it requires a
-     * password to authenticate.</p>
-     */
-    inline void SetAuthenticationMode(AuthenticationMode&& value) { m_authenticationModeHasBeenSet = true; m_authenticationMode = std::move(value); }
-
-    /**
-     * <p>Denotes the user's authentication properties, such as whether it requires a
-     * password to authenticate.</p>
-     */
-    inline UpdateUserRequest& WithAuthenticationMode(const AuthenticationMode& value) { SetAuthenticationMode(value); return *this;}
-
-    /**
-     * <p>Denotes the user's authentication properties, such as whether it requires a
-     * password to authenticate.</p>
-     */
-    inline UpdateUserRequest& WithAuthenticationMode(AuthenticationMode&& value) { SetAuthenticationMode(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Access permissions string used for this user.</p>
      */
-    inline const Aws::String& GetAccessString() const{ return m_accessString; }
-
-    /**
-     * <p>Access permissions string used for this user.</p>
-     */
+    inline const Aws::String& GetAccessString() const { return m_accessString; }
     inline bool AccessStringHasBeenSet() const { return m_accessStringHasBeenSet; }
-
-    /**
-     * <p>Access permissions string used for this user.</p>
-     */
-    inline void SetAccessString(const Aws::String& value) { m_accessStringHasBeenSet = true; m_accessString = value; }
-
-    /**
-     * <p>Access permissions string used for this user.</p>
-     */
-    inline void SetAccessString(Aws::String&& value) { m_accessStringHasBeenSet = true; m_accessString = std::move(value); }
-
-    /**
-     * <p>Access permissions string used for this user.</p>
-     */
-    inline void SetAccessString(const char* value) { m_accessStringHasBeenSet = true; m_accessString.assign(value); }
-
-    /**
-     * <p>Access permissions string used for this user.</p>
-     */
-    inline UpdateUserRequest& WithAccessString(const Aws::String& value) { SetAccessString(value); return *this;}
-
-    /**
-     * <p>Access permissions string used for this user.</p>
-     */
-    inline UpdateUserRequest& WithAccessString(Aws::String&& value) { SetAccessString(std::move(value)); return *this;}
-
-    /**
-     * <p>Access permissions string used for this user.</p>
-     */
-    inline UpdateUserRequest& WithAccessString(const char* value) { SetAccessString(value); return *this;}
-
+    template<typename AccessStringT = Aws::String>
+    void SetAccessString(AccessStringT&& value) { m_accessStringHasBeenSet = true; m_accessString = std::forward<AccessStringT>(value); }
+    template<typename AccessStringT = Aws::String>
+    UpdateUserRequest& WithAccessString(AccessStringT&& value) { SetAccessString(std::forward<AccessStringT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_userName;

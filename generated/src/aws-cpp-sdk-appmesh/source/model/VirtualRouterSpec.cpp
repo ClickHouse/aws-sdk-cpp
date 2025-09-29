@@ -18,13 +18,7 @@ namespace AppMesh
 namespace Model
 {
 
-VirtualRouterSpec::VirtualRouterSpec() : 
-    m_listenersHasBeenSet(false)
-{
-}
-
-VirtualRouterSpec::VirtualRouterSpec(JsonView jsonValue) : 
-    m_listenersHasBeenSet(false)
+VirtualRouterSpec::VirtualRouterSpec(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ VirtualRouterSpec& VirtualRouterSpec::operator =(JsonView jsonValue)
     }
     m_listenersHasBeenSet = true;
   }
-
   return *this;
 }
 

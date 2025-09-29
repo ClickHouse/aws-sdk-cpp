@@ -34,11 +34,12 @@ namespace Model
   class ClassifyDocumentResult
   {
   public:
-    AWS_COMPREHEND_API ClassifyDocumentResult();
+    AWS_COMPREHEND_API ClassifyDocumentResult() = default;
     AWS_COMPREHEND_API ClassifyDocumentResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_COMPREHEND_API ClassifyDocumentResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The classes used by the document being analyzed. These are used for models
      * trained in multi-class mode. Individual classes are mutually exclusive and each
@@ -48,75 +49,16 @@ namespace Model
      * UNSAFE_PROMPT), along with a confidence score for each class. The value range of
      * the score is zero to one, where one is the highest confidence.</p>
      */
-    inline const Aws::Vector<DocumentClass>& GetClasses() const{ return m_classes; }
+    inline const Aws::Vector<DocumentClass>& GetClasses() const { return m_classes; }
+    template<typename ClassesT = Aws::Vector<DocumentClass>>
+    void SetClasses(ClassesT&& value) { m_classesHasBeenSet = true; m_classes = std::forward<ClassesT>(value); }
+    template<typename ClassesT = Aws::Vector<DocumentClass>>
+    ClassifyDocumentResult& WithClasses(ClassesT&& value) { SetClasses(std::forward<ClassesT>(value)); return *this;}
+    template<typename ClassesT = DocumentClass>
+    ClassifyDocumentResult& AddClasses(ClassesT&& value) { m_classesHasBeenSet = true; m_classes.emplace_back(std::forward<ClassesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The classes used by the document being analyzed. These are used for models
-     * trained in multi-class mode. Individual classes are mutually exclusive and each
-     * document is expected to have only a single class assigned to it. For example, an
-     * animal can be a dog or a cat, but not both at the same time. </p> <p>For prompt
-     * safety classification, the response includes only two classes (SAFE_PROMPT and
-     * UNSAFE_PROMPT), along with a confidence score for each class. The value range of
-     * the score is zero to one, where one is the highest confidence.</p>
-     */
-    inline void SetClasses(const Aws::Vector<DocumentClass>& value) { m_classes = value; }
-
-    /**
-     * <p>The classes used by the document being analyzed. These are used for models
-     * trained in multi-class mode. Individual classes are mutually exclusive and each
-     * document is expected to have only a single class assigned to it. For example, an
-     * animal can be a dog or a cat, but not both at the same time. </p> <p>For prompt
-     * safety classification, the response includes only two classes (SAFE_PROMPT and
-     * UNSAFE_PROMPT), along with a confidence score for each class. The value range of
-     * the score is zero to one, where one is the highest confidence.</p>
-     */
-    inline void SetClasses(Aws::Vector<DocumentClass>&& value) { m_classes = std::move(value); }
-
-    /**
-     * <p>The classes used by the document being analyzed. These are used for models
-     * trained in multi-class mode. Individual classes are mutually exclusive and each
-     * document is expected to have only a single class assigned to it. For example, an
-     * animal can be a dog or a cat, but not both at the same time. </p> <p>For prompt
-     * safety classification, the response includes only two classes (SAFE_PROMPT and
-     * UNSAFE_PROMPT), along with a confidence score for each class. The value range of
-     * the score is zero to one, where one is the highest confidence.</p>
-     */
-    inline ClassifyDocumentResult& WithClasses(const Aws::Vector<DocumentClass>& value) { SetClasses(value); return *this;}
-
-    /**
-     * <p>The classes used by the document being analyzed. These are used for models
-     * trained in multi-class mode. Individual classes are mutually exclusive and each
-     * document is expected to have only a single class assigned to it. For example, an
-     * animal can be a dog or a cat, but not both at the same time. </p> <p>For prompt
-     * safety classification, the response includes only two classes (SAFE_PROMPT and
-     * UNSAFE_PROMPT), along with a confidence score for each class. The value range of
-     * the score is zero to one, where one is the highest confidence.</p>
-     */
-    inline ClassifyDocumentResult& WithClasses(Aws::Vector<DocumentClass>&& value) { SetClasses(std::move(value)); return *this;}
-
-    /**
-     * <p>The classes used by the document being analyzed. These are used for models
-     * trained in multi-class mode. Individual classes are mutually exclusive and each
-     * document is expected to have only a single class assigned to it. For example, an
-     * animal can be a dog or a cat, but not both at the same time. </p> <p>For prompt
-     * safety classification, the response includes only two classes (SAFE_PROMPT and
-     * UNSAFE_PROMPT), along with a confidence score for each class. The value range of
-     * the score is zero to one, where one is the highest confidence.</p>
-     */
-    inline ClassifyDocumentResult& AddClasses(const DocumentClass& value) { m_classes.push_back(value); return *this; }
-
-    /**
-     * <p>The classes used by the document being analyzed. These are used for models
-     * trained in multi-class mode. Individual classes are mutually exclusive and each
-     * document is expected to have only a single class assigned to it. For example, an
-     * animal can be a dog or a cat, but not both at the same time. </p> <p>For prompt
-     * safety classification, the response includes only two classes (SAFE_PROMPT and
-     * UNSAFE_PROMPT), along with a confidence score for each class. The value range of
-     * the score is zero to one, where one is the highest confidence.</p>
-     */
-    inline ClassifyDocumentResult& AddClasses(DocumentClass&& value) { m_classes.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The labels used in the document being analyzed. These are used for
      * multi-label trained models. Individual labels represent different categories
@@ -124,187 +66,57 @@ namespace Model
      * movie can be just an action movie, or it can be an action movie, a science
      * fiction movie, and a comedy, all at the same time. </p>
      */
-    inline const Aws::Vector<DocumentLabel>& GetLabels() const{ return m_labels; }
+    inline const Aws::Vector<DocumentLabel>& GetLabels() const { return m_labels; }
+    template<typename LabelsT = Aws::Vector<DocumentLabel>>
+    void SetLabels(LabelsT&& value) { m_labelsHasBeenSet = true; m_labels = std::forward<LabelsT>(value); }
+    template<typename LabelsT = Aws::Vector<DocumentLabel>>
+    ClassifyDocumentResult& WithLabels(LabelsT&& value) { SetLabels(std::forward<LabelsT>(value)); return *this;}
+    template<typename LabelsT = DocumentLabel>
+    ClassifyDocumentResult& AddLabels(LabelsT&& value) { m_labelsHasBeenSet = true; m_labels.emplace_back(std::forward<LabelsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The labels used in the document being analyzed. These are used for
-     * multi-label trained models. Individual labels represent different categories
-     * that are related in some manner and are not mutually exclusive. For example, a
-     * movie can be just an action movie, or it can be an action movie, a science
-     * fiction movie, and a comedy, all at the same time. </p>
-     */
-    inline void SetLabels(const Aws::Vector<DocumentLabel>& value) { m_labels = value; }
-
-    /**
-     * <p>The labels used in the document being analyzed. These are used for
-     * multi-label trained models. Individual labels represent different categories
-     * that are related in some manner and are not mutually exclusive. For example, a
-     * movie can be just an action movie, or it can be an action movie, a science
-     * fiction movie, and a comedy, all at the same time. </p>
-     */
-    inline void SetLabels(Aws::Vector<DocumentLabel>&& value) { m_labels = std::move(value); }
-
-    /**
-     * <p>The labels used in the document being analyzed. These are used for
-     * multi-label trained models. Individual labels represent different categories
-     * that are related in some manner and are not mutually exclusive. For example, a
-     * movie can be just an action movie, or it can be an action movie, a science
-     * fiction movie, and a comedy, all at the same time. </p>
-     */
-    inline ClassifyDocumentResult& WithLabels(const Aws::Vector<DocumentLabel>& value) { SetLabels(value); return *this;}
-
-    /**
-     * <p>The labels used in the document being analyzed. These are used for
-     * multi-label trained models. Individual labels represent different categories
-     * that are related in some manner and are not mutually exclusive. For example, a
-     * movie can be just an action movie, or it can be an action movie, a science
-     * fiction movie, and a comedy, all at the same time. </p>
-     */
-    inline ClassifyDocumentResult& WithLabels(Aws::Vector<DocumentLabel>&& value) { SetLabels(std::move(value)); return *this;}
-
-    /**
-     * <p>The labels used in the document being analyzed. These are used for
-     * multi-label trained models. Individual labels represent different categories
-     * that are related in some manner and are not mutually exclusive. For example, a
-     * movie can be just an action movie, or it can be an action movie, a science
-     * fiction movie, and a comedy, all at the same time. </p>
-     */
-    inline ClassifyDocumentResult& AddLabels(const DocumentLabel& value) { m_labels.push_back(value); return *this; }
-
-    /**
-     * <p>The labels used in the document being analyzed. These are used for
-     * multi-label trained models. Individual labels represent different categories
-     * that are related in some manner and are not mutually exclusive. For example, a
-     * movie can be just an action movie, or it can be an action movie, a science
-     * fiction movie, and a comedy, all at the same time. </p>
-     */
-    inline ClassifyDocumentResult& AddLabels(DocumentLabel&& value) { m_labels.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Extraction information about the document. This field is present in the
      * response only if your request includes the <code>Byte</code> parameter. </p>
      */
-    inline const DocumentMetadata& GetDocumentMetadata() const{ return m_documentMetadata; }
+    inline const DocumentMetadata& GetDocumentMetadata() const { return m_documentMetadata; }
+    template<typename DocumentMetadataT = DocumentMetadata>
+    void SetDocumentMetadata(DocumentMetadataT&& value) { m_documentMetadataHasBeenSet = true; m_documentMetadata = std::forward<DocumentMetadataT>(value); }
+    template<typename DocumentMetadataT = DocumentMetadata>
+    ClassifyDocumentResult& WithDocumentMetadata(DocumentMetadataT&& value) { SetDocumentMetadata(std::forward<DocumentMetadataT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Extraction information about the document. This field is present in the
-     * response only if your request includes the <code>Byte</code> parameter. </p>
-     */
-    inline void SetDocumentMetadata(const DocumentMetadata& value) { m_documentMetadata = value; }
-
-    /**
-     * <p>Extraction information about the document. This field is present in the
-     * response only if your request includes the <code>Byte</code> parameter. </p>
-     */
-    inline void SetDocumentMetadata(DocumentMetadata&& value) { m_documentMetadata = std::move(value); }
-
-    /**
-     * <p>Extraction information about the document. This field is present in the
-     * response only if your request includes the <code>Byte</code> parameter. </p>
-     */
-    inline ClassifyDocumentResult& WithDocumentMetadata(const DocumentMetadata& value) { SetDocumentMetadata(value); return *this;}
-
-    /**
-     * <p>Extraction information about the document. This field is present in the
-     * response only if your request includes the <code>Byte</code> parameter. </p>
-     */
-    inline ClassifyDocumentResult& WithDocumentMetadata(DocumentMetadata&& value) { SetDocumentMetadata(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The document type for each page in the input document. This field is present
      * in the response only if your request includes the <code>Byte</code> parameter.
      * </p>
      */
-    inline const Aws::Vector<DocumentTypeListItem>& GetDocumentType() const{ return m_documentType; }
+    inline const Aws::Vector<DocumentTypeListItem>& GetDocumentType() const { return m_documentType; }
+    template<typename DocumentTypeT = Aws::Vector<DocumentTypeListItem>>
+    void SetDocumentType(DocumentTypeT&& value) { m_documentTypeHasBeenSet = true; m_documentType = std::forward<DocumentTypeT>(value); }
+    template<typename DocumentTypeT = Aws::Vector<DocumentTypeListItem>>
+    ClassifyDocumentResult& WithDocumentType(DocumentTypeT&& value) { SetDocumentType(std::forward<DocumentTypeT>(value)); return *this;}
+    template<typename DocumentTypeT = DocumentTypeListItem>
+    ClassifyDocumentResult& AddDocumentType(DocumentTypeT&& value) { m_documentTypeHasBeenSet = true; m_documentType.emplace_back(std::forward<DocumentTypeT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The document type for each page in the input document. This field is present
-     * in the response only if your request includes the <code>Byte</code> parameter.
-     * </p>
-     */
-    inline void SetDocumentType(const Aws::Vector<DocumentTypeListItem>& value) { m_documentType = value; }
-
-    /**
-     * <p>The document type for each page in the input document. This field is present
-     * in the response only if your request includes the <code>Byte</code> parameter.
-     * </p>
-     */
-    inline void SetDocumentType(Aws::Vector<DocumentTypeListItem>&& value) { m_documentType = std::move(value); }
-
-    /**
-     * <p>The document type for each page in the input document. This field is present
-     * in the response only if your request includes the <code>Byte</code> parameter.
-     * </p>
-     */
-    inline ClassifyDocumentResult& WithDocumentType(const Aws::Vector<DocumentTypeListItem>& value) { SetDocumentType(value); return *this;}
-
-    /**
-     * <p>The document type for each page in the input document. This field is present
-     * in the response only if your request includes the <code>Byte</code> parameter.
-     * </p>
-     */
-    inline ClassifyDocumentResult& WithDocumentType(Aws::Vector<DocumentTypeListItem>&& value) { SetDocumentType(std::move(value)); return *this;}
-
-    /**
-     * <p>The document type for each page in the input document. This field is present
-     * in the response only if your request includes the <code>Byte</code> parameter.
-     * </p>
-     */
-    inline ClassifyDocumentResult& AddDocumentType(const DocumentTypeListItem& value) { m_documentType.push_back(value); return *this; }
-
-    /**
-     * <p>The document type for each page in the input document. This field is present
-     * in the response only if your request includes the <code>Byte</code> parameter.
-     * </p>
-     */
-    inline ClassifyDocumentResult& AddDocumentType(DocumentTypeListItem&& value) { m_documentType.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Page-level errors that the system detected while processing the input
      * document. The field is empty if the system encountered no errors.</p>
      */
-    inline const Aws::Vector<ErrorsListItem>& GetErrors() const{ return m_errors; }
+    inline const Aws::Vector<ErrorsListItem>& GetErrors() const { return m_errors; }
+    template<typename ErrorsT = Aws::Vector<ErrorsListItem>>
+    void SetErrors(ErrorsT&& value) { m_errorsHasBeenSet = true; m_errors = std::forward<ErrorsT>(value); }
+    template<typename ErrorsT = Aws::Vector<ErrorsListItem>>
+    ClassifyDocumentResult& WithErrors(ErrorsT&& value) { SetErrors(std::forward<ErrorsT>(value)); return *this;}
+    template<typename ErrorsT = ErrorsListItem>
+    ClassifyDocumentResult& AddErrors(ErrorsT&& value) { m_errorsHasBeenSet = true; m_errors.emplace_back(std::forward<ErrorsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Page-level errors that the system detected while processing the input
-     * document. The field is empty if the system encountered no errors.</p>
-     */
-    inline void SetErrors(const Aws::Vector<ErrorsListItem>& value) { m_errors = value; }
-
-    /**
-     * <p>Page-level errors that the system detected while processing the input
-     * document. The field is empty if the system encountered no errors.</p>
-     */
-    inline void SetErrors(Aws::Vector<ErrorsListItem>&& value) { m_errors = std::move(value); }
-
-    /**
-     * <p>Page-level errors that the system detected while processing the input
-     * document. The field is empty if the system encountered no errors.</p>
-     */
-    inline ClassifyDocumentResult& WithErrors(const Aws::Vector<ErrorsListItem>& value) { SetErrors(value); return *this;}
-
-    /**
-     * <p>Page-level errors that the system detected while processing the input
-     * document. The field is empty if the system encountered no errors.</p>
-     */
-    inline ClassifyDocumentResult& WithErrors(Aws::Vector<ErrorsListItem>&& value) { SetErrors(std::move(value)); return *this;}
-
-    /**
-     * <p>Page-level errors that the system detected while processing the input
-     * document. The field is empty if the system encountered no errors.</p>
-     */
-    inline ClassifyDocumentResult& AddErrors(const ErrorsListItem& value) { m_errors.push_back(value); return *this; }
-
-    /**
-     * <p>Page-level errors that the system detected while processing the input
-     * document. The field is empty if the system encountered no errors.</p>
-     */
-    inline ClassifyDocumentResult& AddErrors(ErrorsListItem&& value) { m_errors.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Warnings detected while processing the input document. The response includes
      * a warning if there is a mismatch between the input document type and the model
@@ -312,99 +124,45 @@ namespace Model
      * include warnings for individual pages that have a mismatch. </p> <p>The field is
      * empty if the system generated no warnings.</p>
      */
-    inline const Aws::Vector<WarningsListItem>& GetWarnings() const{ return m_warnings; }
+    inline const Aws::Vector<WarningsListItem>& GetWarnings() const { return m_warnings; }
+    template<typename WarningsT = Aws::Vector<WarningsListItem>>
+    void SetWarnings(WarningsT&& value) { m_warningsHasBeenSet = true; m_warnings = std::forward<WarningsT>(value); }
+    template<typename WarningsT = Aws::Vector<WarningsListItem>>
+    ClassifyDocumentResult& WithWarnings(WarningsT&& value) { SetWarnings(std::forward<WarningsT>(value)); return *this;}
+    template<typename WarningsT = WarningsListItem>
+    ClassifyDocumentResult& AddWarnings(WarningsT&& value) { m_warningsHasBeenSet = true; m_warnings.emplace_back(std::forward<WarningsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Warnings detected while processing the input document. The response includes
-     * a warning if there is a mismatch between the input document type and the model
-     * type associated with the endpoint that you specified. The response can also
-     * include warnings for individual pages that have a mismatch. </p> <p>The field is
-     * empty if the system generated no warnings.</p>
-     */
-    inline void SetWarnings(const Aws::Vector<WarningsListItem>& value) { m_warnings = value; }
-
-    /**
-     * <p>Warnings detected while processing the input document. The response includes
-     * a warning if there is a mismatch between the input document type and the model
-     * type associated with the endpoint that you specified. The response can also
-     * include warnings for individual pages that have a mismatch. </p> <p>The field is
-     * empty if the system generated no warnings.</p>
-     */
-    inline void SetWarnings(Aws::Vector<WarningsListItem>&& value) { m_warnings = std::move(value); }
-
-    /**
-     * <p>Warnings detected while processing the input document. The response includes
-     * a warning if there is a mismatch between the input document type and the model
-     * type associated with the endpoint that you specified. The response can also
-     * include warnings for individual pages that have a mismatch. </p> <p>The field is
-     * empty if the system generated no warnings.</p>
-     */
-    inline ClassifyDocumentResult& WithWarnings(const Aws::Vector<WarningsListItem>& value) { SetWarnings(value); return *this;}
-
-    /**
-     * <p>Warnings detected while processing the input document. The response includes
-     * a warning if there is a mismatch between the input document type and the model
-     * type associated with the endpoint that you specified. The response can also
-     * include warnings for individual pages that have a mismatch. </p> <p>The field is
-     * empty if the system generated no warnings.</p>
-     */
-    inline ClassifyDocumentResult& WithWarnings(Aws::Vector<WarningsListItem>&& value) { SetWarnings(std::move(value)); return *this;}
-
-    /**
-     * <p>Warnings detected while processing the input document. The response includes
-     * a warning if there is a mismatch between the input document type and the model
-     * type associated with the endpoint that you specified. The response can also
-     * include warnings for individual pages that have a mismatch. </p> <p>The field is
-     * empty if the system generated no warnings.</p>
-     */
-    inline ClassifyDocumentResult& AddWarnings(const WarningsListItem& value) { m_warnings.push_back(value); return *this; }
-
-    /**
-     * <p>Warnings detected while processing the input document. The response includes
-     * a warning if there is a mismatch between the input document type and the model
-     * type associated with the endpoint that you specified. The response can also
-     * include warnings for individual pages that have a mismatch. </p> <p>The field is
-     * empty if the system generated no warnings.</p>
-     */
-    inline ClassifyDocumentResult& AddWarnings(WarningsListItem&& value) { m_warnings.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ClassifyDocumentResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ClassifyDocumentResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ClassifyDocumentResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ClassifyDocumentResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<DocumentClass> m_classes;
+    bool m_classesHasBeenSet = false;
 
     Aws::Vector<DocumentLabel> m_labels;
+    bool m_labelsHasBeenSet = false;
 
     DocumentMetadata m_documentMetadata;
+    bool m_documentMetadataHasBeenSet = false;
 
     Aws::Vector<DocumentTypeListItem> m_documentType;
+    bool m_documentTypeHasBeenSet = false;
 
     Aws::Vector<ErrorsListItem> m_errors;
+    bool m_errorsHasBeenSet = false;
 
     Aws::Vector<WarningsListItem> m_warnings;
+    bool m_warningsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

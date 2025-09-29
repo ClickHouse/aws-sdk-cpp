@@ -18,17 +18,7 @@ namespace CloudWatchEvidently
 namespace Model
 {
 
-ScheduledSplitConfig::ScheduledSplitConfig() : 
-    m_groupWeightsHasBeenSet(false),
-    m_segmentOverridesHasBeenSet(false),
-    m_startTimeHasBeenSet(false)
-{
-}
-
-ScheduledSplitConfig::ScheduledSplitConfig(JsonView jsonValue) : 
-    m_groupWeightsHasBeenSet(false),
-    m_segmentOverridesHasBeenSet(false),
-    m_startTimeHasBeenSet(false)
+ScheduledSplitConfig::ScheduledSplitConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,7 +34,6 @@ ScheduledSplitConfig& ScheduledSplitConfig::operator =(JsonView jsonValue)
     }
     m_groupWeightsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("segmentOverrides"))
   {
     Aws::Utils::Array<JsonView> segmentOverridesJsonList = jsonValue.GetArray("segmentOverrides");
@@ -54,14 +43,11 @@ ScheduledSplitConfig& ScheduledSplitConfig::operator =(JsonView jsonValue)
     }
     m_segmentOverridesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("startTime"))
   {
     m_startTime = jsonValue.GetDouble("startTime");
-
     m_startTimeHasBeenSet = true;
   }
-
   return *this;
 }
 

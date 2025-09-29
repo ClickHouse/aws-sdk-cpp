@@ -18,21 +18,7 @@ namespace Personalize
 namespace Model
 {
 
-IntegerHyperParameterRange::IntegerHyperParameterRange() : 
-    m_nameHasBeenSet(false),
-    m_minValue(0),
-    m_minValueHasBeenSet(false),
-    m_maxValue(0),
-    m_maxValueHasBeenSet(false)
-{
-}
-
-IntegerHyperParameterRange::IntegerHyperParameterRange(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_minValue(0),
-    m_minValueHasBeenSet(false),
-    m_maxValue(0),
-    m_maxValueHasBeenSet(false)
+IntegerHyperParameterRange::IntegerHyperParameterRange(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,24 +28,18 @@ IntegerHyperParameterRange& IntegerHyperParameterRange::operator =(JsonView json
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("minValue"))
   {
     m_minValue = jsonValue.GetInteger("minValue");
-
     m_minValueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("maxValue"))
   {
     m_maxValue = jsonValue.GetInteger("maxValue");
-
     m_maxValueHasBeenSet = true;
   }
-
   return *this;
 }
 

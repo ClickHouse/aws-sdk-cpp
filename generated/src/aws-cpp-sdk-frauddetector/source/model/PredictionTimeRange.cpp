@@ -18,15 +18,7 @@ namespace FraudDetector
 namespace Model
 {
 
-PredictionTimeRange::PredictionTimeRange() : 
-    m_startTimeHasBeenSet(false),
-    m_endTimeHasBeenSet(false)
-{
-}
-
-PredictionTimeRange::PredictionTimeRange(JsonView jsonValue) : 
-    m_startTimeHasBeenSet(false),
-    m_endTimeHasBeenSet(false)
+PredictionTimeRange::PredictionTimeRange(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ PredictionTimeRange& PredictionTimeRange::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("startTime"))
   {
     m_startTime = jsonValue.GetString("startTime");
-
     m_startTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("endTime"))
   {
     m_endTime = jsonValue.GetString("endTime");
-
     m_endTimeHasBeenSet = true;
   }
-
   return *this;
 }
 

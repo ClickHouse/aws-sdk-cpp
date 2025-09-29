@@ -20,19 +20,7 @@ namespace RDS
 namespace Model
 {
 
-ServerlessV2ScalingConfigurationInfo::ServerlessV2ScalingConfigurationInfo() : 
-    m_minCapacity(0.0),
-    m_minCapacityHasBeenSet(false),
-    m_maxCapacity(0.0),
-    m_maxCapacityHasBeenSet(false)
-{
-}
-
-ServerlessV2ScalingConfigurationInfo::ServerlessV2ScalingConfigurationInfo(const XmlNode& xmlNode) : 
-    m_minCapacity(0.0),
-    m_minCapacityHasBeenSet(false),
-    m_maxCapacity(0.0),
-    m_maxCapacityHasBeenSet(false)
+ServerlessV2ScalingConfigurationInfo::ServerlessV2ScalingConfigurationInfo(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -55,6 +43,12 @@ ServerlessV2ScalingConfigurationInfo& ServerlessV2ScalingConfigurationInfo::oper
       m_maxCapacity = StringUtils::ConvertToDouble(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(maxCapacityNode.GetText()).c_str()).c_str());
       m_maxCapacityHasBeenSet = true;
     }
+    XmlNode secondsUntilAutoPauseNode = resultNode.FirstChild("SecondsUntilAutoPause");
+    if(!secondsUntilAutoPauseNode.IsNull())
+    {
+      m_secondsUntilAutoPause = StringUtils::ConvertToInt32(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(secondsUntilAutoPauseNode.GetText()).c_str()).c_str());
+      m_secondsUntilAutoPauseHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -72,17 +66,26 @@ void ServerlessV2ScalingConfigurationInfo::OutputToStream(Aws::OStream& oStream,
         oStream << location << index << locationValue << ".MaxCapacity=" << StringUtils::URLEncode(m_maxCapacity) << "&";
   }
 
+  if(m_secondsUntilAutoPauseHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".SecondsUntilAutoPause=" << m_secondsUntilAutoPause << "&";
+  }
+
 }
 
 void ServerlessV2ScalingConfigurationInfo::OutputToStream(Aws::OStream& oStream, const char* location) const
 {
   if(m_minCapacityHasBeenSet)
   {
-        oStream << location << ".MinCapacity=" << StringUtils::URLEncode(m_minCapacity) << "&";
+      oStream << location << ".MinCapacity=" << StringUtils::URLEncode(m_minCapacity) << "&";
   }
   if(m_maxCapacityHasBeenSet)
   {
-        oStream << location << ".MaxCapacity=" << StringUtils::URLEncode(m_maxCapacity) << "&";
+      oStream << location << ".MaxCapacity=" << StringUtils::URLEncode(m_maxCapacity) << "&";
+  }
+  if(m_secondsUntilAutoPauseHasBeenSet)
+  {
+      oStream << location << ".SecondsUntilAutoPause=" << m_secondsUntilAutoPause << "&";
   }
 }
 

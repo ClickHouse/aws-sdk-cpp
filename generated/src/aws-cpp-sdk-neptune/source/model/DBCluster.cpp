@@ -20,119 +20,7 @@ namespace Neptune
 namespace Model
 {
 
-DBCluster::DBCluster() : 
-    m_allocatedStorage(0),
-    m_allocatedStorageHasBeenSet(false),
-    m_availabilityZonesHasBeenSet(false),
-    m_backupRetentionPeriod(0),
-    m_backupRetentionPeriodHasBeenSet(false),
-    m_characterSetNameHasBeenSet(false),
-    m_databaseNameHasBeenSet(false),
-    m_dBClusterIdentifierHasBeenSet(false),
-    m_dBClusterParameterGroupHasBeenSet(false),
-    m_dBSubnetGroupHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_percentProgressHasBeenSet(false),
-    m_earliestRestorableTimeHasBeenSet(false),
-    m_endpointHasBeenSet(false),
-    m_readerEndpointHasBeenSet(false),
-    m_multiAZ(false),
-    m_multiAZHasBeenSet(false),
-    m_engineHasBeenSet(false),
-    m_engineVersionHasBeenSet(false),
-    m_latestRestorableTimeHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_masterUsernameHasBeenSet(false),
-    m_dBClusterOptionGroupMembershipsHasBeenSet(false),
-    m_preferredBackupWindowHasBeenSet(false),
-    m_preferredMaintenanceWindowHasBeenSet(false),
-    m_replicationSourceIdentifierHasBeenSet(false),
-    m_readReplicaIdentifiersHasBeenSet(false),
-    m_dBClusterMembersHasBeenSet(false),
-    m_vpcSecurityGroupsHasBeenSet(false),
-    m_hostedZoneIdHasBeenSet(false),
-    m_storageEncrypted(false),
-    m_storageEncryptedHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false),
-    m_dbClusterResourceIdHasBeenSet(false),
-    m_dBClusterArnHasBeenSet(false),
-    m_associatedRolesHasBeenSet(false),
-    m_iAMDatabaseAuthenticationEnabled(false),
-    m_iAMDatabaseAuthenticationEnabledHasBeenSet(false),
-    m_cloneGroupIdHasBeenSet(false),
-    m_clusterCreateTimeHasBeenSet(false),
-    m_copyTagsToSnapshot(false),
-    m_copyTagsToSnapshotHasBeenSet(false),
-    m_enabledCloudwatchLogsExportsHasBeenSet(false),
-    m_pendingModifiedValuesHasBeenSet(false),
-    m_deletionProtection(false),
-    m_deletionProtectionHasBeenSet(false),
-    m_crossAccountClone(false),
-    m_crossAccountCloneHasBeenSet(false),
-    m_automaticRestartTimeHasBeenSet(false),
-    m_serverlessV2ScalingConfigurationHasBeenSet(false),
-    m_globalClusterIdentifierHasBeenSet(false),
-    m_iOOptimizedNextAllowedModificationTimeHasBeenSet(false),
-    m_storageTypeHasBeenSet(false)
-{
-}
-
-DBCluster::DBCluster(const XmlNode& xmlNode) : 
-    m_allocatedStorage(0),
-    m_allocatedStorageHasBeenSet(false),
-    m_availabilityZonesHasBeenSet(false),
-    m_backupRetentionPeriod(0),
-    m_backupRetentionPeriodHasBeenSet(false),
-    m_characterSetNameHasBeenSet(false),
-    m_databaseNameHasBeenSet(false),
-    m_dBClusterIdentifierHasBeenSet(false),
-    m_dBClusterParameterGroupHasBeenSet(false),
-    m_dBSubnetGroupHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_percentProgressHasBeenSet(false),
-    m_earliestRestorableTimeHasBeenSet(false),
-    m_endpointHasBeenSet(false),
-    m_readerEndpointHasBeenSet(false),
-    m_multiAZ(false),
-    m_multiAZHasBeenSet(false),
-    m_engineHasBeenSet(false),
-    m_engineVersionHasBeenSet(false),
-    m_latestRestorableTimeHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_masterUsernameHasBeenSet(false),
-    m_dBClusterOptionGroupMembershipsHasBeenSet(false),
-    m_preferredBackupWindowHasBeenSet(false),
-    m_preferredMaintenanceWindowHasBeenSet(false),
-    m_replicationSourceIdentifierHasBeenSet(false),
-    m_readReplicaIdentifiersHasBeenSet(false),
-    m_dBClusterMembersHasBeenSet(false),
-    m_vpcSecurityGroupsHasBeenSet(false),
-    m_hostedZoneIdHasBeenSet(false),
-    m_storageEncrypted(false),
-    m_storageEncryptedHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false),
-    m_dbClusterResourceIdHasBeenSet(false),
-    m_dBClusterArnHasBeenSet(false),
-    m_associatedRolesHasBeenSet(false),
-    m_iAMDatabaseAuthenticationEnabled(false),
-    m_iAMDatabaseAuthenticationEnabledHasBeenSet(false),
-    m_cloneGroupIdHasBeenSet(false),
-    m_clusterCreateTimeHasBeenSet(false),
-    m_copyTagsToSnapshot(false),
-    m_copyTagsToSnapshotHasBeenSet(false),
-    m_enabledCloudwatchLogsExportsHasBeenSet(false),
-    m_pendingModifiedValuesHasBeenSet(false),
-    m_deletionProtection(false),
-    m_deletionProtectionHasBeenSet(false),
-    m_crossAccountClone(false),
-    m_crossAccountCloneHasBeenSet(false),
-    m_automaticRestartTimeHasBeenSet(false),
-    m_serverlessV2ScalingConfigurationHasBeenSet(false),
-    m_globalClusterIdentifierHasBeenSet(false),
-    m_iOOptimizedNextAllowedModificationTimeHasBeenSet(false),
-    m_storageTypeHasBeenSet(false)
+DBCluster::DBCluster(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -153,6 +41,7 @@ DBCluster& DBCluster::operator =(const XmlNode& xmlNode)
     if(!availabilityZonesNode.IsNull())
     {
       XmlNode availabilityZonesMember = availabilityZonesNode.FirstChild("AvailabilityZone");
+      m_availabilityZonesHasBeenSet = !availabilityZonesMember.IsNull();
       while(!availabilityZonesMember.IsNull())
       {
         m_availabilityZones.push_back(availabilityZonesMember.GetText());
@@ -267,6 +156,7 @@ DBCluster& DBCluster::operator =(const XmlNode& xmlNode)
     if(!dBClusterOptionGroupMembershipsNode.IsNull())
     {
       XmlNode dBClusterOptionGroupMembershipsMember = dBClusterOptionGroupMembershipsNode.FirstChild("DBClusterOptionGroup");
+      m_dBClusterOptionGroupMembershipsHasBeenSet = !dBClusterOptionGroupMembershipsMember.IsNull();
       while(!dBClusterOptionGroupMembershipsMember.IsNull())
       {
         m_dBClusterOptionGroupMemberships.push_back(dBClusterOptionGroupMembershipsMember);
@@ -297,6 +187,7 @@ DBCluster& DBCluster::operator =(const XmlNode& xmlNode)
     if(!readReplicaIdentifiersNode.IsNull())
     {
       XmlNode readReplicaIdentifiersMember = readReplicaIdentifiersNode.FirstChild("ReadReplicaIdentifier");
+      m_readReplicaIdentifiersHasBeenSet = !readReplicaIdentifiersMember.IsNull();
       while(!readReplicaIdentifiersMember.IsNull())
       {
         m_readReplicaIdentifiers.push_back(readReplicaIdentifiersMember.GetText());
@@ -309,6 +200,7 @@ DBCluster& DBCluster::operator =(const XmlNode& xmlNode)
     if(!dBClusterMembersNode.IsNull())
     {
       XmlNode dBClusterMembersMember = dBClusterMembersNode.FirstChild("DBClusterMember");
+      m_dBClusterMembersHasBeenSet = !dBClusterMembersMember.IsNull();
       while(!dBClusterMembersMember.IsNull())
       {
         m_dBClusterMembers.push_back(dBClusterMembersMember);
@@ -321,6 +213,7 @@ DBCluster& DBCluster::operator =(const XmlNode& xmlNode)
     if(!vpcSecurityGroupsNode.IsNull())
     {
       XmlNode vpcSecurityGroupsMember = vpcSecurityGroupsNode.FirstChild("VpcSecurityGroupMembership");
+      m_vpcSecurityGroupsHasBeenSet = !vpcSecurityGroupsMember.IsNull();
       while(!vpcSecurityGroupsMember.IsNull())
       {
         m_vpcSecurityGroups.push_back(vpcSecurityGroupsMember);
@@ -363,6 +256,7 @@ DBCluster& DBCluster::operator =(const XmlNode& xmlNode)
     if(!associatedRolesNode.IsNull())
     {
       XmlNode associatedRolesMember = associatedRolesNode.FirstChild("DBClusterRole");
+      m_associatedRolesHasBeenSet = !associatedRolesMember.IsNull();
       while(!associatedRolesMember.IsNull())
       {
         m_associatedRoles.push_back(associatedRolesMember);
@@ -399,6 +293,7 @@ DBCluster& DBCluster::operator =(const XmlNode& xmlNode)
     if(!enabledCloudwatchLogsExportsNode.IsNull())
     {
       XmlNode enabledCloudwatchLogsExportsMember = enabledCloudwatchLogsExportsNode.FirstChild("member");
+      m_enabledCloudwatchLogsExportsHasBeenSet = !enabledCloudwatchLogsExportsMember.IsNull();
       while(!enabledCloudwatchLogsExportsMember.IsNull())
       {
         m_enabledCloudwatchLogsExports.push_back(enabledCloudwatchLogsExportsMember.GetText());
@@ -472,7 +367,7 @@ void DBCluster::OutputToStream(Aws::OStream& oStream, const char* location, unsi
       unsigned availabilityZonesIdx = 1;
       for(auto& item : m_availabilityZones)
       {
-        oStream << location << index << locationValue << ".AvailabilityZone." << availabilityZonesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << index << locationValue << ".AvailabilityZones.AvailabilityZone." << availabilityZonesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
 
@@ -567,7 +462,7 @@ void DBCluster::OutputToStream(Aws::OStream& oStream, const char* location, unsi
       for(auto& item : m_dBClusterOptionGroupMemberships)
       {
         Aws::StringStream dBClusterOptionGroupMembershipsSs;
-        dBClusterOptionGroupMembershipsSs << location << index << locationValue << ".DBClusterOptionGroup." << dBClusterOptionGroupMembershipsIdx++;
+        dBClusterOptionGroupMembershipsSs << location << index << locationValue << ".DBClusterOptionGroupMemberships.DBClusterOptionGroup." << dBClusterOptionGroupMembershipsIdx++;
         item.OutputToStream(oStream, dBClusterOptionGroupMembershipsSs.str().c_str());
       }
   }
@@ -592,7 +487,7 @@ void DBCluster::OutputToStream(Aws::OStream& oStream, const char* location, unsi
       unsigned readReplicaIdentifiersIdx = 1;
       for(auto& item : m_readReplicaIdentifiers)
       {
-        oStream << location << index << locationValue << ".ReadReplicaIdentifier." << readReplicaIdentifiersIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << index << locationValue << ".ReadReplicaIdentifiers.ReadReplicaIdentifier." << readReplicaIdentifiersIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
 
@@ -602,7 +497,7 @@ void DBCluster::OutputToStream(Aws::OStream& oStream, const char* location, unsi
       for(auto& item : m_dBClusterMembers)
       {
         Aws::StringStream dBClusterMembersSs;
-        dBClusterMembersSs << location << index << locationValue << ".DBClusterMember." << dBClusterMembersIdx++;
+        dBClusterMembersSs << location << index << locationValue << ".DBClusterMembers.DBClusterMember." << dBClusterMembersIdx++;
         item.OutputToStream(oStream, dBClusterMembersSs.str().c_str());
       }
   }
@@ -613,7 +508,7 @@ void DBCluster::OutputToStream(Aws::OStream& oStream, const char* location, unsi
       for(auto& item : m_vpcSecurityGroups)
       {
         Aws::StringStream vpcSecurityGroupsSs;
-        vpcSecurityGroupsSs << location << index << locationValue << ".VpcSecurityGroupMembership." << vpcSecurityGroupsIdx++;
+        vpcSecurityGroupsSs << location << index << locationValue << ".VpcSecurityGroups.VpcSecurityGroupMembership." << vpcSecurityGroupsIdx++;
         item.OutputToStream(oStream, vpcSecurityGroupsSs.str().c_str());
       }
   }
@@ -649,7 +544,7 @@ void DBCluster::OutputToStream(Aws::OStream& oStream, const char* location, unsi
       for(auto& item : m_associatedRoles)
       {
         Aws::StringStream associatedRolesSs;
-        associatedRolesSs << location << index << locationValue << ".DBClusterRole." << associatedRolesIdx++;
+        associatedRolesSs << location << index << locationValue << ".AssociatedRoles.DBClusterRole." << associatedRolesIdx++;
         item.OutputToStream(oStream, associatedRolesSs.str().c_str());
       }
   }
@@ -740,7 +635,7 @@ void DBCluster::OutputToStream(Aws::OStream& oStream, const char* location) cons
       unsigned availabilityZonesIdx = 1;
       for(auto& item : m_availabilityZones)
       {
-        oStream << location << ".AvailabilityZone." << availabilityZonesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".AvailabilityZones.AvailabilityZone." << availabilityZonesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_backupRetentionPeriodHasBeenSet)
@@ -817,7 +712,7 @@ void DBCluster::OutputToStream(Aws::OStream& oStream, const char* location) cons
       for(auto& item : m_dBClusterOptionGroupMemberships)
       {
         Aws::StringStream dBClusterOptionGroupMembershipsSs;
-        dBClusterOptionGroupMembershipsSs << location <<  ".DBClusterOptionGroup." << dBClusterOptionGroupMembershipsIdx++;
+        dBClusterOptionGroupMembershipsSs << location << ".DBClusterOptionGroupMemberships.DBClusterOptionGroup." << dBClusterOptionGroupMembershipsIdx++;
         item.OutputToStream(oStream, dBClusterOptionGroupMembershipsSs.str().c_str());
       }
   }
@@ -838,7 +733,7 @@ void DBCluster::OutputToStream(Aws::OStream& oStream, const char* location) cons
       unsigned readReplicaIdentifiersIdx = 1;
       for(auto& item : m_readReplicaIdentifiers)
       {
-        oStream << location << ".ReadReplicaIdentifier." << readReplicaIdentifiersIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".ReadReplicaIdentifiers.ReadReplicaIdentifier." << readReplicaIdentifiersIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_dBClusterMembersHasBeenSet)
@@ -847,7 +742,7 @@ void DBCluster::OutputToStream(Aws::OStream& oStream, const char* location) cons
       for(auto& item : m_dBClusterMembers)
       {
         Aws::StringStream dBClusterMembersSs;
-        dBClusterMembersSs << location <<  ".DBClusterMember." << dBClusterMembersIdx++;
+        dBClusterMembersSs << location << ".DBClusterMembers.DBClusterMember." << dBClusterMembersIdx++;
         item.OutputToStream(oStream, dBClusterMembersSs.str().c_str());
       }
   }
@@ -857,7 +752,7 @@ void DBCluster::OutputToStream(Aws::OStream& oStream, const char* location) cons
       for(auto& item : m_vpcSecurityGroups)
       {
         Aws::StringStream vpcSecurityGroupsSs;
-        vpcSecurityGroupsSs << location <<  ".VpcSecurityGroupMembership." << vpcSecurityGroupsIdx++;
+        vpcSecurityGroupsSs << location << ".VpcSecurityGroups.VpcSecurityGroupMembership." << vpcSecurityGroupsIdx++;
         item.OutputToStream(oStream, vpcSecurityGroupsSs.str().c_str());
       }
   }
@@ -887,7 +782,7 @@ void DBCluster::OutputToStream(Aws::OStream& oStream, const char* location) cons
       for(auto& item : m_associatedRoles)
       {
         Aws::StringStream associatedRolesSs;
-        associatedRolesSs << location <<  ".DBClusterRole." << associatedRolesIdx++;
+        associatedRolesSs << location << ".AssociatedRoles.DBClusterRole." << associatedRolesIdx++;
         item.OutputToStream(oStream, associatedRolesSs.str().c_str());
       }
   }

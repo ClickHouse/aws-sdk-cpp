@@ -33,91 +33,41 @@ namespace Model
   class PivotTableFieldCollapseStateOption
   {
   public:
-    AWS_QUICKSIGHT_API PivotTableFieldCollapseStateOption();
+    AWS_QUICKSIGHT_API PivotTableFieldCollapseStateOption() = default;
     AWS_QUICKSIGHT_API PivotTableFieldCollapseStateOption(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API PivotTableFieldCollapseStateOption& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A tagged-union object that sets the collapse state.</p>
      */
-    inline const PivotTableFieldCollapseStateTarget& GetTarget() const{ return m_target; }
-
-    /**
-     * <p>A tagged-union object that sets the collapse state.</p>
-     */
+    inline const PivotTableFieldCollapseStateTarget& GetTarget() const { return m_target; }
     inline bool TargetHasBeenSet() const { return m_targetHasBeenSet; }
+    template<typename TargetT = PivotTableFieldCollapseStateTarget>
+    void SetTarget(TargetT&& value) { m_targetHasBeenSet = true; m_target = std::forward<TargetT>(value); }
+    template<typename TargetT = PivotTableFieldCollapseStateTarget>
+    PivotTableFieldCollapseStateOption& WithTarget(TargetT&& value) { SetTarget(std::forward<TargetT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A tagged-union object that sets the collapse state.</p>
-     */
-    inline void SetTarget(const PivotTableFieldCollapseStateTarget& value) { m_targetHasBeenSet = true; m_target = value; }
-
-    /**
-     * <p>A tagged-union object that sets the collapse state.</p>
-     */
-    inline void SetTarget(PivotTableFieldCollapseStateTarget&& value) { m_targetHasBeenSet = true; m_target = std::move(value); }
-
-    /**
-     * <p>A tagged-union object that sets the collapse state.</p>
-     */
-    inline PivotTableFieldCollapseStateOption& WithTarget(const PivotTableFieldCollapseStateTarget& value) { SetTarget(value); return *this;}
-
-    /**
-     * <p>A tagged-union object that sets the collapse state.</p>
-     */
-    inline PivotTableFieldCollapseStateOption& WithTarget(PivotTableFieldCollapseStateTarget&& value) { SetTarget(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The state of the field target of a pivot table. Choose one of the following
      * options:</p> <ul> <li> <p> <code>COLLAPSED</code> </p> </li> <li> <p>
      * <code>EXPANDED</code> </p> </li> </ul>
      */
-    inline const PivotTableFieldCollapseState& GetState() const{ return m_state; }
-
-    /**
-     * <p>The state of the field target of a pivot table. Choose one of the following
-     * options:</p> <ul> <li> <p> <code>COLLAPSED</code> </p> </li> <li> <p>
-     * <code>EXPANDED</code> </p> </li> </ul>
-     */
+    inline PivotTableFieldCollapseState GetState() const { return m_state; }
     inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
-
-    /**
-     * <p>The state of the field target of a pivot table. Choose one of the following
-     * options:</p> <ul> <li> <p> <code>COLLAPSED</code> </p> </li> <li> <p>
-     * <code>EXPANDED</code> </p> </li> </ul>
-     */
-    inline void SetState(const PivotTableFieldCollapseState& value) { m_stateHasBeenSet = true; m_state = value; }
-
-    /**
-     * <p>The state of the field target of a pivot table. Choose one of the following
-     * options:</p> <ul> <li> <p> <code>COLLAPSED</code> </p> </li> <li> <p>
-     * <code>EXPANDED</code> </p> </li> </ul>
-     */
-    inline void SetState(PivotTableFieldCollapseState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
-
-    /**
-     * <p>The state of the field target of a pivot table. Choose one of the following
-     * options:</p> <ul> <li> <p> <code>COLLAPSED</code> </p> </li> <li> <p>
-     * <code>EXPANDED</code> </p> </li> </ul>
-     */
-    inline PivotTableFieldCollapseStateOption& WithState(const PivotTableFieldCollapseState& value) { SetState(value); return *this;}
-
-    /**
-     * <p>The state of the field target of a pivot table. Choose one of the following
-     * options:</p> <ul> <li> <p> <code>COLLAPSED</code> </p> </li> <li> <p>
-     * <code>EXPANDED</code> </p> </li> </ul>
-     */
-    inline PivotTableFieldCollapseStateOption& WithState(PivotTableFieldCollapseState&& value) { SetState(std::move(value)); return *this;}
-
+    inline void SetState(PivotTableFieldCollapseState value) { m_stateHasBeenSet = true; m_state = value; }
+    inline PivotTableFieldCollapseStateOption& WithState(PivotTableFieldCollapseState value) { SetState(value); return *this;}
+    ///@}
   private:
 
     PivotTableFieldCollapseStateTarget m_target;
     bool m_targetHasBeenSet = false;
 
-    PivotTableFieldCollapseState m_state;
+    PivotTableFieldCollapseState m_state{PivotTableFieldCollapseState::NOT_SET};
     bool m_stateHasBeenSet = false;
   };
 

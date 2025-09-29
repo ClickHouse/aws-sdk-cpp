@@ -34,52 +34,25 @@ namespace Model
   class AwsWafv2CustomRequestHandlingDetails
   {
   public:
-    AWS_SECURITYHUB_API AwsWafv2CustomRequestHandlingDetails();
+    AWS_SECURITYHUB_API AwsWafv2CustomRequestHandlingDetails() = default;
     AWS_SECURITYHUB_API AwsWafv2CustomRequestHandlingDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsWafv2CustomRequestHandlingDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The HTTP headers to insert into the request. </p>
      */
-    inline const Aws::Vector<AwsWafv2CustomHttpHeader>& GetInsertHeaders() const{ return m_insertHeaders; }
-
-    /**
-     * <p> The HTTP headers to insert into the request. </p>
-     */
+    inline const Aws::Vector<AwsWafv2CustomHttpHeader>& GetInsertHeaders() const { return m_insertHeaders; }
     inline bool InsertHeadersHasBeenSet() const { return m_insertHeadersHasBeenSet; }
-
-    /**
-     * <p> The HTTP headers to insert into the request. </p>
-     */
-    inline void SetInsertHeaders(const Aws::Vector<AwsWafv2CustomHttpHeader>& value) { m_insertHeadersHasBeenSet = true; m_insertHeaders = value; }
-
-    /**
-     * <p> The HTTP headers to insert into the request. </p>
-     */
-    inline void SetInsertHeaders(Aws::Vector<AwsWafv2CustomHttpHeader>&& value) { m_insertHeadersHasBeenSet = true; m_insertHeaders = std::move(value); }
-
-    /**
-     * <p> The HTTP headers to insert into the request. </p>
-     */
-    inline AwsWafv2CustomRequestHandlingDetails& WithInsertHeaders(const Aws::Vector<AwsWafv2CustomHttpHeader>& value) { SetInsertHeaders(value); return *this;}
-
-    /**
-     * <p> The HTTP headers to insert into the request. </p>
-     */
-    inline AwsWafv2CustomRequestHandlingDetails& WithInsertHeaders(Aws::Vector<AwsWafv2CustomHttpHeader>&& value) { SetInsertHeaders(std::move(value)); return *this;}
-
-    /**
-     * <p> The HTTP headers to insert into the request. </p>
-     */
-    inline AwsWafv2CustomRequestHandlingDetails& AddInsertHeaders(const AwsWafv2CustomHttpHeader& value) { m_insertHeadersHasBeenSet = true; m_insertHeaders.push_back(value); return *this; }
-
-    /**
-     * <p> The HTTP headers to insert into the request. </p>
-     */
-    inline AwsWafv2CustomRequestHandlingDetails& AddInsertHeaders(AwsWafv2CustomHttpHeader&& value) { m_insertHeadersHasBeenSet = true; m_insertHeaders.push_back(std::move(value)); return *this; }
-
+    template<typename InsertHeadersT = Aws::Vector<AwsWafv2CustomHttpHeader>>
+    void SetInsertHeaders(InsertHeadersT&& value) { m_insertHeadersHasBeenSet = true; m_insertHeaders = std::forward<InsertHeadersT>(value); }
+    template<typename InsertHeadersT = Aws::Vector<AwsWafv2CustomHttpHeader>>
+    AwsWafv2CustomRequestHandlingDetails& WithInsertHeaders(InsertHeadersT&& value) { SetInsertHeaders(std::forward<InsertHeadersT>(value)); return *this;}
+    template<typename InsertHeadersT = AwsWafv2CustomHttpHeader>
+    AwsWafv2CustomRequestHandlingDetails& AddInsertHeaders(InsertHeadersT&& value) { m_insertHeadersHasBeenSet = true; m_insertHeaders.emplace_back(std::forward<InsertHeadersT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<AwsWafv2CustomHttpHeader> m_insertHeaders;

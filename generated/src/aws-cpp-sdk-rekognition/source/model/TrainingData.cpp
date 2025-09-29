@@ -18,13 +18,7 @@ namespace Rekognition
 namespace Model
 {
 
-TrainingData::TrainingData() : 
-    m_assetsHasBeenSet(false)
-{
-}
-
-TrainingData::TrainingData(JsonView jsonValue) : 
-    m_assetsHasBeenSet(false)
+TrainingData::TrainingData(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ TrainingData& TrainingData::operator =(JsonView jsonValue)
     }
     m_assetsHasBeenSet = true;
   }
-
   return *this;
 }
 

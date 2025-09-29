@@ -18,15 +18,7 @@ namespace IoT
 namespace Model
 {
 
-MetricsExportConfig::MetricsExportConfig() : 
-    m_mqttTopicHasBeenSet(false),
-    m_roleArnHasBeenSet(false)
-{
-}
-
-MetricsExportConfig::MetricsExportConfig(JsonView jsonValue) : 
-    m_mqttTopicHasBeenSet(false),
-    m_roleArnHasBeenSet(false)
+MetricsExportConfig::MetricsExportConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ MetricsExportConfig& MetricsExportConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("mqttTopic"))
   {
     m_mqttTopic = jsonValue.GetString("mqttTopic");
-
     m_mqttTopicHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("roleArn"))
   {
     m_roleArn = jsonValue.GetString("roleArn");
-
     m_roleArnHasBeenSet = true;
   }
-
   return *this;
 }
 

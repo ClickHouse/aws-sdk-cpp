@@ -28,11 +28,12 @@ namespace Model
   class AssociateThirdPartyFirewallResult
   {
   public:
-    AWS_FMS_API AssociateThirdPartyFirewallResult();
+    AWS_FMS_API AssociateThirdPartyFirewallResult() = default;
     AWS_FMS_API AssociateThirdPartyFirewallResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_FMS_API AssociateThirdPartyFirewallResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The current status for setting a Firewall Manager policy administrator's
      * account as an administrator of the third-party firewall tenant.</p> <ul> <li>
@@ -47,99 +48,26 @@ namespace Model
      * <code>NOT_EXIST</code> - The Firewall Manager policy administrator doesn't exist
      * as a tenant administrator.</p> </li> </ul>
      */
-    inline const ThirdPartyFirewallAssociationStatus& GetThirdPartyFirewallStatus() const{ return m_thirdPartyFirewallStatus; }
+    inline ThirdPartyFirewallAssociationStatus GetThirdPartyFirewallStatus() const { return m_thirdPartyFirewallStatus; }
+    inline void SetThirdPartyFirewallStatus(ThirdPartyFirewallAssociationStatus value) { m_thirdPartyFirewallStatusHasBeenSet = true; m_thirdPartyFirewallStatus = value; }
+    inline AssociateThirdPartyFirewallResult& WithThirdPartyFirewallStatus(ThirdPartyFirewallAssociationStatus value) { SetThirdPartyFirewallStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The current status for setting a Firewall Manager policy administrator's
-     * account as an administrator of the third-party firewall tenant.</p> <ul> <li>
-     * <p> <code>ONBOARDING</code> - The Firewall Manager policy administrator is being
-     * designated as a tenant administrator.</p> </li> <li> <p>
-     * <code>ONBOARD_COMPLETE</code> - The Firewall Manager policy administrator is
-     * designated as a tenant administrator.</p> </li> <li> <p>
-     * <code>OFFBOARDING</code> - The Firewall Manager policy administrator is being
-     * removed as a tenant administrator.</p> </li> <li> <p>
-     * <code>OFFBOARD_COMPLETE</code> - The Firewall Manager policy administrator has
-     * been removed as a tenant administrator.</p> </li> <li> <p>
-     * <code>NOT_EXIST</code> - The Firewall Manager policy administrator doesn't exist
-     * as a tenant administrator.</p> </li> </ul>
-     */
-    inline void SetThirdPartyFirewallStatus(const ThirdPartyFirewallAssociationStatus& value) { m_thirdPartyFirewallStatus = value; }
-
-    /**
-     * <p>The current status for setting a Firewall Manager policy administrator's
-     * account as an administrator of the third-party firewall tenant.</p> <ul> <li>
-     * <p> <code>ONBOARDING</code> - The Firewall Manager policy administrator is being
-     * designated as a tenant administrator.</p> </li> <li> <p>
-     * <code>ONBOARD_COMPLETE</code> - The Firewall Manager policy administrator is
-     * designated as a tenant administrator.</p> </li> <li> <p>
-     * <code>OFFBOARDING</code> - The Firewall Manager policy administrator is being
-     * removed as a tenant administrator.</p> </li> <li> <p>
-     * <code>OFFBOARD_COMPLETE</code> - The Firewall Manager policy administrator has
-     * been removed as a tenant administrator.</p> </li> <li> <p>
-     * <code>NOT_EXIST</code> - The Firewall Manager policy administrator doesn't exist
-     * as a tenant administrator.</p> </li> </ul>
-     */
-    inline void SetThirdPartyFirewallStatus(ThirdPartyFirewallAssociationStatus&& value) { m_thirdPartyFirewallStatus = std::move(value); }
-
-    /**
-     * <p>The current status for setting a Firewall Manager policy administrator's
-     * account as an administrator of the third-party firewall tenant.</p> <ul> <li>
-     * <p> <code>ONBOARDING</code> - The Firewall Manager policy administrator is being
-     * designated as a tenant administrator.</p> </li> <li> <p>
-     * <code>ONBOARD_COMPLETE</code> - The Firewall Manager policy administrator is
-     * designated as a tenant administrator.</p> </li> <li> <p>
-     * <code>OFFBOARDING</code> - The Firewall Manager policy administrator is being
-     * removed as a tenant administrator.</p> </li> <li> <p>
-     * <code>OFFBOARD_COMPLETE</code> - The Firewall Manager policy administrator has
-     * been removed as a tenant administrator.</p> </li> <li> <p>
-     * <code>NOT_EXIST</code> - The Firewall Manager policy administrator doesn't exist
-     * as a tenant administrator.</p> </li> </ul>
-     */
-    inline AssociateThirdPartyFirewallResult& WithThirdPartyFirewallStatus(const ThirdPartyFirewallAssociationStatus& value) { SetThirdPartyFirewallStatus(value); return *this;}
-
-    /**
-     * <p>The current status for setting a Firewall Manager policy administrator's
-     * account as an administrator of the third-party firewall tenant.</p> <ul> <li>
-     * <p> <code>ONBOARDING</code> - The Firewall Manager policy administrator is being
-     * designated as a tenant administrator.</p> </li> <li> <p>
-     * <code>ONBOARD_COMPLETE</code> - The Firewall Manager policy administrator is
-     * designated as a tenant administrator.</p> </li> <li> <p>
-     * <code>OFFBOARDING</code> - The Firewall Manager policy administrator is being
-     * removed as a tenant administrator.</p> </li> <li> <p>
-     * <code>OFFBOARD_COMPLETE</code> - The Firewall Manager policy administrator has
-     * been removed as a tenant administrator.</p> </li> <li> <p>
-     * <code>NOT_EXIST</code> - The Firewall Manager policy administrator doesn't exist
-     * as a tenant administrator.</p> </li> </ul>
-     */
-    inline AssociateThirdPartyFirewallResult& WithThirdPartyFirewallStatus(ThirdPartyFirewallAssociationStatus&& value) { SetThirdPartyFirewallStatus(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline AssociateThirdPartyFirewallResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline AssociateThirdPartyFirewallResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline AssociateThirdPartyFirewallResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    AssociateThirdPartyFirewallResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
-    ThirdPartyFirewallAssociationStatus m_thirdPartyFirewallStatus;
+    ThirdPartyFirewallAssociationStatus m_thirdPartyFirewallStatus{ThirdPartyFirewallAssociationStatus::NOT_SET};
+    bool m_thirdPartyFirewallStatusHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

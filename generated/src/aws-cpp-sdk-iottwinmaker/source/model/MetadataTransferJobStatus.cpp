@@ -18,21 +18,7 @@ namespace IoTTwinMaker
 namespace Model
 {
 
-MetadataTransferJobStatus::MetadataTransferJobStatus() : 
-    m_state(MetadataTransferJobState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_errorHasBeenSet(false),
-    m_queuedPosition(0),
-    m_queuedPositionHasBeenSet(false)
-{
-}
-
-MetadataTransferJobStatus::MetadataTransferJobStatus(JsonView jsonValue) : 
-    m_state(MetadataTransferJobState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_errorHasBeenSet(false),
-    m_queuedPosition(0),
-    m_queuedPositionHasBeenSet(false)
+MetadataTransferJobStatus::MetadataTransferJobStatus(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,24 +28,18 @@ MetadataTransferJobStatus& MetadataTransferJobStatus::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("state"))
   {
     m_state = MetadataTransferJobStateMapper::GetMetadataTransferJobStateForName(jsonValue.GetString("state"));
-
     m_stateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("error"))
   {
     m_error = jsonValue.GetObject("error");
-
     m_errorHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("queuedPosition"))
   {
     m_queuedPosition = jsonValue.GetInteger("queuedPosition");
-
     m_queuedPositionHasBeenSet = true;
   }
-
   return *this;
 }
 

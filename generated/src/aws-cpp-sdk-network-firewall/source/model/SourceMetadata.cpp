@@ -18,15 +18,7 @@ namespace NetworkFirewall
 namespace Model
 {
 
-SourceMetadata::SourceMetadata() : 
-    m_sourceArnHasBeenSet(false),
-    m_sourceUpdateTokenHasBeenSet(false)
-{
-}
-
-SourceMetadata::SourceMetadata(JsonView jsonValue) : 
-    m_sourceArnHasBeenSet(false),
-    m_sourceUpdateTokenHasBeenSet(false)
+SourceMetadata::SourceMetadata(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ SourceMetadata& SourceMetadata::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("SourceArn"))
   {
     m_sourceArn = jsonValue.GetString("SourceArn");
-
     m_sourceArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SourceUpdateToken"))
   {
     m_sourceUpdateToken = jsonValue.GetString("SourceUpdateToken");
-
     m_sourceUpdateTokenHasBeenSet = true;
   }
-
   return *this;
 }
 

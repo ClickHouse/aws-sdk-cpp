@@ -18,19 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-ServiceCatalogProvisioningDetails::ServiceCatalogProvisioningDetails() : 
-    m_productIdHasBeenSet(false),
-    m_provisioningArtifactIdHasBeenSet(false),
-    m_pathIdHasBeenSet(false),
-    m_provisioningParametersHasBeenSet(false)
-{
-}
-
-ServiceCatalogProvisioningDetails::ServiceCatalogProvisioningDetails(JsonView jsonValue) : 
-    m_productIdHasBeenSet(false),
-    m_provisioningArtifactIdHasBeenSet(false),
-    m_pathIdHasBeenSet(false),
-    m_provisioningParametersHasBeenSet(false)
+ServiceCatalogProvisioningDetails::ServiceCatalogProvisioningDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ ServiceCatalogProvisioningDetails& ServiceCatalogProvisioningDetails::operator =
   if(jsonValue.ValueExists("ProductId"))
   {
     m_productId = jsonValue.GetString("ProductId");
-
     m_productIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ProvisioningArtifactId"))
   {
     m_provisioningArtifactId = jsonValue.GetString("ProvisioningArtifactId");
-
     m_provisioningArtifactIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PathId"))
   {
     m_pathId = jsonValue.GetString("PathId");
-
     m_pathIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ProvisioningParameters"))
   {
     Aws::Utils::Array<JsonView> provisioningParametersJsonList = jsonValue.GetArray("ProvisioningParameters");
@@ -67,7 +49,6 @@ ServiceCatalogProvisioningDetails& ServiceCatalogProvisioningDetails::operator =
     }
     m_provisioningParametersHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,21 +18,7 @@ namespace IoTWireless
 namespace Model
 {
 
-CellTowers::CellTowers() : 
-    m_gsmHasBeenSet(false),
-    m_wcdmaHasBeenSet(false),
-    m_tdscdmaHasBeenSet(false),
-    m_lteHasBeenSet(false),
-    m_cdmaHasBeenSet(false)
-{
-}
-
-CellTowers::CellTowers(JsonView jsonValue) : 
-    m_gsmHasBeenSet(false),
-    m_wcdmaHasBeenSet(false),
-    m_tdscdmaHasBeenSet(false),
-    m_lteHasBeenSet(false),
-    m_cdmaHasBeenSet(false)
+CellTowers::CellTowers(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -48,7 +34,6 @@ CellTowers& CellTowers::operator =(JsonView jsonValue)
     }
     m_gsmHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Wcdma"))
   {
     Aws::Utils::Array<JsonView> wcdmaJsonList = jsonValue.GetArray("Wcdma");
@@ -58,7 +43,6 @@ CellTowers& CellTowers::operator =(JsonView jsonValue)
     }
     m_wcdmaHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Tdscdma"))
   {
     Aws::Utils::Array<JsonView> tdscdmaJsonList = jsonValue.GetArray("Tdscdma");
@@ -68,7 +52,6 @@ CellTowers& CellTowers::operator =(JsonView jsonValue)
     }
     m_tdscdmaHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Lte"))
   {
     Aws::Utils::Array<JsonView> lteJsonList = jsonValue.GetArray("Lte");
@@ -78,7 +61,6 @@ CellTowers& CellTowers::operator =(JsonView jsonValue)
     }
     m_lteHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Cdma"))
   {
     Aws::Utils::Array<JsonView> cdmaJsonList = jsonValue.GetArray("Cdma");
@@ -88,7 +70,6 @@ CellTowers& CellTowers::operator =(JsonView jsonValue)
     }
     m_cdmaHasBeenSet = true;
   }
-
   return *this;
 }
 

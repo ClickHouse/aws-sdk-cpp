@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-AxisLogarithmicScale::AxisLogarithmicScale() : 
-    m_base(0.0),
-    m_baseHasBeenSet(false)
-{
-}
-
-AxisLogarithmicScale::AxisLogarithmicScale(JsonView jsonValue) : 
-    m_base(0.0),
-    m_baseHasBeenSet(false)
+AxisLogarithmicScale::AxisLogarithmicScale(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ AxisLogarithmicScale& AxisLogarithmicScale::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Base"))
   {
     m_base = jsonValue.GetDouble("Base");
-
     m_baseHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -5,8 +5,8 @@
 
 #pragma once
 #include <aws/braket/Braket_EXPORTS.h>
-#include <aws/braket/model/CancellationStatus.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/braket/model/CancellationStatus.h>
 #include <utility>
 
 namespace Aws
@@ -28,101 +28,49 @@ namespace Model
   class CancelQuantumTaskResult
   {
   public:
-    AWS_BRAKET_API CancelQuantumTaskResult();
+    AWS_BRAKET_API CancelQuantumTaskResult() = default;
     AWS_BRAKET_API CancelQuantumTaskResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_BRAKET_API CancelQuantumTaskResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
-     * <p>The status of the cancellation request.</p>
+     * <p>The ARN of the quantum task.</p>
      */
-    inline const CancellationStatus& GetCancellationStatus() const{ return m_cancellationStatus; }
+    inline const Aws::String& GetQuantumTaskArn() const { return m_quantumTaskArn; }
+    template<typename QuantumTaskArnT = Aws::String>
+    void SetQuantumTaskArn(QuantumTaskArnT&& value) { m_quantumTaskArnHasBeenSet = true; m_quantumTaskArn = std::forward<QuantumTaskArnT>(value); }
+    template<typename QuantumTaskArnT = Aws::String>
+    CancelQuantumTaskResult& WithQuantumTaskArn(QuantumTaskArnT&& value) { SetQuantumTaskArn(std::forward<QuantumTaskArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The status of the cancellation request.</p>
+     * <p>The status of the quantum task.</p>
      */
-    inline void SetCancellationStatus(const CancellationStatus& value) { m_cancellationStatus = value; }
+    inline CancellationStatus GetCancellationStatus() const { return m_cancellationStatus; }
+    inline void SetCancellationStatus(CancellationStatus value) { m_cancellationStatusHasBeenSet = true; m_cancellationStatus = value; }
+    inline CancelQuantumTaskResult& WithCancellationStatus(CancellationStatus value) { SetCancellationStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the cancellation request.</p>
-     */
-    inline void SetCancellationStatus(CancellationStatus&& value) { m_cancellationStatus = std::move(value); }
-
-    /**
-     * <p>The status of the cancellation request.</p>
-     */
-    inline CancelQuantumTaskResult& WithCancellationStatus(const CancellationStatus& value) { SetCancellationStatus(value); return *this;}
-
-    /**
-     * <p>The status of the cancellation request.</p>
-     */
-    inline CancelQuantumTaskResult& WithCancellationStatus(CancellationStatus&& value) { SetCancellationStatus(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The ARN of the task.</p>
-     */
-    inline const Aws::String& GetQuantumTaskArn() const{ return m_quantumTaskArn; }
-
-    /**
-     * <p>The ARN of the task.</p>
-     */
-    inline void SetQuantumTaskArn(const Aws::String& value) { m_quantumTaskArn = value; }
-
-    /**
-     * <p>The ARN of the task.</p>
-     */
-    inline void SetQuantumTaskArn(Aws::String&& value) { m_quantumTaskArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the task.</p>
-     */
-    inline void SetQuantumTaskArn(const char* value) { m_quantumTaskArn.assign(value); }
-
-    /**
-     * <p>The ARN of the task.</p>
-     */
-    inline CancelQuantumTaskResult& WithQuantumTaskArn(const Aws::String& value) { SetQuantumTaskArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the task.</p>
-     */
-    inline CancelQuantumTaskResult& WithQuantumTaskArn(Aws::String&& value) { SetQuantumTaskArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the task.</p>
-     */
-    inline CancelQuantumTaskResult& WithQuantumTaskArn(const char* value) { SetQuantumTaskArn(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline CancelQuantumTaskResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline CancelQuantumTaskResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline CancelQuantumTaskResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    CancelQuantumTaskResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
-    CancellationStatus m_cancellationStatus;
-
     Aws::String m_quantumTaskArn;
+    bool m_quantumTaskArnHasBeenSet = false;
+
+    CancellationStatus m_cancellationStatus{CancellationStatus::NOT_SET};
+    bool m_cancellationStatusHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

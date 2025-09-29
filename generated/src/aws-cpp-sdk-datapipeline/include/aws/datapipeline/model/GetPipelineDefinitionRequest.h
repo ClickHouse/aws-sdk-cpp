@@ -25,7 +25,7 @@ namespace Model
   class GetPipelineDefinitionRequest : public DataPipelineRequest
   {
   public:
-    AWS_DATAPIPELINE_API GetPipelineDefinitionRequest();
+    AWS_DATAPIPELINE_API GetPipelineDefinitionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,103 +38,31 @@ namespace Model
     AWS_DATAPIPELINE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the pipeline.</p>
      */
-    inline const Aws::String& GetPipelineId() const{ return m_pipelineId; }
-
-    /**
-     * <p>The ID of the pipeline.</p>
-     */
+    inline const Aws::String& GetPipelineId() const { return m_pipelineId; }
     inline bool PipelineIdHasBeenSet() const { return m_pipelineIdHasBeenSet; }
+    template<typename PipelineIdT = Aws::String>
+    void SetPipelineId(PipelineIdT&& value) { m_pipelineIdHasBeenSet = true; m_pipelineId = std::forward<PipelineIdT>(value); }
+    template<typename PipelineIdT = Aws::String>
+    GetPipelineDefinitionRequest& WithPipelineId(PipelineIdT&& value) { SetPipelineId(std::forward<PipelineIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the pipeline.</p>
-     */
-    inline void SetPipelineId(const Aws::String& value) { m_pipelineIdHasBeenSet = true; m_pipelineId = value; }
-
-    /**
-     * <p>The ID of the pipeline.</p>
-     */
-    inline void SetPipelineId(Aws::String&& value) { m_pipelineIdHasBeenSet = true; m_pipelineId = std::move(value); }
-
-    /**
-     * <p>The ID of the pipeline.</p>
-     */
-    inline void SetPipelineId(const char* value) { m_pipelineIdHasBeenSet = true; m_pipelineId.assign(value); }
-
-    /**
-     * <p>The ID of the pipeline.</p>
-     */
-    inline GetPipelineDefinitionRequest& WithPipelineId(const Aws::String& value) { SetPipelineId(value); return *this;}
-
-    /**
-     * <p>The ID of the pipeline.</p>
-     */
-    inline GetPipelineDefinitionRequest& WithPipelineId(Aws::String&& value) { SetPipelineId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the pipeline.</p>
-     */
-    inline GetPipelineDefinitionRequest& WithPipelineId(const char* value) { SetPipelineId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The version of the pipeline definition to retrieve. Set this parameter to
      * <code>latest</code> (default) to use the last definition saved to the pipeline
      * or <code>active</code> to use the last definition that was activated.</p>
      */
-    inline const Aws::String& GetVersion() const{ return m_version; }
-
-    /**
-     * <p>The version of the pipeline definition to retrieve. Set this parameter to
-     * <code>latest</code> (default) to use the last definition saved to the pipeline
-     * or <code>active</code> to use the last definition that was activated.</p>
-     */
+    inline const Aws::String& GetVersion() const { return m_version; }
     inline bool VersionHasBeenSet() const { return m_versionHasBeenSet; }
-
-    /**
-     * <p>The version of the pipeline definition to retrieve. Set this parameter to
-     * <code>latest</code> (default) to use the last definition saved to the pipeline
-     * or <code>active</code> to use the last definition that was activated.</p>
-     */
-    inline void SetVersion(const Aws::String& value) { m_versionHasBeenSet = true; m_version = value; }
-
-    /**
-     * <p>The version of the pipeline definition to retrieve. Set this parameter to
-     * <code>latest</code> (default) to use the last definition saved to the pipeline
-     * or <code>active</code> to use the last definition that was activated.</p>
-     */
-    inline void SetVersion(Aws::String&& value) { m_versionHasBeenSet = true; m_version = std::move(value); }
-
-    /**
-     * <p>The version of the pipeline definition to retrieve. Set this parameter to
-     * <code>latest</code> (default) to use the last definition saved to the pipeline
-     * or <code>active</code> to use the last definition that was activated.</p>
-     */
-    inline void SetVersion(const char* value) { m_versionHasBeenSet = true; m_version.assign(value); }
-
-    /**
-     * <p>The version of the pipeline definition to retrieve. Set this parameter to
-     * <code>latest</code> (default) to use the last definition saved to the pipeline
-     * or <code>active</code> to use the last definition that was activated.</p>
-     */
-    inline GetPipelineDefinitionRequest& WithVersion(const Aws::String& value) { SetVersion(value); return *this;}
-
-    /**
-     * <p>The version of the pipeline definition to retrieve. Set this parameter to
-     * <code>latest</code> (default) to use the last definition saved to the pipeline
-     * or <code>active</code> to use the last definition that was activated.</p>
-     */
-    inline GetPipelineDefinitionRequest& WithVersion(Aws::String&& value) { SetVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The version of the pipeline definition to retrieve. Set this parameter to
-     * <code>latest</code> (default) to use the last definition saved to the pipeline
-     * or <code>active</code> to use the last definition that was activated.</p>
-     */
-    inline GetPipelineDefinitionRequest& WithVersion(const char* value) { SetVersion(value); return *this;}
-
+    template<typename VersionT = Aws::String>
+    void SetVersion(VersionT&& value) { m_versionHasBeenSet = true; m_version = std::forward<VersionT>(value); }
+    template<typename VersionT = Aws::String>
+    GetPipelineDefinitionRequest& WithVersion(VersionT&& value) { SetVersion(std::forward<VersionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_pipelineId;

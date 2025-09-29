@@ -32,84 +32,37 @@ namespace Model
   class GroupCount
   {
   public:
-    AWS_MACIE2_API GroupCount();
+    AWS_MACIE2_API GroupCount() = default;
     AWS_MACIE2_API GroupCount(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API GroupCount& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The total number of findings in the group of query results.</p>
      */
-    inline long long GetCount() const{ return m_count; }
-
-    /**
-     * <p>The total number of findings in the group of query results.</p>
-     */
+    inline long long GetCount() const { return m_count; }
     inline bool CountHasBeenSet() const { return m_countHasBeenSet; }
-
-    /**
-     * <p>The total number of findings in the group of query results.</p>
-     */
     inline void SetCount(long long value) { m_countHasBeenSet = true; m_count = value; }
-
-    /**
-     * <p>The total number of findings in the group of query results.</p>
-     */
     inline GroupCount& WithCount(long long value) { SetCount(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The name of the property that defines the group in the query results, as
      * specified by the groupBy property in the query request.</p>
      */
-    inline const Aws::String& GetGroupKey() const{ return m_groupKey; }
-
-    /**
-     * <p>The name of the property that defines the group in the query results, as
-     * specified by the groupBy property in the query request.</p>
-     */
+    inline const Aws::String& GetGroupKey() const { return m_groupKey; }
     inline bool GroupKeyHasBeenSet() const { return m_groupKeyHasBeenSet; }
-
-    /**
-     * <p>The name of the property that defines the group in the query results, as
-     * specified by the groupBy property in the query request.</p>
-     */
-    inline void SetGroupKey(const Aws::String& value) { m_groupKeyHasBeenSet = true; m_groupKey = value; }
-
-    /**
-     * <p>The name of the property that defines the group in the query results, as
-     * specified by the groupBy property in the query request.</p>
-     */
-    inline void SetGroupKey(Aws::String&& value) { m_groupKeyHasBeenSet = true; m_groupKey = std::move(value); }
-
-    /**
-     * <p>The name of the property that defines the group in the query results, as
-     * specified by the groupBy property in the query request.</p>
-     */
-    inline void SetGroupKey(const char* value) { m_groupKeyHasBeenSet = true; m_groupKey.assign(value); }
-
-    /**
-     * <p>The name of the property that defines the group in the query results, as
-     * specified by the groupBy property in the query request.</p>
-     */
-    inline GroupCount& WithGroupKey(const Aws::String& value) { SetGroupKey(value); return *this;}
-
-    /**
-     * <p>The name of the property that defines the group in the query results, as
-     * specified by the groupBy property in the query request.</p>
-     */
-    inline GroupCount& WithGroupKey(Aws::String&& value) { SetGroupKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the property that defines the group in the query results, as
-     * specified by the groupBy property in the query request.</p>
-     */
-    inline GroupCount& WithGroupKey(const char* value) { SetGroupKey(value); return *this;}
-
+    template<typename GroupKeyT = Aws::String>
+    void SetGroupKey(GroupKeyT&& value) { m_groupKeyHasBeenSet = true; m_groupKey = std::forward<GroupKeyT>(value); }
+    template<typename GroupKeyT = Aws::String>
+    GroupCount& WithGroupKey(GroupKeyT&& value) { SetGroupKey(std::forward<GroupKeyT>(value)); return *this;}
+    ///@}
   private:
 
-    long long m_count;
+    long long m_count{0};
     bool m_countHasBeenSet = false;
 
     Aws::String m_groupKey;

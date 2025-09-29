@@ -20,15 +20,7 @@ namespace AutoScaling
 namespace Model
 {
 
-LaunchTemplate::LaunchTemplate() : 
-    m_launchTemplateSpecificationHasBeenSet(false),
-    m_overridesHasBeenSet(false)
-{
-}
-
-LaunchTemplate::LaunchTemplate(const XmlNode& xmlNode) : 
-    m_launchTemplateSpecificationHasBeenSet(false),
-    m_overridesHasBeenSet(false)
+LaunchTemplate::LaunchTemplate(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -49,6 +41,7 @@ LaunchTemplate& LaunchTemplate::operator =(const XmlNode& xmlNode)
     if(!overridesNode.IsNull())
     {
       XmlNode overridesMember = overridesNode.FirstChild("member");
+      m_overridesHasBeenSet = !overridesMember.IsNull();
       while(!overridesMember.IsNull())
       {
         m_overrides.push_back(overridesMember);
@@ -98,7 +91,7 @@ void LaunchTemplate::OutputToStream(Aws::OStream& oStream, const char* location)
       for(auto& item : m_overrides)
       {
         Aws::StringStream overridesSs;
-        overridesSs << location <<  ".Overrides.member." << overridesIdx++;
+        overridesSs << location << ".Overrides.member." << overridesIdx++;
         item.OutputToStream(oStream, overridesSs.str().c_str());
       }
   }

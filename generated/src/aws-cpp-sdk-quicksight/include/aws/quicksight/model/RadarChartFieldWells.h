@@ -31,42 +31,23 @@ namespace Model
   class RadarChartFieldWells
   {
   public:
-    AWS_QUICKSIGHT_API RadarChartFieldWells();
+    AWS_QUICKSIGHT_API RadarChartFieldWells() = default;
     AWS_QUICKSIGHT_API RadarChartFieldWells(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API RadarChartFieldWells& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The aggregated field wells of a radar chart visual.</p>
      */
-    inline const RadarChartAggregatedFieldWells& GetRadarChartAggregatedFieldWells() const{ return m_radarChartAggregatedFieldWells; }
-
-    /**
-     * <p>The aggregated field wells of a radar chart visual.</p>
-     */
+    inline const RadarChartAggregatedFieldWells& GetRadarChartAggregatedFieldWells() const { return m_radarChartAggregatedFieldWells; }
     inline bool RadarChartAggregatedFieldWellsHasBeenSet() const { return m_radarChartAggregatedFieldWellsHasBeenSet; }
-
-    /**
-     * <p>The aggregated field wells of a radar chart visual.</p>
-     */
-    inline void SetRadarChartAggregatedFieldWells(const RadarChartAggregatedFieldWells& value) { m_radarChartAggregatedFieldWellsHasBeenSet = true; m_radarChartAggregatedFieldWells = value; }
-
-    /**
-     * <p>The aggregated field wells of a radar chart visual.</p>
-     */
-    inline void SetRadarChartAggregatedFieldWells(RadarChartAggregatedFieldWells&& value) { m_radarChartAggregatedFieldWellsHasBeenSet = true; m_radarChartAggregatedFieldWells = std::move(value); }
-
-    /**
-     * <p>The aggregated field wells of a radar chart visual.</p>
-     */
-    inline RadarChartFieldWells& WithRadarChartAggregatedFieldWells(const RadarChartAggregatedFieldWells& value) { SetRadarChartAggregatedFieldWells(value); return *this;}
-
-    /**
-     * <p>The aggregated field wells of a radar chart visual.</p>
-     */
-    inline RadarChartFieldWells& WithRadarChartAggregatedFieldWells(RadarChartAggregatedFieldWells&& value) { SetRadarChartAggregatedFieldWells(std::move(value)); return *this;}
-
+    template<typename RadarChartAggregatedFieldWellsT = RadarChartAggregatedFieldWells>
+    void SetRadarChartAggregatedFieldWells(RadarChartAggregatedFieldWellsT&& value) { m_radarChartAggregatedFieldWellsHasBeenSet = true; m_radarChartAggregatedFieldWells = std::forward<RadarChartAggregatedFieldWellsT>(value); }
+    template<typename RadarChartAggregatedFieldWellsT = RadarChartAggregatedFieldWells>
+    RadarChartFieldWells& WithRadarChartAggregatedFieldWells(RadarChartAggregatedFieldWellsT&& value) { SetRadarChartAggregatedFieldWells(std::forward<RadarChartAggregatedFieldWellsT>(value)); return *this;}
+    ///@}
   private:
 
     RadarChartAggregatedFieldWells m_radarChartAggregatedFieldWells;

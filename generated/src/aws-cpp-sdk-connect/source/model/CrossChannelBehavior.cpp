@@ -18,15 +18,7 @@ namespace Connect
 namespace Model
 {
 
-CrossChannelBehavior::CrossChannelBehavior() : 
-    m_behaviorType(BehaviorType::NOT_SET),
-    m_behaviorTypeHasBeenSet(false)
-{
-}
-
-CrossChannelBehavior::CrossChannelBehavior(JsonView jsonValue) : 
-    m_behaviorType(BehaviorType::NOT_SET),
-    m_behaviorTypeHasBeenSet(false)
+CrossChannelBehavior::CrossChannelBehavior(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ CrossChannelBehavior& CrossChannelBehavior::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("BehaviorType"))
   {
     m_behaviorType = BehaviorTypeMapper::GetBehaviorTypeForName(jsonValue.GetString("BehaviorType"));
-
     m_behaviorTypeHasBeenSet = true;
   }
-
   return *this;
 }
 

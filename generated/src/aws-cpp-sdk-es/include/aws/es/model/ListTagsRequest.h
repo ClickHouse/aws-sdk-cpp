@@ -30,7 +30,7 @@ namespace Model
   class ListTagsRequest : public ElasticsearchServiceRequest
   {
   public:
-    AWS_ELASTICSEARCHSERVICE_API ListTagsRequest();
+    AWS_ELASTICSEARCHSERVICE_API ListTagsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -43,54 +43,18 @@ namespace Model
     AWS_ELASTICSEARCHSERVICE_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p> Specify the <code>ARN</code> for the Elasticsearch domain to which the tags
      * are attached that you want to view.</p>
      */
-    inline const Aws::String& GetARN() const{ return m_aRN; }
-
-    /**
-     * <p> Specify the <code>ARN</code> for the Elasticsearch domain to which the tags
-     * are attached that you want to view.</p>
-     */
+    inline const Aws::String& GetARN() const { return m_aRN; }
     inline bool ARNHasBeenSet() const { return m_aRNHasBeenSet; }
-
-    /**
-     * <p> Specify the <code>ARN</code> for the Elasticsearch domain to which the tags
-     * are attached that you want to view.</p>
-     */
-    inline void SetARN(const Aws::String& value) { m_aRNHasBeenSet = true; m_aRN = value; }
-
-    /**
-     * <p> Specify the <code>ARN</code> for the Elasticsearch domain to which the tags
-     * are attached that you want to view.</p>
-     */
-    inline void SetARN(Aws::String&& value) { m_aRNHasBeenSet = true; m_aRN = std::move(value); }
-
-    /**
-     * <p> Specify the <code>ARN</code> for the Elasticsearch domain to which the tags
-     * are attached that you want to view.</p>
-     */
-    inline void SetARN(const char* value) { m_aRNHasBeenSet = true; m_aRN.assign(value); }
-
-    /**
-     * <p> Specify the <code>ARN</code> for the Elasticsearch domain to which the tags
-     * are attached that you want to view.</p>
-     */
-    inline ListTagsRequest& WithARN(const Aws::String& value) { SetARN(value); return *this;}
-
-    /**
-     * <p> Specify the <code>ARN</code> for the Elasticsearch domain to which the tags
-     * are attached that you want to view.</p>
-     */
-    inline ListTagsRequest& WithARN(Aws::String&& value) { SetARN(std::move(value)); return *this;}
-
-    /**
-     * <p> Specify the <code>ARN</code> for the Elasticsearch domain to which the tags
-     * are attached that you want to view.</p>
-     */
-    inline ListTagsRequest& WithARN(const char* value) { SetARN(value); return *this;}
-
+    template<typename ARNT = Aws::String>
+    void SetARN(ARNT&& value) { m_aRNHasBeenSet = true; m_aRN = std::forward<ARNT>(value); }
+    template<typename ARNT = Aws::String>
+    ListTagsRequest& WithARN(ARNT&& value) { SetARN(std::forward<ARNT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_aRN;

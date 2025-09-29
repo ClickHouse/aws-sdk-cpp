@@ -18,13 +18,7 @@ namespace CleanRooms
 namespace Model
 {
 
-AnalysisSchema::AnalysisSchema() : 
-    m_referencedTablesHasBeenSet(false)
-{
-}
-
-AnalysisSchema::AnalysisSchema(JsonView jsonValue) : 
-    m_referencedTablesHasBeenSet(false)
+AnalysisSchema::AnalysisSchema(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ AnalysisSchema& AnalysisSchema::operator =(JsonView jsonValue)
     }
     m_referencedTablesHasBeenSet = true;
   }
-
   return *this;
 }
 

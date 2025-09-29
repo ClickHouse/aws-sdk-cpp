@@ -18,41 +18,7 @@ namespace MediaConnect
 namespace Model
 {
 
-Flow::Flow() : 
-    m_availabilityZoneHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_egressIpHasBeenSet(false),
-    m_entitlementsHasBeenSet(false),
-    m_flowArnHasBeenSet(false),
-    m_mediaStreamsHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_outputsHasBeenSet(false),
-    m_sourceHasBeenSet(false),
-    m_sourceFailoverConfigHasBeenSet(false),
-    m_sourcesHasBeenSet(false),
-    m_status(Status::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_vpcInterfacesHasBeenSet(false),
-    m_maintenanceHasBeenSet(false)
-{
-}
-
-Flow::Flow(JsonView jsonValue) : 
-    m_availabilityZoneHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_egressIpHasBeenSet(false),
-    m_entitlementsHasBeenSet(false),
-    m_flowArnHasBeenSet(false),
-    m_mediaStreamsHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_outputsHasBeenSet(false),
-    m_sourceHasBeenSet(false),
-    m_sourceFailoverConfigHasBeenSet(false),
-    m_sourcesHasBeenSet(false),
-    m_status(Status::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_vpcInterfacesHasBeenSet(false),
-    m_maintenanceHasBeenSet(false)
+Flow::Flow(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -62,24 +28,18 @@ Flow& Flow::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("availabilityZone"))
   {
     m_availabilityZone = jsonValue.GetString("availabilityZone");
-
     m_availabilityZoneHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("description"))
   {
     m_description = jsonValue.GetString("description");
-
     m_descriptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("egressIp"))
   {
     m_egressIp = jsonValue.GetString("egressIp");
-
     m_egressIpHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("entitlements"))
   {
     Aws::Utils::Array<JsonView> entitlementsJsonList = jsonValue.GetArray("entitlements");
@@ -89,14 +49,11 @@ Flow& Flow::operator =(JsonView jsonValue)
     }
     m_entitlementsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("flowArn"))
   {
     m_flowArn = jsonValue.GetString("flowArn");
-
     m_flowArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("mediaStreams"))
   {
     Aws::Utils::Array<JsonView> mediaStreamsJsonList = jsonValue.GetArray("mediaStreams");
@@ -106,14 +63,11 @@ Flow& Flow::operator =(JsonView jsonValue)
     }
     m_mediaStreamsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("outputs"))
   {
     Aws::Utils::Array<JsonView> outputsJsonList = jsonValue.GetArray("outputs");
@@ -123,21 +77,16 @@ Flow& Flow::operator =(JsonView jsonValue)
     }
     m_outputsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("source"))
   {
     m_source = jsonValue.GetObject("source");
-
     m_sourceHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("sourceFailoverConfig"))
   {
     m_sourceFailoverConfig = jsonValue.GetObject("sourceFailoverConfig");
-
     m_sourceFailoverConfigHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("sources"))
   {
     Aws::Utils::Array<JsonView> sourcesJsonList = jsonValue.GetArray("sources");
@@ -147,14 +96,11 @@ Flow& Flow::operator =(JsonView jsonValue)
     }
     m_sourcesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("status"))
   {
     m_status = StatusMapper::GetStatusForName(jsonValue.GetString("status"));
-
     m_statusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("vpcInterfaces"))
   {
     Aws::Utils::Array<JsonView> vpcInterfacesJsonList = jsonValue.GetArray("vpcInterfaces");
@@ -164,14 +110,26 @@ Flow& Flow::operator =(JsonView jsonValue)
     }
     m_vpcInterfacesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("maintenance"))
   {
     m_maintenance = jsonValue.GetObject("maintenance");
-
     m_maintenanceHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("sourceMonitoringConfig"))
+  {
+    m_sourceMonitoringConfig = jsonValue.GetObject("sourceMonitoringConfig");
+    m_sourceMonitoringConfigHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("flowSize"))
+  {
+    m_flowSize = FlowSizeMapper::GetFlowSizeForName(jsonValue.GetString("flowSize"));
+    m_flowSizeHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("ndiConfig"))
+  {
+    m_ndiConfig = jsonValue.GetObject("ndiConfig");
+    m_ndiConfigHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -284,6 +242,23 @@ JsonValue Flow::Jsonize() const
   if(m_maintenanceHasBeenSet)
   {
    payload.WithObject("maintenance", m_maintenance.Jsonize());
+
+  }
+
+  if(m_sourceMonitoringConfigHasBeenSet)
+  {
+   payload.WithObject("sourceMonitoringConfig", m_sourceMonitoringConfig.Jsonize());
+
+  }
+
+  if(m_flowSizeHasBeenSet)
+  {
+   payload.WithString("flowSize", FlowSizeMapper::GetNameForFlowSize(m_flowSize));
+  }
+
+  if(m_ndiConfigHasBeenSet)
+  {
+   payload.WithObject("ndiConfig", m_ndiConfig.Jsonize());
 
   }
 

@@ -18,15 +18,7 @@ namespace ServiceQuotas
 namespace Model
 {
 
-ServiceInfo::ServiceInfo() : 
-    m_serviceCodeHasBeenSet(false),
-    m_serviceNameHasBeenSet(false)
-{
-}
-
-ServiceInfo::ServiceInfo(JsonView jsonValue) : 
-    m_serviceCodeHasBeenSet(false),
-    m_serviceNameHasBeenSet(false)
+ServiceInfo::ServiceInfo(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ServiceInfo& ServiceInfo::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ServiceCode"))
   {
     m_serviceCode = jsonValue.GetString("ServiceCode");
-
     m_serviceCodeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ServiceName"))
   {
     m_serviceName = jsonValue.GetString("ServiceName");
-
     m_serviceNameHasBeenSet = true;
   }
-
   return *this;
 }
 

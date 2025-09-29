@@ -32,86 +32,36 @@ namespace Model
   class ConditionalFormattingCustomIconOptions
   {
   public:
-    AWS_QUICKSIGHT_API ConditionalFormattingCustomIconOptions();
+    AWS_QUICKSIGHT_API ConditionalFormattingCustomIconOptions() = default;
     AWS_QUICKSIGHT_API ConditionalFormattingCustomIconOptions(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API ConditionalFormattingCustomIconOptions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Determines the type of icon.</p>
      */
-    inline const Icon& GetIcon() const{ return m_icon; }
-
-    /**
-     * <p>Determines the type of icon.</p>
-     */
+    inline Icon GetIcon() const { return m_icon; }
     inline bool IconHasBeenSet() const { return m_iconHasBeenSet; }
+    inline void SetIcon(Icon value) { m_iconHasBeenSet = true; m_icon = value; }
+    inline ConditionalFormattingCustomIconOptions& WithIcon(Icon value) { SetIcon(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Determines the type of icon.</p>
-     */
-    inline void SetIcon(const Icon& value) { m_iconHasBeenSet = true; m_icon = value; }
-
-    /**
-     * <p>Determines the type of icon.</p>
-     */
-    inline void SetIcon(Icon&& value) { m_iconHasBeenSet = true; m_icon = std::move(value); }
-
-    /**
-     * <p>Determines the type of icon.</p>
-     */
-    inline ConditionalFormattingCustomIconOptions& WithIcon(const Icon& value) { SetIcon(value); return *this;}
-
-    /**
-     * <p>Determines the type of icon.</p>
-     */
-    inline ConditionalFormattingCustomIconOptions& WithIcon(Icon&& value) { SetIcon(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Determines the Unicode icon type.</p>
      */
-    inline const Aws::String& GetUnicodeIcon() const{ return m_unicodeIcon; }
-
-    /**
-     * <p>Determines the Unicode icon type.</p>
-     */
+    inline const Aws::String& GetUnicodeIcon() const { return m_unicodeIcon; }
     inline bool UnicodeIconHasBeenSet() const { return m_unicodeIconHasBeenSet; }
-
-    /**
-     * <p>Determines the Unicode icon type.</p>
-     */
-    inline void SetUnicodeIcon(const Aws::String& value) { m_unicodeIconHasBeenSet = true; m_unicodeIcon = value; }
-
-    /**
-     * <p>Determines the Unicode icon type.</p>
-     */
-    inline void SetUnicodeIcon(Aws::String&& value) { m_unicodeIconHasBeenSet = true; m_unicodeIcon = std::move(value); }
-
-    /**
-     * <p>Determines the Unicode icon type.</p>
-     */
-    inline void SetUnicodeIcon(const char* value) { m_unicodeIconHasBeenSet = true; m_unicodeIcon.assign(value); }
-
-    /**
-     * <p>Determines the Unicode icon type.</p>
-     */
-    inline ConditionalFormattingCustomIconOptions& WithUnicodeIcon(const Aws::String& value) { SetUnicodeIcon(value); return *this;}
-
-    /**
-     * <p>Determines the Unicode icon type.</p>
-     */
-    inline ConditionalFormattingCustomIconOptions& WithUnicodeIcon(Aws::String&& value) { SetUnicodeIcon(std::move(value)); return *this;}
-
-    /**
-     * <p>Determines the Unicode icon type.</p>
-     */
-    inline ConditionalFormattingCustomIconOptions& WithUnicodeIcon(const char* value) { SetUnicodeIcon(value); return *this;}
-
+    template<typename UnicodeIconT = Aws::String>
+    void SetUnicodeIcon(UnicodeIconT&& value) { m_unicodeIconHasBeenSet = true; m_unicodeIcon = std::forward<UnicodeIconT>(value); }
+    template<typename UnicodeIconT = Aws::String>
+    ConditionalFormattingCustomIconOptions& WithUnicodeIcon(UnicodeIconT&& value) { SetUnicodeIcon(std::forward<UnicodeIconT>(value)); return *this;}
+    ///@}
   private:
 
-    Icon m_icon;
+    Icon m_icon{Icon::NOT_SET};
     bool m_iconHasBeenSet = false;
 
     Aws::String m_unicodeIcon;

@@ -34,59 +34,37 @@ namespace Model
   class CapacityLimits
   {
   public:
-    AWS_OPENSEARCHSERVERLESS_API CapacityLimits();
+    AWS_OPENSEARCHSERVERLESS_API CapacityLimits() = default;
     AWS_OPENSEARCHSERVERLESS_API CapacityLimits(Aws::Utils::Json::JsonView jsonValue);
     AWS_OPENSEARCHSERVERLESS_API CapacityLimits& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_OPENSEARCHSERVERLESS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The maximum indexing capacity for collections.</p>
      */
-    inline int GetMaxIndexingCapacityInOCU() const{ return m_maxIndexingCapacityInOCU; }
-
-    /**
-     * <p>The maximum indexing capacity for collections.</p>
-     */
+    inline int GetMaxIndexingCapacityInOCU() const { return m_maxIndexingCapacityInOCU; }
     inline bool MaxIndexingCapacityInOCUHasBeenSet() const { return m_maxIndexingCapacityInOCUHasBeenSet; }
-
-    /**
-     * <p>The maximum indexing capacity for collections.</p>
-     */
     inline void SetMaxIndexingCapacityInOCU(int value) { m_maxIndexingCapacityInOCUHasBeenSet = true; m_maxIndexingCapacityInOCU = value; }
-
-    /**
-     * <p>The maximum indexing capacity for collections.</p>
-     */
     inline CapacityLimits& WithMaxIndexingCapacityInOCU(int value) { SetMaxIndexingCapacityInOCU(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The maximum search capacity for collections.</p>
      */
-    inline int GetMaxSearchCapacityInOCU() const{ return m_maxSearchCapacityInOCU; }
-
-    /**
-     * <p>The maximum search capacity for collections.</p>
-     */
+    inline int GetMaxSearchCapacityInOCU() const { return m_maxSearchCapacityInOCU; }
     inline bool MaxSearchCapacityInOCUHasBeenSet() const { return m_maxSearchCapacityInOCUHasBeenSet; }
-
-    /**
-     * <p>The maximum search capacity for collections.</p>
-     */
     inline void SetMaxSearchCapacityInOCU(int value) { m_maxSearchCapacityInOCUHasBeenSet = true; m_maxSearchCapacityInOCU = value; }
-
-    /**
-     * <p>The maximum search capacity for collections.</p>
-     */
     inline CapacityLimits& WithMaxSearchCapacityInOCU(int value) { SetMaxSearchCapacityInOCU(value); return *this;}
-
+    ///@}
   private:
 
-    int m_maxIndexingCapacityInOCU;
+    int m_maxIndexingCapacityInOCU{0};
     bool m_maxIndexingCapacityInOCUHasBeenSet = false;
 
-    int m_maxSearchCapacityInOCU;
+    int m_maxSearchCapacityInOCU{0};
     bool m_maxSearchCapacityInOCUHasBeenSet = false;
   };
 

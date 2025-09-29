@@ -18,43 +18,7 @@ namespace WorkSpaces
 namespace Model
 {
 
-WorkspaceAccessProperties::WorkspaceAccessProperties() : 
-    m_deviceTypeWindows(AccessPropertyValue::NOT_SET),
-    m_deviceTypeWindowsHasBeenSet(false),
-    m_deviceTypeOsx(AccessPropertyValue::NOT_SET),
-    m_deviceTypeOsxHasBeenSet(false),
-    m_deviceTypeWeb(AccessPropertyValue::NOT_SET),
-    m_deviceTypeWebHasBeenSet(false),
-    m_deviceTypeIos(AccessPropertyValue::NOT_SET),
-    m_deviceTypeIosHasBeenSet(false),
-    m_deviceTypeAndroid(AccessPropertyValue::NOT_SET),
-    m_deviceTypeAndroidHasBeenSet(false),
-    m_deviceTypeChromeOs(AccessPropertyValue::NOT_SET),
-    m_deviceTypeChromeOsHasBeenSet(false),
-    m_deviceTypeZeroClient(AccessPropertyValue::NOT_SET),
-    m_deviceTypeZeroClientHasBeenSet(false),
-    m_deviceTypeLinux(AccessPropertyValue::NOT_SET),
-    m_deviceTypeLinuxHasBeenSet(false)
-{
-}
-
-WorkspaceAccessProperties::WorkspaceAccessProperties(JsonView jsonValue) : 
-    m_deviceTypeWindows(AccessPropertyValue::NOT_SET),
-    m_deviceTypeWindowsHasBeenSet(false),
-    m_deviceTypeOsx(AccessPropertyValue::NOT_SET),
-    m_deviceTypeOsxHasBeenSet(false),
-    m_deviceTypeWeb(AccessPropertyValue::NOT_SET),
-    m_deviceTypeWebHasBeenSet(false),
-    m_deviceTypeIos(AccessPropertyValue::NOT_SET),
-    m_deviceTypeIosHasBeenSet(false),
-    m_deviceTypeAndroid(AccessPropertyValue::NOT_SET),
-    m_deviceTypeAndroidHasBeenSet(false),
-    m_deviceTypeChromeOs(AccessPropertyValue::NOT_SET),
-    m_deviceTypeChromeOsHasBeenSet(false),
-    m_deviceTypeZeroClient(AccessPropertyValue::NOT_SET),
-    m_deviceTypeZeroClientHasBeenSet(false),
-    m_deviceTypeLinux(AccessPropertyValue::NOT_SET),
-    m_deviceTypeLinuxHasBeenSet(false)
+WorkspaceAccessProperties::WorkspaceAccessProperties(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -64,59 +28,53 @@ WorkspaceAccessProperties& WorkspaceAccessProperties::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("DeviceTypeWindows"))
   {
     m_deviceTypeWindows = AccessPropertyValueMapper::GetAccessPropertyValueForName(jsonValue.GetString("DeviceTypeWindows"));
-
     m_deviceTypeWindowsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DeviceTypeOsx"))
   {
     m_deviceTypeOsx = AccessPropertyValueMapper::GetAccessPropertyValueForName(jsonValue.GetString("DeviceTypeOsx"));
-
     m_deviceTypeOsxHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DeviceTypeWeb"))
   {
     m_deviceTypeWeb = AccessPropertyValueMapper::GetAccessPropertyValueForName(jsonValue.GetString("DeviceTypeWeb"));
-
     m_deviceTypeWebHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DeviceTypeIos"))
   {
     m_deviceTypeIos = AccessPropertyValueMapper::GetAccessPropertyValueForName(jsonValue.GetString("DeviceTypeIos"));
-
     m_deviceTypeIosHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DeviceTypeAndroid"))
   {
     m_deviceTypeAndroid = AccessPropertyValueMapper::GetAccessPropertyValueForName(jsonValue.GetString("DeviceTypeAndroid"));
-
     m_deviceTypeAndroidHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DeviceTypeChromeOs"))
   {
     m_deviceTypeChromeOs = AccessPropertyValueMapper::GetAccessPropertyValueForName(jsonValue.GetString("DeviceTypeChromeOs"));
-
     m_deviceTypeChromeOsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DeviceTypeZeroClient"))
   {
     m_deviceTypeZeroClient = AccessPropertyValueMapper::GetAccessPropertyValueForName(jsonValue.GetString("DeviceTypeZeroClient"));
-
     m_deviceTypeZeroClientHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DeviceTypeLinux"))
   {
     m_deviceTypeLinux = AccessPropertyValueMapper::GetAccessPropertyValueForName(jsonValue.GetString("DeviceTypeLinux"));
-
     m_deviceTypeLinuxHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("DeviceTypeWorkSpacesThinClient"))
+  {
+    m_deviceTypeWorkSpacesThinClient = AccessPropertyValueMapper::GetAccessPropertyValueForName(jsonValue.GetString("DeviceTypeWorkSpacesThinClient"));
+    m_deviceTypeWorkSpacesThinClientHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("AccessEndpointConfig"))
+  {
+    m_accessEndpointConfig = jsonValue.GetObject("AccessEndpointConfig");
+    m_accessEndpointConfigHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -162,6 +120,17 @@ JsonValue WorkspaceAccessProperties::Jsonize() const
   if(m_deviceTypeLinuxHasBeenSet)
   {
    payload.WithString("DeviceTypeLinux", AccessPropertyValueMapper::GetNameForAccessPropertyValue(m_deviceTypeLinux));
+  }
+
+  if(m_deviceTypeWorkSpacesThinClientHasBeenSet)
+  {
+   payload.WithString("DeviceTypeWorkSpacesThinClient", AccessPropertyValueMapper::GetNameForAccessPropertyValue(m_deviceTypeWorkSpacesThinClient));
+  }
+
+  if(m_accessEndpointConfigHasBeenSet)
+  {
+   payload.WithObject("AccessEndpointConfig", m_accessEndpointConfig.Jsonize());
+
   }
 
   return payload;

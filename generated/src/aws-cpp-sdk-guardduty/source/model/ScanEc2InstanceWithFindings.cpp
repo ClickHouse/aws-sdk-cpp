@@ -18,15 +18,7 @@ namespace GuardDuty
 namespace Model
 {
 
-ScanEc2InstanceWithFindings::ScanEc2InstanceWithFindings() : 
-    m_ebsVolumes(false),
-    m_ebsVolumesHasBeenSet(false)
-{
-}
-
-ScanEc2InstanceWithFindings::ScanEc2InstanceWithFindings(JsonView jsonValue) : 
-    m_ebsVolumes(false),
-    m_ebsVolumesHasBeenSet(false)
+ScanEc2InstanceWithFindings::ScanEc2InstanceWithFindings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ScanEc2InstanceWithFindings& ScanEc2InstanceWithFindings::operator =(JsonView js
   if(jsonValue.ValueExists("ebsVolumes"))
   {
     m_ebsVolumes = jsonValue.GetBool("ebsVolumes");
-
     m_ebsVolumesHasBeenSet = true;
   }
-
   return *this;
 }
 

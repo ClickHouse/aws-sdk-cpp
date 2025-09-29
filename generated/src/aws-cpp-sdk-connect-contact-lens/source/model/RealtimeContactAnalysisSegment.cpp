@@ -18,15 +18,7 @@ namespace ConnectContactLens
 namespace Model
 {
 
-RealtimeContactAnalysisSegment::RealtimeContactAnalysisSegment() : 
-    m_transcriptHasBeenSet(false),
-    m_categoriesHasBeenSet(false)
-{
-}
-
-RealtimeContactAnalysisSegment::RealtimeContactAnalysisSegment(JsonView jsonValue) : 
-    m_transcriptHasBeenSet(false),
-    m_categoriesHasBeenSet(false)
+RealtimeContactAnalysisSegment::RealtimeContactAnalysisSegment(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,18 @@ RealtimeContactAnalysisSegment& RealtimeContactAnalysisSegment::operator =(JsonV
   if(jsonValue.ValueExists("Transcript"))
   {
     m_transcript = jsonValue.GetObject("Transcript");
-
     m_transcriptHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Categories"))
   {
     m_categories = jsonValue.GetObject("Categories");
-
     m_categoriesHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("PostContactSummary"))
+  {
+    m_postContactSummary = jsonValue.GetObject("PostContactSummary");
+    m_postContactSummaryHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -63,6 +56,12 @@ JsonValue RealtimeContactAnalysisSegment::Jsonize() const
   if(m_categoriesHasBeenSet)
   {
    payload.WithObject("Categories", m_categories.Jsonize());
+
+  }
+
+  if(m_postContactSummaryHasBeenSet)
+  {
+   payload.WithObject("PostContactSummary", m_postContactSummary.Jsonize());
 
   }
 

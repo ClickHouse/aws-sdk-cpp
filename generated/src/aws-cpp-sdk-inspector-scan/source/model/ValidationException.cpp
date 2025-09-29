@@ -18,19 +18,7 @@ namespace inspectorscan
 namespace Model
 {
 
-ValidationException::ValidationException() : 
-    m_messageHasBeenSet(false),
-    m_reason(ValidationExceptionReason::NOT_SET),
-    m_reasonHasBeenSet(false),
-    m_fieldsHasBeenSet(false)
-{
-}
-
-ValidationException::ValidationException(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_reason(ValidationExceptionReason::NOT_SET),
-    m_reasonHasBeenSet(false),
-    m_fieldsHasBeenSet(false)
+ValidationException::ValidationException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ ValidationException& ValidationException::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("reason"))
   {
     m_reason = ValidationExceptionReasonMapper::GetValidationExceptionReasonForName(jsonValue.GetString("reason"));
-
     m_reasonHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("fields"))
   {
     Aws::Utils::Array<JsonView> fieldsJsonList = jsonValue.GetArray("fields");
@@ -60,7 +44,6 @@ ValidationException& ValidationException::operator =(JsonView jsonValue)
     }
     m_fieldsHasBeenSet = true;
   }
-
   return *this;
 }
 

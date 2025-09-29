@@ -32,123 +32,57 @@ namespace Model
   class TimerCanceledEventAttributes
   {
   public:
-    AWS_SWF_API TimerCanceledEventAttributes();
+    AWS_SWF_API TimerCanceledEventAttributes() = default;
     AWS_SWF_API TimerCanceledEventAttributes(Aws::Utils::Json::JsonView jsonValue);
     AWS_SWF_API TimerCanceledEventAttributes& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SWF_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The unique ID of the timer that was canceled.</p>
      */
-    inline const Aws::String& GetTimerId() const{ return m_timerId; }
-
-    /**
-     * <p>The unique ID of the timer that was canceled.</p>
-     */
+    inline const Aws::String& GetTimerId() const { return m_timerId; }
     inline bool TimerIdHasBeenSet() const { return m_timerIdHasBeenSet; }
+    template<typename TimerIdT = Aws::String>
+    void SetTimerId(TimerIdT&& value) { m_timerIdHasBeenSet = true; m_timerId = std::forward<TimerIdT>(value); }
+    template<typename TimerIdT = Aws::String>
+    TimerCanceledEventAttributes& WithTimerId(TimerIdT&& value) { SetTimerId(std::forward<TimerIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique ID of the timer that was canceled.</p>
-     */
-    inline void SetTimerId(const Aws::String& value) { m_timerIdHasBeenSet = true; m_timerId = value; }
-
-    /**
-     * <p>The unique ID of the timer that was canceled.</p>
-     */
-    inline void SetTimerId(Aws::String&& value) { m_timerIdHasBeenSet = true; m_timerId = std::move(value); }
-
-    /**
-     * <p>The unique ID of the timer that was canceled.</p>
-     */
-    inline void SetTimerId(const char* value) { m_timerIdHasBeenSet = true; m_timerId.assign(value); }
-
-    /**
-     * <p>The unique ID of the timer that was canceled.</p>
-     */
-    inline TimerCanceledEventAttributes& WithTimerId(const Aws::String& value) { SetTimerId(value); return *this;}
-
-    /**
-     * <p>The unique ID of the timer that was canceled.</p>
-     */
-    inline TimerCanceledEventAttributes& WithTimerId(Aws::String&& value) { SetTimerId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique ID of the timer that was canceled.</p>
-     */
-    inline TimerCanceledEventAttributes& WithTimerId(const char* value) { SetTimerId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the <code>TimerStarted</code> event that was recorded when this
      * timer was started. This information can be useful for diagnosing problems by
      * tracing back the chain of events leading up to this event.</p>
      */
-    inline long long GetStartedEventId() const{ return m_startedEventId; }
-
-    /**
-     * <p>The ID of the <code>TimerStarted</code> event that was recorded when this
-     * timer was started. This information can be useful for diagnosing problems by
-     * tracing back the chain of events leading up to this event.</p>
-     */
+    inline long long GetStartedEventId() const { return m_startedEventId; }
     inline bool StartedEventIdHasBeenSet() const { return m_startedEventIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the <code>TimerStarted</code> event that was recorded when this
-     * timer was started. This information can be useful for diagnosing problems by
-     * tracing back the chain of events leading up to this event.</p>
-     */
     inline void SetStartedEventId(long long value) { m_startedEventIdHasBeenSet = true; m_startedEventId = value; }
-
-    /**
-     * <p>The ID of the <code>TimerStarted</code> event that was recorded when this
-     * timer was started. This information can be useful for diagnosing problems by
-     * tracing back the chain of events leading up to this event.</p>
-     */
     inline TimerCanceledEventAttributes& WithStartedEventId(long long value) { SetStartedEventId(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the
      * decision task that resulted in the <code>CancelTimer</code> decision to cancel
      * this timer. This information can be useful for diagnosing problems by tracing
      * back the chain of events leading up to this event.</p>
      */
-    inline long long GetDecisionTaskCompletedEventId() const{ return m_decisionTaskCompletedEventId; }
-
-    /**
-     * <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the
-     * decision task that resulted in the <code>CancelTimer</code> decision to cancel
-     * this timer. This information can be useful for diagnosing problems by tracing
-     * back the chain of events leading up to this event.</p>
-     */
+    inline long long GetDecisionTaskCompletedEventId() const { return m_decisionTaskCompletedEventId; }
     inline bool DecisionTaskCompletedEventIdHasBeenSet() const { return m_decisionTaskCompletedEventIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the
-     * decision task that resulted in the <code>CancelTimer</code> decision to cancel
-     * this timer. This information can be useful for diagnosing problems by tracing
-     * back the chain of events leading up to this event.</p>
-     */
     inline void SetDecisionTaskCompletedEventId(long long value) { m_decisionTaskCompletedEventIdHasBeenSet = true; m_decisionTaskCompletedEventId = value; }
-
-    /**
-     * <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the
-     * decision task that resulted in the <code>CancelTimer</code> decision to cancel
-     * this timer. This information can be useful for diagnosing problems by tracing
-     * back the chain of events leading up to this event.</p>
-     */
     inline TimerCanceledEventAttributes& WithDecisionTaskCompletedEventId(long long value) { SetDecisionTaskCompletedEventId(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_timerId;
     bool m_timerIdHasBeenSet = false;
 
-    long long m_startedEventId;
+    long long m_startedEventId{0};
     bool m_startedEventIdHasBeenSet = false;
 
-    long long m_decisionTaskCompletedEventId;
+    long long m_decisionTaskCompletedEventId{0};
     bool m_decisionTaskCompletedEventIdHasBeenSet = false;
   };
 

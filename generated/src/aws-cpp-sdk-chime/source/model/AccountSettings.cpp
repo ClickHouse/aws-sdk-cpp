@@ -18,19 +18,7 @@ namespace Chime
 namespace Model
 {
 
-AccountSettings::AccountSettings() : 
-    m_disableRemoteControl(false),
-    m_disableRemoteControlHasBeenSet(false),
-    m_enableDialOut(false),
-    m_enableDialOutHasBeenSet(false)
-{
-}
-
-AccountSettings::AccountSettings(JsonView jsonValue) : 
-    m_disableRemoteControl(false),
-    m_disableRemoteControlHasBeenSet(false),
-    m_enableDialOut(false),
-    m_enableDialOutHasBeenSet(false)
+AccountSettings::AccountSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ AccountSettings& AccountSettings::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("DisableRemoteControl"))
   {
     m_disableRemoteControl = jsonValue.GetBool("DisableRemoteControl");
-
     m_disableRemoteControlHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("EnableDialOut"))
   {
     m_enableDialOut = jsonValue.GetBool("EnableDialOut");
-
     m_enableDialOutHasBeenSet = true;
   }
-
   return *this;
 }
 

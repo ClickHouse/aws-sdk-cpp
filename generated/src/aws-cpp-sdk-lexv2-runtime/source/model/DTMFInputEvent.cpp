@@ -18,19 +18,7 @@ namespace LexRuntimeV2
 namespace Model
 {
 
-DTMFInputEvent::DTMFInputEvent() : 
-    m_inputCharacterHasBeenSet(false),
-    m_eventIdHasBeenSet(false),
-    m_clientTimestampMillis(0),
-    m_clientTimestampMillisHasBeenSet(false)
-{
-}
-
-DTMFInputEvent::DTMFInputEvent(JsonView jsonValue) : 
-    m_inputCharacterHasBeenSet(false),
-    m_eventIdHasBeenSet(false),
-    m_clientTimestampMillis(0),
-    m_clientTimestampMillisHasBeenSet(false)
+DTMFInputEvent::DTMFInputEvent(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ DTMFInputEvent& DTMFInputEvent::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("inputCharacter"))
   {
     m_inputCharacter = jsonValue.GetString("inputCharacter");
-
     m_inputCharacterHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("eventId"))
   {
     m_eventId = jsonValue.GetString("eventId");
-
     m_eventIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("clientTimestampMillis"))
   {
     m_clientTimestampMillis = jsonValue.GetInt64("clientTimestampMillis");
-
     m_clientTimestampMillisHasBeenSet = true;
   }
-
   return *this;
 }
 

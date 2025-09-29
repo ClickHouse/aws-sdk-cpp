@@ -15,13 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-GetMapSpritesRequest::GetMapSpritesRequest() : 
-    m_fileNameHasBeenSet(false),
-    m_keyHasBeenSet(false),
-    m_mapNameHasBeenSet(false)
-{
-}
-
 Aws::String GetMapSpritesRequest::SerializePayload() const
 {
   return {};

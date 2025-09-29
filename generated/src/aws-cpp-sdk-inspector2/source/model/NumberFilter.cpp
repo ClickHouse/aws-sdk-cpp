@@ -18,39 +18,23 @@ namespace Inspector2
 namespace Model
 {
 
-NumberFilter::NumberFilter() : 
-    m_lowerInclusive(0.0),
-    m_lowerInclusiveHasBeenSet(false),
-    m_upperInclusive(0.0),
-    m_upperInclusiveHasBeenSet(false)
-{
-}
-
-NumberFilter::NumberFilter(JsonView jsonValue) : 
-    m_lowerInclusive(0.0),
-    m_lowerInclusiveHasBeenSet(false),
-    m_upperInclusive(0.0),
-    m_upperInclusiveHasBeenSet(false)
+NumberFilter::NumberFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 NumberFilter& NumberFilter::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("lowerInclusive"))
-  {
-    m_lowerInclusive = jsonValue.GetDouble("lowerInclusive");
-
-    m_lowerInclusiveHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("upperInclusive"))
   {
     m_upperInclusive = jsonValue.GetDouble("upperInclusive");
-
     m_upperInclusiveHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("lowerInclusive"))
+  {
+    m_lowerInclusive = jsonValue.GetDouble("lowerInclusive");
+    m_lowerInclusiveHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -58,15 +42,15 @@ JsonValue NumberFilter::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_lowerInclusiveHasBeenSet)
-  {
-   payload.WithDouble("lowerInclusive", m_lowerInclusive);
-
-  }
-
   if(m_upperInclusiveHasBeenSet)
   {
    payload.WithDouble("upperInclusive", m_upperInclusive);
+
+  }
+
+  if(m_lowerInclusiveHasBeenSet)
+  {
+   payload.WithDouble("lowerInclusive", m_lowerInclusive);
 
   }
 

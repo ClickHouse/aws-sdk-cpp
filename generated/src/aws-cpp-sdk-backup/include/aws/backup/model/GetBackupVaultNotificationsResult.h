@@ -29,243 +29,87 @@ namespace Model
   class GetBackupVaultNotificationsResult
   {
   public:
-    AWS_BACKUP_API GetBackupVaultNotificationsResult();
+    AWS_BACKUP_API GetBackupVaultNotificationsResult() = default;
     AWS_BACKUP_API GetBackupVaultNotificationsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_BACKUP_API GetBackupVaultNotificationsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The name of a logical container where backups are stored. Backup vaults are
      * identified by names that are unique to the account used to create them and the
-     * Region where they are created. They consist of lowercase letters, numbers, and
-     * hyphens.</p>
+     * Region where they are created.</p>
      */
-    inline const Aws::String& GetBackupVaultName() const{ return m_backupVaultName; }
+    inline const Aws::String& GetBackupVaultName() const { return m_backupVaultName; }
+    template<typename BackupVaultNameT = Aws::String>
+    void SetBackupVaultName(BackupVaultNameT&& value) { m_backupVaultNameHasBeenSet = true; m_backupVaultName = std::forward<BackupVaultNameT>(value); }
+    template<typename BackupVaultNameT = Aws::String>
+    GetBackupVaultNotificationsResult& WithBackupVaultName(BackupVaultNameT&& value) { SetBackupVaultName(std::forward<BackupVaultNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of a logical container where backups are stored. Backup vaults are
-     * identified by names that are unique to the account used to create them and the
-     * Region where they are created. They consist of lowercase letters, numbers, and
-     * hyphens.</p>
-     */
-    inline void SetBackupVaultName(const Aws::String& value) { m_backupVaultName = value; }
-
-    /**
-     * <p>The name of a logical container where backups are stored. Backup vaults are
-     * identified by names that are unique to the account used to create them and the
-     * Region where they are created. They consist of lowercase letters, numbers, and
-     * hyphens.</p>
-     */
-    inline void SetBackupVaultName(Aws::String&& value) { m_backupVaultName = std::move(value); }
-
-    /**
-     * <p>The name of a logical container where backups are stored. Backup vaults are
-     * identified by names that are unique to the account used to create them and the
-     * Region where they are created. They consist of lowercase letters, numbers, and
-     * hyphens.</p>
-     */
-    inline void SetBackupVaultName(const char* value) { m_backupVaultName.assign(value); }
-
-    /**
-     * <p>The name of a logical container where backups are stored. Backup vaults are
-     * identified by names that are unique to the account used to create them and the
-     * Region where they are created. They consist of lowercase letters, numbers, and
-     * hyphens.</p>
-     */
-    inline GetBackupVaultNotificationsResult& WithBackupVaultName(const Aws::String& value) { SetBackupVaultName(value); return *this;}
-
-    /**
-     * <p>The name of a logical container where backups are stored. Backup vaults are
-     * identified by names that are unique to the account used to create them and the
-     * Region where they are created. They consist of lowercase letters, numbers, and
-     * hyphens.</p>
-     */
-    inline GetBackupVaultNotificationsResult& WithBackupVaultName(Aws::String&& value) { SetBackupVaultName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of a logical container where backups are stored. Backup vaults are
-     * identified by names that are unique to the account used to create them and the
-     * Region where they are created. They consist of lowercase letters, numbers, and
-     * hyphens.</p>
-     */
-    inline GetBackupVaultNotificationsResult& WithBackupVaultName(const char* value) { SetBackupVaultName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An Amazon Resource Name (ARN) that uniquely identifies a backup vault; for
      * example,
-     * <code>arn:aws:backup:us-east-1:123456789012:vault:aBackupVault</code>.</p>
+     * <code>arn:aws:backup:us-east-1:123456789012:backup-vault:aBackupVault</code>.</p>
      */
-    inline const Aws::String& GetBackupVaultArn() const{ return m_backupVaultArn; }
+    inline const Aws::String& GetBackupVaultArn() const { return m_backupVaultArn; }
+    template<typename BackupVaultArnT = Aws::String>
+    void SetBackupVaultArn(BackupVaultArnT&& value) { m_backupVaultArnHasBeenSet = true; m_backupVaultArn = std::forward<BackupVaultArnT>(value); }
+    template<typename BackupVaultArnT = Aws::String>
+    GetBackupVaultNotificationsResult& WithBackupVaultArn(BackupVaultArnT&& value) { SetBackupVaultArn(std::forward<BackupVaultArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An Amazon Resource Name (ARN) that uniquely identifies a backup vault; for
-     * example,
-     * <code>arn:aws:backup:us-east-1:123456789012:vault:aBackupVault</code>.</p>
-     */
-    inline void SetBackupVaultArn(const Aws::String& value) { m_backupVaultArn = value; }
-
-    /**
-     * <p>An Amazon Resource Name (ARN) that uniquely identifies a backup vault; for
-     * example,
-     * <code>arn:aws:backup:us-east-1:123456789012:vault:aBackupVault</code>.</p>
-     */
-    inline void SetBackupVaultArn(Aws::String&& value) { m_backupVaultArn = std::move(value); }
-
-    /**
-     * <p>An Amazon Resource Name (ARN) that uniquely identifies a backup vault; for
-     * example,
-     * <code>arn:aws:backup:us-east-1:123456789012:vault:aBackupVault</code>.</p>
-     */
-    inline void SetBackupVaultArn(const char* value) { m_backupVaultArn.assign(value); }
-
-    /**
-     * <p>An Amazon Resource Name (ARN) that uniquely identifies a backup vault; for
-     * example,
-     * <code>arn:aws:backup:us-east-1:123456789012:vault:aBackupVault</code>.</p>
-     */
-    inline GetBackupVaultNotificationsResult& WithBackupVaultArn(const Aws::String& value) { SetBackupVaultArn(value); return *this;}
-
-    /**
-     * <p>An Amazon Resource Name (ARN) that uniquely identifies a backup vault; for
-     * example,
-     * <code>arn:aws:backup:us-east-1:123456789012:vault:aBackupVault</code>.</p>
-     */
-    inline GetBackupVaultNotificationsResult& WithBackupVaultArn(Aws::String&& value) { SetBackupVaultArn(std::move(value)); return *this;}
-
-    /**
-     * <p>An Amazon Resource Name (ARN) that uniquely identifies a backup vault; for
-     * example,
-     * <code>arn:aws:backup:us-east-1:123456789012:vault:aBackupVault</code>.</p>
-     */
-    inline GetBackupVaultNotificationsResult& WithBackupVaultArn(const char* value) { SetBackupVaultArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An ARN that uniquely identifies an Amazon Simple Notification Service (Amazon
      * SNS) topic; for example,
      * <code>arn:aws:sns:us-west-2:111122223333:MyTopic</code>.</p>
      */
-    inline const Aws::String& GetSNSTopicArn() const{ return m_sNSTopicArn; }
+    inline const Aws::String& GetSNSTopicArn() const { return m_sNSTopicArn; }
+    template<typename SNSTopicArnT = Aws::String>
+    void SetSNSTopicArn(SNSTopicArnT&& value) { m_sNSTopicArnHasBeenSet = true; m_sNSTopicArn = std::forward<SNSTopicArnT>(value); }
+    template<typename SNSTopicArnT = Aws::String>
+    GetBackupVaultNotificationsResult& WithSNSTopicArn(SNSTopicArnT&& value) { SetSNSTopicArn(std::forward<SNSTopicArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An ARN that uniquely identifies an Amazon Simple Notification Service (Amazon
-     * SNS) topic; for example,
-     * <code>arn:aws:sns:us-west-2:111122223333:MyTopic</code>.</p>
-     */
-    inline void SetSNSTopicArn(const Aws::String& value) { m_sNSTopicArn = value; }
-
-    /**
-     * <p>An ARN that uniquely identifies an Amazon Simple Notification Service (Amazon
-     * SNS) topic; for example,
-     * <code>arn:aws:sns:us-west-2:111122223333:MyTopic</code>.</p>
-     */
-    inline void SetSNSTopicArn(Aws::String&& value) { m_sNSTopicArn = std::move(value); }
-
-    /**
-     * <p>An ARN that uniquely identifies an Amazon Simple Notification Service (Amazon
-     * SNS) topic; for example,
-     * <code>arn:aws:sns:us-west-2:111122223333:MyTopic</code>.</p>
-     */
-    inline void SetSNSTopicArn(const char* value) { m_sNSTopicArn.assign(value); }
-
-    /**
-     * <p>An ARN that uniquely identifies an Amazon Simple Notification Service (Amazon
-     * SNS) topic; for example,
-     * <code>arn:aws:sns:us-west-2:111122223333:MyTopic</code>.</p>
-     */
-    inline GetBackupVaultNotificationsResult& WithSNSTopicArn(const Aws::String& value) { SetSNSTopicArn(value); return *this;}
-
-    /**
-     * <p>An ARN that uniquely identifies an Amazon Simple Notification Service (Amazon
-     * SNS) topic; for example,
-     * <code>arn:aws:sns:us-west-2:111122223333:MyTopic</code>.</p>
-     */
-    inline GetBackupVaultNotificationsResult& WithSNSTopicArn(Aws::String&& value) { SetSNSTopicArn(std::move(value)); return *this;}
-
-    /**
-     * <p>An ARN that uniquely identifies an Amazon Simple Notification Service (Amazon
-     * SNS) topic; for example,
-     * <code>arn:aws:sns:us-west-2:111122223333:MyTopic</code>.</p>
-     */
-    inline GetBackupVaultNotificationsResult& WithSNSTopicArn(const char* value) { SetSNSTopicArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An array of events that indicate the status of jobs to back up resources to
      * the backup vault.</p>
      */
-    inline const Aws::Vector<BackupVaultEvent>& GetBackupVaultEvents() const{ return m_backupVaultEvents; }
+    inline const Aws::Vector<BackupVaultEvent>& GetBackupVaultEvents() const { return m_backupVaultEvents; }
+    template<typename BackupVaultEventsT = Aws::Vector<BackupVaultEvent>>
+    void SetBackupVaultEvents(BackupVaultEventsT&& value) { m_backupVaultEventsHasBeenSet = true; m_backupVaultEvents = std::forward<BackupVaultEventsT>(value); }
+    template<typename BackupVaultEventsT = Aws::Vector<BackupVaultEvent>>
+    GetBackupVaultNotificationsResult& WithBackupVaultEvents(BackupVaultEventsT&& value) { SetBackupVaultEvents(std::forward<BackupVaultEventsT>(value)); return *this;}
+    inline GetBackupVaultNotificationsResult& AddBackupVaultEvents(BackupVaultEvent value) { m_backupVaultEventsHasBeenSet = true; m_backupVaultEvents.push_back(value); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of events that indicate the status of jobs to back up resources to
-     * the backup vault.</p>
-     */
-    inline void SetBackupVaultEvents(const Aws::Vector<BackupVaultEvent>& value) { m_backupVaultEvents = value; }
-
-    /**
-     * <p>An array of events that indicate the status of jobs to back up resources to
-     * the backup vault.</p>
-     */
-    inline void SetBackupVaultEvents(Aws::Vector<BackupVaultEvent>&& value) { m_backupVaultEvents = std::move(value); }
-
-    /**
-     * <p>An array of events that indicate the status of jobs to back up resources to
-     * the backup vault.</p>
-     */
-    inline GetBackupVaultNotificationsResult& WithBackupVaultEvents(const Aws::Vector<BackupVaultEvent>& value) { SetBackupVaultEvents(value); return *this;}
-
-    /**
-     * <p>An array of events that indicate the status of jobs to back up resources to
-     * the backup vault.</p>
-     */
-    inline GetBackupVaultNotificationsResult& WithBackupVaultEvents(Aws::Vector<BackupVaultEvent>&& value) { SetBackupVaultEvents(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of events that indicate the status of jobs to back up resources to
-     * the backup vault.</p>
-     */
-    inline GetBackupVaultNotificationsResult& AddBackupVaultEvents(const BackupVaultEvent& value) { m_backupVaultEvents.push_back(value); return *this; }
-
-    /**
-     * <p>An array of events that indicate the status of jobs to back up resources to
-     * the backup vault.</p>
-     */
-    inline GetBackupVaultNotificationsResult& AddBackupVaultEvents(BackupVaultEvent&& value) { m_backupVaultEvents.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetBackupVaultNotificationsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetBackupVaultNotificationsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetBackupVaultNotificationsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetBackupVaultNotificationsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_backupVaultName;
+    bool m_backupVaultNameHasBeenSet = false;
 
     Aws::String m_backupVaultArn;
+    bool m_backupVaultArnHasBeenSet = false;
 
     Aws::String m_sNSTopicArn;
+    bool m_sNSTopicArnHasBeenSet = false;
 
     Aws::Vector<BackupVaultEvent> m_backupVaultEvents;
+    bool m_backupVaultEventsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

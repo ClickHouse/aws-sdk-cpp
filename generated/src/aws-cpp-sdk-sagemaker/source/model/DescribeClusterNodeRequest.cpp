@@ -12,12 +12,6 @@ using namespace Aws::SageMaker::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DescribeClusterNodeRequest::DescribeClusterNodeRequest() : 
-    m_clusterNameHasBeenSet(false),
-    m_nodeIdHasBeenSet(false)
-{
-}
-
 Aws::String DescribeClusterNodeRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -31,6 +25,12 @@ Aws::String DescribeClusterNodeRequest::SerializePayload() const
   if(m_nodeIdHasBeenSet)
   {
    payload.WithString("NodeId", m_nodeId);
+
+  }
+
+  if(m_nodeLogicalIdHasBeenSet)
+  {
+   payload.WithString("NodeLogicalId", m_nodeLogicalId);
 
   }
 

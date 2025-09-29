@@ -25,7 +25,7 @@ namespace Model
   class CreateProvisionedModelThroughputRequest : public BedrockRequest
   {
   public:
-    AWS_BEDROCK_API CreateProvisionedModelThroughputRequest();
+    AWS_BEDROCK_API CreateProvisionedModelThroughputRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,235 +36,111 @@ namespace Model
     AWS_BEDROCK_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
-     * <p>Unique token value that you can provide. If this token matches a previous
-     * request, Amazon Bedrock ignores the request, but does not return an error.</p>
+     * <p>A unique, case-sensitive identifier to ensure that the API request completes
+     * no more than one time. If this token matches a previous request, Amazon Bedrock
+     * ignores the request, but does not return an error. For more information, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
+     * idempotency</a> in the Amazon S3 User Guide.</p>
      */
-    inline const Aws::String& GetClientRequestToken() const{ return m_clientRequestToken; }
-
-    /**
-     * <p>Unique token value that you can provide. If this token matches a previous
-     * request, Amazon Bedrock ignores the request, but does not return an error.</p>
-     */
+    inline const Aws::String& GetClientRequestToken() const { return m_clientRequestToken; }
     inline bool ClientRequestTokenHasBeenSet() const { return m_clientRequestTokenHasBeenSet; }
+    template<typename ClientRequestTokenT = Aws::String>
+    void SetClientRequestToken(ClientRequestTokenT&& value) { m_clientRequestTokenHasBeenSet = true; m_clientRequestToken = std::forward<ClientRequestTokenT>(value); }
+    template<typename ClientRequestTokenT = Aws::String>
+    CreateProvisionedModelThroughputRequest& WithClientRequestToken(ClientRequestTokenT&& value) { SetClientRequestToken(std::forward<ClientRequestTokenT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Unique token value that you can provide. If this token matches a previous
-     * request, Amazon Bedrock ignores the request, but does not return an error.</p>
+     * <p>Number of model units to allocate. A model unit delivers a specific
+     * throughput level for the specified model. The throughput level of a model unit
+     * specifies the total number of input and output tokens that it can process and
+     * generate within a span of one minute. By default, your account has no model
+     * units for purchasing Provisioned Throughputs with commitment. You must first
+     * visit the <a
+     * href="https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase">Amazon
+     * Web Services support center</a> to request MUs.</p> <p>For model unit quotas,
+     * see <a
+     * href="https://docs.aws.amazon.com/bedrock/latest/userguide/quotas.html#prov-thru-quotas">Provisioned
+     * Throughput quotas</a> in the <a
+     * href="https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html">Amazon
+     * Bedrock User Guide</a>.</p> <p>For more information about what an MU specifies,
+     * contact your Amazon Web Services account manager.</p>
      */
-    inline void SetClientRequestToken(const Aws::String& value) { m_clientRequestTokenHasBeenSet = true; m_clientRequestToken = value; }
-
-    /**
-     * <p>Unique token value that you can provide. If this token matches a previous
-     * request, Amazon Bedrock ignores the request, but does not return an error.</p>
-     */
-    inline void SetClientRequestToken(Aws::String&& value) { m_clientRequestTokenHasBeenSet = true; m_clientRequestToken = std::move(value); }
-
-    /**
-     * <p>Unique token value that you can provide. If this token matches a previous
-     * request, Amazon Bedrock ignores the request, but does not return an error.</p>
-     */
-    inline void SetClientRequestToken(const char* value) { m_clientRequestTokenHasBeenSet = true; m_clientRequestToken.assign(value); }
-
-    /**
-     * <p>Unique token value that you can provide. If this token matches a previous
-     * request, Amazon Bedrock ignores the request, but does not return an error.</p>
-     */
-    inline CreateProvisionedModelThroughputRequest& WithClientRequestToken(const Aws::String& value) { SetClientRequestToken(value); return *this;}
-
-    /**
-     * <p>Unique token value that you can provide. If this token matches a previous
-     * request, Amazon Bedrock ignores the request, but does not return an error.</p>
-     */
-    inline CreateProvisionedModelThroughputRequest& WithClientRequestToken(Aws::String&& value) { SetClientRequestToken(std::move(value)); return *this;}
-
-    /**
-     * <p>Unique token value that you can provide. If this token matches a previous
-     * request, Amazon Bedrock ignores the request, but does not return an error.</p>
-     */
-    inline CreateProvisionedModelThroughputRequest& WithClientRequestToken(const char* value) { SetClientRequestToken(value); return *this;}
-
-
-    /**
-     * <p>Number of model units to allocate.</p>
-     */
-    inline int GetModelUnits() const{ return m_modelUnits; }
-
-    /**
-     * <p>Number of model units to allocate.</p>
-     */
+    inline int GetModelUnits() const { return m_modelUnits; }
     inline bool ModelUnitsHasBeenSet() const { return m_modelUnitsHasBeenSet; }
-
-    /**
-     * <p>Number of model units to allocate.</p>
-     */
     inline void SetModelUnits(int value) { m_modelUnitsHasBeenSet = true; m_modelUnits = value; }
-
-    /**
-     * <p>Number of model units to allocate.</p>
-     */
     inline CreateProvisionedModelThroughputRequest& WithModelUnits(int value) { SetModelUnits(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
-     * <p>Unique name for this provisioned throughput.</p>
+     * <p>The name for this Provisioned Throughput.</p>
      */
-    inline const Aws::String& GetProvisionedModelName() const{ return m_provisionedModelName; }
-
-    /**
-     * <p>Unique name for this provisioned throughput.</p>
-     */
+    inline const Aws::String& GetProvisionedModelName() const { return m_provisionedModelName; }
     inline bool ProvisionedModelNameHasBeenSet() const { return m_provisionedModelNameHasBeenSet; }
+    template<typename ProvisionedModelNameT = Aws::String>
+    void SetProvisionedModelName(ProvisionedModelNameT&& value) { m_provisionedModelNameHasBeenSet = true; m_provisionedModelName = std::forward<ProvisionedModelNameT>(value); }
+    template<typename ProvisionedModelNameT = Aws::String>
+    CreateProvisionedModelThroughputRequest& WithProvisionedModelName(ProvisionedModelNameT&& value) { SetProvisionedModelName(std::forward<ProvisionedModelNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Unique name for this provisioned throughput.</p>
+     * <p>The Amazon Resource Name (ARN) or name of the model to associate with this
+     * Provisioned Throughput. For a list of models for which you can purchase
+     * Provisioned Throughput, see <a
+     * href="https://docs.aws.amazon.com/bedrock/latest/userguide/model-ids.html#prov-throughput-models">Amazon
+     * Bedrock model IDs for purchasing Provisioned Throughput</a> in the <a
+     * href="https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html">Amazon
+     * Bedrock User Guide</a>.</p>
      */
-    inline void SetProvisionedModelName(const Aws::String& value) { m_provisionedModelNameHasBeenSet = true; m_provisionedModelName = value; }
-
-    /**
-     * <p>Unique name for this provisioned throughput.</p>
-     */
-    inline void SetProvisionedModelName(Aws::String&& value) { m_provisionedModelNameHasBeenSet = true; m_provisionedModelName = std::move(value); }
-
-    /**
-     * <p>Unique name for this provisioned throughput.</p>
-     */
-    inline void SetProvisionedModelName(const char* value) { m_provisionedModelNameHasBeenSet = true; m_provisionedModelName.assign(value); }
-
-    /**
-     * <p>Unique name for this provisioned throughput.</p>
-     */
-    inline CreateProvisionedModelThroughputRequest& WithProvisionedModelName(const Aws::String& value) { SetProvisionedModelName(value); return *this;}
-
-    /**
-     * <p>Unique name for this provisioned throughput.</p>
-     */
-    inline CreateProvisionedModelThroughputRequest& WithProvisionedModelName(Aws::String&& value) { SetProvisionedModelName(std::move(value)); return *this;}
-
-    /**
-     * <p>Unique name for this provisioned throughput.</p>
-     */
-    inline CreateProvisionedModelThroughputRequest& WithProvisionedModelName(const char* value) { SetProvisionedModelName(value); return *this;}
-
-
-    /**
-     * <p>Name or ARN of the model to associate with this provisioned throughput.</p>
-     */
-    inline const Aws::String& GetModelId() const{ return m_modelId; }
-
-    /**
-     * <p>Name or ARN of the model to associate with this provisioned throughput.</p>
-     */
+    inline const Aws::String& GetModelId() const { return m_modelId; }
     inline bool ModelIdHasBeenSet() const { return m_modelIdHasBeenSet; }
+    template<typename ModelIdT = Aws::String>
+    void SetModelId(ModelIdT&& value) { m_modelIdHasBeenSet = true; m_modelId = std::forward<ModelIdT>(value); }
+    template<typename ModelIdT = Aws::String>
+    CreateProvisionedModelThroughputRequest& WithModelId(ModelIdT&& value) { SetModelId(std::forward<ModelIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Name or ARN of the model to associate with this provisioned throughput.</p>
+     * <p>The commitment duration requested for the Provisioned Throughput. Billing
+     * occurs hourly and is discounted for longer commitment terms. To request a
+     * no-commit Provisioned Throughput, omit this field.</p> <p>Custom models support
+     * all levels of commitment. To see which base models support no commitment, see <a
+     * href="https://docs.aws.amazon.com/bedrock/latest/userguide/pt-supported.html">Supported
+     * regions and models for Provisioned Throughput</a> in the <a
+     * href="https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html">Amazon
+     * Bedrock User Guide</a> </p>
      */
-    inline void SetModelId(const Aws::String& value) { m_modelIdHasBeenSet = true; m_modelId = value; }
-
-    /**
-     * <p>Name or ARN of the model to associate with this provisioned throughput.</p>
-     */
-    inline void SetModelId(Aws::String&& value) { m_modelIdHasBeenSet = true; m_modelId = std::move(value); }
-
-    /**
-     * <p>Name or ARN of the model to associate with this provisioned throughput.</p>
-     */
-    inline void SetModelId(const char* value) { m_modelIdHasBeenSet = true; m_modelId.assign(value); }
-
-    /**
-     * <p>Name or ARN of the model to associate with this provisioned throughput.</p>
-     */
-    inline CreateProvisionedModelThroughputRequest& WithModelId(const Aws::String& value) { SetModelId(value); return *this;}
-
-    /**
-     * <p>Name or ARN of the model to associate with this provisioned throughput.</p>
-     */
-    inline CreateProvisionedModelThroughputRequest& WithModelId(Aws::String&& value) { SetModelId(std::move(value)); return *this;}
-
-    /**
-     * <p>Name or ARN of the model to associate with this provisioned throughput.</p>
-     */
-    inline CreateProvisionedModelThroughputRequest& WithModelId(const char* value) { SetModelId(value); return *this;}
-
-
-    /**
-     * <p>Commitment duration requested for the provisioned throughput.</p>
-     */
-    inline const CommitmentDuration& GetCommitmentDuration() const{ return m_commitmentDuration; }
-
-    /**
-     * <p>Commitment duration requested for the provisioned throughput.</p>
-     */
+    inline CommitmentDuration GetCommitmentDuration() const { return m_commitmentDuration; }
     inline bool CommitmentDurationHasBeenSet() const { return m_commitmentDurationHasBeenSet; }
+    inline void SetCommitmentDuration(CommitmentDuration value) { m_commitmentDurationHasBeenSet = true; m_commitmentDuration = value; }
+    inline CreateProvisionedModelThroughputRequest& WithCommitmentDuration(CommitmentDuration value) { SetCommitmentDuration(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Commitment duration requested for the provisioned throughput.</p>
+     * <p>Tags to associate with this Provisioned Throughput.</p>
      */
-    inline void SetCommitmentDuration(const CommitmentDuration& value) { m_commitmentDurationHasBeenSet = true; m_commitmentDuration = value; }
-
-    /**
-     * <p>Commitment duration requested for the provisioned throughput.</p>
-     */
-    inline void SetCommitmentDuration(CommitmentDuration&& value) { m_commitmentDurationHasBeenSet = true; m_commitmentDuration = std::move(value); }
-
-    /**
-     * <p>Commitment duration requested for the provisioned throughput.</p>
-     */
-    inline CreateProvisionedModelThroughputRequest& WithCommitmentDuration(const CommitmentDuration& value) { SetCommitmentDuration(value); return *this;}
-
-    /**
-     * <p>Commitment duration requested for the provisioned throughput.</p>
-     */
-    inline CreateProvisionedModelThroughputRequest& WithCommitmentDuration(CommitmentDuration&& value) { SetCommitmentDuration(std::move(value)); return *this;}
-
-
-    /**
-     * <p>Tags to associate with this provisioned throughput.</p>
-     */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>Tags to associate with this provisioned throughput.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>Tags to associate with this provisioned throughput.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>Tags to associate with this provisioned throughput.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>Tags to associate with this provisioned throughput.</p>
-     */
-    inline CreateProvisionedModelThroughputRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>Tags to associate with this provisioned throughput.</p>
-     */
-    inline CreateProvisionedModelThroughputRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>Tags to associate with this provisioned throughput.</p>
-     */
-    inline CreateProvisionedModelThroughputRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>Tags to associate with this provisioned throughput.</p>
-     */
-    inline CreateProvisionedModelThroughputRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    CreateProvisionedModelThroughputRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    CreateProvisionedModelThroughputRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
-    Aws::String m_clientRequestToken;
-    bool m_clientRequestTokenHasBeenSet = false;
+    Aws::String m_clientRequestToken{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_clientRequestTokenHasBeenSet = true;
 
-    int m_modelUnits;
+    int m_modelUnits{0};
     bool m_modelUnitsHasBeenSet = false;
 
     Aws::String m_provisionedModelName;
@@ -273,7 +149,7 @@ namespace Model
     Aws::String m_modelId;
     bool m_modelIdHasBeenSet = false;
 
-    CommitmentDuration m_commitmentDuration;
+    CommitmentDuration m_commitmentDuration{CommitmentDuration::NOT_SET};
     bool m_commitmentDurationHasBeenSet = false;
 
     Aws::Vector<Tag> m_tags;

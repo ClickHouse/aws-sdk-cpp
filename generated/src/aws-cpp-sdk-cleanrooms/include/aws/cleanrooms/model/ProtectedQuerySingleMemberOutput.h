@@ -32,60 +32,24 @@ namespace Model
   class ProtectedQuerySingleMemberOutput
   {
   public:
-    AWS_CLEANROOMS_API ProtectedQuerySingleMemberOutput();
+    AWS_CLEANROOMS_API ProtectedQuerySingleMemberOutput() = default;
     AWS_CLEANROOMS_API ProtectedQuerySingleMemberOutput(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLEANROOMS_API ProtectedQuerySingleMemberOutput& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLEANROOMS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Web Services account ID of the member in the collaboration who can
      * receive results for the query.</p>
      */
-    inline const Aws::String& GetAccountId() const{ return m_accountId; }
-
-    /**
-     * <p>The Amazon Web Services account ID of the member in the collaboration who can
-     * receive results for the query.</p>
-     */
+    inline const Aws::String& GetAccountId() const { return m_accountId; }
     inline bool AccountIdHasBeenSet() const { return m_accountIdHasBeenSet; }
-
-    /**
-     * <p>The Amazon Web Services account ID of the member in the collaboration who can
-     * receive results for the query.</p>
-     */
-    inline void SetAccountId(const Aws::String& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
-
-    /**
-     * <p>The Amazon Web Services account ID of the member in the collaboration who can
-     * receive results for the query.</p>
-     */
-    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID of the member in the collaboration who can
-     * receive results for the query.</p>
-     */
-    inline void SetAccountId(const char* value) { m_accountIdHasBeenSet = true; m_accountId.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID of the member in the collaboration who can
-     * receive results for the query.</p>
-     */
-    inline ProtectedQuerySingleMemberOutput& WithAccountId(const Aws::String& value) { SetAccountId(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID of the member in the collaboration who can
-     * receive results for the query.</p>
-     */
-    inline ProtectedQuerySingleMemberOutput& WithAccountId(Aws::String&& value) { SetAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID of the member in the collaboration who can
-     * receive results for the query.</p>
-     */
-    inline ProtectedQuerySingleMemberOutput& WithAccountId(const char* value) { SetAccountId(value); return *this;}
-
+    template<typename AccountIdT = Aws::String>
+    void SetAccountId(AccountIdT&& value) { m_accountIdHasBeenSet = true; m_accountId = std::forward<AccountIdT>(value); }
+    template<typename AccountIdT = Aws::String>
+    ProtectedQuerySingleMemberOutput& WithAccountId(AccountIdT&& value) { SetAccountId(std::forward<AccountIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_accountId;

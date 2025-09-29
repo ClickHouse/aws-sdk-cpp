@@ -22,7 +22,7 @@ namespace Model
   class DeleteSchemaVersionsRequest : public GlueRequest
   {
   public:
-    AWS_GLUE_API DeleteSchemaVersionsRequest();
+    AWS_GLUE_API DeleteSchemaVersionsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,99 +35,32 @@ namespace Model
     AWS_GLUE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>This is a wrapper structure that may contain the schema name and Amazon
      * Resource Name (ARN).</p>
      */
-    inline const SchemaId& GetSchemaId() const{ return m_schemaId; }
-
-    /**
-     * <p>This is a wrapper structure that may contain the schema name and Amazon
-     * Resource Name (ARN).</p>
-     */
+    inline const SchemaId& GetSchemaId() const { return m_schemaId; }
     inline bool SchemaIdHasBeenSet() const { return m_schemaIdHasBeenSet; }
+    template<typename SchemaIdT = SchemaId>
+    void SetSchemaId(SchemaIdT&& value) { m_schemaIdHasBeenSet = true; m_schemaId = std::forward<SchemaIdT>(value); }
+    template<typename SchemaIdT = SchemaId>
+    DeleteSchemaVersionsRequest& WithSchemaId(SchemaIdT&& value) { SetSchemaId(std::forward<SchemaIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>This is a wrapper structure that may contain the schema name and Amazon
-     * Resource Name (ARN).</p>
-     */
-    inline void SetSchemaId(const SchemaId& value) { m_schemaIdHasBeenSet = true; m_schemaId = value; }
-
-    /**
-     * <p>This is a wrapper structure that may contain the schema name and Amazon
-     * Resource Name (ARN).</p>
-     */
-    inline void SetSchemaId(SchemaId&& value) { m_schemaIdHasBeenSet = true; m_schemaId = std::move(value); }
-
-    /**
-     * <p>This is a wrapper structure that may contain the schema name and Amazon
-     * Resource Name (ARN).</p>
-     */
-    inline DeleteSchemaVersionsRequest& WithSchemaId(const SchemaId& value) { SetSchemaId(value); return *this;}
-
-    /**
-     * <p>This is a wrapper structure that may contain the schema name and Amazon
-     * Resource Name (ARN).</p>
-     */
-    inline DeleteSchemaVersionsRequest& WithSchemaId(SchemaId&& value) { SetSchemaId(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A version range may be supplied which may be of the format:</p> <ul> <li>
      * <p>a single version number, 5</p> </li> <li> <p>a range, 5-8 : deletes versions
      * 5, 6, 7, 8</p> </li> </ul>
      */
-    inline const Aws::String& GetVersions() const{ return m_versions; }
-
-    /**
-     * <p>A version range may be supplied which may be of the format:</p> <ul> <li>
-     * <p>a single version number, 5</p> </li> <li> <p>a range, 5-8 : deletes versions
-     * 5, 6, 7, 8</p> </li> </ul>
-     */
+    inline const Aws::String& GetVersions() const { return m_versions; }
     inline bool VersionsHasBeenSet() const { return m_versionsHasBeenSet; }
-
-    /**
-     * <p>A version range may be supplied which may be of the format:</p> <ul> <li>
-     * <p>a single version number, 5</p> </li> <li> <p>a range, 5-8 : deletes versions
-     * 5, 6, 7, 8</p> </li> </ul>
-     */
-    inline void SetVersions(const Aws::String& value) { m_versionsHasBeenSet = true; m_versions = value; }
-
-    /**
-     * <p>A version range may be supplied which may be of the format:</p> <ul> <li>
-     * <p>a single version number, 5</p> </li> <li> <p>a range, 5-8 : deletes versions
-     * 5, 6, 7, 8</p> </li> </ul>
-     */
-    inline void SetVersions(Aws::String&& value) { m_versionsHasBeenSet = true; m_versions = std::move(value); }
-
-    /**
-     * <p>A version range may be supplied which may be of the format:</p> <ul> <li>
-     * <p>a single version number, 5</p> </li> <li> <p>a range, 5-8 : deletes versions
-     * 5, 6, 7, 8</p> </li> </ul>
-     */
-    inline void SetVersions(const char* value) { m_versionsHasBeenSet = true; m_versions.assign(value); }
-
-    /**
-     * <p>A version range may be supplied which may be of the format:</p> <ul> <li>
-     * <p>a single version number, 5</p> </li> <li> <p>a range, 5-8 : deletes versions
-     * 5, 6, 7, 8</p> </li> </ul>
-     */
-    inline DeleteSchemaVersionsRequest& WithVersions(const Aws::String& value) { SetVersions(value); return *this;}
-
-    /**
-     * <p>A version range may be supplied which may be of the format:</p> <ul> <li>
-     * <p>a single version number, 5</p> </li> <li> <p>a range, 5-8 : deletes versions
-     * 5, 6, 7, 8</p> </li> </ul>
-     */
-    inline DeleteSchemaVersionsRequest& WithVersions(Aws::String&& value) { SetVersions(std::move(value)); return *this;}
-
-    /**
-     * <p>A version range may be supplied which may be of the format:</p> <ul> <li>
-     * <p>a single version number, 5</p> </li> <li> <p>a range, 5-8 : deletes versions
-     * 5, 6, 7, 8</p> </li> </ul>
-     */
-    inline DeleteSchemaVersionsRequest& WithVersions(const char* value) { SetVersions(value); return *this;}
-
+    template<typename VersionsT = Aws::String>
+    void SetVersions(VersionsT&& value) { m_versionsHasBeenSet = true; m_versions = std::forward<VersionsT>(value); }
+    template<typename VersionsT = Aws::String>
+    DeleteSchemaVersionsRequest& WithVersions(VersionsT&& value) { SetVersions(std::forward<VersionsT>(value)); return *this;}
+    ///@}
   private:
 
     SchemaId m_schemaId;

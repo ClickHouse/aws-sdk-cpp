@@ -30,59 +30,37 @@ namespace Model
   class HandOffTime
   {
   public:
-    AWS_SSMCONTACTS_API HandOffTime();
+    AWS_SSMCONTACTS_API HandOffTime() = default;
     AWS_SSMCONTACTS_API HandOffTime(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSMCONTACTS_API HandOffTime& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSMCONTACTS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The hour when an on-call rotation shift begins or ends.</p>
      */
-    inline int GetHourOfDay() const{ return m_hourOfDay; }
-
-    /**
-     * <p>The hour when an on-call rotation shift begins or ends.</p>
-     */
+    inline int GetHourOfDay() const { return m_hourOfDay; }
     inline bool HourOfDayHasBeenSet() const { return m_hourOfDayHasBeenSet; }
-
-    /**
-     * <p>The hour when an on-call rotation shift begins or ends.</p>
-     */
     inline void SetHourOfDay(int value) { m_hourOfDayHasBeenSet = true; m_hourOfDay = value; }
-
-    /**
-     * <p>The hour when an on-call rotation shift begins or ends.</p>
-     */
     inline HandOffTime& WithHourOfDay(int value) { SetHourOfDay(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The minute when an on-call rotation shift begins or ends.</p>
      */
-    inline int GetMinuteOfHour() const{ return m_minuteOfHour; }
-
-    /**
-     * <p>The minute when an on-call rotation shift begins or ends.</p>
-     */
+    inline int GetMinuteOfHour() const { return m_minuteOfHour; }
     inline bool MinuteOfHourHasBeenSet() const { return m_minuteOfHourHasBeenSet; }
-
-    /**
-     * <p>The minute when an on-call rotation shift begins or ends.</p>
-     */
     inline void SetMinuteOfHour(int value) { m_minuteOfHourHasBeenSet = true; m_minuteOfHour = value; }
-
-    /**
-     * <p>The minute when an on-call rotation shift begins or ends.</p>
-     */
     inline HandOffTime& WithMinuteOfHour(int value) { SetMinuteOfHour(value); return *this;}
-
+    ///@}
   private:
 
-    int m_hourOfDay;
+    int m_hourOfDay{0};
     bool m_hourOfDayHasBeenSet = false;
 
-    int m_minuteOfHour;
+    int m_minuteOfHour{0};
     bool m_minuteOfHourHasBeenSet = false;
   };
 

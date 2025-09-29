@@ -33,79 +33,39 @@ namespace Model
   class Source
   {
   public:
-    AWS_ROLESANYWHERE_API Source();
+    AWS_ROLESANYWHERE_API Source() = default;
     AWS_ROLESANYWHERE_API Source(Aws::Utils::Json::JsonView jsonValue);
     AWS_ROLESANYWHERE_API Source& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ROLESANYWHERE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The data field of the trust anchor depending on its type. </p>
      */
-    inline const SourceData& GetSourceData() const{ return m_sourceData; }
-
-    /**
-     * <p>The data field of the trust anchor depending on its type. </p>
-     */
+    inline const SourceData& GetSourceData() const { return m_sourceData; }
     inline bool SourceDataHasBeenSet() const { return m_sourceDataHasBeenSet; }
+    template<typename SourceDataT = SourceData>
+    void SetSourceData(SourceDataT&& value) { m_sourceDataHasBeenSet = true; m_sourceData = std::forward<SourceDataT>(value); }
+    template<typename SourceDataT = SourceData>
+    Source& WithSourceData(SourceDataT&& value) { SetSourceData(std::forward<SourceDataT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The data field of the trust anchor depending on its type. </p>
-     */
-    inline void SetSourceData(const SourceData& value) { m_sourceDataHasBeenSet = true; m_sourceData = value; }
-
-    /**
-     * <p>The data field of the trust anchor depending on its type. </p>
-     */
-    inline void SetSourceData(SourceData&& value) { m_sourceDataHasBeenSet = true; m_sourceData = std::move(value); }
-
-    /**
-     * <p>The data field of the trust anchor depending on its type. </p>
-     */
-    inline Source& WithSourceData(const SourceData& value) { SetSourceData(value); return *this;}
-
-    /**
-     * <p>The data field of the trust anchor depending on its type. </p>
-     */
-    inline Source& WithSourceData(SourceData&& value) { SetSourceData(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of the trust anchor. </p>
      */
-    inline const TrustAnchorType& GetSourceType() const{ return m_sourceType; }
-
-    /**
-     * <p>The type of the trust anchor. </p>
-     */
+    inline TrustAnchorType GetSourceType() const { return m_sourceType; }
     inline bool SourceTypeHasBeenSet() const { return m_sourceTypeHasBeenSet; }
-
-    /**
-     * <p>The type of the trust anchor. </p>
-     */
-    inline void SetSourceType(const TrustAnchorType& value) { m_sourceTypeHasBeenSet = true; m_sourceType = value; }
-
-    /**
-     * <p>The type of the trust anchor. </p>
-     */
-    inline void SetSourceType(TrustAnchorType&& value) { m_sourceTypeHasBeenSet = true; m_sourceType = std::move(value); }
-
-    /**
-     * <p>The type of the trust anchor. </p>
-     */
-    inline Source& WithSourceType(const TrustAnchorType& value) { SetSourceType(value); return *this;}
-
-    /**
-     * <p>The type of the trust anchor. </p>
-     */
-    inline Source& WithSourceType(TrustAnchorType&& value) { SetSourceType(std::move(value)); return *this;}
-
+    inline void SetSourceType(TrustAnchorType value) { m_sourceTypeHasBeenSet = true; m_sourceType = value; }
+    inline Source& WithSourceType(TrustAnchorType value) { SetSourceType(value); return *this;}
+    ///@}
   private:
 
     SourceData m_sourceData;
     bool m_sourceDataHasBeenSet = false;
 
-    TrustAnchorType m_sourceType;
+    TrustAnchorType m_sourceType{TrustAnchorType::NOT_SET};
     bool m_sourceTypeHasBeenSet = false;
   };
 

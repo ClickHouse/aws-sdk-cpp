@@ -32,147 +32,50 @@ namespace Model
   class BrokerInstance
   {
   public:
-    AWS_MQ_API BrokerInstance();
+    AWS_MQ_API BrokerInstance() = default;
     AWS_MQ_API BrokerInstance(Aws::Utils::Json::JsonView jsonValue);
     AWS_MQ_API BrokerInstance& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MQ_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The brokers web console URL.</p>
      */
-    inline const Aws::String& GetConsoleURL() const{ return m_consoleURL; }
-
-    /**
-     * <p>The brokers web console URL.</p>
-     */
+    inline const Aws::String& GetConsoleURL() const { return m_consoleURL; }
     inline bool ConsoleURLHasBeenSet() const { return m_consoleURLHasBeenSet; }
+    template<typename ConsoleURLT = Aws::String>
+    void SetConsoleURL(ConsoleURLT&& value) { m_consoleURLHasBeenSet = true; m_consoleURL = std::forward<ConsoleURLT>(value); }
+    template<typename ConsoleURLT = Aws::String>
+    BrokerInstance& WithConsoleURL(ConsoleURLT&& value) { SetConsoleURL(std::forward<ConsoleURLT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The brokers web console URL.</p>
-     */
-    inline void SetConsoleURL(const Aws::String& value) { m_consoleURLHasBeenSet = true; m_consoleURL = value; }
-
-    /**
-     * <p>The brokers web console URL.</p>
-     */
-    inline void SetConsoleURL(Aws::String&& value) { m_consoleURLHasBeenSet = true; m_consoleURL = std::move(value); }
-
-    /**
-     * <p>The brokers web console URL.</p>
-     */
-    inline void SetConsoleURL(const char* value) { m_consoleURLHasBeenSet = true; m_consoleURL.assign(value); }
-
-    /**
-     * <p>The brokers web console URL.</p>
-     */
-    inline BrokerInstance& WithConsoleURL(const Aws::String& value) { SetConsoleURL(value); return *this;}
-
-    /**
-     * <p>The brokers web console URL.</p>
-     */
-    inline BrokerInstance& WithConsoleURL(Aws::String&& value) { SetConsoleURL(std::move(value)); return *this;}
-
-    /**
-     * <p>The brokers web console URL.</p>
-     */
-    inline BrokerInstance& WithConsoleURL(const char* value) { SetConsoleURL(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The broker's wire-level protocol endpoints.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetEndpoints() const{ return m_endpoints; }
-
-    /**
-     * <p>The broker's wire-level protocol endpoints.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetEndpoints() const { return m_endpoints; }
     inline bool EndpointsHasBeenSet() const { return m_endpointsHasBeenSet; }
+    template<typename EndpointsT = Aws::Vector<Aws::String>>
+    void SetEndpoints(EndpointsT&& value) { m_endpointsHasBeenSet = true; m_endpoints = std::forward<EndpointsT>(value); }
+    template<typename EndpointsT = Aws::Vector<Aws::String>>
+    BrokerInstance& WithEndpoints(EndpointsT&& value) { SetEndpoints(std::forward<EndpointsT>(value)); return *this;}
+    template<typename EndpointsT = Aws::String>
+    BrokerInstance& AddEndpoints(EndpointsT&& value) { m_endpointsHasBeenSet = true; m_endpoints.emplace_back(std::forward<EndpointsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The broker's wire-level protocol endpoints.</p>
-     */
-    inline void SetEndpoints(const Aws::Vector<Aws::String>& value) { m_endpointsHasBeenSet = true; m_endpoints = value; }
-
-    /**
-     * <p>The broker's wire-level protocol endpoints.</p>
-     */
-    inline void SetEndpoints(Aws::Vector<Aws::String>&& value) { m_endpointsHasBeenSet = true; m_endpoints = std::move(value); }
-
-    /**
-     * <p>The broker's wire-level protocol endpoints.</p>
-     */
-    inline BrokerInstance& WithEndpoints(const Aws::Vector<Aws::String>& value) { SetEndpoints(value); return *this;}
-
-    /**
-     * <p>The broker's wire-level protocol endpoints.</p>
-     */
-    inline BrokerInstance& WithEndpoints(Aws::Vector<Aws::String>&& value) { SetEndpoints(std::move(value)); return *this;}
-
-    /**
-     * <p>The broker's wire-level protocol endpoints.</p>
-     */
-    inline BrokerInstance& AddEndpoints(const Aws::String& value) { m_endpointsHasBeenSet = true; m_endpoints.push_back(value); return *this; }
-
-    /**
-     * <p>The broker's wire-level protocol endpoints.</p>
-     */
-    inline BrokerInstance& AddEndpoints(Aws::String&& value) { m_endpointsHasBeenSet = true; m_endpoints.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The broker's wire-level protocol endpoints.</p>
-     */
-    inline BrokerInstance& AddEndpoints(const char* value) { m_endpointsHasBeenSet = true; m_endpoints.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The IP address of the Elastic Network Interface (ENI) attached to the broker.
      * Does not apply to RabbitMQ brokers.</p>
      */
-    inline const Aws::String& GetIpAddress() const{ return m_ipAddress; }
-
-    /**
-     * <p>The IP address of the Elastic Network Interface (ENI) attached to the broker.
-     * Does not apply to RabbitMQ brokers.</p>
-     */
+    inline const Aws::String& GetIpAddress() const { return m_ipAddress; }
     inline bool IpAddressHasBeenSet() const { return m_ipAddressHasBeenSet; }
-
-    /**
-     * <p>The IP address of the Elastic Network Interface (ENI) attached to the broker.
-     * Does not apply to RabbitMQ brokers.</p>
-     */
-    inline void SetIpAddress(const Aws::String& value) { m_ipAddressHasBeenSet = true; m_ipAddress = value; }
-
-    /**
-     * <p>The IP address of the Elastic Network Interface (ENI) attached to the broker.
-     * Does not apply to RabbitMQ brokers.</p>
-     */
-    inline void SetIpAddress(Aws::String&& value) { m_ipAddressHasBeenSet = true; m_ipAddress = std::move(value); }
-
-    /**
-     * <p>The IP address of the Elastic Network Interface (ENI) attached to the broker.
-     * Does not apply to RabbitMQ brokers.</p>
-     */
-    inline void SetIpAddress(const char* value) { m_ipAddressHasBeenSet = true; m_ipAddress.assign(value); }
-
-    /**
-     * <p>The IP address of the Elastic Network Interface (ENI) attached to the broker.
-     * Does not apply to RabbitMQ brokers.</p>
-     */
-    inline BrokerInstance& WithIpAddress(const Aws::String& value) { SetIpAddress(value); return *this;}
-
-    /**
-     * <p>The IP address of the Elastic Network Interface (ENI) attached to the broker.
-     * Does not apply to RabbitMQ brokers.</p>
-     */
-    inline BrokerInstance& WithIpAddress(Aws::String&& value) { SetIpAddress(std::move(value)); return *this;}
-
-    /**
-     * <p>The IP address of the Elastic Network Interface (ENI) attached to the broker.
-     * Does not apply to RabbitMQ brokers.</p>
-     */
-    inline BrokerInstance& WithIpAddress(const char* value) { SetIpAddress(value); return *this;}
-
+    template<typename IpAddressT = Aws::String>
+    void SetIpAddress(IpAddressT&& value) { m_ipAddressHasBeenSet = true; m_ipAddress = std::forward<IpAddressT>(value); }
+    template<typename IpAddressT = Aws::String>
+    BrokerInstance& WithIpAddress(IpAddressT&& value) { SetIpAddress(std::forward<IpAddressT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_consoleURL;

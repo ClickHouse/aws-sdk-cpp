@@ -16,12 +16,14 @@ namespace Model
   enum class UpstreamRegistry
   {
     NOT_SET,
+    ecr,
     ecr_public,
     quay,
     k8s,
     docker_hub,
     github_container_registry,
-    azure_container_registry
+    azure_container_registry,
+    gitlab_container_registry
   };
 
 namespace UpstreamRegistryMapper

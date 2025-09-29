@@ -20,19 +20,7 @@ namespace Neptune
 namespace Model
 {
 
-DoubleRange::DoubleRange() : 
-    m_from(0.0),
-    m_fromHasBeenSet(false),
-    m_to(0.0),
-    m_toHasBeenSet(false)
-{
-}
-
-DoubleRange::DoubleRange(const XmlNode& xmlNode) : 
-    m_from(0.0),
-    m_fromHasBeenSet(false),
-    m_to(0.0),
-    m_toHasBeenSet(false)
+DoubleRange::DoubleRange(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -78,11 +66,11 @@ void DoubleRange::OutputToStream(Aws::OStream& oStream, const char* location) co
 {
   if(m_fromHasBeenSet)
   {
-        oStream << location << ".From=" << StringUtils::URLEncode(m_from) << "&";
+      oStream << location << ".From=" << StringUtils::URLEncode(m_from) << "&";
   }
   if(m_toHasBeenSet)
   {
-        oStream << location << ".To=" << StringUtils::URLEncode(m_to) << "&";
+      oStream << location << ".To=" << StringUtils::URLEncode(m_to) << "&";
   }
 }
 

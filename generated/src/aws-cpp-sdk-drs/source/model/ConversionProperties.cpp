@@ -18,23 +18,7 @@ namespace drs
 namespace Model
 {
 
-ConversionProperties::ConversionProperties() : 
-    m_dataTimestampHasBeenSet(false),
-    m_forceUefi(false),
-    m_forceUefiHasBeenSet(false),
-    m_rootVolumeNameHasBeenSet(false),
-    m_volumeToConversionMapHasBeenSet(false),
-    m_volumeToVolumeSizeHasBeenSet(false)
-{
-}
-
-ConversionProperties::ConversionProperties(JsonView jsonValue) : 
-    m_dataTimestampHasBeenSet(false),
-    m_forceUefi(false),
-    m_forceUefiHasBeenSet(false),
-    m_rootVolumeNameHasBeenSet(false),
-    m_volumeToConversionMapHasBeenSet(false),
-    m_volumeToVolumeSizeHasBeenSet(false)
+ConversionProperties::ConversionProperties(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,24 +28,18 @@ ConversionProperties& ConversionProperties::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("dataTimestamp"))
   {
     m_dataTimestamp = jsonValue.GetString("dataTimestamp");
-
     m_dataTimestampHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("forceUefi"))
   {
     m_forceUefi = jsonValue.GetBool("forceUefi");
-
     m_forceUefiHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("rootVolumeName"))
   {
     m_rootVolumeName = jsonValue.GetString("rootVolumeName");
-
     m_rootVolumeNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("volumeToConversionMap"))
   {
     Aws::Map<Aws::String, JsonView> volumeToConversionMapJsonMap = jsonValue.GetObject("volumeToConversionMap").GetAllObjects();
@@ -77,7 +55,22 @@ ConversionProperties& ConversionProperties::operator =(JsonView jsonValue)
     }
     m_volumeToConversionMapHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("volumeToProductCodes"))
+  {
+    Aws::Map<Aws::String, JsonView> volumeToProductCodesJsonMap = jsonValue.GetObject("volumeToProductCodes").GetAllObjects();
+    for(auto& volumeToProductCodesItem : volumeToProductCodesJsonMap)
+    {
+      Aws::Utils::Array<JsonView> productCodesJsonList = volumeToProductCodesItem.second.AsArray();
+      Aws::Vector<ProductCode> productCodesList;
+      productCodesList.reserve((size_t)productCodesJsonList.GetLength());
+      for(unsigned productCodesIndex = 0; productCodesIndex < productCodesJsonList.GetLength(); ++productCodesIndex)
+      {
+        productCodesList.push_back(productCodesJsonList[productCodesIndex].AsObject());
+      }
+      m_volumeToProductCodes[volumeToProductCodesItem.first] = std::move(productCodesList);
+    }
+    m_volumeToProductCodesHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("volumeToVolumeSize"))
   {
     Aws::Map<Aws::String, JsonView> volumeToVolumeSizeJsonMap = jsonValue.GetObject("volumeToVolumeSize").GetAllObjects();
@@ -87,7 +80,6 @@ ConversionProperties& ConversionProperties::operator =(JsonView jsonValue)
     }
     m_volumeToVolumeSizeHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -126,6 +118,22 @@ JsonValue ConversionProperties::Jsonize() const
      volumeToConversionMapJsonMap.WithObject(volumeToConversionMapItem.first, std::move(conversionMapJsonMap));
    }
    payload.WithObject("volumeToConversionMap", std::move(volumeToConversionMapJsonMap));
+
+  }
+
+  if(m_volumeToProductCodesHasBeenSet)
+  {
+   JsonValue volumeToProductCodesJsonMap;
+   for(auto& volumeToProductCodesItem : m_volumeToProductCodes)
+   {
+     Aws::Utils::Array<JsonValue> productCodesJsonList(volumeToProductCodesItem.second.size());
+     for(unsigned productCodesIndex = 0; productCodesIndex < productCodesJsonList.GetLength(); ++productCodesIndex)
+     {
+       productCodesJsonList[productCodesIndex].AsObject(volumeToProductCodesItem.second[productCodesIndex].Jsonize());
+     }
+     volumeToProductCodesJsonMap.WithArray(volumeToProductCodesItem.first, std::move(productCodesJsonList));
+   }
+   payload.WithObject("volumeToProductCodes", std::move(volumeToProductCodesJsonMap));
 
   }
 

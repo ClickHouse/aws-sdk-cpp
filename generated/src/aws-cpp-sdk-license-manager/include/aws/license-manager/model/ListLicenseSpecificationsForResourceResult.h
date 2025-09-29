@@ -29,111 +29,53 @@ namespace Model
   class ListLicenseSpecificationsForResourceResult
   {
   public:
-    AWS_LICENSEMANAGER_API ListLicenseSpecificationsForResourceResult();
+    AWS_LICENSEMANAGER_API ListLicenseSpecificationsForResourceResult() = default;
     AWS_LICENSEMANAGER_API ListLicenseSpecificationsForResourceResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_LICENSEMANAGER_API ListLicenseSpecificationsForResourceResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>License configurations associated with a resource.</p>
      */
-    inline const Aws::Vector<LicenseSpecification>& GetLicenseSpecifications() const{ return m_licenseSpecifications; }
+    inline const Aws::Vector<LicenseSpecification>& GetLicenseSpecifications() const { return m_licenseSpecifications; }
+    template<typename LicenseSpecificationsT = Aws::Vector<LicenseSpecification>>
+    void SetLicenseSpecifications(LicenseSpecificationsT&& value) { m_licenseSpecificationsHasBeenSet = true; m_licenseSpecifications = std::forward<LicenseSpecificationsT>(value); }
+    template<typename LicenseSpecificationsT = Aws::Vector<LicenseSpecification>>
+    ListLicenseSpecificationsForResourceResult& WithLicenseSpecifications(LicenseSpecificationsT&& value) { SetLicenseSpecifications(std::forward<LicenseSpecificationsT>(value)); return *this;}
+    template<typename LicenseSpecificationsT = LicenseSpecification>
+    ListLicenseSpecificationsForResourceResult& AddLicenseSpecifications(LicenseSpecificationsT&& value) { m_licenseSpecificationsHasBeenSet = true; m_licenseSpecifications.emplace_back(std::forward<LicenseSpecificationsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>License configurations associated with a resource.</p>
-     */
-    inline void SetLicenseSpecifications(const Aws::Vector<LicenseSpecification>& value) { m_licenseSpecifications = value; }
-
-    /**
-     * <p>License configurations associated with a resource.</p>
-     */
-    inline void SetLicenseSpecifications(Aws::Vector<LicenseSpecification>&& value) { m_licenseSpecifications = std::move(value); }
-
-    /**
-     * <p>License configurations associated with a resource.</p>
-     */
-    inline ListLicenseSpecificationsForResourceResult& WithLicenseSpecifications(const Aws::Vector<LicenseSpecification>& value) { SetLicenseSpecifications(value); return *this;}
-
-    /**
-     * <p>License configurations associated with a resource.</p>
-     */
-    inline ListLicenseSpecificationsForResourceResult& WithLicenseSpecifications(Aws::Vector<LicenseSpecification>&& value) { SetLicenseSpecifications(std::move(value)); return *this;}
-
-    /**
-     * <p>License configurations associated with a resource.</p>
-     */
-    inline ListLicenseSpecificationsForResourceResult& AddLicenseSpecifications(const LicenseSpecification& value) { m_licenseSpecifications.push_back(value); return *this; }
-
-    /**
-     * <p>License configurations associated with a resource.</p>
-     */
-    inline ListLicenseSpecificationsForResourceResult& AddLicenseSpecifications(LicenseSpecification&& value) { m_licenseSpecifications.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Token for the next set of results.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListLicenseSpecificationsForResourceResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Token for the next set of results.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>Token for the next set of results.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>Token for the next set of results.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>Token for the next set of results.</p>
-     */
-    inline ListLicenseSpecificationsForResourceResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>Token for the next set of results.</p>
-     */
-    inline ListLicenseSpecificationsForResourceResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>Token for the next set of results.</p>
-     */
-    inline ListLicenseSpecificationsForResourceResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListLicenseSpecificationsForResourceResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListLicenseSpecificationsForResourceResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListLicenseSpecificationsForResourceResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListLicenseSpecificationsForResourceResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<LicenseSpecification> m_licenseSpecifications;
+    bool m_licenseSpecificationsHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

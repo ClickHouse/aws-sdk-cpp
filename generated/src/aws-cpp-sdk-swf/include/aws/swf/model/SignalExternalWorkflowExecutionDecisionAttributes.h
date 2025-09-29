@@ -45,240 +45,74 @@ namespace Model
   class SignalExternalWorkflowExecutionDecisionAttributes
   {
   public:
-    AWS_SWF_API SignalExternalWorkflowExecutionDecisionAttributes();
+    AWS_SWF_API SignalExternalWorkflowExecutionDecisionAttributes() = default;
     AWS_SWF_API SignalExternalWorkflowExecutionDecisionAttributes(Aws::Utils::Json::JsonView jsonValue);
     AWS_SWF_API SignalExternalWorkflowExecutionDecisionAttributes& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SWF_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The <code>workflowId</code> of the workflow execution to be signaled.</p>
      */
-    inline const Aws::String& GetWorkflowId() const{ return m_workflowId; }
-
-    /**
-     * <p> The <code>workflowId</code> of the workflow execution to be signaled.</p>
-     */
+    inline const Aws::String& GetWorkflowId() const { return m_workflowId; }
     inline bool WorkflowIdHasBeenSet() const { return m_workflowIdHasBeenSet; }
+    template<typename WorkflowIdT = Aws::String>
+    void SetWorkflowId(WorkflowIdT&& value) { m_workflowIdHasBeenSet = true; m_workflowId = std::forward<WorkflowIdT>(value); }
+    template<typename WorkflowIdT = Aws::String>
+    SignalExternalWorkflowExecutionDecisionAttributes& WithWorkflowId(WorkflowIdT&& value) { SetWorkflowId(std::forward<WorkflowIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The <code>workflowId</code> of the workflow execution to be signaled.</p>
-     */
-    inline void SetWorkflowId(const Aws::String& value) { m_workflowIdHasBeenSet = true; m_workflowId = value; }
-
-    /**
-     * <p> The <code>workflowId</code> of the workflow execution to be signaled.</p>
-     */
-    inline void SetWorkflowId(Aws::String&& value) { m_workflowIdHasBeenSet = true; m_workflowId = std::move(value); }
-
-    /**
-     * <p> The <code>workflowId</code> of the workflow execution to be signaled.</p>
-     */
-    inline void SetWorkflowId(const char* value) { m_workflowIdHasBeenSet = true; m_workflowId.assign(value); }
-
-    /**
-     * <p> The <code>workflowId</code> of the workflow execution to be signaled.</p>
-     */
-    inline SignalExternalWorkflowExecutionDecisionAttributes& WithWorkflowId(const Aws::String& value) { SetWorkflowId(value); return *this;}
-
-    /**
-     * <p> The <code>workflowId</code> of the workflow execution to be signaled.</p>
-     */
-    inline SignalExternalWorkflowExecutionDecisionAttributes& WithWorkflowId(Aws::String&& value) { SetWorkflowId(std::move(value)); return *this;}
-
-    /**
-     * <p> The <code>workflowId</code> of the workflow execution to be signaled.</p>
-     */
-    inline SignalExternalWorkflowExecutionDecisionAttributes& WithWorkflowId(const char* value) { SetWorkflowId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The <code>runId</code> of the workflow execution to be signaled.</p>
      */
-    inline const Aws::String& GetRunId() const{ return m_runId; }
-
-    /**
-     * <p>The <code>runId</code> of the workflow execution to be signaled.</p>
-     */
+    inline const Aws::String& GetRunId() const { return m_runId; }
     inline bool RunIdHasBeenSet() const { return m_runIdHasBeenSet; }
+    template<typename RunIdT = Aws::String>
+    void SetRunId(RunIdT&& value) { m_runIdHasBeenSet = true; m_runId = std::forward<RunIdT>(value); }
+    template<typename RunIdT = Aws::String>
+    SignalExternalWorkflowExecutionDecisionAttributes& WithRunId(RunIdT&& value) { SetRunId(std::forward<RunIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The <code>runId</code> of the workflow execution to be signaled.</p>
-     */
-    inline void SetRunId(const Aws::String& value) { m_runIdHasBeenSet = true; m_runId = value; }
-
-    /**
-     * <p>The <code>runId</code> of the workflow execution to be signaled.</p>
-     */
-    inline void SetRunId(Aws::String&& value) { m_runIdHasBeenSet = true; m_runId = std::move(value); }
-
-    /**
-     * <p>The <code>runId</code> of the workflow execution to be signaled.</p>
-     */
-    inline void SetRunId(const char* value) { m_runIdHasBeenSet = true; m_runId.assign(value); }
-
-    /**
-     * <p>The <code>runId</code> of the workflow execution to be signaled.</p>
-     */
-    inline SignalExternalWorkflowExecutionDecisionAttributes& WithRunId(const Aws::String& value) { SetRunId(value); return *this;}
-
-    /**
-     * <p>The <code>runId</code> of the workflow execution to be signaled.</p>
-     */
-    inline SignalExternalWorkflowExecutionDecisionAttributes& WithRunId(Aws::String&& value) { SetRunId(std::move(value)); return *this;}
-
-    /**
-     * <p>The <code>runId</code> of the workflow execution to be signaled.</p>
-     */
-    inline SignalExternalWorkflowExecutionDecisionAttributes& WithRunId(const char* value) { SetRunId(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The name of the signal.The target workflow execution uses the signal name
      * and input to process the signal.</p>
      */
-    inline const Aws::String& GetSignalName() const{ return m_signalName; }
-
-    /**
-     * <p> The name of the signal.The target workflow execution uses the signal name
-     * and input to process the signal.</p>
-     */
+    inline const Aws::String& GetSignalName() const { return m_signalName; }
     inline bool SignalNameHasBeenSet() const { return m_signalNameHasBeenSet; }
+    template<typename SignalNameT = Aws::String>
+    void SetSignalName(SignalNameT&& value) { m_signalNameHasBeenSet = true; m_signalName = std::forward<SignalNameT>(value); }
+    template<typename SignalNameT = Aws::String>
+    SignalExternalWorkflowExecutionDecisionAttributes& WithSignalName(SignalNameT&& value) { SetSignalName(std::forward<SignalNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The name of the signal.The target workflow execution uses the signal name
-     * and input to process the signal.</p>
-     */
-    inline void SetSignalName(const Aws::String& value) { m_signalNameHasBeenSet = true; m_signalName = value; }
-
-    /**
-     * <p> The name of the signal.The target workflow execution uses the signal name
-     * and input to process the signal.</p>
-     */
-    inline void SetSignalName(Aws::String&& value) { m_signalNameHasBeenSet = true; m_signalName = std::move(value); }
-
-    /**
-     * <p> The name of the signal.The target workflow execution uses the signal name
-     * and input to process the signal.</p>
-     */
-    inline void SetSignalName(const char* value) { m_signalNameHasBeenSet = true; m_signalName.assign(value); }
-
-    /**
-     * <p> The name of the signal.The target workflow execution uses the signal name
-     * and input to process the signal.</p>
-     */
-    inline SignalExternalWorkflowExecutionDecisionAttributes& WithSignalName(const Aws::String& value) { SetSignalName(value); return *this;}
-
-    /**
-     * <p> The name of the signal.The target workflow execution uses the signal name
-     * and input to process the signal.</p>
-     */
-    inline SignalExternalWorkflowExecutionDecisionAttributes& WithSignalName(Aws::String&& value) { SetSignalName(std::move(value)); return *this;}
-
-    /**
-     * <p> The name of the signal.The target workflow execution uses the signal name
-     * and input to process the signal.</p>
-     */
-    inline SignalExternalWorkflowExecutionDecisionAttributes& WithSignalName(const char* value) { SetSignalName(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The input data to be provided with the signal. The target workflow execution
      * uses the signal name and input data to process the signal.</p>
      */
-    inline const Aws::String& GetInput() const{ return m_input; }
-
-    /**
-     * <p> The input data to be provided with the signal. The target workflow execution
-     * uses the signal name and input data to process the signal.</p>
-     */
+    inline const Aws::String& GetInput() const { return m_input; }
     inline bool InputHasBeenSet() const { return m_inputHasBeenSet; }
+    template<typename InputT = Aws::String>
+    void SetInput(InputT&& value) { m_inputHasBeenSet = true; m_input = std::forward<InputT>(value); }
+    template<typename InputT = Aws::String>
+    SignalExternalWorkflowExecutionDecisionAttributes& WithInput(InputT&& value) { SetInput(std::forward<InputT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The input data to be provided with the signal. The target workflow execution
-     * uses the signal name and input data to process the signal.</p>
-     */
-    inline void SetInput(const Aws::String& value) { m_inputHasBeenSet = true; m_input = value; }
-
-    /**
-     * <p> The input data to be provided with the signal. The target workflow execution
-     * uses the signal name and input data to process the signal.</p>
-     */
-    inline void SetInput(Aws::String&& value) { m_inputHasBeenSet = true; m_input = std::move(value); }
-
-    /**
-     * <p> The input data to be provided with the signal. The target workflow execution
-     * uses the signal name and input data to process the signal.</p>
-     */
-    inline void SetInput(const char* value) { m_inputHasBeenSet = true; m_input.assign(value); }
-
-    /**
-     * <p> The input data to be provided with the signal. The target workflow execution
-     * uses the signal name and input data to process the signal.</p>
-     */
-    inline SignalExternalWorkflowExecutionDecisionAttributes& WithInput(const Aws::String& value) { SetInput(value); return *this;}
-
-    /**
-     * <p> The input data to be provided with the signal. The target workflow execution
-     * uses the signal name and input data to process the signal.</p>
-     */
-    inline SignalExternalWorkflowExecutionDecisionAttributes& WithInput(Aws::String&& value) { SetInput(std::move(value)); return *this;}
-
-    /**
-     * <p> The input data to be provided with the signal. The target workflow execution
-     * uses the signal name and input data to process the signal.</p>
-     */
-    inline SignalExternalWorkflowExecutionDecisionAttributes& WithInput(const char* value) { SetInput(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The data attached to the event that can be used by the decider in subsequent
      * decision tasks.</p>
      */
-    inline const Aws::String& GetControl() const{ return m_control; }
-
-    /**
-     * <p>The data attached to the event that can be used by the decider in subsequent
-     * decision tasks.</p>
-     */
+    inline const Aws::String& GetControl() const { return m_control; }
     inline bool ControlHasBeenSet() const { return m_controlHasBeenSet; }
-
-    /**
-     * <p>The data attached to the event that can be used by the decider in subsequent
-     * decision tasks.</p>
-     */
-    inline void SetControl(const Aws::String& value) { m_controlHasBeenSet = true; m_control = value; }
-
-    /**
-     * <p>The data attached to the event that can be used by the decider in subsequent
-     * decision tasks.</p>
-     */
-    inline void SetControl(Aws::String&& value) { m_controlHasBeenSet = true; m_control = std::move(value); }
-
-    /**
-     * <p>The data attached to the event that can be used by the decider in subsequent
-     * decision tasks.</p>
-     */
-    inline void SetControl(const char* value) { m_controlHasBeenSet = true; m_control.assign(value); }
-
-    /**
-     * <p>The data attached to the event that can be used by the decider in subsequent
-     * decision tasks.</p>
-     */
-    inline SignalExternalWorkflowExecutionDecisionAttributes& WithControl(const Aws::String& value) { SetControl(value); return *this;}
-
-    /**
-     * <p>The data attached to the event that can be used by the decider in subsequent
-     * decision tasks.</p>
-     */
-    inline SignalExternalWorkflowExecutionDecisionAttributes& WithControl(Aws::String&& value) { SetControl(std::move(value)); return *this;}
-
-    /**
-     * <p>The data attached to the event that can be used by the decider in subsequent
-     * decision tasks.</p>
-     */
-    inline SignalExternalWorkflowExecutionDecisionAttributes& WithControl(const char* value) { SetControl(value); return *this;}
-
+    template<typename ControlT = Aws::String>
+    void SetControl(ControlT&& value) { m_controlHasBeenSet = true; m_control = std::forward<ControlT>(value); }
+    template<typename ControlT = Aws::String>
+    SignalExternalWorkflowExecutionDecisionAttributes& WithControl(ControlT&& value) { SetControl(std::forward<ControlT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_workflowId;

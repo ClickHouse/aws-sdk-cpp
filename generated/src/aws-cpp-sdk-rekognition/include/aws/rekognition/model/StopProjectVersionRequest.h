@@ -21,7 +21,7 @@ namespace Model
   class StopProjectVersionRequest : public RekognitionRequest
   {
   public:
-    AWS_REKOGNITION_API StopProjectVersionRequest();
+    AWS_REKOGNITION_API StopProjectVersionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,62 +34,19 @@ namespace Model
     AWS_REKOGNITION_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the model version that you want to
      * stop.</p> <p>This operation requires permissions to perform the
      * <code>rekognition:StopProjectVersion</code> action.</p>
      */
-    inline const Aws::String& GetProjectVersionArn() const{ return m_projectVersionArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the model version that you want to
-     * stop.</p> <p>This operation requires permissions to perform the
-     * <code>rekognition:StopProjectVersion</code> action.</p>
-     */
+    inline const Aws::String& GetProjectVersionArn() const { return m_projectVersionArn; }
     inline bool ProjectVersionArnHasBeenSet() const { return m_projectVersionArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the model version that you want to
-     * stop.</p> <p>This operation requires permissions to perform the
-     * <code>rekognition:StopProjectVersion</code> action.</p>
-     */
-    inline void SetProjectVersionArn(const Aws::String& value) { m_projectVersionArnHasBeenSet = true; m_projectVersionArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the model version that you want to
-     * stop.</p> <p>This operation requires permissions to perform the
-     * <code>rekognition:StopProjectVersion</code> action.</p>
-     */
-    inline void SetProjectVersionArn(Aws::String&& value) { m_projectVersionArnHasBeenSet = true; m_projectVersionArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the model version that you want to
-     * stop.</p> <p>This operation requires permissions to perform the
-     * <code>rekognition:StopProjectVersion</code> action.</p>
-     */
-    inline void SetProjectVersionArn(const char* value) { m_projectVersionArnHasBeenSet = true; m_projectVersionArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the model version that you want to
-     * stop.</p> <p>This operation requires permissions to perform the
-     * <code>rekognition:StopProjectVersion</code> action.</p>
-     */
-    inline StopProjectVersionRequest& WithProjectVersionArn(const Aws::String& value) { SetProjectVersionArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the model version that you want to
-     * stop.</p> <p>This operation requires permissions to perform the
-     * <code>rekognition:StopProjectVersion</code> action.</p>
-     */
-    inline StopProjectVersionRequest& WithProjectVersionArn(Aws::String&& value) { SetProjectVersionArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the model version that you want to
-     * stop.</p> <p>This operation requires permissions to perform the
-     * <code>rekognition:StopProjectVersion</code> action.</p>
-     */
-    inline StopProjectVersionRequest& WithProjectVersionArn(const char* value) { SetProjectVersionArn(value); return *this;}
-
+    template<typename ProjectVersionArnT = Aws::String>
+    void SetProjectVersionArn(ProjectVersionArnT&& value) { m_projectVersionArnHasBeenSet = true; m_projectVersionArn = std::forward<ProjectVersionArnT>(value); }
+    template<typename ProjectVersionArnT = Aws::String>
+    StopProjectVersionRequest& WithProjectVersionArn(ProjectVersionArnT&& value) { SetProjectVersionArn(std::forward<ProjectVersionArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_projectVersionArn;

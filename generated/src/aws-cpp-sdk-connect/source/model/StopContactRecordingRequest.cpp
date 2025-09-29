@@ -12,13 +12,6 @@ using namespace Aws::Connect::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-StopContactRecordingRequest::StopContactRecordingRequest() : 
-    m_instanceIdHasBeenSet(false),
-    m_contactIdHasBeenSet(false),
-    m_initialContactIdHasBeenSet(false)
-{
-}
-
 Aws::String StopContactRecordingRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -39,6 +32,11 @@ Aws::String StopContactRecordingRequest::SerializePayload() const
   {
    payload.WithString("InitialContactId", m_initialContactId);
 
+  }
+
+  if(m_contactRecordingTypeHasBeenSet)
+  {
+   payload.WithString("ContactRecordingType", ContactRecordingTypeMapper::GetNameForContactRecordingType(m_contactRecordingType));
   }
 
   return payload.View().WriteReadable();

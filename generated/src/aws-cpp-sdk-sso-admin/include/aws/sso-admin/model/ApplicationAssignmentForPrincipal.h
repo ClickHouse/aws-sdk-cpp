@@ -33,124 +33,45 @@ namespace Model
   class ApplicationAssignmentForPrincipal
   {
   public:
-    AWS_SSOADMIN_API ApplicationAssignmentForPrincipal();
+    AWS_SSOADMIN_API ApplicationAssignmentForPrincipal() = default;
     AWS_SSOADMIN_API ApplicationAssignmentForPrincipal(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSOADMIN_API ApplicationAssignmentForPrincipal& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSOADMIN_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ARN of the application to which the specified principal is assigned.</p>
      */
-    inline const Aws::String& GetApplicationArn() const{ return m_applicationArn; }
-
-    /**
-     * <p>The ARN of the application to which the specified principal is assigned.</p>
-     */
+    inline const Aws::String& GetApplicationArn() const { return m_applicationArn; }
     inline bool ApplicationArnHasBeenSet() const { return m_applicationArnHasBeenSet; }
+    template<typename ApplicationArnT = Aws::String>
+    void SetApplicationArn(ApplicationArnT&& value) { m_applicationArnHasBeenSet = true; m_applicationArn = std::forward<ApplicationArnT>(value); }
+    template<typename ApplicationArnT = Aws::String>
+    ApplicationAssignmentForPrincipal& WithApplicationArn(ApplicationArnT&& value) { SetApplicationArn(std::forward<ApplicationArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the application to which the specified principal is assigned.</p>
-     */
-    inline void SetApplicationArn(const Aws::String& value) { m_applicationArnHasBeenSet = true; m_applicationArn = value; }
-
-    /**
-     * <p>The ARN of the application to which the specified principal is assigned.</p>
-     */
-    inline void SetApplicationArn(Aws::String&& value) { m_applicationArnHasBeenSet = true; m_applicationArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the application to which the specified principal is assigned.</p>
-     */
-    inline void SetApplicationArn(const char* value) { m_applicationArnHasBeenSet = true; m_applicationArn.assign(value); }
-
-    /**
-     * <p>The ARN of the application to which the specified principal is assigned.</p>
-     */
-    inline ApplicationAssignmentForPrincipal& WithApplicationArn(const Aws::String& value) { SetApplicationArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the application to which the specified principal is assigned.</p>
-     */
-    inline ApplicationAssignmentForPrincipal& WithApplicationArn(Aws::String&& value) { SetApplicationArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the application to which the specified principal is assigned.</p>
-     */
-    inline ApplicationAssignmentForPrincipal& WithApplicationArn(const char* value) { SetApplicationArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique identifier of the principal assigned to the application.</p>
      */
-    inline const Aws::String& GetPrincipalId() const{ return m_principalId; }
-
-    /**
-     * <p>The unique identifier of the principal assigned to the application.</p>
-     */
+    inline const Aws::String& GetPrincipalId() const { return m_principalId; }
     inline bool PrincipalIdHasBeenSet() const { return m_principalIdHasBeenSet; }
+    template<typename PrincipalIdT = Aws::String>
+    void SetPrincipalId(PrincipalIdT&& value) { m_principalIdHasBeenSet = true; m_principalId = std::forward<PrincipalIdT>(value); }
+    template<typename PrincipalIdT = Aws::String>
+    ApplicationAssignmentForPrincipal& WithPrincipalId(PrincipalIdT&& value) { SetPrincipalId(std::forward<PrincipalIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier of the principal assigned to the application.</p>
-     */
-    inline void SetPrincipalId(const Aws::String& value) { m_principalIdHasBeenSet = true; m_principalId = value; }
-
-    /**
-     * <p>The unique identifier of the principal assigned to the application.</p>
-     */
-    inline void SetPrincipalId(Aws::String&& value) { m_principalIdHasBeenSet = true; m_principalId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the principal assigned to the application.</p>
-     */
-    inline void SetPrincipalId(const char* value) { m_principalIdHasBeenSet = true; m_principalId.assign(value); }
-
-    /**
-     * <p>The unique identifier of the principal assigned to the application.</p>
-     */
-    inline ApplicationAssignmentForPrincipal& WithPrincipalId(const Aws::String& value) { SetPrincipalId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the principal assigned to the application.</p>
-     */
-    inline ApplicationAssignmentForPrincipal& WithPrincipalId(Aws::String&& value) { SetPrincipalId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the principal assigned to the application.</p>
-     */
-    inline ApplicationAssignmentForPrincipal& WithPrincipalId(const char* value) { SetPrincipalId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of the principal assigned to the application.</p>
      */
-    inline const PrincipalType& GetPrincipalType() const{ return m_principalType; }
-
-    /**
-     * <p>The type of the principal assigned to the application.</p>
-     */
+    inline PrincipalType GetPrincipalType() const { return m_principalType; }
     inline bool PrincipalTypeHasBeenSet() const { return m_principalTypeHasBeenSet; }
-
-    /**
-     * <p>The type of the principal assigned to the application.</p>
-     */
-    inline void SetPrincipalType(const PrincipalType& value) { m_principalTypeHasBeenSet = true; m_principalType = value; }
-
-    /**
-     * <p>The type of the principal assigned to the application.</p>
-     */
-    inline void SetPrincipalType(PrincipalType&& value) { m_principalTypeHasBeenSet = true; m_principalType = std::move(value); }
-
-    /**
-     * <p>The type of the principal assigned to the application.</p>
-     */
-    inline ApplicationAssignmentForPrincipal& WithPrincipalType(const PrincipalType& value) { SetPrincipalType(value); return *this;}
-
-    /**
-     * <p>The type of the principal assigned to the application.</p>
-     */
-    inline ApplicationAssignmentForPrincipal& WithPrincipalType(PrincipalType&& value) { SetPrincipalType(std::move(value)); return *this;}
-
+    inline void SetPrincipalType(PrincipalType value) { m_principalTypeHasBeenSet = true; m_principalType = value; }
+    inline ApplicationAssignmentForPrincipal& WithPrincipalType(PrincipalType value) { SetPrincipalType(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_applicationArn;
@@ -159,7 +80,7 @@ namespace Model
     Aws::String m_principalId;
     bool m_principalIdHasBeenSet = false;
 
-    PrincipalType m_principalType;
+    PrincipalType m_principalType{PrincipalType::NOT_SET};
     bool m_principalTypeHasBeenSet = false;
   };
 

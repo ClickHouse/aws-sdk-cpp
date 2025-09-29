@@ -34,7 +34,7 @@ namespace Model
   class TargetNetwork
   {
   public:
-    AWS_EC2_API TargetNetwork();
+    AWS_EC2_API TargetNetwork() = default;
     AWS_EC2_API TargetNetwork(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API TargetNetwork& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -42,254 +42,80 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The ID of the association.</p>
      */
-    inline const Aws::String& GetAssociationId() const{ return m_associationId; }
-
-    /**
-     * <p>The ID of the association.</p>
-     */
+    inline const Aws::String& GetAssociationId() const { return m_associationId; }
     inline bool AssociationIdHasBeenSet() const { return m_associationIdHasBeenSet; }
+    template<typename AssociationIdT = Aws::String>
+    void SetAssociationId(AssociationIdT&& value) { m_associationIdHasBeenSet = true; m_associationId = std::forward<AssociationIdT>(value); }
+    template<typename AssociationIdT = Aws::String>
+    TargetNetwork& WithAssociationId(AssociationIdT&& value) { SetAssociationId(std::forward<AssociationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the association.</p>
-     */
-    inline void SetAssociationId(const Aws::String& value) { m_associationIdHasBeenSet = true; m_associationId = value; }
-
-    /**
-     * <p>The ID of the association.</p>
-     */
-    inline void SetAssociationId(Aws::String&& value) { m_associationIdHasBeenSet = true; m_associationId = std::move(value); }
-
-    /**
-     * <p>The ID of the association.</p>
-     */
-    inline void SetAssociationId(const char* value) { m_associationIdHasBeenSet = true; m_associationId.assign(value); }
-
-    /**
-     * <p>The ID of the association.</p>
-     */
-    inline TargetNetwork& WithAssociationId(const Aws::String& value) { SetAssociationId(value); return *this;}
-
-    /**
-     * <p>The ID of the association.</p>
-     */
-    inline TargetNetwork& WithAssociationId(Aws::String&& value) { SetAssociationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the association.</p>
-     */
-    inline TargetNetwork& WithAssociationId(const char* value) { SetAssociationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the VPC in which the target network (subnet) is located.</p>
      */
-    inline const Aws::String& GetVpcId() const{ return m_vpcId; }
-
-    /**
-     * <p>The ID of the VPC in which the target network (subnet) is located.</p>
-     */
+    inline const Aws::String& GetVpcId() const { return m_vpcId; }
     inline bool VpcIdHasBeenSet() const { return m_vpcIdHasBeenSet; }
+    template<typename VpcIdT = Aws::String>
+    void SetVpcId(VpcIdT&& value) { m_vpcIdHasBeenSet = true; m_vpcId = std::forward<VpcIdT>(value); }
+    template<typename VpcIdT = Aws::String>
+    TargetNetwork& WithVpcId(VpcIdT&& value) { SetVpcId(std::forward<VpcIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the VPC in which the target network (subnet) is located.</p>
-     */
-    inline void SetVpcId(const Aws::String& value) { m_vpcIdHasBeenSet = true; m_vpcId = value; }
-
-    /**
-     * <p>The ID of the VPC in which the target network (subnet) is located.</p>
-     */
-    inline void SetVpcId(Aws::String&& value) { m_vpcIdHasBeenSet = true; m_vpcId = std::move(value); }
-
-    /**
-     * <p>The ID of the VPC in which the target network (subnet) is located.</p>
-     */
-    inline void SetVpcId(const char* value) { m_vpcIdHasBeenSet = true; m_vpcId.assign(value); }
-
-    /**
-     * <p>The ID of the VPC in which the target network (subnet) is located.</p>
-     */
-    inline TargetNetwork& WithVpcId(const Aws::String& value) { SetVpcId(value); return *this;}
-
-    /**
-     * <p>The ID of the VPC in which the target network (subnet) is located.</p>
-     */
-    inline TargetNetwork& WithVpcId(Aws::String&& value) { SetVpcId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the VPC in which the target network (subnet) is located.</p>
-     */
-    inline TargetNetwork& WithVpcId(const char* value) { SetVpcId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the subnet specified as the target network.</p>
      */
-    inline const Aws::String& GetTargetNetworkId() const{ return m_targetNetworkId; }
-
-    /**
-     * <p>The ID of the subnet specified as the target network.</p>
-     */
+    inline const Aws::String& GetTargetNetworkId() const { return m_targetNetworkId; }
     inline bool TargetNetworkIdHasBeenSet() const { return m_targetNetworkIdHasBeenSet; }
+    template<typename TargetNetworkIdT = Aws::String>
+    void SetTargetNetworkId(TargetNetworkIdT&& value) { m_targetNetworkIdHasBeenSet = true; m_targetNetworkId = std::forward<TargetNetworkIdT>(value); }
+    template<typename TargetNetworkIdT = Aws::String>
+    TargetNetwork& WithTargetNetworkId(TargetNetworkIdT&& value) { SetTargetNetworkId(std::forward<TargetNetworkIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the subnet specified as the target network.</p>
-     */
-    inline void SetTargetNetworkId(const Aws::String& value) { m_targetNetworkIdHasBeenSet = true; m_targetNetworkId = value; }
-
-    /**
-     * <p>The ID of the subnet specified as the target network.</p>
-     */
-    inline void SetTargetNetworkId(Aws::String&& value) { m_targetNetworkIdHasBeenSet = true; m_targetNetworkId = std::move(value); }
-
-    /**
-     * <p>The ID of the subnet specified as the target network.</p>
-     */
-    inline void SetTargetNetworkId(const char* value) { m_targetNetworkIdHasBeenSet = true; m_targetNetworkId.assign(value); }
-
-    /**
-     * <p>The ID of the subnet specified as the target network.</p>
-     */
-    inline TargetNetwork& WithTargetNetworkId(const Aws::String& value) { SetTargetNetworkId(value); return *this;}
-
-    /**
-     * <p>The ID of the subnet specified as the target network.</p>
-     */
-    inline TargetNetwork& WithTargetNetworkId(Aws::String&& value) { SetTargetNetworkId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the subnet specified as the target network.</p>
-     */
-    inline TargetNetwork& WithTargetNetworkId(const char* value) { SetTargetNetworkId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the Client VPN endpoint with which the target network is
      * associated.</p>
      */
-    inline const Aws::String& GetClientVpnEndpointId() const{ return m_clientVpnEndpointId; }
-
-    /**
-     * <p>The ID of the Client VPN endpoint with which the target network is
-     * associated.</p>
-     */
+    inline const Aws::String& GetClientVpnEndpointId() const { return m_clientVpnEndpointId; }
     inline bool ClientVpnEndpointIdHasBeenSet() const { return m_clientVpnEndpointIdHasBeenSet; }
+    template<typename ClientVpnEndpointIdT = Aws::String>
+    void SetClientVpnEndpointId(ClientVpnEndpointIdT&& value) { m_clientVpnEndpointIdHasBeenSet = true; m_clientVpnEndpointId = std::forward<ClientVpnEndpointIdT>(value); }
+    template<typename ClientVpnEndpointIdT = Aws::String>
+    TargetNetwork& WithClientVpnEndpointId(ClientVpnEndpointIdT&& value) { SetClientVpnEndpointId(std::forward<ClientVpnEndpointIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Client VPN endpoint with which the target network is
-     * associated.</p>
-     */
-    inline void SetClientVpnEndpointId(const Aws::String& value) { m_clientVpnEndpointIdHasBeenSet = true; m_clientVpnEndpointId = value; }
-
-    /**
-     * <p>The ID of the Client VPN endpoint with which the target network is
-     * associated.</p>
-     */
-    inline void SetClientVpnEndpointId(Aws::String&& value) { m_clientVpnEndpointIdHasBeenSet = true; m_clientVpnEndpointId = std::move(value); }
-
-    /**
-     * <p>The ID of the Client VPN endpoint with which the target network is
-     * associated.</p>
-     */
-    inline void SetClientVpnEndpointId(const char* value) { m_clientVpnEndpointIdHasBeenSet = true; m_clientVpnEndpointId.assign(value); }
-
-    /**
-     * <p>The ID of the Client VPN endpoint with which the target network is
-     * associated.</p>
-     */
-    inline TargetNetwork& WithClientVpnEndpointId(const Aws::String& value) { SetClientVpnEndpointId(value); return *this;}
-
-    /**
-     * <p>The ID of the Client VPN endpoint with which the target network is
-     * associated.</p>
-     */
-    inline TargetNetwork& WithClientVpnEndpointId(Aws::String&& value) { SetClientVpnEndpointId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Client VPN endpoint with which the target network is
-     * associated.</p>
-     */
-    inline TargetNetwork& WithClientVpnEndpointId(const char* value) { SetClientVpnEndpointId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The current state of the target network association.</p>
      */
-    inline const AssociationStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The current state of the target network association.</p>
-     */
+    inline const AssociationStatus& GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    template<typename StatusT = AssociationStatus>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = AssociationStatus>
+    TargetNetwork& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The current state of the target network association.</p>
-     */
-    inline void SetStatus(const AssociationStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The current state of the target network association.</p>
-     */
-    inline void SetStatus(AssociationStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The current state of the target network association.</p>
-     */
-    inline TargetNetwork& WithStatus(const AssociationStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The current state of the target network association.</p>
-     */
-    inline TargetNetwork& WithStatus(AssociationStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The IDs of the security groups applied to the target network association.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetSecurityGroups() const{ return m_securityGroups; }
-
-    /**
-     * <p>The IDs of the security groups applied to the target network association.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetSecurityGroups() const { return m_securityGroups; }
     inline bool SecurityGroupsHasBeenSet() const { return m_securityGroupsHasBeenSet; }
-
-    /**
-     * <p>The IDs of the security groups applied to the target network association.</p>
-     */
-    inline void SetSecurityGroups(const Aws::Vector<Aws::String>& value) { m_securityGroupsHasBeenSet = true; m_securityGroups = value; }
-
-    /**
-     * <p>The IDs of the security groups applied to the target network association.</p>
-     */
-    inline void SetSecurityGroups(Aws::Vector<Aws::String>&& value) { m_securityGroupsHasBeenSet = true; m_securityGroups = std::move(value); }
-
-    /**
-     * <p>The IDs of the security groups applied to the target network association.</p>
-     */
-    inline TargetNetwork& WithSecurityGroups(const Aws::Vector<Aws::String>& value) { SetSecurityGroups(value); return *this;}
-
-    /**
-     * <p>The IDs of the security groups applied to the target network association.</p>
-     */
-    inline TargetNetwork& WithSecurityGroups(Aws::Vector<Aws::String>&& value) { SetSecurityGroups(std::move(value)); return *this;}
-
-    /**
-     * <p>The IDs of the security groups applied to the target network association.</p>
-     */
-    inline TargetNetwork& AddSecurityGroups(const Aws::String& value) { m_securityGroupsHasBeenSet = true; m_securityGroups.push_back(value); return *this; }
-
-    /**
-     * <p>The IDs of the security groups applied to the target network association.</p>
-     */
-    inline TargetNetwork& AddSecurityGroups(Aws::String&& value) { m_securityGroupsHasBeenSet = true; m_securityGroups.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The IDs of the security groups applied to the target network association.</p>
-     */
-    inline TargetNetwork& AddSecurityGroups(const char* value) { m_securityGroupsHasBeenSet = true; m_securityGroups.push_back(value); return *this; }
-
+    template<typename SecurityGroupsT = Aws::Vector<Aws::String>>
+    void SetSecurityGroups(SecurityGroupsT&& value) { m_securityGroupsHasBeenSet = true; m_securityGroups = std::forward<SecurityGroupsT>(value); }
+    template<typename SecurityGroupsT = Aws::Vector<Aws::String>>
+    TargetNetwork& WithSecurityGroups(SecurityGroupsT&& value) { SetSecurityGroups(std::forward<SecurityGroupsT>(value)); return *this;}
+    template<typename SecurityGroupsT = Aws::String>
+    TargetNetwork& AddSecurityGroups(SecurityGroupsT&& value) { m_securityGroupsHasBeenSet = true; m_securityGroups.emplace_back(std::forward<SecurityGroupsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_associationId;

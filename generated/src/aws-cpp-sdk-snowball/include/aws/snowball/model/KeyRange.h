@@ -35,109 +35,37 @@ namespace Model
   class KeyRange
   {
   public:
-    AWS_SNOWBALL_API KeyRange();
+    AWS_SNOWBALL_API KeyRange() = default;
     AWS_SNOWBALL_API KeyRange(Aws::Utils::Json::JsonView jsonValue);
     AWS_SNOWBALL_API KeyRange& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SNOWBALL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The key that starts an optional key range for an export job. Ranges are
      * inclusive and UTF-8 binary sorted.</p>
      */
-    inline const Aws::String& GetBeginMarker() const{ return m_beginMarker; }
-
-    /**
-     * <p>The key that starts an optional key range for an export job. Ranges are
-     * inclusive and UTF-8 binary sorted.</p>
-     */
+    inline const Aws::String& GetBeginMarker() const { return m_beginMarker; }
     inline bool BeginMarkerHasBeenSet() const { return m_beginMarkerHasBeenSet; }
+    template<typename BeginMarkerT = Aws::String>
+    void SetBeginMarker(BeginMarkerT&& value) { m_beginMarkerHasBeenSet = true; m_beginMarker = std::forward<BeginMarkerT>(value); }
+    template<typename BeginMarkerT = Aws::String>
+    KeyRange& WithBeginMarker(BeginMarkerT&& value) { SetBeginMarker(std::forward<BeginMarkerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The key that starts an optional key range for an export job. Ranges are
-     * inclusive and UTF-8 binary sorted.</p>
-     */
-    inline void SetBeginMarker(const Aws::String& value) { m_beginMarkerHasBeenSet = true; m_beginMarker = value; }
-
-    /**
-     * <p>The key that starts an optional key range for an export job. Ranges are
-     * inclusive and UTF-8 binary sorted.</p>
-     */
-    inline void SetBeginMarker(Aws::String&& value) { m_beginMarkerHasBeenSet = true; m_beginMarker = std::move(value); }
-
-    /**
-     * <p>The key that starts an optional key range for an export job. Ranges are
-     * inclusive and UTF-8 binary sorted.</p>
-     */
-    inline void SetBeginMarker(const char* value) { m_beginMarkerHasBeenSet = true; m_beginMarker.assign(value); }
-
-    /**
-     * <p>The key that starts an optional key range for an export job. Ranges are
-     * inclusive and UTF-8 binary sorted.</p>
-     */
-    inline KeyRange& WithBeginMarker(const Aws::String& value) { SetBeginMarker(value); return *this;}
-
-    /**
-     * <p>The key that starts an optional key range for an export job. Ranges are
-     * inclusive and UTF-8 binary sorted.</p>
-     */
-    inline KeyRange& WithBeginMarker(Aws::String&& value) { SetBeginMarker(std::move(value)); return *this;}
-
-    /**
-     * <p>The key that starts an optional key range for an export job. Ranges are
-     * inclusive and UTF-8 binary sorted.</p>
-     */
-    inline KeyRange& WithBeginMarker(const char* value) { SetBeginMarker(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The key that ends an optional key range for an export job. Ranges are
      * inclusive and UTF-8 binary sorted.</p>
      */
-    inline const Aws::String& GetEndMarker() const{ return m_endMarker; }
-
-    /**
-     * <p>The key that ends an optional key range for an export job. Ranges are
-     * inclusive and UTF-8 binary sorted.</p>
-     */
+    inline const Aws::String& GetEndMarker() const { return m_endMarker; }
     inline bool EndMarkerHasBeenSet() const { return m_endMarkerHasBeenSet; }
-
-    /**
-     * <p>The key that ends an optional key range for an export job. Ranges are
-     * inclusive and UTF-8 binary sorted.</p>
-     */
-    inline void SetEndMarker(const Aws::String& value) { m_endMarkerHasBeenSet = true; m_endMarker = value; }
-
-    /**
-     * <p>The key that ends an optional key range for an export job. Ranges are
-     * inclusive and UTF-8 binary sorted.</p>
-     */
-    inline void SetEndMarker(Aws::String&& value) { m_endMarkerHasBeenSet = true; m_endMarker = std::move(value); }
-
-    /**
-     * <p>The key that ends an optional key range for an export job. Ranges are
-     * inclusive and UTF-8 binary sorted.</p>
-     */
-    inline void SetEndMarker(const char* value) { m_endMarkerHasBeenSet = true; m_endMarker.assign(value); }
-
-    /**
-     * <p>The key that ends an optional key range for an export job. Ranges are
-     * inclusive and UTF-8 binary sorted.</p>
-     */
-    inline KeyRange& WithEndMarker(const Aws::String& value) { SetEndMarker(value); return *this;}
-
-    /**
-     * <p>The key that ends an optional key range for an export job. Ranges are
-     * inclusive and UTF-8 binary sorted.</p>
-     */
-    inline KeyRange& WithEndMarker(Aws::String&& value) { SetEndMarker(std::move(value)); return *this;}
-
-    /**
-     * <p>The key that ends an optional key range for an export job. Ranges are
-     * inclusive and UTF-8 binary sorted.</p>
-     */
-    inline KeyRange& WithEndMarker(const char* value) { SetEndMarker(value); return *this;}
-
+    template<typename EndMarkerT = Aws::String>
+    void SetEndMarker(EndMarkerT&& value) { m_endMarkerHasBeenSet = true; m_endMarker = std::forward<EndMarkerT>(value); }
+    template<typename EndMarkerT = Aws::String>
+    KeyRange& WithEndMarker(EndMarkerT&& value) { SetEndMarker(std::forward<EndMarkerT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_beginMarker;

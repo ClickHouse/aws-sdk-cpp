@@ -18,25 +18,7 @@ namespace LakeFormation
 namespace Model
 {
 
-ResourceInfo::ResourceInfo() : 
-    m_resourceArnHasBeenSet(false),
-    m_roleArnHasBeenSet(false),
-    m_lastModifiedHasBeenSet(false),
-    m_withFederation(false),
-    m_withFederationHasBeenSet(false),
-    m_hybridAccessEnabled(false),
-    m_hybridAccessEnabledHasBeenSet(false)
-{
-}
-
-ResourceInfo::ResourceInfo(JsonView jsonValue) : 
-    m_resourceArnHasBeenSet(false),
-    m_roleArnHasBeenSet(false),
-    m_lastModifiedHasBeenSet(false),
-    m_withFederation(false),
-    m_withFederationHasBeenSet(false),
-    m_hybridAccessEnabled(false),
-    m_hybridAccessEnabledHasBeenSet(false)
+ResourceInfo::ResourceInfo(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,38 +28,33 @@ ResourceInfo& ResourceInfo::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ResourceArn"))
   {
     m_resourceArn = jsonValue.GetString("ResourceArn");
-
     m_resourceArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RoleArn"))
   {
     m_roleArn = jsonValue.GetString("RoleArn");
-
     m_roleArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LastModified"))
   {
     m_lastModified = jsonValue.GetDouble("LastModified");
-
     m_lastModifiedHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("WithFederation"))
   {
     m_withFederation = jsonValue.GetBool("WithFederation");
-
     m_withFederationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("HybridAccessEnabled"))
   {
     m_hybridAccessEnabled = jsonValue.GetBool("HybridAccessEnabled");
-
     m_hybridAccessEnabledHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("WithPrivilegedAccess"))
+  {
+    m_withPrivilegedAccess = jsonValue.GetBool("WithPrivilegedAccess");
+    m_withPrivilegedAccessHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -111,6 +88,12 @@ JsonValue ResourceInfo::Jsonize() const
   if(m_hybridAccessEnabledHasBeenSet)
   {
    payload.WithBool("HybridAccessEnabled", m_hybridAccessEnabled);
+
+  }
+
+  if(m_withPrivilegedAccessHasBeenSet)
+  {
+   payload.WithBool("WithPrivilegedAccess", m_withPrivilegedAccess);
 
   }
 

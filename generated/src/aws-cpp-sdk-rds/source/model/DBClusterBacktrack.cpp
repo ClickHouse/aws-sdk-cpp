@@ -20,23 +20,7 @@ namespace RDS
 namespace Model
 {
 
-DBClusterBacktrack::DBClusterBacktrack() : 
-    m_dBClusterIdentifierHasBeenSet(false),
-    m_backtrackIdentifierHasBeenSet(false),
-    m_backtrackToHasBeenSet(false),
-    m_backtrackedFromHasBeenSet(false),
-    m_backtrackRequestCreationTimeHasBeenSet(false),
-    m_statusHasBeenSet(false)
-{
-}
-
-DBClusterBacktrack::DBClusterBacktrack(const XmlNode& xmlNode) : 
-    m_dBClusterIdentifierHasBeenSet(false),
-    m_backtrackIdentifierHasBeenSet(false),
-    m_backtrackToHasBeenSet(false),
-    m_backtrackedFromHasBeenSet(false),
-    m_backtrackRequestCreationTimeHasBeenSet(false),
-    m_statusHasBeenSet(false)
+DBClusterBacktrack::DBClusterBacktrack(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

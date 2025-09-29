@@ -32,52 +32,23 @@ namespace Model
   class IotEventsInputIdentifier
   {
   public:
-    AWS_IOTEVENTS_API IotEventsInputIdentifier();
+    AWS_IOTEVENTS_API IotEventsInputIdentifier() = default;
     AWS_IOTEVENTS_API IotEventsInputIdentifier(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTEVENTS_API IotEventsInputIdentifier& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTEVENTS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The name of the input routed to AWS IoT Events. </p>
      */
-    inline const Aws::String& GetInputName() const{ return m_inputName; }
-
-    /**
-     * <p> The name of the input routed to AWS IoT Events. </p>
-     */
+    inline const Aws::String& GetInputName() const { return m_inputName; }
     inline bool InputNameHasBeenSet() const { return m_inputNameHasBeenSet; }
-
-    /**
-     * <p> The name of the input routed to AWS IoT Events. </p>
-     */
-    inline void SetInputName(const Aws::String& value) { m_inputNameHasBeenSet = true; m_inputName = value; }
-
-    /**
-     * <p> The name of the input routed to AWS IoT Events. </p>
-     */
-    inline void SetInputName(Aws::String&& value) { m_inputNameHasBeenSet = true; m_inputName = std::move(value); }
-
-    /**
-     * <p> The name of the input routed to AWS IoT Events. </p>
-     */
-    inline void SetInputName(const char* value) { m_inputNameHasBeenSet = true; m_inputName.assign(value); }
-
-    /**
-     * <p> The name of the input routed to AWS IoT Events. </p>
-     */
-    inline IotEventsInputIdentifier& WithInputName(const Aws::String& value) { SetInputName(value); return *this;}
-
-    /**
-     * <p> The name of the input routed to AWS IoT Events. </p>
-     */
-    inline IotEventsInputIdentifier& WithInputName(Aws::String&& value) { SetInputName(std::move(value)); return *this;}
-
-    /**
-     * <p> The name of the input routed to AWS IoT Events. </p>
-     */
-    inline IotEventsInputIdentifier& WithInputName(const char* value) { SetInputName(value); return *this;}
-
+    template<typename InputNameT = Aws::String>
+    void SetInputName(InputNameT&& value) { m_inputNameHasBeenSet = true; m_inputName = std::forward<InputNameT>(value); }
+    template<typename InputNameT = Aws::String>
+    IotEventsInputIdentifier& WithInputName(InputNameT&& value) { SetInputName(std::forward<InputNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_inputName;

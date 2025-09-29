@@ -22,7 +22,7 @@ namespace Model
   class UpdateScheduledQueryRequest : public TimestreamQueryRequest
   {
   public:
-    AWS_TIMESTREAMQUERY_API UpdateScheduledQueryRequest();
+    AWS_TIMESTREAMQUERY_API UpdateScheduledQueryRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,83 +35,33 @@ namespace Model
     AWS_TIMESTREAMQUERY_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>ARN of the scheuled query.</p>
      */
-    inline const Aws::String& GetScheduledQueryArn() const{ return m_scheduledQueryArn; }
-
-    /**
-     * <p>ARN of the scheuled query.</p>
-     */
+    inline const Aws::String& GetScheduledQueryArn() const { return m_scheduledQueryArn; }
     inline bool ScheduledQueryArnHasBeenSet() const { return m_scheduledQueryArnHasBeenSet; }
+    template<typename ScheduledQueryArnT = Aws::String>
+    void SetScheduledQueryArn(ScheduledQueryArnT&& value) { m_scheduledQueryArnHasBeenSet = true; m_scheduledQueryArn = std::forward<ScheduledQueryArnT>(value); }
+    template<typename ScheduledQueryArnT = Aws::String>
+    UpdateScheduledQueryRequest& WithScheduledQueryArn(ScheduledQueryArnT&& value) { SetScheduledQueryArn(std::forward<ScheduledQueryArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>ARN of the scheuled query.</p>
-     */
-    inline void SetScheduledQueryArn(const Aws::String& value) { m_scheduledQueryArnHasBeenSet = true; m_scheduledQueryArn = value; }
-
-    /**
-     * <p>ARN of the scheuled query.</p>
-     */
-    inline void SetScheduledQueryArn(Aws::String&& value) { m_scheduledQueryArnHasBeenSet = true; m_scheduledQueryArn = std::move(value); }
-
-    /**
-     * <p>ARN of the scheuled query.</p>
-     */
-    inline void SetScheduledQueryArn(const char* value) { m_scheduledQueryArnHasBeenSet = true; m_scheduledQueryArn.assign(value); }
-
-    /**
-     * <p>ARN of the scheuled query.</p>
-     */
-    inline UpdateScheduledQueryRequest& WithScheduledQueryArn(const Aws::String& value) { SetScheduledQueryArn(value); return *this;}
-
-    /**
-     * <p>ARN of the scheuled query.</p>
-     */
-    inline UpdateScheduledQueryRequest& WithScheduledQueryArn(Aws::String&& value) { SetScheduledQueryArn(std::move(value)); return *this;}
-
-    /**
-     * <p>ARN of the scheuled query.</p>
-     */
-    inline UpdateScheduledQueryRequest& WithScheduledQueryArn(const char* value) { SetScheduledQueryArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>State of the scheduled query. </p>
      */
-    inline const ScheduledQueryState& GetState() const{ return m_state; }
-
-    /**
-     * <p>State of the scheduled query. </p>
-     */
+    inline ScheduledQueryState GetState() const { return m_state; }
     inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
-
-    /**
-     * <p>State of the scheduled query. </p>
-     */
-    inline void SetState(const ScheduledQueryState& value) { m_stateHasBeenSet = true; m_state = value; }
-
-    /**
-     * <p>State of the scheduled query. </p>
-     */
-    inline void SetState(ScheduledQueryState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
-
-    /**
-     * <p>State of the scheduled query. </p>
-     */
-    inline UpdateScheduledQueryRequest& WithState(const ScheduledQueryState& value) { SetState(value); return *this;}
-
-    /**
-     * <p>State of the scheduled query. </p>
-     */
-    inline UpdateScheduledQueryRequest& WithState(ScheduledQueryState&& value) { SetState(std::move(value)); return *this;}
-
+    inline void SetState(ScheduledQueryState value) { m_stateHasBeenSet = true; m_state = value; }
+    inline UpdateScheduledQueryRequest& WithState(ScheduledQueryState value) { SetState(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_scheduledQueryArn;
     bool m_scheduledQueryArnHasBeenSet = false;
 
-    ScheduledQueryState m_state;
+    ScheduledQueryState m_state{ScheduledQueryState::NOT_SET};
     bool m_stateHasBeenSet = false;
   };
 

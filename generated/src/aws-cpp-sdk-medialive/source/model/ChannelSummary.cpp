@@ -18,51 +18,7 @@ namespace MediaLive
 namespace Model
 {
 
-ChannelSummary::ChannelSummary() : 
-    m_arnHasBeenSet(false),
-    m_cdiInputSpecificationHasBeenSet(false),
-    m_channelClass(ChannelClass::NOT_SET),
-    m_channelClassHasBeenSet(false),
-    m_destinationsHasBeenSet(false),
-    m_egressEndpointsHasBeenSet(false),
-    m_idHasBeenSet(false),
-    m_inputAttachmentsHasBeenSet(false),
-    m_inputSpecificationHasBeenSet(false),
-    m_logLevel(LogLevel::NOT_SET),
-    m_logLevelHasBeenSet(false),
-    m_maintenanceHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_pipelinesRunningCount(0),
-    m_pipelinesRunningCountHasBeenSet(false),
-    m_roleArnHasBeenSet(false),
-    m_state(ChannelState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_vpcHasBeenSet(false)
-{
-}
-
-ChannelSummary::ChannelSummary(JsonView jsonValue) : 
-    m_arnHasBeenSet(false),
-    m_cdiInputSpecificationHasBeenSet(false),
-    m_channelClass(ChannelClass::NOT_SET),
-    m_channelClassHasBeenSet(false),
-    m_destinationsHasBeenSet(false),
-    m_egressEndpointsHasBeenSet(false),
-    m_idHasBeenSet(false),
-    m_inputAttachmentsHasBeenSet(false),
-    m_inputSpecificationHasBeenSet(false),
-    m_logLevel(LogLevel::NOT_SET),
-    m_logLevelHasBeenSet(false),
-    m_maintenanceHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_pipelinesRunningCount(0),
-    m_pipelinesRunningCountHasBeenSet(false),
-    m_roleArnHasBeenSet(false),
-    m_state(ChannelState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_vpcHasBeenSet(false)
+ChannelSummary::ChannelSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -72,24 +28,18 @@ ChannelSummary& ChannelSummary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("arn"))
   {
     m_arn = jsonValue.GetString("arn");
-
     m_arnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("cdiInputSpecification"))
   {
     m_cdiInputSpecification = jsonValue.GetObject("cdiInputSpecification");
-
     m_cdiInputSpecificationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("channelClass"))
   {
     m_channelClass = ChannelClassMapper::GetChannelClassForName(jsonValue.GetString("channelClass"));
-
     m_channelClassHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("destinations"))
   {
     Aws::Utils::Array<JsonView> destinationsJsonList = jsonValue.GetArray("destinations");
@@ -99,7 +49,6 @@ ChannelSummary& ChannelSummary::operator =(JsonView jsonValue)
     }
     m_destinationsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("egressEndpoints"))
   {
     Aws::Utils::Array<JsonView> egressEndpointsJsonList = jsonValue.GetArray("egressEndpoints");
@@ -109,14 +58,11 @@ ChannelSummary& ChannelSummary::operator =(JsonView jsonValue)
     }
     m_egressEndpointsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("id"))
   {
     m_id = jsonValue.GetString("id");
-
     m_idHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("inputAttachments"))
   {
     Aws::Utils::Array<JsonView> inputAttachmentsJsonList = jsonValue.GetArray("inputAttachments");
@@ -126,56 +72,41 @@ ChannelSummary& ChannelSummary::operator =(JsonView jsonValue)
     }
     m_inputAttachmentsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("inputSpecification"))
   {
     m_inputSpecification = jsonValue.GetObject("inputSpecification");
-
     m_inputSpecificationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("logLevel"))
   {
     m_logLevel = LogLevelMapper::GetLogLevelForName(jsonValue.GetString("logLevel"));
-
     m_logLevelHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("maintenance"))
   {
     m_maintenance = jsonValue.GetObject("maintenance");
-
     m_maintenanceHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("pipelinesRunningCount"))
   {
     m_pipelinesRunningCount = jsonValue.GetInteger("pipelinesRunningCount");
-
     m_pipelinesRunningCountHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("roleArn"))
   {
     m_roleArn = jsonValue.GetString("roleArn");
-
     m_roleArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("state"))
   {
     m_state = ChannelStateMapper::GetChannelStateForName(jsonValue.GetString("state"));
-
     m_stateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("tags"))
   {
     Aws::Map<Aws::String, JsonView> tagsJsonMap = jsonValue.GetObject("tags").GetAllObjects();
@@ -185,14 +116,30 @@ ChannelSummary& ChannelSummary::operator =(JsonView jsonValue)
     }
     m_tagsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("vpc"))
   {
     m_vpc = jsonValue.GetObject("vpc");
-
     m_vpcHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("anywhereSettings"))
+  {
+    m_anywhereSettings = jsonValue.GetObject("anywhereSettings");
+    m_anywhereSettingsHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("channelEngineVersion"))
+  {
+    m_channelEngineVersion = jsonValue.GetObject("channelEngineVersion");
+    m_channelEngineVersionHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("usedChannelEngineVersions"))
+  {
+    Aws::Utils::Array<JsonView> usedChannelEngineVersionsJsonList = jsonValue.GetArray("usedChannelEngineVersions");
+    for(unsigned usedChannelEngineVersionsIndex = 0; usedChannelEngineVersionsIndex < usedChannelEngineVersionsJsonList.GetLength(); ++usedChannelEngineVersionsIndex)
+    {
+      m_usedChannelEngineVersions.push_back(usedChannelEngineVersionsJsonList[usedChannelEngineVersionsIndex].AsObject());
+    }
+    m_usedChannelEngineVersionsHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -310,6 +257,29 @@ JsonValue ChannelSummary::Jsonize() const
   if(m_vpcHasBeenSet)
   {
    payload.WithObject("vpc", m_vpc.Jsonize());
+
+  }
+
+  if(m_anywhereSettingsHasBeenSet)
+  {
+   payload.WithObject("anywhereSettings", m_anywhereSettings.Jsonize());
+
+  }
+
+  if(m_channelEngineVersionHasBeenSet)
+  {
+   payload.WithObject("channelEngineVersion", m_channelEngineVersion.Jsonize());
+
+  }
+
+  if(m_usedChannelEngineVersionsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> usedChannelEngineVersionsJsonList(m_usedChannelEngineVersions.size());
+   for(unsigned usedChannelEngineVersionsIndex = 0; usedChannelEngineVersionsIndex < usedChannelEngineVersionsJsonList.GetLength(); ++usedChannelEngineVersionsIndex)
+   {
+     usedChannelEngineVersionsJsonList[usedChannelEngineVersionsIndex].AsObject(m_usedChannelEngineVersions[usedChannelEngineVersionsIndex].Jsonize());
+   }
+   payload.WithArray("usedChannelEngineVersions", std::move(usedChannelEngineVersionsJsonList));
 
   }
 

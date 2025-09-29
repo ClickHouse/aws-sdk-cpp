@@ -12,14 +12,6 @@ using namespace Aws::Synthetics::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-GetCanaryRunsRequest::GetCanaryRunsRequest() : 
-    m_nameHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false)
-{
-}
-
 Aws::String GetCanaryRunsRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -34,6 +26,17 @@ Aws::String GetCanaryRunsRequest::SerializePayload() const
   {
    payload.WithInteger("MaxResults", m_maxResults);
 
+  }
+
+  if(m_dryRunIdHasBeenSet)
+  {
+   payload.WithString("DryRunId", m_dryRunId);
+
+  }
+
+  if(m_runTypeHasBeenSet)
+  {
+   payload.WithString("RunType", RunTypeMapper::GetNameForRunType(m_runType));
   }
 
   return payload.View().WriteReadable();

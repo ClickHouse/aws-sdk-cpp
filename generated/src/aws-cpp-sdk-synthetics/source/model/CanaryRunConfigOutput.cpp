@@ -18,23 +18,7 @@ namespace Synthetics
 namespace Model
 {
 
-CanaryRunConfigOutput::CanaryRunConfigOutput() : 
-    m_timeoutInSeconds(0),
-    m_timeoutInSecondsHasBeenSet(false),
-    m_memoryInMB(0),
-    m_memoryInMBHasBeenSet(false),
-    m_activeTracing(false),
-    m_activeTracingHasBeenSet(false)
-{
-}
-
-CanaryRunConfigOutput::CanaryRunConfigOutput(JsonView jsonValue) : 
-    m_timeoutInSeconds(0),
-    m_timeoutInSecondsHasBeenSet(false),
-    m_memoryInMB(0),
-    m_memoryInMBHasBeenSet(false),
-    m_activeTracing(false),
-    m_activeTracingHasBeenSet(false)
+CanaryRunConfigOutput::CanaryRunConfigOutput(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,24 +28,23 @@ CanaryRunConfigOutput& CanaryRunConfigOutput::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("TimeoutInSeconds"))
   {
     m_timeoutInSeconds = jsonValue.GetInteger("TimeoutInSeconds");
-
     m_timeoutInSecondsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MemoryInMB"))
   {
     m_memoryInMB = jsonValue.GetInteger("MemoryInMB");
-
     m_memoryInMBHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ActiveTracing"))
   {
     m_activeTracing = jsonValue.GetBool("ActiveTracing");
-
     m_activeTracingHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("EphemeralStorage"))
+  {
+    m_ephemeralStorage = jsonValue.GetInteger("EphemeralStorage");
+    m_ephemeralStorageHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -84,6 +67,12 @@ JsonValue CanaryRunConfigOutput::Jsonize() const
   if(m_activeTracingHasBeenSet)
   {
    payload.WithBool("ActiveTracing", m_activeTracing);
+
+  }
+
+  if(m_ephemeralStorageHasBeenSet)
+  {
+   payload.WithInteger("EphemeralStorage", m_ephemeralStorage);
 
   }
 

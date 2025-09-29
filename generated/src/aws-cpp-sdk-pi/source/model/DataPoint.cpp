@@ -18,17 +18,7 @@ namespace PI
 namespace Model
 {
 
-DataPoint::DataPoint() : 
-    m_timestampHasBeenSet(false),
-    m_value(0.0),
-    m_valueHasBeenSet(false)
-{
-}
-
-DataPoint::DataPoint(JsonView jsonValue) : 
-    m_timestampHasBeenSet(false),
-    m_value(0.0),
-    m_valueHasBeenSet(false)
+DataPoint::DataPoint(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ DataPoint& DataPoint::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Timestamp"))
   {
     m_timestamp = jsonValue.GetDouble("Timestamp");
-
     m_timestampHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Value"))
   {
     m_value = jsonValue.GetDouble("Value");
-
     m_valueHasBeenSet = true;
   }
-
   return *this;
 }
 

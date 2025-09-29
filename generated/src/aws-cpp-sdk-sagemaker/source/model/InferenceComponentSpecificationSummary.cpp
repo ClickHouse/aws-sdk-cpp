@@ -18,19 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-InferenceComponentSpecificationSummary::InferenceComponentSpecificationSummary() : 
-    m_modelNameHasBeenSet(false),
-    m_containerHasBeenSet(false),
-    m_startupParametersHasBeenSet(false),
-    m_computeResourceRequirementsHasBeenSet(false)
-{
-}
-
-InferenceComponentSpecificationSummary::InferenceComponentSpecificationSummary(JsonView jsonValue) : 
-    m_modelNameHasBeenSet(false),
-    m_containerHasBeenSet(false),
-    m_startupParametersHasBeenSet(false),
-    m_computeResourceRequirementsHasBeenSet(false)
+InferenceComponentSpecificationSummary::InferenceComponentSpecificationSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,31 +28,28 @@ InferenceComponentSpecificationSummary& InferenceComponentSpecificationSummary::
   if(jsonValue.ValueExists("ModelName"))
   {
     m_modelName = jsonValue.GetString("ModelName");
-
     m_modelNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Container"))
   {
     m_container = jsonValue.GetObject("Container");
-
     m_containerHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StartupParameters"))
   {
     m_startupParameters = jsonValue.GetObject("StartupParameters");
-
     m_startupParametersHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ComputeResourceRequirements"))
   {
     m_computeResourceRequirements = jsonValue.GetObject("ComputeResourceRequirements");
-
     m_computeResourceRequirementsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("BaseInferenceComponentName"))
+  {
+    m_baseInferenceComponentName = jsonValue.GetString("BaseInferenceComponentName");
+    m_baseInferenceComponentNameHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -93,6 +78,12 @@ JsonValue InferenceComponentSpecificationSummary::Jsonize() const
   if(m_computeResourceRequirementsHasBeenSet)
   {
    payload.WithObject("ComputeResourceRequirements", m_computeResourceRequirements.Jsonize());
+
+  }
+
+  if(m_baseInferenceComponentNameHasBeenSet)
+  {
+   payload.WithString("BaseInferenceComponentName", m_baseInferenceComponentName);
 
   }
 

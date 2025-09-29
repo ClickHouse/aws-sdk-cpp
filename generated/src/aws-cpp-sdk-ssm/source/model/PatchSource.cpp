@@ -18,17 +18,7 @@ namespace SSM
 namespace Model
 {
 
-PatchSource::PatchSource() : 
-    m_nameHasBeenSet(false),
-    m_productsHasBeenSet(false),
-    m_configurationHasBeenSet(false)
-{
-}
-
-PatchSource::PatchSource(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_productsHasBeenSet(false),
-    m_configurationHasBeenSet(false)
+PatchSource::PatchSource(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ PatchSource& PatchSource::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Products"))
   {
     Aws::Utils::Array<JsonView> productsJsonList = jsonValue.GetArray("Products");
@@ -51,14 +39,11 @@ PatchSource& PatchSource::operator =(JsonView jsonValue)
     }
     m_productsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Configuration"))
   {
     m_configuration = jsonValue.GetString("Configuration");
-
     m_configurationHasBeenSet = true;
   }
-
   return *this;
 }
 

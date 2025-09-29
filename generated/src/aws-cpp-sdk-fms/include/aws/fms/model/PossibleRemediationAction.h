@@ -33,114 +33,47 @@ namespace Model
   class PossibleRemediationAction
   {
   public:
-    AWS_FMS_API PossibleRemediationAction();
+    AWS_FMS_API PossibleRemediationAction() = default;
     AWS_FMS_API PossibleRemediationAction(Aws::Utils::Json::JsonView jsonValue);
     AWS_FMS_API PossibleRemediationAction& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FMS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A description of the list of remediation actions.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>A description of the list of remediation actions.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    PossibleRemediationAction& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A description of the list of remediation actions.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>A description of the list of remediation actions.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>A description of the list of remediation actions.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>A description of the list of remediation actions.</p>
-     */
-    inline PossibleRemediationAction& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A description of the list of remediation actions.</p>
-     */
-    inline PossibleRemediationAction& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A description of the list of remediation actions.</p>
-     */
-    inline PossibleRemediationAction& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ordered list of remediation actions.</p>
      */
-    inline const Aws::Vector<RemediationActionWithOrder>& GetOrderedRemediationActions() const{ return m_orderedRemediationActions; }
-
-    /**
-     * <p>The ordered list of remediation actions.</p>
-     */
+    inline const Aws::Vector<RemediationActionWithOrder>& GetOrderedRemediationActions() const { return m_orderedRemediationActions; }
     inline bool OrderedRemediationActionsHasBeenSet() const { return m_orderedRemediationActionsHasBeenSet; }
+    template<typename OrderedRemediationActionsT = Aws::Vector<RemediationActionWithOrder>>
+    void SetOrderedRemediationActions(OrderedRemediationActionsT&& value) { m_orderedRemediationActionsHasBeenSet = true; m_orderedRemediationActions = std::forward<OrderedRemediationActionsT>(value); }
+    template<typename OrderedRemediationActionsT = Aws::Vector<RemediationActionWithOrder>>
+    PossibleRemediationAction& WithOrderedRemediationActions(OrderedRemediationActionsT&& value) { SetOrderedRemediationActions(std::forward<OrderedRemediationActionsT>(value)); return *this;}
+    template<typename OrderedRemediationActionsT = RemediationActionWithOrder>
+    PossibleRemediationAction& AddOrderedRemediationActions(OrderedRemediationActionsT&& value) { m_orderedRemediationActionsHasBeenSet = true; m_orderedRemediationActions.emplace_back(std::forward<OrderedRemediationActionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The ordered list of remediation actions.</p>
-     */
-    inline void SetOrderedRemediationActions(const Aws::Vector<RemediationActionWithOrder>& value) { m_orderedRemediationActionsHasBeenSet = true; m_orderedRemediationActions = value; }
-
-    /**
-     * <p>The ordered list of remediation actions.</p>
-     */
-    inline void SetOrderedRemediationActions(Aws::Vector<RemediationActionWithOrder>&& value) { m_orderedRemediationActionsHasBeenSet = true; m_orderedRemediationActions = std::move(value); }
-
-    /**
-     * <p>The ordered list of remediation actions.</p>
-     */
-    inline PossibleRemediationAction& WithOrderedRemediationActions(const Aws::Vector<RemediationActionWithOrder>& value) { SetOrderedRemediationActions(value); return *this;}
-
-    /**
-     * <p>The ordered list of remediation actions.</p>
-     */
-    inline PossibleRemediationAction& WithOrderedRemediationActions(Aws::Vector<RemediationActionWithOrder>&& value) { SetOrderedRemediationActions(std::move(value)); return *this;}
-
-    /**
-     * <p>The ordered list of remediation actions.</p>
-     */
-    inline PossibleRemediationAction& AddOrderedRemediationActions(const RemediationActionWithOrder& value) { m_orderedRemediationActionsHasBeenSet = true; m_orderedRemediationActions.push_back(value); return *this; }
-
-    /**
-     * <p>The ordered list of remediation actions.</p>
-     */
-    inline PossibleRemediationAction& AddOrderedRemediationActions(RemediationActionWithOrder&& value) { m_orderedRemediationActionsHasBeenSet = true; m_orderedRemediationActions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Information about whether an action is taken by default.</p>
      */
-    inline bool GetIsDefaultAction() const{ return m_isDefaultAction; }
-
-    /**
-     * <p>Information about whether an action is taken by default.</p>
-     */
+    inline bool GetIsDefaultAction() const { return m_isDefaultAction; }
     inline bool IsDefaultActionHasBeenSet() const { return m_isDefaultActionHasBeenSet; }
-
-    /**
-     * <p>Information about whether an action is taken by default.</p>
-     */
     inline void SetIsDefaultAction(bool value) { m_isDefaultActionHasBeenSet = true; m_isDefaultAction = value; }
-
-    /**
-     * <p>Information about whether an action is taken by default.</p>
-     */
     inline PossibleRemediationAction& WithIsDefaultAction(bool value) { SetIsDefaultAction(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_description;
@@ -149,7 +82,7 @@ namespace Model
     Aws::Vector<RemediationActionWithOrder> m_orderedRemediationActions;
     bool m_orderedRemediationActionsHasBeenSet = false;
 
-    bool m_isDefaultAction;
+    bool m_isDefaultAction{false};
     bool m_isDefaultActionHasBeenSet = false;
   };
 

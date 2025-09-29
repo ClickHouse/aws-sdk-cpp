@@ -32,52 +32,23 @@ namespace Model
   class ResourceARNDetail
   {
   public:
-    AWS_XRAY_API ResourceARNDetail();
+    AWS_XRAY_API ResourceARNDetail() = default;
     AWS_XRAY_API ResourceARNDetail(Aws::Utils::Json::JsonView jsonValue);
     AWS_XRAY_API ResourceARNDetail& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_XRAY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ARN of a corresponding resource.</p>
      */
-    inline const Aws::String& GetARN() const{ return m_aRN; }
-
-    /**
-     * <p>The ARN of a corresponding resource.</p>
-     */
+    inline const Aws::String& GetARN() const { return m_aRN; }
     inline bool ARNHasBeenSet() const { return m_aRNHasBeenSet; }
-
-    /**
-     * <p>The ARN of a corresponding resource.</p>
-     */
-    inline void SetARN(const Aws::String& value) { m_aRNHasBeenSet = true; m_aRN = value; }
-
-    /**
-     * <p>The ARN of a corresponding resource.</p>
-     */
-    inline void SetARN(Aws::String&& value) { m_aRNHasBeenSet = true; m_aRN = std::move(value); }
-
-    /**
-     * <p>The ARN of a corresponding resource.</p>
-     */
-    inline void SetARN(const char* value) { m_aRNHasBeenSet = true; m_aRN.assign(value); }
-
-    /**
-     * <p>The ARN of a corresponding resource.</p>
-     */
-    inline ResourceARNDetail& WithARN(const Aws::String& value) { SetARN(value); return *this;}
-
-    /**
-     * <p>The ARN of a corresponding resource.</p>
-     */
-    inline ResourceARNDetail& WithARN(Aws::String&& value) { SetARN(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of a corresponding resource.</p>
-     */
-    inline ResourceARNDetail& WithARN(const char* value) { SetARN(value); return *this;}
-
+    template<typename ARNT = Aws::String>
+    void SetARN(ARNT&& value) { m_aRNHasBeenSet = true; m_aRN = std::forward<ARNT>(value); }
+    template<typename ARNT = Aws::String>
+    ResourceARNDetail& WithARN(ARNT&& value) { SetARN(std::forward<ARNT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_aRN;

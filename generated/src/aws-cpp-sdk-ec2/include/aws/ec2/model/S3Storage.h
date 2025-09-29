@@ -33,7 +33,7 @@ namespace Model
   class S3Storage
   {
   public:
-    AWS_EC2_API S3Storage();
+    AWS_EC2_API S3Storage() = default;
     AWS_EC2_API S3Storage(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API S3Storage& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -41,6 +41,7 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The access key ID of the owner of the bucket. Before you specify a value for
      * your access key ID, review and follow the guidance in <a
@@ -48,247 +49,64 @@ namespace Model
      * Practices for Amazon Web Services accounts</a> in the <i>Account
      * ManagementReference Guide</i>.</p>
      */
-    inline const Aws::String& GetAWSAccessKeyId() const{ return m_aWSAccessKeyId; }
-
-    /**
-     * <p>The access key ID of the owner of the bucket. Before you specify a value for
-     * your access key ID, review and follow the guidance in <a
-     * href="https://docs.aws.amazon.com/accounts/latest/reference/best-practices.html">Best
-     * Practices for Amazon Web Services accounts</a> in the <i>Account
-     * ManagementReference Guide</i>.</p>
-     */
+    inline const Aws::String& GetAWSAccessKeyId() const { return m_aWSAccessKeyId; }
     inline bool AWSAccessKeyIdHasBeenSet() const { return m_aWSAccessKeyIdHasBeenSet; }
+    template<typename AWSAccessKeyIdT = Aws::String>
+    void SetAWSAccessKeyId(AWSAccessKeyIdT&& value) { m_aWSAccessKeyIdHasBeenSet = true; m_aWSAccessKeyId = std::forward<AWSAccessKeyIdT>(value); }
+    template<typename AWSAccessKeyIdT = Aws::String>
+    S3Storage& WithAWSAccessKeyId(AWSAccessKeyIdT&& value) { SetAWSAccessKeyId(std::forward<AWSAccessKeyIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The access key ID of the owner of the bucket. Before you specify a value for
-     * your access key ID, review and follow the guidance in <a
-     * href="https://docs.aws.amazon.com/accounts/latest/reference/best-practices.html">Best
-     * Practices for Amazon Web Services accounts</a> in the <i>Account
-     * ManagementReference Guide</i>.</p>
-     */
-    inline void SetAWSAccessKeyId(const Aws::String& value) { m_aWSAccessKeyIdHasBeenSet = true; m_aWSAccessKeyId = value; }
-
-    /**
-     * <p>The access key ID of the owner of the bucket. Before you specify a value for
-     * your access key ID, review and follow the guidance in <a
-     * href="https://docs.aws.amazon.com/accounts/latest/reference/best-practices.html">Best
-     * Practices for Amazon Web Services accounts</a> in the <i>Account
-     * ManagementReference Guide</i>.</p>
-     */
-    inline void SetAWSAccessKeyId(Aws::String&& value) { m_aWSAccessKeyIdHasBeenSet = true; m_aWSAccessKeyId = std::move(value); }
-
-    /**
-     * <p>The access key ID of the owner of the bucket. Before you specify a value for
-     * your access key ID, review and follow the guidance in <a
-     * href="https://docs.aws.amazon.com/accounts/latest/reference/best-practices.html">Best
-     * Practices for Amazon Web Services accounts</a> in the <i>Account
-     * ManagementReference Guide</i>.</p>
-     */
-    inline void SetAWSAccessKeyId(const char* value) { m_aWSAccessKeyIdHasBeenSet = true; m_aWSAccessKeyId.assign(value); }
-
-    /**
-     * <p>The access key ID of the owner of the bucket. Before you specify a value for
-     * your access key ID, review and follow the guidance in <a
-     * href="https://docs.aws.amazon.com/accounts/latest/reference/best-practices.html">Best
-     * Practices for Amazon Web Services accounts</a> in the <i>Account
-     * ManagementReference Guide</i>.</p>
-     */
-    inline S3Storage& WithAWSAccessKeyId(const Aws::String& value) { SetAWSAccessKeyId(value); return *this;}
-
-    /**
-     * <p>The access key ID of the owner of the bucket. Before you specify a value for
-     * your access key ID, review and follow the guidance in <a
-     * href="https://docs.aws.amazon.com/accounts/latest/reference/best-practices.html">Best
-     * Practices for Amazon Web Services accounts</a> in the <i>Account
-     * ManagementReference Guide</i>.</p>
-     */
-    inline S3Storage& WithAWSAccessKeyId(Aws::String&& value) { SetAWSAccessKeyId(std::move(value)); return *this;}
-
-    /**
-     * <p>The access key ID of the owner of the bucket. Before you specify a value for
-     * your access key ID, review and follow the guidance in <a
-     * href="https://docs.aws.amazon.com/accounts/latest/reference/best-practices.html">Best
-     * Practices for Amazon Web Services accounts</a> in the <i>Account
-     * ManagementReference Guide</i>.</p>
-     */
-    inline S3Storage& WithAWSAccessKeyId(const char* value) { SetAWSAccessKeyId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The bucket in which to store the AMI. You can specify a bucket that you
      * already own or a new bucket that Amazon EC2 creates on your behalf. If you
      * specify a bucket that belongs to someone else, Amazon EC2 returns an error.</p>
      */
-    inline const Aws::String& GetBucket() const{ return m_bucket; }
-
-    /**
-     * <p>The bucket in which to store the AMI. You can specify a bucket that you
-     * already own or a new bucket that Amazon EC2 creates on your behalf. If you
-     * specify a bucket that belongs to someone else, Amazon EC2 returns an error.</p>
-     */
+    inline const Aws::String& GetBucket() const { return m_bucket; }
     inline bool BucketHasBeenSet() const { return m_bucketHasBeenSet; }
+    template<typename BucketT = Aws::String>
+    void SetBucket(BucketT&& value) { m_bucketHasBeenSet = true; m_bucket = std::forward<BucketT>(value); }
+    template<typename BucketT = Aws::String>
+    S3Storage& WithBucket(BucketT&& value) { SetBucket(std::forward<BucketT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The bucket in which to store the AMI. You can specify a bucket that you
-     * already own or a new bucket that Amazon EC2 creates on your behalf. If you
-     * specify a bucket that belongs to someone else, Amazon EC2 returns an error.</p>
-     */
-    inline void SetBucket(const Aws::String& value) { m_bucketHasBeenSet = true; m_bucket = value; }
-
-    /**
-     * <p>The bucket in which to store the AMI. You can specify a bucket that you
-     * already own or a new bucket that Amazon EC2 creates on your behalf. If you
-     * specify a bucket that belongs to someone else, Amazon EC2 returns an error.</p>
-     */
-    inline void SetBucket(Aws::String&& value) { m_bucketHasBeenSet = true; m_bucket = std::move(value); }
-
-    /**
-     * <p>The bucket in which to store the AMI. You can specify a bucket that you
-     * already own or a new bucket that Amazon EC2 creates on your behalf. If you
-     * specify a bucket that belongs to someone else, Amazon EC2 returns an error.</p>
-     */
-    inline void SetBucket(const char* value) { m_bucketHasBeenSet = true; m_bucket.assign(value); }
-
-    /**
-     * <p>The bucket in which to store the AMI. You can specify a bucket that you
-     * already own or a new bucket that Amazon EC2 creates on your behalf. If you
-     * specify a bucket that belongs to someone else, Amazon EC2 returns an error.</p>
-     */
-    inline S3Storage& WithBucket(const Aws::String& value) { SetBucket(value); return *this;}
-
-    /**
-     * <p>The bucket in which to store the AMI. You can specify a bucket that you
-     * already own or a new bucket that Amazon EC2 creates on your behalf. If you
-     * specify a bucket that belongs to someone else, Amazon EC2 returns an error.</p>
-     */
-    inline S3Storage& WithBucket(Aws::String&& value) { SetBucket(std::move(value)); return *this;}
-
-    /**
-     * <p>The bucket in which to store the AMI. You can specify a bucket that you
-     * already own or a new bucket that Amazon EC2 creates on your behalf. If you
-     * specify a bucket that belongs to someone else, Amazon EC2 returns an error.</p>
-     */
-    inline S3Storage& WithBucket(const char* value) { SetBucket(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The beginning of the file name of the AMI.</p>
      */
-    inline const Aws::String& GetPrefix() const{ return m_prefix; }
-
-    /**
-     * <p>The beginning of the file name of the AMI.</p>
-     */
+    inline const Aws::String& GetPrefix() const { return m_prefix; }
     inline bool PrefixHasBeenSet() const { return m_prefixHasBeenSet; }
+    template<typename PrefixT = Aws::String>
+    void SetPrefix(PrefixT&& value) { m_prefixHasBeenSet = true; m_prefix = std::forward<PrefixT>(value); }
+    template<typename PrefixT = Aws::String>
+    S3Storage& WithPrefix(PrefixT&& value) { SetPrefix(std::forward<PrefixT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The beginning of the file name of the AMI.</p>
-     */
-    inline void SetPrefix(const Aws::String& value) { m_prefixHasBeenSet = true; m_prefix = value; }
-
-    /**
-     * <p>The beginning of the file name of the AMI.</p>
-     */
-    inline void SetPrefix(Aws::String&& value) { m_prefixHasBeenSet = true; m_prefix = std::move(value); }
-
-    /**
-     * <p>The beginning of the file name of the AMI.</p>
-     */
-    inline void SetPrefix(const char* value) { m_prefixHasBeenSet = true; m_prefix.assign(value); }
-
-    /**
-     * <p>The beginning of the file name of the AMI.</p>
-     */
-    inline S3Storage& WithPrefix(const Aws::String& value) { SetPrefix(value); return *this;}
-
-    /**
-     * <p>The beginning of the file name of the AMI.</p>
-     */
-    inline S3Storage& WithPrefix(Aws::String&& value) { SetPrefix(std::move(value)); return *this;}
-
-    /**
-     * <p>The beginning of the file name of the AMI.</p>
-     */
-    inline S3Storage& WithPrefix(const char* value) { SetPrefix(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An Amazon S3 upload policy that gives Amazon EC2 permission to upload items
      * into Amazon S3 on your behalf.</p>
      */
-    inline const Aws::Utils::ByteBuffer& GetUploadPolicy() const{ return m_uploadPolicy; }
-
-    /**
-     * <p>An Amazon S3 upload policy that gives Amazon EC2 permission to upload items
-     * into Amazon S3 on your behalf.</p>
-     */
+    inline const Aws::Utils::ByteBuffer& GetUploadPolicy() const { return m_uploadPolicy; }
     inline bool UploadPolicyHasBeenSet() const { return m_uploadPolicyHasBeenSet; }
+    template<typename UploadPolicyT = Aws::Utils::ByteBuffer>
+    void SetUploadPolicy(UploadPolicyT&& value) { m_uploadPolicyHasBeenSet = true; m_uploadPolicy = std::forward<UploadPolicyT>(value); }
+    template<typename UploadPolicyT = Aws::Utils::ByteBuffer>
+    S3Storage& WithUploadPolicy(UploadPolicyT&& value) { SetUploadPolicy(std::forward<UploadPolicyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An Amazon S3 upload policy that gives Amazon EC2 permission to upload items
-     * into Amazon S3 on your behalf.</p>
-     */
-    inline void SetUploadPolicy(const Aws::Utils::ByteBuffer& value) { m_uploadPolicyHasBeenSet = true; m_uploadPolicy = value; }
-
-    /**
-     * <p>An Amazon S3 upload policy that gives Amazon EC2 permission to upload items
-     * into Amazon S3 on your behalf.</p>
-     */
-    inline void SetUploadPolicy(Aws::Utils::ByteBuffer&& value) { m_uploadPolicyHasBeenSet = true; m_uploadPolicy = std::move(value); }
-
-    /**
-     * <p>An Amazon S3 upload policy that gives Amazon EC2 permission to upload items
-     * into Amazon S3 on your behalf.</p>
-     */
-    inline S3Storage& WithUploadPolicy(const Aws::Utils::ByteBuffer& value) { SetUploadPolicy(value); return *this;}
-
-    /**
-     * <p>An Amazon S3 upload policy that gives Amazon EC2 permission to upload items
-     * into Amazon S3 on your behalf.</p>
-     */
-    inline S3Storage& WithUploadPolicy(Aws::Utils::ByteBuffer&& value) { SetUploadPolicy(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The signature of the JSON document.</p>
      */
-    inline const Aws::String& GetUploadPolicySignature() const{ return m_uploadPolicySignature; }
-
-    /**
-     * <p>The signature of the JSON document.</p>
-     */
+    inline const Aws::String& GetUploadPolicySignature() const { return m_uploadPolicySignature; }
     inline bool UploadPolicySignatureHasBeenSet() const { return m_uploadPolicySignatureHasBeenSet; }
-
-    /**
-     * <p>The signature of the JSON document.</p>
-     */
-    inline void SetUploadPolicySignature(const Aws::String& value) { m_uploadPolicySignatureHasBeenSet = true; m_uploadPolicySignature = value; }
-
-    /**
-     * <p>The signature of the JSON document.</p>
-     */
-    inline void SetUploadPolicySignature(Aws::String&& value) { m_uploadPolicySignatureHasBeenSet = true; m_uploadPolicySignature = std::move(value); }
-
-    /**
-     * <p>The signature of the JSON document.</p>
-     */
-    inline void SetUploadPolicySignature(const char* value) { m_uploadPolicySignatureHasBeenSet = true; m_uploadPolicySignature.assign(value); }
-
-    /**
-     * <p>The signature of the JSON document.</p>
-     */
-    inline S3Storage& WithUploadPolicySignature(const Aws::String& value) { SetUploadPolicySignature(value); return *this;}
-
-    /**
-     * <p>The signature of the JSON document.</p>
-     */
-    inline S3Storage& WithUploadPolicySignature(Aws::String&& value) { SetUploadPolicySignature(std::move(value)); return *this;}
-
-    /**
-     * <p>The signature of the JSON document.</p>
-     */
-    inline S3Storage& WithUploadPolicySignature(const char* value) { SetUploadPolicySignature(value); return *this;}
-
+    template<typename UploadPolicySignatureT = Aws::String>
+    void SetUploadPolicySignature(UploadPolicySignatureT&& value) { m_uploadPolicySignatureHasBeenSet = true; m_uploadPolicySignature = std::forward<UploadPolicySignatureT>(value); }
+    template<typename UploadPolicySignatureT = Aws::String>
+    S3Storage& WithUploadPolicySignature(UploadPolicySignatureT&& value) { SetUploadPolicySignature(std::forward<UploadPolicySignatureT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_aWSAccessKeyId;
@@ -300,7 +118,7 @@ namespace Model
     Aws::String m_prefix;
     bool m_prefixHasBeenSet = false;
 
-    Aws::Utils::ByteBuffer m_uploadPolicy;
+    Aws::Utils::ByteBuffer m_uploadPolicy{};
     bool m_uploadPolicyHasBeenSet = false;
 
     Aws::String m_uploadPolicySignature;

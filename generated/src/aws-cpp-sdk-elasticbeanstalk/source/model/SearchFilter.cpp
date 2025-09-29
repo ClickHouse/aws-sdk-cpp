@@ -20,17 +20,7 @@ namespace ElasticBeanstalk
 namespace Model
 {
 
-SearchFilter::SearchFilter() : 
-    m_attributeHasBeenSet(false),
-    m_operatorHasBeenSet(false),
-    m_valuesHasBeenSet(false)
-{
-}
-
-SearchFilter::SearchFilter(const XmlNode& xmlNode) : 
-    m_attributeHasBeenSet(false),
-    m_operatorHasBeenSet(false),
-    m_valuesHasBeenSet(false)
+SearchFilter::SearchFilter(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -57,6 +47,7 @@ SearchFilter& SearchFilter::operator =(const XmlNode& xmlNode)
     if(!valuesNode.IsNull())
     {
       XmlNode valuesMember = valuesNode.FirstChild("member");
+      m_valuesHasBeenSet = !valuesMember.IsNull();
       while(!valuesMember.IsNull())
       {
         m_values.push_back(valuesMember.GetText());

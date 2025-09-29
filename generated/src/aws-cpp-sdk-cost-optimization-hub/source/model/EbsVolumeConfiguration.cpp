@@ -18,44 +18,28 @@ namespace CostOptimizationHub
 namespace Model
 {
 
-EbsVolumeConfiguration::EbsVolumeConfiguration() : 
-    m_attachmentStateHasBeenSet(false),
-    m_performanceHasBeenSet(false),
-    m_storageHasBeenSet(false)
-{
-}
-
-EbsVolumeConfiguration::EbsVolumeConfiguration(JsonView jsonValue) : 
-    m_attachmentStateHasBeenSet(false),
-    m_performanceHasBeenSet(false),
-    m_storageHasBeenSet(false)
+EbsVolumeConfiguration::EbsVolumeConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 EbsVolumeConfiguration& EbsVolumeConfiguration::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("attachmentState"))
-  {
-    m_attachmentState = jsonValue.GetString("attachmentState");
-
-    m_attachmentStateHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("performance"))
-  {
-    m_performance = jsonValue.GetObject("performance");
-
-    m_performanceHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("storage"))
   {
     m_storage = jsonValue.GetObject("storage");
-
     m_storageHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("performance"))
+  {
+    m_performance = jsonValue.GetObject("performance");
+    m_performanceHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("attachmentState"))
+  {
+    m_attachmentState = jsonValue.GetString("attachmentState");
+    m_attachmentStateHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -63,9 +47,9 @@ JsonValue EbsVolumeConfiguration::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_attachmentStateHasBeenSet)
+  if(m_storageHasBeenSet)
   {
-   payload.WithString("attachmentState", m_attachmentState);
+   payload.WithObject("storage", m_storage.Jsonize());
 
   }
 
@@ -75,9 +59,9 @@ JsonValue EbsVolumeConfiguration::Jsonize() const
 
   }
 
-  if(m_storageHasBeenSet)
+  if(m_attachmentStateHasBeenSet)
   {
-   payload.WithObject("storage", m_storage.Jsonize());
+   payload.WithString("attachmentState", m_attachmentState);
 
   }
 

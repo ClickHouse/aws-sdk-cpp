@@ -30,39 +30,25 @@ namespace Model
   class AwsEc2LaunchTemplateDataHibernationOptionsDetails
   {
   public:
-    AWS_SECURITYHUB_API AwsEc2LaunchTemplateDataHibernationOptionsDetails();
+    AWS_SECURITYHUB_API AwsEc2LaunchTemplateDataHibernationOptionsDetails() = default;
     AWS_SECURITYHUB_API AwsEc2LaunchTemplateDataHibernationOptionsDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsEc2LaunchTemplateDataHibernationOptionsDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> If you set this parameter to <code>true</code>, the instance is enabled for
      * hibernation. </p>
      */
-    inline bool GetConfigured() const{ return m_configured; }
-
-    /**
-     * <p> If you set this parameter to <code>true</code>, the instance is enabled for
-     * hibernation. </p>
-     */
+    inline bool GetConfigured() const { return m_configured; }
     inline bool ConfiguredHasBeenSet() const { return m_configuredHasBeenSet; }
-
-    /**
-     * <p> If you set this parameter to <code>true</code>, the instance is enabled for
-     * hibernation. </p>
-     */
     inline void SetConfigured(bool value) { m_configuredHasBeenSet = true; m_configured = value; }
-
-    /**
-     * <p> If you set this parameter to <code>true</code>, the instance is enabled for
-     * hibernation. </p>
-     */
     inline AwsEc2LaunchTemplateDataHibernationOptionsDetails& WithConfigured(bool value) { SetConfigured(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_configured;
+    bool m_configured{false};
     bool m_configuredHasBeenSet = false;
   };
 

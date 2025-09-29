@@ -32,7 +32,7 @@ namespace Model
   class IssueDetails
   {
   public:
-    AWS_RDS_API IssueDetails();
+    AWS_RDS_API IssueDetails() = default;
     AWS_RDS_API IssueDetails(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_RDS_API IssueDetails& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,42 +40,18 @@ namespace Model
     AWS_RDS_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>A detailed description of the issue when the recommendation category is
      * <code>performance</code>.</p>
      */
-    inline const PerformanceIssueDetails& GetPerformanceIssueDetails() const{ return m_performanceIssueDetails; }
-
-    /**
-     * <p>A detailed description of the issue when the recommendation category is
-     * <code>performance</code>.</p>
-     */
+    inline const PerformanceIssueDetails& GetPerformanceIssueDetails() const { return m_performanceIssueDetails; }
     inline bool PerformanceIssueDetailsHasBeenSet() const { return m_performanceIssueDetailsHasBeenSet; }
-
-    /**
-     * <p>A detailed description of the issue when the recommendation category is
-     * <code>performance</code>.</p>
-     */
-    inline void SetPerformanceIssueDetails(const PerformanceIssueDetails& value) { m_performanceIssueDetailsHasBeenSet = true; m_performanceIssueDetails = value; }
-
-    /**
-     * <p>A detailed description of the issue when the recommendation category is
-     * <code>performance</code>.</p>
-     */
-    inline void SetPerformanceIssueDetails(PerformanceIssueDetails&& value) { m_performanceIssueDetailsHasBeenSet = true; m_performanceIssueDetails = std::move(value); }
-
-    /**
-     * <p>A detailed description of the issue when the recommendation category is
-     * <code>performance</code>.</p>
-     */
-    inline IssueDetails& WithPerformanceIssueDetails(const PerformanceIssueDetails& value) { SetPerformanceIssueDetails(value); return *this;}
-
-    /**
-     * <p>A detailed description of the issue when the recommendation category is
-     * <code>performance</code>.</p>
-     */
-    inline IssueDetails& WithPerformanceIssueDetails(PerformanceIssueDetails&& value) { SetPerformanceIssueDetails(std::move(value)); return *this;}
-
+    template<typename PerformanceIssueDetailsT = PerformanceIssueDetails>
+    void SetPerformanceIssueDetails(PerformanceIssueDetailsT&& value) { m_performanceIssueDetailsHasBeenSet = true; m_performanceIssueDetails = std::forward<PerformanceIssueDetailsT>(value); }
+    template<typename PerformanceIssueDetailsT = PerformanceIssueDetails>
+    IssueDetails& WithPerformanceIssueDetails(PerformanceIssueDetailsT&& value) { SetPerformanceIssueDetails(std::forward<PerformanceIssueDetailsT>(value)); return *this;}
+    ///@}
   private:
 
     PerformanceIssueDetails m_performanceIssueDetails;

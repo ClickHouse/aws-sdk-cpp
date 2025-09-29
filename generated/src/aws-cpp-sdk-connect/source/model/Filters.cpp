@@ -18,19 +18,7 @@ namespace Connect
 namespace Model
 {
 
-Filters::Filters() : 
-    m_queuesHasBeenSet(false),
-    m_channelsHasBeenSet(false),
-    m_routingProfilesHasBeenSet(false),
-    m_routingStepExpressionsHasBeenSet(false)
-{
-}
-
-Filters::Filters(JsonView jsonValue) : 
-    m_queuesHasBeenSet(false),
-    m_channelsHasBeenSet(false),
-    m_routingProfilesHasBeenSet(false),
-    m_routingStepExpressionsHasBeenSet(false)
+Filters::Filters(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,7 +34,6 @@ Filters& Filters::operator =(JsonView jsonValue)
     }
     m_queuesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Channels"))
   {
     Aws::Utils::Array<JsonView> channelsJsonList = jsonValue.GetArray("Channels");
@@ -56,7 +43,6 @@ Filters& Filters::operator =(JsonView jsonValue)
     }
     m_channelsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RoutingProfiles"))
   {
     Aws::Utils::Array<JsonView> routingProfilesJsonList = jsonValue.GetArray("RoutingProfiles");
@@ -66,7 +52,6 @@ Filters& Filters::operator =(JsonView jsonValue)
     }
     m_routingProfilesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RoutingStepExpressions"))
   {
     Aws::Utils::Array<JsonView> routingStepExpressionsJsonList = jsonValue.GetArray("RoutingStepExpressions");
@@ -76,7 +61,15 @@ Filters& Filters::operator =(JsonView jsonValue)
     }
     m_routingStepExpressionsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("AgentStatuses"))
+  {
+    Aws::Utils::Array<JsonView> agentStatusesJsonList = jsonValue.GetArray("AgentStatuses");
+    for(unsigned agentStatusesIndex = 0; agentStatusesIndex < agentStatusesJsonList.GetLength(); ++agentStatusesIndex)
+    {
+      m_agentStatuses.push_back(agentStatusesJsonList[agentStatusesIndex].AsString());
+    }
+    m_agentStatusesHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -125,6 +118,17 @@ JsonValue Filters::Jsonize() const
      routingStepExpressionsJsonList[routingStepExpressionsIndex].AsString(m_routingStepExpressions[routingStepExpressionsIndex]);
    }
    payload.WithArray("RoutingStepExpressions", std::move(routingStepExpressionsJsonList));
+
+  }
+
+  if(m_agentStatusesHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> agentStatusesJsonList(m_agentStatuses.size());
+   for(unsigned agentStatusesIndex = 0; agentStatusesIndex < agentStatusesJsonList.GetLength(); ++agentStatusesIndex)
+   {
+     agentStatusesJsonList[agentStatusesIndex].AsString(m_agentStatuses[agentStatusesIndex]);
+   }
+   payload.WithArray("AgentStatuses", std::move(agentStatusesJsonList));
 
   }
 

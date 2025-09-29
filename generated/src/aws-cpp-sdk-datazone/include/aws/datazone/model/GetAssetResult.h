@@ -10,6 +10,7 @@
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/datazone/model/AssetListingDetails.h>
 #include <aws/datazone/model/FormOutput.h>
+#include <aws/datazone/model/TimeSeriesDataPointSummaryFormOutput.h>
 #include <utility>
 
 namespace Aws
@@ -31,656 +32,300 @@ namespace Model
   class GetAssetResult
   {
   public:
-    AWS_DATAZONE_API GetAssetResult();
+    AWS_DATAZONE_API GetAssetResult() = default;
     AWS_DATAZONE_API GetAssetResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_DATAZONE_API GetAssetResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The timestamp of when the asset was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedAt() const{ return m_createdAt; }
+    inline const Aws::Utils::DateTime& GetCreatedAt() const { return m_createdAt; }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    void SetCreatedAt(CreatedAtT&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::forward<CreatedAtT>(value); }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    GetAssetResult& WithCreatedAt(CreatedAtT&& value) { SetCreatedAt(std::forward<CreatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp of when the asset was created.</p>
-     */
-    inline void SetCreatedAt(const Aws::Utils::DateTime& value) { m_createdAt = value; }
-
-    /**
-     * <p>The timestamp of when the asset was created.</p>
-     */
-    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAt = std::move(value); }
-
-    /**
-     * <p>The timestamp of when the asset was created.</p>
-     */
-    inline GetAssetResult& WithCreatedAt(const Aws::Utils::DateTime& value) { SetCreatedAt(value); return *this;}
-
-    /**
-     * <p>The timestamp of when the asset was created.</p>
-     */
-    inline GetAssetResult& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon DataZone user who created the asset.</p>
      */
-    inline const Aws::String& GetCreatedBy() const{ return m_createdBy; }
+    inline const Aws::String& GetCreatedBy() const { return m_createdBy; }
+    template<typename CreatedByT = Aws::String>
+    void SetCreatedBy(CreatedByT&& value) { m_createdByHasBeenSet = true; m_createdBy = std::forward<CreatedByT>(value); }
+    template<typename CreatedByT = Aws::String>
+    GetAssetResult& WithCreatedBy(CreatedByT&& value) { SetCreatedBy(std::forward<CreatedByT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon DataZone user who created the asset.</p>
-     */
-    inline void SetCreatedBy(const Aws::String& value) { m_createdBy = value; }
-
-    /**
-     * <p>The Amazon DataZone user who created the asset.</p>
-     */
-    inline void SetCreatedBy(Aws::String&& value) { m_createdBy = std::move(value); }
-
-    /**
-     * <p>The Amazon DataZone user who created the asset.</p>
-     */
-    inline void SetCreatedBy(const char* value) { m_createdBy.assign(value); }
-
-    /**
-     * <p>The Amazon DataZone user who created the asset.</p>
-     */
-    inline GetAssetResult& WithCreatedBy(const Aws::String& value) { SetCreatedBy(value); return *this;}
-
-    /**
-     * <p>The Amazon DataZone user who created the asset.</p>
-     */
-    inline GetAssetResult& WithCreatedBy(Aws::String&& value) { SetCreatedBy(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon DataZone user who created the asset.</p>
-     */
-    inline GetAssetResult& WithCreatedBy(const char* value) { SetCreatedBy(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The description of the Amazon DataZone asset.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
+    inline const Aws::String& GetDescription() const { return m_description; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    GetAssetResult& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description of the Amazon DataZone asset.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_description = value; }
-
-    /**
-     * <p>The description of the Amazon DataZone asset.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_description = std::move(value); }
-
-    /**
-     * <p>The description of the Amazon DataZone asset.</p>
-     */
-    inline void SetDescription(const char* value) { m_description.assign(value); }
-
-    /**
-     * <p>The description of the Amazon DataZone asset.</p>
-     */
-    inline GetAssetResult& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description of the Amazon DataZone asset.</p>
-     */
-    inline GetAssetResult& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the Amazon DataZone asset.</p>
-     */
-    inline GetAssetResult& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the Amazon DataZone domain to which the asset belongs.</p>
      */
-    inline const Aws::String& GetDomainId() const{ return m_domainId; }
+    inline const Aws::String& GetDomainId() const { return m_domainId; }
+    template<typename DomainIdT = Aws::String>
+    void SetDomainId(DomainIdT&& value) { m_domainIdHasBeenSet = true; m_domainId = std::forward<DomainIdT>(value); }
+    template<typename DomainIdT = Aws::String>
+    GetAssetResult& WithDomainId(DomainIdT&& value) { SetDomainId(std::forward<DomainIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ID of the Amazon DataZone domain to which the asset belongs.</p>
+     * <p>The external ID of the asset.</p>
      */
-    inline void SetDomainId(const Aws::String& value) { m_domainId = value; }
+    inline const Aws::String& GetExternalIdentifier() const { return m_externalIdentifier; }
+    template<typename ExternalIdentifierT = Aws::String>
+    void SetExternalIdentifier(ExternalIdentifierT&& value) { m_externalIdentifierHasBeenSet = true; m_externalIdentifier = std::forward<ExternalIdentifierT>(value); }
+    template<typename ExternalIdentifierT = Aws::String>
+    GetAssetResult& WithExternalIdentifier(ExternalIdentifierT&& value) { SetExternalIdentifier(std::forward<ExternalIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Amazon DataZone domain to which the asset belongs.</p>
-     */
-    inline void SetDomainId(Aws::String&& value) { m_domainId = std::move(value); }
-
-    /**
-     * <p>The ID of the Amazon DataZone domain to which the asset belongs.</p>
-     */
-    inline void SetDomainId(const char* value) { m_domainId.assign(value); }
-
-    /**
-     * <p>The ID of the Amazon DataZone domain to which the asset belongs.</p>
-     */
-    inline GetAssetResult& WithDomainId(const Aws::String& value) { SetDomainId(value); return *this;}
-
-    /**
-     * <p>The ID of the Amazon DataZone domain to which the asset belongs.</p>
-     */
-    inline GetAssetResult& WithDomainId(Aws::String&& value) { SetDomainId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Amazon DataZone domain to which the asset belongs.</p>
-     */
-    inline GetAssetResult& WithDomainId(const char* value) { SetDomainId(value); return *this;}
-
-
-    /**
-     * <p/>
-     */
-    inline const Aws::String& GetExternalIdentifier() const{ return m_externalIdentifier; }
-
-    /**
-     * <p/>
-     */
-    inline void SetExternalIdentifier(const Aws::String& value) { m_externalIdentifier = value; }
-
-    /**
-     * <p/>
-     */
-    inline void SetExternalIdentifier(Aws::String&& value) { m_externalIdentifier = std::move(value); }
-
-    /**
-     * <p/>
-     */
-    inline void SetExternalIdentifier(const char* value) { m_externalIdentifier.assign(value); }
-
-    /**
-     * <p/>
-     */
-    inline GetAssetResult& WithExternalIdentifier(const Aws::String& value) { SetExternalIdentifier(value); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline GetAssetResult& WithExternalIdentifier(Aws::String&& value) { SetExternalIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline GetAssetResult& WithExternalIdentifier(const char* value) { SetExternalIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The timestamp of when the first revision of the asset was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetFirstRevisionCreatedAt() const{ return m_firstRevisionCreatedAt; }
+    inline const Aws::Utils::DateTime& GetFirstRevisionCreatedAt() const { return m_firstRevisionCreatedAt; }
+    template<typename FirstRevisionCreatedAtT = Aws::Utils::DateTime>
+    void SetFirstRevisionCreatedAt(FirstRevisionCreatedAtT&& value) { m_firstRevisionCreatedAtHasBeenSet = true; m_firstRevisionCreatedAt = std::forward<FirstRevisionCreatedAtT>(value); }
+    template<typename FirstRevisionCreatedAtT = Aws::Utils::DateTime>
+    GetAssetResult& WithFirstRevisionCreatedAt(FirstRevisionCreatedAtT&& value) { SetFirstRevisionCreatedAt(std::forward<FirstRevisionCreatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp of when the first revision of the asset was created.</p>
-     */
-    inline void SetFirstRevisionCreatedAt(const Aws::Utils::DateTime& value) { m_firstRevisionCreatedAt = value; }
-
-    /**
-     * <p>The timestamp of when the first revision of the asset was created.</p>
-     */
-    inline void SetFirstRevisionCreatedAt(Aws::Utils::DateTime&& value) { m_firstRevisionCreatedAt = std::move(value); }
-
-    /**
-     * <p>The timestamp of when the first revision of the asset was created.</p>
-     */
-    inline GetAssetResult& WithFirstRevisionCreatedAt(const Aws::Utils::DateTime& value) { SetFirstRevisionCreatedAt(value); return *this;}
-
-    /**
-     * <p>The timestamp of when the first revision of the asset was created.</p>
-     */
-    inline GetAssetResult& WithFirstRevisionCreatedAt(Aws::Utils::DateTime&& value) { SetFirstRevisionCreatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon DataZone user who created the first revision of the asset.</p>
      */
-    inline const Aws::String& GetFirstRevisionCreatedBy() const{ return m_firstRevisionCreatedBy; }
+    inline const Aws::String& GetFirstRevisionCreatedBy() const { return m_firstRevisionCreatedBy; }
+    template<typename FirstRevisionCreatedByT = Aws::String>
+    void SetFirstRevisionCreatedBy(FirstRevisionCreatedByT&& value) { m_firstRevisionCreatedByHasBeenSet = true; m_firstRevisionCreatedBy = std::forward<FirstRevisionCreatedByT>(value); }
+    template<typename FirstRevisionCreatedByT = Aws::String>
+    GetAssetResult& WithFirstRevisionCreatedBy(FirstRevisionCreatedByT&& value) { SetFirstRevisionCreatedBy(std::forward<FirstRevisionCreatedByT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon DataZone user who created the first revision of the asset.</p>
-     */
-    inline void SetFirstRevisionCreatedBy(const Aws::String& value) { m_firstRevisionCreatedBy = value; }
-
-    /**
-     * <p>The Amazon DataZone user who created the first revision of the asset.</p>
-     */
-    inline void SetFirstRevisionCreatedBy(Aws::String&& value) { m_firstRevisionCreatedBy = std::move(value); }
-
-    /**
-     * <p>The Amazon DataZone user who created the first revision of the asset.</p>
-     */
-    inline void SetFirstRevisionCreatedBy(const char* value) { m_firstRevisionCreatedBy.assign(value); }
-
-    /**
-     * <p>The Amazon DataZone user who created the first revision of the asset.</p>
-     */
-    inline GetAssetResult& WithFirstRevisionCreatedBy(const Aws::String& value) { SetFirstRevisionCreatedBy(value); return *this;}
-
-    /**
-     * <p>The Amazon DataZone user who created the first revision of the asset.</p>
-     */
-    inline GetAssetResult& WithFirstRevisionCreatedBy(Aws::String&& value) { SetFirstRevisionCreatedBy(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon DataZone user who created the first revision of the asset.</p>
-     */
-    inline GetAssetResult& WithFirstRevisionCreatedBy(const char* value) { SetFirstRevisionCreatedBy(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The metadata forms attached to the asset.</p>
      */
-    inline const Aws::Vector<FormOutput>& GetFormsOutput() const{ return m_formsOutput; }
+    inline const Aws::Vector<FormOutput>& GetFormsOutput() const { return m_formsOutput; }
+    template<typename FormsOutputT = Aws::Vector<FormOutput>>
+    void SetFormsOutput(FormsOutputT&& value) { m_formsOutputHasBeenSet = true; m_formsOutput = std::forward<FormsOutputT>(value); }
+    template<typename FormsOutputT = Aws::Vector<FormOutput>>
+    GetAssetResult& WithFormsOutput(FormsOutputT&& value) { SetFormsOutput(std::forward<FormsOutputT>(value)); return *this;}
+    template<typename FormsOutputT = FormOutput>
+    GetAssetResult& AddFormsOutput(FormsOutputT&& value) { m_formsOutputHasBeenSet = true; m_formsOutput.emplace_back(std::forward<FormsOutputT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The metadata forms attached to the asset.</p>
-     */
-    inline void SetFormsOutput(const Aws::Vector<FormOutput>& value) { m_formsOutput = value; }
-
-    /**
-     * <p>The metadata forms attached to the asset.</p>
-     */
-    inline void SetFormsOutput(Aws::Vector<FormOutput>&& value) { m_formsOutput = std::move(value); }
-
-    /**
-     * <p>The metadata forms attached to the asset.</p>
-     */
-    inline GetAssetResult& WithFormsOutput(const Aws::Vector<FormOutput>& value) { SetFormsOutput(value); return *this;}
-
-    /**
-     * <p>The metadata forms attached to the asset.</p>
-     */
-    inline GetAssetResult& WithFormsOutput(Aws::Vector<FormOutput>&& value) { SetFormsOutput(std::move(value)); return *this;}
-
-    /**
-     * <p>The metadata forms attached to the asset.</p>
-     */
-    inline GetAssetResult& AddFormsOutput(const FormOutput& value) { m_formsOutput.push_back(value); return *this; }
-
-    /**
-     * <p>The metadata forms attached to the asset.</p>
-     */
-    inline GetAssetResult& AddFormsOutput(FormOutput&& value) { m_formsOutput.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The business glossary terms attached to the asset.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetGlossaryTerms() const{ return m_glossaryTerms; }
+    inline const Aws::Vector<Aws::String>& GetGlossaryTerms() const { return m_glossaryTerms; }
+    template<typename GlossaryTermsT = Aws::Vector<Aws::String>>
+    void SetGlossaryTerms(GlossaryTermsT&& value) { m_glossaryTermsHasBeenSet = true; m_glossaryTerms = std::forward<GlossaryTermsT>(value); }
+    template<typename GlossaryTermsT = Aws::Vector<Aws::String>>
+    GetAssetResult& WithGlossaryTerms(GlossaryTermsT&& value) { SetGlossaryTerms(std::forward<GlossaryTermsT>(value)); return *this;}
+    template<typename GlossaryTermsT = Aws::String>
+    GetAssetResult& AddGlossaryTerms(GlossaryTermsT&& value) { m_glossaryTermsHasBeenSet = true; m_glossaryTerms.emplace_back(std::forward<GlossaryTermsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The business glossary terms attached to the asset.</p>
+     * <p>The restricted glossary terms attached to an asset.</p>
      */
-    inline void SetGlossaryTerms(const Aws::Vector<Aws::String>& value) { m_glossaryTerms = value; }
+    inline const Aws::Vector<Aws::String>& GetGovernedGlossaryTerms() const { return m_governedGlossaryTerms; }
+    template<typename GovernedGlossaryTermsT = Aws::Vector<Aws::String>>
+    void SetGovernedGlossaryTerms(GovernedGlossaryTermsT&& value) { m_governedGlossaryTermsHasBeenSet = true; m_governedGlossaryTerms = std::forward<GovernedGlossaryTermsT>(value); }
+    template<typename GovernedGlossaryTermsT = Aws::Vector<Aws::String>>
+    GetAssetResult& WithGovernedGlossaryTerms(GovernedGlossaryTermsT&& value) { SetGovernedGlossaryTerms(std::forward<GovernedGlossaryTermsT>(value)); return *this;}
+    template<typename GovernedGlossaryTermsT = Aws::String>
+    GetAssetResult& AddGovernedGlossaryTerms(GovernedGlossaryTermsT&& value) { m_governedGlossaryTermsHasBeenSet = true; m_governedGlossaryTerms.emplace_back(std::forward<GovernedGlossaryTermsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The business glossary terms attached to the asset.</p>
-     */
-    inline void SetGlossaryTerms(Aws::Vector<Aws::String>&& value) { m_glossaryTerms = std::move(value); }
-
-    /**
-     * <p>The business glossary terms attached to the asset.</p>
-     */
-    inline GetAssetResult& WithGlossaryTerms(const Aws::Vector<Aws::String>& value) { SetGlossaryTerms(value); return *this;}
-
-    /**
-     * <p>The business glossary terms attached to the asset.</p>
-     */
-    inline GetAssetResult& WithGlossaryTerms(Aws::Vector<Aws::String>&& value) { SetGlossaryTerms(std::move(value)); return *this;}
-
-    /**
-     * <p>The business glossary terms attached to the asset.</p>
-     */
-    inline GetAssetResult& AddGlossaryTerms(const Aws::String& value) { m_glossaryTerms.push_back(value); return *this; }
-
-    /**
-     * <p>The business glossary terms attached to the asset.</p>
-     */
-    inline GetAssetResult& AddGlossaryTerms(Aws::String&& value) { m_glossaryTerms.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The business glossary terms attached to the asset.</p>
-     */
-    inline GetAssetResult& AddGlossaryTerms(const char* value) { m_glossaryTerms.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The ID of the asset.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
+    inline const Aws::String& GetId() const { return m_id; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    GetAssetResult& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ID of the asset.</p>
+     * <p>The latest data point that was imported into the time series form for the
+     * asset. </p>
      */
-    inline void SetId(const Aws::String& value) { m_id = value; }
+    inline const Aws::Vector<TimeSeriesDataPointSummaryFormOutput>& GetLatestTimeSeriesDataPointFormsOutput() const { return m_latestTimeSeriesDataPointFormsOutput; }
+    template<typename LatestTimeSeriesDataPointFormsOutputT = Aws::Vector<TimeSeriesDataPointSummaryFormOutput>>
+    void SetLatestTimeSeriesDataPointFormsOutput(LatestTimeSeriesDataPointFormsOutputT&& value) { m_latestTimeSeriesDataPointFormsOutputHasBeenSet = true; m_latestTimeSeriesDataPointFormsOutput = std::forward<LatestTimeSeriesDataPointFormsOutputT>(value); }
+    template<typename LatestTimeSeriesDataPointFormsOutputT = Aws::Vector<TimeSeriesDataPointSummaryFormOutput>>
+    GetAssetResult& WithLatestTimeSeriesDataPointFormsOutput(LatestTimeSeriesDataPointFormsOutputT&& value) { SetLatestTimeSeriesDataPointFormsOutput(std::forward<LatestTimeSeriesDataPointFormsOutputT>(value)); return *this;}
+    template<typename LatestTimeSeriesDataPointFormsOutputT = TimeSeriesDataPointSummaryFormOutput>
+    GetAssetResult& AddLatestTimeSeriesDataPointFormsOutput(LatestTimeSeriesDataPointFormsOutputT&& value) { m_latestTimeSeriesDataPointFormsOutputHasBeenSet = true; m_latestTimeSeriesDataPointFormsOutput.emplace_back(std::forward<LatestTimeSeriesDataPointFormsOutputT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The ID of the asset.</p>
+     * <p>The listing of the asset.</p>
      */
-    inline void SetId(Aws::String&& value) { m_id = std::move(value); }
+    inline const AssetListingDetails& GetListing() const { return m_listing; }
+    template<typename ListingT = AssetListingDetails>
+    void SetListing(ListingT&& value) { m_listingHasBeenSet = true; m_listing = std::forward<ListingT>(value); }
+    template<typename ListingT = AssetListingDetails>
+    GetAssetResult& WithListing(ListingT&& value) { SetListing(std::forward<ListingT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the asset.</p>
-     */
-    inline void SetId(const char* value) { m_id.assign(value); }
-
-    /**
-     * <p>The ID of the asset.</p>
-     */
-    inline GetAssetResult& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The ID of the asset.</p>
-     */
-    inline GetAssetResult& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the asset.</p>
-     */
-    inline GetAssetResult& WithId(const char* value) { SetId(value); return *this;}
-
-
-    /**
-     * <p/>
-     */
-    inline const AssetListingDetails& GetListing() const{ return m_listing; }
-
-    /**
-     * <p/>
-     */
-    inline void SetListing(const AssetListingDetails& value) { m_listing = value; }
-
-    /**
-     * <p/>
-     */
-    inline void SetListing(AssetListingDetails&& value) { m_listing = std::move(value); }
-
-    /**
-     * <p/>
-     */
-    inline GetAssetResult& WithListing(const AssetListingDetails& value) { SetListing(value); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline GetAssetResult& WithListing(AssetListingDetails&& value) { SetListing(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the asset.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
+    inline const Aws::String& GetName() const { return m_name; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    GetAssetResult& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the asset.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_name = value; }
-
-    /**
-     * <p>The name of the asset.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_name = std::move(value); }
-
-    /**
-     * <p>The name of the asset.</p>
-     */
-    inline void SetName(const char* value) { m_name.assign(value); }
-
-    /**
-     * <p>The name of the asset.</p>
-     */
-    inline GetAssetResult& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the asset.</p>
-     */
-    inline GetAssetResult& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the asset.</p>
-     */
-    inline GetAssetResult& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the project that owns the asset.</p>
      */
-    inline const Aws::String& GetOwningProjectId() const{ return m_owningProjectId; }
+    inline const Aws::String& GetOwningProjectId() const { return m_owningProjectId; }
+    template<typename OwningProjectIdT = Aws::String>
+    void SetOwningProjectId(OwningProjectIdT&& value) { m_owningProjectIdHasBeenSet = true; m_owningProjectId = std::forward<OwningProjectIdT>(value); }
+    template<typename OwningProjectIdT = Aws::String>
+    GetAssetResult& WithOwningProjectId(OwningProjectIdT&& value) { SetOwningProjectId(std::forward<OwningProjectIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the project that owns the asset.</p>
-     */
-    inline void SetOwningProjectId(const Aws::String& value) { m_owningProjectId = value; }
-
-    /**
-     * <p>The ID of the project that owns the asset.</p>
-     */
-    inline void SetOwningProjectId(Aws::String&& value) { m_owningProjectId = std::move(value); }
-
-    /**
-     * <p>The ID of the project that owns the asset.</p>
-     */
-    inline void SetOwningProjectId(const char* value) { m_owningProjectId.assign(value); }
-
-    /**
-     * <p>The ID of the project that owns the asset.</p>
-     */
-    inline GetAssetResult& WithOwningProjectId(const Aws::String& value) { SetOwningProjectId(value); return *this;}
-
-    /**
-     * <p>The ID of the project that owns the asset.</p>
-     */
-    inline GetAssetResult& WithOwningProjectId(Aws::String&& value) { SetOwningProjectId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the project that owns the asset.</p>
-     */
-    inline GetAssetResult& WithOwningProjectId(const char* value) { SetOwningProjectId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The read-only metadata forms attached to the asset.</p>
      */
-    inline const Aws::Vector<FormOutput>& GetReadOnlyFormsOutput() const{ return m_readOnlyFormsOutput; }
+    inline const Aws::Vector<FormOutput>& GetReadOnlyFormsOutput() const { return m_readOnlyFormsOutput; }
+    template<typename ReadOnlyFormsOutputT = Aws::Vector<FormOutput>>
+    void SetReadOnlyFormsOutput(ReadOnlyFormsOutputT&& value) { m_readOnlyFormsOutputHasBeenSet = true; m_readOnlyFormsOutput = std::forward<ReadOnlyFormsOutputT>(value); }
+    template<typename ReadOnlyFormsOutputT = Aws::Vector<FormOutput>>
+    GetAssetResult& WithReadOnlyFormsOutput(ReadOnlyFormsOutputT&& value) { SetReadOnlyFormsOutput(std::forward<ReadOnlyFormsOutputT>(value)); return *this;}
+    template<typename ReadOnlyFormsOutputT = FormOutput>
+    GetAssetResult& AddReadOnlyFormsOutput(ReadOnlyFormsOutputT&& value) { m_readOnlyFormsOutputHasBeenSet = true; m_readOnlyFormsOutput.emplace_back(std::forward<ReadOnlyFormsOutputT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The read-only metadata forms attached to the asset.</p>
-     */
-    inline void SetReadOnlyFormsOutput(const Aws::Vector<FormOutput>& value) { m_readOnlyFormsOutput = value; }
-
-    /**
-     * <p>The read-only metadata forms attached to the asset.</p>
-     */
-    inline void SetReadOnlyFormsOutput(Aws::Vector<FormOutput>&& value) { m_readOnlyFormsOutput = std::move(value); }
-
-    /**
-     * <p>The read-only metadata forms attached to the asset.</p>
-     */
-    inline GetAssetResult& WithReadOnlyFormsOutput(const Aws::Vector<FormOutput>& value) { SetReadOnlyFormsOutput(value); return *this;}
-
-    /**
-     * <p>The read-only metadata forms attached to the asset.</p>
-     */
-    inline GetAssetResult& WithReadOnlyFormsOutput(Aws::Vector<FormOutput>&& value) { SetReadOnlyFormsOutput(std::move(value)); return *this;}
-
-    /**
-     * <p>The read-only metadata forms attached to the asset.</p>
-     */
-    inline GetAssetResult& AddReadOnlyFormsOutput(const FormOutput& value) { m_readOnlyFormsOutput.push_back(value); return *this; }
-
-    /**
-     * <p>The read-only metadata forms attached to the asset.</p>
-     */
-    inline GetAssetResult& AddReadOnlyFormsOutput(FormOutput&& value) { m_readOnlyFormsOutput.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The revision of the asset.</p>
      */
-    inline const Aws::String& GetRevision() const{ return m_revision; }
+    inline const Aws::String& GetRevision() const { return m_revision; }
+    template<typename RevisionT = Aws::String>
+    void SetRevision(RevisionT&& value) { m_revisionHasBeenSet = true; m_revision = std::forward<RevisionT>(value); }
+    template<typename RevisionT = Aws::String>
+    GetAssetResult& WithRevision(RevisionT&& value) { SetRevision(std::forward<RevisionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The revision of the asset.</p>
-     */
-    inline void SetRevision(const Aws::String& value) { m_revision = value; }
-
-    /**
-     * <p>The revision of the asset.</p>
-     */
-    inline void SetRevision(Aws::String&& value) { m_revision = std::move(value); }
-
-    /**
-     * <p>The revision of the asset.</p>
-     */
-    inline void SetRevision(const char* value) { m_revision.assign(value); }
-
-    /**
-     * <p>The revision of the asset.</p>
-     */
-    inline GetAssetResult& WithRevision(const Aws::String& value) { SetRevision(value); return *this;}
-
-    /**
-     * <p>The revision of the asset.</p>
-     */
-    inline GetAssetResult& WithRevision(Aws::String&& value) { SetRevision(std::move(value)); return *this;}
-
-    /**
-     * <p>The revision of the asset.</p>
-     */
-    inline GetAssetResult& WithRevision(const char* value) { SetRevision(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the asset type.</p>
      */
-    inline const Aws::String& GetTypeIdentifier() const{ return m_typeIdentifier; }
+    inline const Aws::String& GetTypeIdentifier() const { return m_typeIdentifier; }
+    template<typename TypeIdentifierT = Aws::String>
+    void SetTypeIdentifier(TypeIdentifierT&& value) { m_typeIdentifierHasBeenSet = true; m_typeIdentifier = std::forward<TypeIdentifierT>(value); }
+    template<typename TypeIdentifierT = Aws::String>
+    GetAssetResult& WithTypeIdentifier(TypeIdentifierT&& value) { SetTypeIdentifier(std::forward<TypeIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the asset type.</p>
-     */
-    inline void SetTypeIdentifier(const Aws::String& value) { m_typeIdentifier = value; }
-
-    /**
-     * <p>The ID of the asset type.</p>
-     */
-    inline void SetTypeIdentifier(Aws::String&& value) { m_typeIdentifier = std::move(value); }
-
-    /**
-     * <p>The ID of the asset type.</p>
-     */
-    inline void SetTypeIdentifier(const char* value) { m_typeIdentifier.assign(value); }
-
-    /**
-     * <p>The ID of the asset type.</p>
-     */
-    inline GetAssetResult& WithTypeIdentifier(const Aws::String& value) { SetTypeIdentifier(value); return *this;}
-
-    /**
-     * <p>The ID of the asset type.</p>
-     */
-    inline GetAssetResult& WithTypeIdentifier(Aws::String&& value) { SetTypeIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the asset type.</p>
-     */
-    inline GetAssetResult& WithTypeIdentifier(const char* value) { SetTypeIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The revision of the asset type.</p>
      */
-    inline const Aws::String& GetTypeRevision() const{ return m_typeRevision; }
+    inline const Aws::String& GetTypeRevision() const { return m_typeRevision; }
+    template<typename TypeRevisionT = Aws::String>
+    void SetTypeRevision(TypeRevisionT&& value) { m_typeRevisionHasBeenSet = true; m_typeRevision = std::forward<TypeRevisionT>(value); }
+    template<typename TypeRevisionT = Aws::String>
+    GetAssetResult& WithTypeRevision(TypeRevisionT&& value) { SetTypeRevision(std::forward<TypeRevisionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The revision of the asset type.</p>
-     */
-    inline void SetTypeRevision(const Aws::String& value) { m_typeRevision = value; }
-
-    /**
-     * <p>The revision of the asset type.</p>
-     */
-    inline void SetTypeRevision(Aws::String&& value) { m_typeRevision = std::move(value); }
-
-    /**
-     * <p>The revision of the asset type.</p>
-     */
-    inline void SetTypeRevision(const char* value) { m_typeRevision.assign(value); }
-
-    /**
-     * <p>The revision of the asset type.</p>
-     */
-    inline GetAssetResult& WithTypeRevision(const Aws::String& value) { SetTypeRevision(value); return *this;}
-
-    /**
-     * <p>The revision of the asset type.</p>
-     */
-    inline GetAssetResult& WithTypeRevision(Aws::String&& value) { SetTypeRevision(std::move(value)); return *this;}
-
-    /**
-     * <p>The revision of the asset type.</p>
-     */
-    inline GetAssetResult& WithTypeRevision(const char* value) { SetTypeRevision(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetAssetResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetAssetResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetAssetResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetAssetResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::Utils::DateTime m_createdAt;
+    Aws::Utils::DateTime m_createdAt{};
+    bool m_createdAtHasBeenSet = false;
 
     Aws::String m_createdBy;
+    bool m_createdByHasBeenSet = false;
 
     Aws::String m_description;
+    bool m_descriptionHasBeenSet = false;
 
     Aws::String m_domainId;
+    bool m_domainIdHasBeenSet = false;
 
     Aws::String m_externalIdentifier;
+    bool m_externalIdentifierHasBeenSet = false;
 
-    Aws::Utils::DateTime m_firstRevisionCreatedAt;
+    Aws::Utils::DateTime m_firstRevisionCreatedAt{};
+    bool m_firstRevisionCreatedAtHasBeenSet = false;
 
     Aws::String m_firstRevisionCreatedBy;
+    bool m_firstRevisionCreatedByHasBeenSet = false;
 
     Aws::Vector<FormOutput> m_formsOutput;
+    bool m_formsOutputHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_glossaryTerms;
+    bool m_glossaryTermsHasBeenSet = false;
+
+    Aws::Vector<Aws::String> m_governedGlossaryTerms;
+    bool m_governedGlossaryTermsHasBeenSet = false;
 
     Aws::String m_id;
+    bool m_idHasBeenSet = false;
+
+    Aws::Vector<TimeSeriesDataPointSummaryFormOutput> m_latestTimeSeriesDataPointFormsOutput;
+    bool m_latestTimeSeriesDataPointFormsOutputHasBeenSet = false;
 
     AssetListingDetails m_listing;
+    bool m_listingHasBeenSet = false;
 
     Aws::String m_name;
+    bool m_nameHasBeenSet = false;
 
     Aws::String m_owningProjectId;
+    bool m_owningProjectIdHasBeenSet = false;
 
     Aws::Vector<FormOutput> m_readOnlyFormsOutput;
+    bool m_readOnlyFormsOutputHasBeenSet = false;
 
     Aws::String m_revision;
+    bool m_revisionHasBeenSet = false;
 
     Aws::String m_typeIdentifier;
+    bool m_typeIdentifierHasBeenSet = false;
 
     Aws::String m_typeRevision;
+    bool m_typeRevisionHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

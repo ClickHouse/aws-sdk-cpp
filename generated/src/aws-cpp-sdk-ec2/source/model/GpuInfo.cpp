@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-GpuInfo::GpuInfo() : 
-    m_gpusHasBeenSet(false),
-    m_totalGpuMemoryInMiB(0),
-    m_totalGpuMemoryInMiBHasBeenSet(false)
-{
-}
-
-GpuInfo::GpuInfo(const XmlNode& xmlNode) : 
-    m_gpusHasBeenSet(false),
-    m_totalGpuMemoryInMiB(0),
-    m_totalGpuMemoryInMiBHasBeenSet(false)
+GpuInfo::GpuInfo(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -45,6 +35,7 @@ GpuInfo& GpuInfo::operator =(const XmlNode& xmlNode)
     if(!gpusNode.IsNull())
     {
       XmlNode gpusMember = gpusNode.FirstChild("item");
+      m_gpusHasBeenSet = !gpusMember.IsNull();
       while(!gpusMember.IsNull())
       {
         m_gpus.push_back(gpusMember);
@@ -92,7 +83,7 @@ void GpuInfo::OutputToStream(Aws::OStream& oStream, const char* location) const
       for(auto& item : m_gpus)
       {
         Aws::StringStream gpusSs;
-        gpusSs << location <<  ".Gpus." << gpusIdx++;
+        gpusSs << location << ".Gpus." << gpusIdx++;
         item.OutputToStream(oStream, gpusSs.str().c_str());
       }
   }

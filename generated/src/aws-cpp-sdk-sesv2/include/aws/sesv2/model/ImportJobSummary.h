@@ -34,151 +34,72 @@ namespace Model
   class ImportJobSummary
   {
   public:
-    AWS_SESV2_API ImportJobSummary();
+    AWS_SESV2_API ImportJobSummary() = default;
     AWS_SESV2_API ImportJobSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_SESV2_API ImportJobSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SESV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     
-    inline const Aws::String& GetJobId() const{ return m_jobId; }
-
-    
+    inline const Aws::String& GetJobId() const { return m_jobId; }
     inline bool JobIdHasBeenSet() const { return m_jobIdHasBeenSet; }
+    template<typename JobIdT = Aws::String>
+    void SetJobId(JobIdT&& value) { m_jobIdHasBeenSet = true; m_jobId = std::forward<JobIdT>(value); }
+    template<typename JobIdT = Aws::String>
+    ImportJobSummary& WithJobId(JobIdT&& value) { SetJobId(std::forward<JobIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     
-    inline void SetJobId(const Aws::String& value) { m_jobIdHasBeenSet = true; m_jobId = value; }
-
-    
-    inline void SetJobId(Aws::String&& value) { m_jobIdHasBeenSet = true; m_jobId = std::move(value); }
-
-    
-    inline void SetJobId(const char* value) { m_jobIdHasBeenSet = true; m_jobId.assign(value); }
-
-    
-    inline ImportJobSummary& WithJobId(const Aws::String& value) { SetJobId(value); return *this;}
-
-    
-    inline ImportJobSummary& WithJobId(Aws::String&& value) { SetJobId(std::move(value)); return *this;}
-
-    
-    inline ImportJobSummary& WithJobId(const char* value) { SetJobId(value); return *this;}
-
-
-    
-    inline const ImportDestination& GetImportDestination() const{ return m_importDestination; }
-
-    
+    inline const ImportDestination& GetImportDestination() const { return m_importDestination; }
     inline bool ImportDestinationHasBeenSet() const { return m_importDestinationHasBeenSet; }
+    template<typename ImportDestinationT = ImportDestination>
+    void SetImportDestination(ImportDestinationT&& value) { m_importDestinationHasBeenSet = true; m_importDestination = std::forward<ImportDestinationT>(value); }
+    template<typename ImportDestinationT = ImportDestination>
+    ImportJobSummary& WithImportDestination(ImportDestinationT&& value) { SetImportDestination(std::forward<ImportDestinationT>(value)); return *this;}
+    ///@}
 
+    ///@{
     
-    inline void SetImportDestination(const ImportDestination& value) { m_importDestinationHasBeenSet = true; m_importDestination = value; }
-
-    
-    inline void SetImportDestination(ImportDestination&& value) { m_importDestinationHasBeenSet = true; m_importDestination = std::move(value); }
-
-    
-    inline ImportJobSummary& WithImportDestination(const ImportDestination& value) { SetImportDestination(value); return *this;}
-
-    
-    inline ImportJobSummary& WithImportDestination(ImportDestination&& value) { SetImportDestination(std::move(value)); return *this;}
-
-
-    
-    inline const JobStatus& GetJobStatus() const{ return m_jobStatus; }
-
-    
+    inline JobStatus GetJobStatus() const { return m_jobStatus; }
     inline bool JobStatusHasBeenSet() const { return m_jobStatusHasBeenSet; }
+    inline void SetJobStatus(JobStatus value) { m_jobStatusHasBeenSet = true; m_jobStatus = value; }
+    inline ImportJobSummary& WithJobStatus(JobStatus value) { SetJobStatus(value); return *this;}
+    ///@}
 
-    
-    inline void SetJobStatus(const JobStatus& value) { m_jobStatusHasBeenSet = true; m_jobStatus = value; }
-
-    
-    inline void SetJobStatus(JobStatus&& value) { m_jobStatusHasBeenSet = true; m_jobStatus = std::move(value); }
-
-    
-    inline ImportJobSummary& WithJobStatus(const JobStatus& value) { SetJobStatus(value); return *this;}
-
-    
-    inline ImportJobSummary& WithJobStatus(JobStatus&& value) { SetJobStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time when the import job was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedTimestamp() const{ return m_createdTimestamp; }
-
-    /**
-     * <p>The date and time when the import job was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedTimestamp() const { return m_createdTimestamp; }
     inline bool CreatedTimestampHasBeenSet() const { return m_createdTimestampHasBeenSet; }
+    template<typename CreatedTimestampT = Aws::Utils::DateTime>
+    void SetCreatedTimestamp(CreatedTimestampT&& value) { m_createdTimestampHasBeenSet = true; m_createdTimestamp = std::forward<CreatedTimestampT>(value); }
+    template<typename CreatedTimestampT = Aws::Utils::DateTime>
+    ImportJobSummary& WithCreatedTimestamp(CreatedTimestampT&& value) { SetCreatedTimestamp(std::forward<CreatedTimestampT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time when the import job was created.</p>
-     */
-    inline void SetCreatedTimestamp(const Aws::Utils::DateTime& value) { m_createdTimestampHasBeenSet = true; m_createdTimestamp = value; }
-
-    /**
-     * <p>The date and time when the import job was created.</p>
-     */
-    inline void SetCreatedTimestamp(Aws::Utils::DateTime&& value) { m_createdTimestampHasBeenSet = true; m_createdTimestamp = std::move(value); }
-
-    /**
-     * <p>The date and time when the import job was created.</p>
-     */
-    inline ImportJobSummary& WithCreatedTimestamp(const Aws::Utils::DateTime& value) { SetCreatedTimestamp(value); return *this;}
-
-    /**
-     * <p>The date and time when the import job was created.</p>
-     */
-    inline ImportJobSummary& WithCreatedTimestamp(Aws::Utils::DateTime&& value) { SetCreatedTimestamp(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The current number of records processed.</p>
      */
-    inline int GetProcessedRecordsCount() const{ return m_processedRecordsCount; }
-
-    /**
-     * <p>The current number of records processed.</p>
-     */
+    inline int GetProcessedRecordsCount() const { return m_processedRecordsCount; }
     inline bool ProcessedRecordsCountHasBeenSet() const { return m_processedRecordsCountHasBeenSet; }
-
-    /**
-     * <p>The current number of records processed.</p>
-     */
     inline void SetProcessedRecordsCount(int value) { m_processedRecordsCountHasBeenSet = true; m_processedRecordsCount = value; }
-
-    /**
-     * <p>The current number of records processed.</p>
-     */
     inline ImportJobSummary& WithProcessedRecordsCount(int value) { SetProcessedRecordsCount(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The number of records that failed processing because of invalid input or
      * other reasons.</p>
      */
-    inline int GetFailedRecordsCount() const{ return m_failedRecordsCount; }
-
-    /**
-     * <p>The number of records that failed processing because of invalid input or
-     * other reasons.</p>
-     */
+    inline int GetFailedRecordsCount() const { return m_failedRecordsCount; }
     inline bool FailedRecordsCountHasBeenSet() const { return m_failedRecordsCountHasBeenSet; }
-
-    /**
-     * <p>The number of records that failed processing because of invalid input or
-     * other reasons.</p>
-     */
     inline void SetFailedRecordsCount(int value) { m_failedRecordsCountHasBeenSet = true; m_failedRecordsCount = value; }
-
-    /**
-     * <p>The number of records that failed processing because of invalid input or
-     * other reasons.</p>
-     */
     inline ImportJobSummary& WithFailedRecordsCount(int value) { SetFailedRecordsCount(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_jobId;
@@ -187,16 +108,16 @@ namespace Model
     ImportDestination m_importDestination;
     bool m_importDestinationHasBeenSet = false;
 
-    JobStatus m_jobStatus;
+    JobStatus m_jobStatus{JobStatus::NOT_SET};
     bool m_jobStatusHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdTimestamp;
+    Aws::Utils::DateTime m_createdTimestamp{};
     bool m_createdTimestampHasBeenSet = false;
 
-    int m_processedRecordsCount;
+    int m_processedRecordsCount{0};
     bool m_processedRecordsCountHasBeenSet = false;
 
-    int m_failedRecordsCount;
+    int m_failedRecordsCount{0};
     bool m_failedRecordsCountHasBeenSet = false;
   };
 

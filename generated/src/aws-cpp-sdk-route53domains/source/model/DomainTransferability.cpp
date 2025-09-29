@@ -18,15 +18,7 @@ namespace Route53Domains
 namespace Model
 {
 
-DomainTransferability::DomainTransferability() : 
-    m_transferable(Transferable::NOT_SET),
-    m_transferableHasBeenSet(false)
-{
-}
-
-DomainTransferability::DomainTransferability(JsonView jsonValue) : 
-    m_transferable(Transferable::NOT_SET),
-    m_transferableHasBeenSet(false)
+DomainTransferability::DomainTransferability(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ DomainTransferability& DomainTransferability::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Transferable"))
   {
     m_transferable = TransferableMapper::GetTransferableForName(jsonValue.GetString("Transferable"));
-
     m_transferableHasBeenSet = true;
   }
-
   return *this;
 }
 

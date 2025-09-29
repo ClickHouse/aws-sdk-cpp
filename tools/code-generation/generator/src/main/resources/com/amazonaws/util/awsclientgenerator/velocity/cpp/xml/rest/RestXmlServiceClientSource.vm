@@ -40,8 +40,16 @@ using namespace Aws::Utils;
 
 
 #if(!${onlyGeneratedOperations})
-const char* ${className}::SERVICE_NAME = "${metadata.signingName}";
-const char* ${className}::ALLOCATION_TAG = "${className}";
+namespace Aws
+{
+  namespace ${metadata.namespace}
+  {
+    const char SERVICE_NAME[] = "${metadata.signingName}";
+    const char ALLOCATION_TAG[] = "${className}";
+  }
+}
+const char* ${className}::GetServiceName() {return SERVICE_NAME;}
+const char* ${className}::GetAllocationTag() {return ALLOCATION_TAG;}
 #end
 #set($hostOverrideString = '')
 #if($metadata.globalEndpoint)
@@ -51,7 +59,7 @@ const char* ${className}::ALLOCATION_TAG = "${className}";
 #if(!${onlyGeneratedOperations})
 #parseOverrideOrDefault( "ServiceClientSourceInit_template" "com/amazonaws/util/awsclientgenerator/velocity/cpp/ServiceClientSourceInit.vm")
 
-#if($metadata.protocol == "query")
+#if($metadata.findFirstSupportedProtocol() == "query")
 Aws::String ${className}::ConvertRequestToPresignedUrl(const AmazonSerializableWebServiceRequest& requestToConvert, const char* region) const
 {
   if (!m_endpointProvider)

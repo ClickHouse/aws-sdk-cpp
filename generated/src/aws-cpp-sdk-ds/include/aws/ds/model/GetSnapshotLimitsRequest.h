@@ -25,7 +25,7 @@ namespace Model
   class GetSnapshotLimitsRequest : public DirectoryServiceRequest
   {
   public:
-    AWS_DIRECTORYSERVICE_API GetSnapshotLimitsRequest();
+    AWS_DIRECTORYSERVICE_API GetSnapshotLimitsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,46 +38,17 @@ namespace Model
     AWS_DIRECTORYSERVICE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>Contains the identifier of the directory to obtain the limits for.</p>
      */
-    inline const Aws::String& GetDirectoryId() const{ return m_directoryId; }
-
-    /**
-     * <p>Contains the identifier of the directory to obtain the limits for.</p>
-     */
+    inline const Aws::String& GetDirectoryId() const { return m_directoryId; }
     inline bool DirectoryIdHasBeenSet() const { return m_directoryIdHasBeenSet; }
-
-    /**
-     * <p>Contains the identifier of the directory to obtain the limits for.</p>
-     */
-    inline void SetDirectoryId(const Aws::String& value) { m_directoryIdHasBeenSet = true; m_directoryId = value; }
-
-    /**
-     * <p>Contains the identifier of the directory to obtain the limits for.</p>
-     */
-    inline void SetDirectoryId(Aws::String&& value) { m_directoryIdHasBeenSet = true; m_directoryId = std::move(value); }
-
-    /**
-     * <p>Contains the identifier of the directory to obtain the limits for.</p>
-     */
-    inline void SetDirectoryId(const char* value) { m_directoryIdHasBeenSet = true; m_directoryId.assign(value); }
-
-    /**
-     * <p>Contains the identifier of the directory to obtain the limits for.</p>
-     */
-    inline GetSnapshotLimitsRequest& WithDirectoryId(const Aws::String& value) { SetDirectoryId(value); return *this;}
-
-    /**
-     * <p>Contains the identifier of the directory to obtain the limits for.</p>
-     */
-    inline GetSnapshotLimitsRequest& WithDirectoryId(Aws::String&& value) { SetDirectoryId(std::move(value)); return *this;}
-
-    /**
-     * <p>Contains the identifier of the directory to obtain the limits for.</p>
-     */
-    inline GetSnapshotLimitsRequest& WithDirectoryId(const char* value) { SetDirectoryId(value); return *this;}
-
+    template<typename DirectoryIdT = Aws::String>
+    void SetDirectoryId(DirectoryIdT&& value) { m_directoryIdHasBeenSet = true; m_directoryId = std::forward<DirectoryIdT>(value); }
+    template<typename DirectoryIdT = Aws::String>
+    GetSnapshotLimitsRequest& WithDirectoryId(DirectoryIdT&& value) { SetDirectoryId(std::forward<DirectoryIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_directoryId;

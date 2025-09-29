@@ -10,17 +10,6 @@
 using namespace Aws::RDS::Model;
 using namespace Aws::Utils;
 
-CreateTenantDatabaseRequest::CreateTenantDatabaseRequest() : 
-    m_dBInstanceIdentifierHasBeenSet(false),
-    m_tenantDBNameHasBeenSet(false),
-    m_masterUsernameHasBeenSet(false),
-    m_masterUserPasswordHasBeenSet(false),
-    m_characterSetNameHasBeenSet(false),
-    m_ncharCharacterSetNameHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateTenantDatabaseRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -55,13 +44,30 @@ Aws::String CreateTenantDatabaseRequest::SerializePayload() const
     ss << "NcharCharacterSetName=" << StringUtils::URLEncode(m_ncharCharacterSetName.c_str()) << "&";
   }
 
+  if(m_manageMasterUserPasswordHasBeenSet)
+  {
+    ss << "ManageMasterUserPassword=" << std::boolalpha << m_manageMasterUserPassword << "&";
+  }
+
+  if(m_masterUserSecretKmsKeyIdHasBeenSet)
+  {
+    ss << "MasterUserSecretKmsKeyId=" << StringUtils::URLEncode(m_masterUserSecretKmsKeyId.c_str()) << "&";
+  }
+
   if(m_tagsHasBeenSet)
   {
-    unsigned tagsCount = 1;
-    for(auto& item : m_tags)
+    if (m_tags.empty())
     {
-      item.OutputToStream(ss, "Tags.member.", tagsCount, "");
-      tagsCount++;
+      ss << "Tags=&";
+    }
+    else
+    {
+      unsigned tagsCount = 1;
+      for(auto& item : m_tags)
+      {
+        item.OutputToStream(ss, "Tags.Tag.", tagsCount, "");
+        tagsCount++;
+      }
     }
   }
 

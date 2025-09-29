@@ -18,15 +18,7 @@ namespace ChimeSDKMeetings
 namespace Model
 {
 
-AttendeeFeatures::AttendeeFeatures() : 
-    m_maxCount(0),
-    m_maxCountHasBeenSet(false)
-{
-}
-
-AttendeeFeatures::AttendeeFeatures(JsonView jsonValue) : 
-    m_maxCount(0),
-    m_maxCountHasBeenSet(false)
+AttendeeFeatures::AttendeeFeatures(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ AttendeeFeatures& AttendeeFeatures::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("MaxCount"))
   {
     m_maxCount = jsonValue.GetInteger("MaxCount");
-
     m_maxCountHasBeenSet = true;
   }
-
   return *this;
 }
 

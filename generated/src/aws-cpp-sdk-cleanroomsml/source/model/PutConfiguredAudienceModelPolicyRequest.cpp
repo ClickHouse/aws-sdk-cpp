@@ -12,15 +12,6 @@ using namespace Aws::CleanRoomsML::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-PutConfiguredAudienceModelPolicyRequest::PutConfiguredAudienceModelPolicyRequest() : 
-    m_configuredAudienceModelArnHasBeenSet(false),
-    m_configuredAudienceModelPolicyHasBeenSet(false),
-    m_policyExistenceCondition(PolicyExistenceCondition::NOT_SET),
-    m_policyExistenceConditionHasBeenSet(false),
-    m_previousPolicyHashHasBeenSet(false)
-{
-}
-
 Aws::String PutConfiguredAudienceModelPolicyRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -31,15 +22,15 @@ Aws::String PutConfiguredAudienceModelPolicyRequest::SerializePayload() const
 
   }
 
-  if(m_policyExistenceConditionHasBeenSet)
-  {
-   payload.WithString("policyExistenceCondition", PolicyExistenceConditionMapper::GetNameForPolicyExistenceCondition(m_policyExistenceCondition));
-  }
-
   if(m_previousPolicyHashHasBeenSet)
   {
    payload.WithString("previousPolicyHash", m_previousPolicyHash);
 
+  }
+
+  if(m_policyExistenceConditionHasBeenSet)
+  {
+   payload.WithString("policyExistenceCondition", PolicyExistenceConditionMapper::GetNameForPolicyExistenceCondition(m_policyExistenceCondition));
   }
 
   return payload.View().WriteReadable();

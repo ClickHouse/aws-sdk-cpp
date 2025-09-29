@@ -20,21 +20,7 @@ namespace EC2
 namespace Model
 {
 
-LocalGateway::LocalGateway() : 
-    m_localGatewayIdHasBeenSet(false),
-    m_outpostArnHasBeenSet(false),
-    m_ownerIdHasBeenSet(false),
-    m_stateHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-LocalGateway::LocalGateway(const XmlNode& xmlNode) : 
-    m_localGatewayIdHasBeenSet(false),
-    m_outpostArnHasBeenSet(false),
-    m_ownerIdHasBeenSet(false),
-    m_stateHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+LocalGateway::LocalGateway(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -73,6 +59,7 @@ LocalGateway& LocalGateway::operator =(const XmlNode& xmlNode)
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -145,7 +132,7 @@ void LocalGateway::OutputToStream(Aws::OStream& oStream, const char* location) c
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }

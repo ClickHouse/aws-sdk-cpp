@@ -32,93 +32,35 @@ namespace Model
   class GatewayRouteHostnameMatch
   {
   public:
-    AWS_APPMESH_API GatewayRouteHostnameMatch();
+    AWS_APPMESH_API GatewayRouteHostnameMatch() = default;
     AWS_APPMESH_API GatewayRouteHostnameMatch(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPMESH_API GatewayRouteHostnameMatch& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPMESH_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The exact host name to match on.</p>
      */
-    inline const Aws::String& GetExact() const{ return m_exact; }
-
-    /**
-     * <p>The exact host name to match on.</p>
-     */
+    inline const Aws::String& GetExact() const { return m_exact; }
     inline bool ExactHasBeenSet() const { return m_exactHasBeenSet; }
+    template<typename ExactT = Aws::String>
+    void SetExact(ExactT&& value) { m_exactHasBeenSet = true; m_exact = std::forward<ExactT>(value); }
+    template<typename ExactT = Aws::String>
+    GatewayRouteHostnameMatch& WithExact(ExactT&& value) { SetExact(std::forward<ExactT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The exact host name to match on.</p>
-     */
-    inline void SetExact(const Aws::String& value) { m_exactHasBeenSet = true; m_exact = value; }
-
-    /**
-     * <p>The exact host name to match on.</p>
-     */
-    inline void SetExact(Aws::String&& value) { m_exactHasBeenSet = true; m_exact = std::move(value); }
-
-    /**
-     * <p>The exact host name to match on.</p>
-     */
-    inline void SetExact(const char* value) { m_exactHasBeenSet = true; m_exact.assign(value); }
-
-    /**
-     * <p>The exact host name to match on.</p>
-     */
-    inline GatewayRouteHostnameMatch& WithExact(const Aws::String& value) { SetExact(value); return *this;}
-
-    /**
-     * <p>The exact host name to match on.</p>
-     */
-    inline GatewayRouteHostnameMatch& WithExact(Aws::String&& value) { SetExact(std::move(value)); return *this;}
-
-    /**
-     * <p>The exact host name to match on.</p>
-     */
-    inline GatewayRouteHostnameMatch& WithExact(const char* value) { SetExact(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The specified ending characters of the host name to match on.</p>
      */
-    inline const Aws::String& GetSuffix() const{ return m_suffix; }
-
-    /**
-     * <p>The specified ending characters of the host name to match on.</p>
-     */
+    inline const Aws::String& GetSuffix() const { return m_suffix; }
     inline bool SuffixHasBeenSet() const { return m_suffixHasBeenSet; }
-
-    /**
-     * <p>The specified ending characters of the host name to match on.</p>
-     */
-    inline void SetSuffix(const Aws::String& value) { m_suffixHasBeenSet = true; m_suffix = value; }
-
-    /**
-     * <p>The specified ending characters of the host name to match on.</p>
-     */
-    inline void SetSuffix(Aws::String&& value) { m_suffixHasBeenSet = true; m_suffix = std::move(value); }
-
-    /**
-     * <p>The specified ending characters of the host name to match on.</p>
-     */
-    inline void SetSuffix(const char* value) { m_suffixHasBeenSet = true; m_suffix.assign(value); }
-
-    /**
-     * <p>The specified ending characters of the host name to match on.</p>
-     */
-    inline GatewayRouteHostnameMatch& WithSuffix(const Aws::String& value) { SetSuffix(value); return *this;}
-
-    /**
-     * <p>The specified ending characters of the host name to match on.</p>
-     */
-    inline GatewayRouteHostnameMatch& WithSuffix(Aws::String&& value) { SetSuffix(std::move(value)); return *this;}
-
-    /**
-     * <p>The specified ending characters of the host name to match on.</p>
-     */
-    inline GatewayRouteHostnameMatch& WithSuffix(const char* value) { SetSuffix(value); return *this;}
-
+    template<typename SuffixT = Aws::String>
+    void SetSuffix(SuffixT&& value) { m_suffixHasBeenSet = true; m_suffix = std::forward<SuffixT>(value); }
+    template<typename SuffixT = Aws::String>
+    GatewayRouteHostnameMatch& WithSuffix(SuffixT&& value) { SetSuffix(std::forward<SuffixT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_exact;

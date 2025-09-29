@@ -18,15 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-NestedFilters::NestedFilters() : 
-    m_nestedPropertyNameHasBeenSet(false),
-    m_filtersHasBeenSet(false)
-{
-}
-
-NestedFilters::NestedFilters(JsonView jsonValue) : 
-    m_nestedPropertyNameHasBeenSet(false),
-    m_filtersHasBeenSet(false)
+NestedFilters::NestedFilters(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ NestedFilters& NestedFilters::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("NestedPropertyName"))
   {
     m_nestedPropertyName = jsonValue.GetString("NestedPropertyName");
-
     m_nestedPropertyNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Filters"))
   {
     Aws::Utils::Array<JsonView> filtersJsonList = jsonValue.GetArray("Filters");
@@ -49,7 +39,6 @@ NestedFilters& NestedFilters::operator =(JsonView jsonValue)
     }
     m_filtersHasBeenSet = true;
   }
-
   return *this;
 }
 

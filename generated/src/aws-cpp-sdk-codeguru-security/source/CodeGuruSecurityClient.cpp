@@ -48,20 +48,27 @@ using namespace Aws::Utils::Json;
 using namespace smithy::components::tracing;
 using ResolveEndpointOutcome = Aws::Endpoint::ResolveEndpointOutcome;
 
-const char* CodeGuruSecurityClient::SERVICE_NAME = "codeguru-security";
-const char* CodeGuruSecurityClient::ALLOCATION_TAG = "CodeGuruSecurityClient";
+namespace Aws
+{
+  namespace CodeGuruSecurity
+  {
+    const char SERVICE_NAME[] = "codeguru-security";
+    const char ALLOCATION_TAG[] = "CodeGuruSecurityClient";
+  }
+}
+const char* CodeGuruSecurityClient::GetServiceName() {return SERVICE_NAME;}
+const char* CodeGuruSecurityClient::GetAllocationTag() {return ALLOCATION_TAG;}
 
 CodeGuruSecurityClient::CodeGuruSecurityClient(const CodeGuruSecurity::CodeGuruSecurityClientConfiguration& clientConfiguration,
                                                std::shared_ptr<CodeGuruSecurityEndpointProviderBase> endpointProvider) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<CodeGuruSecurityErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
-  m_endpointProvider(std::move(endpointProvider))
+  m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<CodeGuruSecurityEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -76,8 +83,7 @@ CodeGuruSecurityClient::CodeGuruSecurityClient(const AWSCredentials& credentials
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<CodeGuruSecurityErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<CodeGuruSecurityEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -92,8 +98,7 @@ CodeGuruSecurityClient::CodeGuruSecurityClient(const std::shared_ptr<AWSCredenti
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<CodeGuruSecurityErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
-    m_endpointProvider(std::move(endpointProvider))
+    m_endpointProvider(endpointProvider ? std::move(endpointProvider) : Aws::MakeShared<CodeGuruSecurityEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
 }
@@ -102,12 +107,11 @@ CodeGuruSecurityClient::CodeGuruSecurityClient(const std::shared_ptr<AWSCredenti
   CodeGuruSecurityClient::CodeGuruSecurityClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(clientConfiguration,
             Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG,
-                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+                                             Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
                                              SERVICE_NAME,
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<CodeGuruSecurityErrorMarshaller>(ALLOCATION_TAG)),
   m_clientConfiguration(clientConfiguration),
-  m_executor(clientConfiguration.executor),
   m_endpointProvider(Aws::MakeShared<CodeGuruSecurityEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -122,7 +126,6 @@ CodeGuruSecurityClient::CodeGuruSecurityClient(const AWSCredentials& credentials
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<CodeGuruSecurityErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<CodeGuruSecurityEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -137,7 +140,6 @@ CodeGuruSecurityClient::CodeGuruSecurityClient(const std::shared_ptr<AWSCredenti
                                              Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
             Aws::MakeShared<CodeGuruSecurityErrorMarshaller>(ALLOCATION_TAG)),
     m_clientConfiguration(clientConfiguration),
-    m_executor(clientConfiguration.executor),
     m_endpointProvider(Aws::MakeShared<CodeGuruSecurityEndpointProvider>(ALLOCATION_TAG))
 {
   init(m_clientConfiguration);
@@ -157,6 +159,14 @@ std::shared_ptr<CodeGuruSecurityEndpointProviderBase>& CodeGuruSecurityClient::a
 void CodeGuruSecurityClient::init(const CodeGuruSecurity::CodeGuruSecurityClientConfiguration& config)
 {
   AWSClient::SetServiceClientName("CodeGuru Security");
+  if (!m_clientConfiguration.executor) {
+    if (!m_clientConfiguration.configFactories.executorCreateFn()) {
+      AWS_LOGSTREAM_FATAL(ALLOCATION_TAG, "Failed to initialize client: config is missing Executor or executorCreateFn");
+      m_isInitialized = false;
+      return;
+    }
+    m_clientConfiguration.executor = m_clientConfiguration.configFactories.executorCreateFn();
+  }
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
   m_endpointProvider->InitBuiltInParameters(config);
 }
@@ -377,15 +387,15 @@ ListFindingsMetricsOutcome CodeGuruSecurityClient::ListFindingsMetrics(const Lis
 {
   AWS_OPERATION_GUARD(ListFindingsMetrics);
   AWS_OPERATION_CHECK_PTR(m_endpointProvider, ListFindingsMetrics, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE);
-  if (!request.EndDateHasBeenSet())
-  {
-    AWS_LOGSTREAM_ERROR("ListFindingsMetrics", "Required field: EndDate, is not set");
-    return ListFindingsMetricsOutcome(Aws::Client::AWSError<CodeGuruSecurityErrors>(CodeGuruSecurityErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [EndDate]", false));
-  }
   if (!request.StartDateHasBeenSet())
   {
     AWS_LOGSTREAM_ERROR("ListFindingsMetrics", "Required field: StartDate, is not set");
     return ListFindingsMetricsOutcome(Aws::Client::AWSError<CodeGuruSecurityErrors>(CodeGuruSecurityErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [StartDate]", false));
+  }
+  if (!request.EndDateHasBeenSet())
+  {
+    AWS_LOGSTREAM_ERROR("ListFindingsMetrics", "Required field: EndDate, is not set");
+    return ListFindingsMetricsOutcome(Aws::Client::AWSError<CodeGuruSecurityErrors>(CodeGuruSecurityErrors::MISSING_PARAMETER, "MISSING_PARAMETER", "Missing required field [EndDate]", false));
   }
   AWS_OPERATION_CHECK_PTR(m_telemetryProvider, ListFindingsMetrics, CoreErrors, CoreErrors::NOT_INITIALIZED);
   auto tracer = m_telemetryProvider->getTracer(this->GetServiceClientName(), {});

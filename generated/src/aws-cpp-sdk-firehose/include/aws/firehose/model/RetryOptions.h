@@ -22,47 +22,33 @@ namespace Model
 {
 
   /**
-   * <p> The retry behavior in case Kinesis Data Firehose is unable to deliver data
-   * to an Amazon S3 prefix.</p><p><h3>See Also:</h3>   <a
+   * <p> The retry behavior in case Firehose is unable to deliver data to a
+   * destination.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/firehose-2015-08-04/RetryOptions">AWS
    * API Reference</a></p>
    */
   class RetryOptions
   {
   public:
-    AWS_FIREHOSE_API RetryOptions();
+    AWS_FIREHOSE_API RetryOptions() = default;
     AWS_FIREHOSE_API RetryOptions(Aws::Utils::Json::JsonView jsonValue);
     AWS_FIREHOSE_API RetryOptions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FIREHOSE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The period of time during which Kinesis Data Firehose retries to deliver data
-     * to the specified Amazon S3 prefix.</p>
+     * <p>The period of time during which Firehose retries to deliver data to the
+     * specified destination.</p>
      */
-    inline int GetDurationInSeconds() const{ return m_durationInSeconds; }
-
-    /**
-     * <p>The period of time during which Kinesis Data Firehose retries to deliver data
-     * to the specified Amazon S3 prefix.</p>
-     */
+    inline int GetDurationInSeconds() const { return m_durationInSeconds; }
     inline bool DurationInSecondsHasBeenSet() const { return m_durationInSecondsHasBeenSet; }
-
-    /**
-     * <p>The period of time during which Kinesis Data Firehose retries to deliver data
-     * to the specified Amazon S3 prefix.</p>
-     */
     inline void SetDurationInSeconds(int value) { m_durationInSecondsHasBeenSet = true; m_durationInSeconds = value; }
-
-    /**
-     * <p>The period of time during which Kinesis Data Firehose retries to deliver data
-     * to the specified Amazon S3 prefix.</p>
-     */
     inline RetryOptions& WithDurationInSeconds(int value) { SetDurationInSeconds(value); return *this;}
-
+    ///@}
   private:
 
-    int m_durationInSeconds;
+    int m_durationInSeconds{0};
     bool m_durationInSecondsHasBeenSet = false;
   };
 

@@ -18,17 +18,7 @@ namespace LexModelsV2
 namespace Model
 {
 
-AnalyticsIntentStageResult::AnalyticsIntentStageResult() : 
-    m_binKeysHasBeenSet(false),
-    m_groupByKeysHasBeenSet(false),
-    m_metricsResultsHasBeenSet(false)
-{
-}
-
-AnalyticsIntentStageResult::AnalyticsIntentStageResult(JsonView jsonValue) : 
-    m_binKeysHasBeenSet(false),
-    m_groupByKeysHasBeenSet(false),
-    m_metricsResultsHasBeenSet(false)
+AnalyticsIntentStageResult::AnalyticsIntentStageResult(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,7 +34,6 @@ AnalyticsIntentStageResult& AnalyticsIntentStageResult::operator =(JsonView json
     }
     m_binKeysHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("groupByKeys"))
   {
     Aws::Utils::Array<JsonView> groupByKeysJsonList = jsonValue.GetArray("groupByKeys");
@@ -54,7 +43,6 @@ AnalyticsIntentStageResult& AnalyticsIntentStageResult::operator =(JsonView json
     }
     m_groupByKeysHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("metricsResults"))
   {
     Aws::Utils::Array<JsonView> metricsResultsJsonList = jsonValue.GetArray("metricsResults");
@@ -64,7 +52,6 @@ AnalyticsIntentStageResult& AnalyticsIntentStageResult::operator =(JsonView json
     }
     m_metricsResultsHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -20,33 +20,7 @@ namespace EC2
 namespace Model
 {
 
-InstanceNetworkInterfaceAttachment::InstanceNetworkInterfaceAttachment() : 
-    m_attachTimeHasBeenSet(false),
-    m_attachmentIdHasBeenSet(false),
-    m_deleteOnTermination(false),
-    m_deleteOnTerminationHasBeenSet(false),
-    m_deviceIndex(0),
-    m_deviceIndexHasBeenSet(false),
-    m_status(AttachmentStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_networkCardIndex(0),
-    m_networkCardIndexHasBeenSet(false),
-    m_enaSrdSpecificationHasBeenSet(false)
-{
-}
-
-InstanceNetworkInterfaceAttachment::InstanceNetworkInterfaceAttachment(const XmlNode& xmlNode) : 
-    m_attachTimeHasBeenSet(false),
-    m_attachmentIdHasBeenSet(false),
-    m_deleteOnTermination(false),
-    m_deleteOnTerminationHasBeenSet(false),
-    m_deviceIndex(0),
-    m_deviceIndexHasBeenSet(false),
-    m_status(AttachmentStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_networkCardIndex(0),
-    m_networkCardIndexHasBeenSet(false),
-    m_enaSrdSpecificationHasBeenSet(false)
+InstanceNetworkInterfaceAttachment::InstanceNetworkInterfaceAttachment(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -84,7 +58,7 @@ InstanceNetworkInterfaceAttachment& InstanceNetworkInterfaceAttachment::operator
     XmlNode statusNode = resultNode.FirstChild("status");
     if(!statusNode.IsNull())
     {
-      m_status = AttachmentStatusMapper::GetAttachmentStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()).c_str());
+      m_status = AttachmentStatusMapper::GetAttachmentStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()));
       m_statusHasBeenSet = true;
     }
     XmlNode networkCardIndexNode = resultNode.FirstChild("networkCardIndex");
@@ -98,6 +72,12 @@ InstanceNetworkInterfaceAttachment& InstanceNetworkInterfaceAttachment::operator
     {
       m_enaSrdSpecification = enaSrdSpecificationNode;
       m_enaSrdSpecificationHasBeenSet = true;
+    }
+    XmlNode enaQueueCountNode = resultNode.FirstChild("enaQueueCount");
+    if(!enaQueueCountNode.IsNull())
+    {
+      m_enaQueueCount = StringUtils::ConvertToInt32(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(enaQueueCountNode.GetText()).c_str()).c_str());
+      m_enaQueueCountHasBeenSet = true;
     }
   }
 
@@ -128,7 +108,7 @@ void InstanceNetworkInterfaceAttachment::OutputToStream(Aws::OStream& oStream, c
 
   if(m_statusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Status=" << AttachmentStatusMapper::GetNameForAttachmentStatus(m_status) << "&";
+      oStream << location << index << locationValue << ".Status=" << StringUtils::URLEncode(AttachmentStatusMapper::GetNameForAttachmentStatus(m_status)) << "&";
   }
 
   if(m_networkCardIndexHasBeenSet)
@@ -141,6 +121,11 @@ void InstanceNetworkInterfaceAttachment::OutputToStream(Aws::OStream& oStream, c
       Aws::StringStream enaSrdSpecificationLocationAndMemberSs;
       enaSrdSpecificationLocationAndMemberSs << location << index << locationValue << ".EnaSrdSpecification";
       m_enaSrdSpecification.OutputToStream(oStream, enaSrdSpecificationLocationAndMemberSs.str().c_str());
+  }
+
+  if(m_enaQueueCountHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".EnaQueueCount=" << m_enaQueueCount << "&";
   }
 
 }
@@ -165,7 +150,7 @@ void InstanceNetworkInterfaceAttachment::OutputToStream(Aws::OStream& oStream, c
   }
   if(m_statusHasBeenSet)
   {
-      oStream << location << ".Status=" << AttachmentStatusMapper::GetNameForAttachmentStatus(m_status) << "&";
+      oStream << location << ".Status=" << StringUtils::URLEncode(AttachmentStatusMapper::GetNameForAttachmentStatus(m_status)) << "&";
   }
   if(m_networkCardIndexHasBeenSet)
   {
@@ -176,6 +161,10 @@ void InstanceNetworkInterfaceAttachment::OutputToStream(Aws::OStream& oStream, c
       Aws::String enaSrdSpecificationLocationAndMember(location);
       enaSrdSpecificationLocationAndMember += ".EnaSrdSpecification";
       m_enaSrdSpecification.OutputToStream(oStream, enaSrdSpecificationLocationAndMember.c_str());
+  }
+  if(m_enaQueueCountHasBeenSet)
+  {
+      oStream << location << ".EnaQueueCount=" << m_enaQueueCount << "&";
   }
 }
 

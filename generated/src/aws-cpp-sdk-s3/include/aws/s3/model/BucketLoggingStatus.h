@@ -30,31 +30,22 @@ namespace Model
   class BucketLoggingStatus
   {
   public:
-    AWS_S3_API BucketLoggingStatus();
+    AWS_S3_API BucketLoggingStatus() = default;
     AWS_S3_API BucketLoggingStatus(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3_API BucketLoggingStatus& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     
-    inline const LoggingEnabled& GetLoggingEnabled() const{ return m_loggingEnabled; }
-
-    
+    inline const LoggingEnabled& GetLoggingEnabled() const { return m_loggingEnabled; }
     inline bool LoggingEnabledHasBeenSet() const { return m_loggingEnabledHasBeenSet; }
-
-    
-    inline void SetLoggingEnabled(const LoggingEnabled& value) { m_loggingEnabledHasBeenSet = true; m_loggingEnabled = value; }
-
-    
-    inline void SetLoggingEnabled(LoggingEnabled&& value) { m_loggingEnabledHasBeenSet = true; m_loggingEnabled = std::move(value); }
-
-    
-    inline BucketLoggingStatus& WithLoggingEnabled(const LoggingEnabled& value) { SetLoggingEnabled(value); return *this;}
-
-    
-    inline BucketLoggingStatus& WithLoggingEnabled(LoggingEnabled&& value) { SetLoggingEnabled(std::move(value)); return *this;}
-
+    template<typename LoggingEnabledT = LoggingEnabled>
+    void SetLoggingEnabled(LoggingEnabledT&& value) { m_loggingEnabledHasBeenSet = true; m_loggingEnabled = std::forward<LoggingEnabledT>(value); }
+    template<typename LoggingEnabledT = LoggingEnabled>
+    BucketLoggingStatus& WithLoggingEnabled(LoggingEnabledT&& value) { SetLoggingEnabled(std::forward<LoggingEnabledT>(value)); return *this;}
+    ///@}
   private:
 
     LoggingEnabled m_loggingEnabled;

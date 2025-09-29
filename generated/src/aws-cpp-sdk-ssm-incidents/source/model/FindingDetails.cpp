@@ -18,15 +18,7 @@ namespace SSMIncidents
 namespace Model
 {
 
-FindingDetails::FindingDetails() : 
-    m_cloudFormationStackUpdateHasBeenSet(false),
-    m_codeDeployDeploymentHasBeenSet(false)
-{
-}
-
-FindingDetails::FindingDetails(JsonView jsonValue) : 
-    m_cloudFormationStackUpdateHasBeenSet(false),
-    m_codeDeployDeploymentHasBeenSet(false)
+FindingDetails::FindingDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ FindingDetails& FindingDetails::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("cloudFormationStackUpdate"))
   {
     m_cloudFormationStackUpdate = jsonValue.GetObject("cloudFormationStackUpdate");
-
     m_cloudFormationStackUpdateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("codeDeployDeployment"))
   {
     m_codeDeployDeployment = jsonValue.GetObject("codeDeployDeployment");
-
     m_codeDeployDeploymentHasBeenSet = true;
   }
-
   return *this;
 }
 

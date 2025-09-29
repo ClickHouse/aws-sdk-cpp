@@ -34,73 +34,35 @@ namespace Model
   class ChimeSdkMeetingConfiguration
   {
   public:
-    AWS_CHIMESDKMEDIAPIPELINES_API ChimeSdkMeetingConfiguration();
+    AWS_CHIMESDKMEDIAPIPELINES_API ChimeSdkMeetingConfiguration() = default;
     AWS_CHIMESDKMEDIAPIPELINES_API ChimeSdkMeetingConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMEDIAPIPELINES_API ChimeSdkMeetingConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMEDIAPIPELINES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The source configuration for a specified media pipeline.</p>
      */
-    inline const SourceConfiguration& GetSourceConfiguration() const{ return m_sourceConfiguration; }
-
-    /**
-     * <p>The source configuration for a specified media pipeline.</p>
-     */
+    inline const SourceConfiguration& GetSourceConfiguration() const { return m_sourceConfiguration; }
     inline bool SourceConfigurationHasBeenSet() const { return m_sourceConfigurationHasBeenSet; }
+    template<typename SourceConfigurationT = SourceConfiguration>
+    void SetSourceConfiguration(SourceConfigurationT&& value) { m_sourceConfigurationHasBeenSet = true; m_sourceConfiguration = std::forward<SourceConfigurationT>(value); }
+    template<typename SourceConfigurationT = SourceConfiguration>
+    ChimeSdkMeetingConfiguration& WithSourceConfiguration(SourceConfigurationT&& value) { SetSourceConfiguration(std::forward<SourceConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The source configuration for a specified media pipeline.</p>
-     */
-    inline void SetSourceConfiguration(const SourceConfiguration& value) { m_sourceConfigurationHasBeenSet = true; m_sourceConfiguration = value; }
-
-    /**
-     * <p>The source configuration for a specified media pipeline.</p>
-     */
-    inline void SetSourceConfiguration(SourceConfiguration&& value) { m_sourceConfigurationHasBeenSet = true; m_sourceConfiguration = std::move(value); }
-
-    /**
-     * <p>The source configuration for a specified media pipeline.</p>
-     */
-    inline ChimeSdkMeetingConfiguration& WithSourceConfiguration(const SourceConfiguration& value) { SetSourceConfiguration(value); return *this;}
-
-    /**
-     * <p>The source configuration for a specified media pipeline.</p>
-     */
-    inline ChimeSdkMeetingConfiguration& WithSourceConfiguration(SourceConfiguration&& value) { SetSourceConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The configuration for the artifacts in an Amazon Chime SDK meeting.</p>
      */
-    inline const ArtifactsConfiguration& GetArtifactsConfiguration() const{ return m_artifactsConfiguration; }
-
-    /**
-     * <p>The configuration for the artifacts in an Amazon Chime SDK meeting.</p>
-     */
+    inline const ArtifactsConfiguration& GetArtifactsConfiguration() const { return m_artifactsConfiguration; }
     inline bool ArtifactsConfigurationHasBeenSet() const { return m_artifactsConfigurationHasBeenSet; }
-
-    /**
-     * <p>The configuration for the artifacts in an Amazon Chime SDK meeting.</p>
-     */
-    inline void SetArtifactsConfiguration(const ArtifactsConfiguration& value) { m_artifactsConfigurationHasBeenSet = true; m_artifactsConfiguration = value; }
-
-    /**
-     * <p>The configuration for the artifacts in an Amazon Chime SDK meeting.</p>
-     */
-    inline void SetArtifactsConfiguration(ArtifactsConfiguration&& value) { m_artifactsConfigurationHasBeenSet = true; m_artifactsConfiguration = std::move(value); }
-
-    /**
-     * <p>The configuration for the artifacts in an Amazon Chime SDK meeting.</p>
-     */
-    inline ChimeSdkMeetingConfiguration& WithArtifactsConfiguration(const ArtifactsConfiguration& value) { SetArtifactsConfiguration(value); return *this;}
-
-    /**
-     * <p>The configuration for the artifacts in an Amazon Chime SDK meeting.</p>
-     */
-    inline ChimeSdkMeetingConfiguration& WithArtifactsConfiguration(ArtifactsConfiguration&& value) { SetArtifactsConfiguration(std::move(value)); return *this;}
-
+    template<typename ArtifactsConfigurationT = ArtifactsConfiguration>
+    void SetArtifactsConfiguration(ArtifactsConfigurationT&& value) { m_artifactsConfigurationHasBeenSet = true; m_artifactsConfiguration = std::forward<ArtifactsConfigurationT>(value); }
+    template<typename ArtifactsConfigurationT = ArtifactsConfiguration>
+    ChimeSdkMeetingConfiguration& WithArtifactsConfiguration(ArtifactsConfigurationT&& value) { SetArtifactsConfiguration(std::forward<ArtifactsConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     SourceConfiguration m_sourceConfiguration;

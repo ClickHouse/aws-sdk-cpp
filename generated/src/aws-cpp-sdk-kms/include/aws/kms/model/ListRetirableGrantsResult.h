@@ -29,145 +29,69 @@ namespace Model
   class ListRetirableGrantsResult
   {
   public:
-    AWS_KMS_API ListRetirableGrantsResult();
+    AWS_KMS_API ListRetirableGrantsResult() = default;
     AWS_KMS_API ListRetirableGrantsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_KMS_API ListRetirableGrantsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>A list of grants.</p>
      */
-    inline const Aws::Vector<GrantListEntry>& GetGrants() const{ return m_grants; }
+    inline const Aws::Vector<GrantListEntry>& GetGrants() const { return m_grants; }
+    template<typename GrantsT = Aws::Vector<GrantListEntry>>
+    void SetGrants(GrantsT&& value) { m_grantsHasBeenSet = true; m_grants = std::forward<GrantsT>(value); }
+    template<typename GrantsT = Aws::Vector<GrantListEntry>>
+    ListRetirableGrantsResult& WithGrants(GrantsT&& value) { SetGrants(std::forward<GrantsT>(value)); return *this;}
+    template<typename GrantsT = GrantListEntry>
+    ListRetirableGrantsResult& AddGrants(GrantsT&& value) { m_grantsHasBeenSet = true; m_grants.emplace_back(std::forward<GrantsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of grants.</p>
-     */
-    inline void SetGrants(const Aws::Vector<GrantListEntry>& value) { m_grants = value; }
-
-    /**
-     * <p>A list of grants.</p>
-     */
-    inline void SetGrants(Aws::Vector<GrantListEntry>&& value) { m_grants = std::move(value); }
-
-    /**
-     * <p>A list of grants.</p>
-     */
-    inline ListRetirableGrantsResult& WithGrants(const Aws::Vector<GrantListEntry>& value) { SetGrants(value); return *this;}
-
-    /**
-     * <p>A list of grants.</p>
-     */
-    inline ListRetirableGrantsResult& WithGrants(Aws::Vector<GrantListEntry>&& value) { SetGrants(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of grants.</p>
-     */
-    inline ListRetirableGrantsResult& AddGrants(const GrantListEntry& value) { m_grants.push_back(value); return *this; }
-
-    /**
-     * <p>A list of grants.</p>
-     */
-    inline ListRetirableGrantsResult& AddGrants(GrantListEntry&& value) { m_grants.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>When <code>Truncated</code> is true, this element is present and contains the
      * value to use for the <code>Marker</code> parameter in a subsequent request.</p>
      */
-    inline const Aws::String& GetNextMarker() const{ return m_nextMarker; }
+    inline const Aws::String& GetNextMarker() const { return m_nextMarker; }
+    template<typename NextMarkerT = Aws::String>
+    void SetNextMarker(NextMarkerT&& value) { m_nextMarkerHasBeenSet = true; m_nextMarker = std::forward<NextMarkerT>(value); }
+    template<typename NextMarkerT = Aws::String>
+    ListRetirableGrantsResult& WithNextMarker(NextMarkerT&& value) { SetNextMarker(std::forward<NextMarkerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>When <code>Truncated</code> is true, this element is present and contains the
-     * value to use for the <code>Marker</code> parameter in a subsequent request.</p>
-     */
-    inline void SetNextMarker(const Aws::String& value) { m_nextMarker = value; }
-
-    /**
-     * <p>When <code>Truncated</code> is true, this element is present and contains the
-     * value to use for the <code>Marker</code> parameter in a subsequent request.</p>
-     */
-    inline void SetNextMarker(Aws::String&& value) { m_nextMarker = std::move(value); }
-
-    /**
-     * <p>When <code>Truncated</code> is true, this element is present and contains the
-     * value to use for the <code>Marker</code> parameter in a subsequent request.</p>
-     */
-    inline void SetNextMarker(const char* value) { m_nextMarker.assign(value); }
-
-    /**
-     * <p>When <code>Truncated</code> is true, this element is present and contains the
-     * value to use for the <code>Marker</code> parameter in a subsequent request.</p>
-     */
-    inline ListRetirableGrantsResult& WithNextMarker(const Aws::String& value) { SetNextMarker(value); return *this;}
-
-    /**
-     * <p>When <code>Truncated</code> is true, this element is present and contains the
-     * value to use for the <code>Marker</code> parameter in a subsequent request.</p>
-     */
-    inline ListRetirableGrantsResult& WithNextMarker(Aws::String&& value) { SetNextMarker(std::move(value)); return *this;}
-
-    /**
-     * <p>When <code>Truncated</code> is true, this element is present and contains the
-     * value to use for the <code>Marker</code> parameter in a subsequent request.</p>
-     */
-    inline ListRetirableGrantsResult& WithNextMarker(const char* value) { SetNextMarker(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A flag that indicates whether there are more items in the list. When this
      * value is true, the list in this response is truncated. To get more items, pass
-     * the value of the <code>NextMarker</code> element in thisresponse to the
+     * the value of the <code>NextMarker</code> element in this response to the
      * <code>Marker</code> parameter in a subsequent request.</p>
      */
-    inline bool GetTruncated() const{ return m_truncated; }
-
-    /**
-     * <p>A flag that indicates whether there are more items in the list. When this
-     * value is true, the list in this response is truncated. To get more items, pass
-     * the value of the <code>NextMarker</code> element in thisresponse to the
-     * <code>Marker</code> parameter in a subsequent request.</p>
-     */
-    inline void SetTruncated(bool value) { m_truncated = value; }
-
-    /**
-     * <p>A flag that indicates whether there are more items in the list. When this
-     * value is true, the list in this response is truncated. To get more items, pass
-     * the value of the <code>NextMarker</code> element in thisresponse to the
-     * <code>Marker</code> parameter in a subsequent request.</p>
-     */
+    inline bool GetTruncated() const { return m_truncated; }
+    inline void SetTruncated(bool value) { m_truncatedHasBeenSet = true; m_truncated = value; }
     inline ListRetirableGrantsResult& WithTruncated(bool value) { SetTruncated(value); return *this;}
+    ///@}
 
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListRetirableGrantsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListRetirableGrantsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListRetirableGrantsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListRetirableGrantsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<GrantListEntry> m_grants;
+    bool m_grantsHasBeenSet = false;
 
     Aws::String m_nextMarker;
+    bool m_nextMarkerHasBeenSet = false;
 
-    bool m_truncated;
+    bool m_truncated{false};
+    bool m_truncatedHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

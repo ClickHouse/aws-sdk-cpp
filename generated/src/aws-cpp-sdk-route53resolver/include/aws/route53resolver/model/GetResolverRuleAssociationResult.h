@@ -28,68 +28,38 @@ namespace Model
   class GetResolverRuleAssociationResult
   {
   public:
-    AWS_ROUTE53RESOLVER_API GetResolverRuleAssociationResult();
+    AWS_ROUTE53RESOLVER_API GetResolverRuleAssociationResult() = default;
     AWS_ROUTE53RESOLVER_API GetResolverRuleAssociationResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_ROUTE53RESOLVER_API GetResolverRuleAssociationResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Information about the Resolver rule association that you specified in a
      * <code>GetResolverRuleAssociation</code> request.</p>
      */
-    inline const ResolverRuleAssociation& GetResolverRuleAssociation() const{ return m_resolverRuleAssociation; }
+    inline const ResolverRuleAssociation& GetResolverRuleAssociation() const { return m_resolverRuleAssociation; }
+    template<typename ResolverRuleAssociationT = ResolverRuleAssociation>
+    void SetResolverRuleAssociation(ResolverRuleAssociationT&& value) { m_resolverRuleAssociationHasBeenSet = true; m_resolverRuleAssociation = std::forward<ResolverRuleAssociationT>(value); }
+    template<typename ResolverRuleAssociationT = ResolverRuleAssociation>
+    GetResolverRuleAssociationResult& WithResolverRuleAssociation(ResolverRuleAssociationT&& value) { SetResolverRuleAssociation(std::forward<ResolverRuleAssociationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about the Resolver rule association that you specified in a
-     * <code>GetResolverRuleAssociation</code> request.</p>
-     */
-    inline void SetResolverRuleAssociation(const ResolverRuleAssociation& value) { m_resolverRuleAssociation = value; }
-
-    /**
-     * <p>Information about the Resolver rule association that you specified in a
-     * <code>GetResolverRuleAssociation</code> request.</p>
-     */
-    inline void SetResolverRuleAssociation(ResolverRuleAssociation&& value) { m_resolverRuleAssociation = std::move(value); }
-
-    /**
-     * <p>Information about the Resolver rule association that you specified in a
-     * <code>GetResolverRuleAssociation</code> request.</p>
-     */
-    inline GetResolverRuleAssociationResult& WithResolverRuleAssociation(const ResolverRuleAssociation& value) { SetResolverRuleAssociation(value); return *this;}
-
-    /**
-     * <p>Information about the Resolver rule association that you specified in a
-     * <code>GetResolverRuleAssociation</code> request.</p>
-     */
-    inline GetResolverRuleAssociationResult& WithResolverRuleAssociation(ResolverRuleAssociation&& value) { SetResolverRuleAssociation(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetResolverRuleAssociationResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetResolverRuleAssociationResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetResolverRuleAssociationResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetResolverRuleAssociationResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     ResolverRuleAssociation m_resolverRuleAssociation;
+    bool m_resolverRuleAssociationHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

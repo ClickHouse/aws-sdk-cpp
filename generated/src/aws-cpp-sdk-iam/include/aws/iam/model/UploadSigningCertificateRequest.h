@@ -21,7 +21,7 @@ namespace Model
   class UploadSigningCertificateRequest : public IAMRequest
   {
   public:
-    AWS_IAM_API UploadSigningCertificateRequest();
+    AWS_IAM_API UploadSigningCertificateRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,6 +36,7 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The name of the user the signing certificate is for.</p> <p>This parameter
      * allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>)
@@ -43,72 +44,15 @@ namespace Model
      * with no spaces. You can also include any of the following characters:
      * _+=,.@-</p>
      */
-    inline const Aws::String& GetUserName() const{ return m_userName; }
-
-    /**
-     * <p>The name of the user the signing certificate is for.</p> <p>This parameter
-     * allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>)
-     * a string of characters consisting of upper and lowercase alphanumeric characters
-     * with no spaces. You can also include any of the following characters:
-     * _+=,.@-</p>
-     */
+    inline const Aws::String& GetUserName() const { return m_userName; }
     inline bool UserNameHasBeenSet() const { return m_userNameHasBeenSet; }
+    template<typename UserNameT = Aws::String>
+    void SetUserName(UserNameT&& value) { m_userNameHasBeenSet = true; m_userName = std::forward<UserNameT>(value); }
+    template<typename UserNameT = Aws::String>
+    UploadSigningCertificateRequest& WithUserName(UserNameT&& value) { SetUserName(std::forward<UserNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the user the signing certificate is for.</p> <p>This parameter
-     * allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>)
-     * a string of characters consisting of upper and lowercase alphanumeric characters
-     * with no spaces. You can also include any of the following characters:
-     * _+=,.@-</p>
-     */
-    inline void SetUserName(const Aws::String& value) { m_userNameHasBeenSet = true; m_userName = value; }
-
-    /**
-     * <p>The name of the user the signing certificate is for.</p> <p>This parameter
-     * allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>)
-     * a string of characters consisting of upper and lowercase alphanumeric characters
-     * with no spaces. You can also include any of the following characters:
-     * _+=,.@-</p>
-     */
-    inline void SetUserName(Aws::String&& value) { m_userNameHasBeenSet = true; m_userName = std::move(value); }
-
-    /**
-     * <p>The name of the user the signing certificate is for.</p> <p>This parameter
-     * allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>)
-     * a string of characters consisting of upper and lowercase alphanumeric characters
-     * with no spaces. You can also include any of the following characters:
-     * _+=,.@-</p>
-     */
-    inline void SetUserName(const char* value) { m_userNameHasBeenSet = true; m_userName.assign(value); }
-
-    /**
-     * <p>The name of the user the signing certificate is for.</p> <p>This parameter
-     * allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>)
-     * a string of characters consisting of upper and lowercase alphanumeric characters
-     * with no spaces. You can also include any of the following characters:
-     * _+=,.@-</p>
-     */
-    inline UploadSigningCertificateRequest& WithUserName(const Aws::String& value) { SetUserName(value); return *this;}
-
-    /**
-     * <p>The name of the user the signing certificate is for.</p> <p>This parameter
-     * allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>)
-     * a string of characters consisting of upper and lowercase alphanumeric characters
-     * with no spaces. You can also include any of the following characters:
-     * _+=,.@-</p>
-     */
-    inline UploadSigningCertificateRequest& WithUserName(Aws::String&& value) { SetUserName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the user the signing certificate is for.</p> <p>This parameter
-     * allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>)
-     * a string of characters consisting of upper and lowercase alphanumeric characters
-     * with no spaces. You can also include any of the following characters:
-     * _+=,.@-</p>
-     */
-    inline UploadSigningCertificateRequest& WithUserName(const char* value) { SetUserName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The contents of the signing certificate.</p> <p>The <a
      * href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this
@@ -120,99 +64,13 @@ namespace Model
      * characters tab (<code>\u0009</code>), line feed (<code>\u000A</code>), and
      * carriage return (<code>\u000D</code>)</p> </li> </ul>
      */
-    inline const Aws::String& GetCertificateBody() const{ return m_certificateBody; }
-
-    /**
-     * <p>The contents of the signing certificate.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this
-     * parameter is a string of characters consisting of the following:</p> <ul> <li>
-     * <p>Any printable ASCII character ranging from the space character
-     * (<code>\u0020</code>) through the end of the ASCII character range</p> </li>
-     * <li> <p>The printable characters in the Basic Latin and Latin-1 Supplement
-     * character set (through <code>\u00FF</code>)</p> </li> <li> <p>The special
-     * characters tab (<code>\u0009</code>), line feed (<code>\u000A</code>), and
-     * carriage return (<code>\u000D</code>)</p> </li> </ul>
-     */
+    inline const Aws::String& GetCertificateBody() const { return m_certificateBody; }
     inline bool CertificateBodyHasBeenSet() const { return m_certificateBodyHasBeenSet; }
-
-    /**
-     * <p>The contents of the signing certificate.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this
-     * parameter is a string of characters consisting of the following:</p> <ul> <li>
-     * <p>Any printable ASCII character ranging from the space character
-     * (<code>\u0020</code>) through the end of the ASCII character range</p> </li>
-     * <li> <p>The printable characters in the Basic Latin and Latin-1 Supplement
-     * character set (through <code>\u00FF</code>)</p> </li> <li> <p>The special
-     * characters tab (<code>\u0009</code>), line feed (<code>\u000A</code>), and
-     * carriage return (<code>\u000D</code>)</p> </li> </ul>
-     */
-    inline void SetCertificateBody(const Aws::String& value) { m_certificateBodyHasBeenSet = true; m_certificateBody = value; }
-
-    /**
-     * <p>The contents of the signing certificate.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this
-     * parameter is a string of characters consisting of the following:</p> <ul> <li>
-     * <p>Any printable ASCII character ranging from the space character
-     * (<code>\u0020</code>) through the end of the ASCII character range</p> </li>
-     * <li> <p>The printable characters in the Basic Latin and Latin-1 Supplement
-     * character set (through <code>\u00FF</code>)</p> </li> <li> <p>The special
-     * characters tab (<code>\u0009</code>), line feed (<code>\u000A</code>), and
-     * carriage return (<code>\u000D</code>)</p> </li> </ul>
-     */
-    inline void SetCertificateBody(Aws::String&& value) { m_certificateBodyHasBeenSet = true; m_certificateBody = std::move(value); }
-
-    /**
-     * <p>The contents of the signing certificate.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this
-     * parameter is a string of characters consisting of the following:</p> <ul> <li>
-     * <p>Any printable ASCII character ranging from the space character
-     * (<code>\u0020</code>) through the end of the ASCII character range</p> </li>
-     * <li> <p>The printable characters in the Basic Latin and Latin-1 Supplement
-     * character set (through <code>\u00FF</code>)</p> </li> <li> <p>The special
-     * characters tab (<code>\u0009</code>), line feed (<code>\u000A</code>), and
-     * carriage return (<code>\u000D</code>)</p> </li> </ul>
-     */
-    inline void SetCertificateBody(const char* value) { m_certificateBodyHasBeenSet = true; m_certificateBody.assign(value); }
-
-    /**
-     * <p>The contents of the signing certificate.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this
-     * parameter is a string of characters consisting of the following:</p> <ul> <li>
-     * <p>Any printable ASCII character ranging from the space character
-     * (<code>\u0020</code>) through the end of the ASCII character range</p> </li>
-     * <li> <p>The printable characters in the Basic Latin and Latin-1 Supplement
-     * character set (through <code>\u00FF</code>)</p> </li> <li> <p>The special
-     * characters tab (<code>\u0009</code>), line feed (<code>\u000A</code>), and
-     * carriage return (<code>\u000D</code>)</p> </li> </ul>
-     */
-    inline UploadSigningCertificateRequest& WithCertificateBody(const Aws::String& value) { SetCertificateBody(value); return *this;}
-
-    /**
-     * <p>The contents of the signing certificate.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this
-     * parameter is a string of characters consisting of the following:</p> <ul> <li>
-     * <p>Any printable ASCII character ranging from the space character
-     * (<code>\u0020</code>) through the end of the ASCII character range</p> </li>
-     * <li> <p>The printable characters in the Basic Latin and Latin-1 Supplement
-     * character set (through <code>\u00FF</code>)</p> </li> <li> <p>The special
-     * characters tab (<code>\u0009</code>), line feed (<code>\u000A</code>), and
-     * carriage return (<code>\u000D</code>)</p> </li> </ul>
-     */
-    inline UploadSigningCertificateRequest& WithCertificateBody(Aws::String&& value) { SetCertificateBody(std::move(value)); return *this;}
-
-    /**
-     * <p>The contents of the signing certificate.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this
-     * parameter is a string of characters consisting of the following:</p> <ul> <li>
-     * <p>Any printable ASCII character ranging from the space character
-     * (<code>\u0020</code>) through the end of the ASCII character range</p> </li>
-     * <li> <p>The printable characters in the Basic Latin and Latin-1 Supplement
-     * character set (through <code>\u00FF</code>)</p> </li> <li> <p>The special
-     * characters tab (<code>\u0009</code>), line feed (<code>\u000A</code>), and
-     * carriage return (<code>\u000D</code>)</p> </li> </ul>
-     */
-    inline UploadSigningCertificateRequest& WithCertificateBody(const char* value) { SetCertificateBody(value); return *this;}
-
+    template<typename CertificateBodyT = Aws::String>
+    void SetCertificateBody(CertificateBodyT&& value) { m_certificateBodyHasBeenSet = true; m_certificateBody = std::forward<CertificateBodyT>(value); }
+    template<typename CertificateBodyT = Aws::String>
+    UploadSigningCertificateRequest& WithCertificateBody(CertificateBodyT&& value) { SetCertificateBody(std::forward<CertificateBodyT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_userName;

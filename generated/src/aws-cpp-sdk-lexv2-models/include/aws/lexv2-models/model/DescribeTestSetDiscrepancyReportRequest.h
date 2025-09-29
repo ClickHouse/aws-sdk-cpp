@@ -21,7 +21,7 @@ namespace Model
   class DescribeTestSetDiscrepancyReportRequest : public LexModelsV2Request
   {
   public:
-    AWS_LEXMODELSV2_API DescribeTestSetDiscrepancyReportRequest();
+    AWS_LEXMODELSV2_API DescribeTestSetDiscrepancyReportRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_LEXMODELSV2_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The unique identifier of the test set discrepancy report.</p>
      */
-    inline const Aws::String& GetTestSetDiscrepancyReportId() const{ return m_testSetDiscrepancyReportId; }
-
-    /**
-     * <p>The unique identifier of the test set discrepancy report.</p>
-     */
+    inline const Aws::String& GetTestSetDiscrepancyReportId() const { return m_testSetDiscrepancyReportId; }
     inline bool TestSetDiscrepancyReportIdHasBeenSet() const { return m_testSetDiscrepancyReportIdHasBeenSet; }
-
-    /**
-     * <p>The unique identifier of the test set discrepancy report.</p>
-     */
-    inline void SetTestSetDiscrepancyReportId(const Aws::String& value) { m_testSetDiscrepancyReportIdHasBeenSet = true; m_testSetDiscrepancyReportId = value; }
-
-    /**
-     * <p>The unique identifier of the test set discrepancy report.</p>
-     */
-    inline void SetTestSetDiscrepancyReportId(Aws::String&& value) { m_testSetDiscrepancyReportIdHasBeenSet = true; m_testSetDiscrepancyReportId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the test set discrepancy report.</p>
-     */
-    inline void SetTestSetDiscrepancyReportId(const char* value) { m_testSetDiscrepancyReportIdHasBeenSet = true; m_testSetDiscrepancyReportId.assign(value); }
-
-    /**
-     * <p>The unique identifier of the test set discrepancy report.</p>
-     */
-    inline DescribeTestSetDiscrepancyReportRequest& WithTestSetDiscrepancyReportId(const Aws::String& value) { SetTestSetDiscrepancyReportId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the test set discrepancy report.</p>
-     */
-    inline DescribeTestSetDiscrepancyReportRequest& WithTestSetDiscrepancyReportId(Aws::String&& value) { SetTestSetDiscrepancyReportId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the test set discrepancy report.</p>
-     */
-    inline DescribeTestSetDiscrepancyReportRequest& WithTestSetDiscrepancyReportId(const char* value) { SetTestSetDiscrepancyReportId(value); return *this;}
-
+    template<typename TestSetDiscrepancyReportIdT = Aws::String>
+    void SetTestSetDiscrepancyReportId(TestSetDiscrepancyReportIdT&& value) { m_testSetDiscrepancyReportIdHasBeenSet = true; m_testSetDiscrepancyReportId = std::forward<TestSetDiscrepancyReportIdT>(value); }
+    template<typename TestSetDiscrepancyReportIdT = Aws::String>
+    DescribeTestSetDiscrepancyReportRequest& WithTestSetDiscrepancyReportId(TestSetDiscrepancyReportIdT&& value) { SetTestSetDiscrepancyReportId(std::forward<TestSetDiscrepancyReportIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_testSetDiscrepancyReportId;

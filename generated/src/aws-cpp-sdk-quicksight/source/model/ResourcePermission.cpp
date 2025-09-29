@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-ResourcePermission::ResourcePermission() : 
-    m_principalHasBeenSet(false),
-    m_actionsHasBeenSet(false)
-{
-}
-
-ResourcePermission::ResourcePermission(JsonView jsonValue) : 
-    m_principalHasBeenSet(false),
-    m_actionsHasBeenSet(false)
+ResourcePermission::ResourcePermission(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ResourcePermission& ResourcePermission::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Principal"))
   {
     m_principal = jsonValue.GetString("Principal");
-
     m_principalHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Actions"))
   {
     Aws::Utils::Array<JsonView> actionsJsonList = jsonValue.GetArray("Actions");
@@ -49,7 +39,6 @@ ResourcePermission& ResourcePermission::operator =(JsonView jsonValue)
     }
     m_actionsHasBeenSet = true;
   }
-
   return *this;
 }
 

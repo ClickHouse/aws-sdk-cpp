@@ -36,134 +36,47 @@ namespace Model
   class S3Object
   {
   public:
-    AWS_REKOGNITION_API S3Object();
+    AWS_REKOGNITION_API S3Object() = default;
     AWS_REKOGNITION_API S3Object(Aws::Utils::Json::JsonView jsonValue);
     AWS_REKOGNITION_API S3Object& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_REKOGNITION_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Name of the S3 bucket.</p>
      */
-    inline const Aws::String& GetBucket() const{ return m_bucket; }
-
-    /**
-     * <p>Name of the S3 bucket.</p>
-     */
+    inline const Aws::String& GetBucket() const { return m_bucket; }
     inline bool BucketHasBeenSet() const { return m_bucketHasBeenSet; }
+    template<typename BucketT = Aws::String>
+    void SetBucket(BucketT&& value) { m_bucketHasBeenSet = true; m_bucket = std::forward<BucketT>(value); }
+    template<typename BucketT = Aws::String>
+    S3Object& WithBucket(BucketT&& value) { SetBucket(std::forward<BucketT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Name of the S3 bucket.</p>
-     */
-    inline void SetBucket(const Aws::String& value) { m_bucketHasBeenSet = true; m_bucket = value; }
-
-    /**
-     * <p>Name of the S3 bucket.</p>
-     */
-    inline void SetBucket(Aws::String&& value) { m_bucketHasBeenSet = true; m_bucket = std::move(value); }
-
-    /**
-     * <p>Name of the S3 bucket.</p>
-     */
-    inline void SetBucket(const char* value) { m_bucketHasBeenSet = true; m_bucket.assign(value); }
-
-    /**
-     * <p>Name of the S3 bucket.</p>
-     */
-    inline S3Object& WithBucket(const Aws::String& value) { SetBucket(value); return *this;}
-
-    /**
-     * <p>Name of the S3 bucket.</p>
-     */
-    inline S3Object& WithBucket(Aws::String&& value) { SetBucket(std::move(value)); return *this;}
-
-    /**
-     * <p>Name of the S3 bucket.</p>
-     */
-    inline S3Object& WithBucket(const char* value) { SetBucket(value); return *this;}
-
-
+    ///@{
     /**
      * <p>S3 object key name.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>S3 object key name.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    S3Object& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>S3 object key name.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>S3 object key name.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>S3 object key name.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>S3 object key name.</p>
-     */
-    inline S3Object& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>S3 object key name.</p>
-     */
-    inline S3Object& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>S3 object key name.</p>
-     */
-    inline S3Object& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>If the bucket is versioning enabled, you can specify the object version. </p>
      */
-    inline const Aws::String& GetVersion() const{ return m_version; }
-
-    /**
-     * <p>If the bucket is versioning enabled, you can specify the object version. </p>
-     */
+    inline const Aws::String& GetVersion() const { return m_version; }
     inline bool VersionHasBeenSet() const { return m_versionHasBeenSet; }
-
-    /**
-     * <p>If the bucket is versioning enabled, you can specify the object version. </p>
-     */
-    inline void SetVersion(const Aws::String& value) { m_versionHasBeenSet = true; m_version = value; }
-
-    /**
-     * <p>If the bucket is versioning enabled, you can specify the object version. </p>
-     */
-    inline void SetVersion(Aws::String&& value) { m_versionHasBeenSet = true; m_version = std::move(value); }
-
-    /**
-     * <p>If the bucket is versioning enabled, you can specify the object version. </p>
-     */
-    inline void SetVersion(const char* value) { m_versionHasBeenSet = true; m_version.assign(value); }
-
-    /**
-     * <p>If the bucket is versioning enabled, you can specify the object version. </p>
-     */
-    inline S3Object& WithVersion(const Aws::String& value) { SetVersion(value); return *this;}
-
-    /**
-     * <p>If the bucket is versioning enabled, you can specify the object version. </p>
-     */
-    inline S3Object& WithVersion(Aws::String&& value) { SetVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>If the bucket is versioning enabled, you can specify the object version. </p>
-     */
-    inline S3Object& WithVersion(const char* value) { SetVersion(value); return *this;}
-
+    template<typename VersionT = Aws::String>
+    void SetVersion(VersionT&& value) { m_versionHasBeenSet = true; m_version = std::forward<VersionT>(value); }
+    template<typename VersionT = Aws::String>
+    S3Object& WithVersion(VersionT&& value) { SetVersion(std::forward<VersionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_bucket;

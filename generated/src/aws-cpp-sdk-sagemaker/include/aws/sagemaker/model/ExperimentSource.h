@@ -31,93 +31,35 @@ namespace Model
   class ExperimentSource
   {
   public:
-    AWS_SAGEMAKER_API ExperimentSource();
+    AWS_SAGEMAKER_API ExperimentSource() = default;
     AWS_SAGEMAKER_API ExperimentSource(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API ExperimentSource& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the source.</p>
      */
-    inline const Aws::String& GetSourceArn() const{ return m_sourceArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the source.</p>
-     */
+    inline const Aws::String& GetSourceArn() const { return m_sourceArn; }
     inline bool SourceArnHasBeenSet() const { return m_sourceArnHasBeenSet; }
+    template<typename SourceArnT = Aws::String>
+    void SetSourceArn(SourceArnT&& value) { m_sourceArnHasBeenSet = true; m_sourceArn = std::forward<SourceArnT>(value); }
+    template<typename SourceArnT = Aws::String>
+    ExperimentSource& WithSourceArn(SourceArnT&& value) { SetSourceArn(std::forward<SourceArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the source.</p>
-     */
-    inline void SetSourceArn(const Aws::String& value) { m_sourceArnHasBeenSet = true; m_sourceArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the source.</p>
-     */
-    inline void SetSourceArn(Aws::String&& value) { m_sourceArnHasBeenSet = true; m_sourceArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the source.</p>
-     */
-    inline void SetSourceArn(const char* value) { m_sourceArnHasBeenSet = true; m_sourceArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the source.</p>
-     */
-    inline ExperimentSource& WithSourceArn(const Aws::String& value) { SetSourceArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the source.</p>
-     */
-    inline ExperimentSource& WithSourceArn(Aws::String&& value) { SetSourceArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the source.</p>
-     */
-    inline ExperimentSource& WithSourceArn(const char* value) { SetSourceArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The source type.</p>
      */
-    inline const Aws::String& GetSourceType() const{ return m_sourceType; }
-
-    /**
-     * <p>The source type.</p>
-     */
+    inline const Aws::String& GetSourceType() const { return m_sourceType; }
     inline bool SourceTypeHasBeenSet() const { return m_sourceTypeHasBeenSet; }
-
-    /**
-     * <p>The source type.</p>
-     */
-    inline void SetSourceType(const Aws::String& value) { m_sourceTypeHasBeenSet = true; m_sourceType = value; }
-
-    /**
-     * <p>The source type.</p>
-     */
-    inline void SetSourceType(Aws::String&& value) { m_sourceTypeHasBeenSet = true; m_sourceType = std::move(value); }
-
-    /**
-     * <p>The source type.</p>
-     */
-    inline void SetSourceType(const char* value) { m_sourceTypeHasBeenSet = true; m_sourceType.assign(value); }
-
-    /**
-     * <p>The source type.</p>
-     */
-    inline ExperimentSource& WithSourceType(const Aws::String& value) { SetSourceType(value); return *this;}
-
-    /**
-     * <p>The source type.</p>
-     */
-    inline ExperimentSource& WithSourceType(Aws::String&& value) { SetSourceType(std::move(value)); return *this;}
-
-    /**
-     * <p>The source type.</p>
-     */
-    inline ExperimentSource& WithSourceType(const char* value) { SetSourceType(value); return *this;}
-
+    template<typename SourceTypeT = Aws::String>
+    void SetSourceType(SourceTypeT&& value) { m_sourceTypeHasBeenSet = true; m_sourceType = std::forward<SourceTypeT>(value); }
+    template<typename SourceTypeT = Aws::String>
+    ExperimentSource& WithSourceType(SourceTypeT&& value) { SetSourceType(std::forward<SourceTypeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_sourceArn;

@@ -29,7 +29,7 @@ namespace Model
   class PricingDetail
   {
   public:
-    AWS_EC2_API PricingDetail();
+    AWS_EC2_API PricingDetail() = default;
     AWS_EC2_API PricingDetail(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API PricingDetail& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -37,53 +37,31 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The number of reservations available for the price.</p>
      */
-    inline int GetCount() const{ return m_count; }
-
-    /**
-     * <p>The number of reservations available for the price.</p>
-     */
+    inline int GetCount() const { return m_count; }
     inline bool CountHasBeenSet() const { return m_countHasBeenSet; }
-
-    /**
-     * <p>The number of reservations available for the price.</p>
-     */
     inline void SetCount(int value) { m_countHasBeenSet = true; m_count = value; }
-
-    /**
-     * <p>The number of reservations available for the price.</p>
-     */
     inline PricingDetail& WithCount(int value) { SetCount(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The price per instance.</p>
      */
-    inline double GetPrice() const{ return m_price; }
-
-    /**
-     * <p>The price per instance.</p>
-     */
+    inline double GetPrice() const { return m_price; }
     inline bool PriceHasBeenSet() const { return m_priceHasBeenSet; }
-
-    /**
-     * <p>The price per instance.</p>
-     */
     inline void SetPrice(double value) { m_priceHasBeenSet = true; m_price = value; }
-
-    /**
-     * <p>The price per instance.</p>
-     */
     inline PricingDetail& WithPrice(double value) { SetPrice(value); return *this;}
-
+    ///@}
   private:
 
-    int m_count;
+    int m_count{0};
     bool m_countHasBeenSet = false;
 
-    double m_price;
+    double m_price{0.0};
     bool m_priceHasBeenSet = false;
   };
 

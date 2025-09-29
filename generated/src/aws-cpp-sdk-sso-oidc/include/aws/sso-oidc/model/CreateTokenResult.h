@@ -27,113 +27,45 @@ namespace Model
   class CreateTokenResult
   {
   public:
-    AWS_SSOOIDC_API CreateTokenResult();
+    AWS_SSOOIDC_API CreateTokenResult() = default;
     AWS_SSOOIDC_API CreateTokenResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_SSOOIDC_API CreateTokenResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
-     * <p>A bearer token to access AWS accounts and applications assigned to a
-     * user.</p>
+     * <p>A bearer token to access Amazon Web Services accounts and applications
+     * assigned to a user.</p>
      */
-    inline const Aws::String& GetAccessToken() const{ return m_accessToken; }
+    inline const Aws::String& GetAccessToken() const { return m_accessToken; }
+    template<typename AccessTokenT = Aws::String>
+    void SetAccessToken(AccessTokenT&& value) { m_accessTokenHasBeenSet = true; m_accessToken = std::forward<AccessTokenT>(value); }
+    template<typename AccessTokenT = Aws::String>
+    CreateTokenResult& WithAccessToken(AccessTokenT&& value) { SetAccessToken(std::forward<AccessTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A bearer token to access AWS accounts and applications assigned to a
-     * user.</p>
-     */
-    inline void SetAccessToken(const Aws::String& value) { m_accessToken = value; }
-
-    /**
-     * <p>A bearer token to access AWS accounts and applications assigned to a
-     * user.</p>
-     */
-    inline void SetAccessToken(Aws::String&& value) { m_accessToken = std::move(value); }
-
-    /**
-     * <p>A bearer token to access AWS accounts and applications assigned to a
-     * user.</p>
-     */
-    inline void SetAccessToken(const char* value) { m_accessToken.assign(value); }
-
-    /**
-     * <p>A bearer token to access AWS accounts and applications assigned to a
-     * user.</p>
-     */
-    inline CreateTokenResult& WithAccessToken(const Aws::String& value) { SetAccessToken(value); return *this;}
-
-    /**
-     * <p>A bearer token to access AWS accounts and applications assigned to a
-     * user.</p>
-     */
-    inline CreateTokenResult& WithAccessToken(Aws::String&& value) { SetAccessToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A bearer token to access AWS accounts and applications assigned to a
-     * user.</p>
-     */
-    inline CreateTokenResult& WithAccessToken(const char* value) { SetAccessToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Used to notify the client that the returned token is an access token. The
      * supported token type is <code>Bearer</code>.</p>
      */
-    inline const Aws::String& GetTokenType() const{ return m_tokenType; }
+    inline const Aws::String& GetTokenType() const { return m_tokenType; }
+    template<typename TokenTypeT = Aws::String>
+    void SetTokenType(TokenTypeT&& value) { m_tokenTypeHasBeenSet = true; m_tokenType = std::forward<TokenTypeT>(value); }
+    template<typename TokenTypeT = Aws::String>
+    CreateTokenResult& WithTokenType(TokenTypeT&& value) { SetTokenType(std::forward<TokenTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Used to notify the client that the returned token is an access token. The
-     * supported token type is <code>Bearer</code>.</p>
-     */
-    inline void SetTokenType(const Aws::String& value) { m_tokenType = value; }
-
-    /**
-     * <p>Used to notify the client that the returned token is an access token. The
-     * supported token type is <code>Bearer</code>.</p>
-     */
-    inline void SetTokenType(Aws::String&& value) { m_tokenType = std::move(value); }
-
-    /**
-     * <p>Used to notify the client that the returned token is an access token. The
-     * supported token type is <code>Bearer</code>.</p>
-     */
-    inline void SetTokenType(const char* value) { m_tokenType.assign(value); }
-
-    /**
-     * <p>Used to notify the client that the returned token is an access token. The
-     * supported token type is <code>Bearer</code>.</p>
-     */
-    inline CreateTokenResult& WithTokenType(const Aws::String& value) { SetTokenType(value); return *this;}
-
-    /**
-     * <p>Used to notify the client that the returned token is an access token. The
-     * supported token type is <code>Bearer</code>.</p>
-     */
-    inline CreateTokenResult& WithTokenType(Aws::String&& value) { SetTokenType(std::move(value)); return *this;}
-
-    /**
-     * <p>Used to notify the client that the returned token is an access token. The
-     * supported token type is <code>Bearer</code>.</p>
-     */
-    inline CreateTokenResult& WithTokenType(const char* value) { SetTokenType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Indicates the time in seconds when an access token will expire.</p>
      */
-    inline int GetExpiresIn() const{ return m_expiresIn; }
-
-    /**
-     * <p>Indicates the time in seconds when an access token will expire.</p>
-     */
-    inline void SetExpiresIn(int value) { m_expiresIn = value; }
-
-    /**
-     * <p>Indicates the time in seconds when an access token will expire.</p>
-     */
+    inline int GetExpiresIn() const { return m_expiresIn; }
+    inline void SetExpiresIn(int value) { m_expiresInHasBeenSet = true; m_expiresIn = value; }
     inline CreateTokenResult& WithExpiresIn(int value) { SetExpiresIn(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>A token that, if present, can be used to refresh a previously issued access
      * token that might have expired.</p> <p>For more information about the features
@@ -142,69 +74,14 @@ namespace Model
      * href="https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/Welcome.html">IAM
      * Identity Center OIDC API Reference</a>.</p>
      */
-    inline const Aws::String& GetRefreshToken() const{ return m_refreshToken; }
+    inline const Aws::String& GetRefreshToken() const { return m_refreshToken; }
+    template<typename RefreshTokenT = Aws::String>
+    void SetRefreshToken(RefreshTokenT&& value) { m_refreshTokenHasBeenSet = true; m_refreshToken = std::forward<RefreshTokenT>(value); }
+    template<typename RefreshTokenT = Aws::String>
+    CreateTokenResult& WithRefreshToken(RefreshTokenT&& value) { SetRefreshToken(std::forward<RefreshTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A token that, if present, can be used to refresh a previously issued access
-     * token that might have expired.</p> <p>For more information about the features
-     * and limitations of the current IAM Identity Center OIDC implementation, see
-     * <i>Considerations for Using this Guide</i> in the <a
-     * href="https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/Welcome.html">IAM
-     * Identity Center OIDC API Reference</a>.</p>
-     */
-    inline void SetRefreshToken(const Aws::String& value) { m_refreshToken = value; }
-
-    /**
-     * <p>A token that, if present, can be used to refresh a previously issued access
-     * token that might have expired.</p> <p>For more information about the features
-     * and limitations of the current IAM Identity Center OIDC implementation, see
-     * <i>Considerations for Using this Guide</i> in the <a
-     * href="https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/Welcome.html">IAM
-     * Identity Center OIDC API Reference</a>.</p>
-     */
-    inline void SetRefreshToken(Aws::String&& value) { m_refreshToken = std::move(value); }
-
-    /**
-     * <p>A token that, if present, can be used to refresh a previously issued access
-     * token that might have expired.</p> <p>For more information about the features
-     * and limitations of the current IAM Identity Center OIDC implementation, see
-     * <i>Considerations for Using this Guide</i> in the <a
-     * href="https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/Welcome.html">IAM
-     * Identity Center OIDC API Reference</a>.</p>
-     */
-    inline void SetRefreshToken(const char* value) { m_refreshToken.assign(value); }
-
-    /**
-     * <p>A token that, if present, can be used to refresh a previously issued access
-     * token that might have expired.</p> <p>For more information about the features
-     * and limitations of the current IAM Identity Center OIDC implementation, see
-     * <i>Considerations for Using this Guide</i> in the <a
-     * href="https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/Welcome.html">IAM
-     * Identity Center OIDC API Reference</a>.</p>
-     */
-    inline CreateTokenResult& WithRefreshToken(const Aws::String& value) { SetRefreshToken(value); return *this;}
-
-    /**
-     * <p>A token that, if present, can be used to refresh a previously issued access
-     * token that might have expired.</p> <p>For more information about the features
-     * and limitations of the current IAM Identity Center OIDC implementation, see
-     * <i>Considerations for Using this Guide</i> in the <a
-     * href="https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/Welcome.html">IAM
-     * Identity Center OIDC API Reference</a>.</p>
-     */
-    inline CreateTokenResult& WithRefreshToken(Aws::String&& value) { SetRefreshToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A token that, if present, can be used to refresh a previously issued access
-     * token that might have expired.</p> <p>For more information about the features
-     * and limitations of the current IAM Identity Center OIDC implementation, see
-     * <i>Considerations for Using this Guide</i> in the <a
-     * href="https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/Welcome.html">IAM
-     * Identity Center OIDC API Reference</a>.</p>
-     */
-    inline CreateTokenResult& WithRefreshToken(const char* value) { SetRefreshToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The <code>idToken</code> is not implemented or supported. For more
      * information about the features and limitations of the current IAM Identity
@@ -214,109 +91,40 @@ namespace Model
      * Identity Center OIDC API Reference</a>.</p> <p>A JSON Web Token (JWT) that
      * identifies who is associated with the issued access token. </p>
      */
-    inline const Aws::String& GetIdToken() const{ return m_idToken; }
+    inline const Aws::String& GetIdToken() const { return m_idToken; }
+    template<typename IdTokenT = Aws::String>
+    void SetIdToken(IdTokenT&& value) { m_idTokenHasBeenSet = true; m_idToken = std::forward<IdTokenT>(value); }
+    template<typename IdTokenT = Aws::String>
+    CreateTokenResult& WithIdToken(IdTokenT&& value) { SetIdToken(std::forward<IdTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The <code>idToken</code> is not implemented or supported. For more
-     * information about the features and limitations of the current IAM Identity
-     * Center OIDC implementation, see <i>Considerations for Using this Guide</i> in
-     * the <a
-     * href="https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/Welcome.html">IAM
-     * Identity Center OIDC API Reference</a>.</p> <p>A JSON Web Token (JWT) that
-     * identifies who is associated with the issued access token. </p>
-     */
-    inline void SetIdToken(const Aws::String& value) { m_idToken = value; }
-
-    /**
-     * <p>The <code>idToken</code> is not implemented or supported. For more
-     * information about the features and limitations of the current IAM Identity
-     * Center OIDC implementation, see <i>Considerations for Using this Guide</i> in
-     * the <a
-     * href="https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/Welcome.html">IAM
-     * Identity Center OIDC API Reference</a>.</p> <p>A JSON Web Token (JWT) that
-     * identifies who is associated with the issued access token. </p>
-     */
-    inline void SetIdToken(Aws::String&& value) { m_idToken = std::move(value); }
-
-    /**
-     * <p>The <code>idToken</code> is not implemented or supported. For more
-     * information about the features and limitations of the current IAM Identity
-     * Center OIDC implementation, see <i>Considerations for Using this Guide</i> in
-     * the <a
-     * href="https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/Welcome.html">IAM
-     * Identity Center OIDC API Reference</a>.</p> <p>A JSON Web Token (JWT) that
-     * identifies who is associated with the issued access token. </p>
-     */
-    inline void SetIdToken(const char* value) { m_idToken.assign(value); }
-
-    /**
-     * <p>The <code>idToken</code> is not implemented or supported. For more
-     * information about the features and limitations of the current IAM Identity
-     * Center OIDC implementation, see <i>Considerations for Using this Guide</i> in
-     * the <a
-     * href="https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/Welcome.html">IAM
-     * Identity Center OIDC API Reference</a>.</p> <p>A JSON Web Token (JWT) that
-     * identifies who is associated with the issued access token. </p>
-     */
-    inline CreateTokenResult& WithIdToken(const Aws::String& value) { SetIdToken(value); return *this;}
-
-    /**
-     * <p>The <code>idToken</code> is not implemented or supported. For more
-     * information about the features and limitations of the current IAM Identity
-     * Center OIDC implementation, see <i>Considerations for Using this Guide</i> in
-     * the <a
-     * href="https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/Welcome.html">IAM
-     * Identity Center OIDC API Reference</a>.</p> <p>A JSON Web Token (JWT) that
-     * identifies who is associated with the issued access token. </p>
-     */
-    inline CreateTokenResult& WithIdToken(Aws::String&& value) { SetIdToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The <code>idToken</code> is not implemented or supported. For more
-     * information about the features and limitations of the current IAM Identity
-     * Center OIDC implementation, see <i>Considerations for Using this Guide</i> in
-     * the <a
-     * href="https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/Welcome.html">IAM
-     * Identity Center OIDC API Reference</a>.</p> <p>A JSON Web Token (JWT) that
-     * identifies who is associated with the issued access token. </p>
-     */
-    inline CreateTokenResult& WithIdToken(const char* value) { SetIdToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline CreateTokenResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline CreateTokenResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline CreateTokenResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    CreateTokenResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_accessToken;
+    bool m_accessTokenHasBeenSet = false;
 
     Aws::String m_tokenType;
+    bool m_tokenTypeHasBeenSet = false;
 
-    int m_expiresIn;
+    int m_expiresIn{0};
+    bool m_expiresInHasBeenSet = false;
 
     Aws::String m_refreshToken;
+    bool m_refreshTokenHasBeenSet = false;
 
     Aws::String m_idToken;
+    bool m_idTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

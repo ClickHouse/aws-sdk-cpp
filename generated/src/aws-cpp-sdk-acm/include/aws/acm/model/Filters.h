@@ -6,6 +6,8 @@
 #pragma once
 #include <aws/acm/ACM_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/acm/model/CertificateExport.h>
+#include <aws/acm/model/CertificateManagedBy.h>
 #include <aws/acm/model/ExtendedKeyUsageName.h>
 #include <aws/acm/model/KeyUsageName.h>
 #include <aws/acm/model/KeyAlgorithm.h>
@@ -35,94 +37,39 @@ namespace Model
   class Filters
   {
   public:
-    AWS_ACM_API Filters();
+    AWS_ACM_API Filters() = default;
     AWS_ACM_API Filters(Aws::Utils::Json::JsonView jsonValue);
     AWS_ACM_API Filters& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ACM_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specify one or more <a>ExtendedKeyUsage</a> extension values.</p>
      */
-    inline const Aws::Vector<ExtendedKeyUsageName>& GetExtendedKeyUsage() const{ return m_extendedKeyUsage; }
-
-    /**
-     * <p>Specify one or more <a>ExtendedKeyUsage</a> extension values.</p>
-     */
+    inline const Aws::Vector<ExtendedKeyUsageName>& GetExtendedKeyUsage() const { return m_extendedKeyUsage; }
     inline bool ExtendedKeyUsageHasBeenSet() const { return m_extendedKeyUsageHasBeenSet; }
+    template<typename ExtendedKeyUsageT = Aws::Vector<ExtendedKeyUsageName>>
+    void SetExtendedKeyUsage(ExtendedKeyUsageT&& value) { m_extendedKeyUsageHasBeenSet = true; m_extendedKeyUsage = std::forward<ExtendedKeyUsageT>(value); }
+    template<typename ExtendedKeyUsageT = Aws::Vector<ExtendedKeyUsageName>>
+    Filters& WithExtendedKeyUsage(ExtendedKeyUsageT&& value) { SetExtendedKeyUsage(std::forward<ExtendedKeyUsageT>(value)); return *this;}
+    inline Filters& AddExtendedKeyUsage(ExtendedKeyUsageName value) { m_extendedKeyUsageHasBeenSet = true; m_extendedKeyUsage.push_back(value); return *this; }
+    ///@}
 
-    /**
-     * <p>Specify one or more <a>ExtendedKeyUsage</a> extension values.</p>
-     */
-    inline void SetExtendedKeyUsage(const Aws::Vector<ExtendedKeyUsageName>& value) { m_extendedKeyUsageHasBeenSet = true; m_extendedKeyUsage = value; }
-
-    /**
-     * <p>Specify one or more <a>ExtendedKeyUsage</a> extension values.</p>
-     */
-    inline void SetExtendedKeyUsage(Aws::Vector<ExtendedKeyUsageName>&& value) { m_extendedKeyUsageHasBeenSet = true; m_extendedKeyUsage = std::move(value); }
-
-    /**
-     * <p>Specify one or more <a>ExtendedKeyUsage</a> extension values.</p>
-     */
-    inline Filters& WithExtendedKeyUsage(const Aws::Vector<ExtendedKeyUsageName>& value) { SetExtendedKeyUsage(value); return *this;}
-
-    /**
-     * <p>Specify one or more <a>ExtendedKeyUsage</a> extension values.</p>
-     */
-    inline Filters& WithExtendedKeyUsage(Aws::Vector<ExtendedKeyUsageName>&& value) { SetExtendedKeyUsage(std::move(value)); return *this;}
-
-    /**
-     * <p>Specify one or more <a>ExtendedKeyUsage</a> extension values.</p>
-     */
-    inline Filters& AddExtendedKeyUsage(const ExtendedKeyUsageName& value) { m_extendedKeyUsageHasBeenSet = true; m_extendedKeyUsage.push_back(value); return *this; }
-
-    /**
-     * <p>Specify one or more <a>ExtendedKeyUsage</a> extension values.</p>
-     */
-    inline Filters& AddExtendedKeyUsage(ExtendedKeyUsageName&& value) { m_extendedKeyUsageHasBeenSet = true; m_extendedKeyUsage.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Specify one or more <a>KeyUsage</a> extension values.</p>
      */
-    inline const Aws::Vector<KeyUsageName>& GetKeyUsage() const{ return m_keyUsage; }
-
-    /**
-     * <p>Specify one or more <a>KeyUsage</a> extension values.</p>
-     */
+    inline const Aws::Vector<KeyUsageName>& GetKeyUsage() const { return m_keyUsage; }
     inline bool KeyUsageHasBeenSet() const { return m_keyUsageHasBeenSet; }
+    template<typename KeyUsageT = Aws::Vector<KeyUsageName>>
+    void SetKeyUsage(KeyUsageT&& value) { m_keyUsageHasBeenSet = true; m_keyUsage = std::forward<KeyUsageT>(value); }
+    template<typename KeyUsageT = Aws::Vector<KeyUsageName>>
+    Filters& WithKeyUsage(KeyUsageT&& value) { SetKeyUsage(std::forward<KeyUsageT>(value)); return *this;}
+    inline Filters& AddKeyUsage(KeyUsageName value) { m_keyUsageHasBeenSet = true; m_keyUsage.push_back(value); return *this; }
+    ///@}
 
-    /**
-     * <p>Specify one or more <a>KeyUsage</a> extension values.</p>
-     */
-    inline void SetKeyUsage(const Aws::Vector<KeyUsageName>& value) { m_keyUsageHasBeenSet = true; m_keyUsage = value; }
-
-    /**
-     * <p>Specify one or more <a>KeyUsage</a> extension values.</p>
-     */
-    inline void SetKeyUsage(Aws::Vector<KeyUsageName>&& value) { m_keyUsageHasBeenSet = true; m_keyUsage = std::move(value); }
-
-    /**
-     * <p>Specify one or more <a>KeyUsage</a> extension values.</p>
-     */
-    inline Filters& WithKeyUsage(const Aws::Vector<KeyUsageName>& value) { SetKeyUsage(value); return *this;}
-
-    /**
-     * <p>Specify one or more <a>KeyUsage</a> extension values.</p>
-     */
-    inline Filters& WithKeyUsage(Aws::Vector<KeyUsageName>&& value) { SetKeyUsage(std::move(value)); return *this;}
-
-    /**
-     * <p>Specify one or more <a>KeyUsage</a> extension values.</p>
-     */
-    inline Filters& AddKeyUsage(const KeyUsageName& value) { m_keyUsageHasBeenSet = true; m_keyUsage.push_back(value); return *this; }
-
-    /**
-     * <p>Specify one or more <a>KeyUsage</a> extension values.</p>
-     */
-    inline Filters& AddKeyUsage(KeyUsageName&& value) { m_keyUsageHasBeenSet = true; m_keyUsage.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Specify one or more algorithms that can be used to generate key pairs.</p>
      * <p>Default filtering returns only <code>RSA_1024</code> and
@@ -132,85 +79,36 @@ namespace Model
      * ["RSA_2048","RSA_4096"]</code> returns both <code>RSA_2048</code> and
      * <code>RSA_4096</code> certificates.</p>
      */
-    inline const Aws::Vector<KeyAlgorithm>& GetKeyTypes() const{ return m_keyTypes; }
-
-    /**
-     * <p>Specify one or more algorithms that can be used to generate key pairs.</p>
-     * <p>Default filtering returns only <code>RSA_1024</code> and
-     * <code>RSA_2048</code> certificates that have at least one domain. To return
-     * other certificate types, provide the desired type signatures in a
-     * comma-separated list. For example, <code>"keyTypes":
-     * ["RSA_2048","RSA_4096"]</code> returns both <code>RSA_2048</code> and
-     * <code>RSA_4096</code> certificates.</p>
-     */
+    inline const Aws::Vector<KeyAlgorithm>& GetKeyTypes() const { return m_keyTypes; }
     inline bool KeyTypesHasBeenSet() const { return m_keyTypesHasBeenSet; }
+    template<typename KeyTypesT = Aws::Vector<KeyAlgorithm>>
+    void SetKeyTypes(KeyTypesT&& value) { m_keyTypesHasBeenSet = true; m_keyTypes = std::forward<KeyTypesT>(value); }
+    template<typename KeyTypesT = Aws::Vector<KeyAlgorithm>>
+    Filters& WithKeyTypes(KeyTypesT&& value) { SetKeyTypes(std::forward<KeyTypesT>(value)); return *this;}
+    inline Filters& AddKeyTypes(KeyAlgorithm value) { m_keyTypesHasBeenSet = true; m_keyTypes.push_back(value); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>Specify one or more algorithms that can be used to generate key pairs.</p>
-     * <p>Default filtering returns only <code>RSA_1024</code> and
-     * <code>RSA_2048</code> certificates that have at least one domain. To return
-     * other certificate types, provide the desired type signatures in a
-     * comma-separated list. For example, <code>"keyTypes":
-     * ["RSA_2048","RSA_4096"]</code> returns both <code>RSA_2048</code> and
-     * <code>RSA_4096</code> certificates.</p>
+     * <p>Specify <code>ENABLED</code> or <code>DISABLED</code> to identify
+     * certificates that can be exported.</p>
      */
-    inline void SetKeyTypes(const Aws::Vector<KeyAlgorithm>& value) { m_keyTypesHasBeenSet = true; m_keyTypes = value; }
+    inline CertificateExport GetExportOption() const { return m_exportOption; }
+    inline bool ExportOptionHasBeenSet() const { return m_exportOptionHasBeenSet; }
+    inline void SetExportOption(CertificateExport value) { m_exportOptionHasBeenSet = true; m_exportOption = value; }
+    inline Filters& WithExportOption(CertificateExport value) { SetExportOption(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Specify one or more algorithms that can be used to generate key pairs.</p>
-     * <p>Default filtering returns only <code>RSA_1024</code> and
-     * <code>RSA_2048</code> certificates that have at least one domain. To return
-     * other certificate types, provide the desired type signatures in a
-     * comma-separated list. For example, <code>"keyTypes":
-     * ["RSA_2048","RSA_4096"]</code> returns both <code>RSA_2048</code> and
-     * <code>RSA_4096</code> certificates.</p>
+     * <p>Identifies the Amazon Web Services service that manages the certificate
+     * issued by ACM.</p>
      */
-    inline void SetKeyTypes(Aws::Vector<KeyAlgorithm>&& value) { m_keyTypesHasBeenSet = true; m_keyTypes = std::move(value); }
-
-    /**
-     * <p>Specify one or more algorithms that can be used to generate key pairs.</p>
-     * <p>Default filtering returns only <code>RSA_1024</code> and
-     * <code>RSA_2048</code> certificates that have at least one domain. To return
-     * other certificate types, provide the desired type signatures in a
-     * comma-separated list. For example, <code>"keyTypes":
-     * ["RSA_2048","RSA_4096"]</code> returns both <code>RSA_2048</code> and
-     * <code>RSA_4096</code> certificates.</p>
-     */
-    inline Filters& WithKeyTypes(const Aws::Vector<KeyAlgorithm>& value) { SetKeyTypes(value); return *this;}
-
-    /**
-     * <p>Specify one or more algorithms that can be used to generate key pairs.</p>
-     * <p>Default filtering returns only <code>RSA_1024</code> and
-     * <code>RSA_2048</code> certificates that have at least one domain. To return
-     * other certificate types, provide the desired type signatures in a
-     * comma-separated list. For example, <code>"keyTypes":
-     * ["RSA_2048","RSA_4096"]</code> returns both <code>RSA_2048</code> and
-     * <code>RSA_4096</code> certificates.</p>
-     */
-    inline Filters& WithKeyTypes(Aws::Vector<KeyAlgorithm>&& value) { SetKeyTypes(std::move(value)); return *this;}
-
-    /**
-     * <p>Specify one or more algorithms that can be used to generate key pairs.</p>
-     * <p>Default filtering returns only <code>RSA_1024</code> and
-     * <code>RSA_2048</code> certificates that have at least one domain. To return
-     * other certificate types, provide the desired type signatures in a
-     * comma-separated list. For example, <code>"keyTypes":
-     * ["RSA_2048","RSA_4096"]</code> returns both <code>RSA_2048</code> and
-     * <code>RSA_4096</code> certificates.</p>
-     */
-    inline Filters& AddKeyTypes(const KeyAlgorithm& value) { m_keyTypesHasBeenSet = true; m_keyTypes.push_back(value); return *this; }
-
-    /**
-     * <p>Specify one or more algorithms that can be used to generate key pairs.</p>
-     * <p>Default filtering returns only <code>RSA_1024</code> and
-     * <code>RSA_2048</code> certificates that have at least one domain. To return
-     * other certificate types, provide the desired type signatures in a
-     * comma-separated list. For example, <code>"keyTypes":
-     * ["RSA_2048","RSA_4096"]</code> returns both <code>RSA_2048</code> and
-     * <code>RSA_4096</code> certificates.</p>
-     */
-    inline Filters& AddKeyTypes(KeyAlgorithm&& value) { m_keyTypesHasBeenSet = true; m_keyTypes.push_back(std::move(value)); return *this; }
-
+    inline CertificateManagedBy GetManagedBy() const { return m_managedBy; }
+    inline bool ManagedByHasBeenSet() const { return m_managedByHasBeenSet; }
+    inline void SetManagedBy(CertificateManagedBy value) { m_managedByHasBeenSet = true; m_managedBy = value; }
+    inline Filters& WithManagedBy(CertificateManagedBy value) { SetManagedBy(value); return *this;}
+    ///@}
   private:
 
     Aws::Vector<ExtendedKeyUsageName> m_extendedKeyUsage;
@@ -221,6 +119,12 @@ namespace Model
 
     Aws::Vector<KeyAlgorithm> m_keyTypes;
     bool m_keyTypesHasBeenSet = false;
+
+    CertificateExport m_exportOption{CertificateExport::NOT_SET};
+    bool m_exportOptionHasBeenSet = false;
+
+    CertificateManagedBy m_managedBy{CertificateManagedBy::NOT_SET};
+    bool m_managedByHasBeenSet = false;
   };
 
 } // namespace Model

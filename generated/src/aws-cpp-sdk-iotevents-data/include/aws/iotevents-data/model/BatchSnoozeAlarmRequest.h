@@ -22,7 +22,7 @@ namespace Model
   class BatchSnoozeAlarmRequest : public IoTEventsDataRequest
   {
   public:
-    AWS_IOTEVENTSDATA_API BatchSnoozeAlarmRequest();
+    AWS_IOTEVENTSDATA_API BatchSnoozeAlarmRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,54 +33,20 @@ namespace Model
     AWS_IOTEVENTSDATA_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The list of snooze action requests. You can specify up to 10 requests per
      * operation.</p>
      */
-    inline const Aws::Vector<SnoozeAlarmActionRequest>& GetSnoozeActionRequests() const{ return m_snoozeActionRequests; }
-
-    /**
-     * <p>The list of snooze action requests. You can specify up to 10 requests per
-     * operation.</p>
-     */
+    inline const Aws::Vector<SnoozeAlarmActionRequest>& GetSnoozeActionRequests() const { return m_snoozeActionRequests; }
     inline bool SnoozeActionRequestsHasBeenSet() const { return m_snoozeActionRequestsHasBeenSet; }
-
-    /**
-     * <p>The list of snooze action requests. You can specify up to 10 requests per
-     * operation.</p>
-     */
-    inline void SetSnoozeActionRequests(const Aws::Vector<SnoozeAlarmActionRequest>& value) { m_snoozeActionRequestsHasBeenSet = true; m_snoozeActionRequests = value; }
-
-    /**
-     * <p>The list of snooze action requests. You can specify up to 10 requests per
-     * operation.</p>
-     */
-    inline void SetSnoozeActionRequests(Aws::Vector<SnoozeAlarmActionRequest>&& value) { m_snoozeActionRequestsHasBeenSet = true; m_snoozeActionRequests = std::move(value); }
-
-    /**
-     * <p>The list of snooze action requests. You can specify up to 10 requests per
-     * operation.</p>
-     */
-    inline BatchSnoozeAlarmRequest& WithSnoozeActionRequests(const Aws::Vector<SnoozeAlarmActionRequest>& value) { SetSnoozeActionRequests(value); return *this;}
-
-    /**
-     * <p>The list of snooze action requests. You can specify up to 10 requests per
-     * operation.</p>
-     */
-    inline BatchSnoozeAlarmRequest& WithSnoozeActionRequests(Aws::Vector<SnoozeAlarmActionRequest>&& value) { SetSnoozeActionRequests(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of snooze action requests. You can specify up to 10 requests per
-     * operation.</p>
-     */
-    inline BatchSnoozeAlarmRequest& AddSnoozeActionRequests(const SnoozeAlarmActionRequest& value) { m_snoozeActionRequestsHasBeenSet = true; m_snoozeActionRequests.push_back(value); return *this; }
-
-    /**
-     * <p>The list of snooze action requests. You can specify up to 10 requests per
-     * operation.</p>
-     */
-    inline BatchSnoozeAlarmRequest& AddSnoozeActionRequests(SnoozeAlarmActionRequest&& value) { m_snoozeActionRequestsHasBeenSet = true; m_snoozeActionRequests.push_back(std::move(value)); return *this; }
-
+    template<typename SnoozeActionRequestsT = Aws::Vector<SnoozeAlarmActionRequest>>
+    void SetSnoozeActionRequests(SnoozeActionRequestsT&& value) { m_snoozeActionRequestsHasBeenSet = true; m_snoozeActionRequests = std::forward<SnoozeActionRequestsT>(value); }
+    template<typename SnoozeActionRequestsT = Aws::Vector<SnoozeAlarmActionRequest>>
+    BatchSnoozeAlarmRequest& WithSnoozeActionRequests(SnoozeActionRequestsT&& value) { SetSnoozeActionRequests(std::forward<SnoozeActionRequestsT>(value)); return *this;}
+    template<typename SnoozeActionRequestsT = SnoozeAlarmActionRequest>
+    BatchSnoozeAlarmRequest& AddSnoozeActionRequests(SnoozeActionRequestsT&& value) { m_snoozeActionRequestsHasBeenSet = true; m_snoozeActionRequests.emplace_back(std::forward<SnoozeActionRequestsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<SnoozeAlarmActionRequest> m_snoozeActionRequests;

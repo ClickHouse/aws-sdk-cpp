@@ -18,13 +18,7 @@ namespace Connect
 namespace Model
 {
 
-RealTimeContactAnalysisPointOfInterest::RealTimeContactAnalysisPointOfInterest() : 
-    m_transcriptItemsHasBeenSet(false)
-{
-}
-
-RealTimeContactAnalysisPointOfInterest::RealTimeContactAnalysisPointOfInterest(JsonView jsonValue) : 
-    m_transcriptItemsHasBeenSet(false)
+RealTimeContactAnalysisPointOfInterest::RealTimeContactAnalysisPointOfInterest(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ RealTimeContactAnalysisPointOfInterest& RealTimeContactAnalysisPointOfInterest::
     }
     m_transcriptItemsHasBeenSet = true;
   }
-
   return *this;
 }
 
