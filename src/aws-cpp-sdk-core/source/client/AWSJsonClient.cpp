@@ -38,6 +38,11 @@ AWSJsonClient::AWSJsonClient(const Aws::Client::ClientConfiguration& configurati
 {
 }
 
+AWSError<CoreErrors> AWSJsonClient::CreateParseError() const
+{
+    return AWSError<CoreErrors>(CoreErrors::UNKNOWN, "Json Parser Error", "Failed to parse JSON response", false);
+}
+
 const char* AWSJsonClient::GetClientLogTag() const
 {
   return AWS_JSON_CLIENT_LOG_TAG;
