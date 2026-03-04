@@ -78,6 +78,7 @@
 #include <aws/lexv2-models/model/AnalyticsUtteranceMetricResult.h>
 #include <aws/lexv2-models/model/AnalyticsUtteranceResult.h>
 #include <aws/lexv2-models/model/AnalyticsUtteranceSortByName.h>
+#include <aws/lexv2-models/model/AssistedNluMode.h>
 #include <aws/lexv2-models/model/AssociatedTranscript.h>
 #include <aws/lexv2-models/model/AssociatedTranscriptFilter.h>
 #include <aws/lexv2-models/model/AssociatedTranscriptFilterName.h>
@@ -202,6 +203,7 @@
 #include <aws/lexv2-models/model/DataPrivacy.h>
 #include <aws/lexv2-models/model/DataSourceConfiguration.h>
 #include <aws/lexv2-models/model/DateRangeFilter.h>
+#include <aws/lexv2-models/model/DeepgramSpeechModelConfig.h>
 #include <aws/lexv2-models/model/DefaultConditionalBranch.h>
 #include <aws/lexv2-models/model/DeleteBotAliasRequest.h>
 #include <aws/lexv2-models/model/DeleteBotAliasResult.h>
@@ -322,6 +324,7 @@
 #include <aws/lexv2-models/model/IntentClassificationTestResults.h>
 #include <aws/lexv2-models/model/IntentClosingSetting.h>
 #include <aws/lexv2-models/model/IntentConfirmationSetting.h>
+#include <aws/lexv2-models/model/IntentDisambiguationSettings.h>
 #include <aws/lexv2-models/model/IntentFilter.h>
 #include <aws/lexv2-models/model/IntentFilterName.h>
 #include <aws/lexv2-models/model/IntentFilterOperator.h>
@@ -478,6 +481,11 @@
 #include <aws/lexv2-models/model/SlotValueSelectionSetting.h>
 #include <aws/lexv2-models/model/SortOrder.h>
 #include <aws/lexv2-models/model/Specifications.h>
+#include <aws/lexv2-models/model/SpeechDetectionSensitivity.h>
+#include <aws/lexv2-models/model/SpeechFoundationModel.h>
+#include <aws/lexv2-models/model/SpeechModelConfig.h>
+#include <aws/lexv2-models/model/SpeechModelPreference.h>
+#include <aws/lexv2-models/model/SpeechRecognitionSettings.h>
 #include <aws/lexv2-models/model/StartBotRecommendationRequest.h>
 #include <aws/lexv2-models/model/StartBotRecommendationResult.h>
 #include <aws/lexv2-models/model/StartBotResourceGenerationRequest.h>
@@ -535,6 +543,7 @@
 #include <aws/lexv2-models/model/TranscriptFormat.h>
 #include <aws/lexv2-models/model/TranscriptSourceSetting.h>
 #include <aws/lexv2-models/model/TurnSpecification.h>
+#include <aws/lexv2-models/model/UnifiedSpeechSettings.h>
 #include <aws/lexv2-models/model/UntagResourceRequest.h>
 #include <aws/lexv2-models/model/UntagResourceResult.h>
 #include <aws/lexv2-models/model/UpdateBotAliasRequest.h>

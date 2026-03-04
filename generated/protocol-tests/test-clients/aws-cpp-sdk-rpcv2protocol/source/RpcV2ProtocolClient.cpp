@@ -91,8 +91,10 @@ RpcV2ProtocolClient::RpcV2ProtocolClient(const std::shared_ptr<AWSCredentialsPro
 /* Legacy constructors due deprecation */
 RpcV2ProtocolClient::RpcV2ProtocolClient(const Client::ClientConfiguration& clientConfiguration)
     : BASECLASS(clientConfiguration,
-                Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
-                                                 SERVICE_NAME, Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
+                Aws::MakeShared<AWSAuthV4Signer>(
+                    ALLOCATION_TAG,
+                    Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig),
+                    SERVICE_NAME, Aws::Region::ComputeSignerRegion(clientConfiguration.region)),
                 Aws::MakeShared<RpcV2ProtocolErrorMarshaller>(ALLOCATION_TAG)),
       m_clientConfiguration(clientConfiguration),
       m_endpointProvider(Aws::MakeShared<RpcV2ProtocolEndpointProvider>(ALLOCATION_TAG)) {
@@ -141,6 +143,7 @@ void RpcV2ProtocolClient::init(const RpcV2Protocol::RpcV2ProtocolClientConfigura
 
 void RpcV2ProtocolClient::OverrideEndpoint(const Aws::String& endpoint) {
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
+  m_clientConfiguration.endpointOverride = endpoint;
   m_endpointProvider->OverrideEndpoint(endpoint);
 }
 
@@ -165,7 +168,7 @@ EmptyInputOutputOutcome RpcV2ProtocolClient::EmptyInputOutput(const EmptyInputOu
              {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
         AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, EmptyInputOutput, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE,
                                     endpointResolutionOutcome.GetError().GetMessage());
-        endpointResolutionOutcome.GetResult().AddPathSegment("/service/RpcV2Protocol/operation/EmptyInputOutput");
+        endpointResolutionOutcome.GetResult().AddPathSegments("/service/RpcV2Protocol/operation/EmptyInputOutput");
         return EmptyInputOutputOutcome(
             MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
       },
@@ -195,7 +198,7 @@ Float16Outcome RpcV2ProtocolClient::Float16(const Float16Request& request) const
              {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
         AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, Float16, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE,
                                     endpointResolutionOutcome.GetError().GetMessage());
-        endpointResolutionOutcome.GetResult().AddPathSegment("/service/RpcV2Protocol/operation/Float16");
+        endpointResolutionOutcome.GetResult().AddPathSegments("/service/RpcV2Protocol/operation/Float16");
         return Float16Outcome(
             MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
       },
@@ -225,7 +228,7 @@ FractionalSecondsOutcome RpcV2ProtocolClient::FractionalSeconds(const Fractional
              {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
         AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, FractionalSeconds, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE,
                                     endpointResolutionOutcome.GetError().GetMessage());
-        endpointResolutionOutcome.GetResult().AddPathSegment("/service/RpcV2Protocol/operation/FractionalSeconds");
+        endpointResolutionOutcome.GetResult().AddPathSegments("/service/RpcV2Protocol/operation/FractionalSeconds");
         return FractionalSecondsOutcome(
             MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
       },
@@ -255,7 +258,7 @@ GreetingWithErrorsOutcome RpcV2ProtocolClient::GreetingWithErrors(const Greeting
              {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
         AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, GreetingWithErrors, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE,
                                     endpointResolutionOutcome.GetError().GetMessage());
-        endpointResolutionOutcome.GetResult().AddPathSegment("/service/RpcV2Protocol/operation/GreetingWithErrors");
+        endpointResolutionOutcome.GetResult().AddPathSegments("/service/RpcV2Protocol/operation/GreetingWithErrors");
         return GreetingWithErrorsOutcome(
             MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
       },
@@ -285,7 +288,7 @@ NoInputOutputOutcome RpcV2ProtocolClient::NoInputOutput(const NoInputOutputReque
              {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
         AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, NoInputOutput, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE,
                                     endpointResolutionOutcome.GetError().GetMessage());
-        endpointResolutionOutcome.GetResult().AddPathSegment("/service/RpcV2Protocol/operation/NoInputOutput");
+        endpointResolutionOutcome.GetResult().AddPathSegments("/service/RpcV2Protocol/operation/NoInputOutput");
         return NoInputOutputOutcome(
             MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
       },
@@ -315,7 +318,7 @@ OptionalInputOutputOutcome RpcV2ProtocolClient::OptionalInputOutput(const Option
              {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
         AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, OptionalInputOutput, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE,
                                     endpointResolutionOutcome.GetError().GetMessage());
-        endpointResolutionOutcome.GetResult().AddPathSegment("/service/RpcV2Protocol/operation/OptionalInputOutput");
+        endpointResolutionOutcome.GetResult().AddPathSegments("/service/RpcV2Protocol/operation/OptionalInputOutput");
         return OptionalInputOutputOutcome(
             MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
       },
@@ -345,7 +348,7 @@ RecursiveShapesOutcome RpcV2ProtocolClient::RecursiveShapes(const RecursiveShape
              {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
         AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, RecursiveShapes, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE,
                                     endpointResolutionOutcome.GetError().GetMessage());
-        endpointResolutionOutcome.GetResult().AddPathSegment("/service/RpcV2Protocol/operation/RecursiveShapes");
+        endpointResolutionOutcome.GetResult().AddPathSegments("/service/RpcV2Protocol/operation/RecursiveShapes");
         return RecursiveShapesOutcome(
             MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
       },
@@ -375,7 +378,7 @@ RpcV2CborDenseMapsOutcome RpcV2ProtocolClient::RpcV2CborDenseMaps(const RpcV2Cbo
              {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
         AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, RpcV2CborDenseMaps, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE,
                                     endpointResolutionOutcome.GetError().GetMessage());
-        endpointResolutionOutcome.GetResult().AddPathSegment("/service/RpcV2Protocol/operation/RpcV2CborDenseMaps");
+        endpointResolutionOutcome.GetResult().AddPathSegments("/service/RpcV2Protocol/operation/RpcV2CborDenseMaps");
         return RpcV2CborDenseMapsOutcome(
             MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
       },
@@ -405,7 +408,7 @@ RpcV2CborListsOutcome RpcV2ProtocolClient::RpcV2CborLists(const RpcV2CborListsRe
              {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
         AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, RpcV2CborLists, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE,
                                     endpointResolutionOutcome.GetError().GetMessage());
-        endpointResolutionOutcome.GetResult().AddPathSegment("/service/RpcV2Protocol/operation/RpcV2CborLists");
+        endpointResolutionOutcome.GetResult().AddPathSegments("/service/RpcV2Protocol/operation/RpcV2CborLists");
         return RpcV2CborListsOutcome(
             MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
       },
@@ -435,7 +438,7 @@ SimpleScalarPropertiesOutcome RpcV2ProtocolClient::SimpleScalarProperties(const 
              {TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
         AWS_OPERATION_CHECK_SUCCESS(endpointResolutionOutcome, SimpleScalarProperties, CoreErrors, CoreErrors::ENDPOINT_RESOLUTION_FAILURE,
                                     endpointResolutionOutcome.GetError().GetMessage());
-        endpointResolutionOutcome.GetResult().AddPathSegment("/service/RpcV2Protocol/operation/SimpleScalarProperties");
+        endpointResolutionOutcome.GetResult().AddPathSegments("/service/RpcV2Protocol/operation/SimpleScalarProperties");
         return SimpleScalarPropertiesOutcome(
             MakeRequest(request, endpointResolutionOutcome.GetResult(), Aws::Http::HttpMethod::HTTP_POST, Aws::Auth::SIGV4_SIGNER));
       },

@@ -14,6 +14,12 @@
 #include <aws/cleanrooms/CleanRoomsRequest.h>
 #include <aws/cleanrooms/CleanRoomsServiceClientModel.h>
 #include <aws/cleanrooms/CleanRooms_EXPORTS.h>
+#include <aws/cleanrooms/model/AccessBudget.h>
+#include <aws/cleanrooms/model/AccessBudgetDetails.h>
+#include <aws/cleanrooms/model/AccessBudgetType.h>
+#include <aws/cleanrooms/model/AccessBudgetsPrivacyTemplateParametersInput.h>
+#include <aws/cleanrooms/model/AccessBudgetsPrivacyTemplateParametersOutput.h>
+#include <aws/cleanrooms/model/AccessBudgetsPrivacyTemplateUpdateParameters.h>
 #include <aws/cleanrooms/model/AccessDeniedException.h>
 #include <aws/cleanrooms/model/AccessDeniedExceptionReason.h>
 #include <aws/cleanrooms/model/AdditionalAnalyses.h>
@@ -46,8 +52,11 @@
 #include <aws/cleanrooms/model/AnalysisTemplateValidationType.h>
 #include <aws/cleanrooms/model/AnalysisType.h>
 #include <aws/cleanrooms/model/AnalyticsEngine.h>
+#include <aws/cleanrooms/model/ApprovalStatus.h>
+#include <aws/cleanrooms/model/ApprovalStatusDetails.h>
 #include <aws/cleanrooms/model/AthenaTableReference.h>
 #include <aws/cleanrooms/model/AutoApprovedChangeType.h>
+#include <aws/cleanrooms/model/AutoRefreshMode.h>
 #include <aws/cleanrooms/model/BatchGetCollaborationAnalysisTemplateError.h>
 #include <aws/cleanrooms/model/BatchGetCollaborationAnalysisTemplateRequest.h>
 #include <aws/cleanrooms/model/BatchGetCollaborationAnalysisTemplateResult.h>
@@ -59,8 +68,10 @@
 #include <aws/cleanrooms/model/BatchGetSchemaResult.h>
 #include <aws/cleanrooms/model/BilledJobResourceUtilization.h>
 #include <aws/cleanrooms/model/BilledResourceUtilization.h>
+#include <aws/cleanrooms/model/BudgetParameter.h>
 #include <aws/cleanrooms/model/Change.h>
 #include <aws/cleanrooms/model/ChangeInput.h>
+#include <aws/cleanrooms/model/ChangeRequestAction.h>
 #include <aws/cleanrooms/model/ChangeRequestStatus.h>
 #include <aws/cleanrooms/model/ChangeSpecification.h>
 #include <aws/cleanrooms/model/ChangeSpecificationType.h>
@@ -70,6 +81,7 @@
 #include <aws/cleanrooms/model/CollaborationAnalysisTemplateSummary.h>
 #include <aws/cleanrooms/model/CollaborationChangeRequest.h>
 #include <aws/cleanrooms/model/CollaborationChangeRequestSummary.h>
+#include <aws/cleanrooms/model/CollaborationChangeSpecification.h>
 #include <aws/cleanrooms/model/CollaborationConfiguredAudienceModelAssociation.h>
 #include <aws/cleanrooms/model/CollaborationConfiguredAudienceModelAssociationSummary.h>
 #include <aws/cleanrooms/model/CollaborationIdNamespaceAssociation.h>
@@ -81,6 +93,8 @@
 #include <aws/cleanrooms/model/CollaborationQueryLogStatus.h>
 #include <aws/cleanrooms/model/CollaborationSummary.h>
 #include <aws/cleanrooms/model/Column.h>
+#include <aws/cleanrooms/model/ColumnClassificationDetails.h>
+#include <aws/cleanrooms/model/CommercialRegion.h>
 #include <aws/cleanrooms/model/ComputeConfiguration.h>
 #include <aws/cleanrooms/model/ConfigurationDetails.h>
 #include <aws/cleanrooms/model/ConfiguredAudienceModelAssociation.h>
@@ -277,6 +291,7 @@
 #include <aws/cleanrooms/model/ListTagsForResourceResult.h>
 #include <aws/cleanrooms/model/MLMemberAbilities.h>
 #include <aws/cleanrooms/model/MLPaymentConfig.h>
+#include <aws/cleanrooms/model/MLSyntheticDataParameters.h>
 #include <aws/cleanrooms/model/MemberAbility.h>
 #include <aws/cleanrooms/model/MemberChangeSpecification.h>
 #include <aws/cleanrooms/model/MemberSpecification.h>
@@ -297,6 +312,7 @@
 #include <aws/cleanrooms/model/MembershipQueryLogStatus.h>
 #include <aws/cleanrooms/model/MembershipStatus.h>
 #include <aws/cleanrooms/model/MembershipSummary.h>
+#include <aws/cleanrooms/model/MembershipSyntheticDataGenerationPaymentConfig.h>
 #include <aws/cleanrooms/model/ModelInferencePaymentConfig.h>
 #include <aws/cleanrooms/model/ModelTrainingPaymentConfig.h>
 #include <aws/cleanrooms/model/ParameterType.h>
@@ -388,6 +404,11 @@
 #include <aws/cleanrooms/model/StartProtectedJobResult.h>
 #include <aws/cleanrooms/model/StartProtectedQueryRequest.h>
 #include <aws/cleanrooms/model/StartProtectedQueryResult.h>
+#include <aws/cleanrooms/model/SupportedS3Region.h>
+#include <aws/cleanrooms/model/SyntheticDataColumnProperties.h>
+#include <aws/cleanrooms/model/SyntheticDataColumnType.h>
+#include <aws/cleanrooms/model/SyntheticDataGenerationPaymentConfig.h>
+#include <aws/cleanrooms/model/SyntheticDataParameters.h>
 #include <aws/cleanrooms/model/TableReference.h>
 #include <aws/cleanrooms/model/TagResourceRequest.h>
 #include <aws/cleanrooms/model/TagResourceResult.h>
@@ -397,6 +418,8 @@
 #include <aws/cleanrooms/model/UntagResourceResult.h>
 #include <aws/cleanrooms/model/UpdateAnalysisTemplateRequest.h>
 #include <aws/cleanrooms/model/UpdateAnalysisTemplateResult.h>
+#include <aws/cleanrooms/model/UpdateCollaborationChangeRequestRequest.h>
+#include <aws/cleanrooms/model/UpdateCollaborationChangeRequestResult.h>
 #include <aws/cleanrooms/model/UpdateCollaborationRequest.h>
 #include <aws/cleanrooms/model/UpdateCollaborationResult.h>
 #include <aws/cleanrooms/model/UpdateConfiguredAudienceModelAssociationRequest.h>
@@ -425,6 +448,7 @@
 #include <aws/cleanrooms/model/ValidationExceptionField.h>
 #include <aws/cleanrooms/model/ValidationExceptionReason.h>
 #include <aws/cleanrooms/model/WorkerComputeConfiguration.h>
+#include <aws/cleanrooms/model/WorkerComputeConfigurationProperties.h>
 #include <aws/cleanrooms/model/WorkerComputeType.h>
 
 using CleanRoomsIncludeTest = ::testing::Test;

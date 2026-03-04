@@ -50,7 +50,7 @@ namespace Aws
         static const char EU_WEST_1[] = "eu-west-1"; // Europe (Ireland)
         static const char EU_WEST_2[] = "eu-west-2"; // Europe (London)
         static const char EU_WEST_3[] = "eu-west-3"; // Europe (Paris)
-        static const char EUSC_DE_EAST_1[] = "eusc-de-east-1"; // EU (Germany)
+        static const char EUSC_DE_EAST_1[] = "eusc-de-east-1"; // AWS European Sovereign Cloud (Germany)
         static const char IL_CENTRAL_1[] = "il-central-1"; // Israel (Tel Aviv)
         static const char ME_CENTRAL_1[] = "me-central-1"; // Middle East (UAE)
         static const char ME_SOUTH_1[] = "me-south-1"; // Middle East (Bahrain)
@@ -63,6 +63,7 @@ namespace Aws
         static const char US_ISO_EAST_1[] = "us-iso-east-1"; // US ISO East
         static const char US_ISO_WEST_1[] = "us-iso-west-1"; // US ISO WEST
         static const char US_ISOB_EAST_1[] = "us-isob-east-1"; // US ISOB East (Ohio)
+        static const char US_ISOB_WEST_1[] = "us-isob-west-1"; // US ISOB West
         static const char US_ISOF_EAST_1[] = "us-isof-east-1"; // US ISOF EAST
         static const char US_ISOF_SOUTH_1[] = "us-isof-south-1"; // US ISOF SOUTH
         static const char US_WEST_1[] = "us-west-1"; // US West (N. California)

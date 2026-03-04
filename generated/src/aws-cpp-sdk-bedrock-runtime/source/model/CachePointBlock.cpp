@@ -11,40 +11,38 @@
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-namespace Aws
-{
-namespace BedrockRuntime
-{
-namespace Model
-{
+namespace Aws {
+namespace BedrockRuntime {
+namespace Model {
 
-CachePointBlock::CachePointBlock(JsonView jsonValue)
-{
-  *this = jsonValue;
-}
+CachePointBlock::CachePointBlock(JsonView jsonValue) { *this = jsonValue; }
 
-CachePointBlock& CachePointBlock::operator =(JsonView jsonValue)
-{
-  if(jsonValue.ValueExists("type"))
-  {
+CachePointBlock& CachePointBlock::operator=(JsonView jsonValue) {
+  if (jsonValue.ValueExists("type")) {
     m_type = CachePointTypeMapper::GetCachePointTypeForName(jsonValue.GetString("type"));
     m_typeHasBeenSet = true;
+  }
+  if (jsonValue.ValueExists("ttl")) {
+    m_ttl = CacheTTLMapper::GetCacheTTLForName(jsonValue.GetString("ttl"));
+    m_ttlHasBeenSet = true;
   }
   return *this;
 }
 
-JsonValue CachePointBlock::Jsonize() const
-{
+JsonValue CachePointBlock::Jsonize() const {
   JsonValue payload;
 
-  if(m_typeHasBeenSet)
-  {
-   payload.WithString("type", CachePointTypeMapper::GetNameForCachePointType(m_type));
+  if (m_typeHasBeenSet) {
+    payload.WithString("type", CachePointTypeMapper::GetNameForCachePointType(m_type));
+  }
+
+  if (m_ttlHasBeenSet) {
+    payload.WithString("ttl", CacheTTLMapper::GetNameForCacheTTL(m_ttl));
   }
 
   return payload;
 }
 
-} // namespace Model
-} // namespace BedrockRuntime
-} // namespace Aws
+}  // namespace Model
+}  // namespace BedrockRuntime
+}  // namespace Aws

@@ -38,7 +38,7 @@ const std::pair<UserAgentFeature, const char*> BUSINESS_METRIC_MAPPING[] = {
     {UserAgentFeature::FLEXIBLE_CHECKSUMS_RES_WHEN_SUPPORTED, "b"},
     {UserAgentFeature::FLEXIBLE_CHECKSUMS_RES_WHEN_REQUIRED, "c"},
     {UserAgentFeature::ACCOUNT_ID_MODE_PREFERRED, "P"},
-    {UserAgentFeature::ACCOUNT_ID_MODE_DISABLED , "Q"},
+    {UserAgentFeature::ACCOUNT_ID_MODE_DISABLED, "Q"},
     {UserAgentFeature::ACCOUNT_ID_MODE_REQUIRED, "R"},
     {UserAgentFeature::RESOLVED_ACCOUNT_ID, "T"},
     {UserAgentFeature::GZIP_REQUEST_COMPRESSION, "L"},
@@ -52,6 +52,14 @@ const std::pair<UserAgentFeature, const char*> BUSINESS_METRIC_MAPPING[] = {
     {UserAgentFeature::CREDENTIALS_SSO, "s"},
     {UserAgentFeature::CREDENTIALS_SSO_LEGACY, "u"},
     {UserAgentFeature::CREDENTIALS_PROFILE_SOURCE_PROFILE, "p"},
+    {UserAgentFeature::CREDENTIALS_LOGIN, "AD"},
+    {UserAgentFeature::PROTOCOL_RPC_V2_CBOR, "M"},
+    {UserAgentFeature::BEARER_SERVICE_ENV_VARS, "3"},
+    {UserAgentFeature::FLEXIBLE_CHECKSUMS_REQ_SHA512, "AE"},
+    {UserAgentFeature::FLEXIBLE_CHECKSUMS_REQ_XXHASH64, "AG"},
+    {UserAgentFeature::FLEXIBLE_CHECKSUMS_REQ_XXHASH3, "AF"},
+    {UserAgentFeature::FLEXIBLE_CHECKSUMS_REQ_XXHASH128, "AH"},
+    {UserAgentFeature::PAGINATOR, "C"},
 };
 
 const std::pair<const char*, UserAgentFeature> RETRY_FEATURE_MAPPING[] = {
@@ -180,6 +188,15 @@ Aws::String UserAgent::SerializeWithFeatures(const Aws::Set<UserAgentFeature>& f
   if (!m_compilerMetadata.empty()) {
     SerializeMetadata(METADATA, m_compilerMetadata);
   }
+
+  // Add HTTP client metadata
+#if AWS_SDK_USE_CRT_HTTP
+  SerializeMetadata(METADATA, "http#crt");
+#elif ENABLE_CURL_CLIENT
+  SerializeMetadata(METADATA, "http#curl");
+#elif ENABLE_WINDOWS_CLIENT
+  SerializeMetadata(METADATA, "http#winhttp");
+#endif
 
   // metrics
   Aws::Vector<Aws::String> encodedMetrics{};

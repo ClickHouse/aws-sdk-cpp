@@ -4,62 +4,71 @@
  */
 
 #pragma once
-#include <aws/sagemaker/SageMaker_EXPORTS.h>
+#include <aws/core/http/HttpResponse.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/sagemaker/SageMaker_EXPORTS.h>
+
 #include <utility>
 
-namespace Aws
-{
-template<typename RESULT_TYPE>
+namespace Aws {
+template <typename RESULT_TYPE>
 class AmazonWebServiceResult;
 
-namespace Utils
-{
-namespace Json
-{
-  class JsonValue;
-} // namespace Json
-} // namespace Utils
-namespace SageMaker
-{
-namespace Model
-{
-  class CreateStudioLifecycleConfigResult
-  {
-  public:
-    AWS_SAGEMAKER_API CreateStudioLifecycleConfigResult() = default;
-    AWS_SAGEMAKER_API CreateStudioLifecycleConfigResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
-    AWS_SAGEMAKER_API CreateStudioLifecycleConfigResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
+namespace Utils {
+namespace Json {
+class JsonValue;
+}  // namespace Json
+}  // namespace Utils
+namespace SageMaker {
+namespace Model {
+class CreateStudioLifecycleConfigResult {
+ public:
+  AWS_SAGEMAKER_API CreateStudioLifecycleConfigResult() = default;
+  AWS_SAGEMAKER_API CreateStudioLifecycleConfigResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
+  AWS_SAGEMAKER_API CreateStudioLifecycleConfigResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
+  ///@{
+  /**
+   * <p>The ARN of your created Lifecycle Configuration.</p>
+   */
+  inline const Aws::String& GetStudioLifecycleConfigArn() const { return m_studioLifecycleConfigArn; }
+  template <typename StudioLifecycleConfigArnT = Aws::String>
+  void SetStudioLifecycleConfigArn(StudioLifecycleConfigArnT&& value) {
+    m_studioLifecycleConfigArnHasBeenSet = true;
+    m_studioLifecycleConfigArn = std::forward<StudioLifecycleConfigArnT>(value);
+  }
+  template <typename StudioLifecycleConfigArnT = Aws::String>
+  CreateStudioLifecycleConfigResult& WithStudioLifecycleConfigArn(StudioLifecycleConfigArnT&& value) {
+    SetStudioLifecycleConfigArn(std::forward<StudioLifecycleConfigArnT>(value));
+    return *this;
+  }
+  ///@}
 
-    ///@{
-    /**
-     * <p>The ARN of your created Lifecycle Configuration.</p>
-     */
-    inline const Aws::String& GetStudioLifecycleConfigArn() const { return m_studioLifecycleConfigArn; }
-    template<typename StudioLifecycleConfigArnT = Aws::String>
-    void SetStudioLifecycleConfigArn(StudioLifecycleConfigArnT&& value) { m_studioLifecycleConfigArnHasBeenSet = true; m_studioLifecycleConfigArn = std::forward<StudioLifecycleConfigArnT>(value); }
-    template<typename StudioLifecycleConfigArnT = Aws::String>
-    CreateStudioLifecycleConfigResult& WithStudioLifecycleConfigArn(StudioLifecycleConfigArnT&& value) { SetStudioLifecycleConfigArn(std::forward<StudioLifecycleConfigArnT>(value)); return *this;}
-    ///@}
+  ///@{
 
-    ///@{
-    
-    inline const Aws::String& GetRequestId() const { return m_requestId; }
-    template<typename RequestIdT = Aws::String>
-    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
-    template<typename RequestIdT = Aws::String>
-    CreateStudioLifecycleConfigResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
-    ///@}
-  private:
+  inline const Aws::String& GetRequestId() const { return m_requestId; }
+  template <typename RequestIdT = Aws::String>
+  void SetRequestId(RequestIdT&& value) {
+    m_requestIdHasBeenSet = true;
+    m_requestId = std::forward<RequestIdT>(value);
+  }
+  template <typename RequestIdT = Aws::String>
+  CreateStudioLifecycleConfigResult& WithRequestId(RequestIdT&& value) {
+    SetRequestId(std::forward<RequestIdT>(value));
+    return *this;
+  }
+  ///@}
+  inline Aws::Http::HttpResponseCode GetHttpResponseCode() const { return m_HttpResponseCode; }
 
-    Aws::String m_studioLifecycleConfigArn;
-    bool m_studioLifecycleConfigArnHasBeenSet = false;
+ private:
+  Aws::String m_studioLifecycleConfigArn;
 
-    Aws::String m_requestId;
-    bool m_requestIdHasBeenSet = false;
-  };
+  Aws::String m_requestId;
+  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  bool m_studioLifecycleConfigArnHasBeenSet = false;
+  bool m_requestIdHasBeenSet = false;
+};
 
-} // namespace Model
-} // namespace SageMaker
-} // namespace Aws
+}  // namespace Model
+}  // namespace SageMaker
+}  // namespace Aws

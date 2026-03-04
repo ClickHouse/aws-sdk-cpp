@@ -75,6 +75,7 @@
 #include <aws/devicefarm/model/DeviceProxy.h>
 #include <aws/devicefarm/model/DeviceSelectionConfiguration.h>
 #include <aws/devicefarm/model/DeviceSelectionResult.h>
+#include <aws/devicefarm/model/EnvironmentVariable.h>
 #include <aws/devicefarm/model/ExecutionConfiguration.h>
 #include <aws/devicefarm/model/ExecutionResult.h>
 #include <aws/devicefarm/model/ExecutionResultCode.h>
@@ -120,7 +121,6 @@
 #include <aws/devicefarm/model/InstallToRemoteAccessSessionResult.h>
 #include <aws/devicefarm/model/InstanceProfile.h>
 #include <aws/devicefarm/model/InstanceStatus.h>
-#include <aws/devicefarm/model/InteractionMode.h>
 #include <aws/devicefarm/model/Job.h>
 #include <aws/devicefarm/model/ListArtifactsRequest.h>
 #include <aws/devicefarm/model/ListArtifactsResult.h>
@@ -188,6 +188,7 @@
 #include <aws/devicefarm/model/Radios.h>
 #include <aws/devicefarm/model/RecurringCharge.h>
 #include <aws/devicefarm/model/RecurringChargeFrequency.h>
+#include <aws/devicefarm/model/RemoteAccessEndpoints.h>
 #include <aws/devicefarm/model/RemoteAccessSession.h>
 #include <aws/devicefarm/model/RenewOfferingRequest.h>
 #include <aws/devicefarm/model/RenewOfferingResult.h>

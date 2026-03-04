@@ -9,6 +9,7 @@
 #include <smithy/tracing/TelemetryProvider.h>
 #include <smithy/interceptor/Interceptor.h>
 #include <smithy/client/features/ChecksumInterceptor.h>
+#include <smithy/client/features/ChunkingInterceptor.h>
 #include <smithy/client/features/UserAgentInterceptor.h>
 
 #include <aws/crt/Variant.h>
@@ -20,8 +21,10 @@
 #include <aws/core/utils/Outcome.h>
 #include <aws/core/NoResult.h>
 #include <aws/core/http/HttpClientFactory.h>
+#include <aws/core/http/HttpClient.h>
 #include <aws/core/client/AWSErrorMarshaller.h>
 #include <aws/core/AmazonWebServiceResult.h>
+#include <smithy/identity/identity/AwsIdentity.h>
 #include <utility>
 
 namespace Aws
@@ -79,7 +82,9 @@ namespace client
         using ClientError = AWSCoreError;
         using SigningError = AWSCoreError;
         using SigningOutcome = Aws::Utils::FutureOutcome<std::shared_ptr<Aws::Http::HttpRequest>, SigningError>;
+        using SigningEventOutcome = Aws::Utils::Outcome<Aws::Utils::Event::Message, SigningError>;
         using EndpointUpdateCallback = std::function<void(Aws::Endpoint::AWSEndpoint&)>;
+        using AuthResolvedCallback = std::function<void(std::shared_ptr<AwsSmithyClientAsyncRequestContext>)>;
         using HttpResponseOutcome = Aws::Utils::Outcome<std::shared_ptr<Aws::Http::HttpResponse>, AWSCoreError>;
         using ResponseHandlerFunc = std::function<void(HttpResponseOutcome&&)>;
         using SelectAuthSchemeOptionOutcome = Aws::Utils::Outcome<AuthSchemeOption, AWSCoreError>;
@@ -99,8 +104,14 @@ namespace client
           m_serviceUserAgentName(std::move(serviceUserAgentName)),
           m_httpClient(std::move(httpClient)),
           m_errorMarshaller(std::move(errorMarshaller)),
-          m_interceptors{Aws::MakeShared<ChecksumInterceptor>("AwsSmithyClientBase", *m_clientConfig)}
+          m_interceptors({
+              Aws::MakeShared<ChecksumInterceptor>("AwsSmithyClientBase", *m_clientConfig),
+              Aws::MakeShared<features::ChunkingInterceptor>("AwsSmithyClientBase", 
+                  m_httpClient->IsDefaultAwsHttpClient() ? Aws::Client::HttpClientChunkedMode::DEFAULT : m_clientConfig->httpClientChunkedMode,
+                  m_clientConfig->awsChunkedBufferSize)
+          })
         {
+            
             baseInit();
         }
 
@@ -137,12 +148,14 @@ namespace client
                               Aws::Http::HttpMethod method,
                               EndpointUpdateCallback&& endpointCallback,
                               ResponseHandlerFunc&& responseHandler,
+                              AuthResolvedCallback&& authCallback,
                               std::shared_ptr<Aws::Utils::Threading::Executor> pExecutor) const;
 
         HttpResponseOutcome MakeRequestSync(Aws::AmazonWebServiceRequest const * const request,
                                             const char* requestName,
                                             Aws::Http::HttpMethod method,
-                                            EndpointUpdateCallback&& endpointCallback) const;
+                                            EndpointUpdateCallback&& endpointCallback,
+                                            AuthResolvedCallback&& authCallback) const;
 
         StreamOutcome MakeRequestWithUnparsedResponse(Aws::AmazonWebServiceRequest const * const request,
                                 const char* requestName,
@@ -152,6 +165,8 @@ namespace client
         void AppendToUserAgent(const Aws::String& valueToAppend);
 
     protected:
+        template <typename OutcomeT, typename ClientT, typename RequestT, typename HandlerT>
+        friend class SmithyBidirectionalEventStreamingTask;
         
         //for backwards compatibility
         const std::shared_ptr<Aws::Client::AWSErrorMarshaller>& GetErrorMarshaller() const

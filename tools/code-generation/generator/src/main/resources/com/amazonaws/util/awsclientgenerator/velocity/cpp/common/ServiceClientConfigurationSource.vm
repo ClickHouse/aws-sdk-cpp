@@ -28,6 +28,9 @@ static const char S3_DISABLE_EXPRESS_SESSION_CONFIG_FILE_OPTION[] = "s3_disable_
 static const char S3_USE_ARN_REGION_ENVIRONMENT_VARIABLE[] = "AWS_S3_USE_ARN_REGION";
 static const char S3_USE_ARN_REGION_CONFIG_FILE_OPTION[] = "s3_use_arn_region";
 #end
+#if($serviceModel.metadata.signingName == "bedrock")
+static const char AWS_BEARER_TOKEN_BEDROCK[] = "AWS_BEARER_TOKEN_BEDROCK";
+#end
 
 #if($metadata.hasEndpointDiscoveryTrait)
 bool IsEndpointDiscoveryEnabled(const Aws::String& endpointOverride, const Aws::String &profileName)
@@ -132,9 +135,25 @@ void ${metadata.classNamePrefix}ClientConfiguration::Load${serviceNamespace}Spec
     return Client::InitRetryStrategy();
   };
 #end
+## Bedrock API key auth 
+#if($serviceModel.metadata.signingName == "bedrock")
+    const Aws::String& bedrockToken =
+    BaseClientConfigClass::LoadConfigFromEnvOrProfile(AWS_BEARER_TOKEN_BEDROCK,
+    inputProfileName,
+    AWS_BEARER_TOKEN_BEDROCK,
+    {},
+    "");
+    if (!bedrockToken.empty()) {
+        Aws::Vector<Aws::String>::iterator position = std::find(authPreferences.begin(), authPreferences.end(), "bearer");
+        if (position != authPreferences.end()) {
+            authPreferences.erase(position);
+        }
+        authPreferences.insert(authPreferences.begin(), "bearer");
+    }
+#end
 }
 
-${metadata.classNamePrefix}ClientConfiguration::${metadata.classNamePrefix}ClientConfiguration(const Client::ClientConfigurationInitValues &configuration)
+${metadata.classNamePrefix}ClientConfiguration::${metadata.classNamePrefix}ClientConfiguration(const Aws::Client::ClientConfigurationInitValues &configuration)
 : BaseClientConfigClass(configuration)#if($metadata.hasEndpointDiscoveryTrait), enableEndpointDiscovery(ClientConfiguration::enableEndpointDiscovery)#end${nl}{
   Load${serviceNamespace}SpecificConfig(this->profileName);
 }
@@ -152,7 +171,7 @@ ${metadata.classNamePrefix}ClientConfiguration::${metadata.classNamePrefix}Clien
 #set($classNamePrefix = $metadata.classNamePrefix)
 #set($clsPrefixWSpace = $classNamePrefix.replaceAll(".", " "))
 #set($earlyClose = $serviceModel.metadata.serviceId != "S3")
-${classNamePrefix}ClientConfiguration::${classNamePrefix}ClientConfiguration(const Client::ClientConfiguration& config#if($earlyClose))#else,
+${classNamePrefix}ClientConfiguration::${classNamePrefix}ClientConfiguration(const Aws::Client::ClientConfiguration& config#if($earlyClose))#else,
 #end
 #if($serviceModel.metadata.serviceId == "S3")
 ${clsPrefixWSpace}                     ${clsPrefixWSpace}Client::AWSAuthV4Signer::PayloadSigningPolicy iPayloadSigningPolicy,

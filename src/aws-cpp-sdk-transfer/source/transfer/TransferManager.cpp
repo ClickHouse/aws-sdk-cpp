@@ -6,10 +6,18 @@
 #include <aws/core/platform/FileSystem.h>
 #include <aws/core/utils/HashingUtils.h>
 #include <aws/core/utils/logging/LogMacros.h>
+#include <aws/core/utils/crypto/Hash.h>
+#include <aws/core/utils/crypto/CRC32.h>
+#include <aws/core/utils/crypto/CRC64.h>
+#include <aws/core/utils/crypto/Sha1.h>
+#include <aws/core/utils/crypto/Sha256.h>
 #include <aws/core/utils/memory/AWSMemory.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
 #include <aws/core/utils/stream/PreallocatedStreamBuf.h>
+#include <aws/common/byte_order.h>
+#include <cstring>
+#include <aws/crt/checksum/CRC.h>
 #include <aws/s3/S3Client.h>
 #include <aws/s3/model/AbortMultipartUploadRequest.h>
 #include <aws/s3/model/CompleteMultipartUploadRequest.h>
@@ -399,6 +407,22 @@ namespace Aws
             bool isRetry = !handle->GetMultiPartId().empty();
             uint64_t sentBytes = 0;
 
+            const auto fullObjectHashCalculator = [](const std::shared_ptr<TransferHandle>& handle, bool isRetry, S3::Model::ChecksumAlgorithm algorithm) -> std::shared_ptr<Aws::Utils::Crypto::Hash> {
+                if (handle->GetChecksum().empty() && !isRetry) {
+                    if (algorithm == S3::Model::ChecksumAlgorithm::CRC32 || algorithm == S3::Model::ChecksumAlgorithm::CRC32C) {
+                        return Aws::MakeShared<Aws::Utils::Crypto::CRC32>("TransferManager");
+                    }
+                    if (algorithm == S3::Model::ChecksumAlgorithm::SHA1) {
+                        return Aws::MakeShared<Aws::Utils::Crypto::Sha1>("TransferManager");
+                    }
+                    if (algorithm == S3::Model::ChecksumAlgorithm::SHA256) {
+                        return Aws::MakeShared<Aws::Utils::Crypto::Sha256>("TransferManager");
+                    }
+                    return Aws::MakeShared<Aws::Utils::Crypto::CRC64>("TransferManager");
+                }
+                return nullptr;
+            }(handle, isRetry, m_transferConfig.checksumAlgorithm);
+
             if (!isRetry) {
               Aws::S3::Model::CreateMultipartUploadRequest createMultipartRequest = m_transferConfig.createMultipartUploadTemplate;
               createMultipartRequest.SetChecksumAlgorithm(m_transferConfig.checksumAlgorithm);
@@ -466,6 +490,10 @@ namespace Aws
                 streamToPut->seekg((partsIter->first - 1) * m_transferConfig.bufferSize);
                 streamToPut->read(reinterpret_cast<char*>(buffer), lengthToWrite);
 
+                if (fullObjectHashCalculator) {
+                    fullObjectHashCalculator->Update(buffer, static_cast<size_t>(lengthToWrite));
+                }
+
                 auto streamBuf = Aws::New<Aws::Utils::Stream::PreallocatedStreamBuf>(CLASS_TAG, buffer, static_cast<size_t>(lengthToWrite));
                 auto preallocatedStreamReader = Aws::MakeShared<Aws::IOStream>(CLASS_TAG, streamBuf);
 
@@ -524,6 +552,13 @@ namespace Aws
             {
                 handle->UpdateStatus(DetermineIfFailedOrCanceled(*handle));
                 TriggerTransferStatusUpdatedCallback(handle);
+            }
+            else if (fullObjectHashCalculator && handle->GetChecksum().empty()) {
+                // Finalize checksum calculation and set on handle
+                auto hashResult = fullObjectHashCalculator->GetHash();
+                if (hashResult.IsSuccess()) {
+                    handle->SetChecksum(Aws::Utils::HashingUtils::Base64Encode(hashResult.GetResult()));
+                }
             }
         }
 
@@ -637,6 +672,10 @@ namespace Aws
                         else if (m_transferConfig.checksumAlgorithm == S3::Model::ChecksumAlgorithm::CRC32C)
                         {
                             return outcome.GetResult().GetChecksumCRC32C();
+                        }
+                        else if (m_transferConfig.checksumAlgorithm == S3::Model::ChecksumAlgorithm::CRC64NVME)
+                        {
+                            return outcome.GetResult().GetChecksumCRC64NVME();
                         }
                         else if (m_transferConfig.checksumAlgorithm == S3::Model::ChecksumAlgorithm::SHA1)
                         {
@@ -825,6 +864,35 @@ namespace Aws
             return rangeStream.str();
         }
 
+        static bool VerifyContentRange(const Aws::String& requestedRange, const Aws::String& responseContentRange)
+        {
+            if (requestedRange.empty() || responseContentRange.empty())
+            {
+                return false;
+            }
+
+            const auto requestPrefix = "bytes=";
+            if (requestedRange.substr(0, strlen(requestPrefix)) != requestPrefix)
+            {
+                return false;
+            }
+            Aws::String requestRange = requestedRange.substr(strlen(requestPrefix));
+
+            const auto responsePrefix = "bytes ";
+            if (responseContentRange.substr(0, strlen(responsePrefix)) != responsePrefix)
+            {
+                return false;
+            }
+            Aws::String responseRange = responseContentRange.substr(strlen(responsePrefix));
+            size_t slashPos = responseRange.find('/');
+            if (slashPos != Aws::String::npos)
+            {
+                responseRange = responseRange.substr(0, slashPos);
+            }
+
+            return requestRange == responseRange;
+        }
+
         void TransferManager::DoSinglePartDownload(const std::shared_ptr<TransferHandle>& handle)
         {
             auto queuedParts = handle->GetQueuedParts();
@@ -901,6 +969,7 @@ namespace Aws
                 headObjectRequest.SetCustomizedAccessLogTag(m_transferConfig.customizedAccessLogTag);
                 headObjectRequest.WithBucket(handle->GetBucketName())
                                  .WithKey(handle->GetKey());
+                headObjectRequest.SetChecksumMode(Aws::S3::Model::ChecksumMode::ENABLED);
 
                 if(!handle->GetVersionId().empty())
                 {
@@ -936,6 +1005,18 @@ namespace Aws
                 handle->SetContentType(headObjectOutcome.GetResult().GetContentType());
                 handle->SetMetadata(headObjectOutcome.GetResult().GetMetadata());
                 handle->SetEtag(headObjectOutcome.GetResult().GetETag());
+                if (headObjectOutcome.GetResult().GetChecksumType() == Aws::S3::Model::ChecksumType::FULL_OBJECT) {
+                    if (!headObjectOutcome.GetResult().GetChecksumCRC32C().empty()) {
+                        handle->SetChecksum(headObjectOutcome.GetResult().GetChecksumCRC32C());
+                        handle->SetChecksumAlgorithm(S3::Model::ChecksumAlgorithm::CRC32C);
+                    } else if (!headObjectOutcome.GetResult().GetChecksumCRC32().empty()) {
+                        handle->SetChecksum(headObjectOutcome.GetResult().GetChecksumCRC32());
+                        handle->SetChecksumAlgorithm(S3::Model::ChecksumAlgorithm::CRC32);
+                    } else if (!headObjectOutcome.GetResult().GetChecksumCRC64NVME().empty()) {
+                        handle->SetChecksum(headObjectOutcome.GetResult().GetChecksumCRC64NVME());
+                        handle->SetChecksumAlgorithm(S3::Model::ChecksumAlgorithm::CRC64NVME);
+                    }
+                }
                 /* When bucket versioning is suspended, head object will return "null" for unversioned object.
                  * Send following GetObject with "null" as versionId will result in 403 access denied error if your IAM role or policy
                  * doesn't have GetObjectVersion permission.
@@ -1091,7 +1172,6 @@ namespace Aws
                                                       const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context)
         {
             AWS_UNREFERENCED_PARAM(client);
-            AWS_UNREFERENCED_PARAM(request);
 
             std::shared_ptr<TransferHandleAsyncContext> transferContext =
                 std::const_pointer_cast<TransferHandleAsyncContext>(std::static_pointer_cast<const TransferHandleAsyncContext>(context));
@@ -1108,8 +1188,32 @@ namespace Aws
                 handle->SetError(outcome.GetError());
                 TriggerErrorCallback(handle, outcome.GetError());
             }
-            else
+            else if (request.RangeHasBeenSet())
             {
+                const auto& requestedRange = request.GetRange();
+                const auto& responseContentRange = outcome.GetResult().GetContentRange();
+
+                if (responseContentRange.empty() || !VerifyContentRange(requestedRange, responseContentRange)) {
+                    Aws::Client::AWSError<Aws::S3::S3Errors> error(Aws::S3::S3Errors::INTERNAL_FAILURE,
+                                                                   "ContentRangeMismatch",
+                                                                   "ContentRange in response does not match requested range",
+                                                                   false);
+                    AWS_LOGSTREAM_ERROR(CLASS_TAG, "Transfer handle [" << handle->GetId()
+                            << "] ContentRange mismatch. Requested: [" << requestedRange
+                            << "] Received: [" << responseContentRange << "]");
+                    handle->ChangePartToFailed(partState);
+                    handle->SetError(error);
+                    TriggerErrorCallback(handle, error);
+                    handle->Cancel();
+
+                    if(partState->GetDownloadBuffer())
+                    {
+                        m_bufferManager.Release(partState->GetDownloadBuffer());
+                        partState->SetDownloadBuffer(nullptr);
+                    }
+                    return;
+                }
+
                 if(handle->ShouldContinue())
                 {
                     Aws::IOStream* bufferStream = partState->GetDownloadPartStream();
@@ -1117,6 +1221,7 @@ namespace Aws
 
                     Aws::String errMsg{handle->WritePartToDownloadStream(bufferStream, partState->GetRangeBegin())};
                     if (errMsg.empty()) {
+                        if (m_transferConfig.validateChecksums) { handle->AddChecksumForPart(bufferStream, partState); }
                         handle->ChangePartToCompleted(partState, outcome.GetResult().GetETag());
                     } else {
                         Aws::Client::AWSError<Aws::S3::S3Errors> error(Aws::S3::S3Errors::INTERNAL_FAILURE,
@@ -1152,6 +1257,72 @@ namespace Aws
             {
                 if (failedParts.size() == 0 && handle->GetBytesTransferred() == handle->GetBytesTotalSize())
                 {
+                    if (m_transferConfig.validateChecksums && !handle->GetChecksum().empty() &&
+                        (handle->GetChecksumAlgorithm() == S3::Model::ChecksumAlgorithm::CRC32 ||
+                            handle->GetChecksumAlgorithm() == S3::Model::ChecksumAlgorithm::CRC32C ||
+                            handle->GetChecksumAlgorithm() == S3::Model::ChecksumAlgorithm::CRC64NVME)) {
+                        uint64_t combinedChecksum = 0;
+                        bool first = true;
+                        for (const auto& part: handle->GetCompletedParts()) {
+                            Aws::String checksumStr = part.second->GetChecksum();
+                            uint64_t partSize = part.second->GetSizeInBytes();
+                            if (checksumStr.empty()) { continue; }
+                            auto decoded = Aws::Utils::HashingUtils::Base64Decode(checksumStr);
+                            const auto* raw = decoded.GetUnderlyingData();
+                            if (first) {
+                                if (handle->GetChecksumAlgorithm() == S3::Model::ChecksumAlgorithm::CRC64NVME) {
+                                    uint64_t partCrcBE = 0;
+                                    std::memcpy(&partCrcBE, raw, sizeof(uint64_t));
+                                    const uint64_t partCrc = aws_ntoh64(partCrcBE);
+                                    combinedChecksum = partCrc;
+                                } else {
+                                    uint32_t partCrcBE = 0;
+                                    std::memcpy(&partCrcBE, raw, sizeof(uint32_t));
+                                    const uint32_t partCrc = aws_ntoh32(partCrcBE);
+                                    combinedChecksum = partCrc;
+                                }
+                                first = false;
+                            } else {
+                                if (handle->GetChecksumAlgorithm() == S3::Model::ChecksumAlgorithm::CRC64NVME) {
+                                    uint64_t partCrcBE = 0;
+                                    std::memcpy(&partCrcBE, raw, sizeof(uint64_t));
+                                    const uint64_t partCrc = aws_ntoh64(partCrcBE);
+                                    combinedChecksum = Aws::Crt::Checksum::CombineCRC64NVME(combinedChecksum, partCrc, partSize);
+                                }
+                                else {
+                                    uint32_t partCrcBE = 0;
+                                    std::memcpy(&partCrcBE, raw, sizeof(uint32_t));
+                                    const uint32_t partCrc = aws_ntoh32(partCrcBE);
+                                    if (handle->GetChecksumAlgorithm() == S3::Model::ChecksumAlgorithm::CRC32) {
+                                        combinedChecksum = Aws::Crt::Checksum::CombineCRC32(static_cast<uint32_t>(combinedChecksum), partCrc, partSize);
+                                    } else {
+                                        combinedChecksum = Aws::Crt::Checksum::CombineCRC32C(static_cast<uint32_t>(combinedChecksum), partCrc, partSize);
+                                    }
+                                }
+                            }
+                        }
+                        Aws::Utils::ByteBuffer checksumBuffer(handle->GetChecksumAlgorithm()== S3::Model::ChecksumAlgorithm::CRC64NVME ? 8 : 4);
+                        if (handle->GetChecksumAlgorithm() == S3::Model::ChecksumAlgorithm::CRC64NVME) {
+                            const uint64_t be = aws_hton64(combinedChecksum);
+                            std::memcpy(checksumBuffer.GetUnderlyingData(), &be, sizeof(uint64_t));
+                        } else {
+                            const uint32_t be = aws_hton32(static_cast<uint32_t>(combinedChecksum));
+                            std::memcpy(checksumBuffer.GetUnderlyingData(), &be, sizeof(uint32_t));
+                        }
+                        Aws::String combinedChecksumStr = Aws::Utils::HashingUtils::Base64Encode(checksumBuffer);
+                        if (combinedChecksumStr != handle->GetChecksum()) {
+                            AWS_LOGSTREAM_ERROR(CLASS_TAG, "Transfer handle [" << handle->GetId()
+                                    << "] Full-object checksum mismatch. Expected: " << handle->GetChecksum()
+                                    << ", Calculated: " << combinedChecksumStr);
+                            Aws::Client::AWSError<Aws::S3::S3Errors> error(Aws::S3::S3Errors::INTERNAL_FAILURE,
+                                                                           "ChecksumMismatch",
+                                                                           "Full-object checksum validation failed",
+                                                                           false);
+                            handle->SetError(error);
+                            handle->UpdateStatus(TransferStatus::FAILED);
+                            TriggerErrorCallback(handle, error);
+                        }
+                    }
                     outcome.GetResult().GetBody().flush();
                     handle->UpdateStatus(TransferStatus::COMPLETED);
                 }

@@ -17,6 +17,8 @@
 #include <aws/appstream/model/AccessEndpoint.h>
 #include <aws/appstream/model/AccessEndpointType.h>
 #include <aws/appstream/model/Action.h>
+#include <aws/appstream/model/AdminAppLicenseUsageRecord.h>
+#include <aws/appstream/model/AgentSoftwareVersion.h>
 #include <aws/appstream/model/AppBlock.h>
 #include <aws/appstream/model/AppBlockBuilder.h>
 #include <aws/appstream/model/AppBlockBuilderAppBlockAssociation.h>
@@ -29,6 +31,7 @@
 #include <aws/appstream/model/AppVisibility.h>
 #include <aws/appstream/model/Application.h>
 #include <aws/appstream/model/ApplicationAttribute.h>
+#include <aws/appstream/model/ApplicationConfig.h>
 #include <aws/appstream/model/ApplicationFleetAssociation.h>
 #include <aws/appstream/model/ApplicationSettings.h>
 #include <aws/appstream/model/ApplicationSettingsResponse.h>
@@ -40,6 +43,8 @@
 #include <aws/appstream/model/AssociateApplicationToEntitlementResult.h>
 #include <aws/appstream/model/AssociateFleetRequest.h>
 #include <aws/appstream/model/AssociateFleetResult.h>
+#include <aws/appstream/model/AssociateSoftwareToImageBuilderRequest.h>
+#include <aws/appstream/model/AssociateSoftwareToImageBuilderResult.h>
 #include <aws/appstream/model/AuthenticationType.h>
 #include <aws/appstream/model/BatchAssociateUserStackRequest.h>
 #include <aws/appstream/model/BatchAssociateUserStackResult.h>
@@ -63,12 +68,16 @@
 #include <aws/appstream/model/CreateDirectoryConfigResult.h>
 #include <aws/appstream/model/CreateEntitlementRequest.h>
 #include <aws/appstream/model/CreateEntitlementResult.h>
+#include <aws/appstream/model/CreateExportImageTaskRequest.h>
+#include <aws/appstream/model/CreateExportImageTaskResult.h>
 #include <aws/appstream/model/CreateFleetRequest.h>
 #include <aws/appstream/model/CreateFleetResult.h>
 #include <aws/appstream/model/CreateImageBuilderRequest.h>
 #include <aws/appstream/model/CreateImageBuilderResult.h>
 #include <aws/appstream/model/CreateImageBuilderStreamingURLRequest.h>
 #include <aws/appstream/model/CreateImageBuilderStreamingURLResult.h>
+#include <aws/appstream/model/CreateImportedImageRequest.h>
+#include <aws/appstream/model/CreateImportedImageResult.h>
 #include <aws/appstream/model/CreateStackRequest.h>
 #include <aws/appstream/model/CreateStackResult.h>
 #include <aws/appstream/model/CreateStreamingURLRequest.h>
@@ -113,6 +122,8 @@
 #include <aws/appstream/model/DescribeAppBlockBuildersResult.h>
 #include <aws/appstream/model/DescribeAppBlocksRequest.h>
 #include <aws/appstream/model/DescribeAppBlocksResult.h>
+#include <aws/appstream/model/DescribeAppLicenseUsageRequest.h>
+#include <aws/appstream/model/DescribeAppLicenseUsageResult.h>
 #include <aws/appstream/model/DescribeApplicationFleetAssociationsRequest.h>
 #include <aws/appstream/model/DescribeApplicationFleetAssociationsResult.h>
 #include <aws/appstream/model/DescribeApplicationsRequest.h>
@@ -131,6 +142,8 @@
 #include <aws/appstream/model/DescribeImagesResult.h>
 #include <aws/appstream/model/DescribeSessionsRequest.h>
 #include <aws/appstream/model/DescribeSessionsResult.h>
+#include <aws/appstream/model/DescribeSoftwareAssociationsRequest.h>
+#include <aws/appstream/model/DescribeSoftwareAssociationsResult.h>
 #include <aws/appstream/model/DescribeStacksRequest.h>
 #include <aws/appstream/model/DescribeStacksResult.h>
 #include <aws/appstream/model/DescribeThemeForStackRequest.h>
@@ -152,6 +165,8 @@
 #include <aws/appstream/model/DisassociateApplicationFromEntitlementResult.h>
 #include <aws/appstream/model/DisassociateFleetRequest.h>
 #include <aws/appstream/model/DisassociateFleetResult.h>
+#include <aws/appstream/model/DisassociateSoftwareFromImageBuilderRequest.h>
+#include <aws/appstream/model/DisassociateSoftwareFromImageBuilderResult.h>
 #include <aws/appstream/model/DomainJoinInfo.h>
 #include <aws/appstream/model/DynamicAppProvidersEnabled.h>
 #include <aws/appstream/model/EnableUserRequest.h>
@@ -162,12 +177,17 @@
 #include <aws/appstream/model/ErrorDetails.h>
 #include <aws/appstream/model/ExpireSessionRequest.h>
 #include <aws/appstream/model/ExpireSessionResult.h>
+#include <aws/appstream/model/ExportImageTask.h>
+#include <aws/appstream/model/ExportImageTaskState.h>
+#include <aws/appstream/model/Filter.h>
 #include <aws/appstream/model/Fleet.h>
 #include <aws/appstream/model/FleetAttribute.h>
 #include <aws/appstream/model/FleetError.h>
 #include <aws/appstream/model/FleetErrorCode.h>
 #include <aws/appstream/model/FleetState.h>
 #include <aws/appstream/model/FleetType.h>
+#include <aws/appstream/model/GetExportImageTaskRequest.h>
+#include <aws/appstream/model/GetExportImageTaskResult.h>
 #include <aws/appstream/model/Image.h>
 #include <aws/appstream/model/ImageBuilder.h>
 #include <aws/appstream/model/ImageBuilderState.h>
@@ -178,6 +198,7 @@
 #include <aws/appstream/model/ImageState.h>
 #include <aws/appstream/model/ImageStateChangeReason.h>
 #include <aws/appstream/model/ImageStateChangeReasonCode.h>
+#include <aws/appstream/model/ImageType.h>
 #include <aws/appstream/model/LastReportGenerationExecutionError.h>
 #include <aws/appstream/model/LatestAppstreamAgentVersion.h>
 #include <aws/appstream/model/ListAssociatedFleetsRequest.h>
@@ -186,6 +207,8 @@
 #include <aws/appstream/model/ListAssociatedStacksResult.h>
 #include <aws/appstream/model/ListEntitledApplicationsRequest.h>
 #include <aws/appstream/model/ListEntitledApplicationsResult.h>
+#include <aws/appstream/model/ListExportImageTasksRequest.h>
+#include <aws/appstream/model/ListExportImageTasksResult.h>
 #include <aws/appstream/model/ListTagsForResourceRequest.h>
 #include <aws/appstream/model/ListTagsForResourceResult.h>
 #include <aws/appstream/model/MessageAction.h>
@@ -195,6 +218,7 @@
 #include <aws/appstream/model/PlatformType.h>
 #include <aws/appstream/model/PreferredProtocol.h>
 #include <aws/appstream/model/ResourceError.h>
+#include <aws/appstream/model/RuntimeValidationConfig.h>
 #include <aws/appstream/model/S3Location.h>
 #include <aws/appstream/model/ScriptDetails.h>
 #include <aws/appstream/model/ServiceAccountCredentials.h>
@@ -202,6 +226,8 @@
 #include <aws/appstream/model/SessionConnectionState.h>
 #include <aws/appstream/model/SessionState.h>
 #include <aws/appstream/model/SharedImagePermissions.h>
+#include <aws/appstream/model/SoftwareAssociations.h>
+#include <aws/appstream/model/SoftwareDeploymentStatus.h>
 #include <aws/appstream/model/Stack.h>
 #include <aws/appstream/model/StackAttribute.h>
 #include <aws/appstream/model/StackError.h>
@@ -212,6 +238,8 @@
 #include <aws/appstream/model/StartFleetResult.h>
 #include <aws/appstream/model/StartImageBuilderRequest.h>
 #include <aws/appstream/model/StartImageBuilderResult.h>
+#include <aws/appstream/model/StartSoftwareDeploymentToImageBuilderRequest.h>
+#include <aws/appstream/model/StartSoftwareDeploymentToImageBuilderResult.h>
 #include <aws/appstream/model/StopAppBlockBuilderRequest.h>
 #include <aws/appstream/model/StopAppBlockBuilderResult.h>
 #include <aws/appstream/model/StopFleetRequest.h>
@@ -256,6 +284,7 @@
 #include <aws/appstream/model/UserStackAssociationError.h>
 #include <aws/appstream/model/UserStackAssociationErrorCode.h>
 #include <aws/appstream/model/VisibilityType.h>
+#include <aws/appstream/model/VolumeConfig.h>
 #include <aws/appstream/model/VpcConfig.h>
 
 using AppStreamIncludeTest = ::testing::Test;

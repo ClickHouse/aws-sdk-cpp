@@ -71,6 +71,7 @@
 #include <aws/medialive/model/AudioWatermarkSettings.h>
 #include <aws/medialive/model/AuthenticationScheme.h>
 #include <aws/medialive/model/AutomaticInputFailoverSettings.h>
+#include <aws/medialive/model/Av1BitDepth.h>
 #include <aws/medialive/model/Av1ColorSpaceSettings.h>
 #include <aws/medialive/model/Av1GopSizeUnits.h>
 #include <aws/medialive/model/Av1Level.h>
@@ -78,6 +79,9 @@
 #include <aws/medialive/model/Av1RateControlMode.h>
 #include <aws/medialive/model/Av1SceneChangeDetect.h>
 #include <aws/medialive/model/Av1Settings.h>
+#include <aws/medialive/model/Av1SpatialAq.h>
+#include <aws/medialive/model/Av1TemporalAq.h>
+#include <aws/medialive/model/Av1TimecodeInsertionBehavior.h>
 #include <aws/medialive/model/AvailBlanking.h>
 #include <aws/medialive/model/AvailBlankingState.h>
 #include <aws/medialive/model/AvailConfiguration.h>
@@ -121,6 +125,8 @@
 #include <aws/medialive/model/CdiInputResolution.h>
 #include <aws/medialive/model/CdiInputSpecification.h>
 #include <aws/medialive/model/Channel.h>
+#include <aws/medialive/model/ChannelAlert.h>
+#include <aws/medialive/model/ChannelAlertState.h>
 #include <aws/medialive/model/ChannelClass.h>
 #include <aws/medialive/model/ChannelEgressEndpoint.h>
 #include <aws/medialive/model/ChannelEngineVersionRequest.h>
@@ -137,6 +143,8 @@
 #include <aws/medialive/model/CloudWatchAlarmTemplateSummary.h>
 #include <aws/medialive/model/CloudWatchAlarmTemplateTargetResourceType.h>
 #include <aws/medialive/model/CloudWatchAlarmTemplateTreatMissingData.h>
+#include <aws/medialive/model/ClusterAlert.h>
+#include <aws/medialive/model/ClusterAlertState.h>
 #include <aws/medialive/model/ClusterNetworkSettings.h>
 #include <aws/medialive/model/ClusterNetworkSettingsCreateRequest.h>
 #include <aws/medialive/model/ClusterNetworkSettingsUpdateRequest.h>
@@ -155,6 +163,7 @@
 #include <aws/medialive/model/ColorCorrectionSettings.h>
 #include <aws/medialive/model/ColorSpace.h>
 #include <aws/medialive/model/ColorSpacePassthroughSettings.h>
+#include <aws/medialive/model/ConnectionMode.h>
 #include <aws/medialive/model/ContentType.h>
 #include <aws/medialive/model/CreateChannelPlacementGroupRequest.h>
 #include <aws/medialive/model/CreateChannelPlacementGroupResult.h>
@@ -234,6 +243,8 @@
 #include <aws/medialive/model/DescribeClusterRequest.h>
 #include <aws/medialive/model/DescribeClusterSdkResult.h>
 #include <aws/medialive/model/DescribeClusterSummary.h>
+#include <aws/medialive/model/DescribeFollowerChannelSettings.h>
+#include <aws/medialive/model/DescribeInferenceSettings.h>
 #include <aws/medialive/model/DescribeInputDeviceRequest.h>
 #include <aws/medialive/model/DescribeInputDeviceResult.h>
 #include <aws/medialive/model/DescribeInputDeviceThumbnailRequest.h>
@@ -242,6 +253,7 @@
 #include <aws/medialive/model/DescribeInputResult.h>
 #include <aws/medialive/model/DescribeInputSecurityGroupRequest.h>
 #include <aws/medialive/model/DescribeInputSecurityGroupResult.h>
+#include <aws/medialive/model/DescribeLinkedChannelSettings.h>
 #include <aws/medialive/model/DescribeMultiplexProgramRequest.h>
 #include <aws/medialive/model/DescribeMultiplexProgramResult.h>
 #include <aws/medialive/model/DescribeMultiplexRequest.h>
@@ -254,6 +266,7 @@
 #include <aws/medialive/model/DescribeNodeSummary.h>
 #include <aws/medialive/model/DescribeOfferingRequest.h>
 #include <aws/medialive/model/DescribeOfferingResult.h>
+#include <aws/medialive/model/DescribePrimaryChannelSettings.h>
 #include <aws/medialive/model/DescribeReservationRequest.h>
 #include <aws/medialive/model/DescribeReservationResult.h>
 #include <aws/medialive/model/DescribeScheduleRequest.h>
@@ -264,6 +277,7 @@
 #include <aws/medialive/model/DescribeThumbnailsResult.h>
 #include <aws/medialive/model/DeviceSettingsSyncState.h>
 #include <aws/medialive/model/DeviceUpdateStatus.h>
+#include <aws/medialive/model/DisabledLockingSettings.h>
 #include <aws/medialive/model/DolbyEProgramSelection.h>
 #include <aws/medialive/model/DolbyVision81Settings.h>
 #include <aws/medialive/model/DvbDashAccessibility.h>
@@ -329,6 +343,7 @@
 #include <aws/medialive/model/Fmp4TimedMetadataBehavior.h>
 #include <aws/medialive/model/FollowModeScheduleActionStartSettings.h>
 #include <aws/medialive/model/FollowPoint.h>
+#include <aws/medialive/model/FollowerChannelSettings.h>
 #include <aws/medialive/model/FrameCaptureCdnSettings.h>
 #include <aws/medialive/model/FrameCaptureGroupSettings.h>
 #include <aws/medialive/model/FrameCaptureHlsSettings.h>
@@ -399,6 +414,7 @@
 #include <aws/medialive/model/H265TimecodeInsertionBehavior.h>
 #include <aws/medialive/model/H265TreeblockSize.h>
 #include <aws/medialive/model/Hdr10Settings.h>
+#include <aws/medialive/model/Hlg2020Settings.h>
 #include <aws/medialive/model/HlsAdMarkers.h>
 #include <aws/medialive/model/HlsAkamaiHttpTransferMode.h>
 #include <aws/medialive/model/HlsAkamaiSettings.h>
@@ -445,6 +461,7 @@
 #include <aws/medialive/model/Id3SegmentTaggingScheduleActionSettings.h>
 #include <aws/medialive/model/ImmediateModeScheduleActionStartSettings.h>
 #include <aws/medialive/model/IncludeFillerNalUnits.h>
+#include <aws/medialive/model/InferenceSettings.h>
 #include <aws/medialive/model/Input.h>
 #include <aws/medialive/model/InputAttachment.h>
 #include <aws/medialive/model/InputChannelLevel.h>
@@ -519,6 +536,10 @@
 #include <aws/medialive/model/IpPoolUpdateRequest.h>
 #include <aws/medialive/model/KeyProviderSettings.h>
 #include <aws/medialive/model/LastFrameClippingBehavior.h>
+#include <aws/medialive/model/LinkedChannelSettings.h>
+#include <aws/medialive/model/LinkedChannelType.h>
+#include <aws/medialive/model/ListAlertsRequest.h>
+#include <aws/medialive/model/ListAlertsResult.h>
 #include <aws/medialive/model/ListChannelPlacementGroupsRequest.h>
 #include <aws/medialive/model/ListChannelPlacementGroupsSdkResult.h>
 #include <aws/medialive/model/ListChannelsRequest.h>
@@ -527,6 +548,8 @@
 #include <aws/medialive/model/ListCloudWatchAlarmTemplateGroupsResult.h>
 #include <aws/medialive/model/ListCloudWatchAlarmTemplatesRequest.h>
 #include <aws/medialive/model/ListCloudWatchAlarmTemplatesResult.h>
+#include <aws/medialive/model/ListClusterAlertsRequest.h>
+#include <aws/medialive/model/ListClusterAlertsResult.h>
 #include <aws/medialive/model/ListClustersRequest.h>
 #include <aws/medialive/model/ListClustersSdkResult.h>
 #include <aws/medialive/model/ListEventBridgeRuleTemplateGroupsRequest.h>
@@ -541,6 +564,8 @@
 #include <aws/medialive/model/ListInputSecurityGroupsResult.h>
 #include <aws/medialive/model/ListInputsRequest.h>
 #include <aws/medialive/model/ListInputsResult.h>
+#include <aws/medialive/model/ListMultiplexAlertsRequest.h>
+#include <aws/medialive/model/ListMultiplexAlertsResult.h>
 #include <aws/medialive/model/ListMultiplexProgramsRequest.h>
 #include <aws/medialive/model/ListMultiplexProgramsResult.h>
 #include <aws/medialive/model/ListMultiplexesRequest.h>
@@ -594,6 +619,7 @@
 #include <aws/medialive/model/MaintenanceUpdateSettings.h>
 #include <aws/medialive/model/MediaConnectFlow.h>
 #include <aws/medialive/model/MediaConnectFlowRequest.h>
+#include <aws/medialive/model/MediaPackageAdditionalDestinations.h>
 #include <aws/medialive/model/MediaPackageGroupSettings.h>
 #include <aws/medialive/model/MediaPackageOutputDestinationSettings.h>
 #include <aws/medialive/model/MediaPackageOutputSettings.h>
@@ -630,6 +656,8 @@
 #include <aws/medialive/model/MulticastSourceCreateRequest.h>
 #include <aws/medialive/model/MulticastSourceUpdateRequest.h>
 #include <aws/medialive/model/Multiplex.h>
+#include <aws/medialive/model/MultiplexAlert.h>
+#include <aws/medialive/model/MultiplexAlertState.h>
 #include <aws/medialive/model/MultiplexContainerSettings.h>
 #include <aws/medialive/model/MultiplexGroupSettings.h>
 #include <aws/medialive/model/MultiplexM2tsSettings.h>
@@ -681,9 +709,11 @@
 #include <aws/medialive/model/PauseStateScheduleActionSettings.h>
 #include <aws/medialive/model/PipelineDetail.h>
 #include <aws/medialive/model/PipelineId.h>
+#include <aws/medialive/model/PipelineLockingMethod.h>
 #include <aws/medialive/model/PipelineLockingSettings.h>
 #include <aws/medialive/model/PipelinePauseStateSettings.h>
 #include <aws/medialive/model/PreferredChannelPipeline.h>
+#include <aws/medialive/model/PrimaryChannelSettings.h>
 #include <aws/medialive/model/PurchaseOfferingRequest.h>
 #include <aws/medialive/model/PurchaseOfferingResult.h>
 #include <aws/medialive/model/RawSettings.h>
@@ -712,6 +742,11 @@
 #include <aws/medialive/model/Route.h>
 #include <aws/medialive/model/RouteCreateRequest.h>
 #include <aws/medialive/model/RouteUpdateRequest.h>
+#include <aws/medialive/model/RouterDestination.h>
+#include <aws/medialive/model/RouterDestinationSettings.h>
+#include <aws/medialive/model/RouterEncryptionType.h>
+#include <aws/medialive/model/RouterInputSettings.h>
+#include <aws/medialive/model/RouterSettings.h>
 #include <aws/medialive/model/RtmpAdMarkers.h>
 #include <aws/medialive/model/RtmpCacheFullBehavior.h>
 #include <aws/medialive/model/RtmpCaptionData.h>
@@ -774,12 +809,17 @@
 #include <aws/medialive/model/Smpte2110ReceiverGroupSdpSettings.h>
 #include <aws/medialive/model/Smpte2110ReceiverGroupSettings.h>
 #include <aws/medialive/model/SmpteTtDestinationSettings.h>
+#include <aws/medialive/model/SpecialRouterSettings.h>
 #include <aws/medialive/model/SrtCallerDecryption.h>
 #include <aws/medialive/model/SrtCallerDecryptionRequest.h>
 #include <aws/medialive/model/SrtCallerSource.h>
 #include <aws/medialive/model/SrtCallerSourceRequest.h>
 #include <aws/medialive/model/SrtEncryptionType.h>
 #include <aws/medialive/model/SrtGroupSettings.h>
+#include <aws/medialive/model/SrtListenerDecryption.h>
+#include <aws/medialive/model/SrtListenerDecryptionRequest.h>
+#include <aws/medialive/model/SrtListenerSettings.h>
+#include <aws/medialive/model/SrtListenerSettingsRequest.h>
 #include <aws/medialive/model/SrtOutputDestinationSettings.h>
 #include <aws/medialive/model/SrtOutputSettings.h>
 #include <aws/medialive/model/SrtSettings.h>

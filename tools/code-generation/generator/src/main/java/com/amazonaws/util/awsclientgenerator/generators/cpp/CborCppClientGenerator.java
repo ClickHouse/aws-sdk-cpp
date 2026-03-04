@@ -71,6 +71,8 @@ public class CborCppClientGenerator extends CppClientGenerator {
                 } else {
                     template = velocityEngine.getTemplate("/com/amazonaws/util/awsclientgenerator/velocity/cpp/cbor/CborResultHeader.vm", StandardCharsets.UTF_8.name());
                 }
+            } else if (shape.isEventStream() && shape.isOutgoingEventStream()) {
+                template = velocityEngine.getTemplate("/com/amazonaws/util/awsclientgenerator/velocity/cpp/cbor/EventStreamHeader.vm", StandardCharsets.UTF_8.name());
             } else if (shape.isStructure()) {
                 template = velocityEngine.getTemplate("/com/amazonaws/util/awsclientgenerator/velocity/cpp/cbor/CborSubObjectHeader.vm", StandardCharsets.UTF_8.name());
             }
@@ -88,11 +90,6 @@ public class CborCppClientGenerator extends CppClientGenerator {
 
     @Override
     protected SdkFileEntry generateModelSourceFile(ServiceModel serviceModel, Map.Entry<String, Shape> shapeEntry, final Map<String, CppShapeInformation> shapeInformationCache) {
-        Map<String, String> cborSpecificHeaders = new HashMap<>();
-        cborSpecificHeaders.put("Accept", "application/cbor");
-        cborSpecificHeaders.put("smithy-protocol", "rpc-v2-cbor");
-        serviceModel.getMetadata().setAdditionalHeaders(cborSpecificHeaders);
-
         Shape shape = shapeEntry.getValue();
         if (shape.isResult() && shape.hasEventStreamMembers())
             return null;
@@ -120,15 +117,26 @@ public class CborCppClientGenerator extends CppClientGenerator {
             Template template;
             VelocityContext context = createContext(serviceModel);
 
+            context.put("operation", serviceModel.getOperationForRequestShapeName(shape.getName()));
+
             if (shape.isRequest() && (shape.hasStreamMembers() || shape.hasEventStreamMembers())) {
                 if (shape.hasEventStreamMembers()) {
                     HashMap<String, String> headersMap = new HashMap<>(10);
                     headersMap.put("Aws::Http::CONTENT_TYPE_HEADER", "Aws::AMZN_EVENTSTREAM_CONTENT_TYPE");
+                    headersMap.put("Aws::Http::ACCEPT_HEADER", "Aws::AMZN_EVENTSTREAM_CONTENT_TYPE");
+                    headersMap.put("Aws::Http::SMITHY_PROTOCOL_HEADER", "Aws::RPC_V2_CBOR");
                     context.put("requestSpecificHeaders", headersMap);
                 }
                 template = velocityEngine.getTemplate("/com/amazonaws/util/awsclientgenerator/velocity/cpp/StreamRequestSource.vm", StandardCharsets.UTF_8.name());
             }
             else if (shape.isRequest()) {
+                Map<String, String> cborSpecificHeaders = new HashMap<>();
+                cborSpecificHeaders.put("Aws::Http::ACCEPT_HEADER", "Aws::CBOR_CONTENT_TYPE");
+                cborSpecificHeaders.put("Aws::Http::SMITHY_PROTOCOL_HEADER", "Aws::RPC_V2_CBOR");
+                if(shape.hasMembers()){
+                    cborSpecificHeaders.put("Aws::Http::CONTENT_TYPE_HEADER", "Aws::CBOR_CONTENT_TYPE");
+                }
+                context.put("requestSpecificHeaders", cborSpecificHeaders);
                 template = velocityEngine.getTemplate("/com/amazonaws/util/awsclientgenerator/velocity/cpp/cbor/CborRequestSource.vm", StandardCharsets.UTF_8.name());
             }
             else if (shape.isResult() && shape.hasStreamMembers()) {
@@ -140,7 +148,6 @@ public class CborCppClientGenerator extends CppClientGenerator {
                 template = velocityEngine.getTemplate("/com/amazonaws/util/awsclientgenerator/velocity/cpp/cbor/CborSubObjectSource.vm", StandardCharsets.UTF_8.name());
             }
 
-            context.put("operation", serviceModel.getOperationForRequestShapeName(shape.getName()));
             context.put("shape", shape);
             context.put("typeInfo", new CppShapeInformation(shape, serviceModel));
             context.put("CppViewHelper", CppCborViewHelper.class);
@@ -190,6 +197,33 @@ public class CborCppClientGenerator extends CppClientGenerator {
 
     @Override
     protected SdkFileEntry generateEventStreamHandlerSourceFile(ServiceModel serviceModel, Map.Entry<String, Shape> shapeEntry, final Map<String, CppShapeInformation> shapeInformationCache) {
-        throw new RuntimeException("Event stream handlers are not currently implemented for CBOR");
+        Shape shape = shapeEntry.getValue();
+        if (shape.isRequest()) {
+            Template template = velocityEngine.getTemplate("/com/amazonaws/util/awsclientgenerator/velocity/cpp/cbor/CborEventStreamHandlerSource.vm", StandardCharsets.UTF_8.name());
+            VelocityContext context = createContext(serviceModel);
+
+            for (Map.Entry<String, Operation> opEntry : serviceModel.getOperations().entrySet()) {
+                String key = opEntry.getKey();
+                Operation op = opEntry.getValue();
+                if (op.getRequest() != null && op.getRequest().getShape().getName() == shape.getName() && op.getResult() != null) {
+                    if (op.getResult().getShape().hasEventStreamMembers()) {
+                        for (Map.Entry<String, ShapeMember> shapeMemberEntry : op.getResult().getShape().getMembers().entrySet()) {
+                            if (shapeMemberEntry.getValue().getShape().isEventStream()) {
+                                context.put("eventStreamShape", shapeMemberEntry.getValue().getShape());
+                                context.put("operation", op);
+                                context.put("shape", shape);
+                                context.put("typeInfo", shapeInformationCache.get(shape.getName()));
+                                context.put("CppViewHelper", CppViewHelper.class);
+
+                                String fileName = String.format("source/model/%sHandler.cpp", key);
+                                return makeFile(template, context, fileName, true);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return null;
     }
 }

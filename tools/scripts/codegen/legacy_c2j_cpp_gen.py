@@ -21,7 +21,13 @@ from codegen.model_utils import ServiceModel
 
 SMITHY_SUPPORTED_CLIENTS = [
     "dynamodb",
-    #"s3"
+    "bedrock",
+    "bedrock-runtime",
+    "bedrock-agent",
+    "bedrock-agent-runtime",
+    "bedrock-data-automation",
+    "bedrock-data-automation-runtime"
+    #"s3",
 ]
 
 # Default configuration variables
@@ -76,6 +82,8 @@ class LegacyC2jCppGen(object):
 
         self.raw_generator_arguments = args["raw_generator_arguments"]
         self.output_location = args["output_location"]
+        self.disable_virtual_operations = args.get("disable_virtual_operations", False)
+        self.disable_smithy_generation = args.get("disable_smithy_generation", False)
 
     def generate(self, executor: ProcessPoolExecutor, max_workers: int, args: dict) -> int:
         """
@@ -141,6 +149,7 @@ class LegacyC2jCppGen(object):
             return -1
 
         print(f"Code generation done, (re)generated {len(done)} packages.")  # Including defaults and partitions
+        
         return 0
 
     def _init_common_java_cli(self,
@@ -153,8 +162,10 @@ class LegacyC2jCppGen(object):
         # raw arguments to be passed from Py wrapper to the actual generator
         if not kwargs.get("language-binding"):
             kwargs["language-binding"] = "cpp"  # Always cpp by default in the current code gen
-        if not kwargs.get("enable-virtual-operations"):
+        if not self.disable_virtual_operations:
             kwargs["enable-virtual-operations"] = ""  # Historically always set by default in this project
+        if self.disable_smithy_generation:
+            kwargs["disable-smithy-generation"] = ""  # Disables smithy-based generation in c2j generator
 
         if tmp_dir:
             output_filename = f"{tmp_dir}/{model_files.c2j_model.replace('.normal.json', '.zip')}"

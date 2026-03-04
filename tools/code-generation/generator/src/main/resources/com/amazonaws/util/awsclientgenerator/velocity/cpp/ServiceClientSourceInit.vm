@@ -62,7 +62,7 @@
 #if($metadata.hasEndpointDiscoveryTrait && !$serviceModel.endpointRules)
 #set($AdditionalServiceSpecificConfigLoadString = "Load${metadata.classNamePrefix}SpecificConfig(config);")
 #end
-#set($clientConfigurationNamespace = "Client")
+#set($clientConfigurationNamespace = "Aws::Client")
 #set($defaultCredentialsProviderChainParam = "Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG, clientConfiguration.credentialProviderConfig)")
 #set($s3ExpressIdentityProviderParam = "clientConfiguration.identityProviderSupplier(*this)")
 #set($simpleCredentialsProviderParam = "Aws::MakeShared<SimpleAWSCredentialsProvider>(ALLOCATION_TAG, credentials)")
@@ -346,7 +346,7 @@ void ${className}::init(const ${clientConfigurationCls}& config)
   }
 #if($serviceModel.endpointRules)
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
-  m_endpointProvider->InitBuiltInParameters(config);
+  m_endpointProvider->InitBuiltInParameters(config, "${metadata.signingName}");
 #if($AdditionalServiceSpecificConfigLoadString)
   ${AdditionalServiceSpecificConfigLoadString}
 #end##if($AdditionalServiceSpecificConfigLoadString)
@@ -449,6 +449,7 @@ void ${className}::OverrideEndpoint(const Aws::String& endpoint)
 {
 #if($serviceModel.endpointRules)
   AWS_CHECK_PTR(SERVICE_NAME, m_endpointProvider);
+  m_clientConfiguration.endpointOverride = endpoint;
   m_endpointProvider->OverrideEndpoint(endpoint);
 #else##-#if($serviceModel.endpointRules)
 #if($virtualAddressingSupported || $arnEndpointSupported || $metadata.hasEndpointTrait)

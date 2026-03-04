@@ -46,6 +46,7 @@
 
 #include <smithy/tracing/TracingUtils.h>
 #include <smithy/client/features/ChecksumInterceptor.h>
+#include <smithy/client/features/ChunkingInterceptor.h>
 
 #include <cstring>
 #include <cassert>
@@ -136,7 +137,10 @@ AWSClient::AWSClient(const Aws::Client::ClientConfiguration& configuration,
     m_enableClockSkewAdjustment(configuration.enableClockSkewAdjustment),
     m_requestCompressionConfig(configuration.requestCompressionConfig),
     m_userAgentInterceptor{Aws::MakeShared<smithy::client::UserAgentInterceptor>(AWS_CLIENT_LOG_TAG, configuration, m_retryStrategy->GetStrategyName(), m_serviceName)},
-    m_interceptors{Aws::MakeShared<smithy::client::ChecksumInterceptor>(AWS_CLIENT_LOG_TAG), m_userAgentInterceptor}
+    m_interceptors{Aws::MakeShared<smithy::client::ChecksumInterceptor>(AWS_CLIENT_LOG_TAG), Aws::MakeShared<smithy::client::features::ChunkingInterceptor>(AWS_CLIENT_LOG_TAG, 
+        m_httpClient->IsDefaultAwsHttpClient() ? Aws::Client::HttpClientChunkedMode::DEFAULT : configuration.httpClientChunkedMode,
+        configuration.awsChunkedBufferSize),
+    m_userAgentInterceptor}
 {
 }
 
@@ -159,7 +163,10 @@ AWSClient::AWSClient(const Aws::Client::ClientConfiguration& configuration,
     m_enableClockSkewAdjustment(configuration.enableClockSkewAdjustment),
     m_requestCompressionConfig(configuration.requestCompressionConfig),
     m_userAgentInterceptor{Aws::MakeShared<smithy::client::UserAgentInterceptor>(AWS_CLIENT_LOG_TAG, configuration, m_retryStrategy->GetStrategyName(), m_serviceName)},
-    m_interceptors{Aws::MakeShared<smithy::client::ChecksumInterceptor>(AWS_CLIENT_LOG_TAG, configuration), m_userAgentInterceptor}
+    m_interceptors{Aws::MakeShared<smithy::client::ChecksumInterceptor>(AWS_CLIENT_LOG_TAG, configuration), Aws::MakeShared<smithy::client::features::ChunkingInterceptor>(AWS_CLIENT_LOG_TAG, 
+        m_httpClient->IsDefaultAwsHttpClient() ? Aws::Client::HttpClientChunkedMode::DEFAULT : configuration.httpClientChunkedMode,
+        configuration.awsChunkedBufferSize),
+    m_userAgentInterceptor}
 {
 }
 
@@ -363,6 +370,17 @@ HttpResponseOutcome AWSClient::AttemptExhaustively(const Aws::Http::URI& uri,
         AWS_LOGSTREAM_WARN(AWS_CLIENT_LOG_TAG, "Request failed, now waiting " << sleepMillis << " ms before attempting again.");
         if(request.GetBody())
         {
+            if (request.GetBody()->tellg() == EOF) {
+              // Save checksum information from the original request if we haven't already and stream is finalized
+              RetryContext context = request.GetRetryContext();
+              if (context.m_requestHash == nullptr) {
+                auto originalRequestHash = httpRequest->GetRequestHash();
+                if (originalRequestHash.second != nullptr) {
+                  context.m_requestHash = Aws::MakeShared<std::pair<Aws::String, std::shared_ptr<Aws::Utils::Crypto::Hash>>>(AWS_CLIENT_LOG_TAG, originalRequestHash);
+                  request.SetRetryContext(context);
+                }
+              }
+            }
             request.GetBody()->clear();
             request.GetBody()->seekg(0);
         }
@@ -382,16 +400,6 @@ HttpResponseOutcome AWSClient::AttemptExhaustively(const Aws::Http::URI& uri,
         if (!newEndpoint.empty())
         {
             newUri.SetAuthority(newEndpoint);
-        }
-
-        // Save checksum information from the original request if we haven't already - safe to assume that the checksum has been finalized, since we have sent and received a response
-        RetryContext context = request.GetRetryContext();
-        if (context.m_requestHash == nullptr) {
-          auto originalRequestHash = httpRequest->GetRequestHash();
-          if (originalRequestHash.second != nullptr) {
-            context.m_requestHash = Aws::MakeShared<std::pair<Aws::String, std::shared_ptr<Aws::Utils::Crypto::Hash>>>(AWS_CLIENT_LOG_TAG, originalRequestHash);
-            request.SetRetryContext(context);
-          }
         }
 
         httpRequest = CreateHttpRequest(newUri, method, request.GetResponseStreamFactory());
@@ -561,6 +569,7 @@ HttpResponseOutcome AWSClient::AttemptOneRequest(const std::shared_ptr<Aws::Http
 
     InterceptorContext context{request};
     context.SetTransmitRequest(httpRequest);
+    context.SetAttribute("signer_name", signerName);
     for (const auto& interceptor : m_interceptors)
     {
         const auto modifiedRequest = interceptor->ModifyBeforeSigning(context);
@@ -586,6 +595,13 @@ HttpResponseOutcome AWSClient::AttemptOneRequest(const std::shared_ptr<Aws::Http
     if (request.GetRequestSignedHandler())
     {
         request.GetRequestSignedHandler()(*httpRequest);
+    }
+
+    for (const auto& interceptor : m_interceptors) {
+      const auto modifiedRequest = interceptor->ModifyBeforeTransmit(context);
+      if (!modifiedRequest.IsSuccess()) {
+        return modifiedRequest.GetError();
+      }
     }
 
     AWS_LOGSTREAM_DEBUG(AWS_CLIENT_LOG_TAG, "Request Successfully signed");
@@ -967,6 +983,11 @@ void AWSClient::BuildHttpRequest(const Aws::AmazonWebServiceRequest& request, co
         } else {
             AddContentBodyToRequest(httpRequest, request.GetBody(), request.ShouldComputeContentMd5(), request.IsStreaming() && request.IsChunked() && m_httpClient->SupportsChunkedTransferEncoding());
         }
+    }
+
+    if (httpRequest->HasHeader(Aws::Http::SMITHY_PROTOCOL_HEADER))
+    {
+        request.AddUserAgentFeature(Aws::Client::UserAgentFeature::PROTOCOL_RPC_V2_CBOR);
     }
 
     // Pass along handlers for processing data sent/received in bytes

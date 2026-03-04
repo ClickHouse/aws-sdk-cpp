@@ -38,6 +38,9 @@
 #include <aws/connectcases/model/CommentBodyTextType.h>
 #include <aws/connectcases/model/CommentContent.h>
 #include <aws/connectcases/model/CommentFilter.h>
+#include <aws/connectcases/model/ConnectCaseContent.h>
+#include <aws/connectcases/model/ConnectCaseFilter.h>
+#include <aws/connectcases/model/ConnectCaseInputContent.h>
 #include <aws/connectcases/model/Contact.h>
 #include <aws/connectcases/model/ContactContent.h>
 #include <aws/connectcases/model/ContactFilter.h>
@@ -55,6 +58,10 @@
 #include <aws/connectcases/model/CreateRelatedItemResult.h>
 #include <aws/connectcases/model/CreateTemplateRequest.h>
 #include <aws/connectcases/model/CreateTemplateResult.h>
+#include <aws/connectcases/model/CustomContent.h>
+#include <aws/connectcases/model/CustomFieldsFilter.h>
+#include <aws/connectcases/model/CustomFilter.h>
+#include <aws/connectcases/model/CustomInputContent.h>
 #include <aws/connectcases/model/DeleteCaseRequest.h>
 #include <aws/connectcases/model/DeleteCaseResult.h>
 #include <aws/connectcases/model/DeleteCaseRuleRequest.h>
@@ -75,6 +82,7 @@
 #include <aws/connectcases/model/EmptyOperandValue.h>
 #include <aws/connectcases/model/EventBridgeConfiguration.h>
 #include <aws/connectcases/model/EventIncludedData.h>
+#include <aws/connectcases/model/FieldAttributes.h>
 #include <aws/connectcases/model/FieldError.h>
 #include <aws/connectcases/model/FieldFilter.h>
 #include <aws/connectcases/model/FieldGroup.h>
@@ -83,6 +91,7 @@
 #include <aws/connectcases/model/FieldNamespace.h>
 #include <aws/connectcases/model/FieldOption.h>
 #include <aws/connectcases/model/FieldOptionError.h>
+#include <aws/connectcases/model/FieldOptionsCaseRule.h>
 #include <aws/connectcases/model/FieldSummary.h>
 #include <aws/connectcases/model/FieldType.h>
 #include <aws/connectcases/model/FieldValue.h>
@@ -103,6 +112,7 @@
 #include <aws/connectcases/model/GetLayoutResult.h>
 #include <aws/connectcases/model/GetTemplateRequest.h>
 #include <aws/connectcases/model/GetTemplateResult.h>
+#include <aws/connectcases/model/HiddenCaseRule.h>
 #include <aws/connectcases/model/InternalServerException.h>
 #include <aws/connectcases/model/LayoutConfiguration.h>
 #include <aws/connectcases/model/LayoutContent.h>
@@ -127,6 +137,7 @@
 #include <aws/connectcases/model/OperandOne.h>
 #include <aws/connectcases/model/OperandTwo.h>
 #include <aws/connectcases/model/Order.h>
+#include <aws/connectcases/model/ParentChildFieldOptionsMapping.h>
 #include <aws/connectcases/model/PutCaseEventConfigurationRequest.h>
 #include <aws/connectcases/model/PutCaseEventConfigurationResult.h>
 #include <aws/connectcases/model/RelatedItemContent.h>
@@ -138,6 +149,11 @@
 #include <aws/connectcases/model/RequiredField.h>
 #include <aws/connectcases/model/ResourceNotFoundException.h>
 #include <aws/connectcases/model/RuleType.h>
+#include <aws/connectcases/model/SearchAllRelatedItemsRequest.h>
+#include <aws/connectcases/model/SearchAllRelatedItemsResponseItem.h>
+#include <aws/connectcases/model/SearchAllRelatedItemsResult.h>
+#include <aws/connectcases/model/SearchAllRelatedItemsSort.h>
+#include <aws/connectcases/model/SearchAllRelatedItemsSortProperty.h>
 #include <aws/connectcases/model/SearchCasesRequest.h>
 #include <aws/connectcases/model/SearchCasesResponseItem.h>
 #include <aws/connectcases/model/SearchCasesResult.h>
@@ -153,10 +169,15 @@
 #include <aws/connectcases/model/SlaStatus.h>
 #include <aws/connectcases/model/SlaType.h>
 #include <aws/connectcases/model/Sort.h>
+#include <aws/connectcases/model/TagFilter.h>
+#include <aws/connectcases/model/TagPropagationConfiguration.h>
+#include <aws/connectcases/model/TagPropagationResourceType.h>
 #include <aws/connectcases/model/TagResourceRequest.h>
+#include <aws/connectcases/model/TagValue.h>
 #include <aws/connectcases/model/TemplateRule.h>
 #include <aws/connectcases/model/TemplateStatus.h>
 #include <aws/connectcases/model/TemplateSummary.h>
+#include <aws/connectcases/model/TextAttributes.h>
 #include <aws/connectcases/model/UntagResourceRequest.h>
 #include <aws/connectcases/model/UpdateCaseRequest.h>
 #include <aws/connectcases/model/UpdateCaseResult.h>

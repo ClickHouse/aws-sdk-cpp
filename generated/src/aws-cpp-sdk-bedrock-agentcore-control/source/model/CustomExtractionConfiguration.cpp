@@ -11,52 +11,46 @@
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-namespace Aws
-{
-namespace BedrockAgentCoreControl
-{
-namespace Model
-{
+namespace Aws {
+namespace BedrockAgentCoreControl {
+namespace Model {
 
-CustomExtractionConfiguration::CustomExtractionConfiguration(JsonView jsonValue)
-{
-  *this = jsonValue;
-}
+CustomExtractionConfiguration::CustomExtractionConfiguration(JsonView jsonValue) { *this = jsonValue; }
 
-CustomExtractionConfiguration& CustomExtractionConfiguration::operator =(JsonView jsonValue)
-{
-  if(jsonValue.ValueExists("semanticExtractionOverride"))
-  {
+CustomExtractionConfiguration& CustomExtractionConfiguration::operator=(JsonView jsonValue) {
+  if (jsonValue.ValueExists("semanticExtractionOverride")) {
     m_semanticExtractionOverride = jsonValue.GetObject("semanticExtractionOverride");
     m_semanticExtractionOverrideHasBeenSet = true;
   }
-  if(jsonValue.ValueExists("userPreferenceExtractionOverride"))
-  {
+  if (jsonValue.ValueExists("userPreferenceExtractionOverride")) {
     m_userPreferenceExtractionOverride = jsonValue.GetObject("userPreferenceExtractionOverride");
     m_userPreferenceExtractionOverrideHasBeenSet = true;
+  }
+  if (jsonValue.ValueExists("episodicExtractionOverride")) {
+    m_episodicExtractionOverride = jsonValue.GetObject("episodicExtractionOverride");
+    m_episodicExtractionOverrideHasBeenSet = true;
   }
   return *this;
 }
 
-JsonValue CustomExtractionConfiguration::Jsonize() const
-{
+JsonValue CustomExtractionConfiguration::Jsonize() const {
   JsonValue payload;
 
-  if(m_semanticExtractionOverrideHasBeenSet)
-  {
-   payload.WithObject("semanticExtractionOverride", m_semanticExtractionOverride.Jsonize());
-
+  if (m_semanticExtractionOverrideHasBeenSet) {
+    payload.WithObject("semanticExtractionOverride", m_semanticExtractionOverride.Jsonize());
   }
 
-  if(m_userPreferenceExtractionOverrideHasBeenSet)
-  {
-   payload.WithObject("userPreferenceExtractionOverride", m_userPreferenceExtractionOverride.Jsonize());
+  if (m_userPreferenceExtractionOverrideHasBeenSet) {
+    payload.WithObject("userPreferenceExtractionOverride", m_userPreferenceExtractionOverride.Jsonize());
+  }
 
+  if (m_episodicExtractionOverrideHasBeenSet) {
+    payload.WithObject("episodicExtractionOverride", m_episodicExtractionOverride.Jsonize());
   }
 
   return payload;
 }
 
-} // namespace Model
-} // namespace BedrockAgentCoreControl
-} // namespace Aws
+}  // namespace Model
+}  // namespace BedrockAgentCoreControl
+}  // namespace Aws

@@ -30,6 +30,7 @@
 #include <aws/verifiedpermissions/model/BatchIsAuthorizedWithTokenOutputItem.h>
 #include <aws/verifiedpermissions/model/BatchIsAuthorizedWithTokenRequest.h>
 #include <aws/verifiedpermissions/model/BatchIsAuthorizedWithTokenResult.h>
+#include <aws/verifiedpermissions/model/CedarTagValue.h>
 #include <aws/verifiedpermissions/model/CedarVersion.h>
 #include <aws/verifiedpermissions/model/CognitoGroupConfiguration.h>
 #include <aws/verifiedpermissions/model/CognitoGroupConfigurationDetail.h>
@@ -61,6 +62,8 @@
 #include <aws/verifiedpermissions/model/DeletePolicyTemplateResult.h>
 #include <aws/verifiedpermissions/model/DeletionProtection.h>
 #include <aws/verifiedpermissions/model/DeterminingPolicyItem.h>
+#include <aws/verifiedpermissions/model/EncryptionSettings.h>
+#include <aws/verifiedpermissions/model/EncryptionState.h>
 #include <aws/verifiedpermissions/model/EntitiesDefinition.h>
 #include <aws/verifiedpermissions/model/EntityIdentifier.h>
 #include <aws/verifiedpermissions/model/EntityItem.h>
@@ -82,6 +85,8 @@
 #include <aws/verifiedpermissions/model/IsAuthorizedResult.h>
 #include <aws/verifiedpermissions/model/IsAuthorizedWithTokenRequest.h>
 #include <aws/verifiedpermissions/model/IsAuthorizedWithTokenResult.h>
+#include <aws/verifiedpermissions/model/KmsEncryptionSettings.h>
+#include <aws/verifiedpermissions/model/KmsEncryptionState.h>
 #include <aws/verifiedpermissions/model/ListIdentitySourcesRequest.h>
 #include <aws/verifiedpermissions/model/ListIdentitySourcesResult.h>
 #include <aws/verifiedpermissions/model/ListPoliciesRequest.h>
@@ -133,6 +138,7 @@
 #include <aws/verifiedpermissions/model/TemplateLinkedPolicyDefinitionItem.h>
 #include <aws/verifiedpermissions/model/ThrottlingException.h>
 #include <aws/verifiedpermissions/model/TooManyTagsException.h>
+#include <aws/verifiedpermissions/model/Unit.h>
 #include <aws/verifiedpermissions/model/UntagResourceRequest.h>
 #include <aws/verifiedpermissions/model/UntagResourceResult.h>
 #include <aws/verifiedpermissions/model/UpdateCognitoGroupConfiguration.h>

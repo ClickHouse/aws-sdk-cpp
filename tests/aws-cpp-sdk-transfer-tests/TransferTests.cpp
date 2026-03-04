@@ -9,6 +9,7 @@
 #include <aws/s3/S3Client.h>
 #include <aws/s3/model/DeleteObjectsRequest.h>
 #include <aws/s3/model/AbortMultipartUploadRequest.h>
+#include <aws/s3/model/CompleteMultipartUploadRequest.h>
 #include <aws/s3/model/ListObjectsRequest.h>
 #include <aws/s3/model/ListMultipartUploadsRequest.h>
 #include <aws/s3/model/GetObjectRequest.h>
@@ -158,6 +159,21 @@ public:
         EXPECT_STREQ("nestedTest", request.GetPrefix().c_str());
         listObjectsV2RequestCount++;
         return S3Client::ListObjectsV2(request);
+    }
+
+    // Override to verify checksum is being sent
+    Model::CompleteMultipartUploadOutcome CompleteMultipartUpload(const Model::CompleteMultipartUploadRequest& request) const override
+    {
+        AWS_LOGSTREAM_INFO("TransferTests", "=== CompleteMultipartUpload Request ===");
+        AWS_LOGSTREAM_INFO("TransferTests", "Available ChecksumAlgorithm enum values:");
+        AWS_LOGSTREAM_INFO("TransferTests", "ChecksumType: " << (int)request.GetChecksumType());
+        AWS_LOGSTREAM_INFO("TransferTests", "ChecksumCRC32: " << request.GetChecksumCRC32());
+        AWS_LOGSTREAM_INFO("TransferTests", "ChecksumCRC32C: " << request.GetChecksumCRC32C());
+        AWS_LOGSTREAM_INFO("TransferTests", "ChecksumCRC64NVME: " << request.GetChecksumCRC64NVME());
+        AWS_LOGSTREAM_INFO("TransferTests", "ChecksumSHA1: " << request.GetChecksumSHA1());
+        AWS_LOGSTREAM_INFO("TransferTests", "ChecksumSHA256: " << request.GetChecksumSHA256());
+        AWS_LOGSTREAM_INFO("TransferTests", "=======================================");
+        return S3Client::CompleteMultipartUpload(request);
     }
 
     // m_executor in Base class is private, we need our own one.
@@ -2326,6 +2342,40 @@ TEST_P(TransferTests, TransferManager_TestRelativePrefix)
         ASSERT_EQ(TC_ENTRY.expectedIsWithinParentDirectory, actualResult)
             << (TC_ENTRY.expectedIsWithinParentDirectory ? "EXPECTED \"" : "NOT EXPECTED \"") << osNormalizedFilePath << "\" to be found in \"" << osNormalizedParentDir << "\"";
     }
+}
+
+TEST_P(TransferTests, TransferManager_ContentRangeVerificationTest)
+{
+    const Aws::String RandomFileName = Aws::Utils::UUID::RandomUUID();
+    Aws::String testFileName = MakeFilePath(RandomFileName.c_str());
+    ScopedTestFile testFile(testFileName, MEDIUM_TEST_SIZE, testString);
+
+    TransferManagerConfiguration transferManagerConfig(m_executor.get());
+    transferManagerConfig.s3Client = m_s3Clients[GetParam()];
+    auto transferManager = TransferManager::Create(transferManagerConfig);
+
+    std::shared_ptr<TransferHandle> uploadPtr = transferManager->UploadFile(testFileName, GetTestBucketName(), RandomFileName, "text/plain", Aws::Map<Aws::String, Aws::String>());
+    uploadPtr->WaitUntilFinished();
+    ASSERT_EQ(TransferStatus::COMPLETED, uploadPtr->GetStatus());
+    ASSERT_TRUE(WaitForObjectToPropagate(GetTestBucketName(), RandomFileName.c_str()));
+
+    auto downloadFileName = MakeDownloadFileName(RandomFileName);
+    auto createStreamFn = [=](){
+#ifdef _MSC_VER
+        return Aws::New<Aws::FStream>(ALLOCATION_TAG, Aws::Utils::StringUtils::ToWString(downloadFileName.c_str()).c_str(), std::ios_base::out | std::ios_base::in | std::ios_base::binary | std::ios_base::trunc);
+#else
+        return Aws::New<Aws::FStream>(ALLOCATION_TAG, downloadFileName.c_str(), std::ios_base::out | std::ios_base::in | std::ios_base::binary | std::ios_base::trunc);
+#endif
+    };
+
+    uint64_t offset = 1024;
+    uint64_t partSize = 2048;
+    std::shared_ptr<TransferHandle> downloadPtr = transferManager->DownloadFile(GetTestBucketName(), RandomFileName, offset, partSize, createStreamFn);
+    
+    downloadPtr->WaitUntilFinished();
+    ASSERT_EQ(TransferStatus::COMPLETED, downloadPtr->GetStatus());
+    ASSERT_EQ(partSize, downloadPtr->GetBytesTotalSize());
+    ASSERT_EQ(partSize, downloadPtr->GetBytesTransferred());
 }
 
 INSTANTIATE_TEST_SUITE_P(Https, TransferTests, testing::Values(TestType::Https));

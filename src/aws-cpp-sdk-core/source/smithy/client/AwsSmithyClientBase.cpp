@@ -22,9 +22,10 @@
 #include <aws/core/utils/threading/Executor.h>
 #include <aws/core/utils/threading/SameThreadExecutor.h>
 #include <aws/crt/Variant.h>
-
+#include <smithy/identity/auth/built-in/GenericAuthSchemeResolver.h>
 
 using namespace smithy::client;
+using namespace smithy::client::features;
 using namespace smithy::interceptor;
 using namespace smithy::components::tracing;
 
@@ -102,7 +103,13 @@ void AwsSmithyClientBase::baseCopyAssign(const AwsSmithyClientBase& other,
   m_serviceUserAgentName = other.m_serviceUserAgentName;
   m_httpClient = std::move(httpClient);
   m_errorMarshaller = std::move(errorMarshaller);
-  m_interceptors = Aws::Vector<std::shared_ptr<interceptor::Interceptor>>{Aws::MakeShared<ChecksumInterceptor>("AwsSmithyClientBase")};
+  
+  m_interceptors = Aws::Vector<std::shared_ptr<interceptor::Interceptor>>{
+      Aws::MakeShared<ChecksumInterceptor>("AwsSmithyClientBase", *m_clientConfig),
+      Aws::MakeShared<features::ChunkingInterceptor>("AwsSmithyClientBase", 
+          m_httpClient->IsDefaultAwsHttpClient() ? Aws::Client::HttpClientChunkedMode::DEFAULT : m_clientConfig->httpClientChunkedMode,
+          m_clientConfig->awsChunkedBufferSize)
+  };
 
   baseCopyInit();
 }
@@ -201,8 +208,12 @@ bool AwsSmithyClientBase::ResolveIdentityAuth(
       responseHandler(std::move(identityOutcome));
       return false;
     }
-    
+    for (auto feature : identityOutcome.GetResult()->GetUserAgentFeatures()) {
+       pRequestCtx->m_pRequest->AddUserAgentFeature(feature);
+    }
     pRequestCtx->m_awsIdentity = std::move(identityOutcome.GetResultWithOwnership());
+
+
 
     // get endpoint params from operation context
     const auto contextEndpointParameters = this->GetContextEndpointParameters(*pRequestCtx);
@@ -246,6 +257,7 @@ void AwsSmithyClientBase::MakeRequestAsync(Aws::AmazonWebServiceRequest const* c
                                            Aws::Http::HttpMethod method,
                                            EndpointUpdateCallback&& endpointCallback,
                                            ResponseHandlerFunc&& responseHandler,
+                                           AuthResolvedCallback&& authCallback,
                                            std::shared_ptr<Aws::Utils::Threading::Executor> pExecutor) const
 {
     if(!responseHandler)
@@ -254,9 +266,9 @@ void AwsSmithyClientBase::MakeRequestAsync(Aws::AmazonWebServiceRequest const* c
         AWS_LOGSTREAM_FATAL(AWS_SMITHY_CLIENT_LOG, "Unable to continue AWSClient request: response handler is missing!");
         return;
     }
-
+    auto authResolver = request->GetRequestSpecificSupportedAuth().empty() ? nullptr : Aws::MakeShared<GenericAuthSchemeResolver<>>(AWS_SMITHY_CLIENT_LOG, request->GetRequestSpecificSupportedAuth());
     std::shared_ptr<AwsSmithyClientAsyncRequestContext> pRequestCtx =
-        Aws::MakeShared<AwsSmithyClientAsyncRequestContext>(AWS_SMITHY_CLIENT_LOG, request, requestName, pExecutor );
+        Aws::MakeShared<AwsSmithyClientAsyncRequestContext>(AWS_SMITHY_CLIENT_LOG, request, requestName, pExecutor, authResolver);
     if (!pRequestCtx)
     {
         AWS_LOGSTREAM_ERROR(AWS_SMITHY_CLIENT_LOG, "Failed to allocate an AwsSmithyClientAsyncRequestContext under a shared ptr");
@@ -288,6 +300,7 @@ void AwsSmithyClientBase::MakeRequestAsync(Aws::AmazonWebServiceRequest const* c
     pRequestCtx->m_requestInfo.maxAttempts = 0;
     pRequestCtx->m_interceptorContext = Aws::MakeShared<InterceptorContext>(AWS_SMITHY_CLIENT_LOG, *request);
     pRequestCtx->m_responseHandler = std::move(responseHandler);
+    pRequestCtx->m_authResolvedCallback = std::move(authCallback);
     AttemptOneRequestAsync(std::move(pRequestCtx));
 }
 
@@ -321,6 +334,7 @@ void AwsSmithyClientBase::AttemptOneRequestAsync(std::shared_ptr<AwsSmithyClient
         AWS_LOGSTREAM_FATAL(AWS_SMITHY_CLIENT_LOG, "Missing request context!");
     }
     auto& responseHandler = pRequestCtx->m_responseHandler;
+    auto& authCallback = pRequestCtx->m_authResolvedCallback;
     auto pExecutor = pRequestCtx->m_pExecutor;
 
     //This is extracted here so that on retry with correct region, signer region override is honored
@@ -377,7 +391,9 @@ void AwsSmithyClientBase::AttemptOneRequestAsync(std::shared_ptr<AwsSmithyClient
           } );
         return;
     };
-
+    if (authCallback) {
+      authCallback(pRequestCtx);
+    }
     SigningOutcome signingOutcome = TracingUtils::MakeCallWithTiming<SigningOutcome>([&]() -> SigningOutcome {
             return this->SignHttpRequest(pRequestCtx->m_httpRequest, *pRequestCtx);
         },
@@ -410,6 +426,19 @@ void AwsSmithyClientBase::AttemptOneRequestAsync(std::shared_ptr<AwsSmithyClient
     {
         HandleAsyncReply(std::move(pRequestCtx), std::move(pResponse));
     };
+
+    for (const auto& interceptor : m_interceptors)
+    {
+      auto modifiedRequest = interceptor->ModifyBeforeTransmit(*pRequestCtx->m_interceptorContext);
+      if (!modifiedRequest.IsSuccess())
+      {
+        pExecutor->Submit([modifiedRequest, responseHandler]() mutable
+          {
+              responseHandler(modifiedRequest.GetError());
+          });
+        return;
+      }
+    }
 
     // TODO: async http client
 #if 0
@@ -635,7 +664,8 @@ AwsSmithyClientBase::HttpResponseOutcome
 AwsSmithyClientBase::MakeRequestSync(Aws::AmazonWebServiceRequest const * const request,
                                      const char* requestName,
                                      Aws::Http::HttpMethod method,
-                                     EndpointUpdateCallback&& endpointCallback) const
+                                     EndpointUpdateCallback&& endpointCallback,
+                                     AuthResolvedCallback&& authCallback = nullptr) const
 {
     std::shared_ptr<Aws::Utils::Threading::Executor> pExecutor = Aws::MakeShared<Aws::Utils::Threading::SameThreadExecutor>(AWS_SMITHY_CLIENT_LOG);
     assert(pExecutor);
@@ -648,7 +678,7 @@ AwsSmithyClientBase::MakeRequestSync(Aws::AmazonWebServiceRequest const * const 
 
     pExecutor->Submit([&]()
     {
-        this->MakeRequestAsync(request, requestName, method, std::move(endpointCallback), std::move(responseHandler), pExecutor);
+        this->MakeRequestAsync(request, requestName, method, std::move(endpointCallback), std::move(responseHandler), std::move(authCallback), pExecutor);
     });
     pExecutor->WaitUntilStopped();
 
@@ -702,8 +732,9 @@ AwsSmithyClientBase::ResolveEndpointOutcome AwsSmithyClientBase::ResolveEndpoint
     {
         outcome = std::move(asyncOutcome);
     };
-   
-    std::shared_ptr<AwsSmithyClientAsyncRequestContext> pRequestCtx = Aws::MakeShared<AwsSmithyClientAsyncRequestContext>(AWS_SMITHY_CLIENT_LOG, request, requestName, nullptr);
+
+    auto authResolver = request->GetRequestSpecificSupportedAuth().empty() ? nullptr : Aws::MakeShared<GenericAuthSchemeResolver<>>(AWS_SMITHY_CLIENT_LOG, request->GetRequestSpecificSupportedAuth());
+    std::shared_ptr<AwsSmithyClientAsyncRequestContext> pRequestCtx = Aws::MakeShared<AwsSmithyClientAsyncRequestContext>(AWS_SMITHY_CLIENT_LOG, request, requestName, nullptr, authResolver);
     if (!pRequestCtx)
     {
         AWS_LOGSTREAM_ERROR(AWS_SMITHY_CLIENT_LOG, "Failed to allocate an AwsSmithyClientAsyncRequestContext under a shared ptr");

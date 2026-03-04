@@ -12,30 +12,24 @@ using namespace Aws::ConnectCases::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-Aws::String CreateFieldRequest::SerializePayload() const
-{
+Aws::String CreateFieldRequest::SerializePayload() const {
   JsonValue payload;
 
-  if(m_descriptionHasBeenSet)
-  {
-   payload.WithString("description", m_description);
-
+  if (m_nameHasBeenSet) {
+    payload.WithString("name", m_name);
   }
 
-  if(m_nameHasBeenSet)
-  {
-   payload.WithString("name", m_name);
-
+  if (m_typeHasBeenSet) {
+    payload.WithString("type", FieldTypeMapper::GetNameForFieldType(m_type));
   }
 
-  if(m_typeHasBeenSet)
-  {
-   payload.WithString("type", FieldTypeMapper::GetNameForFieldType(m_type));
+  if (m_descriptionHasBeenSet) {
+    payload.WithString("description", m_description);
+  }
+
+  if (m_attributesHasBeenSet) {
+    payload.WithObject("attributes", m_attributes.Jsonize());
   }
 
   return payload.View().WriteReadable();
 }
-
-
-
-

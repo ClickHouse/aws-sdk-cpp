@@ -9,13 +9,10 @@
 #include <aws/core/client/CoreErrors.h>
 #include <aws/glue/Glue_EXPORTS.h>
 
-namespace Aws
-{
-namespace Glue
-{
-enum class GlueErrors
-{
-  //From Core//
+namespace Aws {
+namespace Glue {
+enum class GlueErrors {
+  // From Core//
   //////////////////////////////////////////////////////////////////////////////////////////
   INCOMPLETE_SIGNATURE = 0,
   INTERNAL_FAILURE = 1,
@@ -24,9 +21,9 @@ enum class GlueErrors
   INVALID_PARAMETER_COMBINATION = 4,
   INVALID_QUERY_PARAMETER = 5,
   INVALID_PARAMETER_VALUE = 6,
-  MISSING_ACTION = 7, // SDK should never allow
-  MISSING_AUTHENTICATION_TOKEN = 8, // SDK should never allow
-  MISSING_PARAMETER = 9, // SDK should never allow
+  MISSING_ACTION = 7,                // SDK should never allow
+  MISSING_AUTHENTICATION_TOKEN = 8,  // SDK should never allow
+  MISSING_PARAMETER = 9,             // SDK should never allow
   OPT_IN_REQUIRED = 10,
   REQUEST_EXPIRED = 11,
   SERVICE_UNAVAILABLE = 12,
@@ -47,7 +44,7 @@ enum class GlueErrors
   UNKNOWN = 100,
   ///////////////////////////////////////////////////////////////////////////////////////////
 
-  ALREADY_EXISTS= static_cast<int>(Aws::Client::CoreErrors::SERVICE_EXTENSION_START_RANGE) + 1,
+  ALREADY_EXISTS = static_cast<int>(Aws::Client::CoreErrors::SERVICE_EXTENSION_START_RANGE) + 1,
   COLUMN_STATISTICS_TASK_NOT_RUNNING,
   COLUMN_STATISTICS_TASK_RUNNING,
   COLUMN_STATISTICS_TASK_STOPPING,
@@ -76,6 +73,9 @@ enum class GlueErrors
   INVALID_INTEGRATION_STATE_FAULT,
   INVALID_STATE,
   K_M_S_KEY_NOT_ACCESSIBLE_FAULT,
+  MATERIALIZED_VIEW_REFRESH_TASK_NOT_RUNNING,
+  MATERIALIZED_VIEW_REFRESH_TASK_RUNNING,
+  MATERIALIZED_VIEW_REFRESH_TASK_STOPPING,
   M_L_TRANSFORM_NOT_READY,
   NO_SCHEDULE,
   OPERATION_NOT_SUPPORTED,
@@ -90,9 +90,8 @@ enum class GlueErrors
   VERSION_MISMATCH
 };
 
-class AWS_GLUE_API GlueError : public Aws::Client::AWSError<GlueErrors>
-{
-public:
+class AWS_GLUE_API GlueError : public Aws::Client::AWSError<GlueErrors> {
+ public:
   GlueError() {}
   GlueError(const Aws::Client::AWSError<Aws::Client::CoreErrors>& rhs) : Aws::Client::AWSError<GlueErrors>(rhs) {}
   GlueError(Aws::Client::AWSError<Aws::Client::CoreErrors>&& rhs) : Aws::Client::AWSError<GlueErrors>(rhs) {}
@@ -103,10 +102,9 @@ public:
   T GetModeledError();
 };
 
-namespace GlueErrorMapper
-{
-  AWS_GLUE_API Aws::Client::AWSError<Aws::Client::CoreErrors> GetErrorForName(const char* errorName);
+namespace GlueErrorMapper {
+AWS_GLUE_API Aws::Client::AWSError<Aws::Client::CoreErrors> GetErrorForName(const char* errorName);
 }
 
-} // namespace Glue
-} // namespace Aws
+}  // namespace Glue
+}  // namespace Aws

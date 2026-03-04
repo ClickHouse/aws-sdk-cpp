@@ -6,7 +6,9 @@
 #include <gtest/gtest.h>
 #include <aws/testing/AwsTestHelpers.h>
 
+#include <aws/bedrock-data-automation-runtime/BedrockDataAutomationRuntimeAwsBearerTokenIdentityResolver.h>
 #include <aws/bedrock-data-automation-runtime/BedrockDataAutomationRuntimeClient.h>
+#include <aws/bedrock-data-automation-runtime/BedrockDataAutomationRuntimeClientConfiguration.h>
 #include <aws/bedrock-data-automation-runtime/BedrockDataAutomationRuntimeEndpointProvider.h>
 #include <aws/bedrock-data-automation-runtime/BedrockDataAutomationRuntimeEndpointRules.h>
 #include <aws/bedrock-data-automation-runtime/BedrockDataAutomationRuntimeErrorMarshaller.h>
@@ -18,6 +20,7 @@
 #include <aws/bedrock-data-automation-runtime/model/AutomationJobStatus.h>
 #include <aws/bedrock-data-automation-runtime/model/Blueprint.h>
 #include <aws/bedrock-data-automation-runtime/model/BlueprintStage.h>
+#include <aws/bedrock-data-automation-runtime/model/CustomOutputStatus.h>
 #include <aws/bedrock-data-automation-runtime/model/DataAutomationConfiguration.h>
 #include <aws/bedrock-data-automation-runtime/model/DataAutomationStage.h>
 #include <aws/bedrock-data-automation-runtime/model/EncryptionConfiguration.h>
@@ -27,10 +30,15 @@
 #include <aws/bedrock-data-automation-runtime/model/InputConfiguration.h>
 #include <aws/bedrock-data-automation-runtime/model/InvokeDataAutomationAsyncRequest.h>
 #include <aws/bedrock-data-automation-runtime/model/InvokeDataAutomationAsyncResult.h>
+#include <aws/bedrock-data-automation-runtime/model/InvokeDataAutomationRequest.h>
+#include <aws/bedrock-data-automation-runtime/model/InvokeDataAutomationResult.h>
 #include <aws/bedrock-data-automation-runtime/model/ListTagsForResourceRequest.h>
 #include <aws/bedrock-data-automation-runtime/model/ListTagsForResourceResult.h>
 #include <aws/bedrock-data-automation-runtime/model/NotificationConfiguration.h>
 #include <aws/bedrock-data-automation-runtime/model/OutputConfiguration.h>
+#include <aws/bedrock-data-automation-runtime/model/OutputSegment.h>
+#include <aws/bedrock-data-automation-runtime/model/SemanticModality.h>
+#include <aws/bedrock-data-automation-runtime/model/SyncInputConfiguration.h>
 #include <aws/bedrock-data-automation-runtime/model/Tag.h>
 #include <aws/bedrock-data-automation-runtime/model/TagResourceRequest.h>
 #include <aws/bedrock-data-automation-runtime/model/TagResourceResult.h>

@@ -6,7 +6,9 @@
 #include <gtest/gtest.h>
 #include <aws/testing/AwsTestHelpers.h>
 
+#include <aws/bedrock-agent-runtime/BedrockAgentRuntimeAwsBearerTokenIdentityResolver.h>
 #include <aws/bedrock-agent-runtime/BedrockAgentRuntimeClient.h>
+#include <aws/bedrock-agent-runtime/BedrockAgentRuntimeClientConfiguration.h>
 #include <aws/bedrock-agent-runtime/BedrockAgentRuntimeEndpointProvider.h>
 #include <aws/bedrock-agent-runtime/BedrockAgentRuntimeEndpointRules.h>
 #include <aws/bedrock-agent-runtime/BedrockAgentRuntimeErrorMarshaller.h>
@@ -33,6 +35,7 @@
 #include <aws/bedrock-agent-runtime/model/ApiResult.h>
 #include <aws/bedrock-agent-runtime/model/AttributeType.h>
 #include <aws/bedrock-agent-runtime/model/Attribution.h>
+#include <aws/bedrock-agent-runtime/model/AudioSegment.h>
 #include <aws/bedrock-agent-runtime/model/BadGatewayException.h>
 #include <aws/bedrock-agent-runtime/model/BedrockModelConfigurations.h>
 #include <aws/bedrock-agent-runtime/model/BedrockRerankingConfiguration.h>
@@ -186,6 +189,8 @@
 #include <aws/bedrock-agent-runtime/model/InlineBedrockModelConfigurations.h>
 #include <aws/bedrock-agent-runtime/model/InlineSessionState.h>
 #include <aws/bedrock-agent-runtime/model/InputFile.h>
+#include <aws/bedrock-agent-runtime/model/InputImage.h>
+#include <aws/bedrock-agent-runtime/model/InputImageFormat.h>
 #include <aws/bedrock-agent-runtime/model/InputPrompt.h>
 #include <aws/bedrock-agent-runtime/model/InputQueryType.h>
 #include <aws/bedrock-agent-runtime/model/InternalServerException.h>
@@ -211,6 +216,7 @@
 #include <aws/bedrock-agent-runtime/model/KnowledgeBaseLookupInput.h>
 #include <aws/bedrock-agent-runtime/model/KnowledgeBaseLookupOutput.h>
 #include <aws/bedrock-agent-runtime/model/KnowledgeBaseQuery.h>
+#include <aws/bedrock-agent-runtime/model/KnowledgeBaseQueryType.h>
 #include <aws/bedrock-agent-runtime/model/KnowledgeBaseRetrievalConfiguration.h>
 #include <aws/bedrock-agent-runtime/model/KnowledgeBaseRetrievalResult.h>
 #include <aws/bedrock-agent-runtime/model/KnowledgeBaseRetrieveAndGenerateConfiguration.h>
@@ -385,6 +391,7 @@
 #include <aws/bedrock-agent-runtime/model/VectorSearchBedrockRerankingModelConfiguration.h>
 #include <aws/bedrock-agent-runtime/model/VectorSearchRerankingConfiguration.h>
 #include <aws/bedrock-agent-runtime/model/VectorSearchRerankingConfigurationType.h>
+#include <aws/bedrock-agent-runtime/model/VideoSegment.h>
 
 using BedrockAgentRuntimeIncludeTest = ::testing::Test;
 

@@ -87,27 +87,27 @@
                             "builtIn": "AWS::Region",
                             "required": false,
                             "documentation": "The AWS region used to dispatch the request.",
-                            "type": "String"
+                            "type": "string"
                         },
                         "UseDualStack": {
                             "builtIn": "AWS::UseDualStack",
                             "required": true,
                             "default": false,
                             "documentation": "When true, use the dual-stack endpoint. If the configured endpoint does not support dual-stack, dispatching the request MAY return an error.",
-                            "type": "Boolean"
+                            "type": "boolean"
                         },
                         "UseFIPS": {
                             "builtIn": "AWS::UseFIPS",
                             "required": true,
                             "default": false,
                             "documentation": "When true, send this request to the FIPS-compliant regional endpoint. If the configured endpoint does not have a FIPS compliant endpoint, dispatching the request will return an error.",
-                            "type": "Boolean"
+                            "type": "boolean"
                         },
                         "Endpoint": {
                             "builtIn": "SDK::Endpoint",
                             "required": false,
                             "documentation": "Override the endpoint used to send this request",
-                            "type": "String"
+                            "type": "string"
                         }
                     },
                     "rules": [
@@ -706,7 +706,45 @@
             "type": "structure",
             "members": {},
             "traits": {
-                "smithy.api#documentation": "<p>The model must request at least one tool (no text is generated). For example, <code>{\"any\" : {}}</code>.</p>"
+                "smithy.api#documentation": "<p>The model must request at least one tool (no text is generated). For example, <code>{\"any\" : {}}</code>. For more information, see <a href=\"https://docs.aws.amazon.com/bedrock/latest/userguide/tool-use.html\">Call a tool with the Converse API</a> in the Amazon Bedrock User Guide.</p>"
+            }
+        },
+        "com.amazonaws.bedrockruntime#AppliedGuardrailDetails": {
+            "type": "structure",
+            "members": {
+                "guardrailId": {
+                    "target": "com.amazonaws.bedrockruntime#GuardrailId",
+                    "traits": {
+                        "smithy.api#documentation": "<p>The unique ID of the guardrail that was applied.</p>"
+                    }
+                },
+                "guardrailVersion": {
+                    "target": "com.amazonaws.bedrockruntime#GuardrailVersion",
+                    "traits": {
+                        "smithy.api#documentation": "<p>The version of the guardrail that was applied.</p>"
+                    }
+                },
+                "guardrailArn": {
+                    "target": "com.amazonaws.bedrockruntime#GuardrailArn",
+                    "traits": {
+                        "smithy.api#documentation": "<p>The ARN of the guardrail that was applied.</p>"
+                    }
+                },
+                "guardrailOrigin": {
+                    "target": "com.amazonaws.bedrockruntime#GuardrailOriginList",
+                    "traits": {
+                        "smithy.api#documentation": "<p>The origin of how the guardrail was applied. This can be either requested at the API level or enforced at the account or organization level as a default guardrail.</p>"
+                    }
+                },
+                "guardrailOwnership": {
+                    "target": "com.amazonaws.bedrockruntime#GuardrailOwnership",
+                    "traits": {
+                        "smithy.api#documentation": "<p>The ownership type of the guardrail, indicating whether it is owned by the requesting account or is a cross-account guardrail shared from another AWS account.</p>"
+                    }
+                }
+            },
+            "traits": {
+                "smithy.api#documentation": "<p>Details about the specific guardrail that was applied during this assessment, including its identifier, version, ARN, origin, and ownership information.</p>"
             }
         },
         "com.amazonaws.bedrockruntime#ApplyGuardrail": {
@@ -729,6 +767,9 @@
                 },
                 {
                     "target": "com.amazonaws.bedrockruntime#ServiceQuotaExceededException"
+                },
+                {
+                    "target": "com.amazonaws.bedrockruntime#ServiceUnavailableException"
                 },
                 {
                     "target": "com.amazonaws.bedrockruntime#ThrottlingException"
@@ -1027,11 +1068,158 @@
                 "smithy.api#documentation": "<p>A summary of an asynchronous invocation.</p>"
             }
         },
+        "com.amazonaws.bedrockruntime#AudioBlock": {
+            "type": "structure",
+            "members": {
+                "format": {
+                    "target": "com.amazonaws.bedrockruntime#AudioFormat",
+                    "traits": {
+                        "smithy.api#documentation": "<p>The format of the audio data, such as MP3, WAV, FLAC, or other supported audio formats.</p>",
+                        "smithy.api#required": {}
+                    }
+                },
+                "source": {
+                    "target": "com.amazonaws.bedrockruntime#AudioSource",
+                    "traits": {
+                        "smithy.api#documentation": "<p>The source of the audio data, which can be provided as raw bytes or an S3 location.</p>",
+                        "smithy.api#required": {}
+                    }
+                },
+                "error": {
+                    "target": "com.amazonaws.bedrockruntime#ErrorBlock",
+                    "traits": {
+                        "smithy.api#documentation": "<p>Error information if the audio block could not be processed or contains invalid data.</p>"
+                    }
+                }
+            },
+            "traits": {
+                "smithy.api#documentation": "<p>An audio content block that contains audio data in various supported formats.</p>"
+            }
+        },
+        "com.amazonaws.bedrockruntime#AudioFormat": {
+            "type": "enum",
+            "members": {
+                "MP3": {
+                    "target": "smithy.api#Unit",
+                    "traits": {
+                        "smithy.api#enumValue": "mp3"
+                    }
+                },
+                "OPUS": {
+                    "target": "smithy.api#Unit",
+                    "traits": {
+                        "smithy.api#enumValue": "opus"
+                    }
+                },
+                "WAV": {
+                    "target": "smithy.api#Unit",
+                    "traits": {
+                        "smithy.api#enumValue": "wav"
+                    }
+                },
+                "AAC": {
+                    "target": "smithy.api#Unit",
+                    "traits": {
+                        "smithy.api#enumValue": "aac"
+                    }
+                },
+                "FLAC": {
+                    "target": "smithy.api#Unit",
+                    "traits": {
+                        "smithy.api#enumValue": "flac"
+                    }
+                },
+                "MP4": {
+                    "target": "smithy.api#Unit",
+                    "traits": {
+                        "smithy.api#enumValue": "mp4"
+                    }
+                },
+                "OGG": {
+                    "target": "smithy.api#Unit",
+                    "traits": {
+                        "smithy.api#enumValue": "ogg"
+                    }
+                },
+                "MKV": {
+                    "target": "smithy.api#Unit",
+                    "traits": {
+                        "smithy.api#enumValue": "mkv"
+                    }
+                },
+                "MKA": {
+                    "target": "smithy.api#Unit",
+                    "traits": {
+                        "smithy.api#enumValue": "mka"
+                    }
+                },
+                "X_AAC": {
+                    "target": "smithy.api#Unit",
+                    "traits": {
+                        "smithy.api#enumValue": "x-aac"
+                    }
+                },
+                "M4A": {
+                    "target": "smithy.api#Unit",
+                    "traits": {
+                        "smithy.api#enumValue": "m4a"
+                    }
+                },
+                "MPEG": {
+                    "target": "smithy.api#Unit",
+                    "traits": {
+                        "smithy.api#enumValue": "mpeg"
+                    }
+                },
+                "MPGA": {
+                    "target": "smithy.api#Unit",
+                    "traits": {
+                        "smithy.api#enumValue": "mpga"
+                    }
+                },
+                "PCM": {
+                    "target": "smithy.api#Unit",
+                    "traits": {
+                        "smithy.api#enumValue": "pcm"
+                    }
+                },
+                "WEBM": {
+                    "target": "smithy.api#Unit",
+                    "traits": {
+                        "smithy.api#enumValue": "webm"
+                    }
+                }
+            }
+        },
+        "com.amazonaws.bedrockruntime#AudioSource": {
+            "type": "union",
+            "members": {
+                "bytes": {
+                    "target": "smithy.api#Blob",
+                    "traits": {
+                        "smithy.api#documentation": "<p>Audio data encoded in base64.</p>",
+                        "smithy.api#length": {
+                            "min": 1
+                        }
+                    }
+                },
+                "s3Location": {
+                    "target": "com.amazonaws.bedrockruntime#S3Location",
+                    "traits": {
+                        "smithy.api#documentation": "<p>A reference to audio data stored in an Amazon S3 bucket. To see which models support S3 uploads, see <a href=\"https://docs.aws.amazon.com/bedrock/latest/userguide/conversation-inference-supported-models-features.html\">Supported models and features for Converse</a>.</p>"
+                    }
+                }
+            },
+            "traits": {
+                "smithy.api#documentation": "<p>The source of audio data, which can be provided either as raw bytes or a reference to an S3 location.</p>",
+                "smithy.api#sensitive": {}
+            }
+        },
         "com.amazonaws.bedrockruntime#AutoToolChoice": {
             "type": "structure",
             "members": {},
             "traits": {
-                "smithy.api#documentation": "<p>The Model automatically decides if a tool should be called or whether to generate text instead. For example, <code>{\"auto\" : {}}</code>.</p>"
+                "smithy.api#documentation": "<p>The Model automatically decides if a tool should be called or whether to generate text instead. For example, <code>{\"auto\" : {}}</code>. For more information, see <a href=\"https://docs.aws.amazon.com/bedrock/latest/userguide/tool-use.html\">Call a tool with the Converse API</a> in the Amazon Bedrock User Guide</p>"
             }
         },
         "com.amazonaws.bedrockruntime#AutomatedReasoningRuleIdentifier": {
@@ -1082,6 +1270,40 @@
                 "smithy.api#sensitive": {}
             }
         },
+        "com.amazonaws.bedrockruntime#CacheDetail": {
+            "type": "structure",
+            "members": {
+                "ttl": {
+                    "target": "com.amazonaws.bedrockruntime#CacheTTL",
+                    "traits": {
+                        "smithy.api#documentation": "<p>TTL duration for these cached tokens</p>",
+                        "smithy.api#required": {}
+                    }
+                },
+                "inputTokens": {
+                    "target": "smithy.api#Integer",
+                    "traits": {
+                        "smithy.api#documentation": "<p>Number of tokens written to cache with this TTL (cache creation tokens)</p>",
+                        "smithy.api#range": {
+                            "min": 0
+                        },
+                        "smithy.api#required": {}
+                    }
+                }
+            },
+            "traits": {
+                "smithy.api#documentation": "<p>Cache creation metrics for a specific TTL duration</p>"
+            }
+        },
+        "com.amazonaws.bedrockruntime#CacheDetailsList": {
+            "type": "list",
+            "member": {
+                "target": "com.amazonaws.bedrockruntime#CacheDetail"
+            },
+            "traits": {
+                "smithy.api#documentation": "<p>List of cache details by TTL</p>"
+            }
+        },
         "com.amazonaws.bedrockruntime#CachePointBlock": {
             "type": "structure",
             "members": {
@@ -1090,6 +1312,12 @@
                     "traits": {
                         "smithy.api#documentation": "<p>Specifies the type of cache point within the CachePointBlock.</p>",
                         "smithy.api#required": {}
+                    }
+                },
+                "ttl": {
+                    "target": "com.amazonaws.bedrockruntime#CacheTTL",
+                    "traits": {
+                        "smithy.api#documentation": "<p>Optional TTL duration for cache entries. When specified, enables extended TTL caching with the specified duration. When omitted, uses <code>type</code> value for caching behavior.</p>"
                     }
                 }
             },
@@ -1108,6 +1336,26 @@
                 }
             }
         },
+        "com.amazonaws.bedrockruntime#CacheTTL": {
+            "type": "enum",
+            "members": {
+                "FIVE_MINUTES": {
+                    "target": "smithy.api#Unit",
+                    "traits": {
+                        "smithy.api#enumValue": "5m"
+                    }
+                },
+                "ONE_HOUR": {
+                    "target": "smithy.api#Unit",
+                    "traits": {
+                        "smithy.api#enumValue": "1h"
+                    }
+                }
+            },
+            "traits": {
+                "smithy.api#documentation": "<p>Time-to-live duration for ephemeral cache entries</p>"
+            }
+        },
         "com.amazonaws.bedrockruntime#Citation": {
             "type": "structure",
             "members": {
@@ -1115,6 +1363,12 @@
                     "target": "smithy.api#String",
                     "traits": {
                         "smithy.api#documentation": "<p>The title or identifier of the source document being cited.</p>"
+                    }
+                },
+                "source": {
+                    "target": "smithy.api#String",
+                    "traits": {
+                        "smithy.api#documentation": "<p>The source from the original search result that provided the cited content.</p>"
                     }
                 },
                 "sourceContent": {
@@ -1157,6 +1411,12 @@
         "com.amazonaws.bedrockruntime#CitationLocation": {
             "type": "union",
             "members": {
+                "web": {
+                    "target": "com.amazonaws.bedrockruntime#WebLocation",
+                    "traits": {
+                        "smithy.api#documentation": "<p>The web URL that was cited for this reference.</p>"
+                    }
+                },
                 "documentChar": {
                     "target": "com.amazonaws.bedrockruntime#DocumentCharLocation",
                     "traits": {
@@ -1173,6 +1433,12 @@
                     "target": "com.amazonaws.bedrockruntime#DocumentChunkLocation",
                     "traits": {
                         "smithy.api#documentation": "<p>The chunk-level location within the document where the cited content is found, typically used for documents that have been segmented into logical chunks.</p>"
+                    }
+                },
+                "searchResultLocation": {
+                    "target": "com.amazonaws.bedrockruntime#SearchResultLocation",
+                    "traits": {
+                        "smithy.api#documentation": "<p>The search result location where the cited content is found, including the search result index and block positions within the content array.</p>"
                     }
                 }
             },
@@ -1232,7 +1498,7 @@
                 "enabled": {
                     "target": "smithy.api#Boolean",
                     "traits": {
-                        "smithy.api#documentation": "<p>Specifies whether document citations should be included in the model's response. When set to true, the model can generate citations that reference the source documents used to inform the response.</p>",
+                        "smithy.api#documentation": "<p>Specifies whether citations from the selected document should be used in the model's response. When set to true, the model can generate citations that reference the source documents used to inform the response.</p>",
                         "smithy.api#required": {}
                     }
                 }
@@ -1268,6 +1534,12 @@
                     "target": "smithy.api#String",
                     "traits": {
                         "smithy.api#documentation": "<p>The title or identifier of the source document being cited.</p>"
+                    }
+                },
+                "source": {
+                    "target": "smithy.api#String",
+                    "traits": {
+                        "smithy.api#documentation": "<p>The source from the original search result that provided the cited content.</p>"
                     }
                 },
                 "sourceContent": {
@@ -1327,6 +1599,12 @@
                         "smithy.api#documentation": "<p>Video to include in the message. </p>"
                     }
                 },
+                "audio": {
+                    "target": "com.amazonaws.bedrockruntime#AudioBlock",
+                    "traits": {
+                        "smithy.api#documentation": "<p>An audio content block containing audio data in the conversation.</p>"
+                    }
+                },
                 "toolUse": {
                     "target": "com.amazonaws.bedrockruntime#ToolUseBlock",
                     "traits": {
@@ -1342,7 +1620,7 @@
                 "guardContent": {
                     "target": "com.amazonaws.bedrockruntime#GuardrailConverseContentBlock",
                     "traits": {
-                        "smithy.api#documentation": "<p>Contains the content to assess with the guardrail. If you don't specify <code>guardContent</code> in a call to the Converse API, the guardrail (if passed in the Converse API) assesses the entire message.</p> <p>For more information, see <i>Use a guardrail with the Converse API</i> in the <i>Amazon Bedrock User Guide</i>. </p>"
+                        "smithy.api#documentation": "<p>Contains the content to assess with the guardrail. If you don't specify <code>guardContent</code> in a call to the Converse API, the guardrail (if passed in the Converse API) assesses the entire message.</p> <p>For more information, see <i>Use a guardrail with the Converse API</i> in the <i>Amazon Bedrock User Guide</i>.</p>"
                     }
                 },
                 "cachePoint": {
@@ -1361,6 +1639,12 @@
                     "target": "com.amazonaws.bedrockruntime#CitationsContentBlock",
                     "traits": {
                         "smithy.api#documentation": "<p>A content block that contains both generated text and associated citation information, providing traceability between the response and source documents.</p>"
+                    }
+                },
+                "searchResult": {
+                    "target": "com.amazonaws.bedrockruntime#SearchResultBlock",
+                    "traits": {
+                        "smithy.api#documentation": "<p>Search result to include in the message.</p>"
                     }
                 }
             },
@@ -1383,6 +1667,12 @@
                         "smithy.api#documentation": "<p>Information about a tool that the model is requesting to use.</p>"
                     }
                 },
+                "toolResult": {
+                    "target": "com.amazonaws.bedrockruntime#ToolResultBlocksDelta",
+                    "traits": {
+                        "smithy.api#documentation": "<p>An incremental update that contains the results from a tool call.</p>"
+                    }
+                },
                 "reasoningContent": {
                     "target": "com.amazonaws.bedrockruntime#ReasoningContentBlockDelta",
                     "traits": {
@@ -1393,6 +1683,12 @@
                     "target": "com.amazonaws.bedrockruntime#CitationsDelta",
                     "traits": {
                         "smithy.api#documentation": "<p>Incremental citation information that is streamed as part of the response generation process.</p>"
+                    }
+                },
+                "image": {
+                    "target": "com.amazonaws.bedrockruntime#ImageBlockDelta",
+                    "traits": {
+                        "smithy.api#documentation": "<p>A streaming delta event containing incremental image data.</p>"
                     }
                 }
             },
@@ -1429,6 +1725,18 @@
                     "target": "com.amazonaws.bedrockruntime#ToolUseBlockStart",
                     "traits": {
                         "smithy.api#documentation": "<p>Information about a tool that the model is requesting to use.</p>"
+                    }
+                },
+                "toolResult": {
+                    "target": "com.amazonaws.bedrockruntime#ToolResultBlockStart",
+                    "traits": {
+                        "smithy.api#documentation": "<p>The </p>"
+                    }
+                },
+                "image": {
+                    "target": "com.amazonaws.bedrockruntime#ImageBlockStart",
+                    "traits": {
+                        "smithy.api#documentation": "<p>The initial event indicating the start of a streaming image block.</p>"
                     }
                 }
             },
@@ -1654,6 +1962,18 @@
                     "traits": {
                         "smithy.api#documentation": "<p>Model performance settings for the request.</p>"
                     }
+                },
+                "serviceTier": {
+                    "target": "com.amazonaws.bedrockruntime#ServiceTier",
+                    "traits": {
+                        "smithy.api#documentation": "<p>Specifies the processing tier configuration used for serving the request.</p>"
+                    }
+                },
+                "outputConfig": {
+                    "target": "com.amazonaws.bedrockruntime#OutputConfig",
+                    "traits": {
+                        "smithy.api#documentation": "<p>Output configuration for a model response.</p>"
+                    }
                 }
             },
             "traits": {
@@ -1707,6 +2027,12 @@
                     "target": "com.amazonaws.bedrockruntime#PerformanceConfiguration",
                     "traits": {
                         "smithy.api#documentation": "<p>Model performance settings for the request.</p>"
+                    }
+                },
+                "serviceTier": {
+                    "target": "com.amazonaws.bedrockruntime#ServiceTier",
+                    "traits": {
+                        "smithy.api#documentation": "<p>Specifies the processing tier configuration used for serving the request.</p>"
                     }
                 }
             },
@@ -1788,6 +2114,12 @@
                     "traits": {
                         "smithy.api#documentation": "<p>Model performance configuration metadata for the conversation stream event.</p>"
                     }
+                },
+                "serviceTier": {
+                    "target": "com.amazonaws.bedrockruntime#ServiceTier",
+                    "traits": {
+                        "smithy.api#documentation": "<p>Specifies the processing tier configuration used for serving the request.</p>"
+                    }
                 }
             },
             "traits": {
@@ -1863,13 +2195,13 @@
                 "validationException": {
                     "target": "com.amazonaws.bedrockruntime#ValidationException",
                     "traits": {
-                        "smithy.api#documentation": "<p>The input fails to satisfy the constraints specified by <i>Amazon Bedrock</i>. For troubleshooting this error, see <a href=\"https://docs.aws.amazon.com/bedrock/latest/userguide/troubleshooting-api-error-codes.html#ts-validation-error\">ValidationError</a> in the Amazon Bedrock User Guide</p>"
+                        "smithy.api#documentation": "<p>The input fails to satisfy the constraints specified by <i>Amazon Bedrock</i>. For troubleshooting this error, see <a href=\"https://docs.aws.amazon.com/bedrock/latest/userguide/troubleshooting-api-error-codes.html#ts-validation-error\">ValidationError</a> in the Amazon Bedrock User Guide.</p>"
                     }
                 },
                 "throttlingException": {
                     "target": "com.amazonaws.bedrockruntime#ThrottlingException",
                     "traits": {
-                        "smithy.api#documentation": "<p>Your request was denied due to exceeding the account quotas for <i>Amazon Bedrock</i>. For troubleshooting this error, see <a href=\"https://docs.aws.amazon.com/bedrock/latest/userguide/troubleshooting-api-error-codes.html#ts-throttling-exception\">ThrottlingException</a> in the Amazon Bedrock User Guide</p>"
+                        "smithy.api#documentation": "<p>Your request was denied due to exceeding the account quotas for <i>Amazon Bedrock</i>. For troubleshooting this error, see <a href=\"https://docs.aws.amazon.com/bedrock/latest/userguide/troubleshooting-api-error-codes.html#ts-throttling-exception\">ThrottlingException</a> in the Amazon Bedrock User Guide.</p>"
                     }
                 },
                 "serviceUnavailableException": {
@@ -1957,6 +2289,18 @@
                     "traits": {
                         "smithy.api#documentation": "<p>Model performance settings for the request.</p>"
                     }
+                },
+                "serviceTier": {
+                    "target": "com.amazonaws.bedrockruntime#ServiceTier",
+                    "traits": {
+                        "smithy.api#documentation": "<p>Specifies the processing tier configuration used for serving the request.</p>"
+                    }
+                },
+                "outputConfig": {
+                    "target": "com.amazonaws.bedrockruntime#OutputConfig",
+                    "traits": {
+                        "smithy.api#documentation": "<p>Output configuration for a model response.</p>"
+                    }
                 }
             },
             "traits": {
@@ -1995,7 +2339,7 @@
                 }
             },
             "traits": {
-                "smithy.api#documentation": "<p>The trace object in a response from <a href=\"https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_ConverseStream.html\">ConverseStream</a>. Currently, you can only trace guardrails.</p>"
+                "smithy.api#documentation": "<p>The trace object in a response from <a href=\"https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_ConverseStream.html\">ConverseStream</a>.</p>"
             }
         },
         "com.amazonaws.bedrockruntime#ConverseTokensRequest": {
@@ -2011,6 +2355,18 @@
                     "target": "com.amazonaws.bedrockruntime#SystemContentBlocks",
                     "traits": {
                         "smithy.api#documentation": "<p>The system content blocks to count tokens for. System content provides instructions or context to the model about how it should behave or respond. The token count will include any system content provided.</p>"
+                    }
+                },
+                "toolConfig": {
+                    "target": "com.amazonaws.bedrockruntime#ToolConfiguration",
+                    "traits": {
+                        "smithy.api#documentation": "<p>The toolConfig of Converse input request to count tokens for. Configuration information for the tools that the model can use when generating a response.</p>"
+                    }
+                },
+                "additionalModelRequestFields": {
+                    "target": "smithy.api#Document",
+                    "traits": {
+                        "smithy.api#documentation": "<p>The additionalModelRequestFields of Converse input request to count tokens for. Use this field when you want to pass additional parameters that the model supports.</p>"
                     }
                 }
             },
@@ -2035,7 +2391,7 @@
                 }
             },
             "traits": {
-                "smithy.api#documentation": "<p>The trace object in a response from <a href=\"https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_Converse.html\">Converse</a>. Currently, you can only trace guardrails.</p>"
+                "smithy.api#documentation": "<p>The trace object in a response from <a href=\"https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_Converse.html\">Converse</a>.</p>"
             }
         },
         "com.amazonaws.bedrockruntime#CountTokens": {
@@ -2399,6 +2755,21 @@
                 "smithy.api#documentation": "<p>Contains the content of a document.</p>"
             }
         },
+        "com.amazonaws.bedrockruntime#ErrorBlock": {
+            "type": "structure",
+            "members": {
+                "message": {
+                    "target": "smithy.api#String",
+                    "traits": {
+                        "smithy.api#documentation": "<p>A human-readable error message describing what went wrong during content processing.</p>"
+                    }
+                }
+            },
+            "traits": {
+                "smithy.api#documentation": "<p>A block containing error information when content processing fails.</p>",
+                "smithy.api#sensitive": {}
+            }
+        },
         "com.amazonaws.bedrockruntime#FoundationModelVersionIdentifier": {
             "type": "string",
             "traits": {
@@ -2542,6 +2913,15 @@
                 }
             }
         },
+        "com.amazonaws.bedrockruntime#GuardrailArn": {
+            "type": "string",
+            "traits": {
+                "smithy.api#length": {
+                    "max": 2048
+                },
+                "smithy.api#pattern": "^(arn:aws(-[^:]+)?:bedrock:[a-z0-9-]{1,20}:[0-9]{12}:guardrail/[a-z0-9]+)$"
+            }
+        },
         "com.amazonaws.bedrockruntime#GuardrailAssessment": {
             "type": "structure",
             "members": {
@@ -2586,6 +2966,9 @@
                     "traits": {
                         "smithy.api#documentation": "<p>The invocation metrics for the guardrail assessment.</p>"
                     }
+                },
+                "appliedGuardrailDetails": {
+                    "target": "com.amazonaws.bedrockruntime#AppliedGuardrailDetails"
                 }
             },
             "traits": {
@@ -3093,15 +3476,17 @@
                 "guardrailIdentifier": {
                     "target": "com.amazonaws.bedrockruntime#GuardrailIdentifier",
                     "traits": {
-                        "smithy.api#documentation": "<p>The identifier for the guardrail.</p>",
-                        "smithy.api#required": {}
+                        "smithy.api#addedDefault": {},
+                        "smithy.api#default": "",
+                        "smithy.api#documentation": "<p>The identifier for the guardrail.</p>"
                     }
                 },
                 "guardrailVersion": {
                     "target": "com.amazonaws.bedrockruntime#GuardrailVersion",
                     "traits": {
-                        "smithy.api#documentation": "<p>The version of the guardrail.</p>",
-                        "smithy.api#required": {}
+                        "smithy.api#addedDefault": {},
+                        "smithy.api#default": "",
+                        "smithy.api#documentation": "<p>The version of the guardrail.</p>"
                     }
                 },
                 "trace": {
@@ -3604,7 +3989,7 @@
                 }
             },
             "traits": {
-                "smithy.api#documentation": "<p>A text block that contains text that you want to assess with a guardrail. For more information, see <a>GuardrailConverseContentBlock</a>.</p>"
+                "smithy.api#documentation": "<p>A text block that contains text that you want to assess with a guardrail. For more information, see <a href=\"https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_GuardrailConverseContentBlock.html\">GuardrailConverseContentBlock</a>.</p>"
             }
         },
         "com.amazonaws.bedrockruntime#GuardrailCoverage": {
@@ -3661,13 +4046,22 @@
                 "target": "com.amazonaws.bedrockruntime#GuardrailCustomWord"
             }
         },
+        "com.amazonaws.bedrockruntime#GuardrailId": {
+            "type": "string",
+            "traits": {
+                "smithy.api#length": {
+                    "max": 2048
+                },
+                "smithy.api#pattern": "^([a-z0-9]+)$"
+            }
+        },
         "com.amazonaws.bedrockruntime#GuardrailIdentifier": {
             "type": "string",
             "traits": {
                 "smithy.api#length": {
                     "max": 2048
                 },
-                "smithy.api#pattern": "^(([a-z0-9]+)|(arn:aws(-[^:]+)?:bedrock:[a-z0-9-]{1,20}:[0-9]{12}:guardrail/[a-z0-9]+))$"
+                "smithy.api#pattern": "^(|([a-z0-9]+)|(arn:aws(-[^:]+)?:bedrock:[a-z0-9-]{1,20}:[0-9]{12}:guardrail/[a-z0-9]+))$"
             }
         },
         "com.amazonaws.bedrockruntime#GuardrailImageBlock": {
@@ -3826,6 +4220,35 @@
                 }
             }
         },
+        "com.amazonaws.bedrockruntime#GuardrailOrigin": {
+            "type": "enum",
+            "members": {
+                "REQUEST": {
+                    "target": "smithy.api#Unit",
+                    "traits": {
+                        "smithy.api#enumValue": "REQUEST"
+                    }
+                },
+                "ACCOUNT_ENFORCED": {
+                    "target": "smithy.api#Unit",
+                    "traits": {
+                        "smithy.api#enumValue": "ACCOUNT_ENFORCED"
+                    }
+                },
+                "ORGANIZATION_ENFORCED": {
+                    "target": "smithy.api#Unit",
+                    "traits": {
+                        "smithy.api#enumValue": "ORGANIZATION_ENFORCED"
+                    }
+                }
+            }
+        },
+        "com.amazonaws.bedrockruntime#GuardrailOriginList": {
+            "type": "list",
+            "member": {
+                "target": "com.amazonaws.bedrockruntime#GuardrailOrigin"
+            }
+        },
         "com.amazonaws.bedrockruntime#GuardrailOutputContent": {
             "type": "structure",
             "members": {
@@ -3865,6 +4288,23 @@
         },
         "com.amazonaws.bedrockruntime#GuardrailOutputText": {
             "type": "string"
+        },
+        "com.amazonaws.bedrockruntime#GuardrailOwnership": {
+            "type": "enum",
+            "members": {
+                "SELF": {
+                    "target": "smithy.api#Unit",
+                    "traits": {
+                        "smithy.api#enumValue": "SELF"
+                    }
+                },
+                "CROSS_ACCOUNT": {
+                    "target": "smithy.api#Unit",
+                    "traits": {
+                        "smithy.api#enumValue": "CROSS_ACCOUNT"
+                    }
+                }
+            }
         },
         "com.amazonaws.bedrockruntime#GuardrailPiiEntityFilter": {
             "type": "structure",
@@ -4196,7 +4636,7 @@
                 }
             },
             "traits": {
-                "smithy.api#documentation": "<p>The assessment for aPersonally Identifiable Information (PII) policy. </p>"
+                "smithy.api#documentation": "<p>The assessment for a Personally Identifiable Information (PII) policy. </p>"
             }
         },
         "com.amazonaws.bedrockruntime#GuardrailSensitiveInformationPolicyFreeUnitsProcessed": {
@@ -4211,15 +4651,17 @@
                 "guardrailIdentifier": {
                     "target": "com.amazonaws.bedrockruntime#GuardrailIdentifier",
                     "traits": {
-                        "smithy.api#documentation": "<p>The identifier for the guardrail.</p>",
-                        "smithy.api#required": {}
+                        "smithy.api#addedDefault": {},
+                        "smithy.api#default": "",
+                        "smithy.api#documentation": "<p>The identifier for the guardrail.</p>"
                     }
                 },
                 "guardrailVersion": {
                     "target": "com.amazonaws.bedrockruntime#GuardrailVersion",
                     "traits": {
-                        "smithy.api#documentation": "<p>The version of the guardrail.</p>",
-                        "smithy.api#required": {}
+                        "smithy.api#addedDefault": {},
+                        "smithy.api#default": "",
+                        "smithy.api#documentation": "<p>The version of the guardrail.</p>"
                     }
                 },
                 "trace": {
@@ -4238,7 +4680,7 @@
                 }
             },
             "traits": {
-                "smithy.api#documentation": "<p>Configuration information for a guardrail that you use with the <a>ConverseStream</a> action. </p>"
+                "smithy.api#documentation": "<p>Configuration information for a guardrail that you use with the <a href=\"https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_ConverseStream.html\">ConverseStream</a> action. </p>"
             }
         },
         "com.amazonaws.bedrockruntime#GuardrailStreamProcessingMode": {
@@ -4438,7 +4880,7 @@
                 }
             },
             "traits": {
-                "smithy.api#documentation": "<p>A Top level guardrail trace object. For more information, see <a>ConverseTrace</a>.</p>"
+                "smithy.api#documentation": "<p>A Top level guardrail trace object. For more information, see <a href=\"https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_ConverseTrace.html\">ConverseTrace</a>.</p>"
             }
         },
         "com.amazonaws.bedrockruntime#GuardrailUsage": {
@@ -4512,7 +4954,7 @@
         "com.amazonaws.bedrockruntime#GuardrailVersion": {
             "type": "string",
             "traits": {
-                "smithy.api#pattern": "^(([1-9][0-9]{0,7})|(DRAFT))$"
+                "smithy.api#pattern": "^(|([1-9][0-9]{0,7})|(DRAFT))$"
             }
         },
         "com.amazonaws.bedrockruntime#GuardrailWordPolicyAction": {
@@ -4573,10 +5015,51 @@
                         "smithy.api#documentation": "<p>The source for the image.</p>",
                         "smithy.api#required": {}
                     }
+                },
+                "error": {
+                    "target": "com.amazonaws.bedrockruntime#ErrorBlock",
+                    "traits": {
+                        "smithy.api#documentation": "<p>Error information if the image block could not be processed or contains invalid data.</p>"
+                    }
                 }
             },
             "traits": {
                 "smithy.api#documentation": "<p>Image content for a message.</p>"
+            }
+        },
+        "com.amazonaws.bedrockruntime#ImageBlockDelta": {
+            "type": "structure",
+            "members": {
+                "source": {
+                    "target": "com.amazonaws.bedrockruntime#ImageSource",
+                    "traits": {
+                        "smithy.api#documentation": "<p>The incremental image source data for this delta event.</p>"
+                    }
+                },
+                "error": {
+                    "target": "com.amazonaws.bedrockruntime#ErrorBlock",
+                    "traits": {
+                        "smithy.api#documentation": "<p>Error information if this image delta could not be processed.</p>"
+                    }
+                }
+            },
+            "traits": {
+                "smithy.api#documentation": "<p>A streaming delta event that contains incremental image data during streaming responses.</p>"
+            }
+        },
+        "com.amazonaws.bedrockruntime#ImageBlockStart": {
+            "type": "structure",
+            "members": {
+                "format": {
+                    "target": "com.amazonaws.bedrockruntime#ImageFormat",
+                    "traits": {
+                        "smithy.api#documentation": "<p>The format of the image data that will be streamed in subsequent delta events.</p>",
+                        "smithy.api#required": {}
+                    }
+                }
+            },
+            "traits": {
+                "smithy.api#documentation": "<p>The initial event in a streaming image block that indicates the start of image content.</p>"
             }
         },
         "com.amazonaws.bedrockruntime#ImageFormat": {
@@ -4628,7 +5111,8 @@
                 }
             },
             "traits": {
-                "smithy.api#documentation": "<p>The source for an image.</p>"
+                "smithy.api#documentation": "<p>The source for an image.</p>",
+                "smithy.api#sensitive": {}
             }
         },
         "com.amazonaws.bedrockruntime#ImagesGuarded": {
@@ -4845,6 +5329,13 @@
                         "smithy.api#documentation": "<p>Model performance settings for the request.</p>",
                         "smithy.api#httpHeader": "X-Amzn-Bedrock-PerformanceConfig-Latency"
                     }
+                },
+                "serviceTier": {
+                    "target": "com.amazonaws.bedrockruntime#ServiceTierType",
+                    "traits": {
+                        "smithy.api#documentation": "<p>Specifies the processing tier type used for serving the request.</p>",
+                        "smithy.api#httpHeader": "X-Amzn-Bedrock-Service-Tier"
+                    }
                 }
             },
             "traits": {
@@ -4875,6 +5366,13 @@
                     "traits": {
                         "smithy.api#documentation": "<p>Model performance settings for the request.</p>",
                         "smithy.api#httpHeader": "X-Amzn-Bedrock-PerformanceConfig-Latency"
+                    }
+                },
+                "serviceTier": {
+                    "target": "com.amazonaws.bedrockruntime#ServiceTierType",
+                    "traits": {
+                        "smithy.api#documentation": "<p>Specifies the processing tier type used for serving the request.</p>",
+                        "smithy.api#httpHeader": "X-Amzn-Bedrock-Service-Tier"
                     }
                 }
             },
@@ -5167,6 +5665,13 @@
                         "smithy.api#documentation": "<p>Model performance settings for the request.</p>",
                         "smithy.api#httpHeader": "X-Amzn-Bedrock-PerformanceConfig-Latency"
                     }
+                },
+                "serviceTier": {
+                    "target": "com.amazonaws.bedrockruntime#ServiceTierType",
+                    "traits": {
+                        "smithy.api#documentation": "<p>Specifies the processing tier type used for serving the request.</p>",
+                        "smithy.api#httpHeader": "X-Amzn-Bedrock-Service-Tier"
+                    }
                 }
             },
             "traits": {
@@ -5198,6 +5703,13 @@
                         "smithy.api#documentation": "<p>Model performance settings for the request.</p>",
                         "smithy.api#httpHeader": "X-Amzn-Bedrock-PerformanceConfig-Latency"
                     }
+                },
+                "serviceTier": {
+                    "target": "com.amazonaws.bedrockruntime#ServiceTierType",
+                    "traits": {
+                        "smithy.api#documentation": "<p>Specifies the processing tier type used for serving the request.</p>",
+                        "smithy.api#httpHeader": "X-Amzn-Bedrock-Service-Tier"
+                    }
                 }
             },
             "traits": {
@@ -5208,6 +5720,33 @@
             "type": "string",
             "traits": {
                 "smithy.api#pattern": "^(arn:aws(-[^:]+)?:bedrock:[a-z0-9-]{1,20}::foundation-model/[a-z0-9-]{1,63}[.]{1}[a-z0-9-]{1,63}([a-z0-9-]{1,63}[.]){0,2}[a-z0-9-]{1,63}([:][a-z0-9-]{1,63}){0,2})|(arn:aws(|-us-gov|-cn|-iso|-iso-b):bedrock:(|[0-9a-z-]{1,20}):(|[0-9]{12}):inference-profile/[a-zA-Z0-9-:.]+)$"
+            }
+        },
+        "com.amazonaws.bedrockruntime#JsonSchemaDefinition": {
+            "type": "structure",
+            "members": {
+                "schema": {
+                    "target": "smithy.api#String",
+                    "traits": {
+                        "smithy.api#documentation": "<p> The JSON schema to constrain the model's output. For more information, see <a href=\"https://json-schema.org/understanding-json-schema/reference\">JSON Schema Reference</a>. </p>",
+                        "smithy.api#required": {}
+                    }
+                },
+                "name": {
+                    "target": "smithy.api#String",
+                    "traits": {
+                        "smithy.api#documentation": "<p> The name of the JSON schema. </p>"
+                    }
+                },
+                "description": {
+                    "target": "smithy.api#String",
+                    "traits": {
+                        "smithy.api#documentation": "<p> A description of the JSON schema. </p>"
+                    }
+                }
+            },
+            "traits": {
+                "smithy.api#documentation": "<p> JSON schema structured output format options. </p>"
             }
         },
         "com.amazonaws.bedrockruntime#KmsKeyId": {
@@ -5530,6 +6069,71 @@
                 }
             }
         },
+        "com.amazonaws.bedrockruntime#OutputConfig": {
+            "type": "structure",
+            "members": {
+                "textFormat": {
+                    "target": "com.amazonaws.bedrockruntime#OutputFormat",
+                    "traits": {
+                        "smithy.api#documentation": "<p>Structured output parameters to control the model's text response. </p>"
+                    }
+                }
+            },
+            "traits": {
+                "smithy.api#documentation": "<p>Output configuration for a model response in a call to <a href=\"https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_Converse.html\">Converse</a> or <a href=\"https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_ConverseStream.html\">ConverseStream</a>.</p>"
+            }
+        },
+        "com.amazonaws.bedrockruntime#OutputFormat": {
+            "type": "structure",
+            "members": {
+                "type": {
+                    "target": "com.amazonaws.bedrockruntime#OutputFormatType",
+                    "traits": {
+                        "smithy.api#documentation": "<p> The type of structured output format. </p>",
+                        "smithy.api#required": {}
+                    }
+                },
+                "structure": {
+                    "target": "com.amazonaws.bedrockruntime#OutputFormatStructure",
+                    "traits": {
+                        "smithy.api#documentation": "<p> The structure that the model's output must adhere to. </p>",
+                        "smithy.api#required": {}
+                    }
+                }
+            },
+            "traits": {
+                "smithy.api#documentation": "<p> Structured output parameters to control the model's response. </p>"
+            }
+        },
+        "com.amazonaws.bedrockruntime#OutputFormatStructure": {
+            "type": "union",
+            "members": {
+                "jsonSchema": {
+                    "target": "com.amazonaws.bedrockruntime#JsonSchemaDefinition",
+                    "traits": {
+                        "smithy.api#documentation": "<p> A JSON schema structure that the model's output must adhere to. </p>"
+                    }
+                }
+            },
+            "traits": {
+                "smithy.api#documentation": "<p> The structure that the model's output must adhere to. </p>",
+                "smithy.api#sensitive": {}
+            }
+        },
+        "com.amazonaws.bedrockruntime#OutputFormatType": {
+            "type": "enum",
+            "members": {
+                "JSON_SCHEMA": {
+                    "target": "smithy.api#Unit",
+                    "traits": {
+                        "smithy.api#enumValue": "json_schema"
+                    }
+                }
+            },
+            "traits": {
+                "smithy.api#documentation": "<p> The type of structured output format. Available options are: json_schema. </p>"
+            }
+        },
         "com.amazonaws.bedrockruntime#PaginationToken": {
             "type": "string",
             "traits": {
@@ -5831,6 +6435,97 @@
                 "smithy.api#pattern": "^s3://[a-z0-9][\\.\\-a-z0-9]{1,61}[a-z0-9](/.*)?$"
             }
         },
+        "com.amazonaws.bedrockruntime#SearchResultBlock": {
+            "type": "structure",
+            "members": {
+                "source": {
+                    "target": "smithy.api#String",
+                    "traits": {
+                        "smithy.api#documentation": "<p>The source URL or identifier for the content.</p>",
+                        "smithy.api#required": {}
+                    }
+                },
+                "title": {
+                    "target": "smithy.api#String",
+                    "traits": {
+                        "smithy.api#documentation": "<p>A descriptive title for the search result.</p>",
+                        "smithy.api#required": {}
+                    }
+                },
+                "content": {
+                    "target": "com.amazonaws.bedrockruntime#SearchResultContentBlocks",
+                    "traits": {
+                        "smithy.api#documentation": "<p>An array of search result content block.</p>",
+                        "smithy.api#required": {}
+                    }
+                },
+                "citations": {
+                    "target": "com.amazonaws.bedrockruntime#CitationsConfig",
+                    "traits": {
+                        "smithy.api#documentation": "<p>Configuration setting for citations</p>"
+                    }
+                }
+            },
+            "traits": {
+                "smithy.api#documentation": "<p>A search result block that enables natural citations with proper source attribution for retrieved content.</p> <note> <p>This field is only supported by Anthropic Claude Opus 4.1, Opus 4, Sonnet 4.5, Sonnet 4, Sonnet 3.7, and 3.5 Haiku models.</p> </note>"
+            }
+        },
+        "com.amazonaws.bedrockruntime#SearchResultContentBlock": {
+            "type": "structure",
+            "members": {
+                "text": {
+                    "target": "smithy.api#String",
+                    "traits": {
+                        "smithy.api#documentation": "<p>The actual text content</p>",
+                        "smithy.api#required": {}
+                    }
+                }
+            },
+            "traits": {
+                "smithy.api#documentation": "<p>A block within a search result that contains the content.</p>"
+            }
+        },
+        "com.amazonaws.bedrockruntime#SearchResultContentBlocks": {
+            "type": "list",
+            "member": {
+                "target": "com.amazonaws.bedrockruntime#SearchResultContentBlock"
+            }
+        },
+        "com.amazonaws.bedrockruntime#SearchResultLocation": {
+            "type": "structure",
+            "members": {
+                "searchResultIndex": {
+                    "target": "smithy.api#Integer",
+                    "traits": {
+                        "smithy.api#documentation": "<p>The index of the search result content block where the cited content is found.</p>",
+                        "smithy.api#range": {
+                            "min": 0
+                        }
+                    }
+                },
+                "start": {
+                    "target": "smithy.api#Integer",
+                    "traits": {
+                        "smithy.api#documentation": "<p>The starting position in the content array where the cited content begins.</p>",
+                        "smithy.api#range": {
+                            "min": 0
+                        }
+                    }
+                },
+                "end": {
+                    "target": "smithy.api#Integer",
+                    "traits": {
+                        "smithy.api#documentation": "<p>The ending position in the content array where the cited content ends.</p>",
+                        "smithy.api#range": {
+                            "min": 0
+                        }
+                    }
+                }
+            },
+            "traits": {
+                "smithy.api#documentation": "<p>Specifies a search result location within the content array, providing positioning information for cited content using search result index and block positions.</p>"
+            }
+        },
         "com.amazonaws.bedrockruntime#ServiceQuotaExceededException": {
             "type": "structure",
             "members": {
@@ -5842,6 +6537,50 @@
                 "smithy.api#documentation": "<p>Your request exceeds the service quota for your account. You can view your quotas at <a href=\"https://docs.aws.amazon.com/servicequotas/latest/userguide/gs-request-quota.html\">Viewing service quotas</a>. You can resubmit your request later.</p>",
                 "smithy.api#error": "client",
                 "smithy.api#httpError": 400
+            }
+        },
+        "com.amazonaws.bedrockruntime#ServiceTier": {
+            "type": "structure",
+            "members": {
+                "type": {
+                    "target": "com.amazonaws.bedrockruntime#ServiceTierType",
+                    "traits": {
+                        "smithy.api#documentation": "<p>Specifies the processing tier type used for serving the request.</p>",
+                        "smithy.api#required": {}
+                    }
+                }
+            },
+            "traits": {
+                "smithy.api#documentation": "<p>Specifies the processing tier configuration used for serving the request.</p>"
+            }
+        },
+        "com.amazonaws.bedrockruntime#ServiceTierType": {
+            "type": "enum",
+            "members": {
+                "PRIORITY": {
+                    "target": "smithy.api#Unit",
+                    "traits": {
+                        "smithy.api#enumValue": "priority"
+                    }
+                },
+                "DEFAULT": {
+                    "target": "smithy.api#Unit",
+                    "traits": {
+                        "smithy.api#enumValue": "default"
+                    }
+                },
+                "FLEX": {
+                    "target": "smithy.api#Unit",
+                    "traits": {
+                        "smithy.api#enumValue": "flex"
+                    }
+                },
+                "RESERVED": {
+                    "target": "smithy.api#Unit",
+                    "traits": {
+                        "smithy.api#enumValue": "reserved"
+                    }
+                }
             }
         },
         "com.amazonaws.bedrockruntime#ServiceUnavailableException": {
@@ -5897,7 +6636,7 @@
                 }
             },
             "traits": {
-                "smithy.api#documentation": "<p>The model must request a specific tool. For example, <code>{\"tool\" : {\"name\" : \"Your tool name\"}}</code>.</p> <note> <p>This field is only supported by Anthropic Claude 3 models.</p> </note>"
+                "smithy.api#documentation": "<p>The model must request a specific tool. For example, <code>{\"tool\" : {\"name\" : \"Your tool name\"}}</code>. For more information, see <a href=\"https://docs.aws.amazon.com/bedrock/latest/userguide/tool-use.html\">Call a tool with the Converse API</a> in the Amazon Bedrock User Guide</p> <note> <p>This field is only supported by Anthropic Claude 3 models.</p> </note>"
             }
         },
         "com.amazonaws.bedrockruntime#StartAsyncInvoke": {
@@ -6048,6 +6787,24 @@
                     "traits": {
                         "smithy.api#enumValue": "content_filtered"
                     }
+                },
+                "MALFORMED_MODEL_OUTPUT": {
+                    "target": "smithy.api#Unit",
+                    "traits": {
+                        "smithy.api#enumValue": "malformed_model_output"
+                    }
+                },
+                "MALFORMED_TOOL_USE": {
+                    "target": "smithy.api#Unit",
+                    "traits": {
+                        "smithy.api#enumValue": "malformed_tool_use"
+                    }
+                },
+                "MODEL_CONTEXT_WINDOW_EXCEEDED": {
+                    "target": "smithy.api#Unit",
+                    "traits": {
+                        "smithy.api#enumValue": "model_context_window_exceeded"
+                    }
                 }
             }
         },
@@ -6074,13 +6831,28 @@
                 }
             },
             "traits": {
-                "smithy.api#documentation": "<p>A system content block.</p>"
+                "smithy.api#documentation": "<p>Contains configurations for instructions to provide the model for how to handle input. To learn more, see <a href=\"https://docs.aws.amazon.com/bedrock/latest/userguide/conversation-inference-call.html\">Using the Converse API</a>.</p>"
             }
         },
         "com.amazonaws.bedrockruntime#SystemContentBlocks": {
             "type": "list",
             "member": {
                 "target": "com.amazonaws.bedrockruntime#SystemContentBlock"
+            }
+        },
+        "com.amazonaws.bedrockruntime#SystemTool": {
+            "type": "structure",
+            "members": {
+                "name": {
+                    "target": "com.amazonaws.bedrockruntime#ToolName",
+                    "traits": {
+                        "smithy.api#documentation": "<p>The name of the system-defined tool that you want to call. </p>",
+                        "smithy.api#required": {}
+                    }
+                }
+            },
+            "traits": {
+                "smithy.api#documentation": "<p>Specifies a system-defined tool for the model to use. <i>System-defined tools</i> are tools that are created and provided by the model provider.</p>"
             }
         },
         "com.amazonaws.bedrockruntime#Tag": {
@@ -6212,6 +6984,12 @@
                             "min": 0
                         }
                     }
+                },
+                "cacheDetails": {
+                    "target": "com.amazonaws.bedrockruntime#CacheDetailsList",
+                    "traits": {
+                        "smithy.api#documentation": "<p>Detailed breakdown of cache writes by TTL. Empty if no cache creation occurred. Sorted by TTL duration (1h before 5m).</p>"
+                    }
                 }
             },
             "traits": {
@@ -6232,7 +7010,13 @@
                 "toolSpec": {
                     "target": "com.amazonaws.bedrockruntime#ToolSpecification",
                     "traits": {
-                        "smithy.api#documentation": "<p>The specfication for the tool.</p>"
+                        "smithy.api#documentation": "<p>The specfication for the tool. </p>"
+                    }
+                },
+                "systemTool": {
+                    "target": "com.amazonaws.bedrockruntime#SystemTool",
+                    "traits": {
+                        "smithy.api#documentation": "<p>Specifies the system-defined tool that you want use.</p>"
                     }
                 },
                 "cachePoint": {
@@ -6243,7 +7027,7 @@
                 }
             },
             "traits": {
-                "smithy.api#documentation": "<p>Information about a tool that you can use with the Converse API. For more information, see <a href=\"https://docs.aws.amazon.com/bedrock/latest/userguide/tool-use.html\">Tool use (function calling)</a> in the Amazon Bedrock User Guide.</p>"
+                "smithy.api#documentation": "<p>Information about a tool that you can use with the Converse API. For more information, see <a href=\"https://docs.aws.amazon.com/bedrock/latest/userguide/tool-use.html\">Call a tool with the Converse API</a> in the Amazon Bedrock User Guide.</p>"
             }
         },
         "com.amazonaws.bedrockruntime#ToolChoice": {
@@ -6264,12 +7048,12 @@
                 "tool": {
                     "target": "com.amazonaws.bedrockruntime#SpecificToolChoice",
                     "traits": {
-                        "smithy.api#documentation": "<p>The Model must request the specified tool. Only supported by Anthropic Claude 3 models. </p>"
+                        "smithy.api#documentation": "<p>The Model must request the specified tool. Only supported by Anthropic Claude 3 and Amazon Nova models. </p>"
                     }
                 }
             },
             "traits": {
-                "smithy.api#documentation": "<p>Determines which tools the model should request in a call to <code>Converse</code> or <code>ConverseStream</code>. <code>ToolChoice</code> is only supported by Anthropic Claude 3 models and by Mistral AI Mistral Large.</p>"
+                "smithy.api#documentation": "<p>Determines which tools the model should request in a call to <code>Converse</code> or <code>ConverseStream</code>. For more information, see <a href=\"https://docs.aws.amazon.com/bedrock/latest/userguide/tool-use.html\">Call a tool with the Converse API</a> in the Amazon Bedrock User Guide.</p>"
             }
         },
         "com.amazonaws.bedrockruntime#ToolConfiguration": {
@@ -6278,7 +7062,7 @@
                 "tools": {
                     "target": "com.amazonaws.bedrockruntime#Tools",
                     "traits": {
-                        "smithy.api#documentation": "<p>An array of tools that you want to pass to a model.</p>",
+                        "smithy.api#documentation": "<p>An array of tools that you want to pass to a model. </p>",
                         "smithy.api#length": {
                             "min": 1
                         },
@@ -6288,7 +7072,7 @@
                 "toolChoice": {
                     "target": "com.amazonaws.bedrockruntime#ToolChoice",
                     "traits": {
-                        "smithy.api#documentation": "<p>If supported by model, forces the model to request a tool.</p>"
+                        "smithy.api#documentation": "<p>If supported by model, forces the model to request a tool. </p>"
                     }
                 }
             },
@@ -6307,7 +7091,7 @@
                 }
             },
             "traits": {
-                "smithy.api#documentation": "<p>The schema for the tool. The top level schema type must be <code>object</code>. </p>"
+                "smithy.api#documentation": "<p>The schema for the tool. The top level schema type must be <code>object</code>. For more information, see <a href=\"https://docs.aws.amazon.com/bedrock/latest/userguide/tool-use.html\">Call a tool with the Converse API</a> in the Amazon Bedrock User Guide.</p>"
             }
         },
         "com.amazonaws.bedrockruntime#ToolName": {
@@ -6326,7 +7110,7 @@
                 "toolUseId": {
                     "target": "com.amazonaws.bedrockruntime#ToolUseId",
                     "traits": {
-                        "smithy.api#documentation": "<p>The ID of the tool request that this is the result for.</p>",
+                        "smithy.api#documentation": "<p>The ID of the tool request that this is the result for. </p>",
                         "smithy.api#required": {}
                     }
                 },
@@ -6340,12 +7124,71 @@
                 "status": {
                     "target": "com.amazonaws.bedrockruntime#ToolResultStatus",
                     "traits": {
-                        "smithy.api#documentation": "<p>The status for the tool result content block.</p> <note> <p>This field is only supported Anthropic Claude 3 models.</p> </note>"
+                        "smithy.api#documentation": "<p>The status for the tool result content block.</p> <note> <p>This field is only supported by Amazon Nova and Anthropic Claude 3 and 4 models.</p> </note>"
+                    }
+                },
+                "type": {
+                    "target": "smithy.api#String",
+                    "traits": {
+                        "smithy.api#documentation": "<p>The type for the tool result content block.</p>"
                     }
                 }
             },
             "traits": {
-                "smithy.api#documentation": "<p>A tool result block that contains the results for a tool request that the model previously made.</p>"
+                "smithy.api#documentation": "<p>A tool result block that contains the results for a tool request that the model previously made. For more information, see <a href=\"https://docs.aws.amazon.com/bedrock/latest/userguide/tool-use.html\">Call a tool with the Converse API</a> in the Amazon Bedrock User Guide.</p>"
+            }
+        },
+        "com.amazonaws.bedrockruntime#ToolResultBlockDelta": {
+            "type": "union",
+            "members": {
+                "text": {
+                    "target": "smithy.api#String",
+                    "traits": {
+                        "smithy.api#documentation": "<p>The reasoning the model used to return the output.</p>"
+                    }
+                },
+                "json": {
+                    "target": "smithy.api#Document",
+                    "traits": {
+                        "smithy.api#documentation": "<p>The JSON schema for the tool result content block. see <a href=\"https://json-schema.org/understanding-json-schema/reference\">JSON Schema Reference</a>.</p>"
+                    }
+                }
+            },
+            "traits": {
+                "smithy.api#documentation": "<p>Contains incremental updates to tool results information during streaming responses. This allows clients to build up tool results data progressively as the response is generated.</p>"
+            }
+        },
+        "com.amazonaws.bedrockruntime#ToolResultBlockStart": {
+            "type": "structure",
+            "members": {
+                "toolUseId": {
+                    "target": "com.amazonaws.bedrockruntime#ToolUseId",
+                    "traits": {
+                        "smithy.api#documentation": "<p>The ID of the tool that was used to generate this tool result block.</p>",
+                        "smithy.api#required": {}
+                    }
+                },
+                "type": {
+                    "target": "smithy.api#String",
+                    "traits": {
+                        "smithy.api#documentation": "<p>The type for the tool that was used to generate this tool result block.</p>"
+                    }
+                },
+                "status": {
+                    "target": "com.amazonaws.bedrockruntime#ToolResultStatus",
+                    "traits": {
+                        "smithy.api#documentation": "<p>The status of the tool result block.</p>"
+                    }
+                }
+            },
+            "traits": {
+                "smithy.api#documentation": "<p>The start of a tool result block. For more information, see <a href=\"https://docs.aws.amazon.com/bedrock/latest/userguide/tool-use.html\">Call a tool with the Converse API</a> in the Amazon Bedrock User Guide.</p>"
+            }
+        },
+        "com.amazonaws.bedrockruntime#ToolResultBlocksDelta": {
+            "type": "list",
+            "member": {
+                "target": "com.amazonaws.bedrockruntime#ToolResultBlockDelta"
             }
         },
         "com.amazonaws.bedrockruntime#ToolResultContentBlock": {
@@ -6354,19 +7197,19 @@
                 "json": {
                     "target": "smithy.api#Document",
                     "traits": {
-                        "smithy.api#documentation": "<p>A tool result that is JSON format data.</p>"
+                        "smithy.api#documentation": "<p>A tool result that is JSON format data. </p>"
                     }
                 },
                 "text": {
                     "target": "smithy.api#String",
                     "traits": {
-                        "smithy.api#documentation": "<p>A tool result that is text.</p>"
+                        "smithy.api#documentation": "<p>A tool result that is text. </p>"
                     }
                 },
                 "image": {
                     "target": "com.amazonaws.bedrockruntime#ImageBlock",
                     "traits": {
-                        "smithy.api#documentation": "<p>A tool result that is an image.</p> <note> <p>This field is only supported by Anthropic Claude 3 models.</p> </note>"
+                        "smithy.api#documentation": "<p>A tool result that is an image. </p> <note> <p>This field is only supported by Amazon Nova and Anthropic Claude 3 and 4 models.</p> </note>"
                     }
                 },
                 "document": {
@@ -6380,10 +7223,16 @@
                     "traits": {
                         "smithy.api#documentation": "<p>A tool result that is video.</p>"
                     }
+                },
+                "searchResult": {
+                    "target": "com.amazonaws.bedrockruntime#SearchResultBlock",
+                    "traits": {
+                        "smithy.api#documentation": "<p>A tool result that is a search result.</p>"
+                    }
                 }
             },
             "traits": {
-                "smithy.api#documentation": "<p>The tool result content block.</p>"
+                "smithy.api#documentation": "<p>The tool result content block. For more information, see <a href=\"https://docs.aws.amazon.com/bedrock/latest/userguide/tool-use.html\">Call a tool with the Converse API</a> in the Amazon Bedrock User Guide.</p>"
             }
         },
         "com.amazonaws.bedrockruntime#ToolResultContentBlocks": {
@@ -6431,10 +7280,16 @@
                         "smithy.api#documentation": "<p>The input schema for the tool in JSON format.</p>",
                         "smithy.api#required": {}
                     }
+                },
+                "strict": {
+                    "target": "smithy.api#Boolean",
+                    "traits": {
+                        "smithy.api#documentation": "<p>Flag to enable structured output enforcement on a tool usage response.</p>"
+                    }
                 }
             },
             "traits": {
-                "smithy.api#documentation": "<p>The specification for the tool.</p>"
+                "smithy.api#documentation": "<p>The specification for the tool. For more information, see <a href=\"https://docs.aws.amazon.com/bedrock/latest/userguide/tool-use.html\">Call a tool with the Converse API</a> in the Amazon Bedrock User Guide.</p>"
             }
         },
         "com.amazonaws.bedrockruntime#ToolUseBlock": {
@@ -6460,10 +7315,16 @@
                         "smithy.api#documentation": "<p>The input to pass to the tool. </p>",
                         "smithy.api#required": {}
                     }
+                },
+                "type": {
+                    "target": "com.amazonaws.bedrockruntime#ToolUseType",
+                    "traits": {
+                        "smithy.api#documentation": "<p>The type for the tool request.</p>"
+                    }
                 }
             },
             "traits": {
-                "smithy.api#documentation": "<p>A tool use content block. Contains information about a tool that the model is requesting be run., The model uses the result from the tool to generate a response. </p>"
+                "smithy.api#documentation": "<p>A tool use content block. Contains information about a tool that the model is requesting be run., The model uses the result from the tool to generate a response. For more information, see <a href=\"https://docs.aws.amazon.com/bedrock/latest/userguide/tool-use.html\">Call a tool with the Converse API</a> in the Amazon Bedrock User Guide.</p>"
             }
         },
         "com.amazonaws.bedrockruntime#ToolUseBlockDelta": {
@@ -6497,10 +7358,16 @@
                         "smithy.api#documentation": "<p>The name of the tool that the model is requesting to use.</p>",
                         "smithy.api#required": {}
                     }
+                },
+                "type": {
+                    "target": "com.amazonaws.bedrockruntime#ToolUseType",
+                    "traits": {
+                        "smithy.api#documentation": "<p>The type for the tool request.</p>"
+                    }
                 }
             },
             "traits": {
-                "smithy.api#documentation": "<p>The start of a tool use block.</p>"
+                "smithy.api#documentation": "<p>The start of a tool use block. For more information, see <a href=\"https://docs.aws.amazon.com/bedrock/latest/userguide/tool-use.html\">Call a tool with the Converse API</a> in the Amazon Bedrock User Guide.</p>"
             }
         },
         "com.amazonaws.bedrockruntime#ToolUseId": {
@@ -6511,6 +7378,17 @@
                     "max": 64
                 },
                 "smithy.api#pattern": "^[a-zA-Z0-9_-]+$"
+            }
+        },
+        "com.amazonaws.bedrockruntime#ToolUseType": {
+            "type": "enum",
+            "members": {
+                "SERVER_TOOL_USE": {
+                    "target": "smithy.api#Unit",
+                    "traits": {
+                        "smithy.api#enumValue": "server_tool_use"
+                    }
+                }
             }
         },
         "com.amazonaws.bedrockruntime#Tools": {
@@ -6657,6 +7535,26 @@
             },
             "traits": {
                 "smithy.api#documentation": "<p>A video source. You can upload a smaller video as a base64-encoded string as long as the encoded file is less than 25MB. You can also transfer videos up to 1GB in size from an S3 bucket.</p>"
+            }
+        },
+        "com.amazonaws.bedrockruntime#WebLocation": {
+            "type": "structure",
+            "members": {
+                "url": {
+                    "target": "smithy.api#String",
+                    "traits": {
+                        "smithy.api#documentation": "<p>The URL that was cited when performing a web search.</p>"
+                    }
+                },
+                "domain": {
+                    "target": "smithy.api#String",
+                    "traits": {
+                        "smithy.api#documentation": "<p>The domain that was cited when performing a web search.</p>"
+                    }
+                }
+            },
+            "traits": {
+                "smithy.api#documentation": "<p>Provides the URL and domain information for the website that was cited when performing a web search.</p>"
             }
         }
     }

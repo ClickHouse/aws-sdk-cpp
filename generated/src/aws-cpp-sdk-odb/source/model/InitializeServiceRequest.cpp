@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: Apache-2.0.
  */
 
-#include <aws/odb/model/InitializeServiceRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
+#include <aws/odb/model/InitializeServiceRequest.h>
 
 #include <utility>
 
@@ -12,19 +12,18 @@ using namespace Aws::odb::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-Aws::String InitializeServiceRequest::SerializePayload() const
-{
-  return "{}";
+Aws::String InitializeServiceRequest::SerializePayload() const {
+  JsonValue payload;
+
+  if (m_ociIdentityDomainHasBeenSet) {
+    payload.WithBool("ociIdentityDomain", m_ociIdentityDomain);
+  }
+
+  return payload.View().WriteReadable();
 }
 
-Aws::Http::HeaderValueCollection InitializeServiceRequest::GetRequestSpecificHeaders() const
-{
+Aws::Http::HeaderValueCollection InitializeServiceRequest::GetRequestSpecificHeaders() const {
   Aws::Http::HeaderValueCollection headers;
   headers.insert(Aws::Http::HeaderValuePair("X-Amz-Target", "Odb.InitializeService"));
   return headers;
-
 }
-
-
-
-

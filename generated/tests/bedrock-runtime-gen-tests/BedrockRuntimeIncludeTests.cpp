@@ -6,7 +6,9 @@
 #include <gtest/gtest.h>
 #include <aws/testing/AwsTestHelpers.h>
 
+#include <aws/bedrock-runtime/BedrockRuntimeAwsBearerTokenIdentityResolver.h>
 #include <aws/bedrock-runtime/BedrockRuntimeClient.h>
+#include <aws/bedrock-runtime/BedrockRuntimeClientConfiguration.h>
 #include <aws/bedrock-runtime/BedrockRuntimeEndpointProvider.h>
 #include <aws/bedrock-runtime/BedrockRuntimeEndpointRules.h>
 #include <aws/bedrock-runtime/BedrockRuntimeErrorMarshaller.h>
@@ -15,17 +17,23 @@
 #include <aws/bedrock-runtime/BedrockRuntimeServiceClientModel.h>
 #include <aws/bedrock-runtime/BedrockRuntime_EXPORTS.h>
 #include <aws/bedrock-runtime/model/AnyToolChoice.h>
+#include <aws/bedrock-runtime/model/AppliedGuardrailDetails.h>
 #include <aws/bedrock-runtime/model/ApplyGuardrailRequest.h>
 #include <aws/bedrock-runtime/model/ApplyGuardrailResult.h>
 #include <aws/bedrock-runtime/model/AsyncInvokeOutputDataConfig.h>
 #include <aws/bedrock-runtime/model/AsyncInvokeS3OutputDataConfig.h>
 #include <aws/bedrock-runtime/model/AsyncInvokeStatus.h>
 #include <aws/bedrock-runtime/model/AsyncInvokeSummary.h>
+#include <aws/bedrock-runtime/model/AudioBlock.h>
+#include <aws/bedrock-runtime/model/AudioFormat.h>
+#include <aws/bedrock-runtime/model/AudioSource.h>
 #include <aws/bedrock-runtime/model/AutoToolChoice.h>
 #include <aws/bedrock-runtime/model/BidirectionalInputPayloadPart.h>
 #include <aws/bedrock-runtime/model/BidirectionalOutputPayloadPart.h>
+#include <aws/bedrock-runtime/model/CacheDetail.h>
 #include <aws/bedrock-runtime/model/CachePointBlock.h>
 #include <aws/bedrock-runtime/model/CachePointType.h>
+#include <aws/bedrock-runtime/model/CacheTTL.h>
 #include <aws/bedrock-runtime/model/Citation.h>
 #include <aws/bedrock-runtime/model/CitationGeneratedContent.h>
 #include <aws/bedrock-runtime/model/CitationLocation.h>
@@ -64,6 +72,7 @@
 #include <aws/bedrock-runtime/model/DocumentFormat.h>
 #include <aws/bedrock-runtime/model/DocumentPageLocation.h>
 #include <aws/bedrock-runtime/model/DocumentSource.h>
+#include <aws/bedrock-runtime/model/ErrorBlock.h>
 #include <aws/bedrock-runtime/model/GetAsyncInvokeRequest.h>
 #include <aws/bedrock-runtime/model/GetAsyncInvokeResult.h>
 #include <aws/bedrock-runtime/model/GuardrailAction.h>
@@ -114,8 +123,10 @@
 #include <aws/bedrock-runtime/model/GuardrailInvocationMetrics.h>
 #include <aws/bedrock-runtime/model/GuardrailManagedWord.h>
 #include <aws/bedrock-runtime/model/GuardrailManagedWordType.h>
+#include <aws/bedrock-runtime/model/GuardrailOrigin.h>
 #include <aws/bedrock-runtime/model/GuardrailOutputContent.h>
 #include <aws/bedrock-runtime/model/GuardrailOutputScope.h>
+#include <aws/bedrock-runtime/model/GuardrailOwnership.h>
 #include <aws/bedrock-runtime/model/GuardrailPiiEntityFilter.h>
 #include <aws/bedrock-runtime/model/GuardrailPiiEntityType.h>
 #include <aws/bedrock-runtime/model/GuardrailRegexFilter.h>
@@ -135,6 +146,8 @@
 #include <aws/bedrock-runtime/model/GuardrailWordPolicyAction.h>
 #include <aws/bedrock-runtime/model/GuardrailWordPolicyAssessment.h>
 #include <aws/bedrock-runtime/model/ImageBlock.h>
+#include <aws/bedrock-runtime/model/ImageBlockDelta.h>
+#include <aws/bedrock-runtime/model/ImageBlockStart.h>
 #include <aws/bedrock-runtime/model/ImageFormat.h>
 #include <aws/bedrock-runtime/model/ImageSource.h>
 #include <aws/bedrock-runtime/model/InferenceConfiguration.h>
@@ -149,6 +162,7 @@
 #include <aws/bedrock-runtime/model/InvokeModelWithResponseStreamHandler.h>
 #include <aws/bedrock-runtime/model/InvokeModelWithResponseStreamInitialResponse.h>
 #include <aws/bedrock-runtime/model/InvokeModelWithResponseStreamRequest.h>
+#include <aws/bedrock-runtime/model/JsonSchemaDefinition.h>
 #include <aws/bedrock-runtime/model/ListAsyncInvokesRequest.h>
 #include <aws/bedrock-runtime/model/ListAsyncInvokesResult.h>
 #include <aws/bedrock-runtime/model/Message.h>
@@ -156,6 +170,10 @@
 #include <aws/bedrock-runtime/model/MessageStopEvent.h>
 #include <aws/bedrock-runtime/model/ModelErrorException.h>
 #include <aws/bedrock-runtime/model/ModelStreamErrorException.h>
+#include <aws/bedrock-runtime/model/OutputConfig.h>
+#include <aws/bedrock-runtime/model/OutputFormat.h>
+#include <aws/bedrock-runtime/model/OutputFormatStructure.h>
+#include <aws/bedrock-runtime/model/OutputFormatType.h>
 #include <aws/bedrock-runtime/model/PayloadPart.h>
 #include <aws/bedrock-runtime/model/PerformanceConfigLatency.h>
 #include <aws/bedrock-runtime/model/PerformanceConfiguration.h>
@@ -166,6 +184,11 @@
 #include <aws/bedrock-runtime/model/ReasoningTextBlock.h>
 #include <aws/bedrock-runtime/model/ResponseStream.h>
 #include <aws/bedrock-runtime/model/S3Location.h>
+#include <aws/bedrock-runtime/model/SearchResultBlock.h>
+#include <aws/bedrock-runtime/model/SearchResultContentBlock.h>
+#include <aws/bedrock-runtime/model/SearchResultLocation.h>
+#include <aws/bedrock-runtime/model/ServiceTier.h>
+#include <aws/bedrock-runtime/model/ServiceTierType.h>
 #include <aws/bedrock-runtime/model/SortAsyncInvocationBy.h>
 #include <aws/bedrock-runtime/model/SortOrder.h>
 #include <aws/bedrock-runtime/model/SpecificToolChoice.h>
@@ -173,6 +196,7 @@
 #include <aws/bedrock-runtime/model/StartAsyncInvokeResult.h>
 #include <aws/bedrock-runtime/model/StopReason.h>
 #include <aws/bedrock-runtime/model/SystemContentBlock.h>
+#include <aws/bedrock-runtime/model/SystemTool.h>
 #include <aws/bedrock-runtime/model/Tag.h>
 #include <aws/bedrock-runtime/model/TokenUsage.h>
 #include <aws/bedrock-runtime/model/Tool.h>
@@ -180,16 +204,20 @@
 #include <aws/bedrock-runtime/model/ToolConfiguration.h>
 #include <aws/bedrock-runtime/model/ToolInputSchema.h>
 #include <aws/bedrock-runtime/model/ToolResultBlock.h>
+#include <aws/bedrock-runtime/model/ToolResultBlockDelta.h>
+#include <aws/bedrock-runtime/model/ToolResultBlockStart.h>
 #include <aws/bedrock-runtime/model/ToolResultContentBlock.h>
 #include <aws/bedrock-runtime/model/ToolResultStatus.h>
 #include <aws/bedrock-runtime/model/ToolSpecification.h>
 #include <aws/bedrock-runtime/model/ToolUseBlock.h>
 #include <aws/bedrock-runtime/model/ToolUseBlockDelta.h>
 #include <aws/bedrock-runtime/model/ToolUseBlockStart.h>
+#include <aws/bedrock-runtime/model/ToolUseType.h>
 #include <aws/bedrock-runtime/model/Trace.h>
 #include <aws/bedrock-runtime/model/VideoBlock.h>
 #include <aws/bedrock-runtime/model/VideoFormat.h>
 #include <aws/bedrock-runtime/model/VideoSource.h>
+#include <aws/bedrock-runtime/model/WebLocation.h>
 
 using BedrockRuntimeIncludeTest = ::testing::Test;
 

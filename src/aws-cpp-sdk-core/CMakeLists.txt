@@ -60,6 +60,7 @@ file(GLOB PLATFORM_HEADERS "include/aws/core/platform/*.h")
 file(GLOB UTILS_HEADERS "include/aws/core/utils/*.h")
 file(GLOB UTILS_EVENT_HEADERS "include/aws/core/utils/event/*.h")
 file(GLOB UTILS_BASE64_HEADERS "include/aws/core/utils/base64/*.h")
+file(GLOB UTILS_CHECKSUM_HEADERS "include/aws/core/utils/checksum/*.h")
 file(GLOB UTILS_CRYPTO_HEADERS "include/aws/core/utils/crypto/*.h")
 file(GLOB UTILS_JSON_HEADERS "include/aws/core/utils/json/*.h")
 file(GLOB UTILS_CBOR_HEADERS "include/aws/core/utils/cbor/*.h")
@@ -69,6 +70,7 @@ file(GLOB UTILS_MEMORY_HEADERS "include/aws/core/utils/memory/*.h")
 file(GLOB UTILS_COMPONENT_REGISTRY_HEADERS "include/aws/core/utils/component-registry/*.h")
 file(GLOB UTILS_STL_HEADERS "include/aws/core/utils/memory/stl/*.h")
 file(GLOB UTILS_LOGGING_HEADERS "include/aws/core/utils/logging/*.h")
+file(GLOB UTILS_PAGINATION_HEADERS "include/aws/core/utils/pagination/*.h")
 file(GLOB UTILS_RATE_LIMITER_HEADERS "include/aws/core/utils/ratelimiter/*.h")
 file(GLOB UTILS_STREAM_HEADERS "include/aws/core/utils/stream/*.h")
 file(GLOB CJSON_HEADERS "include/aws/core/external/cjson/*.h")
@@ -114,6 +116,7 @@ file(GLOB MONITORING_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/monitoring/*.cpp
 file(GLOB UTILS_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/utils/*.cpp")
 file(GLOB UTILS_EVENT_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/utils/event/*.cpp")
 file(GLOB UTILS_BASE64_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/utils/base64/*.cpp")
+file(GLOB UTILS_CHECKSUM_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/utils/checksum/*.cpp")
 file(GLOB UTILS_CRYPTO_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/utils/crypto/*.cpp")
 file(GLOB UTILS_JSON_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/utils/json/*.cpp")
 file(GLOB UTILS_CBOR_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/utils/cbor/*.cpp")
@@ -268,6 +271,7 @@ file(GLOB AWS_NATIVE_SDK_COMMON_HEADERS
   ${UTILS_HEADERS}
   ${UTILS_EVENT_HEADERS}
   ${UTILS_BASE64_HEADERS}
+  ${UTILS_CHECKSUM_HEADERS}
   ${UTILS_CRYPTO_HEADERS}
   ${UTILS_JSON_HEADERS}
   ${UTILS_CBOR_HEADERS}
@@ -279,6 +283,7 @@ file(GLOB AWS_NATIVE_SDK_COMMON_HEADERS
   ${UTILS_COMPONENT_REGISTRY_HEADERS}
   ${UTILS_STL_HEADERS}
   ${UTILS_STREAM_HEADERS}
+  ${UTILS_PAGINATION_HEADERS}
   ${UTILS_RATE_LIMITER_HEADERS}
   ${CJSON_HEADERS}
   ${TINYXML2_HEADERS}
@@ -358,6 +363,7 @@ file(GLOB AWS_NATIVE_SDK_NON_UNITY_SRC
     ${HTTP_SOURCE}
     ${CJSON_SOURCE}
     ${AWS_NATIVE_SDK_CUSTOM_SRC}
+    ${UTILS_CHECKSUM_SOURCE}
     ${UTILS_CRYPTO_SOURCE}
     ${OPTEL_SOURCE}
 )
@@ -405,6 +411,7 @@ if(MSVC)
     source_group("Header Files\\aws\\core\\platform" FILES ${PLATFORM_HEADERS})
     source_group("Header Files\\aws\\core\\utils" FILES ${UTILS_HEADERS})
     source_group("Header Files\\aws\\core\\utils\\base64" FILES ${UTILS_BASE64_HEADERS})
+    source_group("Header Files\\aws\\core\\utils\\checksum" FILES ${UTILS_CHECKSUM_HEADERS})
     source_group("Header Files\\aws\\core\\utils\\crypto" FILES ${UTILS_CRYPTO_HEADERS})
     source_group("Header Files\\aws\\core\\utils\\crypto\\crt" FILES ${UTILS_CRYPTO_CRT_HEADERS})
     source_group("Header Files\\aws\\core\\utils\\event" FILES ${UTILS_EVENT_HEADERS})
@@ -418,6 +425,7 @@ if(MSVC)
     source_group("Header Files\\aws\\core\\utils\\component-registry" FILES ${UTILS_COMPONENT_REGISTRY_HEADERS})
     source_group("Header Files\\aws\\core\\utils\\memory\\stl" FILES ${UTILS_STL_HEADERS})
     source_group("Header Files\\aws\\core\\utils\\stream" FILES ${UTILS_STREAM_HEADERS})
+    source_group("Header Files\\aws\\core\\utils\\pagination" FILES ${UTILS_PAGINATION_HEADERS})
     source_group("Header Files\\aws\\core\\utils\\ratelimiter" FILES ${UTILS_RATE_LIMITER_HEADERS})
     source_group("Header Files\\aws\\core\\external\\cjson" FILES ${CJSON_HEADERS})
     source_group("Header Files\\aws\\core\\external\\tinyxml2" FILES ${TINYXML2_HEADERS})
@@ -473,6 +481,7 @@ if(MSVC)
     source_group("Source Files\\platform\\windows" FILES ${PLATFORM_WINDOWS_SOURCE})
     source_group("Source Files\\utils" FILES ${UTILS_SOURCE})
     source_group("Source Files\\utils\\base64" FILES ${UTILS_BASE64_SOURCE})
+    source_group("Source Files\\utils\\checksum" FILES ${UTILS_CHECKSUM_SOURCE})
     source_group("Source Files\\utils\\crypto" FILES ${UTILS_CRYPTO_SOURCE})
     source_group("Source Files\\utils\\crypto\\factory" FILES ${UTILS_CRYPTO_FACTORY_SOURCE})
     source_group("Source Files\\utils\\event" FILES ${UTILS_EVENT_SOURCE})
@@ -688,6 +697,7 @@ install (FILES ${PLATFORM_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/aws/core/pla
 install (FILES ${UTILS_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/aws/core/utils)
 install (FILES ${UTILS_EVENT_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/aws/core/utils/event)
 install (FILES ${UTILS_BASE64_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/aws/core/utils/base64)
+install (FILES ${UTILS_CHECKSUM_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/aws/core/utils/checksum)
 install (FILES ${UTILS_CRYPTO_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/aws/core/utils/crypto)
 install (FILES ${UTILS_JSON_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/aws/core/utils/json)
 install (FILES ${UTILS_CBOR_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/aws/core/utils/cbor)
@@ -697,6 +707,7 @@ install (FILES ${UTILS_LOGGING_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/aws/cor
 install (FILES ${UTILS_MEMORY_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/aws/core/utils/memory)
 install (FILES ${UTILS_COMPONENT_REGISTRY_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/aws/core/utils/component-registry)
 install (FILES ${UTILS_STL_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/aws/core/utils/memory/stl)
+install (FILES ${UTILS_PAGINATION_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/aws/core/utils/pagination)
 install (FILES ${UTILS_RATE_LIMITER_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/aws/core/utils/ratelimiter)
 install (FILES ${UTILS_STREAM_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/aws/core/utils/stream)
 install (FILES ${UTILS_THREADING_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/aws/core/utils/threading)

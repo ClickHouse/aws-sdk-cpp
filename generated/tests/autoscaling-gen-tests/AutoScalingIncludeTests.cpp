@@ -68,6 +68,7 @@
 #include <aws/autoscaling/model/DeleteTagsRequest.h>
 #include <aws/autoscaling/model/DeleteWarmPoolRequest.h>
 #include <aws/autoscaling/model/DeleteWarmPoolResult.h>
+#include <aws/autoscaling/model/DeletionProtection.h>
 #include <aws/autoscaling/model/DescribeAccountLimitsRequest.h>
 #include <aws/autoscaling/model/DescribeAccountLimitsResult.h>
 #include <aws/autoscaling/model/DescribeAdjustmentTypesRequest.h>
@@ -134,7 +135,9 @@
 #include <aws/autoscaling/model/GetPredictiveScalingForecastResult.h>
 #include <aws/autoscaling/model/ImpairedZoneHealthCheckBehavior.h>
 #include <aws/autoscaling/model/Instance.h>
+#include <aws/autoscaling/model/InstanceCollection.h>
 #include <aws/autoscaling/model/InstanceGeneration.h>
+#include <aws/autoscaling/model/InstanceLifecyclePolicy.h>
 #include <aws/autoscaling/model/InstanceMaintenancePolicy.h>
 #include <aws/autoscaling/model/InstanceMetadataEndpointState.h>
 #include <aws/autoscaling/model/InstanceMetadataHttpTokensState.h>
@@ -149,6 +152,9 @@
 #include <aws/autoscaling/model/InstanceReusePolicy.h>
 #include <aws/autoscaling/model/InstancesDistribution.h>
 #include <aws/autoscaling/model/LaunchConfiguration.h>
+#include <aws/autoscaling/model/LaunchInstancesError.h>
+#include <aws/autoscaling/model/LaunchInstancesRequest.h>
+#include <aws/autoscaling/model/LaunchInstancesResult.h>
 #include <aws/autoscaling/model/LaunchTemplate.h>
 #include <aws/autoscaling/model/LaunchTemplateOverrides.h>
 #include <aws/autoscaling/model/LaunchTemplateSpecification.h>
@@ -204,6 +210,9 @@
 #include <aws/autoscaling/model/RefreshStrategy.h>
 #include <aws/autoscaling/model/ResponseMetadata.h>
 #include <aws/autoscaling/model/ResumeProcessesRequest.h>
+#include <aws/autoscaling/model/RetentionAction.h>
+#include <aws/autoscaling/model/RetentionTriggers.h>
+#include <aws/autoscaling/model/RetryStrategy.h>
 #include <aws/autoscaling/model/RollbackDetails.h>
 #include <aws/autoscaling/model/RollbackInstanceRefreshRequest.h>
 #include <aws/autoscaling/model/RollbackInstanceRefreshResult.h>

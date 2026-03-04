@@ -12,6 +12,7 @@
 #include <smithy/Smithy_EXPORTS.h>
 #include <smithy/identity/auth/AuthSchemeOption.h>
 #include <smithy/interceptor/InterceptorContext.h>
+#include <smithy/identity/auth/AuthSchemeResolverBase.h>
 
 namespace smithy
 {
@@ -23,6 +24,7 @@ namespace smithy
             using AwsCoreError = Aws::Client::AWSError<Aws::Client::CoreErrors>;
             using HttpResponseOutcome = Aws::Utils::Outcome<std::shared_ptr<Aws::Http::HttpResponse>, AwsCoreError>;
             using ResponseHandlerFunc = std::function<void(HttpResponseOutcome&&)>;
+            using AuthResolvedCallback = std::function<void(std::shared_ptr<AwsSmithyClientAsyncRequestContext>)>;
 
             struct RequestInfo
             {
@@ -68,21 +70,25 @@ namespace smithy
             Aws::Vector<void*> m_monitoringContexts;
 
             ResponseHandlerFunc m_responseHandler;
+            AuthResolvedCallback m_authResolvedCallback;
             std::shared_ptr<Aws::Utils::Threading::Executor> m_pExecutor;
             std::shared_ptr<interceptor::InterceptorContext> m_interceptorContext;
             std::shared_ptr<smithy::AwsIdentity> m_awsIdentity;
+            std::shared_ptr<smithy::AuthSchemeResolverBase<>> m_authResolver;
 
             AwsSmithyClientAsyncRequestContext() = default;
 
             AwsSmithyClientAsyncRequestContext(
                 Aws::AmazonWebServiceRequest const * const request,
                 const char* requestName,
-                std::shared_ptr<Aws::Utils::Threading::Executor> pExecutor):
+                std::shared_ptr<Aws::Utils::Threading::Executor> pExecutor,
+                std::shared_ptr<smithy::AuthSchemeResolverBase<>> authResolver):
                 m_invocationId{Aws::Utils::UUID::PseudoRandomUUID()},
                 m_pRequest{request},
                 m_requestName{requestName ? requestName : m_pRequest ?  m_pRequest->GetServiceRequestName() : ""},
                 m_retryCount{0},
-                m_pExecutor{pExecutor}
+                m_pExecutor{pExecutor},
+                m_authResolver{authResolver}
             {
 
             }

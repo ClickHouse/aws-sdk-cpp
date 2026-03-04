@@ -27,6 +27,7 @@
 #include <aws/secretsmanager/model/DeleteSecretResult.h>
 #include <aws/secretsmanager/model/DescribeSecretRequest.h>
 #include <aws/secretsmanager/model/DescribeSecretResult.h>
+#include <aws/secretsmanager/model/ExternalSecretRotationMetadataItem.h>
 #include <aws/secretsmanager/model/Filter.h>
 #include <aws/secretsmanager/model/FilterNameStringType.h>
 #include <aws/secretsmanager/model/GetRandomPasswordRequest.h>
@@ -57,6 +58,7 @@
 #include <aws/secretsmanager/model/SecretListEntry.h>
 #include <aws/secretsmanager/model/SecretValueEntry.h>
 #include <aws/secretsmanager/model/SecretVersionsListEntry.h>
+#include <aws/secretsmanager/model/SortByType.h>
 #include <aws/secretsmanager/model/SortOrderType.h>
 #include <aws/secretsmanager/model/StatusType.h>
 #include <aws/secretsmanager/model/StopReplicationToReplicaRequest.h>

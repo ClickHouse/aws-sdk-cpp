@@ -116,6 +116,8 @@ public class JsonCppClientGenerator extends CppClientGenerator {
             Template template;
             VelocityContext context = createContext(serviceModel);
 
+            context.put("operation", serviceModel.getOperationForRequestShapeName(shape.getName()));
+
             if (shape.isRequest() && (shape.hasStreamMembers() || shape.hasEventStreamMembers())) {
                 if (shape.hasEventStreamMembers()) {
                     HashMap<String, String> headersMap = new HashMap<>(10);
@@ -136,7 +138,6 @@ public class JsonCppClientGenerator extends CppClientGenerator {
                 template = velocityEngine.getTemplate("/com/amazonaws/util/awsclientgenerator/velocity/cpp/json/JsonSubObjectSource.vm", StandardCharsets.UTF_8.name());
             }
 
-            context.put("operation", serviceModel.getOperationForRequestShapeName(shape.getName()));
             context.put("shape", shape);
             context.put("typeInfo", new CppShapeInformation(shape, serviceModel));
             context.put("CppViewHelper", CppViewHelper.class);
@@ -152,7 +153,7 @@ public class JsonCppClientGenerator extends CppClientGenerator {
     @Override
     protected SdkFileEntry generateClientHeaderFile(final ServiceModel serviceModel) throws Exception {
 
-        if (serviceModel.isUseSmithyClient() && !serviceModel.hasEventStreamingRequestShapes()) {
+        if (serviceModel.isUseSmithyClient()) {
             return generateClientSmithyHeaderFile(serviceModel);
         }
 
@@ -174,7 +175,7 @@ public class JsonCppClientGenerator extends CppClientGenerator {
 
         return serviceModelsIndices.stream().map(index -> 
         {
-            if(serviceModels.get(index).isUseSmithyClient() && !serviceModels.get(index).hasEventStreamingRequestShapes())
+            if(serviceModels.get(index).isUseSmithyClient())
             {
                 return GenerateSmithyClientSourceFile(serviceModels.get(index), index, Optional.empty());
             }

@@ -5,9 +5,8 @@
 
 package com.amazonaws.util.awsclientgenerator.domainmodels.codegeneration.cpp;
 
-import com.amazonaws.util.awsclientgenerator.domainmodels.codegeneration.Metadata;
-import com.amazonaws.util.awsclientgenerator.domainmodels.codegeneration.Shape;
-import com.amazonaws.util.awsclientgenerator.domainmodels.codegeneration.ShapeMember;
+import com.amazonaws.util.awsclientgenerator.domainmodels.codegeneration.*;
+import com.amazonaws.util.awsclientgenerator.generators.cpp.CppClientGenerator;
 import com.amazonaws.util.awsclientgenerator.transform.CoreErrors;
 import com.google.common.base.CaseFormat;
 import com.google.common.collect.ImmutableMap;
@@ -33,6 +32,7 @@ public class CppViewHelper {
     private static final Map<String, String> CORAL_PROTOCOL_TO_CONTENT_TYPE_MAPPING = new HashMap<>();
     private static final Map<String, String> CORAL_PROTOCOL_TO_PAYLOAD_TYPE_MAPPING = new HashMap<>();
     private static final Map<String, String> C2J_TIMESTAMP_FORMAT_TO_CPP_DATE_TIME_FORMAT = new HashMap<>();
+    private static final Map<String, String> CORAL_AUTH_TO_SCHEME_MAPPING = new HashMap<>();
 
     private static final Set<String> FORBIDDEN_FUNCTION_NAMES =
             ImmutableSet.<String>builder()
@@ -122,6 +122,15 @@ public class CppViewHelper {
 
         C2J_TIMESTAMP_FORMAT_TO_CPP_DATE_TIME_FORMAT.put("rfc822", "RFC822");
         C2J_TIMESTAMP_FORMAT_TO_CPP_DATE_TIME_FORMAT.put("iso8601", "ISO_8601");
+
+        CORAL_AUTH_TO_SCHEME_MAPPING.put("aws.auth#sigv4", "smithy::SigV4AuthSchemeOption::sigV4AuthSchemeOption");
+        CORAL_AUTH_TO_SCHEME_MAPPING.put("aws.auth#sigv4a", "smithy::SigV4aAuthSchemeOption::sigV4aAuthSchemeOption");
+        CORAL_AUTH_TO_SCHEME_MAPPING.put("smithy.api#httpBearerAuth", "smithy::BearerTokenAuthSchemeOption::bearerTokenAuthSchemeOption");
+        CORAL_AUTH_TO_SCHEME_MAPPING.put("bearer", "smithy::BearerTokenAuthSchemeOption::bearerTokenAuthSchemeOption");
+        CORAL_AUTH_TO_SCHEME_MAPPING.put("v4", "smithy::SigV4AuthSchemeOption::sigV4AuthSchemeOption");
+        CORAL_AUTH_TO_SCHEME_MAPPING.put("v2", "smithy::SigV4AuthSchemeOption::sigV4AuthSchemeOption");
+        CORAL_AUTH_TO_SCHEME_MAPPING.put("sigv4-s3express", "S3ExpressSigV4AuthSchemeOption::s3ExpressSigV4AuthSchemeOption");
+        CORAL_AUTH_TO_SCHEME_MAPPING.put("smithy.api#noAuth", "smithy::NoAuthSchemeOption::noAuthSchemeOption");
     }
 
     private static final ImmutableMap<String, String> EVENT_STREAM_HEADER_ACCESSORS = ImmutableMap.of(
@@ -350,6 +359,10 @@ public class CppViewHelper {
         Queue<Shape> toVisit = shape.getMembers().values().stream().map(ShapeMember::getShape).collect(Collectors.toCollection(() -> new LinkedList<>()));
         boolean includeUtilityHeader = false;
         boolean includeMemoryHeader = false;
+
+        if(shape.isResult()){ //All result types will have a GetResponseCode function
+            headers.add("<aws/core/http/HttpResponse.h>");
+        }
 
         while(!toVisit.isEmpty()) {
             Shape next = toVisit.remove();
@@ -594,10 +607,34 @@ public class CppViewHelper {
                 .anyMatch(shapeMember -> shapeMember.getShape().isList() && shapeMember.isUsedForHeader());
     }
 
-    public static String getEventStreamHeaderAccessorName(final Shape shape) {
+    public static String getEventStreamHeaderValue(final String variableName, final Shape shape) {
         if (!EVENT_STREAM_HEADER_ACCESSORS.containsKey(shape.getType())) {
             throw new RuntimeException("No event stream header accessor found for shape type: " + shape.getType());
         }
-        return EVENT_STREAM_HEADER_ACCESSORS.get(shape.getType());
+        final String value = String.format("%s->second.%s",
+                variableName,
+                EVENT_STREAM_HEADER_ACCESSORS.get(shape.getType()));
+        if (shape.isEnum()) {
+            return String.format("%sMapper::Get%sForName(%s)",
+                    shape.getName(),
+                    shape.getName(),
+                    value);
+        }
+        return value;
+    }
+
+    public static String computeAuthSchemes(final Operation op) {
+        if(op.getAuth() == null || op.getAuth().isEmpty()) {
+            return "";
+        }
+        return op.getAuth().stream()
+                .map(key -> {
+                    if (CORAL_AUTH_TO_SCHEME_MAPPING.containsKey(key)) {
+                        return CORAL_AUTH_TO_SCHEME_MAPPING.get(key);
+                    }
+                    else {
+                        throw new RuntimeException(String.format("Unknown auth scheme (%s) for operation: %s", op.getName(), key));
+                    }
+                }).collect(Collectors.joining(","));
     }
 }

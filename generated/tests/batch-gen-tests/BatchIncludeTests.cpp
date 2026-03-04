@@ -36,6 +36,7 @@
 #include <aws/batch/model/ComputeEnvironmentOrder.h>
 #include <aws/batch/model/ComputeResource.h>
 #include <aws/batch/model/ComputeResourceUpdate.h>
+#include <aws/batch/model/ComputeScalingPolicy.h>
 #include <aws/batch/model/ConsumableResourceProperties.h>
 #include <aws/batch/model/ConsumableResourceRequirement.h>
 #include <aws/batch/model/ConsumableResourceSummary.h>
@@ -117,7 +118,10 @@
 #include <aws/batch/model/EksVolume.h>
 #include <aws/batch/model/EphemeralStorage.h>
 #include <aws/batch/model/EvaluateOnExit.h>
+#include <aws/batch/model/FairshareCapacityUsage.h>
+#include <aws/batch/model/FairshareCapacityUtilization.h>
 #include <aws/batch/model/FairsharePolicy.h>
+#include <aws/batch/model/FairshareUtilizationDetail.h>
 #include <aws/batch/model/FargatePlatformConfiguration.h>
 #include <aws/batch/model/FirelensConfiguration.h>
 #include <aws/batch/model/FirelensConfigurationType.h>
@@ -129,6 +133,7 @@
 #include <aws/batch/model/ImagePullSecret.h>
 #include <aws/batch/model/JQState.h>
 #include <aws/batch/model/JQStatus.h>
+#include <aws/batch/model/JobCapacityUsageSummary.h>
 #include <aws/batch/model/JobDefinition.h>
 #include <aws/batch/model/JobDefinitionType.h>
 #include <aws/batch/model/JobDependency.h>
@@ -173,6 +178,8 @@
 #include <aws/batch/model/NodeRangeProperty.h>
 #include <aws/batch/model/OrchestrationType.h>
 #include <aws/batch/model/PlatformCapability.h>
+#include <aws/batch/model/QueueSnapshotCapacityUsage.h>
+#include <aws/batch/model/QueueSnapshotUtilizationDetail.h>
 #include <aws/batch/model/RegisterJobDefinitionRequest.h>
 #include <aws/batch/model/RegisterJobDefinitionResult.h>
 #include <aws/batch/model/RepositoryCredentials.h>
@@ -190,6 +197,8 @@
 #include <aws/batch/model/ServiceEnvironmentStatus.h>
 #include <aws/batch/model/ServiceEnvironmentType.h>
 #include <aws/batch/model/ServiceJobAttemptDetail.h>
+#include <aws/batch/model/ServiceJobCapacityUsageDetail.h>
+#include <aws/batch/model/ServiceJobCapacityUsageSummary.h>
 #include <aws/batch/model/ServiceJobEvaluateOnExit.h>
 #include <aws/batch/model/ServiceJobRetryAction.h>
 #include <aws/batch/model/ServiceJobRetryStrategy.h>

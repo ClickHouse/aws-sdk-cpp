@@ -23,6 +23,7 @@
 #include <aws/s3control/model/ActivityMetrics.h>
 #include <aws/s3control/model/AdvancedCostOptimizationMetrics.h>
 #include <aws/s3control/model/AdvancedDataProtectionMetrics.h>
+#include <aws/s3control/model/AdvancedPerformanceMetrics.h>
 #include <aws/s3control/model/AssociateAccessGrantsIdentityCenterRequest.h>
 #include <aws/s3control/model/AsyncErrorDetails.h>
 #include <aws/s3control/model/AsyncOperation.h>
@@ -233,6 +234,7 @@
 #include <aws/s3control/model/NoncurrentVersionExpiration.h>
 #include <aws/s3control/model/NoncurrentVersionTransition.h>
 #include <aws/s3control/model/NotSSEFilter.h>
+#include <aws/s3control/model/ObjectEncryption.h>
 #include <aws/s3control/model/ObjectEncryptionFilter.h>
 #include <aws/s3control/model/ObjectLambdaAccessPoint.h>
 #include <aws/s3control/model/ObjectLambdaAccessPointAlias.h>
@@ -322,6 +324,8 @@
 #include <aws/s3control/model/S3SetObjectTaggingOperation.h>
 #include <aws/s3control/model/S3StorageClass.h>
 #include <aws/s3control/model/S3Tag.h>
+#include <aws/s3control/model/S3UpdateObjectEncryptionOperation.h>
+#include <aws/s3control/model/S3UpdateObjectEncryptionSSEKMS.h>
 #include <aws/s3control/model/SSECFilter.h>
 #include <aws/s3control/model/SSEKMS.h>
 #include <aws/s3control/model/SSEKMSEncryption.h>
@@ -339,12 +343,14 @@
 #include <aws/s3control/model/StorageLensConfiguration.h>
 #include <aws/s3control/model/StorageLensDataExport.h>
 #include <aws/s3control/model/StorageLensDataExportEncryption.h>
+#include <aws/s3control/model/StorageLensExpandedPrefixesDataExport.h>
 #include <aws/s3control/model/StorageLensGroup.h>
 #include <aws/s3control/model/StorageLensGroupAndOperator.h>
 #include <aws/s3control/model/StorageLensGroupFilter.h>
 #include <aws/s3control/model/StorageLensGroupLevel.h>
 #include <aws/s3control/model/StorageLensGroupLevelSelectionCriteria.h>
 #include <aws/s3control/model/StorageLensGroupOrOperator.h>
+#include <aws/s3control/model/StorageLensTableDestination.h>
 #include <aws/s3control/model/StorageLensTag.h>
 #include <aws/s3control/model/SubmitMultiRegionAccessPointRoutesRequest.h>
 #include <aws/s3control/model/SubmitMultiRegionAccessPointRoutesResult.h>

@@ -1044,6 +1044,24 @@
       ],
       "documentation":"<p>Deletes a connection from the Data Catalog.</p>"
     },
+    "DeleteConnectionType":{
+      "name":"DeleteConnectionType",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"DeleteConnectionTypeRequest"},
+      "output":{"shape":"DeleteConnectionTypeResponse"},
+      "errors":[
+        {"shape":"EntityNotFoundException"},
+        {"shape":"InvalidInputException"},
+        {"shape":"OperationTimeoutException"},
+        {"shape":"InternalServiceException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"ValidationException"}
+      ],
+      "documentation":"<p>Deletes a custom connection type in Glue.</p> <p>The connection type must exist and be registered before it can be deleted. This operation supports cleanup of connection type resources and helps maintain proper lifecycle management of custom connection types.</p>"
+    },
     "DeleteCrawler":{
       "name":"DeleteCrawler",
       "http":{
@@ -1168,6 +1186,25 @@
         {"shape":"InvalidInputException"}
       ],
       "documentation":"<p>Deletes the specified Zero-ETL integration.</p>"
+    },
+    "DeleteIntegrationResourceProperty":{
+      "name":"DeleteIntegrationResourceProperty",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"DeleteIntegrationResourcePropertyRequest"},
+      "output":{"shape":"DeleteIntegrationResourcePropertyResponse"},
+      "errors":[
+        {"shape":"ValidationException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"InternalServerException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"EntityNotFoundException"},
+        {"shape":"InternalServiceException"},
+        {"shape":"InvalidInputException"}
+      ],
+      "documentation":"<p>This API is used for deleting the <code>ResourceProperty</code> of the Glue connection (for the source) or Glue database ARN (for the target).</p>"
     },
     "DeleteIntegrationTableProperties":{
       "name":"DeleteIntegrationTableProperties",
@@ -1483,7 +1520,7 @@
         {"shape":"InternalServiceException"},
         {"shape":"AccessDeniedException"}
       ],
-      "documentation":"<p>The <code>DescribeConnectionType</code> API provides full details of the supported options for a given connection type in Glue.</p>"
+      "documentation":"<p>The <code>DescribeConnectionType</code> API provides full details of the supported options for a given connection type in Glue. The response includes authentication configuration details that show supported authentication types and properties, and RestConfiguration for custom REST-based connection types registered via <code>RegisterConnectionType</code>.</p> <p>See also: <code>ListConnectionTypes</code>, <code>RegisterConnectionType</code>, <code>DeleteConnectionType</code> </p>"
     },
     "DescribeEntity":{
       "name":"DescribeEntity",
@@ -2271,6 +2308,22 @@
       ],
       "documentation":"<p>Creates mappings.</p>"
     },
+    "GetMaterializedViewRefreshTaskRun":{
+      "name":"GetMaterializedViewRefreshTaskRun",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"GetMaterializedViewRefreshTaskRunRequest"},
+      "output":{"shape":"GetMaterializedViewRefreshTaskRunResponse"},
+      "errors":[
+        {"shape":"AccessDeniedException"},
+        {"shape":"EntityNotFoundException"},
+        {"shape":"OperationTimeoutException"},
+        {"shape":"InvalidInputException"}
+      ],
+      "documentation":"<p>Get the associated metadata/information for a task run, given a task run ID.</p>"
+    },
     "GetPartition":{
       "name":"GetPartition",
       "http":{
@@ -2889,7 +2942,7 @@
         {"shape":"InternalServiceException"},
         {"shape":"AccessDeniedException"}
       ],
-      "documentation":"<p>The <code>ListConnectionTypes</code> API provides a discovery mechanism to learn available connection types in Glue. The response contains a list of connection types with high-level details of what is supported for each connection type. The connection types listed are the set of supported options for the <code>ConnectionType</code> value in the <code>CreateConnection</code> API.</p>"
+      "documentation":"<p>The <code>ListConnectionTypes</code> API provides a discovery mechanism to learn available connection types in Glue. The response contains a list of connection types with high-level details of what is supported for each connection type, including both built-in connection types and custom connection types registered via <code>RegisterConnectionType</code>. The connection types listed are the set of supported options for the <code>ConnectionType</code> value in the <code>CreateConnection</code> API.</p> <p>See also: <code>DescribeConnectionType</code>, <code>RegisterConnectionType</code>, <code>DeleteConnectionType</code> </p>"
     },
     "ListCrawlers":{
       "name":"ListCrawlers",
@@ -3059,6 +3112,25 @@
       ],
       "documentation":"<p>Returns the available entities supported by the connection type. </p>"
     },
+    "ListIntegrationResourceProperties":{
+      "name":"ListIntegrationResourceProperties",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"ListIntegrationResourcePropertiesRequest"},
+      "output":{"shape":"ListIntegrationResourcePropertiesResponse"},
+      "errors":[
+        {"shape":"ValidationException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"InternalServerException"},
+        {"shape":"ResourceNotFoundException"},
+        {"shape":"EntityNotFoundException"},
+        {"shape":"InternalServiceException"},
+        {"shape":"InvalidInputException"}
+      ],
+      "documentation":"<p>List integration resource properties for a single customer. It supports the filters, maxRecords and markers.</p>"
+    },
     "ListJobs":{
       "name":"ListJobs",
       "http":{
@@ -3090,6 +3162,21 @@
         {"shape":"InternalServiceException"}
       ],
       "documentation":"<p> Retrieves a sortable, filterable list of existing Glue machine learning transforms in this Amazon Web Services account, or the resources with the specified tag. This operation takes the optional <code>Tags</code> field, which you can use as a filter of the responses so that tagged resources can be retrieved as a group. If you choose to use tag filtering, only resources with the tags are retrieved. </p>"
+    },
+    "ListMaterializedViewRefreshTaskRuns":{
+      "name":"ListMaterializedViewRefreshTaskRuns",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"ListMaterializedViewRefreshTaskRunsRequest"},
+      "output":{"shape":"ListMaterializedViewRefreshTaskRunsResponse"},
+      "errors":[
+        {"shape":"AccessDeniedException"},
+        {"shape":"InvalidInputException"},
+        {"shape":"OperationTimeoutException"}
+      ],
+      "documentation":"<p>List all task runs for a particular account.</p>"
     },
     "ListRegistries":{
       "name":"ListRegistries",
@@ -3357,6 +3444,24 @@
         {"shape":"EntityNotFoundException"}
       ],
       "documentation":"<p>Queries for the schema version metadata information. </p>"
+    },
+    "RegisterConnectionType":{
+      "name":"RegisterConnectionType",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"RegisterConnectionTypeRequest"},
+      "output":{"shape":"RegisterConnectionTypeResponse"},
+      "errors":[
+        {"shape":"InvalidInputException"},
+        {"shape":"OperationTimeoutException"},
+        {"shape":"ResourceNumberLimitExceededException"},
+        {"shape":"InternalServiceException"},
+        {"shape":"AccessDeniedException"},
+        {"shape":"ValidationException"}
+      ],
+      "documentation":"<p>Registers a custom connection type in Glue based on the configuration provided. This operation enables customers to configure custom connectors for any data source with REST-based APIs, eliminating the need for building custom Lambda connectors.</p> <p>The registered connection type stores details about how requests and responses are interpreted by REST sources, including connection properties, authentication configuration, and REST configuration with entity definitions. Once registered, customers can create connections using this connection type and work with them the same way as natively supported Glue connectors.</p> <p>Supports multiple authentication types including Basic, OAuth2 (Client Credentials, JWT Bearer, Authorization Code), and Custom Auth configurations.</p>"
     },
     "RegisterSchemaVersion":{
       "name":"RegisterSchemaVersion",
@@ -3665,6 +3770,24 @@
       ],
       "documentation":"<p>Starts the active learning workflow for your machine learning transform to improve the transform's quality by generating label sets and adding labels.</p> <p>When the <code>StartMLLabelingSetGenerationTaskRun</code> finishes, Glue will have generated a \"labeling set\" or a set of questions for humans to answer.</p> <p>In the case of the <code>FindMatches</code> transform, these questions are of the form, “What is the correct way to group these rows together into groups composed entirely of matching records?” </p> <p>After the labeling process is finished, you can upload your labels with a call to <code>StartImportLabelsTaskRun</code>. After <code>StartImportLabelsTaskRun</code> finishes, all future runs of the machine learning transform will use the new and improved labels and perform a higher-quality transformation.</p> <p>Note: The role used to write the generated labeling set to the <code>OutputS3Path</code> is the role associated with the Machine Learning Transform, specified in the <code>CreateMLTransform</code> API.</p>"
     },
+    "StartMaterializedViewRefreshTaskRun":{
+      "name":"StartMaterializedViewRefreshTaskRun",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"StartMaterializedViewRefreshTaskRunRequest"},
+      "output":{"shape":"StartMaterializedViewRefreshTaskRunResponse"},
+      "errors":[
+        {"shape":"AccessDeniedException"},
+        {"shape":"EntityNotFoundException"},
+        {"shape":"MaterializedViewRefreshTaskRunningException"},
+        {"shape":"OperationTimeoutException"},
+        {"shape":"ResourceNumberLimitExceededException"},
+        {"shape":"InvalidInputException"}
+      ],
+      "documentation":"<p>Starts a materialized view refresh task run, for a specified table and columns.</p>"
+    },
     "StartTrigger":{
       "name":"StartTrigger",
       "http":{
@@ -3763,6 +3886,23 @@
         {"shape":"OperationTimeoutException"}
       ],
       "documentation":"<p>Sets the schedule state of the specified crawler to <code>NOT_SCHEDULED</code>, but does not stop the crawler if it is already running.</p>"
+    },
+    "StopMaterializedViewRefreshTaskRun":{
+      "name":"StopMaterializedViewRefreshTaskRun",
+      "http":{
+        "method":"POST",
+        "requestUri":"/"
+      },
+      "input":{"shape":"StopMaterializedViewRefreshTaskRunRequest"},
+      "output":{"shape":"StopMaterializedViewRefreshTaskRunResponse"},
+      "errors":[
+        {"shape":"AccessDeniedException"},
+        {"shape":"MaterializedViewRefreshTaskNotRunningException"},
+        {"shape":"MaterializedViewRefreshTaskStoppingException"},
+        {"shape":"InvalidInputException"},
+        {"shape":"OperationTimeoutException"}
+      ],
+      "documentation":"<p>Stops a materialized view refresh task run, for a specified table and columns.</p>"
     },
     "StopSession":{
       "name":"StopSession",
@@ -5054,6 +5194,20 @@
       },
       "documentation":"<p>For supplying basic auth credentials when not providing a <code>SecretArn</code> value.</p>"
     },
+    "BasicAuthenticationProperties":{
+      "type":"structure",
+      "members":{
+        "Username":{
+          "shape":"ConnectorProperty",
+          "documentation":"<p>The username property name to use for Basic authentication credentials.</p>"
+        },
+        "Password":{
+          "shape":"ConnectorProperty",
+          "documentation":"<p>The password property name to use for Basic authentication credentials.</p>"
+        }
+      },
+      "documentation":"<p>Basic authentication configuration that defines the username and password properties for HTTP Basic authentication.</p>"
+    },
     "BasicCatalogTarget":{
       "type":"structure",
       "required":[
@@ -6045,6 +6199,10 @@
       "box":true,
       "min":0
     },
+    "ByteCount":{
+      "type":"long",
+      "min":0
+    },
     "CancelDataQualityRuleRecommendationRunRequest":{
       "type":"structure",
       "required":["RunId"],
@@ -6677,6 +6835,40 @@
     "ClassifierNameList":{
       "type":"list",
       "member":{"shape":"NameString"}
+    },
+    "ClientCredentialsProperties":{
+      "type":"structure",
+      "members":{
+        "TokenUrl":{
+          "shape":"ConnectorProperty",
+          "documentation":"<p>The token endpoint URL where the client will request access tokens using client credentials.</p>"
+        },
+        "RequestMethod":{
+          "shape":"HTTPMethod",
+          "documentation":"<p>The HTTP method to use when making token requests, typically POST.</p>"
+        },
+        "ContentType":{
+          "shape":"ContentType",
+          "documentation":"<p>The content type to use for token requests, such as application/x-www-form-urlencoded or application/json.</p>"
+        },
+        "ClientId":{
+          "shape":"ConnectorProperty",
+          "documentation":"<p>The OAuth2 client identifier provided by the authorization server.</p>"
+        },
+        "ClientSecret":{
+          "shape":"ConnectorProperty",
+          "documentation":"<p>The OAuth2 client secret provided by the authorization server.</p>"
+        },
+        "Scope":{
+          "shape":"ConnectorProperty",
+          "documentation":"<p>The OAuth2 scope that defines the level of access requested for the client credentials flow.</p>"
+        },
+        "TokenUrlParameters":{
+          "shape":"ConnectorPropertyList",
+          "documentation":"<p>Additional parameters to include in token URL requests as key-value pairs.</p>"
+        }
+      },
+      "documentation":"<p>OAuth2 client credentials configuration that defines the properties needed for the Client Credentials grant type flow.</p>"
     },
     "CloudWatchEncryption":{
       "type":"structure",
@@ -7919,7 +8111,7 @@
         },
         "ConnectionType":{
           "shape":"ConnectionType",
-          "documentation":"<p>The type of the connection. Currently, these types are supported:</p> <ul> <li> <p> <code>JDBC</code> - Designates a connection to a database through Java Database Connectivity (JDBC).</p> <p> <code>JDBC</code> Connections use the following ConnectionParameters.</p> <ul> <li> <p>Required: All of (<code>HOST</code>, <code>PORT</code>, <code>JDBC_ENGINE</code>) or <code>JDBC_CONNECTION_URL</code>.</p> </li> <li> <p>Required: All of (<code>USERNAME</code>, <code>PASSWORD</code>) or <code>SECRET_ID</code>.</p> </li> <li> <p>Optional: <code>JDBC_ENFORCE_SSL</code>, <code>CUSTOM_JDBC_CERT</code>, <code>CUSTOM_JDBC_CERT_STRING</code>, <code>SKIP_CUSTOM_JDBC_CERT_VALIDATION</code>. These parameters are used to configure SSL with JDBC.</p> </li> </ul> </li> <li> <p> <code>KAFKA</code> - Designates a connection to an Apache Kafka streaming platform.</p> <p> <code>KAFKA</code> Connections use the following ConnectionParameters.</p> <ul> <li> <p>Required: <code>KAFKA_BOOTSTRAP_SERVERS</code>.</p> </li> <li> <p>Optional: <code>KAFKA_SSL_ENABLED</code>, <code>KAFKA_CUSTOM_CERT</code>, <code>KAFKA_SKIP_CUSTOM_CERT_VALIDATION</code>. These parameters are used to configure SSL with <code>KAFKA</code>.</p> </li> <li> <p>Optional: <code>KAFKA_CLIENT_KEYSTORE</code>, <code>KAFKA_CLIENT_KEYSTORE_PASSWORD</code>, <code>KAFKA_CLIENT_KEY_PASSWORD</code>, <code>ENCRYPTED_KAFKA_CLIENT_KEYSTORE_PASSWORD</code>, <code>ENCRYPTED_KAFKA_CLIENT_KEY_PASSWORD</code>. These parameters are used to configure TLS client configuration with SSL in <code>KAFKA</code>.</p> </li> <li> <p>Optional: <code>KAFKA_SASL_MECHANISM</code>. Can be specified as <code>SCRAM-SHA-512</code>, <code>GSSAPI</code>, or <code>AWS_MSK_IAM</code>.</p> </li> <li> <p>Optional: <code>KAFKA_SASL_SCRAM_USERNAME</code>, <code>KAFKA_SASL_SCRAM_PASSWORD</code>, <code>ENCRYPTED_KAFKA_SASL_SCRAM_PASSWORD</code>. These parameters are used to configure SASL/SCRAM-SHA-512 authentication with <code>KAFKA</code>.</p> </li> <li> <p>Optional: <code>KAFKA_SASL_GSSAPI_KEYTAB</code>, <code>KAFKA_SASL_GSSAPI_KRB5_CONF</code>, <code>KAFKA_SASL_GSSAPI_SERVICE</code>, <code>KAFKA_SASL_GSSAPI_PRINCIPAL</code>. These parameters are used to configure SASL/GSSAPI authentication with <code>KAFKA</code>.</p> </li> </ul> </li> <li> <p> <code>MONGODB</code> - Designates a connection to a MongoDB document database.</p> <p> <code>MONGODB</code> Connections use the following ConnectionParameters.</p> <ul> <li> <p>Required: <code>CONNECTION_URL</code>.</p> </li> <li> <p>Required: All of (<code>USERNAME</code>, <code>PASSWORD</code>) or <code>SECRET_ID</code>.</p> </li> </ul> </li> <li> <p> <code>VIEW_VALIDATION_REDSHIFT</code> - Designates a connection used for view validation by Amazon Redshift.</p> </li> <li> <p> <code>VIEW_VALIDATION_ATHENA</code> - Designates a connection used for view validation by Amazon Athena.</p> </li> <li> <p> <code>NETWORK</code> - Designates a network connection to a data source within an Amazon Virtual Private Cloud environment (Amazon VPC).</p> <p> <code>NETWORK</code> Connections do not require ConnectionParameters. Instead, provide a PhysicalConnectionRequirements.</p> </li> <li> <p> <code>MARKETPLACE</code> - Uses configuration settings contained in a connector purchased from Amazon Web Services Marketplace to read from and write to data stores that are not natively supported by Glue.</p> <p> <code>MARKETPLACE</code> Connections use the following ConnectionParameters.</p> <ul> <li> <p>Required: <code>CONNECTOR_TYPE</code>, <code>CONNECTOR_URL</code>, <code>CONNECTOR_CLASS_NAME</code>, <code>CONNECTION_URL</code>.</p> </li> <li> <p>Required for <code>JDBC</code> <code>CONNECTOR_TYPE</code> connections: All of (<code>USERNAME</code>, <code>PASSWORD</code>) or <code>SECRET_ID</code>.</p> </li> </ul> </li> <li> <p> <code>CUSTOM</code> - Uses configuration settings contained in a custom connector to read from and write to data stores that are not natively supported by Glue.</p> </li> </ul> <p>Additionally, a <code>ConnectionType</code> for the following SaaS connectors is supported:</p> <ul> <li> <p> <code>FACEBOOKADS</code> - Designates a connection to Facebook Ads.</p> </li> <li> <p> <code>GOOGLEADS</code> - Designates a connection to Google Ads.</p> </li> <li> <p> <code>GOOGLESHEETS</code> - Designates a connection to Google Sheets.</p> </li> <li> <p> <code>GOOGLEANALYTICS4</code> - Designates a connection to Google Analytics 4.</p> </li> <li> <p> <code>HUBSPOT</code> - Designates a connection to HubSpot.</p> </li> <li> <p> <code>INSTAGRAMADS</code> - Designates a connection to Instagram Ads.</p> </li> <li> <p> <code>INTERCOM</code> - Designates a connection to Intercom.</p> </li> <li> <p> <code>JIRACLOUD</code> - Designates a connection to Jira Cloud.</p> </li> <li> <p> <code>MARKETO</code> - Designates a connection to Adobe Marketo Engage.</p> </li> <li> <p> <code>NETSUITEERP</code> - Designates a connection to Oracle NetSuite.</p> </li> <li> <p> <code>SALESFORCE</code> - Designates a connection to Salesforce using OAuth authentication.</p> </li> <li> <p> <code>SALESFORCEMARKETINGCLOUD</code> - Designates a connection to Salesforce Marketing Cloud.</p> </li> <li> <p> <code>SALESFORCEPARDOT</code> - Designates a connection to Salesforce Marketing Cloud Account Engagement (MCAE).</p> </li> <li> <p> <code>SAPODATA</code> - Designates a connection to SAP OData.</p> </li> <li> <p> <code>SERVICENOW</code> - Designates a connection to ServiceNow.</p> </li> <li> <p> <code>SLACK</code> - Designates a connection to Slack.</p> </li> <li> <p> <code>SNAPCHATADS</code> - Designates a connection to Snapchat Ads.</p> </li> <li> <p> <code>STRIPE</code> - Designates a connection to Stripe.</p> </li> <li> <p> <code>ZENDESK</code> - Designates a connection to Zendesk.</p> </li> <li> <p> <code>ZOHOCRM</code> - Designates a connection to Zoho CRM.</p> </li> </ul> <p>For more information on the connection parameters needed for a particular connector, see the documentation for the connector in <a href=\"https://docs.aws.amazon.com/glue/latest/dg/console-connections.html\">Adding an Glue connection</a>in the Glue User Guide.</p> <p> <code>SFTP</code> is not supported.</p> <p>For more information about how optional ConnectionProperties are used to configure features in Glue, consult <a href=\"https://docs.aws.amazon.com/glue/latest/dg/connection-defining.html\">Glue connection properties</a>.</p> <p>For more information about how optional ConnectionProperties are used to configure features in Glue Studio, consult <a href=\"https://docs.aws.amazon.com/glue/latest/ug/connectors-chapter.html\">Using connectors and connections</a>.</p>"
+          "documentation":"<p>The type of the connection. Currently, these types are supported:</p> <ul> <li> <p> <code>JDBC</code> - Designates a connection to a database through Java Database Connectivity (JDBC).</p> <p> <code>JDBC</code> Connections use the following ConnectionParameters.</p> <ul> <li> <p>Required: All of (<code>HOST</code>, <code>PORT</code>, <code>JDBC_ENGINE</code>) or <code>JDBC_CONNECTION_URL</code>.</p> </li> <li> <p>Required: All of (<code>USERNAME</code>, <code>PASSWORD</code>) or <code>SECRET_ID</code>.</p> </li> <li> <p>Optional: <code>JDBC_ENFORCE_SSL</code>, <code>CUSTOM_JDBC_CERT</code>, <code>CUSTOM_JDBC_CERT_STRING</code>, <code>SKIP_CUSTOM_JDBC_CERT_VALIDATION</code>. These parameters are used to configure SSL with JDBC.</p> </li> </ul> </li> <li> <p> <code>KAFKA</code> - Designates a connection to an Apache Kafka streaming platform.</p> <p> <code>KAFKA</code> Connections use the following ConnectionParameters.</p> <ul> <li> <p>Required: <code>KAFKA_BOOTSTRAP_SERVERS</code>.</p> </li> <li> <p>Optional: <code>KAFKA_SSL_ENABLED</code>, <code>KAFKA_CUSTOM_CERT</code>, <code>KAFKA_SKIP_CUSTOM_CERT_VALIDATION</code>. These parameters are used to configure SSL with <code>KAFKA</code>.</p> </li> <li> <p>Optional: <code>KAFKA_CLIENT_KEYSTORE</code>, <code>KAFKA_CLIENT_KEYSTORE_PASSWORD</code>, <code>KAFKA_CLIENT_KEY_PASSWORD</code>, <code>ENCRYPTED_KAFKA_CLIENT_KEYSTORE_PASSWORD</code>, <code>ENCRYPTED_KAFKA_CLIENT_KEY_PASSWORD</code>. These parameters are used to configure TLS client configuration with SSL in <code>KAFKA</code>.</p> </li> <li> <p>Optional: <code>KAFKA_SASL_MECHANISM</code>. Can be specified as <code>SCRAM-SHA-512</code>, <code>GSSAPI</code>, or <code>AWS_MSK_IAM</code>.</p> </li> <li> <p>Optional: <code>KAFKA_SASL_SCRAM_USERNAME</code>, <code>KAFKA_SASL_SCRAM_PASSWORD</code>, <code>ENCRYPTED_KAFKA_SASL_SCRAM_PASSWORD</code>. These parameters are used to configure SASL/SCRAM-SHA-512 authentication with <code>KAFKA</code>.</p> </li> <li> <p>Optional: <code>KAFKA_SASL_GSSAPI_KEYTAB</code>, <code>KAFKA_SASL_GSSAPI_KRB5_CONF</code>, <code>KAFKA_SASL_GSSAPI_SERVICE</code>, <code>KAFKA_SASL_GSSAPI_PRINCIPAL</code>. These parameters are used to configure SASL/GSSAPI authentication with <code>KAFKA</code>.</p> </li> </ul> </li> <li> <p> <code>MONGODB</code> - Designates a connection to a MongoDB document database.</p> <p> <code>MONGODB</code> Connections use the following ConnectionParameters.</p> <ul> <li> <p>Required: <code>CONNECTION_URL</code>.</p> </li> <li> <p>Required: All of (<code>USERNAME</code>, <code>PASSWORD</code>) or <code>SECRET_ID</code>.</p> </li> </ul> </li> <li> <p> <code>VIEW_VALIDATION_REDSHIFT</code> - Designates a connection used for view validation by Amazon Redshift.</p> </li> <li> <p> <code>VIEW_VALIDATION_ATHENA</code> - Designates a connection used for view validation by Amazon Athena.</p> </li> <li> <p> <code>NETWORK</code> - Designates a network connection to a data source within an Amazon Virtual Private Cloud environment (Amazon VPC).</p> <p> <code>NETWORK</code> Connections do not require ConnectionParameters. Instead, provide a PhysicalConnectionRequirements.</p> </li> <li> <p> <code>MARKETPLACE</code> - Uses configuration settings contained in a connector purchased from Amazon Web Services Marketplace to read from and write to data stores that are not natively supported by Glue.</p> <p> <code>MARKETPLACE</code> Connections use the following ConnectionParameters.</p> <ul> <li> <p>Required: <code>CONNECTOR_TYPE</code>, <code>CONNECTOR_URL</code>, <code>CONNECTOR_CLASS_NAME</code>, <code>CONNECTION_URL</code>.</p> </li> <li> <p>Required for <code>JDBC</code> <code>CONNECTOR_TYPE</code> connections: All of (<code>USERNAME</code>, <code>PASSWORD</code>) or <code>SECRET_ID</code>.</p> </li> </ul> </li> <li> <p> <code>CUSTOM</code> - Uses configuration settings contained in a custom connector to read from and write to data stores that are not natively supported by Glue.</p> </li> </ul> <p>For more information on the connection parameters needed for a particular connector, see the documentation for the connector in <a href=\"https://docs.aws.amazon.com/glue/latest/dg/console-connections.html\">Adding an Glue connection</a>in the Glue User Guide.</p> <p> <code>SFTP</code> is not supported.</p> <p>For more information about how optional ConnectionProperties are used to configure features in Glue, consult <a href=\"https://docs.aws.amazon.com/glue/latest/dg/connection-defining.html\">Glue connection properties</a>.</p> <p>For more information about how optional ConnectionProperties are used to configure features in Glue Studio, consult <a href=\"https://docs.aws.amazon.com/glue/latest/ug/connectors-chapter.html\">Using connectors and connections</a>.</p>"
         },
         "MatchCriteria":{
           "shape":"MatchCriteria",
@@ -7993,6 +8185,20 @@
       "value":{"shape":"ValueString"},
       "max":100,
       "min":0
+    },
+    "ConnectionPropertiesConfiguration":{
+      "type":"structure",
+      "members":{
+        "Url":{
+          "shape":"ConnectorProperty",
+          "documentation":"<p>The base instance URL for the endpoint that this connection type will connect to.</p>"
+        },
+        "AdditionalRequestParameters":{
+          "shape":"ConnectorPropertyList",
+          "documentation":"<p>Key-value pairs of additional request parameters that may be needed during connection creation, such as API versions or service-specific configuration options.</p>"
+        }
+      },
+      "documentation":"<p>Configuration that defines the base URL and additional request parameters needed during connection creation.</p>"
     },
     "ConnectionPropertyKey":{
       "type":"string",
@@ -8230,7 +8436,7 @@
           "documentation":"<p>The URL of the logo associated with a connection type variant.</p>"
         }
       },
-      "documentation":"<p>Represents a variant of a connection type in Glue Data Catalog. Connection type variants provide specific configurations and behaviors for different implementations of the same general connection type.</p>"
+      "documentation":"<p>Represents a variant of a connection type in Glue. Connection type variants provide specific configurations and behaviors for different implementations of the same general connection type.</p>"
     },
     "ConnectionTypeVariantList":{
       "type":"list",
@@ -8245,6 +8451,70 @@
         }
       },
       "documentation":"<p>Specifies the connections used by a job.</p>"
+    },
+    "ConnectorAuthenticationConfiguration":{
+      "type":"structure",
+      "required":["AuthenticationTypes"],
+      "members":{
+        "AuthenticationTypes":{
+          "shape":"AuthenticationTypes",
+          "documentation":"<p>A list of authentication types supported by this connection type, such as Basic, OAuth2, or Custom authentication methods.</p>"
+        },
+        "OAuth2Properties":{"shape":"ConnectorOAuth2Properties"},
+        "BasicAuthenticationProperties":{"shape":"BasicAuthenticationProperties"},
+        "CustomAuthenticationProperties":{"shape":"CustomAuthenticationProperties"}
+      },
+      "documentation":"<p>Configuration that defines the supported authentication types and required properties for the connection type.</p>"
+    },
+    "ConnectorAuthorizationCodeProperties":{
+      "type":"structure",
+      "members":{
+        "AuthorizationCodeUrl":{
+          "shape":"ConnectorProperty",
+          "documentation":"<p>The authorization endpoint URL where users will be redirected to grant authorization.</p>"
+        },
+        "AuthorizationCode":{
+          "shape":"ConnectorProperty",
+          "documentation":"<p>The authorization code received from the authorization server after user consent.</p>"
+        },
+        "RedirectUri":{
+          "shape":"ConnectorProperty",
+          "documentation":"<p>The redirect URI that must match the URI registered with the authorization server.</p>"
+        },
+        "TokenUrl":{
+          "shape":"ConnectorProperty",
+          "documentation":"<p>The token endpoint URL where the authorization code will be exchanged for an access token.</p>"
+        },
+        "RequestMethod":{
+          "shape":"HTTPMethod",
+          "documentation":"<p>The HTTP method to use when making token exchange requests, typically POST.</p>"
+        },
+        "ContentType":{
+          "shape":"ContentType",
+          "documentation":"<p>The content type to use for token exchange requests, such as application/x-www-form-urlencoded or application/json.</p>"
+        },
+        "ClientId":{
+          "shape":"ConnectorProperty",
+          "documentation":"<p>The OAuth2 client identifier provided by the authorization server.</p>"
+        },
+        "ClientSecret":{
+          "shape":"ConnectorProperty",
+          "documentation":"<p>The OAuth2 client secret provided by the authorization server.</p>"
+        },
+        "Scope":{
+          "shape":"ConnectorProperty",
+          "documentation":"<p>The OAuth2 scope that defines the level of access requested for the authorization code flow.</p>"
+        },
+        "Prompt":{
+          "shape":"ConnectorProperty",
+          "documentation":"<p>The OAuth2 prompt parameter that controls the authorization server's behavior during user authentication.</p>"
+        },
+        "TokenUrlParameters":{
+          "shape":"ConnectorPropertyList",
+          "documentation":"<p>Additional parameters to include in token URL requests as key-value pairs.</p>"
+        }
+      },
+      "documentation":"<p>OAuth2 authorization code configuration that defines the properties needed for the Authorization Code grant type flow.</p>"
     },
     "ConnectorDataSource":{
       "type":"structure",
@@ -8300,10 +8570,97 @@
       },
       "documentation":"<p>Specifies a target generated with standard connection options.</p>"
     },
+    "ConnectorOAuth2GrantType":{
+      "type":"string",
+      "enum":[
+        "CLIENT_CREDENTIALS",
+        "JWT_BEARER",
+        "AUTHORIZATION_CODE"
+      ]
+    },
+    "ConnectorOAuth2Properties":{
+      "type":"structure",
+      "required":["OAuth2GrantType"],
+      "members":{
+        "OAuth2GrantType":{
+          "shape":"ConnectorOAuth2GrantType",
+          "documentation":"<p>The OAuth2 grant type to use for authentication, such as CLIENT_CREDENTIALS, JWT_BEARER, or AUTHORIZATION_CODE.</p>"
+        },
+        "ClientCredentialsProperties":{
+          "shape":"ClientCredentialsProperties",
+          "documentation":"<p>Configuration properties specific to the OAuth2 Client Credentials grant type flow.</p>"
+        },
+        "JWTBearerProperties":{
+          "shape":"JWTBearerProperties",
+          "documentation":"<p>Configuration properties specific to the OAuth2 JWT Bearer grant type flow.</p>"
+        },
+        "AuthorizationCodeProperties":{
+          "shape":"ConnectorAuthorizationCodeProperties",
+          "documentation":"<p>Configuration properties specific to the OAuth2 Authorization Code grant type flow.</p>"
+        }
+      },
+      "documentation":"<p>OAuth2 configuration container that defines the authentication properties and flow-specific configurations for OAuth2-based connections.</p>"
+    },
     "ConnectorOptions":{
       "type":"map",
       "key":{"shape":"GenericString"},
       "value":{"shape":"GenericString"}
+    },
+    "ConnectorProperty":{
+      "type":"structure",
+      "required":[
+        "Name",
+        "Required",
+        "PropertyType"
+      ],
+      "members":{
+        "Name":{
+          "shape":"PropertyName",
+          "documentation":"<p>The name of the property.</p>"
+        },
+        "KeyOverride":{
+          "shape":"ConnectorPropertyKey",
+          "documentation":"<p>A key name to use when sending this property in API requests, if different from the display name.</p>"
+        },
+        "Required":{
+          "shape":"Bool",
+          "documentation":"<p>Indicates whether the property is required.</p>"
+        },
+        "DefaultValue":{
+          "shape":"String",
+          "documentation":"<p>The default value for the property.</p>"
+        },
+        "AllowedValues":{
+          "shape":"ListOfString",
+          "documentation":"<p>A list of <code>AllowedValue</code> objects representing the values allowed for the property.</p>"
+        },
+        "PropertyLocation":{
+          "shape":"PropertyLocation",
+          "documentation":"<p>Specifies where this property should be included in REST requests, such as in headers, query parameters, or request body.</p>"
+        },
+        "PropertyType":{
+          "shape":"PropertyType",
+          "documentation":"<p>The data type of this property</p>"
+        }
+      },
+      "documentation":"<p>Defines a property configuration for connection types, default values, and where the property should be used in requests.</p>"
+    },
+    "ConnectorPropertyKey":{
+      "type":"string",
+      "max":128,
+      "min":1,
+      "pattern":"[a-zA-Z0-9_-]+"
+    },
+    "ConnectorPropertyList":{
+      "type":"list",
+      "member":{"shape":"ConnectorProperty"}
+    },
+    "ContentType":{
+      "type":"string",
+      "enum":[
+        "APPLICATION_JSON",
+        "URL_ENCODED"
+      ]
     },
     "ContextKey":{
       "type":"string",
@@ -9235,6 +9592,10 @@
         "Scopes":{
           "shape":"IdentityCenterScopesList",
           "documentation":"<p>A list of Identity Center scopes that define the permissions and access levels for the Glue configuration.</p>"
+        },
+        "UserBackgroundSessionsEnabled":{
+          "shape":"NullableBoolean",
+          "documentation":"<p>Specifies whether users can run background sessions when using Identity Center authentication with Glue services.</p>"
         }
       },
       "documentation":"<p>Request to create a new Glue Identity Center configuration.</p>"
@@ -9319,11 +9680,11 @@
           "documentation":"<p>A unique name for an integration in Glue.</p>"
         },
         "SourceArn":{
-          "shape":"String128",
+          "shape":"String512",
           "documentation":"<p>The ARN of the source resource for the integration.</p>"
         },
         "TargetArn":{
-          "shape":"String128",
+          "shape":"String512",
           "documentation":"<p>The ARN of the target resource for the integration.</p>"
         },
         "Description":{
@@ -9357,7 +9718,7 @@
       "required":["ResourceArn"],
       "members":{
         "ResourceArn":{
-          "shape":"String128",
+          "shape":"String512",
           "documentation":"<p>The connection ARN of the source, or the database ARN of the target.</p>"
         },
         "SourceProcessingProperties":{
@@ -9367,6 +9728,10 @@
         "TargetProcessingProperties":{
           "shape":"TargetProcessingProperties",
           "documentation":"<p>The resource properties associated with the integration target.</p>"
+        },
+        "Tags":{
+          "shape":"IntegrationTagsList",
+          "documentation":"<p>Metadata assigned to the resource consisting of a list of key-value pairs.</p>"
         }
       }
     },
@@ -9375,8 +9740,12 @@
       "required":["ResourceArn"],
       "members":{
         "ResourceArn":{
-          "shape":"String128",
+          "shape":"String512",
           "documentation":"<p>The connection ARN of the source, or the database ARN of the target.</p>"
+        },
+        "ResourcePropertyArn":{
+          "shape":"String512",
+          "documentation":"<p>The resource ARN created through this create API. The format is something like arn:aws:glue:&lt;region&gt;:&lt;account_id&gt;:integrationresourceproperty/*</p>"
         },
         "SourceProcessingProperties":{
           "shape":"SourceProcessingProperties",
@@ -9400,11 +9769,11 @@
       ],
       "members":{
         "SourceArn":{
-          "shape":"String128",
+          "shape":"String512",
           "documentation":"<p>The ARN of the source resource for the integration.</p>"
         },
         "TargetArn":{
-          "shape":"String128",
+          "shape":"String512",
           "documentation":"<p>The ARN of the target resource for the integration.</p>"
         },
         "IntegrationName":{
@@ -9461,7 +9830,7 @@
       ],
       "members":{
         "ResourceArn":{
-          "shape":"String128",
+          "shape":"String512",
           "documentation":"<p>The Amazon Resource Name (ARN) of the target table for which to create integration table properties. Currently, this API only supports creating integration table properties for target tables, and the provided ARN should be the ARN of the target table in the Glue Data Catalog. Support for creating integration table properties for source connections (using the connection ARN) is not yet implemented and will be added in a future release. </p>"
         },
         "TableName":{
@@ -10388,6 +10757,32 @@
         "None"
       ]
     },
+    "CursorConfiguration":{
+      "type":"structure",
+      "required":["NextPage"],
+      "members":{
+        "NextPage":{
+          "shape":"ExtractedParameter",
+          "documentation":"<p>The parameter name or JSON path that contains the cursor or token for retrieving the next page of results.</p>"
+        },
+        "LimitParameter":{
+          "shape":"ExtractedParameter",
+          "documentation":"<p>The parameter name used to specify the maximum number of results to return per page.</p>"
+        }
+      },
+      "documentation":"<p>Cursor-based pagination configuration that defines how to handle pagination using cursor tokens or next page identifiers.</p>"
+    },
+    "CustomAuthenticationProperties":{
+      "type":"structure",
+      "required":["AuthenticationParameters"],
+      "members":{
+        "AuthenticationParameters":{
+          "shape":"ConnectorPropertyList",
+          "documentation":"<p>A map of custom authentication parameters that define the specific authentication mechanism and required properties.</p>"
+        }
+      },
+      "documentation":"<p>Custom authentication configuration that allows for flexible authentication mechanisms beyond standard Basic and OAuth2 flows.</p>"
+    },
     "CustomCode":{
       "type":"structure",
       "required":[
@@ -11102,6 +11497,10 @@
         "RuleMetrics":{
           "shape":"RuleMetricsMap",
           "documentation":"<p>A map containing metrics associated with the evaluation of the rule based on row-level results. </p>"
+        },
+        "Labels":{
+          "shape":"Labels",
+          "documentation":"<p>A map containing labels assigned to the data quality rule. </p>"
         }
       },
       "documentation":"<p>Describes the result of the evaluation of a data quality rule.</p>"
@@ -11525,6 +11924,12 @@
       },
       "documentation":"<p>Contains a numeric value in decimal format.</p>"
     },
+    "DefaultValue":{
+      "type":"string",
+      "max":1024,
+      "min":1,
+      "pattern":".*[^<>&'\"].*"
+    },
     "DeleteBehavior":{
       "type":"string",
       "enum":[
@@ -11690,6 +12095,20 @@
       "type":"structure",
       "members":{}
     },
+    "DeleteConnectionTypeRequest":{
+      "type":"structure",
+      "required":["ConnectionType"],
+      "members":{
+        "ConnectionType":{
+          "shape":"NameString",
+          "documentation":"<p>The name of the connection type to delete. Must reference an existing registered connection type.</p>"
+        }
+      }
+    },
+    "DeleteConnectionTypeResponse":{
+      "type":"structure",
+      "members":{}
+    },
     "DeleteCrawlerRequest":{
       "type":"structure",
       "required":["Name"],
@@ -11789,6 +12208,20 @@
         }
       }
     },
+    "DeleteIntegrationResourcePropertyRequest":{
+      "type":"structure",
+      "required":["ResourceArn"],
+      "members":{
+        "ResourceArn":{
+          "shape":"String512",
+          "documentation":"<p>The connection ARN of the source, or the database ARN of the target.</p>"
+        }
+      }
+    },
+    "DeleteIntegrationResourcePropertyResponse":{
+      "type":"structure",
+      "members":{}
+    },
     "DeleteIntegrationResponse":{
       "type":"structure",
       "required":[
@@ -11801,11 +12234,11 @@
       ],
       "members":{
         "SourceArn":{
-          "shape":"String128",
+          "shape":"String512",
           "documentation":"<p>The ARN of the source for the integration.</p>"
         },
         "TargetArn":{
-          "shape":"String128",
+          "shape":"String512",
           "documentation":"<p>The ARN of the target for the integration.</p>"
         },
         "IntegrationName":{
@@ -11858,7 +12291,7 @@
       ],
       "members":{
         "ResourceArn":{
-          "shape":"String128",
+          "shape":"String512",
           "documentation":"<p>The connection ARN of the source, or the database ARN of the target.</p>"
         },
         "TableName":{
@@ -12359,6 +12792,10 @@
         "SparkConnectionProperties":{
           "shape":"PropertiesMap",
           "documentation":"<p>Connection properties specific to the Spark compute environment.</p>"
+        },
+        "RestConfiguration":{
+          "shape":"RestConfiguration",
+          "documentation":"<p>HTTP request and response configuration, validation endpoint, and entity configurations for REST based data source.</p>"
         }
       }
     },
@@ -12420,7 +12857,7 @@
           "documentation":"<p>The total number of items to return in the output.</p>"
         },
         "TargetArn":{
-          "shape":"String128",
+          "shape":"String512",
           "documentation":"<p>The Amazon Resource Name (ARN) of the target resource in the integration.</p>"
         }
       }
@@ -13010,6 +13447,11 @@
       "type":"string",
       "pattern":"([\\u0009\\u000B\\u000C\\u0020-\\uD7FF\\uE000-\\uFFFD\\uD800\\uDC00-\\uDBFF\\uDFFF])*"
     },
+    "EncryptedKeyMetadataString":{
+      "type":"string",
+      "max":2056,
+      "pattern":"[\\u0020-\\uD7FF\\uE000-\\uFFFD\\uD800\\uDC00-\\uDBFF\\uDFFF\\r\\n\\t]*"
+    },
     "EncryptionAtRest":{
       "type":"structure",
       "required":["CatalogEncryptionMode"],
@@ -13051,6 +13493,11 @@
       },
       "documentation":"<p>Specifies an encryption configuration.</p>"
     },
+    "EncryptionKeyIdString":{
+      "type":"string",
+      "max":2056,
+      "pattern":"[\\u0020-\\uD7FF\\uE000-\\uFFFD\\uD800\\uDC00-\\uDBFF\\uDFFF\\r\\n\\t]*"
+    },
     "Entity":{
       "type":"structure",
       "members":{
@@ -13080,6 +13527,32 @@
         }
       },
       "documentation":"<p>An entity supported by a given <code>ConnectionType</code>.</p>"
+    },
+    "EntityConfiguration":{
+      "type":"structure",
+      "members":{
+        "SourceConfiguration":{
+          "shape":"SourceConfiguration",
+          "documentation":"<p>The source configuration that defines how to make requests to access this entity's data through the REST API.</p>"
+        },
+        "Schema":{
+          "shape":"FieldDefinitionMap",
+          "documentation":"<p>The schema definition for this entity, including field names, types, and other metadata that describes the structure of the data.</p>"
+        }
+      },
+      "documentation":"<p>Configuration that defines how to interact with a specific data entity through the REST API, including its access patterns and schema definition.</p>"
+    },
+    "EntityConfigurationMap":{
+      "type":"map",
+      "key":{"shape":"EntityConfigurationMapKeyString"},
+      "value":{"shape":"EntityConfiguration"},
+      "documentation":"<p>A map of entity configurations that associates entity names with their corresponding configuration settings for REST API interactions.</p>"
+    },
+    "EntityConfigurationMapKeyString":{
+      "type":"string",
+      "max":128,
+      "min":1,
+      "pattern":"[a-zA-Z0-9_ -]+"
     },
     "EntityDescription":{"type":"string"},
     "EntityFieldName":{"type":"string"},
@@ -13321,6 +13794,28 @@
       "type":"string",
       "pattern":"[\\s\\S]*"
     },
+    "ExtractedParameter":{
+      "type":"structure",
+      "members":{
+        "Key":{
+          "shape":"ConnectorPropertyKey",
+          "documentation":"<p>The parameter key name that will be used in subsequent requests.</p>"
+        },
+        "DefaultValue":{
+          "shape":"DefaultValue",
+          "documentation":"<p>The default value to use if the parameter cannot be extracted from the response.</p>"
+        },
+        "PropertyLocation":{
+          "shape":"PropertyLocation",
+          "documentation":"<p>Specifies where this extracted parameter should be placed in subsequent requests, such as in headers, query parameters, or request body.</p>"
+        },
+        "Value":{
+          "shape":"ResponseExtractionMapping",
+          "documentation":"<p>The JSON path or extraction mapping that defines how to extract the parameter value from API responses.</p>"
+        }
+      },
+      "documentation":"<p>Parameter extraction configuration that defines how to extract and map values from API responses to request parameters.</p>"
+    },
     "FederatedCatalog":{
       "type":"structure",
       "members":{
@@ -13537,8 +14032,38 @@
         "BYTE",
         "SHORT",
         "DOUBLE",
-        "STRUCT"
+        "STRUCT",
+        "BINARY",
+        "UNION"
       ]
+    },
+    "FieldDefinition":{
+      "type":"structure",
+      "required":[
+        "Name",
+        "FieldDataType"
+      ],
+      "members":{
+        "Name":{
+          "shape":"String",
+          "documentation":"<p>The name of the field in the entity schema.</p>"
+        },
+        "FieldDataType":{
+          "shape":"FieldDataType",
+          "documentation":"<p>The data type of the field.</p>"
+        }
+      },
+      "documentation":"<p>Defines a field in an entity schema for REST connector data sources, specifying the field name and data type.</p>"
+    },
+    "FieldDefinitionMap":{
+      "type":"map",
+      "key":{"shape":"FieldDefinitionMapKeyString"},
+      "value":{"shape":"FieldDefinition"},
+      "documentation":"<p>A map of field definitions that define the schema structure for an entity in a REST connector data source.</p>"
+    },
+    "FieldDefinitionMapKeyString":{
+      "type":"string",
+      "min":1
     },
     "FieldDescription":{"type":"string"},
     "FieldFilterOperator":{
@@ -13800,6 +14325,14 @@
       "type":"string",
       "max":128,
       "pattern":"[\\u0020-\\uD7FF\\uE000-\\uFFFD\\uD800\\uDC00-\\uDBFF\\uDFFF\\t]*"
+    },
+    "FunctionType":{
+      "type":"string",
+      "enum":[
+        "REGULAR_FUNCTION",
+        "AGGREGATE_FUNCTION",
+        "STORED_PROCEDURE"
+      ]
     },
     "Generic512CharString":{
       "type":"string",
@@ -14952,6 +15485,10 @@
         "Scopes":{
           "shape":"OrchestrationStringList",
           "documentation":"<p>A list of Identity Center scopes that define the permissions and access levels for the Glue configuration.</p>"
+        },
+        "UserBackgroundSessionsEnabled":{
+          "shape":"NullableBoolean",
+          "documentation":"<p>Indicates whether users can run background sessions when using Identity Center authentication with Glue services.</p>"
         }
       },
       "documentation":"<p>Response containing the Glue Identity Center configuration details.</p>"
@@ -14961,7 +15498,7 @@
       "required":["ResourceArn"],
       "members":{
         "ResourceArn":{
-          "shape":"String128",
+          "shape":"String512",
           "documentation":"<p>The connection ARN of the source, or the database ARN of the target.</p>"
         }
       }
@@ -14970,8 +15507,12 @@
       "type":"structure",
       "members":{
         "ResourceArn":{
-          "shape":"String128",
+          "shape":"String512",
           "documentation":"<p>The connection ARN of the source, or the database ARN of the target.</p>"
+        },
+        "ResourcePropertyArn":{
+          "shape":"String512",
+          "documentation":"<p>The resource ARN created through this create API. The format is something like arn:aws:glue:&lt;region&gt;:&lt;account_id&gt;:integrationresourceproperty/*</p>"
         },
         "SourceProcessingProperties":{
           "shape":"SourceProcessingProperties",
@@ -14991,7 +15532,7 @@
       ],
       "members":{
         "ResourceArn":{
-          "shape":"String128",
+          "shape":"String512",
           "documentation":"<p>The Amazon Resource Name (ARN) of the target table for which to retrieve integration table properties. Currently, this API only supports retrieving properties for target tables, and the provided ARN should be the ARN of the target table in the Glue Data Catalog. Support for retrieving integration table properties for source connections (using the connection ARN) is not yet implemented and will be added in a future release. </p>"
         },
         "TableName":{
@@ -15004,7 +15545,7 @@
       "type":"structure",
       "members":{
         "ResourceArn":{
-          "shape":"String128",
+          "shape":"String512",
           "documentation":"<p>The Amazon Resource Name (ARN) of the target table for which to retrieve integration table properties. Currently, this API only supports retrieving properties for target tables, and the provided ARN should be the ARN of the target table in the Glue Data Catalog. Support for retrieving integration table properties for source connections (using the connection ARN) is not yet implemented and will be added in a future release. </p>"
         },
         "TableName":{
@@ -15402,6 +15943,32 @@
         "Mapping":{
           "shape":"MappingList",
           "documentation":"<p>A list of mappings to the specified targets.</p>"
+        }
+      }
+    },
+    "GetMaterializedViewRefreshTaskRunRequest":{
+      "type":"structure",
+      "required":[
+        "CatalogId",
+        "MaterializedViewRefreshTaskRunId"
+      ],
+      "members":{
+        "CatalogId":{
+          "shape":"NameString",
+          "documentation":"<p>The ID of the Data Catalog where the table resides. If none is supplied, the account ID is used by default.</p>"
+        },
+        "MaterializedViewRefreshTaskRunId":{
+          "shape":"UUIDv4",
+          "documentation":"<p>The identifier for the particular materialized view refresh task run.</p>"
+        }
+      }
+    },
+    "GetMaterializedViewRefreshTaskRunResponse":{
+      "type":"structure",
+      "members":{
+        "MaterializedViewRefreshTaskRun":{
+          "shape":"MaterializedViewRefreshTaskRun",
+          "documentation":"<p>A MaterializedViewRefreshTaskRun object representing the details of the task run.</p>"
         }
       }
     },
@@ -16053,6 +16620,10 @@
           "shape":"Timestamp",
           "documentation":"<p>The time as of when to read the table contents. If not set, the most recent transaction commit time will be used. Cannot be specified along with <code>TransactionId</code>.</p>"
         },
+        "AuditContext":{
+          "shape":"AuditContext",
+          "documentation":"<p>A structure containing the Lake Formation <a href=\"https://docs.aws.amazon.com/glue/latest/webapi/API_AuditContext.html\">audit context</a>.</p>"
+        },
         "IncludeStatusDetails":{
           "shape":"BooleanNullable",
           "documentation":"<p>Specifies whether to include status details related to a request to create or update an Glue Data Catalog view.</p>"
@@ -16179,6 +16750,10 @@
         "QueryAsOfTime":{
           "shape":"Timestamp",
           "documentation":"<p>The time as of when to read the table contents. If not set, the most recent transaction commit time will be used. Cannot be specified along with <code>TransactionId</code>.</p>"
+        },
+        "AuditContext":{
+          "shape":"AuditContext",
+          "documentation":"<p>A structure containing the Lake Formation <a href=\"https://docs.aws.amazon.com/glue/latest/webapi/API_AuditContext.html\">audit context</a>.</p>"
         },
         "IncludeStatusDetails":{
           "shape":"BooleanNullable",
@@ -16482,6 +17057,10 @@
           "shape":"Boolean",
           "documentation":"<p>Specifies whether the view supports the SQL dialects of one or more different query engines and can therefore be read by those engines.</p>"
         },
+        "IsMaterializedView":{
+          "shape":"Boolean",
+          "documentation":"<p>Indicates if a table is a materialized view.</p>"
+        },
         "ResourceArn":{
           "shape":"ArnString",
           "documentation":"<p>The resource ARN of the parent resource extracted from the request.</p>"
@@ -16580,6 +17159,10 @@
         "Pattern":{
           "shape":"NameString",
           "documentation":"<p>An optional function-name pattern string that filters the function definitions returned.</p>"
+        },
+        "FunctionType":{
+          "shape":"FunctionType",
+          "documentation":"<p>An optional function-type pattern string that filters the function definitions returned from Amazon Redshift Federated Permissions Catalog.</p> <p>Specify a value of <code>REGULAR_FUNCTION</code> or <code>STORED_PROCEDURE</code>. The <code>STORED_PROCEDURE</code> function type is only compatible with Amazon Redshift Federated Permissions Catalog. </p>"
         },
         "NextToken":{
           "shape":"Token",
@@ -17007,6 +17590,13 @@
       "type":"list",
       "member":{"shape":"GroupFilters"}
     },
+    "HTTPMethod":{
+      "type":"string",
+      "enum":[
+        "GET",
+        "POST"
+      ]
+    },
     "HashString":{
       "type":"string",
       "max":255,
@@ -17104,6 +17694,32 @@
       "type":"structure",
       "members":{},
       "document":true
+    },
+    "IcebergEncryptedKey":{
+      "type":"structure",
+      "required":[
+        "KeyId",
+        "EncryptedKeyMetadata"
+      ],
+      "members":{
+        "KeyId":{
+          "shape":"EncryptionKeyIdString",
+          "documentation":"<p>Unique identifier of the encryption key used for Iceberg table encryption. This ID is used to reference the key in table metadata and track which key was used to encrypt specific data.</p>"
+        },
+        "EncryptedKeyMetadata":{
+          "shape":"EncryptedKeyMetadataString",
+          "documentation":"<p>Encrypted key and metadata, base64 encoded. The format of encrypted key metadata is determined by the table's encryption scheme and can be a wrapped format specific to the table's KMS provider.</p>"
+        },
+        "EncryptedById":{
+          "shape":"EncryptionKeyIdString",
+          "documentation":"<p>Optional ID of the key used to encrypt or wrap the key metadata in Iceberg table encryption. This field references another encryption key that was used to encrypt the current key's metadata.</p>"
+        },
+        "Properties":{
+          "shape":"StringToStringMap",
+          "documentation":"<p>A string to string map of additional metadata used by the table's encryption scheme. These properties provide additional context and configuration for the encryption key implementation.</p>"
+        }
+      },
+      "documentation":"<p>Encryption key structure used for Iceberg table encryption. Contains the key ID, encrypted key metadata, optional reference to the encrypting key, and additional properties for the table's encryption scheme.</p>"
     },
     "IcebergInput":{
       "type":"structure",
@@ -17425,6 +18041,14 @@
         "Doc":{
           "shape":"CommentString",
           "documentation":"<p>Optional documentation or description text that provides additional context about the purpose and usage of this field.</p>"
+        },
+        "InitialDefault":{
+          "shape":"IcebergDocument",
+          "documentation":"<p>Default value used to populate the field's value for all records that were written before the field was added to the schema. This enables backward compatibility when adding new fields to existing Iceberg tables.</p>"
+        },
+        "WriteDefault":{
+          "shape":"IcebergDocument",
+          "documentation":"<p>Default value used to populate the field's value for any records written after the field was added to the schema, if the writer does not supply the field's value. This can be changed through schema evolution.</p>"
         }
       },
       "documentation":"<p>Defines a single field within an Iceberg table schema, including its identifier, name, data type, nullability, and documentation.</p>"
@@ -17463,6 +18087,18 @@
         "Properties":{
           "shape":"StringToStringMap",
           "documentation":"<p>Updated key-value pairs of table properties and configuration settings for the Iceberg table.</p>"
+        },
+        "Action":{
+          "shape":"IcebergUpdateAction",
+          "documentation":"<p>The type of update action to be performed on the Iceberg table. Defines the specific operation such as adding schema, setting current schema, adding partition spec, or managing encryption keys.</p>"
+        },
+        "EncryptionKey":{
+          "shape":"IcebergEncryptedKey",
+          "documentation":"<p>Encryption key information associated with an Iceberg table update operation. Used when adding or removing encryption keys from the table metadata during table evolution.</p>"
+        },
+        "KeyId":{
+          "shape":"EncryptionKeyIdString",
+          "documentation":"<p>Identifier of the encryption key involved in an Iceberg table update operation. References the specific key being added to or removed from the table's encryption configuration.</p>"
         }
       },
       "documentation":"<p>Defines a complete set of updates to be applied to an Iceberg table, including schema changes, partitioning modifications, sort order adjustments, location updates, and property changes.</p>"
@@ -17507,6 +18143,22 @@
       "member":{"shape":"IcebergTarget"}
     },
     "IcebergTransformString":{"type":"string"},
+    "IcebergUpdateAction":{
+      "type":"string",
+      "enum":[
+        "add-schema",
+        "set-current-schema",
+        "add-spec",
+        "set-default-spec",
+        "add-sort-order",
+        "set-default-sort-order",
+        "set-location",
+        "set-properties",
+        "remove-properties",
+        "add-encryption-key",
+        "remove-encryption-key"
+      ]
+    },
     "IdString":{
       "type":"string",
       "max":255,
@@ -17614,11 +18266,11 @@
       ],
       "members":{
         "SourceArn":{
-          "shape":"String128",
+          "shape":"String512",
           "documentation":"<p>The ARN of the source resource for the integration.</p>"
         },
         "TargetArn":{
-          "shape":"String128",
+          "shape":"String512",
           "documentation":"<p>The ARN of the target resource for the integration.</p>"
         },
         "IntegrationArn":{
@@ -17682,11 +18334,11 @@
       ],
       "members":{
         "SourceArn":{
-          "shape":"String128",
+          "shape":"String512",
           "documentation":"<p>The ARN for the source of the integration.</p>"
         },
         "TargetArn":{
-          "shape":"String128",
+          "shape":"String512",
           "documentation":"<p>The ARN for the target of the integration.</p>"
         },
         "Description":{
@@ -17746,7 +18398,7 @@
       "members":{
         "RefreshInterval":{
           "shape":"String128",
-          "documentation":"<p>Specifies the frequency at which CDC (Change Data Capture) pulls or incremental loads should occur. This parameter provides flexibility to align the refresh rate with your specific data update patterns, system load considerations, and performance optimization goals. Time increment can be set from 15 minutes to 8640 minutes (six days). Currently supports creation of <code>RefreshInterval</code> only.</p>"
+          "documentation":"<p>Specifies the frequency at which CDC (Change Data Capture) pulls or incremental loads should occur. This parameter provides flexibility to align the refresh rate with your specific data update patterns, system load considerations, and performance optimization goals. Time increment can be set from 15 minutes to 8640 minutes (six days).</p>"
         },
         "SourceProperties":{
           "shape":"IntegrationSourcePropertiesMap",
@@ -17861,6 +18513,55 @@
       "documentation":"<p>The data processed through your integration exceeded your quota.</p>",
       "exception":true
     },
+    "IntegrationResourceProperty":{
+      "type":"structure",
+      "required":["ResourceArn"],
+      "members":{
+        "ResourceArn":{
+          "shape":"String512",
+          "documentation":"<p>The connection ARN of the source, or the database ARN of the target.</p>"
+        },
+        "ResourcePropertyArn":{
+          "shape":"String512",
+          "documentation":"<p>The resource ARN created through this create API. The format is something like arn:aws:glue:&lt;region&gt;:&lt;account_id&gt;:integrationresourceproperty/*</p>"
+        },
+        "SourceProcessingProperties":{
+          "shape":"SourceProcessingProperties",
+          "documentation":"<p>The resource properties associated with the integration source.</p>"
+        },
+        "TargetProcessingProperties":{
+          "shape":"TargetProcessingProperties",
+          "documentation":"<p>The resource properties associated with the integration target.</p>"
+        }
+      },
+      "documentation":"<p>A structure representing an integration resource property.</p>"
+    },
+    "IntegrationResourcePropertyFilter":{
+      "type":"structure",
+      "members":{
+        "Name":{
+          "shape":"String128",
+          "documentation":"<p>The name of the filter. Supported filter keys are <code>SourceArn</code> and <code>TargetArn</code>.</p>"
+        },
+        "Values":{
+          "shape":"IntegrationResourcePropertyFilterValues",
+          "documentation":"<p>A list of filter values.</p>"
+        }
+      },
+      "documentation":"<p>A filter for integration resource properties.</p>"
+    },
+    "IntegrationResourcePropertyFilterList":{
+      "type":"list",
+      "member":{"shape":"IntegrationResourcePropertyFilter"}
+    },
+    "IntegrationResourcePropertyFilterValues":{
+      "type":"list",
+      "member":{"shape":"String128"}
+    },
+    "IntegrationResourcePropertyList":{
+      "type":"list",
+      "member":{"shape":"IntegrationResourceProperty"}
+    },
     "IntegrationSourcePropertiesMap":{
       "type":"map",
       "key":{"shape":"IntegrationString"},
@@ -17884,6 +18585,10 @@
       "member":{"shape":"Tag"}
     },
     "IntegrationTimestamp":{"type":"timestamp"},
+    "IntegrationType":{
+      "type":"string",
+      "enum":["REST"]
+    },
     "IntegrationsList":{
       "type":"list",
       "member":{"shape":"Integration"}
@@ -18143,6 +18848,32 @@
       "type":"map",
       "key":{"shape":"JDBCDataType"},
       "value":{"shape":"GlueRecordType"}
+    },
+    "JWTBearerProperties":{
+      "type":"structure",
+      "members":{
+        "TokenUrl":{
+          "shape":"ConnectorProperty",
+          "documentation":"<p>The token endpoint URL where the JWT bearer token will be exchanged for an access token.</p>"
+        },
+        "RequestMethod":{
+          "shape":"HTTPMethod",
+          "documentation":"<p>The HTTP method to use when making JWT bearer token requests, typically POST.</p>"
+        },
+        "ContentType":{
+          "shape":"ContentType",
+          "documentation":"<p>The content type to use for JWT bearer token requests, such as application/x-www-form-urlencoded or application/json.</p>"
+        },
+        "JwtToken":{
+          "shape":"ConnectorProperty",
+          "documentation":"<p>The JWT token to be used in the bearer token grant flow for authentication.</p>"
+        },
+        "TokenUrlParameters":{
+          "shape":"ConnectorPropertyList",
+          "documentation":"<p>Additional parameters to include in token URL requests as key-value pairs.</p>"
+        }
+      },
+      "documentation":"<p>JWT bearer token configuration that defines the properties needed for the JWT Bearer grant type flow.</p>"
     },
     "JdbcMetadataEntry":{
       "type":"string",
@@ -18738,6 +19469,12 @@
       "documentation":"<p>A classifier for <code>JSON</code> content.</p>"
     },
     "JsonPath":{"type":"string"},
+    "JsonPathString":{
+      "type":"string",
+      "max":512,
+      "min":1,
+      "pattern":"\\$(\\.[a-zA-Z0-9_.@\\[\\]\\(\\)-]+)*"
+    },
     "JsonValue":{"type":"string"},
     "JwtToken":{
       "type":"string",
@@ -18968,7 +19705,7 @@
     },
     "KmsKeyArn":{
       "type":"string",
-      "pattern":"arn:aws:kms:.*"
+      "pattern":"^$|arn:aws[a-z0-9-]*:kms:.*"
     },
     "LabelCount":{"type":"integer"},
     "LabelingSetGenerationTaskRunProperties":{
@@ -18980,6 +19717,11 @@
         }
       },
       "documentation":"<p>Specifies configuration properties for a labeling set generation task run.</p>"
+    },
+    "Labels":{
+      "type":"map",
+      "key":{"shape":"NameString"},
+      "value":{"shape":"NameString"}
     },
     "LakeFormationConfiguration":{
       "type":"structure",
@@ -19064,6 +19806,13 @@
         "SUCCEEDED",
         "CANCELLED",
         "FAILED"
+      ]
+    },
+    "LastRefreshType":{
+      "type":"string",
+      "enum":[
+        "FULL",
+        "INCREMENTAL"
       ]
     },
     "LatestSchemaVersionBoolean":{"type":"boolean"},
@@ -19537,6 +20286,36 @@
         }
       }
     },
+    "ListIntegrationResourcePropertiesRequest":{
+      "type":"structure",
+      "members":{
+        "Marker":{
+          "shape":"String1024",
+          "documentation":"<p>This is the pagination token for next page, initial value is <code>null</code>.</p>"
+        },
+        "Filters":{
+          "shape":"IntegrationResourcePropertyFilterList",
+          "documentation":"<p>A list of filters, supported filter Key is <code>SourceArn</code> and <code>TargetArn</code>.</p>"
+        },
+        "MaxRecords":{
+          "shape":"IntegrationInteger",
+          "documentation":"<p>This is total number of items to be evaluated.</p>"
+        }
+      }
+    },
+    "ListIntegrationResourcePropertiesResponse":{
+      "type":"structure",
+      "members":{
+        "IntegrationResourcePropertyList":{
+          "shape":"IntegrationResourcePropertyList",
+          "documentation":"<p>A list of integration resource property meeting the filter criteria.</p>"
+        },
+        "Marker":{
+          "shape":"String1024",
+          "documentation":"<p>This is the pagination token for the next page.</p>"
+        }
+      }
+    },
     "ListJobsRequest":{
       "type":"structure",
       "members":{
@@ -19603,6 +20382,45 @@
         "NextToken":{
           "shape":"PaginationToken",
           "documentation":"<p>A continuation token, if the returned list does not contain the last metric available.</p>"
+        }
+      }
+    },
+    "ListMaterializedViewRefreshTaskRunsRequest":{
+      "type":"structure",
+      "required":["CatalogId"],
+      "members":{
+        "CatalogId":{
+          "shape":"NameString",
+          "documentation":"<p>The ID of the Data Catalog where the table resides. If none is supplied, the account ID is used by default.</p>"
+        },
+        "DatabaseName":{
+          "shape":"NameString",
+          "documentation":"<p>The database where the table resides.</p>"
+        },
+        "TableName":{
+          "shape":"NameString",
+          "documentation":"<p>The name of the table for which statistics is generated.</p>"
+        },
+        "MaxResults":{
+          "shape":"PageSize",
+          "documentation":"<p>The maximum size of the response.</p>"
+        },
+        "NextToken":{
+          "shape":"Token",
+          "documentation":"<p>A continuation token, if this is a continuation call.</p>"
+        }
+      }
+    },
+    "ListMaterializedViewRefreshTaskRunsResponse":{
+      "type":"structure",
+      "members":{
+        "MaterializedViewRefreshTaskRuns":{
+          "shape":"MaterializedViewRefreshTaskRunsList",
+          "documentation":"<p>The results of the ListMaterializedViewRefreshTaskRuns action. </p>"
+        },
+        "NextToken":{
+          "shape":"Token",
+          "documentation":"<p>A continuation token, if not all task run IDs have yet been returned.</p>"
         }
       }
     },
@@ -20212,6 +21030,117 @@
       "max":10,
       "min":0
     },
+    "MaterializedViewRefreshState":{
+      "type":"string",
+      "enum":[
+        "STARTING",
+        "RUNNING",
+        "SUCCEEDED",
+        "FAILED",
+        "STOPPED"
+      ]
+    },
+    "MaterializedViewRefreshTaskNotRunningException":{
+      "type":"structure",
+      "members":{
+        "Message":{"shape":"MessageString"}
+      },
+      "documentation":"<p>Exception thrown when stopping a task that is not in running state.</p>",
+      "exception":true
+    },
+    "MaterializedViewRefreshTaskRun":{
+      "type":"structure",
+      "members":{
+        "CustomerId":{
+          "shape":"AccountId",
+          "documentation":"<p>The Amazon Web Services account ID.</p>"
+        },
+        "MaterializedViewRefreshTaskRunId":{
+          "shape":"UUIDv4",
+          "documentation":"<p>The identifier of the materialized view refresh task run.</p>"
+        },
+        "DatabaseName":{
+          "shape":"DatabaseName",
+          "documentation":"<p>The database where the table resides.</p>"
+        },
+        "TableName":{
+          "shape":"TableName",
+          "documentation":"<p>The name of the table for which statistics is generated.</p>"
+        },
+        "CatalogId":{
+          "shape":"CatalogIdString",
+          "documentation":"<p>The ID of the Data Catalog where the table resides. If none is supplied, the account ID is used by default.</p>"
+        },
+        "Role":{
+          "shape":"Role",
+          "documentation":"<p>The IAM role that the service assumes to generate statistics.</p>"
+        },
+        "Status":{
+          "shape":"MaterializedViewRefreshState",
+          "documentation":"<p>The status of the task run.</p>"
+        },
+        "CreationTime":{
+          "shape":"Timestamp",
+          "documentation":"<p>The time that this task was created.</p>"
+        },
+        "LastUpdated":{
+          "shape":"Timestamp",
+          "documentation":"<p>The last point in time when this task was modified.</p>"
+        },
+        "StartTime":{
+          "shape":"Timestamp",
+          "documentation":"<p>The start time of the task.</p>"
+        },
+        "EndTime":{
+          "shape":"Timestamp",
+          "documentation":"<p>The end time of the task.</p>"
+        },
+        "ErrorMessage":{
+          "shape":"DescriptionString",
+          "documentation":"<p>The error message for the job.</p>"
+        },
+        "DPUSeconds":{
+          "shape":"NonNegativeDouble",
+          "documentation":"<p>The calculated DPU usage in seconds for all autoscaled workers.</p>"
+        },
+        "RefreshType":{
+          "shape":"MaterializedViewRefreshType",
+          "documentation":"<p>The type of the refresh task run. Either FULL or INCREMENTAL.</p>"
+        },
+        "ProcessedBytes":{
+          "shape":"ByteCount",
+          "documentation":"<p>The number of bytes the refresh task run has scanned to refresh the materialized view.</p>"
+        }
+      },
+      "documentation":"<p>The object that shows the details of the materialized view refresh task run.</p>"
+    },
+    "MaterializedViewRefreshTaskRunningException":{
+      "type":"structure",
+      "members":{
+        "Message":{"shape":"MessageString"}
+      },
+      "documentation":"<p>Exception thrown when a task is already in running state.</p>",
+      "exception":true
+    },
+    "MaterializedViewRefreshTaskRunsList":{
+      "type":"list",
+      "member":{"shape":"MaterializedViewRefreshTaskRun"}
+    },
+    "MaterializedViewRefreshTaskStoppingException":{
+      "type":"structure",
+      "members":{
+        "Message":{"shape":"MessageString"}
+      },
+      "documentation":"<p>Exception thrown when a task is already in stopping state.</p>",
+      "exception":true
+    },
+    "MaterializedViewRefreshType":{
+      "type":"string",
+      "enum":[
+        "FULL",
+        "INCREMENTAL"
+      ]
+    },
     "MaxConcurrentRuns":{"type":"integer"},
     "MaxListTableOptimizerRunsTokenResults":{"type":"integer"},
     "MaxResults":{
@@ -20409,7 +21338,10 @@
           "shape":"String2048",
           "documentation":"<p>Selects source tables for the integration using Maxwell filter syntax.</p>"
         },
-        "IntegrationConfig":{"shape":"IntegrationConfig"},
+        "IntegrationConfig":{
+          "shape":"IntegrationConfig",
+          "documentation":"<p>The configuration settings for the integration. Currently, only the RefreshInterval can be modified. </p>"
+        },
         "IntegrationName":{
           "shape":"String128",
           "documentation":"<p>A unique name for an integration in Glue.</p>"
@@ -20428,11 +21360,11 @@
       ],
       "members":{
         "SourceArn":{
-          "shape":"String128",
+          "shape":"String512",
           "documentation":"<p>The ARN of the source for the integration.</p>"
         },
         "TargetArn":{
-          "shape":"String128",
+          "shape":"String512",
           "documentation":"<p>The ARN of the target for the integration.</p>"
         },
         "IntegrationName":{
@@ -20475,7 +21407,10 @@
           "shape":"String2048",
           "documentation":"<p>Selects source tables for the integration using Maxwell filter syntax.</p>"
         },
-        "IntegrationConfig":{"shape":"IntegrationConfig"}
+        "IntegrationConfig":{
+          "shape":"IntegrationConfig",
+          "documentation":"<p>The updated configuration settings for the integration.</p>"
+        }
       }
     },
     "MongoDBTarget":{
@@ -20822,6 +21757,24 @@
       },
       "documentation":"<p>A structure containing properties for OAuth2 in the CreateConnection request.</p>"
     },
+    "OffsetConfiguration":{
+      "type":"structure",
+      "required":[
+        "OffsetParameter",
+        "LimitParameter"
+      ],
+      "members":{
+        "OffsetParameter":{
+          "shape":"ExtractedParameter",
+          "documentation":"<p>The parameter name used to specify the starting position or offset for retrieving results.</p>"
+        },
+        "LimitParameter":{
+          "shape":"ExtractedParameter",
+          "documentation":"<p>The parameter name used to specify the maximum number of results to return per page.</p>"
+        }
+      },
+      "documentation":"<p>Offset-based pagination configuration that defines how to handle pagination using numeric offsets and limits.</p>"
+    },
     "OneInput":{
       "type":"list",
       "member":{"shape":"NodeId"},
@@ -21159,6 +22112,20 @@
       "max":1000,
       "min":1
     },
+    "PaginationConfiguration":{
+      "type":"structure",
+      "members":{
+        "CursorConfiguration":{
+          "shape":"CursorConfiguration",
+          "documentation":"<p>Configuration for cursor-based pagination, where the API provides a cursor or token to retrieve the next page of results.</p>"
+        },
+        "OffsetConfiguration":{
+          "shape":"OffsetConfiguration",
+          "documentation":"<p>Configuration for offset-based pagination, where the API uses numeric offsets and limits to control which results are returned.</p>"
+        }
+      },
+      "documentation":"<p>Configuration that defines how to handle paginated responses from REST APIs, supporting different pagination strategies used by various services.</p>"
+    },
     "PaginationToken":{"type":"string"},
     "ParamType":{
       "type":"string",
@@ -21389,6 +22356,12 @@
     "PathList":{
       "type":"list",
       "member":{"shape":"Path"}
+    },
+    "PathString":{
+      "type":"string",
+      "max":512,
+      "min":1,
+      "pattern":"/[a-zA-Z0-9._~:/?#\\[\\]@!$&'()*+,;={}-]*"
     },
     "Permission":{
       "type":"string",
@@ -21669,6 +22642,14 @@
         "DataOperationScopes":{
           "shape":"DataOperations",
           "documentation":"<p>Indicates which data operations are applicable to the property.</p>"
+        },
+        "KeyOverride":{
+          "shape":"String",
+          "documentation":"<p>A key name to use when sending this property in API requests, if different from the display name.</p>"
+        },
+        "PropertyLocation":{
+          "shape":"PropertyLocation",
+          "documentation":"<p>Specifies where this property should be included in REST requests, such as in headers, query parameters, or request body.</p>"
         }
       },
       "documentation":"<p>An object that defines a connection type for a compute environment.</p>"
@@ -21682,6 +22663,15 @@
       "type":"string",
       "max":128,
       "min":1
+    },
+    "PropertyLocation":{
+      "type":"string",
+      "enum":[
+        "HEADER",
+        "BODY",
+        "QUERY_PARAM",
+        "PATH"
+      ]
     },
     "PropertyMap":{
       "type":"map",
@@ -22187,11 +23177,65 @@
       "type":"list",
       "member":{"shape":"NameString"}
     },
+    "RefreshSeconds":{
+      "type":"long",
+      "box":true
+    },
     "RefreshToken":{
       "type":"string",
       "max":4096,
       "pattern":"^[\\x20-\\x7E]*$",
       "sensitive":true
+    },
+    "RegisterConnectionTypeRequest":{
+      "type":"structure",
+      "required":[
+        "ConnectionType",
+        "IntegrationType",
+        "ConnectionProperties",
+        "ConnectorAuthenticationConfiguration",
+        "RestConfiguration"
+      ],
+      "members":{
+        "ConnectionType":{
+          "shape":"NameString",
+          "documentation":"<p>The name of the connection type. Must be between 1 and 255 characters and must be prefixed with \"REST-\" to indicate it is a REST-based connector.</p>"
+        },
+        "IntegrationType":{
+          "shape":"IntegrationType",
+          "documentation":"<p>The integration type for the connection. Currently only \"REST\" protocol is supported.</p>"
+        },
+        "Description":{
+          "shape":"Description",
+          "documentation":"<p>A description of the connection type. Can be up to 2048 characters and provides details about the purpose and functionality of the connection type.</p>"
+        },
+        "ConnectionProperties":{
+          "shape":"ConnectionPropertiesConfiguration",
+          "documentation":"<p>Defines the base URL and additional request parameters needed during connection creation for this connection type.</p>"
+        },
+        "ConnectorAuthenticationConfiguration":{
+          "shape":"ConnectorAuthenticationConfiguration",
+          "documentation":"<p>Defines the supported authentication types and required properties for this connection type, including Basic, OAuth2, and Custom authentication methods.</p>"
+        },
+        "RestConfiguration":{
+          "shape":"RestConfiguration",
+          "documentation":"<p>Defines the HTTP request and response configuration, validation endpoint, and entity configurations for REST API interactions.</p>"
+        },
+        "Tags":{
+          "shape":"TagsMap",
+          "documentation":"<p>The tags you assign to the connection type.</p>"
+        }
+      }
+    },
+    "RegisterConnectionTypeResponse":{
+      "type":"structure",
+      "members":{
+        "ConnectionTypeArn":{
+          "shape":"GlueResourceArn",
+          "documentation":"<p>The Amazon Resource Name (ARN) of the registered connection type. This unique identifier can be used to reference the connection type in other Glue operations.</p>"
+        }
+      },
+      "documentation":"<p>Contains the Amazon Resource Name (ARN) of the newly registered connection type.</p>"
     },
     "RegisterSchemaVersionInput":{
       "type":"structure",
@@ -22502,6 +23546,53 @@
       "member":{"shape":"ResourceUri"},
       "max":1000,
       "min":0
+    },
+    "ResponseConfiguration":{
+      "type":"structure",
+      "required":["ResultPath"],
+      "members":{
+        "ResultPath":{
+          "shape":"JsonPathString",
+          "documentation":"<p>The JSON path expression that identifies where the actual result data is located within the API response.</p>"
+        },
+        "ErrorPath":{
+          "shape":"JsonPathString",
+          "documentation":"<p>The JSON path expression that identifies where error information is located within API responses when requests fail.</p>"
+        }
+      },
+      "documentation":"<p>Configuration that defines how to parse JSON responses from REST API calls, including paths to result data and error information.</p>"
+    },
+    "ResponseExtractionMapping":{
+      "type":"structure",
+      "members":{
+        "ContentPath":{
+          "shape":"JsonPathString",
+          "documentation":"<p>A JSON path expression that specifies how to extract a value from the response body content.</p>"
+        },
+        "HeaderKey":{
+          "shape":"ConnectorPropertyKey",
+          "documentation":"<p>The name of an HTTP response header from which to extract the value.</p>"
+        }
+      },
+      "documentation":"<p>Configuration that defines how to extract values from HTTP response content or headers for use in subsequent requests or parameter mapping.</p>"
+    },
+    "RestConfiguration":{
+      "type":"structure",
+      "members":{
+        "GlobalSourceConfiguration":{
+          "shape":"SourceConfiguration",
+          "documentation":"<p>Global configuration settings that apply to all REST API requests for this connection type, including common request methods, paths, and parameters.</p>"
+        },
+        "ValidationEndpointConfiguration":{
+          "shape":"SourceConfiguration",
+          "documentation":"<p>Configuration for the endpoint used to validate connection credentials and test connectivity during connection creation.</p>"
+        },
+        "EntityConfigurations":{
+          "shape":"EntityConfigurationMap",
+          "documentation":"<p>A map of entity configurations that define how to interact with different data entities available through the REST API, including their schemas and access patterns.</p>"
+        }
+      },
+      "documentation":"<p>Configuration that defines HTTP request and response handling, validation endpoints, and entity configurations for REST API interactions.</p>"
     },
     "ResumeWorkflowRunRequest":{
       "type":"structure",
@@ -24492,6 +25583,32 @@
         "ASCENDING"
       ]
     },
+    "SourceConfiguration":{
+      "type":"structure",
+      "members":{
+        "RequestMethod":{
+          "shape":"HTTPMethod",
+          "documentation":"<p>The HTTP method to use for requests to this endpoint, such as GET, POST.</p>"
+        },
+        "RequestPath":{
+          "shape":"PathString",
+          "documentation":"<p>The URL path for the REST endpoint, which may include parameter placeholders that will be replaced with actual values during requests.</p>"
+        },
+        "RequestParameters":{
+          "shape":"ConnectorPropertyList",
+          "documentation":"<p>Configuration for request parameters that should be included in API calls, such as query parameters, headers, or body content.</p>"
+        },
+        "ResponseConfiguration":{
+          "shape":"ResponseConfiguration",
+          "documentation":"<p>Configuration that defines how to parse and extract data from API responses, including success and error handling.</p>"
+        },
+        "PaginationConfiguration":{
+          "shape":"PaginationConfiguration",
+          "documentation":"<p>Configuration for handling paginated responses from the REST API, supporting both cursor-based and offset-based pagination strategies.</p>"
+        }
+      },
+      "documentation":"<p>Configuration that defines how to make requests to endpoints, including request methods, paths, parameters, and response handling.</p>"
+    },
     "SourceControlAuthStrategy":{
       "type":"string",
       "enum":[
@@ -25165,6 +26282,41 @@
         }
       }
     },
+    "StartMaterializedViewRefreshTaskRunRequest":{
+      "type":"structure",
+      "required":[
+        "CatalogId",
+        "DatabaseName",
+        "TableName"
+      ],
+      "members":{
+        "CatalogId":{
+          "shape":"NameString",
+          "documentation":"<p>The ID of the Data Catalog where the table reside. If none is supplied, the account ID is used by default.</p>"
+        },
+        "DatabaseName":{
+          "shape":"NameString",
+          "documentation":"<p>The name of the database where the table resides.</p>"
+        },
+        "TableName":{
+          "shape":"NameString",
+          "documentation":"<p>The name of the table to generate run the materialized view refresh task.</p>"
+        },
+        "FullRefresh":{
+          "shape":"NullableBoolean",
+          "documentation":"<p>Specifies whether this is a full refresh of the task run.</p>"
+        }
+      }
+    },
+    "StartMaterializedViewRefreshTaskRunResponse":{
+      "type":"structure",
+      "members":{
+        "MaterializedViewRefreshTaskRunId":{
+          "shape":"UUIDv4",
+          "documentation":"<p>The identifier for the materialized view refresh task run.</p>"
+        }
+      }
+    },
     "StartTriggerRequest":{
       "type":"structure",
       "required":["Name"],
@@ -25534,6 +26686,32 @@
       "type":"structure",
       "members":{}
     },
+    "StopMaterializedViewRefreshTaskRunRequest":{
+      "type":"structure",
+      "required":[
+        "CatalogId",
+        "DatabaseName",
+        "TableName"
+      ],
+      "members":{
+        "CatalogId":{
+          "shape":"NameString",
+          "documentation":"<p>The ID of the Data Catalog where the table reside. If none is supplied, the account ID is used by default.</p>"
+        },
+        "DatabaseName":{
+          "shape":"NameString",
+          "documentation":"<p>The name of the database where the table resides.</p>"
+        },
+        "TableName":{
+          "shape":"NameString",
+          "documentation":"<p>The name of the table to generate statistics.</p>"
+        }
+      }
+    },
+    "StopMaterializedViewRefreshTaskRunResponse":{
+      "type":"structure",
+      "members":{}
+    },
     "StopSessionRequest":{
       "type":"structure",
       "required":["Id"],
@@ -25674,6 +26852,11 @@
       "documentation":"<p>Specifies options related to data preview for viewing a sample of your data.</p>"
     },
     "String":{"type":"string"},
+    "String1024":{
+      "type":"string",
+      "max":1024,
+      "min":1
+    },
     "String128":{
       "type":"string",
       "max":128,
@@ -25682,6 +26865,11 @@
     "String2048":{
       "type":"string",
       "max":2048,
+      "min":1
+    },
+    "String512":{
+      "type":"string",
+      "max":512,
       "min":1
     },
     "StringColumnStatisticsData":{
@@ -25831,7 +27019,14 @@
           "shape":"NullableBoolean",
           "documentation":"<p>Specifies whether the view supports the SQL dialects of one or more different query engines and can therefore be read by those engines.</p>"
         },
-        "Status":{"shape":"TableStatus"}
+        "IsMaterializedView":{
+          "shape":"NullableBoolean",
+          "documentation":"<p>Indicates a table is a <code>MaterializedView</code>.</p>"
+        },
+        "Status":{
+          "shape":"TableStatus",
+          "documentation":"<p>Indicates the the state of an asynchronous change to a table.</p>"
+        }
       },
       "documentation":"<p>Represents a collection of related data organized in columns and rows.</p>"
     },
@@ -26165,6 +27360,10 @@
     "TableVersionErrors":{
       "type":"list",
       "member":{"shape":"TableVersionError"}
+    },
+    "TableVersionId":{
+      "type":"long",
+      "min":-1
     },
     "Tag":{
       "type":"structure",
@@ -26879,6 +28078,10 @@
       "min":1,
       "pattern":"[\\u0020-\\uD7FF\\uE000-\\uFFFD\\uD800\\uDC00-\\uDBFF\\uDFFF\\r\\n\\t]*"
     },
+    "UUIDv4":{
+      "type":"string",
+      "pattern":"[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"
+    },
     "UnfilteredPartition":{
       "type":"structure",
       "members":{
@@ -27440,6 +28643,10 @@
         "Scopes":{
           "shape":"IdentityCenterScopesList",
           "documentation":"<p>A list of Identity Center scopes that define the updated permissions and access levels for the Glue configuration.</p>"
+        },
+        "UserBackgroundSessionsEnabled":{
+          "shape":"NullableBoolean",
+          "documentation":"<p>Specifies whether users can run background sessions when using Identity Center authentication with Glue services.</p>"
         }
       },
       "documentation":"<p>Request to update an existing Glue Identity Center configuration.</p>"
@@ -27499,7 +28706,7 @@
       "required":["ResourceArn"],
       "members":{
         "ResourceArn":{
-          "shape":"String128",
+          "shape":"String512",
           "documentation":"<p>The connection ARN of the source, or the database ARN of the target.</p>"
         },
         "SourceProcessingProperties":{
@@ -27516,8 +28723,12 @@
       "type":"structure",
       "members":{
         "ResourceArn":{
-          "shape":"String128",
+          "shape":"String512",
           "documentation":"<p>The connection ARN of the source, or the database ARN of the target.</p>"
+        },
+        "ResourcePropertyArn":{
+          "shape":"String512",
+          "documentation":"<p>The resource ARN created through this create API. The format is something like arn:aws:glue:&lt;region&gt;:&lt;account_id&gt;:integrationresourceproperty/*</p>"
         },
         "SourceProcessingProperties":{
           "shape":"SourceProcessingProperties",
@@ -27537,7 +28748,7 @@
       ],
       "members":{
         "ResourceArn":{
-          "shape":"String128",
+          "shape":"String512",
           "documentation":"<p>The connection ARN of the source, or the database ARN of the target.</p>"
         },
         "TableName":{
@@ -27948,7 +29159,10 @@
           "shape":"Boolean",
           "documentation":"<p>A flag that can be set to true to ignore matching storage descriptor and subobject matching requirements.</p>"
         },
-        "UpdateOpenTableFormatInput":{"shape":"UpdateOpenTableFormatInput"}
+        "UpdateOpenTableFormatInput":{
+          "shape":"UpdateOpenTableFormatInput",
+          "documentation":"<p>Input parameters for updating open table format tables in GlueData Catalog, serving as a wrapper for format-specific update operations such as Apache Iceberg.</p>"
+        }
       }
     },
     "UpdateTableResponse":{
@@ -28157,6 +29371,10 @@
           "shape":"NameString",
           "documentation":"<p>The owner of the function.</p>"
         },
+        "FunctionType":{
+          "shape":"FunctionType",
+          "documentation":"<p>The type of the function.</p>"
+        },
         "OwnerType":{
           "shape":"PrincipalType",
           "documentation":"<p>The owner type.</p>"
@@ -28190,6 +29408,10 @@
         "OwnerName":{
           "shape":"NameString",
           "documentation":"<p>The owner of the function.</p>"
+        },
+        "FunctionType":{
+          "shape":"FunctionType",
+          "documentation":"<p>The type of the function.</p>"
         },
         "OwnerType":{
           "shape":"PrincipalType",
@@ -28287,9 +29509,29 @@
           "shape":"ArnString",
           "documentation":"<p>The definer of a view in SQL.</p>"
         },
+        "ViewVersionId":{
+          "shape":"TableVersionId",
+          "documentation":"<p>The ID value that identifies this view's version. For materialized views, the version ID is the Apache Iceberg table's snapshot ID. </p>"
+        },
+        "ViewVersionToken":{
+          "shape":"HashString",
+          "documentation":"<p>The version ID of the Apache Iceberg table.</p>"
+        },
+        "RefreshSeconds":{
+          "shape":"RefreshSeconds",
+          "documentation":"<p>Auto refresh interval in seconds for the materialized view. If not specified, the view will not automatically refresh.</p>"
+        },
+        "LastRefreshType":{
+          "shape":"LastRefreshType",
+          "documentation":"<p>Sets the method used for the most recent refresh.</p>"
+        },
         "SubObjects":{
           "shape":"ViewSubObjectsList",
           "documentation":"<p>A list of table Amazon Resource Names (ARNs).</p>"
+        },
+        "SubObjectVersionIds":{
+          "shape":"ViewSubObjectVersionIdsList",
+          "documentation":"<p>List of the Apache Iceberg table versions referenced by the materialized view.</p>"
         },
         "Representations":{
           "shape":"ViewRepresentationList",
@@ -28313,9 +29555,29 @@
           "shape":"ViewRepresentationInputList",
           "documentation":"<p>A list of structures that contains the dialect of the view, and the query that defines the view.</p>"
         },
+        "ViewVersionId":{
+          "shape":"TableVersionId",
+          "documentation":"<p>The ID value that identifies this view's version. For materialized views, the version ID is the Apache Iceberg table's snapshot ID. </p>"
+        },
+        "ViewVersionToken":{
+          "shape":"VersionString",
+          "documentation":"<p>The version ID of the Apache Iceberg table.</p>"
+        },
+        "RefreshSeconds":{
+          "shape":"RefreshSeconds",
+          "documentation":"<p>Auto refresh interval in seconds for the materialized view. If not specified, the view will not automatically refresh.</p>"
+        },
+        "LastRefreshType":{
+          "shape":"LastRefreshType",
+          "documentation":"<p>The type of the materialized view's last refresh. Valid values: <code>Full</code>, <code>Incremental</code>.</p>"
+        },
         "SubObjects":{
           "shape":"ViewSubObjectsList",
           "documentation":"<p>A list of base table ARNs that make up the view.</p>"
+        },
+        "SubObjectVersionIds":{
+          "shape":"ViewSubObjectVersionIdsList",
+          "documentation":"<p>List of the Apache Iceberg table versions referenced by the materialized view.</p>"
         }
       },
       "documentation":"<p>A structure containing details for creating or updating an Glue view.</p>"
@@ -28400,6 +29662,12 @@
       "member":{"shape":"ViewRepresentation"},
       "max":1000,
       "min":1
+    },
+    "ViewSubObjectVersionIdsList":{
+      "type":"list",
+      "member":{"shape":"TableVersionId"},
+      "max":250,
+      "min":0
     },
     "ViewSubObjectsList":{
       "type":"list",

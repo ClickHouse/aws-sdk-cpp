@@ -3,91 +3,89 @@
  * SPDX-License-Identifier: Apache-2.0.
  */
 
-#include <aws/observabilityadmin/model/TelemetryRule.h>
 #include <aws/core/utils/json/JsonSerializer.h>
+#include <aws/observabilityadmin/model/TelemetryRule.h>
 
 #include <utility>
 
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-namespace Aws
-{
-namespace ObservabilityAdmin
-{
-namespace Model
-{
+namespace Aws {
+namespace ObservabilityAdmin {
+namespace Model {
 
-TelemetryRule::TelemetryRule(JsonView jsonValue)
-{
-  *this = jsonValue;
-}
+TelemetryRule::TelemetryRule(JsonView jsonValue) { *this = jsonValue; }
 
-TelemetryRule& TelemetryRule::operator =(JsonView jsonValue)
-{
-  if(jsonValue.ValueExists("ResourceType"))
-  {
+TelemetryRule& TelemetryRule::operator=(JsonView jsonValue) {
+  if (jsonValue.ValueExists("ResourceType")) {
     m_resourceType = ResourceTypeMapper::GetResourceTypeForName(jsonValue.GetString("ResourceType"));
     m_resourceTypeHasBeenSet = true;
   }
-  if(jsonValue.ValueExists("TelemetryType"))
-  {
+  if (jsonValue.ValueExists("TelemetryType")) {
     m_telemetryType = TelemetryTypeMapper::GetTelemetryTypeForName(jsonValue.GetString("TelemetryType"));
     m_telemetryTypeHasBeenSet = true;
   }
-  if(jsonValue.ValueExists("DestinationConfiguration"))
-  {
+  if (jsonValue.ValueExists("TelemetrySourceTypes")) {
+    Aws::Utils::Array<JsonView> telemetrySourceTypesJsonList = jsonValue.GetArray("TelemetrySourceTypes");
+    for (unsigned telemetrySourceTypesIndex = 0; telemetrySourceTypesIndex < telemetrySourceTypesJsonList.GetLength();
+         ++telemetrySourceTypesIndex) {
+      m_telemetrySourceTypes.push_back(
+          TelemetrySourceTypeMapper::GetTelemetrySourceTypeForName(telemetrySourceTypesJsonList[telemetrySourceTypesIndex].AsString()));
+    }
+    m_telemetrySourceTypesHasBeenSet = true;
+  }
+  if (jsonValue.ValueExists("DestinationConfiguration")) {
     m_destinationConfiguration = jsonValue.GetObject("DestinationConfiguration");
     m_destinationConfigurationHasBeenSet = true;
   }
-  if(jsonValue.ValueExists("Scope"))
-  {
+  if (jsonValue.ValueExists("Scope")) {
     m_scope = jsonValue.GetString("Scope");
     m_scopeHasBeenSet = true;
   }
-  if(jsonValue.ValueExists("SelectionCriteria"))
-  {
+  if (jsonValue.ValueExists("SelectionCriteria")) {
     m_selectionCriteria = jsonValue.GetString("SelectionCriteria");
     m_selectionCriteriaHasBeenSet = true;
   }
   return *this;
 }
 
-JsonValue TelemetryRule::Jsonize() const
-{
+JsonValue TelemetryRule::Jsonize() const {
   JsonValue payload;
 
-  if(m_resourceTypeHasBeenSet)
-  {
-   payload.WithString("ResourceType", ResourceTypeMapper::GetNameForResourceType(m_resourceType));
+  if (m_resourceTypeHasBeenSet) {
+    payload.WithString("ResourceType", ResourceTypeMapper::GetNameForResourceType(m_resourceType));
   }
 
-  if(m_telemetryTypeHasBeenSet)
-  {
-   payload.WithString("TelemetryType", TelemetryTypeMapper::GetNameForTelemetryType(m_telemetryType));
+  if (m_telemetryTypeHasBeenSet) {
+    payload.WithString("TelemetryType", TelemetryTypeMapper::GetNameForTelemetryType(m_telemetryType));
   }
 
-  if(m_destinationConfigurationHasBeenSet)
-  {
-   payload.WithObject("DestinationConfiguration", m_destinationConfiguration.Jsonize());
-
+  if (m_telemetrySourceTypesHasBeenSet) {
+    Aws::Utils::Array<JsonValue> telemetrySourceTypesJsonList(m_telemetrySourceTypes.size());
+    for (unsigned telemetrySourceTypesIndex = 0; telemetrySourceTypesIndex < telemetrySourceTypesJsonList.GetLength();
+         ++telemetrySourceTypesIndex) {
+      telemetrySourceTypesJsonList[telemetrySourceTypesIndex].AsString(
+          TelemetrySourceTypeMapper::GetNameForTelemetrySourceType(m_telemetrySourceTypes[telemetrySourceTypesIndex]));
+    }
+    payload.WithArray("TelemetrySourceTypes", std::move(telemetrySourceTypesJsonList));
   }
 
-  if(m_scopeHasBeenSet)
-  {
-   payload.WithString("Scope", m_scope);
-
+  if (m_destinationConfigurationHasBeenSet) {
+    payload.WithObject("DestinationConfiguration", m_destinationConfiguration.Jsonize());
   }
 
-  if(m_selectionCriteriaHasBeenSet)
-  {
-   payload.WithString("SelectionCriteria", m_selectionCriteria);
+  if (m_scopeHasBeenSet) {
+    payload.WithString("Scope", m_scope);
+  }
 
+  if (m_selectionCriteriaHasBeenSet) {
+    payload.WithString("SelectionCriteria", m_selectionCriteria);
   }
 
   return payload;
 }
 
-} // namespace Model
-} // namespace ObservabilityAdmin
-} // namespace Aws
+}  // namespace Model
+}  // namespace ObservabilityAdmin
+}  // namespace Aws

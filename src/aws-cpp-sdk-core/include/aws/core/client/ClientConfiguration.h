@@ -6,14 +6,16 @@
 #pragma once
 
 #include <aws/core/Core_EXPORTS.h>
+#include <aws/core/Region.h>
+#include <aws/core/http/HttpTypes.h>
 #include <aws/core/http/Scheme.h>
 #include <aws/core/http/Version.h>
-#include <aws/core/Region.h>
-#include <aws/core/utils/memory/stl/AWSString.h>
-#include <aws/core/http/HttpTypes.h>
 #include <aws/core/utils/Array.h>
+#include <aws/core/utils/StringUtils.h>
+#include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/crt/Optional.h>
 #include <smithy/tracing/TelemetryProvider.h>
+
 #include <memory>
 
 namespace Aws
@@ -74,6 +76,16 @@ namespace Aws
         enum class ResponseChecksumValidation {
           WHEN_SUPPORTED,
           WHEN_REQUIRED,
+        };
+
+        /**
+         * Control HTTP client chunking implementation mode.
+         * DEFAULT: Use SDK's ChunkingInterceptor for aws-chunked encoding
+         * CLIENT_IMPLEMENTATION: Rely on HTTP client's native chunking (default for custom clients)
+         */
+        enum class HttpClientChunkedMode {
+          DEFAULT,
+          CLIENT_IMPLEMENTATION,
         };
 
         struct RequestCompressionConfig {
@@ -447,6 +459,16 @@ namespace Aws
             static Aws::String LoadConfigFromEnvOrProfile(const Aws::String& envKey, const Aws::String& profile,
                                                           const Aws::String& profileProperty, const Aws::Vector<Aws::String>& allowedValues,
                                                           const Aws::String& defaultValue);
+            /**
+             * A helper function to read config value from env variable or aws profile config. Addresses a problem in
+             * LoadConfigFromEnvOrProfile where env variables values are always mapped to their lower case equivalent.
+             * This fails for cases where ENV vars need to be case sensitive in instances like AWS_ROLE_ARN can have
+             * camel case values.
+             */
+            static Aws::String LoadConfigFromEnvOrProfileCaseSensitive(
+                const Aws::String& envKey, const Aws::String& profile, const Aws::String& profileProperty,
+                const Aws::Vector<Aws::String>& allowedValues, const Aws::String& defaultValue,
+                const std::function<Aws::String(const char*)>& envValueMapping = Utils::StringUtils::ToLower);
 
             /**
              * A wrapper for interfacing with telemetry functionality. Defaults to Noop provider.
@@ -481,6 +503,12 @@ namespace Aws
            * https://docs.aws.amazon.com/sdkref/latest/guide/feature-account-endpoints.html
            */
           Aws::String accountIdEndpointMode = "preferred";
+
+          /**
+           * Control HTTP client chunking implementation mode.
+           * Default is set automatically: CLIENT_IMPLEMENTATION for custom clients, DEFAULT for AWS clients.
+           */
+          HttpClientChunkedMode httpClientChunkedMode = HttpClientChunkedMode::CLIENT_IMPLEMENTATION;
           /**
           * Configuration structure for credential providers in the AWS SDK.
           * This structure allows passing configuration options to credential providers
@@ -550,7 +578,42 @@ namespace Aws
                */
               std::chrono::milliseconds credentialCacheCacheTTL = std::chrono::minutes(50);
             } stsCredentialsProviderConfig;
+            struct LoginProviderConfig {
+              /**
+               * ARN for AWS login session.
+               */
+              Aws::String loginSession{};
+
+              /**
+               * Overrides the login cache directory. by default the cache directory
+               * is located at `~/.aws/login/cache`.
+               */
+              Aws::String loginCacheOverride{};
+
+              /**
+               * Time out for the credentials future call.
+               */
+              std::chrono::milliseconds retrieveCredentialsFutureTimeout = std::chrono::seconds(10);
+            } loginCredentialProviderConfig;
           } credentialProviderConfig;
+
+          /**
+           * Authentication scheme preferences in order of preference.
+           * First available auth scheme will be used for each operation.
+           */
+          Aws::Vector<Aws::String> authPreferences;
+
+          /**
+           * Buffer size in bytes that will be used to content encode
+           * bodies using aws-chunked. Changing this is useful when you
+           * want to minimize memory use while uploading to S3. Size MUST
+           * be greater than 8KB otherwise S3 will reject the request.
+           *
+           * Defaults to 64KiB.
+           *
+           * https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-streaming.html
+           */
+          size_t awsChunkedBufferSize = 64UL * 1024;
         };
 
         /**

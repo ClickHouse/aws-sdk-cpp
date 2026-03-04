@@ -10,7 +10,11 @@
 #end
 #if($hasEventStreamResult)
 #if($hasEventStreamRequest)
+#if($serviceModel.useSmithyClient)
+\#include <smithy/client/SmithyEventStreamingAsyncTask.h>
+#else
 \#include <aws/core/client/AWSClientEventStreamingAsyncTask.h>
+#end
 #end
 \#include <aws/core/utils/event/EventStream.h>
 #end
@@ -30,7 +34,7 @@
 \#include <aws/${metadata.projectName}/${metadata.classNamePrefix}ARN.h>
 #end
 #end
-#if($serviceModel.hasBearerAuth())
+#if(($serviceModel.hasBearerAuth() && $serviceModel.useSmithyClient) || $serviceModel.hasOnlyBearerAuth())
 \#include <aws/core/auth/signer-provider/BearerTokenAuthSignerProvider.h>
 #end
 #foreach($operation in $serviceModel.operations)
@@ -74,4 +78,7 @@
 \#include <aws/common/string.h>
 
 using namespace Aws::Utils;
+#end
+#if($serviceModel.metadata.signingName == "bedrock")
+\#include <aws/$metadata.projectName/${metadata.classNamePrefix}AwsBearerTokenIdentityResolver.h>
 #end

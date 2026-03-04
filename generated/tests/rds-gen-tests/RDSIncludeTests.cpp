@@ -23,6 +23,8 @@
 #include <aws/rds/model/AddSourceIdentifierToSubscriptionRequest.h>
 #include <aws/rds/model/AddSourceIdentifierToSubscriptionResult.h>
 #include <aws/rds/model/AddTagsToResourceRequest.h>
+#include <aws/rds/model/AdditionalStorageVolume.h>
+#include <aws/rds/model/AdditionalStorageVolumeOutput.h>
 #include <aws/rds/model/ApplyMethod.h>
 #include <aws/rds/model/ApplyPendingMaintenanceActionRequest.h>
 #include <aws/rds/model/ApplyPendingMaintenanceActionResult.h>
@@ -32,6 +34,7 @@
 #include <aws/rds/model/AuthorizeDBSecurityGroupIngressResult.h>
 #include <aws/rds/model/AutomationMode.h>
 #include <aws/rds/model/AvailabilityZone.h>
+#include <aws/rds/model/AvailableAdditionalStorageVolumesOption.h>
 #include <aws/rds/model/AvailableProcessorFeature.h>
 #include <aws/rds/model/BacktrackDBClusterRequest.h>
 #include <aws/rds/model/BacktrackDBClusterResult.h>
@@ -321,6 +324,7 @@
 #include <aws/rds/model/MinimumEngineVersionPerAllowedValue.h>
 #include <aws/rds/model/ModifyActivityStreamRequest.h>
 #include <aws/rds/model/ModifyActivityStreamResult.h>
+#include <aws/rds/model/ModifyAdditionalStorageVolume.h>
 #include <aws/rds/model/ModifyCertificatesRequest.h>
 #include <aws/rds/model/ModifyCertificatesResult.h>
 #include <aws/rds/model/ModifyCurrentDBClusterCapacityRequest.h>
@@ -461,6 +465,7 @@
 #include <aws/rds/model/StopDBInstanceAutomatedBackupsReplicationResult.h>
 #include <aws/rds/model/StopDBInstanceRequest.h>
 #include <aws/rds/model/StopDBInstanceResult.h>
+#include <aws/rds/model/StorageEncryptionType.h>
 #include <aws/rds/model/Subnet.h>
 #include <aws/rds/model/SupportedEngineLifecycle.h>
 #include <aws/rds/model/SwitchoverBlueGreenDeploymentRequest.h>
@@ -471,6 +476,7 @@
 #include <aws/rds/model/SwitchoverReadReplicaRequest.h>
 #include <aws/rds/model/SwitchoverReadReplicaResult.h>
 #include <aws/rds/model/Tag.h>
+#include <aws/rds/model/TagSpecification.h>
 #include <aws/rds/model/TargetConnectionNetworkType.h>
 #include <aws/rds/model/TargetHealth.h>
 #include <aws/rds/model/TargetHealthReason.h>
@@ -480,11 +486,14 @@
 #include <aws/rds/model/TenantDatabase.h>
 #include <aws/rds/model/TenantDatabasePendingModifiedValues.h>
 #include <aws/rds/model/Timezone.h>
+#include <aws/rds/model/UpgradeRolloutOrder.h>
 #include <aws/rds/model/UpgradeTarget.h>
 #include <aws/rds/model/UserAuthConfig.h>
 #include <aws/rds/model/UserAuthConfigInfo.h>
+#include <aws/rds/model/ValidAdditionalStorageOptions.h>
 #include <aws/rds/model/ValidDBInstanceModificationsMessage.h>
 #include <aws/rds/model/ValidStorageOptions.h>
+#include <aws/rds/model/ValidVolumeOptions.h>
 #include <aws/rds/model/VpcSecurityGroupMembership.h>
 #include <aws/rds/model/WriteForwardingStatus.h>
 

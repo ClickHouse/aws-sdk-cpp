@@ -47,6 +47,7 @@
 #include <aws/lakeformation/model/CreateLakeFormationIdentityCenterConfigurationResult.h>
 #include <aws/lakeformation/model/CreateLakeFormationOptInRequest.h>
 #include <aws/lakeformation/model/CreateLakeFormationOptInResult.h>
+#include <aws/lakeformation/model/CredentialsScope.h>
 #include <aws/lakeformation/model/DataCellsFilter.h>
 #include <aws/lakeformation/model/DataCellsFilterResource.h>
 #include <aws/lakeformation/model/DataLakePrincipal.h>
@@ -104,6 +105,8 @@
 #include <aws/lakeformation/model/GetResourceLFTagsResult.h>
 #include <aws/lakeformation/model/GetTableObjectsRequest.h>
 #include <aws/lakeformation/model/GetTableObjectsResult.h>
+#include <aws/lakeformation/model/GetTemporaryDataLocationCredentialsRequest.h>
+#include <aws/lakeformation/model/GetTemporaryDataLocationCredentialsResult.h>
 #include <aws/lakeformation/model/GetTemporaryGluePartitionCredentialsRequest.h>
 #include <aws/lakeformation/model/GetTemporaryGluePartitionCredentialsResult.h>
 #include <aws/lakeformation/model/GetTemporaryGlueTableCredentialsRequest.h>
@@ -151,6 +154,8 @@
 #include <aws/lakeformation/model/QueryPlanningContext.h>
 #include <aws/lakeformation/model/QuerySessionContext.h>
 #include <aws/lakeformation/model/QueryStateString.h>
+#include <aws/lakeformation/model/RedshiftConnect.h>
+#include <aws/lakeformation/model/RedshiftScopeUnion.h>
 #include <aws/lakeformation/model/RegisterResourceRequest.h>
 #include <aws/lakeformation/model/RegisterResourceResult.h>
 #include <aws/lakeformation/model/RemoveLFTagsFromResourceRequest.h>
@@ -166,6 +171,8 @@
 #include <aws/lakeformation/model/SearchDatabasesByLFTagsResult.h>
 #include <aws/lakeformation/model/SearchTablesByLFTagsRequest.h>
 #include <aws/lakeformation/model/SearchTablesByLFTagsResult.h>
+#include <aws/lakeformation/model/ServiceAuthorization.h>
+#include <aws/lakeformation/model/ServiceIntegrationUnion.h>
 #include <aws/lakeformation/model/StartQueryPlanningRequest.h>
 #include <aws/lakeformation/model/StartQueryPlanningResult.h>
 #include <aws/lakeformation/model/StartTransactionRequest.h>
@@ -177,6 +184,7 @@
 #include <aws/lakeformation/model/TableWithColumnsResource.h>
 #include <aws/lakeformation/model/TaggedDatabase.h>
 #include <aws/lakeformation/model/TaggedTable.h>
+#include <aws/lakeformation/model/TemporaryCredentials.h>
 #include <aws/lakeformation/model/TransactionDescription.h>
 #include <aws/lakeformation/model/TransactionStatus.h>
 #include <aws/lakeformation/model/TransactionStatusFilter.h>
@@ -195,6 +203,7 @@
 #include <aws/lakeformation/model/UpdateTableObjectsResult.h>
 #include <aws/lakeformation/model/UpdateTableStorageOptimizerRequest.h>
 #include <aws/lakeformation/model/UpdateTableStorageOptimizerResult.h>
+#include <aws/lakeformation/model/VerificationStatus.h>
 #include <aws/lakeformation/model/VirtualObject.h>
 #include <aws/lakeformation/model/WorkUnitRange.h>
 #include <aws/lakeformation/model/WriteOperation.h>

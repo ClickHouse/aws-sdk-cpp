@@ -24,6 +24,7 @@
 #include <aws/billing/model/BillingViewStatusReason.h>
 #include <aws/billing/model/BillingViewType.h>
 #include <aws/billing/model/ConflictException.h>
+#include <aws/billing/model/CostCategoryValues.h>
 #include <aws/billing/model/CreateBillingViewRequest.h>
 #include <aws/billing/model/CreateBillingViewResult.h>
 #include <aws/billing/model/DeleteBillingViewRequest.h>
@@ -45,7 +46,9 @@
 #include <aws/billing/model/ListTagsForResourceResult.h>
 #include <aws/billing/model/ResourceNotFoundException.h>
 #include <aws/billing/model/ResourceTag.h>
+#include <aws/billing/model/SearchOption.h>
 #include <aws/billing/model/ServiceQuotaExceededException.h>
+#include <aws/billing/model/StringSearch.h>
 #include <aws/billing/model/TagResourceRequest.h>
 #include <aws/billing/model/TagResourceResult.h>
 #include <aws/billing/model/TagValues.h>

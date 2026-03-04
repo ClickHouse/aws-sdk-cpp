@@ -61,6 +61,7 @@
 #include <aws/mediaconvert/model/AudioNormalizationLoudnessLogging.h>
 #include <aws/mediaconvert/model/AudioNormalizationPeakCalculation.h>
 #include <aws/mediaconvert/model/AudioNormalizationSettings.h>
+#include <aws/mediaconvert/model/AudioPitchCorrectionSettings.h>
 #include <aws/mediaconvert/model/AudioProperties.h>
 #include <aws/mediaconvert/model/AudioSelector.h>
 #include <aws/mediaconvert/model/AudioSelectorGroup.h>
@@ -145,6 +146,7 @@
 #include <aws/mediaconvert/model/CmafWriteSegmentTimelineInRepresentation.h>
 #include <aws/mediaconvert/model/CmfcAudioDuration.h>
 #include <aws/mediaconvert/model/CmfcAudioTrackType.h>
+#include <aws/mediaconvert/model/CmfcC2paManifest.h>
 #include <aws/mediaconvert/model/CmfcDescriptiveVideoServiceFlag.h>
 #include <aws/mediaconvert/model/CmfcIFrameOnlyManifest.h>
 #include <aws/mediaconvert/model/CmfcKlvMetadata.h>
@@ -155,6 +157,7 @@
 #include <aws/mediaconvert/model/CmfcTimedMetadata.h>
 #include <aws/mediaconvert/model/CmfcTimedMetadataBoxVersion.h>
 #include <aws/mediaconvert/model/Codec.h>
+#include <aws/mediaconvert/model/CodecMetadata.h>
 #include <aws/mediaconvert/model/ColorConversion3DLUTSetting.h>
 #include <aws/mediaconvert/model/ColorCorrector.h>
 #include <aws/mediaconvert/model/ColorMetadata.h>
@@ -213,6 +216,7 @@
 #include <aws/mediaconvert/model/DisassociateCertificateRequest.h>
 #include <aws/mediaconvert/model/DisassociateCertificateResult.h>
 #include <aws/mediaconvert/model/DolbyVision.h>
+#include <aws/mediaconvert/model/DolbyVisionCompatibility.h>
 #include <aws/mediaconvert/model/DolbyVisionLevel6Metadata.h>
 #include <aws/mediaconvert/model/DolbyVisionLevel6Mode.h>
 #include <aws/mediaconvert/model/DolbyVisionMapping.h>
@@ -284,12 +288,15 @@
 #include <aws/mediaconvert/model/ForceIncludeRenditionSize.h>
 #include <aws/mediaconvert/model/Format.h>
 #include <aws/mediaconvert/model/FrameCaptureSettings.h>
+#include <aws/mediaconvert/model/FrameControl.h>
 #include <aws/mediaconvert/model/FrameMetricType.h>
 #include <aws/mediaconvert/model/FrameRate.h>
 #include <aws/mediaconvert/model/GetJobRequest.h>
 #include <aws/mediaconvert/model/GetJobResult.h>
 #include <aws/mediaconvert/model/GetJobTemplateRequest.h>
 #include <aws/mediaconvert/model/GetJobTemplateResult.h>
+#include <aws/mediaconvert/model/GetJobsQueryResultsRequest.h>
+#include <aws/mediaconvert/model/GetJobsQueryResultsResult.h>
 #include <aws/mediaconvert/model/GetPolicyRequest.h>
 #include <aws/mediaconvert/model/GetPolicyResult.h>
 #include <aws/mediaconvert/model/GetPresetRequest.h>
@@ -341,6 +348,8 @@
 #include <aws/mediaconvert/model/H265GopBReference.h>
 #include <aws/mediaconvert/model/H265GopSizeUnits.h>
 #include <aws/mediaconvert/model/H265InterlaceMode.h>
+#include <aws/mediaconvert/model/H265MvOverPictureBoundaries.h>
+#include <aws/mediaconvert/model/H265MvTemporalPredictor.h>
 #include <aws/mediaconvert/model/H265ParControl.h>
 #include <aws/mediaconvert/model/H265QualityTuningLevel.h>
 #include <aws/mediaconvert/model/H265QvbrSettings.h>
@@ -354,7 +363,9 @@
 #include <aws/mediaconvert/model/H265Telecine.h>
 #include <aws/mediaconvert/model/H265TemporalAdaptiveQuantization.h>
 #include <aws/mediaconvert/model/H265TemporalIds.h>
+#include <aws/mediaconvert/model/H265TilePadding.h>
 #include <aws/mediaconvert/model/H265Tiles.h>
+#include <aws/mediaconvert/model/H265TreeBlockSize.h>
 #include <aws/mediaconvert/model/H265UnregisteredSeiTimecode.h>
 #include <aws/mediaconvert/model/H265WriteMp4PackagingType.h>
 #include <aws/mediaconvert/model/HDRToSDRToneMapper.h>
@@ -425,6 +436,9 @@
 #include <aws/mediaconvert/model/JobTemplate.h>
 #include <aws/mediaconvert/model/JobTemplateListBy.h>
 #include <aws/mediaconvert/model/JobTemplateSettings.h>
+#include <aws/mediaconvert/model/JobsQueryFilter.h>
+#include <aws/mediaconvert/model/JobsQueryFilterKey.h>
+#include <aws/mediaconvert/model/JobsQueryStatus.h>
 #include <aws/mediaconvert/model/KantarWatermarkSettings.h>
 #include <aws/mediaconvert/model/LanguageCode.h>
 #include <aws/mediaconvert/model/ListJobTemplatesRequest.h>
@@ -489,6 +503,7 @@
 #include <aws/mediaconvert/model/Mp4Settings.h>
 #include <aws/mediaconvert/model/MpdAccessibilityCaptionHints.h>
 #include <aws/mediaconvert/model/MpdAudioDuration.h>
+#include <aws/mediaconvert/model/MpdC2paManifest.h>
 #include <aws/mediaconvert/model/MpdCaptionContainerType.h>
 #include <aws/mediaconvert/model/MpdKlvMetadata.h>
 #include <aws/mediaconvert/model/MpdManifestMetadataSignaling.h>
@@ -526,6 +541,7 @@
 #include <aws/mediaconvert/model/MxfAfdSignaling.h>
 #include <aws/mediaconvert/model/MxfProfile.h>
 #include <aws/mediaconvert/model/MxfSettings.h>
+#include <aws/mediaconvert/model/MxfUncompressedAudioWrapping.h>
 #include <aws/mediaconvert/model/MxfXavcDurationMode.h>
 #include <aws/mediaconvert/model/MxfXavcProfileSettings.h>
 #include <aws/mediaconvert/model/NexGuardFileMarkerSettings.h>
@@ -554,6 +570,7 @@
 #include <aws/mediaconvert/model/OutputSettings.h>
 #include <aws/mediaconvert/model/PadVideo.h>
 #include <aws/mediaconvert/model/PartnerWatermarking.h>
+#include <aws/mediaconvert/model/PassthroughSettings.h>
 #include <aws/mediaconvert/model/Policy.h>
 #include <aws/mediaconvert/model/Preset.h>
 #include <aws/mediaconvert/model/PresetListBy.h>
@@ -607,10 +624,13 @@
 #include <aws/mediaconvert/model/ServiceOverride.h>
 #include <aws/mediaconvert/model/ShareStatus.h>
 #include <aws/mediaconvert/model/SimulateReservedQueue.h>
+#include <aws/mediaconvert/model/SlowPalPitchCorrection.h>
 #include <aws/mediaconvert/model/SpekeKeyProvider.h>
 #include <aws/mediaconvert/model/SpekeKeyProviderCmaf.h>
 #include <aws/mediaconvert/model/SrtDestinationSettings.h>
 #include <aws/mediaconvert/model/SrtStylePassthrough.h>
+#include <aws/mediaconvert/model/StartJobsQueryRequest.h>
+#include <aws/mediaconvert/model/StartJobsQueryResult.h>
 #include <aws/mediaconvert/model/StaticKeyProvider.h>
 #include <aws/mediaconvert/model/StatusUpdateInterval.h>
 #include <aws/mediaconvert/model/TagResourceRequest.h>
@@ -676,6 +696,7 @@
 #include <aws/mediaconvert/model/VideoPreprocessor.h>
 #include <aws/mediaconvert/model/VideoProperties.h>
 #include <aws/mediaconvert/model/VideoSelector.h>
+#include <aws/mediaconvert/model/VideoSelectorMode.h>
 #include <aws/mediaconvert/model/VideoSelectorType.h>
 #include <aws/mediaconvert/model/VideoTimecodeInsertion.h>
 #include <aws/mediaconvert/model/VorbisSettings.h>

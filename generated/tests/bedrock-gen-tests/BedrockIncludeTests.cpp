@@ -6,7 +6,9 @@
 #include <gtest/gtest.h>
 #include <aws/testing/AwsTestHelpers.h>
 
+#include <aws/bedrock/BedrockAwsBearerTokenIdentityResolver.h>
 #include <aws/bedrock/BedrockClient.h>
+#include <aws/bedrock/BedrockClientConfiguration.h>
 #include <aws/bedrock/BedrockEndpointProvider.h>
 #include <aws/bedrock/BedrockEndpointRules.h>
 #include <aws/bedrock/BedrockErrorMarshaller.h>
@@ -14,6 +16,8 @@
 #include <aws/bedrock/BedrockRequest.h>
 #include <aws/bedrock/BedrockServiceClientModel.h>
 #include <aws/bedrock/Bedrock_EXPORTS.h>
+#include <aws/bedrock/model/AccountEnforcedGuardrailInferenceInputConfiguration.h>
+#include <aws/bedrock/model/AccountEnforcedGuardrailOutputConfiguration.h>
 #include <aws/bedrock/model/AgreementAvailability.h>
 #include <aws/bedrock/model/AgreementStatus.h>
 #include <aws/bedrock/model/ApplicationType.h>
@@ -47,12 +51,18 @@
 #include <aws/bedrock/model/AutomatedReasoningPolicyAddTypeValue.h>
 #include <aws/bedrock/model/AutomatedReasoningPolicyAddVariableAnnotation.h>
 #include <aws/bedrock/model/AutomatedReasoningPolicyAddVariableMutation.h>
+#include <aws/bedrock/model/AutomatedReasoningPolicyAnnotatedChunk.h>
+#include <aws/bedrock/model/AutomatedReasoningPolicyAnnotatedContent.h>
+#include <aws/bedrock/model/AutomatedReasoningPolicyAnnotatedLine.h>
 #include <aws/bedrock/model/AutomatedReasoningPolicyAnnotation.h>
 #include <aws/bedrock/model/AutomatedReasoningPolicyAnnotationStatus.h>
+#include <aws/bedrock/model/AutomatedReasoningPolicyAtomicStatement.h>
 #include <aws/bedrock/model/AutomatedReasoningPolicyBuildDocumentContentType.h>
 #include <aws/bedrock/model/AutomatedReasoningPolicyBuildLog.h>
 #include <aws/bedrock/model/AutomatedReasoningPolicyBuildLogEntry.h>
 #include <aws/bedrock/model/AutomatedReasoningPolicyBuildMessageType.h>
+#include <aws/bedrock/model/AutomatedReasoningPolicyBuildResultAssetManifest.h>
+#include <aws/bedrock/model/AutomatedReasoningPolicyBuildResultAssetManifestEntry.h>
 #include <aws/bedrock/model/AutomatedReasoningPolicyBuildResultAssetType.h>
 #include <aws/bedrock/model/AutomatedReasoningPolicyBuildResultAssets.h>
 #include <aws/bedrock/model/AutomatedReasoningPolicyBuildStep.h>
@@ -80,10 +90,20 @@
 #include <aws/bedrock/model/AutomatedReasoningPolicyDeleteVariableAnnotation.h>
 #include <aws/bedrock/model/AutomatedReasoningPolicyDeleteVariableMutation.h>
 #include <aws/bedrock/model/AutomatedReasoningPolicyDisjointRuleSet.h>
+#include <aws/bedrock/model/AutomatedReasoningPolicyFidelityReport.h>
+#include <aws/bedrock/model/AutomatedReasoningPolicyGenerateFidelityReportContent.h>
+#include <aws/bedrock/model/AutomatedReasoningPolicyGeneratedTestCase.h>
+#include <aws/bedrock/model/AutomatedReasoningPolicyGeneratedTestCases.h>
 #include <aws/bedrock/model/AutomatedReasoningPolicyIngestContentAnnotation.h>
 #include <aws/bedrock/model/AutomatedReasoningPolicyMutation.h>
 #include <aws/bedrock/model/AutomatedReasoningPolicyPlanning.h>
+#include <aws/bedrock/model/AutomatedReasoningPolicyReportSourceDocument.h>
+#include <aws/bedrock/model/AutomatedReasoningPolicyRuleReport.h>
 #include <aws/bedrock/model/AutomatedReasoningPolicyScenario.h>
+#include <aws/bedrock/model/AutomatedReasoningPolicyScenarios.h>
+#include <aws/bedrock/model/AutomatedReasoningPolicySourceDocument.h>
+#include <aws/bedrock/model/AutomatedReasoningPolicyStatementLocation.h>
+#include <aws/bedrock/model/AutomatedReasoningPolicyStatementReference.h>
 #include <aws/bedrock/model/AutomatedReasoningPolicySummary.h>
 #include <aws/bedrock/model/AutomatedReasoningPolicyTestCase.h>
 #include <aws/bedrock/model/AutomatedReasoningPolicyTestResult.h>
@@ -99,6 +119,7 @@
 #include <aws/bedrock/model/AutomatedReasoningPolicyUpdateTypeValue.h>
 #include <aws/bedrock/model/AutomatedReasoningPolicyUpdateVariableAnnotation.h>
 #include <aws/bedrock/model/AutomatedReasoningPolicyUpdateVariableMutation.h>
+#include <aws/bedrock/model/AutomatedReasoningPolicyVariableReport.h>
 #include <aws/bedrock/model/AutomatedReasoningPolicyWorkflowTypeContent.h>
 #include <aws/bedrock/model/BatchDeleteEvaluationJobError.h>
 #include <aws/bedrock/model/BatchDeleteEvaluationJobItem.h>
@@ -110,6 +131,7 @@
 #include <aws/bedrock/model/CancelAutomatedReasoningPolicyBuildWorkflowResult.h>
 #include <aws/bedrock/model/CloudWatchConfig.h>
 #include <aws/bedrock/model/CommitmentDuration.h>
+#include <aws/bedrock/model/ConfigurationOwner.h>
 #include <aws/bedrock/model/CreateAutomatedReasoningPolicyRequest.h>
 #include <aws/bedrock/model/CreateAutomatedReasoningPolicyResult.h>
 #include <aws/bedrock/model/CreateAutomatedReasoningPolicyTestCaseRequest.h>
@@ -149,6 +171,8 @@
 #include <aws/bedrock/model/CustomMetricEvaluatorModelConfig.h>
 #include <aws/bedrock/model/CustomModelDeploymentStatus.h>
 #include <aws/bedrock/model/CustomModelDeploymentSummary.h>
+#include <aws/bedrock/model/CustomModelDeploymentUpdateDetails.h>
+#include <aws/bedrock/model/CustomModelDeploymentUpdateStatus.h>
 #include <aws/bedrock/model/CustomModelSummary.h>
 #include <aws/bedrock/model/CustomModelUnits.h>
 #include <aws/bedrock/model/CustomizationConfig.h>
@@ -164,6 +188,8 @@
 #include <aws/bedrock/model/DeleteCustomModelDeploymentResult.h>
 #include <aws/bedrock/model/DeleteCustomModelRequest.h>
 #include <aws/bedrock/model/DeleteCustomModelResult.h>
+#include <aws/bedrock/model/DeleteEnforcedGuardrailConfigurationRequest.h>
+#include <aws/bedrock/model/DeleteEnforcedGuardrailConfigurationResult.h>
 #include <aws/bedrock/model/DeleteFoundationModelAgreementRequest.h>
 #include <aws/bedrock/model/DeleteFoundationModelAgreementResult.h>
 #include <aws/bedrock/model/DeleteGuardrailRequest.h>
@@ -268,6 +294,7 @@
 #include <aws/bedrock/model/GetProvisionedModelThroughputResult.h>
 #include <aws/bedrock/model/GetUseCaseForModelAccessRequest.h>
 #include <aws/bedrock/model/GetUseCaseForModelAccessResult.h>
+#include <aws/bedrock/model/GraderConfig.h>
 #include <aws/bedrock/model/GuardrailAutomatedReasoningPolicy.h>
 #include <aws/bedrock/model/GuardrailAutomatedReasoningPolicyConfig.h>
 #include <aws/bedrock/model/GuardrailConfiguration.h>
@@ -328,6 +355,7 @@
 #include <aws/bedrock/model/InferenceProfileSummary.h>
 #include <aws/bedrock/model/InferenceProfileType.h>
 #include <aws/bedrock/model/InferenceType.h>
+#include <aws/bedrock/model/InputTags.h>
 #include <aws/bedrock/model/InvocationLogSource.h>
 #include <aws/bedrock/model/InvocationLogsConfig.h>
 #include <aws/bedrock/model/JobStatusDetails.h>
@@ -336,6 +364,7 @@
 #include <aws/bedrock/model/KnowledgeBaseRetrievalConfiguration.h>
 #include <aws/bedrock/model/KnowledgeBaseRetrieveAndGenerateConfiguration.h>
 #include <aws/bedrock/model/KnowledgeBaseVectorSearchConfiguration.h>
+#include <aws/bedrock/model/LambdaGraderConfig.h>
 #include <aws/bedrock/model/LegalTerm.h>
 #include <aws/bedrock/model/ListAutomatedReasoningPoliciesRequest.h>
 #include <aws/bedrock/model/ListAutomatedReasoningPoliciesResult.h>
@@ -349,6 +378,8 @@
 #include <aws/bedrock/model/ListCustomModelDeploymentsResult.h>
 #include <aws/bedrock/model/ListCustomModelsRequest.h>
 #include <aws/bedrock/model/ListCustomModelsResult.h>
+#include <aws/bedrock/model/ListEnforcedGuardrailsConfigurationRequest.h>
+#include <aws/bedrock/model/ListEnforcedGuardrailsConfigurationResult.h>
 #include <aws/bedrock/model/ListEvaluationJobsRequest.h>
 #include <aws/bedrock/model/ListEvaluationJobsResult.h>
 #include <aws/bedrock/model/ListFoundationModelAgreementOffersRequest.h>
@@ -396,6 +427,7 @@
 #include <aws/bedrock/model/ModelInvocationJobS3OutputDataConfig.h>
 #include <aws/bedrock/model/ModelInvocationJobStatus.h>
 #include <aws/bedrock/model/ModelInvocationJobSummary.h>
+#include <aws/bedrock/model/ModelInvocationType.h>
 #include <aws/bedrock/model/ModelModality.h>
 #include <aws/bedrock/model/ModelStatus.h>
 #include <aws/bedrock/model/Offer.h>
@@ -412,6 +444,8 @@
 #include <aws/bedrock/model/PromptTemplate.h>
 #include <aws/bedrock/model/ProvisionedModelStatus.h>
 #include <aws/bedrock/model/ProvisionedModelSummary.h>
+#include <aws/bedrock/model/PutEnforcedGuardrailConfigurationRequest.h>
+#include <aws/bedrock/model/PutEnforcedGuardrailConfigurationResult.h>
 #include <aws/bedrock/model/PutModelInvocationLoggingConfigurationRequest.h>
 #include <aws/bedrock/model/PutModelInvocationLoggingConfigurationResult.h>
 #include <aws/bedrock/model/PutUseCaseForModelAccessRequest.h>
@@ -419,8 +453,11 @@
 #include <aws/bedrock/model/QueryTransformationConfiguration.h>
 #include <aws/bedrock/model/QueryTransformationType.h>
 #include <aws/bedrock/model/RAGConfig.h>
+#include <aws/bedrock/model/RFTConfig.h>
+#include <aws/bedrock/model/RFTHyperParameters.h>
 #include <aws/bedrock/model/RatingScaleItem.h>
 #include <aws/bedrock/model/RatingScaleItemValue.h>
+#include <aws/bedrock/model/ReasoningEffort.h>
 #include <aws/bedrock/model/RegionAvailability.h>
 #include <aws/bedrock/model/RegisterMarketplaceModelEndpointRequest.h>
 #include <aws/bedrock/model/RegisterMarketplaceModelEndpointResult.h>
@@ -474,6 +511,8 @@
 #include <aws/bedrock/model/UpdateAutomatedReasoningPolicyResult.h>
 #include <aws/bedrock/model/UpdateAutomatedReasoningPolicyTestCaseRequest.h>
 #include <aws/bedrock/model/UpdateAutomatedReasoningPolicyTestCaseResult.h>
+#include <aws/bedrock/model/UpdateCustomModelDeploymentRequest.h>
+#include <aws/bedrock/model/UpdateCustomModelDeploymentResult.h>
 #include <aws/bedrock/model/UpdateGuardrailRequest.h>
 #include <aws/bedrock/model/UpdateGuardrailResult.h>
 #include <aws/bedrock/model/UpdateMarketplaceModelEndpointRequest.h>

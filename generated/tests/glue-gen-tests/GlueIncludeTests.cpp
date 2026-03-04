@@ -38,6 +38,7 @@
 #include <aws/glue/model/BackfillError.h>
 #include <aws/glue/model/BackfillErrorCode.h>
 #include <aws/glue/model/BasicAuthenticationCredentials.h>
+#include <aws/glue/model/BasicAuthenticationProperties.h>
 #include <aws/glue/model/BasicCatalogTarget.h>
 #include <aws/glue/model/BatchCreatePartitionRequest.h>
 #include <aws/glue/model/BatchCreatePartitionResult.h>
@@ -116,6 +117,7 @@
 #include <aws/glue/model/CheckSchemaVersionValidityRequest.h>
 #include <aws/glue/model/CheckSchemaVersionValidityResult.h>
 #include <aws/glue/model/Classifier.h>
+#include <aws/glue/model/ClientCredentialsProperties.h>
 #include <aws/glue/model/CloudWatchEncryption.h>
 #include <aws/glue/model/CloudWatchEncryptionMode.h>
 #include <aws/glue/model/CodeGenConfigurationNode.h>
@@ -150,14 +152,21 @@
 #include <aws/glue/model/Connection.h>
 #include <aws/glue/model/ConnectionInput.h>
 #include <aws/glue/model/ConnectionPasswordEncryption.h>
+#include <aws/glue/model/ConnectionPropertiesConfiguration.h>
 #include <aws/glue/model/ConnectionPropertyKey.h>
 #include <aws/glue/model/ConnectionStatus.h>
 #include <aws/glue/model/ConnectionType.h>
 #include <aws/glue/model/ConnectionTypeBrief.h>
 #include <aws/glue/model/ConnectionTypeVariant.h>
 #include <aws/glue/model/ConnectionsList.h>
+#include <aws/glue/model/ConnectorAuthenticationConfiguration.h>
+#include <aws/glue/model/ConnectorAuthorizationCodeProperties.h>
 #include <aws/glue/model/ConnectorDataSource.h>
 #include <aws/glue/model/ConnectorDataTarget.h>
+#include <aws/glue/model/ConnectorOAuth2GrantType.h>
+#include <aws/glue/model/ConnectorOAuth2Properties.h>
+#include <aws/glue/model/ConnectorProperty.h>
+#include <aws/glue/model/ContentType.h>
 #include <aws/glue/model/Crawl.h>
 #include <aws/glue/model/CrawlState.h>
 #include <aws/glue/model/Crawler.h>
@@ -235,6 +244,8 @@
 #include <aws/glue/model/CsvClassifier.h>
 #include <aws/glue/model/CsvHeaderOption.h>
 #include <aws/glue/model/CsvSerdeOption.h>
+#include <aws/glue/model/CursorConfiguration.h>
+#include <aws/glue/model/CustomAuthenticationProperties.h>
 #include <aws/glue/model/CustomCode.h>
 #include <aws/glue/model/CustomEntityType.h>
 #include <aws/glue/model/DDBELTCatalogAdditionalOptions.h>
@@ -297,6 +308,8 @@
 #include <aws/glue/model/DeleteColumnStatisticsTaskSettingsResult.h>
 #include <aws/glue/model/DeleteConnectionRequest.h>
 #include <aws/glue/model/DeleteConnectionResult.h>
+#include <aws/glue/model/DeleteConnectionTypeRequest.h>
+#include <aws/glue/model/DeleteConnectionTypeResult.h>
 #include <aws/glue/model/DeleteCrawlerRequest.h>
 #include <aws/glue/model/DeleteCrawlerResult.h>
 #include <aws/glue/model/DeleteCustomEntityTypeRequest.h>
@@ -310,6 +323,8 @@
 #include <aws/glue/model/DeleteGlueIdentityCenterConfigurationRequest.h>
 #include <aws/glue/model/DeleteGlueIdentityCenterConfigurationResult.h>
 #include <aws/glue/model/DeleteIntegrationRequest.h>
+#include <aws/glue/model/DeleteIntegrationResourcePropertyRequest.h>
+#include <aws/glue/model/DeleteIntegrationResourcePropertyResult.h>
 #include <aws/glue/model/DeleteIntegrationResult.h>
 #include <aws/glue/model/DeleteIntegrationTablePropertiesRequest.h>
 #include <aws/glue/model/DeleteIntegrationTablePropertiesResult.h>
@@ -376,6 +391,7 @@
 #include <aws/glue/model/EncryptionAtRest.h>
 #include <aws/glue/model/EncryptionConfiguration.h>
 #include <aws/glue/model/Entity.h>
+#include <aws/glue/model/EntityConfiguration.h>
 #include <aws/glue/model/EntityNotFoundException.h>
 #include <aws/glue/model/ErrorDetail.h>
 #include <aws/glue/model/ErrorDetails.h>
@@ -389,6 +405,7 @@
 #include <aws/glue/model/ExecutionStatus.h>
 #include <aws/glue/model/ExistCondition.h>
 #include <aws/glue/model/ExportLabelsTaskRunProperties.h>
+#include <aws/glue/model/ExtractedParameter.h>
 #include <aws/glue/model/FederatedCatalog.h>
 #include <aws/glue/model/FederatedDatabase.h>
 #include <aws/glue/model/FederatedResourceAlreadyExistsException.h>
@@ -397,6 +414,7 @@
 #include <aws/glue/model/FederationSourceException.h>
 #include <aws/glue/model/Field.h>
 #include <aws/glue/model/FieldDataType.h>
+#include <aws/glue/model/FieldDefinition.h>
 #include <aws/glue/model/FieldFilterOperator.h>
 #include <aws/glue/model/FieldName.h>
 #include <aws/glue/model/FillMissingValues.h>
@@ -410,6 +428,7 @@
 #include <aws/glue/model/FindMatchesMetrics.h>
 #include <aws/glue/model/FindMatchesParameters.h>
 #include <aws/glue/model/FindMatchesTaskRunProperties.h>
+#include <aws/glue/model/FunctionType.h>
 #include <aws/glue/model/GetBlueprintRequest.h>
 #include <aws/glue/model/GetBlueprintResult.h>
 #include <aws/glue/model/GetBlueprintRunRequest.h>
@@ -501,6 +520,8 @@
 #include <aws/glue/model/GetMLTransformsResult.h>
 #include <aws/glue/model/GetMappingRequest.h>
 #include <aws/glue/model/GetMappingResult.h>
+#include <aws/glue/model/GetMaterializedViewRefreshTaskRunRequest.h>
+#include <aws/glue/model/GetMaterializedViewRefreshTaskRunResult.h>
 #include <aws/glue/model/GetPartitionIndexesRequest.h>
 #include <aws/glue/model/GetPartitionIndexesResult.h>
 #include <aws/glue/model/GetPartitionRequest.h>
@@ -576,11 +597,13 @@
 #include <aws/glue/model/GovernedCatalogTarget.h>
 #include <aws/glue/model/GrokClassifier.h>
 #include <aws/glue/model/GroupFilters.h>
+#include <aws/glue/model/HTTPMethod.h>
 #include <aws/glue/model/HudiTarget.h>
 #include <aws/glue/model/HudiTargetCompressionType.h>
 #include <aws/glue/model/HyperTargetCompressionType.h>
 #include <aws/glue/model/IcebergCompactionConfiguration.h>
 #include <aws/glue/model/IcebergCompactionMetrics.h>
+#include <aws/glue/model/IcebergEncryptedKey.h>
 #include <aws/glue/model/IcebergInput.h>
 #include <aws/glue/model/IcebergNullOrder.h>
 #include <aws/glue/model/IcebergOptimizationProperties.h>
@@ -600,6 +623,7 @@
 #include <aws/glue/model/IcebergTableUpdate.h>
 #include <aws/glue/model/IcebergTarget.h>
 #include <aws/glue/model/IcebergTargetCompressionType.h>
+#include <aws/glue/model/IcebergUpdateAction.h>
 #include <aws/glue/model/ImportCatalogToGlueRequest.h>
 #include <aws/glue/model/ImportCatalogToGlueResult.h>
 #include <aws/glue/model/ImportLabelsTaskRunProperties.h>
@@ -610,13 +634,17 @@
 #include <aws/glue/model/IntegrationError.h>
 #include <aws/glue/model/IntegrationFilter.h>
 #include <aws/glue/model/IntegrationPartition.h>
+#include <aws/glue/model/IntegrationResourceProperty.h>
+#include <aws/glue/model/IntegrationResourcePropertyFilter.h>
 #include <aws/glue/model/IntegrationStatus.h>
+#include <aws/glue/model/IntegrationType.h>
 #include <aws/glue/model/InvalidInputException.h>
 #include <aws/glue/model/JDBCConnectionType.h>
 #include <aws/glue/model/JDBCConnectorOptions.h>
 #include <aws/glue/model/JDBCConnectorSource.h>
 #include <aws/glue/model/JDBCConnectorTarget.h>
 #include <aws/glue/model/JDBCDataType.h>
+#include <aws/glue/model/JWTBearerProperties.h>
 #include <aws/glue/model/JdbcMetadataEntry.h>
 #include <aws/glue/model/JdbcTarget.h>
 #include <aws/glue/model/Job.h>
@@ -642,6 +670,7 @@
 #include <aws/glue/model/LastActiveDefinition.h>
 #include <aws/glue/model/LastCrawlInfo.h>
 #include <aws/glue/model/LastCrawlStatus.h>
+#include <aws/glue/model/LastRefreshType.h>
 #include <aws/glue/model/LineageConfiguration.h>
 #include <aws/glue/model/ListBlueprintsRequest.h>
 #include <aws/glue/model/ListBlueprintsResult.h>
@@ -671,10 +700,14 @@
 #include <aws/glue/model/ListDevEndpointsResult.h>
 #include <aws/glue/model/ListEntitiesRequest.h>
 #include <aws/glue/model/ListEntitiesResult.h>
+#include <aws/glue/model/ListIntegrationResourcePropertiesRequest.h>
+#include <aws/glue/model/ListIntegrationResourcePropertiesResult.h>
 #include <aws/glue/model/ListJobsRequest.h>
 #include <aws/glue/model/ListJobsResult.h>
 #include <aws/glue/model/ListMLTransformsRequest.h>
 #include <aws/glue/model/ListMLTransformsResult.h>
+#include <aws/glue/model/ListMaterializedViewRefreshTaskRunsRequest.h>
+#include <aws/glue/model/ListMaterializedViewRefreshTaskRunsResult.h>
 #include <aws/glue/model/ListRegistriesRequest.h>
 #include <aws/glue/model/ListRegistriesResult.h>
 #include <aws/glue/model/ListSchemaVersionsRequest.h>
@@ -702,6 +735,9 @@
 #include <aws/glue/model/MLUserDataEncryptionModeString.h>
 #include <aws/glue/model/Mapping.h>
 #include <aws/glue/model/MappingEntry.h>
+#include <aws/glue/model/MaterializedViewRefreshState.h>
+#include <aws/glue/model/MaterializedViewRefreshTaskRun.h>
+#include <aws/glue/model/MaterializedViewRefreshType.h>
 #include <aws/glue/model/Merge.h>
 #include <aws/glue/model/MetadataInfo.h>
 #include <aws/glue/model/MetadataKeyValuePair.h>
@@ -724,6 +760,7 @@
 #include <aws/glue/model/OAuth2GrantType.h>
 #include <aws/glue/model/OAuth2Properties.h>
 #include <aws/glue/model/OAuth2PropertiesInput.h>
+#include <aws/glue/model/OffsetConfiguration.h>
 #include <aws/glue/model/OpenTableFormatInput.h>
 #include <aws/glue/model/Option.h>
 #include <aws/glue/model/OracleSQLCatalogSource.h>
@@ -733,6 +770,7 @@
 #include <aws/glue/model/OrphanFileDeletionMetrics.h>
 #include <aws/glue/model/OtherMetadataValueListItem.h>
 #include <aws/glue/model/PIIDetection.h>
+#include <aws/glue/model/PaginationConfiguration.h>
 #include <aws/glue/model/ParamType.h>
 #include <aws/glue/model/ParquetCompressionType.h>
 #include <aws/glue/model/Partition.h>
@@ -754,6 +792,7 @@
 #include <aws/glue/model/PrincipalType.h>
 #include <aws/glue/model/ProfileConfiguration.h>
 #include <aws/glue/model/Property.h>
+#include <aws/glue/model/PropertyLocation.h>
 #include <aws/glue/model/PropertyPredicate.h>
 #include <aws/glue/model/PropertyType.h>
 #include <aws/glue/model/PutDataCatalogEncryptionSettingsRequest.h>
@@ -778,6 +817,8 @@
 #include <aws/glue/model/RecrawlPolicy.h>
 #include <aws/glue/model/RedshiftSource.h>
 #include <aws/glue/model/RedshiftTarget.h>
+#include <aws/glue/model/RegisterConnectionTypeRequest.h>
+#include <aws/glue/model/RegisterConnectionTypeResult.h>
 #include <aws/glue/model/RegisterSchemaVersionRequest.h>
 #include <aws/glue/model/RegisterSchemaVersionResult.h>
 #include <aws/glue/model/RegistryId.h>
@@ -794,6 +835,9 @@
 #include <aws/glue/model/ResourceState.h>
 #include <aws/glue/model/ResourceType.h>
 #include <aws/glue/model/ResourceUri.h>
+#include <aws/glue/model/ResponseConfiguration.h>
+#include <aws/glue/model/ResponseExtractionMapping.h>
+#include <aws/glue/model/RestConfiguration.h>
 #include <aws/glue/model/ResumeWorkflowRunRequest.h>
 #include <aws/glue/model/ResumeWorkflowRunResult.h>
 #include <aws/glue/model/RetentionConfiguration.h>
@@ -860,6 +904,7 @@
 #include <aws/glue/model/Sort.h>
 #include <aws/glue/model/SortCriterion.h>
 #include <aws/glue/model/SortDirectionType.h>
+#include <aws/glue/model/SourceConfiguration.h>
 #include <aws/glue/model/SourceControlAuthStrategy.h>
 #include <aws/glue/model/SourceControlDetails.h>
 #include <aws/glue/model/SourceControlProvider.h>
@@ -895,6 +940,8 @@
 #include <aws/glue/model/StartMLEvaluationTaskRunResult.h>
 #include <aws/glue/model/StartMLLabelingSetGenerationTaskRunRequest.h>
 #include <aws/glue/model/StartMLLabelingSetGenerationTaskRunResult.h>
+#include <aws/glue/model/StartMaterializedViewRefreshTaskRunRequest.h>
+#include <aws/glue/model/StartMaterializedViewRefreshTaskRunResult.h>
 #include <aws/glue/model/StartTriggerRequest.h>
 #include <aws/glue/model/StartTriggerResult.h>
 #include <aws/glue/model/StartWorkflowRunRequest.h>
@@ -918,6 +965,8 @@
 #include <aws/glue/model/StopCrawlerResult.h>
 #include <aws/glue/model/StopCrawlerScheduleRequest.h>
 #include <aws/glue/model/StopCrawlerScheduleResult.h>
+#include <aws/glue/model/StopMaterializedViewRefreshTaskRunRequest.h>
+#include <aws/glue/model/StopMaterializedViewRefreshTaskRunResult.h>
 #include <aws/glue/model/StopSessionRequest.h>
 #include <aws/glue/model/StopSessionResult.h>
 #include <aws/glue/model/StopTriggerRequest.h>

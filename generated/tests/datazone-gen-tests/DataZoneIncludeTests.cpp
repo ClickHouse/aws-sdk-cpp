@@ -31,11 +31,15 @@
 #include <aws/datazone/model/AddPolicyGrantRequest.h>
 #include <aws/datazone/model/AddPolicyGrantResult.h>
 #include <aws/datazone/model/AddToProjectMemberPoolPolicyGrantDetail.h>
+#include <aws/datazone/model/AdditionalAttributes.h>
 #include <aws/datazone/model/AggregationListItem.h>
 #include <aws/datazone/model/AggregationOutput.h>
 #include <aws/datazone/model/AggregationOutputItem.h>
 #include <aws/datazone/model/AllDomainUnitsGrantFilter.h>
 #include <aws/datazone/model/AllUsersGrantFilter.h>
+#include <aws/datazone/model/AmazonQPropertiesInput.h>
+#include <aws/datazone/model/AmazonQPropertiesOutput.h>
+#include <aws/datazone/model/AmazonQPropertiesPatch.h>
 #include <aws/datazone/model/AssetFilterConfiguration.h>
 #include <aws/datazone/model/AssetFilterSummary.h>
 #include <aws/datazone/model/AssetInDataProductListingItem.h>
@@ -45,6 +49,7 @@
 #include <aws/datazone/model/AssetListingDetails.h>
 #include <aws/datazone/model/AssetListingItem.h>
 #include <aws/datazone/model/AssetListingItemAdditionalAttributes.h>
+#include <aws/datazone/model/AssetPermission.h>
 #include <aws/datazone/model/AssetRevision.h>
 #include <aws/datazone/model/AssetScope.h>
 #include <aws/datazone/model/AssetTargetNameMap.h>
@@ -57,6 +62,9 @@
 #include <aws/datazone/model/AthenaPropertiesInput.h>
 #include <aws/datazone/model/AthenaPropertiesOutput.h>
 #include <aws/datazone/model/AthenaPropertiesPatch.h>
+#include <aws/datazone/model/AttributeEntityType.h>
+#include <aws/datazone/model/AttributeError.h>
+#include <aws/datazone/model/AttributeInput.h>
 #include <aws/datazone/model/AuthType.h>
 #include <aws/datazone/model/AuthenticationConfiguration.h>
 #include <aws/datazone/model/AuthenticationConfigurationInput.h>
@@ -67,6 +75,12 @@
 #include <aws/datazone/model/AwsConsoleLinkParameters.h>
 #include <aws/datazone/model/AwsLocation.h>
 #include <aws/datazone/model/BasicAuthenticationCredentials.h>
+#include <aws/datazone/model/BatchGetAttributeOutput.h>
+#include <aws/datazone/model/BatchGetAttributesMetadataRequest.h>
+#include <aws/datazone/model/BatchGetAttributesMetadataResult.h>
+#include <aws/datazone/model/BatchPutAttributeOutput.h>
+#include <aws/datazone/model/BatchPutAttributesMetadataRequest.h>
+#include <aws/datazone/model/BatchPutAttributesMetadataResult.h>
 #include <aws/datazone/model/BusinessNameGenerationConfiguration.h>
 #include <aws/datazone/model/CancelMetadataGenerationRunRequest.h>
 #include <aws/datazone/model/CancelMetadataGenerationRunResult.h>
@@ -79,10 +93,12 @@
 #include <aws/datazone/model/ConfigurableActionParameter.h>
 #include <aws/datazone/model/ConfigurableActionTypeAuthorization.h>
 #include <aws/datazone/model/ConfigurableEnvironmentAction.h>
+#include <aws/datazone/model/ConfigurationStatus.h>
 #include <aws/datazone/model/ConnectionCredentials.h>
 #include <aws/datazone/model/ConnectionPropertiesInput.h>
 #include <aws/datazone/model/ConnectionPropertiesOutput.h>
 #include <aws/datazone/model/ConnectionPropertiesPatch.h>
+#include <aws/datazone/model/ConnectionScope.h>
 #include <aws/datazone/model/ConnectionStatus.h>
 #include <aws/datazone/model/ConnectionSummary.h>
 #include <aws/datazone/model/ConnectionType.h>
@@ -182,6 +198,8 @@
 #include <aws/datazone/model/DeleteAssetTypeResult.h>
 #include <aws/datazone/model/DeleteConnectionRequest.h>
 #include <aws/datazone/model/DeleteConnectionResult.h>
+#include <aws/datazone/model/DeleteDataExportConfigurationRequest.h>
+#include <aws/datazone/model/DeleteDataExportConfigurationResult.h>
 #include <aws/datazone/model/DeleteDataProductRequest.h>
 #include <aws/datazone/model/DeleteDataProductResult.h>
 #include <aws/datazone/model/DeleteDataSourceRequest.h>
@@ -242,6 +260,8 @@
 #include <aws/datazone/model/DomainVersion.h>
 #include <aws/datazone/model/EdgeDirection.h>
 #include <aws/datazone/model/EnableSetting.h>
+#include <aws/datazone/model/EncryptionConfiguration.h>
+#include <aws/datazone/model/EntityPattern.h>
 #include <aws/datazone/model/EntityType.h>
 #include <aws/datazone/model/EnvironmentActionSummary.h>
 #include <aws/datazone/model/EnvironmentBlueprintConfigurationItem.h>
@@ -264,6 +284,7 @@
 #include <aws/datazone/model/FilterClause.h>
 #include <aws/datazone/model/FilterExpression.h>
 #include <aws/datazone/model/FilterExpressionType.h>
+#include <aws/datazone/model/FilterOperator.h>
 #include <aws/datazone/model/FilterStatus.h>
 #include <aws/datazone/model/FormEntryInput.h>
 #include <aws/datazone/model/FormEntryOutput.h>
@@ -281,6 +302,8 @@
 #include <aws/datazone/model/GetAssetTypeResult.h>
 #include <aws/datazone/model/GetConnectionRequest.h>
 #include <aws/datazone/model/GetConnectionResult.h>
+#include <aws/datazone/model/GetDataExportConfigurationRequest.h>
+#include <aws/datazone/model/GetDataExportConfigurationResult.h>
 #include <aws/datazone/model/GetDataProductRequest.h>
 #include <aws/datazone/model/GetDataProductResult.h>
 #include <aws/datazone/model/GetDataSourceRequest.h>
@@ -344,6 +367,7 @@
 #include <aws/datazone/model/GlossaryItem.h>
 #include <aws/datazone/model/GlossaryItemAdditionalAttributes.h>
 #include <aws/datazone/model/GlossaryStatus.h>
+#include <aws/datazone/model/GlossaryTermEnforcementDetail.h>
 #include <aws/datazone/model/GlossaryTermItem.h>
 #include <aws/datazone/model/GlossaryTermItemAdditionalAttributes.h>
 #include <aws/datazone/model/GlossaryTermStatus.h>
@@ -363,6 +387,7 @@
 #include <aws/datazone/model/GovernedEntityType.h>
 #include <aws/datazone/model/GrantedEntity.h>
 #include <aws/datazone/model/GrantedEntityInput.h>
+#include <aws/datazone/model/GraphEntityType.h>
 #include <aws/datazone/model/GreaterThanExpression.h>
 #include <aws/datazone/model/GreaterThanOrEqualToExpression.h>
 #include <aws/datazone/model/GroupDetails.h>
@@ -396,6 +421,7 @@
 #include <aws/datazone/model/LineageEventSummary.h>
 #include <aws/datazone/model/LineageImportStatus.h>
 #include <aws/datazone/model/LineageInfo.h>
+#include <aws/datazone/model/LineageNodeItem.h>
 #include <aws/datazone/model/LineageNodeReference.h>
 #include <aws/datazone/model/LineageNodeSummary.h>
 #include <aws/datazone/model/LineageNodeTypeItem.h>
@@ -474,7 +500,9 @@
 #include <aws/datazone/model/ListingStatus.h>
 #include <aws/datazone/model/ListingSummary.h>
 #include <aws/datazone/model/ListingSummaryItem.h>
+#include <aws/datazone/model/ManagedEndpointCredentials.h>
 #include <aws/datazone/model/ManagedPolicyType.h>
+#include <aws/datazone/model/MatchClause.h>
 #include <aws/datazone/model/MatchOffset.h>
 #include <aws/datazone/model/MatchRationaleItem.h>
 #include <aws/datazone/model/Member.h>
@@ -486,7 +514,11 @@
 #include <aws/datazone/model/MetadataGenerationRunStatus.h>
 #include <aws/datazone/model/MetadataGenerationRunTarget.h>
 #include <aws/datazone/model/MetadataGenerationRunType.h>
+#include <aws/datazone/model/MetadataGenerationRunTypeStat.h>
 #include <aws/datazone/model/MetadataGenerationTargetType.h>
+#include <aws/datazone/model/MlflowPropertiesInput.h>
+#include <aws/datazone/model/MlflowPropertiesOutput.h>
+#include <aws/datazone/model/MlflowPropertiesPatch.h>
 #include <aws/datazone/model/Model.h>
 #include <aws/datazone/model/NameIdentifier.h>
 #include <aws/datazone/model/NotEqualToExpression.h>
@@ -511,6 +543,7 @@
 #include <aws/datazone/model/OwnerPropertiesOutput.h>
 #include <aws/datazone/model/OwnerUserProperties.h>
 #include <aws/datazone/model/OwnerUserPropertiesOutput.h>
+#include <aws/datazone/model/Permissions.h>
 #include <aws/datazone/model/PhysicalConnectionRequirements.h>
 #include <aws/datazone/model/PhysicalEndpoint.h>
 #include <aws/datazone/model/PolicyGrantDetail.h>
@@ -533,8 +566,12 @@
 #include <aws/datazone/model/Protocol.h>
 #include <aws/datazone/model/ProvisioningConfiguration.h>
 #include <aws/datazone/model/ProvisioningProperties.h>
+#include <aws/datazone/model/PutDataExportConfigurationRequest.h>
+#include <aws/datazone/model/PutDataExportConfigurationResult.h>
 #include <aws/datazone/model/PutEnvironmentBlueprintConfigurationRequest.h>
 #include <aws/datazone/model/PutEnvironmentBlueprintConfigurationResult.h>
+#include <aws/datazone/model/QueryGraphRequest.h>
+#include <aws/datazone/model/QueryGraphResult.h>
 #include <aws/datazone/model/RecommendationConfiguration.h>
 #include <aws/datazone/model/RedshiftClusterStorage.h>
 #include <aws/datazone/model/RedshiftCredentialConfiguration.h>
@@ -558,6 +595,9 @@
 #include <aws/datazone/model/RejectRuleBehavior.h>
 #include <aws/datazone/model/RejectSubscriptionRequestRequest.h>
 #include <aws/datazone/model/RejectSubscriptionRequestResult.h>
+#include <aws/datazone/model/RelationDirection.h>
+#include <aws/datazone/model/RelationPattern.h>
+#include <aws/datazone/model/RelationType.h>
 #include <aws/datazone/model/RelationalFilterConfiguration.h>
 #include <aws/datazone/model/RemoveEntityOwnerRequest.h>
 #include <aws/datazone/model/RemoveEntityOwnerResult.h>
@@ -565,6 +605,10 @@
 #include <aws/datazone/model/RemovePolicyGrantResult.h>
 #include <aws/datazone/model/ResolutionStrategy.h>
 #include <aws/datazone/model/Resource.h>
+#include <aws/datazone/model/ResourceTag.h>
+#include <aws/datazone/model/ResourceTagParameter.h>
+#include <aws/datazone/model/ResourceTagSource.h>
+#include <aws/datazone/model/ResultItem.h>
 #include <aws/datazone/model/RevokeSubscriptionRequest.h>
 #include <aws/datazone/model/RevokeSubscriptionResult.h>
 #include <aws/datazone/model/RowFilter.h>
@@ -579,6 +623,7 @@
 #include <aws/datazone/model/RuleTargetType.h>
 #include <aws/datazone/model/RuleType.h>
 #include <aws/datazone/model/RunStatisticsForAssets.h>
+#include <aws/datazone/model/S3Permission.h>
 #include <aws/datazone/model/S3PropertiesInput.h>
 #include <aws/datazone/model/S3PropertiesOutput.h>
 #include <aws/datazone/model/S3PropertiesPatch.h>
@@ -624,6 +669,10 @@
 #include <aws/datazone/model/Status.h>
 #include <aws/datazone/model/SubscribedAsset.h>
 #include <aws/datazone/model/SubscribedAssetListing.h>
+#include <aws/datazone/model/SubscribedGroup.h>
+#include <aws/datazone/model/SubscribedGroupInput.h>
+#include <aws/datazone/model/SubscribedIamPrincipal.h>
+#include <aws/datazone/model/SubscribedIamPrincipalInput.h>
 #include <aws/datazone/model/SubscribedListing.h>
 #include <aws/datazone/model/SubscribedListingInput.h>
 #include <aws/datazone/model/SubscribedListingItem.h>
@@ -632,6 +681,9 @@
 #include <aws/datazone/model/SubscribedProductListing.h>
 #include <aws/datazone/model/SubscribedProject.h>
 #include <aws/datazone/model/SubscribedProjectInput.h>
+#include <aws/datazone/model/SubscribedUser.h>
+#include <aws/datazone/model/SubscribedUserInput.h>
+#include <aws/datazone/model/SubscriptionGrantCreationMode.h>
 #include <aws/datazone/model/SubscriptionGrantOverallStatus.h>
 #include <aws/datazone/model/SubscriptionGrantStatus.h>
 #include <aws/datazone/model/SubscriptionGrantSummary.h>
@@ -687,6 +739,8 @@
 #include <aws/datazone/model/UpdateProjectProfileResult.h>
 #include <aws/datazone/model/UpdateProjectRequest.h>
 #include <aws/datazone/model/UpdateProjectResult.h>
+#include <aws/datazone/model/UpdateRootDomainUnitOwnerRequest.h>
+#include <aws/datazone/model/UpdateRootDomainUnitOwnerResult.h>
 #include <aws/datazone/model/UpdateRuleRequest.h>
 #include <aws/datazone/model/UpdateRuleResult.h>
 #include <aws/datazone/model/UpdateSubscriptionGrantStatusRequest.h>
@@ -709,6 +763,10 @@
 #include <aws/datazone/model/UserSearchType.h>
 #include <aws/datazone/model/UserType.h>
 #include <aws/datazone/model/UsernamePassword.h>
+#include <aws/datazone/model/WorkflowsMwaaPropertiesInput.h>
+#include <aws/datazone/model/WorkflowsMwaaPropertiesOutput.h>
+#include <aws/datazone/model/WorkflowsServerlessPropertiesInput.h>
+#include <aws/datazone/model/WorkflowsServerlessPropertiesOutput.h>
 
 using DataZoneIncludeTest = ::testing::Test;
 

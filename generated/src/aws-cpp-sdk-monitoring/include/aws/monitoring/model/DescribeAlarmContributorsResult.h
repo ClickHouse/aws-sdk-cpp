@@ -4,82 +4,119 @@
  */
 
 #pragma once
-#include <aws/monitoring/CloudWatch_EXPORTS.h>
-#include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/core/http/HttpResponse.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
-#include <aws/monitoring/model/ResponseMetadata.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/crt/cbor/Cbor.h>
+#include <aws/monitoring/CloudWatch_EXPORTS.h>
 #include <aws/monitoring/model/AlarmContributor.h>
-#include <utility>
+#include <aws/monitoring/model/ResponseMetadata.h>
 
-namespace Aws
-{
-template<typename RESULT_TYPE>
+#include <utility>
+namespace Aws {
+template <typename RESULT_TYPE>
 class AmazonWebServiceResult;
 
-namespace Utils
-{
-namespace Xml
-{
-  class XmlDocument;
-} // namespace Xml
-} // namespace Utils
-namespace CloudWatch
-{
-namespace Model
-{
-  class DescribeAlarmContributorsResult
-  {
-  public:
-    AWS_CLOUDWATCH_API DescribeAlarmContributorsResult() = default;
-    AWS_CLOUDWATCH_API DescribeAlarmContributorsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
-    AWS_CLOUDWATCH_API DescribeAlarmContributorsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
+namespace Utils {
+namespace Cbor {
+class CborValue;
+}  // namespace Cbor
+}  // namespace Utils
+namespace CloudWatch {
+namespace Model {
+class DescribeAlarmContributorsResult {
+ public:
+  AWS_CLOUDWATCH_API DescribeAlarmContributorsResult() = default;
+  AWS_CLOUDWATCH_API DescribeAlarmContributorsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Cbor::CborValue>& result);
+  AWS_CLOUDWATCH_API DescribeAlarmContributorsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Cbor::CborValue>& result);
 
+  ///@{
+  /**
+   * <p>A list of alarm contributors that provide details about the individual time
+   * series contributing to the alarm's state.</p>
+   */
+  inline const Aws::Vector<AlarmContributor>& GetAlarmContributors() const { return m_alarmContributors; }
+  template <typename AlarmContributorsT = Aws::Vector<AlarmContributor>>
+  void SetAlarmContributors(AlarmContributorsT&& value) {
+    m_alarmContributorsHasBeenSet = true;
+    m_alarmContributors = std::forward<AlarmContributorsT>(value);
+  }
+  template <typename AlarmContributorsT = Aws::Vector<AlarmContributor>>
+  DescribeAlarmContributorsResult& WithAlarmContributors(AlarmContributorsT&& value) {
+    SetAlarmContributors(std::forward<AlarmContributorsT>(value));
+    return *this;
+  }
+  template <typename AlarmContributorsT = AlarmContributor>
+  DescribeAlarmContributorsResult& AddAlarmContributors(AlarmContributorsT&& value) {
+    m_alarmContributorsHasBeenSet = true;
+    m_alarmContributors.emplace_back(std::forward<AlarmContributorsT>(value));
+    return *this;
+  }
+  ///@}
 
-    ///@{
-    /**
-     * <p>A list of alarm contributors that provide details about the individual time
-     * series contributing to the alarm's state.</p>
-     */
-    inline const Aws::Vector<AlarmContributor>& GetAlarmContributors() const { return m_alarmContributors; }
-    template<typename AlarmContributorsT = Aws::Vector<AlarmContributor>>
-    void SetAlarmContributors(AlarmContributorsT&& value) { m_alarmContributorsHasBeenSet = true; m_alarmContributors = std::forward<AlarmContributorsT>(value); }
-    template<typename AlarmContributorsT = Aws::Vector<AlarmContributor>>
-    DescribeAlarmContributorsResult& WithAlarmContributors(AlarmContributorsT&& value) { SetAlarmContributors(std::forward<AlarmContributorsT>(value)); return *this;}
-    template<typename AlarmContributorsT = AlarmContributor>
-    DescribeAlarmContributorsResult& AddAlarmContributors(AlarmContributorsT&& value) { m_alarmContributorsHasBeenSet = true; m_alarmContributors.emplace_back(std::forward<AlarmContributorsT>(value)); return *this; }
-    ///@}
+  ///@{
+  /**
+   * <p>The token that marks the start of the next batch of returned results.</p>
+   */
+  inline const Aws::String& GetNextToken() const { return m_nextToken; }
+  template <typename NextTokenT = Aws::String>
+  void SetNextToken(NextTokenT&& value) {
+    m_nextTokenHasBeenSet = true;
+    m_nextToken = std::forward<NextTokenT>(value);
+  }
+  template <typename NextTokenT = Aws::String>
+  DescribeAlarmContributorsResult& WithNextToken(NextTokenT&& value) {
+    SetNextToken(std::forward<NextTokenT>(value));
+    return *this;
+  }
+  ///@}
 
-    ///@{
-    /**
-     * <p>The token that marks the start of the next batch of returned results.</p>
-     */
-    inline const Aws::String& GetNextToken() const { return m_nextToken; }
-    template<typename NextTokenT = Aws::String>
-    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
-    template<typename NextTokenT = Aws::String>
-    DescribeAlarmContributorsResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
-    ///@}
+  ///@{
 
-    ///@{
-    
-    inline const ResponseMetadata& GetResponseMetadata() const { return m_responseMetadata; }
-    template<typename ResponseMetadataT = ResponseMetadata>
-    void SetResponseMetadata(ResponseMetadataT&& value) { m_responseMetadataHasBeenSet = true; m_responseMetadata = std::forward<ResponseMetadataT>(value); }
-    template<typename ResponseMetadataT = ResponseMetadata>
-    DescribeAlarmContributorsResult& WithResponseMetadata(ResponseMetadataT&& value) { SetResponseMetadata(std::forward<ResponseMetadataT>(value)); return *this;}
-    ///@}
-  private:
+  inline const Aws::String& GetRequestId() const { return m_requestId; }
+  template <typename RequestIdT = Aws::String>
+  void SetRequestId(RequestIdT&& value) {
+    m_requestIdHasBeenSet = true;
+    m_requestId = std::forward<RequestIdT>(value);
+  }
+  template <typename RequestIdT = Aws::String>
+  DescribeAlarmContributorsResult& WithRequestId(RequestIdT&& value) {
+    SetRequestId(std::forward<RequestIdT>(value));
+    return *this;
+  }
+  ///@}
 
-    Aws::Vector<AlarmContributor> m_alarmContributors;
-    bool m_alarmContributorsHasBeenSet = false;
+  ///@{
 
-    Aws::String m_nextToken;
-    bool m_nextTokenHasBeenSet = false;
+  inline const ResponseMetadata& GetResponseMetadata() const { return m_responseMetadata; }
+  template <typename ResponseMetadataT = ResponseMetadata>
+  void SetResponseMetadata(ResponseMetadataT&& value) {
+    m_responseMetadataHasBeenSet = true;
+    m_responseMetadata = std::forward<ResponseMetadataT>(value);
+  }
+  template <typename ResponseMetadataT = ResponseMetadata>
+  DescribeAlarmContributorsResult& WithResponseMetadata(ResponseMetadataT&& value) {
+    SetResponseMetadata(std::forward<ResponseMetadataT>(value));
+    return *this;
+  }
+  ///@}
+  inline Aws::Http::HttpResponseCode GetHttpResponseCode() const { return m_HttpResponseCode; }
 
-    ResponseMetadata m_responseMetadata;
-    bool m_responseMetadataHasBeenSet = false;
-  };
+ private:
+  Aws::Vector<AlarmContributor> m_alarmContributors;
 
-} // namespace Model
-} // namespace CloudWatch
-} // namespace Aws
+  Aws::String m_nextToken;
+
+  Aws::String m_requestId;
+
+  ResponseMetadata m_responseMetadata;
+  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  bool m_alarmContributorsHasBeenSet = false;
+  bool m_nextTokenHasBeenSet = false;
+  bool m_requestIdHasBeenSet = false;
+  bool m_responseMetadataHasBeenSet = false;
+};
+
+}  // namespace Model
+}  // namespace CloudWatch
+}  // namespace Aws

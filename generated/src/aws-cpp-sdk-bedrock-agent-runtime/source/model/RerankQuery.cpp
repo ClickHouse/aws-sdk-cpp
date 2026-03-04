@@ -11,51 +11,38 @@
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-namespace Aws
-{
-namespace BedrockAgentRuntime
-{
-namespace Model
-{
+namespace Aws {
+namespace BedrockAgentRuntime {
+namespace Model {
 
-RerankQuery::RerankQuery(JsonView jsonValue)
-{
-  *this = jsonValue;
-}
+RerankQuery::RerankQuery(JsonView jsonValue) { *this = jsonValue; }
 
-RerankQuery& RerankQuery::operator =(JsonView jsonValue)
-{
-  if(jsonValue.ValueExists("type"))
-  {
-    m_type = RerankQueryContentTypeMapper::GetRerankQueryContentTypeForName(jsonValue.GetString("type"));
-    m_typeHasBeenSet = true;
-  }
-  if(jsonValue.ValueExists("textQuery"))
-  {
+RerankQuery& RerankQuery::operator=(JsonView jsonValue) {
+  if (jsonValue.ValueExists("textQuery")) {
     m_textQuery = jsonValue.GetObject("textQuery");
     m_textQueryHasBeenSet = true;
+  }
+  if (jsonValue.ValueExists("type")) {
+    m_type = RerankQueryContentTypeMapper::GetRerankQueryContentTypeForName(jsonValue.GetString("type"));
+    m_typeHasBeenSet = true;
   }
   return *this;
 }
 
-JsonValue RerankQuery::Jsonize() const
-{
+JsonValue RerankQuery::Jsonize() const {
   JsonValue payload;
 
-  if(m_typeHasBeenSet)
-  {
-   payload.WithString("type", RerankQueryContentTypeMapper::GetNameForRerankQueryContentType(m_type));
+  if (m_textQueryHasBeenSet) {
+    payload.WithObject("textQuery", m_textQuery.Jsonize());
   }
 
-  if(m_textQueryHasBeenSet)
-  {
-   payload.WithObject("textQuery", m_textQuery.Jsonize());
-
+  if (m_typeHasBeenSet) {
+    payload.WithString("type", RerankQueryContentTypeMapper::GetNameForRerankQueryContentType(m_type));
   }
 
   return payload;
 }
 
-} // namespace Model
-} // namespace BedrockAgentRuntime
-} // namespace Aws
+}  // namespace Model
+}  // namespace BedrockAgentRuntime
+}  // namespace Aws

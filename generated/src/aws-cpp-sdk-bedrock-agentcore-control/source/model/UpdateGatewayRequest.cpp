@@ -12,64 +12,58 @@ using namespace Aws::BedrockAgentCoreControl::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-Aws::String UpdateGatewayRequest::SerializePayload() const
-{
+Aws::String UpdateGatewayRequest::SerializePayload() const {
   JsonValue payload;
 
-  if(m_nameHasBeenSet)
-  {
-   payload.WithString("name", m_name);
-
+  if (m_nameHasBeenSet) {
+    payload.WithString("name", m_name);
   }
 
-  if(m_descriptionHasBeenSet)
-  {
-   payload.WithString("description", m_description);
-
+  if (m_descriptionHasBeenSet) {
+    payload.WithString("description", m_description);
   }
 
-  if(m_roleArnHasBeenSet)
-  {
-   payload.WithString("roleArn", m_roleArn);
-
+  if (m_roleArnHasBeenSet) {
+    payload.WithString("roleArn", m_roleArn);
   }
 
-  if(m_protocolTypeHasBeenSet)
-  {
-   payload.WithString("protocolType", GatewayProtocolTypeMapper::GetNameForGatewayProtocolType(m_protocolType));
+  if (m_protocolTypeHasBeenSet) {
+    payload.WithString("protocolType", GatewayProtocolTypeMapper::GetNameForGatewayProtocolType(m_protocolType));
   }
 
-  if(m_protocolConfigurationHasBeenSet)
-  {
-   payload.WithObject("protocolConfiguration", m_protocolConfiguration.Jsonize());
-
+  if (m_protocolConfigurationHasBeenSet) {
+    payload.WithObject("protocolConfiguration", m_protocolConfiguration.Jsonize());
   }
 
-  if(m_authorizerTypeHasBeenSet)
-  {
-   payload.WithString("authorizerType", AuthorizerTypeMapper::GetNameForAuthorizerType(m_authorizerType));
+  if (m_authorizerTypeHasBeenSet) {
+    payload.WithString("authorizerType", AuthorizerTypeMapper::GetNameForAuthorizerType(m_authorizerType));
   }
 
-  if(m_authorizerConfigurationHasBeenSet)
-  {
-   payload.WithObject("authorizerConfiguration", m_authorizerConfiguration.Jsonize());
-
+  if (m_authorizerConfigurationHasBeenSet) {
+    payload.WithObject("authorizerConfiguration", m_authorizerConfiguration.Jsonize());
   }
 
-  if(m_kmsKeyArnHasBeenSet)
-  {
-   payload.WithString("kmsKeyArn", m_kmsKeyArn);
-
+  if (m_kmsKeyArnHasBeenSet) {
+    payload.WithString("kmsKeyArn", m_kmsKeyArn);
   }
 
-  if(m_exceptionLevelHasBeenSet)
-  {
-   payload.WithString("exceptionLevel", ExceptionLevelMapper::GetNameForExceptionLevel(m_exceptionLevel));
+  if (m_interceptorConfigurationsHasBeenSet) {
+    Aws::Utils::Array<JsonValue> interceptorConfigurationsJsonList(m_interceptorConfigurations.size());
+    for (unsigned interceptorConfigurationsIndex = 0; interceptorConfigurationsIndex < interceptorConfigurationsJsonList.GetLength();
+         ++interceptorConfigurationsIndex) {
+      interceptorConfigurationsJsonList[interceptorConfigurationsIndex].AsObject(
+          m_interceptorConfigurations[interceptorConfigurationsIndex].Jsonize());
+    }
+    payload.WithArray("interceptorConfigurations", std::move(interceptorConfigurationsJsonList));
+  }
+
+  if (m_policyEngineConfigurationHasBeenSet) {
+    payload.WithObject("policyEngineConfiguration", m_policyEngineConfiguration.Jsonize());
+  }
+
+  if (m_exceptionLevelHasBeenSet) {
+    payload.WithString("exceptionLevel", ExceptionLevelMapper::GetNameForExceptionLevel(m_exceptionLevel));
   }
 
   return payload.View().WriteReadable();
 }
-
-
-
-

@@ -6,64 +6,95 @@
 #pragma once
 #include <aws/batch/Batch_EXPORTS.h>
 #include <aws/batch/model/FrontOfQueueDetail.h>
+#include <aws/batch/model/QueueSnapshotUtilizationDetail.h>
+#include <aws/core/http/HttpResponse.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+
 #include <utility>
 
-namespace Aws
-{
-template<typename RESULT_TYPE>
+namespace Aws {
+template <typename RESULT_TYPE>
 class AmazonWebServiceResult;
 
-namespace Utils
-{
-namespace Json
-{
-  class JsonValue;
-} // namespace Json
-} // namespace Utils
-namespace Batch
-{
-namespace Model
-{
-  class GetJobQueueSnapshotResult
-  {
-  public:
-    AWS_BATCH_API GetJobQueueSnapshotResult() = default;
-    AWS_BATCH_API GetJobQueueSnapshotResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
-    AWS_BATCH_API GetJobQueueSnapshotResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
+namespace Utils {
+namespace Json {
+class JsonValue;
+}  // namespace Json
+}  // namespace Utils
+namespace Batch {
+namespace Model {
+class GetJobQueueSnapshotResult {
+ public:
+  AWS_BATCH_API GetJobQueueSnapshotResult() = default;
+  AWS_BATCH_API GetJobQueueSnapshotResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
+  AWS_BATCH_API GetJobQueueSnapshotResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
+  ///@{
+  /**
+   * <p>The list of the first 100 <code>RUNNABLE</code> jobs in each job queue. For
+   * first-in-first-out (FIFO) job queues, jobs are ordered based on their submission
+   * time. For fair-share scheduling (FSS) job queues, jobs are ordered based on
+   * their job priority and share usage.</p>
+   */
+  inline const FrontOfQueueDetail& GetFrontOfQueue() const { return m_frontOfQueue; }
+  template <typename FrontOfQueueT = FrontOfQueueDetail>
+  void SetFrontOfQueue(FrontOfQueueT&& value) {
+    m_frontOfQueueHasBeenSet = true;
+    m_frontOfQueue = std::forward<FrontOfQueueT>(value);
+  }
+  template <typename FrontOfQueueT = FrontOfQueueDetail>
+  GetJobQueueSnapshotResult& WithFrontOfQueue(FrontOfQueueT&& value) {
+    SetFrontOfQueue(std::forward<FrontOfQueueT>(value));
+    return *this;
+  }
+  ///@}
 
-    ///@{
-    /**
-     * <p>The list of the first 100 <code>RUNNABLE</code> jobs in each job queue. For
-     * first-in-first-out (FIFO) job queues, jobs are ordered based on their submission
-     * time. For fair-share scheduling (FSS) job queues, jobs are ordered based on
-     * their job priority and share usage.</p>
-     */
-    inline const FrontOfQueueDetail& GetFrontOfQueue() const { return m_frontOfQueue; }
-    template<typename FrontOfQueueT = FrontOfQueueDetail>
-    void SetFrontOfQueue(FrontOfQueueT&& value) { m_frontOfQueueHasBeenSet = true; m_frontOfQueue = std::forward<FrontOfQueueT>(value); }
-    template<typename FrontOfQueueT = FrontOfQueueDetail>
-    GetJobQueueSnapshotResult& WithFrontOfQueue(FrontOfQueueT&& value) { SetFrontOfQueue(std::forward<FrontOfQueueT>(value)); return *this;}
-    ///@}
+  ///@{
+  /**
+   * <p>The job queue's capacity utilization, including total usage and breakdown by
+   * fairshare scheduling queue.</p>
+   */
+  inline const QueueSnapshotUtilizationDetail& GetQueueUtilization() const { return m_queueUtilization; }
+  template <typename QueueUtilizationT = QueueSnapshotUtilizationDetail>
+  void SetQueueUtilization(QueueUtilizationT&& value) {
+    m_queueUtilizationHasBeenSet = true;
+    m_queueUtilization = std::forward<QueueUtilizationT>(value);
+  }
+  template <typename QueueUtilizationT = QueueSnapshotUtilizationDetail>
+  GetJobQueueSnapshotResult& WithQueueUtilization(QueueUtilizationT&& value) {
+    SetQueueUtilization(std::forward<QueueUtilizationT>(value));
+    return *this;
+  }
+  ///@}
 
-    ///@{
-    
-    inline const Aws::String& GetRequestId() const { return m_requestId; }
-    template<typename RequestIdT = Aws::String>
-    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
-    template<typename RequestIdT = Aws::String>
-    GetJobQueueSnapshotResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
-    ///@}
-  private:
+  ///@{
 
-    FrontOfQueueDetail m_frontOfQueue;
-    bool m_frontOfQueueHasBeenSet = false;
+  inline const Aws::String& GetRequestId() const { return m_requestId; }
+  template <typename RequestIdT = Aws::String>
+  void SetRequestId(RequestIdT&& value) {
+    m_requestIdHasBeenSet = true;
+    m_requestId = std::forward<RequestIdT>(value);
+  }
+  template <typename RequestIdT = Aws::String>
+  GetJobQueueSnapshotResult& WithRequestId(RequestIdT&& value) {
+    SetRequestId(std::forward<RequestIdT>(value));
+    return *this;
+  }
+  ///@}
+  inline Aws::Http::HttpResponseCode GetHttpResponseCode() const { return m_HttpResponseCode; }
 
-    Aws::String m_requestId;
-    bool m_requestIdHasBeenSet = false;
-  };
+ private:
+  FrontOfQueueDetail m_frontOfQueue;
 
-} // namespace Model
-} // namespace Batch
-} // namespace Aws
+  QueueSnapshotUtilizationDetail m_queueUtilization;
+
+  Aws::String m_requestId;
+  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  bool m_frontOfQueueHasBeenSet = false;
+  bool m_queueUtilizationHasBeenSet = false;
+  bool m_requestIdHasBeenSet = false;
+};
+
+}  // namespace Model
+}  // namespace Batch
+}  // namespace Aws

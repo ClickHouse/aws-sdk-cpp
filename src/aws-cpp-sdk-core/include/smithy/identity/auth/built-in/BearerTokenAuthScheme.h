@@ -11,6 +11,8 @@
 #include <smithy/identity/signer/built-in/BearerTokenSigner.h>
 namespace smithy
 {
+constexpr char BEARER[] = "smithy.api#HTTPBearerAuth";
+
 class BearerTokenAuthScheme : public AuthScheme<AwsBearerTokenIdentityBase>
 {
   public:
@@ -22,13 +24,21 @@ class BearerTokenAuthScheme : public AuthScheme<AwsBearerTokenIdentityBase>
     explicit BearerTokenAuthScheme(
         std::shared_ptr<AwsCredentialIdentityResolverT> identityResolver,
         const Aws::String &serviceName, const Aws::String &region)
-        : AuthScheme("smithy.api#HTTPBearerAuth"),
+        : AuthScheme(BEARER),
           m_identityResolver{identityResolver},
           m_signer{Aws::MakeShared<smithy::BearerTokenSigner>(
               "BearerTokenAuthScheme", serviceName, region)}
     {
         assert(m_identityResolver);
         assert(m_signer);
+    }
+
+    explicit BearerTokenAuthScheme(const Aws::String &serviceName, const Aws::String &region,
+                                   const Aws::Client::ClientConfiguration::CredentialProviderConfiguration& config)
+        : BearerTokenAuthScheme(Aws::MakeShared<DefaultAwsBearerTokenIdentityResolver>("BearerTokenAuthScheme", config), serviceName, region) {
+      AWS_UNREFERENCED_PARAM(config);
+      assert(m_identityResolver);
+      assert(m_signer);
     }
 
     explicit BearerTokenAuthScheme(const Aws::String &serviceName,

@@ -3,49 +3,46 @@
  * SPDX-License-Identifier: Apache-2.0.
  */
 
-#include <aws/sagemaker/model/UltraServerInfo.h>
 #include <aws/core/utils/json/JsonSerializer.h>
+#include <aws/sagemaker/model/UltraServerInfo.h>
 
 #include <utility>
 
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-namespace Aws
-{
-namespace SageMaker
-{
-namespace Model
-{
+namespace Aws {
+namespace SageMaker {
+namespace Model {
 
-UltraServerInfo::UltraServerInfo(JsonView jsonValue)
-{
-  *this = jsonValue;
-}
+UltraServerInfo::UltraServerInfo(JsonView jsonValue) { *this = jsonValue; }
 
-UltraServerInfo& UltraServerInfo::operator =(JsonView jsonValue)
-{
-  if(jsonValue.ValueExists("Id"))
-  {
+UltraServerInfo& UltraServerInfo::operator=(JsonView jsonValue) {
+  if (jsonValue.ValueExists("Id")) {
     m_id = jsonValue.GetString("Id");
     m_idHasBeenSet = true;
+  }
+  if (jsonValue.ValueExists("Type")) {
+    m_type = jsonValue.GetString("Type");
+    m_typeHasBeenSet = true;
   }
   return *this;
 }
 
-JsonValue UltraServerInfo::Jsonize() const
-{
+JsonValue UltraServerInfo::Jsonize() const {
   JsonValue payload;
 
-  if(m_idHasBeenSet)
-  {
-   payload.WithString("Id", m_id);
+  if (m_idHasBeenSet) {
+    payload.WithString("Id", m_id);
+  }
 
+  if (m_typeHasBeenSet) {
+    payload.WithString("Type", m_type);
   }
 
   return payload;
 }
 
-} // namespace Model
-} // namespace SageMaker
-} // namespace Aws
+}  // namespace Model
+}  // namespace SageMaker
+}  // namespace Aws

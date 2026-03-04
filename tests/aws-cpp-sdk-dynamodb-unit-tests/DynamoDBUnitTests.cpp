@@ -4,6 +4,8 @@
  */
 #include <aws/core/Aws.h>
 #include <aws/core/auth/AWSCredentials.h>
+#include <aws/core/auth/AWSCredentialsProvider.h>
+#include <aws/core/auth/ProfileCredentialsProvider.h>
 #include <aws/core/auth/GeneralHTTPCredentialsProvider.h>
 #include <aws/core/auth/SSOCredentialsProvider.h>
 #include <aws/core/auth/STSCredentialsProvider.h>
@@ -190,7 +192,7 @@ protected:
   {
     monitoring_context_->Reset();
 
-    auto profileDirectory = ProfileConfigFileAWSCredentialsProvider::GetProfileDirectory();
+    auto profileDirectory = ProfileCredentialsProvider::GetProfileDirectory();
     Aws::FileSystem::CreateDirectoryIfNotExists(profileDirectory.c_str());
     Aws::StringStream ssCachedTokenDirectory;
     ssCachedTokenDirectory << profileDirectory << FileSystem::PATH_DELIM << "sso";

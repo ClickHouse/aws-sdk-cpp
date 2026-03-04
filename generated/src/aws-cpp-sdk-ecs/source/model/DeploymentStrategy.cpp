@@ -3,70 +3,66 @@
  * SPDX-License-Identifier: Apache-2.0.
  */
 
-#include <aws/ecs/model/DeploymentStrategy.h>
-#include <aws/core/utils/HashingUtils.h>
 #include <aws/core/Globals.h>
 #include <aws/core/utils/EnumParseOverflowContainer.h>
+#include <aws/core/utils/HashingUtils.h>
+#include <aws/ecs/model/DeploymentStrategy.h>
 
 using namespace Aws::Utils;
 
+namespace Aws {
+namespace ECS {
+namespace Model {
+namespace DeploymentStrategyMapper {
 
-namespace Aws
-{
-  namespace ECS
-  {
-    namespace Model
-    {
-      namespace DeploymentStrategyMapper
-      {
+static const int ROLLING_HASH = HashingUtils::HashString("ROLLING");
+static const int BLUE_GREEN_HASH = HashingUtils::HashString("BLUE_GREEN");
+static const int LINEAR_HASH = HashingUtils::HashString("LINEAR");
+static const int CANARY_HASH = HashingUtils::HashString("CANARY");
 
-        static const int ROLLING_HASH = HashingUtils::HashString("ROLLING");
-        static const int BLUE_GREEN_HASH = HashingUtils::HashString("BLUE_GREEN");
+DeploymentStrategy GetDeploymentStrategyForName(const Aws::String& name) {
+  int hashCode = HashingUtils::HashString(name.c_str());
+  if (hashCode == ROLLING_HASH) {
+    return DeploymentStrategy::ROLLING;
+  } else if (hashCode == BLUE_GREEN_HASH) {
+    return DeploymentStrategy::BLUE_GREEN;
+  } else if (hashCode == LINEAR_HASH) {
+    return DeploymentStrategy::LINEAR;
+  } else if (hashCode == CANARY_HASH) {
+    return DeploymentStrategy::CANARY;
+  }
+  EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
+  if (overflowContainer) {
+    overflowContainer->StoreOverflow(hashCode, name);
+    return static_cast<DeploymentStrategy>(hashCode);
+  }
 
+  return DeploymentStrategy::NOT_SET;
+}
 
-        DeploymentStrategy GetDeploymentStrategyForName(const Aws::String& name)
-        {
-          int hashCode = HashingUtils::HashString(name.c_str());
-          if (hashCode == ROLLING_HASH)
-          {
-            return DeploymentStrategy::ROLLING;
-          }
-          else if (hashCode == BLUE_GREEN_HASH)
-          {
-            return DeploymentStrategy::BLUE_GREEN;
-          }
-          EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
-          if(overflowContainer)
-          {
-            overflowContainer->StoreOverflow(hashCode, name);
-            return static_cast<DeploymentStrategy>(hashCode);
-          }
+Aws::String GetNameForDeploymentStrategy(DeploymentStrategy enumValue) {
+  switch (enumValue) {
+    case DeploymentStrategy::NOT_SET:
+      return {};
+    case DeploymentStrategy::ROLLING:
+      return "ROLLING";
+    case DeploymentStrategy::BLUE_GREEN:
+      return "BLUE_GREEN";
+    case DeploymentStrategy::LINEAR:
+      return "LINEAR";
+    case DeploymentStrategy::CANARY:
+      return "CANARY";
+    default:
+      EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
+      if (overflowContainer) {
+        return overflowContainer->RetrieveOverflow(static_cast<int>(enumValue));
+      }
 
-          return DeploymentStrategy::NOT_SET;
-        }
+      return {};
+  }
+}
 
-        Aws::String GetNameForDeploymentStrategy(DeploymentStrategy enumValue)
-        {
-          switch(enumValue)
-          {
-          case DeploymentStrategy::NOT_SET:
-            return {};
-          case DeploymentStrategy::ROLLING:
-            return "ROLLING";
-          case DeploymentStrategy::BLUE_GREEN:
-            return "BLUE_GREEN";
-          default:
-            EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
-            if(overflowContainer)
-            {
-              return overflowContainer->RetrieveOverflow(static_cast<int>(enumValue));
-            }
-
-            return {};
-          }
-        }
-
-      } // namespace DeploymentStrategyMapper
-    } // namespace Model
-  } // namespace ECS
-} // namespace Aws
+}  // namespace DeploymentStrategyMapper
+}  // namespace Model
+}  // namespace ECS
+}  // namespace Aws
