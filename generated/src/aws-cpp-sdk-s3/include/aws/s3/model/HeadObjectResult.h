@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0.
  */
@@ -167,6 +167,7 @@ class HeadObjectResult {
    * <p>Size of the body in bytes.</p>
    */
   inline long long GetContentLength() const { return m_contentLength; }
+  inline bool ContentLengthHasBeenSet() const { return m_contentLengthHasBeenSet; }
   inline void SetContentLength(long long value) {
     m_contentLengthHasBeenSet = true;
     m_contentLength = value;
