@@ -136,6 +136,7 @@ namespace Model
      * <p>Size of the body in bytes.</p>
      */
     inline long long GetContentLength() const { return m_contentLength; }
+    inline bool ContentLengthHasBeenSet() const { return m_contentLengthHasBeenSet; }
     inline void SetContentLength(long long value) { m_contentLengthHasBeenSet = true; m_contentLength = value; }
     inline HeadObjectResult& WithContentLength(long long value) { SetContentLength(value); return *this;}
     ///@}
