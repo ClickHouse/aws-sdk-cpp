@@ -547,7 +547,6 @@ ClientConfiguration::ClientConfiguration()
     this->disableIMDS = false;
     this->credentialProviderConfig.imdsConfig.disableImds = false;
     setLegacyClientConfigurationParameters(*this);
-    setConfigFromEnvOrProfile(*this);
     this->credentialProviderConfig.profile = this->profileName;
 
     if (!this->disableIMDS &&
@@ -579,7 +578,6 @@ ClientConfiguration::ClientConfiguration(const ClientConfigurationInitValues &co
     this->disableIMDS = configuration.shouldDisableIMDS;
     this->credentialProviderConfig.imdsConfig.disableImds = configuration.shouldDisableIMDS;
     setLegacyClientConfigurationParameters(*this);
-    setConfigFromEnvOrProfile(*this);
     this->credentialProviderConfig.profile = this->profileName;
 
     if (!this->disableIMDS &&
@@ -620,7 +618,6 @@ ClientConfiguration::ClientConfiguration(const char* profile, bool shouldDisable
         return InitRetryStrategy(options);
     };
     setLegacyClientConfigurationParameters(*this);
-    setConfigFromEnvOrProfile(*this);
     // Call EC2 Instance Metadata service only once
     Aws::String ec2MetadataRegion;
     bool hasEc2MetadataRegion = false;
@@ -671,7 +668,6 @@ ClientConfiguration::ClientConfiguration(bool /*useSmartDefaults*/, const char* 
     this->disableIMDS = shouldDisableIMDS;
     this->credentialProviderConfig.imdsConfig.disableImds = shouldDisableIMDS;
     setLegacyClientConfigurationParameters(*this);
-    setConfigFromEnvOrProfile(*this);
     this->credentialProviderConfig.profile = this->profileName;
 
     // Call EC2 Instance Metadata service only once
