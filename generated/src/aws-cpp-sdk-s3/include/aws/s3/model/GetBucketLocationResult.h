@@ -68,7 +68,7 @@ class GetBucketLocationResult {
   BucketLocationConstraint m_locationConstraint{BucketLocationConstraint::NOT_SET};
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_locationConstraintHasBeenSet = false;
   bool m_requestIdHasBeenSet = false;
 };

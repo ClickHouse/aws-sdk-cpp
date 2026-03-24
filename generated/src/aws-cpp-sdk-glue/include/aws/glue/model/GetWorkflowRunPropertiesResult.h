@@ -71,7 +71,7 @@ class GetWorkflowRunPropertiesResult {
   Aws::Map<Aws::String, Aws::String> m_runProperties;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_runPropertiesHasBeenSet = false;
   bool m_requestIdHasBeenSet = false;
 };

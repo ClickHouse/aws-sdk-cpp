@@ -65,7 +65,7 @@ class GetBucketInventoryConfigurationResult {
   InventoryConfiguration m_inventoryConfiguration;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_inventoryConfigurationHasBeenSet = false;
   bool m_requestIdHasBeenSet = false;
 };

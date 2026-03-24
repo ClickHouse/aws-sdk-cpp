@@ -65,7 +65,7 @@ class GetBlueprintResult {
   Blueprint m_blueprint;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_blueprintHasBeenSet = false;
   bool m_requestIdHasBeenSet = false;
 };

@@ -125,7 +125,7 @@ class CreateIntegrationResourcePropertyResult {
   TargetProcessingProperties m_targetProcessingProperties;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_resourceArnHasBeenSet = false;
   bool m_resourcePropertyArnHasBeenSet = false;
   bool m_sourceProcessingPropertiesHasBeenSet = false;

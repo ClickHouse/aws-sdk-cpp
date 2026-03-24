@@ -97,7 +97,7 @@ class BatchGetCrawlersResult {
   Aws::Vector<Aws::String> m_crawlersNotFound;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_crawlersHasBeenSet = false;
   bool m_crawlersNotFoundHasBeenSet = false;
   bool m_requestIdHasBeenSet = false;

@@ -81,7 +81,7 @@ class CheckSchemaVersionValidityResult {
   Aws::String m_error;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_validHasBeenSet = false;
   bool m_errorHasBeenSet = false;
   bool m_requestIdHasBeenSet = false;

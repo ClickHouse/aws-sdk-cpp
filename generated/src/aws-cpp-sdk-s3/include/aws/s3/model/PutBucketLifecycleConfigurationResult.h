@@ -75,7 +75,7 @@ class PutBucketLifecycleConfigurationResult {
   TransitionDefaultMinimumObjectSize m_transitionDefaultMinimumObjectSize{TransitionDefaultMinimumObjectSize::NOT_SET};
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_transitionDefaultMinimumObjectSizeHasBeenSet = false;
   bool m_requestIdHasBeenSet = false;
 };

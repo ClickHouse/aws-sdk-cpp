@@ -268,7 +268,7 @@ class CopyObjectResult {
   CopyObjectResultDetails m_copyObjectResultDetails;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_expirationHasBeenSet = false;
   bool m_copySourceVersionIdHasBeenSet = false;
   bool m_versionIdHasBeenSet = false;

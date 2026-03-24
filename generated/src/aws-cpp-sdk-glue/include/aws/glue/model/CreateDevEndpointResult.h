@@ -433,7 +433,7 @@ class CreateDevEndpointResult {
   Aws::Map<Aws::String, Aws::String> m_arguments;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_endpointNameHasBeenSet = false;
   bool m_statusHasBeenSet = false;
   bool m_securityGroupIdsHasBeenSet = false;

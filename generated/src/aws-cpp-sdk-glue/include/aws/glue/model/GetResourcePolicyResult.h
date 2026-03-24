@@ -122,7 +122,7 @@ class GetResourcePolicyResult {
   Aws::Utils::DateTime m_updateTime{};
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_policyInJsonHasBeenSet = false;
   bool m_policyHashHasBeenSet = false;
   bool m_createTimeHasBeenSet = false;

@@ -66,7 +66,7 @@ class GetMaterializedViewRefreshTaskRunResult {
   MaterializedViewRefreshTaskRun m_materializedViewRefreshTaskRun;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_materializedViewRefreshTaskRunHasBeenSet = false;
   bool m_requestIdHasBeenSet = false;
 };

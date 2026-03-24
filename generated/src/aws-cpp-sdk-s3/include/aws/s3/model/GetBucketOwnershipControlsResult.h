@@ -67,7 +67,7 @@ class GetBucketOwnershipControlsResult {
   OwnershipControls m_ownershipControls;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_ownershipControlsHasBeenSet = false;
   bool m_requestIdHasBeenSet = false;
 };
