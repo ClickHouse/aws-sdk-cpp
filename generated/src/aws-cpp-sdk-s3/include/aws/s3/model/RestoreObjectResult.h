@@ -81,7 +81,7 @@ class RestoreObjectResult {
   Aws::String m_restoreOutputPath;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_requestChargedHasBeenSet = false;
   bool m_restoreOutputPathHasBeenSet = false;
   bool m_requestIdHasBeenSet = false;

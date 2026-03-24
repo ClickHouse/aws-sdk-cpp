@@ -65,7 +65,7 @@ class GetCatalogImportStatusResult {
   CatalogImportStatus m_importStatus;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_importStatusHasBeenSet = false;
   bool m_requestIdHasBeenSet = false;
 };

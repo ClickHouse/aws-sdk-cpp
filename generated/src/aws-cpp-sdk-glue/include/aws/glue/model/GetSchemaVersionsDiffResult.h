@@ -64,7 +64,7 @@ class GetSchemaVersionsDiffResult {
   Aws::String m_diff;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_diffHasBeenSet = false;
   bool m_requestIdHasBeenSet = false;
 };

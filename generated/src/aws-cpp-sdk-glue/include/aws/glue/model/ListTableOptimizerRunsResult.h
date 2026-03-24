@@ -149,7 +149,7 @@ class ListTableOptimizerRunsResult {
   Aws::Vector<TableOptimizerRun> m_tableOptimizerRuns;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_catalogIdHasBeenSet = false;
   bool m_databaseNameHasBeenSet = false;
   bool m_tableNameHasBeenSet = false;

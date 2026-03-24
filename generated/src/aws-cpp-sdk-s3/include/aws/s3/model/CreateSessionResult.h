@@ -149,7 +149,7 @@ class CreateSessionResult {
   SessionCredentials m_credentials;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_serverSideEncryptionHasBeenSet = false;
   bool m_sSEKMSKeyIdHasBeenSet = false;
   bool m_sSEKMSEncryptionContextHasBeenSet = false;

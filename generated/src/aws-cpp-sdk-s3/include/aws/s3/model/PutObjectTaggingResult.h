@@ -64,7 +64,7 @@ class PutObjectTaggingResult {
   Aws::String m_versionId;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_versionIdHasBeenSet = false;
   bool m_requestIdHasBeenSet = false;
 };

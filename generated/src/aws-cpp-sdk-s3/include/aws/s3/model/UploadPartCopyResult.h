@@ -205,7 +205,7 @@ class UploadPartCopyResult {
   RequestCharged m_requestCharged{RequestCharged::NOT_SET};
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_copySourceVersionIdHasBeenSet = false;
   bool m_copyPartResultHasBeenSet = false;
   bool m_serverSideEncryptionHasBeenSet = false;

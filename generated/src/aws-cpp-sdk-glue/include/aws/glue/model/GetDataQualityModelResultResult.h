@@ -92,7 +92,7 @@ class GetDataQualityModelResultResult {
   Aws::Vector<StatisticModelResult> m_model;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_completedOnHasBeenSet = false;
   bool m_modelHasBeenSet = false;
   bool m_requestIdHasBeenSet = false;

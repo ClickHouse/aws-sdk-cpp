@@ -306,7 +306,7 @@ class DeleteIntegrationResult {
   Aws::String m_dataFilter;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_sourceArnHasBeenSet = false;
   bool m_targetArnHasBeenSet = false;
   bool m_integrationNameHasBeenSet = false;

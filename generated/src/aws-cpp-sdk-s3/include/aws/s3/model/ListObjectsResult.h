@@ -299,7 +299,7 @@ class ListObjectsResult {
   RequestCharged m_requestCharged{RequestCharged::NOT_SET};
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_isTruncatedHasBeenSet = false;
   bool m_markerHasBeenSet = false;
   bool m_nextMarkerHasBeenSet = false;

@@ -102,7 +102,7 @@ class DeleteRegistryResult {
   RegistryStatus m_status{RegistryStatus::NOT_SET};
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_registryNameHasBeenSet = false;
   bool m_registryArnHasBeenSet = false;
   bool m_statusHasBeenSet = false;

@@ -65,7 +65,7 @@ class GetBucketMetricsConfigurationResult {
   MetricsConfiguration m_metricsConfiguration;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_metricsConfigurationHasBeenSet = false;
   bool m_requestIdHasBeenSet = false;
 };

@@ -100,7 +100,7 @@ class BatchDeleteConnectionResult {
   Aws::Map<Aws::String, ErrorDetail> m_errors;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_succeededHasBeenSet = false;
   bool m_errorsHasBeenSet = false;
   bool m_requestIdHasBeenSet = false;

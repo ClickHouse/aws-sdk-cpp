@@ -226,7 +226,7 @@ class GetObjectAttributesResult {
   long long m_objectSize{0};
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_deleteMarkerHasBeenSet = false;
   bool m_lastModifiedHasBeenSet = false;
   bool m_versionIdHasBeenSet = false;

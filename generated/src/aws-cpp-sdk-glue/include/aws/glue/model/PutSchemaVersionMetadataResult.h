@@ -193,7 +193,7 @@ class PutSchemaVersionMetadataResult {
   Aws::String m_metadataValue;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_schemaArnHasBeenSet = false;
   bool m_schemaNameHasBeenSet = false;
   bool m_registryNameHasBeenSet = false;

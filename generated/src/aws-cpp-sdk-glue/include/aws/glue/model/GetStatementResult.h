@@ -65,7 +65,7 @@ class GetStatementResult {
   Statement m_statement;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_statementHasBeenSet = false;
   bool m_requestIdHasBeenSet = false;
 };

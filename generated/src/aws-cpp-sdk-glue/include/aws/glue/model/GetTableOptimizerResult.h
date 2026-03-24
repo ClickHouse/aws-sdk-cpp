@@ -122,7 +122,7 @@ class GetTableOptimizerResult {
   TableOptimizer m_tableOptimizer;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_catalogIdHasBeenSet = false;
   bool m_databaseNameHasBeenSet = false;
   bool m_tableNameHasBeenSet = false;

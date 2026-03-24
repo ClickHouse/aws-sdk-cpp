@@ -65,7 +65,7 @@ class GetBucketPolicyStatusResult {
   PolicyStatus m_policyStatus;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_policyStatusHasBeenSet = false;
   bool m_requestIdHasBeenSet = false;
 };

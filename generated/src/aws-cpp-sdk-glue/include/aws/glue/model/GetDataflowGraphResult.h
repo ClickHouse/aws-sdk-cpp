@@ -98,7 +98,7 @@ class GetDataflowGraphResult {
   Aws::Vector<CodeGenEdge> m_dagEdges;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_dagNodesHasBeenSet = false;
   bool m_dagEdgesHasBeenSet = false;
   bool m_requestIdHasBeenSet = false;

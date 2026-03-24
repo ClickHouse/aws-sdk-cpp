@@ -135,7 +135,7 @@ class GetBucketWebsiteResult {
   Aws::Vector<RoutingRule> m_routingRules;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_redirectAllRequestsToHasBeenSet = false;
   bool m_indexDocumentHasBeenSet = false;
   bool m_errorDocumentHasBeenSet = false;

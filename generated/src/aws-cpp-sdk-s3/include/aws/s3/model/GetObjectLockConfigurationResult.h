@@ -65,7 +65,7 @@ class GetObjectLockConfigurationResult {
   ObjectLockConfiguration m_objectLockConfiguration;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_objectLockConfigurationHasBeenSet = false;
   bool m_requestIdHasBeenSet = false;
 };

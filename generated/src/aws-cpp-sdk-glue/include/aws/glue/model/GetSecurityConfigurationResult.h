@@ -65,7 +65,7 @@ class GetSecurityConfigurationResult {
   SecurityConfiguration m_securityConfiguration;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_securityConfigurationHasBeenSet = false;
   bool m_requestIdHasBeenSet = false;
 };

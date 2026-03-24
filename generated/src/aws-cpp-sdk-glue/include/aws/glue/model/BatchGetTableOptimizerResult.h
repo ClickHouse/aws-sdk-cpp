@@ -98,7 +98,7 @@ class BatchGetTableOptimizerResult {
   Aws::Vector<BatchGetTableOptimizerError> m_failures;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_tableOptimizersHasBeenSet = false;
   bool m_failuresHasBeenSet = false;
   bool m_requestIdHasBeenSet = false;

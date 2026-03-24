@@ -65,7 +65,7 @@ class GetObjectRetentionResult {
   ObjectLockRetention m_retention;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_retentionHasBeenSet = false;
   bool m_requestIdHasBeenSet = false;
 };

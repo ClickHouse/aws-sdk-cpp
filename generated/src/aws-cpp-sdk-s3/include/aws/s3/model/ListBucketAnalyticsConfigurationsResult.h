@@ -133,7 +133,7 @@ class ListBucketAnalyticsConfigurationsResult {
   Aws::Vector<AnalyticsConfiguration> m_analyticsConfigurationList;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_isTruncatedHasBeenSet = false;
   bool m_continuationTokenHasBeenSet = false;
   bool m_nextContinuationTokenHasBeenSet = false;

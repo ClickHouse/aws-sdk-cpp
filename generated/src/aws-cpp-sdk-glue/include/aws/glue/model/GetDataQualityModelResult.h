@@ -121,7 +121,7 @@ class GetDataQualityModelResult {
   Aws::String m_failureReason;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_statusHasBeenSet = false;
   bool m_startedOnHasBeenSet = false;
   bool m_completedOnHasBeenSet = false;

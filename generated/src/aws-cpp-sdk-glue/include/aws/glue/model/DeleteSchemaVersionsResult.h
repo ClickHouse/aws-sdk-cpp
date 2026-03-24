@@ -73,7 +73,7 @@ class DeleteSchemaVersionsResult {
   Aws::Vector<SchemaVersionErrorItem> m_schemaVersionErrors;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_schemaVersionErrorsHasBeenSet = false;
   bool m_requestIdHasBeenSet = false;
 };

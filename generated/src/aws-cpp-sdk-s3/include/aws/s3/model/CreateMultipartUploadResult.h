@@ -336,7 +336,7 @@ class CreateMultipartUploadResult {
   ChecksumType m_checksumType{ChecksumType::NOT_SET};
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_abortDateHasBeenSet = false;
   bool m_abortRuleIdHasBeenSet = false;
   bool m_bucketHasBeenSet = false;
