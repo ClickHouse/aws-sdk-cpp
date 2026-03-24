@@ -319,7 +319,7 @@ class GetDataQualityRuleRecommendationRunResult {
   Aws::String m_dataQualitySecurityConfiguration;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_runIdHasBeenSet = false;
   bool m_dataSourceHasBeenSet = false;
   bool m_roleHasBeenSet = false;

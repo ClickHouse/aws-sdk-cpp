@@ -111,7 +111,7 @@ class QuerySchemaVersionMetadataResult {
   Aws::String m_nextToken;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_metadataInfoMapHasBeenSet = false;
   bool m_schemaVersionIdHasBeenSet = false;
   bool m_nextTokenHasBeenSet = false;

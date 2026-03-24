@@ -91,7 +91,7 @@ class ResumeWorkflowRunResult {
   Aws::Vector<Aws::String> m_nodeIds;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_runIdHasBeenSet = false;
   bool m_nodeIdsHasBeenSet = false;
   bool m_requestIdHasBeenSet = false;

@@ -92,7 +92,7 @@ class GetBucketAclResult {
   Aws::Vector<Grant> m_grants;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_ownerHasBeenSet = false;
   bool m_grantsHasBeenSet = false;
   bool m_requestIdHasBeenSet = false;

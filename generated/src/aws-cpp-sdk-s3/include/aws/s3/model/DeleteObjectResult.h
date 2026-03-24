@@ -105,7 +105,7 @@ class DeleteObjectResult {
   RequestCharged m_requestCharged{RequestCharged::NOT_SET};
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_deleteMarkerHasBeenSet = false;
   bool m_versionIdHasBeenSet = false;
   bool m_requestChargedHasBeenSet = false;

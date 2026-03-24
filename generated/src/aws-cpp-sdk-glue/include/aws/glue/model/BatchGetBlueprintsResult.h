@@ -97,7 +97,7 @@ class BatchGetBlueprintsResult {
   Aws::Vector<Aws::String> m_missingBlueprints;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_blueprintsHasBeenSet = false;
   bool m_missingBlueprintsHasBeenSet = false;
   bool m_requestIdHasBeenSet = false;

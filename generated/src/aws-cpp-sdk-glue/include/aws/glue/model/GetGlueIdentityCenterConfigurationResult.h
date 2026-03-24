@@ -136,7 +136,7 @@ class GetGlueIdentityCenterConfigurationResult {
   bool m_userBackgroundSessionsEnabled{false};
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_applicationArnHasBeenSet = false;
   bool m_instanceArnHasBeenSet = false;
   bool m_scopesHasBeenSet = false;

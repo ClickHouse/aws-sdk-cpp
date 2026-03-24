@@ -98,7 +98,7 @@ class BatchGetCustomEntityTypesResult {
   Aws::Vector<Aws::String> m_customEntityTypesNotFound;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_customEntityTypesHasBeenSet = false;
   bool m_customEntityTypesNotFoundHasBeenSet = false;
   bool m_requestIdHasBeenSet = false;

@@ -45,7 +45,7 @@ class DeletePartitionResult {
 
  private:
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_requestIdHasBeenSet = false;
 };
 

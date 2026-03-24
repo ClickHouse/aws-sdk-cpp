@@ -143,7 +143,7 @@ class GetUsageProfileResult {
   Aws::Utils::DateTime m_lastModifiedOn{};
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_nameHasBeenSet = false;
   bool m_descriptionHasBeenSet = false;
   bool m_configurationHasBeenSet = false;

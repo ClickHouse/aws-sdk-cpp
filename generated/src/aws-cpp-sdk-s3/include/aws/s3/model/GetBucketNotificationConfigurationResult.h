@@ -154,7 +154,7 @@ class GetBucketNotificationConfigurationResult {
   EventBridgeConfiguration m_eventBridgeConfiguration;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_topicConfigurationsHasBeenSet = false;
   bool m_queueConfigurationsHasBeenSet = false;
   bool m_lambdaFunctionConfigurationsHasBeenSet = false;

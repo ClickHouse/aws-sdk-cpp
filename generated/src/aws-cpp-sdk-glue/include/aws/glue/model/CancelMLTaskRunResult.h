@@ -101,7 +101,7 @@ class CancelMLTaskRunResult {
   TaskStatusType m_status{TaskStatusType::NOT_SET};
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_transformIdHasBeenSet = false;
   bool m_taskRunIdHasBeenSet = false;
   bool m_statusHasBeenSet = false;

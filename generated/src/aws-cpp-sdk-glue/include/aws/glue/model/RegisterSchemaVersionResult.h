@@ -100,7 +100,7 @@ class RegisterSchemaVersionResult {
   SchemaVersionStatus m_status{SchemaVersionStatus::NOT_SET};
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_schemaVersionIdHasBeenSet = false;
   bool m_versionNumberHasBeenSet = false;
   bool m_statusHasBeenSet = false;

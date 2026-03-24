@@ -97,7 +97,7 @@ class BatchGetJobsResult {
   Aws::Vector<Aws::String> m_jobsNotFound;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_jobsHasBeenSet = false;
   bool m_jobsNotFoundHasBeenSet = false;
   bool m_requestIdHasBeenSet = false;

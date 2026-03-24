@@ -165,7 +165,7 @@ class HeadBucketResult {
   bool m_accessPointAlias{false};
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_bucketArnHasBeenSet = false;
   bool m_bucketLocationTypeHasBeenSet = false;
   bool m_bucketLocationNameHasBeenSet = false;

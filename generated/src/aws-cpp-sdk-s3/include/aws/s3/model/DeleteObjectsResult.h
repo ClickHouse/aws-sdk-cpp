@@ -116,7 +116,7 @@ class DeleteObjectsResult {
   Aws::Vector<Error> m_errors;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_deletedHasBeenSet = false;
   bool m_requestChargedHasBeenSet = false;
   bool m_errorsHasBeenSet = false;

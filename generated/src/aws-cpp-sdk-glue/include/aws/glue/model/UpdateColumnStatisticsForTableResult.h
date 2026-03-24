@@ -72,7 +72,7 @@ class UpdateColumnStatisticsForTableResult {
   Aws::Vector<ColumnStatisticsError> m_errors;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_errorsHasBeenSet = false;
   bool m_requestIdHasBeenSet = false;
 };

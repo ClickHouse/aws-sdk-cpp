@@ -918,7 +918,7 @@ class HeadObjectResult {
   Aws::String m_expiresString;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_deleteMarkerHasBeenSet = false;
   bool m_acceptRangesHasBeenSet = false;
   bool m_expirationHasBeenSet = false;

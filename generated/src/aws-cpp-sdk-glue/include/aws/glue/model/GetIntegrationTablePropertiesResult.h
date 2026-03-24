@@ -128,7 +128,7 @@ class GetIntegrationTablePropertiesResult {
   TargetTableConfig m_targetTableConfig;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_resourceArnHasBeenSet = false;
   bool m_tableNameHasBeenSet = false;
   bool m_sourceTableConfigHasBeenSet = false;

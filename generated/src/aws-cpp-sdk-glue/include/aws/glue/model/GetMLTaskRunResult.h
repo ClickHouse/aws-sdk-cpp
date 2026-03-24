@@ -234,7 +234,7 @@ class GetMLTaskRunResult {
   int m_executionTime{0};
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_transformIdHasBeenSet = false;
   bool m_taskRunIdHasBeenSet = false;
   bool m_statusHasBeenSet = false;

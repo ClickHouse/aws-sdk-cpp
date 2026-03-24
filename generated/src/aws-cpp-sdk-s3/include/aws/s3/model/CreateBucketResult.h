@@ -88,7 +88,7 @@ class CreateBucketResult {
   Aws::String m_bucketArn;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_locationHasBeenSet = false;
   bool m_bucketArnHasBeenSet = false;
   bool m_requestIdHasBeenSet = false;

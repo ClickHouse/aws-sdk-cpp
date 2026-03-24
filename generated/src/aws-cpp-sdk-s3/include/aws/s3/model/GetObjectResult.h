@@ -876,7 +876,7 @@ class GetObjectResult {
   Aws::String m_requestId;
 
   Aws::String m_expiresString;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_bodyHasBeenSet = false;
   bool m_deleteMarkerHasBeenSet = false;
   bool m_acceptRangesHasBeenSet = false;

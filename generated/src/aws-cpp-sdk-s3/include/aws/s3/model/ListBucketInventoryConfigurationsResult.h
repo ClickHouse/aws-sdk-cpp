@@ -133,7 +133,7 @@ class ListBucketInventoryConfigurationsResult {
   Aws::String m_nextContinuationToken;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_continuationTokenHasBeenSet = false;
   bool m_inventoryConfigurationListHasBeenSet = false;
   bool m_isTruncatedHasBeenSet = false;
