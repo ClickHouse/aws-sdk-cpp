@@ -168,6 +168,13 @@ HeadObjectResult& HeadObjectResult::operator =(const Aws::AmazonWebServiceResult
     m_contentEncodingHasBeenSet = true;
   }
 
+  // ClickHouse extension, GCS reports the stored (pre-transcoding) content encoding
+  const auto& gcsStoredContentEncodingIter = headers.find("x-goog-stored-content-encoding");
+  if (gcsStoredContentEncodingIter != headers.end()) {
+    m_gcsStoredContentEncoding = gcsStoredContentEncodingIter->second;
+    m_gcsStoredContentEncodingHasBeenSet = true;
+  }
+
   const auto& contentLanguageIter = headers.find("content-language");
   if(contentLanguageIter != headers.end())
   {
