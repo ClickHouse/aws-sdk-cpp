@@ -309,10 +309,23 @@ namespace Model
      * the Content-Type header field.</p>
      */
     inline const Aws::String& GetContentEncoding() const { return m_contentEncoding; }
+    inline bool ContentEncodingHasBeenSet() const { return m_contentEncodingHasBeenSet; }
     template<typename ContentEncodingT = Aws::String>
     void SetContentEncoding(ContentEncodingT&& value) { m_contentEncodingHasBeenSet = true; m_contentEncoding = std::forward<ContentEncodingT>(value); }
     template<typename ContentEncodingT = Aws::String>
     HeadObjectResult& WithContentEncoding(ContentEncodingT&& value) { SetContentEncoding(std::forward<ContentEncodingT>(value)); return *this;}
+    ///@}
+
+    ///@{
+    /**
+    * <p>ClickHouse extension: the
+    * <code>x-goog-stored-content-encoding</code> response header returned by
+    * Google Cloud Storage. Indicates the encoding the object is stored with,
+    * which differs from <code>Content-Encoding</code> when GCS applies
+    * decompressive transcoding</p>
+    */
+    inline const Aws::String& GetGcsStoredContentEncoding() const { return m_gcsStoredContentEncoding; }
+    inline bool GcsStoredContentEncodingHasBeenSet() const { return m_gcsStoredContentEncodingHasBeenSet; }
     ///@}
 
     ///@{
@@ -657,6 +670,9 @@ namespace Model
 
     Aws::String m_contentEncoding;
     bool m_contentEncodingHasBeenSet = false;
+
+    Aws::String m_gcsStoredContentEncoding;
+    bool m_gcsStoredContentEncodingHasBeenSet = false;
 
     Aws::String m_contentLanguage;
     bool m_contentLanguageHasBeenSet = false;
