@@ -553,27 +553,34 @@ namespace Aws
         {
             SetErrorMarshaller(Aws::MakeUnique<Aws::Client::XmlErrorMarshaller>(STS_RESOURCE_CLIENT_LOG_TAG));
 
-            Aws::StringStream ss;
-            if (clientConfiguration.scheme == Aws::Http::Scheme::HTTP)
+            if (!clientConfiguration.endpointOverride.empty())
             {
-                ss << "http://";
+                m_endpoint = clientConfiguration.endpointOverride;
             }
             else
             {
-                ss << "https://";
+                Aws::StringStream ss;
+                if (clientConfiguration.scheme == Aws::Http::Scheme::HTTP)
+                {
+                    ss << "http://";
+                }
+                else
+                {
+                    ss << "https://";
+                }
+
+                static const int CN_NORTH_1_HASH = Aws::Utils::HashingUtils::HashString(Aws::Region::CN_NORTH_1);
+                static const int CN_NORTHWEST_1_HASH = Aws::Utils::HashingUtils::HashString(Aws::Region::CN_NORTHWEST_1);
+                auto hash = Aws::Utils::HashingUtils::HashString(clientConfiguration.region.c_str());
+
+                ss << "sts." << clientConfiguration.region << ".amazonaws.com";
+                if (hash == CN_NORTH_1_HASH || hash == CN_NORTHWEST_1_HASH)
+                {
+                    ss << ".cn";
+                }
+
+                m_endpoint =  ss.str();
             }
-
-            static const int CN_NORTH_1_HASH = Aws::Utils::HashingUtils::HashString(Aws::Region::CN_NORTH_1);
-            static const int CN_NORTHWEST_1_HASH = Aws::Utils::HashingUtils::HashString(Aws::Region::CN_NORTHWEST_1);
-            auto hash = Aws::Utils::HashingUtils::HashString(clientConfiguration.region.c_str());
-
-            ss << "sts." << clientConfiguration.region << ".amazonaws.com";
-            if (hash == CN_NORTH_1_HASH || hash == CN_NORTHWEST_1_HASH)
-            {
-                ss << ".cn";
-            }
-
-            m_endpoint =  ss.str();
 
             AWS_LOGSTREAM_INFO(STS_RESOURCE_CLIENT_LOG_TAG, "Creating STS ResourceClient with endpoint: " << m_endpoint);
         }
