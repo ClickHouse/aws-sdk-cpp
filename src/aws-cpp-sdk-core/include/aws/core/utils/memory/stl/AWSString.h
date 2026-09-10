@@ -102,6 +102,8 @@ using WString = std::basic_string< wchar_t, std::char_traits< wchar_t >, Aws::Al
 
 #endif // __ANDROID
 
+using SensitiveString = std::basic_string< char, std::char_traits< char >, Aws::SensitiveAllocator< char > >;
+
 } // namespace Aws
 
 #ifdef USE_AWS_MEMORY_MANAGEMENT

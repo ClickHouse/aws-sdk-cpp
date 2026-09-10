@@ -16,6 +16,7 @@ using namespace Aws::Utils::Memory;
 #ifdef USE_AWS_MEMORY_MANAGEMENT
   static MemorySystemInterface* AWSMemorySystem(nullptr);
 #endif // USE_AWS_MEMORY_MANAGEMENT
+static MemorySystemInterface* AWSSensitiveMemorySystem(nullptr);
 
 namespace Aws
 {
@@ -57,6 +58,31 @@ MemorySystemInterface* GetMemorySystem()
     #else
         return nullptr;
     #endif // USE_AWS_MEMORY_MANAGEMENT
+}
+
+void InitializeAWSSensitiveMemorySystem(MemorySystemInterface& memorySystem)
+{
+    if(AWSSensitiveMemorySystem != nullptr)
+    {
+        AWSSensitiveMemorySystem->End();
+    }
+
+    AWSSensitiveMemorySystem = &memorySystem;
+    AWSSensitiveMemorySystem->Begin();
+}
+
+void ShutdownAWSSensitiveMemorySystem(void)
+{
+    if(AWSSensitiveMemorySystem != nullptr)
+    {
+        AWSSensitiveMemorySystem->End();
+    }
+    AWSSensitiveMemorySystem = nullptr;
+}
+
+MemorySystemInterface* GetSensitiveMemorySystem()
+{
+    return AWSSensitiveMemorySystem;
 }
 
 #if defined(__cpp_exceptions) || defined(_CPPUNWIND) || defined(__EXCEPTIONS)

@@ -46,7 +46,8 @@ class DefaultAwsCredentialIdentityResolver : public AwsCredentialIdentityResolve
     auto legacyCreds = legacyChain_sp->GetAWSCredentials();
 
     auto smithyCreds = Aws::MakeUnique<AwsCredentialIdentity>(
-        "DefaultAwsCredentialIdentityResolver", legacyCreds.GetAWSAccessKeyId(), legacyCreds.GetAWSSecretKey(),
+        "DefaultAwsCredentialIdentityResolver", legacyCreds.GetAWSAccessKeyId(),
+        Aws::String(legacyCreds.GetAWSSecretKey().data(), legacyCreds.GetAWSSecretKey().size()),
         legacyCreds.GetSessionToken().empty() ? Aws::Crt::Optional<Aws::String>() : legacyCreds.GetSessionToken(),
         legacyCreds.GetExpiration(), legacyCreds.GetAccountId().empty() ? Aws::Crt::Optional<Aws::String>() : legacyCreds.GetAccountId());
 

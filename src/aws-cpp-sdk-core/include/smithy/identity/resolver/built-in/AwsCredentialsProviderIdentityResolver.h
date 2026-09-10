@@ -37,7 +37,7 @@ namespace smithy
 
             auto smithyCreds = Aws::MakeUnique<AwsCredentialIdentity>("AwsCredentialsProviderIdentityResolver",
               fetchedCreds.GetAWSAccessKeyId(),
-              fetchedCreds.GetAWSSecretKey(),
+              Aws::String(fetchedCreds.GetAWSSecretKey().data(), fetchedCreds.GetAWSSecretKey().size()),
               fetchedCreds.GetSessionToken(),
               fetchedCreds.GetExpiration(),
               fetchedCreds.GetAccountId());

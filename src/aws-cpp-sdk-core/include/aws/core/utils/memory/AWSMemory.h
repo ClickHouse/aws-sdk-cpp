@@ -39,6 +39,21 @@ namespace Aws
             AWS_CORE_API MemorySystemInterface* GetMemorySystem();
 
             /**
+             * Installs the memory system used for sensitive data such as secret keys, regardless of USE_AWS_MEMORY_MANAGEMENT
+             */
+            AWS_CORE_API void InitializeAWSSensitiveMemorySystem(MemorySystemInterface& memorySystem);
+
+            /**
+             * Uninstalls the memory system used for sensitive data
+             */
+            AWS_CORE_API void ShutdownAWSSensitiveMemorySystem(void);
+
+            /**
+             * Get the globally installed memory system for sensitive data, if it has been installed.
+             */
+            AWS_CORE_API MemorySystemInterface* GetSensitiveMemorySystem();
+
+            /**
              * Get the pointer to the SDK default memory system
              */
             AWS_CORE_API MemorySystemInterface& GetDefaultMemorySystem();

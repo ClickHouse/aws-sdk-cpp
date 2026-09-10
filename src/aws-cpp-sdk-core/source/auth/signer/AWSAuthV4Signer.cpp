@@ -548,10 +548,10 @@ Aws::String AWSAuthV4Signer::GenerateStringToSign(const Aws::String& dateValue, 
     return ss.str();
 }
 
-Aws::Utils::ByteBuffer AWSAuthV4Signer::ComputeHash(const Aws::String& secretKey,
+Aws::Utils::ByteBuffer AWSAuthV4Signer::ComputeHash(const Aws::SensitiveString& secretKey,
         const Aws::String& simpleDate, const Aws::String& region, const Aws::String& serviceName) const
 {
-    Aws::String signingKey(Aws::Auth::AWSAuthHelper::SIGNING_KEY);
+    Aws::SensitiveString signingKey(Aws::Auth::AWSAuthHelper::SIGNING_KEY);
     signingKey.append(secretKey);
     auto kDate = HashingUtils::CalculateSHA256HMAC(simpleDate, signingKey);
 

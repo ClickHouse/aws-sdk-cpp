@@ -100,14 +100,14 @@ namespace Aws
                     const Aws::String& canonicalRequestHash, const Aws::String& region,
                     const Aws::String& serviceName) const;
             Aws::Utils::ByteBuffer ComputeHash(const Aws::String& secretKey, const Aws::String& simpleDate) const;
-            Aws::Utils::ByteBuffer ComputeHash(const Aws::String& secretKey,
+            Aws::Utils::ByteBuffer ComputeHash(const Aws::SensitiveString& secretKey,
                     const Aws::String& simpleDate, const Aws::String& region, const Aws::String& serviceName) const;
             const Aws::String m_serviceName;
             const Aws::String m_region;
             mutable Utils::Threading::ReaderWriterLock m_derivedKeyLock;
             mutable Aws::Utils::ByteBuffer m_derivedKey;
             mutable Aws::String m_currentDateStr;
-            mutable Aws::String m_currentSecretKey;
+            mutable Aws::SensitiveString m_currentSecretKey;
             Aws::Vector<Aws::String> m_unsignedHeaders;
             std::shared_ptr<Auth::AWSCredentialsProvider> m_credentialsProvider;
         };

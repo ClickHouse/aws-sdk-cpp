@@ -18,6 +18,7 @@
 #include <aws/core/utils/logging/LogMacros.h>
 #include <aws/core/utils/memory/stl/AWSList.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/crt/crypto/HMAC.h>
 
 #include <iomanip>
 
@@ -46,6 +47,23 @@ ByteBuffer HashingUtils::CalculateSHA256HMAC(const ByteBuffer& toSign, const Byt
 {
     Sha256HMAC hash;
     return hash.Calculate(toSign, secret).GetResult();
+}
+
+ByteBuffer HashingUtils::CalculateSHA256HMAC(const Aws::String& toSign, const Aws::SensitiveString& secret)
+{
+    auto toSignCur = Aws::Crt::ByteCursorFromArray(reinterpret_cast<const uint8_t*>(toSign.data()), toSign.size());
+    auto secretCur = Aws::Crt::ByteCursorFromArray(reinterpret_cast<const uint8_t*>(secret.data()), secret.size());
+
+    ByteBuffer resultBuf(Aws::Crt::Crypto::SHA256_HMAC_DIGEST_SIZE);
+    Aws::Crt::ByteBuf outBuf = Aws::Crt::ByteBufFromEmptyArray(resultBuf.GetUnderlyingData(), resultBuf.GetSize());
+
+    if (Aws::Crt::Crypto::ComputeSHA256HMAC(secretCur, toSignCur, outBuf))
+    {
+        resultBuf.SetLength(outBuf.len);
+        return resultBuf;
+    }
+
+    return {};
 }
 
 ByteBuffer HashingUtils::CalculateSHA512(const Aws::String& str)

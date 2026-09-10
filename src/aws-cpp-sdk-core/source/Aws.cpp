@@ -50,6 +50,10 @@ namespace Aws
             Aws::Utils::Memory::InitializeAWSMemorySystem(Utils::Memory::GetDefaultMemorySystem());
         }
 #endif // USE_AWS_MEMORY_MANAGEMENT
+        if(options.memoryManagementOptions.sensitiveMemoryManager)
+        {
+            Aws::Utils::Memory::InitializeAWSSensitiveMemorySystem(*options.memoryManagementOptions.sensitiveMemoryManager);
+        }
         Aws::Client::CoreErrorsMapper::InitCoreErrorsMapper();
         if(options.loggingOptions.logLevel != Aws::Utils::Logging::LogLevel::Off)
         {
@@ -223,6 +227,10 @@ namespace Aws
             Aws::Utils::Logging::PushLogger(nullptr); // stops further logging but keeps old logger object alive
         }
         Aws::Utils::Logging::ShutdownAWSLogging();
+        if(options.memoryManagementOptions.sensitiveMemoryManager)
+        {
+            Aws::Utils::Memory::ShutdownAWSSensitiveMemorySystem();
+        }
 #ifdef USE_AWS_MEMORY_MANAGEMENT
         if(options.memoryManagementOptions.memoryManager)
         {

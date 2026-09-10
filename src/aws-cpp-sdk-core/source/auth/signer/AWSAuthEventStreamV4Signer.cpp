@@ -293,13 +293,12 @@ Aws::String AWSAuthEventStreamV4Signer::GenerateStringToSign(const Aws::String& 
     return ss.str();
 }
 
-Aws::Utils::ByteBuffer AWSAuthEventStreamV4Signer::ComputeHash(const Aws::String& secretKey,
+Aws::Utils::ByteBuffer AWSAuthEventStreamV4Signer::ComputeHash(const Aws::SensitiveString& secretKey,
         const Aws::String& simpleDate, const Aws::String& region, const Aws::String& serviceName) const
 {
-    Aws::String signingKey(Aws::Auth::AWSAuthHelper::SIGNING_KEY);
+    Aws::SensitiveString signingKey(Aws::Auth::AWSAuthHelper::SIGNING_KEY);
     signingKey.append(secretKey);
-    auto hashResult = HashingUtils::CalculateSHA256HMAC(ByteBuffer((unsigned char*)simpleDate.c_str(), simpleDate.length()),
-            ByteBuffer((unsigned char*)signingKey.c_str(), signingKey.length()));
+    auto hashResult = HashingUtils::CalculateSHA256HMAC(simpleDate, signingKey);
 
     if (hashResult.GetLength() == 0)
     {

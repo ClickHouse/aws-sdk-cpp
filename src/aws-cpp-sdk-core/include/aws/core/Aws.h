@@ -61,6 +61,13 @@ struct MemoryManagementOptions {
    * at startup time.
    */
   Aws::Utils::Memory::MemorySystemInterface* memoryManager = nullptr;
+
+  /**
+   * Defaults to nullptr. If this has been set then it will be installed at startup time and used for sensitive data
+   * such as secret keys, regardless of whether custom memory management has been turned on. If this hasn't been set,
+   * sensitive data is allocated like any other data.
+   */
+  Aws::Utils::Memory::MemorySystemInterface* sensitiveMemoryManager = nullptr;
 };
 
 /**

@@ -47,6 +47,8 @@ namespace Aws
             */
             static ByteBuffer CalculateSHA256HMAC(const ByteBuffer& toSign, const ByteBuffer& secret);
 
+            static ByteBuffer CalculateSHA256HMAC(const Aws::String& toSign, const Aws::SensitiveString& secret);
+
             /**
              * Calculates a SHA512 Hash digest (not hex encoded)
              */

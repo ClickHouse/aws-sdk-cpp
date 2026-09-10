@@ -205,7 +205,7 @@ namespace Aws
             Aws::String GenerateStringToSign(const Aws::String& dateValue, const Aws::String& simpleDate,
                     const Aws::String& canonicalRequestHash, const Aws::String& region,
                     const Aws::String& serviceName) const;
-            Aws::Utils::ByteBuffer ComputeHash(const Aws::String& secretKey,
+            Aws::Utils::ByteBuffer ComputeHash(const Aws::SensitiveString& secretKey,
                     const Aws::String& simpleDate, const Aws::String& region, const Aws::String& serviceName) const;
             bool SignRequestWithSigV4a(Aws::Http::HttpRequest& request, const char* region, const char* serviceName,
                     bool signBody, long long expirationTimeInSeconds, Aws::Crt::Auth::SignatureType signatureType) const;
@@ -230,7 +230,7 @@ namespace Aws
             //interface can remain const.
             mutable Aws::Utils::ByteBuffer m_partialSignature;
             mutable Aws::String m_currentDateStr;
-            mutable Aws::String m_currentSecretKey;
+            mutable Aws::SensitiveString m_currentSecretKey;
             mutable Utils::Threading::ReaderWriterLock m_partialSignatureLock;
             PayloadSigningPolicy m_payloadSigningPolicy;
             bool m_urlEscapePath;

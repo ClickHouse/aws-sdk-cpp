@@ -98,6 +98,56 @@ namespace Aws
     template< typename T > using Allocator = std::allocator<T>;
 
 #endif // USE_AWS_MEMORY_MANAGEMENT
+
+    template <typename T>
+    class SensitiveAllocator
+    {
+    public:
+        typedef T value_type;
+
+        SensitiveAllocator() throw() {}
+
+        template <class U>
+        SensitiveAllocator(const SensitiveAllocator<U>&) throw() {}
+
+        T* allocate(std::size_t n)
+        {
+            Aws::Utils::Memory::MemorySystemInterface* memorySystem = Aws::Utils::Memory::GetSensitiveMemorySystem();
+            if (memorySystem)
+            {
+                return reinterpret_cast<T*>(memorySystem->AllocateMemory(n * sizeof(T), alignof(T), "AWSSensitive"));
+            }
+            return reinterpret_cast<T*>(malloc(n * sizeof(T)));
+        }
+
+        void deallocate(T* p, std::size_t n)
+        {
+            AWS_UNREFERENCED_PARAM(n);
+
+            Aws::Utils::Memory::MemorySystemInterface* memorySystem = Aws::Utils::Memory::GetSensitiveMemorySystem();
+            if (memorySystem)
+            {
+                memorySystem->FreeMemory(p);
+            }
+            else
+            {
+                free(p);
+            }
+        }
+    };
+
+    template< typename T, typename U >
+    bool operator ==(const SensitiveAllocator< T >&, const SensitiveAllocator< U >&)
+    {
+        return true;
+    }
+
+    template< typename T, typename U >
+    bool operator !=(const SensitiveAllocator< T >&, const SensitiveAllocator< U >&)
+    {
+        return false;
+    }
+
     /**
      * Creates a shared_ptr using AWS Allocator hooks.
      * allocationTag is for memory tracking purposes.

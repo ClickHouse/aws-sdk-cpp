@@ -63,7 +63,7 @@ namespace Aws
              * Expiration date is set to "never expire".
              */
             AWSCredentials(const Aws::String& accessKeyId, const Aws::String& secretKey) :
-                m_accessKeyId(accessKeyId), m_secretKey(secretKey), m_expiration((std::chrono::time_point<std::chrono::system_clock>::max)())
+                m_accessKeyId(accessKeyId), m_secretKey(secretKey.data(), secretKey.size()), m_expiration((std::chrono::time_point<std::chrono::system_clock>::max)())
             {
             }
 
@@ -72,6 +72,11 @@ namespace Aws
              * Expiration date is set to "never expire".
              */
             AWSCredentials(const Aws::String& accessKeyId, const Aws::String& secretKey, const Aws::String& sessionToken) :
+                m_accessKeyId(accessKeyId), m_secretKey(secretKey.data(), secretKey.size()), m_sessionToken(sessionToken), m_expiration((std::chrono::time_point<std::chrono::system_clock>::max)())
+            {
+            }
+
+            AWSCredentials(const Aws::String& accessKeyId, const Aws::SensitiveString& secretKey, const Aws::String& sessionToken) :
                 m_accessKeyId(accessKeyId), m_secretKey(secretKey), m_sessionToken(sessionToken), m_expiration((std::chrono::time_point<std::chrono::system_clock>::max)())
             {
             }
@@ -80,7 +85,7 @@ namespace Aws
              * Initializes object with accessKeyId, secretKey, sessionToken and expiration date.
              */
             AWSCredentials(const Aws::String& accessKeyId, const Aws::String& secretKey, const Aws::String& sessionToken, Aws::Utils::DateTime expiration) :
-                m_accessKeyId(accessKeyId), m_secretKey(secretKey), m_sessionToken(sessionToken), m_expiration(expiration)
+                m_accessKeyId(accessKeyId), m_secretKey(secretKey.data(), secretKey.size()), m_sessionToken(sessionToken), m_expiration(expiration)
             {
             }
 
@@ -93,7 +98,7 @@ namespace Aws
                            Aws::Utils::DateTime expiration,
                            const Aws::String& accountId)
                 : m_accessKeyId(accessKeyId),
-                  m_secretKey(secretKey),
+                  m_secretKey(secretKey.data(), secretKey.size()),
                   m_sessionToken(sessionToken),
                   m_expiration(expiration),
                   m_accountId(accountId) {}
@@ -142,7 +147,7 @@ namespace Aws
             /**
              * Gets the underlying secret key credential
              */
-            inline const Aws::String& GetAWSSecretKey() const
+            inline const Aws::SensitiveString& GetAWSSecretKey() const
             {
                 return m_secretKey;
             }
@@ -184,7 +189,7 @@ namespace Aws
              */
             inline void SetAWSSecretKey(const Aws::String& secretKey)
             {
-                m_secretKey = secretKey;
+                m_secretKey.assign(secretKey.data(), secretKey.size());
             }
 
             /**
@@ -257,7 +262,7 @@ namespace Aws
             inline void AddUserAgentFeature(Aws::Client::UserAgentFeature feature) { m_context.AddUserAgentFeature(feature); }
         private:
             Aws::String m_accessKeyId;
-            Aws::String m_secretKey;
+            Aws::SensitiveString m_secretKey;
             Aws::String m_sessionToken;
             Aws::Utils::DateTime m_expiration;
             Aws::String m_accountId;
