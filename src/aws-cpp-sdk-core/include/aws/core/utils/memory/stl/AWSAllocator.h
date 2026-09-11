@@ -71,6 +71,13 @@ namespace Aws
             return reinterpret_cast<RawPointer>(Malloc("AWSSTL", n * sizeof(T)));
         }
 
+#if defined(__cpp_lib_allocate_at_least)
+        std::allocation_result<RawPointer> allocate_at_least(size_type n)
+        {
+            return {allocate(n), n};
+        }
+#endif
+
         void deallocate(RawPointer p, size_type n)
         {
             AWS_UNREFERENCED_PARAM(n);
