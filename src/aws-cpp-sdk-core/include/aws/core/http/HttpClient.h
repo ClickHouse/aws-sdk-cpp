@@ -56,7 +56,7 @@ namespace Aws
             /**
              * Stops all requests in progress and prevents any others from initiating.
              */
-            void DisableRequestProcessing();
+            virtual void DisableRequestProcessing();
             /**
              * Enables/ReEnables request processing.
              */
@@ -68,7 +68,7 @@ namespace Aws
             /**
              * Sleeps current thread for sleepTime.
              */
-            void RetryRequestSleep(std::chrono::milliseconds sleepTime);
+            virtual void RetryRequestSleep(std::chrono::milliseconds sleepTime);
 
             bool ContinueRequest(const Aws::Http::HttpRequest&) const;
 
