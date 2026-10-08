@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0.
  */
@@ -168,6 +168,7 @@ class HeadObjectResult {
    * <p>Size of the body in bytes.</p>
    */
   inline long long GetContentLength() const { return m_contentLength; }
+  inline bool ContentLengthHasBeenSet() const { return m_contentLengthHasBeenSet; }
   inline void SetContentLength(long long value) {
     m_contentLengthHasBeenSet = true;
     m_contentLength = value;
@@ -1085,7 +1086,7 @@ class HeadObjectResult {
   Aws::String m_expiresString;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_deleteMarkerHasBeenSet = false;
   bool m_acceptRangesHasBeenSet = false;
   bool m_expirationHasBeenSet = false;

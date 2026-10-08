@@ -73,12 +73,19 @@ namespace Aws
              */
             virtual AWSCredentials GetAWSCredentials() = 0;
 
+            /**
+             * Forces reloading the credentials returned by GetAWSCredentials().
+             * Credentials are reloaded when they're expired or due to their reload frequency or after this function is called.
+             */
+            virtual void SetNeedRefresh();
+
         protected:
             /**
              * The default implementation keeps up with the cache times and lets you know if it's time to refresh your internal caching
              *  to aid your implementation of GetAWSCredentials.
              */
             virtual bool IsTimeToRefresh(long reloadFrequency);
+            virtual bool IsSetNeedRefresh();
             virtual void Reload();
             mutable Aws::Utils::Threading::ReaderWriterLock m_reloadLock;
         private:

@@ -112,7 +112,7 @@ class GetCustomEntityTypeResult {
   Aws::Vector<Aws::String> m_contextWords;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_nameHasBeenSet = false;
   bool m_regexStringHasBeenSet = false;
   bool m_contextWordsHasBeenSet = false;

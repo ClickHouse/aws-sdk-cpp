@@ -71,7 +71,7 @@ class GetTagsResult {
   Aws::Map<Aws::String, Aws::String> m_tags;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_tagsHasBeenSet = false;
   bool m_requestIdHasBeenSet = false;
 };

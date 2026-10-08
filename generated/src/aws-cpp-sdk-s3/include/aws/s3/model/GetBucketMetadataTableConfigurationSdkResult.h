@@ -69,7 +69,7 @@ class GetBucketMetadataTableConfigurationSdkResult {
   GetBucketMetadataTableConfigurationResult m_getBucketMetadataTableConfigurationResult;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_getBucketMetadataTableConfigurationResultHasBeenSet = false;
   bool m_requestIdHasBeenSet = false;
 };

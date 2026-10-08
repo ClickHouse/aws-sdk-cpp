@@ -80,12 +80,15 @@ void CoreErrorsMapper::InitCoreErrorsMapper()
     s_CoreErrorsMapper->emplace("ValidationError", AWSError<CoreErrors>(CoreErrors::VALIDATION, false));
     s_CoreErrorsMapper->emplace("AccessDeniedException", AWSError<CoreErrors>(CoreErrors::ACCESS_DENIED, false));
     s_CoreErrorsMapper->emplace("AccessDenied", AWSError<CoreErrors>(CoreErrors::ACCESS_DENIED, false));
+    s_CoreErrorsMapper->emplace("AuthenticationRequired", AWSError<CoreErrors>(CoreErrors::ACCESS_DENIED, false));
     s_CoreErrorsMapper->emplace("ResourceNotFoundException", AWSError<CoreErrors>(CoreErrors::RESOURCE_NOT_FOUND, false));
     s_CoreErrorsMapper->emplace("ResourceNotFound", AWSError<CoreErrors>(CoreErrors::RESOURCE_NOT_FOUND, false));
     s_CoreErrorsMapper->emplace("UnrecognizedClientException", AWSError<CoreErrors>(CoreErrors::UNRECOGNIZED_CLIENT, false));
     s_CoreErrorsMapper->emplace("UnrecognizedClient", AWSError<CoreErrors>(CoreErrors::UNRECOGNIZED_CLIENT, false));
     s_CoreErrorsMapper->emplace("SlowDownException", AWSError<CoreErrors>(CoreErrors::SLOW_DOWN, throttleType));
     s_CoreErrorsMapper->emplace("SlowDown", AWSError<CoreErrors>(CoreErrors::SLOW_DOWN, throttleType));
+    s_CoreErrorsMapper->emplace("QpsLimitExceeded", AWSError<CoreErrors>(CoreErrors::SLOW_DOWN, throttleType));
+    s_CoreErrorsMapper->emplace("TotalQpsLimitExceeded", AWSError<CoreErrors>(CoreErrors::SLOW_DOWN, throttleType));
     s_CoreErrorsMapper->emplace("SignatureDoesNotMatchException", AWSError<CoreErrors>(CoreErrors::SIGNATURE_DOES_NOT_MATCH, false));
     s_CoreErrorsMapper->emplace("SignatureDoesNotMatch", AWSError<CoreErrors>(CoreErrors::SIGNATURE_DOES_NOT_MATCH, false));
     s_CoreErrorsMapper->emplace("InvalidAccessKeyIdException", AWSError<CoreErrors>(CoreErrors::INVALID_ACCESS_KEY_ID, false));

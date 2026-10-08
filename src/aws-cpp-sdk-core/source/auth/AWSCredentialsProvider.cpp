@@ -65,6 +65,22 @@ bool AWSCredentialsProvider::IsTimeToRefresh(long reloadFrequency)
     return false;
 }
 
+void AWSCredentialsProvider::SetNeedRefresh()
+{
+    ReaderLockGuard guard(m_reloadLock);
+    if (m_lastLoadedMs != 0)
+    {
+        guard.UpgradeToWriterLock();
+        m_lastLoadedMs = 0;
+    }
+}
+
+bool AWSCredentialsProvider::IsSetNeedRefresh()
+{
+    /// This function is called from implementations of RefreshIfExpired() at the point when m_reloadLock is locked.
+    return m_lastLoadedMs == 0;
+}
+
 
 static const char* ENVIRONMENT_LOG_TAG = "EnvironmentAWSCredentialsProvider";
 
@@ -78,13 +94,11 @@ AWSCredentials EnvironmentAWSCredentialsProvider::GetAWSCredentials()
     {
         credentials.SetAWSAccessKeyId(accessKey);
 
-        AWS_LOGSTREAM_DEBUG(ENVIRONMENT_LOG_TAG, "Found credential in environment with access key id " << accessKey);
         auto secretKey = Aws::Environment::GetEnv(SECRET_KEY_ENV_VAR);
 
         if (!secretKey.empty())
         {
             credentials.SetAWSSecretKey(secretKey);
-            AWS_LOGSTREAM_DEBUG(ENVIRONMENT_LOG_TAG, "Found secret key");
         }
 
         auto sessionToken = Aws::Environment::GetEnv(SESSION_TOKEN_ENV_VAR);
@@ -92,7 +106,6 @@ AWSCredentials EnvironmentAWSCredentialsProvider::GetAWSCredentials()
         if(!sessionToken.empty())
         {
             credentials.SetSessionToken(sessionToken);
-            AWS_LOGSTREAM_DEBUG(ENVIRONMENT_LOG_TAG, "Found sessionToken");
         }
 
         const auto accountId = Aws::Environment::GetEnv(ACCOUNT_ID_ENV_VAR);

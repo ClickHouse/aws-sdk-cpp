@@ -66,7 +66,7 @@ class GetColumnStatisticsTaskRunResult {
   ColumnStatisticsTaskRun m_columnStatisticsTaskRun;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_columnStatisticsTaskRunHasBeenSet = false;
   bool m_requestIdHasBeenSet = false;
 };

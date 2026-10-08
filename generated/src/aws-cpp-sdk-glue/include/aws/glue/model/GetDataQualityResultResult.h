@@ -368,7 +368,7 @@ class GetDataQualityResultResult {
   DataQualityAggregatedMetrics m_aggregatedMetrics;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_resultIdHasBeenSet = false;
   bool m_profileIdHasBeenSet = false;
   bool m_scoreHasBeenSet = false;

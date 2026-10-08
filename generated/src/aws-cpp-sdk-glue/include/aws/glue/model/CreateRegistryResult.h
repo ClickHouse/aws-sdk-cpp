@@ -128,7 +128,7 @@ class CreateRegistryResult {
   Aws::Map<Aws::String, Aws::String> m_tags;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_registryArnHasBeenSet = false;
   bool m_registryNameHasBeenSet = false;
   bool m_descriptionHasBeenSet = false;

@@ -72,7 +72,7 @@ class GetBucketTaggingResult {
   Aws::Vector<Tag> m_tagSet;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_tagSetHasBeenSet = false;
   bool m_requestIdHasBeenSet = false;
 };

@@ -65,7 +65,7 @@ class GetBucketAbacResult {
   AbacStatus m_abacStatus;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_abacStatusHasBeenSet = false;
   bool m_requestIdHasBeenSet = false;
 };

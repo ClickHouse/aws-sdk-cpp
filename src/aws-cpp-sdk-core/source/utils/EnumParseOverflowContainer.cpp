@@ -28,6 +28,6 @@ const Aws::String& EnumParseOverflowContainer::RetrieveOverflow(int hashCode) co
 void EnumParseOverflowContainer::StoreOverflow(int hashCode, const Aws::String& value)
 {
     WriterLockGuard guard(m_overflowLock);
-    AWS_LOGSTREAM_WARN(LOG_TAG, "Encountered enum member " << value << " which is not modeled in your clients. You should update your clients when you get a chance.");
+    AWS_LOGSTREAM_DEBUG(LOG_TAG, "Encountered enum member " << value << " which is not modeled in your clients. You should update your clients when you get a chance.");
     m_overflowMap[hashCode] = value;
 }

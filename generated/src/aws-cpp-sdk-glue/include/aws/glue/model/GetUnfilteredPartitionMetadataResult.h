@@ -109,7 +109,7 @@ class GetUnfilteredPartitionMetadataResult {
   bool m_isRegisteredWithLakeFormation{false};
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_partitionHasBeenSet = false;
   bool m_authorizedColumnsHasBeenSet = false;
   bool m_isRegisteredWithLakeFormationHasBeenSet = false;

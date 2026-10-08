@@ -157,13 +157,10 @@ AWSClient::AWSClient(const Aws::Client::ClientConfiguration& configuration,
     m_region(configuration.region),
     m_telemetryProvider(configuration.telemetryProvider ? configuration.telemetryProvider : configuration.configFactories.telemetryProviderCreateFn()),
     m_signerProvider(Aws::MakeUnique<Aws::Auth::DefaultAuthSignerProvider>(AWS_CLIENT_LOG_TAG, signer)),
-    m_httpClient(CreateHttpClient(
-        [&configuration, this]()
-        {
-            ClientConfiguration tempConfig(configuration);
-            tempConfig.telemetryProvider = m_telemetryProvider;
-            return tempConfig;
-        }())),
+    /// NOTE ClickHouse Patch: we use PocoHTTPClientFactory which rely on PocoHTTPClientConfiguration.
+    /// In upstream they wrap passed configuration in some other configuration, so cast to PocoHTTPClientConfiguration
+    /// doesn't work. The reason is related to some telemetry which we don't use.
+    m_httpClient(CreateHttpClient(configuration)),
     m_errorMarshaller(errorMarshaller),
     m_retryStrategy(configuration.retryStrategy ? configuration.retryStrategy : configuration.configFactories.retryStrategyCreateFn()),
     m_writeRateLimiter(configuration.writeRateLimiter ? configuration.writeRateLimiter : configuration.configFactories.writeRateLimiterCreateFn()),
@@ -194,13 +191,10 @@ AWSClient::AWSClient(const Aws::Client::ClientConfiguration& configuration,
     m_region(configuration.region),
     m_telemetryProvider(configuration.telemetryProvider ? configuration.telemetryProvider : configuration.configFactories.telemetryProviderCreateFn()),
     m_signerProvider(signerProvider),
-    m_httpClient(CreateHttpClient(
-        [&configuration, this]()
-        {
-            ClientConfiguration tempConfig(configuration);
-            tempConfig.telemetryProvider = m_telemetryProvider;
-            return tempConfig;
-        }())),
+    /// NOTE ClickHouse Patch: we use PocoHTTPClientFactory which rely on PocoHTTPClientConfiguration
+    /// In upstream they wrap passed configuration in some other configuration, so cast to PocoHTTPClientConfiguration
+    /// doesn't work. The reason is related to some telemetry which we don't use.
+    m_httpClient(CreateHttpClient(configuration)),
     m_errorMarshaller(errorMarshaller),
     m_retryStrategy(configuration.retryStrategy ? configuration.retryStrategy : configuration.configFactories.retryStrategyCreateFn()),
     m_writeRateLimiter(configuration.writeRateLimiter ? configuration.writeRateLimiter : configuration.configFactories.writeRateLimiterCreateFn()),
@@ -685,13 +679,47 @@ HttpResponseOutcome AWSClient::AttemptOneRequest(const std::shared_ptr<Aws::Http
         auto error = BuildAWSError(httpResponse);
         return HttpResponseOutcome(std::move(error));
     }
-    else if(request.HasEmbeddedError(httpResponse->GetResponseBody(), httpResponse->GetHeaders()))
-    {
-        AWS_LOGSTREAM_DEBUG(AWS_CLIENT_LOG_TAG, "Response has embedded errors");
+    /// HACK: ClickHouse Patch: We commented the code because (1) we check embedded errors in our own HTTP Client.
+    /// This commented check here is broken in multple ways. It reads responce body stream -> parses it to XML -> look for <Error>.
+    /// It's not only (1) inefficient to parse data twise (second time will be in response processing), but also in
+    /// Poco HTTP Client implementation Buffer for response body is not (3!!!) seekable. It's very reasonable solution,
+    /// because seekable stream from network is non sense. However in this library guys not only try to read stream and
+    /// call seekg(0) to return it back to zero, but also they don't check (4) if (stream.fail()).
+    ///
+    /// For example, check method HasEmbeddedError in ListObjectsV2Request.cpp:
+    ///
+    /// bool ListObjectsV2Request::HasEmbeddedError(Aws::IOStream &body,
+    ///        const Aws::Http::HeaderValueCollection &header) const
+    ///  {
+    ///      // Header is unused
+    ///      AWS_UNREFERENCED_PARAM(header);
 
-        auto error = GetErrorMarshaller()->Marshall(*httpResponse);
-        return HttpResponseOutcome(std::move(error) );
-    }
+    ///      auto readPointer = body.tellg();
+    ///      Utils::Xml::XmlDocument doc = XmlDocument::CreateFromXmlStream(body);
+    ///      body.seekg(readPointer); <-- NOTE this may set failbit and do nothing, your possition will be at the end of the stream!
+    ///
+    ///      If you add here `if (body.fail()) { std::cerr << "TERRIBLE ERROR\n"; std::terminate(); }` -- it will fail with Poco HTTP Client.
+    ///
+    ///      if (!doc.WasParseSuccessful()) {
+    ///        return false;
+    ///      }
+
+    ///      if (!doc.GetRootElement().IsNull() && doc.GetRootElement().GetName() == Aws::String("Error")) {
+    ///        return true;
+    ///      }
+    ///      return false;
+    ///  }
+    ///  After such "check" your stream will be at "eof" position and all next attempts to read it will fail or even worse --
+    ///  for example for ListObjectsV2Request you will get empty result with no error (happy debugging)!
+
+    /// NOTE: Commented code starts here
+    /// else if(request.HasEmbeddedError(httpResponse->GetResponseBody(), httpResponse->GetHeaders()))
+    /// {
+    ///     AWS_LOGSTREAM_DEBUG(AWS_CLIENT_LOG_TAG, "Response has embedded errors");
+
+    ///     auto error = GetErrorMarshaller()->Marshall(*httpResponse);
+    ///     return HttpResponseOutcome(std::move(error) );
+    /// }
 
     context.SetTransmitResponse(httpResponse);
     for (const auto& interceptor : m_interceptors) {
@@ -702,6 +730,7 @@ HttpResponseOutcome AWSClient::AttemptOneRequest(const std::shared_ptr<Aws::Http
     }
 
     AWS_LOGSTREAM_DEBUG(AWS_CLIENT_LOG_TAG, "Request returned successful response.");
+
 
     return HttpResponseOutcome(std::move(httpResponse));
 }
@@ -1248,7 +1277,20 @@ void AWSClient::AddContentBodyToRequest(const std::shared_ptr<Aws::Http::HttpReq
         //change as far as constness goes for this class. Due to the platform specificness
         //of hash computations, we can't control the fact that computing a hash mutates
         //state on some platforms such as windows (but that isn't a concern of this class.
-        auto md5HashResult = const_cast<AWSClient*>(this)->m_hash->Calculate(*body);
+
+        /// HACK: ClickHouse Patch
+        /// I have no idea how to explain this... But m_hash object is one-time use object.
+        /// After you call Calculate(xxx) it turns internal structure state into good = false,
+        /// and after first use it always return result with result.IsSuccess=false....
+        /// check:
+        /// 1) contrib/aws/src/aws-cpp-sdk-core/source/utils/crypto/crt/CRTHash.cpp:Calculate (m_hash.Digest calls finalize)
+        /// 2) contrib/aws-c-cal/source/unix/opensslcrypto_hash.c:s_finalize -- C-style OOP, check top of the file
+        ///
+        /// I have no idea what authors of the library wanted to say with this
+        /// per client m_hash->Calculate(*body). It works for the first request only.
+        ///
+        // auto md5HashResult = const_cast<AWSClient*>(this)->m_hash->Calculate(*body);
+        auto md5HashResult = Aws::Utils::Crypto::CreateMD5Implementation()->Calculate(*body);
         body->clear();
         if (md5HashResult.IsSuccess())
         {

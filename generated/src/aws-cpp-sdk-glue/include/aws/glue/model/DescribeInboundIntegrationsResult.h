@@ -92,7 +92,7 @@ class DescribeInboundIntegrationsResult {
   Aws::String m_marker;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_inboundIntegrationsHasBeenSet = false;
   bool m_markerHasBeenSet = false;
   bool m_requestIdHasBeenSet = false;

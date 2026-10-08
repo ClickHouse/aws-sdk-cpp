@@ -139,7 +139,7 @@ class GetSchemaByDefinitionResult {
   Aws::String m_createdTime;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_schemaVersionIdHasBeenSet = false;
   bool m_schemaArnHasBeenSet = false;
   bool m_dataFormatHasBeenSet = false;

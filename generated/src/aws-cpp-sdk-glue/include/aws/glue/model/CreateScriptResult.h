@@ -83,7 +83,7 @@ class CreateScriptResult {
   Aws::String m_scalaCode;
 
   Aws::String m_requestId;
-  Aws::Http::HttpResponseCode m_HttpResponseCode;
+  Aws::Http::HttpResponseCode m_HttpResponseCode{Aws::Http::HttpResponseCode::REQUEST_NOT_MADE};
   bool m_pythonScriptHasBeenSet = false;
   bool m_scalaCodeHasBeenSet = false;
   bool m_requestIdHasBeenSet = false;
