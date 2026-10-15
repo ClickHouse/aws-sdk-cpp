@@ -64,6 +64,47 @@ protected:
     }
 };
 
+class RegionErrorMarshaller final : public MockAWSErrorMarshaller
+{
+public:
+    Aws::String ExtractRegion(const AWSError<CoreErrors>&) const override
+    {
+        return "eu-west-1";
+    }
+};
+
+class RegionRetryAWSClient final : public AWSClient
+{
+public:
+    RegionRetryAWSClient(const ClientConfiguration& configuration, const std::shared_ptr<AWSErrorMarshaller>& errorMarshaller)
+        : AWSClient(
+            configuration,
+            Aws::MakeShared<AWSAuthV4Signer>(
+                ALLOCATION_TAG,
+                Aws::MakeShared<SimpleAWSCredentialsProvider>(ALLOCATION_TAG, MockAWSClient::GetMockAccessKey(), MockAWSClient::GetMockSecretAccessKey()),
+                "service",
+                configuration.region),
+            errorMarshaller)
+    {
+    }
+
+    HttpResponseOutcome MakeRequest(const AmazonWebServiceRequest& request) const
+    {
+        return AttemptExhaustively(URI("http://domain.com/something"), request, HttpMethod::HTTP_GET, SIGV4_SIGNER, Region::AWS_GLOBAL);
+    }
+
+protected:
+    AWSError<CoreErrors> BuildAWSError(const std::shared_ptr<HttpResponse>& response) const override
+    {
+        AWSError<CoreErrors> error = response->GetResponseCode() == HttpResponseCode::FORBIDDEN
+            ? AWSError<CoreErrors>(CoreErrors::REQUEST_TIME_TOO_SKEWED, "RequestTimeTooSkewed", "Request time too skewed", false)
+            : AWSError<CoreErrors>(CoreErrors::INVALID_ACTION, false);
+        error.SetResponseHeaders(response->GetHeaders());
+        error.SetResponseCode(response->GetResponseCode());
+        return error;
+    }
+};
+
 class AWSClientTestSuite : public Aws::Testing::AwsCppSdkGTestSuite
 {
 protected:
@@ -339,6 +380,68 @@ TEST_F(AWSClientTestSuite, TestRetryHeaders)
     ASSERT_GT(diff, std::chrono::seconds(-2));
     ASSERT_STREQ("3", ExtractFromRequestInfo(requestInfo, "attempt").c_str());
     ASSERT_STREQ("11", ExtractFromRequestInfo(requestInfo, "max").c_str());
+}
+
+TEST_F(AWSClientTestSuite, TestDisableAutomaticRetriesSkipsRegionCorrection)
+{
+    ClientConfiguration configuration;
+    configuration.region = Region::AWS_GLOBAL;
+    configuration.retryStrategy = Aws::MakeShared<CountedRetryStrategy>(ALLOCATION_TAG, 0);
+    auto errorMarshaller = Aws::MakeShared<RegionErrorMarshaller>(ALLOCATION_TAG);
+    AmazonWebServiceRequestMock request;
+
+    configuration.disableAutomaticRetries = true;
+    configuration.useRandomInvocationId = true;
+    RegionRetryAWSClient silkClient(configuration, errorMarshaller);
+    QueueMockResponse(HttpResponseCode::MOVED_PERMANENTLY, {});
+    auto outcome = silkClient.MakeRequest(request);
+    ASSERT_FALSE(outcome.IsSuccess());
+    ASSERT_EQ(HttpResponseCode::MOVED_PERMANENTLY, outcome.GetError().GetResponseCode());
+    ASSERT_EQ(1u, mockHttpClient->GetAllRequestsMade().size());
+
+    mockHttpClient->Reset();
+    configuration.disableAutomaticRetries = false;
+    configuration.useRandomInvocationId = false;
+    RegionRetryAWSClient defaultClient(configuration, errorMarshaller);
+    QueueMockResponse(HttpResponseCode::MOVED_PERMANENTLY, {});
+    QueueMockResponse(HttpResponseCode::OK, {});
+    outcome = defaultClient.MakeRequest(request);
+    ASSERT_TRUE(outcome.IsSuccess());
+    ASSERT_EQ(2u, mockHttpClient->GetAllRequestsMade().size());
+}
+
+TEST_F(AWSClientTestSuite, TestDisableAutomaticRetriesPreservesClockSkewCorrection)
+{
+    ClientConfiguration configuration;
+    configuration.region = Region::AWS_GLOBAL;
+    configuration.retryStrategy = Aws::MakeShared<CountedRetryStrategy>(ALLOCATION_TAG, 0);
+    configuration.disableAutomaticRetries = true;
+    configuration.useRandomInvocationId = true;
+    RegionRetryAWSClient silkClient(configuration, Aws::MakeShared<RegionErrorMarshaller>(ALLOCATION_TAG));
+    AmazonWebServiceRequestMock request;
+
+    const auto serverTime = DateTime::Now() + std::chrono::hours(1);
+    QueueMockResponse(HttpResponseCode::FORBIDDEN, {{"Date", serverTime.ToGmtString(DateFormat::RFC822)}});
+    QueueMockResponse(HttpResponseCode::OK, {});
+
+    auto firstOutcome = silkClient.MakeRequest(request);
+    ASSERT_FALSE(firstOutcome.IsSuccess());
+    ASSERT_EQ(CoreErrors::REQUEST_TIME_TOO_SKEWED, firstOutcome.GetError().GetErrorType());
+    ASSERT_TRUE(firstOutcome.GetError().ShouldRetry());
+    ASSERT_EQ(1u, mockHttpClient->GetAllRequestsMade().size());
+
+    auto secondOutcome = silkClient.MakeRequest(request);
+    ASSERT_TRUE(secondOutcome.IsSuccess());
+    const auto & requests = mockHttpClient->GetAllRequestsMade();
+    ASSERT_EQ(2u, requests.size());
+
+    const DateTime firstSigningTime(requests[0].GetHeaderValue(AWS_DATE_HEADER), DateFormat::ISO_8601_BASIC);
+    const DateTime secondSigningTime(requests[1].GetHeaderValue(AWS_DATE_HEADER), DateFormat::ISO_8601_BASIC);
+    ASSERT_TRUE(firstSigningTime.WasParseSuccessful());
+    ASSERT_TRUE(secondSigningTime.WasParseSuccessful());
+    const auto skew = DateTime::Diff(secondSigningTime, firstSigningTime);
+    ASSERT_GT(skew, std::chrono::minutes(59));
+    ASSERT_LT(skew, std::chrono::minutes(61));
 }
 
 TEST_F(AWSClientTestSuite, TestRetryURIs)
@@ -940,5 +1043,3 @@ TEST_F(AWSRegionTest, TestResolveDefaultRegion)
 
     Aws::FileSystem::RemoveFileIfExists(m_configFileName.c_str());
 }
-
-

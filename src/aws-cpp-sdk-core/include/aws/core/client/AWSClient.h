@@ -354,6 +354,8 @@ namespace Aws
             std::shared_ptr<Aws::Http::HttpClient> m_httpClient;
             std::shared_ptr<AWSErrorMarshaller> m_errorMarshaller;
             std::shared_ptr<RetryStrategy> m_retryStrategy;
+            bool m_disableAutomaticRetries;
+            bool m_useRandomInvocationId;
             std::shared_ptr<Aws::Utils::RateLimits::RateLimiterInterface> m_writeRateLimiter;
             std::shared_ptr<Aws::Utils::RateLimits::RateLimiterInterface> m_readRateLimiter;
             std::shared_ptr<Aws::Utils::Crypto::Hash> m_hash;

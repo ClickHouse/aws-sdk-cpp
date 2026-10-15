@@ -233,6 +233,8 @@ namespace Aws
              * Provide retry strategy here or via a factory method.
              */
             std::shared_ptr<RetryStrategy> retryStrategy = nullptr;
+            bool disableAutomaticRetries = false;
+            bool useRandomInvocationId = false;
             /**
              * Override the http endpoint used to talk to a service.
              */

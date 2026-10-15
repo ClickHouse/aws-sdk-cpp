@@ -130,6 +130,8 @@ AWSClient::AWSClient(const Aws::Client::ClientConfiguration& configuration,
     m_httpClient(CreateHttpClient(configuration)),
     m_errorMarshaller(errorMarshaller),
     m_retryStrategy(configuration.retryStrategy ? configuration.retryStrategy : configuration.configFactories.retryStrategyCreateFn()),
+    m_disableAutomaticRetries(configuration.disableAutomaticRetries),
+    m_useRandomInvocationId(configuration.useRandomInvocationId),
     m_writeRateLimiter(configuration.writeRateLimiter ? configuration.writeRateLimiter : configuration.configFactories.writeRateLimiterCreateFn()),
     m_readRateLimiter(configuration.readRateLimiter ? configuration.readRateLimiter : configuration.configFactories.readRateLimiterCreateFn()),
     m_hash(Aws::Utils::Crypto::CreateMD5Implementation()),
@@ -156,6 +158,8 @@ AWSClient::AWSClient(const Aws::Client::ClientConfiguration& configuration,
     m_httpClient(CreateHttpClient(configuration)),
     m_errorMarshaller(errorMarshaller),
     m_retryStrategy(configuration.retryStrategy ? configuration.retryStrategy : configuration.configFactories.retryStrategyCreateFn()),
+    m_disableAutomaticRetries(configuration.disableAutomaticRetries),
+    m_useRandomInvocationId(configuration.useRandomInvocationId),
     m_writeRateLimiter(configuration.writeRateLimiter ? configuration.writeRateLimiter : configuration.configFactories.writeRateLimiterCreateFn()),
     m_readRateLimiter(configuration.readRateLimiter ? configuration.readRateLimiter : configuration.configFactories.readRateLimiterCreateFn()),
     m_hash(Aws::Utils::Crypto::CreateMD5Implementation()),
@@ -272,7 +276,7 @@ HttpResponseOutcome AWSClient::AttemptExhaustively(const Aws::Http::URI& uri,
     const char* signerRegion = signerRegionOverride;
     Aws::String regionFromResponse;
 
-    Aws::String invocationId = Aws::Utils::UUID::PseudoRandomUUID();
+    Aws::String invocationId = m_useRandomInvocationId ? Aws::Utils::UUID::RandomUUID() : Aws::Utils::UUID::PseudoRandomUUID();
     RequestInfo requestInfo;
     requestInfo.attempt = 1;
     requestInfo.maxAttempts = 0;
@@ -316,10 +320,16 @@ HttpResponseOutcome AWSClient::AttemptExhaustively(const Aws::Http::URI& uri,
         }
         lastError = outcome.GetError();
 
+        Aws::Monitoring::OnRequestFailed(this->GetServiceClientName(), request.GetServiceRequestName(), httpRequest, outcome, coreMetrics, contexts);
+
+        if (m_disableAutomaticRetries)
+        {
+            AdjustClockSkew(outcome, signerName);
+            break;
+        }
+
         DateTime serverTime = GetServerTimeFromError(outcome.GetError());
         auto clockSkew = DateTime::Diff(serverTime, DateTime::Now());
-
-        Aws::Monitoring::OnRequestFailed(this->GetServiceClientName(), request.GetServiceRequestName(), httpRequest, outcome, coreMetrics, contexts);
 
         if (!m_httpClient->IsRequestProcessingEnabled())
         {
@@ -441,7 +451,7 @@ HttpResponseOutcome AWSClient::AttemptExhaustively(const Aws::Http::URI& uri,
     const char* signerRegion = signerRegionOverride;
     Aws::String regionFromResponse;
 
-    Aws::String invocationId = Aws::Utils::UUID::PseudoRandomUUID();
+    Aws::String invocationId = m_useRandomInvocationId ? Aws::Utils::UUID::RandomUUID() : Aws::Utils::UUID::PseudoRandomUUID();
     RequestInfo requestInfo;
     requestInfo.attempt = 1;
     requestInfo.maxAttempts = 0;
@@ -481,10 +491,16 @@ HttpResponseOutcome AWSClient::AttemptExhaustively(const Aws::Http::URI& uri,
         }
         lastError = outcome.GetError();
 
+        Aws::Monitoring::OnRequestFailed(this->GetServiceClientName(), requestName, httpRequest, outcome, coreMetrics, contexts);
+
+        if (m_disableAutomaticRetries)
+        {
+            AdjustClockSkew(outcome, signerName);
+            break;
+        }
+
         DateTime serverTime = GetServerTimeFromError(outcome.GetError());
         auto clockSkew = DateTime::Diff(serverTime, DateTime::Now());
-
-        Aws::Monitoring::OnRequestFailed(this->GetServiceClientName(), requestName, httpRequest, outcome, coreMetrics, contexts);
 
         if (!m_httpClient->IsRequestProcessingEnabled())
         {
