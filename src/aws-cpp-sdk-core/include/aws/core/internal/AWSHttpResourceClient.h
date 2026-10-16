@@ -241,6 +241,8 @@ namespace Aws
 
             STSAssumeRoleWithWebIdentityResult GetAssumeRoleWithWebIdentityCredentials(const STSAssumeRoleWithWebIdentityRequest& request);
 
+            const Aws::String& GetEndpoint() const { return m_endpoint; }
+
         private:
             Aws::String m_endpoint;
         };
