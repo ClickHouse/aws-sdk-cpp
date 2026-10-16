@@ -574,10 +574,19 @@ namespace Aws
             static const int CN_NORTHWEST_1_HASH = Aws::Utils::HashingUtils::HashString(Aws::Region::CN_NORTHWEST_1);
             auto hash = Aws::Utils::HashingUtils::HashString(clientConfiguration.region.c_str());
 
-            ss << "sts." << clientConfiguration.region << ".amazonaws.com";
+            ss << "sts." << clientConfiguration.region << ".amazonaws.";
             if (hash == CN_NORTH_1_HASH || hash == CN_NORTHWEST_1_HASH)
             {
-                ss << ".cn";
+                ss << "com.cn";
+            }
+            else if (clientConfiguration.region.rfind("eusc-", 0) == 0)
+            {
+                // AWS European Sovereign Cloud regions use the .amazonaws.eu suffix.
+                ss << "eu";
+            }
+            else
+            {
+                ss << "com";
             }
 
             m_endpoint =  ss.str();
