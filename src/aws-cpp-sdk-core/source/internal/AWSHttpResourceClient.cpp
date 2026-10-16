@@ -553,6 +553,13 @@ namespace Aws
         {
             SetErrorMarshaller(Aws::MakeUnique<Aws::Client::XmlErrorMarshaller>(STS_RESOURCE_CLIENT_LOG_TAG));
 
+            if (!clientConfiguration.endpointOverride.empty())
+            {
+                m_endpoint = clientConfiguration.endpointOverride;
+                AWS_LOGSTREAM_INFO(STS_RESOURCE_CLIENT_LOG_TAG, "Creating STS ResourceClient with overridden endpoint: " << m_endpoint);
+                return;
+            }
+
             Aws::StringStream ss;
             if (clientConfiguration.scheme == Aws::Http::Scheme::HTTP)
             {
