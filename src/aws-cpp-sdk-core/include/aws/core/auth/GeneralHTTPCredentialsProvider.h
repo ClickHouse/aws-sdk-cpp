@@ -100,9 +100,9 @@ namespace Aws
 
         protected:
             void Reload() override;
+            bool ExpiresSoon() const;
 
         private:
-            bool ExpiresSoon() const;
             void RefreshIfExpired();
 
             Aws::String LoadTokenFromFile() const;
@@ -110,6 +110,7 @@ namespace Aws
             std::shared_ptr<Aws::Internal::ECSCredentialsClient> m_ecsCredentialsClient;
             Aws::String m_authTokenFilePath;
 
+        protected:
             long m_loadFrequencyMs = REFRESH_THRESHOLD;
             Aws::Auth::AWSCredentials m_credentials;
         };
