@@ -77,7 +77,7 @@ namespace Aws
             /**
              * Sleeps current thread for sleepTime.
              */
-            void RetryRequestSleep(std::chrono::milliseconds sleepTime);
+            virtual void RetryRequestSleep(std::chrono::milliseconds sleepTime);
 
             bool ContinueRequest(const Aws::Http::HttpRequest&) const;
 
