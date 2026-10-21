@@ -88,6 +88,7 @@
     "AUTHV",
     // CMake
     "cmake",
+    "CPPSTD",
     "DCMAKE",
     "AUTORUN",
     "DEPS",
@@ -236,6 +237,7 @@
     "Initate",
     "ioctlsocket",
     "dupenv",
+    "wdupenv",
     "USERPROFILE",
     "subblock",
     "LANGANDCODEPAGE",
@@ -325,6 +327,14 @@
     // in DefaultRateLimiter
     "renormalize",
     // parameters defined in tinyxml2
-    "uval"
+    "uval",
+    // identifiers in the imported AIX time conversion implementation
+    "msummlen",
+    "tmstr",
+    "ytmp",
+    "dtmp",
+    "ytmpe",
+    "dtmpe",
+    "isleapyear"
   ]
 }

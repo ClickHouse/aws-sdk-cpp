@@ -126,7 +126,7 @@ namespace Aws
                 /// We replace HTTP Client with our own PocoHTTPClient. It returns some Poco implementations
                 /// for std::istream and std::ostream. For example for GetResponseBody(). std::istream and std::ostream
                 /// have very weird semantics. For custom implementations, without additional efforts, most of the methods
-                /// will not work siltently and only change internal failbits state.
+                /// will not work silently and only change internal failbits state.
                 ///
                 /// AWS developers use many std::i/ostream methods without any checks for internal failbits states.
                 /// For example in upstream code here they use tellp() method, which is not implemented for Poco streams.
@@ -162,7 +162,7 @@ namespace Aws
                 /// We replace HTTP Client with our own PocoHTTPClient. It returns some Poco implementations
                 /// for std::istream and std::ostream. For example for GetResponseBody(). std::istream and std::ostream
                 /// have very weird semantics. For custom implementations, without additional efforts, most of the methods
-                /// will not work siltently and only change internal failbits state.
+                /// will not work silently and only change internal failbits state.
                 ///
                 /// AWS developers use many std::i/ostream methods without any checks for internal failbits states.
                 /// For example in upstream code here they use tellp() method, which is not implemented for Poco streams.
@@ -232,7 +232,7 @@ namespace Aws
                 /// We replace HTTP Client with our own PocoHTTPClient. It returns some Poco implementations
                 /// for std::istream and std::ostream. For example for GetResponseBody(). std::istream and std::ostream
                 /// have very weird semantics. For custom implementations, without additional efforts, most of the methods
-                /// will not work siltently and only change internal failbits state.
+                /// will not work silently and only change internal failbits state.
                 ///
                 /// AWS developers use many std::i/ostream methods without any checks for internal failbits states.
                 /// For example in upstream code here they use tellp() method, which is not implemented for Poco streams.
