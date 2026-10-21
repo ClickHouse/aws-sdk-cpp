@@ -680,8 +680,8 @@ HttpResponseOutcome AWSClient::AttemptOneRequest(const std::shared_ptr<Aws::Http
         return HttpResponseOutcome(std::move(error));
     }
     /// HACK: ClickHouse Patch: We commented the code because (1) we check embedded errors in our own HTTP Client.
-    /// This commented check here is broken in multple ways. It reads responce body stream -> parses it to XML -> look for <Error>.
-    /// It's not only (1) inefficient to parse data twise (second time will be in response processing), but also in
+    /// This commented check here is broken in multiple ways. It reads response body stream -> parses it to XML -> look for <Error>.
+    /// It's not only (1) inefficient to parse data twice (second time will be in response processing), but also in
     /// Poco HTTP Client implementation Buffer for response body is not (3!!!) seekable. It's very reasonable solution,
     /// because seekable stream from network is non sense. However in this library guys not only try to read stream and
     /// call seekg(0) to return it back to zero, but also they don't check (4) if (stream.fail()).
@@ -696,7 +696,7 @@ HttpResponseOutcome AWSClient::AttemptOneRequest(const std::shared_ptr<Aws::Http
 
     ///      auto readPointer = body.tellg();
     ///      Utils::Xml::XmlDocument doc = XmlDocument::CreateFromXmlStream(body);
-    ///      body.seekg(readPointer); <-- NOTE this may set failbit and do nothing, your possition will be at the end of the stream!
+    ///      body.seekg(readPointer); <-- NOTE this may set failbit and do nothing, your position will be at the end of the stream!
     ///
     ///      If you add here `if (body.fail()) { std::cerr << "TERRIBLE ERROR\n"; std::terminate(); }` -- it will fail with Poco HTTP Client.
     ///
