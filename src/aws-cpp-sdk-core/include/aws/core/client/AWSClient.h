@@ -195,12 +195,12 @@ namespace Aws
              * Stop all requests immediately.
              * In flight requests will likely fail.
              */
-            void DisableRequestProcessing();
+            virtual void DisableRequestProcessing();
 
             /**
              * Enable/ReEnable requests.
              */
-            void EnableRequestProcessing();
+            virtual void EnableRequestProcessing();
 
             inline virtual const char* GetServiceClientName() const { return m_serviceName.c_str(); }
             /**
