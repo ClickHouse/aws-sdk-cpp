@@ -65,11 +65,11 @@ namespace Aws
             /**
              * Stops all requests in progress and prevents any others from initiating.
              */
-            void DisableRequestProcessing();
+            virtual void DisableRequestProcessing();
             /**
              * Enables/ReEnables request processing.
              */
-            void EnableRequestProcessing();
+            virtual void EnableRequestProcessing();
             /**
              * Returns true if request processing is enabled.
              */
