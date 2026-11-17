@@ -4,6 +4,7 @@
  */
 
 #include <aws/core/http/HttpClientFactory.h>
+#include <aws/core/http/HttpClient.h>
 #include <aws/core/internal/AWSHttpResourceClient.h>
 
 #if AWS_SDK_USE_CRT_HTTP
