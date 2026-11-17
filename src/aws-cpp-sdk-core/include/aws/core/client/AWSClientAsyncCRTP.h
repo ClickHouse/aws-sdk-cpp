@@ -77,9 +77,9 @@ namespace Client
            m_operationsProcessed(0),
            m_asyncIOOperationsProcessed(0)
         {
-            AwsServiceClientT* pThis = static_cast<AwsServiceClientT*>(this);
+            // Register the base: the derived client does not exist yet, so a cast to it here fails Clang CFI.
             Aws::Utils::ComponentRegistry::RegisterComponent(AwsServiceClientT::GetServiceName(),
-                                                             pThis,
+                                                             this,
                                                              &AwsServiceClientT::ShutdownSdkClient);
 
         }
@@ -89,9 +89,9 @@ namespace Client
            m_operationsProcessed(0),
            m_asyncIOOperationsProcessed(0)
         {
-            AwsServiceClientT* pThis = static_cast<AwsServiceClientT*>(this);
+            // Register the base: the derived client does not exist yet, so a cast to it here fails Clang CFI.
             Aws::Utils::ComponentRegistry::RegisterComponent(AwsServiceClientT::GetServiceName(),
-                                                             pThis,
+                                                             this,
                                                              &AwsServiceClientT::ShutdownSdkClient);
         }
 
@@ -99,7 +99,7 @@ namespace Client
         {
             if (&other != this)
             {
-                ShutdownSdkClient(static_cast<AwsServiceClientT*>(this));
+                ShutdownSdkClient(this);
                 m_operationsProcessed = 0;
                 m_asyncIOOperationsProcessed = 0;
                 m_isInitialized = other.m_isInitialized.load();
@@ -110,19 +110,24 @@ namespace Client
 
         virtual ~ClientWithAsyncTemplateMethods()
         {
-            AwsServiceClientT* pClient = static_cast<AwsServiceClientT*>(this);
-            Aws::Utils::ComponentRegistry::DeRegisterComponent(pClient);
+            Aws::Utils::ComponentRegistry::DeRegisterComponent(this);
         }
 
         /**
          * A callback static method to terminate client (i.e. to free dynamic resources and prevent further processing)
-         * @param pThis, a void* pointer that points to AWS SDK Service Client, such as "Aws::S3::S3Client"
+         * @param pThis, a void* pointer to the ClientWithAsyncTemplateMethods base of an AWS SDK Service Client, such as "Aws::S3::S3Client",
+         *               as registered in the ComponentRegistry.
          * @param timeoutMs, a timeout (in ms) that this method will wait for currently running operations to complete.
          *                    "-1" represents "use clientConfiguration.requestTimeoutMs" value.
          */
         static void ShutdownSdkClient(void* pThis, int64_t timeoutMs = -1)
         {
-            AwsServiceClientT* pClient = reinterpret_cast<AwsServiceClientT*>(pThis);
+            ShutdownSdkClient(static_cast<AwsServiceClientT*>(static_cast<ClientWithAsyncTemplateMethods*>(pThis)), timeoutMs);
+        }
+
+        /// Called by the destructors of the service clients with the derived pointer.
+        static void ShutdownSdkClient(AwsServiceClientT* pClient, int64_t timeoutMs = -1)
+        {
             AWS_CHECK_PTR(AwsServiceClientT::GetServiceName(), pClient);
             if(!pClient->m_isInitialized)
             {
